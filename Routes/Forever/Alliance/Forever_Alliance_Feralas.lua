@@ -66,7 +66,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 4124,
-            NonSkippableWaypoint = true,
             Note = { "AVOID_HOSTILE_GUARDS" },
             Coord = { x = 3340.06, y = -4370.63 },
             Range = 5,
@@ -131,7 +130,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2866,
-            NonSkippableWaypoint = true,
             Coord = { x = 3330.33, y = -4505.88 },
             Range = 5,
             Zone = 1444,
@@ -151,7 +149,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2939,
-            NonSkippableWaypoint = true,
             Coord = { x = 3233.17, y = -4474.74 },
             Range = 5,
             Zone = 1444,
@@ -171,7 +168,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 4125,
-            NonSkippableWaypoint = true,
             Coord = { x = 3207.94, y = -4472.98 },
             Range = 10,
             IsQuestCompleted = 4124,
@@ -182,7 +178,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 4124,
-            NonSkippableWaypoint = true,
             Coord = { x = 3207.94, y = -4472.98 },
             Range = 10.0,
             Zone = 1444,
@@ -214,7 +209,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2867,
-            NonSkippableWaypoint = true,
             Coord = { x = 3337.48, y = -4505.78 },
             Range = 5,
             Zone = 1444,
@@ -265,7 +259,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2870,
-            NonSkippableWaypoint = true,
             Coord = { x = 3670.11, y = -5374.63 },
             Range = 20,
             IsQuestCompleted = 4125,
@@ -276,7 +269,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2870,
-            NonSkippableWaypoint = true,
             Coord = { x = 3625.63, y = -5490 },
             Range = 20,
             IsQuestCompleted = 4125,
@@ -287,7 +279,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 4125,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_CAVE" },
             Coord = { x = 3670.11, y = -5374.63 },
             Range = 20,
@@ -296,7 +287,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 4125,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_CAVE" },
             Coord = { x = 3625.63, y = -5490.0 },
             Range = 20,
@@ -305,7 +295,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2870,
-            NonSkippableWaypoint = true,
             Coord = { x = 3608, y = -5511 },
             Range = 5,
             IsQuestOnQuest = 2870,
@@ -315,7 +304,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2870,
-            NonSkippableWaypoint = true,
             Coord = { x = 3594, y = -5561 },
             Range = 6,
             IsQuestOnQuest = 2870,
@@ -325,7 +313,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2870,
-            NonSkippableWaypoint = true,
             Coord = { x = 3514, y = -5615 },
             Range = 8,
             IsQuestOnQuest = 2870,
@@ -349,7 +336,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 4125,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = { x = 2750.63, y = -5844.91 },
             Range = 20,
@@ -358,7 +344,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 4125,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = { x = 2575.49, y = -5820.35 },
             Range = 20,
@@ -455,7 +440,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 4127,
-            NonSkippableWaypoint = true,
             Coord = { x = 3233.17, y = -4474.74 },
             Range = 20,
             OnlyInZones = { 1444 },
@@ -464,7 +448,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 4129,
-            NonSkippableWaypoint = true,
             Coord = { x = 3207.94, y = -4472.98 },
             Range = 10,
             IsQuestCompleted = 4127,
@@ -475,7 +458,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 4127,
-            NonSkippableWaypoint = true,
             Coord = { x = 3207.94, y = -4472.98 },
             Range = 10.0,
             Zone = 1444,
@@ -508,7 +490,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 4131,
-            NonSkippableWaypoint = true,
             Coord = { x = 3207.94, y = -4472.98 },
             Range = 10,
             IsQuestCompleted = 4130,
@@ -519,7 +500,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 4130,
-            NonSkippableWaypoint = true,
             Coord = { x = 3207.94, y = -4472.98 },
             Range = 10.0,
             Zone = 1444,
@@ -557,7 +537,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2766,
-            NonSkippableWaypoint = true,
             Coord = { x = 2309.3, y = -4446.57 },
             Range = 20,
             Zone = 1444,
@@ -565,7 +544,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2766,
-            NonSkippableWaypoint = true,
             Fillers = { [3520] = { 1 }, [1452] = { 2, 3 } },
             Note = { "EXPLORE_DIRE_MAUL_LATER_QUEST_GENERAL_CHAT" },
             Coord = { x = 1590.67, y = -4476.69 },
@@ -595,7 +573,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2766,
-            NonSkippableWaypoint = true,
             Coord = { x = 1640, y = -4970 },
             Range = 6,
             IsQuestOnQuest = 2766,
@@ -604,7 +581,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2766,
-            NonSkippableWaypoint = true,
             Coord = { x = 1662, y = -4948 },
             Range = 5,
             IsQuestOnQuest = 2766,
@@ -613,7 +589,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2766,
-            NonSkippableWaypoint = true,
             Coord = { x = 1690, y = -4944 },
             Range = 5,
             IsQuestOnQuest = 2766,
@@ -622,7 +597,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2766,
-            NonSkippableWaypoint = true,
             Coord = { x = 1712, y = -4932 },
             Range = 6,
             IsQuestOnQuest = 2766,
@@ -631,7 +605,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2767,
-            NonSkippableWaypoint = true,
             Coord = { x = 1640, y = -4970 },
             Range = 6,
             IsQuestCompleted = 2766,
@@ -642,7 +615,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2767,
-            NonSkippableWaypoint = true,
             Coord = { x = 1662, y = -4948 },
             Range = 5,
             IsQuestCompleted = 2766,
@@ -653,7 +625,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2767,
-            NonSkippableWaypoint = true,
             Coord = { x = 1690, y = -4944 },
             Range = 5,
             IsQuestCompleted = 2766,
@@ -664,7 +635,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2767,
-            NonSkippableWaypoint = true,
             Coord = { x = 1712, y = -4932 },
             Range = 6,
             IsQuestCompleted = 2766,
@@ -704,7 +674,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2741,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 54.1, 68.24),
             Range = 15,
             IsQuestUncompleted = 2741,
@@ -751,7 +720,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2969,
-            NonSkippableWaypoint = true,
             Note = { "CLEAR_NEARBY_ENEMIES_STARTING_QUEST", "ENEMIES_USE_NET" },
             Coord = { x = 815.75, y = -4538.31 },
             Range = 20,
@@ -760,7 +728,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2969,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 65.66, 46.77),
             Range = 8,
             IsQuestNotOnQuest = 2969,
@@ -785,7 +752,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2969,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 65.66, 46.77),
             Range = 8,
             IsQuestOnQuest = 2969,
@@ -794,7 +760,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2970,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 65.66, 46.77),
             Range = 8,
             IsQuestCompleted = 2969,
@@ -805,7 +770,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2969,
-            NonSkippableWaypoint = true,
             Coord = { x = 858.49, y = -4481.83 },
             Range = 5,
             Zone = 1444,
@@ -833,7 +797,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2970,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 65.66, 46.77),
             Range = 8,
             IsQuestOnQuest = 2970,
@@ -842,7 +805,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2972,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 65.66, 46.77),
             Range = 8,
             IsQuestCompleted = 2970,
@@ -893,7 +855,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 4265,
-            NonSkippableWaypoint = true,
             Coord = { x = 328.55, y = -5291.69 },
             Range = 20,
             IsQuestCompleted = 4135,
@@ -904,7 +865,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 4265,
-            NonSkippableWaypoint = true,
             Coord = { x = 383.46, y = -5354.24 },
             Range = 15,
             IsQuestCompleted = 4135,
@@ -915,7 +875,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 4135,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_WRITHERING_DEEP_HIVE_LOWER_SOUTHWEST_ENTRANCE" },
             Coord = { x = 328.55, y = -5291.69 },
             Range = 20,
@@ -924,7 +883,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 4135,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_WRITHERING_DEEP_HIVE_LOWER_SOUTHWEST_ENTRANCE" },
             Coord = { x = 383.46, y = -5354.24 },
             Range = 15.0,
@@ -1005,7 +963,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 4265,
-            NonSkippableWaypoint = true,
             Coord = { x = 3233.17, y = -4474.74 },
             Range = 20,
             OnlyInZones = { 1444 },
@@ -1020,7 +977,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 4266,
-            NonSkippableWaypoint = true,
             Coord = { x = 3207.94, y = -4472.98 },
             Range = 10,
             IsQuestCompleted = 4265,
@@ -1031,7 +987,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 4265,
-            NonSkippableWaypoint = true,
             Coord = { x = 3207.94, y = -4472.98 },
             Range = 10.0,
             Zone = 1444,
@@ -1143,7 +1098,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2972,
-            NonSkippableWaypoint = true,
             Coord = { x = 2522.86, y = 9583.12 },
             Range = 10,
             Class = "MAGE",
@@ -1156,7 +1110,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 4267,
-            NonSkippableWaypoint = true,
             Coord = { x = 2522.86, y = 9583.12 },
             Range = 10.0,
             Class = "MAGE",
@@ -1207,7 +1160,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2940,
-            NonSkippableWaypoint = true,
             Coord = { x = 1009.58, y = 8720.2 },
             Range = 10,
             IsQuestCompleted = 2939,
@@ -1217,7 +1169,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2941,
-            NonSkippableWaypoint = true,
             Coord = { x = 1009.58, y = 8720.2 },
             Range = 10,
             IsQuestCompleted = 2940,
@@ -1228,7 +1179,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2939,
-            NonSkippableWaypoint = true,
             Coord = { x = 1009.58, y = 8720.2 },
             Range = 10.0,
             Zone = 1438,
@@ -1288,7 +1238,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2972,
-            NonSkippableWaypoint = true,
             Coord = { x = 2522.86, y = 9583.12 },
             Range = 10,
             IsQuestCompleted = 4267,
@@ -1298,7 +1247,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 4267,
-            NonSkippableWaypoint = true,
             Coord = { x = 2522.86, y = 9583.12 },
             Range = 10.0,
             Zone = 1457,
@@ -1336,7 +1284,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2982,
-            NonSkippableWaypoint = true,
             Coord = { x = 2601.39, y = 10120.53 },
             Range = 20,
             Class = "ROGUE",
@@ -1367,7 +1314,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2982,
-            NonSkippableWaypoint = true,
             Coord = { x = 2528.85, y = 10126.41 },
             Range = 5,
             MinLevel = 40,
@@ -1491,7 +1437,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2982,
-            NonSkippableWaypoint = true,
             Coord = { x = 3233.17, y = -4474.74 },
             Range = 20,
             OnlyInZones = { 1444 },
@@ -1622,7 +1567,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-Second-Visit"] = {
         },
         {
             Waypoint = 7003,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 44.81, 43.423),
             Range = 20,
             Zone = 1444,
@@ -1663,7 +1607,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-Second-Visit"] = {
         },
         {
             Waypoint = 7733,
-            NonSkippableWaypoint = true,
             Coord = { x = 1763, y = -3836 },
             Range = 8,
             IsQuestOnQuest = 7733,
@@ -1673,7 +1616,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-Second-Visit"] = {
         },
         {
             Waypoint = 7733,
-            NonSkippableWaypoint = true,
             Coord = { x = 1715, y = -3844 },
             Range = 6,
             IsQuestOnQuest = 7733,
@@ -1683,7 +1625,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-Second-Visit"] = {
         },
         {
             Waypoint = 7733,
-            NonSkippableWaypoint = true,
             Coord = { x = 1685, y = -3876 },
             Range = 5,
             IsQuestOnQuest = 7733,
@@ -1693,7 +1634,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-Second-Visit"] = {
         },
         {
             Waypoint = 7733,
-            NonSkippableWaypoint = true,
             Coord = { x = 1655, y = -3870 },
             Range = 5,
             IsQuestOnQuest = 7733,
@@ -1720,7 +1660,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-Second-Visit"] = {
         },
         {
             Waypoint = 7733,
-            NonSkippableWaypoint = true,
             Coord = { x = 1783, y = -3838 },
             Range = 8,
             IsQuestOnQuest = 7733,
@@ -1770,7 +1709,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-Second-Visit"] = {
         },
         {
             Waypoint = 2879,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 40.33, 11.04),
             Range = 5,
             IsQuestOnQuest = 2879,
@@ -1780,7 +1718,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-Second-Visit"] = {
         },
         {
             Waypoint = 2879,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 40.59, 11.45),
             Range = 5,
             IsQuestOnQuest = 2879,
@@ -1790,7 +1727,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-Second-Visit"] = {
         },
         {
             Waypoint = 2879,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 40.97, 11.87),
             Range = 5,
             IsQuestOnQuest = 2879,
@@ -1923,7 +1859,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-Second-Visit"] = {
         },
         {
             Waypoint = 2942,
-            NonSkippableWaypoint = true,
             Coord = { x = 3233.17, y = -4474.74 },
             Range = 5,
             Zone = 1444,

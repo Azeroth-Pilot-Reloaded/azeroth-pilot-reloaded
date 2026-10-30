@@ -334,7 +334,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 233,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 28.792, 68.804),
             Range = 12,
             Zone = 1426,
@@ -342,7 +341,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 233,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 28.939, 68.387),
             Range = 12,
             Zone = 1426,
@@ -596,7 +594,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 233,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 28.831, 68.698),
             Range = 12,
             Zone = 1426,
@@ -706,7 +703,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 218,
-            NonSkippableWaypoint = true,
             Fillers = { [1599] = { 1 } },
             ExtraLineText = "GO_INSIDE_CAVE",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 27.098, 80.707),
@@ -716,7 +712,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 218,
-            NonSkippableWaypoint = true,
             Fillers = { [1599] = { 1 } },
             ExtraLineText = "GO_INSIDE_CAVE",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 28.298, 79.836),
@@ -726,7 +721,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 218,
-            NonSkippableWaypoint = true,
             Fillers = { [1599] = { 1 } },
             ExtraLineText = "GO_INSIDE_CAVE",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 29.252, 79.043),
@@ -736,7 +730,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 218,
-            NonSkippableWaypoint = true,
             Fillers = { [1599] = { 1 } },
             ExtraLineText = "GO_INSIDE_CAVE",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 30.489, 80.165),
@@ -763,7 +756,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 218,
-            NonSkippableWaypoint = true,
             ExtraLineText = "EXIT_CAVE",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 29.252, 79.043),
             Range = 15,
@@ -772,7 +764,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 218,
-            NonSkippableWaypoint = true,
             ExtraLineText = "EXIT_CAVE",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 28.298, 79.836),
             Range = 15,
@@ -781,7 +772,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 218,
-            NonSkippableWaypoint = true,
             ExtraLineText = "EXIT_CAVE",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 27.098, 80.707),
             Range = 15,
@@ -821,7 +811,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 3364,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 28.792, 68.804),
             Range = 12,
             Zone = 1426,
@@ -829,7 +818,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 3364,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 28.939, 68.387),
             Range = 12,
             Zone = 1426,
@@ -837,7 +825,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 3364,
-            NonSkippableWaypoint = true,
             Coord = { x = 398.2, y = -6100.6 },
             Range = 10,
             Zone = 1426,
@@ -966,7 +953,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 3365,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 28.831, 68.698),
             Range = 12,
             Zone = 1426,
@@ -980,7 +966,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 97277,
-            NonSkippableWaypoint = true,
             Coord = { x = 497.3, y = -6118.5 },
             Range = 20,
             Zone = 1426,
@@ -988,7 +973,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 97277,
-            NonSkippableWaypoint = true,
             Coord = { x = 467.7, y = -6012.8 },
             Range = 20,
             Zone = 1426,
@@ -1032,7 +1016,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 97277,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 28.792, 68.804),
             Range = 12,
             Zone = 1426,
@@ -1040,7 +1023,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 97277,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 28.939, 68.387),
             Range = 12,
             Zone = 1426,
@@ -1085,7 +1067,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 282,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 28.831, 68.698),
             Range = 12,
             Zone = 1426,
@@ -1111,7 +1092,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 2160,
-            NonSkippableWaypoint = true,
             Coord = { x = 111.82, y = -6206.61 },
             Range = 15,
             Zone = 1426,
@@ -1119,7 +1099,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 2160,
-            NonSkippableWaypoint = true,
             Coord = { x = 46.32, y = -6037.19 },
             Range = 15,
             Zone = 1426,
@@ -1191,7 +1170,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 2160,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 46.952, 52.05),
             Range = 8,
             Zone = 1426,
@@ -1199,7 +1177,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 2160,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 47.153, 51.939),
             Range = 8,
             Zone = 1426,
@@ -1480,7 +1457,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 98319,
-            NonSkippableWaypoint = true,
             Coord = { x = -275.0, y = -5623.2 },
             Range = 15,
             AnyOf = { { IsQuestOnQuest = 98319, Not = { IsQuestReadyForTurnIn = 98319 } }, { IsQuestOnQuest = 98321, Not = { IsQuestReadyForTurnIn = 98321 } } },
@@ -1497,7 +1473,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 98319,
-            NonSkippableWaypoint = true,
             Coord = { x = -221.8, y = -5516.3 },
             Range = 15,
             IsQuestOnQuest = 98319,
@@ -1515,7 +1490,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 98319,
-            NonSkippableWaypoint = true,
             Coord = { x = -275.0, y = -5623.2 },
             Range = 15,
             IsQuestOnQuest = 98319,
@@ -1733,7 +1707,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 315,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 42.935, 45.216),
             Range = 15,
             IsQuestOnQuest = 315,
@@ -1743,7 +1716,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 315,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 42.254, 45.301),
             Range = 12,
             IsQuestOnQuest = 315,
@@ -1760,7 +1732,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 312,
-            NonSkippableWaypoint = true,
             Coord = { x = -49, y = -5623 },
             Range = 8,
             IsQuestOnQuest = 312,
@@ -1770,7 +1741,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 312,
-            NonSkippableWaypoint = true,
             Coord = { x = -75, y = -5645 },
             Range = 8,
             IsQuestOnQuest = 312,
@@ -1786,7 +1756,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 312,
-            NonSkippableWaypoint = true,
             Coord = { x = -49, y = -5623 },
             Range = 8,
             IsQuestOnQuest = 312,
@@ -1821,7 +1790,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 310,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 46.952, 52.05),
             Range = 8,
             Zone = 1426,
@@ -1829,7 +1797,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 310,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 47.153, 51.939),
             Range = 8,
             Zone = 1426,
@@ -1881,7 +1848,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 311,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 47.153, 51.939),
             Range = 8,
             Zone = 1426,
@@ -1889,7 +1855,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 311,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 46.952, 52.05),
             Range = 8,
             Zone = 1426,
@@ -1910,7 +1875,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 287,
-            NonSkippableWaypoint = true,
             Coord = { x = 555, y = -5558 },
             Range = 10,
             IsQuestOnQuest = 287,
@@ -1920,7 +1884,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 287,
-            NonSkippableWaypoint = true,
             Fillers = { [287] = { 1 } },
             Note = { "GO_INSIDE_CAVE", "KEEP_LEFT_INSIDE_CAVE" },
             Coord = { x = 628.4, y = -5579.5 },
@@ -1930,7 +1893,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 287,
-            NonSkippableWaypoint = true,
             Fillers = { [287] = { 1 } },
             Note = { "GO_INSIDE_CAVE", "KEEP_LEFT_INSIDE_CAVE" },
             Coord = { x = 696.6, y = -5674.6 },
@@ -1940,7 +1902,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 287,
-            NonSkippableWaypoint = true,
             Fillers = { [287] = { 1 } },
             Note = { "GO_INSIDE_CAVE", "KEEP_LEFT_INSIDE_CAVE" },
             Coord = { x = 746.9, y = -5614.9 },
@@ -1950,7 +1911,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 287,
-            NonSkippableWaypoint = true,
             Fillers = { [287] = { 1 } },
             Note = { "GO_INSIDE_CAVE", "KEEP_LEFT_INSIDE_CAVE" },
             Coord = { x = 695.3, y = -5528.3 },
@@ -1967,7 +1927,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 287,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = { x = 695.3, y = -5528.3 },
             Range = 15,
@@ -1976,7 +1935,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 287,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = { x = 746.9, y = -5614.9 },
             Range = 15,
@@ -1985,7 +1943,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 287,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = { x = 696.6, y = -5674.6 },
             Range = 15,
@@ -1994,7 +1951,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 287,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = { x = 628.4, y = -5579.5 },
             Range = 15,
@@ -2003,7 +1959,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 287,
-            NonSkippableWaypoint = true,
             Coord = { x = 555, y = -5558 },
             Range = 10,
             Zone = 1426,
@@ -2023,7 +1978,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 287,
-            NonSkippableWaypoint = true,
             Coord = { x = -530.7, y = -5600.1 },
             Range = 10,
             Zone = 1426,
@@ -2084,7 +2038,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             Waypoint = 314,
             GroupTask = 314,
-            NonSkippableWaypoint = true,
             Coord = { x = -1145.04, y = -5504.3 },
             Range = 25,
             IsQuestOnQuest = 314,
@@ -2095,7 +2048,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             Waypoint = 314,
             GroupTask = 314,
-            NonSkippableWaypoint = true,
             Coord = { x = -1219.9, y = -5422.55 },
             Range = 20,
             IsQuestOnQuest = 314,
@@ -2174,7 +2126,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 433,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 70.75, 56.219),
             Range = 15,
             IsQuestOnQuest = 433,
@@ -2193,7 +2144,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 433,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 70.75, 56.219),
             Range = 15,
             IsQuestOnQuest = 433,
@@ -2295,7 +2245,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 417,
-            NonSkippableWaypoint = true,
             Coord = { x = -2189, y = -5267 },
             Range = 8,
             IsQuestUncompleted = 417,
@@ -2305,7 +2254,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 417,
-            NonSkippableWaypoint = true,
             Coord = { x = -2303, y = -5203 },
             Range = 8,
             IsQuestUncompleted = 417,
@@ -2463,7 +2411,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 413,
-            NonSkippableWaypoint = true,
             Coord = { x = -2165.6, y = -5609 },
             Range = 70,
             Zone = 1426,
@@ -2471,7 +2418,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 413,
-            NonSkippableWaypoint = true,
             Coord = { x = -2262.2, y = -5622.7 },
             Range = 20,
             Zone = 1426,
@@ -2479,7 +2425,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 413,
-            NonSkippableWaypoint = true,
             Coord = { x = -2350.7, y = -5558.7 },
             Range = 20,
             Zone = 1426,
@@ -2500,7 +2445,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             Waypoint = 414,
 
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 16.494, 58.424),
             Range = 20,
             Zone = 1432,
@@ -2509,7 +2453,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             Waypoint = 414,
 
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 19.594, 62.735),
             Range = 20,
             Zone = 1432,
@@ -2518,7 +2461,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             Waypoint = 414,
 
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 20.749, 64.326),
             Range = 20,
             Zone = 1432,
@@ -2527,7 +2469,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             Waypoint = 414,
 
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 21.106, 65.007),
             Range = 20,
             Zone = 1432,
@@ -2536,7 +2477,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             Waypoint = 414,
 
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 21.388, 66.357),
             Range = 20,
             Zone = 1432,
@@ -2545,7 +2485,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             Waypoint = 414,
 
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 21.498, 67.84),
             Range = 5,
             Zone = 1432,
@@ -2567,7 +2506,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 414,
-            NonSkippableWaypoint = true,
             Note = { "GET_INSIDE", "UPSTAIRS" },
             Coord = { x = -2635.61, y = -5879.14 },
             Range = 12,
@@ -2576,7 +2514,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 414,
-            NonSkippableWaypoint = true,
             Note = { "GET_INSIDE", "UPSTAIRS" },
             Coord = { x = -2645.27, y = -5874.91 },
             Range = 12,
@@ -2585,7 +2522,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 414,
-            NonSkippableWaypoint = true,
             Note = { "GET_INSIDE", "UPSTAIRS" },
             Coord = { x = -2631.48, y = -5847.5 },
             Range = 12,
@@ -2600,7 +2536,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 414,
-            NonSkippableWaypoint = true,
             Coord = { x = -2635.61, y = -5879.14 },
             Range = 12,
             Zone = 1432,
@@ -2608,7 +2543,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 414,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 23.522, 70.102),
             Range = 40,
             Zone = 1432,
@@ -2616,7 +2550,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 414,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 27.501, 65.367),
             Range = 30,
             Zone = 1432,
@@ -2624,7 +2557,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 414,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 34.405, 48.276),
             Range = 5,
             Zone = 1432,
@@ -2646,7 +2578,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.273, 47.75),
             Range = 10,
             Zone = 1432,
@@ -2654,7 +2585,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.433, 48.243),
             Range = 12,
             Zone = 1432,
@@ -2705,7 +2635,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 6387,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_BUILDING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.273, 47.75),
             Range = 10,
@@ -2722,7 +2651,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 6387,
-            NonSkippableWaypoint = true,
             Coord = { x = -3019.02, y = -5369.4 },
             Range = 8,
             Zone = 1432,
@@ -2736,7 +2664,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1339,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Note = { "GET_INSIDE", "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 23.49, 18.008),
@@ -2746,7 +2673,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1339,
-            NonSkippableWaypoint = true,
             Note = { "GET_INSIDE", "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 24.279, 17.959),
             Range = 12,
@@ -2767,7 +2693,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 23.49, 18.008),
             Range = 12,
             Zone = 1432,
@@ -2790,7 +2715,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.273, 47.75),
             Range = 10,
             Zone = 1432,
@@ -2798,7 +2722,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.433, 48.243),
             Range = 12,
             Zone = 1432,
@@ -2812,7 +2735,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 6391,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.433, 48.243),
             Range = 12,
             Zone = 1432,
@@ -2820,7 +2742,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 6391,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.273, 47.75),
             Range = 10,
             Zone = 1432,
@@ -2854,7 +2775,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 6391,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 56.714, 41.945),
             Range = 20,
             Zone = 1455,
@@ -2862,7 +2782,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 6391,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 55.748, 38.127),
             Range = 20,
             Zone = 1455,
@@ -2870,7 +2789,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 6391,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 51.569, 29.956),
             Range = 15,
             Zone = 1455,
@@ -2878,7 +2796,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 6391,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 49.645, 28.195),
             Range = 12,
             Zone = 1455,
@@ -2886,7 +2803,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 6391,
-            NonSkippableWaypoint = true,
             Coord = { x = -1120.93, y = -4708.06 },
             Range = 10,
             Zone = 1455,
@@ -2926,7 +2842,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 291,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 44.029, 50.074),
             Range = 20,
             Zone = 1455,
@@ -2934,7 +2849,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 291,
-            NonSkippableWaypoint = true,
             Coord = { x = -1026.28, y = -4872.56 },
             Range = 12,
             Zone = 1455,
@@ -2984,7 +2898,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 6086,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 66.847, 83.366),
             Range = 15,
             Class = "HUNTER",
@@ -2994,7 +2907,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 6086,
-            NonSkippableWaypoint = true,
             Coord = { x = -1273.83, y = -5022.08 },
             Range = 15,
             Class = "HUNTER",
@@ -3152,7 +3064,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1638,
-            NonSkippableWaypoint = true,
             Coord = { x = 358.25, y = -8728.28 },
             Range = 15,
             Class = "WARRIOR",
@@ -3161,7 +3072,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1638,
-            NonSkippableWaypoint = true,
             Coord = { x = 302.6, y = -8685.53 },
             Range = 15,
             Class = "WARRIOR",
@@ -3186,7 +3096,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1638,
-            NonSkippableWaypoint = true,
             Note = { "GET_INSIDE", "TAVERN" },
             Coord = { x = 401.29, y = -8741.21 },
             Range = 17,
@@ -3196,7 +3105,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1638,
-            NonSkippableWaypoint = true,
             Note = { "GET_INSIDE", "TAVERN" },
             Coord = { x = 417.13, y = -8636.5 },
             Range = 12,
@@ -3263,7 +3171,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 40,
-            NonSkippableWaypoint = true,
             Coord = { x = 988.44, y = -8942.15 },
             Range = 20,
             Class = "WARLOCK",
@@ -3273,7 +3180,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 40,
-            NonSkippableWaypoint = true,
             Coord = { x = 1015.33, y = -8978.9 },
             Range = 15,
             Class = "WARLOCK",

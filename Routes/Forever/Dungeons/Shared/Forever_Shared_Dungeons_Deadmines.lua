@@ -77,7 +77,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 103,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_DEFIAS_HIDEOUT_GROUP" },
             Coord = { x = 1527.42, y = -11072.77 },
             Range = 5,
@@ -108,7 +107,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 103,
-            NonSkippableWaypoint = true,
             Fillers = { [214] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1415, 40.94, 79.76),
             Range = 25,
@@ -117,7 +115,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 103,
-            NonSkippableWaypoint = true,
             Fillers = { [214] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1415, 40.86, 79.62),
             Range = 20,

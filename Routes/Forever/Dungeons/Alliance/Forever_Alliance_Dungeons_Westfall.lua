@@ -62,7 +62,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 36,
-            NonSkippableWaypoint = true,
             Coord = { x = 875.96, y = -9814.4 },
             Range = 5,
             SkipForLvl = 15,
@@ -85,7 +84,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 36,
-            NonSkippableWaypoint = true,
             Coord = { x = 1055.27, y = -10128.7 },
             Range = 65.0,
             SkipForLvl = 15,
@@ -155,7 +153,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 64,
-            NonSkippableWaypoint = true,
             Note = { "BUY_FOOD_WATER_IF_NEEDED" },
             Coord = { x = 1166.57, y = -10653.23 },
             Range = 5,
@@ -179,7 +176,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 399,
-            NonSkippableWaypoint = true,
             Note = { "WORK_COMPLETING_QUEST_OBJECTIVES_MOVE" },
             Coord = { x = 1602.67, y = -10629.67 },
             Range = 75.0,
@@ -199,7 +195,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 64,
-            NonSkippableWaypoint = true,
             Coord = { x = 1266.67, y = -9927.33 },
             Range = 75.0,
             SkipForLvl = 15,
@@ -225,7 +220,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 92744,
-            NonSkippableWaypoint = true,
             Note = { "KILL_MURLOC_RAIDERS_MURLOC_COASTRUNNERS_LOOT_EYES", "NOT_MANY_GILLS_TIME_FINISHED_EYES_SKIP_STEP" },
             Coord = { x = 1192.12, y = -9641.73 },
             Range = 60.0,
@@ -235,7 +229,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 92744,
-            NonSkippableWaypoint = true,
             Note = { "KILL_MURLOC_RAIDERS_MURLOC_COASTRUNNERS_LOOT_EYES", "NOT_MANY_GILLS_TIME_FINISHED_EYES_SKIP_STEP" },
             Coord = { x = 1042.67, y = -9619.33 },
             Range = 60.0,
@@ -245,7 +238,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 92744,
-            NonSkippableWaypoint = true,
             Note = { "KILL_MURLOC_RAIDERS_MURLOC_COASTRUNNERS_LOOT_EYES", "NOT_MANY_GILLS_TIME_FINISHED_EYES_SKIP_STEP" },
             Coord = { x = 1192.12, y = -9641.73 },
             Range = 60.0,
@@ -255,7 +247,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 92744,
-            NonSkippableWaypoint = true,
             Note = { "KILL_MURLOC_RAIDERS_MURLOC_COASTRUNNERS_LOOT_EYES", "NOT_MANY_GILLS_TIME_FINISHED_EYES_SKIP_STEP" },
             Coord = { x = 1042.67, y = -9619.33 },
             Range = 60.0,
@@ -291,7 +282,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 64,
-            NonSkippableWaypoint = true,
             Coord = { x = 918.42, y = -9851.5 },
             Range = 5,
             Class = "WARLOCK",
@@ -342,7 +332,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 64,
-            NonSkippableWaypoint = true,
             Coord = { x = 918.42, y = -9851.5 },
             Range = 5,
             AnyOf = { { Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARRIOR" } }, { Race = "Dwarf" }, { Race = "Gnome" }, { Race = "Skyborne" } },
@@ -376,7 +365,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 64,
-            NonSkippableWaypoint = true,
             Coord = { x = 918.42, y = -9851.5 },
             Range = 5,
             Class = "WARLOCK",
@@ -464,7 +452,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 9,
-            NonSkippableWaypoint = true,
             Note = { "KILL_HARVEST_WATCHERS_LOOT_OKRA_FLASKS_OIL" },
             Coord = { x = 1132.27, y = -10146.67 },
             Range = 60.0,
@@ -475,7 +462,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 9,
-            NonSkippableWaypoint = true,
             Note = { "KILL_HARVEST_WATCHERS_LOOT_OKRA_FLASKS_OIL" },
             Coord = { x = 1238.67, y = -9907.73 },
             Range = 80.0,
@@ -486,7 +472,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 9,
-            NonSkippableWaypoint = true,
             Note = { "KILL_HARVEST_WATCHERS_LOOT_OKRA_FLASKS_OIL" },
             Coord = { x = 1460.22, y = -10224.83 },
             Range = 80.0,
@@ -497,7 +482,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 9,
-            NonSkippableWaypoint = true,
             Note = { "KILL_HARVEST_WATCHERS_LOOT_OKRA_FLASKS_OIL" },
             Coord = { x = 1132.27, y = -10146.67 },
             Range = 80.0,
@@ -508,7 +492,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 9,
-            NonSkippableWaypoint = true,
             Note = { "KILL_HARVEST_WATCHERS_LOOT_OKRA_FLASKS_OIL" },
             Coord = { x = 1238.67, y = -9907.73 },
             Range = 80.0,
@@ -519,7 +502,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 9,
-            NonSkippableWaypoint = true,
             Note = { "KILL_HARVEST_WATCHERS_LOOT_OKRA_FLASKS_OIL" },
             Coord = { x = 1460.22, y = -10224.83 },
             Range = 80.0,
@@ -530,7 +512,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 9,
-            NonSkippableWaypoint = true,
             Note = { "KILL_HARVEST_WATCHERS_LOOT_OKRA_FLASKS_OIL" },
             Coord = { x = 1132.27, y = -10146.67 },
             Range = 60.0,
@@ -541,7 +522,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 9,
-            NonSkippableWaypoint = true,
             Note = { "KILL_HARVEST_WATCHERS_LOOT_OKRA_FLASKS_OIL" },
             Coord = { x = 1460.22, y = -10224.83 },
             Range = 60.0,
@@ -570,7 +550,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 9,
-            NonSkippableWaypoint = true,
             Note = { "KILL_HARVEST_WATCHERS_LOOT_FLASKS_OIL" },
             Coord = { x = 1132.27, y = -10146.67 },
             Range = 60.0,
@@ -581,7 +560,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 9,
-            NonSkippableWaypoint = true,
             Note = { "KILL_HARVEST_WATCHERS_LOOT_FLASKS_OIL" },
             Coord = { x = 1238.67, y = -9907.73 },
             Range = 80.0,
@@ -592,7 +570,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 9,
-            NonSkippableWaypoint = true,
             Note = { "KILL_HARVEST_WATCHERS_LOOT_FLASKS_OIL" },
             Coord = { x = 1460.22, y = -10224.83 },
             Range = 80.0,
@@ -603,7 +580,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 9,
-            NonSkippableWaypoint = true,
             Note = { "KILL_HARVEST_WATCHERS_LOOT_FLASKS_OIL" },
             Coord = { x = 1132.27, y = -10146.67 },
             Range = 80.0,
@@ -614,7 +590,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 9,
-            NonSkippableWaypoint = true,
             Note = { "KILL_HARVEST_WATCHERS_LOOT_FLASKS_OIL" },
             Coord = { x = 1238.67, y = -9907.73 },
             Range = 80.0,
@@ -625,7 +600,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 9,
-            NonSkippableWaypoint = true,
             Note = { "KILL_HARVEST_WATCHERS_LOOT_FLASKS_OIL" },
             Coord = { x = 1460.22, y = -10224.83 },
             Range = 80.0,
@@ -636,7 +610,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 9,
-            NonSkippableWaypoint = true,
             Note = { "KILL_HARVEST_WATCHERS_LOOT_FLASKS_OIL" },
             Coord = { x = 1132.27, y = -10146.67 },
             Range = 60.0,
@@ -647,7 +620,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 9,
-            NonSkippableWaypoint = true,
             Note = { "KILL_HARVEST_WATCHERS_LOOT_FLASKS_OIL" },
             Coord = { x = 1460.22, y = -10224.83 },
             Range = 60.0,
@@ -702,7 +674,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 9,
-            NonSkippableWaypoint = true,
             Note = { "KILL_YOUNG_GORETUSKS_YOUNG_FLESHRIPPERS_LOOT" },
             Coord = { x = 1179.52, y = -10382.57 },
             Range = 75.0,
@@ -712,7 +683,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 9,
-            NonSkippableWaypoint = true,
             Note = { "KILL_YOUNG_GORETUSKS_YOUNG_FLESHRIPPERS_LOOT" },
             Coord = { x = 1138.22, y = -10474.97 },
             Range = 75.0,
@@ -722,7 +692,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 9,
-            NonSkippableWaypoint = true,
             Note = { "KILL_YOUNG_GORETUSKS_YOUNG_FLESHRIPPERS_LOOT" },
             Coord = { x = 860.67, y = -10462.83 },
             Range = 75.0,
@@ -732,7 +701,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 9,
-            NonSkippableWaypoint = true,
             Note = { "KILL_YOUNG_GORETUSKS_YOUNG_FLESHRIPPERS_LOOT" },
             Coord = { x = 904.07, y = -10038.87 },
             Range = 75.0,
@@ -742,7 +710,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 9,
-            NonSkippableWaypoint = true,
             Note = { "KILL_YOUNG_GORETUSKS_YOUNG_FLESHRIPPERS_LOOT" },
             Coord = { x = 1104.62, y = -9848.0 },
             Range = 75.0,
@@ -752,7 +719,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 9,
-            NonSkippableWaypoint = true,
             Note = { "KILL_YOUNG_GORETUSKS_YOUNG_FLESHRIPPERS_LOOT" },
             Coord = { x = 1298.52, y = -10028.13 },
             Range = 75.0,
@@ -762,7 +728,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 9,
-            NonSkippableWaypoint = true,
             Note = { "KILL_YOUNG_GORETUSKS_YOUNG_FLESHRIPPERS_LOOT" },
             Coord = { x = 1340.52, y = -10401.93 },
             Range = 75.0,
@@ -983,7 +948,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 399,
-            NonSkippableWaypoint = true,
             Note = { "BUY_SCIMITAR_SOMETHING_BETTER_AUCTION_HOUSE_EQUIP" },
             Coord = { x = 609.63, y = -8787.71 },
             Range = 5,
@@ -1008,7 +972,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 399,
-            NonSkippableWaypoint = true,
             Coord = { x = 358.25, y = -8728.28 },
             Range = 15.0,
             Class = "WARRIOR",
@@ -1019,7 +982,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 399,
-            NonSkippableWaypoint = true,
             Coord = { x = 302.6, y = -8685.53 },
             Range = 15.0,
             Class = "WARRIOR",
@@ -1069,7 +1031,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 95065,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SLAUGHTERED_LAMB_GO_DOWNSTAIRS" },
             Coord = { x = 988.44, y = -8942.15 },
             Range = 20.0,
@@ -1081,7 +1042,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 95065,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SLAUGHTERED_LAMB_GO_DOWNSTAIRS" },
             Coord = { x = 1015.33, y = -8978.9 },
             Range = 15.0,
@@ -1104,7 +1064,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 95065,
-            NonSkippableWaypoint = true,
             Coord = { x = 874.32, y = -9014.67 },
             Range = 10.0,
             Class = "MAGE",
@@ -1126,7 +1085,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 95065,
-            NonSkippableWaypoint = true,
             Coord = { x = 809.52, y = -8579.22 },
             Range = 20.0,
             AnyOf = { { SkipForLvl = 15, Race = { "Gnome", "Human" }, Class = "PRIEST" }, { SkipForLvl = 15, Race = "Dwarf", Class = { "PALADIN", "PRIEST" } } },
@@ -1135,7 +1093,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 1780,
-            NonSkippableWaypoint = true,
             Coord = { x = 809.52, y = -8579.22 },
             Range = 20.0,
             Class = "PALADIN",
@@ -1156,7 +1113,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Waypoint = 95065,
-            NonSkippableWaypoint = true,
             Coord = { x = 859.13, y = -8559.14 },
             Range = 10.0,
             Class = "PALADIN",

@@ -26,7 +26,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_IRONFORGE_TRAVEL_DUN_MOROGH_WETLANDS" },
             Coord = { x = -826.4, y = -5027.1 },
             Range = 30.0,
@@ -36,7 +35,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_IRONFORGE_TRAVEL_DUN_MOROGH_WETLANDS" },
             Coord = { x = -721.9, y = -5078.9 },
             Range = 30.0,
@@ -46,7 +44,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_IRONFORGE_TRAVEL_DUN_MOROGH_WETLANDS" },
             Coord = { x = -426.5, y = -5181.0 },
             Range = 70.0,
@@ -56,7 +53,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_IRONFORGE_TRAVEL_DUN_MOROGH_WETLANDS" },
             Coord = { x = -230.4, y = -5154.6 },
             Range = 80.0,
@@ -66,7 +62,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_IRONFORGE_TRAVEL_DUN_MOROGH_WETLANDS" },
             Coord = { x = -65.0, y = -5115.0 },
             Range = 100.0,
@@ -76,7 +71,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_MOUNTAIN_WALK_PAST_JAGGED_PATTERN_ZONE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 30.741, 34.269),
             Range = 15.0,
@@ -86,7 +80,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_MOUNTAIN_WALK_PAST_JAGGED_PATTERN_ZONE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 30.812, 33.548),
             Range = 15.0,
@@ -96,7 +89,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_MOUNTAIN_WALK_PAST_JAGGED_PATTERN_ZONE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 31.06, 32.543),
             Range = 15.0,
@@ -106,7 +98,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_MOUNTAIN_WALK_PAST_JAGGED_PATTERN_ZONE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 31.439, 32.356),
             Range = 15.0,
@@ -116,7 +107,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_MOUNTAIN_WALK_PAST_JAGGED_PATTERN_ZONE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 31.675, 29.636),
             Range = 15.0,
@@ -126,7 +116,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_MOUNTAIN_WALK_PAST_JAGGED_PATTERN_ZONE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 32.209, 28.777),
             Range = 15.0,
@@ -136,7 +125,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_MOUNTAIN_WALK_PAST_JAGGED_PATTERN_ZONE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 32.645, 27.74),
             Range = 15.0,
@@ -146,7 +134,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_MOUNTAIN_WALK_PAST_JAGGED_PATTERN_ZONE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1415, 44.91, 52.022),
             Range = 15.0,
@@ -156,7 +143,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_MOUNTAIN_WALK_PAST_JAGGED_PATTERN_ZONE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1415, 44.91, 52.03),
             Range = 5,
@@ -166,7 +152,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "JUMP_MOUNTAIN_NORTH_NORTH_WEST", "DIE_RESPAWN_BARADIN_BAY_SPIRIT_HEALER" },
             Coord = { x = 254.0285, y = -4708.3416 },
             Range = 5,
@@ -186,7 +171,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "SWIM_MENETHIL_HARBOR" },
             Coord = { x = -839.8, y = -3657.9 },
             Range = 5,
@@ -203,7 +187,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_BOAT_SOUTHSHORE" },
             Coord = { x = -581.8, y = -3722.4 },
             Range = 5,
@@ -218,7 +201,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = -272.0, y = -381.8 },
             Range = 100.0,
@@ -227,7 +209,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = -47.4, y = -249.4 },
             Range = 100.0,
@@ -236,7 +217,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = 68.4, y = -46.2 },
             Range = 130.0,
@@ -245,7 +225,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = 45.3, y = 257.1 },
             Range = 150.0,
@@ -254,7 +233,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = -54.7, y = 812.6 },
             Range = 100.0,
@@ -263,7 +241,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = 7.6, y = 1530.5 },
             Range = 70.0,
@@ -272,7 +249,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = -21.8, y = 1668.6 },
             Range = 20.0,
@@ -281,7 +257,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = -56.6, y = 1692.0 },
             Range = 10.0,
@@ -290,7 +265,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = -55.2, y = 1779.6 },
             Range = 15.0,
@@ -299,7 +273,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = 6.3, y = 1791.5 },
             Range = 25.0,
@@ -308,7 +281,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = 4.3, y = 1847.5 },
             Range = 10.0,
@@ -317,7 +289,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = 238.4, y = 1872.2 },
             Range = 20.0,
@@ -550,7 +521,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95189,
-            NonSkippableWaypoint = true,
             Coord = { x = 437.6, y = -8524.5 },
             Range = 20.0,
             Zone = 1453,
@@ -558,7 +528,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95189,
-            NonSkippableWaypoint = true,
             Coord = { x = 408.1, y = -8478.5 },
             Range = 15.0,
             Zone = 1453,
@@ -566,7 +535,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95189,
-            NonSkippableWaypoint = true,
             Coord = { x = 502.9, y = -8358.8 },
             Range = 15.0,
             Zone = 1453,
@@ -607,7 +575,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 65,
-            NonSkippableWaypoint = true,
             Coord = { x = 358.25, y = -8728.28 },
             Range = 15.0,
             Class = "WARRIOR",
@@ -617,7 +584,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 65,
-            NonSkippableWaypoint = true,
             Coord = { x = 302.6, y = -8685.53 },
             Range = 15.0,
             Class = "WARRIOR",
@@ -653,7 +619,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 65,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SLAUGHTERED_LAMB_GO_DOWNSTAIRS" },
             Coord = { x = 988.44, y = -8942.15 },
             Range = 20.0,
@@ -664,7 +629,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 65,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SLAUGHTERED_LAMB_GO_DOWNSTAIRS" },
             Coord = { x = 1015.33, y = -8978.9 },
             Range = 15.0,
@@ -684,7 +648,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 65,
-            NonSkippableWaypoint = true,
             Coord = { x = 874.32, y = -9014.67 },
             Range = 10.0,
             Class = "MAGE",
@@ -703,7 +666,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 65,
-            NonSkippableWaypoint = true,
             Coord = { x = 809.52, y = -8579.22 },
             Range = 20.0,
             Class = { "PALADIN", "PRIEST" },
@@ -712,7 +674,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 65,
-            NonSkippableWaypoint = true,
             Coord = { x = 859.13, y = -8559.14 },
             Range = 10.0,
             Class = "PALADIN",

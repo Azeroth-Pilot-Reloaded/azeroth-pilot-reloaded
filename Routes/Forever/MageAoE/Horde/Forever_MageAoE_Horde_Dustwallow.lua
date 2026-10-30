@@ -289,7 +289,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 1707,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 61.85, 66.59),
             Range = 20,
             Race = "Scourge",
@@ -397,7 +396,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 1707,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             ZoneStepTrigger = { x = -3700.9, y = -6753.2, Range = 8 },
@@ -408,7 +406,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 1707,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             ZoneStepTrigger = { x = -3755, y = -6801.5, Range = 8 },
@@ -419,7 +416,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 1707,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             ZoneStepTrigger = { x = -3752.1, y = -6842.5, Range = 8 },
@@ -430,7 +426,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 1707,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             ZoneStepTrigger = { x = -3772.6, y = -6880.6, Range = 8 },
@@ -441,7 +436,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 1707,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             ZoneStepTrigger = { x = -3746.2, y = -6911.3, Range = 8 },
@@ -452,7 +446,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 1707,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             ZoneStepTrigger = { x = -3709.6, y = -6959.6, Range = 8 },
@@ -463,7 +456,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 1707,
-            NonSkippableWaypoint = true,
             Coord = { x = -3676, y = -7043.1 },
             Range = 8,
             ZoneStepTrigger = { x = -3676, y = -7043.1, Range = 8 },
@@ -474,7 +466,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 1707,
-            NonSkippableWaypoint = true,
             Coord = { x = -3695, y = -7079.7 },
             Range = 8,
             ZoneStepTrigger = { x = -3695, y = -7079.7, Range = 8 },
@@ -485,7 +476,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 1707,
-            NonSkippableWaypoint = true,
             Coord = { x = -3759.2, y = -7076.3 },
             Range = 8,
             ZoneStepTrigger = { x = -3759.2, y = -7076.3, Range = 8 },
@@ -540,7 +530,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 8365,
-            NonSkippableWaypoint = true,
             Coord = { x = -4953, y = -7772 },
             Range = 6,
             ZoneStepTrigger = { x = -4953, y = -7772, Range = 6, mapID = 1446 },
@@ -551,7 +540,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 8365,
-            NonSkippableWaypoint = true,
             Coord = { x = -4959, y = -7784 },
             Range = 3,
             ZoneStepTrigger = { x = -4959, y = -7784, Range = 3, mapID = 1446 },
@@ -562,7 +550,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 8365,
-            NonSkippableWaypoint = true,
             Coord = { x = -4973, y = -7784 },
             Range = 3,
             ZoneStepTrigger = { x = -4973, y = -7784, Range = 3, mapID = 1446 },
@@ -573,7 +560,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 8365,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 68.73, 41.49),
             Range = 20,
             Zone = 1446,
@@ -581,7 +567,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 8365,
-            NonSkippableWaypoint = true,
             Coord = { x = -4983, y = -7790 },
             Range = 3,
             ZoneStepTrigger = { x = -4983, y = -7790, Range = 3, mapID = 1446 },
@@ -592,7 +577,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 8365,
-            NonSkippableWaypoint = true,
             Coord = { x = -4999, y = -7810 },
             Range = 3,
             ZoneStepTrigger = { x = -4999, y = -7810, Range = 3, mapID = 1446 },
@@ -603,7 +587,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 8365,
-            NonSkippableWaypoint = true,
             Coord = { x = -5035, y = -7828 },
             Range = 4,
             ZoneStepTrigger = { x = -5035, y = -7828, Range = 4, mapID = 1446 },
@@ -614,7 +597,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 8365,
-            NonSkippableWaypoint = true,
             Coord = { x = -5039, y = -7850 },
             Range = 6,
             ZoneStepTrigger = { x = -5039, y = -7850, Range = 6, mapID = 1446 },
@@ -701,7 +683,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 8365,
-            NonSkippableWaypoint = true,
             Fillers = { [8365] = { 1 }, [2875] = { 1 }, [2876] = { 1 } },
             Note = { "STORE_CLOTH_LATER_TURN_INS_12_STACKS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.3, 28.92),
@@ -749,7 +730,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 2781,
-            NonSkippableWaypoint = true,
             Coord = { x = -4953, y = -7772 },
             Range = 6,
             IsQuestUncompleted = 2781,
@@ -760,7 +740,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 2781,
-            NonSkippableWaypoint = true,
             Coord = { x = -4959, y = -7784 },
             Range = 3,
             IsQuestUncompleted = 2781,
@@ -771,7 +750,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 2781,
-            NonSkippableWaypoint = true,
             Coord = { x = -4973, y = -7784 },
             Range = 3,
             IsQuestUncompleted = 2781,
@@ -782,7 +760,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 2781,
-            NonSkippableWaypoint = true,
             Coord = { x = -4983, y = -7790 },
             Range = 3,
             IsQuestUncompleted = 2781,
@@ -793,7 +770,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 2781,
-            NonSkippableWaypoint = true,
             Coord = { x = -4999, y = -7810 },
             Range = 3,
             IsQuestUncompleted = 2781,
@@ -804,7 +780,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 2781,
-            NonSkippableWaypoint = true,
             Coord = { x = -5035, y = -7828 },
             Range = 4,
             IsQuestUncompleted = 2781,
@@ -815,7 +790,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 2781,
-            NonSkippableWaypoint = true,
             Coord = { x = -5039, y = -7850 },
             Range = 6,
             IsQuestUncompleted = 2781,
@@ -862,7 +836,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 2781,
-            NonSkippableWaypoint = true,
             Note = { "STORE_CLOTH_LATER_TURN_INS_12_STACKS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.3, 28.92),
             Range = 5,
@@ -877,7 +850,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5405,
-            NonSkippableWaypoint = true,
             Coord = { x = -4953, y = -7772 },
             Range = 6,
             IsQuestUncompleted = 5405,
@@ -888,7 +860,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5405,
-            NonSkippableWaypoint = true,
             Coord = { x = -4959, y = -7784 },
             Range = 3,
             IsQuestUncompleted = 5405,
@@ -899,7 +870,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5405,
-            NonSkippableWaypoint = true,
             Coord = { x = -4973, y = -7784 },
             Range = 3,
             IsQuestUncompleted = 5405,
@@ -910,7 +880,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5405,
-            NonSkippableWaypoint = true,
             Coord = { x = -4983, y = -7790 },
             Range = 3,
             IsQuestUncompleted = 5405,
@@ -921,7 +890,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5405,
-            NonSkippableWaypoint = true,
             Coord = { x = -4999, y = -7810 },
             Range = 3,
             IsQuestUncompleted = 5405,
@@ -932,7 +900,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5405,
-            NonSkippableWaypoint = true,
             Coord = { x = -5035, y = -7828 },
             Range = 4,
             IsQuestUncompleted = 5405,
@@ -943,7 +910,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5405,
-            NonSkippableWaypoint = true,
             Coord = { x = -5039, y = -7850 },
             Range = 6,
             IsQuestUncompleted = 5405,
@@ -976,7 +942,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5405,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 61.85, 66.59),
             Range = 20,
             Zone = 1420,
@@ -1004,7 +969,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5096,
-            NonSkippableWaypoint = true,
             Coord = { x = -740.6, y = 1711.5 },
             Range = 5,
             ZoneStepTrigger = { x = -740.6, y = 1711.5, Range = 5 },
@@ -1016,7 +980,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5096,
-            NonSkippableWaypoint = true,
             Coord = { x = -788.5, y = 1715.6 },
             Range = 5,
             ZoneStepTrigger = { x = -788.5, y = 1715.6, Range = 5 },
@@ -1035,7 +998,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5096,
-            NonSkippableWaypoint = true,
             Coord = { x = -788.5, y = 1715.6 },
             Range = 5,
             ZoneStepTrigger = { x = -788.5, y = 1715.6, Range = 5 },
@@ -1046,7 +1008,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5096,
-            NonSkippableWaypoint = true,
             Coord = { x = -740.6, y = 1711.5 },
             Range = 5,
             ZoneStepTrigger = { x = -740.6, y = 1711.5, Range = 5 },
@@ -1081,7 +1042,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5229,
-            NonSkippableWaypoint = true,
             Coord = { x = -740.6, y = 1711.5 },
             Range = 5,
             ZoneStepTrigger = { x = -740.6, y = 1711.5, Range = 5 },
@@ -1092,7 +1052,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5229,
-            NonSkippableWaypoint = true,
             Coord = { x = -788.5, y = 1715.6 },
             Range = 5,
             ZoneStepTrigger = { x = -788.5, y = 1715.6, Range = 5 },
@@ -1110,7 +1069,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5021,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 38.05, 54.59),
             Range = 12,
             IsQuestNotOnQuest = 5021,
@@ -1128,7 +1086,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5021,
-            NonSkippableWaypoint = true,
             Coord = { x = -1242.27, y = 1780.54 },
             Range = 6,
             ZoneStepTrigger = { x = -1242.27, y = 1780.54, Range = 6, mapID = 1422 },
@@ -1165,7 +1122,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5230,
-            NonSkippableWaypoint = true,
             Coord = { x = -788.5, y = 1715.6 },
             Range = 5,
             ZoneStepTrigger = { x = -788.5, y = 1715.6, Range = 5 },
@@ -1176,7 +1132,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5230,
-            NonSkippableWaypoint = true,
             Coord = { x = -740.6, y = 1711.5 },
             Range = 5,
             ZoneStepTrigger = { x = -740.6, y = 1711.5, Range = 5 },
@@ -1199,7 +1154,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5231,
-            NonSkippableWaypoint = true,
             Coord = { x = -740.6, y = 1711.5 },
             Range = 5,
             ZoneStepTrigger = { x = -740.6, y = 1711.5, Range = 5 },
@@ -1210,7 +1164,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5231,
-            NonSkippableWaypoint = true,
             Coord = { x = -788.5, y = 1715.6 },
             Range = 5,
             ZoneStepTrigger = { x = -788.5, y = 1715.6, Range = 5 },
@@ -1274,7 +1227,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5060,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 47.15, 50.15),
             Range = 6,
             AnyOf = { { ItemCount = { itemID = 12739, count = 1 } }, { IsQuestOnQuest = 5060 } },
@@ -1314,7 +1266,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5232,
-            NonSkippableWaypoint = true,
             Coord = { x = -788.5, y = 1715.6 },
             Range = 5,
             ZoneStepTrigger = { x = -788.5, y = 1715.6, Range = 5 },
@@ -1325,7 +1276,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5232,
-            NonSkippableWaypoint = true,
             Coord = { x = -740.6, y = 1711.5 },
             Range = 5,
             ZoneStepTrigger = { x = -740.6, y = 1711.5, Range = 5 },
@@ -1364,7 +1314,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5098,
-            NonSkippableWaypoint = true,
             Coord = { x = -740.6, y = 1711.5 },
             Range = 5,
             ZoneStepTrigger = { x = -740.6, y = 1711.5, Range = 5 },
@@ -1375,7 +1324,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5098,
-            NonSkippableWaypoint = true,
             Coord = { x = -788.5, y = 1715.6 },
             Range = 5,
             ZoneStepTrigger = { x = -788.5, y = 1715.6, Range = 5 },
@@ -1466,7 +1414,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5234,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 61.85, 66.59),
             Range = 20,
             Zone = 1420,
@@ -1486,7 +1433,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5050,
-            NonSkippableWaypoint = true,
             Coord = { x = -740.6, y = 1711.5 },
             Range = 5,
             ZoneStepTrigger = { x = -740.6, y = 1711.5, Range = 5 },
@@ -1497,7 +1443,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5050,
-            NonSkippableWaypoint = true,
             Coord = { x = -788.5, y = 1715.6 },
             Range = 5,
             ZoneStepTrigger = { x = -788.5, y = 1715.6, Range = 5 },
@@ -1508,7 +1453,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5050,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 38.05, 54.59),
             Range = 12,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1422, 38.05, 54.59, 12),
@@ -1540,7 +1484,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5051,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 38.05, 54.59),
             Range = 12,
             IsQuestOnQuest = 5051,
@@ -1837,7 +1780,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5781,
-            NonSkippableWaypoint = true,
             Coord = { x = -2555.86, y = 2091.21 },
             Range = 15,
             ZoneStepTrigger = { x = -2555.86, y = 2091.21, Range = 15, mapID = 1423 },
@@ -1869,7 +1811,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5236,
-            NonSkippableWaypoint = true,
             Fillers = { [4985] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 61.85, 66.59),
             Range = 20,
@@ -1899,7 +1840,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5098,
-            NonSkippableWaypoint = true,
             Coord = { x = -740.6, y = 1711.5 },
             Range = 5,
             ZoneStepTrigger = { x = -740.6, y = 1711.5, Range = 5 },
@@ -1910,7 +1850,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5098,
-            NonSkippableWaypoint = true,
             Coord = { x = -788.5, y = 1715.6 },
             Range = 5,
             ZoneStepTrigger = { x = -788.5, y = 1715.6, Range = 5 },
@@ -1930,7 +1869,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5152,
-            NonSkippableWaypoint = true,
             Coord = { x = -1681.7, y = 1104.8 },
             Range = 6,
             ZoneStepTrigger = { x = -1681.7, y = 1104.8, Range = 6, mapID = 1422 },
@@ -1972,7 +1910,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5153,
-            NonSkippableWaypoint = true,
             Coord = { x = -1268.7, y = 1441.9 },
             Range = 6,
             ZoneStepTrigger = { x = -1268.7, y = 1441.9, Range = 6, mapID = 1422 },
@@ -1999,7 +1936,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5154,
-            NonSkippableWaypoint = true,
             Coord = { x = -1467.68, y = 1381.5 },
             Range = 10,
             IsQuestOnQuest = 5154,
@@ -2018,7 +1954,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5154,
-            NonSkippableWaypoint = true,
             Coord = { x = -1268.7, y = 1441.9 },
             Range = 6,
             ZoneStepTrigger = { x = -1268.7, y = 1441.9, Range = 6, mapID = 1422 },
@@ -2132,7 +2067,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5845,
-            NonSkippableWaypoint = true,
             Coord = { x = -2555.86, y = 2091.21 },
             Range = 15,
             ZoneStepTrigger = { x = -2555.86, y = 2091.21, Range = 15, mapID = 1423 },
@@ -2199,7 +2133,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6004,
-            NonSkippableWaypoint = true,
             Coord = { x = -1750.53, y = 2279.05 },
             Range = 15,
             IsQuestNotOnQuest = 6004,
@@ -2210,7 +2143,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6004,
-            NonSkippableWaypoint = true,
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
             IsQuestNotOnQuest = 6004,
@@ -2228,7 +2160,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6004,
-            NonSkippableWaypoint = true,
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
             IsQuestOnQuest = 6004,
@@ -2239,7 +2170,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6004,
-            NonSkippableWaypoint = true,
             Coord = { x = -1750.53, y = 2279.05 },
             Range = 15,
             IsQuestOnQuest = 6004,
@@ -2258,7 +2188,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6004,
-            NonSkippableWaypoint = true,
             Coord = { x = -1750.53, y = 2279.05 },
             Range = 15,
             ZoneStepTrigger = { x = -1750.53, y = 2279.05, Range = 15, mapID = 1422 },
@@ -2269,7 +2198,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6004,
-            NonSkippableWaypoint = true,
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
             ZoneStepTrigger = { x = -1733.76, y = 2495.49, Range = 15, mapID = 1422 },
@@ -2294,7 +2222,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
             IsQuestOnQuest = 6023,
@@ -2305,7 +2232,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Coord = { x = -1750.53, y = 2279.05 },
             Range = 15,
             IsQuestOnQuest = 6023,
@@ -2316,7 +2242,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Coord = { x = -1806.86, y = 2233.19 },
             Range = 15,
             IsQuestOnQuest = 6023,
@@ -2327,7 +2252,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Coord = { x = -1935, y = 2398.59 },
             Range = 15,
             IsQuestOnQuest = 6023,
@@ -2345,7 +2269,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Coord = { x = -1935, y = 2398.59 },
             Range = 15,
             IsQuestOnQuest = 6023,
@@ -2356,7 +2279,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Coord = { x = -1918.23, y = 2643.69 },
             Range = 15,
             IsQuestOnQuest = 6023,
@@ -2375,7 +2297,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Coord = { x = -1935, y = 2398.59 },
             Range = 15,
             ZoneStepTrigger = { x = -1935, y = 2398.59, Range = 15, mapID = 1422 },
@@ -2386,7 +2307,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Coord = { x = -1806.86, y = 2233.19 },
             Range = 15,
             ZoneStepTrigger = { x = -1806.86, y = 2233.19, Range = 15, mapID = 1422 },
@@ -2397,7 +2317,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Coord = { x = -1750.53, y = 2279.05 },
             Range = 15,
             ZoneStepTrigger = { x = -1750.53, y = 2279.05, Range = 15, mapID = 1422 },
@@ -2408,7 +2327,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
             ZoneStepTrigger = { x = -1733.76, y = 2495.49, Range = 15, mapID = 1422 },
@@ -2433,7 +2351,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
             ZoneStepTrigger = { x = -1733.76, y = 2495.49, Range = 15, mapID = 1422 },
@@ -2444,7 +2361,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1750.53, y = 2279.05 },
             Range = 15,
             ZoneStepTrigger = { x = -1750.53, y = 2279.05, Range = 15, mapID = 1422 },
@@ -2455,7 +2371,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1806.86, y = 2233.19 },
             Range = 15,
             ZoneStepTrigger = { x = -1806.86, y = 2233.19, Range = 15, mapID = 1422 },
@@ -2466,7 +2381,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1935, y = 2398.59 },
             Range = 15,
             ZoneStepTrigger = { x = -1935, y = 2398.59, Range = 15, mapID = 1422 },
@@ -2477,7 +2391,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1918.23, y = 2643.69 },
             Range = 15,
             ZoneStepTrigger = { x = -1918.23, y = 2643.69, Range = 15, mapID = 1422 },
@@ -2488,7 +2401,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1840.83, y = 2703.89 },
             Range = 15,
             ZoneStepTrigger = { x = -1840.83, y = 2703.89, Range = 15, mapID = 1422 },
@@ -2499,7 +2411,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1734.19, y = 2692.14 },
             Range = 15,
             ZoneStepTrigger = { x = -1734.19, y = 2692.14, Range = 15, mapID = 1422 },
@@ -2534,7 +2445,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1734.19, y = 2692.14 },
             Range = 15,
             ZoneStepTrigger = { x = -1734.19, y = 2692.14, Range = 15, mapID = 1422 },
@@ -2545,7 +2455,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1840.83, y = 2703.89 },
             Range = 15,
             ZoneStepTrigger = { x = -1840.83, y = 2703.89, Range = 15, mapID = 1422 },
@@ -2556,7 +2465,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1918.23, y = 2643.69 },
             Range = 15,
             ZoneStepTrigger = { x = -1918.23, y = 2643.69, Range = 15, mapID = 1422 },
@@ -2567,7 +2475,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1935, y = 2398.59 },
             Range = 15,
             ZoneStepTrigger = { x = -1935, y = 2398.59, Range = 15, mapID = 1422 },
@@ -2578,7 +2485,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1806.86, y = 2233.19 },
             Range = 15,
             ZoneStepTrigger = { x = -1806.86, y = 2233.19, Range = 15, mapID = 1422 },
@@ -2589,7 +2495,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1750.53, y = 2279.05 },
             Range = 15,
             ZoneStepTrigger = { x = -1750.53, y = 2279.05, Range = 15, mapID = 1422 },
@@ -2600,7 +2505,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
             ZoneStepTrigger = { x = -1733.76, y = 2495.49, Range = 15, mapID = 1422 },
@@ -2618,7 +2522,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5098,
-            NonSkippableWaypoint = true,
             Coord = { x = -788.5, y = 1715.6 },
             Range = 5,
             ZoneStepTrigger = { x = -788.5, y = 1715.6, Range = 5 },
@@ -2629,7 +2532,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         },
         {
             Waypoint = 5098,
-            NonSkippableWaypoint = true,
             Coord = { x = -740.6, y = 1711.5 },
             Range = 5,
             ZoneStepTrigger = { x = -740.6, y = 1711.5, Range = 5 },

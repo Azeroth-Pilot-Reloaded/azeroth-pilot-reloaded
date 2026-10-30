@@ -392,7 +392,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Coord = { x = 1359.66, y = 864.19 },
             Range = 50.0,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -401,7 +400,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Coord = { x = 1359.66, y = 741.27 },
             Range = 50.0,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -410,7 +408,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Coord = { x = 1365.12, y = 607.15 },
             Range = 100.0,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -419,7 +416,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Coord = { x = 1538.58, y = 511.39 },
             Range = 100.0,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -428,7 +424,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = { x = 1359.66, y = 864.19 },
             Range = 50.0,
@@ -439,7 +434,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = { x = 1359.66, y = 741.27 },
             Range = 50.0,
@@ -450,7 +444,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = { x = 1365.12, y = 607.15 },
             Range = 100.0,
@@ -461,7 +454,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = { x = 1538.58, y = 511.39 },
             Range = 100.0,
@@ -472,7 +464,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Coord = { x = 1359.66, y = 864.19 },
             Range = 50.0,
             Race = "Skyborne",
@@ -482,7 +473,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Coord = { x = 1359.66, y = 741.27 },
             Range = 50.0,
             Race = "Skyborne",
@@ -492,7 +482,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Coord = { x = 1365.12, y = 607.15 },
             Range = 100.0,
             Race = "Skyborne",
@@ -502,7 +491,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Coord = { x = 1538.58, y = 511.39 },
             Range = 100.0,
             Race = "Skyborne",
@@ -572,7 +560,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Note = { "BUY_LESSER_HEALING_POTIONS", "KEEP_MURLOC_EYES" },
             Coord = { x = 1602.84, y = 549.75 },
             Range = 5,
@@ -593,7 +580,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "BUY_LESSER_HEALING_POTIONS", "KEEP_MURLOC_EYES" },
             Coord = { x = 1602.84, y = 549.75 },
@@ -605,7 +591,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Note = { "BUY_LESSER_HEALING_POTIONS", "KEEP_MURLOC_EYES" },
             Coord = { x = 1602.84, y = 549.75 },
             Range = 5,
@@ -630,7 +615,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 477,
-            NonSkippableWaypoint = true,
             Coord = { x = 1602.84, y = 520.63 },
             Range = 5,
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
@@ -648,7 +632,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 477,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = { x = 1602.84, y = 520.63 },
             Range = 5,
@@ -692,7 +675,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1640.22, y = 509.43 },
             Range = 8.0,
@@ -702,7 +684,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1654.5, y = 510.27 },
             Range = 8.0,
@@ -712,7 +693,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1654.08, y = 521.47 },
             Range = 8.0,
@@ -722,7 +702,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1625.94, y = 522.31 },
             Range = 2.0,
@@ -732,7 +711,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1640.22, y = 509.43 },
@@ -744,7 +722,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1654.5, y = 510.27 },
@@ -756,7 +733,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1654.08, y = 521.47 },
@@ -768,7 +744,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1625.94, y = 522.31 },
@@ -780,7 +755,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1640.22, y = 509.43 },
             Range = 8.0,
@@ -791,7 +765,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1654.5, y = 510.27 },
             Range = 8.0,
@@ -802,7 +775,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1654.08, y = 521.47 },
             Range = 8.0,
@@ -813,7 +785,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 449,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1625.94, y = 522.31 },
             Range = 2.0,
@@ -1147,7 +1118,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 422,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 49.75, 30.07),
             Range = 8,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" } }, { Race = "Skyborne", SkipForLvl = 14 } },
@@ -1158,7 +1128,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 430,
-            NonSkippableWaypoint = true,
             Coord = { x = 1234.92, y = 891.07 },
             Range = 80.0,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -1167,7 +1136,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 430,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = { x = 1234.92, y = 891.07 },
             Range = 80.0,
@@ -1178,7 +1146,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 430,
-            NonSkippableWaypoint = true,
             Coord = { x = 1234.92, y = 891.07 },
             Range = 80.0,
             Race = "Skyborne",
@@ -1188,7 +1155,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 422,
-            NonSkippableWaypoint = true,
             Coord = { x = 1234.92, y = 891.07 },
             Range = 5,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" } }, { Race = "Skyborne", SkipForLvl = 14 } },
@@ -1229,7 +1195,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 430,
-            NonSkippableWaypoint = true,
             Coord = { x = 1207.62, y = 1293.71 },
             Range = 80.0,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -1238,7 +1203,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 430,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = { x = 1207.62, y = 1293.71 },
             Range = 80.0,
@@ -1249,7 +1213,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 430,
-            NonSkippableWaypoint = true,
             Coord = { x = 1207.62, y = 1293.71 },
             Range = 80.0,
             Race = "Skyborne",
@@ -1259,7 +1222,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 430,
-            NonSkippableWaypoint = true,
             Coord = { x = 1207.62, y = 1293.71 },
             Range = 8.0,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -1268,7 +1230,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 430,
-            NonSkippableWaypoint = true,
             Coord = { x = 1220.64, y = 1299.59 },
             Range = 8.0,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -1277,7 +1238,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 430,
-            NonSkippableWaypoint = true,
             Coord = { x = 1212.66, y = 1298.19 },
             Range = 8.0,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -1300,7 +1260,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 430,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = { x = 1207.62, y = 1293.71 },
             Range = 8.0,
@@ -1311,7 +1270,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 430,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = { x = 1220.64, y = 1299.59 },
             Range = 8.0,
@@ -1322,7 +1280,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 430,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = { x = 1212.66, y = 1298.19 },
             Range = 8.0,
@@ -1351,7 +1308,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 430,
-            NonSkippableWaypoint = true,
             Coord = { x = 1207.62, y = 1293.71 },
             Range = 8.0,
             Race = "Skyborne",
@@ -1361,7 +1317,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 430,
-            NonSkippableWaypoint = true,
             Coord = { x = 1220.64, y = 1299.59 },
             Range = 8.0,
             Race = "Skyborne",
@@ -1371,7 +1326,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 430,
-            NonSkippableWaypoint = true,
             Coord = { x = 1212.66, y = 1298.19 },
             Range = 8.0,
             Race = "Skyborne",
@@ -1581,7 +1535,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 422,
-            NonSkippableWaypoint = true,
             Coord = { x = 1538.58, y = 511.39 },
             Range = 100.0,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -1590,7 +1543,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 422,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = { x = 1538.58, y = 511.39 },
             Range = 100.0,
@@ -1601,7 +1553,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 422,
-            NonSkippableWaypoint = true,
             Coord = { x = 1538.58, y = 511.39 },
             Range = 100.0,
             Race = "Skyborne",
@@ -1659,7 +1610,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 437,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1640.22, y = 509.43 },
             Range = 8.0,
@@ -1669,7 +1619,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 437,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1654.5, y = 510.27 },
             Range = 8.0,
@@ -1679,7 +1628,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 437,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1654.08, y = 521.47 },
             Range = 8.0,
@@ -1689,7 +1637,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 437,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1625.94, y = 522.31 },
             Range = 2.0,
@@ -1699,7 +1646,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 437,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1640.22, y = 509.43 },
@@ -1711,7 +1657,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 437,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1654.5, y = 510.27 },
@@ -1723,7 +1668,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 437,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1654.08, y = 521.47 },
@@ -1735,7 +1679,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 437,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1625.94, y = 522.31 },
@@ -1747,7 +1690,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 437,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1640.22, y = 509.43 },
             Range = 8.0,
@@ -1758,7 +1700,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 437,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1654.5, y = 510.27 },
             Range = 8.0,
@@ -1769,7 +1710,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 437,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1654.08, y = 521.47 },
             Range = 8.0,
@@ -1780,7 +1720,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 437,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1625.94, y = 522.31 },
             Range = 2.0,
@@ -1944,7 +1883,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Note = { "BUY_LESSER_HEALING_POTIONS" },
             Coord = { x = 1602.84, y = 549.75 },
             Range = 5,
@@ -1964,7 +1902,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "BUY_LESSER_HEALING_POTIONS" },
             Coord = { x = 1602.84, y = 549.75 },
@@ -1976,7 +1913,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Note = { "BUY_LESSER_HEALING_POTIONS" },
             Coord = { x = 1602.84, y = 549.75 },
             Range = 5,
@@ -2000,7 +1936,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Coord = { x = 1568.4, y = 567.95 },
             Range = 5,
             Class = { "MAGE", "PRIEST", "WARLOCK" },
@@ -2021,7 +1956,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Coord = { x = 1576.38, y = 571.59 },
             Range = 5,
             Class = "ROGUE",
@@ -2044,7 +1978,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = { x = 1576.38, y = 571.59 },
             Range = 5,
@@ -2069,7 +2002,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Coord = { x = 1576.38, y = 571.59 },
             Range = 5,
             Class = "ROGUE",
@@ -2094,7 +2026,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_HILL" },
             Coord = { x = 1593.6, y = 597.91 },
             Range = 15.0,
@@ -2104,7 +2035,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_HILL" },
             Coord = { x = 1582.68, y = 640.47 },
             Range = 15.0,
@@ -2114,7 +2044,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_HILL" },
             Coord = { x = 1563.78, y = 738.75 },
             Range = 30.0,
@@ -2124,7 +2053,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "TRAVEL_HILL" },
             Coord = { x = 1593.6, y = 597.91 },
@@ -2136,7 +2064,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "TRAVEL_HILL" },
             Coord = { x = 1582.68, y = 640.47 },
@@ -2148,7 +2075,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "TRAVEL_HILL" },
             Coord = { x = 1563.78, y = 738.75 },
@@ -2160,7 +2086,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_HILL" },
             Coord = { x = 1593.6, y = 597.91 },
             Range = 15.0,
@@ -2171,7 +2096,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_HILL" },
             Coord = { x = 1582.68, y = 640.47 },
             Range = 15.0,
@@ -2182,7 +2106,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_HILL" },
             Coord = { x = 1563.78, y = 738.75 },
             Range = 30.0,
@@ -2211,7 +2134,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Fillers = { [423] = { 1, 2 } },
             Coord = { x = 1207.62, y = 1293.71 },
             Range = 8.0,
@@ -2221,7 +2143,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Fillers = { [423] = { 1, 2 } },
             Coord = { x = 1220.64, y = 1299.59 },
             Range = 8.0,
@@ -2231,7 +2152,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Fillers = { [423] = { 1, 2 } },
             Coord = { x = 1212.66, y = 1298.19 },
             Range = 8.0,
@@ -2249,7 +2169,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 }, [423] = { 1, 2 } },
             Coord = { x = 1207.62, y = 1293.71 },
             Range = 8.0,
@@ -2260,7 +2179,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 }, [423] = { 1, 2 } },
             Coord = { x = 1220.64, y = 1299.59 },
             Range = 8.0,
@@ -2271,7 +2189,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 }, [423] = { 1, 2 } },
             Coord = { x = 1212.66, y = 1298.19 },
             Range = 8.0,
@@ -2291,7 +2208,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Coord = { x = 1207.62, y = 1293.71 },
             Range = 8.0,
             Race = "Skyborne",
@@ -2301,7 +2217,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Coord = { x = 1220.64, y = 1299.59 },
             Range = 8.0,
             Race = "Skyborne",
@@ -2311,7 +2226,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 91921,
-            NonSkippableWaypoint = true,
             Coord = { x = 1212.66, y = 1298.19 },
             Range = 8.0,
             Race = "Skyborne",
@@ -2353,7 +2267,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 425,
-            NonSkippableWaypoint = true,
             Coord = { x = 1265.58, y = 1274.11 },
             Range = 4,
             AnyOf = { { Race = { "Orc", "Troll" }, Class = { "MAGE", "ROGUE", "WARRIOR" } }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "ROGUE", "WARRIOR" } }, { Class = { "PRIEST", "WARLOCK" } }, { Race = "Skyborne", SkipForLvl = 14 } },
@@ -2364,7 +2277,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 425,
-            NonSkippableWaypoint = true,
             Coord = { x = 1270.62, y = 1279.71 },
             Range = 4,
             AnyOf = { { Race = { "Orc", "Troll" }, Class = { "MAGE", "ROGUE", "WARRIOR" } }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "ROGUE", "WARRIOR" } }, { Class = { "PRIEST", "WARLOCK" } }, { Race = "Skyborne", SkipForLvl = 14 } },
@@ -2522,7 +2434,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 423,
-            NonSkippableWaypoint = true,
             Coord = { x = 1538.58, y = 511.39 },
             Range = 100.0,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -2531,7 +2442,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 423,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = { x = 1538.58, y = 511.39 },
             Range = 100.0,
@@ -2542,7 +2452,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 423,
-            NonSkippableWaypoint = true,
             Coord = { x = 1538.58, y = 511.39 },
             Range = 100.0,
             Race = "Skyborne",
@@ -2611,7 +2520,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 439,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1640.22, y = 509.43 },
             Range = 8.0,
@@ -2621,7 +2529,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 439,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1654.5, y = 510.27 },
             Range = 8.0,
@@ -2631,7 +2538,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 439,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1654.08, y = 521.47 },
             Range = 8.0,
@@ -2641,7 +2547,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 439,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1625.94, y = 522.31 },
             Range = 2.0,
@@ -2651,7 +2556,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 439,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1640.22, y = 509.43 },
@@ -2663,7 +2567,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 439,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1654.5, y = 510.27 },
@@ -2675,7 +2578,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 439,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1654.08, y = 521.47 },
@@ -2687,7 +2589,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 439,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1625.94, y = 522.31 },
@@ -2699,7 +2600,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 439,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1640.22, y = 509.43 },
             Range = 8.0,
@@ -2710,7 +2610,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 439,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1654.5, y = 510.27 },
             Range = 8.0,
@@ -2721,7 +2620,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 439,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1654.08, y = 521.47 },
             Range = 8.0,
@@ -2732,7 +2630,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 439,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 1625.94, y = 522.31 },
             Range = 2.0,
@@ -2791,7 +2688,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 424,
-            NonSkippableWaypoint = true,
             Coord = { x = 1092, y = 390 },
             Range = 6,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" } }, { Race = "Skyborne", SkipForLvl = 14 } },
@@ -2802,7 +2698,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 477,
-            NonSkippableWaypoint = true,
             Note = { "INTO_MINE" },
             Coord = { x = 1077.84, y = 380.35 },
             Range = 10.0,
@@ -2812,7 +2707,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 477,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "INTO_MINE" },
             Coord = { x = 1077.84, y = 380.35 },
@@ -2824,7 +2718,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 477,
-            NonSkippableWaypoint = true,
             Note = { "INTO_MINE" },
             Coord = { x = 1077.84, y = 380.35 },
             Range = 10.0,
@@ -2835,7 +2728,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 424,
-            NonSkippableWaypoint = true,
             Coord = { x = 1050, y = 384 },
             Range = 4,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" } }, { Race = "Skyborne", SkipForLvl = 14 } },
@@ -2846,7 +2738,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 424,
-            NonSkippableWaypoint = true,
             Coord = { x = 1040, y = 394 },
             Range = 4,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" } }, { Race = "Skyborne", SkipForLvl = 14 } },
@@ -2857,7 +2748,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 424,
-            NonSkippableWaypoint = true,
             Coord = { x = 1030, y = 416 },
             Range = 4,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" } }, { Race = "Skyborne", SkipForLvl = 14 } },
@@ -2868,7 +2758,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 424,
-            NonSkippableWaypoint = true,
             Coord = { x = 1020, y = 416 },
             Range = 4,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" } }, { Race = "Skyborne", SkipForLvl = 14 } },
@@ -3026,7 +2915,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 478,
-            NonSkippableWaypoint = true,
             Coord = { x = 1538.58, y = 511.39 },
             Range = 100.0,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -3036,7 +2924,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 478,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = { x = 1538.58, y = 511.39 },
             Range = 100.0,
@@ -3048,7 +2935,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 478,
-            NonSkippableWaypoint = true,
             Coord = { x = 1538.58, y = 511.39 },
             Range = 100.0,
             Hardcore = true,
@@ -3085,7 +2971,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 478,
-            NonSkippableWaypoint = true,
             Coord = { x = 1602.84, y = 520.63 },
             Range = 5,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -3122,7 +3007,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 478,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = { x = 1602.84, y = 520.63 },
             Range = 5,
@@ -3169,7 +3053,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 478,
-            NonSkippableWaypoint = true,
             Coord = { x = 1602.84, y = 520.63 },
             Range = 5,
             Race = "Skyborne",
@@ -3476,7 +3359,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 97891,
-            NonSkippableWaypoint = true,
             Note = { "CREATE_LINEN_BANDAGES_SKILL_40_HIGHER" },
             Coord = { x = 171.03, y = 1524.8 },
             Range = 5,
@@ -3488,7 +3370,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 1886,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "CREATE_LINEN_BANDAGES_SKILL_40_HIGHER" },
             Coord = { x = 171.03, y = 1524.8 },
@@ -3502,7 +3383,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 97891,
-            NonSkippableWaypoint = true,
             Note = { "CREATE_LINEN_BANDAGES_SKILL_40_HIGHER" },
             Coord = { x = 171.03, y = 1524.8 },
             Range = 5,
@@ -3547,7 +3427,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 97891,
-            NonSkippableWaypoint = true,
             Note = { "CREATE_HEAVY_LINEN_BANDAGES_SKILL_50_HIGHER" },
             Coord = { x = 171.03, y = 1524.8 },
             Range = 5,
@@ -3559,7 +3438,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 1886,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "CREATE_HEAVY_LINEN_BANDAGES_SKILL_50_HIGHER" },
             Coord = { x = 171.03, y = 1524.8 },
@@ -3573,7 +3451,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 97891,
-            NonSkippableWaypoint = true,
             Note = { "CREATE_HEAVY_LINEN_BANDAGES_SKILL_50_HIGHER" },
             Coord = { x = 171.03, y = 1524.8 },
             Range = 5,
@@ -3729,7 +3606,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 97891,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 54.383, 73.014),
             Range = 50.0,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -3738,7 +3614,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 97891,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 52.837, 77.725),
             Range = 20.0,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -3747,7 +3622,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 97891,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 52.275, 79.254),
             Range = 15.0,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -3756,7 +3630,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 97891,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 51.279, 79.923),
             Range = 15.0,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -3765,7 +3638,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 97891,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 49.693, 78.903),
             Range = 15.0,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -3774,7 +3646,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 97891,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 47.951, 76.171),
             Range = 15.0,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -3783,7 +3654,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 97891,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 52.837, 77.725),
             Range = 20.0,
@@ -3794,7 +3664,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 97891,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 52.275, 79.254),
             Range = 15.0,
@@ -3805,7 +3674,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 97891,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 51.279, 79.923),
             Range = 15.0,
@@ -3816,7 +3684,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 97891,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 49.693, 78.903),
             Range = 15.0,
@@ -3827,7 +3694,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 97891,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 47.951, 76.171),
             Range = 15.0,
@@ -3838,7 +3704,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 97891,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 54.383, 73.014),
             Range = 50.0,
             Race = "Skyborne",
@@ -3848,7 +3713,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 97891,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 52.837, 77.725),
             Range = 20.0,
             Race = "Skyborne",
@@ -3858,7 +3722,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 97891,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 52.275, 79.254),
             Range = 15.0,
             Race = "Skyborne",
@@ -3868,7 +3731,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 97891,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 51.279, 79.923),
             Range = 15.0,
             Race = "Skyborne",
@@ -3878,7 +3740,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 97891,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 49.693, 78.903),
             Range = 15.0,
             Race = "Skyborne",
@@ -3888,7 +3749,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 97891,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 47.951, 76.171),
             Range = 15.0,
             Race = "Skyborne",
@@ -3946,7 +3806,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 447,
-            NonSkippableWaypoint = true,
             Coord = { x = 404.63, y = 1434.67 },
             Range = 5,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -3969,7 +3828,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 447,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = { x = 404.63, y = 1434.67 },
             Range = 5,
@@ -3998,7 +3856,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 447,
-            NonSkippableWaypoint = true,
             Coord = { x = 404.63, y = 1434.67 },
             Range = 5,
             Race = "Skyborne",
@@ -4085,7 +3942,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 1978,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = { x = 373.6, y = 1464.85 },
             Range = 40.0,
@@ -4107,7 +3963,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "CREATE_LINEN_BANDAGES_SKILL_40_HIGHER" },
             Coord = { x = 171.03, y = 1524.8 },
             Range = 5,
@@ -4119,7 +3974,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 94913,
-            NonSkippableWaypoint = true,
             Note = { "CREATE_LINEN_BANDAGES_SKILL_40_HIGHER" },
             Coord = { x = 171.03, y = 1524.8 },
             Range = 5,
@@ -4153,7 +4007,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "CREATE_HEAVY_LINEN_BANDAGES_SKILL_50_HIGHER" },
             Coord = { x = 171.03, y = 1524.8 },
             Range = 5,
@@ -4165,7 +4018,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 94913,
-            NonSkippableWaypoint = true,
             Note = { "CREATE_HEAVY_LINEN_BANDAGES_SKILL_50_HIGHER" },
             Coord = { x = 171.03, y = 1524.8 },
             Range = 5,
@@ -4276,7 +4128,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_UNDERCITY" },
             Coord = { x = 235.32, y = 1883.89 },
             Range = 50.0,
@@ -4288,7 +4139,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "EXIT_UNDERCITY" },
             Coord = { x = 235.32, y = 1883.89 },
@@ -4301,7 +4151,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 278.7, y = 2071.27 },
             Range = 12.0,
@@ -4313,7 +4162,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 253.85, y = 2059.82 },
             Range = 10.0,
@@ -4325,7 +4173,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 264.7, y = 2053.5 },
             Range = 8.0,
@@ -4337,7 +4184,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 271.02, y = 2064.94 },
             Range = 8.0,
@@ -4349,7 +4195,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 259.72, y = 2068.86 },
             Range = 8.0,
@@ -4361,7 +4206,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 261.53, y = 2055.0 },
             Range = 8.0,
@@ -4373,7 +4217,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 299.04, y = 2069.46 },
             Range = 5,
@@ -4385,7 +4228,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 279.61, y = 2441.21 },
             Range = 5,
@@ -4397,7 +4239,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_ZEPPELIN_DUROTAR", "CONJURE_FOOD_WATER_WAIT" },
             Coord = { x = 278.7, y = 2071.27 },
             Range = 12.0,
@@ -4409,7 +4250,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_ZEPPELIN_DUROTAR", "CONJURE_FOOD_WATER_WAIT" },
             Coord = { x = 253.85, y = 2059.82 },
             Range = 10.0,
@@ -4421,7 +4261,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_ZEPPELIN_DUROTAR", "CONJURE_FOOD_WATER_WAIT" },
             Coord = { x = 264.7, y = 2053.5 },
             Range = 8.0,
@@ -4433,7 +4272,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_ZEPPELIN_DUROTAR", "CONJURE_FOOD_WATER_WAIT" },
             Coord = { x = 271.02, y = 2064.94 },
             Range = 8.0,
@@ -4445,7 +4283,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_ZEPPELIN_DUROTAR", "CONJURE_FOOD_WATER_WAIT" },
             Coord = { x = 259.72, y = 2068.86 },
             Range = 8.0,
@@ -4457,7 +4294,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_ZEPPELIN_DUROTAR", "CONJURE_FOOD_WATER_WAIT" },
             Coord = { x = 261.53, y = 2055.0 },
             Range = 8.0,
@@ -4469,7 +4305,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_ZEPPELIN_DUROTAR", "CONJURE_FOOD_WATER_WAIT" },
             Coord = { x = 299.04, y = 2069.46 },
             Range = 5,
@@ -4481,7 +4316,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_ZEPPELIN_DUROTAR", "CONJURE_FOOD_WATER_WAIT" },
             Coord = { x = 279.61, y = 2441.21 },
             Range = 5,
@@ -4493,7 +4327,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 278.7, y = 2071.27 },
@@ -4506,7 +4339,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 253.85, y = 2059.82 },
@@ -4519,7 +4351,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 264.7, y = 2053.5 },
@@ -4532,7 +4363,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 271.02, y = 2064.94 },
@@ -4545,7 +4375,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 259.72, y = 2068.86 },
@@ -4558,7 +4387,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 261.53, y = 2055.0 },
@@ -4571,7 +4399,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 299.04, y = 2069.46 },
@@ -4584,7 +4411,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 279.61, y = 2441.21 },
@@ -4597,7 +4423,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_ZEPPELIN_DUROTAR" },
             Coord = { x = 278.7, y = 2071.27 },
             Range = 12.0,
@@ -4609,7 +4434,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_ZEPPELIN_DUROTAR" },
             Coord = { x = 253.85, y = 2059.82 },
             Range = 10.0,
@@ -4621,7 +4445,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_ZEPPELIN_DUROTAR" },
             Coord = { x = 264.7, y = 2053.5 },
             Range = 8.0,
@@ -4633,7 +4456,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_ZEPPELIN_DUROTAR" },
             Coord = { x = 271.02, y = 2064.94 },
             Range = 8.0,
@@ -4645,7 +4467,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_ZEPPELIN_DUROTAR" },
             Coord = { x = 259.72, y = 2068.86 },
             Range = 8.0,
@@ -4657,7 +4478,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_ZEPPELIN_DUROTAR" },
             Coord = { x = 261.53, y = 2055.0 },
             Range = 8.0,
@@ -4669,7 +4489,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_ZEPPELIN_DUROTAR" },
             Coord = { x = 299.04, y = 2069.46 },
             Range = 5,
@@ -4681,7 +4500,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_ZEPPELIN_DUROTAR" },
             Coord = { x = 279.61, y = 2441.21 },
             Range = 5,
@@ -4737,7 +4555,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Coord = { x = -4367.46, y = 1405.44 },
             Range = 50.0,
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
@@ -4747,7 +4564,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = { x = -4367.46, y = 1405.44 },
             Range = 50.0,
@@ -4793,7 +4609,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_ORGRIMMAR" },
             Coord = { x = -4367.46, y = 1405.44 },
             Range = 50.0,
@@ -4803,7 +4618,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Note = { "EXIT_ORGRIMMAR" },
             Coord = { x = -4367.46, y = 1405.44 },
@@ -4815,7 +4629,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 5726,
-            NonSkippableWaypoint = true,
             Coord = { x = -4886, y = 1450 },
             Range = 8,
             AnyOf = { { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" } }, { Race = "Skyborne" } },
@@ -4826,7 +4639,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 5726,
-            NonSkippableWaypoint = true,
             Coord = { x = -4856, y = 1482 },
             Range = 5,
             AnyOf = { { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" } }, { Race = "Skyborne" } },
@@ -4837,7 +4649,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 5726,
-            NonSkippableWaypoint = true,
             Coord = { x = -4856, y = 1494 },
             Range = 5,
             AnyOf = { { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" } }, { Race = "Skyborne" } },
@@ -4848,7 +4659,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 5726,
-            NonSkippableWaypoint = true,
             Coord = { x = -4810, y = 1490 },
             Range = 4,
             AnyOf = { { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" } }, { Race = "Skyborne" } },
@@ -4859,7 +4669,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Waypoint = 5726,
-            NonSkippableWaypoint = true,
             Coord = { x = -4808, y = 1480 },
             Range = 4,
             AnyOf = { { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" } }, { Race = "Skyborne" } },

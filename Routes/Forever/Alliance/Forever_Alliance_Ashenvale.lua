@@ -43,7 +43,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
     steps = {
         {
             Waypoint = 1057,
-            NonSkippableWaypoint = true,
             Coord = { x = -614.1, y = -3732.35 },
             Range = 20,
             Zone = 1437,
@@ -73,7 +72,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1057,
-            NonSkippableWaypoint = true,
             Coord = { x = 1297.9, y = 2402.1 },
             Range = 20,
             IsQuestOnQuest = 1057,
@@ -83,7 +81,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1057,
-            NonSkippableWaypoint = true,
             Coord = { x = 1178.7, y = 2393.6 },
             Range = 20,
             IsQuestOnQuest = 1057,
@@ -93,7 +90,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1057,
-            NonSkippableWaypoint = true,
             Coord = { x = 1082.9, y = 2314.6 },
             Range = 20,
             IsQuestOnQuest = 1057,
@@ -103,7 +99,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1057,
-            NonSkippableWaypoint = true,
             Coord = { x = 950.8, y = 1880.9 },
             Range = 20,
             IsQuestOnQuest = 1057,
@@ -113,7 +108,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1057,
-            NonSkippableWaypoint = true,
             Coord = { x = 1020.7, y = 1570 },
             Range = 20,
             IsQuestOnQuest = 1057,
@@ -123,7 +117,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1057,
-            NonSkippableWaypoint = true,
             Coord = { x = 1272.7, y = 1567.5 },
             Range = 20,
             IsQuestOnQuest = 1057,
@@ -133,7 +126,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1057,
-            NonSkippableWaypoint = true,
             Coord = { x = 1452.2, y = 1408 },
             Range = 20,
             IsQuestOnQuest = 1057,
@@ -143,7 +135,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1057,
-            NonSkippableWaypoint = true,
             Coord = { x = 1517.7, y = 1032 },
             Range = 20,
             IsQuestOnQuest = 1057,
@@ -161,7 +152,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1057,
-            NonSkippableWaypoint = true,
             Coord = { x = 1807.47, y = 349.07 },
             Range = 5,
             Zone = 1443,
@@ -169,7 +159,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1057,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 56.57, 13.37),
             Range = 20,
             IsQuestOnQuest = 1057,
@@ -178,7 +167,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1057,
-            NonSkippableWaypoint = true,
             Coord = { x = 1204.04, y = -13.79 },
             Range = 20,
             Zone = 1443,
@@ -230,7 +218,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 973,
-            NonSkippableWaypoint = true,
             Coord = { x = -300.46, y = 2970.14 },
             Range = 20,
             Zone = 1440,
@@ -238,7 +225,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 973,
-            NonSkippableWaypoint = true,
             Coord = { x = -343.13, y = 3079.3 },
             Range = 20,
             Zone = 1440,
@@ -246,7 +232,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 973,
-            NonSkippableWaypoint = true,
             Coord = { x = -392.15, y = 3193.84 },
             Range = 20,
             Zone = 1440,
@@ -254,7 +239,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 973,
-            NonSkippableWaypoint = true,
             Coord = { x = -423.86, y = 3229.2 },
             Range = 20,
             Zone = 1440,
@@ -276,7 +260,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 973,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 28.39, 60.88),
             Range = 20,
             IsQuestOnQuest = 973,
@@ -337,7 +320,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1024,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 51.8, 45.73),
             Range = 20,
             IsQuestOnQuest = 1024,
@@ -358,7 +340,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1026,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 51.8, 45.73),
             Range = 20,
             IsQuestOnQuest = 1026,
@@ -385,7 +366,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1021,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 53.44, 36.131),
             Range = 15.0,
             Zone = 1440,
@@ -393,7 +373,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1021,
-            NonSkippableWaypoint = true,
             Coord = { x = -1338.92, y = 3221.55 },
             Range = 20.0,
             Zone = 1440,
@@ -439,7 +418,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1022,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 94.74, 47.77),
             Range = 15,
             IsQuestOnQuest = 1022,
@@ -448,7 +426,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1022,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 10.56, 75.09),
             Range = 15,
             IsQuestOnQuest = 1022,
@@ -494,7 +471,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1026,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 51.8, 45.73),
             Range = 20,
             IsQuestOnQuest = 1026,
@@ -515,7 +491,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1016,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 51.8, 45.73),
             Range = 20,
             IsQuestUncompleted = 1016,
@@ -524,7 +499,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1016,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 50.22, 56.23),
             Range = 20,
             IsQuestUncompleted = 1016,
@@ -609,7 +583,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1140,
-            NonSkippableWaypoint = true,
             Fillers = { [1032] = { 1 } },
             Coord = { x = -2842.75, y = 2875.39 },
             Range = 20,
@@ -618,7 +591,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1140,
-            NonSkippableWaypoint = true,
             Fillers = { [1032] = { 1 } },
             Coord = { x = -2557.82, y = 2861.74 },
             Range = 20,
@@ -643,7 +615,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1027,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 51.8, 45.73),
             Range = 20,
             IsQuestOnQuest = 1027,
@@ -664,7 +635,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1028,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 50.6, 46.9),
             Range = 20,
             IsQuestOnQuest = 1028,
@@ -673,7 +643,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1028,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 51.4, 52.5),
             Range = 20,
             IsQuestOnQuest = 1028,
@@ -682,7 +651,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1028,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 53.7, 54.0),
             Range = 20,
             IsQuestOnQuest = 1028,
@@ -691,7 +659,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1028,
-            NonSkippableWaypoint = true,
             Coord = { x = -1586.6, y = 2674.9 },
             Range = 20.0,
             Zone = 1440,
@@ -699,7 +666,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1028,
-            NonSkippableWaypoint = true,
             Coord = { x = -1608.28, y = 2714.41 },
             Range = 20.0,
             Zone = 1440,
@@ -750,7 +716,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1030,
-            NonSkippableWaypoint = true,
             Coord = { x = -1371.85, y = 1818.16 },
             Range = 20,
             Zone = 1440,
@@ -758,7 +723,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1030,
-            NonSkippableWaypoint = true,
             Coord = { x = -1266.55, y = 1789.95 },
             Range = 20,
             Zone = 1440,
@@ -782,7 +746,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1045,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 54.21, 74.082),
             Range = 20,
             Zone = 1440,
@@ -797,7 +760,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1045,
-            NonSkippableWaypoint = true,
             Coord = { x = -1371.85, y = 1818.16 },
             Range = 20,
             Zone = 1440,
@@ -805,7 +767,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1045,
-            NonSkippableWaypoint = true,
             Coord = { x = -1266.55, y = 1789.95 },
             Range = 20,
             Zone = 1440,
@@ -906,7 +867,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 1038,
-            NonSkippableWaypoint = true,
             Coord = { x = 2345.17, y = 9679.31 },
             Range = 10,
             Zone = 1457,
@@ -952,7 +912,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 637,
-            NonSkippableWaypoint = true,
             Coord = { x = 2608.06, y = 10113.26 },
             Range = 8.0,
             Class = "ROGUE",
@@ -1016,7 +975,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
         },
         {
             Waypoint = 637,
-            NonSkippableWaypoint = true,
             Coord = { x = 841.56, y = 8640.79 },
             Range = 15,
             ClassNot = "MAGE",
@@ -1175,7 +1133,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Fillers = { [93] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 42.5, 71.7),
             Range = 5,
@@ -1184,7 +1141,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -746, y = 1944 },
             Range = 3,
             IsQuestOnQuest = 1070,
@@ -1193,7 +1149,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -714, y = 1894 },
             Range = 3,
             IsQuestOnQuest = 1070,
@@ -1202,7 +1157,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -738, y = 1868 },
             Range = 3,
             IsQuestOnQuest = 1070,
@@ -1211,7 +1165,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -716, y = 1832 },
             Range = 3,
             IsQuestOnQuest = 1070,
@@ -1220,7 +1173,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -692, y = 1832 },
             Range = 3,
             IsQuestOnQuest = 1070,
@@ -1229,7 +1181,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -680, y = 1822 },
             Range = 3,
             IsQuestOnQuest = 1070,
@@ -1238,7 +1189,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -668, y = 1786 },
             Range = 3,
             IsQuestOnQuest = 1070,
@@ -1247,7 +1197,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -680, y = 1748 },
             Range = 3,
             IsQuestOnQuest = 1070,
@@ -1256,7 +1205,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -662, y = 1712 },
             Range = 3,
             IsQuestOnQuest = 1070,
@@ -1265,7 +1213,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -654, y = 1712 },
             Range = 3,
             IsQuestOnQuest = 1070,
@@ -1274,7 +1221,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -636, y = 1696 },
             Range = 3,
             IsQuestOnQuest = 1070,
@@ -1283,7 +1229,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -634, y = 1676 },
             Range = 3,
             IsQuestOnQuest = 1070,
@@ -1292,7 +1237,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -606, y = 1660 },
             Range = 3,
             IsQuestOnQuest = 1070,
@@ -1301,7 +1245,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -602, y = 1632 },
             Range = 3,
             IsQuestOnQuest = 1070,
@@ -1310,7 +1253,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -606, y = 1610 },
             Range = 3,
             IsQuestOnQuest = 1070,
@@ -1319,7 +1261,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -574, y = 1598 },
             Range = 3,
             IsQuestOnQuest = 1070,
@@ -1328,7 +1269,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -573, y = 1585 },
             Range = 3,
             IsQuestOnQuest = 1070,
@@ -1337,7 +1277,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -586, y = 1574 },
             Range = 3,
             IsQuestOnQuest = 1070,
@@ -1346,7 +1285,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -578, y = 1548 },
             Range = 3,
             IsQuestOnQuest = 1070,
@@ -1355,7 +1293,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -580, y = 1540 },
             Range = 3,
             IsQuestOnQuest = 1070,
@@ -1364,7 +1301,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -576, y = 1508 },
             Range = 3,
             IsQuestOnQuest = 1070,
@@ -1373,7 +1309,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -588, y = 1510 },
             Range = 3,
             IsQuestOnQuest = 1070,
@@ -1390,7 +1325,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = 205.9, y = 887.5 },
             Range = 20,
             IsQuestOnQuest = 1070,
@@ -1399,7 +1333,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 60.5, 70.0),
             Range = 10,
             IsQuestOnQuest = 1070,
@@ -1408,7 +1341,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 58.8, 68.2),
             Range = 10,
             IsQuestOnQuest = 1070,
@@ -1417,7 +1349,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1085,
-            NonSkippableWaypoint = true,
             Coord = { x = 205.9, y = 887.5 },
             Range = 20,
             IsQuestCompleted = 1070,
@@ -1428,7 +1359,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1085,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 60.5, 70.0),
             Range = 10,
             IsQuestCompleted = 1070,
@@ -1439,7 +1369,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1085,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 58.8, 68.2),
             Range = 10,
             IsQuestCompleted = 1070,
@@ -1450,7 +1379,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1071,
-            NonSkippableWaypoint = true,
             Coord = { x = 205.9, y = 887.5 },
             Range = 20,
             IsQuestCompleted = 1085,
@@ -1463,7 +1391,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1071,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 60.5, 70.0),
             Range = 10,
             IsQuestCompleted = 1085,
@@ -1476,7 +1403,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1071,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 58.8, 68.2),
             Range = 10,
             IsQuestCompleted = 1085,
@@ -1518,7 +1444,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1071,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 58.8, 68.2),
             Range = 10,
             IsQuestOnQuest = 1071,
@@ -1528,7 +1453,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1071,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 60.5, 70.0),
             Range = 10,
             IsQuestOnQuest = 1071,
@@ -1538,7 +1462,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1093,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 58.8, 68.2),
             Range = 10,
             AnyOf = { { IsQuestNotOnQuest = 1071 }, { IsQuestReadyForTurnIn = 1071 } },
@@ -1549,7 +1472,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1093,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 60.5, 70.0),
             Range = 10,
             AnyOf = { { IsQuestNotOnQuest = 1071 }, { IsQuestReadyForTurnIn = 1071 } },
@@ -1595,7 +1517,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1071,
-            NonSkippableWaypoint = true,
             Coord = { x = 205.9, y = 887.5 },
             Range = 20,
             IsQuestOnQuest = 1071,
@@ -1605,7 +1526,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1071,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 60.5, 70.0),
             Range = 10,
             IsQuestOnQuest = 1071,
@@ -1615,7 +1535,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1071,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 58.8, 68.2),
             Range = 10,
             IsQuestOnQuest = 1071,
@@ -1640,7 +1559,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 58.8, 68.2),
             Range = 10,
             IsQuestOnQuest = 1056,
@@ -1649,7 +1567,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 60.5, 70.0),
             Range = 10,
             IsQuestOnQuest = 1056,
@@ -1658,7 +1575,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 311.2, y = 598.9 },
             Range = 20,
             IsQuestOnQuest = 1056,
@@ -1667,7 +1583,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 398.2, y = 738.5 },
             Range = 20,
             IsQuestOnQuest = 1056,
@@ -1676,7 +1591,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 654.5, y = 943.6 },
             Range = 20,
             IsQuestOnQuest = 1056,
@@ -1685,7 +1599,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 754.36, y = 1369.62 },
             Range = 20,
             Zone = 1442,
@@ -1701,7 +1614,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 765.6, y = 1385.2 },
             Range = 20,
             IsQuestOnQuest = 1056,
@@ -1710,7 +1622,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 1020.7, y = 1570 },
             Range = 20,
             IsQuestOnQuest = 1056,
@@ -1719,7 +1630,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 950.8, y = 1880.9 },
             Range = 20,
             IsQuestOnQuest = 1056,
@@ -1728,7 +1638,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 1082.9, y = 2314.6 },
             Range = 20,
             IsQuestOnQuest = 1056,
@@ -1737,7 +1646,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 1178.7, y = 2393.6 },
             Range = 20,
             IsQuestOnQuest = 1056,
@@ -1746,7 +1654,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 1297.9, y = 2402.1 },
             Range = 20,
             IsQuestOnQuest = 1056,
@@ -1755,7 +1662,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 1433.97, y = 2652.91 },
             Range = 20,
             Zone = 1442,
@@ -1859,7 +1765,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1025,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 94.74, 47.77),
             Range = 15,
             IsQuestOnQuest = 1025,
@@ -1868,7 +1773,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 1025,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 10.56, 75.09),
             Range = 15,
             IsQuestOnQuest = 1025,
@@ -1911,7 +1815,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 973,
-            NonSkippableWaypoint = true,
             Fillers = { [93] = { 1 } },
             Coord = { x = -300.46, y = 2970.14 },
             Range = 20,
@@ -1920,7 +1823,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 973,
-            NonSkippableWaypoint = true,
             Fillers = { [93] = { 1 } },
             Coord = { x = -343.13, y = 3079.3 },
             Range = 20,
@@ -1929,7 +1831,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 973,
-            NonSkippableWaypoint = true,
             Fillers = { [93] = { 1 } },
             Coord = { x = -392.15, y = 3193.84 },
             Range = 20,
@@ -1938,7 +1839,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 973,
-            NonSkippableWaypoint = true,
             Fillers = { [93] = { 1 } },
             Coord = { x = -423.86, y = 3229.2 },
             Range = 20,
@@ -1956,7 +1856,6 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             Waypoint = 973,
-            NonSkippableWaypoint = true,
             Fillers = { [93] = { 1 } },
             Note = { "CLIMB_HILL_NEXT_BIG_TREE_RIGHT_FIRE", "JUMP_TREE_ROOT_HUG_RIGHT_AVOID_AGGROING", "KEEP_LEAN_WOLF_FLANKS_LOOTED_QUESTING_TEN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 27.5, 60.76),

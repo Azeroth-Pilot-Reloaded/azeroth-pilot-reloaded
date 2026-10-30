@@ -294,7 +294,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 4641,
-            NonSkippableWaypoint = true,
             Coord = { x = -4198.58, y = -602.41 },
             Range = 8,
             Zone = 1411,
@@ -503,7 +502,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 788,
-            NonSkippableWaypoint = true,
             Coord = { x = -4198.58, y = -602.41 },
             Range = 12,
             Zone = 1411,
@@ -627,7 +625,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 789,
-            NonSkippableWaypoint = true,
             Coord = { x = -4157.87, y = -601.36 },
             Range = 12,
             Class = { "ROGUE", "SHAMAN", "WARRIOR", "WARLOCK" },
@@ -636,7 +633,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 789,
-            NonSkippableWaypoint = true,
             Coord = { x = -4144.65, y = -588.67 },
             Range = 12,
             Class = { "ROGUE", "SHAMAN", "WARRIOR", "WARLOCK" },
@@ -931,7 +927,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 789,
-            NonSkippableWaypoint = true,
             Coord = { x = -4198.58, y = -602.41 },
             Range = 12,
             Zone = 1411,
@@ -1064,7 +1059,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 794,
-            NonSkippableWaypoint = true,
             ExtraLineText = "GO_INSIDE_CAVE",
             Coord = { x = -4360.3, y = -176.5 },
             Range = 5,
@@ -1073,7 +1067,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 794,
-            NonSkippableWaypoint = true,
             Coord = { x = -4364.4, y = -147.5 },
             Range = 5,
             Zone = 1411,
@@ -1209,7 +1202,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 6394,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = { x = -4280.8, y = -53.3 },
             Range = 15,
@@ -1221,7 +1213,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 6394,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = { x = -4327.1, y = -51.2 },
             Range = 15,
@@ -1233,7 +1224,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 6394,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = { x = -4329.3, y = -112.6 },
             Range = 15,
@@ -1245,7 +1235,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 6394,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = { x = -4364.4, y = -147.5 },
             Range = 15,
@@ -1257,7 +1246,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 6394,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = { x = -4360.3, y = -176.5 },
             Range = 15,
@@ -1405,7 +1393,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1517,
-            NonSkippableWaypoint = true,
             Coord = { x = -4255.16, y = -645.07 },
             Range = 20,
             Class = "SHAMAN",
@@ -1414,7 +1401,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1517,
-            NonSkippableWaypoint = true,
             Coord = { x = -4245.64, y = -691.95 },
             Range = 20,
             Class = "SHAMAN",
@@ -1423,7 +1409,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1517,
-            NonSkippableWaypoint = true,
             Coord = { x = -4146.77, y = -787.12 },
             Range = 12,
             Class = "SHAMAN",
@@ -1432,7 +1417,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1517,
-            NonSkippableWaypoint = true,
             Coord = { x = -4120.86, y = -813.21 },
             Range = 8,
             Class = "SHAMAN",
@@ -1441,7 +1425,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1517,
-            NonSkippableWaypoint = true,
             Coord = { x = -4220.79, y = -841.76 },
             Range = 10,
             Class = "SHAMAN",
@@ -1450,7 +1433,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1517,
-            NonSkippableWaypoint = true,
             Coord = { x = -4266.26, y = -853.39 },
             Range = 15,
             Class = "SHAMAN",
@@ -1459,7 +1441,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1517,
-            NonSkippableWaypoint = true,
             Coord = { x = -4295.87, y = -883.36 },
             Range = 20,
             Class = "SHAMAN",
@@ -1492,7 +1473,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1518,
-            NonSkippableWaypoint = true,
             Coord = { x = -4295.87, y = -883.36 },
             Range = 20,
             Class = "SHAMAN",
@@ -1502,7 +1482,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1518,
-            NonSkippableWaypoint = true,
             Coord = { x = -4266.26, y = -853.39 },
             Range = 15,
             Class = "SHAMAN",
@@ -1512,7 +1491,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1518,
-            NonSkippableWaypoint = true,
             Coord = { x = -4220.79, y = -841.76 },
             Range = 10,
             Class = "SHAMAN",
@@ -1522,7 +1500,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1518,
-            NonSkippableWaypoint = true,
             Coord = { x = -4120.86, y = -813.21 },
             Range = 8,
             Class = "SHAMAN",
@@ -1532,7 +1509,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1518,
-            NonSkippableWaypoint = true,
             Coord = { x = -4146.77, y = -787.12 },
             Range = 12,
             Class = "SHAMAN",
@@ -1542,7 +1518,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1518,
-            NonSkippableWaypoint = true,
             Coord = { x = -4245.64, y = -691.95 },
             Range = 20,
             Class = "SHAMAN",
@@ -1552,7 +1527,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1518,
-            NonSkippableWaypoint = true,
             Coord = { x = -4255.16, y = -645.07 },
             Range = 20,
             Class = "SHAMAN",
@@ -1643,7 +1617,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 96652,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_BUILDING" },
             Coord = { x = -4931.96, y = -815.32 },
             Range = 8,
@@ -1652,7 +1625,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 96652,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_BUILDING" },
             Coord = { x = -4939.89, y = -793.12 },
             Range = 8,
@@ -1881,7 +1853,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 823,
-            NonSkippableWaypoint = true,
             Coord = { x = -4709.36, y = 274.96 },
             Range = 5,
             Zone = 1411,
@@ -1926,7 +1897,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 2161,
-            NonSkippableWaypoint = true,
             Coord = { x = -4617.88, y = 290.47 },
             Range = 12,
             Zone = 1411,
@@ -1934,7 +1904,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 2161,
-            NonSkippableWaypoint = true,
             Coord = { x = -4611.01, y = 293.64 },
             Range = 8,
             Zone = 1411,
@@ -1942,7 +1911,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 2161,
-            NonSkippableWaypoint = true,
             Coord = { x = -4616.82, y = 317.26 },
             Range = 12,
             Zone = 1411,
@@ -1950,7 +1918,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 2161,
-            NonSkippableWaypoint = true,
             Coord = { x = -4604.13, y = 364.49 },
             Range = 12,
             Zone = 1411,
@@ -1958,7 +1925,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 2161,
-            NonSkippableWaypoint = true,
             Coord = { x = -4588.8, y = 383.53 },
             Range = 10,
             Zone = 1411,
@@ -1966,7 +1932,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 2161,
-            NonSkippableWaypoint = true,
             Coord = { x = -4593.03, y = 384.94 },
             Range = 6,
             Zone = 1411,
@@ -1974,7 +1939,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 2161,
-            NonSkippableWaypoint = true,
             Coord = { x = -4594.09, y = 389.87 },
             Range = 6,
             Zone = 1411,
@@ -1982,7 +1946,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 2161,
-            NonSkippableWaypoint = true,
             Coord = { x = -4589.86, y = 390.93 },
             Range = 6,
             Zone = 1411,
@@ -1990,7 +1953,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 2161,
-            NonSkippableWaypoint = true,
             Coord = { x = -4589.33, y = 387.76 },
             Range = 6,
             Zone = 1411,
@@ -1998,7 +1960,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 2161,
-            NonSkippableWaypoint = true,
             Coord = { x = -4594.62, y = 386.35 },
             Range = 6,
             Zone = 1411,
@@ -2006,7 +1967,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 2161,
-            NonSkippableWaypoint = true,
             Coord = { x = -4595.15, y = 399.74 },
             Range = 6,
             Zone = 1411,
@@ -2014,7 +1974,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 2161,
-            NonSkippableWaypoint = true,
             Coord = { x = -4585.1, y = 396.92 },
             Range = 8,
             Zone = 1411,
@@ -2313,7 +2272,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 96822,
-            NonSkippableWaypoint = true,
             Coord = { x = -4771.6, y = 309.9 },
             Range = 8,
             IsQuestNotOnQuest = 96822,
@@ -2323,7 +2281,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 96822,
-            NonSkippableWaypoint = true,
             Coord = { x = -4801.6, y = 309.9 },
             Range = 6,
             IsQuestNotOnQuest = 96822,
@@ -2444,7 +2401,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 830,
-            NonSkippableWaypoint = true,
             Fillers = { [784] = { 1, 2 }, [791] = { 1 } },
             Note = { "UPSTAIRS" },
             Coord = { x = -5128.13, y = -231.58 },
@@ -2454,7 +2410,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 830,
-            NonSkippableWaypoint = true,
             Fillers = { [784] = { 1, 2 }, [791] = { 1 } },
             Note = { "UPSTAIRS" },
             Coord = { x = -5126.01, y = -221.36 },
@@ -2464,7 +2419,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 830,
-            NonSkippableWaypoint = true,
             Fillers = { [784] = { 1, 2 }, [791] = { 1 } },
             Note = { "UPSTAIRS" },
             Coord = { x = -5124.42, y = -229.82 },
@@ -2474,7 +2428,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 830,
-            NonSkippableWaypoint = true,
             Fillers = { [784] = { 1, 2 }, [791] = { 1 } },
             Note = { "UPSTAIRS" },
             Coord = { x = -5131.83, y = -229.82 },
@@ -2484,7 +2437,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 830,
-            NonSkippableWaypoint = true,
             Fillers = { [784] = { 1, 2 }, [791] = { 1 } },
             Note = { "UPSTAIRS" },
             Coord = { x = -5131.83, y = -222.42 },
@@ -2534,7 +2486,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 784,
-            NonSkippableWaypoint = true,
             Coord = { x = -4724.69, y = 287.3 },
             Range = 5,
             Zone = 1411,
@@ -2542,7 +2493,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 784,
-            NonSkippableWaypoint = true,
             Coord = { x = -4709.36, y = 274.96 },
             Range = 5,
             Zone = 1411,
@@ -2562,7 +2512,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            NonSkippableWaypoint = true,
             Coord = { x = -4617.88, y = 290.47 },
             Range = 12,
             Zone = 1411,
@@ -2570,7 +2519,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            NonSkippableWaypoint = true,
             Coord = { x = -4611.01, y = 293.64 },
             Range = 8,
             Zone = 1411,
@@ -2578,7 +2526,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            NonSkippableWaypoint = true,
             Coord = { x = -4616.82, y = 317.26 },
             Range = 12,
             Zone = 1411,
@@ -2586,7 +2533,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            NonSkippableWaypoint = true,
             Coord = { x = -4604.13, y = 364.49 },
             Range = 12,
             Zone = 1411,
@@ -2594,7 +2540,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            NonSkippableWaypoint = true,
             Coord = { x = -4588.8, y = 383.53 },
             Range = 10,
             Zone = 1411,
@@ -2602,7 +2547,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            NonSkippableWaypoint = true,
             Note = { "ON_TOP_OF_TOWER" },
             Coord = { x = -4593.03, y = 384.94 },
             Range = 6,
@@ -2611,7 +2555,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            NonSkippableWaypoint = true,
             Note = { "ON_TOP_OF_TOWER" },
             Coord = { x = -4594.09, y = 389.87 },
             Range = 6,
@@ -2620,7 +2563,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            NonSkippableWaypoint = true,
             Note = { "ON_TOP_OF_TOWER" },
             Coord = { x = -4589.86, y = 390.93 },
             Range = 6,
@@ -2629,7 +2571,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            NonSkippableWaypoint = true,
             Note = { "ON_TOP_OF_TOWER" },
             Coord = { x = -4589.33, y = 387.76 },
             Range = 6,
@@ -2638,7 +2579,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            NonSkippableWaypoint = true,
             Note = { "ON_TOP_OF_TOWER" },
             Coord = { x = -4594.62, y = 386.35 },
             Range = 6,
@@ -2647,7 +2587,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            NonSkippableWaypoint = true,
             Note = { "ON_TOP_OF_TOWER" },
             Coord = { x = -4595.15, y = 399.74 },
             Range = 6,
@@ -2656,7 +2595,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            NonSkippableWaypoint = true,
             Note = { "ON_TOP_OF_TOWER" },
             Coord = { x = -4585.1, y = 396.92 },
             Range = 8,
@@ -2671,7 +2609,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 96822,
-            NonSkippableWaypoint = true,
             Coord = { x = -4771.6, y = 309.9 },
             Range = 8,
             IsQuestOnQuest = 96822,
@@ -2680,7 +2617,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 96822,
-            NonSkippableWaypoint = true,
             Coord = { x = -4801.6, y = 309.9 },
             Range = 6,
             IsQuestOnQuest = 96822,
@@ -2807,7 +2743,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 786,
-            NonSkippableWaypoint = true,
             Coord = { x = -4939.36, y = -838.94 },
             Range = 10,
             Class = "MAGE",
@@ -2847,7 +2782,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 786,
-            NonSkippableWaypoint = true,
             Coord = { x = -4648.5, y = -980.9 },
             Range = 10,
             Zone = 1411,
@@ -2898,7 +2832,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 786,
-            NonSkippableWaypoint = true,
             Note = { "FIGHT_YOUR_WAY_OUT" },
             Coord = { x = -4656.48, y = -981.35 },
             Range = 15,
@@ -2931,7 +2864,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97223,
-            NonSkippableWaypoint = true,
             Fillers = { [815] = { 1 }, [818] = { 1, 2 } },
             Coord = { x = -5510.41, y = -634.14 },
             Range = 20,
@@ -2948,7 +2880,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 826,
-            NonSkippableWaypoint = true,
             Fillers = { [815] = { 1 }, [817] = { 1 }, [818] = { 2, 1 } },
             Coord = { x = -5501.95, y = -1167.12 },
             Range = 20,
@@ -3065,7 +2996,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 808,
-            NonSkippableWaypoint = true,
             Coord = { x = -5510.41, y = -634.14 },
             Range = 15,
             ZoneStepTrigger = { x = -5510.41, y = -634.14, mapID = 1411, Range = 15 },
@@ -3107,7 +3037,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 808,
-            NonSkippableWaypoint = true,
             Coord = { x = -4920.86, y = -825.9 },
             Range = 5,
             Zone = 1411,
@@ -3144,7 +3073,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 815,
-            NonSkippableWaypoint = true,
             Coord = { x = -4665.47, y = 311.62 },
             Range = 5,
             Class = "HUNTER",
@@ -3487,7 +3415,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 806,
-            NonSkippableWaypoint = true,
             Note = { "JUMP_OFF" },
             Coord = { x = -4198.3, y = 907.3 },
             Range = 15,
@@ -3497,7 +3424,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 806,
-            NonSkippableWaypoint = true,
             Note = { "DISMISS_PET_EXPLAIN", "JUMP_OFF" },
             Coord = { x = -4198.3, y = 907.3 },
             Range = 15,
@@ -3507,7 +3433,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 815,
-            NonSkippableWaypoint = true,
             Note = { "JUMP_OFF" },
             Coord = { x = -4190.1, y = 922 },
             Range = 15,
@@ -3545,7 +3470,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 806,
-            NonSkippableWaypoint = true,
             Note = { "FIGHT_YOUR_WAY_OUT" },
             Coord = { x = -4035.2, y = 679.63 },
             Range = 15,
@@ -3569,7 +3493,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97246,
-            NonSkippableWaypoint = true,
             Note = { "FIGHT_YOUR_WAY_OUT" },
             Coord = { x = -4035.2, y = 679.63 },
             Range = 20,
@@ -3580,7 +3503,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97246,
-            NonSkippableWaypoint = true,
             Note = { "FIGHT_YOUR_WAY_OUT" },
             Coord = { x = -4035.2, y = 679.63 },
             Range = 20,
@@ -3600,7 +3522,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97246,
-            NonSkippableWaypoint = true,
             Coord = { x = -4367.46, y = 1405.44 },
             Range = 20,
             Class = { "HUNTER", "SHAMAN" },
@@ -3610,7 +3531,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97246,
-            NonSkippableWaypoint = true,
             Coord = { x = -4460.6, y = 1584.3 },
             Range = 10,
             Class = { "HUNTER", "SHAMAN" },
@@ -3656,7 +3576,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 6081,
-            NonSkippableWaypoint = true,
             Coord = { x = -4560, y = 1908.5 },
             Range = 15,
             Class = "HUNTER",
@@ -3665,7 +3584,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97242,
-            NonSkippableWaypoint = true,
             Coord = { x = -4560, y = 1908.5 },
             Range = 15,
             Class = "SHAMAN",
@@ -3674,7 +3592,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 6081,
-            NonSkippableWaypoint = true,
             Coord = { x = -4587, y = 1918.3 },
             Range = 15,
             Class = "HUNTER",
@@ -3683,7 +3600,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97242,
-            NonSkippableWaypoint = true,
             Coord = { x = -4587, y = 1918.3 },
             Range = 15,
             Class = "SHAMAN",
@@ -3692,7 +3608,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 6081,
-            NonSkippableWaypoint = true,
             Coord = { x = -4608, y = 1897.4 },
             Range = 15,
             Class = "HUNTER",
@@ -3701,7 +3616,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97242,
-            NonSkippableWaypoint = true,
             Coord = { x = -4608, y = 1897.4 },
             Range = 15,
             Class = "SHAMAN",
@@ -3710,7 +3624,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 6081,
-            NonSkippableWaypoint = true,
             Coord = { x = -4632.3, y = 1911.6 },
             Range = 15,
             Class = "HUNTER",
@@ -3719,7 +3632,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97242,
-            NonSkippableWaypoint = true,
             Coord = { x = -4632.3, y = 1911.6 },
             Range = 15,
             Class = "SHAMAN",
@@ -3737,7 +3649,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 6081,
-            NonSkippableWaypoint = true,
             Coord = { x = -4682, y = 2032 },
             Range = 8,
             Class = "HUNTER",
@@ -3747,7 +3658,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 6081,
-            NonSkippableWaypoint = true,
             Coord = { x = -4705, y = 2073 },
             Range = 8,
             Class = "HUNTER",
@@ -3757,7 +3667,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 6081,
-            NonSkippableWaypoint = true,
             Coord = { x = -4661, y = 2089 },
             Range = 8,
             Class = "HUNTER",
@@ -3767,7 +3676,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 6081,
-            NonSkippableWaypoint = true,
             Coord = { x = -4645, y = 2059 },
             Range = 8,
             Class = "HUNTER",
@@ -3777,7 +3685,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 6081,
-            NonSkippableWaypoint = true,
             Coord = { x = -4616, y = 2057 },
             Range = 5,
             Class = "HUNTER",
@@ -3787,7 +3694,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 6081,
-            NonSkippableWaypoint = true,
             Coord = { x = -4604, y = 2078 },
             Range = 5,
             Class = "HUNTER",
@@ -3909,7 +3815,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 806,
-            NonSkippableWaypoint = true,
             Coord = { x = -4417.1, y = 1480.6 },
             Range = 15,
             ZoneStepTrigger = { x = -4417.1, y = 1480.6, mapID = 1454, Range = 15 },
@@ -3920,7 +3825,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 806,
-            NonSkippableWaypoint = true,
             Coord = { x = -4412.5, y = 1436.4 },
             Range = 15,
             ZoneStepTrigger = { x = -4412.5, y = 1436.4, mapID = 1454, Range = 15 },
@@ -3931,7 +3835,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 806,
-            NonSkippableWaypoint = true,
             Coord = { x = -4363.9, y = 1420.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4363.9, y = 1420.2, mapID = 1454, Range = 15 },
@@ -3942,7 +3845,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 806,
-            NonSkippableWaypoint = true,
             Coord = { x = -4370, y = 1382.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4370, y = 1382.2, mapID = 1411, Range = 15 },
@@ -3959,7 +3861,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 806,
-            NonSkippableWaypoint = true,
             Coord = { x = -4686.09, y = 340.52 },
             Range = 10,
             ZoneStepTrigger = { x = -4686.09, y = 340.52, mapID = 1411, Range = 10 },
@@ -3975,7 +3876,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 806,
-            NonSkippableWaypoint = true,
             Coord = { x = -4686.09, y = 340.52 },
             Range = 10,
             ZoneStepTrigger = { x = -4686.09, y = 340.52, mapID = 1411, Range = 10 },
@@ -4035,7 +3935,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 815,
-            NonSkippableWaypoint = true,
             Coord = { x = -4665.47, y = 311.62 },
             Range = 5,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -4044,7 +3943,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 815,
-            NonSkippableWaypoint = true,
             Coord = { x = -4724.69, y = 287.3 },
             Range = 5,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -4074,7 +3972,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 815,
-            NonSkippableWaypoint = true,
             Coord = { x = -4665.47, y = 311.62 },
             Range = 5,
             Class = "SHAMAN",
@@ -4083,7 +3980,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 815,
-            NonSkippableWaypoint = true,
             Coord = { x = -4724.69, y = 287.3 },
             Range = 5,
             Class = "SHAMAN",
@@ -4377,7 +4273,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Coord = { x = -3686.1, y = 303.14 },
             Range = 20,
             AnyOf = { { IsQuestOnQuest = 1522 }, { IsQuestOnQuest = 1523 }, { IsQuestOnQuest = 2983 }, { IsQuestOnQuest = 2984 }, { IsQuestOnQuest = 840 } },
@@ -4425,7 +4320,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1524,
-            NonSkippableWaypoint = true,
             Fillers = { [816] = { 1 } },
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -3905.13, y = -228.41 },
@@ -4436,7 +4330,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1524,
-            NonSkippableWaypoint = true,
             Fillers = { [816] = { 1 } },
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -3899.31, y = -241.45 },
@@ -4447,7 +4340,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1524,
-            NonSkippableWaypoint = true,
             Fillers = { [816] = { 1 } },
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -3906.71, y = -270.71 },
@@ -4458,7 +4350,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1524,
-            NonSkippableWaypoint = true,
             Fillers = { [816] = { 1 } },
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -3910.94, y = -247.45 },
@@ -4469,7 +4360,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1524,
-            NonSkippableWaypoint = true,
             Fillers = { [816] = { 1 } },
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -3931.56, y = -240.75 },
@@ -4480,7 +4370,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1524,
-            NonSkippableWaypoint = true,
             Fillers = { [816] = { 1 } },
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -3964.35, y = -242.51 },
@@ -4491,7 +4380,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1524,
-            NonSkippableWaypoint = true,
             Fillers = { [816] = { 1 } },
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -3974.39, y = -228.76 },
@@ -4502,7 +4390,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1524,
-            NonSkippableWaypoint = true,
             Fillers = { [816] = { 1 } },
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -4020.92, y = -219.95 },
@@ -4513,7 +4400,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1524,
-            NonSkippableWaypoint = true,
             Fillers = { [816] = { 1 } },
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -4034.67, y = -232.64 },
@@ -4524,7 +4410,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1524,
-            NonSkippableWaypoint = true,
             Fillers = { [816] = { 1 } },
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -4033.08, y = -255.91 },
@@ -4549,7 +4434,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Coord = { x = -4033.08, y = -255.91 },
             Range = 10,
             Class = "SHAMAN",
@@ -4559,7 +4443,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Coord = { x = -4034.67, y = -232.64 },
             Range = 8,
             Class = "SHAMAN",
@@ -4569,7 +4452,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Coord = { x = -4020.92, y = -219.95 },
             Range = 8,
             Class = "SHAMAN",
@@ -4579,7 +4461,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Coord = { x = -3974.39, y = -228.76 },
             Range = 8,
             Class = "SHAMAN",
@@ -4589,7 +4470,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Coord = { x = -3964.35, y = -242.51 },
             Range = 8,
             Class = "SHAMAN",
@@ -4599,7 +4479,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Coord = { x = -3931.56, y = -240.75 },
             Range = 8,
             Class = "SHAMAN",
@@ -4609,7 +4488,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Coord = { x = -3910.94, y = -247.45 },
             Range = 8,
             Class = "SHAMAN",
@@ -4619,7 +4497,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Coord = { x = -3906.71, y = -270.71 },
             Range = 8,
             Class = "SHAMAN",
@@ -4629,7 +4506,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Coord = { x = -3899.31, y = -241.45 },
             Range = 8,
             Class = "SHAMAN",
@@ -4639,7 +4515,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Coord = { x = -3905.13, y = -228.41 },
             Range = 10,
             Class = "SHAMAN",
@@ -4659,7 +4534,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1411, 54.14, 40.68),
             Range = 20,
             Class = "SHAMAN",
@@ -4670,7 +4544,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1411, 54.54, 38.79),
             Range = 25,
             Class = "SHAMAN",
@@ -4681,7 +4554,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Coord = { x = -4774.39, y = 780.8 },
             Range = 15,
             Class = "SHAMAN",
@@ -4692,7 +4564,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Coord = { x = -4749, y = 773 },
             Range = 8,
             Class = "SHAMAN",
@@ -4703,7 +4574,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Coord = { x = -4751, y = 823 },
             Range = 8,
             Class = "SHAMAN",
@@ -4722,7 +4592,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 828,
-            NonSkippableWaypoint = true,
             Coord = { x = -4939.36, y = 824.51 },
             Range = 20,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -4731,7 +4600,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 828,
-            NonSkippableWaypoint = true,
             Coord = { x = -4945.18, y = 1101.92 },
             Range = 20,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -4754,7 +4622,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 835,
-            NonSkippableWaypoint = true,
             Coord = { x = -4949.41, y = 925.67 },
             Range = 20,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -4763,7 +4630,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 835,
-            NonSkippableWaypoint = true,
             Coord = { x = -4929.32, y = 823.45 },
             Range = 20,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -4772,7 +4638,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 835,
-            NonSkippableWaypoint = true,
             Coord = { x = -4774.39, y = 780.8 },
             Range = 15,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -4781,7 +4646,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 827,
-            NonSkippableWaypoint = true,
             Coord = { x = -4749, y = 773 },
             Range = 8,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -4792,7 +4656,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 827,
-            NonSkippableWaypoint = true,
             Coord = { x = -4751, y = 823 },
             Range = 8,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -4827,7 +4690,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 835,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = -4804.53, y = 830.5 },
             Range = 15,
@@ -4836,7 +4698,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 835,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = -4703.4, y = 841.4 },
             Range = 15,
@@ -4874,7 +4735,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 813,
-            NonSkippableWaypoint = true,
             Coord = { x = -4367.46, y = 1405.44 },
             Range = 20,
             ZoneStepTrigger = { x = -4367.46, y = 1405.44, mapID = 1454, Range = 20 },
@@ -4905,7 +4765,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 813,
-            NonSkippableWaypoint = true,
             Coord = { x = -4417.1, y = 1480.6 },
             Range = 15,
             ZoneStepTrigger = { x = -4417.1, y = 1480.6, mapID = 1454, Range = 15 },
@@ -4919,7 +4778,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 813,
-            NonSkippableWaypoint = true,
             Coord = { x = -4412.5, y = 1436.4 },
             Range = 15,
             ZoneStepTrigger = { x = -4412.5, y = 1436.4, mapID = 1454, Range = 15 },
@@ -4933,7 +4791,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 813,
-            NonSkippableWaypoint = true,
             Coord = { x = -4363.9, y = 1420.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4363.9, y = 1420.2, mapID = 1454, Range = 15 },
@@ -4947,7 +4804,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 813,
-            NonSkippableWaypoint = true,
             Coord = { x = -4370, y = 1382.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4370, y = 1382.2, mapID = 1411, Range = 15 },
@@ -5009,7 +4865,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 828,
-            NonSkippableWaypoint = true,
             Coord = { x = -4945.18, y = 1101.92 },
             Range = 20,
             Class = { "HUNTER", "SHAMAN" },
@@ -5032,7 +4887,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 827,
-            NonSkippableWaypoint = true,
             Coord = { x = -4876.97, y = 1452.31 },
             Range = 20,
             Class = { "HUNTER", "SHAMAN" },
@@ -5041,7 +4895,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 827,
-            NonSkippableWaypoint = true,
             Coord = { x = -4855.82, y = 1498.84 },
             Range = 12,
             Class = { "HUNTER", "SHAMAN" },
@@ -5052,7 +4905,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 827,
-            NonSkippableWaypoint = true,
             Coord = { x = -4805.59, y = 1495.67 },
             Range = 12,
             Class = { "HUNTER", "SHAMAN" },
@@ -5112,7 +4964,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97246,
-            NonSkippableWaypoint = true,
             Coord = { x = -4369.9, y = 1380.9 },
             Range = 15,
             Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
@@ -5121,7 +4972,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 5654,
-            NonSkippableWaypoint = true,
             Coord = { x = -4369.9, y = 1380.9 },
             Range = 15,
             Class = "PRIEST",
@@ -5191,7 +5041,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97246,
-            NonSkippableWaypoint = true,
             Coord = { x = -4460, y = 1598.6 },
             Range = 5,
             Zone = 1454,
@@ -5243,7 +5092,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97242,
-            NonSkippableWaypoint = true,
             Coord = { x = -4560, y = 1908.5 },
             Range = 15,
             Zone = 1454,
@@ -5251,7 +5099,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97242,
-            NonSkippableWaypoint = true,
             Coord = { x = -4587, y = 1918.3 },
             Range = 15,
             Zone = 1454,
@@ -5259,7 +5106,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97242,
-            NonSkippableWaypoint = true,
             Coord = { x = -4608, y = 1897.4 },
             Range = 15,
             Zone = 1454,
@@ -5267,7 +5113,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97242,
-            NonSkippableWaypoint = true,
             Coord = { x = -4632.3, y = 1911.6 },
             Range = 15,
             Zone = 1454,
@@ -5283,7 +5128,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 829,
-            NonSkippableWaypoint = true,
             Coord = { x = -4682, y = 2032 },
             Range = 8,
             Class = "HUNTER",
@@ -5295,7 +5139,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 829,
-            NonSkippableWaypoint = true,
             Coord = { x = -4705, y = 2073 },
             Range = 8,
             Class = "HUNTER",
@@ -5307,7 +5150,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 829,
-            NonSkippableWaypoint = true,
             Coord = { x = -4661, y = 2089 },
             Range = 8,
             Class = "HUNTER",
@@ -5319,7 +5161,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 829,
-            NonSkippableWaypoint = true,
             Coord = { x = -4645, y = 2059 },
             Range = 8,
             Class = "HUNTER",
@@ -5331,7 +5172,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 829,
-            NonSkippableWaypoint = true,
             Coord = { x = -4616, y = 2057 },
             Range = 5,
             Class = "HUNTER",
@@ -5343,7 +5183,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 829,
-            NonSkippableWaypoint = true,
             Coord = { x = -4604, y = 2078 },
             Range = 5,
             Class = "HUNTER",
@@ -5522,7 +5361,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 829,
-            NonSkippableWaypoint = true,
             Coord = { x = -4250.6, y = 1857 },
             Range = 15,
             ZoneStepTrigger = { x = -4250.6, y = 1857, mapID = 1454, Range = 15 },
@@ -5533,7 +5371,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 829,
-            NonSkippableWaypoint = true,
             Coord = { x = -4243.9, y = 1772.9 },
             Range = 15,
             ZoneStepTrigger = { x = -4243.9, y = 1772.9, mapID = 1454, Range = 15 },
@@ -5575,7 +5412,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 829,
-            NonSkippableWaypoint = true,
             Coord = { x = -4491, y = 1731 },
             Range = 10,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARRIOR" },
@@ -5585,7 +5421,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 829,
-            NonSkippableWaypoint = true,
             Coord = { x = -4527, y = 1803 },
             Range = 10,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARRIOR" },
@@ -5595,7 +5430,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 829,
-            NonSkippableWaypoint = true,
             Coord = { x = -4483, y = 1889 },
             Range = 8,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARRIOR" },
@@ -5605,7 +5439,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 829,
-            NonSkippableWaypoint = true,
             Coord = { x = -4431, y = 1891 },
             Range = 8,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARRIOR" },
@@ -5615,7 +5448,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 829,
-            NonSkippableWaypoint = true,
             Coord = { x = -4417, y = 1857 },
             Range = 8,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARRIOR" },
@@ -5625,7 +5457,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 829,
-            NonSkippableWaypoint = true,
             Coord = { x = -4381, y = 1827 },
             Range = 8,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARRIOR" },
@@ -5635,7 +5466,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 829,
-            NonSkippableWaypoint = true,
             Coord = { x = -4357, y = 1819 },
             Range = 8,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARRIOR" },
@@ -5665,7 +5495,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 809,
-            NonSkippableWaypoint = true,
             Coord = { x = -4417.1, y = 1480.6 },
             Range = 15,
             ZoneStepTrigger = { x = -4417.1, y = 1480.6, mapID = 1454, Range = 15 },
@@ -5676,7 +5505,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 809,
-            NonSkippableWaypoint = true,
             Coord = { x = -4412.5, y = 1436.4 },
             Range = 15,
             ZoneStepTrigger = { x = -4412.5, y = 1436.4, mapID = 1454, Range = 15 },
@@ -5687,7 +5515,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 809,
-            NonSkippableWaypoint = true,
             Coord = { x = -4363.9, y = 1420.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4363.9, y = 1420.2, mapID = 1454, Range = 15 },
@@ -5698,7 +5525,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 809,
-            NonSkippableWaypoint = true,
             Coord = { x = -4370, y = 1382.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4370, y = 1382.2, mapID = 1411, Range = 15 },
@@ -5723,7 +5549,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 816,
-            NonSkippableWaypoint = true,
             Fillers = { [816] = { 1 } },
             Coord = { x = -3802.55, y = 650.72 },
             Range = 20,
@@ -5733,7 +5558,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 816,
-            NonSkippableWaypoint = true,
             Fillers = { [816] = { 1 } },
             Coord = { x = -3803.08, y = 503.38 },
             Range = 20,
@@ -5743,7 +5567,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 816,
-            NonSkippableWaypoint = true,
             Fillers = { [816] = { 1 } },
             Coord = { x = -3783.51, y = 238.65 },
             Range = 20,
@@ -5753,7 +5576,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 816,
-            NonSkippableWaypoint = true,
             Fillers = { [816] = { 1 } },
             Coord = { x = -3774.53, y = 150.88 },
             Range = 20,
@@ -5789,7 +5611,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Coord = { x = -3686.1, y = 303.14 },
             Range = 20,
             Class = "HUNTER",
@@ -5799,7 +5620,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 809,
-            NonSkippableWaypoint = true,
             Coord = { x = -3686.1, y = 303.14 },
             Range = 20,
             Class = "SHAMAN",
@@ -5845,7 +5665,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 809,
-            NonSkippableWaypoint = true,
             Coord = { x = -4399.7, y = 1839.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4399.7, y = 1839.2, mapID = 1454, Range = 15 },
@@ -5856,7 +5675,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 926,
-            NonSkippableWaypoint = true,
             Coord = { x = -4427.8, y = 1894.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4427.8, y = 1894.2, mapID = 1454, Range = 15 },
@@ -5867,7 +5685,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 926,
-            NonSkippableWaypoint = true,
             Coord = { x = -4470.7, y = 1887 },
             Range = 15,
             ZoneStepTrigger = { x = -4470.7, y = 1887, mapID = 1454, Range = 15 },
@@ -5878,7 +5695,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 926,
-            NonSkippableWaypoint = true,
             Coord = { x = -4417.1, y = 1480.6 },
             Range = 15,
             ZoneStepTrigger = { x = -4417.1, y = 1480.6, mapID = 1454, Range = 15 },
@@ -5889,7 +5705,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 926,
-            NonSkippableWaypoint = true,
             Coord = { x = -4412.5, y = 1436.4 },
             Range = 15,
             ZoneStepTrigger = { x = -4412.5, y = 1436.4, mapID = 1454, Range = 15 },
@@ -5900,7 +5715,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 926,
-            NonSkippableWaypoint = true,
             Coord = { x = -4363.9, y = 1420.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4363.9, y = 1420.2, mapID = 1454, Range = 15 },
@@ -5911,7 +5725,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 926,
-            NonSkippableWaypoint = true,
             Coord = { x = -4370, y = 1382.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4370, y = 1382.2, mapID = 1411, Range = 15 },
@@ -5922,7 +5735,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 926,
-            NonSkippableWaypoint = true,
             Coord = { x = -4636.4, y = 1338.7 },
             Range = 5,
             ZoneStepTrigger = { x = -4636.4, y = 1338.7, mapID = 1411, Range = 5 },
@@ -5933,7 +5745,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 926,
-            NonSkippableWaypoint = true,
             Coord = { x = -4645.1, y = 1345 },
             Range = 5,
             ZoneStepTrigger = { x = -4645.1, y = 1345, mapID = 1411, Range = 5 },

@@ -215,7 +215,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 1436,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 47.52, 46.73),
             Range = 5,
@@ -279,7 +278,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 583,
-            NonSkippableWaypoint = true,
             Coord = { x = -4682, y = 2032 },
             Range = 8,
             ZoneStepTrigger = { x = -4682, y = 2032, Range = 8, mapID = 1454 },
@@ -293,7 +291,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 583,
-            NonSkippableWaypoint = true,
             Coord = { x = -4702, y = 2047 },
             Range = 5,
             ZoneStepTrigger = { x = -4702, y = 2047, Range = 5, mapID = 1454 },
@@ -307,7 +304,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 583,
-            NonSkippableWaypoint = true,
             Coord = { x = -4705, y = 2073 },
             Range = 8,
             ZoneStepTrigger = { x = -4705, y = 2073, Range = 8, mapID = 1454 },
@@ -321,7 +317,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 583,
-            NonSkippableWaypoint = true,
             Coord = { x = -4661, y = 2089 },
             Range = 8,
             ZoneStepTrigger = { x = -4661, y = 2089, Range = 8, mapID = 1454 },
@@ -335,7 +330,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 583,
-            NonSkippableWaypoint = true,
             Coord = { x = -4645, y = 2059 },
             Range = 8,
             ZoneStepTrigger = { x = -4645, y = 2059, Range = 8, mapID = 1454 },
@@ -349,7 +343,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 583,
-            NonSkippableWaypoint = true,
             Coord = { x = -4616, y = 2057 },
             Range = 5,
             ZoneStepTrigger = { x = -4616, y = 2057, Range = 5, mapID = 1454 },
@@ -363,7 +356,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 583,
-            NonSkippableWaypoint = true,
             Coord = { x = -4604, y = 2078 },
             Range = 5,
             ZoneStepTrigger = { x = -4604, y = 2078, Range = 5, mapID = 1454 },
@@ -388,7 +380,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         {
             Waypoint = 583,
             LootItems = { { itemID = 10592, quantity = 3 } },
-            NonSkippableWaypoint = true,
             Note = { "OPTIONAL_BUY_MISSING_QUEST_SUPPLIES_AUCTION_HOUSE" },
             Coord = { x = -4460.31, y = 1685.31 },
             Range = 5,
@@ -409,7 +400,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 583,
-            NonSkippableWaypoint = true,
             Coord = { x = -4417.1, y = 1480.6 },
             Range = 15,
             ZoneStepTrigger = { x = -4417.1, y = 1480.6, mapID = 1454, Range = 15 },
@@ -419,7 +409,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 583,
-            NonSkippableWaypoint = true,
             Coord = { x = -4412.5, y = 1436.4 },
             Range = 15,
             ZoneStepTrigger = { x = -4412.5, y = 1436.4, mapID = 1454, Range = 15 },
@@ -429,7 +418,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 583,
-            NonSkippableWaypoint = true,
             Coord = { x = -4363.9, y = 1420.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4363.9, y = 1420.2, mapID = 1454, Range = 15 },
@@ -439,7 +427,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 583,
-            NonSkippableWaypoint = true,
             Coord = { x = -4370, y = 1382.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4370, y = 1382.2, mapID = 1411, Range = 15 },
@@ -449,7 +436,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 583,
-            NonSkippableWaypoint = true,
             Coord = { x = -4636.4, y = 1338.7 },
             Range = 5,
             ZoneStepTrigger = { x = -4636.4, y = 1338.7, mapID = 1411, Range = 5 },
@@ -460,7 +446,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 583,
-            NonSkippableWaypoint = true,
             Coord = { x = -4645.1, y = 1345 },
             Range = 5,
             ZoneStepTrigger = { x = -4645.1, y = 1345, mapID = 1411, Range = 5 },
@@ -564,7 +549,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 583,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 35.66, 10.53),
             Range = 5,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 35.66, 10.53, 5),
@@ -573,7 +557,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 583,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 35.66, 10.81),
             Range = 5,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 35.66, 10.81, 5),
@@ -582,7 +565,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 583,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 35.62, 10.62),
             Range = 5,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 35.62, 10.62, 5),
@@ -664,7 +646,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 185,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 35.62, 10.62),
             Range = 5,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 35.62, 10.62, 5),
@@ -728,7 +709,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 191,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 35.55, 10.55),
             Range = 5,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 35.55, 10.55, 5),
@@ -737,7 +717,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 191,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 35.61, 10.62),
             Range = 5,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 35.61, 10.62, 5),
@@ -1011,7 +990,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 582,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 32.16, 27.72),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 32.16, 27.72, 20),
@@ -1020,7 +998,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 582,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 32.16, 27.72),
             Range = 5,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 32.16, 27.72, 5),
@@ -1071,7 +1048,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 1182,
-            NonSkippableWaypoint = true,
             Fillers = { [213] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 42.74, 18.04),
             Range = 20,
@@ -1082,7 +1058,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 1182,
-            NonSkippableWaypoint = true,
             Fillers = { [213] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 42.1, 18.33),
             Range = 12,
@@ -1093,7 +1068,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 1182,
-            NonSkippableWaypoint = true,
             Fillers = { [213] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 42.29, 18.98),
             Range = 12,
@@ -1104,7 +1078,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 1182,
-            NonSkippableWaypoint = true,
             Fillers = { [213] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 42.51, 18.82),
             Range = 12,
@@ -1125,7 +1098,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 192,
-            NonSkippableWaypoint = true,
             Fillers = { [213] = { 1 } },
             Note = { "GET_INSIDE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 43.47, 20.33),
@@ -1219,7 +1191,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 192,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 35.55, 10.55),
             Range = 5,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 35.55, 10.55, 5),
@@ -1228,7 +1199,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 192,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 35.61, 10.62),
             Range = 5,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 35.61, 10.62, 5),
@@ -1301,7 +1271,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 569,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 32.16, 27.72),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 32.16, 27.72, 20),
@@ -1353,7 +1322,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 189,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 27, 77.13),
             Range = 5,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 27, 77.13, 5),
@@ -1533,7 +1501,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 577,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 25.92, 73.15),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 25.92, 73.15, 20),
@@ -1603,7 +1570,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         {
             Waypoint = 577,
             LootItems = { { itemID = 3853, quantity = 1 } },
-            NonSkippableWaypoint = true,
             Note = { "OPTIONAL_BUY_MISSING_QUEST_SUPPLIES_AUCTION_HOUSE" },
             Coord = { x = -4460.31, y = 1685.31 },
             Range = 5,
@@ -1737,7 +1703,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 1268,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 47.52, 46.73),
             Range = 5,
@@ -1769,7 +1734,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 577,
-            NonSkippableWaypoint = true,
             Coord = { x = -4682, y = 2032 },
             Range = 8,
             ZoneStepTrigger = { x = -4682, y = 2032, Range = 8, mapID = 1454 },
@@ -1787,7 +1751,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 577,
-            NonSkippableWaypoint = true,
             Coord = { x = -4702, y = 2047 },
             Range = 5,
             ZoneStepTrigger = { x = -4702, y = 2047, Range = 5, mapID = 1454 },
@@ -1805,7 +1768,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 577,
-            NonSkippableWaypoint = true,
             Coord = { x = -4705, y = 2073 },
             Range = 8,
             ZoneStepTrigger = { x = -4705, y = 2073, Range = 8, mapID = 1454 },
@@ -1823,7 +1785,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 577,
-            NonSkippableWaypoint = true,
             Coord = { x = -4661, y = 2089 },
             Range = 8,
             ZoneStepTrigger = { x = -4661, y = 2089, Range = 8, mapID = 1454 },
@@ -1841,7 +1802,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 577,
-            NonSkippableWaypoint = true,
             Coord = { x = -4645, y = 2059 },
             Range = 8,
             ZoneStepTrigger = { x = -4645, y = 2059, Range = 8, mapID = 1454 },
@@ -1859,7 +1819,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 577,
-            NonSkippableWaypoint = true,
             Coord = { x = -4616, y = 2057 },
             Range = 5,
             ZoneStepTrigger = { x = -4616, y = 2057, Range = 5, mapID = 1454 },
@@ -1877,7 +1836,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 577,
-            NonSkippableWaypoint = true,
             Coord = { x = -4604, y = 2078 },
             Range = 5,
             ZoneStepTrigger = { x = -4604, y = 2078, Range = 5, mapID = 1454 },
@@ -2103,7 +2061,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 1240,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 47.52, 46.73),
             Range = 5,
@@ -2116,7 +2073,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 1240,
-            NonSkippableWaypoint = true,
             Coord = { x = -4682, y = 2032 },
             Range = 8,
             ZoneStepTrigger = { x = -4682, y = 2032, Range = 8, mapID = 1454 },
@@ -2130,7 +2086,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 1240,
-            NonSkippableWaypoint = true,
             Coord = { x = -4702, y = 2047 },
             Range = 5,
             ZoneStepTrigger = { x = -4702, y = 2047, Range = 5, mapID = 1454 },
@@ -2144,7 +2099,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 1240,
-            NonSkippableWaypoint = true,
             Coord = { x = -4705, y = 2073 },
             Range = 8,
             ZoneStepTrigger = { x = -4705, y = 2073, Range = 8, mapID = 1454 },
@@ -2158,7 +2112,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 1240,
-            NonSkippableWaypoint = true,
             Coord = { x = -4661, y = 2089 },
             Range = 8,
             ZoneStepTrigger = { x = -4661, y = 2089, Range = 8, mapID = 1454 },
@@ -2172,7 +2125,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 1240,
-            NonSkippableWaypoint = true,
             Coord = { x = -4645, y = 2059 },
             Range = 8,
             ZoneStepTrigger = { x = -4645, y = 2059, Range = 8, mapID = 1454 },
@@ -2186,7 +2138,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 1240,
-            NonSkippableWaypoint = true,
             Coord = { x = -4616, y = 2057 },
             Range = 5,
             ZoneStepTrigger = { x = -4616, y = 2057, Range = 5, mapID = 1454 },
@@ -2200,7 +2151,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 1240,
-            NonSkippableWaypoint = true,
             Coord = { x = -4604, y = 2078 },
             Range = 5,
             ZoneStepTrigger = { x = -4604, y = 2078, Range = 5, mapID = 1454 },
@@ -2344,7 +2294,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 1240,
-            NonSkippableWaypoint = true,
             Coord = { x = -4417.1, y = 1480.6 },
             Range = 15,
             ZoneStepTrigger = { x = -4417.1, y = 1480.6, mapID = 1454, Range = 15 },
@@ -2354,7 +2303,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 1240,
-            NonSkippableWaypoint = true,
             Coord = { x = -4412.5, y = 1436.4 },
             Range = 15,
             ZoneStepTrigger = { x = -4412.5, y = 1436.4, mapID = 1454, Range = 15 },
@@ -2364,7 +2312,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 1240,
-            NonSkippableWaypoint = true,
             Coord = { x = -4363.9, y = 1420.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4363.9, y = 1420.2, mapID = 1454, Range = 15 },
@@ -2374,7 +2321,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 1240,
-            NonSkippableWaypoint = true,
             Coord = { x = -4370, y = 1382.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4370, y = 1382.2, mapID = 1411, Range = 15 },
@@ -2384,7 +2330,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 1240,
-            NonSkippableWaypoint = true,
             Coord = { x = -4636.4, y = 1338.7 },
             Range = 5,
             ZoneStepTrigger = { x = -4636.4, y = 1338.7, mapID = 1411, Range = 5 },
@@ -2395,7 +2340,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 1240,
-            NonSkippableWaypoint = true,
             Coord = { x = -4645.1, y = 1345 },
             Range = 5,
             ZoneStepTrigger = { x = -4645.1, y = 1345, mapID = 1411, Range = 5 },
@@ -2448,7 +2392,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 584,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 23.82, 10.78),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 23.82, 10.78, 20),
@@ -2596,7 +2539,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 572,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 32.16, 27.72),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 32.16, 27.72, 20),
@@ -2720,7 +2662,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 196,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 35.66, 10.81),
             Range = 5,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 35.66, 10.81, 5),
@@ -2830,7 +2771,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 197,
-            NonSkippableWaypoint = true,
             Fillers = { [598] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 43.22, 38.84),
             Range = 20,
@@ -2985,7 +2925,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 595,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 28, 73.46),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 28, 73.46, 15),
@@ -2996,7 +2935,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 595,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 29.56, 72.51),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 29.56, 72.51, 15),
@@ -3023,7 +2961,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 597,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 29.56, 72.51),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 29.56, 72.51, 15),
@@ -3034,7 +2971,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 597,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 28, 73.46),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 28, 73.46, 15),
@@ -3085,7 +3021,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 604,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 28, 73.46),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 28, 73.46, 15),
@@ -3096,7 +3031,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 604,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 29.56, 72.51),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 29.56, 72.51, 15),
@@ -3157,7 +3091,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 348,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 34.2, 63.6),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 34.2, 63.6, 10),
@@ -3169,7 +3102,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 348,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 34.65, 62.52),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 34.65, 62.52, 10),
@@ -3181,7 +3113,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 348,
-            NonSkippableWaypoint = true,
             Coord = { x = 2, y = -13775 },
             Range = 10,
             ZoneStepTrigger = { x = 2, y = -13775, Range = 10, mapID = 1434 },
@@ -3220,7 +3151,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 606,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 29.56, 72.51),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 29.56, 72.51, 15),
@@ -3231,7 +3161,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 606,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 28, 73.46),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 28, 73.46, 15),
@@ -3242,7 +3171,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 606,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 26.7, 73.6),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 26.7, 73.6, 20),
@@ -3339,7 +3267,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 8551,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 39.48, 47.42),
             Range = 20,
@@ -3349,7 +3276,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 8551,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 41.83, 50.12),
             Range = 20,
@@ -3449,7 +3375,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 624,
-            NonSkippableWaypoint = true,
             Fillers = { [587] = { 1 }, [576] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 32.9, 88),
             Range = 5,
@@ -3460,7 +3385,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 624,
-            NonSkippableWaypoint = true,
             Fillers = { [587] = { 1 }, [576] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 30.6, 90),
             Range = 5,
@@ -3540,7 +3464,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 8551,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 29.56, 72.51),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 29.56, 72.51, 15),
@@ -3551,7 +3474,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 8551,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 28, 73.46),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 28, 73.46, 15),
@@ -3562,7 +3484,6 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 8551,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 26.7, 73.6),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 26.7, 73.6, 20),

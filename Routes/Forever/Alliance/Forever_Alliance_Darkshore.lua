@@ -137,7 +137,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1141,
-            NonSkippableWaypoint = true,
             Note = { "UP_RAMP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.826, 44.15),
             Range = 5.0,
@@ -147,7 +146,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1141,
-            NonSkippableWaypoint = true,
             Note = { "UP_RAMP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.688, 43.952),
             Range = 8.0,
@@ -165,7 +163,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1141,
-            NonSkippableWaypoint = true,
             Note = { "UP_RAMP" },
             Coord = { x = 525.8, y = 6414.8 },
             Range = 8.0,
@@ -256,7 +253,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 3524,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.701, 45.122),
             Range = 8.0,
             Race = { "Dwarf", "Gnome", "Human", "Skyborne" },
@@ -408,7 +404,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 3524,
-            NonSkippableWaypoint = true,
             Fillers = { [2178] = { 1 }, [2118] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.701, 45.122),
             Range = 8.0,
@@ -434,7 +429,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 6343,
-            NonSkippableWaypoint = true,
             Fillers = { [2118] = { 1 } },
             Note = { "INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.126, 45.593),
@@ -609,7 +603,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4681,
-            NonSkippableWaypoint = true,
             Fillers = { [2118] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.806, 44.137),
             Range = 8.0,
@@ -619,7 +612,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4681,
-            NonSkippableWaypoint = true,
             Fillers = { [2118] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.743, 43.71),
             Range = 12.0,
@@ -637,7 +629,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4681,
-            NonSkippableWaypoint = true,
             Fillers = { [2118] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 32.432, 43.744),
             Range = 15.0,
@@ -665,7 +656,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4681,
-            NonSkippableWaypoint = true,
             Fillers = { [2118] = { 1 }, [1001] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.701, 45.122),
             Range = 8.0,
@@ -739,7 +729,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2178,
-            NonSkippableWaypoint = true,
             Coord = { x = 436.36, y = 6542.65 },
             Range = 5,
             Class = { "ROGUE", "WARRIOR" },
@@ -845,7 +834,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4761,
-            NonSkippableWaypoint = true,
             Coord = { x = 488.69, y = 6564.83 },
             Range = 5,
             RaidIcon = 4182,
@@ -933,7 +921,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 954,
-            NonSkippableWaypoint = true,
             Fillers = { [2178] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 44.629, 36.316),
             Range = 20.0,
@@ -942,7 +929,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 954,
-            NonSkippableWaypoint = true,
             Fillers = { [2178] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 44.168, 36.289),
             Range = 15.0,
@@ -1054,7 +1040,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4811,
-            NonSkippableWaypoint = true,
             Fillers = { [2178] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.703, 43.393),
             Range = 5,
@@ -1170,7 +1155,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4813,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.703, 43.393),
             Range = 5,
             AnyOf = { { Class = { "DRUID", "PRIEST", "ROGUE", "WARRIOR" }, Race = "NightElf" }, { Class = { "DRUID", "WARRIOR" } } },
@@ -1357,7 +1341,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4722,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [1002] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.701, 45.122),
             Range = 5,
@@ -1366,7 +1349,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4722,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.701, 45.122),
             Range = 8.0,
@@ -1400,7 +1382,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 963,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.806, 44.137),
             Range = 8.0,
@@ -1410,7 +1391,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 963,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.743, 43.71),
             Range = 12.0,
@@ -1508,7 +1488,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 982,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 39.28, 43.121),
@@ -1518,7 +1497,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 982,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 39.162, 43.194),
@@ -1574,7 +1552,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2178,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "COOK_SKILL_10_HIGHER", "CONTINUE_LEVELING_COOKING_RUN_OUT_SMALL_EGGS", "COOKING_50_WAITING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.511, 41.67),
@@ -1639,7 +1616,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 963,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.806, 44.137),
             Range = 8.0,
@@ -1649,7 +1625,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 963,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.743, 43.71),
             Range = 12.0,
@@ -1724,7 +1699,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 97914,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = 1194.2, y = -8360.9 },
             Range = 10,
@@ -1735,7 +1709,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 97914,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = 1076.3, y = -8408.5 },
             Range = 15,
@@ -1746,7 +1719,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 97914,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = 1001.4, y = -8499.7 },
             Range = 10,
@@ -1757,7 +1729,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 97914,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = 985.5, y = -8471.3 },
             Range = 15,
@@ -1768,7 +1739,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 97914,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = 960.1, y = -8501.8 },
             Range = 15,
@@ -1779,7 +1749,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 97914,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = 981.2, y = -8581.8 },
             Range = 15,
@@ -1790,7 +1759,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 97914,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = 875.5, y = -8680.9 },
             Range = 10,
@@ -1850,7 +1818,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 97220,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = 358.25, y = -8728.28 },
             Range = 15.0,
@@ -1861,7 +1828,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 97220,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = 302.6, y = -8685.53 },
             Range = 15.0,
@@ -1968,7 +1934,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = 562.3, y = -8385.3 },
             Range = 20.0,
@@ -1979,7 +1944,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = 522.0, y = -8352.101 },
             Range = 5,
@@ -2010,7 +1974,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = -1205.65, y = -5042.12 },
             Range = 5,
@@ -2053,7 +2016,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "UP_RAMP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 59.9, 49.5),
@@ -2064,7 +2026,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "UP_RAMP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 61.2, 47.2),
@@ -2075,7 +2036,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "UP_RAMP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 62.1, 47.3),
@@ -2122,7 +2082,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 16.494, 58.424),
             Range = 20.0,
@@ -2133,7 +2092,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 19.594, 62.735),
             Range = 20.0,
@@ -2144,7 +2102,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 20.749, 64.326),
             Range = 20.0,
@@ -2155,7 +2112,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 21.106, 65.007),
             Range = 20.0,
@@ -2166,7 +2122,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 21.388, 66.357),
             Range = 20.0,
@@ -2177,7 +2132,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 21.498, 67.84),
             Range = 5,
@@ -2196,7 +2150,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "UPSTAIRS" },
             Coord = { x = -2635.61, y = -5879.14 },
@@ -2207,7 +2160,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "UPSTAIRS" },
             Coord = { x = -2645.27, y = -5874.91 },
@@ -2218,7 +2170,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "UPSTAIRS" },
             Coord = { x = -2631.48, y = -5847.5 },
@@ -2291,7 +2242,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = -3006.61, y = -5259.57 },
             Range = 15.0,
@@ -2301,7 +2251,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = -3020.95, y = -5282.02 },
             Range = 15.0,
@@ -2311,7 +2260,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = -3023.44, y = -5326.9 },
             Range = 15.0,
@@ -2321,7 +2269,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = -3007.99, y = -5337.39 },
             Range = 15.0,
@@ -2331,7 +2278,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = -2964.41, y = -5349.9 },
             Range = 15.0,
@@ -2341,7 +2287,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = -2894.9, y = -5401.96 },
             Range = 20.0,
@@ -2368,7 +2313,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 267,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [418] = { 1 } },
             Note = { "RUN_UP_DIRT_PATH_DROP_DOWN_BUNKER" },
             Coord = { x = -2677.26, y = -5778.34 },
@@ -2379,7 +2323,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 267,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [418] = { 1 } },
             Note = { "RUN_UP_DIRT_PATH_DROP_DOWN_BUNKER" },
             Coord = { x = -2648.3, y = -5876.75 },
@@ -2406,7 +2349,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1339,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [418] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 23.49, 18.008),
             Range = 5,
@@ -2416,7 +2358,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1339,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [418] = { 1 } },
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 23.49, 18.008),
@@ -2427,7 +2368,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1339,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [418] = { 1 } },
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 24.279, 17.959),
@@ -2454,7 +2394,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [418] = { 1 }, [416] = { 1 } },
             Coord = { x = -2972.96, y = -4835.187 },
             Range = 20.0,
@@ -2499,7 +2438,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [418] = { 1 } },
             Coord = { x = -3033.92, y = -4797.29 },
             Range = 20,
@@ -2509,7 +2447,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [418] = { 1 } },
             Coord = { x = -2972.41, y = -4796.92 },
             Range = 20,
@@ -2519,7 +2456,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [418] = { 1 } },
             Coord = { x = -2684.71, y = -5042.87 },
             Range = 20,
@@ -2529,7 +2465,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [418] = { 1 } },
             Coord = { x = -2712.57, y = -5286.61 },
             Range = 20,
@@ -2539,7 +2474,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [418] = { 1 } },
             Coord = { x = -3033.92, y = -4797.29 },
             Range = 20,
@@ -2558,7 +2492,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [418] = { 1 } },
             Note = { "INSIDE_BUILDING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 23.49, 18.008),
@@ -2569,7 +2502,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [418] = { 1 } },
             Note = { "INSIDE_BUILDING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 24.279, 17.959),
@@ -2580,7 +2512,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [418] = { 1 } },
             Note = { "SELL_JUNK_REPAIR_GEAR" },
             Coord = { x = -2659.45, y = -4822.45 },
@@ -2618,7 +2549,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [418] = { 1 } },
             Note = { "INSIDE_INN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.273, 47.75),
@@ -2629,7 +2559,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [418] = { 1 } },
             Note = { "INSIDE_INN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.433, 48.243),
@@ -2658,7 +2587,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 436,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 37.17, 47.94),
             Range = 8.0,
@@ -2676,7 +2604,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = -3006.61, y = -5259.57 },
             Range = 15.0,
@@ -2686,7 +2613,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = -3020.95, y = -5282.02 },
             Range = 15.0,
@@ -2696,7 +2622,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = -3023.44, y = -5326.9 },
             Range = 15.0,
@@ -2706,7 +2631,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = -3007.99, y = -5337.39 },
             Range = 15.0,
@@ -2716,7 +2640,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = -2964.41, y = -5349.9 },
             Range = 15.0,
@@ -2726,7 +2649,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = -2894.9, y = -5401.96 },
             Range = 20.0,
@@ -2779,7 +2701,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 257,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 82.6, 64),
             Range = 5,
@@ -2802,7 +2723,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 257,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 80.09, 64.16),
             Range = 20,
@@ -2812,7 +2732,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 257,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 77.16, 75.57),
             Range = 20,
@@ -2822,7 +2741,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 257,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 70.78, 72.91),
             Range = 20,
@@ -2832,7 +2750,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 257,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 76.65, 62.27),
             Range = 20,
@@ -2842,7 +2759,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 257,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 76.36, 56.05),
             Range = 20,
@@ -2852,7 +2768,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 257,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 80.09, 64.16),
             Range = 20,
@@ -2862,7 +2777,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 257,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 77.16, 75.57),
             Range = 20,
@@ -2872,7 +2786,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 257,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 70.78, 72.91),
             Range = 20,
@@ -2882,7 +2795,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 257,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 76.65, 62.27),
             Range = 20,
@@ -2892,7 +2804,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 257,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 76.36, 56.05),
             Range = 20,
@@ -2912,7 +2823,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 257,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 82.92, 59.37),
             Range = 20,
@@ -2922,7 +2832,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 257,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 83.28, 62.97),
             Range = 20,
@@ -2957,7 +2866,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 385,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 54.7, 38.3),
             Range = 20,
@@ -2967,7 +2875,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 385,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 58.86, 38.32),
             Range = 20,
@@ -2977,7 +2884,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 385,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 54.8, 40.02),
             Range = 20,
@@ -2987,7 +2893,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 385,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 54.16, 35.79),
             Range = 20,
@@ -3026,7 +2931,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 298,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 37.17, 47.94),
             Range = 8.0,
@@ -3052,7 +2956,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 86614,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = -3104.9, y = -5210.1 },
             Range = 5.0,
@@ -3334,7 +3237,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1002,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "UP_RAMP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 51.118, 23.67),
@@ -3345,7 +3247,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1002,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "UP_RAMP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 51.288, 24.554),
@@ -3371,7 +3272,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 965,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [2138] = { 1 }, [2178] = { 1 }, [1002] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 51.118, 23.67),
             Range = 20.0,
@@ -3382,7 +3282,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 965,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [2138] = { 1 }, [2178] = { 1 }, [1002] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 51.49, 24.368),
             Range = 20,
@@ -3393,7 +3292,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 965,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [2138] = { 1 }, [2178] = { 1 }, [1002] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 54.973, 24.885),
             Range = 15.0,
@@ -3404,7 +3302,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 965,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [2138] = { 1 }, [2178] = { 1 }, [1002] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 51.118, 23.67),
             Range = 20.0,
@@ -3415,7 +3312,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 965,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [2138] = { 1 }, [2178] = { 1 }, [1002] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 51.49, 24.368),
             Range = 20,
@@ -3426,7 +3322,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 965,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [2138] = { 1 }, [2178] = { 1 }, [1002] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 54.973, 24.885),
             Range = 15.0,
@@ -3487,7 +3382,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1002,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 51.118, 23.67),
             Range = 15,
             IsQuestOnQuest = 1002,
@@ -3512,7 +3406,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4762,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [2138] = { 1 }, [1002] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 54.934, 32.721),
             Range = 20.0,
@@ -3521,7 +3414,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4762,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 }, [2138] = { 1 }, [1002] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 55.108, 33.6),
             Range = 20,
@@ -3541,7 +3433,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 947,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "CHECK_UPPER_CAVE_LEVEL_FIRST_DROP_DOWN", "BEWARE_KNOCKBACK_FALL" },
             Coord = { x = -690.31, y = 6751.29 },
@@ -3551,7 +3442,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 947,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "CHECK_UPPER_CAVE_LEVEL_FIRST_DROP_DOWN", "BEWARE_KNOCKBACK_FALL" },
             Coord = { x = -706.68, y = 6748.23 },
@@ -3561,7 +3451,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 947,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "CHECK_UPPER_CAVE_LEVEL_FIRST_DROP_DOWN", "BEWARE_KNOCKBACK_FALL" },
             Coord = { x = -719.13, y = 6787.53 },
@@ -3571,7 +3460,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 947,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "CHECK_UPPER_CAVE_LEVEL_FIRST_DROP_DOWN", "BEWARE_KNOCKBACK_FALL" },
             Coord = { x = -663.45, y = 6877.49 },
@@ -3581,7 +3469,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 947,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "CHECK_UPPER_CAVE_LEVEL_FIRST_DROP_DOWN", "BEWARE_KNOCKBACK_FALL" },
             Coord = { x = -679.17, y = 6848.67 },
@@ -3591,7 +3478,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 947,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "CHECK_UPPER_CAVE_LEVEL_FIRST_DROP_DOWN", "BEWARE_KNOCKBACK_FALL" },
             Coord = { x = -666.73, y = 6819.41 },
@@ -3601,7 +3487,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 947,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "CHECK_UPPER_CAVE_LEVEL_FIRST_DROP_DOWN", "BEWARE_KNOCKBACK_FALL" },
             Coord = { x = -680.48, y = 6779.67 },
@@ -3611,7 +3496,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 947,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "CHECK_UPPER_CAVE_LEVEL_FIRST_DROP_DOWN", "BEWARE_KNOCKBACK_FALL" },
             Coord = { x = -663.45, y = 6877.49 },
@@ -3621,7 +3505,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 947,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "CHECK_UPPER_CAVE_LEVEL_FIRST_DROP_DOWN", "BEWARE_KNOCKBACK_FALL" },
             Coord = { x = -679.17, y = 6848.67 },
@@ -3631,7 +3514,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 947,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "CHECK_UPPER_CAVE_LEVEL_FIRST_DROP_DOWN", "BEWARE_KNOCKBACK_FALL" },
             Coord = { x = -666.73, y = 6819.41 },
@@ -3641,7 +3523,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 947,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "CHECK_UPPER_CAVE_LEVEL_FIRST_DROP_DOWN", "BEWARE_KNOCKBACK_FALL" },
             Coord = { x = -680.48, y = 6779.67 },
@@ -3651,7 +3532,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 947,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "CHECK_UPPER_CAVE_LEVEL_FIRST_DROP_DOWN", "BEWARE_KNOCKBACK_FALL" },
             Coord = { x = -663.45, y = 6877.49 },
@@ -3669,7 +3549,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 947,
-            NonSkippableWaypoint = true,
             Coord = { x = -659.52, y = 6901.5 },
             Range = 12,
             IsQuestOnQuest = 947,
@@ -3864,7 +3743,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4723,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.701, 45.122),
             Range = 8.0,
@@ -3890,7 +3768,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4725,
-            NonSkippableWaypoint = true,
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.701, 45.122),
             Range = 8.0,
@@ -4145,7 +4022,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 6123,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 }, [6123] = { 1 } },
             Coord = { x = 98.97, y = 6329.03 },
             Range = 20,
@@ -4157,7 +4033,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 6123,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 }, [6123] = { 1 } },
             Coord = { x = 105.52, y = 6189.3 },
             Range = 20,
@@ -4169,7 +4044,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 6123,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 }, [6123] = { 1 } },
             Coord = { x = 164.47, y = 6036.47 },
             Range = 20,
@@ -4181,7 +4055,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 6123,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 }, [6123] = { 1 } },
             Coord = { x = -51.68, y = 6136.9 },
             Range = 20,
@@ -4203,7 +4076,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 948,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.555, 76.293),
             Range = 20,
@@ -4214,7 +4086,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 952,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.555, 76.293),
             Range = 20,
@@ -4225,7 +4096,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 952,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 }, [6123] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.555, 76.293),
             Range = 20,
@@ -4236,7 +4106,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 948,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 }, [6123] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.555, 76.293),
             Range = 20,
@@ -4340,7 +4209,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 944,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 }, [986] = { 1 }, [1003] = { 1 } },
             Coord = { x = 417.3, y = 4575.82 },
             Range = 20,
@@ -4350,7 +4218,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 944,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 }, [6123] = { 1 }, [986] = { 1 }, [1003] = { 1 } },
             Coord = { x = 417.3, y = 4575.82 },
             Range = 20,
@@ -4553,7 +4420,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1003,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 }, [986] = { 1 } },
             Coord = { x = 227.35, y = 4575.38 },
             Range = 20,
@@ -4564,7 +4430,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1003,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 }, [986] = { 1 } },
             Coord = { x = 205.73, y = 4639.13 },
             Range = 20,
@@ -4575,7 +4440,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1003,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 }, [986] = { 1 } },
             Coord = { x = 129.1, y = 4741.75 },
             Range = 20,
@@ -4586,7 +4450,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1003,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 }, [986] = { 1 } },
             Coord = { x = 86.52, y = 4839.13 },
             Range = 20,
@@ -4597,7 +4460,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1003,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 }, [986] = { 1 } },
             Coord = { x = 338.7, y = 4821.22 },
             Range = 20,
@@ -4619,7 +4481,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1003,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 }, [6123] = { 1 }, [986] = { 1 } },
             Coord = { x = 227.35, y = 4575.38 },
             Range = 20,
@@ -4631,7 +4492,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1003,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 }, [6123] = { 1 }, [986] = { 1 } },
             Coord = { x = 205.73, y = 4639.13 },
             Range = 20,
@@ -4643,7 +4503,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1003,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 }, [6123] = { 1 }, [986] = { 1 } },
             Coord = { x = 129.1, y = 4741.75 },
             Range = 20,
@@ -4655,7 +4514,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1003,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 }, [6123] = { 1 }, [986] = { 1 } },
             Coord = { x = 86.52, y = 4839.13 },
             Range = 20,
@@ -4667,7 +4525,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1003,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 }, [6123] = { 1 }, [986] = { 1 } },
             Coord = { x = 338.7, y = 4821.22 },
             Range = 20,
@@ -4877,7 +4734,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4740,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 }, [1138] = { 1 } },
             Note = { "CHECK_MURKDEEP_ALREADY_UP_WATER_SOMEONE_PREVIOUSLY", "MOVE_BONFIRE_CENTER_CAMP_START_MURKDEEP_ENCOUNTER", "3_WAVES_SPAWN_WATER_KILLING_PREVIOUS_WAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.429, 76.566),
@@ -4898,7 +4754,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4740,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 }, [6123] = { 1 }, [1138] = { 1 } },
             Note = { "CHECK_MURKDEEP_ALREADY_UP_WATER_SOMEONE_PREVIOUSLY", "MOVE_BONFIRE_CENTER_CAMP_START_MURKDEEP_ENCOUNTER", "3_WAVES_SPAWN_WATER_KILLING_PREVIOUS_WAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.429, 76.566),
@@ -4992,7 +4847,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 963,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.806, 44.137),
             Range = 8.0,
@@ -5002,7 +4856,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 963,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.743, 43.71),
             Range = 12.0,
@@ -5012,7 +4865,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 963,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 }, [6123] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.806, 44.137),
             Range = 8.0,
@@ -5023,7 +4875,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 963,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 }, [6123] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.743, 43.71),
             Range = 12.0,
@@ -5064,7 +4915,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4728,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.701, 45.122),
             Range = 8.0,
@@ -5082,7 +4932,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4728,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.701, 45.122),
             Range = 8.0,
@@ -5102,7 +4951,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4728,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 }, [6123] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.701, 45.122),
             Range = 8.0,
@@ -5298,7 +5146,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2139,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 } },
             Coord = { x = -503.63, y = 6732.95 },
             Range = 20,
@@ -5308,7 +5155,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2139,
-            NonSkippableWaypoint = true,
             Coord = { x = -451, y = 6712 },
             Range = 8,
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
@@ -5329,7 +5175,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2139,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 }, [6123] = { 1 } },
             Coord = { x = -503.63, y = 6732.95 },
             Range = 20,
@@ -5340,7 +5185,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2139,
-            NonSkippableWaypoint = true,
             Coord = { x = -451, y = 6712 },
             Range = 8,
             Class = "DRUID",
@@ -5490,7 +5334,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1002,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 51.118, 23.67),
             Range = 15,
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
@@ -5515,7 +5358,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1002,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 51.118, 23.67),
             Range = 15,
             Class = "DRUID",
@@ -5597,7 +5439,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 951,
-            NonSkippableWaypoint = true,
             Coord = { x = -800.35, y = 7370.92 },
             Range = 20,
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
@@ -5606,7 +5447,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 951,
-            NonSkippableWaypoint = true,
             Coord = { x = -855.37, y = 7449.96 },
             Range = 20,
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
@@ -5615,7 +5455,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 951,
-            NonSkippableWaypoint = true,
             Coord = { x = -880.91, y = 7302.36 },
             Range = 20,
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
@@ -5624,7 +5463,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 951,
-            NonSkippableWaypoint = true,
             Coord = { x = -950.34, y = 7258.26 },
             Range = 20,
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
@@ -5640,7 +5478,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 951,
-            NonSkippableWaypoint = true,
             Fillers = { [6123] = { 1 } },
             Coord = { x = -800.35, y = 7370.92 },
             Range = 20,
@@ -5651,7 +5488,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 951,
-            NonSkippableWaypoint = true,
             Fillers = { [6123] = { 1 } },
             Coord = { x = -855.37, y = 7449.96 },
             Range = 20,
@@ -5662,7 +5498,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 951,
-            NonSkippableWaypoint = true,
             Fillers = { [6123] = { 1 } },
             Coord = { x = -880.91, y = 7302.36 },
             Range = 20,
@@ -5673,7 +5508,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 951,
-            NonSkippableWaypoint = true,
             Fillers = { [6123] = { 1 } },
             Coord = { x = -950.34, y = 7258.26 },
             Range = 20,
@@ -5729,7 +5563,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2098,
-            NonSkippableWaypoint = true,
             Coord = { x = -699.48, y = 7591.87 },
             Range = 20,
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
@@ -5738,7 +5571,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2098,
-            NonSkippableWaypoint = true,
             Coord = { x = -579.61, y = 7505.41 },
             Range = 20,
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
@@ -5747,7 +5579,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2098,
-            NonSkippableWaypoint = true,
             Coord = { x = -421.1, y = 7372.67 },
             Range = 20,
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
@@ -5765,7 +5596,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2098,
-            NonSkippableWaypoint = true,
             Fillers = { [6123] = { 1 } },
             Coord = { x = -699.48, y = 7591.87 },
             Range = 20,
@@ -5776,7 +5606,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2098,
-            NonSkippableWaypoint = true,
             Fillers = { [6123] = { 1 } },
             Coord = { x = -579.61, y = 7505.41 },
             Range = 20,
@@ -5787,7 +5616,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2098,
-            NonSkippableWaypoint = true,
             Fillers = { [6123] = { 1 } },
             Coord = { x = -421.1, y = 7372.67 },
             Range = 20,
@@ -5809,7 +5637,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2098,
-            NonSkippableWaypoint = true,
             Fillers = { [2098] = { 1 } },
             Coord = { x = -941.83, y = 7756.06 },
             Range = 20,
@@ -5819,7 +5646,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2098,
-            NonSkippableWaypoint = true,
             Fillers = { [2098] = { 1 } },
             Coord = { x = -1080.03, y = 7922.87 },
             Range = 20,
@@ -5829,7 +5655,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2098,
-            NonSkippableWaypoint = true,
             Fillers = { [2098] = { 1 } },
             Coord = { x = -1087.24, y = 7780.51 },
             Range = 20,
@@ -5839,7 +5664,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2098,
-            NonSkippableWaypoint = true,
             Fillers = { [2098] = { 1 } },
             Coord = { x = -1069.55, y = 7661.74 },
             Range = 20,
@@ -5849,7 +5673,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2098,
-            NonSkippableWaypoint = true,
             Fillers = { [6123] = { 1 }, [2098] = { 1 } },
             Coord = { x = -941.83, y = 7756.06 },
             Range = 20,
@@ -5860,7 +5683,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2098,
-            NonSkippableWaypoint = true,
             Fillers = { [6123] = { 1 }, [2098] = { 1 } },
             Coord = { x = -1080.03, y = 7922.87 },
             Range = 20,
@@ -5871,7 +5693,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2098,
-            NonSkippableWaypoint = true,
             Fillers = { [6123] = { 1 }, [2098] = { 1 } },
             Coord = { x = -1087.24, y = 7780.51 },
             Range = 20,
@@ -5882,7 +5703,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2098,
-            NonSkippableWaypoint = true,
             Fillers = { [6123] = { 1 }, [2098] = { 1 } },
             Coord = { x = -1069.55, y = 7661.74 },
             Range = 20,
@@ -5893,7 +5713,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 986,
-            NonSkippableWaypoint = true,
             Fillers = { [2098] = { 1 } },
             Note = { "AWARE_MOONSTALKER_MATRIARCHS_ALWAYS_ATTACK_MOONSTALKER_RUNT", "MOONSTALKER_SIRES_CAST_EXPLOIT_WEAKNESS_BACKSTAB_ATTACK" },
             Coord = { x = -1080.03, y = 7922.87 },
@@ -5923,7 +5742,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 986,
-            NonSkippableWaypoint = true,
             Fillers = { [6123] = { 1 }, [2098] = { 1 } },
             Note = { "AWARE_MOONSTALKER_MATRIARCHS_ALWAYS_ATTACK_MOONSTALKER_RUNT", "MOONSTALKER_SIRES_CAST_EXPLOIT_WEAKNESS_BACKSTAB_ATTACK" },
             Coord = { x = -1080.03, y = 7922.87 },
@@ -6022,7 +5840,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2078,
-            NonSkippableWaypoint = true,
             Note = { "HARD_STEP_GROUP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 55.802, 18.29),
             Range = 5,
@@ -6032,7 +5849,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2078,
-            NonSkippableWaypoint = true,
             Note = { "HARD_STEP_GROUP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 55.802, 18.29),
             Range = 5,
@@ -6042,7 +5858,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2078,
-            NonSkippableWaypoint = true,
             Fillers = { [6123] = { 1 } },
             Note = { "HARD_STEP_GROUP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 55.802, 18.29),
@@ -6203,7 +6018,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4763,
-            NonSkippableWaypoint = true,
             Coord = { x = 577.92, y = 6371.65 },
             Range = 20,
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
@@ -6213,7 +6027,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4727,
-            NonSkippableWaypoint = true,
             Coord = { x = 577.92, y = 6371.65 },
             Range = 20,
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
@@ -6223,7 +6036,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4763,
-            NonSkippableWaypoint = true,
             Fillers = { [6123] = { 1 }, [1138] = { 1 } },
             Coord = { x = 577.92, y = 6371.65 },
             Range = 20,
@@ -6398,7 +6210,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 741,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 33.169, 40.179),
             Range = 15.0,
             Class = "HUNTER",
@@ -6409,7 +6220,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 741,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 33.169, 40.179),
             Range = 15,
             AllOf = { { ItemCount = { itemID = 4471, count = 1, operator = ">=" } } },
@@ -6423,7 +6233,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 741,
-            NonSkippableWaypoint = true,
             Note = { "COOKING_50_WAITING", "YOU_NEED_50_COOKING", "COOK_SMALL_EGGS_MILD_SPICES_HERB_BAKED" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 33.169, 40.179),
             Range = 15,
@@ -6549,7 +6358,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4727,
-            NonSkippableWaypoint = true,
             Coord = { x = 577.92, y = 6371.65 },
             Range = 20,
             AnyOf = { { Class = "HUNTER" }, { Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" }, Race = "NightElf" } },
@@ -6558,7 +6366,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4727,
-            NonSkippableWaypoint = true,
             Fillers = { [6123] = { 1 }, [1138] = { 1 } },
             Coord = { x = 577.92, y = 6371.65 },
             Range = 20,
@@ -6610,7 +6417,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4727,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.701, 45.122),
             Range = 8.0,
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
@@ -6626,7 +6432,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4727,
-            NonSkippableWaypoint = true,
             Fillers = { [6123] = { 1 }, [1138] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.701, 45.122),
             Range = 8.0,
@@ -6869,7 +6674,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 399,
-            NonSkippableWaypoint = true,
             Coord = { x = 926.4, y = 6542.9 },
             Range = 15.0,
             AnyOf = { { Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" } }, { Class = { "PALADIN", "PRIEST", "ROGUE", "WARRIOR" }, Race = "Dwarf" } },
@@ -6879,7 +6683,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1780,
-            NonSkippableWaypoint = true,
             Coord = { x = 926.4, y = 6542.9 },
             Range = 15.0,
             Class = "PALADIN",
@@ -6890,7 +6693,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 32.432, 43.744),
             Range = 15.0,
             Class = "SHAMAN",
@@ -6901,7 +6703,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 399,
-            NonSkippableWaypoint = true,
             Fillers = { [6123] = { 1 }, [1138] = { 1 } },
             Coord = { x = 926.4, y = 6542.9 },
             Range = 15.0,
@@ -7049,7 +6850,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -819.67, y = -3691.42 },
             Range = 20,
             Class = "SHAMAN",
@@ -7062,7 +6862,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -807.26, y = -3716.22 },
             Range = 20,
             Class = "SHAMAN",
@@ -7075,7 +6874,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -827.94, y = -3724.49 },
             Range = 20,
             Class = "SHAMAN",
@@ -7271,7 +7069,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1003,
-            NonSkippableWaypoint = true,
             Coord = { x = 227.35, y = 4575.38 },
             Range = 20,
             Class = "HUNTER",
@@ -7282,7 +7079,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1003,
-            NonSkippableWaypoint = true,
             Coord = { x = 205.73, y = 4639.13 },
             Range = 20,
             Class = "HUNTER",
@@ -7293,7 +7089,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1003,
-            NonSkippableWaypoint = true,
             Coord = { x = 129.1, y = 4741.75 },
             Range = 20,
             Class = "HUNTER",
@@ -7304,7 +7099,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1003,
-            NonSkippableWaypoint = true,
             Coord = { x = 86.52, y = 4839.13 },
             Range = 20,
             Class = "HUNTER",
@@ -7315,7 +7109,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1003,
-            NonSkippableWaypoint = true,
             Coord = { x = 338.7, y = 4821.22 },
             Range = 20,
             Class = "HUNTER",
@@ -7346,7 +7139,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 993,
-            NonSkippableWaypoint = true,
             Coord = { x = 33, y = 4633 },
             Range = 8,
             Class = "HUNTER",
@@ -7357,7 +7149,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 994,
-            NonSkippableWaypoint = true,
             Coord = { x = 33, y = 4633 },
             Range = 8,
             Class = "HUNTER",
@@ -7389,7 +7180,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 994,
-            NonSkippableWaypoint = true,
             Note = { "CROSSING_3RD_TORCH_EXITING_CAVE_FURLBOG_SPAWN", "HALFWAY_ROAD_FURLBOGS_SPAWN_SIDES_ATTACK_VOLCOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.594, 84.489),
             Range = 15.0,
@@ -7401,7 +7191,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 994,
-            NonSkippableWaypoint = true,
             Note = { "CROSSING_3RD_TORCH_EXITING_CAVE_FURLBOG_SPAWN", "HALFWAY_ROAD_FURLBOGS_SPAWN_SIDES_ATTACK_VOLCOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 42.576, 82.897),
             Range = 15.0,
@@ -7465,7 +7254,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 5321,
-            NonSkippableWaypoint = true,
             Coord = { x = -12.7, y = 4150.17 },
             Range = 5,
             Class = "HUNTER",
@@ -7536,7 +7324,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1010,
-            NonSkippableWaypoint = true,
             Coord = { x = -203.58, y = 3849.97 },
             Range = 20,
             Class = "HUNTER",
@@ -7547,7 +7334,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1010,
-            NonSkippableWaypoint = true,
             Coord = { x = -2.9, y = 3737.73 },
             Range = 20,
             Class = "HUNTER",
@@ -7585,7 +7371,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1010,
-            NonSkippableWaypoint = true,
             Coord = { x = -203.58, y = 3849.97 },
             Range = 20,
             Class = "HUNTER",
@@ -7596,7 +7381,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1010,
-            NonSkippableWaypoint = true,
             Coord = { x = -2.9, y = 3737.73 },
             Range = 20,
             Class = "HUNTER",
@@ -7651,7 +7435,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1020,
-            NonSkippableWaypoint = true,
             Note = { "UP_RAMP" },
             Coord = { x = 522.9, y = 2716.1 },
             Range = 20,
@@ -7820,7 +7603,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 973,
-            NonSkippableWaypoint = true,
             Note = { "RUN_STRAIGHT_NORTH_CLIMBING_MOUNTAIN" },
             Coord = { x = -126.3, y = 2203.69 },
             Range = 15.0,
@@ -7831,7 +7613,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 973,
-            NonSkippableWaypoint = true,
             Note = { "RUN_STRAIGHT_NORTH_CLIMBING_MOUNTAIN" },
             Coord = { x = -99.78, y = 2305.17 },
             Range = 15.0,
@@ -7842,7 +7623,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 973,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_HILL_NEXT_BIG_TREE_RIGHT_FIRE", "JUMP_TREE_ROOT_HUG_RIGHT_AVOID_AGGROING" },
             Coord = { x = 114.17, y = 2337.45 },
             Range = 8.0,
@@ -7973,7 +7753,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1023,
-            NonSkippableWaypoint = true,
             Coord = { x = 523.02, y = 2988.59 },
             Range = 20,
             Class = "HUNTER",
@@ -7983,7 +7762,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1023,
-            NonSkippableWaypoint = true,
             Coord = { x = 579.54, y = 3055.08 },
             Range = 20,
             Class = "HUNTER",
@@ -7993,7 +7771,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1023,
-            NonSkippableWaypoint = true,
             Coord = { x = 488.42, y = 3073.53 },
             Range = 20,
             Class = "HUNTER",
@@ -8048,7 +7825,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 731,
-            NonSkippableWaypoint = true,
             Coord = { x = -283.73, y = 2827.92 },
             Range = 20,
             AllOf = { { AnyOf = { { Hardcore = true }, { MinLevel = 10 } } } },
@@ -8377,7 +8153,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 948,
-            NonSkippableWaypoint = true,
             Fillers = { [1003] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.555, 76.293),
             Range = 20,
@@ -8387,7 +8162,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 952,
-            NonSkippableWaypoint = true,
             Fillers = { [1003] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.555, 76.293),
             Range = 20,
@@ -8429,7 +8203,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 944,
-            NonSkippableWaypoint = true,
             Fillers = { [1003] = { 1 } },
             Coord = { x = 417.3, y = 4575.82 },
             Range = 20,
@@ -8585,7 +8358,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 4740,
-            NonSkippableWaypoint = true,
             Fillers = { [1138] = { 1 } },
             Note = { "CHECK_MURKDEEP_ALREADY_UP_WATER_SOMEONE_PREVIOUSLY", "MOVE_BONFIRE_CENTER_CAMP_START_MURKDEEP_ENCOUNTER", "3_WAVES_SPAWN_WATER_KILLING_PREVIOUS_WAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.429, 76.566),
@@ -8612,7 +8384,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1003,
-            NonSkippableWaypoint = true,
             Coord = { x = 227.35, y = 4575.38 },
             Range = 20,
             IsQuestOnQuest = 1003,
@@ -8621,7 +8392,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1003,
-            NonSkippableWaypoint = true,
             Coord = { x = 205.73, y = 4639.13 },
             Range = 20,
             IsQuestOnQuest = 1003,
@@ -8630,7 +8400,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1003,
-            NonSkippableWaypoint = true,
             Coord = { x = 129.1, y = 4741.75 },
             Range = 20,
             IsQuestOnQuest = 1003,
@@ -8639,7 +8408,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1003,
-            NonSkippableWaypoint = true,
             Coord = { x = 86.52, y = 4839.13 },
             Range = 20,
             IsQuestOnQuest = 1003,
@@ -8648,7 +8416,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1003,
-            NonSkippableWaypoint = true,
             Coord = { x = 338.7, y = 4821.22 },
             Range = 20,
             IsQuestOnQuest = 1003,
@@ -8702,7 +8469,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 993,
-            NonSkippableWaypoint = true,
             Coord = { x = 33, y = 4633 },
             Range = 8,
             IsQuestOnQuest = 993,
@@ -8711,7 +8477,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 995,
-            NonSkippableWaypoint = true,
             Coord = { x = 33, y = 4633 },
             Range = 8,
             IsQuestCompleted = 993,
@@ -8722,7 +8487,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 993,
-            NonSkippableWaypoint = true,
             Coord = { x = -5.83, y = 4608.57 },
             Range = 20,
             IsQuestOnQuest = 993,
@@ -8764,7 +8528,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 5321,
-            NonSkippableWaypoint = true,
             Coord = { x = -12.7, y = 4150.17 },
             Range = 5,
             Zone = 1440,
@@ -8812,7 +8575,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1010,
-            NonSkippableWaypoint = true,
             Note = { "LOOK_SMALL_BROWN_SACKS_SOMETIMES_PARTLY_BURIED", "FIND_HERBS_ENABLED_SEE_MINIMAP" },
             Coord = { x = -203.58, y = 3849.97 },
             Range = 20,
@@ -8823,7 +8585,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1010,
-            NonSkippableWaypoint = true,
             Note = { "LOOK_SMALL_BROWN_SACKS_SOMETIMES_PARTLY_BURIED", "FIND_HERBS_ENABLED_SEE_MINIMAP" },
             Coord = { x = -2.9, y = 3737.73 },
             Range = 20,
@@ -8843,7 +8604,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1010,
-            NonSkippableWaypoint = true,
             Coord = { x = -203.58, y = 3849.97 },
             Range = 20,
             DontHaveSpell = { 2366 },
@@ -8853,7 +8613,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1010,
-            NonSkippableWaypoint = true,
             Coord = { x = -2.9, y = 3737.73 },
             Range = 20,
             DontHaveSpell = { 2366 },
@@ -8911,7 +8670,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1020,
-            NonSkippableWaypoint = true,
             Coord = { x = 230.2, y = 3176 },
             Range = 10,
             IsQuestOnQuest = 1020,
@@ -8920,7 +8678,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1020,
-            NonSkippableWaypoint = true,
             Coord = { x = 228.1, y = 3105.2 },
             Range = 10,
             IsQuestOnQuest = 1020,
@@ -8929,7 +8686,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1020,
-            NonSkippableWaypoint = true,
             Coord = { x = 149, y = 3017.7 },
             Range = 10,
             IsQuestOnQuest = 1020,
@@ -8938,7 +8694,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1020,
-            NonSkippableWaypoint = true,
             Coord = { x = 151, y = 2982.3 },
             Range = 10,
             IsQuestOnQuest = 1020,
@@ -8947,7 +8702,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1020,
-            NonSkippableWaypoint = true,
             Coord = { x = 190.6, y = 2896.9 },
             Range = 10,
             IsQuestOnQuest = 1020,
@@ -8956,7 +8710,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1033,
-            NonSkippableWaypoint = true,
             Coord = { x = 230.2, y = 3176 },
             Range = 10,
             IsQuestCompleted = 1020,
@@ -8968,7 +8721,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1033,
-            NonSkippableWaypoint = true,
             Coord = { x = 228.1, y = 3105.2 },
             Range = 10,
             IsQuestCompleted = 1020,
@@ -8980,7 +8732,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1033,
-            NonSkippableWaypoint = true,
             Coord = { x = 149, y = 3017.7 },
             Range = 10,
             IsQuestCompleted = 1020,
@@ -8992,7 +8743,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1033,
-            NonSkippableWaypoint = true,
             Coord = { x = 151, y = 2982.3 },
             Range = 10,
             IsQuestCompleted = 1020,
@@ -9004,7 +8754,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1033,
-            NonSkippableWaypoint = true,
             Coord = { x = 190.6, y = 2896.9 },
             Range = 10,
             IsQuestCompleted = 1020,
@@ -9016,7 +8765,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1008,
-            NonSkippableWaypoint = true,
             Coord = { x = 230.2, y = 3176 },
             Range = 10,
             IsQuestNotOnQuest = 1008,
@@ -9027,7 +8775,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1008,
-            NonSkippableWaypoint = true,
             Coord = { x = 228.1, y = 3105.2 },
             Range = 10,
             IsQuestNotOnQuest = 1008,
@@ -9038,7 +8785,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1008,
-            NonSkippableWaypoint = true,
             Coord = { x = 149, y = 3017.7 },
             Range = 10,
             IsQuestNotOnQuest = 1008,
@@ -9049,7 +8795,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1008,
-            NonSkippableWaypoint = true,
             Coord = { x = 151, y = 2982.3 },
             Range = 10,
             IsQuestNotOnQuest = 1008,
@@ -9060,7 +8805,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1008,
-            NonSkippableWaypoint = true,
             Coord = { x = 190.6, y = 2896.9 },
             Range = 10,
             IsQuestNotOnQuest = 1008,
@@ -9071,7 +8815,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = 230.2, y = 3176 },
             Range = 10,
             IsQuestNotOnQuest = 1070,
@@ -9082,7 +8825,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = 228.1, y = 3105.2 },
             Range = 10,
             IsQuestNotOnQuest = 1070,
@@ -9093,7 +8835,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = 149, y = 3017.7 },
             Range = 10,
             IsQuestNotOnQuest = 1070,
@@ -9104,7 +8845,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = 151, y = 2982.3 },
             Range = 10,
             IsQuestNotOnQuest = 1070,
@@ -9115,7 +8855,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = 190.6, y = 2896.9 },
             Range = 10,
             IsQuestNotOnQuest = 1070,
@@ -9126,7 +8865,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 230.2, y = 3176 },
             Range = 10,
             IsQuestNotOnQuest = 1056,
@@ -9137,7 +8875,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 228.1, y = 3105.2 },
             Range = 10,
             IsQuestNotOnQuest = 1056,
@@ -9148,7 +8885,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 149, y = 3017.7 },
             Range = 10,
             IsQuestNotOnQuest = 1056,
@@ -9159,7 +8895,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 151, y = 2982.3 },
             Range = 10,
             IsQuestNotOnQuest = 1056,
@@ -9170,7 +8905,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 190.6, y = 2896.9 },
             Range = 10,
             IsQuestNotOnQuest = 1056,
@@ -9181,7 +8915,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 991,
-            NonSkippableWaypoint = true,
             Coord = { x = 230.2, y = 3176 },
             Range = 10,
             IsQuestNotOnQuest = 991,
@@ -9192,7 +8925,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 991,
-            NonSkippableWaypoint = true,
             Coord = { x = 228.1, y = 3105.2 },
             Range = 10,
             IsQuestNotOnQuest = 991,
@@ -9203,7 +8935,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 991,
-            NonSkippableWaypoint = true,
             Coord = { x = 149, y = 3017.7 },
             Range = 10,
             IsQuestNotOnQuest = 991,
@@ -9214,7 +8945,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 991,
-            NonSkippableWaypoint = true,
             Coord = { x = 151, y = 2982.3 },
             Range = 10,
             IsQuestNotOnQuest = 991,
@@ -9225,7 +8955,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 991,
-            NonSkippableWaypoint = true,
             Coord = { x = 190.6, y = 2896.9 },
             Range = 10,
             IsQuestNotOnQuest = 991,
@@ -9236,7 +8965,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1054,
-            NonSkippableWaypoint = true,
             Coord = { x = 230.2, y = 3176 },
             Range = 10,
             IsQuestNotOnQuest = 1054,
@@ -9247,7 +8975,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1054,
-            NonSkippableWaypoint = true,
             Coord = { x = 228.1, y = 3105.2 },
             Range = 10,
             IsQuestNotOnQuest = 1054,
@@ -9258,7 +8985,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1054,
-            NonSkippableWaypoint = true,
             Coord = { x = 149, y = 3017.7 },
             Range = 10,
             IsQuestNotOnQuest = 1054,
@@ -9269,7 +8995,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1054,
-            NonSkippableWaypoint = true,
             Coord = { x = 151, y = 2982.3 },
             Range = 10,
             IsQuestNotOnQuest = 1054,
@@ -9280,7 +9005,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1054,
-            NonSkippableWaypoint = true,
             Coord = { x = 190.6, y = 2896.9 },
             Range = 10,
             IsQuestNotOnQuest = 1054,

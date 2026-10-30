@@ -109,7 +109,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Wetlands"] = {
         },
         {
             Waypoint = 294,
-            NonSkippableWaypoint = true,
             Fillers = { [484] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 34.51, 41.7),
             Range = 20,
@@ -118,7 +117,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Wetlands"] = {
         },
         {
             Waypoint = 294,
-            NonSkippableWaypoint = true,
             Fillers = { [484] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 37.02, 43.82),
             Range = 20,
@@ -127,7 +125,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Wetlands"] = {
         },
         {
             Waypoint = 294,
-            NonSkippableWaypoint = true,
             Fillers = { [484] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 37.17, 48.09),
             Range = 20,
@@ -143,7 +140,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Wetlands"] = {
         },
         {
             Waypoint = 305,
-            NonSkippableWaypoint = true,
             Coord = { x = -1962, y = -3564 },
             Range = 2,
             ZoneStepTrigger = { x = -1962, y = -3564, Range = 2, mapID = 1437 },
@@ -157,7 +153,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Wetlands"] = {
         },
         {
             Waypoint = 305,
-            NonSkippableWaypoint = true,
             Coord = { x = -1978, y = -3572 },
             Range = 3,
             ZoneStepTrigger = { x = -1978, y = -3572, Range = 3, mapID = 1437 },
@@ -187,7 +182,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Wetlands"] = {
         },
         {
             Waypoint = 469,
-            NonSkippableWaypoint = true,
             Fillers = { [484] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 34.51, 41.7),
             Range = 20,
@@ -593,7 +587,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Wetlands"] = {
         },
         {
             Waypoint = 299,
-            NonSkippableWaypoint = true,
             Coord = { x = -1962, y = -3564 },
             Range = 2,
             ZoneStepTrigger = { x = -1962, y = -3564, Range = 2, mapID = 1437 },
@@ -611,7 +604,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Wetlands"] = {
         },
         {
             Waypoint = 299,
-            NonSkippableWaypoint = true,
             Coord = { x = -1978, y = -3572 },
             Range = 3,
             ZoneStepTrigger = { x = -1978, y = -3572, Range = 3, mapID = 1437 },

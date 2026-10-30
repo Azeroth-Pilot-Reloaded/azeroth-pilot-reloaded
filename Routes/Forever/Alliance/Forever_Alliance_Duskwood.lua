@@ -90,7 +90,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 637,
-            NonSkippableWaypoint = true,
             Coord = { x = -1117.6, y = -4615.14 },
             Range = 15.0,
             Class = "WARLOCK",
@@ -129,7 +128,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 637,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = { x = -1134.2, y = -4610.39 },
             Range = 15.0,
@@ -139,7 +137,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 637,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = { x = -1130.26, y = -4601.27 },
             Range = 5,
@@ -149,7 +146,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 637,
-            NonSkippableWaypoint = true,
             Coord = { x = -894.15, y = -4659.43 },
             Range = 8.0,
             Class = "PRIEST",
@@ -158,7 +154,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 637,
-            NonSkippableWaypoint = true,
             Coord = { x = -880.66, y = -4660.39 },
             Range = 5.0,
             Class = "PRIEST",
@@ -192,7 +187,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 683,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 44.51, 49.57),
             Range = 10,
             IsQuestOnQuest = 683,
@@ -201,7 +195,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 686,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 44.51, 49.57),
             Range = 10,
             IsQuestCompleted = 683,
@@ -223,7 +216,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 686,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 44.51, 49.57),
             Range = 10,
             IsQuestOnQuest = 686,
@@ -244,7 +236,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 322,
-            NonSkippableWaypoint = true,
             Coord = { x = -1199.37, y = -5034.76 },
             Range = 15.0,
             Class = "HUNTER",
@@ -580,7 +571,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 74,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 84.6, 69.37),
             Range = 20,
             Zone = 1429,
@@ -619,7 +609,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 159,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 28.1, 31.46),
             Range = 20,
             Zone = 1431,
@@ -675,7 +664,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 181,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_CAVE" },
             Coord = { x = -101.68, y = -11118.33 },
             Range = 20.0,
@@ -694,7 +682,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 181,
-            NonSkippableWaypoint = true,
             Coord = { x = -72, y = -11080 },
             Range = 10,
             IsQuestOnQuest = 181,
@@ -772,7 +759,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 78,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 34.2, 60.4),
             Range = 20,
             SkipIfCooldown = { { itemID = 6948, operator = "<", seconds = 2, once = true } },
@@ -783,7 +769,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 78,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 50.9, 66.7),
             Range = 20,
             SkipIfCooldown = { { itemID = 6948, operator = "<", seconds = 2, once = true } },
@@ -794,7 +779,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 78,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 61.7, 61.6),
             Range = 20,
             SkipIfCooldown = { { itemID = 6948, operator = "<", seconds = 2, once = true } },
@@ -805,7 +789,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 78,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 74.5, 46.9),
             Range = 20,
             SkipIfCooldown = { { itemID = 6948, operator = "<", seconds = 2, once = true } },
@@ -1044,7 +1027,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 55,
-            NonSkippableWaypoint = true,
             Fillers = { [335] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 58.64, 80),
             Range = 20,
@@ -1081,7 +1063,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 253,
-            NonSkippableWaypoint = true,
             Coord = { x = -81.2, y = -10804.2 },
             Range = 20,
             IsQuestOnQuest = 253,
@@ -1091,7 +1072,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 55,
-            NonSkippableWaypoint = true,
             Coord = { x = -81.2, y = -10804.2 },
             Range = 20,
             IsQuestOnQuest = 55,
@@ -1101,7 +1081,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 228,
-            NonSkippableWaypoint = true,
             Coord = { x = -81.2, y = -10804.2 },
             Range = 20,
             AllOf = { { Not = { IsQuestOnQuest = 253, Not = { IsQuestReadyForTurnIn = 253 } } }, { Not = { IsQuestOnQuest = 55 } } },
@@ -1142,7 +1121,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 55,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 17.59, 33.44),
             Range = 7,
             IsQuestOnQuest = 55,
@@ -1200,7 +1178,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 583,
-            NonSkippableWaypoint = true,
             Fillers = { [335] = { 1 } },
             Coord = { x = -372.19, y = -11318.24 },
             Range = 5,
@@ -1217,7 +1194,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 583,
-            NonSkippableWaypoint = true,
             Fillers = { [335] = { 1 } },
             Coord = { x = -54.85, y = -11616.67 },
             Range = 5,
@@ -1240,7 +1216,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 185,
-            NonSkippableWaypoint = true,
             Fillers = { [335] = { 1 } },
             Coord = { x = -51.91, y = -11620.5 },
             Range = 5,
@@ -1272,7 +1247,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 185,
-            NonSkippableWaypoint = true,
             Fillers = { [335] = { 1 } },
             Coord = { x = -51.91, y = -11620.5 },
             Range = 5,
@@ -1340,7 +1314,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 222,
-            NonSkippableWaypoint = true,
             Coord = { x = -370.81, y = -11292.84 },
             Range = 20,
             SkipIfCooldown = { { itemID = 6948, operator = "<", seconds = 2, once = true } },
@@ -1350,7 +1323,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 222,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 50.9, 66.7),
             Range = 20,
             SkipIfCooldown = { { itemID = 6948, operator = "<", seconds = 2, once = true } },
@@ -1360,7 +1332,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 222,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 61.7, 61.6),
             Range = 20,
             SkipIfCooldown = { { itemID = 6948, operator = "<", seconds = 2, once = true } },
@@ -1370,7 +1341,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 222,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 74.5, 46.9),
             Range = 20,
             SkipIfCooldown = { { itemID = 6948, operator = "<", seconds = 2, once = true } },
@@ -1579,7 +1549,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 1246,
-            NonSkippableWaypoint = true,
             Fillers = { [335] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 76.08, 50.14),
             Range = 15.0,
@@ -1589,7 +1558,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 1246,
-            NonSkippableWaypoint = true,
             Fillers = { [335] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 80.22, 45.37),
             Range = 15.0,
@@ -1707,7 +1675,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 335,
-            NonSkippableWaypoint = true,
             Fillers = { [335] = { 1 } },
             Note = { "DOWNSTAIRS" },
             Coord = { x = 988.44, y = -8942.15 },
@@ -1717,7 +1684,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 335,
-            NonSkippableWaypoint = true,
             Fillers = { [335] = { 1 } },
             Note = { "DOWNSTAIRS" },
             Coord = { x = 1015.33, y = -8978.9 },
@@ -1766,7 +1732,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 336,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 42.51, 33.51),
             Range = 20,
             Class = { "PALADIN", "PRIEST" },
@@ -1776,7 +1741,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 336,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 38.82, 31.27),
             Range = 10,
             Class = "PALADIN",
@@ -1813,7 +1777,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 337,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 68.7, 29.1),
             Range = 20.0,
             ItemCount = { operator = ">=", count = 1, itemID = 2794 },
@@ -1822,7 +1785,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 337,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 70.2, 11.6),
             Range = 20.0,
             ItemCount = { operator = ">=", count = 1, itemID = 2794 },
@@ -1847,7 +1809,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 397,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = { x = 988.44, y = -8942.15 },
             Range = 20.0,
@@ -1857,7 +1818,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 397,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = { x = 1015.33, y = -8978.9 },
             Range = 15.0,
@@ -1867,7 +1827,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         },
         {
             Waypoint = 397,
-            NonSkippableWaypoint = true,
             Coord = { x = 1025.56, y = -8983.64 },
             Range = 5,
             Class = "WARLOCK",
@@ -2026,7 +1985,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 1738,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = { x = 988.44, y = -8942.15 },
             Range = 20.0,
@@ -2036,7 +1994,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 1738,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = { x = 1015.33, y = -8978.9 },
             Range = 15.0,
@@ -2056,7 +2013,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 1738,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 25.665, 77.649),
             Range = 5,
@@ -2100,7 +2056,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 1739,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 25.2, 80.7),
             Range = 18,
             AnyOf = { { IsQuestOnQuest = 1739 }, { IsQuestOnQuest = 65603 } },
@@ -2110,7 +2065,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 1739,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 23.2, 79.5),
             Range = 18,
             AnyOf = { { IsQuestOnQuest = 1739 }, { IsQuestOnQuest = 65603 } },
@@ -2120,7 +2074,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 1739,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 26.3, 79.5),
             Range = 18,
             AnyOf = { { IsQuestOnQuest = 1739 }, { IsQuestOnQuest = 65603 } },
@@ -2267,7 +2220,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 90,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 57.12, 57.69),
             Range = 5,
             Class = "SHAMAN",
@@ -2332,7 +2284,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 90,
-            NonSkippableWaypoint = true,
             Coord = { x = 423.99, y = -9077.5 },
             Range = 5,
             Race = { "Dwarf", "Gnome", "NightElf", "Skyborne" },
@@ -2358,7 +2309,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 226,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 48, 17.2),
             Range = 20,
             IsQuestOnQuest = 226,
@@ -2367,7 +2317,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 226,
-            NonSkippableWaypoint = true,
             Coord = { x = -1213.54, y = -10531.89 },
             Range = 20,
             IsQuestOnQuest = 226,
@@ -2818,7 +2767,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 272,
-            NonSkippableWaypoint = true,
             Coord = { x = 2389.19, y = -10172.31 },
             Range = 20,
             Class = "DRUID",
@@ -2961,7 +2909,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 42.938, 33.878),
             Range = 20.0,
             Class = "ROGUE",
@@ -2972,7 +2919,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 41.544, 31.33),
             Range = 20.0,
             Class = "ROGUE",
@@ -2983,7 +2929,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 41.688, 28.049),
             Range = 20.0,
             Class = "ROGUE",
@@ -2994,7 +2939,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 43.07, 26.155),
             Range = 15.0,
             Class = "ROGUE",
@@ -3005,7 +2949,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            NonSkippableWaypoint = true,
             Note = { "ASK_PALADIN_DRUID_REMOVE_POISON_POSSIBLE", "CRAFT_WAITING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 43.07, 26.155),
             Range = 5,
@@ -3052,7 +2995,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 74.9, 54),
             Range = 20.0,
@@ -3062,7 +3004,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 78.43, 60.15),
             Range = 20.0,
@@ -3072,7 +3013,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 78.67, 60.13),
             Range = 10.0,
@@ -3326,7 +3266,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 34,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 81.83, 19.77),
             Range = 20,
             Class = "HUNTER",
@@ -3335,7 +3274,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 34,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 93.93, 10.67),
             Range = 20,
             Class = "HUNTER",
@@ -3530,7 +3468,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 158,
-            NonSkippableWaypoint = true,
             Coord = { x = -81.2, y = -10804.2 },
             Range = 20,
             AnyOf = { { IsQuestOnQuest = 157 }, { IsQuestCompleted = 157, IsQuestNotOnQuest = 158 } },
@@ -3603,7 +3540,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 1076,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = 12.52, y = -9479.85 },
             Range = 9.0,
@@ -3691,7 +3627,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 70,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = { x = 988.44, y = -8942.15 },
             Range = 20.0,
@@ -3700,7 +3635,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 70,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = { x = 1015.33, y = -8978.9 },
             Range = 15.0,
@@ -3725,7 +3659,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 70,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_BUILDING" },
             Coord = { x = 1015.33, y = -8978.9 },
             Range = 15.0,
@@ -3768,7 +3701,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 174,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 42.51, 33.51),
             Range = 20.0,
             Class = "PRIEST",
@@ -3777,7 +3709,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 1652,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 42.51, 33.51),
             Range = 20,
             Class = "PALADIN",
@@ -3795,7 +3726,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 174,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 38.82, 31.27),
             Range = 10.0,
             Class = "PALADIN",
@@ -3834,7 +3764,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 174,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 76.08, 50.14),
             Range = 15.0,
             Class = "WARRIOR",
@@ -3843,7 +3772,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 174,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 80.22, 45.37),
             Range = 15.0,
             Class = "WARRIOR",
@@ -4042,7 +3970,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 269,
-            NonSkippableWaypoint = true,
             Coord = { x = -1161.5, y = -10736.5 },
             Range = 20,
             AnyOf = { { IsQuestOnQuest = 453 }, { IsQuestCompleted = 453, IsQuestNotOnQuest = 268, IsQuestUncompleted = 268 }, { IsQuestOnQuest = 240 }, { IsQuestOnQuest = 57, Not = { IsQuestReadyForTurnIn = 57 } }, { IsQuestOnQuest = 156, Not = { IsQuestReadyForTurnIn = 156 } }, { IsQuestOnQuest = 268 }, { IsQuestCompleted = 268, IsQuestNotOnQuest = 323, IsQuestUncompleted = 323 }, { IsQuestOnQuest = 323 }, { IsQuestCompleted = 323, IsQuestNotOnQuest = 269 } },
@@ -4052,7 +3979,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 240,
-            NonSkippableWaypoint = true,
             Coord = { x = -1161.5, y = -10736.5 },
             Range = 20,
             IsQuestCompleted = 269,
@@ -4062,7 +3988,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 57,
-            NonSkippableWaypoint = true,
             Coord = { x = -1161.5, y = -10736.5 },
             Range = 20,
             IsQuestCompleted = 269,
@@ -4074,7 +3999,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 156,
-            NonSkippableWaypoint = true,
             Coord = { x = -1161.5, y = -10736.5 },
             Range = 20,
             AllOf = { { Not = { IsQuestOnQuest = 57, Not = { IsQuestReadyForTurnIn = 57 } } } },
@@ -4087,7 +4011,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 269,
-            NonSkippableWaypoint = true,
             Coord = { x = -364.1, y = -10905.2 },
             Range = 20,
             AnyOf = { { IsQuestOnQuest = 453 }, { IsQuestCompleted = 453, IsQuestNotOnQuest = 268, IsQuestUncompleted = 268 }, { IsQuestOnQuest = 240 }, { IsQuestOnQuest = 57, Not = { IsQuestReadyForTurnIn = 57 } }, { IsQuestOnQuest = 156, Not = { IsQuestReadyForTurnIn = 156 } }, { IsQuestOnQuest = 268 }, { IsQuestCompleted = 268, IsQuestNotOnQuest = 323, IsQuestUncompleted = 323 }, { IsQuestOnQuest = 323 }, { IsQuestCompleted = 323, IsQuestNotOnQuest = 269 } },
@@ -4097,7 +4020,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 240,
-            NonSkippableWaypoint = true,
             Coord = { x = -364.1, y = -10905.2 },
             Range = 20,
             IsQuestCompleted = 269,
@@ -4107,7 +4029,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 57,
-            NonSkippableWaypoint = true,
             Coord = { x = -364.1, y = -10905.2 },
             Range = 20,
             IsQuestCompleted = 269,
@@ -4119,7 +4040,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 156,
-            NonSkippableWaypoint = true,
             Coord = { x = -364.1, y = -10905.2 },
             Range = 20,
             AllOf = { { Not = { IsQuestOnQuest = 57, Not = { IsQuestReadyForTurnIn = 57 } } } },
@@ -4132,7 +4052,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 269,
-            NonSkippableWaypoint = true,
             Coord = { x = -81.2, y = -10804.2 },
             Range = 20,
             AnyOf = { { IsQuestOnQuest = 453 }, { IsQuestCompleted = 453, IsQuestNotOnQuest = 268, IsQuestUncompleted = 268 }, { IsQuestOnQuest = 240 }, { IsQuestOnQuest = 57, Not = { IsQuestReadyForTurnIn = 57 } }, { IsQuestOnQuest = 156, Not = { IsQuestReadyForTurnIn = 156 } }, { IsQuestOnQuest = 268 }, { IsQuestCompleted = 268, IsQuestNotOnQuest = 323, IsQuestUncompleted = 323 }, { IsQuestOnQuest = 323 }, { IsQuestCompleted = 323, IsQuestNotOnQuest = 269 } },
@@ -4142,7 +4061,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 240,
-            NonSkippableWaypoint = true,
             Coord = { x = -81.2, y = -10804.2 },
             Range = 20,
             IsQuestCompleted = 269,
@@ -4152,7 +4070,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 57,
-            NonSkippableWaypoint = true,
             Coord = { x = -81.2, y = -10804.2 },
             Range = 20,
             IsQuestCompleted = 269,
@@ -4164,7 +4081,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 156,
-            NonSkippableWaypoint = true,
             Coord = { x = -81.2, y = -10804.2 },
             Range = 20,
             AllOf = { { Not = { IsQuestOnQuest = 57, Not = { IsQuestReadyForTurnIn = 57 } } } },
@@ -4177,7 +4093,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 453,
-            NonSkippableWaypoint = true,
             Coord = { x = 213.68, y = -10522.17 },
             Range = 20,
             Zone = 1431,
@@ -4248,7 +4163,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 269,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 34.2, 60.4),
             Range = 20,
             SkipIfCooldown = { { once = true, seconds = 2, itemID = 6948, operator = "<" } },
@@ -4259,7 +4173,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 269,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 50.9, 66.7),
             Range = 20,
             SkipIfCooldown = { { once = true, seconds = 2, itemID = 6948, operator = "<" } },
@@ -4270,7 +4183,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 269,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 61.7, 61.6),
             Range = 20,
             SkipIfCooldown = { { once = true, seconds = 2, itemID = 6948, operator = "<" } },
@@ -4281,7 +4193,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 269,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 74.5, 46.9),
             Range = 20,
             SkipIfCooldown = { { once = true, seconds = 2, itemID = 6948, operator = "<" } },
@@ -4526,7 +4437,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 219,
-            NonSkippableWaypoint = true,
             Coord = { x = -2314, y = -8683 },
             Range = 10,
             IsQuestNotOnQuest = 219,
@@ -4537,7 +4447,6 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
         },
         {
             Waypoint = 128,
-            NonSkippableWaypoint = true,
             Coord = { x = -2314, y = -8683 },
             Range = 10,
             AllOf = { { Not = { IsQuestUncompleted = 219, IsQuestNotOnQuest = 219, SkipForLvl = 28 } } },

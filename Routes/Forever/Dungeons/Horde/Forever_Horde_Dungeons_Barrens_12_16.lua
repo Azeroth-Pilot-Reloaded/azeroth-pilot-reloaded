@@ -95,7 +95,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Coord = { x = -4834.14, y = 418.07 },
             Range = 30.0,
             Class = "SHAMAN",
@@ -105,7 +104,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Coord = { x = -4749, y = 773 },
             Range = 8,
             Class = "SHAMAN",
@@ -117,7 +115,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Coord = { x = -4754.3, y = 796.66 },
             Range = 20.0,
             Class = "SHAMAN",
@@ -127,7 +124,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Coord = { x = -4751, y = 823 },
             Range = 8,
             Class = "SHAMAN",
@@ -148,7 +144,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Coord = { x = -4749, y = 773 },
             Range = 8,
             AllOf = { { IsQuestOnQuest = 1525 }, { IsQuestOnQuest = 840 } },
@@ -175,7 +170,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 1502,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_TOP_MOUNTAIN" },
             Coord = { x = -2902.79, y = -276.55 },
             Range = 30.0,
@@ -186,7 +180,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 1502,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_TOP_MOUNTAIN" },
             Coord = { x = -3004.12, y = -298.17 },
             Range = 30.0,
@@ -197,7 +190,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 1502,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_TOP_MOUNTAIN" },
             Coord = { x = -3110.52, y = -320.46 },
             Range = 30.0,
@@ -233,7 +225,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 1503,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_TOP_MOUNTAIN" },
             Coord = { x = -2902.79, y = -276.55 },
             Range = 30.0,
@@ -244,7 +235,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 1503,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_TOP_MOUNTAIN" },
             Coord = { x = -3004.12, y = -298.17 },
             Range = 30.0,
@@ -255,7 +245,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 1503,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_TOP_MOUNTAIN" },
             Coord = { x = -3110.52, y = -320.46 },
             Range = 30.0,
@@ -479,7 +468,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 924,
-            NonSkippableWaypoint = true,
             Fillers = { [869] = { 1 }, [844] = { 1 } },
             Note = { "TRAVEL_TOP_MOUNTAIN" },
             Coord = { x = -2554.2, y = 80.18 },
@@ -491,7 +479,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 924,
-            NonSkippableWaypoint = true,
             Fillers = { [869] = { 1 }, [844] = { 1 } },
             Note = { "TRAVEL_TOP_MOUNTAIN" },
             Coord = { x = -2477.19, y = 136.26 },
@@ -503,7 +490,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 924,
-            NonSkippableWaypoint = true,
             Fillers = { [869] = { 1 }, [844] = { 1 } },
             Note = { "TRAVEL_TOP_MOUNTAIN" },
             Coord = { x = -2363.7, y = 232.87 },
@@ -515,7 +501,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 924,
-            NonSkippableWaypoint = true,
             Fillers = { [869] = { 1 }, [844] = { 1 } },
             Note = { "TRAVEL_TOP_MOUNTAIN" },
             Coord = { x = -2205.62, y = 314.62 },
@@ -527,7 +512,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 924,
-            NonSkippableWaypoint = true,
             Fillers = { [869] = { 1 }, [844] = { 1 } },
             Coord = { x = -2205.62, y = 314.62 },
             Range = 15.0,
@@ -783,7 +767,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 872,
-            NonSkippableWaypoint = true,
             Note = { "STOCK_FOOD" },
             Coord = { x = -2645.4, y = -406.94 },
             Range = 5,
@@ -793,7 +776,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 872,
-            NonSkippableWaypoint = true,
             Note = { "BUY_FOOD_WATER_IF_NEEDED" },
             Coord = { x = -2645.4, y = -406.94 },
             Range = 5,
@@ -803,7 +785,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 819,
-            NonSkippableWaypoint = true,
             Note = { "LOOT_CHEN_EMPTY_KEG_GROUND_START_QUEST", "WAIT_RESPAWN_NOT" },
             Coord = { x = -3021.35, y = -231.96 },
             Range = 20.0,
@@ -868,7 +849,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Fillers = { [869] = { 1 }, [845] = { 1 } },
             Coord = { x = -3905.13, y = -228.41 },
             Range = 5,
@@ -880,7 +860,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -3905.13, y = -228.41 },
             Range = 10.0,
@@ -891,7 +870,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -3899.31, y = -241.45 },
             Range = 8.0,
@@ -902,7 +880,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -3899.31, y = -241.45 },
             Range = 8.0,
@@ -913,7 +890,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -3906.71, y = -270.71 },
             Range = 8.0,
@@ -924,7 +900,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -3910.94, y = -247.45 },
             Range = 8.0,
@@ -935,7 +910,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -3931.56, y = -240.75 },
             Range = 8.0,
@@ -946,7 +920,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -3964.35, y = -242.51 },
             Range = 8.0,
@@ -957,7 +930,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -3974.39, y = -228.76 },
             Range = 8.0,
@@ -968,7 +940,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -4020.92, y = -219.95 },
             Range = 8.0,
@@ -979,7 +950,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -4034.67, y = -232.64 },
             Range = 8.0,
@@ -990,7 +960,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -4033.08, y = -255.91 },
             Range = 10.0,
@@ -1111,7 +1080,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 845,
-            NonSkippableWaypoint = true,
             Fillers = { [869] = { 1 } },
             Coord = { x = -3728.66, y = -835.29 },
             Range = 5,
@@ -1139,7 +1107,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 894,
-            NonSkippableWaypoint = true,
             Coord = { x = -3759.06, y = -902.18 },
             Range = 5,
             Zone = 1413,
@@ -1555,7 +1522,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 6363,
-            NonSkippableWaypoint = true,
             Coord = { x = 1.3, y = -1333.2 },
             Range = 6,
             ZoneStepTrigger = { x = 1.3, y = -1333.2, Range = 6, mapID = 1456 },
@@ -1567,7 +1533,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 6363,
-            NonSkippableWaypoint = true,
             Coord = { x = -63.3, y = -1397.2 },
             Range = 6,
             ZoneStepTrigger = { x = -63.3, y = -1397.2, Range = 6, mapID = 1456 },
@@ -1579,7 +1544,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 6363,
-            NonSkippableWaypoint = true,
             Coord = { x = -123.26, y = -1394.49 },
             Range = 60.0,
             Class = { "HUNTER", "WARRIOR" },
@@ -1926,7 +1890,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 95495,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_MOUNTAIN" },
             Coord = { x = -1778.1, y = 684.2 },
             Range = 25.0,
@@ -1936,7 +1899,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 95495,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_MOUNTAIN" },
             Coord = { x = -1741.7, y = 721.4 },
             Range = 25.0,
@@ -1946,7 +1908,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 95495,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_MOUNTAIN" },
             Coord = { x = -1643.9, y = 786.0 },
             Range = 25.0,
@@ -1956,7 +1917,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 95495,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_MOUNTAIN" },
             Coord = { x = -1605.3, y = 818.3 },
             Range = 20.0,
@@ -1992,7 +1952,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 95621,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_MOUNTAIN" },
             Coord = { x = -1736.9, y = 650.3 },
             Range = 25.0,
@@ -2002,7 +1961,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 95621,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_MOUNTAIN" },
             Coord = { x = -1741.7, y = 721.4 },
             Range = 25.0,
@@ -2012,7 +1970,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 95621,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_MOUNTAIN" },
             Coord = { x = -1643.9, y = 786.0 },
             Range = 25.0,
@@ -2022,7 +1979,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Waypoint = 95621,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_MOUNTAIN" },
             Coord = { x = -1605.3, y = 818.3 },
             Range = 20.0,

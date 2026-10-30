@@ -80,7 +80,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 8460,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 37.37, 49.83),
             Range = 20,
             Zone = 1448,
@@ -88,7 +87,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 8460,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 35.45, 50.1),
             Range = 20,
             Zone = 1448,
@@ -96,7 +94,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 8460,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 34.57, 52.12),
             Range = 5,
             Zone = 1448,
@@ -122,7 +119,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 8460,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 36.02, 66.99),
             Range = 20,
             Zone = 1448,
@@ -130,7 +126,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 8460,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 32.3, 66.6),
             Range = 20,
             Zone = 1448,
@@ -210,7 +205,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 5157,
-            NonSkippableWaypoint = true,
             Coord = { x = -456.51, y = 4779.67 },
             Range = 15,
             IsQuestOnQuest = 5157,
@@ -320,7 +314,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 8462,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 64.7, 8.1),
             Range = 20,
             Zone = 1448,
@@ -336,7 +329,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 4494,
-            NonSkippableWaypoint = true,
             Coord = { x = -2099, y = 6824 },
             Range = 7,
             ZoneStepTrigger = { x = -2099, y = 6824, Range = 7 },
@@ -347,7 +339,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 4494,
-            NonSkippableWaypoint = true,
             Coord = { x = -2119, y = 6876 },
             Range = 7,
             ZoneStepTrigger = { x = -2119, y = 6876, Range = 7 },
@@ -358,7 +349,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 4494,
-            NonSkippableWaypoint = true,
             Coord = { x = -2087, y = 6904 },
             Range = 7,
             ZoneStepTrigger = { x = -2087, y = 6904, Range = 7 },
@@ -369,7 +359,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 4494,
-            NonSkippableWaypoint = true,
             Coord = { x = -2077, y = 6982 },
             Range = 7,
             ZoneStepTrigger = { x = -2077, y = 6982, Range = 7 },
@@ -380,7 +369,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 4494,
-            NonSkippableWaypoint = true,
             Coord = { x = -2079, y = 7016 },
             Range = 7,
             ZoneStepTrigger = { x = -2079, y = 7016, Range = 7 },
@@ -391,7 +379,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 4494,
-            NonSkippableWaypoint = true,
             Coord = { x = -2097, y = 7018 },
             Range = 5,
             ZoneStepTrigger = { x = -2097, y = 7018, Range = 5 },
@@ -402,7 +389,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 4494,
-            NonSkippableWaypoint = true,
             Coord = { x = -2121, y = 7026 },
             Range = 7,
             ZoneStepTrigger = { x = -2121, y = 7026, Range = 7 },
@@ -414,7 +400,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 3908,
-            NonSkippableWaypoint = true,
             Note = { "NOT_UNFRIENDLY_TIMBERMAW_HOLD_FURBOLGS_ATTACK" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 65.44, 2.81),
             Range = 20.0,
@@ -423,7 +408,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 4494,
-            NonSkippableWaypoint = true,
             Coord = { x = -2155, y = 7022 },
             Range = 7,
             ZoneStepTrigger = { x = -2155, y = 7022, Range = 7 },
@@ -434,7 +418,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 4494,
-            NonSkippableWaypoint = true,
             Coord = { x = -2177, y = 7020 },
             Range = 7,
             ZoneStepTrigger = { x = -2177, y = 7020, Range = 7 },
@@ -446,7 +429,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 3908,
-            NonSkippableWaypoint = true,
             Note = { "NOT_UNFRIENDLY_TIMBERMAW_HOLD_FURBOLGS_ATTACK" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 66.51, 2.98),
             Range = 20.0,
@@ -455,7 +437,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 4494,
-            NonSkippableWaypoint = true,
             Coord = { x = -2191, y = 6998 },
             Range = 7,
             ZoneStepTrigger = { x = -2191, y = 6998, Range = 7 },
@@ -466,7 +447,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 4494,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6966 },
             Range = 7,
             ZoneStepTrigger = { x = -2261, y = 6966, Range = 7 },
@@ -478,7 +458,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 3908,
-            NonSkippableWaypoint = true,
             Note = { "NOT_UNFRIENDLY_TIMBERMAW_HOLD_FURBOLGS_ATTACK" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 67.82, 4.33),
             Range = 20.0,
@@ -487,7 +466,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 4494,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6940 },
             Range = 7,
             ZoneStepTrigger = { x = -2261, y = 6940, Range = 7 },
@@ -499,7 +477,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 3908,
-            NonSkippableWaypoint = true,
             Note = { "NOT_UNFRIENDLY_TIMBERMAW_HOLD_FURBOLGS_ATTACK" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 67.93, 5.11),
             Range = 20.0,
@@ -508,7 +485,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 4494,
-            NonSkippableWaypoint = true,
             Coord = { x = -2295, y = 6906 },
             Range = 7,
             ZoneStepTrigger = { x = -2295, y = 6906, Range = 7 },
@@ -519,7 +495,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 4494,
-            NonSkippableWaypoint = true,
             Coord = { x = -2287.63, y = 6896.07 },
             Range = 5,
             ZoneStepTrigger = { x = -2287.63, y = 6896.07, Range = 5 },
@@ -762,7 +737,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
         },
         {
             Waypoint = 3541,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 55.78, 28.12),
             Range = 20,
             SkipInZones = { 1454, 1413 },
@@ -1075,7 +1049,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4506,
-            NonSkippableWaypoint = true,
             Note = { "MOONWELL" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 36.02, 66.99),
             Range = 20,
@@ -1115,7 +1088,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4506,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 36.64, 66.86),
             Range = 15,
             IsQuestOnQuest = 4506,
@@ -1137,7 +1109,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5202,
-            NonSkippableWaypoint = true,
             Coord = { x = -456.51, y = 4779.67 },
             Range = 12,
             ZoneStepTrigger = { x = -456.51, y = 4779.67, Range = 12 },
@@ -1148,7 +1119,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5202,
-            NonSkippableWaypoint = true,
             Coord = { x = -429, y = 4821 },
             Range = 12,
             ZoneStepTrigger = { x = -429, y = 4821, Range = 12 },
@@ -1159,7 +1129,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5202,
-            NonSkippableWaypoint = true,
             Coord = { x = -391.94, y = 4895.59 },
             Range = 5,
             Zone = 1448,
@@ -1167,7 +1136,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5202,
-            NonSkippableWaypoint = true,
             Coord = { x = -391.94, y = 4895.59 },
             Range = 8,
             ZoneStepTrigger = { x = -391.94, y = 4895.59, Range = 8 },
@@ -1260,7 +1228,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5165,
-            NonSkippableWaypoint = true,
             Coord = { x = -391.94, y = 4895.59 },
             Range = 10,
             ZoneStepTrigger = { x = -391.94, y = 4895.59, Range = 10 },
@@ -1271,7 +1238,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4506,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 37.37, 49.83),
             Range = 20,
             Zone = 1448,
@@ -1279,7 +1245,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4506,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 35.45, 50.1),
             Range = 20,
             Zone = 1448,
@@ -1287,7 +1252,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4506,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 34.57, 52.12),
             Range = 5,
             Zone = 1448,
@@ -1314,7 +1278,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5084,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 64.7, 8.1),
             Range = 20,
             Zone = 1448,
@@ -1371,7 +1334,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2105.03, y = 6831.27 },
             Range = 20,
             Zone = 1448,
@@ -1379,7 +1341,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2085, y = 6840 },
             Range = 7,
             ZoneStepTrigger = { x = -2085, y = 6840, Range = 7 },
@@ -1390,7 +1351,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2119, y = 6876 },
             Range = 7,
             ZoneStepTrigger = { x = -2119, y = 6876, Range = 7 },
@@ -1401,7 +1361,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2087, y = 6904 },
             Range = 7,
             ZoneStepTrigger = { x = -2087, y = 6904, Range = 7 },
@@ -1412,7 +1371,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2079, y = 7016 },
             Range = 7,
             ZoneStepTrigger = { x = -2079, y = 7016, Range = 7 },
@@ -1423,7 +1381,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2076.86, y = 7012.97 },
             Range = 20,
             Zone = 1448,
@@ -1431,7 +1388,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2121, y = 7026 },
             Range = 7,
             ZoneStepTrigger = { x = -2121, y = 7026, Range = 7 },
@@ -1442,7 +1398,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2177, y = 7020 },
             Range = 7,
             ZoneStepTrigger = { x = -2177, y = 7020, Range = 7 },
@@ -1453,7 +1408,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 66.4, 2.95),
             Range = 20,
             Zone = 1448,
@@ -1461,7 +1415,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2191, y = 6998 },
             Range = 7,
             ZoneStepTrigger = { x = -2191, y = 6998, Range = 7 },
@@ -1472,7 +1425,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6966 },
             Range = 7,
             ZoneStepTrigger = { x = -2261, y = 6966, Range = 7 },
@@ -1483,7 +1435,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6940 },
             Range = 7,
             ZoneStepTrigger = { x = -2261, y = 6940, Range = 7 },
@@ -1494,7 +1445,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2282.13, y = 6918.67 },
             Range = 20,
             Zone = 1448,
@@ -1502,7 +1452,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2295, y = 6906 },
             Range = 7,
             ZoneStepTrigger = { x = -2295, y = 6906, Range = 7 },
@@ -1513,7 +1462,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2310.31, y = 6888.77 },
             Range = 5,
             Zone = 1448,
@@ -1521,7 +1469,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2285.92, y = 6900.38 },
             Range = 10,
             ZoneStepTrigger = { x = -2285.92, y = 6900.38, Range = 10 },
@@ -1887,7 +1834,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3941,
-            NonSkippableWaypoint = true,
             Coord = { x = -1068, y = -6163 },
             Range = 8,
             ZoneStepTrigger = { x = -1068, y = -6163, Range = 8, mapID = 1449 },
@@ -2000,7 +1946,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3942,
-            NonSkippableWaypoint = true,
             Coord = { x = -1068, y = -6163 },
             Range = 8,
             ZoneStepTrigger = { x = -1068, y = -6163, Range = 8, mapID = 1449 },
@@ -2089,7 +2034,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4842,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 62.43, 67.46),
             Range = 12,
             IsQuestOnQuest = 4842,
@@ -2142,7 +2086,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5055,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 61.36, 38.83),
             Range = 10,
             Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
@@ -2151,7 +2094,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 969,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 61.36, 38.83),
             Range = 10,
             Class = "HUNTER",
@@ -2177,7 +2119,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 6029,
-            NonSkippableWaypoint = true,
             Coord = { x = -4672.37, y = 6688.61 },
             Range = 5,
             Zone = 1452,
@@ -2314,7 +2255,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5204,
-            NonSkippableWaypoint = true,
             Coord = { x = -456.51, y = 4779.67 },
             Range = 12,
             ZoneStepTrigger = { x = -456.51, y = 4779.67, Range = 12 },
@@ -2325,7 +2265,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5204,
-            NonSkippableWaypoint = true,
             Coord = { x = -429, y = 4821 },
             Range = 12,
             ZoneStepTrigger = { x = -429, y = 4821, Range = 12 },
@@ -2336,7 +2275,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5204,
-            NonSkippableWaypoint = true,
             Fillers = { [4084] = { 1 } },
             Coord = { x = -391.94, y = 4895.59 },
             Range = 5,
@@ -2345,7 +2283,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5204,
-            NonSkippableWaypoint = true,
             Coord = { x = -391.94, y = 4895.59 },
             Range = 8,
             ZoneStepTrigger = { x = -391.94, y = 4895.59, Range = 8 },
@@ -2392,7 +2329,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5242,
-            NonSkippableWaypoint = true,
             Coord = { x = -391.94, y = 4895.59 },
             Range = 10,
             ZoneStepTrigger = { x = -391.94, y = 4895.59, Range = 10 },
@@ -2404,7 +2340,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8467,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 35.42, 58.72),
             Range = 15.0,
@@ -2454,7 +2389,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8470,
-            NonSkippableWaypoint = true,
             Note = { "PATROLS_AROUND_AREA", "FOUND_DEADWOOD_RITUAL_TOTEM_USE_START_QUEST" },
             Coord = { x = -2123.43, y = 7000.32 },
             Range = 20,
@@ -2504,7 +2438,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4842,
-            NonSkippableWaypoint = true,
             Coord = { x = -2105.03, y = 6831.27 },
             Range = 20,
             Zone = 1448,
@@ -2512,7 +2445,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4842,
-            NonSkippableWaypoint = true,
             Coord = { x = -2085, y = 6840 },
             Range = 7,
             ZoneStepTrigger = { x = -2085, y = 6840, Range = 7 },
@@ -2523,7 +2455,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4842,
-            NonSkippableWaypoint = true,
             Coord = { x = -2119, y = 6876 },
             Range = 7,
             ZoneStepTrigger = { x = -2119, y = 6876, Range = 7 },
@@ -2534,7 +2465,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4842,
-            NonSkippableWaypoint = true,
             Coord = { x = -2087, y = 6904 },
             Range = 7,
             ZoneStepTrigger = { x = -2087, y = 6904, Range = 7 },
@@ -2545,7 +2475,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4842,
-            NonSkippableWaypoint = true,
             Coord = { x = -2079, y = 7016 },
             Range = 7,
             ZoneStepTrigger = { x = -2079, y = 7016, Range = 7 },
@@ -2556,7 +2485,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4842,
-            NonSkippableWaypoint = true,
             Coord = { x = -2076.86, y = 7012.97 },
             Range = 20,
             Zone = 1448,
@@ -2564,7 +2492,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4842,
-            NonSkippableWaypoint = true,
             Coord = { x = -2121, y = 7026 },
             Range = 7,
             ZoneStepTrigger = { x = -2121, y = 7026, Range = 7 },
@@ -2575,7 +2502,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4842,
-            NonSkippableWaypoint = true,
             Coord = { x = -2177, y = 7020 },
             Range = 7,
             ZoneStepTrigger = { x = -2177, y = 7020, Range = 7 },
@@ -2586,7 +2512,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4842,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 66.4, 2.95),
             Range = 20,
             Zone = 1448,
@@ -2594,7 +2519,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4842,
-            NonSkippableWaypoint = true,
             Coord = { x = -2191, y = 6998 },
             Range = 7,
             ZoneStepTrigger = { x = -2191, y = 6998, Range = 7 },
@@ -2605,7 +2529,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4842,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6966 },
             Range = 7,
             ZoneStepTrigger = { x = -2261, y = 6966, Range = 7 },
@@ -2616,7 +2539,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4842,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6940 },
             Range = 7,
             ZoneStepTrigger = { x = -2261, y = 6940, Range = 7 },
@@ -2627,7 +2549,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4842,
-            NonSkippableWaypoint = true,
             Coord = { x = -2282.13, y = 6918.67 },
             Range = 20,
             Zone = 1448,
@@ -2635,7 +2556,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4842,
-            NonSkippableWaypoint = true,
             Coord = { x = -2295, y = 6906 },
             Range = 7,
             ZoneStepTrigger = { x = -2295, y = 6906, Range = 7 },
@@ -2646,7 +2566,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4842,
-            NonSkippableWaypoint = true,
             Coord = { x = -2310.31, y = 6888.77 },
             Range = 5,
             Zone = 1448,
@@ -2654,7 +2573,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4842,
-            NonSkippableWaypoint = true,
             Coord = { x = -2285.92, y = 6900.38 },
             Range = 10,
             ZoneStepTrigger = { x = -2285.92, y = 6900.38, Range = 10 },
@@ -2723,7 +2641,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5242,
-            NonSkippableWaypoint = true,
             Coord = { x = -2293, y = 6886 },
             Range = 7,
             ZoneStepTrigger = { x = -2293, y = 6886, Range = 7 },
@@ -2736,7 +2653,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5242,
-            NonSkippableWaypoint = true,
             Coord = { x = -2295, y = 6906 },
             Range = 7,
             ZoneStepTrigger = { x = -2295, y = 6906, Range = 7 },
@@ -2749,7 +2665,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5242,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 67.93, 5.11),
             Range = 20,
             AnyOf = { { ClassNot = "MAGE" }, { DontHaveSpell = 3567, Class = "MAGE" }, { ItemCount = { count = 1, itemID = 17031, operator = "<" }, Class = "MAGE" } },
@@ -2759,7 +2674,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5242,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 67.82, 4.33),
             Range = 20,
             AnyOf = { { ClassNot = "MAGE" }, { DontHaveSpell = 3567, Class = "MAGE" }, { ItemCount = { count = 1, itemID = 17031, operator = "<" }, Class = "MAGE" } },
@@ -2769,7 +2683,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5242,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 66.51, 2.98),
             Range = 20,
             AnyOf = { { ClassNot = "MAGE" }, { DontHaveSpell = 3567, Class = "MAGE" }, { ItemCount = { count = 1, itemID = 17031, operator = "<" }, Class = "MAGE" } },
@@ -2779,7 +2692,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5242,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 65.44, 2.81),
             Range = 20,
             AnyOf = { { ClassNot = "MAGE" }, { DontHaveSpell = 3567, Class = "MAGE" }, { ItemCount = { count = 1, itemID = 17031, operator = "<" }, Class = "MAGE" } },
@@ -2789,7 +2701,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5242,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 65.38, 1.08),
             Range = 20,
             AnyOf = { { ClassNot = "MAGE" }, { DontHaveSpell = 3567, Class = "MAGE" }, { ItemCount = { count = 1, itemID = 17031, operator = "<" }, Class = "MAGE" } },
@@ -2799,7 +2710,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5242,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 65.98, 0.64),
             Range = 20,
             AnyOf = { { ClassNot = "MAGE" }, { DontHaveSpell = 3567, Class = "MAGE" }, { ItemCount = { count = 1, itemID = 17031, operator = "<" }, Class = "MAGE" } },
@@ -2809,7 +2719,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5242,
-            NonSkippableWaypoint = true,
             Coord = { x = -2168.66, y = 7169.53 },
             Range = 20,
             AnyOf = { { ClassNot = "MAGE" }, { DontHaveSpell = 3567, Class = "MAGE" }, { ItemCount = { count = 1, itemID = 17031, operator = "<" }, Class = "MAGE" } },
@@ -2819,7 +2728,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5242,
-            NonSkippableWaypoint = true,
             Coord = { x = -2190.74, y = 7250.49 },
             Range = 20,
             AnyOf = { { ClassNot = "MAGE" }, { DontHaveSpell = 3567, Class = "MAGE" }, { ItemCount = { count = 1, itemID = 17031, operator = "<" }, Class = "MAGE" } },
@@ -2829,7 +2737,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5242,
-            NonSkippableWaypoint = true,
             Coord = { x = -2153.94, y = 7282.38 },
             Range = 20,
             AnyOf = { { ClassNot = "MAGE" }, { DontHaveSpell = 3567, Class = "MAGE" }, { ItemCount = { count = 1, itemID = 17031, operator = "<" }, Class = "MAGE" } },
@@ -2839,7 +2746,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5242,
-            NonSkippableWaypoint = true,
             Coord = { x = -2168.66, y = 7316.73 },
             Range = 20,
             AnyOf = { { ClassNot = "MAGE" }, { DontHaveSpell = 3567, Class = "MAGE" }, { ItemCount = { count = 1, itemID = 17031, operator = "<" }, Class = "MAGE" } },
@@ -2849,7 +2755,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5242,
-            NonSkippableWaypoint = true,
             Coord = { x = -2190.74, y = 7319.18 },
             Range = 20,
             AnyOf = { { ClassNot = "MAGE" }, { DontHaveSpell = 3567, Class = "MAGE" }, { ItemCount = { count = 1, itemID = 17031, operator = "<" }, Class = "MAGE" } },
@@ -2859,7 +2764,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5242,
-            NonSkippableWaypoint = true,
             Coord = { x = -2206.25, y = 7377.47 },
             Range = 20,
             AnyOf = { { ClassNot = "MAGE" }, { DontHaveSpell = 3567, Class = "MAGE" }, { ItemCount = { count = 1, itemID = 17031, operator = "<" }, Class = "MAGE" } },
@@ -2869,7 +2773,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5242,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1450, 32.1, 66.6),
             Range = 20,
             AnyOf = { { ClassNot = "MAGE" }, { DontHaveSpell = 3567, Class = "MAGE" }, { ItemCount = { count = 1, itemID = 17031, operator = "<" }, Class = "MAGE" } },
@@ -2909,7 +2812,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5242,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 55.78, 28.12),
             Range = 5,
             Class = "MAGE",
@@ -2958,7 +2860,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 55.78, 28.12),
             Range = 20,
             SkipInZones = { 1454, 1458, 1420 },
@@ -3057,7 +2958,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Note = { "SPEND_PET_TRAINING_POINTS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 47.55, 46.77),
             Range = 5,
@@ -3196,7 +3096,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -4417.1, y = 1480.6 },
             Range = 15,
             OnlyInZones = { 1454 },
@@ -3206,7 +3105,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -4412.5, y = 1436.4 },
             Range = 15,
             OnlyInZones = { 1454 },
@@ -3216,7 +3114,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -4363.9, y = 1420.2 },
             Range = 15,
             OnlyInZones = { 1454 },
@@ -3226,7 +3123,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -4370, y = 1382.2 },
             Range = 15,
             OnlyInZones = { 1454 },
@@ -3236,7 +3132,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -4636.4, y = 1338.7 },
             Range = 5,
             OnlyInZones = { 1411 },
@@ -3246,7 +3141,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -4645.1, y = 1345 },
             Range = 5,
             OnlyInZones = { 1411 },

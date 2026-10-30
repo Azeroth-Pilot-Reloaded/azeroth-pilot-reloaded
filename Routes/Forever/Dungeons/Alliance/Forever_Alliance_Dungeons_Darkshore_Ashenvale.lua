@@ -107,7 +107,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 98341,
-            NonSkippableWaypoint = true,
             Coord = { x = -2352.7, y = 7375.6 },
             Range = 10.0,
             RaidIcon = 272054,
@@ -136,7 +135,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 98396,
-            NonSkippableWaypoint = true,
             Coord = { x = -3046.7, y = 7534.4 },
             Range = 5,
             Class = "DRUID",
@@ -146,7 +144,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 98404,
-            NonSkippableWaypoint = true,
             Coord = { x = -3046.7, y = 7534.4 },
             Range = 5,
             Class = "DRUID",
@@ -386,7 +383,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 2139,
-            NonSkippableWaypoint = true,
             Coord = { x = -451, y = 6712 },
             Range = 8,
             IsQuestOnQuest = 2139,
@@ -405,7 +401,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 2139,
-            NonSkippableWaypoint = true,
             Coord = { x = -451, y = 6712 },
             Range = 8,
             IsQuestOnQuest = 2139,
@@ -464,7 +459,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 947,
-            NonSkippableWaypoint = true,
             Coord = { x = -659.52, y = 6901.5 },
             Range = 10,
             IsQuestOnQuest = 947,
@@ -482,7 +476,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 947,
-            NonSkippableWaypoint = true,
             Coord = { x = -659.52, y = 6901.5 },
             Range = 10,
             IsQuestOnQuest = 947,
@@ -582,7 +575,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 2078,
-            NonSkippableWaypoint = true,
             Note = { "QUEST_DIFFICULT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 55.802, 18.29),
             Range = 5,
@@ -593,7 +585,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 2078,
-            NonSkippableWaypoint = true,
             Note = { "QUEST_DIFFICULT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 55.802, 18.29),
             Range = 5,
@@ -724,7 +715,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 4727,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.701, 45.122),
             Range = 8.0,
             IsQuestOnQuest = 4727,
@@ -768,7 +758,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 944,
-            NonSkippableWaypoint = true,
             Coord = { x = 417.3, y = 4575.82 },
             Range = 100.0,
             IsQuestOnQuest = 944,
@@ -970,7 +959,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 5321,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SOUTH_ASHENVALE" },
             Coord = { x = -12.7, y = 4150.17 },
             Range = 5,
@@ -1124,7 +1112,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1020,
-            NonSkippableWaypoint = true,
             Coord = { x = 230.2, y = 3176 },
             Range = 10,
             ZoneStepTrigger = { x = 230.2, y = 3176, Range = 10, mapID = 1440 },
@@ -1142,7 +1129,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1020,
-            NonSkippableWaypoint = true,
             Coord = { x = 228.1, y = 3105.2 },
             Range = 10,
             ZoneStepTrigger = { x = 228.1, y = 3105.2, Range = 10, mapID = 1440 },
@@ -1160,7 +1146,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1020,
-            NonSkippableWaypoint = true,
             Coord = { x = 149, y = 3017.7 },
             Range = 10,
             ZoneStepTrigger = { x = 149, y = 3017.7, Range = 10, mapID = 1440 },
@@ -1178,7 +1163,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1020,
-            NonSkippableWaypoint = true,
             Coord = { x = 151, y = 2982.3 },
             Range = 10,
             ZoneStepTrigger = { x = 151, y = 2982.3, Range = 10, mapID = 1440 },
@@ -1196,7 +1180,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Waypoint = 1020,
-            NonSkippableWaypoint = true,
             Coord = { x = 190.6, y = 2896.9 },
             Range = 10,
             ZoneStepTrigger = { x = 190.6, y = 2896.9, Range = 10, mapID = 1440 },

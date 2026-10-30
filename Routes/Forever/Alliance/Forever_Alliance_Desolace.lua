@@ -43,7 +43,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
     steps = {
         {
             Waypoint = 1453,
-            NonSkippableWaypoint = true,
             Coord = { x = -1250.5, y = -4661.57 },
             Range = 20,
             Zone = 1455,
@@ -58,7 +57,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1791,
-            NonSkippableWaypoint = true,
             Coord = { x = -1252, y = -4672 },
             Range = 6,
             Class = "WARRIOR",
@@ -69,7 +67,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1791,
-            NonSkippableWaypoint = true,
             Coord = { x = -1226, y = -4688 },
             Range = 6,
             Class = "WARRIOR",
@@ -80,7 +77,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1791,
-            NonSkippableWaypoint = true,
             Coord = { x = -1152, y = -4756 },
             Range = 6,
             Class = "WARRIOR",
@@ -91,7 +87,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1791,
-            NonSkippableWaypoint = true,
             Coord = { x = -1170, y = -4792 },
             Range = 6,
             Class = "WARRIOR",
@@ -102,7 +97,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1791,
-            NonSkippableWaypoint = true,
             Coord = { x = -1166, y = -4820 },
             Range = 6,
             Class = "WARRIOR",
@@ -180,7 +174,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1453,
-            NonSkippableWaypoint = true,
             Coord = { x = -1252, y = -4672 },
             Range = 6,
             OnlyInZones = { 1455 },
@@ -189,7 +182,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1453,
-            NonSkippableWaypoint = true,
             Coord = { x = -1226, y = -4688 },
             Range = 6,
             OnlyInZones = { 1455 },
@@ -198,7 +190,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1453,
-            NonSkippableWaypoint = true,
             Coord = { x = -1152, y = -4756 },
             Range = 6,
             OnlyInZones = { 1455 },
@@ -207,7 +198,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1453,
-            NonSkippableWaypoint = true,
             Coord = { x = -1170, y = -4792 },
             Range = 6,
             OnlyInZones = { 1455 },
@@ -216,7 +206,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1453,
-            NonSkippableWaypoint = true,
             Coord = { x = -1166, y = -4820 },
             Range = 6,
             OnlyInZones = { 1455 },
@@ -233,7 +222,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1453,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 7.1, 57.96),
             Range = 20,
             SkipInZones = { 1438, 1439, 1443 },
@@ -251,7 +239,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1453,
-            NonSkippableWaypoint = true,
             Coord = { x = 537.16, y = 6369.21 },
             Range = 10,
             SkipInZones = { 1438, 1443 },
@@ -304,7 +291,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1458,
-            NonSkippableWaypoint = true,
             Coord = { x = 1208.54, y = 2.4 },
             Range = 15,
             IsQuestOnQuest = 1458,
@@ -333,7 +319,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1437,
-            NonSkippableWaypoint = true,
             Coord = { x = 1208.54, y = 2.4 },
             Range = 15,
             IsQuestOnQuest = 1437,
@@ -356,7 +341,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 5741,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 40.74, 28.95),
             Range = 12,
             IsQuestNotOnQuest = 5741,
@@ -502,7 +486,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1384,
-            NonSkippableWaypoint = true,
             Coord = { x = 1208.54, y = 2.4 },
             Range = 15,
             IsQuestOnQuest = 1384,
@@ -527,7 +510,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1438,
-            NonSkippableWaypoint = true,
             Coord = { x = 1665.6, y = -459.4 },
             Range = 12,
             IsQuestOnQuest = 1438,
@@ -536,7 +518,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1438,
-            NonSkippableWaypoint = true,
             Fillers = { [1459] = { 1, 2 } },
             Coord = { x = 1726.91, y = -413.72 },
             Range = 20,
@@ -553,7 +534,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1438,
-            NonSkippableWaypoint = true,
             Coord = { x = 1727, y = -409.1 },
             Range = 8,
             IsQuestOnQuest = 1438,
@@ -562,7 +542,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1438,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_BUILDING" },
             Coord = { x = 1746.69, y = -370.84 },
             Range = 20,
@@ -583,7 +562,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1439,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_BUILDING" },
             Coord = { x = 1836.15, y = -422.71 },
             Range = 20,
@@ -599,7 +577,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1439,
-            NonSkippableWaypoint = true,
             Coord = { x = 1746.69, y = -370.84 },
             Range = 20,
             Zone = 1443,
@@ -627,7 +604,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 5741,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 40.74, 28.95),
             Range = 12,
             IsQuestOnQuest = 5741,
@@ -637,7 +613,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 6027,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 40.74, 28.95),
             Range = 12,
             IsQuestCompleted = 5741,
@@ -662,7 +637,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 6161,
-            NonSkippableWaypoint = true,
             Coord = { x = 2879.19, y = 139.7 },
             Range = 20,
             Zone = 1443,
@@ -693,7 +667,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 6027,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 40.74, 28.95),
             Range = 12,
             IsQuestOnQuest = 6027,
@@ -786,7 +759,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1370,
-            NonSkippableWaypoint = true,
             Coord = { x = 2604.31, y = -1923.62 },
             Range = 20,
             Zone = 1443,
@@ -880,7 +852,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1112,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             IsQuestOnQuest = 1112,
@@ -889,7 +860,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1112,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             IsQuestOnQuest = 1112,
@@ -898,7 +868,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1112,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             IsQuestOnQuest = 1112,
@@ -907,7 +876,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1112,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             IsQuestOnQuest = 1112,
@@ -916,7 +884,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1112,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             IsQuestOnQuest = 1112,
@@ -925,7 +892,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1112,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             IsQuestOnQuest = 1112,
@@ -934,7 +900,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1183,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             IsQuestOnQuest = 1183,
@@ -944,7 +909,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1183,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             IsQuestOnQuest = 1183,
@@ -954,7 +918,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1183,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             IsQuestOnQuest = 1183,
@@ -964,7 +927,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1183,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             IsQuestOnQuest = 1183,
@@ -974,7 +936,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1183,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             IsQuestOnQuest = 1183,
@@ -984,7 +945,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1183,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             IsQuestOnQuest = 1183,
@@ -994,7 +954,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1112,
-            NonSkippableWaypoint = true,
             Coord = { x = -3855.74, y = -6233.05 },
             Range = 20,
             Zone = 1441,
@@ -1051,7 +1010,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1115,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             IsQuestOnQuest = 1115,
@@ -1060,7 +1018,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1115,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             IsQuestOnQuest = 1115,
@@ -1069,7 +1026,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1115,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             IsQuestOnQuest = 1115,
@@ -1078,7 +1034,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1115,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             IsQuestOnQuest = 1115,
@@ -1087,7 +1042,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1115,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             IsQuestOnQuest = 1115,
@@ -1096,7 +1050,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1115,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             IsQuestOnQuest = 1115,
@@ -1105,7 +1058,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             IsQuestOnQuest = 1187,
@@ -1115,7 +1067,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             IsQuestOnQuest = 1187,
@@ -1125,7 +1076,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             IsQuestOnQuest = 1187,
@@ -1135,7 +1085,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             IsQuestOnQuest = 1187,
@@ -1145,7 +1094,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             IsQuestOnQuest = 1187,
@@ -1155,7 +1103,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             IsQuestOnQuest = 1187,
@@ -1236,7 +1183,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1453,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 7.1, 57.96),
             Range = 20,
             SkipInZones = { 1438, 1439, 1443 },
@@ -1255,7 +1201,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1453,
-            NonSkippableWaypoint = true,
             Coord = { x = 537.16, y = 6369.21 },
             Range = 10,
             SkipInZones = { 1438, 1443 },
@@ -1272,7 +1217,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1453,
-            NonSkippableWaypoint = true,
             Coord = { x = 1807.47, y = 349.07 },
             Range = 5,
             Zone = 1443,
@@ -1280,7 +1224,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1453,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 56.57, 13.37),
             Range = 20,
             IsQuestOnQuest = 1453,
@@ -1289,7 +1232,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1453,
-            NonSkippableWaypoint = true,
             Coord = { x = 1208.54, y = 2.4 },
             Range = 20,
             Zone = 1443,
@@ -1346,7 +1288,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1458,
-            NonSkippableWaypoint = true,
             Coord = { x = 1208.54, y = 2.4 },
             Range = 20,
             IsQuestOnQuest = 1458,
@@ -1375,7 +1316,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1437,
-            NonSkippableWaypoint = true,
             Coord = { x = 1208.54, y = 2.4 },
             Range = 20,
             IsQuestOnQuest = 1437,
@@ -1384,7 +1324,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1465,
-            NonSkippableWaypoint = true,
             Coord = { x = 1208.54, y = 2.4 },
             Range = 20,
             IsQuestCompleted = 1437,
@@ -1409,7 +1348,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 5741,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 40.74, 28.95),
             Range = 12,
             IsQuestNotOnQuest = 5741,
@@ -1419,7 +1357,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 5741,
-            NonSkippableWaypoint = true,
             Fillers = { [1459] = { 1, 2 } },
             Coord = { x = 2466.7, y = -412.49 },
             Range = 20,
@@ -1503,7 +1440,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1438,
-            NonSkippableWaypoint = true,
             Coord = { x = 1208.54, y = 2.4 },
             Range = 20,
             IsQuestOnQuest = 1438,
@@ -1512,7 +1448,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1438,
-            NonSkippableWaypoint = true,
             Coord = { x = 1665.6, y = -459.4 },
             Range = 12,
             IsQuestOnQuest = 1438,
@@ -1521,7 +1456,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 5741,
-            NonSkippableWaypoint = true,
             Coord = { x = 1208.54, y = 2.4 },
             Range = 20,
             AllOf = { { IsQuestOnQuest = 5741, Not = { IsQuestReadyForTurnIn = 5741 } }, { Not = { AnyOf = { { IsQuestOnQuest = 1438 } } } } },
@@ -1530,7 +1464,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 5741,
-            NonSkippableWaypoint = true,
             Coord = { x = 1665.6, y = -459.4 },
             Range = 12,
             AllOf = { { IsQuestOnQuest = 5741, Not = { IsQuestReadyForTurnIn = 5741 } }, { Not = { AnyOf = { { IsQuestOnQuest = 1438 } } } } },
@@ -1539,7 +1472,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1439,
-            NonSkippableWaypoint = true,
             Coord = { x = 1208.54, y = 2.4 },
             Range = 20,
             AllOf = { { AnyOf = { { IsQuestOnQuest = 1439 }, { IsQuestCompleted = 1438, IsQuestUncompleted = 1439, IsQuestNotOnQuest = 1439 } } }, { Not = { AnyOf = { { IsQuestOnQuest = 1438 }, { IsQuestOnQuest = 5741, Not = { IsQuestReadyForTurnIn = 5741 } } } } } },
@@ -1548,7 +1480,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1439,
-            NonSkippableWaypoint = true,
             Coord = { x = 1665.6, y = -459.4 },
             Range = 12,
             AllOf = { { AnyOf = { { IsQuestOnQuest = 1439 }, { IsQuestCompleted = 1438, IsQuestUncompleted = 1439, IsQuestNotOnQuest = 1439 } } }, { Not = { AnyOf = { { IsQuestOnQuest = 1438 }, { IsQuestOnQuest = 5741, Not = { IsQuestReadyForTurnIn = 5741 } } } } } },
@@ -1557,7 +1488,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1440,
-            NonSkippableWaypoint = true,
             Coord = { x = 1208.54, y = 2.4 },
             Range = 20,
             AllOf = { { IsQuestCompleted = 1439, IsQuestUncompleted = 1440, IsQuestNotOnQuest = 1440 }, { Not = { AnyOf = { { IsQuestOnQuest = 1438 }, { IsQuestOnQuest = 5741, Not = { IsQuestReadyForTurnIn = 5741 } }, { AnyOf = { { IsQuestOnQuest = 1439 }, { IsQuestCompleted = 1438, IsQuestUncompleted = 1439, IsQuestNotOnQuest = 1439 } } } } } } },
@@ -1566,7 +1496,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1440,
-            NonSkippableWaypoint = true,
             Coord = { x = 1665.6, y = -459.4 },
             Range = 12,
             AllOf = { { IsQuestCompleted = 1439, IsQuestUncompleted = 1440, IsQuestNotOnQuest = 1440 }, { Not = { AnyOf = { { IsQuestOnQuest = 1438 }, { IsQuestOnQuest = 5741, Not = { IsQuestReadyForTurnIn = 5741 } }, { AnyOf = { { IsQuestOnQuest = 1439 }, { IsQuestCompleted = 1438, IsQuestUncompleted = 1439, IsQuestNotOnQuest = 1439 } } } } } } },
@@ -1575,7 +1504,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1438,
-            NonSkippableWaypoint = true,
             Fillers = { [1459] = { 1, 2 } },
             Coord = { x = 1726.91, y = -413.72 },
             Range = 20,
@@ -1593,7 +1521,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1438,
-            NonSkippableWaypoint = true,
             Coord = { x = 1726.6, y = -409.4 },
             Range = 8,
             IsQuestOnQuest = 1438,
@@ -1602,7 +1529,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1439,
-            NonSkippableWaypoint = true,
             Coord = { x = 1726.6, y = -409.4 },
             Range = 8,
             IsQuestCompleted = 1438,
@@ -1613,7 +1539,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1440,
-            NonSkippableWaypoint = true,
             Coord = { x = 1726.6, y = -409.4 },
             Range = 8,
             IsQuestCompleted = 1439,
@@ -1624,7 +1549,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1438,
-            NonSkippableWaypoint = true,
             Fillers = { [1459] = { 1, 2 } },
             Note = { "INSIDE_BUILDING" },
             Coord = { x = 1746.69, y = -370.84 },
@@ -1646,7 +1570,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1439,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_BUILDING" },
             Coord = { x = 1836.15, y = -422.71 },
             Range = 20,
@@ -1662,7 +1585,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1439,
-            NonSkippableWaypoint = true,
             Coord = { x = 1746.69, y = -370.84 },
             Range = 20,
             Zone = 1443,
@@ -1786,7 +1708,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 5741,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 40.74, 28.95),
             Range = 12,
             IsQuestOnQuest = 5741,
@@ -1796,7 +1717,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 6027,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 40.74, 28.95),
             Range = 12,
             IsQuestCompleted = 5741,
@@ -1867,7 +1787,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 6027,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 40.74, 28.95),
             Range = 12,
             IsQuestOnQuest = 6027,
@@ -1949,7 +1868,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1112,
-            NonSkippableWaypoint = true,
             Coord = { x = 1208.54, y = 2.4 },
             Range = 20,
             IsQuestUncompleted = 1112,
@@ -1980,7 +1898,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1112,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             IsQuestOnQuest = 1112,
@@ -1989,7 +1906,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1112,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             IsQuestOnQuest = 1112,
@@ -1998,7 +1914,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1112,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             IsQuestOnQuest = 1112,
@@ -2007,7 +1922,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1112,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             IsQuestOnQuest = 1112,
@@ -2016,7 +1930,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1112,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             IsQuestOnQuest = 1112,
@@ -2025,7 +1938,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1112,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             IsQuestOnQuest = 1112,
@@ -2034,7 +1946,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1183,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             AllOf = { { IsQuestOnQuest = 1183 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 } } } } },
@@ -2043,7 +1954,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1183,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             AllOf = { { IsQuestOnQuest = 1183 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 } } } } },
@@ -2052,7 +1962,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1183,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             AllOf = { { IsQuestOnQuest = 1183 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 } } } } },
@@ -2061,7 +1970,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1183,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             AllOf = { { IsQuestOnQuest = 1183 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 } } } } },
@@ -2070,7 +1978,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1183,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             AllOf = { { IsQuestOnQuest = 1183 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 } } } } },
@@ -2079,7 +1986,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1183,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             AllOf = { { IsQuestOnQuest = 1183 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 } } } } },
@@ -2088,7 +1994,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1107,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             AllOf = { { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 } } } } },
@@ -2097,7 +2002,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1107,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             AllOf = { { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 } } } } },
@@ -2106,7 +2010,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1107,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             AllOf = { { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 } } } } },
@@ -2115,7 +2018,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1107,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             AllOf = { { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 } } } } },
@@ -2124,7 +2026,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1107,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             AllOf = { { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 } } } } },
@@ -2133,7 +2034,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1107,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             AllOf = { { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 } } } } },
@@ -2142,7 +2042,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1186,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             AllOf = { { IsQuestCompleted = 1183, IsQuestUncompleted = 1186 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 }, { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 } } } } },
@@ -2151,7 +2050,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1186,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             AllOf = { { IsQuestCompleted = 1183, IsQuestUncompleted = 1186 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 }, { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 } } } } },
@@ -2160,7 +2058,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1186,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             AllOf = { { IsQuestCompleted = 1183, IsQuestUncompleted = 1186 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 }, { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 } } } } },
@@ -2169,7 +2066,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1186,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             AllOf = { { IsQuestCompleted = 1183, IsQuestUncompleted = 1186 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 }, { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 } } } } },
@@ -2178,7 +2074,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1186,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             AllOf = { { IsQuestCompleted = 1183, IsQuestUncompleted = 1186 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 }, { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 } } } } },
@@ -2187,7 +2082,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1186,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             AllOf = { { IsQuestCompleted = 1183, IsQuestUncompleted = 1186 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 }, { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 } } } } },
@@ -2196,7 +2090,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             AllOf = { { IsQuestCompleted = 1186, IsQuestUncompleted = 1187, IsQuestNotOnQuest = 1187 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 }, { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 }, { IsQuestCompleted = 1183, IsQuestUncompleted = 1186 } } } } },
@@ -2205,7 +2098,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             AllOf = { { IsQuestCompleted = 1186, IsQuestUncompleted = 1187, IsQuestNotOnQuest = 1187 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 }, { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 }, { IsQuestCompleted = 1183, IsQuestUncompleted = 1186 } } } } },
@@ -2214,7 +2106,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             AllOf = { { IsQuestCompleted = 1186, IsQuestUncompleted = 1187, IsQuestNotOnQuest = 1187 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 }, { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 }, { IsQuestCompleted = 1183, IsQuestUncompleted = 1186 } } } } },
@@ -2223,7 +2114,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             AllOf = { { IsQuestCompleted = 1186, IsQuestUncompleted = 1187, IsQuestNotOnQuest = 1187 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 }, { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 }, { IsQuestCompleted = 1183, IsQuestUncompleted = 1186 } } } } },
@@ -2232,7 +2122,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             AllOf = { { IsQuestCompleted = 1186, IsQuestUncompleted = 1187, IsQuestNotOnQuest = 1187 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 }, { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 }, { IsQuestCompleted = 1183, IsQuestUncompleted = 1186 } } } } },
@@ -2241,7 +2130,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             AllOf = { { IsQuestCompleted = 1186, IsQuestUncompleted = 1187, IsQuestNotOnQuest = 1187 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 }, { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 }, { IsQuestCompleted = 1183, IsQuestUncompleted = 1186 } } } } },
@@ -2250,7 +2138,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1114,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             AllOf = { { IsQuestCompleted = 1112, IsQuestUncompleted = 1114 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 }, { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 }, { IsQuestCompleted = 1183, IsQuestUncompleted = 1186 }, { IsQuestCompleted = 1186, IsQuestUncompleted = 1187, IsQuestNotOnQuest = 1187 } } } } },
@@ -2259,7 +2146,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1114,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             AllOf = { { IsQuestCompleted = 1112, IsQuestUncompleted = 1114 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 }, { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 }, { IsQuestCompleted = 1183, IsQuestUncompleted = 1186 }, { IsQuestCompleted = 1186, IsQuestUncompleted = 1187, IsQuestNotOnQuest = 1187 } } } } },
@@ -2268,7 +2154,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1114,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             AllOf = { { IsQuestCompleted = 1112, IsQuestUncompleted = 1114 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 }, { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 }, { IsQuestCompleted = 1183, IsQuestUncompleted = 1186 }, { IsQuestCompleted = 1186, IsQuestUncompleted = 1187, IsQuestNotOnQuest = 1187 } } } } },
@@ -2277,7 +2162,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1114,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             AllOf = { { IsQuestCompleted = 1112, IsQuestUncompleted = 1114 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 }, { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 }, { IsQuestCompleted = 1183, IsQuestUncompleted = 1186 }, { IsQuestCompleted = 1186, IsQuestUncompleted = 1187, IsQuestNotOnQuest = 1187 } } } } },
@@ -2286,7 +2170,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1114,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             AllOf = { { IsQuestCompleted = 1112, IsQuestUncompleted = 1114 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 }, { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 }, { IsQuestCompleted = 1183, IsQuestUncompleted = 1186 }, { IsQuestCompleted = 1186, IsQuestUncompleted = 1187, IsQuestNotOnQuest = 1187 } } } } },
@@ -2295,7 +2178,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1114,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             AllOf = { { IsQuestCompleted = 1112, IsQuestUncompleted = 1114 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 }, { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 }, { IsQuestCompleted = 1183, IsQuestUncompleted = 1186 }, { IsQuestCompleted = 1186, IsQuestUncompleted = 1187, IsQuestNotOnQuest = 1187 } } } } },
@@ -2304,7 +2186,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1115,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             AllOf = { { IsQuestCompleted = 1114, IsQuestUncompleted = 1115, IsQuestNotOnQuest = 1115 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 }, { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 }, { IsQuestCompleted = 1183, IsQuestUncompleted = 1186 }, { IsQuestCompleted = 1186, IsQuestUncompleted = 1187, IsQuestNotOnQuest = 1187 }, { IsQuestCompleted = 1112, IsQuestUncompleted = 1114 } } } } },
@@ -2313,7 +2194,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1115,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             AllOf = { { IsQuestCompleted = 1114, IsQuestUncompleted = 1115, IsQuestNotOnQuest = 1115 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 }, { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 }, { IsQuestCompleted = 1183, IsQuestUncompleted = 1186 }, { IsQuestCompleted = 1186, IsQuestUncompleted = 1187, IsQuestNotOnQuest = 1187 }, { IsQuestCompleted = 1112, IsQuestUncompleted = 1114 } } } } },
@@ -2322,7 +2202,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1115,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             AllOf = { { IsQuestCompleted = 1114, IsQuestUncompleted = 1115, IsQuestNotOnQuest = 1115 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 }, { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 }, { IsQuestCompleted = 1183, IsQuestUncompleted = 1186 }, { IsQuestCompleted = 1186, IsQuestUncompleted = 1187, IsQuestNotOnQuest = 1187 }, { IsQuestCompleted = 1112, IsQuestUncompleted = 1114 } } } } },
@@ -2331,7 +2210,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1115,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             AllOf = { { IsQuestCompleted = 1114, IsQuestUncompleted = 1115, IsQuestNotOnQuest = 1115 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 }, { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 }, { IsQuestCompleted = 1183, IsQuestUncompleted = 1186 }, { IsQuestCompleted = 1186, IsQuestUncompleted = 1187, IsQuestNotOnQuest = 1187 }, { IsQuestCompleted = 1112, IsQuestUncompleted = 1114 } } } } },
@@ -2340,7 +2218,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1115,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             AllOf = { { IsQuestCompleted = 1114, IsQuestUncompleted = 1115, IsQuestNotOnQuest = 1115 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 }, { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 }, { IsQuestCompleted = 1183, IsQuestUncompleted = 1186 }, { IsQuestCompleted = 1186, IsQuestUncompleted = 1187, IsQuestNotOnQuest = 1187 }, { IsQuestCompleted = 1112, IsQuestUncompleted = 1114 } } } } },
@@ -2349,7 +2226,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1115,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             AllOf = { { IsQuestCompleted = 1114, IsQuestUncompleted = 1115, IsQuestNotOnQuest = 1115 }, { Not = { AnyOf = { { IsQuestOnQuest = 1112 }, { IsQuestOnQuest = 1183 }, { IsQuestUncompleted = 1107, IsQuestNotOnQuest = 1107 }, { IsQuestCompleted = 1183, IsQuestUncompleted = 1186 }, { IsQuestCompleted = 1186, IsQuestUncompleted = 1187, IsQuestNotOnQuest = 1187 }, { IsQuestCompleted = 1112, IsQuestUncompleted = 1114 } } } } },
@@ -2358,7 +2234,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1112,
-            NonSkippableWaypoint = true,
             Coord = { x = -3855.74, y = -6233.05 },
             Range = 20,
             Zone = 1441,
@@ -2421,7 +2296,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1115,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             IsQuestOnQuest = 1115,
@@ -2430,7 +2304,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1115,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             IsQuestOnQuest = 1115,
@@ -2439,7 +2312,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1115,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             IsQuestOnQuest = 1115,
@@ -2448,7 +2320,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1115,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             IsQuestOnQuest = 1115,
@@ -2457,7 +2328,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1115,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             IsQuestOnQuest = 1115,
@@ -2466,7 +2336,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1115,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             IsQuestOnQuest = 1115,
@@ -2475,7 +2344,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             IsQuestOnQuest = 1187,
@@ -2485,7 +2353,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             IsQuestOnQuest = 1187,
@@ -2495,7 +2362,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             IsQuestOnQuest = 1187,
@@ -2505,7 +2371,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             IsQuestOnQuest = 1187,
@@ -2515,7 +2380,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             IsQuestOnQuest = 1187,
@@ -2525,7 +2389,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             IsQuestOnQuest = 1187,
@@ -2632,7 +2495,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1458,
-            NonSkippableWaypoint = true,
             Coord = { x = 1208.54, y = 2.4 },
             Range = 15,
             IsQuestOnQuest = 1458,
@@ -2665,7 +2527,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1459,
-            NonSkippableWaypoint = true,
             Coord = { x = 1208.54, y = 2.4 },
             Range = 15,
             IsQuestOnQuest = 1459,
@@ -2698,7 +2559,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 6134,
-            NonSkippableWaypoint = true,
             Coord = { x = 1208.54, y = 2.4 },
             Range = 15,
             IsQuestUncompleted = 6134,
@@ -2707,7 +2567,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1373,
-            NonSkippableWaypoint = true,
             Coord = { x = 1208.54, y = 2.4 },
             Range = 15,
             AllOf = { { IsQuestCompleted = 1370, IsQuestOnQuest = 1373, IsQuestReadyForTurnIn = 1373 }, { Not = { AnyOf = { { IsQuestUncompleted = 6134 } } } } },
@@ -2716,7 +2575,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1374,
-            NonSkippableWaypoint = true,
             Coord = { x = 1208.54, y = 2.4 },
             Range = 15,
             AllOf = { { IsQuestCompleted = 1373, IsQuestUncompleted = 1374, IsQuestNotOnQuest = 1374 }, { Not = { AnyOf = { { IsQuestUncompleted = 6134 }, { IsQuestCompleted = 1370, IsQuestOnQuest = 1373, IsQuestReadyForTurnIn = 1373 } } } } },
@@ -2725,7 +2583,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1374,
-            NonSkippableWaypoint = true,
             Coord = { x = 1208.54, y = 2.4 },
             Range = 15,
             AllOf = { { IsQuestOnQuest = 1374 }, { Not = { AnyOf = { { IsQuestUncompleted = 6134 }, { IsQuestCompleted = 1370, IsQuestOnQuest = 1373, IsQuestReadyForTurnIn = 1373 }, { IsQuestCompleted = 1373, IsQuestUncompleted = 1374, IsQuestNotOnQuest = 1374 } } } } },
@@ -2734,7 +2591,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1466,
-            NonSkippableWaypoint = true,
             Coord = { x = 1208.54, y = 2.4 },
             Range = 15,
             AllOf = { { IsQuestOnQuest = 1466, Not = { IsQuestReadyForTurnIn = 1466 } }, { Not = { AnyOf = { { IsQuestUncompleted = 6134 }, { IsQuestCompleted = 1370, IsQuestOnQuest = 1373, IsQuestReadyForTurnIn = 1373 }, { IsQuestCompleted = 1373, IsQuestUncompleted = 1374, IsQuestNotOnQuest = 1374 }, { IsQuestOnQuest = 1374 } } } } },
@@ -2743,7 +2599,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 4962,
-            NonSkippableWaypoint = true,
             Coord = { x = 1208.54, y = 2.4 },
             Range = 15,
             AllOf = { { Class = "WARLOCK", Race = { "Gnome", "Human" }, IsQuestOnQuest = 4962, Not = { IsQuestReadyForTurnIn = 4962 } }, { Not = { AnyOf = { { IsQuestUncompleted = 6134 }, { IsQuestCompleted = 1370, IsQuestOnQuest = 1373, IsQuestReadyForTurnIn = 1373 }, { IsQuestCompleted = 1373, IsQuestUncompleted = 1374, IsQuestNotOnQuest = 1374 }, { IsQuestOnQuest = 1374 }, { IsQuestOnQuest = 1466, Not = { IsQuestReadyForTurnIn = 1466 } } } } } },
@@ -2752,7 +2607,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1799,
-            NonSkippableWaypoint = true,
             Coord = { x = 1208.54, y = 2.4 },
             Range = 15,
             AllOf = { { Class = "WARLOCK", Race = { "Gnome", "Human" }, IsQuestOnQuest = 1799, Not = { IsQuestReadyForTurnIn = 1799 } }, { Not = { AnyOf = { { IsQuestUncompleted = 6134 }, { IsQuestCompleted = 1370, IsQuestOnQuest = 1373, IsQuestReadyForTurnIn = 1373 }, { IsQuestCompleted = 1373, IsQuestUncompleted = 1374, IsQuestNotOnQuest = 1374 }, { IsQuestOnQuest = 1374 }, { IsQuestOnQuest = 1466, Not = { IsQuestReadyForTurnIn = 1466 } }, { Class = "WARLOCK", Race = { "Gnome", "Human" }, IsQuestOnQuest = 4962, Not = { IsQuestReadyForTurnIn = 4962 } } } } } },
@@ -2761,7 +2615,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 261,
-            NonSkippableWaypoint = true,
             Coord = { x = 1208.54, y = 2.4 },
             Range = 15,
             AllOf = { { IsQuestOnQuest = 261, Not = { IsQuestReadyForTurnIn = 261 } }, { Not = { AnyOf = { { IsQuestUncompleted = 6134 }, { IsQuestCompleted = 1370, IsQuestOnQuest = 1373, IsQuestReadyForTurnIn = 1373 }, { IsQuestCompleted = 1373, IsQuestUncompleted = 1374, IsQuestNotOnQuest = 1374 }, { IsQuestOnQuest = 1374 }, { IsQuestOnQuest = 1466, Not = { IsQuestReadyForTurnIn = 1466 } }, { Class = "WARLOCK", Race = { "Gnome", "Human" }, IsQuestOnQuest = 4962, Not = { IsQuestReadyForTurnIn = 4962 } }, { Class = "WARLOCK", Race = { "Gnome", "Human" }, IsQuestOnQuest = 1799, Not = { IsQuestReadyForTurnIn = 1799 } } } } } },
@@ -2770,7 +2623,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1373,
-            NonSkippableWaypoint = true,
             Coord = { x = 2082.98, y = -1401.23 },
             Range = 20,
             Zone = 1443,
@@ -2899,7 +2751,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             IsQuestNotOnQuest = 1106,
@@ -2909,7 +2760,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             IsQuestNotOnQuest = 1106,
@@ -2919,7 +2769,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             IsQuestNotOnQuest = 1106,
@@ -2929,7 +2778,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             IsQuestNotOnQuest = 1106,
@@ -2939,7 +2787,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             IsQuestNotOnQuest = 1106,
@@ -2949,7 +2796,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             IsQuestNotOnQuest = 1106,
@@ -2959,7 +2805,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1117,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             IsQuestOnQuest = 1117,
@@ -2969,7 +2814,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1117,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             IsQuestOnQuest = 1117,
@@ -2979,7 +2823,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1117,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             IsQuestOnQuest = 1117,
@@ -2989,7 +2832,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1117,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             IsQuestOnQuest = 1117,
@@ -2999,7 +2841,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1117,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             IsQuestOnQuest = 1117,
@@ -3009,7 +2850,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1117,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             IsQuestOnQuest = 1117,
@@ -3019,7 +2859,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1118,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             IsQuestCompleted = 1117,
@@ -3031,7 +2870,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1118,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             IsQuestCompleted = 1117,
@@ -3043,7 +2881,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1118,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             IsQuestCompleted = 1117,
@@ -3055,7 +2892,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1118,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             IsQuestCompleted = 1117,
@@ -3067,7 +2903,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1118,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             IsQuestCompleted = 1117,
@@ -3079,7 +2914,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1118,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             IsQuestCompleted = 1117,
@@ -3091,7 +2925,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             IsQuestOnQuest = 1187,
@@ -3101,7 +2934,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             IsQuestOnQuest = 1187,
@@ -3111,7 +2943,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             IsQuestOnQuest = 1187,
@@ -3121,7 +2952,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             IsQuestOnQuest = 1187,
@@ -3131,7 +2961,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             IsQuestOnQuest = 1187,
@@ -3141,7 +2970,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             IsQuestOnQuest = 1187,
@@ -3151,7 +2979,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1188,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             IsQuestCompleted = 1187,
@@ -3163,7 +2990,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1188,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             IsQuestCompleted = 1187,
@@ -3175,7 +3001,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1188,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             IsQuestCompleted = 1187,
@@ -3187,7 +3012,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1188,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             IsQuestCompleted = 1187,
@@ -3199,7 +3023,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1188,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             IsQuestCompleted = 1187,
@@ -3211,7 +3034,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1188,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             IsQuestCompleted = 1187,
@@ -3223,7 +3045,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Coord = { x = -3855.74, y = -6233.05 },
             Range = 20,
             Zone = 1441,
@@ -3316,7 +3137,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1466,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             IsQuestOnQuest = 1466,
@@ -3326,7 +3146,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1466,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             IsQuestOnQuest = 1466,
@@ -3336,7 +3155,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1466,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             IsQuestOnQuest = 1466,
@@ -3346,7 +3164,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1466,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             IsQuestOnQuest = 1466,
@@ -3356,7 +3173,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1466,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             IsQuestOnQuest = 1466,
@@ -3366,7 +3182,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1466,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             IsQuestOnQuest = 1466,
@@ -3376,7 +3191,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 261,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             IsQuestOnQuest = 261,
@@ -3387,7 +3201,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 261,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             IsQuestOnQuest = 261,
@@ -3398,7 +3211,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 261,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             IsQuestOnQuest = 261,
@@ -3409,7 +3221,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 261,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             IsQuestOnQuest = 261,
@@ -3420,7 +3231,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 261,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             IsQuestOnQuest = 261,
@@ -3431,7 +3241,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 261,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             IsQuestOnQuest = 261,
@@ -3442,7 +3251,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1467,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             IsQuestCompleted = 1466,
@@ -3455,7 +3263,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1467,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             IsQuestCompleted = 1466,
@@ -3468,7 +3275,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1467,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             IsQuestCompleted = 1466,
@@ -3481,7 +3287,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1467,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             IsQuestCompleted = 1466,
@@ -3494,7 +3299,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1467,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             IsQuestCompleted = 1466,
@@ -3507,7 +3311,6 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1467,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             IsQuestCompleted = 1466,

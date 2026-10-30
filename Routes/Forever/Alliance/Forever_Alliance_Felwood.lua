@@ -186,7 +186,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 2944,
-            NonSkippableWaypoint = true,
             Coord = { x = 1009.58, y = 8720.2 },
             Range = 10,
             Class = { "DRUID", "HUNTER", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
@@ -204,7 +203,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 2943,
-            NonSkippableWaypoint = true,
             Coord = { x = 1009.58, y = 8720.2 },
             Range = 10,
             Class = { "DRUID", "HUNTER", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
@@ -281,7 +279,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 162,
-            NonSkippableWaypoint = true,
             Coord = { x = 2608.06, y = 10113.26 },
             Range = 8,
             Class = "ROGUE",
@@ -297,7 +294,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 162,
-            NonSkippableWaypoint = true,
             Coord = { x = 2522.86, y = 9583.12 },
             Range = 10,
             IsQuestOnQuest = 162,
@@ -306,7 +302,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 4267,
-            NonSkippableWaypoint = true,
             Coord = { x = 2522.86, y = 9583.12 },
             Range = 10,
             IsQuestNotOnQuest = 162,
@@ -316,7 +311,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 4493,
-            NonSkippableWaypoint = true,
             Coord = { x = 2522.86, y = 9583.12 },
             Range = 10,
             AllOf = { { IsQuestNotOnQuest = 4267 }, { IsQuestNotOnQuest = 4493 } },
@@ -341,7 +335,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 2972,
-            NonSkippableWaypoint = true,
             Coord = { x = 2522.86, y = 9583.12 },
             Range = 10,
             AnyOf = { { IsQuestOnQuest = 162 }, { IsQuestOnQuest = 4267 }, { IsOneOfQuestsCompleted = { 162, 4267 }, IsQuestUncompleted = 4493 } },
@@ -447,7 +440,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 2944,
-            NonSkippableWaypoint = true,
             Coord = { x = 1009.58, y = 8720.2 },
             Range = 10,
             Class = "MAGE",
@@ -467,7 +459,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 5535,
-            NonSkippableWaypoint = true,
             Coord = { x = 1009.58, y = 8720.2 },
             Range = 10,
             Class = "MAGE",
@@ -557,7 +548,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 8460,
-            NonSkippableWaypoint = true,
             Coord = { x = -1527.6, y = 3444.07 },
             Range = 10,
             Zone = 1440,
@@ -565,7 +555,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 8460,
-            NonSkippableWaypoint = true,
             Coord = { x = -1471.38, y = 3804.85 },
             Range = 5,
             Zone = 1448,
@@ -630,7 +619,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 4421,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 36.85, 66.92),
             Range = 15,
             IsQuestOnQuest = 4421,
@@ -647,7 +635,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 8419,
-            NonSkippableWaypoint = true,
             Coord = { x = -846.36, y = 3875.77 },
             Range = 20,
             Class = "WARLOCK",
@@ -659,7 +646,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 8419,
-            NonSkippableWaypoint = true,
             Coord = { x = -854.41, y = 3755.02 },
             Range = 20,
             Class = "WARLOCK",
@@ -779,7 +765,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 5157,
-            NonSkippableWaypoint = true,
             Coord = { x = -456.51, y = 4779.67 },
             Range = 15,
             IsQuestOnQuest = 5157,
@@ -804,7 +789,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 4906,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 43.07, 21.32),
             Range = 15,
             IsQuestOnQuest = 4906,
@@ -814,7 +798,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 939,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 43.07, 21.32),
             Range = 15,
             AllOf = {
@@ -827,7 +810,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 939,
-            NonSkippableWaypoint = true,
             Coord = { x = -749.18, y = 6397.72 },
             Range = 20,
             AllOf = {
@@ -840,7 +822,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 4906,
-            NonSkippableWaypoint = true,
             Coord = { x = -749.18, y = 6397.72 },
             Range = 20,
             Zone = 1448,
@@ -905,7 +886,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 4441,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 65.28, 7.515),
             Range = 15,
             IsQuestCompleted = 3908,
@@ -914,7 +894,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 3908,
-            NonSkippableWaypoint = true,
             Note = { "NOT_UNFRIENDLY_TIMBERMAW_HOLD_FURBOLGS_ATTACK" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 65.28, 7.515),
             Range = 20,
@@ -923,7 +902,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 4441,
-            NonSkippableWaypoint = true,
             Coord = { x = -2119, y = 6876 },
             Range = 7,
             Zone = 1448,
@@ -931,7 +909,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 4441,
-            NonSkippableWaypoint = true,
             Coord = { x = -2087, y = 6904 },
             Range = 7,
             Zone = 1448,
@@ -939,7 +916,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 4441,
-            NonSkippableWaypoint = true,
             Coord = { x = -2079, y = 7016 },
             Range = 7,
             Zone = 1448,
@@ -947,7 +923,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 4441,
-            NonSkippableWaypoint = true,
             Coord = { x = -2121, y = 7026 },
             Range = 7,
             Zone = 1448,
@@ -955,7 +930,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 4441,
-            NonSkippableWaypoint = true,
             Coord = { x = -2177, y = 7020 },
             Range = 7,
             Zone = 1448,
@@ -963,7 +937,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 4441,
-            NonSkippableWaypoint = true,
             Coord = { x = -2191, y = 6998 },
             Range = 7,
             Zone = 1448,
@@ -971,7 +944,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 4441,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6966 },
             Range = 7,
             Zone = 1448,
@@ -979,7 +951,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 4441,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6940 },
             Range = 7,
             Zone = 1448,
@@ -987,7 +958,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 4441,
-            NonSkippableWaypoint = true,
             Coord = { x = -2295, y = 6906 },
             Range = 7,
             Zone = 1448,
@@ -995,7 +965,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 3908,
-            NonSkippableWaypoint = true,
             Note = { "NOT_UNFRIENDLY_TIMBERMAW_HOLD_FURBOLGS_ATTACK" },
             Coord = { x = -2287.63, y = 6896.07 },
             Range = 5,
@@ -1067,7 +1036,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 5157,
-            NonSkippableWaypoint = true,
             Note = { "ABANDON_CURRENT_PET", "CAST_TAME_BEAST_IRONBEAK_HUNTER_ANGERCLAW_MAULER" },
             Coord = { x = -1303.48, y = 5998.28 },
             Range = 20,
@@ -1077,7 +1045,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 5157,
-            NonSkippableWaypoint = true,
             Note = { "ABANDON_CURRENT_PET", "CAST_TAME_BEAST_IRONBEAK_HUNTER_ANGERCLAW_MAULER" },
             Coord = { x = -1213.78, y = 5805.08 },
             Range = 20,
@@ -1087,7 +1054,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 5157,
-            NonSkippableWaypoint = true,
             Note = { "ABANDON_CURRENT_PET", "CAST_TAME_BEAST_IRONBEAK_HUNTER_ANGERCLAW_MAULER" },
             Coord = { x = -614.06, y = 5721.13 },
             Range = 20,
@@ -1097,7 +1063,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 5157,
-            NonSkippableWaypoint = true,
             Note = { "ABANDON_CURRENT_PET", "CAST_TAME_BEAST_IRONBEAK_HUNTER_ANGERCLAW_MAULER" },
             Coord = { x = -565.18, y = 5534.45 },
             Range = 20,
@@ -1201,7 +1166,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
         },
         {
             Waypoint = 4441,
-            NonSkippableWaypoint = true,
             Coord = { x = -1527.6, y = 3444.07 },
             Range = 10,
             OnlyInZones = { 1448 },
@@ -1348,7 +1312,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5202,
-            NonSkippableWaypoint = true,
             Coord = { x = -456.51, y = 4779.67 },
             Range = 12,
             IsQuestUncompleted = 5202,
@@ -1357,7 +1320,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5202,
-            NonSkippableWaypoint = true,
             Coord = { x = -429, y = 4821 },
             Range = 12,
             IsQuestUncompleted = 5202,
@@ -1366,7 +1328,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5203,
-            NonSkippableWaypoint = true,
             Coord = { x = -456.51, y = 4779.67 },
             Range = 12,
             IsQuestCompleted = 5202,
@@ -1377,7 +1338,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5203,
-            NonSkippableWaypoint = true,
             Coord = { x = -429, y = 4821 },
             Range = 12,
             IsQuestCompleted = 5202,
@@ -1388,7 +1348,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5165,
-            NonSkippableWaypoint = true,
             Coord = { x = -456.51, y = 4779.67 },
             Range = 12,
             AllOf = { { Not = { IsQuestUncompleted = 5203, Not = { IsQuestReadyForTurnIn = 5203 } } } },
@@ -1400,7 +1359,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5165,
-            NonSkippableWaypoint = true,
             Coord = { x = -429, y = 4821 },
             Range = 12,
             AllOf = { { Not = { IsQuestUncompleted = 5203, Not = { IsQuestReadyForTurnIn = 5203 } } } },
@@ -1412,7 +1370,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5203,
-            NonSkippableWaypoint = true,
             Coord = { x = -391.94, y = 4895.59 },
             Range = 8,
             IsQuestCompleted = 5202,
@@ -1423,7 +1380,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5165,
-            NonSkippableWaypoint = true,
             Coord = { x = -391.94, y = 4895.59 },
             Range = 8,
             AllOf = { { Not = { IsQuestUncompleted = 5203, Not = { IsQuestReadyForTurnIn = 5203 } } } },
@@ -1435,7 +1391,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5202,
-            NonSkippableWaypoint = true,
             Coord = { x = -391.94, y = 4895.59 },
             Range = 5,
             Zone = 1448,
@@ -1522,7 +1477,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5165,
-            NonSkippableWaypoint = true,
             Coord = { x = -391.94, y = 4895.59 },
             Range = 10,
             IsQuestOnQuest = 5165,
@@ -1531,7 +1485,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5203,
-            NonSkippableWaypoint = true,
             Coord = { x = -391.94, y = 4895.59 },
             Range = 10,
             IsQuestNotOnQuest = 5165,
@@ -1541,7 +1494,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8461,
-            NonSkippableWaypoint = true,
             Coord = { x = -1207.46, y = 5994.45 },
             Range = 20,
             Zone = 1448,
@@ -1605,7 +1557,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2119, y = 6876 },
             Range = 7,
             IsQuestOnQuest = 8465,
@@ -1614,7 +1565,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2087, y = 6904 },
             Range = 7,
             IsQuestOnQuest = 8465,
@@ -1623,7 +1573,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2079, y = 7016 },
             Range = 7,
             IsQuestOnQuest = 8465,
@@ -1632,7 +1581,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5082,
-            NonSkippableWaypoint = true,
             Coord = { x = -2119, y = 6876 },
             Range = 7,
             IsQuestNotOnQuest = 8465,
@@ -1642,7 +1590,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5082,
-            NonSkippableWaypoint = true,
             Coord = { x = -2087, y = 6904 },
             Range = 7,
             IsQuestNotOnQuest = 8465,
@@ -1652,7 +1599,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5082,
-            NonSkippableWaypoint = true,
             Coord = { x = -2079, y = 7016 },
             Range = 7,
             IsQuestNotOnQuest = 8465,
@@ -1662,7 +1608,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3909,
-            NonSkippableWaypoint = true,
             Coord = { x = -2119, y = 6876 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } },
@@ -1673,7 +1618,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3909,
-            NonSkippableWaypoint = true,
             Coord = { x = -2087, y = 6904 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } },
@@ -1684,7 +1628,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3909,
-            NonSkippableWaypoint = true,
             Coord = { x = -2079, y = 7016 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } },
@@ -1695,7 +1638,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 980,
-            NonSkippableWaypoint = true,
             Coord = { x = -2119, y = 6876 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 980 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } } },
@@ -1706,7 +1648,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 980,
-            NonSkippableWaypoint = true,
             Coord = { x = -2087, y = 6904 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 980 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } } },
@@ -1717,7 +1658,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 980,
-            NonSkippableWaypoint = true,
             Coord = { x = -2079, y = 7016 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 980 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } } },
@@ -1728,7 +1668,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3908,
-            NonSkippableWaypoint = true,
             Coord = { x = -2119, y = 6876 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 3908 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } }, { Not = { IsQuestOnQuest = 980 } } },
@@ -1739,7 +1678,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3908,
-            NonSkippableWaypoint = true,
             Coord = { x = -2087, y = 6904 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 3908 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } }, { Not = { IsQuestOnQuest = 980 } } },
@@ -1750,7 +1688,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3908,
-            NonSkippableWaypoint = true,
             Coord = { x = -2079, y = 7016 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 3908 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } }, { Not = { IsQuestOnQuest = 980 } } },
@@ -1761,7 +1698,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3912,
-            NonSkippableWaypoint = true,
             Coord = { x = -2119, y = 6876 },
             Range = 7,
             AllOf = { { Hardcore = false, IsQuestCompleted = 3909, IsQuestNotOnQuest = 3912, IsQuestUncompleted = 3912 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } }, { Not = { IsQuestOnQuest = 980 } }, { Not = { IsQuestOnQuest = 3908 } } },
@@ -1772,7 +1708,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3912,
-            NonSkippableWaypoint = true,
             Coord = { x = -2087, y = 6904 },
             Range = 7,
             AllOf = { { Hardcore = false, IsQuestCompleted = 3909, IsQuestNotOnQuest = 3912, IsQuestUncompleted = 3912 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } }, { Not = { IsQuestOnQuest = 980 } }, { Not = { IsQuestOnQuest = 3908 } } },
@@ -1783,7 +1718,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3912,
-            NonSkippableWaypoint = true,
             Coord = { x = -2079, y = 7016 },
             Range = 7,
             AllOf = { { Hardcore = false, IsQuestCompleted = 3909, IsQuestNotOnQuest = 3912, IsQuestUncompleted = 3912 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } }, { Not = { IsQuestOnQuest = 980 } }, { Not = { IsQuestOnQuest = 3908 } } },
@@ -1794,7 +1728,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8470,
-            NonSkippableWaypoint = true,
             Coord = { x = -2123.43, y = 7000.32 },
             Range = 20,
             Zone = 1448,
@@ -1802,7 +1735,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8470,
-            NonSkippableWaypoint = true,
             Coord = { x = -2123.43, y = 7000.32 },
             Range = 20,
             ReputationLevel = { level = 4, type = "standard", factionID = 576 },
@@ -1848,7 +1780,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2121, y = 7026 },
             Range = 7,
             IsQuestOnQuest = 8465,
@@ -1857,7 +1788,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2177, y = 7020 },
             Range = 7,
             IsQuestOnQuest = 8465,
@@ -1866,7 +1796,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2191, y = 6998 },
             Range = 7,
             IsQuestOnQuest = 8465,
@@ -1875,7 +1804,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6966 },
             Range = 7,
             IsQuestOnQuest = 8465,
@@ -1884,7 +1812,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6940 },
             Range = 7,
             IsQuestOnQuest = 8465,
@@ -1893,7 +1820,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2295, y = 6906 },
             Range = 7,
             IsQuestOnQuest = 8465,
@@ -1902,7 +1828,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5082,
-            NonSkippableWaypoint = true,
             Coord = { x = -2121, y = 7026 },
             Range = 7,
             IsQuestNotOnQuest = 8465,
@@ -1912,7 +1837,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5082,
-            NonSkippableWaypoint = true,
             Coord = { x = -2177, y = 7020 },
             Range = 7,
             IsQuestNotOnQuest = 8465,
@@ -1922,7 +1846,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5082,
-            NonSkippableWaypoint = true,
             Coord = { x = -2191, y = 6998 },
             Range = 7,
             IsQuestNotOnQuest = 8465,
@@ -1932,7 +1855,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5082,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6966 },
             Range = 7,
             IsQuestNotOnQuest = 8465,
@@ -1942,7 +1864,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5082,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6940 },
             Range = 7,
             IsQuestNotOnQuest = 8465,
@@ -1952,7 +1873,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5082,
-            NonSkippableWaypoint = true,
             Coord = { x = -2295, y = 6906 },
             Range = 7,
             IsQuestNotOnQuest = 8465,
@@ -1962,7 +1882,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5082,
-            NonSkippableWaypoint = true,
             Coord = { x = -2285.92, y = 6900.38 },
             Range = 10,
             IsQuestCompleted = 8465,
@@ -1972,7 +1891,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3909,
-            NonSkippableWaypoint = true,
             Coord = { x = -2121, y = 7026 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } },
@@ -1983,7 +1901,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3909,
-            NonSkippableWaypoint = true,
             Coord = { x = -2177, y = 7020 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } },
@@ -1994,7 +1911,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3909,
-            NonSkippableWaypoint = true,
             Coord = { x = -2191, y = 6998 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } },
@@ -2005,7 +1921,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3909,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6966 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } },
@@ -2016,7 +1931,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3909,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6940 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } },
@@ -2027,7 +1941,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3909,
-            NonSkippableWaypoint = true,
             Coord = { x = -2295, y = 6906 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } },
@@ -2038,7 +1951,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 980,
-            NonSkippableWaypoint = true,
             Coord = { x = -2121, y = 7026 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 980 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } } },
@@ -2049,7 +1961,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 980,
-            NonSkippableWaypoint = true,
             Coord = { x = -2177, y = 7020 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 980 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } } },
@@ -2060,7 +1971,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 980,
-            NonSkippableWaypoint = true,
             Coord = { x = -2191, y = 6998 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 980 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } } },
@@ -2071,7 +1981,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 980,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6966 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 980 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } } },
@@ -2082,7 +1991,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 980,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6940 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 980 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } } },
@@ -2093,7 +2001,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 980,
-            NonSkippableWaypoint = true,
             Coord = { x = -2295, y = 6906 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 980 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } } },
@@ -2104,7 +2011,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3908,
-            NonSkippableWaypoint = true,
             Coord = { x = -2121, y = 7026 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 3908 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } }, { Not = { IsQuestOnQuest = 980 } } },
@@ -2115,7 +2021,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3908,
-            NonSkippableWaypoint = true,
             Coord = { x = -2177, y = 7020 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 3908 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } }, { Not = { IsQuestOnQuest = 980 } } },
@@ -2126,7 +2031,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3908,
-            NonSkippableWaypoint = true,
             Coord = { x = -2191, y = 6998 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 3908 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } }, { Not = { IsQuestOnQuest = 980 } } },
@@ -2137,7 +2041,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3908,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6966 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 3908 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } }, { Not = { IsQuestOnQuest = 980 } } },
@@ -2148,7 +2051,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3908,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6940 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 3908 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } }, { Not = { IsQuestOnQuest = 980 } } },
@@ -2159,7 +2061,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3908,
-            NonSkippableWaypoint = true,
             Coord = { x = -2295, y = 6906 },
             Range = 7,
             AllOf = { { IsQuestOnQuest = 3908 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } }, { Not = { IsQuestOnQuest = 980 } } },
@@ -2170,7 +2071,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3912,
-            NonSkippableWaypoint = true,
             Coord = { x = -2121, y = 7026 },
             Range = 7,
             AllOf = { { Hardcore = false, IsQuestCompleted = 3909, IsQuestNotOnQuest = 3912, IsQuestUncompleted = 3912 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } }, { Not = { IsQuestOnQuest = 980 } }, { Not = { IsQuestOnQuest = 3908 } } },
@@ -2181,7 +2081,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3912,
-            NonSkippableWaypoint = true,
             Coord = { x = -2177, y = 7020 },
             Range = 7,
             AllOf = { { Hardcore = false, IsQuestCompleted = 3909, IsQuestNotOnQuest = 3912, IsQuestUncompleted = 3912 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } }, { Not = { IsQuestOnQuest = 980 } }, { Not = { IsQuestOnQuest = 3908 } } },
@@ -2192,7 +2091,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3912,
-            NonSkippableWaypoint = true,
             Coord = { x = -2191, y = 6998 },
             Range = 7,
             AllOf = { { Hardcore = false, IsQuestCompleted = 3909, IsQuestNotOnQuest = 3912, IsQuestUncompleted = 3912 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } }, { Not = { IsQuestOnQuest = 980 } }, { Not = { IsQuestOnQuest = 3908 } } },
@@ -2203,7 +2101,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3912,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6966 },
             Range = 7,
             AllOf = { { Hardcore = false, IsQuestCompleted = 3909, IsQuestNotOnQuest = 3912, IsQuestUncompleted = 3912 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } }, { Not = { IsQuestOnQuest = 980 } }, { Not = { IsQuestOnQuest = 3908 } } },
@@ -2214,7 +2111,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3912,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6940 },
             Range = 7,
             AllOf = { { Hardcore = false, IsQuestCompleted = 3909, IsQuestNotOnQuest = 3912, IsQuestUncompleted = 3912 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } }, { Not = { IsQuestOnQuest = 980 } }, { Not = { IsQuestOnQuest = 3908 } } },
@@ -2225,7 +2121,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3912,
-            NonSkippableWaypoint = true,
             Coord = { x = -2295, y = 6906 },
             Range = 7,
             AllOf = { { Hardcore = false, IsQuestCompleted = 3909, IsQuestNotOnQuest = 3912, IsQuestUncompleted = 3912 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } }, { Not = { IsQuestOnQuest = 980 } }, { Not = { IsQuestOnQuest = 3908 } } },
@@ -2236,7 +2131,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3909,
-            NonSkippableWaypoint = true,
             Coord = { x = -2285.92, y = 6900.38 },
             Range = 10,
             AllOf = { { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 }, { IsQuestCompleted = 8465 } },
@@ -2247,7 +2141,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 980,
-            NonSkippableWaypoint = true,
             Coord = { x = -2285.92, y = 6900.38 },
             Range = 10,
             AllOf = { { IsQuestOnQuest = 980 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } }, { IsQuestCompleted = 8465 } },
@@ -2258,7 +2151,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3908,
-            NonSkippableWaypoint = true,
             Coord = { x = -2285.92, y = 6900.38 },
             Range = 10,
             AllOf = { { IsQuestOnQuest = 3908 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } }, { Not = { IsQuestOnQuest = 980 } }, { IsQuestCompleted = 8465 } },
@@ -2269,7 +2161,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3912,
-            NonSkippableWaypoint = true,
             Coord = { x = -2285.92, y = 6900.38 },
             Range = 10,
             AllOf = { { Hardcore = false, IsQuestCompleted = 3909, IsQuestNotOnQuest = 3912, IsQuestUncompleted = 3912 }, { Not = { IsQuestOnQuest = 3909, IsQuestReadyForTurnIn = 3909 } }, { Not = { IsQuestOnQuest = 980 } }, { Not = { IsQuestOnQuest = 3908 } }, { IsQuestCompleted = 8465 } },
@@ -2280,7 +2171,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 8465,
-            NonSkippableWaypoint = true,
             Coord = { x = -2285.92, y = 6900.38 },
             Range = 20,
             Zone = 1452,
@@ -2377,7 +2267,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5085,
-            NonSkippableWaypoint = true,
             Coord = { x = -2285.92, y = 6900.38 },
             Range = 10,
             IsQuestCompleted = 5084,
@@ -2388,7 +2277,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5084,
-            NonSkippableWaypoint = true,
             Coord = { x = -2285.92, y = 6900.38 },
             Range = 10,
             Zone = 1452,
@@ -2396,7 +2284,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5084,
-            NonSkippableWaypoint = true,
             Coord = { x = -2295, y = 6906 },
             Range = 7,
             IsQuestOnQuest = 5084,
@@ -2405,7 +2292,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5084,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6940 },
             Range = 7,
             IsQuestOnQuest = 5084,
@@ -2414,7 +2300,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5084,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6966 },
             Range = 7,
             IsQuestOnQuest = 5084,
@@ -2423,7 +2308,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5084,
-            NonSkippableWaypoint = true,
             Coord = { x = -2191, y = 6998 },
             Range = 7,
             IsQuestOnQuest = 5084,
@@ -2432,7 +2316,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5084,
-            NonSkippableWaypoint = true,
             Coord = { x = -2177, y = 7020 },
             Range = 7,
             IsQuestOnQuest = 5084,
@@ -2441,7 +2324,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5084,
-            NonSkippableWaypoint = true,
             Coord = { x = -2121, y = 7026 },
             Range = 7,
             IsQuestOnQuest = 5084,
@@ -2450,7 +2332,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5085,
-            NonSkippableWaypoint = true,
             Coord = { x = -2295, y = 6906 },
             Range = 7,
             IsQuestCompleted = 5084,
@@ -2461,7 +2342,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5085,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6940 },
             Range = 7,
             IsQuestCompleted = 5084,
@@ -2472,7 +2352,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5085,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6966 },
             Range = 7,
             IsQuestCompleted = 5084,
@@ -2483,7 +2362,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5085,
-            NonSkippableWaypoint = true,
             Coord = { x = -2191, y = 6998 },
             Range = 7,
             IsQuestCompleted = 5084,
@@ -2494,7 +2372,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5085,
-            NonSkippableWaypoint = true,
             Coord = { x = -2177, y = 7020 },
             Range = 7,
             IsQuestCompleted = 5084,
@@ -2505,7 +2382,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5085,
-            NonSkippableWaypoint = true,
             Coord = { x = -2121, y = 7026 },
             Range = 7,
             IsQuestCompleted = 5084,
@@ -2516,7 +2392,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5084,
-            NonSkippableWaypoint = true,
             Coord = { x = -2123.43, y = 7000.32 },
             Range = 10,
             Zone = 1448,
@@ -2524,7 +2399,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5084,
-            NonSkippableWaypoint = true,
             Coord = { x = -2121, y = 7026 },
             Range = 7,
             IsQuestOnQuest = 5084,
@@ -2533,7 +2407,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5084,
-            NonSkippableWaypoint = true,
             Coord = { x = -2079, y = 7016 },
             Range = 7,
             IsQuestOnQuest = 5084,
@@ -2542,7 +2415,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5084,
-            NonSkippableWaypoint = true,
             Coord = { x = -2087, y = 6904 },
             Range = 7,
             IsQuestOnQuest = 5084,
@@ -2551,7 +2423,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5084,
-            NonSkippableWaypoint = true,
             Coord = { x = -2119, y = 6876 },
             Range = 7,
             IsQuestOnQuest = 5084,
@@ -2560,7 +2431,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5084,
-            NonSkippableWaypoint = true,
             Coord = { x = -2085, y = 6840 },
             Range = 7,
             IsQuestOnQuest = 5084,
@@ -2569,7 +2439,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5085,
-            NonSkippableWaypoint = true,
             Coord = { x = -2079, y = 7016 },
             Range = 7,
             IsQuestCompleted = 5084,
@@ -2580,7 +2449,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5085,
-            NonSkippableWaypoint = true,
             Coord = { x = -2087, y = 6904 },
             Range = 7,
             IsQuestCompleted = 5084,
@@ -2591,7 +2459,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5085,
-            NonSkippableWaypoint = true,
             Coord = { x = -2119, y = 6876 },
             Range = 7,
             IsQuestCompleted = 5084,
@@ -2602,7 +2469,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5085,
-            NonSkippableWaypoint = true,
             Coord = { x = -2085, y = 6840 },
             Range = 7,
             IsQuestCompleted = 5084,
@@ -2627,7 +2493,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5085,
-            NonSkippableWaypoint = true,
             Coord = { x = -2085, y = 6840 },
             Range = 7,
             IsQuestOnQuest = 5085,
@@ -2636,7 +2501,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5085,
-            NonSkippableWaypoint = true,
             Coord = { x = -2119, y = 6876 },
             Range = 7,
             IsQuestOnQuest = 5085,
@@ -2645,7 +2509,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5085,
-            NonSkippableWaypoint = true,
             Coord = { x = -2087, y = 6904 },
             Range = 7,
             IsQuestOnQuest = 5085,
@@ -2654,7 +2517,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5085,
-            NonSkippableWaypoint = true,
             Coord = { x = -2079, y = 7016 },
             Range = 7,
             IsQuestOnQuest = 5085,
@@ -2663,7 +2525,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5086,
-            NonSkippableWaypoint = true,
             Coord = { x = -2085, y = 6840 },
             Range = 7,
             IsQuestCompleted = 5085,
@@ -2674,7 +2535,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5086,
-            NonSkippableWaypoint = true,
             Coord = { x = -2119, y = 6876 },
             Range = 7,
             IsQuestCompleted = 5085,
@@ -2685,7 +2545,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5086,
-            NonSkippableWaypoint = true,
             Coord = { x = -2087, y = 6904 },
             Range = 7,
             IsQuestCompleted = 5085,
@@ -2696,7 +2555,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5086,
-            NonSkippableWaypoint = true,
             Coord = { x = -2079, y = 7016 },
             Range = 7,
             IsQuestCompleted = 5085,
@@ -2707,7 +2565,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5085,
-            NonSkippableWaypoint = true,
             Coord = { x = -2123.43, y = 7000.32 },
             Range = 10,
             Zone = 1448,
@@ -2715,7 +2572,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5085,
-            NonSkippableWaypoint = true,
             Coord = { x = -2121, y = 7026 },
             Range = 7,
             IsQuestOnQuest = 5085,
@@ -2724,7 +2580,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5085,
-            NonSkippableWaypoint = true,
             Coord = { x = -2177, y = 7020 },
             Range = 7,
             IsQuestOnQuest = 5085,
@@ -2733,7 +2588,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5085,
-            NonSkippableWaypoint = true,
             Coord = { x = -2191, y = 6998 },
             Range = 7,
             IsQuestOnQuest = 5085,
@@ -2742,7 +2596,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5085,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6966 },
             Range = 7,
             IsQuestOnQuest = 5085,
@@ -2751,7 +2604,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5085,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6940 },
             Range = 7,
             IsQuestOnQuest = 5085,
@@ -2760,7 +2612,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5085,
-            NonSkippableWaypoint = true,
             Coord = { x = -2295, y = 6906 },
             Range = 7,
             IsQuestOnQuest = 5085,
@@ -2769,7 +2620,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5086,
-            NonSkippableWaypoint = true,
             Coord = { x = -2121, y = 7026 },
             Range = 7,
             IsQuestCompleted = 5085,
@@ -2780,7 +2630,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5086,
-            NonSkippableWaypoint = true,
             Coord = { x = -2177, y = 7020 },
             Range = 7,
             IsQuestCompleted = 5085,
@@ -2791,7 +2640,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5086,
-            NonSkippableWaypoint = true,
             Coord = { x = -2191, y = 6998 },
             Range = 7,
             IsQuestCompleted = 5085,
@@ -2802,7 +2650,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5086,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6966 },
             Range = 7,
             IsQuestCompleted = 5085,
@@ -2813,7 +2660,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5086,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6940 },
             Range = 7,
             IsQuestCompleted = 5085,
@@ -2824,7 +2670,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5086,
-            NonSkippableWaypoint = true,
             Coord = { x = -2295, y = 6906 },
             Range = 7,
             IsQuestCompleted = 5085,
@@ -2835,7 +2680,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5086,
-            NonSkippableWaypoint = true,
             Coord = { x = -2285.92, y = 6900.38 },
             Range = 10,
             IsQuestCompleted = 5085,
@@ -2846,7 +2690,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5085,
-            NonSkippableWaypoint = true,
             Coord = { x = -2285.92, y = 6900.38 },
             Range = 10,
             Zone = 1452,
@@ -3036,7 +2879,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3941,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 43.47, 6.79),
             Range = 10,
             IsQuestOnQuest = 3941,
@@ -3046,7 +2888,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3942,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 43.47, 6.79),
             Range = 10,
             IsQuestCompleted = 3941,
@@ -3073,7 +2914,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 3942,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 43.47, 6.79),
             Range = 10,
             IsQuestOnQuest = 3942,
@@ -3111,7 +2951,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5165,
-            NonSkippableWaypoint = true,
             Coord = { x = -1527.6, y = 3444.07 },
             Range = 10,
             Zone = 1440,
@@ -3119,7 +2958,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5165,
-            NonSkippableWaypoint = true,
             Coord = { x = -1471.38, y = 3804.85 },
             Range = 5,
             Zone = 1448,
@@ -3166,7 +3004,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5204,
-            NonSkippableWaypoint = true,
             Coord = { x = -456.51, y = 4779.67 },
             Range = 12,
             IsQuestOnQuest = 5204,
@@ -3175,7 +3012,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5204,
-            NonSkippableWaypoint = true,
             Coord = { x = -429, y = 4821 },
             Range = 12,
             IsQuestOnQuest = 5204,
@@ -3184,7 +3020,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5385,
-            NonSkippableWaypoint = true,
             Coord = { x = -456.51, y = 4779.67 },
             Range = 12,
             IsQuestCompleted = 5204,
@@ -3195,7 +3030,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5385,
-            NonSkippableWaypoint = true,
             Coord = { x = -429, y = 4821 },
             Range = 12,
             IsQuestCompleted = 5204,
@@ -3206,7 +3040,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5242,
-            NonSkippableWaypoint = true,
             Coord = { x = -456.51, y = 4779.67 },
             Range = 12,
             AllOf = { { IsQuestNotOnQuest = 5204 }, { Not = { IsQuestCompleted = 5204, IsQuestNotOnQuest = 5385, IsQuestUncompleted = 5385 } } },
@@ -3217,7 +3050,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5242,
-            NonSkippableWaypoint = true,
             Coord = { x = -429, y = 4821 },
             Range = 12,
             AllOf = { { IsQuestNotOnQuest = 5204 }, { Not = { IsQuestCompleted = 5204, IsQuestNotOnQuest = 5385, IsQuestUncompleted = 5385 } } },
@@ -3228,7 +3060,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5385,
-            NonSkippableWaypoint = true,
             Coord = { x = -391.94, y = 4895.59 },
             Range = 8,
             IsQuestCompleted = 5204,
@@ -3239,7 +3070,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5242,
-            NonSkippableWaypoint = true,
             Coord = { x = -391.94, y = 4895.59 },
             Range = 8,
             AllOf = { { IsQuestNotOnQuest = 5204 }, { Not = { IsQuestCompleted = 5204, IsQuestNotOnQuest = 5385, IsQuestUncompleted = 5385 } } },
@@ -3251,7 +3081,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5204,
-            NonSkippableWaypoint = true,
             Fillers = { [4084] = { 1 } },
             Coord = { x = -391.94, y = 4895.59 },
             Range = 5,
@@ -3287,7 +3116,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5242,
-            NonSkippableWaypoint = true,
             Coord = { x = -391.94, y = 4895.59 },
             Range = 10,
             IsQuestOnQuest = 5242,
@@ -3296,7 +3124,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5385,
-            NonSkippableWaypoint = true,
             Coord = { x = -391.94, y = 4895.59 },
             Range = 10,
             IsQuestNotOnQuest = 5242,
@@ -3347,7 +3174,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5087,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 65.28, 7.515),
             Range = 15,
             IsQuestCompleted = 5086,
@@ -3358,7 +3184,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5086,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 65.28, 7.515),
             Range = 20,
             Zone = 1448,
@@ -3366,7 +3191,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5086,
-            NonSkippableWaypoint = true,
             Coord = { x = -2119, y = 6876 },
             Range = 7,
             IsQuestOnQuest = 5086,
@@ -3375,7 +3199,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5086,
-            NonSkippableWaypoint = true,
             Coord = { x = -2087, y = 6904 },
             Range = 7,
             IsQuestOnQuest = 5086,
@@ -3384,7 +3207,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5086,
-            NonSkippableWaypoint = true,
             Coord = { x = -2079, y = 7016 },
             Range = 7,
             IsQuestOnQuest = 5086,
@@ -3393,7 +3215,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5086,
-            NonSkippableWaypoint = true,
             Coord = { x = -2121, y = 7026 },
             Range = 7,
             IsQuestOnQuest = 5086,
@@ -3402,7 +3223,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5086,
-            NonSkippableWaypoint = true,
             Coord = { x = -2177, y = 7020 },
             Range = 7,
             IsQuestOnQuest = 5086,
@@ -3411,7 +3231,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5086,
-            NonSkippableWaypoint = true,
             Coord = { x = -2191, y = 6998 },
             Range = 7,
             IsQuestOnQuest = 5086,
@@ -3420,7 +3239,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5086,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6966 },
             Range = 7,
             IsQuestOnQuest = 5086,
@@ -3429,7 +3247,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5086,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6940 },
             Range = 7,
             IsQuestOnQuest = 5086,
@@ -3438,7 +3255,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5086,
-            NonSkippableWaypoint = true,
             Coord = { x = -2295, y = 6906 },
             Range = 7,
             IsQuestOnQuest = 5086,
@@ -3447,7 +3263,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5087,
-            NonSkippableWaypoint = true,
             Coord = { x = -2119, y = 6876 },
             Range = 7,
             IsQuestCompleted = 5086,
@@ -3458,7 +3273,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5087,
-            NonSkippableWaypoint = true,
             Coord = { x = -2087, y = 6904 },
             Range = 7,
             IsQuestCompleted = 5086,
@@ -3469,7 +3283,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5087,
-            NonSkippableWaypoint = true,
             Coord = { x = -2079, y = 7016 },
             Range = 7,
             IsQuestCompleted = 5086,
@@ -3480,7 +3293,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5087,
-            NonSkippableWaypoint = true,
             Coord = { x = -2121, y = 7026 },
             Range = 7,
             IsQuestCompleted = 5086,
@@ -3491,7 +3303,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5087,
-            NonSkippableWaypoint = true,
             Coord = { x = -2177, y = 7020 },
             Range = 7,
             IsQuestCompleted = 5086,
@@ -3502,7 +3313,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5087,
-            NonSkippableWaypoint = true,
             Coord = { x = -2191, y = 6998 },
             Range = 7,
             IsQuestCompleted = 5086,
@@ -3513,7 +3323,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5087,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6966 },
             Range = 7,
             IsQuestCompleted = 5086,
@@ -3524,7 +3333,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5087,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6940 },
             Range = 7,
             IsQuestCompleted = 5086,
@@ -3535,7 +3343,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5087,
-            NonSkippableWaypoint = true,
             Coord = { x = -2295, y = 6906 },
             Range = 7,
             IsQuestCompleted = 5086,
@@ -3546,7 +3353,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5087,
-            NonSkippableWaypoint = true,
             Coord = { x = -2287.63, y = 6896.07 },
             Range = 8,
             IsQuestCompleted = 5086,
@@ -3557,7 +3363,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5086,
-            NonSkippableWaypoint = true,
             Coord = { x = -2287.63, y = 6896.07 },
             Range = 5,
             Zone = 1452,
@@ -3577,7 +3382,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5250,
-            NonSkippableWaypoint = true,
             Fillers = { [5087] = { 1 } },
             Coord = { x = -4006.61, y = 7095.02 },
             Range = 5,
@@ -3595,7 +3399,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5244,
-            NonSkippableWaypoint = true,
             Fillers = { [5087] = { 1 } },
             Coord = { x = -4006.61, y = 7095.02 },
             Range = 5,
@@ -3682,7 +3485,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4861,
-            NonSkippableWaypoint = true,
             Fillers = { [5087] = { 1 } },
             Coord = { x = -4505.03, y = 5703.56 },
             Range = 15,
@@ -3781,7 +3583,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4842,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 62.43, 67.46),
             Range = 12,
             AllOf = { { Not = { IsQuestOnQuest = 969, Not = { IsQuestReadyForTurnIn = 969 } } } },
@@ -3839,7 +3640,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 969,
-            NonSkippableWaypoint = true,
             Coord = { x = -4673.08, y = 6695.05 },
             Range = 10,
             OnlyInZones = { 1452 },
@@ -3856,7 +3656,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 4864,
-            NonSkippableWaypoint = true,
             Coord = { x = -4018.54, y = 7093.03 },
             Range = 5,
             Zone = 1452,
@@ -3924,7 +3723,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5121,
-            NonSkippableWaypoint = true,
             Coord = { x = -2285.92, y = 6900.38 },
             Range = 10,
             IsQuestUncompleted = 5121,
@@ -3934,7 +3732,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5121,
-            NonSkippableWaypoint = true,
             Coord = { x = -2295, y = 6906 },
             Range = 7,
             IsQuestUncompleted = 5121,
@@ -3944,7 +3741,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5121,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6940 },
             Range = 7,
             IsQuestUncompleted = 5121,
@@ -3954,7 +3750,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5121,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6966 },
             Range = 7,
             IsQuestUncompleted = 5121,
@@ -3964,7 +3759,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5121,
-            NonSkippableWaypoint = true,
             Coord = { x = -2191, y = 6998 },
             Range = 7,
             IsQuestUncompleted = 5121,
@@ -3974,7 +3768,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5121,
-            NonSkippableWaypoint = true,
             Coord = { x = -2177, y = 7020 },
             Range = 7,
             IsQuestUncompleted = 5121,
@@ -3984,7 +3777,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5121,
-            NonSkippableWaypoint = true,
             Coord = { x = -2121, y = 7026 },
             Range = 7,
             IsQuestUncompleted = 5121,
@@ -3994,7 +3786,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5121,
-            NonSkippableWaypoint = true,
             Coord = { x = -2079, y = 7016 },
             Range = 7,
             IsQuestUncompleted = 5121,
@@ -4004,7 +3795,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5121,
-            NonSkippableWaypoint = true,
             Coord = { x = -2087, y = 6904 },
             Range = 7,
             IsQuestUncompleted = 5121,
@@ -4014,7 +3804,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5121,
-            NonSkippableWaypoint = true,
             Coord = { x = -2119, y = 6876 },
             Range = 7,
             IsQuestUncompleted = 5121,
@@ -4024,7 +3813,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 5121,
-            NonSkippableWaypoint = true,
             Coord = { x = -2085, y = 6840 },
             Range = 7,
             IsQuestUncompleted = 5121,
@@ -4034,7 +3822,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 6028,
-            NonSkippableWaypoint = true,
             Coord = { x = -2285.92, y = 6900.38 },
             Range = 10,
             IsQuestCompleted = 5121,
@@ -4045,7 +3832,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 6028,
-            NonSkippableWaypoint = true,
             Coord = { x = -2295, y = 6906 },
             Range = 7,
             IsQuestCompleted = 5121,
@@ -4056,7 +3842,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 6028,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6940 },
             Range = 7,
             IsQuestCompleted = 5121,
@@ -4067,7 +3852,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 6028,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6966 },
             Range = 7,
             IsQuestCompleted = 5121,
@@ -4078,7 +3862,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 6028,
-            NonSkippableWaypoint = true,
             Coord = { x = -2191, y = 6998 },
             Range = 7,
             IsQuestCompleted = 5121,
@@ -4089,7 +3872,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 6028,
-            NonSkippableWaypoint = true,
             Coord = { x = -2177, y = 7020 },
             Range = 7,
             IsQuestCompleted = 5121,
@@ -4100,7 +3882,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 6028,
-            NonSkippableWaypoint = true,
             Coord = { x = -2121, y = 7026 },
             Range = 7,
             IsQuestCompleted = 5121,
@@ -4111,7 +3892,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 6028,
-            NonSkippableWaypoint = true,
             Coord = { x = -2079, y = 7016 },
             Range = 7,
             IsQuestCompleted = 5121,
@@ -4122,7 +3902,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 6028,
-            NonSkippableWaypoint = true,
             Coord = { x = -2087, y = 6904 },
             Range = 7,
             IsQuestCompleted = 5121,
@@ -4133,7 +3912,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 6028,
-            NonSkippableWaypoint = true,
             Coord = { x = -2119, y = 6876 },
             Range = 7,
             IsQuestCompleted = 5121,
@@ -4144,7 +3922,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
         },
         {
             Waypoint = 6028,
-            NonSkippableWaypoint = true,
             Coord = { x = -2085, y = 6840 },
             Range = 7,
             IsQuestCompleted = 5121,

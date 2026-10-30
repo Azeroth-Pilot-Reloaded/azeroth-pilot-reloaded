@@ -43,7 +43,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
     steps = {
         {
             Waypoint = 1302,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 7.27, 62.527),
             Range = 20,
             SkipInZones = { 1445, 1413, 1441, 1444, 1446 },
@@ -110,7 +109,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1265,
-            NonSkippableWaypoint = true,
             Coord = { x = -4438.5, y = -3613.5 },
             Range = 5,
             ZoneStepTrigger = { x = -4438.5, y = -3613.5, Range = 5, mapID = 1445 },
@@ -169,7 +167,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1265,
-            NonSkippableWaypoint = true,
             Coord = { x = -4110.3, y = -3474.28 },
             Range = 5,
             Zone = 1445,
@@ -292,7 +289,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1100,
-            NonSkippableWaypoint = true,
             Coord = { x = -2021.9, y = -3703.1 },
             Range = 15,
             IsQuestUncompleted = 1100,
@@ -302,7 +298,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1100,
-            NonSkippableWaypoint = true,
             Coord = { x = -2049, y = -4067.7 },
             Range = 12,
             IsQuestUncompleted = 1100,
@@ -312,7 +307,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1100,
-            NonSkippableWaypoint = true,
             Coord = { x = -1888.5, y = -4232.3 },
             Range = 12,
             IsQuestUncompleted = 1100,
@@ -322,7 +316,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1100,
-            NonSkippableWaypoint = true,
             Coord = { x = -1857.33, y = -4550.35 },
             Range = 10,
             IsQuestUncompleted = 1100,
@@ -332,7 +325,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1100,
-            NonSkippableWaypoint = true,
             Coord = { x = -1845.29, y = -4621.68 },
             Range = 5,
             Zone = 1441,
@@ -354,7 +346,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1100,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 89.5, 45.85),
             Range = 20,
             Zone = 1444,
@@ -381,7 +372,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1179,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 14.75, 32.83),
             Range = 15,
             IsQuestOnQuest = 1135,
@@ -398,7 +388,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1179,
-            NonSkippableWaypoint = true,
             Coord = { x = -3855.74, y = -6233.05 },
             Range = 20,
             Zone = 1441,
@@ -541,7 +530,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1135,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             IsQuestUncompleted = 1135,
@@ -551,7 +539,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1135,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             IsQuestUncompleted = 1135,
@@ -561,7 +548,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1135,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             IsQuestUncompleted = 1135,
@@ -571,7 +557,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1135,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             IsQuestUncompleted = 1135,
@@ -581,7 +566,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1135,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             IsQuestUncompleted = 1135,
@@ -591,7 +575,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1135,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             IsQuestUncompleted = 1135,
@@ -601,7 +584,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1135,
-            NonSkippableWaypoint = true,
             Coord = { x = -3676, y = -7043.1 },
             Range = 8,
             IsQuestUncompleted = 1135,
@@ -611,7 +593,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1135,
-            NonSkippableWaypoint = true,
             Coord = { x = -3695, y = -7079.7 },
             Range = 8,
             IsQuestUncompleted = 1135,
@@ -621,7 +602,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1135,
-            NonSkippableWaypoint = true,
             Coord = { x = -3759.2, y = -7076.3 },
             Range = 8,
             IsQuestUncompleted = 1135,
@@ -631,7 +611,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1135,
-            NonSkippableWaypoint = true,
             Coord = { x = -3738.44, y = -7225.1 },
             Range = 20,
             Zone = 1446,
@@ -705,7 +684,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1252,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = -4557.08, y = -3742.03 },
             Range = 20,
@@ -778,7 +756,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1718,
-            NonSkippableWaypoint = true,
             Fillers = { [1177] = { 1 } },
             Note = { "KILL_ENEMIES_WAY_XP" },
             Coord = { x = -3823.13, y = -2355.33 },
@@ -789,7 +766,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1178,
-            NonSkippableWaypoint = true,
             Fillers = { [1177] = { 1 } },
             Note = { "KILL_ENEMIES_WAY_XP" },
             Coord = { x = -3823.13, y = -2355.33 },
@@ -800,7 +776,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1178,
-            NonSkippableWaypoint = true,
             Fillers = { [1177] = { 1 } },
             Note = { "KILL_ENEMIES_WAY_XP" },
             Coord = { x = -3728.66, y = -835.29 },
@@ -811,7 +786,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1718,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.9, y = -1951.42 },
             Range = 20,
             AnyOf = { { IsQuestUncompleted = 1719 }, { IsQuestUncompleted = 1791, IsQuestNotOnQuest = 1791 } },
@@ -821,7 +795,6 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         },
         {
             Waypoint = 1718,
-            NonSkippableWaypoint = true,
             Coord = { x = -4302.2, y = -1687.25 },
             Range = 20,
             AnyOf = { { IsQuestUncompleted = 1719 }, { IsQuestUncompleted = 1791, IsQuestNotOnQuest = 1791 } },

@@ -75,7 +75,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 945,
-            NonSkippableWaypoint = true,
             Note = { "RUN_STRAIGHT_NORTH_CLIMBING_MOUNTAIN" },
             Coord = { x = -126.3, y = 2203.69 },
             Range = 15,
@@ -84,7 +83,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 945,
-            NonSkippableWaypoint = true,
             Note = { "RUN_STRAIGHT_NORTH_CLIMBING_MOUNTAIN" },
             Coord = { x = -99.78, y = 2305.17 },
             Range = 15,
@@ -93,7 +91,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 945,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_HILL_NEXT_BIG_TREE_RIGHT_FIRE", "JUMP_TREE_ROOT_HUG_RIGHT_AVOID_AGGROING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 27.5, 60.76),
             Range = 8,
@@ -245,7 +242,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1034,
-            NonSkippableWaypoint = true,
             Coord = { x = -299.3, y = 2796.01 },
             Range = 5,
             Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" },
@@ -415,7 +411,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 741,
-            NonSkippableWaypoint = true,
             Coord = { x = 796.54, y = 6490.16 },
             Range = 20,
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" },
@@ -425,7 +420,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 6125,
-            NonSkippableWaypoint = true,
             Coord = { x = 796.54, y = 6490.16 },
             Range = 20,
             Class = "DRUID",
@@ -508,7 +502,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1025,
-            NonSkippableWaypoint = true,
             Coord = { x = 2601.39, y = 10120.53 },
             Range = 20,
             Class = "ROGUE",
@@ -630,7 +623,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1008,
-            NonSkippableWaypoint = true,
             Coord = { x = -299.3, y = 2796.01 },
             Range = 5,
             Class = "WARLOCK",
@@ -700,7 +692,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 42.5, 71.7),
             Range = 5,
             Class = "WARLOCK",
@@ -710,7 +701,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 42.5, 71.7),
             Range = 5,
             Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" },
@@ -719,7 +709,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -746, y = 1944 },
             Range = 3,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -729,7 +718,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -714, y = 1894 },
             Range = 3,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -739,7 +727,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -738, y = 1868 },
             Range = 3,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -749,7 +736,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -716, y = 1832 },
             Range = 3,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -759,7 +745,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -692, y = 1832 },
             Range = 3,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -769,7 +754,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -680, y = 1822 },
             Range = 3,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -779,7 +763,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -668, y = 1786 },
             Range = 3,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -789,7 +772,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -680, y = 1748 },
             Range = 3,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -799,7 +781,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -662, y = 1712 },
             Range = 3,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -809,7 +790,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -654, y = 1712 },
             Range = 3,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -819,7 +799,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -636, y = 1696 },
             Range = 3,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -829,7 +808,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -634, y = 1676 },
             Range = 3,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -839,7 +817,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -606, y = 1660 },
             Range = 3,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -849,7 +826,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -602, y = 1632 },
             Range = 3,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -859,7 +835,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -606, y = 1610 },
             Range = 3,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -869,7 +844,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -574, y = 1598 },
             Range = 3,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -879,7 +853,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -573, y = 1585 },
             Range = 3,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -889,7 +862,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -586, y = 1574 },
             Range = 3,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -899,7 +871,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -578, y = 1548 },
             Range = 3,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -909,7 +880,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -580, y = 1540 },
             Range = 3,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -919,7 +889,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -576, y = 1508 },
             Range = 3,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -929,7 +898,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = -588, y = 1510 },
             Range = 3,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -939,7 +907,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = { x = 205.9, y = 887.5 },
             Range = 20,
             ZoneStepTrigger = { x = 205.9, y = 887.5, Range = 20, mapID = 1442 },
@@ -950,7 +917,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 60.5, 70),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1442, 60.5, 70, 10),
@@ -961,7 +927,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1070,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 58.8, 68.2),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1442, 58.8, 68.2, 10),
@@ -1040,7 +1005,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1093,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 58.8, 68.2),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1442, 58.8, 68.2, 10),
@@ -1051,7 +1015,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1093,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 60.5, 70),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1442, 60.5, 70, 10),
@@ -1062,7 +1025,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1093,
-            NonSkippableWaypoint = true,
             Coord = { x = 205.9, y = 887.5 },
             Range = 20,
             ZoneStepTrigger = { x = 205.9, y = 887.5, Range = 20, mapID = 1442 },
@@ -1135,7 +1097,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1071,
-            NonSkippableWaypoint = true,
             Coord = { x = 205.9, y = 887.5 },
             Range = 20,
             ZoneStepTrigger = { x = 205.9, y = 887.5, Range = 20, mapID = 1442 },
@@ -1146,7 +1107,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1071,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 60.5, 70),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1442, 60.5, 70, 10),
@@ -1157,7 +1117,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1071,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 58.8, 68.2),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1442, 58.8, 68.2, 10),
@@ -1202,7 +1161,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 58.8, 68.2),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1442, 58.8, 68.2, 10),
@@ -1213,7 +1171,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 60.5, 70),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1442, 60.5, 70, 10),
@@ -1224,7 +1181,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 311.2, y = 598.9 },
             Range = 20,
             ZoneStepTrigger = { x = 311.2, y = 598.9, Range = 20, mapID = 1442 },
@@ -1235,7 +1191,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 398.2, y = 738.5 },
             Range = 20,
             ZoneStepTrigger = { x = 398.2, y = 738.5, Range = 20, mapID = 1442 },
@@ -1246,7 +1201,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 654.5, y = 943.6 },
             Range = 20,
             ZoneStepTrigger = { x = 654.5, y = 943.6, Range = 20, mapID = 1442 },
@@ -1264,7 +1218,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 765.6, y = 1385.2 },
             Range = 20,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -1275,7 +1228,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 1020.7, y = 1570 },
             Range = 20,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -1286,7 +1238,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 950.8, y = 1880.9 },
             Range = 20,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -1297,7 +1248,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 1082.9, y = 2314.6 },
             Range = 20,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -1308,7 +1258,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 1178.7, y = 2393.6 },
             Range = 20,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -1319,7 +1268,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 1297.9, y = 2402.1 },
             Range = 20,
             AnyOf = { { Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" } }, { Class = "WARLOCK", Race = { "Gnome", "Human" } } },
@@ -1330,7 +1278,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 1433.97, y = 2652.91 },
             Range = 20,
             Class = "WARLOCK",
@@ -1341,7 +1288,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1056,
-            NonSkippableWaypoint = true,
             Coord = { x = 1433.97, y = 2652.91 },
             Range = 20,
             Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" },
@@ -1398,7 +1344,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1716,
-            NonSkippableWaypoint = true,
             Coord = { x = -929.02, y = -213.38 },
             Range = 5,
             Class = "WARLOCK",
@@ -1408,7 +1353,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1716,
-            NonSkippableWaypoint = true,
             Note = { "AVOID_HOSTILE_GUARDS" },
             Coord = { x = -1466.69, y = -61.7 },
             Range = 20,
@@ -1435,7 +1379,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1094,
-            NonSkippableWaypoint = true,
             Coord = { x = -3759.06, y = -901.5 },
             Range = 20,
             Class = "WARLOCK",
@@ -1478,7 +1421,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1025,
-            NonSkippableWaypoint = true,
             Coord = { x = -3370.95, y = -108.99 },
             Range = 20,
             ZoneStepTrigger = { x = -3370.95, y = -108.99, mapID = 1413, Range = 20 },
@@ -1490,7 +1432,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1025,
-            NonSkippableWaypoint = true,
             Coord = { x = -2835.91, y = 158.55 },
             Range = 20,
             ZoneStepTrigger = { x = -2835.91, y = 158.55, mapID = 1413, Range = 20 },
@@ -1502,7 +1443,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1025,
-            NonSkippableWaypoint = true,
             Coord = { x = -2349.51, y = 747.7 },
             Range = 20,
             ZoneStepTrigger = { x = -2349.51, y = 747.7, mapID = 1413, Range = 20 },
@@ -1514,7 +1454,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1025,
-            NonSkippableWaypoint = true,
             Coord = { x = -2340.39, y = 1246.31 },
             Range = 20,
             ZoneStepTrigger = { x = -2340.39, y = 1246.31, mapID = 1413, Range = 20 },
@@ -1526,7 +1465,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1025,
-            NonSkippableWaypoint = true,
             Coord = { x = -2319.94, y = 1333.85 },
             Range = 20,
             ZoneStepTrigger = { x = -2319.94, y = 1333.85, mapID = 1440, Range = 20 },
@@ -1642,7 +1580,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 741,
-            NonSkippableWaypoint = true,
             Coord = { x = 796.54, y = 6490.16 },
             Range = 20,
             Class = "WARLOCK",
@@ -1730,7 +1667,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1016,
-            NonSkippableWaypoint = true,
             Fillers = { [1025] = { 4, 3, 2, 1 } },
             Note = { "THRASH_HIT_3_TIMES", "COMPLETE_OBJECTIVE_LATER" },
             Coord = { x = -1187.95, y = 2368.97 },
@@ -1781,7 +1717,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1025,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 94.74, 47.77),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1440, 94.74, 47.77, 15),
@@ -1792,7 +1727,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1025,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 10.56, 75.09),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1447, 10.56, 75.09, 15),
@@ -1803,7 +1737,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1025,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 11.9, 77.57),
             Range = 20,
             Zone = 1447,
@@ -1825,7 +1758,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1025,
-            NonSkippableWaypoint = true,
             Coord = { x = -300.46, y = 2970.14 },
             Range = 20,
             Zone = 1440,
@@ -1833,7 +1765,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1025,
-            NonSkippableWaypoint = true,
             Coord = { x = -343.13, y = 3079.3 },
             Range = 20,
             Zone = 1440,
@@ -1841,7 +1772,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1025,
-            NonSkippableWaypoint = true,
             Coord = { x = -392.15, y = 3193.84 },
             Range = 20,
             Zone = 1440,
@@ -1849,7 +1779,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1025,
-            NonSkippableWaypoint = true,
             Coord = { x = -423.86, y = 3229.2 },
             Range = 20,
             Zone = 1440,
@@ -1865,7 +1794,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1025,
-            NonSkippableWaypoint = true,
             Coord = { x = 158.57, y = 2945.15 },
             Range = 20,
             Class = "WARLOCK",
@@ -1875,7 +1803,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1025,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 31.5, 31.5),
             Range = 20,
             Class = "WARLOCK",
@@ -1952,7 +1879,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Waypoint = 1025,
-            NonSkippableWaypoint = true,
             Coord = { x = -284.31, y = 2828.69 },
             Range = 20,
             Class = "WARLOCK",

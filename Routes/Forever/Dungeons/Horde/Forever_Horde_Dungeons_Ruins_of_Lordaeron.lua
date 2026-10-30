@@ -23,7 +23,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 5725,
-            NonSkippableWaypoint = true,
             Note = { "UP_TOWER", "TAKE_ZEPPELIN_TIRISFAL_GLADES" },
             Coord = { x = -4648.55, y = 1321.88 },
             Range = 40.0,
@@ -33,7 +32,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 5725,
-            NonSkippableWaypoint = true,
             Note = { "UP_TOWER", "TAKE_ZEPPELIN_TIRISFAL_GLADES", "CONJURE_WATER" },
             Coord = { x = -4648.55, y = 1321.88 },
             Range = 40.0,
@@ -57,7 +55,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 5725,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_UNDERCITY" },
             Coord = { x = 240.75, y = 1877.57 },
             Range = 5,
@@ -66,7 +63,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 5725,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 239.14, y = 1749.54 },
             Range = 35.0,
@@ -75,7 +71,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 5725,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 255.64, y = 1724.7 },
             Range = 35.0,
@@ -84,7 +79,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 5725,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 240.68, y = 1706.97 },
             Range = 10.0,
@@ -93,7 +87,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 5725,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 241.06, y = 1660.12 },
             Range = 10.0,
@@ -102,7 +95,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 5725,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 257.08, y = 1623.38 },
             Range = 10.0,
@@ -111,7 +103,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 5725,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 244.51, y = 1598.73 },
             Range = 15.0,
@@ -120,7 +111,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 5725,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 266.3, y = 1567.2 },
             Range = 20.0,
@@ -137,7 +127,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95216,
-            NonSkippableWaypoint = true,
             Coord = { x = 344.0, y = 1423.8 },
             Range = 50.0,
             RaidIcon = 11835,
@@ -146,7 +135,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95216,
-            NonSkippableWaypoint = true,
             Coord = { x = 373.2, y = 1362.1 },
             Range = 50.0,
             RaidIcon = 11835,
@@ -162,7 +150,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92421,
-            NonSkippableWaypoint = true,
             Coord = { x = 415.4, y = 1389.9 },
             Range = 50.0,
             RaidIcon = 266484,
@@ -171,7 +158,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92421,
-            NonSkippableWaypoint = true,
             Coord = { x = 373.5, y = 1362.2 },
             Range = 50.0,
             RaidIcon = 266484,
@@ -180,7 +166,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92421,
-            NonSkippableWaypoint = true,
             Coord = { x = 341.4, y = 1434.8 },
             Range = 50.0,
             RaidIcon = 266484,
@@ -189,7 +174,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92421,
-            NonSkippableWaypoint = true,
             Coord = { x = 369.4, y = 1467.8 },
             Range = 50.0,
             RaidIcon = 266484,
@@ -198,7 +182,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92421,
-            NonSkippableWaypoint = true,
             Coord = { x = 427.9, y = 1413.7 },
             Range = 50.0,
             RaidIcon = 266484,
@@ -207,7 +190,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92421,
-            NonSkippableWaypoint = true,
             Coord = { x = 438.1, y = 1352.9 },
             Range = 50.0,
             RaidIcon = 266484,
@@ -216,7 +198,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92421,
-            NonSkippableWaypoint = true,
             Coord = { x = 396.1, y = 1308.8 },
             Range = 50.0,
             RaidIcon = 266484,
@@ -242,7 +223,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92422,
-            NonSkippableWaypoint = true,
             Note = { "LEAVE_UNDERCITY_SEWERS" },
             Coord = { x = 419.89, y = 1627.54 },
             Range = 50.0,
@@ -256,7 +236,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92422,
-            NonSkippableWaypoint = true,
             Note = { "LEAVE_UNDERCITY_SEWERS" },
             Coord = { x = 428.52, y = 1597.2 },
             Range = 10.0,
@@ -270,7 +249,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92422,
-            NonSkippableWaypoint = true,
             Note = { "LEAVE_UNDERCITY_SEWERS" },
             Coord = { x = 439.17, y = 1626.06 },
             Range = 10.0,
@@ -284,7 +262,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92422,
-            NonSkippableWaypoint = true,
             Note = { "LEAVE_UNDERCITY_SEWERS" },
             Coord = { x = 476.78, y = 1632.15 },
             Range = 10.0,
@@ -298,7 +275,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92422,
-            NonSkippableWaypoint = true,
             Note = { "LEAVE_UNDERCITY_SEWERS" },
             Coord = { x = 482.34, y = 1660.63 },
             Range = 10.0,
@@ -312,7 +288,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92422,
-            NonSkippableWaypoint = true,
             Note = { "LEAVE_UNDERCITY_SEWERS" },
             Coord = { x = 539.33, y = 1665.49 },
             Range = 15.0,
@@ -326,7 +301,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92422,
-            NonSkippableWaypoint = true,
             Note = { "LEAVE_UNDERCITY_SEWERS" },
             Coord = { x = 610.42, y = 1684.44 },
             Range = 35.0,
@@ -340,7 +314,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92422,
-            NonSkippableWaypoint = true,
             Note = { "LEAVE_UNDERCITY_SEWERS" },
             Coord = { x = 663.19, y = 1600.46 },
             Range = 35.0,
@@ -354,7 +327,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92422,
-            NonSkippableWaypoint = true,
             Note = { "LEAVE_UNDERCITY_SEWERS" },
             Coord = { x = 724.25, y = 1682.66 },
             Range = 50.0,
@@ -368,7 +340,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92422,
-            NonSkippableWaypoint = true,
             Coord = { x = 629.36, y = 1553.42 },
             Range = 50.0,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -380,7 +351,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92422,
-            NonSkippableWaypoint = true,
             Coord = { x = 1204.68, y = 1290.07 },
             Range = 5,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -392,7 +362,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92422,
-            NonSkippableWaypoint = true,
             Coord = { x = 1204.68, y = 1290.07 },
             Range = 50.0,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -403,7 +372,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92422,
-            NonSkippableWaypoint = true,
             Coord = { x = 1359.66, y = 864.19 },
             Range = 50.0,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -414,7 +382,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92422,
-            NonSkippableWaypoint = true,
             Coord = { x = 1359.66, y = 741.27 },
             Range = 50.0,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -425,7 +392,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92422,
-            NonSkippableWaypoint = true,
             Coord = { x = 1365.12, y = 607.15 },
             Range = 100.0,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -436,7 +402,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92422,
-            NonSkippableWaypoint = true,
             Coord = { x = 1538.58, y = 511.39 },
             Range = 5,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -622,7 +587,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95216,
-            NonSkippableWaypoint = true,
             Note = { "RETURN_UNDERCITY" },
             Coord = { x = 240.75, y = 1877.57 },
             Range = 5,
@@ -631,7 +595,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95216,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 239.14, y = 1749.54 },
             Range = 35.0,
@@ -640,7 +603,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95216,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 255.64, y = 1724.7 },
             Range = 35.0,
@@ -649,7 +611,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95216,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 240.68, y = 1706.97 },
             Range = 10.0,
@@ -658,7 +619,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95216,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 241.06, y = 1660.12 },
             Range = 10.0,
@@ -667,7 +627,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95216,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 257.08, y = 1623.38 },
             Range = 10.0,
@@ -676,7 +635,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95216,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 244.51, y = 1598.73 },
             Range = 15.0,
@@ -685,7 +643,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95216,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 266.3, y = 1567.2 },
             Range = 20.0,
@@ -694,7 +651,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95216,
-            NonSkippableWaypoint = true,
             Coord = { x = 344.0, y = 1423.8 },
             Range = 50.0,
             RaidIcon = 11835,
@@ -706,7 +662,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95216,
-            NonSkippableWaypoint = true,
             Coord = { x = 373.2, y = 1362.1 },
             Range = 50.0,
             RaidIcon = 11835,
@@ -776,7 +731,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92421,
-            NonSkippableWaypoint = true,
             Coord = { x = 344.0, y = 1423.8 },
             Range = 50.0,
             RaidIcon = 266484,
@@ -789,7 +743,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92421,
-            NonSkippableWaypoint = true,
             Coord = { x = 373.2, y = 1362.1 },
             Range = 50.0,
             RaidIcon = 266484,
@@ -802,7 +755,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92421,
-            NonSkippableWaypoint = true,
             Coord = { x = 371.6, y = 1465.6 },
             Range = 50.0,
             RaidIcon = 266484,
@@ -815,7 +767,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92421,
-            NonSkippableWaypoint = true,
             Coord = { x = 437.1, y = 1399.3 },
             Range = 50.0,
             RaidIcon = 266484,
@@ -828,7 +779,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92421,
-            NonSkippableWaypoint = true,
             Coord = { x = 430.6, y = 1342.1 },
             Range = 50.0,
             RaidIcon = 266484,
@@ -841,7 +791,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92421,
-            NonSkippableWaypoint = true,
             Coord = { x = 397.5, y = 1311.4 },
             Range = 50.0,
             RaidIcon = 266484,
@@ -865,7 +814,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92421,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_STITCHER_MAIN_HAND_UPGRADE_TRAIN_MACES" },
             Coord = { x = 344.0, y = 1423.8 },
             Range = 50.0,
@@ -880,7 +828,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92421,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_STITCHER_MAIN_HAND_UPGRADE_TRAIN_MACES" },
             Coord = { x = 373.2, y = 1362.1 },
             Range = 50.0,
@@ -895,7 +842,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92421,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_STITCHER_MAIN_HAND_UPGRADE_TRAIN_MACES" },
             Coord = { x = 371.6, y = 1465.6 },
             Range = 50.0,
@@ -910,7 +856,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92421,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_STITCHER_MAIN_HAND_UPGRADE_TRAIN_MACES" },
             Coord = { x = 437.1, y = 1399.3 },
             Range = 50.0,
@@ -925,7 +870,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92421,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_STITCHER_MAIN_HAND_UPGRADE_TRAIN_MACES" },
             Coord = { x = 430.6, y = 1342.1 },
             Range = 50.0,
@@ -940,7 +884,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 92421,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_STITCHER_MAIN_HAND_UPGRADE_TRAIN_MACES" },
             Coord = { x = 397.5, y = 1311.4 },
             Range = 50.0,
@@ -1011,7 +954,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 97291,
-            NonSkippableWaypoint = true,
             Coord = { x = 344.0, y = 1423.8 },
             Range = 50.0,
             RaidIcon = 2055,
@@ -1021,7 +963,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 97291,
-            NonSkippableWaypoint = true,
             Coord = { x = 373.2, y = 1362.1 },
             Range = 50.0,
             RaidIcon = 2055,

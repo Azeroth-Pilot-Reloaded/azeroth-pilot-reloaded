@@ -493,7 +493,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 780,
-            NonSkippableWaypoint = true,
             Coord = { x = -941, y = -3170 },
             Range = 8,
             Zone = 1412,
@@ -501,7 +500,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 780,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = -1017.63, y = -3126.97 },
             Range = 20,
@@ -530,7 +528,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 780,
-            NonSkippableWaypoint = true,
             Fillers = { [757] = { 1 } },
             Note = { "GO_INSIDE_CAVE" },
             Coord = { x = -1201.04, y = -3105.39 },
@@ -541,7 +538,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 780,
-            NonSkippableWaypoint = true,
             Fillers = { [757] = { 1 }, [1519] = { 1 } },
             Note = { "GO_INSIDE_CAVE" },
             Coord = { x = -1201.04, y = -3105.39 },
@@ -643,7 +639,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 780,
-            NonSkippableWaypoint = true,
             Coord = { x = -1029, y = -3116 },
             Range = 8,
             Zone = 1412,
@@ -651,7 +646,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 780,
-            NonSkippableWaypoint = true,
             Coord = { x = -941, y = -3170 },
             Range = 8,
             Zone = 1412,
@@ -704,7 +698,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 1520,
-            NonSkippableWaypoint = true,
             Coord = { x = -712.98, y = -3018.05 },
             Range = 20,
             Class = "SHAMAN",
@@ -861,7 +854,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 763,
-            NonSkippableWaypoint = true,
             Coord = { x = -445.31, y = -2341.62 },
             Range = 15,
             ZoneStepTrigger = { x = -445.31, y = -2341.62, mapID = 1412, Range = 15 },
@@ -1642,7 +1634,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 96130,
-            NonSkippableWaypoint = true,
             Fillers = { [766] = { 1, 2, 3, 4 }, [761] = { 1 } },
             Note = { "GO_INSIDE_CAVE" },
             Coord = { x = 297.8, y = -2398.5 },
@@ -1652,7 +1643,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 98430,
-            NonSkippableWaypoint = true,
             Fillers = { [745] = { 1, 2, 3 } },
             Coord = { x = 297.8, y = -2398.5 },
             Range = 20.0,
@@ -1661,7 +1651,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 98430,
-            NonSkippableWaypoint = true,
             Fillers = { [745] = { 1, 2, 3 } },
             Coord = { x = 395.8, y = -2339.3 },
             Range = 20.0,
@@ -1700,7 +1689,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 745,
-            NonSkippableWaypoint = true,
             Coord = { x = 286, y = -2420 },
             Range = 12,
             Hardcore = true,
@@ -1710,7 +1698,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 763,
-            NonSkippableWaypoint = true,
             Coord = { x = -445.31, y = -2341.62 },
             Range = 15,
             ZoneStepTrigger = { x = -445.31, y = -2341.62, mapID = 1412, Range = 15 },
@@ -2006,7 +1993,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 99411,
-            NonSkippableWaypoint = true,
             Fillers = { [99411] = { 1 } },
             Coord = { x = -347.7, y = -2364.91 },
             Range = 5,
@@ -2124,7 +2110,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 772,
-            NonSkippableWaypoint = true,
             Coord = { x = 236.2, y = -1616.7 },
             Range = 8,
             IsQuestOnQuest = 772,
@@ -2133,7 +2118,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 772,
-            NonSkippableWaypoint = true,
             Coord = { x = 258, y = -1557.2 },
             Range = 8,
             IsQuestOnQuest = 772,
@@ -2142,7 +2126,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 772,
-            NonSkippableWaypoint = true,
             Coord = { x = 323, y = -1542 },
             Range = 8,
             IsQuestOnQuest = 772,
@@ -2151,7 +2134,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 772,
-            NonSkippableWaypoint = true,
             Fillers = { [766] = { 1, 2, 3, 4 }, [761] = { 1 } },
             Note = { "GO_INSIDE_CAVE" },
             Coord = { x = 333.53, y = -1523.73 },
@@ -2180,7 +2162,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 773,
-            NonSkippableWaypoint = true,
             Coord = { x = 323, y = -1542 },
             Range = 8,
             IsQuestOnQuest = 773,
@@ -2189,7 +2170,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 773,
-            NonSkippableWaypoint = true,
             Note = { "USE_ELEVATOR" },
             Coord = { x = 186.8, y = -1309.4 },
             Range = 20,
@@ -2198,7 +2178,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 773,
-            NonSkippableWaypoint = true,
             Note = { "USE_ELEVATOR" },
             Coord = { x = 147.9, y = -1290.6 },
             Range = 20,
@@ -2220,7 +2199,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 773,
-            NonSkippableWaypoint = true,
             Coord = { x = 186.8, y = -1309.4 },
             Range = 20,
             Zone = 1456,
@@ -2228,7 +2206,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 773,
-            NonSkippableWaypoint = true,
             Coord = { x = 147.9, y = -1290.6 },
             Range = 20,
             Zone = 1456,
@@ -2302,7 +2279,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 763,
-            NonSkippableWaypoint = true,
             Coord = { x = -445.31, y = -2341.62 },
             Range = 15,
             ZoneStepTrigger = { x = -445.31, y = -2341.62, mapID = 1412, Range = 15 },
@@ -2341,7 +2317,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 746,
-            NonSkippableWaypoint = true,
             Coord = { x = -392.91, y = -2333.4 },
             Range = 5,
             IsQuestUncompleted = 761,
@@ -2350,7 +2325,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 746,
-            NonSkippableWaypoint = true,
             Coord = { x = -384.69, y = -2397.1 },
             Range = 5,
             IsQuestUncompleted = 761,
@@ -2359,7 +2333,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 746,
-            NonSkippableWaypoint = true,
             Coord = { x = -445.83, y = -2340.93 },
             Range = 5,
             IsQuestUncompleted = 761,
@@ -2399,7 +2372,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 746,
-            NonSkippableWaypoint = true,
             Coord = { x = -392.91, y = -2333.4 },
             Range = 5,
             Zone = 1412,
@@ -2407,7 +2379,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 746,
-            NonSkippableWaypoint = true,
             Coord = { x = -384.69, y = -2397.1 },
             Range = 5,
             Zone = 1412,
@@ -2704,7 +2675,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 759,
-            NonSkippableWaypoint = true,
             Coord = { x = 186.8, y = -1309.4 },
             Range = 10,
             Class = "HUNTER",
@@ -2713,7 +2683,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 759,
-            NonSkippableWaypoint = true,
             Coord = { x = 147.9, y = -1290.6 },
             Range = 10,
             Class = "HUNTER",
@@ -2722,7 +2691,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 6089,
-            NonSkippableWaypoint = true,
             Coord = { x = 1.3, y = -1333.2 },
             Range = 6,
             Class = "HUNTER",
@@ -2732,7 +2700,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 6089,
-            NonSkippableWaypoint = true,
             Coord = { x = -63.3, y = -1397.2 },
             Range = 6,
             Class = "HUNTER",
@@ -2742,7 +2709,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 6089,
-            NonSkippableWaypoint = true,
             Coord = { x = -82.45, y = -1472.07 },
             Range = 10,
             Class = "HUNTER",
@@ -2787,7 +2753,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 759,
-            NonSkippableWaypoint = true,
             Coord = { x = -445.31, y = -2341.62 },
             Range = 20,
             Class = { "HUNTER", "DRUID" },
@@ -2807,7 +2772,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 751,
-            NonSkippableWaypoint = true,
             Coord = { x = -399.07, y = -2378.95 },
             Range = 5,
             Class = "HUNTER",
@@ -2884,7 +2848,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 764,
-            NonSkippableWaypoint = true,
             Coord = { x = -1112.16, y = -1892.6 },
             Range = 20.0,
             Zone = 1412,
@@ -2953,7 +2916,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 763,
-            NonSkippableWaypoint = true,
             Coord = { x = -445.31, y = -2341.62 },
             Range = 15,
             ZoneStepTrigger = { x = -445.31, y = -2341.62, mapID = 1412, Range = 15 },
@@ -2993,7 +2955,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 76156,
-            NonSkippableWaypoint = true,
             Coord = { x = 38.32, y = -1300.48 },
             Range = 10,
             ZoneStepTrigger = { x = 38.32, y = -1300.48, mapID = 1456, Range = 10 },
@@ -3003,7 +2964,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 76156,
-            NonSkippableWaypoint = true,
             Coord = { x = -110.5, y = -970.7 },
             Range = 10,
             ZoneStepTrigger = { x = -110.5, y = -970.7, mapID = 1456, Range = 10 },
@@ -3013,7 +2973,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 76156,
-            NonSkippableWaypoint = true,
             Coord = { x = -76.9, y = -1026 },
             Range = 10,
             ZoneStepTrigger = { x = -76.9, y = -1026, mapID = 1456, Range = 10 },
@@ -3023,7 +2982,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 76156,
-            NonSkippableWaypoint = true,
             Coord = { x = -48.8, y = -1037.3 },
             Range = 10,
             ZoneStepTrigger = { x = -48.8, y = -1037.3, mapID = 1456, Range = 10 },
@@ -3033,7 +2991,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 76156,
-            NonSkippableWaypoint = true,
             Coord = { x = -7.3, y = -1089.6 },
             Range = 10,
             ZoneStepTrigger = { x = -7.3, y = -1089.6, mapID = 1456, Range = 10 },
@@ -3057,7 +3014,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 860,
-            NonSkippableWaypoint = true,
             Coord = { x = 1.3, y = -1333.2 },
             Range = 6,
             AnyOf = { { IsQuestReadyForTurnIn = 861 }, { IsQuestCompleted = 861 } },
@@ -3067,7 +3023,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 860,
-            NonSkippableWaypoint = true,
             Coord = { x = -63.3, y = -1397.2 },
             Range = 6,
             AnyOf = { { IsQuestReadyForTurnIn = 861 }, { IsQuestCompleted = 861 } },
@@ -3133,7 +3088,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 886,
-            NonSkippableWaypoint = true,
             Coord = { x = -124, y = -1136.5 },
             Range = 6,
             Class = "DRUID",
@@ -3142,7 +3096,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 886,
-            NonSkippableWaypoint = true,
             Coord = { x = -208.5, y = -1086.7 },
             Range = 6,
             Class = "DRUID",
@@ -3151,7 +3104,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 886,
-            NonSkippableWaypoint = true,
             Coord = { x = -235.1, y = -1063.6 },
             Range = 6,
             Class = "DRUID",
@@ -3251,7 +3203,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 5932,
-            NonSkippableWaypoint = true,
             Coord = { x = 1, y = -1108.2 },
             Range = 6,
             Class = "DRUID",
@@ -3261,7 +3212,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 5932,
-            NonSkippableWaypoint = true,
             Coord = { x = -66.5, y = -1089.7 },
             Range = 6,
             Class = "DRUID",
@@ -3271,7 +3221,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 5932,
-            NonSkippableWaypoint = true,
             Coord = { x = -209.4, y = -1044.8 },
             Range = 6,
             Class = "DRUID",
@@ -3340,7 +3289,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 776,
-            NonSkippableWaypoint = true,
             Coord = { x = 186.8, y = -1309.4 },
             Range = 20,
             Zone = 1456,
@@ -3348,7 +3296,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 776,
-            NonSkippableWaypoint = true,
             Coord = { x = 147.9, y = -1290.6 },
             Range = 20,
             Zone = 1456,
@@ -3450,7 +3397,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 776,
-            NonSkippableWaypoint = true,
             Coord = { x = 147.9, y = -1290.6 },
             Range = 15,
             ZoneStepTrigger = { x = 147.9, y = -1290.6, mapID = 1456, Range = 15 },
@@ -3631,7 +3577,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 860,
-            NonSkippableWaypoint = true,
             Coord = { x = 1.3, y = -1333.2 },
             Range = 6,
             AnyOf = { { IsQuestReadyForTurnIn = 861 }, { IsQuestCompleted = 861 } },
@@ -3640,7 +3585,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 860,
-            NonSkippableWaypoint = true,
             Coord = { x = -63.3, y = -1397.2 },
             Range = 6,
             AnyOf = { { IsQuestReadyForTurnIn = 861 }, { IsQuestCompleted = 861 } },
@@ -3662,7 +3606,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 770,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 147.9, y = -1290.6 },
             Range = 10,
@@ -3672,7 +3615,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 770,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 186.8, y = -1309.4 },
             Range = 10,
@@ -3682,7 +3624,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 763,
-            NonSkippableWaypoint = true,
             Coord = { x = -445.31, y = -2341.62 },
             Range = 15,
             ZoneStepTrigger = { x = -445.31, y = -2341.62, mapID = 1412, Range = 15 },
@@ -3736,7 +3677,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 860,
-            NonSkippableWaypoint = true,
             Coord = { x = -1527.78, y = -2341.62 },
             Range = 20,
             Class = { "HUNTER", "SHAMAN", "WARRIOR" },
@@ -3753,7 +3693,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 6002,
-            NonSkippableWaypoint = true,
             Coord = { x = -1527.78, y = -2341.62 },
             Range = 20,
             Class = "DRUID",
@@ -3828,7 +3767,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 6002,
-            NonSkippableWaypoint = true,
             Coord = { x = 1, y = -1108.2 },
             Range = 6,
             Class = "DRUID",
@@ -3838,7 +3776,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 6002,
-            NonSkippableWaypoint = true,
             Coord = { x = -66.5, y = -1089.7 },
             Range = 6,
             Class = "DRUID",
@@ -3848,7 +3785,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 6002,
-            NonSkippableWaypoint = true,
             Coord = { x = -209.4, y = -1044.8 },
             Range = 6,
             Class = "DRUID",
@@ -3858,7 +3794,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 6002,
-            NonSkippableWaypoint = true,
             Coord = { x = -230.66, y = -1059.79 },
             Range = 20,
             Class = "DRUID",
@@ -3889,7 +3824,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 870,
-            NonSkippableWaypoint = true,
             Coord = { x = -2672.76, y = -544.77 },
             Range = 20,
             ZoneStepTrigger = { x = -2672.76, y = -544.77, mapID = 1413, Range = 20 },
@@ -4006,7 +3940,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 1524,
-            NonSkippableWaypoint = true,
             Note = { "BEWARE_FALL_DAMAGE" },
             Coord = { x = -3905.13, y = -228.41 },
             Range = 10.0,
@@ -4016,7 +3949,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 1524,
-            NonSkippableWaypoint = true,
             Note = { "BEWARE_FALL_DAMAGE" },
             Coord = { x = -3899.31, y = -241.45 },
             Range = 8.0,
@@ -4026,7 +3958,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 1524,
-            NonSkippableWaypoint = true,
             Note = { "BEWARE_FALL_DAMAGE" },
             Coord = { x = -3899.31, y = -241.45 },
             Range = 8.0,
@@ -4036,7 +3967,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 1524,
-            NonSkippableWaypoint = true,
             Note = { "BEWARE_FALL_DAMAGE" },
             Coord = { x = -3906.71, y = -270.71 },
             Range = 8.0,
@@ -4046,7 +3976,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 1524,
-            NonSkippableWaypoint = true,
             Note = { "BEWARE_FALL_DAMAGE" },
             Coord = { x = -3910.94, y = -247.45 },
             Range = 8.0,
@@ -4056,7 +3985,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 1524,
-            NonSkippableWaypoint = true,
             Note = { "BEWARE_FALL_DAMAGE" },
             Coord = { x = -3931.56, y = -240.75 },
             Range = 8.0,
@@ -4066,7 +3994,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 1524,
-            NonSkippableWaypoint = true,
             Note = { "BEWARE_FALL_DAMAGE" },
             Coord = { x = -3964.35, y = -242.51 },
             Range = 8.0,
@@ -4076,7 +4003,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 1524,
-            NonSkippableWaypoint = true,
             Note = { "BEWARE_FALL_DAMAGE" },
             Coord = { x = -3974.39, y = -228.76 },
             Range = 8.0,
@@ -4086,7 +4012,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 1524,
-            NonSkippableWaypoint = true,
             Note = { "BEWARE_FALL_DAMAGE" },
             Coord = { x = -4020.92, y = -219.95 },
             Range = 8.0,
@@ -4096,7 +4021,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 1524,
-            NonSkippableWaypoint = true,
             Note = { "BEWARE_FALL_DAMAGE" },
             Coord = { x = -4034.67, y = -232.64 },
             Range = 8.0,
@@ -4106,7 +4030,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 1524,
-            NonSkippableWaypoint = true,
             Note = { "BEWARE_FALL_DAMAGE" },
             Coord = { x = -4033.08, y = -255.91 },
             Range = 10.0,

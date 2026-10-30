@@ -140,7 +140,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1086,
-            NonSkippableWaypoint = true,
             Coord = { x = 1, y = -1108.2 },
             Range = 6,
             AnyOf = { { MinLevel = 26, SkipForLvl = 28, DontHaveSpell = 1850 }, { MinLevel = 28, SkipForLvl = 30, DontHaveSpell = 3029 }, { MinLevel = 30, DontHaveSpell = 783 } },
@@ -153,7 +152,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1086,
-            NonSkippableWaypoint = true,
             Coord = { x = -66.5, y = -1089.7 },
             Range = 6,
             AnyOf = { { MinLevel = 26, SkipForLvl = 28, DontHaveSpell = 1850 }, { MinLevel = 28, SkipForLvl = 30, DontHaveSpell = 3029 }, { MinLevel = 30, DontHaveSpell = 783 } },
@@ -166,7 +164,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1086,
-            NonSkippableWaypoint = true,
             Coord = { x = -209.4, y = -1044.8 },
             Range = 6,
             AnyOf = { { MinLevel = 26, SkipForLvl = 28, DontHaveSpell = 1850 }, { MinLevel = 28, SkipForLvl = 30, DontHaveSpell = 3029 }, { MinLevel = 30, DontHaveSpell = 783 } },
@@ -211,7 +208,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1131,
-            NonSkippableWaypoint = true,
             Coord = { x = 1.3, y = -1333.2 },
             Range = 6,
             IsQuestNotOnQuest = 1131,
@@ -222,7 +218,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1131,
-            NonSkippableWaypoint = true,
             Coord = { x = -63.3, y = -1397.2 },
             Range = 6,
             IsQuestNotOnQuest = 1131,
@@ -324,7 +319,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1086,
-            NonSkippableWaypoint = true,
             Note = { "GO_INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 28.14, 32.97),
             Range = 20,
@@ -333,7 +327,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1086,
-            NonSkippableWaypoint = true,
             Note = { "GO_INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 28.51, 28.95),
             Range = 10,
@@ -548,7 +541,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 857,
-            NonSkippableWaypoint = true,
             Note = { "USE_REMAINING_BLOOD_SHARDS_BUFFS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 44.55, 59.27),
             Range = 5,
@@ -560,7 +552,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 857,
-            NonSkippableWaypoint = true,
             Note = { "USE_REMAINING_BLOOD_SHARDS_BUFFS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 44.55, 59.27),
             Range = 5,
@@ -574,7 +565,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1534,
-            NonSkippableWaypoint = true,
             Note = { "USE_REMAINING_BLOOD_SHARDS_BUFFS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 44.55, 59.27),
             Range = 5,
@@ -588,7 +578,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 857,
-            NonSkippableWaypoint = true,
             Note = { "USE_REMAINING_BLOOD_SHARDS_BUFFS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 44.55, 59.27),
             Range = 5,
@@ -602,7 +591,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 857,
-            NonSkippableWaypoint = true,
             Note = { "USE_REMAINING_BLOOD_SHARDS_BUFFS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 44.55, 59.27),
             Range = 5,
@@ -615,7 +603,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1534,
-            NonSkippableWaypoint = true,
             Note = { "USE_REMAINING_BLOOD_SHARDS_BUFFS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 44.55, 59.27),
             Range = 5,
@@ -628,7 +615,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 857,
-            NonSkippableWaypoint = true,
             Note = { "USE_REMAINING_BLOOD_SHARDS_BUFFS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 44.55, 59.27),
             Range = 5,
@@ -641,7 +627,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1534,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 43.84, 77.28),
             Range = 20,
             Class = "SHAMAN",
@@ -650,7 +635,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1534,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 43.62, 77.29),
             Range = 20,
             Class = "SHAMAN",
@@ -659,7 +643,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1534,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 43.42, 77.41),
             Range = 15,
             Class = "SHAMAN",
@@ -682,7 +665,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 857,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 48.85, 84.88),
             Range = 20,
             Zone = 1413,
@@ -696,7 +678,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 857,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 49.01, 84.48),
             Range = 8,
@@ -705,7 +686,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 857,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 49.06, 84.59),
             Range = 8,
@@ -714,7 +694,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 857,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 49.38, 84.48),
             Range = 8,
@@ -723,7 +702,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 857,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 49.53, 84.42),
             Range = 8,
@@ -732,7 +710,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 857,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 49.43, 84.28),
             Range = 6,
@@ -748,7 +725,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 857,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_BUILDING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 49.43, 84.28),
             Range = 8,
@@ -757,7 +733,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 857,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_BUILDING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 49.53, 84.42),
             Range = 8,
@@ -766,7 +741,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 857,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_BUILDING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 49.38, 84.48),
             Range = 8,
@@ -775,7 +749,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 857,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_BUILDING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 49.06, 84.59),
             Range = 8,
@@ -784,7 +757,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 857,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_BUILDING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 49.01, 84.48),
             Range = 8,
@@ -793,7 +765,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 857,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_BUILDING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 48.75, 84.63),
             Range = 20,
@@ -808,7 +779,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 5881,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 44.13, 91.44),
             Range = 20,
             Zone = 1413,
@@ -829,7 +799,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 4542,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR", "NOT_FALL_OFF_DIE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 31.97, 23.76),
             Range = 20,
@@ -848,7 +817,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 4542,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 46.73, 48.27),
             Range = 20,
             Button = { ["4881"] = 12564 },
@@ -857,7 +825,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 4542,
-            NonSkippableWaypoint = true,
             Note = { "UP_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 45.91, 49.91),
             Range = 20,
@@ -953,7 +920,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1149,
-            NonSkippableWaypoint = true,
             Fillers = { [4841] = { 1, 2, 3 } },
             Note = { "GO_INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 44.12, 37.22),
@@ -963,7 +929,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1149,
-            NonSkippableWaypoint = true,
             Fillers = { [4841] = { 1, 2, 3 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 44.44, 36.32),
             Range = 12,
@@ -972,7 +937,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1149,
-            NonSkippableWaypoint = true,
             Fillers = { [4841] = { 1, 2, 3 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 43.14, 35.19),
             Range = 12,
@@ -981,7 +945,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1149,
-            NonSkippableWaypoint = true,
             Fillers = { [4841] = { 1, 2, 3 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 42.11, 34.54),
             Range = 12,
@@ -990,7 +953,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1149,
-            NonSkippableWaypoint = true,
             Fillers = { [4841] = { 1, 2, 3 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 42.01, 31.47),
             Range = 20,
@@ -1025,7 +987,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1150,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 54.57, 44.36),
             Range = 12,
             IsQuestCompleted = 1149,
@@ -1037,7 +998,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1150,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 53.71, 42.59),
             Range = 10,
             IsQuestCompleted = 1149,
@@ -1049,7 +1009,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1149,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 54.57, 44.36),
             Range = 12,
             Zone = 1441,
@@ -1057,7 +1016,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1149,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 53.71, 42.59),
             Range = 10,
             Zone = 1441,
@@ -1065,7 +1023,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1149,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 53.95, 41.49),
             Range = 10,
             Zone = 1441,
@@ -1115,7 +1072,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 4841,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 46.73, 48.27),
             Range = 20,
             Zone = 1441,
@@ -1216,7 +1172,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 4881,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 27.59, 49.86),
             Range = 12,
@@ -1225,7 +1180,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 4881,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 28.65, 51.3),
             Range = 12,
@@ -1234,7 +1188,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 4881,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 27.29, 51.3),
             Range = 12,
@@ -1255,7 +1208,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 4881,
-            NonSkippableWaypoint = true,
             Note = { "BACK_CAVE", "LOOT_FOOD_SUMMON_ENEMY", "CAREFUL_MULTIPLE_PACKS_HARPIES_SPAWN_ONE_ANOTHER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 25.84, 54.78),
             Range = 5,
@@ -1272,7 +1224,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 4881,
-            NonSkippableWaypoint = true,
             Fillers = { [1131] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 14.41, 32.44),
             Range = 20,
@@ -1281,7 +1232,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 4881,
-            NonSkippableWaypoint = true,
             Fillers = { [1131] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 14.04, 32.37),
             Range = 12,
@@ -1290,7 +1240,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 4881,
-            NonSkippableWaypoint = true,
             Fillers = { [1131] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 14.04, 32.37),
             Range = 20,
@@ -1299,7 +1248,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 4881,
-            NonSkippableWaypoint = true,
             Fillers = { [4767] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 13.18, 39.55),
             Range = 15,
@@ -1308,7 +1256,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 4881,
-            NonSkippableWaypoint = true,
             Fillers = { [4767] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 13.52, 40.27),
             Range = 15,
@@ -1317,7 +1264,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 4881,
-            NonSkippableWaypoint = true,
             Fillers = { [4767] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 14.01, 40.27),
             Range = 15,
@@ -1326,7 +1272,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 4881,
-            NonSkippableWaypoint = true,
             Fillers = { [4767] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 14.92, 39.63),
             Range = 15,
@@ -1335,7 +1280,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 4881,
-            NonSkippableWaypoint = true,
             Fillers = { [4767] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 16.46, 41.09),
             Range = 20,
@@ -1344,7 +1288,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 4881,
-            NonSkippableWaypoint = true,
             Fillers = { [4767] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 17.89, 40.57),
             Range = 20,
@@ -1703,7 +1646,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1131,
-            NonSkippableWaypoint = true,
             Coord = { x = 1.3, y = -1333.2 },
             Range = 6,
             ZoneStepTrigger = { x = 1.3, y = -1333.2, Range = 6, mapID = 1456 },
@@ -1714,7 +1656,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1131,
-            NonSkippableWaypoint = true,
             Coord = { x = -63.3, y = -1397.2 },
             Range = 6,
             ZoneStepTrigger = { x = -63.3, y = -1397.2, Range = 6, mapID = 1456 },
@@ -1795,7 +1736,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 5062,
-            NonSkippableWaypoint = true,
             Coord = { x = 1, y = -1108.2 },
             Range = 6,
             ZoneStepTrigger = { x = 1, y = -1108.2, Range = 6, mapID = 1456 },
@@ -1806,7 +1746,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 5062,
-            NonSkippableWaypoint = true,
             Coord = { x = -66.5, y = -1089.7 },
             Range = 6,
             ZoneStepTrigger = { x = -66.5, y = -1089.7, Range = 6, mapID = 1456 },
@@ -1817,7 +1756,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 5062,
-            NonSkippableWaypoint = true,
             Coord = { x = -209.4, y = -1044.8 },
             Range = 6,
             ZoneStepTrigger = { x = -209.4, y = -1044.8, Range = 6, mapID = 1456 },
@@ -2110,7 +2048,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1150,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 54.57, 44.36),
             Range = 12,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1441, 54.57, 44.36, 12),
@@ -2121,7 +2058,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1150,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 53.71, 42.59),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1441, 53.71, 42.59, 10),
@@ -2153,7 +2089,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 5088,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 31.47, 36.71),
             Range = 20,
             SkipForLvl = 34,
@@ -2162,7 +2097,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 5088,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 33.08, 35.33),
             Range = 20,
             SkipForLvl = 34,
@@ -2171,7 +2105,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 5088,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 32.78, 32.24),
             Range = 20,
             SkipForLvl = 34,
@@ -2180,7 +2113,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 5088,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 32.03, 31.36),
             Range = 20,
             SkipForLvl = 34,
@@ -2189,7 +2121,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 5088,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 32.37, 28.64),
             Range = 20,
             SkipForLvl = 34,
@@ -2198,7 +2129,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 5088,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 32.6, 27.51),
             Range = 20,
             SkipForLvl = 34,
@@ -2207,7 +2137,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 5088,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 34.87, 31.76),
             Range = 20,
             SkipForLvl = 34,
@@ -2216,7 +2145,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 5088,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 34.15, 35.77),
             Range = 20,
             SkipForLvl = 34,
@@ -2225,7 +2153,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 5088,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 33.32, 36.24),
             Range = 20,
             SkipForLvl = 34,
@@ -2258,7 +2185,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 5088,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 35.68, 39.25),
             Range = 20,
             SkipForLvl = 34,
@@ -2267,7 +2193,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 5088,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 34.32, 35.74),
             Range = 20,
             SkipForLvl = 34,
@@ -2276,7 +2201,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 5088,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 35.56, 30.94),
             Range = 20,
             SkipForLvl = 34,
@@ -2285,7 +2209,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 5088,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 36.97, 31.97),
             Range = 20,
             SkipForLvl = 34,
@@ -2378,7 +2301,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 5064,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 89.24, 41.17),
             Range = 20,
             Zone = 1444,
@@ -2491,7 +2413,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1151,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 54.57, 44.36),
             Range = 12,
             IsQuestOnQuest = 1151,
@@ -2502,7 +2423,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1151,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 53.71, 42.59),
             Range = 10,
             IsQuestOnQuest = 1151,
@@ -2533,7 +2453,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1145,
-            NonSkippableWaypoint = true,
             Coord = { x = -3538.85, y = -5805.57 },
             Range = 20,
             Class = "WARRIOR",
@@ -2542,7 +2461,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1111,
-            NonSkippableWaypoint = true,
             Coord = { x = -3538.85, y = -5805.57 },
             Range = 20,
             ClassNot = "WARRIOR",
@@ -2591,7 +2509,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1145,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 75.44, 97.37),
             Range = 20,
             Class = "WARRIOR",
@@ -2601,7 +2518,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1111,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 75.44, 97.37),
             Range = 20,
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK" },
@@ -2611,7 +2527,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1145,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 51.6, 25.44),
             Range = 20,
             Class = "WARRIOR",
@@ -2621,7 +2536,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1111,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 51.6, 25.44),
             Range = 20,
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK" },
@@ -2763,7 +2677,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1718,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 65.09, 47.81),
             Range = 20,
             Class = "WARRIOR",
@@ -2772,7 +2685,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1718,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 68.61, 49.16),
             Range = 20,
             Class = "WARRIOR",
@@ -2818,7 +2730,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1145,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 62.81, 37.91),
             Range = 20,
             Class = "WARRIOR",
@@ -2936,7 +2847,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Waypoint = 1145,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 47.52, 46.73),
             Range = 5,
@@ -3231,7 +3141,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
         },
         {
             Waypoint = 1151,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 54.57, 44.36),
             Range = 12,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1441, 54.57, 44.36, 12),
@@ -3242,7 +3151,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
         },
         {
             Waypoint = 1531,
-            NonSkippableWaypoint = true,
             Note = { "UP_RAMP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 54.7, 44.4),
             Range = 20,
@@ -3253,7 +3161,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
         },
         {
             Waypoint = 1151,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 53.71, 42.59),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1441, 53.71, 42.59, 10),
@@ -3315,7 +3222,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
         },
         {
             Waypoint = 1114,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 78.07, 77.13),
             Range = 5,
             Zone = 1441,
@@ -3359,7 +3265,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
         },
         {
             Waypoint = 1147,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 69.66, 85.97),
             Range = 5,
             Zone = 1441,
@@ -3467,7 +3372,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
         },
         {
             Waypoint = 1104,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 78.07, 77.13),
             Range = 5,
             Zone = 1441,
@@ -3475,7 +3379,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
         },
         {
             Waypoint = 1104,
-            NonSkippableWaypoint = true,
             Coord = { x = -3871.49, y = -6228.85 },
             Range = 5,
             Zone = 1441,
@@ -3519,7 +3422,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
         },
         {
             Waypoint = 1148,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             ZoneStepTrigger = { x = -3700.9, y = -6753.2, Range = 8 },
@@ -3529,7 +3431,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
         },
         {
             Waypoint = 1148,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             ZoneStepTrigger = { x = -3755, y = -6801.5, Range = 8 },
@@ -3539,7 +3440,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
         },
         {
             Waypoint = 1148,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 75.44, 97.37),
             Range = 20,
             SkipInZones = { 1446 },
@@ -3548,7 +3448,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
         },
         {
             Waypoint = 1148,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             ZoneStepTrigger = { x = -3752.1, y = -6842.5, Range = 8 },
@@ -3558,7 +3457,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
         },
         {
             Waypoint = 1148,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             ZoneStepTrigger = { x = -3772.6, y = -6880.6, Range = 8 },
@@ -3568,7 +3466,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
         },
         {
             Waypoint = 1148,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             ZoneStepTrigger = { x = -3746.2, y = -6911.3, Range = 8 },
@@ -3578,7 +3475,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
         },
         {
             Waypoint = 1148,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             ZoneStepTrigger = { x = -3709.6, y = -6959.6, Range = 8 },
@@ -3588,7 +3484,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
         },
         {
             Waypoint = 1148,
-            NonSkippableWaypoint = true,
             Coord = { x = -3676, y = -7043.1 },
             Range = 8,
             ZoneStepTrigger = { x = -3676, y = -7043.1, Range = 8 },
@@ -3598,7 +3493,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
         },
         {
             Waypoint = 1148,
-            NonSkippableWaypoint = true,
             Coord = { x = -3695, y = -7079.7 },
             Range = 8,
             ZoneStepTrigger = { x = -3695, y = -7079.7, Range = 8 },
@@ -3608,7 +3502,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
         },
         {
             Waypoint = 1148,
-            NonSkippableWaypoint = true,
             Coord = { x = -3759.2, y = -7076.3 },
             Range = 8,
             ZoneStepTrigger = { x = -3759.2, y = -7076.3, Range = 8 },
@@ -3618,7 +3511,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
         },
         {
             Waypoint = 1148,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 51.6, 25.44),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1446, 51.6, 25.44, 25),
@@ -3817,7 +3709,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
         },
         {
             Waypoint = 1115,
-            NonSkippableWaypoint = true,
             Coord = { x = 501.72, y = -14452.971 },
             Range = 5,
             Zone = 1434,

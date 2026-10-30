@@ -290,7 +290,6 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
         },
         {
             Waypoint = 6562,
-            NonSkippableWaypoint = true,
             Note = { "AVOID_HOSTILE_GUARDS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 35.58, 56.31),
             Range = 20,
@@ -299,7 +298,6 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
         },
         {
             Waypoint = 6562,
-            NonSkippableWaypoint = true,
             Note = { "AVOID_HOSTILE_GUARDS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 34.14, 53.51),
             Range = 20,
@@ -308,7 +306,6 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
         },
         {
             Waypoint = 6562,
-            NonSkippableWaypoint = true,
             Note = { "AVOID_HOSTILE_GUARDS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 31.73, 51.69),
             Range = 20,
@@ -327,7 +324,6 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
         },
         {
             Waypoint = 6562,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 12.24, 33.8),
             Range = 20,
             Zone = 1440,
@@ -341,7 +337,6 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
         },
         {
             Waypoint = 6562,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 11.56, 34.29),
             Range = 5,
             Zone = 1440,
@@ -349,7 +344,6 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
         },
         {
             Waypoint = 6562,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 11.9, 34.53),
             Range = 5,
             Zone = 1440,
@@ -395,7 +389,6 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
         },
         {
             Waypoint = 216,
-            NonSkippableWaypoint = true,
             Note = { "AVOID_HOSTILE_GUARDS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 36.81, 33.48),
             Range = 20,
@@ -404,7 +397,6 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
         },
         {
             Waypoint = 6482,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 37.42, 32.35),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1440, 37.42, 32.35, 15),
@@ -414,7 +406,6 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
         },
         {
             Waypoint = 6482,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 38.41, 30.57),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1440, 38.41, 30.57, 10),
@@ -424,7 +415,6 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
         },
         {
             Waypoint = 6462,
-            NonSkippableWaypoint = true,
             Fillers = { [216] = { 2, 1 } },
             Note = { "INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 38.67, 30.62),
@@ -465,7 +455,6 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
         },
         {
             Waypoint = 1195,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 58.03, 55.87),
             Range = 20,
             IsQuestOnQuest = 1195,
@@ -509,7 +498,6 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
         },
         {
             Waypoint = 6441,
-            NonSkippableWaypoint = true,
             Note = { "CAREFUL_LEVEL_35_WANDERING_PROTECTOR_PVP_ELITE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 62.99, 44.16),
             Range = 20,
@@ -519,7 +507,6 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
         },
         {
             Waypoint = 6503,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 64.88, 43.81),
             Range = 20,
             IsQuestOnQuest = 6441,
@@ -528,7 +515,6 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
         },
         {
             Waypoint = 6503,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 67.04, 50.73),
             Range = 20,
             IsQuestOnQuest = 6441,
@@ -696,7 +682,6 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
         },
         {
             Waypoint = 6564,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1414, 43.89, 35.23),
             Range = 20,
             Class = "ROGUE",
@@ -724,7 +709,6 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
         },
         {
             Waypoint = 6564,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1414, 44.36, 34.86),
             Range = 5,
             Class = "ROGUE",
@@ -759,7 +743,6 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
         },
         {
             Waypoint = 1195,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1414, 44.36, 34.86),
             Range = 5,
             Class = "ROGUE",
@@ -768,7 +751,6 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
         },
         {
             Waypoint = 1195,
-            NonSkippableWaypoint = true,
             Note = { "RETRACE_UNDERWATER_ENTRANCE_TUNNEL_CLIMB_STAIRS_SHORE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1414, 43.89, 35.23),
             Range = 20,
@@ -860,7 +842,6 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
         },
         {
             Waypoint = 1195,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 47.52, 46.73),
             Range = 5,

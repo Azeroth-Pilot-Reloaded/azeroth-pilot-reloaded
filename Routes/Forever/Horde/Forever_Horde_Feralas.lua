@@ -182,7 +182,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2978,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 75, 35.15),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1444, 75, 35.15, 15),
@@ -193,7 +192,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2978,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 76.29, 32.9),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1444, 76.29, 32.9, 15),
@@ -485,7 +483,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 2741,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 54.1, 68.24),
             Range = 15,
             IsQuestUncompleted = 2741,
@@ -716,7 +713,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 1205,
-            NonSkippableWaypoint = true,
             Coord = { x = 1.3, y = -1333.2 },
             Range = 6,
             IsQuestOnQuest = 1205,
@@ -727,7 +723,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 1205,
-            NonSkippableWaypoint = true,
             Coord = { x = -63.3, y = -1397.2 },
             Range = 6,
             IsQuestOnQuest = 1205,
@@ -896,7 +891,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 3121,
-            NonSkippableWaypoint = true,
             Coord = { x = -4682, y = 2032 },
             Range = 8,
             AnyOf = { { MinLevel = 44, SkipForLvl = 46, DontHaveSpell = 14285 }, { MinLevel = 46, DontHaveSpell = 14304 } },
@@ -909,7 +903,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 3121,
-            NonSkippableWaypoint = true,
             Coord = { x = -4705, y = 2073 },
             Range = 8,
             AnyOf = { { MinLevel = 44, SkipForLvl = 46, DontHaveSpell = 14285 }, { MinLevel = 46, DontHaveSpell = 14304 } },
@@ -922,7 +915,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 3121,
-            NonSkippableWaypoint = true,
             Coord = { x = -4661, y = 2089 },
             Range = 8,
             AnyOf = { { MinLevel = 44, SkipForLvl = 46, DontHaveSpell = 14285 }, { MinLevel = 46, DontHaveSpell = 14304 } },
@@ -935,7 +927,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 3121,
-            NonSkippableWaypoint = true,
             Coord = { x = -4645, y = 2059 },
             Range = 8,
             AnyOf = { { MinLevel = 44, SkipForLvl = 46, DontHaveSpell = 14285 }, { MinLevel = 46, DontHaveSpell = 14304 } },
@@ -948,7 +939,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 3121,
-            NonSkippableWaypoint = true,
             Coord = { x = -4616, y = 2057 },
             Range = 5,
             AnyOf = { { MinLevel = 44, SkipForLvl = 46, DontHaveSpell = 14285 }, { MinLevel = 46, DontHaveSpell = 14304 } },
@@ -961,7 +951,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 3121,
-            NonSkippableWaypoint = true,
             Coord = { x = -4604, y = 2078 },
             Range = 5,
             AnyOf = { { MinLevel = 44, SkipForLvl = 46, DontHaveSpell = 14285 }, { MinLevel = 46, DontHaveSpell = 14304 } },
@@ -1008,7 +997,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 3121,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 78.11, 38.46),
             Range = 5,
             Class = "HUNTER",
@@ -1102,7 +1090,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 3122,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 47.52, 46.73),
             Range = 5,
@@ -1137,7 +1124,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 3122,
-            NonSkippableWaypoint = true,
             Coord = { x = -4417.1, y = 1480.6 },
             Range = 15,
             OnlyInZones = { 1454 },
@@ -1146,7 +1132,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 3122,
-            NonSkippableWaypoint = true,
             Coord = { x = -4412.5, y = 1436.4 },
             Range = 15,
             OnlyInZones = { 1454 },
@@ -1155,7 +1140,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 3122,
-            NonSkippableWaypoint = true,
             Coord = { x = -4363.9, y = 1420.2 },
             Range = 15,
             OnlyInZones = { 1454 },
@@ -1164,7 +1148,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 3122,
-            NonSkippableWaypoint = true,
             Coord = { x = -4370, y = 1382.2 },
             Range = 15,
             OnlyInZones = { 1454 },
@@ -1173,7 +1156,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 3122,
-            NonSkippableWaypoint = true,
             Coord = { x = -4636.4, y = 1338.7 },
             Range = 5,
             OnlyInZones = { 1411 },
@@ -1183,7 +1165,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
         },
         {
             Waypoint = 3122,
-            NonSkippableWaypoint = true,
             Coord = { x = -4645.1, y = 1345 },
             Range = 5,
             OnlyInZones = { 1411 },
@@ -1290,7 +1271,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-Second-Visit"] = {
         },
         {
             Waypoint = 3124,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 58, 53.1),
             Range = 20,
             Zone = 1444,
@@ -1399,7 +1379,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-Second-Visit"] = {
         },
         {
             Waypoint = 7003,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 51.89, 49.82),
             Range = 20,
             Zone = 1444,
@@ -1407,7 +1386,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-Second-Visit"] = {
         },
         {
             Waypoint = 7003,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 48.82, 45.15),
             Range = 20,
             Zone = 1444,
@@ -1415,7 +1393,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-Second-Visit"] = {
         },
         {
             Waypoint = 7003,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 45.67, 46.94),
             Range = 20,
             Zone = 1444,
@@ -1434,7 +1411,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-Second-Visit"] = {
         },
         {
             Waypoint = 7734,
-            NonSkippableWaypoint = true,
             Coord = { x = 1763, y = -3836 },
             Range = 8,
             IsQuestOnQuest = 7734,
@@ -1445,7 +1421,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-Second-Visit"] = {
         },
         {
             Waypoint = 7734,
-            NonSkippableWaypoint = true,
             Coord = { x = 1715, y = -3844 },
             Range = 5,
             IsQuestOnQuest = 7734,
@@ -1464,7 +1439,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-Second-Visit"] = {
         },
         {
             Waypoint = 7734,
-            NonSkippableWaypoint = true,
             Coord = { x = 1763, y = -3836 },
             Range = 8,
             IsQuestOnQuest = 7734,
@@ -1600,7 +1574,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-Second-Visit"] = {
         },
         {
             Waypoint = 3844,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 27, 55.66),
             Range = 20,
             Zone = 1446,
@@ -1608,7 +1581,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-Second-Visit"] = {
         },
         {
             Waypoint = 3844,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 27, 50.21),
             Range = 5,
             Zone = 1446,
@@ -1724,7 +1696,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-Second-Visit"] = {
         },
         {
             Waypoint = 3845,
-            NonSkippableWaypoint = true,
             Fillers = { [3845] = { 1, 2, 3 } },
             Coord = { x = -1116.87, y = -6168.93 },
             Range = 5,
@@ -1783,7 +1754,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-Second-Visit"] = {
         },
         {
             Waypoint = 4284,
-            NonSkippableWaypoint = true,
             Coord = { x = -1068, y = -6163 },
             Range = 8,
             IsQuestUncompleted = 4284,
@@ -1793,7 +1763,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-Second-Visit"] = {
         },
         {
             Waypoint = 4284,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 43.16, 6.24),
             Range = 20,
             Zone = 1449,
@@ -1820,7 +1789,6 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-Second-Visit"] = {
         },
         {
             Waypoint = 3128,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 43.16, 6.24),
             Range = 20,
             SkipInZones = { 1444 },

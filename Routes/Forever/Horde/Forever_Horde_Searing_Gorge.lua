@@ -81,7 +81,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 3441,
-            NonSkippableWaypoint = true,
             Coord = { x = -2169.21, y = -6915.76 },
             Range = 20,
             AnyOf = { { SkipForLvl = 54 }, { IsQuestOnQuest = 3441 }, { IsQuestOnQuest = 3442 }, { IsQuestOnQuest = 3443 }, { IsQuestOnQuest = 3452 }, { IsQuestOnQuest = 3453 }, { IsQuestOnQuest = 3454 }, { IsQuestOnQuest = 3462 }, { IsQuestOnQuest = 3463 }, { IsQuestOnQuest = 7722 }, { IsQuestOnQuest = 7723 }, { IsQuestOnQuest = 7724 }, { IsQuestOnQuest = 7727 }, { IsQuestOnQuest = 7728 }, { IsQuestOnQuest = 7729 }, { IsQuestOnQuest = 4449 }, { IsQuestOnQuest = 4451 }, { IsQuestOnQuest = 3821 }, { IsQuestOnQuest = 4726 }, { IsQuestOnQuest = 4296 }, { IsQuestOnQuest = 4022 } },
@@ -91,7 +90,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 3441,
-            NonSkippableWaypoint = true,
             Coord = { x = -1937, y = -6925.12 },
             Range = 5,
             AnyOf = { { SkipForLvl = 54 }, { IsQuestOnQuest = 3441 }, { IsQuestOnQuest = 3442 }, { IsQuestOnQuest = 3443 }, { IsQuestOnQuest = 3452 }, { IsQuestOnQuest = 3453 }, { IsQuestOnQuest = 3454 }, { IsQuestOnQuest = 3462 }, { IsQuestOnQuest = 3463 }, { IsQuestOnQuest = 7722 }, { IsQuestOnQuest = 7723 }, { IsQuestOnQuest = 7724 }, { IsQuestOnQuest = 7727 }, { IsQuestOnQuest = 7728 }, { IsQuestOnQuest = 7729 }, { IsQuestOnQuest = 4449 }, { IsQuestOnQuest = 4451 }, { IsQuestOnQuest = 3821 }, { IsQuestOnQuest = 4726 }, { IsQuestOnQuest = 4296 }, { IsQuestOnQuest = 4022 } },
@@ -146,7 +144,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 3442,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 32.5, 32.48),
             Range = 20,
             AnyOf = { { SkipForLvl = 54 }, { IsQuestOnQuest = 3441 }, { IsQuestOnQuest = 3442 }, { IsQuestOnQuest = 3443 }, { IsQuestOnQuest = 3452 }, { IsQuestOnQuest = 3453 }, { IsQuestOnQuest = 3454 }, { IsQuestOnQuest = 3462 }, { IsQuestOnQuest = 3463 }, { IsQuestOnQuest = 7722 }, { IsQuestOnQuest = 7723 }, { IsQuestOnQuest = 7724 }, { IsQuestOnQuest = 7727 }, { IsQuestOnQuest = 7728 }, { IsQuestOnQuest = 7729 }, { IsQuestOnQuest = 4449 }, { IsQuestOnQuest = 4451 }, { IsQuestOnQuest = 3821 }, { IsQuestOnQuest = 4726 }, { IsQuestOnQuest = 4296 }, { IsQuestOnQuest = 4022 } },
@@ -229,7 +226,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 3443,
-            NonSkippableWaypoint = true,
             Note = { "JUMP_DOWN_PLATFORM_GO_INSIDE_CAVE" },
             Coord = { x = -1383.65, y = -6797.49 },
             Range = 20,
@@ -239,7 +235,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 3443,
-            NonSkippableWaypoint = true,
             Coord = { x = -1364.02, y = -6731.89 },
             Range = 15,
             IsQuestOnQuest = 7727,
@@ -248,7 +243,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 3443,
-            NonSkippableWaypoint = true,
             Coord = { x = -1475.8, y = -6650.67 },
             Range = 15,
             IsQuestOnQuest = 7727,
@@ -266,7 +260,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 3443,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE_FOLLOW_PLATFORM_UP_ENTER_CAVE" },
             Coord = { x = -1403.06, y = -6711.07 },
             Range = 20,
@@ -276,7 +269,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 3443,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE_FOLLOW_PLATFORM_UP_ENTER_CAVE" },
             Coord = { x = -1392.58, y = -6807.75 },
             Range = 20,
@@ -286,7 +278,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 3443,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE_FOLLOW_PLATFORM_UP_ENTER_CAVE" },
             Coord = { x = -1432.96, y = -6781.57 },
             Range = 20,
@@ -394,7 +385,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 3443,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = { x = -1432.96, y = -6781.57 },
             Range = 15,
@@ -404,7 +394,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 3443,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 58.21, 40.61),
             Range = 15,
@@ -474,7 +463,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 3462,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 39.06, 38.99),
             Range = 5,
             AnyOf = { { SkipForLvl = 54 }, { IsQuestOnQuest = 3441 }, { IsQuestOnQuest = 3442 }, { IsQuestOnQuest = 3443 }, { IsQuestOnQuest = 3452 }, { IsQuestOnQuest = 3453 }, { IsQuestOnQuest = 3454 }, { IsQuestOnQuest = 3462 }, { IsQuestOnQuest = 3463 }, { IsQuestOnQuest = 7722 }, { IsQuestOnQuest = 7723 }, { IsQuestOnQuest = 7724 }, { IsQuestOnQuest = 7727 }, { IsQuestOnQuest = 7728 }, { IsQuestOnQuest = 7729 }, { IsQuestOnQuest = 4449 }, { IsQuestOnQuest = 4451 }, { IsQuestOnQuest = 3821 }, { IsQuestOnQuest = 4726 }, { IsQuestOnQuest = 4296 }, { IsQuestOnQuest = 4022 } },
@@ -644,7 +632,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 7723,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 32.5, 32.48),
             Range = 20,
             AnyOf = { { SkipForLvl = 54 }, { IsQuestOnQuest = 3441 }, { IsQuestOnQuest = 3442 }, { IsQuestOnQuest = 3443 }, { IsQuestOnQuest = 3452 }, { IsQuestOnQuest = 3453 }, { IsQuestOnQuest = 3454 }, { IsQuestOnQuest = 3462 }, { IsQuestOnQuest = 3463 }, { IsQuestOnQuest = 7722 }, { IsQuestOnQuest = 7723 }, { IsQuestOnQuest = 7724 }, { IsQuestOnQuest = 7727 }, { IsQuestOnQuest = 7728 }, { IsQuestOnQuest = 7729 }, { IsQuestOnQuest = 4449 }, { IsQuestOnQuest = 4451 }, { IsQuestOnQuest = 3821 }, { IsQuestOnQuest = 4726 }, { IsQuestOnQuest = 4296 }, { IsQuestOnQuest = 4022 } },
@@ -726,7 +713,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 3821,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 33.66, 77.85),
             Range = 15,
             AnyOf = { { SkipForLvl = 54 }, { IsQuestOnQuest = 3441 }, { IsQuestOnQuest = 3442 }, { IsQuestOnQuest = 3443 }, { IsQuestOnQuest = 3452 }, { IsQuestOnQuest = 3453 }, { IsQuestOnQuest = 3454 }, { IsQuestOnQuest = 3462 }, { IsQuestOnQuest = 3463 }, { IsQuestOnQuest = 7722 }, { IsQuestOnQuest = 7723 }, { IsQuestOnQuest = 7724 }, { IsQuestOnQuest = 7727 }, { IsQuestOnQuest = 7728 }, { IsQuestOnQuest = 7729 }, { IsQuestOnQuest = 4449 }, { IsQuestOnQuest = 4451 }, { IsQuestOnQuest = 3821 }, { IsQuestOnQuest = 4726 }, { IsQuestOnQuest = 4296 }, { IsQuestOnQuest = 4022 } },
@@ -736,7 +722,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 3821,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 34.8, 83.96),
             Range = 15,
             AnyOf = { { SkipForLvl = 54 }, { IsQuestOnQuest = 3441 }, { IsQuestOnQuest = 3442 }, { IsQuestOnQuest = 3443 }, { IsQuestOnQuest = 3452 }, { IsQuestOnQuest = 3453 }, { IsQuestOnQuest = 3454 }, { IsQuestOnQuest = 3462 }, { IsQuestOnQuest = 3463 }, { IsQuestOnQuest = 7722 }, { IsQuestOnQuest = 7723 }, { IsQuestOnQuest = 7724 }, { IsQuestOnQuest = 7727 }, { IsQuestOnQuest = 7728 }, { IsQuestOnQuest = 7729 }, { IsQuestOnQuest = 4449 }, { IsQuestOnQuest = 4451 }, { IsQuestOnQuest = 3821 }, { IsQuestOnQuest = 4726 }, { IsQuestOnQuest = 4296 }, { IsQuestOnQuest = 4022 } },
@@ -746,7 +731,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 3821,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 29.43, 38.7),
             Range = 15,
             AnyOf = { { SkipForLvl = 54 }, { IsQuestOnQuest = 3441 }, { IsQuestOnQuest = 3442 }, { IsQuestOnQuest = 3443 }, { IsQuestOnQuest = 3452 }, { IsQuestOnQuest = 3453 }, { IsQuestOnQuest = 3454 }, { IsQuestOnQuest = 3462 }, { IsQuestOnQuest = 3463 }, { IsQuestOnQuest = 7722 }, { IsQuestOnQuest = 7723 }, { IsQuestOnQuest = 7724 }, { IsQuestOnQuest = 7727 }, { IsQuestOnQuest = 7728 }, { IsQuestOnQuest = 7729 }, { IsQuestOnQuest = 4449 }, { IsQuestOnQuest = 4451 }, { IsQuestOnQuest = 3821 }, { IsQuestOnQuest = 4726 }, { IsQuestOnQuest = 4296 }, { IsQuestOnQuest = 4022 } },
@@ -763,7 +747,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 3821,
-            NonSkippableWaypoint = true,
             Coord = { x = -2177.66, y = -7499.94 },
             Range = 5,
             AnyOf = { { IsQuestOnQuest = 4726 }, { IsQuestOnQuest = 4296 } },
@@ -794,7 +777,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 3821,
-            NonSkippableWaypoint = true,
             Note = { "CROSS_BRIDGE_GO_UP_MOUNTAIN_CLICK_SHA", "BEWARE_KNOCKBACK_FALL" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 77.68, 38.23),
             Range = 20,
@@ -829,7 +811,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 4022,
-            NonSkippableWaypoint = true,
             Coord = { x = -3003, y = -7652 },
             Range = 6,
             AnyOf = { { IsQuestCompleted = 3481, ItemCount = { itemID = 10575, count = 1, operator = ">=" }, MinLevel = 52 }, { IsQuestOnQuest = 4022 } },
@@ -839,7 +820,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 4022,
-            NonSkippableWaypoint = true,
             Coord = { x = -3027, y = -7654 },
             Range = 2,
             AnyOf = { { IsQuestCompleted = 3481, ItemCount = { itemID = 10575, count = 1, operator = ">=" }, MinLevel = 52 }, { IsQuestOnQuest = 4022 } },
@@ -1083,7 +1063,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 4808,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = 435.05, y = 1598.86 },
             Range = 10,
@@ -1093,7 +1072,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 4808,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = 439.08, y = 1627.02 },
             Range = 10,
@@ -1103,7 +1081,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 4808,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = 476.49, y = 1632.15 },
             Range = 10,
@@ -1113,7 +1090,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 4808,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = 481.48, y = 1659.8 },
             Range = 10,
@@ -1123,7 +1099,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 4808,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = 539.52, y = 1665.17 },
             Range = 10,
@@ -1133,7 +1108,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 4808,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = 634.02, y = 1669.66 },
             Range = 15,
@@ -1143,7 +1117,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 4808,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = 652.73, y = 1623.44 },
             Range = 15,
@@ -1153,7 +1126,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 4808,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = 714.8, y = 1604.24 },
             Range = 15,
@@ -1163,7 +1135,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 4808,
-            NonSkippableWaypoint = true,
             Coord = { x = 278.7, y = 2071.27 },
             Range = 12,
             OnlyInZones = { 1420 },
@@ -1172,7 +1143,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 4808,
-            NonSkippableWaypoint = true,
             Coord = { x = 253.85, y = 2059.82 },
             Range = 10,
             OnlyInZones = { 1420 },
@@ -1181,7 +1151,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 4808,
-            NonSkippableWaypoint = true,
             Coord = { x = 264.7, y = 2053.5 },
             Range = 8,
             OnlyInZones = { 1420 },
@@ -1190,7 +1159,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 4808,
-            NonSkippableWaypoint = true,
             Coord = { x = 271.02, y = 2064.94 },
             Range = 8,
             OnlyInZones = { 1420 },
@@ -1199,7 +1167,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 4808,
-            NonSkippableWaypoint = true,
             Coord = { x = 259.72, y = 2068.86 },
             Range = 8,
             OnlyInZones = { 1420 },
@@ -1208,7 +1175,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 4808,
-            NonSkippableWaypoint = true,
             Coord = { x = 261.53, y = 2055 },
             Range = 8,
             OnlyInZones = { 1420 },
@@ -1226,7 +1192,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 4808,
-            NonSkippableWaypoint = true,
             Coord = { x = -4370, y = 1382.2 },
             Range = 15,
             OnlyInZones = { 1411 },
@@ -1235,7 +1200,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 4808,
-            NonSkippableWaypoint = true,
             Coord = { x = -4363.9, y = 1420.2 },
             Range = 15,
             OnlyInZones = { 1411 },
@@ -1244,7 +1208,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 4808,
-            NonSkippableWaypoint = true,
             Coord = { x = -4412.5, y = 1436.4 },
             Range = 15,
             OnlyInZones = { 1411 },
@@ -1253,7 +1216,6 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
         },
         {
             Waypoint = 4808,
-            NonSkippableWaypoint = true,
             Coord = { x = -4417.1, y = 1480.6 },
             Range = 15,
             OnlyInZones = { 1411 },

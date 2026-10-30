@@ -60,7 +60,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 658,
-            NonSkippableWaypoint = true,
             Note = { "CHECK_TROLL_CAMPS_OUTSIDE_NIMAR_SLAYER_DROPS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 66.34, 64.29),
             Range = 20,
@@ -69,7 +68,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 658,
-            NonSkippableWaypoint = true,
             Note = { "CHECK_TROLL_CAMPS_OUTSIDE_NIMAR_SLAYER_DROPS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 63.49, 67.77),
             Range = 20,
@@ -78,7 +76,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 658,
-            NonSkippableWaypoint = true,
             Note = { "CHECK_TROLL_CAMPS_OUTSIDE_NIMAR_SLAYER_DROPS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 61.25, 72.37),
             Range = 20,
@@ -87,7 +84,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 658,
-            NonSkippableWaypoint = true,
             Note = { "CHECK_TROLL_CAMPS_OUTSIDE_NIMAR_SLAYER_DROPS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 64.77, 73.22),
             Range = 20,
@@ -96,7 +92,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 658,
-            NonSkippableWaypoint = true,
             Note = { "CHECK_TROLL_CAMPS_OUTSIDE_NIMAR_SLAYER_DROPS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 70.5, 69.58),
             Range = 20,
@@ -105,7 +100,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 658,
-            NonSkippableWaypoint = true,
             Note = { "CHECK_TROLL_CAMPS_OUTSIDE_NIMAR_SLAYER_DROPS", "ESCORTS_NPC_SKIP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 73.2, 64.88),
             Range = 20,
@@ -225,7 +219,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 658,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 45.98, 47.72),
             Range = 5,
@@ -234,7 +227,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 658,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 61.89, 58.12),
             Range = 20,
@@ -328,7 +320,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 1264,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 5.14, 63.4),
             Range = 20.0,
@@ -371,7 +362,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 1204,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = { x = -4438.5, y = -3613.5 },
             Range = 5,
@@ -409,7 +399,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 1264,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 67.79, 47.62),
             Range = 20,
@@ -582,7 +571,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 1220,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 67.79, 47.62),
             Range = 20,
@@ -666,7 +654,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 1204,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 66.27, 62.13),
             Range = 5,
@@ -709,7 +696,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 1204,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = { x = -4438.5, y = -3613.5 },
             Range = 5,
@@ -817,7 +803,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 8365,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = { x = -4953, y = -7772 },
             Range = 6,
@@ -829,7 +814,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 8365,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = { x = -4959, y = -7784 },
             Range = 3,
@@ -841,7 +825,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 8365,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = { x = -4973, y = -7784 },
             Range = 3,
@@ -853,7 +836,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 8365,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 68.73, 41.49),
             Range = 20,
@@ -862,7 +844,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 8365,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = { x = -4983, y = -7790 },
             Range = 3,
@@ -874,7 +855,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 8365,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = { x = -4999, y = -7810 },
             Range = 3,
@@ -886,7 +866,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 8365,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = { x = -5035, y = -7828 },
             Range = 4,
@@ -898,7 +877,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 8365,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = { x = -5039, y = -7850 },
             Range = 6,
@@ -1028,7 +1006,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 2781,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = { x = -4953, y = -7772 },
             Range = 6,
@@ -1040,7 +1017,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 2781,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = { x = -4959, y = -7784 },
             Range = 3,
@@ -1052,7 +1028,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 2781,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = { x = -4973, y = -7784 },
             Range = 3,
@@ -1064,7 +1039,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 2781,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = { x = -4983, y = -7790 },
             Range = 3,
@@ -1076,7 +1050,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 2781,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = { x = -4999, y = -7810 },
             Range = 3,
@@ -1088,7 +1061,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 2781,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = { x = -5035, y = -7828 },
             Range = 4,
@@ -1100,7 +1072,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 2781,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = { x = -5039, y = -7850 },
             Range = 6,
@@ -1165,7 +1136,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 992,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = { x = -4953, y = -7772 },
             Range = 6,
@@ -1177,7 +1147,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 992,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = { x = -4959, y = -7784 },
             Range = 3,
@@ -1189,7 +1158,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 992,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = { x = -4973, y = -7784 },
             Range = 3,
@@ -1201,7 +1169,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 992,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = { x = -4983, y = -7790 },
             Range = 3,
@@ -1213,7 +1180,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 992,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = { x = -4999, y = -7810 },
             Range = 3,
@@ -1225,7 +1191,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 992,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = { x = -5035, y = -7828 },
             Range = 4,
@@ -1237,7 +1202,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 992,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = { x = -5039, y = -7850 },
             Range = 6,
@@ -1374,7 +1338,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 5021,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 38.05, 54.59),
             Range = 12,
@@ -1394,7 +1357,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 5021,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = { x = -1242.27, y = 1780.54 },
             Range = 6,
@@ -1506,7 +1468,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         },
         {
             Waypoint = 5060,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 47.15, 50.15),
             Range = 6,

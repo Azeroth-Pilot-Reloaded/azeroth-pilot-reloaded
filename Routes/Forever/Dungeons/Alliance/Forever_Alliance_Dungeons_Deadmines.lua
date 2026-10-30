@@ -41,7 +41,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 65,
-            NonSkippableWaypoint = true,
             Note = { string.format(L["FLY_TO"], L["Redridge Mountains"]) },
             Coord = { x = 490.03, y = -8835.82 },
             Range = 5,
@@ -59,7 +58,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 65,
-            NonSkippableWaypoint = true,
             Note = { "NOT_ALREADY_REDRIDGE_MOUNTAINS_FLIGHT_PATH_SKIP", string.format(L["FLY_TO"], L["Redridge Mountains"]) },
             Coord = { x = 490.03, y = -8835.82 },
             Range = 5,
@@ -78,7 +76,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 65,
-            NonSkippableWaypoint = true,
             Coord = { x = -1906.4, y = -9606.8 },
             Range = 5,
             IsQuestUncompleted = 132,
@@ -93,7 +90,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 65,
-            NonSkippableWaypoint = true,
             Coord = { x = -2164.56, y = -9213.1 },
             Range = 8.0,
             Zone = 1433,
@@ -172,7 +168,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 135,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_SI_7_HEADQUARTERS_GO_STAIRS" },
             Coord = { x = 374.11, y = -8762.88 },
             Range = 20.0,
@@ -181,7 +176,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 135,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_SI_7_HEADQUARTERS_GO_STAIRS" },
             Coord = { x = 326.66, y = -8818.01 },
             Range = 20.0,
@@ -190,7 +184,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 135,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_SI_7_HEADQUARTERS_GO_STAIRS" },
             Coord = { x = 323.43, y = -8817.83 },
             Range = 10.0,
@@ -246,7 +239,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 142,
-            NonSkippableWaypoint = true,
             Coord = { x = 1459.17, y = -11024.47 },
             Range = 55.0,
             Zone = 1436,
@@ -300,7 +292,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 103,
-            NonSkippableWaypoint = true,
             Note = { "GRIND_GNOLLS_SOUTH_SENTINEL_HILL_WHILST_ASSEMBLING", "GROUP_ASSEMBLED_TRAVEL_MOONBROOK" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 42.649, 71.376),
             Range = 5,
@@ -309,7 +300,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 103,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_DEFIAS_HIDEOUT_GROUP" },
             Coord = { x = 1527.42, y = -11072.77 },
             Range = 5,
@@ -336,7 +326,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 103,
-            NonSkippableWaypoint = true,
             Fillers = { [214] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1415, 40.94, 79.76),
             Range = 25.0,
@@ -345,7 +334,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 103,
-            NonSkippableWaypoint = true,
             Fillers = { [214] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1415, 40.86, 79.62),
             Range = 20.0,
@@ -471,7 +459,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 103,
-            NonSkippableWaypoint = true,
             Coord = { x = 1966.32, y = -11407.13 },
             Range = 40.0,
             Zone = 1436,
@@ -524,7 +511,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 272,
-            NonSkippableWaypoint = true,
             Note = { "SWIM_SEA" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 17.928, 33.099),
             Range = 50.0,
@@ -606,7 +592,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 166,
-            NonSkippableWaypoint = true,
             Coord = { x = 1045.12, y = -10508.8 },
             Range = 100.0,
             Zone = 1436,
@@ -702,7 +687,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 95999,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_CAVE", "SKIP_STEP_UNABLE_FIND_GROUP" },
             Coord = { x = -3230, y = -9779 },
             Range = 3,
@@ -716,7 +700,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 95999,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_CAVE", "SKIP_STEP_UNABLE_FIND_GROUP" },
             Coord = { x = -3236, y = -9785 },
             Range = 3,
@@ -730,7 +713,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 95999,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_CAVE", "SKIP_STEP_UNABLE_FIND_GROUP" },
             Coord = { x = -3236, y = -9797 },
             Range = 4,
@@ -801,7 +783,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 95999,
-            NonSkippableWaypoint = true,
             Coord = { x = -2210.5, y = -9258.7 },
             Range = 8,
             IsQuestOnQuest = 95999,
@@ -813,7 +794,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 95999,
-            NonSkippableWaypoint = true,
             Coord = { x = -2207.1, y = -9231.34 },
             Range = 15.0,
             IsQuestOnQuest = 95999,
@@ -846,7 +826,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 167,
-            NonSkippableWaypoint = true,
             Coord = { x = -2234.9, y = -9435.3 },
             Range = 5,
             AnyOf = { { SkipInZones = { 1439, 1453 }, Race = "Human" }, { SkipInZones = { 1439, 1453 }, Race = "Dwarf" }, { SkipInZones = { 1439, 1453 }, Race = "Gnome" }, { SkipInZones = { 1439, 1453 }, Race = "NightElf" }, { SkipInZones = { 1439, 1453 }, Race = "Skyborne" } },
@@ -878,7 +857,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 167,
-            NonSkippableWaypoint = true,
             Coord = { x = 358.25, y = -8728.28 },
             Range = 15.0,
             Class = "WARRIOR",
@@ -887,7 +865,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 167,
-            NonSkippableWaypoint = true,
             Coord = { x = 302.6, y = -8685.53 },
             Range = 15.0,
             Class = "WARRIOR",
@@ -1026,7 +1003,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 3765,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SLAUGHTERED_LAMB_GO_DOWNSTAIRS" },
             Coord = { x = 988.44, y = -8942.15 },
             Range = 20.0,
@@ -1037,7 +1013,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 3765,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SLAUGHTERED_LAMB_GO_DOWNSTAIRS" },
             Coord = { x = 1015.33, y = -8978.9 },
             Range = 15.0,
@@ -1065,7 +1040,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 3765,
-            NonSkippableWaypoint = true,
             Coord = { x = 874.32, y = -9014.67 },
             Range = 10.0,
             Class = "MAGE",
@@ -1084,7 +1058,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 3765,
-            NonSkippableWaypoint = true,
             Coord = { x = 809.52, y = -8579.22 },
             Range = 20.0,
             Class = { "PALADIN", "PRIEST" },
@@ -1093,7 +1066,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Waypoint = 3765,
-            NonSkippableWaypoint = true,
             Coord = { x = 859.13, y = -8559.14 },
             Range = 10.0,
             Class = "PALADIN",

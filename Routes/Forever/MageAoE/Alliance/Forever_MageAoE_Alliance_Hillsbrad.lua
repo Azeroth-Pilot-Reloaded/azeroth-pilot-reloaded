@@ -171,7 +171,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
         },
         {
             Waypoint = 631,
-            NonSkippableWaypoint = true,
             Note = { "GO_DOORWAY_BRIDGE_AVOID_FIGHTING_MOBS", "VERY_BOTTOM" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 51.3, 8.11),
             Range = 20.0,
@@ -206,7 +205,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
         },
         {
             Waypoint = 647,
-            NonSkippableWaypoint = true,
             Note = { "USE_SLOW_FALL_JUMP_ACROSS_BROKEN_BRIDGE", "FAILED_JUMP_SKIP_QUEST", "15_MINUTE_TIME_LIMIT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 43.99, 88.24),
             Range = 20,
@@ -215,7 +213,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
         },
         {
             Waypoint = 647,
-            NonSkippableWaypoint = true,
             Note = { "USE_SLOW_FALL_JUMP_ACROSS_BROKEN_BRIDGE", "FAILED_JUMP_SKIP_QUEST", "15_MINUTE_TIME_LIMIT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 42.91, 91.46),
             Range = 20.0,
@@ -243,7 +240,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
         },
         {
             Waypoint = 633,
-            NonSkippableWaypoint = true,
             Note = { "UP_RAMP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 52.5, 90.4),
             Range = 20,
@@ -258,7 +254,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
         },
         {
             Waypoint = 633,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 46.25, 88.14),
             Range = 20,
             Zone = 1417,
@@ -266,7 +261,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
         },
         {
             Waypoint = 633,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 45.46, 89.18),
             Range = 8,
             IsQuestOnQuest = 633,
@@ -277,7 +271,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
         },
         {
             Waypoint = 633,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 51.08, 11.7),
             Range = 8,
             IsQuestOnQuest = 633,
@@ -300,7 +293,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
         },
         {
             Waypoint = 634,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 51.08, 11.7),
             Range = 8,
             IsQuestOnQuest = 634,
@@ -310,7 +302,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
         },
         {
             Waypoint = 634,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 45.46, 89.18),
             Range = 8,
             IsQuestOnQuest = 634,
@@ -347,7 +338,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
         },
         {
             Waypoint = 647,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 19.72, 29.04),
             Range = 20,
             Zone = 1417,
@@ -355,7 +345,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
         },
         {
             Waypoint = 647,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 50.71, 58.76),
             Range = 15.0,
             Zone = 1424,
@@ -459,7 +448,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
         },
         {
             Waypoint = 293,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 42.62, 33.59),
             Range = 20,
             Zone = 1453,
@@ -505,7 +493,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
         },
         {
             Waypoint = 55,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 17.59, 33.44),
             Range = 7,
             IsQuestOnQuest = 55,
@@ -620,7 +607,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
         },
         {
             Waypoint = 683,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 44.51, 49.57),
             Range = 10,
             IsQuestOnQuest = 683,
@@ -630,7 +616,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
         },
         {
             Waypoint = 686,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 44.51, 49.57),
             Range = 10,
             IsQuestCompleted = 683,
@@ -658,7 +643,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
         },
         {
             Waypoint = 686,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 44.51, 49.57),
             Range = 10,
             IsQuestOnQuest = 686,
@@ -700,7 +684,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
         },
         {
             Waypoint = 555,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 55.57, 55.82),
             Range = 20,
             Zone = 1424,
@@ -708,7 +691,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
         },
         {
             Waypoint = 555,
-            NonSkippableWaypoint = true,
             Fillers = { [555] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1416, 80.5, 32.01),
             Range = 20,
@@ -731,7 +713,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
         },
         {
             Waypoint = 510,
-            NonSkippableWaypoint = true,
             Fillers = { [564] = { 1, 2 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1416, 67.28, 47.3),
             Range = 20,
@@ -765,7 +746,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
         },
         {
             Waypoint = 564,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1416, 39.08, 92.32),
             Range = 20,
             Zone = 1416,
@@ -875,7 +855,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
         },
         {
             Waypoint = 700,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 44.51, 49.57),
             Range = 10,
             IsQuestOnQuest = 700,
@@ -891,7 +870,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
         },
         {
             Waypoint = 514,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 44.51, 49.57),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1455, 44.51, 49.57, 10),

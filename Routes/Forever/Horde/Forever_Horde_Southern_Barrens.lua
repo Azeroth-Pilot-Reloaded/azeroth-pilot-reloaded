@@ -98,7 +98,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1067,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 54.06, 57.25),
             Range = 5,
             Class = { "SHAMAN", "WARRIOR" },
@@ -137,7 +136,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1067,
-            NonSkippableWaypoint = true,
             Coord = { x = 1.3, y = -1333.2 },
             Range = 6,
             ZoneStepTrigger = { x = 1.3, y = -1333.2, Range = 6, mapID = 1456 },
@@ -149,7 +147,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1067,
-            NonSkippableWaypoint = true,
             Coord = { x = -63.3, y = -1397.2 },
             Range = 6,
             ZoneStepTrigger = { x = -63.3, y = -1397.2, Range = 6, mapID = 1456 },
@@ -161,7 +158,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1067,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 61.31, 78.25),
             Range = 20,
             Class = { "HUNTER", "WARRIOR" },
@@ -215,7 +211,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 1, y = -1108.2 },
             Range = 6,
             Class = "DRUID",
@@ -227,7 +222,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = -66.5, y = -1089.7 },
             Range = 6,
             Class = "DRUID",
@@ -239,7 +233,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = -209.4, y = -1044.8 },
             Range = 6,
             Class = "DRUID",
@@ -251,7 +244,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 69.88, 30.9),
             Range = 20,
             Class = "DRUID",
@@ -298,7 +290,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1067,
-            NonSkippableWaypoint = true,
             Note = { "GO_INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 28.14, 32.97),
             Range = 20,
@@ -307,7 +298,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1067,
-            NonSkippableWaypoint = true,
             Note = { "GO_INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 28.51, 28.95),
             Range = 10.0,
@@ -634,7 +624,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1536,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 43.84, 77.28),
             Range = 20,
             AnyOf = { { IsQuestOnQuest = 1536 }, { IsQuestCompleted = 1536, IsQuestUncompleted = 1534 } },
@@ -644,7 +633,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1536,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 43.62, 77.29),
             Range = 20,
             AnyOf = { { IsQuestOnQuest = 1536 }, { IsQuestCompleted = 1536, IsQuestUncompleted = 1534 } },
@@ -654,7 +642,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1536,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 43.42, 77.41),
             Range = 15,
             AnyOf = { { IsQuestOnQuest = 1536 }, { IsQuestCompleted = 1536, IsQuestUncompleted = 1534 } },
@@ -769,7 +756,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 846,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 48.63, 84.49),
             Range = 20,
             IsQuestCompleted = 843,
@@ -840,7 +826,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 893,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 50.48, 78.72),
             Range = 20,
             SkipInZones = { 1445 },
@@ -849,7 +834,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 893,
-            NonSkippableWaypoint = true,
             Note = { "CAREFUL_LEVEL_36_38_MOBS_AREA_FOLLOW" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 30.65, 45.34),
             Range = 20,
@@ -858,7 +842,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 893,
-            NonSkippableWaypoint = true,
             Note = { "CAREFUL_LEVEL_36_38_MOBS_AREA_FOLLOW" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 32.28, 42.8),
             Range = 20,
@@ -867,7 +850,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 893,
-            NonSkippableWaypoint = true,
             Note = { "CAREFUL_LEVEL_36_38_MOBS_AREA_FOLLOW" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 33.12, 40.85),
             Range = 20,
@@ -876,7 +858,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 893,
-            NonSkippableWaypoint = true,
             Note = { "CAREFUL_LEVEL_36_38_MOBS_AREA_FOLLOW" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 33.55, 38.71),
             Range = 20,
@@ -885,7 +866,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 893,
-            NonSkippableWaypoint = true,
             Note = { "CAREFUL_LEVEL_36_38_MOBS_AREA_FOLLOW" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 34.73, 37.66),
             Range = 20,
@@ -894,7 +874,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 893,
-            NonSkippableWaypoint = true,
             Note = { "CAREFUL_LEVEL_36_38_MOBS_AREA_FOLLOW" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 34.31, 34.4),
             Range = 20,
@@ -903,7 +882,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 893,
-            NonSkippableWaypoint = true,
             Note = { "CAREFUL_LEVEL_36_38_MOBS_AREA_FOLLOW" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 33.3, 31.23),
             Range = 20,
@@ -912,7 +890,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 893,
-            NonSkippableWaypoint = true,
             Note = { "CAREFUL_LEVEL_36_38_MOBS_AREA_FOLLOW" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 36.64, 31.72),
             Range = 20,
@@ -1293,7 +1270,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 6393,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 49.38, 61.68),
             Range = 20,
             SkipForLvl = 28,
@@ -1302,7 +1278,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 6393,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 48.92, 62.71),
             Range = 20,
             SkipForLvl = 28,
@@ -1311,7 +1286,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 6393,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 48.11, 63.88),
             Range = 20,
             SkipForLvl = 28,
@@ -1320,7 +1294,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 6393,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 47.21, 64.05),
             Range = 20,
             SkipForLvl = 28,
@@ -1362,7 +1335,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1095,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 58.99, 62.6),
             Range = 20,
             SkipForLvl = 28,
@@ -1418,7 +1390,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1096,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 68.81, 39.61),
             Range = 20,
             IsQuestOnQuest = 1096,
@@ -1428,7 +1399,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1096,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 67.83, 37.77),
             Range = 20,
             IsQuestOnQuest = 1096,
@@ -1438,7 +1408,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1096,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 66.58, 37.71),
             Range = 20,
             IsQuestOnQuest = 1096,
@@ -1448,7 +1417,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1096,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 64.56, 38.03),
             Range = 20,
             IsQuestOnQuest = 1096,
@@ -1468,7 +1436,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1096,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_USABLE_GEAR_UPGRADE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 62.7, 40.17),
             Range = 5,
@@ -1496,7 +1463,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1087,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 41.61, 16.02),
             Range = 20,
             AnyOf = { { IsQuestOnQuest = 1058 }, { IsQuestOnQuest = 1087 } },
@@ -1559,7 +1525,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 6393,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 42.64, 42.43),
             Range = 20,
             SkipForLvl = 28,
@@ -1568,7 +1533,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 6393,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 38.18, 43.28),
             Range = 20,
             SkipForLvl = 28,
@@ -1577,7 +1541,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 6393,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 34.85, 58.38),
             Range = 20,
             SkipForLvl = 28,
@@ -1595,7 +1558,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 6393,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 37.89, 67.77),
             Range = 20,
             SkipForLvl = 28,
@@ -1604,7 +1566,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 6393,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 39.58, 69.84),
             Range = 20,
             SkipForLvl = 28,
@@ -1613,7 +1574,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 6393,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 41.2, 70.09),
             Range = 20,
             SkipForLvl = 28,
@@ -1622,7 +1582,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 6393,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 42.07, 66.41),
             Range = 20,
             SkipForLvl = 28,
@@ -1631,7 +1590,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 6393,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 43.54, 65.35),
             Range = 20,
             SkipForLvl = 28,
@@ -1640,7 +1598,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 6393,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 44.68, 63.5),
             Range = 20,
             SkipForLvl = 28,
@@ -1755,7 +1712,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 6381,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 44.31, 63.64),
             Range = 20,
             SkipForLvl = 28,
@@ -1764,7 +1720,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 6381,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 43.31, 65.47),
             Range = 20,
             SkipForLvl = 28,
@@ -1773,7 +1728,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 6381,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 42.07, 66.51),
             Range = 20,
             SkipForLvl = 28,
@@ -1782,7 +1736,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 6381,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 41.26, 70.06),
             Range = 20,
             SkipForLvl = 28,
@@ -1791,7 +1744,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 6381,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 37.8, 67.68),
             Range = 20,
             SkipForLvl = 28,
@@ -1833,7 +1785,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 6381,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 37.89, 67.77),
             Range = 20,
             SkipForLvl = 28,
@@ -1842,7 +1793,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 6381,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 39.58, 69.84),
             Range = 20,
             SkipForLvl = 28,
@@ -1851,7 +1801,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 6381,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 41.2, 70.09),
             Range = 20,
             SkipForLvl = 28,
@@ -1860,7 +1809,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 6381,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 42.07, 66.41),
             Range = 20,
             SkipForLvl = 28,
@@ -1869,7 +1817,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 6381,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 43.54, 65.35),
             Range = 20,
             SkipForLvl = 28,
@@ -1878,7 +1825,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 6381,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 44.68, 63.5),
             Range = 20,
             SkipForLvl = 28,
@@ -1910,7 +1856,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1058,
-            NonSkippableWaypoint = true,
             Coord = { x = -364, y = -233 },
             Range = 6,
             ZoneStepTrigger = { x = -364, y = -233, Range = 6, mapID = 1442 },
@@ -2003,7 +1948,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1088,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 51.5, 30.34),
             Range = 5,
             OnlyInZones = { 1413 },
@@ -2055,7 +1999,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1088,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 26.22, 61.58),
             Range = 20,
             Zone = 1454,
@@ -2063,7 +2006,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1088,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 15.66, 63.33),
             Range = 20,
             Zone = 1454,
@@ -2071,7 +2013,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1088,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1414, 56.8, 45.45),
             Range = 15,
             Zone = 1414,
@@ -2079,7 +2020,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1088,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 94.54, 76.15),
             Range = 20,
             Zone = 1440,
@@ -2087,7 +2027,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1088,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 93.49, 73.76),
             Range = 20,
             Zone = 1440,
@@ -2095,7 +2034,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1088,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 92.47, 71.18),
             Range = 20,
             Zone = 1440,
@@ -2103,7 +2041,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1088,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 91.85, 68.71),
             Range = 20,
             Zone = 1440,
@@ -2111,7 +2048,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1088,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 91.39, 65.86),
             Range = 20,
             Zone = 1440,
@@ -2119,7 +2055,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1088,
-            NonSkippableWaypoint = true,
             Note = { "AVOID_LEVEL_29_30_ENEMIES_POSSIBLE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 89.87, 68.07),
             Range = 20,
@@ -2128,7 +2063,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1088,
-            NonSkippableWaypoint = true,
             Note = { "AVOID_LEVEL_29_30_ENEMIES_POSSIBLE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 86.89, 68.65),
             Range = 20,
@@ -2137,7 +2071,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1088,
-            NonSkippableWaypoint = true,
             Note = { "AVOID_LEVEL_29_30_ENEMIES_POSSIBLE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 79.89, 68.38),
             Range = 20,
@@ -2146,7 +2079,6 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Waypoint = 1088,
-            NonSkippableWaypoint = true,
             Note = { "AVOID_LEVEL_29_30_ENEMIES_POSSIBLE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 73.52, 63.5),
             Range = 20,

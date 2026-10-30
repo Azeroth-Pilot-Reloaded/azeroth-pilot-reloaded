@@ -52,7 +52,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
     steps = {
         {
             Waypoint = 1372,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 39.3, 6.49),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 39.3, 6.49, 20),
@@ -63,7 +62,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1372,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 40.63, 3.12),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 40.63, 3.12, 20),
@@ -74,7 +72,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1372,
-            NonSkippableWaypoint = true,
             Note = { "AVOID_HOSTILE_GUARDS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 74.06, 56.49),
             Range = 20,
@@ -85,7 +82,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1372,
-            NonSkippableWaypoint = true,
             Note = { "AVOID_HOSTILE_GUARDS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 80.46, 54.47),
             Range = 20,
@@ -96,7 +92,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1372,
-            NonSkippableWaypoint = true,
             Note = { "AVOID_HOSTILE_GUARDS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 82.11, 46.62),
             Range = 20,
@@ -107,7 +102,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1372,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 87.81, 35.62),
             Range = 5,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1431, 87.81, 35.62, 5),
@@ -131,7 +125,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1420,
-            NonSkippableWaypoint = true,
             Coord = { x = -1555.36, y = -10454.67 },
             Range = 20,
             ZoneStepTrigger = { x = -1555.36, y = -10454.67, Range = 20 },
@@ -142,7 +135,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1420,
-            NonSkippableWaypoint = true,
             Coord = { x = -1809.1, y = -10427.6 },
             Range = 10,
             ZoneStepTrigger = { x = -1809.1, y = -10427.6, Range = 10, mapID = 1430 },
@@ -153,7 +145,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1420,
-            NonSkippableWaypoint = true,
             Coord = { x = -2033.83, y = -10443.33 },
             Range = 20,
             ZoneStepTrigger = { x = -2033.83, y = -10443.33, Range = 20 },
@@ -164,7 +155,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1420,
-            NonSkippableWaypoint = true,
             Coord = { x = -2141.4, y = -10590.1 },
             Range = 10,
             ZoneStepTrigger = { x = -2141.4, y = -10590.1, Range = 10, mapID = 1430 },
@@ -175,7 +165,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1420,
-            NonSkippableWaypoint = true,
             Coord = { x = -2294.08, y = -10558.5 },
             Range = 20,
             ZoneStepTrigger = { x = -2294.08, y = -10558.5, Range = 20 },
@@ -186,7 +175,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1420,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1430, 59.91, 41.22),
             Range = 5,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1430, 59.91, 41.22, 5),
@@ -197,7 +185,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1420,
-            NonSkippableWaypoint = true,
             Coord = { x = -2432.3, y = -10382.3 },
             Range = 12,
             ZoneStepTrigger = { x = -2432.3, y = -10382.3, Range = 12, mapID = 1435 },
@@ -246,7 +233,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1420,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 47.8, 55.2),
             Range = 5,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1435, 47.8, 55.2, 5),
@@ -324,7 +310,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1392,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 48.59, 55.27),
             Range = 5,
@@ -481,7 +466,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1424,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 75.44, 60.41),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1435, 75.44, 60.41, 20),
@@ -492,7 +476,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1424,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 71.14, 61.44),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1435, 71.14, 61.44, 20),
@@ -503,7 +486,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1424,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 65.36, 57.19),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1435, 65.36, 57.19, 20),
@@ -514,7 +496,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1424,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 65.99, 47.1),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1435, 65.99, 47.1, 20),
@@ -525,7 +506,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1424,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1415, 53.87, 79.26),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1415, 53.87, 79.26, 20, 1435),
@@ -536,7 +516,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1424,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 70.57, 46.04),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1435, 70.57, 46.04, 20),
@@ -616,7 +595,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 209,
-            NonSkippableWaypoint = true,
             Coord = { x = 434.08, y = -14293.86 },
             Range = 15,
             ZoneStepTrigger = { x = 434.08, y = -14293.86, Range = 15, mapID = 1434 },
@@ -628,7 +606,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 209,
-            NonSkippableWaypoint = true,
             Coord = { x = 334.53, y = -14253.45 },
             Range = 15,
             ZoneStepTrigger = { x = 334.53, y = -14253.45, Range = 15, mapID = 1434 },
@@ -648,7 +625,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 209,
-            NonSkippableWaypoint = true,
             Coord = { x = 334.53, y = -14253.45 },
             Range = 15,
             ZoneStepTrigger = { x = 334.53, y = -14253.45, Range = 15, mapID = 1434 },
@@ -660,7 +636,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 209,
-            NonSkippableWaypoint = true,
             Coord = { x = 434.08, y = -14293.86 },
             Range = 15,
             ZoneStepTrigger = { x = 434.08, y = -14293.86, Range = 15, mapID = 1434 },
@@ -777,7 +752,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1270,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 25.9, 73.14),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 25.9, 73.14, 20),
@@ -871,7 +845,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1205,
-            NonSkippableWaypoint = true,
             Coord = { x = 1.3, y = -1333.2 },
             Range = 8,
             ZoneStepTrigger = { x = 1.3, y = -1333.2, Range = 8, mapID = 1456 },
@@ -882,7 +855,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1205,
-            NonSkippableWaypoint = true,
             Coord = { x = -63.3, y = -1397.2 },
             Range = 8,
             ZoneStepTrigger = { x = -63.3, y = -1397.2, Range = 8, mapID = 1456 },
@@ -1014,7 +986,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1205,
-            NonSkippableWaypoint = true,
             Note = { "USE_ELEVATOR" },
             Coord = { x = -110.5, y = -970.7 },
             Range = 10,
@@ -1026,7 +997,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1205,
-            NonSkippableWaypoint = true,
             Note = { "USE_ELEVATOR" },
             Coord = { x = -76.9, y = -1026 },
             Range = 10,
@@ -1038,7 +1008,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1205,
-            NonSkippableWaypoint = true,
             Note = { "USE_ELEVATOR" },
             Coord = { x = -48.8, y = -1037.3 },
             Range = 10,
@@ -1050,7 +1019,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Waypoint = 1205,
-            NonSkippableWaypoint = true,
             Note = { "USE_ELEVATOR" },
             Coord = { x = -7.3, y = -1089.6 },
             Range = 10,
@@ -1138,7 +1106,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-Second-Visit"] = {
         },
         {
             Waypoint = 2621,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 35.3, 60.1),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1435, 35.3, 60.1, 20),
@@ -1148,7 +1115,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-Second-Visit"] = {
         },
         {
             Waypoint = 2621,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 46, 54.2),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1435, 46, 54.2, 20),
@@ -1295,7 +1261,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-Second-Visit"] = {
         },
         {
             Waypoint = 1428,
-            NonSkippableWaypoint = true,
             Note = { "GO_INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 66.37, 76.54),
             Range = 20,
@@ -1306,7 +1271,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-Second-Visit"] = {
         },
         {
             Waypoint = 1428,
-            NonSkippableWaypoint = true,
             Coord = { x = -3738.63, y = -10808.54 },
             Range = 12,
             ZoneStepTrigger = { x = -3738.63, y = -10808.54, Range = 12 },
@@ -1316,7 +1280,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-Second-Visit"] = {
         },
         {
             Waypoint = 1428,
-            NonSkippableWaypoint = true,
             Coord = { x = -3739, y = -10847 },
             Range = 5,
             ZoneStepTrigger = { x = -3739, y = -10847, Range = 5, mapID = 1435 },
@@ -1327,7 +1290,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-Second-Visit"] = {
         },
         {
             Waypoint = 1428,
-            NonSkippableWaypoint = true,
             Coord = { x = -3729, y = -10867 },
             Range = 5,
             ZoneStepTrigger = { x = -3729, y = -10867, Range = 5, mapID = 1435 },
@@ -1338,7 +1300,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-Second-Visit"] = {
         },
         {
             Waypoint = 1428,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 64.6, 81.25),
             Range = 12,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1435, 64.6, 81.25, 12),
@@ -1382,7 +1343,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-Second-Visit"] = {
         },
         {
             Waypoint = 2623,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 46, 54.2),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1435, 46, 54.2, 20),
@@ -1439,7 +1399,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-Second-Visit"] = {
         },
         {
             Waypoint = 2623,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 48.59, 55.27),
             Range = 5,
@@ -1486,7 +1445,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-Second-Visit"] = {
         },
         {
             Waypoint = 2801,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 35.3, 60.1),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1435, 35.3, 60.1, 20),
@@ -1557,7 +1515,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-Second-Visit"] = {
         },
         {
             Waypoint = 3122,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 25.9, 73.14),
             Range = 12,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 25.9, 73.14, 12),

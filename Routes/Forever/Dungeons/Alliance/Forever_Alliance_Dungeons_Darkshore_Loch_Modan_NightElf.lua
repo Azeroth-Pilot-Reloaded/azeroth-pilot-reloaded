@@ -82,7 +82,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 1141,
-            NonSkippableWaypoint = true,
             Note = { "UP_RAMP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.826, 44.15),
             Range = 5.0,
@@ -91,7 +90,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 1141,
-            NonSkippableWaypoint = true,
             Note = { "UP_RAMP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.688, 43.952),
             Range = 8.0,
@@ -252,7 +250,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 4681,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.701, 45.122),
             Range = 8,
             IsQuestCompleted = 3524,
@@ -263,7 +260,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 3524,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.701, 45.122),
             Range = 8.0,
             Zone = 1439,
@@ -283,7 +279,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 6343,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_MOONKIN_STONE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.126, 45.593),
             Range = 15.0,
@@ -420,7 +415,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 963,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.806, 44.137),
             Range = 8,
             IsQuestCompleted = 4681,
@@ -431,7 +425,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 963,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.743, 43.71),
             Range = 12,
             IsQuestCompleted = 4681,
@@ -442,7 +435,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 4681,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.806, 44.137),
             Range = 8.0,
             Zone = 1439,
@@ -450,7 +442,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 4681,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.743, 43.71),
             Range = 12.0,
             Zone = 1439,
@@ -464,7 +455,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 4681,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_END_DOCK_JUMP_WATER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 32.432, 43.744),
             Range = 15.0,
@@ -489,7 +479,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 4681,
-            NonSkippableWaypoint = true,
             Fillers = { [1001] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.701, 45.122),
             Range = 8.0,
@@ -556,7 +545,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 2178,
-            NonSkippableWaypoint = true,
             Note = { "ALLOW_MAKE_ROUGH_SHARPENING_STONES_INCREASE_MELEE", "NOT_WANT_SKIP_STEP" },
             Coord = { x = 436.36, y = 6542.65 },
             Range = 5,
@@ -638,7 +626,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 4761,
-            NonSkippableWaypoint = true,
             Note = { "BUY_MANY_SMALL_BROWN_POUCHES_BROWN_LEATHER" },
             Coord = { x = 488.69, y = 6564.83 },
             Range = 5,
@@ -649,7 +636,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 4761,
-            NonSkippableWaypoint = true,
             Note = { "BUY_MANY_SMALL_BROWN_POUCHES_BROWN_LEATHER", "BUY_SHARP_ARROWS_HEAVY_SHOTS_QUIVER_AMMO_POUCH" },
             Coord = { x = 488.69, y = 6564.83 },
             Range = 5,
@@ -772,7 +758,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 954,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 44.629, 36.316),
             Range = 20.0,
             Zone = 1439,
@@ -780,7 +765,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 954,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 44.168, 36.289),
             Range = 15.0,
             Zone = 1439,
@@ -928,7 +912,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 4811,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.703, 43.393),
             Range = 5,
             Zone = 1439,
@@ -1068,7 +1051,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 4813,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.703, 43.393),
             Range = 5,
             Class = { "DRUID", "PRIEST", "ROGUE", "WARRIOR" },
@@ -1208,7 +1190,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 4722,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.701, 45.122),
             Range = 5,
@@ -1218,7 +1199,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 4723,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.701, 45.122),
             Range = 8,
             IsQuestCompleted = 4722,
@@ -1228,7 +1208,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 4722,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.701, 45.122),
             Range = 8.0,
             IsQuestOnQuest = 4723,
@@ -1352,7 +1331,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 982,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 39.28, 43.121),
             Range = 6.0,
@@ -1361,7 +1339,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 982,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 39.162, 43.194),
             Range = 6.0,
@@ -1408,7 +1385,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 2178,
-            NonSkippableWaypoint = true,
             Note = { "START_COOKING_HERB_BAKED_EGGS_COOKING_REACHED", "CONTINUE_LEVELING_COOKING_RUN_OUT_SMALL_EGGS", "QUEST_DUSKWOOD_REQUIRING_COOKING_50_HIGHER_COOK", "SKIP_STEP_MADE_HERB_BAKED_EGGS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.511, 41.67),
             Range = 5,
@@ -1571,7 +1547,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 963,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.806, 44.137),
             Range = 8.0,
             Zone = 1439,
@@ -1579,7 +1554,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 963,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.743, 43.71),
             Range = 12.0,
             Zone = 1439,
@@ -1637,7 +1611,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 97914,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_STORMWIND_HARBOR" },
             Coord = { x = 1194.2, y = -8360.9 },
             Range = 10.0,
@@ -1647,7 +1620,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 97914,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_STORMWIND_HARBOR" },
             Coord = { x = 1076.3, y = -8408.5 },
             Range = 15.0,
@@ -1657,7 +1629,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 97914,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_STORMWIND_HARBOR" },
             Coord = { x = 1001.4, y = -8499.7 },
             Range = 10.0,
@@ -1667,7 +1638,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 97914,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_STORMWIND_HARBOR" },
             Coord = { x = 985.5, y = -8471.3 },
             Range = 15.0,
@@ -1677,7 +1647,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 97914,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_STORMWIND_HARBOR" },
             Coord = { x = 960.1, y = -8501.8 },
             Range = 15.0,
@@ -1687,7 +1656,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 97914,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_STORMWIND_HARBOR" },
             Coord = { x = 981.2, y = -8581.8 },
             Range = 15.0,
@@ -1697,7 +1665,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 97914,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_STORMWIND_HARBOR" },
             Coord = { x = 875.5, y = -8680.9 },
             Range = 10.0,
@@ -1808,7 +1775,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 6661,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_TRAM" },
             Coord = { x = 562.3, y = -8385.3 },
             Range = 20.0,
@@ -1818,7 +1784,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 6661,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_TRAM" },
             Coord = { x = 522.0, y = -8352.101 },
             Range = 5,
@@ -1865,7 +1830,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Note = { "TRAIN_THROWN_2H_MACES_NOT_EARLIER" },
             Coord = { x = -1205.65, y = -5042.12 },
             Range = 5,
@@ -1905,7 +1869,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Note = { "RUN_RAMP_VAGASH" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 59.9, 49.5),
             Range = 30.0,
@@ -1914,7 +1877,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Note = { "RUN_RAMP_VAGASH" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 61.2, 47.2),
             Range = 15.0,
@@ -1923,7 +1885,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Note = { "RUN_RAMP_VAGASH" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 62.1, 47.3),
             Range = 20.0,
@@ -1985,7 +1946,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 96391,
-            NonSkippableWaypoint = true,
             Note = { "KILL_DARK_IRON_SPIES_LOOT_DARK_IRON_MAP" },
             Coord = { x = -2009.87, y = -5860.22 },
             Range = 40.0,
@@ -2022,7 +1982,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SOUTH_GATE_PASS_LOCH_MODAN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 16.494, 58.424),
             Range = 20.0,
@@ -2032,7 +1991,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SOUTH_GATE_PASS_LOCH_MODAN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 19.594, 62.735),
             Range = 20.0,
@@ -2042,7 +2000,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SOUTH_GATE_PASS_LOCH_MODAN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 20.749, 64.326),
             Range = 20.0,
@@ -2052,7 +2009,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SOUTH_GATE_PASS_LOCH_MODAN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 21.106, 65.007),
             Range = 20.0,
@@ -2062,7 +2018,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SOUTH_GATE_PASS_LOCH_MODAN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 21.388, 66.357),
             Range = 20.0,
@@ -2072,7 +2027,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SOUTH_GATE_PASS_LOCH_MODAN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 21.498, 67.84),
             Range = 5,
@@ -2088,7 +2042,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_BUNKER_GO_TOP_FLOOR" },
             Coord = { x = -2635.61, y = -5879.14 },
             Range = 12.0,
@@ -2097,7 +2050,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_BUNKER_GO_TOP_FLOOR" },
             Coord = { x = -2645.27, y = -5874.91 },
             Range = 12.0,
@@ -2106,7 +2058,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_BUNKER_GO_TOP_FLOOR" },
             Coord = { x = -2631.48, y = -5847.5 },
             Range = 12.0,
@@ -2148,7 +2099,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.273, 47.75),
             Range = 10,
             AnyOf = { { Not = { IsQuestOnQuest = 418 } }, { IsQuestOnQuest = 418, IsQuestReadyForTurnIn = 418 } },
@@ -2158,7 +2108,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.433, 48.243),
             Range = 12,
             AnyOf = { { Not = { IsQuestOnQuest = 418 } }, { IsQuestOnQuest = 418, IsQuestReadyForTurnIn = 418 } },
@@ -2188,7 +2137,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3006.61, y = -5259.57 },
             Range = 15.0,
@@ -2197,7 +2145,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3020.95, y = -5282.02 },
             Range = 15.0,
@@ -2206,7 +2153,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3023.44, y = -5326.9 },
             Range = 15.0,
@@ -2215,7 +2161,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3007.99, y = -5337.39 },
             Range = 15.0,
@@ -2224,7 +2169,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -2964.41, y = -5349.9 },
             Range = 15.0,
@@ -2233,7 +2177,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -2894.9, y = -5401.96 },
             Range = 20.0,
@@ -2255,7 +2198,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 267,
-            NonSkippableWaypoint = true,
             Note = { "RUN_UP_DIRT_PATH_DROP_DOWN_BUNKER" },
             Coord = { x = -2677.26, y = -5778.34 },
             Range = 10.0,
@@ -2264,7 +2206,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 267,
-            NonSkippableWaypoint = true,
             Note = { "RUN_UP_DIRT_PATH_DROP_DOWN_BUNKER" },
             Coord = { x = -2648.3, y = -5876.75 },
             Range = 15.0,
@@ -2291,7 +2232,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 1339,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 23.49, 18.008),
             Range = 5,
             Zone = 1432,
@@ -2299,7 +2239,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 1339,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_BUNKER_GO_TOP_FLOOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 23.49, 18.008),
             Range = 15.0,
@@ -2308,7 +2247,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 1339,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_BUNKER_GO_TOP_FLOOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 24.279, 17.959),
             Range = 12.0,
@@ -2329,7 +2267,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2977, y = -4815 },
             Range = 8,
             IsQuestOnQuest = 307,
@@ -2339,7 +2276,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Fillers = { [416] = { 1 } },
             Note = { "ENTER_SILVER_STREAM_MINE" },
             Coord = { x = -2972.96, y = -4835.187 },
@@ -2349,7 +2285,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2977, y = -4857 },
             Range = 3,
             IsQuestOnQuest = 307,
@@ -2359,7 +2294,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2979, y = -4863 },
             Range = 3,
             IsQuestOnQuest = 307,
@@ -2369,7 +2303,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2977, y = -4875 },
             Range = 3,
             IsQuestOnQuest = 307,
@@ -2379,7 +2312,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2972, y = -4887 },
             Range = 3,
             IsQuestOnQuest = 307,
@@ -2397,7 +2329,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2977, y = -4815 },
             Range = 8,
             IsQuestOnQuest = 307,
@@ -2425,7 +2356,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_BUNKER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 23.49, 18.008),
             Range = 15.0,
@@ -2434,7 +2364,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_BUNKER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 24.279, 17.959),
             Range = 15.0,
@@ -2443,7 +2372,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Note = { "VENDOR_REPAIR_NECESSARY" },
             Coord = { x = -2659.45, y = -4822.45 },
             Range = 5,
@@ -2459,7 +2387,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2735.74, y = -4684.34 },
             Range = 90.0,
@@ -2468,7 +2395,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2846.07, y = -4682.5 },
             Range = 90.0,
@@ -2477,7 +2403,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2782.63, y = -4770.8 },
             Range = 90.0,
@@ -2486,7 +2411,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2835.04, y = -4976.83 },
             Range = 90.0,
@@ -2495,7 +2419,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2915.03, y = -5044.89 },
             Range = 90.0,
@@ -2504,7 +2427,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3080.53, y = -5100.08 },
             Range = 90.0,
@@ -2513,7 +2435,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2735.74, y = -4684.34 },
             Range = 90.0,
@@ -2522,7 +2443,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2846.07, y = -4682.5 },
             Range = 90.0,
@@ -2531,7 +2451,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2782.63, y = -4770.8 },
             Range = 90.0,
@@ -2540,7 +2459,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2835.04, y = -4976.83 },
             Range = 90.0,
@@ -2549,7 +2467,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2915.03, y = -5044.89 },
             Range = 90.0,
@@ -2558,7 +2475,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3080.53, y = -5100.08 },
             Range = 90.0,
@@ -2567,7 +2483,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2735.74, y = -4684.34 },
             Range = 5,
@@ -2576,7 +2491,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3041.92, y = -5129.51 },
             Range = 90.0,
@@ -2585,7 +2499,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3017.09, y = -5219.65 },
             Range = 90.0,
@@ -2594,7 +2507,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2815.73, y = -5147.91 },
             Range = 90.0,
@@ -2603,7 +2515,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2757.81, y = -4952.91 },
             Range = 90.0,
@@ -2612,7 +2523,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2782.63, y = -4903.25 },
             Range = 90.0,
@@ -2621,7 +2531,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3041.92, y = -5129.51 },
             Range = 90.0,
@@ -2630,7 +2539,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3017.09, y = -5219.65 },
             Range = 90.0,
@@ -2639,7 +2547,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2815.73, y = -5147.91 },
             Range = 90.0,
@@ -2648,7 +2555,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2757.81, y = -4952.91 },
             Range = 90.0,
@@ -2657,7 +2563,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2782.63, y = -4903.25 },
             Range = 90.0,
@@ -2666,7 +2571,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3041.92, y = -5129.51 },
             Range = 5,
@@ -2675,7 +2579,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2873.66, y = -4789.19 },
             Range = 90.0,
@@ -2684,7 +2587,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2766.08, y = -4866.45 },
             Range = 90.0,
@@ -2693,7 +2595,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2926.07, y = -5232.53 },
             Range = 90.0,
@@ -2702,7 +2603,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2992.27, y = -5055.93 },
             Range = 90.0,
@@ -2711,7 +2611,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3069.5, y = -5078.01 },
             Range = 90.0,
@@ -2720,7 +2619,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2873.66, y = -4789.19 },
             Range = 90.0,
@@ -2729,7 +2627,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2766.08, y = -4866.45 },
             Range = 90.0,
@@ -2738,7 +2635,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2926.07, y = -5232.53 },
             Range = 90.0,
@@ -2747,7 +2643,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2992.27, y = -5055.93 },
             Range = 90.0,
@@ -2756,7 +2651,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3069.5, y = -5078.01 },
             Range = 90.0,
@@ -2777,7 +2671,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_STOUTLAGER_INN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.273, 47.75),
             Range = 10.0,
@@ -2786,7 +2679,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_STOUTLAGER_INN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.433, 48.243),
             Range = 12.0,
@@ -2819,7 +2711,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 436,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 37.17, 47.94),
             Range = 8.0,
             Zone = 1432,
@@ -2833,7 +2724,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3006.61, y = -5259.57 },
             Range = 15.0,
@@ -2842,7 +2732,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3020.95, y = -5282.02 },
             Range = 15.0,
@@ -2851,7 +2740,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3023.44, y = -5326.9 },
             Range = 15.0,
@@ -2860,7 +2748,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3007.99, y = -5337.39 },
             Range = 15.0,
@@ -2869,7 +2756,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -2964.41, y = -5349.9 },
             Range = 15.0,
@@ -2878,7 +2764,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -2894.9, y = -5401.96 },
             Range = 20.0,
@@ -2920,7 +2805,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 257,
-            NonSkippableWaypoint = true,
             Note = { "BUY_AGILE_BOOTS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 82.6, 64),
             Range = 5,
@@ -2938,7 +2822,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 257,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 82.92, 59.37),
             Range = 80.0,
             Zone = 1432,
@@ -2946,7 +2829,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 257,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 83.28, 62.97),
             Range = 25.0,
             Zone = 1432,
@@ -2975,7 +2857,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 385,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 54.7, 38.3),
             Range = 200.0,
             Zone = 1432,
@@ -3012,7 +2893,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 258,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 82.92, 59.37),
             Range = 80.0,
             Zone = 1432,
@@ -3020,7 +2900,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 258,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 83.28, 62.97),
             Range = 25.0,
             Zone = 1432,
@@ -3046,7 +2925,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 301,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 37.17, 47.94),
             Range = 8,
             IsQuestCompleted = 298,
@@ -3057,7 +2935,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 298,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 37.17, 47.94),
             Range = 8.0,
             Zone = 1432,
@@ -3077,7 +2954,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Waypoint = 86614,
-            NonSkippableWaypoint = true,
             Coord = { x = -3104.9, y = -5210.1 },
             Range = 5.0,
             RaidIcon = 1684,

@@ -43,7 +43,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
     steps = {
         {
             Waypoint = 2864,
-            NonSkippableWaypoint = true,
             Coord = { x = -110.5, y = -970.7 },
             Range = 10,
             IsQuestUncompleted = 2864,
@@ -54,7 +53,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 2864,
-            NonSkippableWaypoint = true,
             Coord = { x = -76.9, y = -1026 },
             Range = 10,
             IsQuestUncompleted = 2864,
@@ -65,7 +63,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 2864,
-            NonSkippableWaypoint = true,
             Coord = { x = -48.8, y = -1037.3 },
             Range = 10,
             IsQuestUncompleted = 2864,
@@ -76,7 +73,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 2864,
-            NonSkippableWaypoint = true,
             Coord = { x = -7.3, y = -1089.6 },
             Range = 10,
             IsQuestUncompleted = 2864,
@@ -124,7 +120,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 243,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.46, 28.52),
             Range = 5,
             IsQuestCompleted = 238,
@@ -159,7 +154,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1690,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.46, 28.52),
             Range = 5,
             Zone = 1446,
@@ -335,7 +329,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1117,
-            NonSkippableWaypoint = true,
             Coord = { x = -3759.2, y = -7076.3 },
             Range = 8,
             ZoneStepTrigger = { x = -3759.2, y = -7076.3, Range = 8 },
@@ -346,7 +339,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1117,
-            NonSkippableWaypoint = true,
             Coord = { x = -3695, y = -7079.7 },
             Range = 8,
             ZoneStepTrigger = { x = -3695, y = -7079.7, Range = 8 },
@@ -357,7 +349,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1117,
-            NonSkippableWaypoint = true,
             Coord = { x = -3676, y = -7043.1 },
             Range = 8,
             ZoneStepTrigger = { x = -3676, y = -7043.1, Range = 8 },
@@ -368,7 +359,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1117,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             ZoneStepTrigger = { x = -3709.6, y = -6959.6, Range = 8 },
@@ -379,7 +369,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1117,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 50.87, 23.09),
             Range = 20,
             Zone = 1446,
@@ -387,7 +376,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1117,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             ZoneStepTrigger = { x = -3746.2, y = -6911.3, Range = 8 },
@@ -398,7 +386,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1117,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             ZoneStepTrigger = { x = -3772.6, y = -6880.6, Range = 8 },
@@ -409,7 +396,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1117,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             ZoneStepTrigger = { x = -3752.1, y = -6842.5, Range = 8 },
@@ -420,7 +406,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1117,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 75.49, 97.58),
             Range = 20,
             Zone = 1441,
@@ -428,7 +413,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1117,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             ZoneStepTrigger = { x = -3755, y = -6801.5, Range = 8 },
@@ -439,7 +423,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1117,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             ZoneStepTrigger = { x = -3700.9, y = -6753.2, Range = 8 },
@@ -549,7 +532,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1169,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             ZoneStepTrigger = { x = -3700.9, y = -6753.2, Range = 8 },
@@ -560,7 +542,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1169,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             ZoneStepTrigger = { x = -3755, y = -6801.5, Range = 8 },
@@ -571,7 +552,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1169,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 75.44, 97.37),
             Range = 20,
             SkipInZones = { 1446, 1445 },
@@ -580,7 +560,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1169,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             ZoneStepTrigger = { x = -3752.1, y = -6842.5, Range = 8 },
@@ -591,7 +570,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1169,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             ZoneStepTrigger = { x = -3772.6, y = -6880.6, Range = 8 },
@@ -602,7 +580,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1169,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             ZoneStepTrigger = { x = -3746.2, y = -6911.3, Range = 8 },
@@ -613,7 +590,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1169,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             ZoneStepTrigger = { x = -3709.6, y = -6959.6, Range = 8 },
@@ -624,7 +600,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1169,
-            NonSkippableWaypoint = true,
             Coord = { x = -3676, y = -7043.1 },
             Range = 8,
             ZoneStepTrigger = { x = -3676, y = -7043.1, Range = 8 },
@@ -635,7 +610,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1169,
-            NonSkippableWaypoint = true,
             Coord = { x = -3695, y = -7079.7 },
             Range = 8,
             ZoneStepTrigger = { x = -3695, y = -7079.7, Range = 8 },
@@ -646,7 +620,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1169,
-            NonSkippableWaypoint = true,
             Coord = { x = -3759.2, y = -7076.3 },
             Range = 8,
             ZoneStepTrigger = { x = -3759.2, y = -7076.3, Range = 8 },
@@ -657,7 +630,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1169,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 51.6, 25.44),
             Range = 20,
             SkipInZones = { 1445 },
@@ -720,7 +692,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1169,
-            NonSkippableWaypoint = true,
             Note = { "GO_INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 38.31, 66.23),
             Range = 12,
@@ -767,7 +738,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
         },
         {
             Waypoint = 1169,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 36.64, 31.72),
             Range = 20,
             Zone = 1445,
@@ -1037,7 +1007,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 1188,
-            NonSkippableWaypoint = true,
             Coord = { x = -3759.2, y = -7076.3 },
             Range = 8,
             ZoneStepTrigger = { x = -3759.2, y = -7076.3, Range = 8 },
@@ -1048,7 +1017,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 1188,
-            NonSkippableWaypoint = true,
             Coord = { x = -3695, y = -7079.7 },
             Range = 8,
             ZoneStepTrigger = { x = -3695, y = -7079.7, Range = 8 },
@@ -1059,7 +1027,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 1188,
-            NonSkippableWaypoint = true,
             Coord = { x = -3676, y = -7043.1 },
             Range = 8,
             ZoneStepTrigger = { x = -3676, y = -7043.1, Range = 8 },
@@ -1070,7 +1037,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 1188,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             ZoneStepTrigger = { x = -3709.6, y = -6959.6, Range = 8 },
@@ -1081,7 +1047,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 1188,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             ZoneStepTrigger = { x = -3746.2, y = -6911.3, Range = 8 },
@@ -1092,7 +1057,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 1188,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             ZoneStepTrigger = { x = -3772.6, y = -6880.6, Range = 8 },
@@ -1103,7 +1067,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 1188,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             ZoneStepTrigger = { x = -3752.1, y = -6842.5, Range = 8 },
@@ -1114,7 +1077,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 1188,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             ZoneStepTrigger = { x = -3755, y = -6801.5, Range = 8 },
@@ -1125,7 +1087,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 1188,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             ZoneStepTrigger = { x = -3700.9, y = -6753.2, Range = 8 },
@@ -1136,7 +1097,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 1119,
-            NonSkippableWaypoint = true,
             Coord = { x = -3538.85, y = -5805.57 },
             Range = 20,
             Zone = 1441,
@@ -1189,7 +1149,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 3362,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             ZoneStepTrigger = { x = -3700.9, y = -6753.2, Range = 8 },
@@ -1200,7 +1159,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 3362,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             ZoneStepTrigger = { x = -3755, y = -6801.5, Range = 8 },
@@ -1211,7 +1169,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 1188,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 75.44, 97.37),
             Range = 20,
             Zone = 1441,
@@ -1219,7 +1176,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 3362,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             ZoneStepTrigger = { x = -3752.1, y = -6842.5, Range = 8 },
@@ -1230,7 +1186,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 3362,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             ZoneStepTrigger = { x = -3772.6, y = -6880.6, Range = 8 },
@@ -1241,7 +1196,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 3362,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             ZoneStepTrigger = { x = -3746.2, y = -6911.3, Range = 8 },
@@ -1252,7 +1206,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 3362,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             ZoneStepTrigger = { x = -3709.6, y = -6959.6, Range = 8 },
@@ -1263,7 +1216,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 3362,
-            NonSkippableWaypoint = true,
             Coord = { x = -3676, y = -7043.1 },
             Range = 8,
             ZoneStepTrigger = { x = -3676, y = -7043.1, Range = 8 },
@@ -1274,7 +1226,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 3362,
-            NonSkippableWaypoint = true,
             Coord = { x = -3695, y = -7079.7 },
             Range = 8,
             ZoneStepTrigger = { x = -3695, y = -7079.7, Range = 8 },
@@ -1285,7 +1236,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 3362,
-            NonSkippableWaypoint = true,
             Coord = { x = -3759.2, y = -7076.3 },
             Range = 8,
             ZoneStepTrigger = { x = -3759.2, y = -7076.3, Range = 8 },
@@ -1427,7 +1377,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 8366,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 67.06, 23.89),
             Range = 5,
             Zone = 1446,
@@ -1447,7 +1396,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 2875,
-            NonSkippableWaypoint = true,
             Coord = { x = -4953, y = -7772 },
             Range = 6,
             ZoneStepTrigger = { x = -4953, y = -7772, Range = 6, mapID = 1446 },
@@ -1458,7 +1406,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 2875,
-            NonSkippableWaypoint = true,
             Coord = { x = -4959, y = -7784 },
             Range = 3,
             ZoneStepTrigger = { x = -4959, y = -7784, Range = 3, mapID = 1446 },
@@ -1469,7 +1416,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 3380,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 68.76, 41.51),
             Range = 20,
             Zone = 1446,
@@ -1477,7 +1423,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 2875,
-            NonSkippableWaypoint = true,
             Coord = { x = -4973, y = -7784 },
             Range = 3,
             ZoneStepTrigger = { x = -4973, y = -7784, Range = 3, mapID = 1446 },
@@ -1488,7 +1433,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 2875,
-            NonSkippableWaypoint = true,
             Coord = { x = -4983, y = -7790 },
             Range = 3,
             ZoneStepTrigger = { x = -4983, y = -7790, Range = 3, mapID = 1446 },
@@ -1499,7 +1443,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 2875,
-            NonSkippableWaypoint = true,
             Coord = { x = -4999, y = -7810 },
             Range = 3,
             ZoneStepTrigger = { x = -4999, y = -7810, Range = 3, mapID = 1446 },
@@ -1510,7 +1453,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 2875,
-            NonSkippableWaypoint = true,
             Coord = { x = -5035, y = -7828 },
             Range = 4,
             ZoneStepTrigger = { x = -5035, y = -7828, Range = 4, mapID = 1446 },
@@ -1521,7 +1463,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 2875,
-            NonSkippableWaypoint = true,
             Coord = { x = -5039, y = -7850 },
             Range = 6,
             ZoneStepTrigger = { x = -5039, y = -7850, Range = 6, mapID = 1446 },
@@ -1598,7 +1539,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 2875,
-            NonSkippableWaypoint = true,
             Coord = { x = -4953, y = -7772 },
             Range = 6,
             ZoneStepTrigger = { x = -4953, y = -7772, Range = 6, mapID = 1446 },
@@ -1609,7 +1549,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 3380,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 68.27, 41.21),
             Range = 20,
             Zone = 1446,
@@ -1617,7 +1556,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 3380,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 65.71, 41.53),
             Range = 20,
             Zone = 1446,
@@ -1625,7 +1563,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 3380,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.71, 45.92),
             Range = 20,
             Zone = 1446,
@@ -1654,7 +1591,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 1560,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 40.98, 57.16),
             Range = 20,
             Zone = 1446,
@@ -1692,7 +1628,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 1560,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 31.06, 64.91),
             Range = 20.0,
             Zone = 1446,
@@ -1805,7 +1740,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 2605,
-            NonSkippableWaypoint = true,
             Coord = { x = -3850.22, y = -7168.06 },
             Range = 5,
             Zone = 1446,
@@ -1903,7 +1837,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 351,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 56.19, 66.62),
             Range = 20,
             Zone = 1446,
@@ -1911,7 +1844,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 10,
-            NonSkippableWaypoint = true,
             Coord = { x = -4070, y = -9014 },
             Range = 8,
             IsQuestOnQuest = 10,
@@ -1922,7 +1854,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 10,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 55.69, 69.44),
             Range = 12,
             IsQuestOnQuest = 10,
@@ -1933,7 +1864,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 10,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 56.36, 68.44),
             Range = 12,
             IsQuestOnQuest = 10,
@@ -1944,7 +1874,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 10,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 57.45, 70.45),
             Range = 12,
             IsQuestOnQuest = 10,
@@ -1963,7 +1892,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 351,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 57.45, 70.45),
             Range = 12,
             IsQuestOnQuest = 10,
@@ -1973,7 +1901,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 351,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 56.36, 68.44),
             Range = 12,
             IsQuestOnQuest = 10,
@@ -1983,7 +1910,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 351,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 55.69, 69.44),
             Range = 12,
             IsQuestOnQuest = 10,
@@ -1993,7 +1919,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 10,
-            NonSkippableWaypoint = true,
             Coord = { x = -4070, y = -9014 },
             Range = 8,
             IsQuestOnQuest = 10,
@@ -2038,7 +1963,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 10,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.5, 27.9),
             Range = 20,
             Zone = 1446,
@@ -2166,7 +2090,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 625,
-            NonSkippableWaypoint = true,
             Coord = { x = -2662, y = -4333 },
             Range = 5,
             ZoneStepTrigger = { x = -2662, y = -4333, Range = 5, mapID = 1445 },
@@ -2177,7 +2100,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 625,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_BURROW" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 32.28, 65.54),
             Range = 20,
@@ -2186,7 +2108,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 625,
-            NonSkippableWaypoint = true,
             Coord = { x = -2642, y = -4333 },
             Range = 3,
             ZoneStepTrigger = { x = -2642, y = -4333, Range = 3, mapID = 1445 },
@@ -2197,7 +2118,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 625,
-            NonSkippableWaypoint = true,
             Coord = { x = -2612, y = -4341 },
             Range = 3,
             ZoneStepTrigger = { x = -2612, y = -4341, Range = 3, mapID = 1445 },
@@ -2224,7 +2144,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 626,
-            NonSkippableWaypoint = true,
             Coord = { x = -2662, y = -4333 },
             Range = 5,
             IsQuestOnQuest = 626,
@@ -2251,7 +2170,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 1172,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 36.1, 30.7),
             Range = 20,
             Zone = 1445,
@@ -2434,7 +2352,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 32,
-            NonSkippableWaypoint = true,
             Note = { "SPEND_PET_TRAINING_POINTS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 47.52, 46.73),
             Range = 5,
@@ -2446,7 +2363,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 32,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 56.42, 56.92),
             Range = 12,
             IsQuestOnQuest = 32,
@@ -2488,7 +2404,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 864,
-            NonSkippableWaypoint = true,
             Coord = { x = -4682, y = 2032 },
             Range = 8,
             ZoneStepTrigger = { x = -4682, y = 2032, Range = 8, mapID = 1454 },
@@ -2502,7 +2417,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 864,
-            NonSkippableWaypoint = true,
             Coord = { x = -4702, y = 2047 },
             Range = 8,
             ZoneStepTrigger = { x = -4702, y = 2047, Range = 8, mapID = 1454 },
@@ -2516,7 +2430,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 864,
-            NonSkippableWaypoint = true,
             Coord = { x = -4705, y = 2073 },
             Range = 8,
             ZoneStepTrigger = { x = -4705, y = 2073, Range = 8, mapID = 1454 },
@@ -2530,7 +2443,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 864,
-            NonSkippableWaypoint = true,
             Coord = { x = -4661, y = 2089 },
             Range = 8,
             ZoneStepTrigger = { x = -4661, y = 2089, Range = 8, mapID = 1454 },
@@ -2544,7 +2456,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 864,
-            NonSkippableWaypoint = true,
             Coord = { x = -4645, y = 2059 },
             Range = 8,
             ZoneStepTrigger = { x = -4645, y = 2059, Range = 8, mapID = 1454 },
@@ -2558,7 +2469,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 864,
-            NonSkippableWaypoint = true,
             Coord = { x = -4616, y = 2057 },
             Range = 8,
             ZoneStepTrigger = { x = -4616, y = 2057, Range = 8, mapID = 1454 },
@@ -2572,7 +2482,6 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             Waypoint = 864,
-            NonSkippableWaypoint = true,
             Coord = { x = -4604, y = 2078 },
             Range = 8,
             ZoneStepTrigger = { x = -4604, y = 2078, Range = 8, mapID = 1454 },

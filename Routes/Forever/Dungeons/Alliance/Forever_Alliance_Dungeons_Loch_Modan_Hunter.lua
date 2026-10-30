@@ -24,7 +24,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
     steps = {
         {
             Waypoint = 414,
-            NonSkippableWaypoint = true,
             Coord = { x = -2443.41, y = -5560.12 },
             Range = 15.0,
             SkipInZones = { 1432 },
@@ -33,7 +32,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 414,
-            NonSkippableWaypoint = true,
             Coord = { x = -2602.54, y = -5832.73 },
             Range = 20.0,
             SkipInZones = { 1432 },
@@ -54,7 +52,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3006.61, y = -5259.57 },
             Range = 15.0,
@@ -63,7 +60,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3020.95, y = -5282.02 },
             Range = 15.0,
@@ -72,7 +68,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3023.44, y = -5326.9 },
             Range = 15.0,
@@ -81,7 +76,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3007.99, y = -5337.39 },
             Range = 15.0,
@@ -90,7 +84,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -2964.41, y = -5349.9 },
             Range = 15.0,
@@ -99,7 +92,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -2894.9, y = -5401.96 },
             Range = 20.0,
@@ -123,7 +115,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.273, 47.75),
             Range = 10,
             IsQuestUncompleted = 418,
@@ -133,7 +124,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.433, 48.243),
             Range = 12,
             IsQuestUncompleted = 418,
@@ -155,7 +145,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 6387,
-            NonSkippableWaypoint = true,
             Coord = { x = -3019.02, y = -5369.4 },
             Range = 8.0,
             Zone = 1432,
@@ -200,7 +189,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 291,
-            NonSkippableWaypoint = true,
             Coord = { x = -1058.62, y = -4836.37 },
             Range = 20.0,
             IsQuestOnQuest = 291,
@@ -242,7 +230,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 6392,
-            NonSkippableWaypoint = true,
             Coord = { x = -3019.02, y = -5369.4 },
             Range = 8.0,
             Zone = 1432,
@@ -265,7 +252,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 1339,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_NORTH_ALGAZ_STATION" },
             Coord = { x = -2651.61, y = -4817.15 },
             Range = 100.0,
@@ -286,7 +272,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2977, y = -4815 },
             Range = 8,
             IsQuestOnQuest = 307,
@@ -296,7 +281,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_SILVER_STREAM_MINE" },
             Coord = { x = -2972.96, y = -4835.187 },
             Range = 20.0,
@@ -305,7 +289,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2977, y = -4857 },
             Range = 3,
             IsQuestOnQuest = 307,
@@ -315,7 +298,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2979, y = -4863 },
             Range = 3,
             IsQuestOnQuest = 307,
@@ -325,7 +307,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2977, y = -4875 },
             Range = 3,
             IsQuestOnQuest = 307,
@@ -335,7 +316,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2972, y = -4887 },
             Range = 3,
             IsQuestOnQuest = 307,
@@ -352,7 +332,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2977, y = -4815 },
             Range = 8,
             IsQuestOnQuest = 307,
@@ -375,7 +354,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2735.74, y = -4684.34 },
             Range = 90.0,
@@ -384,7 +362,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2846.07, y = -4682.5 },
             Range = 90.0,
@@ -393,7 +370,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2782.63, y = -4770.8 },
             Range = 90.0,
@@ -402,7 +378,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2835.04, y = -4976.83 },
             Range = 90.0,
@@ -411,7 +386,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2915.03, y = -5044.89 },
             Range = 90.0,
@@ -420,7 +394,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3080.53, y = -5100.08 },
             Range = 90.0,
@@ -429,7 +402,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2735.74, y = -4684.34 },
             Range = 90.0,
@@ -438,7 +410,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2846.07, y = -4682.5 },
             Range = 90.0,
@@ -447,7 +418,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2782.63, y = -4770.8 },
             Range = 90.0,
@@ -456,7 +426,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2835.04, y = -4976.83 },
             Range = 90.0,
@@ -465,7 +434,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2915.03, y = -5044.89 },
             Range = 90.0,
@@ -474,7 +442,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3080.53, y = -5100.08 },
             Range = 90.0,
@@ -483,7 +450,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2735.74, y = -4684.34 },
             Range = 5,
@@ -492,7 +458,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3041.92, y = -5129.51 },
             Range = 90.0,
@@ -501,7 +466,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3017.09, y = -5219.65 },
             Range = 90.0,
@@ -510,7 +474,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2815.73, y = -5147.91 },
             Range = 90.0,
@@ -519,7 +482,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2757.81, y = -4952.91 },
             Range = 90.0,
@@ -528,7 +490,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2782.63, y = -4903.25 },
             Range = 90.0,
@@ -537,7 +498,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3041.92, y = -5129.51 },
             Range = 90.0,
@@ -546,7 +506,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3017.09, y = -5219.65 },
             Range = 90.0,
@@ -555,7 +514,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2815.73, y = -5147.91 },
             Range = 90.0,
@@ -564,7 +522,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2757.81, y = -4952.91 },
             Range = 90.0,
@@ -573,7 +530,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2782.63, y = -4903.25 },
             Range = 90.0,
@@ -582,7 +538,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3041.92, y = -5129.51 },
             Range = 5,
@@ -591,7 +546,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2873.66, y = -4789.19 },
             Range = 90.0,
@@ -600,7 +554,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2766.08, y = -4866.45 },
             Range = 90.0,
@@ -609,7 +562,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2926.07, y = -5232.53 },
             Range = 90.0,
@@ -618,7 +570,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2992.27, y = -5055.93 },
             Range = 90.0,
@@ -627,7 +578,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3069.5, y = -5078.01 },
             Range = 90.0,
@@ -636,7 +586,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2873.66, y = -4789.19 },
             Range = 90.0,
@@ -645,7 +594,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2766.08, y = -4866.45 },
             Range = 90.0,
@@ -654,7 +602,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2926.07, y = -5232.53 },
             Range = 90.0,
@@ -663,7 +610,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2992.27, y = -5055.93 },
             Range = 90.0,
@@ -672,7 +618,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3069.5, y = -5078.01 },
             Range = 90.0,
@@ -688,7 +633,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3006.61, y = -5259.57 },
             Range = 15.0,
@@ -697,7 +641,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3020.95, y = -5282.02 },
             Range = 15.0,
@@ -706,7 +649,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3023.44, y = -5326.9 },
             Range = 15.0,
@@ -715,7 +657,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3007.99, y = -5337.39 },
             Range = 15.0,
@@ -724,7 +665,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -2964.41, y = -5349.9 },
             Range = 15.0,
@@ -733,7 +673,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -2894.9, y = -5401.96 },
             Range = 20.0,
@@ -761,7 +700,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.273, 47.75),
             Range = 10,
             IsQuestOnQuest = 418,
@@ -771,7 +709,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.433, 48.243),
             Range = 12,
             IsQuestOnQuest = 418,
@@ -806,7 +743,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 86667,
-            NonSkippableWaypoint = true,
             Coord = { x = -2619.2, y = -5783.3 },
             Range = 8,
             IsQuestOnQuest = 86667,
@@ -816,7 +752,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 86667,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 21.498, 67.84),
             Range = 8,
             IsQuestOnQuest = 86667,
@@ -826,7 +761,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 86667,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 21.388, 66.357),
             Range = 8,
             IsQuestOnQuest = 86667,
@@ -836,7 +770,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 86667,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SNOWY_PATCH_GROUND_OUTSIDE_SOUTH_GATE_PASS" },
             Coord = { x = -2534.38, y = -5648.28 },
             Range = 5.0,
@@ -860,7 +793,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 86614,
-            NonSkippableWaypoint = true,
             Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "NOTE_SPAWN_ONE_MANY_DIFFERENT_LOCATIONS_SWIM_SEE", "CAREFUL_HIGH_LEVEL_YOUNG_THRESHADON" },
             Coord = { x = -3319.8, y = -5217.6 },
             Range = 20.0,
@@ -870,7 +802,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 86614,
-            NonSkippableWaypoint = true,
             Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "NOTE_SPAWN_ONE_MANY_DIFFERENT_LOCATIONS_SWIM_SEE", "CAREFUL_HIGH_LEVEL_YOUNG_THRESHADON" },
             Coord = { x = -3251.5499, y = -5285.879 },
             Range = 20.0,
@@ -880,7 +811,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 86614,
-            NonSkippableWaypoint = true,
             Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "NOTE_SPAWN_ONE_MANY_DIFFERENT_LOCATIONS_SWIM_SEE", "CAREFUL_HIGH_LEVEL_YOUNG_THRESHADON" },
             Coord = { x = -3342.5748, y = -5484.554 },
             Range = 20.0,
@@ -899,7 +829,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 86614,
-            NonSkippableWaypoint = true,
             Coord = { x = -3104.9, y = -5210.1 },
             Range = 5.0,
             RaidIcon = 1684,
@@ -917,7 +846,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 257,
-            NonSkippableWaypoint = true,
             Coord = { x = -3783.63, y = -5713.77 },
             Range = 80.0,
             Zone = 1432,
@@ -931,7 +859,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 257,
-            NonSkippableWaypoint = true,
             Coord = { x = -4280.96, y = -5579.66 },
             Range = 80.0,
             Zone = 1432,
@@ -939,7 +866,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 257,
-            NonSkippableWaypoint = true,
             Coord = { x = -4290.89, y = -5645.89 },
             Range = 25.0,
             Zone = 1432,
@@ -987,7 +913,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 298,
-            NonSkippableWaypoint = true,
             Coord = { x = -3019.02, y = -5369.4 },
             Range = 8.0,
             Zone = 1432,
@@ -1027,7 +952,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 6661,
-            NonSkippableWaypoint = true,
             Coord = { x = -1330.28, y = -4840.43 },
             Range = 5,
             ZoneStepTrigger = { mapID = 1455, x = -1330.28, y = -4840.43, Range = 5 },
@@ -1038,7 +962,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 6661,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_TRAM" },
             Coord = { x = -1330.28, y = -4840.43 },
             Range = 5,

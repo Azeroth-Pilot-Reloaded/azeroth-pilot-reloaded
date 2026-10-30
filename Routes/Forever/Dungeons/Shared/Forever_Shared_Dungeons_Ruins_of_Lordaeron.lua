@@ -123,7 +123,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95250,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = 238.4, y = 1872.2 },
             Range = 20,
@@ -317,7 +316,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95189,
-            NonSkippableWaypoint = true,
             Coord = { x = 437.6, y = -8524.5 },
             Range = 20,
             Faction = "Alliance",
@@ -327,7 +325,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95189,
-            NonSkippableWaypoint = true,
             Coord = { x = 408.1, y = -8478.5 },
             Range = 15,
             Faction = "Alliance",
@@ -337,7 +334,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Waypoint = 95189,
-            NonSkippableWaypoint = true,
             Coord = { x = 502.9, y = -8358.8 },
             Range = 15,
             Faction = "Alliance",

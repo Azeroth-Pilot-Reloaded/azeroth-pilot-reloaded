@@ -48,7 +48,6 @@ APR.RouteQuestStepList["Forever-Alliance-Badlands"] = {
         },
         {
             Waypoint = 1467,
-            NonSkippableWaypoint = true,
             Coord = { x = -1250.5, y = -4661.57 },
             Range = 20,
             IsQuestOnQuest = 1467,
@@ -117,7 +116,6 @@ APR.RouteQuestStepList["Forever-Alliance-Badlands"] = {
         },
         {
             Waypoint = 707,
-            NonSkippableWaypoint = true,
             Coord = { x = -1117.6, y = -4615.14 },
             Range = 15.0,
             Class = "WARLOCK",
@@ -144,7 +142,6 @@ APR.RouteQuestStepList["Forever-Alliance-Badlands"] = {
         },
         {
             Waypoint = 707,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = { x = -1134.2, y = -4610.39 },
             Range = 15.0,
@@ -154,7 +151,6 @@ APR.RouteQuestStepList["Forever-Alliance-Badlands"] = {
         },
         {
             Waypoint = 707,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = { x = -1130.26, y = -4601.27 },
             Range = 5,
@@ -250,7 +246,6 @@ APR.RouteQuestStepList["Forever-Alliance-Badlands"] = {
         },
         {
             Waypoint = 2500,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 36.5, 48.35),
             Range = 15.0,
             Zone = 1432,
@@ -264,7 +259,6 @@ APR.RouteQuestStepList["Forever-Alliance-Badlands"] = {
         },
         {
             Waypoint = 707,
-            NonSkippableWaypoint = true,
             Coord = { x = -3812.32, y = -5694.63 },
             Range = 20,
             Zone = 1432,
@@ -284,7 +278,6 @@ APR.RouteQuestStepList["Forever-Alliance-Badlands"] = {
         },
         {
             Waypoint = 718,
-            NonSkippableWaypoint = true,
             Coord = { x = -3282.17, y = -5902.14 },
             Range = 20,
             Zone = 1432,
@@ -292,7 +285,6 @@ APR.RouteQuestStepList["Forever-Alliance-Badlands"] = {
         },
         {
             Waypoint = 718,
-            NonSkippableWaypoint = true,
             Coord = { x = -3303.76, y = -6018.93 },
             Range = 5,
             Zone = 1418,
@@ -300,7 +292,6 @@ APR.RouteQuestStepList["Forever-Alliance-Badlands"] = {
         },
         {
             Waypoint = 719,
-            NonSkippableWaypoint = true,
             Fillers = { [2500] = { 1, 2, 3  }, [703] = { 1 } },
             Coord = { x = -3408.01, y = -6609.18 },
             Range = 5,
@@ -332,7 +323,6 @@ APR.RouteQuestStepList["Forever-Alliance-Badlands"] = {
         },
         {
             Waypoint = 718,
-            NonSkippableWaypoint = true,
             Fillers = { [2500] = { 1, 2, 3  }, [703] = { 1 } },
             Coord = { x = -3743.8, y = -6278.46 },
             Range = 20,
@@ -350,7 +340,6 @@ APR.RouteQuestStepList["Forever-Alliance-Badlands"] = {
         },
         {
             Waypoint = 718,
-            NonSkippableWaypoint = true,
             Fillers = { [2500] = { 1, 2, 3  }, [703] = { 1 } },
             Coord = { x = -3417.49, y = -6607.66 },
             Range = 5,
@@ -897,7 +886,6 @@ APR.RouteQuestStepList["Forever-Alliance-Badlands"] = {
         },
         {
             Waypoint = 2500,
-            NonSkippableWaypoint = true,
             Coord = { x = -3303.76, y = -6018.93 },
             Range = 15,
             IsQuestUncompleted = 2500,
@@ -907,7 +895,6 @@ APR.RouteQuestStepList["Forever-Alliance-Badlands"] = {
         },
         {
             Waypoint = 2500,
-            NonSkippableWaypoint = true,
             Coord = { x = -3282.17, y = -5902.14 },
             Range = 20,
             IsQuestUncompleted = 2500,
@@ -917,7 +904,6 @@ APR.RouteQuestStepList["Forever-Alliance-Badlands"] = {
         },
         {
             Waypoint = 739,
-            NonSkippableWaypoint = true,
             Coord = { x = -3303.76, y = -6018.93 },
             Range = 15,
             IsQuestCompleted = 2500,
@@ -928,7 +914,6 @@ APR.RouteQuestStepList["Forever-Alliance-Badlands"] = {
         },
         {
             Waypoint = 739,
-            NonSkippableWaypoint = true,
             Coord = { x = -3282.17, y = -5902.14 },
             Range = 20,
             IsQuestCompleted = 2500,
@@ -946,7 +931,6 @@ APR.RouteQuestStepList["Forever-Alliance-Badlands"] = {
         },
         {
             Waypoint = 2500,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 36.5, 48.35),
             Range = 15,
             IsQuestOnQuest = 2500,

@@ -89,7 +89,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 213,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 27, 77.124),
             Range = 5,
             Zone = 1434,
@@ -146,7 +145,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 231,
-            NonSkippableWaypoint = true,
             Coord = { x = 354.89, y = -10239.93 },
             Range = 5,
             Zone = 1431,
@@ -166,7 +164,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 198,
-            NonSkippableWaypoint = true,
             Coord = { x = -370.81, y = -11292.84 },
             Range = 20,
             Zone = 1431,
@@ -209,7 +206,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 583,
-            NonSkippableWaypoint = true,
             Fillers = { [605] = { 1 }, [575] = { 1 } },
             Coord = { x = -54.85, y = -11616.67 },
             Range = 5,
@@ -232,7 +228,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 185,
-            NonSkippableWaypoint = true,
             Fillers = { [605] = { 1 }, [575] = { 1 } },
             Coord = { x = -51.91, y = -11620.5 },
             Range = 5,
@@ -374,7 +369,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 194,
-            NonSkippableWaypoint = true,
             Fillers = { [575] = { 1 } },
             Coord = { x = -54.59, y = -11628.54 },
             Range = 5,
@@ -383,7 +377,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 194,
-            NonSkippableWaypoint = true,
             Fillers = { [575] = { 1 } },
             Coord = { x = -51.91, y = -11620.5 },
             Range = 5,
@@ -479,7 +472,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 194,
-            NonSkippableWaypoint = true,
             Coord = { x = -54.59, y = -11628.54 },
             Range = 5,
             Zone = 1434,
@@ -487,7 +479,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 194,
-            NonSkippableWaypoint = true,
             Coord = { x = -51.91, y = -11620.5 },
             Range = 5,
             Zone = 1434,
@@ -531,7 +522,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 605,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 29.56, 72.51),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 29.56, 72.51, 15),
@@ -543,7 +533,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 605,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 28, 73.46),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 28, 73.46, 15),
@@ -585,7 +574,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 605,
-            NonSkippableWaypoint = true,
             Coord = { x = 495.34, y = -14457.65 },
             Range = 15,
             Zone = 1434,
@@ -599,7 +587,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 213,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 27, 77.124),
             Range = 5,
             Zone = 1434,
@@ -715,7 +702,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 1043,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 73.2, 76.19),
             Range = 20,
             IsQuestCompleted = 1040,
@@ -724,7 +710,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 1043,
-            NonSkippableWaypoint = true,
             Coord = { x = -1146, y = -11101 },
             Range = 3,
             IsQuestCompleted = 1040,
@@ -735,7 +720,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 1043,
-            NonSkippableWaypoint = true,
             Coord = { x = -1174, y = -11115 },
             Range = 4,
             IsQuestCompleted = 1040,
@@ -746,7 +730,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 1043,
-            NonSkippableWaypoint = true,
             Coord = { x = -1164, y = -11139 },
             Range = 4,
             IsQuestCompleted = 1040,
@@ -765,7 +748,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 1043,
-            NonSkippableWaypoint = true,
             Coord = { x = -1130, y = -11051 },
             Range = 10,
             IsQuestCompleted = 1040,
@@ -775,7 +757,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 1043,
-            NonSkippableWaypoint = true,
             Coord = { x = -1197.07, y = -10595.07 },
             Range = 20,
             IsQuestCompleted = 1040,
@@ -864,7 +845,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 563,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 42.51, 33.51),
             Range = 20.0,
             Class = { "PALADIN", "PRIEST" },
@@ -873,7 +853,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 563,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 38.82, 31.27),
             Range = 10.0,
             Class = "PALADIN",
@@ -914,7 +893,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 563,
-            NonSkippableWaypoint = true,
             Coord = { x = 417.4, y = -8508.32 },
             Range = 20,
             Zone = 1453,
@@ -922,7 +900,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 563,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 77.3, 17.18),
             Range = 20,
             IsQuestOnQuest = 563,
@@ -968,7 +945,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 514,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 76.08, 50.14),
             Range = 15.0,
             Class = "WARRIOR",
@@ -977,7 +953,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 514,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 80.22, 45.37),
             Range = 15.0,
             Class = "WARRIOR",
@@ -1018,7 +993,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 1453,
-            NonSkippableWaypoint = true,
             Coord = { x = -1250.5, y = -4661.57 },
             Range = 20,
             Zone = 1455,
@@ -1040,7 +1014,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 514,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = { x = -1134.2, y = -4610.39 },
             Range = 15.0,
@@ -1050,7 +1023,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 514,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = { x = -1130.26, y = -4601.27 },
             Range = 5,
@@ -1060,7 +1032,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 514,
-            NonSkippableWaypoint = true,
             Coord = { x = -1117.6, y = -4615.14 },
             Range = 15.0,
             Class = "WARLOCK",
@@ -1103,7 +1074,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
         },
         {
             Waypoint = 700,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 44.56, 49.58),
             Range = 10,
             IsQuestCompleted = 689,
@@ -1168,7 +1138,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
     steps = {
         {
             Waypoint = 1115,
-            NonSkippableWaypoint = true,
             Coord = { x = 527.31, y = -14426.16 },
             Range = 5,
             Zone = 1434,
@@ -1183,7 +1152,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 1115,
-            NonSkippableWaypoint = true,
             Coord = { x = 527.31, y = -14426.16 },
             Range = 5,
             ClassNot = "WARLOCK",
@@ -1200,7 +1168,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 1115,
-            NonSkippableWaypoint = true,
             Coord = { x = 527.31, y = -14426.16 },
             Range = 5,
             Class = "WARLOCK",
@@ -1315,7 +1282,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 622,
-            NonSkippableWaypoint = true,
             Coord = { x = -372.19, y = -11318.24 },
             Range = 20,
             Zone = 1434,
@@ -1323,7 +1289,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 622,
-            NonSkippableWaypoint = true,
             Coord = { x = -244.24, y = -11383.59 },
             Range = 5,
             Zone = 1434,
@@ -1331,7 +1296,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 574,
-            NonSkippableWaypoint = true,
             Coord = { x = -205.13, y = -11310.41 },
             Range = 5,
             Zone = 1434,
@@ -1410,7 +1374,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 328,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 46.3, 7.61),
             Range = 20,
@@ -1419,7 +1382,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 329,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 46.3, 7.61),
             Range = 4,
             AnyOf = { { IsQuestOnQuest = 328 }, { IsQuestCompleted = 328, IsQuestNotOnQuest = 329 } },
@@ -1430,7 +1392,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 329,
-            NonSkippableWaypoint = true,
             Coord = { x = -738, y = -11467 },
             Range = 4,
             AnyOf = { { IsQuestOnQuest = 328 }, { IsQuestCompleted = 328, IsQuestNotOnQuest = 329 } },
@@ -1441,7 +1402,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 329,
-            NonSkippableWaypoint = true,
             Coord = { x = -774, y = -11476 },
             Range = 3,
             AnyOf = { { IsQuestOnQuest = 328 }, { IsQuestCompleted = 328, IsQuestNotOnQuest = 329 } },
@@ -1452,7 +1412,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 329,
-            NonSkippableWaypoint = true,
             Coord = { x = -786, y = -11493 },
             Range = 3,
             AnyOf = { { IsQuestOnQuest = 328 }, { IsQuestCompleted = 328, IsQuestNotOnQuest = 329 } },
@@ -1463,7 +1422,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 329,
-            NonSkippableWaypoint = true,
             Coord = { x = -828, y = -11499 },
             Range = 4,
             AnyOf = { { IsQuestOnQuest = 328 }, { IsQuestCompleted = 328, IsQuestNotOnQuest = 329 } },
@@ -1474,7 +1432,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 329,
-            NonSkippableWaypoint = true,
             Coord = { x = -846, y = -11527 },
             Range = 3,
             AnyOf = { { IsQuestOnQuest = 328 }, { IsQuestCompleted = 328, IsQuestNotOnQuest = 329 } },
@@ -1485,7 +1442,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 329,
-            NonSkippableWaypoint = true,
             Coord = { x = -878, y = -11539 },
             Range = 4,
             AnyOf = { { IsQuestOnQuest = 328 }, { IsQuestCompleted = 328, IsQuestNotOnQuest = 329 } },
@@ -1496,7 +1452,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 329,
-            NonSkippableWaypoint = true,
             Coord = { x = -938, y = -11509 },
             Range = 3,
             AnyOf = { { IsQuestOnQuest = 328 }, { IsQuestCompleted = 328, IsQuestNotOnQuest = 329 } },
@@ -1586,7 +1541,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 195,
-            NonSkippableWaypoint = true,
             Fillers = { [189] = { 1 }, [1712] = { 2 } },
             Coord = { x = 340.22, y = -11982.1 },
             Range = 20,
@@ -1602,7 +1556,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 195,
-            NonSkippableWaypoint = true,
             Fillers = { [189] = { 1 }, [1712] = { 2 } },
             Coord = { x = 643.45, y = -11547.58 },
             Range = 20,
@@ -1644,7 +1597,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 195,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 21.1, 22.84),
             Range = 20,
             Zone = 1434,
@@ -1685,7 +1637,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 195,
-            NonSkippableWaypoint = true,
             Note = { "BUY_ITEMS_AUCTION_HOUSE", "SKIP_STEP_NOT_ELIXIR_WATER_BREATHING_WARLOCK" },
             Coord = { x = 631.9, y = -12406.71 },
             Range = 20,
@@ -1695,7 +1646,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 195,
-            NonSkippableWaypoint = true,
             Note = { "BUY_ITEMS_AUCTION_HOUSE", "SKIP_STEP_NOT_ELIXIR_WATER_BREATHING_WARLOCK" },
             Coord = { x = 459.61, y = -12410.97 },
             Range = 20,
@@ -1705,7 +1655,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 195,
-            NonSkippableWaypoint = true,
             Note = { "BUY_ITEMS_AUCTION_HOUSE", "SKIP_STEP_NOT_ELIXIR_WATER_BREATHING_WARLOCK" },
             Coord = { x = 600.0, y = -12194.0 },
             Range = 20,
@@ -1724,7 +1673,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 195,
-            NonSkippableWaypoint = true,
             Fillers = { [1107] = { 1 } },
             Note = { "BUY_ITEMS_AUCTION_HOUSE", "SKIP_STEP_NOT_ELIXIR_WATER_BREATHING_WARLOCK" },
             Coord = { x = 631.9, y = -12406.71 },
@@ -1747,7 +1695,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 195,
-            NonSkippableWaypoint = true,
             Fillers = { [1107] = { 1 } },
             Note = { "BUY_ITEMS_AUCTION_HOUSE", "SKIP_STEP_NOT_ELIXIR_WATER_BREATHING_WARLOCK" },
             Coord = { x = 600.0, y = -12194.0 },
@@ -1769,7 +1716,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 195,
-            NonSkippableWaypoint = true,
             Coord = { x = 631.9, y = -12406.71 },
             Range = 20,
             Class = { "DRUID", "WARLOCK" },
@@ -1778,7 +1724,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 195,
-            NonSkippableWaypoint = true,
             Coord = { x = 459.61, y = -12410.97 },
             Range = 20,
             Class = { "DRUID", "WARLOCK" },
@@ -1787,7 +1732,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 195,
-            NonSkippableWaypoint = true,
             Coord = { x = 600.0, y = -12194.0 },
             Range = 20,
             Class = { "DRUID", "WARLOCK" },
@@ -1832,7 +1776,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 195,
-            NonSkippableWaypoint = true,
             Coord = { x = -54.59, y = -11628.54 },
             Range = 20,
             Zone = 1434,
@@ -1936,7 +1879,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 189,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 29.56, 72.51),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 29.56, 72.51, 15),
@@ -1948,7 +1890,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 189,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 28, 73.46),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 28, 73.46, 15),
@@ -1990,7 +1931,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 189,
-            NonSkippableWaypoint = true,
             Coord = { x = 495.34, y = -14457.65 },
             Range = 15,
             Zone = 1434,
@@ -1998,7 +1938,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Waypoint = 189,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 27, 77.124),
             Range = 5,
             IsQuestCompleted = 1114,
@@ -2169,7 +2108,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 543,
-            NonSkippableWaypoint = true,
             Coord = { x = -1117.6, y = -4615.14 },
             Range = 15.0,
             Class = "WARLOCK",
@@ -2202,7 +2140,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 543,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = { x = -1134.2, y = -4610.39 },
             Range = 15.0,
@@ -2212,7 +2149,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 543,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = { x = -1130.26, y = -4601.27 },
             Range = 5,
@@ -2315,7 +2251,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 1116,
-            NonSkippableWaypoint = true,
             Coord = { x = 870.96, y = -9018.52 },
             Range = 15.0,
             Zone = 1453,
@@ -2354,7 +2289,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 1116,
-            NonSkippableWaypoint = true,
             Note = { "CHECK_BANK_MISSING_GREEN_HILLS_STRANGLETHORN_PAGES", "CHAPTER_1_REQUIRES_PAGES_1_4_6", "CHAPTER_2_REQUIRES_PAGES_10_11_14", "CHAPTER_3_REQUIRES_PAGES_18_20_21", "CHAPTER_4_REQUIRES_PAGES_25_26_27", "BANKDEPOSIT" },
             Coord = { x = 613.93, y = -8933.64 },
             Range = 5,
@@ -2363,7 +2297,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 1116,
-            NonSkippableWaypoint = true,
             Note = { "CHECK_BANK_MISSING_GREEN_HILLS_STRANGLETHORN_PAGES", "CHAPTER_1_REQUIRES_PAGES_1_4_6", "CHAPTER_2_REQUIRES_PAGES_10_11_14", "CHAPTER_3_REQUIRES_PAGES_18_20_21", "CHAPTER_4_REQUIRES_PAGES_25_26_27", "BANKDEPOSIT" },
             Coord = { x = 660.28, y = -8814.55 },
             Range = 5,
@@ -2387,7 +2320,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 1116,
-            NonSkippableWaypoint = true,
             Coord = { x = -54.59, y = -11628.54 },
             Range = 20,
             Class = "WARLOCK",
@@ -2396,7 +2328,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 1116,
-            NonSkippableWaypoint = true,
             Coord = { x = -48.08, y = -11617.39 },
             Range = 5,
             Class = "WARLOCK",
@@ -2574,7 +2505,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 597,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 28, 73.46),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 28, 73.46, 15),
@@ -2585,7 +2515,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 597,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 29.56, 72.51),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 29.56, 72.51, 15),
@@ -2619,7 +2548,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 599,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 29.56, 72.51),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 29.56, 72.51, 15),
@@ -2630,7 +2558,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 599,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 28, 73.46),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 28, 73.46, 15),
@@ -2692,7 +2619,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 606,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 28, 73.46),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 28, 73.46, 15),
@@ -2704,7 +2630,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 606,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 29.56, 72.51),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 29.56, 72.51, 15),
@@ -2789,7 +2714,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 205,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 46.3, 7.61),
             Range = 20,
@@ -2923,7 +2847,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 600,
-            NonSkippableWaypoint = true,
             Coord = { x = 495.41, y = -14457.65 },
             Range = 15,
             Zone = 1434,
@@ -2938,7 +2861,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 587,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 26.92, 77.347),
             Range = 5,
             Class = "WARLOCK",
@@ -2968,7 +2890,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 604,
-            NonSkippableWaypoint = true,
             Coord = { x = 486.86, y = -14444.76 },
             Range = 5,
             IsQuestOnQuest = 611,
@@ -2991,7 +2912,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 606,
-            NonSkippableWaypoint = true,
             Coord = { x = 527.31, y = -14426.16 },
             Range = 5,
             Zone = 1434,
@@ -3006,7 +2926,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 606,
-            NonSkippableWaypoint = true,
             Note = { "BUY_GREEN_HILLS_STRANGLETHORN_PAGES_MISSING", "CHAPTER_1_REQUIRES_PAGES_1_4_6", "CHAPTER_2_REQUIRES_PAGES_10_11_14", "CHAPTER_3_REQUIRES_PAGES_18_20_21", "CHAPTER_4_REQUIRES_PAGES_25_26_27", "SKIP_REQUIRED_SUPPLIES_MISSING" },
             Coord = { x = 524.19, y = -14416.72 },
             Range = 5,
@@ -3053,7 +2972,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 617,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 28, 73.46),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 28, 73.46, 15),
@@ -3065,7 +2983,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 617,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 29.56, 72.51),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 29.56, 72.51, 15),
@@ -3077,7 +2994,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 197,
-            NonSkippableWaypoint = true,
             Coord = { x = 459.61, y = -14146.67 },
             Range = 20,
             Zone = 1434,
@@ -3085,7 +3001,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 197,
-            NonSkippableWaypoint = true,
             Coord = { x = 555.33, y = -14019.04 },
             Range = 20,
             Zone = 1434,
@@ -3100,7 +3015,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 197,
-            NonSkippableWaypoint = true,
             Coord = { x = 121.4, y = -14321.09 },
             Range = 20,
             Zone = 1434,
@@ -3164,7 +3078,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 197,
-            NonSkippableWaypoint = true,
             Coord = { x = -331.03, y = -13646.38 },
             Range = 5,
             Zone = 1434,
@@ -3180,7 +3093,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 197,
-            NonSkippableWaypoint = true,
             Coord = { x = -7.5, y = -13374.11 },
             Range = 5,
             Zone = 1434,
@@ -3239,7 +3151,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 197,
-            NonSkippableWaypoint = true,
             Coord = { x = -54.59, y = -11628.54 },
             Range = 20,
             Zone = 1434,
@@ -3291,7 +3202,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 1477,
-            NonSkippableWaypoint = true,
             Coord = { x = -370.87, y = -11271.87 },
             Range = 5,
             Zone = 1431,
@@ -3311,7 +3221,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 624,
-            NonSkippableWaypoint = true,
             Coord = { x = -1555.36, y = -10454.67 },
             Range = 20,
             SkipInZones = { 1435 },
@@ -3320,7 +3229,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 624,
-            NonSkippableWaypoint = true,
             Coord = { x = -2033.83, y = -10443.33 },
             Range = 20,
             SkipInZones = { 1435 },
@@ -3329,7 +3237,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 624,
-            NonSkippableWaypoint = true,
             Coord = { x = -2294.08, y = -10558.5 },
             Range = 20,
             SkipInZones = { 1435 },
@@ -3414,7 +3321,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 1364,
-            NonSkippableWaypoint = true,
             Coord = { x = -2983.0, y = -10732.6 },
             Range = 5,
             Zone = 1419,
@@ -3463,7 +3369,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 587,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 26.92, 77.347),
             Range = 5,
             Zone = 1434,
@@ -3489,7 +3394,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 580,
-            NonSkippableWaypoint = true,
             Coord = { x = 489.28, y = -14463.64 },
             Range = 5,
             IsQuestCompleted = 1118,
@@ -3534,7 +3438,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 609,
-            NonSkippableWaypoint = true,
             Coord = { x = 527.31, y = -14426.16 },
             Range = 5,
             Zone = 1434,
@@ -3549,7 +3452,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Waypoint = 609,
-            NonSkippableWaypoint = true,
             Coord = { x = 527.31, y = -14426.16 },
             Range = 5,
             Zone = 1434,
@@ -3802,7 +3704,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 594,
-            NonSkippableWaypoint = true,
             Coord = { x = 37.17, y = -14284.93 },
             Range = 20,
             Button = { ["594"] = 4098 },
@@ -3812,7 +3713,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 594,
-            NonSkippableWaypoint = true,
             Coord = { x = 50.57, y = -14453.39 },
             Range = 20,
             Button = { ["594"] = 4098 },
@@ -3822,7 +3722,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 594,
-            NonSkippableWaypoint = true,
             Coord = { x = 157.14, y = -14548.26 },
             Range = 20,
             Button = { ["594"] = 4098 },
@@ -3851,7 +3750,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 594,
-            NonSkippableWaypoint = true,
             Note = { "RIGHT_CLICK", "CANNOT_FIND_GO_BACK_MAINLAND_CHECK" },
             Coord = { x = -94.92, y = -14709.07 },
             Range = 20,
@@ -3861,7 +3759,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 594,
-            NonSkippableWaypoint = true,
             Note = { "RIGHT_CLICK", "CANNOT_FIND_GO_BACK_MAINLAND_CHECK" },
             Coord = { x = -120.45, y = -14466.15 },
             Range = 20,
@@ -3871,7 +3768,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 594,
-            NonSkippableWaypoint = true,
             Note = { "RIGHT_CLICK", "CANNOT_FIND_GO_BACK_MAINLAND_CHECK" },
             Coord = { x = -433.13, y = -14439.35 },
             Range = 20,
@@ -3881,7 +3777,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 594,
-            NonSkippableWaypoint = true,
             Note = { "RIGHT_CLICK", "CANNOT_FIND_GO_BACK_MAINLAND_CHECK" },
             Coord = { x = -30.47, y = -14260.25 },
             Range = 20,
@@ -3891,7 +3786,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 594,
-            NonSkippableWaypoint = true,
             Note = { "RIGHT_CLICK", "CANNOT_FIND_GO_BACK_MAINLAND_CHECK" },
             Coord = { x = -145.33, y = -14084.98 },
             Range = 20,
@@ -3901,7 +3795,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 594,
-            NonSkippableWaypoint = true,
             Note = { "RIGHT_CLICK", "CANNOT_FIND_GO_BACK_MAINLAND_CHECK" },
             Coord = { x = -154.91, y = -13936.08 },
             Range = 20,
@@ -3990,7 +3883,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 348,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 34.65, 62.52),
             Range = 10,
             IsQuestOnQuest = 348,
@@ -4001,7 +3893,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 348,
-            NonSkippableWaypoint = true,
             Coord = { x = 2, y = -13775 },
             Range = 6,
             IsQuestOnQuest = 348,
@@ -4021,7 +3912,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 8551,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 29.56, 72.51),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 29.56, 72.51, 15),
@@ -4040,7 +3930,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 8551,
-            NonSkippableWaypoint = true,
             Coord = { x = 372.19, y = -14276.42 },
             Range = 20,
             Zone = 1434,
@@ -4048,7 +3937,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 8551,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 28, 73.46),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1434, 28, 73.46, 15),
@@ -4171,7 +4059,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 1469,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 42.51, 33.51),
             Range = 20.0,
             Class = { "PALADIN", "PRIEST" },
@@ -4180,7 +4067,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 1469,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 38.82, 31.27),
             Range = 10.0,
             Class = "PALADIN",
@@ -4205,7 +4091,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 1469,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 76.08, 50.14),
             Range = 15.0,
             Class = "WARRIOR",
@@ -4214,7 +4099,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 1469,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 80.22, 45.37),
             Range = 15.0,
             Class = "WARRIOR",
@@ -4278,7 +4162,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 3441,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = { x = -1134.2, y = -4610.39 },
             Range = 15.0,
@@ -4288,7 +4171,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 3441,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = { x = -1130.26, y = -4601.27 },
             Range = 5,
@@ -4298,7 +4180,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 3441,
-            NonSkippableWaypoint = true,
             Coord = { x = -1117.6, y = -4615.14 },
             Range = 15.0,
             Class = "WARLOCK",
@@ -4323,7 +4204,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 1,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 46.83, 77.75),
             Range = 20,
             SkipInZones = { 1427 },
@@ -4332,7 +4212,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 1,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 49.25, 7.42),
             Range = 20,
             SkipInZones = { 1427 },
@@ -4341,7 +4220,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 1,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 13.4, 37.8),
             Range = 20,
             SkipInZones = { 1427 },
@@ -4350,7 +4228,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 1,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 4.18, 61.56),
             Range = 20,
             SkipInZones = { 1427 },
@@ -4359,7 +4236,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 1,
-            NonSkippableWaypoint = true,
             Note = { "BADLANDS_PASS_REQUIRES_NO_KEY" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 69.54, 54.29),
             Range = 20,
@@ -4368,7 +4244,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 3441,
-            NonSkippableWaypoint = true,
             Coord = { x = -1050.3, y = -6584.93 },
             Range = 20,
             ZoneStepTrigger = { x = -1050.3, y = -6584.93, Range = 20, mapID = 1427 },
@@ -4379,7 +4254,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Waypoint = 1,
-            NonSkippableWaypoint = true,
             Note = { "FOLLOW_NORTHERN_RIM_TAKE_RAMP_UP_THORIUM" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 37.65, 26.47),
             Range = 20,

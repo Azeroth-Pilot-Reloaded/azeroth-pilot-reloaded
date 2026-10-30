@@ -62,7 +62,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 49.1, 94.82),
             Range = 20,
             Zone = 1454,
@@ -70,7 +69,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1411, 50.82, 13.86),
             Range = 5,
             Zone = 1411,
@@ -83,7 +81,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Note = { "USE_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 61.87, 65.02),
             Range = 20,
@@ -92,7 +89,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Note = { "USE_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 61.81, 74.42),
             Range = 20,
@@ -143,7 +139,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 61.85, 66.59),
             Range = 20,
             Race = { "Orc", "Troll" },
@@ -152,7 +147,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 67.42, 5.91),
             Range = 5,
             Race = { "Orc", "Troll" },
@@ -161,7 +155,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 44.8, 39.24),
             Range = 5,
             Money = { operator = ">=", copper = 1400 },
@@ -258,7 +251,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
         },
         {
             Waypoint = 527,
-            NonSkippableWaypoint = true,
             Coord = { x = -774, y = -378.1 },
             Range = 15,
             AnyOf = { { SkipForLvl = 24 }, { IsQuestOnQuest = 527, Not = { IsQuestReadyForTurnIn = 527 } } },
@@ -269,7 +261,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
         },
         {
             Waypoint = 527,
-            NonSkippableWaypoint = true,
             Fillers = { [501] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 36.02, 39.19),
             Range = 20,
@@ -367,7 +358,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
         },
         {
             Waypoint = 527,
-            NonSkippableWaypoint = true,
             Fillers = { [527] = { 4 } },
             Note = { "STORE_CLOTH_LATER_TURN_INS_12_STACKS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.97, 44.73),
@@ -402,7 +392,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
         },
         {
             Waypoint = 527,
-            NonSkippableWaypoint = true,
             Coord = { x = -213.5, y = -594.8 },
             Range = 15,
             IsQuestOnQuest = 527,
@@ -451,7 +440,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
         },
         {
             Waypoint = 501,
-            NonSkippableWaypoint = true,
             Coord = { x = -213.5, y = -594.8 },
             Range = 15,
             IsQuestOnQuest = 501,
@@ -468,7 +456,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
         },
         {
             Waypoint = 502,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 36.02, 39.19),
             Range = 20,
             Zone = 1424,
@@ -560,7 +547,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = { x = -213.5, y = -594.8 },
             Range = 15,
             AnyOf = { { SkipForLvl = 26 }, { IsQuestOnQuest = 529, Not = { IsQuestReadyForTurnIn = 529 } } },
@@ -571,7 +557,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Fillers = { [567] = { 4 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 36.02, 39.19),
             Range = 20,
@@ -638,7 +623,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Fillers = { [567] = { 4 }, [529] = { 3 } },
             Note = { "STORE_CLOTH_LATER_TURN_INS_12_STACKS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.97, 44.73),
@@ -751,7 +735,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
         },
         {
             Waypoint = 539,
-            NonSkippableWaypoint = true,
             Fillers = { [567] = { 4, 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 27.21, 57.2),
             Range = 20,
@@ -841,7 +824,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
         },
         {
             Waypoint = 539,
-            NonSkippableWaypoint = true,
             Fillers = { [567] = { 4, 1, 3 } },
             Note = { "STORE_CLOTH_LATER_TURN_INS_12_STACKS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.97, 44.73),
@@ -931,7 +913,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
         },
         {
             Waypoint = 655,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 88.2, 48.09),
             Range = 20,
             Zone = 1424,

@@ -65,7 +65,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 4641,
-            NonSkippableWaypoint = true,
             Coord = { x = -4198.58, y = -602.41 },
             Range = 8,
             Zone = 1411,
@@ -134,7 +133,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 788,
-            NonSkippableWaypoint = true,
             Coord = { x = -4198.58, y = -602.41 },
             Range = 12,
             Zone = 1411,
@@ -283,7 +281,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 789,
-            NonSkippableWaypoint = true,
             Coord = { x = -4198.58, y = -602.41 },
             Range = 12,
             Zone = 1411,
@@ -328,7 +325,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 794,
-            NonSkippableWaypoint = true,
             Note = { "GO_INSIDE_CAVE" },
             Coord = { x = -4360.3, y = -176.5 },
             Range = 5,
@@ -337,7 +333,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 794,
-            NonSkippableWaypoint = true,
             Coord = { x = -4364.4, y = -147.5 },
             Range = 5,
             Zone = 1411,
@@ -559,7 +554,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 96652,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_BUILDING" },
             Coord = { x = -4931.96, y = -815.32 },
             Range = 8,
@@ -568,7 +562,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 96652,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_BUILDING" },
             Coord = { x = -4939.89, y = -793.12 },
             Range = 8,
@@ -675,7 +668,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 823,
-            NonSkippableWaypoint = true,
             Coord = { x = -4709.36, y = 274.96 },
             Range = 5,
             Zone = 1411,
@@ -728,7 +720,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 2161,
-            NonSkippableWaypoint = true,
             Coord = { x = -4617.88, y = 290.47 },
             Range = 12,
             Zone = 1411,
@@ -736,7 +727,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 2161,
-            NonSkippableWaypoint = true,
             Coord = { x = -4611.01, y = 293.64 },
             Range = 8,
             Zone = 1411,
@@ -744,7 +734,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 2161,
-            NonSkippableWaypoint = true,
             Coord = { x = -4616.82, y = 317.26 },
             Range = 12,
             Zone = 1411,
@@ -752,7 +741,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 2161,
-            NonSkippableWaypoint = true,
             Coord = { x = -4604.13, y = 364.49 },
             Range = 12,
             Zone = 1411,
@@ -760,7 +748,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 2161,
-            NonSkippableWaypoint = true,
             Coord = { x = -4588.8, y = 383.53 },
             Range = 10,
             Zone = 1411,
@@ -768,7 +755,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 2161,
-            NonSkippableWaypoint = true,
             Coord = { x = -4593.03, y = 384.94 },
             Range = 6,
             Zone = 1411,
@@ -776,7 +762,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 2161,
-            NonSkippableWaypoint = true,
             Coord = { x = -4594.09, y = 389.87 },
             Range = 6,
             Zone = 1411,
@@ -784,7 +769,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 2161,
-            NonSkippableWaypoint = true,
             Coord = { x = -4589.86, y = 390.93 },
             Range = 6,
             Zone = 1411,
@@ -792,7 +776,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 2161,
-            NonSkippableWaypoint = true,
             Coord = { x = -4589.33, y = 387.76 },
             Range = 6,
             Zone = 1411,
@@ -800,7 +783,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 2161,
-            NonSkippableWaypoint = true,
             Coord = { x = -4594.62, y = 386.35 },
             Range = 6,
             Zone = 1411,
@@ -808,7 +790,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 2161,
-            NonSkippableWaypoint = true,
             Coord = { x = -4595.15, y = 399.74 },
             Range = 6,
             Zone = 1411,
@@ -816,7 +797,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 2161,
-            NonSkippableWaypoint = true,
             Coord = { x = -4585.1, y = 396.92 },
             Range = 8,
             Zone = 1411,
@@ -857,7 +837,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 96822,
-            NonSkippableWaypoint = true,
             Coord = { x = -4771.6, y = 309.9 },
             Range = 8,
             IsQuestNotOnQuest = 96822,
@@ -867,7 +846,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 96822,
-            NonSkippableWaypoint = true,
             Coord = { x = -4801.6, y = 309.9 },
             Range = 6,
             IsQuestNotOnQuest = 96822,
@@ -977,7 +955,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 830,
-            NonSkippableWaypoint = true,
             Fillers = { [784] = { 1, 2 }, [791] = { 1 } },
             Note = { "UPSTAIRS" },
             Coord = { x = -5128.13, y = -231.58 },
@@ -987,7 +964,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 830,
-            NonSkippableWaypoint = true,
             Fillers = { [784] = { 1, 2 }, [791] = { 1 } },
             Note = { "UPSTAIRS" },
             Coord = { x = -5126.01, y = -221.36 },
@@ -997,7 +973,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 830,
-            NonSkippableWaypoint = true,
             Fillers = { [784] = { 1, 2 }, [791] = { 1 } },
             Note = { "UPSTAIRS" },
             Coord = { x = -5124.42, y = -229.82 },
@@ -1007,7 +982,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 830,
-            NonSkippableWaypoint = true,
             Fillers = { [784] = { 1, 2 }, [791] = { 1 } },
             Note = { "UPSTAIRS" },
             Coord = { x = -5131.83, y = -229.82 },
@@ -1017,7 +991,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 830,
-            NonSkippableWaypoint = true,
             Fillers = { [784] = { 1, 2 }, [791] = { 1 } },
             Note = { "UPSTAIRS" },
             Coord = { x = -5131.83, y = -222.42 },
@@ -1074,7 +1047,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 784,
-            NonSkippableWaypoint = true,
             Coord = { x = -4724.69, y = 287.3 },
             Range = 5,
             Zone = 1411,
@@ -1082,7 +1054,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 784,
-            NonSkippableWaypoint = true,
             Coord = { x = -4709.36, y = 274.96 },
             Range = 5,
             Zone = 1411,
@@ -1102,7 +1073,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            NonSkippableWaypoint = true,
             Coord = { x = -4617.88, y = 290.47 },
             Range = 12,
             Zone = 1411,
@@ -1110,7 +1080,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            NonSkippableWaypoint = true,
             Coord = { x = -4611.01, y = 293.64 },
             Range = 8,
             Zone = 1411,
@@ -1118,7 +1087,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            NonSkippableWaypoint = true,
             Coord = { x = -4616.82, y = 317.26 },
             Range = 12,
             Zone = 1411,
@@ -1126,7 +1094,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            NonSkippableWaypoint = true,
             Coord = { x = -4604.13, y = 364.49 },
             Range = 12,
             Zone = 1411,
@@ -1134,7 +1101,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            NonSkippableWaypoint = true,
             Coord = { x = -4588.8, y = 383.53 },
             Range = 10,
             Zone = 1411,
@@ -1142,7 +1108,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            NonSkippableWaypoint = true,
             Note = { "ON_TOP_OF_TOWER" },
             Coord = { x = -4593.03, y = 384.94 },
             Range = 6,
@@ -1151,7 +1116,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            NonSkippableWaypoint = true,
             Note = { "ON_TOP_OF_TOWER" },
             Coord = { x = -4594.09, y = 389.87 },
             Range = 6,
@@ -1160,7 +1124,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            NonSkippableWaypoint = true,
             Note = { "ON_TOP_OF_TOWER" },
             Coord = { x = -4589.86, y = 390.93 },
             Range = 6,
@@ -1169,7 +1132,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            NonSkippableWaypoint = true,
             Note = { "ON_TOP_OF_TOWER" },
             Coord = { x = -4589.33, y = 387.76 },
             Range = 6,
@@ -1178,7 +1140,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            NonSkippableWaypoint = true,
             Note = { "ON_TOP_OF_TOWER" },
             Coord = { x = -4594.62, y = 386.35 },
             Range = 6,
@@ -1187,7 +1148,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            NonSkippableWaypoint = true,
             Note = { "ON_TOP_OF_TOWER" },
             Coord = { x = -4595.15, y = 399.74 },
             Range = 6,
@@ -1196,7 +1156,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            NonSkippableWaypoint = true,
             Note = { "ON_TOP_OF_TOWER" },
             Coord = { x = -4585.1, y = 396.92 },
             Range = 8,
@@ -1211,7 +1170,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 96822,
-            NonSkippableWaypoint = true,
             Coord = { x = -4771.6, y = 309.9 },
             Range = 8,
             IsQuestOnQuest = 96822,
@@ -1220,7 +1178,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 96822,
-            NonSkippableWaypoint = true,
             Coord = { x = -4801.6, y = 309.9 },
             Range = 6,
             IsQuestOnQuest = 96822,
@@ -1305,7 +1262,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 786,
-            NonSkippableWaypoint = true,
             Coord = { x = -4939.36, y = -838.94 },
             Range = 10,
             Zone = 1411,
@@ -1340,7 +1296,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 786,
-            NonSkippableWaypoint = true,
             Coord = { x = -4648.5, y = -980.9 },
             Range = 10,
             Zone = 1411,
@@ -1390,7 +1345,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 786,
-            NonSkippableWaypoint = true,
             Note = { "FIGHT_YOUR_WAY_OUT" },
             Coord = { x = -4656.48, y = -981.35 },
             Range = 15,
@@ -1423,7 +1377,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97223,
-            NonSkippableWaypoint = true,
             Fillers = { [815] = { 1 }, [818] = { 1, 2 } },
             Coord = { x = -5510.41, y = -634.14 },
             Range = 20,
@@ -1440,7 +1393,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 826,
-            NonSkippableWaypoint = true,
             Fillers = { [815] = { 1 }, [817] = { 1 }, [818] = { 2, 1 } },
             Coord = { x = -5501.95, y = -1167.12 },
             Range = 20,
@@ -1558,7 +1510,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 808,
-            NonSkippableWaypoint = true,
             Coord = { x = -4920.86, y = -825.9 },
             Range = 5,
             Zone = 1411,
@@ -1654,7 +1605,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 806,
-            NonSkippableWaypoint = true,
             Note = { "JUMP_OFF" },
             Coord = { x = -4198.3, y = 907.3 },
             Range = 15,
@@ -1663,7 +1613,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 815,
-            NonSkippableWaypoint = true,
             Note = { "JUMP_OFF" },
             Coord = { x = -4190.1, y = 922 },
             Range = 15,
@@ -1687,7 +1636,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 806,
-            NonSkippableWaypoint = true,
             Coord = { x = -4686.09, y = 340.52 },
             Range = 10,
             Zone = 1411,
@@ -1710,7 +1658,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 815,
-            NonSkippableWaypoint = true,
             Coord = { x = -4665.47, y = 311.62 },
             Range = 5,
             Zone = 1411,
@@ -1718,7 +1665,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 815,
-            NonSkippableWaypoint = true,
             Coord = { x = -4724.69, y = 287.3 },
             Range = 5,
             Zone = 1411,
@@ -1794,7 +1740,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 828,
-            NonSkippableWaypoint = true,
             Coord = { x = -4939.36, y = 824.51 },
             Range = 20,
             Zone = 1411,
@@ -1802,7 +1747,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 828,
-            NonSkippableWaypoint = true,
             Coord = { x = -4945.18, y = 1101.92 },
             Range = 20,
             Zone = 1411,
@@ -1827,7 +1771,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 835,
-            NonSkippableWaypoint = true,
             Coord = { x = -4949.41, y = 925.67 },
             Range = 20,
             Zone = 1411,
@@ -1835,7 +1778,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 835,
-            NonSkippableWaypoint = true,
             Coord = { x = -4929.32, y = 823.45 },
             Range = 20,
             Zone = 1411,
@@ -1843,7 +1785,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 835,
-            NonSkippableWaypoint = true,
             Coord = { x = -4774.39, y = 780.8 },
             Range = 15,
             Zone = 1411,
@@ -1851,7 +1792,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 827,
-            NonSkippableWaypoint = true,
             Coord = { x = -4749, y = 773 },
             Range = 8,
             IsQuestOnQuest = 827,
@@ -1861,7 +1801,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 827,
-            NonSkippableWaypoint = true,
             Coord = { x = -4751, y = 823 },
             Range = 8,
             IsQuestOnQuest = 827,
@@ -1902,7 +1841,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 835,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = -4804.53, y = 830.5 },
             Range = 15,
@@ -1911,7 +1849,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 835,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = -4703.4, y = 841.4 },
             Range = 15,
@@ -1986,7 +1923,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97246,
-            NonSkippableWaypoint = true,
             Coord = { x = -4369.9, y = 1380.9 },
             Range = 15,
             Zone = 1411,
@@ -2002,7 +1938,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97246,
-            NonSkippableWaypoint = true,
             Coord = { x = -4460, y = 1598.6 },
             Range = 5,
             Zone = 1454,
@@ -2043,7 +1978,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97242,
-            NonSkippableWaypoint = true,
             Coord = { x = -4560, y = 1908.5 },
             Range = 15,
             Zone = 1454,
@@ -2051,7 +1985,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97242,
-            NonSkippableWaypoint = true,
             Coord = { x = -4587, y = 1918.3 },
             Range = 15,
             Zone = 1454,
@@ -2059,7 +1992,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97242,
-            NonSkippableWaypoint = true,
             Coord = { x = -4608, y = 1897.4 },
             Range = 15,
             Zone = 1454,
@@ -2067,7 +1999,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97242,
-            NonSkippableWaypoint = true,
             Coord = { x = -4632.3, y = 1911.6 },
             Range = 15,
             Zone = 1454,
@@ -2140,7 +2071,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 829,
-            NonSkippableWaypoint = true,
             Coord = { x = -4491, y = 1731 },
             Range = 10,
             ZoneStepTrigger = { x = -4491, y = 1731, Range = 10, mapID = 1454 },
@@ -2150,7 +2080,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 829,
-            NonSkippableWaypoint = true,
             Coord = { x = -4527, y = 1803 },
             Range = 10,
             ZoneStepTrigger = { x = -4527, y = 1803, Range = 10, mapID = 1454 },
@@ -2160,7 +2089,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 829,
-            NonSkippableWaypoint = true,
             Coord = { x = -4483, y = 1889 },
             Range = 8,
             ZoneStepTrigger = { x = -4483, y = 1889, Range = 8, mapID = 1454 },
@@ -2170,7 +2098,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 829,
-            NonSkippableWaypoint = true,
             Coord = { x = -4431, y = 1891 },
             Range = 8,
             ZoneStepTrigger = { x = -4431, y = 1891, Range = 8, mapID = 1454 },
@@ -2180,7 +2107,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 829,
-            NonSkippableWaypoint = true,
             Coord = { x = -4417, y = 1857 },
             Range = 8,
             ZoneStepTrigger = { x = -4417, y = 1857, Range = 8, mapID = 1454 },
@@ -2190,7 +2116,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 829,
-            NonSkippableWaypoint = true,
             Coord = { x = -4381, y = 1827 },
             Range = 8,
             ZoneStepTrigger = { x = -4381, y = 1827, Range = 8, mapID = 1454 },
@@ -2200,7 +2125,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 829,
-            NonSkippableWaypoint = true,
             Coord = { x = -4357, y = 1819 },
             Range = 8,
             ZoneStepTrigger = { x = -4357, y = 1819, Range = 8, mapID = 1454 },
@@ -2267,7 +2191,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Coord = { x = -3686.1, y = 303.14 },
             Range = 20,
             Zone = 1413,

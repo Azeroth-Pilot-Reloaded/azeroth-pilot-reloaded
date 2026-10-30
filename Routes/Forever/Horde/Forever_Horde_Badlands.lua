@@ -43,7 +43,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
     steps = {
         {
             Waypoint = 713,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 32.29, 12.56),
             Range = 5,
             SkipInZones = { 1437, 1432, 1418 },
@@ -56,7 +55,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 713,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 53.87, 70.32),
             Range = 15,
             SkipInZones = { 1432, 1418 },
@@ -65,7 +63,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 713,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 49.37, 70.56),
             Range = 15,
             SkipInZones = { 1432, 1418 },
@@ -74,7 +71,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 713,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 48.27, 67.52),
             Range = 20,
             SkipInZones = { 1432, 1418 },
@@ -83,7 +79,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 713,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 50.14, 71.57),
             Range = 15,
             SkipInZones = { 1432, 1418 },
@@ -92,7 +87,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 713,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 50.18, 78.3),
             Range = 15,
             SkipInZones = { 1432, 1418 },
@@ -101,7 +95,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 713,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 50.63, 82.57),
             Range = 15,
             SkipInZones = { 1432, 1418 },
@@ -110,7 +103,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 713,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 55.13, 83.53),
             Range = 15,
             SkipInZones = { 1432, 1418 },
@@ -119,7 +111,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 713,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 25.27, 0.04),
             Range = 15,
             SkipInZones = { 1418 },
@@ -128,7 +119,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 713,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 25.56, 10.12),
             Range = 15,
             SkipInZones = { 1418 },
@@ -142,7 +132,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 713,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 24.76, 70.59),
             Range = 20,
             SkipInZones = { 1418 },
@@ -151,7 +140,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 713,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 25.1, 72.98),
             Range = 20,
             SkipInZones = { 1418 },
@@ -160,7 +148,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 713,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 26.11, 75.42),
             Range = 20,
             SkipInZones = { 1418 },
@@ -169,7 +156,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 713,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 23.27, 81.3),
             Range = 20,
             SkipInZones = { 1418 },
@@ -178,7 +164,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 713,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 22.82, 84.81),
             Range = 20,
             SkipInZones = { 1418 },
@@ -187,7 +172,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 713,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 19.59, 87.23),
             Range = 20,
             SkipInZones = { 1418 },
@@ -196,7 +180,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 713,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 20.37, 91.08),
             Range = 20,
             SkipInZones = { 1418 },
@@ -205,7 +188,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 713,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 22.33, 91.55),
             Range = 20,
             SkipInZones = { 1418 },
@@ -214,7 +196,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 713,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 22.87, 94.92),
             Range = 20,
             SkipInZones = { 1418 },
@@ -223,7 +204,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 713,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 5.73, 29.78),
             Range = 20,
             SkipInZones = { 1418 },
@@ -253,7 +233,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 2258,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 3.83, 46.98),
             Range = 5,
             IsQuestNotOnQuest = 2258,
@@ -597,7 +576,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 2258,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 3.83, 46.98),
             Range = 5,
             IsQuestOnQuest = 2258,
@@ -718,7 +696,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 1420,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = 435.05, y = 1598.86 },
             Range = 10,
@@ -728,7 +705,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 1420,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = 439.08, y = 1627.02 },
             Range = 10,
@@ -738,7 +714,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 1420,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = 476.49, y = 1632.15 },
             Range = 10,
@@ -748,7 +723,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 1420,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = 481.48, y = 1659.8 },
             Range = 10,
@@ -758,7 +732,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 1420,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = 539.52, y = 1665.17 },
             Range = 10,
@@ -768,7 +741,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 1420,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = 634.02, y = 1669.66 },
             Range = 15,
@@ -778,7 +750,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 1420,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = 652.73, y = 1623.44 },
             Range = 15,
@@ -788,7 +759,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 1420,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = 714.8, y = 1604.24 },
             Range = 15,
@@ -807,7 +777,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 1420,
-            NonSkippableWaypoint = true,
             Coord = { x = -4370, y = 1382.2 },
             Range = 15,
             OnlyInZones = { 1411 },
@@ -816,7 +785,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 1420,
-            NonSkippableWaypoint = true,
             Coord = { x = -4363.9, y = 1420.2 },
             Range = 15,
             OnlyInZones = { 1411 },
@@ -825,7 +793,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 1420,
-            NonSkippableWaypoint = true,
             Coord = { x = -4412.5, y = 1436.4 },
             Range = 15,
             OnlyInZones = { 1411 },
@@ -834,7 +801,6 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
         },
         {
             Waypoint = 1420,
-            NonSkippableWaypoint = true,
             Coord = { x = -4417.1, y = 1480.6 },
             Range = 15,
             OnlyInZones = { 1411 },

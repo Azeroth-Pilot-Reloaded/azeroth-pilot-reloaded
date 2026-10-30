@@ -44,7 +44,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
     steps = {
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Note = { "MERCHANT_SELLS_CHEAP_LEVEL_5_FOOD" },
             Coord = { x = 533.23, y = 6399.77 },
             Range = 5,
@@ -53,7 +52,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Coord = { x = 525.8, y = 6414.8 },
             Range = 8,
             IsQuestNotOnQuest = 983,
@@ -170,7 +168,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 963,
-            NonSkippableWaypoint = true,
             Fillers = { [2178] = { 1 } },
             Coord = { x = 535.85, y = 6409.38 },
             Range = 20,
@@ -186,7 +183,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 4681,
-            NonSkippableWaypoint = true,
             Fillers = { [2178] = { 1 }, [1001] = { 1 } },
             Coord = { x = 734.32, y = 6479.68 },
             Range = 20,
@@ -695,7 +691,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2139,
-            NonSkippableWaypoint = true,
             Coord = { x = -451, y = 6712 },
             Range = 8,
             IsQuestOnQuest = 2139,
@@ -714,7 +709,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 2139,
-            NonSkippableWaypoint = true,
             Coord = { x = -451, y = 6712 },
             Range = 8,
             IsQuestOnQuest = 2139,
@@ -751,7 +745,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 947,
-            NonSkippableWaypoint = true,
             Coord = { x = -659.52, y = 6901.5 },
             Range = 10,
             IsQuestCompleted = 965,
@@ -762,7 +755,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 965,
-            NonSkippableWaypoint = true,
             Fillers = { [1002] = { 1 } },
             Coord = { x = -659.52, y = 6901.5 },
             Range = 20,
@@ -779,7 +771,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 947,
-            NonSkippableWaypoint = true,
             Coord = { x = -659.52, y = 6901.5 },
             Range = 10,
             IsQuestOnQuest = 947,
@@ -837,7 +828,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 1002,
-            NonSkippableWaypoint = true,
             Fillers = { [1138] = { 1 } },
             Coord = { x = -423.72, y = 7277.04 },
             Range = 20,
@@ -1223,7 +1213,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 741,
-            NonSkippableWaypoint = true,
             Fillers = { [986] = { 1 } },
             Coord = { x = 555.5, y = 6418.99 },
             Range = 20,
@@ -1232,7 +1221,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 741,
-            NonSkippableWaypoint = true,
             Fillers = { [986] = { 1 } },
             Coord = { x = 769.03, y = 6579.24 },
             Range = 20,
@@ -1250,7 +1238,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 741,
-            NonSkippableWaypoint = true,
             Fillers = { [986] = { 1 } },
             Note = { "GO_PURPLE_PORTAL" },
             Coord = { x = 965.8, y = 8781.63 },
@@ -1298,7 +1285,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 244,
-            NonSkippableWaypoint = true,
             Fillers = { [986] = { 1 } },
             Coord = { x = -819.67, y = -3691.42 },
             Range = 15.0,
@@ -1308,7 +1294,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 244,
-            NonSkippableWaypoint = true,
             Fillers = { [986] = { 1 } },
             Coord = { x = -807.26, y = -3716.22 },
             Range = 15.0,
@@ -1356,7 +1341,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 244,
-            NonSkippableWaypoint = true,
             Fillers = { [986] = { 1 } },
             Coord = { x = 409.13, y = -9100.58 },
             Range = 5,
@@ -1366,7 +1350,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 244,
-            NonSkippableWaypoint = true,
             Fillers = { [986] = { 1 } },
             Coord = { x = 622.93, y = -8830.7 },
             Range = 5,
@@ -1376,7 +1359,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 244,
-            NonSkippableWaypoint = true,
             Fillers = { [986] = { 1 } },
             Coord = { x = 606.4, y = -8812.0 },
             Range = 20,
@@ -1394,7 +1376,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 244,
-            NonSkippableWaypoint = true,
             Fillers = { [986] = { 1 } },
             Note = { "DROP_DOWN_SMALL_LEDGE_RUNNING_WHITE_WALL" },
             Coord = { x = 493.08, y = -8867.22 },
@@ -1405,7 +1386,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 244,
-            NonSkippableWaypoint = true,
             Fillers = { [986] = { 1 } },
             Note = { "DROP_DOWN_SMALL_LEDGE_RUNNING_WHITE_WALL" },
             Coord = { x = 507.6, y = -8885.59 },
@@ -1416,7 +1396,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 244,
-            NonSkippableWaypoint = true,
             Fillers = { [986] = { 1 } },
             Coord = { x = 44.0, y = -9459.11 },
             Range = 15.0,
@@ -1425,7 +1404,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 244,
-            NonSkippableWaypoint = true,
             Fillers = { [986] = { 1 } },
             Coord = { x = 14.84, y = -9477.86 },
             Range = 15.0,
@@ -1444,7 +1422,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
         },
         {
             Waypoint = 244,
-            NonSkippableWaypoint = true,
             Fillers = { [986] = { 1 } },
             Note = { "ADJUST_KEYBINDS_COMBAT_SPELLS_EASY_REACH" },
             Coord = { x = -1637.62, y = -9642.89 },
