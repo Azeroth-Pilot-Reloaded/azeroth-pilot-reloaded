@@ -1,5 +1,9 @@
 ﻿# APR-Core: architecture and audit
 
+The [30 October 2026 performance audit](../tools/validation/README.md#performance-audit-30-october-2026)
+documents the latest spike-focused corrections, synthetic before/after operation
+counts, complete test outcome and remaining in-game measurements.
+
 Audit dated 8 October 2026. Scope: core Lua modules, localization entries,
 loaded media, and dependencies. The definitions in
 `Routes/` are used to verify consumers; only the author and community metadata for
@@ -239,7 +243,7 @@ the authored route changes, rather than copied on every map refresh.
 | APR navigation catalogues                | Directed graph, client-specific crossings and access regions; no external routing engine.            |
 | LibTaxiData                         | External dependency required by `.pkgmeta`, optional in the TOC for load order. |
 | LibDataBroker / LibDBIcon           | Minimap launcher.                                                               |
-| LibSharedMedia                      | Font resolution.                                                                |
+| LibSharedMedia                      | Shared fonts and sounds, including bundled APR audio.                            |
 | LibWindow                           | Window positions and scales.                                                    |
 | ElvUI / EllesmereUI                 | Optional; absence of both keeps native rendering.                               |
 

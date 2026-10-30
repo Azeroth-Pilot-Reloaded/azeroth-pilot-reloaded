@@ -1,18 +1,21 @@
 -- Source wrappers cover locals and callbacks, including cached references.
 -- No runtime debug hooks or modifications to Blizzard/third-party functions.
 APRInstrumentation = {enabled = false, debug = false, registry = {}, registered = 0,
-    revision = "2026-10-20.1"}
+    revision = "2026-10-30.1"}
 local D = APRInstrumentation
 local main = {depth = 0, frames = {}, paused = 0}
 local threads = setmetatable({}, {__mode = "k"})
 local LOG_LIMIT = 1000
+local VALUE_REPLACEMENTS = {["\r"] = " ", ["\n"] = " ", ["\t"] = " ", ["|"] = "||"}
 
 local function Context()
     local thread = coroutine.running()
     if not thread then return main end
     local context = threads[thread]
     if not context then
-        context = {depth = 0, frames = {}, paused = 0, thread = thread}
+        -- Lua 5.1 weak-key tables do not collect keys retained by their values.
+        -- Only the distinction from the main context is needed here.
+        context = {depth = 0, frames = {}, paused = 0, thread = true}
         threads[thread] = context
     end
     return context
@@ -29,7 +32,9 @@ function D.Value(value, depth, visited)
     if canaccessvalue and not canaccessvalue(value) then return "<unavailable>" end
     if issecretvalue and issecretvalue(value) then return "<unavailable>" end
     local kind = type(value)
-    if kind == "string" then return (value:gsub("[\r\n\t]", " "):gsub("|", "||")):sub(1, 240) end
+    -- Every replacement preserves or increases length, so bytes beyond the
+    -- visible prefix cannot affect the result. Bound work before sanitizing.
+    if kind == "string" then return (value:sub(1, 240):gsub("[\r\n\t|]", VALUE_REPLACEMENTS)):sub(1, 240) end
     if kind == "number" or kind == "boolean" or kind == "nil" then return tostring(value) end
     if kind ~= "table" then return "<" .. kind .. ">" end
     if canaccesstable and not canaccesstable(value) then return "<unavailable>" end

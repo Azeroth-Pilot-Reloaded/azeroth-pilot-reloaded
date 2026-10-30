@@ -114,8 +114,74 @@ The focused commands in `tools/validation/run_lua_tests.py` remain available. De
 in-game checks are documented in `tools/validation/README.md`.
 
 Mocks validate addon behavior, not actual game rendering or API compatibility.
+The `party_finder_*` suites use invented players and routes to cover private
+discovery, multilingual policies, bounded queues/caches, timer cancellation,
+native-invitation correlation, sound cooldowns and pooled companion rows. Verify
+channel/whisper delivery, flags and secure invitation dialogs in the actual
+Retail and Forever clients before releasing the feature.
+`party_finder_world_test.lua` and `party_finder_load_test.lua` use controlled
+memberships/populations to exercise all discovery filters on the single stable
+`APR` channel. `communication_channel_test.lua` and
+`version_shared_channel_integration_test.lua` exercise independent discovery and
+version-check owners of that same membership. Startup is delayed by two seconds;
+joining has one ten-second timeout. Map, instance and chat-lockdown transitions
+retain membership, while traffic is suspended as needed. No channel permutation,
+native-channel reset, chat-window modification or roster request is permitted.
+Prejoined channels are not owned or left, and a manual leave requires an explicit
+retry. Version queries/replies keep their prefix, persisted cache, suppression
+and one bounded twelve-second startup retry; no `APRVersion` channel is joined.
+Version ingress has its own sixty-four-packet per-second budget before any
+version parsing or sender normalization. Profile/toggle changes immediately
+release or reacquire that owner's reference without disturbing discovery.
+
+All discovery searches have a sixty-second minimum interval. Automatic scans
+yield after a recently observed query, including another zone's query; manual
+searches are not starved by a busy channel. Each search accepts thirty results.
+Cached channel counts admit a best-effort sample targeting twenty-four world
+responses; unknown counts suppress world responses. Local matches are not
+excluded by sampling against the entire channel population. Instead their
+population-aware delays spread replies up to nine seconds, allowing early
+completion/cancellation of crowded searches. Presence attempts are spaced by
+five seconds across all filters, including offline/failed attempts.
+
+Public discovery work is bounded before decoding to sixteen normal packets plus
+four cancellation/withdrawal packets per second; private decoding is capped at
+sixty-four. Queued discovery replies and queued direct messages each have a
+thirty-two-entry bound. The shared fixture loads the actual embedded AceComm and
+ChatThrottleLib. `party_finder_direct_test.lua` verifies native send results,
+expiry/revocation at eventual dispatch, other addons' untouched traffic and
+multipart rejection before AceComm can allocate a spool for APR's tiny packets.
+The adapter explicitly checks the inspected AceComm14/CTL32 queue contracts;
+unfamiliar contracts refuse private sends. Library files and Blizzard API
+functions are never modified. Cancelled CTL records continue to count toward the
+bound until CTL retires them, including after discovery is disabled/re-enabled.
+
+Load fixtures include thousands of public/private messages, coalesced event
+bursts, a small matching zone in a large population, and stale queued presence
+after cancellation, hiding, disabling, policy/context changes, instance entry,
+lockdown and expiry. These local budgets and best-effort sampling do not guarantee
+a complete directory or eliminate network reception as population grows. In-game
+checks must include both clients, mixed addon releases, native channel numbering,
+different zones, server/faction reach, missing counts and chat restrictions. The
+wire protocol remains compatible, but discovery peers must use the new shared
+channel; this release does not join legacy channels as a bridge. Group version
+checks continue to communicate with older APR releases.
 UI tests use placeholder labels and do not validate localized wording or load
 translation catalogs. Text assertions cover synthetic data and behavior only.
+`settings_audio_test.lua` covers responsive sound-event cards and the real AceGUI
+audio adapter with a synthetic 10,000-sound catalog: no catalog access when the
+page opens, bounded visible rows, late registrations, callbacks and pooled release.
+It also checks the shared-font adapter's current catalog and unprefixed saved names.
+`font_media_test.lua` checks every declared text scope against synthetic shared
+fonts, late registration, inheritance and missing-font resolution. Shared-media
+registration tests discover bundled audio files and validate their registrations
+and manifest order with the embedded library.
+`ui_foundations_test.lua` covers indexed catalogs without dense rows or offsets,
+including scrolling, source replacement and fallback to ordinary variable-height lists.
+`party_finder_lifecycle_test.lua` covers invisible idle operation, temporary manual/automatic
+search membership, refused sends, cancelled fingerprints, coalesced expiry and renewed invitation rows.
+Protocol/invitation/UI fixtures also cover translated presentation, changed invitation nonces,
+route context and combat-deferred disabling without persistent listeners.
 `native_settings_test.lua` checks the restored Blizzard settings entry points;
 `memory_recycling_test.lua` also covers route right-click/Shift-right-click and
 disabled routes. `route_metadata_tooltip_test.lua` checks data-only attribution,
@@ -143,6 +209,119 @@ check the 1 ms planning budget, cache invalidation and cancellation. They cover
 catalogue preparation, taxi indexing, search ingestion and guidance publication.
 Timing benchmarks are separate from regression assertions because wall-clock
 results depend on the host, client APIs, garbage collection and scheduling.
+
+`quest_cache_performance_test.lua` uses 150 synthetic objectives to check stable
+record identities, zero unchanged layouts, percentage-only updates and shrinking
+objective lists. `bank_refresh_performance_test.lua` checks burst coalescing,
+close-time snapshots and stale/disabled callbacks. `quest_autocomplete_lifecycle_test.lua`
+covers bounded retry chains, duplicate bursts, delayed native data and cancellation.
+`route_cache_performance_test.lua` checks 1,000 warm reads without activation-key
+sorting/formatting or scenario reconstruction, including in-place mutations,
+same-length scenario changes and a missing scenario's bounded fallback cache.
+`navigation_combat_events_performance_test.lua` covers Retail/Forever with native
+unit registration and its fallback: combat bursts reuse the travel-action index,
+while recalls, live item effects, catalogue extension/replacement, camp locations,
+unlock observations and opaque payload rejection retain their behavior.
+`diagnostic_value_performance_test.lua` counts sanitization input bytes for large
+strings, including nested payloads, whitespace, pipe escaping and output boundaries.
+The route-panel and idle-tracker suites also assert zero route scans while the
+list is collapsed, cancellation of pending work, current-progress recovery and
+no recurring appearance probes while the guide is hidden or detached.
+`inventory_action_performance_test.lua` checks one fresh bag snapshot per action
+label render, unknown/incomplete bank data, empty actions and future previews.
+`loot_money_performance_test.lua` checks one price lookup per exact item variant
+within an estimate, including late data and modern/legacy container APIs.
+The AFK lifecycle suite also checks dormant hides and coalesced show/hide bursts.
+`party_roster_performance_test.lua` covers frame-local roster reuse, native roster
+notifications, realm identities and party/raid/reset transitions.
+`party_finder_filter_performance_test.lua` checks compiled language policies over
+200 synthetic candidates, bilingual/unknown cases, changed preferences and expiry.
+`party_text_performance_test.lua` bounds scans of malformed link/art markup while
+preserving labels, complete tags, colors, control filtering and text limits.
+`route_suggestions_performance_test.lua` checks startup work in operation/time
+slices, oversized quest fields, queued requests, deterministic choices,
+cancellation, preferences and partial-index cleanup/recovery after errors.
+`performance_rows_performance_test.lua` checks reusable viewer rows, independent
+export snapshots and clean filtering/mode/reset transitions. The dashboard suite
+also checks indexed publication and zero repeated row builds for stopped captures.
+`temporary_route_cache_performance_test.lua` checks one reusable temporary-prefix
+snapshot, parent/scenario edits, range and character changes, invalidation and
+completion without repeated effective-route reconstruction.
+`navigation_mount_performance_test.lua` checks candidate reuse across replans,
+live ownership/usability, missing/opaque responses and Retail/Forever fallbacks.
+`quest_order_dense_step_performance_test.lua` puts 300 objectives in one step and
+charges synthetic API/font costs: model preparation, viewport binding and later
+state/collapse updates remain budgeted. It covers partial-row visibility,
+replacement, scrolling, cancellation, pooling and error recovery with capture on.
+`release_notes_layout_performance_test.lua` checks coalesced font/resize callbacks,
+hidden ancestors, stale requests, immediate content publication and reopening.
+`diagnostic_coroutine_lifecycle_test.lua` uses Lua 5.1 weak observations and explicit
+test-only collections to verify retired workers can be freed while owned suspended
+workers still resume and completed timings remain available.
+`gamepad_geometry_performance_test.lua` counts rectangle queries in nested scroll
+frames and checks clipping, live movement/scaling, disabled controls and reveal.
+`gamepad_action_membership_performance_test.lua` repeats 20,000 warm registrations
+without registry scans or secure writes, then checks immediate reordering, action
+kind changes and rejected/retried combat registration.
+`changelog_parser_performance_test.lua` checks linear scan/copy work for malformed
+links and whitespace-heavy headings, with independent formatting expectations.
+`navigation_catalog_action_budget_test.lua` puts 500 alternatives in one invented
+transport definition and covers per-alternative budgets, shared random selection,
+missing observations, cancellation and the direct single-action path.
+`navigation_resource_dominance_budget_test.lua` compares 500-resource arrivals
+inside the search budget: equivalent/better/incomparable labels, relevant or
+ignored future consumables, operation boundaries and suspended cancellation.
+`party_snapshot_budget_performance_test.lua` bounds optional group-tooltip
+construction before copying/sorting dense rows. It preserves progress, complete
+ordinary exports, exact row/byte limits, all-or-nothing overflow and nil/empty
+containers, including real serialization/send/receive.
+`quest_objective_layout_batch_performance_test.lua` changes 100 main and 100
+optional objectives through the real cache and widgets. Layout/action-text
+publication is shared across the refresh, including nesting, error recovery,
+deferred reads, an existing content owner and unchanged refreshes during combat.
+Its real `UpdateStep` continuation case runs 25 then five passes: the cache batch
+cannot publish intermediate geometry, and the final content commit retires demands.
+`map_pin_lifecycle_performance_test.lua` advances 200 invented steps with bounded
+world/minimap pin pools, then checks live tooltips/numbering, route replacement,
+display limits, burst coalescing, direct refreshes, resize and disable/re-enable.
+`route_prerequisite_graph_performance_test.lua` expands shared diamonds once per
+declaration while retaining prerequisite order, cycles, missing routes, duplicate
+labels, current character eligibility and a fresh traversal after errors.
+`route_label_budget_performance_test.lua` resolves invented aliases and duplicate
+labels without sorting, budgets completed-route lookups, and rejects imports,
+renames or catalogue replacement during suspension before saved-state publication.
+`test_route_hash_startup.py` checks historical signature bytes with LuaBitOp's
+double-number normalization, cooperative hashing and atomic startup publication.
+It covers cancellation, errors, replacement and explicit progress/reset choices.
+Native level/scenario evidence stays observable; NPC/taxi actions wait, visible
+NPC pages reconcile afterward, and duplicate completion receipts advance once.
+`test_route_validation_toggle.py` calls the real settings toggle during suspended
+validation, then checks resumption, preserved reset/clear intentions and stale
+callbacks without re-registering gameplay events.
+It also executes the real instrumented startup worker with debug/performance
+capture enabled and checks coroutine-stack release and one completed timing.
+Escort confirmations recheck validation, route context, enabled settings and
+modifiers when their delayed callback runs.
+Event lifecycle tests also cover native/fallback player filters and foreign addon
+traffic; the XP overlay fixture checks zero unchanged UI writes and dormant
+inactive/combat scheduling with an independent invented bonus source.
+
+`addon_quest_journey_test.lua` connects the real event dispatcher, suggestion
+index, route conditions, quest cache, renderer and step transitions through an
+invented quest chain. `test_addon_journey_quest.py` adds real suggestion-popup
+actions and CurrentStep/FillersFrame widgets: conditional parallel insertion,
+optional-objective removal, missing native data and cancelled/resumed signature
+validation with one native completion. Neither fixture loads a shipped guide.
+`group_instance_journey_test.lua` composes real Party/Finder/World/Invites, codecs,
+core events and temporary-route lifecycles on Retail/Forever: private/world
+search, invitation/roster, party/instance channels, raid/scenario/delve transitions,
+early/complete exit, reload, missing maps and parent/custom-path restoration.
+`navigation_journey_integration_test.lua` uses the real controller, adapter,
+planner, taxi and library on both profiles. It joins access changes, wrong worlds,
+movement, geometry invalidation, event bursts, manual boarding, portals, combat,
+teleport/loading, consumed cooldowns, death, cancellation and temporary detours.
+These journeys supplement the smaller behavior/boundary suites; native APIs and
+widgets remain simulated and do not certify actual client security or rendering.
 
 `navigation_search_action_performance_test.lua` covers personal teleports from
 a separate world, cooldowns no future leg can consume, shared reagents, later-map

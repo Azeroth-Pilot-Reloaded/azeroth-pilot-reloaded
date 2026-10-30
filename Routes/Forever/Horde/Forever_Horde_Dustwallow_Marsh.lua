@@ -634,6 +634,97 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             _index = 64,
         },
         {
+            Waypoint = 232,
+            NonSkippableWaypoint = true,
+            Coord = { x = -4682, y = 2032 },
+            Range = 8,
+            ZoneStepTrigger = { x = -4682, y = 2032, Range = 8, mapID = 1454 },
+            AnyOf = { { MinLevel = 38, SkipForLvl = 40, DontHaveSpell = 14320 }, { MinLevel = 40, DontHaveSpell = 14324 }, { MinLevel = 40, DontHaveSpell = 14925 } },
+            Class = "HUNTER",
+            OnlyInZones = { 1454 },
+            Race = { "Orc", "Skyborne", "Tauren", "Troll" },
+            Zone = 1454,
+            _index = 65,
+        },
+        {
+            Waypoint = 232,
+            NonSkippableWaypoint = true,
+            Coord = { x = -4702, y = 2047 },
+            Range = 8,
+            ZoneStepTrigger = { x = -4702, y = 2047, Range = 8, mapID = 1454 },
+            AnyOf = { { MinLevel = 38, SkipForLvl = 40, DontHaveSpell = 14320 }, { MinLevel = 40, DontHaveSpell = 14324 }, { MinLevel = 40, DontHaveSpell = 14925 } },
+            Class = "HUNTER",
+            OnlyInZones = { 1454 },
+            Race = { "Orc", "Skyborne", "Tauren", "Troll" },
+            Zone = 1454,
+            _index = 66,
+        },
+        {
+            Waypoint = 232,
+            NonSkippableWaypoint = true,
+            Coord = { x = -4705, y = 2073 },
+            Range = 8,
+            ZoneStepTrigger = { x = -4705, y = 2073, Range = 8, mapID = 1454 },
+            AnyOf = { { MinLevel = 38, SkipForLvl = 40, DontHaveSpell = 14320 }, { MinLevel = 40, DontHaveSpell = 14324 }, { MinLevel = 40, DontHaveSpell = 14925 } },
+            Class = "HUNTER",
+            OnlyInZones = { 1454 },
+            Race = { "Orc", "Skyborne", "Tauren", "Troll" },
+            Zone = 1454,
+            _index = 67,
+        },
+        {
+            Waypoint = 232,
+            NonSkippableWaypoint = true,
+            Coord = { x = -4661, y = 2089 },
+            Range = 8,
+            ZoneStepTrigger = { x = -4661, y = 2089, Range = 8, mapID = 1454 },
+            AnyOf = { { MinLevel = 38, SkipForLvl = 40, DontHaveSpell = 14320 }, { MinLevel = 40, DontHaveSpell = 14324 }, { MinLevel = 40, DontHaveSpell = 14925 } },
+            Class = "HUNTER",
+            OnlyInZones = { 1454 },
+            Race = { "Orc", "Skyborne", "Tauren", "Troll" },
+            Zone = 1454,
+            _index = 68,
+        },
+        {
+            Waypoint = 232,
+            NonSkippableWaypoint = true,
+            Coord = { x = -4645, y = 2059 },
+            Range = 8,
+            ZoneStepTrigger = { x = -4645, y = 2059, Range = 8, mapID = 1454 },
+            AnyOf = { { MinLevel = 38, SkipForLvl = 40, DontHaveSpell = 14320 }, { MinLevel = 40, DontHaveSpell = 14324 }, { MinLevel = 40, DontHaveSpell = 14925 } },
+            Class = "HUNTER",
+            OnlyInZones = { 1454 },
+            Race = { "Orc", "Skyborne", "Tauren", "Troll" },
+            Zone = 1454,
+            _index = 69,
+        },
+        {
+            Waypoint = 232,
+            NonSkippableWaypoint = true,
+            Coord = { x = -4616, y = 2057 },
+            Range = 8,
+            ZoneStepTrigger = { x = -4616, y = 2057, Range = 8, mapID = 1454 },
+            AnyOf = { { MinLevel = 38, SkipForLvl = 40, DontHaveSpell = 14320 }, { MinLevel = 40, DontHaveSpell = 14324 }, { MinLevel = 40, DontHaveSpell = 14925 } },
+            Class = "HUNTER",
+            OnlyInZones = { 1454 },
+            Race = { "Orc", "Skyborne", "Tauren", "Troll" },
+            Zone = 1454,
+            _index = 70,
+        },
+        {
+            Waypoint = 232,
+            NonSkippableWaypoint = true,
+            Coord = { x = -4604, y = 2078 },
+            Range = 8,
+            ZoneStepTrigger = { x = -4604, y = 2078, Range = 8, mapID = 1454 },
+            AnyOf = { { MinLevel = 38, SkipForLvl = 40, DontHaveSpell = 14320 }, { MinLevel = 40, DontHaveSpell = 14324 }, { MinLevel = 40, DontHaveSpell = 14925 } },
+            Class = "HUNTER",
+            OnlyInZones = { 1454 },
+            Race = { "Orc", "Skyborne", "Tauren", "Troll" },
+            Zone = 1454,
+            _index = 71,
+        },
+        {
             LearnSkill = { spellID = 14320 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 66.05, 18.52),
             Class = "HUNTER",
@@ -642,7 +733,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             SkipForLvl = 40,
             Zone = 1454,
-            _index = 65,
+            _index = 72,
         },
         {
             LearnSkill = { spellID = 14324 },
@@ -652,7 +743,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             OnlyInZones = { 1454 },
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1454,
-            _index = 66,
+            _index = 73,
         },
         {
             LearnSkill = { spellID = 14925 },
@@ -662,7 +753,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             OnlyInZones = { 1454 },
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1454,
-            _index = 67,
+            _index = 74,
         },
         {
             LearnSkill = { spellID = 6078 },
@@ -673,7 +764,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Race = { "Scourge", "Troll" },
             SkipForLvl = 40,
             Zone = 1454,
-            _index = 68,
+            _index = 75,
         },
         {
             LearnSkill = { spellID = 8106 },
@@ -683,7 +774,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             OnlyInZones = { 1454 },
             Race = { "Scourge", "Troll" },
             Zone = 1454,
-            _index = 69,
+            _index = 76,
         },
         {
             Waypoint = 232,
@@ -699,7 +790,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             OnlyInZones = { 1454 },
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1454,
-            _index = 70,
+            _index = 77,
         },
         {
             BuyMerchant = { { itemID = 11307, quantity = 1, targetStock = true, optional = true } },
@@ -715,7 +806,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             OnlyInZones = { 1454 },
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1454,
-            _index = 71,
+            _index = 78,
         },
         {
             BuyMerchant = { { quantity = 2600, itemID = 3030, targetStock = true } },
@@ -731,7 +822,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             SkipForLvl = 40,
             Zone = 1454,
-            _index = 72,
+            _index = 79,
         },
         {
             BuyMerchant = { { quantity = 2600, itemID = 3033, targetStock = true } },
@@ -747,7 +838,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             SkipForLvl = 40,
             Zone = 1454,
-            _index = 73,
+            _index = 80,
         },
         {
             BuyMerchant = { { itemID = 11285, quantity = 2600, targetStock = true } },
@@ -761,7 +852,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             OnlyInZones = { 1454 },
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1454,
-            _index = 74,
+            _index = 81,
         },
         {
             BuyMerchant = { { quantity = 2600, itemID = 11284, targetStock = true } },
@@ -777,7 +868,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             OnlyInZones = { 1454 },
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1454,
-            _index = 75,
+            _index = 82,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -787,7 +878,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             OnlyInZones = { 1454 },
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1454,
-            _index = 76,
+            _index = 83,
         },
         {
             PickUp = { 3631 },
@@ -798,7 +889,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             OnlyInZones = { 1454 },
             Race = { "Orc", "Scourge" },
             Zone = 1454,
-            _index = 77,
+            _index = 84,
         },
         {
             UseFlightPath = 3631,
@@ -810,7 +901,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             OnlyInZones = { 1454, 1413 },
             Race = { "Orc", "Scourge" },
             Zone = 1454,
-            _index = 78,
+            _index = 85,
         },
         {
             Waypoint = 3631,
@@ -822,7 +913,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             OnlyInZones = { 1454 },
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1454,
-            _index = 79,
+            _index = 86,
         },
         {
             Done = { 3631 },
@@ -832,7 +923,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             OnlyInZones = { 1413 },
             Race = { "Orc", "Scourge" },
             Zone = 1413,
-            _index = 80,
+            _index = 87,
         },
         {
             UseFlightPath = 232,
@@ -844,7 +935,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             OnlyInZones = { 1413, 1454 },
             Race = { "Orc", "Scourge" },
             Zone = 1413,
-            _index = 81,
+            _index = 88,
         },
         {
             LearnSkill = { spellID = 825 },
@@ -859,7 +950,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Skill = { operator = "<", skill = "riding", rank = 75 },
             Zone = 1454,
             -- GossipOptionIDs = {}, -- TODO: verify merchant option IDs
-            _index = 82,
+            _index = 89,
         },
         {
             UseSpell = { spellID = 3567 },
@@ -872,7 +963,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Race = "Troll",
             Skill = { operator = "<", skill = "riding", rank = 75 },
             SkipInZones = { 1454 },
-            _index = 83,
+            _index = 90,
         },
         {
             Waypoint = 232,
@@ -888,7 +979,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Race = "Troll",
             Skill = { operator = "<", skill = "riding", rank = 75 },
             Zone = 1454,
-            _index = 84,
+            _index = 91,
         },
         {
             Waypoint = 232,
@@ -904,7 +995,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Race = "Troll",
             Skill = { operator = "<", skill = "riding", rank = 75 },
             Zone = 1454,
-            _index = 85,
+            _index = 92,
         },
         {
             Waypoint = 232,
@@ -920,7 +1011,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Race = "Troll",
             Skill = { operator = "<", skill = "riding", rank = 75 },
             Zone = 1454,
-            _index = 86,
+            _index = 93,
         },
         {
             Waypoint = 232,
@@ -936,7 +1027,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Race = "Troll",
             Skill = { operator = "<", skill = "riding", rank = 75 },
             Zone = 1411,
-            _index = 87,
+            _index = 94,
         },
         {
             Waypoint = 232,
@@ -952,7 +1043,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Race = "Troll",
             Skill = { operator = "<", skill = "riding", rank = 75 },
             Zone = 1411,
-            _index = 88,
+            _index = 95,
         },
         {
             LearnSkill = { spellID = 10861 },
@@ -967,7 +1058,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Skill = { operator = "<", skill = "riding", rank = 75 },
             Zone = 1411,
             -- GossipOptionIDs = {}, -- TODO: verify merchant option IDs
-            _index = 89,
+            _index = 96,
         },
         {
             Waypoint = 232,
@@ -979,7 +1070,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             OnlyInZones = { 1411 },
             Race = "Troll",
             Zone = 1411,
-            _index = 90,
+            _index = 97,
         },
         {
             UseFlightPath = 232,
@@ -993,7 +1084,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Race = "Tauren",
             Skill = { operator = "<", skill = "riding", rank = 75 },
             Zone = 1454,
-            _index = 91,
+            _index = 98,
         },
         {
             Waypoint = 232,
@@ -1008,7 +1099,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Race = "Tauren",
             Skill = { operator = "<", skill = "riding", rank = 75 },
             Zone = 1456,
-            _index = 92,
+            _index = 99,
         },
         {
             Waypoint = 232,
@@ -1023,7 +1114,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Race = "Tauren",
             Skill = { operator = "<", skill = "riding", rank = 75 },
             Zone = 1456,
-            _index = 93,
+            _index = 100,
         },
         {
             Waypoint = 232,
@@ -1038,7 +1129,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Race = "Tauren",
             Skill = { operator = "<", skill = "riding", rank = 75 },
             Zone = 1456,
-            _index = 94,
+            _index = 101,
         },
         {
             Waypoint = 232,
@@ -1054,7 +1145,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Race = "Tauren",
             Skill = { operator = "<", skill = "riding", rank = 75 },
             Zone = 1456,
-            _index = 95,
+            _index = 102,
         },
         {
             LearnSkill = { spellID = 18995 },
@@ -1068,7 +1159,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Skill = { operator = "<", skill = "riding", rank = 75 },
             Zone = 1412,
             -- GossipOptionIDs = {}, -- TODO: verify merchant option IDs
-            _index = 96,
+            _index = 103,
         },
         {
             UseHS = 232,
@@ -1076,7 +1167,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             OnlyInZones = { 1412 },
             Race = "Tauren",
             SkipInZones = { 1454 },
-            _index = 97,
+            _index = 104,
         },
         {
             Waypoint = 232,
@@ -1087,7 +1178,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             OnlyInZones = { 1412, 1456 },
             Race = "Tauren",
             Zone = 1456,
-            _index = 98,
+            _index = 105,
         },
         {
             Waypoint = 232,
@@ -1098,7 +1189,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             OnlyInZones = { 1412, 1456 },
             Race = "Tauren",
             Zone = 1456,
-            _index = 99,
+            _index = 106,
         },
         {
             Waypoint = 232,
@@ -1109,7 +1200,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             OnlyInZones = { 1412, 1456 },
             Race = "Tauren",
             Zone = 1456,
-            _index = 100,
+            _index = 107,
         },
         {
             Waypoint = 232,
@@ -1121,7 +1212,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             OnlyInZones = { 1412, 1456 },
             Race = "Tauren",
             Zone = 1456,
-            _index = 101,
+            _index = 108,
         },
         {
             UseFlightPath = 232,
@@ -1131,7 +1222,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             OnlyInZones = { 1456, 1454 },
             Race = "Tauren",
             Zone = 1456,
-            _index = 102,
+            _index = 109,
         },
         {
             Waypoint = 232,
@@ -1142,7 +1233,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             AnyOf = { { ClassNot = "MAGE" }, { Class = "MAGE", DontHaveSpell = 3563 }, { Class = "MAGE", ItemCount = { itemID = 17031, count = 1, operator = "<" } } },
             OnlyInZones = { 1454 },
             Zone = 1454,
-            _index = 103,
+            _index = 110,
         },
         {
             Waypoint = 232,
@@ -1153,7 +1244,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             AnyOf = { { ClassNot = "MAGE" }, { Class = "MAGE", DontHaveSpell = 3563 }, { Class = "MAGE", ItemCount = { itemID = 17031, count = 1, operator = "<" } } },
             OnlyInZones = { 1454 },
             Zone = 1454,
-            _index = 104,
+            _index = 111,
         },
         {
             Waypoint = 232,
@@ -1164,7 +1255,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             AnyOf = { { ClassNot = "MAGE" }, { Class = "MAGE", DontHaveSpell = 3563 }, { Class = "MAGE", ItemCount = { itemID = 17031, count = 1, operator = "<" } } },
             OnlyInZones = { 1454 },
             Zone = 1454,
-            _index = 105,
+            _index = 112,
         },
         {
             Waypoint = 232,
@@ -1175,7 +1266,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             AnyOf = { { ClassNot = "MAGE" }, { Class = "MAGE", DontHaveSpell = 3563 }, { Class = "MAGE", ItemCount = { itemID = 17031, count = 1, operator = "<" } } },
             OnlyInZones = { 1454 },
             Zone = 1411,
-            _index = 106,
+            _index = 113,
         },
         {
             Waypoint = 232,
@@ -1186,7 +1277,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             AnyOf = { { ClassNot = "MAGE" }, { Class = "MAGE", DontHaveSpell = 3563 }, { Class = "MAGE", ItemCount = { itemID = 17031, count = 1, operator = "<" } } },
             OnlyInZones = { 1411 },
             Zone = 1411,
-            _index = 107,
+            _index = 114,
         },
         {
             Waypoint = 232,
@@ -1197,7 +1288,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             AnyOf = { { ClassNot = "MAGE" }, { Class = "MAGE", DontHaveSpell = 3563 }, { Class = "MAGE", ItemCount = { itemID = 17031, count = 1, operator = "<" } } },
             OnlyInZones = { 1411 },
             Zone = 1411,
-            _index = 108,
+            _index = 115,
         },
         {
             Zeppelin = true,
@@ -1207,7 +1298,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             AnyOf = { { ClassNot = "MAGE" }, { Class = "MAGE", DontHaveSpell = 3563 }, { Class = "MAGE", ItemCount = { itemID = 17031, count = 1, operator = "<" } } },
             SkipInZones = { 1458 },
             Zone = 1411,
-            _index = 109,
+            _index = 116,
         },
         {
             LearnSkill = { spellID = 10906 },
@@ -1222,7 +1313,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Skill = { operator = "<", skill = "riding", rank = 75 },
             Zone = 1420,
             -- GossipOptionIDs = {}, -- TODO: verify merchant option IDs
-            _index = 110,
+            _index = 117,
         },
         {
             Waypoint = 232,
@@ -1233,7 +1324,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             AnyOf = { { ClassNot = "MAGE" }, { Class = "MAGE", DontHaveSpell = 3563 }, { Class = "MAGE", ItemCount = { itemID = 17031, count = 1, operator = "<" } } },
             OnlyInZones = { 1420 },
             Zone = 1420,
-            _index = 111,
+            _index = 118,
         },
         {
             Waypoint = 232,
@@ -1244,7 +1335,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             AnyOf = { { ClassNot = "MAGE" }, { Class = "MAGE", DontHaveSpell = 3563 }, { Class = "MAGE", ItemCount = { itemID = 17031, count = 1, operator = "<" } } },
             OnlyInZones = { 1420, 1458 },
             Zone = 1458,
-            _index = 112,
+            _index = 119,
         },
         {
             Waypoint = 232,
@@ -1255,7 +1346,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             AnyOf = { { ClassNot = "MAGE" }, { Class = "MAGE", DontHaveSpell = 3563 }, { Class = "MAGE", ItemCount = { itemID = 17031, count = 1, operator = "<" } } },
             OnlyInZones = { 1420, 1458 },
             Zone = 1458,
-            _index = 113,
+            _index = 120,
         },
         {
             Waypoint = 232,
@@ -1266,7 +1357,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             AnyOf = { { ClassNot = "MAGE" }, { Class = "MAGE", DontHaveSpell = 3563 }, { Class = "MAGE", ItemCount = { itemID = 17031, count = 1, operator = "<" } } },
             OnlyInZones = { 1420, 1458 },
             Zone = 1458,
-            _index = 114,
+            _index = 121,
         },
         {
             Waypoint = 232,
@@ -1277,7 +1368,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             AnyOf = { { ClassNot = "MAGE" }, { Class = "MAGE", DontHaveSpell = 3563 }, { Class = "MAGE", ItemCount = { itemID = 17031, count = 1, operator = "<" } } },
             OnlyInZones = { 1420, 1458 },
             Zone = 1458,
-            _index = 115,
+            _index = 122,
         },
         {
             Waypoint = 232,
@@ -1288,7 +1379,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             AnyOf = { { ClassNot = "MAGE" }, { Class = "MAGE", DontHaveSpell = 3563 }, { Class = "MAGE", ItemCount = { itemID = 17031, count = 1, operator = "<" } } },
             OnlyInZones = { 1420, 1458 },
             Zone = 1458,
-            _index = 116,
+            _index = 123,
         },
         {
             Waypoint = 232,
@@ -1300,7 +1391,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             AnyOf = { { ClassNot = "MAGE" }, { Class = "MAGE", DontHaveSpell = 3563 }, { Class = "MAGE", ItemCount = { itemID = 17031, count = 1, operator = "<" } } },
             OnlyInZones = { 1420, 1458 },
             Zone = 1458,
-            _index = 117,
+            _index = 124,
         },
         {
             UseSpell = { spellID = 3563 },
@@ -1309,7 +1400,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             ItemCount = { itemID = 17031, count = 1, operator = ">=" },
             Race = { "Orc", "Scourge", "Troll" },
             SkipInZones = { 1458 },
-            _index = 118,
+            _index = 125,
         },
         {
             LearnSkill = { spellID = 8413 },
@@ -1320,7 +1411,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Race = { "Orc", "Scourge", "Troll" },
             SkipForLvl = 40,
             Zone = 1458,
-            _index = 119,
+            _index = 126,
         },
         {
             LearnSkill = { spellID = 8423 },
@@ -1330,7 +1421,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             OnlyInZones = { 1458 },
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1458,
-            _index = 120,
+            _index = 127,
         },
         {
             LearnSkill = { spellID = 11418 },
@@ -1340,7 +1431,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             OnlyInZones = { 1458 },
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1458,
-            _index = 121,
+            _index = 128,
         },
         {
             BuyMerchant = { { itemID = 17031, quantity = 2 } },
@@ -1353,7 +1444,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             OnlyInZones = { 1458 },
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1458,
-            _index = 122,
+            _index = 129,
         },
         {
             BuyMerchant = { { itemID = 17031, quantity = 1 } },
@@ -1366,7 +1457,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             OnlyInZones = { 1458 },
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1458,
-            _index = 123,
+            _index = 130,
         },
         {
             Waypoint = 232,
@@ -1384,7 +1475,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Race = "Scourge",
             Skill = { operator = "<", skill = "riding", rank = 75 },
             Zone = 1458,
-            _index = 124,
+            _index = 131,
         },
         {
             Waypoint = 232,
@@ -1402,7 +1493,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Race = "Scourge",
             Skill = { operator = "<", skill = "riding", rank = 75 },
             Zone = 1458,
-            _index = 125,
+            _index = 132,
         },
         {
             Waypoint = 232,
@@ -1420,7 +1511,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Race = "Scourge",
             Skill = { operator = "<", skill = "riding", rank = 75 },
             Zone = 1458,
-            _index = 126,
+            _index = 133,
         },
         {
             Waypoint = 232,
@@ -1438,7 +1529,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Race = "Scourge",
             Skill = { operator = "<", skill = "riding", rank = 75 },
             Zone = 1458,
-            _index = 127,
+            _index = 134,
         },
         {
             Waypoint = 232,
@@ -1456,7 +1547,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Race = "Scourge",
             Skill = { operator = "<", skill = "riding", rank = 75 },
             Zone = 1458,
-            _index = 128,
+            _index = 135,
         },
         {
             Waypoint = 232,
@@ -1475,7 +1566,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Race = "Scourge",
             Skill = { operator = "<", skill = "riding", rank = 75 },
             Zone = 1458,
-            _index = 129,
+            _index = 136,
         },
         {
             Waypoint = 232,
@@ -1493,7 +1584,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Race = "Scourge",
             Skill = { operator = "<", skill = "riding", rank = 75 },
             Zone = 1420,
-            _index = 130,
+            _index = 137,
         },
         {
             LearnSkill = { spellID = 10906 },
@@ -1510,7 +1601,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             Skill = { operator = "<", skill = "riding", rank = 75 },
             Zone = 1420,
             -- GossipOptionIDs = {}, -- TODO: verify merchant option IDs
-            _index = 131,
+            _index = 138,
         },
         {
             UseSpell = { spellID = 3563 },
@@ -1519,11 +1610,11 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             ItemCount = { itemID = 17031, count = 1, operator = ">=" },
             OnlyInZones = { 1420 },
             Race = "Scourge",
-            _index = 132,
+            _index = 139,
         },
         {
             RouteCompleted = true,
-            _index = 133,
+            _index = 140,
         },
     },
 }

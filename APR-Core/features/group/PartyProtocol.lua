@@ -18,32 +18,74 @@ local function IsInteger(value, minimum)
         and value <= MAX_INDEX and value % 1 == 0
 end--[[APR_DIAG]]; IsInteger = APRTrace("APR-Core/features/group/PartyProtocol.lua:16:IsInteger#1", IsInteger)--[[/APR_DIAG]]
 
+local function StripHyperlinkMarkup(value)
+    local parts, cursor = nil, 1
+    while true do
+        local first = value:find("|H", cursor, true)
+        if not first then break end
+        local label = value:find("|h", first + 2, true)
+        local last = label and value:find("|h", label + 2, true)
+        -- With fewer than two closing delimiters left, no later opener can
+        -- form a complete link. Preserve the unmatched suffix without rescans.
+        if not last then break end
+        parts = parts or {}
+        parts[#parts + 1] = value:sub(cursor, first - 1)
+        parts[#parts + 1] = value:sub(label + 2, last - 1)
+        cursor = last + 2
+    end
+    if not parts then return value end
+    parts[#parts + 1] = value:sub(cursor)
+    return table.concat(parts)
+end--[[APR_DIAG]]; StripHyperlinkMarkup = APRTrace("APR-Core/features/group/PartyProtocol.lua:21:StripHyperlinkMarkup#2", StripHyperlinkMarkup)--[[/APR_DIAG]]
+
+local function StripArtMarkup(value)
+    local parts, cursor = nil, 1
+    while true do
+        local first = value:find("|[TA]", cursor)
+        if not first then break end
+        local last = value:find("|[ta]", first + 2)
+        if not last then break end
+        parts = parts or {}
+        parts[#parts + 1] = value:sub(cursor, first - 1)
+        cursor = last + 2
+    end
+    if not parts then return value end
+    parts[#parts + 1] = value:sub(cursor)
+    return table.concat(parts)
+end--[[APR_DIAG]]; StripArtMarkup = APRTrace("APR-Core/features/group/PartyProtocol.lua:41:StripArtMarkup#3", StripArtMarkup)--[[/APR_DIAG]]
+
 local function Text(value, limit)
     if type(value) ~= "string" or #value > limit then return nil end
     -- Tooltip text is data, never texture/atlas instructions supplied by another player.
-    return value:gsub("|H.-|h(.-)|h", "%1"):gsub("|[TA].-|[ta]", "")
-        :gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", ""):gsub("[%z\1-\8\11\12\14-\31]", "")
-end--[[APR_DIAG]]; Text = APRTrace("APR-Core/features/group/PartyProtocol.lua:21:Text#2", Text)--[[/APR_DIAG]]
+    -- Non-greedy unanchored patterns retry at every unmatched opener, turning
+    -- a bounded but malformed peer snapshot into quadratic work on one frame.
+    if value:find("|", 1, true) then
+        value = StripHyperlinkMarkup(value)
+        value = StripArtMarkup(value)
+        value = value:gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", "")
+    end
+    return value:gsub("[%z\1-\8\11\12\14-\31]", "")
+end--[[APR_DIAG]]; Text = APRTrace("APR-Core/features/group/PartyProtocol.lua:57:Text#4", Text)--[[/APR_DIAG]]
 
 local function NameParts(value)
     if type(value) ~= "string" or #value == 0 or #value > 128 or value:find("[%c|]") then return end
     local name, realm = value:match("^([^%-]+)%-(.+)$")
     return name or value, realm and realm:gsub("%s", "")
-end--[[APR_DIAG]]; NameParts = APRTrace("APR-Core/features/group/PartyProtocol.lua:28:NameParts#3", NameParts)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; NameParts = APRTrace("APR-Core/features/group/PartyProtocol.lua:70:NameParts#5", NameParts)--[[/APR_DIAG]]
 
 function protocol.PlayerKey(value)
     local name, realm = NameParts(value)
     if not name then return end
     local home = GetNormalizedRealmName and GetNormalizedRealmName() or GetRealmName and GetRealmName() or ""
     return name .. "-" .. (realm or home:gsub("%s", ""))
-end--[[APR_DIAG]]; protocol.PlayerKey = APRTrace("APR-Core/features/group/PartyProtocol.lua:34:protocol.PlayerKey#4", protocol.PlayerKey)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; protocol.PlayerKey = APRTrace("APR-Core/features/group/PartyProtocol.lua:76:protocol.PlayerKey#6", protocol.PlayerKey)--[[/APR_DIAG]]
 
 function protocol.DisplayName(value)
     local name, realm = NameParts(value)
     if not name then return end
     local home = GetNormalizedRealmName and GetNormalizedRealmName() or GetRealmName and GetRealmName() or ""
     return realm and realm ~= home:gsub("%s", "") and (name .. "-" .. realm) or name
-end--[[APR_DIAG]]; protocol.DisplayName = APRTrace("APR-Core/features/group/PartyProtocol.lua:41:protocol.DisplayName#5", protocol.DisplayName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; protocol.DisplayName = APRTrace("APR-Core/features/group/PartyProtocol.lua:83:protocol.DisplayName#7", protocol.DisplayName)--[[/APR_DIAG]]
 
 -- Sender is authoritative. Legacy peers may send only a character name in their payload.
 function protocol.NormalizeSnapshot(data, sender)
@@ -128,7 +170,7 @@ function protocol.NormalizeSnapshot(data, sender)
         end
     end
     return result
-end--[[APR_DIAG]]; protocol.NormalizeSnapshot = APRTrace("APR-Core/features/group/PartyProtocol.lua:49:protocol.NormalizeSnapshot#6", protocol.NormalizeSnapshot)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; protocol.NormalizeSnapshot = APRTrace("APR-Core/features/group/PartyProtocol.lua:91:protocol.NormalizeSnapshot#8", protocol.NormalizeSnapshot)--[[/APR_DIAG]]
 
 -- Compare consumed values before serialization or frame work. Metadata, filler
 -- rows and duplicated effective indices never affect another player's display.
@@ -140,7 +182,7 @@ function protocol.SameProgress(a, b)
     if left == right then return true end
     return left ~= nil and right ~= nil and left.id == right.id
         and left.step == right.step and left.total == right.total
-end--[[APR_DIAG]]; protocol.SameProgress = APRTrace("APR-Core/features/group/PartyProtocol.lua:135:protocol.SameProgress#7", protocol.SameProgress)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; protocol.SameProgress = APRTrace("APR-Core/features/group/PartyProtocol.lua:177:protocol.SameProgress#9", protocol.SameProgress)--[[/APR_DIAG]]
 
 local function SameRows(a, b)
     if a == b then return true end
@@ -156,10 +198,10 @@ local function SameRows(a, b)
         end
     end
     return true
-end--[[APR_DIAG]]; SameRows = APRTrace("APR-Core/features/group/PartyProtocol.lua:145:SameRows#8", SameRows)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; SameRows = APRTrace("APR-Core/features/group/PartyProtocol.lua:187:SameRows#10", SameRows)--[[/APR_DIAG]]
 
 function protocol.SameDetails(a, b)
     if a == b then return true end
     return SameRows(a and a.extraLines, b and b.extraLines)
         and SameRows(a and a.questSteps, b and b.questSteps)
-end--[[APR_DIAG]]; protocol.SameDetails = APRTrace("APR-Core/features/group/PartyProtocol.lua:161:protocol.SameDetails#9", protocol.SameDetails)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; protocol.SameDetails = APRTrace("APR-Core/features/group/PartyProtocol.lua:203:protocol.SameDetails#11", protocol.SameDetails)--[[/APR_DIAG]]

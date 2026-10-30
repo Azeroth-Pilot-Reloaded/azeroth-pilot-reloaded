@@ -1,7 +1,7 @@
 -- Turn declarative connections into usable edges for one character snapshot.
 -- Each build owns its API cache and yields between connection directions.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("catalog", 14) then return end
+if not Lib:BeginModule("catalog", 15) then return end
 local Instance = Lib.Instance
 local EdgeBuild = {}
 EdgeBuild.__index = EdgeBuild
@@ -42,10 +42,11 @@ local function MarkPending(metadata, reason)
     end
 end
 
-function Instance:SelectAction(definition, character, metadata)
+function Instance:SelectAction(definition, character, metadata, checkpoint)
     if not definition.actions then return nil, true end
     local alternatives = definition.selection == "random" and {} or nil
     for _, option in ipairs(definition.actions) do
+        if checkpoint then checkpoint() end
         local allowed = self:CheckRequirements(option.requirements, character)
         if allowed == nil then metadata.waitingData = true end
         if allowed == true then
@@ -196,13 +197,13 @@ local function CreateDepartureCheck(owner, snapshot, requirements, character)
     end
 end
 
-function EdgeBuild:PrepareDefinition(definition)
+function EdgeBuild:PrepareDefinition(definition, checkpoint)
     if definition.disabled or (definition.reviewStatus and definition.reviewStatus ~= "confirmed") then return nil end
     local allowed = self.snapshot:CheckPlanningRequirements(definition.requirements, self.character)
     if allowed == nil then self.metadata.waitingData = true end
     if not allowed then return { blockedRequirements = definition.requirements } end
 
-    local action, usable = self.snapshot:SelectAction(definition, self.character, self.metadata)
+    local action, usable = self.snapshot:SelectAction(definition, self.character, self.metadata, checkpoint)
     if not usable then return { blockedActions = definition.actions } end
     local prepared = { action = action }
     if definition.requirements then
@@ -325,7 +326,22 @@ function EdgeBuild:Advance()
         return
     end
 
-    local prepared = self:PrepareDefinition(definition)
+    local prepared
+    if self.preparation or (definition.actions and #definition.actions > 1) then
+        -- One connection can contain many hearthstone/toy alternatives. Yield
+        -- between those native probes too, rather than treating the entire
+        -- selection as one operation outside the scheduler's time budget.
+        self.preparation = self.preparation or coroutine.create(function()
+            return self:PrepareDefinition(definition, coroutine.yield)
+        end)
+        local ok
+        ok, prepared = coroutine.resume(self.preparation)
+        if not ok then self.preparation = nil; error(prepared, 0) end
+        if coroutine.status(self.preparation) ~= "dead" then return end
+        self.preparation = nil
+    else
+        prepared = self:PrepareDefinition(definition)
+    end
     if prepared then
         self:AddDirection(definition, prepared, definition.from, definition.to, ":forward")
         if definition.bidirectional then
@@ -346,7 +362,7 @@ function EdgeBuild:Cancel()
     self.status = "cancelled"
     -- Releasing references is constant time; the collector can reclaim the
     -- abandoned build without a synchronous walk through every partial edge.
-    self.edges, self.snapshot, self.prepared = nil, nil, nil
+    self.edges, self.snapshot, self.prepared, self.preparation = nil, nil, nil, nil
 end
 
 function EdgeBuild:Step(maxOperations, maxMilliseconds)
@@ -355,8 +371,8 @@ function EdgeBuild:Step(maxOperations, maxMilliseconds)
         maxMilliseconds = maxMilliseconds or 1
         local deadline = self.clock and (self.clock() + math.max(0, maxMilliseconds))
         local operations = 0
-        -- One operation handles one direction or one rejected definition.
-        -- A frame may stop between the two directions of the same connection.
+        -- One operation advances a direction, rejected definition or action
+        -- alternative. A frame can stop within a selection or between directions.
         while self.index <= #self.definitions and operations < maxOperations do
             if deadline and self.clock() >= deadline then break end
             self:Advance()

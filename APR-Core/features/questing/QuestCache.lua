@@ -5,8 +5,8 @@ local APRResume = APRInstrumentation and APRInstrumentation.Resume or coroutine.
 local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Synchronizes quest-log objectives and completion state; cache refreshes are coalesced before rendering.
 
-function APR:UpdateQuest(deferStepUpdate)
-    APR:Debug("Function: APR_UpdateQuest()")
+local function UpdateQuest(self, deferStepUpdate)
+    self:Debug("Function: APR_UpdateQuest()")
 
     local updateStep = false
 
@@ -21,49 +21,56 @@ function APR:UpdateQuest(deferStepUpdate)
             local numObjectives = C_QuestLog.GetNumQuestObjectives(questID)
             local questStatus = isQuestComplete and APR.QUEST_STATUS.COMPLETE or APR.QUEST_STATUS.PROGRESS
 
-            APR.ActiveQuests[questID] = APR.ActiveQuests[questID] or {
+            local quest = APR.ActiveQuests[questID] or {
                 status = questStatus,
                 title = questTitle,
                 objectives = {},
             }
+            APR.ActiveQuests[questID] = quest
+            quest.title = questTitle
+            quest.objectives = quest.objectives or {}
 
-            if APR.ActiveQuests[questID].status ~= questStatus then
+            if quest.status ~= questStatus then
                 APR:Debug(("Quest [%s] status updated: %s"):format(questTitle, questStatus))
                 updateStep = true
             end
             -- Update quest status if it has changed
-            APR.ActiveQuests[questID].status = questStatus
+            quest.status = questStatus
 
             -- Handle objectives
             local questObjectives = (numObjectives > 0) and C_QuestLog.GetQuestObjectives(questID) or nil
             if not questObjectives then
                 -- Quest without objectives
-                APR.ActiveQuests[questID].objectives[1] = {
-                    text = questTitle,
-                    status = questStatus,
-                }
+                local objective = quest.objectives[1]
+                if not objective then objective = {}; quest.objectives[1] = objective end
+                if objective.text ~= questTitle or objective.status ~= questStatus then updateStep = true end
+                objective.text, objective.status = questTitle, questStatus
             else
                 for i, objectiveInfo in ipairs(questObjectives) do
                     local status = objectiveInfo.finished and APR.QUEST_STATUS.COMPLETE or APR.QUEST_STATUS.PROGRESS
                     local text = objectiveInfo.text or ""
 
                     -- Update only if changed
-                    local objEntry = APR.ActiveQuests[questID].objectives[i]
+                    local objEntry = quest.objectives[i]
                     if not objEntry or objEntry.text ~= text or objEntry.status ~= status then
                         updateStep = true
                         APR:Debug(("Objective [%s] - Step %d: %s (%s)"):format(
                             questTitle, i, text, status))
                     end
 
-                    APR.ActiveQuests[questID].objectives[i] = {
-                        text = text,
-                        status = status,
-                    }
+                    if not objEntry then objEntry = {}; quest.objectives[i] = objEntry end
+                    objEntry.text, objEntry.status = text, status
 
-                    -- // todo check le refresh pourquoi
-                    APR.currentStep:UpdateQuestStep(questID, text, i)
-                    APR.fillersFrame:UpdateFillerStep(questID, text, i)
+                    if not deferStepUpdate then
+                        APR.currentStep:UpdateQuestStep(questID, text, i)
+                        APR.fillersFrame:UpdateFillerStep(questID, text, i)
+                    end
                 end
+            end
+            local count = questObjectives and #questObjectives or 1
+            for i = #quest.objectives, count + 1, -1 do
+                quest.objectives[i] = nil
+                updateStep = true
             end
         end
     end
@@ -78,7 +85,21 @@ function APR:UpdateQuest(deferStepUpdate)
         APR.party:SendGroupMessage()
         APR.party:RefreshPartyFrameAnchor()
     end
-end--[[APR_DIAG]]; APR.UpdateQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:8:APR:UpdateQuest#1", APR.UpdateQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; UpdateQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:8:UpdateQuest#1", UpdateQuest)--[[/APR_DIAG]]
+
+function APR:UpdateQuest(deferStepUpdate)
+    local rows = self.currentStep
+    if deferStepUpdate or not rows or not rows.BeginQuestUpdates or not rows.EndQuestUpdates then
+        return UpdateQuest(self, deferStepUpdate)
+    end
+    rows:BeginQuestUpdates()
+    local ok, result = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](UpdateQuest, self, deferStepUpdate)
+    -- Always release the nesting guard. A failed refresh retains dirty geometry
+    -- for recovery instead of publishing a partially synchronized layout.
+    rows:EndQuestUpdates(ok)
+    if not ok then error(result, 0) end
+    return result
+end--[[APR_DIAG]]; APR.UpdateQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:90:APR:UpdateQuest#2", APR.UpdateQuest)--[[/APR_DIAG]]
 
 function APR:RemoveQuest(questID)
     if not questID then return end
@@ -104,19 +125,39 @@ function APR:RemoveQuest(questID)
     -- here, which also rebuilds the quest tracker and the current step.
     self:OverrideRouteData()
     self:UpdateStep()
-end--[[APR_DIAG]]; APR.RemoveQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:83:APR:RemoveQuest#2", APR.RemoveQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RemoveQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:104:APR:RemoveQuest#3", APR.RemoveQuest)--[[/APR_DIAG]]
+
+function APR:CancelAutocompleteQuest()
+    if self.autocompleteQuestTimer then self.autocompleteQuestTimer:Cancel() end
+    self.autocompleteQuestTimer = nil
+end--[[APR_DIAG]]; APR.CancelAutocompleteQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:130:APR:CancelAutocompleteQuest#4", APR.CancelAutocompleteQuest)--[[/APR_DIAG]]
 
 function APR:PopupAutocompleteQuest()
-    if (GetNumAutoQuestPopUps() > 0) then
-        local questID, popUpType = GetAutoQuestPopUp(1)
-        if (popUpType == "OFFER") then
-            ShowQuestOffer(1)
-            ShowQuestOffer(questID)
-        elseif (popUpType == "COMPLETE") then
-            ShowQuestOffer(1)
-            ShowQuestComplete(questID)
+    if self.routeValidationPending or self.routeValidationFailed then return end
+    -- QUEST_AUTOCOMPLETE can precede the popup list. Share a bounded retry
+    -- chain instead of leaving one permanent poll behind for every event.
+    if self.autocompleteQuestTimer then return end
+    local context = self:CaptureStepContext()
+    local retries = 0
+    local function check()
+        local profile = self:GetSettingsProfile()
+        if not profile or not profile.enableAddon or not profile.autoHandIn
+            or not self:IsStepContextCurrent(context) or IsModifierKeyDown() then return end
+        if GetNumAutoQuestPopUps() > 0 then
+            local questID, popUpType = GetAutoQuestPopUp(1)
+            if not questID or self:IsQuestTurnInDeferred(questID) then return end
+            if popUpType == "OFFER" then ShowQuestOffer(questID)
+            elseif popUpType == "COMPLETE" then ShowQuestComplete(questID) end
+        elseif retries < 5 then
+            retries = retries + 1
+            local timer
+            timer = C_Timer.NewTimer(1, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/QuestCache.lua:154:callback#7", --[[/APR_DIAG]]function()
+                if self.autocompleteQuestTimer ~= timer then return end
+                self.autocompleteQuestTimer = nil
+                check()
+            end--[[APR_DIAG]])--[[/APR_DIAG]])
+            self.autocompleteQuestTimer = timer
         end
-    else
-        C_Timer.After(1, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/QuestCache.lua:120:callback#4", --[[/APR_DIAG]]function() APR:PopupAutocompleteQuest() end--[[APR_DIAG]])--[[/APR_DIAG]])
-    end
-end--[[APR_DIAG]]; APR.PopupAutocompleteQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:109:APR:PopupAutocompleteQuest#3", APR.PopupAutocompleteQuest)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; check = APRTrace("APR-Core/features/questing/QuestCache.lua:142:check#6", check)--[[/APR_DIAG]]
+    check()
+end--[[APR_DIAG]]; APR.PopupAutocompleteQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:135:APR:PopupAutocompleteQuest#5", APR.PopupAutocompleteQuest)--[[/APR_DIAG]]

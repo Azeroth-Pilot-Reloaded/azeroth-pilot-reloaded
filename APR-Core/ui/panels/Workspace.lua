@@ -87,7 +87,7 @@ function Workspace:LayoutTabs()
     for index = #definitions, 1, -1 do
         local definition = definitions[index]
         local tab = self.tabs[definition.id]
-        local visible = definition.id ~= "perf" or showPerf
+        local visible = (definition.id ~= "perf" or showPerf) and APR[definition.controller] ~= nil
         tab:SetShown(visible)
         if visible then
             local width = math.min(190, math.max(110, tab:GetFontString():GetStringWidth() + 30))
@@ -102,6 +102,10 @@ end--[[APR_DIAG]]; Workspace.LayoutTabs = APRTrace("APR-Core/ui/panels/Workspace
 
 function Workspace:Show(id, section)
     id = id or "route"
+    if id == "group" then
+        if APR.PartyFinderPanel then APR.PartyFinderPanel:Show() end
+        return
+    end
     if SettingsPanel then SettingsPanel:Hide() end
     if InterfaceOptionsFrame then InterfaceOptionsFrame:Hide() end
     if APR.LayoutEditor and APR.LayoutEditor.active then APR.LayoutEditor:Hide(false) end
@@ -112,6 +116,7 @@ function Workspace:Show(id, section)
     if UI.activeMenu then UI.activeMenu:Hide() end
     if self.active ~= id and UI.selectionDialog then UI.selectionDialog:Hide() end
     local controller = APR[definition.controller]
+    if not controller then return end
     local refreshSerial = controller.refreshSerial
     if not self.pages[id] then
         controller:Create(self.frame.content)
@@ -130,4 +135,4 @@ end--[[APR_DIAG]]; Workspace.Show = APRTrace("APR-Core/ui/panels/Workspace.lua:1
 
 function Workspace:Hide()
     if self.frame then self.frame:Hide() end
-end--[[APR_DIAG]]; Workspace.Hide = APRTrace("APR-Core/ui/panels/Workspace.lua:131:Workspace:Hide#12", Workspace.Hide)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Workspace.Hide = APRTrace("APR-Core/ui/panels/Workspace.lua:136:Workspace:Hide#12", Workspace.Hide)--[[/APR_DIAG]]

@@ -37,7 +37,7 @@ end
 C_Timer = {After = function(_, callback) callback() end}
 function PlaySound() end
 function GetCursorInfo() end
-OKAY, APPLY = "OK", "Apply"
+OKAY, APPLY, CLOSE = "OK", "Apply", "Close"
 local failures = {}
 function geterrorhandler() return function(err) failures[#failures + 1] = err end end
 local originalXpcall = xpcall
@@ -114,6 +114,9 @@ function dialog:FeedGroup(app, options, container)
         control:SetUserData("option", {name = "Reset profile", desc = "Restore the current profile to its defaults."})
         control:SetWidth(640); control:SetText("Reset profile")
     end
+    local option = control:GetUserData("option")
+    if option then option.arg = options.presentation end
+    if options.width then control:SetWidth(options.width) end
     group:AddChild(control)
     feeding = false
     if options.fail then error("Deliberate failure") end
@@ -197,6 +200,13 @@ provider = nil
 dialog:FeedGroup("APR/Workspace/Options/general", {checkbox = true}, host)
 assert(fontsDuringFeed == 0, "Rebuilding settings must defer font styling until the final tree is ready")
 local checkbox = host.children[1].children[1]
+local rowMeasurements, rowMeasurementsDuringFeed = 0, 0
+local measureNote = checkbox.aprRow.note.GetStringHeight
+function checkbox.aprRow.note:GetStringHeight(...)
+    rowMeasurements = rowMeasurements + 1
+    if feeding then rowMeasurementsDuringFeed = rowMeasurementsDuringFeed + 1 end
+    return measureNote(self, ...)
+end
 local changes, value = 0
 checkbox:SetCallback("OnValueChanged", function(_, _, checked) changes, value = changes + 1, checked end)
 assert(checkbox.check:GetParent() == checkbox.aprCheckBox,
@@ -212,10 +222,35 @@ assert(changes == 2 and checkbox.aprCheckBox.alpha < 1, "Disabled controls retai
 checkbox:SetDisabled(false); checkbox:SetTriState(true); checkbox:SetValue(nil)
 assert(checkbox.check:IsShown(), "AceGUI's mixed value remains visible")
 host:ReleaseChildren()
+rowMeasurements, rowMeasurementsDuringFeed = 0, 0
 dialog:FeedGroup("APR/Workspace/Options/general", {checkbox = true}, host)
 assert(fontsDuringFeed == 0, "Reacquiring a styled checkbox must not restyle it on every initialization setter")
+assert(rowMeasurementsDuringFeed == 0,
+    "Rebuilding a pooled form must not measure and anchor intermediate control states")
+assert(rowMeasurements > 0, "The completed form still measures its description for the final layout")
 assert(host.children[1].children[1] == checkbox and not checkbox.check:IsShown(),
     "A pooled checkbox resets its value without losing its drawing layer")
+local formFrames = env.frames()
+for attempt = 1, 12 do
+    dialog:FeedGroup("APR/Workspace/Options/general", {checkbox = true}, host)
+    local control = host.children[1].children[1]
+    control:SetDisabled(attempt % 2 == 0)
+    assert(control == checkbox and control.disabled == (attempt % 2 == 0))
+end
+assert(env.frames() == formFrames and rowMeasurementsDuringFeed == 0,
+    "Repeated option refreshes reuse frames and only lay out the completed form")
+dialog:FeedGroup("APR/Workspace/Options/general", {checkbox = true, presentation = {aprCompact = true}}, host)
+local compactCheck = host.children[1].children[1]
+assert(compactCheck == checkbox and not compactCheck.aprRow.note:IsShown() and compactCheck.frame:GetHeight() <= 48,
+    "Compact settings keep help in the tooltip instead of reserving a description line")
+dialog:FeedGroup("APR/Workspace/Options/general", {checkbox = true, presentation = {aprInline = true}, width = 110}, host)
+assert(checkbox.frame:GetWidth() == 110 and checkbox.frame:GetHeight() <= 48
+    and checkbox.aprCheckBox.point[1] == "LEFT" and not checkbox.aprRow.separator:IsShown(),
+    "Inline sound switches retain their cell width and share one event row")
+dialog:FeedGroup("APR/Workspace/Options/general", {checkbox = true}, host)
+assert(checkbox.aprRow.note:IsShown() and checkbox.aprRow.separator:IsShown()
+    and checkbox.aprCheckBox.point[1] == "TOPRIGHT",
+    "Reusing a compact switch in another settings page restores its full form layout")
 elvDropdownSkin, provider = true, "ElvUI"
 APR.settings.profile.uiTheme = "ElvUI"
 APR.ElvUISkin = {GetThemeColor = function(_, role)
@@ -306,6 +341,31 @@ end
 slider:SetSliderValues(0, 50, 1); slider:SetIsPercent(false); slider:SetValue(25)
 assert(slider.editbox:GetText() == 25 and slider.lowtext:GetText() == 0 and slider.hightext:GetText() == 50,
     "Changing bounds and numeric/percent modes keeps all three values current")
+dialog:FeedGroup("APR/Workspace/Options/general", {kind = "Slider", presentation = {aprInline = true}, width = 145}, host)
+assert(host.children[1].children[1] == slider and slider.frame:GetWidth() == 145
+    and slider.slider:GetWidth() + slider.editbox:GetWidth() < 145,
+    "A sound cooldown's track and editable value fit inside their explicit cell")
+assert(not slider.lowtext:IsShown() and not slider.hightext:IsShown())
+dialog:FeedGroup("APR/Workspace/Options/general", {kind = "Dropdown", presentation = {aprInline = true}, width = 204}, host)
+local inlineDropdown = host.children[1].children[1]
+assert(inlineDropdown.dropdown:GetWidth() < 204 and inlineDropdown.dropdown.point[5] < -18,
+    "Inline sound menus place the value below the label without overflowing their cell")
+dialog:FeedGroup("APR/Workspace/Options/general", {kind = "Dropdown"}, host)
+assert(host.children[1].children[1] == inlineDropdown and math.abs(inlineDropdown.dropdown:GetWidth() - 217.6) < 0.01
+    and inlineDropdown.dropdown.point[5] == -12,
+    "A pooled inline menu restores the regular right-aligned control layout")
+inlineDropdown:SetMultiselect(true)
+inlineDropdown:SetUserData("option", {name = "Synthetic policy", arg = {aprCompact = true, aprEmptyText = "Unrestricted"}})
+inlineDropdown:SetItemValue("left", false); inlineDropdown:SetItemValue("right", false)
+assert(inlineDropdown.text:GetText() == "Unrestricted", "An unrestricted policy must not appear as a blank field")
+inlineDropdown:SetItemValue("left", true)
+assert(inlineDropdown.text:GetText() == "Left", "An explicit selection replaces the empty-policy caption")
+inlineDropdown:SetItemValue("left", false)
+assert(inlineDropdown.text:GetText() == "Unrestricted", "Clearing the final selection restores the policy caption")
+dialog:FeedGroup("APR/Workspace/Options/general", {kind = "Dropdown"}, host)
+dialog:FeedGroup("APR/Workspace/Options/general", {kind = "Slider"}, host)
+assert(slider.lowtext:IsShown() and slider.hightext:IsShown(),
+    "A pooled sound cooldown restores the visible bounds on a regular slider")
 local otherInput = gui:Create("EditBox")
 dialog:FeedGroup("APR/Workspace/Options/profiles", {kind = "EditBox"}, host)
 local input = host.children[1].children[1]

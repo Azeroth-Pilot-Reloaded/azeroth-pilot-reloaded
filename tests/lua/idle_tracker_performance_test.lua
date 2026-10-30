@@ -61,16 +61,24 @@ before = anchors
 profile.currentStepAttachFrameToQuestLog = false
 tick()
 assert(anchors == before and tracker.layoutObservation == nil, "Detached panels do no geometry work")
+local detachedAppearances = appearances
+for _ = 1, 100 do tick() end
+assert(appearances == detachedAppearances, "Detached panels do no recurring appearance work")
 profile.currentStepAttachFrameToQuestLog = true
 tick()
 assert(anchors == before + 1, "Reattachment forces a new geometry check")
+assert(appearances == detachedAppearances + 1, "Reattachment immediately refreshes appearance")
 before = anchors
 CurrentStepScreenPanel:Hide()
 tick()
 assert(anchors == before, "Hidden panels do no geometry work")
+local hiddenAppearances = appearances
+for _ = 1, 100 do tick() end
+assert(appearances == hiddenAppearances, "Hidden panels do no recurring appearance work")
 CurrentStepScreenPanel:Show()
 tick()
 assert(anchors == before + 1)
+assert(appearances == hiddenAppearances + 1, "A newly visible panel catches up with external appearance changes")
 
 -- The fallback uses the same observation cache, but it never duplicates an active observer.
 before = anchors

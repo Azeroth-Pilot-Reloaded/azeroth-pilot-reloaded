@@ -15,6 +15,11 @@ function CreateFrame()
             if event == "UNSUPPORTED" then error("Unknown event") end
             self.events[event] = true
         end,
+        RegisterUnitEvent = function(self, event, unit)
+            self.units = self.units or {}
+            self.units[event] = unit
+            self:RegisterEvent(event)
+        end,
         SetScript = function(self, name, callback) self.scripts[name] = callback end,
         UnregisterAllEvents = function(self) self.events = {} end,
     }
@@ -38,6 +43,14 @@ assert(APR.event.framePool.group.events.GROUP_ROSTER_UPDATE,
     "Group visibility is refreshed when a party is converted to a raid")
 assert(APR.event.framePool.load == nil, "The bootstrap event must not allocate an unbound runtime handler")
 assert(not APR.event.framePool.lootItems.events.CURRENCY_DISPLAY_UPDATE)
+assert(APR.event.framePool.buffs.units.UNIT_AURA == "player")
+assert(APR.event.framePool.spell.units.UNIT_SPELLCAST_SUCCEEDED == "player")
+assert(APR.event.framePool.tame.units.UNIT_SPELLCAST_START == "player")
+assert(APR.event.framePool.updateQuest.units.UNIT_QUEST_LOG_CHANGED == "player")
+local fallback = CreateFrame()
+fallback.RegisterUnitEvent = nil
+assert(APR:RegisterSupportedEvent(fallback, "UNIT_AURA", "player") and fallback.events.UNIT_AURA,
+    "Clients without native unit filtering retain event delivery")
 
 APR.IsInstanceWithUI = function() return true end
 APR.RefreshInstanceUIVisibility, APR.MaybePromptInstanceUIPreference = noop, noop
@@ -47,6 +60,21 @@ local samples = 0
 APR.FinishPerformanceSample = function() samples = samples + 1 end
 APR.event.EventHandler({ tag = "broken", callback = function() error("visible failure") end }, "TEST")
 assert(#errors == 1 and errors[1]:find("visible failure") and samples == 1)
+
+local unitCalls, probes = 0, 0
+local opaque = {}
+APRSecret = { CanAccessValue = function(_, unit) return unit ~= opaque end }
+local unitFrame = { tag = "buffs", callback = function() unitCalls = unitCalls + 1 end }
+local getProfile = APR.GetSettingsProfile
+function APR:GetSettingsProfile() probes = probes + 1; return getProfile(self) end
+for _ = 1, 1000 do APR.event.EventHandler(unitFrame, "UNIT_AURA", "raid7") end
+APR.event.EventHandler(unitFrame, "UNIT_AURA", nil)
+assert(probes == 0 and unitCalls == 0, "Irrelevant units cannot probe instance state, route steps or NPCs")
+for _ = 1, 1000 do APR.event.EventHandler({tag = "party"}, "CHAT_MSG_ADDON", "OtherAddon", "data", "RAID") end
+assert(probes == 0, "Foreign addon-message bursts cannot enter gameplay dispatch")
+APR.event.EventHandler(unitFrame, "UNIT_AURA", "player")
+APR.event.EventHandler(unitFrame, "UNIT_AURA", opaque)
+assert(unitCalls == 2, "Player and opaque payloads retain the conservative callback path")
 
 APR.event:DebouncedUpdateQuest(1)
 APR.event:DebouncedUpdateQuest(1)

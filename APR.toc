@@ -40,6 +40,7 @@ APR-Core/core/Diagnostics.lua
 APR-Core/core/DiagnosticManifest.lua
 APR-Core/utils/SecretUtils.lua
 APR-Core/core/Core.lua
+APR-Core/utils/SharedMedia.lua
 APR-Core/core/ErrorLog.lua
 APR-Core/ui/foundations/ReloadConfirmation.lua
 APR-Core/integrations/SkinRegistry.lua
@@ -103,6 +104,7 @@ APR-Core/data/models/Quest.lua
 
 
 APR-Core/config/AboutData.lua
+APR-Core/config/Config_GroupFinder.lua
 APR-Core/config/Config.lua
 APR-Core/config/WorkspaceOptions.lua
 APR-Core/config/Config_Route.lua
@@ -114,6 +116,7 @@ APR-Core/core/PerformanceScopes.lua
 APR-Core/core/DiagnosticReport.lua
 APR-Core/core/ResourceMonitor.lua
 APR-Core/ui/panels/ChangeLog.lua
+APR-Core/core/CommunicationChannel.lua
 APR-Core/core/VersionCheck.lua
 
 APR-Core/core/Event.lua
@@ -143,7 +146,12 @@ APR-Core/ui/route/QuestOrderList.lua
 APR-Core/ui/route/QuestOrderListRows.lua
 APR-Core/features/questing/Gossip.lua
 APR-Core/features/group/PartyProtocol.lua
+APR-Core/features/group/PartyFinderProtocol.lua
 APR-Core/features/group/Party.lua
+APR-Core/features/group/PartyFinder.lua
+APR-Core/features/group/PartyFinderDirect.lua
+APR-Core/features/group/PartyFinderWorld.lua
+APR-Core/features/group/PartyFinderInvites.lua
 APR-Core/features/navigation/Map.lua
 APR-Core/features/player/AFK.lua
 APR-Core/features/player/Heirloom.lua
@@ -158,6 +166,7 @@ APR-Core/ui/panels/PerformanceDashboard.lua
 APR-Core/ui/panels/ReleaseNotesPanel.lua
 APR-Core/ui/panels/ReleaseNotesWindow.lua
 APR-Core/ui/panels/OptionsPanel.lua
+APR-Core/ui/panels/PartyFinderPanel.lua
 APR-Core/ui/panels/AboutPanel.lua
 APR-Core/ui/panels/Workspace.lua
 APR-Core/ui/panels/AppearanceIntro.lua

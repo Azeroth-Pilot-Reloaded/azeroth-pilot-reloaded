@@ -135,14 +135,27 @@ function APR:GetPerformanceBucketDetails(bucket, finalSecond)
     }
 end
 
-function APR:GetPerformanceRows(mode, sortKey, query, displayName)
+-- The live viewer may reuse its own row buffer; exports still receive independent snapshots.
+function APR:GetPerformanceRows(mode, sortKey, query, displayName, reusableRows)
     if mode == "logs" then return self:GetDiagnosticRows(query) end
-    local log, rows = APRData and APRData.PerformanceLog, {}
-    if not log then return rows end
+    local log = APRData and APRData.PerformanceLog
+    local rows = mode ~= "slow" and reusableRows or nil
+    rows = rows or {}
+    if not log then
+        for index = #rows, 1, -1 do rows[index] = nil end
+        return rows
+    end
+    local count = 0
+    local function nextRow()
+        count = count + 1
+        local row = rows[count] or {}
+        rows[count] = row
+        return row
+    end
     query = string.lower(query or "")
     -- Search translated display labels while keeping saved metric identifiers stable.
     local function matches(name)
-        return string.lower(name):find(query, 1, true)
+        return query == "" or string.lower(name):find(query, 1, true)
             or (displayName and string.lower(displayName(name)):find(query, 1, true))
     end
     if mode == "slow" then
@@ -152,18 +165,25 @@ function APR:GetPerformanceRows(mode, sortKey, query, displayName)
         end
     elseif mode == "counters" then
         for name, count in pairs(log.counters or {}) do
-            if matches(name) then rows[#rows + 1] = {name = name, count = count} end
+            if matches(name) then
+                local row = nextRow()
+                row.name, row.count = name, count
+                row.totalMs, row.maxMs, row.selfMs, row.errors = nil, nil, nil, nil
+                row.average, row.histogram = nil, nil
+            end
         end
     else
         for name, summary in pairs(log.summary) do
             if matches(name) then
-                rows[#rows + 1] = {name = name, count = summary.count, totalMs = summary.totalMs,
-                    maxMs = summary.maxMs, selfMs = summary.selfMs, errors = summary.errors,
-                    average = summary.totalMs / math.max(1, summary.count), histogram = summary.histogram}
+                local row = nextRow()
+                row.name, row.count, row.totalMs = name, summary.count, summary.totalMs
+                row.maxMs, row.selfMs, row.errors = summary.maxMs, summary.selfMs, summary.errors
+                row.average, row.histogram = summary.totalMs / math.max(1, summary.count), summary.histogram
             end
         end
     end
     if mode ~= "slow" then
+        for index = #rows, count + 1, -1 do rows[index] = nil end
         sortKey = mode == "counters" and "count" or sortKey or "totalMs"
         table.sort(rows, function(a, b)
             if a[sortKey] == b[sortKey] then return a.name < b.name end
