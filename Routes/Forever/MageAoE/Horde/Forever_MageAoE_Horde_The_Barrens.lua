@@ -153,7 +153,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 871,
-            NonSkippableWaypoint = true,
             Fillers = { [844] = { 1 } },
             Coord = { x = -2484.28, y = 126.12 },
             Range = 20.0,
@@ -163,7 +162,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 871,
-            NonSkippableWaypoint = true,
             Fillers = { [844] = { 1 } },
             Coord = { x = -2200.55, y = 315.3 },
             Range = 20.0,
@@ -477,7 +475,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 894,
-            NonSkippableWaypoint = true,
             Note = { "GO_VENDOR_GUY_NEEDED" },
             Coord = { x = -1815.48, y = 788.24 },
             Range = 5,
@@ -599,7 +596,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 869,
-            NonSkippableWaypoint = true,
             Coord = { x = -3841.9, y = 1647.15 },
             Range = 20,
             Race = { "Orc", "Scourge" },
@@ -608,7 +604,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 6384,
-            NonSkippableWaypoint = true,
             Coord = { x = -3841.9, y = 1647.15 },
             Range = 20,
             Race = "Troll",
@@ -639,7 +634,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 869,
-            NonSkippableWaypoint = true,
             Coord = { x = -4313.46, y = 1676.25 },
             Range = 5,
             Race = "Orc",
@@ -816,7 +810,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 3281,
-            NonSkippableWaypoint = true,
             Coord = { x = -3720.55, y = -1738.6 },
             Range = 5,
             Zone = 1413,

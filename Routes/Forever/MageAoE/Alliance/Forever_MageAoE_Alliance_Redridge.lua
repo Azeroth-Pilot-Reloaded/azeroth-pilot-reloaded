@@ -92,7 +92,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Redridge"] = {
         },
         {
             Waypoint = 120,
-            NonSkippableWaypoint = true,
             Coord = { x = -2210.5, y = -9258.7 },
             Range = 8,
             ZoneStepTrigger = { x = -2210.5, y = -9258.7, Range = 8, mapID = 1433 },
@@ -103,7 +102,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Redridge"] = {
         },
         {
             Waypoint = 120,
-            NonSkippableWaypoint = true,
             Coord = { x = -2210.5, y = -9230.7 },
             Range = 6,
             ZoneStepTrigger = { x = -2210.5, y = -9230.7, Range = 6, mapID = 1433 },
@@ -201,7 +199,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Redridge"] = {
         },
         {
             Waypoint = 120,
-            NonSkippableWaypoint = true,
             Coord = { x = 660.17, y = -8814.51 },
             Range = 20,
             IsQuestUncompleted = 174,
@@ -288,7 +285,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Redridge"] = {
         },
         {
             Waypoint = 121,
-            NonSkippableWaypoint = true,
             Coord = { x = -2210.5, y = -9258.7 },
             Range = 8,
             ZoneStepTrigger = { x = -2210.5, y = -9258.7, Range = 8, mapID = 1433 },
@@ -299,7 +295,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Redridge"] = {
         },
         {
             Waypoint = 121,
-            NonSkippableWaypoint = true,
             Coord = { x = -2210.5, y = -9230.7 },
             Range = 6,
             ZoneStepTrigger = { x = -2210.5, y = -9230.7, Range = 6, mapID = 1433 },
@@ -503,7 +498,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Redridge"] = {
         },
         {
             Waypoint = 20,
-            NonSkippableWaypoint = true,
             Fillers = { [20] = { 1 } },
             Coord = { x = -2639.97, y = -9149.24 },
             Range = 20,
@@ -586,7 +580,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Redridge"] = {
         },
         {
             Waypoint = 174,
-            NonSkippableWaypoint = true,
             Note = { "COOK_BOAR_MEAT_UP_50_COOKING_SKILL", "NOT_ENOUGH_MEAT_GRIND_BOARS_ROUTE_DARKSHIRE" },
             Coord = { x = -2146.97, y = -9225.11 },
             Range = 5,
@@ -595,7 +588,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Redridge"] = {
         },
         {
             Waypoint = 174,
-            NonSkippableWaypoint = true,
             Coord = { x = -1711.94, y = -9895.21 },
             Range = 20,
             Zone = 1433,

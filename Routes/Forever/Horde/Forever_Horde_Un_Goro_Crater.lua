@@ -225,7 +225,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 3883,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 43.89, 7.24),
             Range = 5,
             Zone = 1449,
@@ -245,7 +244,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 4288,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 43.16, 6.24),
             Range = 20,
             Zone = 1449,
@@ -253,7 +251,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 4288,
-            NonSkippableWaypoint = true,
             Coord = { x = -1068, y = -6163 },
             Range = 8,
             ZoneStepTrigger = { x = -1068, y = -6163, Range = 8, mapID = 1449 },
@@ -296,7 +293,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 4289,
-            NonSkippableWaypoint = true,
             Fillers = { [4501] = { 1 }, [4145] = { 3 }, [4503] = { 2 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 62.97, 17.39),
             Range = 20,
@@ -401,7 +397,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 3883,
-            NonSkippableWaypoint = true,
             Fillers = { [4496] = { 1 } },
             Note = { "INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 49.96, 81.69),
@@ -411,7 +406,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 3883,
-            NonSkippableWaypoint = true,
             Fillers = { [4496] = { 1 } },
             Note = { "ROOM_LEFT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 49.43, 82.9),
@@ -423,7 +417,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 3883,
-            NonSkippableWaypoint = true,
             Fillers = { [4496] = { 1 } },
             Note = { "ROOM_LEFT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 49.17, 84.51),
@@ -486,7 +479,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 974,
-            NonSkippableWaypoint = true,
             Fillers = { [4501] = { 2 }, [4145] = { 2 }, [4503] = { 1, 2 }, [3882] = { 1 } },
             Note = { "TAKE_LAVA_PATH_WEST_SIDE_VOLCANO_TOP" },
             Coord = { x = -1209.37, y = -7128.47 },
@@ -496,7 +488,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 974,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_LAVA_PATH_WEST_SIDE_VOLCANO_TOP" },
             Coord = { x = -1231.57, y = -7158.07 },
             Range = 10,
@@ -505,7 +496,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 974,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_LAVA_PATH_WEST_SIDE_VOLCANO_TOP" },
             Coord = { x = -1250.07, y = -7202.47 },
             Range = 10,
@@ -514,7 +504,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 974,
-            NonSkippableWaypoint = true,
             Note = { "TAKE_LAVA_PATH_WEST_SIDE_VOLCANO_TOP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 48.6, 49.8),
             Range = 20,
@@ -606,7 +595,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 4492,
-            NonSkippableWaypoint = true,
             Coord = { x = -1420, y = -7241 },
             Range = 6,
             ZoneStepTrigger = { x = -1420, y = -7241, Range = 6, mapID = 1449 },
@@ -617,7 +605,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 4492,
-            NonSkippableWaypoint = true,
             Note = { "GO_INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 52.42, 51),
             Range = 20,
@@ -626,7 +613,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 4492,
-            NonSkippableWaypoint = true,
             Coord = { x = -1408, y = -7229 },
             Range = 5,
             ZoneStepTrigger = { x = -1408, y = -7229, Range = 5, mapID = 1449 },
@@ -678,7 +664,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 3883,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 43.89, 7.24),
             Range = 5,
             Zone = 1449,
@@ -702,7 +687,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 4288,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 43.16, 6.24),
             Range = 20,
             Zone = 1449,
@@ -710,7 +694,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 4288,
-            NonSkippableWaypoint = true,
             Coord = { x = -1068, y = -6163 },
             Range = 8,
             ZoneStepTrigger = { x = -1068, y = -6163, Range = 8, mapID = 1449 },
@@ -792,7 +775,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 4301,
-            NonSkippableWaypoint = true,
             Coord = { x = -1805, y = -6382 },
             Range = 8,
             ZoneStepTrigger = { x = -1805, y = -6382, Range = 8, mapID = 1449 },
@@ -803,7 +785,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 4301,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 69.07, 17.62),
             Range = 10,
             IsQuestOnQuest = 4301,
@@ -869,7 +850,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 4285,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 43.16, 6.24),
             Range = 20,
             Zone = 1449,
@@ -877,7 +857,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 4285,
-            NonSkippableWaypoint = true,
             Coord = { x = -1068, y = -6163 },
             Range = 8,
             ZoneStepTrigger = { x = -1068, y = -6163, Range = 8, mapID = 1449 },
@@ -962,7 +941,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 4496,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 43.16, 6.24),
             Range = 20,
             SkipInZones = { 1446 },
@@ -1003,7 +981,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 4041,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 55.9, 46.23),
             Range = 20,
             IsQuestOnQuest = 3909,
@@ -1013,7 +990,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 4041,
-            NonSkippableWaypoint = true,
             Note = { "EXPLORE_DIRE_MAUL_LATER_QUEST_GENERAL_CHAT" },
             Coord = { x = 1590.67, y = -4476.69 },
             Range = 5,
@@ -1024,7 +1000,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 3909,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 50.76, 49.83),
             Range = 20,
             IsQuestOnQuest = 3909,
@@ -1120,7 +1095,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 1000,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 29.81, 29.82),
             Range = 15,
@@ -1148,7 +1122,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 1000,
-            NonSkippableWaypoint = true,
             Coord = { x = 83.09, y = -1252.68 },
             Range = 20,
             Not = { IsQuestsCompleted = { 1000, 5095 } },
@@ -1157,7 +1130,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 1000,
-            NonSkippableWaypoint = true,
             Coord = { x = -34.02, y = -1281.9 },
             Range = 20,
             Not = { IsQuestsCompleted = { 1000, 5095 } },
@@ -1180,7 +1152,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 1000,
-            NonSkippableWaypoint = true,
             Coord = { x = 1.3, y = -1333.2 },
             Range = 6,
             ZoneStepTrigger = { x = 1.3, y = -1333.2, Range = 6, mapID = 1456 },
@@ -1192,7 +1163,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 1000,
-            NonSkippableWaypoint = true,
             Coord = { x = -63.3, y = -1397.2 },
             Range = 6,
             ZoneStepTrigger = { x = -63.3, y = -1397.2, Range = 6, mapID = 1456 },
@@ -1229,7 +1199,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 1000,
-            NonSkippableWaypoint = true,
             Coord = { x = 1.3, y = -1333.2 },
             Range = 6,
             ZoneStepTrigger = { x = 1.3, y = -1333.2, Range = 6, mapID = 1456 },
@@ -1241,7 +1210,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 1000,
-            NonSkippableWaypoint = true,
             Coord = { x = -63.3, y = -1397.2 },
             Range = 6,
             ZoneStepTrigger = { x = -63.3, y = -1397.2, Range = 6, mapID = 1456 },
@@ -1287,7 +1255,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 1000,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 29.81, 29.82),
             Range = 15,
@@ -1315,7 +1282,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 1000,
-            NonSkippableWaypoint = true,
             Coord = { x = -124, y = -1136.5 },
             Range = 6,
             ZoneStepTrigger = { x = -124, y = -1136.5, Range = 6, mapID = 1456 },
@@ -1326,7 +1292,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 1000,
-            NonSkippableWaypoint = true,
             Coord = { x = -208.5, y = -1086.7 },
             Range = 6,
             ZoneStepTrigger = { x = -208.5, y = -1086.7, Range = 6, mapID = 1456 },
@@ -1337,7 +1302,6 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
         },
         {
             Waypoint = 1000,
-            NonSkippableWaypoint = true,
             Coord = { x = -235.1, y = -1063.6 },
             Range = 6,
             ZoneStepTrigger = { x = -235.1, y = -1063.6, Range = 6, mapID = 1456 },

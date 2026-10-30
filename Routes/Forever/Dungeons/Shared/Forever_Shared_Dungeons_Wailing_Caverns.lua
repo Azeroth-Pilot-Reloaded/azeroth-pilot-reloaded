@@ -26,7 +26,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
     steps = {
         {
             Waypoint = 962,
-            NonSkippableWaypoint = true,
             Coord = { x = 131.6, y = -1210.1 },
             Range = 6,
             ZoneStepTrigger = { x = 131.6, y = -1210.1, Range = 6, mapID = 1456 },
@@ -40,7 +39,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 962,
-            NonSkippableWaypoint = true,
             Coord = { x = 169.9, y = -1155.7 },
             Range = 6,
             ZoneStepTrigger = { x = 169.9, y = -1155.7, Range = 6, mapID = 1456 },
@@ -54,7 +52,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 962,
-            NonSkippableWaypoint = true,
             Coord = { x = 189.7, y = -1096 },
             Range = 6,
             ZoneStepTrigger = { x = 189.7, y = -1096, Range = 6, mapID = 1456 },
@@ -68,7 +65,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 962,
-            NonSkippableWaypoint = true,
             Coord = { x = 191.5, y = -1061.5 },
             Range = 6,
             ZoneStepTrigger = { x = 191.5, y = -1061.5, Range = 6, mapID = 1456 },
@@ -82,7 +78,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 962,
-            NonSkippableWaypoint = true,
             Coord = { x = 219.09, y = -1051.44 },
             Range = 6,
             ZoneStepTrigger = { x = 219.09, y = -1051.44, Range = 6, mapID = 1456 },
@@ -104,7 +99,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 914,
-            NonSkippableWaypoint = true,
             Coord = { x = 1, y = -1108.2 },
             Range = 8,
             ZoneStepTrigger = { x = 1, y = -1108.2, Range = 8, mapID = 1456 },
@@ -119,7 +113,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 914,
-            NonSkippableWaypoint = true,
             Coord = { x = -66.5, y = -1089.7 },
             Range = 8,
             ZoneStepTrigger = { x = -66.5, y = -1089.7, Range = 8, mapID = 1456 },
@@ -134,7 +127,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 914,
-            NonSkippableWaypoint = true,
             Coord = { x = -209.4, y = -1044.8 },
             Range = 8,
             ZoneStepTrigger = { x = -209.4, y = -1044.8, Range = 8, mapID = 1456 },
@@ -173,7 +165,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 1491,
-            NonSkippableWaypoint = true,
             Note = { "RUN_MOUNTAIN_WAILING_CAVERNS_MEETING_STONE", "FOLLOW_ARROW_CLOSELY_REACH_HIDDEN_CAVE" },
             Coord = { x = -2134.68, y = -764.35 },
             Range = 30,
@@ -183,7 +174,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 1491,
-            NonSkippableWaypoint = true,
             Note = { "RUN_MOUNTAIN_WAILING_CAVERNS_MEETING_STONE", "FOLLOW_ARROW_CLOSELY_REACH_HIDDEN_CAVE" },
             Coord = { x = -2122.52, y = -734.62 },
             Range = 20,
@@ -193,7 +183,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 1491,
-            NonSkippableWaypoint = true,
             Note = { "RUN_MOUNTAIN_WAILING_CAVERNS_MEETING_STONE", "FOLLOW_ARROW_CLOSELY_REACH_HIDDEN_CAVE" },
             Coord = { x = -2061.94, y = -781.68 },
             Range = 20,
@@ -203,7 +192,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 1491,
-            NonSkippableWaypoint = true,
             Note = { "RUN_MOUNTAIN_WAILING_CAVERNS_MEETING_STONE", "FOLLOW_ARROW_CLOSELY_REACH_HIDDEN_CAVE" },
             Coord = { x = -2028.82, y = -828.29 },
             Range = 10,
@@ -213,7 +201,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 1491,
-            NonSkippableWaypoint = true,
             Note = { "RUN_MOUNTAIN_WAILING_CAVERNS_MEETING_STONE", "FOLLOW_ARROW_CLOSELY_REACH_HIDDEN_CAVE" },
             Coord = { x = -2021.46, y = -816.03 },
             Range = 10,
@@ -223,7 +210,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 1486,
-            NonSkippableWaypoint = true,
             Note = { "NPCS_WAILING_CAVERNS_ENTRANCE_ABOVE" },
             Coord = { x = -2036.18, y = -796.4 },
             Range = 5,
@@ -257,7 +243,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 1491,
-            NonSkippableWaypoint = true,
             Fillers = { [1486] = { 1 }, [1491] = { 1 } },
             Note = { "ENTER_WC_INSTANCE_PORTAL_ZONE" },
             Coord = { x = -2028.82, y = -636.93 },
@@ -267,7 +252,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 1491,
-            NonSkippableWaypoint = true,
             Fillers = { [1486] = { 1 }, [1491] = { 1 } },
             Note = { "ENTER_WC_INSTANCE_PORTAL_ZONE" },
             Coord = { x = -2050.9, y = -585.41 },
@@ -277,7 +261,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 1491,
-            NonSkippableWaypoint = true,
             Fillers = { [1486] = { 1 }, [1491] = { 1 } },
             Note = { "ENTER_WC_INSTANCE_PORTAL_ZONE" },
             Coord = { x = -2168.66, y = -607.49 },
@@ -505,7 +488,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 6981,
-            NonSkippableWaypoint = true,
             Coord = { x = -2454.9, y = -766.38 },
             Range = 15,
             ZoneStepTrigger = { x = -2454.9, y = -766.38, Range = 15, mapID = 1413 },
@@ -516,7 +498,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 6981,
-            NonSkippableWaypoint = true,
             Coord = { x = -2301.88, y = -640.03 },
             Range = 15,
             ZoneStepTrigger = { x = -2301.88, y = -640.03, Range = 15, mapID = 1413 },
@@ -552,7 +533,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 962,
-            NonSkippableWaypoint = true,
             Coord = { x = 131.6, y = -1210.1 },
             Range = 6,
             ZoneStepTrigger = { x = 131.6, y = -1210.1, Range = 6, mapID = 1456 },
@@ -564,7 +544,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 962,
-            NonSkippableWaypoint = true,
             Coord = { x = 169.9, y = -1155.7 },
             Range = 6,
             ZoneStepTrigger = { x = 169.9, y = -1155.7, Range = 6, mapID = 1456 },
@@ -576,7 +555,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 962,
-            NonSkippableWaypoint = true,
             Coord = { x = 189.7, y = -1096 },
             Range = 6,
             ZoneStepTrigger = { x = 189.7, y = -1096, Range = 6, mapID = 1456 },
@@ -588,7 +566,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 962,
-            NonSkippableWaypoint = true,
             Coord = { x = 191.5, y = -1061.5 },
             Range = 6,
             ZoneStepTrigger = { x = 191.5, y = -1061.5, Range = 6, mapID = 1456 },
@@ -600,7 +577,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 962,
-            NonSkippableWaypoint = true,
             Coord = { x = 219.09, y = -1051.44 },
             Range = 6,
             ZoneStepTrigger = { x = 219.09, y = -1051.44, Range = 6, mapID = 1456 },
@@ -620,7 +596,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 914,
-            NonSkippableWaypoint = true,
             Coord = { x = 1, y = -1108.2 },
             Range = 8,
             ZoneStepTrigger = { x = 1, y = -1108.2, Range = 8, mapID = 1456 },
@@ -632,7 +607,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 914,
-            NonSkippableWaypoint = true,
             Coord = { x = -66.5, y = -1089.7 },
             Range = 8,
             ZoneStepTrigger = { x = -66.5, y = -1089.7, Range = 8, mapID = 1456 },
@@ -644,7 +618,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 914,
-            NonSkippableWaypoint = true,
             Coord = { x = -209.4, y = -1044.8 },
             Range = 8,
             ZoneStepTrigger = { x = -209.4, y = -1044.8, Range = 8, mapID = 1456 },

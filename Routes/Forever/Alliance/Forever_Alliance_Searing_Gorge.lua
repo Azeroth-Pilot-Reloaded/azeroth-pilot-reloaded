@@ -118,7 +118,6 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
         },
         {
             Waypoint = 7727,
-            NonSkippableWaypoint = true,
             Note = { "JUMP_DOWN_PLATFORM_GO_INSIDE_CAVE" },
             Coord = { x = -1383.65, y = -6797.49 },
             Range = 5,
@@ -127,7 +126,6 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
         },
         {
             Waypoint = 7727,
-            NonSkippableWaypoint = true,
             Coord = { x = -1364.02, y = -6731.89 },
             Range = 15,
             Zone = 1427,
@@ -135,7 +133,6 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
         },
         {
             Waypoint = 7727,
-            NonSkippableWaypoint = true,
             Coord = { x = -1475.8, y = -6650.67 },
             Range = 15,
             Zone = 1427,
@@ -150,7 +147,6 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
         },
         {
             Waypoint = 3443,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE_FOLLOW_PLATFORM_UP_ENTER_CAVE" },
             Coord = { x = -1403.06, y = -6711.07 },
             Range = 20,
@@ -160,7 +156,6 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
         },
         {
             Waypoint = 3443,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE_FOLLOW_PLATFORM_UP_ENTER_CAVE" },
             Coord = { x = -1392.58, y = -6807.75 },
             Range = 20,
@@ -170,7 +165,6 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
         },
         {
             Waypoint = 3443,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE_FOLLOW_PLATFORM_UP_ENTER_CAVE" },
             Coord = { x = -1432.96, y = -6781.57 },
             Range = 20,
@@ -180,7 +174,6 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
         },
         {
             Waypoint = 3443,
-            NonSkippableWaypoint = true,
             Fillers = { [7701] = { 1 }, [7722] = { 1 } },
             Note = { "DARK_IRON_DWARF_DROP_THORIUM_PLATED_DAGGERS" },
             Coord = { x = -1286.37, y = -6621.96 },
@@ -191,7 +184,6 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
         },
         {
             Waypoint = 3443,
-            NonSkippableWaypoint = true,
             Fillers = { [7701] = { 1 }, [7722] = { 1 } },
             Note = { "DARK_IRON_DWARF_DROP_THORIUM_PLATED_DAGGERS" },
             Coord = { x = -1294.4, y = -6568.71 },
@@ -202,7 +194,6 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
         },
         {
             Waypoint = 3443,
-            NonSkippableWaypoint = true,
             Fillers = { [7701] = { 1 }, [7722] = { 1 } },
             Note = { "DARK_IRON_DWARF_DROP_THORIUM_PLATED_DAGGERS" },
             Coord = { x = -1345.05, y = -6481.69 },
@@ -315,7 +306,6 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
         },
         {
             Waypoint = 3443,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = { x = -1432.96, y = -6781.57 },
             Range = 15,
@@ -324,7 +314,6 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
         },
         {
             Waypoint = 3443,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 58.21, 40.61),
             Range = 15,
@@ -383,7 +372,6 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
         },
         {
             Waypoint = 3462,
-            NonSkippableWaypoint = true,
             Coord = { x = -1194.38, y = -6679.98 },
             Range = 5,
             Zone = 1427,
@@ -487,7 +475,6 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
         },
         {
             Waypoint = 4449,
-            NonSkippableWaypoint = true,
             Fillers = { [4449] = { 1 } },
             Coord = { x = -1927.63, y = -7197.63 },
             Range = 20,
@@ -587,7 +574,6 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
         },
         {
             Waypoint = 7701,
-            NonSkippableWaypoint = true,
             Coord = { x = -1048.07, y = -6583.14 },
             Range = 30,
             IsQuestOnQuest = 7701,
@@ -597,7 +583,6 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
         },
         {
             Waypoint = 7723,
-            NonSkippableWaypoint = true,
             Coord = { x = -1048.07, y = -6583.14 },
             Range = 30,
             IsQuestOnQuest = 7723,
@@ -607,7 +592,6 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
         },
         {
             Waypoint = 7724,
-            NonSkippableWaypoint = true,
             Coord = { x = -1048.07, y = -6583.14 },
             Range = 30,
             IsQuestOnQuest = 7724,
@@ -617,7 +601,6 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
         },
         {
             Waypoint = 7727,
-            NonSkippableWaypoint = true,
             Coord = { x = -1048.07, y = -6583.14 },
             Range = 30,
             IsQuestOnQuest = 7727,
@@ -627,7 +610,6 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
         },
         {
             Waypoint = 7722,
-            NonSkippableWaypoint = true,
             Coord = { x = -1048.07, y = -6583.14 },
             Range = 30,
             IsQuestOnQuest = 7722,
@@ -638,7 +620,6 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
         },
         {
             Waypoint = 7729,
-            NonSkippableWaypoint = true,
             Coord = { x = -1048.07, y = -6583.14 },
             Range = 30,
             IsQuestOnQuest = 7729,
@@ -648,7 +629,6 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
         },
         {
             Waypoint = 7728,
-            NonSkippableWaypoint = true,
             Coord = { x = -1048.07, y = -6583.14 },
             Range = 30,
             IsQuestOnQuest = 7728,

@@ -92,7 +92,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 642,
-            NonSkippableWaypoint = true,
             Coord = { x = -3695.91, y = -1093.09 },
             Range = 20,
             IsQuestOnQuest = 642,
@@ -101,7 +100,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 642,
-            NonSkippableWaypoint = true,
             Coord = { x = -3819.39, y = -1083.49 },
             Range = 20,
             IsQuestOnQuest = 642,
@@ -110,7 +108,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 642,
-            NonSkippableWaypoint = true,
             Coord = { x = -3858.99, y = -985.81 },
             Range = 20,
             IsQuestOnQuest = 642,
@@ -149,7 +146,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 651,
-            NonSkippableWaypoint = true,
             Coord = { x = -3398.91, y = -1081.81 },
             Range = 20,
             Zone = 1417,
@@ -191,7 +187,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 691,
-            NonSkippableWaypoint = true,
             Coord = { x = -3328.35, y = -1955.41 },
             Range = 20,
             IsQuestOnQuest = 691,
@@ -200,7 +195,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 691,
-            NonSkippableWaypoint = true,
             Coord = { x = -3329, y = -1969 },
             Range = 3,
             IsQuestOnQuest = 691,
@@ -210,7 +204,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 691,
-            NonSkippableWaypoint = true,
             Coord = { x = -3311, y = -1975 },
             Range = 3,
             IsQuestOnQuest = 691,
@@ -220,7 +213,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 691,
-            NonSkippableWaypoint = true,
             Coord = { x = -3299, y = -1987 },
             Range = 3,
             IsQuestOnQuest = 691,
@@ -230,7 +222,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 691,
-            NonSkippableWaypoint = true,
             Coord = { x = -3295, y = -2019 },
             Range = 3,
             IsQuestOnQuest = 691,
@@ -240,7 +231,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 691,
-            NonSkippableWaypoint = true,
             Coord = { x = -3287, y = -2031 },
             Range = 3,
             IsQuestOnQuest = 691,
@@ -250,7 +240,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 691,
-            NonSkippableWaypoint = true,
             Coord = { x = -3297, y = -2041 },
             Range = 3,
             IsQuestOnQuest = 691,
@@ -277,7 +266,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 657,
-            NonSkippableWaypoint = true,
             Coord = { x = -3033.33, y = -1425.69 },
             Range = 5,
             IsQuestCompleted = 658,
@@ -468,7 +456,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 1449,
-            NonSkippableWaypoint = true,
             Note = { "REMEMBER_ESCAPE_ROUTE_CASE_NEED_RETREAT" },
             Coord = { x = -331.91, y = 339.31 },
             Range = 20,
@@ -477,7 +464,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 1449,
-            NonSkippableWaypoint = true,
             Note = { "REMEMBER_ESCAPE_ROUTE_CASE_NEED_RETREAT" },
             Coord = { x = -268.07, y = 353.12 },
             Range = 20,
@@ -504,7 +490,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 504,
-            NonSkippableWaypoint = true,
             Note = { "BEWARE_FALL_DAMAGE" },
             Coord = { x = -327.15, y = 1159.52 },
             Range = 20,
@@ -575,7 +560,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 1449,
-            NonSkippableWaypoint = true,
             Note = { "AVOID_HOSTILE_GUARDS" },
             Coord = { x = -883.23, y = 329.97 },
             Range = 20,
@@ -584,7 +568,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 1449,
-            NonSkippableWaypoint = true,
             Note = { "AVOID_HOSTILE_GUARDS" },
             Coord = { x = -1219.09, y = -48.85 },
             Range = 20,
@@ -593,7 +576,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 1449,
-            NonSkippableWaypoint = true,
             Note = { "AVOID_HOSTILE_GUARDS" },
             Coord = { x = -1628.69, y = -282.45 },
             Range = 20,
@@ -602,7 +584,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 1449,
-            NonSkippableWaypoint = true,
             Note = { "AVOID_HOSTILE_GUARDS" },
             Coord = { x = -1814.86, y = -121.33 },
             Range = 5,
@@ -1098,7 +1079,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 657,
-            NonSkippableWaypoint = true,
             Coord = { x = -3033.33, y = -1425.69 },
             Range = 5,
             IsQuestCompleted = 658,
@@ -1160,7 +1140,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 693,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_CAVE" },
             Coord = { x = -2818.23, y = -2000.53 },
             Range = 20,
@@ -1169,7 +1148,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 693,
-            NonSkippableWaypoint = true,
             Coord = { x = -2826, y = -1998 },
             Range = 3,
             IsQuestCompleted = 691,
@@ -1180,7 +1158,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 693,
-            NonSkippableWaypoint = true,
             Coord = { x = -2834, y = -2006 },
             Range = 3,
             IsQuestCompleted = 691,
@@ -1191,7 +1168,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 693,
-            NonSkippableWaypoint = true,
             Coord = { x = -2832, y = -2046 },
             Range = 3,
             IsQuestCompleted = 691,
@@ -1202,7 +1178,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 693,
-            NonSkippableWaypoint = true,
             Coord = { x = -2836, y = -2058 },
             Range = 3,
             IsQuestCompleted = 691,
@@ -1213,7 +1188,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 693,
-            NonSkippableWaypoint = true,
             Coord = { x = -2834, y = -2092 },
             Range = 3,
             IsQuestCompleted = 691,
@@ -1281,7 +1255,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 1712,
-            NonSkippableWaypoint = true,
             Coord = { x = -1437.57, y = 252.86 },
             Range = 5,
             Class = "WARRIOR",
@@ -1443,7 +1416,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 663,
-            NonSkippableWaypoint = true,
             Note = { "ESCAPE_STROMGARDE_HOLE_WALL_SOUTH_OGRE_AREA" },
             Coord = { x = -1751.19, y = -1683.73 },
             Range = 10.0,
@@ -1452,7 +1424,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 663,
-            NonSkippableWaypoint = true,
             Note = { "ESCAPE_STROMGARDE_HOLE_WALL_SOUTH_OGRE_AREA" },
             Coord = { x = -1631.67, y = -1821.25 },
             Range = 20,
@@ -1461,7 +1432,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 663,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 21.58, 75.61),
             Range = 8,
             Zone = 1417,
@@ -1469,7 +1439,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 663,
-            NonSkippableWaypoint = true,
             Note = { "ESCAPE_STROMGARDE_HOLE_WALL_SOUTH_OGRE_AREA" },
             Coord = { x = -1657.95, y = -2047.33 },
             Range = 20,
@@ -1561,7 +1530,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 662,
-            NonSkippableWaypoint = true,
             Fillers = { [666] = { 1 }, [664] = { 1, 2 } },
             Coord = { x = -1604.67, y = -2187.73 },
             Range = 20,
@@ -1950,7 +1918,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 4965,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = { x = -1134.2, y = -4610.39 },
             Range = 15.0,
@@ -1960,7 +1927,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 4965,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = { x = -1130.26, y = -4601.27 },
             Range = 5,
@@ -1970,7 +1936,6 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Waypoint = 4487,
-            NonSkippableWaypoint = true,
             Coord = { x = -1117.6, y = -4615.14 },
             Range = 15.0,
             Class = "WARLOCK",

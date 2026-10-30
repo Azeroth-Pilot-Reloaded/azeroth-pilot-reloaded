@@ -51,7 +51,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5066,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 51.17, 58.927),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1424, 51.17, 58.927, 15),
@@ -201,7 +200,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5142,
-            NonSkippableWaypoint = true,
             Coord = { x = -1681.7, y = 1104.8 },
             Range = 4,
             IsQuestNotOnQuest = 5142,
@@ -315,7 +313,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5050,
-            NonSkippableWaypoint = true,
             Note = { "GET_INSIDE" },
             Coord = { x = -1219.48, y = 1801.75 },
             Range = 12,
@@ -325,7 +322,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5051,
-            NonSkippableWaypoint = true,
             Coord = { x = -1219.48, y = 1801.75 },
             Range = 12,
             IsQuestCompleted = 5050,
@@ -358,7 +354,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5051,
-            NonSkippableWaypoint = true,
             Fillers = { [5051] = { 1 } },
             Note = { "GET_INSIDE" },
             Coord = { x = -1219.48, y = 1801.75 },
@@ -479,7 +474,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5601,
-            NonSkippableWaypoint = true,
             Fillers = { [4985] = { 1 } },
             Coord = { x = -2555.86, y = 2091.21 },
             Range = 5,
@@ -488,7 +482,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5542,
-            NonSkippableWaypoint = true,
             Coord = { x = -2555.86, y = 2091.21 },
             Range = 15,
             IsQuestCompleted = 5601,
@@ -498,7 +491,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5543,
-            NonSkippableWaypoint = true,
             Coord = { x = -2555.86, y = 2091.21 },
             Range = 15,
             IsQuestCompleted = 5601,
@@ -509,7 +501,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5544,
-            NonSkippableWaypoint = true,
             Coord = { x = -2555.86, y = 2091.21 },
             Range = 15,
             IsQuestCompleted = 5601,
@@ -576,7 +567,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5149,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_BUILDING", "QUEST_OBJECT_GROUND", "CHECK_THREE_BUILDINGS_SPAWNS_RANDOM" },
             Coord = { x = -3657.8, y = 1411.08 },
             Range = 15.0,
@@ -585,7 +575,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5149,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_BUILDING", "QUEST_OBJECT_GROUND", "CHECK_THREE_BUILDINGS_SPAWNS_RANDOM" },
             Coord = { x = -3719.93, y = 1411.78 },
             Range = 15.0,
@@ -738,7 +727,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5542,
-            NonSkippableWaypoint = true,
             Coord = { x = -2555.86, y = 2091.21 },
             Range = 15,
             Zone = 1423,
@@ -746,7 +734,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5543,
-            NonSkippableWaypoint = true,
             Coord = { x = -2555.86, y = 2091.21 },
             Range = 15,
             IsQuestCompleted = 5542,
@@ -756,7 +743,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5544,
-            NonSkippableWaypoint = true,
             Coord = { x = -2555.86, y = 2091.21 },
             Range = 15,
             IsQuestCompleted = 5542,
@@ -767,7 +753,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5742,
-            NonSkippableWaypoint = true,
             Coord = { x = -2555.86, y = 2091.21 },
             Range = 15,
             IsQuestUncompleted = 5742,
@@ -778,7 +763,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5781,
-            NonSkippableWaypoint = true,
             Coord = { x = -2555.86, y = 2091.21 },
             Range = 15,
             IsQuestCompleted = 5742,
@@ -821,7 +805,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5781,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 27.85, 86.245),
             Range = 15.0,
@@ -860,7 +843,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5781,
-            NonSkippableWaypoint = true,
             Coord = { x = -2555.86, y = 2091.21 },
             Range = 15,
             IsQuestOnQuest = 5781,
@@ -870,7 +852,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5845,
-            NonSkippableWaypoint = true,
             Coord = { x = -2555.86, y = 2091.21 },
             Range = 15,
             IsQuestCompleted = 5781,
@@ -931,7 +912,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5223,
-            NonSkippableWaypoint = true,
             Coord = { x = -2555.86, y = 2091.21 },
             Range = 15,
             ZoneStepTrigger = { x = -2555.86, y = 2091.21, Range = 15, mapID = 1423 },
@@ -941,7 +921,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5223,
-            NonSkippableWaypoint = true,
             Coord = { x = -1431.13, y = 944.3 },
             Range = 15,
             ZoneStepTrigger = { x = -1431.13, y = 944.3, Range = 15, mapID = 1422 },
@@ -1008,7 +987,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5152,
-            NonSkippableWaypoint = true,
             Coord = { x = -1681.7, y = 1104.8 },
             Range = 4,
             IsQuestOnQuest = 5152,
@@ -1017,7 +995,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5153,
-            NonSkippableWaypoint = true,
             Coord = { x = -1681.7, y = 1104.8 },
             Range = 4,
             IsQuestCompleted = 5152,
@@ -1050,7 +1027,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5153,
-            NonSkippableWaypoint = true,
             Coord = { x = -1268.7, y = 1441.9 },
             Range = 4,
             IsQuestOnQuest = 5153,
@@ -1059,7 +1035,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5154,
-            NonSkippableWaypoint = true,
             Coord = { x = -1268.7, y = 1441.9 },
             Range = 4,
             IsQuestCompleted = 5153,
@@ -1071,7 +1046,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 4971,
-            NonSkippableWaypoint = true,
             Coord = { x = -1268.7, y = 1441.9 },
             Range = 4,
             IsQuestNotOnQuest = 4971,
@@ -1096,7 +1070,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 4971,
-            NonSkippableWaypoint = true,
             Fillers = { [5537] = { 1 } },
             Coord = { x = -1467.68, y = 1381.5 },
             Range = 10.0,
@@ -1105,7 +1078,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5154,
-            NonSkippableWaypoint = true,
             Coord = { x = -1467.68, y = 1381.5 },
             Range = 10,
             IsQuestCompleted = 4971,
@@ -1134,7 +1106,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 4971,
-            NonSkippableWaypoint = true,
             Coord = { x = -1268.7, y = 1441.9 },
             Range = 4,
             IsQuestOnQuest = 4971,
@@ -1144,7 +1115,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5154,
-            NonSkippableWaypoint = true,
             Coord = { x = -1268.7, y = 1441.9 },
             Range = 4,
             IsQuestOnQuest = 5154,
@@ -1154,7 +1124,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 4972,
-            NonSkippableWaypoint = true,
             Coord = { x = -1268.7, y = 1441.9 },
             Range = 4,
             IsQuestCompleted = 4971,
@@ -1166,7 +1135,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5210,
-            NonSkippableWaypoint = true,
             Coord = { x = -1268.7, y = 1441.9 },
             Range = 4,
             IsQuestCompleted = 5154,
@@ -1224,7 +1192,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 4972,
-            NonSkippableWaypoint = true,
             Coord = { x = -1268.7, y = 1441.9 },
             Range = 4,
             IsQuestCompleted = 4971,
@@ -1293,7 +1260,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6024,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 64.8, 21.45),
             Range = 20,
             IsQuestOnQuest = 6024,
@@ -1343,7 +1309,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5845,
-            NonSkippableWaypoint = true,
             Coord = { x = -2555.86, y = 2091.21 },
             Range = 15,
             IsQuestCompleted = 5781,
@@ -1353,7 +1318,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5846,
-            NonSkippableWaypoint = true,
             Coord = { x = -2555.86, y = 2091.21 },
             Range = 15,
             AllOf = { { IsQuestCompleted = 5845 } },
@@ -1447,7 +1411,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6004,
-            NonSkippableWaypoint = true,
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
             IsQuestNotOnQuest = 6004,
@@ -1463,7 +1426,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6004,
-            NonSkippableWaypoint = true,
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
             IsQuestOnQuest = 6004,
@@ -1473,7 +1435,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6004,
-            NonSkippableWaypoint = true,
             Coord = { x = -1750.53, y = 2279.05 },
             Range = 15,
             IsQuestOnQuest = 6004,
@@ -1491,7 +1452,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6004,
-            NonSkippableWaypoint = true,
             Coord = { x = -1750.53, y = 2279.05 },
             Range = 15,
             IsQuestOnQuest = 6004,
@@ -1501,7 +1461,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6004,
-            NonSkippableWaypoint = true,
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
             IsQuestOnQuest = 6004,
@@ -1511,7 +1470,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Coord = { x = -1750.53, y = 2279.05 },
             Range = 15,
             IsQuestCompleted = 6004,
@@ -1523,7 +1481,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
             IsQuestCompleted = 6004,
@@ -1547,7 +1504,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
             IsQuestOnQuest = 6023,
@@ -1557,7 +1513,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Coord = { x = -1750.53, y = 2279.05 },
             Range = 15,
             IsQuestOnQuest = 6023,
@@ -1567,7 +1522,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Coord = { x = -1806.86, y = 2233.19 },
             Range = 15,
             IsQuestOnQuest = 6023,
@@ -1577,7 +1531,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Coord = { x = -1935.0, y = 2398.59 },
             Range = 15,
             IsQuestOnQuest = 6023,
@@ -1594,7 +1547,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Coord = { x = -1935.0, y = 2398.59 },
             Range = 15,
             IsQuestOnQuest = 6023,
@@ -1604,7 +1556,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Coord = { x = -1918.23, y = 2643.69 },
             Range = 15,
             IsQuestOnQuest = 6023,
@@ -1622,7 +1573,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Coord = { x = -1935.0, y = 2398.59 },
             Range = 15,
             IsQuestOnQuest = 6023,
@@ -1632,7 +1582,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Coord = { x = -1806.86, y = 2233.19 },
             Range = 15,
             IsQuestOnQuest = 6023,
@@ -1642,7 +1591,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Coord = { x = -1750.53, y = 2279.05 },
             Range = 15,
             IsQuestOnQuest = 6023,
@@ -1652,7 +1600,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
             IsQuestOnQuest = 6023,
@@ -1662,7 +1609,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1935.0, y = 2398.59 },
             Range = 15,
             IsQuestCompleted = 6023,
@@ -1674,7 +1620,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1806.86, y = 2233.19 },
             Range = 15,
             IsQuestCompleted = 6023,
@@ -1686,7 +1631,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1750.53, y = 2279.05 },
             Range = 15,
             IsQuestCompleted = 6023,
@@ -1698,7 +1642,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
             IsQuestCompleted = 6023,
@@ -1722,7 +1665,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -1732,7 +1674,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1750.53, y = 2279.05 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -1742,7 +1683,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1806.86, y = 2233.19 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -1752,7 +1692,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1935.0, y = 2398.59 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -1762,7 +1701,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1918.23, y = 2643.69 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -1772,7 +1710,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1840.83, y = 2703.89 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -1782,7 +1719,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1734.19, y = 2692.14 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -1792,7 +1728,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5168,
-            NonSkippableWaypoint = true,
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
             AllOf = { { Not = { AnyOf = { { IsQuestOnQuest = 6025, Not = { IsQuestReadyForTurnIn = 6025 } } } } } },
@@ -1804,7 +1739,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5168,
-            NonSkippableWaypoint = true,
             Coord = { x = -1750.53, y = 2279.05 },
             Range = 15,
             AllOf = { { Not = { AnyOf = { { IsQuestOnQuest = 6025, Not = { IsQuestReadyForTurnIn = 6025 } } } } } },
@@ -1816,7 +1750,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5168,
-            NonSkippableWaypoint = true,
             Coord = { x = -1806.86, y = 2233.19 },
             Range = 15,
             AllOf = { { Not = { AnyOf = { { IsQuestOnQuest = 6025, Not = { IsQuestReadyForTurnIn = 6025 } } } } } },
@@ -1828,7 +1761,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5168,
-            NonSkippableWaypoint = true,
             Coord = { x = -1935.0, y = 2398.59 },
             Range = 15,
             AllOf = { { Not = { AnyOf = { { IsQuestOnQuest = 6025, Not = { IsQuestReadyForTurnIn = 6025 } } } } } },
@@ -1840,7 +1772,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5168,
-            NonSkippableWaypoint = true,
             Coord = { x = -1918.23, y = 2643.69 },
             Range = 15,
             AllOf = { { Not = { AnyOf = { { IsQuestOnQuest = 6025, Not = { IsQuestReadyForTurnIn = 6025 } } } } } },
@@ -1852,7 +1783,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5168,
-            NonSkippableWaypoint = true,
             Coord = { x = -1840.83, y = 2703.89 },
             Range = 15,
             AllOf = { { Not = { AnyOf = { { IsQuestOnQuest = 6025, Not = { IsQuestReadyForTurnIn = 6025 } } } } } },
@@ -1864,7 +1794,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5168,
-            NonSkippableWaypoint = true,
             Coord = { x = -1734.19, y = 2692.14 },
             Range = 15,
             AllOf = { { Not = { AnyOf = { { IsQuestOnQuest = 6025, Not = { IsQuestReadyForTurnIn = 6025 } } } } } },
@@ -1876,7 +1805,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1548.43, y = 2827.73 },
             Range = 5,
             Zone = 1422,
@@ -1900,7 +1828,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1734.19, y = 2692.14 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -1910,7 +1837,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1840.83, y = 2703.89 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -1920,7 +1846,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1918.23, y = 2643.69 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -1930,7 +1855,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1935.0, y = 2398.59 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -1940,7 +1864,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1806.86, y = 2233.19 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -1950,7 +1873,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1750.53, y = 2279.05 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -1960,7 +1882,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -2020,7 +1941,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 5211,
-            NonSkippableWaypoint = true,
             Coord = { x = -5340.84, y = 2257.29 },
             Range = 15,
             ZoneStepTrigger = { x = -5340.84, y = 2257.29, Range = 15, mapID = 1423 },
@@ -2047,7 +1967,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 9136,
-            NonSkippableWaypoint = true,
             Coord = { x = -5318.35, y = 2289.58 },
             Range = 5,
             AllOf = { { ItemCount = { operator = "<", count = 30, itemID = 22526 } }, { ItemCount = { operator = "<", count = 30, itemID = 22527 } }, { ItemCount = { operator = "<", count = 30, itemID = 22528 } }, { ItemCount = { operator = "<", count = 30, itemID = 22529 } } },
@@ -2233,7 +2152,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 4513,
-            NonSkippableWaypoint = true,
             Coord = { x = -1152.33, y = -4821.06 },
             Range = 15,
             ZoneStepTrigger = { x = -1152.33, y = -4821.06, Range = 15, mapID = 1455 },
@@ -2261,7 +2179,6 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
         },
         {
             Waypoint = 4986,
-            NonSkippableWaypoint = true,
             Coord = { x = 885.34, y = -9006.15 },
             Range = 15,
             ZoneStepTrigger = { x = 885.34, y = -9006.15, Range = 15, mapID = 1453 },

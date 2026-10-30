@@ -13,7 +13,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
     steps = {
         {
             Waypoint = 1491,
-            NonSkippableWaypoint = true,
             Note = { "LOOKING_GROUP_WAILING_CAVERNS" },
             Coord = { x = -2216.5, y = -742.43 },
             Range = 30.0,
@@ -43,7 +42,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 1491,
-            NonSkippableWaypoint = true,
             Note = { "RUN_MOUNTAIN_WAILING_CAVERNS_MEETING_STONE", "FOLLOW_ARROW_CLOSELY_REACH_HIDDEN_CAVE" },
             Coord = { x = -2134.68, y = -764.35 },
             Range = 30.0,
@@ -52,7 +50,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 1491,
-            NonSkippableWaypoint = true,
             Note = { "RUN_MOUNTAIN_WAILING_CAVERNS_MEETING_STONE", "FOLLOW_ARROW_CLOSELY_REACH_HIDDEN_CAVE" },
             Coord = { x = -2122.52, y = -734.62 },
             Range = 20.0,
@@ -61,7 +58,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 1491,
-            NonSkippableWaypoint = true,
             Note = { "RUN_MOUNTAIN_WAILING_CAVERNS_MEETING_STONE", "FOLLOW_ARROW_CLOSELY_REACH_HIDDEN_CAVE" },
             Coord = { x = -2061.94, y = -781.68 },
             Range = 20.0,
@@ -70,7 +66,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 1491,
-            NonSkippableWaypoint = true,
             Note = { "RUN_MOUNTAIN_WAILING_CAVERNS_MEETING_STONE", "FOLLOW_ARROW_CLOSELY_REACH_HIDDEN_CAVE" },
             Coord = { x = -2028.82, y = -828.29 },
             Range = 10.0,
@@ -79,7 +74,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 1491,
-            NonSkippableWaypoint = true,
             Note = { "RUN_MOUNTAIN_WAILING_CAVERNS_MEETING_STONE", "FOLLOW_ARROW_CLOSELY_REACH_HIDDEN_CAVE" },
             Coord = { x = -2021.46, y = -816.03 },
             Range = 10.0,
@@ -88,7 +82,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 1486,
-            NonSkippableWaypoint = true,
             Note = { "NPCS_WAILING_CAVERNS_ENTRANCE_ABOVE" },
             Coord = { x = -2036.18, y = -796.4 },
             Range = 5,
@@ -119,7 +112,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 1491,
-            NonSkippableWaypoint = true,
             Fillers = { [1486] = { 1 }, [1491] = { 1 } },
             Note = { "ENTER_WC_INSTANCE_PORTAL_ZONE" },
             Coord = { x = -2028.82, y = -636.93 },
@@ -129,7 +121,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 1491,
-            NonSkippableWaypoint = true,
             Fillers = { [1486] = { 1 }, [1491] = { 1 } },
             Note = { "ENTER_WC_INSTANCE_PORTAL_ZONE" },
             Coord = { x = -2050.9, y = -585.41 },
@@ -139,7 +130,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 1491,
-            NonSkippableWaypoint = true,
             Fillers = { [1486] = { 1 }, [1491] = { 1 } },
             Note = { "ENTER_WC_INSTANCE_PORTAL_ZONE" },
             Coord = { x = -2168.66, y = -607.49 },
@@ -413,7 +403,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 1529,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 65.83, 43.78),
             Range = 5,
             Class = "SHAMAN",
@@ -460,7 +449,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 1528,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 65.83, 43.78),
             Range = 5,
             Class = "SHAMAN",
@@ -507,7 +495,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 1530,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 65.83, 43.78),
             Range = 5,
             Class = "SHAMAN",
@@ -545,7 +532,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 1530,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 65.83, 43.78),
             Range = 5,
             Class = "SHAMAN",
@@ -690,7 +676,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 6981,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_MOUNTAIN" },
             Coord = { x = -2493.4, y = -708.95 },
             Range = 20.0,
@@ -699,7 +684,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 6981,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_MOUNTAIN" },
             Coord = { x = -2404.23, y = -721.11 },
             Range = 20.0,
@@ -708,7 +692,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 6981,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_MOUNTAIN" },
             Coord = { x = -2356.6, y = -685.98 },
             Range = 20.0,
@@ -717,7 +700,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 6981,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_MOUNTAIN" },
             Coord = { x = -2259.32, y = -602.2 },
             Range = 50.0,
@@ -747,7 +729,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 1486,
-            NonSkippableWaypoint = true,
             Note = { "NPCS_WAILING_CAVERNS_ENTRANCE_ABOVE" },
             Coord = { x = -2036.18, y = -796.4 },
             Range = 5,
@@ -799,7 +780,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 914,
-            NonSkippableWaypoint = true,
             Coord = { x = 1, y = -1108.2 },
             Range = 8,
             ZoneStepTrigger = { x = 1, y = -1108.2, Range = 8, mapID = 1456 },
@@ -810,7 +790,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 914,
-            NonSkippableWaypoint = true,
             Coord = { x = -66.5, y = -1089.7 },
             Range = 8,
             ZoneStepTrigger = { x = -66.5, y = -1089.7, Range = 8, mapID = 1456 },
@@ -821,7 +800,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 914,
-            NonSkippableWaypoint = true,
             Coord = { x = -209.4, y = -1044.8 },
             Range = 8,
             ZoneStepTrigger = { x = -209.4, y = -1044.8, Range = 8, mapID = 1456 },
@@ -848,7 +826,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 962,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SPIRIT_RISE_ENTER_POOLS_VISION" },
             Coord = { x = 219.09, y = -1051.44 },
             Range = 10.0,
@@ -970,7 +947,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 1530,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SOUTH_BRINE" },
             Coord = { x = -1776.98, y = -3617.51 },
             Range = 60.0,
@@ -1291,7 +1267,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 2458,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_BARRENS_WESTERN_EXIT" },
             Coord = { x = -4048.36, y = 1697.85 },
             Range = 80.0,
@@ -1303,7 +1278,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_BARRENS_WESTERN_EXIT" },
             Coord = { x = -4048.36, y = 1697.85 },
             Range = 80.0,
@@ -1315,7 +1289,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 2458,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_BARRENS_WESTERN_EXIT" },
             Coord = { x = -3900.25, y = 1681.48 },
             Range = 30.0,
@@ -1327,7 +1300,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_BARRENS_WESTERN_EXIT" },
             Coord = { x = -3900.25, y = 1681.48 },
             Range = 30.0,
@@ -1339,7 +1311,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 2458,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_BARRENS_WESTERN_EXIT" },
             Coord = { x = -3933.49, y = 1707.86 },
             Range = 50.0,
@@ -1351,7 +1322,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_BARRENS_WESTERN_EXIT" },
             Coord = { x = -3933.49, y = 1707.86 },
             Range = 50.0,
@@ -1363,7 +1333,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 2458,
-            NonSkippableWaypoint = true,
             Coord = { x = -3216.92, y = 1107.13 },
             Range = 120.0,
             Class = "ROGUE",
@@ -1372,7 +1341,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = { x = -3216.92, y = 1107.13 },
             Range = 120.0,
             Class = "DRUID",
@@ -1489,7 +1457,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 2478,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_ORGRIMMAR_WESTERN_ENTRANCE" },
             Coord = { x = -3839.37, y = 1644.65 },
             Range = 5,
@@ -1501,7 +1468,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_ORGRIMMAR_WESTERN_ENTRANCE" },
             Coord = { x = -3839.37, y = 1644.65 },
             Range = 5,
@@ -1583,7 +1549,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = { x = -4682, y = 2032 },
             Range = 8,
             ZoneStepTrigger = { x = -4682, y = 2032, Range = 8, mapID = 1454 },
@@ -1596,7 +1561,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = { x = -4705, y = 2073 },
             Range = 8,
             ZoneStepTrigger = { x = -4705, y = 2073, Range = 8, mapID = 1454 },
@@ -1609,7 +1573,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = { x = -4661, y = 2089 },
             Range = 8,
             ZoneStepTrigger = { x = -4661, y = 2089, Range = 8, mapID = 1454 },
@@ -1622,7 +1585,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = { x = -4645, y = 2059 },
             Range = 8,
             ZoneStepTrigger = { x = -4645, y = 2059, Range = 8, mapID = 1454 },
@@ -1635,7 +1597,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = { x = -4616, y = 2057 },
             Range = 5,
             ZoneStepTrigger = { x = -4616, y = 2057, Range = 5, mapID = 1454 },
@@ -1648,7 +1609,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = { x = -4604, y = 2078 },
             Range = 5,
             ZoneStepTrigger = { x = -4604, y = 2078, Range = 5, mapID = 1454 },
@@ -1689,7 +1649,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = { x = -4739.57, y = 2036.84 },
             Range = 5,
             AnyOf = { { Race = "Orc", IsQuestNotOnQuest = 2842 }, { Race = "Troll", IsQuestNotOnQuest = 2842 }, { Race = "Tauren", IsQuestNotOnQuest = 2842 }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "ROGUE", "WARLOCK", "WARRIOR" }, IsQuestNotOnQuest = 2842 }, { Race = "Skyborne", IsQuestNotOnQuest = 2842 } },
@@ -1698,7 +1657,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Waypoint = 5644,
-            NonSkippableWaypoint = true,
             Coord = { x = -4739.57, y = 2036.84 },
             Range = 5,
             Class = "PRIEST",

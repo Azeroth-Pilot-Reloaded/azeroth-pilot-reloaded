@@ -445,7 +445,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 3116,
-            NonSkippableWaypoint = true,
             Note = { "VENDOR_TRASH" },
             Coord = { x = 794.92, y = 10436.72 },
             Range = 5,
@@ -455,7 +454,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 3120,
-            NonSkippableWaypoint = true,
             Note = { "VENDOR_TRASH" },
             Coord = { x = 794.92, y = 10436.72 },
             Range = 5,
@@ -465,7 +463,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 3117,
-            NonSkippableWaypoint = true,
             Note = { "SAVE_MONEY_FOR_SPELLS", "VENDOR_TRASH" },
             Coord = { x = 794.92, y = 10436.72 },
             Range = 5,
@@ -536,7 +533,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 3120,
-            NonSkippableWaypoint = true,
             Coord = { x = 871.6, y = 10440.83 },
             Range = 20,
             Class = "DRUID",
@@ -563,7 +559,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 3117,
-            NonSkippableWaypoint = true,
             Coord = { x = 871.6, y = 10440.83 },
             Range = 20,
             Class = "HUNTER",
@@ -675,7 +670,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 916,
-            NonSkippableWaypoint = true,
             Coord = { x = 794.92, y = 10436.72 },
             Range = 5,
             Class = "HUNTER",
@@ -715,7 +709,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 97236,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_CAVE" },
             Coord = { x = 926.08, y = 10773.42 },
             Range = 20,
@@ -724,7 +717,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 917,
-            NonSkippableWaypoint = true,
             Coord = { x = 943, y = 10811 },
             Range = 5,
             IsQuestOnQuest = 917,
@@ -734,7 +726,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 917,
-            NonSkippableWaypoint = true,
             Coord = { x = 915, y = 10901 },
             Range = 5,
             IsQuestOnQuest = 917,
@@ -744,7 +735,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 917,
-            NonSkippableWaypoint = true,
             Coord = { x = 883, y = 10891 },
             Range = 5,
             IsQuestOnQuest = 917,
@@ -754,7 +744,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 917,
-            NonSkippableWaypoint = true,
             Coord = { x = 865, y = 10913 },
             Range = 5,
             IsQuestOnQuest = 917,
@@ -764,7 +753,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 917,
-            NonSkippableWaypoint = true,
             Coord = { x = 873, y = 10954 },
             Range = 5,
             IsQuestOnQuest = 917,
@@ -774,7 +762,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 917,
-            NonSkippableWaypoint = true,
             Coord = { x = 909, y = 10945 },
             Range = 5,
             IsQuestOnQuest = 917,
@@ -808,7 +795,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 917,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1438, 56.78, 31.44),
             Range = 15,
@@ -830,7 +816,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 920,
-            NonSkippableWaypoint = true,
             Coord = { x = 871.6, y = 10440.83 },
             Range = 20,
             Zone = 1438,
@@ -895,7 +880,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 921,
-            NonSkippableWaypoint = true,
             Coord = { x = 871.6, y = 10440.83 },
             Range = 20,
             Zone = 1438,
@@ -978,7 +962,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 488,
-            NonSkippableWaypoint = true,
             Coord = { x = 694.8, y = 10213.5 },
             Range = 10,
             IsQuestNotOnQuest = 488,
@@ -994,7 +977,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 488,
-            NonSkippableWaypoint = true,
             Coord = { x = 694.8, y = 10155.2 },
             Range = 10,
             IsQuestNotOnQuest = 488,
@@ -1004,7 +986,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 488,
-            NonSkippableWaypoint = true,
             Coord = { x = 624, y = 10065.6 },
             Range = 10,
             IsQuestNotOnQuest = 488,
@@ -1133,7 +1114,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 2159,
-            NonSkippableWaypoint = true,
             Coord = { x = 968.85, y = 9821.98 },
             Range = 5,
             Class = "HUNTER",
@@ -1326,7 +1306,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 997,
-            NonSkippableWaypoint = true,
             Coord = { x = 902.15, y = 9754.27 },
             Range = 5,
             HasSpell = 2550,
@@ -1400,7 +1379,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 475,
-            NonSkippableWaypoint = true,
             Fillers = { [488] = { 1, 2, 3 }, [4161] = { 1 }, [87288] = { 1 } },
             Coord = { x = 351.23, y = 9806.54 },
             Range = 20,
@@ -1513,7 +1491,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 489,
-            NonSkippableWaypoint = true,
             Coord = { x = 968.85, y = 9821.98 },
             Range = 5,
             Class = "HUNTER",
@@ -1625,7 +1602,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 932,
-            NonSkippableWaypoint = true,
             Fillers = { [87288] = { 1 } },
             Coord = { x = 1030.46, y = 10037.99 },
             Range = 20,
@@ -1635,7 +1611,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 932,
-            NonSkippableWaypoint = true,
             Coord = { x = 1033, y = 10057 },
             Range = 5,
             Class = "DRUID",
@@ -1646,7 +1621,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 932,
-            NonSkippableWaypoint = true,
             Coord = { x = 1033, y = 10089 },
             Range = 5,
             Class = "DRUID",
@@ -1657,7 +1631,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 932,
-            NonSkippableWaypoint = true,
             Fillers = { [87288] = { 1 } },
             Coord = { x = 1043.7, y = 10093.99 },
             Range = 15,
@@ -1667,7 +1640,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 932,
-            NonSkippableWaypoint = true,
             Coord = { x = 1063, y = 10097 },
             Range = 5,
             Class = "DRUID",
@@ -1678,7 +1650,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 932,
-            NonSkippableWaypoint = true,
             Coord = { x = 1098, y = 10075 },
             Range = 5,
             Class = "DRUID",
@@ -1689,7 +1660,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 932,
-            NonSkippableWaypoint = true,
             Coord = { x = 1107, y = 10073 },
             Range = 5,
             Class = "DRUID",
@@ -1700,7 +1670,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 932,
-            NonSkippableWaypoint = true,
             Coord = { x = 1125, y = 10063 },
             Range = 5,
             Class = "DRUID",
@@ -1711,7 +1680,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 932,
-            NonSkippableWaypoint = true,
             Coord = { x = 1150, y = 10056 },
             Range = 5,
             Class = "DRUID",
@@ -1722,7 +1690,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 932,
-            NonSkippableWaypoint = true,
             Coord = { x = 1193, y = 10085 },
             Range = 5,
             Class = "DRUID",
@@ -1793,7 +1760,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 929,
-            NonSkippableWaypoint = true,
             Note = { "SELL_JUNK_REPAIR_GEAR" },
             Coord = { x = 953.07, y = 9788.21 },
             Range = 5,
@@ -1817,7 +1783,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 933,
-            NonSkippableWaypoint = true,
             Fillers = { [87288] = { 1 }, [4161] = { 1 }, [488] = { 1, 2, 3 } },
             Coord = { x = 1655.21, y = 9555.06 },
             Range = 20,
@@ -1834,7 +1799,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 933,
-            NonSkippableWaypoint = true,
             Fillers = { [87288] = { 1 }, [4161] = { 1 }, [488] = { 1, 2, 3 } },
             Coord = { x = 1539.12, y = 9437.98 },
             Range = 20,
@@ -1851,7 +1815,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 933,
-            NonSkippableWaypoint = true,
             Fillers = { [87288] = { 1 }, [4161] = { 1 }, [488] = { 1, 2, 3 } },
             Coord = { x = 1645.02, y = 9245.89 },
             Range = 20,
@@ -1867,7 +1830,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 933,
-            NonSkippableWaypoint = true,
             Coord = { x = 956.02, y = 9736.83 },
             Range = 20,
             AllOf = { { AnyOf = { { Hardcore = true }, { MinLevel = 10 } } } },
@@ -1939,7 +1901,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 488,
-            NonSkippableWaypoint = true,
             Coord = { x = 902.15, y = 9754.275 },
             Range = 5,
             HasSpell = 2550,
@@ -2019,7 +1980,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 932,
-            NonSkippableWaypoint = true,
             Fillers = { [87288] = { 1 } },
             Coord = { x = 1030.46, y = 10037.99 },
             Range = 20,
@@ -2029,7 +1989,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 932,
-            NonSkippableWaypoint = true,
             Coord = { x = 1033, y = 10057 },
             Range = 5,
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
@@ -2040,7 +1999,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 932,
-            NonSkippableWaypoint = true,
             Coord = { x = 1033, y = 10089 },
             Range = 5,
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
@@ -2051,7 +2009,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 932,
-            NonSkippableWaypoint = true,
             Fillers = { [87288] = { 1 } },
             Coord = { x = 1043.7, y = 10093.99 },
             Range = 15,
@@ -2061,7 +2018,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 932,
-            NonSkippableWaypoint = true,
             Coord = { x = 1063, y = 10097 },
             Range = 5,
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
@@ -2072,7 +2028,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 932,
-            NonSkippableWaypoint = true,
             Coord = { x = 1098, y = 10075 },
             Range = 5,
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
@@ -2083,7 +2038,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 932,
-            NonSkippableWaypoint = true,
             Coord = { x = 1107, y = 10073 },
             Range = 5,
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
@@ -2094,7 +2048,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 932,
-            NonSkippableWaypoint = true,
             Coord = { x = 1125, y = 10063 },
             Range = 5,
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
@@ -2105,7 +2058,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 932,
-            NonSkippableWaypoint = true,
             Coord = { x = 1150, y = 10056 },
             Range = 5,
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
@@ -2116,7 +2068,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 932,
-            NonSkippableWaypoint = true,
             Coord = { x = 1193, y = 10085 },
             Range = 5,
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
@@ -2170,7 +2121,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 487,
-            NonSkippableWaypoint = true,
             Fillers = { [87288] = { 1 } },
             Note = { "MOON_PRIESTESS_AMARA_PATROLS_ROAD_WEST_DOLANAAR" },
             Coord = { x = 971.91, y = 9852.35 },
@@ -2429,7 +2379,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 922,
-            NonSkippableWaypoint = true,
             Fillers = { [937] = { 1 } },
             Coord = { x = 2070.42, y = 9979.31 },
             Range = 20,
@@ -2440,7 +2389,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 922,
-            NonSkippableWaypoint = true,
             Coord = { x = 2070.42, y = 9979.31 },
             Range = 20,
             AllOf = { { AnyOf = { { Hardcore = true }, { MinLevel = 10 } } } },
@@ -2691,7 +2639,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 2518,
-            NonSkippableWaypoint = true,
             Fillers = { [937] = { 1 } },
             Coord = { x = 2517.99, y = 9584.25 },
             Range = 10,
@@ -2709,7 +2656,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 2518,
-            NonSkippableWaypoint = true,
             Coord = { x = 2517.99, y = 9584.25 },
             Range = 10,
             Class = { "DRUID", "HUNTER", "PRIEST" },
@@ -2793,7 +2739,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 99047,
-            NonSkippableWaypoint = true,
             Coord = { x = 2070.42, y = 9979.31 },
             Range = 20,
             Class = { "ROGUE", "WARRIOR" },
@@ -2803,7 +2748,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 99047,
-            NonSkippableWaypoint = true,
             Coord = { x = 982.65, y = 9802.19 },
             Range = 10,
             Class = { "ROGUE", "WARRIOR" },
@@ -2831,7 +2775,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 99047,
-            NonSkippableWaypoint = true,
             Coord = { x = 2070.42, y = 9979.31 },
             Range = 20,
             Class = "DRUID",
@@ -2841,7 +2784,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 99047,
-            NonSkippableWaypoint = true,
             Coord = { x = 982.65, y = 9802.19 },
             Range = 10,
             Class = "DRUID",
@@ -2856,7 +2798,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 99047,
-            NonSkippableWaypoint = true,
             Coord = { x = 2070.42, y = 9979.31 },
             Range = 20,
             Class = { "HUNTER", "PRIEST" },
@@ -2866,7 +2807,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 99047,
-            NonSkippableWaypoint = true,
             Coord = { x = 982.65, y = 9802.19 },
             Range = 10,
             Class = { "HUNTER", "PRIEST" },
@@ -3055,7 +2995,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 487,
-            NonSkippableWaypoint = true,
             Coord = { x = 968.85, y = 9821.98 },
             Range = 5,
             Class = "HUNTER",
@@ -3518,7 +3457,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 1684,
-            NonSkippableWaypoint = true,
             Fillers = { [937] = { 1 } },
             Note = { "PATROLS_AROUND_AREA" },
             Coord = { x = 971.91, y = 9852.35 },
@@ -3564,7 +3502,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 487,
-            NonSkippableWaypoint = true,
             Fillers = { [937] = { 1 } },
             Note = { "PATROLS_AROUND_AREA" },
             Coord = { x = 971.91, y = 9852.35 },
@@ -3575,7 +3512,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 487,
-            NonSkippableWaypoint = true,
             Note = { "PATROLS_AROUND_AREA" },
             Coord = { x = 971.91, y = 9852.35 },
             Range = 20,
@@ -3610,7 +3546,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 922,
-            NonSkippableWaypoint = true,
             Fillers = { [937] = { 1 } },
             Coord = { x = 2070.42, y = 9979.31 },
             Range = 20,
@@ -3637,7 +3572,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 2241,
-            NonSkippableWaypoint = true,
             Fillers = { [937] = { 1 } },
             Coord = { x = 2608.06, y = 10113.26 },
             Range = 8,
@@ -3671,7 +3605,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 2518,
-            NonSkippableWaypoint = true,
             Fillers = { [937] = { 1 } },
             Coord = { x = 2517.99, y = 9584.25 },
             Range = 10,
@@ -3883,7 +3816,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 1684,
-            NonSkippableWaypoint = true,
             Coord = { x = 2070.42, y = 9979.31 },
             Range = 5,
             Class = "WARRIOR",
@@ -3892,7 +3824,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 940,
-            NonSkippableWaypoint = true,
             Coord = { x = 2070.42, y = 9979.31 },
             Range = 5,
             AllOf = { { AnyOf = { { Hardcore = true }, { MinLevel = 10 } } } },
@@ -3902,7 +3833,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 5931,
-            NonSkippableWaypoint = true,
             Coord = { x = 2070.42, y = 9979.31 },
             Range = 5,
             AllOf = { { AnyOf = { { Hardcore = true }, { MinLevel = 10 } } } },
@@ -3927,7 +3857,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 940,
-            NonSkippableWaypoint = true,
             Coord = { x = 2070.42, y = 9979.31 },
             Range = 5,
             Class = { "HUNTER", "PRIEST", "ROGUE" },
@@ -3937,7 +3866,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 5931,
-            NonSkippableWaypoint = true,
             Coord = { x = 2070.42, y = 9979.31 },
             Range = 5,
             Class = "DRUID",
@@ -3980,7 +3908,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 1683,
-            NonSkippableWaypoint = true,
             Coord = { x = 1334.94, y = 9720.34 },
             Range = 18,
             Class = "WARRIOR",
@@ -4007,7 +3934,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 1683,
-            NonSkippableWaypoint = true,
             Coord = { x = 2070.42, y = 9979.31 },
             Range = 20,
             AllOf = { { AnyOf = { { Hardcore = true }, { MinLevel = 10 } } } },
@@ -4090,7 +4016,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 2242,
-            NonSkippableWaypoint = true,
             Coord = { x = 2608.06, y = 10113.26 },
             Range = 8,
             Class = "ROGUE",
@@ -4125,7 +4050,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 2518,
-            NonSkippableWaypoint = true,
             Coord = { x = 2517.99, y = 9584.25 },
             Range = 10,
             Zone = 1457,
@@ -4152,7 +4076,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 2520,
-            NonSkippableWaypoint = true,
             Coord = { x = 2517.99, y = 9584.25 },
             Range = 10,
             Zone = 1457,
@@ -4213,7 +4136,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 6344,
-            NonSkippableWaypoint = true,
             Coord = { x = 2316.49, y = 9924.41 },
             Range = 5,
             Class = "HUNTER",

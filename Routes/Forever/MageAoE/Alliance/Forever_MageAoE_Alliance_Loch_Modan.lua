@@ -64,7 +64,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 224,
-            NonSkippableWaypoint = true,
             Note = { "TUNNEL_ENTRANCE" },
             Coord = { x = -2818.49, y = -5742.1 },
             Range = 20,
@@ -98,7 +97,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 353,
-            NonSkippableWaypoint = true,
             Note = { "SELL_JUNK_REPAIR_GEAR" },
             Coord = { x = -2658.51, y = -4822.3 },
             Range = 5,
@@ -128,7 +126,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.273, 47.75),
             Range = 10,
             IsQuestUncompleted = 418,
@@ -138,7 +135,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.433, 48.243),
             Range = 12,
             IsQuestUncompleted = 418,
@@ -148,7 +144,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2961.92, y = -5366.82 },
             Range = 20,
             Race = "Human",
@@ -216,7 +211,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Coord = { x = -2892.97, y = -5405.45 },
             Range = 20,
             Zone = 1432,
@@ -224,7 +218,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Coord = { x = -3019.85, y = -5335.55 },
             Range = 20,
             Zone = 1432,
@@ -239,7 +232,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 1339,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Note = { "SELL_JUNK_REPAIR_GEAR" },
             Coord = { x = -2658.51, y = -4822.3 },
@@ -266,7 +258,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2923.58, y = -4803.91 },
             Range = 20,
@@ -276,7 +267,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -3077.77, y = -4984.19 },
             Range = 20,
@@ -286,7 +276,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2977, y = -4815 },
             Range = 8,
             IsQuestOnQuest = 307,
@@ -296,7 +285,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Fillers = { [416] = { 1 } },
             Note = { "GO_INSIDE_CAVE" },
             Coord = { x = -2972.96, y = -4822.3 },
@@ -306,7 +294,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2975, y = -4853 },
             Range = 3,
             IsQuestOnQuest = 307,
@@ -316,7 +303,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2979, y = -4863 },
             Range = 3,
             IsQuestOnQuest = 307,
@@ -326,7 +312,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2977, y = -4875 },
             Range = 3,
             IsQuestOnQuest = 307,
@@ -336,7 +321,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2972, y = -4887 },
             Range = 3,
             IsQuestOnQuest = 307,
@@ -355,7 +339,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2977, y = -4815 },
             Range = 8,
             IsQuestOnQuest = 307,
@@ -372,7 +355,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2636.44, y = -4816.79 },
             Range = 20,
@@ -381,7 +363,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Note = { "SELL_JUNK_REPAIR_GEAR" },
             Coord = { x = -2658.51, y = -4822.3 },
             Range = 5,
@@ -411,7 +392,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2735.74, y = -4684.34 },
             Range = 20,
@@ -420,7 +400,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2846.07, y = -4682.5 },
             Range = 20,
@@ -429,7 +408,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2782.63, y = -4770.8 },
             Range = 20,
@@ -438,7 +416,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2835.04, y = -4976.83 },
             Range = 20,
@@ -447,7 +424,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2915.03, y = -5044.89 },
             Range = 20,
@@ -456,7 +432,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -3080.53, y = -5100.08 },
             Range = 20,
@@ -465,7 +440,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2735.74, y = -4684.34 },
             Range = 20,
@@ -474,7 +448,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2846.07, y = -4682.5 },
             Range = 20,
@@ -483,7 +456,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2782.63, y = -4770.8 },
             Range = 20,
@@ -492,7 +464,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2835.04, y = -4976.83 },
             Range = 20,
@@ -501,7 +472,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2915.03, y = -5044.89 },
             Range = 20,
@@ -510,7 +480,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -3080.53, y = -5100.08 },
             Range = 20,
@@ -519,7 +488,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2873.66, y = -4789.19 },
             Range = 20,
@@ -528,7 +496,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2766.08, y = -4866.45 },
             Range = 20,
@@ -537,7 +504,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2926.07, y = -5232.53 },
             Range = 20,
@@ -546,7 +512,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2992.27, y = -5055.93 },
             Range = 20,
@@ -555,7 +520,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -3069.5, y = -5078.01 },
             Range = 20,
@@ -564,7 +528,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2873.66, y = -4789.19 },
             Range = 20,
@@ -573,7 +536,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2766.08, y = -4866.45 },
             Range = 20,
@@ -582,7 +544,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2926.07, y = -5232.53 },
             Range = 20,
@@ -591,7 +552,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2992.27, y = -5055.93 },
             Range = 20,
@@ -600,7 +560,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -3069.5, y = -5078.01 },
             Range = 20,
@@ -609,7 +568,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -3041.92, y = -5129.51 },
             Range = 20,
@@ -618,7 +576,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -3017.09, y = -5219.65 },
             Range = 20,
@@ -627,7 +584,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2815.73, y = -5147.91 },
             Range = 20,
@@ -636,7 +592,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2757.81, y = -4952.91 },
             Range = 20,
@@ -645,7 +600,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2782.63, y = -4903.25 },
             Range = 20,
@@ -654,7 +608,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -3041.92, y = -5129.51 },
             Range = 20,
@@ -663,7 +616,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -3017.09, y = -5219.65 },
             Range = 20,
@@ -672,7 +624,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2815.73, y = -5147.91 },
             Range = 20,
@@ -681,7 +632,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2757.81, y = -4952.91 },
             Range = 20,
@@ -690,7 +640,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2782.63, y = -4903.25 },
             Range = 20,
@@ -718,7 +667,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -2892.97, y = -5405.45 },
             Range = 20,
@@ -727,7 +675,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
             Coord = { x = -3019.85, y = -5335.55 },
             Range = 20,
@@ -757,7 +704,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.273, 47.75),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1432, 35.273, 47.75, 10),
@@ -767,7 +713,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.433, 48.243),
             Range = 12,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1432, 35.433, 48.243, 12),
@@ -815,7 +760,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 6387,
-            NonSkippableWaypoint = true,
             Coord = { x = -3018.75, y = -5350.08 },
             Range = 20.0,
             Race = "Gnome",
@@ -901,7 +845,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Coord = { x = -810.36, y = -5039.71 },
             Range = 20,
             Race = "Human",
@@ -924,7 +867,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 6391,
-            NonSkippableWaypoint = true,
             Coord = { x = -1105.66, y = -4722.04 },
             Range = 20,
             Race = "Gnome",
@@ -978,7 +920,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 6392,
-            NonSkippableWaypoint = true,
             Coord = { x = -3018.75, y = -5350.08 },
             Range = 20.0,
             Race = "Gnome",
@@ -1009,7 +950,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Coord = { x = -1124.84, y = -5283.99 },
             Range = 20,
             Zone = 1426,
@@ -1017,7 +957,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1128.29, y = -5282.35 },
             Range = 20,
@@ -1026,7 +965,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1172.62, y = -5325.03 },
             Range = 20,
@@ -1035,7 +973,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1207.09, y = -5325.03 },
             Range = 20,
@@ -1044,7 +981,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1212.02, y = -5265.93 },
             Range = 20,
@@ -1053,7 +989,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1192.32, y = -5219.97 },
             Range = 20,
@@ -1062,7 +997,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1103.67, y = -5174.0 },
             Range = 20,
@@ -1071,7 +1005,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1167.69, y = -5144.45 },
             Range = 20,
@@ -1080,7 +1013,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1236.64, y = -5147.73 },
             Range = 20,
@@ -1089,7 +1021,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1433.64, y = -4586.28 },
             Range = 20,
@@ -1098,7 +1029,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1438.57, y = -4287.5 },
             Range = 20,
@@ -1107,7 +1037,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1428.72, y = -4231.68 },
             Range = 20,
@@ -1116,7 +1045,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1473.04, y = -4205.42 },
             Range = 20,
@@ -1125,7 +1053,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1492.74, y = -4156.17 },
             Range = 20,
@@ -1134,7 +1061,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1241.48, y = -4000.12 },
             Range = 20,
@@ -1143,7 +1069,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1121.55, y = -4013.9 },
             Range = 20,
@@ -1152,7 +1077,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1084.33, y = -3947.75 },
             Range = 20,
@@ -1161,7 +1085,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1014.03, y = -3911.92 },
             Range = 20,
@@ -1170,7 +1093,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -889.97, y = -3809.94 },
             Range = 20,
@@ -1179,7 +1101,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -889.97, y = -3809.94 },
             Range = 20,
@@ -1188,7 +1109,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Coord = { x = -819.67, y = -3691.42 },
             Range = 15.0,
             Money = { operator = ">=", copper = 800 },
@@ -1197,7 +1117,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Coord = { x = -807.26, y = -3716.22 },
             Range = 15.0,
             Money = { operator = ">=", copper = 800 },
@@ -1206,7 +1125,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Coord = { x = -827.94, y = -3724.49 },
             Range = 15.0,
             Money = { operator = ">=", copper = 800 },
@@ -1239,7 +1157,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            NonSkippableWaypoint = true,
             Note = { "COOK_SAVED_BOAR_MEAT_COOKING_10_NEEDED" },
             Coord = { x = -583.95, y = -3727.25 },
             Range = 5,

@@ -47,7 +47,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
     steps = {
         {
             Waypoint = 174,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 81.82, 19.77),
             Range = 5,
             Zone = 1431,
@@ -178,7 +177,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
         },
         {
             Waypoint = 226,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 29.84, 25.70),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1431, 29.84, 25.70, 20),
@@ -253,7 +251,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
         },
         {
             Waypoint = 1338,
-            NonSkippableWaypoint = true,
             Fillers = { [90] = { 1 } },
             Note = { "UPSTAIRS", "GO_GREEN_PORTAL" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 39.04, 81.88),
@@ -263,7 +260,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
         },
         {
             Waypoint = 1338,
-            NonSkippableWaypoint = true,
             Fillers = { [90] = { 1 } },
             Note = { "UPSTAIRS", "GO_GREEN_PORTAL" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 36.93, 81.97),
@@ -273,7 +269,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
         },
         {
             Waypoint = 1338,
-            NonSkippableWaypoint = true,
             Fillers = { [90] = { 1 } },
             Note = { "UPSTAIRS", "GO_GREEN_PORTAL" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 37.8, 78.22),
@@ -283,7 +278,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
         },
         {
             Waypoint = 1338,
-            NonSkippableWaypoint = true,
             Fillers = { [90] = { 1 } },
             Note = { "UPSTAIRS", "GO_GREEN_PORTAL" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 37.8, 81.93),
@@ -334,7 +328,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
         },
         {
             Waypoint = 343,
-            NonSkippableWaypoint = true,
             Fillers = { [90] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 69.55, 28.1),
             Range = 20,
@@ -357,7 +350,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
         },
         {
             Waypoint = 135,
-            NonSkippableWaypoint = true,
             Fillers = { [90] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 75.52, 55.18),
             Range = 20.0,
@@ -374,7 +366,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
         },
         {
             Waypoint = 344,
-            NonSkippableWaypoint = true,
             Fillers = { [90] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 58.65, 52.98),
             Range = 20,
@@ -392,7 +383,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
         },
         {
             Waypoint = 344,
-            NonSkippableWaypoint = true,
             Fillers = { [90] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 32.19, 49.27),
             Range = 20,
@@ -401,7 +391,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
         },
         {
             Waypoint = 344,
-            NonSkippableWaypoint = true,
             Fillers = { [90] = { 1 } },
             Note = { "INSIDE_BUILDING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 45.5, 48.25),
@@ -411,7 +400,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
         },
         {
             Waypoint = 344,
-            NonSkippableWaypoint = true,
             Fillers = { [90] = { 1 } },
             Note = { "INSIDE_BUILDING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 48.82, 41.65),
@@ -456,7 +444,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
         },
         {
             Waypoint = 144,
-            NonSkippableWaypoint = true,
             Fillers = { [90] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1433, 29.5, 46.05),
             Range = 20,
@@ -495,7 +482,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
         },
         {
             Waypoint = 347,
-            NonSkippableWaypoint = true,
             Coord = { x = -2011, y = -9012 },
             Range = 10,
             IsQuestOnQuest = 347,
@@ -515,7 +501,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
         },
         {
             Waypoint = 347,
-            NonSkippableWaypoint = true,
             Coord = { x = -2011, y = -9012 },
             Range = 10,
             IsQuestOnQuest = 347,
@@ -633,7 +618,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
         },
         {
             Waypoint = 145,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 72.81, 46.83),
             Range = 20.0,
             Zone = 1431,
@@ -769,7 +753,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
         },
         {
             Waypoint = 347,
-            NonSkippableWaypoint = true,
             Note = { "STORE_CLOTH_LATER_TURN_INS_12_STACKS", "EVENTUALLY_NEED_12_STACKS_WOOL_SILK_MAGEWEAVE", "BANK_LIGHT_FEATHERS_SUPER_IMPORTANT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 55.3, 68.18),
             Range = 20,
@@ -778,7 +761,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
         },
         {
             Waypoint = 347,
-            NonSkippableWaypoint = true,
             Note = { "STORE_CLOTH_LATER_TURN_INS_12_STACKS", "EVENTUALLY_NEED_12_STACKS_WOOL_SILK_MAGEWEAVE", "BANK_LIGHT_FEATHERS_SUPER_IMPORTANT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 56.47, 73.42),
             Range = 20.0,
@@ -804,7 +786,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
         },
         {
             Waypoint = 347,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 32.19, 49.27),
             Range = 20,
             Zone = 1429,
@@ -812,7 +793,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
         },
         {
             Waypoint = 347,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 45.5, 48.25),
             Range = 20,
             Zone = 1429,
@@ -820,7 +800,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
         },
         {
             Waypoint = 347,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 48.82, 41.65),
             Range = 20,
             Zone = 1429,
@@ -863,7 +842,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_BUILDING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 51.08, 8.04),
             Range = 20.0,
@@ -1402,7 +1380,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-Second-Visit"] = {
         },
         {
             Waypoint = 70,
-            NonSkippableWaypoint = true,
             Fillers = { [91] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 29.53, 61.93),
             Range = 5,
@@ -1447,7 +1424,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-Second-Visit"] = {
         },
         {
             Waypoint = 269,
-            NonSkippableWaypoint = true,
             Fillers = { [91] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 42.62, 33.59),
             Range = 20,
@@ -1472,7 +1448,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-Second-Visit"] = {
         },
         {
             Waypoint = 1274,
-            NonSkippableWaypoint = true,
             Fillers = { [91] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 69.49, 28.14),
             Range = 20,
@@ -1518,7 +1493,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-Second-Visit"] = {
         },
         {
             Waypoint = 1241,
-            NonSkippableWaypoint = true,
             Fillers = { [91] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 69.49, 28.14),
             Range = 20,
@@ -1605,7 +1579,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-Second-Visit"] = {
         },
         {
             Waypoint = 1243,
-            NonSkippableWaypoint = true,
             Fillers = { [91] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 74.58, 41.38),
             Range = 20,
@@ -1614,7 +1587,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-Second-Visit"] = {
         },
         {
             Waypoint = 1243,
-            NonSkippableWaypoint = true,
             Fillers = { [91] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 72.18, 37.09),
             Range = 20,
@@ -1623,7 +1595,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-Second-Visit"] = {
         },
         {
             Waypoint = 1243,
-            NonSkippableWaypoint = true,
             Fillers = { [91] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 73.47, 31.84),
             Range = 20,
@@ -1632,7 +1603,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-Second-Visit"] = {
         },
         {
             Waypoint = 1243,
-            NonSkippableWaypoint = true,
             Fillers = { [91] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 74.58, 41.38),
             Range = 20,
@@ -1641,7 +1611,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-Second-Visit"] = {
         },
         {
             Waypoint = 1243,
-            NonSkippableWaypoint = true,
             Fillers = { [91] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 72.18, 37.09),
             Range = 20,
@@ -1884,7 +1853,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-Second-Visit"] = {
         },
         {
             Waypoint = 181,
-            NonSkippableWaypoint = true,
             Coord = { x = -72, y = -11080 },
             Range = 10,
             IsQuestOnQuest = 181,
@@ -1910,7 +1878,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-Second-Visit"] = {
         },
         {
             Waypoint = 1244,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 74.58, 41.38),
             Range = 20,
             Zone = 1431,
@@ -1918,7 +1885,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-Second-Visit"] = {
         },
         {
             Waypoint = 1244,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 72.18, 37.09),
             Range = 20,
             Zone = 1431,
@@ -1926,7 +1892,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-Second-Visit"] = {
         },
         {
             Waypoint = 1244,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 73.47, 31.84),
             Range = 20,
             Zone = 1431,
@@ -1934,7 +1899,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-Second-Visit"] = {
         },
         {
             Waypoint = 1244,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 74.58, 41.38),
             Range = 20,
             Zone = 1431,
@@ -1942,7 +1906,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-Second-Visit"] = {
         },
         {
             Waypoint = 1244,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 72.18, 37.09),
             Range = 20,
             Zone = 1431,
@@ -2155,7 +2118,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-Second-Visit"] = {
         },
         {
             Waypoint = 1246,
-            NonSkippableWaypoint = true,
             Fillers = { [337] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 70.11, 47.72),
             Range = 20.0,

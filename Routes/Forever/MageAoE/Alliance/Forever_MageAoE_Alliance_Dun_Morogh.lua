@@ -44,7 +44,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
     steps = {
         {
             Waypoint = 179,
-            NonSkippableWaypoint = true,
             Coord = { x = 328.18, y = -6214.85 },
             Range = 5,
             Zone = 1426,
@@ -52,7 +51,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 179,
-            NonSkippableWaypoint = true,
             Coord = { x = 328.18, y = -6214.85 },
             Range = 5,
             Zone = 1426,
@@ -214,7 +212,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 3364,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 28.792, 68.804),
             Range = 12,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1426, 28.792, 68.804, 12),
@@ -224,7 +221,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 3364,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 28.939, 68.387),
             Range = 12,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1426, 28.939, 68.387, 12),
@@ -274,7 +270,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 170,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 28.831, 68.698),
             Range = 12,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1426, 28.831, 68.698, 12),
@@ -330,7 +325,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 218,
-            NonSkippableWaypoint = true,
             Coord = { x = 482.18, y = -6500.47 },
             Range = 12,
             IsQuestOnQuest = 218,
@@ -340,7 +334,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 218,
-            NonSkippableWaypoint = true,
             Coord = { x = 373.83, y = -6470.92 },
             Range = 12,
             IsQuestOnQuest = 218,
@@ -358,7 +351,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 218,
-            NonSkippableWaypoint = true,
             Coord = { x = 482.18, y = -6500.47 },
             Range = 12,
             IsQuestOnQuest = 218,
@@ -397,7 +389,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 420,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = 122.66, y = -6227.95 },
             Range = 20.0,
@@ -406,7 +397,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 420,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = 43.86, y = -6044.08 },
             Range = 20.0,
@@ -421,7 +411,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 420,
-            NonSkippableWaypoint = true,
             Fillers = { [317] = { 1 } },
             Coord = { x = 9.38, y = -5942.3 },
             Range = 20,
@@ -430,7 +419,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 420,
-            NonSkippableWaypoint = true,
             Fillers = { [317] = { 1 } },
             Coord = { x = -54.64, y = -5863.5 },
             Range = 20,
@@ -485,7 +473,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 2160,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 46.952, 52.05),
             Range = 8,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1426, 46.952, 52.05, 8),
@@ -495,7 +482,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 2160,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 47.153, 51.939),
             Range = 8,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1426, 47.153, 51.939, 8),
@@ -602,7 +588,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 5541,
-            NonSkippableWaypoint = true,
             Coord = { x = -507.74, y = -5587.7 },
             Range = 20.0,
             Zone = 1426,
@@ -619,7 +604,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 313,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 47.153, 51.939),
             Range = 8,
             IsQuestOnQuest = 313,
@@ -629,7 +613,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 313,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 46.952, 52.05),
             Range = 8,
             IsQuestOnQuest = 313,
@@ -639,7 +622,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 313,
-            NonSkippableWaypoint = true,
             Coord = { x = -275, y = -5623.2 },
             Range = 15,
             IsQuestOnQuest = 313,
@@ -657,7 +639,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 313,
-            NonSkippableWaypoint = true,
             Coord = { x = -275, y = -5623.2 },
             Range = 15,
             IsQuestOnQuest = 313,
@@ -672,7 +653,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 5541,
-            NonSkippableWaypoint = true,
             Coord = { x = -197.47, y = -5932.45 },
             Range = 20,
             Zone = 1426,
@@ -693,7 +673,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 312,
-            NonSkippableWaypoint = true,
             Coord = { x = 68.48, y = -5728.88 },
             Range = 20,
             Zone = 1426,
@@ -701,7 +680,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 312,
-            NonSkippableWaypoint = true,
             Coord = { x = 29.08, y = -5584.42 },
             Range = 20,
             Zone = 1426,
@@ -782,7 +760,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 310,
-            NonSkippableWaypoint = true,
             Coord = { x = -530.7, y = -5600.1 },
             Range = 10,
             Zone = 1426,
@@ -804,7 +781,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 310,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS", "WAIT_BARREL_TOOLTIP_SAYS_UNGUARDED" },
             Coord = { x = -542.22, y = -5597.55 },
             Range = 10.0,
@@ -890,7 +866,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 312,
-            NonSkippableWaypoint = true,
             Note = { "UP_RAMP" },
             Coord = { x = -320.59, y = -5354.58 },
             Range = 20,
@@ -899,7 +874,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 312,
-            NonSkippableWaypoint = true,
             Note = { "UP_RAMP" },
             Coord = { x = -271.34, y = -5367.72 },
             Range = 20,
@@ -908,7 +882,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 315,
-            NonSkippableWaypoint = true,
             Coord = { x = -320.59, y = -5354.58 },
             Range = 20,
             IsQuestCompleted = 312,
@@ -919,7 +892,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 315,
-            NonSkippableWaypoint = true,
             Coord = { x = -271.34, y = -5367.72 },
             Range = 20,
             IsQuestCompleted = 312,
@@ -938,7 +910,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 312,
-            NonSkippableWaypoint = true,
             Coord = { x = -49, y = -5623 },
             Range = 8,
             IsQuestOnQuest = 312,
@@ -948,7 +919,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 312,
-            NonSkippableWaypoint = true,
             Coord = { x = -75, y = -5645 },
             Range = 8,
             IsQuestOnQuest = 312,
@@ -965,7 +935,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 312,
-            NonSkippableWaypoint = true,
             Coord = { x = -49, y = -5623 },
             Range = 8,
             IsQuestOnQuest = 312,
@@ -1034,7 +1003,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 287,
-            NonSkippableWaypoint = true,
             Coord = { x = 555, y = -5558 },
             Range = 10,
             IsQuestOnQuest = 287,
@@ -1044,7 +1012,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 287,
-            NonSkippableWaypoint = true,
             Note = { "GO_INSIDE_CAVE" },
             Coord = { x = 595.46, y = -5545.02 },
             Range = 15,
@@ -1068,7 +1035,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 287,
-            NonSkippableWaypoint = true,
             Coord = { x = 555, y = -5558 },
             Range = 10,
             IsQuestOnQuest = 287,
@@ -1077,7 +1043,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 287,
-            NonSkippableWaypoint = true,
             Coord = { x = -499.17, y = -5644.37 },
             Range = 20,
             Zone = 1426,
@@ -1103,7 +1068,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Coord = { x = -1157.84, y = -5604.12 },
             Range = 20,
             Zone = 1426,
@@ -1117,7 +1081,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Coord = { x = -1266.19, y = -5528.6 },
             Range = 14.0,
             Zone = 1426,
@@ -1125,7 +1088,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Coord = { x = -1261.27, y = -5499.05 },
             Range = 10.0,
             Zone = 1426,
@@ -1180,7 +1142,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 433,
-            NonSkippableWaypoint = true,
             Coord = { x = -1663, y = -5721 },
             Range = 12,
             IsQuestOnQuest = 433,
@@ -1197,7 +1158,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 433,
-            NonSkippableWaypoint = true,
             Coord = { x = -1663, y = -5721 },
             Range = 12,
             IsQuestOnQuest = 433,
@@ -1257,7 +1217,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 419,
-            NonSkippableWaypoint = true,
             Coord = { x = -2189, y = -5267 },
             Range = 8,
             ZoneStepTrigger = { x = -2189, y = -5267, Range = 8, mapID = 1426 },
@@ -1267,7 +1226,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 419,
-            NonSkippableWaypoint = true,
             Coord = { x = -2303, y = -5203 },
             Range = 8,
             ZoneStepTrigger = { x = -2303, y = -5203, Range = 8, mapID = 1426 },
@@ -1308,7 +1266,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 413,
-            NonSkippableWaypoint = true,
             Coord = { x = -2118.22, y = -5541.73 },
             Range = 20,
             Zone = 1426,
@@ -1316,7 +1273,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             Waypoint = 413,
-            NonSkippableWaypoint = true,
             Coord = { x = -2251.19, y = -5633.67 },
             Range = 20,
             Zone = 1426,

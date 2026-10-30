@@ -111,7 +111,6 @@ APR.RouteQuestStepList["Forever-Alliance-Westfall"] = {
         },
         {
             Waypoint = 36,
-            NonSkippableWaypoint = true,
             Coord = { x = 875.96, y = -9814.4 },
             Range = 5,
             OnlyInZones = { 1429, 1453 },
@@ -133,7 +132,6 @@ APR.RouteQuestStepList["Forever-Alliance-Westfall"] = {
         },
         {
             Waypoint = 36,
-            NonSkippableWaypoint = true,
             Fillers = { [9] = { 1 }, [12] = { 1, 2 }, [153] = { 1 }, [151] = { 1 }, [22] = { 1 }, [38] = { 1 } },
             Coord = { x = 1055.27, y = -10128.7 },
             Range = 20,
@@ -227,7 +225,6 @@ APR.RouteQuestStepList["Forever-Alliance-Westfall"] = {
         },
         {
             Waypoint = 399,
-            NonSkippableWaypoint = true,
             Fillers = { [9] = { 1 }, [12] = { 1, 2 }, [153] = { 1 }, [151] = { 1 }, [22] = { 1 }, [38] = { 1 } },
             Coord = { x = 1602.67, y = -10629.67 },
             Range = 20,
@@ -254,7 +251,6 @@ APR.RouteQuestStepList["Forever-Alliance-Westfall"] = {
         },
         {
             Waypoint = 64,
-            NonSkippableWaypoint = true,
             Fillers = { [9] = { 1 }, [12] = { 1, 2 }, [153] = { 1 }, [151] = { 1 }, [22] = { 1 }, [38] = { 1 } },
             Coord = { x = 1266.67, y = -9927.33 },
             Range = 20,
@@ -459,7 +455,6 @@ APR.RouteQuestStepList["Forever-Alliance-Westfall"] = {
         },
         {
             Waypoint = 95065,
-            NonSkippableWaypoint = true,
             Coord = { x = 609.63, y = -8787.71 },
             Range = 5,
             RaidIcon = 1287,
@@ -486,7 +481,6 @@ APR.RouteQuestStepList["Forever-Alliance-Westfall"] = {
         },
         {
             Waypoint = 95065,
-            NonSkippableWaypoint = true,
             Coord = { x = 562.3, y = -8385.3 },
             Range = 20,
             Race = "Skyborne",
@@ -636,7 +630,6 @@ APR.RouteQuestStepList["Forever-Alliance-Westfall"] = {
         },
         {
             Waypoint = 95065,
-            NonSkippableWaypoint = true,
             Coord = { x = 358.25, y = -8728.28 },
             Range = 15,
             Class = "WARRIOR",
@@ -646,7 +639,6 @@ APR.RouteQuestStepList["Forever-Alliance-Westfall"] = {
         },
         {
             Waypoint = 95065,
-            NonSkippableWaypoint = true,
             Coord = { x = 302.6, y = -8685.53 },
             Range = 15,
             Class = "WARRIOR",
@@ -679,7 +671,6 @@ APR.RouteQuestStepList["Forever-Alliance-Westfall"] = {
         },
         {
             Waypoint = 95065,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = { x = 988.44, y = -8942.15 },
             Range = 20,
@@ -691,7 +682,6 @@ APR.RouteQuestStepList["Forever-Alliance-Westfall"] = {
         },
         {
             Waypoint = 95065,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = { x = 1015.33, y = -8978.9 },
             Range = 15,
@@ -712,7 +702,6 @@ APR.RouteQuestStepList["Forever-Alliance-Westfall"] = {
         },
         {
             Waypoint = 95065,
-            NonSkippableWaypoint = true,
             Coord = { x = 874.32, y = -9014.67 },
             Range = 10,
             Class = "MAGE",
@@ -732,7 +721,6 @@ APR.RouteQuestStepList["Forever-Alliance-Westfall"] = {
         },
         {
             Waypoint = 95065,
-            NonSkippableWaypoint = true,
             Coord = { x = 809.52, y = -8579.22 },
             Range = 20,
             AnyOf = { { DontHaveSpell = 19742, Class = "PALADIN" }, { DontHaveSpell = 8122, Class = "PRIEST" } },
@@ -741,7 +729,6 @@ APR.RouteQuestStepList["Forever-Alliance-Westfall"] = {
         },
         {
             Waypoint = 95065,
-            NonSkippableWaypoint = true,
             Coord = { x = 859.13, y = -8559.14 },
             Range = 10,
             Class = "PALADIN",

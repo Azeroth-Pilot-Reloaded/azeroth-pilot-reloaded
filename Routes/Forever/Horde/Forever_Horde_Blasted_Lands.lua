@@ -328,7 +328,6 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
         },
         {
             Waypoint = 8423,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 35.3, 60.1),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1435, 35.3, 60.1, 20),
@@ -938,7 +937,6 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
         },
         {
             Waypoint = 3441,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 35.3, 60.1),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1435, 35.3, 60.1, 20),

@@ -43,7 +43,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
     steps = {
         {
             Waypoint = 864,
-            NonSkippableWaypoint = true,
             Coord = { x = -4417.1, y = 1480.6 },
             Range = 15,
             ZoneStepTrigger = { x = -4417.1, y = 1480.6, Range = 15, mapID = 1454 },
@@ -55,7 +54,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 864,
-            NonSkippableWaypoint = true,
             Coord = { x = -4412.5, y = 1436.4 },
             Range = 15,
             ZoneStepTrigger = { x = -4412.5, y = 1436.4, Range = 15, mapID = 1454 },
@@ -67,7 +65,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 864,
-            NonSkippableWaypoint = true,
             Coord = { x = -4363.9, y = 1420.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4363.9, y = 1420.2, Range = 15, mapID = 1454 },
@@ -79,7 +76,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 864,
-            NonSkippableWaypoint = true,
             Coord = { x = -4370, y = 1382.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4370, y = 1382.2, Range = 15, mapID = 1411 },
@@ -91,7 +87,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 864,
-            NonSkippableWaypoint = true,
             Coord = { x = -4636.4, y = 1338.7 },
             Range = 5,
             ZoneStepTrigger = { x = -4636.4, y = 1338.7, Range = 5, mapID = 1411 },
@@ -103,7 +98,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 864,
-            NonSkippableWaypoint = true,
             Coord = { x = -4645.1, y = 1345 },
             Range = 5,
             ZoneStepTrigger = { x = -4645.1, y = 1345, Range = 5, mapID = 1411 },
@@ -160,7 +154,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 864,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 47.2, 59.69),
             Range = 12,
             IsQuestOnQuest = 864,
@@ -169,7 +162,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 864,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 43.55, 68.11),
             Range = 12,
             IsQuestOnQuest = 864,
@@ -178,7 +170,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 864,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 45.2, 71.67),
             Range = 12,
             IsQuestOnQuest = 864,
@@ -250,7 +241,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 650,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 86.6, 29.49),
             Range = 20,
             Zone = 1424,
@@ -258,7 +248,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 650,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 9.7, 55.8),
             Range = 5,
             Zone = 1425,
@@ -273,7 +262,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 650,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 20.8, 47.91),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1425, 20.8, 47.91, 20),
@@ -362,7 +350,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 7815,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 77.28, 78.64),
             Range = 20,
             Zone = 1425,
@@ -400,7 +387,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2742,
-            NonSkippableWaypoint = true,
             Note = { "CHECK_CAMP_SLAGTREE_LOST_TOOLS_SMALL_BUCKET" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 72.53, 52.92),
             Range = 20,
@@ -413,7 +399,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2742,
-            NonSkippableWaypoint = true,
             Note = { "CHECK_CAMP_SLAGTREE_LOST_TOOLS_SMALL_BUCKET" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 71.14, 48.64),
             Range = 20,
@@ -426,7 +411,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2742,
-            NonSkippableWaypoint = true,
             Note = { "CHECK_CAMP_SLAGTREE_LOST_TOOLS_SMALL_BUCKET" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 66.09, 44.71),
             Range = 20,
@@ -439,7 +423,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2742,
-            NonSkippableWaypoint = true,
             Note = { "CHECK_CAMP_SLAGTREE_LOST_TOOLS_SMALL_BUCKET" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 57.57, 42.5),
             Range = 20,
@@ -452,7 +435,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2742,
-            NonSkippableWaypoint = true,
             Note = { "CHECK_CAMP_SLAGTREE_LOST_TOOLS_SMALL_BUCKET" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 53.18, 39.2),
             Range = 20,
@@ -475,7 +457,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2742,
-            NonSkippableWaypoint = true,
             Note = { "GO_INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 58.7, 41.9),
             Range = 20,
@@ -492,7 +473,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 7841,
-            NonSkippableWaypoint = true,
             Fillers = { [7828] = { 2 }, [7829] = { 1 }, [3123] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 31.06, 47.84),
             Range = 20,
@@ -623,7 +603,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 7839,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 77.28, 78.64),
             Range = 20,
             Zone = 1425,
@@ -720,7 +699,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 77,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 86.6, 29.49),
             Range = 20,
             Zone = 1424,
@@ -728,7 +706,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 77,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 9.7, 55.8),
             Range = 5,
             Zone = 1425,
@@ -746,7 +723,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 77,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 20.44, 48.08),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1425, 20.44, 48.08, 20),
@@ -800,7 +776,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 7843,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 77.28, 78.64),
             Range = 20,
             IsQuestReadyForTurnIn = 7843,
@@ -854,7 +829,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 1429,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 72.48, 66.1),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1425, 72.48, 66.1, 20),
@@ -864,7 +838,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 1429,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 35.9, 63.9),
             Range = 20,
             Zone = 1425,
@@ -894,7 +867,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2934,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 35.9, 63.9),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1425, 35.9, 63.9, 20),
@@ -905,7 +877,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2934,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 9.7, 55.8),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1425, 9.7, 55.8, 20),
@@ -916,7 +887,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2934,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 86.6, 29.49),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1424, 86.6, 29.49, 20),
@@ -927,7 +897,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2934,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 71.5, 23.8),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1424, 71.5, 23.8, 20),
@@ -1015,7 +984,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2641,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 47.2, 59.69),
             Range = 12,
             Zone = 1458,
@@ -1023,7 +991,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2641,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 43.55, 68.11),
             Range = 12,
             Zone = 1458,
@@ -1031,7 +998,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2641,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 45.2, 71.67),
             Range = 12,
             Zone = 1458,
@@ -1080,7 +1046,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2641,
-            NonSkippableWaypoint = true,
             Coord = { x = 435.05, y = 1598.86 },
             Range = 10,
             ZoneStepTrigger = { x = 435.05, y = 1598.86, Range = 10, mapID = 1458 },
@@ -1091,7 +1056,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2641,
-            NonSkippableWaypoint = true,
             Coord = { x = 439.08, y = 1627.02 },
             Range = 10,
             ZoneStepTrigger = { x = 439.08, y = 1627.02, Range = 10, mapID = 1458 },
@@ -1102,7 +1066,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2641,
-            NonSkippableWaypoint = true,
             Coord = { x = 476.49, y = 1632.15 },
             Range = 10,
             ZoneStepTrigger = { x = 476.49, y = 1632.15, Range = 10, mapID = 1458 },
@@ -1113,7 +1076,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2641,
-            NonSkippableWaypoint = true,
             Coord = { x = 481.48, y = 1659.8 },
             Range = 10,
             ZoneStepTrigger = { x = 481.48, y = 1659.8, Range = 10, mapID = 1458 },
@@ -1124,7 +1086,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2641,
-            NonSkippableWaypoint = true,
             Coord = { x = 539.52, y = 1665.17 },
             Range = 10,
             ZoneStepTrigger = { x = 539.52, y = 1665.17, Range = 10, mapID = 1458 },
@@ -1135,7 +1096,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2641,
-            NonSkippableWaypoint = true,
             Coord = { x = 634.02, y = 1669.66 },
             Range = 15,
             ZoneStepTrigger = { x = 634.02, y = 1669.66, Range = 15, mapID = 1458 },
@@ -1146,7 +1106,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2641,
-            NonSkippableWaypoint = true,
             Coord = { x = 652.73, y = 1623.44 },
             Range = 15,
             ZoneStepTrigger = { x = 652.73, y = 1623.44, Range = 15, mapID = 1458 },
@@ -1157,7 +1116,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2641,
-            NonSkippableWaypoint = true,
             Coord = { x = 714.8, y = 1604.24 },
             Range = 15,
             ZoneStepTrigger = { x = 714.8, y = 1604.24, Range = 15, mapID = 1458 },
@@ -1178,7 +1136,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2641,
-            NonSkippableWaypoint = true,
             Coord = { x = -4370, y = 1382.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4370, y = 1382.2, Range = 15, mapID = 1411 },
@@ -1189,7 +1146,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2641,
-            NonSkippableWaypoint = true,
             Coord = { x = -4363.9, y = 1420.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4363.9, y = 1420.2, Range = 15, mapID = 1454 },
@@ -1200,7 +1156,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2641,
-            NonSkippableWaypoint = true,
             Coord = { x = -4412.5, y = 1436.4 },
             Range = 15,
             ZoneStepTrigger = { x = -4412.5, y = 1436.4, Range = 15, mapID = 1454 },
@@ -1211,7 +1166,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
         },
         {
             Waypoint = 2641,
-            NonSkippableWaypoint = true,
             Coord = { x = -4417.1, y = 1480.6 },
             Range = 15,
             ZoneStepTrigger = { x = -4417.1, y = 1480.6, Range = 15, mapID = 1454 },

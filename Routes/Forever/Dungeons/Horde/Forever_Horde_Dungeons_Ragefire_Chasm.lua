@@ -37,7 +37,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
         },
         {
             Waypoint = 6384,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_ORGRIMMAR_WESTERN_ENTRANCE" },
             Coord = { x = -3839.37, y = 1644.65 },
             Range = 5,
@@ -48,7 +47,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
         },
         {
             Waypoint = 5726,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_ORGRIMMAR_WESTERN_ENTRANCE" },
             Coord = { x = -3839.37, y = 1644.65 },
             Range = 5,
@@ -206,7 +204,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
         },
         {
             Waypoint = 5728,
-            NonSkippableWaypoint = true,
             Coord = { x = -4682, y = 2032 },
             Range = 8,
             ZoneStepTrigger = { x = -4682, y = 2032, Range = 8, mapID = 1454 },
@@ -218,7 +215,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
         },
         {
             Waypoint = 5728,
-            NonSkippableWaypoint = true,
             Coord = { x = -4705, y = 2073 },
             Range = 8,
             ZoneStepTrigger = { x = -4705, y = 2073, Range = 8, mapID = 1454 },
@@ -230,7 +226,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
         },
         {
             Waypoint = 5728,
-            NonSkippableWaypoint = true,
             Coord = { x = -4661, y = 2089 },
             Range = 8,
             ZoneStepTrigger = { x = -4661, y = 2089, Range = 8, mapID = 1454 },
@@ -242,7 +237,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
         },
         {
             Waypoint = 5728,
-            NonSkippableWaypoint = true,
             Coord = { x = -4645, y = 2059 },
             Range = 8,
             ZoneStepTrigger = { x = -4645, y = 2059, Range = 8, mapID = 1454 },
@@ -254,7 +248,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
         },
         {
             Waypoint = 5728,
-            NonSkippableWaypoint = true,
             Coord = { x = -4616, y = 2057 },
             Range = 5,
             ZoneStepTrigger = { x = -4616, y = 2057, Range = 5, mapID = 1454 },
@@ -266,7 +259,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
         },
         {
             Waypoint = 5728,
-            NonSkippableWaypoint = true,
             Coord = { x = -4604, y = 2078 },
             Range = 5,
             ZoneStepTrigger = { x = -4604, y = 2078, Range = 5, mapID = 1454 },
@@ -392,7 +384,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
         },
         {
             Waypoint = 5726,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_ORGRIMMAR" },
             Coord = { x = -4367.46, y = 1405.44 },
             Range = 50.0,
@@ -401,7 +392,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
         },
         {
             Waypoint = 5726,
-            NonSkippableWaypoint = true,
             Coord = { x = -4886, y = 1450 },
             Range = 8,
             IsQuestOnQuest = 5726,
@@ -411,7 +401,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
         },
         {
             Waypoint = 5726,
-            NonSkippableWaypoint = true,
             Coord = { x = -4856, y = 1482 },
             Range = 5,
             IsQuestOnQuest = 5726,
@@ -421,7 +410,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
         },
         {
             Waypoint = 5726,
-            NonSkippableWaypoint = true,
             Coord = { x = -4856, y = 1494 },
             Range = 5,
             IsQuestOnQuest = 5726,
@@ -431,7 +419,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
         },
         {
             Waypoint = 5726,
-            NonSkippableWaypoint = true,
             Coord = { x = -4810, y = 1490 },
             Range = 4,
             IsQuestOnQuest = 5726,
@@ -441,7 +428,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
         },
         {
             Waypoint = 5726,
-            NonSkippableWaypoint = true,
             Coord = { x = -4808, y = 1480 },
             Range = 4,
             IsQuestOnQuest = 5726,
@@ -459,7 +445,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
         },
         {
             Waypoint = 5726,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_ORGRIMMAR" },
             Coord = { x = -4367.46, y = 1405.44 },
             Range = 50.0,

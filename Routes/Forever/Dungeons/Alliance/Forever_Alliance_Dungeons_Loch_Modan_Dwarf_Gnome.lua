@@ -60,7 +60,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
     steps = {
         {
             Waypoint = 2999,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 35.239, 32.789),
             Range = 20.0,
             Class = "PALADIN",
@@ -70,7 +69,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 2999,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 27.208, 12.552),
             Range = 20.0,
             Class = "PALADIN",
@@ -80,7 +78,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 2999,
-            NonSkippableWaypoint = true,
             Coord = { x = -896.47, y = -4601.65 },
             Range = 12.0,
             Class = "PALADIN",
@@ -98,7 +95,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 2999,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 25.4, 2.676),
             Range = 10.0,
@@ -109,7 +105,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 2999,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 23.621, 2.544),
             Range = 10.0,
@@ -120,7 +115,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 2999,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 22.014, 4.533),
             Range = 10.0,
@@ -131,7 +125,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 2999,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 21.831, 7.651),
             Range = 10.0,
@@ -142,7 +135,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 2999,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 23.766, 11.636),
             Range = 10.0,
@@ -153,7 +145,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 2999,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 27.622, 12.177),
             Range = 12.0,
@@ -253,7 +244,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1778,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_STAIRCASE_UNDERNEATH_TIZA_BATTLEFORGE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 27.228, 12.724),
             Range = 15.0,
@@ -264,7 +254,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1778,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_STAIRCASE_UNDERNEATH_TIZA_BATTLEFORGE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 25.4, 2.676),
             Range = 12.0,
@@ -275,7 +264,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1778,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 25.4, 2.676),
             Range = 10.0,
@@ -286,7 +274,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1778,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 23.621, 2.544),
             Range = 10.0,
@@ -297,7 +284,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1778,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 22.014, 4.533),
             Range = 10.0,
@@ -308,7 +294,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1778,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 21.831, 7.651),
             Range = 10.0,
@@ -319,7 +304,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1778,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 23.766, 11.636),
             Range = 10.0,
@@ -330,7 +314,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1778,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 27.622, 12.177),
             Range = 12.0,
@@ -383,7 +366,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 6392,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.273, 47.75),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1432, 35.273, 47.75, 10),
@@ -393,7 +375,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 6392,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.433, 48.243),
             Range = 12,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1432, 35.433, 48.243, 12),
@@ -412,7 +393,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 6392,
-            NonSkippableWaypoint = true,
             Note = { "BUY_SMALL_BROWN_POUCHES" },
             Coord = { x = -2952.46, y = -5381.87 },
             Range = 5,
@@ -422,7 +402,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 6392,
-            NonSkippableWaypoint = true,
             Note = { "BUY_FRESHLY_BAKED_BREAD" },
             Coord = { x = -2973.9, y = -5377.93 },
             Range = 5,
@@ -433,7 +412,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 6392,
-            NonSkippableWaypoint = true,
             Note = { "BUY_FRESHLY_BAKED_BREAD_ICE_COLD_MILK" },
             Coord = { x = -2973.9, y = -5377.93 },
             Range = 5,
@@ -444,7 +422,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 6392,
-            NonSkippableWaypoint = true,
             Coord = { x = -3019.02, y = -5369.4 },
             Range = 8.0,
             Zone = 1432,
@@ -464,7 +441,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 86667,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SNOWY_PATCH_GROUND_OUTSIDE_SOUTH_GATE_PASS" },
             Coord = { x = -2619.2, y = -5783.3 },
             Range = 20.0,
@@ -474,7 +450,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 94449,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SNOWY_PATCH_GROUND_OUTSIDE_SOUTH_GATE_PASS" },
             Coord = { x = -2619.2, y = -5783.3 },
             Range = 20.0,
@@ -484,7 +459,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 86667,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 21.498, 67.84),
             Range = 8,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1432, 21.498, 67.84, 8),
@@ -494,7 +468,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 86667,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 21.388, 66.357),
             Range = 8,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1432, 21.388, 66.357, 8),
@@ -504,7 +477,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 86667,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SNOWY_PATCH_GROUND_OUTSIDE_SOUTH_GATE_PASS" },
             Coord = { x = -2534.38, y = -5648.28 },
             Range = 5.0,
@@ -514,7 +486,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 94449,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SNOWY_PATCH_GROUND_OUTSIDE_SOUTH_GATE_PASS" },
             Coord = { x = -2534.38, y = -5648.28 },
             Range = 5.0,
@@ -532,7 +503,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 94449,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SOUTH_GATE_PASS" },
             Coord = { x = -2521.9, y = -5631.0 },
             Range = 20.0,
@@ -543,7 +513,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 94449,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SOUTH_GATE_PASS" },
             Coord = { x = -2437.6, y = -5549.7 },
             Range = 20.0,
@@ -554,7 +523,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 94449,
-            NonSkippableWaypoint = true,
             Coord = { x = -2473.1, y = -5418.6 },
             Range = 25.0,
             Class = "SHAMAN",
@@ -564,7 +532,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 94449,
-            NonSkippableWaypoint = true,
             Coord = { x = -2542.4, y = -5401.4 },
             Range = 25.0,
             Class = "SHAMAN",
@@ -592,7 +559,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 94465,
-            NonSkippableWaypoint = true,
             Note = { "CAREFULLY_DROP_MOUNTAIN_LOCH_MODAN" },
             Coord = { x = -2594.1, y = -5335.9 },
             Range = 20.0,
@@ -604,7 +570,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 94465,
-            NonSkippableWaypoint = true,
             Note = { "CAREFULLY_DROP_MOUNTAIN_LOCH_MODAN" },
             Coord = { x = -2641.0, y = -5375.7 },
             Range = 20.0,
@@ -616,7 +581,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 94465,
-            NonSkippableWaypoint = true,
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -2915.5, y = -5576.5 },
             Range = 20.0,
@@ -627,7 +591,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 94465,
-            NonSkippableWaypoint = true,
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -2874.5, y = -5608.6 },
             Range = 20.0,
@@ -638,7 +601,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 94465,
-            NonSkippableWaypoint = true,
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -2846.1, y = -5657.6 },
             Range = 15.0,
@@ -699,7 +661,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2977, y = -4815 },
             Range = 8,
             IsQuestOnQuest = 307,
@@ -709,7 +670,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Fillers = { [416] = { 1 }, [94466] = { 1 } },
             Note = { "ENTER_SILVER_STREAM_MINE" },
             Coord = { x = -2972.96, y = -4835.187 },
@@ -719,7 +679,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2977, y = -4857 },
             Range = 3,
             IsQuestOnQuest = 307,
@@ -729,7 +688,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2979, y = -4863 },
             Range = 3,
             IsQuestOnQuest = 307,
@@ -739,7 +697,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2977, y = -4875 },
             Range = 3,
             IsQuestOnQuest = 307,
@@ -749,7 +706,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2972, y = -4887 },
             Range = 3,
             IsQuestOnQuest = 307,
@@ -768,7 +724,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Coord = { x = -2977, y = -4815 },
             Range = 8,
             IsQuestOnQuest = 307,
@@ -820,7 +775,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_BUNKER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 23.49, 18.008),
             Range = 15.0,
@@ -829,7 +783,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_BUNKER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 24.279, 17.959),
             Range = 15.0,
@@ -838,7 +791,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 307,
-            NonSkippableWaypoint = true,
             Note = { "VENDOR_REPAIR_NECESSARY" },
             Coord = { x = -2659.45, y = -4822.45 },
             Range = 5,
@@ -870,7 +822,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2735.74, y = -4684.34 },
             Range = 90.0,
@@ -879,7 +830,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2846.07, y = -4682.5 },
             Range = 90.0,
@@ -888,7 +838,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2782.63, y = -4770.8 },
             Range = 90.0,
@@ -897,7 +846,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2835.04, y = -4976.83 },
             Range = 90.0,
@@ -906,7 +854,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2915.03, y = -5044.89 },
             Range = 90.0,
@@ -915,7 +862,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3080.53, y = -5100.08 },
             Range = 90.0,
@@ -924,7 +870,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2735.74, y = -4684.34 },
             Range = 90.0,
@@ -933,7 +878,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2846.07, y = -4682.5 },
             Range = 90.0,
@@ -942,7 +886,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2782.63, y = -4770.8 },
             Range = 90.0,
@@ -951,7 +894,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2835.04, y = -4976.83 },
             Range = 90.0,
@@ -960,7 +902,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2915.03, y = -5044.89 },
             Range = 90.0,
@@ -969,7 +910,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3080.53, y = -5100.08 },
             Range = 90.0,
@@ -978,7 +918,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2735.74, y = -4684.34 },
             Range = 5,
@@ -987,7 +926,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3041.92, y = -5129.51 },
             Range = 90.0,
@@ -996,7 +934,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3017.09, y = -5219.65 },
             Range = 90.0,
@@ -1005,7 +942,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2815.73, y = -5147.91 },
             Range = 90.0,
@@ -1014,7 +950,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2757.81, y = -4952.91 },
             Range = 90.0,
@@ -1023,7 +958,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2782.63, y = -4903.25 },
             Range = 90.0,
@@ -1032,7 +966,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3041.92, y = -5129.51 },
             Range = 90.0,
@@ -1041,7 +974,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3017.09, y = -5219.65 },
             Range = 90.0,
@@ -1050,7 +982,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2815.73, y = -5147.91 },
             Range = 90.0,
@@ -1059,7 +990,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2757.81, y = -4952.91 },
             Range = 90.0,
@@ -1068,7 +998,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2782.63, y = -4903.25 },
             Range = 90.0,
@@ -1077,7 +1006,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3041.92, y = -5129.51 },
             Range = 5,
@@ -1086,7 +1014,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2873.66, y = -4789.19 },
             Range = 90.0,
@@ -1095,7 +1022,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2766.08, y = -4866.45 },
             Range = 90.0,
@@ -1104,7 +1030,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2926.07, y = -5232.53 },
             Range = 90.0,
@@ -1113,7 +1038,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2992.27, y = -5055.93 },
             Range = 90.0,
@@ -1122,7 +1046,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3069.5, y = -5078.01 },
             Range = 90.0,
@@ -1131,7 +1054,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2873.66, y = -4789.19 },
             Range = 90.0,
@@ -1140,7 +1062,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2766.08, y = -4866.45 },
             Range = 90.0,
@@ -1149,7 +1070,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2926.07, y = -5232.53 },
             Range = 90.0,
@@ -1158,7 +1078,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2992.27, y = -5055.93 },
             Range = 90.0,
@@ -1167,7 +1086,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3069.5, y = -5078.01 },
             Range = 90.0,
@@ -1188,7 +1106,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.273, 47.75),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1432, 35.273, 47.75, 10),
@@ -1199,7 +1116,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.433, 48.243),
             Range = 12,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1432, 35.433, 48.243, 12),
@@ -1210,7 +1126,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_STOUTLAGER_INN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.273, 47.75),
             Range = 10.0,
@@ -1219,7 +1134,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 418,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_STOUTLAGER_INN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.433, 48.243),
             Range = 12.0,
@@ -1254,7 +1168,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3006.61, y = -5259.57 },
             Range = 15.0,
@@ -1263,7 +1176,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3020.95, y = -5282.02 },
             Range = 15.0,
@@ -1272,7 +1184,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3023.44, y = -5326.9 },
             Range = 15.0,
@@ -1281,7 +1192,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3007.99, y = -5337.39 },
             Range = 15.0,
@@ -1290,7 +1200,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -2964.41, y = -5349.9 },
             Range = 15.0,
@@ -1299,7 +1208,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 416,
-            NonSkippableWaypoint = true,
             Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -2894.9, y = -5401.96 },
             Range = 20.0,
@@ -1340,7 +1248,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 94466,
-            NonSkippableWaypoint = true,
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -2915.5, y = -5576.5 },
             Range = 20.0,
@@ -1351,7 +1258,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 94466,
-            NonSkippableWaypoint = true,
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -2874.5, y = -5608.6 },
             Range = 20.0,
@@ -1362,7 +1268,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 94466,
-            NonSkippableWaypoint = true,
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -2846.1, y = -5657.6 },
             Range = 15.0,
@@ -1427,7 +1332,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 267,
-            NonSkippableWaypoint = true,
             Note = { "RUN_UP_DIRT_PATH_DROP_DOWN_BUNKER" },
             Coord = { x = -2677.26, y = -5778.34 },
             Range = 10.0,
@@ -1436,7 +1340,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 267,
-            NonSkippableWaypoint = true,
             Note = { "RUN_UP_DIRT_PATH_DROP_DOWN_BUNKER" },
             Coord = { x = -2648.3, y = -5876.75 },
             Range = 15.0,
@@ -1463,7 +1366,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 94468,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 21.498, 67.84),
             Range = 8,
             Class = "SHAMAN",
@@ -1474,7 +1376,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 94468,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 21.388, 66.357),
             Range = 8,
             Class = "SHAMAN",
@@ -1485,7 +1386,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 94468,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SOUTH_GATE_PASS" },
             Coord = { x = -2521.9, y = -5631.0 },
             Range = 20.0,
@@ -1496,7 +1396,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 94468,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SOUTH_GATE_PASS" },
             Coord = { x = -2437.6, y = -5549.7 },
             Range = 20.0,
@@ -1507,7 +1406,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 94468,
-            NonSkippableWaypoint = true,
             Coord = { x = -2473.1, y = -5418.6 },
             Range = 25.0,
             Class = "SHAMAN",
@@ -1517,7 +1415,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 94468,
-            NonSkippableWaypoint = true,
             Coord = { x = -2542.4, y = -5401.4 },
             Range = 25.0,
             Class = "SHAMAN",
@@ -1536,7 +1433,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 86614,
-            NonSkippableWaypoint = true,
             Note = { "CAREFULLY_DROP_MOUNTAIN_LOCH_MODAN" },
             Coord = { x = -2594.1, y = -5335.9 },
             Range = 20.0,
@@ -1548,7 +1444,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 86614,
-            NonSkippableWaypoint = true,
             Note = { "CAREFULLY_DROP_MOUNTAIN_LOCH_MODAN" },
             Coord = { x = -2641.0, y = -5375.7 },
             Range = 20.0,
@@ -1569,7 +1464,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 86614,
-            NonSkippableWaypoint = true,
             Coord = { x = -3104.9, y = -5210.1 },
             Range = 5.0,
             RaidIcon = 1684,
@@ -1604,7 +1498,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1783,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 21.498, 67.84),
             Range = 20.0,
             Class = "PALADIN",
@@ -1614,7 +1507,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1783,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 21.388, 66.357),
             Range = 20.0,
             Class = "PALADIN",
@@ -1624,7 +1516,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1783,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 21.106, 65.007),
             Range = 20.0,
             Class = "PALADIN",
@@ -1634,7 +1525,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1783,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 20.749, 64.326),
             Range = 20.0,
             Class = "PALADIN",
@@ -1644,7 +1534,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1783,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 19.594, 62.735),
             Range = 20.0,
             Class = "PALADIN",
@@ -1654,7 +1543,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1783,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 16.342, 58.52),
             Range = 20.0,
             Class = "PALADIN",
@@ -1664,7 +1552,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1783,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 84.262, 51.367),
             Range = 5,
             Class = "PALADIN",
@@ -1721,7 +1608,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1784,
-            NonSkippableWaypoint = true,
             Coord = { x = -541.23, y = -5242.29 },
             Range = 40.0,
             Class = "PALADIN",
@@ -1734,7 +1620,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1784,
-            NonSkippableWaypoint = true,
             Coord = { x = -669.77, y = -5216.35 },
             Range = 20.0,
             Class = "PALADIN",
@@ -1747,7 +1632,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1784,
-            NonSkippableWaypoint = true,
             Coord = { x = -831.39, y = -5028.78 },
             Range = 40.0,
             Class = "PALADIN",
@@ -1777,7 +1661,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1784,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = -913.38, y = -4577.31 },
             Range = 6.0,
@@ -1788,7 +1671,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1784,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = -906.11, y = -4632.03 },
             Range = 10.0,
@@ -1866,7 +1748,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 36,
-            NonSkippableWaypoint = true,
             Coord = { x = -1117.6, y = -4615.14 },
             Range = 15.0,
             Class = "WARLOCK",
@@ -1885,7 +1766,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 36,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_JUBAHL_CORPSESEEKER_HOUSE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 53.164, 7.037),
             Range = 10.0,
@@ -1896,7 +1776,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 36,
-            NonSkippableWaypoint = true,
             Note = { "BUY_GRIMOIRES_CONSUME_SHADOWS_SACRIFICE_RANK_1" },
             Coord = { x = -1130.26, y = -4601.27 },
             Range = 5,
@@ -1908,7 +1787,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 36,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 67.4, 84.909),
             Range = 15.0,
             Class = "WARRIOR",
@@ -1917,7 +1795,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 36,
-            NonSkippableWaypoint = true,
             Coord = { x = -1234.65, y = -5035.67 },
             Range = 12.0,
             Class = "WARRIOR",
@@ -1944,7 +1821,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 36,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_TRAM" },
             Coord = { x = -1330.28, y = -4840.43 },
             Range = 5,
@@ -2021,7 +1897,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 36,
-            NonSkippableWaypoint = true,
             Coord = { x = 807.64, y = -8880.84 },
             Range = 14.0,
             Class = { "MAGE", "PRIEST", "WARLOCK" },

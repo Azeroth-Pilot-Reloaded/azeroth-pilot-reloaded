@@ -180,7 +180,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6284,
-            NonSkippableWaypoint = true,
             Coord = { x = -460.13, y = 67.77 },
             Range = 30,
             IsQuestCompleted = 6548,
@@ -207,7 +206,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6523,
-            NonSkippableWaypoint = true,
             Note = { "STAY_CLOSE_ESCORT", "CAREFUL_THREE_GRIMTOTEMS_SPAWN_REACH_BONFIRE_CAMP" },
             Coord = { x = -261.38, y = 90.57 },
             Range = 40,
@@ -217,7 +215,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6523,
-            NonSkippableWaypoint = true,
             Note = { "STAY_CLOSE_ESCORT", "CAREFUL_THREE_GRIMTOTEMS_SPAWN_REACH_BONFIRE_CAMP" },
             Coord = { x = -261.86, y = -7.12 },
             Range = 40,
@@ -272,7 +269,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6461,
-            NonSkippableWaypoint = true,
             Coord = { x = -44.56, y = 84.05 },
             Range = 80,
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARRIOR" },
@@ -281,7 +277,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6461,
-            NonSkippableWaypoint = true,
             Coord = { x = 245.51, y = 255.01 },
             Range = 80,
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARRIOR" },
@@ -290,7 +285,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6461,
-            NonSkippableWaypoint = true,
             Coord = { x = 392.01, y = 445.17 },
             Range = 40,
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARRIOR" },
@@ -307,7 +301,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6461,
-            NonSkippableWaypoint = true,
             Coord = { x = -44.56, y = 84.05 },
             Range = 80,
             Class = "ROGUE",
@@ -317,7 +310,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6461,
-            NonSkippableWaypoint = true,
             Coord = { x = 245.51, y = 255.01 },
             Range = 80,
             Class = "ROGUE",
@@ -327,7 +319,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6461,
-            NonSkippableWaypoint = true,
             Coord = { x = 392.01, y = 445.17 },
             Range = 40,
             Class = "ROGUE",
@@ -347,7 +338,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6284,
-            NonSkippableWaypoint = true,
             Coord = { x = 735.8, y = 925.8 },
             Range = 50,
             Zone = 1442,
@@ -355,7 +345,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6284,
-            NonSkippableWaypoint = true,
             Coord = { x = 806.12, y = 929.05 },
             Range = 5,
             Zone = 1442,
@@ -438,7 +427,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 1483,
-            NonSkippableWaypoint = true,
             Coord = { x = 365.16, y = 878.25 },
             Range = 15,
             Zone = 1442,
@@ -544,7 +532,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 1093,
-            NonSkippableWaypoint = true,
             Coord = { x = 179.1, y = 1168.06 },
             Range = 15,
             Zone = 1442,
@@ -644,7 +631,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 3261,
-            NonSkippableWaypoint = true,
             Coord = { x = 735.8, y = 925.8 },
             Range = 15,
             OnlyInZones = { 1442 },
@@ -653,7 +639,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 3261,
-            NonSkippableWaypoint = true,
             Coord = { x = 806.12, y = 929.05 },
             Range = 15,
             OnlyInZones = { 1442 },
@@ -959,7 +944,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 899,
-            NonSkippableWaypoint = true,
             Coord = { x = -2641.35, y = -521.12 },
             Range = 5,
             Zone = 1413,
@@ -1359,7 +1343,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 1530,
-            NonSkippableWaypoint = true,
             Coord = { x = -1776.98, y = -3617.51 },
             Range = 60,
             Class = "SHAMAN",
@@ -1509,7 +1492,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 853,
-            NonSkippableWaypoint = true,
             Note = { "USE_REMAINING_BLOOD_SHARDS_BUFFS" },
             Coord = { x = -1891.48, y = -2391.93 },
             Range = 5,
@@ -1522,7 +1504,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 853,
-            NonSkippableWaypoint = true,
             Note = { "USE_REMAINING_BLOOD_SHARDS_BUFFS" },
             Coord = { x = -1891.48, y = -2391.93 },
             Range = 5,
@@ -1536,7 +1517,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 853,
-            NonSkippableWaypoint = true,
             Note = { "USE_REMAINING_BLOOD_SHARDS_BUFFS" },
             Coord = { x = -1891.48, y = -2391.93 },
             Range = 5,
@@ -1550,7 +1530,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 853,
-            NonSkippableWaypoint = true,
             Coord = { x = -1480.52, y = -2339.56 },
             Range = 120,
             Race = { "Orc", "Scourge", "Troll" },
@@ -1559,7 +1538,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 853,
-            NonSkippableWaypoint = true,
             Note = { "USE_ELEVATOR" },
             Coord = { x = 184.96, y = -1308.69 },
             Range = 5,
@@ -1654,7 +1632,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 853,
-            NonSkippableWaypoint = true,
             Coord = { x = 131.6, y = -1210.1 },
             Range = 6,
             ZoneStepTrigger = { x = 131.6, y = -1210.1, Range = 6, mapID = 1456 },
@@ -1665,7 +1642,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 853,
-            NonSkippableWaypoint = true,
             Coord = { x = 169.9, y = -1155.7 },
             Range = 6,
             ZoneStepTrigger = { x = 169.9, y = -1155.7, Range = 6, mapID = 1456 },
@@ -1676,7 +1652,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 853,
-            NonSkippableWaypoint = true,
             Coord = { x = 189.7, y = -1096 },
             Range = 6,
             ZoneStepTrigger = { x = 189.7, y = -1096, Range = 6, mapID = 1456 },
@@ -1687,7 +1662,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 853,
-            NonSkippableWaypoint = true,
             Coord = { x = 191.5, y = -1061.5 },
             Range = 6,
             ZoneStepTrigger = { x = 191.5, y = -1061.5, Range = 6, mapID = 1456 },
@@ -1698,7 +1672,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 853,
-            NonSkippableWaypoint = true,
             Note = { "GO_INSIDE_CAVE" },
             Coord = { x = 222.96, y = -1079.42 },
             Range = 40,
@@ -1707,7 +1680,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 853,
-            NonSkippableWaypoint = true,
             Note = { "GO_INSIDE_CAVE" },
             Coord = { x = 219.09, y = -1051.44 },
             Range = 10,
@@ -1716,7 +1688,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 853,
-            NonSkippableWaypoint = true,
             Coord = { x = 219.09, y = -1051.44 },
             Range = 6,
             ZoneStepTrigger = { x = 219.09, y = -1051.44, Range = 6, mapID = 1456 },
@@ -1874,7 +1845,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 1489,
-            NonSkippableWaypoint = true,
             Coord = { x = 1, y = -1108.2 },
             Range = 6,
             ZoneStepTrigger = { x = 1, y = -1108.2, Range = 6, mapID = 1456 },
@@ -1885,7 +1855,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 1489,
-            NonSkippableWaypoint = true,
             Coord = { x = -66.5, y = -1089.7 },
             Range = 6,
             ZoneStepTrigger = { x = -66.5, y = -1089.7, Range = 6, mapID = 1456 },
@@ -1896,7 +1865,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 1489,
-            NonSkippableWaypoint = true,
             Coord = { x = -209.4, y = -1044.8 },
             Range = 6,
             ZoneStepTrigger = { x = -209.4, y = -1044.8, Range = 6, mapID = 1456 },
@@ -1907,7 +1875,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 1489,
-            NonSkippableWaypoint = true,
             Coord = { x = -212.71, y = -1065.01 },
             Range = 80,
             Zone = 1456,
@@ -2093,7 +2060,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98341,
-            NonSkippableWaypoint = true,
             Coord = { x = -2352.7, y = 7375.6 },
             Range = 10,
             Class = "DRUID",
@@ -2127,7 +2093,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98342,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_STORMRAGE_BARROW_DENS_CLICK_STATUE_ENTRANCE" },
             Coord = { x = -3046.7, y = 7534.4 },
             Range = 10,
@@ -2172,7 +2137,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98404,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_STORMRAGE_BARROW_DENS_CLICK_STATUE_ENTRANCE" },
             Coord = { x = -3046.7, y = 7534.4 },
             Range = 10,
@@ -2263,7 +2227,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98739,
-            NonSkippableWaypoint = true,
             Coord = { x = -2678.2, y = 8021.5 },
             Range = 10,
             AllOf = { { Race = "Tauren", Class = "DRUID", Faction = "Horde" } },
@@ -2274,7 +2237,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98738,
-            NonSkippableWaypoint = true,
             Coord = { x = -2678.2, y = 8021.5 },
             Range = 10,
             AllOf = { { Race = "Skyborne", Class = "DRUID", Faction = "Horde" } },
@@ -2338,7 +2300,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98362,
-            NonSkippableWaypoint = true,
             Coord = { x = 1, y = -1108.2 },
             Range = 6,
             Class = "DRUID",
@@ -2351,7 +2312,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98362,
-            NonSkippableWaypoint = true,
             Coord = { x = -66.5, y = -1089.7 },
             Range = 6,
             Class = "DRUID",
@@ -2364,7 +2324,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98362,
-            NonSkippableWaypoint = true,
             Coord = { x = -209.4, y = -1044.8 },
             Range = 6,
             Class = "DRUID",
@@ -2387,7 +2346,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 852,
-            NonSkippableWaypoint = true,
             Coord = { x = 1.3, y = -1333.2 },
             Range = 6,
             Class = "HUNTER",
@@ -2398,7 +2356,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 852,
-            NonSkippableWaypoint = true,
             Coord = { x = -63.3, y = -1397.2 },
             Range = 6,
             Class = "HUNTER",
@@ -2409,7 +2366,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 852,
-            NonSkippableWaypoint = true,
             Coord = { x = -123.26, y = -1394.49 },
             Range = 60,
             Class = "HUNTER",
@@ -2438,7 +2394,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 852,
-            NonSkippableWaypoint = true,
             Coord = { x = 1.3, y = -1333.2 },
             Range = 6,
             ZoneStepTrigger = { x = 1.3, y = -1333.2, Range = 6, mapID = 1456 },
@@ -2450,7 +2405,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 852,
-            NonSkippableWaypoint = true,
             Coord = { x = -63.3, y = -1397.2 },
             Range = 6,
             ZoneStepTrigger = { x = -63.3, y = -1397.2, Range = 6, mapID = 1456 },
@@ -2462,7 +2416,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 852,
-            NonSkippableWaypoint = true,
             Coord = { x = -123.26, y = -1394.49 },
             Range = 60,
             Class = "WARRIOR",
@@ -2682,7 +2635,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 95495,
-            NonSkippableWaypoint = true,
             Coord = { x = -1736.9, y = 650.3 },
             Range = 25,
             Zone = 1413,
@@ -2690,7 +2642,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 95495,
-            NonSkippableWaypoint = true,
             Coord = { x = -1741.7, y = 721.4 },
             Range = 25,
             Zone = 1413,
@@ -2698,7 +2649,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 95495,
-            NonSkippableWaypoint = true,
             Coord = { x = -1643.9, y = 786 },
             Range = 25,
             Zone = 1413,
@@ -2706,7 +2656,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 95495,
-            NonSkippableWaypoint = true,
             Coord = { x = -1605.3, y = 818.3 },
             Range = 20,
             Zone = 1413,
@@ -2738,7 +2687,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 95621,
-            NonSkippableWaypoint = true,
             Coord = { x = -1736.9, y = 650.3 },
             Range = 25,
             Zone = 1413,
@@ -2746,7 +2694,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 95621,
-            NonSkippableWaypoint = true,
             Coord = { x = -1741.7, y = 721.4 },
             Range = 25,
             Zone = 1413,
@@ -2754,7 +2701,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 95621,
-            NonSkippableWaypoint = true,
             Coord = { x = -1643.9, y = 786 },
             Range = 25,
             Zone = 1413,
@@ -2762,7 +2708,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 95621,
-            NonSkippableWaypoint = true,
             Coord = { x = -1605.3, y = 818.3 },
             Range = 20,
             Zone = 1413,
@@ -2828,7 +2773,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6544,
-            NonSkippableWaypoint = true,
             Note = { "LET_ESCORT_TAKE_AGGRO_ATTACKING", "CLEAR_BUILDING_RUN_BALCONY_DURIEL_MOONFIRE_COMES" },
             Coord = { x = -2110.61, y = 1809.32 },
             Range = 60,
@@ -2839,7 +2783,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6544,
-            NonSkippableWaypoint = true,
             Note = { "LET_ESCORT_TAKE_AGGRO_ATTACKING", "CLEAR_BUILDING_RUN_BALCONY_DURIEL_MOONFIRE_COMES" },
             Coord = { x = -2052.37, y = 1776.27 },
             Range = 20,
@@ -2850,7 +2793,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6544,
-            NonSkippableWaypoint = true,
             Note = { "LET_ESCORT_TAKE_AGGRO_ATTACKING", "CLEAR_BUILDING_RUN_BALCONY_DURIEL_MOONFIRE_COMES" },
             Coord = { x = -2006.81, y = 1777.42 },
             Range = 10,
@@ -2925,7 +2867,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 876,
-            NonSkippableWaypoint = true,
             Coord = { x = -2595.75, y = -437.35 },
             Range = 15,
             ClassNot = "HUNTER",
@@ -2954,7 +2895,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 1062,
-            NonSkippableWaypoint = true,
             Coord = { x = -950.1, y = -271.14 },
             Range = 15,
             Zone = 1413,
@@ -2962,7 +2902,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 1062,
-            NonSkippableWaypoint = true,
             Coord = { x = -950.1, y = -271.14 },
             Range = 5,
             IsQuestReadyForTurnIn = { 6523, 6629 },
@@ -3014,7 +2953,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 1062,
-            NonSkippableWaypoint = true,
             Coord = { x = -950.1, y = -271.14 },
             Range = 5,
             IsQuestUncompleted = 6629,
@@ -3023,7 +2961,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 1062,
-            NonSkippableWaypoint = true,
             Coord = { x = -950.1, y = -271.14 },
             Range = 5,
             IsQuestUncompleted = 6523,
@@ -3056,7 +2993,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 1060,
-            NonSkippableWaypoint = true,
             Note = { "FOLLOW_PATH_LEFT_UPWARD" },
             Coord = { x = -786.33, y = -294.97 },
             Range = 60,
@@ -3065,7 +3001,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 1060,
-            NonSkippableWaypoint = true,
             Note = { "FOLLOW_PATH_LEFT_UPWARD" },
             Coord = { x = -665.72, y = -280.97 },
             Range = 40,
@@ -3074,7 +3009,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 1060,
-            NonSkippableWaypoint = true,
             Note = { "FOLLOW_PATH_LEFT_UPWARD" },
             Coord = { x = -522.63, y = -294.32 },
             Range = 40,
@@ -3146,7 +3080,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6562,
-            NonSkippableWaypoint = true,
             Coord = { x = 735.8, y = 925.8 },
             Range = 12,
             ZoneStepTrigger = { x = 735.8, y = 925.8, Range = 12, mapID = 1442 },
@@ -3158,7 +3091,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6562,
-            NonSkippableWaypoint = true,
             Coord = { x = 806.12, y = 929.05 },
             Range = 12,
             ZoneStepTrigger = { x = 806.12, y = 929.05, Range = 12, mapID = 1442 },
@@ -3170,7 +3102,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6562,
-            NonSkippableWaypoint = true,
             Coord = { x = 834.44, y = 908.21 },
             Range = 12,
             ZoneStepTrigger = { x = 834.44, y = 908.21, Range = 12, mapID = 1442 },
@@ -3182,7 +3113,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6562,
-            NonSkippableWaypoint = true,
             Coord = { x = 856.91, y = 874.67 },
             Range = 12,
             ZoneStepTrigger = { x = 856.91, y = 874.67, Range = 12, mapID = 1442 },
@@ -3194,7 +3124,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6562,
-            NonSkippableWaypoint = true,
             Coord = { x = 896.46, y = 836.57 },
             Range = 12,
             ZoneStepTrigger = { x = 896.46, y = 836.57, Range = 12, mapID = 1442 },
@@ -3206,7 +3135,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6562,
-            NonSkippableWaypoint = true,
             Coord = { x = 940.41, y = 831.04 },
             Range = 12,
             ZoneStepTrigger = { x = 940.41, y = 831.04, Range = 12, mapID = 1442 },
@@ -3218,7 +3146,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6284,
-            NonSkippableWaypoint = true,
             Coord = { x = 834.44, y = 908.21 },
             Range = 30,
             Zone = 1442,
@@ -3226,7 +3153,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6284,
-            NonSkippableWaypoint = true,
             Coord = { x = 856.91, y = 874.67 },
             Range = 30,
             Zone = 1442,
@@ -3234,7 +3160,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6284,
-            NonSkippableWaypoint = true,
             Coord = { x = 896.46, y = 836.57 },
             Range = 30,
             Zone = 1442,
@@ -3242,7 +3167,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6284,
-            NonSkippableWaypoint = true,
             Coord = { x = 940.41, y = 831.04 },
             Range = 30,
             Zone = 1442,
@@ -3376,7 +3300,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -588, y = 1510 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3385,7 +3308,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -576, y = 1508 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3394,7 +3316,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -566, y = 1516 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3403,7 +3324,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_TUNNEL" },
             Coord = { x = -577.33, y = 1532.43 },
             Range = 30,
@@ -3412,7 +3332,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -580, y = 1540 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3421,7 +3340,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -578, y = 1548 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3430,7 +3348,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -586, y = 1574 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3439,7 +3356,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -573, y = 1585 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3448,7 +3364,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -574, y = 1598 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3457,7 +3372,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -606, y = 1610 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3466,7 +3380,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -602, y = 1632 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3475,7 +3388,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -606, y = 1660 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3484,7 +3396,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -634, y = 1676 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3493,7 +3404,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -636, y = 1696 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3502,7 +3412,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -654, y = 1712 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3511,7 +3420,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -662, y = 1712 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3520,7 +3428,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -680, y = 1748 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3529,7 +3436,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -668, y = 1786 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3538,7 +3444,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -680, y = 1822 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3547,7 +3452,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -692, y = 1832 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3556,7 +3460,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -716, y = 1832 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3565,7 +3468,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -738, y = 1868 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3574,7 +3476,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -714, y = 1894 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3583,7 +3484,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -746, y = 1944 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3592,7 +3492,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -730, y = 1948 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3601,7 +3500,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 98251,
-            NonSkippableWaypoint = true,
             Coord = { x = -733, y = 2043 },
             Range = 3,
             IsQuestUncompleted = 98251,
@@ -3653,7 +3551,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6562,
-            NonSkippableWaypoint = true,
             Note = { "AVOID_HOSTILE_GUARDS" },
             Coord = { x = -268.74, y = 2612.28 },
             Range = 50,
@@ -3662,7 +3559,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6562,
-            NonSkippableWaypoint = true,
             Note = { "AVOID_HOSTILE_GUARDS" },
             Coord = { x = 637.2, y = 3406.79 },
             Range = 50,
@@ -3671,7 +3567,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6562,
-            NonSkippableWaypoint = true,
             Note = { "AVOID_HOSTILE_GUARDS" },
             Coord = { x = 1010.31, y = 3355.28 },
             Range = 80,
@@ -3695,7 +3590,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6562,
-            NonSkippableWaypoint = true,
             Coord = { x = 1033.37, y = 3354.89 },
             Range = 5,
             Zone = 1440,
@@ -3710,7 +3604,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6562,
-            NonSkippableWaypoint = true,
             Coord = { x = 1028.18, y = 3333.37 },
             Range = 5,
             Zone = 1440,
@@ -3771,7 +3664,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 6641,
-            NonSkippableWaypoint = true,
             Coord = { x = 995.31, y = 3357.97 },
             Range = 5,
             Zone = 1440,
@@ -3808,7 +3700,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 1063,
-            NonSkippableWaypoint = true,
             Coord = { x = 1, y = -1108.2 },
             Range = 6,
             ZoneStepTrigger = { x = 1, y = -1108.2, Range = 6, mapID = 1456 },
@@ -3819,7 +3710,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 1063,
-            NonSkippableWaypoint = true,
             Coord = { x = -66.5, y = -1089.7 },
             Range = 6,
             ZoneStepTrigger = { x = -66.5, y = -1089.7, Range = 6, mapID = 1456 },
@@ -3830,7 +3720,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 1063,
-            NonSkippableWaypoint = true,
             Coord = { x = -209.4, y = -1044.8 },
             Range = 6,
             ZoneStepTrigger = { x = -209.4, y = -1044.8, Range = 6, mapID = 1456 },
@@ -3841,7 +3730,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 1063,
-            NonSkippableWaypoint = true,
             Coord = { x = -212.71, y = -1065.01 },
             Range = 80,
             Zone = 1456,
@@ -3867,7 +3755,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 1064,
-            NonSkippableWaypoint = true,
             Note = { "GO_INSIDE_CAVE" },
             Coord = { x = 219.09, y = -1051.44 },
             Range = 10,
@@ -4299,7 +4186,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 2458,
-            NonSkippableWaypoint = true,
             Coord = { x = -4048.36, y = 1697.85 },
             Range = 80,
             Class = "ROGUE",
@@ -4310,7 +4196,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 1065,
-            NonSkippableWaypoint = true,
             Coord = { x = -4048.36, y = 1697.85 },
             Range = 15,
             Class = "DRUID",
@@ -4322,7 +4207,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 2458,
-            NonSkippableWaypoint = true,
             Coord = { x = -3900.25, y = 1681.48 },
             Range = 30,
             Class = "ROGUE",
@@ -4333,7 +4217,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 1065,
-            NonSkippableWaypoint = true,
             Coord = { x = -3900.25, y = 1681.48 },
             Range = 15,
             Class = "DRUID",
@@ -4345,7 +4228,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 2458,
-            NonSkippableWaypoint = true,
             Coord = { x = -3933.49, y = 1707.86 },
             Range = 50,
             Class = "ROGUE",
@@ -4356,7 +4238,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 1065,
-            NonSkippableWaypoint = true,
             Coord = { x = -3933.49, y = 1707.86 },
             Range = 15,
             Class = "DRUID",
@@ -4368,7 +4249,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 2458,
-            NonSkippableWaypoint = true,
             Coord = { x = -3216.92, y = 1107.13 },
             Range = 120,
             Class = "ROGUE",
@@ -4377,7 +4257,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 1065,
-            NonSkippableWaypoint = true,
             Coord = { x = -3216.92, y = 1107.13 },
             Range = 15,
             Class = "DRUID",
@@ -4470,7 +4349,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 2478,
-            NonSkippableWaypoint = true,
             Coord = { x = -3839.37, y = 1644.65 },
             Range = 10,
             ZoneStepTrigger = { x = -3839.37, y = 1644.65, Range = 25, mapID = 1454 },
@@ -4481,7 +4359,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             Waypoint = 1065,
-            NonSkippableWaypoint = true,
             Coord = { x = -3839.37, y = 1644.65 },
             Range = 10,
             ZoneStepTrigger = { x = -3839.37, y = 1644.65, Range = 25, mapID = 1454 },

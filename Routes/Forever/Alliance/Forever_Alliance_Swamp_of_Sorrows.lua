@@ -66,7 +66,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1363,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = { x = 988.44, y = -8942.15 },
             Range = 20.0,
@@ -76,7 +75,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1363,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = { x = 1015.33, y = -8978.9 },
             Range = 15.0,
@@ -94,7 +92,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1363,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 25.665, 77.649),
             Range = 5,
@@ -111,7 +108,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1363,
-            NonSkippableWaypoint = true,
             Coord = { x = 833.72, y = -8841.76 },
             Range = 20,
             Zone = 1453,
@@ -139,7 +135,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 228,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 42.51, 33.51),
             Range = 20.0,
             Class = { "PALADIN", "PRIEST" },
@@ -148,7 +143,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 228,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 38.82, 31.27),
             Range = 10.0,
             Class = "PALADIN",
@@ -179,7 +173,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 228,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 76.08, 50.14),
             Range = 15.0,
             Class = "WARRIOR",
@@ -188,7 +181,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 228,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 80.22, 45.37),
             Range = 15.0,
             Class = "WARRIOR",
@@ -265,7 +257,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1396,
-            NonSkippableWaypoint = true,
             Coord = { x = -1378.1, y = -10538.5 },
             Range = 10,
             ZoneStepTrigger = { x = -1378.1, y = -10538.5, Range = 10, mapID = 1431 },
@@ -276,7 +267,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1396,
-            NonSkippableWaypoint = true,
             Coord = { x = -1467.7, y = -10446.9 },
             Range = 10,
             ZoneStepTrigger = { x = -1467.7, y = -10446.9, Range = 10, mapID = 1431 },
@@ -287,7 +277,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1396,
-            NonSkippableWaypoint = true,
             Coord = { x = -1589.92, y = -10460.25 },
             Range = 20,
             ZoneStepTrigger = { x = -1589.92, y = -10460.25, Range = 20, mapID = 1431 },
@@ -298,7 +287,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1396,
-            NonSkippableWaypoint = true,
             Coord = { x = -1809.1, y = -10427.6 },
             Range = 10,
             ZoneStepTrigger = { x = -1809.1, y = -10427.6, Range = 10, mapID = 1430 },
@@ -309,7 +297,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1396,
-            NonSkippableWaypoint = true,
             Coord = { x = -2022.8, y = -10434.9 },
             Range = 8,
             ZoneStepTrigger = { x = -2022.8, y = -10434.9, Range = 8, mapID = 1430 },
@@ -320,7 +307,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1396,
-            NonSkippableWaypoint = true,
             Coord = { x = -2141.4, y = -10590.1 },
             Range = 10,
             ZoneStepTrigger = { x = -2141.4, y = -10590.1, Range = 10, mapID = 1430 },
@@ -331,7 +317,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1396,
-            NonSkippableWaypoint = true,
             Coord = { x = -2374.07, y = -10541.24 },
             Range = 5,
             ZoneStepTrigger = { x = -2374.07, y = -10541.24, Range = 5, mapID = 1435 },
@@ -343,7 +328,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1392,
-            NonSkippableWaypoint = true,
             Coord = { x = -2374.07, y = -10541.24 },
             Range = 5,
             Zone = 1435,
@@ -356,7 +340,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1396,
-            NonSkippableWaypoint = true,
             Coord = { x = -2432.3, y = -10382.3 },
             Range = 10,
             ZoneStepTrigger = { x = -2432.3, y = -10382.3, Range = 10, mapID = 1435 },
@@ -443,7 +426,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1393,
-            NonSkippableWaypoint = true,
             Coord = { x = -3537.01, y = -10090.75 },
             Range = 20,
             Zone = 1435,
@@ -539,7 +521,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1448,
-            NonSkippableWaypoint = true,
             Coord = { x = -2432.3, y = -10382.3 },
             Range = 10,
             ZoneStepTrigger = { x = -2432.3, y = -10382.3, Range = 10, mapID = 1435 },
@@ -551,7 +532,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1116,
-            NonSkippableWaypoint = true,
             Coord = { x = -2374.07, y = -10541.24 },
             Range = 20,
             ZoneStepTrigger = { x = -2374.07, y = -10541.24, Range = 20, mapID = 1435 },
@@ -564,7 +544,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1448,
-            NonSkippableWaypoint = true,
             Coord = { x = -2374.07, y = -10541.24 },
             Range = 20,
             SkipInZones = { 1434, 1453 },
@@ -573,7 +552,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1448,
-            NonSkippableWaypoint = true,
             Coord = { x = -2141.4, y = -10590.1 },
             Range = 10,
             ZoneStepTrigger = { x = -2141.4, y = -10590.1, Range = 10, mapID = 1430 },
@@ -585,7 +563,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1448,
-            NonSkippableWaypoint = true,
             Coord = { x = -2022.8, y = -10434.9 },
             Range = 8,
             ZoneStepTrigger = { x = -2022.8, y = -10434.9, Range = 8, mapID = 1430 },
@@ -597,7 +574,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1448,
-            NonSkippableWaypoint = true,
             Coord = { x = -1809.1, y = -10427.6 },
             Range = 10,
             ZoneStepTrigger = { x = -1809.1, y = -10427.6, Range = 10, mapID = 1430 },
@@ -609,7 +585,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1116,
-            NonSkippableWaypoint = true,
             Coord = { x = -1589.92, y = -10460.25 },
             Range = 20,
             ZoneStepTrigger = { x = -1589.92, y = -10460.25, Range = 20, mapID = 1431 },
@@ -622,7 +597,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1448,
-            NonSkippableWaypoint = true,
             Coord = { x = -1589.92, y = -10460.25 },
             Range = 20,
             SkipInZones = { 1434, 1453 },
@@ -631,7 +605,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1448,
-            NonSkippableWaypoint = true,
             Coord = { x = -1467.7, y = -10446.9 },
             Range = 10,
             ZoneStepTrigger = { x = -1467.7, y = -10446.9, Range = 10, mapID = 1431 },
@@ -643,7 +616,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1448,
-            NonSkippableWaypoint = true,
             Coord = { x = -1378.1, y = -10538.5 },
             Range = 10,
             ZoneStepTrigger = { x = -1378.1, y = -10538.5, Range = 10, mapID = 1431 },
@@ -786,7 +758,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1448,
-            NonSkippableWaypoint = true,
             Coord = { x = 786.67, y = -8906.57 },
             Range = 20,
             Class = "PRIEST",
@@ -807,7 +778,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1448,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 42.51, 33.51),
             Range = 20.0,
             Class = { "PALADIN", "PRIEST" },
@@ -816,7 +786,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1448,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 38.82, 31.27),
             Range = 10.0,
             Class = "PALADIN",
@@ -841,7 +810,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1448,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 76.08, 50.14),
             Range = 15.0,
             Class = "WARRIOR",
@@ -850,7 +818,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1448,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 80.22, 45.37),
             Range = 15.0,
             Class = "WARRIOR",
@@ -918,7 +885,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 1457,
-            NonSkippableWaypoint = true,
             Coord = { x = -1250.5, y = -4661.57 },
             Range = 20,
             IsQuestOnQuest = 1457,
@@ -941,7 +907,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 690,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = { x = -1134.2, y = -4610.39 },
             Range = 15.0,
@@ -951,7 +916,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         },
         {
             Waypoint = 690,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = { x = -1130.26, y = -4601.27 },
             Range = 5,

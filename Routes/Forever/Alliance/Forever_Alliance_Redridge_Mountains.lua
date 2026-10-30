@@ -104,7 +104,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 399,
-            NonSkippableWaypoint = true,
             Coord = { x = 874.32, y = -9014.67 },
             Range = 10.0,
             Class = "MAGE",
@@ -122,7 +121,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 399,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = { x = 988.44, y = -8942.15 },
             Range = 20.0,
@@ -133,7 +131,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 399,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = { x = 1015.33, y = -8978.9 },
             Range = 15.0,
@@ -152,7 +149,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 399,
-            NonSkippableWaypoint = true,
             Coord = { x = 807.64, y = -8880.84 },
             Range = 14.0,
             Class = { "PRIEST", "WARLOCK" },
@@ -173,7 +169,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 399,
-            NonSkippableWaypoint = true,
             Coord = { x = 809.52, y = -8579.22 },
             Range = 20.0,
             AnyOf = { { Class = "PRIEST" }, { Class = { "PALADIN", "PRIEST" }, Race = "Dwarf" } },
@@ -182,7 +177,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 1780,
-            NonSkippableWaypoint = true,
             Coord = { x = 809.52, y = -8579.22 },
             Range = 20.0,
             Class = "PALADIN",
@@ -192,7 +186,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 1780,
-            NonSkippableWaypoint = true,
             Coord = { x = 859.13, y = -8559.14 },
             Range = 10.0,
             Class = "PALADIN",
@@ -202,7 +195,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 399,
-            NonSkippableWaypoint = true,
             Coord = { x = 859.13, y = -8559.14 },
             Range = 10.0,
             Class = "PALADIN",
@@ -299,7 +291,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 97220,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = 374.11, y = -8762.88 },
             Range = 20.0,
@@ -309,7 +300,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 97220,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = 326.66, y = -8818.01 },
             Range = 20.0,
@@ -319,7 +309,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 97220,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = 323.43, y = -8817.83 },
             Range = 5.0,
@@ -336,7 +325,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 97220,
-            NonSkippableWaypoint = true,
             Coord = { x = 358.25, y = -8728.28 },
             Range = 15.0,
             Class = "WARRIOR",
@@ -345,7 +333,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 97220,
-            NonSkippableWaypoint = true,
             Coord = { x = 302.6, y = -8685.53 },
             Range = 15.0,
             Class = "WARRIOR",
@@ -469,7 +456,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 244,
-            NonSkippableWaypoint = true,
             Coord = { x = 389.8, y = -9119.9 },
             Range = 5,
             ZoneStepTrigger = { x = 389.8, y = -9119.9, Range = 5, mapID = 1429 },
@@ -480,7 +466,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 244,
-            NonSkippableWaypoint = true,
             Coord = { x = -1948.56, y = -9582.75 },
             Range = 5,
             ZoneStepTrigger = { x = -1948.56, y = -9582.75, Range = 5, mapID = 1433 },
@@ -549,7 +534,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 120,
-            NonSkippableWaypoint = true,
             Coord = { x = -2210.5, y = -9258.7 },
             Range = 8,
             IsQuestNotOnQuest = 120,
@@ -559,7 +543,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 120,
-            NonSkippableWaypoint = true,
             Coord = { x = -2210.5, y = -9230.7 },
             Range = 6,
             IsQuestNotOnQuest = 120,
@@ -588,7 +571,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 65,
-            NonSkippableWaypoint = true,
             Coord = { x = -2164.56, y = -9213.1 },
             Range = 8.0,
             IsQuestOnQuest = 65,
@@ -717,7 +699,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 20,
-            NonSkippableWaypoint = true,
             Fillers = { [246] = { 1, 2 }, [92] = { 1 } },
             Coord = { x = -2031.48, y = -9556.25 },
             Range = 20,
@@ -727,7 +708,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 20,
-            NonSkippableWaypoint = true,
             Fillers = { [246] = { 1, 2 }, [92] = { 1 }, [98407] = { 1 } },
             Coord = { x = -2031.48, y = -9556.25 },
             Range = 20,
@@ -737,7 +717,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 20,
-            NonSkippableWaypoint = true,
             Fillers = { [246] = { 1, 2 }, [92] = { 1 } },
             Coord = { x = -1955.07, y = -9637.63 },
             Range = 20,
@@ -747,7 +726,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 20,
-            NonSkippableWaypoint = true,
             Fillers = { [246] = { 1, 2 }, [92] = { 1 }, [98407] = { 1 } },
             Coord = { x = -1955.07, y = -9637.63 },
             Range = 20,
@@ -757,7 +735,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 20,
-            NonSkippableWaypoint = true,
             Fillers = { [246] = { 1, 2 }, [92] = { 1 } },
             Coord = { x = -1813.97, y = -9679.9 },
             Range = 20,
@@ -767,7 +744,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 20,
-            NonSkippableWaypoint = true,
             Fillers = { [246] = { 1, 2 }, [92] = { 1 }, [98407] = { 1 } },
             Coord = { x = -1813.97, y = -9679.9 },
             Range = 20,
@@ -777,7 +753,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 20,
-            NonSkippableWaypoint = true,
             Fillers = { [246] = { 1, 2 }, [92] = { 1 } },
             Coord = { x = -1861.07, y = -9754.76 },
             Range = 20,
@@ -787,7 +762,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 20,
-            NonSkippableWaypoint = true,
             Fillers = { [246] = { 1, 2 }, [92] = { 1 }, [98407] = { 1 } },
             Coord = { x = -1861.07, y = -9754.76 },
             Range = 20,
@@ -908,7 +882,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 20,
-            NonSkippableWaypoint = true,
             Coord = { x = -2298.06, y = -9284.04 },
             Range = 20,
             Zone = 1433,
@@ -947,7 +920,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 95999,
-            NonSkippableWaypoint = true,
             Coord = { x = -2210.5, y = -9258.7 },
             Range = 8,
             IsQuestOnQuest = 95999,
@@ -959,7 +931,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 95999,
-            NonSkippableWaypoint = true,
             Coord = { x = -2207.1, y = -9231.34 },
             Range = 15,
             IsQuestOnQuest = 95999,
@@ -1195,7 +1166,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 98341,
-            NonSkippableWaypoint = true,
             Coord = { x = -2352.7, y = 7375.6 },
             Range = 10,
             RaidIcon = 272054,
@@ -1227,7 +1197,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 98396,
-            NonSkippableWaypoint = true,
             Coord = { x = -3046.7, y = 7534.4 },
             Range = 5,
             Class = "DRUID",
@@ -1238,7 +1207,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 98404,
-            NonSkippableWaypoint = true,
             Coord = { x = -3046.7, y = 7534.4 },
             Range = 5,
             Class = "DRUID",
@@ -1511,7 +1479,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 120,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = { x = 988.44, y = -8942.15 },
             Range = 20.0,
@@ -1522,7 +1489,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 120,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = { x = 1015.33, y = -8978.9 },
             Range = 15.0,
@@ -1549,7 +1515,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 120,
-            NonSkippableWaypoint = true,
             Coord = { x = 874.32, y = -9014.67 },
             Range = 10.0,
             Class = "MAGE",
@@ -1582,7 +1547,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 120,
-            NonSkippableWaypoint = true,
             Coord = { x = 809.52, y = -8579.22 },
             Range = 20.0,
             Class = "PRIEST",
@@ -1591,7 +1555,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 1649,
-            NonSkippableWaypoint = true,
             Coord = { x = 809.52, y = -8579.22 },
             Range = 20.0,
             Class = "PALADIN",
@@ -1636,7 +1599,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 120,
-            NonSkippableWaypoint = true,
             Coord = { x = 859.13, y = -8559.14 },
             Range = 10.0,
             Class = "PALADIN",
@@ -1669,7 +1631,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2360,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = 374.11, y = -8762.88 },
             Range = 20.0,
@@ -1679,7 +1640,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2360,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = 326.66, y = -8818.01 },
             Range = 20.0,
@@ -1689,7 +1649,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2360,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = 323.43, y = -8817.83 },
             Range = 5.0,
@@ -1706,7 +1665,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 120,
-            NonSkippableWaypoint = true,
             Coord = { x = 358.25, y = -8728.28 },
             Range = 15.0,
             Class = "WARRIOR",
@@ -1715,7 +1673,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 120,
-            NonSkippableWaypoint = true,
             Coord = { x = 302.6, y = -8685.53 },
             Range = 15.0,
             Class = "WARRIOR",
@@ -1731,7 +1688,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2360,
-            NonSkippableWaypoint = true,
             Coord = { x = 1037.42, y = -10628.27 },
             Range = 5,
             Class = "ROGUE",
@@ -1762,7 +1718,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2360,
-            NonSkippableWaypoint = true,
             Coord = { x = 1037.42, y = -10628.27 },
             Range = 20,
             Class = "ROGUE",
@@ -1783,7 +1738,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2360,
-            NonSkippableWaypoint = true,
             Note = { "SAVE_ONE_SMALL_VENOM_SAC_ANTI_VENOM", "KEEP_GOOEY_SPIDER_LEGS", "ASK_PALADIN_DRUID_REMOVE_POISON_POSSIBLE" },
             Coord = { x = 404.03, y = -11014.47 },
             Range = 20,
@@ -1795,7 +1749,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2360,
-            NonSkippableWaypoint = true,
             Note = { "SAVE_ONE_SMALL_VENOM_SAC_ANTI_VENOM", "KEEP_GOOEY_SPIDER_LEGS", "ASK_PALADIN_DRUID_REMOVE_POISON_POSSIBLE" },
             Coord = { x = 432.11, y = -10878.75 },
             Range = 20,
@@ -1902,7 +1855,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 42.938, 33.878),
             Range = 20.0,
             Class = "ROGUE",
@@ -1913,7 +1865,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 41.544, 31.33),
             Range = 20.0,
             Class = "ROGUE",
@@ -1924,7 +1875,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 41.688, 28.049),
             Range = 20.0,
             Class = "ROGUE",
@@ -1935,7 +1885,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 43.07, 26.155),
             Range = 15.0,
             Class = "ROGUE",
@@ -1991,7 +1940,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = 374.11, y = -8762.88 },
             Range = 20.0,
@@ -2001,7 +1949,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = 326.66, y = -8818.01 },
             Range = 20.0,
@@ -2011,7 +1958,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = 323.43, y = -8817.83 },
             Range = 10.0,
@@ -2041,7 +1987,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 118,
-            NonSkippableWaypoint = true,
             Coord = { x = 84.61, y = -9457.95 },
             Range = 20,
             Zone = 1429,
@@ -2061,7 +2006,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 119,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = { x = -727.57, y = -9555.16 },
             Range = 20,
@@ -2077,7 +2021,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 119,
-            NonSkippableWaypoint = true,
             Coord = { x = -1716.28, y = -9623.29 },
             Range = 20,
             SkipInZones = { 1433 },
@@ -2098,7 +2041,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 121,
-            NonSkippableWaypoint = true,
             Coord = { x = -2210.5, y = -9258.7 },
             Range = 8,
             IsQuestOnQuest = 121,
@@ -2107,7 +2049,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 121,
-            NonSkippableWaypoint = true,
             Coord = { x = -2207.1, y = -9231.34 },
             Range = 15.0,
             Zone = 1433,
@@ -2153,7 +2094,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 92,
-            NonSkippableWaypoint = true,
             Fillers = { [122] = { 1 } },
             Coord = { x = -1912.31, y = -9339.93 },
             Range = 20,
@@ -2163,7 +2103,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 92,
-            NonSkippableWaypoint = true,
             Fillers = { [122] = { 1 } },
             Coord = { x = -2270.93, y = -9591.44 },
             Range = 20,
@@ -2173,7 +2112,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 92,
-            NonSkippableWaypoint = true,
             Fillers = { [122] = { 1 } },
             Coord = { x = -2244.23, y = -9619.53 },
             Range = 20,
@@ -2200,7 +2138,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 122,
-            NonSkippableWaypoint = true,
             Coord = { x = -2514.49, y = -9033.7 },
             Range = 20,
             Zone = 1433,
@@ -2208,7 +2145,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 122,
-            NonSkippableWaypoint = true,
             Coord = { x = -2580.7, y = -9091.33 },
             Range = 20,
             Zone = 1433,
@@ -2216,7 +2152,6 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Waypoint = 122,
-            NonSkippableWaypoint = true,
             Coord = { x = -2321.07, y = -9527.58 },
             Range = 20,
             Zone = 1433,

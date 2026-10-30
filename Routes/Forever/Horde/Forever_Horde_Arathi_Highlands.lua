@@ -88,7 +88,6 @@ APR.RouteQuestStepList["Forever-Horde-Arathi-Highlands"] = {
     steps = {
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 47.2, 59.69),
             Range = 12.0,
             Zone = 1458,
@@ -96,7 +95,6 @@ APR.RouteQuestStepList["Forever-Horde-Arathi-Highlands"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 43.55, 68.11),
             Range = 12.0,
             Zone = 1458,
@@ -104,7 +102,6 @@ APR.RouteQuestStepList["Forever-Horde-Arathi-Highlands"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 45.2, 71.67),
             Range = 12.0,
             Zone = 1458,
@@ -130,7 +127,6 @@ APR.RouteQuestStepList["Forever-Horde-Arathi-Highlands"] = {
         },
         {
             Waypoint = 238,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 47.2, 59.69),
             Range = 12.0,
             Zone = 1458,
@@ -138,7 +134,6 @@ APR.RouteQuestStepList["Forever-Horde-Arathi-Highlands"] = {
         },
         {
             Waypoint = 238,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 43.55, 68.11),
             Range = 12.0,
             Zone = 1458,
@@ -146,7 +141,6 @@ APR.RouteQuestStepList["Forever-Horde-Arathi-Highlands"] = {
         },
         {
             Waypoint = 238,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 45.2, 71.67),
             Range = 12.0,
             Zone = 1458,
@@ -341,7 +335,6 @@ APR.RouteQuestStepList["Forever-Horde-Arathi-Highlands"] = {
         },
         {
             Waypoint = 557,
-            NonSkippableWaypoint = true,
             Note = { "AVOID_REFUGE_POINT_SOUTHSHORE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 87.691, 48.166),
             Range = 15,
@@ -352,7 +345,6 @@ APR.RouteQuestStepList["Forever-Horde-Arathi-Highlands"] = {
         },
         {
             Waypoint = 557,
-            NonSkippableWaypoint = true,
             Note = { "AVOID_REFUGE_POINT_SOUTHSHORE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 61.6, 20.86),
             Range = 15,
@@ -631,7 +623,6 @@ APR.RouteQuestStepList["Forever-Horde-Arathi-Highlands"] = {
         },
         {
             Waypoint = 507,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1416, 23.26, 50.44),
             Range = 20,
             IsQuestCompleted = 506,
@@ -642,7 +633,6 @@ APR.RouteQuestStepList["Forever-Horde-Arathi-Highlands"] = {
         },
         {
             Waypoint = 507,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1416, 36.91, 22.68),
             Range = 20,
             IsQuestCompleted = 506,
@@ -772,7 +762,6 @@ APR.RouteQuestStepList["Forever-Horde-Arathi-Highlands"] = {
         },
         {
             Waypoint = 642,
-            NonSkippableWaypoint = true,
             Note = { "GO_INSIDE_CAVE", "BACK_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 82.66, 36.16),
             Range = 15,
@@ -802,7 +791,6 @@ APR.RouteQuestStepList["Forever-Horde-Arathi-Highlands"] = {
         },
         {
             Waypoint = 651,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 82.69, 36.21),
             Range = 15,
@@ -1053,7 +1041,6 @@ APR.RouteQuestStepList["Forever-Horde-Arathi-Highlands"] = {
         },
         {
             Waypoint = 663,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 21.6, 75.6),
             Range = 20,
@@ -1062,7 +1049,6 @@ APR.RouteQuestStepList["Forever-Horde-Arathi-Highlands"] = {
         },
         {
             Waypoint = 663,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 22.1, 79.9),
             Range = 20,
@@ -1089,7 +1075,6 @@ APR.RouteQuestStepList["Forever-Horde-Arathi-Highlands"] = {
         },
         {
             Waypoint = 664,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 34, 80.79),
             Range = 5,
             Zone = 1417,

@@ -76,7 +76,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4809,
-            NonSkippableWaypoint = true,
             Coord = { x = 439.08, y = 1627.02 },
             Range = 15,
             ZoneStepTrigger = { x = 439.08, y = 1627.02, Range = 15, mapID = 1458 },
@@ -86,7 +85,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4809,
-            NonSkippableWaypoint = true,
             Coord = { x = 476.49, y = 1632.15 },
             Range = 15,
             ZoneStepTrigger = { x = 476.49, y = 1632.15, Range = 15, mapID = 1458 },
@@ -96,7 +94,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4809,
-            NonSkippableWaypoint = true,
             Coord = { x = 481.48, y = 1659.8 },
             Range = 15,
             ZoneStepTrigger = { x = 481.48, y = 1659.8, Range = 15, mapID = 1458 },
@@ -106,7 +103,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4809,
-            NonSkippableWaypoint = true,
             Coord = { x = 539.52, y = 1665.17 },
             Range = 15,
             ZoneStepTrigger = { x = 539.52, y = 1665.17, Range = 15, mapID = 1458 },
@@ -116,7 +112,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4809,
-            NonSkippableWaypoint = true,
             Coord = { x = 634.02, y = 1669.66 },
             Range = 15,
             ZoneStepTrigger = { x = 634.02, y = 1669.66, Range = 15, mapID = 1458 },
@@ -126,7 +121,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4809,
-            NonSkippableWaypoint = true,
             Coord = { x = 652.73, y = 1623.44 },
             Range = 15,
             ZoneStepTrigger = { x = 652.73, y = 1623.44, Range = 15, mapID = 1458 },
@@ -136,7 +130,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4809,
-            NonSkippableWaypoint = true,
             Coord = { x = 714.8, y = 1604.24 },
             Range = 15,
             ZoneStepTrigger = { x = 714.8, y = 1604.24, Range = 15, mapID = 1458 },
@@ -155,7 +148,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4809,
-            NonSkippableWaypoint = true,
             Coord = { x = -4370, y = 1382.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4370, y = 1382.2, Range = 15, mapID = 1411 },
@@ -165,7 +157,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4809,
-            NonSkippableWaypoint = true,
             Coord = { x = -4363.9, y = 1420.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4363.9, y = 1420.2, Range = 15, mapID = 1454 },
@@ -175,7 +166,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4809,
-            NonSkippableWaypoint = true,
             Coord = { x = -4412.5, y = 1436.4 },
             Range = 15,
             ZoneStepTrigger = { x = -4412.5, y = 1436.4, Range = 15, mapID = 1454 },
@@ -185,7 +175,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4809,
-            NonSkippableWaypoint = true,
             Coord = { x = -4417.1, y = 1480.6 },
             Range = 15,
             ZoneStepTrigger = { x = -4417.1, y = 1480.6, Range = 15, mapID = 1454 },
@@ -259,7 +248,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4809,
-            NonSkippableWaypoint = true,
             Coord = { x = -4420.47, y = 7283.73 },
             Range = 20,
             Class = "HUNTER",
@@ -325,7 +313,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 5121,
-            NonSkippableWaypoint = true,
             Coord = { x = -5228, y = 6717 },
             Range = 6,
             ZoneStepTrigger = { x = -5228, y = 6717, Range = 6, mapID = 1452 },
@@ -487,7 +474,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 5121,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 31.3, 45.2),
             Range = 20,
             Zone = 1452,
@@ -539,7 +525,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2293, y = 6886 },
             Range = 8,
             ZoneStepTrigger = { x = -2293, y = 6886, Range = 8 },
@@ -551,7 +536,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2295, y = 6906 },
             Range = 6,
             ZoneStepTrigger = { x = -2295, y = 6906, Range = 6 },
@@ -563,7 +547,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6940 },
             Range = 6,
             ZoneStepTrigger = { x = -2261, y = 6940, Range = 6 },
@@ -575,7 +558,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_TUNNEL_TAKE_NORTH_EXIT_MOONGLADE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 27.4, 33.64),
             Range = 20,
@@ -585,7 +567,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2257, y = 6970 },
             Range = 6,
             ZoneStepTrigger = { x = -2257, y = 6970, Range = 6 },
@@ -597,7 +578,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2209, y = 6990 },
             Range = 4,
             ZoneStepTrigger = { x = -2209, y = 6990, Range = 4 },
@@ -609,7 +589,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2191, y = 6998 },
             Range = 6,
             ZoneStepTrigger = { x = -2191, y = 6998, Range = 6 },
@@ -621,7 +600,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2183, y = 7016 },
             Range = 5,
             ZoneStepTrigger = { x = -2183, y = 7016, Range = 5 },
@@ -633,7 +611,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2169, y = 7024 },
             Range = 5,
             ZoneStepTrigger = { x = -2169, y = 7024, Range = 5 },
@@ -645,7 +622,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2155, y = 7022 },
             Range = 4,
             ZoneStepTrigger = { x = -2155, y = 7022, Range = 4 },
@@ -657,7 +633,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_TUNNEL_TAKE_NORTH_EXIT_MOONGLADE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 25.7, 31.93),
             Range = 20,
@@ -667,7 +642,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2155, y = 7022 },
             Range = 4,
             ZoneStepTrigger = { x = -2155, y = 7022, Range = 4 },
@@ -679,7 +653,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2155, y = 7012 },
             Range = 3,
             ZoneStepTrigger = { x = -2155, y = 7012, Range = 3 },
@@ -691,7 +664,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2151, y = 7000 },
             Range = 4,
             ZoneStepTrigger = { x = -2151, y = 7000, Range = 4 },
@@ -703,7 +675,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2137, y = 6996 },
             Range = 4,
             ZoneStepTrigger = { x = -2137, y = 6996, Range = 4 },
@@ -715,7 +686,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2127, y = 7004 },
             Range = 4,
             ZoneStepTrigger = { x = -2127, y = 7004, Range = 4 },
@@ -727,7 +697,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2129, y = 7014 },
             Range = 4,
             ZoneStepTrigger = { x = -2129, y = 7014, Range = 4 },
@@ -739,7 +708,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2119, y = 7020 },
             Range = 4,
             ZoneStepTrigger = { x = -2119, y = 7020, Range = 4 },
@@ -751,7 +719,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2115, y = 7040 },
             Range = 5,
             ZoneStepTrigger = { x = -2115, y = 7040, Range = 5 },
@@ -763,7 +730,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_TUNNEL_TAKE_NORTH_EXIT_MOONGLADE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 25.35, 31.36),
             Range = 20,
@@ -773,7 +739,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2119, y = 7090 },
             Range = 5,
             ZoneStepTrigger = { x = -2119, y = 7090, Range = 5 },
@@ -785,7 +750,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2126, y = 7098 },
             Range = 4,
             ZoneStepTrigger = { x = -2126, y = 7098, Range = 4 },
@@ -797,7 +761,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2155, y = 7108 },
             Range = 5,
             ZoneStepTrigger = { x = -2155, y = 7108, Range = 5 },
@@ -809,7 +772,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2163, y = 7166 },
             Range = 6,
             ZoneStepTrigger = { x = -2163, y = 7166, Range = 6 },
@@ -821,7 +783,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2187, y = 7194 },
             Range = 6,
             ZoneStepTrigger = { x = -2187, y = 7194, Range = 6 },
@@ -833,7 +794,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2185, y = 7204 },
             Range = 4,
             ZoneStepTrigger = { x = -2185, y = 7204, Range = 4 },
@@ -845,7 +805,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_TUNNEL_TAKE_NORTH_EXIT_MOONGLADE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 26.36, 28.04),
             Range = 20,
@@ -855,7 +814,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2191, y = 7228 },
             Range = 4,
             ZoneStepTrigger = { x = -2191, y = 7228, Range = 4 },
@@ -867,7 +825,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2190, y = 7258 },
             Range = 6,
             ZoneStepTrigger = { x = -2190, y = 7258, Range = 6 },
@@ -879,7 +836,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2163, y = 7272 },
             Range = 6,
             ZoneStepTrigger = { x = -2163, y = 7272, Range = 6 },
@@ -891,7 +847,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2149, y = 7290 },
             Range = 5,
             ZoneStepTrigger = { x = -2149, y = 7290, Range = 5 },
@@ -903,7 +858,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2151, y = 7304 },
             Range = 5,
             ZoneStepTrigger = { x = -2151, y = 7304, Range = 5 },
@@ -915,7 +869,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2163, y = 7316 },
             Range = 5,
             ZoneStepTrigger = { x = -2163, y = 7316, Range = 5 },
@@ -927,7 +880,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2183, y = 7320 },
             Range = 3,
             ZoneStepTrigger = { x = -2183, y = 7320, Range = 3 },
@@ -939,7 +891,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2193, y = 7324 },
             Range = 5,
             ZoneStepTrigger = { x = -2193, y = 7324, Range = 5 },
@@ -951,7 +902,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2205, y = 7364 },
             Range = 6,
             ZoneStepTrigger = { x = -2205, y = 7364, Range = 6 },
@@ -963,7 +913,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2205, y = 7374 },
             Range = 4,
             ZoneStepTrigger = { x = -2205, y = 7374, Range = 4 },
@@ -975,7 +924,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Coord = { x = -2197, y = 7378 },
             Range = 5,
             ZoneStepTrigger = { x = -2197, y = 7378, Range = 5 },
@@ -987,7 +935,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_TUNNEL_TAKE_NORTH_EXIT_MOONGLADE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 26.61, 24.49),
             Range = 20,
@@ -997,7 +944,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1123,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_TUNNEL_TAKE_NORTH_EXIT_MOONGLADE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 26.59, 24.17),
             Range = 20,
@@ -1151,7 +1097,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 3564,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 55.78, 28.12),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1440, 55.78, 28.12, 15),
@@ -1284,7 +1229,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4987,
-            NonSkippableWaypoint = true,
             Coord = { x = 1, y = -1108.2 },
             Range = 6,
             ZoneStepTrigger = { x = 1, y = -1108.2, Range = 6, mapID = 1456 },
@@ -1295,7 +1239,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4987,
-            NonSkippableWaypoint = true,
             Coord = { x = -66.5, y = -1089.7 },
             Range = 6,
             ZoneStepTrigger = { x = -66.5, y = -1089.7, Range = 6, mapID = 1456 },
@@ -1306,7 +1249,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4987,
-            NonSkippableWaypoint = true,
             Coord = { x = -209.4, y = -1044.8 },
             Range = 6,
             ZoneStepTrigger = { x = -209.4, y = -1044.8, Range = 6, mapID = 1456 },
@@ -1333,7 +1275,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = 1.3, y = -1333.2 },
             Range = 6,
             ZoneStepTrigger = { x = 1.3, y = -1333.2, Range = 6, mapID = 1456 },
@@ -1345,7 +1286,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -63.3, y = -1397.2 },
             Range = 6,
             ZoneStepTrigger = { x = -63.3, y = -1397.2, Range = 6, mapID = 1456 },
@@ -1365,7 +1305,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = 1.3, y = -1333.2 },
             Range = 6,
             ZoneStepTrigger = { x = 1.3, y = -1333.2, Range = 6, mapID = 1456 },
@@ -1376,7 +1315,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -63.3, y = -1397.2 },
             Range = 6,
             ZoneStepTrigger = { x = -63.3, y = -1397.2, Range = 6, mapID = 1456 },
@@ -1498,7 +1436,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -4953, y = -7772 },
             Range = 6,
             IsQuestOnQuest = 4005,
@@ -1509,7 +1446,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -4959, y = -7784 },
             Range = 3,
             IsQuestOnQuest = 4005,
@@ -1520,7 +1456,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -4973, y = -7784 },
             Range = 3,
             IsQuestOnQuest = 4005,
@@ -1531,7 +1466,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -4978.37, y = -7789.98 },
             Range = 5,
             IsQuestOnQuest = 4005,
@@ -1541,7 +1475,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -4983, y = -7790 },
             Range = 3,
             IsQuestOnQuest = 4005,
@@ -1552,7 +1485,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -4997, y = -7800 },
             Range = 3,
             IsQuestOnQuest = 4005,
@@ -1563,7 +1495,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -4999, y = -7810 },
             Range = 3,
             IsQuestOnQuest = 4005,
@@ -1574,7 +1505,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -5035, y = -7828 },
             Range = 4,
             IsQuestOnQuest = 4005,
@@ -1585,7 +1515,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -5049, y = -7842 },
             Range = 5,
             IsQuestOnQuest = 4005,
@@ -1596,7 +1525,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -5039, y = -7850 },
             Range = 6,
             IsQuestOnQuest = 4005,
@@ -1624,7 +1552,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -1068, y = -6163 },
             Range = 8,
             ZoneStepTrigger = { x = -1068, y = -6163, Range = 8, mapID = 1449 },
@@ -1650,7 +1577,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 3961,
-            NonSkippableWaypoint = true,
             Coord = { x = -1068, y = -6163 },
             Range = 8,
             IsQuestOnQuest = 3961,
@@ -1719,7 +1645,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4507,
-            NonSkippableWaypoint = true,
             Coord = { x = -1333, y = -7892 },
             Range = 8,
             IsQuestOnQuest = 4507,
@@ -1730,7 +1655,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4507,
-            NonSkippableWaypoint = true,
             Coord = { x = -1329, y = -7926 },
             Range = 7,
             IsQuestOnQuest = 4507,
@@ -1741,7 +1665,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1124,
-            NonSkippableWaypoint = true,
             Coord = { x = -1322.22, y = -7939.51 },
             Range = 15,
             ZoneStepTrigger = { x = -1322.22, y = -7939.51, Range = 15, mapID = 1449 },
@@ -1752,7 +1675,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4507,
-            NonSkippableWaypoint = true,
             Coord = { x = -1319, y = -7950 },
             Range = 7,
             IsQuestOnQuest = 4507,
@@ -1763,7 +1685,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1124,
-            NonSkippableWaypoint = true,
             Coord = { x = -1307.05, y = -8002.16 },
             Range = 15,
             ZoneStepTrigger = { x = -1307.05, y = -8002.16, Range = 15, mapID = 1449 },
@@ -1774,7 +1695,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4507,
-            NonSkippableWaypoint = true,
             Coord = { x = -1295, y = -8010 },
             Range = 7,
             IsQuestOnQuest = 4507,
@@ -1785,7 +1705,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4507,
-            NonSkippableWaypoint = true,
             Coord = { x = -1259, y = -7996 },
             Range = 7,
             IsQuestOnQuest = 4507,
@@ -1796,7 +1715,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4507,
-            NonSkippableWaypoint = true,
             Coord = { x = -1235, y = -8006 },
             Range = 7,
             IsQuestOnQuest = 4507,
@@ -1807,7 +1725,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4507,
-            NonSkippableWaypoint = true,
             Coord = { x = -1193, y = -8014 },
             Range = 7,
             IsQuestOnQuest = 4507,
@@ -1818,7 +1735,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4507,
-            NonSkippableWaypoint = true,
             Coord = { x = -1151, y = -8008 },
             Range = 6,
             IsQuestOnQuest = 4507,
@@ -1829,7 +1745,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1124,
-            NonSkippableWaypoint = true,
             Coord = { x = -1138.7, y = -7994.27 },
             Range = 15,
             ZoneStepTrigger = { x = -1138.7, y = -7994.27, Range = 15, mapID = 1449 },
@@ -1840,7 +1755,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4507,
-            NonSkippableWaypoint = true,
             Coord = { x = -1140, y = -7992 },
             Range = 6,
             IsQuestOnQuest = 4507,
@@ -1851,7 +1765,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4507,
-            NonSkippableWaypoint = true,
             Coord = { x = -1095, y = -7974 },
             Range = 7,
             IsQuestOnQuest = 4507,
@@ -1872,7 +1785,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1124,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 30.15, 10.41),
             Range = 20,
             Zone = 1449,
@@ -1880,7 +1792,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1124,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 25.14, 12.71),
             Range = 20,
             Zone = 1449,
@@ -1888,7 +1799,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1124,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 88.09, 23.43),
             Range = 20,
             Zone = 1451,
@@ -1896,7 +1806,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1124,
-            NonSkippableWaypoint = true,
             Coord = { x = -314.31, y = -6398.06 },
             Range = 5,
             Zone = 1451,
@@ -2137,7 +2046,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 8285,
-            NonSkippableWaypoint = true,
             Coord = { x = 235, y = -7598 },
             Range = 8,
             ZoneStepTrigger = { x = 235, y = -7598, Range = 8, mapID = 1451 },
@@ -2306,7 +2214,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 8279,
-            NonSkippableWaypoint = true,
             Coord = { x = 235, y = -7598 },
             Range = 8,
             ZoneStepTrigger = { x = 235, y = -7598, Range = 8, mapID = 1451 },
@@ -2538,7 +2445,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 6844,
-            NonSkippableWaypoint = true,
             Coord = { x = -2483.16, y = 7880.79 },
             Range = 20,
             Zone = 1450,
@@ -2579,7 +2485,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 1185,
-            NonSkippableWaypoint = true,
             Coord = { x = -2483.16, y = 7880.79 },
             Range = 20,
             Zone = 1450,
@@ -2604,7 +2509,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = { x = -2206.25, y = 7377.47 },
             Range = 15,
             ZoneStepTrigger = { x = -2206.25, y = 7377.47, Range = 15, mapID = 1450 },
@@ -2613,7 +2517,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = { x = -2190.74, y = 7319.18 },
             Range = 15,
             ZoneStepTrigger = { x = -2190.74, y = 7319.18, Range = 15 },
@@ -2622,7 +2525,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = { x = -2168.66, y = 7316.73 },
             Range = 15,
             ZoneStepTrigger = { x = -2168.66, y = 7316.73, Range = 15 },
@@ -2631,7 +2533,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = { x = -2153.94, y = 7282.38 },
             Range = 15,
             ZoneStepTrigger = { x = -2153.94, y = 7282.38, Range = 15 },
@@ -2640,7 +2541,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = { x = -2190.74, y = 7250.49 },
             Range = 15,
             ZoneStepTrigger = { x = -2190.74, y = 7250.49, Range = 15 },
@@ -2649,7 +2549,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = { x = -2168.66, y = 7169.53 },
             Range = 15,
             ZoneStepTrigger = { x = -2168.66, y = 7169.53, Range = 15 },
@@ -2658,7 +2557,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 65.98, 0.64),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1448, 65.98, 0.64, 15),
@@ -2667,7 +2565,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 65.38, 1.08),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1448, 65.38, 1.08, 15),
@@ -2676,7 +2573,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 65.44, 2.81),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1448, 65.44, 2.81, 15),
@@ -2685,7 +2581,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 66.51, 2.98),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1448, 66.51, 2.98, 15),
@@ -2694,7 +2589,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 67.82, 4.33),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1448, 67.82, 4.33, 15),
@@ -2703,7 +2597,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 67.93, 5.11),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1448, 67.93, 5.11, 15),
@@ -2734,7 +2627,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 67.93, 5.11),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1448, 67.93, 5.11, 15),
@@ -2744,7 +2636,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 67.82, 4.33),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1448, 67.82, 4.33, 15),
@@ -2754,7 +2645,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 66.51, 2.98),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1448, 66.51, 2.98, 15),
@@ -2764,7 +2654,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 65.44, 2.81),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1448, 65.44, 2.81, 15),
@@ -2774,7 +2663,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 65.38, 1.08),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1448, 65.38, 1.08, 15),
@@ -2784,7 +2672,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 65.98, 0.64),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1448, 65.98, 0.64, 15),
@@ -2794,7 +2681,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = { x = -2168.66, y = 7169.53 },
             Range = 15,
             ZoneStepTrigger = { x = -2168.66, y = 7169.53, Range = 15 },
@@ -2804,7 +2690,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = { x = -2190.74, y = 7250.49 },
             Range = 15,
             ZoneStepTrigger = { x = -2190.74, y = 7250.49, Range = 15 },
@@ -2814,7 +2699,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = { x = -2153.94, y = 7282.38 },
             Range = 15,
             ZoneStepTrigger = { x = -2153.94, y = 7282.38, Range = 15 },
@@ -2824,7 +2708,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = { x = -2168.66, y = 7316.73 },
             Range = 15,
             ZoneStepTrigger = { x = -2168.66, y = 7316.73, Range = 15 },
@@ -2834,7 +2717,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = { x = -2190.74, y = 7319.18 },
             Range = 15,
             ZoneStepTrigger = { x = -2190.74, y = 7319.18, Range = 15 },
@@ -2844,7 +2726,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = { x = -2206.25, y = 7377.47 },
             Range = 15,
             ZoneStepTrigger = { x = -2206.25, y = 7377.47, Range = 15, mapID = 1450 },
@@ -2854,7 +2735,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         },
         {
             Waypoint = 4509,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1450, 32.1, 66.6),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1450, 32.1, 66.6, 15),

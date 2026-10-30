@@ -50,7 +50,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5095,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 61.92, 64.85),
             Range = 5,
@@ -112,7 +111,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5096,
-            NonSkippableWaypoint = true,
             Coord = { x = -740.6, y = 1711.5 },
             Range = 5,
             ZoneStepTrigger = { x = -740.6, y = 1711.5, Range = 5 },
@@ -124,7 +122,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5096,
-            NonSkippableWaypoint = true,
             Coord = { x = -788.5, y = 1715.6 },
             Range = 5,
             ZoneStepTrigger = { x = -788.5, y = 1715.6, Range = 5 },
@@ -144,7 +141,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5098,
-            NonSkippableWaypoint = true,
             Coord = { x = -788.5, y = 1715.6 },
             Range = 5,
             ZoneStepTrigger = { x = -788.5, y = 1715.6, Range = 5 },
@@ -155,7 +151,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5098,
-            NonSkippableWaypoint = true,
             Coord = { x = -740.6, y = 1711.5 },
             Range = 5,
             ZoneStepTrigger = { x = -740.6, y = 1711.5, Range = 5 },
@@ -190,7 +185,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5229,
-            NonSkippableWaypoint = true,
             Coord = { x = -740.6, y = 1711.5 },
             Range = 5,
             ZoneStepTrigger = { x = -740.6, y = 1711.5, Range = 5 },
@@ -201,7 +195,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5229,
-            NonSkippableWaypoint = true,
             Coord = { x = -788.5, y = 1715.6 },
             Range = 5,
             ZoneStepTrigger = { x = -788.5, y = 1715.6, Range = 5 },
@@ -240,7 +233,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5023,
-            NonSkippableWaypoint = true,
             Coord = { x = -1242.27, y = 1780.54 },
             Range = 6,
             ZoneStepTrigger = { x = -1242.27, y = 1780.54, Range = 6, mapID = 1422 },
@@ -265,7 +257,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5231,
-            NonSkippableWaypoint = true,
             Coord = { x = -788.5, y = 1715.6 },
             Range = 5,
             ZoneStepTrigger = { x = -788.5, y = 1715.6, Range = 5 },
@@ -276,7 +267,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5231,
-            NonSkippableWaypoint = true,
             Coord = { x = -740.6, y = 1711.5 },
             Range = 5,
             ZoneStepTrigger = { x = -740.6, y = 1711.5, Range = 5 },
@@ -299,7 +289,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5098,
-            NonSkippableWaypoint = true,
             Coord = { x = -740.6, y = 1711.5 },
             Range = 5,
             ZoneStepTrigger = { x = -740.6, y = 1711.5, Range = 5 },
@@ -310,7 +299,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5098,
-            NonSkippableWaypoint = true,
             Coord = { x = -788.5, y = 1715.6 },
             Range = 5,
             ZoneStepTrigger = { x = -788.5, y = 1715.6, Range = 5 },
@@ -413,7 +401,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 4971,
-            NonSkippableWaypoint = true,
             Coord = { x = -1268.7, y = 1441.9 },
             Range = 6,
             IsQuestNotOnQuest = 4971,
@@ -453,7 +440,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5233,
-            NonSkippableWaypoint = true,
             Coord = { x = -788.5, y = 1715.6 },
             Range = 5,
             ZoneStepTrigger = { x = -788.5, y = 1715.6, Range = 5 },
@@ -464,7 +450,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5233,
-            NonSkippableWaypoint = true,
             Coord = { x = -740.6, y = 1711.5 },
             Range = 5,
             ZoneStepTrigger = { x = -740.6, y = 1711.5, Range = 5 },
@@ -516,7 +501,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 4972,
-            NonSkippableWaypoint = true,
             Coord = { x = -740.6, y = 1711.5 },
             Range = 5,
             ZoneStepTrigger = { x = -740.6, y = 1711.5, Range = 5 },
@@ -527,7 +511,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 4972,
-            NonSkippableWaypoint = true,
             Coord = { x = -788.5, y = 1715.6 },
             Range = 5,
             ZoneStepTrigger = { x = -788.5, y = 1715.6, Range = 5 },
@@ -538,7 +521,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 4972,
-            NonSkippableWaypoint = true,
             Coord = { x = -1268.7, y = 1441.9 },
             Range = 6,
             ZoneStepTrigger = { x = -1268.7, y = 1441.9, Range = 6, mapID = 1422 },
@@ -578,7 +560,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 4972,
-            NonSkippableWaypoint = true,
             Coord = { x = -1268.7, y = 1441.9 },
             Range = 6,
             IsQuestOnQuest = 4972,
@@ -623,7 +604,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6004,
-            NonSkippableWaypoint = true,
             Fillers = { [4984] = { [1] = 1 } },
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
@@ -641,7 +621,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6004,
-            NonSkippableWaypoint = true,
             Fillers = { [4984] = { [1] = 1 }, [6004] = { [1] = 3, [2] = 4 } },
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
@@ -652,7 +631,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6004,
-            NonSkippableWaypoint = true,
             Fillers = { [4984] = { [1] = 1 }, [6004] = { [1] = 3, [2] = 4 } },
             Coord = { x = -1750.53, y = 2279.05 },
             Range = 15,
@@ -681,7 +659,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Fillers = { [4984] = { [1] = 1 } },
             Coord = { x = -1750.53, y = 2279.05 },
             Range = 15,
@@ -693,7 +670,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Fillers = { [4984] = { [1] = 1 } },
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
@@ -719,7 +695,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Fillers = { [4984] = { [1] = 1 } },
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
@@ -730,7 +705,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Fillers = { [4984] = { [1] = 1 } },
             Coord = { x = -1750.53, y = 2279.05 },
             Range = 15,
@@ -741,7 +715,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Fillers = { [4984] = { [1] = 1 } },
             Coord = { x = -1806.86, y = 2233.19 },
             Range = 15,
@@ -752,7 +725,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Fillers = { [4984] = { [1] = 1 } },
             Coord = { x = -1935, y = 2398.59 },
             Range = 15,
@@ -772,7 +744,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Fillers = { [4984] = { [1] = 1 } },
             Coord = { x = -1935, y = 2398.59 },
             Range = 15,
@@ -783,7 +754,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Fillers = { [4984] = { [1] = 1 } },
             Coord = { x = -1918.23, y = 2643.69 },
             Range = 15,
@@ -803,7 +773,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Fillers = { [4984] = { [1] = 1 } },
             Coord = { x = -1935, y = 2398.59 },
             Range = 15,
@@ -814,7 +783,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Fillers = { [4984] = { [1] = 1 } },
             Coord = { x = -1806.86, y = 2233.19 },
             Range = 15,
@@ -825,7 +793,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Fillers = { [4984] = { [1] = 1 } },
             Coord = { x = -1750.53, y = 2279.05 },
             Range = 15,
@@ -836,7 +803,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6023,
-            NonSkippableWaypoint = true,
             Fillers = { [4984] = { [1] = 1 } },
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
@@ -854,7 +820,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 4984,
-            NonSkippableWaypoint = true,
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
             ZoneStepTrigger = { x = -1733.76, y = 2495.49, Range = 15, mapID = 1422 },
@@ -865,7 +830,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 4984,
-            NonSkippableWaypoint = true,
             Coord = { x = -1750.53, y = 2279.05 },
             Range = 15,
             ZoneStepTrigger = { x = -1750.53, y = 2279.05, Range = 15, mapID = 1422 },
@@ -910,7 +874,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5542,
-            NonSkippableWaypoint = true,
             Coord = { x = -2555.86, y = 2091.21 },
             Range = 15,
             ZoneStepTrigger = { x = -2555.86, y = 2091.21, Range = 15, mapID = 1423 },
@@ -921,7 +884,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5601,
-            NonSkippableWaypoint = true,
             Coord = { x = -2479.21, y = 2675.35 },
             Range = 20,
             Zone = 1423,
@@ -1054,7 +1016,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6030,
-            NonSkippableWaypoint = true,
             Fillers = { [5544] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 81.44, 59.81),
             Range = 5,
@@ -1142,7 +1103,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5281,
-            NonSkippableWaypoint = true,
             Fillers = { [5211] = { 1 } },
             Coord = { x = -2744.75, y = 2929.09 },
             Range = 5,
@@ -1199,7 +1159,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5542,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 14.5, 36.0),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1423, 14.5, 36.0, 20),
@@ -1209,7 +1168,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5542,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 10.0, 38.0),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1423, 10.0, 38.0, 20),
@@ -1219,7 +1177,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5542,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 7.6, 43.7),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1423, 7.6, 43.7, 20),
@@ -1366,7 +1323,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5845,
-            NonSkippableWaypoint = true,
             Fillers = { [5211] = { [1] = 1 } },
             Coord = { x = -2555.86, y = 2091.21 },
             Range = 15,
@@ -1409,7 +1365,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5153,
-            NonSkippableWaypoint = true,
             Fillers = { [5211] = { [1] = 1 } },
             Coord = { x = -1681.7, y = 1104.8 },
             Range = 4,
@@ -1442,7 +1397,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5154,
-            NonSkippableWaypoint = true,
             Fillers = { [5211] = { [1] = 1 } },
             Coord = { x = -1268.7, y = 1441.9 },
             Range = 6,
@@ -1468,7 +1422,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5154,
-            NonSkippableWaypoint = true,
             Fillers = { [5211] = { [1] = 1 } },
             Coord = { x = -1467.68, y = 1381.5 },
             Range = 10,
@@ -1487,7 +1440,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5210,
-            NonSkippableWaypoint = true,
             Fillers = { [5211] = { [1] = 1 } },
             Coord = { x = -1268.7, y = 1441.9 },
             Range = 6,
@@ -1513,7 +1465,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5235,
-            NonSkippableWaypoint = true,
             Fillers = { [5211] = { [1] = 1 } },
             Coord = { x = -788.5, y = 1715.6 },
             Range = 5,
@@ -1525,7 +1476,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5235,
-            NonSkippableWaypoint = true,
             Fillers = { [5211] = { [1] = 1 } },
             Coord = { x = -740.6, y = 1711.5 },
             Range = 5,
@@ -1598,7 +1548,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5023,
-            NonSkippableWaypoint = true,
             Note = { "USE_COURTYARD_ELEVATORS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 61.8, 65.06),
             Range = 20,
@@ -1832,7 +1781,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 3568,
-            NonSkippableWaypoint = true,
             Fillers = { [5211] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 47.2, 59.69),
             Range = 12,
@@ -1842,7 +1790,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 3568,
-            NonSkippableWaypoint = true,
             Fillers = { [5211] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 43.55, 68.11),
             Range = 12,
@@ -1852,7 +1799,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 3568,
-            NonSkippableWaypoint = true,
             Fillers = { [5211] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 45.2, 71.67),
             Range = 12,
@@ -1871,7 +1817,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 3569,
-            NonSkippableWaypoint = true,
             Fillers = { [5211] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 48.71, 71.4),
             Range = 5,
@@ -1928,7 +1873,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6021,
-            NonSkippableWaypoint = true,
             Fillers = { [5211] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 51.99, 64.54),
             Range = 10,
@@ -1937,7 +1881,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6021,
-            NonSkippableWaypoint = true,
             Fillers = { [5211] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 46.25, 73.22),
             Range = 10,
@@ -1946,7 +1889,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6021,
-            NonSkippableWaypoint = true,
             Fillers = { [5211] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 45.32, 78.32),
             Range = 10,
@@ -1955,7 +1897,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6021,
-            NonSkippableWaypoint = true,
             Fillers = { [5211] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 46.26, 83.91),
             Range = 10,
@@ -1964,7 +1905,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6021,
-            NonSkippableWaypoint = true,
             Fillers = { [5211] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 49.03, 87.92),
             Range = 10,
@@ -1973,7 +1913,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6021,
-            NonSkippableWaypoint = true,
             Fillers = { [5211] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 52.94, 89.6),
             Range = 10,
@@ -2172,7 +2111,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5846,
-            NonSkippableWaypoint = true,
             Coord = { x = -2555.86, y = 2091.21 },
             Range = 15,
             ZoneStepTrigger = { x = -2555.86, y = 2091.21, Range = 15, mapID = 1423 },
@@ -2183,7 +2121,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5845,
-            NonSkippableWaypoint = true,
             Coord = { x = -2479.21, y = 2675.35 },
             Range = 20,
             IsQuestOnQuest = 5845,
@@ -2206,7 +2143,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5846,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 65.79, 75.41),
             Range = 20,
             ClassNot = { "PRIEST", "SHAMAN" },
@@ -2216,7 +2152,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5846,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 65.79, 75.41),
             Range = 20,
             Class = "SHAMAN",
@@ -2226,7 +2161,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5846,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 65.79, 75.41),
             Range = 20,
             Class = "PRIEST",
@@ -2291,7 +2225,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
             IsQuestCompleted = 6023,
@@ -2308,7 +2241,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -2318,7 +2250,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1750.53, y = 2279.05 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -2328,7 +2259,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1806.86, y = 2233.19 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -2338,7 +2268,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1935, y = 2398.59 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -2348,7 +2277,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1918.23, y = 2643.69 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -2358,7 +2286,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1840.83, y = 2703.89 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -2368,7 +2295,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1734.19, y = 2692.14 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -2378,7 +2304,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1548.43, y = 2827.73 },
             Range = 5,
             Zone = 1422,
@@ -2394,7 +2319,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1734.19, y = 2692.14 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -2404,7 +2328,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1840.83, y = 2703.89 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -2414,7 +2337,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1918.23, y = 2643.69 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -2424,7 +2346,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1935, y = 2398.59 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -2434,7 +2355,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1806.86, y = 2233.19 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -2444,7 +2364,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1750.53, y = 2279.05 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -2454,7 +2373,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 6025,
-            NonSkippableWaypoint = true,
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
             IsQuestOnQuest = 6025,
@@ -2470,7 +2388,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5051,
-            NonSkippableWaypoint = true,
             Coord = { x = -1733.76, y = 2495.49 },
             Range = 15,
             ZoneStepTrigger = { x = -1733.76, y = 2495.49, Range = 15, mapID = 1422 },
@@ -2481,7 +2398,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5051,
-            NonSkippableWaypoint = true,
             Coord = { x = -1750.53, y = 2279.05 },
             Range = 15,
             ZoneStepTrigger = { x = -1750.53, y = 2279.05, Range = 15, mapID = 1422 },
@@ -2531,7 +2447,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5238,
-            NonSkippableWaypoint = true,
             Coord = { x = -788.5, y = 1715.6 },
             Range = 5,
             ZoneStepTrigger = { x = -788.5, y = 1715.6, Range = 5 },
@@ -2542,7 +2457,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5238,
-            NonSkippableWaypoint = true,
             Coord = { x = -740.6, y = 1711.5 },
             Range = 5,
             ZoneStepTrigger = { x = -740.6, y = 1711.5, Range = 5 },
@@ -2635,7 +2549,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 3564,
-            NonSkippableWaypoint = true,
             Coord = { x = -4370, y = 1382.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4370, y = 1382.2, Range = 15, mapID = 1411 },
@@ -2646,7 +2559,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 3564,
-            NonSkippableWaypoint = true,
             Coord = { x = -4363.9, y = 1420.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4363.9, y = 1420.2, Range = 15, mapID = 1454 },
@@ -2657,7 +2569,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 3564,
-            NonSkippableWaypoint = true,
             Coord = { x = -4412.5, y = 1436.4 },
             Range = 15,
             ZoneStepTrigger = { x = -4412.5, y = 1436.4, Range = 15, mapID = 1454 },
@@ -2668,7 +2579,6 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
         },
         {
             Waypoint = 3564,
-            NonSkippableWaypoint = true,
             Coord = { x = -4417.1, y = 1480.6 },
             Range = 15,
             ZoneStepTrigger = { x = -4417.1, y = 1480.6, Range = 15, mapID = 1454 },

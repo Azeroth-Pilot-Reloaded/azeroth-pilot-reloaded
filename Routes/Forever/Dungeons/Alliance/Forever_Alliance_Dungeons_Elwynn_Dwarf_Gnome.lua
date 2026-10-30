@@ -35,7 +35,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 40,
-            NonSkippableWaypoint = true,
             Coord = { x = 444.6, y = -9048.9 },
             Range = 8,
             ZoneStepTrigger = { x = 444.6, y = -9048.9, Range = 8 },
@@ -46,7 +45,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 40,
-            NonSkippableWaypoint = true,
             Coord = { x = 370.1, y = -9146.6 },
             Range = 8,
             ZoneStepTrigger = { x = 370.1, y = -9146.6, Range = 8 },
@@ -61,7 +59,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 40,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_UPSTAIRS_INN" },
             Coord = { x = 12.52, y = -9479.85 },
             Range = 9.0,
@@ -149,7 +146,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 35,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_EAST_GUARD_THOMAS" },
             Coord = { x = -1032.06, y = -9610.23 },
             Range = 30.0,
@@ -362,7 +358,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 244,
-            NonSkippableWaypoint = true,
             Coord = { x = -1948.56, y = -9582.75 },
             Range = 5,
             Zone = 1433,
@@ -414,7 +409,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1688,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SLAUGHTERED_LAMB_GO_DOWNSTAIRS" },
             Coord = { x = 988.44, y = -8942.15 },
             Range = 20.0,
@@ -425,7 +419,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1688,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_SLAUGHTERED_LAMB_GO_DOWNSTAIRS" },
             Coord = { x = 1015.33, y = -8978.9 },
             Range = 15.0,
@@ -461,7 +454,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1689,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_BOTTOM_SLAUGHTERED_LAMB", "USE_BLOODSTONE_CHOKER_CALL_FORTH_SUMMONED" },
             Coord = { x = 1042.22, y = -9002.21 },
             Range = 18.0,
@@ -472,7 +464,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1689,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_BOTTOM_SLAUGHTERED_LAMB", "USE_BLOODSTONE_CHOKER_CALL_FORTH_SUMMONED" },
             Coord = { x = 1069.1, y = -8991.45 },
             Range = 18.0,
@@ -483,7 +474,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 1689,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_BOTTOM_SLAUGHTERED_LAMB", "USE_BLOODSTONE_CHOKER_CALL_FORTH_SUMMONED" },
             Coord = { x = 1027.43, y = -8991.45 },
             Range = 18.0,
@@ -537,7 +527,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 39,
-            NonSkippableWaypoint = true,
             Coord = { x = 444.6, y = -9048.9 },
             Range = 8,
             ZoneStepTrigger = { x = 444.6, y = -9048.9, Range = 8 },
@@ -552,7 +541,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 39,
-            NonSkippableWaypoint = true,
             Coord = { x = 370.1, y = -9146.6 },
             Range = 8,
             ZoneStepTrigger = { x = 370.1, y = -9146.6, Range = 8 },
@@ -567,7 +555,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 39,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_STORMWIND_TRAVEL_GOLDSHIRE" },
             Coord = { x = 74.02, y = -9465.52 },
             Range = 5,
@@ -577,7 +564,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 147,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_STORMWIND_TRAVEL_GOLDSHIRE" },
             Coord = { x = 74.02, y = -9465.52 },
             Range = 5,
@@ -628,7 +614,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 88,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_UPSTAIRS_INN" },
             Coord = { x = 12.52, y = -9479.85 },
             Range = 9.0,
@@ -679,7 +664,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 184,
-            NonSkippableWaypoint = true,
             Coord = { x = 918.42, y = -9851.5 },
             Range = 5,
             Zone = 1436,
@@ -694,7 +678,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             Waypoint = 64,
-            NonSkippableWaypoint = true,
             Coord = { x = 918.42, y = -9851.5 },
             Range = 5,
             Zone = 1436,

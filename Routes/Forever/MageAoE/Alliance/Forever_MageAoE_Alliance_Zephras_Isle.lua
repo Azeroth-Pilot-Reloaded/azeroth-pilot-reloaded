@@ -114,7 +114,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94414,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.53, 24.34),
             Range = 20,
             RaidIcon = 257554,
@@ -123,7 +122,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94414,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.83, 24.13),
             Range = 10,
             RaidIcon = 257554,
@@ -132,7 +130,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94414,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.78, 24.38),
             Range = 5,
             RaidIcon = 257554,
@@ -141,7 +138,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94414,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.66, 24.25),
             Range = 5,
             RaidIcon = 257554,
@@ -150,7 +146,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94414,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.75, 24.09),
             Range = 5,
             RaidIcon = 257554,
@@ -159,7 +154,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94414,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.84, 24.3),
             Range = 5,
             RaidIcon = 257554,
@@ -168,7 +162,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94414,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.66, 24.23),
             Range = 5,
             RaidIcon = 257554,
@@ -177,7 +170,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94414,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.83, 24.18),
             Range = 5,
             RaidIcon = 257554,
@@ -186,7 +178,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94414,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.83, 24.32),
             Range = 8,
             RaidIcon = 257554,
@@ -220,7 +211,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92474,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.53, 24.34),
             Range = 20,
             RaidIcon = 263113,
@@ -229,7 +219,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92474,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.83, 24.13),
             Range = 10,
             RaidIcon = 263113,
@@ -238,7 +227,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92474,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.78, 24.38),
             Range = 5,
             RaidIcon = 263113,
@@ -247,7 +235,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92474,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.66, 24.25),
             Range = 5,
             RaidIcon = 263113,
@@ -256,7 +243,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92474,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.75, 24.09),
             Range = 5,
             RaidIcon = 263113,
@@ -265,7 +251,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92474,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.84, 24.3),
             Range = 5,
             RaidIcon = 263113,
@@ -274,7 +259,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92474,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.66, 24.23),
             Range = 5,
             RaidIcon = 263113,
@@ -283,7 +267,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92474,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.83, 24.18),
             Range = 5,
             RaidIcon = 263113,
@@ -292,7 +275,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92474,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.83, 24.32),
             Range = 8,
             RaidIcon = 263113,
@@ -472,7 +454,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93552,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.89, 22.27),
             Range = 10,
             Zone = 2521,
@@ -489,7 +470,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93552,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.37, 23.98),
             Range = 60,
             Zone = 2521,
@@ -756,7 +736,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92544,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ENEMIES_WAY_XP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 38.31, 30.17),
             Range = 100,
@@ -772,7 +751,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92544,
-            NonSkippableWaypoint = true,
             Fillers = { [92544] = { 3 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 36.032, 33.545),
             Range = 50,
@@ -924,7 +902,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93461,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.02, 43.24),
             Range = 5,
             RaidIcon = 254089,
@@ -961,7 +938,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92553,
-            NonSkippableWaypoint = true,
             Note = { "KEEP_COOKING_MEAT_EGGS", "KEEP_SPARE_MEAT_COOKING_NOT_MAKE_SEPARATE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.72, 45.47),
             Range = 5,
@@ -1113,7 +1089,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92517,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 48.813, 36.434),
             Range = 10,
             AnyOf = { { IsQuestOnQuest = 92517, Not = { IsQuestReadyForTurnIn = 92517 } }, { IsQuestOnQuest = 93319, Not = { IsQuestReadyForTurnIn = 93319 } } },
@@ -1123,7 +1098,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93319,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 48.813, 36.434),
             Range = 10,
             AllOf = { { IsQuestCompleted = 92517 } },
@@ -1135,7 +1109,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92553,
-            NonSkippableWaypoint = true,
             Fillers = { [92517] = { 1, 2 }, [93319] = { 1 } },
             Note = { "GO_INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 48.813, 36.434),
@@ -1145,7 +1118,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92517,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 49.355, 35.793),
             Range = 15,
             AnyOf = { { IsQuestOnQuest = 92517, Not = { IsQuestReadyForTurnIn = 92517 } }, { IsQuestOnQuest = 93319, Not = { IsQuestReadyForTurnIn = 93319 } } },
@@ -1155,7 +1127,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93319,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 49.355, 35.793),
             Range = 15,
             AllOf = { { IsQuestCompleted = 92517 } },
@@ -1167,7 +1138,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92553,
-            NonSkippableWaypoint = true,
             Fillers = { [92517] = { 1, 2 }, [93319] = { 1 } },
             Note = { "GO_INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 49.355, 35.793),
@@ -1177,7 +1147,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92517,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 49.537, 34.325),
             Range = 15,
             AnyOf = { { IsQuestOnQuest = 92517, Not = { IsQuestReadyForTurnIn = 92517 } }, { IsQuestOnQuest = 93319, Not = { IsQuestReadyForTurnIn = 93319 } } },
@@ -1187,7 +1156,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93319,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 49.537, 34.325),
             Range = 15,
             AllOf = { { IsQuestCompleted = 92517 } },
@@ -1199,7 +1167,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92553,
-            NonSkippableWaypoint = true,
             Fillers = { [92517] = { 1, 2 }, [93319] = { 1 } },
             Note = { "GO_INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 49.537, 34.325),
@@ -1887,7 +1854,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94413,
-            NonSkippableWaypoint = true,
             Note = { "EQUIPPING_BAGS_MAKE_SURE_REAGENT_BAG_DEDICATED", "KEEP_COOKING_MEAT_EGGS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.71, 45.48),
             Range = 5,
@@ -1907,7 +1873,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92529,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.831, 45.515),
             Range = 5,
             RaidIcon = 251904,
@@ -1974,7 +1939,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92529,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.374, 53.512),
             Range = 25,
@@ -1991,7 +1955,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92529,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.412, 53.485),
             Range = 20,
@@ -2017,7 +1980,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92528,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 46.89, 56.24),
             Range = 5,
@@ -2028,7 +1990,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92528,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 }, [92528] = { 1 } },
             Note = { "UPSTAIRS", "INTERACT_CABINET", "SOMEONE_ALREADY_FINISH_ANYWAY" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 48.85, 53.91),
@@ -2055,7 +2016,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92528,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 46.86, 51.54),
             Range = 25,
@@ -2072,7 +2032,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92528,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.37, 46.69),
             Range = 30,
@@ -2082,7 +2041,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92528,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.49, 45.95),
             Range = 30,
@@ -2092,7 +2050,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92528,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.93, 46.85),
             Range = 30,
@@ -2102,7 +2059,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92528,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.21, 46.63),
             Range = 30,
@@ -2112,7 +2068,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92528,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.04, 46.23),
             Range = 15,
@@ -2147,7 +2102,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93926,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
             Note = { "DIE_SOUTHWEST_SHEN_DAR_VILLAGE_RESPAWN_SPIRIT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.35, 46.79),
@@ -2161,7 +2115,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93926,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
             Note = { "DIE_SOUTHWEST_SHEN_DAR_VILLAGE_RESPAWN_SPIRIT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.05, 49.98),
@@ -2175,7 +2128,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93926,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
             Note = { "DIE_SOUTHWEST_SHEN_DAR_VILLAGE_RESPAWN_SPIRIT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.02, 49.86),
@@ -2203,7 +2155,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93926,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.35, 46.79),
             Range = 25,
             IsQuestOnQuest = 93926,
@@ -2298,7 +2249,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92550,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92551] = { 1 }, [92515] = { 1 }, [92550] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.48, 58.73),
             Range = 30,
@@ -2612,7 +2562,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93948,
-            NonSkippableWaypoint = true,
             Note = { "DIE_EXACT_WAYPOINT_LOCATION", "SENT_DIFFERENT_GRAVEYARD" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 49.4, 58.76),
             Range = 5,
@@ -2638,7 +2587,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93317,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 60.6, 73.16),
             Range = 10,
             RaidIcon = 257006,
@@ -2703,7 +2651,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93948,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.096, 73.339),
             Range = 20,
@@ -2719,7 +2666,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93948,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.33, 73.65),
             Range = 15,
             IsQuestNotOnQuest = 94484,
@@ -2728,7 +2674,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93948,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.973, 75.095),
             Range = 25,
             IsQuestNotOnQuest = 94484,
@@ -2751,7 +2696,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93948,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.93, 76.37),
             Range = 5,
@@ -2760,7 +2704,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93948,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.46, 76.8),
             Range = 5,
@@ -2769,7 +2712,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93948,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.43, 76.58),
             Range = 5,
@@ -2778,7 +2720,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93948,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.43, 76.83),
             Range = 5,
@@ -2787,7 +2728,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93948,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.31, 77.08),
             Range = 5,
@@ -2796,7 +2736,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93948,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66, 76.57),
             Range = 8,
@@ -2805,7 +2744,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93948,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.19, 76.22),
             Range = 8,
@@ -2814,7 +2752,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93948,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.44, 76.4),
             Range = 5,
@@ -2837,7 +2774,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92699,
-            NonSkippableWaypoint = true,
             Note = { "JUMP_USE_WALK_AIR", "TIME_CORRECTLY_CANCEL_MIDAIR_LAND_BUILDING", "PERFORM_INDICATED_ACTION_CANCELAURA_WALK_AIR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.47, 76.68),
             Range = 10,
@@ -2885,7 +2821,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92727,
-            NonSkippableWaypoint = true,
             Note = { "JUMP_OFF_CLIFF" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 67.41, 80.46),
             Range = 5,
@@ -2930,7 +2865,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92849,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 51.41, 68.9),
             Range = 15,
             DontHaveAura = 1258429,
@@ -2941,7 +2875,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92849,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_CAVE", "BIRDS_SMALLER_AGGRO_RADIUS_MOST_ENEMIES" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 50.7, 65.36),
             Range = 5,
@@ -2977,7 +2910,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92850,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 51.41, 68.9),
             Range = 15,
             IsQuestOnQuest = 92850,
@@ -2987,7 +2919,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92850,
-            NonSkippableWaypoint = true,
             Note = { "GO_INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 52.02, 65.51),
             Range = 15,
@@ -2997,7 +2928,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92850,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 52.49, 65.97),
             Range = 5,
             Not = { IsQuestReadyForTurnIn = 92850 },
@@ -3022,7 +2952,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92679,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 52.37, 66.5),
             Range = 15,
@@ -3031,7 +2960,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92679,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 51.75, 66.33),
             Range = 15,
@@ -3040,7 +2968,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92679,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 51.05, 66.66),
             Range = 15,
@@ -3049,7 +2976,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92679,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 51.16, 67.53),
             Range = 15,
@@ -3058,7 +2984,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92679,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 51.5, 69.11),
             Range = 15,
@@ -3158,7 +3083,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92685,
-            NonSkippableWaypoint = true,
             Fillers = { [92685] = { 1 } },
             Note = { "SPOT_TORNADO_APPROACH_GAIN_40_INCREASED_MOVEMENT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.81, 74.4),
@@ -3199,7 +3123,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92685,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.84, 75.53),
             Range = 30,
             IsQuestOnQuest = 92685,
@@ -3208,7 +3131,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92685,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.06, 76.19),
             Range = 15,
             IsQuestOnQuest = 92685,
@@ -3280,7 +3202,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92703,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.18, 72.616),
             Range = 10,
             IsQuestUncompleted = 92703,
@@ -3309,7 +3230,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92703,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 61.94, 72.8),
             Range = 10,
             RaidIcon = 252448,
@@ -3321,7 +3241,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92703,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.05, 73.09),
             Range = 8,
             RaidIcon = 252448,
@@ -3445,7 +3364,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 97968,
-            NonSkippableWaypoint = true,
             Fillers = { [92840] = { 1 } },
             Note = { "SPOT_TORNADO_APPROACH_GAIN_40_INCREASED_MOVEMENT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 46.52, 70.33),
@@ -3479,7 +3397,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 97968,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 49.46, 70.12),
             Range = 30,
             Zone = 2521,
@@ -3556,7 +3473,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92860,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.65, 79.27),
             Range = 30,
@@ -3565,7 +3481,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92860,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 64.98, 77.12),
             Range = 30,
@@ -3574,7 +3489,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92860,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.93, 76.37),
             Range = 8,
@@ -3583,7 +3497,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92860,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.46, 76.8),
             Range = 5,
@@ -3592,7 +3505,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92860,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.43, 76.58),
             Range = 5,
@@ -3601,7 +3513,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92860,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.43, 76.83),
             Range = 5,
@@ -3610,7 +3521,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92860,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.31, 77.08),
             Range = 5,
@@ -3619,7 +3529,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92860,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66, 76.57),
             Range = 8,
@@ -3628,7 +3537,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92860,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.19, 76.22),
             Range = 8,
@@ -3637,7 +3545,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92860,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.44, 76.4),
             Range = 5,
@@ -3653,7 +3560,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93320,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.47, 76.64),
             Range = 10,
             IsQuestNotOnQuest = 94896,
@@ -3684,7 +3590,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93320,
-            NonSkippableWaypoint = true,
             Fillers = { [92834] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.59, 73.6),
             Range = 25,
@@ -3694,7 +3599,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93320,
-            NonSkippableWaypoint = true,
             Fillers = { [92834] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 64.4, 73.23),
             Range = 30,
@@ -3704,7 +3608,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93320,
-            NonSkippableWaypoint = true,
             Fillers = { [92834] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.36, 71.79),
             Range = 30,
@@ -3714,7 +3617,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93320,
-            NonSkippableWaypoint = true,
             Fillers = { [92834] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.76, 68.4),
             Range = 30,
@@ -3789,7 +3691,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92880,
-            NonSkippableWaypoint = true,
             Note = { "GO_AROUND_MOUNTAIN_CLIMB_TOWER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.58, 68.58),
             Range = 30,
@@ -3798,7 +3699,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92880,
-            NonSkippableWaypoint = true,
             Note = { "GO_AROUND_MOUNTAIN_CLIMB_TOWER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.93, 76.37),
             Range = 5,
@@ -3807,7 +3707,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92880,
-            NonSkippableWaypoint = true,
             Note = { "GO_AROUND_MOUNTAIN_CLIMB_TOWER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.46, 76.8),
             Range = 5,
@@ -3816,7 +3715,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92880,
-            NonSkippableWaypoint = true,
             Note = { "GO_AROUND_MOUNTAIN_CLIMB_TOWER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.43, 76.58),
             Range = 5,
@@ -3825,7 +3723,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92880,
-            NonSkippableWaypoint = true,
             Note = { "GO_AROUND_MOUNTAIN_CLIMB_TOWER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.43, 76.83),
             Range = 5,
@@ -3834,7 +3731,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92880,
-            NonSkippableWaypoint = true,
             Note = { "GO_AROUND_MOUNTAIN_CLIMB_TOWER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.31, 77.08),
             Range = 5,
@@ -3843,7 +3739,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92880,
-            NonSkippableWaypoint = true,
             Note = { "GO_AROUND_MOUNTAIN_CLIMB_TOWER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66, 76.57),
             Range = 8,
@@ -3852,7 +3747,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92880,
-            NonSkippableWaypoint = true,
             Note = { "GO_AROUND_MOUNTAIN_CLIMB_TOWER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.19, 76.22),
             Range = 8,
@@ -3861,7 +3755,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92880,
-            NonSkippableWaypoint = true,
             Note = { "GO_AROUND_MOUNTAIN_CLIMB_TOWER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.44, 76.4),
             Range = 5,
@@ -3896,7 +3789,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92643,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.47, 76.61),
             Range = 8,
             IsQuestNotOnQuest = 98512,
@@ -3906,7 +3798,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92643,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.31, 76.18),
             Range = 15,
             IsQuestNotOnQuest = 98512,
@@ -3925,7 +3816,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92643,
-            NonSkippableWaypoint = true,
             Note = { "REPAIR", "KEEP_COOKING_MEAT_EGGS", "KEEP_SPARE_MEAT_COOKING_NOT_MAKE_SEPARATE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.14, 76.9),
             Range = 20,
@@ -4011,7 +3901,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93317,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 54.35, 57.87),
             Range = 25,
             IsQuestOnQuest = 93317,
@@ -4029,7 +3918,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93159,
-            NonSkippableWaypoint = true,
             Note = { "SPOT_TORNADO_APPROACH_GAIN_40_INCREASED_MOVEMENT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 55.89, 56.12),
             Range = 40,
@@ -4039,7 +3927,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93159,
-            NonSkippableWaypoint = true,
             Note = { "SPOT_TORNADO_APPROACH_GAIN_40_INCREASED_MOVEMENT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 57.17, 55.26),
             Range = 40,
@@ -4049,7 +3936,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93159,
-            NonSkippableWaypoint = true,
             Note = { "SPOT_TORNADO_APPROACH_GAIN_40_INCREASED_MOVEMENT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 57.86, 54.69),
             Range = 40,
@@ -4059,7 +3945,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93159,
-            NonSkippableWaypoint = true,
             Note = { "SPOT_TORNADO_APPROACH_GAIN_40_INCREASED_MOVEMENT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 58.61, 52.77),
             Range = 30,
@@ -4069,7 +3954,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93159,
-            NonSkippableWaypoint = true,
             Fillers = { [92741] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 58.81, 46.74),
             Range = 30,
@@ -4078,7 +3962,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93159,
-            NonSkippableWaypoint = true,
             Fillers = { [92741] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 58.81, 43.57),
             Range = 40,
@@ -4140,7 +4023,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94897,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 57.23, 33.4),
             Range = 25,
             IsQuestOnQuest = 94897,
@@ -4160,7 +4042,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94484,
-            NonSkippableWaypoint = true,
             Fillers = { [93172] = { 1 }, [94896] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 56.61, 29.26),
             Range = 20,
@@ -4169,7 +4050,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94484,
-            NonSkippableWaypoint = true,
             Fillers = { [93172] = { 1 }, [94896] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 58.14, 30.47),
             Range = 10,
@@ -4178,7 +4058,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94484,
-            NonSkippableWaypoint = true,
             Fillers = { [93172] = { 1 }, [94896] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 57.81, 31.07),
             Range = 20,
@@ -4187,7 +4066,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94484,
-            NonSkippableWaypoint = true,
             Fillers = { [93172] = { 1 }, [94896] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 57.55, 31.01),
             Range = 20,
@@ -4196,7 +4074,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94484,
-            NonSkippableWaypoint = true,
             Fillers = { [93172] = { 1 }, [94896] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 57.55, 32.06),
             Range = 30,
@@ -4205,7 +4082,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94484,
-            NonSkippableWaypoint = true,
             Fillers = { [93172] = { 1 }, [94896] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 58.47, 32.63),
             Range = 30,
@@ -4214,7 +4090,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94484,
-            NonSkippableWaypoint = true,
             Fillers = { [93172] = { 1 }, [94896] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 58.33, 31.61),
             Range = 30,
@@ -4223,7 +4098,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94484,
-            NonSkippableWaypoint = true,
             Fillers = { [93172] = { 1 }, [94896] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 58.82, 31.1),
             Range = 20,
@@ -4232,7 +4106,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94484,
-            NonSkippableWaypoint = true,
             Fillers = { [93172] = { 1 }, [94896] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.06, 31.69),
             Range = 30,
@@ -4241,7 +4114,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94484,
-            NonSkippableWaypoint = true,
             Fillers = { [93172] = { 1 }, [94896] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.15, 32.25),
             Range = 30,
@@ -4386,7 +4258,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93165,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.75, 36.44),
             Range = 30,
             RaidIcon = 254151,
@@ -4402,7 +4273,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94489,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.8, 36),
             Range = 15,
             IsQuestOnQuest = 94489,
@@ -4422,7 +4292,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94489,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 64.703, 30.067),
             Range = 20,
             Zone = 2521,
@@ -4468,7 +4337,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94489,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 61.77, 39.14),
             Range = 15,
@@ -4506,7 +4374,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94491,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.18, 72.616),
             Range = 10,
             Zone = 2521,
@@ -4533,7 +4400,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94491,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.55, 73.45),
             Range = 25,
             RaidIcon = 252359,
@@ -4570,7 +4436,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92644,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.93, 76.37),
             Range = 5,
@@ -4579,7 +4444,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92644,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.46, 76.8),
             Range = 5,
@@ -4588,7 +4452,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92644,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.43, 76.58),
             Range = 5,
@@ -4597,7 +4460,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92644,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.43, 76.83),
             Range = 5,
@@ -4606,7 +4468,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92644,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.31, 77.08),
             Range = 5,
@@ -4615,7 +4476,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92644,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66, 76.57),
             Range = 8,
@@ -4624,7 +4484,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92644,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.19, 76.22),
             Range = 8,
@@ -4633,7 +4492,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92644,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.44, 76.4),
             Range = 5,
@@ -4649,7 +4507,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94568,
-            NonSkippableWaypoint = true,
             Fillers = { [94568] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.18, 76.51),
             Range = 5,
@@ -4697,7 +4554,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92640,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.49, 76.64),
             Range = 8,
             Not = { IsQuestReadyForTurnIn = 92640 },
@@ -4723,7 +4579,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92741,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.94, 77.92),
             Range = 30,
             RaidIcon = 253004,
@@ -4732,7 +4587,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92741,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 61.45, 77.15),
             Range = 30,
             RaidIcon = 253004,
@@ -4741,7 +4595,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92741,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.13, 76.85),
             Range = 30,
             RaidIcon = 253004,
@@ -4750,7 +4603,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92741,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.35, 78.58),
             Range = 30,
             RaidIcon = 253004,
@@ -4851,7 +4703,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92640,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.65, 79.27),
             Range = 30,
@@ -4860,7 +4711,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92640,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 64.98, 77.12),
             Range = 30,
@@ -4869,7 +4719,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92640,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.93, 76.37),
             Range = 5,
@@ -4878,7 +4727,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92640,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.46, 76.8),
             Range = 5,
@@ -4887,7 +4735,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92640,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.43, 76.58),
             Range = 5,
@@ -4896,7 +4743,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92640,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.43, 76.83),
             Range = 5,
@@ -4905,7 +4751,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92640,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.31, 77.08),
             Range = 5,
@@ -4914,7 +4759,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92640,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66, 76.57),
             Range = 8,
@@ -4923,7 +4767,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92640,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.19, 76.22),
             Range = 8,
@@ -4932,7 +4775,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92640,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.44, 76.4),
             Range = 5,
@@ -4948,7 +4790,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93065,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.49, 76.64),
             Range = 8,
             Not = { IsQuestReadyForTurnIn = 93065 },
@@ -4957,7 +4798,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93065,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.39, 76.26),
             Range = 10,
             Not = { IsQuestReadyForTurnIn = 93065 },
@@ -4981,7 +4821,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93065,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.99, 74.1),
             Range = 40,
             RaidIcon = 253844,
@@ -5006,7 +4845,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93317,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 60.95, 73.17),
             Range = 15,
             RaidIcon = 257006,
@@ -5015,7 +4853,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93317,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 60.64, 72.94),
             Range = 8,
             RaidIcon = 257006,
@@ -5046,7 +4883,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.81, 83.44),
             Range = 5,
             SkipInZones = { 1416 },
@@ -5069,7 +4905,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 888, y = -9027.101 },
             Range = 9,
             RaidIcon = 1748,
@@ -5078,7 +4913,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 867.4, y = -9005.5 },
             Range = 8,
             RaidIcon = 1748,
@@ -5087,7 +4921,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 877.3, y = -9008.9 },
             Range = 8,
             RaidIcon = 1748,
@@ -5096,7 +4929,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 864, y = -9001.3 },
             Range = 8,
             RaidIcon = 1748,
@@ -5105,7 +4937,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 811.9, y = -8993.2 },
             Range = 20,
             RaidIcon = 1748,
@@ -5114,7 +4945,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 780.5, y = -8975.8 },
             Range = 20,
             RaidIcon = 1748,
@@ -5123,7 +4953,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 770.5, y = -8947.2 },
             Range = 20,
             RaidIcon = 1748,
@@ -5132,7 +4961,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 789.9, y = -8907.4 },
             Range = 20,
             RaidIcon = 1748,
@@ -5141,7 +4969,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 755.5, y = -8878.5 },
             Range = 20,
             RaidIcon = 1748,
@@ -5150,7 +4977,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 715.5, y = -8843.3 },
             Range = 20,
             RaidIcon = 1748,
@@ -5159,7 +4985,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 675.6, y = -8782.601 },
             Range = 20,
             RaidIcon = 1748,
@@ -5168,7 +4993,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 629.7, y = -8759.8 },
             Range = 20,
             RaidIcon = 1748,
@@ -5177,7 +5001,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 603.4, y = -8765.5 },
             Range = 20,
             RaidIcon = 1748,
@@ -5186,7 +5009,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 573.5, y = -8737.8 },
             Range = 20,
             RaidIcon = 1748,
@@ -5195,7 +5017,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 552.5, y = -8742 },
             Range = 20,
             RaidIcon = 1748,
@@ -5204,7 +5025,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 527.7, y = -8703.5 },
             Range = 20,
             RaidIcon = 1748,
@@ -5213,7 +5033,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 552.6, y = -8656.9 },
             Range = 20,
             RaidIcon = 1748,

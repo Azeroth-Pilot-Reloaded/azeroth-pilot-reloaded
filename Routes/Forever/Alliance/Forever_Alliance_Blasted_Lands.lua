@@ -632,7 +632,6 @@ APR.RouteQuestStepList["Forever-Alliance-Blasted-Lands"] = {
         },
         {
             Waypoint = 3823,
-            NonSkippableWaypoint = true,
             Coord = { x = -2571.92, y = -8614.39 },
             Range = 20,
             SkipForLvl = 52,
@@ -641,7 +640,6 @@ APR.RouteQuestStepList["Forever-Alliance-Blasted-Lands"] = {
         },
         {
             Waypoint = 3823,
-            NonSkippableWaypoint = true,
             Coord = { x = -2536.77, y = -8358.67 },
             Range = 5,
             SkipForLvl = 52,
@@ -650,7 +648,6 @@ APR.RouteQuestStepList["Forever-Alliance-Blasted-Lands"] = {
         },
         {
             Waypoint = 3823,
-            NonSkippableWaypoint = true,
             Coord = { x = -2680.3, y = -8272.77 },
             Range = 20,
             SkipForLvl = 52,
@@ -674,7 +671,6 @@ APR.RouteQuestStepList["Forever-Alliance-Blasted-Lands"] = {
         },
         {
             Waypoint = 3823,
-            NonSkippableWaypoint = true,
             Coord = { x = -2680.3, y = -8272.77 },
             Range = 20,
             IsQuestOnQuest = 3823,

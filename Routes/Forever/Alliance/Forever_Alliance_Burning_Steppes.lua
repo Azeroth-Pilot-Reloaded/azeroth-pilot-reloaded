@@ -43,7 +43,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
     steps = {
         {
             Waypoint = 3702,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 44.51, 49.57),
             Range = 12,
             IsQuestUncompleted = 3702,
@@ -52,7 +51,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3701,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 44.51, 49.57),
             Range = 12,
             IsQuestCompleted = 3702,
@@ -131,7 +129,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 4512,
-            NonSkippableWaypoint = true,
             Coord = { x = -1117.6, y = -4615.14 },
             Range = 15.0,
             Class = "WARLOCK",
@@ -147,7 +144,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 4512,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = { x = -1134.2, y = -4610.39 },
             Range = 15.0,
@@ -157,7 +153,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 4512,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = { x = -1130.26, y = -4601.27 },
             Range = 5,
@@ -225,7 +220,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3701,
-            NonSkippableWaypoint = true,
             Coord = { x = -2736.92, y = -8365.07 },
             Range = 15,
             ZoneStepTrigger = { x = -2736.92, y = -8365.07, mapID = 1428, Range = 15 },
@@ -244,7 +238,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3701,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1433, 30.59, 59.41),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1433, 30.59, 59.41, 15),
@@ -254,7 +247,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3823,
-            NonSkippableWaypoint = true,
             Coord = { x = -2571.92, y = -8614.39 },
             Range = 20,
             IsQuestUncompleted = 3823,
@@ -263,7 +255,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3823,
-            NonSkippableWaypoint = true,
             Coord = { x = -2536.77, y = -8358.67 },
             Range = 5,
             IsQuestUncompleted = 3823,
@@ -272,7 +263,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3823,
-            NonSkippableWaypoint = true,
             Coord = { x = -2680.3, y = -8272.77 },
             Range = 20,
             IsQuestUncompleted = 3823,
@@ -300,7 +290,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3823,
-            NonSkippableWaypoint = true,
             Coord = { x = -2680.3, y = -8272.77 },
             Range = 20,
             IsQuestOnQuest = 3823,
@@ -328,7 +317,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3701,
-            NonSkippableWaypoint = true,
             Coord = { x = -2177.54, y = -7499.89 },
             Range = 5,
             IsQuestsUncompleted = { 4296, 4726 },
@@ -349,7 +337,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 4022,
-            NonSkippableWaypoint = true,
             Coord = { x = -3003, y = -7652 },
             Range = 6,
             AnyOf = { { ItemCount = { operator = ">=", count = 1, itemID = 10575 } }, { IsQuestOnQuest = 4022 } },
@@ -359,7 +346,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 4022,
-            NonSkippableWaypoint = true,
             Coord = { x = -3027, y = -7654 },
             Range = 4,
             AnyOf = { { ItemCount = { operator = ">=", count = 1, itemID = 10575 } }, { IsQuestOnQuest = 4022 } },
@@ -447,7 +433,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3824,
-            NonSkippableWaypoint = true,
             Coord = { x = -2680.3, y = -8272.77 },
             Range = 20,
             IsQuestOnQuest = 3824,
@@ -456,7 +441,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 4283,
-            NonSkippableWaypoint = true,
             Coord = { x = -2680.3, y = -8272.77 },
             Range = 20,
             IsQuestNotOnQuest = 3824,
@@ -501,7 +485,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3701,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1433, 30.59, 59.41),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1433, 30.59, 59.41, 15),
@@ -534,7 +517,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3701,
-            NonSkippableWaypoint = true,
             Coord = { x = 490.03, y = -8835.82 },
             Range = 15,
             ZoneStepTrigger = { x = 490.03, y = -8835.82, mapID = 1453, Range = 15 },
@@ -622,7 +604,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 5022,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = 737.47, y = -8559.5 },
             Range = 6,
@@ -719,7 +700,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 6182,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 74.9, 54),
             Range = 20,
@@ -731,7 +711,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 6182,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 78.43, 60.15),
             Range = 20,
@@ -743,7 +722,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 6182,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 78.67, 60.13),
             Range = 5,
@@ -802,7 +780,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3701,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1433, 30.59, 59.41),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1433, 30.59, 59.41, 15),
@@ -835,7 +812,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3701,
-            NonSkippableWaypoint = true,
             Coord = { x = -2736.92, y = -8365.07 },
             Range = 15,
             ZoneStepTrigger = { x = -2736.92, y = -8365.07, mapID = 1428, Range = 15 },
@@ -864,7 +840,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3701,
-            NonSkippableWaypoint = true,
             Coord = { x = -2177.54, y = -7499.89 },
             Range = 5,
             IsQuestsUncompleted = { 4296, 4726 },
@@ -900,7 +875,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3825,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 76.13, 38.04),
             Range = 10,
             IsQuestOnQuest = 3825,
@@ -926,7 +900,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3825,
-            NonSkippableWaypoint = true,
             Coord = { x = -2680.3, y = -8272.77 },
             Range = 20,
             IsQuestOnQuest = 3825,
@@ -935,7 +908,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 4224,
-            NonSkippableWaypoint = true,
             Coord = { x = -2680.3, y = -8272.77 },
             Range = 20,
             IsQuestNotOnQuest = 3825,
@@ -969,7 +941,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3701,
-            NonSkippableWaypoint = true,
             Coord = { x = 490.03, y = -8835.82 },
             Range = 15,
             ZoneStepTrigger = { x = 490.03, y = -8835.82, mapID = 1453, Range = 15 },
@@ -980,7 +951,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 5022,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = 737.47, y = -8559.5 },
             Range = 6,
@@ -1034,7 +1004,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 6182,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 74.9, 54),
             Range = 20,
@@ -1045,7 +1014,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 6182,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 78.43, 60.15),
             Range = 20,
@@ -1056,7 +1024,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 6182,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 78.67, 60.13),
             Range = 5,
@@ -1197,7 +1164,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3701,
-            NonSkippableWaypoint = true,
             Coord = { x = 490.03, y = -8835.82 },
             Range = 15,
             ZoneStepTrigger = { x = 490.03, y = -8835.82, mapID = 1453, Range = 15 },
@@ -1217,7 +1183,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3701,
-            NonSkippableWaypoint = true,
             Coord = { x = -928.4, y = -4614.5 },
             Range = 15,
             ZoneStepTrigger = { x = -928.4, y = -4614.5, mapID = 1455, Range = 15 },
@@ -1274,7 +1239,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3701,
-            NonSkippableWaypoint = true,
             Coord = { x = 490.03, y = -8835.82 },
             Range = 15,
             ZoneStepTrigger = { x = 490.03, y = -8835.82, mapID = 1453, Range = 15 },
@@ -1292,7 +1256,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3701,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 35.9, 60.17),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1455, 35.9, 60.17, 15),
@@ -1484,7 +1447,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3701,
-            NonSkippableWaypoint = true,
             Coord = { x = -1117.6, y = -4615.14 },
             Range = 15.0,
             Class = "WARLOCK",
@@ -1500,7 +1462,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3701,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = { x = -1134.2, y = -4610.39 },
             Range = 15.0,
@@ -1510,7 +1471,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3701,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = { x = -1130.26, y = -4601.27 },
             Range = 5,
@@ -1534,7 +1494,6 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
         },
         {
             Waypoint = 3701,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 44.51, 49.57),
             Range = 12,
             IsQuestOnQuest = 3701,

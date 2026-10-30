@@ -387,7 +387,6 @@ APR.RouteQuestStepList["Forever-Alliance-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 689,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_CAVE" },
             Coord = { x = -388.05, y = -266.67 },
             Range = 20,
@@ -418,7 +417,6 @@ APR.RouteQuestStepList["Forever-Alliance-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 565,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1416, 34.3, 83.5),
             Range = 20,
             Zone = 1416,
@@ -464,7 +462,6 @@ APR.RouteQuestStepList["Forever-Alliance-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 565,
-            NonSkippableWaypoint = true,
             Coord = { x = -1476.0, y = 846.9 },
             Range = 8,
             Zone = 1422,
@@ -472,7 +469,6 @@ APR.RouteQuestStepList["Forever-Alliance-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 565,
-            NonSkippableWaypoint = true,
             Coord = { x = -1429.07, y = 928.25 },
             Range = 15,
             Zone = 1422,
@@ -593,7 +589,6 @@ APR.RouteQuestStepList["Forever-Alliance-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 681,
-            NonSkippableWaypoint = true,
             Note = { "FOLLOW_PATH_STROMGARDE_KEEP_CAREFULLY_AVOID_ELITE" },
             Coord = { x = -1791.15, y = -1560.13 },
             Range = 15,
@@ -605,7 +600,6 @@ APR.RouteQuestStepList["Forever-Alliance-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 681,
-            NonSkippableWaypoint = true,
             Note = { "FOLLOW_PATH_STROMGARDE_KEEP_CAREFULLY_AVOID_ELITE" },
             Coord = { x = -1722.03, y = -1579.57 },
             Range = 15,
@@ -617,7 +611,6 @@ APR.RouteQuestStepList["Forever-Alliance-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 681,
-            NonSkippableWaypoint = true,
             Note = { "FOLLOW_PATH_STROMGARDE_KEEP_CAREFULLY_AVOID_ELITE" },
             Coord = { x = -1722.03, y = -1534.69 },
             Range = 15,
@@ -742,7 +735,6 @@ APR.RouteQuestStepList["Forever-Alliance-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 658,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Note = { "CAST_EAGLE_EYE_TRY_FIND_PLAINS_CREEPER", "CAST_TAME_BEAST_PLAINS_CREEPER_TAME" },
             Coord = { x = -2364.27, y = -1280.53 },
@@ -753,7 +745,6 @@ APR.RouteQuestStepList["Forever-Alliance-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 658,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Note = { "CAST_EAGLE_EYE_TRY_FIND_PLAINS_CREEPER", "CAST_TAME_BEAST_PLAINS_CREEPER_TAME" },
             Coord = { x = -2371.47, y = -1539.73 },
@@ -764,7 +755,6 @@ APR.RouteQuestStepList["Forever-Alliance-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 658,
-            NonSkippableWaypoint = true,
             Fillers = { [658] = { 1 } },
             Note = { "CAST_EAGLE_EYE_TRY_FIND_PLAINS_CREEPER", "CAST_TAME_BEAST_PLAINS_CREEPER_TAME" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 49, 50.2),
@@ -852,7 +842,6 @@ APR.RouteQuestStepList["Forever-Alliance-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 514,
-            NonSkippableWaypoint = true,
             Coord = { x = -512.15, y = -715.14 },
             Range = 5,
             ClassNot = "HUNTER",

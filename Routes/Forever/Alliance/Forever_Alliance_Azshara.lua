@@ -357,7 +357,6 @@ APR.RouteQuestStepList["Forever-Alliance-Azshara"] = {
         },
         {
             Waypoint = 5534,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 45.55, 37.79),
             Range = 20,
             IsQuestOnQuest = 5534,
@@ -448,7 +447,6 @@ APR.RouteQuestStepList["Forever-Alliance-Azshara"] = {
         },
         {
             Waypoint = 3449,
-            NonSkippableWaypoint = true,
             Coord = { x = -6462.43, y = 2574.35 },
             Range = 20,
             Zone = 1447,
@@ -456,7 +454,6 @@ APR.RouteQuestStepList["Forever-Alliance-Azshara"] = {
         },
         {
             Waypoint = 3449,
-            NonSkippableWaypoint = true,
             Coord = { x = -6746.29, y = 2520.28 },
             Range = 20,
             Zone = 1447,
@@ -464,7 +461,6 @@ APR.RouteQuestStepList["Forever-Alliance-Azshara"] = {
         },
         {
             Waypoint = 3449,
-            NonSkippableWaypoint = true,
             Note = { "DESCEND_CAREFULLY_LANDING_PAD_SMALL_ISLAND_AVOID" },
             Coord = { x = -7030.61, y = 2384.15 },
             Range = 20,
@@ -474,7 +470,6 @@ APR.RouteQuestStepList["Forever-Alliance-Azshara"] = {
         },
         {
             Waypoint = 3449,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 77.8, 91.327),
             Range = 10,
             Zone = 1447,

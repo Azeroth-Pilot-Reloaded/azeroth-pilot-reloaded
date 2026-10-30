@@ -43,7 +43,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
         },
         {
             Waypoint = 96395,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_OLD_IRONFORGE_KING_MAGNI_ROOM" },
             Coord = { x = -1054.3, y = -4843.2 },
             Range = 10,
@@ -52,7 +51,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
         },
         {
             Waypoint = 96395,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_OLD_IRONFORGE_KING_MAGNI_ROOM" },
             Coord = { x = -1081.9, y = -4850.1 },
             Range = 10,
@@ -61,7 +59,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
         },
         {
             Waypoint = 96395,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_OLD_IRONFORGE_KING_MAGNI_ROOM" },
             Coord = { x = -1082.8, y = -4886.0 },
             Range = 10,
@@ -70,7 +67,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
         },
         {
             Waypoint = 96395,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_OLD_IRONFORGE_KING_MAGNI_ROOM" },
             Coord = { x = -1087.7, y = -4821.9 },
             Range = 10,
@@ -79,7 +75,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
         },
         {
             Waypoint = 96395,
-            NonSkippableWaypoint = true,
             Note = { "TRAVEL_OLD_IRONFORGE_KING_MAGNI_ROOM" },
             Coord = { x = -1010.3, y = -4850.9 },
             Range = 10,
@@ -96,7 +91,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
         },
         {
             Waypoint = 96395,
-            NonSkippableWaypoint = true,
             Note = { "DROP_RAMP_BELOW" },
             Coord = { x = -996.1, y = -4821.2 },
             Range = 10,
@@ -105,7 +99,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
         },
         {
             Waypoint = 96395,
-            NonSkippableWaypoint = true,
             Note = { "DROP_RAMP_BELOW" },
             Coord = { x = -972.0, y = -4803.0 },
             Range = 10,
@@ -114,7 +107,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
         },
         {
             Waypoint = 96395,
-            NonSkippableWaypoint = true,
             Note = { "DROP_RAMP_BELOW" },
             Coord = { x = -988.9, y = -4854.4 },
             Range = 10,
@@ -234,7 +226,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
         },
         {
             Waypoint = 96394,
-            NonSkippableWaypoint = true,
             Note = { "RETURN_AFADRA_DUNWALL_RAMP" },
             Coord = { x = -1006.6, y = -4841.6 },
             Range = 10,
@@ -245,7 +236,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
         },
         {
             Waypoint = 96394,
-            NonSkippableWaypoint = true,
             Note = { "RETURN_AFADRA_DUNWALL_RAMP" },
             Coord = { x = -969.7, y = -4841.5 },
             Range = 10,
@@ -256,7 +246,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
         },
         {
             Waypoint = 96394,
-            NonSkippableWaypoint = true,
             Note = { "RETURN_AFADRA_DUNWALL_RAMP" },
             Coord = { x = -964.3, y = -4807.5 },
             Range = 10,
@@ -267,7 +256,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
         },
         {
             Waypoint = 96394,
-            NonSkippableWaypoint = true,
             Note = { "RETURN_AFADRA_DUNWALL_RAMP" },
             Coord = { x = -993.5, y = -4817.6 },
             Range = 10,
@@ -278,7 +266,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
         },
         {
             Waypoint = 96394,
-            NonSkippableWaypoint = true,
             Note = { "RETURN_AFADRA_DUNWALL_RAMP" },
             Coord = { x = -983.7, y = -4847.8 },
             Range = 10,
@@ -289,7 +276,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
         },
         {
             Waypoint = 96394,
-            NonSkippableWaypoint = true,
             Note = { "RETURN_AFADRA_DUNWALL_RAMP" },
             Coord = { x = -1022.0, y = -4842.1 },
             Range = 10,
@@ -300,7 +286,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
         },
         {
             Waypoint = 96394,
-            NonSkippableWaypoint = true,
             Note = { "RETURN_AFADRA_DUNWALL_RAMP" },
             Coord = { x = -994.0, y = -4843.1 },
             Range = 10,
@@ -319,7 +304,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
         },
         {
             Waypoint = 96393,
-            NonSkippableWaypoint = true,
             Note = { "UP_RAMP" },
             Coord = { x = -1030.2, y = -4831.0 },
             Range = 10,
@@ -330,7 +314,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
         },
         {
             Waypoint = 96393,
-            NonSkippableWaypoint = true,
             Note = { "UP_RAMP" },
             Coord = { x = -1090.9, y = -4830.4 },
             Range = 10,
@@ -341,7 +324,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
         },
         {
             Waypoint = 96393,
-            NonSkippableWaypoint = true,
             Note = { "UP_RAMP" },
             Coord = { x = -1079.6, y = -4884.1 },
             Range = 10,
@@ -352,7 +334,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
         },
         {
             Waypoint = 96393,
-            NonSkippableWaypoint = true,
             Note = { "UP_RAMP" },
             Coord = { x = -1058.0, y = -4842.5 },
             Range = 10,

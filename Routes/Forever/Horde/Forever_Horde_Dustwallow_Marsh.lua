@@ -635,7 +635,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = { x = -4682, y = 2032 },
             Range = 8,
             ZoneStepTrigger = { x = -4682, y = 2032, Range = 8, mapID = 1454 },
@@ -648,7 +647,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = { x = -4702, y = 2047 },
             Range = 8,
             ZoneStepTrigger = { x = -4702, y = 2047, Range = 8, mapID = 1454 },
@@ -661,7 +659,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = { x = -4705, y = 2073 },
             Range = 8,
             ZoneStepTrigger = { x = -4705, y = 2073, Range = 8, mapID = 1454 },
@@ -674,7 +671,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = { x = -4661, y = 2089 },
             Range = 8,
             ZoneStepTrigger = { x = -4661, y = 2089, Range = 8, mapID = 1454 },
@@ -687,7 +683,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = { x = -4645, y = 2059 },
             Range = 8,
             ZoneStepTrigger = { x = -4645, y = 2059, Range = 8, mapID = 1454 },
@@ -700,7 +695,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = { x = -4616, y = 2057 },
             Range = 8,
             ZoneStepTrigger = { x = -4616, y = 2057, Range = 8, mapID = 1454 },
@@ -713,7 +707,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = { x = -4604, y = 2078 },
             Range = 8,
             ZoneStepTrigger = { x = -4604, y = 2078, Range = 8, mapID = 1454 },
@@ -778,7 +771,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 78.11, 38.46),
             Range = 5,
             Class = "HUNTER",
@@ -905,7 +897,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 3631,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 47.52, 46.73),
             Range = 5,
@@ -967,7 +958,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = { x = -4417.1, y = 1480.6 },
             Range = 15,
             ZoneStepTrigger = { x = -4417.1, y = 1480.6, Range = 15 },
@@ -983,7 +973,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = { x = -4412.5, y = 1436.4 },
             Range = 15,
             ZoneStepTrigger = { x = -4412.5, y = 1436.4, Range = 15 },
@@ -999,7 +988,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = { x = -4363.9, y = 1420.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4363.9, y = 1420.2, Range = 15 },
@@ -1015,7 +1003,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = { x = -4370, y = 1382.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4370, y = 1382.2, Range = 15 },
@@ -1031,7 +1018,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1411, 52.4, 43.5),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1411, 52.4, 43.5, 15),
@@ -1062,7 +1048,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1411, 52.4, 43.5),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1411, 52.4, 43.5, 15),
@@ -1088,7 +1073,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = { x = -7.3, y = -1089.6 },
             Range = 10,
             ZoneStepTrigger = { x = -7.3, y = -1089.6, Range = 10 },
@@ -1103,7 +1087,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = { x = -48.8, y = -1037.3 },
             Range = 10,
             ZoneStepTrigger = { x = -48.8, y = -1037.3, Range = 10 },
@@ -1118,7 +1101,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = { x = -76.9, y = -1026 },
             Range = 10,
             ZoneStepTrigger = { x = -76.9, y = -1026, Range = 10 },
@@ -1133,7 +1115,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = -110.5, y = -970.7 },
             Range = 10,
@@ -1171,7 +1152,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = { x = -110.5, y = -970.7 },
             Range = 10,
             ZoneStepTrigger = { x = -110.5, y = -970.7, Range = 10 },
@@ -1182,7 +1162,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = { x = -76.9, y = -1026 },
             Range = 10,
             ZoneStepTrigger = { x = -76.9, y = -1026, Range = 10 },
@@ -1193,7 +1172,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = { x = -48.8, y = -1037.3 },
             Range = 10,
             ZoneStepTrigger = { x = -48.8, y = -1037.3, Range = 10 },
@@ -1204,7 +1182,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Note = { "UP_ELEVATOR" },
             Coord = { x = -7.3, y = -1089.6 },
             Range = 10,
@@ -1226,7 +1203,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = { x = -4417.1, y = 1480.6 },
             Range = 15,
             ZoneStepTrigger = { x = -4417.1, y = 1480.6, Range = 15 },
@@ -1237,7 +1213,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = { x = -4412.5, y = 1436.4 },
             Range = 15,
             ZoneStepTrigger = { x = -4412.5, y = 1436.4, Range = 15 },
@@ -1248,7 +1223,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = { x = -4363.9, y = 1420.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4363.9, y = 1420.2, Range = 15 },
@@ -1259,7 +1233,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = { x = -4370, y = 1382.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4370, y = 1382.2, Range = 15 },
@@ -1270,7 +1243,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = { x = -4636.4, y = 1338.7 },
             Range = 5,
             ZoneStepTrigger = { x = -4636.4, y = 1338.7, Range = 5 },
@@ -1281,7 +1253,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = { x = -4645.1, y = 1345 },
             Range = 5,
             ZoneStepTrigger = { x = -4645.1, y = 1345, Range = 5 },
@@ -1317,7 +1288,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 61.8, 65.06),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1420, 61.8, 65.06, 15),
@@ -1328,7 +1298,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 66.09, 20.06),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1458, 66.09, 20.06, 15),
@@ -1339,7 +1308,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 64.37, 23.94),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1458, 64.37, 23.94, 15),
@@ -1350,7 +1318,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.93, 26.71),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1458, 65.93, 26.71, 10),
@@ -1361,7 +1328,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.89, 34.03),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1458, 65.89, 34.03, 10),
@@ -1372,7 +1338,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 64.22, 39.77),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1458, 64.22, 39.77, 10),
@@ -1383,7 +1348,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.53, 43.62),
             Range = 15,
@@ -1461,7 +1425,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.53, 43.62),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1458, 65.53, 43.62, 15),
@@ -1479,7 +1442,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 64.22, 39.77),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1458, 64.22, 39.77, 10),
@@ -1497,7 +1459,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.89, 34.03),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1458, 65.89, 34.03, 10),
@@ -1515,7 +1476,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.93, 26.71),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1458, 65.93, 26.71, 10),
@@ -1533,7 +1493,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 64.37, 23.94),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1458, 64.37, 23.94, 15),
@@ -1551,7 +1510,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Note = { "UP_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 66.09, 20.06),
             Range = 15,
@@ -1570,7 +1528,6 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 232,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 61.8, 65.06),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1420, 61.8, 65.06, 15),

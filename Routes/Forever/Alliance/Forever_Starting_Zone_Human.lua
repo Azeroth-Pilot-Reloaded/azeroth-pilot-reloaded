@@ -50,7 +50,6 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
         },
         {
             Waypoint = 40,
-            NonSkippableWaypoint = true,
             Coord = { x = 444.6, y = -9048.9 },
             Range = 8,
             ZoneStepTrigger = { x = 444.6, y = -9048.9, Range = 8 },
@@ -61,7 +60,6 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
         },
         {
             Waypoint = 40,
-            NonSkippableWaypoint = true,
             Coord = { x = 370.1, y = -9146.6 },
             Range = 8,
             ZoneStepTrigger = { x = 370.1, y = -9146.6, Range = 8 },
@@ -72,7 +70,6 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
         },
         {
             Waypoint = 40,
-            NonSkippableWaypoint = true,
             Coord = { x = 72.81, y = -9496.23 },
             Range = 10,
             IsQuestUncompleted = 40,
@@ -81,7 +78,6 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
         },
         {
             Waypoint = 40,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = 12.52, y = -9479.85 },
             Range = 9.0,
@@ -174,7 +170,6 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
         },
         {
             Waypoint = 35,
-            NonSkippableWaypoint = true,
             Coord = { x = -1032.06, y = -9610.23 },
             Range = 20,
             Zone = 1429,
@@ -358,7 +353,6 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
         },
         {
             Waypoint = 91740,
-            NonSkippableWaypoint = true,
             Coord = { x = -1406.2, y = -9775.5 },
             Range = 10,
             IsQuestOnQuest = 91740,
@@ -375,7 +369,6 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
         },
         {
             Waypoint = 244,
-            NonSkippableWaypoint = true,
             Coord = { x = -1948.56, y = -9582.75 },
             Range = 5,
             Zone = 1433,
@@ -461,7 +454,6 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
         },
         {
             Waypoint = 1688,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = { x = 988.44, y = -8942.15 },
             Range = 20.0,
@@ -472,7 +464,6 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
         },
         {
             Waypoint = 1688,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = { x = 1015.33, y = -8978.9 },
             Range = 15.0,
@@ -509,7 +500,6 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
         },
         {
             Waypoint = 1689,
-            NonSkippableWaypoint = true,
             Coord = { x = 1042.22, y = -9002.21 },
             Range = 18.0,
             Class = "WARLOCK",
@@ -519,7 +509,6 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
         },
         {
             Waypoint = 1689,
-            NonSkippableWaypoint = true,
             Coord = { x = 1069.1, y = -8991.45 },
             Range = 18.0,
             Class = "WARLOCK",
@@ -529,7 +518,6 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
         },
         {
             Waypoint = 1689,
-            NonSkippableWaypoint = true,
             Coord = { x = 1027.43, y = -8991.45 },
             Range = 18.0,
             Class = "WARLOCK",
@@ -567,7 +555,6 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
         },
         {
             Waypoint = 39,
-            NonSkippableWaypoint = true,
             Coord = { x = 444.6, y = -9048.9 },
             Range = 8,
             ZoneStepTrigger = { x = 444.6, y = -9048.9, Range = 8 },
@@ -584,7 +571,6 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
         },
         {
             Waypoint = 39,
-            NonSkippableWaypoint = true,
             Coord = { x = 370.1, y = -9146.6 },
             Range = 8,
             ZoneStepTrigger = { x = 370.1, y = -9146.6, Range = 8 },
@@ -601,7 +587,6 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
         },
         {
             Waypoint = 39,
-            NonSkippableWaypoint = true,
             Coord = { x = 74.02, y = -9465.52 },
             Range = 5,
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" },
@@ -610,7 +595,6 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
         },
         {
             Waypoint = 147,
-            NonSkippableWaypoint = true,
             Coord = { x = 74.02, y = -9465.52 },
             Range = 5,
             Class = "WARLOCK",
@@ -682,7 +666,6 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
         },
         {
             Waypoint = 88,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = 12.52, y = -9479.85 },
             Range = 9.0,
@@ -735,7 +718,6 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
         },
         {
             Waypoint = 184,
-            NonSkippableWaypoint = true,
             Coord = { x = 918.42, y = -9851.5 },
             Range = 5,
             Zone = 1436,
@@ -750,7 +732,6 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
         },
         {
             Waypoint = 64,
-            NonSkippableWaypoint = true,
             Coord = { x = 918.42, y = -9851.5 },
             Range = 5,
             Zone = 1436,
@@ -1132,7 +1113,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 783,
-            NonSkippableWaypoint = true,
             Coord = { x = -112.74, y = -8901.66 },
             Range = 5,
             Class = "WARRIOR",
@@ -1222,7 +1202,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 91741,
-            NonSkippableWaypoint = true,
             Fillers = { [33] = { 1 } },
             Note = { "COLLECT_QUEST_NO_SEPARATE_FARMING_TRIP_NEEDED" },
             Coord = { x = -136.9, y = -8913.8 },
@@ -1232,7 +1211,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 91741,
-            NonSkippableWaypoint = true,
             Fillers = { [33] = { 1 } },
             Note = { "COLLECT_QUEST_NO_SEPARATE_FARMING_TRIP_NEEDED" },
             Coord = { x = -176.0, y = -8880.9 },
@@ -1332,7 +1310,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 7,
-            NonSkippableWaypoint = true,
             Coord = { x = -104.21, y = -8909.39 },
             Range = 5,
             RaidIcon = 78,
@@ -1507,7 +1484,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 15,
-            NonSkippableWaypoint = true,
             Coord = { x = -112.8, y = -8901.601 },
             Range = 5,
             Class = "HUNTER",
@@ -1556,7 +1532,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 3104,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 48.79, 41.58),
             Range = 12.0,
@@ -1566,7 +1541,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 3104,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 48.975, 41.146),
             Range = 12.0,
@@ -1576,7 +1550,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 3104,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 49.262, 40.633),
             Range = 12.0,
@@ -1586,7 +1559,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 3104,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 49.51, 40.095),
             Range = 6.0,
@@ -1596,7 +1568,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 3104,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 49.691, 40.23),
             Range = 6.0,
@@ -1606,7 +1577,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 3104,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 49.595, 40.673),
             Range = 6.0,
@@ -1616,7 +1586,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 3104,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 49.324, 40.492),
             Range = 6.0,
@@ -1626,7 +1595,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 3104,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 49.436, 39.881),
             Range = 10.0,
@@ -1636,7 +1604,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 3104,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = -188.23, y = -8851.58 },
             Range = 12.0,
@@ -1662,7 +1629,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 3103,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = { x = -175.7, y = -8881.62 },
             Range = 15.0,
@@ -1672,7 +1638,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 3103,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = { x = -193.06, y = -8870.05 },
             Range = 10.0,
@@ -1698,7 +1663,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 3100,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = { x = -186.12, y = -8907.08 },
             Range = 15.0,
@@ -1708,7 +1672,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 3101,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = { x = -186.12, y = -8907.08 },
             Range = 15.0,
@@ -1826,7 +1789,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 3903,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_CAVE" },
             Coord = { x = -117.74, y = -8681.87 },
             Range = 20.0,
@@ -1835,7 +1797,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 91752,
-            NonSkippableWaypoint = true,
             Coord = { x = -124, y = -8670 },
             Range = 4,
             IsQuestOnQuest = 91752,
@@ -1845,7 +1806,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 91752,
-            NonSkippableWaypoint = true,
             Coord = { x = -128, y = -8650 },
             Range = 4,
             IsQuestOnQuest = 91752,
@@ -1855,7 +1815,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 91752,
-            NonSkippableWaypoint = true,
             Coord = { x = -136, y = -8640 },
             Range = 4,
             IsQuestOnQuest = 91752,
@@ -1865,7 +1824,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 91752,
-            NonSkippableWaypoint = true,
             Coord = { x = -146, y = -8634 },
             Range = 4,
             IsQuestOnQuest = 91752,
@@ -1875,7 +1833,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 91752,
-            NonSkippableWaypoint = true,
             Coord = { x = -144, y = -8614 },
             Range = 4,
             IsQuestOnQuest = 91752,
@@ -1903,7 +1860,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 3903,
-            NonSkippableWaypoint = true,
             Coord = { x = -106, y = -8690 },
             Range = 5,
             IsQuestOnQuest = 3903,
@@ -2049,7 +2005,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 3905,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = -186.12, y = -8902.45 },
             Range = 15.0,
@@ -2059,7 +2014,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 3905,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = -161.82, y = -8895.51 },
             Range = 10.0,
@@ -2108,7 +2062,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 91752,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_CAVE" },
             Coord = { x = -117.74, y = -8681.87 },
             Range = 20,
@@ -2119,7 +2072,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 91752,
-            NonSkippableWaypoint = true,
             Coord = { x = -124, y = -8670 },
             Range = 4,
             IsQuestOnQuest = 91752,
@@ -2129,7 +2081,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 91752,
-            NonSkippableWaypoint = true,
             Coord = { x = -128, y = -8650 },
             Range = 4,
             IsQuestOnQuest = 91752,
@@ -2139,7 +2090,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 91752,
-            NonSkippableWaypoint = true,
             Coord = { x = -136, y = -8640 },
             Range = 4,
             IsQuestOnQuest = 91752,
@@ -2149,7 +2099,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 91752,
-            NonSkippableWaypoint = true,
             Coord = { x = -146, y = -8634 },
             Range = 4,
             IsQuestOnQuest = 91752,
@@ -2159,7 +2108,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 91752,
-            NonSkippableWaypoint = true,
             Coord = { x = -144, y = -8614 },
             Range = 4,
             IsQuestOnQuest = 91752,
@@ -2177,7 +2125,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 91752,
-            NonSkippableWaypoint = true,
             Coord = { x = -106, y = -8690 },
             Range = 5,
             IsQuestOnQuest = 91752,
@@ -2363,7 +2310,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 54,
-            NonSkippableWaypoint = true,
             Coord = { x = 94.01, y = -9464.89 },
             Range = 5,
             RaidIcon = 54,
@@ -2490,7 +2436,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 85,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = { x = -5.63, y = -9460.26 },
             Range = 5.0,
@@ -2509,7 +2454,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 85,
-            NonSkippableWaypoint = true,
             Coord = { x = -5.53, y = -9466.95 },
             Range = 5,
             RaidIcon = 6374,
@@ -2536,7 +2480,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 85,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = 12.52, y = -9479.85 },
             Range = 9.0,
@@ -2546,7 +2489,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 5623,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = 12.52, y = -9479.85 },
             Range = 9.0,
@@ -2685,7 +2627,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 85,
-            NonSkippableWaypoint = true,
             Fillers = { [86] = { 1 } },
             Coord = { x = 338.47, y = -9889.69 },
             Range = 5,
@@ -2789,7 +2730,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 106,
-            NonSkippableWaypoint = true,
             Fillers = { [86] = { 1 } },
             Coord = { x = 65.28, y = -10008.2 },
             Range = 5,
@@ -2955,7 +2895,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 62,
-            NonSkippableWaypoint = true,
             Coord = { x = 181.44, y = -9842.17 },
             Range = 15,
             AnyOf = { { IsQuestOnQuest = 62, Not = { IsQuestReadyForTurnIn = 62 } }, { IsQuestOnQuest = 87, Not = { IsQuestReadyForTurnIn = 87 } } },
@@ -3000,7 +2939,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 87,
-            NonSkippableWaypoint = true,
             Coord = { x = 181.44, y = -9842.17 },
             Range = 15,
             IsQuestOnQuest = 87,
@@ -3040,7 +2978,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 47,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = 72.81, y = -9496.23 },
             Range = 20,
@@ -3332,7 +3269,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 99127,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Note = { "DOWNSTAIRS" },
             Coord = { x = 4.78, y = -9467.21 },
@@ -3353,7 +3289,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 99127,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -5.53, y = -9466.95 },
             Range = 5,
@@ -3381,7 +3316,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 99127,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Note = { "UPSTAIRS" },
             Coord = { x = 12.52, y = -9479.85 },
@@ -3392,7 +3326,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 5624,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Note = { "UPSTAIRS" },
             Coord = { x = 12.52, y = -9479.85 },
@@ -3463,7 +3396,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 99127,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = 16.2, y = -9462.65 },
             Range = 5,
@@ -3484,7 +3416,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 99127,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = 16.2, y = -9462.65 },
             Range = 5,
@@ -3516,7 +3447,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 99127,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = 16.2, y = -9462.65 },
             Range = 5,
@@ -3683,7 +3613,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 76,
-            NonSkippableWaypoint = true,
             Coord = { x = -604.49, y = -9180.39 },
             Range = 15,
             IsQuestOnQuest = 76,
@@ -3693,7 +3622,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 91777,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Note = { "INSIDE_CAVE" },
             Coord = { x = -604.49, y = -9180.39 },
@@ -3704,7 +3632,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 76,
-            NonSkippableWaypoint = true,
             Coord = { x = -598, y = -9141 },
             Range = 5,
             IsQuestOnQuest = 76,
@@ -3742,7 +3669,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 91777,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -590.3, y = -9208.101 },
             Range = 10,
@@ -3752,7 +3678,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 91777,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -508.4, y = -9249.101 },
             Range = 10,
@@ -3762,7 +3687,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 91777,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -493.9, y = -9208 },
             Range = 10,
@@ -3772,7 +3696,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 91777,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -493, y = -9157.4 },
             Range = 18,
@@ -3782,7 +3705,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 91777,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -135.8, y = -8913.7 },
             Range = 10,
@@ -3802,7 +3724,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 35,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -439.5, y = -9118.5 },
             Range = 20,
@@ -3811,7 +3732,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 35,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -468.4, y = -9147.2 },
             Range = 10.0,
@@ -3820,7 +3740,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 35,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -497.1, y = -9173.0 },
             Range = 20.0,
@@ -3880,7 +3799,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 35,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Note = { "EXIT_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 61.82, 53.871),
@@ -4269,7 +4187,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 91740,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -1406.2, y = -9775.5 },
             Range = 10,
@@ -4289,7 +4206,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 244,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -1948.56, y = -9582.75 },
             Range = 5,
@@ -4321,7 +4237,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 244,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Note = { "STAY_ROAD_AVOID_ENEMIES" },
             Coord = { x = -1974.2, y = -9577.07 },
@@ -4333,7 +4248,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 244,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Note = { "STAY_ROAD_AVOID_ENEMIES" },
             Coord = { x = -2077.18, y = -9608.42 },
@@ -4345,7 +4259,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 244,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Note = { "STAY_ROAD_AVOID_ENEMIES" },
             Coord = { x = -2212.64, y = -9558.57 },
@@ -4380,7 +4293,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 112,
-            NonSkippableWaypoint = true,
             Coord = { x = 16.2, y = -9462.65 },
             Range = 10,
             Zone = 1429,
@@ -4430,7 +4342,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 39,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Note = { "UPSTAIRS" },
             Coord = { x = 12.52, y = -9479.85 },
@@ -4508,7 +4419,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 91746,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -81.9, y = -9381.8 },
             Range = 5.0,
@@ -4757,7 +4667,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 99129,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Note = { "DOWNSTAIRS" },
             Coord = { x = 4.78, y = -9467.21 },
@@ -4768,7 +4677,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 1685,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -5.36, y = -9472.76 },
             Range = 5,
@@ -4805,7 +4713,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 99129,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Note = { "UPSTAIRS" },
             Coord = { x = 18.66, y = -9476.47 },
@@ -4874,7 +4781,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 114,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = 37.61, y = -10014.03 },
             Range = 20,
@@ -4897,7 +4803,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 239,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = 673.96, y = -9704.45 },
             Range = 20,
@@ -4914,7 +4819,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 239,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = 694.29, y = -9662.79 },
             Range = 5,
@@ -4995,7 +4899,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 184,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = 918.42, y = -9851.5 },
             Range = 5,
@@ -5005,7 +4908,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 64,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = 918.42, y = -9851.5 },
             Range = 5,
@@ -5042,7 +4944,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 64,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = 918.42, y = -9851.5 },
             Range = 5,
@@ -5094,7 +4995,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 109,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = 1045.22, y = -10508.8 },
             Range = 5,
@@ -5212,7 +5112,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 6281,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = 613.0, y = -8796.03 },
             Range = 5,
@@ -5340,7 +5239,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 6281,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = 702.7, y = -8791.8 },
             Range = 5,
@@ -5365,7 +5263,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 1685,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Note = { "DOWNSTAIRS" },
             Coord = { x = 988.44, y = -8942.15 },
@@ -5376,7 +5273,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 1685,
-            NonSkippableWaypoint = true,
             Coord = { x = 1018, y = -8970 },
             Range = 3,
             Class = "WARLOCK",
@@ -5386,7 +5282,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 1685,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Note = { "DOWNSTAIRS" },
             Coord = { x = 1015.33, y = -8978.9 },
@@ -5397,7 +5292,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 1685,
-            NonSkippableWaypoint = true,
             Coord = { x = 1008, y = -8974 },
             Range = 3,
             Class = "WARLOCK",
@@ -5407,7 +5301,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 1685,
-            NonSkippableWaypoint = true,
             Coord = { x = 1012, y = -8968 },
             Range = 3,
             Class = "WARLOCK",
@@ -5417,7 +5310,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 1685,
-            NonSkippableWaypoint = true,
             Coord = { x = 1030, y = -8974 },
             Range = 3,
             Class = "WARLOCK",
@@ -5443,7 +5335,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 1688,
-            NonSkippableWaypoint = true,
             Coord = { x = 988.44, y = -8942.15 },
             Range = 20,
             Class = "WARLOCK",
@@ -5453,7 +5344,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 176,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = 74.02, y = -9465.52 },
             Range = 5,
@@ -5464,7 +5354,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 176,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = 74.02, y = -9465.52 },
             Range = 5,
@@ -5547,7 +5436,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 244,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -1948.56, y = -9582.75 },
             Range = 5,
@@ -5566,7 +5454,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 244,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Note = { "STAY_ROAD_WATCH_ENEMIES_AVOID_AGGRO" },
             Coord = { x = -1974.2, y = -9577.07 },
@@ -5577,7 +5464,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 244,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Note = { "STAY_ROAD_WATCH_ENEMIES_AVOID_AGGRO" },
             Coord = { x = -2077.18, y = -9608.42 },
@@ -5588,7 +5474,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 244,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Note = { "STAY_ROAD_WATCH_ENEMIES_AVOID_AGGRO" },
             Coord = { x = -2212.64, y = -9558.57 },
@@ -5599,7 +5484,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 244,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Note = { "STAY_ROAD_WATCH_ENEMIES_AVOID_AGGRO" },
             Coord = { x = -2238, y = -9443.69 },
@@ -5637,7 +5521,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 1688,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Note = { "DOWNSTAIRS" },
             Coord = { x = 988.44, y = -8942.15 },
@@ -5648,7 +5531,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 1688,
-            NonSkippableWaypoint = true,
             Coord = { x = 1018, y = -8970 },
             Range = 3,
             Class = "WARLOCK",
@@ -5658,7 +5540,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 1688,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Note = { "DOWNSTAIRS" },
             Coord = { x = 1015.33, y = -8978.9 },
@@ -5669,7 +5550,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 1688,
-            NonSkippableWaypoint = true,
             Coord = { x = 1008, y = -8974 },
             Range = 3,
             Class = "WARLOCK",
@@ -5679,7 +5559,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 1688,
-            NonSkippableWaypoint = true,
             Coord = { x = 1012, y = -8968 },
             Range = 3,
             Class = "WARLOCK",
@@ -5689,7 +5568,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 1688,
-            NonSkippableWaypoint = true,
             Coord = { x = 1030, y = -8974 },
             Range = 3,
             Class = "WARLOCK",
@@ -5725,7 +5603,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 1689,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = 1042.22, y = -9002.21 },
             Range = 18.0,
@@ -5735,7 +5612,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 1689,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = 1069.1, y = -8991.45 },
             Range = 18.0,
@@ -5745,7 +5621,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 1689,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = 1027.43, y = -8991.45 },
             Range = 18.0,
@@ -5783,7 +5658,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 6281,
-            NonSkippableWaypoint = true,
             Coord = { x = 988.44, y = -8942.15 },
             Range = 20,
             Class = "WARLOCK",
@@ -5903,7 +5777,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 94774,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Note = { "GO_STORMWIND_CATHEDRAL" },
             Coord = { x = 809.52, y = -8579.22 },
@@ -6006,7 +5879,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 6661,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = 562.3, y = -8385.3 },
             Range = 20.0,
@@ -6016,7 +5888,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 6661,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = 522.0, y = -8352.101 },
             Range = 5,
@@ -6092,7 +5963,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 353,
-            NonSkippableWaypoint = true,
             Coord = { x = -1330.28, y = -4840.43 },
             Range = 15,
             SkipInZones = { 1455, 1426, 1432 },
@@ -6101,7 +5971,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 67.4, 84.909),
             Range = 15.0,
@@ -6111,7 +5980,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -1234.65, y = -5035.67 },
             Range = 12.0,
@@ -6133,7 +6001,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Note = { "INSIDE_BUILDING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 61.552, 85.636),
@@ -6144,7 +6011,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Note = { "INSIDE_BUILDING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 61.356, 88.398),
@@ -6155,7 +6021,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -1205.65, y = -5042.12 },
             Range = 5,
@@ -6210,7 +6075,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Note = { "EXIT_BUILDING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 61.356, 88.398),
@@ -6228,7 +6092,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -1101.87, y = -4864.81 },
             Range = 20,
@@ -6238,7 +6101,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -1062.1, y = -4815.1 },
             Range = 20.0,
@@ -6248,7 +6110,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -1036.48, y = -4804.5 },
             Range = 20.0,
@@ -6258,7 +6119,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -992.68, y = -4742.08 },
             Range = 20.0,
@@ -6268,7 +6128,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -931.8, y = -4627.59 },
             Range = 20.0,
@@ -6278,7 +6137,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -928.4, y = -4614.51 },
             Range = 12.0,
@@ -6288,7 +6146,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -1101.87, y = -4864.81 },
             Range = 20,
@@ -6298,7 +6155,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -1062.1, y = -4815.1 },
             Range = 20.0,
@@ -6308,7 +6164,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -1036.48, y = -4804.5 },
             Range = 20.0,
@@ -6318,7 +6173,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -992.68, y = -4742.08 },
             Range = 20.0,
@@ -6328,7 +6182,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -928.4, y = -4635.61 },
             Range = 20.0,
@@ -6338,7 +6191,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -896.47, y = -4601.65 },
             Range = 12.0,
@@ -6455,7 +6307,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 53.47, 35.02),
             Range = 5,
@@ -6472,7 +6323,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -1145.04, y = -5504.3 },
             Range = 20,
@@ -6482,7 +6332,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 314,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -1219.9, y = -5422.55 },
             Range = 20,
@@ -6537,7 +6386,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 96392,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -1394.24, y = -5797.83 },
             Range = 5,
@@ -6587,7 +6435,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 433,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -1579.96, y = -5714.73 },
             Range = 5,
@@ -6632,7 +6479,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 433,
-            NonSkippableWaypoint = true,
             Coord = { x = -1679.89, y = -5728.88 },
             Range = 5,
             IsQuestOnQuest = 433,
@@ -6642,7 +6488,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 433,
-            NonSkippableWaypoint = true,
             Coord = { x = -1693, y = -5685 },
             Range = 5,
             IsQuestOnQuest = 433,
@@ -6662,7 +6507,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 433,
-            NonSkippableWaypoint = true,
             Coord = { x = -1663, y = -5721 },
             Range = 5,
             IsQuestOnQuest = 433,
@@ -6671,7 +6515,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 432,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -1600.3, y = -5726.59 },
             Range = 5,
@@ -6710,7 +6553,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 96390,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -1577.16, y = -5671.2 },
             Range = 5,
@@ -6746,7 +6588,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 96390,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -2009.87, y = -5860.22 },
             Range = 20,
@@ -6826,7 +6667,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 419,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -2197.02, y = -5279.07 },
             Range = 20,
@@ -6871,7 +6711,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Waypoint = 353,
-            NonSkippableWaypoint = true,
             Fillers = { [91775] = { 2 } },
             Coord = { x = -2354.62, y = -4898.2 },
             Range = 20,

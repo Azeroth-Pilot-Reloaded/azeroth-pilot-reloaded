@@ -323,7 +323,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 5361,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 44.63, 61.55),
             Range = 20,
             Zone = 1442,
@@ -331,7 +330,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 5361,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 38.77, 68.65),
             Range = 20,
             Zone = 1442,
@@ -339,7 +337,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 5361,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 30.22, 75.61),
             Range = 20,
             Zone = 1442,
@@ -347,7 +344,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 5361,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 29.29, 79.69),
             Range = 5,
             Zone = 1442,
@@ -355,7 +351,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1480,
-            NonSkippableWaypoint = true,
             Coord = { x = 1665.6, y = -459.4 },
             Range = 12,
             ZoneStepTrigger = { x = 1665.6, y = -459.4, Range = 12, mapID = 1443 },
@@ -383,7 +378,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 5741,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 40.74, 28.95),
             Range = 15,
             IsQuestNotOnQuest = 5741,
@@ -399,7 +393,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 5361,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 56.3, 57.07),
             Range = 20,
             Zone = 1443,
@@ -407,7 +400,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 5361,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 56.1, 53.66),
             Range = 10,
             IsQuestOnQuest = 5361,
@@ -423,7 +415,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1432,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 55.89, 53.49),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1443, 55.89, 53.49, 10),
@@ -491,7 +482,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1434,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 56.3, 57.07),
             Range = 20,
             Zone = 1443,
@@ -499,7 +489,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1434,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 55.89, 53.49),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1443, 55.89, 53.49, 10),
@@ -665,7 +654,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 5421,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 27.07, 75.74),
             Range = 20,
             Zone = 1443,
@@ -673,7 +661,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 5421,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 26.09, 74.49),
             Range = 20,
             Zone = 1443,
@@ -831,7 +818,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 5501,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 62.3, 39),
             Range = 20,
             Zone = 1443,
@@ -845,7 +831,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 5741,
-            NonSkippableWaypoint = true,
             Coord = { x = 1665.6, y = -459.4 },
             Range = 12,
             ZoneStepTrigger = { x = 1665.6, y = -459.4, Range = 12, mapID = 1443 },
@@ -864,7 +849,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 5381,
-            NonSkippableWaypoint = true,
             Coord = { x = 1727, y = -409.1 },
             Range = 8,
             IsQuestOnQuest = 5381,
@@ -874,7 +858,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 5741,
-            NonSkippableWaypoint = true,
             Fillers = { [1435] = { 1 } },
             Note = { "INSIDE_BUILDING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 55.31, 27.55),
@@ -903,7 +886,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 5741,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 40.74, 28.95),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1443, 40.74, 28.95, 15),
@@ -999,7 +981,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 6027,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 40.74, 28.95),
             Range = 15,
             IsQuestOnQuest = 6027,
@@ -1015,7 +996,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1435,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 56.3, 57.07),
             Range = 20,
             Zone = 1443,
@@ -1023,7 +1003,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1435,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 55.89, 53.49),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1443, 55.89, 53.49, 10),
@@ -1133,7 +1112,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 5381,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 27.07, 75.74),
             Range = 20,
             Zone = 1443,
@@ -1141,7 +1119,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 5381,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 26.09, 74.49),
             Range = 20,
             Zone = 1443,
@@ -1239,7 +1216,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1436,
-            NonSkippableWaypoint = true,
             Coord = { x = 1, y = -1108.2 },
             Range = 6,
             AnyOf = { { MinLevel = 36, SkipForLvl = 38, DontHaveSpell = 9493 }, { MinLevel = 38, DontHaveSpell = 5201 } },
@@ -1252,7 +1228,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1436,
-            NonSkippableWaypoint = true,
             Coord = { x = -66.5, y = -1089.7 },
             Range = 6,
             AnyOf = { { MinLevel = 36, SkipForLvl = 38, DontHaveSpell = 9493 }, { MinLevel = 38, DontHaveSpell = 5201 } },
@@ -1265,7 +1240,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1436,
-            NonSkippableWaypoint = true,
             Coord = { x = -209.4, y = -1044.8 },
             Range = 6,
             AnyOf = { { MinLevel = 36, SkipForLvl = 38, DontHaveSpell = 9493 }, { MinLevel = 38, DontHaveSpell = 5201 } },
@@ -1299,7 +1273,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1436,
-            NonSkippableWaypoint = true,
             Coord = { x = 1.3, y = -1333.2 },
             Range = 6,
             AnyOf = { { MinLevel = 36, SkipForLvl = 38, DontHaveSpell = 14303 }, { MinLevel = 38, DontHaveSpell = 14320 }, { MinLevel = 36, DontHaveSpell = 24560 } },
@@ -1312,7 +1285,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1436,
-            NonSkippableWaypoint = true,
             Coord = { x = -63.3, y = -1397.2 },
             Range = 6,
             AnyOf = { { MinLevel = 36, SkipForLvl = 38, DontHaveSpell = 14303 }, { MinLevel = 38, DontHaveSpell = 14320 }, { MinLevel = 36, DontHaveSpell = 24560 } },
@@ -1356,7 +1328,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1436,
-            NonSkippableWaypoint = true,
             Coord = { x = 1.3, y = -1333.2 },
             Range = 6,
             AnyOf = { { MinLevel = 36, SkipForLvl = 38, DontHaveSpell = 1680 }, { MinLevel = 38, DontHaveSpell = 8820 } },
@@ -1368,7 +1339,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Waypoint = 1436,
-            NonSkippableWaypoint = true,
             Coord = { x = -63.3, y = -1397.2 },
             Range = 6,
             AnyOf = { { MinLevel = 36, SkipForLvl = 38, DontHaveSpell = 1680 }, { MinLevel = 38, DontHaveSpell = 8820 } },
@@ -1482,7 +1452,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1484,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 55.46, 58.07),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1443, 55.46, 58.07, 15),
@@ -1618,7 +1587,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 1488,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 55.46, 58.07),
             Range = 15,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1443, 55.46, 58.07, 15),
@@ -1665,7 +1633,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 5581,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 27.07, 75.74),
             Range = 20,
             Zone = 1443,
@@ -1673,7 +1640,6 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-Second-Visit"] = {
         },
         {
             Waypoint = 5581,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 26.09, 74.49),
             Range = 20,
             Zone = 1443,

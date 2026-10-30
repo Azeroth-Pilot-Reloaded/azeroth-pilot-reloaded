@@ -170,7 +170,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "GO_INSIDE_CAVE" },
             Coord = { x = -4834.14, y = 418.07 },
             Range = 30.0,
@@ -181,7 +180,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Coord = { x = -4749, y = 773 },
             Range = 8,
             Class = "SHAMAN",
@@ -193,7 +191,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Note = { "GO_INSIDE_CAVE" },
             Coord = { x = -4754.3, y = 796.66 },
             Range = 20.0,
@@ -204,7 +201,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Coord = { x = -4751, y = 823 },
             Range = 8,
             Class = "SHAMAN",
@@ -226,7 +222,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Coord = { x = -4749, y = 773 },
             Range = 8,
             AllOf = { { IsQuestOnQuest = 1525 }, { IsQuestOnQuest = 840 } },
@@ -255,7 +250,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1502,
-            NonSkippableWaypoint = true,
             Coord = { x = -2902.79, y = -276.55 },
             Range = 30.0,
             Class = "WARRIOR",
@@ -265,7 +259,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1502,
-            NonSkippableWaypoint = true,
             Coord = { x = -3004.12, y = -298.17 },
             Range = 30.0,
             Class = "WARRIOR",
@@ -275,7 +268,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1502,
-            NonSkippableWaypoint = true,
             Coord = { x = -3110.52, y = -320.46 },
             Range = 30.0,
             Class = "WARRIOR",
@@ -312,7 +304,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1503,
-            NonSkippableWaypoint = true,
             Coord = { x = -2902.79, y = -276.55 },
             Range = 30.0,
             Class = "WARRIOR",
@@ -322,7 +313,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1503,
-            NonSkippableWaypoint = true,
             Coord = { x = -3004.12, y = -298.17 },
             Range = 30.0,
             Class = "WARRIOR",
@@ -332,7 +322,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1503,
-            NonSkippableWaypoint = true,
             Coord = { x = -3110.52, y = -320.46 },
             Range = 30.0,
             Class = "WARRIOR",
@@ -351,7 +340,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 842,
-            NonSkippableWaypoint = true,
             Coord = { x = -2670.74, y = -482.61 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -361,7 +349,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 98024,
-            NonSkippableWaypoint = true,
             Coord = { x = -2670.74, y = -482.61 },
             Range = 15,
             AllOf = { { Race = "Skyborne", Class = "DRUID", Faction = "Horde" } },
@@ -582,7 +569,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 924,
-            NonSkippableWaypoint = true,
             Fillers = { [844] = { 1 }, [869] = { 1 } },
             Coord = { x = -2554.2, y = 80.18 },
             Range = 40.0,
@@ -593,7 +579,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 924,
-            NonSkippableWaypoint = true,
             Fillers = { [844] = { 1 }, [869] = { 1 } },
             Coord = { x = -2477.19, y = 136.26 },
             Range = 40.0,
@@ -604,7 +589,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 924,
-            NonSkippableWaypoint = true,
             Fillers = { [844] = { 1 }, [869] = { 1 } },
             Coord = { x = -2363.7, y = 232.87 },
             Range = 40.0,
@@ -615,7 +599,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 924,
-            NonSkippableWaypoint = true,
             Fillers = { [844] = { 1 }, [869] = { 1 } },
             Coord = { x = -2205.62, y = 314.62 },
             Range = 100.0,
@@ -626,7 +609,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 924,
-            NonSkippableWaypoint = true,
             Fillers = { [844] = { 1 }, [869] = { 1 } },
             Note = { "GET_INSIDE" },
             Coord = { x = -2205.62, y = 314.62 },
@@ -658,7 +640,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Fillers = { [844] = { 1 }, [1525] = { 1 }, [869] = { 1 } },
             Coord = { x = -2947.38, y = -92.1 },
             Range = 50.0,
@@ -670,7 +651,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Fillers = { [844] = { 1 }, [1525] = { 1 }, [869] = { 1 } },
             Coord = { x = -2869.35, y = -49.54 },
             Range = 50.0,
@@ -787,7 +767,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 844,
-            NonSkippableWaypoint = true,
             Coord = { x = -2670.74, y = -482.61 },
             Range = 5,
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -831,7 +810,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 844,
-            NonSkippableWaypoint = true,
             Fillers = { [1525] = { 1 } },
             Coord = { x = -2670.74, y = -482.61 },
             Range = 5,
@@ -885,7 +863,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 842,
-            NonSkippableWaypoint = true,
             Fillers = { [1525] = { 1 } },
             Coord = { x = -2670.74, y = -482.61 },
             Range = 5,
@@ -949,7 +926,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 844,
-            NonSkippableWaypoint = true,
             Fillers = { [1525] = { 1 } },
             Coord = { x = -2670.74, y = -482.61 },
             Range = 5,
@@ -1106,7 +1082,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 819,
-            NonSkippableWaypoint = true,
             Coord = { x = -3021.35, y = -231.96 },
             Range = 20.0,
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -1139,7 +1114,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 819,
-            NonSkippableWaypoint = true,
             Fillers = { [1525] = { 1 } },
             Coord = { x = -3021.35, y = -231.96 },
             Range = 20.0,
@@ -1261,7 +1235,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Fillers = { [1525] = { 1 }, [869] = { 1 }, [845] = { 1 } },
             Coord = { x = -3905.13, y = -228.41 },
             Range = 5,
@@ -1273,7 +1246,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Fillers = { [1525] = { 1 } },
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -3905.13, y = -228.41 },
@@ -1286,7 +1258,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Fillers = { [1525] = { 1 } },
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -3899.31, y = -241.45 },
@@ -1299,7 +1270,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Fillers = { [1525] = { 1 } },
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -3899.31, y = -241.45 },
@@ -1312,7 +1282,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Fillers = { [1525] = { 1 } },
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -3906.71, y = -270.71 },
@@ -1325,7 +1294,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Fillers = { [1525] = { 1 } },
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -3910.94, y = -247.45 },
@@ -1338,7 +1306,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Fillers = { [1525] = { 1 } },
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -3931.56, y = -240.75 },
@@ -1351,7 +1318,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Fillers = { [1525] = { 1 } },
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -3964.35, y = -242.51 },
@@ -1364,7 +1330,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Fillers = { [1525] = { 1 } },
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -3974.39, y = -228.76 },
@@ -1377,7 +1342,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Fillers = { [1525] = { 1 } },
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -4020.92, y = -219.95 },
@@ -1390,7 +1354,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Fillers = { [1525] = { 1 } },
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -4034.67, y = -232.64 },
@@ -1403,7 +1366,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            NonSkippableWaypoint = true,
             Fillers = { [1525] = { 1 } },
             Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -4033.08, y = -255.91 },
@@ -1526,7 +1488,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 5041,
-            NonSkippableWaypoint = true,
             Coord = { x = -2595.75, y = -473.15 },
             Range = 5,
             AnyOf = { { Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" } }, { Race = { "Orc", "Scourge", "Tauren", "Troll" } } },
@@ -1535,7 +1496,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 5041,
-            NonSkippableWaypoint = true,
             Coord = { x = -2595.75, y = -473.15 },
             Range = 5,
             Class = "SHAMAN",
@@ -1615,7 +1575,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 887,
-            NonSkippableWaypoint = true,
             Fillers = { [845] = { 1 } },
             Coord = { x = -3728.66, y = -835.29 },
             Range = 5,
@@ -1626,7 +1585,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 887,
-            NonSkippableWaypoint = true,
             Fillers = { [845] = { 1 } },
             Coord = { x = -3728.66, y = -835.29 },
             Range = 5,
@@ -1696,7 +1654,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 894,
-            NonSkippableWaypoint = true,
             Coord = { x = -3759.06, y = -902.18 },
             Range = 5,
             AnyOf = { { Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" } }, { Race = { "Orc", "Scourge", "Tauren", "Troll" } } },
@@ -1721,7 +1678,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 894,
-            NonSkippableWaypoint = true,
             Coord = { x = -3759.06, y = -902.18 },
             Range = 5,
             Class = "SHAMAN",
@@ -2021,7 +1977,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1963,
-            NonSkippableWaypoint = true,
             Note = { "FIND_TAZAN_FIRST_CAMP_AWAY_SEARCH_CAMPS" },
             Coord = { x = -3895.6, y = -1365.0 },
             Range = 30,
@@ -2506,7 +2461,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 6363,
-            NonSkippableWaypoint = true,
             Coord = { x = 131.6, y = -1210.1 },
             Range = 6,
             ZoneStepTrigger = { x = 131.6, y = -1210.1, Range = 6, mapID = 1456 },
@@ -2518,7 +2472,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 6363,
-            NonSkippableWaypoint = true,
             Coord = { x = 169.9, y = -1155.7 },
             Range = 6,
             ZoneStepTrigger = { x = 169.9, y = -1155.7, Range = 6, mapID = 1456 },
@@ -2530,7 +2483,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 6363,
-            NonSkippableWaypoint = true,
             Coord = { x = 189.7, y = -1096 },
             Range = 6,
             ZoneStepTrigger = { x = 189.7, y = -1096, Range = 6, mapID = 1456 },
@@ -2542,7 +2494,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 6363,
-            NonSkippableWaypoint = true,
             Coord = { x = 191.5, y = -1061.5 },
             Range = 6,
             ZoneStepTrigger = { x = 191.5, y = -1061.5, Range = 6, mapID = 1456 },
@@ -2562,7 +2513,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 6363,
-            NonSkippableWaypoint = true,
             Coord = { x = 1.3, y = -1333.2 },
             Range = 6,
             ZoneStepTrigger = { x = 1.3, y = -1333.2, Range = 6, mapID = 1456 },
@@ -2574,7 +2524,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 6363,
-            NonSkippableWaypoint = true,
             Coord = { x = -63.3, y = -1397.2 },
             Range = 6,
             ZoneStepTrigger = { x = -63.3, y = -1397.2, Range = 6, mapID = 1456 },
@@ -2586,7 +2535,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 6363,
-            NonSkippableWaypoint = true,
             Coord = { x = -123.26, y = -1394.49 },
             Range = 60.0,
             Class = { "HUNTER", "WARRIOR" },
@@ -3044,7 +2992,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 894,
-            NonSkippableWaypoint = true,
             Coord = { x = -2686.95, y = 825.4 },
             Range = 20,
             Zone = 1413,
@@ -3346,7 +3293,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 858,
-            NonSkippableWaypoint = true,
             Coord = { x = -3104.44, y = 1040.25 },
             Range = 20.0,
             AnyOf = { { Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" } }, { Race = { "Orc", "Scourge", "Tauren", "Troll" } } },
@@ -3355,7 +3301,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 858,
-            NonSkippableWaypoint = true,
             Coord = { x = -3086.2, y = 1055.78 },
             Range = 12.0,
             AnyOf = { { Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" } }, { Race = { "Orc", "Scourge", "Tauren", "Troll" } } },
@@ -3364,7 +3309,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 858,
-            NonSkippableWaypoint = true,
             Coord = { x = -3063.91, y = 1049.7 },
             Range = 12.0,
             AnyOf = { { Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" } }, { Race = { "Orc", "Scourge", "Tauren", "Troll" } } },
@@ -3373,7 +3317,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 858,
-            NonSkippableWaypoint = true,
             Coord = { x = -3056.82, y = 1038.89 },
             Range = 12.0,
             AnyOf = { { Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" } }, { Race = { "Orc", "Scourge", "Tauren", "Troll" } } },
@@ -3382,7 +3325,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 858,
-            NonSkippableWaypoint = true,
             Coord = { x = -3064.92, y = 1034.16 },
             Range = 12.0,
             AnyOf = { { Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" } }, { Race = { "Orc", "Scourge", "Tauren", "Troll" } } },
@@ -3401,7 +3343,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 858,
-            NonSkippableWaypoint = true,
             Coord = { x = -3104.44, y = 1040.25 },
             Range = 20.0,
             Class = "SHAMAN",
@@ -3411,7 +3352,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 858,
-            NonSkippableWaypoint = true,
             Coord = { x = -3086.2, y = 1055.78 },
             Range = 12.0,
             Class = "SHAMAN",
@@ -3421,7 +3361,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 858,
-            NonSkippableWaypoint = true,
             Coord = { x = -3063.91, y = 1049.7 },
             Range = 12.0,
             Class = "SHAMAN",
@@ -3431,7 +3370,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 858,
-            NonSkippableWaypoint = true,
             Coord = { x = -3056.82, y = 1038.89 },
             Range = 12.0,
             Class = "SHAMAN",
@@ -3441,7 +3379,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 858,
-            NonSkippableWaypoint = true,
             Coord = { x = -3064.92, y = 1034.16 },
             Range = 12.0,
             Class = "SHAMAN",
@@ -3504,7 +3441,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 863,
-            NonSkippableWaypoint = true,
             Coord = { x = -3031.48, y = 1088.21 },
             Range = 30.0,
             AnyOf = { { Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" } }, { Race = { "Orc", "Scourge", "Tauren", "Troll" } } },
@@ -3523,7 +3459,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 863,
-            NonSkippableWaypoint = true,
             Coord = { x = -3031.48, y = 1088.21 },
             Range = 30.0,
             Class = "SHAMAN",
@@ -3567,7 +3502,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 6384,
-            NonSkippableWaypoint = true,
             Coord = { x = -3839.37, y = 1644.65 },
             Range = 15,
             ZoneStepTrigger = { x = -3839.37, y = 1644.65, Range = 25, mapID = 1454 },
@@ -3577,7 +3511,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1,
-            NonSkippableWaypoint = true,
             Coord = { x = -3839.37, y = 1644.65 },
             Range = 15,
             ZoneStepTrigger = { x = -3839.37, y = 1644.65, Range = 25, mapID = 1454 },
@@ -3587,7 +3520,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1,
-            NonSkippableWaypoint = true,
             Coord = { x = -3839.37, y = 1644.65 },
             Range = 15,
             ZoneStepTrigger = { x = -3839.37, y = 1644.65, Range = 25, mapID = 1454 },
@@ -3605,7 +3537,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1,
-            NonSkippableWaypoint = true,
             Note = { "CREATE_LINEN_BANDAGES_SKILL_40_HIGHER" },
             Coord = { x = -3839.37, y = 1644.65 },
             Range = 15,
@@ -3755,7 +3686,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 97242,
-            NonSkippableWaypoint = true,
             Coord = { x = -4560.0, y = 1908.5 },
             Range = 15.0,
             AnyOf = { { Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" }, Race = "Skyborne" }, { Race = { "Scourge", "Tauren" } } },
@@ -3765,7 +3695,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 97242,
-            NonSkippableWaypoint = true,
             Coord = { x = -4587.0, y = 1918.3 },
             Range = 15.0,
             AnyOf = { { Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" }, Race = "Skyborne" }, { Race = { "Scourge", "Tauren" } } },
@@ -3775,7 +3704,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 97242,
-            NonSkippableWaypoint = true,
             Coord = { x = -4608.0, y = 1897.4 },
             Range = 15.0,
             AnyOf = { { Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" }, Race = "Skyborne" }, { Race = { "Scourge", "Tauren" } } },
@@ -3785,7 +3713,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 97242,
-            NonSkippableWaypoint = true,
             Coord = { x = -4632.3, y = 1911.6 },
             Range = 15.0,
             AnyOf = { { Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" }, Race = "Skyborne" }, { Race = { "Scourge", "Tauren" } } },
@@ -3795,7 +3722,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 97242,
-            NonSkippableWaypoint = true,
             Coord = { x = -4560.0, y = 1908.5 },
             Range = 15.0,
             Class = "SHAMAN",
@@ -3806,7 +3732,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 97242,
-            NonSkippableWaypoint = true,
             Coord = { x = -4587.0, y = 1918.3 },
             Range = 15.0,
             Class = "SHAMAN",
@@ -3817,7 +3742,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 97242,
-            NonSkippableWaypoint = true,
             Coord = { x = -4608.0, y = 1897.4 },
             Range = 15.0,
             Class = "SHAMAN",
@@ -3828,7 +3752,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 97242,
-            NonSkippableWaypoint = true,
             Coord = { x = -4632.3, y = 1911.6 },
             Range = 15.0,
             Class = "SHAMAN",
@@ -3877,7 +3800,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1061,
-            NonSkippableWaypoint = true,
             Coord = { x = -4682, y = 2032 },
             Range = 8,
             ZoneStepTrigger = { x = -4682, y = 2032, Range = 8, mapID = 1454 },
@@ -3889,7 +3811,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1061,
-            NonSkippableWaypoint = true,
             Coord = { x = -4705, y = 2073 },
             Range = 8,
             ZoneStepTrigger = { x = -4705, y = 2073, Range = 8, mapID = 1454 },
@@ -3901,7 +3822,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1061,
-            NonSkippableWaypoint = true,
             Coord = { x = -4661, y = 2089 },
             Range = 8,
             ZoneStepTrigger = { x = -4661, y = 2089, Range = 8, mapID = 1454 },
@@ -3913,7 +3833,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1061,
-            NonSkippableWaypoint = true,
             Coord = { x = -4645, y = 2059 },
             Range = 8,
             ZoneStepTrigger = { x = -4645, y = 2059, Range = 8, mapID = 1454 },
@@ -3925,7 +3844,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1061,
-            NonSkippableWaypoint = true,
             Coord = { x = -4616, y = 2057 },
             Range = 5,
             ZoneStepTrigger = { x = -4616, y = 2057, Range = 5, mapID = 1454 },
@@ -3937,7 +3855,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1061,
-            NonSkippableWaypoint = true,
             Coord = { x = -4604, y = 2078 },
             Range = 5,
             ZoneStepTrigger = { x = -4604, y = 2078, Range = 5, mapID = 1454 },
@@ -4748,7 +4665,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 902,
-            NonSkippableWaypoint = true,
             Coord = { x = -3759.06, y = -902.18 },
             Range = 5,
             AnyOf = { { Class = { "DRUID", "ROGUE", "WARRIOR" } }, { Class = { "DRUID", "SHAMAN", "WARRIOR" }, Race = "Tauren" }, { Class = { "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Race = "Troll" }, { Class = { "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Race = "Orc" }, { Race = "Scourge" } },
@@ -4791,7 +4707,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 902,
-            NonSkippableWaypoint = true,
             Coord = { x = -3759.06, y = -902.18 },
             Range = 5,
             Class = "HUNTER",
@@ -4848,7 +4763,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 902,
-            NonSkippableWaypoint = true,
             Coord = { x = -3759.06, y = -902.18 },
             Range = 5,
             Class = "SHAMAN",
@@ -4896,7 +4810,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 902,
-            NonSkippableWaypoint = true,
             Coord = { x = -3759.06, y = -902.18 },
             Range = 5,
             AnyOf = { { Class = { "DRUID", "ROGUE", "WARRIOR" } }, { Class = { "DRUID", "SHAMAN", "WARRIOR" }, Race = "Tauren" }, { Class = { "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Race = "Troll" }, { Class = { "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Race = "Orc" }, { Race = "Scourge" } },
@@ -4914,7 +4827,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 902,
-            NonSkippableWaypoint = true,
             Coord = { x = -3759.06, y = -902.18 },
             Range = 5,
             Class = "HUNTER",
@@ -4925,7 +4837,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 902,
-            NonSkippableWaypoint = true,
             Coord = { x = -3759.06, y = -902.18 },
             Range = 5,
             Class = "SHAMAN",
@@ -5025,7 +4936,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 883,
-            NonSkippableWaypoint = true,
             Note = { "JUMP_SHIP_GO_DOWN_2ND_FLOOR_LEVEL" },
             Coord = { x = -3967.8, y = -1457.54 },
             Range = 5,
@@ -5047,7 +4957,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 3281,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 2 }, [865] = { 1 }, [905] = { 1, 2, 3 } },
             Coord = { x = -3192.6, y = -1919.67 },
             Range = 60.0,
@@ -5066,7 +4975,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 3281,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 2 }, [905] = { 1, 2, 3 }, [865] = { 1 } },
             Coord = { x = -3192.6, y = -1919.67 },
             Range = 60.0,
@@ -5286,7 +5194,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 883,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 3 } },
             Coord = { x = -1960.39, y = -2333.83 },
             Range = 120.0,
@@ -5296,7 +5203,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 883,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 3 } },
             Coord = { x = -1960.39, y = -2333.83 },
             Range = 120.0,
@@ -5421,7 +5327,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 4921,
-            NonSkippableWaypoint = true,
             Coord = { x = -2641.35, y = -521.12 },
             Range = 5,
             AnyOf = { { Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" } }, { Race = { "Orc", "Scourge", "Tauren", "Troll" } } },
@@ -5430,7 +5335,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 4921,
-            NonSkippableWaypoint = true,
             Coord = { x = -2672.76, y = -544.77 },
             Range = 5,
             AnyOf = { { Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" } }, { Race = { "Orc", "Scourge", "Tauren", "Troll" } } },
@@ -5439,7 +5343,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 4921,
-            NonSkippableWaypoint = true,
             Coord = { x = -2670.74, y = -482.61 },
             Range = 5,
             AnyOf = { { Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" } }, { Race = { "Orc", "Scourge", "Tauren", "Troll" } } },
@@ -5504,7 +5407,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 4921,
-            NonSkippableWaypoint = true,
             Coord = { x = -2641.35, y = -521.12 },
             Range = 5,
             Class = "SHAMAN",
@@ -5514,7 +5416,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 4921,
-            NonSkippableWaypoint = true,
             Coord = { x = -2672.76, y = -544.77 },
             Range = 5,
             Class = "SHAMAN",
@@ -5524,7 +5425,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 4921,
-            NonSkippableWaypoint = true,
             Coord = { x = -2670.74, y = -482.61 },
             Range = 5,
             Class = "SHAMAN",
@@ -5712,7 +5612,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 852,
-            NonSkippableWaypoint = true,
             Coord = { x = -2151.91, y = -1052.84 },
             Range = 15,
             AnyOf = { { Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" } }, { Race = { "Orc", "Scourge", "Tauren", "Troll" } } },
@@ -5722,7 +5621,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 852,
-            NonSkippableWaypoint = true,
             Coord = { x = -2151.91, y = -1052.84 },
             Range = 15,
             Class = "SHAMAN",
@@ -6114,7 +6012,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 95495,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 2 } },
             Coord = { x = -1778.1, y = 684.2 },
             Range = 25.0,
@@ -6124,7 +6021,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 95495,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 2 } },
             Coord = { x = -1741.7, y = 721.4 },
             Range = 25.0,
@@ -6134,7 +6030,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 95495,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 2 } },
             Coord = { x = -1643.9, y = 786.0 },
             Range = 25.0,
@@ -6144,7 +6039,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 95495,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 2 } },
             Coord = { x = -1605.3, y = 818.3 },
             Range = 20.0,
@@ -6154,7 +6048,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 95495,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 2 } },
             Coord = { x = -1778.1, y = 684.2 },
             Range = 25.0,
@@ -6165,7 +6058,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 95495,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 2 } },
             Coord = { x = -1741.7, y = 721.4 },
             Range = 25.0,
@@ -6176,7 +6068,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 95495,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 2 } },
             Coord = { x = -1643.9, y = 786.0 },
             Range = 25.0,
@@ -6187,7 +6078,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 95495,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 2 } },
             Coord = { x = -1605.3, y = 818.3 },
             Range = 20.0,
@@ -6269,7 +6159,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 95621,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 2 } },
             Coord = { x = -1736.9, y = 650.3 },
             Range = 25.0,
@@ -6279,7 +6168,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 95621,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 2 } },
             Coord = { x = -1741.7, y = 721.4 },
             Range = 25.0,
@@ -6289,7 +6177,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 95621,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 2 } },
             Coord = { x = -1643.9, y = 786.0 },
             Range = 25.0,
@@ -6299,7 +6186,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 95621,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 2 } },
             Coord = { x = -1605.3, y = 818.3 },
             Range = 20.0,
@@ -6309,7 +6195,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 95621,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 2 } },
             Coord = { x = -1736.9, y = 650.3 },
             Range = 25.0,
@@ -6320,7 +6205,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 95621,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 2 } },
             Coord = { x = -1741.7, y = 721.4 },
             Range = 25.0,
@@ -6331,7 +6215,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 95621,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 2 } },
             Coord = { x = -1643.9, y = 786.0 },
             Range = 25.0,
@@ -6342,7 +6225,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 95621,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 2 } },
             Coord = { x = -1605.3, y = 818.3 },
             Range = 20.0,
@@ -6435,7 +6317,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1061,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 2 } },
             Coord = { x = -950.1, y = -271.14 },
             Range = 30,
@@ -6446,7 +6327,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1061,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 2 } },
             Coord = { x = -950.1, y = -271.14 },
             Range = 30,
@@ -6458,7 +6338,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1061,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 2 } },
             Coord = { x = -950.1, y = -271.14 },
             Range = 5,
@@ -6495,7 +6374,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1061,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 2 } },
             Coord = { x = -950.1, y = -271.14 },
             Range = 5,
@@ -6536,7 +6414,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             Waypoint = 1061,
-            NonSkippableWaypoint = true,
             Fillers = { [821] = { 2 } },
             Coord = { x = -950.1, y = -271.14 },
             Range = 5,

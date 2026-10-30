@@ -62,7 +62,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands"] = {
         },
         {
             Waypoint = 484,
-            NonSkippableWaypoint = true,
             Coord = { x = -1117.6, y = -4615.14 },
             Range = 15,
             Class = "WARLOCK",
@@ -92,7 +91,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands"] = {
         },
         {
             Waypoint = 484,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = { x = -1134.2, y = -4610.39 },
             Range = 15,
@@ -103,7 +101,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands"] = {
         },
         {
             Waypoint = 484,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = { x = -1130.26, y = -4601.27 },
             Range = 5,
@@ -185,7 +182,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands"] = {
         },
         {
             Waypoint = 942,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = -818.34, y = -3829.67 },
             Range = 8,
@@ -220,7 +216,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands"] = {
         },
         {
             Waypoint = 463,
-            NonSkippableWaypoint = true,
             Coord = { x = -819.67, y = -3691.42 },
             Range = 15,
             IsQuestUncompleted = 174,
@@ -230,7 +225,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands"] = {
         },
         {
             Waypoint = 463,
-            NonSkippableWaypoint = true,
             Coord = { x = -807.26, y = -3716.22 },
             Range = 15,
             IsQuestUncompleted = 174,
@@ -240,7 +234,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands"] = {
         },
         {
             Waypoint = 463,
-            NonSkippableWaypoint = true,
             Coord = { x = -827.94, y = -3724.49 },
             Range = 15,
             IsQuestUncompleted = 174,
@@ -287,7 +280,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands"] = {
         },
         {
             Waypoint = 469,
-            NonSkippableWaypoint = true,
             Coord = { x = -1955.2, y = -3161.5 },
             Range = 8,
             ZoneStepTrigger = { x = -1955.2, y = -3161.5, Range = 8, mapID = 1437 },
@@ -399,7 +391,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands"] = {
         },
         {
             Waypoint = 279,
-            NonSkippableWaypoint = true,
             Coord = { x = -831.66, y = -3827.85 },
             Range = 10,
             Class = { "ROGUE", "WARRIOR" },
@@ -423,7 +414,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands"] = {
         },
         {
             Waypoint = 279,
-            NonSkippableWaypoint = true,
             Coord = { x = -831.66, y = -3827.85 },
             Range = 10,
             Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" },
@@ -446,7 +436,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 9.49, 59.693),
             Range = 5,
             Zone = 1437,
@@ -650,7 +639,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
     steps = {
         {
             Waypoint = 942,
-            NonSkippableWaypoint = true,
             Coord = { x = -741.47, y = -3683.07 },
             Range = 20,
             Zone = 1437,
@@ -716,7 +704,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 294,
-            NonSkippableWaypoint = true,
             Coord = { x = -819.67, y = -3691.42 },
             Range = 15.0,
             RaidIcon = 1448,
@@ -728,7 +715,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 294,
-            NonSkippableWaypoint = true,
             Coord = { x = -807.26, y = -3716.22 },
             Range = 15.0,
             RaidIcon = 1448,
@@ -740,7 +726,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 294,
-            NonSkippableWaypoint = true,
             Coord = { x = -827.94, y = -3724.49 },
             Range = 15.0,
             RaidIcon = 1448,
@@ -792,7 +777,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 294,
-            NonSkippableWaypoint = true,
             Fillers = { [484] = { 1 }, [470] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 34.11, 41.096),
             Range = 20,
@@ -801,7 +785,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 294,
-            NonSkippableWaypoint = true,
             Fillers = { [484] = { 1 }, [470] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 36.893, 43.703),
             Range = 20,
@@ -810,7 +793,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 294,
-            NonSkippableWaypoint = true,
             Fillers = { [484] = { 1 }, [470] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 37.249, 47.751),
             Range = 20,
@@ -819,7 +801,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 294,
-            NonSkippableWaypoint = true,
             Fillers = { [484] = { 1 }, [470] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 38.071, 50.166),
             Range = 20.0,
@@ -828,7 +809,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 294,
-            NonSkippableWaypoint = true,
             Fillers = { [484] = { 1 }, [470] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 38.287, 50.883),
             Range = 10.0,
@@ -853,7 +833,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 943,
-            NonSkippableWaypoint = true,
             Fillers = { [484] = { 1 }, [470] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 34.11, 41.096),
             Range = 20,
@@ -862,7 +841,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 943,
-            NonSkippableWaypoint = true,
             Fillers = { [484] = { 1 }, [470] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 36.893, 43.703),
             Range = 20,
@@ -871,7 +849,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 943,
-            NonSkippableWaypoint = true,
             Fillers = { [484] = { 1 }, [470] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 37.249, 47.751),
             Range = 20,
@@ -880,7 +857,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 943,
-            NonSkippableWaypoint = true,
             Fillers = { [484] = { 1 }, [470] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 38.071, 50.166),
             Range = 20,
@@ -889,7 +865,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 294,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 38.287, 50.883),
             Range = 10,
             Zone = 1437,
@@ -903,7 +878,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 305,
-            NonSkippableWaypoint = true,
             Coord = { x = -1978, y = -3572 },
             Range = 3,
             ZoneStepTrigger = { x = -1978, y = -3572, Range = 3, mapID = 1437 },
@@ -923,7 +897,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 943,
-            NonSkippableWaypoint = true,
             Coord = { x = -1994, y = -3590 },
             Range = 3,
             ZoneStepTrigger = { x = -1994, y = -3590, Range = 3, mapID = 1437 },
@@ -1054,7 +1027,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 943,
-            NonSkippableWaypoint = true,
             Coord = { x = -831.66, y = -3827.85 },
             Range = 10,
             Zone = 1437,
@@ -1174,7 +1146,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -2633.1, y = -4086 },
             Range = 8,
             Race = "NightElf",
@@ -1183,7 +1154,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -2426.2, y = -4093 },
             Range = 8,
             Race = "NightElf",
@@ -1192,7 +1162,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -2374.9, y = -4011.6 },
             Range = 15,
             Race = "NightElf",
@@ -1201,7 +1170,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -2462.6, y = -4119.4 },
             Range = 5,
             Race = "NightElf",
@@ -1210,7 +1178,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -2464.4, y = -4312.9 },
             Range = 5,
             Race = "NightElf",
@@ -1219,7 +1186,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -2480.4, y = -4423.4 },
             Range = 5,
             Race = "NightElf",
@@ -1228,7 +1194,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -2674.5, y = -4451.1 },
             Range = 5,
             Race = "NightElf",
@@ -1237,7 +1202,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -2690.4, y = -4482.8 },
             Range = 5,
             Race = "NightElf",
@@ -1246,7 +1210,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -2698.8, y = -4681.8 },
             Range = 5,
             Race = "NightElf",
@@ -1262,7 +1225,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 21.3, 68.6),
             Range = 20,
             Race = "NightElf",
@@ -1271,7 +1233,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -2582.4, y = -5738.4 },
             Range = 10,
             Race = "NightElf",
@@ -1280,7 +1241,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -2578, y = -5679.9 },
             Range = 10,
             Race = "NightElf",
@@ -1289,7 +1249,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -2535.5, y = -5643.7 },
             Range = 5,
             Race = "NightElf",
@@ -1298,7 +1257,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -2441.9, y = -5559.8 },
             Range = 5,
             Race = "NightElf",
@@ -1307,7 +1265,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -2347.8, y = -5560.7 },
             Range = 5,
             Race = "NightElf",
@@ -1316,7 +1273,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -2243.1, y = -5634.8 },
             Range = 5,
             Race = "NightElf",
@@ -1325,7 +1281,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -554.53, y = -5237.04 },
             Range = 20,
             Race = "NightElf",
@@ -1334,7 +1289,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -1152.32, y = -4821.18 },
             Range = 10,
             Race = "NightElf",
@@ -1533,7 +1487,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 269,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = { x = 988.44, y = -8942.15 },
             Range = 20.0,
@@ -1546,7 +1499,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 269,
-            NonSkippableWaypoint = true,
             Note = { "DOWNSTAIRS" },
             Coord = { x = 1015.33, y = -8978.9 },
             Range = 15.0,
@@ -1570,7 +1522,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 269,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 42.51, 33.51),
             Range = 20.0,
             Class = { "PALADIN", "PRIEST" },
@@ -1580,7 +1531,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 269,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 38.82, 31.27),
             Range = 10.0,
             Class = "PALADIN",
@@ -1614,7 +1564,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 269,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 76.08, 50.14),
             Range = 15.0,
             Class = "WARRIOR",
@@ -1625,7 +1574,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 269,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 80.22, 45.37),
             Range = 15.0,
             Class = "WARRIOR",
@@ -1667,7 +1615,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 269,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 42.51, 33.51),
             Range = 20.0,
             ClassNot = { "PALADIN", "PRIEST" },
@@ -1699,7 +1646,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 337,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 70.347, 27.208),
             Range = 15.0,
             SkipInZones = { 1455 },
@@ -1708,7 +1654,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 337,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 72.005, 21.542),
             Range = 20.0,
             SkipInZones = { 1455 },
@@ -1797,7 +1742,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 470,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = -818.34, y = -3829.67 },
             Range = 8.0,
@@ -1890,7 +1834,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 281,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = -814.7, y = -3700.62 },
             Range = 20.0,
@@ -1899,7 +1842,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 281,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = -792.46, y = -3742.85 },
             Range = 15.0,
@@ -1991,7 +1933,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 305,
-            NonSkippableWaypoint = true,
             Fillers = { [277] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 43.04, 41.63),
             Range = 20,
@@ -2008,7 +1949,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 305,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 38.79, 48.988),
             Range = 20.0,
             Zone = 1437,
@@ -2023,7 +1963,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 305,
-            NonSkippableWaypoint = true,
             Coord = { x = -1962, y = -3564 },
             Range = 2,
             ZoneStepTrigger = { x = -1962, y = -3564, Range = 2, mapID = 1437 },
@@ -2034,7 +1973,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 305,
-            NonSkippableWaypoint = true,
             Coord = { x = -1978, y = -3572 },
             Range = 3,
             ZoneStepTrigger = { x = -1978, y = -3572, Range = 3, mapID = 1437 },
@@ -2045,7 +1983,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 305,
-            NonSkippableWaypoint = true,
             Coord = { x = -1994, y = -3590 },
             Range = 3,
             ZoneStepTrigger = { x = -1994, y = -3590, Range = 3, mapID = 1437 },
@@ -2094,7 +2031,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 299,
-            NonSkippableWaypoint = true,
             Coord = { x = -1962, y = -3564 },
             Range = 2,
             ZoneStepTrigger = { x = -1962, y = -3564, Range = 2, mapID = 1437 },
@@ -2108,7 +2044,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 299,
-            NonSkippableWaypoint = true,
             Coord = { x = -1978, y = -3572 },
             Range = 3,
             ZoneStepTrigger = { x = -1978, y = -3572, Range = 3, mapID = 1437 },
@@ -2188,7 +2123,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 943,
-            NonSkippableWaypoint = true,
             Coord = { x = -831.66, y = -3827.85 },
             Range = 10,
             Class = { "ROGUE", "WARRIOR" },
@@ -2230,7 +2164,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 943,
-            NonSkippableWaypoint = true,
             Coord = { x = -831.66, y = -3827.85 },
             Range = 10,
             ClassNot = { "HUNTER", "ROGUE", "WARRIOR" },
@@ -2239,7 +2172,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 943,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = -818.34, y = -3829.67 },
             Range = 8.0,
@@ -2289,7 +2221,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 464,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = -814.7, y = -3700.62 },
             Range = 20.0,
@@ -2298,7 +2229,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 464,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = -792.46, y = -3742.85 },
             Range = 15.0,
@@ -2357,7 +2287,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 98221,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = -814.7, y = -3700.62 },
             Range = 20,
@@ -2369,7 +2298,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 98221,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = -792.46, y = -3742.85 },
             Range = 15,
@@ -2409,7 +2337,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 294,
-            NonSkippableWaypoint = true,
             Coord = { x = -1928.79, y = -3357.63 },
             Range = 20,
             ClassNot = "HUNTER",
@@ -2457,7 +2384,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 299,
-            NonSkippableWaypoint = true,
             Coord = { x = -1962, y = -3564 },
             Range = 2,
             ZoneStepTrigger = { x = -1962, y = -3564, Range = 2, mapID = 1437 },
@@ -2471,7 +2397,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 299,
-            NonSkippableWaypoint = true,
             Coord = { x = -1978, y = -3572 },
             Range = 3,
             ZoneStepTrigger = { x = -1978, y = -3572, Range = 3, mapID = 1437 },
@@ -2522,7 +2447,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 296,
-            NonSkippableWaypoint = true,
             Coord = { x = -1968.07, y = -3550.3 },
             Range = 5,
             ClassNot = "HUNTER",
@@ -2538,7 +2462,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 299,
-            NonSkippableWaypoint = true,
             Coord = { x = -1962, y = -3564 },
             Range = 2,
             ZoneStepTrigger = { x = -1962, y = -3564, Range = 2, mapID = 1437 },
@@ -2552,7 +2475,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 299,
-            NonSkippableWaypoint = true,
             Coord = { x = -1978, y = -3572 },
             Range = 3,
             ZoneStepTrigger = { x = -1978, y = -3572, Range = 3, mapID = 1437 },
@@ -2582,7 +2504,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 290,
-            NonSkippableWaypoint = true,
             Coord = { x = -980.62, y = -2798.64 },
             Range = 15.0,
             Zone = 1437,
@@ -2678,7 +2599,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 472,
-            NonSkippableWaypoint = true,
             Coord = { x = -2449.14, y = -2651.13 },
             Range = 5,
             Zone = 1437,
@@ -2698,7 +2618,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 631,
-            NonSkippableWaypoint = true,
             Coord = { x = -2518.54, y = -2371.48 },
             Range = 15.0,
             Zone = 1437,
@@ -2706,7 +2625,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 631,
-            NonSkippableWaypoint = true,
             Coord = { x = -2503.4, y = -2372.72 },
             Range = 15.0,
             Zone = 1437,
@@ -2766,7 +2684,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 633,
-            NonSkippableWaypoint = true,
             Note = { "UP_RAMP" },
             Coord = { x = -2756.67, y = -2302.93 },
             Range = 20,
@@ -2781,7 +2698,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 633,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 45.46, 89.18),
             Range = 8,
             IsQuestOnQuest = 633,
@@ -2793,7 +2709,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 633,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 51.08, 11.7),
             Range = 8,
             IsQuestOnQuest = 633,
@@ -2817,7 +2732,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 634,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 51.08, 11.7),
             Range = 8,
             IsQuestOnQuest = 634,
@@ -2828,7 +2742,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 634,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 45.46, 89.18),
             Range = 8,
             IsQuestOnQuest = 634,
@@ -2839,7 +2752,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 634,
-            NonSkippableWaypoint = true,
             Coord = { x = -2516.55, y = -1274.53 },
             Range = 20,
             Zone = 1417,
@@ -2869,7 +2781,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 647,
-            NonSkippableWaypoint = true,
             Coord = { x = -1576.59, y = -830.29 },
             Range = 20,
             Zone = 1417,
@@ -2877,7 +2788,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 647,
-            NonSkippableWaypoint = true,
             Coord = { x = -556.05, y = -853.55 },
             Range = 15.0,
             Zone = 1424,
@@ -2982,7 +2892,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 292,
-            NonSkippableWaypoint = true,
             Coord = { x = -831.66, y = -3827.85 },
             Range = 10,
             Zone = 1437,
@@ -3023,7 +2932,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Waypoint = 943,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = { x = -818.34, y = -3829.67 },
             Range = 8.0,
@@ -3189,7 +3097,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
     steps = {
         {
             Waypoint = 942,
-            NonSkippableWaypoint = true,
             Coord = { x = -741.47, y = -3683.07 },
             Range = 20,
             Zone = 1437,
@@ -3297,7 +3204,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 305,
-            NonSkippableWaypoint = true,
             Coord = { x = -819.67, y = -3691.42 },
             Range = 15,
             IsQuestUncompleted = 174,
@@ -3307,7 +3213,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 305,
-            NonSkippableWaypoint = true,
             Coord = { x = -807.26, y = -3716.22 },
             Range = 15,
             IsQuestUncompleted = 174,
@@ -3317,7 +3222,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 305,
-            NonSkippableWaypoint = true,
             Coord = { x = -827.94, y = -3724.49 },
             Range = 15,
             IsQuestUncompleted = 174,
@@ -3368,7 +3272,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 305,
-            NonSkippableWaypoint = true,
             Coord = { x = -1962, y = -3564 },
             Range = 2,
             ZoneStepTrigger = { x = -1962, y = -3564, Range = 2, mapID = 1437 },
@@ -3382,7 +3285,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 305,
-            NonSkippableWaypoint = true,
             Coord = { x = -1978, y = -3572 },
             Range = 3,
             ZoneStepTrigger = { x = -1978, y = -3572, Range = 3, mapID = 1437 },
@@ -3396,7 +3298,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 305,
-            NonSkippableWaypoint = true,
             Coord = { x = -1994, y = -3590 },
             Range = 3,
             ZoneStepTrigger = { x = -1994, y = -3590, Range = 3, mapID = 1437 },
@@ -3423,7 +3324,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 294,
-            NonSkippableWaypoint = true,
             Note = { "HEAD_DOWN_RAMP_EXIT_WHELGAR_EXCAVATION_SITE" },
             Coord = { x = -1895.29, y = -3297.82 },
             Range = 20,
@@ -3440,7 +3340,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 294,
-            NonSkippableWaypoint = true,
             Fillers = { [470] = { 1 } },
             Coord = { x = -1928.79, y = -3357.63 },
             Range = 20,
@@ -3583,7 +3482,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -831.66, y = -3827.85 },
             Range = 10,
             Race = { "Dwarf", "Human", "Skyborne" },
@@ -3592,7 +3490,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = -2633.1, y = -4086 },
             Range = 8,
@@ -3602,7 +3499,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_FIRST_TUNNEL" },
             Coord = { x = -2426.2, y = -4093 },
             Range = 8,
@@ -3612,7 +3508,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Note = { "MIND_SINGLE_LEVEL_20_DRAGONMAW_GRUNT_STANDS" },
             Coord = { x = -2374.9, y = -4011.6 },
             Range = 15,
@@ -3622,7 +3517,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Note = { "MIND_SINGLE_LEVEL_20_DRAGONMAW_GRUNT_STANDS" },
             Coord = { x = -2462.6, y = -4119.4 },
             Range = 5,
@@ -3632,7 +3526,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_SECOND_TUNNEL" },
             Coord = { x = -2464.4, y = -4312.9 },
             Range = 5,
@@ -3642,7 +3535,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Note = { "MIND_LVL_19_20_DRAGONMAW_SCOUTS_PATROLLING", "ENTER_THIRD_TUNNEL" },
             Coord = { x = -2480.4, y = -4423.4 },
             Range = 5,
@@ -3652,7 +3544,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_THIRD_TUNNEL" },
             Coord = { x = -2674.5, y = -4451.1 },
             Range = 5,
@@ -3662,7 +3553,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_FOURTH_TUNNEL" },
             Coord = { x = -2690.4, y = -4482.8 },
             Range = 5,
@@ -3672,7 +3562,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_FOURTH_TUNNEL" },
             Coord = { x = -2698.8, y = -4681.8 },
             Range = 5,
@@ -3689,7 +3578,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 21.3, 68.6),
             Range = 20,
             Race = "NightElf",
@@ -3698,7 +3586,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -2582.4, y = -5738.4 },
             Range = 10,
             Race = "NightElf",
@@ -3707,7 +3594,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -2578, y = -5679.9 },
             Range = 10,
             Race = "NightElf",
@@ -3716,7 +3602,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -2535.5, y = -5643.7 },
             Range = 5,
             Race = "NightElf",
@@ -3725,7 +3610,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Note = { "GO_THROUGH_THE_CAVE" },
             Coord = { x = -2441.9, y = -5559.8 },
             Range = 5,
@@ -3735,7 +3619,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -2347.8, y = -5560.7 },
             Range = 5,
             Race = "NightElf",
@@ -3744,7 +3627,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_SECOND_TUNNEL" },
             Coord = { x = -2243.1, y = -5634.8 },
             Range = 5,
@@ -3754,7 +3636,6 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         },
         {
             Waypoint = 968,
-            NonSkippableWaypoint = true,
             Coord = { x = -554.53, y = -5237.04 },
             Range = 20,
             Race = "NightElf",

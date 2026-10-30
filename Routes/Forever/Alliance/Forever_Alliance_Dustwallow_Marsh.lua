@@ -50,7 +50,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 7.27, 62.527),
             Range = 20,
             SkipInZones = { 1445 },
@@ -68,7 +67,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Note = { "DELETE_RAZOR_ARROWS_FILL_QUIVER_JAGGED_ARROWS" },
             Coord = { x = -4534.5, y = -3776.33 },
             Range = 5,
@@ -113,7 +111,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1260,
-            NonSkippableWaypoint = true,
             Coord = { x = -4438.5, y = -3613.5 },
             Range = 5,
             IsQuestOnQuest = 1260,
@@ -122,7 +119,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1204,
-            NonSkippableWaypoint = true,
             Coord = { x = -4438.5, y = -3613.5 },
             Range = 5,
             IsQuestNotOnQuest = 1204,
@@ -291,7 +287,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1286,
-            NonSkippableWaypoint = true,
             Coord = { x = -2851.35, y = -3922.98 },
             Range = 20,
             IsQuestOnQuest = 1286,
@@ -300,7 +295,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1286,
-            NonSkippableWaypoint = true,
             Coord = { x = -2869.72, y = -3933.83 },
             Range = 5,
             IsQuestOnQuest = 1286,
@@ -332,7 +326,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1222,
-            NonSkippableWaypoint = true,
             Coord = { x = -4438.5, y = -3613.5 },
             Range = 5,
             IsQuestOnQuest = 1222,
@@ -342,7 +335,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1204,
-            NonSkippableWaypoint = true,
             Coord = { x = -4438.5, y = -3613.5 },
             Range = 5,
             IsQuestOnQuest = 1204,
@@ -352,7 +344,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1258,
-            NonSkippableWaypoint = true,
             Coord = { x = -4438.5, y = -3613.5 },
             Range = 5,
             IsQuestCompleted = 1204,
@@ -364,7 +355,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1222,
-            NonSkippableWaypoint = true,
             Coord = { x = -4457.64, y = -3624.75 },
             Range = 5,
             Zone = 1445,
@@ -435,7 +425,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1107,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             IsQuestOnQuest = 1107,
@@ -445,7 +434,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1107,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             IsQuestOnQuest = 1107,
@@ -455,7 +443,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1107,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             IsQuestOnQuest = 1107,
@@ -465,7 +452,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1107,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             IsQuestOnQuest = 1107,
@@ -475,7 +461,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1107,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             IsQuestOnQuest = 1107,
@@ -485,7 +470,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1107,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             IsQuestOnQuest = 1107,
@@ -495,7 +479,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1117,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             IsQuestOnQuest = 1117,
@@ -505,7 +488,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1117,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             IsQuestOnQuest = 1117,
@@ -515,7 +497,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1117,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             IsQuestOnQuest = 1117,
@@ -525,7 +506,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1117,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             IsQuestOnQuest = 1117,
@@ -535,7 +515,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1117,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             IsQuestOnQuest = 1117,
@@ -545,7 +524,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1117,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             IsQuestOnQuest = 1117,
@@ -555,7 +533,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             IsQuestOnQuest = 1187,
@@ -566,7 +543,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             IsQuestOnQuest = 1187,
@@ -577,7 +553,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             IsQuestOnQuest = 1187,
@@ -588,7 +563,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             IsQuestOnQuest = 1187,
@@ -599,7 +573,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             IsQuestOnQuest = 1187,
@@ -610,7 +583,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1187,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             IsQuestOnQuest = 1187,
@@ -621,7 +593,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             IsQuestNotOnQuest = 1106,
@@ -632,7 +603,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             IsQuestNotOnQuest = 1106,
@@ -643,7 +613,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             IsQuestNotOnQuest = 1106,
@@ -654,7 +623,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             IsQuestNotOnQuest = 1106,
@@ -665,7 +633,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             IsQuestNotOnQuest = 1106,
@@ -676,7 +643,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             IsQuestNotOnQuest = 1106,
@@ -687,7 +653,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1118,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             IsQuestCompleted = 1117,
@@ -699,7 +664,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1118,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             IsQuestCompleted = 1117,
@@ -711,7 +675,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1118,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             IsQuestCompleted = 1117,
@@ -723,7 +686,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1118,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             IsQuestCompleted = 1117,
@@ -735,7 +697,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1118,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             IsQuestCompleted = 1117,
@@ -747,7 +708,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1118,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             IsQuestCompleted = 1117,
@@ -759,7 +719,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1188,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             IsQuestCompleted = 1187,
@@ -771,7 +730,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1188,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             IsQuestCompleted = 1187,
@@ -783,7 +741,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1188,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             IsQuestCompleted = 1187,
@@ -795,7 +752,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1188,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             IsQuestCompleted = 1187,
@@ -807,7 +763,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1188,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             IsQuestCompleted = 1187,
@@ -819,7 +774,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1188,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             IsQuestCompleted = 1187,
@@ -831,7 +785,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1107,
-            NonSkippableWaypoint = true,
             Coord = { x = -3855.74, y = -6233.05 },
             Range = 20,
             Zone = 1441,
@@ -896,7 +849,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Coord = { x = -3700.9, y = -6753.2 },
             Range = 8,
             IsQuestUncompleted = 1106,
@@ -906,7 +858,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Coord = { x = -3755, y = -6801.5 },
             Range = 8,
             IsQuestUncompleted = 1106,
@@ -916,7 +867,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Coord = { x = -3752.1, y = -6842.5 },
             Range = 8,
             IsQuestUncompleted = 1106,
@@ -926,7 +876,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Coord = { x = -3772.6, y = -6880.6 },
             Range = 8,
             IsQuestUncompleted = 1106,
@@ -936,7 +885,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Coord = { x = -3746.2, y = -6911.3 },
             Range = 8,
             IsQuestUncompleted = 1106,
@@ -946,7 +894,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Coord = { x = -3709.6, y = -6959.6 },
             Range = 8,
             IsQuestUncompleted = 1106,
@@ -956,7 +903,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Coord = { x = -3676, y = -7043.1 },
             Range = 8,
             IsQuestUncompleted = 1106,
@@ -966,7 +912,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Coord = { x = -3695, y = -7079.7 },
             Range = 8,
             IsQuestUncompleted = 1106,
@@ -976,7 +921,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
         },
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Coord = { x = -3759.2, y = -7076.3 },
             Range = 8,
             IsQuestUncompleted = 1106,
@@ -1057,7 +1001,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh-Desolace"] = {
     steps = {
         {
             Waypoint = 1106,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 7.27, 62.527),
             Range = 20,
             SkipInZones = { 1445 },
@@ -1223,7 +1166,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh-Desolace"] = {
         },
         {
             Waypoint = 1260,
-            NonSkippableWaypoint = true,
             Coord = { x = -4438.5, y = -3613.5 },
             Range = 5,
             Class = { "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" },
@@ -1233,7 +1175,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh-Desolace"] = {
         },
         {
             Waypoint = 1204,
-            NonSkippableWaypoint = true,
             Coord = { x = -4438.5, y = -3613.5 },
             Range = 5,
             IsQuestNotOnQuest = 1204,
@@ -1483,7 +1424,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh-Desolace"] = {
         },
         {
             Waypoint = 1286,
-            NonSkippableWaypoint = true,
             Coord = { x = -2851.35, y = -3922.98 },
             Range = 20,
             IsQuestOnQuest = 1286,
@@ -1492,7 +1432,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh-Desolace"] = {
         },
         {
             Waypoint = 1286,
-            NonSkippableWaypoint = true,
             Coord = { x = -2869.72, y = -3933.83 },
             Range = 5,
             IsQuestOnQuest = 1286,
@@ -1524,7 +1463,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh-Desolace"] = {
         },
         {
             Waypoint = 1222,
-            NonSkippableWaypoint = true,
             Coord = { x = -4438.5, y = -3613.5 },
             Range = 5,
             IsQuestOnQuest = 1222,
@@ -1534,7 +1472,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh-Desolace"] = {
         },
         {
             Waypoint = 1204,
-            NonSkippableWaypoint = true,
             Coord = { x = -4438.5, y = -3613.5 },
             Range = 5,
             IsQuestOnQuest = 1204,
@@ -1545,7 +1482,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh-Desolace"] = {
         },
         {
             Waypoint = 1258,
-            NonSkippableWaypoint = true,
             Coord = { x = -4438.5, y = -3613.5 },
             Range = 5,
             IsQuestCompleted = 1204,
@@ -1557,7 +1493,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh-Desolace"] = {
         },
         {
             Waypoint = 1222,
-            NonSkippableWaypoint = true,
             Coord = { x = -4457.64, y = -3624.75 },
             Range = 5,
             Zone = 1445,

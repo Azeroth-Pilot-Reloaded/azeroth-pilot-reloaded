@@ -182,7 +182,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 4808,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 63.66, 38.65),
             Range = 15,
             OnlyInZones = { 1413 },
@@ -208,7 +207,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 4808,
-            NonSkippableWaypoint = true,
             Coord = { x = -4673.08, y = 6695.05 },
             Range = 15,
             Zone = 1452,
@@ -226,7 +224,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 4808,
-            NonSkippableWaypoint = true,
             Coord = { x = -4420.47, y = 7283.73 },
             Range = 20,
             Class = "HUNTER",
@@ -349,7 +346,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 979,
-            NonSkippableWaypoint = true,
             Fillers = { [4809] = { 1 } },
             Note = { "INSIDE_CAVE" },
             Coord = { x = -5115.56, y = 6499.89 },
@@ -360,7 +356,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 979,
-            NonSkippableWaypoint = true,
             Fillers = { [4809] = { 1 } },
             Note = { "INSIDE_CAVE" },
             Coord = { x = -5142.54, y = 6571.84 },
@@ -446,7 +441,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 977,
-            NonSkippableWaypoint = true,
             Coord = { x = -4673.08, y = 6695.05 },
             Range = 15,
             Zone = 1452,
@@ -567,7 +561,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2293, y = 6886 },
             Range = 8,
             ZoneStepTrigger = { x = -2293, y = 6886, Range = 8 },
@@ -579,7 +572,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2295, y = 6906 },
             Range = 6,
             ZoneStepTrigger = { x = -2295, y = 6906, Range = 6 },
@@ -591,7 +583,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2261, y = 6940 },
             Range = 6,
             ZoneStepTrigger = { x = -2261, y = 6940, Range = 6 },
@@ -603,7 +594,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2257, y = 6970 },
             Range = 6,
             ZoneStepTrigger = { x = -2257, y = 6970, Range = 6 },
@@ -615,7 +605,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2191, y = 6998 },
             Range = 6,
             ZoneStepTrigger = { x = -2191, y = 6998, Range = 6 },
@@ -627,7 +616,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2183, y = 7016 },
             Range = 5,
             ZoneStepTrigger = { x = -2183, y = 7016, Range = 5 },
@@ -639,7 +627,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2169, y = 7024 },
             Range = 5,
             ZoneStepTrigger = { x = -2169, y = 7024, Range = 5 },
@@ -651,7 +638,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2155, y = 7022 },
             Range = 4,
             ZoneStepTrigger = { x = -2155, y = 7022, Range = 4 },
@@ -663,7 +649,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2151, y = 7000 },
             Range = 4,
             ZoneStepTrigger = { x = -2151, y = 7000, Range = 4 },
@@ -675,7 +660,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2137, y = 6996 },
             Range = 4,
             ZoneStepTrigger = { x = -2137, y = 6996, Range = 4 },
@@ -687,7 +671,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2127, y = 7004 },
             Range = 4,
             ZoneStepTrigger = { x = -2127, y = 7004, Range = 4 },
@@ -699,7 +682,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2129, y = 7014 },
             Range = 4,
             ZoneStepTrigger = { x = -2129, y = 7014, Range = 4 },
@@ -711,7 +693,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2119, y = 7020 },
             Range = 4,
             ZoneStepTrigger = { x = -2119, y = 7020, Range = 4 },
@@ -723,7 +704,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2115, y = 7040 },
             Range = 5,
             ZoneStepTrigger = { x = -2115, y = 7040, Range = 5 },
@@ -735,7 +715,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2119, y = 7090 },
             Range = 5,
             ZoneStepTrigger = { x = -2119, y = 7090, Range = 5 },
@@ -747,7 +726,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2126, y = 7098 },
             Range = 4,
             ZoneStepTrigger = { x = -2126, y = 7098, Range = 4 },
@@ -759,7 +737,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2155, y = 7108 },
             Range = 5,
             ZoneStepTrigger = { x = -2155, y = 7108, Range = 5 },
@@ -771,7 +748,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2163, y = 7166 },
             Range = 6,
             ZoneStepTrigger = { x = -2163, y = 7166, Range = 6 },
@@ -783,7 +759,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2187, y = 7194 },
             Range = 6,
             ZoneStepTrigger = { x = -2187, y = 7194, Range = 6 },
@@ -795,7 +770,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2190, y = 7258 },
             Range = 6,
             ZoneStepTrigger = { x = -2190, y = 7258, Range = 6 },
@@ -807,7 +781,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2163, y = 7272 },
             Range = 6,
             ZoneStepTrigger = { x = -2163, y = 7272, Range = 6 },
@@ -819,7 +792,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2149, y = 7290 },
             Range = 5,
             ZoneStepTrigger = { x = -2149, y = 7290, Range = 5 },
@@ -831,7 +803,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2151, y = 7304 },
             Range = 5,
             ZoneStepTrigger = { x = -2151, y = 7304, Range = 5 },
@@ -843,7 +814,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2163, y = 7316 },
             Range = 5,
             ZoneStepTrigger = { x = -2163, y = 7316, Range = 5 },
@@ -855,7 +825,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2193, y = 7324 },
             Range = 5,
             ZoneStepTrigger = { x = -2193, y = 7324, Range = 5 },
@@ -867,7 +836,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2205, y = 7364 },
             Range = 6,
             ZoneStepTrigger = { x = -2205, y = 7364, Range = 6 },
@@ -879,7 +847,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6762,
-            NonSkippableWaypoint = true,
             Coord = { x = -2206.94, y = 7384.09 },
             Range = 15,
             SkipInZones = { 1450 },
@@ -1039,7 +1006,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -4953, y = -7772 },
             Range = 8,
             IsQuestCompleted = 4084,
@@ -1051,7 +1017,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -4959, y = -7784 },
             Range = 6,
             IsQuestCompleted = 4084,
@@ -1063,7 +1028,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -4978.37, y = -7789.98 },
             Range = 5,
             Button = { ["4005-1"] = 11617 },
@@ -1073,7 +1037,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -4999, y = -7810 },
             Range = 6,
             IsQuestCompleted = 4084,
@@ -1085,7 +1048,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -5035, y = -7828 },
             Range = 6,
             IsQuestCompleted = 4084,
@@ -1097,7 +1059,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -5049, y = -7842 },
             Range = 6,
             IsQuestCompleted = 4084,
@@ -1109,7 +1070,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -5039, y = -7850 },
             Range = 7,
             IsQuestCompleted = 4084,
@@ -1138,7 +1098,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 4005,
-            NonSkippableWaypoint = true,
             Coord = { x = -1068, y = -6163 },
             Range = 8,
             ZoneStepTrigger = { x = -1068, y = -6163, Range = 8, mapID = 1449 },
@@ -1164,7 +1123,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 3961,
-            NonSkippableWaypoint = true,
             Coord = { x = -1068, y = -6163 },
             Range = 8,
             IsQuestOnQuest = 3961,
@@ -1233,7 +1191,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 4507,
-            NonSkippableWaypoint = true,
             Coord = { x = -1333, y = -7892 },
             Range = 8,
             IsQuestOnQuest = 4507,
@@ -1244,7 +1201,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 4507,
-            NonSkippableWaypoint = true,
             Coord = { x = -1329, y = -7926 },
             Range = 7,
             IsQuestOnQuest = 4507,
@@ -1255,7 +1211,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 4507,
-            NonSkippableWaypoint = true,
             Coord = { x = -1319, y = -7950 },
             Range = 7,
             IsQuestOnQuest = 4507,
@@ -1266,7 +1221,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 4507,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_CAVE" },
             Coord = { x = -1314.08, y = -7981.93 },
             Range = 20,
@@ -1276,7 +1230,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 4507,
-            NonSkippableWaypoint = true,
             Coord = { x = -1295, y = -8010 },
             Range = 7,
             IsQuestOnQuest = 4507,
@@ -1287,7 +1240,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 4507,
-            NonSkippableWaypoint = true,
             Coord = { x = -1259, y = -7996 },
             Range = 7,
             IsQuestOnQuest = 4507,
@@ -1298,7 +1250,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 4507,
-            NonSkippableWaypoint = true,
             Coord = { x = -1235, y = -8006 },
             Range = 7,
             IsQuestOnQuest = 4507,
@@ -1309,7 +1260,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 4507,
-            NonSkippableWaypoint = true,
             Coord = { x = -1193, y = -8014 },
             Range = 7,
             IsQuestOnQuest = 4507,
@@ -1320,7 +1270,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 4507,
-            NonSkippableWaypoint = true,
             Coord = { x = -1151, y = -8008 },
             Range = 6,
             IsQuestOnQuest = 4507,
@@ -1331,7 +1280,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 4507,
-            NonSkippableWaypoint = true,
             Coord = { x = -1140, y = -7992 },
             Range = 6,
             IsQuestOnQuest = 4507,
@@ -1342,7 +1290,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 4507,
-            NonSkippableWaypoint = true,
             Coord = { x = -1095, y = -7974 },
             Range = 7,
             IsQuestOnQuest = 4507,
@@ -1381,7 +1328,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 1124,
-            NonSkippableWaypoint = true,
             Coord = { x = -528.94, y = -6495.27 },
             Range = 20,
             Zone = 1449,
@@ -1389,7 +1335,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 1124,
-            NonSkippableWaypoint = true,
             Coord = { x = -568.53, y = -6219.5 },
             Range = 20,
             Zone = 1449,
@@ -1397,7 +1342,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 1124,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 88.4, 23.81),
             Range = 20,
             Zone = 1451,
@@ -1679,7 +1623,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 8285,
-            NonSkippableWaypoint = true,
             Coord = { x = 235, y = -7598 },
             Range = 8,
             ZoneStepTrigger = { x = 235, y = -7598, Range = 8, mapID = 1451 },
@@ -1818,7 +1761,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 8279,
-            NonSkippableWaypoint = true,
             Coord = { x = 1889.6, y = -7867.77 },
             Range = 20,
             Zone = 1451,
@@ -1862,7 +1804,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 8279,
-            NonSkippableWaypoint = true,
             Coord = { x = 235, y = -7598 },
             Range = 8,
             ZoneStepTrigger = { x = 235, y = -7598, Range = 8, mapID = 1451 },
@@ -2030,7 +1971,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 4809,
-            NonSkippableWaypoint = true,
             Coord = { x = -4673.08, y = 6695.05 },
             Range = 15,
             Zone = 1452,
@@ -2080,7 +2020,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 6844,
-            NonSkippableWaypoint = true,
             Coord = { x = -2483.16, y = 7880.79 },
             Range = 15,
             Zone = 1450,
@@ -2194,7 +2133,6 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
         },
         {
             Waypoint = 3378,
-            NonSkippableWaypoint = true,
             Coord = { x = 2626.51, y = 9946.11 },
             Range = 15,
             Zone = 1457,

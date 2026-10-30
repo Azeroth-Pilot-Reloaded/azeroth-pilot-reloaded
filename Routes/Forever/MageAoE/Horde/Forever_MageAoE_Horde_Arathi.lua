@@ -74,7 +74,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Arathi-Alterac"] = {
         },
         {
             Waypoint = 1164,
-            NonSkippableWaypoint = true,
             Fillers = { [672] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 55.25, 39.86),
             Range = 20,
@@ -129,7 +128,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Arathi-Alterac"] = {
         },
         {
             Waypoint = 1164,
-            NonSkippableWaypoint = true,
             Note = { "STORE_CLOTH_LATER_TURN_INS_12_STACKS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.97, 44.73),
             Range = 5,
@@ -144,7 +142,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Arathi-Alterac"] = {
         },
         {
             Waypoint = 513,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 53, 77.48),
             Range = 20,
             Zone = 1458,
@@ -172,7 +169,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Arathi-Alterac"] = {
         },
         {
             Waypoint = 676,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 55.25, 39.86),
             Range = 20,
             Zone = 1417,
@@ -228,7 +224,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Arathi-Alterac"] = {
         },
         {
             Waypoint = 676,
-            NonSkippableWaypoint = true,
             Note = { "STORE_CLOTH_LATER_TURN_INS_12_STACKS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.97, 44.73),
             Range = 5,
@@ -318,7 +313,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Arathi-Alterac"] = {
         },
         {
             Waypoint = 556,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1416, 42.67, 95.3),
             Range = 20,
@@ -403,7 +397,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Arathi-Alterac"] = {
         },
         {
             Waypoint = 556,
-            NonSkippableWaypoint = true,
             Note = { "STORE_CLOTH_LATER_TURN_INS_12_STACKS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.97, 44.73),
             Range = 5,

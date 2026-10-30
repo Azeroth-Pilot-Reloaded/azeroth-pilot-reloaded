@@ -189,7 +189,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94414,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.53, 24.34),
             Range = 20.0,
@@ -199,7 +198,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94414,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.83, 24.13),
             Range = 10.0,
@@ -209,7 +207,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94414,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.78, 24.38),
             Range = 5.0,
@@ -219,7 +216,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94414,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.66, 24.25),
             Range = 5.0,
@@ -229,7 +225,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94414,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.75, 24.09),
             Range = 5.0,
@@ -239,7 +234,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94414,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.84, 24.3),
             Range = 5.0,
@@ -249,7 +243,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94414,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.66, 24.23),
             Range = 5.0,
@@ -259,7 +252,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94414,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.83, 24.18),
             Range = 5.0,
@@ -269,7 +261,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94414,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.83, 24.32),
             Range = 8.0,
@@ -700,7 +691,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92466,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 42.788, 23.566),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(2521, 42.788, 23.566, 10),
@@ -778,7 +768,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92467,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 47.241, 25.244),
             Range = 25.0,
             RaidIcon = 251166,
@@ -789,7 +778,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92467,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 48.802, 25.869),
             Range = 30.0,
             RaidIcon = 251166,
@@ -820,7 +808,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93552,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 48.802, 25.869),
             Range = 10,
             AnyOf = { { Hardcore = true }, { MinLevel = 10 } },
@@ -831,7 +818,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93552,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 47.241, 25.244),
             Range = 10,
             AnyOf = { { Hardcore = true }, { MinLevel = 10 } },
@@ -901,7 +887,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93552,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.89, 22.27),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(2521, 43.89, 22.27, 10),
@@ -920,7 +905,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93552,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.37, 23.98),
             Range = 60.0,
             Zone = 2521,
@@ -1351,7 +1335,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92544,
-            NonSkippableWaypoint = true,
             Note = { "KILL_ENEMIES_WAY_XP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 38.31, 30.17),
             Range = 100.0,
@@ -1367,7 +1350,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92544,
-            NonSkippableWaypoint = true,
             Fillers = { [92544] = { 3 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 36.032, 33.545),
             Range = 50.0,
@@ -1487,7 +1469,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92472,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.67, 45.19),
             Range = 10,
             RaidIcon = 254360,
@@ -1652,7 +1633,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93461,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.02, 43.24),
             Range = 5,
             RaidIcon = 254089,
@@ -1731,7 +1711,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93461,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.07, 45.27),
             Range = 25.0,
             RaidIcon = 254084,
@@ -1744,7 +1723,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92514,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.07, 45.27),
             Range = 25.0,
             RaidIcon = 254084,
@@ -1779,7 +1757,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93461,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.07, 45.27),
             Range = 25.0,
             RaidIcon = 254081,
@@ -1792,7 +1769,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92514,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.07, 45.27),
             Range = 25.0,
             RaidIcon = 254081,
@@ -1883,7 +1859,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92553,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.72, 45.47),
             Range = 5,
             AllOf = { { IsQuestNotOnQuest = 93319 } },
@@ -2150,7 +2125,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92517,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 48.813, 36.434),
             Range = 10,
             AnyOf = { { IsQuestOnQuest = 92517, Not = { IsQuestReadyForTurnIn = 92517 } }, { IsQuestOnQuest = 93319, Not = { IsQuestReadyForTurnIn = 93319 } } },
@@ -2160,7 +2134,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93319,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 48.813, 36.434),
             Range = 10,
             AllOf = { { IsQuestCompleted = 92517 } },
@@ -2172,7 +2145,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92553,
-            NonSkippableWaypoint = true,
             Fillers = { [92517] = { 1, 2 }, [93319] = { 1 } },
             Note = { "GO_INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 48.813, 36.434),
@@ -2182,7 +2154,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92517,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 49.355, 35.793),
             Range = 15,
             AnyOf = { { IsQuestOnQuest = 92517, Not = { IsQuestReadyForTurnIn = 92517 } }, { IsQuestOnQuest = 93319, Not = { IsQuestReadyForTurnIn = 93319 } } },
@@ -2192,7 +2163,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93319,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 49.355, 35.793),
             Range = 15,
             AllOf = { { IsQuestCompleted = 92517 } },
@@ -2204,7 +2174,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92553,
-            NonSkippableWaypoint = true,
             Fillers = { [92517] = { 1, 2 }, [93319] = { 1 } },
             Note = { "GO_INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 49.355, 35.793),
@@ -2214,7 +2183,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92517,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 49.537, 34.325),
             Range = 15,
             AnyOf = { { IsQuestOnQuest = 92517, Not = { IsQuestReadyForTurnIn = 92517 } }, { IsQuestOnQuest = 93319, Not = { IsQuestReadyForTurnIn = 93319 } } },
@@ -2224,7 +2192,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93319,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 49.537, 34.325),
             Range = 15,
             AllOf = { { IsQuestCompleted = 92517 } },
@@ -2236,7 +2203,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92553,
-            NonSkippableWaypoint = true,
             Fillers = { [92517] = { 1, 2 }, [93319] = { 1 } },
             Note = { "GO_INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 49.537, 34.325),
@@ -3322,7 +3288,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92529,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.831, 45.515),
             Range = 5,
             RaidIcon = 251904,
@@ -3437,7 +3402,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92529,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.374, 53.512),
             Range = 25.0,
@@ -3454,7 +3418,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92529,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.412, 53.485),
             Range = 20,
@@ -3502,7 +3465,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92528,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 46.89, 56.24),
             Range = 5,
@@ -3521,7 +3483,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92528,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 }, [92528] = { 1 } },
             Note = { "UPSTAIRS", "INTERACT_CABINET", "SOMEONE_ALREADY_FINISH_ANYWAY" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 48.85, 53.91),
@@ -3548,7 +3509,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92528,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 46.86, 51.54),
             Range = 25.0,
@@ -3565,7 +3525,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92528,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.37, 46.69),
             Range = 30.0,
@@ -3609,7 +3568,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92528,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.37, 46.69),
             Range = 30.0,
@@ -3620,7 +3578,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92528,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.49, 45.95),
             Range = 30.0,
@@ -3631,7 +3588,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92528,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.93, 46.85),
             Range = 30.0,
@@ -3642,7 +3598,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92528,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.21, 46.63),
             Range = 30.0,
@@ -3653,7 +3608,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92528,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.04, 46.23),
             Range = 15.0,
@@ -3719,7 +3673,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93926,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.35, 46.79),
             Range = 25,
             IsQuestOnQuest = 93926,
@@ -3825,7 +3778,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92550,
-            NonSkippableWaypoint = true,
             Fillers = { [92553] = { 2, 1 }, [92550] = { 1 }, [92551] = { 1 }, [92515] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.48, 58.73),
             Range = 30.0,
@@ -4472,7 +4424,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93317,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 60.6, 73.16),
             Range = 10.0,
             RaidIcon = 257006,
@@ -4542,7 +4493,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93948,
-            NonSkippableWaypoint = true,
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.096, 73.339),
             Range = 20.0,
@@ -4558,7 +4508,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93948,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.33, 73.65),
             Range = 15.0,
             IsQuestNotOnQuest = 94484,
@@ -4567,7 +4516,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93948,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.973, 75.095),
             Range = 25.0,
             IsQuestNotOnQuest = 94484,
@@ -4598,7 +4546,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93948,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.93, 76.37),
             Range = 5.0,
@@ -4607,7 +4554,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93948,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.46, 76.8),
             Range = 5.0,
@@ -4616,7 +4562,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93948,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.43, 76.58),
             Range = 5.0,
@@ -4625,7 +4570,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93948,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.43, 76.83),
             Range = 5.0,
@@ -4634,7 +4578,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93948,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.31, 77.08),
             Range = 5.0,
@@ -4643,7 +4586,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93948,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66, 76.57),
             Range = 8.0,
@@ -4652,7 +4594,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93948,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.19, 76.22),
             Range = 8.0,
@@ -4661,7 +4602,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93948,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.44, 76.4),
             Range = 5.0,
@@ -4702,7 +4642,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92700,
-            NonSkippableWaypoint = true,
             Note = { "JUMP_USE_WALK_AIR", "TIME_CORRECTLY_CANCEL_MIDAIR_LAND_BUILDING", "PERFORM_INDICATED_ACTION_CANCELAURA_WALK_AIR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.488, 76.498),
             Range = 6,
@@ -4730,7 +4669,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92699,
-            NonSkippableWaypoint = true,
             Note = { "JUMP_USE_WALK_AIR", "TIME_CORRECTLY_CANCEL_MIDAIR_LAND_BUILDING", "PERFORM_INDICATED_ACTION_CANCELAURA_WALK_AIR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.47, 76.68),
             Range = 10.0,
@@ -4797,7 +4735,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92700,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 61.491, 76.893),
             Range = 15.0,
             RaidIcon = 251968,
@@ -4807,7 +4744,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92700,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.349, 77.93),
             Range = 35.0,
             RaidIcon = 251968,
@@ -4998,7 +4934,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93737,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 51.397, 68.644),
             Range = 25,
             Faction = "Horde",
@@ -5018,7 +4953,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93737,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 51.397, 68.644),
             Range = 25,
             Faction = "Horde",
@@ -5044,7 +4978,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92849,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 51.41, 68.9),
             Range = 15,
             DontHaveAura = 1258429,
@@ -5065,7 +4998,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92849,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_CAVE", "BIRDS_SMALLER_AGGRO_RADIUS_MOST_ENEMIES" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 50.7, 65.36),
             Range = 5,
@@ -5105,7 +5037,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92850,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 51.41, 68.9),
             Range = 15,
             Faction = "Alliance",
@@ -5116,7 +5047,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92850,
-            NonSkippableWaypoint = true,
             Note = { "GO_INSIDE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 52.02, 65.51),
             Range = 15,
@@ -5127,7 +5057,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92850,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 52.49, 65.97),
             Range = 5,
             Faction = "Alliance",
@@ -5155,7 +5084,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92679,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 52.37, 66.5),
             Range = 15.0,
@@ -5165,7 +5093,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92679,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 51.75, 66.33),
             Range = 15.0,
@@ -5175,7 +5102,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92679,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 51.05, 66.66),
             Range = 15.0,
@@ -5185,7 +5111,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92679,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 51.16, 67.53),
             Range = 15.0,
@@ -5195,7 +5120,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92679,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 51.5, 69.11),
             Range = 15,
@@ -5334,7 +5258,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 97243,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.18, 72.616),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(2521, 62.18, 72.616, 10),
@@ -5381,7 +5304,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 97243,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 54.402, 77.329),
             Range = 30,
             RaidIcon = 268592,
@@ -5447,7 +5369,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92685,
-            NonSkippableWaypoint = true,
             Fillers = { [92685] = { 1 } },
             Note = { "SPOT_TORNADO_APPROACH_GAIN_40_INCREASED_MOVEMENT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.81, 74.4),
@@ -5534,7 +5455,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92685,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.84, 75.53),
             Range = 30,
             IsQuestOnQuest = 92685,
@@ -5543,7 +5463,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92685,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.06, 76.19),
             Range = 15,
             IsQuestOnQuest = 92685,
@@ -5630,7 +5549,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92703,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.18, 72.616),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(2521, 62.18, 72.616, 10),
@@ -5724,7 +5642,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92703,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.18, 72.616),
             Range = 5,
             RaidIcon = 255940,
@@ -5747,7 +5664,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92703,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 61.94, 72.8),
             Range = 10.0,
             RaidIcon = 252448,
@@ -5759,7 +5675,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92703,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.05, 73.09),
             Range = 8.0,
             RaidIcon = 252448,
@@ -5892,7 +5807,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92850,
-            NonSkippableWaypoint = true,
             Fillers = { [93949] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.33, 73.65),
             Range = 15.0,
@@ -5905,7 +5819,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92850,
-            NonSkippableWaypoint = true,
             Fillers = { [93949] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.973, 75.095),
             Range = 25.0,
@@ -5918,7 +5831,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94006,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.33, 73.65),
             Range = 15.0,
             Class = "DRUID",
@@ -5930,7 +5842,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94006,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.973, 75.095),
             Range = 25.0,
             Class = "DRUID",
@@ -6027,7 +5938,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92850,
-            NonSkippableWaypoint = true,
             Fillers = { [93949] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.55, 73.3),
             Range = 30.0,
@@ -6090,7 +6000,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93159,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.55, 73.3),
             Range = 30.0,
             RaidIcon = 252379,
@@ -6484,7 +6393,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 97968,
-            NonSkippableWaypoint = true,
             Fillers = { [92840] = { 1 } },
             Note = { "SPOT_TORNADO_APPROACH_GAIN_40_INCREASED_MOVEMENT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 46.52, 70.33),
@@ -6497,7 +6405,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94978,
-            NonSkippableWaypoint = true,
             Fillers = { [92840] = { 1 } },
             Note = { "SPOT_TORNADO_APPROACH_GAIN_40_INCREASED_MOVEMENT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 46.52, 70.33),
@@ -6551,7 +6458,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94978,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 50.57, 68.18),
             Range = 30.0,
             Class = "HUNTER",
@@ -6576,7 +6482,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 97968,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 49.46, 70.12),
             Range = 30.0,
             Class = { "DRUID", "MAGE", "ROGUE", "WARRIOR" },
@@ -6799,7 +6704,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92860,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.65, 79.27),
             Range = 30.0,
@@ -6809,7 +6713,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92860,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 64.98, 77.12),
             Range = 30.0,
@@ -6819,7 +6722,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92860,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.93, 76.37),
             Range = 8.0,
@@ -6829,7 +6731,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92860,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.46, 76.8),
             Range = 5.0,
@@ -6839,7 +6740,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92860,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.43, 76.58),
             Range = 5.0,
@@ -6849,7 +6749,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92860,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.43, 76.83),
             Range = 5.0,
@@ -6859,7 +6758,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92860,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.31, 77.08),
             Range = 5.0,
@@ -6869,7 +6767,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92860,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66, 76.57),
             Range = 8.0,
@@ -6879,7 +6776,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92860,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.19, 76.22),
             Range = 8.0,
@@ -6889,7 +6785,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92860,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.44, 76.4),
             Range = 5.0,
@@ -6907,7 +6802,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93320,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.47, 76.64),
             Range = 10.0,
             Class = { "HUNTER", "MAGE", "ROGUE", "WARRIOR" },
@@ -6944,7 +6838,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93320,
-            NonSkippableWaypoint = true,
             Fillers = { [92834] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.59, 73.6),
             Range = 25.0,
@@ -6955,7 +6848,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93320,
-            NonSkippableWaypoint = true,
             Fillers = { [92834] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 64.4, 73.23),
             Range = 30.0,
@@ -6966,7 +6858,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93320,
-            NonSkippableWaypoint = true,
             Fillers = { [92834] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.36, 71.79),
             Range = 30.0,
@@ -6977,7 +6868,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93320,
-            NonSkippableWaypoint = true,
             Fillers = { [92834] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.76, 68.4),
             Range = 30.0,
@@ -7031,7 +6921,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92834,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 69.01, 65.86),
             Range = 20.0,
             Class = "DRUID",
@@ -7068,7 +6957,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92645,
-            NonSkippableWaypoint = true,
             Fillers = { [92645] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 67.39, 63.3),
             Range = 15.0,
@@ -7145,7 +7033,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92880,
-            NonSkippableWaypoint = true,
             Note = { "GO_AROUND_MOUNTAIN_CLIMB_TOWER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.58, 68.58),
             Range = 30.0,
@@ -7155,7 +7042,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92880,
-            NonSkippableWaypoint = true,
             Note = { "GO_AROUND_MOUNTAIN_CLIMB_TOWER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.93, 76.37),
             Range = 5.0,
@@ -7165,7 +7051,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92880,
-            NonSkippableWaypoint = true,
             Note = { "GO_AROUND_MOUNTAIN_CLIMB_TOWER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.46, 76.8),
             Range = 5.0,
@@ -7175,7 +7060,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92880,
-            NonSkippableWaypoint = true,
             Note = { "GO_AROUND_MOUNTAIN_CLIMB_TOWER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.43, 76.58),
             Range = 5.0,
@@ -7185,7 +7069,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92880,
-            NonSkippableWaypoint = true,
             Note = { "GO_AROUND_MOUNTAIN_CLIMB_TOWER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.43, 76.83),
             Range = 5.0,
@@ -7195,7 +7078,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92880,
-            NonSkippableWaypoint = true,
             Note = { "GO_AROUND_MOUNTAIN_CLIMB_TOWER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.31, 77.08),
             Range = 5.0,
@@ -7205,7 +7087,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92880,
-            NonSkippableWaypoint = true,
             Note = { "GO_AROUND_MOUNTAIN_CLIMB_TOWER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66, 76.57),
             Range = 8.0,
@@ -7215,7 +7096,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92880,
-            NonSkippableWaypoint = true,
             Note = { "GO_AROUND_MOUNTAIN_CLIMB_TOWER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.19, 76.22),
             Range = 8.0,
@@ -7225,7 +7105,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92880,
-            NonSkippableWaypoint = true,
             Note = { "GO_AROUND_MOUNTAIN_CLIMB_TOWER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.44, 76.4),
             Range = 5.0,
@@ -7273,7 +7152,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92643,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.47, 76.61),
             Range = 8.0,
             Faction = "Alliance",
@@ -7284,7 +7162,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92643,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.31, 76.18),
             Range = 15.0,
             Faction = "Alliance",
@@ -7305,7 +7182,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92643,
-            NonSkippableWaypoint = true,
             Note = { "REPAIR", "KEEP_COOKING_MEAT_EGGS", "KEEP_SPARE_MEAT_COOKING_NOT_MAKE_SEPARATE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.14, 76.9),
             Range = 20.0,
@@ -7340,7 +7216,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94006,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.424, 71.472),
             Range = 35.0,
             Class = "DRUID",
@@ -7350,7 +7225,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94006,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.905, 68.024),
             Range = 5,
             Class = "DRUID",
@@ -7360,7 +7234,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94006,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 69.01, 65.86),
             Range = 20.0,
             Class = "DRUID",
@@ -7397,7 +7270,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 98512,
-            NonSkippableWaypoint = true,
             Note = { "SPOT_TORNADO_APPROACH_GAIN_40_INCREASED_MOVEMENT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.528, 66.902),
             Range = 20,
@@ -7420,7 +7292,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 98512,
-            NonSkippableWaypoint = true,
             Fillers = { [93317] = { 1 } },
             Note = { "SPOT_TORNADO_APPROACH_GAIN_40_INCREASED_MOVEMENT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.528, 66.902),
@@ -7483,7 +7354,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 98512,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.719, 67.016),
             Range = 35.0,
             RaidIcon = 273017,
@@ -7556,7 +7426,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94638,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 56.8, 61.1),
             Range = 25,
             Class = "DRUID",
@@ -7576,7 +7445,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94638,
-            NonSkippableWaypoint = true,
             Note = { "USE_LOWER_MOUNTAIN_LAUNCH_POINT", "JUMP_USE_WALK_AIR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 56.83, 63.121),
             Range = 15.0,
@@ -7587,7 +7455,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94638,
-            NonSkippableWaypoint = true,
             Note = { "USE_LOWER_MOUNTAIN_LAUNCH_POINT", "JUMP_USE_WALK_AIR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 57.299, 63.465),
             Range = 15.0,
@@ -7598,7 +7465,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94638,
-            NonSkippableWaypoint = true,
             Note = { "USE_LOWER_MOUNTAIN_LAUNCH_POINT", "JUMP_USE_WALK_AIR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 60.25, 62.742),
             Range = 20.0,
@@ -7635,7 +7501,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93159,
-            NonSkippableWaypoint = true,
             Fillers = { [93317] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 57.25, 60.92),
             Range = 50.0,
@@ -7666,7 +7531,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93317,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 54.35, 57.87),
             Range = 25,
             Faction = "Alliance",
@@ -7686,7 +7550,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93159,
-            NonSkippableWaypoint = true,
             Note = { "SPOT_TORNADO_APPROACH_GAIN_40_INCREASED_MOVEMENT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 55.89, 56.12),
             Range = 40.0,
@@ -7697,7 +7560,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93159,
-            NonSkippableWaypoint = true,
             Note = { "SPOT_TORNADO_APPROACH_GAIN_40_INCREASED_MOVEMENT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 57.17, 55.26),
             Range = 40.0,
@@ -7708,7 +7570,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93159,
-            NonSkippableWaypoint = true,
             Note = { "SPOT_TORNADO_APPROACH_GAIN_40_INCREASED_MOVEMENT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 57.86, 54.69),
             Range = 40.0,
@@ -7719,7 +7580,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93159,
-            NonSkippableWaypoint = true,
             Note = { "SPOT_TORNADO_APPROACH_GAIN_40_INCREASED_MOVEMENT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 58.61, 52.77),
             Range = 30.0,
@@ -7730,7 +7590,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93159,
-            NonSkippableWaypoint = true,
             Note = { "SPOT_TORNADO_APPROACH_GAIN_40_INCREASED_MOVEMENT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 58.72, 52.77),
             Range = 30.0,
@@ -7742,7 +7601,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93159,
-            NonSkippableWaypoint = true,
             Note = { "SPOT_TORNADO_APPROACH_GAIN_40_INCREASED_MOVEMENT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.444, 67.06),
             Range = 45.0,
@@ -7754,7 +7612,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93159,
-            NonSkippableWaypoint = true,
             Note = { "SPOT_TORNADO_APPROACH_GAIN_40_INCREASED_MOVEMENT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 58.72, 52.77),
             Range = 30.0,
@@ -7775,7 +7632,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93159,
-            NonSkippableWaypoint = true,
             Fillers = { [92741] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 58.81, 46.74),
             Range = 30.0,
@@ -7785,7 +7641,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93159,
-            NonSkippableWaypoint = true,
             Fillers = { [92741] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 58.81, 43.57),
             Range = 40.0,
@@ -7795,7 +7650,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93159,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 58.81, 43.57),
             Range = 40.0,
             Faction = "Horde",
@@ -7907,7 +7761,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94897,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 57.23, 33.4),
             Range = 25,
             IsQuestOnQuest = 94897,
@@ -7927,7 +7780,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94484,
-            NonSkippableWaypoint = true,
             Fillers = { [93172] = { 1 }, [94896] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 56.61, 29.26),
             Range = 20.0,
@@ -7937,7 +7789,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94484,
-            NonSkippableWaypoint = true,
             Fillers = { [93172] = { 1 }, [94896] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 58.14, 30.47),
             Range = 10.0,
@@ -7947,7 +7798,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94484,
-            NonSkippableWaypoint = true,
             Fillers = { [93172] = { 1 }, [94896] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 57.81, 31.07),
             Range = 20.0,
@@ -7957,7 +7807,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94484,
-            NonSkippableWaypoint = true,
             Fillers = { [93172] = { 1 }, [94896] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 57.55, 31.01),
             Range = 20.0,
@@ -7967,7 +7816,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94484,
-            NonSkippableWaypoint = true,
             Fillers = { [93172] = { 1 }, [94896] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 57.55, 32.06),
             Range = 30.0,
@@ -7977,7 +7825,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94484,
-            NonSkippableWaypoint = true,
             Fillers = { [93172] = { 1 }, [94896] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 58.47, 32.63),
             Range = 30.0,
@@ -7987,7 +7834,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94484,
-            NonSkippableWaypoint = true,
             Fillers = { [93172] = { 1 }, [94896] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 58.33, 31.61),
             Range = 30.0,
@@ -7997,7 +7843,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94484,
-            NonSkippableWaypoint = true,
             Fillers = { [93172] = { 1 }, [94896] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 58.82, 31.1),
             Range = 20.0,
@@ -8007,7 +7852,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94484,
-            NonSkippableWaypoint = true,
             Fillers = { [93172] = { 1 }, [94896] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.06, 31.69),
             Range = 30.0,
@@ -8017,7 +7861,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94484,
-            NonSkippableWaypoint = true,
             Fillers = { [93172] = { 1 }, [94896] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.15, 32.25),
             Range = 30.0,
@@ -8266,7 +8109,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93165,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.75, 36.44),
             Range = 30,
             RaidIcon = 254151,
@@ -8284,7 +8126,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94489,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.8, 36),
             Range = 15,
             IsQuestOnQuest = 94489,
@@ -8304,7 +8145,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94489,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 64.703, 30.067),
             Range = 20.0,
             Zone = 2521,
@@ -8350,7 +8190,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94489,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 61.77, 39.14),
             Range = 15,
@@ -8389,7 +8228,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94491,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.18, 72.616),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(2521, 62.18, 72.616, 10),
@@ -8405,7 +8243,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94896,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.18, 72.616),
             Range = 10,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(2521, 62.18, 72.616, 10),
@@ -8508,7 +8345,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94491,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.55, 73.3),
             Range = 30.0,
             RaidIcon = 252379,
@@ -8642,7 +8478,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93317,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 60.64, 72.94),
             Range = 25,
             Class = { "HUNTER", "ROGUE", "WARRIOR" },
@@ -8665,7 +8500,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94491,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.55, 73.45),
             Range = 25.0,
             RaidIcon = 252359,
@@ -8792,7 +8626,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92644,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.93, 76.37),
             Range = 5.0,
@@ -8802,7 +8635,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92644,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.46, 76.8),
             Range = 5.0,
@@ -8812,7 +8644,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92644,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.43, 76.58),
             Range = 5.0,
@@ -8822,7 +8653,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92644,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.43, 76.83),
             Range = 5.0,
@@ -8832,7 +8662,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92644,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.31, 77.08),
             Range = 5.0,
@@ -8842,7 +8671,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92644,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66, 76.57),
             Range = 8.0,
@@ -8852,7 +8680,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92644,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.19, 76.22),
             Range = 8.0,
@@ -8862,7 +8689,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92644,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.44, 76.4),
             Range = 5.0,
@@ -8880,7 +8706,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94568,
-            NonSkippableWaypoint = true,
             Fillers = { [94568] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.18, 76.51),
             Range = 5,
@@ -8924,7 +8749,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92640,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.49, 76.64),
             Range = 8.0,
             Faction = "Alliance",
@@ -8953,7 +8777,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92741,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.94, 77.92),
             Range = 30.0,
             RaidIcon = 253004,
@@ -8963,7 +8786,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92741,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 61.45, 77.15),
             Range = 30.0,
             RaidIcon = 253004,
@@ -8973,7 +8795,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92741,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.13, 76.85),
             Range = 30.0,
             RaidIcon = 253004,
@@ -8983,7 +8804,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92741,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.35, 78.58),
             Range = 30.0,
             RaidIcon = 253004,
@@ -9097,7 +8917,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92640,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.65, 79.27),
             Range = 30.0,
@@ -9107,7 +8926,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92640,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 64.98, 77.12),
             Range = 30.0,
@@ -9117,7 +8935,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92640,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.93, 76.37),
             Range = 5.0,
@@ -9127,7 +8944,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92640,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.46, 76.8),
             Range = 5.0,
@@ -9137,7 +8953,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92640,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.43, 76.58),
             Range = 5.0,
@@ -9147,7 +8962,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92640,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.43, 76.83),
             Range = 5.0,
@@ -9157,7 +8971,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92640,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.31, 77.08),
             Range = 5.0,
@@ -9167,7 +8980,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92640,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66, 76.57),
             Range = 8.0,
@@ -9177,7 +8989,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92640,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.19, 76.22),
             Range = 8.0,
@@ -9187,7 +8998,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92640,
-            NonSkippableWaypoint = true,
             Note = { "CLIMB_TOWER_STAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.44, 76.4),
             Range = 5.0,
@@ -9205,7 +9015,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93065,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.49, 76.64),
             Range = 8.0,
             Faction = "Alliance",
@@ -9215,7 +9024,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93065,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.39, 76.26),
             Range = 10.0,
             Faction = "Alliance",
@@ -9242,7 +9050,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93065,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.99, 74.1),
             Range = 40.0,
             RaidIcon = 253844,
@@ -9270,7 +9077,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93317,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 60.95, 73.17),
             Range = 15,
             RaidIcon = 257006,
@@ -9281,7 +9087,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93317,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 60.64, 72.94),
             Range = 8,
             RaidIcon = 257006,
@@ -9349,7 +9154,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 888, y = -9027.101 },
             Range = 9,
             RaidIcon = 1748,
@@ -9359,7 +9163,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 867.4, y = -9005.5 },
             Range = 8,
             RaidIcon = 1748,
@@ -9369,7 +9172,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 877.3, y = -9008.9 },
             Range = 8,
             RaidIcon = 1748,
@@ -9379,7 +9181,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 864, y = -9001.3 },
             Range = 8,
             RaidIcon = 1748,
@@ -9474,7 +9275,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 811.9, y = -8993.2 },
             Range = 20,
             RaidIcon = 1748,
@@ -9484,7 +9284,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 780.5, y = -8975.8 },
             Range = 20,
             RaidIcon = 1748,
@@ -9494,7 +9293,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 770.5, y = -8947.2 },
             Range = 20,
             RaidIcon = 1748,
@@ -9504,7 +9302,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 789.9, y = -8907.4 },
             Range = 20,
             RaidIcon = 1748,
@@ -9514,7 +9311,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 755.5, y = -8878.5 },
             Range = 20,
             RaidIcon = 1748,
@@ -9524,7 +9320,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 715.5, y = -8843.3 },
             Range = 20,
             RaidIcon = 1748,
@@ -9534,7 +9329,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 675.6, y = -8782.601 },
             Range = 20,
             RaidIcon = 1748,
@@ -9544,7 +9338,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 629.7, y = -8759.8 },
             Range = 20,
             RaidIcon = 1748,
@@ -9554,7 +9347,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 603.4, y = -8765.5 },
             Range = 20,
             RaidIcon = 1748,
@@ -9564,7 +9356,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 573.5, y = -8737.8 },
             Range = 20,
             RaidIcon = 1748,
@@ -9574,7 +9365,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 552.5, y = -8742 },
             Range = 20,
             RaidIcon = 1748,
@@ -9584,7 +9374,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 527.7, y = -8703.5 },
             Range = 20,
             RaidIcon = 1748,
@@ -9594,7 +9383,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94947,
-            NonSkippableWaypoint = true,
             Coord = { x = 552.6, y = -8656.9 },
             Range = 20,
             RaidIcon = 1748,
@@ -9896,7 +9684,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94911,
-            NonSkippableWaypoint = true,
             Coord = { x = -110.5, y = -970.7 },
             Range = 15,
             ZoneStepTrigger = { x = -110.5, y = -970.7, mapID = 1456, Range = 10 },
@@ -9908,7 +9695,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94911,
-            NonSkippableWaypoint = true,
             Coord = { x = -76.9, y = -1026 },
             Range = 15,
             ZoneStepTrigger = { x = -76.9, y = -1026, mapID = 1456, Range = 10 },
@@ -9920,7 +9706,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94911,
-            NonSkippableWaypoint = true,
             Coord = { x = -48.8, y = -1037.3 },
             Range = 8,
             ZoneStepTrigger = { x = -48.8, y = -1037.3, mapID = 1456, Range = 10 },
@@ -9932,7 +9717,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94911,
-            NonSkippableWaypoint = true,
             Coord = { x = -7.3, y = -1089.6 },
             Range = 20,
             ZoneStepTrigger = { x = -7.3, y = -1089.6, mapID = 1456, Range = 10 },
@@ -9944,7 +9728,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94911,
-            NonSkippableWaypoint = true,
             Coord = { x = -13.3, y = -1108.3 },
             Range = 12,
             ZoneStepTrigger = { x = -13.3, y = -1108.3, mapID = 1456, Range = 10 },
@@ -9956,7 +9739,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94911,
-            NonSkippableWaypoint = true,
             Coord = { x = -46.9, y = -1092.9 },
             Range = 12,
             ZoneStepTrigger = { x = -46.9, y = -1092.9, mapID = 1456, Range = 10 },
@@ -9968,7 +9750,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94911,
-            NonSkippableWaypoint = true,
             Coord = { x = -61.2, y = -1097.4 },
             Range = 8,
             ZoneStepTrigger = { x = -61.2, y = -1097.4, mapID = 1456, Range = 10 },
@@ -9980,7 +9761,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 94911,
-            NonSkippableWaypoint = true,
             Coord = { x = -198, y = -1046.5 },
             Range = 12,
             ZoneStepTrigger = { x = -198, y = -1046.5, mapID = 1456, Range = 10 },
@@ -10088,7 +9868,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 97246,
-            NonSkippableWaypoint = true,
             Coord = { x = -110.5, y = -970.7 },
             Range = 15,
             Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" },
@@ -10098,7 +9877,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 97246,
-            NonSkippableWaypoint = true,
             Coord = { x = -76.9, y = -1026 },
             Range = 15,
             Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" },
@@ -10108,7 +9886,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 97246,
-            NonSkippableWaypoint = true,
             Coord = { x = -48.8, y = -1037.3 },
             Range = 8,
             Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" },
@@ -10118,7 +9895,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 97246,
-            NonSkippableWaypoint = true,
             Coord = { x = -7.3, y = -1089.6 },
             Range = 25,
             Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" },
@@ -10147,7 +9923,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 97246,
-            NonSkippableWaypoint = true,
             Coord = { x = -4460.6, y = 1584.3 },
             Range = 10.0,
             RaidIcon = 268701,
@@ -10190,7 +9965,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 97242,
-            NonSkippableWaypoint = true,
             Coord = { x = -4560.0, y = 1908.5 },
             Range = 15.0,
             Faction = "Horde",
@@ -10199,7 +9973,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 97242,
-            NonSkippableWaypoint = true,
             Coord = { x = -4587.0, y = 1918.3 },
             Range = 15.0,
             Faction = "Horde",
@@ -10208,7 +9981,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 97242,
-            NonSkippableWaypoint = true,
             Coord = { x = -4608.0, y = 1897.4 },
             Range = 15.0,
             Faction = "Horde",
@@ -10217,7 +9989,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 97242,
-            NonSkippableWaypoint = true,
             Coord = { x = -4632.3, y = 1911.6 },
             Range = 15.0,
             Faction = "Horde",
@@ -10565,7 +10336,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 96895,
-            NonSkippableWaypoint = true,
             Coord = { x = -4417.1, y = 1480.6 },
             Range = 15,
             ZoneStepTrigger = { x = -4417.1, y = 1480.6, mapID = 1454, Range = 10 },
@@ -10576,7 +10346,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 96895,
-            NonSkippableWaypoint = true,
             Coord = { x = -4412.5, y = 1436.4 },
             Range = 15,
             ZoneStepTrigger = { x = -4412.5, y = 1436.4, mapID = 1454, Range = 10 },
@@ -10587,7 +10356,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 96895,
-            NonSkippableWaypoint = true,
             Coord = { x = -4363.9, y = 1420.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4363.9, y = 1420.2, mapID = 1454, Range = 10 },
@@ -10598,7 +10366,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 96895,
-            NonSkippableWaypoint = true,
             Coord = { x = -4370, y = 1382.2 },
             Range = 15,
             ZoneStepTrigger = { x = -4370, y = 1382.2, mapID = 1411, Range = 10 },
@@ -10609,7 +10376,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 840,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1411, 51.52, 41.59),
             Range = 20,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1411, 51.52, 41.59, 20),
@@ -10630,7 +10396,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 842,
-            NonSkippableWaypoint = true,
             Coord = { x = -3687.11, y = 303.14 },
             Range = 20,
             ZoneStepTrigger = { x = -3687.11, y = 303.14, mapID = 1413, Range = 20 },
@@ -10659,7 +10424,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 96895,
-            NonSkippableWaypoint = true,
             Coord = { x = -4636.4, y = 1338.7 },
             Range = 5,
             ZoneStepTrigger = { x = -4636.4, y = 1338.7, mapID = 1411, Range = 10 },
@@ -10671,7 +10435,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 96895,
-            NonSkippableWaypoint = true,
             Coord = { x = -4645.1, y = 1345 },
             Range = 5,
             ZoneStepTrigger = { x = -4645.1, y = 1345, mapID = 1411, Range = 10 },
@@ -10693,7 +10456,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 96895,
-            NonSkippableWaypoint = true,
             Coord = { x = 253.4, y = 2234.85 },
             Range = 20,
             ZoneStepTrigger = { x = 253.4, y = 2234.85, mapID = 1420, Range = 10 },
@@ -10791,7 +10553,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 239.14, y = 1749.54 },
             Range = 20,
@@ -10804,7 +10565,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 255.64, y = 1724.7 },
             Range = 20,
@@ -10817,7 +10577,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 240.68, y = 1706.97 },
             Range = 10,
@@ -10830,7 +10589,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 241.06, y = 1660.12 },
             Range = 10,
@@ -10843,7 +10601,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 257.08, y = 1623.38 },
             Range = 10,
@@ -10856,7 +10613,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 244.51, y = 1598.73 },
             Range = 15,
@@ -10889,7 +10645,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 419.89, y = 1627.54 },
             Range = 20,
             ZoneStepTrigger = { x = 419.89, y = 1627.54, mapID = 1458, Range = 10 },
@@ -10901,7 +10656,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 428.52, y = 1597.2 },
             Range = 10,
             ZoneStepTrigger = { x = 428.52, y = 1597.2, mapID = 1458, Range = 10 },
@@ -10913,7 +10667,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 439.17, y = 1626.06 },
             Range = 10,
             ZoneStepTrigger = { x = 439.17, y = 1626.06, mapID = 1458, Range = 10 },
@@ -10925,7 +10678,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 476.78, y = 1632.15 },
             Range = 10,
             ZoneStepTrigger = { x = 476.78, y = 1632.15, mapID = 1458, Range = 10 },
@@ -10937,7 +10689,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 482.34, y = 1660.63 },
             Range = 10,
             ZoneStepTrigger = { x = 482.34, y = 1660.63, mapID = 1458, Range = 10 },
@@ -10949,7 +10700,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 539.33, y = 1665.49 },
             Range = 15,
             ZoneStepTrigger = { x = 539.33, y = 1665.49, mapID = 1458, Range = 10 },
@@ -10961,7 +10711,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 610.42, y = 1684.44 },
             Range = 20,
             ZoneStepTrigger = { x = 610.42, y = 1684.44, mapID = 1458, Range = 10 },
@@ -10973,7 +10722,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 663.19, y = 1600.46 },
             Range = 20,
             ZoneStepTrigger = { x = 663.19, y = 1600.46, mapID = 1458, Range = 10 },
@@ -10985,7 +10733,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 724.25, y = 1682.66 },
             Range = 20,
             ZoneStepTrigger = { x = 724.25, y = 1682.66, mapID = 1420, Range = 10 },
@@ -10997,7 +10744,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 629.36, y = 1553.42 },
             Range = 5,
             ZoneStepTrigger = { x = 629.36, y = 1553.42, mapID = 1420, Range = 10 },

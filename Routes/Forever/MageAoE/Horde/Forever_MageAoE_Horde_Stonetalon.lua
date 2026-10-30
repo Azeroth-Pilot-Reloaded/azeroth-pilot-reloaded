@@ -463,7 +463,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Stonetalon-Barrens"] = {
         },
         {
             Waypoint = 1130,
-            NonSkippableWaypoint = true,
             Note = { "USE_ELEVATOR" },
             Coord = { x = 182.67, y = -1315.51 },
             Range = 20,
@@ -478,7 +477,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Stonetalon-Barrens"] = {
         },
         {
             Waypoint = 1130,
-            NonSkippableWaypoint = true,
             Coord = { x = 1.3, y = -1333.2 },
             Range = 6,
             ZoneStepTrigger = { x = 1.3, y = -1333.2, Range = 6, mapID = 1456 },
@@ -489,7 +487,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Stonetalon-Barrens"] = {
         },
         {
             Waypoint = 1130,
-            NonSkippableWaypoint = true,
             Coord = { x = -63.3, y = -1397.2 },
             Range = 6,
             ZoneStepTrigger = { x = -63.3, y = -1397.2, Range = 6, mapID = 1456 },
@@ -512,7 +509,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Stonetalon-Barrens"] = {
         },
         {
             Waypoint = 853,
-            NonSkippableWaypoint = true,
             Coord = { x = 131.6, y = -1210.1 },
             Range = 6,
             ZoneStepTrigger = { x = 131.6, y = -1210.1, Range = 6, mapID = 1456 },
@@ -523,7 +519,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Stonetalon-Barrens"] = {
         },
         {
             Waypoint = 853,
-            NonSkippableWaypoint = true,
             Coord = { x = 169.9, y = -1155.7 },
             Range = 6,
             ZoneStepTrigger = { x = 169.9, y = -1155.7, Range = 6, mapID = 1456 },
@@ -534,7 +529,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Stonetalon-Barrens"] = {
         },
         {
             Waypoint = 853,
-            NonSkippableWaypoint = true,
             Coord = { x = 189.7, y = -1096 },
             Range = 6,
             ZoneStepTrigger = { x = 189.7, y = -1096, Range = 6, mapID = 1456 },
@@ -545,7 +539,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Stonetalon-Barrens"] = {
         },
         {
             Waypoint = 853,
-            NonSkippableWaypoint = true,
             Coord = { x = 191.5, y = -1061.5 },
             Range = 6,
             ZoneStepTrigger = { x = 191.5, y = -1061.5, Range = 6, mapID = 1456 },
@@ -556,7 +549,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Stonetalon-Barrens"] = {
         },
         {
             Waypoint = 853,
-            NonSkippableWaypoint = true,
             Coord = { x = 202.5, y = -1058.75 },
             Range = 20,
             Zone = 1456,
@@ -564,7 +556,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Stonetalon-Barrens"] = {
         },
         {
             Waypoint = 853,
-            NonSkippableWaypoint = true,
             Coord = { x = 219.09, y = -1051.44 },
             Range = 6,
             ZoneStepTrigger = { x = 219.09, y = -1051.44, Range = 6, mapID = 1456 },
@@ -657,7 +648,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Stonetalon-Barrens"] = {
         },
         {
             Waypoint = 1063,
-            NonSkippableWaypoint = true,
             Coord = { x = 1, y = -1108.2 },
             Range = 6,
             ZoneStepTrigger = { x = 1, y = -1108.2, Range = 6, mapID = 1456 },
@@ -668,7 +658,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Stonetalon-Barrens"] = {
         },
         {
             Waypoint = 1063,
-            NonSkippableWaypoint = true,
             Coord = { x = -66.5, y = -1089.7 },
             Range = 6,
             ZoneStepTrigger = { x = -66.5, y = -1089.7, Range = 6, mapID = 1456 },
@@ -679,7 +668,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Stonetalon-Barrens"] = {
         },
         {
             Waypoint = 1063,
-            NonSkippableWaypoint = true,
             Coord = { x = -209.4, y = -1044.8 },
             Range = 6,
             ZoneStepTrigger = { x = -209.4, y = -1044.8, Range = 6, mapID = 1456 },
@@ -720,7 +708,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Stonetalon-Barrens"] = {
         },
         {
             Waypoint = 1064,
-            NonSkippableWaypoint = true,
             Coord = { x = 131.6, y = -1210.1 },
             Range = 6,
             ZoneStepTrigger = { x = 131.6, y = -1210.1, Range = 6, mapID = 1456 },
@@ -731,7 +718,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Stonetalon-Barrens"] = {
         },
         {
             Waypoint = 1064,
-            NonSkippableWaypoint = true,
             Coord = { x = 169.9, y = -1155.7 },
             Range = 6,
             ZoneStepTrigger = { x = 169.9, y = -1155.7, Range = 6, mapID = 1456 },
@@ -742,7 +728,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Stonetalon-Barrens"] = {
         },
         {
             Waypoint = 1064,
-            NonSkippableWaypoint = true,
             Coord = { x = 189.7, y = -1096 },
             Range = 6,
             ZoneStepTrigger = { x = 189.7, y = -1096, Range = 6, mapID = 1456 },
@@ -753,7 +738,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Stonetalon-Barrens"] = {
         },
         {
             Waypoint = 1064,
-            NonSkippableWaypoint = true,
             Coord = { x = 191.5, y = -1061.5 },
             Range = 6,
             ZoneStepTrigger = { x = 191.5, y = -1061.5, Range = 6, mapID = 1456 },
@@ -764,7 +748,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Stonetalon-Barrens"] = {
         },
         {
             Waypoint = 1064,
-            NonSkippableWaypoint = true,
             Coord = { x = 219.09, y = -1051.44 },
             Range = 6,
             ZoneStepTrigger = { x = 219.09, y = -1051.44, Range = 6, mapID = 1456 },

@@ -132,7 +132,6 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
         },
         {
             Waypoint = 81,
-            NonSkippableWaypoint = true,
             Note = { "SPEND_PET_TRAINING_POINTS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 47.55, 46.77),
             Range = 5,
@@ -224,7 +223,6 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
         },
         {
             Waypoint = 8151,
-            NonSkippableWaypoint = true,
             Coord = { x = -4682, y = 2032 },
             Range = 8,
             ZoneStepTrigger = { x = -4682, y = 2032, Range = 8, mapID = 1454 },
@@ -240,7 +238,6 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
         },
         {
             Waypoint = 8151,
-            NonSkippableWaypoint = true,
             Coord = { x = -4702, y = 2047 },
             Range = 5,
             ZoneStepTrigger = { x = -4702, y = 2047, Range = 5, mapID = 1454 },
@@ -256,7 +253,6 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
         },
         {
             Waypoint = 8151,
-            NonSkippableWaypoint = true,
             Coord = { x = -4705, y = 2073 },
             Range = 8,
             ZoneStepTrigger = { x = -4705, y = 2073, Range = 8, mapID = 1454 },
@@ -272,7 +268,6 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
         },
         {
             Waypoint = 8151,
-            NonSkippableWaypoint = true,
             Coord = { x = -4661, y = 2089 },
             Range = 8,
             ZoneStepTrigger = { x = -4661, y = 2089, Range = 8, mapID = 1454 },
@@ -288,7 +283,6 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
         },
         {
             Waypoint = 8151,
-            NonSkippableWaypoint = true,
             Coord = { x = -4645, y = 2059 },
             Range = 8,
             ZoneStepTrigger = { x = -4645, y = 2059, Range = 8, mapID = 1454 },
@@ -304,7 +298,6 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
         },
         {
             Waypoint = 8151,
-            NonSkippableWaypoint = true,
             Coord = { x = -4616, y = 2057 },
             Range = 5,
             ZoneStepTrigger = { x = -4616, y = 2057, Range = 5, mapID = 1454 },
@@ -320,7 +313,6 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
         },
         {
             Waypoint = 8151,
-            NonSkippableWaypoint = true,
             Coord = { x = -4604, y = 2078 },
             Range = 5,
             ZoneStepTrigger = { x = -4604, y = 2078, Range = 5, mapID = 1454 },
@@ -420,7 +412,6 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
         },
         {
             Waypoint = 5535,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 75.37, 64.73),
             Range = 20,
             Zone = 1440,
@@ -428,7 +419,6 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
         },
         {
             Waypoint = 5535,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 79.07, 55.41),
             Range = 20,
             Zone = 1440,
@@ -436,7 +426,6 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
         },
         {
             Waypoint = 5535,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 91.24, 46.47),
             Range = 20,
             Zone = 1440,
@@ -444,7 +433,6 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
         },
         {
             Waypoint = 5535,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 95.33, 48.38),
             Range = 5,
             Zone = 1440,
@@ -452,7 +440,6 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
         },
         {
             Waypoint = 5535,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 10.4, 74.9),
             Range = 20,
             SkipForLvl = 54,
@@ -520,7 +507,6 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
         },
         {
             Waypoint = 3504,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 22, 49.7),
             Range = 20,
             Zone = 1447,
@@ -588,7 +574,6 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
         },
         {
             Waypoint = 8151,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 41.61, 42.68),
             Range = 20,
             Class = "HUNTER",
@@ -597,7 +582,6 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
         },
         {
             Waypoint = 8254,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 41.61, 42.68),
             Range = 20,
             Class = "PRIEST",
@@ -776,7 +760,6 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
         },
         {
             Waypoint = 8153,
-            NonSkippableWaypoint = true,
             Note = { "START_NORTHERN_POOLS_COLLECT_TABLETS_WORKING_SOUTH" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 45.55, 37.79),
             Range = 20,
@@ -786,7 +769,6 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
         },
         {
             Waypoint = 5534,
-            NonSkippableWaypoint = true,
             Note = { "START_NORTHERN_POOLS_COLLECT_TABLETS_WORKING_SOUTH" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 45.55, 37.79),
             Range = 20,
@@ -796,7 +778,6 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
         },
         {
             Waypoint = 8255,
-            NonSkippableWaypoint = true,
             Note = { "START_NORTHERN_POOLS_COLLECT_TABLETS_WORKING_SOUTH" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 45.55, 37.79),
             Range = 20,
@@ -932,7 +913,6 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
         },
         {
             Waypoint = 8153,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 45.55, 37.79),
             Range = 20,
             AllOf = { { Race = { "Orc", "Skyborne", "Tauren", "Troll" }, Class = "HUNTER", Faction = "Horde" } },
@@ -941,7 +921,6 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
         },
         {
             Waypoint = 5534,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 45.55, 37.79),
             Range = 20,
             AllOf = { { AnyOf = { { Race = { "Orc", "Troll" }, Class = { "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "DRUID", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "DRUID", "SHAMAN", "WARRIOR" }, Faction = "Horde" } } } },
@@ -950,7 +929,6 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
         },
         {
             Waypoint = 8255,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 45.55, 37.79),
             Range = 20,
             AllOf = { { Race = { "Scourge", "Troll" }, Class = "PRIEST", Faction = "Horde" } },
@@ -1073,7 +1051,6 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
         },
         {
             Waypoint = 3507,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 55.78, 28.12),
             Range = 5,
             Zone = 1440,
@@ -1081,7 +1058,6 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
         },
         {
             Waypoint = 3507,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 51, 85),
             Range = 20,
             Zone = 1448,

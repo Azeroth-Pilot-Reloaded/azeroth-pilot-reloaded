@@ -151,7 +151,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
     steps = {
         {
             Waypoint = 363,
-            NonSkippableWaypoint = true,
             Note = { "LEAVE_CRYPT" },
             Coord = { x = 1675.9, y = 1645.0 },
             Range = 8.0,
@@ -160,7 +159,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 363,
-            NonSkippableWaypoint = true,
             Note = { "LEAVE_CRYPT" },
             Coord = { x = 1665.51, y = 1645.0 },
             Range = 8.0,
@@ -169,7 +167,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 363,
-            NonSkippableWaypoint = true,
             Note = { "LEAVE_CRYPT" },
             Coord = { x = 1667.77, y = 1679.04 },
             Range = 10.0,
@@ -211,7 +208,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 363,
-            NonSkippableWaypoint = true,
             Note = { "INSIDE_BUILDING" },
             Coord = { x = 1577.39, y = 1860.09 },
             Range = 8.0,
@@ -252,7 +248,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1470,
-            NonSkippableWaypoint = true,
             Coord = { x = 1633.42, y = 1836.9 },
             Range = 5,
             Class = "WARLOCK",
@@ -282,7 +277,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 376,
-            NonSkippableWaypoint = true,
             Coord = { x = 1616.71, y = 1842.92 },
             Range = 10.0,
             Class = { "MAGE", "WARLOCK" },
@@ -335,7 +329,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 363,
-            NonSkippableWaypoint = true,
             Coord = { x = 1616.71, y = 1842.92 },
             Range = 10.0,
             Class = { "PALADIN", "PRIEST", "ROGUE", "WARRIOR" },
@@ -409,7 +402,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1470,
-            NonSkippableWaypoint = true,
             Coord = { x = 1576.94, y = 1861.6 },
             Range = 8.0,
             Class = "WARLOCK",
@@ -428,7 +420,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1470,
-            NonSkippableWaypoint = true,
             Coord = { x = 1616.71, y = 1842.92 },
             Range = 10.0,
             Class = "WARLOCK",
@@ -465,7 +456,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 364,
-            NonSkippableWaypoint = true,
             Coord = { x = 1576.94, y = 1861.6 },
             Range = 8,
             Class = { "MAGE", "PRIEST", "WARLOCK" },
@@ -495,7 +485,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 364,
-            NonSkippableWaypoint = true,
             Coord = { x = 1576.94, y = 1861.6 },
             Range = 8.0,
             Class = { "MAGE", "PRIEST", "WARLOCK" },
@@ -526,7 +515,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 364,
-            NonSkippableWaypoint = true,
             Coord = { x = 1616.71, y = 1842.92 },
             Range = 10.0,
             Class = "WARRIOR",
@@ -535,7 +523,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 364,
-            NonSkippableWaypoint = true,
             Coord = { x = 1639.75, y = 1843.22 },
             Range = 5,
             Class = "WARRIOR",
@@ -558,7 +545,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 364,
-            NonSkippableWaypoint = true,
             Coord = { x = 1616.71, y = 1842.92 },
             Range = 10.0,
             Class = "MAGE",
@@ -567,7 +553,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 364,
-            NonSkippableWaypoint = true,
             Coord = { x = 1639.75, y = 1843.22 },
             Range = 5,
             Class = "MAGE",
@@ -576,7 +561,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 364,
-            NonSkippableWaypoint = true,
             Coord = { x = 1638.85, y = 1847.74 },
             Range = 5,
             Class = "MAGE",
@@ -606,7 +590,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 364,
-            NonSkippableWaypoint = true,
             Coord = { x = 1616.71, y = 1842.92 },
             Range = 10.0,
             Class = "ROGUE",
@@ -615,7 +598,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 364,
-            NonSkippableWaypoint = true,
             Coord = { x = 1639.75, y = 1843.22 },
             Range = 5,
             Class = "ROGUE",
@@ -638,7 +620,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 364,
-            NonSkippableWaypoint = true,
             Coord = { x = 1616.71, y = 1842.92 },
             Range = 10.0,
             Class = "PRIEST",
@@ -647,7 +628,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 364,
-            NonSkippableWaypoint = true,
             Coord = { x = 1639.75, y = 1843.22 },
             Range = 5,
             Class = "PRIEST",
@@ -656,7 +636,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 364,
-            NonSkippableWaypoint = true,
             Coord = { x = 1638.85, y = 1847.74 },
             Range = 5,
             Class = "PRIEST",
@@ -686,7 +665,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 364,
-            NonSkippableWaypoint = true,
             Coord = { x = 1616.71, y = 1842.92 },
             Range = 10.0,
             Class = "WARLOCK",
@@ -695,7 +673,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 364,
-            NonSkippableWaypoint = true,
             Coord = { x = 1639.75, y = 1843.22 },
             Range = 5,
             Class = "WARLOCK",
@@ -704,7 +681,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 364,
-            NonSkippableWaypoint = true,
             Coord = { x = 1638.85, y = 1847.74 },
             Range = 5,
             Class = "WARLOCK",
@@ -734,7 +710,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 364,
-            NonSkippableWaypoint = true,
             Coord = { x = 1616.71, y = 1842.92 },
             Range = 10.0,
             Class = "PALADIN",
@@ -743,7 +718,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 364,
-            NonSkippableWaypoint = true,
             Coord = { x = 1639.75, y = 1843.22 },
             Range = 5,
             Class = "PALADIN",
@@ -780,7 +754,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 364,
-            NonSkippableWaypoint = true,
             Coord = { x = 1576.94, y = 1861.6 },
             Range = 8.0,
             Class = { "MAGE", "PRIEST", "WARLOCK" },
@@ -844,7 +817,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 3901,
-            NonSkippableWaypoint = true,
             Coord = { x = 1576.04, y = 1861.6 },
             Range = 8.0,
             Class = { "MAGE", "PRIEST", "WARLOCK" },
@@ -877,7 +849,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 3901,
-            NonSkippableWaypoint = true,
             Coord = { x = 1576.04, y = 1861.6 },
             Range = 8.0,
             Class = "PALADIN",
@@ -897,7 +868,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 3901,
-            NonSkippableWaypoint = true,
             Coord = { x = 1616.71, y = 1842.92 },
             Range = 10.0,
             Zone = 1420,
@@ -905,7 +875,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 3901,
-            NonSkippableWaypoint = true,
             Coord = { x = 1639.75, y = 1843.22 },
             Range = 5,
             Zone = 1420,
@@ -1059,7 +1028,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 3902,
-            NonSkippableWaypoint = true,
             Coord = { x = 1616.71, y = 1842.92 },
             Range = 10.0,
             Zone = 1420,
@@ -1067,7 +1035,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 3902,
-            NonSkippableWaypoint = true,
             Coord = { x = 1604.96, y = 1860.7 },
             Range = 5,
             Zone = 1420,
@@ -1202,7 +1169,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 3902,
-            NonSkippableWaypoint = true,
             Note = { "GO_INSIDE_CAVE" },
             Coord = { x = 1822.31, y = 2048.07 },
             Range = 15.0,
@@ -1211,7 +1177,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 3902,
-            NonSkippableWaypoint = true,
             Note = { "GO_INSIDE_CAVE" },
             Coord = { x = 1844.45, y = 2042.05 },
             Range = 15,
@@ -1235,7 +1200,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 3902,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = { x = 1844.45, y = 2042.05 },
             Range = 10,
@@ -1245,7 +1209,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 3902,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_CAVE" },
             Coord = { x = 1822.31, y = 2048.07 },
             Range = 10,
@@ -1363,7 +1326,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 6395,
-            NonSkippableWaypoint = true,
             Coord = { x = 1616.71, y = 1842.92 },
             Range = 10.0,
             Class = { "MAGE", "PALADIN", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -1379,7 +1341,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 6395,
-            NonSkippableWaypoint = true,
             Coord = { x = 1616.71, y = 1842.92 },
             Range = 10.0,
             Class = "PRIEST",
@@ -1388,7 +1349,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 6395,
-            NonSkippableWaypoint = true,
             Coord = { x = 1638.85, y = 1847.74 },
             Range = 5,
             Class = "PRIEST",
@@ -1719,7 +1679,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 8,
-            NonSkippableWaypoint = true,
             Coord = { x = 263.3, y = 2246.4 },
             Range = 4,
             IsQuestOnQuest = 8,
@@ -1728,7 +1687,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 8,
-            NonSkippableWaypoint = true,
             Coord = { x = 251.3, y = 2240.4 },
             Range = 4,
             IsQuestOnQuest = 8,
@@ -1789,7 +1747,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 375,
-            NonSkippableWaypoint = true,
             Coord = { x = 263.3, y = 2246.4 },
             Range = 4,
             IsQuestNotOnQuest = 375,
@@ -1799,7 +1756,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 375,
-            NonSkippableWaypoint = true,
             Coord = { x = 251.3, y = 2240.4 },
             Range = 4,
             IsQuestNotOnQuest = 375,
@@ -2286,7 +2242,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 374,
-            NonSkippableWaypoint = true,
             Coord = { x = 280.06, y = 2270.7 },
             Range = 5,
             Zone = 1420,
@@ -2294,7 +2249,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 374,
-            NonSkippableWaypoint = true,
             Coord = { x = 288.64, y = 2285.46 },
             Range = 5,
             Zone = 1420,
@@ -2349,7 +2303,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 5650,
-            NonSkippableWaypoint = true,
             Coord = { x = 263.3, y = 2246.4 },
             Range = 4,
             Class = "PRIEST",
@@ -2359,7 +2312,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 5650,
-            NonSkippableWaypoint = true,
             Coord = { x = 251.3, y = 2240.4 },
             Range = 4,
             Class = "PRIEST",
@@ -2403,7 +2355,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 375,
-            NonSkippableWaypoint = true,
             Coord = { x = 263.3, y = 2246.4 },
             Range = 4,
             IsQuestNotOnQuest = 375,
@@ -2412,7 +2363,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 375,
-            NonSkippableWaypoint = true,
             Coord = { x = 251.3, y = 2240.4 },
             Range = 4,
             IsQuestNotOnQuest = 375,
@@ -2728,7 +2678,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 375,
-            NonSkippableWaypoint = true,
             Coord = { x = 263.3, y = 2246.4 },
             Range = 4,
             Class = { "ROGUE", "WARRIOR" },
@@ -2738,7 +2687,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 375,
-            NonSkippableWaypoint = true,
             Coord = { x = 251.3, y = 2240.4 },
             Range = 4,
             Class = { "ROGUE", "WARRIOR" },
@@ -2904,7 +2852,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 398,
-            NonSkippableWaypoint = true,
             Coord = { x = 244.81, y = 2269.19 },
             Range = 10,
             Zone = 1420,
@@ -3003,7 +2950,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 358,
-            NonSkippableWaypoint = true,
             Coord = { x = 272.7, y = 2276.1 },
             Range = 4,
             IsQuestOnQuest = 358,
@@ -3012,7 +2958,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 358,
-            NonSkippableWaypoint = true,
             Coord = { x = 282.7, y = 2286.1 },
             Range = 4,
             IsQuestOnQuest = 358,
@@ -3046,7 +2991,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 375,
-            NonSkippableWaypoint = true,
             Coord = { x = 263.3, y = 2246.4 },
             Range = 4,
             IsQuestOnQuest = 375,
@@ -3055,7 +2999,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 375,
-            NonSkippableWaypoint = true,
             Coord = { x = 251.3, y = 2240.4 },
             Range = 4,
             IsQuestOnQuest = 375,
@@ -3419,7 +3362,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 362,
-            NonSkippableWaypoint = true,
             Coord = { x = 882.41, y = 2511.1 },
             Range = 100.0,
             Zone = 1420,
@@ -3427,7 +3369,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 362,
-            NonSkippableWaypoint = true,
             Coord = { x = 892.8, y = 2520.74 },
             Range = 5,
             Zone = 1420,
@@ -3492,7 +3433,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 361,
-            NonSkippableWaypoint = true,
             Coord = { x = 263.3, y = 2246.4 },
             Range = 4,
             IsQuestOnQuest = 361,
@@ -3501,7 +3441,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 361,
-            NonSkippableWaypoint = true,
             Coord = { x = 251.3, y = 2240.4 },
             Range = 4,
             IsQuestOnQuest = 361,
@@ -3510,7 +3449,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 361,
-            NonSkippableWaypoint = true,
             Coord = { x = 250.69, y = 2252.92 },
             Range = 5,
             IsQuestOnQuest = 361,
@@ -3551,7 +3489,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 355,
-            NonSkippableWaypoint = true,
             Coord = { x = 272.7, y = 2276.1 },
             Range = 4,
             IsQuestOnQuest = 355,
@@ -3560,7 +3497,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 355,
-            NonSkippableWaypoint = true,
             Coord = { x = 282.7, y = 2286.1 },
             Range = 4,
             IsQuestOnQuest = 355,
@@ -3756,7 +3692,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 374,
-            NonSkippableWaypoint = true,
             Coord = { x = 244.81, y = 2269.19 },
             Range = 5,
             Class = "PALADIN",
@@ -3836,7 +3771,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1478,
-            NonSkippableWaypoint = true,
             Coord = { x = 240.75, y = 1877.57 },
             Range = 20,
             Class = "WARLOCK",
@@ -3846,7 +3780,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1478,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 239.14, y = 1749.54 },
             Range = 35.0,
@@ -3856,7 +3789,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1478,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 255.64, y = 1724.7 },
             Range = 35.0,
@@ -3866,7 +3798,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1478,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 240.68, y = 1706.97 },
             Range = 10.0,
@@ -3876,7 +3807,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1478,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 241.06, y = 1660.12 },
             Range = 10.0,
@@ -3886,7 +3816,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1478,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 257.08, y = 1623.38 },
             Range = 10.0,
@@ -3896,7 +3825,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1478,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 244.51, y = 1598.73 },
             Range = 15.0,
@@ -3927,7 +3855,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 419.89, y = 1627.54 },
             Range = 50,
             Class = "WARLOCK",
@@ -3937,7 +3864,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 428.52, y = 1597.2 },
             Range = 10,
             Class = "WARLOCK",
@@ -3947,7 +3873,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 439.17, y = 1626.06 },
             Range = 10,
             Class = "WARLOCK",
@@ -3957,7 +3882,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 476.78, y = 1632.15 },
             Range = 10,
             Class = "WARLOCK",
@@ -3967,7 +3891,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 482.34, y = 1660.63 },
             Range = 10,
             Class = "WARLOCK",
@@ -3977,7 +3900,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 539.33, y = 1665.49 },
             Range = 15,
             Class = "WARLOCK",
@@ -3987,7 +3909,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 610.42, y = 1684.44 },
             Range = 35,
             Class = "WARLOCK",
@@ -3997,7 +3918,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 663.19, y = 1600.46 },
             Range = 35,
             Class = "WARLOCK",
@@ -4007,7 +3927,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 724.25, y = 1682.66 },
             Range = 50,
             Class = "WARLOCK",
@@ -4042,7 +3961,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 374,
-            NonSkippableWaypoint = true,
             Coord = { x = 714.8, y = 1604.24 },
             Range = 35.0,
             Class = { "PALADIN", "WARRIOR" },
@@ -4052,7 +3970,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 79095,
-            NonSkippableWaypoint = true,
             Coord = { x = 714.8, y = 1604.24 },
             Range = 35.0,
             Class = "MAGE",
@@ -4062,7 +3979,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1885,
-            NonSkippableWaypoint = true,
             Coord = { x = 714.8, y = 1604.24 },
             Range = 35.0,
             Class = "ROGUE",
@@ -4072,7 +3988,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 714.8, y = 1604.24 },
             Range = 35.0,
             Class = "WARLOCK",
@@ -4082,7 +3997,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 374,
-            NonSkippableWaypoint = true,
             Coord = { x = 652.73, y = 1623.44 },
             Range = 35.0,
             Class = { "PALADIN", "WARRIOR" },
@@ -4092,7 +4006,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 79095,
-            NonSkippableWaypoint = true,
             Coord = { x = 652.73, y = 1623.44 },
             Range = 35.0,
             Class = "MAGE",
@@ -4102,7 +4015,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1885,
-            NonSkippableWaypoint = true,
             Coord = { x = 652.73, y = 1623.44 },
             Range = 35.0,
             Class = "ROGUE",
@@ -4112,7 +4024,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 652.73, y = 1623.44 },
             Range = 35.0,
             Class = "WARLOCK",
@@ -4122,7 +4033,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 374,
-            NonSkippableWaypoint = true,
             Coord = { x = 634.02, y = 1669.66 },
             Range = 35.0,
             Class = { "PALADIN", "WARRIOR" },
@@ -4132,7 +4042,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 79095,
-            NonSkippableWaypoint = true,
             Coord = { x = 634.02, y = 1669.66 },
             Range = 35.0,
             Class = "MAGE",
@@ -4142,7 +4051,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1885,
-            NonSkippableWaypoint = true,
             Coord = { x = 634.02, y = 1669.66 },
             Range = 35.0,
             Class = "ROGUE",
@@ -4152,7 +4060,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 634.02, y = 1669.66 },
             Range = 35.0,
             Class = "WARLOCK",
@@ -4162,7 +4069,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 374,
-            NonSkippableWaypoint = true,
             Coord = { x = 539.52, y = 1665.17 },
             Range = 10.0,
             Class = { "PALADIN", "WARRIOR" },
@@ -4172,7 +4078,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 79095,
-            NonSkippableWaypoint = true,
             Coord = { x = 539.52, y = 1665.17 },
             Range = 10.0,
             Class = "MAGE",
@@ -4182,7 +4087,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1885,
-            NonSkippableWaypoint = true,
             Coord = { x = 539.52, y = 1665.17 },
             Range = 10.0,
             Class = "ROGUE",
@@ -4192,7 +4096,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 539.52, y = 1665.17 },
             Range = 10.0,
             Class = "WARLOCK",
@@ -4202,7 +4105,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 374,
-            NonSkippableWaypoint = true,
             Coord = { x = 481.48, y = 1659.8 },
             Range = 10.0,
             Class = { "PALADIN", "WARRIOR" },
@@ -4212,7 +4114,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 79095,
-            NonSkippableWaypoint = true,
             Coord = { x = 481.48, y = 1659.8 },
             Range = 10.0,
             Class = "MAGE",
@@ -4222,7 +4123,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1885,
-            NonSkippableWaypoint = true,
             Coord = { x = 481.48, y = 1659.8 },
             Range = 10.0,
             Class = "ROGUE",
@@ -4232,7 +4132,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 481.48, y = 1659.8 },
             Range = 10.0,
             Class = "WARLOCK",
@@ -4242,7 +4141,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 374,
-            NonSkippableWaypoint = true,
             Coord = { x = 476.49, y = 1632.15 },
             Range = 10.0,
             Class = { "PALADIN", "WARRIOR" },
@@ -4252,7 +4150,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 79095,
-            NonSkippableWaypoint = true,
             Coord = { x = 476.49, y = 1632.15 },
             Range = 10.0,
             Class = "MAGE",
@@ -4262,7 +4159,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1885,
-            NonSkippableWaypoint = true,
             Coord = { x = 476.49, y = 1632.15 },
             Range = 10.0,
             Class = "ROGUE",
@@ -4272,7 +4168,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 476.49, y = 1632.15 },
             Range = 10.0,
             Class = "WARLOCK",
@@ -4282,7 +4177,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 374,
-            NonSkippableWaypoint = true,
             Coord = { x = 439.08, y = 1627.02 },
             Range = 10.0,
             Class = { "PALADIN", "WARRIOR" },
@@ -4292,7 +4186,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 79095,
-            NonSkippableWaypoint = true,
             Coord = { x = 439.08, y = 1627.02 },
             Range = 10.0,
             Class = "MAGE",
@@ -4302,7 +4195,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1885,
-            NonSkippableWaypoint = true,
             Coord = { x = 439.08, y = 1627.02 },
             Range = 10.0,
             Class = "ROGUE",
@@ -4312,7 +4204,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 439.08, y = 1627.02 },
             Range = 10.0,
             Class = "WARLOCK",
@@ -4322,7 +4213,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 374,
-            NonSkippableWaypoint = true,
             Coord = { x = 435.05, y = 1598.86 },
             Range = 10.0,
             Class = { "PALADIN", "WARRIOR" },
@@ -4332,7 +4222,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 79095,
-            NonSkippableWaypoint = true,
             Coord = { x = 435.05, y = 1598.86 },
             Range = 10.0,
             Class = "MAGE",
@@ -4342,7 +4231,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1885,
-            NonSkippableWaypoint = true,
             Coord = { x = 435.05, y = 1598.86 },
             Range = 10.0,
             Class = "ROGUE",
@@ -4352,7 +4240,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 435.05, y = 1598.86 },
             Range = 10.0,
             Class = "WARLOCK",
@@ -4544,7 +4431,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 374,
-            NonSkippableWaypoint = true,
             Coord = { x = 235.32, y = 1883.89 },
             Range = 5,
             SkipInZones = { 1420 },
@@ -4714,7 +4600,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 356,
-            NonSkippableWaypoint = true,
             Coord = { x = -423.96, y = 1976.68 },
             Range = 5,
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
@@ -4723,7 +4608,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 356,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = { x = -423.96, y = 1976.68 },
             Range = 5,
@@ -4896,7 +4780,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 407,
-            NonSkippableWaypoint = true,
             Coord = { x = 233.06, y = 2292.39 },
             Range = 5,
             Zone = 1420,
@@ -5107,7 +4990,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 96899,
-            NonSkippableWaypoint = true,
             Coord = { x = 1732.5, y = 2437.9 },
             Range = 50.0,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -5117,7 +4999,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 96899,
-            NonSkippableWaypoint = true,
             Coord = { x = 1834.3, y = 2424.0 },
             Range = 50.0,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -5127,7 +5008,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 96899,
-            NonSkippableWaypoint = true,
             Coord = { x = 1963.1, y = 2340.6 },
             Range = 50.0,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -5137,7 +5017,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 96899,
-            NonSkippableWaypoint = true,
             Coord = { x = 2041.0, y = 2352.5 },
             Range = 50.0,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -5147,7 +5026,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 96899,
-            NonSkippableWaypoint = true,
             Coord = { x = 2049.9, y = 2463.2 },
             Range = 50.0,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -5157,7 +5035,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 91282,
-            NonSkippableWaypoint = true,
             Coord = { x = 1732.5, y = 2437.9 },
             Range = 50.0,
             Class = "PALADIN",
@@ -5166,7 +5043,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 91282,
-            NonSkippableWaypoint = true,
             Coord = { x = 1834.3, y = 2424.0 },
             Range = 50.0,
             Class = "PALADIN",
@@ -5175,7 +5051,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 91282,
-            NonSkippableWaypoint = true,
             Coord = { x = 1963.1, y = 2340.6 },
             Range = 50.0,
             Class = "PALADIN",
@@ -5184,7 +5059,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 91282,
-            NonSkippableWaypoint = true,
             Coord = { x = 2041.0, y = 2352.5 },
             Range = 50.0,
             Class = "PALADIN",
@@ -5193,7 +5067,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 91282,
-            NonSkippableWaypoint = true,
             Coord = { x = 2049.9, y = 2463.2 },
             Range = 50.0,
             Class = "PALADIN",
@@ -5388,7 +5261,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 99152,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 2449.5, y = 1857.6 },
             Range = 10.0,
@@ -5399,7 +5271,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 99152,
-            NonSkippableWaypoint = true,
             Note = { "ENTER_CRYPT" },
             Coord = { x = 2449.5, y = 1857.6 },
             Range = 10.0,
@@ -5478,7 +5349,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 99152,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_BUILDING" },
             Coord = { x = 2449.5, y = 1857.6 },
             Range = 10,
@@ -5498,7 +5368,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 99152,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_BUILDING" },
             Coord = { x = 2449.5, y = 1857.6 },
             Range = 10,
@@ -5585,7 +5454,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 95314,
-            NonSkippableWaypoint = true,
             Coord = { x = 244.81, y = 2269.19 },
             Range = 10,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -5785,7 +5653,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 98545,
-            NonSkippableWaypoint = true,
             Coord = { x = 240.75, y = 1877.57 },
             Range = 20,
             Class = { "MAGE", "PRIEST", "WARLOCK", "WARRIOR" },
@@ -5795,7 +5662,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 98545,
-            NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
             Coord = { x = 240.75, y = 1877.57 },
             Range = 20,
@@ -5806,7 +5672,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 98545,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 239.14, y = 1749.54 },
             Range = 35.0,
@@ -5816,7 +5681,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 98545,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 255.64, y = 1724.7 },
             Range = 35.0,
@@ -5826,7 +5690,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 98545,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 240.68, y = 1706.97 },
             Range = 10.0,
@@ -5836,7 +5699,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 98545,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 241.06, y = 1660.12 },
             Range = 10.0,
@@ -5846,7 +5708,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 98545,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 257.08, y = 1623.38 },
             Range = 10.0,
@@ -5856,7 +5717,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 98545,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 244.51, y = 1598.73 },
             Range = 15.0,
@@ -5880,7 +5740,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94427,
-            NonSkippableWaypoint = true,
             Coord = { x = 240.75, y = 1877.57 },
             Range = 15,
             Class = "PALADIN",
@@ -5890,7 +5749,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94427,
-            NonSkippableWaypoint = true,
             Coord = { x = 239.14, y = 1749.54 },
             Range = 15,
             Class = "PALADIN",
@@ -5900,7 +5758,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94427,
-            NonSkippableWaypoint = true,
             Coord = { x = 255.64, y = 1724.7 },
             Range = 15,
             Class = "PALADIN",
@@ -5910,7 +5767,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94427,
-            NonSkippableWaypoint = true,
             Coord = { x = 240.68, y = 1706.97 },
             Range = 10,
             Class = "PALADIN",
@@ -5920,7 +5776,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94427,
-            NonSkippableWaypoint = true,
             Coord = { x = 241.06, y = 1660.12 },
             Range = 10,
             Class = "PALADIN",
@@ -5930,7 +5785,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94427,
-            NonSkippableWaypoint = true,
             Coord = { x = 257.08, y = 1623.38 },
             Range = 10,
             Class = "PALADIN",
@@ -5940,7 +5794,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94427,
-            NonSkippableWaypoint = true,
             Coord = { x = 244.51, y = 1598.73 },
             Range = 15,
             Class = "PALADIN",
@@ -5950,7 +5803,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94427,
-            NonSkippableWaypoint = true,
             Coord = { x = 223.31, y = 1634.96 },
             Range = 10,
             Class = "PALADIN",
@@ -6103,7 +5955,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 1978,
-            NonSkippableWaypoint = true,
             Coord = { x = 373.6, y = 1464.85 },
             Range = 40,
             Class = "ROGUE",
@@ -6257,7 +6108,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 95803,
-            NonSkippableWaypoint = true,
             Coord = { x = 374.41, y = 1464.82 },
             Range = 10.0,
             Class = "PALADIN",
@@ -6266,7 +6116,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 95803,
-            NonSkippableWaypoint = true,
             Coord = { x = 429.48, y = 1409.26 },
             Range = 10.0,
             Class = "PALADIN",
@@ -6275,7 +6124,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 95803,
-            NonSkippableWaypoint = true,
             Coord = { x = 438.4, y = 1376.62 },
             Range = 10.0,
             Class = "PALADIN",
@@ -6284,7 +6132,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 95803,
-            NonSkippableWaypoint = true,
             Coord = { x = 429.39, y = 1340.83 },
             Range = 10.0,
             Class = "PALADIN",
@@ -6293,7 +6140,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 95803,
-            NonSkippableWaypoint = true,
             Coord = { x = 402.81, y = 1315.17 },
             Range = 10.0,
             Class = "PALADIN",
@@ -6302,7 +6148,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 95803,
-            NonSkippableWaypoint = true,
             Coord = { x = 365.3, y = 1304.41 },
             Range = 10.0,
             Class = "PALADIN",
@@ -6318,7 +6163,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 356,
-            NonSkippableWaypoint = true,
             Coord = { x = 235.32, y = 1883.89 },
             Range = 5,
             Class = "PALADIN",
@@ -6385,7 +6229,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94435,
-            NonSkippableWaypoint = true,
             Coord = { x = 1732.5, y = 2437.9 },
             Range = 50.0,
             Class = "PALADIN",
@@ -6394,7 +6237,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94435,
-            NonSkippableWaypoint = true,
             Coord = { x = 1834.3, y = 2424.0 },
             Range = 50.0,
             Class = "PALADIN",
@@ -6403,7 +6245,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94435,
-            NonSkippableWaypoint = true,
             Coord = { x = 1963.1, y = 2340.6 },
             Range = 50.0,
             Class = "PALADIN",
@@ -6412,7 +6253,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94435,
-            NonSkippableWaypoint = true,
             Coord = { x = 2041.0, y = 2352.5 },
             Range = 50.0,
             Class = "PALADIN",
@@ -6421,7 +6261,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94435,
-            NonSkippableWaypoint = true,
             Coord = { x = 2049.9, y = 2463.2 },
             Range = 50.0,
             Class = "PALADIN",
@@ -6465,7 +6304,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94438,
-            NonSkippableWaypoint = true,
             Coord = { x = -885.2, y = 2399.8 },
             Range = 50.0,
             Class = "PALADIN",
@@ -6502,7 +6340,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94440,
-            NonSkippableWaypoint = true,
             Coord = { x = 1732.5, y = 2437.9 },
             Range = 50.0,
             Class = "PALADIN",
@@ -6511,7 +6348,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94440,
-            NonSkippableWaypoint = true,
             Coord = { x = 1834.3, y = 2424.0 },
             Range = 50.0,
             Class = "PALADIN",
@@ -6520,7 +6356,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94440,
-            NonSkippableWaypoint = true,
             Coord = { x = 1963.1, y = 2340.6 },
             Range = 50.0,
             Class = "PALADIN",
@@ -6529,7 +6364,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94440,
-            NonSkippableWaypoint = true,
             Coord = { x = 2041.0, y = 2352.5 },
             Range = 50.0,
             Class = "PALADIN",
@@ -6538,7 +6372,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94440,
-            NonSkippableWaypoint = true,
             Coord = { x = 2049.9, y = 2463.2 },
             Range = 50.0,
             Class = "PALADIN",
@@ -6573,7 +6406,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 419.89, y = 1627.54 },
             Range = 50,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -6582,7 +6414,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 428.52, y = 1597.2 },
             Range = 10,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -6591,7 +6422,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 439.17, y = 1626.06 },
             Range = 10,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -6600,7 +6430,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 476.78, y = 1632.15 },
             Range = 10,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -6609,7 +6438,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 482.34, y = 1660.63 },
             Range = 10,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -6618,7 +6446,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 539.33, y = 1665.49 },
             Range = 15,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -6627,7 +6454,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 610.42, y = 1684.44 },
             Range = 35,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -6636,7 +6462,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 663.19, y = 1600.46 },
             Range = 35,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -6645,7 +6470,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 724.25, y = 1682.66 },
             Range = 50,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -6654,7 +6478,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 629.36, y = 1553.42 },
             Range = 5,
             Zone = 1420,
@@ -6739,7 +6562,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
     steps = {
         {
             Waypoint = 1818,
-            NonSkippableWaypoint = true,
             Coord = { x = 253.4, y = 2234.85 },
             Range = 80.0,
             Class = "WARRIOR",
@@ -6748,7 +6570,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 96895,
-            NonSkippableWaypoint = true,
             Coord = { x = 253.4, y = 2234.85 },
             Range = 80.0,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK" },
@@ -6775,7 +6596,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1818,
-            NonSkippableWaypoint = true,
             Coord = { x = 263.3, y = 2246.4 },
             Range = 4,
             Class = "WARRIOR",
@@ -6786,7 +6606,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1818,
-            NonSkippableWaypoint = true,
             Coord = { x = 251.3, y = 2240.4 },
             Range = 4,
             Class = "WARRIOR",
@@ -6805,7 +6624,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1478,
-            NonSkippableWaypoint = true,
             Coord = { x = 263.3, y = 2246.4 },
             Range = 4,
             Class = "WARLOCK",
@@ -6817,7 +6635,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1478,
-            NonSkippableWaypoint = true,
             Coord = { x = 251.3, y = 2240.4 },
             Range = 4,
             Class = "WARLOCK",
@@ -6886,7 +6703,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1820,
-            NonSkippableWaypoint = true,
             Coord = { x = 263.3, y = 2246.4 },
             Range = 4,
             Class = "WARRIOR",
@@ -6896,7 +6712,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1820,
-            NonSkippableWaypoint = true,
             Coord = { x = 251.3, y = 2240.4 },
             Range = 4,
             Class = "WARRIOR",
@@ -7030,7 +6845,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1478,
-            NonSkippableWaypoint = true,
             Coord = { x = 240.75, y = 1877.57 },
             Range = 20,
             Class = "WARLOCK",
@@ -7041,7 +6855,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1478,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 239.14, y = 1749.54 },
             Range = 35.0,
@@ -7052,7 +6865,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1478,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 255.64, y = 1724.7 },
             Range = 35.0,
@@ -7063,7 +6875,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1478,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 240.68, y = 1706.97 },
             Range = 10.0,
@@ -7074,7 +6885,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1478,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 241.06, y = 1660.12 },
             Range = 10.0,
@@ -7085,7 +6895,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1478,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 257.08, y = 1623.38 },
             Range = 10.0,
@@ -7096,7 +6905,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1478,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 244.51, y = 1598.73 },
             Range = 15.0,
@@ -7133,7 +6941,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 419.89, y = 1627.54 },
             Range = 50,
             Class = "WARLOCK",
@@ -7144,7 +6951,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 428.52, y = 1597.2 },
             Range = 10,
             Class = "WARLOCK",
@@ -7155,7 +6961,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 439.17, y = 1626.06 },
             Range = 10,
             Class = "WARLOCK",
@@ -7166,7 +6971,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 476.78, y = 1632.15 },
             Range = 10,
             Class = "WARLOCK",
@@ -7177,7 +6981,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 482.34, y = 1660.63 },
             Range = 10,
             Class = "WARLOCK",
@@ -7188,7 +6991,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 539.33, y = 1665.49 },
             Range = 15,
             Class = "WARLOCK",
@@ -7199,7 +7001,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 610.42, y = 1684.44 },
             Range = 35,
             Class = "WARLOCK",
@@ -7210,7 +7011,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 663.19, y = 1600.46 },
             Range = 35,
             Class = "WARLOCK",
@@ -7221,7 +7021,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 724.25, y = 1682.66 },
             Range = 50,
             Class = "WARLOCK",
@@ -7242,7 +7041,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 714.8, y = 1604.24 },
             Range = 35.0,
             Class = "WARLOCK",
@@ -7252,7 +7050,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 652.73, y = 1623.44 },
             Range = 35.0,
             Class = "WARLOCK",
@@ -7262,7 +7059,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 634.02, y = 1669.66 },
             Range = 35.0,
             Class = "WARLOCK",
@@ -7272,7 +7068,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 539.52, y = 1665.17 },
             Range = 10.0,
             Class = "WARLOCK",
@@ -7282,7 +7077,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 481.48, y = 1659.8 },
             Range = 10.0,
             Class = "WARLOCK",
@@ -7292,7 +7086,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 476.49, y = 1632.15 },
             Range = 10.0,
             Class = "WARLOCK",
@@ -7302,7 +7095,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 439.08, y = 1627.02 },
             Range = 10.0,
             Class = "WARLOCK",
@@ -7312,7 +7104,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 1473,
-            NonSkippableWaypoint = true,
             Coord = { x = 435.05, y = 1598.86 },
             Range = 10.0,
             Class = "WARLOCK",
@@ -7370,7 +7161,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 356,
-            NonSkippableWaypoint = true,
             Coord = { x = 244.51, y = 1598.73 },
             Range = 9,
             Class = "WARLOCK",
@@ -7380,7 +7170,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 356,
-            NonSkippableWaypoint = true,
             Coord = { x = 257.08, y = 1623.38 },
             Range = 9,
             Class = "WARLOCK",
@@ -7390,7 +7179,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 356,
-            NonSkippableWaypoint = true,
             Coord = { x = 241.06, y = 1660.12 },
             Range = 9,
             Class = "WARLOCK",
@@ -7400,7 +7188,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 356,
-            NonSkippableWaypoint = true,
             Coord = { x = 240.68, y = 1706.97 },
             Range = 9,
             Class = "WARLOCK",
@@ -7410,7 +7197,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 356,
-            NonSkippableWaypoint = true,
             Coord = { x = 255.64, y = 1724.7 },
             Range = 9,
             Class = "WARLOCK",
@@ -7420,7 +7206,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 356,
-            NonSkippableWaypoint = true,
             Coord = { x = 239.14, y = 1749.54 },
             Range = 9,
             Class = "WARLOCK",
@@ -7430,7 +7215,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 356,
-            NonSkippableWaypoint = true,
             Coord = { x = 240.75, y = 1877.57 },
             Range = 9,
             Class = "WARLOCK",
@@ -7493,7 +7277,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 240.75, y = 1877.57 },
             Range = 20,
             SkipInZones = { 1458 },
@@ -7502,7 +7285,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 239.14, y = 1749.54 },
             Range = 35.0,
@@ -7511,7 +7293,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 255.64, y = 1724.7 },
             Range = 35.0,
@@ -7520,7 +7301,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 240.68, y = 1706.97 },
             Range = 10.0,
@@ -7529,7 +7309,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 241.06, y = 1660.12 },
             Range = 10.0,
@@ -7538,7 +7317,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 257.08, y = 1623.38 },
             Range = 10.0,
@@ -7547,7 +7325,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = { x = 244.51, y = 1598.73 },
             Range = 15.0,
@@ -7835,7 +7612,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 419.89, y = 1627.54 },
             Range = 50,
             SkipInZones = { 1421 },
@@ -7844,7 +7620,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 428.52, y = 1597.2 },
             Range = 10,
             SkipInZones = { 1421 },
@@ -7853,7 +7628,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 439.17, y = 1626.06 },
             Range = 10,
             SkipInZones = { 1421 },
@@ -7862,7 +7636,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 476.78, y = 1632.15 },
             Range = 10,
             SkipInZones = { 1421 },
@@ -7871,7 +7644,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 482.34, y = 1660.63 },
             Range = 10,
             SkipInZones = { 1421 },
@@ -7880,7 +7652,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 539.33, y = 1665.49 },
             Range = 15,
             SkipInZones = { 1421 },
@@ -7889,7 +7660,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 610.42, y = 1684.44 },
             Range = 35,
             SkipInZones = { 1421 },
@@ -7898,7 +7668,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 663.19, y = 1600.46 },
             Range = 35,
             SkipInZones = { 1421 },
@@ -7907,7 +7676,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 724.25, y = 1682.66 },
             Range = 50,
             SkipInZones = { 1421 },
@@ -7916,7 +7684,6 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Waypoint = 435,
-            NonSkippableWaypoint = true,
             Coord = { x = 629.36, y = 1553.42 },
             Range = 5,
             SkipInZones = { 1421 },

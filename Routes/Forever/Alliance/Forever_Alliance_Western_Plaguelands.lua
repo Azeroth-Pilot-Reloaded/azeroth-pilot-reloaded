@@ -86,7 +86,6 @@ APR.RouteQuestStepList["Forever-Alliance-Western-Plaguelands"] = {
         },
         {
             Waypoint = 3448,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = { x = -1134.2, y = -4610.39 },
             Range = 15,
@@ -96,7 +95,6 @@ APR.RouteQuestStepList["Forever-Alliance-Western-Plaguelands"] = {
         },
         {
             Waypoint = 3448,
-            NonSkippableWaypoint = true,
             Note = { "CHOOSE_UNLEARNED_DEMON_ABILITY_BOOKS" },
             Coord = { x = -1130.26, y = -4601.27 },
             Range = 5,
@@ -148,7 +146,6 @@ APR.RouteQuestStepList["Forever-Alliance-Western-Plaguelands"] = {
         },
         {
             Waypoint = 8254,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 26.97, 7.323),
             Range = 15,
             Class = "PRIEST",
@@ -648,7 +645,6 @@ APR.RouteQuestStepList["Forever-Alliance-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5021,
-            NonSkippableWaypoint = true,
             Note = { "GET_INSIDE" },
             Coord = { x = -1219.48, y = 1801.75 },
             Range = 12,
@@ -658,7 +654,6 @@ APR.RouteQuestStepList["Forever-Alliance-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5021,
-            NonSkippableWaypoint = true,
             Fillers = { [8414] = { 1 } },
             Note = { "GET_INSIDE" },
             Coord = { x = -1219.48, y = 1801.75 },
@@ -686,7 +681,6 @@ APR.RouteQuestStepList["Forever-Alliance-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5021,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_BUILDING", "GET_INSIDE" },
             Coord = { x = -1219.48, y = 1802.61 },
             Range = 8,
@@ -696,7 +690,6 @@ APR.RouteQuestStepList["Forever-Alliance-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5021,
-            NonSkippableWaypoint = true,
             Note = { "EXIT_BUILDING", "GET_INSIDE" },
             Coord = { x = -1242.27, y = 1780.54 },
             Range = 6,
@@ -706,7 +699,6 @@ APR.RouteQuestStepList["Forever-Alliance-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5021,
-            NonSkippableWaypoint = true,
             Fillers = { [8414] = { 1 } },
             Note = { "EXIT_BUILDING", "GET_INSIDE" },
             Coord = { x = -1219.48, y = 1802.61 },
@@ -717,7 +709,6 @@ APR.RouteQuestStepList["Forever-Alliance-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5021,
-            NonSkippableWaypoint = true,
             Fillers = { [8414] = { 1 } },
             Note = { "EXIT_BUILDING", "GET_INSIDE" },
             Coord = { x = -1242.27, y = 1780.54 },
@@ -728,7 +719,6 @@ APR.RouteQuestStepList["Forever-Alliance-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5022,
-            NonSkippableWaypoint = true,
             Coord = { x = -1242.27, y = 1780.54 },
             Range = 6,
             ClassNot = "PALADIN",
@@ -756,7 +746,6 @@ APR.RouteQuestStepList["Forever-Alliance-Western-Plaguelands"] = {
         },
         {
             Waypoint = 5022,
-            NonSkippableWaypoint = true,
             Fillers = { [8414] = { 1 } },
             Coord = { x = -1242.27, y = 1780.54 },
             Range = 6,

@@ -70,7 +70,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
     steps = {
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = { x = -4417.1, y = 1480.6 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "DRUID", "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "DRUID", "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -80,7 +79,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 5644,
-            NonSkippableWaypoint = true,
             Coord = { x = -4417.1, y = 1480.6 },
             Range = 15,
             AllOf = { { Race = "Scourge", Class = "PRIEST", Faction = "Horde" } },
@@ -90,7 +88,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = { x = -4412.5, y = 1436.4 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "DRUID", "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "DRUID", "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -100,7 +97,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 5644,
-            NonSkippableWaypoint = true,
             Coord = { x = -4412.5, y = 1436.4 },
             Range = 15,
             AllOf = { { Race = "Scourge", Class = "PRIEST", Faction = "Horde" } },
@@ -110,7 +106,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = { x = -4363.9, y = 1420.2 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "DRUID", "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "DRUID", "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -120,7 +115,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 5644,
-            NonSkippableWaypoint = true,
             Coord = { x = -4363.9, y = 1420.2 },
             Range = 15,
             AllOf = { { Race = "Scourge", Class = "PRIEST", Faction = "Horde" } },
@@ -130,7 +124,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = { x = -4370, y = 1382.2 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "DRUID", "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "DRUID", "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -140,7 +133,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 5644,
-            NonSkippableWaypoint = true,
             Coord = { x = -4370, y = 1382.2 },
             Range = 15,
             AllOf = { { Race = "Scourge", Class = "PRIEST", Faction = "Horde" } },
@@ -150,7 +142,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = { x = -4636.4, y = 1338.7 },
             Range = 5,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "DRUID", "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "DRUID", "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -160,7 +151,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 5644,
-            NonSkippableWaypoint = true,
             Coord = { x = -4636.4, y = 1338.7 },
             Range = 5,
             AllOf = { { Race = "Scourge", Class = "PRIEST", Faction = "Horde" } },
@@ -170,7 +160,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = { x = -4645.1, y = 1345 },
             Range = 5,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "DRUID", "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "DRUID", "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -180,7 +169,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 5644,
-            NonSkippableWaypoint = true,
             Coord = { x = -4645.1, y = 1345 },
             Range = 5,
             AllOf = { { Race = "Scourge", Class = "PRIEST", Faction = "Horde" } },
@@ -199,7 +187,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 61.8, 65.06),
             Range = 20,
             AnyOf = { { Class = { "MAGE", "PRIEST", "WARLOCK" }, Race = "Troll" }, { Class = { "MAGE", "WARLOCK" } } },
@@ -209,7 +196,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 5644,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 61.8, 65.06),
             Range = 20,
             Class = "PRIEST",
@@ -220,7 +206,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 61.8, 65.06),
             Range = 20,
             Class = "ROGUE",
@@ -231,7 +216,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 66.09, 20.06),
             Range = 20,
@@ -241,7 +225,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 5644,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 66.09, 20.06),
             Range = 20,
@@ -252,7 +235,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 64.37, 23.94),
             Range = 20,
@@ -262,7 +244,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 5644,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 64.37, 23.94),
             Range = 20,
@@ -273,7 +254,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.93, 26.71),
             Range = 10,
@@ -283,7 +263,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 5644,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.93, 26.71),
             Range = 10,
@@ -294,7 +273,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.89, 34.03),
             Range = 10,
@@ -304,7 +282,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 5644,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.89, 34.03),
             Range = 10,
@@ -315,7 +292,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 64.22, 39.77),
             Range = 10,
@@ -325,7 +301,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 5644,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 64.22, 39.77),
             Range = 10,
@@ -336,7 +311,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.53, 43.62),
             Range = 15,
@@ -346,7 +320,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 5644,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.53, 43.62),
             Range = 15,
@@ -357,7 +330,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 66.09, 20.06),
             Range = 20,
@@ -368,7 +340,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 64.37, 23.94),
             Range = 20,
@@ -379,7 +350,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.93, 26.71),
             Range = 10,
@@ -390,7 +360,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.89, 34.03),
             Range = 10,
@@ -401,7 +370,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 64.22, 39.77),
             Range = 10,
@@ -412,7 +380,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.53, 43.62),
             Range = 15,
@@ -525,7 +492,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 51.1, 71.53),
             Range = 20,
             Class = { "DRUID", "HUNTER", "WARRIOR" },
@@ -536,7 +502,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 51.1, 71.53),
             Range = 20,
             Class = "SHAMAN",
@@ -563,7 +528,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 42.9, 40.86),
             Range = 5,
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
@@ -587,7 +551,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 3301,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 42.9, 40.86),
             Range = 5,
             Class = { "ROGUE", "SHAMAN" },
@@ -647,7 +610,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 1065,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 36.12, 28.3),
             Range = 20,
             Class = "DRUID",
@@ -682,7 +644,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 1065,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 62.06, 20.19),
             Range = 20,
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
@@ -691,7 +652,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 2479,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 62.06, 20.19),
             Range = 20,
             Class = "ROGUE",
@@ -700,7 +660,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 1065,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 62.06, 20.19),
             Range = 20,
             Class = "SHAMAN",
@@ -1162,7 +1121,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 498,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 76.57, 46.48),
             Range = 20,
             AnyOf = { { IsQuestOnQuest = 1066 }, { IsQuestOnQuest = 498 }, { IsQuestOnQuest = 549 } },
@@ -1172,7 +1130,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 498,
-            NonSkippableWaypoint = true,
             Fillers = { [496] = { 1, 2 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 76.57, 46.48),
             Range = 20,
@@ -1517,7 +1474,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 527,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 61.44, 19.05),
             Range = 5,
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
@@ -1527,7 +1483,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 527,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 61.44, 19.05),
             Range = 5,
             Class = { "ROGUE", "SHAMAN" },
@@ -1563,7 +1518,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 527,
-            NonSkippableWaypoint = true,
             Coord = { x = -213.5, y = -594.8 },
             Range = 15,
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
@@ -1575,7 +1529,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 527,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 36.02, 39.19),
             Range = 5,
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
@@ -1585,7 +1538,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 527,
-            NonSkippableWaypoint = true,
             Fillers = { [496] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 36.02, 39.19),
             Range = 5,
@@ -1842,7 +1794,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 528,
-            NonSkippableWaypoint = true,
             Coord = { x = -213.5, y = -594.8 },
             Range = 15,
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
@@ -1854,7 +1805,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 496,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 36.02, 39.19),
             Range = 5,
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
@@ -1864,7 +1814,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 496,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 36.02, 39.19),
             Range = 5,
             Class = { "ROGUE", "SHAMAN" },
@@ -2259,7 +2208,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 502,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 36.02, 39.19),
             Range = 5,
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
@@ -2269,7 +2217,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 502,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 36.02, 39.19),
             Range = 5,
             Class = { "ROGUE", "SHAMAN" },
@@ -2422,7 +2369,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = { x = 435.05, y = 1598.86 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -2432,7 +2378,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 435.05, y = 1598.86 },
             Range = 15,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -2442,7 +2387,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = { x = 439.08, y = 1627.02 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -2452,7 +2396,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 439.08, y = 1627.02 },
             Range = 15,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -2462,7 +2405,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = { x = 476.49, y = 1632.15 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -2472,7 +2414,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 476.49, y = 1632.15 },
             Range = 15,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -2482,7 +2423,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = { x = 481.48, y = 1659.8 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -2492,7 +2432,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 481.48, y = 1659.8 },
             Range = 15,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -2502,7 +2441,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = { x = 539.52, y = 1665.17 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -2512,7 +2450,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 539.52, y = 1665.17 },
             Range = 15,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -2522,7 +2459,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = { x = 634.02, y = 1669.66 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -2532,7 +2468,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 634.02, y = 1669.66 },
             Range = 15,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -2542,7 +2477,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = { x = 652.73, y = 1623.44 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -2552,7 +2486,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 652.73, y = 1623.44 },
             Range = 15,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -2562,7 +2495,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = { x = 714.8, y = 1604.24 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -2572,7 +2504,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 714.8, y = 1604.24 },
             Range = 15,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -2582,7 +2513,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = { x = 278.7, y = 2071.27 },
             Range = 12,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -2592,7 +2522,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 278.7, y = 2071.27 },
             Range = 12,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -2602,7 +2531,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = { x = 253.85, y = 2059.82 },
             Range = 10,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -2612,7 +2540,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 253.85, y = 2059.82 },
             Range = 10,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -2622,7 +2549,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = { x = 264.7, y = 2053.5 },
             Range = 8,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -2632,7 +2558,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 264.7, y = 2053.5 },
             Range = 8,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -2642,7 +2567,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = { x = 271.02, y = 2064.94 },
             Range = 8,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -2652,7 +2576,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 271.02, y = 2064.94 },
             Range = 8,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -2662,7 +2585,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = { x = 259.72, y = 2068.86 },
             Range = 8,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -2672,7 +2594,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 259.72, y = 2068.86 },
             Range = 8,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -2682,7 +2603,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = { x = 261.53, y = 2055 },
             Range = 8,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -2692,7 +2612,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 261.53, y = 2055 },
             Range = 8,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -2711,7 +2630,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1411, 45.54, 11.21),
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -2721,7 +2639,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1411, 45.54, 11.21),
             Range = 15,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -2839,7 +2756,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = { x = -4417.1, y = 1480.6 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "DRUID", "HUNTER", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -2849,7 +2765,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 63,
-            NonSkippableWaypoint = true,
             Coord = { x = -4417.1, y = 1480.6 },
             Range = 15,
             AllOf = { { Race = { "Orc", "Skyborne", "Tauren", "Troll" }, Class = "SHAMAN", Faction = "Horde" } },
@@ -2859,7 +2774,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = { x = -4412.5, y = 1436.4 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "DRUID", "HUNTER", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -2869,7 +2783,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 63,
-            NonSkippableWaypoint = true,
             Coord = { x = -4412.5, y = 1436.4 },
             Range = 15,
             AllOf = { { Race = { "Orc", "Skyborne", "Tauren", "Troll" }, Class = "SHAMAN", Faction = "Horde" } },
@@ -2879,7 +2792,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = { x = -4363.9, y = 1420.2 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "DRUID", "HUNTER", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -2889,7 +2801,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 63,
-            NonSkippableWaypoint = true,
             Coord = { x = -4363.9, y = 1420.2 },
             Range = 15,
             AllOf = { { Race = { "Orc", "Skyborne", "Tauren", "Troll" }, Class = "SHAMAN", Faction = "Horde" } },
@@ -2899,7 +2810,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = { x = -4370, y = 1382.2 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "DRUID", "HUNTER", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -2909,7 +2819,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 63,
-            NonSkippableWaypoint = true,
             Coord = { x = -4370, y = 1382.2 },
             Range = 15,
             AllOf = { { Race = { "Orc", "Skyborne", "Tauren", "Troll" }, Class = "SHAMAN", Faction = "Horde" } },
@@ -2919,7 +2828,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = { x = -4636.4, y = 1338.7 },
             Range = 5,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "DRUID", "HUNTER", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -2930,7 +2838,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 63,
-            NonSkippableWaypoint = true,
             Coord = { x = -4636.4, y = 1338.7 },
             Range = 5,
             AllOf = { { Race = { "Orc", "Skyborne", "Tauren", "Troll" }, Class = "SHAMAN", Faction = "Horde" } },
@@ -2941,7 +2848,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = { x = -4645.1, y = 1345 },
             Range = 5,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "DRUID", "HUNTER", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -2952,7 +2858,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 63,
-            NonSkippableWaypoint = true,
             Coord = { x = -4645.1, y = 1345 },
             Range = 5,
             AllOf = { { Race = { "Orc", "Skyborne", "Tauren", "Troll" }, Class = "SHAMAN", Faction = "Horde" } },
@@ -2972,7 +2877,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 61.8, 65.06),
             Range = 20,
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -2982,7 +2886,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 63,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 61.8, 65.06),
             Range = 20,
             Class = "SHAMAN",
@@ -2993,7 +2896,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 66.09, 20.06),
             Range = 20,
@@ -3003,7 +2905,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 63,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 66.09, 20.06),
             Range = 20,
@@ -3013,7 +2914,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 64.37, 23.94),
             Range = 20,
@@ -3023,7 +2923,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 63,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 64.37, 23.94),
             Range = 20,
@@ -3033,7 +2932,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.93, 26.71),
             Range = 10,
@@ -3043,7 +2941,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 63,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.93, 26.71),
             Range = 10,
@@ -3053,7 +2950,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.89, 34.03),
             Range = 10,
@@ -3063,7 +2959,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 63,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.89, 34.03),
             Range = 10,
@@ -3073,7 +2968,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 64.22, 39.77),
             Range = 10,
@@ -3083,7 +2977,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 63,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 64.22, 39.77),
             Range = 10,
@@ -3093,7 +2986,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.53, 43.62),
             Range = 15,
@@ -3103,7 +2995,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 63,
-            NonSkippableWaypoint = true,
             Note = { "DOWN_ELEVATOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.53, 43.62),
             Range = 15,
@@ -3268,7 +3159,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 36.12, 28.3),
             Range = 20,
             Class = "DRUID",
@@ -3340,7 +3230,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 63,
-            NonSkippableWaypoint = true,
             Note = { "JUMP_UP_SIDE_TREE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 42.05, 40.62),
             Range = 10,
@@ -3352,7 +3241,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 63,
-            NonSkippableWaypoint = true,
             Note = { "JUMP_UP_SIDE_TREE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 41.83, 41.16),
             Range = 8,
@@ -3364,7 +3252,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 63,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 38.09, 44.4),
             Range = 15,
             Class = "SHAMAN",
@@ -3433,7 +3320,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 529,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 45.62, 42.59),
             Range = 10,
             Class = "SHAMAN",
@@ -3685,7 +3571,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 556,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 26.95, 59.55),
             Range = 20,
             IsQuestOnQuest = 546,
@@ -3741,7 +3626,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 556,
-            NonSkippableWaypoint = true,
             Fillers = { [556] = { 1 } },
             Note = { "INSIDE_BUILDING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1416, 18.7, 84.38),
@@ -3912,7 +3796,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 676,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 20.19, 29.54),
             Range = 5,
             SkipInZones = { 1417 },
@@ -3975,7 +3858,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 676,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 73.52, 33.2),
             Range = 20,
             Zone = 1417,
@@ -4093,7 +3975,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 671,
-            NonSkippableWaypoint = true,
             Coord = { x = -3022.5, y = -999.4 },
             Range = 5,
             IsQuestOnQuest = 671,
@@ -4104,7 +3985,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 671,
-            NonSkippableWaypoint = true,
             Coord = { x = -2739.7, y = -1026.3 },
             Range = 5,
             IsQuestOnQuest = 671,
@@ -4139,7 +4019,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 671,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 66.68, 62.96),
             Range = 20,
             Zone = 1417,
@@ -4532,7 +4411,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 513,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 47.2, 59.69),
             Range = 12,
             Zone = 1458,
@@ -4540,7 +4418,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 513,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 43.55, 68.11),
             Range = 12,
             Zone = 1458,
@@ -4548,7 +4425,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 513,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 45.2, 71.67),
             Range = 12,
             Zone = 1458,
@@ -4644,7 +4520,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 642,
-            NonSkippableWaypoint = true,
             Coord = { x = 435.05, y = 1598.86 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -4654,7 +4529,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 435.05, y = 1598.86 },
             Range = 15,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -4664,7 +4538,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 642,
-            NonSkippableWaypoint = true,
             Coord = { x = 439.08, y = 1627.02 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -4674,7 +4547,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 439.08, y = 1627.02 },
             Range = 15,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -4684,7 +4556,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 642,
-            NonSkippableWaypoint = true,
             Coord = { x = 476.49, y = 1632.15 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -4694,7 +4565,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 476.49, y = 1632.15 },
             Range = 15,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -4704,7 +4574,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 642,
-            NonSkippableWaypoint = true,
             Coord = { x = 481.48, y = 1659.8 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -4714,7 +4583,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 481.48, y = 1659.8 },
             Range = 15,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -4724,7 +4592,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 642,
-            NonSkippableWaypoint = true,
             Coord = { x = 539.52, y = 1665.17 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -4734,7 +4601,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 539.52, y = 1665.17 },
             Range = 15,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -4744,7 +4610,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 642,
-            NonSkippableWaypoint = true,
             Coord = { x = 634.02, y = 1669.66 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -4754,7 +4619,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 634.02, y = 1669.66 },
             Range = 15,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -4764,7 +4628,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 642,
-            NonSkippableWaypoint = true,
             Coord = { x = 652.73, y = 1623.44 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -4774,7 +4637,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 652.73, y = 1623.44 },
             Range = 15,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -4784,7 +4646,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 642,
-            NonSkippableWaypoint = true,
             Coord = { x = 714.8, y = 1604.24 },
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -4794,7 +4655,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 714.8, y = 1604.24 },
             Range = 15,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -4804,7 +4664,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 642,
-            NonSkippableWaypoint = true,
             Coord = { x = 278.7, y = 2071.27 },
             Range = 12,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -4814,7 +4673,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 278.7, y = 2071.27 },
             Range = 12,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -4824,7 +4682,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 642,
-            NonSkippableWaypoint = true,
             Coord = { x = 253.85, y = 2059.82 },
             Range = 10,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -4834,7 +4691,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 253.85, y = 2059.82 },
             Range = 10,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -4844,7 +4700,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 642,
-            NonSkippableWaypoint = true,
             Coord = { x = 264.7, y = 2053.5 },
             Range = 8,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -4854,7 +4709,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 264.7, y = 2053.5 },
             Range = 8,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -4864,7 +4718,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 642,
-            NonSkippableWaypoint = true,
             Coord = { x = 271.02, y = 2064.94 },
             Range = 8,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -4874,7 +4727,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 271.02, y = 2064.94 },
             Range = 8,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -4884,7 +4736,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 642,
-            NonSkippableWaypoint = true,
             Coord = { x = 259.72, y = 2068.86 },
             Range = 8,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -4894,7 +4745,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 259.72, y = 2068.86 },
             Range = 8,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -4904,7 +4754,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 642,
-            NonSkippableWaypoint = true,
             Coord = { x = 261.53, y = 2055 },
             Range = 8,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -4914,7 +4763,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = { x = 261.53, y = 2055 },
             Range = 8,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -4933,7 +4781,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 642,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1411, 45.54, 11.21),
             Range = 15,
             AllOf = { { AnyOf = { { Race = "Orc", Class = { "HUNTER", "MAGE", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" }, Faction = "Horde" }, { Race = "Skyborne", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Tauren", Class = { "HUNTER", "SHAMAN", "WARRIOR" }, Faction = "Horde" }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" }, Faction = "Horde" } } } },
@@ -4943,7 +4790,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1411, 45.54, 11.21),
             Range = 15,
             AllOf = { { Race = { "Skyborne", "Tauren" }, Class = "DRUID", Faction = "Horde" } },
@@ -5072,7 +4918,6 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Waypoint = 31,
-            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 69.88, 30.9),
             Range = 20,
             Class = "DRUID",
