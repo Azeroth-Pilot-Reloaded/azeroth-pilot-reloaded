@@ -15,6 +15,7 @@ end--[[APR_DIAG]]; CommitStepPresentation = APRTrace("APR-Core/features/questing
 -- Automatic completions request another pass instead of nesting UpdateStep calls.
 -- Bound each batch so a long run of completed objectives also yields to the UI.
 function APR:UpdateStep()
+    if self.routeValidationPending or self.routeValidationFailed then return end
     self.stepUpdatePending = true
     if self.stepUpdateRunning then return end
     if self.stepUpdateTimer then
@@ -58,7 +59,7 @@ function APR:UpdateStep()
 
     if self.stepUpdatePending then
         local context = self:CaptureStepContext()
-        self.stepUpdateTimer = C_Timer.NewTimer(0, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/QuestHandler.lua:61:callback#3", --[[/APR_DIAG]]function()
+        self.stepUpdateTimer = C_Timer.NewTimer(0, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/QuestHandler.lua:62:callback#3", --[[/APR_DIAG]]function()
             self.stepUpdateTimer = nil
             if self:IsStepContextCurrent(context) then self:UpdateStep() end
         end--[[APR_DIAG]])--[[/APR_DIAG]])

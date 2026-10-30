@@ -2218,12 +2218,14 @@ function APR.settings:ToggleAddon()
     if APR.partyFinder and APR.partyFinder.RefreshSettings then APR.partyFinder:RefreshSettings() end
     if not self.profile.enableAddon then
         -- settings disable
+        if APR.event and APR.event.CancelRouteValidation then APR.event:CancelRouteValidation(true) end
         self.profile.showArrow = false
         APR.AFK:HideFrame()
         APR.ArrowFrame:Hide()
         APR.party:SendGroupMessageDelete()
     else
         -- settings
+        if APR.event and APR.event.ResumeRouteValidation then APR.event:ResumeRouteValidation() end
         self.profile.showArrow = true
         APR.Arrow.currentStep = 0
         APR.Arrow:SetCoord()
@@ -2254,13 +2256,13 @@ function APR.settings:OpenSettings(name)
     elseif APR.Options and InterfaceOptionsFrame_OpenToCategory then
         InterfaceOptionsFrame_OpenToCategory(APR.Options)
     end
-end--[[APR_DIAG]]; APR.settings.OpenSettings = APRTrace("APR-Core/config/Config.lua:2246:APR.settings:OpenSettings#203", APR.settings.OpenSettings)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.settings.OpenSettings = APRTrace("APR-Core/config/Config.lua:2248:APR.settings:OpenSettings#203", APR.settings.OpenSettings)--[[/APR_DIAG]]
 
 function APR.settings:CloseSettings()
     if APR.Workspace then APR.Workspace:Hide() end
     if SettingsPanel then SettingsPanel:Hide() end
     if InterfaceOptionsFrame then InterfaceOptionsFrame:Hide() end
-end--[[APR_DIAG]]; APR.settings.CloseSettings = APRTrace("APR-Core/config/Config.lua:2259:APR.settings:CloseSettings#204", APR.settings.CloseSettings)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.settings.CloseSettings = APRTrace("APR-Core/config/Config.lua:2261:APR.settings:CloseSettings#204", APR.settings.CloseSettings)--[[/APR_DIAG]]
 
 function APR.settings:SetRewardPriority(info, value)
     local key = info[#info] -- e.g. "rewardPriority2"
@@ -2275,4 +2277,4 @@ function APR.settings:SetRewardPriority(info, value)
         end
     end
     self.profile[key] = value
-end--[[APR_DIAG]]; APR.settings.SetRewardPriority = APRTrace("APR-Core/config/Config.lua:2265:APR.settings:SetRewardPriority#205", APR.settings.SetRewardPriority)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.settings.SetRewardPriority = APRTrace("APR-Core/config/Config.lua:2267:APR.settings:SetRewardPriority#205", APR.settings.SetRewardPriority)--[[/APR_DIAG]]

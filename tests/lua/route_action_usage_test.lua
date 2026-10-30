@@ -206,7 +206,7 @@ local function cast(step, spellID, unit)
     current = step
     -- Use the event dispatcher to update its active-step state, then invoke the
     -- callback directly so a Lua exception cannot be swallowed by the dispatcher.
-    APR.event.EventHandler({ tag = "test", callback = noop }, "UNIT_SPELLCAST_SUCCEEDED")
+    APR.event.EventHandler({ tag = "test", callback = noop }, "UNIT_SPELLCAST_SUCCEEDED", "player", "cast", spellID)
     APR.event.functions.spell("UNIT_SPELLCAST_SUCCEEDED", unit or "player", "cast", spellID)
 end
 local before = advanced
