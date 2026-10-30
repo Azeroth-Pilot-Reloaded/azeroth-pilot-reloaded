@@ -84,7 +84,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/ui/panels/ReleaseNotesWindow.lua"] = {instrumented = 14, diagnosticHelpers = 0},
     ["APR-Core/ui/panels/StatusReport.lua"] = {instrumented = 38, diagnosticHelpers = 0},
     ["APR-Core/ui/panels/Workspace.lua"] = {instrumented = 12, diagnosticHelpers = 0},
-    ["APR-Core/ui/route/CurrentStep.lua"] = {instrumented = 116, diagnosticHelpers = 0},
+    ["APR-Core/ui/route/CurrentStep.lua"] = {instrumented = 118, diagnosticHelpers = 0},
     ["APR-Core/ui/route/CurrentStepImagePreview.lua"] = {instrumented = 35, diagnosticHelpers = 0},
     ["APR-Core/ui/route/CurrentStepRows.lua"] = {instrumented = 41, diagnosticHelpers = 0},
     ["APR-Core/ui/route/FillersFrame.lua"] = {instrumented = 28, diagnosticHelpers = 0},

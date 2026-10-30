@@ -1562,7 +1562,26 @@ function APR.currentStep:FlushPendingContainers()
     end
 end--[[APR_DIAG]]; APR.currentStep.FlushPendingContainers = APRTrace("APR-Core/ui/route/CurrentStep.lua:1538:APR.currentStep:FlushPendingContainers#114", APR.currentStep.FlushPendingContainers)--[[/APR_DIAG]]
 
-function APR.currentStep:GetCurrentStepDetails(includeFillers)
+-- The party wire may omit an oversized tooltip, but must retain its progress.
+-- Bound construction before copying/sorting rows that would then be discarded.
+local function ReserveSnapshotRow(budget, text)
+    budget.rows = budget.rows - 1
+    if budget.rows < 0 then return false end
+    if text ~= nil then
+        if type(text) ~= "string" then return false end
+        budget.bytes = budget.bytes - #text
+        if budget.bytes < 0 then return false end
+    end
+    return true
+end--[[APR_DIAG]]; ReserveSnapshotRow = APRTrace("APR-Core/ui/route/CurrentStep.lua:1567:ReserveSnapshotRow#115", ReserveSnapshotRow)--[[/APR_DIAG]]
+
+local function OmitSnapshotRows(details)
+    details.extraLines, details.questSteps = {}, {}
+    if details.fillerSteps then details.fillerSteps = {} end
+    return details
+end--[[APR_DIAG]]; OmitSnapshotRows = APRTrace("APR-Core/ui/route/CurrentStep.lua:1578:OmitSnapshotRows#116", OmitSnapshotRows)--[[/APR_DIAG]]
+
+function APR.currentStep:GetCurrentStepDetails(includeFillers, maxRows, maxBytes)
     if not APR.ActiveRoute then return nil end
     local playerData = APRData and APRData[APR.PlayerID] or {}
     local currentIndex = playerData[APR.ActiveRoute]
@@ -1585,32 +1604,46 @@ function APR.currentStep:GetCurrentStepDetails(includeFillers)
         }
     }
 
+    local budget
+    if type(maxRows) == "number" and maxRows >= 0 and maxRows < math.huge and maxRows % 1 == 0
+        and type(maxBytes) == "number" and maxBytes >= 0 and maxBytes < math.huge and maxBytes % 1 == 0 then
+        budget = { rows = maxRows, bytes = maxBytes }
+    end
+
     -- Extra lines
     for key, container in pairs(self.questsExtraTextList) do
-        if container.font and container.font:GetText() then
+        local text = container.font and container.font:GetText()
+        if text then
+            if budget and not ReserveSnapshotRow(budget, text) then return OmitSnapshotRows(stepDetails) end
             table.insert(stepDetails.extraLines, {
                 key = key,
-                text = container.font:GetText(),
+                text = text,
             })
         end
     end
 
     -- Quest steps
     for key, container in pairs(self.questsList) do
-        if container.font and container.font:GetText() then
+        local text = container.font and container.font:GetText()
+        if text then
+            if budget and not ReserveSnapshotRow(budget, text) then return OmitSnapshotRows(stepDetails) end
             local step = {
                 key = key,
-                text = container.font:GetText(),
+                text = text,
             }
 
             -- Add sub-steps if they exist
             if container.subTexts then
                 step.subSteps = {}
                 for _, sub in ipairs(container.subTexts) do
+                    local subText = sub.text
+                    if budget and (type(subText) ~= "string" or not ReserveSnapshotRow(budget, subText)) then
+                        return OmitSnapshotRows(stepDetails)
+                    end
                     table.insert(step.subSteps, {
                         questID = sub.questID,
                         name = sub.name,
-                        text = sub.text,
+                        text = subText,
                     })
                 end
             end
@@ -1622,10 +1655,12 @@ function APR.currentStep:GetCurrentStepDetails(includeFillers)
     -- Fillers are not consumed by the party tooltip.
     if includeFillers ~= false then
         for key, container in pairs(self.fillersList) do
-            if container.font and container.font:GetText() then
+            local text = container.font and container.font:GetText()
+            if text then
+                if budget and not ReserveSnapshotRow(budget, text) then return OmitSnapshotRows(stepDetails) end
                 table.insert(stepDetails.fillerSteps, {
                     key = key,
-                    text = container.font:GetText(),
+                    text = text,
                 })
             end
         end
@@ -1633,8 +1668,8 @@ function APR.currentStep:GetCurrentStepDetails(includeFillers)
 
     -- Stable order prevents a recycled row from changing an otherwise identical
     -- snapshot just because Lua's table traversal order changed.
-    local function ByKey(a, b) return tostring(a.key) < tostring(b.key) end--[[APR_DIAG]]; ByKey = APRTrace("APR-Core/ui/route/CurrentStep.lua:1636:ByKey#116", ByKey)--[[/APR_DIAG]]
+    local function ByKey(a, b) return tostring(a.key) < tostring(b.key) end--[[APR_DIAG]]; ByKey = APRTrace("APR-Core/ui/route/CurrentStep.lua:1671:ByKey#118", ByKey)--[[/APR_DIAG]]
     table.sort(stepDetails.extraLines, ByKey)
     table.sort(stepDetails.questSteps, ByKey)
     return stepDetails
-end--[[APR_DIAG]]; APR.currentStep.GetCurrentStepDetails = APRTrace("APR-Core/ui/route/CurrentStep.lua:1565:APR.currentStep:GetCurrentStepDetails#115", APR.currentStep.GetCurrentStepDetails)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.currentStep.GetCurrentStepDetails = APRTrace("APR-Core/ui/route/CurrentStep.lua:1584:APR.currentStep:GetCurrentStepDetails#117", APR.currentStep.GetCurrentStepDetails)--[[/APR_DIAG]]
