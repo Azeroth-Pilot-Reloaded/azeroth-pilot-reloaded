@@ -932,6 +932,10 @@ Errors release the guard and preserve pending work for recovery; an existing
 content transaction keeps ownership of its final publication. Combat deferral
 is preserved. After changed combat content leaves geometry pending, 30 unchanged
 refreshes perform zero layout, measurement, filler-refresh or arrow-text work.
+When `UpdateStep` exhausts its pass budget, the cache batch also leaves geometry
+to the pending continuation. A regression using the real scheduler runs 25 passes
+without publication, then five more and one final main/filler layout. The final
+content owner clears the batch requests. The pre-fix branch fails that regression.
 
 Prerequisite traversal retains its visited set for one operation, rather than
 forgetting completed branches on each recursive return. A new call gets a fresh
@@ -946,10 +950,12 @@ copies, native taxi signatures and individual large condition/diagnostic calls
 remain atomic. They require real-client captures before a broader redesign is
 justified. Ordinary long-route prefix filtering for marker numbering also
 remains synchronous; this pass reduces its repeated invocation and retained pins.
-The full `.venv/Scripts/python.exe tests/run.py` run passed **523 tests** in
-125.229 seconds, with no failures or errors. Independent review and focused
-execution covered maps, prerequisite ordering and nested/error/combat layout
-recovery, including debug/performance capture. Generated instrumentation covers
+The full `.venv/Scripts/python.exe tests/run.py` run, including the continuation
+regression, passed **523 tests** in 112.038 seconds on a fresh validation, with
+no failures or errors. Three completed independent reviews and focused execution
+covered continuation ownership, quest/group/navigation journeys, nested/error/combat
+layout recovery and debug/performance capture. Substituting the pre-fix source
+in memory fails the intermediate-publication assertion. Generated instrumentation covers
 2,916 definitions across 117 files and `git diff --check` is clean.
 
 ## Navigation catalogue review
