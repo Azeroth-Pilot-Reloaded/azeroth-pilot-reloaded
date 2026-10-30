@@ -1047,7 +1047,12 @@ function nav:PollArrival()
     end
     if step.kind == "verify_taxi" then return end
     local onTaxi = UnitOnTaxi and UnitOnTaxi("player")
-    if step.kind == "taxi" and onTaxi then step.boarded = true; return end
+    if step.kind == "taxi" and onTaxi then
+        -- Manual boarding may happen before the next off-taxi origin poll.
+        -- Native taxi travel is itself proof that this leg has departed.
+        step.boarded, step.departureSeen = true, true
+        return
+    end
     if step.kind ~= "walk" and (step.sourceFree or Distance(position, step.from) <= 30) then step.departureSeen = true end
     local arrived = Distance(position, step.to) <= (step.kind == "taxi" and 100 or 20)
     local coarseMap
@@ -1093,7 +1098,7 @@ function nav:PollArrival()
     end
 end--[[APR_DIAG]]; nav.PollArrival = APRTrace("APR-Core/features/navigation/Navigation.lua:1024:nav:PollArrival#70", nav.PollArrival)--[[/APR_DIAG]]
 local frame, elapsed = CreateFrame("Frame"), 0
-frame:SetScript("OnUpdate", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1096:callback#71", --[[/APR_DIAG]]function(_, delta)
+frame:SetScript("OnUpdate", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1101:callback#71", --[[/APR_DIAG]]function(_, delta)
     if nav.worldLoading then return end
     elapsed = elapsed + delta
     if elapsed < 0.5 then return end
@@ -1128,7 +1133,7 @@ for _, event in ipairs({ "PLAYER_LEAVING_WORLD", "PLAYER_ENTERING_WORLD", "LOADI
     elseif APR.TryRegisterEvent then APR:TryRegisterEvent(frame, event)
     else --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](frame.RegisterEvent, frame, event) end
 end
-frame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1131:callback#72", --[[/APR_DIAG]]function(_, event, unit, _, spellID)
+frame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1136:callback#72", --[[/APR_DIAG]]function(_, event, unit, _, spellID)
     if event == "PLAYER_LEAVING_WORLD" or event == "LOADING_SCREEN_ENABLED" then nav:BeginWorldLoading(event); return end
     if event == "PLAYER_ENTERING_WORLD" or event == "LOADING_SCREEN_DISABLED" then nav:EndWorldLoading(event); return end
     if event == "SPELL_UPDATE_COOLDOWN" or event == "BAG_UPDATE_COOLDOWN" then nav:RequestCooldownRefresh(); return end
