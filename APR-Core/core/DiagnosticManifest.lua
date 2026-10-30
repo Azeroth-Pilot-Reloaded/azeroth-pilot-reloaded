@@ -37,7 +37,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/features/questing/DelveRoutes.lua"] = {instrumented = 35, diagnosticHelpers = 0},
     ["APR-Core/features/questing/Gossip.lua"] = {instrumented = 8, diagnosticHelpers = 0},
     ["APR-Core/features/questing/NPCInteraction.lua"] = {instrumented = 25, diagnosticHelpers = 0},
-    ["APR-Core/features/questing/QuestCache.lua"] = {instrumented = 4, diagnosticHelpers = 0},
+    ["APR-Core/features/questing/QuestCache.lua"] = {instrumented = 6, diagnosticHelpers = 0},
     ["APR-Core/features/questing/QuestHandler.lua"] = {instrumented = 3, diagnosticHelpers = 0},
     ["APR-Core/features/questing/RouteActions.lua"] = {instrumented = 23, diagnosticHelpers = 0},
     ["APR-Core/features/questing/RouteCatalog.lua"] = {instrumented = 12, diagnosticHelpers = 0},
