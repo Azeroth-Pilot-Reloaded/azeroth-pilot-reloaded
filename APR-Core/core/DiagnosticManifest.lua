@@ -108,7 +108,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/utils/QuestUtils.lua"] = {instrumented = 39, diagnosticHelpers = 0},
     ["APR-Core/utils/RouteConditions.lua"] = {instrumented = 4, diagnosticHelpers = 0},
     ["APR-Core/utils/RouteHashUtils.lua"] = {instrumented = 4, diagnosticHelpers = 0},
-    ["APR-Core/utils/RouteUtils.lua"] = {instrumented = 45, diagnosticHelpers = 0},
+    ["APR-Core/utils/RouteUtils.lua"] = {instrumented = 47, diagnosticHelpers = 0},
     ["APR-Core/utils/SecretUtils.lua"] = {instrumented = 18, diagnosticHelpers = 0},
     ["APR-Core/utils/SojournerUtils.lua"] = {instrumented = 6, diagnosticHelpers = 0},
     ["APR-Core/utils/StepUtils.lua"] = {instrumented = 41, diagnosticHelpers = 0},
