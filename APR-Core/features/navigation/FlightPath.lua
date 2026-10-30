@@ -34,7 +34,8 @@ flight.eventFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features
             APR.taxiData:MarkProbeAttempt(guidance.fromNodeID, guidance.toNodeID, guidance.contextKey)
         end
         APR.taxiData:ObserveTaxiMap(nodes)
-        if step and (step.UseFlightPath or step.kind == "taxi") then
+        if not APR.routeValidationPending and not APR.routeValidationFailed
+            and step and (step.UseFlightPath or step.kind == "taxi") then
             local current, target = flight.CurrentTaxiNode.nodeID, flight.StepTaxiNode.nodeID
             if not generated and current and current == target then
                 if not step.ZoneStepTrigger or (not UnitOnTaxi("player") and APR:IsZoneStepTriggerReached(step.ZoneStepTrigger)) then
@@ -57,7 +58,8 @@ flight.eventFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features
         if APR.questOrderList then APR.questOrderList:DelayedUpdate(true) end
     elseif event == "PLAYER_CONTROL_LOST" then
         local context = APR:CaptureStepContext()
-        C_Timer.After(2, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/FlightPath.lua:60:callback#2", --[[/APR_DIAG]]function()
+        C_Timer.After(2, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/FlightPath.lua:61:callback#2", --[[/APR_DIAG]]function()
+            if APR.routeValidationPending or APR.routeValidationFailed then return end
             if not UnitOnTaxi("player") or not APR:IsStepContextCurrent(context) then return end
             if step and step.ETA then APR.AFK:SetAfkTimer(step.ETA) end
             if not generated and step and step.UseFlightPath and not step.ZoneStepTrigger then APR:UpdateNextStep() end
