@@ -394,5 +394,56 @@ for index = 2, 5 do
     assert(#list.rawStepContainers[index].questInfo == 0, "Passed purchases hide their details")
 end
 print("Quest order merchant: optional quests, linked completion, mixed purchases, active and passed steps passed")
+
+-- A collapsed list keeps its published models, but must not prepare hidden data.
+APR.ActiveRoute, APRData.player.route = "route", 23
+list:AddStepFromRoute(true)
+drainRender()
+local publishedBeforeCollapse, indexBeforeCollapse = list.stepList, list.currentStepIndex
+local collapseButton = QuestOrderListFrame_StepHolderHeader.MinimizeButton
+list:AddStepFromRoute(true)
+list.renderFrame.scripts.OnUpdate()
+collapseButton.scripts.OnClick()
+assert(list.renderRequest == nil and list.renderFrame.scripts.OnUpdate == nil,
+    "Collapsing immediately cancels an in-flight model build")
+local checksBeforeCollapse = visibilityChecks
+drainTimers()
+for index = 24, 123 do
+    APRData.player.route = index
+    list:AddStepFromRoute(true)
+    list:DelayedUpdate(true)
+end
+assert(visibilityChecks == checksBeforeCollapse and list.renderRequest == nil,
+    "Progress events perform zero visibility scans or model builds while collapsed")
+assert(#timers == 0 and not list.updateTimer, "Collapsed progress updates allocate no render timers")
+assert(QuestOrderListPanel:IsShown() and not QuestOrderListFrame_StepHolder:IsShown(),
+    "The collapsed list header remains available to expand")
+assert(list.stepList == publishedBeforeCollapse and list.currentStepIndex == indexBeforeCollapse,
+    "A collapsed list retains its previous complete publication")
+collapseButton.scripts.OnClick()
+assert(list.renderRequest, "Expansion schedules a fresh render despite the old collapsed flag")
+drainRender()
+assert(list.currentStepIndex == 123 and list.renderComplete,
+    "Expansion publishes current progress after all hidden updates")
+
+-- A parent can collapse while its independent render frame is already scheduled.
+profile.questOrderListSnapToCurrentStep = true
+list:AddStepFromRoute(true)
+list.renderFrame.scripts.OnUpdate()
+checksBeforeCollapse = visibilityChecks
+CurrentStepScreenPanel.collapsed = true
+list.renderFrame.scripts.OnUpdate()
+assert(list.renderFrame.scripts.OnUpdate == nil and list.renderRequest == nil,
+    "A parent collapse cancels pending work on the next batch")
+assert(visibilityChecks == checksBeforeCollapse,
+    "No hidden route work is performed by the cancellation batch")
+list:AddStepFromRoute(true)
+assert(list.renderRequest == nil, "Background refreshes do not restart a collapsed parent's list")
+CurrentStepScreenPanel.collapsed = false
+list:RefreshFrameAnchor()
+drainRender()
+assert(list.currentStepIndex == 123 and QuestOrderListPanel:IsShown(),
+    "The list resumes after its parent is restored")
+print("Quest order collapse: cancelled builds, zero hidden scans, retained publication and current-progress recovery passed")
 print(
 "Quest order: 1200 rows, bounded build/recycling, atomic publishing, buffer reuse, scroll, filters, cancellation, resize and recovery passed")
