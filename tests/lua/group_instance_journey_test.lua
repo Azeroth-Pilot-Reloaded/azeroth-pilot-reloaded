@@ -8,6 +8,7 @@ local function Setup(client)
     local uiAPR, uiCreateFrame, uiLibStub = APR, CreateFrame, LibStub
     local env = FinderFixture.New({ client = client, world = true, invites = true,
         settings = { matchMode = "world", notifications = false } })
+    local finderLibStub = LibStub
     local finder, badge = env.finder, APR.currentStep.RefreshPartyFinderButton
     for key, value in pairs(uiAPR) do if APR[key] == nil then APR[key] = value end end
     for key, value in pairs(uiAPR.settings.profile) do
@@ -39,10 +40,11 @@ local function Setup(client)
         GROUP_STEP_BEHIND = "%d behind", GROUP_STEPS_BEHIND = "%d behind",
         GROUP_STEP_AHEAD = "%d ahead", GROUP_STEPS_AHEAD = "%d ahead" },
         { __index = function(_, key) return key end })
-    LibStub = function(name)
+    LibStub = function(name, silent)
         if name == "AceSerializer-3.0" then return env.serializer end
         if name == "AceLocale-3.0" then return { GetLocale = function() return locale end } end
-        return uiLibStub(name)
+        if name == "AceComm-3.0" or name == "CallbackHandler-1.0" then return finderLibStub(name, silent) end
+        return uiLibStub(name, silent)
     end
     local sendFinder = C_ChatInfo.SendAddonMessage
     function C_ChatInfo.SendAddonMessage(prefix, message, channel, target)
@@ -167,7 +169,10 @@ end
 
 local function Journey(client)
     local env, finder, party = Setup(client)
-    assert(finder.channelID == 7 and finder.worldChannelID == 8)
+    local ace, minor = LibStub("AceComm-3.0")
+    assert(ace == env.directAceComm and minor == 14 and finder.directReady,
+        "The composed journey retains the real embedded direct transport")
+    assert(finder.channelID == 7 and finder.worldChannelID == 7 and #env.joined == 1)
     assert(finder:Search())
     local query = finder.query
     local presence = env:Presence({ map = 599 })
@@ -199,7 +204,9 @@ local function Journey(client)
     assert(next(finder.responses) and finder.replyTimer)
     local replies = #env:Messages("P", "WHISPER")
     env:Enter(601, "party", false, false)
-    assert(finder:GetStatus() == "instance" and not finder.channelID and not finder.worldChannelID)
+    assert(finder:GetStatus() == "instance" and finder.channelID == 7 and finder.worldChannelID == 7)
+    assert(env.channels.APR == 7 and #env.joined == 1 and #env.left == 0,
+        "Instance entry retains the shared membership while suspending discovery")
     assert(not finder.query and not next(finder.responses) and not finder.replyTimer and not finder.queryTimer)
     env:Advance(12)
     assert(#env:Messages("P", "WHISPER") == replies, "Entering an instance cancels queued discovery replies")
@@ -269,6 +276,10 @@ local function Journey(client)
     assert(APR.ActiveRoute == "delve" and APRData.fixture.delve == 3)
     env:Advance(2)
     party:SendGroupMessage(true)
+    -- The real CTL queue applies its post-zone bandwidth limit, then drains the
+    -- previous snapshot before the latest coalesced route state can be sent.
+    env:Advance(4)
+    assert(not party.groupSendInFlight and not party.pendingGroupSend)
     assert(party.GroupListSteps.Local.routeFileName == "delve" and party.GroupListSteps.Local.currentStep == 3)
     assert(party.GroupListSteps.Local.routeProgress.id == "main:1" and party.GroupListSteps.Local.routeProgress.total == 2,
         "Party wire identities exclude the temporary parent prefix")
@@ -303,7 +314,8 @@ local function Journey(client)
     env:GroupEvent("GROUP_ROSTER_UPDATE")
     env:Event("PLAYER_ENTERING_WORLD", false, false)
     env:Advance(65)
-    assert(finder.channelID == 7 and finder.worldChannelID == 8 and finder:GetStatus() == "ready")
+    assert(finder.channelID == 7 and finder.worldChannelID == 7 and finder:GetStatus() == "ready")
+    assert(#env.joined == 1 and #env.left == 0, "Returning outdoors reuses the same shared membership")
     assert(not APR:GetCurrentDelveContext() and APR.ActiveRoute == "synthetic" and APRData.fixture.synthetic == 6)
     party:SendGroupMessage(true)
     assert(party.GroupListSteps.Local.currentStep == 6 and PartyScreenPanel:IsShown())
@@ -328,7 +340,7 @@ local function Journey(client)
     finder:GetSettings().enabled = true
     finder:RefreshSettings()
     env:Advance(2)
-    assert(finder.channelID == 7 and finder.worldChannelID == 8 and finder.eventFrame.events.CHAT_MSG_ADDON)
+    assert(finder.channelID == 7 and finder.worldChannelID == 7 and finder.eventFrame.events.CHAT_MSG_ADDON)
     finder:OnDisable()
     env:Advance(2)
     assert(env:ActiveTimers() == 0 and not next(env.channels))

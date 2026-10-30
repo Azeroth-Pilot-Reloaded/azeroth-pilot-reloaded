@@ -13,7 +13,7 @@ local function Setup(settings)
         ShowInviteContext = function(_, data) env.notices[#env.notices + 1] = data end,
         HideInviteContext = function() env.hidden = (env.hidden or 0) + 1 end,
     }
-    local locale = LibStub():GetLocale()
+    local locale = LibStub("AceLocale-3.0"):GetLocale()
     locale.GF_PROGRESS_same = "Same step"
     return env, env.finder
 end
@@ -189,7 +189,7 @@ assert(#env.notices == 0, "An expired APR context cannot attach to a later nativ
 -- The receiver's route label describes the inviter only for a known shared route.
 for _, routeCase in ipairs({"same", "other", "local_missing", "peer_missing", "both_missing"}) do
     env, finder = Setup()
-    local locale = LibStub():GetLocale()
+    local locale = LibStub("AceLocale-3.0"):GetLocale()
     locale.GROUP_SYNCED, locale.GROUP_OTHER_ROUTE, locale.GROUP_SYNC_UNAVAILABLE = "At the same step", "A different route", "Progress unavailable"
     if routeCase == "local_missing" or routeCase == "both_missing" then
         APR.ActiveRoute = nil
@@ -288,10 +288,12 @@ assert(finder.soundTimes.match == nil)
 candidate = Candidate(env)
 assert(#env.soundEvents == 2)
 env:Advance(16)
+finder.lastSearch = nil -- Isolate notification cooldown from the discovery cooldown.
 assert(finder:Search())
 env:Receive("P", env:Presence(), "Second-Home", "WHISPER")
 assert(#env.soundEvents == 2, "Global discovery cooldown suppresses a burst of different peers")
 env:Advance(16)
+finder.lastSearch = nil -- A second synthetic query exercises the alert boundary.
 assert(finder:Search())
 env:Receive("P", env:Presence(), "Third-Home", "WHISPER")
 assert(#env.soundEvents == 3)
@@ -343,7 +345,7 @@ LibStub = function(name, silent)
     return originalLibStub(name, silent)
 end
 DEFAULT = "Synthetic default sound"
-local locale = originalLibStub():GetLocale()
+local locale = originalLibStub("AceLocale-3.0"):GetLocale()
 local paletteLabels = {
     {event = "match", media = "APR - Companion Match"},
     {event = "received", media = "APR - Companion Received"},

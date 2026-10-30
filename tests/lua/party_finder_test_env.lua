@@ -78,45 +78,33 @@ function Fixture.New(options)
         return timer
     end, NewTicker = function() error("Finder must use cancellable one-shot timers") end }
     function GetChannelName(name)
-        if options.world then
-            local id = env.channels[name]
-            if not id and name:sub(1, 8) == "APRFindW" and options.prejoinedWorld then
-                env.channels[name] = 8; id = 8
-            end
-            return id or 0, id and name or nil
-        end
-        return env.channelID, env.channelID > 0 and name or nil
+        if name == "APRVersion" then return 0 end
+        assert(name == "APR", "Discovery must only use the stable shared rendezvous")
+        if options.prejoined or options.prejoinedWorld then env.channels[name] = env.channelID > 0 and env.channelID or 7 end
+        local id = env.channels[name]
+        return id or 0, id and name or nil
     end
     function JoinTemporaryChannel(name)
         env.joined[#env.joined + 1] = name
         if options.joinError then error("Channel unavailable") end
-        if not options.delayedJoin then
-            if options.world then
-                local world = name:sub(1, 8) == "APRFindW"
-                env.channels[name] = world and 8 or 7
-                if not world then env.channelID = 7 end
-            else env.channelID = 7 end
-        end
+        assert(name == "APR", "No per-zone or APRVersion channel may be joined")
+        if not options.delayedJoin then env.channels[name], env.channelID = 7, 7 end
     end
     function LeaveChannelByName(name)
         env.left[#env.left + 1] = name
-        if options.world then
-            if env.channels[name] == 7 then env.channelID = 0 end
-            env.channels[name] = nil
-        else env.channelID = 0 end
+        if env.channels[name] == env.channelID then env.channelID = 0 end
+        env.channels[name] = nil
     end
     GetNumDisplayChannels, GetChannelDisplayInfo = nil, nil
-    if options.world then
+    if not options.noPopulationAPI then
         function GetNumDisplayChannels()
             env.populationReads = env.populationReads + 1
             return 3
         end
         function GetChannelDisplayInfo(index)
             if index == 1 then return "Synthetic header", true, false, 0, 0, true end
-            for name, id in pairs(env.channels) do
-                if index == 3 and id == 8 then return name, false, false, id, env.population, true end
-                if index == 2 and id == 7 then return name, false, false, id, 1, true end
-            end
+            if index == 2 then return "Existing channel", false, false, 1, 1, true end
+            if index == 3 and env.channels.APR then return "APR", false, false, env.channels.APR, env.population, true end
         end
     end
     C_ChatInfo = {
@@ -159,12 +147,16 @@ function Fixture.New(options)
         currentStep = { RefreshPartyFinderButton = function(_, count) env.badges[#env.badges + 1] = count end },
         party = { SendGroupMessage = function() end },
     }
+    local DirectEnv = dofile("tests/lua/party_finder_direct_test_env.lua")
+    DirectEnv.Install(env)
     dofile("APR-Core/config/Config_GroupFinder.lua")
     APR.settings.profile.groupFinder = Copy(APR.GroupFinderDefaults)
     for key, value in pairs(options.settings or {}) do APR.settings.profile.groupFinder[key] = Copy(value) end
     dofile("APR-Core/features/group/PartyFinderProtocol.lua")
     dofile("APR-Core/features/group/PartyProtocol.lua")
+    dofile("APR-Core/core/CommunicationChannel.lua")
     dofile("APR-Core/features/group/PartyFinder.lua")
+    dofile("APR-Core/features/group/PartyFinderDirect.lua")
     dofile("APR-Core/features/group/PartyFinderWorld.lua")
     local finder = APR.partyFinder
     function finder:MaybeNotifyCandidate(candidate) env.lastCandidate = candidate end
@@ -187,10 +179,14 @@ function Fixture.New(options)
             if not nextTimer then break end
             limit = limit + 1
             assert(limit <= 10000, "Timer scheduling must converge without an idle polling loop")
+            local elapsed = nextTimer.at - self.now
             self.now, nextTimer.fired = nextTimer.at, true
             nextTimer.callback()
+            self:PumpDirect(elapsed)
         end
+        local elapsed = target - self.now
         self.now = target
+        self:PumpDirect(elapsed)
     end
     function env:ActiveTimers()
         local count = 0
@@ -206,8 +202,14 @@ function Fixture.New(options)
         return result
     end
     function env:Event(event, ...)
-        assert(finder.eventFrame.events[event], "Expected event subscription")
-        finder.eventFrame.scripts.OnEvent(finder.eventFrame, event, ...)
+        local delivered = false
+        for _, frame in ipairs(self.frames) do
+            if frame.events[event] and frame.scripts.OnEvent then
+                frame.scripts.OnEvent(frame, event, ...)
+                delivered = true
+            end
+        end
+        assert(delivered, "Expected event subscription")
     end
     function env:Query(overrides)
         local own = finder:GetLocalState()
@@ -235,6 +237,8 @@ function Fixture.New(options)
     function env:ReceiveWire(wire, sender, channel, details)
         details = details or {}
         channel = channel or "CHANNEL"
+        local frame = self.directAceComm.frame
+        frame:GetScript("OnEvent")(frame, "CHAT_MSG_ADDON", details.prefix or "APRFindV1", wire, channel, sender or "Peer-Home")
         finder:HandleAddonMessage(details.prefix or "APRFindV1", wire, channel, sender or "Peer-Home",
             details.target or "Local-Home", 0,
             details.localID or (details.world and finder.worldChannelID or self.channelID),
@@ -250,7 +254,7 @@ function Fixture.New(options)
     end
     if options.invites then env:LoadInvites() end
     finder:OnInit()
-    env:Advance(0.5)
+    env:Advance(options.noSettle and 0 or 3)
     return env
 end
 
