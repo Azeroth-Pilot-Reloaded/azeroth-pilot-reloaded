@@ -203,12 +203,21 @@ for _, event in ipairs({"match", "received", "joined", "declined", "expired", "e
 end
 
 local reloads = 0
+local versionRefreshes = 0
+APR.versionCheck = {RefreshSettings = function() versionRefreshes = versionRefreshes + 1 end}
 function APR:RequestReload() reloads = reloads + 1 end
 APR.settings.db = { profile = { enableAddon = true, groupFinder = copy(defaults) } }
 APR.settings.db.profile.groupFinder.recruiting = false
 APR.settings:RefreshProfile()
 assert(refreshes == 1 and reloads == 1 and APR.settings.profile == APR.settings.db.profile,
     "Changing profiles immediately refreshes discovery before the normal reload flow")
+assert(versionRefreshes == 1, "The solo version-check owner follows the active profile too")
+local updateOption = APR.settings.optionsTable.args.group_Debug.args.subgroup_Enable.args.checkForUpdate
+updateOption.set({"checkForUpdate"}, false)
+assert(APR.settings.profile.checkForUpdate == false and versionRefreshes == 2)
+updateOption.set({"checkForUpdate"}, true)
+assert(APR.settings.profile.checkForUpdate == true and versionRefreshes == 3,
+    "The version-check toggle immediately releases or reacquires its shared-channel ownership")
 assert(not general.recruiting.get({"recruiting"}), "An existing recruitment choice is preserved")
 APR.settings.profile.enableAddon = false
 assert(general.enabled.disabled(), "Disabling APR also disables its finder preferences")

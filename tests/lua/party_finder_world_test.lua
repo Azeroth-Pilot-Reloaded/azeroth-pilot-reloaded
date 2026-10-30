@@ -17,7 +17,8 @@ end
 -- Listening worldwide is independent of the owner's local search criteria.
 local env = Fixture.New({world = true, settings = {matchMode = "nearby"}})
 local finder = env.finder
-assert(finder.channelID == 7 and finder.worldChannelID == 8 and #env.joined == 2)
+assert(finder.channelID == 7 and finder.worldChannelID == 7 and #env.joined == 1
+    and finder.channelName == "APR" and finder.worldChannelName == "APR")
 assert(finder.worldDisplayIndex == 3 and finder.worldPopulation == 2,
     "The population comes from the display row, not the channel number")
 local remoteZoneContext, _, remoteWorldContext = finder:GetContext(599)
@@ -30,22 +31,22 @@ assert(#replies == 1 and replies[1].target == "Far-Home" and replies[1].packet.m
     and replies[1].packet.context == finder.worldContext,
     "An eligible world query gets a private reply despite a different route and nearby-only local filter")
 
--- Map transitions replace only zone membership; incompatible world rules replace both.
+-- Compatibility changes update filters while retaining the one stable membership.
 local worldName, worldContext = finder.worldChannelName, finder.worldContext
 local oldZoneContext = finder.context
 env.map = 599
 finder:QueueStateRefresh()
 env:Advance(0.5)
 assert(finder.context ~= oldZoneContext and finder.worldContext == worldContext
-    and finder.worldChannelName == worldName and env.channels[worldName] == 8
-    and #env.joined == 3 and #env.left == 1,
-    "Changing map must not leave/rejoin the world channel")
+    and finder.worldChannelName == worldName and env.channels[worldName] == 7
+    and #env.joined == 1 and #env.left == 0,
+    "Changing map must not leave/rejoin the shared channel")
 env.warMode = true
 finder:QueueStateRefresh()
 env:Advance(0.5)
-assert(finder.worldContext ~= worldContext and finder.worldChannelName ~= worldName
-    and env.channels[worldName] == nil,
-    "Changing world compatibility cannot retain the previous world membership")
+assert(finder.worldContext ~= worldContext and finder.worldChannelName == worldName
+    and env.channels[worldName] == 7 and #env.joined == 1 and #env.left == 0,
+    "Changing compatibility must update its context without changing channel membership")
 
 -- Neither an absent route nor an unfinished fingerprint blocks a world search.
 env = Fixture.New({world = true, settings = {matchMode = "world"}})
@@ -54,7 +55,7 @@ APR.ActiveRoute = nil
 finder.localDirty = true
 assert(finder:Search())
 local queries = env:Messages("Q", "CHANNEL")
-assert(#queries == 1 and queries[1].target == 8 and queries[1].packet.mode == "world"
+assert(#queries == 1 and queries[1].target == 7 and queries[1].packet.mode == "world"
     and queries[1].packet.route == "00000000" and queries[1].packet.progressId == "unknown")
 env = Fixture.New({world = true, settings = {matchMode = "world"}})
 finder = env.finder
@@ -62,7 +63,7 @@ env.definition = {steps = {{PickUp = {920101}}, {Done = {920101}}}}
 finder.localDirty = true
 finder:GetLocalState()
 assert(finder.fingerprintJob, "The synthetic replacement must really have an unfinished fingerprint")
-assert(finder:Search() and #env:Messages("Q", "CHANNEL") == 1 and finder.query.channelID == 8,
+assert(finder:Search() and #env:Messages("Q", "CHANNEL") == 1 and finder.query.channelID == 7,
     "World discovery does not wait for route compatibility work")
 
 -- World results admit other maps/routes but keep context, language, level and nonce checks.
@@ -87,13 +88,13 @@ finder:SetOption("matchMode", "zone")
 assert(finder:GetCount() == 1 and finder:GetCandidates()[1].key == "Near-Home",
     "Switching to a local filter excludes cached world results from other maps")
 
--- Zone departures and failed world cleanup must not invalidate another scope.
+-- Only the authenticated shared channel can withdraw a result.
 env = Fixture.New({world = true, settings = {matchMode = "world"}})
 finder = env.finder
 assert(finder:Search())
 env:Receive("P", env:Presence(), "Moving-Home", "WHISPER")
-env:Receive("W", {}, "Moving-Home", "CHANNEL")
-assert(finder.candidates["Moving-Home"], "Leaving a zone must preserve a worldwide result")
+env:Receive("W", {}, "Moving-Home", "CHANNEL", {localID = 99, name = "Unrelated"})
+assert(finder.candidates["Moving-Home"], "An unrelated channel cannot withdraw a worldwide result")
 env:Receive("W", {}, "Moving-Home", "CHANNEL", {world = true})
 assert(not finder.candidates["Moving-Home"], "A worldwide visibility withdrawal still removes that result")
 local notifications = 0
@@ -106,13 +107,13 @@ finder = env.finder
 assert(finder:Search())
 local zoneQuery, zoneContext, zoneChannel = finder.query, finder.context, finder.channelID
 env.sendResult = function(channel, packet, target)
-    return packet.kind == "W" and target == 8 and 7 or 0
+    return packet.kind == "W" and target == 7 and 7 or 0
 end
-finder:ReleaseWorldChannel(true)
+finder:SetOption("recruiting", true)
 assert(finder.query == zoneQuery and finder.context == zoneContext and finder.channelID == zoneChannel,
-    "A failed withdrawal from the world channel cannot destroy the active zone query")
+    "A failed visibility-policy withdrawal cannot destroy the active local query")
 
--- World manual searches have a longer interval; local searches retain their shorter one.
+-- Every search mode shares the public query interval on the common channel.
 env = Fixture.New({world = true, settings = {matchMode = "world"}})
 finder = env.finder
 assert(finder:Search())
@@ -124,11 +125,11 @@ assert(finder:Search() and #env:Messages("Q") == 2, "A world manual retry become
 env = Fixture.New({world = true, settings = {matchMode = "zone"}})
 finder = env.finder
 assert(finder:Search())
-env:Advance(14)
+env:Advance(59)
 assert(not finder:Search() and #env:Messages("Q") == 1)
 env:Advance(1)
 assert(finder:Search() and #env:Messages("Q") == 2 and env:Messages("Q")[2].target == 7,
-    "Local searches still use their 15-second interval and zone transport")
+    "Local searches share the 60-second public interval and stable channel")
 
 -- Automatic searches yield to recent worldwide traffic; manual search remains deliberate.
 env = Fixture.New({world = true, settings = {matchMode = "world"}})
@@ -157,7 +158,7 @@ for _ = 1, 100 do
     env:Event("CHANNEL_UI_UPDATE")
     env:Event("CHANNEL_COUNT_UPDATE")
 end
-assert(env:ActiveTimers() <= 2, "Channel churn shares bounded transport and population refreshes")
+assert(env:ActiveTimers() <= 3, "Channel churn shares one service, state and population refresh each")
 env:Advance(.5)
 assert(routeReads == 0, "Membership and native count changes cannot rebuild the current route state")
 
@@ -234,8 +235,8 @@ assert(Count(finder.responses) == 32)
 math.random, env.protocol.Decode = random, decode
 env:Advance(1)
 assert(finder.responses["Burst1-Home"])
-env:Receive("D", {id = burst.id}, "Burst1-Home", "CHANNEL")
-assert(finder.responses["Burst1-Home"], "A zone-channel cancellation cannot cancel a world query")
+env:Receive("D", {id = burst.id}, "Burst1-Home", "CHANNEL", {localID = 99, name = "Unrelated"})
+assert(finder.responses["Burst1-Home"], "An unrelated-channel cancellation cannot cancel a world query")
 env:Receive("D", {id = burst.id}, "Burst1-Home", "CHANNEL", {world = true})
 assert(not finder.responses["Burst1-Home"] and Count(finder.responses) == 31)
 env:Advance(20)
@@ -289,30 +290,30 @@ activeID = finder.query.id
 for index = 1, 30 do env:Receive("P", env:Presence({map = 599}), "Result" .. index .. "-Home", "WHISPER") end
 assert(finder:GetCount() == 30 and finder.query == nil)
 local cancellations = env:Messages("D", "CHANNEL")
-assert(#cancellations == 1 and cancellations[1].target == 8 and cancellations[1].packet.id == activeID)
+assert(#cancellations == 1 and cancellations[1].target == 7 and cancellations[1].packet.id == activeID)
 env:Receive("P", env:Presence({id = activeID, map = 599}), "Overflow-Home", "WHISPER")
 assert(finder:GetCount() == 30 and not finder.candidates["Overflow-Home"])
 
--- Visibility and master disable release both owned memberships; a prejoined shared channel stays joined.
+-- Visibility and master disable release the owned membership; a prejoined channel stays joined.
 for _, setting in ipairs({"visible", "enabled"}) do
     env = Fixture.New({world = true})
     finder = env.finder
     local zoneName, globalName = finder.channelName, finder.worldChannelName
     finder:SetOption(setting, false)
     env:Advance(1)
-    assert(#env.left == 2 and env.channels[zoneName] == nil and env.channels[globalName] == nil
+    assert(#env.left == 1 and env.channels[zoneName] == nil and env.channels[globalName] == nil
         and finder.channelID == nil and finder.worldChannelID == nil,
-        "Dormant discovery must leave both owned channels")
-    assert(#env:Messages("W", "CHANNEL") == 2)
+        "Dormant discovery must release its one owned channel")
+    assert(#env:Messages("W", "CHANNEL") == 1)
     if setting == "enabled" then assert(not next(finder.eventFrame.events) and env:ActiveTimers() == 0) end
 end
 env = Fixture.New({world = true, prejoinedWorld = true})
 finder = env.finder
 worldName = finder.worldChannelName
-assert(not finder.ownsWorldChannel and env.channels[worldName] == 8)
+assert(not APR.CommunicationChannel.owned and env.channels[worldName] == 7)
 finder:SetOption("enabled", false)
 env:Advance(1)
-assert(#env.left == 1 and env.channels[worldName] == 8 and finder.worldChannelID == nil,
-    "Disabling may release its own zone membership but must preserve a prejoined world channel")
+assert(#env.left == 0 and env.channels[worldName] == 7 and finder.worldChannelID == nil,
+    "Disabling must preserve a prejoined shared channel")
 
 print("World companions: independent visibility, route-free search, world/local filters, pacing, sampled fanout, bounded decoding/queues and channel ownership passed")

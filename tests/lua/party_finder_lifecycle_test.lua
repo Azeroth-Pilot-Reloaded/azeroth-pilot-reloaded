@@ -26,7 +26,7 @@ local env = Fixture.New({ invites = true, settings = { visible = false } })
 local finder = env.finder
 local sent, reason = finder:Search()
 assert(not sent and reason == "joining", "The first search waits for incremental route preparation")
-env:Advance(0.5)
+env:Advance(3)
 assert(finder.query and #env.joined == 1 and #env:Messages("Q") == 1)
 env:Receive("P", env:Presence(), "Peer-Home", "WHISPER")
 assert(finder:GetCount() == 1)
@@ -45,7 +45,7 @@ env = Fixture.New({ settings = { visible = false, autoScan = true } })
 finder = env.finder
 assert(not finder.channelID and #env.joined == 0 and finder.autoTimer)
 local scanAt = finder.autoTimer.at
-env:Advance(scanAt - env.now + 0.5)
+env:Advance(scanAt - env.now + 3)
 assert(finder.query and finder.channelID and #env:Messages("Q") == 1)
 env:Advance(11)
 assert(not finder.channelID and not finder.query and finder.autoTimer and #env.left == 1)
@@ -58,13 +58,14 @@ env = Fixture.New({ settings = { visible = false } })
 finder = env.finder
 env.sendResult = Enum.SendAddonMessageResult.AddonMessageThrottle
 finder:Search()
-env:Advance(1)
+env:Advance(3)
 assert(not finder.query and not finder.searchWanted and not finder.channelID and #env.left == 1)
 assert(finder:GetStatus() == "throttled" and env:ActiveTimers() == 0)
 env:Advance(200)
 assert(#env.joined == 1 and #env.left == 1 and env:ActiveTimers() == 0)
 env.sendResult = 0
-assert(finder:Search(), "A later manual query can recover and rejoin normally")
+finder:Search()
+env:Advance(3)
 assert(finder.query and finder.channelID and #env.joined == 2)
 
 -- A route fingerprint with no remaining consumer is cancelled, then restarted on demand.
@@ -82,7 +83,7 @@ env:Advance(1)
 assert(abandoned.visited == 0 and env:ActiveTimers() == 0, "Cancelled hashing consumes no further slices")
 finder:Search()
 assert(finder.fingerprintJob and finder.fingerprintJob ~= abandoned)
-env:Advance(1)
+env:Advance(3)
 assert(finder.query and finder.revision and not finder.fingerprintJob,
     "Cancellation must invalidate preparation so a deliberate search can finish it")
 
@@ -105,7 +106,7 @@ env:Receive("P", env:Presence(), "Result-Home", "WHISPER")
 env:Advance(11)
 assert(finder:GetCount() == 1 and not finder.channelID and #env:Messages("P") == 0)
 finder:SetOption("visible", true)
-env:Advance(0.5)
+env:Advance(3)
 assert(finder.channelID and #env.joined == 2 and finder:GetCount() == 1)
 
 -- Rejected visible bursts need one expiry timer, rather than one allocation per sender.
@@ -143,8 +144,9 @@ finder = env.finder
 C_PartyInfo = { CanInvite = function() return true end, InviteUnit = function() end }
 assert(finder:Search())
 env:Receive("P", env:Presence(), "Peer-Home", "WHISPER")
+env:Advance(10)
 assert(finder:Invite("Peer-Home"))
-env:Advance(31)
+env:Advance(51)
 assert(finder:Search())
 env:Receive("P", env:Presence(), "Peer-Home", "WHISPER")
 assert(finder.candidates["Peer-Home"].status == "sent" and not finder.outgoingInvites["Peer-Home"].finished)
@@ -236,8 +238,8 @@ for _, client in ipairs({ "retail", "forever" }) do
         "Active chat lockdown prevents route preparation, joining and native sends")
     env.restricted = false
     env:Event("PLAYER_REGEN_ENABLED")
-    env:Advance(0.5)
-    assert(finder:Search() and #env:Messages("Q") == 1,
+    env:Advance(3)
+    assert(finder.query and #env:Messages("Q") == 1,
         "Discovery recovers after actual lockdown ends")
 
     env = Fixture.New({ client = client })
@@ -260,8 +262,8 @@ for _, client in ipairs({ "retail", "forever" }) do
         "Outdoor discovery policy has its own status, not a claim that the game blocked communications")
     env.instance = false
     env:Event("PLAYER_ENTERING_WORLD")
-    env:Advance(0.5)
-    assert(finder:Search() and #env:Messages("Q") == 1,
+    env:Advance(3)
+    assert(finder.query and #env:Messages("Q") == 1,
         "Leaving an instance resumes normal discovery")
 
     -- Pending replies recheck the instance policy before the coalesced zone refresh.
@@ -283,3 +285,18 @@ for _, client in ipairs({ "retail", "forever" }) do
 end
 
 print("Companion lifecycle: invisible idle, temporary search membership, private invitations, expiry coalescing, scoped settings and honest restriction/recovery states passed")
+
+-- Disabling revokes all queued private traffic, including an invitation context.
+env = Fixture.New({ invites = true })
+finder = env.finder
+C_PartyInfo = { CanInvite = function() return true end, InviteUnit = function() return true end }
+assert(finder:Search())
+env:Receive("P", env:Presence(), "Peer-Home", "WHISPER")
+env.directCTL.avail, env.directCTL.bQueueing = 0, true
+for _, priority in pairs(env.directCTL.Prio) do priority.avail = 0 end
+assert(finder:Invite("Peer-Home") and #env:Messages("I") == 0)
+finder:SetOption("enabled", false)
+finder:SetOption("enabled", true)
+env:Advance(3)
+assert(#env:Messages("I") == 0 and not next(finder.outgoingInvites),
+    "An invitation erased by disabling cannot reappear from AceComm after reenabling")

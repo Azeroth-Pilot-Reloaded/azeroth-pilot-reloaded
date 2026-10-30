@@ -3,7 +3,7 @@ local APRTrace = APRInstrumentation and APRInstrumentation.Wrap or function(_, f
 local APRYield = APRInstrumentation and APRInstrumentation.Yield or coroutine.yield
 local APRResume = APRInstrumentation and APRInstrumentation.Resume or coroutine.resume
 local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
--- World discovery owns an additional channel, independently of the search filter.
+-- Shared-channel population and bounded admission, with no roster requests.
 local Finder = APR.partyFinder
 local P = APR.PartyFinderProtocol
 local MODULO = 4294967296
@@ -17,26 +17,6 @@ local function PositiveInteger(value)
         and value < math.huge and value == math.floor(value)
 end--[[APR_DIAG]]; PositiveInteger = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:15:PositiveInteger#2", PositiveInteger)--[[/APR_DIAG]]
 
-local function ResumeSearch(self, noResume)
-    if noResume or not self.searchWanted then return end
-    local settings = self:GetSettings()
-    if settings and settings.matchMode == "world" then
-        self.searchWanted = nil
-        self:Search()
-    end
-end--[[APR_DIAG]]; ResumeSearch = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:20:ResumeSearch#3", ResumeSearch)--[[/APR_DIAG]]
-
-function Finder:ReleaseWorldChannel(withdraw)
-    local id, name, owned = self.worldChannelID, self.worldChannelName, self.ownsWorldChannel
-    self:CancelTimer("worldJoinTimer")
-    self:CancelTimer("worldCountTimer")
-    self.worldContext, self.worldChannelName, self.worldChannelID, self.ownsWorldChannel = nil, nil, nil, nil
-    self.worldStatus, self.worldFailedContext, self.worldPopulation, self.worldDisplayIndex = nil, nil, nil, nil
-    -- Clear ownership before a native send can fail and re-enter transport cleanup.
-    if withdraw and id then self:Send("W", {}, "CHANNEL", id, true) end
-    if owned and name and LeaveChannelByName then LeaveChannelByName(name) end
-end--[[APR_DIAG]]; Finder.ReleaseWorldChannel = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:29:Finder:ReleaseWorldChannel#4", Finder.ReleaseWorldChannel)--[[/APR_DIAG]]
-
 function Finder:RefreshWorldPopulation()
     self.worldPopulation, self.worldDisplayIndex = nil, nil
     if not self.worldChannelID or not self.worldChannelName
@@ -48,86 +28,33 @@ function Finder:RefreshWorldPopulation()
     for index = 1, math.min(128, count) do
         local valid, name, header, _, number, population, active = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetChannelDisplayInfo, index)
         if valid and Public(name) and Public(header) and Public(number) and Public(active)
-            and not header and active == true and number == self.worldChannelID and name == self.worldChannelName then
+            and type(name) == "string" and not header and active == true and number == self.worldChannelID
+            and name:lower() == self.worldChannelName:lower() then
             self.worldDisplayIndex = index
             if PositiveInteger(population) then self.worldPopulation = population end
             return self.worldPopulation
         end
     end
-end--[[APR_DIAG]]; Finder.RefreshWorldPopulation = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:40:Finder:RefreshWorldPopulation#5", Finder.RefreshWorldPopulation)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.RefreshWorldPopulation = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:20:Finder:RefreshWorldPopulation#3", Finder.RefreshWorldPopulation)--[[/APR_DIAG]]
 
 function Finder:QueueWorldPopulationRefresh()
     if self.worldCountTimer or not self.worldChannelID then return end
-    self:SetTimer("worldCountTimer", 0.25, --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinderWorld.lua:61:callback#7", --[[/APR_DIAG]]function() self:RefreshWorldPopulation() end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; Finder.QueueWorldPopulationRefresh = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:59:Finder:QueueWorldPopulationRefresh#6", Finder.QueueWorldPopulationRefresh)--[[/APR_DIAG]]
+    self:SetTimer("worldCountTimer", 0.25, --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinderWorld.lua:42:callback#5", --[[/APR_DIAG]]function() self:RefreshWorldPopulation() end--[[APR_DIAG]])--[[/APR_DIAG]])
+end--[[APR_DIAG]]; Finder.QueueWorldPopulationRefresh = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:40:Finder:QueueWorldPopulationRefresh#4", Finder.QueueWorldPopulationRefresh)--[[/APR_DIAG]]
 
-local function Unavailable(self, context)
-    self:ReleaseWorldChannel(false)
-    self.worldFailedContext, self.worldStatus = context, "unavailable"
-end--[[APR_DIAG]]; Unavailable = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:64:Unavailable#8", Unavailable)--[[/APR_DIAG]]
-
-function Finder:RefreshWorldChannel(state, noResume)
-    local settings = self:GetSettings()
-    local needed = settings and (settings.visible or self.query and self.query.mode == "world"
-        or self.searchWanted and settings.matchMode == "world")
-    if not self:IsEnabled() or not needed then self:ReleaseWorldChannel(true); return end
-    if self:IsRestricted() then self:ReleaseWorldChannel(true); self.worldStatus = "restricted"; return end
-    if self:IsDiscoveryInstance() then self:ReleaseWorldChannel(true); self.worldStatus = "instance"; return end
-    -- Unsupported clients must not acquire a world context or start join timers.
-    if type(JoinTemporaryChannel) ~= "function" or type(GetChannelName) ~= "function"
-        or type(GetNumDisplayChannels) ~= "function" or type(GetChannelDisplayInfo) ~= "function"
-        or not C_ChatInfo or type(C_ChatInfo.SendAddonMessage) ~= "function"
-        or APR:GetGameVersion() == "classic" then
-        Unavailable(self)
-        return
+-- Local matches are never sampled against the whole realm's population.
+-- A population-aware stagger lets crowded zones fill and cancel before later replies,
+-- while a small matching zone still gets a chance near the end of the query.
+function Finder:GetDiscoveryResponseDelay(query)
+    if query.mode == "world" then return math.random(25, 900) / 100 end
+    local population = PositiveInteger(self.worldPopulation) and self.worldPopulation or 1000
+    local ticket = tonumber(P.Hash(query.id .. self.playerKey), 16) or 0
+    for _ = 1, 3 do
+        ticket = (ticket + math.floor(ticket / 65536)) % MODULO
+        ticket = (1664525 * ticket + 1013904223) % MODULO
     end
-    local context = state and state.worldContext
-    if not Public(context) or type(context) ~= "string" or #context ~= 8 or not context:match("^%x+$") then
-        Unavailable(self)
-        return
-    end
-    if self.worldFailedContext == context then self.worldStatus = "unavailable"; return end
-    if self.worldContext ~= context then
-        self:ReleaseWorldChannel(true)
-        self.worldContext = context
-        self.worldChannelName = "APRFindW" .. context:gsub("%x", --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinderWorld.lua:93:callback#10", --[[/APR_DIAG]]function(char)
-            return string.char(97 + tonumber(char, 16))
-        end--[[APR_DIAG]])--[[/APR_DIAG]])
-    end
-    local ok, id = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetChannelName, self.worldChannelName)
-    if not ok then Unavailable(self, context); return end
-    if PositiveInteger(id) then
-        local changed = self.worldChannelID ~= id
-        self.worldChannelID, self.worldStatus = id, "ready"
-        self:CancelTimer("worldJoinTimer")
-        if changed then self:RefreshWorldPopulation() end
-        ResumeSearch(self, noResume)
-        return
-    end
-    self.worldChannelID, self.worldPopulation, self.worldDisplayIndex = nil, nil, nil
-    if self.worldJoinTimer then return end
-    self.worldStatus, self.ownsWorldChannel = "joining", true
-    local name = self.worldChannelName
-    self:SetTimer("worldJoinTimer", 10, --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinderWorld.lua:111:callback#11", --[[/APR_DIAG]]function()
-        if self.worldContext ~= context or self.worldChannelName ~= name then return end
-        local valid, joined = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetChannelName, name)
-        if valid and PositiveInteger(joined) then
-            self.worldChannelID, self.worldStatus = joined, "ready"
-            self:RefreshWorldPopulation()
-            -- The initial Search has returned; a delayed join may now resume it.
-            ResumeSearch(self, false)
-        else Unavailable(self, context) end
-        self:Notify()
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-    if not --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](JoinTemporaryChannel, name) then Unavailable(self, context); return end
-    ok, id = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetChannelName, name)
-    if ok and PositiveInteger(id) then
-        self.worldChannelID, self.worldStatus = id, "ready"
-        self:CancelTimer("worldJoinTimer")
-        self:RefreshWorldPopulation()
-        ResumeSearch(self, noResume)
-    elseif not ok then Unavailable(self, context) end
-end--[[APR_DIAG]]; Finder.RefreshWorldChannel = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:69:Finder:RefreshWorldChannel#9", Finder.RefreshWorldChannel)--[[/APR_DIAG]]
+    return math.min(9, 0.25 + 1.2 * math.log(1 + math.max(0, population - 1) * ticket / MODULO / 24) / math.log(2))
+end--[[APR_DIAG]]; Finder.GetDiscoveryResponseDelay = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:48:Finder:GetDiscoveryResponseDelay#6", Finder.GetDiscoveryResponseDelay)--[[/APR_DIAG]]
 
 function Finder:CanQueueWorldResponse(query)
     if type(query) ~= "table" or query.mode ~= "world" or query.context ~= self.worldContext
@@ -148,15 +75,20 @@ function Finder:CanQueueWorldResponse(query)
         ticket = (1664525 * ticket + 1013904223) % MODULO
     end
     return ticket / MODULO < math.min(1, 24 / math.max(1, self.worldPopulation - 1))
-end--[[APR_DIAG]]; Finder.CanQueueWorldResponse = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:132:Finder:CanQueueWorldResponse#12", Finder.CanQueueWorldResponse)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.CanQueueWorldResponse = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:59:Finder:CanQueueWorldResponse#7", Finder.CanQueueWorldResponse)--[[/APR_DIAG]]
 
-function Finder:AcceptWorldMessage()
+function Finder:AcceptWorldMessage(control)
     local second = math.floor(GetTime())
-    if self.worldReceiveSecond ~= second then self.worldReceiveSecond, self.worldReceiveCount = second, 0 end
-    self.worldReceiveCount = self.worldReceiveCount + 1
-    if self.worldReceiveCount > 16 then
-        self.droppedCount = (self.droppedCount or 0) + 1
-        return false
+    if self.worldReceiveSecond ~= second then
+        self.worldReceiveSecond, self.worldReceiveCount, self.discoveryControlCount = second, 0, 0
     end
-    return true
-end--[[APR_DIAG]]; Finder.AcceptWorldMessage = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:153:Finder:AcceptWorldMessage#13", Finder.AcceptWorldMessage)--[[/APR_DIAG]]
+    if control then
+        self.discoveryControlCount = self.discoveryControlCount + 1
+        if self.discoveryControlCount <= 4 then return true end
+    else
+        self.worldReceiveCount = self.worldReceiveCount + 1
+        if self.worldReceiveCount <= 16 then return true end
+    end
+    self.droppedCount = (self.droppedCount or 0) + 1
+    return false
+end--[[APR_DIAG]]; Finder.AcceptWorldMessage = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:80:Finder:AcceptWorldMessage#8", Finder.AcceptWorldMessage)--[[/APR_DIAG]]

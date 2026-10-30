@@ -13,9 +13,10 @@ local PREFIX = "APRVersionCheck"
 local RELEASES_URL = "https://www.curseforge.com/wow/addons/azeroth-pilot-reloaded/files/all"
 local BROADCAST_RETRY_DELAY = 5
 local BROADCAST_THROTTLE = 5
-local SHARED_CHANNEL = "APRVersion"
+local SHARED_CHANNEL = "APR"
 local SHARED_RESPONSE_THROTTLE = 10
 local SHARED_QUERY_RETRY_DELAY = 12
+local SHARED_RECEIVE_LIMIT = 64
 local versionAlertShown = false
 local interfaceAlertShown = false
 
@@ -45,7 +46,7 @@ local function ParseVersion(value)
     end
     return { kind = "release", tonumber(major), tonumber(minor), tonumber(patch) or 0,
         prerelease = prerelease and identifiers, commits = tonumber(commits) or 0 }
-end--[[APR_DIAG]]; ParseVersion = APRTrace("APR-Core/core/VersionCheck.lua:24:ParseVersion#1", ParseVersion)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ParseVersion = APRTrace("APR-Core/core/VersionCheck.lua:25:ParseVersion#1", ParseVersion)--[[/APR_DIAG]]
 
 local function IsNewerVersion(first, second)
     if first == second then return false end
@@ -75,7 +76,7 @@ local function IsNewerVersion(first, second)
         end
     end
     return a.commits > b.commits
-end--[[APR_DIAG]]; IsNewerVersion = APRTrace("APR-Core/core/VersionCheck.lua:50:IsNewerVersion#2", IsNewerVersion)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; IsNewerVersion = APRTrace("APR-Core/core/VersionCheck.lua:51:IsNewerVersion#2", IsNewerVersion)--[[/APR_DIAG]]
 
 function APR.versionCheck:RememberVersion(version)
     if not ParseVersion(version) then return end
@@ -86,7 +87,7 @@ function APR.versionCheck:RememberVersion(version)
     if not ParseVersion(known) or IsNewerVersion(version, known) then
         APRData.versionCheck[client] = version
     end
-end--[[APR_DIAG]]; APR.versionCheck.RememberVersion = APRTrace("APR-Core/core/VersionCheck.lua:80:APR.versionCheck:RememberVersion#3", APR.versionCheck.RememberVersion)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.versionCheck.RememberVersion = APRTrace("APR-Core/core/VersionCheck.lua:81:APR.versionCheck:RememberVersion#3", APR.versionCheck.RememberVersion)--[[/APR_DIAG]]
 
 function APR.versionCheck:CheckKnownVersion()
     if versionAlertShown or not APR.settings.profile.checkForUpdate then return end
@@ -97,7 +98,7 @@ function APR.versionCheck:CheckKnownVersion()
         APR.questionDialog:CreateMessagePopup(string.format(L["OUTDATED_VERSION_ALERT"],
             APR:WrapTextWithAppearanceColor(known, "general", "warning"), RELEASES_URL), OKAY)
     end
-end--[[APR_DIAG]]; APR.versionCheck.CheckKnownVersion = APRTrace("APR-Core/core/VersionCheck.lua:91:APR.versionCheck:CheckKnownVersion#4", APR.versionCheck.CheckKnownVersion)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.versionCheck.CheckKnownVersion = APRTrace("APR-Core/core/VersionCheck.lua:92:APR.versionCheck:CheckKnownVersion#4", APR.versionCheck.CheckKnownVersion)--[[/APR_DIAG]]
 
 function APR.versionCheck:CheckInterfaceVersion()
     if versionAlertShown or interfaceAlertShown or not APR.settings.profile.checkForUpdate then return end
@@ -106,7 +107,7 @@ function APR.versionCheck:CheckInterfaceVersion()
         interfaceAlertShown = true
         APR.questionDialog:CreateMessagePopup(string.format(L["OUTDATED_TOC_ALERT"], RELEASES_URL), OKAY)
     end
-end--[[APR_DIAG]]; APR.versionCheck.CheckInterfaceVersion = APRTrace("APR-Core/core/VersionCheck.lua:102:APR.versionCheck:CheckInterfaceVersion#5", APR.versionCheck.CheckInterfaceVersion)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.versionCheck.CheckInterfaceVersion = APRTrace("APR-Core/core/VersionCheck.lua:103:APR.versionCheck:CheckInterfaceVersion#5", APR.versionCheck.CheckInterfaceVersion)--[[/APR_DIAG]]
 
 -- Party.lua validates channel, sender identity and current group membership first.
 -- Reply only to older clients, including legacy clients using the same prefix.
@@ -116,7 +117,7 @@ function APR.versionCheck:HandleVersionMessage(senderVersion)
     self:RememberVersion(senderVersion)
     self:CheckKnownVersion()
     if IsNewerVersion(APR.version, senderVersion) then self:BroadcastVersion() end
-end--[[APR_DIAG]]; APR.versionCheck.HandleVersionMessage = APRTrace("APR-Core/core/VersionCheck.lua:114:APR.versionCheck:HandleVersionMessage#6", APR.versionCheck.HandleVersionMessage)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.versionCheck.HandleVersionMessage = APRTrace("APR-Core/core/VersionCheck.lua:115:APR.versionCheck:HandleVersionMessage#6", APR.versionCheck.HandleVersionMessage)--[[/APR_DIAG]]
 
 function APR.versionCheck:BroadcastVersion()
     if not APR.settings.profile.enableAddon or not IsInGroup() or not ParseVersion(APR.version) then return end
@@ -134,12 +135,12 @@ function APR.versionCheck:BroadcastVersion()
     end
     self.lastChannel, self.lastBroadcast = channel, now
     C_ChatInfo.SendAddonMessage(PREFIX, APR.version, channel)
-end--[[APR_DIAG]]; APR.versionCheck.BroadcastVersion = APRTrace("APR-Core/core/VersionCheck.lua:121:APR.versionCheck:BroadcastVersion#7", APR.versionCheck.BroadcastVersion)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.versionCheck.BroadcastVersion = APRTrace("APR-Core/core/VersionCheck.lua:122:APR.versionCheck:BroadcastVersion#7", APR.versionCheck.BroadcastVersion)--[[/APR_DIAG]]
 
 function APR.versionCheck:StopBroadcasts()
     if self.broadcastTimer then self.broadcastTimer:Cancel(); self.broadcastTimer = nil end
     if self.broadcastRetryTimer then self.broadcastRetryTimer:Cancel(); self.broadcastRetryTimer = nil end
-end--[[APR_DIAG]]; APR.versionCheck.StopBroadcasts = APRTrace("APR-Core/core/VersionCheck.lua:139:APR.versionCheck:StopBroadcasts#8", APR.versionCheck.StopBroadcasts)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.versionCheck.StopBroadcasts = APRTrace("APR-Core/core/VersionCheck.lua:140:APR.versionCheck:StopBroadcasts#8", APR.versionCheck.StopBroadcasts)--[[/APR_DIAG]]
 
 function APR.versionCheck:ScheduleBroadcast()
     self:CheckKnownVersion()
@@ -152,39 +153,51 @@ function APR.versionCheck:ScheduleBroadcast()
     -- Retain the legacy prefix/payload so older APR clients can understand it.
     -- Coalesce roster bursts and let the channel settle after login/reload.
     if self.broadcastTimer or self.broadcastRetryTimer then return end
-    self.broadcastTimer = C_Timer.NewTimer(2, --[[APR_DIAG]]APRTrace("APR-Core/core/VersionCheck.lua:155:callback#10", --[[/APR_DIAG]]function()
+    self.broadcastTimer = C_Timer.NewTimer(2, --[[APR_DIAG]]APRTrace("APR-Core/core/VersionCheck.lua:156:callback#10", --[[/APR_DIAG]]function()
         self.broadcastTimer = nil
         self:BroadcastVersion()
         if not IsInGroup() then return end
         -- One bounded retry covers peers still loading or a throttled first send.
         -- No ticker, OnUpdate or polling remains after this exchange.
-        self.broadcastRetryTimer = C_Timer.NewTimer(BROADCAST_RETRY_DELAY, --[[APR_DIAG]]APRTrace("APR-Core/core/VersionCheck.lua:161:callback#11", --[[/APR_DIAG]]function()
+        self.broadcastRetryTimer = C_Timer.NewTimer(BROADCAST_RETRY_DELAY, --[[APR_DIAG]]APRTrace("APR-Core/core/VersionCheck.lua:162:callback#11", --[[/APR_DIAG]]function()
             self.broadcastRetryTimer = nil
             self:BroadcastVersion()
         end--[[APR_DIAG]])--[[/APR_DIAG]])
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.versionCheck.ScheduleBroadcast = APRTrace("APR-Core/core/VersionCheck.lua:144:APR.versionCheck:ScheduleBroadcast#9", APR.versionCheck.ScheduleBroadcast)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.versionCheck.ScheduleBroadcast = APRTrace("APR-Core/core/VersionCheck.lua:145:APR.versionCheck:ScheduleBroadcast#9", APR.versionCheck.ScheduleBroadcast)--[[/APR_DIAG]]
 
--- Shared-channel state is constant-sized: one pending response, one startup
--- query/retry, and a join timeout. No roster requests, ticker or frame polling.
+-- The shared transport owns membership and native events. Version discovery
+-- keeps only one pending response and one bounded startup query/retry.
+local function Public(value)
+    return not (issecretvalue and issecretvalue(value))
+end--[[APR_DIAG]]; Public = APRTrace("APR-Core/core/VersionCheck.lua:171:Public#12", Public)--[[/APR_DIAG]]
+
 local function SharedEnabled()
     return APR.settings.profile.enableAddon and APR.settings.profile.checkForUpdate
         and ParseVersion(APR.version) ~= nil
-end--[[APR_DIAG]]; SharedEnabled = APRTrace("APR-Core/core/VersionCheck.lua:170:SharedEnabled#12", SharedEnabled)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; SharedEnabled = APRTrace("APR-Core/core/VersionCheck.lua:175:SharedEnabled#13", SharedEnabled)--[[/APR_DIAG]]
 
 function APR.versionCheck:StopSharedChannel()
-    for _, name in ipairs({ "sharedStartTimer", "sharedJoinTimer", "sharedQueryTimer", "sharedResponseTimer" }) do
+    for _, name in ipairs({ "sharedQueryTimer", "sharedResponseTimer" }) do
         if self[name] then self[name]:Cancel(); self[name] = nil end
     end
-    if self.channelFrame then self.channelFrame:UnregisterEvent("CHANNEL_UI_UPDATE") end
-    if self.sharedOwnsChannel and LeaveChannelByName then LeaveChannelByName(SHARED_CHANNEL) end
-    self.sharedChannelID, self.sharedOwnsChannel = nil, nil
-end--[[APR_DIAG]]; APR.versionCheck.StopSharedChannel = APRTrace("APR-Core/core/VersionCheck.lua:175:APR.versionCheck:StopSharedChannel#13", APR.versionCheck.StopSharedChannel)--[[/APR_DIAG]]
+    -- Invalidate the callback before Release can synchronously notify owners.
+    self.sharedChannelToken, self.sharedStarted = nil, nil
+    self.sharedChannelID, self.sharedQuerySent = nil, nil
+    local transport = APR.CommunicationChannel
+    if transport and transport.Release then transport:Release("versionCheck") end
+end--[[APR_DIAG]]; APR.versionCheck.StopSharedChannel = APRTrace("APR-Core/core/VersionCheck.lua:180:APR.versionCheck:StopSharedChannel#14", APR.versionCheck.StopSharedChannel)--[[/APR_DIAG]]
 
 function APR.versionCheck:SendSharedMessage(kind)
-    if not SharedEnabled() or not self.sharedChannelID then return false end
+    local transport = APR.CommunicationChannel
+    if not SharedEnabled() or not self.sharedStarted or not transport or not transport:IsReady() then return false end
+    local channelID
+    if transport.GetSendChannelID then channelID = transport:GetSendChannelID()
+    else channelID = transport:GetChannelID() end
+    if type(channelID) ~= "number" or channelID <= 0 then return false end
+    self.sharedChannelID = channelID
     local ok, result = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](C_ChatInfo.SendAddonMessage, PREFIX, kind .. ":" .. APR.version,
-        "CHANNEL", self.sharedChannelID)
+        "CHANNEL", channelID)
     local codes = Enum and Enum.SendAddonMessageResult
     if not ok or (codes and ((codes.InvalidChatType ~= nil and result == codes.InvalidChatType)
         or (codes.InvalidChannel ~= nil and result == codes.InvalidChannel))) then
@@ -194,63 +207,62 @@ function APR.versionCheck:SendSharedMessage(kind)
         return false
     end
     return result == nil or result == true or result == 0
-end--[[APR_DIAG]]; APR.versionCheck.SendSharedMessage = APRTrace("APR-Core/core/VersionCheck.lua:184:APR.versionCheck:SendSharedMessage#14", APR.versionCheck.SendSharedMessage)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.versionCheck.SendSharedMessage = APRTrace("APR-Core/core/VersionCheck.lua:191:APR.versionCheck:SendSharedMessage#15", APR.versionCheck.SendSharedMessage)--[[/APR_DIAG]]
 
 function APR.versionCheck:RefreshSharedChannel()
     if not SharedEnabled() then self:StopSharedChannel(); return end
-    local channelID = GetChannelName(SHARED_CHANNEL)
-    if not channelID or channelID == 0 then
-        if self.sharedChannelID then self:StopSharedChannel() end
-        return
-    end
+    local transport = APR.CommunicationChannel
+    if not self.sharedStarted or not transport or not transport:IsReady() then self.sharedChannelID = nil; return end
+    local channelID = transport:GetChannelID()
+    if type(channelID) ~= "number" or channelID <= 0 then self.sharedChannelID = nil; return end
     self.sharedChannelID = channelID
     if self.sharedQuerySent then return end
     self.sharedQuerySent = true
-    if self.sharedJoinTimer then self.sharedJoinTimer:Cancel(); self.sharedJoinTimer = nil end
     self:SendSharedMessage("Q")
     if not self.sharedChannelID then return end
     -- This one retry also covers peers whose reply was recently rate-limited.
-    self.sharedQueryTimer = C_Timer.NewTimer(SHARED_QUERY_RETRY_DELAY, --[[APR_DIAG]]APRTrace("APR-Core/core/VersionCheck.lua:213:callback#16", --[[/APR_DIAG]]function()
+    self.sharedQueryTimer = C_Timer.NewTimer(SHARED_QUERY_RETRY_DELAY, --[[APR_DIAG]]APRTrace("APR-Core/core/VersionCheck.lua:224:callback#17", --[[/APR_DIAG]]function()
         self.sharedQueryTimer = nil
         self:SendSharedMessage("Q")
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.versionCheck.RefreshSharedChannel = APRTrace("APR-Core/core/VersionCheck.lua:199:APR.versionCheck:RefreshSharedChannel#15", APR.versionCheck.RefreshSharedChannel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.versionCheck.RefreshSharedChannel = APRTrace("APR-Core/core/VersionCheck.lua:212:APR.versionCheck:RefreshSharedChannel#16", APR.versionCheck.RefreshSharedChannel)--[[/APR_DIAG]]
 
 function APR.versionCheck:StartSharedChannel()
     if self.sharedStarted or not SharedEnabled() then return end
-    -- Blizzard disabled custom-channel addon transport on Classic. Forever
-    -- has its own client; use the API result there rather than assume support.
-    if APR:GetGameVersion() == APR.GAME_VERSIONS.Classic then return end
-    if not JoinTemporaryChannel or not GetChannelName or not C_ChatInfo.SendAddonMessage then return end
+    local transport = APR.CommunicationChannel
+    if not transport or not transport.Acquire or not transport.GetChannelID or not transport.IsReady then return end
     self.sharedStarted = true
-    self.channelFrame:RegisterEvent("CHANNEL_UI_UPDATE")
-    self.sharedStartTimer = C_Timer.NewTimer(2, --[[APR_DIAG]]APRTrace("APR-Core/core/VersionCheck.lua:227:callback#18", --[[/APR_DIAG]]function()
-        self.sharedStartTimer = nil
-        if not SharedEnabled() then self:StopSharedChannel(); return end
-        local channelID = GetChannelName(SHARED_CHANNEL)
-        if channelID and channelID > 0 then
-            self:RefreshSharedChannel()
-            return
-        end
-        self.sharedOwnsChannel = true
-        -- Temporary membership does not change saved chat windows/channels.
-        self.sharedJoinTimer = C_Timer.NewTimer(10, --[[APR_DIAG]]APRTrace("APR-Core/core/VersionCheck.lua:237:callback#19", --[[/APR_DIAG]]function()
-            self.sharedJoinTimer = nil
-            self:RefreshSharedChannel()
-            if not self.sharedChannelID then self:StopSharedChannel() end
-        end--[[APR_DIAG]])--[[/APR_DIAG]])
-        local ok = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](JoinTemporaryChannel, SHARED_CHANNEL)
-        if ok then self:RefreshSharedChannel() else self:StopSharedChannel() end
+    local token = {}
+    self.sharedChannelToken = token
+    transport:Acquire("versionCheck", --[[APR_DIAG]]APRTrace("APR-Core/core/VersionCheck.lua:237:callback#19", --[[/APR_DIAG]]function()
+        if self.sharedChannelToken == token then self:RefreshSharedChannel() end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.versionCheck.StartSharedChannel = APRTrace("APR-Core/core/VersionCheck.lua:219:APR.versionCheck:StartSharedChannel#17", APR.versionCheck.StartSharedChannel)--[[/APR_DIAG]]
+    -- Acquire may report an already-ready channel synchronously. The token also
+    -- guards against a failed first send releasing this owner during that call.
+    if self.sharedChannelToken == token then self:RefreshSharedChannel() end
+end--[[APR_DIAG]]; APR.versionCheck.StartSharedChannel = APRTrace("APR-Core/core/VersionCheck.lua:230:APR.versionCheck:StartSharedChannel#18", APR.versionCheck.StartSharedChannel)--[[/APR_DIAG]]
 
 function APR.versionCheck:HandleSharedMessage(prefix, message, channel, sender, target, zoneChannelID, localID, name)
-    if prefix ~= PREFIX or channel ~= "CHANNEL" or not self.sharedChannelID then return end
-    if localID ~= self.sharedChannelID or type(name) ~= "string" or name:lower() ~= SHARED_CHANNEL:lower() then
+    if not Public(prefix) or prefix ~= PREFIX or not Public(channel) or channel ~= "CHANNEL"
+        or not self.sharedStarted then return end
+    if not Public(message) or type(message) ~= "string" or #message < 3 or #message > 66
+        or not Public(sender) or type(sender) ~= "string" or #sender == 0 or #sender > 128
+        or not Public(localID) or type(localID) ~= "number"
+        or not Public(name) or type(name) ~= "string" or #name ~= #SHARED_CHANNEL then return end
+    local transport = APR.CommunicationChannel
+    if not transport or not transport:IsReady() then return end
+    local channelID = transport:GetChannelID()
+    if not Public(channelID) or type(channelID) ~= "number" or localID ~= channelID
+        or name:lower() ~= SHARED_CHANNEL:lower() then
         return
     end
+    -- One constant-sized budget covers every sender. Reject excess traffic
+    -- before version parsing, realm normalization or any reply/cache work.
+    local second = math.floor(GetTime())
+    if self.sharedReceiveSecond ~= second then self.sharedReceiveSecond, self.sharedReceiveCount = second, 0 end
+    if self.sharedReceiveCount >= SHARED_RECEIVE_LIMIT then return end
+    self.sharedReceiveCount = self.sharedReceiveCount + 1
     if not SharedEnabled() then self:StopSharedChannel(); return end
-    if type(message) ~= "string" or #message > 66 then return end
     local kind, version = message:match("^([QV]):(.+)$")
     if not kind or not ParseVersion(version) then return end
     local senderKey = APR.PartyProtocol.PlayerKey(sender)
@@ -271,34 +283,31 @@ function APR.versionCheck:HandleSharedMessage(prefix, message, channel, sender, 
     end
     if kind ~= "Q" or self.sharedResponseTimer then return end
     if self.sharedLastResponse and GetTime() - self.sharedLastResponse < SHARED_RESPONSE_THROTTLE then return end
-    self.sharedResponseTimer = C_Timer.NewTimer(math.random(5, 15) / 10, --[[APR_DIAG]]APRTrace("APR-Core/core/VersionCheck.lua:274:callback#21", --[[/APR_DIAG]]function()
+    self.sharedResponseTimer = C_Timer.NewTimer(math.random(5, 15) / 10, --[[APR_DIAG]]APRTrace("APR-Core/core/VersionCheck.lua:286:callback#21", --[[/APR_DIAG]]function()
         self.sharedResponseTimer = nil
         self.sharedLastResponse = GetTime()
         self:SendSharedMessage("V")
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.versionCheck.HandleSharedMessage = APRTrace("APR-Core/core/VersionCheck.lua:247:APR.versionCheck:HandleSharedMessage#20", APR.versionCheck.HandleSharedMessage)--[[/APR_DIAG]]
-
-function APR.versionCheck:OnSharedChannelEvent(event, initialLogin, reloadingUI)
-    if event == "PLAYER_ENTERING_WORLD" then
-        if initialLogin or reloadingUI then self:StartSharedChannel() end
-    else
-        self:RefreshSharedChannel()
-    end
-end--[[APR_DIAG]]; APR.versionCheck.OnSharedChannelEvent = APRTrace("APR-Core/core/VersionCheck.lua:281:APR.versionCheck:OnSharedChannelEvent#22", APR.versionCheck.OnSharedChannelEvent)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.versionCheck.HandleSharedMessage = APRTrace("APR-Core/core/VersionCheck.lua:245:APR.versionCheck:HandleSharedMessage#20", APR.versionCheck.HandleSharedMessage)--[[/APR_DIAG]]
 
 function APR.versionCheck:OnDisable()
     self:StopBroadcasts()
     self:StopSharedChannel()
-    if self.channelFrame then self.channelFrame:UnregisterAllEvents(); self.channelFrame:SetScript("OnEvent", nil) end
-end--[[APR_DIAG]]; APR.versionCheck.OnDisable = APRTrace("APR-Core/core/VersionCheck.lua:289:APR.versionCheck:OnDisable#23", APR.versionCheck.OnDisable)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.versionCheck.OnDisable = APRTrace("APR-Core/core/VersionCheck.lua:293:APR.versionCheck:OnDisable#22", APR.versionCheck.OnDisable)--[[/APR_DIAG]]
+
+function APR.versionCheck:RefreshSettings()
+    if SharedEnabled() then
+        self:CheckKnownVersion()
+        self:StartSharedChannel()
+    else
+        self:StopSharedChannel()
+        self:StopBroadcasts()
+    end
+end--[[APR_DIAG]]; APR.versionCheck.RefreshSettings = APRTrace("APR-Core/core/VersionCheck.lua:298:APR.versionCheck:RefreshSettings#23", APR.versionCheck.RefreshSettings)--[[/APR_DIAG]]
 
 function APR.versionCheck:OnInit()
     self:RememberVersion(APR.version)
     self:CheckKnownVersion()
     self:CheckInterfaceVersion()
-    self.channelFrame = self.channelFrame or CreateFrame("Frame")
-    self.channelFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
-    self.channelFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/core/VersionCheck.lua:301:callback#25", --[[/APR_DIAG]]function(_, event, ...)
-        self:OnSharedChannelEvent(event, ...)
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.versionCheck.OnInit = APRTrace("APR-Core/core/VersionCheck.lua:295:APR.versionCheck:OnInit#24", APR.versionCheck.OnInit)--[[/APR_DIAG]]
+    self:StartSharedChannel()
+end--[[APR_DIAG]]; APR.versionCheck.OnInit = APRTrace("APR-Core/core/VersionCheck.lua:308:APR.versionCheck:OnInit#24", APR.versionCheck.OnInit)--[[/APR_DIAG]]

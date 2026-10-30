@@ -116,6 +116,7 @@ APR-Core/core/PerformanceScopes.lua
 APR-Core/core/DiagnosticReport.lua
 APR-Core/core/ResourceMonitor.lua
 APR-Core/ui/panels/ChangeLog.lua
+APR-Core/core/CommunicationChannel.lua
 APR-Core/core/VersionCheck.lua
 
 APR-Core/core/Event.lua
@@ -148,6 +149,7 @@ APR-Core/features/group/PartyProtocol.lua
 APR-Core/features/group/PartyFinderProtocol.lua
 APR-Core/features/group/Party.lua
 APR-Core/features/group/PartyFinder.lua
+APR-Core/features/group/PartyFinderDirect.lua
 APR-Core/features/group/PartyFinderWorld.lua
 APR-Core/features/group/PartyFinderInvites.lua
 APR-Core/features/navigation/Map.lua
