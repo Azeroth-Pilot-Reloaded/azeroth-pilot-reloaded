@@ -508,6 +508,7 @@ function APR:GetTemporaryRouteSteps(routeKey, steps)
 end--[[APR_DIAG]]; APR.GetTemporaryRouteSteps = APRTrace("APR-Core/features/questing/DelveRoutes.lua:464:APR:GetTemporaryRouteSteps#25", APR.GetTemporaryRouteSteps)--[[/APR_DIAG]]
 
 function APR:ActivateTemporaryRoute(routeKey, options)
+    if self.routeValidationPending or self.routeValidationFailed then return false end
     local routeData = self:GetRouteData(routeKey)
     local state = GetTemporaryRouteState(true)
     local playerData = GetPlayerData()
@@ -575,6 +576,7 @@ function APR:ActivateTemporaryRoute(routeKey, options)
 end--[[APR_DIAG]]; APR.ActivateTemporaryRoute = APRTrace("APR-Core/features/questing/DelveRoutes.lua:510:APR:ActivateTemporaryRoute#26", APR.ActivateTemporaryRoute)--[[/APR_DIAG]]
 
 function APR:ClearTemporaryRoute(options)
+    if self.routeValidationPending or self.routeValidationFailed then return false end
     self._temporaryRouteStepsCache = nil
     local state = GetTemporaryRouteState(false)
     options = options or {}
@@ -633,7 +635,7 @@ function APR:ClearTemporaryRoute(options)
     end
 
     return true
-end--[[APR_DIAG]]; APR.ClearTemporaryRoute = APRTrace("APR-Core/features/questing/DelveRoutes.lua:577:APR:ClearTemporaryRoute#27", APR.ClearTemporaryRoute)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ClearTemporaryRoute = APRTrace("APR-Core/features/questing/DelveRoutes.lua:578:APR:ClearTemporaryRoute#27", APR.ClearTemporaryRoute)--[[/APR_DIAG]]
 
 function APR:PromptForDelveRoute(context, routes)
     local sessionKey = context and context.sessionKey or nil
@@ -651,7 +653,7 @@ function APR:PromptForDelveRoute(context, routes)
         self.questionDialog:CreateQuestionPopup(
             "APR_DELVE_ROUTE_" .. string.gsub(sessionKey, ":", "_"),
             (L["ROUTE_SUGGESTION"]) .. "\n\n" .. route.label,
-            --[[APR_DIAG]]APRTrace("APR-Core/features/questing/DelveRoutes.lua:654:callback#29", --[[/APR_DIAG]]function()
+            --[[APR_DIAG]]APRTrace("APR-Core/features/questing/DelveRoutes.lua:656:callback#29", --[[/APR_DIAG]]function()
                 APR:ActivateTemporaryRoute(route.key, {
                     kind = "delve",
                     mapID = context.mapID,
@@ -660,7 +662,7 @@ function APR:PromptForDelveRoute(context, routes)
                     sessionKey = sessionKey,
                 })
             end--[[APR_DIAG]])--[[/APR_DIAG]],
-            --[[APR_DIAG]]APRTrace("APR-Core/features/questing/DelveRoutes.lua:663:callback#30", --[[/APR_DIAG]]function()
+            --[[APR_DIAG]]APRTrace("APR-Core/features/questing/DelveRoutes.lua:665:callback#30", --[[/APR_DIAG]]function()
                 APR._delveRoutePromptState = {
                     sessionKey = sessionKey,
                     resolved = true,
@@ -682,7 +684,7 @@ function APR:PromptForDelveRoute(context, routes)
         L["ROUTE_SUGGESTION"],
         context.name or (L["DELVE"]),
         options,
-        --[[APR_DIAG]]APRTrace("APR-Core/features/questing/DelveRoutes.lua:685:callback#31", --[[/APR_DIAG]]function(option)
+        --[[APR_DIAG]]APRTrace("APR-Core/features/questing/DelveRoutes.lua:687:callback#31", --[[/APR_DIAG]]function(option)
             if not option or not option.key then
                 return
             end
@@ -695,16 +697,17 @@ function APR:PromptForDelveRoute(context, routes)
                 sessionKey = sessionKey,
             })
         end--[[APR_DIAG]])--[[/APR_DIAG]],
-        --[[APR_DIAG]]APRTrace("APR-Core/features/questing/DelveRoutes.lua:698:callback#32", --[[/APR_DIAG]]function()
+        --[[APR_DIAG]]APRTrace("APR-Core/features/questing/DelveRoutes.lua:700:callback#32", --[[/APR_DIAG]]function()
             APR._delveRoutePromptState = {
                 sessionKey = sessionKey,
                 resolved = true,
             }
         end--[[APR_DIAG]])--[[/APR_DIAG]]
     )
-end--[[APR_DIAG]]; APR.PromptForDelveRoute = APRTrace("APR-Core/features/questing/DelveRoutes.lua:638:APR:PromptForDelveRoute#28", APR.PromptForDelveRoute)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.PromptForDelveRoute = APRTrace("APR-Core/features/questing/DelveRoutes.lua:640:APR:PromptForDelveRoute#28", APR.PromptForDelveRoute)--[[/APR_DIAG]]
 
 function APR:RefreshTemporaryDelveRoute()
+    if self.routeValidationPending or self.routeValidationFailed then return end
     local activeState = GetTemporaryRouteState(false)
     if activeState and activeState.kind == "navigation_unlock" then return end
     local context = self:GetCurrentDelveContext()
@@ -778,13 +781,13 @@ function APR:RefreshTemporaryDelveRoute()
     end
 
     self:PromptForDelveRoute(context, routes)
-end--[[APR_DIAG]]; APR.RefreshTemporaryDelveRoute = APRTrace("APR-Core/features/questing/DelveRoutes.lua:707:APR:RefreshTemporaryDelveRoute#33", APR.RefreshTemporaryDelveRoute)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RefreshTemporaryDelveRoute = APRTrace("APR-Core/features/questing/DelveRoutes.lua:709:APR:RefreshTemporaryDelveRoute#33", APR.RefreshTemporaryDelveRoute)--[[/APR_DIAG]]
 
 function APR:ScheduleDelveRouteRefresh(delay)
     CancelDelveRefreshTimer()
 
-    APR._delveRouteRefreshTimer = C_Timer.NewTimer(delay or 0.25, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/DelveRoutes.lua:786:callback#35", --[[/APR_DIAG]]function()
+    APR._delveRouteRefreshTimer = C_Timer.NewTimer(delay or 0.25, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/DelveRoutes.lua:789:callback#35", --[[/APR_DIAG]]function()
         APR._delveRouteRefreshTimer = nil
         APR:RefreshTemporaryDelveRoute()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.ScheduleDelveRouteRefresh = APRTrace("APR-Core/features/questing/DelveRoutes.lua:783:APR:ScheduleDelveRouteRefresh#34", APR.ScheduleDelveRouteRefresh)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ScheduleDelveRouteRefresh = APRTrace("APR-Core/features/questing/DelveRoutes.lua:786:APR:ScheduleDelveRouteRefresh#34", APR.ScheduleDelveRouteRefresh)--[[/APR_DIAG]]

@@ -15,7 +15,7 @@ local function HashByte(hash, byte)
     return bit.band(hash * FNV_PRIME, 0xFFFFFFFF)
 end--[[APR_DIAG]]; HashByte = APRTrace("APR-Core/utils/RouteHashUtils.lua:13:HashByte#1", HashByte)--[[/APR_DIAG]]
 
-local function HashValue(hash, value)
+local function HashValue(hash, value, checkpoint)
     local valueType = type(value)
 
     -- Tables are walked in sorted key order so the hash stays stable across runs
@@ -25,13 +25,14 @@ local function HashValue(hash, value)
             if key ~= "_index" then
                 table.insert(keys, key)
             end
+            if checkpoint then checkpoint() end
         end
-        table.sort(keys, --[[APR_DIAG]]APRTrace("APR-Core/utils/RouteHashUtils.lua:29:callback#3", --[[/APR_DIAG]]function(a, b) return tostring(a) < tostring(b) end--[[APR_DIAG]])--[[/APR_DIAG]])
+        table.sort(keys, --[[APR_DIAG]]APRTrace("APR-Core/utils/RouteHashUtils.lua:30:callback#3", --[[/APR_DIAG]]function(a, b) return tostring(a) < tostring(b) end--[[APR_DIAG]])--[[/APR_DIAG]])
 
         hash = HashByte(hash, 123) -- delimiter
         for _, key in ipairs(keys) do
-            hash = HashValue(hash, key)
-            hash = HashValue(hash, value[key])
+            hash = HashValue(hash, key, checkpoint)
+            hash = HashValue(hash, value[key], checkpoint)
         end
         return HashByte(hash, 125) -- delimiter
     end
@@ -39,8 +40,17 @@ local function HashValue(hash, value)
     -- Strings, numbers and booleans are stringified; other types are ignored on purpose
     if valueType == "string" or valueType == "number" or valueType == "boolean" then
         local text = tostring(value)
-        for i = 1, #text do
-            hash = HashByte(hash, text:byte(i))
+        if checkpoint then
+            for first = 1, #text, 128 do
+                for i = first, math.min(first + 127, #text) do
+                    hash = HashByte(hash, text:byte(i))
+                end
+                checkpoint()
+            end
+        else
+            for i = 1, #text do
+                hash = HashByte(hash, text:byte(i))
+            end
         end
         return HashByte(hash, 0)
     end
@@ -49,15 +59,15 @@ local function HashValue(hash, value)
 end--[[APR_DIAG]]; HashValue = APRTrace("APR-Core/utils/RouteHashUtils.lua:18:HashValue#2", HashValue)--[[/APR_DIAG]]
 
 -- Build a stable signature for a route to spot changes even when step counts stay identical
-function APR:GetRouteSignature(routeFileName)
+function APR:GetRouteSignature(routeFileName, checkpoint)
     local routeData = APR.RouteQuestStepList[routeFileName]
     if not routeData then
         return nil
     end
 
     local hash = FNV_OFFSET
-    hash = HashValue(hash, routeData.steps or routeData)
-    hash = HashValue(hash, routeData.parallelSteps or {})
+    hash = HashValue(hash, routeData.steps or routeData, checkpoint)
+    hash = HashValue(hash, routeData.parallelSteps or {}, checkpoint)
 
     return string.format("%08x", hash)
-end--[[APR_DIAG]]; APR.GetRouteSignature = APRTrace("APR-Core/utils/RouteHashUtils.lua:52:APR:GetRouteSignature#4", APR.GetRouteSignature)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetRouteSignature = APRTrace("APR-Core/utils/RouteHashUtils.lua:62:APR:GetRouteSignature#4", APR.GetRouteSignature)--[[/APR_DIAG]]

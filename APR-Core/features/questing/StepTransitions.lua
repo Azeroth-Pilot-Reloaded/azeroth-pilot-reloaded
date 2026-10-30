@@ -73,6 +73,11 @@ function APR:ActivateRoute(route, reason)
     if route ~= nil and type(route) ~= "string" then return false end
     if route and route ~= "" and self.CanStartRoute and not self:CanStartRoute(route) then return false end
     if self.ActiveRoute == route then return false end
+    local validation = self.routeValidationPending or (self.event and self.event.routeValidationResume)
+    if validation then
+        validation.selectionChanged = true
+        validation.selectedRoute = route
+    end
     local previous = self.ActiveRoute
     self.ActiveRoute = route
     self.manualSkipUndo = nil
@@ -84,10 +89,18 @@ end--[[APR_DIAG]]; APR.ActivateRoute = APRTrace("APR-Core/features/questing/Step
 -- The single writer for route progress, including inactive route initialization/reset.
 -- Zero, NaN and infinity are rejected before they can reach SavedVariables.
 function APR:SetRouteProgress(route, index, reason)
+    if (self.routeValidationPending or self.routeValidationFailed) and reason ~= "reset" then return false end
     local progress = GetProgress(self)
     if not progress or type(route) ~= "string" or type(index) ~= "number"
         or index ~= index or index == math.huge or index < 1 or index % 1 ~= 0 then
         return false
+    end
+    local request = self.routeValidationPending or (self.event and self.event.routeValidationResume)
+    if request then
+        request.manualResets = request.manualResets or {}
+        request.manualResets[route] = true
+        if request.manualClears then request.manualClears[route] = nil end
+        request.advance = nil
     end
     local previous = progress[route]
     if index == 1 and self.ResetDungeonRun and
@@ -106,9 +119,10 @@ function APR:SetRouteProgress(route, index, reason)
     end
     RecordTransition(self, route, previous, index, reason)
     return true
-end--[[APR_DIAG]]; APR.SetRouteProgress = APRTrace("APR-Core/features/questing/StepTransitions.lua:86:APR:SetRouteProgress#8", APR.SetRouteProgress)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.SetRouteProgress = APRTrace("APR-Core/features/questing/StepTransitions.lua:91:APR:SetRouteProgress#8", APR.SetRouteProgress)--[[/APR_DIAG]]
 
 function APR:TransitionStep(index, reason, refresh, context)
+    if self.routeValidationPending or self.routeValidationFailed then return false end
     if context and not self:IsStepContextCurrent(context) then return false end
     if not self:SetRouteProgress(self.ActiveRoute, index, reason) then return false end
     if refresh == "quests" then
@@ -117,14 +131,24 @@ function APR:TransitionStep(index, reason, refresh, context)
         self:UpdateStep()
     end
     return true
-end--[[APR_DIAG]]; APR.TransitionStep = APRTrace("APR-Core/features/questing/StepTransitions.lua:111:APR:TransitionStep#9", APR.TransitionStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.TransitionStep = APRTrace("APR-Core/features/questing/StepTransitions.lua:124:APR:TransitionStep#9", APR.TransitionStep)--[[/APR_DIAG]]
 
 function APR:AdvanceStep(refresh, context)
     local progress = GetProgress(self)
     local index = progress and self.ActiveRoute and progress[self.ActiveRoute]
     if not index then return false end
+    local validation = self.routeValidationPending or (self.event and self.event.routeValidationResume)
+    if validation then
+        if context and not self:IsStepContextCurrent(context) then return false end
+        -- Native completion events can happen only once. Retain one receipt,
+        -- never a queue of increments; it is rechecked after fingerprint validation.
+        if not validation.advance or not self:IsStepContextCurrent(validation.advance) then
+            validation.advance = context or self:CaptureStepContext()
+        end
+        return false
+    end
     return self:TransitionStep(index + 1, "automatic", refresh, context)
-end--[[APR_DIAG]]; APR.AdvanceStep = APRTrace("APR-Core/features/questing/StepTransitions.lua:122:APR:AdvanceStep#10", APR.AdvanceStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.AdvanceStep = APRTrace("APR-Core/features/questing/StepTransitions.lua:136:APR:AdvanceStep#10", APR.AdvanceStep)--[[/APR_DIAG]]
 
 -- Capture before the refresh: it can synchronously complete additional steps.
 function APR:CommitManualSkip(destination)
@@ -138,15 +162,15 @@ function APR:CommitManualSkip(destination)
         self.manualSkipUndo = { before = context, after = self:CaptureStepContext() }
     end
     return changed
-end--[[APR_DIAG]]; APR.CommitManualSkip = APRTrace("APR-Core/features/questing/StepTransitions.lua:130:APR:CommitManualSkip#11", APR.CommitManualSkip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CommitManualSkip = APRTrace("APR-Core/features/questing/StepTransitions.lua:154:APR:CommitManualSkip#11", APR.CommitManualSkip)--[[/APR_DIAG]]
 
 function APR:CanUndoManualSkip()
     return self.manualSkipUndo ~= nil and self:IsStepContextCurrent(self.manualSkipUndo.after)
-end--[[APR_DIAG]]; APR.CanUndoManualSkip = APRTrace("APR-Core/features/questing/StepTransitions.lua:143:APR:CanUndoManualSkip#12", APR.CanUndoManualSkip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CanUndoManualSkip = APRTrace("APR-Core/features/questing/StepTransitions.lua:167:APR:CanUndoManualSkip#12", APR.CanUndoManualSkip)--[[/APR_DIAG]]
 
 function APR:UndoManualSkip()
     if not self:CanUndoManualSkip() then self.manualSkipUndo = nil; return false end
     local undo = self.manualSkipUndo
     self.manualSkipUndo = nil
     return self:TransitionStep(undo.before.index, "undo_manual_skip", "quests", undo.after)
-end--[[APR_DIAG]]; APR.UndoManualSkip = APRTrace("APR-Core/features/questing/StepTransitions.lua:147:APR:UndoManualSkip#13", APR.UndoManualSkip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.UndoManualSkip = APRTrace("APR-Core/features/questing/StepTransitions.lua:171:APR:UndoManualSkip#13", APR.UndoManualSkip)--[[/APR_DIAG]]

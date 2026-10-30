@@ -9,7 +9,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/config/WorkspaceOptions.lua"] = {instrumented = 12, diagnosticHelpers = 0},
     ["APR-Core/core/Commands.lua"] = {instrumented = 5, diagnosticHelpers = 0},
     ["APR-Core/core/Core.lua"] = {instrumented = 3, diagnosticHelpers = 0},
-    ["APR-Core/core/Event.lua"] = {instrumented = 84, diagnosticHelpers = 0},
+    ["APR-Core/core/Event.lua"] = {instrumented = 93, diagnosticHelpers = 0},
     ["APR-Core/core/VersionCheck.lua"] = {instrumented = 25, diagnosticHelpers = 0},
     ["APR-Core/data/models/Classes.lua"] = {instrumented = 2, diagnosticHelpers = 0},
     ["APR-Core/data/models/Enums.lua"] = {instrumented = 1, diagnosticHelpers = 0},
