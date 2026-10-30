@@ -57,13 +57,20 @@ end--[[APR_DIAG]]; APR.IsRouteCollectionComplete = APRTrace("APR-Core/utils/Loot
 function APR:GetLootMoneyProgress(rule)
     local cash, resale = GetMoney() or 0, 0
     local itemInfo = C_Item and C_Item.GetItemInfo or GetItemInfo
+    -- Stacks can share a link/ID. Fetch each exact variant once per estimate;
+    -- keep this local so newly loaded prices are visible on the next refresh.
+    local prices = {}
     local function addItem(item, count)
         if not item or not itemInfo then return end
-        local price = select(11, itemInfo(item))
+        local price = prices[item]
+        if price == nil then
+            price = select(11, itemInfo(item))
+            prices[item] = type(price) == "number" and price or false
+        end
         if type(price) == "number" and price > 0 then
             resale = resale + price * (count or 1)
         end
-    end--[[APR_DIAG]]; addItem = APRTrace("APR-Core/utils/LootUtils.lua:60:addItem#6", addItem)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; addItem = APRTrace("APR-Core/utils/LootUtils.lua:63:addItem#6", addItem)--[[/APR_DIAG]]
     local saleItems = {}
     if rule.junkOnly then
         for _, slot in ipairs(rule.equippedSlots or {}) do
@@ -116,13 +123,13 @@ end--[[APR_DIAG]]; APR.GetLootMoneyProgress = APRTrace("APR-Core/utils/LootUtils
 function APR:MeetsVendorMoney(rule)
     local cash, resale = self:GetLootMoneyProgress(rule)
     return self:CompareRouteNumber(cash + resale, rule.operator or ">=", rule.copper)
-end--[[APR_DIAG]]; APR.MeetsVendorMoney = APRTrace("APR-Core/utils/LootUtils.lua:116:APR:MeetsVendorMoney#7", APR.MeetsVendorMoney)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.MeetsVendorMoney = APRTrace("APR-Core/utils/LootUtils.lua:123:APR:MeetsVendorMoney#7", APR.MeetsVendorMoney)--[[/APR_DIAG]]
 
 function APR:FormatLootMoney(copper)
     local formatMoney = C_CurrencyInfo and C_CurrencyInfo.GetCoinTextureString or GetCoinTextureString
     return formatMoney and formatMoney(copper) or tostring(copper)
-end--[[APR_DIAG]]; APR.FormatLootMoney = APRTrace("APR-Core/utils/LootUtils.lua:121:APR:FormatLootMoney#8", APR.FormatLootMoney)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.FormatLootMoney = APRTrace("APR-Core/utils/LootUtils.lua:128:APR:FormatLootMoney#8", APR.FormatLootMoney)--[[/APR_DIAG]]
 
 function APR:GetLootMoneyStepText(rule)
     return string.format(L["LOOT_MONEY"], self:FormatLootMoney(rule.copper))
-end--[[APR_DIAG]]; APR.GetLootMoneyStepText = APRTrace("APR-Core/utils/LootUtils.lua:126:APR:GetLootMoneyStepText#9", APR.GetLootMoneyStepText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetLootMoneyStepText = APRTrace("APR-Core/utils/LootUtils.lua:133:APR:GetLootMoneyStepText#9", APR.GetLootMoneyStepText)--[[/APR_DIAG]]
