@@ -88,21 +88,46 @@ function P.AcceptLanguages(list, allowed, blocked)
     return false
 end--[[APR_DIAG]]; P.AcceptLanguages = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:79:P.AcceptLanguages#8", P.AcceptLanguages)--[[/APR_DIAG]]
 
+-- Compile preferences once for a candidate-list refresh. Received language
+-- masks are already validated by the codec; filtering them needs no lists,
+-- normalization or sorting for every visible/hidden candidate.
+function P.CompileLanguagePolicy(allowed, blocked)
+    local allowMask, blockMask = P.LanguageMask(allowed), P.LanguageMask(blocked)
+    local accepted = 0
+    for index = 1, #languages do
+        local bit = 2 ^ (index - 1)
+        if (allowMask == 0 or math.floor(allowMask / bit) % 2 == 1)
+            and math.floor(blockMask / bit) % 2 == 0 then accepted = accepted + bit end
+    end
+    return { mask = accepted, unknown = allowMask == 0 and blockMask == 0 }
+end--[[APR_DIAG]]; P.CompileLanguagePolicy = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:94:P.CompileLanguagePolicy#9", P.CompileLanguagePolicy)--[[/APR_DIAG]]
+
+function P.AcceptLanguageMask(mask, policy)
+    if not Integer(mask, 0, 2 ^ #languages - 1) or type(policy) ~= "table" then return false end
+    if mask == 0 then return policy.unknown == true end
+    local accepted = policy.mask
+    while mask > 0 and accepted > 0 do
+        if mask % 2 == 1 and accepted % 2 == 1 then return true end
+        mask, accepted = math.floor(mask / 2), math.floor(accepted / 2)
+    end
+    return false
+end--[[APR_DIAG]]; P.AcceptLanguageMask = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:105:P.AcceptLanguageMask#10", P.AcceptLanguageMask)--[[/APR_DIAG]]
+
 local function HashPart(hash, value, first, last)
     for index = first or 1, last or #value do hash = (hash * 33 + value:byte(index)) % MODULO end
     return hash
-end--[[APR_DIAG]]; HashPart = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:91:HashPart#9", HashPart)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; HashPart = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:116:HashPart#11", HashPart)--[[/APR_DIAG]]
 
 function P.Hash(value)
     if type(value) ~= "string" then return nil end
     return string.format("%08x", HashPart(5381, value))
-end--[[APR_DIAG]]; P.Hash = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:96:P.Hash#10", P.Hash)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; P.Hash = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:121:P.Hash#12", P.Hash)--[[/APR_DIAG]]
 
 -- A keyed commutative accumulator makes map order irrelevant without sorting a large table.
 -- Numeric array keys participate in the mix, so swapping authored steps changes the signature.
 local function PairHash(key, value)
     return (key * (value % 65521 + 1) + value * (math.floor(key / 65536) + 1)) % MODULO
-end--[[APR_DIAG]]; PairHash = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:103:PairHash#11", PairHash)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; PairHash = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:128:PairHash#13", PairHash)--[[/APR_DIAG]]
 
 local routeDisplayFields = {
     label = true, author = true, authors = true, description = true, community = true, source = true,
@@ -125,7 +150,7 @@ local function IgnoreFingerprintField(scope, key)
     if scope == "kill" then return key == "name" end
     if scope == "buff" then return key == "tooltipMessage" end
     return false
-end--[[APR_DIAG]]; IgnoreFingerprintField = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:118:IgnoreFingerprintField#12", IgnoreFingerprintField)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; IgnoreFingerprintField = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:143:IgnoreFingerprintField#14", IgnoreFingerprintField)--[[/APR_DIAG]]
 
 local function FingerprintChildScope(scope, key, value)
     if type(value) ~= "table" then return end
@@ -145,7 +170,7 @@ local function FingerprintChildScope(scope, key, value)
         if key == "Buffs" then return "buffs" end
     elseif scope == "inventory" and (key == "items" or type(key) == "number") then return "inventory"
     elseif scope == "buffs" and type(key) == "number" then return "buff" end
-end--[[APR_DIAG]]; FingerprintChildScope = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:130:FingerprintChildScope#13", FingerprintChildScope)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; FingerprintChildScope = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:155:FingerprintChildScope#15", FingerprintChildScope)--[[/APR_DIAG]]
 local Fingerprint = {}
 Fingerprint.__index = Fingerprint
 
@@ -162,11 +187,11 @@ local function FinishValue(job, hash)
         parent.sum = (parent.sum + PairHash(parent.keyHash, hash)) % MODULO
         parent.count, parent.stage = parent.count + 1, "next"
     end
-end--[[APR_DIAG]]; FinishValue = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:152:FinishValue#14", FinishValue)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; FinishValue = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:177:FinishValue#16", FinishValue)--[[/APR_DIAG]]
 
 function P.NewFingerprintJob(routeData)
     return setmetatable({ stack = { { value = routeData, scope = "route" } }, active = {}, visited = 0 }, Fingerprint)
-end--[[APR_DIAG]]; P.NewFingerprintJob = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:167:P.NewFingerprintJob#15", P.NewFingerprintJob)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; P.NewFingerprintJob = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:192:P.NewFingerprintJob#17", P.NewFingerprintJob)--[[/APR_DIAG]]
 
 function Fingerprint:Step(maxNodes)
     if self.done then self.lastWork = 0; return true, self.digest end
@@ -213,7 +238,7 @@ function Fingerprint:Step(maxNodes)
     end
     self.lastWork = work
     return self.done == true, self.digest
-end--[[APR_DIAG]]; Fingerprint.Step = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:171:Fingerprint:Step#16", Fingerprint.Step)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Fingerprint.Step = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:196:Fingerprint:Step#18", Fingerprint.Step)--[[/APR_DIAG]]
 
 local function ValidProgress(data)
     local id, step, total = data.progressId, data.step, data.total
@@ -226,7 +251,7 @@ local function ValidProgress(data)
     if index then return tonumber(index) == step and step <= total end
     local group, branch = id:match("^parallel:([1-9]%d*):([1-9]%d*)$")
     return group ~= nil and tonumber(group) <= MAX_PROGRESS and tonumber(branch) <= MAX_PROGRESS
-end--[[APR_DIAG]]; ValidProgress = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:218:ValidProgress#17", ValidProgress)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ValidProgress = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:243:ValidProgress#19", ValidProgress)--[[/APR_DIAG]]
 
 function P.CompareProgress(own, peer)
     if type(own) ~= "table" or type(peer) ~= "table" then return "unknown" end
@@ -242,7 +267,7 @@ function P.CompareProgress(own, peer)
     if gap > 0 then return "ahead", gap end
     if gap < 0 then return "behind", gap end
     return "different"
-end--[[APR_DIAG]]; P.CompareProgress = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:231:P.CompareProgress#18", P.CompareProgress)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; P.CompareProgress = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:256:P.CompareProgress#20", P.CompareProgress)--[[/APR_DIAG]]
 
 local schemas = {
     Q = { "id", "context", "route", "revision", "progressId", "step", "total", "mode", "range", "minLevel", "maxLevel", "primary", "languages" },
@@ -287,7 +312,7 @@ local function NormalizeField(field, value, fromWire)
     if field == "primary" then return (value == "" or languageInfo[value]) and value or nil end
     if field == "languageSource" then return (value == "auto" or value == "player") and value or nil end
     return nil
-end--[[APR_DIAG]]; NormalizeField = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:262:NormalizeField#19", NormalizeField)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; NormalizeField = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:287:NormalizeField#21", NormalizeField)--[[/APR_DIAG]]
 
 local function NormalizePacket(kind, values, fromWire)
     local schema = schemas[kind]
@@ -311,7 +336,7 @@ local function NormalizePacket(kind, values, fromWire)
         end
     end
     return result
-end--[[APR_DIAG]]; NormalizePacket = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:292:NormalizePacket#20", NormalizePacket)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; NormalizePacket = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:317:NormalizePacket#22", NormalizePacket)--[[/APR_DIAG]]
 
 function P.Encode(kind, data)
     local packet = NormalizePacket(kind, data, false)
@@ -323,7 +348,7 @@ function P.Encode(kind, data)
     end
     local wire = table.concat(parts, "|")
     return #wire <= 240 and not wire:find("[%z\1-\31\127]") and wire or nil
-end--[[APR_DIAG]]; P.Encode = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:316:P.Encode#21", P.Encode)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; P.Encode = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:341:P.Encode#23", P.Encode)--[[/APR_DIAG]]
 
 function P.Decode(wire)
     if type(wire) ~= "string" or #wire > 240 or #wire < 3 or wire:find("[%z\1-\31\127]") then return nil end
@@ -334,4 +359,4 @@ function P.Decode(wire)
     local values = {}
     for index = 1, #schema do values[index] = parts[index + 2] end
     return NormalizePacket(kind, values, true)
-end--[[APR_DIAG]]; P.Decode = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:328:P.Decode#22", P.Decode)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; P.Decode = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:353:P.Decode#24", P.Decode)--[[/APR_DIAG]]

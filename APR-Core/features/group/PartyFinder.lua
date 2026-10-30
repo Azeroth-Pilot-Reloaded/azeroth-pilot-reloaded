@@ -589,16 +589,18 @@ function Finder:GetCandidates()
     for index = #list, 1, -1 do list[index] = nil end
     self.candidateList, self.candidatesDirty, self.listExpires = list, nil, math.huge
     local query = self:MakeQuery(state)
+    local languagePolicy = P.CompileLanguagePolicy(settings.languages, settings.blockedLanguages)
+    local now = GetTime()
     for key, data in pairs(self.candidates or {}) do
-        if GetTime() - data.seenAt >= CACHE_TTL then self.candidates[key] = nil
-        elseif self:Matches(data, query) and P.AcceptLanguages(data.spokenLanguages, settings.languages, settings.blockedLanguages) then
+        if now - data.seenAt >= CACHE_TTL then self.candidates[key] = nil
+        elseif self:Matches(data, query) and P.AcceptLanguageMask(data.languages, languagePolicy) then
             local _, gap = P.CompareProgress(state, data)
             data.gap = gap
             list[#list + 1] = data
             self.listExpires = math.min(self.listExpires, data.seenAt + CACHE_TTL)
         end
     end
-    table.sort(list, --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:601:callback#46", --[[/APR_DIAG]]function(a, b)
+    table.sort(list, --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:603:callback#46", --[[/APR_DIAG]]function(a, b)
         local left, right = math.abs(a.gap or 1000000), math.abs(b.gap or 1000000)
         if left ~= right then return left < right end
         return a.key < b.key
@@ -608,13 +610,13 @@ end--[[APR_DIAG]]; Finder.GetCandidates = APRTrace("APR-Core/features/group/Part
 
 function Finder:GetCount()
     return #self:GetCandidates()
-end--[[APR_DIAG]]; Finder.GetCount = APRTrace("APR-Core/features/group/PartyFinder.lua:609:Finder:GetCount#47", Finder.GetCount)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.GetCount = APRTrace("APR-Core/features/group/PartyFinder.lua:611:Finder:GetCount#47", Finder.GetCount)--[[/APR_DIAG]]
 
 function Finder:GetCandidateDescription(candidate)
     local status, gap = P.CompareProgress(self:GetLocalState() or {}, candidate)
     if gap and gap ~= 0 then return string.format(L[PROGRESS_KEYS[status]], math.abs(gap)) end
     return L[PROGRESS_KEYS[status]]
-end--[[APR_DIAG]]; Finder.GetCandidateDescription = APRTrace("APR-Core/features/group/PartyFinder.lua:613:Finder:GetCandidateDescription#48", Finder.GetCandidateDescription)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.GetCandidateDescription = APRTrace("APR-Core/features/group/PartyFinder.lua:615:Finder:GetCandidateDescription#48", Finder.GetCandidateDescription)--[[/APR_DIAG]]
 
 function Finder:ScheduleExpiry()
     local earliest = math.huge
@@ -625,7 +627,7 @@ function Finder:ScheduleExpiry()
     if earliest == math.huge then self:CancelTimer("expiryTimer"); return end
     -- Keeping an earlier wakeup is safe; later arrivals should not allocate replacement timers.
     if self.expiryTimer and self.expiryAt <= earliest then return end
-    self:SetTimer("expiryTimer", math.max(0.1, earliest - GetTime()), --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:628:callback#50", --[[/APR_DIAG]]function()
+    self:SetTimer("expiryTimer", math.max(0.1, earliest - GetTime()), --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:630:callback#50", --[[/APR_DIAG]]function()
         for key, data in pairs(self.candidates) do
             if GetTime() - data.seenAt >= CACHE_TTL then self.candidates[key], self.candidatesDirty = nil, true end
         end
@@ -637,17 +639,17 @@ function Finder:ScheduleExpiry()
         self:ScheduleExpiry()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     self.expiryAt = math.max(GetTime() + 0.1, earliest)
-end--[[APR_DIAG]]; Finder.ScheduleExpiry = APRTrace("APR-Core/features/group/PartyFinder.lua:619:Finder:ScheduleExpiry#49", Finder.ScheduleExpiry)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.ScheduleExpiry = APRTrace("APR-Core/features/group/PartyFinder.lua:621:Finder:ScheduleExpiry#49", Finder.ScheduleExpiry)--[[/APR_DIAG]]
 
 function Finder:ScheduleAutoScan()
     self:CancelTimer("autoTimer")
     local settings = self:GetSettings()
     if not self:IsEnabled() or not settings.autoScan then return end
-    self:SetTimer("autoTimer", math.random(75, 105), --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:646:callback#52", --[[/APR_DIAG]]function()
+    self:SetTimer("autoTimer", math.random(75, 105), --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:648:callback#52", --[[/APR_DIAG]]function()
         if not self:IsRestricted() and not self:IsDiscoveryInstance() then self:Search(true) end
         self:ScheduleAutoScan()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; Finder.ScheduleAutoScan = APRTrace("APR-Core/features/group/PartyFinder.lua:642:Finder:ScheduleAutoScan#51", Finder.ScheduleAutoScan)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.ScheduleAutoScan = APRTrace("APR-Core/features/group/PartyFinder.lua:644:Finder:ScheduleAutoScan#51", Finder.ScheduleAutoScan)--[[/APR_DIAG]]
 
 function Finder:RefreshSettings()
     if not self.initialized then return end
@@ -681,18 +683,18 @@ function Finder:RefreshSettings()
     self:RefreshTransport()
     self:ScheduleAutoScan()
     self:Notify()
-end--[[APR_DIAG]]; Finder.RefreshSettings = APRTrace("APR-Core/features/group/PartyFinder.lua:652:Finder:RefreshSettings#53", Finder.RefreshSettings)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.RefreshSettings = APRTrace("APR-Core/features/group/PartyFinder.lua:654:Finder:RefreshSettings#53", Finder.RefreshSettings)--[[/APR_DIAG]]
 
 function Finder:QueueStateRefresh(transportOnly)
     if not self.initialized or not self:IsEnabled() then return end
     if not transportOnly then self.localDirty = true end
     if not self:GetSettings().visible and not self.query and not self.searchWanted and not next(self.candidates) then return end
     if self.stateTimer then return end
-    self:SetTimer("stateTimer", 0.1, --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:691:callback#55", --[[/APR_DIAG]]function()
+    self:SetTimer("stateTimer", 0.1, --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:693:callback#55", --[[/APR_DIAG]]function()
         self:RefreshTransport()
         self:Notify()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; Finder.QueueStateRefresh = APRTrace("APR-Core/features/group/PartyFinder.lua:686:Finder:QueueStateRefresh#54", Finder.QueueStateRefresh)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.QueueStateRefresh = APRTrace("APR-Core/features/group/PartyFinder.lua:688:Finder:QueueStateRefresh#54", Finder.QueueStateRefresh)--[[/APR_DIAG]]
 
 function Finder:HandleAddonMessage(prefix, message, channel, sender, target, _, localID, name)
     if not Public(prefix) or prefix ~= PREFIX or not self:IsEnabled() then return end
@@ -730,15 +732,15 @@ function Finder:HandleAddonMessage(prefix, message, channel, sender, target, _, 
     elseif channel == "WHISPER" and (data.kind == "I" or data.kind == "R") then
         self:HandleInviteMessage(data, key)
     end
-end--[[APR_DIAG]]; Finder.HandleAddonMessage = APRTrace("APR-Core/features/group/PartyFinder.lua:697:Finder:HandleAddonMessage#56", Finder.HandleAddonMessage)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.HandleAddonMessage = APRTrace("APR-Core/features/group/PartyFinder.lua:699:Finder:HandleAddonMessage#56", Finder.HandleAddonMessage)--[[/APR_DIAG]]
 
 function Finder:Open()
     if APR.PartyFinderPanel and APR.PartyFinderPanel.Show then APR.PartyFinderPanel:Show() else self:Search() end
-end--[[APR_DIAG]]; Finder.Open = APRTrace("APR-Core/features/group/PartyFinder.lua:735:Finder:Open#57", Finder.Open)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.Open = APRTrace("APR-Core/features/group/PartyFinder.lua:737:Finder:Open#57", Finder.Open)--[[/APR_DIAG]]
 
 function Finder:OpenSettings()
     if APR.Workspace then APR.Workspace:Show("options", "groupFinder") end
-end--[[APR_DIAG]]; Finder.OpenSettings = APRTrace("APR-Core/features/group/PartyFinder.lua:739:Finder:OpenSettings#58", Finder.OpenSettings)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.OpenSettings = APRTrace("APR-Core/features/group/PartyFinder.lua:741:Finder:OpenSettings#58", Finder.OpenSettings)--[[/APR_DIAG]]
 
 function Finder:OnDisable()
     self:StopTransport(true)
@@ -746,7 +748,7 @@ function Finder:OnDisable()
     self.fingerprintJob, self.fingerprintRoute, self.fingerprintDefinition = nil, nil, nil
     if self.eventFrame then self.eventFrame:UnregisterAllEvents() end
     if self.ClearInvitations then self:ClearInvitations() end
-end--[[APR_DIAG]]; Finder.OnDisable = APRTrace("APR-Core/features/group/PartyFinder.lua:743:Finder:OnDisable#59", Finder.OnDisable)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.OnDisable = APRTrace("APR-Core/features/group/PartyFinder.lua:745:Finder:OnDisable#59", Finder.OnDisable)--[[/APR_DIAG]]
 
 function Finder:SetListening(enabled)
     if not self.eventFrame or self.eventsEnabled == enabled then return end
@@ -758,7 +760,7 @@ function Finder:SetListening(enabled)
         "CHANNEL_COUNT_UPDATE"}) do
         if APR.RegisterSupportedEvent then APR:RegisterSupportedEvent(self.eventFrame, event) else self.eventFrame:RegisterEvent(event) end
     end
-end--[[APR_DIAG]]; Finder.SetListening = APRTrace("APR-Core/features/group/PartyFinder.lua:751:Finder:SetListening#60", Finder.SetListening)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.SetListening = APRTrace("APR-Core/features/group/PartyFinder.lua:753:Finder:SetListening#60", Finder.SetListening)--[[/APR_DIAG]]
 
 function Finder:OnInit()
     self.initialized = true
@@ -767,7 +769,7 @@ function Finder:OnInit()
     self.playerKey = self:PlayerKey(name)
     if C_ChatInfo and C_ChatInfo.RegisterAddonMessagePrefix then C_ChatInfo.RegisterAddonMessagePrefix(PREFIX) end
     self.eventFrame = self.eventFrame or CreateFrame("Frame")
-    self.eventFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:770:callback#62", --[[/APR_DIAG]]function(_, event, ...)
+    self.eventFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:772:callback#62", --[[/APR_DIAG]]function(_, event, ...)
         if event == "CHAT_MSG_ADDON" then self:HandleAddonMessage(...)
         elseif event == "CHANNEL_COUNT_UPDATE" then self:QueueWorldPopulationRefresh()
         elseif event == "CHANNEL_UI_UPDATE" then
@@ -784,8 +786,8 @@ function Finder:OnInit()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     self:HookInvitationDialogs()
     if hooksecurefunc and APR.party and not self.progressHooked then
-        hooksecurefunc(APR.party, "SendGroupMessage", --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:787:callback#63", --[[/APR_DIAG]]function() self:QueueStateRefresh() end--[[APR_DIAG]])--[[/APR_DIAG]])
+        hooksecurefunc(APR.party, "SendGroupMessage", --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:789:callback#63", --[[/APR_DIAG]]function() self:QueueStateRefresh() end--[[APR_DIAG]])--[[/APR_DIAG]])
         self.progressHooked = true
     end
     self:RefreshSettings()
-end--[[APR_DIAG]]; Finder.OnInit = APRTrace("APR-Core/features/group/PartyFinder.lua:763:Finder:OnInit#61", Finder.OnInit)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.OnInit = APRTrace("APR-Core/features/group/PartyFinder.lua:765:Finder:OnInit#61", Finder.OnInit)--[[/APR_DIAG]]
