@@ -2,7 +2,7 @@
 -- arrival can still be useful if it leaves enough resources to finish.
 -- Graph loading, candidate checks and result assembly all run through Step.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("search", 8) then return end
+if not Lib:BeginModule("search", 9) then return end
 Lib.Engine = {}
 local Engine = Lib.Engine
 local Search = {}
@@ -58,13 +58,28 @@ local function Pop(heap)
     return first
 end
 
-local function Dominates(left, right, futureResources)
-    if left.seconds > right.seconds or left.copper > right.copper then return false end
-    if left.used == right.used then return true end
-    for key, count in pairs(left.used) do
-        if (not futureResources or futureResources[key]) and count > (right.used[key] or 0) then return false end
+local function DominatesOne(candidate, left, right, futureResources)
+    if left.seconds > right.seconds or left.copper > right.copper then
+        candidate.resourceCursor, candidate.resourceCount = nil, nil
+        return false
     end
-    return true
+    if left.used == right.used then candidate.resourceCursor, candidate.resourceCount = nil, nil; return true end
+    -- Origin-only cooldowns cannot constrain a later leg. An empty relevance
+    -- set makes resource comparisons unnecessary, even with distinct tables.
+    if futureResources == EMPTY then candidate.resourceCursor, candidate.resourceCount = nil, nil; return true end
+    local key, count = candidate.resourceCursor, candidate.resourceCount
+    if key == nil then key, count = next(left.used) end
+    if key == nil then return true end
+    if (not futureResources or futureResources[key]) and count > (right.used[key] or 0) then
+        candidate.resourceCursor, candidate.resourceCount = nil, nil
+        return false
+    end
+    -- Look ahead once and retain the observation. The usual zero/one-resource
+    -- comparison completes inline; larger maps read one new entry per resume.
+    candidate.resourceCursor, candidate.resourceCount = next(left.used, key)
+    if candidate.resourceCursor == nil then return true end
+    -- nil denotes an unfinished comparison, not a failed dominance relation.
+    return nil
 end
 
 local function CopyEdge(edge, from, to)
@@ -238,6 +253,7 @@ function Search:LoadOne()
             self.resourceIndex = self.resourceIndex + 1
             return
         end
+        if next(self.futureResources) == nil then self.futureResources = EMPTY end
         self.resourceEdges, self.phase = nil, "search"
         self:QueueCandidate(self.startNode)
         return
@@ -364,16 +380,34 @@ function Search:CheckCandidate()
     local labels = self.labels[candidate.node] or EMPTY
     local other = labels[candidate.index]
     if not other then self:AcceptCandidate(candidate); return end
-    if not other.stale and Dominates(other, candidate, self.futureResources) then self.candidate = nil; return end
-    if other.stale or Dominates(candidate, other, self.futureResources) then
-        other.stale = true
-        -- Frontier order is irrelevant. Swap removal avoids retaining stale
-        -- labels and repeatedly scanning them at this destination.
-        labels[candidate.index] = labels[#labels]
-        labels[#labels] = nil
-    else
-        candidate.index = candidate.index + 1
+    if not other.stale then
+        -- Scalar rejection needs no continuation. Keep ordinary incomparable
+        -- arrivals on the same direct path as before the resource slicing.
+        if not candidate.reverseDominance
+            and (other.seconds > candidate.seconds or other.copper > candidate.copper) then
+            candidate.reverseDominance = true
+        end
+        local dominated
+        if candidate.reverseDominance then
+            dominated = DominatesOne(candidate, candidate, other, self.futureResources)
+        else
+            dominated = DominatesOne(candidate, other, candidate, self.futureResources)
+        end
+        if dominated == nil then return end
+        if not candidate.reverseDominance then
+            if dominated then self.candidate = nil
+            else candidate.reverseDominance = true end
+            return
+        end
+        candidate.reverseDominance = nil
+        if not dominated then candidate.index = candidate.index + 1; return end
     end
+    other.stale = true
+    -- Frontier order is irrelevant. Swap removal avoids retaining stale
+    -- labels and repeatedly scanning them at this destination.
+    labels[candidate.index] = labels[#labels]
+    labels[#labels] = nil
+    candidate.resourceCursor, candidate.resourceCount, candidate.reverseDominance = nil, nil, nil
 end
 
 function Search:GetWalkingCache(node)
