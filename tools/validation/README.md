@@ -5,6 +5,72 @@ Python, Lua and route syntax checks; see `tests/README.md` for dependencies and 
 
 ## Whole-addon diagnostics
 
+### Gameplay spike audit: 2026-10-30.1
+
+The audit follows event dispatch, quest synchronization, guide rows, progress
+bars, XP reminders, bank snapshots, navigation preparation/search/arrival,
+map/arrow updates, group traffic, pooled widgets and diagnostic collection.
+Findings below describe source behavior and synthetic workloads. They do not
+attribute a measured client freeze to APR or establish an FPS improvement.
+
+| Mechanism | Change | Regression evidence |
+| --- | --- | --- |
+| Every quest-log update replaced objective tables and relaid out unchanged visible rows | Reuse objective records; skip unchanged text/geometry and arrow writes; retire removed objectives | 100 unchanged refreshes, 150 synthetic objectives and 12 visible rows: **1,500 layout passes at HEAD b630fb76, zero after the change**; all 150 objective identities remain stable |
+| Percentage bars reset anchors and full guide geometry on every log refresh | Update only the value/label for an existing bar; rebuild geometry on appearance/removal | Percentage changes with identical objective text remain live; repeated hidden bars cause no further layouts |
+| Combined quest/step synchronization updated rows immediately before rebuilding them | Data-only synchronization when the caller already owns the following render | Deferred synchronization performs zero objective/filler row updates |
+| Bank slot notifications each scanned the entire bank | Coalesce slot/bag bursts into one 50 ms snapshot; flush a pending snapshot on close while data is still accessible | 1,000 notifications share one scan; closed, cancelled and disabled callbacks cannot overwrite it |
+| XP reminder events rebuilt unchanged labels, anchors and visibility | Reconcile existing rows; ignore unrelated item data; avoid scheduling inactive/combat refreshes | 100 identical refreshes produce zero visibility/anchor/label/icon/height writes; 1,000 unrelated item events schedule zero timers |
+| Other units and foreign addon messages entered the full gameplay dispatcher | Native player unit registration for aura/cast/quest-log events, with a Lua fallback; reject unknown communication prefixes early | 1,000 other-unit events and 1,000 foreign messages perform zero settings/instance/step probes; player and opaque unit payloads retain delivery |
+| Auto-complete notifications could each create a permanent one-second polling chain | One cancellable chain, at most five delayed attempts, validated against settings and step context | 1,000 duplicate requests share one timer; delayed data, route changes, modifier override and stale callbacks are covered |
+
+Cleanup removes the unused `navigation:OnArrowUpdate` forwarding hook and the
+duplicate `ShowQuestOffer(1)` calls preceding the actual quest popup. The
+navigation controller retains arrival ownership. Source instrumentation and its
+manifest are regenerated, and new captures identify revision 2026-10-30.1.
+Embedded third-party libraries and SavedVariables formats are unchanged.
+
+Navigation was already cooperative and cached. Running
+`python tools/validation/benchmark_navigation.py --runs 3` with Lua 5.1 on the
+audit host gave these observations (milliseconds, three runs per scenario):
+
+| Scenario | Median total work | 95th percentile slice | Maximum slice |
+| --- | ---: | ---: | ---: |
+| Taxi index, cold | 22.09 | 0.92 | 1.12 |
+| Taxi index, warm | 0.12 | 0.12 | 0.12 |
+| Retail catalogue, cold | 12.52 | 0.92 | 1.12 |
+| Forever catalogue, cold | 1.08 | 0.91 | 0.91 |
+| Synthetic search | 56.82 | 0.92 | 1.17 |
+| Dense synthetic search | 8.00 | 0.91 | 0.91 |
+
+Total worker duration spans multiple frames. These fixture timings include
+Lua/Python crossings and host scheduling; they are neither client measurements
+nor hard upper bounds. A native API call or individual widget binding can still
+exceed a cooperative budget. The existing settings/skin/quest-list publication
+checks, bounded group-finder queues and explicit-only memory scanner remain
+relevant protections; reducing their coverage would hide useful failure modes.
+
+API compatibility was checked against Blizzard's exported
+[Retail frame utilities](https://github.com/Gethe/wow-ui-source/blob/live/Interface/AddOns/Blizzard_SharedXMLBase/FrameUtil.lua),
+[Classic frame utilities](https://github.com/Gethe/wow-ui-source/blob/classic_era/Interface/AddOns/Blizzard_SharedXMLBase/FrameUtil.lua),
+[Retail timers](https://github.com/Gethe/wow-ui-source/blob/live/Interface/AddOns/Blizzard_APIDocumentationGenerated/UITimerDocumentation.lua)
+and [Classic timers](https://github.com/Gethe/wow-ui-source/blob/classic_era/Interface/AddOns/Blizzard_APIDocumentationGenerated/UITimerDocumentation.lua).
+Forever remains a client variant whose behavior must also be checked in game;
+native unit registration falls back to ordinary registration when unavailable.
+
+For release validation on Retail and Forever, record a fresh `/apr perf on`
+capture with `/apr debug off`: advance quest objectives including percentage
+bars, open/transfer/close a full bank, gain/lose XP bonuses across combat, and
+exercise delayed auto-completion while changing route/settings. Include a busy
+group area, a long itinerary and first/repeated settings opens. Stop with
+`/apr perf off` and export the diagnostic report. Compare APR root/self timings
+with client frame spikes and repeat normal play with capture disabled; capture
+overhead and a global client spike alone cannot establish addon causation.
+
+The source-checkout localization contract currently reports an empty `enUS`
+companion catalog: locale files contain packager/CurseForge directives before
+translation injection. The complete runner reports this failure rather than
+skipping the contract or inventing translations for the performance patch.
+
 `python tools/validation/instrument_lua.py --write` instruments every owned Lua
 function in `APR-Core/` and `Routes/`, including local functions, nested functions,
 anonymous callbacks, and coroutine workers. Edit function bodies normally and
@@ -390,13 +456,13 @@ separate the remaining work. These nested timings overlap; do not add them toget
 1. Update the addon and `/reload` to clear widgets accumulated by the old implementation.
 2. Run `/apr perf on` to start a fresh capture.
 3. Turn in several quests or reproduce the freeze.
-4. Run `/apr perf` to print call counts, total milliseconds, and maximum duration.
+4. Run `/apr perf` to open the dashboard with call counts, total milliseconds, and maximum duration.
 5. Run `/apr perf off`, then `/reload` or log out normally to flush SavedVariables.
 
 The capture is saved as `APRData.PerformanceLog` in
 `World of Warcraft/_retail_/WTF/Account/<account>/SavedVariables/APR.lua`.
 Only that table is needed for diagnosis. It contains aggregate timings and a ring of
-at most 100 operations lasting at least 10 ms, with the active route and step.
+at most 100 slow operations (3 ms by default), with the active route and step.
 Capturing is off by default and is not automatically re-enabled after a reload.
 Starting a new capture replaces only the previous performance log.
 
@@ -421,8 +487,372 @@ to verify guidance and attachment in the client. Displayed CPU percentages depen
 
 Recorded operations include event callbacks, deferred quest-log refreshes, coalesced
 reputation refreshes, zone-transition routing and quest-order-list rendering. Nested durations overlap and
-must not be summed as independent frame time. No per-frame polling or chat logging
-is performed during capture. The list renderer uses OnUpdate only while a build is pending.
+must not be summed as independent frame time. A frame-interval observer runs only
+while capture is active; resource samples run once a second without automatic
+memory scans or chat logging. The list renderer uses OnUpdate only while a build is pending.
+
+## Performance audit 30 October 2026
+
+The audit focused on work that can accumulate in one frame: event bursts, route
+resolution, navigation action matching, hidden UI builds and diagnostic allocations.
+Existing staged work on quest caches, bank refreshes, event lifetimes and XP
+overlays was retained. The changes below are additional to that starting state.
+
+### Corrected paths and measured work
+
+Operation counts use invented fixtures in Lua 5.1. They establish removed work,
+not a measured FPS increase or a worst-case duration in a running WoW client.
+
+| Controlled workload | Before | After |
+| --- | --- | --- |
+| 1,000 warm route reads with 60 active parallel groups | 1,000 sorts, 60,000 formats, 1,000 concatenations for cache keys | Zero key sorts, formats or concatenations |
+| 1,000 warm scenario reads with 50 steps, two blocks and an active parallel group | 56,000 table insertions and 2,000 sorts | Zero insertions or sorts |
+| A second burst of 500 player casts over 1,002 synthetic transport connections | 500,500 reads of absent route-action fields across the catalogue | Zero catalogue-field reads after the initial index |
+| 100 progress changes while a 1,200-step list is collapsed | Background preparation could continue or restart | Zero visibility scans and no pending model build; reopening publishes current progress |
+| 20 simulated seconds with the guide hidden or detached | Repeated appearance safety polls | Zero recurring appearance polls after one possible restoration |
+| Formatting a two-million-byte diagnostic string | Full-string substitutions before output truncation | At most 240 input bytes passed to sanitization |
+
+`RouteManager` compares saved activation snapshots without constructing textual
+keys on every hit. Parallel definitions reuse their filtered group array.
+`DelveRoutes` returns its validated read-only scenario blocks and checks scenario
+membership without building a sorted ID list. Flattened scenario steps retain
+only two variants per block collection: all blocks and the latest selection.
+This also fixes stale effective steps when switching between equally sized
+scenarios with active parallel groups. Direct saved-state changes, source
+replacement and explicit invalidation remain covered.
+
+`TravelActions` indexes the route-action subset once, retaining definition
+references and resolving selected items' effects from live client data. Appending
+connections or replacing their array rebuilds the index. Navigation frames use
+player-scoped spell registrations where available and retain Lua filtering for
+fallback clients. Ordinary casts already avoided graph invalidation before this
+audit; the improvement concerns event delivery and catalogue traversal.
+
+`QuestOrderList` cancels pending rendering and scrolling on collapse, preserves
+the last complete model, and rebuilds from current progress on expansion.
+`QuestTracker` suspends external appearance polling when its guide is hidden or
+detached. Diagnostic string truncation now precedes sanitization, preserving the
+previous output while avoiding full-payload copies.
+
+### Coverage and retained safeguards
+
+Both client manifests were followed through nested XML includes. All 127
+APR-owned Lua modules outside locales/libraries are reachable; none was identified
+as an orphan. At this audit snapshot, Retail loads 48 route files (7,434,296 source
+bytes) and Forever 96 (7,562,519 source bytes). These are inventory observations,
+not test expectations or estimates of runtime memory. Client route separation and
+the existing release exclusions for unused library modules remain in place.
+
+The reviewed navigation planner/search/catalogue pipelines already have cooperative
+budgets and cancellation. Quest/event work already coalesces bursts and reuses
+records. The visible list is recycled, party queues/caches are bounded, and CPU
+capture does not automatically run the native memory scan. Third-party libraries
+were not modified. No SavedVariables schema, route content or translation keys
+were changed by this audit.
+
+The unit-event contract was checked against Blizzard's generated frame API for
+[11.2.7](https://github.com/Gethe/wow-ui-source/blob/11.2.7/Interface/AddOns/Blizzard_APIDocumentationGenerated/SimpleFrameAPIDocumentation.lua)
+and [12.0.0](https://github.com/Gethe/wow-ui-source/blob/12.0.0/Interface/AddOns/Blizzard_APIDocumentationGenerated/SimpleFrameAPIDocumentation.lua),
+and Blizzard's spell-sequence handler for
+[12.0.1](https://github.com/Gethe/wow-ui-source/blob/12.0.1/Interface/AddOns/Blizzard_ChatFrameBase/Shared/CastSequenceManager.lua),
+[12.0.5](https://github.com/Gethe/wow-ui-source/blob/12.0.5/Interface/AddOns/Blizzard_ChatFrameBase/Shared/CastSequenceManager.lua),
+[12.0.7](https://github.com/Gethe/wow-ui-source/blob/12.0.7/Interface/AddOns/Blizzard_ChatFrameBase/Shared/CastSequenceManager.lua),
+[12.1.0](https://github.com/Gethe/wow-ui-source/blob/12.1.0/Interface/AddOns/Blizzard_ChatFrameBase/Shared/CastSequenceManager.lua)
+and [12.1.5](https://github.com/Gethe/wow-ui-source/blob/12.1.5/Interface/AddOns/Blizzard_ChatFrameBase/Shared/CastSequenceManager.lua).
+The [Classic handler](https://github.com/Gethe/wow-ui-source/blob/classic/Interface/AddOns/Blizzard_ChatFrameBase/Shared/CastSequenceManager.lua)
+also uses player-scoped spell events. Forever's custom 16001 client retains the
+explicit fallback; native rendering and client-specific behavior still require
+an in-game check. The other changes use existing frame methods and Lua operations.
+
+### Remaining cases to measure in game
+
+Cooperative budgets cannot interrupt an individual native API call, string-height
+measurement or C sort. An exceptionally long single label can therefore exceed
+a list-render budget. Initial travel-action indexing, navigation instance copies
+and the first full mount-journal search also remain synchronous. The subsequent
+passes below address repeated mount searches and temporary prefixes, and yield
+inside dense rows. Remaining native-call costs need real client captures before
+a larger architectural change is justified.
+
+Warm route caches still compare references linearly to detect in-place edits;
+they are not constant-time lookups. The transport index assumes structural changes
+use instance creation or array extension/replacement, as production does.
+An explicit **Measure memory** action can stall inside `UpdateAddOnMemoryUsage`;
+it remains user-triggered and its duration is recorded. Debug tracing and the
+dashboard add their own overhead while enabled.
+
+On Retail and Forever, compare a scan-free `/apr perf on` capture with debug off
+and the dashboard closed: combat casts, rapid pickups/turn-ins, scenario changes,
+collapsed/expanded lists, tracker attachment, bank access, teleport/flight arrivals
+and loading screens. Stop with `/apr perf off`. Inspect individual slow calls
+and previous-frame APR root work; a global slow frame alone does not prove APR
+caused it. Keep FPS cap, location and other addons consistent between captures.
+
+### Follow-up on startup inventory groups and diagnostic UI
+
+The next pass covered startup suggestions, inventory labels and valuation,
+AFK layout notifications, party membership checks, companion filtering and the
+performance viewer. Operation counts below use independent synthetic fixtures.
+
+| Controlled workload | Before | After |
+| --- | --- | --- |
+| Text for 20 inventory-action items across 200 slots | 4,000 container item reads | 200 reads, one snapshot local to the render |
+| Resale estimate for 200 identical stacks plus equipped copies | 201 item-price queries | One query for the exact variant in that estimate |
+| 1,250 AFK hides with no active timer | 1,250 deferred callbacks | Zero callbacks |
+| 50 rapid AFK show/hide/hide cycles | 150 callbacks | One coalesced child-layout refresh |
+| 500 party packets in one frame | 2,000 native unit-name reads | Four reads, with immediate refresh on roster notifications |
+| Language filtering for 200 companion candidates | 600 normalizations and 601 sorts | Two normalizations and three sorts |
+| Startup index over 3,000 steps without quest triggers | 6,000 synchronous step-field reads | Zero during initialization; work resumes in at most 64 operations or a 1 ms cooperative slice |
+| Warm live-viewer refresh with 1,200 metric rows | 1,200 newly allocated metric row tables | Reuse of the same viewer-owned row objects |
+| Uniform publication of 1,200 metric rows | A dense 1,201-entry offset array | One sentinel offset; indexed access serves the viewport |
+| 100 refreshes of an unchanged stopped capture | 100 repeated row constructions and list publications | Zero repeated row constructions/publications |
+
+Inventory counts and item prices are cached only inside their current render or
+estimate. The next call reads fresh bags, bank availability and late item data;
+different exact item links retain different prices. Future action previews do
+not inspect today's inventory. AFK updates now ignore an already inactive timer
+and share one pending layout callback across visibility changes.
+
+Party membership reuse lasts only for the current frame timestamp, and explicit
+roster updates, party/raid changes, leaving the group and resets invalidate it.
+Realm-specific sender validation remains unchanged. Companion language preferences
+are compiled once per list refresh; accepted, blocked, bilingual and unknown
+languages retain their previous behavior.
+
+A further confirmed spike came from incomplete hyperlink/texture tags in party
+tooltip data. Unanchored non-greedy Lua patterns retried from each opener, producing
+quadratic work even within the existing message-size budget. The replacement
+scans forward without retrying an unmatched suffix and preserves the old output.
+On the audit host, 30 repetitions of a synthetic 20-line, 1,000-byte-per-line
+snapshot averaged 20.77 ms for incomplete links and 31.50 ms for incomplete art
+before the change, and about 0.90 ms for each afterward. These host timings are
+indicative, not WoW frame measurements. Regression tests assert linear scan work
+and independently chosen text outputs; an additional read-only comparison of
+20,000 generated strings produced identical old/new text.
+
+Startup suggestion indexing keeps incoming quest IDs until the full index is
+ready, then rechecks current addon preferences and active-route state before
+showing choices. Reinitialization cancels stale continuations. A worker failure
+reports the error and clears its partial index; a later initialization can recover.
+The timer contract was checked in Blizzard's generated documentation for
+[11.2.7](https://github.com/Gethe/wow-ui-source/blob/11.2.7/Interface/AddOns/Blizzard_APIDocumentationGenerated/UITimerDocumentation.lua),
+[12.0.0](https://github.com/Gethe/wow-ui-source/blob/12.0.0/Interface/AddOns/Blizzard_APIDocumentationGenerated/UITimerDocumentation.lua),
+[12.0.1](https://github.com/Gethe/wow-ui-source/blob/12.0.1/Interface/AddOns/Blizzard_APIDocumentationGenerated/UITimerDocumentation.lua),
+[12.0.5](https://github.com/Gethe/wow-ui-source/blob/12.0.5/Interface/AddOns/Blizzard_APIDocumentationGenerated/UITimerDocumentation.lua),
+[12.0.7](https://github.com/Gethe/wow-ui-source/blob/12.0.7/Interface/AddOns/Blizzard_APIDocumentationGenerated/UITimerDocumentation.lua),
+[12.1.0](https://github.com/Gethe/wow-ui-source/blob/12.1.0/Interface/AddOns/Blizzard_APIDocumentationGenerated/UITimerDocumentation.lua),
+[12.1.5](https://github.com/Gethe/wow-ui-source/blob/12.1.5/Interface/AddOns/Blizzard_APIDocumentationGenerated/UITimerDocumentation.lua)
+and [Forever 1.60.1](https://github.com/Gethe/wow-ui-source/blob/1.60.1/Interface/AddOns/Blizzard_APIDocumentationGenerated/UITimerDocumentation.lua).
+
+Viewer row reuse is opt-in: ordinary diagnostic exports still receive independent
+snapshots. Slow-call and journal records are not recycled as metric rows. Stopping
+capture publishes final measurements once; search, mode, log replacement and reset
+still refresh the view. The row sort remains synchronous during live capture.
+Party deserialization and progress-distance calculations also remain synchronous
+within their existing bounded inputs. No third-party libraries, SavedVariables
+schema, authored route content or translation keys changed in this follow-up.
+
+### Follow-up on dense rows temporary routes mounts and font callbacks
+
+The third pass removes work that still escaped the existing frame budgets, plus
+a Lua 5.1 diagnostic lifetime leak. Every fixture uses invented steps, scenarios,
+mounts or workers; no shipped itinerary is required to retain a particular shape.
+
+| Controlled workload | Before | After |
+| --- | --- | --- |
+| 1,000 warm temporary-route reads with an inserted parent prefix | 1,000 effective-route misses/reconstructions and 1,000 sorts | 1,000 hits, zero reconstructions or sorts |
+| One mount lookup plus 100 replans over a 1,000-entry skyriding journal | 101 list requests and 101,000 usability reads | One list request, 1,100 usability reads and 100 ownership revalidations |
+| The equivalent ground-mount workload | 101 list requests and 101,000 information reads | One list request and 1,100 information reads |
+| 300 pending objectives from one quest in a preview row | 300 native objective-table requests | One native request per quest within that row build, including missing data |
+| 200 release-note font callbacks | 40,000 row-height measurements | One deferred layout with 200 measurements |
+| 200 diagnostic workers, half completed and half abandoned | All 200 retained after collection | All 200 collectible; caller-owned suspended workers remain usable |
+
+The dense-row fixture assigns deterministic costs to API calls, font creation,
+text updates and measurements. With the same synthetic clock and 300 objectives,
+the indexed baseline's largest model batch was 255.40 ms and first viewport batch
+165.60 ms. The new first build recorded 3.25 / 2.10 ms. Across cancellation and
+failure recovery, the regression fixture's maxima are 3.40 / 2.40 ms: the existing
+3 ms / 2 ms cooperative budgets plus one small atomic operation. These values
+describe the controlled clock, not elapsed CPU time or a real WoW frame.
+
+Construction now yields between objectives and measured sub-lines. Viewport
+binders can explicitly report an unfinished row; ordinary binders returning nil
+retain their original contract. An incomplete row stays hidden, and `model.frame`
+is published only on completion. Recycled rows, generations and changed model
+state discard stale work. Color changes and collapsing a published model also
+reuse the viewport budget instead of changing every font inline. The fixture
+checks stale scrolling, partial measurement, buffer reuse and recovery after both
+model and viewport errors, including execution with diagnostics enabled.
+
+Temporary-route prefixes retain one snapshot for the active session. Parent and
+scenario references, range boundaries, character and imported state are checked
+on reuse. Parent/temporary/global invalidation and clearing the session release
+the snapshot. Only a candidate mount ID is retained for repeated capability
+checks: native ownership and usability are observed again before reuse. Rejected
+or unknown observations fall back to the full search. The cold search remains
+synchronous and the existing short ground-capability TTL is unchanged.
+
+Release-note font callbacks and resize bursts now schedule one layout for their
+final metrics. Hidden readers do no background measurement. Explicit content
+publication and reopening still measure immediately and invalidate stale queued
+callbacks. The Lua 5.1 diagnostic registry previously stored its coroutine key
+again inside the weak table's value, preventing that key from being collected.
+The context now stores only the boolean distinction from the main thread; its
+timing, pause and resume behavior are unchanged. Explicit collections occur only
+in the regression test, never in addon runtime code.
+
+Blizzard's frame and mount-journal contracts were checked at all eight declared
+client tags: 11.2.7, 12.0.0, 12.0.1, 12.0.5, 12.0.7, 12.1.0, 12.1.5 and 1.60.1.
+The generated declarations include the frame visibility query and the collected
+flag returned by mount information. See the
+[Retail frame API](https://github.com/Gethe/wow-ui-source/blob/12.1.5/Interface/AddOns/Blizzard_APIDocumentationGenerated/SimpleFrameAPIDocumentation.lua),
+[Forever frame API](https://github.com/Gethe/wow-ui-source/blob/1.60.1/Interface/AddOns/Blizzard_APIDocumentationGenerated/SimpleFrameAPIDocumentation.lua),
+[Retail mount API](https://github.com/Gethe/wow-ui-source/blob/12.1.5/Interface/AddOns/Blizzard_APIDocumentationGenerated/MountJournalDocumentation.lua)
+and [Forever mount API](https://github.com/Gethe/wow-ui-source/blob/1.60.1/Interface/AddOns/Blizzard_APIDocumentationGenerated/MountJournalDocumentation.lua).
+The optional visibility fallback and unavailable/opaque mount-data guards remain
+explicit. This pass adds no translated UI text or SavedVariables schema changes.
+
+### Follow-up on startup validation catalogue alternatives and text parsing
+
+The fourth pass addresses work inside operations that were already scheduled,
+but could still monopolize one frame. All measurements below use synthetic input.
+
+| Controlled workload | Before | After |
+| --- | --- | --- |
+| Startup scan containing a 4,096-byte synthetic note, charging 0.01 ms per hashed byte | One 41.25 ms batch | 17 batches, largest 2.65 ms on the controlled clock |
+| One directional gamepad input among 200 controls in two nested scroll frames | 805 rectangle queries | 207 queries, including revealing the selected control |
+| A 1 ms catalogue-preparation slice with 500 alternatives costing 0.25 ms each | 500 probes, 125 ms on the controlled clock | At most four probes, 1 ms on the controlled clock |
+| Parsing 8,000 unmatched Markdown link openers | About 807 ms on the audit host | Less than 1 ms on the audit host |
+| Parsing a heading containing 8,000 spaces without closing hashes | About 714 ms on the audit host | About 1 ms on the audit host |
+
+Startup route validation now runs in cooperative 2 ms batches. Key enumeration
+and strings longer than 128 bytes have checkpoints. The hash arithmetic,
+delimiters, key order and historical signed hexadecimal formatting are unchanged;
+there is no SavedVariables schema migration or forced fingerprint reset. Golden
+fixtures cover the historical LuaBitOp double-number conversion. An independent
+comparison of 200 generated routes produced identical synchronous and suspended
+signatures, including 12,904 checkpoints.
+
+The scan prepares every result before changing saved progress. Character/data
+replacement, removed signature/completion tables and replaced route components
+retire an obsolete scan. Explicit route selection, reset and clear intentions
+survive suspension, cancellation and resumption. The actual settings toggle
+resumes an interrupted scan without requiring gameplay-event registration.
+Failure publishes no partial cleanup and has one automatic retry; continued
+failure keeps automation suspended until an explicit retry or re-enable.
+
+Gameplay observations remain active during validation. Step progression, route
+rendering and automated NPC/taxi actions wait for validated state. Obsolete
+timers cannot release a newer job or reactivate an old selection. Native
+completion events retain at most one deferred advance for the current context;
+100 duplicates still advance once, while a reset or changed definition rejects
+the old completion. Visible NPC pages reconcile with fresh state after validation.
+Escort confirmation timers also recheck validation, route context, preferences
+and modifiers immediately before accepting.
+Native calls, table sorting and the final saved-state publication remain atomic;
+the cooperative budget is not a hard real-time guarantee.
+
+Gamepad navigation observes one fresh layout per input. Candidates are measured
+once and shared viewport rectangles are reused for that input only. The selected
+control is measured again during reveal, so scrolling, movement and independent
+scales remain current. Direction scoring and clipping rules are unchanged.
+
+Catalogue preparation yields between action alternatives. It still selects one
+action for both directions, preserves priority and random selection, and retains
+its per-build observation snapshot. Cancellation releases the suspended work.
+Definitions with zero or one alternative keep their direct path. Requirements
+inside one alternative and native API calls remain atomic operations.
+
+The Markdown parser previously retried unmatched opening brackets and long
+whitespace runs at every possible starting point. Forward link scanning and a
+backward closing-heading scan remove those quadratic paths. Regression tests
+assert work counts and independently chosen output, including malformed text,
+links, code spans, escapes and UTF-8. A separate comparison of 20,000 generated
+inputs produced identical old/new output. The host timings above are indicative;
+they are not measurements of a WoW frame.
+
+No new WoW API is introduced. The existing rectangle and effective-scale
+contracts were checked in Blizzard's generated declarations at all eight client
+tags listed above; they include missing rectangle results and modern secret-value
+annotations. See the
+[Retail geometry contract](https://github.com/Gethe/wow-ui-source/blob/12.1.5/Interface/AddOns/Blizzard_APIDocumentationGenerated/SimpleScriptRegionAPIDocumentation.lua),
+[Forever geometry contract](https://github.com/Gethe/wow-ui-source/blob/1.60.1/Interface/AddOns/Blizzard_APIDocumentationGenerated/SimpleScriptRegionAPIDocumentation.lua)
+and [effective-scale contract](https://github.com/Gethe/wow-ui-source/blob/12.1.5/Interface/AddOns/Blizzard_APIDocumentationGenerated/SimpleFrameAPIDocumentation.lua).
+The gamepad change reads the same addon-owned controls and retains its existing
+combat guard. This pass changes no third-party library or translated UI text.
+
+### Automated validation
+
+After the fourth pass, `.venv/Scripts/python.exe tests/run.py` ran 506 tests:
+505 passed and one errored.
+All Lua regressions, including instrumentation and the new performance fixtures,
+passed. Additional runs exercised startup suggestions, party text, companion
+filters, inventory actions and reusable metric rows with diagnostic tracing
+enabled. The dense-row, coroutine-lifecycle and startup-validation tests also
+enable diagnostic capture to check coroutine behavior. The error at that stage was
+`PartyFinderLocalizationTests.test_declared_locales_cover_companion_strings_and_preserve_formats`:
+it extracts literal `L["GF_..."]` assignments from locale source files, but this
+checkout contains packager localization directives instead. Parsing the resulting
+empty English catalogue raises `CatalogParseError`. The test, parser and English
+source are unchanged between HEAD, the initial index and the audited worktree;
+the same extraction fails in all three. No assertion was removed or relaxed.
+
+On the managed Windows test host, temporary files were directed to
+`.cache/audit-test-temp`. The complete run required execution outside the network
+sandbox because Python's asyncio self-pipe blocked in its local socket accept;
+the actual test suite and its mocked remote calls were unchanged.
+
+## Cross-module addon journey validation
+
+The performance changes are also exercised as complete invented journeys, with
+changing player/native state rather than a fixed shipped guide. The existing
+behavior suites remain in place; the journey fixtures connect their module
+boundaries and check independently chosen progression and cancellation results.
+
+| Area | Journey coverage |
+| --- | --- |
+| Quests and suggestions | `addon_quest_journey_test.lua` and `test_addon_journey_quest.py`: native acceptance before indexing, suggestion/popup selection, opt-out, real conditions/cache/rendering, turn-in and next pickup, missing native records, duplicate/foreign events and stale choices |
+| Fillers and startup | The widget journey uses real CurrentStep/FillersFrame rows, conditional parallel insertion, filler completion without main-step advancement, actual signature validation, cancellation/resumption and one coalesced native completion |
+| Groups and companion discovery | `group_instance_journey_test.lua`: real Party/Finder/World/Invites, codecs and core dispatch; private/world queries, invitation/nonce/roster, party/instance channels, raid conversion, queued-message cancellation, disable/re-enable |
+| Instance lifecycle | The group journey uses real RouteManager/StepTransitions/DelveRoutes for party instances, scenarios, delves and raids; early/complete exit, missing loading map, session reload and parent/custom-path restoration |
+| Navigation | `navigation_journey_integration_test.lua`: real controller/adapter/planner/taxi/library on Retail/Forever profiles; denied access, wrong world/zone, movement, geometry invalidation, burst coalescing, manual taxi, portals, combat, teleport/loading, cooldowns, death and cancellation |
+| Conditions and objective actions | Existing synthetic `route_conditions`, `route_engine`, `reward_groups`, `native_route_actions`, `step_progression` and dungeon suites remain required alongside the journeys |
+
+The journey uncovered a taxi defect already present in HEAD: manual boarding
+could be observed before an off-taxi origin poll, setting `boarded` without
+`departureSeen`. Arrival then could not finish that leg. Native boarding now
+records both facts. Reinjecting the old branch in memory fails the new regression;
+the corrected branch passes. A wrong destination still cannot complete travel.
+
+The common quest-chain path was also replayed in memory against HEAD and the
+working sources, with identical independently asserted business states. That
+comparison excludes intentional differences in asynchronous publication, cache
+object identity, startup suspension and the old empty-objective refresh behavior;
+the committed current-source tests retain those stronger checks separately.
+
+The previous localization-suite error was a source/package contract mismatch:
+repository locales contain CurseForge directives, not expanded dictionaries.
+The offline test now verifies those bindings separately and uses recorded
+CurseForge companion exports for every discovered locale. Cross-locale keys,
+printf arguments, line breaks and WoW markup keep their original assertions;
+invalid printf output, current static references and negative fixtures add checks.
+The snapshots contain only `GF_*` strings and no guide content. Current remote
+translator edits still belong to translation CI, not these offline snapshots.
+
+Native APIs and widgets are simulated. These tests establish addon behavior and
+contracts under controlled observations; they cannot certify actual client
+rendering, taint/secret-value enforcement, channel delivery or real frame time.
+No authored route changes belong to the runtime-fix commits or push.
+
+The fresh independent review repeated `.venv/Scripts/python.exe tests/run.py`
+from zero: **512 tests passed in 107.478 seconds**, with no failures or errors.
+Three independent reviews covered quest/startup state, navigation/groups and
+UI/diagnostics/localization. Additional focused runs passed, and 40,000 synthetic
+Markdown inputs retained the baseline parser output. Reinjecting only the old
+taxi boarding branch in memory failed the new departure regression; both client
+profiles passed with the correction, including wrong-destination rejection.
+Instrumentation consistency passed for 2,877 definitions across 115 files.
+The authorized runtime/test commits exclude the local `Routes/` changes.
 
 ## Navigation catalogue review
 
