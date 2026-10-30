@@ -182,6 +182,7 @@ function List:RenderVisible(force, deadline)
             row = table.remove(self.rows) or self.createRow(self.child)
             self.active[index] = row
         end
+        row.aprVirtualList = self
         local needsBinding = force or row.boundGeneration ~= self.generation or row.boundIndex ~= index or row.boundWidth ~= width
         if needsBinding then
             local item = self:GetItem(index)
@@ -192,7 +193,13 @@ function List:RenderVisible(force, deadline)
             -- New and recycled rows need the viewport width before content
             -- computes label widths and action positions from GetWidth().
             if row:GetWidth() ~= width then row:SetWidth(width) end
-            self.bindRow(row, row.item, index)
+            -- Budget-aware binders may prepare one dense row over several
+            -- frames. Only an explicit false means incomplete; ordinary nil
+            -- returns keep the synchronous binding contract.
+            if self.bindRow(row, row.item, index, deadline, self.generation) == false then
+                if row:IsShown() then row:Hide() end
+                return false
+            end
             -- A binder may use a shared renderer that sets its own geometry.
             row:ClearAllPoints()
             local top = self:GetOffset(index)
@@ -209,8 +216,8 @@ function List:RenderVisible(force, deadline)
                 APR.UI:RefreshListRow(decorated)
             end
         end
-        -- A row is atomic; stop after it, rather than binding the whole viewport
-        -- in the route model's final coroutine batch.
+        -- Ordinary binders remain atomic; stop after them instead of binding
+        -- the whole viewport in the route model's final coroutine batch.
         if deadline and needsBinding and index < last and debugprofilestop() >= deadline then return false end
     end
     if APR.Gamepad then APR.Gamepad:Refresh(self.scroll) end
