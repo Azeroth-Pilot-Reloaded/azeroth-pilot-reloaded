@@ -303,6 +303,47 @@ APR.levelProfileCacheLevels.ForeverFoodTest = nil
 auras = {}
 APR.interfaceVersion, level = nil, 87
 
+-- A synthetic bonus isolates event/layout costs from the maintained catalogue.
+local previousSources = APR.LevelBonusSources
+APR.LevelBonusSources = { TestPotion = { items = {7001}, auras = {7002} } }
+APR.interfaceVersion, level, active, desired, pet = 120105, 20, true, true, false
+APR.settings.profile.showXPBuffOverlay, APR.settings.profile.enableAddon = true, true
+APR.settings.profile.xpBuffOverlayDismissed, APR.settings.profile.hiddenXPBonuses = nil, {}
+APR.ActiveRoute, auras, bags = "synthetic", {}, { [7001] = 1 }
+APR.XPBuffOverlay:Refresh()
+assert(visibleRows() == 1)
+local writes, savedMethods = 0, {}
+for _, name in ipairs({"Show", "Hide", "SetText", "SetPoint", "ClearAllPoints", "SetTexture", "SetHeight"}) do
+    local method = methods[name] or noop
+    savedMethods[name] = methods[name]
+    methods[name] = function(self, ...) writes = writes + 1; return method(self, ...) end
+end
+for _ = 1, 100 do APR.XPBuffOverlay:Refresh() end
+assert(writes == 0, "100 identical XP refreshes cause no visibility, anchor, label, icon or height writes")
+for name, method in pairs(savedMethods) do methods[name] = method end
+-- Restore methods which were originally supplied by the fixture's fallback.
+for _, name in ipairs({"SetPoint", "ClearAllPoints", "SetTexture", "SetHeight"}) do methods[name] = nil end
+local listener = frames[1]
+for _ = 1, 1000 do listener.scripts.OnEvent(listener, "GET_ITEM_INFO_RECEIVED", 8001) end
+assert(#timers == 0, "Unrelated item-cache traffic cannot wake the XP overlay")
+listener.scripts.OnEvent(listener, "GET_ITEM_INFO_RECEIVED", 7001)
+assert(#timers == 1, "A tracked item's loaded label still requests a refresh")
+drain()
+combat = true
+for _ = 1, 1000 do APR.XPBuffOverlay:QueueRefresh() end
+assert(#timers == 0, "Combat creates no timers for protected XP layout work")
+combat = false
+APR.settings.profile.enableAddon = false
+APR.XPBuffOverlay:QueueRefresh()
+assert(#timers == 1, "Disabling a visible panel schedules its final hide")
+drain()
+for _ = 1, 1000 do APR.XPBuffOverlay:QueueRefresh() end
+assert(#timers == 0 and visibleRows() == 0, "A disabled hidden overlay stays dormant under event bursts")
+APR.settings.profile.enableAddon, APR.ActiveRoute = true, nil
+for _ = 1, 1000 do APR.XPBuffOverlay:QueueRefresh() end
+assert(#timers == 0, "No active route means no background XP refresh work")
+APR.LevelBonusSources, APR.interfaceVersion, level, active, desired, bags = previousSources, nil, 87, false, false, {}
+
 -- A scenario's runtime navigation remains shared with the arrow, not the definition.
 APR.RouteQuestStepList = { route = { label = "Route", steps = { { DoScenario = { mapID = 1 }, Coord = { x = 1 } }, {} } } }
 APR.ActiveRoute = "route"

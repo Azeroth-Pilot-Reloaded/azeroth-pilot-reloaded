@@ -101,6 +101,15 @@ function APR.AFK:RefreshChildFrames()
     end
 end--[[APR_DIAG]]; APR.AFK.RefreshChildFrames = APRTrace("APR-Core/features/player/AFK.lua:90:APR.AFK:RefreshChildFrames#3", APR.AFK.RefreshChildFrames)--[[/APR_DIAG]]
 
+local function QueueChildFramesRefresh(self)
+    if self.childFramesRefreshQueued then return end
+    self.childFramesRefreshQueued = true
+    C_Timer.After(0, --[[APR_DIAG]]APRTrace("APR-Core/features/player/AFK.lua:107:callback#5", --[[/APR_DIAG]]function()
+        self.childFramesRefreshQueued = nil
+        self:RefreshChildFrames()
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+end--[[APR_DIAG]]; QueueChildFramesRefresh = APRTrace("APR-Core/features/player/AFK.lua:104:QueueChildFramesRefresh#4", QueueChildFramesRefresh)--[[/APR_DIAG]]
+
 function APR.AFK:AFKFrameOnInit()
     APR.settings.profile.afkFrame = APR.settings.profile.afkFrame or {}
 
@@ -120,7 +129,7 @@ function APR.AFK:AFKFrameOnInit()
     APR.AFK.TaxiTimerRecorder.anim = APR.AFK.TaxiTimerRecorder:CreateAnimation()
     APR.AFK.TaxiTimerRecorder.anim:SetDuration(1)
     APR.AFK.TaxiTimerRecorder:SetLooping("REPEAT")
-    APR.AFK.TaxiTimerRecorder:SetScript("OnLoop", --[[APR_DIAG]]APRTrace("APR-Core/features/player/AFK.lua:123:callback#5", --[[/APR_DIAG]]function(self, event, ...)
+    APR.AFK.TaxiTimerRecorder:SetScript("OnLoop", --[[APR_DIAG]]APRTrace("APR-Core/features/player/AFK.lua:132:callback#7", --[[/APR_DIAG]]function(self, event, ...)
         if (UnitOnTaxi("player")) then
             local taxiPath = APR.flightPath.CurrentTaxiNode.name .. "-" .. APR.flightPath.StepTaxiNode.name
             if not APRTaxiNodesTimer[taxiPath] then
@@ -134,7 +143,7 @@ function APR.AFK:AFKFrameOnInit()
 
     APR.AFK:UpdateBarColor()
     APR.AFK:RefreshFrameAnchor(true)
-end--[[APR_DIAG]]; APR.AFK.AFKFrameOnInit = APRTrace("APR-Core/features/player/AFK.lua:104:APR.AFK:AFKFrameOnInit#4", APR.AFK.AFKFrameOnInit)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.AFK.AFKFrameOnInit = APRTrace("APR-Core/features/player/AFK.lua:113:APR.AFK:AFKFrameOnInit#6", APR.AFK.AFKFrameOnInit)--[[/APR_DIAG]]
 
 function APR.AFK:SetAfkTimer(duration)
     local profile = APR:GetSettingsProfile()
@@ -155,13 +164,16 @@ function APR.AFK:SetAfkTimer(duration)
 
     -- If AFK just appeared, refresh all child frames
     if wasHidden then
-        C_Timer.After(0, --[[APR_DIAG]]APRTrace("APR-Core/features/player/AFK.lua:158:callback#7", --[[/APR_DIAG]]function()
-            APR.AFK:RefreshChildFrames()
-        end--[[APR_DIAG]])--[[/APR_DIAG]])
+        QueueChildFramesRefresh(self)
     end
-end--[[APR_DIAG]]; APR.AFK.SetAfkTimer = APRTrace("APR-Core/features/player/AFK.lua:139:APR.AFK:SetAfkTimer#6", APR.AFK.SetAfkTimer)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.AFK.SetAfkTimer = APRTrace("APR-Core/features/player/AFK.lua:148:APR.AFK:SetAfkTimer#8", APR.AFK.SetAfkTimer)--[[/APR_DIAG]]
 
 function APR.AFK:HideFrame()
+    -- Step rendering also calls this when no timer has ever been started.
+    -- An already hidden bar cannot change the dependent panels' snap anchor.
+    if not AfkFrameScreen:IsShown() and not bar:IsShown() and not self.timerEnd and not self.fakeTimerActive then
+        return
+    end
     bar:SetScript("OnUpdate", nil)
     bar:Hide()
     bar:SetValue(0)
@@ -172,14 +184,12 @@ function APR.AFK:HideFrame()
     self.fakeTimerActive = false
 
     -- Wait a frame to ensure the frame is properly hidden before refreshing children
-    C_Timer.After(0, --[[APR_DIAG]]APRTrace("APR-Core/features/player/AFK.lua:175:callback#9", --[[/APR_DIAG]]function()
-        APR.AFK:RefreshChildFrames()
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.AFK.HideFrame = APRTrace("APR-Core/features/player/AFK.lua:164:APR.AFK:HideFrame#8", APR.AFK.HideFrame)--[[/APR_DIAG]]
+    QueueChildFramesRefresh(self)
+end--[[APR_DIAG]]; APR.AFK.HideFrame = APRTrace("APR-Core/features/player/AFK.lua:171:APR.AFK:HideFrame#9", APR.AFK.HideFrame)--[[/APR_DIAG]]
 
 function APR.AFK:UpdateBarColor()
     APR:RefreshStatusBarColors("afkBarColor")
-end--[[APR_DIAG]]; APR.AFK.UpdateBarColor = APRTrace("APR-Core/features/player/AFK.lua:180:APR.AFK:UpdateBarColor#10", APR.AFK.UpdateBarColor)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.AFK.UpdateBarColor = APRTrace("APR-Core/features/player/AFK.lua:190:APR.AFK:UpdateBarColor#10", APR.AFK.UpdateBarColor)--[[/APR_DIAG]]
 
 function APR.AFK:UpdateSize(width, height)
     local profile = APR:GetSettingsProfile()
@@ -203,7 +213,7 @@ function APR.AFK:UpdateSize(width, height)
             APR.fillersFrame:RefreshFillersFrame()
         end
     end
-end--[[APR_DIAG]]; APR.AFK.UpdateSize = APRTrace("APR-Core/features/player/AFK.lua:184:APR.AFK:UpdateSize#11", APR.AFK.UpdateSize)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.AFK.UpdateSize = APRTrace("APR-Core/features/player/AFK.lua:194:APR.AFK:UpdateSize#11", APR.AFK.UpdateSize)--[[/APR_DIAG]]
 
 function APR.AFK:RefreshFrameAnchor(initial)
     if InCombatLockdown() then return end
@@ -257,7 +267,7 @@ function APR.AFK:RefreshFrameAnchor(initial)
     if not initial and APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
         APR.questOrderList:ApplySnapAnchor()
     end
-end--[[APR_DIAG]]; APR.AFK.RefreshFrameAnchor = APRTrace("APR-Core/features/player/AFK.lua:208:APR.AFK:RefreshFrameAnchor#12", APR.AFK.RefreshFrameAnchor)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.AFK.RefreshFrameAnchor = APRTrace("APR-Core/features/player/AFK.lua:218:APR.AFK:RefreshFrameAnchor#12", APR.AFK.RefreshFrameAnchor)--[[/APR_DIAG]]
 
 function APR.AFK:ToggleFakeTimer()
     if self.fakeTimerActive then
@@ -272,7 +282,7 @@ function APR.AFK:ToggleFakeTimer()
 
     self.fakeTimerActive = true
     self:SetAfkTimer(300)
-end--[[APR_DIAG]]; APR.AFK.ToggleFakeTimer = APRTrace("APR-Core/features/player/AFK.lua:262:APR.AFK:ToggleFakeTimer#13", APR.AFK.ToggleFakeTimer)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.AFK.ToggleFakeTimer = APRTrace("APR-Core/features/player/AFK.lua:272:APR.AFK:ToggleFakeTimer#13", APR.AFK.ToggleFakeTimer)--[[/APR_DIAG]]
 
 function APR.AFK:ResetPosition()
     local profile = APR:GetSettingsProfile()
@@ -282,4 +292,4 @@ function APR.AFK:ResetPosition()
     AfkFrameScreen:ClearAllPoints()
     AfkFrameScreen:SetPoint("CENTER", UIParent, "CENTER", 0, 150)
     LibWindow.SavePosition(AfkFrameScreen)
-end--[[APR_DIAG]]; APR.AFK.ResetPosition = APRTrace("APR-Core/features/player/AFK.lua:277:APR.AFK:ResetPosition#14", APR.AFK.ResetPosition)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.AFK.ResetPosition = APRTrace("APR-Core/features/player/AFK.lua:287:APR.AFK:ResetPosition#14", APR.AFK.ResetPosition)--[[/APR_DIAG]]

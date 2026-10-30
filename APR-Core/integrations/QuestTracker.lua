@@ -1010,9 +1010,21 @@ function Tracker:Initialize()
         local profile = APR:GetSettingsProfile()
         if not profile or not profile.enableAddon then
             appearanceElapsed = 0
+            self.appearanceObserved = nil
             self:RefreshObservedLayout(interval)
             return
         end
+        local observeAppearance = profile.currentStepAttachFrameToQuestLog and CurrentStepScreenPanel:IsShown()
+        if not observeAppearance then
+            -- Restore borrowed widths/styles once when detaching, then leave
+            -- hidden or independent guide panels out of external style polling.
+            if self.appearanceObserved then self:RefreshAppearance() end
+            self.appearanceObserved, appearanceElapsed = nil, 0
+            self:RefreshObservedLayout(interval)
+            return
+        end
+        if not self.appearanceObserved then appearanceElapsed = 1 end
+        self.appearanceObserved = true
         -- External font/theme changes need a safety poll; settings already refresh
         -- appearance explicitly. Keep it separate from the cheap geometry probe.
         if appearanceElapsed >= 1 then
@@ -1024,5 +1036,5 @@ function Tracker:Initialize()
         self:RefreshObservedLayout(interval)
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     self.observer:RegisterEvent("PLAYER_LOGOUT")
-    self.observer:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/integrations/QuestTracker.lua:1027:callback#43", --[[/APR_DIAG]]function() self:Release() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self.observer:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/integrations/QuestTracker.lua:1039:callback#43", --[[/APR_DIAG]]function() self:Release() end--[[APR_DIAG]])--[[/APR_DIAG]])
 end--[[APR_DIAG]]; Tracker.Initialize = APRTrace("APR-Core/integrations/QuestTracker.lua:996:Tracker:Initialize#41", Tracker.Initialize)--[[/APR_DIAG]]
