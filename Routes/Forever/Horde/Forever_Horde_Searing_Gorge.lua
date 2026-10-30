@@ -828,6 +828,26 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             _index = 94,
         },
         {
+            Waypoint = 4022,
+            NonSkippableWaypoint = true,
+            Coord = { x = -3003, y = -7652 },
+            Range = 6,
+            AnyOf = { { IsQuestCompleted = 3481, ItemCount = { itemID = 10575, count = 1, operator = ">=" }, MinLevel = 52 }, { IsQuestOnQuest = 4022 } },
+            IsQuestUncompleted = 4022,
+            Zone = 1428,
+            _index = 95,
+        },
+        {
+            Waypoint = 4022,
+            NonSkippableWaypoint = true,
+            Coord = { x = -3027, y = -7654 },
+            Range = 2,
+            AnyOf = { { IsQuestCompleted = 3481, ItemCount = { itemID = 10575, count = 1, operator = ">=" }, MinLevel = 52 }, { IsQuestOnQuest = 4022 } },
+            IsQuestUncompleted = 4022,
+            Zone = 1428,
+            _index = 96,
+        },
+        {
             PickUp = { 4022 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 95.09, 31.56),
             Button = { ["4022"] = 10569 },
@@ -835,7 +855,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             ItemCount = { itemID = 10575, count = 1, operator = ">=" },
             MinLevel = 52,
             Zone = 1428,
-            _index = 95,
+            _index = 97,
         },
         {
             Qpart = { [4022] = { 2 } },
@@ -843,7 +863,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             Range = 5,
             IsQuestOnQuest = 4022,
             Zone = 1428,
-            _index = 96,
+            _index = 98,
         },
         {
             Done = { 4022 },
@@ -852,28 +872,28 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             IsQuestOnQuest = 4022,
             MinLevel = 52,
             Zone = 1428,
-            _index = 97,
+            _index = 99,
         },
         {
             Done = { 4726 },
             Coord = { x = -2177.66, y = -7499.94 },
             IsQuestOnQuest = 4726,
             Zone = 1428,
-            _index = 98,
+            _index = 100,
         },
         {
             PickUp = { 4808 },
             Coord = { x = -2177.66, y = -7499.94 },
             IsQuestCompleted = 4726,
             Zone = 1428,
-            _index = 99,
+            _index = 101,
         },
         {
             Done = { 4296 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.15, 23.94),
             IsQuestOnQuest = 4296,
             Zone = 1428,
-            _index = 100,
+            _index = 102,
         },
         {
             UseSpell = { spellID = 18960 },
@@ -881,7 +901,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             HasSpell = 18960,
             Race = { "Skyborne", "Tauren" },
             SkipInZones = { 1450 },
-            _index = 101,
+            _index = 103,
         },
         {
             TakePortal = { mapID = 1450 },
@@ -891,7 +911,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             Class = "DRUID",
             HasSpell = 18960,
             Zone = 1450,
-            _index = 102,
+            _index = 104,
         },
         {
             LearnSkill = { spellID = 9894 },
@@ -901,7 +921,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             OnlyInZones = { 1450 },
             Race = { "Skyborne", "Tauren" },
             Zone = 1450,
-            _index = 103,
+            _index = 105,
         },
         {
             LearnSkill = { spellID = 9904 },
@@ -911,14 +931,14 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             OnlyInZones = { 1450 },
             Race = { "Skyborne", "Tauren" },
             Zone = 1450,
-            _index = 104,
+            _index = 106,
         },
         {
             UseHS = 4808,
             UseHSIfAvailable = true,
             Class = { "HUNTER", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
             SkipInZones = { 1454, 1411 },
-            _index = 105,
+            _index = 107,
         },
         {
             UseSpell = { spellID = 3567 },
@@ -927,7 +947,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             ItemCount = { itemID = 17031, count = 1, operator = ">=" },
             Race = { "Orc", "Scourge", "Troll" },
             SkipInZones = { 1454 },
-            _index = 106,
+            _index = 108,
         },
         {
             UseFlightPath = 4808,
@@ -936,7 +956,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             ZoneStepTrigger = { mapID = 1458 },
             OnlyInZones = { 1428 },
             Zone = 1428,
-            _index = 107,
+            _index = 109,
         },
         {
             UseFlightPath = 4808,
@@ -945,7 +965,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             ZoneStepTrigger = { mapID = 1458 },
             OnlyInZones = { 1427 },
             Zone = 1427,
-            _index = 108,
+            _index = 110,
         },
         {
             UseFlightPath = 4808,
@@ -954,7 +974,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             ZoneStepTrigger = { mapID = 1458 },
             OnlyInZones = { 1418 },
             Zone = 1418,
-            _index = 109,
+            _index = 111,
         },
         {
             UseFlightPath = 4808,
@@ -963,7 +983,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             ZoneStepTrigger = { mapID = 1458 },
             OnlyInZones = { 1435 },
             Zone = 1435,
-            _index = 110,
+            _index = 112,
         },
         {
             UseFlightPath = 4808,
@@ -972,7 +992,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             ZoneStepTrigger = { mapID = 1458 },
             OnlyInZones = { 1434 },
             Zone = 1434,
-            _index = 111,
+            _index = 113,
         },
         {
             UseFlightPath = 4808,
@@ -981,7 +1001,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             ZoneStepTrigger = { mapID = 1458 },
             SkipInZones = { 1414, 1411, 1413, 1446, 1450, 1454, 1456, 1420 },
             Zone = 1458,
-            _index = 112,
+            _index = 114,
         },
         {
             UseFlightPath = 4808,
@@ -991,7 +1011,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             Class = "DRUID",
             OnlyInZones = { 1450 },
             Zone = 1450,
-            _index = 113,
+            _index = 115,
         },
         {
             UseFlightPath = 4808,
@@ -1001,7 +1021,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             Class = "DRUID",
             OnlyInZones = { 1446 },
             Zone = 1446,
-            _index = 114,
+            _index = 116,
         },
         {
             UseFlightPath = 4808,
@@ -1011,7 +1031,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             Class = "DRUID",
             OnlyInZones = { 1413 },
             Zone = 1413,
-            _index = 115,
+            _index = 117,
         },
         {
             UseFlightPath = 4808,
@@ -1021,7 +1041,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             Class = "DRUID",
             SkipInZones = { 1415, 1428, 1427, 1418, 1435, 1434, 1458, 1420, 1411, 1454 },
             Zone = 1456,
-            _index = 116,
+            _index = 118,
         },
         {
             UseFlightPath = 4808,
@@ -1030,7 +1050,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             ZoneStepTrigger = { mapID = 1454 },
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 117,
+            _index = 119,
         },
         {
             UseFlightPath = 4808,
@@ -1040,7 +1060,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             ClassNot = "DRUID",
             OnlyInZones = { 1446 },
             Zone = 1446,
-            _index = 118,
+            _index = 120,
         },
         {
             UseFlightPath = 4808,
@@ -1050,7 +1070,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             ClassNot = "DRUID",
             OnlyInZones = { 1413 },
             Zone = 1413,
-            _index = 119,
+            _index = 121,
         },
         {
             UseFlightPath = 4808,
@@ -1059,7 +1079,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             ZoneStepTrigger = { mapID = 1454 },
             SkipInZones = { 1415, 1428, 1427, 1418, 1435, 1434, 1458, 1420, 1411 },
             Zone = 1454,
-            _index = 120,
+            _index = 122,
         },
         {
             Waypoint = 4808,
@@ -1069,7 +1089,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             Range = 10,
             OnlyInZones = { 1458 },
             Zone = 1458,
-            _index = 121,
+            _index = 123,
         },
         {
             Waypoint = 4808,
@@ -1079,7 +1099,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             Range = 10,
             OnlyInZones = { 1458 },
             Zone = 1458,
-            _index = 122,
+            _index = 124,
         },
         {
             Waypoint = 4808,
@@ -1089,7 +1109,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             Range = 10,
             OnlyInZones = { 1458 },
             Zone = 1458,
-            _index = 123,
+            _index = 125,
         },
         {
             Waypoint = 4808,
@@ -1099,7 +1119,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             Range = 10,
             OnlyInZones = { 1458 },
             Zone = 1458,
-            _index = 124,
+            _index = 126,
         },
         {
             Waypoint = 4808,
@@ -1109,7 +1129,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             Range = 10,
             OnlyInZones = { 1458 },
             Zone = 1458,
-            _index = 125,
+            _index = 127,
         },
         {
             Waypoint = 4808,
@@ -1119,7 +1139,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             Range = 15,
             OnlyInZones = { 1458 },
             Zone = 1458,
-            _index = 126,
+            _index = 128,
         },
         {
             Waypoint = 4808,
@@ -1129,7 +1149,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             Range = 15,
             OnlyInZones = { 1458 },
             Zone = 1458,
-            _index = 127,
+            _index = 129,
         },
         {
             Waypoint = 4808,
@@ -1139,7 +1159,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             Range = 15,
             OnlyInZones = { 1458 },
             Zone = 1458,
-            _index = 128,
+            _index = 130,
         },
         {
             Waypoint = 4808,
@@ -1148,7 +1168,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             Range = 12,
             OnlyInZones = { 1420 },
             Zone = 1420,
-            _index = 129,
+            _index = 131,
         },
         {
             Waypoint = 4808,
@@ -1157,7 +1177,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             Range = 10,
             OnlyInZones = { 1420 },
             Zone = 1420,
-            _index = 130,
+            _index = 132,
         },
         {
             Waypoint = 4808,
@@ -1166,7 +1186,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             Range = 8,
             OnlyInZones = { 1420 },
             Zone = 1420,
-            _index = 131,
+            _index = 133,
         },
         {
             Waypoint = 4808,
@@ -1175,7 +1195,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             Range = 8,
             OnlyInZones = { 1420 },
             Zone = 1420,
-            _index = 132,
+            _index = 134,
         },
         {
             Waypoint = 4808,
@@ -1184,7 +1204,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             Range = 8,
             OnlyInZones = { 1420 },
             Zone = 1420,
-            _index = 133,
+            _index = 135,
         },
         {
             Waypoint = 4808,
@@ -1193,7 +1213,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             Range = 8,
             OnlyInZones = { 1420 },
             Zone = 1420,
-            _index = 134,
+            _index = 136,
         },
         {
             Zeppelin = true,
@@ -1202,7 +1222,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1411, 50.82, 13.81, 20),
             SkipInZones = { 1454, 1413, 1446, 1450, 1456 },
             Zone = 1420,
-            _index = 135,
+            _index = 137,
         },
         {
             Waypoint = 4808,
@@ -1211,7 +1231,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             Range = 15,
             OnlyInZones = { 1411 },
             Zone = 1411,
-            _index = 136,
+            _index = 138,
         },
         {
             Waypoint = 4808,
@@ -1220,7 +1240,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             Range = 15,
             OnlyInZones = { 1411 },
             Zone = 1454,
-            _index = 137,
+            _index = 139,
         },
         {
             Waypoint = 4808,
@@ -1229,7 +1249,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             Range = 15,
             OnlyInZones = { 1411 },
             Zone = 1454,
-            _index = 138,
+            _index = 140,
         },
         {
             Waypoint = 4808,
@@ -1238,7 +1258,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             Range = 15,
             OnlyInZones = { 1411 },
             Zone = 1454,
-            _index = 139,
+            _index = 141,
         },
         {
             UseFlightPath = 4808,
@@ -1247,31 +1267,31 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             ZoneStepTrigger = { mapID = 1454 },
             SkipInZones = { 1411 },
             Zone = 1454,
-            _index = 140,
+            _index = 142,
         },
         {
             LeaveQuests = { 795 },
             IsQuestOnQuest = 795,
-            _index = 141,
+            _index = 143,
         },
         {
             LeaveQuests = { 793 },
             IsQuestOnQuest = 793,
-            _index = 142,
+            _index = 144,
         },
         {
             LeaveQuests = { 7701 },
             IsQuestOnQuest = 7701,
-            _index = 143,
+            _index = 145,
         },
         {
             LeaveQuests = { 7722 },
             IsQuestOnQuest = 7722,
-            _index = 144,
+            _index = 146,
         },
         {
             RouteCompleted = true,
-            _index = 145,
+            _index = 147,
         },
     },
 }

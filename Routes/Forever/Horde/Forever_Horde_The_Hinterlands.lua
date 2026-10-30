@@ -272,41 +272,52 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             _index = 24,
         },
         {
+            Waypoint = 650,
+            NonSkippableWaypoint = true,
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 20.8, 47.91),
+            Range = 20,
+            ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1425, 20.8, 47.91, 20),
+            AnyOf = { { IsQuestOnQuest = 650 }, { IsQuestCompleted = 650, IsQuestUncompleted = 77, IsQuestNotOnQuest = 77 } },
+            OnlyInZones = { 1425 },
+            Zone = 1425,
+            _index = 25,
+        },
+        {
             Done = { 650 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 26.7, 48.6),
             Zone = 1425,
-            _index = 25,
+            _index = 26,
         },
         {
             PickUp = { 77 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 26.7, 48.6),
             IsQuestCompleted = 650,
             Zone = 1425,
-            _index = 26,
+            _index = 27,
         },
         {
             GetFP = 76,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 81.7, 81.76),
             Zone = 1425,
-            _index = 27,
+            _index = 28,
         },
         {
             PickUp = { 7839 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 77.52, 80.36),
             Zone = 1425,
-            _index = 28,
+            _index = 29,
         },
         {
             PickUp = { 7840 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 78.2, 81.3),
             Zone = 1425,
-            _index = 29,
+            _index = 30,
         },
         {
             PickUp = { 7815, 7816 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 80.4, 81.5),
             Zone = 1425,
-            _index = 30,
+            _index = 31,
         },
         {
             Qpart = { [7816] = { 1 } },
@@ -315,7 +326,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 79.67, 62.81),
             Range = 30,
             Zone = 1425,
-            _index = 31,
+            _index = 32,
         },
         {
             Done = { 626 },
@@ -323,7 +334,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 80.8, 46.8),
             IsQuestOnQuest = 626,
             Zone = 1425,
-            _index = 32,
+            _index = 33,
         },
         {
             Qpart = { [7840] = { 1 } },
@@ -331,7 +342,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 84.4, 41.3),
             Range = 30,
             Zone = 1425,
-            _index = 33,
+            _index = 34,
         },
         {
             Qpart = { [7815] = { 1 } },
@@ -339,7 +350,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 77.4, 65.4),
             Range = 30,
             Zone = 1425,
-            _index = 34,
+            _index = 35,
         },
         {
             Qpart = { [580] = { 1 } },
@@ -347,7 +358,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Range = 30,
             IsQuestOnQuest = 580,
             Zone = 1425,
-            _index = 35,
+            _index = 36,
         },
         {
             Waypoint = 7815,
@@ -355,37 +366,37 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 77.28, 78.64),
             Range = 20,
             Zone = 1425,
-            _index = 36,
+            _index = 37,
         },
         {
             Done = { 7815, 7816 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 80.3, 81.4),
             Zone = 1425,
-            _index = 37,
+            _index = 38,
         },
         {
             Done = { 7840 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 78.2, 81.3),
             Zone = 1425,
-            _index = 38,
+            _index = 39,
         },
         {
             PickUp = { 7844 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 78.8, 78.4),
             Zone = 1425,
-            _index = 39,
+            _index = 40,
         },
         {
             PickUp = { 7841 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 79.4, 79.1),
             Zone = 1425,
-            _index = 40,
+            _index = 41,
         },
         {
             PickUp = { 7828, 7829, 7830 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 79.1, 79.5),
             Zone = 1425,
-            _index = 41,
+            _index = 42,
         },
         {
             Waypoint = 2742,
@@ -398,7 +409,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Not = { IsQuestReadyForTurnIn = 7839 },
             Zone = 1425,
             -- Reviewed Horde Hinterlands travel
-            _index = 42,
+            _index = 43,
         },
         {
             Waypoint = 2742,
@@ -411,7 +422,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Not = { IsQuestReadyForTurnIn = 7839 },
             Zone = 1425,
             -- Reviewed Horde Hinterlands travel
-            _index = 43,
+            _index = 44,
         },
         {
             Waypoint = 2742,
@@ -424,7 +435,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Not = { IsQuestReadyForTurnIn = 7839 },
             Zone = 1425,
             -- Reviewed Horde Hinterlands travel
-            _index = 44,
+            _index = 45,
         },
         {
             Waypoint = 2742,
@@ -437,7 +448,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Not = { IsQuestReadyForTurnIn = 7839 },
             Zone = 1425,
             -- Reviewed Horde Hinterlands travel
-            _index = 45,
+            _index = 46,
         },
         {
             Waypoint = 2742,
@@ -450,7 +461,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Not = { IsQuestReadyForTurnIn = 7839 },
             Zone = 1425,
             -- Reviewed Horde Hinterlands travel
-            _index = 46,
+            _index = 47,
         },
         {
             Qpart = { [7839] = { 1 } },
@@ -460,7 +471,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Range = 30,
             Button = { ["7829-1"] = 9618 },
             Zone = 1425,
-            _index = 47,
+            _index = 48,
         },
         {
             Waypoint = 2742,
@@ -469,7 +480,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 58.7, 41.9),
             Range = 20,
             Zone = 1425,
-            _index = 48,
+            _index = 49,
         },
         {
             Qpart = { [77] = { 1 } },
@@ -477,7 +488,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Range = 30,
             IsQuestOnQuest = 77,
             Zone = 1425,
-            _index = 49,
+            _index = 50,
         },
         {
             Waypoint = 7841,
@@ -487,14 +498,14 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Range = 20,
             Button = { ["7829-1"] = 9618 },
             Zone = 1425,
-            _index = 50,
+            _index = 51,
         },
         {
             Qpart = { [2995] = { 2 } },
             Fillers = { [7841] = { 1, 2, 3, 4 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 29.6, 48.7),
             Zone = 1425,
-            _index = 51,
+            _index = 52,
         },
         {
             Qpart = { [2995] = { 3 } },
@@ -502,14 +513,14 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Note = { "QUEST_OBJECT_TABLE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 28.6, 46.1),
             Zone = 1425,
-            _index = 52,
+            _index = 53,
         },
         {
             Qpart = { [2995] = { 1 } },
             Fillers = { [7841] = { 1, 2, 3, 4 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 32, 46.9),
             Zone = 1425,
-            _index = 53,
+            _index = 54,
         },
         {
             PickUp = { 2742 },
@@ -518,14 +529,14 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 30.73, 46.97),
             NoAutoAccept = true,
             Zone = 1425,
-            _index = 54,
+            _index = 55,
         },
         {
             Qpart = { [2742] = { 1 } },
             Fillers = { [7841] = { 1, 2, 3, 4 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 34.98, 56.92),
             Zone = 1425,
-            _index = 55,
+            _index = 56,
         },
         {
             Qpart = { [7841] = { 1, 2, 3, 4 } },
@@ -533,7 +544,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Range = 30,
             ClassNot = "ROGUE",
             Zone = 1425,
-            _index = 56,
+            _index = 57,
         },
         {
             Qpart = { [7841] = { 1, 2, 3, 4 } },
@@ -542,7 +553,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Range = 30,
             Class = "ROGUE",
             Zone = 1425,
-            _index = 57,
+            _index = 58,
         },
         {
             Qpart = { [2641] = { 1 } },
@@ -550,14 +561,14 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Note = { "IN_WATER", "VERY_BOTTOM" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 40, 59.9),
             Zone = 1425,
-            _index = 58,
+            _index = 59,
         },
         {
             Qpart = { [7828] = { 2 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 44.1, 52.6),
             Range = 30,
             Zone = 1425,
-            _index = 59,
+            _index = 60,
         },
         {
             Qpart = { [7844] = { 1, 2 } },
@@ -565,7 +576,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 45.6, 63.4),
             Range = 30,
             Zone = 1425,
-            _index = 60,
+            _index = 61,
         },
         {
             Qpart = { [7830] = { 1 } },
@@ -574,7 +585,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Range = 30,
             Button = { ["7829-1"] = 9618 },
             Zone = 1425,
-            _index = 61,
+            _index = 62,
         },
         {
             Qpart = { [7828] = { 1 } },
@@ -583,7 +594,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Range = 30,
             Button = { ["7829-1"] = 9618 },
             Zone = 1425,
-            _index = 62,
+            _index = 63,
         },
         {
             Qpart = { [7829] = { 1 }, [3123] = { 1 } },
@@ -592,7 +603,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Range = 30,
             Button = { ["7829-1"] = 9618, ["3123-1"] = 9618 },
             Zone = 1425,
-            _index = 63,
+            _index = 64,
         },
         {
             Done = { 2742 },
@@ -600,7 +611,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 86.3, 59),
             IsQuestOnQuest = 2742,
             Zone = 1425,
-            _index = 64,
+            _index = 65,
         },
         {
             PickUp = { 2782 },
@@ -608,7 +619,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 86.3, 59),
             IsQuestCompleted = 2742,
             Zone = 1425,
-            _index = 65,
+            _index = 66,
         },
         {
             Waypoint = 7839,
@@ -616,31 +627,31 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 77.28, 78.64),
             Range = 20,
             Zone = 1425,
-            _index = 66,
+            _index = 67,
         },
         {
             Done = { 7839 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 77.2, 80.2),
             Zone = 1425,
-            _index = 67,
+            _index = 68,
         },
         {
             Done = { 7844 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 78.8, 78.25),
             Zone = 1425,
-            _index = 68,
+            _index = 69,
         },
         {
             Done = { 7828, 7829, 7830 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 79.1, 79.5),
             Zone = 1425,
-            _index = 69,
+            _index = 70,
         },
         {
             Done = { 7841 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 79.3, 79.1),
             Zone = 1425,
-            _index = 70,
+            _index = 71,
         },
         {
             PickUp = { 7842 },
@@ -648,14 +659,14 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             AnyOf = { { ItemCount = { itemID = 4589, count = 10 } }, { IsQuestOnQuest = 7842 } },
             IsQuestCompleted = 7841,
             Zone = 1425,
-            _index = 71,
+            _index = 72,
         },
         {
             Done = { 7842 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 79.3, 79.1),
             IsQuestOnQuest = 7842,
             Zone = 1425,
-            _index = 72,
+            _index = 73,
         },
         {
             PickUp = { 7843 },
@@ -664,7 +675,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Hardcore = false,
             IsQuestCompleted = 7842,
             Zone = 1425,
-            _index = 73,
+            _index = 74,
         },
         {
             UseFlightPath = 2933,
@@ -674,7 +685,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             DontHaveSpell = 18629,
             Skill = { operator = ">=", skill = "firstaid", rank = 260 },
             Zone = 1425,
-            _index = 74,
+            _index = 75,
         },
         {
             LearnProfession = 18629,
@@ -684,7 +695,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             DontHaveSpell = 18629,
             Skill = { operator = ">=", skill = "firstaid", rank = 260 },
             Zone = 1417,
-            _index = 75,
+            _index = 76,
         },
         {
             UseFlightPath = 2933,
@@ -692,20 +703,20 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Coords = { { Zone = 1417, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 73.1, 32.7) }, { Zone = 1425, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 81.7, 81.76) } },
             ZoneStepTrigger = { mapID = 1424 },
             Zone = { 1417, 1425 },
-            _index = 76,
+            _index = 77,
         },
         {
             Done = { 2933 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 61.53, 19.16),
             Zone = 1424,
-            _index = 77,
+            _index = 78,
         },
         {
             PickUp = { 2934 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 61.53, 19.16),
             IsQuestCompleted = 2933,
             Zone = 1424,
-            _index = 78,
+            _index = 79,
         },
         {
             Waypoint = 77,
@@ -713,7 +724,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 86.6, 29.49),
             Range = 20,
             Zone = 1424,
-            _index = 79,
+            _index = 80,
         },
         {
             Waypoint = 77,
@@ -721,7 +732,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 9.7, 55.8),
             Range = 5,
             Zone = 1425,
-            _index = 80,
+            _index = 81,
         },
         {
             Qpart = { [7843] = { 1 } },
@@ -731,33 +742,44 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Hardcore = false,
             IsQuestOnQuest = 7843,
             Zone = 1425,
-            _index = 81,
+            _index = 82,
+        },
+        {
+            Waypoint = 77,
+            NonSkippableWaypoint = true,
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 20.44, 48.08),
+            Range = 20,
+            ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1425, 20.44, 48.08, 20),
+            AnyOf = { { IsQuestOnQuest = 77 }, { IsQuestCompleted = 77, IsQuestUncompleted = 81, IsQuestNotOnQuest = 81 } },
+            OnlyInZones = { 1425 },
+            Zone = 1425,
+            _index = 83,
         },
         {
             Done = { 77 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 26.61, 48.59),
             Zone = 1425,
-            _index = 82,
+            _index = 84,
         },
         {
             PickUp = { 81 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 26.61, 48.59),
             IsQuestCompleted = 77,
             Zone = 1425,
-            _index = 83,
+            _index = 85,
         },
         {
             PickUp = { 485 },
             Button = { ["485"] = 8704 },
             ItemCount = { itemID = 8704, count = 1, operator = ">=" },
-            _index = 84,
+            _index = 86,
         },
         {
             Done = { 485 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 49.3, 37.7),
             IsQuestOnQuest = 485,
             Zone = 1425,
-            _index = 85,
+            _index = 87,
         },
         {
             PickUp = { 836 },
@@ -765,7 +787,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             NoAutoAccept = true,
             IsQuestCompleted = 485,
             Zone = 1425,
-            _index = 86,
+            _index = 88,
         },
         {
             Qpart = { [836] = { 1 } },
@@ -774,7 +796,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Range = 10,
             IsQuestCompleted = 485,
             Zone = 1425,
-            _index = 87,
+            _index = 89,
         },
         {
             Waypoint = 7843,
@@ -783,7 +805,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Range = 20,
             IsQuestReadyForTurnIn = 7843,
             Zone = 1425,
-            _index = 88,
+            _index = 90,
         },
         {
             Done = { 7843 },
@@ -791,7 +813,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             IsQuestOnQuest = 7843,
             IsQuestReadyForTurnIn = 7843,
             Zone = 1425,
-            _index = 89,
+            _index = 91,
         },
         {
             Grind = 49,
@@ -800,7 +822,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             SkipForLvl = 49,
             Zone = 1425,
             -- Reviewed Horde Hinterlands travel
-            _index = 90,
+            _index = 92,
         },
         {
             Note = { "STABLE_USUAL_PET_TAMING_TEMPORARY_PET", "SKIP_PET_LESSON_ABILITY_KNOWN" },
@@ -809,7 +831,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Class = "HUNTER",
             MinLevel = 49,
             Zone = 1425,
-            _index = 91,
+            _index = 93,
         },
         {
             Note = { "CAST_TAME_BEAST_SALTWATER_SNAPJAW_TAME", "FIGHT_PET_LEARN_ABILITIES", "TEACH_PET_LEARNED_ABILITIES", "SKIP_PET_LESSON_ABILITY_KNOWN" },
@@ -818,7 +840,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Class = "HUNTER",
             MinLevel = 49,
             Zone = 1425,
-            _index = 92,
+            _index = 94,
         },
         {
             Note = { "ABANDON_TEMPORARY_PET_RETRIEVE_REGULAR_PET", "SKIP_PET_LESSON_ABILITY_KNOWN" },
@@ -828,7 +850,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             MinLevel = 49,
             OnlyInZones = { 1425 },
             Zone = 1425,
-            _index = 93,
+            _index = 95,
         },
         {
             Waypoint = 1429,
@@ -838,7 +860,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1425, 72.48, 66.1, 20),
             Zone = 1425,
             -- Reviewed Horde Hinterlands travel
-            _index = 94,
+            _index = 96,
         },
         {
             Waypoint = 1429,
@@ -846,21 +868,21 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 35.9, 63.9),
             Range = 20,
             Zone = 1425,
-            _index = 95,
+            _index = 97,
         },
         {
             Done = { 1429 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 33.7, 75.1),
             IsQuestOnQuest = 1429,
             Zone = 1425,
-            _index = 96,
+            _index = 98,
         },
         {
             PickUp = { 1444 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 33.7, 75.1),
             IsQuestCompleted = 1429,
             Zone = 1425,
-            _index = 97,
+            _index = 99,
         },
         {
             Qpart = { [2934] = { 1 } },
@@ -868,7 +890,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 33.47, 69.385),
             Range = 30,
             Zone = 1425,
-            _index = 98,
+            _index = 100,
         },
         {
             Waypoint = 2934,
@@ -879,7 +901,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             IsQuestOnQuest = 2934,
             Zone = 1425,
             -- Reviewed Horde Hinterlands travel
-            _index = 99,
+            _index = 101,
         },
         {
             Waypoint = 2934,
@@ -890,7 +912,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             IsQuestOnQuest = 2934,
             Zone = 1425,
             -- Reviewed Horde Hinterlands travel
-            _index = 100,
+            _index = 102,
         },
         {
             Waypoint = 2934,
@@ -901,7 +923,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             IsQuestOnQuest = 2934,
             Zone = 1424,
             -- Reviewed Horde Hinterlands travel
-            _index = 101,
+            _index = 103,
         },
         {
             Waypoint = 2934,
@@ -912,7 +934,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             IsQuestOnQuest = 2934,
             Zone = 1424,
             -- Reviewed Horde Hinterlands travel
-            _index = 102,
+            _index = 104,
         },
         {
             Done = { 2934 },
@@ -920,7 +942,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 61.53, 19.16),
             IsQuestOnQuest = 2934,
             Zone = 1424,
-            _index = 103,
+            _index = 105,
         },
         {
             PickUp = { 2935 },
@@ -928,7 +950,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Race = "Troll",
             Skill = { operator = "<", skill = "riding", rank = 75 },
             Zone = 1424,
-            _index = 104,
+            _index = 106,
         },
         {
             UseFlightPath = 2995,
@@ -937,7 +959,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             ZoneStepTrigger = { mapID = 1458 },
             AnyOf = { { ClassNot = "MAGE" }, { DontHaveSpell = 3563 }, { Not = { ItemCount = { itemID = 17031, count = 1 } } } },
             Zone = 1424,
-            _index = 105,
+            _index = 107,
         },
         {
             UseSpell = { spellID = 3563 },
@@ -945,7 +967,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             HasSpell = 3563,
             ItemCount = { itemID = 17031, count = 1 },
             SkipInZones = { 1458 },
-            _index = 106,
+            _index = 108,
         },
         {
             BuyMerchant = { { itemID = 17031, quantity = 4, targetStock = true } },
@@ -956,40 +978,40 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             ItemCount = { count = 4, itemID = 17031, operator = "<" },
             Money = { operator = ">=", copper = 4208 },
             Zone = 1458,
-            _index = 107,
+            _index = 109,
         },
         {
             LeaveQuests = { 2935 },
             Race = "Troll",
             Skill = { skill = "riding", rank = 75, operator = ">=" },
-            _index = 108,
+            _index = 110,
         },
         {
             Note = { "OPTIONAL_AUCTION_HOUSE_SUPPLIES_BOAR_VITALITY_5" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 64.2, 49.6),
             IsQuestUncompleted = 2581,
             Zone = 1458,
-            _index = 109,
+            _index = 111,
         },
         {
             Done = { 2995, 2782 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 73.5, 32.7),
             Zone = 1458,
-            _index = 110,
+            _index = 112,
         },
         {
             PickUp = { 8273 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 73.5, 32.7),
             IsQuestCompleted = 2782,
             Zone = 1458,
-            _index = 111,
+            _index = 113,
         },
         {
             Done = { 8273 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 73.5, 32.7),
             IsQuestOnQuest = 8273,
             Zone = 1458,
-            _index = 112,
+            _index = 114,
         },
         {
             Waypoint = 2641,
@@ -997,7 +1019,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 47.2, 59.69),
             Range = 12,
             Zone = 1458,
-            _index = 113,
+            _index = 115,
         },
         {
             Waypoint = 2641,
@@ -1005,7 +1027,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 43.55, 68.11),
             Range = 12,
             Zone = 1458,
-            _index = 114,
+            _index = 116,
         },
         {
             Waypoint = 2641,
@@ -1013,48 +1035,48 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 45.2, 71.67),
             Range = 12,
             Zone = 1458,
-            _index = 115,
+            _index = 117,
         },
         {
             PickUp = { 3568 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 48.5, 71.9),
             Zone = 1458,
-            _index = 116,
+            _index = 118,
         },
         {
             LeaveQuests = { 7862 },
             IsQuestOnQuest = 7862,
-            _index = 117,
+            _index = 119,
         },
         {
             LeaveQuests = { 7861 },
             IsQuestOnQuest = 7861,
-            _index = 118,
+            _index = 120,
         },
         {
             LeaveQuests = { 7849 },
             IsQuestOnQuest = 7849,
-            _index = 119,
+            _index = 121,
         },
         {
             LeaveQuests = { 7845 },
             IsQuestOnQuest = 7845,
-            _index = 120,
+            _index = 122,
         },
         {
             LeaveQuests = { 7850 },
             IsQuestOnQuest = 7850,
-            _index = 121,
+            _index = 123,
         },
         {
             LeaveQuests = { 7846 },
             IsQuestOnQuest = 7846,
-            _index = 122,
+            _index = 124,
         },
         {
             UseHS = 2641,
             UseHSIfAvailable = true,
-            _index = 123,
+            _index = 125,
         },
         {
             Waypoint = 2641,
@@ -1065,7 +1087,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             OnlyInZones = { 1458 },
             Zone = 1458,
             -- Reviewed Horde Hinterlands travel
-            _index = 124,
+            _index = 126,
         },
         {
             Waypoint = 2641,
@@ -1076,7 +1098,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             OnlyInZones = { 1458 },
             Zone = 1458,
             -- Reviewed Horde Hinterlands travel
-            _index = 125,
+            _index = 127,
         },
         {
             Waypoint = 2641,
@@ -1087,7 +1109,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             OnlyInZones = { 1458 },
             Zone = 1458,
             -- Reviewed Horde Hinterlands travel
-            _index = 126,
+            _index = 128,
         },
         {
             Waypoint = 2641,
@@ -1098,7 +1120,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             OnlyInZones = { 1458 },
             Zone = 1458,
             -- Reviewed Horde Hinterlands travel
-            _index = 127,
+            _index = 129,
         },
         {
             Waypoint = 2641,
@@ -1109,7 +1131,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             OnlyInZones = { 1458 },
             Zone = 1458,
             -- Reviewed Horde Hinterlands travel
-            _index = 128,
+            _index = 130,
         },
         {
             Waypoint = 2641,
@@ -1120,7 +1142,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             OnlyInZones = { 1458 },
             Zone = 1458,
             -- Reviewed Horde Hinterlands travel
-            _index = 129,
+            _index = 131,
         },
         {
             Waypoint = 2641,
@@ -1131,7 +1153,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             OnlyInZones = { 1458 },
             Zone = 1458,
             -- Reviewed Horde Hinterlands travel
-            _index = 130,
+            _index = 132,
         },
         {
             Waypoint = 2641,
@@ -1142,7 +1164,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             OnlyInZones = { 1458 },
             Zone = 1458,
             -- Reviewed Horde Hinterlands travel
-            _index = 131,
+            _index = 133,
         },
         {
             Zeppelin = true,
@@ -1152,7 +1174,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             SkipInZones = { 1454, 1446, 1444 },
             Zone = 1420,
             -- Reviewed Horde Hinterlands travel
-            _index = 132,
+            _index = 134,
         },
         {
             Waypoint = 2641,
@@ -1163,7 +1185,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             OnlyInZones = { 1411 },
             Zone = 1411,
             -- Reviewed Horde Hinterlands travel
-            _index = 133,
+            _index = 135,
         },
         {
             Waypoint = 2641,
@@ -1174,7 +1196,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             OnlyInZones = { 1411 },
             Zone = 1454,
             -- Reviewed Horde Hinterlands travel
-            _index = 134,
+            _index = 136,
         },
         {
             Waypoint = 2641,
@@ -1185,7 +1207,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             OnlyInZones = { 1411 },
             Zone = 1454,
             -- Reviewed Horde Hinterlands travel
-            _index = 135,
+            _index = 137,
         },
         {
             Waypoint = 2641,
@@ -1196,7 +1218,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             OnlyInZones = { 1411 },
             Zone = 1454,
             -- Reviewed Horde Hinterlands travel
-            _index = 136,
+            _index = 138,
         },
         {
             UseFlightPath = 2641,
@@ -1205,7 +1227,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             ZoneStepTrigger = { mapID = 1446 },
             SkipInZones = { 1444 },
             Zone = 1454,
-            _index = 137,
+            _index = 139,
         },
         {
             Done = { 2641 },
@@ -1213,35 +1235,35 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             IsQuestOnQuest = 2641,
             IsQuestReadyForTurnIn = 2641,
             Zone = 1446,
-            _index = 138,
+            _index = 140,
         },
         {
             PickUp = { 2661 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 51.1, 26.9),
             IsQuestCompleted = 2641,
             Zone = 1446,
-            _index = 139,
+            _index = 141,
         },
         {
             Done = { 2661 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 51.8, 28.6),
             IsQuestOnQuest = 2661,
             Zone = 1446,
-            _index = 140,
+            _index = 142,
         },
         {
             PickUp = { 2662 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 51.8, 28.6),
             IsQuestCompleted = 2661,
             Zone = 1446,
-            _index = 141,
+            _index = 143,
         },
         {
             Done = { 2662 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 51.8, 28.6),
             IsQuestCompleted = 2661,
             Zone = 1446,
-            _index = 142,
+            _index = 144,
         },
         {
             BuyMerchant = { { itemID = 8529, quantity = 60, targetStock = true } },
@@ -1252,18 +1274,18 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             ItemCount = { count = 60, itemID = 8529, operator = "<" },
             Money = { operator = ">=", copper = 44208 },
             Zone = 1446,
-            _index = 143,
+            _index = 145,
         },
         {
             LeaveQuests = { 2641 },
-            _index = 144,
+            _index = 146,
         },
         {
             BankDeposit = { items = { 10695, 10687, 10688, 10689, 10690 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.3, 28.91),
             IsQuestOnQuest = 3568,
             Zone = 1446,
-            _index = 145,
+            _index = 147,
         },
         {
             UseFlightPath = 3123,
@@ -1271,11 +1293,11 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 51.6, 25.4),
             ZoneStepTrigger = { mapID = 1444 },
             Zone = 1446,
-            _index = 146,
+            _index = 148,
         },
         {
             RouteCompleted = true,
-            _index = 147,
+            _index = 149,
         },
     },
 }
