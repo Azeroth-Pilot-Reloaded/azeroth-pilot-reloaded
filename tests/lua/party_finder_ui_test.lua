@@ -128,6 +128,23 @@ assert(panel.count.point[5] == 8 and panel.count:GetWidth() == 520
     "Narrow layouts retain the same compact footer without reserving any action-button rows")
 panel.frame.content:SetWidth(1008)
 panel:Layout()
+assert(panel.languages.point[5] == panel.match.point[5] and panel.stepRange.point[5] == panel.match.point[5]
+    and panel.levelToggle.point[5] == panel.match.point[5], "Normal-width filters share one compact row")
+assert(panel.stepRange.point[4] > panel.match.point[4] + panel.match:GetWidth()
+    and panel.levelToggle.point[1] == "TOPRIGHT", "Step proximity follows the route selector, with More on the right")
+assert(panel.warMode.point[5] == panel.visible.point[5] and panel.warMode.point[4] > panel.visible.point[4],
+    "War-mode compatibility follows the other visibility controls")
+assert(panel.levelToggle:GetFontString():GetText() == "More" and panel.levelToggle.chevron,
+    "The optional level controls use the requested English label and a real chevron")
+assert(panel.warMode.label:GetText() == locale.SHOW_INCOMPATIBLE_PLAYERS)
+local oldTooltipLine, oldTooltipText, compatibilityTooltip = APR.AddTooltipLine, APR.SetTooltipText, nil
+APR.SetTooltipText = function() end
+APR.AddTooltipLine = function(_, _, text) compatibilityTooltip = text end
+panel.warMode.scripts.OnEnter(panel.warMode)
+assert(compatibilityTooltip == locale.INCOMPATIBLE_WAR_MODE_DESC,
+    "The compatibility toggle explains the war-mode mismatch on hover")
+APR.AddTooltipLine = oldTooltipLine
+APR.SetTooltipText = oldTooltipText
 panel.frame:Show()
 panel.scroll:SetSize(900, 152)
 panel:Refresh()
@@ -219,8 +236,9 @@ assert(panel.languages:GetWidth() <= 300 and panel.match:GetWidth() <= 360
     and panel.match.point[5] == panel.languages.point[5] - 40,
     "Long language and criterion labels move to separate bounded filter rows")
 local resultsTop, resultAnchors = panel.results.points.TOPLEFT[5], panel.results.anchors
-assert(resultsTop == panel.match.point[5] - panel.match:GetHeight() - 12,
-    "Results follow the last filter with one small gap, without an unused status row")
+assert(resultsTop == panel.levelToggle.point[5] - 44
+    and panel.stepRange.point[5] < panel.match.point[5] and not panel.levels:IsShown(),
+    "Step proximity and war-mode controls stay above results; optional levels start collapsed")
 APR.ActiveRoute = "synthetic"
 panel:Refresh()
 assert(panel.results.points.TOPLEFT[5] == resultsTop and panel.results.anchors == resultAnchors,
@@ -374,3 +392,32 @@ function APR.partyFinder:GetSearchCooldown() return 0 end
 panel.frame:Show(); panel:Refresh()
 assert(panel.refresh:IsEnabled() and not panel.searchRefreshTimer)
 print("Finder search UI: active spinner, cooldown lock, completion and hidden timer cleanup passed")
+
+settings.stepRange, settings.minLevel, settings.maxLevel = 5, 0, 0
+settings.matchMode = "nearby"
+panel:Refresh()
+assert(panel.stepRange.enabled and panel.stepRange.edit:GetText() == "5")
+panel.stepRange.slider.scripts.OnValueChanged(panel.stepRange.slider, 12)
+panel.stepRange.slider.scripts.OnMouseUp(panel.stepRange.slider)
+assert(settings.stepRange == 12 and calls[#calls].key == "stepRange")
+panel.stepRange.edit:SetText("99")
+panel.stepRange.edit.scripts.OnEnterPressed(panel.stepRange.edit)
+assert(settings.stepRange == 30, "Typed step gaps use the same bounded preference as options")
+settings.matchMode = "zone"; panel:Refresh()
+assert(not panel.stepRange.enabled)
+panel.stepRange:Commit(8)
+assert(settings.stepRange == 30, "A disabled gap control cannot change preferences")
+local collapsedTop = panel.results.points.TOPLEFT[5]
+panel.levelToggle.scripts.OnClick()
+assert(panel.levels:IsShown() and panel.results.points.TOPLEFT[5] < collapsedTop)
+panel.minLevel.edit:SetText("17"); panel.minLevel.edit.scripts.OnEnterPressed(panel.minLevel.edit)
+panel.maxLevel.edit:SetText("29"); panel.maxLevel.edit.scripts.OnEnterPressed(panel.maxLevel.edit)
+assert(settings.minLevel == 17 and settings.maxLevel == 29)
+panel.levelToggle.scripts.OnClick()
+assert(not panel.levels:IsShown())
+assert(panel.results.points.TOPLEFT[5] == collapsedTop)
+panel.warMode:SetChecked(true); panel.warMode.scripts.OnClick()
+assert(settings.showIncompatibleWarMode and calls[#calls].key == "showIncompatibleWarMode")
+settings.stepRange = 7; panel:Refresh()
+assert(panel.stepRange.edit:GetText() == "7", "Changes from options also reach the quick controls")
+print("Finder quick compatibility: step slider/input bounds, disabled state, optional levels and shared war-mode setting passed")
