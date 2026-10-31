@@ -592,5 +592,19 @@
             Zone = 107,
             _index = 91,
         },
+        {
+            PickUp = { 9868 },
+            Coord = { x = 8562.2, y = -1581.6 },
+            Zone = 107,
+            _index = 92,
+        },
+        {
+            Qpart = { [9868] = { 1 } },
+            Coord = { x = 8543.2, y = -1386.4 },
+            Range = 15,
+            Not = { IsQuestReadyForTurnIn = 9868 },
+            Zone = 107,
+            _index = 93,
+        },
     },
 }
