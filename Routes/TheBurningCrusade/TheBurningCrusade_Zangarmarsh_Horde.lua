@@ -9,7 +9,7 @@ APR.RouteQuestStepList["102-BC-2-Horde"] = {
         [APR.PREFAB_TYPES.Leveling] = 20,
     },
     mapID = 102,
-    conditions = { Faction = "Horde" },
+    conditions = { Faction = "Horde", Level = 10 },
     nextRoute = { "108-BC-3-Horde" },
     steps = {
         {
