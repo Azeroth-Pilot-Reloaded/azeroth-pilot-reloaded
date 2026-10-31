@@ -686,3 +686,35 @@ APR:CheckSojournerPartySync()
 assert(#mismatches == 2 and party.GroupListSteps.Peer.sojournerSkipCampaign == false,
     "A disabled peer also warns an enabled local player")
 print("Party Sojourner: setting-only changes, deduplication, oversized snapshots and mismatch warnings in both directions passed")
+
+-- Both sides publish on actual roster additions, even with unchanged progress.
+ChatThrottleLib = nil
+grouped, raid, instance = true, false, false
+party:RemoveTeam()
+roster = {party1 = {"Arriving", "Home"}}
+advance(10)
+local function dataSends()
+    local count = 0
+    for _, message in ipairs(sent) do if message.prefix == "APRPartyData" then count = count + 1 end end
+    return count
+end
+local start = dataSends()
+APR.event.functions.group("GROUP_ROSTER_UPDATE")
+assert(dataSends() > start and party.groupSyncTimer,
+    "The inviter must resend its unchanged snapshot without receiving GROUP_JOINED")
+local afterJoin = dataSends()
+for _ = 1, 100 do APR.event.functions.group("GROUP_ROSTER_UPDATE") end
+assert(dataSends() == afterJoin, "Unchanged roster events cannot cause a broadcast storm")
+advance(3)
+assert(dataSends() > afterJoin and not party.groupSyncTimer,
+    "One bounded retry covers a new member whose receiver was not ready on the first send")
+local beforeSecond = dataSends()
+roster.party2 = {"Second", "Home"}
+APR.event.functions.group("GROUP_ROSTER_UPDATE")
+advance(2)
+assert(dataSends() > beforeSecond, "A later invitation also bypasses snapshot deduplication")
+local retry = party.groupSyncTimer
+grouped = false
+party:RemoveTeam()
+assert(retry.cancelled and not party.groupSyncTimer and not party.syncMembers)
+print("Party join: inviter handshake, unchanged roster suppression, bounded retry, second join and departure cleanup passed")

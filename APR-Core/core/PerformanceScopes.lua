@@ -35,9 +35,9 @@ function APR:GetDiagnosticRows(query)
     query = string.lower(query or "")
     for offset = 0, log.count - 1 do
         local entry = log.entries[(log.cursor - offset - 1) % log.limit + 1]
-        local text = entry.source .. " " .. entry.kind .. " " .. entry.message .. " " .. (entry.data or "")
-            .. " " .. (entry.route or "")
-        if text:lower():find(query, 1, true) then rows[#rows + 1] = entry end
+        local text = query ~= "" and (entry.source .. " " .. entry.kind .. " " .. entry.message .. " " .. (entry.data or "")
+            .. " " .. (entry.route or ""))
+        if query == "" or text:lower():find(query, 1, true) then rows[#rows + 1] = entry end
     end
     return rows
 end

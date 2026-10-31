@@ -1,12 +1,13 @@
 -- Resolve actionable quest alternatives without inventing prerequisites or NPCs.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("unlocks", 1) then return end
+if not Lib:BeginModule("unlocks", 2) then return end
 local Instance = Lib.Instance
 local MAX_PLANS = 16
 
 local function Merge(a, b)
     local result, modes = {}, {}
-    for _, goals in ipairs({ a, b }) do
+    for index = 1, 2 do
+        local goals = index == 1 and a or b
         for _, goal in ipairs(goals) do
             local previous = modes[goal.questID]
             -- A rewarded quest cannot also be held in the quest log.
@@ -35,13 +36,21 @@ local function Plans(node)
             for _, a in ipairs(plans) do
                 for _, b in ipairs(alternatives) do
                     local merged = Merge(a, b)
-                    if merged and #combined < MAX_PLANS then combined[#combined + 1] = merged end
+                    if merged then
+                        combined[#combined + 1] = merged
+                        if #combined == MAX_PLANS then break end
+                    end
                 end
+                if #combined == MAX_PLANS then break end
             end
+            -- Later conjunctions still apply to a full product; an empty one
+            -- can never recover. Stop only work that cannot change this prefix.
+            if #combined == 0 then return combined end
             plans = combined
         else
             for _, alternative in ipairs(alternatives) do
-                if #plans < MAX_PLANS then plans[#plans + 1] = alternative end
+                plans[#plans + 1] = alternative
+                if #plans == MAX_PLANS then return plans end
             end
         end
     end

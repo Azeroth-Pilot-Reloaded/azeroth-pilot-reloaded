@@ -37,13 +37,18 @@ function handlers.Qpart(step, showStepDetails, currentStepIndex)
         questID = tonumber(questID)
         APR:Debug("Processing Qpart questID: " .. tostring(questID))
         local questData = APR.ActiveQuests[questID]
+        -- Native quest/level observations are stable during this synchronous
+        -- render pass. Keep them local; the next pass must observe fresh state.
+        local questCompleted, playerLevel
         for _, objectiveIndex in pairs(objectives) do
             objectiveIndex = tonumber(objectiveIndex)
             total = total + 1
             APR:Debug("Qpart objectiveIndex: " .. tostring(objectiveIndex))
 
-            if C_QuestLog.IsQuestFlaggedCompleted(questID)
-                or ((UnitLevel("player") == APR.MaxLevel) and APR:Contains(APR.BonusObj, questID))
+            if questCompleted == nil then questCompleted = C_QuestLog.IsQuestFlaggedCompleted(questID) end
+            if not questCompleted and playerLevel == nil then playerLevel = UnitLevel("player") end
+            if questCompleted
+                or ((playerLevel == APR.MaxLevel) and APR:Contains(APR.BonusObj, questID))
                 or APRData[APR.PlayerID].BonusSkips[questID]
             then
                 flagged = flagged + 1
@@ -118,14 +123,13 @@ function handlers.PickUp(step, showStepDetails, currentStepIndex)
         end
     else
         local completedCount = 0
-        local uncompletedIDs = {}
+        local uncompletedIDs = showStepDetails and {} or nil
         for _, questID in ipairs(questIDs) do
             local questData = APR.ActiveQuests[questID]
-            if not (questData or C_QuestLog.IsQuestFlaggedCompleted(questID)) then
-                tinsert(uncompletedIDs, questID)
-            end
-            if C_QuestLog.IsQuestFlaggedCompleted(questID) or questData then
+            if questData or C_QuestLog.IsQuestFlaggedCompleted(questID) then
                 completedCount = completedCount + 1
+            elseif uncompletedIDs then
+                tinsert(uncompletedIDs, questID)
             end
         end
         if #questIDs == completedCount then
@@ -137,7 +141,7 @@ function handlers.PickUp(step, showStepDetails, currentStepIndex)
             APR.currentStep:AddQuestStepsWithDetails("PickUp", L["PICK_UP_Q"], uncompletedIDs)
         end
     end
-end--[[APR_DIAG]]; handlers.PickUp = APRTrace("APR-Core/features/questing/StepQuestHandlers.lua:91:handlers.PickUp#2", handlers.PickUp)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.PickUp = APRTrace("APR-Core/features/questing/StepQuestHandlers.lua:96:handlers.PickUp#2", handlers.PickUp)--[[/APR_DIAG]]
 
 function handlers.DropQuest(step, showStepDetails, currentStepIndex)
     local questID = step.DropQuest
@@ -150,7 +154,7 @@ function handlers.DropQuest(step, showStepDetails, currentStepIndex)
     if showStepDetails then
         APR:GetQuestTitle(questID)
     end
-end--[[APR_DIAG]]; handlers.DropQuest = APRTrace("APR-Core/features/questing/StepQuestHandlers.lua:142:handlers.DropQuest#3", handlers.DropQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.DropQuest = APRTrace("APR-Core/features/questing/StepQuestHandlers.lua:146:handlers.DropQuest#3", handlers.DropQuest)--[[/APR_DIAG]]
 
 function handlers.Done(step, showStepDetails, currentStepIndex)
     local doneList = step.Done
@@ -187,11 +191,11 @@ function handlers.Done(step, showStepDetails, currentStepIndex)
         end
     else
         local completedCount = 0
-        local uncompletedIDs = {}
+        local uncompletedIDs = showStepDetails and {} or nil
         for _, questID in ipairs(doneList) do
             local questData = APR.ActiveQuests[questID]
             if questData then
-                tinsert(uncompletedIDs, questID)
+                if uncompletedIDs then tinsert(uncompletedIDs, questID) end
                 questToHighlight = questToHighlight or questID
             elseif not C_QuestLog.IsQuestFlaggedCompleted(questID) then
                 if showStepDetails then
@@ -213,7 +217,7 @@ function handlers.Done(step, showStepDetails, currentStepIndex)
     if questToHighlight then
         APR:TrackQuest(questToHighlight)
     end
-end--[[APR_DIAG]]; handlers.Done = APRTrace("APR-Core/features/questing/StepQuestHandlers.lua:155:handlers.Done#4", handlers.Done)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.Done = APRTrace("APR-Core/features/questing/StepQuestHandlers.lua:159:handlers.Done#4", handlers.Done)--[[/APR_DIAG]]
 
 function handlers.QpartPart(step, showStepDetails, currentStepIndex)
     local questIDs = step.QpartPart
@@ -251,4 +255,4 @@ function handlers.QpartPart(step, showStepDetails, currentStepIndex)
     if questToHighlight then
         APR:TrackQuest(questToHighlight)
     end
-end--[[APR_DIAG]]; handlers.QpartPart = APRTrace("APR-Core/features/questing/StepQuestHandlers.lua:218:handlers.QpartPart#5", handlers.QpartPart)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.QpartPart = APRTrace("APR-Core/features/questing/StepQuestHandlers.lua:222:handlers.QpartPart#5", handlers.QpartPart)--[[/APR_DIAG]]

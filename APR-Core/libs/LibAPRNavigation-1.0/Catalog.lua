@@ -1,7 +1,7 @@
 -- Turn declarative connections into usable edges for one character snapshot.
 -- Each build owns its API cache and yields between connection directions.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("catalog", 15) then return end
+if not Lib:BeginModule("catalog", 16) then return end
 local Instance = Lib.Instance
 local EdgeBuild = {}
 EdgeBuild.__index = EdgeBuild
@@ -103,21 +103,43 @@ local snapshotQueries = {
 }
 
 local function MemoizeQuery(callback)
-    local results = {}
+    local cache = {}
     return function(first, second)
         local firstKey = first == nil and nilKey or first
-        local secondKey = second == nil and nilKey or second
-        local row = results[firstKey]
+        if second == nil then
+            local values = cache.unary
+            if not values then values = {}; cache.unary = values end
+            local extras = cache.extraUnary
+            local result = values[firstKey]
+            if result == nil then
+                local extra
+                result, extra = callback(first, second)
+                -- Most queries take one argument. Store both answers directly
+                -- instead of allocating a row and a tuple for every quest/map.
+                values[firstKey] = result == nil and nilKey or result
+                -- A nested query may have created or populated this cache.
+                extras = cache.extraUnary
+                if extra ~= nil then
+                    if not extras then extras = {}; cache.extraUnary = extras end
+                end
+                if extras then extras[firstKey] = extra end
+            end
+            if result == nilKey then result = nil end
+            return result, extras and extras[firstKey]
+        end
+        local binary = cache.binary
+        if not binary then binary = {}; cache.binary = binary end
+        local row = binary[firstKey]
         if not row then
             row = {}
-            results[firstKey] = row
+            binary[firstKey] = row
         end
-        local result = row[secondKey]
+        local result = row[second]
         if not result then
             -- Keep nil and false answers too. A single build must not ask the
             -- client repeatedly for the same unavailable spell, item or quest.
             result = { callback(first, second) }
-            row[secondKey] = result
+            row[second] = result
         end
         return result[1], result[2]
     end

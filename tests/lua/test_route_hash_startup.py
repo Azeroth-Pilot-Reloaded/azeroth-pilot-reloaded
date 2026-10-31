@@ -59,7 +59,7 @@ APR = { PlayerID = "player", ActiveRoute = "long", version = "new", RouteQuestSt
     StartPerformanceSample = noop, FinishPerformanceSample = noop,
     currentStep = {}, npcInteraction = { Clear = noop, QueueResume = noop, Track = noop },
     IsSojournerSkipActive = function() return false end, StepFilterQoL = function() return true end,
-    GetGameVersion = noop, ResetQuestTitleRequests = noop,
+    GetGameVersion = noop, ResetQuestTitleRequests = noop, UpdateQuest = noop, UpdateMapId = noop,
     questionDialog = { CreateMessagePopup = function() H.popups = (H.popups or 0) + 1 end },
 }
 function APR:GetSettingsProfile() return self.settings.profile end
@@ -112,6 +112,15 @@ function H.drain()
     while APR.routeValidationPending do
         H.tick(); count = count + 1
         assert(count < 1000, "Startup validation must complete")
+    end
+    return count
+end
+function H.drainMaintenance()
+    local count = 0
+    while APR.event.routeMaintenanceJob do
+        assert(not APR.routeValidationPending, "History must never restore the foreground barrier")
+        H.tick(); count = count + 1
+        assert(count < 1000, "Background history validation must complete")
     end
     return count
 end
@@ -184,6 +193,11 @@ assert(APR.routeValidationPending == token and APRData.player.long == 7 and APRD
     and APRData.player.RouteSignatures.long == "outdated" and APRData.player.RouteSignatures.short == "outdated"
     and APRZoneCompleted.player.short, "No partial reset or fingerprint can escape a yielded scan")
 assert(H.drain() > 10 and H.ready == 1 and H.readyRoute == "long")
+assert(APRData.player.long == nil and APRData.player.short == 4
+    and APRData.player.RouteSignatures.short == "outdated" and APRZoneCompleted.player.short,
+    "The selected guide publishes independently of untouched inactive history")
+assert(APR.event.routeMaintenanceJob and H.drainMaintenance() > 0,
+    "Inactive history still receives the complete compatibility check without blocking the guide")
 assert(APRData.player.long == nil and APRData.player.short == nil and not APRZoneCompleted.player.short)
 assert(APRData.player["long-ParallelStepsState"] == nil and APRData.player["long-RawTotalSteps"] == 1)
 assert(APRData.player.RouteSignatures.short == H.negativePrefix .. "eb639929")
@@ -267,6 +281,7 @@ H.tick()
 APR:ClearSavedRouteData("short")
 APR:ResetRoute("short")
 H.drain()
+H.drainMaintenance()
 assert(APRData.player.short == 1 and APRData.player.RouteSignatures.short == H.negativePrefix .. "eb639929",
     "The latest explicit reset supersedes an earlier clear")
 ''')

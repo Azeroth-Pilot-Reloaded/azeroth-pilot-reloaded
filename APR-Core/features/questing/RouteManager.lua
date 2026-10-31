@@ -438,13 +438,18 @@ function APR:EnsureRouteParallelStepsActivated(routeKey)
     end
 
     state.groups = state.groups or {}
-    local pendingGroups = {}
+    -- Most reads do not activate anything; allocate the pending list only then.
+    local pendingGroups
     for groupIndex, group in ipairs(groups) do
         local entry = state.groups[groupIndex]
         local repeatable = group.repeatable and #group.steps == 1 and group.steps[1].UseItem
-        local eligible = (not entry or repeatable) and self:AreConditionalFiltersMet(group.conditions or {})
+        -- An unknown quest condition is not an observed false edge that can
+        -- rearm a repeatable group. Static groups remain usable at startup.
+        local pending = self.HasPendingStartupQuestConditions
+            and self:HasPendingStartupQuestConditions(group.conditions)
+        local eligible = not pending and (not entry or repeatable) and self:AreConditionalFiltersMet(group.conditions or {})
         local repeatReady = false
-        if entry and repeatable then
+        if entry and repeatable and not pending then
             if not eligible then entry.rearm = true end
             if eligible and entry.rearm then
                 local activations = entry.activations or { entry }
@@ -459,6 +464,7 @@ function APR:EnsureRouteParallelStepsActivated(routeKey)
             end
         end
         if eligible and (not entry or repeatReady) then
+            pendingGroups = pendingGroups or {}
             pendingGroups[#pendingGroups + 1] = {
                 groupIndex = groupIndex,
                 steps = group.steps,
@@ -467,7 +473,7 @@ function APR:EnsureRouteParallelStepsActivated(routeKey)
         end
     end
 
-    if #pendingGroups == 0 then
+    if not pendingGroups then
         return
     end
 
@@ -475,7 +481,7 @@ function APR:EnsureRouteParallelStepsActivated(routeKey)
     for _, pendingGroup in ipairs(pendingGroups) do
         pendingGroup.insertionIndex = self:GetParallelStepsInsertionIndex(currentStepIndex, effectiveSteps, pendingGroup.group)
     end
-    table.sort(pendingGroups, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteManager.lua:478:callback#19", --[[/APR_DIAG]]function(left, right)
+    table.sort(pendingGroups, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteManager.lua:484:callback#19", --[[/APR_DIAG]]function(left, right)
         if left.insertionIndex == right.insertionIndex then return left.groupIndex < right.groupIndex end
         return left.insertionIndex < right.insertionIndex
     end--[[APR_DIAG]])--[[/APR_DIAG]])
@@ -523,7 +529,7 @@ function APR:GetRouteSteps(routeKey)
     -- Legacy fallback: routeData IS the flat step array (ipairs-iterable table with numeric keys)
     if routeData[1] then return routeData end
     return {}
-end--[[APR_DIAG]]; APR.GetRouteSteps = APRTrace("APR-Core/features/questing/RouteManager.lua:514:APR:GetRouteSteps#20", APR.GetRouteSteps)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetRouteSteps = APRTrace("APR-Core/features/questing/RouteManager.lua:520:APR:GetRouteSteps#20", APR.GetRouteSteps)--[[/APR_DIAG]]
 
 -- Party positions belong to the definition, never a character's filtered or
 -- expanded route. Keep original sources for parallel steps copied at runtime.
@@ -544,7 +550,7 @@ local function GetGroupBaseSteps(self, routeKey, routeData)
         self._groupRouteDefinition = cached
     end
     return cached.steps, cached.indices, cached.identities
-end--[[APR_DIAG]]; GetGroupBaseSteps = APRTrace("APR-Core/features/questing/RouteManager.lua:530:GetGroupBaseSteps#21", GetGroupBaseSteps)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; GetGroupBaseSteps = APRTrace("APR-Core/features/questing/RouteManager.lua:536:GetGroupBaseSteps#21", GetGroupBaseSteps)--[[/APR_DIAG]]
 
 function APR:GetGroupRouteProgress(routeKey, stepIndex)
     if type(stepIndex) ~= "number" then return end
@@ -578,7 +584,7 @@ function APR:GetGroupRouteProgress(routeKey, stepIndex)
         end
     end
     -- Temporary parent-route prefixes have no position in this definition.
-end--[[APR_DIAG]]; APR.GetGroupRouteProgress = APRTrace("APR-Core/features/questing/RouteManager.lua:549:APR:GetGroupRouteProgress#22", APR.GetGroupRouteProgress)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetGroupRouteProgress = APRTrace("APR-Core/features/questing/RouteManager.lua:555:APR:GetGroupRouteProgress#22", APR.GetGroupRouteProgress)--[[/APR_DIAG]]
 
 -- Project common main-step identities onto this character's visible route.
 -- Never subtract two characters' personal counters: their filters may differ.
@@ -615,7 +621,7 @@ function APR:GetGroupRouteDisplayPositions(routeKey, requestedIDs)
     end
     if not requestedIDs or requestedIDs["end"] then positions["end"] = visible + 1 end
     return positions
-end--[[APR_DIAG]]; APR.GetGroupRouteDisplayPositions = APRTrace("APR-Core/features/questing/RouteManager.lua:585:APR:GetGroupRouteDisplayPositions#23", APR.GetGroupRouteDisplayPositions)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetGroupRouteDisplayPositions = APRTrace("APR-Core/features/questing/RouteManager.lua:591:APR:GetGroupRouteDisplayPositions#23", APR.GetGroupRouteDisplayPositions)--[[/APR_DIAG]]
 
 function APR:GetGroupRouteStep(routeKey, stepID)
     local routeData = self:GetRouteData(routeKey)
@@ -625,7 +631,7 @@ function APR:GetGroupRouteStep(routeKey, stepID)
     local groupIndex, groupStep = stepID:match("^parallel:(%d+):(%d+)$")
     local group = groupIndex and (GetParallelGroups(routeData) or {})[tonumber(groupIndex)]
     return group and group.steps[tonumber(groupStep)]
-end--[[APR_DIAG]]; APR.GetGroupRouteStep = APRTrace("APR-Core/features/questing/RouteManager.lua:620:APR:GetGroupRouteStep#24", APR.GetGroupRouteStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetGroupRouteStep = APRTrace("APR-Core/features/questing/RouteManager.lua:626:APR:GetGroupRouteStep#24", APR.GetGroupRouteStep)--[[/APR_DIAG]]
 
 --- Keep automatic hand-ins from spending rewards reserved by a pending parallel group.
 -- Manual hand-ins remain available, including the usual modifier-key override.
@@ -649,7 +655,7 @@ function APR:IsQuestTurnInDeferred(questID)
         end
     end
     return false
-end--[[APR_DIAG]]; APR.IsQuestTurnInDeferred = APRTrace("APR-Core/features/questing/RouteManager.lua:632:APR:IsQuestTurnInDeferred#25", APR.IsQuestTurnInDeferred)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.IsQuestTurnInDeferred = APRTrace("APR-Core/features/questing/RouteManager.lua:638:APR:IsQuestTurnInDeferred#25", APR.IsQuestTurnInDeferred)--[[/APR_DIAG]]
 
 ---------------------------------------------------------------------------------------
 --- Condition Evaluation
@@ -670,18 +676,23 @@ local function IsRouteCompletedByKey(routeKey)
 
     local completedForPlayer = APRZoneCompleted[APR.PlayerID]
     return completedForPlayer and completedForPlayer[routeLabel] == true or false
-end--[[APR_DIAG]]; IsRouteCompletedByKey = APRTrace("APR-Core/features/questing/RouteManager.lua:660:IsRouteCompletedByKey#26", IsRouteCompletedByKey)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; IsRouteCompletedByKey = APRTrace("APR-Core/features/questing/RouteManager.lua:666:IsRouteCompletedByKey#26", IsRouteCompletedByKey)--[[/APR_DIAG]]
 
 --- Return whether an unfinished required route still applies to this character.
 -- Soft conditions such as level and zone never waive a dependency: they can change during play.
+-- The second result distinguishes unknown eligibility from a waived dependency.
 function APR:IsRequiredRouteApplicable(routeKey)
     if IsRouteCompletedByKey(routeKey) then
         return false
     end
 
     local routeData = self:GetRouteData(routeKey)
-    return routeData and routeData.label and EvaluateHardConditions(routeData.conditions or {}) or false
-end--[[APR_DIAG]]; APR.IsRequiredRouteApplicable = APRTrace("APR-Core/features/questing/RouteManager.lua:677:APR:IsRequiredRouteApplicable#27", APR.IsRequiredRouteApplicable)--[[/APR_DIAG]]
+    if routeData and self.HasPendingStartupQuestConditions
+        and self:HasPendingStartupQuestConditions(routeData.conditions) then
+        return false, true
+    end
+    return routeData and routeData.label and EvaluateHardConditions(routeData.conditions) or false
+end--[[APR_DIAG]]; APR.IsRequiredRouteApplicable = APRTrace("APR-Core/features/questing/RouteManager.lua:684:APR:IsRequiredRouteApplicable#27", APR.IsRequiredRouteApplicable)--[[/APR_DIAG]]
 
 function APR:GetRouteRequiredRouteKeys(routeKey)
     local routeData = self:GetRouteData(routeKey)
@@ -707,7 +718,66 @@ function APR:GetRouteRequiredRouteKeys(routeKey)
     end
 
     return {}
-end--[[APR_DIAG]]; APR.GetRouteRequiredRouteKeys = APRTrace("APR-Core/features/questing/RouteManager.lua:686:APR:GetRouteRequiredRouteKeys#28", APR.GetRouteRequiredRouteKeys)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetRouteRequiredRouteKeys = APRTrace("APR-Core/features/questing/RouteManager.lua:697:APR:GetRouteRequiredRouteKeys#28", APR.GetRouteRequiredRouteKeys)--[[/APR_DIAG]]
+
+-- Lookup state belongs to the caller; keep the helper and its diagnostic
+-- wrapper outside the operation so frequent early hits allocate neither.
+local function isLabelQueued(self, customPath, label, queueLookup)
+    local queueIndex = type(queueLookup) == "table" and queueLookup or nil
+    local queuedLabels = queueIndex and queueIndex.labels
+    local queuedKey = queuedLabels and queuedLabels[label]
+    local alreadyQueued = queuedKey ~= nil and customPath[queuedKey] == label
+    if not alreadyQueued and not (queueIndex and queueIndex.complete) then
+        if queueLookup == nil then
+            alreadyQueued = self:Contains(customPath, label)
+        elseif not queueIndex then
+            for _, queuedLabel in pairs(customPath) do
+                if queuedLabel == label then
+                    alreadyQueued = true
+                    break
+                end
+                queueLookup = queueLookup + 1
+                if queueLookup >= 16 then
+                    queuedLabels = {}
+                    queueIndex = { labels = queuedLabels }
+                    queueLookup = queueIndex
+                    break
+                end
+            end
+        end
+        if queueIndex and not alreadyQueued then
+            -- Callbacks may remove the saved key or rehash the table. A
+            -- live key permits a safe continuation, not a cached absence.
+            if not queueIndex.iterator or queueIndex.key == nil or customPath[queueIndex.key] == nil then
+                queueIndex.iterator, queueIndex.state, queueIndex.key = pairs(customPath)
+                queueIndex.dirty = false
+            end
+            while true do
+                local key, queuedLabel = queueIndex.iterator(queueIndex.state, queueIndex.key)
+                queueIndex.key = key
+                if key == nil then
+                    if queueIndex.dirty then
+                        -- The callback could have inserted the sought label
+                        -- into the prefix skipped by the resumed iterator.
+                        queueIndex.iterator, queueIndex.state, queueIndex.key = pairs(customPath)
+                        queueIndex.dirty = false
+                    else
+                        queueIndex.complete = true
+                        queueIndex.iterator = nil
+                        break
+                    end
+                else
+                    queuedLabels[queuedLabel] = key
+                    if queuedLabel == label then
+                        alreadyQueued = true
+                        break
+                    end
+                end
+            end
+        end
+    end
+    return alreadyQueued, queuedLabels, queueLookup
+end--[[APR_DIAG]]; isLabelQueued = APRTrace("APR-Core/features/questing/RouteManager.lua:725:isLabelQueued#29", isLabelQueued)--[[/APR_DIAG]]
 
 --- Add a route to custom path and automatically prepend unmet required routes.
 --- Required routes are read from routeData.requiredRoute.
@@ -719,13 +789,26 @@ function APR:AddRouteToCustomPathByKey(routeKey)
     end
     if self.CanStartRoute and not self:CanStartRoute(routeKey) then return false end
 
+    -- During native synchronization, stage known prerequisites until the
+    -- entire visited branch is known. Otherwise a false-looking prerequisite
+    -- could be omitted permanently from an already-published custom path.
+    local deferPathWrites = self.startupQuestStatePending and self.HasPendingStartupQuestConditions
+    if deferPathWrites then
+        local target = self:GetRouteData(routeKey)
+        if target and self:HasPendingStartupQuestConditions(target.conditions) then return false end
+    end
+
     APRCustomPath[self.PlayerID] = APRCustomPath[self.PlayerID] or {}
     local customPath = APRCustomPath[self.PlayerID]
+    -- Delay allocating an index until lookups have done enough actual work.
+    -- Promotion never scans ahead: early hits must not visit an unrelated tail.
+    local queueLookup
     -- Prerequisites form a graph: retain marks for this entire operation so
     -- shared completed branches are not expanded again through every parent.
     -- The next call gets fresh marks and reevaluates live eligibility.
     local visited = {}
     local addedAny = false
+    local pendingPrerequisite, stagedPath, stagedLabels
 
     local function addRouteRecursive(targetRouteKey)
         if visited[targetRouteKey] then
@@ -733,6 +816,10 @@ function APR:AddRouteToCustomPathByKey(routeKey)
         end
         visited[targetRouteKey] = true
 
+        -- Route/condition callbacks may mutate the selection or reenter here.
+        -- Retain positive witnesses, but never reuse an absence across them.
+        -- A suspended scan may only prove presences until refreshed in full.
+        if type(queueLookup) == "table" then queueLookup.complete, queueLookup.dirty = false, true end
         local targetRouteData = self:GetRouteData(targetRouteKey)
         if not targetRouteData or not targetRouteData.label then
             return
@@ -740,37 +827,74 @@ function APR:AddRouteToCustomPathByKey(routeKey)
 
         -- Forever prerequisites are completion gates, not routes to enqueue.
         if not IsForeverRoute(targetRouteData) then
-            for _, requiredRouteKey in ipairs(self:GetRouteRequiredRouteKeys(targetRouteKey)) do
-                if self:IsRequiredRouteApplicable(requiredRouteKey) then
+            local requiredKeys = self:GetRouteRequiredRouteKeys(targetRouteKey)
+            for _, requiredRouteKey in ipairs(requiredKeys) do
+                if type(queueLookup) == "table" then queueLookup.complete, queueLookup.dirty = false, true end
+                local applicable, pending = self:IsRequiredRouteApplicable(requiredRouteKey)
+                if pending then pendingPrerequisite = true; return end
+                if applicable then
+                    queueLookup = queueLookup or 0
                     addRouteRecursive(requiredRouteKey)
+                    if pendingPrerequisite then return end
                 end
             end
         end
 
-        if not self:Contains(customPath, targetRouteData.label) then
-            table.insert(customPath, targetRouteData.label)
+        local label = targetRouteData.label
+        local alreadyQueued, queuedLabels
+        if stagedLabels and stagedLabels[label] then
+            alreadyQueued = true
+        else
+            alreadyQueued, queuedLabels, queueLookup = isLabelQueued(self, customPath, label, queueLookup)
+        end
+        if not alreadyQueued then
+            if deferPathWrites then
+                stagedPath, stagedLabels = stagedPath or {}, stagedLabels or {}
+                table.insert(stagedPath, label)
+                if label ~= nil then stagedLabels[label] = true end
+            else
+                local insertIndex = queuedLabels and (#customPath + 1)
+                table.insert(customPath, label)
+                if queuedLabels and label ~= nil then queuedLabels[label] = insertIndex end
+            end
             addedAny = true
         end
 
-    end--[[APR_DIAG]]; addRouteRecursive = APRTrace("APR-Core/features/questing/RouteManager.lua:730:addRouteRecursive#30", addRouteRecursive)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; addRouteRecursive = APRTrace("APR-Core/features/questing/RouteManager.lua:813:addRouteRecursive#31", addRouteRecursive)--[[/APR_DIAG]]
 
     addRouteRecursive(routeKey)
+    if pendingPrerequisite then return false end
+    if stagedPath then
+        -- A later branch may have reentered selection and already inserted a
+        -- staged label. Reuse the progressive live lookup before publishing.
+        if type(queueLookup) == "table" then queueLookup.complete, queueLookup.dirty = false, true end
+        for _, label in ipairs(stagedPath) do
+            local alreadyQueued, queuedLabels
+            alreadyQueued, queuedLabels, queueLookup = isLabelQueued(self, customPath, label, queueLookup)
+            if not alreadyQueued then
+                local insertIndex = queuedLabels and (#customPath + 1)
+                table.insert(customPath, label)
+                if queuedLabels then queuedLabels[label] = insertIndex end
+            end
+        end
+    end
     return addedAny
-end--[[APR_DIAG]]; APR.AddRouteToCustomPathByKey = APRTrace("APR-Core/features/questing/RouteManager.lua:716:APR:AddRouteToCustomPathByKey#29", APR.AddRouteToCustomPathByKey)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.AddRouteToCustomPathByKey = APRTrace("APR-Core/features/questing/RouteManager.lua:786:APR:AddRouteToCustomPathByKey#30", APR.AddRouteToCustomPathByKey)--[[/APR_DIAG]]
 
 --- Allied race check: RaceIDs >= 23 are allied races in WoW.
 ---@return boolean
 function APR:IsAlliedRace()
     return (self.RaceID or 0) >= 23
-end--[[APR_DIAG]]; APR.IsAlliedRace = APRTrace("APR-Core/features/questing/RouteManager.lua:763:APR:IsAlliedRace#31", APR.IsAlliedRace)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.IsAlliedRace = APRTrace("APR-Core/features/questing/RouteManager.lua:886:APR:IsAlliedRace#32", APR.IsAlliedRace)--[[/APR_DIAG]]
 
 --- Evaluate all "hard" conditions (everything except Level).
 --- Returns true only if ALL non-Level conditions pass.
 ---@param conditions table
 ---@return boolean allHardMet
 EvaluateHardConditions =
-    --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteManager.lua:772:callback#32", --[[/APR_DIAG]]function(conditions)
+    --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteManager.lua:895:callback#33", --[[/APR_DIAG]]function(conditions)
         if not conditions then return true end
+        if APR.HasPendingStartupQuestConditions and APR:HasPendingStartupQuestConditions(conditions) then return false end
         if conditions.AnyOf and not APR:AreConditionalFiltersMet({ AnyOf = conditions.AnyOf }) then return false end
 
         -- InterfaceVersion is a minimum; InterfaceVersionExact requires an exact match.
@@ -891,7 +1015,7 @@ function APR:NormalizeSavedRouteLabels()
             if label and not canonical[old] and completed[old] == true then completed[label] = true end
         end
     end
-end--[[APR_DIAG]]; APR.NormalizeSavedRouteLabels = APRTrace("APR-Core/features/questing/RouteManager.lua:868:APR:NormalizeSavedRouteLabels#33", APR.NormalizeSavedRouteLabels)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.NormalizeSavedRouteLabels = APRTrace("APR-Core/features/questing/RouteManager.lua:992:APR:NormalizeSavedRouteLabels#34", APR.NormalizeSavedRouteLabels)--[[/APR_DIAG]]
 
 --- Evaluate the Level condition.
 ---@param conditions table
@@ -919,7 +1043,7 @@ local function EvaluateLevelCondition(conditions)
     end
 
     return true
-end--[[APR_DIAG]]; EvaluateLevelCondition = APRTrace("APR-Core/features/questing/RouteManager.lua:899:EvaluateLevelCondition#34", EvaluateLevelCondition)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; EvaluateLevelCondition = APRTrace("APR-Core/features/questing/RouteManager.lua:1023:EvaluateLevelCondition#35", EvaluateLevelCondition)--[[/APR_DIAG]]
 
 --- Forever requires one compatible completed predecessor, if any are listed.
 --- Other route families retain their existing automatic path construction.
@@ -936,14 +1060,14 @@ function APR:MeetsRoutePrerequisites(routeKey)
         end
     end
     return false
-end--[[APR_DIAG]]; APR.MeetsRoutePrerequisites = APRTrace("APR-Core/features/questing/RouteManager.lua:926:APR:MeetsRoutePrerequisites#35", APR.MeetsRoutePrerequisites)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.MeetsRoutePrerequisites = APRTrace("APR-Core/features/questing/RouteManager.lua:1050:APR:MeetsRoutePrerequisites#36", APR.MeetsRoutePrerequisites)--[[/APR_DIAG]]
 
 --- Shared by selection, saved-path loading, suggestions and direct activation.
 function APR:CanStartRoute(routeKey)
     local data = self:GetRouteData(routeKey)
     if not data then return false end
     return EvaluateLevelCondition(data.conditions) and self:MeetsRoutePrerequisites(routeKey)
-end--[[APR_DIAG]]; APR.CanStartRoute = APRTrace("APR-Core/features/questing/RouteManager.lua:942:APR:CanStartRoute#36", APR.CanStartRoute)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CanStartRoute = APRTrace("APR-Core/features/questing/RouteManager.lua:1066:APR:CanStartRoute#37", APR.CanStartRoute)--[[/APR_DIAG]]
 
 --- Evaluate the Zones condition (soft condition, like Level).
 --- Checks if the player is currently in one of the required map zones.
@@ -962,7 +1086,7 @@ local function EvaluateZonesCondition(conditions)
         end
     end
     return false
-end--[[APR_DIAG]]; EvaluateZonesCondition = APRTrace("APR-Core/features/questing/RouteManager.lua:953:EvaluateZonesCondition#37", EvaluateZonesCondition)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; EvaluateZonesCondition = APRTrace("APR-Core/features/questing/RouteManager.lua:1077:EvaluateZonesCondition#38", EvaluateZonesCondition)--[[/APR_DIAG]]
 
 --- Evaluate the ClassSpec condition (soft condition, like Level).
 --- Failing ClassSpec results in "disabled" rather than "hidden".
@@ -980,7 +1104,7 @@ local function EvaluateClassSpecCondition(conditions)
         end
     end
     return currentSpecId == conditions.ClassSpec
-end--[[APR_DIAG]]; EvaluateClassSpecCondition = APRTrace("APR-Core/features/questing/RouteManager.lua:971:EvaluateClassSpecCondition#38", EvaluateClassSpecCondition)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; EvaluateClassSpecCondition = APRTrace("APR-Core/features/questing/RouteManager.lua:1095:EvaluateClassSpecCondition#39", EvaluateClassSpecCondition)--[[/APR_DIAG]]
 
 
 --- Evaluate ALL conditions for a route. Returns true if every condition passes.
@@ -992,7 +1116,7 @@ function APR:EvaluateRouteConditions(conditions)
     end
     return EvaluateHardConditions(conditions) and EvaluateLevelCondition(conditions) and
         EvaluateClassSpecCondition(conditions) and EvaluateZonesCondition(conditions)
-end--[[APR_DIAG]]; APR.EvaluateRouteConditions = APRTrace("APR-Core/features/questing/RouteManager.lua:989:APR:EvaluateRouteConditions#39", APR.EvaluateRouteConditions)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.EvaluateRouteConditions = APRTrace("APR-Core/features/questing/RouteManager.lua:1113:APR:EvaluateRouteConditions#40", APR.EvaluateRouteConditions)--[[/APR_DIAG]]
 
 ---------------------------------------------------------------------------------------
 --- Unmet Conditions (for tooltips in Config_Route)
@@ -1124,7 +1248,7 @@ function APR:GetUnmetConditions(routeKey)
     end
 
     return unmet
-end--[[APR_DIAG]]; APR.GetUnmetConditions = APRTrace("APR-Core/features/questing/RouteManager.lua:1007:APR:GetUnmetConditions#40", APR.GetUnmetConditions)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetUnmetConditions = APRTrace("APR-Core/features/questing/RouteManager.lua:1131:APR:GetUnmetConditions#41", APR.GetUnmetConditions)--[[/APR_DIAG]]
 
 ---------------------------------------------------------------------------------------
 --- Route Visibility (for Config_Route selection UI)
@@ -1158,7 +1282,7 @@ function APR:GetRouteVisibility(routeKey)
     end
 
     return "visible"
-end--[[APR_DIAG]]; APR.GetRouteVisibility = APRTrace("APR-Core/features/questing/RouteManager.lua:1136:APR:GetRouteVisibility#41", APR.GetRouteVisibility)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetRouteVisibility = APRTrace("APR-Core/features/questing/RouteManager.lua:1260:APR:GetRouteVisibility#42", APR.GetRouteVisibility)--[[/APR_DIAG]]
 
 ---------------------------------------------------------------------------------------
 --- Next Route Suggestions
@@ -1197,7 +1321,7 @@ function APR:GetNextRouteSuggestions(completedRouteKey)
     end
 
     return suggestions
-end--[[APR_DIAG]]; APR.GetNextRouteSuggestions = APRTrace("APR-Core/features/questing/RouteManager.lua:1171:APR:GetNextRouteSuggestions#42", APR.GetNextRouteSuggestions)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetNextRouteSuggestions = APRTrace("APR-Core/features/questing/RouteManager.lua:1295:APR:GetNextRouteSuggestions#43", APR.GetNextRouteSuggestions)--[[/APR_DIAG]]
 
 --- Show a next-route suggestion popup when a route is completed.
 --- If a suggestion is already the next route in the custom path, skip the popup.
@@ -1239,7 +1363,7 @@ function APR:SuggestNextRoutes(completedRouteKey, onComplete)
         L["NEXT_ROUTE_SUGGESTION"],
         suggestions,
 
-            --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteManager.lua:1242:callback#44", --[[/APR_DIAG]]function(route)
+            --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteManager.lua:1366:callback#45", --[[/APR_DIAG]]function(route)
                 -- Add the selected route's display name to the custom path
                 APRCustomPath[self.PlayerID] = APRCustomPath[self.PlayerID] or {}
                 tinsert(APRCustomPath[self.PlayerID], route.label)
@@ -1247,9 +1371,9 @@ function APR:SuggestNextRoutes(completedRouteKey, onComplete)
                 -- which re-enters RouteCompleted and double-calls finalizeRouteCompletion.
                 if onComplete then onComplete() end
             end--[[APR_DIAG]])--[[/APR_DIAG]] ,
-         --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteManager.lua:1250:callback#45", --[[/APR_DIAG]]function()              -- onCancel
+         --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteManager.lua:1374:callback#46", --[[/APR_DIAG]]function()              -- onCancel
             if onComplete then onComplete() end
         end--[[APR_DIAG]])--[[/APR_DIAG]] ,
         nil
     )
-end--[[APR_DIAG]]; APR.SuggestNextRoutes = APRTrace("APR-Core/features/questing/RouteManager.lua:1208:APR:SuggestNextRoutes#43", APR.SuggestNextRoutes)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.SuggestNextRoutes = APRTrace("APR-Core/features/questing/RouteManager.lua:1332:APR:SuggestNextRoutes#44", APR.SuggestNextRoutes)--[[/APR_DIAG]]

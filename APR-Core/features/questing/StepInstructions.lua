@@ -42,6 +42,29 @@ function handlers.GroupQuestPopup()
     end
 end--[[APR_DIAG]]; handlers.GroupQuestPopup = APRTrace("APR-Core/features/questing/StepInstructions.lua:16:handlers.GroupQuestPopup#2", handlers.GroupQuestPopup)--[[/APR_DIAG]]
 
+local extraLineQuests = {
+    [13544] = { itemID = 44886, description = "KILL_FLEETFOOT", count = 1 },
+    [13595] = { itemID = 44967, description = "LOOT_WILDFIRE_BOTTLE", count = 1 },
+    [25654] = { itemID = 9530, description = "LOOT_HARPYS_HORN", count = 1 },
+}
+local extraLineRequirements = {
+    { itemID = 48106, description = "LOOT_MELONFRUIT", requiredCount = 8 },
+    { itemID = 48857, description = "KILL_SATYR_FLESH", requiredCount = 10 },
+    { itemID = 48943, description = "LOOT_SATYR_SABER", requiredCount = 20 },
+}
+
+local function HandleSingleItemRequirement(questID, requirement)
+    local itemCount = C_Item.GetItemCount(requirement.itemID)
+    if itemCount < requirement.count then
+        APR.currentStep:AddQuestSteps(questID,
+            L[requirement.description] .. " (" .. itemCount .. "/" .. requirement.count .. ")",
+            requirement.itemID)
+        return false
+    end
+    APR:NextQuestStep()
+    return true
+end--[[APR_DIAG]]; HandleSingleItemRequirement = APRTrace("APR-Core/features/questing/StepInstructions.lua:56:HandleSingleItemRequirement#5", HandleSingleItemRequirement)--[[/APR_DIAG]]
+
 -- This helper centralises the handling of ExtraLine quest hints so future special cases stay readable.
 -- Returning true means the helper triggered a step transition and the caller should exit early.
 function handlers.HandleExtraLine(extraline)
@@ -50,79 +73,23 @@ function handlers.HandleExtraLine(extraline)
         return false
     end
 
-    -- Reusable closure to handle single-item collection requirements.
-    local function handleSingleItemRequirement(questID, requirement)
-        local itemCount = C_Item.GetItemCount(requirement.itemID)
-
-        -- Keep the player informed about their progress on the required item.
-        if itemCount < requirement.count then
-            APR.currentStep:AddQuestSteps(
-                questID,
-                requirement.description .. " (" .. itemCount .. "/" .. requirement.count .. ")",
-                requirement.itemID
-            )
-            return false
-        end
-
-        -- Progression should advance automatically when the requirement is met.
-        APR:NextQuestStep()
-        return true
-    end--[[APR_DIAG]]; handleSingleItemRequirement = APRTrace("APR-Core/features/questing/StepInstructions.lua:54:handleSingleItemRequirement#6", handleSingleItemRequirement)--[[/APR_DIAG]]
-
-    -- Single item requirements are mapped here for clarity and to simplify future additions.
-    local extraLineQuests = {
-        [13544] = {
-            itemID = 44886,
-            description = L["KILL_FLEETFOOT"],
-            count = 1,
-        },
-        [13595] = {
-            itemID = 44967,
-            description = L["LOOT_WILDFIRE_BOTTLE"],
-            count = 1,
-        },
-        [25654] = {
-            itemID = 9530,
-            description = L["LOOT_HARPYS_HORN"],
-            count = 1,
-        },
-    }
-
     -- Handle simple one-item routes first.
     if extraLineQuests[extraline] then
-        return handleSingleItemRequirement(extraline, extraLineQuests[extraline])
+        return HandleSingleItemRequirement(extraline, extraLineQuests[extraline])
     end
 
     -- Quest 14358 has multiple parallel requirements; keep them grouped for clarity.
     if extraline == 14358 then
-        local requirements = {
-            {
-                itemID = 48106,
-                description = L["LOOT_MELONFRUIT"],
-                requiredCount = 8,
-            },
-            {
-                itemID = 48857,
-                description = L["KILL_SATYR_FLESH"],
-                requiredCount = 10,
-            },
-            {
-                itemID = 48943,
-                description = L["LOOT_SATYR_SABER"],
-                requiredCount = 20,
-            },
-        }
-
         local allRequirementsComplete = true
 
         -- Iterate over every needed item and record missing progress on the step frame.
-        for _, requirement in ipairs(requirements) do
+        for _, requirement in ipairs(extraLineRequirements) do
             local itemCount = C_Item.GetItemCount(requirement.itemID)
 
             if itemCount < requirement.requiredCount then
                 APR.currentStep:AddQuestSteps(
                     extraline,
-                    requirement.description .. " (" .. itemCount .. "/" .. requirement.requiredCount .. ")",
+                    L[requirement.description] .. " (" .. itemCount .. "/" .. requirement.requiredCount .. ")",
                     requirement.itemID
                 )
                 allRequirementsComplete = false
@@ -138,7 +105,7 @@ function handlers.HandleExtraLine(extraline)
 
     -- No special ExtraLine handling triggered.
     return false
-end--[[APR_DIAG]]; handlers.HandleExtraLine = APRTrace("APR-Core/features/questing/StepInstructions.lua:47:handlers.HandleExtraLine#5", handlers.HandleExtraLine)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.HandleExtraLine = APRTrace("APR-Core/features/questing/StepInstructions.lua:70:handlers.HandleExtraLine#6", handlers.HandleExtraLine)--[[/APR_DIAG]]
 
 function APR:SetButton()
     if not (APR.IsInRouteZone or APR.navigation ~= nil) then
@@ -152,29 +119,34 @@ function APR:SetButton()
         return
     end
 
-    local occupied = {}
-    for _, kind in ipairs({ "item", "spell" }) do
+    local occupied
+    for kindIndex = 1, 2 do
+        local kind = kindIndex == 1 and "item" or "spell"
         local buttons = step[kind == "item" and "Button" or "SpellButton"]
-        for questKey, value in pairs(buttons or {}) do
-            local questID, objective = APR:SplitQuestAndObjective(questKey)
-            if not (questID and objective and C_QuestLog.ReadyForTurnIn(questID)) then
-                local actionIDs = type(value) == "table" and value or { value }
-                for buttonIndex, actionID in ipairs(actionIDs) do
-                    local key = questKey
-                    local currentStep = APR.currentStep
-                    local container = (currentStep.questsList or {})[key] or (currentStep.fillersList or {})[key]
-                    if not container or occupied[key] then
-                        -- Each additional action needs its own stable row and secure button.
-                        local rowID = "ROUTE_BUTTON_" .. kind .. "_" .. tostring(questKey)
-                        if buttonIndex > 1 then rowID = rowID .. "_" .. buttonIndex end
-                        local info = kind == "spell" and C_Spell.GetSpellInfo(actionID) or nil
-                        local name = kind == "item" and C_Item.GetItemInfo(actionID) or (info and info.name)
-                        local label = string.format(L[kind == "item" and "USE_ITEM" or "USE_SPELL"], name or UNKNOWN)
-                        currentStep:AddQuestSteps(rowID, label, "Action", false, true)
-                        key = rowID .. "-Action"
+        if buttons then
+            for questKey, value in pairs(buttons) do
+                local questID, objective = APR:SplitQuestAndObjective(questKey)
+                if not (questID and objective and C_QuestLog.ReadyForTurnIn(questID)) then
+                    local actionIDs = type(value) == "table" and value or { value }
+                    for buttonIndex, actionID in ipairs(actionIDs) do
+                        local key = questKey
+                        local currentStep = APR.currentStep
+                        local container = (currentStep.questsList and currentStep.questsList[key])
+                            or (currentStep.fillersList and currentStep.fillersList[key])
+                        if not container or (occupied and occupied[key]) then
+                            -- Each additional action needs its own stable row and secure button.
+                            local rowID = "ROUTE_BUTTON_" .. kind .. "_" .. tostring(questKey)
+                            if buttonIndex > 1 then rowID = rowID .. "_" .. buttonIndex end
+                            local info = kind == "spell" and C_Spell.GetSpellInfo(actionID) or nil
+                            local name = kind == "item" and C_Item.GetItemInfo(actionID) or (info and info.name)
+                            local label = string.format(L[kind == "item" and "USE_ITEM" or "USE_SPELL"], name or UNKNOWN)
+                            currentStep:AddQuestSteps(rowID, label, "Action", false, true)
+                            key = rowID .. "-Action"
+                        end
+                        if not occupied then occupied = {} end
+                        occupied[key] = true
+                        currentStep:AddStepButton(key, actionID, kind)
                     end
-                    occupied[key] = true
-                    currentStep:AddStepButton(key, actionID, kind)
                 end
             end
         end
@@ -182,7 +154,7 @@ function APR:SetButton()
 
     -- After doing some count to the current step, it updates the current step. So we need to sync the current cooldown
     APR.currentStep:UpdateStepButtonCooldowns()
-end--[[APR_DIAG]]; APR.SetButton = APRTrace("APR-Core/features/questing/StepInstructions.lua:143:APR:SetButton#7", APR.SetButton)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.SetButton = APRTrace("APR-Core/features/questing/StepInstructions.lua:110:APR:SetButton#7", APR.SetButton)--[[/APR_DIAG]]
 
 -- Shared secondary fields are evaluated before the primary route action.
 function handlers.RenderRequirements(step, showStepDetails, currentStepIndex)
@@ -302,4 +274,4 @@ function handlers.RenderRequirements(step, showStepDetails, currentStepIndex)
             end
         end
     end
-end--[[APR_DIAG]]; handlers.RenderRequirements = APRTrace("APR-Core/features/questing/StepInstructions.lua:188:handlers.RenderRequirements#8", handlers.RenderRequirements)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.RenderRequirements = APRTrace("APR-Core/features/questing/StepInstructions.lua:160:handlers.RenderRequirements#8", handlers.RenderRequirements)--[[/APR_DIAG]]

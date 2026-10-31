@@ -359,14 +359,16 @@ function APR:GetReputationRequirement(requirement)
         return nil, factionID, targetLevel
     end
 
-    local resolvers = {
-        [APR.REPUTATION_TYPE.Renown] = GetRenownReputationProgress,
-        [APR.REPUTATION_TYPE.Friendship] = GetFriendshipReputationProgress,
-        [APR.REPUTATION_TYPE.Standard] = GetStandardReputationProgress,
-    }
-
     if requestedType then
-        local progress = resolvers[requestedType](factionID, targetLevel)
+        local resolver
+        if requestedType == APR.REPUTATION_TYPE.Renown then
+            resolver = GetRenownReputationProgress
+        elseif requestedType == APR.REPUTATION_TYPE.Friendship then
+            resolver = GetFriendshipReputationProgress
+        elseif requestedType == APR.REPUTATION_TYPE.Standard then
+            resolver = GetStandardReputationProgress
+        end
+        local progress = resolver(factionID, targetLevel)
         return progress or {
             factionID = factionID,
             targetLevel = targetLevel,
@@ -374,17 +376,12 @@ function APR:GetReputationRequirement(requirement)
         }, factionID, targetLevel
     end
 
-    local detectionOrder = {
-        APR.REPUTATION_TYPE.Renown,
-        APR.REPUTATION_TYPE.Friendship,
-        APR.REPUTATION_TYPE.Standard,
-    }
-    for _, reputationType in ipairs(detectionOrder) do
-        local progress = resolvers[reputationType](factionID, targetLevel)
-        if progress then
-            return progress, factionID, targetLevel
-        end
-    end
+    -- Keep detection ordered and live without allocating dispatch/order tables
+    -- on every completion, text and progress-bar query.
+    local progress = GetRenownReputationProgress(factionID, targetLevel)
+        or GetFriendshipReputationProgress(factionID, targetLevel)
+        or GetStandardReputationProgress(factionID, targetLevel)
+    if progress then return progress, factionID, targetLevel end
 
     return {
         factionID = factionID,
@@ -400,7 +397,7 @@ function APR:IsReputationLevelReached(requirement)
     local progress, _, targetLevel = self:GetReputationRequirement(requirement)
     local currentLevel = progress and tonumber(progress.currentLevel) or nil
     return currentLevel ~= nil and targetLevel ~= nil and currentLevel >= targetLevel
-end--[[APR_DIAG]]; APR.IsReputationLevelReached = APRTrace("APR-Core/utils/PlayerUtils.lua:399:APR:IsReputationLevelReached#26", APR.IsReputationLevelReached)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.IsReputationLevelReached = APRTrace("APR-Core/utils/PlayerUtils.lua:396:APR:IsReputationLevelReached#26", APR.IsReputationLevelReached)--[[/APR_DIAG]]
 
 --- Return the localized Blizzard label for a reputation standing.
 ---@param level number|string|nil
@@ -413,7 +410,7 @@ function APR:GetReputationStandingLabel(level)
 
     local standingLabel = GetText and GetText("FACTION_STANDING_LABEL" .. standingID, UnitSex("player")) or nil
     return standingLabel or tostring(standingID)
-end--[[APR_DIAG]]; APR.GetReputationStandingLabel = APRTrace("APR-Core/utils/PlayerUtils.lua:408:APR:GetReputationStandingLabel#27", APR.GetReputationStandingLabel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetReputationStandingLabel = APRTrace("APR-Core/utils/PlayerUtils.lua:405:APR:GetReputationStandingLabel#27", APR.GetReputationStandingLabel)--[[/APR_DIAG]]
 
 --- Return the display label for a target level in any supported reputation system.
 ---@param progress table|nil
@@ -429,7 +426,7 @@ function APR:GetReputationLevelLabel(progress, targetLevel)
     end
 
     return self:GetReputationStandingLabel(targetLevel)
-end--[[APR_DIAG]]; APR.GetReputationLevelLabel = APRTrace("APR-Core/utils/PlayerUtils.lua:422:APR:GetReputationLevelLabel#28", APR.GetReputationLevelLabel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetReputationLevelLabel = APRTrace("APR-Core/utils/PlayerUtils.lua:419:APR:GetReputationLevelLabel#28", APR.GetReputationLevelLabel)--[[/APR_DIAG]]
 
 --- Build the localized display text shared by the current-step and route-list UIs.
 ---@param requirement table|nil expects factionID, level, and optionally type
@@ -443,7 +440,7 @@ function APR:GetReputationStepText(requirement)
     local targetLabel = self:GetReputationLevelLabel(progress, targetLevel)
 
     return string.format("%s: %s - %s", reputationLabel, factionName, targetLabel)
-end--[[APR_DIAG]]; APR.GetReputationStepText = APRTrace("APR-Core/utils/PlayerUtils.lua:437:APR:GetReputationStepText#29", APR.GetReputationStepText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetReputationStepText = APRTrace("APR-Core/utils/PlayerUtils.lua:434:APR:GetReputationStepText#29", APR.GetReputationStepText)--[[/APR_DIAG]]
 
 --- Progress within the current standing/rank, using the same data as step completion.
 --- Unknown or capped ranges have no measurable bar; do not invent a zero total.
@@ -457,40 +454,30 @@ function APR:GetReputationBarProgress(requirement)
     local current = math.max(0, math.min(progress.currentValue - progress.minimumValue, total))
     local label = progress.currentLabel or self:GetReputationLevelLabel(progress, progress.currentLevel)
     return current, total, string.format("%s: %d / %d (%d%%)", label, current, total, math.floor(current / total * 100))
-end--[[APR_DIAG]]; APR.GetReputationBarProgress = APRTrace("APR-Core/utils/PlayerUtils.lua:450:APR:GetReputationBarProgress#30", APR.GetReputationBarProgress)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetReputationBarProgress = APRTrace("APR-Core/utils/PlayerUtils.lua:447:APR:GetReputationBarProgress#30", APR.GetReputationBarProgress)--[[/APR_DIAG]]
 
---- Uses a glider item if available in the player's inventory.
--- The inventory scan is intentionally verbose so we can easily debug issues with missing glider items.
+-- This is an instruction label, not an inventory action. ItemInfoInstant's
+-- fourth result is an equipment token, never the localized item name.
 function APR:UseGlider()
     APR:Debug("Function: APR.UseGlider()")
 
-    if APRData.GliderName then
-        return APRData.GliderName
+    local cached = APRData and APRData.GliderName
+    if type(cached) == "string" and cached ~= "" and not cached:match("^INVTYPE_") then
+        return cached
     end
-
-    local itemName = L["GOBLIN_GLIDER"]
-    local DerpGot = 0
-
-    for bag = 0, 4 do
-        for slot = 1, C_Container.GetContainerNumSlots(bag) do
-            local containerItemID = C_Container.GetContainerItemID(bag, slot) or 0
-            if (containerItemID == 109076) then
-                DerpGot = 1
-                local itemLink = C_Container.GetContainerItemLink(bag, slot)
-                local itemID, itemType, itemSubType, itemEquipLoc, icon, classID, subClassID = C_Item.GetItemInfoInstant(
-                    itemLink)
-                itemName = itemEquipLoc
-                break
-            end
-        end
-        if DerpGot == 1 then
-            APRData.GliderName = itemName
-            return itemName
+    -- Repair the old empty/equipment-token saves without caching a failed or
+    -- not-yet-loaded name. A later render can retry the native lookup.
+    if APRData then APRData.GliderName = nil end
+    local getInfo = C_Item and C_Item.GetItemInfo or GetItemInfo
+    if getInfo then
+        local ok, name = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](getInfo, 109076)
+        if ok and type(name) == "string" and name ~= "" and not name:match("^INVTYPE_") then
+            if APRData then APRData.GliderName = name end
+            return name
         end
     end
-
-    return itemName
-end--[[APR_DIAG]]; APR.UseGlider = APRTrace("APR-Core/utils/PlayerUtils.lua:464:APR:UseGlider#31", APR.UseGlider)--[[/APR_DIAG]]
+    return L["GOBLIN_GLIDER"]
+end--[[APR_DIAG]]; APR.UseGlider = APRTrace("APR-Core/utils/PlayerUtils.lua:461:APR:UseGlider#31", APR.UseGlider)--[[/APR_DIAG]]
 
 local function GetOwnedItemLocation(itemID)
     if not itemID or not ItemLocation or not C_Item or not C_Item.GetItemID then
@@ -500,7 +487,7 @@ local function GetOwnedItemLocation(itemID)
     local function matches(itemLocation)
         return itemLocation and itemLocation:IsValid() and C_Item.DoesItemExist(itemLocation) and
             C_Item.GetItemID(itemLocation) == itemID
-    end--[[APR_DIAG]]; matches = APRTrace("APR-Core/utils/PlayerUtils.lua:500:matches#33", matches)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; matches = APRTrace("APR-Core/utils/PlayerUtils.lua:487:matches#33", matches)--[[/APR_DIAG]]
 
     local firstEquippedSlot = _G.INVSLOT_FIRST_EQUIPPED or 1
     local lastEquippedSlot = _G.INVSLOT_LAST_EQUIPPED or 19
@@ -527,7 +514,7 @@ local function GetOwnedItemLocation(itemID)
     end
 
     return nil
-end--[[APR_DIAG]]; GetOwnedItemLocation = APRTrace("APR-Core/utils/PlayerUtils.lua:495:GetOwnedItemLocation#32", GetOwnedItemLocation)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; GetOwnedItemLocation = APRTrace("APR-Core/utils/PlayerUtils.lua:482:GetOwnedItemLocation#32", GetOwnedItemLocation)--[[/APR_DIAG]]
 
 --- Return the 12.1 item-targeting context for an owned route item, when a spell is targeting an item.
 --- Older clients simply return nil and retain the pre-12.1 tooltip.
@@ -558,7 +545,7 @@ function APR:GetTargetSpellItemContext(itemID)
         matches = matches == true,
         spellID = targetSpellID,
     }
-end--[[APR_DIAG]]; APR.GetTargetSpellItemContext = APRTrace("APR-Core/utils/PlayerUtils.lua:536:APR:GetTargetSpellItemContext#34", APR.GetTargetSpellItemContext)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetTargetSpellItemContext = APRTrace("APR-Core/utils/PlayerUtils.lua:523:APR:GetTargetSpellItemContext#34", APR.GetTargetSpellItemContext)--[[/APR_DIAG]]
 
 --- Evaluate a route action using non-secret booleans whenever cooldown restrictions are active.
 ---@param actionType string
@@ -693,7 +680,7 @@ function APR:GetRouteActionUsability(actionType, actionID, ignoreCooldown, ignor
     end
 
     return false, "invalid"
-end--[[APR_DIAG]]; APR.GetRouteActionUsability = APRTrace("APR-Core/utils/PlayerUtils.lua:570:APR:GetRouteActionUsability#35", APR.GetRouteActionUsability)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetRouteActionUsability = APRTrace("APR-Core/utils/PlayerUtils.lua:557:APR:GetRouteActionUsability#35", APR.GetRouteActionUsability)--[[/APR_DIAG]]
 
 -- Timing may be secret on modern clients. Never format or compare it until
 -- accessibility is checked; the cooldown widget can still display that timing.
@@ -733,7 +720,7 @@ function APR:GetActionAvailabilityText(actionType, actionID, includeRemaining)
     if not includeRemaining then return L["ACTION_COOLDOWN"] end
     remaining = math.ceil(remaining)
     return string.format(L["ACTION_AVAILABLE_IN"], string.format("%d:%02d", math.floor(remaining / 60), remaining % 60))
-end--[[APR_DIAG]]; APR.GetActionAvailabilityText = APRTrace("APR-Core/utils/PlayerUtils.lua:700:APR:GetActionAvailabilityText#36", APR.GetActionAvailabilityText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetActionAvailabilityText = APRTrace("APR-Core/utils/PlayerUtils.lua:687:APR:GetActionAvailabilityText#36", APR.GetActionAvailabilityText)--[[/APR_DIAG]]
 
 function APR:GetRouteActionStatusText(reason)
     local messages = {
@@ -745,4 +732,4 @@ function APR:GetRouteActionStatusText(reason)
         unusable = _G.SPELL_FAILED_NOT_HERE or _G.SPELL_FAILED_NOT_READY,
     }
     return messages[reason]
-end--[[APR_DIAG]]; APR.GetRouteActionStatusText = APRTrace("APR-Core/utils/PlayerUtils.lua:738:APR:GetRouteActionStatusText#37", APR.GetRouteActionStatusText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetRouteActionStatusText = APRTrace("APR-Core/utils/PlayerUtils.lua:725:APR:GetRouteActionStatusText#37", APR.GetRouteActionStatusText)--[[/APR_DIAG]]

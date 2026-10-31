@@ -1,7 +1,7 @@
 -- Native, declarative unlock guidance. No APR route registry, engine, globals,
 -- frames or saved variables are read. The consumer owns scheduling and storage.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("unlock_runner", 8) then return end
+if not Lib:BeginModule("unlock_runner", 9) then return end
 local Instance, Copy = Lib.Instance, Lib.Copy
 local MAX_STEPS = 4096
 local Session = {}
@@ -144,14 +144,19 @@ local function AccessPlans(data, blockers, checkpoint, overflow)
         for _, child in ipairs(node.children) do
             local alternatives = expand(child)
             if node.key == "all" then
-                local combined = {}
+                local combined, truncated = {}, false
                 for _, a in ipairs(result) do
                     for _, b in ipairs(alternatives) do
+                        -- Preserve the first 64 pairs in authored order. Once
+                        -- a 65th exists, omitted pairs cannot affect this
+                        -- product; later children must still be expanded.
+                        if #combined >= 64 then overflow(); truncated = true; break end
                         local goals = Copy(a)
                         for _, goal in ipairs(b) do goals[#goals + 1] = Copy(goal) end
-                        if #combined < 64 then combined[#combined + 1] = goals else overflow() end
+                        combined[#combined + 1] = goals
                         checkpoint()
                     end
+                    if truncated then break end
                 end
                 result = combined
             else
@@ -167,10 +172,15 @@ local function AccessPlans(data, blockers, checkpoint, overflow)
         if edge.blockedRequirements and not edge.blockedActions then
             local character = Character(data, edge.from and edge.from.uiMapID)
             local failure = data:GetRequirementFailures(edge.blockedRequirements, character)
+            local requirements
             for _, goals in ipairs(expand(failure)) do
                 if #goals > 0 then
+                    -- These alternatives are private and read-only until
+                    -- each plan is copied for publication. Capture the
+                    -- edge once; public plans still receive isolated copies.
+                    requirements = requirements or Copy(edge.blockedRequirements)
                     result[#result + 1] = { edgeID = edge.id, instruction = edge.instruction,
-                        requirements = Copy(edge.blockedRequirements), departureMapID = character.mapID, goals = goals }
+                        requirements = requirements, departureMapID = character.mapID, goals = goals }
                 end
             end
         end
@@ -424,7 +434,13 @@ function Instance:CreateUnlockBuild(blockers, options)
             if operation > 1 and deadline and self.clock() >= deadline then break end
             self.workLastStep = self.workLastStep + 1
             local ok, plans, missing = coroutine.resume(self.worker)
-            if not ok then self.status, self.worker = "failed", nil; error(plans, 0) end
+            if not ok then
+                -- Like cancellation, an observation error can interrupt the
+                -- worklist after discovery but before its scores converge.
+                cache.scoresByMap = nil
+                self.status, self.worker = "failed", nil
+                error(plans, 0)
+            end
             if coroutine.status(self.worker) == "dead" then
                 self.status, self.plans, self.missing, self.worker = "ready", plans, missing, nil
                 break

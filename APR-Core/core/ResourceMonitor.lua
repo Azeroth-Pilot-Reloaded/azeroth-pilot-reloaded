@@ -142,7 +142,19 @@ function Monitor:GetView(duration)
     for index = 1, 120 do view.points[index] = {from = start + (index - 1) * interval, to = start + index * interval} end
     if not resources then return view end
     view.firstMemoryKB, view.firstMemoryAt, view.peakMemoryKB = resources.firstMemoryKB, resources.firstMemoryAt, resources.peakMemoryKB
-    for offset = resources.count - 1, 0, -1 do
+    -- The ring is chronological. Find the first expired sample without scanning
+    -- the older history; full-window views keep their single aggregation pass.
+    local oldest = resources.count - 1
+    if oldest > 0 and resources.samples[(resources.cursor - oldest - 1) % SAMPLE_LIMIT + 1].time <= start then
+        local recent, expired = 0, oldest
+        while recent < expired do
+            local middle = math.floor((recent + expired) / 2)
+            local sample = resources.samples[(resources.cursor - middle - 1) % SAMPLE_LIMIT + 1]
+            if sample.time > start then recent = middle + 1 else expired = middle end
+        end
+        oldest = recent - 1
+    end
+    for offset = oldest, 0, -1 do
         local sample = resources.samples[(resources.cursor - offset - 1) % SAMPLE_LIMIT + 1]
         if sample.time > start and sample.time <= view.finish then
             local index = math.max(1, math.min(120, math.ceil((sample.time - start) / interval)))

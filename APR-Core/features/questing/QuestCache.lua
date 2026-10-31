@@ -5,20 +5,52 @@ local APRResume = APRInstrumentation and APRInstrumentation.Resume or coroutine.
 local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Synchronizes quest-log objectives and completion state; cache refreshes are coalesced before rendering.
 
+local questUpdateContext
+local pendingRemovalRender, removalRenderRevision = nil, 0
+
+local function IsQuestObjectiveSnapshotCurrent(self, snapshot, cacheOnly)
+    if not snapshot or snapshot.invalid then return false end
+    local player, route = self.PlayerID, self.ActiveRoute
+    local progress = APRData and player and APRData[player]
+    local current = questUpdateContext == snapshot and (cacheOnly or self._questObjectiveSnapshot == snapshot)
+        and snapshot.player == player and snapshot.quests == self.ActiveQuests
+        and snapshot.route == route and snapshot.progress == progress
+        and snapshot.index == (progress and route and progress[route])
+        and snapshot.revision == (self.stepRevision or 0)
+        and snapshot.definition == (route and self.RouteQuestStepList and self.RouteQuestStepList[route])
+    if not current then snapshot.invalid = true end
+    return current
+end--[[APR_DIAG]]; IsQuestObjectiveSnapshotCurrent = APRTrace("APR-Core/features/questing/QuestCache.lua:11:IsQuestObjectiveSnapshotCurrent#1", IsQuestObjectiveSnapshotCurrent)--[[/APR_DIAG]]
+
 local function UpdateQuest(self, deferStepUpdate)
+    local snapshot = questUpdateContext
     self:Debug("Function: APR_UpdateQuest()")
 
-    local updateStep = false
+    local updateStep = pendingRemovalRender
 
-    local numQuestLogEntries = C_QuestLog.GetNumQuestLogEntries()
+    local numQuestLogEntries, numQuests = C_QuestLog.GetNumQuestLogEntries()
+    if type(numQuestLogEntries) ~= "number" or numQuestLogEntries < 0 or numQuestLogEntries % 1 ~= 0 then return end
+    -- Readers may fill objective-snapshot misses before enumeration reaches a
+    -- quest, so native journal membership needs its own independent set.
+    local seen, complete, observed = {}, true, 0
     for questIndex = 1, numQuestLogEntries do
         local questInfo = C_QuestLog.GetInfo(questIndex)
 
-        if questInfo and questInfo.questID > 0 and not questInfo.isHeader then
+        if type(questInfo) ~= "table" then
+            complete = false
+        elseif not questInfo.isHeader and (type(questInfo.questID) ~= "number"
+            or questInfo.questID <= 0 or questInfo.questID % 1 ~= 0) then
+            complete = false
+        elseif not questInfo.isHeader then
             local questID = questInfo.questID
+            if seen[questID] then complete = false end
+            seen[questID], observed = true, observed + 1
             local questTitle = APR:GetQuestTitle(questID)
+            if type(questTitle) ~= "string" then return end
             local isQuestComplete = C_QuestLog.IsComplete(questID)
+            if isQuestComplete == nil then complete = false end
             local numObjectives = C_QuestLog.GetNumQuestObjectives(questID)
+            if type(numObjectives) ~= "number" or numObjectives < 0 or numObjectives % 1 ~= 0 then return end
             local questStatus = isQuestComplete and APR.QUEST_STATUS.COMPLETE or APR.QUEST_STATUS.PROGRESS
 
             local quest = APR.ActiveQuests[questID] or {
@@ -39,6 +71,12 @@ local function UpdateQuest(self, deferStepUpdate)
 
             -- Handle objectives
             local questObjectives = (numObjectives > 0) and C_QuestLog.GetQuestObjectives(questID) or nil
+            if numObjectives > 0 and (not questObjectives or #questObjectives ~= numObjectives) then complete = false end
+            -- Borrow the native response only for this synchronous refresh. A
+            -- nested refresh or changed context must not publish into its parent.
+            if not deferStepUpdate and IsQuestObjectiveSnapshotCurrent(self, snapshot) then
+                snapshot[questID] = questObjectives or false
+            end
             if not questObjectives then
                 -- Quest without objectives
                 local objective = quest.objectives[1]
@@ -49,6 +87,7 @@ local function UpdateQuest(self, deferStepUpdate)
                 for i, objectiveInfo in ipairs(questObjectives) do
                     local status = objectiveInfo.finished and APR.QUEST_STATUS.COMPLETE or APR.QUEST_STATUS.PROGRESS
                     local text = objectiveInfo.text or ""
+                    if objectiveInfo.text == nil then complete = false end
 
                     -- Update only if changed
                     local objEntry = quest.objectives[i]
@@ -74,32 +113,84 @@ local function UpdateQuest(self, deferStepUpdate)
             end
         end
     end
+    if numQuests ~= nil and (type(numQuests) ~= "number" or numQuests < 0
+        or numQuests % 1 ~= 0 or observed < numQuests) then complete = false end
+    if not IsQuestObjectiveSnapshotCurrent(self, snapshot, deferStepUpdate) then return end
+
+    -- Hidden/collapsed/task quests need not appear in the visible enumeration.
+    -- Only an explicit native absence after a complete read can retire a cached
+    -- quest. Collect first: an error or reentrant read must not partially prune.
+    local removed
+    if complete and not self.startupQuestStatePending and C_QuestLog.IsOnQuest then
+        for questID in pairs(snapshot.quests) do
+            if not seen[questID] and C_QuestLog.IsOnQuest(questID) == false then
+                removed = removed or {}
+                removed[#removed + 1] = questID
+            end
+        end
+    end
+    if removed then
+        local finalEntries, finalQuests = C_QuestLog.GetNumQuestLogEntries()
+        if finalEntries ~= numQuestLogEntries or finalQuests ~= numQuests then return end
+    end
+    if not IsQuestObjectiveSnapshotCurrent(self, snapshot, deferStepUpdate) then return end
+    if removed then
+        if self.startupQuestStatePending then return end
+        for _, questID in ipairs(removed) do snapshot.quests[questID] = nil end
+        updateStep = true
+        -- Deferred callers publish outside this scope and may fail there. Keep
+        -- the debt until a later normal refresh completes its own publication.
+        removalRenderRevision = removalRenderRevision + 1
+        pendingRemovalRender = removalRenderRevision
+    end
     -- Combined refresh callers render once, after the quest cache is synchronized.
     -- UpdateStep also evaluates QpartPart text triggers against that cache.
     if deferStepUpdate then return end
     APR:UpdateQpartPart()
+    if not IsQuestObjectiveSnapshotCurrent(self, snapshot) then return end
     if updateStep then
+        local removalRevision = pendingRemovalRender
         APR:UpdateStep()
+        snapshot.rendered = removalRevision
     else
         -- update for group if not a new step
         APR.party:SendGroupMessage()
         APR.party:RefreshPartyFrameAnchor()
     end
-end--[[APR_DIAG]]; UpdateQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:8:UpdateQuest#1", UpdateQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; UpdateQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:25:UpdateQuest#2", UpdateQuest)--[[/APR_DIAG]]
 
 function APR:UpdateQuest(deferStepUpdate)
+    local previousContext = questUpdateContext
+    if previousContext then previousContext.invalid = true end
+    local previous = self._questObjectiveSnapshot
+    if previous then previous.invalid = true end
     local rows = self.currentStep
-    if deferStepUpdate or not rows or not rows.BeginQuestUpdates or not rows.EndQuestUpdates then
-        return UpdateQuest(self, deferStepUpdate)
-    end
-    rows:BeginQuestUpdates()
+    local batched = not deferStepUpdate and rows and rows.BeginQuestUpdates and rows.EndQuestUpdates
+    if batched then rows:BeginQuestUpdates() end
+    local player, route = self.PlayerID, self.ActiveRoute
+    local progress = APRData and player and APRData[player]
+    -- Deferred refreshes expose no objective snapshot, but still own a private
+    -- identity/nesting guard until absence reconciliation finishes.
+    local context = {
+        player = player, quests = self.ActiveQuests, route = route, progress = progress,
+        index = progress and route and progress[route], revision = self.stepRevision or 0,
+        definition = route and self.RouteQuestStepList and self.RouteQuestStepList[route],
+    }
+    questUpdateContext = context
+    self._questObjectiveSnapshot = not deferStepUpdate and context or nil
     local ok, result = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](UpdateQuest, self, deferStepUpdate)
+    -- EndQuestUpdates may publish callbacks or throw: retire our scope first,
+    -- restoring only the parent's pointer, never its already-invalid validity.
+    self._questObjectiveSnapshot = previous
+    questUpdateContext = previousContext
     -- Always release the nesting guard. A failed refresh retains dirty geometry
     -- for recovery instead of publishing a partially synchronized layout.
-    rows:EndQuestUpdates(ok)
+    if batched then rows:EndQuestUpdates(ok) end
+    -- End callbacks can request a newer publication; only consume our own.
+    if ok and context.rendered and context.rendered == pendingRemovalRender then pendingRemovalRender = nil end
     if not ok then error(result, 0) end
     return result
-end--[[APR_DIAG]]; APR.UpdateQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:90:APR:UpdateQuest#2", APR.UpdateQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.UpdateQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:162:APR:UpdateQuest#3", APR.UpdateQuest)--[[/APR_DIAG]]
 
 function APR:RemoveQuest(questID)
     if not questID then return end
@@ -125,12 +216,12 @@ function APR:RemoveQuest(questID)
     -- here, which also rebuilds the quest tracker and the current step.
     self:OverrideRouteData()
     self:UpdateStep()
-end--[[APR_DIAG]]; APR.RemoveQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:104:APR:RemoveQuest#3", APR.RemoveQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RemoveQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:195:APR:RemoveQuest#4", APR.RemoveQuest)--[[/APR_DIAG]]
 
 function APR:CancelAutocompleteQuest()
     if self.autocompleteQuestTimer then self.autocompleteQuestTimer:Cancel() end
     self.autocompleteQuestTimer = nil
-end--[[APR_DIAG]]; APR.CancelAutocompleteQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:130:APR:CancelAutocompleteQuest#4", APR.CancelAutocompleteQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CancelAutocompleteQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:221:APR:CancelAutocompleteQuest#5", APR.CancelAutocompleteQuest)--[[/APR_DIAG]]
 
 function APR:PopupAutocompleteQuest()
     if self.routeValidationPending or self.routeValidationFailed then return end
@@ -151,13 +242,13 @@ function APR:PopupAutocompleteQuest()
         elseif retries < 5 then
             retries = retries + 1
             local timer
-            timer = C_Timer.NewTimer(1, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/QuestCache.lua:154:callback#7", --[[/APR_DIAG]]function()
+            timer = C_Timer.NewTimer(1, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/QuestCache.lua:245:callback#8", --[[/APR_DIAG]]function()
                 if self.autocompleteQuestTimer ~= timer then return end
                 self.autocompleteQuestTimer = nil
                 check()
             end--[[APR_DIAG]])--[[/APR_DIAG]])
             self.autocompleteQuestTimer = timer
         end
-    end--[[APR_DIAG]]; check = APRTrace("APR-Core/features/questing/QuestCache.lua:142:check#6", check)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; check = APRTrace("APR-Core/features/questing/QuestCache.lua:233:check#7", check)--[[/APR_DIAG]]
     check()
-end--[[APR_DIAG]]; APR.PopupAutocompleteQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:135:APR:PopupAutocompleteQuest#5", APR.PopupAutocompleteQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.PopupAutocompleteQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:226:APR:PopupAutocompleteQuest#6", APR.PopupAutocompleteQuest)--[[/APR_DIAG]]

@@ -4,6 +4,10 @@ local function Scope(name)
     return (name or "APR"):gsub("APR%-Core/", ""):gsub("#%d+$", "")
 end
 
+local function FormatResourceNumber(value)
+    return value and string.format("%.3f", value) or "-"
+end
+
 function APR:FormatDiagnosticEntry(entry, start)
     local context = entry.route and (" | " .. entry.route .. " / " .. tostring(entry.step or "?")) or ""
     local repeats = entry.count > 1 and string.format(" ×%d (%.3fs, max %.3f ms)", entry.count,
@@ -60,10 +64,10 @@ function APR:BuildDiagnosticReport()
         if resources then
             for offset = resources.count - 1, 0, -1 do
                 local sample = resources.samples[(resources.cursor - offset - 1) % 600 + 1]
-                local function number(value) return value and string.format("%.3f", value) or "-" end
                 lines[#lines + 1] = string.format("+%.3fs | %s | %s | %s | %s | %s / %s",
-                    sample.time - perf.startedAt, number(sample.cpuMs), number(sample.peakFrameMs), number(sample.fps),
-                    number(sample.memoryKB), sample.route or "-", tostring(sample.step or "?"))
+                    sample.time - perf.startedAt, FormatResourceNumber(sample.cpuMs), FormatResourceNumber(sample.peakFrameMs),
+                    FormatResourceNumber(sample.fps), FormatResourceNumber(sample.memoryKB),
+                    sample.route or "-", tostring(sample.step or "?"))
             end
         end
         lines[#lines + 1] = "\n" .. L["UI_SLOW_CALLS"]
@@ -98,6 +102,16 @@ function APR:BuildDiagnosticReport()
             debug.aggregatedCalls or 0)
         local rows = self:GetDiagnosticRows()
         for i = #rows, 1, -1 do lines[#lines + 1] = self:FormatDiagnosticEntry(rows[i], debug.startedAt) end
+    end
+    local finder = self.partyFinder
+    if finder and finder.GetTrafficRows then
+        lines[#lines + 1] = "\nAPRFindV1 | time | TX/RX | kind | channel | peer | result | payload"
+        local channel = self.CommunicationChannel
+        lines[#lines + 1] = "APR channel: " .. tostring(channel and channel.status) .. " / " .. tostring(channel and channel.id)
+        for _, row in ipairs(finder:GetTrafficRows()) do
+            lines[#lines + 1] = string.format("%.3f | %s | %s | %s | %s | %s | %s", row.time,
+                row.direction, row.kind, row.channel, row.peer, row.result, row.wire)
+        end
     end
     return table.concat(lines, "\n")
 end

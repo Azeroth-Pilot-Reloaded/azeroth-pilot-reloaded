@@ -111,7 +111,10 @@ function D.Message(kind, message, data, force, categoryEnabled)
     if not D.enabled and not force and not categoryEnabled then return end
     local entry = D.Record(kind, nil, message, data)
     if APR and APR.performanceLogging then
-        APR.performanceBreadcrumb, APR.performanceBreadcrumbAt = D.Value(message), GetTime()
+        -- Record already produced the bounded text, including for duplicates.
+        -- Nil is empty in the journal but keeps its Value representation here.
+        APR.performanceBreadcrumb = type(message) ~= "nil" and entry.message or D.Value(message)
+        APR.performanceBreadcrumbAt = GetTime()
     end
     if force and entry then
         print(string.format("[APR %s] %s%s", kind, entry.message, entry.data and (" | " .. entry.data) or ""))
@@ -200,16 +203,31 @@ end
 
 local function Resumed(thread, parent, started, ok, ...)
     local context = threads[thread]
-    if not ok and context then
-        while context.depth > 0 do End(context, context.frames[context.depth], D.Value((...))) end
+    -- A refused resume of a running/normal coroutine leaves its scopes alive.
+    if not ok and context and context.depth > 0 and coroutine.status(thread) == "dead" then
+        if D.enabled then
+            local failure = D.Value((...))
+            while context.depth > 0 do End(context, context.frames[context.depth], failure) end
+        else
+            -- Scopes opened before capture stopped still own their old log.
+            -- Release it without publishing errors into a replacement capture.
+            while context.depth > 0 do
+                context.frames[context.depth].log = nil
+                context.depth = context.depth - 1
+            end
+            context.suspendedAt = nil
+        end
     end
     if parent then parent.children = parent.children + math.max(0, debugprofilestop() - started) end
     return ok, ...
 end
 
 function D.Resume(thread, ...)
-    if not D.enabled then return coroutine.resume(thread, ...) end
     local context = threads[thread]
+    if not D.enabled then
+        if not context or context.depth == 0 then return coroutine.resume(thread, ...) end
+        return Resumed(thread, nil, nil, coroutine.resume(thread, ...))
+    end
     if context and context.suspendedAt then
         context.paused = context.paused + debugprofilestop() - context.suspendedAt
         context.suspendedAt = nil
@@ -219,8 +237,9 @@ function D.Resume(thread, ...)
 end
 
 local function ProtectedResult(context, depth, ok, ...)
-    if not ok then
-        while context.depth > depth do End(context, context.frames[context.depth], D.Value((...))) end
+    if not ok and context.depth > depth then
+        local failure = D.Value((...))
+        while context.depth > depth do End(context, context.frames[context.depth], failure) end
     end
     return ok, ...
 end

@@ -178,6 +178,9 @@ local function FinishValue(job, hash)
     local frame = job.stack[#job.stack]
     if frame.valueType == "table" then job.active[frame.value] = nil end
     job.stack[#job.stack] = nil
+    -- Reuse one child frame per depth, without retaining completed input values.
+    -- Stage/type initialization overwrites the remaining scalar traversal state.
+    frame.value, frame.text, frame.nextKey, frame.stage = nil, nil, nil, nil
     local parent = job.stack[#job.stack]
     if not parent then
         job.done, job.digest = true, string.format("%08x", hash)
@@ -191,7 +194,7 @@ end--[[APR_DIAG]]; FinishValue = APRTrace("APR-Core/features/group/PartyFinderPr
 
 function P.NewFingerprintJob(routeData)
     return setmetatable({ stack = { { value = routeData, scope = "route" } }, active = {}, visited = 0 }, Fingerprint)
-end--[[APR_DIAG]]; P.NewFingerprintJob = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:192:P.NewFingerprintJob#17", P.NewFingerprintJob)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; P.NewFingerprintJob = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:195:P.NewFingerprintJob#17", P.NewFingerprintJob)--[[/APR_DIAG]]
 
 function Fingerprint:Step(maxNodes)
     if self.done then self.lastWork = 0; return true, self.digest end
@@ -228,17 +231,23 @@ function Fingerprint:Step(maxNodes)
             elseif not IgnoreFingerprintField(frame.scope, key) then
                 frame.childValue, frame.stage = value, "key_wait"
                 frame.childScope = FingerprintChildScope(frame.scope, key, value)
-                self.stack[#self.stack + 1] = { value = key }
+                local child = frame.childFrame
+                if not child then child = {}; frame.childFrame = child end
+                child.value, child.scope = key, nil
+                self.stack[#self.stack + 1] = child
             end
         elseif frame.stage == "value" then
             frame.stage = "value_wait"
-            self.stack[#self.stack + 1] = { value = frame.childValue, scope = frame.childScope }
+            local child = frame.childFrame
+            if not child then child = {}; frame.childFrame = child end
+            child.value, child.scope = frame.childValue, frame.childScope
+            self.stack[#self.stack + 1] = child
             frame.childValue, frame.childScope = nil, nil
         end
     end
     self.lastWork = work
     return self.done == true, self.digest
-end--[[APR_DIAG]]; Fingerprint.Step = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:196:Fingerprint:Step#18", Fingerprint.Step)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Fingerprint.Step = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:199:Fingerprint:Step#18", Fingerprint.Step)--[[/APR_DIAG]]
 
 local function ValidProgress(data)
     local id, step, total = data.progressId, data.step, data.total
@@ -251,7 +260,7 @@ local function ValidProgress(data)
     if index then return tonumber(index) == step and step <= total end
     local group, branch = id:match("^parallel:([1-9]%d*):([1-9]%d*)$")
     return group ~= nil and tonumber(group) <= MAX_PROGRESS and tonumber(branch) <= MAX_PROGRESS
-end--[[APR_DIAG]]; ValidProgress = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:243:ValidProgress#19", ValidProgress)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ValidProgress = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:252:ValidProgress#19", ValidProgress)--[[/APR_DIAG]]
 
 function P.CompareProgress(own, peer)
     if type(own) ~= "table" or type(peer) ~= "table" then return "unknown" end
@@ -267,7 +276,7 @@ function P.CompareProgress(own, peer)
     if gap > 0 then return "ahead", gap end
     if gap < 0 then return "behind", gap end
     return "different"
-end--[[APR_DIAG]]; P.CompareProgress = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:256:P.CompareProgress#20", P.CompareProgress)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; P.CompareProgress = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:265:P.CompareProgress#20", P.CompareProgress)--[[/APR_DIAG]]
 
 local schemas = {
     Q = { "id", "context", "route", "revision", "progressId", "step", "total", "mode", "range", "minLevel", "maxLevel", "primary", "languages" },
@@ -312,7 +321,7 @@ local function NormalizeField(field, value, fromWire)
     if field == "primary" then return (value == "" or languageInfo[value]) and value or nil end
     if field == "languageSource" then return (value == "auto" or value == "player") and value or nil end
     return nil
-end--[[APR_DIAG]]; NormalizeField = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:287:NormalizeField#21", NormalizeField)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; NormalizeField = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:296:NormalizeField#21", NormalizeField)--[[/APR_DIAG]]
 
 local function NormalizePacket(kind, values, fromWire)
     local schema = schemas[kind]
@@ -336,7 +345,7 @@ local function NormalizePacket(kind, values, fromWire)
         end
     end
     return result
-end--[[APR_DIAG]]; NormalizePacket = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:317:NormalizePacket#22", NormalizePacket)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; NormalizePacket = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:326:NormalizePacket#22", NormalizePacket)--[[/APR_DIAG]]
 
 function P.Encode(kind, data)
     local packet = NormalizePacket(kind, data, false)
@@ -348,7 +357,7 @@ function P.Encode(kind, data)
     end
     local wire = table.concat(parts, "|")
     return #wire <= 240 and not wire:find("[%z\1-\31\127]") and wire or nil
-end--[[APR_DIAG]]; P.Encode = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:341:P.Encode#23", P.Encode)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; P.Encode = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:350:P.Encode#23", P.Encode)--[[/APR_DIAG]]
 
 function P.Decode(wire)
     if type(wire) ~= "string" or #wire > 240 or #wire < 3 or wire:find("[%z\1-\31\127]") then return nil end
@@ -359,4 +368,4 @@ function P.Decode(wire)
     local values = {}
     for index = 1, #schema do values[index] = parts[index + 2] end
     return NormalizePacket(kind, values, true)
-end--[[APR_DIAG]]; P.Decode = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:353:P.Decode#24", P.Decode)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; P.Decode = APRTrace("APR-Core/features/group/PartyFinderProtocol.lua:362:P.Decode#24", P.Decode)--[[/APR_DIAG]]

@@ -76,26 +76,36 @@ end--[[APR_DIAG]]; NameParts = APRTrace("APR-Core/features/group/PartyProtocol.l
 function protocol.PlayerKey(value)
     local name, realm = NameParts(value)
     if not name then return end
+    if realm then return name .. "-" .. realm end
     local home = GetNormalizedRealmName and GetNormalizedRealmName() or GetRealmName and GetRealmName() or ""
-    return name .. "-" .. (realm or home:gsub("%s", ""))
+    return name .. "-" .. home:gsub("%s", "")
 end--[[APR_DIAG]]; protocol.PlayerKey = APRTrace("APR-Core/features/group/PartyProtocol.lua:76:protocol.PlayerKey#6", protocol.PlayerKey)--[[/APR_DIAG]]
 
 function protocol.DisplayName(value)
     local name, realm = NameParts(value)
     if not name then return end
+    if not realm then return name end
     local home = GetNormalizedRealmName and GetNormalizedRealmName() or GetRealmName and GetRealmName() or ""
-    return realm and realm ~= home:gsub("%s", "") and (name .. "-" .. realm) or name
-end--[[APR_DIAG]]; protocol.DisplayName = APRTrace("APR-Core/features/group/PartyProtocol.lua:83:protocol.DisplayName#7", protocol.DisplayName)--[[/APR_DIAG]]
+    return realm ~= home:gsub("%s", "") and (name .. "-" .. realm) or name
+end--[[APR_DIAG]]; protocol.DisplayName = APRTrace("APR-Core/features/group/PartyProtocol.lua:84:protocol.DisplayName#7", protocol.DisplayName)--[[/APR_DIAG]]
 
 -- Sender is authoritative. Legacy peers may send only a character name in their payload.
 function protocol.NormalizeSnapshot(data, sender)
     if type(data) ~= "table" then return nil, "payload_type" end
     local name, realm = NameParts(sender)
     local claimed, claimedRealm = NameParts(data.username)
-    if not name or claimed ~= name or (claimedRealm and protocol.PlayerKey(data.username) ~= protocol.PlayerKey(sender)) then
+    if not name or claimed ~= name then return nil, "sender_mismatch" end
+    -- Reuse the two parsed identities; read the live home realm once without
+    -- retaining it across loading screens or other native context changes.
+    local home = GetNormalizedRealmName and GetNormalizedRealmName() or GetRealmName and GetRealmName() or ""
+    home = home:gsub("%s", "")
+    if claimedRealm and claimedRealm ~= (realm or home) then
         return nil, "sender_mismatch"
     end
-    local result = { username = protocol.DisplayName(sender), sender = protocol.PlayerKey(sender) }
+    local result = {
+        username = realm and realm ~= home and (name .. "-" .. realm) or name,
+        sender = name .. "-" .. (realm or home),
+    }
     for _, field in ipairs(ROUTE_FIELDS) do
         if data[field] ~= nil then
             result[field] = Text(data[field], 256)
@@ -170,7 +180,7 @@ function protocol.NormalizeSnapshot(data, sender)
         end
     end
     return result
-end--[[APR_DIAG]]; protocol.NormalizeSnapshot = APRTrace("APR-Core/features/group/PartyProtocol.lua:91:protocol.NormalizeSnapshot#8", protocol.NormalizeSnapshot)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; protocol.NormalizeSnapshot = APRTrace("APR-Core/features/group/PartyProtocol.lua:93:protocol.NormalizeSnapshot#8", protocol.NormalizeSnapshot)--[[/APR_DIAG]]
 
 -- Compare consumed values before serialization or frame work. Metadata, filler
 -- rows and duplicated effective indices never affect another player's display.
@@ -182,7 +192,7 @@ function protocol.SameProgress(a, b)
     if left == right then return true end
     return left ~= nil and right ~= nil and left.id == right.id
         and left.step == right.step and left.total == right.total
-end--[[APR_DIAG]]; protocol.SameProgress = APRTrace("APR-Core/features/group/PartyProtocol.lua:177:protocol.SameProgress#9", protocol.SameProgress)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; protocol.SameProgress = APRTrace("APR-Core/features/group/PartyProtocol.lua:187:protocol.SameProgress#9", protocol.SameProgress)--[[/APR_DIAG]]
 
 local function SameRows(a, b)
     if a == b then return true end
@@ -198,10 +208,10 @@ local function SameRows(a, b)
         end
     end
     return true
-end--[[APR_DIAG]]; SameRows = APRTrace("APR-Core/features/group/PartyProtocol.lua:187:SameRows#10", SameRows)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; SameRows = APRTrace("APR-Core/features/group/PartyProtocol.lua:197:SameRows#10", SameRows)--[[/APR_DIAG]]
 
 function protocol.SameDetails(a, b)
     if a == b then return true end
     return SameRows(a and a.extraLines, b and b.extraLines)
         and SameRows(a and a.questSteps, b and b.questSteps)
-end--[[APR_DIAG]]; protocol.SameDetails = APRTrace("APR-Core/features/group/PartyProtocol.lua:203:protocol.SameDetails#11", protocol.SameDetails)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; protocol.SameDetails = APRTrace("APR-Core/features/group/PartyProtocol.lua:213:protocol.SameDetails#11", protocol.SameDetails)--[[/APR_DIAG]]

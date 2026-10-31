@@ -368,7 +368,12 @@ function APR:DeepCopyTable(value, copies)
     local copy = {}
     copies[value] = copy
     for key, child in pairs(value) do
-        copy[self:DeepCopyTable(key, copies)] = self:DeepCopyTable(child, copies)
+        -- Scalars are already independent values. Only table nodes need the
+        -- recursive copier (and its diagnostic wrapper).
+        local copiedKey, copiedChild = key, child
+        if type(key) == "table" then copiedKey = self:DeepCopyTable(key, copies) end
+        if type(child) == "table" then copiedChild = self:DeepCopyTable(child, copies) end
+        copy[copiedKey] = copiedChild
     end
     return copy
 end--[[APR_DIAG]]; APR.DeepCopyTable = APRTrace("APR-Core/utils/Utils.lua:363:APR:DeepCopyTable#27", APR.DeepCopyTable)--[[/APR_DIAG]]
@@ -435,15 +440,17 @@ local searchAccents = {
     ["Æ"] = "ae",
 }
 
+local function NormalizeSearchCharacter(character)
+    -- Combining diacritics (U+0300..U+036F), for decomposed input.
+    if character:match("^\204[\128-\191]$") or character:match("^\205[\128-\175]$") then
+        return ""
+    end
+    return searchAccents[character] or character
+end--[[APR_DIAG]]; NormalizeSearchCharacter = APRTrace("APR-Core/utils/Utils.lua:443:NormalizeSearchCharacter#28", NormalizeSearchCharacter)--[[/APR_DIAG]]
+
 function APR:NormalizeSearchText(value)
-    return ((value or ""):gsub("[%z\1-\127\194-\244][\128-\191]*", --[[APR_DIAG]]APRTrace("APR-Core/utils/Utils.lua:439:callback#29", --[[/APR_DIAG]]function(character)
-        -- Combining diacritics (U+0300..U+036F), for decomposed input.
-        if character:match("^\204[\128-\191]$") or character:match("^\205[\128-\175]$") then
-            return ""
-        end
-        return searchAccents[character] or character
-    end--[[APR_DIAG]])--[[/APR_DIAG]]):lower())
-end--[[APR_DIAG]]; APR.NormalizeSearchText = APRTrace("APR-Core/utils/Utils.lua:438:APR:NormalizeSearchText#28", APR.NormalizeSearchText)--[[/APR_DIAG]]
+    return ((value or ""):gsub("[%z\1-\127\194-\244][\128-\191]*", NormalizeSearchCharacter):lower())
+end--[[APR_DIAG]]; APR.NormalizeSearchText = APRTrace("APR-Core/utils/Utils.lua:451:APR:NormalizeSearchText#29", APR.NormalizeSearchText)--[[/APR_DIAG]]
 
 --- Compare two ordered string lists.
 ---@param a table|nil
@@ -464,7 +471,7 @@ function APR:AreOrderedStringListsEqual(a, b)
     end
 
     return true
-end--[[APR_DIAG]]; APR.AreOrderedStringListsEqual = APRTrace("APR-Core/utils/Utils.lua:452:APR:AreOrderedStringListsEqual#30", APR.AreOrderedStringListsEqual)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.AreOrderedStringListsEqual = APRTrace("APR-Core/utils/Utils.lua:459:APR:AreOrderedStringListsEqual#30", APR.AreOrderedStringListsEqual)--[[/APR_DIAG]]
 
 
 -- Preserve APR's existing group protocol; keep transport framing out of window code.
@@ -477,7 +484,7 @@ function APR:SendAddonMessageSplit(prefix, fullMessage, channel, target, onCompl
         allSent = allSent and didSend
         remaining = remaining - 1
         if remaining == 0 and onComplete then onComplete(allSent) end
-    end--[[APR_DIAG]]; OnFragmentSent = APRTrace("APR-Core/utils/Utils.lua:476:OnFragmentSent#32", OnFragmentSent)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; OnFragmentSent = APRTrace("APR-Core/utils/Utils.lua:483:OnFragmentSent#32", OnFragmentSent)--[[/APR_DIAG]]
     APR:Debug("Splitting message", { msgID = msgID, totalParts = total })
 
     for i = 1, total do
@@ -496,4 +503,4 @@ function APR:SendAddonMessageSplit(prefix, fullMessage, channel, target, onCompl
         end
     end
     if total == 0 and onComplete then onComplete(true) end
-end--[[APR_DIAG]]; APR.SendAddonMessageSplit = APRTrace("APR-Core/utils/Utils.lua:471:APR:SendAddonMessageSplit#31", APR.SendAddonMessageSplit)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.SendAddonMessageSplit = APRTrace("APR-Core/utils/Utils.lua:478:APR:SendAddonMessageSplit#31", APR.SendAddonMessageSplit)--[[/APR_DIAG]]

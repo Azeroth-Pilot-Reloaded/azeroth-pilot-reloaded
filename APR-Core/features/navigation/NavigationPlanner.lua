@@ -112,23 +112,27 @@ function Job:AdvancePhase(maxOperations, remainingMilliseconds)
         local segments = self.result.segments or {}
         local deadline = request.clock and (request.clock() + remainingMilliseconds)
         for operation = 1, maxOperations do
-            if operation > 1 and deadline and request.clock() >= deadline then return end
+            if operation > 1 and deadline and request.clock() >= deadline then break end
             local segment = segments[self.queueIndex]
             if not segment then
                 self.status, self.active = "ready", nil
                 return
             end
             local step = request.prepareSegment(segment, self.queueIndex)
+            if self.status ~= "planning" then return end
             if step then self.result.queue[#self.result.queue + 1] = step end
             self.queueIndex = self.queueIndex + 1
         end
+        -- Finishing the last row needs no extra frame, even when it used the
+        -- last operation or reached the deadline. No more row work runs here.
+        if not segments[self.queueIndex] then self.status, self.active = "ready", nil end
         return
     end
 
     if self.phase == "explain_collect" then
         local deadline = request.clock and (request.clock() + remainingMilliseconds)
         for operation = 1, maxOperations do
-            if operation > 1 and deadline and request.clock() >= deadline then return end
+            if operation > 1 and deadline and request.clock() >= deadline then break end
             local edge = self.diagnosticSegments[self.diagnosticIndex]
             if not edge then
                 self.status, self.diagnosticSegments = "no_path", nil
@@ -136,6 +140,9 @@ function Job:AdvancePhase(maxOperations, remainingMilliseconds)
             end
             if edge.blockedRequirements or edge.blockedActions then self.blockers[#self.blockers + 1] = edge end
             self.diagnosticIndex = self.diagnosticIndex + 1
+        end
+        if not self.diagnosticSegments[self.diagnosticIndex] then
+            self.status, self.diagnosticSegments = "no_path", nil
         end
         return
     end
@@ -216,14 +223,14 @@ function Job:Step(maxOperations, maxMilliseconds)
         self.maxSliceMilliseconds = math.max(self.maxSliceMilliseconds, self.lastSliceMilliseconds)
     end
     return self.status, self.result
-end--[[APR_DIAG]]; Job.Step = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:194:Job:Step#9", Job.Step)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.Step = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:201:Job:Step#9", Job.Step)--[[/APR_DIAG]]
 
 function Job:Cancel()
     if self.status == "planning" then self.status = "cancelled" end
     if self.active and self.active.Cancel then self.active:Cancel() end
     self.active, self.catalogueEdges, self.taxiEdges, self.diagnosticSegments, self.blockers = nil, nil, nil, nil, nil
-end--[[APR_DIAG]]; Job.Cancel = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:221:Job:Cancel#10", Job.Cancel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.Cancel = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:228:Job:Cancel#10", Job.Cancel)--[[/APR_DIAG]]
 
 function Job:GetResult()
     return self.result, self.status
-end--[[APR_DIAG]]; Job.GetResult = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:227:Job:GetResult#11", Job.GetResult)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.GetResult = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:234:Job:GetResult#11", Job.GetResult)--[[/APR_DIAG]]

@@ -113,15 +113,14 @@ env:Advance(0.5)
 assert(finder.context ~= previousContext and #env.joined == 1 and #env.left == 0,
     "Changing zone replaces exactly one discovery membership")
 
--- Zone mode works without a route; route-based modes explain the missing prerequisite.
+-- Without a route, step filters fall back to discovering players in the zone.
 env = Fixture.New()
 finder = env.finder
 APR.ActiveRoute = nil
 finder.localDirty = true
 success, reason = finder:Search()
-assert(not success and reason == "no_route" and #env:Messages("Q") == 0)
-finder:SetOption("matchMode", "zone")
-assert(finder:Search())
+assert(success and #env:Messages("Q") == 1 and finder.query.mode == "zone")
+assert(finder:GetSettings().matchMode == "nearby", "Fallback must preserve the chosen route filter")
 env:Receive("P", env:Presence(), "ZonePeer-Home", "WHISPER")
 assert(finder:GetCount() == 1, "Zone discovery does not require a shared route")
 

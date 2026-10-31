@@ -605,6 +605,14 @@ function APR:RestoreNativeTheme(frame)
     end
 end--[[APR_DIAG]]; APR.RestoreNativeTheme = APRTrace("APR-Core/ui/foundations/Themes.lua:598:APR:RestoreNativeTheme#36", APR.RestoreNativeTheme)--[[/APR_DIAG]]
 
+local function HideWoWButtonArt(frame, texture)
+    if not texture then return end
+    if frame.aprWoWButtonArt[texture] == nil then
+        frame.aprWoWButtonArt[texture] = texture:GetAlpha()
+    end
+    texture:SetAlpha(0)
+end--[[APR_DIAG]]; HideWoWButtonArt = APRTrace("APR-Core/ui/foundations/Themes.lua:608:HideWoWButtonArt#37", HideWoWButtonArt)--[[/APR_DIAG]]
+
 -- Opt-in surfaces leave gameplay panel colors intact; external providers take precedence.
 function APR:ApplyNativeTheme(frame, kind, options)
     local scope = options.scope or self:GetSkinScope(frame)
@@ -645,19 +653,12 @@ function APR:ApplyNativeTheme(frame, kind, options)
     end
     if options.nativeWoW and kind == "button" then
         frame.aprWoWButtonArt = frame.aprWoWButtonArt or {}
-        local function hide(texture)
-            if not texture then return end
-            if frame.aprWoWButtonArt[texture] == nil then
-                frame.aprWoWButtonArt[texture] = texture:GetAlpha()
-            end
-            texture:SetAlpha(0)
-        end--[[APR_DIAG]]; hide = APRTrace("APR-Core/ui/foundations/Themes.lua:648:hide#38", hide)--[[/APR_DIAG]]
         for _, key in ipairs({"Left", "Middle", "Right"}) do
-            hide(frame[key])
+            HideWoWButtonArt(frame, frame[key])
         end
         for _, state in ipairs({"Normal", "Pushed", "Highlight", "Disabled"}) do
             local texture = frame["Get" .. state .. "Texture"] and frame["Get" .. state .. "Texture"](frame)
-            hide(texture)
+            HideWoWButtonArt(frame, texture)
         end
     end
     local radius = kind == "window" and 8 or kind == "borderedPanel" and 6 or 4
@@ -676,4 +677,4 @@ function APR:ApplyNativeTheme(frame, kind, options)
     local color = inset and theme.surface or theme.background
     frame:SetBackdropColor(color[1], color[2], color[3], modern and 1 or color[4])
     frame:SetBackdropBorderColor(unpack(theme.border))
-end--[[APR_DIAG]]; APR.ApplyNativeTheme = APRTrace("APR-Core/ui/foundations/Themes.lua:609:APR:ApplyNativeTheme#37", APR.ApplyNativeTheme)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ApplyNativeTheme = APRTrace("APR-Core/ui/foundations/Themes.lua:617:APR:ApplyNativeTheme#38", APR.ApplyNativeTheme)--[[/APR_DIAG]]

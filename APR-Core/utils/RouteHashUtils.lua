@@ -5,69 +5,176 @@ local APRResume = APRInstrumentation and APRInstrumentation.Resume or coroutine.
 local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Fingerprints route definitions in deterministic key order for saved-progress change detection.
 -- This is a compatibility signature, not a cryptographic hash; changing it can reset progress.
-
--- Route hashing helpers (deterministic FNV-1a) used to fingerprint route definitions
 local FNV_OFFSET = 2166136261
 local FNV_PRIME = 16777619
+local CHECKPOINT_WORK = 128
+local NATIVE_SORT_LIMIT = 64
 
-local function HashByte(hash, byte)
-    hash = bit.bxor(hash, byte)
-    return bit.band(hash * FNV_PRIME, 0xFFFFFFFF)
-end--[[APR_DIAG]]; HashByte = APRTrace("APR-Core/utils/RouteHashUtils.lua:13:HashByte#1", HashByte)--[[/APR_DIAG]]
+local function LegacyKeyLess(a, b)
+    return tostring(a) < tostring(b)
+end--[[APR_DIAG]]; LegacyKeyLess = APRTrace("APR-Core/utils/RouteHashUtils.lua:13:LegacyKeyLess#1", LegacyKeyLess)--[[/APR_DIAG]]
 
-local function HashValue(hash, value, checkpoint)
-    local valueType = type(value)
-
-    -- Tables are walked in sorted key order so the hash stays stable across runs
-    if valueType == "table" then
-        local keys = {}
-        for key in pairs(value) do
-            if key ~= "_index" then
-                table.insert(keys, key)
-            end
-            if checkpoint then checkpoint() end
-        end
-        table.sort(keys, --[[APR_DIAG]]APRTrace("APR-Core/utils/RouteHashUtils.lua:30:callback#3", --[[/APR_DIAG]]function(a, b) return tostring(a) < tostring(b) end--[[APR_DIAG]])--[[/APR_DIAG]])
-
-        hash = HashByte(hash, 123) -- delimiter
-        for _, key in ipairs(keys) do
-            hash = HashValue(hash, key, checkpoint)
-            hash = HashValue(hash, value[key], checkpoint)
-        end
-        return HashByte(hash, 125) -- delimiter
-    end
-
-    -- Strings, numbers and booleans are stringified; other types are ignored on purpose
-    if valueType == "string" or valueType == "number" or valueType == "boolean" then
-        local text = tostring(value)
-        if checkpoint then
-            for first = 1, #text, 128 do
-                for i = first, math.min(first + 127, #text) do
-                    hash = HashByte(hash, text:byte(i))
-                end
-                checkpoint()
-            end
-        else
-            for i = 1, #text do
-                hash = HashByte(hash, text:byte(i))
-            end
-        end
-        return HashByte(hash, 0)
-    end
-
-    return HashByte(hash, 0)
-end--[[APR_DIAG]]; HashValue = APRTrace("APR-Core/utils/RouteHashUtils.lua:18:HashValue#2", HashValue)--[[/APR_DIAG]]
-
--- Build a stable signature for a route to spot changes even when step counts stay identical
+-- Build a stable signature for a route to spot changes even when step counts stay identical.
 function APR:GetRouteSignature(routeFileName, checkpoint)
     local routeData = APR.RouteQuestStepList[routeFileName]
-    if not routeData then
-        return nil
+    if not routeData then return nil end
+
+    -- Keep the original double multiplication and signed LuaBitOp result. An
+    -- integer/modulo FNV implementation changes persisted progress fingerprints.
+    local band, bxor, byte = bit.band, bit.bxor, string.byte
+    local hash, work, depth = FNV_OFFSET, 0, 0
+    local stack, active = {}, {}
+
+    for root = 1, 2 do
+        local value
+        if root == 1 then value = routeData.steps or routeData
+        else value = routeData.parallelSteps or {} end
+
+        while true do
+            local descending = false
+            local valueType = type(value)
+            if valueType == "table" then
+                -- Reuse scratch arrays by nesting depth, never across calls or
+                -- suspended coroutines. Cycles must still fail instead of looping.
+                if active[value] then error("Cannot fingerprint a cyclic route definition") end
+                local frame = stack[depth + 1]
+                if not frame then
+                    frame = { keys = {}, scratch = {} }
+                    stack[depth + 1] = frame
+                end
+                local keys, count, maximum, dense, strings = frame.keys, 0, 0, true, true
+                for key in pairs(value) do
+                    if key ~= "_index" then
+                        count = count + 1
+                        keys[count] = key
+                        local keyType = type(key)
+                        strings = strings and keyType == "string"
+                        if keyType == "number" and key >= 1 and key < 1e14 and key % 1 == 0 then
+                            if key > maximum then maximum = key end
+                        else dense = false end
+                    end
+                    work = work + 1
+                    if checkpoint and work >= CHECKPOINT_WORK then work = 0; checkpoint() end
+                end
+                dense = dense and count == maximum
+
+                if not dense and count > 1 then
+                    if not strings then
+                        -- Preserve the complete native ordering for sparse or
+                        -- mixed keys, including [1]/["1"] ties and __tostring.
+                        table.sort(keys, LegacyKeyLess)
+                    elseif count <= NATIVE_SORT_LIMIT then
+                        -- String keys are unique and have the old comparison
+                        -- order without a Lua callback or diagnostic wrapper.
+                        table.sort(keys)
+                    else
+                        -- Native sort cannot yield. Merge large string-keyed
+                        -- dictionaries in bounded comparison/assignment batches.
+                        local from, into, width = keys, frame.scratch, 1
+                        while width < count do
+                            for first = 1, count, width * 2 do
+                                local middle = math.min(first + width, count + 1)
+                                local last = math.min(first + width * 2 - 1, count)
+                                local left, right = first, middle
+                                for index = first, last do
+                                    if left < middle and (right > last or from[left] < from[right]) then
+                                        into[index] = from[left]; left = left + 1
+                                    else
+                                        into[index] = from[right]; right = right + 1
+                                    end
+                                    work = work + 1
+                                    if checkpoint and work >= CHECKPOINT_WORK then work = 0; checkpoint() end
+                                end
+                            end
+                            from, into, width = into, from, width * 2
+                        end
+                        -- Copy back if needed and release every scratch key.
+                        for i = 1, count do
+                            keys[i] = from[i]
+                            frame.scratch[i] = nil
+                            work = work + 1
+                            if checkpoint and work >= CHECKPOINT_WORK then work = 0; checkpoint() end
+                        end
+                    end
+                end
+
+                hash = band(bxor(hash, 123) * FNV_PRIME, 0xFFFFFFFF)
+                work = work + 1
+                if count > 0 then
+                    active[value] = true
+                    frame.source, frame.count, frame.index = value, count, 1
+                    frame.dense, frame.key, frame.readValue = dense, dense and 1 or keys[1], true
+                    depth = depth + 1
+                    value, descending = frame.key, true
+                else
+                    hash = band(bxor(hash, 125) * FNV_PRIME, 0xFFFFFFFF)
+                    work = work + 1
+                end
+            else
+                -- Other types still contribute only the historical NUL byte.
+                if valueType == "string" or valueType == "number" or valueType == "boolean" then
+                    local text = tostring(value)
+                    if checkpoint then
+                        local first = 1
+                        while first <= #text do
+                            local last = math.min(first + CHECKPOINT_WORK - work - 1, #text)
+                            for i = first, last do
+                                hash = band(bxor(hash, byte(text, i)) * FNV_PRIME, 0xFFFFFFFF)
+                            end
+                            work = work + last - first + 1
+                            first = last + 1
+                            if work >= CHECKPOINT_WORK then work = 0; checkpoint() end
+                        end
+                    else
+                        for i = 1, #text do
+                            hash = band(bxor(hash, byte(text, i)) * FNV_PRIME, 0xFFFFFFFF)
+                        end
+                    end
+                end
+                hash = band(bxor(hash, 0) * FNV_PRIME, 0xFFFFFFFF)
+                work = work + 1
+            end
+            if checkpoint and work >= CHECKPOINT_WORK then work = 0; checkpoint() end
+
+            if not descending then
+                -- Finish a child, then visit its value or the next key. Read the
+                -- value after hashing its key, just like the recursive walker.
+                while depth > 0 do
+                    local frame = stack[depth]
+                    if frame.readValue then
+                        value, frame.readValue = frame.source[frame.key], false
+                        break
+                    end
+                    frame.keys[frame.index] = nil
+                    frame.index = frame.index + 1
+                    if frame.index <= frame.count then
+                        if frame.dense then
+                            -- Decimal lexical order: 1,10,100,...,11,...,2.
+                            -- The scan proved a complete positive integer range
+                            -- below tostring's scientific-notation boundary.
+                            local key = frame.key
+                            if key * 10 <= frame.count then key = key * 10
+                            else
+                                while key % 10 == 9 or key == frame.count do key = math.floor(key / 10) end
+                                key = key + 1
+                            end
+                            frame.key = key
+                        else frame.key = frame.keys[frame.index] end
+                        value, frame.readValue = frame.key, true
+                        break
+                    end
+                    hash = band(bxor(hash, 125) * FNV_PRIME, 0xFFFFFFFF)
+                    active[frame.source] = nil
+                    frame.source, frame.key = nil, nil
+                    depth = depth - 1
+                    work = work + 1
+                    if checkpoint and work >= CHECKPOINT_WORK then work = 0; checkpoint() end
+                end
+                if depth == 0 then break end
+            end
+        end
     end
 
-    local hash = FNV_OFFSET
-    hash = HashValue(hash, routeData.steps or routeData, checkpoint)
-    hash = HashValue(hash, routeData.parallelSteps or {}, checkpoint)
-
+    if checkpoint and work > 0 then checkpoint() end
     return string.format("%08x", hash)
-end--[[APR_DIAG]]; APR.GetRouteSignature = APRTrace("APR-Core/utils/RouteHashUtils.lua:62:APR:GetRouteSignature#4", APR.GetRouteSignature)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetRouteSignature = APRTrace("APR-Core/utils/RouteHashUtils.lua:18:APR:GetRouteSignature#2", APR.GetRouteSignature)--[[/APR_DIAG]]

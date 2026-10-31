@@ -13,11 +13,15 @@ flight.eventFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features
     if event == "TAXIMAP_CLOSED" then
         flight.unavailableNodes = {}
         APR.taxiData:CloseTaxiMap()
+        if APR.settings.profile.enableAddon then
+            if APR.event and APR.event.QueueStepRefresh then APR.event:QueueStepRefresh() end
+            if APR.questOrderList then APR.questOrderList:DelayedUpdate(true) end
+        end
+        return
     end
     if not APR.settings.profile.enableAddon then return end
     local guidance = APR.navigation and APR.navigation:IsNavigating() and APR.navigation:GetActiveStep()
-    local original = APR.ActiveRoute and APR:GetCurrentStep()
-    local step = guidance or original
+    local step = guidance or (APR.ActiveRoute and APR:GetCurrentStep())
     local generated = guidance ~= nil and guidance ~= false
     if event == "TAXIMAP_OPENED" then
         local map = GetTaxiMapID()
@@ -51,14 +55,13 @@ flight.eventFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features
         end
         if APR.event and APR.event.QueueStepRefresh then APR.event:QueueStepRefresh() end
         if APR.questOrderList then APR.questOrderList:DelayedUpdate(true) end
-    elseif event == "TAXIMAP_CLOSED" then
-        APR.taxiData:CloseTaxiMap()
-        flight.unavailableNodes = {}
-        if APR.event and APR.event.QueueStepRefresh then APR.event:QueueStepRefresh() end
-        if APR.questOrderList then APR.questOrderList:DelayedUpdate(true) end
     elseif event == "PLAYER_CONTROL_LOST" then
+        -- Most losses of control have no taxi departure work. Do not allocate
+        -- a context, timer and diagnostic callback for those unrelated events.
+        if not step or not (step.ETA or (not generated and step.UseFlightPath and not step.ZoneStepTrigger)) then return end
         local context = APR:CaptureStepContext()
-        C_Timer.After(2, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/FlightPath.lua:61:callback#2", --[[/APR_DIAG]]function()
+        C_Timer.After(2, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/FlightPath.lua:63:callback#2", --[[/APR_DIAG]]function()
+            if not APR.settings.profile.enableAddon then return end
             if APR.routeValidationPending or APR.routeValidationFailed then return end
             if not UnitOnTaxi("player") or not APR:IsStepContextCurrent(context) then return end
             if step and step.ETA then APR.AFK:SetAfkTimer(step.ETA) end

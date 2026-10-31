@@ -121,6 +121,9 @@ end--[[APR_DIAG]]; List.SetSource = APRTrace("APR-Core/ui/foundations/VirtualLis
 function List:SetRenderBudget(milliseconds, sampleName)
     self.renderBudgetMs, self.renderSampleName = milliseconds, sampleName
     self.renderFrame = self.renderFrame or CreateFrame("Frame", nil, self.scroll)
+    -- Scroll/resize bursts retarget the same worker; keep its diagnostic wrapper
+    -- instead of allocating a new callback for every refresh.
+    self.renderCallback = self.renderCallback or --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/VirtualList.lua:126:callback#17", --[[/APR_DIAG]]function() self:RunRenderBatch() end--[[APR_DIAG]])--[[/APR_DIAG]]
 end--[[APR_DIAG]]; List.SetRenderBudget = APRTrace("APR-Core/ui/foundations/VirtualList.lua:121:List:SetRenderBudget#16", List.SetRenderBudget)--[[/APR_DIAG]]
 
 function List:RunRenderBatch()
@@ -135,7 +138,7 @@ function List:RunRenderBatch()
     APR:FinishPerformanceSample(self.renderSampleName or "VirtualListViewportBatch", sample)
     if not ok or finished then self.renderFrame:SetScript("OnUpdate", nil) end
     if not ok then error(finished, 0) end
-end--[[APR_DIAG]]; List.RunRenderBatch = APRTrace("APR-Core/ui/foundations/VirtualList.lua:126:List:RunRenderBatch#17", List.RunRenderBatch)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; List.RunRenderBatch = APRTrace("APR-Core/ui/foundations/VirtualList.lua:129:List:RunRenderBatch#18", List.RunRenderBatch)--[[/APR_DIAG]]
 
 function List:RefreshVisible(force)
     if self.rendering or self.updatingItems or not self.scroll:IsShown() then return end
@@ -150,14 +153,14 @@ function List:RefreshVisible(force)
                 row:Hide()
             end
         end
-        self.renderFrame:SetScript("OnUpdate", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/VirtualList.lua:153:callback#19", --[[/APR_DIAG]]function() self:RunRenderBatch() end--[[APR_DIAG]])--[[/APR_DIAG]])
+        self.renderFrame:SetScript("OnUpdate", self.renderCallback)
         return
     end
     self.rendering = true
     local ok, message = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](self.RenderVisible, self, force)
     self.rendering = nil
     if not ok then error(message, 0) end
-end--[[APR_DIAG]]; List.RefreshVisible = APRTrace("APR-Core/ui/foundations/VirtualList.lua:140:List:RefreshVisible#18", List.RefreshVisible)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; List.RefreshVisible = APRTrace("APR-Core/ui/foundations/VirtualList.lua:143:List:RefreshVisible#19", List.RefreshVisible)--[[/APR_DIAG]]
 
 -- Always release the reentrancy guard, including when a caller's row binder fails.
 function List:RenderVisible(force, deadline)
@@ -222,4 +225,4 @@ function List:RenderVisible(force, deadline)
     end
     if APR.Gamepad then APR.Gamepad:Refresh(self.scroll) end
     return true
-end--[[APR_DIAG]]; List.RenderVisible = APRTrace("APR-Core/ui/foundations/VirtualList.lua:163:List:RenderVisible#20", List.RenderVisible)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; List.RenderVisible = APRTrace("APR-Core/ui/foundations/VirtualList.lua:166:List:RenderVisible#20", List.RenderVisible)--[[/APR_DIAG]]

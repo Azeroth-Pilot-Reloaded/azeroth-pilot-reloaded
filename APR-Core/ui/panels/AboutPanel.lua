@@ -74,6 +74,7 @@ end--[[APR_DIAG]]; About.SetPage = APRTrace("APR-Core/ui/panels/AboutPanel.lua:5
 
 function About:Refresh()
     if not self.frame then return end
+    self.refreshSerial = (self.refreshSerial or 0) + 1
     local version = APR.version or UNKNOWN
     if version:find("@project%-version@") then version = L["UI_DEVELOPMENT_BUILD"] end
     local routes, expansions, authors = APR.AboutData:GetRouteSummary()
@@ -93,10 +94,10 @@ function About:Create(parent)
     local root = self.frame.content
     local previous
     for _, link in ipairs({
-        {label = "Discord", width = 125, action = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AboutPanel.lua:96:callback#8", --[[/APR_DIAG]]function() UI:ShowTextReport("Discord", APR.discord) end--[[APR_DIAG]])--[[/APR_DIAG]]},
-        {label = "GitHub", width = 125, action = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AboutPanel.lua:97:callback#9", --[[/APR_DIAG]]function() UI:ShowTextReport("GitHub", APR.github) end--[[APR_DIAG]])--[[/APR_DIAG]]},
-        {label = "Wiki", width = 100, action = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AboutPanel.lua:98:callback#10", --[[/APR_DIAG]]function() UI:ShowTextReport("Wiki", APR.github .. "/wiki") end--[[APR_DIAG]])--[[/APR_DIAG]]},
-        {label = L["UI_RELEASE_NOTES"], width = 220, action = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AboutPanel.lua:99:callback#11", --[[/APR_DIAG]]function() APR.Workspace:Show("options", "changelog") end--[[APR_DIAG]])--[[/APR_DIAG]]},
+        {label = "Discord", width = 125, action = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AboutPanel.lua:97:callback#8", --[[/APR_DIAG]]function() UI:ShowTextReport("Discord", APR.discord) end--[[APR_DIAG]])--[[/APR_DIAG]]},
+        {label = "GitHub", width = 125, action = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AboutPanel.lua:98:callback#9", --[[/APR_DIAG]]function() UI:ShowTextReport("GitHub", APR.github) end--[[APR_DIAG]])--[[/APR_DIAG]]},
+        {label = "Wiki", width = 100, action = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AboutPanel.lua:99:callback#10", --[[/APR_DIAG]]function() UI:ShowTextReport("Wiki", APR.github .. "/wiki") end--[[APR_DIAG]])--[[/APR_DIAG]]},
+        {label = L["UI_RELEASE_NOTES"], width = 220, action = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AboutPanel.lua:100:callback#11", --[[/APR_DIAG]]function() APR.Workspace:Show("options", "changelog") end--[[APR_DIAG]])--[[/APR_DIAG]]},
     }) do
         local button = UI:Button(root, link.label, link.width, link.action)
         if previous then button:SetPoint("LEFT", previous, "RIGHT", 8, 0) else button:SetPoint("TOPLEFT") end
@@ -115,14 +116,14 @@ function About:Create(parent)
     self.creditsPanel = UI:Section(root, L["UI_ABOUT_CONTRIBUTORS"], "stone")
     self.creditsPanel:SetPoint("TOPLEFT", self.helpPanel, "TOPRIGHT", 12, 0)
     self.creditsPanel:SetPoint("BOTTOMRIGHT")
-    self.guideTab = UI:Button(self.helpPanel, L["HELP"], 150, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AboutPanel.lua:118:callback#12", --[[/APR_DIAG]]function() self:SetPage("guide") end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self.guideTab = UI:Button(self.helpPanel, L["HELP"], 150, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AboutPanel.lua:119:callback#12", --[[/APR_DIAG]]function() self:SetPage("guide") end--[[APR_DIAG]])--[[/APR_DIAG]])
     self.guideTab:SetPoint("TOPLEFT", 12, -12)
-    self.commandsTab = UI:Button(self.helpPanel, L["COMMAND_LIST"], 160, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AboutPanel.lua:120:callback#13", --[[/APR_DIAG]]function() self:SetPage("commands") end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self.commandsTab = UI:Button(self.helpPanel, L["COMMAND_LIST"], 160, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AboutPanel.lua:121:callback#13", --[[/APR_DIAG]]function() self:SetPage("commands") end--[[APR_DIAG]])--[[/APR_DIAG]])
     self.commandsTab:SetPoint("LEFT", self.guideTab, "RIGHT", 8, 0)
     self.help = TextList(self.helpPanel, 56)
     self.credits = TextList(self.creditsPanel, 44)
-    local function layout() self.helpPanel:SetWidth(math.floor(root:GetWidth() * 0.58) - 6) end--[[APR_DIAG]]; layout = APRTrace("APR-Core/ui/panels/AboutPanel.lua:124:layout#14", layout)--[[/APR_DIAG]]
+    local function layout() self.helpPanel:SetWidth(math.floor(root:GetWidth() * 0.58) - 6) end--[[APR_DIAG]]; layout = APRTrace("APR-Core/ui/panels/AboutPanel.lua:125:layout#14", layout)--[[/APR_DIAG]]
     root:HookScript("OnSizeChanged", layout)
-    self.frame:HookScript("OnShow", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AboutPanel.lua:126:callback#15", --[[/APR_DIAG]]function() layout(); self:Refresh() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self.frame:HookScript("OnShow", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AboutPanel.lua:127:callback#15", --[[/APR_DIAG]]function() layout(); self:Refresh() end--[[APR_DIAG]])--[[/APR_DIAG]])
     layout()
-end--[[APR_DIAG]]; About.Create = APRTrace("APR-Core/ui/panels/AboutPanel.lua:91:About:Create#7", About.Create)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; About.Create = APRTrace("APR-Core/ui/panels/AboutPanel.lua:92:About:Create#7", About.Create)--[[/APR_DIAG]]

@@ -1,8 +1,11 @@
 -- Project endpoints into world coordinates and identify their access regions.
 -- A shared position alone does not permit walking through a required entrance.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("geography", 7) then return end
+if not Lib:BeginModule("geography", 8) then return end
 local Instance = Lib.Instance
+-- These defaults are read-only, including CheckRequirements' character input.
+-- Reuse them across walking checks and retries of unavailable map ancestry.
+local EMPTY = {}
 
 local function Finite(value)
     return type(value) == "number" and value == value and value > -math.huge and value < math.huge
@@ -71,10 +74,10 @@ function Instance:GetPositionRegion(position)
     if cached then return cached end
 
     local config = self.config
-    local isolatedAreas = config.IsolatedAreas or {}
-    local mapTypeOverrides = config.MapTypeOverrides or {}
-    local continentOverrides = config.ContinentMapOverrides or {}
-    local isolatedContinents = config.IsolatedContinents or {}
+    local isolatedAreas = config.IsolatedAreas or EMPTY
+    local mapTypeOverrides = config.MapTypeOverrides or EMPTY
+    local continentOverrides = config.ContinentMapOverrides or EMPTY
+    local isolatedContinents = config.IsolatedContinents or EMPTY
     local current, outer = mapID, mapID
     local seen, isolation = {}, nil
     -- The nearest isolated ancestor wins. Two points can share world
@@ -121,7 +124,7 @@ function Instance:CanWalk(from, to)
     if not from or not to or from.noAutoconnect or to.noAutoconnect then return false end
     if not to.phaseAgnostic and self.config.MapRequirements then
         local requirements = self:GetMapAccessRequirements(to.uiMapID)
-        if requirements and self:CheckRequirements(requirements, {}) ~= true then return false end
+        if requirements and self:CheckRequirements(requirements, EMPTY) ~= true then return false end
     end
     return self:IsSameAccessRegion(from, to)
 end
@@ -132,7 +135,7 @@ function Instance:GetWalkingSpeed(position, travelSpeed, groundSpeed)
     self.groundMaps = self.groundMaps or {}
     local groundOnly = self.groundMaps[mapID]
     if groundOnly == nil then
-        local current, restrictions = mapID, self.config.GroundOnlyAreas or {}
+        local current, restrictions = mapID, self.config.GroundOnlyAreas or EMPTY
         for _ = 1, 50 do
             if restrictions[current] then groundOnly = true; break end
             local info = self:GetMapAncestryInfo(current)

@@ -10,6 +10,8 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 function APR:GuideToCorpse()
     local currentMapID = APR:GetPlayerParentMapID()
+    -- Map data can be unavailable while loading; the corpse API requires an ID.
+    if not currentMapID then return end
     local corpsePosition = C_DeathInfo.GetCorpseMapPosition(currentMapID)
     local worldCorpsePosition
     if corpsePosition then
@@ -34,13 +36,13 @@ function APR:InitializeTaxiNodes()
         end
     end
     APRTaxiNodes[self.PlayerID] = APRTaxiNodes[self.PlayerID] or {}
-end--[[APR_DIAG]]; APR.InitializeTaxiNodes = APRTrace("APR-Core/utils/NavigationUtils.lua:27:APR:InitializeTaxiNodes#2", APR.InitializeTaxiNodes)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.InitializeTaxiNodes = APRTrace("APR-Core/utils/NavigationUtils.lua:29:APR:InitializeTaxiNodes#2", APR.InitializeTaxiNodes)--[[/APR_DIAG]]
 
 --- Detect whether the player has discovered a taxi node, not just whether it exists.
 function APR:HasTaxiNode(nodeID)
     local playerNodes = APRTaxiNodes and APR.PlayerID and APRTaxiNodes[APR.PlayerID] or nil
     return playerNodes and playerNodes[nodeID] == true or false
-end--[[APR_DIAG]]; APR.HasTaxiNode = APRTrace("APR-Core/utils/NavigationUtils.lua:40:APR:HasTaxiNode#3", APR.HasTaxiNode)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.HasTaxiNode = APRTrace("APR-Core/utils/NavigationUtils.lua:42:APR:HasTaxiNode#3", APR.HasTaxiNode)--[[/APR_DIAG]]
 
 --- Resolve the localized name without storing a second copy in APR.
 ---@param step table
@@ -53,4 +55,4 @@ function APR:GetTaxiNodeName(step)
     local nodeID = step.GetFP or step.NodeID
     local libraryName = nodeID and APR.taxiData:GetNodeName(nodeID) or nil
     return libraryName or step.Name or UNKNOWN
-end--[[APR_DIAG]]; APR.GetTaxiNodeName = APRTrace("APR-Core/utils/NavigationUtils.lua:48:APR:GetTaxiNodeName#4", APR.GetTaxiNodeName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetTaxiNodeName = APRTrace("APR-Core/utils/NavigationUtils.lua:50:APR:GetTaxiNodeName#4", APR.GetTaxiNodeName)--[[/APR_DIAG]]

@@ -241,15 +241,19 @@ function APR:EnableEllesmereUISettings(S)
         end--[[APR_DIAG]])--[[/APR_DIAG]]
     end
     S.OnLooksChanged(--[[APR_DIAG]]APRTrace("APR-Core/integrations/EllesmereUISettings.lua:243:callback#12", --[[/APR_DIAG]]function()
+        -- Both containers and their children are hooked; one refresh owns the
+        -- whole traversal without remembering widgets across live changes.
+        local visited = {}
         for widget in pairs(hooked) do
-            if widget.frame:IsShown() then Style(widget) end
+            if widget.frame:IsShown() then Style(widget, visited) end
         end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     local events = CreateFrame("Frame")
     events:RegisterEvent("PLAYER_REGEN_ENABLED")
-    events:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/integrations/EllesmereUISettings.lua:250:callback#13", --[[/APR_DIAG]]function()
+    events:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/integrations/EllesmereUISettings.lua:253:callback#13", --[[/APR_DIAG]]function()
         local queued = pending
         pending = setmetatable({}, { __mode = "k" })
-        for widget in pairs(queued) do Style(widget) end
+        local visited = {}
+        for widget in pairs(queued) do Style(widget, visited) end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 end--[[APR_DIAG]]; APR.EnableEllesmereUISettings = APRTrace("APR-Core/integrations/EllesmereUISettings.lua:12:APR:EnableEllesmereUISettings#1", APR.EnableEllesmereUISettings)--[[/APR_DIAG]]

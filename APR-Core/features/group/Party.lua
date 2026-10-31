@@ -562,6 +562,8 @@ function APR.party:RemoveTeam()
     self:CancelGroupSend()
     self.lastGroupPayload = nil
     self.lastGroupSnapshot = nil
+    self.syncMembers = nil
+    if self.groupSyncTimer then self.groupSyncTimer:Cancel(); self.groupSyncTimer = nil end
     if self.fragmentCleanupTicker then
         self.fragmentCleanupTicker:Cancel()
         self.fragmentCleanupTicker = nil
@@ -609,7 +611,27 @@ function APR.party:PopulateMissingGroupMembers(skipReorder)
     if not skipReorder then
         if canPresent then self:ReOrderTeam() else self:RefreshPartyFrameAnchor() end
     end
-end--[[APR_DIAG]]; APR.party.PopulateMissingGroupMembers = APRTrace("APR-Core/features/group/Party.lua:573:APR.party:PopulateMissingGroupMembers#27", APR.party.PopulateMissingGroupMembers)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.PopulateMissingGroupMembers = APRTrace("APR-Core/features/group/Party.lua:575:APR.party:PopulateMissingGroupMembers#27", APR.party.PopulateMissingGroupMembers)--[[/APR_DIAG]]
+
+-- The inviter does not receive GROUP_JOINED. Explicit roster notifications own
+-- the handshake; presentation refreshes must never start network traffic.
+function APR.party:SyncGroupRoster()
+    if not CanShareGroupProgress() then return end
+    local previous, current, joined = self.syncMembers or {}, {}, false
+    for key in pairs(GetGroupRoster()) do
+        current[key] = true
+        if not previous[key] then joined = true end
+    end
+    self.syncMembers = current
+    if not joined then return end
+    self:SendGroupMessage(true)
+    self:RequestData()
+    if self.groupSyncTimer then self.groupSyncTimer:Cancel() end
+    self.groupSyncTimer = C_Timer.NewTimer(3, --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:630:callback#29", --[[/APR_DIAG]]function()
+        self.groupSyncTimer = nil
+        if CanShareGroupProgress() then self:SendGroupMessage(true); self:RequestData() end
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+end--[[APR_DIAG]]; APR.party.SyncGroupRoster = APRTrace("APR-Core/features/group/Party.lua:618:APR.party:SyncGroupRoster#28", APR.party.SyncGroupRoster)--[[/APR_DIAG]]
 
 function APR.party:CheckIfPartyMemberIsFriend()
     -- If Player is NOT in a Group (not instance), do nothing
@@ -617,23 +639,22 @@ function APR.party:CheckIfPartyMemberIsFriend()
         return false
     end
 
-    -- Get FriendLists (WoW and BNet)
-    local FriendListTable = self:GetFriendsList()
-
-    -- Check if a party member is a BNet or WoW friend
+    -- Quest bursts only need one match. Keep this lookup local so roster and
+    -- friend changes are visible immediately without another listener/cache.
+    local partyNames = {}
     for groupindex = 1, 5 do
         local nameOfPartyMember = APR:SafeUnitName("party" .. groupindex)
-        if (nameOfPartyMember) then
-            if APR:Contains(FriendListTable, nameOfPartyMember) then
-                return true
-            end
+        if nameOfPartyMember then
+            partyNames[nameOfPartyMember] = true
         end
     end
+    if not next(partyNames) then return false end
+    return #self:GetFriendsList(partyNames) > 0
+end--[[APR_DIAG]]; APR.party.CheckIfPartyMemberIsFriend = APRTrace("APR-Core/features/group/Party.lua:636:APR.party:CheckIfPartyMemberIsFriend#30", APR.party.CheckIfPartyMemberIsFriend)--[[/APR_DIAG]]
 
-    return false
-end--[[APR_DIAG]]; APR.party.CheckIfPartyMemberIsFriend = APRTrace("APR-Core/features/group/Party.lua:614:APR.party:CheckIfPartyMemberIsFriend#28", APR.party.CheckIfPartyMemberIsFriend)--[[/APR_DIAG]]
-
-function APR.party:GetFriendsList()
+-- Without a filter, preserve the complete public array export. The quest-share
+-- lookup supplies a set and only needs the first matching name.
+function APR.party:GetFriendsList(matchingNames)
     -- Get Number of Friends online (WoW and BNet)
     local friendsOnlineWoW = C_FriendList.GetNumFriends()
     local _, friendsOnlineBNet = BNGetNumFriends()
@@ -643,25 +664,28 @@ function APR.party:GetFriendsList()
     -- add WoW friend
     for i = 1, friendsOnlineWoW do
         local friendInfo = C_FriendList.GetFriendInfoByIndex(i)
-        if friendInfo and friendInfo.name then
+        if friendInfo and friendInfo.name and (not matchingNames or matchingNames[friendInfo.name]) then
             tinsert(FriendListTable, friendInfo.name)
+            if matchingNames then return FriendListTable end
         end
     end
 
     -- add BNet friend
     for i = 1, friendsOnlineBNet do
         local bnetFriendInfo = C_BattleNet.GetFriendAccountInfo(i)
-        if bnetFriendInfo and bnetFriendInfo.gameAccountInfo and bnetFriendInfo.gameAccountInfo.characterName then
-            tinsert(FriendListTable, bnetFriendInfo.gameAccountInfo.characterName)
+        local name = bnetFriendInfo and bnetFriendInfo.gameAccountInfo and bnetFriendInfo.gameAccountInfo.characterName
+        if name and (not matchingNames or matchingNames[name]) then
+            tinsert(FriendListTable, name)
+            if matchingNames then return FriendListTable end
         end
     end
 
     return FriendListTable
-end--[[APR_DIAG]]; APR.party.GetFriendsList = APRTrace("APR-Core/features/group/Party.lua:636:APR.party:GetFriendsList#29", APR.party.GetFriendsList)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.GetFriendsList = APRTrace("APR-Core/features/group/Party.lua:657:APR.party:GetFriendsList#31", APR.party.GetFriendsList)--[[/APR_DIAG]]
 
 function APR.party:SendGroupMessage(force)
     self:QueueGroupMessage(force)
-end--[[APR_DIAG]]; APR.party.SendGroupMessage = APRTrace("APR-Core/features/group/Party.lua:662:APR.party:SendGroupMessage#30", APR.party.SendGroupMessage)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.SendGroupMessage = APRTrace("APR-Core/features/group/Party.lua:686:APR.party:SendGroupMessage#32", APR.party.SendGroupMessage)--[[/APR_DIAG]]
 
 function APR.party:BuildGroupPayload(username)
     local routeFileName = APR.ActiveRoute
@@ -685,7 +709,7 @@ function APR.party:BuildGroupPayload(username)
         sojournerSkipCampaign = APR.settings and APR.settings.profile
             and APR.settings.profile.sojournerSkipCampaign or false,
     }
-end--[[APR_DIAG]]; APR.party.BuildGroupPayload = APRTrace("APR-Core/features/group/Party.lua:666:APR.party:BuildGroupPayload#31", APR.party.BuildGroupPayload)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.BuildGroupPayload = APRTrace("APR-Core/features/group/Party.lua:690:APR.party:BuildGroupPayload#33", APR.party.BuildGroupPayload)--[[/APR_DIAG]]
 
 local function SerializeGroupPayload(data)
     -- Keep live objective text, but omit fillers and duplicate progress fields.
@@ -730,7 +754,7 @@ local function SerializeGroupPayload(data)
         serialized = AceSerializer:Serialize(wire)
     end
     if #serialized <= MAX_OUTGOING_BYTES then return serialized end
-end--[[APR_DIAG]]; SerializeGroupPayload = APRTrace("APR-Core/features/group/Party.lua:690:SerializeGroupPayload#32", SerializeGroupPayload)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; SerializeGroupPayload = APRTrace("APR-Core/features/group/Party.lua:714:SerializeGroupPayload#34", SerializeGroupPayload)--[[/APR_DIAG]]
 
 function APR.party:CancelGroupSend()
     self.pendingGroupSend, self.pendingGroupResend = false, false
@@ -738,7 +762,7 @@ function APR.party:CancelGroupSend()
         self.groupSendTimer:Cancel()
         self.groupSendTimer = nil
     end
-end--[[APR_DIAG]]; APR.party.CancelGroupSend = APRTrace("APR-Core/features/group/Party.lua:735:APR.party:CancelGroupSend#33", APR.party.CancelGroupSend)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.CancelGroupSend = APRTrace("APR-Core/features/group/Party.lua:759:APR.party:CancelGroupSend#35", APR.party.CancelGroupSend)--[[/APR_DIAG]]
 
 function APR.party:SendGroupMessageNow()
     if not CanShareGroupProgress() then
@@ -774,13 +798,13 @@ function APR.party:SendGroupMessageNow()
     self.lastGroupSendTime = GetTime()
     self.lastGroupPayload, self.lastGroupChannel = serializedData, channel
     self.groupSendInFlight = true
-    APR:SendAddonMessageSplit("APRPartyData", serializedData, channel, nil, --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:777:callback#35", --[[/APR_DIAG]]function(success)
+    APR:SendAddonMessageSplit("APRPartyData", serializedData, channel, nil, --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:801:callback#37", --[[/APR_DIAG]]function(success)
         self.groupSendInFlight = nil
         if not success then self.lastGroupPayload = nil end
         -- At most one snapshot is queued in the transport, followed by the latest state.
         if self.pendingGroupSend then self:QueueGroupMessage(self.pendingGroupResend) end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.party.SendGroupMessageNow = APRTrace("APR-Core/features/group/Party.lua:743:APR.party:SendGroupMessageNow#34", APR.party.SendGroupMessageNow)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.SendGroupMessageNow = APRTrace("APR-Core/features/group/Party.lua:767:APR.party:SendGroupMessageNow#36", APR.party.SendGroupMessageNow)--[[/APR_DIAG]]
 
 function APR.party:QueueGroupMessage(force)
     if not CanShareGroupProgress() then
@@ -799,11 +823,11 @@ function APR.party:QueueGroupMessage(force)
         self:SendGroupMessageNow()
         return
     end
-    self.groupSendTimer = C_Timer.NewTimer(math.max(GROUP_SEND_COALESCE, delay), --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:802:callback#37", --[[/APR_DIAG]]function()
+    self.groupSendTimer = C_Timer.NewTimer(math.max(GROUP_SEND_COALESCE, delay), --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:826:callback#39", --[[/APR_DIAG]]function()
         self.groupSendTimer = nil
         if self.pendingGroupSend then self:SendGroupMessageNow() end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.party.QueueGroupMessage = APRTrace("APR-Core/features/group/Party.lua:785:APR.party:QueueGroupMessage#36", APR.party.QueueGroupMessage)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.QueueGroupMessage = APRTrace("APR-Core/features/group/Party.lua:809:APR.party:QueueGroupMessage#38", APR.party.QueueGroupMessage)--[[/APR_DIAG]]
 
 function APR.party:SendGroupMessageDelete()
     if CanShareGroupProgress() and (not self.lastGroupDeleteTime
@@ -811,7 +835,7 @@ function APR.party:SendGroupMessageDelete()
         self.lastGroupDeleteTime = GetTime()
         C_ChatInfo.SendAddonMessage("APRPartyDelete", APR.Username, GetGroupChannel())
     end
-end--[[APR_DIAG]]; APR.party.SendGroupMessageDelete = APRTrace("APR-Core/features/group/Party.lua:808:APR.party:SendGroupMessageDelete#38", APR.party.SendGroupMessageDelete)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.SendGroupMessageDelete = APRTrace("APR-Core/features/group/Party.lua:832:APR.party:SendGroupMessageDelete#40", APR.party.SendGroupMessageDelete)--[[/APR_DIAG]]
 
 local function GetGroupDisplayPositions(playerData, changedName)
     local playerProgress = playerData.routeProgress
@@ -823,7 +847,7 @@ local function GetGroupDisplayPositions(playerData, changedName)
             and position.total == playerProgress.total then requested[position.id] = true end
     end
     return APR:GetGroupRouteDisplayPositions(playerData.routeFileName, requested)
-end--[[APR_DIAG]]; GetGroupDisplayPositions = APRTrace("APR-Core/features/group/Party.lua:816:GetGroupDisplayPositions#39", GetGroupDisplayPositions)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; GetGroupDisplayPositions = APRTrace("APR-Core/features/group/Party.lua:840:GetGroupDisplayPositions#41", GetGroupDisplayPositions)--[[/APR_DIAG]]
 
 local function GetMemberPresentation(groupData, playerData, changedName, displayPositions)
     local currentRoute = playerData and playerData.routeFileName
@@ -858,9 +882,9 @@ local function GetMemberPresentation(groupData, playerData, changedName, display
         status = progress.step < playerProgress.step and L["GROUP_BEHIND"] or L["GROUP_AHEAD"]
     end
     return status, "warning", false, displayPositions
-end--[[APR_DIAG]]; GetMemberPresentation = APRTrace("APR-Core/features/group/Party.lua:828:GetMemberPresentation#40", GetMemberPresentation)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; GetMemberPresentation = APRTrace("APR-Core/features/group/Party.lua:852:GetMemberPresentation#42", GetMemberPresentation)--[[/APR_DIAG]]
 
-UpdateGroupStep = --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:863:callback#41", --[[/APR_DIAG]]function(changedName, forceShow)
+UpdateGroupStep = --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:887:callback#43", --[[/APR_DIAG]]function(changedName, forceShow)
     local profile = APR:GetSettingsProfile()
     if PartyFrame.collapsed or not profile or not profile.enableAddon or APR:IsPetBattleActive()
         or (not forceShow and (not profile.showGroup or not profile.receiveGroupData or not IsInGroup())) then
@@ -904,7 +928,7 @@ function APR.party:UpdateGroupListing(message, sender)
     if container then container.playerData = data end
     if not APR.PartyProtocol.SameProgress(previous, data) then UpdateGroupStep(data.username) end
     return true
-end--[[APR_DIAG]]; APR.party.UpdateGroupListing = APRTrace("APR-Core/features/group/Party.lua:886:APR.party:UpdateGroupListing#42", APR.party.UpdateGroupListing)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.UpdateGroupListing = APRTrace("APR-Core/features/group/Party.lua:910:APR.party:UpdateGroupListing#44", APR.party.UpdateGroupListing)--[[/APR_DIAG]]
 
 function APR.party:GroupUpdateHandler(prefix, message, channel, sender)
     if prefix ~= "APRVersionCheck" and prefix ~= "APRPartyRequest"
@@ -952,7 +976,7 @@ function APR.party:GroupUpdateHandler(prefix, message, channel, sender)
             self:PopulateMissingGroupMembers()
         end
     end
-end--[[APR_DIAG]]; APR.party.GroupUpdateHandler = APRTrace("APR-Core/features/group/Party.lua:909:APR.party:GroupUpdateHandler#43", APR.party.GroupUpdateHandler)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.GroupUpdateHandler = APRTrace("APR-Core/features/group/Party.lua:933:APR.party:GroupUpdateHandler#45", APR.party.GroupUpdateHandler)--[[/APR_DIAG]]
 
 
 function APR.party:StartFragmentCleanupTicker()
@@ -960,10 +984,10 @@ function APR.party:StartFragmentCleanupTicker()
         return
     end
 
-    self.fragmentCleanupTicker = C_Timer.NewTicker(FRAGMENT_SWEEP_INTERVAL, --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:963:callback#45", --[[/APR_DIAG]]function()
+    self.fragmentCleanupTicker = C_Timer.NewTicker(FRAGMENT_SWEEP_INTERVAL, --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:987:callback#47", --[[/APR_DIAG]]function()
         self:CleanupExpiredFragments()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.party.StartFragmentCleanupTicker = APRTrace("APR-Core/features/group/Party.lua:958:APR.party:StartFragmentCleanupTicker#44", APR.party.StartFragmentCleanupTicker)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.StartFragmentCleanupTicker = APRTrace("APR-Core/features/group/Party.lua:982:APR.party:StartFragmentCleanupTicker#46", APR.party.StartFragmentCleanupTicker)--[[/APR_DIAG]]
 
 function APR.party:CleanupExpiredFragments()
     local now = GetTime()
@@ -978,7 +1002,7 @@ function APR.party:CleanupExpiredFragments()
         self.fragmentCleanupTicker:Cancel()
         self.fragmentCleanupTicker = nil
     end
-end--[[APR_DIAG]]; APR.party.CleanupExpiredFragments = APRTrace("APR-Core/features/group/Party.lua:968:APR.party:CleanupExpiredFragments#46", APR.party.CleanupExpiredFragments)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.CleanupExpiredFragments = APRTrace("APR-Core/features/group/Party.lua:992:APR.party:CleanupExpiredFragments#48", APR.party.CleanupExpiredFragments)--[[/APR_DIAG]]
 
 -- Fragments can arrive out of order or be duplicated. Sender-scoped keys prevent
 -- two group members with the same message ID from mixing their snapshots.
@@ -1022,13 +1046,13 @@ function APR.party:HandleMessageFragment(message, sender)
     else
         self:StartFragmentCleanupTicker()
     end
-end--[[APR_DIAG]]; APR.party.HandleMessageFragment = APRTrace("APR-Core/features/group/Party.lua:985:APR.party:HandleMessageFragment#47", APR.party.HandleMessageFragment)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.HandleMessageFragment = APRTrace("APR-Core/features/group/Party.lua:1009:APR.party:HandleMessageFragment#49", APR.party.HandleMessageFragment)--[[/APR_DIAG]]
 
 function APR.party:Delete()
     self:RemoveTeam()
     self:SendGroupMessage(true)
     self:RefreshPartyFrameAnchor()
-end--[[APR_DIAG]]; APR.party.Delete = APRTrace("APR-Core/features/group/Party.lua:1027:APR.party:Delete#48", APR.party.Delete)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.Delete = APRTrace("APR-Core/features/group/Party.lua:1051:APR.party:Delete#50", APR.party.Delete)--[[/APR_DIAG]]
 
 function APR.party:RequestData()
     if not CanShareGroupProgress() or not APR.settings.profile.receiveGroupData then
@@ -1038,4 +1062,4 @@ function APR.party:RequestData()
     if self.lastGroupRequestTime and now - self.lastGroupRequestTime < GROUP_REQUEST_THROTTLE then return end
     self.lastGroupRequestTime = now
     C_ChatInfo.SendAddonMessage("APRPartyRequest", "APRPartyRequest", GetGroupChannel())
-end--[[APR_DIAG]]; APR.party.RequestData = APRTrace("APR-Core/features/group/Party.lua:1033:APR.party:RequestData#49", APR.party.RequestData)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.RequestData = APRTrace("APR-Core/features/group/Party.lua:1057:APR.party:RequestData#51", APR.party.RequestData)--[[/APR_DIAG]]

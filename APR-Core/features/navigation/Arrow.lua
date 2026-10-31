@@ -303,30 +303,40 @@ local function CheckDistance(currentStep, currentStepIndex, routeSteps, currentC
         return 0
     end
 
-    -- The active route is already resolved. Looking up its saved display name
-    -- here scans the entire catalog and rechecks eligibility every arrow tick.
-    local routeData = APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute]
-    local routeMapID = routeData and routeData.mapID
-        or tonumber((APR.ActiveRoute or ""):match("^(%d+)")) or 0
-
     if not currentStep.NonSkippableWaypoint then
         APR.ArrowFrame.Button:Show()
     end
 
     local distance = 0
-    local curStepIndex = currentStepIndex
-    local previousCoords = currentCoord
-
     if APR.navigationPreview then
-        local points = APR.navigationPreview:BuildRoutePoints(currentStep, currentStepIndex, routeSteps)
+        local preview = APR.navigationPreview
+        local points = preview:BuildRoutePoints(currentStep, currentStepIndex, routeSteps)
         local limit = currentStep.SingleWaypointDisplayDistance and math.min(2, #points) or #points
+        -- Preview publishes read-only geometry and replaces it on route/map/quest
+        -- invalidation. Movement and facing change only the player-to-target leg.
+        -- External providers without that publication contract remain live pulls.
+        local cacheable = preview.routeCache and preview.routeCache.points == points
+        local cache = APR.Arrow.routeDistanceCache
+        if cacheable and cache and cache.preview == preview and cache.points == points
+            and cache.limit == limit and cache.canConnect == preview.CanConnect then return cache.distance end
         for index = 2, limit do
-            if not APR.navigationPreview:CanConnect(points[index - 1], points[index]) then break end
+            if not preview:CanConnect(points[index - 1], points[index]) then break end
             local a, b = points[index - 1].Coord, points[index].Coord
             distance = distance + DistanceBetween(a.x, a.y, b.x, b.y)
         end
-        return mathFloor(distance + 0.5)
+        distance = mathFloor(distance + 0.5)
+        -- Publish only after a successful sum; interrupted calculations can retry.
+        APR.Arrow.routeDistanceCache = cacheable and { preview = preview, points = points, limit = limit,
+            canConnect = preview.CanConnect, distance = distance } or nil
+        return distance
     end
+
+    -- The active route is already resolved; only the legacy fallback needs its map.
+    local routeData = APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute]
+    local routeMapID = routeData and routeData.mapID
+        or tonumber((APR.ActiveRoute or ""):match("^(%d+)")) or 0
+    local curStepIndex = currentStepIndex
+    local previousCoords = currentCoord
 
     -- If SingleWaypointDisplayDistance is true, only calculate distance to next waypoint
     if currentStep.SingleWaypointDisplayDistance then
@@ -418,7 +428,7 @@ function APR.Arrow:SetCoord()
         self:SetArrowActive(true, x, stepCoord.y)
         self.currentStep = currentStepIndex
     end
-end--[[APR_DIAG]]; APR.Arrow.SetCoord = APRTrace("APR-Core/features/navigation/Arrow.lua:362:APR.Arrow:SetCoord#19", APR.Arrow.SetCoord)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Arrow.SetCoord = APRTrace("APR-Core/features/navigation/Arrow.lua:372:APR.Arrow:SetCoord#19", APR.Arrow.SetCoord)--[[/APR_DIAG]]
 
 local function UpdatePosition(self, playerX, playerY, facing, instanceID)
     local navigation = APR.navigation
@@ -518,7 +528,7 @@ local function UpdatePosition(self, playerX, playerY, facing, instanceID)
         APR.ArrowFrame.distance:SetText(displayedDistance .. " " .. L["YARDS"])
         self.lastDisplayedDistance = displayedDistance
     end
-end--[[APR_DIAG]]; UpdatePosition = APRTrace("APR-Core/features/navigation/Arrow.lua:423:UpdatePosition#20", UpdatePosition)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; UpdatePosition = APRTrace("APR-Core/features/navigation/Arrow.lua:433:UpdatePosition#20", UpdatePosition)--[[/APR_DIAG]]
 
 function APR.Arrow:UpdatePosition()
     local playerY, playerX, _, instanceID = UnitPosition("player")
@@ -563,17 +573,18 @@ function APR.Arrow:UpdatePosition()
     local started = APR.StartPerformanceSample and APR:StartPerformanceSample()
     UpdatePosition(self, playerX, playerY, facing, instanceID)
     if APR.FinishPerformanceSample then APR:FinishPerformanceSample("ArrowPositionUpdate", started) end
-end--[[APR_DIAG]]; APR.Arrow.UpdatePosition = APRTrace("APR-Core/features/navigation/Arrow.lua:523:APR.Arrow:UpdatePosition#21", APR.Arrow.UpdatePosition)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Arrow.UpdatePosition = APRTrace("APR-Core/features/navigation/Arrow.lua:533:APR.Arrow:UpdatePosition#21", APR.Arrow.UpdatePosition)--[[/APR_DIAG]]
 
 function APR.Arrow:RefreshVisibility()
     self.positionCache = nil
     self:UpdatePosition()
-end--[[APR_DIAG]]; APR.Arrow.RefreshVisibility = APRTrace("APR-Core/features/navigation/Arrow.lua:568:APR.Arrow:RefreshVisibility#22", APR.Arrow.RefreshVisibility)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Arrow.RefreshVisibility = APRTrace("APR-Core/features/navigation/Arrow.lua:578:APR.Arrow:RefreshVisibility#22", APR.Arrow.RefreshVisibility)--[[/APR_DIAG]]
 
 function APR.Arrow:SetArrowActive(isActive, x, y, displayAction)
     local a = APR.Arrow
     a:SetDisplayAction(isActive and displayAction or nil)
     a.positionCache = nil
+    a.routeDistanceCache = nil
     a.arrowUpdateRate = APR.settings.profile.arrowFPS / 100 -- Update rate in seconds (ie: 2/100 = 0.02 seconds)
     a.Active = isActive
     a.x = x or 0
@@ -586,4 +597,4 @@ function APR.Arrow:SetArrowActive(isActive, x, y, displayAction)
     end
     local data = APR.NavigationData
     if data and data.RefreshWaypoints then data:RefreshWaypoints() end
-end--[[APR_DIAG]]; APR.Arrow.SetArrowActive = APRTrace("APR-Core/features/navigation/Arrow.lua:573:APR.Arrow:SetArrowActive#23", APR.Arrow.SetArrowActive)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Arrow.SetArrowActive = APRTrace("APR-Core/features/navigation/Arrow.lua:583:APR.Arrow:SetArrowActive#23", APR.Arrow.SetArrowActive)--[[/APR_DIAG]]

@@ -2,7 +2,7 @@
 -- arrival can still be useful if it leaves enough resources to finish.
 -- Graph loading, candidate checks and result assembly all run through Step.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("search", 9) then return end
+if not Lib:BeginModule("search", 10) then return end
 Lib.Engine = {}
 local Engine = Lib.Engine
 local Search = {}
@@ -150,11 +150,15 @@ function Search:PrepareNodeSpeed(index)
 end
 
 function Search:AddNode(position)
+    -- Input positions are immutable for this search. Repeated endpoints can
+    -- reuse the canonical node without formatting their geometric key again.
+    local index = self.nodeKeys[position]
+    if index then return index end
     local key = PositionKey(position)
-    local index = self.nodeKeys[key]
+    index = self.nodeKeys[key]
     if index then return index end
     index = #self.nodes + 1
-    self.nodes[index], self.nodeKeys[key] = position, index
+    self.nodes[index], self.nodeKeys[key], self.nodeKeys[position] = position, index, index
     local bucket = self:GetWalkingBucket(position, true)
     if bucket ~= EMPTY then
         bucket[#bucket + 1] = index
@@ -310,6 +314,7 @@ end
 function Search:QueueCandidate(node, previous, edge, walkSeconds)
     local seconds = (previous and previous.seconds or 0) + (walkSeconds or (edge and edge.seconds) or 0)
     if self.directSeconds and seconds > self.directSeconds then return end
+    if self.bestGoalSeconds and seconds > self.bestGoalSeconds then return end
     local copper = (previous and previous.copper or 0) + (edge and edge.copper or 0)
     if copper > self.budget then return end
     local used = previous and previous.used or self.emptyUsage
@@ -349,6 +354,13 @@ function Search:AcceptCandidate(candidate)
     if not labels then labels = {}; self.labels[candidate.node] = labels end
     labels[#labels + 1] = label
     Push(self.heap, label)
+    -- Only a fully validated arrival proves a complete feasible itinerary.
+    -- Nonnegative costs cannot improve it from a strictly slower prefix; ties
+    -- remain eligible so Pareto/resource checks keep their existing order.
+    if candidate.node == self.goalNode
+        and (not self.bestGoalSeconds or label.seconds < self.bestGoalSeconds) then
+        self.bestGoalSeconds = label.seconds
+    end
     self.candidate = nil
 end
 

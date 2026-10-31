@@ -1,5 +1,5 @@
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("conditions", 9) then return end
+if not Lib:BeginModule("conditions", 10) then return end
 local Instance = Lib.Instance
 
 local function Contains(values, wanted)
@@ -81,16 +81,16 @@ end
 
 function Instance:GetTravelRequirements(requirements, from, to)
     if not self.config.MapRequirements then return requirements end
-    local additions, seen = {}, {}
-    for _, point in ipairs({ from or false, to or false }) do
-        local rule = point and not point.phaseAgnostic and self:GetMapAccessRequirements(point.uiMapID)
-        if rule and not seen[rule] then
-            seen[rule] = true
-            additions[#additions + 1] = rule
-        end
-    end
-    if #additions == 0 then return requirements end
-    if requirements then table.insert(additions, 1, requirements) end
+    local fromRule = from and not from.phaseAgnostic and self:GetMapAccessRequirements(from.uiMapID)
+    local toRule = to and not to.phaseAgnostic and self:GetMapAccessRequirements(to.uiMapID)
+    if not fromRule then fromRule, toRule = toRule, nil end
+    if not fromRule then return requirements end
+    if not toRule or toRule == fromRule then toRule = nil end
+    -- There are only two endpoints. Keep identity-based deduplication without
+    -- temporary endpoint/seen tables, and allocate only when a rule is added.
+    local additions
+    if requirements then additions = { requirements, fromRule, toRule }
+    else additions = { fromRule, toRule } end
     return { all = additions }
 end
 

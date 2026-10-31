@@ -1,7 +1,7 @@
 -- Optional waypoint output. A consumer may publish explicitly or enable an
 -- observer of its current target; route progression always belongs to the host.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("waypoint-ui", 3) then return end
+if not Lib:BeginModule("waypoint-ui", 4) then return end
 local Instance = Lib.Instance
 local visualKeys = { "name", "iconTexture", "iconType", "r", "g", "b", "requestRecolor", "stripCoordinates" }
 
@@ -100,8 +100,9 @@ local function MapPosition(instance, position, anyMap)
         return nil, mapSpace and "invalid_position" or "projection_unavailable"
     end
     local canSet = not anyMap and (instance.env.canSetWaypointOnMap or GlobalMethod("C_Map", "CanSetUserWaypointOnMap"))
-    local seen, world = {}, position.worldPosition
+    local seen, world = nil, position.worldPosition
     while canSet and Call(canSet, mapID) ~= true do
+        seen = seen or {}
         if seen[mapID] then return nil, "projection_unavailable" end
         seen[mapID] = true
         local info = Call(instance.env.getMapInfo or GlobalMethod("C_Map", "GetMapInfo"), mapID)
@@ -367,13 +368,13 @@ function Instance:GetWaypointMapTarget(target, options)
 end
 
 local function TargetSnapshot(target, options)
-    local result = { target = PositionSnapshot(target), options = {} }
+    local result = { options = {} }
     if IsSegment(target) then
         local action = target.action
         result.target = { kind = target.kind, sourceFree = target.sourceFree,
             instruction = target.instruction, from = PositionSnapshot(target.from), to = PositionSnapshot(target.to),
             action = type(action) == "table" and { type = action.type, id = action.id, data = action.data } or action }
-    end
+    else result.target = PositionSnapshot(target) end
     for _, key in ipairs(visualKeys) do result.options[key] = options and options[key] end
     result.options.suppressAudio = not options or options.suppressAudio ~= false
     result.options.context = options and options.context
@@ -408,6 +409,69 @@ local function SameSnapshot(a, b)
     return true
 end
 
+local positionFields, optionFields = {}, { context = true, token = true, guideMode = true }
+for _, key in ipairs(positionKeys) do positionFields[key] = true end
+for _, key in ipairs(visualKeys) do optionFields[key] = true end
+local segmentFields = { kind = true, sourceFree = true, instruction = true, from = true, to = true, action = true }
+local actionFields = { type = true, id = true, data = true }
+
+local function SameFields(snapshot, source, fields)
+    if type(snapshot) ~= "table" or type(source) ~= "table" then return SameSnapshot(source, snapshot) end
+    for key in pairs(fields) do
+        local value, previous = source[key], snapshot[key]
+        if value == nil then
+            if previous ~= nil then return false end
+        elseif type(value) == "table" then
+            if not SameSnapshot(value, previous) then return false end
+        elseif value ~= previous then return false end
+    end
+    for key in pairs(snapshot) do if not fields[key] then return false end end
+    return true
+end
+
+local function SameTargetSnapshot(snapshot, target, options)
+    if type(snapshot) ~= "table" or type(snapshot.options) ~= "table" then return false end
+    local captured = snapshot.target
+    if IsSegment(target) then
+        if type(captured) ~= "table" then return false end
+        for key in pairs(segmentFields) do
+            local source, previous = target[key], captured[key]
+            if key == "from" or key == "to" then
+                if not SameFields(previous, source, positionFields) then return false end
+            elseif key == "action" then
+                if not SameFields(previous, source, actionFields) then return false end
+            elseif not SameSnapshot(source, previous) then return false end
+        end
+        for key in pairs(captured) do if not segmentFields[key] then return false end end
+    elseif not SameFields(captured, target, positionFields) then return false end
+    local capturedOptions = snapshot.options
+    if capturedOptions.suppressAudio ~= (options.suppressAudio ~= false) then return false end
+    for key in pairs(optionFields) do
+        local value, previous = options[key], capturedOptions[key]
+        if value == nil then
+            if previous ~= nil then return false end
+        elseif type(value) == "table" then
+            if not SameSnapshot(value, previous) then return false end
+        elseif value ~= previous then return false end
+    end
+    for key in pairs(capturedOptions) do
+        if key ~= "suppressAudio" and not optionFields[key] then return false end
+    end
+    return true
+end
+
+local function NeedsCapture(target, options)
+    if getmetatable(options) ~= nil then return true end
+    if type(target) ~= "table" then return false end
+    if getmetatable(target) ~= nil then return true end
+    if IsSegment(target) then
+        local source, destination, action = target.from, target.to, target.action
+        return (type(source) == "table" and getmetatable(source) ~= nil)
+            or (type(destination) == "table" and getmetatable(destination) ~= nil)
+            or (type(action) == "table" and getmetatable(action) ~= nil)
+    end
+end
+
 local function ClearAutomatic(instance, automatic)
     if not automatic.ownedWaypoint or instance.waypointUI ~= automatic.ownedWaypoint then
         automatic.ownedWaypoint = nil
@@ -433,8 +497,19 @@ local function RefreshAutomatic(self, automatic)
         automatic.reason = errorReason
         return automatic.point, automatic.reason
     end
-    local snapshot = TargetSnapshot(target, options)
-    if not automatic.hasTarget or not SameSnapshot(snapshot, automatic.target) then
+    local snapshot, unchanged
+    if NeedsCapture(target, options) then
+        -- A changing accessor must be sampled once, including protected
+        -- metatables whose public marker is false.
+        snapshot = TargetSnapshot(target, options)
+        unchanged = automatic.hasTarget and SameSnapshot(snapshot, automatic.target)
+    else
+        -- Plain host tables may mutate in place. Compare the captured fields
+        -- before allocating a new snapshot; still validate/publish every tick.
+        unchanged = automatic.hasTarget and SameTargetSnapshot(automatic.target, target, options)
+        if not unchanged then snapshot = TargetSnapshot(target, options) end
+    end
+    if not unchanged then
         if self.ClearManualAzerothWaypoint and self.waypointAzerothManual then
             local _, reason = self:ClearManualAzerothWaypoint()
             self.waypointAWPending = reason ~= nil
