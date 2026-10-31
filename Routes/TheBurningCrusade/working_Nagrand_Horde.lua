@@ -501,6 +501,8 @@
         {
             GossipOptionIDs = { 33654, 33461, 33705, 33704, 33589, 33566, 34093, 33565 },
             Coord = { x = 6217.7, y = -2267.9 },
+            IsQuestOnQuest = 10107,
+            Not = { IsQuestReadyForTurnIn = 10107 },
             Zone = 107,
             _index = 78,
         },
