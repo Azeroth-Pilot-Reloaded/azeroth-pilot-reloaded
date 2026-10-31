@@ -331,6 +331,11 @@ APR.RouteQuestStepList["102-BC-2-Horde"] = {
             WaypointDB = { 9894, 9788, 10096 },
             Coord = { x = 5732.4, y = -1145.7 },
             Range = 5,
+            AnyOf = {
+                { IsQuestOnQuest = 9894, Not = { IsQuestReadyForTurnIn = 9894 } },
+                { IsQuestOnQuest = 9788, Not = { IsQuestReadyForTurnIn = 9788 } },
+                { IsQuestOnQuest = 10096, Not = { IsQuestReadyForTurnIn = 10096 } },
+            },
             Zone = 102,
             _index = 48,
         },
