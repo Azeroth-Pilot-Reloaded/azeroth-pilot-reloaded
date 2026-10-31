@@ -606,5 +606,37 @@
             Zone = 107,
             _index = 93,
         },
+        {
+            Done = { 9865 },
+            Coord = { x = 8499.3, y = -1284.5 },
+            Zone = 107,
+            _index = 94,
+        },
+        {
+            PickUp = { 9866 },
+            Coord = { x = 8499.3, y = -1284.5 },
+            Zone = 107,
+            _index = 95,
+        },
+        {
+            Qpart = { [9859] = { 1 } },
+            Coord = { x = 8759.3, y = -1530.1 },
+            Range = 5,
+            Zone = 107,
+            _index = 96,
+        },
+        {
+            Done = { 9983 },
+            Coord = { x = 8783, y = -1543 },
+            Zone = 107,
+            _index = 97,
+        },
+        {
+            PickUp = { 9991 },
+            Coord = { x = 8783.8, y = -1543.5 },
+            NpcDismount = 18417,
+            Zone = 107,
+            _index = 98,
+        },
     },
 }
