@@ -61,6 +61,10 @@ local function Finish(entry, sent)
     entry.sent = entry.hasResult and (code == nil or code == true or code == 0)
         or not entry.hasResult and (sent == nil or sent == true or sent == 0)
     if records[entry] then records[entry] = nil; recordCount = recordCount - 1 end
+    if entry.owner.TraceTraffic then
+        entry.owner:TraceTraffic("TX", entry.kind, "WHISPER", entry.target,
+            entry.cancelled and "cancelled" or entry.sent and "accepted" or tostring(code or entry.failure or "failed"), entry.wire)
+    end
     if not entry.sent and not entry.cancelled and not entry.owner.directStopped then
         local codes = Enum and Enum.SendAddonMessageResult or {}
         if code == (codes.TargetOffline or 12) then return end
@@ -70,6 +74,10 @@ local function Finish(entry, sent)
         if entry.owner.Notify then entry.owner:Notify() end
     end
 end--[[APR_DIAG]]; Finish = APRTrace("APR-Core/features/group/PartyFinderDirect.lua:57:Finish#5", Finish)--[[/APR_DIAG]]
+
+local function DirectSent(record, _, _, sent)
+    Finish(record, sent)
+end--[[APR_DIAG]]; DirectSent = APRTrace("APR-Core/features/group/PartyFinderDirect.lua:78:DirectSent#6", DirectSent)--[[/APR_DIAG]]
 
 local function Current(entry)
     local self = entry.owner
@@ -87,13 +95,13 @@ local function Current(entry)
         if not ok or not Public(allowed) or allowed ~= true then return false end
     end
     return true
-end--[[APR_DIAG]]; Current = APRTrace("APR-Core/features/group/PartyFinderDirect.lua:74:Current#6", Current)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Current = APRTrace("APR-Core/features/group/PartyFinderDirect.lua:82:Current#7", Current)--[[/APR_DIAG]]
 
 local function GuardQueue(ctl)
     if ctl == guardedCTL and ctl.Enqueue == enqueueGuard then return true end
     if type(ctl.Enqueue) ~= "function" then return false end
     local original = ctl.Enqueue
-    enqueueGuard = --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinderDirect.lua:96:callback#8", --[[/APR_DIAG]]function(library, priority, pipeName, message)
+    enqueueGuard = --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinderDirect.lua:104:callback#9", --[[/APR_DIAG]]function(library, priority, pipeName, message)
         local entry = dispatching
         if entry and library == entry.ctl and type(message) == "table"
             and message[1] == PREFIX and message[3] == "WHISPER" then
@@ -106,7 +114,7 @@ local function GuardQueue(ctl)
                 return
             end
             local send = message.f
-            message.f = --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinderDirect.lua:109:callback#9", --[[/APR_DIAG]]function(...)
+            message.f = --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinderDirect.lua:117:callback#10", --[[/APR_DIAG]]function(...)
                 if not Current(entry) then
                     entry.cancelled = true
                     -- A non-throttle failure lets CTL discard this record.
@@ -121,18 +129,18 @@ local function GuardQueue(ctl)
     guardedCTL = ctl
     ctl.Enqueue = enqueueGuard
     return true
-end--[[APR_DIAG]]; GuardQueue = APRTrace("APR-Core/features/group/PartyFinderDirect.lua:92:GuardQueue#7", GuardQueue)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; GuardQueue = APRTrace("APR-Core/features/group/PartyFinderDirect.lua:100:GuardQueue#8", GuardQueue)--[[/APR_DIAG]]
 
 local function GuardSender(ctl)
     if ctl == guardedSender and ctl.SendAddonMessage == senderGuard then return true end
     local original = ctl.SendAddonMessage
     if type(original) ~= "function" then return false end
-    senderGuard = --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinderDirect.lua:130:callback#11", --[[/APR_DIAG]]function(library, priority, prefix, wire, channel, target, pipe, callback, argument)
+    senderGuard = --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinderDirect.lua:138:callback#12", --[[/APR_DIAG]]function(library, priority, prefix, wire, channel, target, pipe, callback, argument)
         local entry = dispatching
         if entry and library == entry.ctl and prefix == PREFIX and channel == "WHISPER"
             and wire == entry.wire and target == entry.target and type(callback) == "function" then
             local originalCallback = callback
-            callback = --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinderDirect.lua:135:callback#12", --[[/APR_DIAG]]function(arg, sent, result)
+            callback = --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinderDirect.lua:143:callback#13", --[[/APR_DIAG]]function(arg, sent, result)
                 -- AceComm14 loses CTL32's third callback argument. Preserve the
                 -- native status without changing AceComm's callback contract.
                 entry.result, entry.hasResult = result, true
@@ -144,7 +152,7 @@ local function GuardSender(ctl)
     guardedSender = ctl
     ctl.SendAddonMessage = senderGuard
     return true
-end--[[APR_DIAG]]; GuardSender = APRTrace("APR-Core/features/group/PartyFinderDirect.lua:126:GuardSender#10", GuardSender)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; GuardSender = APRTrace("APR-Core/features/group/PartyFinderDirect.lua:134:GuardSender#11", GuardSender)--[[/APR_DIAG]]
 
 function Finder:InitializeDirectTransport()
     self.directRegistered = false -- Reception stays in HandleAddonMessage exactly once.
@@ -166,14 +174,18 @@ function Finder:InitializeDirectTransport()
     self.directReady, self.directStopped = true, false
     self.directAceComm, self.directCTL = ace, ctl
     return true
-end--[[APR_DIAG]]; Finder.InitializeDirectTransport = APRTrace("APR-Core/features/group/PartyFinderDirect.lua:149:Finder:InitializeDirectTransport#13", Finder.InitializeDirectTransport)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.InitializeDirectTransport = APRTrace("APR-Core/features/group/PartyFinderDirect.lua:157:Finder:InitializeDirectTransport#14", Finder.InitializeDirectTransport)--[[/APR_DIAG]]
 
 function Finder:SendDirect(kind, wire, target, guard, ttl)
+    if self.TraceTraffic then self:TraceTraffic("QUEUE", kind, "WHISPER", target, "requested", wire) end
     if kind ~= "P" and kind ~= "I" and kind ~= "R" or not Envelope(wire)
         or not Public(target) or type(target) ~= "string" or #target == 0 or #target > 128
         or target:find("[%c|]") or guard ~= nil and type(guard) ~= "function"
         or recordCount >= LIMIT or not self:IsEnabled() or self:IsRestricted()
-        or not self:InitializeDirectTransport() then return false end
+        or not self:InitializeDirectTransport() then
+        if self.TraceTraffic then self:TraceTraffic("TX", kind, "WHISPER", target, "unavailable", wire) end
+        return false
+    end
     local packet = P.Decode(wire)
     if not packet or packet.kind ~= kind then return false end
     local lifetime = kind == "P" and 10 or 60
@@ -190,18 +202,18 @@ function Finder:SendDirect(kind, wire, target, guard, ttl)
     local previous = dispatching
     dispatching = entry
     local ok = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](self.directAceComm.SendCommMessage, self, PREFIX, wire, "WHISPER", target, "NORMAL",
-        --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinderDirect.lua:193:callback#15", --[[/APR_DIAG]]function(record, _, _, sent) Finish(record, sent) end--[[APR_DIAG]])--[[/APR_DIAG]], entry)
+        DirectSent, entry)
     dispatching = previous
     if not ok or not entry.done and not entry.queued then Finish(entry, false); return false end
     return not entry.done or entry.sent
-end--[[APR_DIAG]]; Finder.SendDirect = APRTrace("APR-Core/features/group/PartyFinderDirect.lua:171:Finder:SendDirect#14", Finder.SendDirect)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.SendDirect = APRTrace("APR-Core/features/group/PartyFinderDirect.lua:179:Finder:SendDirect#15", Finder.SendDirect)--[[/APR_DIAG]]
 
 function Finder:CancelDirectPresence(sender, id)
     for entry in pairs(records) do
         if entry.owner == self and entry.kind == "P" and (not sender or entry.target == sender)
             and (not id or entry.id == id) then entry.cancelled = true end
     end
-end--[[APR_DIAG]]; Finder.CancelDirectPresence = APRTrace("APR-Core/features/group/PartyFinderDirect.lua:199:Finder:CancelDirectPresence#16", Finder.CancelDirectPresence)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.CancelDirectPresence = APRTrace("APR-Core/features/group/PartyFinderDirect.lua:211:Finder:CancelDirectPresence#16", Finder.CancelDirectPresence)--[[/APR_DIAG]]
 
 function Finder:StopDirectTransport()
     self.directStopped, self.directReady = true, false
@@ -209,4 +221,4 @@ function Finder:StopDirectTransport()
     -- Records still held by CTL retain their place in the global bound until
     -- CTL retires them. Neither Stop nor reinitialization can grow that backlog.
     -- Keep the receiver guard: native prefix registration outlives discovery.
-end--[[APR_DIAG]]; Finder.StopDirectTransport = APRTrace("APR-Core/features/group/PartyFinderDirect.lua:206:Finder:StopDirectTransport#17", Finder.StopDirectTransport)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.StopDirectTransport = APRTrace("APR-Core/features/group/PartyFinderDirect.lua:218:Finder:StopDirectTransport#17", Finder.StopDirectTransport)--[[/APR_DIAG]]

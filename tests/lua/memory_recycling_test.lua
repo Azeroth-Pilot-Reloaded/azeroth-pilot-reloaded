@@ -106,6 +106,8 @@ APR.Faction = "Alliance"
 local toys = {}
 function PlayerHasToy(id) return toys[id] end
 C_ToyBox = { GetToyInfo = function(id) return id, "Toy", 123 end }
+C_Heirloom = { GetHeirloomItemIDs = function() return {880001} end,
+    PlayerHasHeirloom = function(id) return id == 880001 end }
 APR.heirloom:AddHeirloomIcons()
 toys[150743] = true
 APR.heirloom:AddHeirloomIcons()

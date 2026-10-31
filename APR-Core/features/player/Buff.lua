@@ -89,13 +89,14 @@ local function GetSpellIcon(spellID, aura)
     end
 
     local spellInfo = C_Spell.GetSpellInfo(spellID)
+    if spellInfo and spellInfo.iconID then return spellInfo.iconID end
     local spellTexture = C_Spell.GetSpellTexture and C_Spell.GetSpellTexture(spellID)
-    return spellInfo and spellInfo.iconID or spellTexture or DEFAULT_SPELL_ICON
+    return spellTexture or DEFAULT_SPELL_ICON
 end--[[APR_DIAG]]; GetSpellIcon = APRTrace("APR-Core/features/player/Buff.lua:86:GetSpellIcon#4", GetSpellIcon)--[[/APR_DIAG]]
 
 local function SetIconEnabled(icon, enabled)
     icon.texture:SetVertexColor(unpack(enabled and APR.Color.white or APR.Color.midGray))
-end--[[APR_DIAG]]; SetIconEnabled = APRTrace("APR-Core/features/player/Buff.lua:96:SetIconEnabled#5", SetIconEnabled)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; SetIconEnabled = APRTrace("APR-Core/features/player/Buff.lua:97:SetIconEnabled#5", SetIconEnabled)--[[/APR_DIAG]]
 
 local function ShowTrackedBuffTooltip(icon)
     GameTooltip:SetOwner(icon, "ANCHOR_BOTTOM")
@@ -108,7 +109,7 @@ local function ShowTrackedBuffTooltip(icon)
     end
 
     GameTooltip:Show()
-end--[[APR_DIAG]]; ShowTrackedBuffTooltip = APRTrace("APR-Core/features/player/Buff.lua:100:ShowTrackedBuffTooltip#6", ShowTrackedBuffTooltip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ShowTrackedBuffTooltip = APRTrace("APR-Core/features/player/Buff.lua:101:ShowTrackedBuffTooltip#6", ShowTrackedBuffTooltip)--[[/APR_DIAG]]
 
 local function CreateTrackedBuffIcon()
     local icon = CreateFrame("Frame", nil, BuffFrame_body)
@@ -120,7 +121,7 @@ local function CreateTrackedBuffIcon()
     texture:SetAllPoints(icon)
 
     icon:SetScript("OnEnter", ShowTrackedBuffTooltip)
-    icon:SetScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/features/player/Buff.lua:123:callback#8", --[[/APR_DIAG]]function()
+    icon:SetScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/features/player/Buff.lua:124:callback#8", --[[/APR_DIAG]]function()
         GameTooltip:Hide()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 
@@ -129,7 +130,7 @@ local function CreateTrackedBuffIcon()
     icon.auraId = 0
 
     return icon
-end--[[APR_DIAG]]; CreateTrackedBuffIcon = APRTrace("APR-Core/features/player/Buff.lua:113:CreateTrackedBuffIcon#7", CreateTrackedBuffIcon)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; CreateTrackedBuffIcon = APRTrace("APR-Core/features/player/Buff.lua:114:CreateTrackedBuffIcon#7", CreateTrackedBuffIcon)--[[/APR_DIAG]]
 
 local function ConfigureTrackedBuffIcon(icon, buff, index, aura)
     local xOffset, yOffset = GetSlotOffset(index)
@@ -141,7 +142,7 @@ local function ConfigureTrackedBuffIcon(icon, buff, index, aura)
     icon.tooltipMessage = buff.tooltipMessage
     icon.auraId = 0
     icon:Show()
-end--[[APR_DIAG]]; ConfigureTrackedBuffIcon = APRTrace("APR-Core/features/player/Buff.lua:134:ConfigureTrackedBuffIcon#9", ConfigureTrackedBuffIcon)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ConfigureTrackedBuffIcon = APRTrace("APR-Core/features/player/Buff.lua:135:ConfigureTrackedBuffIcon#9", ConfigureTrackedBuffIcon)--[[/APR_DIAG]]
 
 local function InitializeAuraButton(auraButton, index)
     local xOffset, yOffset = GetSlotOffset(index)
@@ -167,7 +168,7 @@ local function InitializeAuraButton(auraButton, index)
 
     -- Slots only become visible after the managed container assigns a matching aura.
     auraButton:Hide()
-end--[[APR_DIAG]]; InitializeAuraButton = APRTrace("APR-Core/features/player/Buff.lua:146:InitializeAuraButton#10", InitializeAuraButton)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; InitializeAuraButton = APRTrace("APR-Core/features/player/Buff.lua:147:InitializeAuraButton#10", InitializeAuraButton)--[[/APR_DIAG]]
 
 local function EnsureAuraSlot(index)
     local slot = APR.Buff.auraSlots[index]
@@ -179,7 +180,7 @@ local function EnsureAuraSlot(index)
     local slotKey = AURA_SLOT_PREFIX .. index
     local auraButton = BuffAuraContainer:AddAuraSlot(slotKey, "HELPFUL", {
         candidateFilters = { includeSpellIDs = EMPTY_SPELL_FILTER },
-        initializeFrame = --[[APR_DIAG]]APRTrace("APR-Core/features/player/Buff.lua:182:callback#12", --[[/APR_DIAG]]function(frame)
+        initializeFrame = --[[APR_DIAG]]APRTrace("APR-Core/features/player/Buff.lua:183:callback#12", --[[/APR_DIAG]]function(frame)
             InitializeAuraButton(frame, index)
         end--[[APR_DIAG]])--[[/APR_DIAG]],
         sortMethod = AuraContainerSortMethod.Default,
@@ -194,7 +195,7 @@ local function EnsureAuraSlot(index)
     APR.Buff.auraSlots[index] = slot
 
     return slot
-end--[[APR_DIAG]]; EnsureAuraSlot = APRTrace("APR-Core/features/player/Buff.lua:172:EnsureAuraSlot#11", EnsureAuraSlot)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; EnsureAuraSlot = APRTrace("APR-Core/features/player/Buff.lua:173:EnsureAuraSlot#11", EnsureAuraSlot)--[[/APR_DIAG]]
 
 local function SetLegacyAura(icon, aura)
     local readable = APRSecret:CanAccessTable(aura)
@@ -202,7 +203,7 @@ local function SetLegacyAura(icon, aura)
     if readable then auraID = aura.auraInstanceID end
     icon.auraId = APRSecret:CanAccessValue(auraID) and auraID or 0
     SetIconEnabled(icon, readable)
-end--[[APR_DIAG]]; SetLegacyAura = APRTrace("APR-Core/features/player/Buff.lua:199:SetLegacyAura#13", SetLegacyAura)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; SetLegacyAura = APRTrace("APR-Core/features/player/Buff.lua:200:SetLegacyAura#13", SetLegacyAura)--[[/APR_DIAG]]
 
 function APR.Buff:BuffFrameOnInit()
     LibWindow.RegisterConfig(BuffFrameScreen, APR.settings.profile.buffFrame)
@@ -211,14 +212,14 @@ function APR.Buff:BuffFrameOnInit()
 
     self:SetDefaultDisplay()
     self:RefreshFrameAnchor()
-end--[[APR_DIAG]]; APR.Buff.BuffFrameOnInit = APRTrace("APR-Core/features/player/Buff.lua:207:APR.Buff:BuffFrameOnInit#14", APR.Buff.BuffFrameOnInit)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Buff.BuffFrameOnInit = APRTrace("APR-Core/features/player/Buff.lua:208:APR.Buff:BuffFrameOnInit#14", APR.Buff.BuffFrameOnInit)--[[/APR_DIAG]]
 
 function APR.Buff:SetDefaultDisplay()
     BuffFrameScreen:SetPoint("center", UIParent, "center", 0, 0)
     BuffFrame_body:Show()
     BuffFrameHeader:Show()
     self:UpdateBackgroundColorAlpha()
-end--[[APR_DIAG]]; APR.Buff.SetDefaultDisplay = APRTrace("APR-Core/features/player/Buff.lua:216:APR.Buff:SetDefaultDisplay#15", APR.Buff.SetDefaultDisplay)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Buff.SetDefaultDisplay = APRTrace("APR-Core/features/player/Buff.lua:217:APR.Buff:SetDefaultDisplay#15", APR.Buff.SetDefaultDisplay)--[[/APR_DIAG]]
 
 function APR.Buff:RefreshFrameAnchor()
     if not APR.settings.profile.enableAddon or not APR.ActiveRoute or APR:IsPetBattleActive() or
@@ -229,15 +230,15 @@ function APR.Buff:RefreshFrameAnchor()
     BuffFrameScreen:EnableMouse(true)
     LibWindow.RestorePosition(BuffFrameScreen)
     BuffFrameScreen:Show()
-end--[[APR_DIAG]]; APR.Buff.RefreshFrameAnchor = APRTrace("APR-Core/features/player/Buff.lua:223:APR.Buff:RefreshFrameAnchor#16", APR.Buff.RefreshFrameAnchor)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Buff.RefreshFrameAnchor = APRTrace("APR-Core/features/player/Buff.lua:224:APR.Buff:RefreshFrameAnchor#16", APR.Buff.RefreshFrameAnchor)--[[/APR_DIAG]]
 
 function APR.Buff:UpdateBackgroundColorAlpha()
     APR:SetPanelColor(BuffFrameScreen, APR.settings.profile.currentStepbackgroundColorAlpha)
-end--[[APR_DIAG]]; APR.Buff.UpdateBackgroundColorAlpha = APRTrace("APR-Core/features/player/Buff.lua:234:APR.Buff:UpdateBackgroundColorAlpha#17", APR.Buff.UpdateBackgroundColorAlpha)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Buff.UpdateBackgroundColorAlpha = APRTrace("APR-Core/features/player/Buff.lua:235:APR.Buff:UpdateBackgroundColorAlpha#17", APR.Buff.UpdateBackgroundColorAlpha)--[[/APR_DIAG]]
 
 function APR.Buff:UsesAuraContainer()
     return BuffAuraContainer ~= nil
-end--[[APR_DIAG]]; APR.Buff.UsesAuraContainer = APRTrace("APR-Core/features/player/Buff.lua:238:APR.Buff:UsesAuraContainer#18", APR.Buff.UsesAuraContainer)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Buff.UsesAuraContainer = APRTrace("APR-Core/features/player/Buff.lua:239:APR.Buff:UsesAuraContainer#18", APR.Buff.UsesAuraContainer)--[[/APR_DIAG]]
 
 function APR.Buff:AddBuffIcon(buff)
     local index = #self.auras + 1
@@ -261,7 +262,7 @@ function APR.Buff:AddBuffIcon(buff)
     end
 
     self:RefreshFrameAnchor()
-end--[[APR_DIAG]]; APR.Buff.AddBuffIcon = APRTrace("APR-Core/features/player/Buff.lua:242:APR.Buff:AddBuffIcon#19", APR.Buff.AddBuffIcon)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Buff.AddBuffIcon = APRTrace("APR-Core/features/player/Buff.lua:243:APR.Buff:AddBuffIcon#19", APR.Buff.AddBuffIcon)--[[/APR_DIAG]]
 
 function APR.Buff:RefreshLegacyBuffs()
     if self:UsesAuraContainer() then
@@ -271,7 +272,7 @@ function APR.Buff:RefreshLegacyBuffs()
     for _, icon in ipairs(self.auras) do
         SetLegacyAura(icon, C_UnitAuras.GetPlayerAuraBySpellID(icon.spellId))
     end
-end--[[APR_DIAG]]; APR.Buff.RefreshLegacyBuffs = APRTrace("APR-Core/features/player/Buff.lua:266:APR.Buff:RefreshLegacyBuffs#20", APR.Buff.RefreshLegacyBuffs)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Buff.RefreshLegacyBuffs = APRTrace("APR-Core/features/player/Buff.lua:267:APR.Buff:RefreshLegacyBuffs#20", APR.Buff.RefreshLegacyBuffs)--[[/APR_DIAG]]
 
 function APR.Buff:HandleUnitAuraUpdate(unitTarget)
     if self:UsesAuraContainer() then
@@ -285,7 +286,7 @@ function APR.Buff:HandleUnitAuraUpdate(unitTarget)
     -- Forever and Retail can restrict the entire payload. Query only our tracked
     -- spell IDs; never inspect event tables or infer restrictions from TOC numbers.
     self:RefreshLegacyBuffs()
-end--[[APR_DIAG]]; APR.Buff.HandleUnitAuraUpdate = APRTrace("APR-Core/features/player/Buff.lua:276:APR.Buff:HandleUnitAuraUpdate#21", APR.Buff.HandleUnitAuraUpdate)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Buff.HandleUnitAuraUpdate = APRTrace("APR-Core/features/player/Buff.lua:277:APR.Buff:HandleUnitAuraUpdate#21", APR.Buff.HandleUnitAuraUpdate)--[[/APR_DIAG]]
 
 function APR.Buff:RemoveAllBuffIcon()
     if self:UsesAuraContainer() then
@@ -307,4 +308,4 @@ function APR.Buff:RemoveAllBuffIcon()
 
     self.auras = {}
     self:RefreshFrameAnchor()
-end--[[APR_DIAG]]; APR.Buff.RemoveAllBuffIcon = APRTrace("APR-Core/features/player/Buff.lua:290:APR.Buff:RemoveAllBuffIcon#22", APR.Buff.RemoveAllBuffIcon)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Buff.RemoveAllBuffIcon = APRTrace("APR-Core/features/player/Buff.lua:291:APR.Buff:RemoveAllBuffIcon#22", APR.Buff.RemoveAllBuffIcon)--[[/APR_DIAG]]

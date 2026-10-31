@@ -1,7 +1,7 @@
 -- Preferred authored zone entrances bypass whole-world transport searches.
 -- The host opts in; the generic shortest-time engine keeps its existing API.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("zone_routing", 3) then return end
+if not Lib:BeginModule("zone_routing", 4) then return end
 local Instance = Lib.Instance
 local Job = {}
 Job.__index = Job
@@ -17,7 +17,7 @@ end
 
 function Instance:CreateZoneRoute(context)
     return setmetatable({ owner = self, context = context, status = "planning", phase = "lookup",
-        mapID = context.goal and context.goal.uiMapID, seen = {}, depth = 0 }, Job)
+        mapID = context.goal and context.goal.uiMapID, depth = 0 }, Job)
 end
 
 function Job:AdvanceLookup()
@@ -25,7 +25,8 @@ function Job:AdvanceLookup()
     local start, goal = context.start, context.goal
     if self.phase == "lookup" then
         if not start or not goal then self.status = "fallback"; return self.status end
-        local id = (data.config.ZoneRoutes or {})[self.mapID]
+        local routes = data.config.ZoneRoutes
+        local id = routes and routes[self.mapID]
         if data:CanWalk(start, goal) then
             -- Sharing a continent permits direct travel; it does not prove
             -- that travel beats a teleport or a chain of physical portals.
@@ -45,10 +46,12 @@ function Job:AdvanceLookup()
         if not id then
             -- Child maps inherit the listed outdoor entrance. Resolve one
             -- ancestor per operation; unknown/cyclic map records stay retryable.
-            if not self.mapID or self.seen[self.mapID] or self.depth >= 50 then
+            if not self.mapID or (self.seen and self.seen[self.mapID]) or self.depth >= 50 then
                 self.active, self.phase = data:CreateZoneGraphRoute(context, Walk), "graph"
                 return "planning"
             end
+            -- Local objectives and listed entrances need no ancestry history.
+            self.seen = self.seen or {}
             self.seen[self.mapID] = true
             self.depth = self.depth + 1
             local info = data:GetMapAncestryInfo(self.mapID)

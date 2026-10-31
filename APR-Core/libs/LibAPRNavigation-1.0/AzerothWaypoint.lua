@@ -1,7 +1,7 @@
 -- Optional guide-provider output. The consumer supplies its effective target;
 -- AzerothWaypoint retains its own visibility, provider selection and routing.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("azeroth-waypoint", 1) then return end
+if not Lib:BeginModule("azeroth-waypoint", 4) then return end
 local Instance = Lib.Instance
 
 local function ProviderID(instance)
@@ -41,8 +41,10 @@ end
 
 local function Same(a, b)
     if type(a) ~= "table" or type(b) ~= "table" then return a == b end
-    for key, value in pairs(a) do if b[key] ~= value then return false end end
-    for key in pairs(b) do if a[key] == nil then return false end end
+    -- Match shallow copies: inherited entries are absent, while the stored
+    -- values retain their normal equality semantics (including __eq).
+    for key, value in pairs(a) do if rawget(b, key) ~= value then return false end end
+    for key in pairs(b) do if rawget(a, key) == nil then return false end end
     return true
 end
 
@@ -157,13 +159,25 @@ function Instance:ConnectAzerothWaypoint()
     return true
 end
 
+local SnapshotFields = { "mapID", "uiMapID", "x", "y", "token", "title", "subtext",
+    "source", "kind", "guideProvider", "transient" }
+
 local function Snapshot(target, options)
     local result = { mode = Mode(target, options), context = Copy(options.context) }
     if type(target) == "table" then
-        for _, key in ipairs({ "mapID", "uiMapID", "x", "y", "token", "title", "subtext",
-            "source", "kind", "guideProvider", "transient" }) do result[key] = target[key] end
+        for _, key in ipairs(SnapshotFields) do result[key] = target[key] end
     end
     return result
+end
+
+local function SameTargetSnapshot(snapshot, target, options)
+    if not snapshot or snapshot.mode ~= Mode(target, options)
+        or not Same(snapshot.context, options.context) then return false end
+    if type(target) ~= "table" then target = nil end
+    for _, key in ipairs(SnapshotFields) do
+        if snapshot[key] ~= (target and target[key]) then return false end
+    end
+    return true
 end
 
 local function SameSnapshot(a, b)
@@ -226,8 +240,18 @@ function Instance:RefreshAzerothWaypoint()
     state = self.waypointAzeroth
     if Combat(self) then return true, "waypoint_combat" end
     local target, options = ReadTarget(self)
-    local snapshot = Snapshot(target, options)
-    if SameSnapshot(state.snapshot, snapshot) then return true end
+    local snapshot
+    if (type(target) == "table" and getmetatable(target) ~= nil) or getmetatable(options) ~= nil then
+        -- Accessors may change on every read. Preserve the original single
+        -- capture, including metatables protected by a false public marker.
+        snapshot = Snapshot(target, options)
+        if SameSnapshot(state.snapshot, snapshot) then return true end
+    else
+        -- Ordinary host tables may mutate in place. Compare their values before
+        -- allocating a capture, and copy only a changed request.
+        if SameTargetSnapshot(state.snapshot, target, options) then return true end
+        snapshot = Snapshot(target, options)
+    end
     local ok, scheduled = pcall(state.ns.ScheduleGuideProviderEvaluation, state.id, "LibAPRNavigation")
     if not ok then return false, "azeroth_waypoint_error" end
     if scheduled == false then return false, "azeroth_waypoint_unavailable" end

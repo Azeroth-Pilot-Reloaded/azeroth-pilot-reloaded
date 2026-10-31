@@ -59,8 +59,11 @@ function APR:RecordPerformanceFrameWork(name, elapsed)
     local now = Now()
     local current = log.frameWork
     if not current or current.time ~= now then
+        local recycled = log.previousFrameWork
         log.previousFrameWork = current
-        current = {time = now, ms = 0, count = 0, peakMs = 0}
+        -- The observer copies scalar values; only these two working frames stay live.
+        current = recycled or {}
+        current.time, current.ms, current.count, current.peakMs, current.source = now, 0, 0, 0, nil
         log.frameWork = current
     end
     current.ms, current.count = current.ms + elapsed, current.count + 1
@@ -178,7 +181,16 @@ function APR:GetPerformanceRows(mode, sortKey, query, displayName, reusableRows)
                 local row = nextRow()
                 row.name, row.count, row.totalMs = name, summary.count, summary.totalMs
                 row.maxMs, row.selfMs, row.errors = summary.maxMs, summary.selfMs, summary.errors
-                row.average, row.histogram = summary.totalMs / math.max(1, summary.count), summary.histogram
+                row.average = summary.totalMs / math.max(1, summary.count)
+                local source = summary.histogram
+                if source then
+                    -- Keep histogram bands consistent with this row's captured count.
+                    local histogram = row.histogram or {}
+                    histogram[1], histogram[2], histogram[3], histogram[4] = source[1], source[2], source[3], source[4]
+                    row.histogram = histogram
+                else
+                    row.histogram = nil
+                end
             end
         end
     end

@@ -1,6 +1,6 @@
 -- Route consumers use the same item definitions as the navigation graph.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("travel-actions", 3) then return end
+if not Lib:BeginModule("travel-actions", 4) then return end
 local Instance = Lib.Instance
 local EMPTY = {}
 
@@ -61,6 +61,12 @@ function Instance:GetActionSpellID(kind, id)
     return definition and definition.useSpellID
 end
 
+local function AddTravelAction(index, key, definition)
+    local entries = index.keys[key]
+    if not entries then entries = {}; index.keys[key] = entries end
+    entries[#entries + 1] = definition
+end
+
 function Instance:IsTravelActionSpell(key, spellID, selectedItemID)
     if type(key) ~= "string" or type(spellID) ~= "number" then return false end
     -- Cast events are frequent in combat. Index the small subset of route
@@ -73,20 +79,15 @@ function Instance:IsTravelActionSpell(key, spellID, selectedItemID)
             local actionKey = definition.routeAction
             local innRecall = definition.kind == "spell" and definition.to and definition.to.dynamic == "bind"
             if actionKey or innRecall then
-                local function Add(action)
-                    local entries = index.keys[action]
-                    if not entries then entries = {}; index.keys[action] = entries end
-                    entries[#entries + 1] = definition
-                end
-                if actionKey then Add(actionKey) end
+                if actionKey then AddTravelAction(index, actionKey, definition) end
                 -- Learned recalls also return to the inn; fixed teleports do not.
-                if innRecall and actionKey ~= "UseHS" then Add("UseHS") end
+                if innRecall and actionKey ~= "UseHS" then AddTravelAction(index, "UseHS", definition) end
             end
         end
         self.travelActionConnections = index
     end
     for _, definition in ipairs(index.keys[key] or EMPTY) do
-        for _, option in ipairs(definition.actions or {}) do
+        for _, option in ipairs(definition.actions or EMPTY) do
             local effect = option.type == "spell" and option.id or option.useSpellID
             if effect == spellID then return true end
             if option.type == "item" and (key ~= "UseHS" or option.id == selectedItemID)

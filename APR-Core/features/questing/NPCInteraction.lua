@@ -123,6 +123,182 @@ function APR.npcInteraction:HandleQuestDetail(event, step, ...)
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 end--[[APR_DIAG]]; APR.npcInteraction.HandleQuestDetail = APRTrace("APR-Core/features/questing/NPCInteraction.lua:96:APR.npcInteraction:HandleQuestDetail#7", APR.npcInteraction.HandleQuestDetail)--[[/APR_DIAG]]
 
+local COSMETIC_CLASSID = 4
+local COSMETIC_SUBCLASSID = 5
+
+local function normalizeEquipLoc(itemEquipLoc, weaponInventoryTypes)
+    -- Normalize weapon types to "WEAPON" for easier comparison
+    if not itemEquipLoc then return nil end
+    if weaponInventoryTypes[Enum.InventoryType[itemEquipLoc]] then
+        return "WEAPON"
+    end
+    return itemEquipLoc
+end--[[APR_DIAG]]; normalizeEquipLoc = APRTrace("APR-Core/features/questing/NPCInteraction.lua:129:normalizeEquipLoc#9", normalizeEquipLoc)--[[/APR_DIAG]]
+
+local function getPlayerGearIlvlList(weaponInventoryTypes, heirloomQuality)
+    -- Build a table of the player's current ilvl per equip slot
+    local gearIlvlList = {}
+    for playerSlot = 0, 18 do
+        local itemLink = GetInventoryItemLink("player", playerSlot)
+        if itemLink then
+            local _, _, itemQuality, itemLevel, _, _, _, _, itemEquipLoc = C_Item.GetItemInfo(itemLink)
+            if itemQuality == heirloomQuality then
+                itemLevel = C_Item.GetDetailedItemLevelInfo(itemLink)
+            end
+            itemEquipLoc = normalizeEquipLoc(itemEquipLoc, weaponInventoryTypes)
+            if itemEquipLoc and itemLevel then
+                -- Store the lowest ilvl found for each slot
+                gearIlvlList[itemEquipLoc] = math.min(gearIlvlList[itemEquipLoc] or itemLevel, itemLevel)
+            end
+        end
+    end
+    return gearIlvlList
+end--[[APR_DIAG]]; getPlayerGearIlvlList = APRTrace("APR-Core/features/questing/NPCInteraction.lua:138:getPlayerGearIlvlList#10", getPlayerGearIlvlList)--[[/APR_DIAG]]
+
+local function isCosmeticKnown(itemLink)
+    -- Check if the cosmetic appearance is already collected by the player
+    if not itemLink then return false end
+    local itemID = C_Item.GetItemInfoInstant(itemLink)
+    if itemID then
+        -- Modern method
+        local itemAppearanceID = C_TransmogCollection.GetItemInfo(itemID)
+        if itemAppearanceID then
+            return C_TransmogCollection.PlayerHasTransmog(itemAppearanceID)
+        end
+        -- Alternate method (for some builds)
+        local itemModifiedAppearanceID = select(2, C_TransmogCollection.GetItemInfo(itemID))
+        if itemModifiedAppearanceID then
+            return C_TransmogCollection.PlayerHasTransmog(itemModifiedAppearanceID)
+        end
+    end
+    return false
+end--[[APR_DIAG]]; isCosmeticKnown = APRTrace("APR-Core/features/questing/NPCInteraction.lua:158:isCosmeticKnown#11", isCosmeticKnown)--[[/APR_DIAG]]
+
+local function buildQuestRewardData(gearIlvlList, weaponInventoryTypes)
+    -- Gather all relevant information for each quest reward choice
+    local data = {}
+    for i = 1, GetNumQuestChoices() do
+        local itemLink = GetQuestItemLink("choice", i)
+        if itemLink then
+            local _, _, _, _, _, _, _, _, equipLoc, _, vendorPrice, classID, subClassID = C_Item.GetItemInfo(
+                itemLink)
+            local itemLevel = C_Item.GetDetailedItemLevelInfo(itemLink)
+            equipLoc = normalizeEquipLoc(equipLoc, weaponInventoryTypes)
+            vendorPrice = vendorPrice or 0
+
+            local isCosmetic = (classID == COSMETIC_CLASSID and subClassID == COSMETIC_SUBCLASSID)
+            local isKnownCosmetic = isCosmeticKnown(itemLink)
+            local isTransmog = not isCosmetic and not isKnownCosmetic
+            local isUpgrade = false
+            local ilvlDiff = nil
+
+            if gearIlvlList[equipLoc] and itemLevel then
+                ilvlDiff = itemLevel - gearIlvlList[equipLoc]
+                if ilvlDiff > 0 then isUpgrade = true end
+            end
+
+            data[i] = {
+                index = i,
+                link = itemLink,
+                isCosmetic = isCosmetic,
+                isUnknownCosmetic = isCosmetic and not isKnownCosmetic,
+                isUnknownTransmog = isTransmog and not isKnownCosmetic,
+                vendorPrice = vendorPrice,
+                ilvlDiff = ilvlDiff or -999,
+                isUpgrade = isUpgrade,
+            }
+        end
+    end
+    return data
+end--[[APR_DIAG]]; buildQuestRewardData = APRTrace("APR-Core/features/questing/NPCInteraction.lua:177:buildQuestRewardData#12", buildQuestRewardData)--[[/APR_DIAG]]
+
+-- Define the logic for each priority type
+local priorityFuncs = {
+    ilvl = --[[APR_DIAG]]APRTrace("APR-Core/features/questing/NPCInteraction.lua:217:callback#13", --[[/APR_DIAG]]function(rewards, profile)
+        -- Find the best ilvl upgrade
+        local best, bestDiff = nil, -9999
+        for _, data in pairs(rewards) do
+            if data.isUpgrade and (not best or data.ilvlDiff > bestDiff) then
+                best = data.index
+                bestDiff = data.ilvlDiff
+            end
+        end
+        return best
+    end--[[APR_DIAG]])--[[/APR_DIAG]],
+    cosmetic = --[[APR_DIAG]]APRTrace("APR-Core/features/questing/NPCInteraction.lua:228:callback#14", --[[/APR_DIAG]]function(rewards, profile)
+        -- Pick any unknown cosmetic
+        if not profile.autoCosmeticMulti then return -1 end
+        for _, data in pairs(rewards) do
+            if data.isUnknownCosmetic then return data.index end
+        end
+    end--[[APR_DIAG]])--[[/APR_DIAG]],
+    transmog = --[[APR_DIAG]]APRTrace("APR-Core/features/questing/NPCInteraction.lua:235:callback#15", --[[/APR_DIAG]]function(rewards, profile)
+        -- Pick any unknown transmog
+        if not profile.autoTransmogMulti then return -1 end
+        for _, data in pairs(rewards) do
+            if data.isUnknownTransmog then return data.index end
+        end
+    end--[[APR_DIAG]])--[[/APR_DIAG]],
+    price = --[[APR_DIAG]]APRTrace("APR-Core/features/questing/NPCInteraction.lua:242:callback#16", --[[/APR_DIAG]]function(rewards, profile)
+        -- Pick the highest vendor price item
+        local best, bestPrice = nil, 0
+        for _, data in pairs(rewards) do
+            if (not best) or data.vendorPrice > bestPrice then
+                best = data.index
+                bestPrice = data.vendorPrice
+            end
+        end
+        return best
+    end--[[APR_DIAG]])--[[/APR_DIAG]]
+}
+
+local function chooseQuestRewardByPriority(profile)
+    -- Select the quest reward based on user-defined priority order
+    local HEIRLOOM_QUALITY = Enum.ItemQuality.Heirloom
+    local WeaponInventoryTypes = {
+        [Enum.InventoryType.IndexWeaponoffhandType] = true,
+        [Enum.InventoryType.IndexWeaponmainhandType] = true,
+        [Enum.InventoryType.IndexWeaponType] = true,
+        [Enum.InventoryType.IndexShieldType] = true,
+        [Enum.InventoryType.Index2HweaponType] = true,
+        [Enum.InventoryType.IndexHoldableType] = true,
+        [Enum.InventoryType.IndexRangedType] = true,
+        [Enum.InventoryType.IndexThrownType] = true,
+        [Enum.InventoryType.IndexRangedrightType] = true,
+        [Enum.InventoryType.IndexRelicType] = true
+    }
+    local gearIlvlList = getPlayerGearIlvlList(WeaponInventoryTypes, HEIRLOOM_QUALITY)
+    local rewards = buildQuestRewardData(gearIlvlList, WeaponInventoryTypes)
+
+    if not profile then
+        return
+    end
+
+    local prioList = {
+        profile.rewardPriority1,
+        profile.rewardPriority2,
+        profile.rewardPriority3,
+        profile.rewardPriority4,
+    }
+
+    -- Try each priority in order until a reward is found
+    for _, prio in ipairs(prioList) do
+        if prio and priorityFuncs[prio] then
+            local index = priorityFuncs[prio](rewards, profile)
+            if index and index == -1 then -- -1 means to skip reward
+                return
+            elseif index then
+                GetQuestReward(index)
+                return
+            end
+            -- continue to next priority if no valid/skippable reward found
+        end
+    end
+
+    -- Fallback: always pick the first reward if nothing matched
+    GetQuestReward(1)
+end--[[APR_DIAG]]; chooseQuestRewardByPriority = APRTrace("APR-Core/features/questing/NPCInteraction.lua:255:chooseQuestRewardByPriority#17", chooseQuestRewardByPriority)--[[/APR_DIAG]]
+
 function APR.npcInteraction:HandleQuestDone(event, step, ...)
     if APR.routeValidationPending or APR.routeValidationFailed then return end
     local questID = event == "QUEST_AUTOCOMPLETE" and select(1, ...) or GetQuestID()
@@ -144,199 +320,11 @@ function APR.npcInteraction:HandleQuestDone(event, step, ...)
         -- Deny NPC
         APR.event:TalkToDenyNpcLogic(step)
 
-        local HEIRLOOM_QUALITY = Enum.ItemQuality.Heirloom
-        local COSMETIC_CLASSID = 4
-        local COSMETIC_SUBCLASSID = 5
-        local WeaponInventoryTypes = {
-            [Enum.InventoryType.IndexWeaponoffhandType] = true,
-            [Enum.InventoryType.IndexWeaponmainhandType] = true,
-            [Enum.InventoryType.IndexWeaponType] = true,
-            [Enum.InventoryType.IndexShieldType] = true,
-            [Enum.InventoryType.Index2HweaponType] = true,
-            [Enum.InventoryType.IndexHoldableType] = true,
-            [Enum.InventoryType.IndexRangedType] = true,
-            [Enum.InventoryType.IndexThrownType] = true,
-            [Enum.InventoryType.IndexRangedrightType] = true,
-            [Enum.InventoryType.IndexRelicType] = true
-        }
-
-        local function normalizeEquipLoc(itemEquipLoc)
-            -- Normalize weapon types to "WEAPON" for easier comparison
-            if not itemEquipLoc then return nil end
-            if WeaponInventoryTypes[Enum.InventoryType[itemEquipLoc]] then
-                return "WEAPON"
-            end
-            return itemEquipLoc
-        end--[[APR_DIAG]]; normalizeEquipLoc = APRTrace("APR-Core/features/questing/NPCInteraction.lua:163:normalizeEquipLoc#10", normalizeEquipLoc)--[[/APR_DIAG]]
-
-        local function getPlayerGearIlvlList()
-            -- Build a table of the player's current ilvl per equip slot
-            local gearIlvlList = {}
-            for playerSlot = 0, 18 do
-                local itemLink = GetInventoryItemLink("player", playerSlot)
-                if itemLink then
-                    local _, _, itemQuality, itemLevel, _, _, _, _, itemEquipLoc = C_Item.GetItemInfo(itemLink)
-                    if itemQuality == HEIRLOOM_QUALITY then
-                        itemLevel = C_Item.GetDetailedItemLevelInfo(itemLink)
-                    end
-                    itemEquipLoc = normalizeEquipLoc(itemEquipLoc)
-                    if itemEquipLoc and itemLevel then
-                        -- Store the lowest ilvl found for each slot
-                        gearIlvlList[itemEquipLoc] = math.min(gearIlvlList[itemEquipLoc] or itemLevel, itemLevel)
-                    end
-                end
-            end
-            return gearIlvlList
-        end--[[APR_DIAG]]; getPlayerGearIlvlList = APRTrace("APR-Core/features/questing/NPCInteraction.lua:172:getPlayerGearIlvlList#11", getPlayerGearIlvlList)--[[/APR_DIAG]]
-
-        local function isCosmeticKnown(itemLink)
-            -- Check if the cosmetic appearance is already collected by the player
-            if not itemLink then return false end
-            local itemID = C_Item.GetItemInfoInstant(itemLink)
-            if itemID then
-                -- Modern method
-                local itemAppearanceID = C_TransmogCollection.GetItemInfo(itemID)
-                if itemAppearanceID then
-                    return C_TransmogCollection.PlayerHasTransmog(itemAppearanceID)
-                end
-                -- Alternate method (for some builds)
-                local itemModifiedAppearanceID = select(2, C_TransmogCollection.GetItemInfo(itemID))
-                if itemModifiedAppearanceID then
-                    return C_TransmogCollection.PlayerHasTransmog(itemModifiedAppearanceID)
-                end
-            end
-            return false
-        end--[[APR_DIAG]]; isCosmeticKnown = APRTrace("APR-Core/features/questing/NPCInteraction.lua:192:isCosmeticKnown#12", isCosmeticKnown)--[[/APR_DIAG]]
-
-        local function buildQuestRewardData(gearIlvlList)
-            -- Gather all relevant information for each quest reward choice
-            local data = {}
-            for i = 1, GetNumQuestChoices() do
-                local itemLink = GetQuestItemLink("choice", i)
-                if itemLink then
-                    local _, _, _, _, _, _, _, _, equipLoc, _, vendorPrice, classID, subClassID = C_Item.GetItemInfo(
-                        itemLink)
-                    local itemLevel = C_Item.GetDetailedItemLevelInfo(itemLink)
-                    equipLoc = normalizeEquipLoc(equipLoc)
-                    vendorPrice = vendorPrice or 0
-
-                    local isCosmetic = (classID == COSMETIC_CLASSID and subClassID == COSMETIC_SUBCLASSID)
-                    local isKnownCosmetic = isCosmeticKnown(itemLink)
-                    local isTransmog = not isCosmetic and not isKnownCosmetic
-                    local isUpgrade = false
-                    local ilvlDiff = nil
-
-                    if gearIlvlList[equipLoc] and itemLevel then
-                        ilvlDiff = itemLevel - gearIlvlList[equipLoc]
-                        if ilvlDiff > 0 then isUpgrade = true end
-                    end
-
-                    data[i] = {
-                        index = i,
-                        link = itemLink,
-                        isCosmetic = isCosmetic,
-                        isUnknownCosmetic = isCosmetic and not isKnownCosmetic,
-                        isUnknownTransmog = isTransmog and not isKnownCosmetic,
-                        vendorPrice = vendorPrice,
-                        ilvlDiff = ilvlDiff or -999,
-                        isUpgrade = isUpgrade,
-                    }
-                end
-            end
-            return data
-        end--[[APR_DIAG]]; buildQuestRewardData = APRTrace("APR-Core/features/questing/NPCInteraction.lua:211:buildQuestRewardData#13", buildQuestRewardData)--[[/APR_DIAG]]
-
-        local function chooseQuestRewardByPriority()
-            -- Select the quest reward based on user-defined priority order
-            local gearIlvlList = getPlayerGearIlvlList()
-            local rewards = buildQuestRewardData(gearIlvlList)
-
-            if not profile then
-                return
-            end
-
-            local prioList = {
-                profile.rewardPriority1,
-                profile.rewardPriority2,
-                profile.rewardPriority3,
-                profile.rewardPriority4,
-            }
-
-            -- Define the logic for each priority type
-            local priorityFuncs = {
-                ilvl = --[[APR_DIAG]]APRTrace("APR-Core/features/questing/NPCInteraction.lua:267:callback#15", --[[/APR_DIAG]]function()
-                    -- Find the best ilvl upgrade
-                    local best, bestDiff = nil, -9999
-                    for _, data in pairs(rewards) do
-                        if data.isUpgrade and (not best or data.ilvlDiff > bestDiff) then
-                            best = data.index
-                            bestDiff = data.ilvlDiff
-                        end
-                    end
-                    return best
-                end--[[APR_DIAG]])--[[/APR_DIAG]],
-                cosmetic = --[[APR_DIAG]]APRTrace("APR-Core/features/questing/NPCInteraction.lua:278:callback#16", --[[/APR_DIAG]]function()
-                    -- Pick any unknown cosmetic
-                    local list = {}
-                    for _, data in pairs(rewards) do
-                        if data.isUnknownCosmetic then
-                            table.insert(list, data.index)
-                        end
-                    end
-                    if profile.autoCosmeticMulti then
-                        return list[1]
-                    end
-                    return -1
-                end--[[APR_DIAG]])--[[/APR_DIAG]],
-                transmog = --[[APR_DIAG]]APRTrace("APR-Core/features/questing/NPCInteraction.lua:291:callback#17", --[[/APR_DIAG]]function()
-                    -- Pick any unknown transmog
-                    local list = {}
-                    for _, data in pairs(rewards) do
-                        if data.isUnknownTransmog then
-                            table.insert(list, data.index)
-                        end
-                    end
-                    if profile.autoTransmogMulti then
-                        return list[1]
-                    end
-                    return -1
-                end--[[APR_DIAG]])--[[/APR_DIAG]],
-                price = --[[APR_DIAG]]APRTrace("APR-Core/features/questing/NPCInteraction.lua:304:callback#18", --[[/APR_DIAG]]function()
-                    -- Pick the highest vendor price item
-                    local best, bestPrice = nil, 0
-                    for _, data in pairs(rewards) do
-                        if (not best) or data.vendorPrice > bestPrice then
-                            best = data.index
-                            bestPrice = data.vendorPrice
-                        end
-                    end
-                    return best
-                end--[[APR_DIAG]])--[[/APR_DIAG]]
-            }
-
-            -- Try each priority in order until a reward is found
-            for _, prio in ipairs(prioList) do
-                if prio and priorityFuncs[prio] then
-                    local index = priorityFuncs[prio]()
-                    if index and index == -1 then -- -1 means to skip reward
-                        return
-                    elseif index then
-                        GetQuestReward(index)
-                        return
-                    end
-                    -- continue to next priority if no valid/skippable reward found
-                end
-            end
-
-            -- Fallback: always pick the first reward if nothing matched
-            GetQuestReward(1)
-        end--[[APR_DIAG]]; chooseQuestRewardByPriority = APRTrace("APR-Core/features/questing/NPCInteraction.lua:249:chooseQuestRewardByPriority#14", chooseQuestRewardByPriority)--[[/APR_DIAG]]
-
         -- Main auto reward selection logic (use where appropriate)
         if profile and profile.autoHandIn then
             if GetNumQuestChoices() > 1 then
                 if profile.autoHandInChoice then
-                    chooseQuestRewardByPriority()
+                    chooseQuestRewardByPriority(profile)
                 end
             else
                 -- Only one choice available, just select it
@@ -344,7 +332,7 @@ function APR.npcInteraction:HandleQuestDone(event, step, ...)
             end
         end
     end
-end--[[APR_DIAG]]; APR.npcInteraction.HandleQuestDone = APRTrace("APR-Core/features/questing/NPCInteraction.lua:126:APR.npcInteraction:HandleQuestDone#9", APR.npcInteraction.HandleQuestDone)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.npcInteraction.HandleQuestDone = APRTrace("APR-Core/features/questing/NPCInteraction.lua:302:APR.npcInteraction:HandleQuestDone#18", APR.npcInteraction.HandleQuestDone)--[[/APR_DIAG]]
 
 function APR.npcInteraction:HandleGossip(event, step, ...)
     if APR.routeValidationPending or APR.routeValidationFailed then return end
@@ -399,7 +387,7 @@ function APR.npcInteraction:HandleGossip(event, step, ...)
             end
         end
     end
-end--[[APR_DIAG]]; APR.npcInteraction.HandleGossip = APRTrace("APR-Core/features/questing/NPCInteraction.lua:349:APR.npcInteraction:HandleGossip#19", APR.npcInteraction.HandleGossip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.npcInteraction.HandleGossip = APRTrace("APR-Core/features/questing/NPCInteraction.lua:337:APR.npcInteraction:HandleGossip#19", APR.npcInteraction.HandleGossip)--[[/APR_DIAG]]
 
 function APR.npcInteraction:HandleQuestGreeting(event, step, ...)
     if APR.routeValidationPending or APR.routeValidationFailed then return end
@@ -437,19 +425,19 @@ function APR.npcInteraction:HandleQuestGreeting(event, step, ...)
             end
         end
     end
-end--[[APR_DIAG]]; APR.npcInteraction.HandleQuestGreeting = APRTrace("APR-Core/features/questing/NPCInteraction.lua:404:APR.npcInteraction:HandleQuestGreeting#20", APR.npcInteraction.HandleQuestGreeting)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.npcInteraction.HandleQuestGreeting = APRTrace("APR-Core/features/questing/NPCInteraction.lua:392:APR.npcInteraction:HandleQuestGreeting#20", APR.npcInteraction.HandleQuestGreeting)--[[/APR_DIAG]]
 
 function APR.npcInteraction:CancelMerchantSales()
     if self.vendorTimer then self.vendorTimer:Cancel(); self.vendorTimer = nil end
     self.vendorState, self.autoVendorState = nil, nil
-end--[[APR_DIAG]]; APR.npcInteraction.CancelMerchantSales = APRTrace("APR-Core/features/questing/NPCInteraction.lua:442:APR.npcInteraction:CancelMerchantSales#21", APR.npcInteraction.CancelMerchantSales)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.npcInteraction.CancelMerchantSales = APRTrace("APR-Core/features/questing/NPCInteraction.lua:430:APR.npcInteraction:CancelMerchantSales#21", APR.npcInteraction.CancelMerchantSales)--[[/APR_DIAG]]
 
 function APR.npcInteraction:QueueMerchantSaleRetry(state)
     if self.vendorTimer and self.vendorState == state then return end
     if self.vendorTimer then self.vendorTimer:Cancel() end
     self.vendorState = state
     local timer
-    timer = C_Timer.NewTimer(0.1, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/NPCInteraction.lua:452:callback#23", --[[/APR_DIAG]]function()
+    timer = C_Timer.NewTimer(0.1, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/NPCInteraction.lua:440:callback#23", --[[/APR_DIAG]]function()
         if self.vendorTimer ~= timer then return end
         self.vendorTimer, self.vendorState = nil, nil
         local profile = APR:GetSettingsProfile()
@@ -464,7 +452,7 @@ function APR.npcInteraction:QueueMerchantSaleRetry(state)
         end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     self.vendorTimer = timer
-end--[[APR_DIAG]]; APR.npcInteraction.QueueMerchantSaleRetry = APRTrace("APR-Core/features/questing/NPCInteraction.lua:447:APR.npcInteraction:QueueMerchantSaleRetry#22", APR.npcInteraction.QueueMerchantSaleRetry)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.npcInteraction.QueueMerchantSaleRetry = APRTrace("APR-Core/features/questing/NPCInteraction.lua:435:APR.npcInteraction:QueueMerchantSaleRetry#22", APR.npcInteraction.QueueMerchantSaleRetry)--[[/APR_DIAG]]
 
 function APR.npcInteraction:ContinueAutoVendor()
     if APR.routeValidationPending or APR.routeValidationFailed then self:CancelMerchantSales(); return end
@@ -484,7 +472,7 @@ function APR.npcInteraction:ContinueAutoVendor()
     if (state.soldValue or 0) > 0 then
         APR:PrintInfo(string.format(L["ITEM_SOLD"], C_CurrencyInfo.GetCoinTextureString(state.soldValue)))
     end
-end--[[APR_DIAG]]; APR.npcInteraction.ContinueAutoVendor = APRTrace("APR-Core/features/questing/NPCInteraction.lua:469:APR.npcInteraction:ContinueAutoVendor#24", APR.npcInteraction.ContinueAutoVendor)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.npcInteraction.ContinueAutoVendor = APRTrace("APR-Core/features/questing/NPCInteraction.lua:457:APR.npcInteraction:ContinueAutoVendor#24", APR.npcInteraction.ContinueAutoVendor)--[[/APR_DIAG]]
 
 function APR.npcInteraction:HandleMerchant(event, step, ...)
     self:CancelMerchantSales()
@@ -529,4 +517,4 @@ function APR.npcInteraction:HandleMerchant(event, step, ...)
             self:ContinueAutoVendor()
         end
     end
-end--[[APR_DIAG]]; APR.npcInteraction.HandleMerchant = APRTrace("APR-Core/features/questing/NPCInteraction.lua:489:APR.npcInteraction:HandleMerchant#25", APR.npcInteraction.HandleMerchant)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.npcInteraction.HandleMerchant = APRTrace("APR-Core/features/questing/NPCInteraction.lua:477:APR.npcInteraction:HandleMerchant#25", APR.npcInteraction.HandleMerchant)--[[/APR_DIAG]]

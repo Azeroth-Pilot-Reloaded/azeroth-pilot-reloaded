@@ -606,25 +606,37 @@ end--[[APR_DIAG]]; APR.worldCoordinateConverter.GetMapAreaRadius = APRTrace("APR
 
 -- Mixed source points use { x, y, arrivalRadius, isMapPercentage }.
 -- Convert every point before finding the bounding center and radius in yards.
-local function GetMixedArea(converter, zone, points)
+local function GetMixedArea(converter, zone, points, includeRadius)
     if not points or #points == 0 then return nil end
-    local worldPoints = {}
+    -- Centers only need bounds. Radius calculations retain a flat snapshot so
+    -- each projection is read once without allocating a table for every point.
+    local worldPoints = includeRadius and {} or nil
+    local worldPointCount = 0
     local minX, maxX, minY, maxY
     for _, point in ipairs(points) do
-        local coord = point[4] and converter:ConvertMapCoordinate(zone, point[1], point[2])
-            or (not point[4] and { x = point[1], y = point[2] })
-        if not coord then return nil end
-        minX = minX and math.min(minX, coord.x) or coord.x
-        maxX = maxX and math.max(maxX, coord.x) or coord.x
-        minY = minY and math.min(minY, coord.y) or coord.y
-        maxY = maxY and math.max(maxY, coord.y) or coord.y
-        worldPoints[#worldPoints + 1] = { coord.x, coord.y, point[3] or 0 }
+        local x, y = point[1], point[2]
+        if point[4] then
+            local coord = converter:ConvertMapCoordinate(zone, x, y)
+            if not coord then return nil end
+            x, y = coord.x, coord.y
+        end
+        minX = minX and math.min(minX, x) or x
+        maxX = maxX and math.max(maxX, x) or x
+        minY = minY and math.min(minY, y) or y
+        maxY = maxY and math.max(maxY, y) or y
+        if worldPoints then
+            worldPoints[worldPointCount + 1] = x
+            worldPoints[worldPointCount + 2] = y
+            worldPoints[worldPointCount + 3] = point[3] or 0
+            worldPointCount = worldPointCount + 3
+        end
     end
     local center = { x = (minX + maxX) / 2, y = (minY + maxY) / 2 }
+    if not worldPoints then return center end
     local radius = 0
-    for _, point in ipairs(worldPoints) do
-        local dx, dy = point[1] - center.x, point[2] - center.y
-        radius = math.max(radius, math.sqrt(dx * dx + dy * dy) + point[3])
+    for index = 1, worldPointCount, 3 do
+        local dx, dy = worldPoints[index] - center.x, worldPoints[index + 1] - center.y
+        radius = math.max(radius, math.sqrt(dx * dx + dy * dy) + worldPoints[index + 2])
     end
     return center, math.ceil(radius)
 end--[[APR_DIAG]]; GetMixedArea = APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:609:GetMixedArea#30", GetMixedArea)--[[/APR_DIAG]]
@@ -632,12 +644,12 @@ end--[[APR_DIAG]]; GetMixedArea = APRTrace("APR-Core/features/navigation/WorldCo
 function APR.worldCoordinateConverter:GetMixedAreaCenter(zone, points)
     local center = GetMixedArea(self, zone, points)
     return center
-end--[[APR_DIAG]]; APR.worldCoordinateConverter.GetMixedAreaCenter = APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:632:APR.worldCoordinateConverter:GetMixedAreaCenter#31", APR.worldCoordinateConverter.GetMixedAreaCenter)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.worldCoordinateConverter.GetMixedAreaCenter = APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:644:APR.worldCoordinateConverter:GetMixedAreaCenter#31", APR.worldCoordinateConverter.GetMixedAreaCenter)--[[/APR_DIAG]]
 
 function APR.worldCoordinateConverter:GetMixedAreaRadius(zone, points)
-    local _, radius = GetMixedArea(self, zone, points)
+    local _, radius = GetMixedArea(self, zone, points, true)
     return radius
-end--[[APR_DIAG]]; APR.worldCoordinateConverter.GetMixedAreaRadius = APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:637:APR.worldCoordinateConverter:GetMixedAreaRadius#32", APR.worldCoordinateConverter.GetMixedAreaRadius)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.worldCoordinateConverter.GetMixedAreaRadius = APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:649:APR.worldCoordinateConverter:GetMixedAreaRadius#32", APR.worldCoordinateConverter.GetMixedAreaRadius)--[[/APR_DIAG]]
 
 function APR.worldCoordinateConverter:ConvertRoute(routeName)
     local route = APR.RouteQuestStepList and APR.RouteQuestStepList[routeName]
@@ -700,7 +712,7 @@ function APR.worldCoordinateConverter:ConvertRoute(routeName)
     output[#output + 1] = string.format("APR.RouteQuestStepList[%q] = %s", routeName, serializedRoute)
 
     return table.concat(output, "\n"), convertedCount, errorCount
-end--[[APR_DIAG]]; APR.worldCoordinateConverter.ConvertRoute = APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:642:APR.worldCoordinateConverter:ConvertRoute#33", APR.worldCoordinateConverter.ConvertRoute)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.worldCoordinateConverter.ConvertRoute = APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:654:APR.worldCoordinateConverter:ConvertRoute#33", APR.worldCoordinateConverter.ConvertRoute)--[[/APR_DIAG]]
 
 function APR.worldCoordinateConverter:Show()
     if self.frame then
@@ -761,12 +773,12 @@ function APR.worldCoordinateConverter:Show()
                 button:UnlockHighlight()
             end
         end
-    end--[[APR_DIAG]]; UpdateSuggestionHighlight = APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:756:UpdateSuggestionHighlight#35", UpdateSuggestionHighlight)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; UpdateSuggestionHighlight = APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:768:UpdateSuggestionHighlight#35", UpdateSuggestionHighlight)--[[/APR_DIAG]]
 
     local function HideSuggestions()
         suggestionFrame:Hide()
         selectedSuggestionIndex = 0
-    end--[[APR_DIAG]]; HideSuggestions = APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:766:HideSuggestions#36", HideSuggestions)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; HideSuggestions = APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:778:HideSuggestions#36", HideSuggestions)--[[/APR_DIAG]]
 
     local function SelectRoute(routeName)
         if not routeLabels[routeName] then
@@ -777,7 +789,7 @@ function APR.worldCoordinateConverter:Show()
         routeSearch:SetText(routeName)
         convertButton:SetDisabled(false)
         HideSuggestions()
-    end--[[APR_DIAG]]; SelectRoute = APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:771:SelectRoute#37", SelectRoute)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; SelectRoute = APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:783:SelectRoute#37", SelectRoute)--[[/APR_DIAG]]
 
     local function UpdateSuggestions(query)
         suggestions = GetRouteMatches(routeNames, routeLabels, query)
@@ -804,17 +816,17 @@ function APR.worldCoordinateConverter:Show()
         else
             HideSuggestions()
         end
-    end--[[APR_DIAG]]; UpdateSuggestions = APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:782:UpdateSuggestions#38", UpdateSuggestions)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; UpdateSuggestions = APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:794:UpdateSuggestions#38", UpdateSuggestions)--[[/APR_DIAG]]
 
     suggestionFrame.onSelect = SelectRoute
 
-    routeSearch:SetCallback("OnTextChanged", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:811:callback#39", --[[/APR_DIAG]]function(_, _, value)
+    routeSearch:SetCallback("OnTextChanged", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:823:callback#39", --[[/APR_DIAG]]function(_, _, value)
         selectedRoute = nil
         convertButton:SetDisabled(true)
         UpdateSuggestions(value)
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 
-    routeSearch:SetCallback("OnEnterPressed", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:817:callback#40", --[[/APR_DIAG]]function()
+    routeSearch:SetCallback("OnEnterPressed", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:829:callback#40", --[[/APR_DIAG]]function()
         local match = suggestions[selectedSuggestionIndex] or suggestions[1]
         if match then
             SelectRoute(match.name)
@@ -828,7 +840,7 @@ function APR.worldCoordinateConverter:Show()
     local originalTabPressed = editbox:GetScript("OnTabPressed")
     local originalEscapePressed = editbox:GetScript("OnEscapePressed")
 
-    editbox:SetScript("OnEditFocusGained", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:831:callback#41", --[[/APR_DIAG]]function(editboxFrame, ...)
+    editbox:SetScript("OnEditFocusGained", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:843:callback#41", --[[/APR_DIAG]]function(editboxFrame, ...)
         if originalFocusGained then
             originalFocusGained(editboxFrame, ...)
         end
@@ -837,7 +849,7 @@ function APR.worldCoordinateConverter:Show()
         end
         UpdateSuggestions(editboxFrame:GetText())
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-    editbox:SetScript("OnArrowPressed", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:840:callback#42", --[[/APR_DIAG]]function(editboxFrame, key, ...)
+    editbox:SetScript("OnArrowPressed", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:852:callback#42", --[[/APR_DIAG]]function(editboxFrame, key, ...)
         if originalArrowPressed then
             originalArrowPressed(editboxFrame, key, ...)
         end
@@ -854,7 +866,7 @@ function APR.worldCoordinateConverter:Show()
         end
         UpdateSuggestionHighlight()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-    editbox:SetScript("OnTabPressed", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:857:callback#43", --[[/APR_DIAG]]function(editboxFrame, ...)
+    editbox:SetScript("OnTabPressed", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:869:callback#43", --[[/APR_DIAG]]function(editboxFrame, ...)
         if originalTabPressed then
             originalTabPressed(editboxFrame, ...)
         end
@@ -864,14 +876,14 @@ function APR.worldCoordinateConverter:Show()
             SelectRoute(match.name)
         end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-    editbox:SetScript("OnEscapePressed", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:867:callback#44", --[[/APR_DIAG]]function(editboxFrame, ...)
+    editbox:SetScript("OnEscapePressed", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:879:callback#44", --[[/APR_DIAG]]function(editboxFrame, ...)
         HideSuggestions()
         if originalEscapePressed then
             originalEscapePressed(editboxFrame, ...)
         end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 
-    convertButton:SetCallback("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:874:callback#45", --[[/APR_DIAG]]function()
+    convertButton:SetCallback("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:886:callback#45", --[[/APR_DIAG]]function()
         local result, convertedCount, errorCount = self:ConvertRoute(selectedRoute)
         output:SetText(result)
         output:SetFocus()
@@ -879,7 +891,7 @@ function APR.worldCoordinateConverter:Show()
         frame:SetStatusText(string.format(TEXT.status, convertedCount, errorCount))
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 
-    frame:SetCallback("OnClose", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:882:callback#46", --[[/APR_DIAG]]function(widget)
+    frame:SetCallback("OnClose", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:894:callback#46", --[[/APR_DIAG]]function(widget)
         suggestionFrame:Hide()
         suggestionFrame.onSelect = nil
         suggestionFrame:ClearAllPoints()
@@ -896,10 +908,10 @@ function APR.worldCoordinateConverter:Show()
     self.frame = frame
     self.output = output
     if APR.Gamepad then
-        APR.Gamepad:RegisterWindow(frame.frame, false, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:899:callback#47", --[[/APR_DIAG]]function() frame:Fire("OnClose") end--[[APR_DIAG]])--[[/APR_DIAG]],
-            --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:900:callback#48", --[[/APR_DIAG]]function() return self.frame == frame end--[[APR_DIAG]])--[[/APR_DIAG]])
+        APR.Gamepad:RegisterWindow(frame.frame, false, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:911:callback#47", --[[/APR_DIAG]]function() frame:Fire("OnClose") end--[[APR_DIAG]])--[[/APR_DIAG]],
+            --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:912:callback#48", --[[/APR_DIAG]]function() return self.frame == frame end--[[APR_DIAG]])--[[/APR_DIAG]])
         APR.Gamepad:RegisterWindow(suggestionFrame, true)
         APR.Gamepad:AdaptSettings(frame)
     end
     routeSearch:SetFocus()
-end--[[APR_DIAG]]; APR.worldCoordinateConverter.Show = APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:705:APR.worldCoordinateConverter:Show#34", APR.worldCoordinateConverter.Show)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.worldCoordinateConverter.Show = APRTrace("APR-Core/features/navigation/WorldCoordinateConverter.lua:717:APR.worldCoordinateConverter:Show#34", APR.worldCoordinateConverter.Show)--[[/APR_DIAG]]

@@ -1,6 +1,6 @@
 -- Planning uses the consumer's environment and never shares character state.
 -- Optional waypoint output is isolated in WaypointUI.lua.
-local Lib = LibStub:NewLibrary("LibAPRNavigation-1.0", 25)
+local Lib = LibStub:NewLibrary("LibAPRNavigation-1.0", 26)
 if not Lib then return end
 
 Lib.datasets = Lib.datasets or {}
@@ -11,8 +11,9 @@ local Instance = Lib.Instance
 Instance.__index = Instance
 
 local function Copy(value, seen)
-    if type(value) ~= "table" then
-        assert(type(value) ~= "function", "navigation data must be declarative")
+    local kind = type(value)
+    if kind ~= "table" then
+        assert(kind ~= "function", "navigation data must be declarative")
         return value
     end
     seen = seen or {}
@@ -20,7 +21,15 @@ local function Copy(value, seen)
     seen[value] = true
     local result = {}
     for key, child in pairs(value) do
-        result[key] = Copy(child, seen)
+        -- Most catalogue fields are scalars. Recurse only into tables while
+        -- retaining the declarative-data check for every value.
+        local childKind = type(child)
+        if childKind == "table" then
+            result[key] = Copy(child, seen)
+        else
+            assert(childKind ~= "function", "navigation data must be declarative")
+            result[key] = child
+        end
     end
     seen[value] = nil
     return result

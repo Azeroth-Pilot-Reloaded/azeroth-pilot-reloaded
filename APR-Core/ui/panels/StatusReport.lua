@@ -79,8 +79,7 @@ function APR:RedactStatusText(text)
     for _, value in ipairs({ self.PlayerID or "", self.UserID or "", self.Username or "", GetRealmName() or "" }) do
         if self:CanAccessValue(value) and type(value) == "string" and #value > 1 then
             local pattern = value:gsub("([^%w])", "%%%1")
-            text = text:gsub(pattern,
-                    --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:83:callback#5", --[[/APR_DIAG]]function() return "<hidden>" end--[[APR_DIAG]])--[[/APR_DIAG]] )
+            text = text:gsub(pattern, "<hidden>")
         end
     end
     return text
@@ -91,59 +90,73 @@ local function MarkdownText(value)
     -- Redact before escaping so realm names containing Markdown punctuation are still matched.
     local text = APR:RedactStatusText(tostring(value))
     return (text:gsub("\r\n", "\n"):gsub("\r", "\n"):gsub("([\\`*_%[%]<>#|~])", "\\%1"))
-end--[[APR_DIAG]]; MarkdownText = APRTrace("APR-Core/ui/panels/StatusReport.lua:89:MarkdownText#6", MarkdownText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; MarkdownText = APRTrace("APR-Core/ui/panels/StatusReport.lua:88:MarkdownText#5", MarkdownText)--[[/APR_DIAG]]
 
 local function AddField(lines, label, value, depth)
     local indent = string.rep("  ", depth or 0)
     local text = MarkdownText(value):gsub("\n", "\n" .. indent .. "  ")
     lines[#lines + 1] = indent .. "- **" .. MarkdownText(label):gsub("\n", " ") .. "**: " .. text
-end--[[APR_DIAG]]; AddField = APRTrace("APR-Core/ui/panels/StatusReport.lua:96:AddField#7", AddField)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; AddField = APRTrace("APR-Core/ui/panels/StatusReport.lua:95:AddField#6", AddField)--[[/APR_DIAG]]
+
+local function StepKeyLess(a, b)
+    if type(a) == type(b) then return a < b end
+    return type(a) == "number"
+end--[[APR_DIAG]]; StepKeyLess = APRTrace("APR-Core/ui/panels/StatusReport.lua:101:StepKeyLess#7", StepKeyLess)--[[/APR_DIAG]]
+
+-- Only tables recurse. Scalar fields still use the same Markdown/redaction
+-- path without opening a separate diagnostic traversal scope for every value.
+local function AppendStepData(lines, key, value, depth, state)
+    if not APR:CanAccessValue(value) then
+        AddField(lines, key, UNKNOWN, depth)
+    elseif type(value) ~= "table" then
+        AddField(lines, key, type(value) == "boolean" and tostring(value) or value, depth)
+    elseif APR.CanAccessTable and not APR:CanAccessTable(value) then
+        AddField(lines, key, UNKNOWN, depth)
+    elseif state.visited[value] or depth >= 10 or state.entries >= state.limit then
+        AddField(lines, key, state.visited[value] and "<circular>" or depth >= 10 and "<max-depth>" or "<entry-limit>",
+            depth)
+    else
+        local keys, truncated = {}, false
+        for childKey in pairs(value) do
+            if state.entries >= state.limit then
+                truncated = true; break
+            end
+            state.entries = state.entries + 1
+            if APR:CanAccessValue(childKey) and (type(childKey) == "string" or type(childKey) == "number") then
+                local childType = type(value[childKey])
+                if not state.dataOnly or (childType ~= "function" and childType ~= "userdata" and childType ~= "thread") then
+                    keys[#keys + 1] = childKey
+                end
+            end
+        end
+        table.sort(keys, StepKeyLess)
+        AddField(lines, key, #keys == 0 and not truncated and "{}" or "", depth)
+        state.visited[value] = true
+        for _, childKey in ipairs(keys) do
+            local child = value[childKey]
+            if not APR:CanAccessValue(child) then
+                AddField(lines, childKey, UNKNOWN, depth + 1)
+            elseif type(child) ~= "table" then
+                AddField(lines, childKey, type(child) == "boolean" and tostring(child) or child, depth + 1)
+            else
+                AppendStepData(lines, childKey, child, depth + 1, state)
+            end
+        end
+        if truncated then AddField(lines, "…", "<entry-limit>", depth + 1) end
+        state.visited[value] = nil
+    end
+end--[[APR_DIAG]]; AppendStepData = APRTrace("APR-Core/ui/panels/StatusReport.lua:108:AppendStepData#8", AppendStepData)--[[/APR_DIAG]]
 
 -- Retain the runtime step's keys in a readable list; bound unexpected tables like FormatDebugTable.
 local function AddStepData(lines, step, label, dataOnly)
-    local visited, entries, limit = {}, 0, 20000
-    local function append(key, value, depth)
-        if not APR:CanAccessValue(value) then
-            AddField(lines, key, UNKNOWN, depth)
-        elseif type(value) ~= "table" then
-            AddField(lines, key, type(value) == "boolean" and tostring(value) or value, depth)
-        elseif APR.CanAccessTable and not APR:CanAccessTable(value) then
-            AddField(lines, key, UNKNOWN, depth)
-        elseif visited[value] or depth >= 10 or entries >= limit then
-            AddField(lines, key, visited[value] and "<circular>" or depth >= 10 and "<max-depth>" or "<entry-limit>",
-                depth)
-        else
-            local keys, truncated = {}, false
-            for childKey in pairs(value) do
-                if entries >= limit then
-                    truncated = true; break
-                end
-                entries = entries + 1
-                if APR:CanAccessValue(childKey) and (type(childKey) == "string" or type(childKey) == "number") then
-                    local childType = type(value[childKey])
-                    if not dataOnly or (childType ~= "function" and childType ~= "userdata" and childType ~= "thread") then
-                        keys[#keys + 1] = childKey
-                    end
-                end
-            end
-            table.sort(keys,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:129:callback#10", --[[/APR_DIAG]]function(a, b)
-                    if type(a) == type(b) then return a < b end
-                    return type(a) == "number"
-                end--[[APR_DIAG]])--[[/APR_DIAG]] )
-            AddField(lines, key, #keys == 0 and not truncated and "{}" or "", depth)
-            visited[value] = true
-            for _, childKey in ipairs(keys) do append(childKey, value[childKey], depth + 1) end
-            if truncated then AddField(lines, "…", "<entry-limit>", depth + 1) end
-            visited[value] = nil
-        end
-    end--[[APR_DIAG]]; append = APRTrace("APR-Core/ui/panels/StatusReport.lua:105:append#9", append)--[[/APR_DIAG]]
-    append(label or L["CURRENT_STEP"], step, 0)
-end--[[APR_DIAG]]; AddStepData = APRTrace("APR-Core/ui/panels/StatusReport.lua:103:AddStepData#8", AddStepData)--[[/APR_DIAG]]
+    AppendStepData(lines, label or L["CURRENT_STEP"], step, 0,
+        { visited = {}, entries = 0, limit = 20000, dataOnly = dataOnly })
+end--[[APR_DIAG]]; AddStepData = APRTrace("APR-Core/ui/panels/StatusReport.lua:151:AddStepData#9", AddStepData)--[[/APR_DIAG]]
 
 local function ReadableTable(value)
     return APR:CanAccessValue(value) and type(value) == "table"
         and (not APR.CanAccessTable or APR:CanAccessTable(value))
-end--[[APR_DIAG]]; ReadableTable = APRTrace("APR-Core/ui/panels/StatusReport.lua:143:ReadableTable#11", ReadableTable)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ReadableTable = APRTrace("APR-Core/ui/panels/StatusReport.lua:156:ReadableTable#10", ReadableTable)--[[/APR_DIAG]]
 
 local function SnapshotFields(value, fields)
     if not ReadableTable(value) then return nil end
@@ -161,7 +174,7 @@ local function SnapshotFields(value, fields)
         end
     end
     return result
-end--[[APR_DIAG]]; SnapshotFields = APRTrace("APR-Core/ui/panels/StatusReport.lua:148:SnapshotFields#12", SnapshotFields)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; SnapshotFields = APRTrace("APR-Core/ui/panels/StatusReport.lua:161:SnapshotFields#11", SnapshotFields)--[[/APR_DIAG]]
 
 local function AcceptanceSnapshot(value)
     local result = SnapshotFields(value, { "questID", "offer", "requirements", "known", "complete" })
@@ -178,10 +191,10 @@ local function AcceptanceSnapshot(value)
         if value.conditions[33] ~= nil then result.conditionsTruncated = true end
     end
     return result
-end--[[APR_DIAG]]; AcceptanceSnapshot = APRTrace("APR-Core/ui/panels/StatusReport.lua:166:AcceptanceSnapshot#13", AcceptanceSnapshot)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; AcceptanceSnapshot = APRTrace("APR-Core/ui/panels/StatusReport.lua:179:AcceptanceSnapshot#12", AcceptanceSnapshot)--[[/APR_DIAG]]
 
 local function UnlockSnapshot()
-    local ok, library, revision = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](--[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:184:callback#15", --[[/APR_DIAG]]function() return LibStub("LibAPRNavigation-1.0", true) end--[[APR_DIAG]])--[[/APR_DIAG]])
+    local ok, library, revision = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](--[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:197:callback#14", --[[/APR_DIAG]]function() return LibStub("LibAPRNavigation-1.0", true) end--[[APR_DIAG]])--[[/APR_DIAG]])
     local data, state = APR.NavigationData, APR._navigationUnlock
     local result = {
         hostReady = type(APR.StartNavigationUnlock) == "function" and type(APR.RefreshNavigationUnlockRoute) == "function",
@@ -249,7 +262,7 @@ local function UnlockSnapshot()
         end
     end
     return result
-end--[[APR_DIAG]]; UnlockSnapshot = APRTrace("APR-Core/ui/panels/StatusReport.lua:183:UnlockSnapshot#14", UnlockSnapshot)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; UnlockSnapshot = APRTrace("APR-Core/ui/panels/StatusReport.lua:196:UnlockSnapshot#13", UnlockSnapshot)--[[/APR_DIAG]]
 
 -- Read only published fields when the user exports a report. Do not refresh
 -- routing or copy the graph, callbacks, cached contexts or secure attributes.
@@ -313,7 +326,7 @@ local function NavigationSnapshot()
         end
     end
     return snapshot
-end--[[APR_DIAG]]; NavigationSnapshot = APRTrace("APR-Core/ui/panels/StatusReport.lua:256:NavigationSnapshot#16", NavigationSnapshot)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; NavigationSnapshot = APRTrace("APR-Core/ui/panels/StatusReport.lua:269:NavigationSnapshot#15", NavigationSnapshot)--[[/APR_DIAG]]
 
 function APR:ExportStatusReport()
     Panel.exportedError = nil
@@ -324,7 +337,7 @@ function APR:ExportStatusReport()
     local function section(title, keys)
         lines[#lines + 1] = "\n## " .. MarkdownText(title) .. "\n"
         for _, key in ipairs(keys or {}) do AddField(lines, info[key][1], info[key][2]) end
-    end--[[APR_DIAG]]; section = APRTrace("APR-Core/ui/panels/StatusReport.lua:324:section#18", section)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; section = APRTrace("APR-Core/ui/panels/StatusReport.lua:337:section#17", section)--[[/APR_DIAG]]
     section(L["UI_STATUS_ADDON_CLIENT"], { "aprVersion", "wowVersion", "clientLanguage", "serverType", "currentTime" })
     local theme = self.GetSelectedSkinName and self:GetSelectedSkinName() or self:GetSkinProviderName() or "wow"
     AddField(lines, L["UI_THEME"], theme == "wow" and "WoW" or theme == "modern" and "Modern" or theme)
@@ -365,7 +378,7 @@ function APR:ExportStatusReport()
         lines[#lines + 1] = UI:FormatCodeBlock(self:RedactStatusText(self:FormatDebugTable(entry)), "lua")
     end
     UI:ShowTextReport(L["STATUS_EXPORT"], table.concat(lines, "\n"), self.StatusFrame)
-end--[[APR_DIAG]]; APR.ExportStatusReport = APRTrace("APR-Core/ui/panels/StatusReport.lua:318:APR:ExportStatusReport#17", APR.ExportStatusReport)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ExportStatusReport = APRTrace("APR-Core/ui/panels/StatusReport.lua:331:APR:ExportStatusReport#16", APR.ExportStatusReport)--[[/APR_DIAG]]
 
 local groups = {
     {
@@ -392,7 +405,9 @@ local groups = {
 }
 
 function Panel:Refresh()
-    if not self.frame then return end
+    if not self.frame or not self.frame:IsShown()
+        or (self.frame.IsVisible and not self.frame:IsVisible()) then return end
+    self.refreshSerial = (self.refreshSerial or 0) + 1
     local info = APR:getStatusReportInfos()
     info.charName = info.charName or { NAME, NARRATION_STATUS_HIDDEN }
     info.charRealm = info.charRealm or { REALM_LABEL, NARRATION_STATUS_HIDDEN }
@@ -405,7 +420,7 @@ function Panel:Refresh()
     self.identity.icon:SetShown(hideIdentity)
     self:RefreshErrors()
     self:Layout()
-end--[[APR_DIAG]]; Panel.Refresh = APRTrace("APR-Core/ui/panels/StatusReport.lua:394:Panel:Refresh#19", Panel.Refresh)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Panel.Refresh = APRTrace("APR-Core/ui/panels/StatusReport.lua:407:Panel:Refresh#18", Panel.Refresh)--[[/APR_DIAG]]
 
 function Panel:RefreshErrors()
     local log = APR.ErrorLog
@@ -416,7 +431,7 @@ function Panel:RefreshErrors()
     self.empty:SetText(log and log.provider ~= "unavailable" and L["UI_ERRORS_EMPTY"] or L["UI_ERRORS_UNAVAILABLE"])
     self.errorPanel.title:SetText(L["UI_LUA_ERRORS"] .. " (" .. #rows .. ")")
     self.revision = log and log.revision
-end--[[APR_DIAG]]; Panel.RefreshErrors = APRTrace("APR-Core/ui/panels/StatusReport.lua:410:Panel:RefreshErrors#20", Panel.RefreshErrors)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Panel.RefreshErrors = APRTrace("APR-Core/ui/panels/StatusReport.lua:425:Panel:RefreshErrors#19", Panel.RefreshErrors)--[[/APR_DIAG]]
 
 function Panel:Layout()
     if not self.frame or not self.groups or self.layingOut then return end
@@ -466,7 +481,7 @@ function Panel:Layout()
     self.errorPanel:SetPoint("TOPLEFT", self.infoPanel, "BOTTOMLEFT", 0, -12)
     self.errorPanel:SetPoint("BOTTOMRIGHT", self.frame.content, "BOTTOMRIGHT", 0, 48)
     self.layingOut = false
-end--[[APR_DIAG]]; Panel.Layout = APRTrace("APR-Core/ui/panels/StatusReport.lua:421:Panel:Layout#21", Panel.Layout)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Panel.Layout = APRTrace("APR-Core/ui/panels/StatusReport.lua:436:Panel:Layout#20", Panel.Layout)--[[/APR_DIAG]]
 
 function Panel:Create(parent)
     self.frame = parent and UI:Page(parent) or UI:Window("APRStatusReport", L["STATUS"], 1120, 780, "library", "logo")
@@ -509,8 +524,8 @@ function Panel:Create(parent)
     message:SetPoint("TOPLEFT", 350, -40)
     local scroll = UI:Scroll(self.errorPanel)
     scroll:SetPoint("TOPLEFT", 10, -65); scroll:SetPoint("BOTTOMRIGHT", -28, 35)
-    self.errors = APR.VirtualList:New(scroll,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:512:callback#23", --[[/APR_DIAG]]function(container)
-            local row = UI:ListButton(container, "", 1,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:513:callback#24", --[[/APR_DIAG]]function(button)
+    self.errors = APR.VirtualList:New(scroll,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:527:callback#22", --[[/APR_DIAG]]function(container)
+            local row = UI:ListButton(container, "", 1,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:528:callback#23", --[[/APR_DIAG]]function(button)
                     if button.item then
                         self.exportedError = button.item
                         UI:ShowTextReport(L["UI_LUA_ERRORS"], APR:RedactStatusText(APR:FormatDebugTable(button.item)),
@@ -524,10 +539,10 @@ function Panel:Create(parent)
                 0)
             row.source:SetWordWrap(false); row.message:SetWordWrap(false)
             UI:Tooltip(row,
-                    --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:527:callback#25", --[[/APR_DIAG]]function() return row.item and APR:RedactStatusText(row.item.message) end--[[APR_DIAG]])--[[/APR_DIAG]] ,
+                    --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:542:callback#24", --[[/APR_DIAG]]function() return row.item and APR:RedactStatusText(row.item.message) end--[[APR_DIAG]])--[[/APR_DIAG]] ,
                 L["UI_ERROR_OPEN"])
             return row
-        end--[[APR_DIAG]])--[[/APR_DIAG]] ,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:530:callback#26", --[[/APR_DIAG]]function(row, entry)
+        end--[[APR_DIAG]])--[[/APR_DIAG]] ,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:545:callback#25", --[[/APR_DIAG]]function(row, entry)
             row.source:SetText(entry.source)
             row.count:SetText(entry.count)
             row.last:SetText(date("%H:%M:%S", entry.last))
@@ -537,7 +552,7 @@ function Panel:Create(parent)
     self.empty:SetPoint("TOPLEFT", 16, -84); self.empty:SetPoint("TOPRIGHT", -32, -84)
     local note = UI:Label(self.errorPanel, L["UI_ERRORS_HELP"], 11, "muted")
     note:SetPoint("BOTTOMLEFT", 12, 10); note:SetPoint("BOTTOMRIGHT", -12, 10)
-    self.identity = UI:Button(root, L["UI_REDACT"], 350,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:540:callback#27", --[[/APR_DIAG]]function()
+    self.identity = UI:Button(root, L["UI_REDACT"], 350,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:555:callback#26", --[[/APR_DIAG]]function()
             hideIdentity = not hideIdentity
             self:Refresh()
             local report = UI.reportWindow
@@ -553,18 +568,18 @@ function Panel:Create(parent)
     UI:ButtonIcon(self.identity, "check", 16)
     self.identity:SetPoint("BOTTOMLEFT")
     local refresh = UI:Button(root, REFRESH, 150,
-            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:556:callback#28", --[[/APR_DIAG]]function() self:Refresh() end--[[APR_DIAG]])--[[/APR_DIAG]] )
+            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:571:callback#27", --[[/APR_DIAG]]function() self:Refresh() end--[[APR_DIAG]])--[[/APR_DIAG]] )
     refresh:SetPoint("LEFT", self.identity, "RIGHT", 10, 0)
     local export = UI:Button(root, L["STATUS_EXPORT"], 190,
-            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:559:callback#29", --[[/APR_DIAG]]function()
+            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:574:callback#28", --[[/APR_DIAG]]function()
                 self.exportedError = nil; APR:ExportStatusReport()
             end--[[APR_DIAG]])--[[/APR_DIAG]] )
     export:SetPoint("BOTTOMRIGHT")
     self.frame.IdentityButton, self.frame.CopyButton = self.identity, export
-    self.frame:SetScript("OnShow",  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:564:callback#30", --[[/APR_DIAG]]function()
+    self.frame:SetScript("OnShow",  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:579:callback#29", --[[/APR_DIAG]]function()
             self:Refresh()
             self.elapsed = 0
-            self.frame:SetScript("OnUpdate",  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:567:callback#31", --[[/APR_DIAG]]function(_, elapsed)
+            self.frame:SetScript("OnUpdate",  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:582:callback#30", --[[/APR_DIAG]]function(_, elapsed)
                     self.elapsed = self.elapsed + elapsed
                     if self.elapsed < 1 then return end
                     self.elapsed = 0
@@ -572,25 +587,25 @@ function Panel:Create(parent)
                 end--[[APR_DIAG]])--[[/APR_DIAG]] )
         end--[[APR_DIAG]])--[[/APR_DIAG]] )
     self.frame:HookScript("OnHide",
-            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:575:callback#32", --[[/APR_DIAG]]function() self.frame:SetScript("OnUpdate", nil) end--[[APR_DIAG]])--[[/APR_DIAG]] )
+            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:590:callback#31", --[[/APR_DIAG]]function() self.frame:SetScript("OnUpdate", nil) end--[[APR_DIAG]])--[[/APR_DIAG]] )
     root:HookScript("OnSizeChanged",
-            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:577:callback#33", --[[/APR_DIAG]]function() self:Layout() end--[[APR_DIAG]])--[[/APR_DIAG]] )
+            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:592:callback#32", --[[/APR_DIAG]]function() self:Layout() end--[[APR_DIAG]])--[[/APR_DIAG]] )
     self.infoScroll:HookScript("OnSizeChanged",
-            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:579:callback#34", --[[/APR_DIAG]]function() self:Layout() end--[[APR_DIAG]])--[[/APR_DIAG]] )
+            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:594:callback#33", --[[/APR_DIAG]]function() self:Layout() end--[[APR_DIAG]])--[[/APR_DIAG]] )
     self:Refresh()
-end--[[APR_DIAG]]; Panel.Create = APRTrace("APR-Core/ui/panels/StatusReport.lua:471:Panel:Create#22", Panel.Create)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Panel.Create = APRTrace("APR-Core/ui/panels/StatusReport.lua:486:Panel:Create#21", Panel.Create)--[[/APR_DIAG]]
 
-function APR:RefreshStatusTextLayout() Panel:Layout() end--[[APR_DIAG]]; APR.RefreshStatusTextLayout = APRTrace("APR-Core/ui/panels/StatusReport.lua:583:APR:RefreshStatusTextLayout#35", APR.RefreshStatusTextLayout)--[[/APR_DIAG]]
-function APR:updateStatusFrame() Panel:Refresh() end--[[APR_DIAG]]; APR.updateStatusFrame = APRTrace("APR-Core/ui/panels/StatusReport.lua:584:APR:updateStatusFrame#36", APR.updateStatusFrame)--[[/APR_DIAG]]
+function APR:RefreshStatusTextLayout() Panel:Layout() end--[[APR_DIAG]]; APR.RefreshStatusTextLayout = APRTrace("APR-Core/ui/panels/StatusReport.lua:598:APR:RefreshStatusTextLayout#34", APR.RefreshStatusTextLayout)--[[/APR_DIAG]]
+function APR:updateStatusFrame() Panel:Refresh() end--[[APR_DIAG]]; APR.updateStatusFrame = APRTrace("APR-Core/ui/panels/StatusReport.lua:599:APR:updateStatusFrame#35", APR.updateStatusFrame)--[[/APR_DIAG]]
 function APR:showStatusReport()
     if APR.Workspace then return APR.Workspace:Show("status") end
     if not Panel.frame then Panel:Create() end
     Panel.frame:Show(); Panel:Refresh()
-end--[[APR_DIAG]]; APR.showStatusReport = APRTrace("APR-Core/ui/panels/StatusReport.lua:585:APR:showStatusReport#37", APR.showStatusReport)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.showStatusReport = APRTrace("APR-Core/ui/panels/StatusReport.lua:600:APR:showStatusReport#36", APR.showStatusReport)--[[/APR_DIAG]]
 function APR:closeStatusReport()
     if APR.Workspace then
         APR.Workspace:Hide()
     elseif Panel.frame then
         Panel.frame:Hide()
     end
-end--[[APR_DIAG]]; APR.closeStatusReport = APRTrace("APR-Core/ui/panels/StatusReport.lua:590:APR:closeStatusReport#38", APR.closeStatusReport)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.closeStatusReport = APRTrace("APR-Core/ui/panels/StatusReport.lua:605:APR:closeStatusReport#37", APR.closeStatusReport)--[[/APR_DIAG]]

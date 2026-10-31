@@ -12,6 +12,25 @@ local function ActionTextScope(scope, action)
     if APR.currentStep.SetActionTextScope then APR.currentStep:SetActionTextScope(scope, action) end
 end--[[APR_DIAG]]; ActionTextScope = APRTrace("APR-Core/features/questing/StepRenderer.lua:11:ActionTextScope#1", ActionTextScope)--[[/APR_DIAG]]
 
+local function CheckChromieTimeline(id)
+    local level = APR.Level
+    local maxLevelChromie = APR.MaxLevelChromie
+    if type(level) ~= "number" or type(maxLevelChromie) ~= "number" then return end
+    if level >= maxLevelChromie then return end
+    if not C_ChromieTime or not C_ChromieTime.GetChromieTimeExpansionOption then return end
+    local chromieExpansionOption = C_ChromieTime.GetChromieTimeExpansionOption(id)
+    if not chromieExpansionOption then
+        APR.currentStep:AddExtraLineText("NOT_IN_CHROMIE_TIMELINE", L["NOT_IN_CHROMIE_TIMELINE"])
+    elseif chromieExpansionOption.alreadyOn == false then
+        APR.currentStep:AddExtraLineText("SWITCH_TO_CHROMIE" .. chromieExpansionOption.name,
+            string.format(L["SWITCH_TO_CHROMIE"], chromieExpansionOption.name))
+    end
+end--[[APR_DIAG]]; CheckChromieTimeline = APRTrace("APR-Core/features/questing/StepRenderer.lua:15:CheckChromieTimeline#2", CheckChromieTimeline)--[[/APR_DIAG]]
+
+local function CompareExtraLines(a, b)
+    return a.key < b.key
+end--[[APR_DIAG]]; CompareExtraLines = APRTrace("APR-Core/features/questing/StepRenderer.lua:30:CompareExtraLines#3", CompareExtraLines)--[[/APR_DIAG]]
+
 -- Preserve route action precedence, including mixed legacy step definitions.
 function handlers.RenderPrimary(step, showStepDetails, currentStepIndex)
     if step.KillNPC then
@@ -57,7 +76,7 @@ function handlers.RenderPrimary(step, showStepDetails, currentStepIndex)
     elseif step.GossipOptionIDs and not APR:HasAnyMainStepOption(step) then
         return handlers.GossipOptionIDs(step, showStepDetails, currentStepIndex)
     end
-end--[[APR_DIAG]]; handlers.RenderPrimary = APRTrace("APR-Core/features/questing/StepRenderer.lua:16:handlers.RenderPrimary#2", handlers.RenderPrimary)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.RenderPrimary = APRTrace("APR-Core/features/questing/StepRenderer.lua:35:handlers.RenderPrimary#4", handlers.RenderPrimary)--[[/APR_DIAG]]
 
 function APR:RenderCurrentStep()
     if not APR.settings.profile.enableAddon then
@@ -142,52 +161,42 @@ function APR:RenderCurrentStep()
         APR.Arrow:SetCoord()
 
         if (APR.ActiveRoute) then
-            local function checkChromieTimeline(id)
-                local level = APR.Level
-                local maxLevelChromie = APR.MaxLevelChromie
-                if type(level) ~= "number" or type(maxLevelChromie) ~= "number" then return end
-                if level >= maxLevelChromie then return end
-                if not C_ChromieTime or not C_ChromieTime.GetChromieTimeExpansionOption then return end
-                local chromieExpansionOption = C_ChromieTime.GetChromieTimeExpansionOption(id)
-                if (not chromieExpansionOption) then
-                    APR.currentStep:AddExtraLineText("NOT_IN_CHROMIE_TIMELINE", L["NOT_IN_CHROMIE_TIMELINE"])
-                elseif (chromieExpansionOption.alreadyOn == false) then
-                    APR.currentStep:AddExtraLineText("SWITCH_TO_CHROMIE" .. chromieExpansionOption.name,
-                        string.format(L["SWITCH_TO_CHROMIE"], chromieExpansionOption.name))
-                end
-            end--[[APR_DIAG]]; checkChromieTimeline = APRTrace("APR-Core/features/questing/StepRenderer.lua:145:checkChromieTimeline#4", checkChromieTimeline)--[[/APR_DIAG]]
-
             local activeRouteData = APR.RouteQuestStepList[APR.ActiveRoute]
             local activeExpansion = activeRouteData and activeRouteData.expansion
 
             if activeExpansion == APR.EXPANSIONS.TheBurningCrusade then
-                checkChromieTimeline(6)
+                CheckChromieTimeline(6)
             end
             if activeExpansion == APR.EXPANSIONS.WarlordsOfDraenor then
-                checkChromieTimeline(9)
+                CheckChromieTimeline(9)
             end
             if activeExpansion == APR.EXPANSIONS.BattleForAzeroth then
-                checkChromieTimeline(15)
+                CheckChromieTimeline(15)
             end
             if activeExpansion == APR.EXPANSIONS.Shadowlands then
-                checkChromieTimeline(14)
+                CheckChromieTimeline(14)
             end
         end
 
         -- Check for ExtraLineText
         ActionTextScope("secondary")
-        local extraLines = {}
-        for key, value in pairs(step) do
-            if type(key) == "string" and string.match(key, "ExtraLineText+") and showStepDetails then
-                table.insert(extraLines, { key = key, text = value })
+        local extraLines
+        if showStepDetails then
+            for key, value in pairs(step) do
+                if type(key) == "string" and string.match(key, "ExtraLineText+") then
+                    if not extraLines then extraLines = {} end
+                    extraLines[#extraLines + 1] = { key = key, text = value }
+                end
             end
         end
-        table.sort(extraLines, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/StepRenderer.lua:185:callback#5", --[[/APR_DIAG]]function(a, b) return a.key < b.key end--[[APR_DIAG]])--[[/APR_DIAG]])
-        for i, line in ipairs(extraLines) do
-            for textIndex, text in ipairs(APR:ResolveStepTextList(line.text)) do
-                -- Identify the field and list position, never the raw value (which can be a table).
-                local key = i .. "_" .. line.key .. "_" .. textIndex
-                APR.currentStep:AddExtraLineText(key, text.text, text.color)
+        if extraLines then
+            if #extraLines > 1 then table.sort(extraLines, CompareExtraLines) end
+            for i, line in ipairs(extraLines) do
+                for textIndex, text in ipairs(APR:ResolveStepTextList(line.text)) do
+                    -- Identify the field and list position, never the raw value (which can be a table).
+                    local key = i .. "_" .. line.key .. "_" .. textIndex
+                    APR.currentStep:AddExtraLineText(key, text.text, text.color)
+                end
             end
         end
 
@@ -302,7 +311,7 @@ function APR:RenderCurrentStep()
             if showStepDetails then
                 APR.currentStep:AddQuestSteps("RESET_ROUTE", L["RESET_ROUTE"], "ResetRoute", false, true)
             end
-            APR.questionDialog:CreateQuestionPopup("RESET", "RESET" .. "?", --[[APR_DIAG]]APRTrace("APR-Core/features/questing/StepRenderer.lua:305:callback#6", --[[/APR_DIAG]]function()
+            APR.questionDialog:CreateQuestionPopup("RESET", "RESET" .. "?", --[[APR_DIAG]]APRTrace("APR-Core/features/questing/StepRenderer.lua:314:callback#6", --[[/APR_DIAG]]function()
                 if not APR:IsStepContextCurrent(context) then return end
                 APR:SetRouteProgress(APR.ActiveRoute, 1, "reset")
                 APR:PrintInfo(L["RESET_ROUTE"])
@@ -334,7 +343,7 @@ function APR:RenderCurrentStep()
                 tremove(APRCustomPath[APR.PlayerID], index)
                 APR.routeconfig:CheckIsCustomPathEmpty()
                 APR.routeconfig:SendMessage("APR_Custom_Path_Update")
-            end--[[APR_DIAG]]; finalizeRouteCompletion = APRTrace("APR-Core/features/questing/StepRenderer.lua:332:finalizeRouteCompletion#7", finalizeRouteCompletion)--[[/APR_DIAG]]
+            end--[[APR_DIAG]]; finalizeRouteCompletion = APRTrace("APR-Core/features/questing/StepRenderer.lua:341:finalizeRouteCompletion#7", finalizeRouteCompletion)--[[/APR_DIAG]]
 
             -- Suggest next routes immediately; finalize after selection/skip/cancel
             APR:SuggestNextRoutes(completedRouteKey, finalizeRouteCompletion)
@@ -365,4 +374,4 @@ function APR:RenderCurrentStep()
 
         APR.routeconfig:CheckIsCustomPathEmpty()
     end
-end--[[APR_DIAG]]; APR.RenderCurrentStep = APRTrace("APR-Core/features/questing/StepRenderer.lua:62:APR:RenderCurrentStep#3", APR.RenderCurrentStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RenderCurrentStep = APRTrace("APR-Core/features/questing/StepRenderer.lua:81:APR:RenderCurrentStep#5", APR.RenderCurrentStep)--[[/APR_DIAG]]

@@ -10,6 +10,12 @@ local UI = APR.UI
 APR.RouteBrowser = {filters = {sort = "label"}}
 local Browser = APR.RouteBrowser
 
+local function Place(region, x, y, width, height)
+    region:ClearAllPoints()
+    region:SetPoint("TOPLEFT", region:GetParent(), "TOPLEFT", x, -y)
+    region:SetSize(width, height)
+end--[[APR_DIAG]]; Place = APRTrace("APR-Core/ui/route/RouteBrowser.lua:13:Place#1", Place)--[[/APR_DIAG]]
+
 function Browser:SetScope(value)
     self.filters.expansion = value ~= "all" and value ~= "community" and value or nil
     self.filters.community = value == "community"
@@ -19,11 +25,14 @@ function Browser:SetScope(value)
     self.search.placeholder:Show()
     self.settingSearch = false
     self:Refresh(false, true)
-end--[[APR_DIAG]]; Browser.SetScope = APRTrace("APR-Core/ui/route/RouteBrowser.lua:13:Browser:SetScope#1", Browser.SetScope)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Browser.SetScope = APRTrace("APR-Core/ui/route/RouteBrowser.lua:19:Browser:SetScope#2", Browser.SetScope)--[[/APR_DIAG]]
 
 -- Navigation starts at the top; path edits keep the reader's place in the catalog.
 function Browser:Refresh(rebuild, resetScroll)
-    if not self.frame or not self.frame:IsShown() then self.dirty = true; return end
+    -- An embedded page can stay shown while the workspace ancestor is hidden.
+    -- Its next OnShow rebuilds from the latest live catalog and saved path.
+    if not self.frame or not self.frame:IsShown()
+        or (self.frame.IsVisible and not self.frame:IsVisible()) then self.dirty = true; return end
     self.refreshSerial = (self.refreshSerial or 0) + 1
     if rebuild or self.dirty or not self.records then
         self.records = APR.RouteCatalog:Build(); self.dirty = false
@@ -71,11 +80,11 @@ function Browser:Refresh(rebuild, resetScroll)
         header.icon:SetShown(self.filters.sort == key)
         APR:SetFontStringRole(header:GetFontString(), self.filters.sort == key and "accent" or "base")
     end
-end--[[APR_DIAG]]; Browser.Refresh = APRTrace("APR-Core/ui/route/RouteBrowser.lua:25:Browser:Refresh#2", Browser.Refresh)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Browser.Refresh = APRTrace("APR-Core/ui/route/RouteBrowser.lua:31:Browser:Refresh#3", Browser.Refresh)--[[/APR_DIAG]]
 
 function Browser:CreateNavigation(root)
     self.navScroll = UI:Scroll(root)
-    self.navigation = APR.VirtualList:New(self.navScroll, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:78:callback#4", --[[/APR_DIAG]]function(parent)
+    self.navigation = APR.VirtualList:New(self.navScroll, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:87:callback#5", --[[/APR_DIAG]]function(parent)
         local row = CreateFrame("Button", nil, parent)
         row.text = UI:Label(row, "", 11)
         row.text:SetPoint("LEFT", 12, 0)
@@ -85,10 +94,10 @@ function Browser:CreateNavigation(root)
         row.count = UI:Label(row, "", 11, "muted")
         row.count:SetPoint("RIGHT", -4, 0)
         UI:StyleListRow(row)
-        row:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:88:callback#5", --[[/APR_DIAG]]function() if row.item.value then self:SetScope(row.item.value) end end--[[APR_DIAG]])--[[/APR_DIAG]])
-        UI:Tooltip(row, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:89:callback#6", --[[/APR_DIAG]]function() return row.item and row.item.label end--[[APR_DIAG]])--[[/APR_DIAG]])
+        row:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:97:callback#6", --[[/APR_DIAG]]function() if row.item.value then self:SetScope(row.item.value) end end--[[APR_DIAG]])--[[/APR_DIAG]])
+        UI:Tooltip(row, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:98:callback#7", --[[/APR_DIAG]]function() return row.item and row.item.label end--[[APR_DIAG]])--[[/APR_DIAG]])
         return row
-    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:91:callback#7", --[[/APR_DIAG]]function(row, item)
+    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:100:callback#8", --[[/APR_DIAG]]function(row, item)
         row.text:SetText(item.label)
         row.count:SetText(item.count and tostring(item.count) or "")
         row:SetEnabled(not item.heading)
@@ -96,7 +105,7 @@ function Browser:CreateNavigation(root)
         APR:SetFontStringRole(row.text, item.heading and "muted" or (selected or item.value == "community") and "accent" or "base")
         UI:SetListRowState(row, selected, nil, not item.heading, item.heading)
     end--[[APR_DIAG]])--[[/APR_DIAG]], 40)
-end--[[APR_DIAG]]; Browser.CreateNavigation = APRTrace("APR-Core/ui/route/RouteBrowser.lua:76:Browser:CreateNavigation#3", Browser.CreateNavigation)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Browser.CreateNavigation = APRTrace("APR-Core/ui/route/RouteBrowser.lua:85:Browser:CreateNavigation#4", Browser.CreateNavigation)--[[/APR_DIAG]]
 
 function Browser:Create(parent)
     local frame = parent and UI:Page(parent) or UI:Window("APRRouteBrowser", L["ROUTE_SELECTION"], 1240, 780, "library", "logo")
@@ -118,14 +127,14 @@ function Browser:Create(parent)
     self.prefabTitle = self.prefabPanel.title
     self.prefabs = {}
     local definitions = {
-        {kind = "speedrun", label = "SPEEDRUN", tooltip = "SPEEDRUN_TOOLTIPS", action = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:121:callback#9", --[[/APR_DIAG]]function()
+        {kind = "speedrun", label = "SPEEDRUN", tooltip = "SPEEDRUN_TOOLTIPS", action = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:130:callback#10", --[[/APR_DIAG]]function()
             APRCustomPath[APR.PlayerID] = {}; APR.routeconfig:GetSpeedRunPrefab()
         end--[[APR_DIAG]])--[[/APR_DIAG]]},
-        {kind = "leveling", label = "LEVELING_PREFAB", tooltip = "LEVELING_TOOLTIPS", action = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:124:callback#10", --[[/APR_DIAG]]function() APR.routeconfig:OpenLevelingPopup() end--[[APR_DIAG]])--[[/APR_DIAG]]},
-        {kind = "all_quests", label = "ALL_QUESTS", tooltip = "ALL_QUESTS_TOOLTIPS", action = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:125:callback#11", --[[/APR_DIAG]]function() APR.routeconfig:OpenAllQuestsPopup() end--[[APR_DIAG]])--[[/APR_DIAG]]},
+        {kind = "leveling", label = "LEVELING_PREFAB", tooltip = "LEVELING_TOOLTIPS", action = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:133:callback#11", --[[/APR_DIAG]]function() APR.routeconfig:OpenLevelingPopup() end--[[APR_DIAG]])--[[/APR_DIAG]]},
+        {kind = "all_quests", label = "ALL_QUESTS", tooltip = "ALL_QUESTS_TOOLTIPS", action = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:134:callback#12", --[[/APR_DIAG]]function() APR.routeconfig:OpenAllQuestsPopup() end--[[APR_DIAG]])--[[/APR_DIAG]]},
     }
     table.insert(definitions, 2, {kind = "dungeons", text = DUNGEONS,
-        tooltip = "LEVELING_TOOLTIPS", action = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:128:callback#12", --[[/APR_DIAG]]function() APR.routeconfig:OpenDungeonPopup() end--[[APR_DIAG]])--[[/APR_DIAG]]})
+        tooltip = "LEVELING_TOOLTIPS", action = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:137:callback#13", --[[/APR_DIAG]]function() APR.routeconfig:OpenDungeonPopup() end--[[APR_DIAG]])--[[/APR_DIAG]]})
     self.prefabButtons = {}
     for _, definition in ipairs(definitions) do
         local label = definition.text or L[definition.label]
@@ -136,7 +145,7 @@ function Browser:Create(parent)
     end
     self:RefreshPrefabs()
     self.filterPanel = UI:Panel(root, "borderedPanel", "inset")
-    self.search = UI:SearchBox(self.filterPanel, 350, SEARCH, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:139:callback#13", --[[/APR_DIAG]]function(query)
+    self.search = UI:SearchBox(self.filterPanel, 350, SEARCH, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:148:callback#14", --[[/APR_DIAG]]function(query)
         if self.settingSearch then return end
         if query ~= "" and (not self.filters.query or self.filters.query == "") then
             self.searchExpansion, self.filters.expansion = self.filters.expansion, nil
@@ -148,12 +157,12 @@ function Browser:Create(parent)
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     UI:Tooltip(self.search, SEARCH, L["UI_ROUTE_SEARCH_HELP"])
     self.typeLabel = UI:Label(self.filterPanel, TYPE, 11, "muted")
-    self.category = UI:Select(self.filterPanel, 195, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:151:callback#14", --[[/APR_DIAG]]function(value) self.filters.category = value or nil; self:Refresh(false, true) end--[[APR_DIAG]])--[[/APR_DIAG]])
-    self.favorites = UI:Button(self.filterPanel, FAVORITES, 140, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:152:callback#15", --[[/APR_DIAG]]function()
+    self.category = UI:Select(self.filterPanel, 195, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:160:callback#15", --[[/APR_DIAG]]function(value) self.filters.category = value or nil; self:Refresh(false, true) end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self.favorites = UI:Button(self.filterPanel, FAVORITES, 140, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:161:callback#16", --[[/APR_DIAG]]function()
         self.filters.favorites = not self.filters.favorites; self:Refresh(false, true)
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     UI:ButtonIcon(self.favorites, "favorite", 18)
-    self.reset = UI:Button(self.filterPanel, RESET, 100, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:156:callback#16", --[[/APR_DIAG]]function()
+    self.reset = UI:Button(self.filterPanel, RESET, 100, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:165:callback#17", --[[/APR_DIAG]]function()
         self.filters = {sort = "label"}; self:SetScope("all")
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     self.navigationPanel = UI:Panel(root, "borderedPanel", "stone")
@@ -163,12 +172,12 @@ function Browser:Create(parent)
     self.headerBand = self.catalogPanel:CreateTexture(nil, "BACKGROUND")
     APR:RegisterThemeRegion(self.headerBand, "border", 0.18)
     self.scroll = UI:Scroll(self.catalogPanel)
-    self.list = APR.VirtualList:New(self.scroll, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:166:callback#17", --[[/APR_DIAG]]function(parent) return APR.RouteBrowserRows:Create(parent, self) end--[[APR_DIAG]])--[[/APR_DIAG]],
-        --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:167:callback#18", --[[/APR_DIAG]]function(row, record, index) APR.RouteBrowserRows:Bind(row, record, index, self) end--[[APR_DIAG]])--[[/APR_DIAG]], 30)
+    self.list = APR.VirtualList:New(self.scroll, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:175:callback#18", --[[/APR_DIAG]]function(parent) return APR.RouteBrowserRows:Create(parent, self) end--[[APR_DIAG]])--[[/APR_DIAG]],
+        --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:176:callback#19", --[[/APR_DIAG]]function(row, record, index) APR.RouteBrowserRows:Bind(row, record, index, self) end--[[APR_DIAG]])--[[/APR_DIAG]], 30)
     self.headers, self.headerLabels = {}, {label = NAME, category = TYPE, author = string.format(L["AUTHOR"], ""), status = STATUS}
     for _, key in ipairs({"label", "category", "author", "status"}) do
         local field = key
-        local header = UI:ColumnHeader(self.catalogPanel, self.headerLabels[field], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:171:callback#19", --[[/APR_DIAG]]function()
+        local header = UI:ColumnHeader(self.catalogPanel, self.headerLabels[field], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:180:callback#20", --[[/APR_DIAG]]function()
             self.filters.descending = self.filters.sort == field and not self.filters.descending or false
             self.filters.sort = field; self:Refresh(false, true)
         end--[[APR_DIAG]])--[[/APR_DIAG]])
@@ -178,11 +187,11 @@ function Browser:Create(parent)
     self.pathPanel = UI:Section(root, L["CUSTOM_PATH"], "stone")
     self.pathTitle = self.pathPanel.title
     self.pathScroll = UI:Scroll(self.pathPanel)
-    self.pathList = APR.VirtualList:New(self.pathScroll, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:181:callback#20", --[[/APR_DIAG]]function(parent) return APR.RouteBrowserRows:Create(parent, self, true) end--[[APR_DIAG]])--[[/APR_DIAG]],
-        --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:182:callback#21", --[[/APR_DIAG]]function(row, record, index) APR.RouteBrowserRows:Bind(row, record, index, self, true) end--[[APR_DIAG]])--[[/APR_DIAG]], 30)
+    self.pathList = APR.VirtualList:New(self.pathScroll, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:190:callback#21", --[[/APR_DIAG]]function(parent) return APR.RouteBrowserRows:Create(parent, self, true) end--[[APR_DIAG]])--[[/APR_DIAG]],
+        --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:191:callback#22", --[[/APR_DIAG]]function(row, record, index) APR.RouteBrowserRows:Bind(row, record, index, self, true) end--[[APR_DIAG]])--[[/APR_DIAG]], 30)
     self.pathEmpty = UI:Label(self.pathPanel, L["UI_ROUTE_PATH_EMPTY"], 12, "muted")
-    self.clearPath = UI:Button(self.pathPanel, L["CLEAR"], 120, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:184:callback#22", --[[/APR_DIAG]]function()
-        UI:ShowConfirmationDialog(L["CLEAR_CUSTOM_PATH"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:185:callback#23", --[[/APR_DIAG]]function()
+    self.clearPath = UI:Button(self.pathPanel, L["CLEAR"], 120, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:193:callback#23", --[[/APR_DIAG]]function()
+        UI:ShowConfirmationDialog(L["CLEAR_CUSTOM_PATH"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:194:callback#24", --[[/APR_DIAG]]function()
             APRCustomPath[APR.PlayerID] = {}; APR.routeconfig:SendCustomPathUpdate()
         end--[[APR_DIAG]])--[[/APR_DIAG]], nil, self.frame)
     end--[[APR_DIAG]])--[[/APR_DIAG]])
@@ -200,19 +209,19 @@ function Browser:Create(parent)
         entry.text:SetPoint("LEFT", 9, 0)
         self.legend.items[#self.legend.items + 1] = entry
         APR:RegisterFontString(entry.text, "general", {role = progress.role, sizeDelta = -1,
-            onApplied = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:203:callback#24", --[[/APR_DIAG]]function() self:Layout() end--[[APR_DIAG]])--[[/APR_DIAG]]})
+            onApplied = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:212:callback#25", --[[/APR_DIAG]]function() self:Layout() end--[[APR_DIAG]])--[[/APR_DIAG]]})
     end
     APR:RegisterFontString(self.hint, "general", {role = "muted", sizeDelta = -1,
-        onApplied = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:206:callback#25", --[[/APR_DIAG]]function() self:Layout() end--[[APR_DIAG]])--[[/APR_DIAG]]})
-    frame:HookScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:207:callback#26", --[[/APR_DIAG]]function() self:Layout() end--[[APR_DIAG]])--[[/APR_DIAG]])
-    frame:HookScript("OnShow", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:208:callback#27", --[[/APR_DIAG]]function() self:Refresh(true) end--[[APR_DIAG]])--[[/APR_DIAG]])
-    frame:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:209:callback#28", --[[/APR_DIAG]]function() self.search:ClearFocus() end--[[APR_DIAG]])--[[/APR_DIAG]])
+        onApplied = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:215:callback#26", --[[/APR_DIAG]]function() self:Layout() end--[[APR_DIAG]])--[[/APR_DIAG]]})
+    frame:HookScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:216:callback#27", --[[/APR_DIAG]]function() self:Layout() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    frame:HookScript("OnShow", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:217:callback#28", --[[/APR_DIAG]]function() self:Refresh(true) end--[[APR_DIAG]])--[[/APR_DIAG]])
+    frame:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:218:callback#29", --[[/APR_DIAG]]function() self.search:ClearFocus() end--[[APR_DIAG]])--[[/APR_DIAG]])
     self:Layout()
     if APR.Gamepad then
         APR.Gamepad:LinkHorizontal(self.prefabs)
         APR.Gamepad:LinkHorizontal({self.search, self.category, self.favorites, self.reset})
     end
-end--[[APR_DIAG]]; Browser.Create = APRTrace("APR-Core/ui/route/RouteBrowser.lua:101:Browser:Create#8", Browser.Create)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Browser.Create = APRTrace("APR-Core/ui/route/RouteBrowser.lua:110:Browser:Create#9", Browser.Create)--[[/APR_DIAG]]
 
 function Browser:RefreshPrefabs()
     self.prefabs = {}
@@ -224,7 +233,7 @@ function Browser:RefreshPrefabs()
     self.prefabPanel:SetShown(#self.prefabs > 0)
     if APR.Gamepad then APR.Gamepad:LinkHorizontal(self.prefabs) end
     self:Layout()
-end--[[APR_DIAG]]; Browser.RefreshPrefabs = APRTrace("APR-Core/ui/route/RouteBrowser.lua:217:Browser:RefreshPrefabs#29", Browser.RefreshPrefabs)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Browser.RefreshPrefabs = APRTrace("APR-Core/ui/route/RouteBrowser.lua:226:Browser:RefreshPrefabs#30", Browser.RefreshPrefabs)--[[/APR_DIAG]]
 
 function Browser:Layout()
     if not self.frame or not self.pathList then return end
@@ -238,50 +247,50 @@ function Browser:Layout()
     local prefabHeight = #self.prefabs > 0 and 82 or 0
     local tableTop = prefabHeight + 56
     local tableWidth, panelHeight = pathLeft - tableLeft - 12, height - tableTop - 26 - hintHeight
-    local function place(region, x, y, w, h)
-        region:ClearAllPoints()
-        region:SetPoint("TOPLEFT", region:GetParent(), "TOPLEFT", x, -y)
-        region:SetSize(w, h)
-    end--[[APR_DIAG]]; place = APRTrace("APR-Core/ui/route/RouteBrowser.lua:241:place#31", place)--[[/APR_DIAG]]
-    place(self.prefabPanel, 0, 0, width, 74)
+    Place(self.prefabPanel, 0, 0, width, 74)
     local prefabWidth = (width - 24 - 10 * (#self.prefabs - 1)) / math.max(1, #self.prefabs)
     for index, button in ipairs(self.prefabs) do
-        place(button, 12 + (index - 1) * (prefabWidth + 10), 34, prefabWidth, 30)
+        Place(button, 12 + (index - 1) * (prefabWidth + 10), 34, prefabWidth, 30)
     end
-    place(self.filterPanel, 0, prefabHeight, width, 46)
-    place(self.search, 10, 8, width - 508, 30)
-    place(self.typeLabel, width - 490, 8, 32, 30)
-    place(self.category, width - 450, 8, 180, 30)
-    place(self.favorites, width - 262, 8, 132, 30)
-    place(self.reset, width - 122, 8, 112, 30)
-    place(self.navigationPanel, 0, tableTop, navWidth, panelHeight)
-    place(self.navScroll, 8, 8, navWidth - 34, panelHeight - 16)
-    place(self.catalogPanel, tableLeft, tableTop, tableWidth, panelHeight)
-    place(self.headerBand, 10, 38, tableWidth - 20, 24)
-    place(self.scroll, 10, 64, tableWidth - 36, panelHeight - 74)
-    local columns = APR.RouteBrowserRows:Columns(tableWidth - 36)
+    Place(self.filterPanel, 0, prefabHeight, width, 46)
+    Place(self.search, 10, 8, width - 508, 30)
+    Place(self.typeLabel, width - 490, 8, 32, 30)
+    Place(self.category, width - 450, 8, 180, 30)
+    Place(self.favorites, width - 262, 8, 132, 30)
+    Place(self.reset, width - 122, 8, 112, 30)
+    Place(self.navigationPanel, 0, tableTop, navWidth, panelHeight)
+    Place(self.navScroll, 8, 8, navWidth - 34, panelHeight - 16)
+    Place(self.catalogPanel, tableLeft, tableTop, tableWidth, panelHeight)
+    Place(self.headerBand, 10, 38, tableWidth - 20, 24)
+    Place(self.scroll, 10, 64, tableWidth - 36, panelHeight - 74)
+    local columnWidth = tableWidth - 36
+    local columns = self.headerColumns
+    if not columns or self.headerColumnWidth ~= columnWidth then
+        columns = APR.RouteBrowserRows:Columns(columnWidth)
+        self.headerColumns, self.headerColumnWidth = columns, columnWidth
+    end
     for key, header in pairs(self.headers) do
         local column = columns[key == "label" and "name" or key]
-        place(header, 10 + column[1], 38, math.max(1, column[2]), 24)
+        Place(header, 10 + column[1], 38, math.max(1, column[2]), 24)
         header:SetShown(column[2] > 0)
     end
-    place(self.empty, 18, 82, tableWidth - 44, 60)
-    place(self.pathPanel, pathLeft, tableTop, pathWidth, panelHeight)
-    place(self.pathScroll, 10, 44, pathWidth - 36, panelHeight - 90)
-    place(self.pathEmpty, 18, 54, pathWidth - 44, 80)
-    place(self.clearPath, 12, panelHeight - 38, pathWidth - 24, 28)
-    place(self.legend, tableLeft, height - hintHeight - 24, width - tableLeft, 18)
+    Place(self.empty, 18, 82, tableWidth - 44, 60)
+    Place(self.pathPanel, pathLeft, tableTop, pathWidth, panelHeight)
+    Place(self.pathScroll, 10, 44, pathWidth - 36, panelHeight - 90)
+    Place(self.pathEmpty, 18, 54, pathWidth - 44, 80)
+    Place(self.clearPath, 12, panelHeight - 38, pathWidth - 24, 28)
+    Place(self.legend, tableLeft, height - hintHeight - 24, width - tableLeft, 18)
     local legendLeft = 0
     for _, entry in ipairs(self.legend.items) do
         local entryWidth = entry.text:GetStringWidth() + 9
-        place(entry, legendLeft, 0, entryWidth, 18)
+        Place(entry, legendLeft, 0, entryWidth, 18)
         legendLeft = legendLeft + entryWidth + 18
     end
-    place(self.hint, tableLeft, height - hintHeight - 2, width - tableLeft, hintHeight)
+    Place(self.hint, tableLeft, height - hintHeight - 2, width - tableLeft, hintHeight)
     self.list:RefreshVisible(true)
     self.pathList:RefreshVisible(true)
     self.navigation:RefreshVisible(true)
-end--[[APR_DIAG]]; Browser.Layout = APRTrace("APR-Core/ui/route/RouteBrowser.lua:229:Browser:Layout#30", Browser.Layout)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Browser.Layout = APRTrace("APR-Core/ui/route/RouteBrowser.lua:238:Browser:Layout#31", Browser.Layout)--[[/APR_DIAG]]
 
 function Browser:Show()
     if APR.Workspace then return APR.Workspace:Show("route") end
@@ -291,4 +300,4 @@ function Browser:Show()
     local serial = self.refreshSerial
     self.frame:Show()
     if self.refreshSerial == serial then self:Refresh(true) end
-end--[[APR_DIAG]]; Browser.Show = APRTrace("APR-Core/ui/route/RouteBrowser.lua:286:Browser:Show#32", Browser.Show)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Browser.Show = APRTrace("APR-Core/ui/route/RouteBrowser.lua:295:Browser:Show#32", Browser.Show)--[[/APR_DIAG]]

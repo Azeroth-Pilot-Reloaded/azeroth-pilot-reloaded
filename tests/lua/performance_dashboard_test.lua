@@ -206,3 +206,22 @@ dashboard:Refresh()
 assert(dashboard.list:GetCount() == 0, "Reset invalidates the viewer's stopped-data cache")
 APR.GetPerformanceRows, dashboard.list.PrepareItems = previousRows, oldPrepare
 print("Performance viewer: indexed publication, final stop update, zero idle row rebuilds, search and reset passed")
+
+local traffic = {{time = 24.5, direction = "RX", kind = "P", channel = "WHISPER",
+    peer = "Invented-Realm", result = "decoded", wire = "1|P|synthetic"}}
+local trafficReads = 0
+APR.CommunicationChannel = {status = "ready", id = 7}
+APR.partyFinder = {traffic = {total = 1, count = 1, sent = 0, received = 1, dropped = 0},
+    GetTrafficRows = function() trafficReads = trafficReads + 1; return traffic end}
+dashboard:SetPage("groupFinder")
+assert(dashboard.groupFinderPanel:IsShown() and not dashboard.callsPanel:IsShown()
+    and not dashboard.resourcesPanel:IsShown() and dashboard.trafficList:GetCount() == 1)
+assert(dashboard.groupFinderOverview:GetText():find("RX: 1", 1, true))
+for _ = 1, 100 do dashboard:Refresh() end
+assert(trafficReads == 1, "An unchanged transport journal must not rebind its rows")
+report = APR:BuildDiagnosticReport()
+assert(report:find("1|P|synthetic", 1, true) and report:find("Invented-Realm", 1, true))
+APR.partyFinder.traffic, traffic = nil, {}
+dashboard:Refresh()
+assert(dashboard.trafficList:GetCount() == 0 and dashboard.trafficEmpty:IsShown())
+print("Performance finder table: visibility, receive counts, idle reuse, export and reset passed")

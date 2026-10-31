@@ -12,6 +12,10 @@ APR.RouteTriggersSuggestion = APR.RouteTriggersSuggestion or {
     routes = {},
     byQuestID = {},
 }
+-- Catalogue membership is key-specific; labels and shared definitions are not
+-- aliases for a removed key. Weak values let obsolete definitions be collected.
+-- false explicitly identifies a public registration made outside the catalogue.
+local registeredRouteDefinitions = setmetatable({}, { __mode = "v" })
 
 local function containsRoute(routeList, routeKey)
     for i = 1, #routeList do
@@ -20,29 +24,38 @@ local function containsRoute(routeList, routeKey)
         end
     end
     return false
-end--[[APR_DIAG]]; containsRoute = APRTrace("APR-Core/features/questing/RouteSuggestions.lua:16:containsRoute#1", containsRoute)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; containsRoute = APRTrace("APR-Core/features/questing/RouteSuggestions.lua:20:containsRoute#1", containsRoute)--[[/APR_DIAG]]
 
 function APR:RegisterTemporaryRouteTrigger(routeKey, triggers, label)
     if not routeKey or type(triggers) ~= "table" then
         return
     end
 
+    local isNewRoute = self.RouteTriggersSuggestion.routes[routeKey] == nil
     self.RouteTriggersSuggestion.routes[routeKey] = {
         key = routeKey,
         label = label,
         triggers = triggers,
     }
+    registeredRouteDefinitions[routeKey] = self.RouteQuestStepList[routeKey] or false
 
     for i = 1, #triggers do
         local questID = tonumber(triggers[i])
         if questID then
-            self.RouteTriggersSuggestion.byQuestID[questID] = self.RouteTriggersSuggestion.byQuestID[questID] or {}
-            if not containsRoute(self.RouteTriggersSuggestion.byQuestID[questID], routeKey) then
-                table.insert(self.RouteTriggersSuggestion.byQuestID[questID], routeKey)
+            local routeKeys = self.RouteTriggersSuggestion.byQuestID[questID]
+            if not routeKeys then
+                routeKeys = {}
+                self.RouteTriggersSuggestion.byQuestID[questID] = routeKeys
+            end
+            -- A first registration cannot be in this module's index yet.
+            -- Duplicate quest IDs in this call find the route at the tail;
+            -- only re-registrations need to search older entries.
+            if routeKeys[#routeKeys] ~= routeKey and (isNewRoute or not containsRoute(routeKeys, routeKey)) then
+                table.insert(routeKeys, routeKey)
             end
         end
     end
-end--[[APR_DIAG]]; APR.RegisterTemporaryRouteTrigger = APRTrace("APR-Core/features/questing/RouteSuggestions.lua:25:APR:RegisterTemporaryRouteTrigger#2", APR.RegisterTemporaryRouteTrigger)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RegisterTemporaryRouteTrigger = APRTrace("APR-Core/features/questing/RouteSuggestions.lua:29:APR:RegisterTemporaryRouteTrigger#2", APR.RegisterTemporaryRouteTrigger)--[[/APR_DIAG]]
 
 local function appendQuestIdsFromField(destination, fieldValue, excludedQuestId, maxCount, checkpoint)
     if type(fieldValue) ~= "table" then
@@ -59,7 +72,7 @@ local function appendQuestIdsFromField(destination, fieldValue, excludedQuestId,
             end
         end
     end
-end--[[APR_DIAG]]; appendQuestIdsFromField = APRTrace("APR-Core/features/questing/RouteSuggestions.lua:47:appendQuestIdsFromField#3", appendQuestIdsFromField)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; appendQuestIdsFromField = APRTrace("APR-Core/features/questing/RouteSuggestions.lua:60:appendQuestIdsFromField#3", appendQuestIdsFromField)--[[/APR_DIAG]]
 
 local function collectFirstQuestTriggers(stepList, excludedQuestId, maxCount, startStepIndex, checkpoint)
     local questIDs = {}
@@ -97,15 +110,87 @@ local function collectFirstQuestTriggers(stepList, excludedQuestId, maxCount, st
     end
 
     return questIDs
-end--[[APR_DIAG]]; collectFirstQuestTriggers = APRTrace("APR-Core/features/questing/RouteSuggestions.lua:64:collectFirstQuestTriggers#4", collectFirstQuestTriggers)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; collectFirstQuestTriggers = APRTrace("APR-Core/features/questing/RouteSuggestions.lua:77:collectFirstQuestTriggers#4", collectFirstQuestTriggers)--[[/APR_DIAG]]
 
-function APR:InitRouteTriggersSuggestion()
+-- Invalidating a snapshot keeps only its deduplicated requests. This is also
+-- the failure state: no worker/timer survives, and only an explicit Init retries.
+-- Call before publishing catalogue changes, then Init once after the batch.
+function APR:SuspendRouteTriggersSuggestion()
     local previous = self._routeTriggerBuild
-    if previous and previous.timer then previous.timer:Cancel() end
-    local build = { pending = previous and previous.pending or {} }
-    self._routeTriggerBuild = build
+    if previous then
+        if previous.timer then previous.timer:Cancel() end
+        previous.timer, previous.worker = nil, nil
+    end
+    self._routeTriggerPending = self._routeTriggerPending or (previous and previous.pending) or {}
+    self._routeTriggerQueue = self._routeTriggerQueue or (previous and previous.queue) or { first = 1, last = 0 }
+    self._routeTriggerBuild = nil
     self.RouteTriggersSuggestion.routes = {}
     self.RouteTriggersSuggestion.byQuestID = {}
+    registeredRouteDefinitions = setmetatable({}, { __mode = "v" })
+end--[[APR_DIAG]]; APR.SuspendRouteTriggersSuggestion = APRTrace("APR-Core/features/questing/RouteSuggestions.lua:118:APR:SuspendRouteTriggersSuggestion#5", APR.SuspendRouteTriggersSuggestion)--[[/APR_DIAG]]
+
+local canSuggestTemporaryRoute, publishTemporaryRouteTrigger
+
+local function enqueueRouteTriggerRequest(pending, queue, questID)
+    if pending[questID] then return end
+    pending[questID] = true
+    queue.last = queue.last + 1
+    queue[queue.last] = questID
+end--[[APR_DIAG]]; enqueueRouteTriggerRequest = APRTrace("APR-Core/features/questing/RouteSuggestions.lua:134:enqueueRouteTriggerRequest#6", enqueueRouteTriggerRequest)--[[/APR_DIAG]]
+
+local function replayRouteTriggerRequests(self, build)
+    -- Append reentrant arrivals at the tail. Advancing an explicit cursor avoids
+    -- Lua 5.1 next() rescanning all cleared array slots before every request.
+    local queue = build.queue
+    while queue.first <= queue.last do
+        APRYield()
+        if self._routeTriggerBuild ~= build then return end
+        local first = queue.first
+        local questID = queue[first]
+        if canSuggestTemporaryRoute(self) then
+            publishTemporaryRouteTrigger(self, questID, build, self.RouteTriggersSuggestion.routes)
+        end
+        if self._routeTriggerBuild ~= build then return end
+        -- A failed publication must leave this request available for explicit retry.
+        build.pending[questID] = nil
+        queue[first] = nil
+        queue.first = first + 1
+    end
+end--[[APR_DIAG]]; replayRouteTriggerRequests = APRTrace("APR-Core/features/questing/RouteSuggestions.lua:141:replayRouteTriggerRequests#7", replayRouteTriggerRequests)--[[/APR_DIAG]]
+
+local function scheduleRouteTriggerBuild(self, build)
+    local function advance()
+        if self._routeTriggerBuild ~= build or not build.worker then return end
+        build.timer = nil
+        local started = debugprofilestop and debugprofilestop()
+        for operation = 1, 64 do
+            if operation > 1 and started and debugprofilestop() - started >= 1 then break end
+            local worker = build.worker
+            local ok, message = APRResume(worker)
+            if not ok then
+                if self._routeTriggerBuild == build then self:SuspendRouteTriggersSuggestion() end
+                if geterrorhandler then geterrorhandler()(message) else error(message) end
+                return
+            end
+            -- A callback can replace and even finish the index during resume.
+            if self._routeTriggerBuild ~= build then return end
+            if coroutine.status(worker) == "dead" then
+                build.worker = nil
+                self._routeTriggerBuild = nil
+                self._routeTriggerPending = nil
+                self._routeTriggerQueue = nil
+                return
+            end
+        end
+        build.timer = C_Timer.NewTimer(0, advance)
+    end--[[APR_DIAG]]; advance = APRTrace("APR-Core/features/questing/RouteSuggestions.lua:162:advance#9", advance)--[[/APR_DIAG]]
+    build.timer = C_Timer.NewTimer(0, advance)
+end--[[APR_DIAG]]; scheduleRouteTriggerBuild = APRTrace("APR-Core/features/questing/RouteSuggestions.lua:161:scheduleRouteTriggerBuild#8", scheduleRouteTriggerBuild)--[[/APR_DIAG]]
+
+function APR:InitRouteTriggersSuggestion()
+    self:SuspendRouteTriggersSuggestion()
+    local build = { pending = self._routeTriggerPending, queue = self._routeTriggerQueue }
+    self._routeTriggerBuild = build
 
     local excludedQuestId = 1
     local maxTriggersPerRoute = 6
@@ -118,12 +203,16 @@ function APR:InitRouteTriggersSuggestion()
     -- Route definitions are ready at login, but scanning every authored step
     -- must not monopolize its frame. Snapshot keys so imports cannot invalidate
     -- a suspended pairs iterator; the small matching lists are sorted on use.
-    build.worker = coroutine.create(--[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteSuggestions.lua:121:callback#6", --[[/APR_DIAG]]function()
+    build.worker = coroutine.create(--[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteSuggestions.lua:206:callback#11", --[[/APR_DIAG]]function()
         for i = 1, #routeKeys do
             APRYield()
             local routeKey = routeKeys[i]
             local routeData = APR:GetRouteData(routeKey)
-            if not (type(routeData) == "table" and (APR:IsDelveRoute(routeKey) or routeData.temporary or routeData.hiddenFromSelection)) then
+            if self._routeTriggerBuild ~= build then return end
+            local excluded = type(routeData) == "table" and
+                (APR:IsDelveRoute(routeKey) or routeData.temporary or routeData.hiddenFromSelection)
+            if self._routeTriggerBuild ~= build then return end
+            if not excluded then
                 local stepList = routeData and routeData.steps
                 local skippedSteps = 0
                 if APRData and APRData[self.PlayerID] then
@@ -132,43 +221,22 @@ function APR:InitRouteTriggersSuggestion()
 
                 local startStepIndex = skippedSteps + 1
                 local triggers = collectFirstQuestTriggers(stepList, excludedQuestId, maxTriggersPerRoute, startStepIndex, APRYield)
-                if #triggers > 0 then
+                if self._routeTriggerBuild ~= build then return end
+                -- The route can be removed/replaced while collecting yielded
+                -- steps. Never register that stale definition as an external one.
+                if #triggers > 0 and self.RouteQuestStepList[routeKey] == routeData then
                     self:RegisterTemporaryRouteTrigger(routeKey, triggers, routeData and routeData.label)
                 end
             end
         end
+        if self._routeTriggerBuild ~= build then return end
         build.indexReady = true
         -- Quests can arrive before indexing finishes. Recheck current preferences
         -- and active-route state while replaying each distinct request in a slice.
-        for questID in pairs(build.pending) do
-            APRYield()
-            build.pending[questID] = nil
-            self:HandleTemporaryRouteTriggerQuestAccepted(questID)
-        end
+        replayRouteTriggerRequests(self, build)
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-    local function advance()
-        if self._routeTriggerBuild ~= build then return end
-        build.timer = nil
-        local started = debugprofilestop and debugprofilestop()
-        for operation = 1, 64 do
-            if operation > 1 and started and debugprofilestop() - started >= 1 then break end
-            local ok, message = APRResume(build.worker)
-            if not ok then
-                self._routeTriggerBuild = nil
-                self.RouteTriggersSuggestion.routes = {}
-                self.RouteTriggersSuggestion.byQuestID = {}
-                if geterrorhandler then geterrorhandler()(message) else error(message) end
-                return
-            end
-            if coroutine.status(build.worker) == "dead" then
-                self._routeTriggerBuild = nil
-                return
-            end
-        end
-        build.timer = C_Timer.NewTimer(0, advance)
-    end--[[APR_DIAG]]; advance = APRTrace("APR-Core/features/questing/RouteSuggestions.lua:149:advance#7", advance)--[[/APR_DIAG]]
-    build.timer = C_Timer.NewTimer(0, advance)
-end--[[APR_DIAG]]; APR.InitRouteTriggersSuggestion = APRTrace("APR-Core/features/questing/RouteSuggestions.lua:102:APR:InitRouteTriggersSuggestion#5", APR.InitRouteTriggersSuggestion)--[[/APR_DIAG]]
+    scheduleRouteTriggerBuild(self, build)
+end--[[APR_DIAG]]; APR.InitRouteTriggersSuggestion = APRTrace("APR-Core/features/questing/RouteSuggestions.lua:190:APR:InitRouteTriggersSuggestion#10", APR.InitRouteTriggersSuggestion)--[[/APR_DIAG]]
 
 local function getRouteDisplayName(routeKey, routeData)
     if routeData and routeData.label then
@@ -183,7 +251,7 @@ local function getRouteDisplayName(routeKey, routeData)
     end
 
     return routeKey
-end--[[APR_DIAG]]; getRouteDisplayName = APRTrace("APR-Core/features/questing/RouteSuggestions.lua:173:getRouteDisplayName#8", getRouteDisplayName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; getRouteDisplayName = APRTrace("APR-Core/features/questing/RouteSuggestions.lua:241:getRouteDisplayName#12", getRouteDisplayName)--[[/APR_DIAG]]
 
 function APR:ActivateRouteFromTemporaryTrigger(routeKey)
     if not routeKey then
@@ -202,60 +270,105 @@ function APR:ActivateRouteFromTemporaryTrigger(routeKey)
 
     self:UpdateMapId()
     self:UpdateStep()
-end--[[APR_DIAG]]; APR.ActivateRouteFromTemporaryTrigger = APRTrace("APR-Core/features/questing/RouteSuggestions.lua:188:APR:ActivateRouteFromTemporaryTrigger#9", APR.ActivateRouteFromTemporaryTrigger)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ActivateRouteFromTemporaryTrigger = APRTrace("APR-Core/features/questing/RouteSuggestions.lua:256:APR:ActivateRouteFromTemporaryTrigger#13", APR.ActivateRouteFromTemporaryTrigger)--[[/APR_DIAG]]
 
-function APR:HandleTemporaryRouteTriggerQuestAccepted(questID)
+canSuggestTemporaryRoute = --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteSuggestions.lua:275:callback#14", --[[/APR_DIAG]]function(self)
     local profile = self.GetSettingsProfile and self:GetSettingsProfile()
-    if profile and profile.enableAddon == false then return end
+    if profile and profile.enableAddon == false then return false end
     if APR.GetRouteSuggestionDontAsk and APR:GetRouteSuggestionDontAsk() then
-        return
+        return false
     end
 
     -- Don't suggest routes if the player already has an active route loaded.
     -- The quest being accepted is likely part of the current route's flow.
     if APR.ActiveRoute and APRCustomPath[self.PlayerID] and next(APRCustomPath[self.PlayerID]) then
-        return
+        return false
     end
+    return true
+end--[[APR_DIAG]])--[[/APR_DIAG]]
 
-    questID = tonumber(questID)
-    if not questID then return end
-    local build = self._routeTriggerBuild
-    if build and not build.indexReady then build.pending[questID] = true; return end
+publishTemporaryRouteTrigger = --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteSuggestions.lua:290:callback#15", --[[/APR_DIAG]]function(self, questID, build, snapshot)
+    if self._routeTriggerBuild ~= build or self.RouteTriggersSuggestion.routes ~= snapshot then return end
     local routeKeys = self.RouteTriggersSuggestion.byQuestID[questID]
     if not routeKeys or #routeKeys == 0 then
         return
     end
     table.sort(routeKeys)
 
-    for i = 1, #routeKeys do
-        if routeKeys[i] == APR.ActiveRoute then
-            return
-        end
-    end
-
     local routes = {}
     for i = 1, #routeKeys do
         local routeKey = routeKeys[i]
-        local routeData = self.RouteTriggersSuggestion.routes[routeKey]
-        table.insert(routes, {
-            key = routeKey,
-            label = getRouteDisplayName(routeKey, routeData),
-        })
+        local routeData = snapshot[routeKey]
+        local registeredDefinition = registeredRouteDefinitions[routeKey]
+        if routeData and (registeredDefinition == false or
+                (registeredDefinition and self.RouteQuestStepList[routeKey] == registeredDefinition)) then
+            if routeKey == APR.ActiveRoute then return end
+            table.insert(routes, {
+                key = routeKey,
+                label = getRouteDisplayName(routeKey, routeData),
+            })
+        end
     end
 
+    if #routes == 0 then return end
+    if self._routeTriggerBuild ~= build or self.RouteTriggersSuggestion.routes ~= snapshot then return end
     APR.questionDialog:CreateRouteTriggerPopup(
         L["ROUTE_SUGGESTION"],
         routes,
-        --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteSuggestions.lua:249:callback#11", --[[/APR_DIAG]]function(route)
+        --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteSuggestions.lua:318:callback#16", --[[/APR_DIAG]]function(route)
             if route and route.key then
                 APR:ActivateRouteFromTemporaryTrigger(route.key)
             end
         end--[[APR_DIAG]])--[[/APR_DIAG]],
         nil,
-        --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteSuggestions.lua:255:callback#12", --[[/APR_DIAG]]function()
+        --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteSuggestions.lua:324:callback#17", --[[/APR_DIAG]]function()
             if APR.SetRouteSuggestionDontAsk then
                 APR:SetRouteSuggestionDontAsk(true)
             end
         end--[[APR_DIAG]])--[[/APR_DIAG]]
     )
-end--[[APR_DIAG]]; APR.HandleTemporaryRouteTriggerQuestAccepted = APRTrace("APR-Core/features/questing/RouteSuggestions.lua:207:APR:HandleTemporaryRouteTriggerQuestAccepted#10", APR.HandleTemporaryRouteTriggerQuestAccepted)--[[/APR_DIAG]]
+end--[[APR_DIAG]])--[[/APR_DIAG]]
+
+function APR:HandleTemporaryRouteTriggerQuestAccepted(questID)
+    if not canSuggestTemporaryRoute(self) then return end
+    questID = tonumber(questID)
+    if not questID then return end
+    local build = self._routeTriggerBuild
+    -- Also queue arrivals during replay, including reentrant duplicate events.
+    local pending = self._routeTriggerPending or (build and build.pending)
+    if pending then
+        enqueueRouteTriggerRequest(pending, self._routeTriggerQueue, questID)
+        return
+    end
+
+    local routeKeys = self.RouteTriggersSuggestion.byQuestID[questID]
+    if not routeKeys or #routeKeys == 0 then return end
+    -- Reserve the request before display/UI callbacks can replace the index.
+    pending = {}
+    local queue = { first = 1, last = 0 }
+    enqueueRouteTriggerRequest(pending, queue, questID)
+    self._routeTriggerPending = pending
+    self._routeTriggerQueue = queue
+    local snapshot = self.RouteTriggersSuggestion.routes
+    local ok, message = APRPCall(publishTemporaryRouteTrigger, self, questID, nil, snapshot)
+    if not ok then
+        if not self._routeTriggerBuild and self.RouteTriggersSuggestion.routes == snapshot then
+            self:SuspendRouteTriggersSuggestion()
+        end
+        error(message, 0)
+    end
+    if self._routeTriggerBuild or self.RouteTriggersSuggestion.routes ~= snapshot then return end
+    pending[questID] = nil
+    queue[queue.first] = nil
+    queue.first = queue.first + 1
+    if queue.first > queue.last then
+        self._routeTriggerPending = nil
+        self._routeTriggerQueue = nil
+    else
+        -- Reentrant quest events join the same bounded replay as startup events.
+        build = { pending = pending, queue = queue, indexReady = true }
+        self._routeTriggerBuild = build
+        build.worker = coroutine.create(--[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteSuggestions.lua:371:callback#19", --[[/APR_DIAG]]function() replayRouteTriggerRequests(self, build) end--[[APR_DIAG]])--[[/APR_DIAG]])
+        scheduleRouteTriggerBuild(self, build)
+    end
+end--[[APR_DIAG]]; APR.HandleTemporaryRouteTriggerQuestAccepted = APRTrace("APR-Core/features/questing/RouteSuggestions.lua:332:APR:HandleTemporaryRouteTriggerQuestAccepted#18", APR.HandleTemporaryRouteTriggerQuestAccepted)--[[/APR_DIAG]]

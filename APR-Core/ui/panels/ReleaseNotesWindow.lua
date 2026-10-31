@@ -28,12 +28,13 @@ function Window:ScheduleShow()
     self.queued = true
     C_Timer.After(1, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ReleaseNotesWindow.lua:29:callback#5", --[[/APR_DIAG]]function()
         self.queued = nil
-        if self.pending then self:Show() end
+        if self.pending then self:Show(self.automaticPending) end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 end--[[APR_DIAG]]; Window.ScheduleShow = APRTrace("APR-Core/ui/panels/ReleaseNotesWindow.lua:26:Window:ScheduleShow#4", Window.ScheduleShow)--[[/APR_DIAG]]
 
 function Window:QueueShow()
     self.pending = true
+    self.automaticPending = true
     self:WatchStartup()
     self:ScheduleShow()
 end--[[APR_DIAG]]; Window.QueueShow = APRTrace("APR-Core/ui/panels/ReleaseNotesWindow.lua:35:Window:QueueShow#6", Window.QueueShow)--[[/APR_DIAG]]
@@ -110,13 +111,13 @@ function Window:Create()
             texture:SetPoint("TOPLEFT", banner, "TOPLEFT", x, -y)
             texture:SetSize(w, h)
             texture:SetTexCoord(left, right, first, last)
-        end--[[APR_DIAG]]; tile = APRTrace("APR-Core/ui/panels/ReleaseNotesWindow.lua:108:tile#9", tile)--[[/APR_DIAG]]
+        end--[[APR_DIAG]]; tile = APRTrace("APR-Core/ui/panels/ReleaseNotesWindow.lua:109:tile#9", tile)--[[/APR_DIAG]]
         tile("above", 0, 0, width, overhang, 0, 1, 0, top)
         tile("left", 0, overhang, radius, radius, 0, u, top, bottom)
         tile("center", radius, overhang, width - 2 * radius, radius, u, 1 - u, top, bottom)
         tile("right", width - radius, overhang, radius, radius, 1 - u, 1, top, bottom)
         tile("below", 0, overhang + radius, width, height - overhang - radius, 0, 1, bottom, 1)
-    end--[[APR_DIAG]]; sizeBanner = APRTrace("APR-Core/ui/panels/ReleaseNotesWindow.lua:94:sizeBanner#8", sizeBanner)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; sizeBanner = APRTrace("APR-Core/ui/panels/ReleaseNotesWindow.lua:95:sizeBanner#8", sizeBanner)--[[/APR_DIAG]]
     frame:HookScript("OnSizeChanged", sizeBanner)
     sizeBanner()
     frame.content:ClearAllPoints()
@@ -128,21 +129,31 @@ function Window:Create()
     self.reader.notes:SetPoint("TOPLEFT")
     self.reader.notes:SetPoint("BOTTOMRIGHT", 0, 46)
     local options = UI:Button(frame.content, string.format(L["UI_RELEASE_WINDOW_OPTIONS"], GAMEOPTIONS_MENU), 200,
-        --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ReleaseNotesWindow.lua:131:callback#10", --[[/APR_DIAG]]function() self:Hide(); APR.Workspace:Show("options", "changelog") end--[[APR_DIAG]])--[[/APR_DIAG]])
+        --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ReleaseNotesWindow.lua:132:callback#10", --[[/APR_DIAG]]function() self:Hide(); APR.Workspace:Show("options", "changelog") end--[[APR_DIAG]])--[[/APR_DIAG]])
     self.options = options
     options:SetPoint("BOTTOMLEFT")
-    local close = UI:Button(frame.content, CLOSE, 120, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ReleaseNotesWindow.lua:134:callback#11", --[[/APR_DIAG]]function() self:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    local close = UI:Button(frame.content, CLOSE, 120, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ReleaseNotesWindow.lua:135:callback#11", --[[/APR_DIAG]]function() self:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
     self.close = close
     close:SetPoint("BOTTOMRIGHT")
-    frame:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ReleaseNotesWindow.lua:137:callback#12", --[[/APR_DIAG]]function()
+    frame:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ReleaseNotesWindow.lua:138:callback#12", --[[/APR_DIAG]]function()
         if APR.LayoutEditor and APR.LayoutEditor.QueueOnboarding then APR.LayoutEditor.QueueOnboarding() end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; Window.Create = APRTrace("APR-Core/ui/panels/ReleaseNotesWindow.lua:41:Window:Create#7", Window.Create)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Window.Create = APRTrace("APR-Core/ui/panels/ReleaseNotesWindow.lua:42:Window:Create#7", Window.Create)--[[/APR_DIAG]]
 
-function Window:Show()
+function Window:Show(automatic)
+    if automatic then
+        local profile = APR.settings and APR.settings.profile
+        if not profile or not profile.showChangeLog or profile.lastReleaseNotesVersion == APR.version then
+            self.pending, self.automaticPending = nil, nil
+            if self.watcher then self.watcher:UnregisterAllEvents() end
+            if APR.LayoutEditor and APR.LayoutEditor.QueueOnboarding then APR.LayoutEditor.QueueOnboarding() end
+            return false
+        end
+    end
     if InCombatLockdown() or (IsLoggedIn and not IsLoggedIn()) or not UIParent:IsShown()
         or (APR.IsPetBattleActive and APR:IsPetBattleActive()) then
         self.pending = true
+        self.automaticPending = automatic and true or nil
         self:WatchStartup()
         return false
     end
@@ -150,14 +161,14 @@ function Window:Show()
     self.reader:RefreshNotes()
     self.frame:Show()
     self.frame:Raise()
-    self.pending = nil
+    self.pending, self.automaticPending = nil, nil
     APR.settings.profile.lastReleaseNotesVersion = APR.version
     if self.watcher then self.watcher:UnregisterAllEvents() end
     return true
-end--[[APR_DIAG]]; Window.Show = APRTrace("APR-Core/ui/panels/ReleaseNotesWindow.lua:142:Window:Show#13", Window.Show)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Window.Show = APRTrace("APR-Core/ui/panels/ReleaseNotesWindow.lua:143:Window:Show#13", Window.Show)--[[/APR_DIAG]]
 
 function Window:Hide()
-    self.pending = nil
+    self.pending, self.automaticPending = nil, nil
     if self.watcher then self.watcher:UnregisterAllEvents() end
     if self.frame then self.frame:Hide() end
-end--[[APR_DIAG]]; Window.Hide = APRTrace("APR-Core/ui/panels/ReleaseNotesWindow.lua:159:Window:Hide#14", Window.Hide)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Window.Hide = APRTrace("APR-Core/ui/panels/ReleaseNotesWindow.lua:170:Window:Hide#14", Window.Hide)--[[/APR_DIAG]]

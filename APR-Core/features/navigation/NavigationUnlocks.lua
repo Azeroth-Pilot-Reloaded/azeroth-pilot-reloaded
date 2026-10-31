@@ -5,7 +5,7 @@ local APRResume = APRInstrumentation and APRInstrumentation.Resume or coroutine.
 local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Host glue only. LibAPRNavigation owns the catalogue and action progression.
 -- The authored route and its saved cursor never change during an unlock detour.
-APR.NavigationUnlockRevision = 3
+APR.NavigationUnlockRevision = 4
 local function Player()
     return APRData and APR.PlayerID and APRData[APR.PlayerID]
 end--[[APR_DIAG]]; Player = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:9:Player#1", Player)--[[/APR_DIAG]]
@@ -18,10 +18,48 @@ local function Save(self)
     end
 end--[[APR_DIAG]]; Save = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:13:Save#2", Save)--[[/APR_DIAG]]
 
+-- GetBlockers returns acyclic declarative snapshots. Compare their values so
+-- unchanged waits do not feed Notify's queued step render back into this host.
+local function SameValues(left, right)
+    if left == right then return true end
+    if type(left) ~= "table" or type(right) ~= "table" then return false end
+    for key, value in pairs(right) do
+        -- Each recursive call is instrumented; compare scalar leaves here.
+        local previous = left[key]
+        if previous ~= value and (type(value) ~= "table" or not SameValues(previous, value)) then return false end
+    end
+    for key in pairs(left) do
+        if right[key] == nil then return false end
+    end
+    return true
+end--[[APR_DIAG]]; SameValues = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:23:SameValues#3", SameValues)--[[/APR_DIAG]]
+
+local function SameAction(state, action)
+    local signature, step = state.signature, state.step
+    if not signature or not step or signature.kind ~= action.kind or signature.questID ~= action.questID
+        or signature.sourceID ~= action.sourceID or signature.sourceStep ~= action.sourceStep then return false end
+    local use = action.useActions and #action.useActions == 1 and action.useActions[1] or nil
+    if signature.useType ~= (use and use.type) or signature.useID ~= (use and use.id) then return false end
+    local coord, target = step.Coord, action.target
+    if target then
+        if not coord or coord.x ~= target.y or coord.y ~= target.x or coord.z ~= target.z
+            or coord.mapID ~= target.uiMapID or coord.instanceID ~= target.instanceID
+            or coord.accessKey ~= target.accessKey or coord.noAutoconnect ~= target.noAutoconnect
+            or coord.floor ~= target.floor or coord.phaseAgnostic ~= target.phaseAgnostic
+            or coord.isInstance ~= target.isInstance or coord.region ~= target.region then return false end
+    elseif coord then return false end
+    local indices, previous = action.objectiveIndices, signature.objectiveIndices
+    if (indices and #indices or 0) ~= #previous then return false end
+    for index = 1, #previous do
+        if previous[index] ~= indices[index] then return false end
+    end
+    return true
+end--[[APR_DIAG]]; SameAction = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:37:SameAction#4", SameAction)--[[/APR_DIAG]]
+
 function APR:CancelNavigationUnlockSearch()
     local state = self._navigationUnlock
     if state and state.timer then state.timer:Cancel(); state.timer = nil end
-end--[[APR_DIAG]]; APR.CancelNavigationUnlockSearch = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:21:APR:CancelNavigationUnlockSearch#3", APR.CancelNavigationUnlockSearch)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CancelNavigationUnlockSearch = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:59:APR:CancelNavigationUnlockSearch#5", APR.CancelNavigationUnlockSearch)--[[/APR_DIAG]]
 
 function APR:CancelNavigationUnlock()
     self:CancelNavigationUnlockSearch()
@@ -34,11 +72,11 @@ function APR:CancelNavigationUnlock()
     self._navigationUnlock = nil
     if self.navigation then self.navigation.unlockMissingText = nil end
     Save(self)
-end--[[APR_DIAG]]; APR.CancelNavigationUnlock = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:26:APR:CancelNavigationUnlock#4", APR.CancelNavigationUnlock)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CancelNavigationUnlock = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:64:APR:CancelNavigationUnlock#6", APR.CancelNavigationUnlock)--[[/APR_DIAG]]
 
 function APR:GetNavigationUnlockStep()
     return self._navigationUnlock and self._navigationUnlock.step
-end--[[APR_DIAG]]; APR.GetNavigationUnlockStep = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:39:APR:GetNavigationUnlockStep#5", APR.GetNavigationUnlockStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetNavigationUnlockStep = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:77:APR:GetNavigationUnlockStep#7", APR.GetNavigationUnlockStep)--[[/APR_DIAG]]
 
 function APR:StartNavigationUnlock(blockers, context)
     local data, player = self.NavigationData, Player()
@@ -79,7 +117,7 @@ function APR:StartNavigationUnlock(blockers, context)
     self.navigation.dirty = true
     self.navigation:RequestUpdate()
     return true
-end--[[APR_DIAG]]; APR.StartNavigationUnlock = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:43:APR:StartNavigationUnlock#6", APR.StartNavigationUnlock)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.StartNavigationUnlock = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:81:APR:StartNavigationUnlock#8", APR.StartNavigationUnlock)--[[/APR_DIAG]]
 
 function APR:RestoreNavigationUnlockRoute()
     local current = self._navigationUnlock
@@ -101,7 +139,7 @@ function APR:RestoreNavigationUnlockRoute()
     self._navigationUnlock = { context = context,
         session = data:RestoreUnlockSession(saved.library, { clock = debugprofilestop }) }
     return true
-end--[[APR_DIAG]]; APR.RestoreNavigationUnlockRoute = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:84:APR:RestoreNavigationUnlockRoute#7", APR.RestoreNavigationUnlockRoute)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RestoreNavigationUnlockRoute = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:122:APR:RestoreNavigationUnlockRoute#9", APR.RestoreNavigationUnlockRoute)--[[/APR_DIAG]]
 
 function APR:RefreshNavigationUnlockRoute()
     local state = self._navigationUnlock
@@ -116,7 +154,7 @@ function APR:RefreshNavigationUnlockRoute()
     end
     if status == "planning" then
         if not state.timer then
-            state.timer = C_Timer.NewTimer(0, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:119:callback#9", --[[/APR_DIAG]]function()
+            state.timer = C_Timer.NewTimer(0, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:157:callback#11", --[[/APR_DIAG]]function()
                 state.timer = nil
                 -- Resume on the next frame. RequestUpdate adds a 50ms debounce
                 -- intended for event bursts, which compounds on every slice.
@@ -128,35 +166,45 @@ function APR:RefreshNavigationUnlockRoute()
     local instruction = action and action.positionOptional == true
         and (status == "action" or (status == "waiting_data" and action.reason == "tracker_not_observed"))
     if (status ~= "action" and not instruction) or not action or (not action.target and not instruction) then
-        state.step = nil
-        nav:Cancel("search_failed")
-        nav.state = status == "waiting_data" and "waiting_data" or "no_path"
-        nav.context = state.context
-        nav.blockers = state.session:GetBlockers()
-        nav.unlockMissingText = action and action.label or self.NavigationData:GetText("NAVIGATION_UNLOCK_missing")
+        local hadStep = state.step ~= nil
+        state.step, state.signature = nil, nil
+        local waitingState = status == "waiting_data" and "waiting_data" or "no_path"
+        local blockers = state.session:GetBlockers()
+        local text = action and action.label or self.NavigationData:GetText("NAVIGATION_UNLOCK_missing")
+        local changed = hadStep or nav.state ~= waitingState or nav.context ~= state.context
+            or nav.unlockMissingText ~= text or not SameValues(nav.blockers, blockers)
+        if changed then
+            nav:Cancel("search_failed")
+            nav.state, nav.context, nav.blockers, nav.unlockMissingText = waitingState, state.context, blockers, text
+        end
         Save(self)
-        nav:Notify()
+        if changed then nav:Notify() else nav:Render() end
         return true
     end
     local target = action.target
-    local signature = table.concat({ action.kind, action.questID or 0, action.sourceID or 0, action.sourceStep or 0,
-        target and target.instanceID or 0, target and target.uiMapID or 0, target and target.x or 0, target and target.y or 0,
-        table.concat(action.objectiveIndices or {}, ",") }, ":")
-    if state.signature ~= signature then
-        state.signature = signature
+    if not SameAction(state, action) then
+        local indices = {}
+        if action.objectiveIndices then
+            for index, value in ipairs(action.objectiveIndices) do indices[index] = value end
+        end
+        local use = action.useActions and #action.useActions == 1 and action.useActions[1] or nil
+        state.signature = { kind = action.kind, questID = action.questID, sourceID = action.sourceID,
+            sourceStep = action.sourceStep, objectiveIndices = indices, useType = use and use.type, useID = use and use.id }
         state.step = { _navigationUnlock = true, Zone = target and target.uiMapID, label = action.label,
             NoArrow = target == nil,
             Coord = target and { x = target.y, y = target.x, z = target.z, mapID = target.uiMapID, instanceID = target.instanceID,
                 accessKey = target.accessKey, noAutoconnect = target.noAutoconnect, floor = target.floor,
-                phaseAgnostic = target.phaseAgnostic },
+                phaseAgnostic = target.phaseAgnostic, isInstance = target.isInstance, region = target.region },
             unlockAction = action }
         nav.dirty, nav.unlockMissingText = true, nil
     elseif state.step then
         local changed = state.step.label ~= action.label
         state.step.label, state.step.unlockAction = action.label, action
-        local row = nav:GetActiveStep()
-        if changed and row and row.kind == "unlock" then row.label = action.label; nav:Notify() end
+        if changed then
+            local row = nav:GetActiveStep()
+            if row and row.kind == "unlock" then row.label = action.label; nav:Notify() end
+        end
     end
     Save(self)
     return false
-end--[[APR_DIAG]]; APR.RefreshNavigationUnlockRoute = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:106:APR:RefreshNavigationUnlockRoute#8", APR.RefreshNavigationUnlockRoute)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RefreshNavigationUnlockRoute = APRTrace("APR-Core/features/navigation/NavigationUnlocks.lua:144:APR:RefreshNavigationUnlockRoute#10", APR.RefreshNavigationUnlockRoute)--[[/APR_DIAG]]

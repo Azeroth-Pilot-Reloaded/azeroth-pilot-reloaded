@@ -122,17 +122,20 @@ function Workspace:Show(id, section)
         controller:Create(self.frame.content)
         self.pages[id] = controller.frame
     end
+    if section and controller.Select then controller.pendingWorkspaceSection = section end
     self.active = id
     for key, page in pairs(self.pages) do page:SetShown(key == id) end
     self.frame.header.Text:SetText(APR.title .. "  ·  " .. definition.label)
     self:LayoutTabs()
     self.frame:Show()
     self.frame:Raise()
-    if section and controller.Select then controller:Select(section)
+    if section and controller.Select then
+        if controller.pendingWorkspaceSection then controller:Select(section) end
+        controller.pendingWorkspaceSection = nil
     elseif controller.Refresh and controller.refreshSerial == refreshSerial then controller:Refresh() end
     if APR.Gamepad then APR.Gamepad:Refresh(self.frame) end
 end--[[APR_DIAG]]; Workspace.Show = APRTrace("APR-Core/ui/panels/Workspace.lua:103:Workspace:Show#11", Workspace.Show)--[[/APR_DIAG]]
 
 function Workspace:Hide()
     if self.frame then self.frame:Hide() end
-end--[[APR_DIAG]]; Workspace.Hide = APRTrace("APR-Core/ui/panels/Workspace.lua:136:Workspace:Hide#12", Workspace.Hide)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Workspace.Hide = APRTrace("APR-Core/ui/panels/Workspace.lua:139:Workspace:Hide#12", Workspace.Hide)--[[/APR_DIAG]]

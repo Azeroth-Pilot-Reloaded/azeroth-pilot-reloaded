@@ -50,22 +50,26 @@ function Editor:IsDirty()
     return false
 end--[[APR_DIAG]]; Editor.IsDirty = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:43:Editor:IsDirty#5", Editor.IsDirty)--[[/APR_DIAG]]
 
+local function RefreshSelector(editor, widget)
+    if not widget then return end
+    local path = widget.GetUserData and widget:GetUserData("path")
+    if path and path[#path] == "uiSkin" and widget.SetValue then widget:SetValue(editor:GetDraft().theme) end
+    local children = widget.children
+    if children then
+        for _, child in ipairs(children) do RefreshSelector(editor, child) end
+    end
+end--[[APR_DIAG]]; RefreshSelector = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:53:RefreshSelector#6", RefreshSelector)--[[/APR_DIAG]]
+
 function Editor:UpdatePreviews()
     for widget in pairs(self.previews) do widget:Refresh() end
     for widget in pairs(self.accents) do widget:RefreshChoice() end
     -- Update the selector in place: rebuilding AceConfig would close the color picker.
-    local function refreshSelector(widget)
-        if not widget then return end
-        local path = widget.GetUserData and widget:GetUserData("path")
-        if path and path[#path] == "uiSkin" and widget.SetValue then widget:SetValue(self:GetDraft().theme) end
-        for _, child in ipairs(widget.children or {}) do refreshSelector(child) end
-    end--[[APR_DIAG]]; refreshSelector = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:57:refreshSelector#7", refreshSelector)--[[/APR_DIAG]]
-    refreshSelector(APR.OptionsPanel and APR.OptionsPanel.host)
+    RefreshSelector(self, APR.OptionsPanel and APR.OptionsPanel.host)
     -- Color changes do not rebuild AceConfig's page, and confirmation may be
     -- suppressed when the picker already holds the selected RGB. Refresh the
     -- existing footer from the same draft without releasing the open picker.
     if APR.OptionsPanel and APR.OptionsPanel.RefreshActions then APR.OptionsPanel:RefreshActions() end
-end--[[APR_DIAG]]; Editor.UpdatePreviews = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:53:Editor:UpdatePreviews#6", Editor.UpdatePreviews)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Editor.UpdatePreviews = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:63:Editor:UpdatePreviews#7", Editor.UpdatePreviews)--[[/APR_DIAG]]
 
 function Editor:SetTheme(name)
     local draft = self:GetDraft()
@@ -77,7 +81,7 @@ function Editor:SetTheme(name)
         self.draft = Copy(nil, name)
     end
     self:UpdatePreviews()
-end--[[APR_DIAG]]; Editor.SetTheme = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:70:Editor:SetTheme#8", Editor.SetTheme)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Editor.SetTheme = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:74:Editor:SetTheme#8", Editor.SetTheme)--[[/APR_DIAG]]
 
 function Editor:Set(key, value)
     local draft = self:GetDraft()
@@ -88,19 +92,19 @@ function Editor:Set(key, value)
     end
     draft[key] = value
     self:UpdatePreviews()
-end--[[APR_DIAG]]; Editor.Set = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:82:Editor:Set#9", Editor.Set)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Editor.Set = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:86:Editor:Set#9", Editor.Set)--[[/APR_DIAG]]
 
 function Editor:SetColor(r, g, b)
     local draft = self:GetDraft()
     if draft.color[1] == r and draft.color[2] == g and draft.color[3] == b and not draft.accentClassColor then return end
     draft.customColor, draft.accentClassColor = true, false
     self:Set("color", {math.max(0, math.min(1, r)), math.max(0, math.min(1, g)), math.max(0, math.min(1, b)), 1})
-end--[[APR_DIAG]]; Editor.SetColor = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:93:Editor:SetColor#10", Editor.SetColor)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Editor.SetColor = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:97:Editor:SetColor#10", Editor.SetColor)--[[/APR_DIAG]]
 
 function Editor:Discard()
     self.draft, self.profile, self.customDraft = nil, nil, nil
     self:UpdatePreviews()
-end--[[APR_DIAG]]; Editor.Discard = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:100:Editor:Discard#11", Editor.Discard)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Editor.Discard = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:104:Editor:Discard#11", Editor.Discard)--[[/APR_DIAG]]
 
 function Editor:Apply(onApplied)
     if InCombatLockdown() then return false end
@@ -121,7 +125,7 @@ function Editor:Apply(onApplied)
         self.draft = Copy(profile.uiThemeCustomization, pending.theme)
         if onApplied then onApplied() end
         return true
-    end--[[APR_DIAG]]; publish = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:111:publish#13", publish)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; publish = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:115:publish#13", publish)--[[/APR_DIAG]]
     if previous ~= draft.theme and not (oldTheme and newTheme and oldTheme.style == "modern" and newTheme.style == "modern") then
         APR:RequestReload(publish)
     elseif publish() then
@@ -131,36 +135,36 @@ function Editor:Apply(onApplied)
         self:UpdatePreviews()
     end
     return true
-end--[[APR_DIAG]]; Editor.Apply = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:105:Editor:Apply#12", Editor.Apply)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Editor.Apply = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:109:Editor:Apply#12", Editor.Apply)--[[/APR_DIAG]]
 
 function Editor:GetOptions()
-    local disabled = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:137:callback#15", --[[/APR_DIAG]]function() return not self:IsModern() end--[[APR_DIAG]])--[[/APR_DIAG]]
+    local disabled = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:141:callback#15", --[[/APR_DIAG]]function() return not self:IsModern() end--[[APR_DIAG]])--[[/APR_DIAG]]
     return {
         themePreview = {type = "description", name = L["UI_THEME_PREVIEW"], dialogControl = "APRThemePreview", width = "full", order = 2,
-            hidden = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:140:callback#16", --[[/APR_DIAG]]function() return APR.OptionsPanel and APR.OptionsPanel.themePreviewActive or false end--[[APR_DIAG]])--[[/APR_DIAG]]},
+            hidden = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:144:callback#16", --[[/APR_DIAG]]function() return APR.OptionsPanel and APR.OptionsPanel.themePreviewActive or false end--[[APR_DIAG]])--[[/APR_DIAG]]},
         themePreviewHint = {type = "description", name = L["UI_THEME_PREVIEW_HINT"], dialogControl = "APRThemeNotice", width = "full", order = 3},
         themeCustomizationHeader = {type = "header", name = HOUSING_ITEM_TOAST_TYPE_CUSTOMIZATION or L["UI_THEME_CUSTOMIZATION"], order = 3.5},
         themeClassColor = {type = "toggle", name = L["UI_THEME_CLASS_COLOR"], desc = L["UI_THEME_CLASS_COLOR_DESC"], order = 3.6,
-            disabled = disabled, get = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:144:callback#17", --[[/APR_DIAG]]function() return self:GetDraft().classColor end--[[APR_DIAG]])--[[/APR_DIAG]],
-            set = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:145:callback#18", --[[/APR_DIAG]]function(_, value) self:Set("classColor", value) end--[[APR_DIAG]])--[[/APR_DIAG]]},
+            disabled = disabled, get = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:148:callback#17", --[[/APR_DIAG]]function() return self:GetDraft().classColor end--[[APR_DIAG]])--[[/APR_DIAG]],
+            set = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:149:callback#18", --[[/APR_DIAG]]function(_, value) self:Set("classColor", value) end--[[APR_DIAG]])--[[/APR_DIAG]]},
         themeAccent = {type = "color", name = L["UI_THEME_ACCENT"], order = 5, hasAlpha = false,
             dialogControl = "APRThemeAccent",
-            disabled = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:148:callback#19", --[[/APR_DIAG]]function() return disabled() or self:GetDraft().classColor end--[[APR_DIAG]])--[[/APR_DIAG]],
-            get = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:149:callback#20", --[[/APR_DIAG]]function() return unpack(self:GetDraft().color) end--[[APR_DIAG]])--[[/APR_DIAG]],
-            set = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:150:callback#21", --[[/APR_DIAG]]function(_, r, g, b) self:SetColor(r, g, b) end--[[APR_DIAG]])--[[/APR_DIAG]]},
+            disabled = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:152:callback#19", --[[/APR_DIAG]]function() return disabled() or self:GetDraft().classColor end--[[APR_DIAG]])--[[/APR_DIAG]],
+            get = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:153:callback#20", --[[/APR_DIAG]]function() return unpack(self:GetDraft().color) end--[[APR_DIAG]])--[[/APR_DIAG]],
+            set = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:154:callback#21", --[[/APR_DIAG]]function(_, r, g, b) self:SetColor(r, g, b) end--[[APR_DIAG]])--[[/APR_DIAG]]},
         themeRounded = {type = "toggle", name = L["UI_THEME_ROUNDED"], order = 7, disabled = disabled,
-            get = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:152:callback#22", --[[/APR_DIAG]]function() return self:GetDraft().rounded end--[[APR_DIAG]])--[[/APR_DIAG]], set = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:152:callback#23", --[[/APR_DIAG]]function(_, value) self:Set("rounded", value) end--[[APR_DIAG]])--[[/APR_DIAG]]},
+            get = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:156:callback#22", --[[/APR_DIAG]]function() return self:GetDraft().rounded end--[[APR_DIAG]])--[[/APR_DIAG]], set = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:156:callback#23", --[[/APR_DIAG]]function(_, value) self:Set("rounded", value) end--[[APR_DIAG]])--[[/APR_DIAG]]},
         themeRadius = {type = "range", name = L["UI_THEME_RADIUS"], desc = L["UI_THEME_RADIUS_DESC"], order = 8, min = 0, max = 16, step = 1,
-            disabled = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:154:callback#24", --[[/APR_DIAG]]function() return disabled() or not self:GetDraft().rounded end--[[APR_DIAG]])--[[/APR_DIAG]],
-            get = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:155:callback#25", --[[/APR_DIAG]]function() return self:GetDraft().radius end--[[APR_DIAG]])--[[/APR_DIAG]], set = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:155:callback#26", --[[/APR_DIAG]]function(_, value) self:Set("radius", value) end--[[APR_DIAG]])--[[/APR_DIAG]]},
-        themeDiscard = {type = "execute", name = CANCEL, order = 10, disabled = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:156:callback#27", --[[/APR_DIAG]]function() return not self:IsDirty() end--[[APR_DIAG]])--[[/APR_DIAG]], func = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:156:callback#28", --[[/APR_DIAG]]function() self:Discard() end--[[APR_DIAG]])--[[/APR_DIAG]]},
+            disabled = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:158:callback#24", --[[/APR_DIAG]]function() return disabled() or not self:GetDraft().rounded end--[[APR_DIAG]])--[[/APR_DIAG]],
+            get = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:159:callback#25", --[[/APR_DIAG]]function() return self:GetDraft().radius end--[[APR_DIAG]])--[[/APR_DIAG]], set = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:159:callback#26", --[[/APR_DIAG]]function(_, value) self:Set("radius", value) end--[[APR_DIAG]])--[[/APR_DIAG]]},
+        themeDiscard = {type = "execute", name = CANCEL, order = 10, disabled = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:160:callback#27", --[[/APR_DIAG]]function() return not self:IsDirty() end--[[APR_DIAG]])--[[/APR_DIAG]], func = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:160:callback#28", --[[/APR_DIAG]]function() self:Discard() end--[[APR_DIAG]])--[[/APR_DIAG]]},
         themeApply = {type = "execute", name = APPLY, desc = L["UI_THEME_APPLY_DESC"], order = 11,
-            disabled = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:158:callback#29", --[[/APR_DIAG]]function() return InCombatLockdown() or not self:IsDirty() end--[[APR_DIAG]])--[[/APR_DIAG]], func = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:158:callback#30", --[[/APR_DIAG]]function() self:Apply() end--[[APR_DIAG]])--[[/APR_DIAG]]},
+            disabled = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:162:callback#29", --[[/APR_DIAG]]function() return InCombatLockdown() or not self:IsDirty() end--[[APR_DIAG]])--[[/APR_DIAG]], func = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:162:callback#30", --[[/APR_DIAG]]function() self:Apply() end--[[APR_DIAG]])--[[/APR_DIAG]]},
     }
-end--[[APR_DIAG]]; Editor.GetOptions = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:136:Editor:GetOptions#14", Editor.GetOptions)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Editor.GetOptions = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:140:Editor:GetOptions#14", Editor.GetOptions)--[[/APR_DIAG]]
 
 function Editor:InstallPreviewWidget(gui)
-    gui:RegisterWidgetType("APRThemeAccent", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:163:callback#32", --[[/APR_DIAG]]function()
+    gui:RegisterWidgetType("APRThemeAccent", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:167:callback#32", --[[/APR_DIAG]]function()
         -- Reuse AceGUI's native picker, including Retail/Classic opacity and callbacks.
         local widget = gui.WidgetRegistry.ColorPicker()
         widget.type = "APRThemeAccent"
@@ -189,21 +193,21 @@ function Editor:InstallPreviewWidget(gui)
             classButton:SetAlpha(self.disabled and 0.45 or 1)
             classMark:SetShown(draft.accentClassColor or draft.classColor)
             themeMark:SetShown(not draft.accentClassColor and not draft.classColor)
-        end--[[APR_DIAG]]; widget.RefreshChoice = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:184:widget:RefreshChoice#33", widget.RefreshChoice)--[[/APR_DIAG]]
-        classButton:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:193:callback#34", --[[/APR_DIAG]]function()
+        end--[[APR_DIAG]]; widget.RefreshChoice = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:188:widget:RefreshChoice#33", widget.RefreshChoice)--[[/APR_DIAG]]
+        classButton:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:197:callback#34", --[[/APR_DIAG]]function()
             if widget.disabled then return end
             if ColorPickerFrame then ColorPickerFrame:Hide() end
             Editor:Set("accentClassColor", true)
         end--[[APR_DIAG]])--[[/APR_DIAG]])
         local click = frame:GetScript("OnClick")
-        frame:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:199:callback#35", --[[/APR_DIAG]]function(button)
+        frame:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:203:callback#35", --[[/APR_DIAG]]function(button)
             if widget.disabled then return end
             local draft = Copy(Editor:GetDraft(), Editor:GetDraft().theme)
             local function restore()
                 Editor.draft = Copy(draft, draft.theme)
                 widget:SetColor(unpack(draft.color))
                 Editor:UpdatePreviews()
-            end--[[APR_DIAG]]; restore = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:202:restore#36", restore)--[[/APR_DIAG]]
+            end--[[APR_DIAG]]; restore = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:206:restore#36", restore)--[[/APR_DIAG]]
             if ColorPickerFrame.SetupColorPickerAndShow then
                 ColorPickerFrame:Hide()
                 ColorPickerFrame:SetFrameStrata("FULLSCREEN_DIALOG")
@@ -211,7 +215,7 @@ function Editor:InstallPreviewWidget(gui)
                 ColorPickerFrame:SetClampedToScreen(true)
                 ColorPickerFrame:SetupColorPickerAndShow({
                     r = widget.r, g = widget.g, b = widget.b, hasOpacity = false,
-                    swatchFunc = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:214:callback#37", --[[/APR_DIAG]]function()
+                    swatchFunc = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:218:callback#37", --[[/APR_DIAG]]function()
                         local r, g, b = ColorPickerFrame:GetColorRGB()
                         if widget.r == r and widget.g == g and widget.b == b then return end
                         widget:SetColor(r, g, b, 1)
@@ -229,17 +233,17 @@ function Editor:InstallPreviewWidget(gui)
         local acquire, release, disable = widget.OnAcquire, widget.OnRelease, widget.SetDisabled
         function widget:OnAcquire()
             acquire(self); Editor.accents[self] = true; self:RefreshChoice()
-        end--[[APR_DIAG]]; widget.OnAcquire = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:230:widget:OnAcquire#38", widget.OnAcquire)--[[/APR_DIAG]]
+        end--[[APR_DIAG]]; widget.OnAcquire = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:234:widget:OnAcquire#38", widget.OnAcquire)--[[/APR_DIAG]]
         function widget:OnRelease()
             Editor.accents[self] = nil
             if release then release(self) end
-        end--[[APR_DIAG]]; widget.OnRelease = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:233:widget:OnRelease#39", widget.OnRelease)--[[/APR_DIAG]]
-        function widget:SetDisabled(value) disable(self, value); self:RefreshChoice() end--[[APR_DIAG]]; widget.SetDisabled = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:237:widget:SetDisabled#40", widget.SetDisabled)--[[/APR_DIAG]]
+        end--[[APR_DIAG]]; widget.OnRelease = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:237:widget:OnRelease#39", widget.OnRelease)--[[/APR_DIAG]]
+        function widget:SetDisabled(value) disable(self, value); self:RefreshChoice() end--[[APR_DIAG]]; widget.SetDisabled = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:241:widget:SetDisabled#40", widget.SetDisabled)--[[/APR_DIAG]]
         widget.classButton, widget.themeMark, widget.classMark = classButton, themeMark, classMark
         return widget
     end--[[APR_DIAG]])--[[/APR_DIAG]], 1)
     -- Keep the preview explanation clear of the selector's divider and the next section.
-    gui:RegisterWidgetType("APRThemeNotice", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:242:callback#41", --[[/APR_DIAG]]function()
+    gui:RegisterWidgetType("APRThemeNotice", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:246:callback#41", --[[/APR_DIAG]]function()
         local frame = CreateFrame("Frame", nil, UIParent)
         local widget = {type = "APRThemeNotice", frame = frame}
         widget.label = APR.UI:Label(frame, "", 12, "base")
@@ -249,16 +253,16 @@ function Editor:InstallPreviewWidget(gui)
         function widget:Resize()
             self.label:SetWidth(math.max(1, self.frame:GetWidth() - 24))
             self:SetHeight(math.max(18, self.label:GetStringHeight()) + 40)
-        end--[[APR_DIAG]]; widget.Resize = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:249:widget:Resize#42", widget.Resize)--[[/APR_DIAG]]
-        function widget:SetText(text) self.label:SetText(text or ""); self:Resize() end--[[APR_DIAG]]; widget.SetText = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:253:widget:SetText#43", widget.SetText)--[[/APR_DIAG]]
-        function widget:SetFontObject() self:Resize() end--[[APR_DIAG]]; widget.SetFontObject = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:254:widget:SetFontObject#44", widget.SetFontObject)--[[/APR_DIAG]]
-        function widget:SetImage() end--[[APR_DIAG]]; widget.SetImage = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:255:widget:SetImage#45", widget.SetImage)--[[/APR_DIAG]]
-        function widget:SetImageSize() end--[[APR_DIAG]]; widget.SetImageSize = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:256:widget:SetImageSize#46", widget.SetImageSize)--[[/APR_DIAG]]
-        function widget:OnWidthSet() self:Resize() end--[[APR_DIAG]]; widget.OnWidthSet = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:257:widget:OnWidthSet#47", widget.OnWidthSet)--[[/APR_DIAG]]
-        function widget:OnAcquire() self:SetWidth(300); self:SetText("") end--[[APR_DIAG]]; widget.OnAcquire = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:258:widget:OnAcquire#48", widget.OnAcquire)--[[/APR_DIAG]]
+        end--[[APR_DIAG]]; widget.Resize = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:253:widget:Resize#42", widget.Resize)--[[/APR_DIAG]]
+        function widget:SetText(text) self.label:SetText(text or ""); self:Resize() end--[[APR_DIAG]]; widget.SetText = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:257:widget:SetText#43", widget.SetText)--[[/APR_DIAG]]
+        function widget:SetFontObject() self:Resize() end--[[APR_DIAG]]; widget.SetFontObject = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:258:widget:SetFontObject#44", widget.SetFontObject)--[[/APR_DIAG]]
+        function widget:SetImage() end--[[APR_DIAG]]; widget.SetImage = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:259:widget:SetImage#45", widget.SetImage)--[[/APR_DIAG]]
+        function widget:SetImageSize() end--[[APR_DIAG]]; widget.SetImageSize = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:260:widget:SetImageSize#46", widget.SetImageSize)--[[/APR_DIAG]]
+        function widget:OnWidthSet() self:Resize() end--[[APR_DIAG]]; widget.OnWidthSet = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:261:widget:OnWidthSet#47", widget.OnWidthSet)--[[/APR_DIAG]]
+        function widget:OnAcquire() self:SetWidth(300); self:SetText("") end--[[APR_DIAG]]; widget.OnAcquire = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:262:widget:OnAcquire#48", widget.OnAcquire)--[[/APR_DIAG]]
         return gui:RegisterAsWidget(widget)
     end--[[APR_DIAG]])--[[/APR_DIAG]], 1)
-    gui:RegisterWidgetType("APRThemePreview", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:261:callback#49", --[[/APR_DIAG]]function()
+    gui:RegisterWidgetType("APRThemePreview", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:265:callback#49", --[[/APR_DIAG]]function()
         local frame = CreateFrame("Frame", nil, UIParent)
         local widget = {type = "APRThemePreview", frame = frame}
         local title = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
@@ -299,26 +303,26 @@ function Editor:InstallPreviewWidget(gui)
             caption:SetTextColor(unpack(accent)); label:SetTextColor(unpack(accent))
             local barColor = draft.accentClassColor and APR:GetPlayerClassColor() or theme.accent
             step:SetTextColor(unpack(base)); bar:SetStatusBarColor(unpack(barColor))
-        end--[[APR_DIAG]]; widget.Refresh = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:287:widget:Refresh#50", widget.Refresh)--[[/APR_DIAG]]
-        function widget:SetText() self:Refresh() end--[[APR_DIAG]]; widget.SetText = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:303:widget:SetText#51", widget.SetText)--[[/APR_DIAG]]
-        function widget:SetFontObject() end--[[APR_DIAG]]; widget.SetFontObject = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:304:widget:SetFontObject#52", widget.SetFontObject)--[[/APR_DIAG]]
-        function widget:SetImage() end--[[APR_DIAG]]; widget.SetImage = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:305:widget:SetImage#53", widget.SetImage)--[[/APR_DIAG]]
-        function widget:SetImageSize() end--[[APR_DIAG]]; widget.SetImageSize = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:306:widget:SetImageSize#54", widget.SetImageSize)--[[/APR_DIAG]]
+        end--[[APR_DIAG]]; widget.Refresh = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:291:widget:Refresh#50", widget.Refresh)--[[/APR_DIAG]]
+        function widget:SetText() self:Refresh() end--[[APR_DIAG]]; widget.SetText = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:307:widget:SetText#51", widget.SetText)--[[/APR_DIAG]]
+        function widget:SetFontObject() end--[[APR_DIAG]]; widget.SetFontObject = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:308:widget:SetFontObject#52", widget.SetFontObject)--[[/APR_DIAG]]
+        function widget:SetImage() end--[[APR_DIAG]]; widget.SetImage = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:309:widget:SetImage#53", widget.SetImage)--[[/APR_DIAG]]
+        function widget:SetImageSize() end--[[APR_DIAG]]; widget.SetImageSize = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:310:widget:SetImageSize#54", widget.SetImageSize)--[[/APR_DIAG]]
         function widget:OnWidthSet(width)
             header:SetPoint("TOPLEFT", 0, -30); header:SetPoint("TOPRIGHT", 0, -30); header:SetHeight(30)
             body:SetPoint("TOPLEFT", 0, -60); body:SetPoint("TOPRIGHT", 0, -60); body:SetHeight(120)
-        end--[[APR_DIAG]]; widget.OnWidthSet = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:307:widget:OnWidthSet#55", widget.OnWidthSet)--[[/APR_DIAG]]
+        end--[[APR_DIAG]]; widget.OnWidthSet = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:311:widget:OnWidthSet#55", widget.OnWidthSet)--[[/APR_DIAG]]
         function widget:OnAcquire()
             self:SetWidth(300); self:SetHeight(192); self:SetPreviewActive(true)
-        end--[[APR_DIAG]]; widget.OnAcquire = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:311:widget:OnAcquire#56", widget.OnAcquire)--[[/APR_DIAG]]
+        end--[[APR_DIAG]]; widget.OnAcquire = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:315:widget:OnAcquire#56", widget.OnAcquire)--[[/APR_DIAG]]
         function widget:SetPreviewActive(active)
             Editor.previews[self] = active and true or nil
             self.frame:SetShown(active)
             if active then self:Refresh() end
-        end--[[APR_DIAG]]; widget.SetPreviewActive = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:314:widget:SetPreviewActive#57", widget.SetPreviewActive)--[[/APR_DIAG]]
-        function widget:OnRelease() self:SetPreviewActive(false) end--[[APR_DIAG]]; widget.OnRelease = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:319:widget:OnRelease#58", widget.OnRelease)--[[/APR_DIAG]]
+        end--[[APR_DIAG]]; widget.SetPreviewActive = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:318:widget:SetPreviewActive#57", widget.SetPreviewActive)--[[/APR_DIAG]]
+        function widget:OnRelease() self:SetPreviewActive(false) end--[[APR_DIAG]]; widget.OnRelease = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:323:widget:OnRelease#58", widget.OnRelease)--[[/APR_DIAG]]
         widget.preview = {title = title, caption = caption, step = step, label = label,
             header = header, body = body, button = button, bar = bar}
         return gui:RegisterAsWidget(widget)
     end--[[APR_DIAG]])--[[/APR_DIAG]], 1)
-end--[[APR_DIAG]]; Editor.InstallPreviewWidget = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:162:Editor:InstallPreviewWidget#31", Editor.InstallPreviewWidget)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Editor.InstallPreviewWidget = APRTrace("APR-Core/ui/foundations/ThemeCustomization.lua:166:Editor:InstallPreviewWidget#31", Editor.InstallPreviewWidget)--[[/APR_DIAG]]

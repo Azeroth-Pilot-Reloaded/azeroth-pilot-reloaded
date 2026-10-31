@@ -2,7 +2,7 @@
 -- region, not every coordinate in that region. Character flags are never cached
 -- in this shared geometry index; each request owns a fresh condition snapshot.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("zone_graph", 3) then return end
+if not Lib:BeginModule("zone_graph", 4) then return end
 local Instance = Lib.Instance
 
 local function Encode(value)
@@ -23,10 +23,8 @@ local function RegionKey(data, point)
     return key
 end
 
-local function AddDirection(graph, data, definition, from, to, reverse)
-    local source, target = RegionKey(data, from), RegionKey(data, to)
-    if not source or not target then return false end
-    if source == target then return true end
+local function AddDirection(graph, definition, from, to, source, target, reverse)
+    if source == target then return end
     local outgoing = graph.outgoing[source]
     if not outgoing then outgoing = {}; graph.outgoing[source] = outgoing end
     local link = { definition = definition, from = from, to = to, target = target,
@@ -37,14 +35,18 @@ local function AddDirection(graph, data, definition, from, to, reverse)
     local parallel = destinations[target]
     if not parallel then parallel = {}; destinations[target] = parallel end
     parallel[#parallel + 1] = link
-    return true
 end
 
 local function IndexDefinition(graph, data, definition, context)
     local from = data:ResolvePosition(definition.from, context)
     local to = data:ResolvePosition(definition.to, context)
-    if not from or not to or not AddDirection(graph, data, definition, from, to) then return false end
-    if definition.bidirectional then AddDirection(graph, data, definition, to, from, true) end
+    if not from or not to then return false end
+    -- Both directions use the same geometry. Resolve each key once without
+    -- retaining another cache or formatting the reverse endpoints again.
+    local source, target = RegionKey(data, from), RegionKey(data, to)
+    if not source or not target then return false end
+    AddDirection(graph, definition, from, to, source, target)
+    if definition.bidirectional then AddDirection(graph, definition, to, from, target, source, true) end
     return true
 end
 

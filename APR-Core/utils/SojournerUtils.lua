@@ -109,6 +109,7 @@ function APR:MaybeSojournerPrompt(step)
 
     local achieveName = select(2, GetAchievementInfo(routeData.sojournerAchievementID)) or "?"
     local routeLabel = routeData.label or self.ActiveRoute
+    local player, route = self.PlayerID, self.ActiveRoute
 
     local text = string.format(
         L["SOJOURNER_PROMPT_TEXT"] .. "\n\n" .. L["SOJOURNER_SETTING_FOOTER"],
@@ -119,7 +120,11 @@ function APR:MaybeSojournerPrompt(step)
     self.questionDialog:CreateQuestionPopup(
         "APR_SOJOURNER_SKIP_PROMPT",
         text,
-        --[[APR_DIAG]]APRTrace("APR-Core/utils/SojournerUtils.lua:122:callback#5", --[[/APR_DIAG]]function() -- Accept: enable auto-skip
+        --[[APR_DIAG]]APRTrace("APR-Core/utils/SojournerUtils.lua:123:callback#5", --[[/APR_DIAG]]function() -- Accept: enable auto-skip
+            if APR.PlayerID ~= player or APR.ActiveRoute ~= route or APR:GetSettingsProfile() ~= profile then return end
+            -- This is a profile preference, so advancing a step or refreshing
+            -- the declaration is fine while the current route still qualifies.
+            if not profile.enableAddon or not APR:IsSojournerSkipEligible() then return end
             profile.sojournerSkipCampaign = true
             APR:UpdateStep()
         end--[[APR_DIAG]])--[[/APR_DIAG]],
@@ -193,4 +198,4 @@ function APR:CheckSojournerPartySync()
 
     sojournerPartySyncWarned[self.ActiveRoute] = true
     self.questionDialog:CreateMessagePopup(table.concat(lines, "\n"), OKAY)
-end--[[APR_DIAG]]; APR.CheckSojournerPartySync = APRTrace("APR-Core/utils/SojournerUtils.lua:140:APR:CheckSojournerPartySync#6", APR.CheckSojournerPartySync)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CheckSojournerPartySync = APRTrace("APR-Core/utils/SojournerUtils.lua:145:APR:CheckSojournerPartySync#6", APR.CheckSojournerPartySync)--[[/APR_DIAG]]

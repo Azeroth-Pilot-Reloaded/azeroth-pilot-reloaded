@@ -32,6 +32,15 @@ end
 function env.methods:GetBottom() return 700 end
 function env.methods:GetTop() return 730 end
 function env.methods:IsMouseOver() return self.mouseOver == true end
+function env.methods:CreateAnimationGroup()
+    local animation = {playing = false}
+    function animation:CreateAnimation() return {SetDegrees = function() end, SetDuration = function() end} end
+    function animation:SetLooping() end
+    function animation:Play() self.playing = true end
+    function animation:Stop() self.playing = false end
+    function animation:IsPlaying() return self.playing end
+    return animation
+end
 function GetTime() return 100 end
 local timers = {}
 C_Timer = {NewTimer = function(delay, callback)
@@ -348,3 +357,20 @@ APR.Workspace:Show("group")
 assert(creates == 0 and panel.frame == window and panel.frame:IsShown() and env.frames() == before,
     "Repeated opens reuse the same independently owned window")
 print("Companion UI: standalone window, aligned controls/footer, shared toggles, languages, row-only actions, pooled results, honest empty states, badge and context passed")
+
+settings.enabled, status = true, "searching"
+panel:Refresh()
+assert(panel.spinner:IsShown() and panel.spinner.animation:IsPlaying() and not panel.refresh:IsEnabled())
+status = "ready"
+function APR.partyFinder:GetSearchCooldown() return 37 end
+panel:Refresh()
+assert(not panel.spinner:IsShown() and not panel.spinner.animation:IsPlaying()
+    and not panel.refresh:IsEnabled() and panel.refresh:GetText():find("37", 1, true))
+local cooldownTimer = panel.searchRefreshTimer
+panel.frame:Hide()
+panel.frame.scripts.OnHide(panel.frame)
+assert(cooldownTimer.cancelled and not panel.searchRefreshTimer and not panel.spinner.animation:IsPlaying())
+function APR.partyFinder:GetSearchCooldown() return 0 end
+panel.frame:Show(); panel:Refresh()
+assert(panel.refresh:IsEnabled() and not panel.searchRefreshTimer)
+print("Finder search UI: active spinner, cooldown lock, completion and hidden timer cleanup passed")

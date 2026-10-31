@@ -674,22 +674,56 @@ function APR:IsScenarioTrigTextMatched(step, scenario)
     return false
 end--[[APR_DIAG]]; APR.IsScenarioTrigTextMatched = APRTrace("APR-Core/utils/QuestUtils.lua:619:APR:IsScenarioTrigTextMatched#37", APR.IsScenarioTrigTextMatched)--[[/APR_DIAG]]
 
+-- QuestCache owns this synchronous scope. Never revive it after observing a
+-- different context, even if the caller later restores the old identities.
+local function IsQuestObjectiveSnapshotCurrent(self, snapshot)
+    if not snapshot or snapshot.invalid then return false end
+    local player, route = self.PlayerID, self.ActiveRoute
+    local progress = APRData and player and APRData[player]
+    local current = self._questObjectiveSnapshot == snapshot
+        and snapshot.player == player and snapshot.quests == self.ActiveQuests
+        and snapshot.route == route and snapshot.progress == progress
+        and snapshot.index == (progress and route and progress[route])
+        and snapshot.revision == (self.stepRevision or 0)
+        and snapshot.definition == (route and self.RouteQuestStepList and self.RouteQuestStepList[route])
+    if not current then snapshot.invalid = true end
+    return current
+end--[[APR_DIAG]]; IsQuestObjectiveSnapshotCurrent = APRTrace("APR-Core/utils/QuestUtils.lua:679:IsQuestObjectiveSnapshotCurrent#38", IsQuestObjectiveSnapshotCurrent)--[[/APR_DIAG]]
+
+local function ReadQuestObjectiveSnapshot(self, questID)
+    local snapshot = self._questObjectiveSnapshot
+    if IsQuestObjectiveSnapshotCurrent(self, snapshot) and snapshot[questID] ~= nil then
+        return snapshot[questID] or nil
+    end
+
+    local getObjectives = C_QuestLog and C_QuestLog.GetQuestObjectives
+    if not getObjectives then return nil end
+    local objectives = getObjectives(questID)
+    -- A native call can reenter UpdateQuest or change the route. Only a
+    -- successful read in the same still-valid scope may populate a miss.
+    if IsQuestObjectiveSnapshotCurrent(self, snapshot) then
+        snapshot[questID] = objectives or false
+    end
+    return objectives
+end--[[APR_DIAG]]; ReadQuestObjectiveSnapshot = APRTrace("APR-Core/utils/QuestUtils.lua:693:ReadQuestObjectiveSnapshot#39", ReadQuestObjectiveSnapshot)--[[/APR_DIAG]]
+
 --- Returns a percentage only for a progress-bar objective in an active quest.
 function APR:GetQuestObjectiveProgressPercent(questId, objectiveId)
     questId, objectiveId = tonumber(questId), tonumber(objectiveId)
     local quest = questId and self.ActiveQuests and self.ActiveQuests[questId]
     if not quest or not quest.objectives or not quest.objectives[objectiveId]
         or not C_QuestLog or not C_QuestLog.GetQuestObjectives then
+        IsQuestObjectiveSnapshotCurrent(self, self._questObjectiveSnapshot)
         return nil
     end
 
-    local objectives = C_QuestLog.GetQuestObjectives(questId)
+    local objectives = ReadQuestObjectiveSnapshot(self, questId)
     local objective = objectives and objectives[objectiveId]
     if not objective or objective.type ~= "progressbar" then return nil end
 
     local percent = GetQuestProgressPercentSafe(questId)
     if percent then return math.max(0, math.min(100, percent)) end
-end--[[APR_DIAG]]; APR.GetQuestObjectiveProgressPercent = APRTrace("APR-Core/utils/QuestUtils.lua:678:APR:GetQuestObjectiveProgressPercent#38", APR.GetQuestObjectiveProgressPercent)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetQuestObjectiveProgressPercent = APRTrace("APR-Core/utils/QuestUtils.lua:711:APR:GetQuestObjectiveProgressPercent#40", APR.GetQuestObjectiveProgressPercent)--[[/APR_DIAG]]
 
 --- Retrieves the quest text associated with a specific progress bar objective.
 -- @param questId number The unique identifier of the quest.
@@ -697,26 +731,35 @@ end--[[APR_DIAG]]; APR.GetQuestObjectiveProgressPercent = APRTrace("APR-Core/uti
 -- @return string The text description for the progress bar objective, or nil if not found.
 function APR:GetQuestTextForProgressBar(questId, objectiveId)
     if not questId or not objectiveId then
+        IsQuestObjectiveSnapshotCurrent(self, self._questObjectiveSnapshot)
         return
     end
 
-    local questData = APR.ActiveQuests[questId]
-    if not questData then
+    local questData = self.ActiveQuests and self.ActiveQuests[questId]
+    if not questData or not questData.objectives then
+        IsQuestObjectiveSnapshotCurrent(self, self._questObjectiveSnapshot)
         return
     end
 
     local objective = questData.objectives[objectiveId]
     if not objective then
+        IsQuestObjectiveSnapshotCurrent(self, self._questObjectiveSnapshot)
         return
     end
 
-    local checkpbar = C_QuestLog.GetQuestObjectives(questId)
     local questText = objective.text
-    if not string.find(questText, "%d") and checkpbar and checkpbar[objectiveId] and checkpbar[objectiveId].type == "progressbar" then
+    if not questText or string.find(questText, "%d") then
+        -- Early returns still observe context changes, without a native read.
+        IsQuestObjectiveSnapshotCurrent(self, self._questObjectiveSnapshot)
+        return questText
+    end
+
+    local checkpbar = ReadQuestObjectiveSnapshot(self, questId)
+    if checkpbar and checkpbar[objectiveId] and checkpbar[objectiveId].type == "progressbar" then
         local progress = GetQuestProgressPercentSafe(questId)
         if progress then
             questText = questText .. " (" .. progress .. "%)"
         end
     end
     return questText
-end--[[APR_DIAG]]; APR.GetQuestTextForProgressBar = APRTrace("APR-Core/utils/QuestUtils.lua:698:APR:GetQuestTextForProgressBar#39", APR.GetQuestTextForProgressBar)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetQuestTextForProgressBar = APRTrace("APR-Core/utils/QuestUtils.lua:732:APR:GetQuestTextForProgressBar#41", APR.GetQuestTextForProgressBar)--[[/APR_DIAG]]

@@ -699,6 +699,12 @@ function APR:SnapFrameToAnchor(frame, anchorFrame, anchorHeight, gap, adjustForH
 end--[[APR_DIAG]]; APR.SnapFrameToAnchor = APRTrace("APR-Core/utils/UIUtils.lua:669:APR:SnapFrameToAnchor#37", APR.SnapFrameToAnchor)--[[/APR_DIAG]]
 
 -- One chain definition is shared by runtime layout and the placement previews.
+local function addSnappedFrame(stack, previews, frame, linked, visible, gap)
+    if frame and linked and (previews or visible) then
+        stack[#stack + 1] = {frame = frame, height = frame:GetHeight(), gap = gap}
+    end
+end--[[APR_DIAG]]; addSnappedFrame = APRTrace("APR-Core/utils/UIUtils.lua:702:addSnappedFrame#38", addSnappedFrame)--[[/APR_DIAG]]
+
 function APR:GetSnappedStack(previews)
     local profile = self:GetSettingsProfile()
     local current = previews and previews[1] or _G.CurrentStepScreenPanel
@@ -706,20 +712,15 @@ function APR:GetSnappedStack(previews)
     local height = previews and current:GetHeight() or self.currentStep:GetContentHeight(false)
     height = math.max(1, current.collapsed and current:GetHeight() or height or current:GetHeight())
     local stack = {{frame = current, height = height, gap = 0}}
-    local function add(frame, linked, visible, gap)
-        if frame and linked and (previews or visible) then
-            stack[#stack + 1] = {frame = frame, height = frame:GetHeight(), gap = gap}
-        end
-    end--[[APR_DIAG]]; add = APRTrace("APR-Core/utils/UIUtils.lua:709:add#39", add)--[[/APR_DIAG]]
     local afk = previews and previews[3] or _G.AfkFrameScreen
     local fillers = previews and previews[2] or _G.FillersScreenPanel
     local list = previews and previews[4] or _G.QuestOrderListPanel
-    add(afk, profile.afkSnapToCurrentStep, self:IsAFKFrameActiveShouldSnap(), 0)
-    add(fillers, profile.fillersFrameSnapToCurrentStep, not current.collapsed and fillers and fillers:IsShown(),
+    addSnappedFrame(stack, previews, afk, profile.afkSnapToCurrentStep, self:IsAFKFrameActiveShouldSnap(), 0)
+    addSnappedFrame(stack, previews, fillers, profile.fillersFrameSnapToCurrentStep, not current.collapsed and fillers and fillers:IsShown(),
         (profile.fillersFrameSnapGap or 0) + (profile.fillersFrameShowHeader and 22 or 0))
-    add(list, profile.questOrderListSnapToCurrentStep, not current.collapsed and list and list:IsShown(), 30)
+    addSnappedFrame(stack, previews, list, profile.questOrderListSnapToCurrentStep, not current.collapsed and list and list:IsShown(), 30)
     return stack
-end--[[APR_DIAG]]; APR.GetSnappedStack = APRTrace("APR-Core/utils/UIUtils.lua:702:APR:GetSnappedStack#38", APR.GetSnappedStack)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetSnappedStack = APRTrace("APR-Core/utils/UIUtils.lua:708:APR:GetSnappedStack#39", APR.GetSnappedStack)--[[/APR_DIAG]]
 
 function APR:GetSnappedStackHeight(previews)
     local stack, height = self:GetSnappedStack(previews), 0
@@ -728,7 +729,7 @@ function APR:GetSnappedStackHeight(previews)
         height = height + entry.height
     end
     return height
-end--[[APR_DIAG]]; APR.GetSnappedStackHeight = APRTrace("APR-Core/utils/UIUtils.lua:724:APR:GetSnappedStackHeight#40", APR.GetSnappedStackHeight)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetSnappedStackHeight = APRTrace("APR-Core/utils/UIUtils.lua:725:APR:GetSnappedStackHeight#40", APR.GetSnappedStackHeight)--[[/APR_DIAG]]
 
 function APR:RefreshSnappedFrames()
     if self.refreshingSnapChain or InCombatLockdown() then return end
@@ -740,7 +741,7 @@ function APR:RefreshSnappedFrames()
     end
     if self.questOrderList and self.questOrderList.ApplySnapAnchor then self.questOrderList:ApplySnapAnchor() end
     self.refreshingSnapChain = nil
-end--[[APR_DIAG]]; APR.RefreshSnappedFrames = APRTrace("APR-Core/utils/UIUtils.lua:733:APR:RefreshSnappedFrames#41", APR.RefreshSnappedFrames)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RefreshSnappedFrames = APRTrace("APR-Core/utils/UIUtils.lua:734:APR:RefreshSnappedFrames#41", APR.RefreshSnappedFrames)--[[/APR_DIAG]]
 
 local reportedInvalidUIAssets = {}
 local knownUIAssetCache = {}
@@ -766,7 +767,7 @@ function APR:IsUIFileAssetKnown(asset)
     local ok, isKnown = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](C_UIFileAsset.IsKnownFile, asset)
     knownUIAssetCache[asset] = ok and isKnown == true
     return knownUIAssetCache[asset], true
-end--[[APR_DIAG]]; APR.IsUIFileAssetKnown = APRTrace("APR-Core/utils/UIUtils.lua:753:APR:IsUIFileAssetKnown#42", APR.IsUIFileAssetKnown)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.IsUIFileAssetKnown = APRTrace("APR-Core/utils/UIUtils.lua:754:APR:IsUIFileAssetKnown#42", APR.IsUIFileAssetKnown)--[[/APR_DIAG]]
 
 --- Validate a UI file and optionally fall back to another one.
 --- Invalid assets are reported once so a bad font or route image has an actionable failure mode.
@@ -799,7 +800,7 @@ function APR:ResolveUIFileAsset(asset, fallback, context)
     end
 
     return nil
-end--[[APR_DIAG]]; APR.ResolveUIFileAsset = APRTrace("APR-Core/utils/UIUtils.lua:777:APR:ResolveUIFileAsset#43", APR.ResolveUIFileAsset)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ResolveUIFileAsset = APRTrace("APR-Core/utils/UIUtils.lua:778:APR:ResolveUIFileAsset#43", APR.ResolveUIFileAsset)--[[/APR_DIAG]]
 
 --- Validate the small set of files required for APR's main UI.
 --- Route preview images and configured fonts are validated lazily when used.
@@ -812,4 +813,4 @@ function APR:ValidateBundledUIAssets()
     }) do
         self:ResolveUIFileAsset(asset, nil, context)
     end
-end--[[APR_DIAG]]; APR.ValidateBundledUIAssets = APRTrace("APR-Core/utils/UIUtils.lua:806:APR:ValidateBundledUIAssets#44", APR.ValidateBundledUIAssets)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ValidateBundledUIAssets = APRTrace("APR-Core/utils/UIUtils.lua:807:APR:ValidateBundledUIAssets#44", APR.ValidateBundledUIAssets)--[[/APR_DIAG]]

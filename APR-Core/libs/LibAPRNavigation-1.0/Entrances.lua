@@ -1,7 +1,7 @@
 -- Instance entrances are destinations outside an instance, never fabricated
 -- teleport edges to an interior map's centre or a guessed return landing.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("entrances", 2) then return end
+if not Lib:BeginModule("entrances", 3) then return end
 local Instance = Lib.Instance
 
 function Instance:GetEntrances()
@@ -50,11 +50,40 @@ function Instance:GetEntranceDefinitionForInstance(instanceID)
     return fallback
 end
 
-function Instance:ResolveEntranceDefinitions(entries, character)
-    if not entries then return {}, "unknown_entrance" end
+local function CopyEntrance(definition, position)
+    local entry = Lib.Copy(definition)
+    entry.position = Lib.Copy(position)
+    return entry
+end
+
+local function ChooseClosest(self, entries, positions, count, character)
+    local best, bestPosition, bestDistance
+    local position = character and (character.position or character.playerPosition)
+    if not position and count > 1 and self.env.getPlayerPosition then position = self.env.getPlayerPosition() end
+    for index, definition in ipairs(entries) do
+        local target = positions[index]
+        if target then
+            local distance = math.huge
+            if position and position.instanceID == target.instanceID then
+                distance = (target.x - position.x)^2 + (target.y - position.y)^2
+            end
+            if not best or distance < bestDistance then
+                best, bestPosition, bestDistance = definition, target, distance
+            end
+        end
+    end
+    if best then return CopyEntrance(best, bestPosition) end
+end
+
+local function ResolveEntrances(self, entries, character, closest)
+    if not entries then
+        if closest then return nil, "unknown_entrance" end
+        return {}, "unknown_entrance"
+    end
+    local suppliedCharacter = character
     character = character or (self.env.getCharacter and self.env.getCharacter()) or {}
-    local result, reason = {}, "candidate"
-    for _, definition in ipairs(entries) do
+    local result, reason, count = {}, "candidate", 0
+    for index, definition in ipairs(entries) do
         if definition.reviewStatus == "confirmed" then
             local requirements = self:GetTravelRequirements(definition.requirements, definition.exterior)
             local allowed, invalid = self:CheckRequirements(requirements, character)
@@ -64,14 +93,26 @@ function Instance:ResolveEntranceDefinitions(entries, character)
             else
                 local position = self:ResolvePosition(definition.exterior, {})
                 if position and position.region then
-                    local entry = Lib.Copy(definition)
-                    entry.position = Lib.Copy(position)
-                    result[#result + 1] = entry
+                    count = count + 1
+                    if closest then
+                        -- Keep only borrowed positions until selection. Copying
+                        -- every candidate's approach/metadata discards all but
+                        -- one deep copy on the ordinary singular lookup path.
+                        result[index] = position
+                    else
+                        result[count] = CopyEntrance(definition, position)
+                    end
                 else reason = "pending_data" end
             end
         end
     end
-    return result, #result == 0 and reason or nil
+    reason = count == 0 and reason or nil
+    if closest then return ChooseClosest(self, entries, result, count, suppliedCharacter), reason end
+    return result, reason
+end
+
+function Instance:ResolveEntranceDefinitions(entries, character)
+    return ResolveEntrances(self, entries, character, false)
 end
 
 function Instance:GetEntrancesForMap(mapID, character)
@@ -82,27 +123,10 @@ function Instance:GetEntrancesForInstance(instanceID, character)
     return self:ResolveEntranceDefinitions(self.entranceInstances and self.entranceInstances[instanceID], character)
 end
 
-local function ChooseClosest(self, entries, reason, character)
-    local best, bestDistance
-    local position = character and (character.position or character.playerPosition)
-    if not position and #entries > 1 and self.env.getPlayerPosition then position = self.env.getPlayerPosition() end
-    for _, entry in ipairs(entries) do
-        local target = entry.position
-        local distance = math.huge
-        if position and position.instanceID == target.instanceID then
-            distance = (target.x - position.x)^2 + (target.y - position.y)^2
-        end
-        if not best or distance < bestDistance then best, bestDistance = entry, distance end
-    end
-    return best, reason
-end
-
 function Instance:GetEntranceForMap(mapID, character)
-    local entries, reason = self:GetEntrancesForMap(mapID, character)
-    return ChooseClosest(self, entries, reason, character)
+    return ResolveEntrances(self, self:GetEntranceDefinitionsForMap(mapID), character, true)
 end
 
 function Instance:GetEntranceForInstance(instanceID, character)
-    local entries, reason = self:GetEntrancesForInstance(instanceID, character)
-    return ChooseClosest(self, entries, reason, character)
+    return ResolveEntrances(self, self.entranceInstances and self.entranceInstances[instanceID], character, true)
 end

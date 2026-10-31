@@ -369,28 +369,43 @@ function Preview:ClipMinimapSegment(ax, ay, bx, by, shape)
     ax, ay, bx, by = self:ClipRectangle(ax, ay, bx, by, -0.9, -0.9, 0.9, 0.9)
     if ax == nil then return nil end
     local dx, dy = bx - ax, by - ay
-    local cuts = { 0, 1 }
-    if dx ~= 0 and -ax / dx > 0 and -ax / dx < 1 then cuts[#cuts + 1] = -ax / dx end
-    if dy ~= 0 and -ay / dy > 0 and -ay / dy < 1 then cuts[#cuts + 1] = -ay / dy end
-    table.sort(cuts)
-    local first, last
-    for i = 1, #cuts - 1 do
-        local low, high = cuts[i], cuts[i + 1]
+    -- There are at most two axis crossings. Order scalar cuts instead of
+    -- allocating and sorting a table for every leg while the player moves.
+    local cut1, cut2, parts = 1, 1, 1
+    if dx ~= 0 then
+        local cut = -ax / dx
+        if cut > 0 and cut < 1 then cut1, parts = cut, 2 end
+    end
+    if dy ~= 0 then
+        local cut = -ay / dy
+        if cut > 0 and cut < 1 then
+            if cut < cut1 then cut1, cut2 = cut, cut1 else cut2 = cut end
+            parts = parts + 1
+        end
+    end
+    local first, last, previousCut, circleFirst, circleLast = nil, nil, 0
+    for i = 1, parts do
+        local low, high = previousCut, i == 1 and cut1 or (i == 2 and cut2 or 1)
+        previousCut = high
         local mx, my = ax + dx * (low + high) / 2, ay + dy * (low + high) / 2
         local quadrant = (mx < 0 and 1 or 3) + (my < 0 and 1 or 0)
         local round = not shape or shape[quadrant]
         if round then
-            local a, b, c = dx * dx + dy * dy, 2 * (ax * dx + ay * dy), ax * ax + ay * ay - 0.81
-            if a == 0 then
-                if c > 0 then high = -1 end
-            else
-                local discriminant = b * b - 4 * a * c
-                if discriminant < 0 then high = -1
+            -- All rounded quadrants intersect the same circle. Solve once,
+            -- only if needed; keep the interval local to this segment.
+            if circleFirst == nil then
+                local a, b, c = dx * dx + dy * dy, 2 * (ax * dx + ay * dy), ax * ax + ay * ay - 0.81
+                if a == 0 then circleFirst, circleLast = 0, c > 0 and -1 or 1
                 else
-                    local root = math.sqrt(discriminant)
-                    low, high = math.max(low, (-b - root) / (2 * a)), math.min(high, (-b + root) / (2 * a))
+                    local discriminant = b * b - 4 * a * c
+                    if discriminant < 0 then circleFirst, circleLast = 0, -1
+                    else
+                        local root = math.sqrt(discriminant)
+                        circleFirst, circleLast = (-b - root) / (2 * a), (-b + root) / (2 * a)
+                    end
                 end
             end
+            low, high = math.max(low, circleFirst), math.min(high, circleLast)
         end
         if low <= high then first, last = first or low, high end
     end

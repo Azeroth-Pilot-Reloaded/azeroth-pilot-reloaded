@@ -77,6 +77,120 @@ if C_GossipInfo and C_GossipInfo.SelectOption and hooksecurefunc then
     end
 end
 
+local function SelectOption(optionID, text, confirm)
+    if not optionID then
+        return false
+    end
+    C_GossipInfo.SelectOption(optionID, text, confirm)
+    return true
+end--[[APR_DIAG]]; SelectOption = APRTrace("APR-Core/features/questing/Gossip.lua:80:SelectOption#2", SelectOption)--[[/APR_DIAG]]
+
+local function HandleQuickQuestGossipFallback(profile)
+    local gossip = C_GossipInfo.GetOptions()
+    if not gossip or not next(gossip) then
+        return false
+    end
+
+    local firstRedOption
+    local firstQuestOption, questOptionCount = nil, 0
+
+    -- Classify all options
+    for _, info in next, gossip do
+        if info.name and info.name:find("|cFFFF0000") then
+            -- Red option (negation/denial) - search anywhere in text
+            firstRedOption = firstRedOption or info.gossipOptionID
+        elseif DARKMOON_GOSSIP[info.gossipOptionID] then
+            -- Only add Darkmoon if payment is enabled
+            if profile.autoGossipPayDarkmoonFare then
+                if info.gossipOptionID then
+                    firstQuestOption = firstQuestOption or info.gossipOptionID
+                    questOptionCount = questOptionCount + 1
+                end
+            end
+        elseif QUEST_GOSSIP[info.gossipOptionID] then
+            if info.gossipOptionID then
+                firstQuestOption = firstQuestOption or info.gossipOptionID
+                questOptionCount = questOptionCount + 1
+            end
+        elseif FlagsUtil and FlagsUtil.IsSet and Enum and Enum.GossipOptionRecFlags and Enum.GossipOptionRecFlags.QuestLabelPrepend and FlagsUtil.IsSet(info.flags, Enum.GossipOptionRecFlags.QuestLabelPrepend) then
+            if info.gossipOptionID then
+                firstQuestOption = firstQuestOption or info.gossipOptionID
+                questOptionCount = questOptionCount + 1
+            end
+        end
+    end
+
+    -- Priority order:
+    -- 1. Red option if override enabled (always allowed, even with an active route)
+    if firstRedOption ~= nil and profile.autoGossipRedOption then
+        return SelectOption(firstRedOption)
+    end
+
+    -- 2. If a route is active, do NOT auto-gossip quest or single options.
+    --    The route's GossipOptionIDs / Gossip steps take priority.
+    if APR.ActiveRoute then
+        return false
+    end
+
+    -- 3. If exactly one quest option → select it
+    if profile.autoGossipQuestOptions then
+        if questOptionCount == 1 then
+            return SelectOption(firstQuestOption)
+        end
+        -- 5. If multiple quest options → do nothing
+        if questOptionCount > 1 then
+            return false
+        end
+    end
+
+    -- 6. If no quest/red options, check single misc option
+    if (C_GossipInfo.GetNumActiveQuests() + C_GossipInfo.GetNumAvailableQuests()) > 0 then
+        return false
+    end
+
+    if #gossip ~= 1 then
+        return false
+    end
+
+    if not profile.autoGossipSingleOption then
+        return false
+    end
+
+    if not gossip[1].gossipOptionID then
+        return false
+    end
+
+    if IGNORE_GOSSIP[gossip[1].gossipOptionID] then
+        return false
+    end
+
+    local _, instanceType = GetInstanceInfo()
+    local singleOptionMode = profile.autoGossipSingleOptionWhen or 2
+    if instanceType == "raid" then
+        if singleOptionMode > 1 and (GetNumGroupMembers() <= 1 or singleOptionMode == 3) then
+            return SelectOption(gossip[1].gossipOptionID)
+        end
+        return false
+    end
+
+    return SelectOption(gossip[1].gossipOptionID)
+end--[[APR_DIAG]]; HandleQuickQuestGossipFallback = APRTrace("APR-Core/features/questing/Gossip.lua:88:HandleQuickQuestGossipFallback#3", HandleQuickQuestGossipFallback)--[[/APR_DIAG]]
+
+local function PickGossipByIcon(iconId, optionType)
+    local gossipOption = C_GossipInfo.GetOptions()
+    if gossipOption and next(gossipOption) then
+        for _, gossip in pairs(gossipOption) do
+            -- Classic/Forever can expose a service type instead of a numeric icon.
+            if (optionType and gossip.type == optionType) or gossip.icon == iconId then
+                if SelectOption(gossip.gossipOptionID) then
+                    return true
+                end
+            end
+        end
+    end
+    return false
+end--[[APR_DIAG]]; PickGossipByIcon = APRTrace("APR-Core/features/questing/Gossip.lua:179:PickGossipByIcon#4", PickGossipByIcon)--[[/APR_DIAG]]
+
 function APR.gossip:HandleGossip(step)
     local profile = APR:GetSettingsProfile()
     local repair = step and step.Repair
@@ -90,131 +204,28 @@ function APR.gossip:HandleGossip(step)
     end
 
     local selectedOption = false
-
-    local function SelectOption(optionID, text, confirm)
-        if not optionID then
-            return false
-        end
-        selectedOption = true
-        C_GossipInfo.SelectOption(optionID, text, confirm)
-        return true
-    end--[[APR_DIAG]]; SelectOption = APRTrace("APR-Core/features/questing/Gossip.lua:94:SelectOption#3", SelectOption)--[[/APR_DIAG]]
-
-    local function HandleQuickQuestGossipFallback()
-        local gossip = C_GossipInfo.GetOptions()
-        if not gossip or not next(gossip) then
-            return false
-        end
-
-        local redOptions = {}
-        local questOptions = {}
-
-        -- Classify all options
-        for _, info in next, gossip do
-            if info.name and info.name:find("|cFFFF0000") then
-                -- Red option (negation/denial) - search anywhere in text
-                table.insert(redOptions, info.gossipOptionID)
-            elseif DARKMOON_GOSSIP[info.gossipOptionID] then
-                -- Only add Darkmoon if payment is enabled
-                if profile.autoGossipPayDarkmoonFare then
-                    table.insert(questOptions, info.gossipOptionID)
-                end
-            elseif QUEST_GOSSIP[info.gossipOptionID] then
-                table.insert(questOptions, info.gossipOptionID)
-            elseif FlagsUtil and FlagsUtil.IsSet and Enum and Enum.GossipOptionRecFlags and Enum.GossipOptionRecFlags.QuestLabelPrepend and FlagsUtil.IsSet(info.flags, Enum.GossipOptionRecFlags.QuestLabelPrepend) then
-                table.insert(questOptions, info.gossipOptionID)
-            end
-        end
-
-        -- Priority order:
-        -- 1. Red option if override enabled (always allowed, even with an active route)
-        if #redOptions > 0 and profile.autoGossipRedOption then
-            return SelectOption(redOptions[1])
-        end
-
-        -- 2. If a route is active, do NOT auto-gossip quest or single options.
-        --    The route's GossipOptionIDs / Gossip steps take priority.
-        if APR.ActiveRoute then
-            return false
-        end
-
-        -- 3. If exactly one quest option → select it
-        if profile.autoGossipQuestOptions then
-            if #questOptions == 1 then
-                return SelectOption(questOptions[1])
-            end
-            -- 5. If multiple quest options → do nothing
-            if #questOptions > 1 then
-                return false
-            end
-        end
-
-        -- 6. If no quest/red options, check single misc option
-        if (C_GossipInfo.GetNumActiveQuests() + C_GossipInfo.GetNumAvailableQuests()) > 0 then
-            return false
-        end
-
-        if #gossip ~= 1 then
-            return false
-        end
-
-        if not profile.autoGossipSingleOption then
-            return false
-        end
-
-        if not gossip[1].gossipOptionID then
-            return false
-        end
-
-        if IGNORE_GOSSIP[gossip[1].gossipOptionID] then
-            return false
-        end
-
-        local _, instanceType = GetInstanceInfo()
-        local singleOptionMode = profile.autoGossipSingleOptionWhen or 2
-        if instanceType == "raid" then
-            if singleOptionMode > 1 and (GetNumGroupMembers() <= 1 or singleOptionMode == 3) then
-                return SelectOption(gossip[1].gossipOptionID)
-            end
-            return false
-        end
-
-        return SelectOption(gossip[1].gossipOptionID)
-    end--[[APR_DIAG]]; HandleQuickQuestGossipFallback = APRTrace("APR-Core/features/questing/Gossip.lua:103:HandleQuickQuestGossipFallback#4", HandleQuickQuestGossipFallback)--[[/APR_DIAG]]
-
-    local function PickGossipByIcon(iconId, optionType)
-        local gossipOption = C_GossipInfo.GetOptions()
-        if gossipOption and next(gossipOption) then
-            for _, gossip in pairs(gossipOption) do
-                -- Classic/Forever can expose a service type instead of a numeric icon.
-                if (optionType and gossip.type == optionType) or gossip.icon == iconId then
-                    if SelectOption(gossip.gossipOptionID) then
-                        return true
-                    end
-                end
-            end
-        end
-        return false
-    end--[[APR_DIAG]]; PickGossipByIcon = APRTrace("APR-Core/features/questing/Gossip.lua:185:PickGossipByIcon#5", PickGossipByIcon)--[[/APR_DIAG]]
-
     local handledByAPR = false
     ------------------------------------
     -- SetHS
     if step and step.SetHS then
-        handledByAPR = PickGossipByIcon(136458) or handledByAPR
+        selectedOption = PickGossipByIcon(136458) or selectedOption
+        handledByAPR = selectedOption or handledByAPR
     end
     ------------------------------------
     -- FlightPath
     if step and (step.UseFlightPath or step.GetFP) and not step.NoAutoFlightMap and not step.GossipOptionIDs then
-        handledByAPR = PickGossipByIcon(132057) or handledByAPR
+        selectedOption = PickGossipByIcon(132057) or selectedOption
+        handledByAPR = selectedOption or handledByAPR
     end
     -- Merchant (buy, sell or repair)
     if step and (step.BuyMerchant or step.SellItems or repair) and not step.GossipOptionIDs then
-        handledByAPR = PickGossipByIcon(132060, "vendor") or handledByAPR
+        selectedOption = PickGossipByIcon(132060, "vendor") or selectedOption
+        handledByAPR = selectedOption or handledByAPR
     end
     -- Trainer (professions or skills)
     if step and (step.LearnProfession or step.LearnSkill) and not step.GossipOptionIDs then
-        handledByAPR = PickGossipByIcon(132058, "trainer") or handledByAPR
+        selectedOption = PickGossipByIcon(132058, "trainer") or selectedOption
+        handledByAPR = selectedOption or handledByAPR
     end
     ------------------------------------
     -- GOSSIP
@@ -234,7 +245,7 @@ function APR.gossip:HandleGossip(step)
                     for _, g in pairs(step.GossipOptionIDs) do
                         for _, option in pairs(info) do
                             if option.gossipOptionID == g then
-                                SelectOption(g)
+                                selectedOption = SelectOption(g) or selectedOption
                                 break
                             end
                         end
@@ -244,6 +255,7 @@ function APR.gossip:HandleGossip(step)
                     for _, v in pairs(info) do
                         if (v.orderIndex + 1 == step.Gossip) then
                             if SelectOption(v.gossipOptionID) then
+                                selectedOption = true
                                 handledByAPR = true
                             end
                         end
@@ -259,18 +271,18 @@ function APR.gossip:HandleGossip(step)
                         C_ChromieTime.GetChromieTimeExpansionOption(step.ChromiePick).name)
                     APR.currentStep:AddExtraLineText('ChromiePick', extraText)
                     C_Timer.After(1,
-                        --[[APR_DIAG]]APRTrace("APR-Core/features/questing/Gossip.lua:262:callback#6", --[[/APR_DIAG]]function() C_ChromieTime.SelectChromieTimeOption(step.ChromiePick) end--[[APR_DIAG]])--[[/APR_DIAG]])
+                        --[[APR_DIAG]]APRTrace("APR-Core/features/questing/Gossip.lua:274:callback#6", --[[/APR_DIAG]]function() C_ChromieTime.SelectChromieTimeOption(step.ChromiePick) end--[[APR_DIAG]])--[[/APR_DIAG]])
                 end
             end
         end
     end
 
     if not handledByAPR then
-        HandleQuickQuestGossipFallback()
+        selectedOption = HandleQuickQuestGossipFallback(profile) or selectedOption
     end
 
     return selectedOption
-end--[[APR_DIAG]]; APR.gossip.HandleGossip = APRTrace("APR-Core/features/questing/Gossip.lua:80:APR.gossip:HandleGossip#2", APR.gossip.HandleGossip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.gossip.HandleGossip = APRTrace("APR-Core/features/questing/Gossip.lua:194:APR.gossip:HandleGossip#5", APR.gossip.HandleGossip)--[[/APR_DIAG]]
 
 function APR.gossip:HandleHardcodedGossip()
     local count = self.counter + 1
@@ -310,7 +322,7 @@ function APR.gossip:HandleHardcodedGossip()
         APR:UpdateNextStep()
     end
     return count
-end--[[APR_DIAG]]; APR.gossip.HandleHardcodedGossip = APRTrace("APR-Core/features/questing/Gossip.lua:275:APR.gossip:HandleHardcodedGossip#7", APR.gossip.HandleHardcodedGossip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.gossip.HandleHardcodedGossip = APRTrace("APR-Core/features/questing/Gossip.lua:287:APR.gossip:HandleHardcodedGossip#7", APR.gossip.HandleHardcodedGossip)--[[/APR_DIAG]]
 
 function APR.gossip:TriggerGossipETA(stepIndex, step)
     if not step or not step.GossipETA or step.SpecialETAHide then
@@ -323,4 +335,4 @@ function APR.gossip:TriggerGossipETA(stepIndex, step)
 
     APR.AFK:SetAfkTimer(step.GossipETA)
     APR.AFK.lastStep = stepIndex
-end--[[APR_DIAG]]; APR.gossip.TriggerGossipETA = APRTrace("APR-Core/features/questing/Gossip.lua:315:APR.gossip:TriggerGossipETA#8", APR.gossip.TriggerGossipETA)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.gossip.TriggerGossipETA = APRTrace("APR-Core/features/questing/Gossip.lua:327:APR.gossip:TriggerGossipETA#8", APR.gossip.TriggerGossipETA)--[[/APR_DIAG]]

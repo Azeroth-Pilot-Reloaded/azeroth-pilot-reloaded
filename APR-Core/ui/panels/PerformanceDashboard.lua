@@ -11,19 +11,22 @@ APR.PerformanceDashboard = { mode = "summary", sort = "totalMs", query = "", gra
 local Dashboard, UI = APR.PerformanceDashboard, APR.UI
 local totalLabel = TOTAL .. " (" .. MILLISECONDS_ABBR .. ")"
 local maximumLabel = MAXIMUM .. " (" .. MILLISECONDS_ABBR .. ")"
+local function TooltipLine(label, value)
+    APR:AddTooltipDoubleLine(GameTooltip, label, tostring(value), "general", "muted", "base")
+end--[[APR_DIAG]]; TooltipLine = APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:14:TooltipLine#1", TooltipLine)--[[/APR_DIAG]]
 local function MetricName(name)
     if name == "Other" then return OTHER end
     local path, line, label = (name or ""):match("^(.-):(%d+):(.+)#%d+$")
     if path then return label .. " · " .. path:gsub("APR%-Core/", "") .. ":" .. line end
     return name
-end--[[APR_DIAG]]; MetricName = APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:14:MetricName#1", MetricName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; MetricName = APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:17:MetricName#2", MetricName)--[[/APR_DIAG]]
 
 local function Summary(calls, total, peak, average)
     local parts = { L["UI_CALLS"] .. ": " .. calls, totalLabel .. ": " .. string.format("%.2f", total) }
     if average then parts[#parts + 1] = L["UI_AVERAGE"] .. ": " .. string.format("%.3f", average) end
     parts[#parts + 1] = maximumLabel .. ": " .. string.format("%.2f", peak)
     return table.concat(parts, "   |   ")
-end--[[APR_DIAG]]; Summary = APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:21:Summary#2", Summary)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Summary = APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:24:Summary#3", Summary)--[[/APR_DIAG]]
 
 -- One hover target covers all seconds, including empty buckets; it allocates no per-bar frames.
 function Dashboard:UpdateGraphTooltip(force)
@@ -43,25 +46,22 @@ function Dashboard:UpdateGraphTooltip(force)
     self.hoverLine:Show()
     GameTooltip:SetOwner(self.plot, "ANCHOR_CURSOR")
     APR:SetTooltipText(GameTooltip, string.format(L["UI_PERF_SECOND"], details.offset), "general", "accent")
-    local function line(label, value)
-        APR:AddTooltipDoubleLine(GameTooltip, label, tostring(value), "general", "muted", "base")
-    end--[[APR_DIAG]]; line = APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:46:line#4", line)--[[/APR_DIAG]]
-    line(L["UI_CALLS"], details.count)
-    line(totalLabel, string.format("%.3f", details.totalMs))
-    line(L["UI_AVERAGE"], string.format("%.3f", details.average))
-    line(maximumLabel, string.format("%.3f", details.maxMs))
+    TooltipLine(L["UI_CALLS"], details.count)
+    TooltipLine(totalLabel, string.format("%.3f", details.totalMs))
+    TooltipLine(L["UI_AVERAGE"], string.format("%.3f", details.average))
+    TooltipLine(maximumLabel, string.format("%.3f", details.maxMs))
     if details.count == 0 then
         APR:AddTooltipLine(GameTooltip, L["UI_PERF_EMPTY_SECOND"], "general", "muted", true)
     else
-        line(L["UI_CALLS"] .. " ≥ " .. details.slowThresholdMs .. " " .. MILLISECONDS_ABBR, details.slowCount or 0)
-        line(L["UI_PERF_PEAK_CALL"], MetricName(details.peakName) or UNAVAILABLE)
+        TooltipLine(L["UI_CALLS"] .. " ≥ " .. details.slowThresholdMs .. " " .. MILLISECONDS_ABBR, details.slowCount or 0)
+        TooltipLine(L["UI_PERF_PEAK_CALL"], MetricName(details.peakName) or UNAVAILABLE)
         if details.route then APR:AddTooltipLine(GameTooltip, details.route, "general", "base", true) end
-        if details.step then line(L["CURRENT_STEP"], details.step) end
+        if details.step then TooltipLine(L["CURRENT_STEP"], details.step) end
     end
     APR:AddTooltipLine(GameTooltip, self.frozenTimeline and L["UI_PERF_GRAPH_FROZEN"] or L["UI_PERF_GRAPH_LIVE"],
         "general", "muted", true)
     GameTooltip:Show()
-end--[[APR_DIAG]]; Dashboard.UpdateGraphTooltip = APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:29:Dashboard:UpdateGraphTooltip#3", Dashboard.UpdateGraphTooltip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Dashboard.UpdateGraphTooltip = APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:32:Dashboard:UpdateGraphTooltip#4", Dashboard.UpdateGraphTooltip)--[[/APR_DIAG]]
 
 function Dashboard:RefreshGraph()
     self.timeline = self.frozenTimeline or APR:GetPerformanceTimeline()
@@ -86,11 +86,14 @@ function Dashboard:RefreshGraph()
 end--[[APR_DIAG]]; Dashboard.RefreshGraph = APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:66:Dashboard:RefreshGraph#5", Dashboard.RefreshGraph)--[[/APR_DIAG]]
 
 function Dashboard:Refresh()
-    if not self.frame or not self.frame:IsShown() then return end
+    if not self.frame or not self.frame:IsShown()
+        or (self.frame.IsVisible and not self.frame:IsVisible()) then return end
+    self.refreshSerial = (self.refreshSerial or 0) + 1
     local log = APRData.PerformanceLog
     self.capture:SetText(APR.performanceLogging and L["UI_STOP"] or L["UI_CAPTURE"])
     if self.debugCapture then self.debugCapture:SetText(L["DEBUG"] ..
         " · " .. (APR.debugLogging and L["UI_STOP"] or L["UI_CAPTURE"])) end
+    if self.page == "groupFinder" then self:RefreshGroupFinder(); return end
     if self.page == "resources" then
         self.resources:Refresh(); return
     end
@@ -113,7 +116,7 @@ function Dashboard:Refresh()
     if changed then
         local rows = APR:GetPerformanceRows(self.mode, self.sort, self.query, MetricName, self.performanceRows)
         self.performanceRows = (self.mode == "summary" or self.mode == "counters") and rows or nil
-        self.rowSource = self.rowSource or { get = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:116:callback#7", --[[/APR_DIAG]]function(source, index) return source.rows[index] end--[[APR_DIAG]])--[[/APR_DIAG]] }
+        self.rowSource = self.rowSource or { get = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:119:callback#7", --[[/APR_DIAG]]function(source, index) return source.rows[index] end--[[APR_DIAG]])--[[/APR_DIAG]] }
         self.rowSource.rows, self.rowSource.count = rows, #rows
         -- Uniform rows need only the viewport; avoid rebuilding thousands of offsets.
         self.list:SetSource(self.rowSource, true)
@@ -138,10 +141,96 @@ function Dashboard:SetPage(page)
     end
     self.callsPanel:SetShown(page == "calls")
     self.resourcesPanel:SetShown(page == "resources")
+    self.groupFinderPanel:SetShown(page == "groupFinder")
     UI:SetButtonActive(self.resourcesTab, page == "resources")
     UI:SetButtonActive(self.callsTab, page == "calls")
+    UI:SetButtonActive(self.groupFinderTab, page == "groupFinder")
     self:Refresh()
-end--[[APR_DIAG]]; Dashboard.SetPage = APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:132:Dashboard:SetPage#8", Dashboard.SetPage)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Dashboard.SetPage = APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:135:Dashboard:SetPage#8", Dashboard.SetPage)--[[/APR_DIAG]]
+
+local function TrafficText(value)
+    return tostring(value or "-"):gsub("|", "||")
+end--[[APR_DIAG]]; TrafficText = APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:151:TrafficText#9", TrafficText)--[[/APR_DIAG]]
+
+function Dashboard:RefreshGroupFinder()
+    local finder, transport = APR.partyFinder, APR.CommunicationChannel
+    local log = finder and finder.traffic
+    self.groupFinderOverview:SetText("APRFindV1  ·  " .. TrafficText(transport and transport.status) ..
+        " / " .. TrafficText(transport and transport.id) .. "  ·  TX: " .. (log and log.sent or 0) ..
+        "  ·  RX: " .. (log and log.received or 0) .. "  ·  " ..
+        string.format(L["UI_DIAGNOSTIC_RETAINED"], log and log.count or 0, log and log.total or 0) ..
+        "  ·  >128/s: " .. (log and log.dropped or 0))
+    local revision = log and log.total or 0
+    if self.trafficLog == log and self.trafficRevision == revision then return end
+    self.trafficLog, self.trafficRevision = log, revision
+    local rows = finder and finder.GetTrafficRows and finder:GetTrafficRows() or {}
+    self.trafficList:SetItems(rows, true)
+    self.trafficEmpty:SetShown(#rows == 0)
+end--[[APR_DIAG]]; Dashboard.RefreshGroupFinder = APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:155:Dashboard:RefreshGroupFinder#10", Dashboard.RefreshGroupFinder)--[[/APR_DIAG]]
+
+function Dashboard:CreateGroupFinder(parent)
+    self.groupFinderPanel = CreateFrame("Frame", nil, parent)
+    self.groupFinderPanel:SetPoint("TOPLEFT", 0, -86)
+    self.groupFinderPanel:SetPoint("BOTTOMRIGHT")
+    local root = self.groupFinderPanel
+    self.groupFinderOverview = UI:Label(root, "", 12, "muted")
+    self.groupFinderOverview:SetPoint("TOPLEFT")
+    self.groupFinderOverview:SetPoint("TOPRIGHT")
+    local panel = UI:Panel(root, "borderedPanel", "inset")
+    panel:SetPoint("TOPLEFT", 0, -36); panel:SetPoint("BOTTOMRIGHT")
+    local columns = {
+        {key = "time", label = L["UI_RESOURCE_TIME"], width = 80},
+        {key = "direction", label = "TX/RX", width = 52},
+        {key = "kind", label = "APRFindV1", width = 82},
+        {key = "channel", label = CHANNEL, width = 110},
+        {key = "peer", label = PLAYER, width = 170},
+        {key = "result", label = STATUS},
+    }
+    local x = 10
+    for _, column in ipairs(columns) do
+        column.x = x
+        local label = UI:Label(panel, column.label, 11, "muted")
+        label:SetPoint("TOPLEFT", x, -10)
+        if column.width then label:SetWidth(column.width - 6) end
+        x = x + (column.width or 0)
+    end
+    local scroll = UI:Scroll(panel)
+    scroll:SetPoint("TOPLEFT", 4, -32); scroll:SetPoint("BOTTOMRIGHT", -28, 4)
+    self.trafficList = APR.VirtualList:New(scroll, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:199:callback#12", --[[/APR_DIAG]]function(owner)
+        local row = CreateFrame("Frame", nil, owner)
+        row:SetHeight(30)
+        UI:StyleListRow(row)
+        row.values = {}
+        for _, column in ipairs(columns) do
+            local label = UI:Label(row, "", 11)
+            label:SetPoint("LEFT", column.x - 4, 0)
+            label:SetWordWrap(false)
+            if column.width then label:SetWidth(column.width - 8)
+            else label:SetPoint("RIGHT", -8, 0) end
+            row.values[column.key] = label
+        end
+        row:EnableMouse(true)
+        row:SetScript("OnEnter", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:213:callback#13", --[[/APR_DIAG]]function(control)
+            local record = control.item
+            if not record then return end
+            GameTooltip:SetOwner(control, "ANCHOR_RIGHT")
+            APR:SetTooltipText(GameTooltip, record.direction .. " · " .. record.kind, "general", "accent")
+            APR:AddTooltipLine(GameTooltip, TrafficText(record.channel .. " / " .. record.peer), "general", "base", true)
+            APR:AddTooltipLine(GameTooltip, TrafficText(record.result), "general", "base", true)
+            APR:AddTooltipLine(GameTooltip, TrafficText(record.wire), "general", "muted", true)
+            GameTooltip:Show()
+        end--[[APR_DIAG]])--[[/APR_DIAG]])
+        row:SetScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:223:callback#14", --[[/APR_DIAG]]function() GameTooltip:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
+        return row
+    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:225:callback#15", --[[/APR_DIAG]]function(row, record)
+        for _, column in ipairs(columns) do
+            row.values[column.key]:SetText(column.key == "time" and string.format("%.1f", record.time)
+                or TrafficText(record[column.key]))
+        end
+    end--[[APR_DIAG]])--[[/APR_DIAG]], 30)
+    self.trafficEmpty = UI:Label(panel, L["UI_NO_CAPTURE"], 13, "muted")
+    self.trafficEmpty:SetPoint("TOPLEFT", 12, -48)
+end--[[APR_DIAG]]; Dashboard.CreateGroupFinder = APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:171:Dashboard:CreateGroupFinder#11", Dashboard.CreateGroupFinder)--[[/APR_DIAG]]
 
 function Dashboard:Create(parent)
     local frame = parent and UI:Page(parent) or
@@ -154,33 +243,39 @@ function Dashboard:Create(parent)
     end
     self.frame, self.bars = frame, {}
     local root = frame.content
-    self.capture = UI:Button(root, L["UI_CAPTURE"], 180,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:157:callback#10", --[[/APR_DIAG]]function()
+    self.capture = UI:Button(root, L["UI_CAPTURE"], 180,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:246:callback#17", --[[/APR_DIAG]]function()
             self.frozenTimeline = nil
             self.resources.frozenView = nil
             APR:SetPerformanceCapture(not APR.performanceLogging); self:Refresh()
         end--[[APR_DIAG]])--[[/APR_DIAG]] )
     self.capture:SetPoint("TOPLEFT")
-    local clear = UI:Button(root, L["CLEAR"], 140,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:163:callback#11", --[[/APR_DIAG]]function()
+    local clear = UI:Button(root, L["CLEAR"], 140,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:252:callback#18", --[[/APR_DIAG]]function()
             self.frozenTimeline = nil
-            APR:ResetPerformanceCapture(); self:Refresh()
+            if self.page == "groupFinder" and APR.partyFinder and APR.partyFinder.ClearTraffic then
+                APR.partyFinder:ClearTraffic()
+            else APR:ResetPerformanceCapture() end
+            self:Refresh()
         end--[[APR_DIAG]])--[[/APR_DIAG]] )
     clear:SetPoint("LEFT", self.capture, "RIGHT", 10, 0)
-    local export = UI:Button(root, L["STATUS_EXPORT"], 140,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:168:callback#12", --[[/APR_DIAG]]function()
+    local export = UI:Button(root, L["STATUS_EXPORT"], 140,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:260:callback#19", --[[/APR_DIAG]]function()
             UI:ShowTextReport(L["UI_PERFORMANCE"], APR:BuildDiagnosticReport())
         end--[[APR_DIAG]])--[[/APR_DIAG]] )
     export:SetPoint("LEFT", clear, "RIGHT", 10, 0)
-    self.debugCapture = UI:Button(root, L["DEBUG"], 140,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:172:callback#13", --[[/APR_DIAG]]function()
+    self.debugCapture = UI:Button(root, L["DEBUG"], 140,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:264:callback#20", --[[/APR_DIAG]]function()
             APR:SetDebugCapture(not APR.debugLogging)
             self.mode = "logs"
             self:SetPage("calls")
         end--[[APR_DIAG]])--[[/APR_DIAG]] )
     self.debugCapture:SetPoint("LEFT", export, "RIGHT", 10, 0)
     self.resourcesTab = UI:Button(root, L["UI_RESOURCE_TAB"], 190,
-            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:179:callback#14", --[[/APR_DIAG]]function() self:SetPage("resources") end--[[APR_DIAG]])--[[/APR_DIAG]] )
+            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:271:callback#21", --[[/APR_DIAG]]function() self:SetPage("resources") end--[[APR_DIAG]])--[[/APR_DIAG]] )
     self.resourcesTab:SetPoint("TOPLEFT", 0, -44)
     self.callsTab = UI:Button(root, L["UI_RESOURCE_CALLS_TAB"], 210,
-            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:182:callback#15", --[[/APR_DIAG]]function() self:SetPage("calls") end--[[APR_DIAG]])--[[/APR_DIAG]] )
+            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:274:callback#22", --[[/APR_DIAG]]function() self:SetPage("calls") end--[[APR_DIAG]])--[[/APR_DIAG]] )
     self.callsTab:SetPoint("LEFT", self.resourcesTab, "RIGHT", 10, 0)
+    self.groupFinderTab = UI:Button(root, LFG_TITLE, 190, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:276:callback#23", --[[/APR_DIAG]]function() self:SetPage("groupFinder") end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self.groupFinderTab:SetPoint("LEFT", self.callsTab, "RIGHT", 10, 0)
+    self:CreateGroupFinder(root)
     self.resourcesPanel = CreateFrame("Frame", nil, root)
     self.resourcesPanel:SetPoint("TOPLEFT", 0, -86)
     self.resourcesPanel:SetPoint("BOTTOMRIGHT")
@@ -193,14 +288,14 @@ function Dashboard:Create(parent)
     self.overview:SetPoint("TOPLEFT", 0, 0)
     self.overview:SetPoint("TOPRIGHT", 0, 0)
     local graphMode = UI:Select(root, 250,
-            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:196:callback#16", --[[/APR_DIAG]]function(value)
+            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:291:callback#24", --[[/APR_DIAG]]function(value)
                 self.graphMetric = value; self:RefreshGraph()
             end--[[APR_DIAG]])--[[/APR_DIAG]] )
     graphMode:SetPoint("TOPLEFT", 0, -30)
     graphMode:SetOptions({ { value = "maxMs", label = L["UI_PERF_METRIC_MAX"] },
         { value = "totalMs", label = L["UI_PERF_METRIC_TOTAL"] }, { value = "count", label = L["UI_PERF_METRIC_CALLS"] } },
         self.graphMetric)
-    self.freeze = UI:Button(root, L["UI_PERF_FREEZE_GRAPH"], 220,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:203:callback#17", --[[/APR_DIAG]]function()
+    self.freeze = UI:Button(root, L["UI_PERF_FREEZE_GRAPH"], 220,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:298:callback#25", --[[/APR_DIAG]]function()
             self.frozenTimeline = not self.frozenTimeline and APR:DeepCopyTable(self.timeline) or nil
             self:RefreshGraph()
         end--[[APR_DIAG]])--[[/APR_DIAG]] )
@@ -226,10 +321,10 @@ function Dashboard:Create(parent)
     self.hoverLine:SetColorTexture(1, 1, 1, 0.8)
     self.hoverLine:Hide()
     self.plot:SetScript("OnEnter",
-            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:229:callback#18", --[[/APR_DIAG]]function()
+            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:324:callback#26", --[[/APR_DIAG]]function()
                 self.graphHovered = true; self:UpdateGraphTooltip(true)
             end--[[APR_DIAG]])--[[/APR_DIAG]] )
-    self.plot:SetScript("OnLeave",  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:232:callback#19", --[[/APR_DIAG]]function()
+    self.plot:SetScript("OnLeave",  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:327:callback#27", --[[/APR_DIAG]]function()
             self.graphHovered, self.hoverIndex = nil, nil
             self.hoverLine:Hide()
             GameTooltip:Hide()
@@ -241,7 +336,7 @@ function Dashboard:Create(parent)
     local now = UI:Label(root, APR:FormatSeconds(0), 11, "muted")
     now:SetPoint("TOPRIGHT", self.plot, "BOTTOMRIGHT", 0, -4)
     local mode = UI:Select(root, 220,
-            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:244:callback#20", --[[/APR_DIAG]]function(value)
+            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:339:callback#28", --[[/APR_DIAG]]function(value)
                 self.mode = value; self:Refresh()
             end--[[APR_DIAG]])--[[/APR_DIAG]] )
     mode:SetPoint("TOPLEFT", 0, -234)
@@ -250,7 +345,7 @@ function Dashboard:Create(parent)
         { value = "counters", label = L["UI_COUNTERS"] }, { value = "logs", label = L["UI_DIAGNOSTIC_LOG"] } }, self
     .mode)
     self.search = UI:SearchBox(root, 200, SEARCH,
-            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:253:callback#21", --[[/APR_DIAG]]function(query)
+            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:348:callback#29", --[[/APR_DIAG]]function(query)
                 self.query = query; self:Refresh()
             end--[[APR_DIAG]])--[[/APR_DIAG]] )
     self.search:SetPoint("LEFT", mode, "RIGHT", 12, 0)
@@ -262,7 +357,7 @@ function Dashboard:Create(parent)
     local fields = { { "name", NAME }, { "count", L["UI_CALLS"] }, { "totalMs", totalLabel },
         { "selfMs", L["UI_PERF_SELF_TIME"] }, { "maxMs", maximumLabel } }
     for index, field in ipairs(fields) do
-        local header = UI:ColumnHeader(tablePanel, field[2],  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:265:callback#22", --[[/APR_DIAG]]function()
+        local header = UI:ColumnHeader(tablePanel, field[2],  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:360:callback#30", --[[/APR_DIAG]]function()
                 if field[1] ~= "name" then
                     self.sort = field[1]; self:Refresh()
                 end
@@ -278,7 +373,7 @@ function Dashboard:Create(parent)
     local scroll = UI:Scroll(tablePanel)
     scroll:SetPoint("TOPLEFT", 10, -36)
     scroll:SetPoint("BOTTOMRIGHT", -28, 8)
-    self.list = APR.VirtualList:New(scroll,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:281:callback#23", --[[/APR_DIAG]]function(parent)
+    self.list = APR.VirtualList:New(scroll,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:376:callback#31", --[[/APR_DIAG]]function(parent)
             local row = CreateFrame("Frame", nil, parent)
             row.title = UI:Label(row, "", 12)
             row.title:SetPoint("LEFT", 12, 0); row.title:SetPoint("RIGHT", -404, 0)
@@ -292,7 +387,7 @@ function Dashboard:Create(parent)
             end
             UI:StyleListRow(row)
             row:EnableMouse(true)
-            row:SetScript("OnEnter",  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:295:callback#24", --[[/APR_DIAG]]function(control)
+            row:SetScript("OnEnter",  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:390:callback#32", --[[/APR_DIAG]]function(control)
                     local record = control.item
                     if not record then return end
                     GameTooltip:SetOwner(control, "ANCHOR_RIGHT")
@@ -322,9 +417,9 @@ function Dashboard:Create(parent)
                     GameTooltip:Show()
                 end--[[APR_DIAG]])--[[/APR_DIAG]] )
             row:SetScript("OnLeave",
-                    --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:325:callback#25", --[[/APR_DIAG]]function() GameTooltip:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]] )
+                    --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:420:callback#33", --[[/APR_DIAG]]function() GameTooltip:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]] )
             return row
-        end--[[APR_DIAG]])--[[/APR_DIAG]] ,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:327:callback#26", --[[/APR_DIAG]]function(row, record)
+        end--[[APR_DIAG]])--[[/APR_DIAG]] ,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:422:callback#34", --[[/APR_DIAG]]function(row, record)
             local log = APRData and APRData.DebugLog
             row.title:SetText(record.kind and
             (string.format("+%.3fs [%s] ", record.time - (log and log.startedAt or record.time), record.kind)
@@ -339,11 +434,11 @@ function Dashboard:Create(parent)
     self.empty:SetPoint("TOPLEFT", 12, -48); self.empty:SetPoint("TOPRIGHT", -26, -48)
     local note = UI:Label(root, L["UI_PERF_CAPTURE_HELP"], 11, "muted")
     note:SetPoint("BOTTOMLEFT"); note:SetPoint("BOTTOMRIGHT")
-    frame:HookScript("OnShow",  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:342:callback#27", --[[/APR_DIAG]]function()
+    frame:HookScript("OnShow",  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:437:callback#35", --[[/APR_DIAG]]function()
             self.elapsed = 0
             self.hoverElapsed = 0
             frame:SetScript("OnUpdate",
-                    --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:346:callback#28", --[[/APR_DIAG]]function(_, elapsed)
+                    --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:441:callback#36", --[[/APR_DIAG]]function(_, elapsed)
                         self.elapsed = self.elapsed + elapsed
                         if self.elapsed >= 1 then
                             self.elapsed = 0; self:Refresh()
@@ -357,19 +452,19 @@ function Dashboard:Create(parent)
                     end--[[APR_DIAG]])--[[/APR_DIAG]] )
             self:Refresh()
         end--[[APR_DIAG]])--[[/APR_DIAG]] )
-    frame:HookScript("OnHide",  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:360:callback#29", --[[/APR_DIAG]]function()
+    frame:HookScript("OnHide",  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:455:callback#37", --[[/APR_DIAG]]function()
             frame:SetScript("OnUpdate", nil)
             self.graphHovered, self.hoverIndex = nil, nil
             self.hoverLine:Hide()
         end--[[APR_DIAG]])--[[/APR_DIAG]] )
     self.plot:HookScript("OnSizeChanged",
-            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:366:callback#30", --[[/APR_DIAG]]function() self:Refresh() end--[[APR_DIAG]])--[[/APR_DIAG]] )
+            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:461:callback#38", --[[/APR_DIAG]]function() self:Refresh() end--[[APR_DIAG]])--[[/APR_DIAG]] )
     self:SetPage(self.page)
-end--[[APR_DIAG]]; Dashboard.Create = APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:146:Dashboard:Create#9", Dashboard.Create)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Dashboard.Create = APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:235:Dashboard:Create#16", Dashboard.Create)--[[/APR_DIAG]]
 
 function Dashboard:Show()
     if APR.Workspace then return APR.Workspace:Show("perf") end
     if not self.frame then self:Create() end
     self.frame:Show()
     self:Refresh()
-end--[[APR_DIAG]]; Dashboard.Show = APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:370:Dashboard:Show#31", Dashboard.Show)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Dashboard.Show = APRTrace("APR-Core/ui/panels/PerformanceDashboard.lua:465:Dashboard:Show#39", Dashboard.Show)--[[/APR_DIAG]]

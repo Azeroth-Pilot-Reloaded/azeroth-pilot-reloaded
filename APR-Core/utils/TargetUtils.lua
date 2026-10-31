@@ -13,22 +13,85 @@ function APR:GetTargetID(unit)
     return APRSecret:SafeUnitCreatureID(unit)
 end--[[APR_DIAG]]; APR.GetTargetID = APRTrace("APR-Core/utils/TargetUtils.lua:11:APR:GetTargetID#1", APR.GetTargetID)--[[/APR_DIAG]]
 
---- Prevent interactions with forbidden NPCs declared on a step.
--- The function is intentionally defensive: it checks the current target and exits early when no match exists.
-function APR:CheckDenyNPC(step)
-    if (step and step.DenyNPC) then
-        local npc_id, name = self:GetTargetID(), APR:SafeUnitName("target")
-        if (npc_id and name) then
-            if (npc_id == step.DenyNPC) then
-                APR:Debug("APR:CheckDenyNPC() - Deny NPC found")
+local inaccessibleDenyNPCGUID = {}
 
-                C_GossipInfo.CloseGossip()
-                C_Timer.After(0.3, --[[APR_DIAG]]APRTrace("APR-Core/utils/TargetUtils.lua:26:callback#3", --[[/APR_DIAG]]function() APR:CloseQuest() end--[[APR_DIAG]])--[[/APR_DIAG]])
-                APR:NotYet()
-            end
-        end
-    end
-end--[[APR_DIAG]]; APR.CheckDenyNPC = APRTrace("APR-Core/utils/TargetUtils.lua:18:APR:CheckDenyNPC#2", APR.CheckDenyNPC)--[[/APR_DIAG]]
+local function GetDenyNPCProfile(self)
+    local profile = self:GetSettingsProfile()
+    if not profile or not profile.enableAddon or self.routeValidationPending or self.routeValidationFailed
+        or (InCombatLockdown and InCombatLockdown()) or (IsModifierKeyDown and IsModifierKeyDown()) then return nil end
+    return profile
+end--[[APR_DIAG]]; GetDenyNPCProfile = APRTrace("APR-Core/utils/TargetUtils.lua:18:GetDenyNPCProfile#2", GetDenyNPCProfile)--[[/APR_DIAG]]
+
+local function HasDenyNPCPolicy(step, npcID)
+    if not APRSecret:CanAccessTable(step) then return false end
+    local denied = step.DenyNPC
+    return APRSecret:CanAccessValue(denied) and denied == npcID
+end--[[APR_DIAG]]; HasDenyNPCPolicy = APRTrace("APR-Core/utils/TargetUtils.lua:25:HasDenyNPCPolicy#3", HasDenyNPCPolicy)--[[/APR_DIAG]]
+
+local function IsDenyNPCRequestCurrent(self, request)
+    if GetDenyNPCProfile(self) ~= request.profile or not self:IsStepContextCurrent(request.context)
+        or self.npcInteraction ~= request.owner
+        or (self.npcInteraction and self.npcInteraction.interaction) ~= request.interaction then return false end
+    -- Runtime steps can be replaced independently of the enclosing definition.
+    if self.ActiveRoute and self:GetCurrentStep() ~= request.step then return false end
+    if not HasDenyNPCPolicy(request.step, request.npcID)
+        or (request.source and not HasDenyNPCPolicy(request.source, request.npcID)) then return false end
+    local npcGUID = APRSecret:SafeUnitGUID("npc", inaccessibleDenyNPCGUID)
+    -- The native NPC token may appear late, while the tracked page and target
+    -- remain unchanged. An already-known identity must continue to match exactly.
+    if npcGUID ~= request.npcGUID and (request.npcGUID ~= nil or npcGUID ~= request.targetGUID) then return false end
+    return APRSecret:SafeUnitGUID("target", inaccessibleDenyNPCGUID) == request.targetGUID
+        and self:GetTargetID() == request.npcID and self:SafeUnitName("target") ~= nil
+end--[[APR_DIAG]]; IsDenyNPCRequestCurrent = APRTrace("APR-Core/utils/TargetUtils.lua:31:IsDenyNPCRequestCurrent#4", IsDenyNPCRequestCurrent)--[[/APR_DIAG]]
+
+--- Prevent interactions with forbidden NPCs declared on a step.
+-- One pending close belongs to the exact step, target and post-close interaction.
+function APR:CheckDenyNPC(step)
+    local pending = self.denyNPCCloseRequest
+    if pending and pending.step == step and IsDenyNPCRequestCurrent(self, pending) then return end
+    self.denyNPCCloseRequest = nil
+    if pending and pending.timer then pending.timer:Cancel() end
+
+    local profile = GetDenyNPCProfile(self)
+    if not profile or not APRSecret:CanAccessTable(step) then return end
+    local denied = step.DenyNPC
+    if not APRSecret:CanAccessValue(denied) or type(denied) ~= "number" then return end
+    if self.ActiveRoute and self:GetCurrentStep() ~= step then return end
+    -- GetStep caches a shallow runtime copy; also observe in-place source edits.
+    local runtime = self.runtimeRouteStep
+    local source = self.ActiveRoute and runtime and runtime.step == step and runtime.source or nil
+    if source and not HasDenyNPCPolicy(source, denied) then return end
+    if self:GetTargetID() ~= denied or not self:SafeUnitName("target") then return end
+    local targetGUID = APRSecret:SafeUnitGUID("target", inaccessibleDenyNPCGUID)
+    local npcGUID = APRSecret:SafeUnitGUID("npc", inaccessibleDenyNPCGUID)
+    if type(targetGUID) ~= "string" or targetGUID == ""
+        or (npcGUID ~= nil and npcGUID ~= targetGUID) then return end
+
+    local owner = self.npcInteraction
+    local interaction = owner and owner.interaction
+    local request = { context = self:CaptureStepContext(), profile = profile, step = step, source = source,
+        npcID = denied, targetGUID = targetGUID, owner = owner }
+    self:Debug("APR:CheckDenyNPC() - Deny NPC found")
+    C_GossipInfo.CloseGossip()
+    -- GOSSIP_CLOSED can synchronously clear our own gossip interaction. A new
+    -- opening created during that close belongs to a different request.
+    if self.denyNPCCloseRequest or self.npcInteraction ~= owner then return end
+    request.interaction = owner and owner.interaction
+    if request.interaction and request.interaction ~= interaction then return end
+    request.npcGUID = APRSecret:SafeUnitGUID("npc", inaccessibleDenyNPCGUID)
+    if request.npcGUID ~= nil and request.npcGUID ~= targetGUID then return end
+    if not IsDenyNPCRequestCurrent(self, request) then return end
+
+    request.timer = C_Timer.NewTimer(0.3, --[[APR_DIAG]]APRTrace("APR-Core/utils/TargetUtils.lua:85:callback#6", --[[/APR_DIAG]]function()
+        if self.denyNPCCloseRequest ~= request then return end
+        -- Release ownership before native/context calls, including calls that fail.
+        self.denyNPCCloseRequest = nil
+        request.timer = nil
+        if IsDenyNPCRequestCurrent(self, request) then self:CloseQuest() end
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self.denyNPCCloseRequest = request
+    self:NotYet()
+end--[[APR_DIAG]]; APR.CheckDenyNPC = APRTrace("APR-Core/utils/TargetUtils.lua:49:APR:CheckDenyNPC#5", APR.CheckDenyNPC)--[[/APR_DIAG]]
 
 --- Trigger a conditional emote on specific NPCs required by a quest step.
 function APR:DoEmote(step)
@@ -40,7 +103,7 @@ function APR:DoEmote(step)
             APR:HandleEmoteETA(step, step.Emote.emote)
         end
     end
-end--[[APR_DIAG]]; APR.DoEmote = APRTrace("APR-Core/utils/TargetUtils.lua:34:APR:DoEmote#4", APR.DoEmote)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.DoEmote = APRTrace("APR-Core/utils/TargetUtils.lua:97:APR:DoEmote#7", APR.DoEmote)--[[/APR_DIAG]]
 
 function APR:HandleEmoteETA(step, emote)
     if not step or not step.Emote or not step.EmoteETA or not self.GetRouteActionState then return end
@@ -52,7 +115,7 @@ function APR:HandleEmoteETA(step, emote)
     state.emoteTimerStarted = true
     self.AFK.lastStep = APRData[self.PlayerID][self.ActiveRoute]
     self.AFK:SetAfkTimer(step.EmoteETA)
-end--[[APR_DIAG]]; APR.HandleEmoteETA = APRTrace("APR-Core/utils/TargetUtils.lua:45:APR:HandleEmoteETA#5", APR.HandleEmoteETA)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.HandleEmoteETA = APRTrace("APR-Core/utils/TargetUtils.lua:108:APR:HandleEmoteETA#8", APR.HandleEmoteETA)--[[/APR_DIAG]]
 
 -- Observe both manually typed emotes and APR's button, without starting a timer
 -- merely because the step is displayed or a different emote is performed.
@@ -62,14 +125,14 @@ function APR:OnStepEmote(emote)
     local index = data and self.ActiveRoute and data[self.ActiveRoute]
     if not index or not profile or not profile.enableAddon then return end
     self:HandleEmoteETA(self:GetStep(index), emote)
-end--[[APR_DIAG]]; APR.OnStepEmote = APRTrace("APR-Core/utils/TargetUtils.lua:59:APR:OnStepEmote#6", APR.OnStepEmote)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.OnStepEmote = APRTrace("APR-Core/utils/TargetUtils.lua:122:APR:OnStepEmote#9", APR.OnStepEmote)--[[/APR_DIAG]]
 
 if hooksecurefunc then
     if C_ChatInfo and C_ChatInfo.PerformEmote then
-        hooksecurefunc(C_ChatInfo, "PerformEmote", --[[APR_DIAG]]APRTrace("APR-Core/utils/TargetUtils.lua:69:callback#7", --[[/APR_DIAG]]function(emote) APR:OnStepEmote(emote) end--[[APR_DIAG]])--[[/APR_DIAG]])
+        hooksecurefunc(C_ChatInfo, "PerformEmote", --[[APR_DIAG]]APRTrace("APR-Core/utils/TargetUtils.lua:132:callback#10", --[[/APR_DIAG]]function(emote) APR:OnStepEmote(emote) end--[[APR_DIAG]])--[[/APR_DIAG]])
     end
     if DoEmote then
-        hooksecurefunc("DoEmote", --[[APR_DIAG]]APRTrace("APR-Core/utils/TargetUtils.lua:72:callback#8", --[[/APR_DIAG]]function(emote) APR:OnStepEmote(emote) end--[[APR_DIAG]])--[[/APR_DIAG]])
+        hooksecurefunc("DoEmote", --[[APR_DIAG]]APRTrace("APR-Core/utils/TargetUtils.lua:135:callback#11", --[[/APR_DIAG]]function(emote) APR:OnStepEmote(emote) end--[[APR_DIAG]])--[[/APR_DIAG]])
     end
 end
 
@@ -84,7 +147,7 @@ function APR:PerformEmote(emote)
         DoEmote(emote)
     end
     self:OnStepEmote(emote)
-end--[[APR_DIAG]]; APR.PerformEmote = APRTrace("APR-Core/utils/TargetUtils.lua:77:APR:PerformEmote#9", APR.PerformEmote)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.PerformEmote = APRTrace("APR-Core/utils/TargetUtils.lua:140:APR:PerformEmote#12", APR.PerformEmote)--[[/APR_DIAG]]
 
 ---Scans a unit to check if it is an NPC and retrieves NPC information.
 ---@param unit string The unit token to scan (e.g., "target", "mouseover")
@@ -125,7 +188,7 @@ function APR:ScanUnitForNPC(unit, source)
             end
         end
     end
-end--[[APR_DIAG]]; APR.ScanUnitForNPC = APRTrace("APR-Core/utils/TargetUtils.lua:93:APR:ScanUnitForNPC#10", APR.ScanUnitForNPC)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ScanUnitForNPC = APRTrace("APR-Core/utils/TargetUtils.lua:156:APR:ScanUnitForNPC#13", APR.ScanUnitForNPC)--[[/APR_DIAG]]
 
 -- Remember only public localized names; never persist restricted unit identity.
 function APR:PrepareNPCNameLocale()
@@ -133,7 +196,7 @@ function APR:PrepareNPCNameLocale()
     local locale = GetLocale and GetLocale() or "enUS"
     if APRData.NPCNameLocale and APRData.NPCNameLocale ~= locale then APRData.NPCList = {} end
     APRData.NPCNameLocale = locale
-end--[[APR_DIAG]]; APR.PrepareNPCNameLocale = APRTrace("APR-Core/utils/TargetUtils.lua:131:APR:PrepareNPCNameLocale#11", APR.PrepareNPCNameLocale)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.PrepareNPCNameLocale = APRTrace("APR-Core/utils/TargetUtils.lua:194:APR:PrepareNPCNameLocale#14", APR.PrepareNPCNameLocale)--[[/APR_DIAG]]
 
 function APR:RememberNPCName(npcID, name)
     if not APRData or not APRSecret:CanAccessValue(npcID) or type(npcID) ~= "number" then return false end
@@ -143,7 +206,7 @@ function APR:RememberNPCName(npcID, name)
     local changed = not APRSecret:CanAccessValue(APRData.NPCList[npcID]) or APRData.NPCList[npcID] ~= name
     APRData.NPCList[npcID] = name
     return changed
-end--[[APR_DIAG]]; APR.RememberNPCName = APRTrace("APR-Core/utils/TargetUtils.lua:138:APR:RememberNPCName#12", APR.RememberNPCName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RememberNPCName = APRTrace("APR-Core/utils/TargetUtils.lua:201:APR:RememberNPCName#15", APR.RememberNPCName)--[[/APR_DIAG]]
 
 --- Gets the raid icon NPC name for a given NPC ID.
 --- @param npcID number The NPC ID to look up
@@ -182,7 +245,7 @@ function APR:GetRaidIconNpcName(npcID)
     end
     if not APRSecret:CanAccessValue(name) or type(name) ~= "string" or name == "" or name:find("[\r\n|%[%];]") then return nil end
     return name, localized
-end--[[APR_DIAG]]; APR.GetRaidIconNpcName = APRTrace("APR-Core/utils/TargetUtils.lua:151:APR:GetRaidIconNpcName#13", APR.GetRaidIconNpcName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetRaidIconNpcName = APRTrace("APR-Core/utils/TargetUtils.lua:214:APR:GetRaidIconNpcName#16", APR.GetRaidIconNpcName)--[[/APR_DIAG]]
 
 --- Finds the unit token for a raid target with the specified NPC ID.
 ---
@@ -213,7 +276,7 @@ function APR:FindRaidIconUnitToken(npcID)
     end
 
     return nil
-end--[[APR_DIAG]]; APR.FindRaidIconUnitToken = APRTrace("APR-Core/utils/TargetUtils.lua:197:APR:FindRaidIconUnitToken#14", APR.FindRaidIconUnitToken)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.FindRaidIconUnitToken = APRTrace("APR-Core/utils/TargetUtils.lua:260:APR:FindRaidIconUnitToken#17", APR.FindRaidIconUnitToken)--[[/APR_DIAG]]
 
 --- Builds a raid icon macro for a specific NPC.
 --- @param npcID number The NPC ID to create the macro for
@@ -237,4 +300,4 @@ function APR:BuildRaidIconMacro(npcID, unitToken)
     end
 
     return "/tm [@mouseover,exists][@target,exists] 8"
-end--[[APR_DIAG]]; APR.BuildRaidIconMacro = APRTrace("APR-Core/utils/TargetUtils.lua:222:APR:BuildRaidIconMacro#15", APR.BuildRaidIconMacro)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.BuildRaidIconMacro = APRTrace("APR-Core/utils/TargetUtils.lua:285:APR:BuildRaidIconMacro#18", APR.BuildRaidIconMacro)--[[/APR_DIAG]]
