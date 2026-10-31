@@ -628,6 +628,7 @@
         {
             Done = { 9983 },
             Coord = { x = 8783, y = -1543 },
+            NpcDismount = 18417,
             Zone = 107,
             _index = 97,
         },
