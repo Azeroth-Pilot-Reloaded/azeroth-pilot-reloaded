@@ -38,7 +38,7 @@ local function Provider()
         if state.reject then return nil end
         state.creates = state.creates + 1
         state.current = { mapID = request.mapID, x = request.x / 100, y = request.y / 100,
-            name = request.name, flags = request.flags }
+            name = request.name, flags = request.flags, stripCoordinates = request.stripCoordinates }
         assert(request.suppressPathfinding == true)
         return state.current
     end
@@ -102,6 +102,23 @@ assert(unscheduled:RefreshWaypointUI())
 assert(manual.creates == 2 and manual.current.x == 0.3)
 unscheduled:SetWaypointUIEnabled(false)
 assert(manual.current == nil)
+
+local labelsAPI, labels = Provider()
+local labelOptions = { name = "Follow path 12\nKeep 3 supplies" }
+local labelInstance = New({ getWaypointUIAPI = function() return labelsAPI end,
+    getWaypointTarget = function() return MapPoint(0.25, 0.75), labelOptions end }, true)
+assert(labels.current.stripCoordinates == true and labels.current.name == labelOptions.name,
+    "Automatic output must hide generated coordinates without editing semantic instructions")
+labelOptions.stripCoordinates = false
+labelInstance:RefreshWaypointUI()
+assert(labels.creates == 2 and labels.current.stripCoordinates == false)
+labelOptions.stripCoordinates = nil
+labelInstance:RefreshWaypointUI()
+assert(labels.creates == 3 and labels.current.stripCoordinates == true)
+labelInstance:RefreshWaypointUI()
+assert(labels.creates == 3 and labels.current.x == 0.25 and labels.current.y == 0.75,
+    "Repeated automatic output must retain the target coordinates without recreating the pin")
+labelInstance:SetWaypointUIEnabled(false)
 
 -- The normal WoW scheduler is optional and resolved only upon activation.
 local globalCreate, globalTimers = Scheduler()
