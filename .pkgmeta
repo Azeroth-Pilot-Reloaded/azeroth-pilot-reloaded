@@ -4,6 +4,10 @@ enable-toc-creation: yes
 required-dependencies:
   - libtaxidata
 
+# Terrain export replaces only this block with discovered sibling addon moves.
+# APR-TERRAIN-MOVES-BEGIN
+# APR-TERRAIN-MOVES-END
+
 ignore:
   # Repository metadata, local environments and developer tooling.
   - .github
@@ -21,6 +25,7 @@ ignore:
   - tools
   - tests
   - Update-Libraries.cmd
+  - NavigationData/manifest.json
 
   # Documentation is kept in the repository, not loaded by the addon.
   - README.md
