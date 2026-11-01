@@ -93,3 +93,28 @@ assert(APRData.p.r == authoredProgress, "Releasing an external waypoint cannot a
 APR.NavigationData.ReleaseWaypoints = previousReleaseWaypoints
 nav:Cancel("cleared")
 print("Navigation controller: complete transient itinerary, independent arrivals, generation guards, death/progress and client thresholds passed")
+
+-- Authored hearth coordinates are the recorder's cast position, even when
+-- they belong to another continent. They cannot create a detour to that point.
+x = 0
+APR:SetRouteProgress("r", 1, "test")
+local buildEdges = APR.NavigationData.BuildEdges
+function APR.NavigationData:BuildEdges() error("A hearth cast must not plan a geographic journey") end
+for _, action in ipairs({ "UseHS", "UseDalaHS", "UseGarrisonHS" }) do
+    step = { [action] = 901, Coord = { x = 0, y = 20000, mapID = 3 }, Zone = 3 }
+    nav:ForceRefresh(); nav:Update()
+    assert(nav:GetState() == "ready" and APR.IsInRouteZone and not nav:IsNavigating() and not nav.search,
+        "The authored hearth action remains visible without a portal itinerary: " .. action)
+    assert(APRData.p.r == 1, "Exempting travel cannot complete the authored action")
+end
+APR.NavigationData.BuildEdges = buildEdges
+step = { SetHS = 902, Coord = { x = 0, y = 20000, mapID = 3 }, Zone = 3 }
+nav:ForceRefresh(); nav:Update(); FinishPlanning()
+assert(nav:IsNavigating(), "Binding at an inn still needs geographic guidance")
+step = { UseGarrisonHS = 901, Coord = { x = 0, y = 20000, mapID = 3 }, Zone = 3 }
+nav:ForceRefresh(); nav:Update()
+assert(not nav:IsNavigating() and not nav.search and #nav.queue == 0,
+    "Entering a hearth step cancels the previous itinerary rather than leaving a stale portal")
+step = { Waypoint = 903, Coord = { x = 0, y = 20000, mapID = 3 }, Zone = 3 }
+nav:ForceRefresh(); nav:Update(); FinishPlanning()
+assert(nav:IsNavigating() and APRData.p.r == 1, "The next physical objective resumes normal planning")
