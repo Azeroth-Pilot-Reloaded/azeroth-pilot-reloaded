@@ -6,10 +6,17 @@ APR.performanceSlowThresholdMs = 3
 local function Now() return GetTime and GetTime() or debugprofilestop() / 1000 end
 
 function APR:ResetPerformanceCapture()
-    APRData.PerformanceLog = { summary = {}, slow = {}, timeline = {}, counters = {}, startedAt = Now(),
-        slowThresholdMs = self.performanceSlowThresholdMs, metricLimit = METRIC_LIMIT,
+    APRData.PerformanceLog = {
+        summary = {},
+        slow = {},
+        timeline = {},
+        counters = {},
+        startedAt = Now(),
+        slowThresholdMs = self.performanceSlowThresholdMs,
+        metricLimit = METRIC_LIMIT,
         diagnosticRevision = APRInstrumentation and APRInstrumentation.revision,
-        debugCallsDuringCapture = APRInstrumentation and APRInstrumentation.debug == true }
+        debugCallsDuringCapture = APRInstrumentation and APRInstrumentation.debug == true
+    }
     self.performanceBreadcrumb, self.performanceBreadcrumbAt = nil, nil
     if APRInstrumentation then APRInstrumentation.ResetLog() end
     if self.ResourceMonitor then self.ResourceMonitor:Reset() end
@@ -83,7 +90,7 @@ function APR:RecordPerformanceDuration(name, elapsed, steps, parent, ownMs, fail
     summary.maxMs = math.max(summary.maxMs, elapsed)
     if ownMs then summary.selfMs = (summary.selfMs or 0) + ownMs end
     if failure then summary.errors = (summary.errors or 0) + 1 end
-    summary.histogram = summary.histogram or {0, 0, 0, 0}
+    summary.histogram = summary.histogram or { 0, 0, 0, 0 }
     local band = elapsed < 1 and 1 or elapsed < 3 and 2 or elapsed < 10 and 3 or 4
     summary.histogram[band] = summary.histogram[band] + 1
     log.lastAt = now
@@ -92,7 +99,7 @@ function APR:RecordPerformanceDuration(name, elapsed, steps, parent, ownMs, fail
     local slot = second % TIMELINE_SECONDS + 1
     local bucket = log.timeline[slot]
     if not bucket or bucket.second ~= second then
-        bucket = {second = second, count = 0, totalMs = 0, maxMs = 0}
+        bucket = { second = second, count = 0, totalMs = 0, maxMs = 0 }
         log.timeline[slot] = bucket
     end
     if bucket.count == 0 or elapsed > bucket.maxMs then
@@ -105,11 +112,17 @@ function APR:RecordPerformanceDuration(name, elapsed, steps, parent, ownMs, fail
         bucket.slowCount = (bucket.slowCount or 0) + 1
         log.cursor = (log.cursor or 0) % SLOW_LIMIT + 1
         log.slow[log.cursor] = {
-            name = name, ms = elapsed, time = now, route = self.ActiveRoute, steps = steps,
+            name = name,
+            ms = elapsed,
+            time = now,
+            route = self.ActiveRoute,
+            steps = steps,
             step = self.PlayerID and APRData[self.PlayerID] and APRData[self.PlayerID][self.ActiveRoute],
             parent = parent or (APRInstrumentation and APRInstrumentation.CurrentName()) or self.performanceScope,
-            selfMs = ownMs, failure = failure,
-            breadcrumb = self.performanceBreadcrumb, breadcrumbAt = self.performanceBreadcrumbAt,
+            selfMs = ownMs,
+            failure = failure,
+            breadcrumb = self.performanceBreadcrumb,
+            breadcrumbAt = self.performanceBreadcrumbAt,
         }
     end
 end
@@ -121,7 +134,7 @@ function APR:GetPerformanceTimeline()
     for second = final - TIMELINE_SECONDS + 1, final do
         local bucket = log.timeline and log.timeline[second % TIMELINE_SECONDS + 1]
         result[#result + 1] = bucket and bucket.second == second and bucket or
-            {second = second, count = 0, totalMs = 0, maxMs = 0}
+            { second = second, count = 0, totalMs = 0, maxMs = 0 }
     end
     return result
 end
@@ -131,9 +144,15 @@ function APR:GetPerformanceBucketDetails(bucket, finalSecond)
     if not bucket then return end
     local count = bucket.count or 0
     return {
-        offset = bucket.second - finalSecond, count = count, totalMs = bucket.totalMs or 0,
-        maxMs = bucket.maxMs or 0, average = (bucket.totalMs or 0) / math.max(1, count),
-        slowCount = bucket.slowCount, peakName = bucket.peakName, route = bucket.peakRoute, step = bucket.peakStep,
+        offset = bucket.second - finalSecond,
+        count = count,
+        totalMs = bucket.totalMs or 0,
+        maxMs = bucket.maxMs or 0,
+        average = (bucket.totalMs or 0) / math.max(1, count),
+        slowCount = bucket.slowCount,
+        peakName = bucket.peakName,
+        route = bucket.peakRoute,
+        step = bucket.peakStep,
         slowThresholdMs = APRData.PerformanceLog and APRData.PerformanceLog.slowThresholdMs or 10,
     }
 end
@@ -167,10 +186,10 @@ function APR:GetPerformanceRows(mode, sortKey, query, displayName, reusableRows)
             if entry and matches(entry.name) then rows[#rows + 1] = entry end
         end
     elseif mode == "counters" then
-        for name, count in pairs(log.counters or {}) do
+        for name, counterValue in pairs(log.counters or {}) do
             if matches(name) then
                 local row = nextRow()
-                row.name, row.count = name, count
+                row.name, row.count = name, counterValue
                 row.totalMs, row.maxMs, row.selfMs, row.errors = nil, nil, nil, nil
                 row.average, row.histogram = nil, nil
             end

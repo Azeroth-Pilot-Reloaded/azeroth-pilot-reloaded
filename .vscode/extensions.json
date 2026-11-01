@@ -2,6 +2,7 @@
     "recommendations": [
         "EditorConfig.EditorConfig",
         "sumneko.lua",
+        "trixnz.vscode-lua",
         "esbenp.prettier-vscode",
         "ketho.wow-api",
         "septh.wow-bundle",

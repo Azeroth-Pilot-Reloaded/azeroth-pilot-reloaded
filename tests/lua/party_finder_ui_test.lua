@@ -1,6 +1,7 @@
 -- Discovery controls share persisted state; only an explicit candidate-row action can invite.
 local env = dofile("tests/lua/route_ui_test_env.lua")
 local locale = dofile("tests/lua/localization_test_env.lua")
+locale.GF_MORE = "More"
 locale.GF_RESULT_COUNT, locale.GF_RESULTS_TOOLTIP = "%d results", "%d results"
 locale.GF_LAST_SEEN, locale.GF_LEVEL_CLASS, locale.GF_GROUP_SIZE = "Age %d", "%d / %s", "%d slots"
 locale.GF_MATCH_CRITERIA, locale.GF_INVITE_CONTEXT = "%s / %s", "%s / %s"

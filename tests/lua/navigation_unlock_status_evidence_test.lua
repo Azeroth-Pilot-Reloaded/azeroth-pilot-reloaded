@@ -1,7 +1,7 @@
 -- The status export must distinguish an orphaned attempt from active native
 -- guidance without starting, restoring, copying or advancing that guidance.
 local locale = setmetatable({}, { __index = function(_, key) return key end })
-local library = { modules = { conditions = 8, unlock_runner = 4, unlocks = 1, unlock_locales = 3 } }
+local library = { modules = { geography = 42, conditions = 8, unlock_runner = 4, unlocks = 1, unlock_locales = 3 } }
 function LibStub(name)
     if name == "AceLocale-3.0" then return { GetLocale = function() return locale end } end
     if name == "LibAPRNavigation-1.0" then return library, 19 end
@@ -40,6 +40,7 @@ APR:ExportStatusReport()
 assert(text:find("**hostReady**: true", 1, true) and text:find("**libraryLoaded**: true", 1, true)
     and text:find("**libraryVersion**: 19", 1, true) and text:find("**hostRevision**: 3", 1, true))
 assert(text:find("**unlock\\_runner**: 4", 1, true) and text:find("**unlockRoutes**: 3", 1, true))
+assert(text:find("**geography**: 42", 1, true), "Status identifies the loaded geography implementation")
 assert(text:find("**active**: false", 1, true) and text:find("**saved**: false", 1, true)
     and text:find("**attempts**:", 1, true) and text:find("**portal-karesh**: true", 1, true),
     "An orphaned attempted entrance remains distinguishable from an active or saved session")
