@@ -383,7 +383,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Wetlands"] = {
         {
             Qpart = { [279] = { 1, 2 } },
             Fillers = { [484] = { 1 } },
-            Note = { "ENEMIES_RESIST_FROST_SAVE_COLD_SNAP_LARGE", "COLD_SNAP_DOWN_KILL_REST_MURLOCS_RELATIVE" },
+            Note = { "ENEMIES_RESIST_FROST_SAVE_COLD_SNAP_LARGE", "COLD_SNAP_COOLDOWN_USE_ARCANE_EXPLOSION_IF_NOVA_RESISTED" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 17.745, 40.135),
             Range = 30,
             Zone = 1437,

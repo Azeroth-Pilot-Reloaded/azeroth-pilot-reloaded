@@ -791,7 +791,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Human"] = {
         },
         {
             Done = { 6261 },
-            Coord = { x = 489.99, y = -8835.76 },
+            Coord = { x = 484.2, y = -8832.5 },
             IsQuestOnQuest = 6261,
             MinLevel = 15,
             Zone = 1453,

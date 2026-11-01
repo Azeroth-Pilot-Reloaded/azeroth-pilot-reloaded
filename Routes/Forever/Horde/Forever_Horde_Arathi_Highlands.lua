@@ -498,7 +498,7 @@ APR.RouteQuestStepList["Forever-Horde-Arathi-Highlands"] = {
         {
             Qpart = { [503] = { 1 } },
             Fillers = { [566] = { 1 } },
-            Note = { "CHECK_OTHER_MARKED_SPAWNS", "UPSTAIRS", "INSIDE_BUILDING" },
+            Note = { "MULTIPLE_SPAWN_LOCATIONS", "UPSTAIRS", "INSIDE_BUILDING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1416, 60.55, 43.91),
             Range = 15,
             IsQuestCompleted = 498,

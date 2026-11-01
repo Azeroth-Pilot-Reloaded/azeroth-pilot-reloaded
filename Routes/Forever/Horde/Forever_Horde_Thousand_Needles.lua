@@ -1064,7 +1064,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
         },
         {
             Qpart = { [4821] = { 1 } },
-            Note = { "CHECK_OTHER_MARKED_SPAWNS" },
+            Note = { "MULTIPLE_SPAWN_LOCATIONS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 46.995, 53.25),
             Range = 30,
             Zone = 1441,

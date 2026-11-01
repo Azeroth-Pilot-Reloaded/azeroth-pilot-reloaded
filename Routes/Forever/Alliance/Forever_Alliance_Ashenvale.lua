@@ -1781,7 +1781,7 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             GetFP = 64,
-            Note = { "CAREFUL_HORDE_GUARDS_MAKING_WAY_AZSHARA_THERES", "ENCOUNTER_WARSONG_OUTRIDER_PATROLLING_ROAD_NORTH_EAST", "TRACK_HUMANOIDS_LOCATE_GUARDS" },
+            Note = { "AVOID_TWO_HORDE_GUARD_CAMPS_SPLINTERTREE_ROAD", "ENCOUNTER_WARSONG_OUTRIDER_PATROLLING_ROAD_NORTH_EAST", "TRACK_HUMANOIDS_LOCATE_GUARDS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 11.9, 77.57),
             Zone = 1447,
             _index = 93,

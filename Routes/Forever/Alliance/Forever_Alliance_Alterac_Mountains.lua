@@ -1291,7 +1291,7 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Qpart = { [1713] = { 1 } },
-            Note = { "FOLLOW_BATH_RAH_WINDWATCHER_SUMMON_CYCLONIAN", "CYCLONIAN_HITS_FAIRLY_HARD_SOLOED_SURE_CHECK" },
+            Note = { "FOLLOW_BATH_RAH_WINDWATCHER_SUMMON_CYCLONIAN", "CYCLONIAN_LEVEL_40_ELITE_BRING_HELP_CANNOT" },
             Coord = { x = -1474.87, y = 340.8 },
             Range = 10,
             ETA = 40,
@@ -1389,7 +1389,7 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Qpart = { [684] = { 1 } },
-            Note = { "MAREZ_COWL_2_DIFFERENT_SPAWN_LOCATIONS_ONE", "CAREFUL_STEALTHED_LEVEL_36_37_ELITE_SYNDICATE", "SCOUT_TARGET_EAGLE_EYE", "SKIP_THIS_ONE_OR_GROUP" },
+            Note = { "MAREZ_COWL_TWO_SPAWNS_HIGH_GROUND_BEHIND_HOUSE", "CAREFUL_STEALTHED_LEVEL_36_37_ELITE_SYNDICATE", "SCOUT_TARGET_EAGLE_EYE", "SKIP_THIS_ONE_OR_GROUP" },
             Coord = { x = -1930.49, y = -1658.82 },
             Range = 30,
             Class = "HUNTER",
@@ -1398,7 +1398,7 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
         },
         {
             Qpart = { [684] = { 1 } },
-            Note = { "MAREZ_COWL_2_DIFFERENT_SPAWN_LOCATIONS_ONE", "CAREFUL_STEALTHED_LEVEL_36_37_ELITE_SYNDICATE", "SKIP_THIS_ONE_OR_GROUP" },
+            Note = { "MAREZ_COWL_TWO_SPAWNS_HIGH_GROUND_BEHIND_HOUSE", "CAREFUL_STEALTHED_LEVEL_36_37_ELITE_SYNDICATE", "SKIP_THIS_ONE_OR_GROUP" },
             Coord = { x = -1930.49, y = -1658.82 },
             Range = 30,
             Class = { "DRUID", "ROGUE" },

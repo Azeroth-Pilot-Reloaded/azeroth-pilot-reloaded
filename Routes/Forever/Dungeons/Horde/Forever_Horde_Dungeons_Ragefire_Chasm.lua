@@ -181,7 +181,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             Note = { "NOT_FLY_ANYWHERE" },
             Coord = { x = -4313.6, y = 1676.24 },
             IsQuestUncompleted = 4921,
-            Race = { "Scourge", "Tauren" },
+            Race = "Tauren",
             Zone = 1454,
             _index = 19,
         },
@@ -299,7 +299,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
         {
             LearnSkill = { spellID = 227 },
             Coord = { x = -4824.0, y = 2090.54 },
-            Class = { "HUNTER", "PRIEST" },
+            Class = { "HUNTER", "PRIEST", "WARLOCK" },
             MinLevel = 1,
             Money = { operator = ">=", copper = 1000 },
             Race = { "Orc", "Scourge", "Troll" },
@@ -436,12 +436,22 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             _index = 45,
         },
         {
-            Qpart = { [5726] = { 1 } },
-            Note = { "KILL_BURNING_BLADE_MOBS_SKULL_ROCK_LIEUTENANT" },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1411, 53.08, 9.19),
-            Range = 30,
+            DropQuest = 832,
+            DroppableQuest = { MobId = 3204, Qid = 832, Text = "Gazz'uz" },
+            Fillers = { [5726] = { 1 } },
+            Note = { "USE_LINE_OF_SIGHT_AVOID_SHADOW_BOLTS", "ENTER_CAVE_WATER_EVADE_VOIDWALKER_AFTER_GAZZUZ", "QUEST_DIFFICULT", "NOT_WANT_SKIP_STEP" },
+            Coord = { x = -4701.42, y = 1455.83 },
+            IsQuestOnQuest = 5726,
             Zone = 1411,
             _index = 46,
+        },
+        {
+            Qpart = { [5726] = { 1 } },
+            Note = { "LOW_DROP_RATE" },
+            Coord = { x = -4767.785, y = 1500.955 },
+            Range = 30,
+            Zone = 1411,
+            _index = 47,
         },
         {
             Waypoint = 5726,
@@ -449,19 +459,19 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             Coord = { x = -4367.46, y = 1405.44 },
             Range = 50.0,
             Zone = 1454,
-            _index = 47,
+            _index = 48,
         },
         {
             Done = { 5726 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.74, 37.82),
             Zone = 1454,
-            _index = 48,
+            _index = 49,
         },
         {
             PickUp = { 5727 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.74, 37.82),
             Zone = 1454,
-            _index = 49,
+            _index = 50,
         },
         {
             LearnSkill = { spellID = 1804 },
@@ -470,7 +480,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             MinLevel = 16,
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1454,
-            _index = 50,
+            _index = 51,
         },
         {
             LearnSkill = { spellID = 921 },
@@ -479,7 +489,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             MinLevel = 4,
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1454,
-            _index = 51,
+            _index = 52,
         },
         {
             PickUp = { 2379 },
@@ -487,7 +497,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             Class = "ROGUE",
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1454,
-            _index = 52,
+            _index = 53,
         },
         {
             Done = { 1963 },
@@ -495,7 +505,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             Class = "ROGUE",
             Race = { "Orc", "Troll" },
             Zone = 1454,
-            _index = 53,
+            _index = 54,
         },
         {
             PickUp = { 1858 },
@@ -503,7 +513,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             Class = "ROGUE",
             Race = { "Orc", "Troll" },
             Zone = 1454,
-            _index = 54,
+            _index = 55,
         },
         {
             Done = { 2379 },
@@ -511,7 +521,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             Class = "ROGUE",
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1454,
-            _index = 55,
+            _index = 56,
         },
         {
             PickUp = { 2382 },
@@ -519,7 +529,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             Class = "ROGUE",
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1454,
-            _index = 56,
+            _index = 57,
         },
         {
             BuyMerchant = { { itemID = 5060, quantity = 1, questID = 1858 } },
@@ -529,7 +539,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             Money = { operator = ">=", copper = 1578 },
             Race = { "Orc", "Troll" },
             Zone = 1454,
-            _index = 57,
+            _index = 58,
         },
         {
             Qpart = { [1858] = { 1 } },
@@ -539,7 +549,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             Money = { operator = ">=", copper = 1500 },
             Race = { "Orc", "Troll" },
             Zone = 1454,
-            _index = 58,
+            _index = 59,
         },
         {
             Done = { 1858 },
@@ -547,7 +557,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             Class = "ROGUE",
             Race = { "Orc", "Troll" },
             Zone = 1454,
-            _index = 59,
+            _index = 60,
         },
         {
             LootItems = { { itemID = 7208, quantity = 1, questID = 1858 } },
@@ -557,7 +567,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             IsQuestOnQuest = 1858,
             Race = { "Orc", "Troll" },
             Zone = 1454,
-            _index = 60,
+            _index = 61,
         },
         {
             Qpart = { [1858] = { 1 } },
@@ -567,7 +577,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             IsQuestOnQuest = 1858,
             Race = { "Orc", "Troll" },
             Zone = 1454,
-            _index = 61,
+            _index = 62,
         },
         {
             Done = { 1858 },
@@ -575,7 +585,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             Class = "ROGUE",
             Race = { "Orc", "Troll" },
             Zone = 1454,
-            _index = 62,
+            _index = 63,
         },
         {
             LearnSkill = { spellID = 1455 },
@@ -585,7 +595,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             Race = { "Orc", "Scourge", "Troll" },
             SkipForLvl = 18,
             Zone = 1454,
-            _index = 63,
+            _index = 64,
         },
         {
             LearnSkill = { spellID = 1014 },
@@ -594,7 +604,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             MinLevel = 18,
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1454,
-            _index = 64,
+            _index = 65,
         },
         {
             BuyMerchant = { { itemID = 16351, quantity = 1, questID = 896 } },
@@ -605,7 +615,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             Race = { "Orc", "Scourge", "Troll" },
             SkipForLvl = 18,
             Zone = 1454,
-            _index = 65,
+            _index = 66,
         },
         {
             BuyMerchant = { { itemID = 16316, quantity = 1, questID = 896 } },
@@ -615,36 +625,43 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             MinLevel = 18,
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1454,
-            _index = 66,
+            _index = 67,
         },
         {
             PickUp = { 5761 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 49.6, 50.4),
             Zone = 1454,
-            _index = 67,
+            _index = 68,
+        },
+        {
+            Done = { 832 },
+            Coord = { x = -4374.75, y = 1800.93 },
+            IsQuestOnQuest = 832,
+            Zone = 1454,
+            _index = 69,
         },
         {
             Qpart = { [5727] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 49.6, 50.4),
             Zone = 1454,
             -- GossipOptionIDs = {}, -- TODO: verify option IDs for skipgossip
-            _index = 68,
+            _index = 70,
         },
         {
             Done = { 5727 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.74, 37.82),
             Zone = 1454,
-            _index = 69,
+            _index = 71,
         },
         {
             PickUp = { 5728 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.74, 37.82),
             Zone = 1454,
-            _index = 70,
+            _index = 72,
         },
         {
             DestroyItems = { items = { 14544 } },
-            _index = 71,
+            _index = 73,
         },
         {
             EnterInstance = { dungeonKey = "RFC" },
@@ -653,7 +670,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             Dungeon = "RFC",
             InstanceQuest = true,
             Zone = 1454,
-            _index = 72,
+            _index = 74,
         },
         {
             Done = { 5722 },
@@ -662,7 +679,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             Dungeon = "RFC",
             InstanceQuest = true,
             IsQuestOnQuest = 5722,
-            _index = 73,
+            _index = 75,
         },
         {
             PickUp = { 5724 },
@@ -671,7 +688,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             Dungeon = "RFC",
             InstanceQuest = true,
             IsQuestOnQuest = 5722,
-            _index = 74,
+            _index = 76,
         },
         {
             PickUp = { 5724 },
@@ -679,7 +696,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             Dungeon = "RFC",
             InstanceQuest = true,
             IsQuestCompleted = 5722,
-            _index = 75,
+            _index = 77,
         },
         {
             Qpart = { [5723] = { 1 } },
@@ -687,7 +704,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             Dungeon = "RFC",
             InstanceQuest = true,
             IsQuestOnQuest = 5723,
-            _index = 76,
+            _index = 78,
         },
         {
             Qpart = { [5723] = { 2 } },
@@ -695,7 +712,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             Dungeon = "RFC",
             InstanceQuest = true,
             IsQuestOnQuest = 5723,
-            _index = 77,
+            _index = 79,
         },
         {
             KillNPC = { dungeonKey = "RFC", npcID = 11517, name = "Oggleflint" },
@@ -703,7 +720,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             NoArrow = true,
             Dungeon = "RFC",
             InstanceQuest = true,
-            _index = 78,
+            _index = 80,
         },
         {
             KillNPC = { dungeonKey = "RFC", npcID = 11520, name = "Taragaman the Hungerer" },
@@ -711,7 +728,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             NoArrow = true,
             Dungeon = "RFC",
             InstanceQuest = true,
-            _index = 79,
+            _index = 81,
         },
         {
             Qpart = { [5761] = { 1 } },
@@ -720,7 +737,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             Dungeon = "RFC",
             InstanceQuest = true,
             IsQuestOnQuest = 5761,
-            _index = 80,
+            _index = 82,
         },
         {
             KillNPC = { dungeonKey = "RFC", npcID = 11518, name = "Jergosh the Invoker" },
@@ -728,7 +745,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             NoArrow = true,
             Dungeon = "RFC",
             InstanceQuest = true,
-            _index = 81,
+            _index = 83,
         },
         {
             KillNPC = { dungeonKey = "RFC", npcID = 11519, name = "Bazzalan" },
@@ -736,7 +753,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             NoArrow = true,
             Dungeon = "RFC",
             InstanceQuest = true,
-            _index = 82,
+            _index = 84,
         },
         {
             Qpart = { [5728] = { 1 } },
@@ -745,7 +762,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             Dungeon = "RFC",
             InstanceQuest = true,
             IsQuestOnQuest = 5728,
-            _index = 83,
+            _index = 85,
         },
         {
             Qpart = { [5728] = { 2 } },
@@ -754,7 +771,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             Dungeon = "RFC",
             InstanceQuest = true,
             IsQuestOnQuest = 5728,
-            _index = 84,
+            _index = 86,
         },
         {
             Qpart = { [5725] = { 1 } },
@@ -762,7 +779,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             Dungeon = "RFC",
             InstanceQuest = true,
             IsQuestOnQuest = 5725,
-            _index = 85,
+            _index = 87,
         },
         {
             Qpart = { [5725] = { 2 } },
@@ -770,14 +787,14 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             Dungeon = "RFC",
             InstanceQuest = true,
             IsQuestOnQuest = 5725,
-            _index = 86,
+            _index = 88,
         },
         {
             LeaveInstance = { dungeonKey = "RFC" },
             NoArrow = true,
             Dungeon = "RFC",
             InstanceQuest = true,
-            _index = 87,
+            _index = 89,
         },
         {
             Done = { 5761 },
@@ -786,7 +803,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             IsQuestReadyForTurnIn = 5761,
             IsQuestUncompleted = 5761,
             Zone = 1454,
-            _index = 88,
+            _index = 90,
         },
         {
             Done = { 5728 },
@@ -795,7 +812,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             IsQuestReadyForTurnIn = 5728,
             IsQuestUncompleted = 5728,
             Zone = 1454,
-            _index = 89,
+            _index = 91,
         },
         {
             PickUp = { 5729 },
@@ -804,39 +821,39 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             IsQuestReadyForTurnIn = 5728,
             IsQuestUncompleted = 5728,
             Zone = 1454,
-            _index = 90,
+            _index = 92,
         },
         {
             PickUp = { 5729 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.74, 37.82),
             IsQuestCompleted = 5728,
             Zone = 1454,
-            _index = 91,
+            _index = 93,
         },
         {
             Done = { 5729 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 49.6, 50.4),
             IsQuestCompleted = 5728,
             Zone = 1454,
-            _index = 92,
+            _index = 94,
         },
         {
             PickUp = { 5730 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 49.6, 50.4),
             IsQuestCompleted = 5728,
             Zone = 1454,
-            _index = 93,
+            _index = 95,
         },
         {
             Done = { 5730 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.74, 37.82),
             IsQuestCompleted = 5728,
             Zone = 1454,
-            _index = 94,
+            _index = 96,
         },
         {
             RouteCompleted = true,
-            _index = 95,
+            _index = 97,
         },
     },
 }

@@ -457,7 +457,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
         {
             Qpart = { [1373] = { 1 } },
             Fillers = { [1389] = { 1 } },
-            Note = { "CHECK_OTHER_MARKED_SPAWNS" },
+            Note = { "MULTIPLE_SPAWN_LOCATIONS" },
             Coord = { x = -3663.08, y = -9966.05 },
             Range = 30,
             IsQuestOnQuest = 1373,

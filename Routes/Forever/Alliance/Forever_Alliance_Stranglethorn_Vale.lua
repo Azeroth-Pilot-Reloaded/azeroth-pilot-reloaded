@@ -1494,7 +1494,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
         },
         {
             Qpart = { [192] = { 1 } },
-            Note = { "STEALTHED", "MORE_TARGETS_SOUTHWEST_MARKED_LOCATION", "SHARE_SPAWNS_STRANGLETHORN_TIGRESSES_MEANS_SEE_EMPTY" },
+            Note = { "STEALTHED", "MORE_TARGETS_TO_SOUTHWEST", "SHARE_SPAWNS_STRANGLETHORN_TIGRESSES_MEANS_SEE_EMPTY" },
             Coord = { x = -883.01, y = -12145.08 },
             Range = 30,
             IsQuestOnQuest = 192,
@@ -2657,7 +2657,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Qpart = { [197] = { 1 } },
-            Note = { "CHECK_EVERY_SPAWN_POINT_MARKED_MAP" },
+            Note = { "MULTIPLE_SPAWN_LOCATIONS" },
             Coord = { x = 274.555, y = -13003.99 },
             Range = 30,
             Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
@@ -2667,7 +2667,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Qpart = { [197] = { 1 } },
-            Note = { "CHECK_EVERY_SPAWN_POINT_MARKED_MAP", "SCOUT_TARGET_EAGLE_EYE" },
+            Note = { "MULTIPLE_SPAWN_LOCATIONS", "SCOUT_TARGET_EAGLE_EYE" },
             Coord = { x = 274.555, y = -13003.99 },
             Range = 30,
             Class = "HUNTER",
@@ -3130,7 +3130,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Qpart = { [197] = { 1 } },
-            Note = { "CHECK_EVERY_SPAWN_POINT_MARKED_MAP" },
+            Note = { "MULTIPLE_SPAWN_LOCATIONS" },
             Coord = { x = 274.555, y = -13003.99 },
             Range = 30,
             Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
@@ -3140,7 +3140,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
         },
         {
             Qpart = { [197] = { 1 } },
-            Note = { "CHECK_EVERY_SPAWN_POINT_MARKED_MAP", "SCOUT_TARGET_EAGLE_EYE" },
+            Note = { "MULTIPLE_SPAWN_LOCATIONS", "SCOUT_TARGET_EAGLE_EYE" },
             Coord = { x = 274.555, y = -13003.99 },
             Range = 30,
             Class = "HUNTER",

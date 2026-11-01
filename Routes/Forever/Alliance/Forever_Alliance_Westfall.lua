@@ -537,7 +537,7 @@ APR.RouteQuestStepList["Forever-Alliance-Westfall"] = {
         },
         {
             GetFP = 6,
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 55.491, 47.751),
+            Coord = { x = -1152.4, y = -4821.13 },
             Race = "Skyborne",
             Zone = 1455,
             _index = 62,

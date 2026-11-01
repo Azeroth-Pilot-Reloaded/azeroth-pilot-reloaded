@@ -68,7 +68,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         },
         {
             Qpart = { [1034] = { 1 } },
-            Note = { "CHECK_OTHER_MARKED_SPAWNS" },
+            Note = { "MULTIPLE_SPAWN_LOCATIONS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 33.3, 67.79),
             Zone = 1440,
             _index = 5,

@@ -957,7 +957,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
+            Note = { "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1128.29, y = -5282.35 },
             Range = 20,
             Zone = 1426,
@@ -965,7 +965,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
+            Note = { "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1172.62, y = -5325.03 },
             Range = 20,
             Zone = 1426,
@@ -973,7 +973,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
+            Note = { "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1207.09, y = -5325.03 },
             Range = 20,
             Zone = 1426,
@@ -981,7 +981,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
+            Note = { "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1212.02, y = -5265.93 },
             Range = 20,
             Zone = 1426,
@@ -989,7 +989,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
+            Note = { "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1192.32, y = -5219.97 },
             Range = 20,
             Zone = 1426,
@@ -997,7 +997,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
+            Note = { "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1103.67, y = -5174.0 },
             Range = 20,
             Zone = 1426,
@@ -1005,7 +1005,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
+            Note = { "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1167.69, y = -5144.45 },
             Range = 20,
             Zone = 1426,
@@ -1013,7 +1013,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
+            Note = { "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1236.64, y = -5147.73 },
             Range = 20,
             Zone = 1426,
@@ -1021,7 +1021,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
+            Note = { "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1433.64, y = -4586.28 },
             Range = 20,
             Zone = 1426,
@@ -1029,7 +1029,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
+            Note = { "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1438.57, y = -4287.5 },
             Range = 20,
             Zone = 1426,
@@ -1037,7 +1037,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
+            Note = { "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1428.72, y = -4231.68 },
             Range = 20,
             Zone = 1426,
@@ -1045,7 +1045,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
+            Note = { "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1473.04, y = -4205.42 },
             Range = 20,
             Zone = 1426,
@@ -1053,7 +1053,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
+            Note = { "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1492.74, y = -4156.17 },
             Range = 20,
             Zone = 1426,
@@ -1061,7 +1061,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
+            Note = { "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1241.48, y = -4000.12 },
             Range = 20,
             Zone = 1437,
@@ -1069,7 +1069,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
+            Note = { "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1121.55, y = -4013.9 },
             Range = 20,
             Zone = 1437,
@@ -1077,7 +1077,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
+            Note = { "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1084.33, y = -3947.75 },
             Range = 20,
             Zone = 1437,
@@ -1085,7 +1085,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
+            Note = { "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -1014.03, y = -3911.92 },
             Range = 20,
             Zone = 1437,
@@ -1093,7 +1093,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
+            Note = { "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -889.97, y = -3809.94 },
             Range = 20,
             Zone = 1437,
@@ -1101,7 +1101,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         },
         {
             Waypoint = 983,
-            Note = { "OPEN_LINK_FOLLOW_ANOTHER_SCREEN", "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
+            Note = { "DEATHLESS_DUN_MOROGH_WETLANDS_SKIP", "WAIT_CROCOLISKS_MOVE_AWAY_CROSSING" },
             Coord = { x = -889.97, y = -3809.94 },
             Range = 20,
             Zone = 1437,

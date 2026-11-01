@@ -398,7 +398,7 @@ APR.RouteQuestStepList["Forever-Alliance-Un-Goro-Crater"] = {
         },
         {
             Qpart = { [3882] = { 1 }, [4503] = { 1 } },
-            Note = { "DINOSAUR_BONES_LOOTED_GROUND_LOCATION_MARKED_MAP" },
+            Note = { "LOOT_DINOSAUR_BONES_GROUND_SOUTHWEST" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 27.0, 44.8),
             Range = 30,
             Zone = 1449,

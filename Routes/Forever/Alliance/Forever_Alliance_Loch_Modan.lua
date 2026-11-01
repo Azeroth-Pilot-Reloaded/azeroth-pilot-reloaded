@@ -2275,7 +2275,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             PickUp = { 86614 },
-            Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "CHECK_OTHER_MARKED_SPAWNS", "BEWARE_HIGH_LEVEL_ENEMIES" },
+            Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "MULTIPLE_SPAWN_LOCATIONS", "BEWARE_HIGH_LEVEL_ENEMIES" },
             Coord = { x = -3319.12905, y = -5351.077 },
             Range = 156,
             MinLevel = 13,
@@ -3181,7 +3181,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 86614,
-            Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "CHECK_OTHER_MARKED_SPAWNS", "BEWARE_HIGH_LEVEL_ENEMIES" },
+            Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "MULTIPLE_SPAWN_LOCATIONS", "BEWARE_HIGH_LEVEL_ENEMIES" },
             Coord = { x = -3319.8, y = -5217.6 },
             Range = 20.0,
             MinLevel = 13,
@@ -3190,7 +3190,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 86614,
-            Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "CHECK_OTHER_MARKED_SPAWNS", "BEWARE_HIGH_LEVEL_ENEMIES" },
+            Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "MULTIPLE_SPAWN_LOCATIONS", "BEWARE_HIGH_LEVEL_ENEMIES" },
             Coord = { x = -3251.5499, y = -5285.879 },
             Range = 20.0,
             MinLevel = 13,
@@ -3199,7 +3199,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Hunter"] = {
         },
         {
             Waypoint = 86614,
-            Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "CHECK_OTHER_MARKED_SPAWNS", "BEWARE_HIGH_LEVEL_ENEMIES" },
+            Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "MULTIPLE_SPAWN_LOCATIONS", "BEWARE_HIGH_LEVEL_ENEMIES" },
             Coord = { x = -3342.5748, y = -5484.554 },
             Range = 20.0,
             MinLevel = 13,
@@ -3208,7 +3208,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Hunter"] = {
         },
         {
             PickUp = { 86614 },
-            Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "CHECK_OTHER_MARKED_SPAWNS", "BEWARE_HIGH_LEVEL_ENEMIES" },
+            Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "MULTIPLE_SPAWN_LOCATIONS", "BEWARE_HIGH_LEVEL_ENEMIES" },
             Coord = { x = -3386.7082, y = -5462.479 },
             MinLevel = 13,
             Zone = 1432,

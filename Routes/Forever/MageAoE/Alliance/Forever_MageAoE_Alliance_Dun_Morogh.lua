@@ -189,7 +189,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
         },
         {
             PickUp = { 3364 },
-            Note = { "ACCEPTED_5_MINUTE_TIMER_START_RELAX_FOLLOW" },
+            Note = { "ACCEPTING_STARTS_FIVE_MINUTE_TIMER" },
             Coord = { x = 570.83, y = -6372.42 },
             Zone = 1426,
             _index = 21,

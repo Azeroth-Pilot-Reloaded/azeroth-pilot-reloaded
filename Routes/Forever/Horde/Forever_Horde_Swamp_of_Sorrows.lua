@@ -420,7 +420,7 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
         },
         {
             Qpart = { [1373] = { 1 } },
-            Note = { "CHECK_OTHER_MARKED_SPAWNS" },
+            Note = { "MULTIPLE_SPAWN_LOCATIONS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 62.6, 22.86),
             Range = 30,
             IsQuestOnQuest = 1373,
