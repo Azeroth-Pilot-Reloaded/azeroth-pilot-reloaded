@@ -204,7 +204,7 @@ local function UnlockSnapshot()
     }
     if result.libraryLoaded then
         result.libraryVersion = PublicNumber(revision)
-        result.modules = SnapshotFields(library.modules, { "conditions", "unlock_runner", "unlocks", "unlock_locales" })
+        result.modules = SnapshotFields(library.modules, { "geography", "conditions", "unlock_runner", "unlocks", "unlock_locales" })
     end
     if ReadableTable(data) then
         result.profile = SnapshotFields(data, { "profile" }).profile

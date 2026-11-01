@@ -3,6 +3,30 @@
 All regression tests now live in `tests/`. Run `python tests/run.py` for all
 Python, Lua and route syntax checks; see `tests/README.md` for dependencies and CI.
 
+## Luacheck while editing in VS Code
+
+Install the recommended `trixnz.vscode-lua` extension alongside Lua Language
+Server (`sumneko.lua`). Install [Luacheck](https://github.com/lunarmodules/luacheck#installation)
+and set `lua.luacheckPath` in your workspace settings to its executable's absolute
+path (Windows binaries are available from the project's releases). Set
+`lua.preferLuaCheckErrors` to `true` and `lua.targetVersion` to `"5.1"`.
+
+The extension checks open Lua buffers on content changes, including unsaved
+edits, and reports warnings/errors inline and in **Problems** (`Ctrl+Shift+M`).
+It discovers the repository's `.luacheckrc` from each file's directory, keeping
+the same rules as CI. Lua Language Server provides completion and
+navigation; it does not read `.luacheckrc`. To use Luacheck as the sole diagnostic
+provider, set `Lua.diagnostics.enable` to `false`. This retains completion and
+navigation, but disables LuaLS type/API diagnostics. The project's `.luacheckrc`
+also ignores global-variable diagnostics, so this setup does not detect unknown
+WoW globals. Exclude `tests` and `tools` via `Lua.workspace.ignoreDir` to keep
+standalone mocks out of addon completion and inferred signatures.
+
+After changing the executable path, run **Developer: Reload Window** if needed.
+For a full check matching CI, run `luacheck ./APR-Core` and `luacheck ./Routes`
+from the repository root (or invoke the configured executable by its full path).
+Workspace settings are ignored by Git; configure this path on each machine.
+
 ## Whole-addon diagnostics
 
 ### Gameplay spike audit: 2026-10-30.1

@@ -1,7 +1,7 @@
 -- Project endpoints into world coordinates and identify their access regions.
 -- A shared position alone does not permit walking through a required entrance.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("geography", 9) then return end
+if not Lib:BeginModule("geography", 11) then return end
 local Instance = Lib.Instance
 -- These defaults are read-only, including CheckRequirements' character input.
 -- Reuse them across walking checks and retries of unavailable map ancestry.
@@ -120,6 +120,11 @@ function Instance:GetPositionRegion(position)
             local entrances = self.entranceMaps and self.entranceMaps[current]
             local identity = entrances and entrances[1].interiorMapIDs[1] or current
             region = tostring(instanceID) .. ":instance:" .. identity .. ":" .. tostring(isolation or "interior")
+        elseif mapType == 6 or (info.parentMapID == 0 and (mapType == 3 or mapType == 5)) then
+            -- Native Orphan maps are their own walking roots, even with a UI
+            -- parent. Standalone zones/micro maps likewise bound local access,
+            -- including descendants, without connecting separate roots.
+            region = tostring(instanceID) .. ":map:" .. current .. ":" .. tostring(isolation or "outdoor")
         end
         if region then
             self.regions[cacheKey] = region

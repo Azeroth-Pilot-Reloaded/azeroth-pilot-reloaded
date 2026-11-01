@@ -400,7 +400,7 @@ function Panel:Create()
     self.stepRange = RangeControl(root, L["GF_STEP_RANGE"], "stepRange", 1, 30)
     self.warMode = QuickToggle(root, L["SHOW_INCOMPATIBLE_PLAYERS"], "showIncompatibleWarMode")
     UI:Tooltip(self.warMode, L["SHOW_INCOMPATIBLE_PLAYERS"], PARTY_WARMODE_MESSAGE or L["INCOMPATIBLE_WAR_MODE_DESC"])
-    self.levelToggle = UI:Button(root, "More", 110, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:403:callback#33", --[[/APR_DIAG]]function()
+    self.levelToggle = UI:Button(root, L["GF_MORE"], 110, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:403:callback#33", --[[/APR_DIAG]]function()
         self.levelsExpanded = not self.levelsExpanded
         UI:SetButtonActive(self.levelToggle, self.levelsExpanded)
         self:Layout()
