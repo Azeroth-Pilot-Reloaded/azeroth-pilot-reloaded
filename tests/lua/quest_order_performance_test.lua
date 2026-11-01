@@ -122,6 +122,27 @@ owner.renderFrame.scripts.OnUpdate()
 assert(replacementRan, "A new render replaces the pending worker")
 print("Quest list scheduling: all 1224 rows rendered in bounded batches; stale/replaced work cancelled")
 
+-- Completing preparation at the budget boundary leaves publication a fresh frame.
+local prepared, published, valid = 0, 0, true
+local function prepare() prepared = prepared + 1; now = now + 3 end
+local function publish(finished)
+    if finished then published = published + 1; now = now + 2 end
+end
+utils:StartRender(owner, prepare, function() return valid end, publish)
+local before = now
+owner.renderFrame.scripts.OnUpdate()
+assert(now - before == 3 and prepared == 1 and published == 0,
+    "An exhausted preparation budget cannot also bind the viewport")
+owner.renderFrame.scripts.OnUpdate()
+assert(prepared == 1 and published == 1 and not owner.renderFrame.scripts.OnUpdate,
+    "Deferred publication runs once without repeating preparation")
+utils:StartRender(owner, prepare, function() return valid end, publish)
+owner.renderFrame.scripts.OnUpdate()
+valid = false
+owner.renderFrame.scripts.OnUpdate()
+assert(prepared == 2 and published == 1 and not owner.renderFrame.scripts.OnUpdate,
+    "Route replacement cancels completed but unpublished work")
+
 -- Reputation refreshes only need a full redraw when a displayed threshold changes.
 local reachedReputations = {}
 function APR:IsReputationLevelReached(requirement)

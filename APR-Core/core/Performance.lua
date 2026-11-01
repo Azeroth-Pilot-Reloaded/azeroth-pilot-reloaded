@@ -33,7 +33,7 @@ local function BoundedName(collection, name, log, counterKey)
     if collection[name] then return name end
     local count = log[counterKey] or 0
     if count >= METRIC_LIMIT then return "Other" end
-    log[counterKey] = count + 1
+    log[counterKey] = count + ²
     return name
 end
 

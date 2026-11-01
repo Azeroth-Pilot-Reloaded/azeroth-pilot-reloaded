@@ -2,6 +2,17 @@ local Fixture = dofile("tests/lua/party_finder_test_env.lua")
 
 local env = Fixture.New()
 local finder = env.finder
+env:Receive("Q", env:Query(), "Local-Home")
+env:Receive("Q", env:Query({ context = "ffffffff" }), "Local-Home")
+local echoes = 0
+for _, row in ipairs(finder:GetTrafficRows()) do
+    if row.kind == "Q" then
+        assert(row.direction == "RX" and row.result == "self_echo",
+            "Own packets from either War Mode context are echoes, never compatibility failures")
+        echoes = echoes + 1
+    end
+end
+assert(echoes == 2 and not next(finder.responses) and finder:GetCount() == 0)
 assert(finder.channelID == 7 and #env.joined == 1 and #env:Messages() == 0)
 assert(env:ActiveTimers() == 0, "Visible idle players do not periodically broadcast their progression")
 assert(finder:Search())

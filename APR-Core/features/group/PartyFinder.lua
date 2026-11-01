@@ -822,7 +822,9 @@ function Finder:HandleAddonMessage(prefix, message, channel, sender, target, _, 
     if self.receiveCount > 64 then self.droppedCount = (self.droppedCount or 0) + 1; reject("receive_budget"); return end
     local data = P.Decode(message)
     if not data then reject("decode"); return end
-    self:TraceTraffic("RX", data.kind, channel, sender, "decoded", message)
+    local key = self:PlayerKey(sender)
+    self:TraceTraffic("RX", data.kind, channel, sender, key == self.playerKey and "self_echo" or "decoded", message)
+    if not key or key == self.playerKey then return end
     if data.kind == "Q" and channel == "CHANNEL" then
         self.lastDiscoveryQuerySeen = GetTime()
         if self.localDirty and not self.discoverySuspended then
@@ -835,8 +837,6 @@ function Finder:HandleAddonMessage(prefix, message, channel, sender, target, _, 
             return
         end
     end
-    local key = self:PlayerKey(sender)
-    if not key or key == self.playerKey then return end
     if data.kind == "Q" and channel == "CHANNEL" then self:QueueResponse(data, key)
     elseif data.kind == "P" and channel == "WHISPER" then self:HandlePresence(data, key)
     elseif data.kind == "W" and channel == "CHANNEL" then

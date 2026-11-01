@@ -61,6 +61,14 @@ assert(editor:GetHeight() >= viewport:GetHeight(), "Short exports still have a f
 APR.UI:ShowTextReport("Link", "https://example.com")
 assert(editor.selection[2] == #editor:GetText(), "A newly opened report selects its own content again")
 
+local packetReport = "packet: 1|Q|request|nearby|fr\ncontrol: |cffff0000red|r |Hquest:12|h[label]|h"
+APR.UI:ShowTextReport("Protocol", packetReport)
+-- Model native pipe interpretation: unescaped |n introduces a line break,
+-- while || consumes both characters and produces one literal pipe.
+local displayed = editor:GetText():gsub("||", "\001"):gsub("|n", "\n"):gsub("\001", "|")
+assert(displayed == packetReport and report.reportText == packetReport,
+    "The display preserves raw packet delimiters and literal markup without changing report data")
+
 env.setCombat(true)
 local deferred = APR.UI:Panel(window)
 assert(deferred:GetBackdrop() == nil)

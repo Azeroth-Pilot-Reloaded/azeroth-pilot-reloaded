@@ -60,13 +60,20 @@ function APR.questOrderListSupport:StartRender(owner, worker, isValid, afterBatc
     owner.renderFailed = nil
     owner.renderFrame = owner.renderFrame or CreateFrame("Frame")
     local thread = coroutine.create(worker)
-    owner.renderFrame:SetScript("OnUpdate", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:63:callback#5", --[[/APR_DIAG]]function()
+    local pendingPublication = false
+    owner.renderFrame:SetScript("OnUpdate", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:64:callback#5", --[[/APR_DIAG]]function()
         if not isValid() then
             self:CancelRender(owner)
             return
         end
         local started = debugprofilestop()
         local profileStart = APR:StartPerformanceSample()
+        if pendingPublication then
+            self:CancelRender(owner)
+            afterBatch(true)
+            APR:FinishPerformanceSample(sampleName or "QuestOrderListBatch", profileStart)
+            return
+        end
         repeat
             local ok, err = --[[APR_DIAG]]APRResume--[=[--[[/APR_DIAG]]coroutine.resume--[[APR_DIAG]]]=]--[[/APR_DIAG]](thread)
             if not ok then
@@ -77,6 +84,14 @@ function APR.questOrderListSupport:StartRender(owner, worker, isValid, afterBatc
             end
         until coroutine.status(thread) == "dead" or debugprofilestop() - started >= 3
         local finished = coroutine.status(thread) == "dead"
+        -- Publishing can bind/layout the viewport. Give it a fresh frame when
+        -- preparation has already consumed this frame's allowance.
+        if finished and debugprofilestop() - started >= 3 then
+            pendingPublication = true
+            afterBatch(false)
+            APR:FinishPerformanceSample(sampleName or "QuestOrderListBatch", profileStart)
+            return
+        end
         if finished then self:CancelRender(owner) end
         afterBatch(finished)
         APR:FinishPerformanceSample(sampleName or "QuestOrderListBatch", profileStart)
@@ -93,7 +108,7 @@ local function QueueModelFrame(model)
     row.boundGeneration = nil
     list:RefreshVisible()
     return true
-end--[[APR_DIAG]]; QueueModelFrame = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:87:QueueModelFrame#6", QueueModelFrame)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; QueueModelFrame = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:102:QueueModelFrame#6", QueueModelFrame)--[[/APR_DIAG]]
 
 function APR.questOrderListSupport:SetStepFrameState(container, color, isCurrentStep, checkpoint)
     if not container then return end
@@ -113,7 +128,7 @@ function APR.questOrderListSupport:SetStepFrameState(container, color, isCurrent
         APR:SetFontStringRole(questFont, isCurrentStep and "base" or "muted")
         if checkpoint then checkpoint() end
     end
-end--[[APR_DIAG]]; APR.questOrderListSupport.SetStepFrameState = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:98:APR.questOrderListSupport:SetStepFrameState#7", APR.questOrderListSupport.SetStepFrameState)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.questOrderListSupport.SetStepFrameState = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:113:APR.questOrderListSupport:SetStepFrameState#7", APR.questOrderListSupport.SetStepFrameState)--[[/APR_DIAG]]
 
 function APR.questOrderListSupport:CollapseStepDetails(container)
     if container and container.isModel then
@@ -136,7 +151,7 @@ function APR.questOrderListSupport:CollapseStepDetails(container)
     container:EnableMouse(false)
     if GameTooltip:GetOwner() == container then GameTooltip:Hide() end
     return true
-end--[[APR_DIAG]]; APR.questOrderListSupport.CollapseStepDetails = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:118:APR.questOrderListSupport:CollapseStepDetails#8", APR.questOrderListSupport.CollapseStepDetails)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.questOrderListSupport.CollapseStepDetails = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:133:APR.questOrderListSupport:CollapseStepDetails#8", APR.questOrderListSupport.CollapseStepDetails)--[[/APR_DIAG]]
 
 local function showUncompletedStepTooltip(container)
     GameTooltip:SetOwner(container, "ANCHOR_BOTTOM")
@@ -154,9 +169,9 @@ local function showUncompletedStepTooltip(container)
         end
     end
     GameTooltip:Show()
-end--[[APR_DIAG]]; showUncompletedStepTooltip = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:141:showUncompletedStepTooltip#9", showUncompletedStepTooltip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; showUncompletedStepTooltip = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:156:showUncompletedStepTooltip#9", showUncompletedStepTooltip)--[[/APR_DIAG]]
 
-local function hideStepTooltip() GameTooltip:Hide() end--[[APR_DIAG]]; hideStepTooltip = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:159:hideStepTooltip#10", hideStepTooltip)--[[/APR_DIAG]]
+local function hideStepTooltip() GameTooltip:Hide() end--[[APR_DIAG]]; hideStepTooltip = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:174:hideStepTooltip#10", hideStepTooltip)--[[/APR_DIAG]]
 
 local function bindUncompletedStepTooltip(container, questInfo)
     if not container then return end
@@ -165,15 +180,15 @@ local function bindUncompletedStepTooltip(container, questInfo)
     container:SetScript("OnEnter", hasQuests and showUncompletedStepTooltip or nil)
     container:SetScript("OnLeave", hasQuests and hideStepTooltip or nil)
     container:EnableMouse(hasQuests and true or false)
-end--[[APR_DIAG]]; bindUncompletedStepTooltip = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:161:bindUncompletedStepTooltip#11", bindUncompletedStepTooltip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; bindUncompletedStepTooltip = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:176:bindUncompletedStepTooltip#11", bindUncompletedStepTooltip)--[[/APR_DIAG]]
 
 function APR.questOrderListSupport:IsQuestCompleted(questID)
     return C_QuestLog.IsQuestFlaggedCompleted(questID)
-end--[[APR_DIAG]]; APR.questOrderListSupport.IsQuestCompleted = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:170:APR.questOrderListSupport:IsQuestCompleted#12", APR.questOrderListSupport.IsQuestCompleted)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.questOrderListSupport.IsQuestCompleted = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:185:APR.questOrderListSupport:IsQuestCompleted#12", APR.questOrderListSupport.IsQuestCompleted)--[[/APR_DIAG]]
 
 function APR.questOrderListSupport:IsQuestCompletedOrActive(questID)
     return self:IsQuestCompleted(questID) or APR.ActiveQuests[questID]
-end--[[APR_DIAG]]; APR.questOrderListSupport.IsQuestCompletedOrActive = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:174:APR.questOrderListSupport:IsQuestCompletedOrActive#13", APR.questOrderListSupport.IsQuestCompletedOrActive)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.questOrderListSupport.IsQuestCompletedOrActive = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:189:APR.questOrderListSupport:IsQuestCompletedOrActive#13", APR.questOrderListSupport.IsQuestCompletedOrActive)--[[/APR_DIAG]]
 
 function APR.questOrderListSupport:CreateTextFont(parent, text, width, color)
     local fontString = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
@@ -184,9 +199,9 @@ function APR.questOrderListSupport:CreateTextFont(parent, text, width, color)
     local role = color == "green" and "success" or "muted"
     APR:RegisterFontString(fontString, "questOrderList", { role = role })
     return fontString
-end--[[APR_DIAG]]; APR.questOrderListSupport.CreateTextFont = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:178:APR.questOrderListSupport:CreateTextFont#14", APR.questOrderListSupport.CreateTextFont)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.questOrderListSupport.CreateTextFont = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:193:APR.questOrderListSupport:CreateTextFont#14", APR.questOrderListSupport.CreateTextFont)--[[/APR_DIAG]]
 
-local Model = { GetHeight = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:189:callback#15", --[[/APR_DIAG]]function(self) return self.height end--[[APR_DIAG]])--[[/APR_DIAG]] }
+local Model = { GetHeight = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:204:callback#15", --[[/APR_DIAG]]function(self) return self.height end--[[APR_DIAG]])--[[/APR_DIAG]] }
 Model.__index = Model
 
 -- A single hidden measurement row preserves the exact font/wrapping rules without allocating offscreen rows.
@@ -206,7 +221,7 @@ function APR.questOrderListSupport:CreateStepModel(layout, stepIndex, stepText, 
         height = row:GetHeight(), width = layout.frameWidth, frameOffset = layout.frameOffset}, Model)
     layout.dataHeight = layout.dataHeight - model.height
     return model, activeQuestId
-end--[[APR_DIAG]]; APR.questOrderListSupport.CreateStepModel = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:193:APR.questOrderListSupport:CreateStepModel#16", APR.questOrderListSupport.CreateStepModel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.questOrderListSupport.CreateStepModel = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:208:APR.questOrderListSupport:CreateStepModel#16", APR.questOrderListSupport.CreateStepModel)--[[/APR_DIAG]]
 
 local function bindStepModel(owner, row, model, parent, checkpoint)
     local layout = {scrollChild = parent, frameWidth = model.width, frameOffset = model.frameOffset,
@@ -214,7 +229,7 @@ local function bindStepModel(owner, row, model, parent, checkpoint)
     owner:AddStepFrameWithQuest(layout, model.stepIndex, model.stepText, model.questInfo, model.color, model.isActiveStep)
     owner:SetStepFrameState(row, model.color, model.isActiveStep, checkpoint)
     row.model, model.frame = model, row
-end--[[APR_DIAG]]; bindStepModel = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:211:bindStepModel#17", bindStepModel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; bindStepModel = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:226:bindStepModel#17", bindStepModel)--[[/APR_DIAG]]
 
 function APR.questOrderListSupport:BindStepModel(row, model, parent, deadline, generation)
     local request = row.modelBinding
@@ -235,17 +250,17 @@ function APR.questOrderListSupport:BindStepModel(row, model, parent, deadline, g
     until coroutine.status(request.thread) == "dead" or debugprofilestop() >= deadline
     if coroutine.status(request.thread) == "dead" then row.modelBinding = nil; return true end
     return false
-end--[[APR_DIAG]]; APR.questOrderListSupport.BindStepModel = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:219:APR.questOrderListSupport:BindStepModel#18", APR.questOrderListSupport.BindStepModel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.questOrderListSupport.BindStepModel = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:234:APR.questOrderListSupport:BindStepModel#18", APR.questOrderListSupport.BindStepModel)--[[/APR_DIAG]]
 
 local function reuseFont(owner, container, font, text, width, fontColor)
     if not font then return owner:CreateTextFont(container, text, width, fontColor) end
     font:SetText(text)
-    font:SetWidth(width)
+    if not font.GetWidth or font:GetWidth() ~= width then font:SetWidth(width) end
     font:ClearAllPoints()
     APR:SetFontStringRole(font, fontColor == "green" and "success" or "muted")
     font:Show()
     return font
-end--[[APR_DIAG]]; reuseFont = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:240:reuseFont#19", reuseFont)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; reuseFont = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:255:reuseFont#19", reuseFont)--[[/APR_DIAG]]
 
 function APR.questOrderListSupport:AddStepFrameWithQuest(layout, stepIndex, stepText, questInfo, color, isActiveStep)
     if layout.collectModels then return self:CreateStepModel(layout, stepIndex, stepText, questInfo, color, isActiveStep) end
@@ -257,12 +272,14 @@ function APR.questOrderListSupport:AddStepFrameWithQuest(layout, stepIndex, step
     container.offset = offset
 
     local indexFont = reuseFont(self, container, container.indexFont, stepIndex, layout.frameWidth, color)
+    container.indexFont = indexFont
+    if layout.checkpoint then layout.checkpoint() end
     local titleFont = reuseFont(self, container, container.titleFont, stepText, layout.frameWidth - offset - 5, color)
+    container.titleFont = titleFont
+    if layout.checkpoint then layout.checkpoint() end
     indexFont:SetPoint("TOPLEFT", container, "TOPLEFT", 5, 0)
     titleFont:SetPoint("TOPLEFT", container, "TOPLEFT", offset, 0)
 
-    container.indexFont = indexFont
-    container.titleFont = titleFont
     container.questFontPool = container.questFontPool or {}
     container.questFonts = {}
 
@@ -314,18 +331,18 @@ function APR.questOrderListSupport:AddStepFrameWithQuest(layout, stepIndex, step
     if not layout.deferShow then container:Show() end
 
     return container, activeQuestId
-end--[[APR_DIAG]]; APR.questOrderListSupport.AddStepFrameWithQuest = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:250:APR.questOrderListSupport:AddStepFrameWithQuest#20", APR.questOrderListSupport.AddStepFrameWithQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.questOrderListSupport.AddStepFrameWithQuest = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:265:APR.questOrderListSupport:AddStepFrameWithQuest#20", APR.questOrderListSupport.AddStepFrameWithQuest)--[[/APR_DIAG]]
 
 function APR.questOrderListSupport:AddStepFrame(layout, stepIndex, stepText, color, isActiveStep)
     return self:AddStepFrameWithQuest(layout, stepIndex, stepText, {}, color, isActiveStep)
-end--[[APR_DIAG]]; APR.questOrderListSupport.AddStepFrame = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:319:APR.questOrderListSupport:AddStepFrame#21", APR.questOrderListSupport.AddStepFrame)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.questOrderListSupport.AddStepFrame = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:336:APR.questOrderListSupport:AddStepFrame#21", APR.questOrderListSupport.AddStepFrame)--[[/APR_DIAG]]
 
 function APR.questOrderListSupport:CancelScroll(scrollFrame)
     if scrollFrame.aprScrollTimer then
         scrollFrame.aprScrollTimer:Cancel()
         scrollFrame.aprScrollTimer = nil
     end
-end--[[APR_DIAG]]; APR.questOrderListSupport.CancelScroll = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:323:APR.questOrderListSupport:CancelScroll#22", APR.questOrderListSupport.CancelScroll)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.questOrderListSupport.CancelScroll = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:340:APR.questOrderListSupport:CancelScroll#22", APR.questOrderListSupport.CancelScroll)--[[/APR_DIAG]]
 
 function APR.questOrderListSupport:SetCurrentStepIndicator(stepList, scrollFrame, stepindex, followStep)
     local container = stepList[stepindex]
@@ -333,7 +350,7 @@ function APR.questOrderListSupport:SetCurrentStepIndicator(stepList, scrollFrame
     self:SetStepFrameState(container, "gray", true)
     self:CancelScroll(scrollFrame)
     if followStep == false then return end
-    scrollFrame.aprScrollTimer = C_Timer.NewTimer(0, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:336:callback#24", --[[/APR_DIAG]]function()
+    scrollFrame.aprScrollTimer = C_Timer.NewTimer(0, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:353:callback#24", --[[/APR_DIAG]]function()
         scrollFrame.aprScrollTimer = nil
         if scrollFrame.aprVirtualList then scrollFrame.aprVirtualList:ScrollToIndex(stepindex); return end
         if scrollFrame:GetVerticalScrollRange() > 0 then
@@ -345,4 +362,4 @@ function APR.questOrderListSupport:SetCurrentStepIndicator(stepList, scrollFrame
             scrollFrame:SetVerticalScroll(math.min(yOffset, scrollFrame:GetVerticalScrollRange()))
         end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.questOrderListSupport.SetCurrentStepIndicator = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:330:APR.questOrderListSupport:SetCurrentStepIndicator#23", APR.questOrderListSupport.SetCurrentStepIndicator)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.questOrderListSupport.SetCurrentStepIndicator = APRTrace("APR-Core/ui/route/QuestOrderListSupport.lua:347:APR.questOrderListSupport:SetCurrentStepIndicator#23", APR.questOrderListSupport.SetCurrentStepIndicator)--[[/APR_DIAG]]
