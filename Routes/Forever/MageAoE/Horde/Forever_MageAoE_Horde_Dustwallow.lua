@@ -2623,7 +2623,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         {
             Done = { 7813, 7814, 7817, 7818 },
             Fillers = { [4985] = { 1 } },
-            Note = { "DISABLE_AUTOMATIC_EXTRA_TURN_INS" },
+            Note = { "BYPASS_AUTO" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 71.65, 29.25),
             SkipForLvl = 60,
             Zone = 1458,
@@ -2651,7 +2651,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         {
             Done = { 7826, 7827, 7831, 7824 },
             Fillers = { [4985] = { 1 } },
-            Note = { "DISABLE_AUTOMATIC_EXTRA_TURN_INS" },
+            Note = { "BYPASS_AUTO" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 63.62, 51.24),
             SkipForLvl = 60,
             Zone = 1454,
@@ -2660,7 +2660,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         {
             Done = { 7833, 7834, 7835, 7836 },
             Fillers = { [4985] = { 1 } },
-            Note = { "DISABLE_AUTOMATIC_EXTRA_TURN_INS" },
+            Note = { "BYPASS_AUTO" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 37.69, 87.92),
             SkipForLvl = 60,
             Zone = 1454,
@@ -2697,7 +2697,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
         {
             Done = { 7820, 7821, 7822, 7823 },
             Fillers = { [4985] = { 1 } },
-            Note = { "DISABLE_AUTOMATIC_EXTRA_TURN_INS" },
+            Note = { "BYPASS_AUTO" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 43.05, 42.73),
             SkipForLvl = 60,
             Zone = 1456,

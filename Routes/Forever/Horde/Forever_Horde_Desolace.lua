@@ -460,7 +460,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
         },
         {
             Qpart = { [1365] = { 1 } },
-            Note = { "CHECK_OTHER_MARKED_SPAWNS" },
+            Note = { "MULTIPLE_SPAWN_LOCATIONS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 73.9, 45.3),
             Range = 30,
             Zone = 1443,

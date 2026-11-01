@@ -3951,7 +3951,7 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
             _index = 137,
         },
         {
-            Note = { "CAST_EAGLE_EYE_TRY_FIND_PLAINS_CREEPER", "CAST_TAME_BEAST_PLAINS_CREEPER_TAME", "FIGHT_PET_LEARN_ABILITIES", "TEACH_PET_LEARNED_ABILITIES" },
+            Note = { "SCOUT_TARGET_EAGLE_EYE", "CAST_TAME_BEAST_PLAINS_CREEPER_TAME", "FIGHT_PET_LEARN_ABILITIES", "TEACH_PET_LEARNED_ABILITIES" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 65.685, 44.585),
             Range = 30,
             Class = "HUNTER",

@@ -340,7 +340,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Redridge"] = {
         {
             Qpart = { [246] = { 1, 2 } },
             Fillers = { [92] = { 1 }, [122] = { 1 } },
-            Note = { "CHECK_VIDEO_GUIDE_NEED_HELP", "DEADZONE_POACHERS_DURING_AOE_PULL_NOT_GET" },
+            Note = { "DEADZONE_POACHERS_DURING_AOE_PULL_NOT_GET" },
             Coord = { x = -2362.645, y = -9699.16 },
             Range = 30,
             Zone = 1433,

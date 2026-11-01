@@ -346,7 +346,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Qpart = { [416] = { 1 } },
-            Note = { "TUNNEL_RATS_SPAWN_THROUGHOUT_LOCH_MODAN_CHECK" },
+            Note = { "TUNNEL_RATS_FOUND_THROUGHOUT_LOCH_MODAN" },
             Coord = { x = -2859.315, y = -5041.76 },
             Range = 30,
             Zone = 1432,

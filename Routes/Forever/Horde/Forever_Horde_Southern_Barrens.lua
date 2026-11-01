@@ -455,13 +455,13 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             _index = 44,
         },
         {
-            Note = { "USE_REMAINING_BLOOD_SHARDS_BUFFS", "POSSIBLE_SAVE_10_BLOOD_SHARDS_ABLE_UTILIZE", "DISABLE_AUTOMATIC_EXTRA_TURN_INS" },
+            Note = { "USE_REMAINING_BLOOD_SHARDS_BUFFS", "POSSIBLE_SAVE_10_BLOOD_SHARDS_ABLE_UTILIZE", "BYPASS_AUTO" },
             AnyOf = { { Race = { "Orc", "Skyborne", "Tauren", "Troll" }, Class = "SHAMAN", IsQuestUncompleted = 1536 }, { Class = "WARRIOR", IsQuestUncompleted = 1823 }, { Class = { "HUNTER", "PALADIN", "PRIEST", "ROGUE", "WARLOCK" }, IsQuestUncompleted = 843 } },
             Class = { "HUNTER", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
             _index = 45,
         },
         {
-            Note = { "USE_REMAINING_BLOOD_SHARDS_BUFFS", "POSSIBLE_SAVE_10_BLOOD_SHARDS_ABLE_UTILIZE", "DISABLE_AUTOMATIC_EXTRA_TURN_INS" },
+            Note = { "USE_REMAINING_BLOOD_SHARDS_BUFFS", "POSSIBLE_SAVE_10_BLOOD_SHARDS_ABLE_UTILIZE", "BYPASS_AUTO" },
             Class = { "DRUID", "MAGE" },
             IsQuestUncompleted = 843,
             _index = 46,
@@ -1161,7 +1161,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         },
         {
             Qpart = { [873] = { 1 } },
-            Note = { "CHECK_OTHER_MARKED_SPAWNS" },
+            Note = { "MULTIPLE_SPAWN_LOCATIONS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 64.685, 49.41),
             Range = 30,
             IsQuestOnQuest = 873,

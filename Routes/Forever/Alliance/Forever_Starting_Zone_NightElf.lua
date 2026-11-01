@@ -175,7 +175,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 3,
         },
         {
-            LootMoney = { copper = 96, equippedSlots = { 16 } },
+            LootMoney = { copper = 102, equippedSlots = { 16 } },
             Coord = { x = 669.5, y = 10387.3 },
             Range = 30,
             Class = "DRUID",
@@ -1014,7 +1014,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 109,
         },
         {
-            Qpart = { [96606] = { 2 } },
+            Qpart = { [96606] = { 1, 2 } },
             Emote = { manual = true, emote = "sit", npcID = 0 },
             Fillers = { [488] = { 1, 2, 3 }, [4161] = { 1 } },
             Note = { "WAIT_CAMPFIRE_ONE_MINUTE" },
@@ -1700,7 +1700,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [932] = { 1 } },
-            Note = { "CHECK_OTHER_MARKED_SPAWNS" },
+            Note = { "MULTIPLE_SPAWN_LOCATIONS" },
             Coord = { x = 1207.65, y = 10114.01 },
             Range = 30,
             Class = "DRUID",
@@ -2078,7 +2078,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [932] = { 1 } },
-            Note = { "USE_SEVERED_VOODOO_CLAWS_SEVERELY_REDUCE_DAMAGE", "CHECK_OTHER_MARKED_SPAWNS" },
+            Note = { "USE_SEVERED_VOODOO_CLAWS_SEVERELY_REDUCE_DAMAGE", "MULTIPLE_SPAWN_LOCATIONS" },
             Coord = { x = 1207.65, y = 10114.01 },
             Range = 30,
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
@@ -2088,7 +2088,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [932] = { 1 } },
-            Note = { "CHECK_OTHER_MARKED_SPAWNS" },
+            Note = { "MULTIPLE_SPAWN_LOCATIONS" },
             Coord = { x = 1207.65, y = 10114.01 },
             Range = 30,
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
@@ -2671,14 +2671,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             PickUp = { 5627 },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1457, 40, 80),
+            Coord = { x = 2515.0296, y = 9673.7323 },
             Class = "PRIEST",
             Zone = 1457,
             _index = 301,
         },
         {
             Done = { 5627 },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1457, 40, 80),
+            Coord = { x = 2515.0296, y = 9673.7323 },
             Class = "PRIEST",
             Zone = 1457,
             _index = 302,
@@ -3667,7 +3667,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         {
             Qpart = { [2518] = { 1 } },
             Fillers = { [937] = { 1 } },
-            Note = { "CHECK_OTHER_MARKED_SPAWNS", "CHECK_EASTERNMOST_SPAWN_FIRST_WORK_OTHER_OBJECTIVE", "NOT_EAST_RIVER_COMPLETE_TUMORS_QUEST_HEADING" },
+            Note = { "MULTIPLE_SPAWN_LOCATIONS", "CHECK_EASTERNMOST_SPAWN_FIRST_WORK_OTHER_OBJECTIVE", "NOT_EAST_RIVER_COMPLETE_TUMORS_QUEST_HEADING" },
             Coord = { x = 1828.6, y = 10964.8 },
             Range = 10,
             Class = { "ROGUE", "WARRIOR" },
@@ -3676,7 +3676,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [2518] = { 1 } },
-            Note = { "CHECK_OTHER_MARKED_SPAWNS", "CHECK_EASTERNMOST_SPAWN_FIRST_WORK_OTHER_OBJECTIVE", "NOT_EAST_RIVER_COMPLETE_TUMORS_QUEST_HEADING" },
+            Note = { "MULTIPLE_SPAWN_LOCATIONS", "CHECK_EASTERNMOST_SPAWN_FIRST_WORK_OTHER_OBJECTIVE", "NOT_EAST_RIVER_COMPLETE_TUMORS_QUEST_HEADING" },
             Coord = { x = 1828.6, y = 10964.8 },
             Range = 10,
             Class = { "DRUID", "HUNTER", "PRIEST" },
@@ -3809,7 +3809,8 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             DeathSkip = true,
-            AnyOf = { { IsQuestUncompleted = 5931, Class = "DRUID" }, { IsQuestUncompleted = 1684, Class = "WARRIOR" }, { IsQuestUncompleted = 940, Class = { "HUNTER", "PRIEST", "ROGUE" } } },
+            AnyOf = { { IsQuestUncompleted = 5931, Class = "DRUID" }, { IsQuestUncompleted = 940, Class = { "HUNTER", "PRIEST", "ROGUE" } } },
+            Class = { "DRUID", "HUNTER", "PRIEST", "ROGUE" },
             Hardcore = false,
             SkipForLvl = 10,
             _index = 438,
@@ -4264,6 +4265,5 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             RouteCompleted = true,
             _index = 494,
         },
-
     },
 }

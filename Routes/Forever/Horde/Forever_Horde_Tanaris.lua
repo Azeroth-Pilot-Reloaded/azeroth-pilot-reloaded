@@ -1651,7 +1651,7 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
         },
         {
             PickUp = { 1560 },
-            Note = { "ESCORTS_NPC", "CHECK_OTHER_MARKED_SPAWNS", "SKIP_ABSENT_NPC_LONG_RESPAWN" },
+            Note = { "ESCORTS_NPC", "MULTIPLE_SPAWN_LOCATIONS", "SKIP_ABSENT_NPC_LONG_RESPAWN" },
             Coord = { x = -2245.28, y = -8633.62 },
             Range = 30,
             NoAutoAccept = true,
