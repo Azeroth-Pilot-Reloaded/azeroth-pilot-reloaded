@@ -392,3 +392,20 @@ assert(frame:IsShown() and frame.arrow.texture:find(expectedTexture, 1, true)
 assert(frame.distance.text == "38 yards" and table.concat(frame.arrow.coords, ",") ~= "0,1,0,1",
     "Normal guidance restores heading cells, color and distance after a personal action")
 print("Personal travel: secure controls stay in the current step; physical portals restore directional guidance")
+
+navigating = false
+APR.navigation.retainedArrow = nil
+APR.IsInRouteZone = true
+step.NoArrow, step.Waypoint = nil, nil
+local progressBeforeHearth = advanced
+for _, action in ipairs({ "UseHS", "UseDalaHS", "UseGarrisonHS" }) do
+    step[action] = 901
+    frame:Hide(); frame.showCount = 0
+    refresh(); tick()
+    assert(not frame:IsShown() and frame.showCount == 0 and arrow.x == 0 and arrow.y == 0,
+        "An authored hearth must never point toward its old cast coordinates: " .. action)
+    assert(advanced == progressBeforeHearth, "Hiding a hearth arrow cannot complete the cast")
+    step[action] = nil
+end
+refresh(); tick()
+assert(frame:IsShown(), "The next ordinary objective restores its geographic arrow")
