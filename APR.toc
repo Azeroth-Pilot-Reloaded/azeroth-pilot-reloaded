@@ -88,6 +88,8 @@ APR-Core/integrations/QuestTracker.lua
 APR-Core/utils/BuyMerchantUtils.lua
 APR-Core/utils/LootUtils.lua
 APR-Core/utils/PlayerPositionUtils.lua
+APR-Core/features/navigation/TerrainIndex.lua
+APR-Core/features/navigation/NavigationTerrain.lua
 APR-Core/features/navigation/NavigationAdapter.lua
 APR-Core/integrations/NavigationEntrances.lua
 APR-Core/utils/NavigationZones.lua

@@ -367,7 +367,7 @@ function APR.map:AddMapPins()
     local showWorldPins = profile.mapshowNextSteps and mapID ~= COSMIC_MAP_ID and mapID ~= WORLD_MAP_ID
     if APR.navigationPreview then
         for index, point in ipairs(APR.navigationPreview:GetPoints()) do
-            if point.generated then
+            if point.generated and not point.shape then
                 -- Pool by preview slot, rather than retaining every replan's IDs.
                 local key = "guidance-" .. index
                 if showWorldPins then

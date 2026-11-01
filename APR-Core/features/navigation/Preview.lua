@@ -193,7 +193,9 @@ function Preview:Point(value, generated)
     if not coord or not finite(coord.x) or not finite(coord.y) then return nil end
     local point = {}
     for key, entry in pairs(value) do point[key] = entry end
-    point.Coord = { x = coord.x, y = coord.y }
+    point.Coord = { x = coord.x, y = coord.y, z = coord.z }
+    point.z, point.floor = value.z or coord.z, value.floor or coord.floor
+    point.accessKey = value.accessKey or coord.accessKey
     point.generated = generated == true or value.generated == true
     point.uiMapID = coord.mapID or value.uiMapID or value.mapID or value.Zone
     point.instanceID = value.instanceID or coord.instanceID or self:GetMapInstance(point.uiMapID)
@@ -208,22 +210,26 @@ end--[[APR_DIAG]]; Preview.Point = APRTrace("APR-Core/features/navigation/Previe
 local function enginePoint(position, source)
     if type(position) ~= "table" or not finite(position.x) or not finite(position.y) then return nil end
     return {
-        Coord = { x = position.y, y = position.x }, instanceID = position.instanceID,
+        Coord = { x = position.y, y = position.x, z = position.z }, instanceID = position.instanceID,
         uiMapID = position.uiMapID, generated = true, kind = "arrival", arrival = true,
+        z = position.z, floor = position.floor, accessKey = position.accessKey, region = position.region,
         label = source.label or source.instruction, mandatory = source.mandatory,
     }
-end--[[APR_DIAG]]; enginePoint = APRTrace("APR-Core/features/navigation/Preview.lua:208:enginePoint#9", enginePoint)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; enginePoint = APRTrace("APR-Core/features/navigation/Preview.lua:210:enginePoint#9", enginePoint)--[[/APR_DIAG]]
 
 local function append(points, point)
     if not point then return end
     local previous = points[#points]
     if previous and previous.Coord.x == point.Coord.x and previous.Coord.y == point.Coord.y
-        and previous.instanceID == point.instanceID and not point.breakBefore then
+        and previous.instanceID == point.instanceID and previous.uiMapID == point.uiMapID
+        and previous.floor == point.floor and previous.accessKey == point.accessKey
+        and (previous.z == nil or point.z == nil or previous.z == point.z) and not point.breakBefore then
         -- A coincident walk must not swallow a mandatory transport/probe or its
         -- discontinuity. An authored objective keeps its real route identity.
         local keep = previous
         if previous.generated and (not point.generated or (point.kind ~= "walk" and point.kind ~= "arrival")
             or previous.kind == "walk" or previous.kind == "arrival") then keep = point end
+        if previous.shape and not point.shape then keep = point end
         keep.breakBefore = previous.breakBefore or point.breakBefore
         keep.breakAfter = previous.breakAfter or point.breakAfter
         keep.mandatory = previous.mandatory or point.mandatory
@@ -231,7 +237,7 @@ local function append(points, point)
         return
     end
     points[#points + 1] = point
-end--[[APR_DIAG]]; append = APRTrace("APR-Core/features/navigation/Preview.lua:217:append#10", append)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; append = APRTrace("APR-Core/features/navigation/Preview.lua:220:append#10", append)--[[/APR_DIAG]]
 
 function Preview:BuildRoutePoints(step, index, steps)
     if not step then step, index, steps = APR:GetCurrentStep() end
@@ -265,7 +271,24 @@ function Preview:BuildRoutePoints(step, index, steps)
     self.routeCache = { step = step, steps = steps, index = index, revision = APR.stepRevision,
         playerMapID = playerMapID, coord = step.Coord, noArrow = step.NoArrow, points = points }
     return points
-end--[[APR_DIAG]]; Preview.BuildRoutePoints = APRTrace("APR-Core/features/navigation/Preview.lua:236:Preview:BuildRoutePoints#11", Preview.BuildRoutePoints)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Preview.BuildRoutePoints = APRTrace("APR-Core/features/navigation/Preview.lua:242:Preview:BuildRoutePoints#11", Preview.BuildRoutePoints)--[[/APR_DIAG]]
+
+local function AppendTerrain(points, entry)
+    if type(entry.polyline) ~= "table" or #entry.polyline < 2 then return end
+    local gap = true
+    for index, position in ipairs(entry.polyline) do
+        local point = enginePoint(position, entry)
+        if point then
+            point.shape, point.terrain = index < #entry.polyline, true
+            point.kind = point.shape and "terrain" or (entry.kind or "walk")
+            -- The published corridor is immutable. Do not draw a fresh chord
+            -- from the moving player back to its original departure.
+            point.breakBefore = gap or position.breakBefore == true
+            append(points, point)
+            gap = false
+        else gap = true end
+    end
+end--[[APR_DIAG]]; AppendTerrain = APRTrace("APR-Core/features/navigation/Preview.lua:276:AppendTerrain#12", AppendTerrain)--[[/APR_DIAG]]
 
 function Preview:Build(guidance, step, index, steps, cursor)
     local routePoints = self:BuildRoutePoints(step, index, steps)
@@ -277,18 +300,21 @@ function Preview:Build(guidance, step, index, steps, cursor)
     local points = {}
     for guidanceIndex = cursor or 1, #(guidance or {}) do
         local entry = guidance[guidanceIndex]
-        local personalAction = entry.sourceFree == true and entry.action ~= nil
-        -- A personal action has no fixed cast location. Keep any preceding
-        -- approach walk and its destination, but never pin the old cast origin.
-        local point = not personalAction and self:Point(entry, true) or nil
-        append(points, point)
-        local kind = entry.kind or entry.type
-        if (point or personalAction) and entry.to and kind ~= "walk" and kind ~= "waypoint" and not entry.arrival then
-            local arrival = enginePoint(entry.to, entry)
-            if arrival then
-                arrival.breakBefore = personalAction == true or (point and point.instanceID ~= nil
-                    and arrival.instanceID ~= nil and point.instanceID ~= arrival.instanceID)
-                append(points, arrival)
+        if entry.terrain then AppendTerrain(points, entry)
+        else
+            local personalAction = entry.sourceFree == true and entry.action ~= nil
+            -- A personal action has no fixed cast location. Keep any preceding
+            -- approach walk and its destination, but never pin the old cast origin.
+            local point = not personalAction and self:Point(entry, true) or nil
+            append(points, point)
+            local kind = entry.kind or entry.type
+            if (point or personalAction) and entry.to and kind ~= "walk" and kind ~= "waypoint" and not entry.arrival then
+                local arrival = enginePoint(entry.to, entry)
+                if arrival then
+                    arrival.breakBefore = personalAction == true or (point and point.instanceID ~= nil
+                        and arrival.instanceID ~= nil and point.instanceID ~= arrival.instanceID)
+                    append(points, arrival)
+                end
             end
         end
     end
@@ -297,7 +323,7 @@ function Preview:Build(guidance, step, index, steps, cursor)
         self.guidanceCache = { guidance = guidance, cursor = cursor, routePoints = routePoints, points = points }
     end
     return points
-end--[[APR_DIAG]]; Preview.Build = APRTrace("APR-Core/features/navigation/Preview.lua:270:Preview:Build#12", Preview.Build)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Preview.Build = APRTrace("APR-Core/features/navigation/Preview.lua:293:Preview:Build#13", Preview.Build)--[[/APR_DIAG]]
 
 function Preview:GetPoints()
     local navigation = APR.navigation
@@ -338,13 +364,14 @@ function Preview:GetPoints()
         coord = runtime and runtime.step and runtime.step.Coord,
         noArrow = runtime and runtime.step and runtime.step.NoArrow, routeCache = self.routeCache, points = points }
     return points
-end--[[APR_DIAG]]; Preview.GetPoints = APRTrace("APR-Core/features/navigation/Preview.lua:302:Preview:GetPoints#13", Preview.GetPoints)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Preview.GetPoints = APRTrace("APR-Core/features/navigation/Preview.lua:328:Preview:GetPoints#14", Preview.GetPoints)--[[/APR_DIAG]]
 
 function Preview:CanConnect(a, b)
     if not a or not b or a.breakAfter or b.breakBefore then return false end
     if a.instanceID ~= nil and b.instanceID ~= nil and a.instanceID ~= b.instanceID then return false end
+    if (a.terrain or b.terrain) and (a.floor ~= b.floor or a.accessKey ~= b.accessKey) then return false end
     return true
-end--[[APR_DIAG]]; Preview.CanConnect = APRTrace("APR-Core/features/navigation/Preview.lua:343:Preview:CanConnect#14", Preview.CanConnect)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Preview.CanConnect = APRTrace("APR-Core/features/navigation/Preview.lua:369:Preview:CanConnect#15", Preview.CanConnect)--[[/APR_DIAG]]
 
 -- Restrict a segment's parameter interval to one axis of the rectangle.
 -- Scalar bounds avoid allocating temporary tables for every rendered line.
@@ -358,7 +385,7 @@ local function ClipAxis(origin, delta, minimum, maximum, first, last)
     first, last = math.max(first, entry), math.min(last, exit)
     if first > last then return nil end
     return first, last
-end--[[APR_DIAG]]; ClipAxis = APRTrace("APR-Core/features/navigation/Preview.lua:351:ClipAxis#15", ClipAxis)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ClipAxis = APRTrace("APR-Core/features/navigation/Preview.lua:378:ClipAxis#16", ClipAxis)--[[/APR_DIAG]]
 
 -- Liang-Barsky clipping for world-map bounds and the minimap's square.
 function Preview:ClipRectangle(ax, ay, bx, by, minX, minY, maxX, maxY)
@@ -368,7 +395,7 @@ function Preview:ClipRectangle(ax, ay, bx, by, minX, minY, maxX, maxY)
     first, last = ClipAxis(ay, dy, minY, maxY, first, last)
     if not first then return nil end
     return ax + first * dx, ay + first * dy, ax + last * dx, ay + last * dy
-end--[[APR_DIAG]]; Preview.ClipRectangle = APRTrace("APR-Core/features/navigation/Preview.lua:364:Preview:ClipRectangle#16", Preview.ClipRectangle)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Preview.ClipRectangle = APRTrace("APR-Core/features/navigation/Preview.lua:391:Preview:ClipRectangle#17", Preview.ClipRectangle)--[[/APR_DIAG]]
 
 -- Clip each quadrant to its own round/square boundary. This supports WoW's
 -- corner/side minimap shapes without pulling off-screen waypoint legs inward.
@@ -418,4 +445,4 @@ function Preview:ClipMinimapSegment(ax, ay, bx, by, shape)
     end
     if first == nil then return nil end
     return ax + dx * first, ay + dy * first, ax + dx * last, ay + dy * last
-end--[[APR_DIAG]]; Preview.ClipMinimapSegment = APRTrace("APR-Core/features/navigation/Preview.lua:375:Preview:ClipMinimapSegment#17", Preview.ClipMinimapSegment)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Preview.ClipMinimapSegment = APRTrace("APR-Core/features/navigation/Preview.lua:402:Preview:ClipMinimapSegment#18", Preview.ClipMinimapSegment)--[[/APR_DIAG]]
