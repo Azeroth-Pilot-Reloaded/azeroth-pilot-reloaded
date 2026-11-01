@@ -1,7 +1,7 @@
 -- Project endpoints into world coordinates and identify their access regions.
 -- A shared position alone does not permit walking through a required entrance.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("geography", 8) then return end
+if not Lib:BeginModule("geography", 9) then return end
 local Instance = Lib.Instance
 -- These defaults are read-only, including CheckRequirements' character input.
 -- Reuse them across walking checks and retries of unavailable map ancestry.
@@ -25,10 +25,24 @@ function Instance:GetMapAncestryInfo(mapID)
     return info
 end
 
+function Instance:GetWorldInstanceID(instanceID)
+    local overrides = self.config.WorldInstanceOverrides
+    return (overrides and overrides[instanceID]) or instanceID
+end
+
+local function WorldRegion(region, source, target)
+    if type(region) == "string" and source ~= nil and source ~= target then
+        local prefix = tostring(source) .. ":"
+        if region:sub(1, #prefix) == prefix then return tostring(target) .. ":" .. region:sub(#prefix + 1) end
+    end
+    -- Explicit regions supplied by the host are access boundaries, not caches.
+    return region
+end
+
 function Instance:NormalizeLocation(location, hint)
     if type(location) ~= "table" then return nil end
     local x, y = location.x, location.y
-    local instanceID, mapID = location.instanceID, location.uiMapID
+    local instanceID, mapID = self:GetWorldInstanceID(location.instanceID), location.uiMapID
     if not Finite(x) or not Finite(y) then return nil end
     if location.space == "map" then
         if not self.env.mapToWorld or not mapID or x < 0 or x > 1 or y < 0 or y > 1 then return nil end
@@ -40,6 +54,7 @@ function Instance:NormalizeLocation(location, hint)
     elseif not mapID and self.env.worldToMap and instanceID ~= nil then
         mapID = self.env.worldToMap(instanceID, x, y, hint)
     end
+    instanceID = self:GetWorldInstanceID(instanceID)
     if not Finite(instanceID) or not Finite(x) or not Finite(y) then return nil end
     local position = {
         instanceID = instanceID,
@@ -54,7 +69,7 @@ function Instance:NormalizeLocation(location, hint)
         noAutoconnect = location.noAutoconnect,
         phaseAgnostic = location.phaseAgnostic,
         isInstance = location.isInstance,
-        region = location.region,
+        region = WorldRegion(location.region, location.instanceID, instanceID),
     }
     position.region = self:GetPositionRegion(position)
     return position
@@ -62,14 +77,15 @@ end
 
 function Instance:GetPositionRegion(position)
     if not position then return nil end
-    if position.region then return position.region end
+    local instanceID = self:GetWorldInstanceID(position.instanceID)
+    if position.region then return WorldRegion(position.region, position.instanceID, instanceID) end
     local mapID = position.uiMapID
     if not mapID and self.env.worldToMap and position.instanceID ~= nil then
-        mapID = self.env.worldToMap(position.instanceID, position.x, position.y)
+        mapID = self.env.worldToMap(instanceID, position.x, position.y)
     end
     if not mapID then return nil end
     self.regions = self.regions or {}
-    local cacheKey = tostring(position.instanceID) .. ":" .. mapID .. ":" .. tostring(position.isInstance == true)
+    local cacheKey = tostring(instanceID) .. ":" .. mapID .. ":" .. tostring(position.isInstance == true)
     local cached = self.regions[cacheKey]
     if cached then return cached end
 
@@ -96,14 +112,14 @@ function Instance:GetPositionRegion(position)
             if isolatedContinents[current] and isolation == nil then
                 isolation = "area:" .. outer
             end
-            region = tostring(position.instanceID) .. ":" .. tostring(continent or current) .. ":" .. tostring(isolation or "outdoor")
+            region = tostring(instanceID) .. ":" .. tostring(continent or current) .. ":" .. tostring(isolation or "outdoor")
         elseif mapType == 4 or (self.entranceMaps and self.entranceMaps[current]) then
             -- Native interior maps remain isolated even when the host has no
             -- IsInInstance observation (for example an authored destination).
             -- All verified floors of one instance share its explicit identity.
             local entrances = self.entranceMaps and self.entranceMaps[current]
             local identity = entrances and entrances[1].interiorMapIDs[1] or current
-            region = tostring(position.instanceID) .. ":instance:" .. identity .. ":" .. tostring(isolation or "interior")
+            region = tostring(instanceID) .. ":instance:" .. identity .. ":" .. tostring(isolation or "interior")
         end
         if region then
             self.regions[cacheKey] = region
@@ -114,7 +130,7 @@ function Instance:GetPositionRegion(position)
 end
 
 function Instance:IsSameAccessRegion(from, to)
-    if not from or not to or from.instanceID ~= to.instanceID then return false end
+    if not from or not to or self:GetWorldInstanceID(from.instanceID) ~= self:GetWorldInstanceID(to.instanceID) then return false end
     if from.accessKey ~= to.accessKey or from.floor ~= to.floor then return false end
     local source, target = self:GetPositionRegion(from), self:GetPositionRegion(to)
     return source ~= nil and source == target

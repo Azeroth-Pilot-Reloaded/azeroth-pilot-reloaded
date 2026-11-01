@@ -1,8 +1,10 @@
 -- Navigation wording belongs to the library; names still come from the client.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("locales", 3) then return end
+if not Lib:BeginModule("locales", 4) then return end
 Lib.locales = {
     enUS = {
+        ["NAVIGATION_ENTER_UNDERWATER_CAVE"] = "Enter the underwater cave to reach the campfire (%s).",
+        ["NAVIGATION_USE_CAMPFIRE"] = "Sit on a chair and click the blue campfire to travel to %s.",
         ["EXIT_HOUSING"] = "Return from housing",
         ["NAVIGATION_REQUIRES_phase"] = "Required timeline: %s",
         ["NAVIGATION_REQUIRES_holiday"] = "Event must be active: %s",
@@ -61,6 +63,8 @@ Lib.locales = {
         ["USE_ZEPPELIN_TO"] = "Take the zeppelin to %s",
     },
     frFR = {
+        ["NAVIGATION_ENTER_UNDERWATER_CAVE"] = "Entre dans la grotte sous-marine pour rejoindre le feu (%s).",
+        ["NAVIGATION_USE_CAMPFIRE"] = "Assieds-toi sur une chaise et clique sur le feu bleu pour rejoindre %s.",
         ["EXIT_HOUSING"] = "Quitte le logis pour revenir dehors",
         ["NAVIGATION_REQUIRES_phase"] = "Époque requise : %s",
         ["NAVIGATION_REQUIRES_holiday"] = "Événement actif requis : %s",
@@ -119,6 +123,8 @@ Lib.locales = {
         ["USE_ZEPPELIN_TO"] = "Prends le zeppelin vers %s",
     },
     deDE = {
+        ["NAVIGATION_ENTER_UNDERWATER_CAVE"] = "Betritt die Unterwasserhöhle, um das Lagerfeuer zu erreichen (%s).",
+        ["NAVIGATION_USE_CAMPFIRE"] = "Setze dich auf einen Stuhl und klicke auf das blaue Lagerfeuer, um nach %s zu reisen.",
         ["EXIT_HOUSING"] = "Verlasse das Zuhause",
         ["NAVIGATION_REQUIRES_phase"] = "Benötigte Zeitlinie: %s",
         ["NAVIGATION_REQUIRES_holiday"] = "Ereignis muss aktiv sein: %s",
@@ -177,6 +183,8 @@ Lib.locales = {
         ["USE_ZEPPELIN_TO"] = "Nimm den Zeppelin nach %s",
     },
     esES = {
+        ["NAVIGATION_ENTER_UNDERWATER_CAVE"] = "Entra en la cueva submarina para llegar a la hoguera (%s).",
+        ["NAVIGATION_USE_CAMPFIRE"] = "Siéntate en una silla y haz clic en la hoguera azul para viajar a %s.",
         ["EXIT_HOUSING"] = "Sal de la vivienda",
         ["NAVIGATION_REQUIRES_phase"] = "Línea temporal necesaria: %s",
         ["NAVIGATION_REQUIRES_holiday"] = "Evento activo necesario: %s",
@@ -235,6 +243,8 @@ Lib.locales = {
         ["USE_ZEPPELIN_TO"] = "Toma el zepelín a %s",
     },
     itIT = {
+        ["NAVIGATION_ENTER_UNDERWATER_CAVE"] = "Entra nella grotta sottomarina per raggiungere il fuoco (%s).",
+        ["NAVIGATION_USE_CAMPFIRE"] = "Siediti su una sedia e clicca sul fuoco blu per raggiungere %s.",
         ["EXIT_HOUSING"] = "Esci dall'alloggio",
         ["NAVIGATION_REQUIRES_phase"] = "Linea temporale richiesta: %s",
         ["NAVIGATION_REQUIRES_holiday"] = "È richiesto l'evento attivo: %s",
@@ -293,6 +303,8 @@ Lib.locales = {
         ["USE_ZEPPELIN_TO"] = "Prendi lo zeppelin per %s",
     },
     ptBR = {
+        ["NAVIGATION_ENTER_UNDERWATER_CAVE"] = "Entre na caverna subaquática para chegar à fogueira (%s).",
+        ["NAVIGATION_USE_CAMPFIRE"] = "Sente-se em uma cadeira e clique na fogueira azul para viajar até %s.",
         ["EXIT_HOUSING"] = "Saia da moradia",
         ["NAVIGATION_REQUIRES_phase"] = "Linha temporal necessária: %s",
         ["NAVIGATION_REQUIRES_holiday"] = "Evento ativo necessário: %s",
@@ -351,6 +363,8 @@ Lib.locales = {
         ["USE_ZEPPELIN_TO"] = "Pegue o zepelim para %s",
     },
     ruRU = {
+        ["NAVIGATION_ENTER_UNDERWATER_CAVE"] = "Войдите в подводную пещеру, чтобы добраться до костра (%s).",
+        ["NAVIGATION_USE_CAMPFIRE"] = "Сядьте на стул и нажмите на синий костёр, чтобы попасть в %s.",
         ["EXIT_HOUSING"] = "Покинь дом",
         ["NAVIGATION_REQUIRES_phase"] = "Требуется временная линия: %s",
         ["NAVIGATION_REQUIRES_holiday"] = "Требуется активное событие: %s",
@@ -409,6 +423,8 @@ Lib.locales = {
         ["USE_ZEPPELIN_TO"] = "Сядьте на дирижабль в %s",
     },
     koKR = {
+        ["NAVIGATION_ENTER_UNDERWATER_CAVE"] = "수중 동굴로 들어가 모닥불로 이동하세요 (%s).",
+        ["NAVIGATION_USE_CAMPFIRE"] = "의자에 앉은 뒤 푸른 모닥불을 클릭하세요. 목적지: %s.",
         ["EXIT_HOUSING"] = "하우징에서 나가기",
         ["NAVIGATION_REQUIRES_phase"] = "필요한 시간대: %s",
         ["NAVIGATION_REQUIRES_holiday"] = "진행 중인 이벤트 필요: %s",
@@ -467,6 +483,8 @@ Lib.locales = {
         ["USE_ZEPPELIN_TO"] = "%s행 비행선을 타세요",
     },
     zhCN = {
+        ["NAVIGATION_ENTER_UNDERWATER_CAVE"] = "进入水下洞穴，前往篝火处（%s）。",
+        ["NAVIGATION_USE_CAMPFIRE"] = "坐在椅子上，点击蓝色篝火，传送到%s。",
         ["EXIT_HOUSING"] = "离开住宅",
         ["NAVIGATION_REQUIRES_phase"] = "需要时间线：%s",
         ["NAVIGATION_REQUIRES_holiday"] = "需要正在进行的节日：%s",
@@ -525,6 +543,8 @@ Lib.locales = {
         ["USE_ZEPPELIN_TO"] = "乘坐飞艇前往%s",
     },
     zhTW = {
+        ["NAVIGATION_ENTER_UNDERWATER_CAVE"] = "進入水下洞穴，前往營火處（%s）。",
+        ["NAVIGATION_USE_CAMPFIRE"] = "坐在椅子上，點擊藍色營火，傳送至%s。",
         ["EXIT_HOUSING"] = "離開住宅",
         ["NAVIGATION_REQUIRES_phase"] = "需要時間線：%s",
         ["NAVIGATION_REQUIRES_holiday"] = "需要正在進行的節日：%s",
@@ -583,6 +603,8 @@ Lib.locales = {
         ["USE_ZEPPELIN_TO"] = "搭乘飛船前往%s",
     },
     esMX = {
+        ["NAVIGATION_ENTER_UNDERWATER_CAVE"] = "Entra en la cueva submarina para llegar a la fogata (%s).",
+        ["NAVIGATION_USE_CAMPFIRE"] = "Siéntate en una silla y haz clic en la fogata azul para viajar a %s.",
         ["EXIT_HOUSING"] = "Sal de la vivienda",
         ["NAVIGATION_REQUIRES_phase"] = "Línea temporal necesaria: %s",
         ["NAVIGATION_REQUIRES_holiday"] = "Evento activo necesario: %s",

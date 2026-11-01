@@ -888,3 +888,44 @@ for _ = 1, 2 do
 end
 assert(t.nav.continuationReuses == 2 and APRData.p.r == 1)
 print("Precomputed continuation: spell/item/portal landings, loading, event order, native retries, invalid arrivals and live future gates passed")
+
+-- Reusing old walk durations can preserve a scenic portal detour after flying
+-- becomes unavailable, even though a new full search found a faster journey.
+t = fixture()
+local travelSpeed = 70
+function t.nav:GetMovementSpeed() return travelSpeed end
+t.edges = {
+    { id = "detour-first", kind = "portal", seconds = 5, from = t.position,
+        to = { x = 1000, y = 0, instanceID = 0, uiMapID = 4 } },
+    { id = "detour-last", kind = "portal", seconds = 5,
+        from = { x = 8000, y = 0, instanceID = 0, uiMapID = 4 },
+        to = { x = 15000, y = 0, instanceID = 0, uiMapID = 3 } },
+    { id = "direct", kind = "portal", seconds = 200, from = t.position,
+        to = { x = 15000, y = 0, instanceID = 0, uiMapID = 3 } },
+}
+t:Update()
+assert(t.nav:GetActiveStep().connectionID == "detour-first" and t.nav.totalSeconds == 110)
+travelSpeed = 7
+t:Update()
+assert(t.nav:GetActiveStep().connectionID == "direct" and not t.nav.lastComparison.retained,
+    "Re-cost every remaining walk using the candidate's current speed before keeping an old detour")
+assert(math.abs(t.nav.lastComparison.remainingSeconds - 1010) < 0.001,
+    "An unstarted walk costs 1000 seconds at the current speed, not the old 100 seconds")
+assert(APRData.p.r == 1, "Replacing a detour cannot advance its authored waypoint")
+
+t = fixture(); t:Update()
+t.position.x = 100; t.nav:PollArrival()
+assert(t.nav:GetActiveStep().kind == "portal")
+t.position.instanceID = 99
+assert(not t.nav:IsItineraryValid(), "A fixed portal in the former world cannot be retained after an unexpected arrival")
+
+t = fixture(); t.edges[1].to.x = 14000; t:Update()
+t.position.x = 100; t.nav:PollArrival()
+local last = t.nav.queue[#t.nav.queue]
+assert(last.kind == "walk")
+local canWalk = APR.NavigationData.CanWalk
+function APR.NavigationData:CanWalk(from, to)
+    if from == last.from and to == last.to then return false end
+    return canWalk(self, from, to)
+end
+assert(not t.nav:IsItineraryValid(), "A future walk becoming inaccessible invalidates a retained portal itinerary")

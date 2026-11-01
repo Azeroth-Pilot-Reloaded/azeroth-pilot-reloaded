@@ -1,7 +1,7 @@
 -- Turn declarative connections into usable edges for one character snapshot.
 -- Each build owns its API cache and yields between connection directions.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("catalog", 16) then return end
+if not Lib:BeginModule("catalog", 17) then return end
 local Instance = Lib.Instance
 local EdgeBuild = {}
 EdgeBuild.__index = EdgeBuild
@@ -325,7 +325,9 @@ function EdgeBuild:AddDirection(definition, prepared, source, destination, suffi
         verifiedBuild = definition.verifiedBuild,
         canStart = canStart,
     }
-    edge.instruction = self.snapshot:GetInstruction(edge.kind, edge.action, to)
+    edge.instruction = definition.instructionKey
+        and Format(self.snapshot:GetText(definition.instructionKey), self.snapshot:GetDisplayMapName(to))
+        or self.snapshot:GetInstruction(edge.kind, edge.action, to)
     if blockedRequirements or prepared.blockedActions then
         edge.blockedRequirements, edge.blockedActions = blockedRequirements, prepared.blockedActions
         edge.canStart = nil

@@ -45,6 +45,13 @@ for _, profile in ipairs({ "retail", "forever" }) do
         end
     end
     local seen = {}
+    local overrides = data:GetConfig().WorldInstanceOverrides or {}
+    for phased, world in pairs(overrides) do
+        assert(type(phased) == "number" and phased > 0 and phased % 1 == 0
+            and type(world) == "number" and world > 0 and world % 1 == 0
+            and phased ~= world and overrides[world] == nil,
+            "World-space overrides must resolve directly to a distinct canonical world")
+    end
     for _, requirements in pairs(data:GetConfig().MapRequirements or {}) do inspect(requirements) end
     for group, definition in pairs(data:GetConfig().PhaseGroups or {}) do
         assert(type(group) == "string" and type(definition.sides) == "table")
@@ -60,6 +67,12 @@ for _, profile in ipairs({ "retail", "forever" }) do
         for icon, active in pairs(icons) do assert(type(icon) == "number" and active == true) end
     end
     for _, connection in ipairs(data:GetConnections()) do
+        if connection.instructionKey then
+            for locale, strings in pairs(LibStub("LibAPRNavigation-1.0").locales) do
+                assert(type(strings[connection.instructionKey]) == "string" and strings[connection.instructionKey] ~= "",
+                    connection.id .. " needs its interaction instruction in " .. locale)
+            end
+        end
         assert(not seen[connection.id], "Duplicate connection: " .. connection.id)
         seen[connection.id] = true
         inspect(connection.requirements)

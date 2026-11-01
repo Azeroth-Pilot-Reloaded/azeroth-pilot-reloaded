@@ -9,6 +9,16 @@ Only waypoint output resolves optional provider globals; environment callbacks
 can supply their APIs instead. Manual output and automatic
 target synchronization are both available.
 
+`config.WorldInstanceOverrides` declares verified phased world spaces with
+identical coordinates (for example Draenor garrisons). `GetWorldInstanceID(id)`
+returns their canonical world ID; hosts use it for player/arrow/map observations
+as well as projected destinations. This does not remove floor, access or map
+isolation rules. Ordinary instances remain separate.
+
+Connections may specify `instructionKey` for a localized interaction that is
+more specific than their transport kind. Hidden teleports keep their approach
+passages as separate edges rather than directing players through cave walls.
+
 ## Ownership
 
 | Location | Responsibility |
