@@ -484,4 +484,24 @@ for _ = 1, 20 do
 end
 assert(env.frames() == previewFrames, "AceGUI reuses the native theme preview without allocating on every settings refresh")
 print("Workspace widgets: real AceGUI pool isolation, nested release, reuse, error recovery and skin delegation passed")
+
+-- Model the native getters so warmed setter hooks can skip style registration,
+-- while observing changes made by skins and subsequent appearance refreshes.
+function env.methods:GetFont() return self.font, self.fontSize, self.flags end
+function env.methods:GetTextColor() return unpack(self.textColor or {}) end
+dialog:FeedGroup("APR/Workspace/Options/general", {kind = "Slider"}, host)
+local warmedSlider = host.children[1].children[1]
+warmedSlider:SetLabel("Stable label")
+local registrations, register = 0, APR.RegisterFontString
+function APR:RegisterFontString(...) registrations = registrations + 1; return register(self, ...) end
+for _ = 1, 1000 do warmedSlider:SetLabel("Stable label") end
+assert(registrations == 0, "Stable pooled controls do not repeatedly register identical font styles")
+warmedSlider.label.fontSize = 99
+warmedSlider:SetLabel("Stable label")
+assert(registrations > 0 and warmedSlider.label.fontSize ~= 99,
+    "The style snapshot detects externally changed native font properties")
+APR:ApplyAllTextStyles("general")
+registrations = 0
+warmedSlider:SetLabel("Stable label")
+assert(registrations > 0, "An appearance refresh invalidates the warmed widget snapshot")
 return {env = env, gui = gui, host = host, dialog = dialog}

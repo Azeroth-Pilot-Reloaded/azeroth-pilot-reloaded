@@ -87,3 +87,19 @@ assert(type(empty) == "table" and #empty == 0 and empty == utils:GetFontCatalog(
 media.List = function() return false end
 assert(utils:GetFontCatalog() == empty, "Optional unavailable media data keeps a stable empty picker")
 print("Shared fonts: lazy labels, all text scopes, borrowed late-registration catalog, inheritance and native path resolution passed")
+
+-- Native setters invalidate text measurements even when their inputs are unchanged.
+local fontWrites, colorWrites = 0, 0
+function font:GetFont() return self.font, self.fontSize, self.fontFlags end
+function font:GetTextColor() return unpack(self.testColor or {}) end
+function font:SetTextColor(...) colorWrites = colorWrites + 1; self.testColor = {...} end
+local setFont = font.SetFont
+function font:SetFont(...) fontWrites = fontWrites + 1; return setFont(self, ...) end
+APR:ApplyTextStyle(font)
+fontWrites, colorWrites = 0, 0
+for _ = 1, 1000 do APR:ApplyTextStyle(font) end
+assert(fontWrites == 0 and colorWrites == 0, "Unchanged styles cannot repeatedly invalidate native fonts/colors")
+font.fontSize, font.testColor = 99, {0.11, 0.22, 0.33, 0.44}
+APR:ApplyTextStyle(font)
+assert(fontWrites == 1 and colorWrites == 1 and font.fontSize ~= 99,
+    "An external skin changing a reused font is detected and repaired")
