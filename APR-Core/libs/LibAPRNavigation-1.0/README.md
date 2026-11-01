@@ -702,3 +702,94 @@ All action learning, ownership, usability and cooldown checks still apply.
 The maintenance inventory traverses all 1,974 input CSV IDs per profile. This is
 an evidence inventory, not a statement that every instance, phase and cave is
 playable through the catalogue. The reports list unresolved facts explicitly.
+# Terrain routing and continuous guidance
+
+Terrain is optional declarative input, independent of APR and WoW globals. A host
+registers a pinned client/build's pack with
+`library:RegisterTerrainData(profile, worldID, data, revision, packID)`. World IDs
+are canonical world-instance IDs; pack revisions invalidate geometry and visibility
+caches. Each consumer owns its mutable builds, routes and guidance sessions.
+
+The version-one pack is `{format=1, nodes={}, edges={}, anchors={}}`. Nodes have
+unique local `id`, world `x/y/z` in yards, optional `uiMapID`, access `region`,
+`floor`, `accessKey`, and `movementMode` (`ground`, `steady`, `skyriding`). Edge
+references are local IDs or `{pack=packID,node=id}`. An edge declares `from`, `to`,
+`mode`, and either total `seconds`, or nonnegative `length` (ground) / `horizontal`,
+`rise`, `fall` (air), plus optional `transitionSeconds` and a proved `polyline`.
+Without explicit metrics, endpoint distances are used. Ground cost is 3D length
+divided by ground speed; aerial cost is horizontal distance/speed + rise/climb
+speed + fall/descent speed. Explicit total seconds already include transitions.
+Distinct mode-state nodes at the same coordinate must have distinct IDs; mounting
+and landing are explicit edges, never inferred as free changes of movement mode.
+
+An anchor is a proved free convex volume: `node`, `minX/maxX/minY/maxY`, optional
+`minZ/maxZ`, and `mode`. It cannot be an encompassing bounding box around a wall
+or cluster. The node lies inside this volume, or `path` supplies a proved polyline
+from a free entry in the volume to a distant sparse-graph portal. Such a path is
+outward-only unless `bidirectional=true` or an explicit portal-to-entry
+`reversePath` is supplied. This preserves one-way falls. Bounds do not prove the
+corridor beyond the entry; the generator must verify that path separately.
+
+`CreateTerrainEdgeBuild({start,goal,edges,edgeGroups,movementProfile,canWalk,clock})`
+collects transport endpoints and returns only additional terrain edges through
+`Step(operations,milliseconds)`. Its third result is coverage: `terrainRegions`,
+`covered`, `attached`, `missingData`, `waitingData`, `missing`, `revision`, and a
+`canWalk` predicate. The latter disables implicit straight walking in managed
+worlds, retaining the caller's policy elsewhere. `noAutoconnect` passage endpoints
+never gain terrain attachments. Missing anchors, incomplete packs and ambiguous
+floors cannot become nearest-node shortcuts.
+
+`environment.hasTerrainData(profile,worldID,point)` tests the lightweight host
+index. `requestTerrainData` may register packs and returns `ready`, `planning`, or
+`missing`. The host verifies build compatibility before registering. Record
+validation, indexing, endpoint attachment and result assembly all run under the
+same incremental operation/time budget. Invalid visited records return
+`invalid_data`; the offline pack validator checks every declaration. Anchor entry
+and endpoint checks are constant-size; immutable corridor arrays are retained and
+their points are normalized only when that anchor is used. Interned source points
+reuse normalized positions within the same world/map/access/floor context.
+
+`CreateLocalRoute({start,goal,movementProfile,clock})` exposes `Step/Cancel`,
+returning `ready`, `no_path`, `missing_data`, `waiting_data` or `invalid_data`.
+Ready routes retain `segments`, `totalSeconds`, and their proved `polyline`.
+`CreateTerrainRouteBuild(route,{clock})` coalesces adjacent terrain walks one
+point per operation, preserving corners, costs, mode/access/floor boundaries,
+mandatory passages and non-terrain actions.
+Coalesced `polylineSeconds` and `polylineDelays` retain per-point time and departure
+costs, so reaching a mountain summit leaves the actual level-flight estimate.
+
+The movement profile supplies positive yard/second ground, steady-flight,
+skyriding, climb and descent speeds, allowed-mode booleans, `currentMode`, and an
+optional `canFlyAt(point,mode)` callback. Reference defaults are 7/30/60/15/45;
+they estimate stable travel cost rather than simulating dynamic-flight energy.
+Flight permission is checked at both endpoints and intermediate path points.
+
+`CreateGuidance(route,options)` creates a separate path cursor. `Step` prepares
+long polylines incrementally; `Update(position)` returns a target and status,
+with `remainingSeconds` on the session. Shape points do not advance quests.
+Ground lookahead is 30 yards; airborne lookahead is two reference-speed seconds
+bounded to 60–180 yards, always before the next corner. Arrival requires matching
+space and observable altitude where required. A bounded swept arrival catches a
+point passed between polls without interpreting a large teleport as movement.
+Bounded projection onto following portions of that same proved segment handles a
+corner passed between polls, without crossing a mandatory/action boundary.
+
+Pass `canTraverse=function(...) return navigator:CanTraverseTerrain(...) end` to
+guidance for positions off the proved path. Visibility uses the union of convex
+anchor intersections, never their combined bounding box. A complete proof returns
+`true`; an incomplete proof may return `nil,provedPrefixTarget`. Guidance shrinks
+its target to that prefix or requests replanning. Missing/currently stale geometry
+returns unknown. Queries inspect at most 256 intersections and 512 index entries.
+
+Geometry and its multi-scale anchor index are cached per instance/source revision;
+warm requests reuse them while re-evaluating live movement costs and permissions.
+Storage grows with the loaded sparse graph, proved anchors and polylines. This
+runtime does not establish complete world coverage or continent-scale latency:
+those require generated-pack integrity checks and measurements on real clients.
+
+The initial APR integration ships an empty terrain index. The offline generator
+in Route-generator can produce build-pinned experimental packs, but the current
+explicit-anchor representation has not met continent-scale memory or frame-time
+requirements. Do not publish those smoke packs as complete coverage. Existing
+navigation remains available in worlds without a terrain inventory. Flight
+reference speeds still require live-client calibration before production use.

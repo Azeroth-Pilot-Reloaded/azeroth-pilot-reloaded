@@ -69,6 +69,7 @@ function Instance:NormalizeLocation(location, hint)
         noAutoconnect = location.noAutoconnect,
         phaseAgnostic = location.phaseAgnostic,
         isInstance = location.isInstance,
+        terrainNodeKey = location.terrainNodeKey,
         region = WorldRegion(location.region, location.instanceID, instanceID),
     }
     position.region = self:GetPositionRegion(position)

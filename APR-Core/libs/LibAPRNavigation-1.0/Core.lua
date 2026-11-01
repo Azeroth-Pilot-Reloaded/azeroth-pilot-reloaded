@@ -1,11 +1,13 @@
 -- Planning uses the consumer's environment and never shares character state.
 -- Optional waypoint output is isolated in WaypointUI.lua.
-local Lib = LibStub:NewLibrary("LibAPRNavigation-1.0", 27)
+local Lib = LibStub:NewLibrary("LibAPRNavigation-1.0", 28)
 if not Lib then return end
 
 Lib.datasets = Lib.datasets or {}
 Lib.dataRevisions = Lib.dataRevisions or {}
 Lib.modules = Lib.modules or {}
+Lib.terrainDatasets = Lib.terrainDatasets or {}
+Lib.terrainRevision = Lib.terrainRevision or 0
 Lib.Instance = Lib.Instance or {}
 local Instance = Lib.Instance
 Instance.__index = Instance
@@ -35,6 +37,42 @@ local function Copy(value, seen)
     return result
 end
 Lib.Copy = Copy
+
+local function CopyTerrain(value, copies, active)
+    assert(type(value) ~= "function", "terrain data must be declarative")
+    if type(value) ~= "table" then return value end
+    copies, active = copies or {}, active or {}
+    assert(not active[value], "cyclic terrain data")
+    if copies[value] then return copies[value] end
+    local result = {}
+    copies[value], active[value] = result, true
+    for key, child in pairs(value) do result[key] = CopyTerrain(child, copies, active) end
+    active[value] = nil
+    return result
+end
+
+-- Packs register after the consumer has loaded the library. The registration
+-- owns its copy; compilation and character-specific costs belong to each job.
+function Lib:RegisterTerrainData(profile, worldID, data, revision, packID)
+    assert(type(profile) == "string", "terrain profile required")
+    assert(type(worldID) == "number" and worldID >= 0 and worldID % 1 == 0, "terrain world required")
+    assert(type(data) == "table", "terrain data required")
+    revision = revision or 1
+    assert(type(revision) == "number" and revision > 0 and revision < math.huge, "terrain revision required")
+    packID = packID or data.id or "default"
+    assert(type(packID) == "string" and packID ~= "", "terrain pack identity required")
+    local profileData = self.terrainDatasets[profile]
+    local world = profileData and profileData[worldID]
+    local previous = world and world.packs[packID]
+    if previous and previous.revision >= revision then return false end
+    if self.ValidateTerrainData then self.ValidateTerrainData(data, worldID) end
+    local copy = CopyTerrain(data)
+    if not profileData then profileData = {}; self.terrainDatasets[profile] = profileData end
+    if not world then world = { packs = {} }; profileData[worldID] = world end
+    world.packs[packID] = { data = copy, revision = revision }
+    self.terrainRevision = self.terrainRevision + 1
+    return true
+end
 
 function Lib:BeginModule(name, revision)
     -- Several addons may embed the same library. Each module keeps the newest
@@ -299,6 +337,7 @@ function Instance:GetProfile()
 end
 
 function Instance:GetConfig() return self.config end
+function Instance:GetTerrainRevision() return Lib.terrainRevision end
 function Instance:GetBindings() return self.bindings end
 function Instance:GetConnections() return self.connections end
 function Instance:InvalidatePositionCache()

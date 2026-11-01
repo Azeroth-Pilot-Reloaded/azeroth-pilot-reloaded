@@ -2,7 +2,7 @@
 -- arrival can still be useful if it leaves enough resources to finish.
 -- Graph loading, candidate checks and result assembly all run through Step.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("search", 10) then return end
+if not Lib:BeginModule("search", 11) then return end
 Lib.Engine = {}
 local Engine = Lib.Engine
 local Search = {}
@@ -24,10 +24,10 @@ end
 local function PositionKey(position)
     -- Map identity matters even where two map layers share world coordinates:
     -- an item may be usable on one layer and forbidden on another.
-    return string.format("%s:%.5f:%.5f:%s:%s:%s:%s:%s:%s", tostring(position.instanceID), position.x, position.y,
+    return string.format("%s:%.5f:%.5f:%s:%s:%s:%s:%s:%s:%s", tostring(position.instanceID), position.x, position.y,
         tostring(position.uiMapID or ""), tostring(position.region or ""),
         tostring(position.accessKey or ""), tostring(position.noAutoconnect or false),
-        tostring(position.z or 0), tostring(position.floor or ""))
+        tostring(position.z or 0), tostring(position.floor or ""), tostring(position.terrainNodeKey or ""))
 end
 
 local function Earlier(left, right)
