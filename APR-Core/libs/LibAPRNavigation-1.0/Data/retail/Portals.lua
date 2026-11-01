@@ -218,7 +218,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
                 z = 73.93900299072,
                 accessKey = "wizards-sanctum",
             },
-            to = { space = "world", instanceID = 1116, x = 3841.7199707031, y = -4013.7700195312, z = 26.71789932251, noAutoconnect = true },
+            to = { space = "world", instanceID = 1116, x = 3841.7199707031, y = -4013.7700195312, z = 26.71789932251 },
             requirements = { faction = "Alliance", minLevel = 35 },
         },
         {
@@ -328,30 +328,40 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
             kind = "portal",
             bidirectional = false,
             from = { space = "world", instanceID = 0, x = -11896.799804688, y = -3206.7700195312, z = -11.59619998932 },
-            to = { space = "world", instanceID = 1116, x = 3667.8000488281, y = -3843, z = 44.13999938965, noAutoconnect = true },
-            requirements = { phase = { group = "blasted_lands", phase = "present" }, auraSpellID = 176111, faction = "Alliance", minLevel = 35, questsAny = { 34586, 34378 } },
+            to = { space = "world", instanceID = 1116, x = 3667.8000488281, y = -3843, z = 44.13999938965 },
+            requirements = { phase = { group = "blasted_lands", phase = "present" }, faction = "Alliance", minLevel = 10, quest = 34586 },
+        },
+        {
+            id = "portal-dark-portal-to-warspear",
+            kind = "portal",
+            bidirectional = false,
+            from = { space = "world", instanceID = 0, x = -11896.799804688, y = -3206.7700195312, z = -11.59619998932 },
+            to = { space = "world", instanceID = 1116, x = 5276.3999023438, y = -4045.2399902344, z = 19.57999992371 },
+            requirements = { phase = { group = "blasted_lands", phase = "present" }, faction = "Horde", minLevel = 10, quest = 34378 },
         },
         {
             id = "portal-eastern-kingdoms-to-draenor-at-minus-11897-minus-3207-arrive-2309-447",
             kind = "portal",
             bidirectional = false,
             from = { space = "world", instanceID = 0, x = -11896.799804688, y = -3206.7700195312, z = -11.59619998932 },
-            to = { space = "world", instanceID = 1116, x = 2308.5700683594, y = 447.4700012207, z = 5.11999988556, noAutoconnect = true },
-            requirements = { phase = { group = "blasted_lands", phase = "present" }, auraSpellID = 176111, faction = "Alliance", minLevel = 35 },
+            to = { space = "world", instanceID = 1116, x = 2308.5700683594, y = 447.4700012207, z = 5.11999988556 },
+            requirements = { phase = { group = "blasted_lands", phase = "present" }, faction = "Alliance", minLevel = 10,
+                notCondition = { any = { { quest = 34586 }, { questActive = 34398 } } } },
         },
         {
             id = "portal-eastern-kingdoms-to-draenor-at-minus-11897-minus-3207-arrive-2309-447-auraspellid-176111-faction-alliance-minlevel-35-questsany-35884-34446",
             kind = "portal",
             bidirectional = false,
             from = { space = "world", instanceID = 0, x = -11896.799804688, y = -3206.7700195312, z = -11.59619998932 },
-            to = { space = "world", instanceID = 1116, x = 2308.5700683594, y = 447.4700012207, z = 5.11999988556, noAutoconnect = true },
-            requirements = { phase = { group = "blasted_lands", phase = "present" }, auraSpellID = 176111, faction = "Alliance", minLevel = 35, questsAny = { 35884, 34446 } },
+            to = { space = "world", instanceID = 1116, x = 2308.5700683594, y = 447.4700012207, z = 5.11999988556 },
+            requirements = { phase = { group = "blasted_lands", phase = "present" }, faction = "Alliance", minLevel = 10,
+                questsAny = { 35884, 34446 }, notCondition = { any = { { quest = 34586 }, { questActive = 34398 } } } },
         },
         {
             id = "portal-eastern-kingdoms-to-world-1265",
             kind = "portal",
             bidirectional = false,
-            requirements = { phase = { group = "blasted_lands", phase = "present" } },
+            requirements = { phase = { group = "blasted_lands", phase = "present" }, minLevel = 10, questActive = 34398 },
             from = { space = "world", instanceID = 0, x = -11896.799804688, y = -3206.7700195312, z = -11.59619998932 },
             to = { space = "world", instanceID = 1265, x = 4066.5, y = -2382.25, z = 94.84999847412 },
         },
@@ -496,7 +506,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
             kind = "portal",
             bidirectional = false,
             from = { space = "world", instanceID = 1, x = 1420.0400390625, y = -4466.6401367188, z = -2.94770002365 },
-            to = { space = "world", instanceID = 1116, x = 5276.3999023438, y = -4045.2399902344, z = 19.57999992371, noAutoconnect = true },
+            -- Warspear is an outdoor hub, also used by the mage teleport.
+            -- Blocking automatic connections here makes the portal a dead end.
+            to = { space = "world", instanceID = 1116, x = 5276.3999023438, y = -4045.2399902344, z = 19.57999992371 },
             requirements = { faction = "Horde", minLevel = 35 },
         },
         {
@@ -649,7 +661,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
             kind = "portal",
             bidirectional = false,
             from = { space = "world", instanceID = 1116, x = 1966.3900146484, y = 66.29170227051, z = 108.91999816895 },
-            to = { space = "world", instanceID = 1116, x = 3841.7199707031, y = -4013.7700195312, z = 26.71789932251, noAutoconnect = true },
+            to = { space = "world", instanceID = 1116, x = 3841.7199707031, y = -4013.7700195312, z = 26.71789932251 },
             requirements = { faction = "Alliance", garrison = { minLevel = 3, type = 2 } },
         },
         {
@@ -1870,4 +1882,4 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
             requirements = { faction = "Horde", raceID = 28 },
         },
     },
-}, 33)
+}, 34)

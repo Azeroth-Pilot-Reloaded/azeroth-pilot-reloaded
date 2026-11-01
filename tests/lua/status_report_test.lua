@@ -230,7 +230,12 @@ APR.navigation = {
     lastCandidateDiscard = { reason = "world_loading", queuedSteps = 4, generation = 11 },
     lastContinuation = { status = "reused", reason = "expected_arrival", queuedSteps = 4, distance = 0.1,
         privateGraph = "never-export-the-continuation-graph" },
-    queue = { navigationStep }, search = { privateGraph = "never-export-the-graph",
+    destination = { x = 15000, y = 0, instanceID = 44, uiMapID = 77 },
+    start = { x = 10, y = 20, instanceID = 45, uiMapID = 78 },
+    queue = { navigationStep, { id = "12:2", kind = "walk", label = "Final synthetic waypoint", seconds = 321,
+        from = navigationStep.to, to = { x = 15000, y = 0, instanceID = 44, uiMapID = 77 },
+        canStart = function() error("Export cannot validate a future leg") end } },
+    search = { privateGraph = "never-export-the-graph",
         status = "planning", slices = 7, elapsedMilliseconds = 125, totalSliceMilliseconds = 5 },
     retainedArrow = { Coord = { x = 10, y = 20 }, instanceID = 2695,
         context = { privateContext = "never-export-the-context" } },
@@ -288,6 +293,20 @@ assert(not text:find("Private_name", 1, true) and not text:find("Private\\_name"
     "Navigation snapshots keep identity masking and exclude callbacks, contexts and the search graph")
 assert(APR.navigation.queue[1] == navigationStep and navigationStep.action.data == 3567,
     "Export leaves published guidance untouched")
+assert(text:find("**remainingSteps**:", 1, true) and text:find("Final synthetic waypoint", 1, true)
+    and text:find("**seconds**: 321", 1, true) and text:find("**destination**:", 1, true)
+    and text:find("**uiMapID**: 77", 1, true) and text:find("**start**:", 1, true),
+    "The export distinguishes an intermediate portal from the actual waypoint and records all remaining legs")
+local publishedQueue = APR.navigation.queue
+APR.navigation.queue = { navigationStep }
+for index = 2, 40 do
+    APR.navigation.queue[index] = { id = tostring(index), label = "Future diagnostic leg " .. index, kind = "walk" }
+end
+APR:ExportStatusReport()
+local bounded = export.edit:GetText()
+assert(bounded:find("Future diagnostic leg 16", 1, true) and not bounded:find("Future diagnostic leg 17", 1, true)
+    and bounded:find("**queueTruncated**: true", 1, true), "Full-journey diagnostics remain bounded")
+APR.navigation.queue = publishedQueue
 navigationStep.action.data = opaque
 APR:ExportStatusReport()
 assert(export.edit:GetText():find("**data**: " .. UNKNOWN, 1, true), "Restricted action values are not serialized")

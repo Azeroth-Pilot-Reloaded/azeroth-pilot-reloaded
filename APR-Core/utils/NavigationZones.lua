@@ -542,7 +542,11 @@ end--[[APR_DIAG]])--[[/APR_DIAG]])
 function APR:GetNavigationPlayerPosition()
     local worldX, worldY, z, instanceID = UnitPosition("player")
     if worldX == nil or worldY == nil or instanceID == nil then return nil end
-    if self.CanAccessValue and (not self:CanAccessValue(worldX) or not self:CanAccessValue(worldY)) then return nil end
+    if self.CanAccessValue and (not self:CanAccessValue(worldX) or not self:CanAccessValue(worldY)
+        or not self:CanAccessValue(instanceID)) then return nil end
+    if self.NavigationData and self.NavigationData.GetWorldInstanceID then
+        instanceID = self.NavigationData:GetWorldInstanceID(instanceID)
+    end
     local position = { x = worldX, y = worldY, z = z or 0, instanceID = instanceID,
         uiMapID = C_Map and C_Map.GetBestMapForUnit and C_Map.GetBestMapForUnit("player") }
     if not position.uiMapID then return nil end
@@ -572,4 +576,4 @@ function APR:CheckNavigationZoneReady(target, options)
     local limit = options.threshold or 2000
     if dx * dx + dy * dy < limit * limit then return true, "nearby_connected" end
     return false, "too_far"
-end--[[APR_DIAG]]; APR.CheckNavigationZoneReady = APRTrace("APR-Core/utils/NavigationZones.lua:555:APR:CheckNavigationZoneReady#26", APR.CheckNavigationZoneReady)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CheckNavigationZoneReady = APRTrace("APR-Core/utils/NavigationZones.lua:559:APR:CheckNavigationZoneReady#26", APR.CheckNavigationZoneReady)--[[/APR_DIAG]]

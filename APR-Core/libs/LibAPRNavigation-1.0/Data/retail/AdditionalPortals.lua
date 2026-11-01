@@ -230,10 +230,26 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "additional_portals", {
             seconds = 5,
         },
         {
+            id = "passage-timeless-isle-campfire-cave-entry",
+            kind = "passage",
+            costMode = "ground",
+            instructionKey = "NAVIGATION_ENTER_UNDERWATER_CAVE",
+            from = { space = "map", uiMapID = 554, x = 0.701, y = 0.776 },
+            to = { space = "map", uiMapID = 554, x = 0.679, y = 0.769, noAutoconnect = true },
+        },
+        {
+            id = "passage-timeless-isle-campfire-cave-exit",
+            kind = "passage",
+            costMode = "ground",
+            from = { space = "map", uiMapID = 554, x = 0.679, y = 0.769, noAutoconnect = true },
+            to = { space = "map", uiMapID = 554, x = 0.701, y = 0.776 },
+        },
+        {
             id = "additional-timeless-isle-gorgrond-campfire",
             kind = "portal",
             bidirectional = false,
-            from = { space = "map", uiMapID = 554, x = 0.679, y = 0.769 },
+            instructionKey = "NAVIGATION_USE_CAMPFIRE",
+            from = { space = "map", uiMapID = 554, x = 0.679, y = 0.769, noAutoconnect = true },
             to = { space = "map", uiMapID = 543, x = 0.74, y = 0.245 },
             seconds = 5,
         },
@@ -242,7 +258,8 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "additional_portals", {
             kind = "portal",
             bidirectional = false,
             from = { space = "map", uiMapID = 543, x = 0.74, y = 0.245 },
-            to = { space = "map", uiMapID = 554, x = 0.679, y = 0.769 },
+            instructionKey = "NAVIGATION_USE_CAMPFIRE",
+            to = { space = "map", uiMapID = 554, x = 0.679, y = 0.769, noAutoconnect = true },
             seconds = 5,
         },
         {
@@ -499,4 +516,4 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "additional_portals", {
             seconds = 5,
         },
     },
-}, 32)
+}, 34)

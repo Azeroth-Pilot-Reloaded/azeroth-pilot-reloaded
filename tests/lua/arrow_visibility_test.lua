@@ -409,3 +409,13 @@ for _, action in ipairs({ "UseHS", "UseDalaHS", "UseGarrisonHS" }) do
 end
 refresh(); tick()
 assert(frame:IsShown(), "The next ordinary objective restores its geographic arrow")
+
+-- A phased outdoor world shares coordinates with its declared parent world.
+APR.NavigationData = { GetWorldInstanceID = function(_, value) return value == 90 and 0 or value end }
+navigating, instanceID = true, 90
+guidance = { kind = "walk", Coord = { x = playerX + 38, y = playerY }, instanceID = 0 }
+refresh(); tick()
+assert(frame:IsShown(), "A declared phased world cannot hide the parent world's guidance arrow")
+instanceID = 91
+refresh(); tick()
+assert(not frame:IsShown(), "An unrelated world must still hide that guidance")
