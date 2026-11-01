@@ -1,0 +1,13 @@
+IVORY_TUSKS_DROP_FROM_WILD_ELEKK
+
+enUS: Wild elekk wander the plains south of the Consortium camp, toward Oshu'gun. Loot a pair of ivory tusks from each corpse. Clefthoof do not drop them.
+ruRU: Дикие элекки бродят по равнине к югу от лагеря Консорциума, ближе к Ошу'гуну. Пара бивней снимается с трупа. С копытней бивни не падают.
+deDE: Wilde Elekk streifen durch die Ebene südlich des Konsortiumlagers, in Richtung Oshu'gun. Elfenbein-Stoßzähne liegen bei ihren Leichen. Grollhufe lassen sie nicht fallen.
+frFR: Les elekk sauvages errent dans la plaine au sud du camp du Consortium, vers Oshu'gun. Récupérez une paire de défenses d'ivoire sur leurs cadavres. Les sabot-fourchus n'en donnent pas.
+esES: Los elekk salvajes vagan por la llanura al sur del campamento del Consorcio, hacia Oshu'gun. Despoja un par de colmillos de marfil de sus cadáveres. Los uñagrieta no los sueltan.
+esMX: Los elekk salvajes vagan por la llanura al sur del campamento del Consorcio, hacia Oshu'gun. Despoja un par de colmillos de marfil de sus cadáveres. Los uñagrieta no los sueltan.
+itIT: Gli elekk selvatici vagano per la pianura a sud dell'accampamento del Consorzio, verso Oshu'gun. Predi un paio di zanne d'avorio dai loro corpi. Gli zoccoloduro non le rilasciano.
+ptBR: Os elekk selvagens vagam pelas planícies ao sul do acampamento do Consórcio, em direção a Oshu'gun. Saqueie um par de presas de marfim dos corpos. Os casco-fendido não as derrubam.
+koKR: 컨소시엄 야영지 남쪽, 오슈군 방향 평원에서 야생 엘레크가 돌아다닙니다. 시체에서 상아 엄니를 줍세요. 갈래발굽에서는 나오지 않습니다.
+zhCN: 野生雷象在星界财团营地以南、通往沃舒古的平原上游荡。从尸体上拾取象牙。裂蹄牛不会掉落。
+zhTW: 野生伊萊克在聯合團營地以南、通往歐夏剛的平原上遊蕩。從屍體上拾取象牙。裂蹄不會掉落。
