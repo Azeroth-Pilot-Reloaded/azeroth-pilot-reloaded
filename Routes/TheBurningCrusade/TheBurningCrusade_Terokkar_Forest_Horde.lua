@@ -10,7 +10,7 @@ APR.RouteQuestStepList["108-BC-3-Horde"] = {
     },
     mapID = 108,
     conditions = { Faction = "Horde", Level = 15 },
-    nextRoute = {},
+    nextRoute = { "107-BC-4-Horde" },
     steps = {
         {
             PickUp = { 9968, 9971 },
