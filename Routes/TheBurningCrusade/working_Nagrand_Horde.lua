@@ -864,5 +864,12 @@
             Zone = 107,
             _index = 131,
         },
+        {
+            DropQuest = 9861,
+            DroppableQuest = { MobId = 17158, Qid = 9861, Text = "Dust Howler" },
+            Coord = { x = 6953.5, y = -1819.1 },
+            Zone = 107,
+            _index = 132,
+        },
     },
 }
