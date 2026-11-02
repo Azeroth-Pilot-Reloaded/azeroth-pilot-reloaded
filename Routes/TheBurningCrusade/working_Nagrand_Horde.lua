@@ -163,18 +163,21 @@
         },
         {
             PickUp = { 9818 },
+            ExtraLineText = "PATROLS_AROUND_AREA",
             Coord = { x = 6942.3, y = -788.1 },
             Zone = 107,
             _index = 27,
         },
         {
             Done = { 9818 },
+            ExtraLineText = "PATROLS_AROUND_AREA",
             Coord = { x = 6968.6, y = -734.4 },
             Zone = 107,
             _index = 28,
         },
         {
             PickUp = { 9819 },
+            ExtraLineText = "PATROLS_AROUND_AREA",
             Coord = { x = 6968.6, y = -734.4 },
             Zone = 107,
             _index = 29,
@@ -276,12 +279,14 @@
         },
         {
             Done = { 9819 },
+            ExtraLineText = "PATROLS_AROUND_AREA",
             Coord = { x = 6970.5, y = -858.5 },
             Zone = 107,
             _index = 44,
         },
         {
             PickUp = { 9821 },
+            ExtraLineText = "PATROLS_AROUND_AREA",
             Coord = { x = 6970.5, y = -858.5 },
             Zone = 107,
             _index = 45,
@@ -408,12 +413,14 @@
         },
         {
             Done = { 9821 },
+            ExtraLineText = "PATROLS_AROUND_AREA",
             Coord = { x = 6893, y = -865.5 },
             Zone = 107,
             _index = 64,
         },
         {
             PickUp = { 9849 },
+            ExtraLineText = "PATROLS_AROUND_AREA",
             Coord = { x = 6893, y = -865.5 },
             Zone = 107,
             _index = 65,
@@ -950,12 +957,14 @@
         },
         {
             Done = { 9849 },
+            ExtraLineText = "PATROLS_AROUND_AREA",
             Coord = { x = 6961.7, y = -729.4 },
             Zone = 107,
             _index = 145,
         },
         {
             PickUp = { 9853 },
+            ExtraLineText = "PATROLS_AROUND_AREA",
             Coord = { x = 6961.7, y = -729.4 },
             Zone = 107,
             _index = 146,
@@ -1107,6 +1116,7 @@
         },
         {
             Qpart = { [9937] = { 1 } },
+            ExtraLineText = "PATROLS_AROUND_AREA",
             Coord = { x = 8309.8, y = -2852.5 },
             Range = 5,
             Zone = 107,
@@ -1127,6 +1137,7 @@
         },
         {
             Done = { 9853 },
+            ExtraLineText = "PATROLS_AROUND_AREA",
             Coord = { x = 6884.8, y = -856.9 },
             Zone = 107,
             _index = 171,
