@@ -6,9 +6,11 @@ are retained; their historical SavedVariables value `ilvl` now selects this
 comparison. Appearance and vendor-price priorities still apply in their chosen
 order when there is no positive upgrade.
 
-The scale selector offers APR's leveling baseline and scales from an installed,
-ready Pawn. A Pawn choice belongs to the character and specialization, so changing
-an account-wide APR profile does not select another character's scale. APR uses
+The shared APR selector offers its leveling baseline and Pawn scales belonging
+to the character's class, including every specialization of that class. Custom
+imports without class metadata are included only when Pawn enables them for this
+character; unclassified provider scales are excluded. A Pawn choice belongs to the
+character and specialization, so changing an account-wide APR profile does not select another character's scale. APR uses
 the exact reward and equipped-item links, including bonus and scaling variants.
 It selects the largest positive replacement gain, with reward order breaking ties.
 It never equips the item automatically.

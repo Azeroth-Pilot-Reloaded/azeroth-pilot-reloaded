@@ -1238,19 +1238,20 @@ function APR.settings:createBlizzOptions()
                     rewardWeightScale = {
                         order = 8.211,
                         type = "select",
+                        dialogControl = "APRSettingsSelect",
                         name = L["REWARD_WEIGHT_SCALE"],
                         desc = L["REWARD_WEIGHT_SCALE_DESC"],
                         width = "full",
-                        values = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1244:callback#104", --[[/APR_DIAG]]function() return APR.PawnRewards:GetScaleOptions() end--[[APR_DIAG]])--[[/APR_DIAG]],
-                        get = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1245:callback#105", --[[/APR_DIAG]]function() return APR.PawnRewards:GetSelectedScale() end--[[APR_DIAG]])--[[/APR_DIAG]],
-                        set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1246:callback#106", --[[/APR_DIAG]]function(_, value) APR.PawnRewards:SetSelectedScale(value) end--[[APR_DIAG]])--[[/APR_DIAG]],
-                        disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1247:callback#107", --[[/APR_DIAG]]function() return not self.profile.autoHandInChoice end--[[APR_DIAG]])--[[/APR_DIAG]],
+                        values = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1245:callback#104", --[[/APR_DIAG]]function() return APR.PawnRewards:GetScaleOptions() end--[[APR_DIAG]])--[[/APR_DIAG]],
+                        get = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1246:callback#105", --[[/APR_DIAG]]function() return APR.PawnRewards:GetSelectedScale() end--[[APR_DIAG]])--[[/APR_DIAG]],
+                        set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1247:callback#106", --[[/APR_DIAG]]function(_, value) APR.PawnRewards:SetSelectedScale(value) end--[[APR_DIAG]])--[[/APR_DIAG]],
+                        disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1248:callback#107", --[[/APR_DIAG]]function() return not self.profile.autoHandInChoice end--[[APR_DIAG]])--[[/APR_DIAG]],
                     },
                     rewardWeightStatus = {
                         order = 8.212,
                         type = "description",
                         width = "full",
-                        name = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1253:callback#108", --[[/APR_DIAG]]function() return APR.PawnRewards:GetStatusText() end--[[APR_DIAG]])--[[/APR_DIAG]],
+                        name = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1254:callback#108", --[[/APR_DIAG]]function() return APR.PawnRewards:GetStatusText() end--[[APR_DIAG]])--[[/APR_DIAG]],
                     },
                     rewardPriority1 = {
                         order = 8.22,
@@ -1259,8 +1260,8 @@ function APR.settings:createBlizzOptions()
                         width = 1,
                         values = rewardValues,
                         get = GetProfileOption,
-                        set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1262:callback#109", --[[/APR_DIAG]]function(info, value) APR.settings:SetRewardPriority(info, value) end--[[APR_DIAG]])--[[/APR_DIAG]],
-                        disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1263:callback#110", --[[/APR_DIAG]]function()
+                        set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1263:callback#109", --[[/APR_DIAG]]function(info, value) APR.settings:SetRewardPriority(info, value) end--[[APR_DIAG]])--[[/APR_DIAG]],
+                        disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1264:callback#110", --[[/APR_DIAG]]function()
                             return not self.profile.autoHandInChoice
                         end--[[APR_DIAG]])--[[/APR_DIAG]],
                     },
@@ -1271,8 +1272,8 @@ function APR.settings:createBlizzOptions()
                         width = 1,
                         values = rewardValues,
                         get = GetProfileOption,
-                        set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1274:callback#111", --[[/APR_DIAG]]function(info, value) APR.settings:SetRewardPriority(info, value) end--[[APR_DIAG]])--[[/APR_DIAG]],
-                        disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1275:callback#112", --[[/APR_DIAG]]function()
+                        set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1275:callback#111", --[[/APR_DIAG]]function(info, value) APR.settings:SetRewardPriority(info, value) end--[[APR_DIAG]])--[[/APR_DIAG]],
+                        disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1276:callback#112", --[[/APR_DIAG]]function()
                             return not self.profile.autoHandInChoice
                         end--[[APR_DIAG]])--[[/APR_DIAG]],
                     },
@@ -1283,8 +1284,8 @@ function APR.settings:createBlizzOptions()
                         width = 1,
                         values = rewardValues,
                         get = GetProfileOption,
-                        set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1286:callback#113", --[[/APR_DIAG]]function(info, value) APR.settings:SetRewardPriority(info, value) end--[[APR_DIAG]])--[[/APR_DIAG]],
-                        disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1287:callback#114", --[[/APR_DIAG]]function()
+                        set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1287:callback#113", --[[/APR_DIAG]]function(info, value) APR.settings:SetRewardPriority(info, value) end--[[APR_DIAG]])--[[/APR_DIAG]],
+                        disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1288:callback#114", --[[/APR_DIAG]]function()
                             return not self.profile.autoHandInChoice
                         end--[[APR_DIAG]])--[[/APR_DIAG]],
                     },
@@ -1295,8 +1296,8 @@ function APR.settings:createBlizzOptions()
                         width = 1,
                         values = rewardValues,
                         get = GetProfileOption,
-                        set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1298:callback#115", --[[/APR_DIAG]]function(info, value) APR.settings:SetRewardPriority(info, value) end--[[APR_DIAG]])--[[/APR_DIAG]],
-                        disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1299:callback#116", --[[/APR_DIAG]]function()
+                        set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1299:callback#115", --[[/APR_DIAG]]function(info, value) APR.settings:SetRewardPriority(info, value) end--[[APR_DIAG]])--[[/APR_DIAG]],
+                        disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1300:callback#116", --[[/APR_DIAG]]function()
                             return not self.profile.autoHandInChoice
                         end--[[APR_DIAG]])--[[/APR_DIAG]],
                     },
@@ -1308,7 +1309,7 @@ function APR.settings:createBlizzOptions()
                         width = "full",
                         get = GetProfileOption,
                         set = SetProfileOption,
-                        disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1311:callback#117", --[[/APR_DIAG]]function()
+                        disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1312:callback#117", --[[/APR_DIAG]]function()
                             return not self.profile.autoHandInChoice
                         end--[[APR_DIAG]])--[[/APR_DIAG]],
                     },
@@ -1320,7 +1321,7 @@ function APR.settings:createBlizzOptions()
                         width = "full",
                         get = GetProfileOption,
                         set = SetProfileOption,
-                        disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1323:callback#118", --[[/APR_DIAG]]function()
+                        disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1324:callback#118", --[[/APR_DIAG]]function()
                             return not self.profile.autoHandInChoice
                         end--[[APR_DIAG]])--[[/APR_DIAG]],
                     },
@@ -1343,7 +1344,7 @@ function APR.settings:createBlizzOptions()
                                 name = L["MAP_LINE_SHOW"],
                                 width = "full",
                                 get = GetProfileOption,
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1346:callback#119", --[[/APR_DIAG]]function(info, value)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1347:callback#119", --[[/APR_DIAG]]function(info, value)
                                     SetProfileOption(info, value)
                                     if not value then
                                         APR.map:RemoveMapLine()
@@ -1359,11 +1360,11 @@ function APR.settings:createBlizzOptions()
                                 max = 50,
                                 step = 0.5,
                                 get = GetProfileOption,
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1362:callback#120", --[[/APR_DIAG]]function(info, value)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1363:callback#120", --[[/APR_DIAG]]function(info, value)
                                     SetProfileOption(info, value)
                                     APR.map:UpdateMapLineStyle()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1366:callback#121", --[[/APR_DIAG]]function()
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1367:callback#121", --[[/APR_DIAG]]function()
                                     return not self.profile.showMapLine
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
@@ -1380,7 +1381,7 @@ function APR.settings:createBlizzOptions()
                                 desc = L["SHOW_STEPS_MAP_DESC"],
                                 width = "full",
                                 get = GetProfileOption,
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1383:callback#122", --[[/APR_DIAG]]function(info, value)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1384:callback#122", --[[/APR_DIAG]]function(info, value)
                                     SetProfileOption(info, value)
                                     APR.map:AddMapPins()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
@@ -1393,11 +1394,11 @@ function APR.settings:createBlizzOptions()
                                 max = 1000,
                                 step = 1,
                                 get = GetProfileOption,
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1396:callback#123", --[[/APR_DIAG]]function(info, value)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1397:callback#123", --[[/APR_DIAG]]function(info, value)
                                     SetProfileOption(info, value)
                                     APR.map:AddMapPins()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1400:callback#124", --[[/APR_DIAG]]function()
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1401:callback#124", --[[/APR_DIAG]]function()
                                     return not self.profile.mapshowNextSteps
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
@@ -1409,11 +1410,11 @@ function APR.settings:createBlizzOptions()
                                 max = 100,
                                 step = 1,
                                 get = GetProfileOption,
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1412:callback#125", --[[/APR_DIAG]]function(info, value)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1413:callback#125", --[[/APR_DIAG]]function(info, value)
                                     SetProfileOption(info, value)
                                     APR.map:UpdateMapIconsStyle()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1416:callback#126", --[[/APR_DIAG]]function()
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1417:callback#126", --[[/APR_DIAG]]function()
                                     return not self.profile.mapshowNextSteps
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
@@ -1432,7 +1433,7 @@ function APR.settings:createBlizzOptions()
                                 width = "full",
                                 order = 9.20,
                                 get = GetProfileOption,
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1435:callback#127", --[[/APR_DIAG]]function(info, value)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1436:callback#127", --[[/APR_DIAG]]function(info, value)
                                     SetProfileOption(info, value)
                                     if value then
                                         self:CreateMiniMapButton()
@@ -1454,7 +1455,7 @@ function APR.settings:createBlizzOptions()
                                 name = L["MINIMAP_LINE_SHOW"],
                                 width = "full",
                                 get = GetProfileOption,
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1457:callback#128", --[[/APR_DIAG]]function(info, value)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1458:callback#128", --[[/APR_DIAG]]function(info, value)
                                     SetProfileOption(info, value)
                                     if not value then
                                         APR.map:RemoveMinimapLine()
@@ -1470,11 +1471,11 @@ function APR.settings:createBlizzOptions()
                                 max = 50,
                                 step = 0.5,
                                 get = GetProfileOption,
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1473:callback#129", --[[/APR_DIAG]]function(info, value)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1474:callback#129", --[[/APR_DIAG]]function(info, value)
                                     SetProfileOption(info, value)
                                     APR.map:UpdateMinimapLineStyle()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1477:callback#130", --[[/APR_DIAG]]function()
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1478:callback#130", --[[/APR_DIAG]]function()
                                     return not self.profile.showMiniMapLine
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
@@ -1491,7 +1492,7 @@ function APR.settings:createBlizzOptions()
                                 desc = L["SHOW_STEPS_MINIMAP_DESC"],
                                 width = "full",
                                 get = GetProfileOption,
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1494:callback#131", --[[/APR_DIAG]]function(info, value)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1495:callback#131", --[[/APR_DIAG]]function(info, value)
                                     SetProfileOption(info, value)
                                     APR.map:AddMapPins()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
@@ -1504,11 +1505,11 @@ function APR.settings:createBlizzOptions()
                                 max = 1000,
                                 step = 1,
                                 get = GetProfileOption,
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1507:callback#132", --[[/APR_DIAG]]function(info, value)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1508:callback#132", --[[/APR_DIAG]]function(info, value)
                                     SetProfileOption(info, value)
                                     APR.map:AddMapPins()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1511:callback#133", --[[/APR_DIAG]]function()
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1512:callback#133", --[[/APR_DIAG]]function()
                                     return not self.profile.minimapshowNextSteps
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
@@ -1520,11 +1521,11 @@ function APR.settings:createBlizzOptions()
                                 max = 100,
                                 step = 1,
                                 get = GetProfileOption,
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1523:callback#134", --[[/APR_DIAG]]function(info, value)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1524:callback#134", --[[/APR_DIAG]]function(info, value)
                                     SetProfileOption(info, value)
                                     APR.map:UpdateMiniMapIconsStyle()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1527:callback#135", --[[/APR_DIAG]]function()
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1528:callback#135", --[[/APR_DIAG]]function()
                                     return not self.profile.minimapshowNextSteps
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
@@ -1549,10 +1550,10 @@ function APR.settings:createBlizzOptions()
                                 type = "color",
                                 name = L["MAP_LINE_COLOR"],
                                 hasAlpha = true,
-                                get = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1552:callback#136", --[[/APR_DIAG]]function()
+                                get = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1553:callback#136", --[[/APR_DIAG]]function()
                                     return unpack(self.profile.showMapLineColor)
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1555:callback#137", --[[/APR_DIAG]]function(info, r, g, b, a)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1556:callback#137", --[[/APR_DIAG]]function(info, r, g, b, a)
                                     SetProfileOption(info, { r, g, b, a })
                                     APR.map:UpdateMapLineStyle()
                                     if self.profile.mapMinimapSameColor then
@@ -1560,7 +1561,7 @@ function APR.settings:createBlizzOptions()
                                         APR.map:UpdateMinimapLineStyle()
                                     end
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1563:callback#138", --[[/APR_DIAG]]function()
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1564:callback#138", --[[/APR_DIAG]]function()
                                     if self.profile.mapMinimapSameColor then
                                         return not self.profile.showMapLine and not self.profile.showMiniMapLine
                                     else
@@ -1573,10 +1574,10 @@ function APR.settings:createBlizzOptions()
                                 type = "color",
                                 name = L["MAP_STEP_ICON_COLOR"],
                                 hasAlpha = true,
-                                get = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1576:callback#139", --[[/APR_DIAG]]function()
+                                get = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1577:callback#139", --[[/APR_DIAG]]function()
                                     return unpack(self.profile.mapshowNextStepsColor)
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1579:callback#140", --[[/APR_DIAG]]function(info, r, g, b, a)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1580:callback#140", --[[/APR_DIAG]]function(info, r, g, b, a)
                                     SetProfileOption(info, { r, g, b, a })
                                     APR.map:UpdateMapIconsStyle()
                                     if self.profile.mapMinimapSameColor then
@@ -1584,7 +1585,7 @@ function APR.settings:createBlizzOptions()
                                         APR.map:UpdateMiniMapIconsStyle()
                                     end
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1587:callback#141", --[[/APR_DIAG]]function()
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1588:callback#141", --[[/APR_DIAG]]function()
                                     if self.profile.mapMinimapSameColor then
                                         return not self.profile.mapshowNextSteps and
                                             not self.profile.minimapshowNextSteps
@@ -1598,10 +1599,10 @@ function APR.settings:createBlizzOptions()
                                 type = "color",
                                 name = L["MAP_STEP_ICON_TEXT_COLOR"],
                                 hasAlpha = true,
-                                get = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1601:callback#142", --[[/APR_DIAG]]function()
+                                get = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1602:callback#142", --[[/APR_DIAG]]function()
                                     return unpack(self.profile.mapshowNextStepsColorText)
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1604:callback#143", --[[/APR_DIAG]]function(info, r, g, b, a)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1605:callback#143", --[[/APR_DIAG]]function(info, r, g, b, a)
                                     SetProfileOption(info, { r, g, b, a })
                                     APR.map:UpdateMapIconsStyle()
                                     if self.profile.mapMinimapSameColor then
@@ -1610,7 +1611,7 @@ function APR.settings:createBlizzOptions()
                                         APR.map:UpdateMiniMapIconsStyle()
                                     end
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1613:callback#144", --[[/APR_DIAG]]function()
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1614:callback#144", --[[/APR_DIAG]]function()
                                     if self.profile.mapMinimapSameColor then
                                         return not self.profile.mapshowNextSteps and
                                             not self.profile.minimapshowNextSteps
@@ -1624,17 +1625,17 @@ function APR.settings:createBlizzOptions()
                                 type = "color",
                                 name = L["MINIMAP_LINE_COLOR"],
                                 hasAlpha = true,
-                                get = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1627:callback#145", --[[/APR_DIAG]]function()
+                                get = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1628:callback#145", --[[/APR_DIAG]]function()
                                     return unpack(self.profile.showMiniMapLineColor)
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1630:callback#146", --[[/APR_DIAG]]function(info, r, g, b, a)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1631:callback#146", --[[/APR_DIAG]]function(info, r, g, b, a)
                                     SetProfileOption(info, { r, g, b, a })
                                     APR.map:UpdateMinimapLineStyle()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1634:callback#147", --[[/APR_DIAG]]function()
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1635:callback#147", --[[/APR_DIAG]]function()
                                     return not self.profile.showMiniMapLine
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                hidden = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1637:callback#148", --[[/APR_DIAG]]function()
+                                hidden = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1638:callback#148", --[[/APR_DIAG]]function()
                                     return self.profile.mapMinimapSameColor
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
@@ -1643,17 +1644,17 @@ function APR.settings:createBlizzOptions()
                                 type = "color",
                                 name = L["MINIMAP_STEP_ICON_COLOR"],
                                 hasAlpha = true,
-                                get = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1646:callback#149", --[[/APR_DIAG]]function()
+                                get = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1647:callback#149", --[[/APR_DIAG]]function()
                                     return unpack(self.profile.minimapshowNextStepsColor)
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1649:callback#150", --[[/APR_DIAG]]function(info, r, g, b, a)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1650:callback#150", --[[/APR_DIAG]]function(info, r, g, b, a)
                                     SetProfileOption(info, { r, g, b, a })
                                     APR.map:UpdateMiniMapIconsStyle()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1653:callback#151", --[[/APR_DIAG]]function()
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1654:callback#151", --[[/APR_DIAG]]function()
                                     return not self.profile.minimapshowNextSteps
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                hidden = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1656:callback#152", --[[/APR_DIAG]]function()
+                                hidden = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1657:callback#152", --[[/APR_DIAG]]function()
                                     return self.profile.mapMinimapSameColor
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
@@ -1662,17 +1663,17 @@ function APR.settings:createBlizzOptions()
                                 type = "color",
                                 name = L["MINIMAP_STEP_ICON_TEXT_COLOR"],
                                 hasAlpha = true,
-                                get = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1665:callback#153", --[[/APR_DIAG]]function()
+                                get = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1666:callback#153", --[[/APR_DIAG]]function()
                                     return unpack(self.profile.minimapshowNextStepsColorText)
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1668:callback#154", --[[/APR_DIAG]]function(info, r, g, b, a)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1669:callback#154", --[[/APR_DIAG]]function(info, r, g, b, a)
                                     SetProfileOption(info, { r, g, b, a })
                                     APR.map:UpdateMiniMapIconsStyle()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1672:callback#155", --[[/APR_DIAG]]function()
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1673:callback#155", --[[/APR_DIAG]]function()
                                     return not self.profile.minimapshowNextSteps
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                hidden = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1675:callback#156", --[[/APR_DIAG]]function()
+                                hidden = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1676:callback#156", --[[/APR_DIAG]]function()
                                     return self.profile.mapMinimapSameColor
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
@@ -1690,11 +1691,11 @@ function APR.settings:createBlizzOptions()
                                 max = 2,
                                 step = 0.01,
                                 get = GetProfileOption,
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1693:callback#157", --[[/APR_DIAG]]function(info, value)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1694:callback#157", --[[/APR_DIAG]]function(info, value)
                                     SetProfileOption(info, value)
                                     APR.map:UpdateMapIconsStyle()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1697:callback#158", --[[/APR_DIAG]]function()
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1698:callback#158", --[[/APR_DIAG]]function()
                                     return not self.profile.mapshowNextSteps
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
@@ -1706,11 +1707,11 @@ function APR.settings:createBlizzOptions()
                                 max = 2,
                                 step = 0.01,
                                 get = GetProfileOption,
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1709:callback#159", --[[/APR_DIAG]]function(info, value)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1710:callback#159", --[[/APR_DIAG]]function(info, value)
                                     SetProfileOption(info, value)
                                     APR.map:UpdateMiniMapIconsStyle()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1713:callback#160", --[[/APR_DIAG]]function()
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1714:callback#160", --[[/APR_DIAG]]function()
                                     return not self.profile.minimapshowNextSteps
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
@@ -1732,10 +1733,10 @@ function APR.settings:createBlizzOptions()
                         name = L["DISABLE_HEIRLOOM_WARNING"],
                         desc = L["DISABLE_HEIRLOOM_WARNING_DESC"],
                         width = "full",
-                        get = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1735:callback#161", --[[/APR_DIAG]]function(info)
+                        get = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1736:callback#161", --[[/APR_DIAG]]function(info)
                             return APR:GetHeirloomWarning()
                         end--[[APR_DIAG]])--[[/APR_DIAG]],
-                        set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1738:callback#162", --[[/APR_DIAG]]function(info, value)
+                        set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1739:callback#162", --[[/APR_DIAG]]function(info, value)
                             APR:SetHeirloomWarning(value)
                             APR.heirloom:RefreshFrameAnchor()
                         end--[[APR_DIAG]])--[[/APR_DIAG]],
@@ -1766,11 +1767,11 @@ function APR.settings:createBlizzOptions()
                                 desc = L["AFK_SNAP_TO_CURRENT_STEP_DESC"] .. "\n\n" .. L["UI_TRACKER_RELOAD_HINT"],
                                 width = "full",
                                 get = GetProfileOption,
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1769:callback#163", --[[/APR_DIAG]]function(info, value)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1770:callback#163", --[[/APR_DIAG]]function(info, value)
                                     local wasSnapped = self.profile.afkSnapToCurrentStep
-                                    APR:ChangeTrackerOption("afk", info[#info], value, --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1771:callback#164", --[[/APR_DIAG]]function()
+                                    APR:ChangeTrackerOption("afk", info[#info], value, --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1772:callback#164", --[[/APR_DIAG]]function()
                                         APR.AFK:RefreshFrameAnchor()
-                                    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1773:callback#165", --[[/APR_DIAG]]function()
+                                    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1774:callback#165", --[[/APR_DIAG]]function()
                                         if value and not wasSnapped and self.profile.afkHeight == 30 then
                                             self.profile.afkHeight = (APR.AFK and APR.AFK.defaultSnapHeight) or 20
                                         end
@@ -1784,28 +1785,28 @@ function APR.settings:createBlizzOptions()
                                 name = L["AFK_BAR_COLOR"],
                                 hasAlpha = true,
                                 width = optionsWidth,
-                                get = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1787:callback#166", --[[/APR_DIAG]]function()
+                                get = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1788:callback#166", --[[/APR_DIAG]]function()
                                     return unpack(APR:GetStatusBarColor("afkBarColor", "afk"))
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1790:callback#167", --[[/APR_DIAG]]function(info, r, g, b, a)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1791:callback#167", --[[/APR_DIAG]]function(info, r, g, b, a)
                                     SetProfileOption(info, { r, g, b, a })
                                     APR:GetSettingsProfile().afkBarColorCustom = true
                                     APR.AFK:UpdateBarColor()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1795:callback#168", --[[/APR_DIAG]]function() return APR:GetStatusBarClassColor() ~= nil end--[[APR_DIAG]])--[[/APR_DIAG]],
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1796:callback#168", --[[/APR_DIAG]]function() return APR:GetStatusBarClassColor() ~= nil end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
                             afkFakeTimer = {
                                 order = 10.525,
                                 type = "execute",
-                                name = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1800:callback#169", --[[/APR_DIAG]]function()
+                                name = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1801:callback#169", --[[/APR_DIAG]]function()
                                     return APR.AFK and APR.AFK.fakeTimerActive and L["AFK_TEST_TIMER_STOP"] or
                                         L["AFK_TEST_TIMER_START"]
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                                 width = optionsWidth,
-                                func = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1805:callback#170", --[[/APR_DIAG]]function()
+                                func = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1806:callback#170", --[[/APR_DIAG]]function()
                                     APR.AFK:ToggleFakeTimer()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1808:callback#171", --[[/APR_DIAG]]function()
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1809:callback#171", --[[/APR_DIAG]]function()
                                     return not self.profile.enableAddon
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
@@ -1824,11 +1825,11 @@ function APR.settings:createBlizzOptions()
                                         step = 5,
                                         width = optionsWidth,
                                         get = GetProfileOption,
-                                        set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1827:callback#172", --[[/APR_DIAG]]function(info, value)
+                                        set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1828:callback#172", --[[/APR_DIAG]]function(info, value)
                                             SetProfileOption(info, value)
                                             APR.AFK:RefreshFrameAnchor()
                                         end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                        disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1831:callback#173", --[[/APR_DIAG]]function()
+                                        disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1832:callback#173", --[[/APR_DIAG]]function()
                                             return self.profile.afkSnapToCurrentStep
                                         end--[[APR_DIAG]])--[[/APR_DIAG]],
                                     },
@@ -1841,7 +1842,7 @@ function APR.settings:createBlizzOptions()
                                         step = 1,
                                         width = optionsWidth,
                                         get = GetProfileOption,
-                                        set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1844:callback#174", --[[/APR_DIAG]]function(info, value)
+                                        set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1845:callback#174", --[[/APR_DIAG]]function(info, value)
                                             SetProfileOption(info, value)
                                             APR.AFK:RefreshFrameAnchor()
                                         end--[[APR_DIAG]])--[[/APR_DIAG]],
@@ -1853,10 +1854,10 @@ function APR.settings:createBlizzOptions()
                                 type = "execute",
                                 name = L["RESET_POSITION"],
                                 width = "full",
-                                func = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1856:callback#175", --[[/APR_DIAG]]function()
+                                func = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1857:callback#175", --[[/APR_DIAG]]function()
                                     APR.AFK:ResetPosition()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1859:callback#176", --[[/APR_DIAG]]function()
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1860:callback#176", --[[/APR_DIAG]]function()
                                     return self.profile.afkSnapToCurrentStep
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
@@ -1894,12 +1895,12 @@ function APR.settings:createBlizzOptions()
                                 desc = L["SHOW_GROUP_PROGRESS_DESC"],
                                 width = "full",
                                 get = GetProfileOption,
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1897:callback#177", --[[/APR_DIAG]]function(info, value)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1898:callback#177", --[[/APR_DIAG]]function(info, value)
                                     SetProfileOption(info, value)
                                     APR.party:RefreshPartyFrameAnchor()
                                     APR.party:SendGroupMessage()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1902:callback#178", --[[/APR_DIAG]]function()
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1903:callback#178", --[[/APR_DIAG]]function()
                                     return not self.profile.enableAddon
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
@@ -1914,11 +1915,11 @@ function APR.settings:createBlizzOptions()
                                 step = 0.05,
                                 isPercent = true,
                                 get = GetProfileOption,
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1917:callback#179", --[[/APR_DIAG]]function(info, value)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1918:callback#179", --[[/APR_DIAG]]function(info, value)
                                     SetProfileOption(info, value)
                                     APR.party:UpdateFrameScale()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1921:callback#180", --[[/APR_DIAG]]function()
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1922:callback#180", --[[/APR_DIAG]]function()
                                     return not self.profile.showGroup
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
@@ -1927,10 +1928,10 @@ function APR.settings:createBlizzOptions()
                                 order = 11.4,
                                 type = 'execute',
                                 width = "full",
-                                func = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1930:callback#181", --[[/APR_DIAG]]function()
+                                func = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1931:callback#181", --[[/APR_DIAG]]function()
                                     APR.party:ResetPosition()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1933:callback#182", --[[/APR_DIAG]]function()
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1934:callback#182", --[[/APR_DIAG]]function()
                                     return not self.profile.showGroup or not self.profile.enableAddon
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
@@ -1957,7 +1958,7 @@ function APR.settings:createBlizzOptions()
                     layoutEditor = {
                         order = 0.5, type = "execute", width = "full",
                         name = L["UI_LAYOUT_TITLE"], desc = L["UI_LAYOUT_HELP"],
-                        func = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1960:callback#183", --[[/APR_DIAG]]function() APR.LayoutEditor:ShowFromSettings() end--[[APR_DIAG]])--[[/APR_DIAG]],
+                        func = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1961:callback#183", --[[/APR_DIAG]]function() APR.LayoutEditor:ShowFromSettings() end--[[APR_DIAG]])--[[/APR_DIAG]],
                         disabled = InCombatLockdown,
                     },
                     subgroup_Enable = {
@@ -1972,7 +1973,7 @@ function APR.settings:createBlizzOptions()
                                 name = L["ENABLE_ADDON"],
                                 width = "full",
                                 get = GetProfileOption,
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1975:callback#184", --[[/APR_DIAG]]function(info, value)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:1976:callback#184", --[[/APR_DIAG]]function(info, value)
                                     SetProfileOption(info, value)
                                     -- disabled addon
                                     self:ToggleAddon()
@@ -2001,7 +2002,7 @@ function APR.settings:createBlizzOptions()
                                 name = L["UI_THEME"],
                                 desc = L["UI_THEME_DESC"],
                                 width = "full",
-                                values = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2004:callback#185", --[[/APR_DIAG]]function()
+                                values = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2005:callback#185", --[[/APR_DIAG]]function()
                                     local skins = APR:GetThemeChoices(L)
                                     if _G.ElvUI then skins.ElvUI = "ElvUI" end
                                     if _G.EllesmereUI and type(_G.EllesmereUI.RegisterSkin) == "function" then
@@ -2009,14 +2010,14 @@ function APR.settings:createBlizzOptions()
                                     end
                                     return skins
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                get = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2012:callback#186", --[[/APR_DIAG]]function()
+                                get = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2013:callback#186", --[[/APR_DIAG]]function()
                                     if APR.ThemeCustomization then return APR.ThemeCustomization:GetDraft().theme end
                                     return APR:GetSelectedSkinName()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2016:callback#187", --[[/APR_DIAG]]function(_, value)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2017:callback#187", --[[/APR_DIAG]]function(_, value)
                                     if APR.ThemeCustomization then return APR.ThemeCustomization:SetTheme(value) end
                                     local profile = self.profile
-                                    APR:RequestReload(--[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2019:callback#188", --[[/APR_DIAG]]function()
+                                    APR:RequestReload(--[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2020:callback#188", --[[/APR_DIAG]]function()
                                         profile.uiTheme = value
                                         profile.elvuiSkin = value == "ElvUI"
                                         profile.ellesmereuiSkin = value == "EllesmereUI"
@@ -2030,7 +2031,7 @@ function APR.settings:createBlizzOptions()
                                 order = 1.3,
                                 type = 'execute',
                                 width = "full",
-                                func = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2033:callback#189", --[[/APR_DIAG]]function()
+                                func = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2034:callback#189", --[[/APR_DIAG]]function()
                                     APR.changelog:ShowChangeLog()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
@@ -2046,7 +2047,7 @@ function APR.settings:createBlizzOptions()
                                 order = 0.5, type = "toggle", width = "full",
                                 name = L["UI_SHOW_PERF_TAB"], desc = L["UI_SHOW_PERF_TAB_DESC"],
                                 get = GetProfileOption,
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2049:callback#190", --[[/APR_DIAG]]function(info, value)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2050:callback#190", --[[/APR_DIAG]]function(info, value)
                                     SetProfileOption(info, value)
                                     APR.Workspace:LayoutTabs()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
@@ -2057,11 +2058,11 @@ function APR.settings:createBlizzOptions()
                                 name = L["COORD_COMMAND"],
                                 width = "full",
                                 get = GetProfileOption,
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2060:callback#191", --[[/APR_DIAG]]function(info, value)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2061:callback#191", --[[/APR_DIAG]]function(info, value)
                                     SetProfileOption(info, value)
                                     APR.coordinate:RefreshFrameAnchor()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2064:callback#192", --[[/APR_DIAG]]function()
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2065:callback#192", --[[/APR_DIAG]]function()
                                     return not self.profile.enableAddon
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
@@ -2072,7 +2073,7 @@ function APR.settings:createBlizzOptions()
                                 width = "full",
                                 get = GetProfileOption,
                                 set = SetProfileOption,
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2075:callback#193", --[[/APR_DIAG]]function()
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2076:callback#193", --[[/APR_DIAG]]function()
                                     return not self.profile.enableAddon
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
@@ -2083,7 +2084,7 @@ function APR.settings:createBlizzOptions()
                                 width = "full",
                                 get = GetProfileOption,
                                 set = SetProfileOption,
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2086:callback#194", --[[/APR_DIAG]]function()
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2087:callback#194", --[[/APR_DIAG]]function()
                                     return not self.profile.enableAddon
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
@@ -2093,7 +2094,7 @@ function APR.settings:createBlizzOptions()
                                 name = L["SHOW_ZONE_DEBUG"],
                                 width = "full",
                                 get = GetProfileOption,
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2096:callback#195", --[[/APR_DIAG]]function(info, value)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2097:callback#195", --[[/APR_DIAG]]function(info, value)
                                     SetProfileOption(info, value)
                                     if APR.ZoneDetection then
                                         APR.ZoneDetection.debug = value
@@ -2101,7 +2102,7 @@ function APR.settings:createBlizzOptions()
                                     APR:PrintInfo(string.format(L["SHOW_ZONE_DEBUG_STATUS"],
                                         value and L["ENABLE"] or L["DISABLE"]))
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2104:callback#196", --[[/APR_DIAG]]function()
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2105:callback#196", --[[/APR_DIAG]]function()
                                     return not self.profile.enableAddon
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
@@ -2112,11 +2113,11 @@ function APR.settings:createBlizzOptions()
                                 desc = L["RECEIVE_GROUP_DATA_DESC"],
                                 width = "full",
                                 get = GetProfileOption,
-                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2115:callback#197", --[[/APR_DIAG]]function(info, value)
+                                set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2116:callback#197", --[[/APR_DIAG]]function(info, value)
                                     SetProfileOption(info, value)
                                     APR.party:HandleReceiveGroupDataToggle(value)
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
-                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2119:callback#198", --[[/APR_DIAG]]function()
+                                disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2120:callback#198", --[[/APR_DIAG]]function()
                                     return not self.profile.enableAddon
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
@@ -2156,7 +2157,7 @@ function APR.settings:createBlizzOptions()
         name = L["RESET_ALL_PROFILES"],
         confirm = false,
         confirmText = L["RESET_ALL_PROFILES_CONFIRM_TEXT"],
-        func = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2159:callback#199", --[[/APR_DIAG]]function()
+        func = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2160:callback#199", --[[/APR_DIAG]]function()
             APR:ResetAllProfilesToDefault()
         end--[[APR_DIAG]])--[[/APR_DIAG]],
     }
@@ -2171,7 +2172,7 @@ function APR.settings:CreateBlizzardLauncher()
     panel.name = APR.title
     panel:Hide()
     APR.Options = panel
-    panel:SetScript("OnShow", --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2174:callback#201", --[[/APR_DIAG]]function()
+    panel:SetScript("OnShow", --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2175:callback#201", --[[/APR_DIAG]]function()
         if panel.logo then return end
         panel.logo = APR.UI:Icon(panel, "logo", 112)
         panel.logo:SetPoint("CENTER", panel, "CENTER", 0, 100)
@@ -2179,7 +2180,7 @@ function APR.settings:CreateBlizzardLauncher()
         panel.title:SetPoint("TOPLEFT", panel, "CENTER", -280, 24)
         panel.title:SetPoint("TOPRIGHT", panel, "CENTER", 280, 24)
         panel.title:SetJustifyH("CENTER")
-        panel.open = APR.UI:Button(panel, L["SHOW_MENU"], 280, --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2182:callback#202", --[[/APR_DIAG]]function()
+        panel.open = APR.UI:Button(panel, L["SHOW_MENU"], 280, --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2183:callback#202", --[[/APR_DIAG]]function()
             self:OpenSettings(APR.title)
         end--[[APR_DIAG]])--[[/APR_DIAG]])
         panel.open:SetHeight(40)
@@ -2191,7 +2192,7 @@ function APR.settings:CreateBlizzardLauncher()
     elseif InterfaceOptions_AddCategory then
         InterfaceOptions_AddCategory(panel)
     end
-end--[[APR_DIAG]]; APR.settings.CreateBlizzardLauncher = APRTrace("APR-Core/config/Config.lua:2168:APR.settings:CreateBlizzardLauncher#200", APR.settings.CreateBlizzardLauncher)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.settings.CreateBlizzardLauncher = APRTrace("APR-Core/config/Config.lua:2169:APR.settings:CreateBlizzardLauncher#200", APR.settings.CreateBlizzardLauncher)--[[/APR_DIAG]]
 
 function APR.settings:CreateMiniMapButton()
     if not self.profile.enableMinimapButton or libDBIcon:IsRegistered(APR.title) then return end
@@ -2199,13 +2200,13 @@ function APR.settings:CreateMiniMapButton()
     local minimapButton = libDataBroker:GetDataObjectByName(APR.title) or libDataBroker:NewDataObject(APR.title, {
         type = "launcher",
         icon = "Interface\\AddOns\\APR\\APR-Core\\assets\\APR_logo",
-        OnClick = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2202:callback#204", --[[/APR_DIAG]]function(_, button)
+        OnClick = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2203:callback#204", --[[/APR_DIAG]]function(_, button)
             if button == "RightButton" then
                 local profile = self.profile
                 if profile.enableAddon then
                     APR.questionDialog:CreateQuestionPopup("APR_DISABLE_ADDON",
                         L["DISABLE"] .. " " .. APR.title .. "?",
-                        --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2208:callback#205", --[[/APR_DIAG]]function()
+                        --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2209:callback#205", --[[/APR_DIAG]]function()
                             if self.profile ~= profile or not profile.enableAddon then return end
                             profile.enableAddon = false
                             self:ToggleAddon()
@@ -2226,7 +2227,7 @@ function APR.settings:CreateMiniMapButton()
                 end
             end
         end--[[APR_DIAG]])--[[/APR_DIAG]],
-        OnTooltipShow = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2229:callback#206", --[[/APR_DIAG]]function(tooltip)
+        OnTooltipShow = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:2230:callback#206", --[[/APR_DIAG]]function(tooltip)
             local toggleAddon = ''
             if self.profile.enableAddon then
                 toggleAddon = APR:WrapTextWithAppearanceColor(L["DISABLE"], "general", "error")
@@ -2242,7 +2243,7 @@ function APR.settings:CreateMiniMapButton()
     })
 
     libDBIcon:Register(APR.title, minimapButton, self.profile.minimap);
-end--[[APR_DIAG]]; APR.settings.CreateMiniMapButton = APRTrace("APR-Core/config/Config.lua:2196:APR.settings:CreateMiniMapButton#203", APR.settings.CreateMiniMapButton)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.settings.CreateMiniMapButton = APRTrace("APR-Core/config/Config.lua:2197:APR.settings:CreateMiniMapButton#203", APR.settings.CreateMiniMapButton)--[[/APR_DIAG]]
 
 function APR.settings:ToggleAddon()
     if APR.PawnRewards and APR.PawnRewards.RefreshSettings then APR.PawnRewards:RefreshSettings() end
@@ -2287,7 +2288,7 @@ function APR.settings:ToggleAddon()
     if APR.NavigationAdapter and APR.NavigationAdapter.RefreshWaypoints then
         APR.NavigationAdapter:RefreshWaypoints()
     end
-end--[[APR_DIAG]]; APR.settings.ToggleAddon = APRTrace("APR-Core/config/Config.lua:2247:APR.settings:ToggleAddon#207", APR.settings.ToggleAddon)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.settings.ToggleAddon = APRTrace("APR-Core/config/Config.lua:2248:APR.settings:ToggleAddon#207", APR.settings.ToggleAddon)--[[/APR_DIAG]]
 
 function APR.settings:OpenSettings(name)
     if APR.Workspace then
@@ -2300,13 +2301,13 @@ function APR.settings:OpenSettings(name)
     elseif APR.Options and InterfaceOptionsFrame_OpenToCategory then
         InterfaceOptionsFrame_OpenToCategory(APR.Options)
     end
-end--[[APR_DIAG]]; APR.settings.OpenSettings = APRTrace("APR-Core/config/Config.lua:2292:APR.settings:OpenSettings#208", APR.settings.OpenSettings)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.settings.OpenSettings = APRTrace("APR-Core/config/Config.lua:2293:APR.settings:OpenSettings#208", APR.settings.OpenSettings)--[[/APR_DIAG]]
 
 function APR.settings:CloseSettings()
     if APR.Workspace then APR.Workspace:Hide() end
     if SettingsPanel then SettingsPanel:Hide() end
     if InterfaceOptionsFrame then InterfaceOptionsFrame:Hide() end
-end--[[APR_DIAG]]; APR.settings.CloseSettings = APRTrace("APR-Core/config/Config.lua:2305:APR.settings:CloseSettings#209", APR.settings.CloseSettings)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.settings.CloseSettings = APRTrace("APR-Core/config/Config.lua:2306:APR.settings:CloseSettings#209", APR.settings.CloseSettings)--[[/APR_DIAG]]
 
 function APR.settings:SetRewardPriority(info, value)
     local key = info[#info] -- e.g. "rewardPriority2"
@@ -2321,4 +2322,4 @@ function APR.settings:SetRewardPriority(info, value)
         end
     end
     self.profile[key] = value
-end--[[APR_DIAG]]; APR.settings.SetRewardPriority = APRTrace("APR-Core/config/Config.lua:2311:APR.settings:SetRewardPriority#210", APR.settings.SetRewardPriority)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.settings.SetRewardPriority = APRTrace("APR-Core/config/Config.lua:2312:APR.settings:SetRewardPriority#210", APR.settings.SetRewardPriority)--[[/APR_DIAG]]

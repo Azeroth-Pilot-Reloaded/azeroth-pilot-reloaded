@@ -81,7 +81,7 @@ function APR:NewModule()
     return { RegisterEvent = function() end, UnregisterEvent = function() end, UnregisterAllEvents = function() end }
 end
 APR.RewardScoring = { GetProfileDescription = function() return "Synthetic class" end }
-UnitClass = function() return "Synthetic class", "FIXTURE" end
+UnitClass = function() return "Synthetic class", "FIXTURE", 8 end
 C_SpecializationInfo = { GetSpecialization = function() return 1 end,
     GetSpecializationInfo = function() return 901 end }
 function hooksecurefunc(name, callback)
@@ -92,7 +92,7 @@ function hooksecurefunc(name, callback)
         return unpack(results)
     end
 end
-PawnCommon = { Scales = { Existing = { Values = { Intellect = 2 } } } }
+PawnCommon = { Scales = { Existing = { Values = { Intellect = 2 }, ClassID = 8 } } }
 function PawnIsReady() return true end
 function PawnGetAllScalesEx()
     local result = {}
@@ -102,7 +102,7 @@ end
 function PawnGetAllStatValues(name) return PawnCommon.Scales[name].Values end
 function PawnGetItemData() return { UnenchantedStats = {} } end
 function PawnGetSingleValueFromItem() return 0, 0 end
-function PawnImportScale(name) PawnCommon.Scales[name] = { Values = { Intellect = 4 } } end
+function PawnImportScale(name) PawnCommon.Scales[name] = { Values = { Intellect = 4 }, ClassID = 8 } end
 function PawnDeleteScale(name) PawnCommon.Scales[name] = nil end
 dofile("APR-Core/integrations/Pawn.lua")
 dofile("APR-Core/ui/panels/OptionsPanel.lua")

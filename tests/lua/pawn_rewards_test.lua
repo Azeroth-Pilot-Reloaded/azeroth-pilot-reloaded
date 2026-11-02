@@ -2,7 +2,7 @@
 -- explicit selection and mutation lifecycle without shipping external weights.
 local function newEnvironment(saved, pawnScales)
     local env = { now = 0, timers = {}, prompts = {}, hooks = {}, ready = true, spec = 101,
-        combat = false, class = "MAGE", statsReads = 0, itemCalls = {} }
+        combat = false, class = "MAGE", classID = 8, statsReads = 0, itemCalls = {} }
     DEFAULT = "Default"
     local strings = {
         REWARD_PAWN_CHANGED = "Use changed scale %s?",
@@ -46,7 +46,7 @@ local function newEnvironment(saved, pawnScales)
             UnregisterAllEvents = function(self) self.events = {} end,
         }
     end
-    function UnitClass() return "Synthetic mage", env.class end
+    function UnitClass() return "Synthetic mage", env.class, env.classID end
     C_SpecializationInfo = {
         GetSpecialization = function() return env.spec and 1 end,
         GetSpecializationInfo = function() return env.spec end,
@@ -109,16 +109,18 @@ local function newEnvironment(saved, pawnScales)
         if prompt and prompt.name == name then hidePrompt(prompt) end
     end
     PawnCommon = { Scales = pawnScales or {
-        Custom = { Values = { Intellect = 2, Haste = 0.5 }, NormalizationFactor = 1 },
-        Hidden = { Values = { Intellect = 3 } },
-        Provider = { Values = { Intellect = 4 }, Provider = "Synthetic" },
+        Custom = { Values = { Intellect = 2, Haste = 0.5 }, ClassID = 8, NormalizationFactor = 1 },
+        Hidden = { Values = { Intellect = 3 }, ClassID = 8 },
+        Provider = { Values = { Intellect = 4 }, ClassID = 8, Provider = "Synthetic" },
     } }
     function PawnIsReady() return env.ready end
     function PawnGetAllScalesEx()
         local list = {}
         for name, scale in pairs(PawnCommon.Scales) do
+            local visible = scale.Visible
+            if visible == nil then visible = name ~= "Hidden" end
             list[#list + 1] = { Name = name, LocalizedName = name .. " label",
-                IsVisible = name ~= "Hidden", IsProvider = scale.Provider ~= nil }
+                IsVisible = visible, IsProvider = scale.Provider ~= nil }
         end
         return list
     end
@@ -140,14 +142,21 @@ local function newEnvironment(saved, pawnScales)
     function PawnSetStatValue(name, stat, value) PawnCommon.Scales[name].Values[stat] = value end
     function PawnAddEmptyScale(name) PawnCommon.Scales[name] = { Values = {} } end
     function PawnAddDefaultScale(name) PawnCommon.Scales[name] = { Values = { Intellect = 1 } } end
-    function PawnImportScale(name, weight) PawnCommon.Scales[name] = { Values = { Intellect = weight } } end
+    function PawnImportScale(name, weight, classID) PawnCommon.Scales[name] = { Values = { Intellect = weight }, ClassID = classID } end
     function PawnDeleteScale(name) PawnCommon.Scales[name] = nil end
     function PawnRenameScale(old, new) PawnCommon.Scales[new] = PawnCommon.Scales[old]; PawnCommon.Scales[old] = nil end
     function PawnDuplicateScale(old, new)
         local values = {}; for stat, weight in pairs(PawnCommon.Scales[old].Values) do values[stat] = weight end
-        PawnCommon.Scales[new] = { Values = values }
+        PawnCommon.Scales[new] = { Values = values, ClassID = PawnCommon.Scales[old].ClassID, SpecID = PawnCommon.Scales[old].SpecID }
     end
     function PawnSetScaleNormalizationFactor(name, value) PawnCommon.Scales[name].NormalizationFactor = value end
+    function PawnSetScaleVisible(name, value) PawnCommon.Scales[name].Visible = value; return true end
+    function PawnIsScaleVisible(name)
+        local scale = PawnCommon.Scales[name]
+        if not scale then return nil end
+        if scale.Visible ~= nil then return scale.Visible end
+        return name ~= "Hidden"
+    end
     function PawnResetScales() for name, scale in pairs(PawnCommon.Scales) do if not scale.Provider then PawnCommon.Scales[name] = nil end end end
     PawnResetProviderScales, PawnResetScalesCore, PawnAddPluginScale = nil, nil, nil
     dofile("APR-Core/integrations/Pawn.lua")
@@ -436,3 +445,93 @@ env.optionsAncestorHidden = true
 PawnImportScale("HiddenAncestor", 5); env:Advance(0.25)
 assert(#env.notifications == notifications,
     "An open control under a hidden workspace does not rebuild")
+
+
+-- The catalog is scoped by numeric class metadata, independently of labels or spec.
+env = newEnvironment(nil, {
+    CurrentHidden = { Values = { Intellect = 2 }, ClassID = 8, SpecID = 1, Visible = false, Provider = "Fixture" },
+    CurrentOtherSpec = { Values = { Intellect = 3 }, ClassID = 8, SpecID = 3 },
+    OtherClass = { Values = { Intellect = 4 }, ClassID = 1, SpecID = 1, Provider = "Fixture" },
+    OtherCustom = { Values = { Intellect = 5 }, ClassID = 1 },
+    VisibleImport = { Values = { Intellect = 6 }, Visible = true },
+    HiddenImport = { Values = { Intellect = 7 }, Visible = false },
+    UnclassifiedProvider = { Values = { Intellect = 8 }, Provider = "Fixture", Visible = true },
+    InvalidClass = { Values = { Intellect = 9 }, ClassID = "8" },
+})
+module = env.module
+options = module:GetScaleOptions()
+assert(options.apr and options["pawn:CurrentHidden"] and options["pawn:CurrentOtherSpec"],
+    "All specializations of the character class stay available, including hidden scales")
+assert(not options["pawn:OtherClass"] and not options["pawn:OtherCustom"],
+    "Provider and custom scales belonging to another class are excluded")
+assert(options["pawn:VisibleImport"] and not options["pawn:HiddenImport"]
+    and not options["pawn:UnclassifiedProvider"] and not options["pawn:InvalidClass"],
+    "Only a character-visible custom import can be used without numeric class metadata")
+assert(not module:SetSelectedScale("OtherClass") and not module:SetSelectedScale("OtherCustom"),
+    "Direct selection cannot bypass class filtering")
+assert(module:SetSelectedScale("CurrentHidden"))
+APR.settings.db.char.rewardPawnScales["spec:101"] = { name = "OtherCustom", fingerprint = "legacy stored version" }
+module:RefreshSettings()
+assert(module:GetSelectedScale() == "apr" and APR.settings.db.char.rewardPawnScales["spec:101"] == nil,
+    "A previously saved foreign-class scale is retired instead of silently used")
+local promptCount = #env.prompts
+PawnImportScale("ForeignNew", 12, 1); env:Advance(1)
+assert(#env.prompts == promptCount, "New scales of another class are never offered")
+PawnSetStatValue("OtherCustom", "Intellect", 13); env:Advance(1)
+assert(#env.prompts == promptCount, "Edits of another class are never offered")
+PawnImportScale("CurrentNew", 14, 8); env:Advance(1)
+assert(#env.prompts == promptCount + 1, "A matching-class import is still offered")
+env.prompts[#env.prompts].accept(); env:Advance(1)
+assert(module:GetSelectedScale() == "pawn:CurrentNew")
+scorer = module:GetScorer()
+PawnCommon.Scales.CurrentNew.ClassID = 1
+assert(module:GetSelectedScale() == "apr", "Reclassifying a chosen scale immediately suspends it")
+score, ready = scorer("item:700005")
+assert(score == nil and not ready, "A captured scorer cannot reuse a scale reassigned to another class")
+module:RefreshSettings()
+assert(APR.settings.db.char.rewardPawnScales["spec:101"] == nil)
+
+-- Numeric identity, not the class token or localized label, controls the filter.
+env.classID = 1
+module:RefreshSettings()
+options = module:GetScaleOptions()
+assert(options["pawn:OtherClass"] and options["pawn:OtherCustom"] and not options["pawn:CurrentHidden"],
+    "The catalog follows the native class ID even when display labels are unchanged")
+env.classID = nil
+module:RefreshSettings()
+options = module:GetScaleOptions()
+assert(not options["pawn:OtherClass"] and not options["pawn:CurrentHidden"] and options["pawn:VisibleImport"],
+    "Missing class data cannot expose class-tagged scales or hide the character's explicit untagged imports")
+
+
+-- Untagged imports track Pawn's per-character visibility through its public setter.
+env = newEnvironment(nil, {
+    Untagged = { Values = { Intellect = 6 }, Visible = false },
+    Tagged = { Values = { Intellect = 2 }, ClassID = 8, Provider = "Fixture", Visible = true },
+})
+module = env.module
+env:OpenOptions()
+assert(not env.visibleOptions.values["pawn:Untagged"] and env.visibleOptions.values["pawn:Tagged"])
+PawnSetScaleVisible("Untagged", true); env:Advance(0.25)
+assert(env.visibleOptions.values["pawn:Untagged"] and #env.prompts == 1,
+    "Enabling an untagged character import updates the open selector and its proposal")
+env.prompts[1].accept(); env:Advance(0.25)
+assert(module:GetSelectedScale() == "pawn:Untagged")
+scorer = module:GetScorer()
+local visibleAPI = PawnIsScaleVisible
+PawnIsScaleVisible = nil
+assert(module:GetSelectedScale() == "pawn:Untagged", "Older Pawn APIs retain the filtered snapshot fallback")
+PawnIsScaleVisible = visibleAPI
+PawnSetScaleVisible("Untagged", false)
+assert(module:GetSelectedScale() == "apr", "A hidden untagged scale stops before the visibility debounce")
+score, ready = scorer("item:700006")
+assert(score == nil and not ready, "Captured scoring stops immediately when the untagged scale is hidden")
+env:Advance(0.25)
+assert(not env.visibleOptions.values["pawn:Untagged"] and env.visibleOptions.choice == "apr"
+    and APR.settings.db.char.rewardPawnScales["spec:101"] == nil,
+    "Hiding an untagged import retires its selection and refreshes the visible fallback")
+score, ready = scorer("item:700006")
+assert(score == nil and not ready, "A retired untagged scale cannot be used by a captured scorer")
+PawnSetScaleVisible("Tagged", false); env:Advance(0.25)
+assert(env.visibleOptions.values["pawn:Tagged"],
+    "A class-tagged scale remains available even when hidden in Pawn")
