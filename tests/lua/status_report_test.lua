@@ -234,7 +234,8 @@ APR.navigation = {
         privateGraph = "never-export-the-continuation-graph" },
     destination = { x = 15000, y = 0, instanceID = 44, uiMapID = 77 },
     start = { x = 10, y = 20, z = 25, instanceID = 45, uiMapID = 78,
-        observedZ = 0, positionSource = "unit", heightSource = "terrain", indoors = true },
+        observedZ = 0, positionSource = "unit", heightSource = "terrain", indoors = true,
+        spaceID = "synthetic-cave", spaceKind = "cave", groundOnly = true, requiresExit = true },
     queue = { navigationStep, { id = "12:2", kind = "walk", label = "Final synthetic waypoint", seconds = 321,
         from = navigationStep.to, to = { x = 15000, y = 0, instanceID = 44, uiMapID = 77 },
         canStart = function() error("Export cannot validate a future leg") end } },
@@ -250,6 +251,7 @@ APR.navigation = {
     Update = function() error("Status must not start routing") end,
 }
 APR.Arrow = { Active = true, x = -263.9, y = -439.8, Distance = 38, currentStep = 0 }
+APR.NavigationTerrain = {lastFailure={addon="SyntheticNavData",nativeReason="MISSING",worldID=45,reason="terrain_load_failed"}}
 APR.currentStep.questsList = {
     ["01_NAVIGATION_PATH-12:1"] = { font = navigationFont, objectiveText = "Take the portal",
         IconButton = { itemID = 3567, attribute = "spell" } },
@@ -275,6 +277,9 @@ assert(text:find("**observedZ**: 0", 1, true) and text:find("**heightSource**: t
     and text:find("**terrainHeightReason**: ambiguous\\_terrain\\_surface", 1, true)
     and text:find("**terrainPosition**:", 1, true),
     "Diagnostics distinguish measured height, projected height and unresolved floor evidence")
+assert(text:find("**spaceID**: synthetic-cave",1,true) and text:find("**spaceKind**: cave",1,true)
+    and text:find("**requiresExit**: true",1,true) and text:find("**nativeReason**: MISSING",1,true),
+    "The report distinguishes local topology from the native addon loading failure")
 assert(text:find("**continuationReuses**: 3", 1, true), "Status identifies reuse of a precomputed continuation")
 assert(text:find("**controllerRevision**: 5", 1, true) and text:find("**reason**: expected\\_arrival", 1, true)
     and text:find("**lastInvalidation**: BAG\\_UPDATE\\_DELAYED", 1, true)

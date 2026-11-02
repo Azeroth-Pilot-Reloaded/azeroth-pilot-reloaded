@@ -69,6 +69,15 @@ t.combat = true
 assert(t.loader:RequestData("retail", 9, { x = 25, y = 75 }) == "ready",
     "Combat does not hide data already registered safely")
 
+t = Fixture()
+t.fail = true
+assert(t.loader:RequestData("retail", 9, { x = 25, y = 75 }) == "missing")
+assert(t.loader.lastFailure and t.loader.lastFailure.addon == "FixtureWest"
+    and t.loader.lastFailure.nativeReason == "MISSING", "A native load failure must retain its actual cause for diagnostics")
+t.fail, t.now = nil, 2
+assert(t.loader:RequestData("retail", 9, { x = 25, y = 75 }) == "ready" and t.loader.lastFailure == nil,
+    "A recovered native load clears stale failure diagnostics")
+
 for _, failure in ipairs({ "fail", "throw", "noRegistration" }) do
     t = Fixture()
     t[failure] = true
@@ -113,4 +122,16 @@ t = Fixture()
 t.profile, t.build, t.buildNumber = "forever", "1.60.1", "77"
 assert(t.loader:RequestData("forever", 3, { x = 25, y = 75 }) == "ready",
     "The Forever profile uses its own build identity and world namespace")
+t = Fixture()
+t.profile,t.build,t.buildNumber="forever","1.60.1","77"
+local modern=C_AddOns
+LoadAddOn=modern.LoadAddOn
+IsAddOnLoaded=function(name)return modern.IsAddOnLoaded(name) end
+C_AddOns=nil
+assert(t.loader:RequestData("forever",3,{x=25,y=75})=="ready",
+    "Clients exposing only the legacy addon-loading API retain the same validated lazy terrain contract")
+t.data.terrainDatasets,t.loading={},true
+assert(t.loader:RequestData("forever",3,{x=25,y=75})=="planning",
+    "A legacy alias exposing two loading states must preserve the unfinished state")
+LoadAddOn,IsAddOnLoaded=nil,nil
 print("Terrain loader: lazy packs, exact builds/revisions, missing data, combat, failures and retry bounds passed")

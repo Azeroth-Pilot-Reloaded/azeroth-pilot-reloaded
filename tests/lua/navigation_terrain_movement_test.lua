@@ -16,23 +16,23 @@ C_MountJournal = {
     GetMountIDs = function() return {1} end,
     GetCollectedDragonridingMounts = function() return state.groundMountOnly and {} or {1} end,
     GetMountUsabilityByID = function() return true end,
-    GetMountInfoByID = function() return "mount", 0, 0, false, true, 0, 0, 0, 0, 0, true end,
+    GetMountInfoByID = function() return "mount", 0, 0, false, true, 0, 0, 0, 0, 0, not state.groundMountOnly end,
 }
 dofile("APR-Core/features/navigation/Navigation.lua")
 local nav = APR.navigation
 assert(nav:GetThreshold() == 2000, "Ordinary flight permission must not imply skyriding permission")
 local profile = nav:GetMovementProfile()
-assert(profile.canSteady and not profile.canSkyriding, "A steady-only zone retains its own available movement mode")
+assert(profile.currentCanSteady and not profile.currentCanSkyriding, "A steady-only zone retains its own locally permitted movement mode")
 state.groundMountOnly = true
 nav._flyingMountID = nil
 assert(not nav:GetMovementProfile().canSteady, "Riding skill plus a ground mount cannot prove a usable flying mount")
 state.groundMountOnly = false
 state.advanced, state.ordinary = true, false
 profile = nav:GetMovementProfile()
-assert(profile.canSkyriding and not profile.canSteady, "A skyriding zone need not also permit steady flight")
+assert(profile.currentCanSkyriding and not profile.currentCanSteady, "A skyriding zone need not also permit steady flight locally")
 state.indoors = true
 profile = nav:GetMovementProfile()
-assert(not profile.canSteady and not profile.canSkyriding, "Indoor restrictions apply even when area flags permit flight")
+assert(not profile.currentCanSteady and not profile.currentCanSkyriding, "Indoor restrictions apply locally even when area flags permit flight")
 assert(nav:GetMovementSpeed(10000) == 7,
     "An explicitly supplied flight threshold cannot transfer flying speed into an indoor observation")
 local nativeIndoor = IsIndoors
@@ -41,14 +41,18 @@ assert(nav:GetMovementSpeed(10000) == 7, "An unreadable indoor observation canno
 IsIndoors = function() error("indoor observation unavailable") end
 assert(nav:GetMovementSpeed(10000) == 7, "A temporarily unavailable indoor API remains conservative")
 IsIndoors = nativeIndoor
+state.indoors,state.advanced,state.ordinary=false,false,false
+assert(nav:GetMovementSpeed(10000)==7,
+    "A stale explicit flight threshold cannot override a currently forbidden flight area")
 state.indoors, state.profile = false, "forever"
 profile = nav:GetMovementProfile()
 assert(not profile.canSteady and not profile.canSkyriding, "Forever remains grounded regardless of Retail API observations")
 state.profile, state.ordinary, state.advanced = "retail", true, true
 APR.NavigationData = { GetWalkingSpeed = function(_, point, fast, ground) return point.groundOnly and ground or fast end }
 profile = nav:GetMovementProfile()
-assert(not profile.canFlyAt({groundOnly=true}, "skyriding") and profile.canFlyAt({}, "skyriding"),
-    "Destination and intermediate restrictions must be checked separately from departure")
+assert(not profile.canFlyAt({groundOnly=true}, "skyriding") and profile.canFlyAt({movementMode="skyriding"}, "skyriding")
+    and not profile.canFlyAt({},"skyriding"),
+    "A declared aerial corridor proves future permission while a restricted or unknown coordinate remains grounded")
 state.flying, state.gliding = true, true
 assert(nav:GetMovementProfile().currentMode == "skyriding", "An airborne departure must attach to an aerial corridor")
 state.learned = false

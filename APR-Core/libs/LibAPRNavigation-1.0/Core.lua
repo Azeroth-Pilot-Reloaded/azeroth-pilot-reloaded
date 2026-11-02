@@ -1,6 +1,6 @@
 -- Planning uses the consumer's environment and never shares character state.
 -- Optional waypoint output is isolated in WaypointUI.lua.
-local Lib = LibStub:NewLibrary("LibAPRNavigation-1.0", 30)
+local Lib = LibStub:NewLibrary("LibAPRNavigation-1.0", 31)
 if not Lib then return end
 
 Lib.datasets = Lib.datasets or {}
@@ -106,6 +106,19 @@ local function ValidatePosition(position)
     end
 end
 
+local function ValidateSpaces(spaces)
+    if spaces == nil then return end
+    assert(type(spaces) == "table", "navigation spaces must be an array")
+    local count, ids = 0, {}
+    for key, space in pairs(spaces) do
+        assert(NonnegativeNumber(key) and key >= 1 and key % 1 == 0, "invalid navigation space index")
+        assert(type(space) == "table" and type(space.id) == "string" and not ids[space.id], "unique navigation space identity required")
+        assert(not Lib.ValidateNavigationSpace or Lib.ValidateNavigationSpace(space), "invalid navigation space")
+        ids[space.id], count = true, count + 1
+    end
+    assert(count == #spaces, "navigation spaces must be contiguous")
+end
+
 function Lib:RegisterData(profile, category, data, revision)
     assert(type(profile) == "string" and type(category) == "string", "profile and category required")
     assert(type(data) == "table", "data required")
@@ -113,6 +126,7 @@ function Lib:RegisterData(profile, category, data, revision)
     revision = revision or 1
     if (self.dataRevisions[key] or 0) >= revision then return end
     local copy = Copy(data)
+    ValidateSpaces(copy.config and copy.config.NavigationSpaces)
     for _, connection in ipairs(copy.connections or {}) do
         assert(type(connection.id) == "string" and type(connection.kind) == "string", "connection identity required")
         assert(connection.selection == nil or connection.selection == "random", "invalid action selection")
@@ -236,7 +250,7 @@ function Lib:New(options)
         categories[#categories + 1] = category
     end
     table.sort(categories)
-    local ids, entranceIDs, unlockIDs = {}, {}, {}
+    local ids, entranceIDs, unlockIDs, spaceIDs = {}, {}, {}, {}
     for _, category in ipairs(categories) do
         local data = self.datasets[options.profile][category]
         local sourceOffset = #instance.unlockSources
@@ -311,7 +325,15 @@ function Lib:New(options)
             end
         end
         for key, value in pairs(data.config or {}) do
-            if type(value) == "table" then
+            if key == "NavigationSpaces" then
+                ValidateSpaces(value)
+                instance.config.NavigationSpaces = instance.config.NavigationSpaces or {}
+                for _, space in ipairs(value) do
+                    assert(not spaceIDs[space.id], "duplicate navigation space identity")
+                    spaceIDs[space.id] = true
+                    instance.config.NavigationSpaces[#instance.config.NavigationSpaces + 1] = Copy(space)
+                end
+            elseif type(value) == "table" then
                 instance.config[key] = instance.config[key] or {}
                 for id, setting in pairs(value) do
                     instance.config[key][id] = Copy(setting)

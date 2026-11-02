@@ -2,6 +2,8 @@
   <Script file="Core.lua"/>
   <Script file="Locales.lua"/>
   <Script file="Geography.lua"/>
+  <Script file="TransitAccess.lua"/>
+  <Script file="NavigationSpaces.lua"/>
   <Script file="Conditions.lua"/>
   <Script file="Diagnostics.lua"/>
   <Script file="Unlocks.lua"/>
@@ -13,6 +15,7 @@
   <Script file="ZoneGraph.lua"/>
   <Script file="TravelActions.lua"/>
   <Script file="Search.lua"/>
+  <Script file="ExitRouting.lua"/>
   <Script file="Terrain.lua"/>
   <Script file="TerrainHeight.lua"/>
   <Script file="LocalRouting.lua"/>
@@ -20,6 +23,7 @@
   <Script file="WaypointUI.lua"/>
   <Script file="AzerothWaypoint.lua"/>
   <Script file="Data/retail/Geography.lua"/>
+  <Script file="Data/retail/NavigationSpaces.lua"/>
   <Script file="Data/retail/Availability.lua"/>
   <Script file="Data/retail/InstanceEntrances.lua"/>
   <Script file="Data/retail/Bindings.lua"/>
@@ -32,6 +36,7 @@
   <Script file="Data/retail/Passages.lua"/>
   <Script file="Data/retail/UnlockRoutes.lua"/>
   <Script file="Data/forever/Geography.lua"/>
+  <Script file="Data/forever/NavigationSpaces.lua"/>
   <Script file="Data/forever/InstanceEntrances.lua"/>
   <Script file="Data/forever/Bindings.lua"/>
   <Script file="Data/forever/Boats.lua"/>

@@ -1,7 +1,7 @@
 -- Declarative terrain is supplied by the consumer; this module never queries WoW.
 -- Only a proved convex anchor may connect a live position to the terrain graph.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("terrain", 3) then return end
+if not Lib:BeginModule("terrain", 5) then return end
 local Instance, Terrain = Lib.Instance, {}
 Lib.Terrain = Terrain
 local Build = {}
@@ -105,6 +105,71 @@ function Instance:GetTerrainScopes(world)
     return scopes, false
 end
 
+function Terrain.NeighborIDsValid(ids,own)
+    if ids==nil then return true end
+    if type(ids)~="table" then return false end
+    local seen,count={},0
+    for key,id in pairs(ids) do
+        if not Finite(key) or key<1 or key%1~=0 or type(id)~="string" or id=="" or id==own or seen[id] then return false end
+        seen[id],count=true,count+1
+    end
+    return #ids==count
+end
+
+function Terrain.IndexScopeNeighbors(records,scopes)
+    local index={known={},neighbors={},invalid={}}
+    for _,scope in ipairs(scopes or {}) do if Terrain.ScopeValid(scope) then index.known[scope.id]=true end end
+    if not scopes then
+        for _,entry in pairs(records or {}) do
+            local data=type(entry)=="table" and (entry.data or entry)
+            local scope=data and data.scope
+            if Terrain.ScopeValid(scope) then index.known[scope.id]=true end
+        end
+    end
+    local seen={}
+    for _,entry in pairs(records or {}) do
+        local data=type(entry)=="table" and (entry.data or entry)
+        local scope=data and data.scope
+        if Terrain.ScopeValid(scope) and index.known[scope.id] then
+            local id=scope.id
+            local neighbors=index.neighbors[id] or {}; index.neighbors[id]=neighbors
+            seen[id]=seen[id] or {}
+            if not Terrain.NeighborIDsValid(data.neighborScopeIDs,id) then index.invalid[id]=true
+            else
+                for _,neighbor in ipairs(data.neighborScopeIDs or {}) do
+                    if not index.known[neighbor] then index.invalid[id]=true
+                    elseif not seen[id][neighbor] then
+                        neighbors[#neighbors+1],seen[id][neighbor]=neighbor,true
+                    end
+                end
+            end
+        end
+    end
+    return index
+end
+
+function Instance:GetTerrainScopeNeighbors(world,id)
+    world=self:GetWorldInstanceID(world)
+    if self.env.getTerrainScopeNeighbors then
+        local neighbors,reason=self.env.getTerrainScopeNeighbors(self.profile,world,id)
+        if type(neighbors)=="table" or reason then return neighbors,reason end
+    end
+    local profile=Lib.terrainDatasets and Lib.terrainDatasets[self.profile]
+    local record=profile and profile[world]
+    local cache=self._terrainNeighborIndex
+    if not cache or cache.revision~=(Lib.terrainRevision or 0) or cache.profile~=self.profile then
+        cache={revision=Lib.terrainRevision or 0,profile=self.profile,worlds={}};self._terrainNeighborIndex=cache
+    end
+    if not cache.worlds[world] then
+        local scopes,unbounded=self:GetTerrainScopes(world)
+        cache.worlds[world]=Terrain.IndexScopeNeighbors(record and record.packs,not unbounded and scopes or nil)
+    end
+    local index=cache.worlds[world]
+    if not index.known[id] then return nil,"terrain_scope_unavailable" end
+    if index.invalid[id] then return nil,"invalid_terrain_neighbors" end
+    return index.neighbors[id] or {}
+end
+
 local function ContainsAny(scopes, point)
     for _, scope in ipairs(scopes) do if Terrain.ScopeContains(scope, point) then return true end end
     return false
@@ -120,6 +185,24 @@ function Instance:RequiresTerrainRoute(from, to)
     return false
 end
 
+function Instance:GetRequiredTerrainScopes(from,to)
+    local selected,unboundedWorlds={},{}
+    if type(from)~="table" or type(to)~="table" then return selected,unboundedWorlds end
+    local first,last=self:GetWorldInstanceID(from.instanceID),self:GetWorldInstanceID(to.instanceID)
+    local function include(world,point,other)
+        local scopes,unbounded=self:GetTerrainScopes(world)
+        if unbounded then unboundedWorlds[world]=true end
+        for _,scope in ipairs(scopes) do
+            if Terrain.ScopeContains(scope,point) or (other and ScopeBlocks(scope,point,other)) then
+                selected[world]=selected[world] or {}; selected[world][scope.id]=true
+            end
+        end
+    end
+    if first~=nil then include(first,from,first==last and to or nil) end
+    if last~=nil then include(last,to,nil) end
+    return selected,unboundedWorlds
+end
+
 function Lib.ValidateTerrainData(data, worldID)
     assert(type(data) == "table" and data.format == 1, "unsupported terrain format")
     assert(Nonnegative(worldID), "terrain world required")
@@ -127,6 +210,7 @@ function Lib.ValidateTerrainData(data, worldID)
     assert(type(data.nodes) == "table" and type(data.edges) == "table", "terrain graph required")
     assert(data.anchors == nil or type(data.anchors) == "table", "terrain anchors must be an array")
     assert(data.scope == nil or Terrain.ScopeValid(data.scope), "invalid terrain scope")
+    assert(Terrain.NeighborIDsValid(data.neighborScopeIDs,data.scope and data.scope.id),"invalid terrain neighbors")
     -- Each record is checked while the build is stepped, rather than doing an
     -- unbounded validation pass when a load-on-demand pack is registered.
 end
@@ -186,7 +270,8 @@ local function NodePosition(raw, world, pack, scope)
     if type(raw) ~= "table" or not Identity(raw.id) or not Finite(raw.x) or not Finite(raw.y)
         or not Finite(raw.z) or not Channel(raw.floor) or not Channel(raw.accessKey)
         or (raw.region ~= nil and type(raw.region) ~= "string")
-        or (raw.indoor ~= nil and type(raw.indoor) ~= "boolean") then return nil end
+        or (raw.indoor ~= nil and type(raw.indoor) ~= "boolean")
+        or (raw.spaceID ~= nil and (type(raw.spaceID) ~= "string" or raw.spaceID == "")) then return nil end
     if raw.instanceID ~= nil and raw.instanceID ~= world then return nil end
     if raw.movementMode ~= nil and not MODES[raw.movementMode] then return nil end
     local boundary = raw.terrainBoundary
@@ -198,7 +283,7 @@ local function NodePosition(raw, world, pack, scope)
         if math.min(math.abs(raw.x-b.minX),math.abs(raw.x-b.maxX),math.abs(raw.y-b.minY),math.abs(raw.y-b.maxY)) > tolerance then return nil end
     end
     return { x = raw.x, y = raw.y, z = raw.z, instanceID = world, uiMapID = raw.uiMapID,
-        floor = raw.floor, accessKey = raw.accessKey, region = raw.region, indoor = raw.indoor,
+        floor = raw.floor, accessKey = raw.accessKey, region = raw.region, indoor = raw.indoor, spaceID = raw.spaceID,
         groundOnly = raw.groundOnly or (scope and scope.groundOnly), movementMode = raw.movementMode or "ground",
         noFly = raw.noFly or (scope and scope.groundOnly),
         terrainNodeKey = Key(world, pack, raw.id), terrainBoundary = boundary, noAutoconnect = boundary == nil }
@@ -227,20 +312,47 @@ function Build:LoadOne()
     local world = self.owner:GetWorldInstanceID(point.instanceID)
     if self.request.terrainWorlds and not self.request.terrainWorlds[world] then return end
     local scopes, unbounded = self.owner:GetTerrainScopes(world)
-    if not unbounded and #scopes == 0 and not self.owner:HasTerrainData(point) then return end
+    if not unbounded and self.loadedWorlds[world] then return end
+    self.scopeInventory[world]=self.scopeInventory[world] or {}
+    for _,scope in ipairs(scopes) do self.scopeInventory[world][scope.id]=true end
+    local selection=self.request.terrainScopes
+    local missing
+    if selection then
+        local ids=selection[world]
+        local legacy=self.request.terrainUnboundedWorlds and self.request.terrainUnboundedWorlds[world]==true
+        if not legacy then
+            if type(ids)~="table" or not next(ids) then return end
+            local filtered,found={},{}
+            for _,scope in ipairs(scopes) do
+                if ids[scope.id] then filtered[#filtered+1],found[scope.id]=scope,true end
+            end
+            for id,enabled in pairs(ids) do
+                if enabled and not found[id] then
+                    missing=missing or {}; missing[#missing+1]=id
+                end
+            end
+            scopes,unbounded=filtered,false
+        end
+    end
+    if not unbounded and #scopes == 0 and not missing and not self.owner:HasTerrainData(point) then return end
     self.scopes[world], self.unbounded[world] = scopes, unbounded
     self.managed[world] = true
     if not unbounded and self.loadedWorlds[world] then return end
     self.loadedWorlds[world] = true
+    if not unbounded then
+        self.readyScopes[world]={}
+        for _,id in ipairs(missing or {}) do self:ScopeUnavailable(world,id,point,"terrain_scope_unavailable",true) end
+        self.pendingScopeLoad={world=world,point=point,scopes=scopes,index=1}
+        self.phase="loadScope"
+        return
+    end
     if self.owner.env.requestTerrainData then
-        local requestedPoint = unbounded and point or nil
-        local state, reason = self.owner.env.requestTerrainData(self.owner.profile, world, requestedPoint)
+        local state, reason = self.owner.env.requestTerrainData(self.owner.profile, world, point)
         local waiting = state == "planning" or state == "waiting_data"
         if state == "missing" and reason == "terrain_point_unavailable" then
             self.unavailablePoints[point] = reason
         elseif waiting or state == "missing" then
             self.unavailableWorlds[world] = { reason = reason or "pack_unavailable", waiting = waiting }
-            if not unbounded then self:Missing(point, reason or "pack_unavailable", waiting) end
             -- A registration alone does not authorize a pack rejected by the
             -- consumer's current build/revision checks, including warm caches.
             self.owner._terrainVisibility, self.owner._terrainGeometryCache = nil, nil
@@ -248,9 +360,55 @@ function Build:LoadOne()
     end
 end
 
+function Build:ScopeUnavailable(world,id,point,reason,waiting)
+    local scopes=self.unavailableScopes[world] or {}
+    self.unavailableScopes[world]=scopes
+    if not scopes[id] then
+        scopes[id]={reason=reason,waiting=waiting}
+        self:Missing(point,reason,waiting)
+        self.coverage.missing[#self.coverage.missing].scopeID=id
+    end
+    -- A previous cache may still contain this source. Keep its immutable
+    -- geometry for subset reuse, but do not expose rejected visibility.
+    self.owner._terrainVisibility=nil
+end
+
+function Build:LoadScopeOne()
+    local pending=self.pendingScopeLoad
+    local scope=pending.scopes[pending.index]
+    if not scope then self.pendingScopeLoad,self.phase=nil,"load"; return end
+    pending.index=pending.index+1
+    local state,reason
+    if self.owner.env.requestTerrainData then
+        state,reason=self.owner.env.requestTerrainData(self.owner.profile,pending.world,nil,{scopeIDs={[scope.id]=true}})
+    end
+    local waiting=state=="planning" or state=="waiting_data"
+    if waiting or state=="missing" then
+        self:ScopeUnavailable(pending.world,scope.id,pending.point,reason or "pack_unavailable",waiting)
+    else self.readyScopes[pending.world][scope.id]=true end
+end
+
+local function SelectionKey(build)
+    local parts={}
+    for world in pairs(build.managed) do
+        if build.unbounded[world] then parts[#parts+1]=tostring(world)..":*"
+        else
+            for _,scope in ipairs(build.scopes[world] or {}) do
+                if build.readyScopes[world] and build.readyScopes[world][scope.id] then
+                    parts[#parts+1]=tostring(world)..":"..#scope.id..":"..scope.id
+                end
+            end
+        end
+    end
+    table.sort(parts)
+    return table.concat(parts,";")
+end
+
 function Build:CacheOne()
     local cache = self.owner._terrainGeometryCache
-    if next(self.unavailableWorlds) or not cache or cache.revision ~= (Lib.terrainRevision or 0) or cache.profile ~= self.owner.profile then
+    self.selectionKey=self.selectionKey or SelectionKey(self)
+    if next(self.unavailableWorlds) or not cache or cache.revision ~= (Lib.terrainRevision or 0) or cache.profile ~= self.owner.profile
+        or cache.selectionKey~=self.selectionKey then
         self.phase, self.worldCursor = "packs", nil; return
     end
     local world = next(self.managed, self.worldCursor)
@@ -260,6 +418,7 @@ function Build:CacheOne()
         return
     end
     self.nodes, self.aliases, self.anchors = cache.nodes, cache.aliases, cache.anchors
+    self.packScopes=cache.packScopes or {}
     self.visibility, self.packs, self.pathPositionCache = cache.visibility, cache.packs, cache.pathPositions
     self.sourceRevision, self.geometryCached = cache.revision, true
     self.owner._terrainVisibility = { revision = cache.revision, worlds = cache.visibility }
@@ -272,7 +431,13 @@ function Build:PackOne()
         local packID, entry = next(self.packWorld.packs or {}, self.packCursor)
         if packID ~= nil then
             self.packCursor = packID
-            self.packs[#self.packs + 1] = { id = packID, world = self.worldCursor, data = entry.data }
+            local scope=entry.data.scope
+            local ids=self.readyScopes[self.worldCursor]
+            if self.unbounded[self.worldCursor] or (entry.data.scope and ids and ids[entry.data.scope.id]) then
+                self.packScopes[Key(self.worldCursor,packID,"")]=scope and scope.id or false
+                if scope and self.unbounded[self.worldCursor] then self.scopeInventory[self.worldCursor][scope.id]=true end
+                self.packs[#self.packs + 1] = { id = packID, world = self.worldCursor, data = entry.data }
+            end
             return
         end
         self.packWorld, self.packCursor = nil, nil
@@ -302,6 +467,14 @@ function Build:NodeOne()
     self.index = self.index + 1
     local point = NodePosition(raw, pack.world, pack.id, pack.data.scope)
     if not point or self.nodes[point.terrainNodeKey] then Fail(self, "invalid_terrain_node"); return end
+    local space = self.owner.ResolveNavigationSpace and self.owner:ResolveNavigationSpace(point)
+    if point.spaceID and (not space or not space.known) then Fail(self, "invalid_terrain_space"); return end
+    if space and space.known then
+        point.spaceID, point.spaceKind = space.id, space.kind
+        point.floor, point.accessKey = point.floor or space.floor, point.accessKey or space.accessKey
+        point.groundOnly, point.noFly = point.groundOnly or space.groundOnly, point.noFly or space.groundOnly
+        point.requiresExit = space.requiresExit
+    end
     if not point.region then point.region = self.owner:GetPositionRegion(point) end
     self.nodes[point.terrainNodeKey] = point
     local alias = Key(pack.world, "", raw.id)
@@ -317,6 +490,31 @@ function Build:Resolve(reference, pack)
         return self.nodes[Key(pack.world, reference.pack or pack.id, reference.node)]
     end
     return self.nodes[Key(pack.world, pack.id, reference)] or self.aliases[Key(pack.world, "", reference)]
+end
+
+local function ForeignReference(reference,pack)
+    return type(reference)=="table" and reference.pack~=nil and reference.pack~=pack.id
+end
+
+local function DeclaredNeighbor(build,raw,pack)
+    local id=raw.neighborScopeID
+    if id==nil then return true end
+    local own=pack.data.scope and pack.data.scope.id
+    if type(id)~="string" or id=="" or not own or id==own
+        or not (build.scopeInventory[pack.world] or {})[id] then return false end
+    local declared=false
+    for _,neighbor in ipairs(pack.data.neighborScopeIDs or {}) do if neighbor==id then declared=true;break end end
+    if not declared then return false end
+    local localEndpoint,foreignEndpoint=false,false
+    for _,reference in ipairs({raw.from,raw.to}) do
+        if ForeignReference(reference,pack) then
+            if not Identity(reference.pack) or not Identity(reference.node) then return false end
+            local actual=build.packScopes[Key(pack.world,reference.pack,"")]
+            if actual~=nil and actual~=id then return false end
+            foreignEndpoint=true
+        else localEndpoint=true end
+    end
+    return localEndpoint and foreignEndpoint
 end
 
 local function ValidMetrics(edge)
@@ -346,8 +544,19 @@ function Build:EdgeOne()
     if type(raw) ~= "table" or not MODES[raw.mode] or not ValidMetrics(raw) then
         Fail(self, "invalid_terrain_edge"); return
     end
+    if raw.polyline ~= nil and type(raw.polyline) ~= "table" then Fail(self, "invalid_terrain_polyline"); return end
+    if not DeclaredNeighbor(self,raw,pack) then Fail(self,"invalid_terrain_neighbor");return end
     local from, to = self:Resolve(raw.from, pack), self:Resolve(raw.to, pack)
-    if not from or not to then Fail(self, "unknown_terrain_node"); return end
+    if not from or not to then
+        if (not from and not ForeignReference(raw.from,pack)) or (not to and not ForeignReference(raw.to,pack)) then
+            Fail(self,"unknown_terrain_node");return
+        end
+        local id=raw.neighborScopeID
+        if id and not self.unbounded[pack.world] and not (self.readyScopes[pack.world] or {})[id] then
+            return
+        end
+        Fail(self, "unknown_terrain_node"); return
+    end
     if not Terrain.Enabled(self.profile, raw.mode) then return end
     if not FlightAllowed(self.profile, from, raw.mode) or not FlightAllowed(self.profile, to, raw.mode) then return end
     local seconds = Terrain.Seconds(raw, from, to, self.profile)
@@ -355,7 +564,6 @@ function Build:EdgeOne()
     local edge = EdgeRecord(from, to, raw.mode, seconds,
         "terrain:" .. Key(pack.world, pack.id, id), raw.mandatory)
     edge.transitionSeconds, edge.polylineWeights = raw.transitionSeconds or 0, { 0 }
-    if raw.polyline ~= nil and type(raw.polyline) ~= "table" then Fail(self, "invalid_terrain_polyline"); return end
     edge.polyline = { from }
     self.pendingEdge = { edge = edge, source = raw.polyline or {}, index = 1, pack = pack }
     self.phase = "polyline"
@@ -450,16 +658,28 @@ end
 function Build:PathPosition(raw, node)
     if type(raw) ~= "table" or not Finite(raw.x) or not Finite(raw.y) or not Finite(raw.z) then return nil end
     if raw.instanceID ~= nil and raw.instanceID ~= node.instanceID then return nil end
-    local map, floor = raw.uiMapID or node.uiMapID, raw.floor or node.floor
-    local access, region = raw.accessKey or node.accessKey, raw.region or node.region
+    local map = raw.uiMapID or node.uiMapID
+    local access = raw.accessKey or node.accessKey
+    local spaceID = raw.spaceID or (map == node.uiMapID and node.spaceID or nil)
+    local changedSpace = map ~= node.uiMapID or spaceID ~= node.spaceID
+    local floor = raw.floor or (not changedSpace and node.floor or nil)
+    local region = raw.region or (not changedSpace and node.region or nil)
     local noFly, groundOnly = raw.noFly or node.noFly, raw.groundOnly or node.groundOnly
     local cached = self.pathPositionCache[raw]
     if cached and cached.instanceID == node.instanceID and cached.uiMapID == map
-        and cached.floor == floor and cached.accessKey == access and cached.region == region
+        and cached.floor == floor and cached.accessKey == access and cached._sourceRegion == region and cached._sourceSpaceID == spaceID
         and cached.noFly == noFly and cached.groundOnly == groundOnly then return cached end
     local point = { x = raw.x, y = raw.y, z = raw.z, instanceID = node.instanceID, uiMapID = map,
-        floor = floor, accessKey = access, region = region,
+        floor = floor, accessKey = access, region = region, spaceID = spaceID,
         noFly = noFly, groundOnly = groundOnly }
+    point._sourceRegion, point._sourceSpaceID = region, spaceID
+    if not point.region then point.region = self.owner:GetPositionRegion(point) end
+    local space = self.owner.ResolveNavigationSpace and self.owner:ResolveNavigationSpace(point)
+    if space and space.known then
+        point.spaceID, point.spaceKind, point.requiresExit = space.id, space.kind, space.requiresExit
+        point.floor, point.accessKey = point.floor or space.floor, point.accessKey or space.accessKey
+        point.noFly, point.groundOnly = point.noFly or space.groundOnly, point.groundOnly or space.groundOnly
+    end
     self.pathPositionCache[raw] = point
     return point
 end
@@ -494,7 +714,8 @@ function Build:VisibilityOne()
             self.owner._terrainVisibility = { revision = self.sourceRevision or Lib.terrainRevision or 0, worlds = self.visibility }
             self.owner._terrainGeometryCache = { revision = self.sourceRevision or Lib.terrainRevision or 0,
                 profile = self.owner.profile, nodes = self.nodes, aliases = self.aliases, anchors = self.anchors,
-                visibility = self.visibility, packs = self.packs, worlds = self.geometryWorlds, pathPositions = self.pathPositionCache }
+                visibility = self.visibility, packs = self.packs, worlds = self.geometryWorlds, pathPositions = self.pathPositionCache,
+                selectionKey=self.selectionKey,packScopes=self.packScopes }
             self.phase, self.index, self.anchorIndex = "attach", 1, 1
         end
         return
@@ -559,6 +780,12 @@ function Build:AttachOne()
     if not self.managed[world] then self.index = self.index + 1; return end
     if not self.unbounded[world] and not ContainsAny(self.scopes[world], point) then self.index = self.index + 1; return end
     local unavailable = self.unavailableWorlds[world]
+    if not unavailable then
+        local failures=self.unavailableScopes[world] or {}
+        for _,scope in ipairs(self.scopes[world] or {}) do
+            if failures[scope.id] and Terrain.ScopeContains(scope,point) then unavailable=failures[scope.id]; break end
+        end
+    end
     if unavailable or self.unavailablePoints[point] then
         self:Missing(point, unavailable and unavailable.reason or self.unavailablePoints[point], unavailable and unavailable.waiting)
         self.index = self.index + 1
@@ -666,7 +893,7 @@ function Build:ConnectPathOne()
     self.pendingConnection, self.phase = nil, "connect"
 end
 
-local STEPS = { collect = Build.CollectOne, load = Build.LoadOne, cache = Build.CacheOne, packs = Build.PackOne,
+local STEPS = { collect = Build.CollectOne, load = Build.LoadOne, loadScope = Build.LoadScopeOne, cache = Build.CacheOne, packs = Build.PackOne,
     nodes = Build.NodeOne, edges = Build.EdgeOne, polyline = Build.PolylineOne,
     anchors = Build.AnchorOne, visibility = Build.VisibilityOne,
     attach = Build.AttachOne, connect = Build.ConnectOne, connectPath = Build.ConnectPathOne }
@@ -698,6 +925,7 @@ function Build:Cancel()
     self.groups, self.points, self.nodes, self.anchors, self.packs = {}, {}, {}, {}, {}
     self.candidates, self.pendingEdge = {}, nil
     self.pendingAnchor, self.pendingConnection = nil, nil
+    self.pendingScopeLoad=nil
 end
 
 function Instance:CreateTerrainEdgeBuild(request)
@@ -721,8 +949,8 @@ function Instance:CreateTerrainEdgeBuild(request)
     for _, group in ipairs(request.edgeGroups or {}) do groups[#groups + 1] = group end
     local build = setmetatable({ owner = self, request = request, clock = request.clock,
         status = "planning", phase = "collect", group = 1, index = 1, groups = groups,
-        points = {}, pointSeen = {}, unavailablePoints = {}, unavailableWorlds = {}, geometryWorlds = {}, managed = managed,
-        scopes = scopes, unbounded = unbounded, loadedWorlds = {},
+        points = {}, pointSeen = {}, unavailablePoints = {}, unavailableWorlds = {}, unavailableScopes = {}, readyScopes = {}, geometryWorlds = {}, managed = managed,
+        scopes = scopes, unbounded = unbounded, loadedWorlds = {}, scopeInventory = {}, packScopes = {},
         packs = {}, nodes = {}, aliases = {}, anchors = {}, visibility = {}, pathPositionCache = {}, result = {}, coverage = coverage,
         candidates = {}, profile = Terrain.Profile(request) }, Build)
     build:AddPoint(request.start); build:AddPoint(request.goal)

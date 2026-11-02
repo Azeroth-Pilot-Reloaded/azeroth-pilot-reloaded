@@ -1,103 +1,154 @@
-# Bounded indoor navigation
+# Physical spaces and indoor navigation
 
-The Retail packs cover the Orgrimmar portal tower (main hall, basement and
-connecting stairway) and Stormwind's Wizard's Sanctum (entrance room, rear room
-and stairs). They are ground-only collision graphs from installed client
-`12.1.5.70688`, product `wow`, build key `0149337da1d526fc64bf43982c650577`.
-They do not advertise other interiors or complete world coverage.
+APR uses one navigation engine for outdoor zones, subzones, caves, buildings,
+floors, instances and transports on Retail and Forever. Logical identity and
+physical coverage are separate: knowing that a cave exists does not prove its
+stairs, entrance or a walk through its walls. The shipped collision inventory is
+partial, and the engine does not claim complete WoW cartography.
 
-## Reproduction and provenance
+## Spaces, containment and local exits
 
-Route-generator owns `tools/navigation_terrain/regions_cli.js` and the bounded
-catalogue `retail-interiors.json`. Run the documented native generation command
-there against the exact installed build. Geometry is read from the local CASC
-storage; source archives are never modified. ADT/WMO surfaces, walls, clearance,
-heights and directed connections determine the graph. Catalogue portal/entry
-positions select connected components; they do not create links or invent stairs.
+`Data/<profile>/NavigationSpaces.lua` declares native world/map/area identities,
+optional 3D bounds, space types and `parentSpace` containment. Floor and access
+selectors remain distinct. `groundOnly`, `requiresExit`, and controlled-transit
+policy inherit through that hierarchy. The shared resolver rejects missing,
+conflicting or ambiguous identity; a UI map is presentation evidence, not by
+itself a physical connection between rooms.
 
-The Orgrimmar source includes WMO 367552, placement 5746298, and stairway group
-451646. Stormwind includes WMO 2320850, placement 23477151, and rear hall group
-5198158. These are offline provenance, not live-client API requirements. Derived
-navigation graphs are shipped, without models, textures or raw source triangles.
-`NavigationData/manifest.json` records build/reader identity, scoped tile coverage
-and SHA-256 for each shipped file. Index world IDs are numeric Lua keys.
+When an objective is outside an enclosed origin, APR first proves a physical
+local exit. A published exit prefix follows its mandatory corridor points, then
+APR recalculates toward the original objective from the observed arrival. Quest
+and route-step progress remain independent of this temporary navigation cursor.
+Entering a neighboring enclosed room alone is insufficient: that room can lead
+onward, but it cannot become an escape that sends the next replan back. Valid
+prefix endpoints include an enclosing ancestor, the objective's own enclosure,
+or an ordinary open outdoor/subzone space. An outdoor parent does not make all
+its enclosed descendants valid exits. Localized physical portals remain real
+crossings; an unrelated item/spell round trip does not prove a missing doorway.
 
-Copy the verified addon folders under `NavigationData/`, replace the lightweight
-terrain index, record the discovered sibling moves in `.pkgmeta`, then regenerate
-the file manifest. The package validator checks the load-on-demand addons. Common
-data integrity tests discover every indexed pack; they do not freeze these rooms'
-portal counts, coordinates or itinerary.
+An instance without a native UiMap can use its own world-instance coordinates
+and a declared bounded mapless space. No synthetic UiMap ID or guessed exterior
+landing is created. Ambiguous floors still require height or connected terrain
+proof. Local world guidance can remain available while a map/waypoint projection
+waits for an actual supported map.
 
-## Native height and route proof
+## Native provenance and partial coverage
 
-The reported client observation was `(1429.8000488281,-4368.8002929688,0,1)`.
-Its XY intersects ADT ground near Z20.998 and indoor WMO ground near Z25.454.
-Observed indoor state and surface provenance distinguish them. Z0 is retained as
-`observedZ`; the effective height is labelled as derived. Missing indoor state or
-two matching indoor floors remain ambiguous until connected progress proves the
-layer. The same rule follows descending stairways without treating XY proximity
-as arrival on another floor.
+Route-generator discovers metadata and physical topology from pinned local
+clients: Retail `wow` build `12.1.5.70688` and Forever `wowf` build
+`1.60.1.70707`. Its `tools/navigation_terrain/topology_cli.js` discovers logical
+spaces, native WMO group relationships, instance worlds and bounded collision
+chunks. The older `regions_cli.js` also supplies the two portal-room packs.
+See the generator's `tools/navigation_terrain/README.md` for prerequisites,
+explicit extraction commands, checkpoint recovery and reports.
 
-Real-pack Lua 5.1 smoke runs used the actual library and cold geometry caches.
-The reported native-zero start reached upper and lower portal approaches through
-87 and 133 shape points respectively; the basement path descended below Z0.
-Stormwind's inner entry reached a rear-room portal through 241 points and climbed
-from roughly Z65 to Z75. These are measurements of the current bake, not regression
-test expectations. Synthetic tests pin engine behavior; discovered common checks
-validate the current declarations.
+CASC archives are read without modification. ADT/WMO collision surfaces, walls,
+clearance, height and verified transitions determine connections. Catalogue
+portal/entrance positions can preserve a physically connected component; they
+cannot invent a staircase or bridge a gap. Only derived navigation data ships,
+without client models, textures, raw triangles or a native reader executable.
 
-Both packs retain about 36 MiB with a local geometry cache; a live world-planning
-job raised the standalone smoke to about 57 MiB. Parsing and registration took
-about 0.5–0.9 seconds combined;
-that load is synchronous once per load-on-demand addon. Route preparation/search
-took about 0.1–0.3 seconds, split into bounded slices. Values vary by host and
-client; this representation remains unsuitable for publishing a full continent.
+`NavigationData/manifest.json` records identities for both profiles, reader and
+space-catalogue hashes, physical coverage reports and file hashes. A metadata-only
+space remains valid inventory, with missing collision proof reported explicitly.
+Unsupported or failed geometry is excluded. Two Retail WMO formats remain
+unsupported by the current reader; discovering those spaces does not provide a
+verified walking graph for them.
+
+The current package contains 80 load-on-demand terrain addons: 78 newly generated
+addons and the two earlier portal-room addons. Their Lua sources total about
+93.59 MiB. These are package measurements, not a requirement to load the complete
+inventory into memory. They describe the present bake, not frozen test fixtures.
+
+## Scoped loading and route proof
+
+The lightweight index selects bounded scopes needed by the request and by
+winning transport approaches. A refused or pending scope blocks unsupported
+shortcuts through its own volume while another healthy scope in the same world
+can still supply a route. Build compatibility and the host loader's response
+remain authoritative even when an older registration exists in memory.
+
+Declared `neighborScopeIDs` form a lazy frontier. If the selected chunks cannot
+prove a route or local exit, the planner expands adjacent chunks incrementally
+and retries. Explicit cross-pack edges join proved seams; an internal chunk seam
+is not an outdoor entrance. The frontier is finite, cancellable and shares the
+planning budget. No centerline or nearest-node guess replaces missing geometry.
+Registered immutable sources and accepted geometry caches are reused without
+assuming that every scope in the world is available.
+
+Catalogue passages marked `terrainWalk` yield to collision geometry when covered.
+Actual portal/teleport entrances keep their explicit crossing. Outside physical
+coverage, ordinary authorized-region navigation remains available, without a
+claim that its straight segment has been checked against native collision.
+
+## Faction and movement policy
+
+Faction requirements describe actual transport eligibility. Separate
+`transitFaction`/`transitRegion` metadata describes controlled territory: ordinary
+transit avoids an opposing faction's controlled endpoints unless the character
+already starts there or the explicit objective requires that same transit region.
+Neutral physical services stay neutral. Unknown character or declared-space
+identity does not authorize a restricted service; retained departures are checked
+again against live observations. This policy does not pretend hostile terrain is
+physically impossible to walk through.
+
+Flight requires positive capability and local permission. APR does not transfer
+a flyable departure's permission to another area or through an indoor volume.
+Ground-only spaces and uncertain remote permission keep ground behavior. Aerial
+edges require explicit mode states and landing/mount transitions; permitted
+steady flight and skyriding compare horizontal travel, climb and descent cost
+against verified alternatives. The engine can prefer a proved detour around a
+mountain, but a ground-only or incomplete bake cannot establish an optimal flight
+through the rest of that mountain. Reference speeds do not simulate skyriding
+energy and still need client calibration.
+
+## Native height and measured validation
+
+Native Z0 and an `IsIndoors` observation of false do not establish the correct
+surface. Diagnostics retain the native `observedZ`; an inferred ground height is
+labelled `heightSource="terrain"`. Unique surface provenance or bounded progress
+along the current/immediately connected proved ground leg can establish height.
+Physical region/floor changes are allowed at that leg, while world/access-phase
+changes, unrelated regions, large jumps and unknown airborne altitude remain
+rejected. Unresolved stacked floors stay pending.
+
+A Lua 5.1 smoke run loaded the real generated Cleft topology, library, planner
+and guidance with cold caches. It followed 103/103 path observations to a genuine
+outdoor endpoint while native Z stayed zero and the indoor observation stayed
+false. Guidance reached `arrived`; modeled travel time was 34.624 seconds and
+only three terrain addons loaded. This is an offline model measurement, not an
+in-game journey, measured player travel time or proof of world coverage.
+
+Synthetic graphs validate routing, containment, stairs, phases, faction policy,
+flight permissions, deferred neighbors, failure recovery and scheduler budgets.
+Common data checks discover every shipped declaration, verify hashes and space
+references, and compile every indexed world with the real library. Tests never
+freeze a maintained route, native room's coordinates or current geometry counts.
+Run `python tests/run.py`, the instrumentation check and the release package
+validator before delivery. Lua complexity/mutation tools currently do not support
+these Lua sources; generator tooling has its own validation reports.
 
 ## In-client verification
 
-Install APR and both `APR_NavData_Retail_*` sibling addons before starting WoW.
-For the exact supported build, check:
+Install APR and its packaged sibling terrain addons for the exact supported
+client build, then verify:
 
-- Begin in the reported Orgrimmar corridor: the minimap line follows the corner
-  rather than drawing a chord across the wall.
-- Select a basement portal, descend the staircase, and return upstairs. The
-  guidance cursor must retain corners and must not complete an approach from the
-  other floor.
-- Enter Stormwind's tower through its real entrance transition, then walk to a
-  rear-room portal through the connecting stairs; test the reverse direction.
-- Move off the corridor and change steps: guidance should refresh from the
-  observed position. It must stay continuous between route steps.
-- Repeat in combat and on an unsupported client build: deferred/refused data
-  must not authorize a straight shortcut through the covered room.
-- Export APR's status report when a layer cannot be identified. It includes raw
-  and effective height, indoor state and the explicit terrain reason.
+- Follow a cave/building exit through the real corners, continue outside and
+  confirm that recalculation retains the original quest/route objective.
+- Descend and climb the Horde portal-room stairs; traverse the Alliance tower's
+  real entrance transition, rear room and connecting stairs in both directions.
+- Cross native map and floor thresholds while height reports zero, including an
+  indoor flag of false; check that another floor cannot satisfy arrival.
+- Enter an instance with no UiMap, verify local world guidance, and retain an
+  explicit waiting state when map projection or floor identity is unavailable.
+- Change steps, leave the corridor, reload, cross a loading screen and retry a
+  pending source; stale geometry must not create an implicit shortcut.
+- Check faction-controlled transit and flight restrictions with both factions,
+  including an explicit objective in hostile territory and a no-flight area.
+- Export APR's status report for failures: native/effective position, space and
+  floor/access identity, scope coverage and the precise blocker should explain
+  what remains unproved.
 
-Automated mocks and collision extraction do not establish the client's rendering,
-local portal phasing or the observed indoor flag at every threshold. The reported
-native Z0 is confirmed by the user; the final displayed path still needs the
-in-client checks above.
-
-## Validation journal
-
-- Reproduced the missing terrain inventory and the reported native Z0. Inspected
-  source geometry to distinguish buried ADT terrain from the indoor WMO floor.
-- Added synthetic regressions before changes for scoped routing, boundary
-  approaches, indoor speed, native-height recovery and catalogue walking hints.
-  Independent review reproduced two additional height-continuity defects; both
-  received fixes and regression coverage.
-- Baked and pruned only physically connected collision components. A second bake
-  after the exact-boundary wall check produced byte-identical real packs.
-- Ran real Lua planning, assembly and native-zero guidance across both levels and
-  the rear room: every smoke guidance session reached `arrived`. The full world
-  planner retained the terrain walk before the actual intercontinent portal.
-- Reproduced dense-bucket visibility exhaustion, then verified bounded local and
-  diagonal queries with synthetic data and both real packs.
-- Ran `python tests/run.py`: 581 tests passed. Instrumentation write/check and
-  `git diff --check` passed. A local release-layout preview validated APR plus
-  both load-on-demand addons and all client runtime references.
-- Invoked UB crapper, dryer and mutator for the changed Lua. These installed tools
-  reported no supported source files; they do not measure Lua complexity or
-  mutation coverage. Generator-side JavaScript checks are recorded separately in
-  Route-generator's terrain validation journal.
-- Installed the 15 changed runtime files and both terrain addons into the Retail
-  addon directory, verifying copied file hashes. No source archives were changed.
+Mocks and extracted collision do not certify live phasing, client rendering,
+secure actions or every native observation at a threshold. These client checks
+remain necessary on Retail and Forever.

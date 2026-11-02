@@ -1,7 +1,7 @@
 -- Project endpoints into world coordinates and identify their access regions.
 -- A shared position alone does not permit walking through a required entrance.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("geography", 14) then return end
+if not Lib:BeginModule("geography", 16) then return end
 local Instance = Lib.Instance
 -- These defaults are read-only, including CheckRequirements' character input.
 -- Reuse them across walking checks and retries of unavailable map ancestry.
@@ -39,6 +39,29 @@ local function WorldRegion(region, source, target)
     return region
 end
 
+local function BoundedMaplessSpace(space)
+    return space and space.bounds ~= nil and space.mapIDs and #space.mapIDs == 0
+end
+
+function Instance:CanObserveWithoutUiMap(position)
+    if not position or position.uiMapID ~= nil or not self.ResolveNavigationSpace then return false end
+    local space, reason = self:ResolveNavigationSpace(position)
+    if space and space.known and BoundedMaplessSpace(space) then return true, space, reason end
+    if reason ~= "ambiguous_navigation_space" then return false, nil, reason end
+    -- Retain raw world observations during an ambiguous floor lookup, but only
+    -- when one of the actual candidates is a declared bounded mapless space.
+    local query = {}
+    for key, value in pairs(position) do query[key] = value end
+    for _, candidate in ipairs(self.config.NavigationSpaces or EMPTY) do
+        if BoundedMaplessSpace(candidate) and candidate.worldID == self:GetWorldInstanceID(position.instanceID) then
+            query.spaceID = candidate.id
+            local matched, pending = self:ResolveNavigationSpace(query)
+            if (matched and matched.known) or pending == "navigation_space_identity_unavailable" then return true, nil, reason end
+        end
+    end
+    return false, nil, reason
+end
+
 function Instance:NormalizeLocation(location, hint)
     if type(location) ~= "table" then return nil end
     local x, y = location.x, location.y
@@ -52,7 +75,10 @@ function Instance:NormalizeLocation(location, hint)
         -- that coordinate space without replacing the observed X/Y position.
         instanceID = self.env.mapToWorld(mapID, 0.5, 0.5)
     elseif not mapID and self.env.worldToMap and instanceID ~= nil then
-        mapID = self.env.worldToMap(instanceID, x, y, hint)
+        local definition = location.spaceID and self.GetNavigationSpace and self:GetNavigationSpace(location.spaceID)
+        if not BoundedMaplessSpace(definition) and not self:CanObserveWithoutUiMap(location) then
+            mapID = self.env.worldToMap(instanceID, x, y, hint)
+        end
     end
     instanceID = self:GetWorldInstanceID(instanceID)
     if not Finite(instanceID) or not Finite(x) or not Finite(y) then return nil end
@@ -75,13 +101,28 @@ function Instance:NormalizeLocation(location, hint)
         observedZ = location.observedZ,
         heightSource = location.heightSource,
         indoors = location.indoors,
+        airborne = location.airborne,
+        spaceID = location.spaceID,
+        spaceKind = location.spaceKind,
+        groundOnly = location.groundOnly,
+        noFly = location.noFly,
+        requiresExit = location.requiresExit,
         region = WorldRegion(location.region, location.instanceID, instanceID),
     }
+    if self.ResolveNavigationSpace then
+        local space = self:ResolveNavigationSpace(position)
+        if space then
+            position.spaceID, position.spaceKind = space.id, space.kind
+            position.floor, position.accessKey = position.floor or space.floor, position.accessKey or space.accessKey
+            position.groundOnly = position.groundOnly or space.groundOnly
+            position.requiresExit = space.requiresExit
+        end
+    end
     position.region = self:GetPositionRegion(position)
     return position
 end
 
-function Instance:GetPositionRegion(position)
+function Instance:GetNativePositionRegion(position)
     if not position then return nil end
     local instanceID = self:GetWorldInstanceID(position.instanceID)
     if position.region then return WorldRegion(position.region, position.instanceID, instanceID) end
@@ -140,9 +181,29 @@ function Instance:GetPositionRegion(position)
     end
 end
 
+function Instance:GetPositionRegion(position)
+    if not position then return nil end
+    if self.ResolveNavigationSpace then
+        local space, reason = self:ResolveNavigationSpace(position)
+        if space and space.known then
+            if space.region then return space.region end
+            if position.uiMapID == nil and BoundedMaplessSpace(space) then
+                return tostring(self:GetWorldInstanceID(position.instanceID)) .. ":space:" .. space.id
+            end
+        end
+        if not space and (reason ~= "navigation_space_unavailable" or position.spaceID ~= nil) then return nil end
+    end
+    return self:GetNativePositionRegion(position)
+end
+
 function Instance:IsSameAccessRegion(from, to)
     if not from or not to or self:GetWorldInstanceID(from.instanceID) ~= self:GetWorldInstanceID(to.instanceID) then return false end
     if from.accessKey ~= to.accessKey or from.floor ~= to.floor then return false end
+    if self.ResolveNavigationSpace then
+        local sourceSpace, targetSpace = self:ResolveNavigationSpace(from), self:ResolveNavigationSpace(to)
+        if sourceSpace and targetSpace and sourceSpace.id ~= targetSpace.id
+            and (sourceSpace.requiresExit or targetSpace.requiresExit) then return false end
+    end
     local source, target = self:GetPositionRegion(from), self:GetPositionRegion(to)
     return source ~= nil and source == target
 end
@@ -157,6 +218,9 @@ function Instance:CanWalk(from, to)
 end
 
 function Instance:GetWalkingSpeed(position, travelSpeed, groundSpeed)
+    if position and (position.groundOnly or position.noFly) then return math.min(travelSpeed,groundSpeed) end
+    local space = position and self.ResolveNavigationSpace and self:ResolveNavigationSpace(position)
+    if space and space.groundOnly then return math.min(travelSpeed,groundSpeed) end
     local mapID = position and position.uiMapID
     if not mapID then return travelSpeed end
     self.groundMaps = self.groundMaps or {}

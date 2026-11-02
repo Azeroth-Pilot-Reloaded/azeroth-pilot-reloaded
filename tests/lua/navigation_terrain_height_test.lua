@@ -25,6 +25,7 @@ surface("connected-low", 65, 0, 25, 5)
 surface("connected-overhead", 65, 0, 55, 5)
 surface("outdoor", -60, 0, 20, 2); anchors[#anchors].indoor, nodes[#nodes].indoor = false, false
 surface("indoor", -60, 0, 25, 2); anchors[#anchors].indoor, nodes[#nodes].indoor = true, true
+surface("underground", -70, 0, 25, 2); anchors[#anchors].indoor, nodes[#nodes].indoor = true, true
 surface("ramp-left", 85, 0, 25, 5)
 surface("ramp-right", 95, 0, 26, 5)
 local path = { point(0, 0, 30), point(10, 0, 25), point(10, 10, 20), point(20, 10, 15), point(20, 20, 10) }
@@ -39,7 +40,10 @@ assert(build.status == "ready", "The synthetic ground visibility grid must be bu
 local indoor = point(-60, 0, 0, true); indoor.indoors = true
 assert(data:ResolveTerrainGroundPosition(indoor).z == 25, "Known indoor provenance excludes the overlapping outdoor terrain")
 indoor.indoors, data._terrainGroundObservation = false, nil
-assert(data:ResolveTerrainGroundPosition(indoor).z == 20, "An outdoor observation excludes the overlapping indoor collision")
+assert(data:ResolveTerrainGroundPosition(indoor) == nil, "Native false enclosure does not distinguish outdoor terrain from an underground WMO")
+local underground = point(-70, 0, 0, true); underground.indoors = false
+assert(data:ResolveTerrainGroundPosition(underground).z == 25,
+    "A false IsIndoors observation cannot erase a proved unique underground WMO surface")
 indoor.indoors, data._terrainGroundObservation = nil, nil
 assert(data:ResolveTerrainGroundPosition(indoor) == nil, "Unavailable indoor state cannot invent triangle provenance")
 assert(data:ResolveTerrainGroundPosition(point(90, 0, 0, true)),
@@ -56,6 +60,10 @@ resolved = data:ResolveTerrainGroundPosition(raw)
 assert(resolved and resolved.z == 25 and resolved.observedZ == 0 and resolved.heightSource == "terrain" and raw.z == 0,
     "A unique XY layer supplies effective geometry while keeping the raw observation intact")
 local authored = point(-10, 0, 0)
+local flying = point(-10,0,0,true); flying.airborne=true
+local airborneHeight, airborneReason=data:ResolveTerrainGroundPosition(flying)
+assert(not airborneHeight and airborneReason=="aerial_altitude_unavailable",
+    "A flying player with unknown native height cannot be projected onto the floor below")
 assert(data:ResolveTerrainGroundPosition(authored).z == 0, "Authored zero coordinates cannot be rewritten as native failures")
 local _, reason = data:ResolveTerrainGroundPosition(point(40, 0, 0, true))
 assert(reason == "ambiguous_terrain_surface", "Overlapping floors need connected progress proof")

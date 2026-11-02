@@ -25,6 +25,12 @@ for _, profile in ipairs({ "retail", "forever" }) do
     IsIndoors = nil
     assert(APR:GetNavigationPlayerPosition().indoors == nil)
     IsIndoors = nativeIndoors
+    local nativeFlying = IsFlying
+    IsFlying = function() return true end
+    assert(APR:GetNavigationPlayerPosition().airborne == true,"A positive airborne observation must survive the native provider")
+    IsFlying = function() return opaque end
+    assert(APR:GetNavigationPlayerPosition().airborne == nil,"Protected flight observations cannot become a positive airborne state")
+    IsFlying = nativeFlying
     for _, height in ipairs({ 0, -12.5, 21 }) do
         fixture.player.z = height
         assert(APR:GetNavigationPlayerPosition().z == height, "Real finite heights, including zero, remain unchanged")

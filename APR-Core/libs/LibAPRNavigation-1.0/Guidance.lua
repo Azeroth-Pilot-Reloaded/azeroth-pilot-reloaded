@@ -1,6 +1,6 @@
 -- Follow proved path segments without changing the host's objective cursor.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("terrain-guidance", 2) then return end
+if not Lib:BeginModule("terrain-guidance", 3) then return end
 local Guidance = {}
 Guidance.__index = Guidance
 local function Finite(value)
@@ -15,6 +15,11 @@ local function SameSpace(a, b)
     return a and b and a.instanceID == b.instanceID and a.accessKey == b.accessKey
         and (a.floor == nil or b.floor == nil or a.floor == b.floor)
         and (a.region == nil or b.region == nil or a.region == b.region)
+end
+local function LegContext(segment,position,from,to)
+    local matches=Lib.Terrain and Lib.Terrain.GroundLegContextMatches
+    if segment.mode=="ground" and segment.source.terrain and matches then return matches(position,from,to) end
+    return SameSpace(position,from)
 end
 local function Project(point, from, to, spatial)
     local dx, dy = to.x - from.x, to.y - from.y
@@ -142,7 +147,7 @@ function Guidance:AdvanceCorner(position, segment, distance)
         local fraction, separation, raw = Project(position, from, to, spatial)
         local length = Distance(from, to, true)
         if walked + length * fraction > window then return false end
-        if raw >= 0 and raw <= 1 and separation < distance and SameSpace(position, from) then
+        if raw >= 0 and raw <= 1 and separation < distance and LegContext(segment,position,from,to) then
             local proved = segment.source.terrain and separation <= 0.00001
             if not proved and self.options.canTraverse then
                 proved = self.options.canTraverse(position, self:Target(segment, from, to, fraction), segment.mode) == true
@@ -165,9 +170,13 @@ function Guidance:FollowOne(position)
     if spatial and (not Finite(position.z) or not Finite(from.z) or not Finite(to.z)) then
         self.status = "waiting_data"; return nil, true
     end
+    local contextMatches=LegContext(segment,position,from,to)
+    if segment.mode=="ground" and segment.source.terrain and not contextMatches then
+        self.status="deviated";return nil,true
+    end
     local finalPoint = self.pointIndex + 1 == #points
     if finalPoint and self:Arrived(position, to, spatial) then self.pointIndex = self.pointIndex + 1; return nil, false end
-    if not SameSpace(position, from) then self.status = "deviated"; return nil, true end
+    if not contextMatches then self.status = "deviated"; return nil, true end
     local fraction, distance, raw = Project(position, from, to, spatial)
     self.pathProof = segment.source.terrain == true and distance <= 0.00001
     if distance > self.cornerTolerance and self:AdvanceCorner(position, segment, distance) then return nil, false end

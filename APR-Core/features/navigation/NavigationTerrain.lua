@@ -37,21 +37,25 @@ local function BuildIdentity()
     return version .. "." .. tostring(build)
 end--[[APR_DIAG]]; BuildIdentity = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:33:BuildIdentity#5", BuildIdentity)--[[/APR_DIAG]]
 
-local function Packs(record, worldID)
+local function World(record, worldID)
     local worlds = record and record.worlds
-    local world = type(worlds) == "table" and worlds[worldID]
+    return type(worlds) == "table" and worlds[worldID]
+end--[[APR_DIAG]]; World = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:40:World#6", World)--[[/APR_DIAG]]
+
+local function Packs(record, worldID)
+    local world = World(record,worldID)
     return type(world) == "table" and type(world.packs) == "table" and world.packs or nil
-end--[[APR_DIAG]]; Packs = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:40:Packs#6", Packs)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Packs = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:45:Packs#7", Packs)--[[/APR_DIAG]]
 
 local function ScopeAPI()
     local lib = Call(LibStub, "LibAPRNavigation-1.0", true)
     return lib and lib.Terrain
-end--[[APR_DIAG]]; ScopeAPI = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:46:ScopeAPI#7", ScopeAPI)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ScopeAPI = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:50:ScopeAPI#8", ScopeAPI)--[[/APR_DIAG]]
 
 local function ValidScope(scope)
     local api = ScopeAPI()
     return api and type(api.ScopeValid) == "function" and api.ScopeValid(scope) == true or false
-end--[[APR_DIAG]]; ValidScope = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:51:ValidScope#8", ValidScope)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ValidScope = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:55:ValidScope#9", ValidScope)--[[/APR_DIAG]]
 
 local function SameScope(first, second)
     if first == nil or second == nil then return first == second end
@@ -62,7 +66,7 @@ local function SameScope(first, second)
             or first.bounds["max" .. axis] ~= second.bounds["max" .. axis] then return false end
     end
     return true
-end--[[APR_DIAG]]; SameScope = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:56:SameScope#9", SameScope)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; SameScope = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:60:SameScope#10", SameScope)--[[/APR_DIAG]]
 
 local function ScopeContains(scope, point)
     if not Public(point) or type(point) ~= "table" or not Finite(point.x) or not Finite(point.y) then return false end
@@ -74,7 +78,7 @@ local function ScopeContains(scope, point)
         positionSource = Public(point.positionSource) and point.positionSource or nil,
         heightSource = Public(point.heightSource) and point.heightSource or nil,
         terrainBoundary = Public(point.terrainBoundary) and point.terrainBoundary or nil }) == true
-end--[[APR_DIAG]]; ScopeContains = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:67:ScopeContains#10", ScopeContains)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ScopeContains = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:71:ScopeContains#11", ScopeContains)--[[/APR_DIAG]]
 
 function Terrain:GetScopes(profile, worldID)
     local packs = Packs(Profile(profile), worldID)
@@ -93,7 +97,21 @@ function Terrain:GetScopes(profile, worldID)
         end
     end
     return scopes, unbounded
-end--[[APR_DIAG]]; Terrain.GetScopes = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:79:Terrain:GetScopes#11", Terrain.GetScopes)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Terrain.GetScopes = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:83:Terrain:GetScopes#12", Terrain.GetScopes)--[[/APR_DIAG]]
+
+function Terrain:GetScopeNeighbors(profile,worldID,id)
+    local world=World(Profile(profile),worldID)
+    local packs=Packs(Profile(profile),worldID)
+    if not packs then return nil end
+    local api=ScopeAPI()
+    if not api or not api.IndexScopeNeighbors then return nil,"terrain_api_unavailable" end
+    self.neighborIndexes=self.neighborIndexes or setmetatable({},{__mode="k"})
+    local index=self.neighborIndexes[world]
+    if not index then index=api.IndexScopeNeighbors(packs);self.neighborIndexes[world]=index end
+    if not index.known[id] then return nil,"terrain_scope_unavailable" end
+    if index.invalid[id] then return nil,"invalid_terrain_neighbors" end
+    return index.neighbors[id] or {}
+end--[[APR_DIAG]]; Terrain.GetScopeNeighbors = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:102:Terrain:GetScopeNeighbors#13", Terrain.GetScopeNeighbors)--[[/APR_DIAG]]
 
 function Terrain:HasData(profile, worldID, point)
     local record = Profile(profile)
@@ -114,7 +132,7 @@ function Terrain:HasData(profile, worldID, point)
         if packs and #packs > 0 then return true end
     end
     return false
-end--[[APR_DIAG]]; Terrain.HasData = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:98:Terrain:HasData#12", Terrain.HasData)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Terrain.HasData = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:116:Terrain:HasData#14", Terrain.HasData)--[[/APR_DIAG]]
 
 local function Contains(pack, point)
     if not point then return true end
@@ -124,14 +142,30 @@ local function Contains(pack, point)
     if not bounds then return true end
     if not Finite(bounds.minX) or not Finite(bounds.maxX) or not Finite(bounds.minY) or not Finite(bounds.maxY) then return false end
     return point.x >= bounds.minX and point.x <= bounds.maxX and point.y >= bounds.minY and point.y <= bounds.maxY
-end--[[APR_DIAG]]; Contains = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:119:Contains#13", Contains)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Contains = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:137:Contains#15", Contains)--[[/APR_DIAG]]
+
+local function ValidNeighbors(ids,own)
+    if ids==nil then return true end
+    local api=ScopeAPI()
+    return api and api.NeighborIDsValid and api.NeighborIDsValid(ids,own)==true or false
+end--[[APR_DIAG]]; ValidNeighbors = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:147:ValidNeighbors#16", ValidNeighbors)--[[/APR_DIAG]]
+
+local function SameNeighbors(first,second,own)
+    if not ValidNeighbors(first,own) or not ValidNeighbors(second,own) then return false end
+    if #(first or {})~=#(second or {}) then return false end
+    local seen={}
+    for _,id in ipairs(first or {}) do seen[id]=true end
+    for _,id in ipairs(second or {}) do if not seen[id] then return false end end
+    return true
+end--[[APR_DIAG]]; SameNeighbors = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:153:SameNeighbors#17", SameNeighbors)--[[/APR_DIAG]]
 
 local function ValidPack(pack)
     return type(pack) == "table" and type(pack.id) == "string" and pack.id ~= ""
         and type(pack.addon) == "string" and pack.addon:match("^[%w_%-]+$") ~= nil
         and Finite(pack.revision) and pack.revision >= 0
         and (pack.scope == nil or ValidScope(pack.scope))
-end--[[APR_DIAG]]; ValidPack = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:129:ValidPack#14", ValidPack)--[[/APR_DIAG]]
+        and ValidNeighbors(pack.neighborScopeIDs,pack.scope and pack.scope.id)
+end--[[APR_DIAG]]; ValidPack = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:162:ValidPack#18", ValidPack)--[[/APR_DIAG]]
 
 local function Registered(profile, worldID, pack, build)
     local lib = Call(LibStub, "LibAPRNavigation-1.0", true)
@@ -142,47 +176,70 @@ local function Registered(profile, worldID, pack, build)
     local data = registration and registration.data
     return type(data) == "table" and registration.revision == pack.revision
         and data.profile == profile and data.build == build and SameScope(pack.scope, data.scope)
-end--[[APR_DIAG]]; Registered = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:136:Registered#15", Registered)--[[/APR_DIAG]]
+        and SameNeighbors(pack.neighborScopeIDs,data.neighborScopeIDs,pack.scope and pack.scope.id)
+end--[[APR_DIAG]]; Registered = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:170:Registered#19", Registered)--[[/APR_DIAG]]
 
 local function AddOnState(addon)
     local api = C_AddOns
-    if type(api) ~= "table" then return nil end
-    return Call(api.IsAddOnLoaded, addon)
-end--[[APR_DIAG]]; AddOnState = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:147:AddOnState#16", AddOnState)--[[/APR_DIAG]]
+    if type(api) == "table" and type(api.IsAddOnLoaded) == "function" then return Call(api.IsAddOnLoaded, addon) end
+    local loaded, finished = Call(IsAddOnLoaded, addon)
+    if type(finished) == "boolean" then return loaded, finished end
+    return loaded, loaded
+end--[[APR_DIAG]]; AddOnState = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:182:AddOnState#20", AddOnState)--[[/APR_DIAG]]
 
 local function LoadPack(self, profile, worldID, pack, build)
-    if Registered(profile, worldID, pack, build) then return "ready" end
+    if Registered(profile, worldID, pack, build) then
+        if self.lastFailure and self.lastFailure.addon == pack.addon then self.lastFailure = nil end
+        return "ready"
+    end
     local pending, loaded = AddOnState(pack.addon)
     if loaded then return "missing", "terrain_registration_missing" end
     if pending then return "planning", "terrain_loading" end
     if Call(InCombatLockdown) == true then return "planning", "terrain_combat" end
-    if type(C_AddOns) ~= "table" or type(C_AddOns.LoadAddOn) ~= "function" then return "missing", "terrain_api_unavailable" end
+    local load = type(C_AddOns) == "table" and C_AddOns.LoadAddOn or nil
+    if type(load) ~= "function" then load = LoadAddOn end
+    if type(load) ~= "function" then return "missing", "terrain_api_unavailable" end
     local now = Call(GetTime)
     if not Finite(now) then now = 0 end
     local previous = self.attempts[pack.addon]
     if previous and now < previous.time + 2 then return previous.status, previous.reason end
-    local success = Call(C_AddOns.LoadAddOn, pack.addon)
-    if success and Registered(profile, worldID, pack, build) then return "ready" end
+    local success, nativeReason = Call(load, pack.addon)
+    if success and Registered(profile, worldID, pack, build) then
+        self.attempts[pack.addon] = nil
+        if self.lastFailure and self.lastFailure.addon == pack.addon then self.lastFailure = nil end
+        return "ready"
+    end
     local reason = success and "terrain_registration_missing" or "terrain_load_failed"
+    self.lastFailure = { addon = pack.addon, worldID = worldID, build = build, reason = reason,
+        nativeReason = type(nativeReason) == "string" and nativeReason:sub(1, 128) or nil }
     self.attempts[pack.addon] = { time = now, status = "missing", reason = reason }
     return "missing", reason
-end--[[APR_DIAG]]; LoadPack = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:153:LoadPack#17", LoadPack)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; LoadPack = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:190:LoadPack#21", LoadPack)--[[/APR_DIAG]]
 
 local function Compatible(profile, record, build)
     if not build or type(record.builds) ~= "table" or record.builds[build] ~= true then return false end
     local current = Call(APR.GetGameVersion, APR)
     return current == nil or current == profile
-end--[[APR_DIAG]]; Compatible = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:171:Compatible#18", Compatible)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Compatible = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:219:Compatible#22", Compatible)--[[/APR_DIAG]]
 
-function Terrain:RequestData(profile, worldID, point)
+function Terrain:RequestData(profile, worldID, point, selection)
     local record, build = Profile(profile), BuildIdentity()
     if not record or not Compatible(profile, record, build) then return "missing", "terrain_build_unavailable" end
     local packs = Packs(record, worldID)
     if not packs then return "missing", "terrain_world_unavailable" end
+    if selection ~= nil then
+        if type(selection) ~= "table" or type(selection.scopeIDs) ~= "table" then return "missing", "terrain_selection_invalid" end
+        for id, enabled in pairs(selection.scopeIDs) do
+            if type(id) ~= "string" or enabled ~= true then return "missing", "terrain_selection_invalid" end
+        end
+    end
     local selected, pending
     for _, pack in ipairs(packs) do
-        if not ValidPack(pack) then return "missing", "terrain_pack_invalid" end
-        if Contains(pack, point) then
+        local scope = type(pack) == "table" and pack.scope
+        local scopeID = type(scope) == "table" and scope.id
+        local scopeSelected = selection == nil or selection.scopeIDs[scopeID] == true
+        if scopeSelected and not ValidPack(pack) then return "missing", "terrain_pack_invalid" end
+        if scopeSelected and Contains(pack, point) then
             selected = true
             if not Registered(profile, worldID, pack, build) then
                 if pending then return "planning", "terrain_loading" end
@@ -194,4 +251,4 @@ function Terrain:RequestData(profile, worldID, point)
     end
     if not selected then return "missing", "terrain_point_unavailable" end
     return "ready"
-end--[[APR_DIAG]]; Terrain.RequestData = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:177:Terrain:RequestData#19", Terrain.RequestData)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Terrain.RequestData = APRTrace("APR-Core/features/navigation/NavigationTerrain.lua:225:Terrain:RequestData#23", Terrain.RequestData)--[[/APR_DIAG]]

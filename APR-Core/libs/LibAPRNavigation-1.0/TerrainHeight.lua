@@ -1,7 +1,7 @@
 -- UnitPosition can report zero indoors. Ground geometry may supply an effective
 -- height, while the original native observation remains available to diagnostics.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("terrain-height", 2) then return end
+if not Lib:BeginModule("terrain-height", 5) then return end
 local Instance = Lib.Instance
 local EPSILON = 0.05
 local function Finite(value)
@@ -11,7 +11,16 @@ local function SameSpace(first, last)
     return first and last and first.instanceID == last.instanceID and first.accessKey == last.accessKey
         and (first.floor == nil or last.floor == nil or first.floor == last.floor)
         and (first.region == nil or last.region == nil or first.region == last.region)
-        and (type(first.indoors) ~= "boolean" or type(last.indoors) ~= "boolean" or first.indoors == last.indoors)
+end
+-- This matches context on an already proved ground leg; it creates no link.
+-- A physical doorway or stair can cross a region/floor, never a world/phase.
+function Lib.Terrain.GroundLegContextMatches(point,first,last)
+    if not point or not first or not last or first.instanceID~=last.instanceID
+        or first.accessKey~=last.accessKey or point.instanceID~=first.instanceID
+        or point.accessKey~=first.accessKey then return false end
+    if first.region==last.region and first.floor==last.floor then return SameSpace(point,first) end
+    return (point.region==first.region and point.floor==first.floor)
+        or (point.region==last.region and point.floor==last.floor)
 end
 local function Horizontal(first, last)
     return math.sqrt((first.x-last.x)^2 + (first.y-last.y)^2)
@@ -23,7 +32,7 @@ local function CopyPoint(point)
 end
 local function InXY(point, anchor)
     return anchor.mode == "ground" and Finite(anchor.minZ) and Finite(anchor.maxZ)
-        and (type(point.indoors) ~= "boolean" or type(anchor.indoor) ~= "boolean" or point.indoors == anchor.indoor)
+        and (point.indoors ~= true or anchor.indoor ~= false)
         and SameSpace(point, anchor.entry or anchor.node)
         and point.x >= anchor.minX and point.x <= anchor.maxX
         and point.y >= anchor.minY and point.y <= anchor.maxY
@@ -33,7 +42,7 @@ local function HasHeight(anchor, height)
         and (anchor.maxZ == nil or height <= anchor.maxZ+EPSILON)
 end
 local function Projection(point, first, last)
-    if not SameSpace(point, first) or not SameSpace(first, last) or not Finite(first.z) or not Finite(last.z) then return nil end
+    if not Lib.Terrain.GroundLegContextMatches(point,first,last) or not Finite(first.z) or not Finite(last.z) then return nil end
     local dx, dy = last.x-first.x, last.y-first.y
     local length = dx*dx + dy*dy
     -- A vertical link cannot infer progress from unavailable native height.
@@ -44,12 +53,24 @@ local function Projection(point, first, last)
     return first.z+fraction*(last.z-first.z), math.sqrt((point.x-x)^2+(point.y-y)^2), raw
 end
 
+local function ConnectedLegContext(point,previous,points,index,proof)
+    if SameSpace(point,previous) then return true end
+    local matches=Lib.Terrain.GroundLegContextMatches
+    local first,last=points[index],points[index+1]
+    if matches(point,first,last) and matches(previous,first,last) then return true end
+    if proof and proof.index==index-1 then
+        return matches(point,points[index-1],first) and matches(previous,points[index-1],first)
+    end
+    return false
+end
+
 local function GuidedHeight(point, hint, anchors, revision)
     if type(hint) ~= "table" or hint.status == "cancelled" or hint.status == "arrived" then return nil end
     local segmentIndex, index = hint.segmentIndex or 1, hint.pointIndex or 1
     local prepared = hint.segments and hint.segments[segmentIndex]
     local source = prepared and prepared.source or hint.route and hint.route.segments and hint.route.segments[segmentIndex]
-    if not source or source.terrain ~= true or (source.movementMode or "ground") ~= "ground" then return nil end
+    if not source or source.terrain ~= true or (source.kind~=nil and source.kind~="walk")
+        or (source.movementMode or "ground") ~= "ground" then return nil end
     local points = prepared and prepared.points or source.polyline or { source.from, source.to }
     local first, last = points[index], points[index+1]
     if not first or not last then return nil end
@@ -57,7 +78,8 @@ local function GuidedHeight(point, hint, anchors, revision)
     if proof and (proof.revision ~= revision or proof.source ~= source or index < proof.index) then return nil end
     local previous = proof and proof.position or first
     local options = hint.options or {}
-    if not SameSpace(point, previous) or Horizontal(point, previous) > (options.maxGroundHeightDistance or 30) then return nil end
+    if not ConnectedLegContext(point,previous,points,index,proof)
+        or Horizontal(point, previous) > (options.maxGroundHeightDistance or 30) then return nil end
     local height, separation, raw = Projection(point, first, last)
     if not height then return nil end
     -- Only the next connected leg is eligible, after crossing this corner.
@@ -131,6 +153,7 @@ function Instance:ResolveTerrainGroundPosition(point, hint)
     end
     if point.positionSource ~= "unit" then return point, "observed_height" end
     local observedHeight = Finite(point.z) and point.z ~= 0 and point.heightSource ~= "terrain"
+    if point.airborne == true and not observedHeight then return nil, "aerial_altitude_unavailable" end
     local cache = self._terrainVisibility
     if not cache or cache.revision ~= (Lib.terrainRevision or 0) then
         if observedHeight then return point, "observed_height" end

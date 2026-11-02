@@ -87,6 +87,17 @@ assert(loader:RequestData("retail", 9, point(25, 20)) == "missing",
     "Movement restrictions belong to the exact scope registration contract")
 registered.scope = lib.Copy(lower)
 assert(loader:RequestData("retail", 9, point(25, 20)) == "ready")
+lib.terrainDatasets.retail[9], loaded, loads = nil, {}, {}
+local selectedScopes = {scopeIDs={[lower.id]=true}}
+assert(loader:RequestData("retail", 9, nil, selectedScopes) == "planning" and #loads == 1)
+assert(loader:RequestData("retail", 9, nil, selectedScopes) == "ready" and #loads == 2
+    and not loaded.FixtureUpper, "A selected local scope never loads unrelated storeys or rooms in the same world")
+packs[3].addon = "../invalid-unselected-addon"
+assert(loader:RequestData("retail", 9, nil, selectedScopes) == "ready",
+    "Malformed unrelated addon metadata must not invalidate a different explicitly selected scope")
+packs[3].addon = "FixtureUpper"
+assert(loader:RequestData("retail", 9, nil, {scopeIDs={}}) == "missing" and #loads == 2,
+    "An explicitly empty scope selection cannot widen into a world-wide request")
 lib.terrainDatasets.retail[9] = nil
 loaded, loads = {}, {}
 assert(loader:RequestData("retail", 9) == "planning" and #loads == 1)

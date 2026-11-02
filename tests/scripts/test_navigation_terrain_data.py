@@ -3,7 +3,9 @@
 import hashlib
 import json
 from pathlib import Path
+import tempfile
 import unittest
+import xml.etree.ElementTree as ET
 
 from lupa.lua51 import LuaRuntime, lua_type
 
@@ -27,6 +29,21 @@ def plain(value):
     return value
 
 
+def library_scripts(directory):
+    """Use the shipped load order, including newly declared library modules."""
+    xml = ET.parse(directory / "LibAPRNavigation.xml")
+    return [directory / item.attrib["file"].replace("\\", "/")
+            for item in xml.iter() if item.tag.rsplit("}", 1)[-1] == "Script"]
+
+
+def manifest_profiles(manifest):
+    if manifest["schema"] == 1:
+        return {manifest["identity"]["profile"]: manifest}
+    assert manifest["schema"] == 2, "Unsupported terrain manifest schema"
+    assert isinstance(manifest["profiles"], dict), "Manifest profiles must be keyed by identity"
+    return manifest["profiles"]
+
+
 class NavigationTerrainDataTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -36,8 +53,10 @@ class NavigationTerrainDataTests(unittest.TestCase):
         cls.runtime.execute("strmatch = string.match")
         stub = ROOT / "APR-Core/libs/HereBeDragons/LibStub/LibStub.lua"
         cls.runtime.execute(stub.read_text(encoding="utf-8-sig"))
-        for name in ("Core.lua", "Geography.lua", "Search.lua", "Terrain.lua", "TerrainHeight.lua"):
-            cls.runtime.execute((LIBRARY / name).read_text(encoding="utf-8-sig"), name="@" + name)
+        cls.scripts = library_scripts(LIBRARY)
+        for path in cls.scripts:
+            assert path.resolve().is_relative_to(LIBRARY.resolve()), "Library script escaped its directory"
+            cls.runtime.execute(path.read_text(encoding="utf-8-sig"), name="@" + path.relative_to(ROOT).as_posix())
         cls.lib = cls.runtime.eval('(LibStub("LibAPRNavigation-1.0"))')
         cls.runtime.execute('''
             terrainRegistrations = {}
@@ -46,12 +65,18 @@ class NavigationTerrainDataTests(unittest.TestCase):
             function lib:RegisterTerrainData(profile, world, data, revision, id)
                 terrainRegistrations[#terrainRegistrations+1] = {
                     profile=profile, world=world, revision=revision or 1, id=id or "default",
-                    build=data.build, dataProfile=data.profile, dataWorld=data.worldID, scope=data.scope }
+                    build=data.build, dataProfile=data.profile, dataWorld=data.worldID, scope=data.scope,
+                    neighborScopeIDs=data.neighborScopeIDs }
                 return register(self, profile, world, data, revision, id)
             end
         ''')
         for path in sorted({DATA / pack["addon"] / pack["file"] for _, _, pack in cls.declarations}):
             cls.runtime.execute(path.read_text(encoding="utf-8-sig"), name="@" + path.relative_to(ROOT).as_posix())
+
+    def test_discovered_profile_metadata_is_loaded_by_the_library(self):
+        declared = set(self.scripts)
+        self.assertEqual(len(declared), len(self.scripts), "Library scripts must load exactly once")
+        self.assertLessEqual(set((LIBRARY / "Data").rglob("*.lua")), declared)
 
     def test_discovered_addons_and_chunk_manifests(self):
         expected_addons = {pack["addon"] for _, _, pack in self.declarations}
@@ -92,8 +117,18 @@ class NavigationTerrainDataTests(unittest.TestCase):
                 self.assertIs(profile["builds"][registration["build"]], True)
                 indexed = next(item for item in terrain_array(profile["worlds"][key[1]]["packs"]) if item["id"] == key[2])
                 self.assertEqual(plain(registration["scope"]), plain(indexed["scope"]))
+                registered_neighbors = registration["neighborScopeIDs"]
+                indexed_neighbors = indexed["neighborScopeIDs"]
+                own_scope = registration["scope"]["id"] if registration["scope"] is not None else None
+                local_neighbors = self.runtime.table_from(plain(indexed_neighbors), recursive=True) if indexed_neighbors is not None else None
+                self.assertIs(self.lib.Terrain.NeighborIDsValid(local_neighbors, own_scope), True)
+                self.assertEqual(set(terrain_array(registered_neighbors)) if registered_neighbors is not None else set(),
+                                 set(terrain_array(indexed_neighbors)) if indexed_neighbors is not None else set())
                 if registration["scope"] is not None:
                     self.assertIs(self.lib.Terrain.ScopeValid(registration["scope"]), True)
+                    world_scopes = {entry["scope"]["id"] for entry in terrain_array(profile["worlds"][key[1]]["packs"])
+                                    if entry["scope"] is not None}
+                    self.assertLessEqual(set(terrain_array(indexed_neighbors)) if indexed_neighbors is not None else set(), world_scopes)
                 source = self.lib.terrainDatasets[key[0]][key[1]]["packs"][key[2]]["data"]
                 terrain_array(source["nodes"])
                 for edge in terrain_array(source["edges"]):
@@ -104,6 +139,77 @@ class NavigationTerrainDataTests(unittest.TestCase):
                         if anchor[field] is not None:
                             terrain_array(anchor[field])
         self.assertEqual(seen, set(expected))
+
+    def test_all_logical_spaces_and_identified_points_share_valid_worlds_and_metadata(self):
+        validate = self.runtime.eval('''function(profile)
+            local lib = LibStub("LibAPRNavigation-1.0")
+            local instance = lib:New({profile=profile,environment={}})
+            local spaces=instance.config.NavigationSpaces or {}
+            local byID={}
+            for _,space in ipairs(spaces) do
+                assert(lib.ValidateNavigationSpace(space),"Invalid navigation space: "..tostring(space.id))
+                assert(not byID[space.id],"Duplicate navigation space: "..space.id)
+                byID[space.id]=space
+            end
+            local function ancestry(space)
+                local chain,seen={},{}
+                while space do
+                    assert(not seen[space.id] and #chain<50,"Cyclic or excessive space ancestry: "..space.id)
+                    seen[space.id]=true;chain[#chain+1]=space
+                    if not space.parentSpace then break end
+                    local parent=byID[space.parentSpace]
+                    assert(parent,"Unknown parent space: "..space.parentSpace)
+                    assert(parent.worldID==space.worldID,"Parent space world mismatch: "..space.id)
+                    space=parent
+                end
+                return chain
+            end
+            for _,space in ipairs(spaces) do ancestry(space) end
+            local function point(raw,world)
+                if raw.spaceID==nil then return end
+                local space=byID[raw.spaceID]
+                assert(space,"Unknown point space: "..tostring(raw.spaceID))
+                assert(space.worldID==instance:GetWorldInstanceID(raw.instanceID or world),
+                    "Point space world mismatch: "..space.id)
+                if raw.spaceKind~=nil then assert(raw.spaceKind==space.kind,"Point space kind mismatch: "..space.id) end
+                for _,field in ipairs({"groundOnly","noFly","requiresExit","indoor"}) do
+                    assert(raw[field]==nil or type(raw[field])=="boolean","Point flag must be boolean: "..space.id.."/"..field)
+                end
+                local effectiveFloor
+                for _,ancestor in ipairs(ancestry(space)) do
+                    effectiveFloor=effectiveFloor or ancestor.floor
+                    if ancestor.accessKey~=nil then
+                        assert(raw.accessKey==nil or raw.accessKey==ancestor.accessKey,"Point space access mismatch: "..space.id)
+                    end
+                    if ancestor.groundOnly then
+                        assert(raw.groundOnly~=false and raw.noFly~=false,"Point contradicts ground-only space: "..space.id)
+                    end
+                    if ancestor.requiresExit then
+                        assert(raw.requiresExit~=false,"Point contradicts required space exit: "..space.id)
+                    end
+                end
+                if effectiveFloor~=nil then
+                    assert(raw.floor==nil or raw.floor==effectiveFloor,"Point space floor mismatch: "..space.id)
+                end
+                local bounds=space.bounds
+                if bounds and raw.x and raw.y and raw.z then
+                    assert(raw.x>=bounds.minX and raw.x<=bounds.maxX and raw.y>=bounds.minY and raw.y<=bounds.maxY
+                        and raw.z>=bounds.minZ and raw.z<=bounds.maxZ,"Point falls outside its explicit space: "..space.id)
+                end
+            end
+            local function visit(value,world)
+                if type(value)~="table" then return end
+                point(value,world)
+                for _,child in pairs(value) do if type(child)=="table" then visit(child,world) end end
+            end
+            for world,entry in pairs(lib.terrainDatasets[profile] or {}) do
+                for _,pack in pairs(entry.packs) do visit(pack.data,world) end
+            end
+            return true
+        end''')
+        for profile in sorted(set(self.lib.datasets.keys()) | set(self.index["profiles"].keys())):
+            with self.subTest(profile=profile):
+                self.assertIs(validate(profile), True)
 
     def test_every_registered_graph_compiles_with_the_real_engine(self):
         compile_world = self.runtime.eval('''function(profile, world)
@@ -140,28 +246,76 @@ class NavigationTerrainDataTests(unittest.TestCase):
                 self.assertEqual(nodes, expected_nodes)
                 self.assertEqual(anchors, expected_nodes + expected_anchors)
 
+    def assert_manifest_profile(self, profile, record):
+        self.assertRegex(record["readerSha256"], r"^[0-9a-f]{64}$")
+        identity = record["identity"]
+        self.assertEqual(identity["profile"], profile)
+        self.assertIs(self.index["profiles"][profile]["builds"][identity["build"]], True)
+        self.assertIsInstance(identity["product"], str)
+        self.assertIsInstance(identity["buildKey"], str)
+        self.assertTrue(identity["product"] and identity["buildKey"])
+
+    def assert_manifest_files(self, files, directory):
+        expected_files = {path.relative_to(directory).as_posix() for path in directory.rglob("*")
+                          if path.suffix in (".lua", ".toc")}
+        self.assertEqual(set(files), expected_files)
+        for relative, expected_hash in files.items():
+            path = directory / relative
+            self.assertTrue(path.resolve().is_relative_to(directory.resolve()), relative)
+            self.assertRegex(expected_hash, r"^[0-9a-f]{64}$")
+            self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), expected_hash, relative)
+
+    def assert_space_catalogue(self, profile, catalogue):
+        relative = catalogue["file"]
+        path = ROOT / relative
+        self.assertTrue(path.resolve().is_relative_to(ROOT.resolve()))
+        self.assertEqual(path, LIBRARY / "Data" / profile / "NavigationSpaces.lua")
+        self.assertIn(path, self.scripts)
+        self.assertRegex(catalogue["sha256"], r"^[0-9a-f]{64}$")
+        self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), catalogue["sha256"])
+
+    def test_manifest_profile_schemas_and_temporary_file_integrity(self):
+        legacy = {"schema": 1, "identity": {"profile": "invented"}}
+        current = {"schema": 2, "profiles": {"invented": {"identity": {"profile": "invented"}}}}
+        self.assertEqual(manifest_profiles(legacy), {"invented": legacy})
+        self.assertEqual(manifest_profiles(current), current["profiles"])
+        with self.assertRaisesRegex(AssertionError, "Unsupported"):
+            manifest_profiles({"schema": 3})
+        with self.assertRaisesRegex(AssertionError, "keyed"):
+            manifest_profiles({"schema": 2, "profiles": []})
+        # Only temporary inputs are modified: shipped content remains read-only.
+        with tempfile.TemporaryDirectory() as temporary:
+            directory = Path(temporary)
+            chunk = directory / "Synthetic.lua"
+            chunk.write_bytes(b"synthetic geometry")
+            digest = hashlib.sha256(chunk.read_bytes()).hexdigest()
+            self.assert_manifest_files({"Synthetic.lua": digest}, directory)
+            with self.assertRaises(AssertionError):
+                self.assert_manifest_files({}, directory)
+            with self.assertRaises(AssertionError):
+                self.assert_manifest_files({"Synthetic.lua": "0" * 64}, directory)
+
     def test_optional_manifest_hashes_and_region_metadata(self):
         manifest_path = DATA / "manifest.json"
         if not manifest_path.exists():
             return
         manifest = json.loads(manifest_path.read_text(encoding="utf-8-sig"))
-        self.assertEqual(manifest["schema"], 1)
-        self.assertRegex(manifest["readerSha256"], r"^[0-9a-f]{64}$")
-        identity = manifest["identity"]
-        self.assertIs(self.index["profiles"][identity["profile"]]["builds"][identity["build"]], True)
-        self.assertTrue(identity["product"] and identity["buildKey"])
+        profiles = manifest_profiles(manifest)
+        self.assertTrue(profiles)
+        for profile, record in profiles.items():
+            with self.subTest(profile=profile):
+                self.assert_manifest_profile(profile, record)
+                if manifest["schema"] == 2:
+                    self.assert_space_catalogue(profile, record["spaceCatalogue"])
+        if manifest["schema"] == 2:
+            self.assertEqual(set(profiles), set(self.index["profiles"].keys()))
         files = manifest["files"]
-        expected_files = {path.relative_to(DATA).as_posix() for path in DATA.rglob("*") if path.suffix in (".lua", ".toc")}
-        self.assertEqual(set(files), expected_files)
-        for relative, expected_hash in files.items():
-            with self.subTest(file=relative):
-                path = DATA / relative
-                self.assertTrue(path.resolve().is_relative_to(DATA.resolve()))
-                self.assertRegex(expected_hash, r"^[0-9a-f]{64}$")
-                self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), expected_hash)
-        scopes = {(world, json.dumps(plain(pack["scope"]), sort_keys=True))
-                  for profile, world, declaration in self.declarations if profile == identity["profile"]
-                  for pack in terrain_array(self.index["profiles"][identity["profile"]]["worlds"][world]["packs"])
-                  if pack["id"] == declaration["id"] and pack["scope"] is not None}
-        regions = {(region["worldID"], json.dumps(region["scope"], sort_keys=True)) for region in manifest["regions"]}
-        self.assertEqual(regions, scopes)
+        self.assert_manifest_files(files, DATA)
+        if manifest["schema"] == 1:
+            profile = manifest["identity"]["profile"]
+            scopes = {(world, json.dumps(plain(pack["scope"]), sort_keys=True))
+                      for candidate, world, declaration in self.declarations if candidate == profile
+                      for pack in terrain_array(self.index["profiles"][profile]["worlds"][world]["packs"])
+                      if pack["id"] == declaration["id"] and pack["scope"] is not None}
+            regions = {(region["worldID"], json.dumps(region["scope"], sort_keys=True)) for region in manifest["regions"]}
+            self.assertEqual(regions, scopes)
