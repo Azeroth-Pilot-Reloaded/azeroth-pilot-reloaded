@@ -1,0 +1,3 @@
+# The terrain manifest hashes the shipped bytes on every checkout platform.
+/NavigationData/**/*.lua text eol=lf
+/NavigationData/**/*.toc text eol=lf

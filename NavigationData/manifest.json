@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "identity": {
+    "profile": "retail",
+    "product": "wow",
+    "build": "12.1.5.70688",
+    "buildKey": "0149337da1d526fc64bf43982c650577"
+  },
+  "readerSha256": "ccbae4e749c0c35a5e09edf198510a206801da84633ef2dd307b6adb7d1616fd",
+  "regions": [
+    {
+      "scope": {
+        "id": "orgrimmar-portal-tower",
+        "bounds": {
+          "minX": 1325,
+          "maxX": 1545.833,
+          "minY": -4566.667,
+          "maxY": -4200,
+          "minZ": -12,
+          "maxZ": 40
+        },
+        "groundOnly": true
+      },
+      "worldID": 1,
+      "tiles": [
+        "39_29",
+        "40_29"
+      ],
+      "failures": {}
+    },
+    {
+      "scope": {
+        "id": "stormwind-portal-sanctum",
+        "bounds": {
+          "minX": -9175,
+          "maxX": -8925,
+          "minY": 802.083,
+          "maxY": 1058.333,
+          "minZ": 55,
+          "maxZ": 85
+        },
+        "groundOnly": true,
+        "accessKey": "wizards-sanctum"
+      },
+      "worldID": 0,
+      "tiles": [
+        "30_48",
+        "30_49"
+      ],
+      "failures": {}
+    }
+  ],
+  "files": {
+    "APR_NavData_Retail_0/APR_NavData_Retail_0.toc": "0607ac8b81339bd0f7e574bdbd4d6f2c35fa3fef71261db52fcd85569077abc7",
+    "APR_NavData_Retail_0/Terrain_1.lua": "243cae6b94dde3b93369b89b3a688f174927738644a8d5760fe8d02e3a9c9f9f",
+    "APR_NavData_Retail_1/APR_NavData_Retail_1.toc": "4fc01a31ac836f2681ec8bec2f61a3fe33e96d68f0c4509d0bbf34d16515bb09",
+    "APR_NavData_Retail_1/Terrain_1.lua": "ca84b7ea60e48f262fc7b7f70a4d34cfb71366afa1ba8be78b203912e4230971"
+  }
+}

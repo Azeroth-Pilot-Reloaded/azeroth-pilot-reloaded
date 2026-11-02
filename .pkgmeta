@@ -6,6 +6,9 @@ required-dependencies:
 
 # Terrain export replaces only this block with discovered sibling addon moves.
 # APR-TERRAIN-MOVES-BEGIN
+move-folders:
+  APR/NavigationData/APR_NavData_Retail_0: APR_NavData_Retail_0
+  APR/NavigationData/APR_NavData_Retail_1: APR_NavData_Retail_1
 # APR-TERRAIN-MOVES-END
 
 ignore:

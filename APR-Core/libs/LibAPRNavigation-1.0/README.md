@@ -692,8 +692,9 @@ environment and no APR/WoW globals. Live transport arrivals, secure buttons,
 phase restrictions and plot coordinates still require Retail/Forever checks.
 The reproducible benchmark and measured limits are documented in
 [`NAVIGATION_PERFORMANCE.md`](../../../tools/validation/NAVIGATION_PERFORMANCE.md).
-Terrain obstacle avoidance is outside this planner's scope: free segments are
-direct lines within an authorized region, connected through mandatory passages.
+Without a terrain inventory, free segments remain direct lines within an
+authorized region, connected through mandatory passages. Registered collision
+regions replace those straight connections with proved ground corridors.
 
 
 ## Catalogue maintenance and access floors
@@ -743,6 +744,23 @@ from a free entry in the volume to a distant sparse-graph portal. Such a path is
 outward-only unless `bidirectional=true` or an explicit portal-to-entry
 `reversePath` is supplied. This preserves one-way falls. Bounds do not prove the
 corridor beyond the entry; the generator must verify that path separately.
+Optional `indoor=true/false` on an anchor records the source collision surface's
+indoor flag. It is evidence for matching the host's observed indoor state, rather
+than an inferred floor number.
+
+A bounded pack declares `scope={id,bounds={minX,maxX,minY,maxY,minZ,maxZ},
+accessKey?,groundOnly?}`. The host's lightweight inventory repeats the exact
+scope. Coverage applies only inside those bounds and access space; an ordinary
+walking segment crossing their interior must also be refined. It does not claim
+the rest of the world. `groundOnly` applies to every node and corridor, including
+intermediate points. A verified ground node on an XY boundary can declare
+`terrainBoundary=scope.id`. Only these nodes allow ordinary exterior approaches;
+their explicit terrain edges prove the connection into the region. Boundary
+tangency is allowed, while a chord through the room remains blocked.
+
+Catalogue passages marked `terrainWalk=true` are coarse walking hints. Once
+either endpoint has terrain coverage, the hint yields to the proved graph.
+Actual teleports, portals and other transports retain their catalogue edges.
 
 `CreateTerrainEdgeBuild({start,goal,edges,edgeGroups,movementProfile,canWalk,clock})`
 collects transport endpoints and returns only additional terrain edges through
@@ -756,6 +774,15 @@ An XY-only ground endpoint can attach to one unambiguous proved surface. Its
 polyline receives the surface altitude while the original endpoint and search
 identity stay unchanged. Unknown aerial altitude still requires an observation.
 Distinct approaches to one graph node retain their own direction and cost.
+
+`ResolveTerrainGroundPosition(position,guidance?)` handles native observations
+with `positionSource="unit"`. The host retains the API result in `observedZ`;
+an effective ground height has `heightSource="terrain"`. Native zero is not
+evidence of sea level in an interior. The resolver uses a unique matching ground
+surface, observed `indoors` versus surface provenance, or bounded progress along
+the current proved corridor. Overlapping unresolved floors return an explicit
+reason and wait for better evidence. Authored heights remain unchanged. Guidance
+and arrival use the effective position, and diagnostics retain both heights.
 
 `environment.hasTerrainData(profile,worldID,point)` tests the lightweight host
 index. `requestTerrainData` may register packs and returns `ready`, `planning`, or
@@ -811,9 +838,14 @@ Storage grows with the loaded sparse graph, proved anchors and polylines. This
 runtime does not establish complete world coverage or continent-scale latency:
 those require generated-pack integrity checks and measurements on real clients.
 
-The initial APR integration ships an empty terrain index. The offline generator
-in Route-generator can produce build-pinned experimental packs, but the current
-explicit-anchor representation has not met continent-scale memory or frame-time
-requirements. Do not publish those smoke packs as complete coverage. Existing
-navigation remains available in worlds without a terrain inventory. Flight
-reference speeds still require live-client calibration before production use.
+APR ships bounded ground packs for the Orgrimmar portal tower and Stormwind's
+Wizard's Sanctum, including their connected stairways, pinned to Retail build
+`12.1.5.70688`. The outer tower entrance and inner sanctum retain their actual
+teleport transition. Other client builds refuse these packs. Outside the regions,
+and on Forever, existing navigation remains available without this inventory.
+The derived data, source identity and hashes live under `NavigationData/`; the
+packager installs the two load-on-demand addons beside APR. See
+[`tools/validation/INDOOR_NAVIGATION.md`](../../../tools/validation/INDOOR_NAVIGATION.md)
+for reproduction, measured costs and live checks. These bounded packs do not
+establish continent-wide collision or flight coverage. Flight reference speeds
+still require live-client calibration before broader use.
