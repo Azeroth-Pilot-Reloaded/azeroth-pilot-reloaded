@@ -981,6 +981,8 @@
         {
             GossipOptionIDs = { 34273 },
             Coord = { x = 5127.8, y = -1778.6 },
+            IsQuestOnQuest = 10004,
+            Not = { IsQuestReadyForTurnIn = 10004 },
             Zone = 111,
             _index = 150,
         },
@@ -1035,6 +1037,13 @@
             Range = 15,
             Zone = 107,
             _index = 158,
+        },
+        {
+            Qpart = { [9853] = { 1 } },
+            Coord = { x = 8691.1, y = -879.4 },
+            Range = 5,
+            Zone = 107,
+            _index = 159,
         },
     },
 }
