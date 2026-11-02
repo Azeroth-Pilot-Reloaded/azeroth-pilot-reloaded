@@ -1,7 +1,7 @@
 -- Declarative terrain is supplied by the consumer; this module never queries WoW.
 -- Only a proved convex anchor may connect a live position to the terrain graph.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("terrain", 1) then return end
+if not Lib:BeginModule("terrain", 2) then return end
 local Instance, Terrain = Lib.Instance, {}
 Lib.Terrain = Terrain
 local Build = {}
@@ -121,14 +121,21 @@ function Build:LoadOne()
     self.managed[world] = true
     if self.owner.env.requestTerrainData then
         local state, reason = self.owner.env.requestTerrainData(self.owner.profile, world, point)
-        if state == "planning" or state == "waiting_data" then self.coverage.waitingData = true end
-        if state == "missing" then self.loadMissing[point] = reason or "pack_unavailable" end
+        local waiting = state == "planning" or state == "waiting_data"
+        if state == "missing" and reason == "terrain_point_unavailable" then
+            self.unavailablePoints[point] = reason
+        elseif waiting or state == "missing" then
+            self.unavailableWorlds[world] = { reason = reason or "pack_unavailable", waiting = waiting }
+            -- A registration alone does not authorize a pack rejected by the
+            -- consumer's current build/revision checks, including warm caches.
+            self.owner._terrainVisibility, self.owner._terrainGeometryCache = nil, nil
+        end
     end
 end
 
 function Build:CacheOne()
     local cache = self.owner._terrainGeometryCache
-    if not cache or cache.revision ~= (Lib.terrainRevision or 0) or cache.profile ~= self.owner.profile then
+    if next(self.unavailableWorlds) or not cache or cache.revision ~= (Lib.terrainRevision or 0) or cache.profile ~= self.owner.profile then
         self.phase, self.worldCursor = "packs", nil; return
     end
     local world = next(self.managed, self.worldCursor)
@@ -159,7 +166,10 @@ function Build:PackOne()
     if world == nil then self.phase, self.packIndex, self.index = "nodes", 1, 1; return end
     self.worldCursor = world
     local datasets = Lib.terrainDatasets and Lib.terrainDatasets[self.owner.profile]
-    self.packWorld = datasets and datasets[world] or { packs = {} }
+    if not self.unavailableWorlds[world] then
+        self.geometryWorlds[world] = true
+        self.packWorld = datasets and datasets[world] or { packs = {} }
+    else self.packWorld = { packs = {} } end
 end
 
 function Build:NextPack(phase)
@@ -364,7 +374,7 @@ function Build:VisibilityOne()
             self.owner._terrainVisibility = { revision = self.sourceRevision or Lib.terrainRevision or 0, worlds = self.visibility }
             self.owner._terrainGeometryCache = { revision = self.sourceRevision or Lib.terrainRevision or 0,
                 profile = self.owner.profile, nodes = self.nodes, aliases = self.aliases, anchors = self.anchors,
-                visibility = self.visibility, packs = self.packs, worlds = self.managed, pathPositions = self.pathPositionCache }
+                visibility = self.visibility, packs = self.packs, worlds = self.geometryWorlds, pathPositions = self.pathPositionCache }
             self.phase, self.index, self.anchorIndex = "attach", 1, 1
         end
         return
@@ -402,9 +412,7 @@ end
 
 function Build:Candidate(anchor, point)
     local node = anchor.node
-    if self.candidateSeen[node] then return end
-    self.candidateSeen[node] = true
-    if self.firstCandidate and not Finite(point.z) and point.floor == nil then
+    if self.firstCandidate and not Finite(point.z) then
         local first, current = self.firstCandidate.entry or self.firstCandidate.node, anchor.entry or node
         if first.floor ~= current.floor or math.abs(first.z - current.z) > 0.01 then self.ambiguous = true end
     end
@@ -414,10 +422,10 @@ end
 
 function Build:FinishPoint(point)
     if self.ambiguous then self:Missing(point, "ambiguous_terrain_surface", true)
-    elseif #self.candidates == 0 then self:Missing(point, self.loadMissing[point] or "terrain_anchor_missing", false)
+    elseif #self.candidates == 0 then self:Missing(point, "terrain_anchor_missing", false)
     else self.phase, self.connectIndex = "connect", 1; return end
     self.index, self.anchorIndex = self.index + 1, 1
-    self.candidates, self.candidateSeen, self.firstCandidate, self.ambiguous = {}, {}, nil, nil
+    self.candidates, self.firstCandidate, self.ambiguous = {}, nil, nil
 end
 
 function Build:AttachOne()
@@ -429,9 +437,21 @@ function Build:AttachOne()
     end
     local world = self.owner:GetWorldInstanceID(point.instanceID)
     if not self.managed[world] then self.index = self.index + 1; return end
+    local unavailable = self.unavailableWorlds[world]
+    if unavailable or self.unavailablePoints[point] then
+        self:Missing(point, unavailable and unavailable.reason or self.unavailablePoints[point], unavailable and unavailable.waiting)
+        self.index = self.index + 1
+        return
+    end
     -- Authored mandatory approach chains deliberately forbid free attachment.
     -- Their explicit passage edges remain the sole way into those endpoints.
     if point.noAutoconnect then self.index = self.index + 1; return end
+    local mode = point.movementMode or (point == self.request.start and self.profile.currentMode) or "ground"
+    if mode ~= "ground" and not Finite(point.z) then
+        self:Missing(point, "terrain_altitude_missing", true)
+        self.index = self.index + 1
+        return
+    end
     if self.attachPoint ~= point then
         self.attachPoint, self.attachLevel, self.attachBucket, self.attachBucketIndex = point, nil, nil, 1
     end
@@ -444,8 +464,15 @@ function Build:AttachOne()
         return
     end
     self.attachBucketIndex = self.attachBucketIndex + 1
-    local mode = point.movementMode or (point == self.request.start and self.profile.currentMode) or "ground"
     if Inside(point, anchor, mode) then self:Candidate(anchor, point) end
+end
+
+local function EndpointPosition(point, anchor)
+    if Finite(point.z) then return point end
+    local projected = {}
+    for key, value in pairs(point) do projected[key] = value end
+    projected.z, projected.movementMode = (anchor.entry or anchor.node).z, anchor.mode
+    return projected
 end
 
 function Build:ConnectOne()
@@ -454,14 +481,16 @@ function Build:ConnectOne()
     if not anchor then
         self.coverage.attached[point] = true
         self.index, self.anchorIndex, self.phase = self.index + 1, 1, "attach"
-        self.candidates, self.candidateSeen, self.firstCandidate, self.ambiguous = {}, {}, nil, nil
+        self.candidates, self.firstCandidate, self.ambiguous = {}, nil, nil
         return
     end
     self.connectIndex = self.connectIndex + 1
+    if not Terrain.Enabled(self.profile, anchor.mode) or not FlightAllowed(self.profile, point, anchor.mode) then return end
     local to = anchor.node
-    self.pendingConnection = { anchor = anchor, point = point, index = 1, direction = "outward",
+    local geometryPoint = EndpointPosition(point, anchor)
+    self.pendingConnection = { anchor = anchor, point = point, geometryPoint = geometryPoint, index = 1, direction = "outward",
         edge = EdgeRecord(point, to, anchor.mode, 0, nil) }
-    self.pendingConnection.edge.polyline = { point }
+    self.pendingConnection.edge.polyline = { geometryPoint }
     self.pendingConnection.edge.polylineWeights = { 0 }
     self.phase = "connectPath"
 end
@@ -473,11 +502,11 @@ function Build:ConnectPathOne()
     local index = pending.direction == "inward" and not anchor.reversePath and #source - pending.index + 1 or pending.index
     local point = source[index]
     if not point and pending.direction == "inward" and not pending.finishedEndpoint then
-        point, pending.finishedEndpoint = pending.point, true
+        point, pending.finishedEndpoint = pending.geometryPoint, true
     end
     if point then
         pending.index = pending.index + 1
-        point = point == anchor.node and point or self:PathPosition(point, anchor.node)
+        point = (point == anchor.node or point == pending.geometryPoint) and point or self:PathPosition(point, anchor.node)
         if not point then Fail(self, "invalid_terrain_anchor_path"); return end
         if not FlightAllowed(self.profile, point, anchor.mode) then pending.rejected = true end
         local previous = edge.polyline[#edge.polyline]
@@ -531,7 +560,7 @@ end
 function Build:Cancel()
     self.status, self.result = "cancelled", nil
     self.groups, self.points, self.nodes, self.anchors, self.packs = {}, {}, {}, {}, {}
-    self.candidates, self.candidateSeen, self.pendingEdge = {}, {}, nil
+    self.candidates, self.pendingEdge = {}, nil
     self.pendingAnchor, self.pendingConnection = nil, nil
 end
 
@@ -550,9 +579,9 @@ function Instance:CreateTerrainEdgeBuild(request)
     for _, group in ipairs(request.edgeGroups or {}) do groups[#groups + 1] = group end
     local build = setmetatable({ owner = self, request = request, clock = request.clock,
         status = "planning", phase = "collect", group = 1, index = 1, groups = groups,
-        points = {}, pointSeen = {}, loadMissing = {}, managed = managed,
+        points = {}, pointSeen = {}, unavailablePoints = {}, unavailableWorlds = {}, geometryWorlds = {}, managed = managed,
         packs = {}, nodes = {}, aliases = {}, anchors = {}, visibility = {}, pathPositionCache = {}, result = {}, coverage = coverage,
-        candidates = {}, candidateSeen = {}, profile = Terrain.Profile(request) }, Build)
+        candidates = {}, profile = Terrain.Profile(request) }, Build)
     build:AddPoint(request.start); build:AddPoint(request.goal)
     return build
 end

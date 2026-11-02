@@ -24,12 +24,25 @@ end--[[APR_DIAG]]; ProviderJob = APRTrace("APR-Core/features/navigation/Navigati
 function Planner:Create(request)
     local data = request.data
     local terrain = data.CreateTerrainEdgeBuild and data.HasTerrainData and data:HasTerrainData()
-    return setmetatable({ request = request,
+    local job = setmetatable({ request = request,
         terrainEnabled = terrain == true,
         terrainWorlds = { [request.start and request.start.instanceID or -1] = true,
             [request.goal and request.goal.instanceID or -1] = true },
         phase = not terrain and request.preferZoneAccess and data.CreateZoneRoute and "zone" or "prepare", status = "planning",
         slices = 0, maxSliceMilliseconds = 0 }, Job)
+    if terrain then
+        job.walkSecondsFor = --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:34:callback#4", --[[/APR_DIAG]]function(from, to) return job:GetOptimisticWalkSeconds(from, to) end--[[APR_DIAG]])--[[/APR_DIAG]]
+        job.searchMovementProfile = request.movementProfile
+        if request.movementProfile and request.start and not data:HasTerrainData(request.start) then
+            local profile = {}
+            for key, value in pairs(request.movementProfile) do profile[key] = value end
+            -- Outside terrain coverage there is no typed landing graph. Keep
+            -- legacy departure access while retaining capabilities for later worlds.
+            profile.currentMode = "ground"
+            job.searchMovementProfile = profile
+        end
+    end
+    return job
 end--[[APR_DIAG]]; Planner.Create = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:24:Planner:Create#3", Planner.Create)--[[/APR_DIAG]]
 
 function Job:BeginCatalogue()
@@ -39,7 +52,7 @@ function Job:BeginCatalogue()
     if taxiData.SetProbeContext then taxiData:SetProbeContext(self.request.contextKey) end
     self.phase = "catalogue"
     self.active = ProviderJob(self.request.data, self.request)
-end--[[APR_DIAG]]; Job.BeginCatalogue = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:35:Job:BeginCatalogue#4", Job.BeginCatalogue)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.BeginCatalogue = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:48:Job:BeginCatalogue#5", Job.BeginCatalogue)--[[/APR_DIAG]]
 
 function Job:BeginTerrain()
     if not self.terrainEnabled then self:BeginSearch(); return end
@@ -50,11 +63,22 @@ function Job:BeginTerrain()
     context.terrainWorlds = self.terrainWorlds
     self.phase = "terrain"
     self.active = self.request.data:CreateTerrainEdgeBuild(context)
-end--[[APR_DIAG]]; Job.BeginTerrain = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:44:Job:BeginTerrain#5", Job.BeginTerrain)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.BeginTerrain = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:57:Job:BeginTerrain#6", Job.BeginTerrain)--[[/APR_DIAG]]
 
 function Job:GetCanWalk()
     return self.terrainCoverage and self.terrainCoverage.canWalk or self.request.canWalk
-end--[[APR_DIAG]]; Job.GetCanWalk = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:55:Job:GetCanWalk#6", Job.GetCanWalk)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.GetCanWalk = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:68:Job:GetCanWalk#7", Job.GetCanWalk)--[[/APR_DIAG]]
+
+function Job:GetOptimisticWalkSeconds(from, to)
+    local data = self.request.data
+    local world = data.GetWorldInstanceID and data:GetWorldInstanceID(from.instanceID) or from.instanceID
+    local targetWorld = data.GetWorldInstanceID and data:GetWorldInstanceID(to.instanceID) or to.instanceID
+    -- Unrefined terrain may fly faster than current walking, or supply an
+    -- authored zero-cost edge. Only zero is a safe lower bound in that world.
+    -- VerifyTerrain replaces every winning optimistic walk before publication.
+    if world == targetWorld and not self.terrainWorlds[world] and data:HasTerrainData(from) then return 0 end
+    if self.request.walkSecondsFor then return self.request.walkSecondsFor(from, to) end
+end--[[APR_DIAG]]; Job.GetOptimisticWalkSeconds = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:72:Job:GetOptimisticWalkSeconds#8", Job.GetOptimisticWalkSeconds)--[[/APR_DIAG]]
 
 function Job:BeginSearch()
     local request = self.request
@@ -62,6 +86,8 @@ function Job:BeginSearch()
     self.active = request.engine:CreateSearch({
         start = request.start, goal = request.goal, clock = request.clock,
         walkSpeed = request.walkSpeed, walkSpeedFor = request.walkSpeedFor, walkSpeedAt = request.walkSpeedAt,
+        walkSecondsFor = self.walkSecondsFor,
+        movementProfile = self.searchMovementProfile,
         budget = request.budget,
         resources = self.catalogueMetadata.resources,
         edgeGroups = { self.catalogueEdges, self.taxiEdges, self.terrainEdges },
@@ -69,7 +95,7 @@ function Job:BeginSearch()
         walkingRegionFor = request.walkingRegionFor,
         walkingIsTransitive = not self.terrainEnabled and request.walkingIsTransitive or false,
     })
-end--[[APR_DIAG]]; Job.BeginSearch = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:59:Job:BeginSearch#7", Job.BeginSearch)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.BeginSearch = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:83:Job:BeginSearch#9", Job.BeginSearch)--[[/APR_DIAG]]
 
 function Job:BeginQueue()
     if self.terrainCoverage then self.result.terrainRevision = self.terrainCoverage.revision end
@@ -82,7 +108,7 @@ function Job:BeginQueue()
     self.phase, self.queueIndex = "queue", 1
     self.result.queue = {}
     self.result.probeChecked = true
-end--[[APR_DIAG]]; Job.BeginQueue = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:74:Job:BeginQueue#8", Job.BeginQueue)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.BeginQueue = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:100:Job:BeginQueue#10", Job.BeginQueue)--[[/APR_DIAG]]
 
 function Job:AfterSearch()
     local request, taxiData = self.request, self.request.taxiData
@@ -92,12 +118,12 @@ function Job:AfterSearch()
         self.active = taxiData:CreateProbeSearch(request.start, request.goal, self.result.totalSeconds, request)
     elseif self.searchFailed then self:ExplainFailure()
     else self:BeginQueue() end
-end--[[APR_DIAG]]; Job.AfterSearch = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:87:Job:AfterSearch#9", Job.AfterSearch)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.AfterSearch = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:113:Job:AfterSearch#11", Job.AfterSearch)--[[/APR_DIAG]]
 
 function Job:BeginTerrainVerification(result, diagnostic)
     self.verifyResult, self.verifyDiagnostic, self.verifyIndex = result, diagnostic, 1
     self.verifyRefine, self.phase, self.active = false, "terrain_verify", nil
-end--[[APR_DIAG]]; Job.BeginTerrainVerification = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:97:Job:BeginTerrainVerification#10", Job.BeginTerrainVerification)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.BeginTerrainVerification = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:123:Job:BeginTerrainVerification#12", Job.BeginTerrainVerification)--[[/APR_DIAG]]
 
 function Job:VerifyTerrain(maxOperations, milliseconds)
     local data, request = self.request.data, self.request
@@ -127,7 +153,7 @@ function Job:VerifyTerrain(maxOperations, milliseconds)
             end
         end
     end
-end--[[APR_DIAG]]; Job.VerifyTerrain = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:102:Job:VerifyTerrain#11", Job.VerifyTerrain)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.VerifyTerrain = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:128:Job:VerifyTerrain#13", Job.VerifyTerrain)--[[/APR_DIAG]]
 
 -- A relaxed graph is diagnostic only. Never publish its segments as guidance.
 -- It identifies missing gates on a connected potential route, not unrelated
@@ -146,9 +172,11 @@ function Job:ExplainFailure(includeActions)
         edgeGroups = { self.catalogueEdges, self.taxiEdges, blocked, includeActions and actions or {}, self.terrainEdges },
         resources = self.catalogueMetadata.resources,
         budget = r.budget, walkSpeed = r.walkSpeed, walkSpeedFor = r.walkSpeedFor, walkSpeedAt = r.walkSpeedAt,
+        walkSecondsFor = self.walkSecondsFor,
+        movementProfile = self.searchMovementProfile,
         canWalk = self:GetCanWalk(), walkingRegionFor = r.walkingRegionFor,
         walkingIsTransitive = not self.terrainEnabled and r.walkingIsTransitive or false })
-end--[[APR_DIAG]]; Job.ExplainFailure = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:135:Job:ExplainFailure#12", Job.ExplainFailure)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.ExplainFailure = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:161:Job:ExplainFailure#14", Job.ExplainFailure)--[[/APR_DIAG]]
 
 function Job:AdvancePhase(maxOperations, remainingMilliseconds)
     local request = self.request
@@ -284,7 +312,7 @@ function Job:AdvancePhase(maxOperations, remainingMilliseconds)
         end
         self:BeginQueue()
     end
-end--[[APR_DIAG]]; Job.AdvancePhase = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:153:Job:AdvancePhase#13", Job.AdvancePhase)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.AdvancePhase = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:181:Job:AdvancePhase#15", Job.AdvancePhase)--[[/APR_DIAG]]
 
 function Job:Step(maxOperations, maxMilliseconds)
     if self.status ~= "planning" then return self.status, self.result end
@@ -319,7 +347,7 @@ function Job:Step(maxOperations, maxMilliseconds)
         self.maxSliceMilliseconds = math.max(self.maxSliceMilliseconds, self.lastSliceMilliseconds)
     end
     return self.status, self.result
-end--[[APR_DIAG]]; Job.Step = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:289:Job:Step#14", Job.Step)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.Step = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:317:Job:Step#16", Job.Step)--[[/APR_DIAG]]
 
 function Job:Cancel()
     if self.status == "planning" then self.status = "cancelled" end
@@ -328,8 +356,8 @@ function Job:Cancel()
     self.terrainEdges, self.terrainCoverage = nil, nil
     self.verifyResult = nil
     if self.pendingGuidance then self.pendingGuidance.guidance:Cancel(); self.pendingGuidance = nil end
-end--[[APR_DIAG]]; Job.Cancel = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:324:Job:Cancel#15", Job.Cancel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.Cancel = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:352:Job:Cancel#17", Job.Cancel)--[[/APR_DIAG]]
 
 function Job:GetResult()
     return self.result, self.status
-end--[[APR_DIAG]]; Job.GetResult = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:333:Job:GetResult#16", Job.GetResult)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.GetResult = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:361:Job:GetResult#18", Job.GetResult)--[[/APR_DIAG]]

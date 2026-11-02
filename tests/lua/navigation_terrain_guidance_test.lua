@@ -18,6 +18,23 @@ local route = { totalSeconds = 15, segments = {
     { from = a, to = d, kind = "walk", terrain = true, seconds = 15, movementMode = "ground", polyline = { a, b, c, d } },
 } }
 local session = instance:CreateGuidance(route)
+local delayedPosition = instance:CreateGuidance(route, { maxOperations = 1 })
+assert(select(2, delayedPosition:Update(nil)) == "waiting_data")
+local resumedTarget, resumedStatus
+for _ = 1, 30 do
+    resumedTarget, resumedStatus = delayedPosition:Update(p(0, 0, 0))
+    if resumedStatus == "guiding" then break end
+end
+assert(resumedStatus == "guiding" and resumedTarget.y == 30,
+    "a position unavailable during preparation must recover with bounded work")
+assert(select(2, delayedPosition:Update({ x = math.huge, y = 0 })) == "waiting_data")
+assert(select(2, delayedPosition:Update(p(0, 0, 0))) == "guiding",
+    "temporary missing observations also recover after preparation")
+local cancelledBeforePosition = instance:CreateGuidance(route)
+cancelledBeforePosition:Update(nil)
+cancelledBeforePosition:Cancel()
+assert(select(2, cancelledBeforePosition:Update(p(0, 0, 0))) == "cancelled",
+    "a new observation must not revive a cancelled session")
 local target, status = session:Update(p(0, 0, 0))
 assert(status == "guiding" and target.x == 0 and target.y == 30, "lookahead remains before the first corner")
 assert(session.remainingSeconds == 15)

@@ -21,6 +21,9 @@ assert(not pcall(lib.RegisterTerrainData, lib, "invalid-profile", 999, {format=9
 assert(lib.terrainDatasets["invalid-profile"] == nil and lib.terrainRevision == beforeRevision,
     "A rejected registration cannot leave a managed world or change the source revision")
 lib:RegisterTerrainData("retail", 0, raw, 1, "fixture")
+-- This standalone fixture authorizes its synthetic registration without a WoW
+-- load-on-demand addon or client-build index.
+data.env.requestTerrainData = function() return "ready" end
 local shared = {x=1,y=2,z=0}
 local aliased = {format=1,nodes={},edges={},anchors={},points={shared,shared}}
 lib:RegisterTerrainData("alias-profile", 0, aliased, 1)

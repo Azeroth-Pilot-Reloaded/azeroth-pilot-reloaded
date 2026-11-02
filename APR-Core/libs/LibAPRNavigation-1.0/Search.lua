@@ -2,7 +2,7 @@
 -- arrival can still be useful if it leaves enough resources to finish.
 -- Graph loading, candidate checks and result assembly all run through Step.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("search", 11) then return end
+if not Lib:BeginModule("search", 12) then return end
 Lib.Engine = {}
 local Engine = Lib.Engine
 local Search = {}
@@ -21,13 +21,17 @@ local function IsPosition(position)
         and IsFinite(position.instanceID)
 end
 
-local function PositionKey(position)
+local function PositionKey(position, mode)
     -- Map identity matters even where two map layers share world coordinates:
     -- an item may be usable on one layer and forbidden on another.
-    return string.format("%s:%.5f:%.5f:%s:%s:%s:%s:%s:%s:%s", tostring(position.instanceID), position.x, position.y,
+    return string.format("%s:%.5f:%.5f:%s:%s:%s:%s:%s:%s:%s:%s", tostring(position.instanceID), position.x, position.y,
         tostring(position.uiMapID or ""), tostring(position.region or ""),
         tostring(position.accessKey or ""), tostring(position.noAutoconnect or false),
-        tostring(position.z or 0), tostring(position.floor or ""), tostring(position.terrainNodeKey or ""))
+        tostring(position.z or 0), tostring(position.floor or ""), tostring(position.terrainNodeKey or ""), tostring(mode))
+end
+
+function Search:MovementMode(position)
+    return position.movementMode or (position == self.startPosition and self.startMode) or "ground"
 end
 
 local function Earlier(left, right)
@@ -95,6 +99,10 @@ local function DefaultCanWalk(from, to)
 end
 
 function Search:GetWalkSeconds(from, to, fromNode, toNode)
+    if self.walkSecondsFor then
+        local seconds = self.walkSecondsFor(from, to)
+        if IsFinite(seconds) and seconds >= 0 then return seconds end
+    end
     local speed
     if self.walkSpeedAt then
         speed = math.min(self.walkingSpeeds[fromNode], self.walkingSpeeds[toNode])
@@ -154,7 +162,7 @@ function Search:AddNode(position)
     -- reuse the canonical node without formatting their geometric key again.
     local index = self.nodeKeys[position]
     if index then return index end
-    local key = PositionKey(position)
+    local key = PositionKey(position, self:MovementMode(position))
     index = self.nodeKeys[key]
     if index then return index end
     index = #self.nodes + 1
@@ -227,7 +235,7 @@ function Search:PrepareDirectWalk()
     -- useful alternatives, but a rejected walk proves nothing about shortcuts.
     self.walkChecks = self.walkChecks + 1
     local seconds = false
-    if self.canWalk(from, to) then
+    if self:MovementMode(from) == self:MovementMode(to) and self.canWalk(from, to) then
         seconds = self:GetWalkSeconds(from, to, self.startNode, self.goalNode)
         self.directSeconds = seconds
     end
@@ -442,7 +450,7 @@ function Search:CheckWalk(pending, target)
     if seconds == nil then
         local from, to = self.nodes[label.node], self.nodes[target]
         self.walkChecks = self.walkChecks + 1
-        if self.canWalk(from, to) then
+        if self:MovementMode(from) == self:MovementMode(to) and self.canWalk(from, to) then
             seconds = self:GetWalkSeconds(from, to, label.node, target)
         else
             seconds = false
@@ -576,6 +584,10 @@ function Search:GetResult() return self.result, self.status end
 
 function Engine:CreateSearch(request)
     request = type(request) == "table" and request or {}
+    local profile = type(request.movementProfile) == "table" and request.movementProfile or EMPTY
+    local startMode = profile.currentMode
+    if startMode ~= "steady" and startMode ~= "skyriding" then startMode = "ground" end
+    local walkSecondsFor = type(request.walkSecondsFor) == "function" and request.walkSecondsFor or nil
     local search = setmetatable({
         status = "planning", phase = "resources", nodes = {}, nodeKeys = {}, outgoing = {}, actions = {}, startActions = {},
         resourceEdges = {},
@@ -587,9 +599,10 @@ function Engine:CreateSearch(request)
         walkingByInstance = {}, walkingCache = {}, walkingCacheOrder = {}, walkingCacheCursor = 1,
         walkChecks = 0, walkingCacheHits = 0, walkingExpansionsSkipped = 0, walkingExpansionsNarrowed = 0, walkingSpeeds = {},
         defaultWalking = request.canWalk == nil,
-        walkingIsTransitive = request.canWalk == nil or request.walkingIsTransitive == true,
+        walkingIsTransitive = not walkSecondsFor and (request.canWalk == nil or request.walkingIsTransitive == true),
         budget = IsFinite(request.budget) and math.max(0, request.budget) or 0,
         walkSpeedFor = request.walkSpeedFor, walkSpeedAt = request.walkSpeedAt,
+        walkSecondsFor = walkSecondsFor, startPosition = request.start, startMode = startMode,
         walkSpeed = IsFinite(request.walkSpeed) and request.walkSpeed > 0 and request.walkSpeed or 7,
         canWalk = request.canWalk or DefaultCanWalk,
         walkingRegionFor = request.walkingRegionFor,

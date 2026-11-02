@@ -1,6 +1,6 @@
 -- Follow proved path segments without changing the host's objective cursor.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("terrain-guidance", 1) then return end
+if not Lib:BeginModule("terrain-guidance", 2) then return end
 local Guidance = {}
 Guidance.__index = Guidance
 local function Finite(value)
@@ -188,6 +188,7 @@ function Guidance:Update(position)
         self.status = "waiting_data"; return nil, self.status
     end
     if self.phase ~= "follow" then
+        if self.status == "waiting_data" then self.status = "planning" end
         self:Step(self.options.maxOperations or 64, self.options.maxMilliseconds or 1)
         if self.status ~= "guiding" then return nil, self.status end
     end

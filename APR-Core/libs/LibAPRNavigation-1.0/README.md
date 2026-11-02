@@ -82,6 +82,20 @@ The default is one millisecond. The scheduler checks the clock between operation
 a synchronous host API call, garbage collection or OS preemption can overrun it.
 `BuildEdges` remains available as a synchronous compatibility helper.
 
+Locations retain their optional `movementMode`; an omitted mode means `ground`.
+For an untyped start, `CreateSearch` can use `movementProfile.currentMode` instead.
+Mode is part of node identity, and automatic walking never changes it. Landing,
+mounting and other changes require an explicit edge. Input location tables remain
+unchanged, including when the start mode comes from the movement profile.
+
+An optional `walkSecondsFor(from,to)` supplies a finite nonnegative walking cost;
+`nil` or an invalid result delegates to the ordinary speed/distance calculation.
+Zero is valid. Pair-specific costs disable Euclidean transitive-walk pruning.
+APR uses a zero lower bound for a known terrain world not yet loaded into a
+planning job, then refines every such leg before publishing a route. This bound
+also handles authored fixed-duration terrain edges, which need not match any
+speed-derived estimate.
+
 Source-free actions have a fixed destination, duration and resource cost. When
 one is usable at the initial position, its direct use dominates repeating it
 after another leg. The search seeds it once. Actions unavailable initially can
@@ -738,11 +752,19 @@ collects transport endpoints and returns only additional terrain edges through
 worlds, retaining the caller's policy elsewhere. `noAutoconnect` passage endpoints
 never gain terrain attachments. Missing anchors, incomplete packs and ambiguous
 floors cannot become nearest-node shortcuts.
+An XY-only ground endpoint can attach to one unambiguous proved surface. Its
+polyline receives the surface altitude while the original endpoint and search
+identity stay unchanged. Unknown aerial altitude still requires an observation.
+Distinct approaches to one graph node retain their own direction and cost.
 
 `environment.hasTerrainData(profile,worldID,point)` tests the lightweight host
 index. `requestTerrainData` may register packs and returns `ready`, `planning`, or
-`missing`. The host verifies build compatibility before registering. Record
-validation, indexing, endpoint attachment and result assembly all run under the
+`missing`. The host verifies build compatibility before registering. Loader
+refusals are authoritative even for previously registered or cached geometry:
+`missing, terrain_point_unavailable` excludes only that endpoint, while other
+`missing` reasons and pending loads exclude the world's registered geometry for
+this planning job. A later job retries the loader and can recover after `ready`.
+Record validation, indexing, endpoint attachment and result assembly run under the
 same incremental operation/time budget. Invalid visited records return
 `invalid_data`; the offline pack validator checks every declaration. Anchor entry
 and endpoint checks are constant-size; immutable corridor arrays are retained and
@@ -767,6 +789,8 @@ Flight permission is checked at both endpoints and intermediate path points.
 `CreateGuidance(route,options)` creates a separate path cursor. `Step` prepares
 long polylines incrementally; `Update(position)` returns a target and status,
 with `remainingSeconds` on the session. Shape points do not advance quests.
+An unavailable observation returns `waiting_data`; the next valid observation
+resumes incremental preparation or following without resetting the path cursor.
 Ground lookahead is 30 yards; airborne lookahead is two reference-speed seconds
 bounded to 60–180 yards, always before the next corner. Arrival requires matching
 space and observable altitude where required. A bounded swept arrival catches a

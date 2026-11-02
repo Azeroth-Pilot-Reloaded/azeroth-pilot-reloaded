@@ -62,4 +62,12 @@ assert(not nav:IsItineraryValid(), "A lost flight permission cannot survive a fa
 nav.queue[1].movementMode = "ground"
 nav.queue[1].to.noAutoconnect = true
 assert(nav:IsItineraryValid(), "An explicit proved terrain path can reach an endpoint that forbids automatic walking links")
+nav.publishedTerrainRevision = data:GetTerrainRevision()
+LibStub("LibAPRNavigation-1.0"):RegisterTerrainData("retail", 0,
+    {format=1,nodes={},edges={},anchors={}}, 1, "replacement")
+assert(not nav:IsItineraryValid(), "A source replacement cannot retain a corridor proved against the previous revision")
+nav.recomputeKeepingPath = true
+nav:SearchFailed()
+assert(nav.state == "no_path" and not nav:GetActiveStep(),
+    "A failed replan must remove stale terrain guidance rather than continue along a removed corridor")
 print("Terrain controller: corridor lookahead, corner safety, arrival handoff and independent guide progress")
