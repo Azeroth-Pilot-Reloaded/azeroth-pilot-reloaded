@@ -8,7 +8,7 @@
 ## Author: Core: Neogeekmo, Rycia, Kamian | Route: Pahonix, Neogeekmo | Support: NightofStarrs, Pahonix | (legacy: zyrrael, Deathmessinger, 8goldbow)
 ## IconTexture: Interface\AddOns\APR\APR-Core\assets\APR_logo
 ## Version: @project-version@
-## OptionalDeps: LibTaxiData, ElvUI, EllesmereUI
+## OptionalDeps: LibTaxiData, ElvUI, EllesmereUI, Pawn
 
 ## SavedVariables: APRSettings, APRData, APRCustomPath, APRZoneCompleted, APRTaxiNodes, APRTaxiNodesTimer, APRScenarioCompleted, APRScenarioMapIDCompleted, APRItemLooted, APRGossipValidated
 ## SavedVariablesPerCharacter: APRNavigationCharacterSettings
@@ -122,6 +122,8 @@ APR-Core/core/CommunicationChannel.lua
 APR-Core/core/VersionCheck.lua
 
 APR-Core/core/Event.lua
+APR-Core/features/questing/RewardScoring.lua
+APR-Core/integrations/Pawn.lua
 APR-Core/features/questing/NPCInteraction.lua
 
 APR-Core/features/questing/StepInstructions.lua

@@ -84,6 +84,7 @@ function Options:Create(parent)
         end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     self.frame:SetScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:86:callback#15", --[[/APR_DIAG]]function()
+        self:CancelRefresh()
         self.host:ReleaseChildren()
         self.host:SetUserData("appName", nil)
         if self.themePreview then self.themePreview:SetPreviewActive(false) end
@@ -92,6 +93,31 @@ function Options:Create(parent)
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 end--[[APR_DIAG]]; Options.Create = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:21:Options:Create#2", Options.Create)--[[/APR_DIAG]]
 
+function Options:CancelRefresh()
+    local request = self.refreshRequest
+    self.refreshRequest = nil
+    if request then request.timer:Cancel() end
+end--[[APR_DIAG]]; Options.CancelRefresh = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:96:Options:CancelRefresh#16", Options.CancelRefresh)--[[/APR_DIAG]]
+
+-- AceConfig does not track custom hosts for NotifyChange. Reopen this host
+-- after the current control callback, retaining its normal saved scroll state.
+function Options:QueueRefresh()
+    local view, host = self.view, self.host
+    if not view or not view.app or not host or not self.frame or not self.frame:IsVisible() then return end
+    local pending = self.refreshRequest
+    if pending and pending.view == view and pending.host == host then return end
+    self:CancelRefresh()
+    local request = { view = view, host = host }
+    self.refreshRequest = request
+    request.timer = C_Timer.NewTimer(0, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:112:callback#18", --[[/APR_DIAG]]function()
+        if self.refreshRequest ~= request then return end
+        self.refreshRequest = nil
+        if self.view ~= view or self.host ~= host or not self.frame:IsVisible()
+            or host:GetUserData("appName") ~= view.app then return end
+        LibStub("AceConfigDialog-3.0"):Open(view.app, host)
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+end--[[APR_DIAG]]; Options.QueueRefresh = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:104:Options:QueueRefresh#17", Options.QueueRefresh)--[[/APR_DIAG]]
+
 -- View actions stay outside AceConfig's scroll area but use the authoritative option callbacks.
 function Options:SetActions(actions)
     self.actions = actions or {}
@@ -99,7 +125,7 @@ function Options:SetActions(actions)
     for index, action in ipairs(self.actions) do
         local button = self.actionButtons[index]
         if not button then
-            button = UI:Button(self.body, "", 160, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:102:callback#17", --[[/APR_DIAG]]function(control)
+            button = UI:Button(self.body, "", 160, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:128:callback#20", --[[/APR_DIAG]]function(control)
                 self:RefreshActions()
                 if control:IsEnabled() then
                     control.option.func()
@@ -107,8 +133,8 @@ function Options:SetActions(actions)
                     self:LayoutViews()
                 end
             end--[[APR_DIAG]])--[[/APR_DIAG]])
-            UI:Tooltip(button, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:110:callback#18", --[[/APR_DIAG]]function() return Resolve(button.option.name) end--[[APR_DIAG]])--[[/APR_DIAG]],
-                --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:111:callback#19", --[[/APR_DIAG]]function() return Resolve(button.option.desc) end--[[APR_DIAG]])--[[/APR_DIAG]])
+            UI:Tooltip(button, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:136:callback#21", --[[/APR_DIAG]]function() return Resolve(button.option.name) end--[[APR_DIAG]])--[[/APR_DIAG]],
+                --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:137:callback#22", --[[/APR_DIAG]]function() return Resolve(button.option.desc) end--[[APR_DIAG]])--[[/APR_DIAG]])
             self.actionButtons[index] = button
         end
         button.option = action.option
@@ -116,7 +142,7 @@ function Options:SetActions(actions)
         button:Show()
     end
     self:RefreshActions()
-end--[[APR_DIAG]]; Options.SetActions = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:96:Options:SetActions#16", Options.SetActions)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Options.SetActions = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:122:Options:SetActions#19", Options.SetActions)--[[/APR_DIAG]]
 
 function Options:RefreshActions()
     for _, buttons in ipairs({self.actionButtons, self.footerButtons}) do
@@ -128,7 +154,7 @@ function Options:RefreshActions()
             if option then button:SetText(Resolve(option.name)) end
         end
     end
-end--[[APR_DIAG]]; Options.RefreshActions = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:121:Options:RefreshActions#20", Options.RefreshActions)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Options.RefreshActions = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:147:Options:RefreshActions#23", Options.RefreshActions)--[[/APR_DIAG]]
 
 function Options:SetFooterActions(actions)
     self.footerActions = actions or {}
@@ -136,7 +162,7 @@ function Options:SetFooterActions(actions)
     for index, action in ipairs(self.footerActions) do
         local button = self.footerButtons[index]
         if not button then
-            button = UI:Button(self.footer, "", 200, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:139:callback#22", --[[/APR_DIAG]]function(control)
+            button = UI:Button(self.footer, "", 200, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:165:callback#25", --[[/APR_DIAG]]function(control)
                 self:RefreshActions()
                 if control:IsEnabled() then
                     control.option.func()
@@ -144,8 +170,8 @@ function Options:SetFooterActions(actions)
                     self:RefreshActions()
                 end
             end--[[APR_DIAG]])--[[/APR_DIAG]])
-            UI:Tooltip(button, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:147:callback#23", --[[/APR_DIAG]]function() return Resolve(button.option.name) end--[[APR_DIAG]])--[[/APR_DIAG]],
-                --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:148:callback#24", --[[/APR_DIAG]]function() return Resolve(button.option.desc) end--[[APR_DIAG]])--[[/APR_DIAG]])
+            UI:Tooltip(button, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:173:callback#26", --[[/APR_DIAG]]function() return Resolve(button.option.name) end--[[APR_DIAG]])--[[/APR_DIAG]],
+                --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:174:callback#27", --[[/APR_DIAG]]function() return Resolve(button.option.desc) end--[[APR_DIAG]])--[[/APR_DIAG]])
             self.footerButtons[index] = button
         end
         button.option = action.option
@@ -154,7 +180,7 @@ function Options:SetFooterActions(actions)
     end
     self.footer:SetShown(#self.footerActions > 0)
     self:RefreshActions()
-end--[[APR_DIAG]]; Options.SetFooterActions = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:133:Options:SetFooterActions#21", Options.SetFooterActions)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Options.SetFooterActions = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:159:Options:SetFooterActions#24", Options.SetFooterActions)--[[/APR_DIAG]]
 
 function Options:LayoutViews()
     if not self.section then return end
@@ -222,7 +248,7 @@ function Options:LayoutViews()
         button:SetSize(buttonWidth, 30)
     end
     if self.host.ResizeToParent then self.host:ResizeToParent() end
-end--[[APR_DIAG]]; Options.LayoutViews = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:159:Options:LayoutViews#25", Options.LayoutViews)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Options.LayoutViews = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:185:Options:LayoutViews#28", Options.LayoutViews)--[[/APR_DIAG]]
 
 function Options:SelectView(id)
     for _, view in ipairs(self.section.views) do
@@ -252,7 +278,7 @@ function Options:SelectView(id)
             return
         end
     end
-end--[[APR_DIAG]]; Options.SelectView = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:227:Options:SelectView#26", Options.SelectView)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Options.SelectView = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:253:Options:SelectView#29", Options.SelectView)--[[/APR_DIAG]]
 
 function Options:Select(id)
     if id == "general" then id = "automation" end
@@ -267,11 +293,11 @@ function Options:Select(id)
             for _, tab in ipairs(self.viewTabs) do tab:Hide() end
             for index, view in ipairs(section.views) do
                 if not self.viewTabs[index] then
-                    self.viewTabs[index] = UI:Button(self.body, "", 100, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:270:callback#28", --[[/APR_DIAG]]function(button) self:SelectView(button.viewID) end--[[APR_DIAG]])--[[/APR_DIAG]])
+                    self.viewTabs[index] = UI:Button(self.body, "", 100, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:296:callback#31", --[[/APR_DIAG]]function(button) self:SelectView(button.viewID) end--[[APR_DIAG]])--[[/APR_DIAG]])
                     if APR.Gamepad then
                         local tab = self.viewTabs[index]
-                        APR.Gamepad:BindDetails(tab, "DOWN", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:273:callback#29", --[[/APR_DIAG]]function() self:SelectView(tab.viewID) end--[[APR_DIAG]])--[[/APR_DIAG]],
-                            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:274:callback#30", --[[/APR_DIAG]]function() return self.content end--[[APR_DIAG]])--[[/APR_DIAG]])
+                        APR.Gamepad:BindDetails(tab, "DOWN", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:299:callback#32", --[[/APR_DIAG]]function() self:SelectView(tab.viewID) end--[[APR_DIAG]])--[[/APR_DIAG]],
+                            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:300:callback#33", --[[/APR_DIAG]]function() return self.content end--[[APR_DIAG]])--[[/APR_DIAG]])
                     end
                 end
                 self.viewTabs[index].viewID = view.id
@@ -283,4 +309,4 @@ function Options:Select(id)
             return
         end
     end
-end--[[APR_DIAG]]; Options.Select = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:257:Options:Select#27", Options.Select)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Options.Select = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:283:Options:Select#30", Options.Select)--[[/APR_DIAG]]
