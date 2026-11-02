@@ -220,6 +220,8 @@ local navigationStep = {
     from = { x = -439.8, y = -263.9, uiMapID = 2576, instanceID = 2695 },
     to = { x = 1570, y = -4397, uiMapID = 85, instanceID = 1 },
     diagnosticDetail = { arrivalRadius = 17, note = "Private_name: pending arrival" },
+    terrainHeightReason = "ambiguous_terrain_surface",
+    terrainPosition = { x = 10, y = 20, z = 25, observedZ = 0, positionSource = "unit", heightSource = "terrain", indoors = true },
     canStart = function() error("Status must not check travel availability") end,
 }
 APR.navigation = {
@@ -231,12 +233,14 @@ APR.navigation = {
     lastContinuation = { status = "reused", reason = "expected_arrival", queuedSteps = 4, distance = 0.1,
         privateGraph = "never-export-the-continuation-graph" },
     destination = { x = 15000, y = 0, instanceID = 44, uiMapID = 77 },
-    start = { x = 10, y = 20, instanceID = 45, uiMapID = 78 },
+    start = { x = 10, y = 20, z = 25, instanceID = 45, uiMapID = 78,
+        observedZ = 0, positionSource = "unit", heightSource = "terrain", indoors = true },
     queue = { navigationStep, { id = "12:2", kind = "walk", label = "Final synthetic waypoint", seconds = 321,
         from = navigationStep.to, to = { x = 15000, y = 0, instanceID = 44, uiMapID = 77 },
         canStart = function() error("Export cannot validate a future leg") end } },
     search = { privateGraph = "never-export-the-graph",
-        status = "planning", slices = 7, elapsedMilliseconds = 125, totalSliceMilliseconds = 5 },
+        status = "planning", slices = 7, elapsedMilliseconds = 125, totalSliceMilliseconds = 5,
+        terrainReason = "ambiguous_terrain_surface" },
     retainedArrow = { Coord = { x = 10, y = 20 }, instanceID = 2695,
         context = { privateContext = "never-export-the-context" } },
     GetActiveStep = function(self)
@@ -265,6 +269,12 @@ assert(activeStepReads == 1 and zoneReportReads == 1,
 assert(text:find("**elapsedMilliseconds**: 125", 1, true)
     and text:find("**totalSliceMilliseconds**: 5", 1, true) and text:find("**slices**: 7", 1, true),
     "The bounded navigation snapshot reports actual planning latency and CPU work")
+assert(text:find("**observedZ**: 0", 1, true) and text:find("**heightSource**: terrain", 1, true)
+    and text:find("**positionSource**: unit", 1, true) and text:find("**indoors**: true", 1, true)
+    and text:find("**terrainReason**: ambiguous\\_terrain\\_surface", 1, true)
+    and text:find("**terrainHeightReason**: ambiguous\\_terrain\\_surface", 1, true)
+    and text:find("**terrainPosition**:", 1, true),
+    "Diagnostics distinguish measured height, projected height and unresolved floor evidence")
 assert(text:find("**continuationReuses**: 3", 1, true), "Status identifies reuse of a precomputed continuation")
 assert(text:find("**controllerRevision**: 5", 1, true) and text:find("**reason**: expected\\_arrival", 1, true)
     and text:find("**lastInvalidation**: BAG\\_UPDATE\\_DELAYED", 1, true)

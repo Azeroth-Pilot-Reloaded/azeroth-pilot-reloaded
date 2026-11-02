@@ -1,7 +1,7 @@
 -- Turn declarative connections into usable edges for one character snapshot.
 -- Each build owns its API cache and yields between connection directions.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("catalog", 17) then return end
+if not Lib:BeginModule("catalog", 18) then return end
 local Instance = Lib.Instance
 local EdgeBuild = {}
 EdgeBuild.__index = EdgeBuild
@@ -257,6 +257,17 @@ function EdgeBuild:AddResources(edge, definition, action)
     end
 end
 
+local function TerrainReplacesWalking(owner, definition, from, to)
+    if not definition.terrainWalk or not owner.HasTerrainData or from.instanceID ~= to.instanceID
+        or from.accessKey ~= to.accessKey then return false end
+    local region = owner:GetPositionRegion(from)
+    if not region or region ~= owner:GetPositionRegion(to) then return false end
+    -- These records are coarse walking hints, not transports or access gates.
+    -- Retain their endpoints through the real transports/objective; only the
+    -- proved terrain graph may connect them inside a managed interior.
+    return owner:HasTerrainData(from) or owner:HasTerrainData(to)
+end
+
 function EdgeBuild:AddDirection(definition, prepared, source, destination, suffix)
     local blockedRequirements = prepared.blockedRequirements
     local from = self.snapshot:ResolvePosition(source, self.context)
@@ -270,6 +281,7 @@ function EdgeBuild:AddDirection(definition, prepared, source, destination, suffi
         end
         return
     end
+    if TerrainReplacesWalking(self.owner, definition, from, to) then return end
 
     local requirements = self.snapshot:GetTravelRequirements(definition.requirements, from, to)
     local canStart = prepared.canStart

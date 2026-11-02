@@ -104,6 +104,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "passages", {
         {
             id = "passage-eastern-kingdoms-to-eastern-kingdoms-at-minus-9004-871-arrive-minus-9036-1005",
             kind = "passage",
+            terrainWalk = true,
             bidirectional = false,
             from = { space = "world", instanceID = 0, x = -9004.4443359375, y = 870.625, z = 64.86025238037, accessKey = "wizards-sanctum" },
             to = {
@@ -120,6 +121,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "passages", {
         {
             id = "passage-eastern-kingdoms-to-eastern-kingdoms-at-minus-9004-871-arrive-minus-9054-992",
             kind = "passage",
+            terrainWalk = true,
             bidirectional = false,
             from = { space = "world", instanceID = 0, x = -9004.4443359375, y = 870.625, z = 64.86025238037, accessKey = "wizards-sanctum" },
             to = {
@@ -136,6 +138,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "passages", {
         {
             id = "passage-eastern-kingdoms-to-eastern-kingdoms-at-minus-9004-871-arrive-minus-9069-1012",
             kind = "passage",
+            terrainWalk = true,
             bidirectional = false,
             from = { space = "world", instanceID = 0, x = -9004.4443359375, y = 870.625, z = 64.86025238037, accessKey = "wizards-sanctum" },
             to = {
@@ -152,6 +155,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "passages", {
         {
             id = "passage-eastern-kingdoms-to-eastern-kingdoms-at-minus-9004-871-arrive-minus-9023-952",
             kind = "passage",
+            terrainWalk = true,
             bidirectional = false,
             from = { space = "world", instanceID = 0, x = -9004.4443359375, y = 870.625, z = 64.86025238037, accessKey = "wizards-sanctum" },
             to = {
@@ -168,6 +172,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "passages", {
         {
             id = "passage-eastern-kingdoms-to-eastern-kingdoms-at-minus-9004-871-arrive-minus-9005-929",
             kind = "passage",
+            terrainWalk = true,
             bidirectional = false,
             from = { space = "world", instanceID = 0, x = -9004.4443359375, y = 870.625, z = 64.86025238037, accessKey = "wizards-sanctum" },
             to = {
@@ -184,6 +189,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "passages", {
         {
             id = "passage-eastern-kingdoms-to-eastern-kingdoms-at-minus-9004-871-arrive-minus-8989-942",
             kind = "passage",
+            terrainWalk = true,
             bidirectional = false,
             from = { space = "world", instanceID = 0, x = -9004.4443359375, y = 870.625, z = 64.86025238037, accessKey = "wizards-sanctum" },
             to = {
@@ -200,6 +206,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "passages", {
         {
             id = "passage-eastern-kingdoms-to-eastern-kingdoms-at-minus-9004-871-arrive-minus-9006-965",
             kind = "passage",
+            terrainWalk = true,
             bidirectional = false,
             from = { space = "world", instanceID = 0, x = -9004.4443359375, y = 870.625, z = 64.86025238037, accessKey = "wizards-sanctum" },
             to = {
@@ -378,6 +385,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "passages", {
         {
             id = "passage-eastern-kingdoms-to-eastern-kingdoms-at-minus-9004-871-arrive-minus-9096-897",
             kind = "passage",
+            terrainWalk = true,
             bidirectional = false,
             from = { space = "world", instanceID = 0, x = -9004.4443359375, y = 870.625, z = 64.86025238037, accessKey = "wizards-sanctum" },
             to = {
@@ -494,6 +502,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "passages", {
         {
             id = "passage-eastern-kingdoms-to-eastern-kingdoms-at-minus-9004-871-arrive-minus-9078-873",
             kind = "passage",
+            terrainWalk = true,
             bidirectional = false,
             from = { space = "world", instanceID = 0, x = -9004.4443359375, y = 870.625, z = 64.86025238037, accessKey = "wizards-sanctum" },
             to = {
@@ -856,6 +865,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "passages", {
         {
             id = "passage-eastern-kingdoms-to-eastern-kingdoms-at-minus-9004-871-arrive-minus-9061-887",
             kind = "passage",
+            terrainWalk = true,
             bidirectional = false,
             from = { space = "world", instanceID = 0, x = -9004.4443359375, y = 870.625, z = 64.86025238037, accessKey = "wizards-sanctum" },
             to = {
@@ -973,6 +983,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "passages", {
         {
             id = "passage-eastern-kingdoms-to-eastern-kingdoms-at-minus-9004-871-arrive-minus-9076-907",
             kind = "passage",
+            terrainWalk = true,
             bidirectional = false,
             from = { space = "world", instanceID = 0, x = -9004.4443359375, y = 870.625, z = 64.86025238037, accessKey = "wizards-sanctum" },
             to = {
@@ -989,6 +1000,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "passages", {
         {
             id = "passage-eastern-kingdoms-to-eastern-kingdoms-at-minus-9004-871-arrive-minus-9097-877-faction-alliance",
             kind = "passage",
+            terrainWalk = true,
             bidirectional = true,
             from = { space = "world", instanceID = 0, x = -9004.4443359375, y = 870.625, z = 64.86025238037, accessKey = "wizards-sanctum" },
             to = {
@@ -2230,4 +2242,4 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "passages", {
             costMode = "ground",
         },
     },
-}, 34)
+}, 35)

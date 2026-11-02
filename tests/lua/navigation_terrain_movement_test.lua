@@ -33,6 +33,14 @@ assert(profile.canSkyriding and not profile.canSteady, "A skyriding zone need no
 state.indoors = true
 profile = nav:GetMovementProfile()
 assert(not profile.canSteady and not profile.canSkyriding, "Indoor restrictions apply even when area flags permit flight")
+assert(nav:GetMovementSpeed(10000) == 7,
+    "An explicitly supplied flight threshold cannot transfer flying speed into an indoor observation")
+local nativeIndoor = IsIndoors
+IsIndoors = function() return {} end
+assert(nav:GetMovementSpeed(10000) == 7, "An unreadable indoor observation cannot prove flying speed")
+IsIndoors = function() error("indoor observation unavailable") end
+assert(nav:GetMovementSpeed(10000) == 7, "A temporarily unavailable indoor API remains conservative")
+IsIndoors = nativeIndoor
 state.indoors, state.profile = false, "forever"
 profile = nav:GetMovementProfile()
 assert(not profile.canSteady and not profile.canSkyriding, "Forever remains grounded regardless of Retail API observations")

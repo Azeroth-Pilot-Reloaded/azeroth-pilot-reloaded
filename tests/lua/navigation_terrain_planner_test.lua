@@ -101,4 +101,48 @@ end
 result = plan()
 assert(result.totalSeconds == 140, "An optimistic 102-second crossing must be refined to its 302-second terrain cost before selecting the winner")
 assert(loads[9] and not loads[10], "Only a competitive intermediate world may load; irrelevant transport branches stay dormant")
+
+-- Two exterior transport endpoints can still cross a bounded interior. Its
+-- volume must refine a winning walk even when neither endpoint is covered.
+local scope = { id = "detour-room", groundOnly = true,
+    bounds = { minX = 10, maxX = 90, minY = -1, maxY = 91, minZ = -1, maxZ = 1 } }
+local scoped = {format=1,scope=scope,nodes={},edges={}}
+local path = {{10,0},{20,0},{20,90},{80,90},{80,0},{90,0}}
+for i,p in ipairs(path) do
+    scoped.nodes[i] = {id=tostring(i),x=p[1],y=p[2],z=0,uiMapID=603,
+        terrainBoundary=(i==1 or i==#path) and scope.id or nil}
+    if i>1 then scoped.edges[#scoped.edges+1]={from=tostring(i-1),to=tostring(i),mode="ground"} end
+end
+loads = {}
+data.env.getTerrainScopes = function(_,world) if world==11 or world==12 then return {scope},false end end
+data.env.hasTerrainData = function(_,world,p)
+    if world==nil then return true end
+    return (world==11 or world==12) and (p==nil or lib.Terrain.ScopeContains(scope,p))
+end
+data.env.requestTerrainData = function(_,world,p)
+    loads[world]=(loads[world] or 0)+1
+    if world==11 then
+        assert(p==nil,"A bounded intermediate world loads its scoped inventory")
+        lib:RegisterTerrainData("retail",11,scoped,1,"detour-room")
+    end
+    return "ready"
+end
+a = data:NormalizeLocation({instanceID=11,uiMapID=603,x=0,y=0,z=0})
+b = data:NormalizeLocation({instanceID=11,uiMapID=603,x=100,y=0,z=0})
+unused = data:NormalizeLocation({instanceID=12,uiMapID=604,x=0,y=0,z=0})
+assert(not data:HasTerrainData(a) and not data:HasTerrainData(b))
+data.CreateEdgeBuild = function()
+    return {Step=function() return "ready", {portal,
+        {kind="portal",from=point(1),to=a,seconds=1},
+        {kind="portal",from=b,to=point(6),seconds=1},
+        {kind="portal",from=point(1),to=unused,seconds=1000}}, {resources={}} end}
+end
+assert(APR.NavigationPlanner:Create(request):GetOptimisticWalkSeconds(a,b)==0,
+    "A scoped exterior crossing needs a safe lower bound before its geometry loads")
+result = plan()
+assert(result.totalSeconds==140,"An exterior chord through a scoped intermediate room must use its 282-second detour before selecting the winner")
+assert(loads[11] and not loads[12],"Refine the competitive crossing without loading unrelated scoped worlds")
+portal.seconds=400
+result = plan()
+assert(result.totalSeconds==282,"Exterior-to-boundary walking must remain usable after the room is refined")
 print("Terrain planning: explicit local costs compete with transports under the shared scheduler")

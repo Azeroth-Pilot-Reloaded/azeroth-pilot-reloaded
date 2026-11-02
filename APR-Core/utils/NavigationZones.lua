@@ -539,22 +539,49 @@ end--[[APR_DIAG]])--[[/APR_DIAG]])
 
 -- A map relationship describes geography; only the data provider can establish
 -- whether it is reachable without a mandatory crossing.
+local function ReadableNavigationValue(value)
+    return not (issecretvalue and issecretvalue(value))
+        and (not APR.CanAccessValue or APR:CanAccessValue(value))
+end--[[APR_DIAG]]; ReadableNavigationValue = APRTrace("APR-Core/utils/NavigationZones.lua:542:ReadableNavigationValue#25", ReadableNavigationValue)--[[/APR_DIAG]]
+local function NavigationNumber(value)
+    return ReadableNavigationValue(value) and type(value) == "number"
+        and value == value and value > -math.huge and value < math.huge
+end--[[APR_DIAG]]; NavigationNumber = APRTrace("APR-Core/utils/NavigationZones.lua:546:NavigationNumber#26", NavigationNumber)--[[/APR_DIAG]]
 function APR:GetNavigationPlayerPosition()
-    local worldX, worldY, z, instanceID = UnitPosition("player")
-    if worldX == nil or worldY == nil or instanceID == nil then return nil end
-    if self.CanAccessValue and (not self:CanAccessValue(worldX) or not self:CanAccessValue(worldY)
-        or not self:CanAccessValue(instanceID)) then return nil end
+    if type(UnitPosition) ~= "function" then return nil end
+    local ok, worldX, worldY, z, instanceID = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](UnitPosition, "player")
+    if not ok or not NavigationNumber(worldX) or not NavigationNumber(worldY)
+        or not NavigationNumber(instanceID) then return nil end
     if self.NavigationData and self.NavigationData.GetWorldInstanceID then
         instanceID = self.NavigationData:GetWorldInstanceID(instanceID)
     end
-    local position = { x = worldX, y = worldY, z = z or 0, instanceID = instanceID,
-        uiMapID = C_Map and C_Map.GetBestMapForUnit and C_Map.GetBestMapForUnit("player") }
-    if not position.uiMapID then return nil end
-    local sanctum = C_Map.GetAreaInfo and C_Map.GetAreaInfo(10523)
-    if sanctum and GetSubZoneText and GetSubZoneText() == sanctum then position.accessKey = "wizards-sanctum" end
+    if not NavigationNumber(instanceID) then return nil end
+    if not C_Map or type(C_Map.GetBestMapForUnit) ~= "function" then return nil end
+    local mapKnown, mapID = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](C_Map.GetBestMapForUnit, "player")
+    if not mapKnown or not NavigationNumber(mapID) then return nil end
+    -- Missing/protected height is unknown, never an invented ground floor.
+    local position = { x = worldX, y = worldY, z = NavigationNumber(z) and z or nil,
+        observedZ = NavigationNumber(z) and z or nil, positionSource = "unit",
+        instanceID = instanceID, uiMapID = mapID }
+    if type(IsIndoors) == "function" then
+        local indoorKnown, indoors = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](IsIndoors)
+        if indoorKnown and ReadableNavigationValue(indoors) and type(indoors) == "boolean" then position.indoors = indoors end
+    end
+    if type(C_Map.GetAreaInfo) == "function" and type(GetSubZoneText) == "function" then
+        local nameKnown, sanctum = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](C_Map.GetAreaInfo, 10523)
+        local zoneKnown, subZone = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetSubZoneText)
+        if nameKnown and zoneKnown and ReadableNavigationValue(sanctum) and ReadableNavigationValue(subZone)
+            and type(sanctum) == "string" and sanctum ~= "" and subZone == sanctum then
+            position.accessKey = "wizards-sanctum"
+        end
+    end
     if self.NavigationData then position.region = self.NavigationData:GetPositionRegion(position) end
+    if self.NavigationData and self.NavigationData.ResolveTerrainGroundPosition then
+        local projected = self.NavigationData:ResolveTerrainGroundPosition(position)
+        if projected then return projected end
+    end
     return position
-end--[[APR_DIAG]]; APR.GetNavigationPlayerPosition = APRTrace("APR-Core/utils/NavigationZones.lua:542:APR:GetNavigationPlayerPosition#25", APR.GetNavigationPlayerPosition)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetNavigationPlayerPosition = APRTrace("APR-Core/utils/NavigationZones.lua:550:APR:GetNavigationPlayerPosition#27", APR.GetNavigationPlayerPosition)--[[/APR_DIAG]]
 
 function APR:CheckNavigationZoneReady(target, options)
     options = options or {}
@@ -576,4 +603,4 @@ function APR:CheckNavigationZoneReady(target, options)
     local limit = options.threshold or 2000
     if dx * dx + dy * dy < limit * limit then return true, "nearby_connected" end
     return false, "too_far"
-end--[[APR_DIAG]]; APR.CheckNavigationZoneReady = APRTrace("APR-Core/utils/NavigationZones.lua:559:APR:CheckNavigationZoneReady#26", APR.CheckNavigationZoneReady)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CheckNavigationZoneReady = APRTrace("APR-Core/utils/NavigationZones.lua:586:APR:CheckNavigationZoneReady#28", APR.CheckNavigationZoneReady)--[[/APR_DIAG]]

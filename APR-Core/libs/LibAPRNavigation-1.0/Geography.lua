@@ -1,7 +1,7 @@
 -- Project endpoints into world coordinates and identify their access regions.
 -- A shared position alone does not permit walking through a required entrance.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("geography", 12) then return end
+if not Lib:BeginModule("geography", 14) then return end
 local Instance = Lib.Instance
 -- These defaults are read-only, including CheckRequirements' character input.
 -- Reuse them across walking checks and retries of unavailable map ancestry.
@@ -71,6 +71,10 @@ function Instance:NormalizeLocation(location, hint)
         isInstance = location.isInstance,
         terrainNodeKey = location.terrainNodeKey,
         movementMode = location.movementMode,
+        positionSource = location.positionSource,
+        observedZ = location.observedZ,
+        heightSource = location.heightSource,
+        indoors = location.indoors,
         region = WorldRegion(location.region, location.instanceID, instanceID),
     }
     position.region = self:GetPositionRegion(position)

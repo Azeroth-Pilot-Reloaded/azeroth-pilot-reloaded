@@ -246,5 +246,31 @@ check("parallel anchors retain independently directed paths and costs", function
     end
 end)
 
+check("surface indoor evidence survives compilation and rejects malformed values", function()
+    for _, indoor in ipairs({ true, false }) do
+        local raw = corridor()
+        raw.anchors[1].indoor, raw.anchors[2].indoor = indoor, indoor
+        local instance = setup(raw)
+        assert(finish(instance:CreateTerrainEdgeBuild({ start = point(0, 0, 10), goal = point(20, 0, 10) })) == "ready")
+        local found = false
+        for _, levels in pairs(instance._terrainVisibility.worlds) do
+            for _, buckets in pairs(levels) do
+                for _, anchors in pairs(buckets) do
+                    for _, anchor in ipairs(anchors) do
+                        if anchor.minX < anchor.maxX then
+                            assert(anchor.indoor == indoor, "compiled anchors must preserve client geometry indoor evidence")
+                            found = true
+                        end
+                    end
+                end
+            end
+        end
+        assert(found)
+    end
+    local raw = corridor()
+    raw.anchors[1].indoor = "true"
+    assert(finish(setup(raw):CreateTerrainEdgeBuild({ start = point(0, 0, 10), goal = point(20, 0, 10) })) == "invalid_data")
+end)
+
 assert(#failures == 0, table.concat(failures, "\n"))
 print("Terrain attachments: projected observations, host refusal, live permissions and independent directed anchors passed")

@@ -245,20 +245,25 @@ Adapter.environment = environment
 function environment.hasTerrainData(profile, worldID, point)
     return APR.NavigationTerrain and APR.NavigationTerrain:HasData(profile, worldID, point) == true or false
 end--[[APR_DIAG]]; environment.hasTerrainData = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:245:environment.hasTerrainData#20", environment.hasTerrainData)--[[/APR_DIAG]]
+function environment.getTerrainScopes(profile, worldID)
+    if APR.NavigationTerrain and APR.NavigationTerrain.GetScopes then
+        return APR.NavigationTerrain:GetScopes(profile, worldID)
+    end
+end--[[APR_DIAG]]; environment.getTerrainScopes = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:248:environment.getTerrainScopes#21", environment.getTerrainScopes)--[[/APR_DIAG]]
 function environment.requestTerrainData(profile, worldID, point)
     if not APR.NavigationTerrain then return "missing", "terrain_loader_unavailable" end
     return APR.NavigationTerrain:RequestData(profile, worldID, point)
-end--[[APR_DIAG]]; environment.requestTerrainData = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:248:environment.requestTerrainData#21", environment.requestTerrainData)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.requestTerrainData = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:253:environment.requestTerrainData#22", environment.requestTerrainData)--[[/APR_DIAG]]
 function environment.decodeTerrain(source)
     if not C_EncodingUtil or not Enum or not Enum.CompressionMethod then return nil end
     local compressed = Call(C_EncodingUtil.DecodeBase64, source)
     if type(compressed) ~= "string" then return nil end
     return Call(C_EncodingUtil.DecompressString, compressed, Enum.CompressionMethod.Zlib)
-end--[[APR_DIAG]]; environment.decodeTerrain = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:252:environment.decodeTerrain#22", environment.decodeTerrain)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.decodeTerrain = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:257:environment.decodeTerrain#23", environment.decodeTerrain)--[[/APR_DIAG]]
 function environment.getCurrentMapID()
     local mapID = C_Map and Call(C_Map.GetBestMapForUnit, "player")
     if Number(mapID) then return mapID end
-end--[[APR_DIAG]]; environment.getCurrentMapID = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:258:environment.getCurrentMapID#23", environment.getCurrentMapID)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getCurrentMapID = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:263:environment.getCurrentMapID#24", environment.getCurrentMapID)--[[/APR_DIAG]]
 local function CalendarMinute(value)
     if type(value) ~= "table" then return nil end
     for _, key in ipairs({ "year", "month", "monthDay", "hour", "minute" }) do
@@ -266,7 +271,7 @@ local function CalendarMinute(value)
     end
     -- Ordering only: avoid OS dates, local time zones and daylight-saving rules.
     return ((((value.year * 13 + value.month) * 32 + value.monthDay) * 24 + value.hour) * 60 + value.minute)
-end--[[APR_DIAG]]; CalendarMinute = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:262:CalendarMinute#24", CalendarMinute)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; CalendarMinute = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:267:CalendarMinute#25", CalendarMinute)--[[/APR_DIAG]]
 
 function environment.isHolidayActive(key)
     local icons = APR.NavigationData and (APR.NavigationData.config.Holidays or {})[key]
@@ -293,7 +298,7 @@ function environment.isHolidayActive(key)
         end
     end
     if not pending then return false end
-end--[[APR_DIAG]]; environment.isHolidayActive = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:271:environment.isHolidayActive#25", environment.isHolidayActive)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.isHolidayActive = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:276:environment.isHolidayActive#26", environment.isHolidayActive)--[[/APR_DIAG]]
 
 function environment.getHousingInitiative(mapID)
     if not C_NeighborhoodInitiative or not C_Housing then return nil end
@@ -309,20 +314,20 @@ function environment.getHousingInitiative(mapID)
         or not Number(info.currentCycleID) or not Number(info.duration) or info.duration <= 0 then return nil end
     return { isLoaded = true, neighborhoodGUID = wanted, initiativeID = info.initiativeID,
         currentCycleID = info.currentCycleID }
-end--[[APR_DIAG]]; environment.getHousingInitiative = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:298:environment.getHousingInitiative#26", environment.getHousingInitiative)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getHousingInitiative = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:303:environment.getHousingInitiative#27", environment.getHousingInitiative)--[[/APR_DIAG]]
 
 function environment.getMapArtID(id)
     local artID = C_Map and Call(C_Map.GetMapArtID, id)
     if Number(artID) then return artID end
-end--[[APR_DIAG]]; environment.getMapArtID = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:314:environment.getMapArtID#27", environment.getMapArtID)--[[/APR_DIAG]]
-function environment.getMapInfo(id) return C_Map and Call(C_Map.GetMapInfo, id) end--[[APR_DIAG]]; environment.getMapInfo = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:318:environment.getMapInfo#28", environment.getMapInfo)--[[/APR_DIAG]]
-function environment.getAreaName(id) return Text(C_Map and Call(C_Map.GetAreaInfo, id)) end--[[APR_DIAG]]; environment.getAreaName = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:319:environment.getAreaName#29", environment.getAreaName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getMapArtID = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:319:environment.getMapArtID#28", environment.getMapArtID)--[[/APR_DIAG]]
+function environment.getMapInfo(id) return C_Map and Call(C_Map.GetMapInfo, id) end--[[APR_DIAG]]; environment.getMapInfo = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:323:environment.getMapInfo#29", environment.getMapInfo)--[[/APR_DIAG]]
+function environment.getAreaName(id) return Text(C_Map and Call(C_Map.GetAreaInfo, id)) end--[[APR_DIAG]]; environment.getAreaName = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:324:environment.getAreaName#30", environment.getAreaName)--[[/APR_DIAG]]
 function environment.mapToWorld(id, x, y)
     local instanceID, position = Call(C_Map and C_Map.GetWorldPosFromMapPos, id, Vector(x, y))
     if Number(instanceID) and position and Number(position.x) and Number(position.y) then
         return instanceID, position.x, position.y
     end
-end--[[APR_DIAG]]; environment.mapToWorld = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:320:environment.mapToWorld#30", environment.mapToWorld)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.mapToWorld = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:325:environment.mapToWorld#31", environment.mapToWorld)--[[/APR_DIAG]]
 function environment.worldToMap(instanceID, x, y, hint)
     local mapID, position = Call(C_Map and C_Map.GetMapPosFromWorldPos, instanceID, Vector(x, y), hint)
     if not Number(mapID) then return end
@@ -349,14 +354,14 @@ function environment.worldToMap(instanceID, x, y, hint)
         end
     end
     return mapID, mapX, mapY
-end--[[APR_DIAG]]; environment.worldToMap = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:326:environment.worldToMap#31", environment.worldToMap)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.worldToMap = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:331:environment.worldToMap#32", environment.worldToMap)--[[/APR_DIAG]]
 environment.getPlayerPosition = PlayerPosition
 function Adapter:GetWaypointContext(step, index)
     local context = APR.CaptureStepContext and APR:CaptureStepContext() or {}
     return table.concat({ tostring(context.player), tostring(context.route or APR.ActiveRoute),
         tostring(index or context.index), tostring(context.revision), tostring(context.definition),
         tostring(step) }, "\031")
-end--[[APR_DIAG]]; Adapter.GetWaypointContext = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:354:Adapter:GetWaypointContext#32", Adapter.GetWaypointContext)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Adapter.GetWaypointContext = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:359:Adapter:GetWaypointContext#33", Adapter.GetWaypointContext)--[[/APR_DIAG]]
 
 function Adapter:IsWaypointCompleted(step)
     if step.ZoneStepTrigger or not C_QuestLog or not C_QuestLog.IsQuestFlaggedCompleted then return false end
@@ -365,7 +370,7 @@ function Adapter:IsWaypointCompleted(step)
         if Call(C_QuestLog.IsQuestFlaggedCompleted, id) == true then return true end
     end
     return false
-end--[[APR_DIAG]]; Adapter.IsWaypointCompleted = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:361:Adapter:IsWaypointCompleted#33", Adapter.IsWaypointCompleted)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Adapter.IsWaypointCompleted = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:366:Adapter:IsWaypointCompleted#34", Adapter.IsWaypointCompleted)--[[/APR_DIAG]]
 
 function Adapter:GetWaypointText(step, point, token)
     local title = point and Text(point.label or point.instruction)
@@ -384,7 +389,7 @@ function Adapter:GetWaypointText(step, point, token)
                 seen[line.text], lines[#lines + 1] = true, line.text
             end
         end
-    end--[[APR_DIAG]]; Add = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:380:Add#35", Add)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; Add = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:385:Add#36", Add)--[[/APR_DIAG]]
     Add(step.Note)
     for key in pairs(step) do
         if type(key) == "string" and key:match("^ExtraLineText%d*$") then keys[#keys + 1] = key end
@@ -392,7 +397,7 @@ function Adapter:GetWaypointText(step, point, token)
     table.sort(keys)
     for _, key in ipairs(keys) do Add(step[key]) end
     return title or "APR", #lines > 0 and table.concat(lines, "\n") or nil
-end--[[APR_DIAG]]; Adapter.GetWaypointText = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:370:Adapter:GetWaypointText#34", Adapter.GetWaypointText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Adapter.GetWaypointText = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:375:Adapter:GetWaypointText#35", Adapter.GetWaypointText)--[[/APR_DIAG]]
 
 function environment.getWaypointTarget()
     local profile = APR.settings and APR.settings.profile
@@ -462,26 +467,26 @@ function environment.getWaypointTarget()
         source = "apr.step#" .. tostring(index) .. (transient and ":" .. tostring(point.id or "navigation") or ""),
         kind = "guide_goal", guideProvider = "apr",
         worldPosition = { instanceID = instanceID, x = coord.y, y = coord.x } }, options
-end--[[APR_DIAG]]; environment.getWaypointTarget = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:397:environment.getWaypointTarget#36", environment.getWaypointTarget)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getWaypointTarget = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:402:environment.getWaypointTarget#37", environment.getWaypointTarget)--[[/APR_DIAG]]
 function environment.getItemCount(id)
     local count = Call(C_Item and C_Item.GetItemCount or GetItemCount, id)
     if Number(count) then return count end
-end--[[APR_DIAG]]; environment.getItemCount = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:466:environment.getItemCount#37", environment.getItemCount)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getItemCount = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:471:environment.getItemCount#38", environment.getItemCount)--[[/APR_DIAG]]
 function environment.getCurrencyQuantity(id)
     local info = C_CurrencyInfo and Call(C_CurrencyInfo.GetCurrencyInfo, id)
     if type(info) == "table" and Number(info.quantity) then return info.quantity end
-end--[[APR_DIAG]]; environment.getCurrencyQuantity = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:470:environment.getCurrencyQuantity#38", environment.getCurrencyQuantity)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getCurrencyQuantity = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:475:environment.getCurrencyQuantity#39", environment.getCurrencyQuantity)--[[/APR_DIAG]]
 function environment.getReputationStanding(id)
     local info = C_Reputation and Call(C_Reputation.GetFactionDataByID, id)
     if type(info) == "table" and Number(info.reaction) then return info.reaction end
     local _, _, reaction = Call(GetFactionInfoByID, id)
     if Number(reaction) then return reaction end
-end--[[APR_DIAG]]; environment.getReputationStanding = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:474:environment.getReputationStanding#39", environment.getReputationStanding)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getReputationStanding = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:479:environment.getReputationStanding#40", environment.getReputationStanding)--[[/APR_DIAG]]
 function environment.getReputationAmount(id)
     local major
     if C_MajorFactions and C_MajorFactions.GetMajorFactionData then
         local known
-        known, major = Call(--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:484:callback#41", --[[/APR_DIAG]]function() return true, C_MajorFactions.GetMajorFactionData(id) end--[[APR_DIAG]])--[[/APR_DIAG]])
+        known, major = Call(--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:489:callback#42", --[[/APR_DIAG]]function() return true, C_MajorFactions.GetMajorFactionData(id) end--[[APR_DIAG]])--[[/APR_DIAG]])
         if not known then return nil end
     end
     if type(major) == "table" then
@@ -489,7 +494,7 @@ function environment.getReputationAmount(id)
         return nil
     end
     if C_GossipInfo and C_GossipInfo.GetFriendshipReputation then
-        local known, friendship = Call(--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:492:callback#42", --[[/APR_DIAG]]function() return true, C_GossipInfo.GetFriendshipReputation(id) end--[[APR_DIAG]])--[[/APR_DIAG]])
+        local known, friendship = Call(--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:497:callback#43", --[[/APR_DIAG]]function() return true, C_GossipInfo.GetFriendshipReputation(id) end--[[APR_DIAG]])--[[/APR_DIAG]])
         if not known then return nil end
         if type(friendship) == "table" and Number(friendship.friendshipFactionID) and friendship.friendshipFactionID > 0 then
             local ranks = Call(C_GossipInfo.GetFriendshipReputationRanks, friendship.friendshipFactionID)
@@ -498,26 +503,26 @@ function environment.getReputationAmount(id)
     end
     local info = C_Reputation and Call(C_Reputation.GetFactionDataByID, id)
     if type(info) == "table" and Number(info.currentStanding) then return info.currentStanding end
-    return Call(--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:501:callback#43", --[[/APR_DIAG]]function()
+    return Call(--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:506:callback#44", --[[/APR_DIAG]]function()
         if not GetFactionInfoByID then return nil end
         local _, _, _, _, _, amount = GetFactionInfoByID(id)
         if Number(amount) then return amount end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; environment.getReputationAmount = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:480:environment.getReputationAmount#40", environment.getReputationAmount)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getReputationAmount = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:485:environment.getReputationAmount#41", environment.getReputationAmount)--[[/APR_DIAG]]
 function environment.getReputationProgressAmount(id)
     local info = C_Reputation and Call(C_Reputation.GetFactionDataByID, id)
     if type(info) == "table" and Number(info.currentStanding) and Number(info.currentReactionThreshold) then
         return info.currentStanding - info.currentReactionThreshold
     end
-end--[[APR_DIAG]]; environment.getReputationProgressAmount = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:507:environment.getReputationProgressAmount#44", environment.getReputationProgressAmount)--[[/APR_DIAG]]
-function environment.getServerTime() return Call(GetServerTime) end--[[APR_DIAG]]; environment.getServerTime = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:513:environment.getServerTime#45", environment.getServerTime)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getReputationProgressAmount = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:512:environment.getReputationProgressAmount#45", environment.getReputationProgressAmount)--[[/APR_DIAG]]
+function environment.getServerTime() return Call(GetServerTime) end--[[APR_DIAG]]; environment.getServerTime = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:518:environment.getServerTime#46", environment.getServerTime)--[[/APR_DIAG]]
 function environment.isChromieTimeActive()
     local active = C_PlayerInfo and Call(C_PlayerInfo.IsPlayerInChromieTime)
     if type(active) == "boolean" then return active end
-end--[[APR_DIAG]]; environment.isChromieTimeActive = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:514:environment.isChromieTimeActive#46", environment.isChromieTimeActive)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.isChromieTimeActive = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:519:environment.isChromieTimeActive#47", environment.isChromieTimeActive)--[[/APR_DIAG]]
 function environment.getSkillLevel(id)
     if C_SkillInfo and C_SkillInfo.GetSkillLineInfoByID then
-        local queried, info = Call(--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:520:callback#48", --[[/APR_DIAG]]function() return true, C_SkillInfo.GetSkillLineInfoByID(id) end--[[APR_DIAG]])--[[/APR_DIAG]])
+        local queried, info = Call(--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:525:callback#49", --[[/APR_DIAG]]function() return true, C_SkillInfo.GetSkillLineInfoByID(id) end--[[APR_DIAG]])--[[/APR_DIAG]])
         if not queried then return nil end
         if not info then return 0 end
         if type(info) == "table" and not info.isHeader then
@@ -538,7 +543,7 @@ function environment.getSkillLevel(id)
                     return nil
                 end
             elseif GetSkillLineInfo then
-                local queried, skillID, rank = Call(--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:541:callback#49", --[[/APR_DIAG]]function()
+                local queried, skillID, rank = Call(--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:546:callback#50", --[[/APR_DIAG]]function()
                     local _, _, _, rank, _, _, _, _, _, _, _, _, skillID = GetSkillLineInfo(index)
                     return true, skillID, rank
                 end--[[APR_DIAG]])--[[/APR_DIAG]])
@@ -549,10 +554,10 @@ function environment.getSkillLevel(id)
         return 0
     end
     if GetProfessions and GetProfessionInfo then
-        local indices = Call(--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:552:callback#50", --[[/APR_DIAG]]function() return { GetProfessions() } end--[[APR_DIAG]])--[[/APR_DIAG]])
+        local indices = Call(--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:557:callback#51", --[[/APR_DIAG]]function() return { GetProfessions() } end--[[APR_DIAG]])--[[/APR_DIAG]])
         if not indices then return nil end
         for _, index in pairs(indices) do
-            local skillID, rank = Call(--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:555:callback#51", --[[/APR_DIAG]]function()
+            local skillID, rank = Call(--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:560:callback#52", --[[/APR_DIAG]]function()
                 local _, _, rank, _, _, _, skillID = GetProfessionInfo(index)
                 return skillID, rank
             end--[[APR_DIAG]])--[[/APR_DIAG]])
@@ -560,21 +565,21 @@ function environment.getSkillLevel(id)
         end
         return 0
     end
-end--[[APR_DIAG]]; environment.getSkillLevel = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:518:environment.getSkillLevel#47", environment.getSkillLevel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getSkillLevel = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:523:environment.getSkillLevel#48", environment.getSkillLevel)--[[/APR_DIAG]]
 function environment.isSpellKnown(id)
     local known = Call(IsPlayerSpell, id)
     if type(known) == "boolean" then return known end
     known = Call(IsSpellKnown, id)
     if type(known) == "boolean" then return known end
-end--[[APR_DIAG]]; environment.isSpellKnown = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:564:environment.isSpellKnown#52", environment.isSpellKnown)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.isSpellKnown = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:569:environment.isSpellKnown#53", environment.isSpellKnown)--[[/APR_DIAG]]
 function environment.getSpellInfo(id)
     local info = C_Spell and Call(C_Spell.GetSpellInfo, id)
     if info then return { name = Text(info.name), castTime = Number(info.castTime) and info.castTime or nil } end
-end--[[APR_DIAG]]; environment.getSpellInfo = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:570:environment.getSpellInfo#53", environment.getSpellInfo)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getSpellInfo = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:575:environment.getSpellInfo#54", environment.getSpellInfo)--[[/APR_DIAG]]
 function environment.getItemSpellID(id)
     local _, spellID = Call(C_Item and C_Item.GetItemSpell or GetItemSpell, id)
     return Number(spellID) and spellID or nil
-end--[[APR_DIAG]]; environment.getItemSpellID = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:574:environment.getItemSpellID#54", environment.getItemSpellID)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getItemSpellID = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:579:environment.getItemSpellID#55", environment.getItemSpellID)--[[/APR_DIAG]]
 function environment.getActionCastSeconds(kind, id)
     local spellID = id
     if kind == "item" then
@@ -583,31 +588,31 @@ function environment.getActionCastSeconds(kind, id)
     if not Number(spellID) then return nil end
     local info = environment.getSpellInfo(spellID)
     if info and info.castTime and info.castTime >= 0 then return info.castTime / 1000 end
-end--[[APR_DIAG]]; environment.getActionCastSeconds = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:578:environment.getActionCastSeconds#55", environment.getActionCastSeconds)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getActionCastSeconds = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:583:environment.getActionCastSeconds#56", environment.getActionCastSeconds)--[[/APR_DIAG]]
 function environment.getSpellName(id)
     local info = environment.getSpellInfo(id)
     return Text(info and info.name) or Text(Call(GetSpellInfo, id)) or environment.getText("UNKNOWN", "UNKNOWN")
-end--[[APR_DIAG]]; environment.getSpellName = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:587:environment.getSpellName#56", environment.getSpellName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getSpellName = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:592:environment.getSpellName#57", environment.getSpellName)--[[/APR_DIAG]]
 function environment.getItemName(id)
     return Text(Call(C_Item and C_Item.GetItemNameByID, id)) or Text(Call(GetItemInfo, id))
         or environment.getText("UNKNOWN", "UNKNOWN")
-end--[[APR_DIAG]]; environment.getItemName = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:591:environment.getItemName#57", environment.getItemName)--[[/APR_DIAG]]
-function environment.getLocale() return Call(GetLocale) or "enUS" end--[[APR_DIAG]]; environment.getLocale = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:595:environment.getLocale#58", environment.getLocale)--[[/APR_DIAG]]
-function environment.getText(key) return Lib:GetText(key, environment.getLocale()) end--[[APR_DIAG]]; environment.getText = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:596:environment.getText#59", environment.getText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getItemName = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:596:environment.getItemName#58", environment.getItemName)--[[/APR_DIAG]]
+function environment.getLocale() return Call(GetLocale) or "enUS" end--[[APR_DIAG]]; environment.getLocale = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:600:environment.getLocale#59", environment.getLocale)--[[/APR_DIAG]]
+function environment.getText(key) return Lib:GetText(key, environment.getLocale()) end--[[APR_DIAG]]; environment.getText = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:601:environment.getText#60", environment.getText)--[[/APR_DIAG]]
 function environment.getQuestName(id)
     return C_QuestLog and Text(Call(C_QuestLog.GetTitleForQuestID, id))
-end--[[APR_DIAG]]; environment.getQuestName = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:597:environment.getQuestName#60", environment.getQuestName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getQuestName = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:602:environment.getQuestName#61", environment.getQuestName)--[[/APR_DIAG]]
 function environment.getNPCName(id)
     return APR.GetRaidIconNpcName and Text(Call(APR.GetRaidIconNpcName, APR, id)) or nil
-end--[[APR_DIAG]]; environment.getNPCName = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:600:environment.getNPCName#61", environment.getNPCName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getNPCName = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:605:environment.getNPCName#62", environment.getNPCName)--[[/APR_DIAG]]
 function environment.getAchievementName(id)
     local _, name = Call(GetAchievementInfo, id)
     return Text(name)
-end--[[APR_DIAG]]; environment.getAchievementName = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:603:environment.getAchievementName#62", environment.getAchievementName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getAchievementName = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:608:environment.getAchievementName#63", environment.getAchievementName)--[[/APR_DIAG]]
 
 function environment.getGlobalText(key)
     return Text(rawget(_G, key))
-end--[[APR_DIAG]]; environment.getGlobalText = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:608:environment.getGlobalText#63", environment.getGlobalText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getGlobalText = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:613:environment.getGlobalText#64", environment.getGlobalText)--[[/APR_DIAG]]
 function environment.getCharacter()
     local _, _, raceID = Call(UnitRace, "player")
     local _, class = Call(UnitClass, "player")
@@ -615,7 +620,7 @@ function environment.getCharacter()
     return { faction = Text(Call(UnitFactionGroup, "player")), level = Call(UnitLevel, "player"), raceID = raceID,
         class = type(class) == "string" and class:upper() or nil, inGroup = Call(IsInGroup),
         mapID = C_Map and Call(C_Map.GetBestMapForUnit, "player"), indoors = Call(IsIndoors), inInstance = Call(IsInInstance) }
-end--[[APR_DIAG]]; environment.getCharacter = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:611:environment.getCharacter#64", environment.getCharacter)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getCharacter = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:616:environment.getCharacter#65", environment.getCharacter)--[[/APR_DIAG]]
 -- Availability is observed in the current NPC interaction, never inferred from
 -- an empty quest log or from a quest's presence in an authored route.
 local function InteractionNPC(kind)
@@ -623,7 +628,7 @@ local function InteractionNPC(kind)
     local guid = Text(Call(UnitGUID, token))
     if not guid then guid = Text(Call(UnitGUID, token == "npc" and "questnpc" or "npc")) end
     return guid and tonumber(guid:match("^[^-]+%-[^-]+%-[^-]+%-[^-]+%-[^-]+%-(%d+)%-")) or nil
-end--[[APR_DIAG]]; InteractionNPC = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:621:InteractionNPC#65", InteractionNPC)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; InteractionNPC = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:626:InteractionNPC#66", InteractionNPC)--[[/APR_DIAG]]
 
 local function IsQuestStarter(acceptance, npcID)
     if not npcID then return false end
@@ -631,7 +636,7 @@ local function IsQuestStarter(acceptance, npcID)
         if npcID == expected then return true end
     end
     return false
-end--[[APR_DIAG]]; IsQuestStarter = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:628:IsQuestStarter#66", IsQuestStarter)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; IsQuestStarter = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:633:IsQuestStarter#67", IsQuestStarter)--[[/APR_DIAG]]
 
 local availabilityRecords, availabilityOrder, availabilityCursor = {}, {}, 0
 local MAX_AVAILABILITY_RECORDS = 128
@@ -656,7 +661,7 @@ local function AvailabilityRecord(id, acceptance)
     end
     if acceptance then record.acceptance = acceptance end
     return record
-end--[[APR_DIAG]]; AvailabilityRecord = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:639:AvailabilityRecord#67", AvailabilityRecord)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; AvailabilityRecord = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:644:AvailabilityRecord#68", AvailabilityRecord)--[[/APR_DIAG]]
 
 local function AcceptanceSnapshot(acceptance)
     local data, result = APR.NavigationData, {}
@@ -676,10 +681,10 @@ local function AcceptanceSnapshot(acceptance)
                 result[#result + 1] = path .. "=" .. tostring(state) .. ":" .. tostring(reason)
             end
         end
-    end--[[APR_DIAG]]; visit = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:665:visit#69", visit)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; visit = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:670:visit#70", visit)--[[/APR_DIAG]]
     visit(acceptance and acceptance.requirements, "")
     return table.concat(result, ";")
-end--[[APR_DIAG]]; AcceptanceSnapshot = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:661:AcceptanceSnapshot#68", AcceptanceSnapshot)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; AcceptanceSnapshot = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:666:AcceptanceSnapshot#69", AcceptanceSnapshot)--[[/APR_DIAG]]
 
 local function CurrentInteraction()
     if nativeInteractionSeen then
@@ -700,7 +705,7 @@ local function CurrentInteraction()
     if QuestFrameGreetingPanel and Call(QuestFrameGreetingPanel.IsShown, QuestFrameGreetingPanel) == true then
         return { kind = "greeting", npcID = InteractionNPC("greeting"), source = "QuestFrameGreetingPanel" }
     end
-end--[[APR_DIAG]]; CurrentInteraction = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:684:CurrentInteraction#70", CurrentInteraction)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; CurrentInteraction = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:689:CurrentInteraction#71", CurrentInteraction)--[[/APR_DIAG]]
 
 local function ReadInteractionOffers(interaction)
     local result, complete = {}, false
@@ -722,7 +727,7 @@ local function ReadInteractionOffers(interaction)
         if Number(count) and count >= 0 and count <= 100 then
             complete = true
             for index = 1, count do
-                local offered = Call(--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:725:callback#72", --[[/APR_DIAG]]function()
+                local offered = Call(--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:730:callback#73", --[[/APR_DIAG]]function()
                     local _, _, _, _, questID = GetAvailableQuestInfo(index)
                     return questID
                 end--[[APR_DIAG]])--[[/APR_DIAG]])
@@ -733,7 +738,7 @@ local function ReadInteractionOffers(interaction)
     -- The native event proves the interaction is open, not that its offers are
     -- immutable. Sample live data even when another addon hides Blizzard's UI.
     return result, complete
-end--[[APR_DIAG]]; ReadInteractionOffers = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:705:ReadInteractionOffers#71", ReadInteractionOffers)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ReadInteractionOffers = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:710:ReadInteractionOffers#72", ReadInteractionOffers)--[[/APR_DIAG]]
 
 local function ActiveQuestIDs()
     local count = C_QuestLog and Call(C_QuestLog.GetNumQuestLogEntries)
@@ -748,7 +753,7 @@ local function ActiveQuestIDs()
         end
     end
     return result
-end--[[APR_DIAG]]; ActiveQuestIDs = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:738:ActiveQuestIDs#73", ActiveQuestIDs)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ActiveQuestIDs = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:743:ActiveQuestIDs#74", ActiveQuestIDs)--[[/APR_DIAG]]
 
 local function RecordOffer(record, interaction, offers, complete, summary)
     if not offers then offers, complete = ReadInteractionOffers(interaction) end
@@ -787,7 +792,7 @@ local function RecordOffer(record, interaction, offers, complete, summary)
         record.evidence.activeQuestIDs = Copy(interaction.activeQuestIDs)
     end
     return offered
-end--[[APR_DIAG]]; RecordOffer = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:753:RecordOffer#74", RecordOffer)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; RecordOffer = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:758:RecordOffer#75", RecordOffer)--[[/APR_DIAG]]
 
 local function InvalidateOffers(reason)
     for _, record in pairs(availabilityRecords) do
@@ -795,7 +800,7 @@ local function InvalidateOffers(reason)
         if record.evidence then record.evidence.valid, record.evidence.invalidatedBy = false, reason end
     end
     if nativeInteraction then nativeInteraction.offers, nativeInteraction.complete = nil, nil end
-end--[[APR_DIAG]]; InvalidateOffers = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:792:InvalidateOffers#75", InvalidateOffers)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; InvalidateOffers = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:797:InvalidateOffers#76", InvalidateOffers)--[[/APR_DIAG]]
 
 local function CaptureInteraction(kind, event)
     nativeInteractionSeen = true
@@ -806,7 +811,7 @@ local function CaptureInteraction(kind, event)
     -- Evidence exports copy these IDs before exposing them to callers.
     local summary = {}
     for _, record in pairs(availabilityRecords) do RecordOffer(record, nativeInteraction, offers, complete, summary) end
-end--[[APR_DIAG]]; CaptureInteraction = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:800:CaptureInteraction#76", CaptureInteraction)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; CaptureInteraction = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:805:CaptureInteraction#77", CaptureInteraction)--[[/APR_DIAG]]
 
 function environment.isQuestAvailable(id, acceptance)
     local record = AvailabilityRecord(id, acceptance)
@@ -818,33 +823,33 @@ function environment.isQuestAvailable(id, acceptance)
         if record.evidence then record.evidence.valid, record.evidence.invalidatedBy = false, "requirements_changed" end
     end
     return nil
-end--[[APR_DIAG]]; environment.isQuestAvailable = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:811:environment.isQuestAvailable#77", environment.isQuestAvailable)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.isQuestAvailable = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:816:environment.isQuestAvailable#78", environment.isQuestAvailable)--[[/APR_DIAG]]
 
 function environment.getQuestAvailabilityEvidence(id)
     local record = availabilityRecords[id]
     return record and Copy(record.evidence) or nil
-end--[[APR_DIAG]]; environment.getQuestAvailabilityEvidence = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:823:environment.getQuestAvailabilityEvidence#78", environment.getQuestAvailabilityEvidence)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getQuestAvailabilityEvidence = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:828:environment.getQuestAvailabilityEvidence#79", environment.getQuestAvailabilityEvidence)--[[/APR_DIAG]]
 
-function environment.isQuestCompleted(id) return C_QuestLog and Call(C_QuestLog.IsQuestFlaggedCompleted, id) end--[[APR_DIAG]]; environment.isQuestCompleted = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:828:environment.isQuestCompleted#79", environment.isQuestCompleted)--[[/APR_DIAG]]
+function environment.isQuestCompleted(id) return C_QuestLog and Call(C_QuestLog.IsQuestFlaggedCompleted, id) end--[[APR_DIAG]]; environment.isQuestCompleted = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:833:environment.isQuestCompleted#80", environment.isQuestCompleted)--[[/APR_DIAG]]
 function environment.isQuestCompletedOnAccount(id)
     return C_QuestLog and Call(C_QuestLog.IsQuestFlaggedCompletedOnAccount, id)
-end--[[APR_DIAG]]; environment.isQuestCompletedOnAccount = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:829:environment.isQuestCompletedOnAccount#80", environment.isQuestCompletedOnAccount)--[[/APR_DIAG]]
-function environment.isQuestActive(id) return C_QuestLog and Call(C_QuestLog.IsOnQuest, id) end--[[APR_DIAG]]; environment.isQuestActive = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:832:environment.isQuestActive#81", environment.isQuestActive)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.isQuestCompletedOnAccount = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:834:environment.isQuestCompletedOnAccount#81", environment.isQuestCompletedOnAccount)--[[/APR_DIAG]]
+function environment.isQuestActive(id) return C_QuestLog and Call(C_QuestLog.IsOnQuest, id) end--[[APR_DIAG]]; environment.isQuestActive = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:837:environment.isQuestActive#82", environment.isQuestActive)--[[/APR_DIAG]]
 function environment.isQuestReadyForTurnIn(id)
     return C_QuestLog and Call(C_QuestLog.IsComplete, id)
-end--[[APR_DIAG]]; environment.isQuestReadyForTurnIn = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:833:environment.isQuestReadyForTurnIn#82", environment.isQuestReadyForTurnIn)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.isQuestReadyForTurnIn = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:838:environment.isQuestReadyForTurnIn#83", environment.isQuestReadyForTurnIn)--[[/APR_DIAG]]
 function environment.isQuestObjectiveCompleted(id, index)
     local objectives = C_QuestLog and Call(C_QuestLog.GetQuestObjectives, id)
     local objective = objectives and Accessible(objectives) and objectives[index]
-    if objective and Accessible(objective) then return Call(--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:839:callback#84", --[[/APR_DIAG]]function() return objective.finished end--[[APR_DIAG]])--[[/APR_DIAG]]) end
-end--[[APR_DIAG]]; environment.isQuestObjectiveCompleted = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:836:environment.isQuestObjectiveCompleted#83", environment.isQuestObjectiveCompleted)--[[/APR_DIAG]]
+    if objective and Accessible(objective) then return Call(--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:844:callback#85", --[[/APR_DIAG]]function() return objective.finished end--[[APR_DIAG]])--[[/APR_DIAG]]) end
+end--[[APR_DIAG]]; environment.isQuestObjectiveCompleted = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:841:environment.isQuestObjectiveCompleted#84", environment.isQuestObjectiveCompleted)--[[/APR_DIAG]]
 function environment.getQuestObjectiveProgress(id, index)
     local objectives = C_QuestLog and Call(C_QuestLog.GetQuestObjectives, id)
     local objective = type(objectives) == "table" and Accessible(objectives[index]) and objectives[index]
     if objective and Number(objective.numFulfilled) and Number(objective.numRequired) then
         return objective.numFulfilled, objective.numRequired
     end
-end--[[APR_DIAG]]; environment.getQuestObjectiveProgress = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:841:environment.getQuestObjectiveProgress#85", environment.getQuestObjectiveProgress)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getQuestObjectiveProgress = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:846:environment.getQuestObjectiveProgress#86", environment.getQuestObjectiveProgress)--[[/APR_DIAG]]
 function environment.getScenarioCriteria(scenario)
     if not scenario or not C_ScenarioInfo then return nil end
     local current = Call(C_ScenarioInfo.GetScenarioInfo)
@@ -856,7 +861,7 @@ function environment.getScenarioCriteria(scenario)
     return { completed = completed,
         description = Text(criteria.description), quantity = Number(criteria.quantity) and criteria.quantity or nil,
         totalQuantity = Number(criteria.totalQuantity) and criteria.totalQuantity or nil }
-end--[[APR_DIAG]]; environment.getScenarioCriteria = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:848:environment.getScenarioCriteria#86", environment.getScenarioCriteria)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getScenarioCriteria = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:853:environment.getScenarioCriteria#87", environment.getScenarioCriteria)--[[/APR_DIAG]]
 local watchedUnlockAction
 function environment.watchUnlockAction(step)
     if watchedUnlockAction and watchedUnlockAction.key == step._unlockStepID
@@ -868,7 +873,7 @@ function environment.watchUnlockAction(step)
         or (step.actionType == "item" and id and environment.getItemSpellID(id))
     watchedUnlockAction = { key = step._unlockStepID, token = step._unlockObservationToken, kind = step.actionType, spellID = spellID,
         position = step.position and APR.NavigationData:NormalizeLocation(step.position), radius = step.radius or 30 }
-end--[[APR_DIAG]]; environment.watchUnlockAction = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:861:environment.watchUnlockAction#87", environment.watchUnlockAction)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.watchUnlockAction = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:866:environment.watchUnlockAction#88", environment.watchUnlockAction)--[[/APR_DIAG]]
 function environment.isUnlockActionComplete(step)
     -- Successful manual actions and directly observable local states advance
     -- instructions. Travel without a sourced arrival never infers a landing.
@@ -899,12 +904,12 @@ function environment.isUnlockActionComplete(step)
             end
         end
     end
-end--[[APR_DIAG]]; environment.isUnlockActionComplete = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:872:environment.isUnlockActionComplete#88", environment.isUnlockActionComplete)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.isUnlockActionComplete = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:877:environment.isUnlockActionComplete#89", environment.isUnlockActionComplete)--[[/APR_DIAG]]
 function environment.getQuestObjectiveText(id, index)
     local objectives = C_QuestLog and Call(C_QuestLog.GetQuestObjectives, id)
     local objective = objectives and Accessible(objectives) and objectives[index]
     return objective and Accessible(objective) and Text(objective.text) or nil
-end--[[APR_DIAG]]; environment.getQuestObjectiveText = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:903:environment.getQuestObjectiveText#89", environment.getQuestObjectiveText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getQuestObjectiveText = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:908:environment.getQuestObjectiveText#90", environment.getQuestObjectiveText)--[[/APR_DIAG]]
 function environment.hasAura(id)
     local getter = C_UnitAuras and C_UnitAuras.GetPlayerAuraBySpellID
     local fallback = AuraUtil and AuraUtil.FindAuraBySpellID
@@ -913,18 +918,18 @@ function environment.hasAura(id)
     if getter then ok, aura = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](getter, id) else ok, aura = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](fallback, id, "player") end
     if not ok or not Accessible(aura) then return nil end
     return aura ~= nil
-end--[[APR_DIAG]]; environment.hasAura = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:908:environment.hasAura#90", environment.hasAura)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.hasAura = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:913:environment.hasAura#91", environment.hasAura)--[[/APR_DIAG]]
 function environment.isAchievementCompleted(id)
     -- The fourth return includes account completion. Personal completion is a
     -- separate return and must not exclude alts from account-wide unlocks.
     local achievementID, _, _, completed = Call(GetAchievementInfo, id)
     if Number(achievementID) and type(completed) == "boolean" then return completed end
-end--[[APR_DIAG]]; environment.isAchievementCompleted = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:917:environment.isAchievementCompleted#91", environment.isAchievementCompleted)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.isAchievementCompleted = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:922:environment.isAchievementCompleted#92", environment.isAchievementCompleted)--[[/APR_DIAG]]
 function environment.getGarrisonLevel(kind)
     local info = C_Garrison and Call(C_Garrison.GetGarrisonInfo, kind)
     return type(info) == "table" and info.garrisonLevel or info
-end--[[APR_DIAG]]; environment.getGarrisonLevel = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:923:environment.getGarrisonLevel#92", environment.getGarrisonLevel)--[[/APR_DIAG]]
-function environment.hasToy(id) return Call(PlayerHasToy, id) end--[[APR_DIAG]]; environment.hasToy = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:927:environment.hasToy#93", environment.hasToy)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getGarrisonLevel = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:928:environment.getGarrisonLevel#93", environment.getGarrisonLevel)--[[/APR_DIAG]]
+function environment.hasToy(id) return Call(PlayerHasToy, id) end--[[APR_DIAG]]; environment.hasToy = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:932:environment.hasToy#94", environment.hasToy)--[[/APR_DIAG]]
 local function ReadActionUsability(kind, id, ignoreCooldown)
     if kind == "housing" then
         if not C_Housing or not Adapter:GetHousingData() then return false, "unknown" end
@@ -949,11 +954,11 @@ local function ReadActionUsability(kind, id, ignoreCooldown)
     local usable, reason = Call(APR.GetRouteActionUsability, APR, kind, id, ignoreCooldown == true, true)
     if usable == nil then return false, "pending_data" end
     return usable == true, reason
-end--[[APR_DIAG]]; ReadActionUsability = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:928:ReadActionUsability#94", ReadActionUsability)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ReadActionUsability = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:933:ReadActionUsability#95", ReadActionUsability)--[[/APR_DIAG]]
 
 function environment.getActionUsabilityIgnoringCooldown(kind, id)
     return ReadActionUsability(kind, id, true)
-end--[[APR_DIAG]]; environment.getActionUsabilityIgnoringCooldown = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:954:environment.getActionUsabilityIgnoringCooldown#95", environment.getActionUsabilityIgnoringCooldown)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getActionUsabilityIgnoringCooldown = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:959:environment.getActionUsabilityIgnoringCooldown#96", environment.getActionUsabilityIgnoringCooldown)--[[/APR_DIAG]]
 
 local watchedActions = {}
 function environment.getActionUsability(kind, id)
@@ -978,7 +983,7 @@ function environment.getActionUsability(kind, id)
         if watched then watched.enabled = false end
     end
     return usable, reason
-end--[[APR_DIAG]]; environment.getActionUsability = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:959:environment.getActionUsability#96", environment.getActionUsability)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getActionUsability = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:964:environment.getActionUsability#97", environment.getActionUsability)--[[/APR_DIAG]]
 
 local CooldownCheck = {}
 CooldownCheck.__index = CooldownCheck
@@ -1000,11 +1005,11 @@ function CooldownCheck:Step(maxOperations, maxMilliseconds)
         end
     end
     return "planning"
-end--[[APR_DIAG]]; CooldownCheck.Step = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:985:CooldownCheck:Step#97", CooldownCheck.Step)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; CooldownCheck.Step = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:990:CooldownCheck:Step#98", CooldownCheck.Step)--[[/APR_DIAG]]
 
 function Adapter:CreateCooldownCheck()
     return setmetatable({ clock = debugprofilestop }, CooldownCheck)
-end--[[APR_DIAG]]; Adapter.CreateCooldownCheck = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1005:Adapter:CreateCooldownCheck#98", Adapter.CreateCooldownCheck)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Adapter.CreateCooldownCheck = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1010:Adapter:CreateCooldownCheck#99", Adapter.CreateCooldownCheck)--[[/APR_DIAG]]
 function environment.getDynamicPosition(name)
     if name == "player" then return PlayerPosition() end
     if name == "bind" then return Adapter:GetBindPosition() end
@@ -1013,7 +1018,7 @@ function environment.getDynamicPosition(name)
     if name == "housing_exit" then
         return Adapter:SavedPosition(Adapter:GetCharacterSettings().housingExitLocation)
     end
-end--[[APR_DIAG]]; environment.getDynamicPosition = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1008:environment.getDynamicPosition#99", environment.getDynamicPosition)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; environment.getDynamicPosition = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1013:environment.getDynamicPosition#100", environment.getDynamicPosition)--[[/APR_DIAG]]
 
 -- Capture the interface version before conversion. Passing select's results
 -- directly would also pass later build fields as tonumber's base argument.
@@ -1027,7 +1032,7 @@ APR.NavigationData, APR.NavigationEngine = Data, Lib.Engine
 function Adapter:RefreshWaypoints()
     local settings = APR.settings and APR.settings.profile
     Data:SetWaypointsEnabled(settings ~= nil and settings.enableAddon == true)
-end--[[APR_DIAG]]; Adapter.RefreshWaypoints = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1027:Adapter:RefreshWaypoints#100", Adapter.RefreshWaypoints)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Adapter.RefreshWaypoints = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1032:Adapter:RefreshWaypoints#101", Adapter.RefreshWaypoints)--[[/APR_DIAG]]
 -- Preserve the historical adapter method name.
 Adapter.RefreshWaypointUI = Adapter.RefreshWaypoints
 function Adapter:GetBlockedRouteText(blockers, styled)
@@ -1040,17 +1045,17 @@ function Adapter:GetBlockedRouteText(blockers, styled)
             and APR:WrapTextWithAppearanceColor(line.text, "currentStep", roles[line.kind]) or ""
     end
     return table.concat(rendered, "\n"), lines
-end--[[APR_DIAG]]; Adapter.GetBlockedRouteText = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1033:Adapter:GetBlockedRouteText#101", Adapter.GetBlockedRouteText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Adapter.GetBlockedRouteText = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1038:Adapter:GetBlockedRouteText#102", Adapter.GetBlockedRouteText)--[[/APR_DIAG]]
 
-function Data:GetCharacterSettings() return Adapter:GetCharacterSettings() end--[[APR_DIAG]]; Data.GetCharacterSettings = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1045:Data:GetCharacterSettings#102", Data.GetCharacterSettings)--[[/APR_DIAG]]
-function Data:GetHousingData() return Adapter:GetHousingData() end--[[APR_DIAG]]; Data.GetHousingData = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1046:Data:GetHousingData#103", Data.GetHousingData)--[[/APR_DIAG]]
-function Data:GetBindPosition() return Adapter:GetBindPosition() end--[[APR_DIAG]]; Data.GetBindPosition = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1047:Data:GetBindPosition#104", Data.GetBindPosition)--[[/APR_DIAG]]
+function Data:GetCharacterSettings() return Adapter:GetCharacterSettings() end--[[APR_DIAG]]; Data.GetCharacterSettings = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1050:Data:GetCharacterSettings#103", Data.GetCharacterSettings)--[[/APR_DIAG]]
+function Data:GetHousingData() return Adapter:GetHousingData() end--[[APR_DIAG]]; Data.GetHousingData = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1051:Data:GetHousingData#104", Data.GetHousingData)--[[/APR_DIAG]]
+function Data:GetBindPosition() return Adapter:GetBindPosition() end--[[APR_DIAG]]; Data.GetBindPosition = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1052:Data:GetBindPosition#105", Data.GetBindPosition)--[[/APR_DIAG]]
 function Data:GetBindLocationMapID()
     local position = self:GetBindPosition()
     return position and position.uiMapID
-end--[[APR_DIAG]]; Data.GetBindLocationMapID = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1048:Data:GetBindLocationMapID#105", Data.GetBindLocationMapID)--[[/APR_DIAG]]
-function Data:IsBindLocationSupported() return self:GetBindPosition() ~= nil end--[[APR_DIAG]]; Data.IsBindLocationSupported = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1052:Data:IsBindLocationSupported#106", Data.IsBindLocationSupported)--[[/APR_DIAG]]
-function Data:UpdateHousingExitLocation() Adapter:UpdateHousingExitLocation() end--[[APR_DIAG]]; Data.UpdateHousingExitLocation = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1053:Data:UpdateHousingExitLocation#107", Data.UpdateHousingExitLocation)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Data.GetBindLocationMapID = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1053:Data:GetBindLocationMapID#106", Data.GetBindLocationMapID)--[[/APR_DIAG]]
+function Data:IsBindLocationSupported() return self:GetBindPosition() ~= nil end--[[APR_DIAG]]; Data.IsBindLocationSupported = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1057:Data:IsBindLocationSupported#107", Data.IsBindLocationSupported)--[[/APR_DIAG]]
+function Data:UpdateHousingExitLocation() Adapter:UpdateHousingExitLocation() end--[[APR_DIAG]]; Data.UpdateHousingExitLocation = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1058:Data:UpdateHousingExitLocation#108", Data.UpdateHousingExitLocation)--[[/APR_DIAG]]
 
 local observedGeometryArt = {}
 local function Changed(housingContextChanged, event)
@@ -1086,7 +1091,7 @@ local function Changed(housingContextChanged, event)
         local function HousingStep(step)
             local kind = step and step.action and step.action.type or (step and step.kind)
             return kind == "housing" or kind == "housing_return"
-        end--[[APR_DIAG]]; HousingStep = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1086:HousingStep#109", HousingStep)--[[/APR_DIAG]]
+        end--[[APR_DIAG]]; HousingStep = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1091:HousingStep#110", HousingStep)--[[/APR_DIAG]]
         local affected = HousingStep(active)
         for index = navigation.cursor or 1, #(navigation.queue or {}) do
             if HousingStep(navigation.queue[index]) then affected = true; break end
@@ -1105,7 +1110,7 @@ local function Changed(housingContextChanged, event)
         navigation:ForceRefresh(transition and "world_transition" or event)
     end
     if cancelledHousing and navigation.RequestUpdate then navigation:RequestUpdate() end
-end--[[APR_DIAG]]; Changed = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1056:Changed#108", Changed)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Changed = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1061:Changed#109", Changed)--[[/APR_DIAG]]
 
 function Adapter:CheckBindLanding(afterLoading)
     local pending = self.pendingBindLanding
@@ -1127,7 +1132,7 @@ function Adapter:CheckBindLanding(afterLoading)
         self.bindTicker:Cancel()
         self.bindTicker = nil
     end
-end--[[APR_DIAG]]; Adapter.CheckBindLanding = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1110:Adapter:CheckBindLanding#110", Adapter.CheckBindLanding)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Adapter.CheckBindLanding = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1115:Adapter:CheckBindLanding#111", Adapter.CheckBindLanding)--[[/APR_DIAG]]
 
 local frame = CreateFrame("Frame")
 Adapter.frame = frame
@@ -1160,7 +1165,7 @@ if C_Housing then
     frame:RegisterEvent("NEIGHBORHOOD_MAP_DATA_UPDATED")
     frame:RegisterEvent("TRACKED_HOUSE_CHANGED")
 end
-frame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1163:callback#111", --[[/APR_DIAG]]function(_, event, payload, _, spellID)
+frame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1168:callback#112", --[[/APR_DIAG]]function(_, event, payload, _, spellID)
     -- Keep the Lua filter for clients without unit-scoped registration. Combat
     -- traffic from other units must not invalidate a published travel plan.
     if event == "UNIT_SPELLCAST_SUCCEEDED"
@@ -1223,7 +1228,7 @@ frame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/
                 deadline = (GetTime and GetTime() or 0) + 60 }
             if Adapter.bindTicker then Adapter.bindTicker:Cancel() end
             if C_Timer and C_Timer.NewTicker then
-                Adapter.bindTicker = C_Timer.NewTicker(0.25, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1226:callback#112", --[[/APR_DIAG]]function() Adapter:CheckBindLanding() end--[[APR_DIAG]])--[[/APR_DIAG]])
+                Adapter.bindTicker = C_Timer.NewTicker(0.25, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1231:callback#113", --[[/APR_DIAG]]function() Adapter:CheckBindLanding() end--[[APR_DIAG]])--[[/APR_DIAG]])
             end
         end
     elseif event == "PLAYER_HOUSE_LIST_UPDATED" then
@@ -1244,7 +1249,7 @@ end--[[APR_DIAG]])--[[/APR_DIAG]])
 -- Holiday boundaries can pass while the player remains in one zone. No saved
 -- calendar result survives them; live departure checks use the server clock.
 if C_Timer and C_Timer.NewTicker and C_Calendar and next(Data.config.Holidays or {}) then
-    Adapter.availabilityTicker = C_Timer.NewTicker(60, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1247:callback#113", --[[/APR_DIAG]]function()
+    Adapter.availabilityTicker = C_Timer.NewTicker(60, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1252:callback#114", --[[/APR_DIAG]]function()
         Call(C_Calendar.OpenCalendar)
         Changed(nil, "CALENDAR_UPDATE_EVENT_LIST")
     end--[[APR_DIAG]])--[[/APR_DIAG]])

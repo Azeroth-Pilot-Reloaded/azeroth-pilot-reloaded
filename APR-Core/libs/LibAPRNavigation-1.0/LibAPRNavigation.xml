@@ -14,6 +14,7 @@
   <Script file="TravelActions.lua"/>
   <Script file="Search.lua"/>
   <Script file="Terrain.lua"/>
+  <Script file="TerrainHeight.lua"/>
   <Script file="LocalRouting.lua"/>
   <Script file="Guidance.lua"/>
   <Script file="WaypointUI.lua"/>

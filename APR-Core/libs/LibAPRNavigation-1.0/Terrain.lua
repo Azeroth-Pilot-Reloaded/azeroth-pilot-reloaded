@@ -1,7 +1,7 @@
 -- Declarative terrain is supplied by the consumer; this module never queries WoW.
 -- Only a proved convex anchor may connect a live position to the terrain graph.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("terrain", 2) then return end
+if not Lib:BeginModule("terrain", 3) then return end
 local Instance, Terrain = Lib.Instance, {}
 Lib.Terrain = Terrain
 local Build = {}
@@ -25,12 +25,108 @@ local function Fail(job, reason)
 end
 local function Key(world, pack, id) return tostring(world) .. ":" .. tostring(pack) .. ":" .. tostring(id) end
 
+local function Slab(first, last, lower, upper, lo, hi)
+    if lower == nil and upper == nil then return lo, hi end
+    if not Finite(first) or not Finite(last) then return nil end
+    local delta = last - first
+    if delta == 0 then
+        if (lower and first < lower) or (upper and first > upper) then return nil end
+        return lo, hi
+    end
+    local near, far
+    if delta > 0 then
+        near, far = lower and (lower - first) / delta or -math.huge, upper and (upper - first) / delta or math.huge
+    else
+        near, far = upper and (upper - first) / delta or -math.huge, lower and (lower - first) / delta or math.huge
+    end
+    lo, hi = math.max(lo, near), math.min(hi, far)
+    if lo > hi then return nil end
+    return lo, hi
+end
+
+function Terrain.ScopeValid(scope)
+    if type(scope) ~= "table" or type(scope.id) ~= "string" or scope.id == "" or not Channel(scope.accessKey) then return false end
+    local bounds = scope.bounds
+    if type(bounds) ~= "table" then return false end
+    for _, axis in ipairs({ "X", "Y", "Z" }) do
+        local low, high = bounds["min" .. axis], bounds["max" .. axis]
+        if not Finite(low) or not Finite(high) or low >= high then return false end
+    end
+    return scope.groundOnly == nil or type(scope.groundOnly) == "boolean"
+end
+
+local function UnknownNativeHeight(point)
+    return point.positionSource == "unit" and point.heightSource ~= "terrain" and point.z == 0
+end
+
+function Terrain.ScopeContains(scope, point)
+    if not Terrain.ScopeValid(scope) or type(point) ~= "table" or not Finite(point.x) or not Finite(point.y) then return false end
+    if point.terrainBoundary == scope.id then return false end
+    if scope.accessKey ~= nil and scope.accessKey ~= point.accessKey
+        and (point.accessKey ~= nil or UnknownNativeHeight(point)) then return false end
+    local b = scope.bounds
+    if point.x < b.minX or point.x > b.maxX or point.y < b.minY or point.y > b.maxY then return false end
+    return UnknownNativeHeight(point) or not Finite(point.z) or (point.z >= b.minZ and point.z <= b.maxZ)
+end
+
+local function ScopeBlocks(scope, from, to)
+    if not Terrain.ScopeValid(scope) then return true end
+    if scope.accessKey ~= nil and from.accessKey ~= nil and to.accessKey ~= nil
+        and scope.accessKey ~= from.accessKey and scope.accessKey ~= to.accessKey then return false end
+    if scope.accessKey ~= nil and from.accessKey == nil and to.accessKey == nil
+        and (UnknownNativeHeight(from) or UnknownNativeHeight(to)) then return false end
+    local b, inset = scope.bounds, 0.005
+    -- Boundary points belong to the exterior walking graph. Tangency does not
+    -- authorize a chord through the open interior of this volume.
+    local lo, hi = Slab(from.x, to.x, b.minX + inset, b.maxX - inset, 0, 1)
+    if not lo then return false end
+    lo, hi = Slab(from.y, to.y, b.minY + inset, b.maxY - inset, lo, hi)
+    if not lo then return false end
+    if Finite(from.z) and Finite(to.z) and not UnknownNativeHeight(from) and not UnknownNativeHeight(to) then
+        lo, hi = Slab(from.z, to.z, b.minZ, b.maxZ, lo, hi)
+    end
+    return lo ~= nil and hi - lo > 0.0000001
+end
+
+function Instance:GetTerrainScopes(world)
+    if self.env.getTerrainScopes then
+        local scopes, unbounded = self.env.getTerrainScopes(self.profile, world)
+        if type(scopes) == "table" then return scopes, unbounded == true end
+    end
+    local profile = Lib.terrainDatasets and Lib.terrainDatasets[self.profile]
+    local record = profile and profile[world]
+    local scopes, seen = {}, {}
+    for _, pack in pairs(record and record.packs or {}) do
+        local scope = pack.data.scope
+        if scope == nil then return {}, true end
+        if not seen[scope.id] then scopes[#scopes + 1], seen[scope.id] = scope, true end
+    end
+    if #scopes == 0 and self.env.hasTerrainData and self.env.hasTerrainData(self.profile, world) == true then return {}, true end
+    return scopes, false
+end
+
+local function ContainsAny(scopes, point)
+    for _, scope in ipairs(scopes) do if Terrain.ScopeContains(scope, point) then return true end end
+    return false
+end
+
+function Instance:RequiresTerrainRoute(from, to)
+    if type(from) ~= "table" or type(to) ~= "table" then return false end
+    local first, last = self:GetWorldInstanceID(from.instanceID), self:GetWorldInstanceID(to.instanceID)
+    if self:HasTerrainData(from) or self:HasTerrainData(to) then return true end
+    if first ~= last then return false end
+    local scopes = self:GetTerrainScopes(first)
+    for _, scope in ipairs(scopes) do if ScopeBlocks(scope, from, to) then return true end end
+    return false
+end
+
 function Lib.ValidateTerrainData(data, worldID)
     assert(type(data) == "table" and data.format == 1, "unsupported terrain format")
     assert(Nonnegative(worldID), "terrain world required")
     assert(data.worldID == nil or data.worldID == worldID, "terrain world mismatch")
     assert(type(data.nodes) == "table" and type(data.edges) == "table", "terrain graph required")
     assert(data.anchors == nil or type(data.anchors) == "table", "terrain anchors must be an array")
+    assert(data.scope == nil or Terrain.ScopeValid(data.scope), "invalid terrain scope")
     -- Each record is checked while the build is stepped, rather than doing an
     -- unbounded validation pass when a load-on-demand pack is registered.
 end
@@ -78,21 +174,34 @@ function Instance:HasTerrainData(point)
         return self.env.hasTerrainData and self.env.hasTerrainData(self.profile) == true or false
     end
     local world = self:GetWorldInstanceID(point.instanceID)
-    if profile and profile[world] and next(profile[world].packs or {}) then return true end
+    if profile and profile[world] and next(profile[world].packs or {}) then
+        if point.x == nil and point.y == nil then return true end
+        local scopes, unbounded = self:GetTerrainScopes(world)
+        return unbounded or ContainsAny(scopes, point)
+    end
     return self.env.hasTerrainData and self.env.hasTerrainData(self.profile, world, point) == true or false
 end
 
-local function NodePosition(raw, world, pack)
+local function NodePosition(raw, world, pack, scope)
     if type(raw) ~= "table" or not Identity(raw.id) or not Finite(raw.x) or not Finite(raw.y)
         or not Finite(raw.z) or not Channel(raw.floor) or not Channel(raw.accessKey)
-        or (raw.region ~= nil and type(raw.region) ~= "string") then return nil end
+        or (raw.region ~= nil and type(raw.region) ~= "string")
+        or (raw.indoor ~= nil and type(raw.indoor) ~= "boolean") then return nil end
     if raw.instanceID ~= nil and raw.instanceID ~= world then return nil end
     if raw.movementMode ~= nil and not MODES[raw.movementMode] then return nil end
+    local boundary = raw.terrainBoundary
+    if boundary ~= nil then
+        if not scope or boundary ~= scope.id or (raw.movementMode and raw.movementMode ~= "ground") then return nil end
+        local b, tolerance = scope.bounds, 0.01
+        if raw.x < b.minX-tolerance or raw.x > b.maxX+tolerance or raw.y < b.minY-tolerance or raw.y > b.maxY+tolerance
+            or raw.z < b.minZ-tolerance or raw.z > b.maxZ+tolerance then return nil end
+        if math.min(math.abs(raw.x-b.minX),math.abs(raw.x-b.maxX),math.abs(raw.y-b.minY),math.abs(raw.y-b.maxY)) > tolerance then return nil end
+    end
     return { x = raw.x, y = raw.y, z = raw.z, instanceID = world, uiMapID = raw.uiMapID,
-        floor = raw.floor, accessKey = raw.accessKey, region = raw.region,
-        groundOnly = raw.groundOnly, movementMode = raw.movementMode or "ground",
-        noFly = raw.noFly,
-        terrainNodeKey = Key(world, pack, raw.id), noAutoconnect = true }
+        floor = raw.floor, accessKey = raw.accessKey, region = raw.region, indoor = raw.indoor,
+        groundOnly = raw.groundOnly or (scope and scope.groundOnly), movementMode = raw.movementMode or "ground",
+        noFly = raw.noFly or (scope and scope.groundOnly),
+        terrainNodeKey = Key(world, pack, raw.id), terrainBoundary = boundary, noAutoconnect = boundary == nil }
 end
 
 function Build:AddPoint(point)
@@ -117,15 +226,21 @@ function Build:LoadOne()
     self.index = self.index + 1
     local world = self.owner:GetWorldInstanceID(point.instanceID)
     if self.request.terrainWorlds and not self.request.terrainWorlds[world] then return end
-    if not self.owner:HasTerrainData(point) then return end
+    local scopes, unbounded = self.owner:GetTerrainScopes(world)
+    if not unbounded and #scopes == 0 and not self.owner:HasTerrainData(point) then return end
+    self.scopes[world], self.unbounded[world] = scopes, unbounded
     self.managed[world] = true
+    if not unbounded and self.loadedWorlds[world] then return end
+    self.loadedWorlds[world] = true
     if self.owner.env.requestTerrainData then
-        local state, reason = self.owner.env.requestTerrainData(self.owner.profile, world, point)
+        local requestedPoint = unbounded and point or nil
+        local state, reason = self.owner.env.requestTerrainData(self.owner.profile, world, requestedPoint)
         local waiting = state == "planning" or state == "waiting_data"
         if state == "missing" and reason == "terrain_point_unavailable" then
             self.unavailablePoints[point] = reason
         elseif waiting or state == "missing" then
             self.unavailableWorlds[world] = { reason = reason or "pack_unavailable", waiting = waiting }
+            if not unbounded then self:Missing(point, reason or "pack_unavailable", waiting) end
             -- A registration alone does not authorize a pack rejected by the
             -- consumer's current build/revision checks, including warm caches.
             self.owner._terrainVisibility, self.owner._terrainGeometryCache = nil, nil
@@ -185,7 +300,7 @@ function Build:NodeOne()
     local raw = pack.data.nodes[self.index]
     if not raw then self:NextPack("edges"); return end
     self.index = self.index + 1
-    local point = NodePosition(raw, pack.world, pack.id)
+    local point = NodePosition(raw, pack.world, pack.id, pack.data.scope)
     if not point or self.nodes[point.terrainNodeKey] then Fail(self, "invalid_terrain_node"); return end
     if not point.region then point.region = self.owner:GetPositionRegion(point) end
     self.nodes[point.terrainNodeKey] = point
@@ -194,7 +309,7 @@ function Build:NodeOne()
     local anchors = self.anchors[pack.world] or {}
     self.anchors[pack.world] = anchors
     anchors[#anchors + 1] = { node = point, entry = point, path = { point }, reversePath = { point }, mode = point.movementMode,
-        minX = point.x, maxX = point.x, minY = point.y, maxY = point.y, minZ = point.z, maxZ = point.z }
+        minX = point.x, maxX = point.x, minY = point.y, maxY = point.y, minZ = point.z, maxZ = point.z, indoor = point.indoor }
 end
 
 function Build:Resolve(reference, pack)
@@ -290,6 +405,7 @@ local function AnchorRecord(raw, point)
         or not Finite(raw.minY) or not Finite(raw.maxY) or raw.minY > raw.maxY then return nil end
     if (raw.minZ ~= nil and not Finite(raw.minZ)) or (raw.maxZ ~= nil and not Finite(raw.maxZ)) then return nil end
     if raw.minZ and raw.maxZ and raw.minZ > raw.maxZ then return nil end
+    if raw.indoor ~= nil and type(raw.indoor) ~= "boolean" then return nil end
     local mode = raw.mode or point.movementMode
     if not MODES[mode] then return nil end
     if mode ~= "ground" and (raw.minZ == nil or raw.maxZ == nil) then return nil end
@@ -298,7 +414,7 @@ local function AnchorRecord(raw, point)
     if raw.reversePath and not raw.path then return nil end
     if not raw.path and not InAnchorBounds(point, raw) then return nil end
     return { node = point, minX = raw.minX, maxX = raw.maxX, minY = raw.minY, maxY = raw.maxY,
-        minZ = raw.minZ, maxZ = raw.maxZ, mode = mode }
+        minZ = raw.minZ, maxZ = raw.maxZ, mode = mode, indoor = raw.indoor }
 end
 
 function Build:AnchorOne()
@@ -336,18 +452,22 @@ function Build:PathPosition(raw, node)
     if raw.instanceID ~= nil and raw.instanceID ~= node.instanceID then return nil end
     local map, floor = raw.uiMapID or node.uiMapID, raw.floor or node.floor
     local access, region = raw.accessKey or node.accessKey, raw.region or node.region
+    local noFly, groundOnly = raw.noFly or node.noFly, raw.groundOnly or node.groundOnly
     local cached = self.pathPositionCache[raw]
     if cached and cached.instanceID == node.instanceID and cached.uiMapID == map
-        and cached.floor == floor and cached.accessKey == access and cached.region == region then return cached end
+        and cached.floor == floor and cached.accessKey == access and cached.region == region
+        and cached.noFly == noFly and cached.groundOnly == groundOnly then return cached end
     local point = { x = raw.x, y = raw.y, z = raw.z, instanceID = node.instanceID, uiMapID = map,
         floor = floor, accessKey = access, region = region,
-        noFly = raw.noFly, groundOnly = raw.groundOnly }
+        noFly = noFly, groundOnly = groundOnly }
     self.pathPositionCache[raw] = point
     return point
 end
 local function VisibilitySize(anchor)
     local extent = math.max(anchor.maxX - anchor.minX, anchor.maxY - anchor.minY)
-    local size = 64
+    -- Interior collision cells are often only a yard wide. A continent-sized
+    -- minimum would fill one local bucket beyond the bounded query budget.
+    local size = 2
     while size < extent do size = size * 2 end
     return size
 end
@@ -437,6 +557,7 @@ function Build:AttachOne()
     end
     local world = self.owner:GetWorldInstanceID(point.instanceID)
     if not self.managed[world] then self.index = self.index + 1; return end
+    if not self.unbounded[world] and not ContainsAny(self.scopes[world], point) then self.index = self.index + 1; return end
     local unavailable = self.unavailableWorlds[world]
     if unavailable or self.unavailablePoints[point] then
         self:Missing(point, unavailable and unavailable.reason or self.unavailablePoints[point], unavailable and unavailable.waiting)
@@ -446,6 +567,21 @@ function Build:AttachOne()
     -- Authored mandatory approach chains deliberately forbid free attachment.
     -- Their explicit passage edges remain the sole way into those endpoints.
     if point.noAutoconnect then self.index = self.index + 1; return end
+    if self.attachPoint ~= point then self.attachGeometryPoint = nil end
+    local geometryPoint = point
+    if self.owner.ResolveTerrainGroundPosition and point.positionSource == "unit"
+        and (UnknownNativeHeight(point) or not Finite(point.z)) then
+        if self.attachPoint ~= point then
+            local reason
+            geometryPoint, reason = self.owner:ResolveTerrainGroundPosition(point, self.request.groundHint)
+            if not geometryPoint then
+                self:Missing(point, reason or "terrain_altitude_missing", true)
+                self.index = self.index + 1
+                return
+            end
+            self.attachGeometryPoint = geometryPoint
+        else geometryPoint = self.attachGeometryPoint or point end
+    end
     local mode = point.movementMode or (point == self.request.start and self.profile.currentMode) or "ground"
     if mode ~= "ground" and not Finite(point.z) then
         self:Missing(point, "terrain_altitude_missing", true)
@@ -464,7 +600,7 @@ function Build:AttachOne()
         return
     end
     self.attachBucketIndex = self.attachBucketIndex + 1
-    if Inside(point, anchor, mode) then self:Candidate(anchor, point) end
+    if Inside(geometryPoint, anchor, mode) then self:Candidate(anchor, geometryPoint) end
 end
 
 local function EndpointPosition(point, anchor)
@@ -487,7 +623,7 @@ function Build:ConnectOne()
     self.connectIndex = self.connectIndex + 1
     if not Terrain.Enabled(self.profile, anchor.mode) or not FlightAllowed(self.profile, point, anchor.mode) then return end
     local to = anchor.node
-    local geometryPoint = EndpointPosition(point, anchor)
+    local geometryPoint = EndpointPosition(self.attachGeometryPoint or point, anchor)
     self.pendingConnection = { anchor = anchor, point = point, geometryPoint = geometryPoint, index = 1, direction = "outward",
         edge = EdgeRecord(point, to, anchor.mode, 0, nil) }
     self.pendingConnection.edge.polyline = { geometryPoint }
@@ -570,8 +706,14 @@ function Instance:CreateTerrainEdgeBuild(request)
     local coverage = { terrainRegions = managed, covered = true, waitingData = false,
         missingData = false, missing = {}, attached = {} }
     local fallback, owner = request.canWalk, self
+    local scopes, unbounded = {}, {}
     coverage.canWalk = function(from, to)
-        if managed[owner:GetWorldInstanceID(from.instanceID)] or managed[owner:GetWorldInstanceID(to.instanceID)] then return false end
+        local first, last = owner:GetWorldInstanceID(from.instanceID), owner:GetWorldInstanceID(to.instanceID)
+        if (managed[first] and unbounded[first]) or (managed[last] and unbounded[last]) then return false end
+        if first == last and managed[first] then
+            if ContainsAny(scopes[first], from) or ContainsAny(scopes[first], to) then return false end
+            for _, scope in ipairs(scopes[first]) do if ScopeBlocks(scope, from, to) then return false end end
+        end
         return fallback and fallback(from, to) or false
     end
     local groups = {}
@@ -580,29 +722,11 @@ function Instance:CreateTerrainEdgeBuild(request)
     local build = setmetatable({ owner = self, request = request, clock = request.clock,
         status = "planning", phase = "collect", group = 1, index = 1, groups = groups,
         points = {}, pointSeen = {}, unavailablePoints = {}, unavailableWorlds = {}, geometryWorlds = {}, managed = managed,
+        scopes = scopes, unbounded = unbounded, loadedWorlds = {},
         packs = {}, nodes = {}, aliases = {}, anchors = {}, visibility = {}, pathPositionCache = {}, result = {}, coverage = coverage,
         candidates = {}, profile = Terrain.Profile(request) }, Build)
     build:AddPoint(request.start); build:AddPoint(request.goal)
     return build
-end
-
-local function Slab(first, last, lower, upper, lo, hi)
-    if lower == nil and upper == nil then return lo, hi end
-    if not Finite(first) or not Finite(last) then return nil end
-    local delta = last - first
-    if delta == 0 then
-        if (lower and first < lower) or (upper and first > upper) then return nil end
-        return lo, hi
-    end
-    local near, far
-    if delta > 0 then
-        near, far = lower and (lower - first) / delta or -math.huge, upper and (upper - first) / delta or math.huge
-    else
-        near, far = upper and (upper - first) / delta or -math.huge, lower and (lower - first) / delta or math.huge
-    end
-    lo, hi = math.max(lo, near), math.min(hi, far)
-    if lo > hi then return nil end
-    return lo, hi
 end
 
 local function SegmentInterval(from, to, anchor, mode)
@@ -621,24 +745,38 @@ end
 local function VisibilityIntervals(world, from, to, mode)
     local intervals, seen, work = {}, {}, 0
     for size, buckets in pairs(world) do
-        local minX, maxX = math.floor(math.min(from.x, to.x) / size), math.floor(math.max(from.x, to.x) / size)
-        local minY, maxY = math.floor(math.min(from.y, to.y) / size), math.floor(math.max(from.y, to.y) / size)
-        if (maxX - minX + 1) * (maxY - minY + 1) > 64 then return nil end
-        for x = minX, maxX do
-            for y = minY, maxY do
+        local x, y = math.floor(from.x / size), math.floor(from.y / size)
+        local endX, endY = math.floor(to.x / size), math.floor(to.y / size)
+        local dx, dy = to.x - from.x, to.y - from.y
+        local stepX, stepY = dx < 0 and -1 or 1, dy < 0 and -1 or 1
+        local nextX = dx == 0 and math.huge or ((x + (dx > 0 and 1 or 0)) * size - from.x) / dx
+        local nextY = dy == 0 and math.huge or ((y + (dy > 0 and 1 or 0)) * size - from.y) / dy
+        local deltaX, deltaY = dx == 0 and math.huge or size / math.abs(dx), dy == 0 and math.huge or size / math.abs(dy)
+        local visited = 0
+        -- Visit the segment's cells, not its entire enclosing rectangle. Every
+        -- anchor is indexed into the buckets touched by its closed XY bounds,
+        -- including cells that meet the line only at an edge or corner.
+        while true do
+            visited, work = visited + 1, work + 1
+            if visited > 64 or work > 512 then return nil end
+            for _, anchor in ipairs(buckets[BucketKey(x, y)] or {}) do
                 work = work + 1
                 if work > 512 then return nil end
-                local bucket = buckets[BucketKey(x, y)] or {}
-                for _, anchor in ipairs(bucket) do
-                    work = work + 1
-                    if work > 512 then return nil end
-                    if not seen[anchor] then
-                        seen[anchor] = true
-                        local lo, hi = SegmentInterval(from, to, anchor, mode)
-                        if lo then intervals[#intervals + 1] = { lo, hi } end
-                        if #intervals > 256 then return nil end
-                    end
+                if not seen[anchor] then
+                    seen[anchor] = true
+                    local lo, hi = SegmentInterval(from, to, anchor, mode)
+                    if lo then intervals[#intervals + 1] = { lo, hi } end
+                    if #intervals > 256 then return nil end
                 end
+            end
+            if x == endX and y == endY then break end
+            if nextX < nextY then
+                x, nextX = x + stepX, nextX + deltaX
+            elseif nextY < nextX then
+                y, nextY = y + stepY, nextY + deltaY
+            else
+                x, y = x + stepX, y + stepY
+                nextX, nextY = nextX + deltaX, nextY + deltaY
             end
         end
     end

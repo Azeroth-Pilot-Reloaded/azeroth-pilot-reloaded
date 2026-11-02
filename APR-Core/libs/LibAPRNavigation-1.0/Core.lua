@@ -1,6 +1,6 @@
 -- Planning uses the consumer's environment and never shares character state.
 -- Optional waypoint output is isolated in WaypointUI.lua.
-local Lib = LibStub:NewLibrary("LibAPRNavigation-1.0", 29)
+local Lib = LibStub:NewLibrary("LibAPRNavigation-1.0", 30)
 if not Lib then return end
 
 Lib.datasets = Lib.datasets or {}
@@ -120,8 +120,11 @@ function Lib:RegisterData(profile, category, data, revision)
             or connection.reviewStatus == "candidate" or connection.reviewStatus == "disabled", "invalid review status")
         assert(connection.arrivalZTolerance == nil or NonnegativeNumber(connection.arrivalZTolerance), "invalid arrival height tolerance")
         assert(connection.instructionKey == nil or type(connection.instructionKey) == "string", "invalid travel instruction key")
+        assert(connection.terrainWalk == nil or type(connection.terrainWalk) == "boolean", "invalid terrain walking hint")
         ValidatePosition(connection.from)
         ValidatePosition(connection.to)
+        assert(not connection.terrainWalk or (connection.kind == "passage" and not connection.actions
+            and not connection.from.dynamic and not connection.to.dynamic), "terrain walking hint requires a static passage")
         assert(connection.seconds == nil or NonnegativeNumber(connection.seconds), "invalid travel duration")
         assert(connection.waitSeconds == nil or NonnegativeNumber(connection.waitSeconds), "invalid wait duration")
         assert(connection.copper == nil or NonnegativeNumber(connection.copper), "invalid fare")
