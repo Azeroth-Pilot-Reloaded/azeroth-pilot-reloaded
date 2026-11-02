@@ -181,6 +181,7 @@
         },
         {
             Qpart = { [9857] = { 1 } },
+            DroppableQuest = { MobId = 17158, Qid = 9861, Text = "Dust Howler" },
             Fillers = { [9789] = { 1 }, [9819] = { 1 }, [9854] = { 1 } },
             Coord = { x = 6861.4, y = -1530 },
             Range = 30,
@@ -189,6 +190,7 @@
         },
         {
             Qpart = { [9789] = { 1 } },
+            DroppableQuest = { MobId = 17158, Qid = 9861, Text = "Dust Howler" },
             Fillers = { [9819] = { 1 }, [9854] = { 1 } },
             Coord = { x = 6734.5, y = -1689.8 },
             Range = 30,
@@ -197,6 +199,7 @@
         },
         {
             Qpart = { [9854] = { 1 } },
+            DroppableQuest = { MobId = 17158, Qid = 9861, Text = "Dust Howler" },
             Fillers = { [9819] = { 1 } },
             Coord = { x = 6573.4, y = -1379.8 },
             Range = 30,
@@ -810,6 +813,7 @@
         },
         {
             Qpart = { [9914] = { 1 } },
+            DroppableQuest = { MobId = 17158, Qid = 9861, Text = "Dust Howler" },
             ExtraLineText = "IVORY_TUSKS_DROP_FROM_WILD_ELEKK",
             Coord = { x = 8628.8, y = -2336.9 },
             Range = 30,
@@ -867,6 +871,7 @@
         {
             DropQuest = 9861,
             DroppableQuest = { MobId = 17158, Qid = 9861, Text = "Dust Howler" },
+            ExtraLineText = "HOWLING_WIND_DROPS_FROM_AIR_ELEMENTALS",
             Coord = { x = 6953.5, y = -1819.1 },
             Zone = 107,
             _index = 132,
