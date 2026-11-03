@@ -1,0 +1,5 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+    <Script file="Graph.lua"/>
+    <Script file="Search.lua"/>
+    <Script file="Navigation.lua"/>
+</Ui>

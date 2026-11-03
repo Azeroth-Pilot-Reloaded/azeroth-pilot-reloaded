@@ -34,6 +34,7 @@
 
 APR-Core/libs/embeds.xml
 APR-Core/libs/LibAPRNavigation-1.0/LibAPRNavigation.xml
+APR-Core/libs/LibAPRNavigation-2.0/LibAPRNavigation.xml
 APR-Core/locales/locales.xml
 
 APR-Core/core/Diagnostics.lua
@@ -139,6 +140,7 @@ APR-Core/features/navigation/Preview.lua
 APR-Core/features/navigation/NavigationPlanner.lua
 APR-Core/features/navigation/NavigationUnlocks.lua
 APR-Core/features/navigation/Navigation.lua
+APR-Core/features/navigation/NavigationV2.lua
 APR-Core/features/navigation/FlightPath.lua
 
 APR-Core/features/navigation/Arrow.lua

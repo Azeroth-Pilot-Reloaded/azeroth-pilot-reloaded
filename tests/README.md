@@ -96,6 +96,20 @@ also compares 200 generated graphs against exhaustive enumeration. Shipped
 navigation data is checked separately for schema and catalog integrity across
 client/faction/language combinations; no expected inventory counts are frozen.
 
+`lua/navigation_v2` is a separate opt-in 2.0 contract family, discovered by the
+standard runner. It executes fresh Lua 5.1 runtimes without loading V1 or world
+catalogs. Synthetic graphs cover ordered mandatory visits, shortest estimated
+time (including an independent exhaustive oracle), known/unknown/disconnected
+outcomes, cancellation, time budgets, input validation, planner revisions and
+APR step-context ownership. A 20,000-node synthetic graph also verifies that
+`New`/`Plan` avoid graph-wide work, node/edge preparation observes the injected
+slice/CPU budgets, and the prepared index survives cancellation and is reused.
+The fixture loads the library's actual XML module order. Run it with
+`python -m unittest tests.lua.navigation_v2.test_navigation_v2 -v`.
+The APR host is disabled on load; no live guidance, waypoint or quest progression
+is produced by these planning-only tests. Retail and Forever in-game checks are
+still required before any later switch of the active navigation engine.
+
 `merchant_sales_test.lua` exercises both auto-vendor and `SellItems` with native
 junk selling and the container fallback: large inventories, delayed/rejected
 sales, locks, missing item data, equipped targets and cancelled retries. In game,
