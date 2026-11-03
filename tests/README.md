@@ -123,17 +123,26 @@ Run `python -m unittest tests.lua.navigation_v2_terrain.test_loader
 tests.lua.navigation_v2_terrain.test_data tests.scripts.test_navigation_v2_terrain -v`.
 Native WoW codec latency and actual client movement remain unverified.
 
-`lua/navigation_v2_waypoint` tests the optional V2 Waypoint UI session with
-synthetic targets and a provider implementing its public dot-call contract.
+`lua/navigation_v2_waypoint` tests the optional V2 output session with
+synthetic targets and providers implementing their public dot-call contracts.
 It covers normalized positions converted to provider percentages, coordinate-free
 labels, APR visual metadata, ownership, foreign markers, manual dismissal,
 combat deferral/cancellation, late loading, bounded event retries and cleanup
-recovery. The APR host creates output only through `SetTarget`, never from a
+recovery. AWP contracts cover APR adapter registration, objective/visual metadata,
+isolated snapshots, AWP-before-WUI selection, late loading and sequential handoff,
+combat, cancellation, public route clearing, routing-off, foreign ownership and
+restoration. The real opt-in APR host is exercised through events and secure
+post-observers, with neither addon, either addon, both and late discovery.
+The APR host creates output only through `SetTarget`, never from a
 planning result. Native arrival requires the owned tracked map point and a valid
 distance; it cannot advance a quest. No ticker runs at rest. Run with
 `python -m unittest tests.lua.navigation_v2_waypoint.test_waypoint -v`.
 WUI rendering, event timing, native waypoint ownership and combat/taint behavior
 on actual Retail and Forever clients remain required before either engine switch.
+AWP's own TomTom guide-carrier removal reassertion has no public dismissal signal;
+this remains an explicit NAV-03 acceptance gap, documented in the output module's
+README and source probe report. Passing synthetic contracts do not validate that
+missing provider behavior. No Forever AWP build is claimed from its Retail TOC.
 
 `merchant_sales_test.lua` exercises both auto-vendor and `SellItems` with native
 junk selling and the container fallback: large inventories, delayed/rejected

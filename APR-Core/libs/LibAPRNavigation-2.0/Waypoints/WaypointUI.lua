@@ -6,52 +6,8 @@ Session.__index = Session
 local VISUAL = { "iconTexture", "iconType", "r", "g", "b", "requestRecolor" }
 local ARRIVAL_RADIUS = 5
 local POSITION_TOLERANCE = 0.0000001
-local COORDINATE_NUMBER = "[%+%-]?%d[%d%.,eE%+%-%%]*"
-
-local function Text(value, fallback)
-    if type(value) ~= "string" then return fallback end
-    -- Reject coordinate presentations as a whole; ordinary title numbers and
-    -- adjacent letters (floor 2, workshop 9E) must keep their original meaning.
-    local lower = value:lower()
-    if lower:find("worldmap:", 1, true) or lower:find("/way%f[%W]") then return fallback end
-    value = value:gsub("|H.-|h(.-)|h", "%1"):gsub("|c%x%x%x%x%x%x%x%x", "")
-        :gsub("|[TtAa].-|[TtAa]", ""):gsub("|r", "")
-        :gsub("%s+", " "):match("^%s*(.-)%s*$")
-    lower = value:lower()
-    if value:find(COORDINATE_NUMBER .. "%s*[,;:/]%s*" .. COORDINATE_NUMBER)
-        or value:find(COORDINATE_NUMBER .. "%s+" .. COORDINATE_NUMBER)
-        or lower:find("%f[%a][xy]%s*[:=]%s*[%+%-]?%d") then return fallback end
-    if value == "" then return fallback end
-    return value
-end
-
-local function Capture(target, fallback)
-    if type(target) ~= "table" or type(target.key) ~= "string" or target.key == "" then
-        return nil, "invalid_target"
-    end
-    local result = { key = target.key, name = Text(target.title, fallback) }
-    local pos = target.position
-    if type(pos) == "table" and Finite(pos.mapID) and pos.mapID > 0 and pos.mapID % 1 == 0
-        and Finite(pos.x) and pos.x >= 0 and pos.x <= 1 and Finite(pos.y) and pos.y >= 0 and pos.y <= 1 then
-        result.mapID, result.x, result.y = pos.mapID, pos.x, pos.y
-    end
-    if type(target.iconTexture) == "string" or Finite(target.iconTexture) then result.iconTexture = target.iconTexture end
-    if target.iconType == "TEXTURE" or target.iconType == "ATLAS" then result.iconType = target.iconType end
-    for _, key in ipairs({ "r", "g", "b" }) do
-        if Finite(target[key]) and target[key] >= 0 and target[key] <= 1 then result[key] = target[key] end
-    end
-    if type(target.requestRecolor) == "boolean" then result.requestRecolor = target.requestRecolor end
-    return result
-end
-
-local function Same(a, b)
-    if not a or not b then return a == b end
-    for _, key in ipairs({ "key", "name", "mapID", "x", "y" }) do
-        if a[key] ~= b[key] then return false end
-    end
-    for _, key in ipairs(VISUAL) do if a[key] ~= b[key] then return false end end
-    return true
-end
+local Target = namespace.NavigationV2WaypointTarget
+local Text, Capture, Same = Target.Text, Target.Capture, Target.Same
 
 local function Provider(session)
     local ok, api = pcall(session.getProvider)

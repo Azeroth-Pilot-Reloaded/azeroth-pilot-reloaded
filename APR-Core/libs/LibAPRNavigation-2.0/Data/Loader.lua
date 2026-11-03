@@ -55,9 +55,10 @@ local function Finish(job, status, reason)
     return job.result
 end
 
-function Loader:Load(id)
+function Loader:Load(id, qualified)
     local sector=type(id)=='string' and self.catalog[id]
     local job=setmetatable({loader=self,sector=sector,block=1,phase='envelope',cursor=1,
+        prefix=qualified == true and type(id)=='string' and (id..':') or '',
         graph={complete=false,nodes={},edges={}},positions={},
         diagnostics={blocks=0,nodes=0,edges=0,decodeMs=0,operations=0}},Job)
     if not sector then Finish(job,'unknown','sector_absent') end
@@ -70,9 +71,10 @@ end
 
 local function Envelope(job)
     local sector=job.sector
-    if type(sector)~='table' or sector.complete~=false then return 'invalid','invalid_sector' end
+    if type(sector)~='table' or type(sector.complete)~='boolean' then return 'invalid','invalid_sector' end
     local count=Array(sector.blocks,MAX_BLOCKS)
     if not count or count==0 then return 'unknown','blocks_absent' end
+    job.graph.complete=sector.complete
     job.blockCount,job.phase=count,'block'
 end
 
@@ -91,10 +93,12 @@ end
 local function Decode(job, operation, nextPhase)
     local options=job.loader.options
     local started=Clock(options)
+    if job.result then return end
     if not started then return 'unknown','clock_unavailable' end
     local ok,value=pcall(options[operation],job.bytes)
     if job.result then return end
     local stopped=Clock(options)
+    if job.result then return end
     if not stopped or stopped<started then return 'unknown','clock_unavailable' end
     job.diagnostics.decodeMs=job.diagnostics.decodeMs+stopped-started
     if not ok or value==nil then return 'unknown','decode_failed' end
@@ -122,7 +126,7 @@ local function Node(job)
     if point==nil then job.phase,job.cursor='edges',1;return end
     if Array(point,3)~=3 then return 'invalid','invalid_position' end
     for i=1,3 do if not Integer(point[i],-2147483647,2147483647) then return 'invalid','invalid_position' end end
-    local id='terrain:'..(#job.graph.nodes+1)
+    local id=job.prefix..'terrain:'..(#job.graph.nodes+1)
     job.graph.nodes[#job.graph.nodes+1]=id
     job.positions[id]={point[1]/1000,point[2]/1000,point[3]/1000}
     job.cursor=job.cursor+1
@@ -143,7 +147,8 @@ local function Edge(job)
     end
     -- References to later blocks are checked in the final bounded pass.
     local edges=job.graph.edges
-    edges[#edges+1]={id='walk:'..(#edges+1),from='terrain:'..edge[1],to='terrain:'..edge[2],seconds=edge[3]/1000}
+    edges[#edges+1]={id=job.prefix..'walk:'..(#edges+1),from=job.prefix..'terrain:'..edge[1],
+        to=job.prefix..'terrain:'..edge[2],seconds=edge[3]/1000}
     job.cursor=job.cursor+1
     job.diagnostics.edges=job.diagnostics.edges+1
 end
@@ -177,6 +182,7 @@ function Job:Step(maxOperations)
     maxOperations=maxOperations or 64
     if not Integer(maxOperations,1,4096) then return nil,'invalid_step_budget' end
     local started=Clock(self.loader.options)
+    if self.result then return self.result end
     if not started then return Finish(self,'unknown','clock_unavailable') end
     for _=1,maxOperations do
         local status,reason=Advance(self)
@@ -184,6 +190,7 @@ function Job:Step(maxOperations)
         self.diagnostics.operations=self.diagnostics.operations+1
         if status then return Finish(self,status,reason) end
         local now=Clock(self.loader.options)
+        if self.result then return self.result end
         if not now or now<started then return Finish(self,'unknown','clock_unavailable') end
         if now-started>=1 then break end
     end

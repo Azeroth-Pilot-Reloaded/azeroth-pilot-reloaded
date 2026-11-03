@@ -10,7 +10,7 @@ local DEFAULT_OPERATIONS = 64
 
 -- Explicit output creation only; New/Plan and jobs never publish waypoints.
 function Navigation.NewWaypointSession(options)
-    return namespace.NavigationV2WaypointUI.New(options)
+    return namespace.NavigationV2WaypointSession.New(options)
 end
 
 local function ReadClock(clock)
@@ -52,6 +52,7 @@ function Job:GetResult()
 end
 
 local function Finish(job, status, reason)
+    if job.search then job.search:Cancel() end
     local result = job:GetResult()
     result.status, result.reason, result.optimal = status, reason, status == "complete"
     if status == "complete" then
@@ -155,6 +156,10 @@ function Job:Step(maxOperations, maxMilliseconds)
         if profile - started >= allowance then break end
     end
     return self:GetResult()
+end
+
+function Navigation.NewSectorGraph(index, catalog, options)
+    return namespace.NavigationV2Sectors.Source(index, catalog, options)
 end
 
 namespace.LibAPRNavigationV2 = Navigation

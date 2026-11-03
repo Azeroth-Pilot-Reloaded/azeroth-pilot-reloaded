@@ -44,4 +44,129 @@ function F.Session()
     return session, state, env
 end
 
+-- Public AWP dispatcher contract: registration replaces the named adapter;
+-- evaluation is asynchronous and manual authority outranks passive guides.
+function F.AWP()
+    local original = { label = "Azeroth Pilot Reloaded", icon = "APR-logo", iconSize = 16,
+        extractTarget = function() error("V2 must not extract the legacy itinerary") end,
+        installHooks = function() end }
+    local state = { provider = original, original = original, schedules = {}, clears = {}, pending = {}, registrations = 0 }
+    local api = {}
+    function api.IsRoutingEnabled() return state.routingEnabled ~= false end
+    function api.RecomputeCarrier() state.rendered = state.manual or state.record end
+    function api.GetGuideTargetProvider(id) assert(id == "apr"); return state.provider end
+    function api.RegisterGuideTargetProvider(id, adapter)
+        assert(id == "apr" and type(adapter) == "table")
+        state.registrations = state.registrations + 1
+        state.provider = adapter
+        if state.registrationError then error("partial registration") end
+        return true
+    end
+    function api.GetGuideRouteState(id) assert(id == nil or id == "apr"); return state.record end
+    function api.ClearGuideRouteState(id)
+        assert(id == "apr")
+        if state.clearError then error("clear failure") end
+        state.clears[#state.clears + 1] = id
+        state.record = nil
+        api.RecomputeCarrier()
+    end
+    function api.ScheduleGuideProviderEvaluation(id, reason, options)
+        assert(id == "apr" and type(reason) == "string")
+        assert(not options or not options.explicit, "No takeover of foreign manual authority")
+        state.schedules[#state.schedules + 1] = { reason = reason, options = options }
+        if state.scheduleError then error("schedule failure") end
+        state.pending[#state.pending + 1] = state.provider
+        return true
+    end
+    function state:Flush()
+        local pending = self.pending
+        self.pending = {}
+        for _ in ipairs(pending) do
+            local target, suppressed = self.provider.extractTarget()
+            if not suppressed and target then
+                self.record = { target = target, guideSource = target.source, guideProvider = "apr" }
+            else api.ClearGuideRouteState("apr") end
+            api.RecomputeCarrier()
+        end
+    end
+    return api, state
+end
+
+function F.Guidance()
+    local library = F.Load()
+    local wui, ws = F.Provider()
+    local awp, as = F.AWP()
+    local env = { wui = wui, awp = awp, combat = false, allowed = true }
+    local session = assert(library.NewWaypointSession({
+        getProvider = function() return env.wui end,
+        getAzerothWaypoint = function() return env.awp end,
+        inCombat = function() return env.combat end,
+        canPublish = function() return env.allowed end,
+        defaultTitle = "Map pin",
+    }))
+    return session, ws, as, env
+end
+
+function F.Host()
+    local _, namespace = F.Load()
+    local wuiAPI, wui = F.Provider()
+    local awpAPI, awp = F.AWP()
+    local env = { combat = false, events = {}, timers = {}, context = "step", questCalls = 0, hooks = 0 }
+    APR = { navigation = {}, IsStepContextCurrent = function(_, value) return value == env.context end,
+        NextQuestStep = function() env.questCalls = env.questCalls + 1 end }
+    GetTime, debugprofilestop = function() return 0 end, function() return 0 end
+    MAP_PIN = "Map pin"
+    InCombatLockdown = function() return env.combat end
+    WaypointUIAPI, AzerothWaypointNS = { Navigation = wuiAPI }, awpAPI
+    CreateFrame = function()
+        return { RegisterEvent = function(_, event) env.events[event] = true end,
+            UnregisterAllEvents = function() env.events = {} end,
+            SetScript = function(_, _, fn) env.onEvent = fn end }
+    end
+    C_Timer = { NewTimer = function(delay, callback)
+        assert(delay > 0)
+        local timer = { callback = callback }
+        function timer:Cancel() self.cancelled = true end
+        env.timers[#env.timers + 1] = timer
+        return timer
+    end, NewTicker = function() error("No permanent polling") end }
+    C_Map = { GetUserWaypoint = function() return env.native end }
+    C_Navigation = { GetDistance = function() return 0 end }
+    hooksecurefunc = function(object, key, callback)
+        env.hooks = env.hooks + 1
+        local original = object[key]
+        object[key] = function(...)
+            local result = original(...)
+            callback(...)
+            return result
+        end
+    end
+    local create, clear, schedule = wuiAPI.NewUserNavigation, wuiAPI.ClearUserNavigation, awpAPI.ScheduleGuideProviderEvaluation
+    wuiAPI.NewUserNavigation = function(options)
+        assert(not awp.record, "No AWP route when WUI publishes")
+        local value = create(options)
+        env.native = { uiMapID = options.mapID, position = { x = options.x / 100, y = options.y / 100 } }
+        return value
+    end
+    wuiAPI.ClearUserNavigation = function(preserve, suppressAdvance)
+        clear(preserve, suppressAdvance)
+        if not preserve then env.native = nil end
+    end
+    awpAPI.ScheduleGuideProviderEvaluation = function(...)
+        assert(wui.current == nil, "No WUI marker when AWP publishes")
+        return schedule(...)
+    end
+    function env:Fire(event, ...)
+        if self.events[event] then self.onEvent(nil, event, ...) end
+    end
+    function env:Flush()
+        local timers = self.timers
+        self.timers = {}
+        for _, timer in ipairs(timers) do if not timer.cancelled then timer.callback() end end
+        awp:Flush()
+    end
+    assert(loadfile("APR-Core/features/navigation/NavigationV2.lua"))("APR", namespace)
+    return APR.NavigationV2, wui, awp, env, awpAPI
+end
+
 return F

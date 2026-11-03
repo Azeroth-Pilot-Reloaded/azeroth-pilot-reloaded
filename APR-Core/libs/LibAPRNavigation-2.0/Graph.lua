@@ -3,6 +3,7 @@ local _, namespace = ...
 local Graph, Preparation = {}, {}
 Preparation.__index = Preparation
 local MAX_VIA = 64
+Graph.SAFE_INTEGER = 9007199254740991
 
 function Graph.Finite(value)
     return type(value) == "number" and value == value and value > -math.huge and value < math.huge
@@ -36,6 +37,12 @@ function Graph.CaptureRequest(request)
 end
 
 function Graph.New(source)
+    if type(source) == "table" and source.partitioned == true then
+        if not namespace.NavigationV2Sectors then return nil, "sectors_unavailable" end
+        local graph, reason = namespace.NavigationV2Sectors.New(source)
+        if not graph then return nil, reason end
+        return setmetatable({ phase = "ready", compiled = graph }, Preparation)
+    end
     if type(source) ~= "table" or type(source.complete) ~= "boolean"
         or type(source.nodes) ~= "table" or type(source.edges) ~= "table" then return nil, "invalid_graph" end
     return setmetatable({ sourceNodes = source.nodes, sourceEdges = source.edges,
