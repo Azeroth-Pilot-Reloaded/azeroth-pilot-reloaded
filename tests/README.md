@@ -97,8 +97,9 @@ navigation data is checked separately for schema and catalog integrity across
 client/faction/language combinations; no expected inventory counts are frozen.
 
 `lua/navigation_v2` is a separate opt-in 2.0 contract family, discovered by the
-standard runner. It executes fresh Lua 5.1 runtimes without loading V1 or world
-catalogs. Synthetic graphs cover ordered mandatory visits, shortest estimated
+standard runner. It executes fresh Lua 5.1 runtimes without loading V1. Bundled
+V2 compact declarations register through the real XML and remain undecoded.
+Synthetic graphs cover ordered mandatory visits, shortest estimated
 time (including an independent exhaustive oracle), known/unknown/disconnected
 outcomes, cancellation, time budgets, input validation, planner revisions and
 APR step-context ownership. A 20,000-node synthetic graph also verifies that
@@ -109,6 +110,30 @@ The fixture loads the library's actual XML module order. Run it with
 The APR host is disabled on load; no live guidance, waypoint or quest progression
 is produced by these planning-only tests. Retail and Forever in-game checks are
 still required before any later switch of the active navigation engine.
+
+`lua/navigation_v2_terrain` discovers every V2 Data script and declaration from
+the actual library XML and checks its reachability from both client manifests.
+Common CBOR/Deflate/Base64, shape, size and reference rules apply to every sector;
+no real itinerary or sector inventory is frozen. Synthetic contracts cover the
+bounded loader, missing data, cancellation and the opt-in APR `LoadTerrain`
+factory followed by explicit Enable/Plan/Step, without live guidance. The separate
+Route-generator checkout supplies binary and native generator tests; all raw and
+offline exports belong in its cache or scratch reports, outside NavigationData.
+Run `python -m unittest tests.lua.navigation_v2_terrain.test_loader
+tests.lua.navigation_v2_terrain.test_data tests.scripts.test_navigation_v2_terrain -v`.
+Native WoW codec latency and actual client movement remain unverified.
+
+`lua/navigation_v2_waypoint` tests the optional V2 Waypoint UI session with
+synthetic targets and a provider implementing its public dot-call contract.
+It covers normalized positions converted to provider percentages, coordinate-free
+labels, APR visual metadata, ownership, foreign markers, manual dismissal,
+combat deferral/cancellation, late loading, bounded event retries and cleanup
+recovery. The APR host creates output only through `SetTarget`, never from a
+planning result. Native arrival requires the owned tracked map point and a valid
+distance; it cannot advance a quest. No ticker runs at rest. Run with
+`python -m unittest tests.lua.navigation_v2_waypoint.test_waypoint -v`.
+WUI rendering, event timing, native waypoint ownership and combat/taint behavior
+on actual Retail and Forever clients remain required before either engine switch.
 
 `merchant_sales_test.lua` exercises both auto-vendor and `SellItems` with native
 junk selling and the container fallback: large inventories, delayed/rejected

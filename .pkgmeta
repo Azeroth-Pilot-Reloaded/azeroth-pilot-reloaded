@@ -16,6 +16,7 @@ ignore:
   - .release
   - .editorconfig
   - .gitignore
+  - .gitattributes
   - .luacheckrc
   - .pkgmeta
   - .env
@@ -33,6 +34,7 @@ ignore:
   - APR-Core/README.md
   - APR-Core/libs/LibAPRNavigation-1.0/README.md
   - APR-Core/libs/LibAPRNavigation-2.0/README.md
+  - "APR-Core/libs/LibAPRNavigation-2.0/**/README.md"
 
   # Embedded libraries load through XML; their standalone TOCs/logo are unused.
   - "APR-Core/libs/*.toc"

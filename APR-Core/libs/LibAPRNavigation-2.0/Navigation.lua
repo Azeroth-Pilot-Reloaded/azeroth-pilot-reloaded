@@ -8,6 +8,11 @@ Planner.__index, Job.__index = Planner, Job
 local DEFAULTS = { sliceMs = 1, cpuMs = 100, elapsedMs = 5000 }
 local DEFAULT_OPERATIONS = 64
 
+-- Explicit output creation only; New/Plan and jobs never publish waypoints.
+function Navigation.NewWaypointSession(options)
+    return namespace.NavigationV2WaypointUI.New(options)
+end
+
 local function ReadClock(clock)
     local ok, value = pcall(clock)
     if ok and Finite(value) and value >= 0 then return value end
