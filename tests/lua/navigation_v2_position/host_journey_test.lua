@@ -1,0 +1,26 @@
+local F=dofile('tests/lua/navigation_v2_position/host_fixture.lua')
+local e,h=F.New()
+assert(e:Enable());e:Plan();local result=e:Finish()
+assert(h:StartTravel(result,{},e.context).node=='a')
+local action=h:ObserveTravel({sequence=1,reliable=true,node='a',space='room',floor='upper',phase='blue'})
+assert(action.node=='b')
+local journey=h.journey
+assert(journey.viaIndex==1 and journey:RemainingRequest().from=='a')
+assert(journey:RemainingRequest().via[1]=='b' and #journey:RemainingRequest().via==1)
+assert(h:SetPositionIdentity({space='room',phase='blue'}))
+assert(h.journey==journey and journey.viaIndex==1 and journey:RemainingRequest()==nil)
+assert(journey.objective.to=='g' and journey.objective.via[1]=='a' and journey.objective.via[2]=='b')
+assert(not h.planner:IsCurrent(result) and not e:HasMarker())
+assert(h:SetPositionIdentity({space='room',floor='upper',phase='blue'}))
+assert(h.journey==journey and journey.viaIndex==1 and journey:RemainingRequest()==nil,
+    'Fresh XYZ/floor cannot prove physical membership or restore an old origin')
+local stale,why=h:StartTravel(result,{},e.context)
+assert(stale==nil and why=='stale_result')
+-- A new explicit request supplies independent trusted node membership; remaining
+-- visits are preserved by the caller, not guessed from nearby XYZ or the old plan.
+e:Plan({from='a',to='g',via={'b'}})
+local resumed=e:Finish()
+assert(resumed.status=='complete' and resumed.estimatedSeconds==4)
+assert(resumed.objective.from=='a' and resumed.objective.via[1]=='b' and #resumed.objective.via==1)
+assert(not e:HasMarker() and e.questCalls==0)
+e:Cleanup()

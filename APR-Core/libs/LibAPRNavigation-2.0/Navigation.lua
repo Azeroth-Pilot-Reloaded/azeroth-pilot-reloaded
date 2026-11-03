@@ -8,6 +8,16 @@ Planner.__index, Job.__index = Planner, Job
 local DEFAULTS = { sliceMs = 1, cpuMs = 100, elapsedMs = 5000 }
 local DEFAULT_OPERATIONS = 64
 
+local function PersonalKeys(catalog)
+    if not catalog then return end
+    local keys={money=true}
+    for _,name in pairs(catalog.itemResources) do keys['item:'..name]=true end
+    for _,d in ipairs(catalog.entries) do
+        if d.chargeBased or d.cooldownSeconds>0 then keys['personal:'..d.useResourceId]=true end
+    end
+    return keys
+end
+
 -- Explicit output creation only; New/Plan and jobs never publish waypoints.
 function Navigation.NewWaypointSession(options)
     return namespace.NavigationV2WaypointSession.New(options)
@@ -57,9 +67,72 @@ function Navigation.New(graph, options)
         scheduled, reason = namespace.NavigationV2Scheduled.NewCatalog(options.scheduled, options.scheduledOverrides)
         if not scheduled then return nil, reason end
     end
+    local resources
+    if options.resources ~= nil then
+        resources, reason = namespace.NavigationV2Resources.Capture(options.resources)
+        if not resources then return nil,reason end
+    end
+    local taxi
+    if options.taxi ~= nil then
+        taxi, reason = namespace.NavigationV2Taxi.New(options.taxi,options.taxiObservation,options.taxiSettings)
+        if not taxi then return nil,reason end
+    end
+    local personal
+    if options.personal~=nil then
+        personal,reason=namespace.NavigationV2Personal.New(options.personal,options.personalObservation)
+        if not personal then return nil,reason end
+        resources,reason=namespace.NavigationV2Resources.Merge(resources or {},personal:Resources(),PersonalKeys(personal))
+        if not resources then return nil,reason end
+    end
     return setmetatable({ preparation = preparation, clock = options.clock, profileClock = options.profileClock,
-        movement = options.movement, scheduled = scheduled,
+        movement = options.movement, scheduled = scheduled, taxi=taxi, resources=resources,personal=personal,
         portals = portals, budgets = budgets, revision = 1, identity = {} }, Planner)
+end
+
+function Planner:SetResources(source)
+    local resources, reason = namespace.NavigationV2Resources.Capture(source,PersonalKeys(self.personal))
+    if not resources then return nil,reason end
+    if namespace.NavigationV2WaypointTarget.Same(self.resources,resources) then return false end
+    self.resources=resources;self:Invalidate();return true
+end
+
+function Planner:ObservePersonal(observation)
+    if not self.personal then return nil,'personal_unavailable' end
+    -- Validate the whole next snapshot/resource map before replacing live state.
+    local candidate,reason=namespace.NavigationV2Personal.New(self.personal.entries,self.personal.observation)
+    if not candidate then return nil,reason end
+    local changed
+    changed,reason=candidate:Observe(observation)
+    if changed==nil or reason=='stale_observation' then return changed,reason end
+    local resources
+    resources,reason=namespace.NavigationV2Resources.Merge(self.resources or {},candidate:Resources(),PersonalKeys(candidate))
+    if not resources then return nil,reason end
+    local different=not namespace.NavigationV2WaypointTarget.Same(self.resources,resources)
+    candidate.prepared,candidate.cursor=self.personal.prepared,self.personal.cursor
+    self.personal,self.resources=candidate,resources
+    if changed or different then self:Invalidate() end
+    return changed or different
+end
+
+function Planner:SetPersonalCosts(id,costs)
+    if not self.personal then return nil,'personal_unavailable' end
+    local changed,reason=self.personal:SetCosts(id,costs)
+    if changed then self:Invalidate() end
+    return changed,reason
+end
+
+function Planner:ObserveTaxi(observation)
+    if not self.taxi then return nil,'taxi_unavailable' end
+    local changed, reason = self.taxi:Observe(observation)
+    if changed then self:Invalidate() end
+    return changed,reason
+end
+
+function Planner:SetTaxiCosts(id,costs)
+    if not self.taxi then return nil,'taxi_unavailable' end
+    local changed,reason=self.taxi:SetCosts(id,costs)
+    if changed then self:Invalidate() end
+    return changed,reason
 end
 
 function Planner:SetMovement(profile)
@@ -119,6 +192,7 @@ local function Finish(job, status, reason)
     result.status, result.reason, result.optimal = status, reason, status == "complete"
     if status == "complete" then
         result.estimatedSeconds, result.segments, result.nodes = job.search.total, job.search.segments, job.search.nodes
+        result.resourcesSpent = job.search.resourcesSpent
     else
         result.estimatedSeconds, result.segments, result.nodes = nil, nil, nil
     end
@@ -134,11 +208,12 @@ function Planner:Plan(request, context)
             phase = self.preparation.phase } }, Job)
     if not job.objective then Finish(job, "invalid", "invalid_request"); return job end
     if context ~= nil and (type(context) ~= 'table'
-        or (context.locationKnown ~= nil and type(context.locationKnown) ~= 'boolean')) then
+        or (context.locationKnown ~= nil and type(context.locationKnown) ~= 'boolean')
+        or (context.locationReason ~= nil and type(context.locationReason) ~= 'string')) then
         Finish(job, 'invalid', 'invalid_request_context'); return job
     end
     if context and context.locationKnown == false then
-        Finish(job, 'unknown', 'location_unknown'); return job
+        Finish(job, 'unknown', context.locationReason or 'location_unknown'); return job
     end
     job.started = ReadClock(self.clock)
     if not job.started then Finish(job, "unknown", "clock_unavailable"); return job end
@@ -174,6 +249,14 @@ local function Advance(job)
             local ready, status, portalReason = job.planner.portals:Prepare(preparation.compiled)
             if not ready then return status, portalReason end
         end
+        if job.planner.taxi then
+            local ready, status, taxiReason = job.planner.taxi:Prepare(preparation.compiled)
+            if not ready then return status,taxiReason end
+        end
+        if job.planner.personal then
+            local ready,status,personalReason=job.planner.personal:Prepare(preparation.compiled)
+            if not ready then return status,personalReason end
+        end
         if job.planner.scheduled and not job.planner.scheduledPrepared then
             local planner, graph = job.planner, preparation.compiled
             local id, route = next(planner.scheduled.byId,planner.scheduledCursor)
@@ -192,7 +275,8 @@ local function Advance(job)
         end
         job.search = Search.New(preparation.compiled, job.objective, job.diagnostics, {
             portals = job.planner.portals, movement = job.planner.movement,
-            scheduled = job.planner.scheduled, startedAt = job.started })
+            scheduled = job.planner.scheduled, taxi=job.planner.taxi,personal=job.planner.personal,
+            resources=job.planner.resources,startedAt = job.started })
         job.diagnostics.phase = "validate_request"
     end
 end

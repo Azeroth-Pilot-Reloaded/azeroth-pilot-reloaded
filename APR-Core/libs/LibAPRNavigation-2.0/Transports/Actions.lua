@@ -56,15 +56,52 @@ end
 
 function Travel:Cancel(reason)
     if self.scheduledExecution then self.scheduledExecution:Cancel() end
+    if self.personalExecution then self.personalExecution:Cancel(reason) end
     self.state, self.reason, self.deadline = 'cancelled', reason or 'cancelled', nil
     return self:GetAction()
 end
 
 local function Current(travel)
     if travel.revision ~= travel.planner.revision and travel.state ~= 'cancelled' then
+        if travel.personalExecution and travel.personalExecution:GetState().phase=='awaiting_transition'
+            and travel.personalExecution:GetState().status=='running' then
+            -- A bounded immutable execution receipt survives changed future plans.
+            travel.revision=travel.planner.revision
+            return
+        end
         if travel.scheduledExecution then travel.scheduledExecution:Cancel() end
         travel.state, travel.reason, travel.deadline = 'cancelled', 'invalidated', nil
     end
+end
+
+local function PersonalAction(travel,segment)
+    if not travel.personalExecution then
+        local catalog=travel.planner.personal
+        local snapshot=Copy(catalog.observation)
+        snapshot.moneyCopper=travel.planner.resources and travel.planner.resources.money
+        local frozen,reason=ns.NavigationV2Personal.New(catalog.entries,snapshot)
+        if not frozen then travel.state,travel.reason='failed',reason;return travel:GetAction() end
+        local ok,now=pcall(travel.planner.clock)
+        local execution
+        execution,reason=frozen:NewExecution(segment.personalId,{objectiveID=travel.objectiveID,
+            now=ok and now or nil,from=segment.from})
+        if not execution then travel.state,travel.reason='failed',reason;return travel:GetAction() end
+        travel.personalExecution=execution
+    end
+    local state=travel.personalExecution:GetState()
+    if state.status=='complete' then
+        travel.journey:Locate(segment.to)
+        travel.index,travel.personalExecution,travel.state=travel.index+1,nil,'replan'
+        return {kind='replan',reason='personal_arrival'}
+    end
+    if state.status~='running' then
+        travel.state,travel.reason=state.status=='cancelled' and 'cancelled' or 'failed',state.reason
+        return travel:GetAction()
+    end
+    return {kind='personal',actionKind=state.kind,personalId=state.personalId,phase=state.phase,
+        status=state.status,title=state.title,instruction=state.instruction,spellID=state.spellID,itemID=state.itemID,
+        attempt=state.attempt,deadline=state.deadline,remainingSeconds=state.remainingSeconds,
+        objectiveID=state.objectiveID,innerAction=state,mode=segment.mode,transitionSeconds=segment.transitionSeconds}
 end
 
 function Travel:RemainingRequest()
@@ -99,13 +136,27 @@ local function ScheduledAction(travel, segment)
         transitionSeconds=segment.transitionSeconds}
 end
 
+local function TaxiAction(travel, segment)
+    local route=travel.planner.taxi.byId[segment.taxiId]
+    local kind=travel.taxiPhase or (travel.atEntry and 'board_taxi' or 'approach')
+    local approach=kind=='approach'
+    return {kind=kind,taxiId=route.id,node=approach and route.from or nil,
+        title=route.origin.title,position=approach and route.origin.position and Copy(route.origin.position) or nil,
+        fareCopper=segment.fareCopper,deadline=travel.deadline,attempt=travel.attempt,
+        remainingSeconds=travel.deadline and travel.deadline-travel.lastClock,
+        mode=segment.mode,transitionSeconds=segment.transitionSeconds}
+end
+
 function Travel:GetAction()
     Current(self)
     local state = self.state
     if state == 'cancelled' or state == 'failed' then return {kind=state,reason=self.reason} end
+    if state=='replan' then return {kind='replan',reason='personal_arrival'} end
     local segment = self.segments[self.index]
     if not segment then self.state='complete'; return {kind='complete'} end
     if segment.kind == 'scheduled' then return ScheduledAction(self, segment) end
+    if segment.kind == 'taxi' then return TaxiAction(self,segment) end
+    if segment.kind=='personal' then return PersonalAction(self,segment) end
     if segment.kind == 'portal' then
         local portal = self.planner.portals.byId[segment.portalId]
         return {kind=state == 'awaiting_transition' and state or (self.atEntry and 'use_portal' or 'approach'),
@@ -116,8 +167,72 @@ function Travel:GetAction()
     end
     local nextSegment = self.segments[self.index+1]
     local portal = nextSegment and nextSegment.kind == 'portal' and self.planner.portals.byId[nextSegment.portalId]
-    return {kind='walk',node=segment.to,position=portal and portal.entry and Copy(portal.entry),
-        title=portal and portal.name,mode=segment.mode,transitionSeconds=segment.transitionSeconds}
+    local taxi=nextSegment and nextSegment.kind=='taxi' and self.planner.taxi.byId[nextSegment.taxiId]
+    local position=(portal and portal.entry or taxi and taxi.origin.position) or nil
+    return {kind='walk',node=segment.to,position=position and Copy(position),
+        title=(portal and portal.name or taxi and taxi.origin.title) or nil,mode=segment.mode,transitionSeconds=segment.transitionSeconds}
+end
+
+function Travel:BeginPersonal()
+    local action=self:Tick()
+    if action.kind~='personal' or action.phase~='ready' then return nil,'personal_not_ready' end
+    local _,reason=ns.NavigationV2Resources.Spend(self.planner.resources or {},{},self.segments[self.index].resources)
+    if reason then return nil,reason end
+    local ok,now=pcall(self.planner.clock)
+    local state
+    state,reason=self.personalExecution:BeginUse(ok and now or nil)
+    if not state then return nil,reason end
+    self.journey:Unlocate()
+    return self:GetAction()
+end
+
+-- This only authorizes guidance for APR's secure/user gesture. Never buys a ride.
+function Travel:BeginTaxi(quote, balances)
+    local action=self:Tick()
+    if action.kind~='board_taxi' then return nil,'taxi_not_ready' end
+    local segment=self.segments[self.index]
+    local captured,reason=ns.NavigationV2Resources.Capture(balances)
+    if not captured then return nil,reason end
+    local ready
+    ready,reason=self.planner.taxi:Revalidate(segment.taxiId,segment.fareCopper,quote,captured)
+    if not ready then return nil,reason end
+    local ok,now=pcall(self.planner.clock)
+    if not ok or not Finite(now) or now<0 then return nil,'clock_unavailable' end
+    local deadline=now+self.planner.taxi.byId[segment.taxiId].timeoutSeconds
+    if not Finite(deadline) or deadline<=now then return nil,'deadline_unavailable' end
+    self.deadline,self.lastClock,self.attempt=deadline,now,{}
+    self.taxiPhase,self.useSequence='awaiting_taxi',self.sequence
+    self.journey:Unlocate()
+    return self:GetAction()
+end
+
+local function AtStop(observation,stop,node)
+    return observation.node==node and observation.stopID==stop.id and observation.worldID==stop.worldID
+        and observation.floorID==stop.floorID and observation.phaseID==stop.phaseID
+end
+
+local function ObserveTaxi(travel,segment,observation)
+    local route=travel.planner.taxi.byId[segment.taxiId]
+    if not travel.taxiPhase then
+        travel.atEntry=observation.onTaxi==false and AtStop(observation,route.origin,segment.from)
+        if travel.atEntry then travel.journey:Locate(segment.from) else travel.journey:Unlocate() end
+    elseif observation.attempt==travel.attempt and observation.taxiId==route.id
+        and observation.sequence>travel.useSequence then
+        if observation.failed==true then
+            travel.state,travel.reason,travel.deadline='failed','taxi_failed',nil
+        elseif observation.onTaxi==true then
+            if not travel.taxiBoardedAt then travel.taxiBoardedAt=travel.lastClock end
+            travel.taxiPhase='riding_taxi'
+        elseif travel.taxiPhase=='riding_taxi' and observation.onTaxi==false and observation.loading==false
+            and AtStop(observation,route.destination,segment.to) then
+            travel.journey:Locate(segment.to)
+            local duration=travel.taxiBoardedAt and travel.lastClock-travel.taxiBoardedAt
+            if duration and duration>0 then travel.measuredTaxi={id=route.id,rideSeconds=duration} end
+            travel.index,travel.taxiPhase,travel.atEntry,travel.deadline=travel.index+1,nil,nil,nil
+            travel.taxiBoardedAt=nil
+        end
+    end
+    return travel:GetAction()
 end
 
 function Travel:Tick()
@@ -128,6 +243,10 @@ function Travel:Tick()
         if not ok then now = nil end
         self.scheduledExecution:Tick(now)
         if Finite(now) then self.scheduledNow = now end
+    end
+    if self.personalExecution then
+        local ok,now=pcall(self.planner.clock)
+        self.personalExecution:Tick(ok and now or nil)
     end
     if self.deadline then
         local ok, now = pcall(self.planner.clock)
@@ -160,7 +279,7 @@ end
 
 function Travel:Observe(observation)
     local action = self:Tick()
-    if action.kind == 'failed' or action.kind == 'cancelled' or action.kind == 'complete' then return action end
+    if action.kind == 'failed' or action.kind == 'cancelled' or action.kind == 'complete' or action.kind=='replan' then return action end
     if action.kind == 'scheduled' then
         local segment = self.segments[self.index]
         local state = self.scheduledExecution:Observe(observation, self.scheduledNow)
@@ -170,8 +289,27 @@ function Travel:Observe(observation)
     if type(observation) ~= 'table' or not Revision(observation.sequence)
         or observation.sequence <= self.sequence then return action, 'stale_observation' end
     self.sequence = observation.sequence
+    if action.kind=='personal' then
+        local execution=self.personalExecution
+        local state=execution:GetState()
+        local proof=observation.transition
+        local correlated=state.attempt and type(proof)=='table' and proof.attempt==state.attempt
+        if observation.reliable==true and correlated then
+            local d=execution.declaration
+            if observation.failed==true then
+                execution:Cancel('personal_failed');self.state,self.reason='failed','personal_failed'
+            elseif proof.complete==true and observation.loading==false
+                and (proof.personalId~=d.id or proof.from~=execution.from or proof.to~=d.to
+                or observation.node~=d.to or observation.space~=d.destination.space or observation.phase~=d.destination.phase) then
+                execution:Cancel('personal_destination_mismatch')
+                self.state,self.reason='failed','personal_destination_mismatch'
+            elseif observation.loading==false then execution:Observe(observation,execution.lastClock) end
+        end
+        return self:GetAction()
+    end
     if observation.reliable ~= true or observation.loading == true then self.journey:Unlocate();return action end
     local segment = self.segments[self.index]
+    if segment.kind=='taxi' then return ObserveTaxi(self,segment,observation) end
     if segment.kind ~= 'portal' then
         if observation.node == segment.to then self.journey:Locate(segment.to);self.index = self.index+1
         elseif observation.node == segment.from then self.journey:Locate(segment.from)

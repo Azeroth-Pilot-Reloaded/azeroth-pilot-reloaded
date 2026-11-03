@@ -544,3 +544,24 @@ world unsubscribe, validation failure preserving old work, cancelled old targets
 timers, and entering events missed while disabled. Native frame methods are modeled
 per frame, including selective UnregisterEvent; no geography or live guide content
 is frozen by these contracts.
+
+`scripts/test_navigation_v2_taxi.py` discovers synthetic Lua taxi contracts and
+tests the real XML, TOC, planner, APR host and WUI/AWP sessions. Two consecutive
+fares, slower free arrivals, cumulative money/reagents, unknown/insufficient
+balances, undiscovered/ambiguous destinations, changed quotes, duration fallback
+and override/reset, confirmed boarding/arrival, loading, deadlines, cancellation
+and stale context are covered. An independent exhaustive oracle checks 80 tiny
+resource-constrained DAGs. A deliberately obsolete compiled witness cannot hide
+a faster taxi; adjacency stays lazy and budgets remain unchanged. No real guide,
+flight itinerary, live API catalogue or quest progression is frozen. Run
+`python -m unittest tests.scripts.test_navigation_v2_taxi -v`.
+
+The same synthetic family checks the shared Personal integration through the real
+TOC/XML: a cave recall versus walking/taxi, cumulative shared money and inventory,
+unknown inventory revocation, the complete resource-key limit, a captured attempt
+surviving changed future plans with a fixed deadline, reliable correlated arrival
+and failure, one remaining-plan request, and an APR-owned hardware-click button.
+Combat cases model the separately verified secure guard; no test calls a real
+protected action or claims native taint validation. An obsolete prepared witness
+also cannot hide a faster Personal action. NAV-13/NAV-15 independently own their
+module/host counter-tests; no shared fixture assumes a shipped route or catalogue.

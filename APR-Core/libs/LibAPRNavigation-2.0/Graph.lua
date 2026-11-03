@@ -73,9 +73,15 @@ local function Edge(preparation, _, declaration)
         movement = namespace.NavigationV2Forever.CaptureMovement(declaration.movement)
         if not movement then return 'invalid_movement' end
     end
+    local resources
+    if declaration.resources ~= nil then
+        resources = namespace.NavigationV2Resources.Capture(declaration.resources)
+        if not resources then return 'invalid_edge_resources' end
+        graph.resourceCosts = true
+    end
     local outgoing = graph.outgoing[from]
     outgoing[#outgoing + 1] = { id = declaration.id, from = from, to = to,
-        seconds = declaration.seconds, access = access, movement = movement }
+        seconds = declaration.seconds, access = access, movement = movement, resources = resources }
 end
 
 local function AdvanceArray(preparation, source, copy)

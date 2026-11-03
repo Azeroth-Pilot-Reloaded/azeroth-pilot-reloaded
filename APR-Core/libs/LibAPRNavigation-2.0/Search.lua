@@ -3,6 +3,7 @@ local _, namespace = ...
 local Finite = namespace.NavigationV2Graph.Finite
 local SAFE_INTEGER = namespace.NavigationV2Graph.SAFE_INTEGER
 local Search = {}
+local Resources = namespace.NavigationV2Resources
 Search.__index = Search
 
 local function Before(a, b)
@@ -65,15 +66,17 @@ local function Start(search, phase)
     local entry = Entry(search, Locate(search.graph, search.objective.from), 0, 0, nil, nil,
         not search.dynamic and search.graph.integerCosts and 0 or nil,
         search.movement and search.movement.initialMode)
-    search.best[entry.key] = entry
+    if search.resources then entry.spent={};search.best[entry.key]={entry} else search.best[entry.key] = entry end
     Push(search.heap, entry)
 end
 
 function Search.New(graph, objective, diagnostics, options)
     options = options or {}
     return setmetatable({ graph = graph, objective = objective, diagnostics = diagnostics,
-        portals = options.portals, movement = options.movement, scheduled = options.scheduled,
-        dynamic = options.portals or options.movement or options.scheduled,
+        portals = options.portals, movement = options.movement, scheduled = options.scheduled, taxi = options.taxi,
+        personal=options.personal,
+        resources = (options.taxi or options.personal or graph.resourceCosts or options.resources) and (options.resources or {}),
+        dynamic = options.portals or options.movement or options.scheduled or options.taxi or options.personal or graph.resourceCosts or options.resources,
         startedAt = options.startedAt, validationIndex = 0 }, Search)
 end
 
@@ -107,18 +110,21 @@ end
 local function ExpandNode(search, entry)
     if entry.node == Locate(search.graph, search.objective.to) and entry.via == #search.objective.via then
         if search.phase == "possible" then return "unknown", "unknown_access" end
-        search.total, search.build, search.segments = entry.cost, entry, {}
+        search.total, search.build, search.segments, search.resourcesSpent = entry.cost, entry, {}, entry.spent
         search.nodes = { NodeId(search.graph, entry.node) }
         return
     end
     search.current, search.edgeIndex = entry, 1
     search.portalIndex, search.scheduledIndex = search.portals and 1, search.scheduled and 1
+    search.taxiIndex = search.taxi and 1
+    search.personalIndex=search.personal and 1
 end
 
 local function SelectNode(search)
     if #search.heap == 0 then return Exhausted(search) end
     local entry = Pop(search.heap)
-    if search.best[entry.key] ~= entry then return end
+    if search.resources then if entry.dominated then return end
+    elseif search.best[entry.key] ~= entry then return end
     search.diagnostics.expanded = search.diagnostics.expanded + 1
     if search.graph.partitioned then search.selected = entry; return end
     return ExpandNode(search, entry)
@@ -181,13 +187,22 @@ end
 -- Each overlay item, row load or base edge is one existing search operation.
 local function ReadEdge(search)
     local edge, status, reason
-    local overlay = search.portalIndex or search.scheduledIndex
+    local overlay = search.portalIndex or search.scheduledIndex or search.taxiIndex or search.personalIndex
     if search.portalIndex then
         edge = search.portals:Edge(NodeId(search.graph, search.current.node), search.portalIndex)
         search.portalIndex = search.portalIndex + 1
         if not edge then search.portalIndex = nil; return nil, 'running' end
     elseif search.scheduledIndex then
         edge, status, reason = ScheduledEdge(search)
+    elseif search.taxiIndex then
+        edge, reason = search.taxi:Edge(NodeId(search.graph, search.current.node),search.taxiIndex)
+        search.taxiIndex = search.taxiIndex+1
+        if reason then return nil,'unknown',reason end
+        if not edge then search.taxiIndex=nil;return nil,'running' end
+    elseif search.personalIndex then
+        edge=search.personal:Edge(NodeId(search.graph,search.current.node),search.personalIndex)
+        search.personalIndex=search.personalIndex+1
+        if not edge then search.personalIndex=nil;return nil,'running' end
     elseif search.graph.partitioned then
         edge, status, reason = search.graph:ReadEdge(search, search.current.node, search.edgeIndex)
     else edge = search.graph.outgoing[search.current.node][search.edgeIndex] end
@@ -202,6 +217,31 @@ local function ReadEdge(search)
         edge.to, edge.from = to, search.current.node
     else search.edgeIndex = search.edgeIndex + 1 end
     return edge
+end
+
+-- A single comparison per operation keeps Pareto labels inside job budgets.
+local function CompareLabel(search)
+    local pending = search.pending
+    local previous = pending.row[pending.index]
+    if previous then
+        pending.index = pending.index+1
+        if not previous.dominated and Resources.Dominates(previous,pending.entry) then search.pending=nil;return end
+        return
+    end
+    if pending.prune then
+        pending.row[#pending.row+1]=pending.entry
+        Push(search.heap,pending.entry)
+        search.pending=nil
+    else pending.prune=true;pending.index=1 end
+end
+
+local function PruneLabel(search)
+    local pending = search.pending
+    local previous = pending.row[pending.index]
+    if previous then
+        pending.index=pending.index+1
+        if Resources.Dominates(pending.entry,previous) then previous.dominated=true end
+    else CompareLabel(search) end
 end
 
 local function MovementEdge(search, edge)
@@ -236,6 +276,18 @@ local function RelaxEdge(search)
     local cost = milliseconds and milliseconds / 1000 or (search.current.cost + edge.seconds)
     if not Finite(cost) then return "unknown", "cost_overflow" end
     local candidate = Entry(search, edge.to, search.current.via, cost, search.current, edge, milliseconds, edge.mode)
+    if search.resources then
+        local spent, resourceReason = Resources.Spend(search.resources, search.current.spent, edge.resources)
+        if not spent then
+            if resourceReason ~= 'resources_insufficient' then return Missing(search,'unknown',resourceReason) end
+            return
+        end
+        candidate.spent=spent
+        local row=search.best[candidate.key] or {}
+        search.best[candidate.key]=row
+        search.pending={entry=candidate,row=row,index=1}
+        return
+    end
     local previous = search.best[candidate.key]
     local value = milliseconds or cost
     if not previous or value < (previous.milliseconds or previous.cost) then
@@ -250,7 +302,8 @@ local function BuildPath(search)
     local edge = entry.edge
     search.segments[#search.segments + 1] = { edgeId = edge.id, from = NodeId(graph, edge.from),
         to = NodeId(graph, edge.to), seconds = edge.seconds, kind = edge.kind, portalId = edge.portalId,
-        transportId = edge.transportId, costDetail = edge.costDetail,
+        transportId = edge.transportId, costDetail = edge.costDetail, taxiId=edge.taxiId,
+        resources=edge.resources, fareCopper=edge.fareCopper, personalId=edge.personalId,
         mode = entry.mode, transitionSeconds = edge.transitionSeconds }
     search.nodes[#search.nodes + 1] = NodeId(graph, entry.parent.node)
     search.build = entry.parent
@@ -269,6 +322,10 @@ local function ReversePath(search)
 end
 
 function Search:Advance()
+    if self.pending then
+        if self.pending.prune then return PruneLabel(self) end
+        return CompareLabel(self)
+    end
     if self.validationIndex then return ValidateRequest(self) end
     if self.build then return BuildPath(self) end
     if self.reverseIndex then return ReversePath(self) end

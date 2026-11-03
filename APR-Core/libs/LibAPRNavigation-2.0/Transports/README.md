@@ -177,15 +177,12 @@ world observer. No visual region, interaction handler, OnUpdate or ticker is use
 
 World knowledge has one tri-state value: `worldLoading=true` is observed loading,
 `false` is freshly observed ready, and `nil` is unknown. Initial activation and a
-real Disable/re-enable gap start unknown. Enable accepts configuration but never
-proves readiness; planning then retains the goal as unknown/location_unknown and
-SetTarget returns world_unknown without publishing. The caller must first activate
-the observer, then supply a genuinely fresh trusted ObserveWorld(false), or receive
-PLAYER_ENTERING_WORLD. ObserveWorld while disabled is rejected, because a proof
-before an unobserved interval could itself become stale. After readiness, a new
-independently localized request may resume immediately; no polling or future-event
-wait is required. Production must provide this trustworthy observation source
-before rollout; tests' synthetic bootstrap is not native game evidence.
+real Disable/re-enable gap start unknown. The host subscribes to world events
+before one supported native IsPlayerInWorld readiness probe. Missing/restricted
+readiness stays unknown until fresh evidence; it is never inferred from login,
+coordinates or elapsed time. ObserveWorld while disabled is rejected. Readiness
+alone cannot establish a graph node, floor, phase or arrival. Tests' supplied
+ObserveWorld(false) is synthetic evidence, not an in-game validation.
 
 An already-active Enable/EnableSectors replacement preserves continuous world
 observation and its current ready/loading/unknown knowledge. Only navigation is
@@ -194,6 +191,115 @@ its old plan, action and subscriptions. World listeners are never unregistered
 while reconfiguring or switching movement; only the four journal registrations
 are removed selectively with the client-verified UnregisterEvent method. A real
 Disable cancels execution, unregisters everything and revokes world knowledge.
-An entering event missed while disabled is not invented on reactivation: the
-state stays unknown until a fresh observation. No native readiness query, login
-inference, map non-nil check or elapsed-time guess is used.
+An entering event missed while disabled is not invented on reactivation: only
+the new post-subscription readiness probe or a fresh event can restore readiness.
+Active reconfiguration and incidental Plan calls never rerun the Ready probe or
+erase observed loading. Optional observePosition/positionExpected world gates
+remain separate from both readiness and map projection; World.Match/Project do
+not prove physical node membership or geometry coverage.
+
+## Taxi and cumulative resources
+
+`options.taxi` declares directed business routes with readable `id/from/to`,
+`origin/destination={id,worldID,floorID,phaseID,taxiNodeID?,title?,position?}`,
+`costs={approach,boarding,ride?,loading,disembark,final}` and a positive
+`timeoutSeconds`. API node IDs are attributes; slots and localized names never
+create a route or stop identity. Approach and final walking arcs participate in
+the same search; additional declared components must not duplicate their costs.
+No live taxi catalogue is supplied or inferred.
+
+`taxiObservation={revision,nodes={[stopID]={discovered=boolean}},
+routes={[routeID]={reachable?,fareCopper?,rideSeconds?}}}` is a bounded copied
+snapshot. Missing discovery/reachability/fare is unknown. An explicitly
+undiscovered or unreachable destination is unavailable even when its API cost is
+zero. `ObserveTaxi` ignores stale/unchanged observations without repeated search.
+Manual `taxiSettings.routes[routeID]` costs/fare outrank observations, which
+outrank declared costs. Missing ride duration uses `defaultRideSeconds` (default
+180 seconds), always positive and marked `costDetail.estimatedRide`.
+`SetTaxiCosts(id,costs)` atomically replaces that route's override; `{}` resets it.
+Changes invalidate old jobs/results and disable stale bounds/certificates.
+
+`options.resources` and `SetResources` capture named integer balances (`money`
+is copper). Graph/transport `resources` maps consume them cumulatively. Missing
+quantities are unknown. Snapshots support up to 32 distinct resources; inventory
+aliases for one physical resource must be canonicalized before this boundary.
+The existing search compares time and cumulative consumption within each
+node/ordered visits/movement mode. Each dominance comparison is one budgeted
+operation. Static audited adjacency remains usable; dynamic/resource search
+never consults stale static potentials or witnesses. Defaults remain 1ms/100ms/5s.
+
+The opt-in host's `observeTaxi=true,taxiAPI?` uses an independent read-only
+adapter at activation/planning/consumption and taxi/money event boundaries.
+Search, Step and GetResult read no client journal. Both installed clients'
+TaxiMap/Unit/PlayerScript/LossOfControl definitions and Blizzard
+TaxiFrame/FlightMap/MoneyFrame usage were checked (NAV-11 api-proof.json).
+Missing/secret/error results remain unknown. Ambiguous API bindings have no
+fallback. Observations live only for this enabled host lifetime, with no
+SavedVariables or V1 default changes.
+
+Execution exposes `approach`, `board_taxi`, `awaiting_taxi`, `riding_taxi`, then
+the next segment. A missing approach position produces no waypoint or resolver
+fallback. `BeginTaxi` rereads the open-map quote, requiring exact business
+origin/destination, reachability, expected fare and current money. This only
+starts an observation attempt; APR keeps user/secure interactions. No purchase,
+TakeTaxiNode, cast, click or protected mutation is performed.
+
+`ObserveTravel` requires a matching opaque attempt and observed boarding, then
+off-taxi plus a reliable exact node/stop/world/floor/phase match outside loading.
+Host `ObserveTaxiFlight(localization)` adds native on/off-taxi evidence; its
+separate localization argument must be genuine trusted evidence. Flight end,
+proximity, map availability or entering/loading events cannot prove arrival.
+Timeout, failure, context replacement and cancellation are terminal. The Journey
+retains its objective/visits and never regains an old origin after boarding.
+World/money changes stale plans while committed flights await their proof; a
+proven landing requests one fresh remaining plan. Unknown work is not restarted.
+
+Only a proven flight records elapsed boarding-to-confirmed-arrival duration.
+It can conservatively include delayed confirmation or in-flight loading; author
+additional loading costs accordingly. Manual durations retain priority.
+`Host:ResetTaxiDurations` clears calibrations idempotently. Real discovery,
+discounts, event timing, destination/floor/phase evidence, combat/taint and native
+WUI/AWP behavior require in-game checks on both clients before rollout. The
+upstream NAV-03 AWP dismissal gap remains unresolved.
+
+## Personal actions in the same planner
+
+`options.personal` / `personalObservation` register the project-owned Personal
+catalogue. Its readable IDs and canonical item/usage keys contribute to the same
+resource map as taxi money. Resource fusion replaces only the observer's owned
+keys, revokes missing new quantities and validates the complete map atomically.
+Known and latent declared keys count toward the32-key limit; exceeding it returns
+`resource_limit_exceeded`, preserving the previous state. No balance is truncated.
+`ObservePersonal` and `SetPersonalCosts` invalidate old planning results; dynamic
+personal arcs also disable static witnesses/potentials while retaining adjacency.
+
+Host native opt-in is `observePersonal=true`, with independent `personalAPI`,
+`personalOrigin={node,space,phase,reliable,indoors?}`, and optional
+`personalSettings={allowRare=true}`. Unknown/loading observations stay sparse.
+Origin/phase must be genuine supplied evidence; no outdoor check is added unless
+authored, and no cave exit or map point is invented. A fresh localized Plan may
+supply its trusted source node. Loading revokes old scope. API reads occur at
+explicit observation/planning/use boundaries; events mark dirty immediately and
+UNIT events filter the player. Step/GetResult/display do not scan inventory.
+
+Personal execution is one bounded captured receipt, independent of new planning
+catalogues: canonical declarations/observations, objective/source/destination,
+opaque attempt and fixed deadline. `BeginPersonalUse` starts that receipt without
+performing a spell/item action. Expected cast/cooldown/loading/resource events
+stale future plans while the committed receipt awaits proof. Correlated failure,
+incompatible reliable proof, cancellation, objective replacement, Disable or
+deadline are terminal. Arrival needs a complete correlated transition and reliable
+matching destination outside the host's loading interval. It triggers one new
+plan from the confirmed Journey node/remaining mandatory visits, never old legs.
+
+`Host:GetPersonalButton(parent?)` explicitly exposes one reusable APR-owned secure
+button for APR to place. Its sanitized `personalButtonLabel` reuses Blizzard USE.
+PreClick revalidates current context/result/source and starts the receipt; attributes
+remain intact for Blizzard's secure handler. PostClick disarms and shows awaiting.
+The host uses explicit key-up handling verified in both installed clients. It
+never calls Click/CastSpell/UseItem. Outside combat cancellation disarms immediately;
+in combat the adapter's secure guards block stale clicks while protected cleanup
+is deferred. Regen drains cleanup before any new action, never restores an old
+action, and Disable detaches host scripts when legal. No waypoint is published
+for this action. Native cast/use, taint/combat timing and truthful arrival identity
+still require real Forever/Retail checks before rollout.
