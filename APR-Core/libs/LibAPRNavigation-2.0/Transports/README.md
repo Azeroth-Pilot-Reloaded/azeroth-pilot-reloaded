@@ -303,3 +303,54 @@ is deferred. Regen drains cleanup before any new action, never restores an old
 action, and Disable detaches host scripts when legal. No waypoint is published
 for this action. Native cast/use, taint/combat timing and truthful arrival identity
 still require real Forever/Retail checks before rollout.
+
+### Future personal use and explicit waits
+
+`Transports/Cooldowns.lua` is a pure arithmetic decision shared by personal
+planning and execution. A label's use epoch is the captured planning epoch plus
+all preceding leg costs and any required mode transition. A personal edge adds
+only the remaining justified wait, followed by use and loading. Its
+`costDetail={waitSeconds,useAt,useSeconds,loadingSeconds}` contains exact seconds;
+there is no time grid. `Personal:Edge` still reports immediate observed access;
+the search uses its cached forecast eligibility after movement evaluation.
+
+One physical ability or authored `cooldownGroup` has one timeline. A noncharged
+use starts its declared cooldown at `useAt`. Charged uses consume successive
+charges; regeneration is projected only from a positive public recharge duration
+with unit playback rate, and a consistent active start when partially depleted.
+Missing/secret/rate-uncertain or inconsistent recharge data do not create future
+charges. Known current charges remain usable. An exhausted unforecastable group
+leaves an explicit unknown possibility, while any known ordinary route can win.
+An authored source can be approached; restrictions known only at another source
+(space/phase/indoors) remain unknown. No future origin is invented for an
+origin-less action.
+
+Money and canonical physical inventory are cumulatively spent by the existing
+solver. Renewable group history is compared as future availability, never as a
+permanent usage count. Dominance compares the entire remaining recharge sequence,
+including whether an earlier arrival can wait until a later label. Past timers
+and fully restored queues are removed from label state; unrelated balances never
+become state dimensions. `resourcesSpent` still reports all selected edge usage,
+including personal uses, during path reconstruction. The32-key resource boundary,
+bounded preparation/cache and1ms/100ms/5s budgets are unchanged. Changed forecast
+proof invalidates old jobs/results even if raw charge counts did not change.
+
+An explicit travel session may expose `kind='personal',phase='waiting'`,
+`instruction='wait_personal'`, `readyAt`, fixed `deadline`, `remainingSeconds` and
+sanitized title. APR adds the compatible Blizzard GlobalString
+`SPELL_FAILED_NOT_READY` as `message`; no translation key is added. It publishes
+no position/waypoint and leaves the secure button disarmed. One cancellable timer
+at the fixed wait boundary requests one fresh remaining plan with the same
+Journey. It never casts/uses/clicks or resumes old legs. Native facts are recaptured
+at planning and at the real hardware click, including when the initial planning
+observation was supplied manually. A missing timer API still permits explicit
+`RefreshTravel`/`Tick`; it creates no polling loop.
+
+Once `BeginUse` commits, the separate immutable receipt retains its original
+attempt, `usedAt` and transition deadline through expected events. The wait clock
+does not extend that deadline. Reliable correlated arrival still requires a fresh
+remaining plan and cannot advance a quest. Tests cover exact waits, shared
+cooldowns, finite/known/unknown recharge, cumulative money/items, invalidation,
+90 independently enumerated tiny graphs, real XML/TOC/host/button lifecycle and
+obsolete static witnesses. Native timing, truthful arrival, combat/taint and
+Forever/Retail gameplay remain unverified before rollout; V1 remains default.

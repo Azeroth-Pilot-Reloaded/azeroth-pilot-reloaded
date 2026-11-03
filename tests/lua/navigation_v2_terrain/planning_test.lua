@@ -1,5 +1,5 @@
 local ns={}
-for _,module in ipairs({'Graph','Search','Navigation','Data/Loader'}) do
+for _,module in ipairs({'Conditions','Graph','Search','Navigation','Data/Loader'}) do
     assert(loadfile('APR-Core/libs/LibAPRNavigation-2.0/'..module..'.lua'))('test',ns)
 end
 local declarations={island={complete=false,blocks={{first=1,nodes=2,edges=0,rawBytes=1,payload='data'}}}}

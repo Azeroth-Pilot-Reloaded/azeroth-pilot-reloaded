@@ -150,6 +150,7 @@ end--[[APR_DIAG]]; Adapter.Same = APRTrace("APR-Core/features/navigation/Navigat
 
 function Adapter.Label(action,api)
     api=api or _G
+    if action and action.phase=='waiting' then return Target.Text(api.SPELL_FAILED_NOT_READY) end
     return Target.Text(action and action.title,Target.Text(api.USE))
 end--[[APR_DIAG]]; Adapter.Label = APRTrace("APR-Core/features/navigation/NavigationV2Personal.lua:151:Adapter.Label#16", Adapter.Label)--[[/APR_DIAG]]
 
@@ -176,7 +177,7 @@ function Adapter.CreateButton(api,parent)
         'if SecureCmdOptionParse("[combat] blocked; clear") == "blocked" then '..DISARM..' return false end')
     api.RegisterStateDriver(button,'personalcombat','[combat] blocked; clear')
     return button
-end--[[APR_DIAG]]; Adapter.CreateButton = APRTrace("APR-Core/features/navigation/NavigationV2Personal.lua:165:Adapter.CreateButton#17", Adapter.CreateButton)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Adapter.CreateButton = APRTrace("APR-Core/features/navigation/NavigationV2Personal.lua:166:Adapter.CreateButton#17", Adapter.CreateButton)--[[/APR_DIAG]]
 
 -- The host owns the template and lifetime. Hardware clicks run Blizzard's
 -- protected handler; this function only configures/disarms outside combat.
@@ -198,7 +199,7 @@ function Adapter.PrepareButton(button,action,api)
     button:SetAttribute('type',action.kind)
     if type(button.Show)=='function' then button:Show() end
     return true
-end--[[APR_DIAG]]; Adapter.PrepareButton = APRTrace("APR-Core/features/navigation/NavigationV2Personal.lua:183:Adapter.PrepareButton#18", Adapter.PrepareButton)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Adapter.PrepareButton = APRTrace("APR-Core/features/navigation/NavigationV2Personal.lua:184:Adapter.PrepareButton#18", Adapter.PrepareButton)--[[/APR_DIAG]]
 
 ns.NavigationV2PersonalAdapter=Adapter
 APR.NavigationV2Personal=Adapter

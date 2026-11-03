@@ -1,5 +1,7 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
+    <Script file="Conditions.lua"/>
     <Script file="Graph.lua"/>
+    <Script file="Transports/Cooldowns.lua"/>
     <Script file="Resources.lua"/>
     <Script file="Localization/World.lua"/>
     <Script file="Search.lua"/>

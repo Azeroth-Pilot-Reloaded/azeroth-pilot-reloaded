@@ -46,10 +46,17 @@ local function Budgets(options)
 end
 
 function Navigation.New(graph, options)
-    local preparation, reason = Graph.New(graph)
+    local context={tracker=namespace.NavigationV2Conditions.New(),bindings={},transports={}}
+    local preparation, reason = Graph.New(graph,context)
     if not preparation then return nil, reason end
     if type(options) ~= "table" or type(options.clock) ~= "function"
         or type(options.profileClock) ~= "function" then return nil, "invalid_clocks" end
+    if options.deferConditions~=nil and type(options.deferConditions)~='boolean' then return nil,'invalid_condition_options' end
+    if options.conditionObservation~=nil then
+        local accepted
+        accepted,reason=context.tracker:Observe(options.conditionObservation)
+        if accepted==nil then return nil,reason end
+    end
     local budgets = Budgets(options.budgets)
     if not budgets then return nil, "invalid_budgets" end
     if not ReadClock(options.clock) or not ReadClock(options.profileClock) then return nil, "clock_unavailable" end
@@ -84,9 +91,34 @@ function Navigation.New(graph, options)
         resources,reason=namespace.NavigationV2Resources.Merge(resources or {},personal:Resources(),PersonalKeys(personal))
         if not resources then return nil,reason end
     end
+    for kind,source in pairs({portal=options.portals,scheduled=options.scheduled,taxi=options.taxi,personal=options.personal}) do
+        local bindings={}
+        for _,declaration in ipairs(source) do
+            local binding
+            binding,reason=Graph.BindRequirements(context,declaration.requirements)
+            if reason then return nil,reason end
+            bindings[declaration.id]=binding
+        end
+        context.transports[kind]=bindings
+    end
     return setmetatable({ preparation = preparation, clock = options.clock, profileClock = options.profileClock,
+        conditions=context.tracker,conditionContext=context,deferConditions=options.deferConditions==true,conditionObservedCount=0,
         movement = options.movement, scheduled = scheduled, taxi=taxi, resources=resources,personal=personal,
         portals = portals, budgets = budgets, revision = 1, identity = {} }, Planner)
+end
+
+function Planner:ObserveConditions(observation)
+    local changed,reason,recovered=self.conditions:Observe(observation)
+    if changed==nil or reason then return changed,reason,recovered end
+    self.conditionObservedCount=self.conditions.dependencyCount
+    if changed or recovered then self:Invalidate() end
+    return changed,nil,recovered
+end
+
+function Planner:MarkConditionsDirty(dependencies)
+    local changed,reason=self.conditions:MarkDirty(dependencies)
+    if changed then self:Invalidate() end
+    return changed,reason
 end
 
 function Planner:SetResources(source)
@@ -149,6 +181,23 @@ function Planner:SetScheduled(declarations, overrides)
     if not namespace.NavigationV2Scheduled then return nil, 'scheduled_unavailable' end
     local catalog, reason = namespace.NavigationV2Scheduled.NewCatalog(declarations, overrides)
     if not catalog then return nil, reason end
+    -- Requirements are compiled configuration, like node/zone declarations.
+    -- Changing their ownership needs a fresh planner, so removed facts cannot
+    -- leak subscriptions or old access proof into a replacement catalogue.
+    local bindings={}
+    for _,declaration in ipairs(declarations) do
+        local binding
+        binding,reason=Graph.BindRequirements(self.conditionContext,declaration.requirements,true)
+        if reason then return nil,reason end
+        bindings[declaration.id]=binding
+    end
+    local previous=self.conditionContext.transports.scheduled or {}
+    for id,binding in pairs(previous) do
+        if bindings[id]~=binding then return nil,'condition_reconfiguration_requires_enable' end
+    end
+    for id,binding in pairs(bindings) do
+        if previous[id]~=binding then return nil,'condition_reconfiguration_requires_enable' end
+    end
     if self.scheduled and namespace.NavigationV2WaypointTarget.Same(self.scheduled.byId, catalog.byId) then return false end
     self.scheduled = catalog
     self.scheduledPrepared,self.scheduledCursor=nil,nil
@@ -182,7 +231,8 @@ function Job:GetResult()
     if self.result then return self.result end
     local diagnostics = {}
     for key, value in pairs(self.diagnostics) do diagnostics[key] = value end
-    return { status = "running", optimal = false, objective = self.objective,
+    return { status = self.awaitingConditions and 'observation_required' or "running", optimal = false, objective = self.objective,
+        reason=self.awaitingConditions and 'conditions' or nil,conditionToken=self.conditionToken,
         revision = self.revision, owner = self.planner.identity, diagnostics = diagnostics }
 end
 
@@ -202,6 +252,7 @@ end
 
 function Planner:Plan(request, context)
     local job = setmetatable({ planner = self, revision = self.revision,
+        conditionToken=self.conditions:GetToken(),
         objective = Graph.CaptureRequest(request), cpuMs = 0,
         diagnostics = { operations = 0, slices = 0, expanded = 0, relaxed = 0,
             preparedNodes = 0, preparedEdges = 0, cpuMs = 0, elapsedMs = 0,
@@ -227,7 +278,19 @@ end
 
 function Planner:IsCurrent(result)
     return type(result) == "table" and result.owner == self.identity and result.revision == self.revision
-        and result.status == "complete"
+        and result.status == "complete" and self.conditions:IsCurrent(result.conditionToken)
+end
+
+-- Only a pre-search suspended job may adopt freshly captured dependencies.
+-- This is the same objective/job/budget, never a retry of an unchanged query.
+function Job:ContinueConditions(observation)
+    if self.result or not self.awaitingConditions then return nil,'conditions_not_requested' end
+    if self.revision~=self.planner.revision then return nil,'stale_job' end
+    local changed,reason,recovered=self.planner:ObserveConditions(observation)
+    if changed==nil or reason then return nil,reason end
+    self.revision,self.conditionToken=self.planner.revision,self.planner.conditions:GetToken()
+    self.awaitingConditions=nil
+    return self:GetResult(),nil,recovered
 end
 
 function Job:Cancel()
@@ -273,7 +336,11 @@ local function Advance(job)
             end
             planner.scheduledPrepared = true
         end
+        if job.planner.deferConditions and job.planner.conditionObservedCount<job.planner.conditions.dependencyCount then
+            job.awaitingConditions=true;job.diagnostics.phase='observe_conditions';return
+        end
         job.search = Search.New(preparation.compiled, job.objective, job.diagnostics, {
+            conditions=job.planner.conditionContext,
             portals = job.planner.portals, movement = job.planner.movement,
             scheduled = job.planner.scheduled, taxi=job.planner.taxi,personal=job.planner.personal,
             resources=job.planner.resources,startedAt = job.started })
@@ -298,6 +365,7 @@ end
 
 local function Stopped(job)
     if job.revision ~= job.planner.revision then return Finish(job, "stale", "invalidated") end
+    if not job.planner.conditions:IsCurrent(job.conditionToken) then return Finish(job,'stale','conditions_invalidated') end
     return job.result
 end
 
@@ -314,6 +382,7 @@ function Job:Step(maxOperations, maxMilliseconds)
     if clockReason then return Finish(self, "unknown", clockReason) end
     local budgetReason = BudgetReason(self)
     if budgetReason then return Finish(self, "budget_exceeded", budgetReason) end
+    if self.awaitingConditions then return self:GetResult() end
     local allowance = math.min(maxMilliseconds, self.planner.budgets.sliceMs)
     local previous, baseCpu = started, self.cpuMs
     self.diagnostics.slices = self.diagnostics.slices + 1
@@ -329,6 +398,7 @@ function Job:Step(maxOperations, maxMilliseconds)
         budgetReason = BudgetReason(self)
         if budgetReason then return Finish(self, "budget_exceeded", budgetReason) end
         if status then return Finish(self, status, reason) end
+        if self.awaitingConditions then return self:GetResult() end
         if profile - started >= allowance then break end
     end
     return self:GetResult()

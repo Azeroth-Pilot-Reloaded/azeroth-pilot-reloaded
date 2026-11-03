@@ -151,3 +151,68 @@ Tests: `python -m unittest tests.lua.navigation_v2.test_navigation_v2 -v`.
 Actual Retail/Forever loading, timing and gameplay checks have **not** been
 performed. API/source evidence and remaining checks are recorded in the NAV-01
 report; successful mocks are not an in-game validation.
+
+The optional Personal overlay now evaluates cooldowns at the actual estimated
+use epoch, after approach/transport/mode costs. Shared cooldowns and known charge
+recharge stay in the same budgeted shortest-path solver; money and items remain
+cumulative. Exact bounded waits are explicit actions without waypoints or
+automatic use. See [the transport contract](Transports/README.md#future-personal-use-and-explicit-waits)
+for observation uncertainty, label dominance, click revalidation and unchanged
+committed-attempt semantics. The host remains opt-in and V1 remains default.
+
+## Observed conditions and the first capture boundary
+
+The pure [Conditions contract](Conditions.md) is shared by the same planner.
+Optional `requirements` can be attached to the graph, a zone, node, passage or
+transport declaration. Simple nodes retain the string form, or use
+`{id='gate',zone='hall',requirements={...}}`; zones are
+`zones={{id='hall',requirements={...}}}`. Every applicable source/destination,
+zone and passage/transport conjunction is checked. Semantic equivalents share
+one cached binding even across thousands of nodes. Sector sources can also
+carry a global `source.requirements`; compact terrain data is left intact.
+Conditional searches cannot use static witnesses/potentials. Access facts and
+identity do not add temporal state or a second solver.
+
+Pure callers provide `conditionObservation={sequence,worldState,quests,access,
+world,space,floor,phase}` and can use `planner:ObserveConditions` or
+`MarkConditionsDirty`. Jobs/results carry a tracker token in addition to their
+planner revision; retired tokens never revive. Graph/catalog requirements are
+compiled configuration. A new `Enable` replaces that ownership and proof.
+`SetScheduled` continues to accept cost changes and unconditional route changes;
+changing a conditional route's requirement ownership instead returns
+`condition_reconfiguration_requires_enable` atomically, with the old catalogue,
+revision and dependency subscriptions preserved.
+
+Native opt-in accepts `observeConditions=true`, `conditionAPI?`,
+`conditionIdentity?` and `conditionAccess?`. Preparation remains budgeted and can
+discover new required facts after `Plan`. The first job then pauses without
+finishing:
+
+```lua
+local result = host:Step()
+if result.status == 'observation_required' then
+    host:ResumeConditions() -- subscribe, capture once, continue this SAME job
+end
+-- Continue Step later while running. No unchanged replacement Plan is needed.
+```
+
+The corresponding pure API is `deferConditions=true` and
+`job:ContinueConditions(freshSnapshot)`. The original objective, preparation,
+CPU and elapsed budgets survive the continuation. A captured nil/error/secret
+fact is an attempted observation, not another dependency request. `Step` and
+`GetResult` never query quest APIs or register native listeners.
+
+The existing host event owner coalesces relevant quest/phase dirty bursts and
+retires old output/actions immediately. `ResumeConditions` consumes a dirty
+burst once, restoring an identical fresh proof through one new plan from the
+confirmed Journey. `SetConditionIdentity` and `SetConditionAccess` replace
+explicit trusted evidence. Without a confirmed origin, one held
+`unknown/location_unknown` result retains the objective/visits; unchanged Resume
+calls do not recapture or replan. A new relevant event/proof or trusted request
+can recover it. Unrequired facts do not schedule work. No map/Z/phase-reason
+inference is used. `UNIT_PHASE`
+revokes phase and access proof; loading revokes identity/access and the old
+Journey origin. Reconfiguration/Disable discard the source. Hardware use
+revalidates facts and preserves only an already committed immutable travel
+receipt, never an old itinerary. Native timing, proof lifetime and combat/taint
+still require in-game verification before rollout.

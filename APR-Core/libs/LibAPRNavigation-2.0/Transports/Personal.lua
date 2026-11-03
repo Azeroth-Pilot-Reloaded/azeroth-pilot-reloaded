@@ -5,6 +5,7 @@ local Target = ns.NavigationV2WaypointTarget
 local Personal, Catalog, Execution = {}, {}, {}
 Catalog.__index, Execution.__index = Catalog, Execution
 local MAX_ACTIONS = 256
+local Requirements
 
 local function Name(v) return type(v)=='string' and v:match('%S')~=nil end
 local function Quantity(v) return Finite(v) and v>=0 and v%1==0 end
@@ -132,13 +133,15 @@ local function Snapshot(catalog,raw)
     return r
 end
 
-local function Access(d,o)
+local function Access(d,o,forecast)
     local s,origin=o.actions[d.id],o.origin
     if d.rare and not o.allowRare then return 'unavailable' end
     if o.combat==true or o.casting==true or s.usable==false
         or (d.kind=='spell' and s.known==false) or (d.kind=='item' and s.owned==false) then return 'unavailable' end
     if origin.reliable~=true or not origin.node then return 'unknown' end
-    if d.from and origin.node~=d.from then return 'unknown' end
+    -- An authored source can be approached later. Restrictions observed only at
+    -- the current source (space/phase/indoors) cannot be projected to another one.
+    if d.from and origin.node~=d.from and (not forecast or d.origin~=nil) then return 'unknown' end
     local restriction=d.origin or {}
     for _,key in ipairs({'space','phase'}) do
         if restriction[key] and origin[key] and restriction[key]~=origin[key] then return 'unavailable' end
@@ -148,9 +151,9 @@ local function Access(d,o)
     if restriction.outdoorsOnly and origin.indoors==nil then return 'unknown' end
     if o.loading~=false or o.combat~=false or o.casting~=false or s.loaded~=true or s.usable~=true
         or (d.kind=='spell' and s.known~=true) or (d.kind=='item' and s.owned~=true)
-        or not o.observedAt or not s.readyAt or s.readyAt>o.observedAt then return 'unknown' end
+        or not o.observedAt or not s.readyAt or (not forecast and s.readyAt>o.observedAt) then return 'unknown' end
     if d.chargeBased and (not s.charges or not s.maxCharges) then return 'unknown' end
-    if d.chargeBased and s.charges==0 then return 'unknown' end
+    if d.chargeBased and s.charges==0 and not forecast then return 'unknown' end
     return 'available'
 end
 
@@ -167,6 +170,7 @@ function Personal.New(declarations,observation)
     end
     if count~=maximum then return nil,'invalid_personal' end
     if not Canonicalize(c) then return nil,'invalid_personal_resource_alias' end
+    for _,d in ipairs(c.entries) do d.resources=Requirements(d) end
     local changed,reason=c:Observe(observation or {revision=1})
     if changed==nil then return nil,reason end
     return c
@@ -195,7 +199,14 @@ function Catalog:Observe(raw)
         end
         row[#row+1]=d
     end
+    local cooldowns=ns.NavigationV2Cooldowns.Capture(self.entries,o)
+    changed=changed or not Target.Same(self.cooldowns,cooldowns)
+    self.cooldowns=cooldowns
     if changed then self.generation=self.generation+1 end
+    for _,d in ipairs(self.entries) do
+        d.access=Access(d,o,true)
+        d.immediateAccess=Access(d,o)
+    end
     return changed
 end
 
@@ -216,7 +227,7 @@ function Catalog:Resources()
     return r
 end
 
-local function Requirements(d)
+Requirements=function(d)
     local resources={}
     if d.moneyCopper>0 then resources.money=d.moneyCopper end
     for name,reagent in pairs(d.reagents) do resources['item:'..name]=reagent.count end
@@ -233,7 +244,31 @@ function Catalog:Edge(node,cursor)
     local d=row[cursor] or self.unanchored[cursor-#row]
     if not d then return end
     return {id='personal:'..d.id,kind='personal',personalId=d.id,from=node,to=d.to,
-        seconds=d.useSeconds+d.loadingSeconds,access=Access(d,self.observation),resources=Requirements(d)}
+        seconds=d.useSeconds+d.loadingSeconds,access=d.immediateAccess,forecastAccess=d.access,resources=Target.Copy(d.resources)}
+end
+
+-- Called after movement approach/transition cost has been evaluated. Declarations
+-- and observations are already captured; this is arithmetic over immutable data.
+function Catalog:Evaluate(edge,arrival,states)
+    local d=self.byId[edge.personalId]
+    local key=UseKey(d)
+    local profile=self.cooldowns[key]
+    if not Seconds(arrival) then return nil,'cooldown_clock_unknown' end
+    local ready=self.observation.actions[d.id].readyAt
+    if not ready then return nil,'cooldown_unknown' end
+    local useAt,nextState=math.max(arrival,ready),nil
+    if profile then
+        useAt,nextState=ns.NavigationV2Cooldowns.Use(profile,states[key],arrival,d.cooldownSeconds)
+        if not useAt then return nil,nextState end
+    end
+    if not Seconds(useAt) then return nil,'cooldown_clock_unknown' end
+    edge.seconds=edge.seconds+(useAt-arrival)
+    if not Seconds(edge.seconds) then return nil,'cooldown_overflow' end
+    edge.costDetail={waitSeconds=useAt-arrival,useAt=useAt,useSeconds=d.useSeconds,loadingSeconds=d.loadingSeconds}
+    local result={}
+    for id,state in pairs(states) do result[id]=state end
+    if nextState then result[key]=nextState end
+    return edge,result
 end
 
 function Catalog:Prepare(graph)
@@ -269,21 +304,30 @@ function Catalog:NewExecution(id,options)
     local d=self.byId[id]
     if not d or type(options)~='table' or not Name(options.objectiveID) or not Seconds(options.now)
         or options.from~=(d.from or self.observation.origin.node) then return nil,'invalid_personal_execution' end
-    if Access(d,self.observation)~='available' then return nil,'personal_unavailable' end
-    local resources,reason=ns.NavigationV2Resources.Spend(self:Resources(),{},Requirements(d))
+    if d.access~='available' then return nil,'personal_unavailable' end
+    if not self.observation.observedAt or options.now<self.observation.observedAt then return nil,'clock_unavailable' end
+    local edge={personalId=id,seconds=d.useSeconds+d.loadingSeconds,access=d.access}
+    local evaluated,reason=self:Evaluate(edge,options.now,{})
+    if not evaluated then return nil,reason end
+    local resources
+    resources,reason=ns.NavigationV2Resources.Spend(self:Resources(),{},d.resources,self.cooldowns)
     if not resources then return nil,reason end
+    local readyAt=evaluated.costDetail.useAt
     return setmetatable({catalog=self,generation=self.generation,declaration=d,from=options.from,
-        objectiveID=options.objectiveID,lastClock=options.now,status='running',phase='ready',sequence=0},Execution)
+        objectiveID=options.objectiveID,lastClock=options.now,status='running',
+        phase=readyAt>options.now and 'waiting' or 'ready',readyAt=readyAt,sequence=0},Execution)
 end
 
 function Execution:GetState()
     if self.generation~=self.catalog.generation and self.status=='running' then self:Cancel('invalidated') end
     local d=self.declaration
+    local waiting=self.status=='running' and self.phase=='waiting'
     return {status=self.status,phase=self.phase,reason=self.reason,personalId=d.id,kind=d.kind,
-        spellID=d.spellID,itemID=d.itemID,title=d.name,instruction='use_personal',
-        objectiveID=self.objectiveID,attempt=self.attempt,deadline=self.deadline,
+        spellID=d.spellID,itemID=d.itemID,title=d.name,instruction=waiting and 'wait_personal' or 'use_personal',
+        objectiveID=self.objectiveID,attempt=self.attempt,deadline=waiting and self.readyAt or self.deadline,
+        readyAt=self.readyAt,
         usedAt=self.usedAt,
-        remainingSeconds=self.deadline and self.deadline-self.lastClock}
+        remainingSeconds=waiting and self.readyAt-self.lastClock or self.deadline and self.deadline-self.lastClock}
 end
 
 function Execution:Cancel(reason)
@@ -295,6 +339,7 @@ function Execution:Tick(now)
     if not Seconds(now) or now<self.lastClock then self.status,self.reason='failed','clock_unavailable'
     elseif self.deadline and now>=self.deadline then self.status,self.reason='failed','transition_timeout' end
     if Seconds(now) then self.lastClock=now end
+    if self.status=='running' and self.phase=='waiting' and now>=self.readyAt then self.phase='ready' end
     if self.status~='running' then self.deadline=nil end
     return self:GetState()
 end

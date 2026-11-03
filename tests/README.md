@@ -565,3 +565,27 @@ Combat cases model the separately verified secure guard; no test calls a real
 protected action or claims native taint validation. An obsolete prepared witness
 also cannot hide a faster Personal action. NAV-13/NAV-15 independently own their
 module/host counter-tests; no shared fixture assumes a shipped route or catalogue.
+
+`lua/navigation_v2_cooldowns` exercises future personal use at exact epochs after
+approach, movement transitions and scheduled transport, wait-versus-walk choices,
+shared cooldowns, successive known charges, sequential regeneration, unknown
+rates/data, cumulative money/reagents and consumed-item rejection. Two independent
+path/calendar oracles cover90 tiny synthetic graphs. Label contracts discard past
+timers/restored queues and bound cheap-loop expansion without retaining unrelated
+balances. The actual XML/TOC/host handles a text-only bounded wait, one replan at
+its boundary, stale callbacks, click recapture and cancellation without protected
+automatic actions or quest progress. `scripts/test_navigation_v2_cooldowns.py`
+also verifies real TestLoader discovery and obsolete-static-witness rejection.
+Run `python -m unittest tests.lua.navigation_v2_cooldowns.test_cooldowns
+tests.scripts.test_navigation_v2_cooldowns -v`. Native client timing, combat/taint,
+cast/use and correlated physical arrival remain required before either rollout.
+
+The same synthetic family also checks the shared Conditions integration:
+global/zone/from/to/passage/transport conjunctions, semantic binding reuse,
+origin/destination validation, conservative unknown alternatives and a real
+first-job `observation_required`/`ResumeConditions` continuation. Native queries
+are counted at explicit capture boundaries, with none in Step/GetResult. Phase,
+access, loading and owner replacement tests prevent stale proof restoration;
+an in-flight native capture cannot overwrite a newer request. A conditional
+sector source also rejects old static witnesses. The NAV-16 family independently
+owns its module and actual-chain counter-tests; this family never edits them.

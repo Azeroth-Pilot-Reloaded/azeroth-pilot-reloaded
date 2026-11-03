@@ -2,7 +2,7 @@ local F = {}
 function F.New(config)
     config = config or {}
     local ns = {}
-    for _, file in ipairs({'Graph','Search','Navigation','Data/Loader','Data/Sectors'}) do
+    for _, file in ipairs({'Conditions','Graph','Search','Navigation','Data/Loader','Data/Sectors'}) do
         assert(loadfile('APR-Core/libs/LibAPRNavigation-2.0/'..file..'.lua'))('test', ns)
     end
     local data = {

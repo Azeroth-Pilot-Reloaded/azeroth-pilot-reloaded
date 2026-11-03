@@ -37,11 +37,13 @@ function Resources.Merge(base,observed,owned)
 end
 
 -- Missing is unknown, never zero. Zero consumption requires no observation.
-function Resources.Spend(balances, spent, consumption)
+-- Timed personal groups use the shared cooldown decision instead of a permanent
+-- spent budget. Path reconstruction reports their usage counts separately.
+function Resources.Spend(balances, spent, consumption, timed)
     local result = {}
     for key, value in pairs(spent) do result[key] = value end
     for key, amount in pairs(consumption or {}) do
-        if amount > 0 then
+        if amount > 0 and not (timed and timed[key]) then
             local total = (result[key] or 0) + amount
             if not Finite(total) or total > ns.NavigationV2Graph.SAFE_INTEGER then return nil, 'resource_overflow' end
             if balances[key] == nil then return nil, 'resources_unknown' end

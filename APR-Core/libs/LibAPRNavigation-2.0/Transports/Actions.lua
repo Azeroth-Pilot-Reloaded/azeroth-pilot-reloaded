@@ -49,6 +49,7 @@ function Actions.New(planner, result, options, journey)
     if not journey.node then return nil, 'location_unknown' end
     if journey.node ~= result.objective.from then return nil, 'location_changed' end
     local travel = setmetatable({planner=planner,revision=planner.revision,segments=Copy(result.segments),
+        conditionToken=result.conditionToken,
         journey=journey,
         index=1,sequence=0,state='moving',scheduledTimeoutSeconds=timeout,objectiveID=objectiveID}, Travel)
     return travel
@@ -62,12 +63,17 @@ function Travel:Cancel(reason)
 end
 
 local function Current(travel)
-    if travel.revision ~= travel.planner.revision and travel.state ~= 'cancelled' then
+    local conditionCurrent=travel.planner.conditions:IsCurrent(travel.conditionToken)
+    if (travel.revision ~= travel.planner.revision or not conditionCurrent) and travel.state ~= 'cancelled' then
         if travel.personalExecution and travel.personalExecution:GetState().phase=='awaiting_transition'
             and travel.personalExecution:GetState().status=='running' then
             -- A bounded immutable execution receipt survives changed future plans.
             travel.revision=travel.planner.revision
+            travel.conditionToken=travel.planner.conditions:GetToken()
             return
+        end
+        if travel.taxiPhase and travel.revision==travel.planner.revision then
+            travel.conditionToken=travel.planner.conditions:GetToken();return
         end
         if travel.scheduledExecution then travel.scheduledExecution:Cancel() end
         travel.state, travel.reason, travel.deadline = 'cancelled', 'invalidated', nil
@@ -87,8 +93,13 @@ local function PersonalAction(travel,segment)
             now=ok and now or nil,from=segment.from})
         if not execution then travel.state,travel.reason='failed',reason;return travel:GetAction() end
         travel.personalExecution=execution
+        travel.personalWaiting=execution:GetState().phase=='waiting'
     end
     local state=travel.personalExecution:GetState()
+    if travel.personalWaiting and state.status=='running' and state.phase=='ready' then
+        travel.state,travel.reason='replan','personal_ready'
+        return travel:GetAction()
+    end
     if state.status=='complete' then
         travel.journey:Locate(segment.to)
         travel.index,travel.personalExecution,travel.state=travel.index+1,nil,'replan'
@@ -100,7 +111,7 @@ local function PersonalAction(travel,segment)
     end
     return {kind='personal',actionKind=state.kind,personalId=state.personalId,phase=state.phase,
         status=state.status,title=state.title,instruction=state.instruction,spellID=state.spellID,itemID=state.itemID,
-        attempt=state.attempt,deadline=state.deadline,remainingSeconds=state.remainingSeconds,
+        attempt=state.attempt,deadline=state.deadline,remainingSeconds=state.remainingSeconds,readyAt=state.readyAt,
         objectiveID=state.objectiveID,innerAction=state,mode=segment.mode,transitionSeconds=segment.transitionSeconds}
 end
 
@@ -151,7 +162,7 @@ function Travel:GetAction()
     Current(self)
     local state = self.state
     if state == 'cancelled' or state == 'failed' then return {kind=state,reason=self.reason} end
-    if state=='replan' then return {kind='replan',reason='personal_arrival'} end
+    if state=='replan' then return {kind='replan',reason=self.reason or 'personal_arrival'} end
     local segment = self.segments[self.index]
     if not segment then self.state='complete'; return {kind='complete'} end
     if segment.kind == 'scheduled' then return ScheduledAction(self, segment) end

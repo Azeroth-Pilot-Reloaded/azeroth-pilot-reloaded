@@ -1,6 +1,6 @@
 local F = assert(loadfile("tests/lua/navigation_v2_scheduled/fixture.lua"))()
 local root = "APR-Core/libs/LibAPRNavigation-2.0/"
-for _, file in ipairs({ "Search.lua", "Navigation.lua" }) do
+for _, file in ipairs({ "Conditions.lua", "Search.lua", "Navigation.lua" }) do
     assert(loadfile(root .. file))("synthetic", F.namespace)
 end
 local route = F.Route()

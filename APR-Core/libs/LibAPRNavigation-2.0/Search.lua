@@ -66,7 +66,7 @@ local function Start(search, phase)
     local entry = Entry(search, Locate(search.graph, search.objective.from), 0, 0, nil, nil,
         not search.dynamic and search.graph.integerCosts and 0 or nil,
         search.movement and search.movement.initialMode)
-    if search.resources then entry.spent={};search.best[entry.key]={entry} else search.best[entry.key] = entry end
+    if search.resources then entry.spent={};entry.cooldowns={};search.best[entry.key]={entry} else search.best[entry.key] = entry end
     Push(search.heap, entry)
 end
 
@@ -74,9 +74,11 @@ function Search.New(graph, objective, diagnostics, options)
     options = options or {}
     return setmetatable({ graph = graph, objective = objective, diagnostics = diagnostics,
         portals = options.portals, movement = options.movement, scheduled = options.scheduled, taxi = options.taxi,
-        personal=options.personal,
+        personal=options.personal, cooldowns=options.personal and options.personal.cooldowns,
+        conditions=options.conditions,
         resources = (options.taxi or options.personal or graph.resourceCosts or options.resources) and (options.resources or {}),
-        dynamic = options.portals or options.movement or options.scheduled or options.taxi or options.personal or graph.resourceCosts or options.resources,
+        dynamic = options.portals or options.movement or options.scheduled or options.taxi or options.personal or graph.resourceCosts or options.resources
+            or (options.conditions and options.conditions.conditional),
         startedAt = options.startedAt, validationIndex = 0 }, Search)
 end
 
@@ -86,6 +88,8 @@ local function ValidateRequest(search)
     elseif search.validationIndex == 1 then id = search.objective.to
     else id = search.objective.via[search.validationIndex - 1] end
     if not id then
+        if search.requestDenied then return 'no_path',search.requestDenied end
+        if search.requestUnknown then return 'unknown',search.requestUnknown end
         if search.movement and not search.movement.initialMode then return 'unknown', 'movement_state_unknown' end
         if not search.dynamic and search.graph.PrepareRequest then
             local ready, status, reason = search.graph:PrepareRequest(search)
@@ -97,6 +101,11 @@ local function ValidateRequest(search)
     end
     local node, status, reason = Locate(search.graph, id)
     if not node then return status or "invalid", reason or "invalid_request" end
+    if search.conditions and search.conditions.conditional then
+        local access,why=namespace.NavigationV2Graph.NodeAccess(search.graph,node)
+        if access=='unavailable' then search.requestDenied=search.requestDenied or why
+        elseif access=='unknown' then search.requestUnknown=search.requestUnknown or why end
+    end
     search.validationIndex = search.validationIndex + 1
 end
 
@@ -110,7 +119,8 @@ end
 local function ExpandNode(search, entry)
     if entry.node == Locate(search.graph, search.objective.to) and entry.via == #search.objective.via then
         if search.phase == "possible" then return "unknown", "unknown_access" end
-        search.total, search.build, search.segments, search.resourcesSpent = entry.cost, entry, {}, entry.spent
+        search.total, search.build, search.segments = entry.cost, entry, {}
+        search.resourcesSpent={}
         search.nodes = { NodeId(search.graph, entry.node) }
         return
     end
@@ -220,12 +230,18 @@ local function ReadEdge(search)
 end
 
 -- A single comparison per operation keeps Pareto labels inside job budgets.
+local function Dominates(search,a,b)
+    if not Resources.Dominates(a,b) then return false end
+    return not search.cooldowns or namespace.NavigationV2Cooldowns.Dominates(search.cooldowns,
+        a.cooldowns,b.cooldowns,search.startedAt+b.cost)
+end
+
 local function CompareLabel(search)
     local pending = search.pending
     local previous = pending.row[pending.index]
     if previous then
         pending.index = pending.index+1
-        if not previous.dominated and Resources.Dominates(previous,pending.entry) then search.pending=nil;return end
+        if not previous.dominated and Dominates(search,previous,pending.entry) then search.pending=nil;return end
         return
     end
     if pending.prune then
@@ -240,7 +256,7 @@ local function PruneLabel(search)
     local previous = pending.row[pending.index]
     if previous then
         pending.index=pending.index+1
-        if Resources.Dominates(pending.entry,previous) then previous.dominated=true end
+        if Dominates(search,pending.entry,previous) then previous.dominated=true end
     else CompareLabel(search) end
 end
 
@@ -265,10 +281,34 @@ local function RelaxEdge(search)
     if status == 'running' then return end
     if status then return Missing(search, status, reason) end
     if not edge then return end
+    if edge.kind=='personal' then edge.access=edge.forecastAccess end
+    if search.conditions and search.conditions.conditional then
+        -- Prepared adjacency is shared across requests. A denied/unknown live
+        -- conjunction must never overwrite its immutable authored access.
+        local captured={}
+        for key,value in pairs(edge) do captured[key]=value end
+        edge=captured
+        local from=namespace.NavigationV2Graph.NodeAccess(search.graph,edge.from)
+        local to=namespace.NavigationV2Graph.NodeAccess(search.graph,edge.to)
+        edge.access=namespace.NavigationV2Graph.CombineAccess(edge.access,
+            namespace.NavigationV2Graph.CombineAccess(from,to))
+        local transport=search.conditions.transports[edge.kind]
+        local binding=edge.condition or transport and transport[edge.portalId or edge.transportId or edge.taxiId or edge.personalId]
+        if binding then
+            local access=search.conditions.tracker:Get(binding)
+            edge.access=namespace.NavigationV2Graph.CombineAccess(edge.access,access)
+        end
+    end
     if edge.access == "unavailable" then return end
     edge, reason = MovementEdge(search, edge)
     if not edge then return Missing(search, 'unknown', reason) end
     if edge.access == "unavailable" then return end
+    local cooldowns=search.current.cooldowns
+    if edge.kind=='personal' then
+        if search.movement and edge.transitionSeconds==nil then return Missing(search,'unknown','movement_transition_unknown') end
+        edge,cooldowns=search.personal:Evaluate(edge,search.startedAt+search.current.cost+(edge.transitionSeconds or 0),cooldowns)
+        if not edge then return Missing(search,'unknown',cooldowns) end
+    end
     if edge.access == "unknown" and search.phase == "known" then search.sawUnknown = true; return end
     search.diagnostics.relaxed = search.diagnostics.relaxed + 1
     local milliseconds = search.current.milliseconds and (search.current.milliseconds + edge.milliseconds)
@@ -277,12 +317,15 @@ local function RelaxEdge(search)
     if not Finite(cost) then return "unknown", "cost_overflow" end
     local candidate = Entry(search, edge.to, search.current.via, cost, search.current, edge, milliseconds, edge.mode)
     if search.resources then
-        local spent, resourceReason = Resources.Spend(search.resources, search.current.spent, edge.resources)
+        local spent, resourceReason = Resources.Spend(search.resources, search.current.spent, edge.resources,search.cooldowns)
         if not spent then
             if resourceReason ~= 'resources_insufficient' then return Missing(search,'unknown',resourceReason) end
             return
         end
-        candidate.spent=spent
+        candidate.spent,candidate.cooldowns=spent,cooldowns
+        if search.cooldowns then
+            candidate.cooldowns=namespace.NavigationV2Cooldowns.Trim(search.cooldowns,cooldowns,search.startedAt+cost)
+        end
         local row=search.best[candidate.key] or {}
         search.best[candidate.key]=row
         search.pending={entry=candidate,row=row,index=1}
@@ -300,6 +343,9 @@ local function BuildPath(search)
     local entry, graph = search.build, search.graph
     if not entry.parent then search.build, search.reverseIndex = nil, 1; return end
     local edge = entry.edge
+    for key,value in pairs(edge.resources or {}) do
+        search.resourcesSpent[key]=(search.resourcesSpent[key] or 0)+value
+    end
     search.segments[#search.segments + 1] = { edgeId = edge.id, from = NodeId(graph, edge.from),
         to = NodeId(graph, edge.to), seconds = edge.seconds, kind = edge.kind, portalId = edge.portalId,
         transportId = edge.transportId, costDetail = edge.costDetail, taxiId=edge.taxiId,

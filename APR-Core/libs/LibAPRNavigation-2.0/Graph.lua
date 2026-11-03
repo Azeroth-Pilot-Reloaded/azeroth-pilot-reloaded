@@ -17,6 +17,53 @@ local function ArrayKey(value)
     return Graph.Finite(value) and value >= 1 and value % 1 == 0
 end
 
+-- Intern bounded conjunctions by meaning, not by the number of nodes/zones
+-- sharing them. Compile validates once at preparation; Get is cached thereafter.
+function Graph.BindRequirements(context,source,existingOnly)
+    if source==nil then return nil end
+    local compiled,reason=namespace.NavigationV2Conditions.Compile(source)
+    if not compiled then return nil,reason end
+    local parts={}
+    local function Part(group,key,value)
+        key,value=tostring(key),type(value)..':'..tostring(value)
+        parts[#parts+1]=group..#key..':'..key..#value..':'..value
+    end
+    for _,key in ipairs({'world','space','floor','phase'}) do
+        if source[key]~=nil then Part('identity',key,source[key]) end
+    end
+    for _,entry in ipairs(source.quests or {}) do Part('quests',entry.questID,entry.completed) end
+    for _,entry in ipairs(source.access or {}) do Part('access',entry.key,entry.allowed) end
+    if #parts==0 then return nil end
+    table.sort(parts)
+    local key=table.concat(parts,'\0')
+    if context.bindings[key] then return context.bindings[key] end
+    if existingOnly then return nil,'condition_reconfiguration_requires_enable' end
+    local binding
+    binding,reason=context.tracker:Track(compiled)
+    if not binding then return nil,reason end
+    context.bindings[key],context.conditional=binding,true
+    return binding
+end
+
+function Graph.CombineAccess(a,b)
+    if a=='unavailable' or b=='unavailable' then return 'unavailable' end
+    if a=='unknown' or b=='unknown' then return 'unknown' end
+    return 'available'
+end
+
+function Graph.NodeAccess(graph,node)
+    local status,reason='available',nil
+    for _,binding in pairs({graph.condition,graph.nodeConditions and graph.nodeConditions[node],
+        graph.nodeZones and graph.zoneConditions[graph.nodeZones[node]]}) do
+        if binding then
+            local value,why=graph.conditionContext.tracker:Get(binding)
+            if value=='unavailable' then return value,why end
+            if value=='unknown' then status,reason=value,reason or why end
+        end
+    end
+    return status,reason
+end
+
 -- Request capture is capped independently of graph size, even for malformed
 -- tables with a huge number of extra fields. Node references are checked later.
 function Graph.CaptureRequest(request)
@@ -36,23 +83,45 @@ function Graph.CaptureRequest(request)
     end
 end
 
-function Graph.New(source)
+function Graph.New(source,context)
+    context=context or {tracker=namespace.NavigationV2Conditions.New(),bindings={}}
     if type(source) == "table" and source.partitioned == true then
         if not namespace.NavigationV2Sectors then return nil, "sectors_unavailable" end
         local graph, reason = namespace.NavigationV2Sectors.New(source)
         if not graph then return nil, reason end
-        return setmetatable({ phase = "ready", compiled = graph }, Preparation)
+        graph.conditionContext=context
+        return setmetatable({ phase = "ready", compiled = graph,sourceRequirements=source.requirements,
+            rootPrepared=source.requirements==nil }, Preparation)
     end
     if type(source) ~= "table" or type(source.complete) ~= "boolean"
-        or type(source.nodes) ~= "table" or type(source.edges) ~= "table" then return nil, "invalid_graph" end
+        or type(source.nodes) ~= "table" or type(source.edges) ~= "table"
+        or (source.zones~=nil and type(source.zones)~='table') then return nil, "invalid_graph" end
     return setmetatable({ sourceNodes = source.nodes, sourceEdges = source.edges,
-        phase = "prepare_nodes", count = 0, maximum = 0, seen = {},
-        compiled = { complete = source.complete, nodes = {}, index = {}, outgoing = {} } }, Preparation)
+        sourceZones=source.zones,sourceRequirements=source.requirements,rootPrepared=source.requirements==nil,
+        phase = source.zones and 'prepare_zones' or "prepare_nodes", count = 0, maximum = 0, seen = {},
+        compiled = { complete = source.complete, nodes = {}, index = {}, outgoing = {},
+            conditionContext=context,nodeConditions={},nodeZones={},zoneConditions={} } }, Preparation)
 end
 
-local function Node(preparation, key, id)
+local function Zone(preparation,_,declaration)
+    local graph=preparation.compiled
+    if type(declaration)~='table' or not Identifier(declaration.id) or graph.zoneConditions[declaration.id]~=nil then return 'invalid_zone' end
+    local binding,reason=Graph.BindRequirements(graph.conditionContext,declaration.requirements)
+    if reason then return reason end
+    graph.zoneConditions[declaration.id]=binding or false
+end
+
+local function Node(preparation, key, declaration)
     local graph = preparation.compiled
+    local id=type(declaration)=='table' and declaration.id or declaration
     if not Identifier(id) or graph.index[id] then return "invalid_node" end
+    if type(declaration)=='table' then
+        local zone=declaration.zone
+        if zone~=nil and (not Identifier(zone) or graph.zoneConditions[zone]==nil) then return 'invalid_node_zone' end
+        local binding,reason=Graph.BindRequirements(graph.conditionContext,declaration.requirements)
+        if reason then return reason end
+        graph.nodeConditions[key],graph.nodeZones[key]=binding,zone
+    end
     graph.nodes[key], graph.index[id], graph.outgoing[key] = id, key, {}
 end
 
@@ -80,8 +149,10 @@ local function Edge(preparation, _, declaration)
         graph.resourceCosts = true
     end
     local outgoing = graph.outgoing[from]
+    local condition,reason=Graph.BindRequirements(graph.conditionContext,declaration.requirements)
+    if reason then return reason end
     outgoing[#outgoing + 1] = { id = declaration.id, from = from, to = to,
-        seconds = declaration.seconds, access = access, movement = movement, resources = resources }
+        seconds = declaration.seconds, access = access, movement = movement, resources = resources,condition=condition }
 end
 
 local function AdvanceArray(preparation, source, copy)
@@ -100,9 +171,16 @@ end
 
 function Preparation:Advance()
     if self.reason then return "invalid", self.reason end
+    if not self.rootPrepared then
+        local binding,reason=Graph.BindRequirements(self.compiled.conditionContext,self.sourceRequirements)
+        if reason then self.reason=reason;return 'invalid',reason end
+        self.compiled.condition,self.rootPrepared,self.sourceRequirements=binding,true,nil
+        return self.phase=='ready' and 'ready' or 'condition'
+    end
     if self.phase == "ready" then return "ready" end
-    local nodes = self.phase == "prepare_nodes"
-    local done, reason = AdvanceArray(self, nodes and self.sourceNodes or self.sourceEdges, nodes and Node or Edge)
+    local nodes,zones = self.phase == "prepare_nodes",self.phase=='prepare_zones'
+    local source=zones and self.sourceZones or nodes and self.sourceNodes or self.sourceEdges
+    local done, reason = AdvanceArray(self, source, zones and Zone or nodes and Node or Edge)
     if done and nodes and self.count == 0 then reason = "invalid_graph" end
     if reason then
         self.reason, self.compiled, self.sourceNodes, self.sourceEdges, self.seen = reason, nil, nil, nil, nil
@@ -110,14 +188,15 @@ function Preparation:Advance()
     end
     if done then
         self.cursor, self.count, self.maximum = nil, 0, 0
-        if nodes then
+        if zones then self.phase,self.sourceZones='prepare_nodes',nil
+        elseif nodes then
             self.phase, self.sourceNodes = "prepare_edges", nil
         else
             self.phase, self.sourceEdges, self.seen = "ready", nil, nil
             return "ready"
         end
     else
-        return nodes and "node" or "edge"
+        return zones and 'zone' or nodes and "node" or "edge"
     end
 end
 
