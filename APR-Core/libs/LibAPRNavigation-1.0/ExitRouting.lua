@@ -1,7 +1,7 @@
 -- Prove a physical local exit before considering a remote shortcut from an
 -- isolated space. The shared search owns routing; this job only limits inputs.
 local Lib=LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("local-exit-routing",4) then return end
+if not Lib:BeginModule("local-exit-routing",5) then return end
 local Job={}; Job.__index=Job
 local EMPTY={}
 local PHYSICAL={walk=true,passage=true,portal=true,elevator=true,lift=true,boat=true,
@@ -87,6 +87,7 @@ function Job:CollectOne()
             budget=request.budget,resources=request.resources,clock=request.clock,movementProfile=request.movementProfile,
             walkSpeed=request.walkSpeed,walkSpeedFor=request.walkSpeedFor,walkSpeedAt=request.walkSpeedAt,
             walkSecondsFor=request.walkSecondsFor,walkingIsTransitive=request.walkingIsTransitive,
+            canAutoconnectAt=request.canAutoconnectAt,
             walkingRegionFor=request.walkingRegionFor,canWalk=function(from,to)
                 if from==self.sink or to==self.sink then return false end
                 if request.canWalk then return request.canWalk(from,to)==true end

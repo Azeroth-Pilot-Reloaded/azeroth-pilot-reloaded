@@ -1,11 +1,13 @@
 """Validate runtime dependencies and client-specific loading in an APR release."""
-from pathlib import Path
+from collections import Counter
+from pathlib import Path, PurePosixPath
 import argparse
 import re
 import xml.etree.ElementTree as ET
 
 
 TERRAIN_INDEX = 'APR-Core/features/navigation/TerrainIndex.lua'
+TERRAIN_LOADER = 'APR-Core/features/navigation/NavigationTerrain.lua'
 
 
 def read_manifest(path):
@@ -18,17 +20,21 @@ def read_manifest(path):
 
 
 def validate_runtime_files(root, toc, game):
-    visited = set()
+    root = root.resolve()
+    visited, active = Counter(), set()
 
     def visit(path):
+        path = path.resolve()
+        assert path.is_relative_to(root), f'Runtime dependency outside APR: {path}'
         assert path.is_file(), f'Missing runtime dependency: {path.relative_to(root)}'
-        if path in visited:
-            return
-        visited.add(path)
+        visited[path] += 1
         if path.suffix != '.xml':
             return
+        assert path not in active, f'Cyclic runtime manifest: {path.relative_to(root)}'
+        active.add(path)
         for nested in xml_runtime_references(path, root, game):
             visit(nested)
+        active.remove(path)
 
     for line in toc.read_text(encoding='utf-8-sig').splitlines():
         if line.strip() and not line.lstrip().startswith('#'):
@@ -149,9 +155,9 @@ def terrain_array(packs):
 def terrain_pack_item(pack):
     from lupa.lua51 import lua_type
     assert lua_type(pack) == 'table', 'Invalid terrain pack'
-    item = {key: pack[key] for key in ('id', 'addon', 'revision', 'file')}
+    item = {key: pack[key] for key in ('id', 'revision', 'file')}
     assert isinstance(item['id'], str) and item['id'], 'Invalid terrain pack identity'
-    assert isinstance(item['addon'], str) and re.fullmatch(r'APR_NavData_[A-Za-z0-9_]+', item['addon']), 'Invalid terrain addon name'
+    assert pack['addon'] is None, 'Terrain must be internal to APR, without an addon declaration'
     assert type(item['revision']) is int and item['revision'] >= 0, 'Invalid terrain revision'
     validate_terrain_chunk_path(item['file'])
     return item
@@ -159,47 +165,42 @@ def terrain_pack_item(pack):
 
 def validate_terrain_chunk_path(file):
     assert isinstance(file, str) and file.endswith('.lua') and '\\' not in file, 'Invalid terrain chunk file'
-    assert not Path(file).is_absolute() and '..' not in Path(file).parts, 'Invalid terrain chunk path'
-
-
-def validate_terrain_addon(release, apr, profile, world, pack):
-    root = release / pack['addon']
-    assert root.is_dir(), f'Missing terrain addon: {pack["addon"]}'
-    toc = root / (pack['addon'] + '.toc')
-    assert toc.is_file(), f'Missing terrain addon TOC: {pack["addon"]}'
-    metadata = toc_metadata(toc)
-    assert metadata.get('loadondemand') == '1', f'{toc.name} must be LoadOnDemand'
-    dependencies = metadata.get('dependencies', metadata.get('requireddeps', '')).split(',')
-    assert 'APR' in [value.strip() for value in dependencies], f'{toc.name} must declare its APR dependency'
-    assert metadata.get('x-apr-terrain-profile') == profile, f'{toc.name} has the wrong terrain profile'
-    assert metadata.get('x-apr-terrain-world') == str(world), f'{toc.name} has the wrong terrain world'
-    client = apr / ('APR_Camelot.toc' if profile == 'forever' else 'APR_Mainline.toc')
-    supported = set(re.findall(r'\d+', toc_metadata(client).get('interface', '')))
-    interfaces = set(re.findall(r'\d+', metadata.get('interface', '')))
-    assert interfaces and interfaces <= supported, f'{toc.name} has an incompatible interface'
-    files = validate_runtime_files(root, toc, 'Camelot' if profile == 'forever' else 'Standard')
-    assert root / pack['file'] in files, f'{toc.name} does not load its indexed terrain chunk: {pack["file"]}'
-    validate_runtime_only(root)
+    path = PurePosixPath(file)
+    assert not path.is_absolute() and '..' not in path.parts and path.as_posix() == file \
+        and path.parts[0] == 'NavigationData', 'Invalid terrain chunk path'
 
 
 def validate_terrain(release, apr, client_files):
     declarations = terrain_declarations(read_terrain_index(apr / TERRAIN_INDEX))
     if declarations:
-        assert all(apr / TERRAIN_INDEX in files for files in client_files), 'Every client must load the terrain index'
-    addons, identities = {}, set()
+        assert all(files[apr / TERRAIN_INDEX] == 1 for files in client_files), 'Every client must load the terrain index once'
+        assert all(files[apr / TERRAIN_LOADER] == 1 for files in client_files), 'Every client must load the terrain loader once'
+    identities, chunks = set(), set()
     for profile, world, pack in declarations:
         identity = (profile, world, pack['id'])
         assert identity not in identities, f'Duplicate terrain pack identity: {identity}'
         identities.add(identity)
-        previous = addons.setdefault(pack['addon'], (profile, world))
-        assert previous == (profile, world), f'Terrain addon spans incompatible profiles/worlds: {pack["addon"]}'
-        validate_terrain_addon(release, apr, profile, world, pack)
+        chunk = apr / pack['file']
+        assert chunk.is_file(), f'Missing internal terrain chunk: {pack["file"]}'
+        chunks.add(chunk)
+        expected = (0, 2) if profile == 'retail' else (1,)
+        for client, files in enumerate(client_files):
+            if client in expected:
+                assert files[chunk] == 1, f'Client must load its indexed terrain chunk once: {pack["file"]}'
+                order = list(files)
+                assert order.index(apr / TERRAIN_LOADER) < order.index(chunk), \
+                    f'Terrain loader must precede its internal chunks: {pack["file"]}'
+            else:
+                assert files[chunk] == 0, f'Terrain chunk loaded by the wrong client profile: {pack["file"]}'
+    for path in (apr / 'NavigationData').rglob('*.lua'):
+        assert path in chunks, f'Unindexed internal terrain chunk: {path.relative_to(apr)}'
     for path in release.glob('APR_NavData_*'):
-        assert path.name in addons, f'Undeclared terrain addon: {path.name}'
-    return len(addons)
+        assert not path.is_dir(), f'Standalone terrain addon must not be distributed: {path.name}'
+    return len(chunks)
 
 
 def validate(root):
+    root = root.resolve()
     root = root / 'APR' if (root / 'APR').is_dir() else root
     retail = root / 'APR_Mainline.toc'
     forever = root / 'APR_Camelot.toc'
@@ -224,7 +225,7 @@ def validate(root):
     assert not scripts[0] & scripts[1], 'A route file is loaded by both client families'
     validate_runtime_only(root)
     terrain = validate_terrain(root.parent, root, client_files)
-    print(f'Package passed: APR and {terrain} terrain addons, Retail ({len(scripts[0])} files), Forever ({len(scripts[1])} files), complete runtime dependencies, no development files')
+    print(f'Package passed: APR with {terrain} internal terrain chunks, Retail ({len(scripts[0])} files), Forever ({len(scripts[1])} files), complete runtime dependencies, no development files')
 
 
 if __name__ == '__main__':

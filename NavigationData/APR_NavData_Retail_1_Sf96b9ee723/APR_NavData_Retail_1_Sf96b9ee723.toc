@@ -1,8 +1,0 @@
-## Interface: 120105
-## Title: APR terrain retail 1
-## LoadOnDemand: 1
-## Dependencies: APR
-## X-APR-Terrain-Profile: retail
-## X-APR-Terrain-World: 1
-
-Terrain_1.lua

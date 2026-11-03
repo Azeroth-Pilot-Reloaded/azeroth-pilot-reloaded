@@ -10,36 +10,30 @@ local function scope(id, low, high)
 end
 local lower, upper = scope("lower", 10, 30), scope("upper", 50, 70)
 local packs = {
-    { id = "west", addon = "FixtureWest", revision = 1, scope = lower,
+    { id = "west", file = "NavigationData/fixture-west.lua", revision = 1, scope = lower,
         bounds = { minX = 0, maxX = 50, minY = 0, maxY = 100 } },
-    { id = "east", addon = "FixtureEast", revision = 1, scope = lower,
+    { id = "east", file = "NavigationData/fixture-east.lua", revision = 1, scope = lower,
         bounds = { minX = 50, maxX = 100, minY = 0, maxY = 100 } },
-    { id = "upper", addon = "FixtureUpper", revision = 1, scope = upper },
+    { id = "upper", file = "NavigationData/fixture-upper.lua", revision = 1, scope = upper },
 }
 APR.NavigationTerrainIndex = { schema = 1, profiles = { retail = {
     builds = { ["12.1.5.42"] = true }, worlds = {
         [9] = { packs = packs },
-        [10] = { packs = { { id = "legacy", addon = "FixtureLegacy", revision = 1 } } },
+        [10] = { packs = { { id = "legacy", file = "NavigationData/fixture-unbounded.lua", revision = 1 } } },
     },
 } } }
 local loaded, loads = {}, {}
-C_AddOns = {
-    IsAddOnLoaded = function(addon) return loaded[addon] == true, loaded[addon] == true end,
-    LoadAddOn = function(addon)
-        loads[#loads + 1] = addon
-        for _, pack in ipairs(packs) do
-            if pack.addon == addon then
-                lib:RegisterTerrainData("retail", 9, { format = 1, profile = "retail", build = "12.1.5.42",
-                    scope = lib.Copy(pack.scope), nodes = {}, edges = {} }, pack.revision, pack.id)
-                loaded[addon] = true
-                return true
-            end
-        end
-    end,
-}
-function InCombatLockdown() return false end
 dofile("APR-Core/features/navigation/NavigationTerrain.lua")
 local loader = APR.NavigationTerrain
+for _, pack in ipairs(packs) do
+    local source = pack
+    loader:RegisterSource("retail", 9, source.id, source.revision, function()
+        loads[#loads + 1] = source.id
+        lib:RegisterTerrainData("retail", 9, { format = 1, profile = "retail", build = "12.1.5.42",
+            scope = lib.Copy(source.scope), nodes = {}, edges = {} }, source.revision, source.id)
+        loaded[source.id] = true
+    end)
+end
 local function point(x, z, key) return { x = x, y = 25, z = z, instanceID = 9, uiMapID = 101, accessKey = key } end
 assert(not loader:HasData("retail", 9, point(25, 40)),
     "A room pack must not claim the unrelated altitude between two storeys")
@@ -71,10 +65,10 @@ APR.NavigationTerrain = nil
 assert(env.getTerrainScopes("retail", 9) == nil, "Missing host inventory preserves library fallback")
 APR.NavigationTerrain = loader
 assert(loader:RequestData("retail", 9, point(25, 40)) == "missing" and #loads == 0)
-assert(loader:RequestData("retail", 9, point(25, 20)) == "ready" and #loads == 1 and loads[1] == "FixtureWest")
-assert(loader:RequestData("retail", 9, point(75, 20)) == "ready" and #loads == 2 and loads[2] == "FixtureEast",
+assert(loader:RequestData("retail", 9, point(25, 20)) == "ready" and #loads == 1 and loads[1] == "west")
+assert(loader:RequestData("retail", 9, point(75, 20)) == "ready" and #loads == 2 and loads[2] == "east",
     "Selection intersects the room's 3D scope with each tile's XY bounds")
-assert(loader:RequestData("retail", 9, point(25, 60)) == "ready" and #loads == 3 and loads[3] == "FixtureUpper")
+assert(loader:RequestData("retail", 9, point(25, 60)) == "ready" and #loads == 3 and loads[3] == "upper")
 assert(loader:RequestData("retail", 9) == "ready" and #loads == 3,
     "A bounded-world request can reuse every registered scope")
 local registered = lib.terrainDatasets.retail[9].packs.west.data
@@ -91,11 +85,11 @@ lib.terrainDatasets.retail[9], loaded, loads = nil, {}, {}
 local selectedScopes = {scopeIDs={[lower.id]=true}}
 assert(loader:RequestData("retail", 9, nil, selectedScopes) == "planning" and #loads == 1)
 assert(loader:RequestData("retail", 9, nil, selectedScopes) == "ready" and #loads == 2
-    and not loaded.FixtureUpper, "A selected local scope never loads unrelated storeys or rooms in the same world")
-packs[3].addon = "../invalid-unselected-addon"
+    and not loaded.upper, "A selected local scope never constructs unrelated storeys or rooms in the same world")
+packs[3].file = "../invalid-unselected-source.lua"
 assert(loader:RequestData("retail", 9, nil, selectedScopes) == "ready",
-    "Malformed unrelated addon metadata must not invalidate a different explicitly selected scope")
-packs[3].addon = "FixtureUpper"
+    "Malformed unrelated source metadata must not invalidate a different explicitly selected scope")
+packs[3].file = "NavigationData/fixture-upper.lua"
 assert(loader:RequestData("retail", 9, nil, {scopeIDs={}}) == "missing" and #loads == 2,
     "An explicitly empty scope selection cannot widen into a world-wide request")
 lib.terrainDatasets.retail[9] = nil
@@ -103,12 +97,12 @@ loaded, loads = {}, {}
 assert(loader:RequestData("retail", 9) == "planning" and #loads == 1)
 assert(loader:RequestData("retail", 9) == "planning" and #loads == 2)
 assert(loader:RequestData("retail", 9) == "ready" and #loads == 3,
-    "Whole bounded-world requests load all scopes in slices of at most one addon")
+    "Whole bounded-world requests construct all scopes in slices of at most one source")
 local maxZ = lower.bounds.maxZ
 lower.bounds.maxZ = lower.bounds.minZ
 scopes, unbounded = loader:GetScopes("retail", 9)
 assert(unbounded == true and loader:RequestData("retail", 9) == "missing" and #loads == 3,
-    "Malformed scope metadata fails closed without authorizing an exterior shortcut or native load")
+    "Malformed scope metadata fails closed without authorizing an exterior shortcut or source construction")
 lower.bounds.maxZ = maxZ
 local opaque = {}
 function issecretvalue(value) return rawequal(value, opaque) end

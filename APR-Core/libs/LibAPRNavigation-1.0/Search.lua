@@ -1,8 +1,8 @@
--- Dijkstra search with separate labels for money and consumables. A slower
+-- Shortest-path search with separate labels for money and consumables. A slower
 -- arrival can still be useful if it leaves enough resources to finish.
 -- Graph loading, candidate checks and result assembly all run through Step.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("search", 12) then return end
+if not Lib:BeginModule("search", 14) then return end
 Lib.Engine = {}
 local Engine = Lib.Engine
 local Search = {}
@@ -35,7 +35,8 @@ function Search:MovementMode(position)
 end
 
 local function Earlier(left, right)
-    return left.seconds < right.seconds or (left.seconds == right.seconds and left.serial < right.serial)
+    local a, b = left.priority or left.seconds, right.priority or right.seconds
+    return a < b or (a == b and left.serial < right.serial)
 end
 
 local function Push(heap, label)
@@ -116,7 +117,7 @@ function Search:GetWalkSeconds(from, to, fromNode, toNode)
 end
 
 function Search:GetWalkingBucket(position, create)
-    if position.noAutoconnect then return EMPTY end
+    if position.noAutoconnect or self.walkingEligibility[position] == false then return EMPTY end
     local bucket = self.walkingByInstance[position.instanceID]
     if not bucket and create then
         bucket = {}
@@ -139,19 +140,39 @@ function Search:GetWalkingBucket(position, create)
         local floor = position.floor or false
         local floors = entries[floor]
         if not floors and create then floors = {}; entries[floor] = floors end
-        return floors or EMPTY
+        bucket = floors
+        if not bucket then return EMPTY end
     end
-    return bucket
+    -- Automatic walking never changes movement mode. Keep these independent
+    -- classes out of each other's candidate scans and speed summaries.
+    local mode = self:MovementMode(position)
+    local modes = bucket.modes
+    if not modes and create then modes = {}; bucket.modes = modes end
+    if not modes then return EMPTY end
+    local entries = modes[mode]
+    if not entries and create then entries = {}; modes[mode] = entries end
+    return entries or EMPTY
 end
 
 function Search:PrepareNodeSpeed(index)
     if self.walkingSpeeds[index] then return end
     local position = self.nodes[index]
-    local speed = self.walkSpeedAt and self.walkSpeedAt(position) or self.walkSpeed
+    -- This optional proof concerns every automatic walk at the endpoint.
+    -- Classify each immutable node in scheduled work, never at creation.
+    -- Unknown responses retain ordinary permission checks; only false rules
+    -- an endpoint out. Explicit arcs/actions do not use the walking bucket.
+    self.walkingEligibility[position] = not position.noAutoconnect
+        and (not self.canAutoconnectAt or self.canAutoconnectAt(position) ~= false)
+    local speed = self.walkingEligibility[position] and self.walkSpeedAt and self.walkSpeedAt(position) or self.walkSpeed
     if not IsFinite(speed) or speed <= 0 then speed = self.walkSpeed end
     self.walkingSpeeds[index] = speed
     local bucket = self:GetWalkingBucket(position, true)
     if bucket ~= EMPTY then
+        bucket[#bucket + 1] = index
+        if IsFinite(position.z) then
+            bucket.withZ = bucket.withZ or {}
+            bucket.withZ[#bucket.withZ + 1] = index
+        end
         if bucket.speed and bucket.speed ~= speed then bucket.mixedSpeed = true end
         bucket.speed = speed
     end
@@ -165,16 +186,9 @@ function Search:AddNode(position)
     local key = PositionKey(position, self:MovementMode(position))
     index = self.nodeKeys[key]
     if index then return index end
+    assert(not self.heuristic, "The search graph cannot grow after heuristic preparation")
     index = #self.nodes + 1
     self.nodes[index], self.nodeKeys[key], self.nodeKeys[position] = position, index, index
-    local bucket = self:GetWalkingBucket(position, true)
-    if bucket ~= EMPTY then
-        bucket[#bucket + 1] = index
-        if IsFinite(position.z) then
-            bucket.withZ = bucket.withZ or {}
-            bucket.withZ[#bucket.withZ + 1] = index
-        end
-    end
     -- Start and goal are inserted by CreateSearch. Defer their host callbacks
     -- to scheduled work just like walking permissions and edge ingestion.
     if self.phase ~= "resources" then self:PrepareNodeSpeed(index) end
@@ -200,6 +214,9 @@ function Search:IngestEdge(edge)
     -- when its transport loses. Only a transitive rule makes removal safe.
     if tooSlow then return end
     local link = { target = target, edge = CopyEdge(edge, edge.from, edge.to) }
+    if self.heuristicEdges then
+        self.heuristicEdges[#self.heuristicEdges + 1] = { from = from, target = target, edge = link.edge }
+    end
     if edge.sourceFree then
         link.allowedAtStart = not edge.canStart or not not edge.canStart(self.nodes[self.startNode])
         if link.allowedAtStart then
@@ -229,6 +246,7 @@ function Search:PrepareDirectWalk()
     if self.startNode == self.goalNode then self.directSeconds = 0; return end
     local from, to = self.nodes[self.startNode], self.nodes[self.goalNode]
     if from.instanceID ~= to.instanceID or from.noAutoconnect or to.noAutoconnect
+        or self.walkingEligibility[from] == false or self.walkingEligibility[to] == false
         or (self.defaultWalking and not DefaultCanWalk(from, to)) then return end
 
     -- A permitted direct walk is a complete, free route. Its duration bounds
@@ -266,8 +284,8 @@ function Search:LoadOne()
             return
         end
         if next(self.futureResources) == nil then self.futureResources = EMPTY end
-        self.resourceEdges, self.phase = nil, "search"
-        self:QueueCandidate(self.startNode)
+        self.resourceEdges = nil
+        self:BeginHeuristic()
         return
     end
 
@@ -314,15 +332,140 @@ function Search:BeginSearch()
         self.futureResources = {}
         self.phase, self.resourceIndex, self.resourceCursor = "resource_relevance", 1, nil
     else
-        self.resourceEdges, self.phase = nil, "search"
-        self:QueueCandidate(self.startNode)
+        self.resourceEdges = nil
+        self:BeginHeuristic()
     end
+end
+
+-- The host can certify Euclidean XY lower bounds for particular worlds, using
+-- the maximum prepared eligible endpoint speed in that world. This includes
+-- any custom automatic cost callback; unknown answers never certify it. Other
+-- worlds collapse to one free vertex, including worlds with hidden zero-cost
+-- terrain. Relax access, modes, money and resources, and make personal actions
+-- usable everywhere. Every real transition then has an equal-or-cheaper path
+-- in this small graph, so reverse distances are consistent lower bounds.
+function Search:BeginHeuristic()
+    if not self.euclideanWorld then
+        self.phase = "search"
+        self:QueueCandidate(self.startNode)
+        return
+    end
+    self.heuristic = { worlds = {}, vertices = {}, map = {}, reverse = {}, distances = {}, heap = {},
+        index = 1, serial = 0, operations = 0 }
+    self.phase = "heuristic_nodes"
+end
+
+function Search:HeuristicRelax(node, seconds, walked)
+    local h = self.heuristic
+    if h.distances[node] == nil or seconds < h.distances[node] then
+        h.distances[node], h.serial = seconds, h.serial + 1
+        Push(h.heap, { node = node, seconds = seconds, serial = h.serial, walked = walked })
+    end
+end
+
+function Search:PrepareHeuristicOne()
+    local h = self.heuristic
+    h.operations = h.operations + 1
+    if self.phase == "heuristic_nodes" then
+        local point = self.nodes[h.index]
+        if point then
+            local world = h.worlds[point.instanceID]
+            if not world then
+                world = { euclidean = self.euclideanWorld(point.instanceID) == true, nodes = {}, speed = 0 }
+                h.worlds[point.instanceID] = world
+            end
+            local id = not world.euclidean and world.vertex
+            if not id then
+                id = #h.vertices + 1
+                h.vertices[id] = { point = point, world = world, eligible = self.walkingEligibility[point] ~= false }
+                h.reverse[id] = {}
+                if not world.euclidean or self.walkingEligibility[point] ~= false then
+                    world.nodes[#world.nodes + 1] = id
+                end
+                if not world.euclidean then world.vertex = id end
+            end
+            if self.walkingEligibility[point] ~= false then
+                world.speed = math.max(world.speed, self.walkingSpeeds[h.index])
+            end
+            h.map[h.index], h.index = id, h.index + 1
+            return
+        end
+        h.index, self.phase = 1, "heuristic_edges"
+        return
+    end
+    if self.phase == "heuristic_edges" then
+        local link = self.heuristicEdges[h.index]
+        if link then
+            local from, target = h.map[link.from], h.map[link.target]
+            if link.edge.sourceFree then
+                if not h.global then
+                    h.global = #h.vertices + 1
+                    h.vertices[h.global], h.reverse[h.global] = {}, {}
+                end
+                from = h.global
+            end
+            if from ~= target then
+                local reverse = h.reverse[target]
+                reverse[#reverse + 1] = { node = from, seconds = link.edge.seconds }
+            end
+            h.index = h.index + 1
+            return
+        end
+        self.heuristicEdges, self.phase = nil, "heuristic_search"
+        self:HeuristicRelax(h.map[self.goalNode], 0)
+        return
+    end
+    local pending = h.pending
+    if pending then
+        local vertex = h.vertices[pending.node]
+        local index = pending.index
+        pending.index = index + 1
+        if pending.stage == "edges" then
+            local link = h.reverse[pending.node][index]
+            if link then self:HeuristicRelax(link.node, pending.seconds + link.seconds); return end
+            pending.stage, pending.index = "walking", 1
+            return
+        end
+        if pending.node == h.global then
+            if h.vertices[index] then self:HeuristicRelax(index, pending.seconds); return end
+        elseif vertex.world.euclidean and vertex.eligible and not pending.walked then
+            local other = vertex.world.nodes[index]
+            if other then
+                local point = h.vertices[other].point
+                local dx, dy = point.x - vertex.point.x, point.y - vertex.point.y
+                local speed = vertex.world.speed > 0 and vertex.world.speed or self.walkSpeed
+                self:HeuristicRelax(other, pending.seconds + math.sqrt(dx * dx + dy * dy) / speed, true)
+                return
+            end
+        end
+        h.pending = nil
+        return
+    end
+    local label = Pop(h.heap)
+    if not label then
+        h.reverse, h.heap = nil, nil
+        self.phase = "search"
+        self:QueueCandidate(self.startNode)
+    elseif label.seconds == h.distances[label.node] then
+        -- The relaxed clique has one speed, unrestricted permissions and XY
+        -- distances. Its triangle inequality makes consecutive walks useless;
+        -- the previous origin already relaxed the direct alternative. Explicit
+        -- arcs still expand, including arbitrary cheap native transitions.
+        h.pending = { node = label.node, seconds = label.seconds, stage = "edges", index = 1, walked = label.walked }
+    end
+end
+
+function Search:HeuristicSeconds(node)
+    local h = self.heuristic
+    return h and (h.distances[h.map[node]] or math.huge) or 0
 end
 
 function Search:QueueCandidate(node, previous, edge, walkSeconds)
     local seconds = (previous and previous.seconds or 0) + (walkSeconds or (edge and edge.seconds) or 0)
-    if self.directSeconds and seconds > self.directSeconds then return end
-    if self.bestGoalSeconds and seconds > self.bestGoalSeconds then return end
+    local priority = seconds + self:HeuristicSeconds(node)
+    if priority == math.huge then return end
+    if self.directSeconds and priority > self.directSeconds then return end
+    if self.bestGoalSeconds and priority > self.bestGoalSeconds then return end
     local copper = (previous and previous.copper or 0) + (edge and edge.copper or 0)
     if copper > self.budget then return end
     local used = previous and previous.used or self.emptyUsage
@@ -330,7 +473,7 @@ function Search:QueueCandidate(node, previous, edge, walkSeconds)
     local consumes = next(requirements) ~= nil or (edge and edge.resourceKey ~= nil)
     self.candidate = {
         node = node, previous = previous, edge = edge, walkSeconds = walkSeconds,
-        copper = copper, seconds = seconds,
+        copper = copper, seconds = seconds, priority = priority,
         used = consumes and {} or used, previousUsage = used, requirements = requirements,
         stage = consumes and "copy_resources" or "dominance", index = 1,
     }
@@ -356,7 +499,7 @@ function Search:AcceptCandidate(candidate)
     -- only for an edge that actually consumes something.
     self.serial = self.serial + 1
     local label = { node = candidate.node, previous = previous, edge = edge, used = candidate.used,
-        copper = candidate.copper, seconds = candidate.seconds, serial = self.serial,
+        copper = candidate.copper, seconds = candidate.seconds, priority = candidate.priority, serial = self.serial,
         walked = candidate.walkSeconds ~= nil }
     local labels = self.labels[candidate.node]
     if not labels then labels = {}; self.labels[candidate.node] = labels end
@@ -445,6 +588,17 @@ end
 function Search:CheckWalk(pending, target)
     local label = pending.label
     if target == label.node then return end
+    -- A walk has nonnegative time and consumes neither money nor resources.
+    -- If a proved arrival already dominates even that zero-cost lower bound,
+    -- neither permission nor terrain-cost callbacks can improve this target.
+    -- Inspect one existing label only: this proof stays constant-time even
+    -- when the Pareto frontier or resource inventory is large.
+    local other = (self.labels[target] or EMPTY)[1]
+    if other and not other.stale and other.seconds <= label.seconds and other.copper <= label.copper
+        and (other.used == label.used or self.futureResources == EMPTY) then
+        self.walkDominanceSkipped = self.walkDominanceSkipped + 1
+        return
+    end
     local cache = pending.walkCache
     local seconds = cache[target]
     if seconds == nil then
@@ -534,6 +688,9 @@ function Search:AssembleOne()
 end
 
 function Search:AdvanceOne()
+    if self.phase == "heuristic_nodes" or self.phase == "heuristic_edges" or self.phase == "heuristic_search" then
+        self:PrepareHeuristicOne(); return
+    end
     if self.phase ~= "search" then self:LoadOne(); return end
     if self.assembly then self:AssembleOne(); return end
     if self.candidate then self:CheckCandidate(); return end
@@ -575,9 +732,10 @@ function Search:Cancel()
     self.winner = nil
     self.sourceEdges, self.sourceGroups, self.sourceResources = nil, nil, nil
     self.omittedEdges = nil
+    self.heuristic, self.heuristicEdges, self.euclideanWorld = nil, nil, nil
     self.nodes, self.nodeKeys, self.outgoing, self.actions, self.startActions = {}, {}, {}, {}, {}
     self.resourceEdges, self.futureResources = nil, nil
-    self.walkingByInstance, self.walkingCache, self.walkingCacheOrder, self.walkingSpeeds = {}, {}, {}, {}
+    self.walkingByInstance, self.walkingCache, self.walkingCacheOrder, self.walkingSpeeds, self.walkingEligibility = {}, {}, {}, {}, {}
 end
 
 function Search:GetResult() return self.result, self.status end
@@ -588,16 +746,21 @@ function Engine:CreateSearch(request)
     local startMode = profile.currentMode
     if startMode ~= "steady" and startMode ~= "skyriding" then startMode = "ground" end
     local walkSecondsFor = type(request.walkSecondsFor) == "function" and request.walkSecondsFor or nil
+    local heuristic = type(request.walkingHeuristic) == "table" and request.walkingHeuristic or EMPTY
+    local euclideanWorld = type(heuristic.euclideanWorld) == "function" and heuristic.euclideanWorld or nil
+    if request.walkSpeedFor and not request.walkSpeedAt then euclideanWorld = nil end
     local search = setmetatable({
         status = "planning", phase = "resources", nodes = {}, nodeKeys = {}, outgoing = {}, actions = {}, startActions = {},
         resourceEdges = {},
+        euclideanWorld = euclideanWorld, heuristicEdges = euclideanWorld and {} or nil,
         labels = {}, heap = {}, serial = 0, expansions = 0, resources = {}, emptyUsage = {}, clock = request.clock,
         sourceResources = type(request.resources) == "table" and request.resources or EMPTY,
         sourceEdges = type(request.edges) == "table" and request.edges or EMPTY,
         sourceGroups = type(request.edgeGroups) == "table" and request.edgeGroups or EMPTY,
         edgeGroup = 0, edgeIndex = 1, ingestedEdges = 0,
-        walkingByInstance = {}, walkingCache = {}, walkingCacheOrder = {}, walkingCacheCursor = 1,
-        walkChecks = 0, walkingCacheHits = 0, walkingExpansionsSkipped = 0, walkingExpansionsNarrowed = 0, walkingSpeeds = {},
+        walkingByInstance = {}, walkingCache = {}, walkingCacheOrder = {}, walkingCacheCursor = 1, walkingEligibility = {},
+        walkChecks = 0, walkingCacheHits = 0, walkDominanceSkipped = 0,
+        walkingExpansionsSkipped = 0, walkingExpansionsNarrowed = 0, walkingSpeeds = {},
         defaultWalking = request.canWalk == nil,
         walkingIsTransitive = not walkSecondsFor and (request.canWalk == nil or request.walkingIsTransitive == true),
         budget = IsFinite(request.budget) and math.max(0, request.budget) or 0,
@@ -605,6 +768,7 @@ function Engine:CreateSearch(request)
         walkSecondsFor = walkSecondsFor, startPosition = request.start, startMode = startMode,
         walkSpeed = IsFinite(request.walkSpeed) and request.walkSpeed > 0 and request.walkSpeed or 7,
         canWalk = request.canWalk or DefaultCanWalk,
+        canAutoconnectAt = type(request.canAutoconnectAt) == "function" and request.canAutoconnectAt or nil,
         walkingRegionFor = request.walkingRegionFor,
     }, Search)
     if not IsPosition(request.start) or not IsPosition(request.goal) then

@@ -1,12 +1,14 @@
 -- Declarative terrain is supplied by the consumer; this module never queries WoW.
 -- Only a proved convex anchor may connect a live position to the terrain graph.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("terrain", 5) then return end
+if not Lib:BeginModule("terrain", 6) then return end
 local Instance, Terrain = Lib.Instance, {}
 Lib.Terrain = Terrain
 local Build = {}
 Build.__index = Build
 local MODES = { ground = true, steady = true, skyriding = true }
+local SCOPE_BOUNDARY_TOLERANCE = 0.01
+local NativeTerrainBuild, NativeScopeRequirements
 
 local function Finite(value)
     return type(value) == "number" and value == value and math.abs(value) < math.huge
@@ -59,8 +61,8 @@ local function UnknownNativeHeight(point)
     return point.positionSource == "unit" and point.heightSource ~= "terrain" and point.z == 0
 end
 
-function Terrain.ScopeContains(scope, point)
-    if not Terrain.ScopeValid(scope) or type(point) ~= "table" or not Finite(point.x) or not Finite(point.y) then return false end
+local function ScopeContainsValid(scope, point)
+    if type(point) ~= "table" or not Finite(point.x) or not Finite(point.y) then return false end
     if point.terrainBoundary == scope.id then return false end
     if scope.accessKey ~= nil and scope.accessKey ~= point.accessKey
         and (point.accessKey ~= nil or UnknownNativeHeight(point)) then return false end
@@ -69,8 +71,11 @@ function Terrain.ScopeContains(scope, point)
     return UnknownNativeHeight(point) or not Finite(point.z) or (point.z >= b.minZ and point.z <= b.maxZ)
 end
 
-local function ScopeBlocks(scope, from, to)
-    if not Terrain.ScopeValid(scope) then return true end
+function Terrain.ScopeContains(scope, point)
+    return Terrain.ScopeValid(scope) and ScopeContainsValid(scope, point) or false
+end
+
+local function ScopeBlocksValid(scope, from, to)
     if scope.accessKey ~= nil and from.accessKey ~= nil and to.accessKey ~= nil
         and scope.accessKey ~= from.accessKey and scope.accessKey ~= to.accessKey then return false end
     if scope.accessKey ~= nil and from.accessKey == nil and to.accessKey == nil
@@ -86,6 +91,11 @@ local function ScopeBlocks(scope, from, to)
         lo, hi = Slab(from.z, to.z, b.minZ, b.maxZ, lo, hi)
     end
     return lo ~= nil and hi - lo > 0.0000001
+end
+
+local function ScopeBlocks(scope, from, to)
+    if not Terrain.ScopeValid(scope) then return true end
+    return ScopeBlocksValid(scope, from, to)
 end
 
 function Instance:GetTerrainScopes(world)
@@ -185,13 +195,190 @@ function Instance:RequiresTerrainRoute(from, to)
     return false
 end
 
-function Instance:GetRequiredTerrainScopes(from,to)
+local ScopeQuery = {}
+ScopeQuery.__index = ScopeQuery
+
+local function NewScopeQuery(owner)
+    return setmetatable({ owner = owner, profile = owner.profile,
+        revision = owner:GetTerrainRevision(), worlds = {} }, ScopeQuery)
+end
+
+local function CurrentScopeQuery(owner, query)
+    if getmetatable(query) ~= ScopeQuery or query.owner ~= owner then return nil end
+    local revision = owner:GetTerrainRevision()
+    if query.revision ~= revision or query.profile ~= owner.profile then
+        query.revision, query.profile, query.worlds = revision, owner.profile, {}
+    end
+    return query
+end
+
+-- A planning request owns its scope observations. Public inventory queries stay
+-- live; this opt-in snapshot avoids revalidating every host declaration for
+-- every candidate pair, without retaining a quadratic pair cache.
+function Instance:CreateTerrainScopeQuery()
+    return NewScopeQuery(self)
+end
+
+local function CopyScope(scope)
+    if not Terrain.ScopeValid(scope) then return nil end
+    local b = scope.bounds
+    return { id = scope.id, accessKey = scope.accessKey, groundOnly = scope.groundOnly,
+        bounds = { minX = b.minX, maxX = b.maxX, minY = b.minY, maxY = b.maxY,
+            minZ = b.minZ, maxZ = b.maxZ } }
+end
+
+local function OutsideBox(from, to, bounds)
+    return (from.x < bounds.minX and to.x < bounds.minX)
+        or (from.x > bounds.maxX and to.x > bounds.maxX)
+        or (from.y < bounds.minY and to.y < bounds.minY)
+        or (from.y > bounds.maxY and to.y > bounds.maxY)
+        or (from.knownHeight and to.knownHeight and
+            ((from.z < bounds.minZ and to.z < bounds.minZ) or (from.z > bounds.maxZ and to.z > bounds.maxZ)))
+end
+
+-- These trees contain only owned, validated geometry. Separating scope centers
+-- avoids rescanning distant volumes for every pair; large overlapping volumes
+-- remain conservative because every parent encloses all of its children.
+local function ScopeIndex(scopes)
+    if #scopes == 0 then return nil end
+    local node, centers = {}, {}
+    for _, scope in ipairs(scopes) do
+        local b = scope.bounds
+        for _, axis in ipairs({ "X", "Y", "Z" }) do
+            local low, high = "min" .. axis, "max" .. axis
+            node[low] = math.min(node[low] or b[low], b[low])
+            node[high] = math.max(node[high] or b[high], b[high])
+            if axis ~= "Z" then
+                local center = b[low] / 2 + b[high] / 2
+                centers[low] = math.min(centers[low] or center, center)
+                centers[high] = math.max(centers[high] or center, center)
+            end
+        end
+    end
+    if #scopes <= 4 then node.scopes = scopes; return node end
+    local axis = centers.maxX - centers.minX >= centers.maxY - centers.minY and "X" or "Y"
+    local low, high = "min" .. axis, "max" .. axis
+    local midpoint = centers[low] / 2 + centers[high] / 2
+    local left, right = {}, {}
+    for _, scope in ipairs(scopes) do
+        local b = scope.bounds
+        local target = b[low] / 2 + b[high] / 2 <= midpoint and left or right
+        target[#target + 1] = scope
+    end
+    if #left < #scopes / 4 or #right < #scopes / 4 then
+        table.sort(scopes, function(a, b)
+            return a.bounds[low] / 2 + a.bounds[high] / 2 < b.bounds[low] / 2 + b.bounds[high] / 2
+        end)
+        left, right = {}, {}
+        for index, scope in ipairs(scopes) do
+            local target = index <= math.floor(#scopes / 2) and left or right
+            target[#target + 1] = scope
+        end
+    end
+    node.left, node.right = ScopeIndex(left), ScopeIndex(right)
+    return node
+end
+
+local function PointOverlapsBox(point, box, knownHeight)
+    return point.x >= box.minX and point.x <= box.maxX and point.y >= box.minY and point.y <= box.maxY
+        and (not knownHeight or (point.z >= box.minZ and point.z <= box.maxZ))
+end
+
+local function SegmentOverlapsBox(from, to, box, knownHeight)
+    local lo, hi = Slab(from.x, to.x, box.minX, box.maxX, 0, 1)
+    if not lo then return false end
+    lo, hi = Slab(from.y, to.y, box.minY, box.maxY, lo, hi)
+    if not lo then return false end
+    if knownHeight then lo = Slab(from.z, to.z, box.minZ, box.maxZ, lo, hi) end
+    return lo ~= nil
+end
+
+local function IndexContains(node, point)
+    if not node or not PointOverlapsBox(point, node, point.knownHeight) then return false end
+    if not node.scopes then return IndexContains(node.left, point) or IndexContains(node.right, point) end
+    for _, scope in ipairs(node.scopes) do if ScopeContainsValid(scope, point) then return true end end
+    return false
+end
+
+local function IndexBlocks(node, from, to, firstScope, lastScope)
+    if not node or OutsideBox(from, to, node) then return false end
+    if not node.scopes then
+        if not SegmentOverlapsBox(from, to, node, from.knownHeight and to.knownHeight) then return false end
+        return IndexBlocks(node.left, from, to, firstScope, lastScope)
+            or IndexBlocks(node.right, from, to, firstScope, lastScope)
+    end
+    for _, scope in ipairs(node.scopes) do
+        if scope ~= firstScope and scope ~= lastScope and not OutsideBox(from, to, scope.bounds)
+            and ScopeBlocksValid(scope, from, to) then return true end
+    end
+    return false
+end
+
+local function IndexRequirements(node, point, other, known, result, pointXY, otherXY, pointHeight, otherHeight)
+    if not node then return result end
+    local intersects
+    if pointXY and otherXY then intersects = SegmentOverlapsBox(point, other, node, pointHeight and otherHeight)
+    else intersects = (pointXY and PointOverlapsBox(point, node, pointHeight))
+        or (otherXY and PointOverlapsBox(other, node, otherHeight)) end
+    if not intersects then return result end
+    if not node.scopes then
+        result = IndexRequirements(node.left, point, other, known, result, pointXY, otherXY, pointHeight, otherHeight)
+        return IndexRequirements(node.right, point, other, known, result, pointXY, otherXY, pointHeight, otherHeight)
+    end
+    for _, scope in ipairs(node.scopes) do
+        if not (known and known[scope.id]) and (ScopeContainsValid(scope, point) or (other and
+            (ScopeContainsValid(scope, other) or ScopeBlocksValid(scope, point, other)))) then
+            result = result or {}; result[scope.id] = true
+        end
+    end
+    return result
+end
+
+local function QueryInventory(owner, world, query)
+    local cached = query.worlds[world]
+    if cached then return cached.scopes, cached.unbounded end
+    local scopes, unbounded = owner:GetTerrainScopes(world)
+    cached = { scopes = {}, unbounded = unbounded == true }
+    local count = 0
+    if type(scopes) ~= "table" then cached.unbounded, scopes = true, {} end
+    for _ in pairs(scopes) do count = count + 1 end
+    for _, scope in ipairs(scopes) do
+        local copy = CopyScope(scope)
+        if not copy then
+            -- Malformed metadata cannot authorize an exterior shortcut.
+            cached.unbounded = true
+        else
+            cached.scopes[#cached.scopes + 1] = copy
+        end
+    end
+    if count ~= #cached.scopes then cached.unbounded = true end
+    cached.index = ScopeIndex(cached.scopes)
+    query.worlds[world] = cached
+    return cached.scopes, cached.unbounded
+end
+
+function Instance:GetRequiredTerrainScopes(from,to,query,knownScopes,knownUnbounded)
     local selected,unboundedWorlds={},{}
     if type(from)~="table" or type(to)~="table" then return selected,unboundedWorlds end
+    local snapshot = CurrentScopeQuery(self, query) ~= nil
     local first,last=self:GetWorldInstanceID(from.instanceID),self:GetWorldInstanceID(to.instanceID)
     local function include(world,point,other)
-        local scopes,unbounded=self:GetTerrainScopes(world)
-        if unbounded then unboundedWorlds[world]=true end
+        local scopes,unbounded
+        if snapshot then scopes,unbounded=QueryInventory(self,world,query)
+        else scopes,unbounded=self:GetTerrainScopes(world) end
+        if unbounded and not (snapshot and type(knownUnbounded) == "table" and knownUnbounded[world]) then
+            unboundedWorlds[world]=true
+        end
+        local known = snapshot and type(knownScopes) == "table" and knownScopes[world]
+        if snapshot then
+            local pointXY = Finite(point.x) and Finite(point.y)
+            local otherXY = other and Finite(other.x) and Finite(other.y)
+            selected[world] = IndexRequirements(query.worlds[world].index, point, other,
+                type(known) == "table" and known or nil, selected[world], pointXY, otherXY,
+                Finite(point.z) and not UnknownNativeHeight(point),
+                other and Finite(other.z) and not UnknownNativeHeight(other))
+            return
+        end
         for _,scope in ipairs(scopes) do
             if Terrain.ScopeContains(scope,point) or (other and ScopeBlocks(scope,point,other)) then
                 selected[world]=selected[world] or {}; selected[world][scope.id]=true
@@ -199,8 +386,112 @@ function Instance:GetRequiredTerrainScopes(from,to)
         end
     end
     if first~=nil then include(first,from,first==last and to or nil) end
-    if last~=nil then include(last,to,nil) end
+    if last~=nil and (not snapshot or last~=first) then include(last,to,nil) end
     return selected,unboundedWorlds
+end
+NativeScopeRequirements = Instance.GetRequiredTerrainScopes
+
+-- A positive answer is a proof for the native terrain implementation, rather
+-- than absence of a loaded pack at one position. Custom providers and stale or
+-- foreign observations cannot authorize a geometric world heuristic.
+function Instance:IsTerrainWorldUnmanaged(world, query)
+    if self.CreateTerrainEdgeBuild ~= NativeTerrainBuild or self.GetRequiredTerrainScopes ~= NativeScopeRequirements
+        or not CurrentScopeQuery(self, query) then return false end
+    world = self:GetWorldInstanceID(world)
+    if not Nonnegative(world) then return false end
+    local profile = Lib.terrainDatasets and Lib.terrainDatasets[self.profile]
+    local record = profile and profile[world]
+    if record and next(record.packs or {}) then return false end
+    if self.env.hasTerrainData and self.env.hasTerrainData(self.profile, world, { instanceID = world }) == true then return false end
+    local scopes, unbounded = QueryInventory(self, world, query)
+    return not unbounded and #scopes == 0
+end
+
+-- With every bounded scope already selected, native missing-scope probes skip
+-- all geometry for this world. Its automatic costs therefore use ordinary
+-- walking; the graph still keeps every explicit terrain edge and its own cost.
+function Instance:AreTerrainScopesSelected(world, query, knownScopes, knownUnbounded)
+    if self.CreateTerrainEdgeBuild ~= NativeTerrainBuild or self.GetRequiredTerrainScopes ~= NativeScopeRequirements
+        or not CurrentScopeQuery(self, query) then return false end
+    world = self:GetWorldInstanceID(world)
+    if not Nonnegative(world) then return false end
+    local scopes, unbounded = QueryInventory(self, world, query)
+    if unbounded then return false end
+    if #scopes == 0 then return self:IsTerrainWorldUnmanaged(world, query) end
+    local known = type(knownScopes) == "table" and knownScopes[world]
+    if type(known) ~= "table" then return false end
+    for _, scope in ipairs(scopes) do if not known[scope.id] then return false end end
+    return true
+end
+
+-- Hosts may opt into one bounded batch after a world becomes relevant. This
+-- returns metadata only; the normal stepped loader still owns every pack load.
+function Instance:GetTerrainScopeBatch(world, query, maxScopes)
+    if self.CreateTerrainEdgeBuild ~= NativeTerrainBuild or self.GetRequiredTerrainScopes ~= NativeScopeRequirements
+        or not Finite(maxScopes) or maxScopes < 0 or maxScopes % 1 ~= 0
+        or not CurrentScopeQuery(self, query) then return nil end
+    world = self:GetWorldInstanceID(world)
+    if not Nonnegative(world) then return nil end
+    local scopes, unbounded = QueryInventory(self, world, query)
+    if unbounded or #scopes > maxScopes then return nil end
+    if #scopes == 0 and not self:IsTerrainWorldUnmanaged(world, query) then return nil end
+    local ids = {}
+    for _, scope in ipairs(scopes) do ids[scope.id] = true end
+    return ids
+end
+
+local function PointBoxDistanceSquared(point, box)
+    local dx = math.max(box.minX - SCOPE_BOUNDARY_TOLERANCE - point.x, 0,
+        point.x - box.maxX - SCOPE_BOUNDARY_TOLERANCE)
+    local dy = math.max(box.minY - SCOPE_BOUNDARY_TOLERANCE - point.y, 0,
+        point.y - box.maxY - SCOPE_BOUNDARY_TOLERANCE)
+    return dx * dx + dy * dy
+end
+
+local function NearestScopeSquared(node, point, best, distance)
+    if not node or (distance or PointBoxDistanceSquared(point, node)) >= best then return best end
+    if node.scopes then
+        for _, scope in ipairs(node.scopes) do best = math.min(best, PointBoxDistanceSquared(point, scope.bounds)) end
+        return best
+    end
+    local left, right = PointBoxDistanceSquared(point, node.left), PointBoxDistanceSquared(point, node.right)
+    if left < right then
+        best = NearestScopeSquared(node.left, point, best, left)
+        return NearestScopeSquared(node.right, point, best, right)
+    end
+    best = NearestScopeSquared(node.right, point, best, right)
+    return NearestScopeSquared(node.left, point, best, left)
+end
+
+local function NearestScopeDistance(inventory, point)
+    inventory.distances = inventory.distances or setmetatable({}, {__mode = "k"})
+    local cached = inventory.distances[point]
+    if cached and cached.x == point.x and cached.y == point.y then return cached.distance end
+    local distance = math.sqrt(NearestScopeSquared(inventory.index, point, math.huge))
+    inventory.distances[point] = {x = point.x, y = point.y, distance = distance}
+    return distance
+end
+
+-- Native automatic entries/exits lie inside scoped bounds, including their
+-- declared boundary tolerance. Give every pocket free travel to every other
+-- pocket: even zero-cost foreign references cannot make the two exterior
+-- approaches cheaper. U bounds all ordinary speeds supplied by the host.
+function Instance:GetTerrainWalkLowerBound(from, to, upperSpeed, query)
+    if self.CreateTerrainEdgeBuild ~= NativeTerrainBuild or self.GetRequiredTerrainScopes ~= NativeScopeRequirements
+        or not Finite(upperSpeed) or upperSpeed <= 0 or type(from) ~= "table" or type(to) ~= "table"
+        or not Finite(from.x) or not Finite(from.y) or not Finite(to.x) or not Finite(to.y)
+        or from.noAutoconnect or to.noAutoconnect then return 0 end
+    local world, target = self:GetWorldInstanceID(from.instanceID), self:GetWorldInstanceID(to.instanceID)
+    if world == nil or world ~= target then return 0 end
+    query = CurrentScopeQuery(self, query) or NewScopeQuery(self)
+    local scopes, unbounded = QueryInventory(self, world, query)
+    if unbounded or #scopes == 0 then return 0 end
+    local inventory = query.worlds[world]
+    local dx, dy = from.x - to.x, from.y - to.y
+    local distance = math.min(math.sqrt(dx * dx + dy * dy),
+        NearestScopeDistance(inventory, from) + NearestScopeDistance(inventory, to))
+    local seconds = distance / upperSpeed
+    return Nonnegative(seconds) and seconds or 0
 end
 
 function Lib.ValidateTerrainData(data, worldID)
@@ -277,7 +568,7 @@ local function NodePosition(raw, world, pack, scope)
     local boundary = raw.terrainBoundary
     if boundary ~= nil then
         if not scope or boundary ~= scope.id or (raw.movementMode and raw.movementMode ~= "ground") then return nil end
-        local b, tolerance = scope.bounds, 0.01
+        local b, tolerance = scope.bounds, SCOPE_BOUNDARY_TOLERANCE
         if raw.x < b.minX-tolerance or raw.x > b.maxX+tolerance or raw.y < b.minY-tolerance or raw.y > b.maxY+tolerance
             or raw.z < b.minZ-tolerance or raw.z > b.maxZ+tolerance then return nil end
         if math.min(math.abs(raw.x-b.minX),math.abs(raw.x-b.maxX),math.abs(raw.y-b.minY),math.abs(raw.y-b.maxY)) > tolerance then return nil end
@@ -901,6 +1192,8 @@ local STEPS = { collect = Build.CollectOne, load = Build.LoadOne, loadScope = Bu
 function Build:Step(operations, milliseconds)
     if self.status ~= "planning" then return self.status, self.result, self.coverage end
     if self.sourceRevision and self.sourceRevision ~= (Lib.terrainRevision or 0) then
+        self.coverageProof.ready = false
+        self.coverageProof.worlds, self.coverageProof.points = nil, nil
         local fresh = self.owner:CreateTerrainEdgeBuild(self.request)
         for key in pairs(self) do self[key] = nil end
         for key, value in pairs(fresh) do self[key] = value end
@@ -917,15 +1210,63 @@ function Build:Step(operations, milliseconds)
         if self.status ~= "planning" then break end
     end
     self.coverage.revision = self.sourceRevision or Lib.terrainRevision or 0
+    if self.status == "ready" then
+        self.coverageProof.revision, self.coverageProof.ready = self.coverage.revision, true
+    end
     return self.status, self.result, self.coverage
 end
 
 function Build:Cancel()
     self.status, self.result = "cancelled", nil
+    self.coverageProof.ready = false
+    self.coverageProof.worlds, self.coverageProof.points = nil, nil
     self.groups, self.points, self.nodes, self.anchors, self.packs = {}, {}, {}, {}, {}
     self.candidates, self.pendingEdge = {}, nil
     self.pendingAnchor, self.pendingConnection = nil, nil
     self.pendingScopeLoad=nil
+end
+
+local function CoverageInventory(proof, world, scopes)
+    local inventory = proof.worlds[world]
+    if inventory then return inventory end
+    inventory = { scopes = {}, byID = {} }
+    for _, scope in ipairs(scopes or {}) do
+        local copy = CopyScope(scope)
+        if not copy then inventory.invalid = true
+        else
+            inventory.scopes[#inventory.scopes + 1] = copy
+            inventory.byID[copy.id] = copy
+        end
+    end
+    inventory.index = ScopeIndex(inventory.scopes)
+    proof.worlds[world] = inventory
+    return inventory
+end
+
+local function CoveragePoint(proof, inventory, point, world)
+    local row = proof.points[point]
+    if row and row.inventory == inventory and row.world == world and proof.immutablePositions then return row end
+    if row and row.inventory == inventory and row.world == world and row.x == point.x and row.y == point.y
+        and row.z == point.z and row.accessKey == point.accessKey and row.floor == point.floor
+        and row.positionSource == point.positionSource and row.heightSource == point.heightSource
+        and row.terrainBoundary == point.terrainBoundary then return row end
+    row = { inventory = inventory, world = world, x = point.x, y = point.y, z = point.z,
+        accessKey = point.accessKey, floor = point.floor, positionSource = point.positionSource,
+        heightSource = point.heightSource, terrainBoundary = point.terrainBoundary, inside = false }
+    row.knownHeight = Finite(point.z) and not UnknownNativeHeight(point)
+    if not Finite(point.x) or not Finite(point.y) then row.inside = true
+    else row.inside = IndexContains(inventory.index, row) end
+    proof.points[point] = row
+    return row
+end
+
+local function CoverageCurrent(proof, owner)
+    if not proof.ready then return false end
+    if proof.revision ~= (Lib.terrainRevision or 0) or proof.profile ~= owner.profile then
+        proof.ready, proof.worlds, proof.points = false, nil, nil
+        return false
+    end
+    return true
 end
 
 function Instance:CreateTerrainEdgeBuild(request)
@@ -935,12 +1276,31 @@ function Instance:CreateTerrainEdgeBuild(request)
         missingData = false, missing = {}, attached = {} }
     local fallback, owner = request.canWalk, self
     local scopes, unbounded = {}, {}
+    local proof = { ready = false, profile = self.profile, worlds = {}, points = setmetatable({}, {__mode = "k"}),
+        immutablePositions = request.immutablePositions == true }
+    coverage.canAutoconnectAt = function(point)
+        if not CoverageCurrent(proof, owner) then return false end
+        local world = owner:GetWorldInstanceID(point.instanceID)
+        if not managed[world] then return true end
+        if unbounded[world] then return false end
+        local inventory = CoverageInventory(proof, world, scopes[world])
+        return not inventory.invalid and not CoveragePoint(proof, inventory, point, world).inside
+    end
     coverage.canWalk = function(from, to)
+        if not CoverageCurrent(proof, owner) then return false end
         local first, last = owner:GetWorldInstanceID(from.instanceID), owner:GetWorldInstanceID(to.instanceID)
         if (managed[first] and unbounded[first]) or (managed[last] and unbounded[last]) then return false end
         if first == last and managed[first] then
-            if ContainsAny(scopes[first], from) or ContainsAny(scopes[first], to) then return false end
-            for _, scope in ipairs(scopes[first]) do if ScopeBlocks(scope, from, to) then return false end end
+            local inventory = CoverageInventory(proof, first, scopes[first])
+            if inventory.invalid then return false end
+            local a = CoveragePoint(proof, inventory, from, first)
+            if a.inside then return false end
+            local b = CoveragePoint(proof, inventory, to, last)
+            if b.inside then return false end
+            local own, target = inventory.byID[a.terrainBoundary], inventory.byID[b.terrainBoundary]
+            if own and ScopeBlocksValid(own, a, b) then return false end
+            if target and target ~= own and ScopeBlocksValid(target, a, b) then return false end
+            if IndexBlocks(inventory.index, a, b, own, target) then return false end
         end
         return fallback and fallback(from, to) or false
     end
@@ -950,12 +1310,13 @@ function Instance:CreateTerrainEdgeBuild(request)
     local build = setmetatable({ owner = self, request = request, clock = request.clock,
         status = "planning", phase = "collect", group = 1, index = 1, groups = groups,
         points = {}, pointSeen = {}, unavailablePoints = {}, unavailableWorlds = {}, unavailableScopes = {}, readyScopes = {}, geometryWorlds = {}, managed = managed,
-        scopes = scopes, unbounded = unbounded, loadedWorlds = {}, scopeInventory = {}, packScopes = {},
+        scopes = scopes, unbounded = unbounded, coverageProof = proof, loadedWorlds = {}, scopeInventory = {}, packScopes = {},
         packs = {}, nodes = {}, aliases = {}, anchors = {}, visibility = {}, pathPositionCache = {}, result = {}, coverage = coverage,
         candidates = {}, profile = Terrain.Profile(request) }, Build)
     build:AddPoint(request.start); build:AddPoint(request.goal)
     return build
 end
+NativeTerrainBuild = Instance.CreateTerrainEdgeBuild
 
 local function SegmentInterval(from, to, anchor, mode)
     local entry = anchor.entry or anchor.node

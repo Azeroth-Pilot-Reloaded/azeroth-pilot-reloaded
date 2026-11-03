@@ -1,7 +1,7 @@
 -- Project endpoints into world coordinates and identify their access regions.
 -- A shared position alone does not permit walking through a required entrance.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("geography", 16) then return end
+if not Lib:BeginModule("geography", 17) then return end
 local Instance = Lib.Instance
 -- These defaults are read-only, including CheckRequirements' character input.
 -- Reuse them across walking checks and retries of unavailable map ancestry.
@@ -215,6 +215,109 @@ function Instance:CanWalk(from, to)
         if requirements and self:CheckRequirements(requirements, EMPTY) ~= true then return false end
     end
     return self:IsSameAccessRegion(from, to)
+end
+
+local NativeCanWalk, NativeSameAccess = Instance.CanWalk, Instance.IsSameAccessRegion
+local NativeRegion, NativeWorldRegion = Instance.GetPositionRegion, Instance.GetNativePositionRegion
+local NativeWorld, NativeMapInfo = Instance.GetWorldInstanceID, Instance.GetMapAncestryInfo
+local WALK_POSITION_FIELDS = { "x", "y", "z", "instanceID", "uiMapID", "spaceID", "region",
+    "accessKey", "floor", "areaID", "positionSource", "heightSource", "isInstance", "noAutoconnect", "phaseAgnostic" }
+local WALK_CONFIG_FIELDS = { "WorldInstanceOverrides", "IsolatedAreas", "MapTypeOverrides", "ContinentMapOverrides",
+    "IsolatedContinents", "NavigationSpaces" }
+local WEAK_KEYS = { __mode = "k" }
+
+local function SameWalkPosition(point, snapshot)
+    for _, key in ipairs(WALK_POSITION_FIELDS) do if point[key] ~= snapshot[key] then return false end end
+    return true
+end
+
+local function CompleteWalkMap(owner, point, space)
+    if point.uiMapID == nil then
+        return space and space.known and (space.region ~= nil or BoundedMaplessSpace(space)) or false
+    end
+    local current, seen, config = point.uiMapID, {}, owner.config
+    for _ = 1, 50 do
+        if not current or current == 0 or seen[current] then return false end
+        seen[current] = true
+        local info = owner:GetMapAncestryInfo(current)
+        if not info then return false end
+        local override = config.MapTypeOverrides and config.MapTypeOverrides[current]
+        local mapType = override and override.mapType or info.mapType
+        if mapType == 2 or mapType == 4 or mapType == 6 or info.parentMapID == 0
+            or (config.ContinentMapOverrides and config.ContinentMapOverrides[current])
+            or (owner.entranceMaps and owner.entranceMaps[current]) then return true end
+        current = info.parentMapID
+    end
+    return false
+end
+
+-- Only endpoint geography is reused; target-map requirements remain live.
+-- Default queries detect reused/mutated point tables. A search which owns its
+-- immutable inputs may explicitly skip those comparisons for this request's
+-- lifetime. Public predicates and custom policies keep resolving live data.
+function Instance:CreateWalkingPermissionQuery(options)
+    local owner, resolver = self, Instance.ResolveNavigationSpace
+    local immutable = type(options) == "table" and options.immutablePositions == true
+    local cache, epoch = setmetatable({}, WEAK_KEYS), {}
+    local function nativePolicy()
+        return owner.CanWalk == NativeCanWalk and owner.IsSameAccessRegion == NativeSameAccess
+            and owner.GetPositionRegion == NativeRegion and owner.GetNativePositionRegion == NativeWorldRegion
+            and owner.GetWorldInstanceID == NativeWorld and owner.GetMapAncestryInfo == NativeMapInfo
+            and owner.ResolveNavigationSpace == resolver and Instance.ResolveNavigationSpace == resolver
+    end
+    local function refresh()
+        local config = owner.config
+        local spaces = config.NavigationSpaces
+        local changed = epoch.config ~= config or epoch.maps ~= owner.mapInfos or epoch.positions ~= owner.positions
+            or epoch.regions ~= owner.regions or epoch.entrances ~= owner.entranceMaps
+            or epoch.spaceCount ~= #(spaces or EMPTY)
+        for _, key in ipairs(WALK_CONFIG_FIELDS) do
+            if epoch[key] ~= config[key] then changed = true end
+        end
+        if not changed then return end
+        cache = setmetatable({}, WEAK_KEYS)
+        epoch.config, epoch.maps, epoch.positions = config, owner.mapInfos, owner.positions
+        epoch.regions, epoch.entrances, epoch.spaceCount = owner.regions, owner.entranceMaps, #(spaces or EMPTY)
+        for _, key in ipairs(WALK_CONFIG_FIELDS) do epoch[key] = config[key] end
+    end
+    local function classify(point)
+        local current = cache[point]
+        if current and (immutable or SameWalkPosition(point, current.snapshot)) then return current end
+        -- Probe completeness before resolving: a map can become available
+        -- during these callbacks. Never memoize an earlier partial result just
+        -- because a final retry happened to obtain the missing map record.
+        local complete = point.uiMapID ~= nil and CompleteWalkMap(owner, point)
+        local region = owner:GetPositionRegion(point)
+        local space = resolver and owner:ResolveNavigationSpace(point)
+        current = { region = region, spaceID = space and space.id, requiresExit = space and space.requiresExit }
+        -- Do not retain a negative lookup or a partially loaded native map.
+        -- Its next query must be able to observe newly available map metadata.
+        if region ~= nil and ((not resolver and point.region ~= nil) or complete
+            or (point.uiMapID == nil and CompleteWalkMap(owner, point, space))) then
+            if not immutable then
+                local snapshot = {}
+                for _, key in ipairs(WALK_POSITION_FIELDS) do snapshot[key] = point[key] end
+                current.snapshot = snapshot
+            end
+            cache[point] = current
+        else cache[point] = nil end
+        return current
+    end
+    return function(from, to)
+        if not nativePolicy() then return owner:CanWalk(from, to) end
+        if not from or not to or from.noAutoconnect or to.noAutoconnect then return false end
+        if not to.phaseAgnostic and owner.config.MapRequirements then
+            local requirements = owner:GetMapAccessRequirements(to.uiMapID)
+            if requirements and owner:CheckRequirements(requirements, EMPTY) ~= true then return false end
+        end
+        if owner:GetWorldInstanceID(from.instanceID) ~= owner:GetWorldInstanceID(to.instanceID)
+            or from.accessKey ~= to.accessKey or from.floor ~= to.floor then return false end
+        refresh()
+        local source, target = classify(from), classify(to)
+        if source.spaceID and target.spaceID and source.spaceID ~= target.spaceID
+            and (source.requiresExit or target.requiresExit) then return false end
+        return source.region ~= nil and source.region == target.region
+    end
 end
 
 function Instance:GetWalkingSpeed(position, travelSpeed, groundSpeed)

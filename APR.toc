@@ -90,6 +90,7 @@ APR-Core/utils/LootUtils.lua
 APR-Core/utils/PlayerPositionUtils.lua
 APR-Core/features/navigation/TerrainIndex.lua
 APR-Core/features/navigation/NavigationTerrain.lua
+NavigationData/Terrain_[Game].xml
 APR-Core/features/navigation/NavigationAdapter.lua
 APR-Core/integrations/NavigationEntrances.lua
 APR-Core/utils/NavigationZones.lua

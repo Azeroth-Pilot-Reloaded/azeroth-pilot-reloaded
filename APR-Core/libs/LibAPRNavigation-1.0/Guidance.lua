@@ -1,6 +1,6 @@
 -- Follow proved path segments without changing the host's objective cursor.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("terrain-guidance", 3) then return end
+if not Lib:BeginModule("terrain-guidance", 4) then return end
 local Guidance = {}
 Guidance.__index = Guidance
 local function Finite(value)
@@ -10,6 +10,11 @@ local function Distance(a, b, spatial)
     local dx, dy = b.x - a.x, b.y - a.y
     local dz = spatial and Finite(a.z) and Finite(b.z) and b.z - a.z or 0
     return math.sqrt(dx * dx + dy * dy + dz * dz)
+end
+local function RoadHeightUnknown(segment, position)
+    return segment.source.road == true and segment.mode == "ground"
+        and (not Finite(position.z) or (position.positionSource == "unit" and position.z == 0
+            and position.heightSource ~= "terrain"))
 end
 local function SameSpace(a, b)
     return a and b and a.instanceID == b.instanceID and a.accessKey == b.accessKey
@@ -142,7 +147,8 @@ function Guidance:AdvanceCorner(position, segment, distance)
     local window = segment.mode == "ground" and 120 or 360
     for index = self.pointIndex + 1, last do
         local from, to = points[index], points[index + 1]
-        local spatial = segment.mode ~= "ground" or (Finite(position.z) and Finite(from.z) and Finite(to.z))
+        local spatial = not RoadHeightUnknown(segment, position)
+            and (segment.mode ~= "ground" or (Finite(position.z) and Finite(from.z) and Finite(to.z)))
         if spatial and (not Finite(position.z) or not Finite(from.z) or not Finite(to.z)) then return false end
         local fraction, separation, raw = Project(position, from, to, spatial)
         local length = Distance(from, to, true)
@@ -166,7 +172,8 @@ function Guidance:FollowOne(position)
     local from, to = points[self.pointIndex], points[self.pointIndex + 1]
     if not to then self.segmentIndex, self.pointIndex = self.segmentIndex + 1, 1; return nil, false end
     if segment.source.kind and segment.source.kind ~= "walk" then self.status = "action"; return nil, true end
-    local spatial = segment.mode ~= "ground" or (Finite(from.z) and Finite(to.z))
+    local spatial = not RoadHeightUnknown(segment, position)
+        and (segment.mode ~= "ground" or (Finite(from.z) and Finite(to.z)))
     if spatial and (not Finite(position.z) or not Finite(from.z) or not Finite(to.z)) then
         self.status = "waiting_data"; return nil, true
     end

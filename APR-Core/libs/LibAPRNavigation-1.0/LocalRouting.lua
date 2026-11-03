@@ -1,6 +1,6 @@
 -- Local planning uses the same explicit-edge search as world travel.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("local-routing", 2) then return end
+if not Lib:BeginModule("local-routing", 3) then return end
 local Instance, Route = Lib.Instance, {}
 Route.__index = Route
 
@@ -22,7 +22,8 @@ function Route:Prepare()
         self.status = "missing_data"; return
     end
     self.search = self.owner:CreateSearch({ start = self.request.start, goal = self.request.goal,
-        edges = edges, canWalk = function() return false end, walkingIsTransitive = false,
+        edges = edges, canWalk = function() return false end, canAutoconnectAt = function() return false end,
+        walkingIsTransitive = false,
         walkSpeed = self.profile.groundSpeed, movementProfile = self.profile })
     self.phase = "search"
 end

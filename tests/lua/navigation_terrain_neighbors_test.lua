@@ -123,15 +123,17 @@ job,status=build(data,nil)
 assert(status=="invalid_data" and job.reason=="unknown_terrain_node",
     "Legacy whole-world builds retain complete reference validation")
 
--- Host inventory advertises adjacency without reading or loading the addons.
+-- Host inventory advertises adjacency without constructing any terrain source.
 data=fixture:Load({connections={}})
 APR.NavigationTerrainIndex={schema=1,profiles={retail={worlds={[8]={packs={
     {id="a",scope=first,neighborScopeIDs={"second"}},
     {id="a-extra",scope=first,neighborScopeIDs={"second"}},
     {id="b",scope=second,neighborScopeIDs={"first"}},
 }}}}}}
-C_AddOns={LoadAddOn=function()error("A metadata neighbor lookup cannot load an addon")end}
 dofile("APR-Core/features/navigation/NavigationTerrain.lua")
+APR.NavigationTerrain:RegisterSource("retail",8,"a",1,function()
+    error("A metadata neighbor lookup cannot construct terrain")
+end)
 local neighbors=APR.NavigationTerrain:GetScopeNeighbors("retail",8,"first")
 assert(#neighbors==1 and neighbors[1]=="second")
 assert(data:GetTerrainScopeNeighbors(8,"first")[1]=="second","The adapter forwards the same metadata-only lookup")
@@ -142,18 +144,20 @@ assert(APR.NavigationTerrain:GetScopeNeighbors("retail",8,"first")[1]=="third",
     "Replacing a world record cannot retain the previous adjacency index")
 function GetBuildInfo()return "12.3.4","99" end
 function APR:GetGameVersion()return "retail" end
-local indexed={id="a",addon="FixtureNeighborA",revision=1,scope=first,neighborScopeIDs={"second"}}
+local indexed={id="a",file="NavigationData/fixture-neighbor-a.lua",revision=1,scope=first,neighborScopeIDs={"second"}}
 APR.NavigationTerrainIndex.profiles.retail.builds={["12.3.4.99"]=true}
 APR.NavigationTerrainIndex.profiles.retail.worlds[8]={packs={indexed,{id="b",scope=second}}}
 local hostLib=LibStub("LibAPRNavigation-1.0")
 hostLib:RegisterTerrainData("retail",8,{format=1,profile="retail",build="12.3.4.99",scope=first,
     neighborScopeIDs={},nodes={},edges={}},1,"a")
-C_AddOns.IsAddOnLoaded=function()return true,true end
+-- A source that completes without replacing the mismatched metadata still fails.
+APR.NavigationTerrain:RegisterSource("retail",8,"a",2,function() end)
+indexed.revision=2
 local hostState,hostReason=APR.NavigationTerrain:RequestData("retail",8,nil,{scopeIDs={first=true}})
 assert(hostState=="missing" and hostReason=="terrain_registration_missing",
     "Registered geometry cannot satisfy different advertised neighbor metadata")
-indexed.revision=2
+indexed.revision=3
 hostLib:RegisterTerrainData("retail",8,{format=1,profile="retail",build="12.3.4.99",scope=first,
-    neighborScopeIDs={"second"},nodes={},edges={}},2,"a")
+    neighborScopeIDs={"second"},nodes={},edges={}},3,"a")
 assert(APR.NavigationTerrain:RequestData("retail",8,nil,{scopeIDs={first=true}})=="ready")
 print("Terrain neighbors: lazy seams, explicit corners, strict references, cache recovery and metadata-only inventory passed")

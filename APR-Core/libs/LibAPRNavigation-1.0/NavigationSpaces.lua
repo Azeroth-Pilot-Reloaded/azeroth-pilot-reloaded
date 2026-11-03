@@ -1,7 +1,7 @@
 -- Logical navigation spaces are data, separate from UI map presentation and
 -- enclosure observations. Unknown spaces retain the native access boundary.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("navigation-spaces", 2) then return end
+if not Lib:BeginModule("navigation-spaces", 3) then return end
 local Instance = Lib.Instance
 local EMPTY = {}
 local KINDS = { outdoor=true, subzone=true, underground=true, cave=true, building=true,
@@ -184,9 +184,36 @@ local function Native(owner,point)
         known=false,requiresExit=requiresExit,groundOnly=groundOnly},"unknown_navigation_space"
 end
 
+local function Explicit(owner,index,point,id)
+    local space=index.byID[id]
+    if not space then return nil,"navigation_space_unavailable" end
+    local mapDepth,areaMatch=nil,InList(space.areaIDs,point.areaID)
+    if #space.mapIDs>0 then
+        local current,visited=point.uiMapID,{}
+        for depth=0,49 do
+            if not current or visited[current] then break end
+            visited[current]=true
+            if InList(space.mapIDs,current) then mapDepth=depth;break end
+            local info=owner:GetMapAncestryInfo(current)
+            if not info or info.mapType==4 or info.mapType==6 or (owner.config.IsolatedAreas or EMPTY)[current]
+                or (owner.entranceMaps and owner.entranceMaps[current]) then break end
+            current=info.parentMapID
+        end
+    end
+    local matches,incomplete=Matches(owner,space,point,mapDepth,areaMatch)
+    if not matches then return nil,"navigation_space_unavailable" end
+    if incomplete then return nil,"navigation_space_identity_unavailable" end
+    return Effective(index,space,point)
+end
+
 function Instance:ResolveNavigationSpace(point)
     if type(point)~="table" or not Finite(point.instanceID) then return nil,"invalid_navigation_position" end
     local index=Index(self)
+    local explicit=point.spaceID
+    if explicit~=nil and not Identity(explicit) then return nil,"invalid_navigation_position" end
+    -- An explicit declaration still needs its map, bounds and access proof,
+    -- but no other candidate can change which declaration it requests.
+    if explicit and explicit:sub(1,7)~="native:" then return Explicit(self,index,point,explicit) end
     local candidates,seen,depths,incomplete={},{},{},{}
     local function add(space,depth,area)
         local matches,unknown=Matches(self,space,point,depth,area)
@@ -210,17 +237,6 @@ function Instance:ResolveNavigationSpace(point)
         if #space.mapIDs==0 then add(space,depth,true) end
     end
     for _,space in ipairs(index.worlds[self:GetWorldInstanceID(point.instanceID)] or {}) do add(space,0,false) end
-    local explicit=point.spaceID
-    if explicit~=nil and not Identity(explicit) then return nil,"invalid_navigation_position" end
-    if explicit and explicit:sub(1,7)~="native:" then
-        for _,space in ipairs(candidates) do
-            if space.id==explicit then
-                if incomplete[space.id] then return nil,"navigation_space_identity_unavailable" end
-                return Effective(index,space,point)
-            end
-        end
-        return nil,"navigation_space_unavailable"
-    end
     local selected
     for _,space in ipairs(candidates) do
         local shadowed=false

@@ -13,7 +13,6 @@ from tools.validation.check_package import (
     read_terrain_index,
     terrain_array,
     terrain_declarations,
-    toc_metadata,
 )
 
 
@@ -60,6 +59,13 @@ class NavigationTerrainDataTests(unittest.TestCase):
         cls.lib = cls.runtime.eval('(LibStub("LibAPRNavigation-1.0"))')
         cls.runtime.execute('''
             terrainRegistrations = {}
+            terrainSources = {}
+            APR = { NavigationTerrain = {} }
+            function APR.NavigationTerrain:RegisterSource(profile, world, id, revision, factory)
+                assert(type(factory) == "function", "Terrain source must be a deferred factory")
+                terrainSources[#terrainSources+1] = {
+                    profile=profile, world=world, id=id, revision=revision, factory=factory }
+            end
             local lib = LibStub("LibAPRNavigation-1.0")
             local register = lib.RegisterTerrainData
             function lib:RegisterTerrainData(profile, world, data, revision, id)
@@ -70,33 +76,35 @@ class NavigationTerrainDataTests(unittest.TestCase):
                 return register(self, profile, world, data, revision, id)
             end
         ''')
-        for path in sorted({DATA / pack["addon"] / pack["file"] for _, _, pack in cls.declarations}):
+        for path in sorted({ROOT / pack["file"] for _, _, pack in cls.declarations}):
             cls.runtime.execute(path.read_text(encoding="utf-8-sig"), name="@" + path.relative_to(ROOT).as_posix())
+        cls.startup_registrations = len(terrain_array(cls.runtime.globals().terrainRegistrations))
+        cls.runtime.execute('for _,source in ipairs(terrainSources) do source.factory() end')
 
     def test_discovered_profile_metadata_is_loaded_by_the_library(self):
         declared = set(self.scripts)
         self.assertEqual(len(declared), len(self.scripts), "Library scripts must load exactly once")
         self.assertLessEqual(set((LIBRARY / "Data").rglob("*.lua")), declared)
 
-    def test_discovered_addons_and_chunk_manifests(self):
-        expected_addons = {pack["addon"] for _, _, pack in self.declarations}
-        actual_addons = {toc.parent.name for toc in DATA.glob("*/*.toc")}
-        self.assertEqual(expected_addons, actual_addons)
-        expected_chunks = {DATA / pack["addon"] / pack["file"] for _, _, pack in self.declarations}
+    def test_discovered_internal_chunks_and_client_manifests(self):
+        self.assertEqual(list(DATA.rglob("*.toc")), [], "Internal terrain is part of APR, not separate addons")
+        expected_chunks = {ROOT / pack["file"] for _, _, pack in self.declarations}
         self.assertEqual(expected_chunks, set(DATA.rglob("*.lua")))
-        for profile, world, pack in self.declarations:
-            with self.subTest(profile=profile, world=world, pack=pack["id"]):
-                directory = DATA / pack["addon"]
-                toc = directory / (pack["addon"] + ".toc")
-                metadata = toc_metadata(toc)
-                self.assertEqual(metadata.get("loadondemand"), "1")
-                self.assertEqual(metadata.get("x-apr-terrain-profile"), profile)
-                self.assertEqual(metadata.get("x-apr-terrain-world"), str(world))
-                self.assertIn("APR", [part.strip() for part in metadata.get("dependencies", "").split(",")])
-                entries = [line.strip().replace("\\", "/") for line in toc.read_text(encoding="utf-8-sig").splitlines()
-                           if line.strip() and not line.strip().startswith("#")]
-                self.assertEqual(entries.count(pack["file"]), 1)
-                self.assertEqual(set(entries), {item["file"] for _, _, item in self.declarations if item["addon"] == pack["addon"]})
+        for profile, game in (("retail", "Standard"), ("forever", "Camelot")):
+            with self.subTest(profile=profile):
+                xml = ET.parse(DATA / ("Terrain_" + game + ".xml"))
+                entries = [item.attrib["file"].replace("\\", "/") for item in xml.iter()
+                           if item.tag.rsplit("}", 1)[-1] == "Script"]
+                self.assertEqual(len(entries), len(set(entries)), "Each terrain source loads once")
+                self.assertEqual(set(entries), {pack["file"] for candidate, _, pack in self.declarations if candidate == profile})
+
+    def test_sources_defer_geometry_and_match_every_indexed_identity(self):
+        self.assertEqual(self.startup_registrations, 0, "Loading source functions must not create terrain tables")
+        expected = {(profile, world, pack["id"]): pack["revision"] for profile, world, pack in self.declarations}
+        sources = terrain_array(self.runtime.globals().terrainSources)
+        declared = {(source["profile"], source["world"], source["id"]): source["revision"] for source in sources}
+        self.assertEqual(len(sources), len(declared), "Terrain factories have unique identities")
+        self.assertEqual(declared, expected)
 
     def test_registered_identities_builds_and_exact_scopes(self):
         expected = {(profile, world, pack["id"]): pack for profile, world, pack in self.declarations}
@@ -257,7 +265,7 @@ class NavigationTerrainDataTests(unittest.TestCase):
 
     def assert_manifest_files(self, files, directory):
         expected_files = {path.relative_to(directory).as_posix() for path in directory.rglob("*")
-                          if path.suffix in (".lua", ".toc")}
+                          if path.suffix in (".lua", ".xml")}
         self.assertEqual(set(files), expected_files)
         for relative, expected_hash in files.items():
             path = directory / relative

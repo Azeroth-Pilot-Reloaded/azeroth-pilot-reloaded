@@ -529,7 +529,8 @@ local function EvaluateProbe(job, record)
             or (estimate == best.estimatedSeconds and tostring(record.id) < tostring(best.pathID))) then
         job.best = {
             kind = "verify_taxi", from = source, to = source, fromNodeID = from, toNodeID = to,
-            pathID = record.id, estimatedSeconds = estimate, instruction = L["NAVIGATION_CONSULT_TAXI"],
+            pathID = record.id, estimatedSeconds = estimate, approachSeconds = approach,
+            instruction = L["NAVIGATION_CONSULT_TAXI"],
         }
     end
 end--[[APR_DIAG]]; EvaluateProbe = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:501:EvaluateProbe#44", EvaluateProbe)--[[/APR_DIAG]]
@@ -564,7 +565,7 @@ local function AdvanceProbe(job)
     local lowerBound = approach + BOARDING_SECONDS
     if lowerBound >= job.baseline or (job.best and lowerBound > job.best.estimatedSeconds) then return end
     job.outgoing, job.pathIndex = job.cache.outgoing[nodeID], 0
-end--[[APR_DIAG]]; AdvanceProbe = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:537:AdvanceProbe#45", AdvanceProbe)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; AdvanceProbe = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:538:AdvanceProbe#45", AdvanceProbe)--[[/APR_DIAG]]
 
 function taxi:CreateProbeSearch(start, goal, baselineSeconds, options)
     options = options or {}
@@ -577,20 +578,20 @@ function taxi:CreateProbeSearch(start, goal, baselineSeconds, options)
     job.approachCosts, job.exitCosts = {}, {}
     job.pathIndex, job.departureIndex = 0, 0
     return job
-end--[[APR_DIAG]]; taxi.CreateProbeSearch = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:569:taxi:CreateProbeSearch#46", taxi.CreateProbeSearch)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.CreateProbeSearch = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:570:taxi:CreateProbeSearch#46", taxi.CreateProbeSearch)--[[/APR_DIAG]]
 
 function taxi:FindProbe(start, goal, baselineSeconds, options)
     local job = self:CreateProbeSearch(start, goal, baselineSeconds, options)
     local status, probe
     repeat status, probe = job:Step(256) until status ~= "planning"
     return probe
-end--[[APR_DIAG]]; taxi.FindProbe = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:582:taxi:FindProbe#47", taxi.FindProbe)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.FindProbe = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:583:taxi:FindProbe#47", taxi.FindProbe)--[[/APR_DIAG]]
 
 function taxi:CanTake(nodeID)
     local quote, money = self:GetQuote(nodeID), GetMoney and GetMoney() or 0
     if not quote or not Price(money) or quote.priceCopper > money then return false end
     return true, quote.slotIndex
-end--[[APR_DIAG]]; taxi.CanTake = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:589:taxi:CanTake#48", taxi.CanTake)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.CanTake = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:590:taxi:CanTake#48", taxi.CanTake)--[[/APR_DIAG]]
 function taxi:StartMeasurement(slot)
     if not self.currentNodeID or not self.liveOffers then return end
     for destinationID, offer in pairs(self.liveOffers) do
@@ -606,7 +607,7 @@ function taxi:StartMeasurement(slot)
             return
         end
     end
-end--[[APR_DIAG]]; taxi.StartMeasurement = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:594:taxi:StartMeasurement#49", taxi.StartMeasurement)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; taxi.StartMeasurement = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:595:taxi:StartMeasurement#49", taxi.StartMeasurement)--[[/APR_DIAG]]
 function taxi:PollMeasurement()
     local measurement = self.measurement
     if not measurement then return end
@@ -644,10 +645,10 @@ function taxi:PollMeasurement()
             APR.navigation:RequestUpdate()
         end
     end
-end--[[APR_DIAG]]; taxi.PollMeasurement = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:610:taxi:PollMeasurement#50", taxi.PollMeasurement)--[[/APR_DIAG]]
-if hooksecurefunc then hooksecurefunc("TakeTaxiNode", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:648:callback#51", --[[/APR_DIAG]]function(slot) taxi:StartMeasurement(slot) end--[[APR_DIAG]])--[[/APR_DIAG]]) end
+end--[[APR_DIAG]]; taxi.PollMeasurement = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:611:taxi:PollMeasurement#50", taxi.PollMeasurement)--[[/APR_DIAG]]
+if hooksecurefunc then hooksecurefunc("TakeTaxiNode", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:649:callback#51", --[[/APR_DIAG]]function(slot) taxi:StartMeasurement(slot) end--[[APR_DIAG]])--[[/APR_DIAG]]) end
 local frame, elapsed = CreateFrame("Frame"), 0
-frame:SetScript("OnUpdate", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:650:callback#52", --[[/APR_DIAG]]function(_, delta)
+frame:SetScript("OnUpdate", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:651:callback#52", --[[/APR_DIAG]]function(_, delta)
     if not taxi.measurement then return end
     elapsed = elapsed + delta
     if elapsed >= 0.2 then elapsed = 0; taxi:PollMeasurement() end

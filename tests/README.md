@@ -345,6 +345,55 @@ with a personal spell or item, then changes distance, movement speed and action
 availability. Cast, loading and arrival costs decide the winner; ordinary travel
 must not stop at an access-only physical itinerary.
 
+`navigation_road_coverage_budget_test.lua` suspends an invented road calculation
+on both profiles. Terrain coverage checks stay bounded across slices and search
+restarts, while endpoint height/access evidence, source replacement and fresh
+requests require a new proof.
+
+`navigation_road_direct_budget_test.lua` validates local collision proofs before
+unrelated road indexes and joins, retaining blocked paths, water costs, source
+validation, overlapping floors and concurrent compilation. It also bounds local
+join lookups and long-diagonal index growth. Synthetic fixtures exercise both
+profiles.
+`navigation_explicit_space_budget_test.lua` resolves named spaces among hundreds
+of overlapping declarations with bounded lookups, preserving ancestry and access.
+`navigation_foreground_budget_test.lua` compares bounded foreground work (3 ms)
+with background work (1 ms) while retaining useful guidance, cancellation and the
+operation limit on clients without a profiling clock.
+`navigation_departure_height_budget_test.lua` keeps usable personal escapes and
+taxi consultations before stopping a pointless relaxed search when the native
+departure floor is unknown. `navigation_height_wait_recovery_test.lua` retains
+that precise reason without repeated builds, then resumes on nearby proved
+ground, real altitude or source/access/action changes. Ordinary missing-data
+retries remain independent of these height waits.
+
+`navigation_terrain_scope_query_budget_test.lua` uses many distinct chords to
+check one owned scope inventory per world/revision while public queries remain
+live. `navigation_terrain_coverage_budget_test.lua` applies the same rule to
+terrain walking permission, with mutable points, weak caches, invalid sources,
+boundaries and source retirement.
+They also compare indexed chord decisions with independent linear geometry,
+cover native world certificates and batch limits, and preserve mutable coverage
+while checking immutable endpoint caching. `navigation_terrain_walk_bound_test.lua`
+covers free zero-cost pockets, empty gaps, arbitrary foreign edges and conservative
+fallbacks. `navigation_terrain_batch_planner_test.lua` checks one complete search
+for small inter-world inventories, the inclusive cap, lazy local/large worlds,
+and usable routes beside unavailable unrelated scopes on both profiles.
+`navigation_walk_dominance_budget_test.lua` rejects already dominated walking
+arrivals before terrain callbacks, keeping money/resource alternatives and
+independently enumerated non-metric paths. It also separates movement modes.
+`navigation_autoconnect_membership_budget_test.lua` excludes proved interior
+endpoints once while preserving explicit crossings and personal escapes.
+`navigation_search_heuristic_test.lua` checks consistent relaxed-graph ordering
+against independent resource-constrained oracles, hidden zero-cost terrain,
+personal actions and mixed speeds. `navigation_planner_search_heuristic_test.lua`
+keeps the native certificate separate from custom zero costs and pair speeds.
+`navigation_walking_permission_query_test.lua` bounds endpoint classification
+while keeping target-map requirements live, incomplete maps retryable and
+custom walking policies intact. `navigation_controller_observation_budget_test.lua`
+checks two live observations per slice and rejects stale results after provider
+or performance-recorder callbacks change the world, objective or capabilities.
+
 `navigation_controller_lifecycle_test.lua` also retains full synthetic trips
 across expected spell, item and portal arrivals. It tests missing loading data,
 consumed cooldowns, repeated native world-event retries, arrival/event ordering,

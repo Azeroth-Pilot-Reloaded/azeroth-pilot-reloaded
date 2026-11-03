@@ -147,6 +147,16 @@ planning job, then refines every winning leg before publishing a route. This bou
 also handles authored fixed-duration terrain edges, which need not match any
 speed-derived estimate.
 
+An optional `walkingHeuristic.euclideanWorld(worldID)` may return strict `true`
+to certify that every automatic walk in that world costs at least XY distance
+divided by its greatest prepared endpoint speed. This requires `walkSpeedAt` or
+the fixed `walkSpeed`; pair-only speed callbacks disable it. All other worlds
+collapse to free travel in a relaxed graph. Explicit edges keep their durations,
+and personal actions become universally available in the relaxation. Scheduled
+reverse search computes consistent lower bounds for A* ordering and pruning;
+resource and money dominance still uses actual costs. Custom pair costs require
+an explicit valid certificate; ordinary consumers can omit the option entirely.
+
 Source-free actions have a fixed destination, duration and resource cost. When
 one is usable at the initial position, its direct use dominates repeating it
 after another leg. The search seeds it once. Actions unavailable initially can
@@ -859,8 +869,42 @@ same world. Legacy unbounded sources retain whole-world refusal semantics;
 `missing, terrain_point_unavailable` excludes only the affected endpoint. Later
 requests retry the loader and can recover after `ready`.
 
+`CreateTerrainScopeQuery()` creates an optional request-owned scope snapshot for
+`GetRequiredTerrainScopes(from,to,query)`. Each visited world's inventory is
+validated and copied once, then candidate chords use those immutable bounds.
+The snapshot refreshes when the instance's terrain revision or profile changes;
+new requests must use a new query. Public calls without a query continue reading
+live host metadata. Queries retain scope inventories, not candidate-pair matrices.
+Query calls may pass known scope-ID sets and known unbounded-world sets as the
+fourth and fifth arguments to ask only for additional requirements. These
+optional filters skip already selected scopes before intersection checks.
+Coverage predicates likewise retain owned scope geometry and weak per-position
+membership observations for one build. Source/profile changes or cancellation
+retire those proofs; a fresh build is required before reusing its walking policy.
+Validated scopes use a spatial tree to reject distant volumes before exact
+membership and chord tests. `immutablePositions=true` on a terrain build skips
+per-field cache guards only when the caller owns unchanged position tables for
+that build's lifetime. The default retains live mutation checks.
+
+`IsTerrainWorldUnmanaged(world,query)` positively proves absence of native
+terrain. `AreTerrainScopesSelected(world,query,knownScopes,knownUnbounded)` proves
+that all bounded requirements are already selected; native explicit edge costs
+remain independent. Both conservatively refuse unsupported providers or unknown
+metadata. `GetTerrainScopeBatch(world,query,maxScopes)` returns all bounded IDs
+only when the validated inventory fits that finite positive integer cap.
+`GetTerrainWalkLowerBound(from,to,U,query)` bounds exterior approaches using the
+union of every scope, allowing free travel between them. It requires the caller's
+finite upper bound `U` on all ordinary movement speeds; unsupported cases return
+zero. Selected pockets remain included because native zero-cost foreign edges
+may connect them to unknown pockets.
+
 APR initially selects request scopes and refines any additional scopes required
-by a winning approach. If no physical path or local exit is proved, a finite lazy
+by a winning approach. For inter-world journeys, APR opts into a 64-scope batch
+cap for worlds already needed by the journey. Small bounded inventories are
+prepared together to avoid repeated full searches of the same city. Local
+objectives, larger inventories and unbounded sources retain lazy selection.
+Unavailable unrelated scopes remain blocked without discarding a usable route.
+If no physical path or local exit is proved, a finite lazy
 frontier follows `GetTerrainScopeNeighbors(world,scopeID)`, adds new scopes and
 retries under the same scheduler. Missing foreign references may be deferred only
 for an explicitly declared neighbor not yet accepted. Once both scopes are
@@ -928,20 +972,98 @@ by the current reader. Missing/unsupported geometry is reported rather than
 replaced with invented links. The earlier Orgrimmar portal tower and Stormwind
 sanctum packs retain their real stairs and the outer-to-inner teleport transition.
 
-The current package contains 80 load-on-demand terrain addons (78 newly generated
-and two earlier packs), about 93.59 MiB of Lua source. This package size does not
-imply loading every addon. An offline Lua 5.1 smoke followed 103/103 native-zero
+The current package contains 80 internal terrain chunks, about 93.59 MiB of Lua
+source. They remain inside APR and do not add entries to WoW's addon list.
+Client-selected XML loads only the matching profile's factory functions at
+startup; their large graph tables are created only when navigation requests the
+corresponding scope. The lightweight index and build checks still govern that
+activation. An earlier offline Lua 5.1 smoke followed 103/103 native-zero
 observations from the Cleft to a genuine outdoor endpoint, reached `arrived`,
-modeled 34.624 seconds of travel and loaded three terrain addons. This measures
-the current data and engine outside the game; it is not live-client validation
-or a cartography-completeness claim.
+modeled 34.624 seconds of travel and used three terrain chunks. This measures
+the data and engine outside the game; it is not live-client validation or a
+cartography-completeness claim.
 
 The derived data, profile/build/reader identity, space catalogue and file hashes
-live under `NavigationData/manifest.json`. The packager installs terrain addons
-beside APR; other client builds refuse incompatible packs. Outside physical
+live under `NavigationData/manifest.json`. The packager keeps terrain data under
+APR's `NavigationData` directory; other client builds refuse incompatible packs. Outside physical
 coverage, existing authorized-region navigation remains available. See
 [`tools/validation/INDOOR_NAVIGATION.md`](../../../tools/validation/INDOOR_NAVIGATION.md)
 for reproduction, limitations, measured evidence and required client checks.
 The general engine, logical inventory and collision coverage have separate
 boundaries; neither this bake nor the flight estimates establish full-world
 collision coverage or calibrated skyriding performance.
+
+## Editable Forever road catalogues
+
+`Data/forever/Roads` contains the canonical road definitions. Each world, city
+or instance has a named file, for example `eastern-kingdoms.lua`, `undercity.lua`
+and `blackrock-depths.lua`. `Roads/Collision` contains the collision masks used
+to validate off-road connectors. No map art, texture data or unused height
+rasters are loaded by the road engine.
+
+`RegisterRoadNetwork(profile, definition, revision)` registers a network with
+its native `instanceID` and optional `uiMapID`. Named sections contain named
+nodes (`id`, `x`, `y`, optional `z`), edges (`id`, `from`, `to`, `kind`, `points`)
+and explicit entrance node IDs in `joins`. All heights are world heights. A
+missing height remains unknown. Paths contain ordinary named coordinate records;
+there is no packed road geometry to decode before adding or editing a point.
+
+Use descriptive IDs such as `undercity-bank-door`, `undercity-bank-stairs` or
+`undercity-bank-to-canal`. IDs must be unique within the network and remain
+stable when another point is added. Existing junction numbers can stay in place;
+new points do not require renumbering the network. Increment the declaration's
+numeric revision after editing it. The runtime invalidates its compiled graph
+and obsolete navigation jobs when a revision changes.
+
+Edge kinds are `road`, `stairs`, `elevator` and `swim`. `dropHeight` describes a
+one-way fall and requires an explicit safe-drop allowance. `costDistance` keeps
+an elevator's modeled waiting/travel cost. `bidirectional=false` defines an
+ordinary one-way edge. Shapes and their intermediate heights are preserved.
+
+`RegisterRoadCollision(profile, definition, revision)` registers a mask with
+`originX`, `originY`, `cellSize`, `width`, `height` and `rows`. Rows and columns
+start at 1 in Lua. A cell centre is
+`x = originX - (row - 0.5) * cellSize`,
+`y = originY - (column - 0.5) * cellSize`.
+Each row contains plain, inclusive column ranges in order:
+
+```lua
+rows = {
+    {
+        { from = 1, to = 4, state = "open" },
+        { from = 5, to = 5, state = "blocked" },
+        { from = 6, to = 10, state = "water" },
+    },
+},
+```
+
+Every row must cover columns 1 through `width` exactly, without gaps or
+overlaps. The states are `open` (walkable), `water` (swimmable at its modeled
+cost), `blocked` (not walkable), `inherit` (ask the next underlying mask) and
+`unknown-floor` (the floor cannot be determined). An unknown floor never grants
+a walking connection. There is no encoded row syntax or decoding tool to use
+when editing these records.
+
+The network's `collision.base` names its main mask. `collision.overlays` lists
+local masks used before the main one, for example a building or cave with
+different walls and floors. A local mask can use `inherit` outside the part it
+describes; a base mask cannot inherit because it has no underlying fallback.
+This relationship replaces the former `role` field. It describes collision
+precedence, not a graphical map layer.
+
+Edit the Lua records directly, add the file to `LibAPRNavigation.xml` when
+creating a network, then run the read-only checks from the APR repository:
+
+```powershell
+.venv/Scripts/python.exe tools/navigation/road_data.py
+.venv/Scripts/python.exe tools/navigation/instance_connections.py --check
+.venv/Scripts/python.exe tests/run.py
+```
+
+`CreateRoadRoute({start, goal, walkSpeed, clock})` returns a cancellable
+`Step(operations, milliseconds)` job. Compilation and spatial indexes are shared
+by revision. Ground legs are refined before the transport comparison is
+published; guidance follows their actual polylines. Native collision packs
+retain authority in their managed spaces. Attachments have an explicit radius
+(default 1,000 yards); unknown collision or ambiguous floors remain unavailable
+rather than acquiring a guessed straight-line connection.

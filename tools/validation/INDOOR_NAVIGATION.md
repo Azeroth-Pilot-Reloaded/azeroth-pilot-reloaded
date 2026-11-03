@@ -55,12 +55,21 @@ Unsupported or failed geometry is excluded. Two Retail WMO formats remain
 unsupported by the current reader; discovering those spaces does not provide a
 verified walking graph for them.
 
-The current package contains 80 load-on-demand terrain addons: 78 newly generated
-addons and the two earlier portal-room addons. Their Lua sources total about
-93.59 MiB. These are package measurements, not a requirement to load the complete
-inventory into memory. They describe the present bake, not frozen test fixtures.
+The current package contains 80 internal terrain chunks, including the two
+earlier portal-room chunks. Their Lua sources total about 93.59 MiB. All terrain
+files stay inside APR's `NavigationData` directory; no separate terrain addon or
+extra addon-list entry is installed. These describe the present bake, not frozen
+test fixtures.
 
 ## Scoped loading and route proof
+
+`NavigationData/Terrain_[Game].xml` selects the current client's Lua factory
+functions at startup. Parsing these functions does not construct their large
+graph tables. The host calls a factory only when navigation needs its scope,
+then reuses the registered immutable dataset. The other client's factories are
+not loaded. The package validator checks that each indexed source is included
+exactly once for its profile, after the host loader, and never for another client.
+Terrain TOCs and sibling terrain addons are rejected.
 
 The lightweight index selects bounded scopes needed by the request and by
 winning transport approaches. A refused or pending scope blocks unsupported
@@ -116,7 +125,7 @@ A Lua 5.1 smoke run loaded the real generated Cleft topology, library, planner
 and guidance with cold caches. It followed 103/103 path observations to a genuine
 outdoor endpoint while native Z stayed zero and the indoor observation stayed
 false. Guidance reached `arrived`; modeled travel time was 34.624 seconds and
-only three terrain addons loaded. This is an offline model measurement, not an
+only three terrain chunks were used. This is an offline model measurement, not an
 in-game journey, measured player travel time or proof of world coverage.
 
 Synthetic graphs validate routing, containment, stairs, phases, faction policy,
@@ -130,8 +139,10 @@ these Lua sources; generator tooling has its own validation reports.
 
 ## In-client verification
 
-Install APR and its packaged sibling terrain addons for the exact supported
-client build, then verify:
+Install APR for the exact supported client build. When upgrading from the old
+separate-addon layout, remove the obsolete `APR_NavData_*` sibling folders after
+installing the integrated terrain data. The addon list should contain no
+separate APR terrain entries. Then verify:
 
 - Follow a cave/building exit through the real corners, continue outside and
   confirm that recalculation retains the original quest/route objective.
