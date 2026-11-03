@@ -1,7 +1,8 @@
 local F = dofile("tests/lua/navigation_v2_waypoint/fixture.lua")
 local library, namespace = F.Load()
 local api, state = F.Provider()
-local events, timers, frames, combat, distance = {}, {}, 0, false, 80
+local observation=F.EventEnvironment()
+local events, timers, combat, distance = observation.events, {}, false, 80
 local context = "step-a"
 local questCalls = 0
 APR = { navigation = {}, IsStepContextCurrent = function(_, value) return value == context end }
@@ -10,15 +11,7 @@ GetTime, debugprofilestop = function() return 0 end, function() return 0 end
 MAP_PIN = "Map pin"
 InCombatLockdown = function() return combat end
 WaypointUIAPI = { Navigation = api }
-CreateFrame = function(kind)
-    assert(kind == "Frame")
-    frames = frames + 1
-    return {
-        RegisterEvent = function(_, event) events[event] = true end,
-        UnregisterAllEvents = function() events = {} end,
-        SetScript = function(_, _, callback) _G.onEvent = callback end,
-    }
-end
+CreateFrame = observation.CreateFrame
 C_Timer = { NewTimer = function(delay, callback)
     assert(delay > 0)
     local timer = { callback = callback, cancelled = false }
@@ -40,7 +33,7 @@ api.ClearUserNavigation = function(preserve, suppressAdvance)
     clear(preserve, suppressAdvance)
 end
 local function Fire(event, ...)
-    if events[event] then onEvent(nil, event, ...) end
+    observation:Fire(event, ...)
 end
 local function Flush()
     local pending = timers
@@ -49,18 +42,20 @@ local function Flush()
 end
 assert(loadfile("APR-Core/features/navigation/NavigationV2.lua"))("APR", namespace)
 local host = APR.NavigationV2
-assert(frames == 0)
+assert(#observation.frames == 0)
 assert(host:Enable(F.Graph()))
+host:ObserveWorld(false)
 host:Plan({ from = "start", to = "goal" }, context)
 for _ = 1, 100 do if host:Step().status ~= "running" then break end end
-assert(#state.creates == 0 and frames == 0, "A complete search never implies live guidance")
+assert(#state.creates == 0 and #observation.frames == 1 and observation:OnlyWorldEvents(),
+    "A complete search only observes world state and never publishes guidance")
 assert(type(host.SetTarget) == "function", "Host must create output when it supplies its target")
 native = { uiMapID = 42, position = { x = 0.8, y = 0.8 } }
 assert(host:SetTarget(F.Target(), context) == "occupied" and #state.creates == 0,
     "A native user marker without WUI session is still foreign")
 native = nil
 assert(host:SetTarget(F.Target(), context) == "active")
-assert(#state.creates == 1 and frames == 1 and events.PLAYER_REGEN_ENABLED)
+assert(#state.creates == 1 and #observation.frames == 2 and events.PLAYER_REGEN_ENABLED)
 native = { uiMapID = 42, position = { x = 0.23, y = 0.67 } }
 Fire("NAVIGATION_DESTINATION_REACHED", false)
 assert(host:GetWaypointStatus() == "active")
@@ -69,21 +64,25 @@ Fire("PLAYER_LEAVING_WORLD")
 state.tracked = false
 Fire("USER_WAYPOINT_UPDATED")
 Flush()
-assert(host:GetWaypointStatus() == "active", "Transient tracking loss while loading is not dismissal")
+assert(host:GetWaypointStatus() == "idle" and state.current==nil, "Loading invalidates old output")
 state.tracked = true
 Fire("NAVIGATION_DESTINATION_REACHED", true)
-assert(host:GetWaypointStatus() == "active", "Loading is not proof of arrival")
+assert(host:GetWaypointStatus() == "idle", "Loading is not proof of arrival")
 Fire("PLAYER_ENTERING_WORLD")
+assert(host:GetWaypointStatus()=='idle' and state.current==nil and observation:OnlyWorldEvents(),
+    'Entering world cannot resurrect an old target')
+assert(host:SetTarget(F.Target('after-loading'),context)=='active','A newly localized explicit target may publish')
+native = { uiMapID = 42, position = { x = 0.23, y = 0.67 } }
 Fire("NAVIGATION_DESTINATION_REACHED", true)
 assert(host:GetWaypointStatus() == "arrived" and state.current == nil)
-assert(next(events) == nil)
+assert(observation:OnlyWorldEvents())
 
 host:SetTarget(F.Target("second"), context)
 state.current, native = nil, nil
 Fire("USER_WAYPOINT_UPDATED")
 Flush()
 assert(host:GetWaypointStatus() == "dismissed")
-assert(host:SetTarget(F.Target("second"), context) == "dismissed" and #state.creates == 2)
+assert(host:SetTarget(F.Target("second"), context) == "dismissed" and #state.creates == 3)
 host:SetTarget(F.Target("third"), context)
 context = "step-b"
 assert(host:SetTarget({}, context) == "invalid_target")
@@ -106,10 +105,11 @@ assert(host:GetWaypointStatus() == "active")
 local bad = host:SetTarget(F.Target("bad"), "obsolete")
 assert(bad == nil and host:GetWaypointStatus() == "active")
 assert(host:SetTarget({ key = "action", title = "Use the object" }, context) == "unlocated")
-assert(state.current == nil and next(events) == nil)
+assert(state.current == nil and observation:OnlyWorldEvents())
 assert(host:SetTarget(F.Target("late-again"), context) == "active")
 Fire("PLAYER_LEAVING_WORLD")
 host:ClearTarget()
+Fire('PLAYER_ENTERING_WORLD')
 assert(host:SetTarget(F.Target("after-cancelled-loading"), context) == "active")
 state.current, native = nil, nil
 Fire("USER_WAYPOINT_UPDATED")
@@ -125,7 +125,7 @@ for _ = 1, 4 do Flush() end
 assert(#timers == 0 and host:GetWaypointStatus() == "provider_unavailable")
 local job = host:Plan({ from = "start", to = "goal" }, context)
 assert(F.Finish(job).status == "complete")
-assert(host:GetWaypointStatus() == "idle" and next(events) == nil)
+assert(host:GetWaypointStatus() == "idle" and observation:OnlyWorldEvents())
 WaypointUIAPI = { Navigation = api }
 host:SetTarget(F.Target("arrive-secret"), context)
 native = { uiMapID = 42, position = { x = 0.23, y = 0.67 } }

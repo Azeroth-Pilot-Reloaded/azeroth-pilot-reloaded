@@ -2,6 +2,7 @@ local F = dofile("tests/lua/navigation_v2_waypoint/fixture.lua")
 local host, wui, awp, env, api = F.Host()
 assert(env.hooks == 0 and next(env.events) == nil)
 host:Enable(F.Graph())
+host:ObserveWorld(false) -- fresh synthetic world evidence after activation
 assert(host:SetTarget(F.Target(), env.context) == "active")
 assert(awp.registrations == 1 and #wui.creates == 0, "Real opt-in host must choose AWP")
 env:Flush()
@@ -14,6 +15,7 @@ assert(host:SetTarget(F.Target(), env.context) == "dismissed")
 -- before AWP schedules its first route evaluation.
 host, wui, awp, env, api = F.Host()
 host:Enable(F.Graph())
+host:ObserveWorld(false) -- fresh synthetic world evidence after activation
 AzerothWaypointNS = nil
 host:SetTarget(F.Target(), env.context)
 env.combat, AzerothWaypointNS = true, api
@@ -34,6 +36,7 @@ assert(host:GetWaypointStatus() == "idle" and awp.record == nil and env.questCal
 -- AWP-only operation still respects an existing native marker.
 host, wui, awp, env, api = F.Host()
 host:Enable(F.Graph())
+host:ObserveWorld(false) -- fresh synthetic world evidence after activation
 WaypointUIAPI = nil
 env.native = { uiMapID = 42, position = { x = 0.8, y = 0.8 } }
 assert(host:SetTarget(F.Target(), env.context) == "occupied" and awp.registrations == 0)
@@ -46,7 +49,7 @@ env:Flush()
 api.ClearGuideRouteState("apr")
 assert(awp.provider.extractTarget() == nil, "Public closure suppresses extraction synchronously")
 env:Flush()
-assert(host:GetWaypointStatus() == "dismissed" and next(env.events) == nil)
+assert(host:GetWaypointStatus() == "dismissed" and env:OnlyWorldEvents())
 local hooks = env.hooks
 host:SetTarget(F.Target("third"), env.context)
 env:Flush()
@@ -62,6 +65,7 @@ assert(env.questCalls == 0)
 -- None -> WUI -> both -> WUI uses real host events, never two outputs.
 host, wui, awp, env, api = F.Host()
 host:Enable(F.Graph())
+host:ObserveWorld(false) -- fresh synthetic world evidence after activation
 AzerothWaypointNS, WaypointUIAPI = nil, nil
 assert(host:SetTarget(F.Target(), env.context) == "provider_unavailable")
 local wuiAPI, wuiState = F.Provider()
@@ -73,6 +77,7 @@ host:ClearTarget()
 -- Use the native-carrying WUI from this host's fixture for the handoff.
 host, wui, awp, env, api = F.Host()
 host:Enable(F.Graph())
+host:ObserveWorld(false) -- fresh synthetic world evidence after activation
 AzerothWaypointNS = nil
 assert(host:SetTarget(F.Target(), env.context) == "active" and wui.current)
 AzerothWaypointNS = api
@@ -80,14 +85,24 @@ env:Fire("ADDON_LOADED", "AzerothWaypoint")
 env:Flush()
 assert(host:GetWaypointStatus() == "active" and wui.current == nil and awp.record)
 AzerothWaypointNS = nil
-env:Fire("PLAYER_ENTERING_WORLD")
+env:Fire("ADDON_LOADED", "WaypointUI")
 env:Flush()
 assert(host:GetWaypointStatus() == "active" and wui.current and awp.record == nil)
+env:Fire('PLAYER_LEAVING_WORLD')
+env:Flush()
+assert(host:GetWaypointStatus()=='idle' and wui.current==nil and awp.record==nil and env:OnlyWorldEvents())
+env:Fire('PLAYER_ENTERING_WORLD')
+env:Flush()
+assert(host:GetWaypointStatus()=='idle' and wui.current==nil and awp.record==nil,'World entry cannot restore old carriers')
+assert(host:SetTarget(F.Target('fresh-world-target'),env.context)=='active')
+env:Flush()
+assert(wui.current and awp.record==nil,'A fresh localized target can publish after loading')
 assert(env.questCalls == 0)
 
 -- Replacement is a foreign provider; never restore over it or clear its route.
 host, wui, awp, env, api = F.Host()
 host:Enable(F.Graph())
+host:ObserveWorld(false) -- fresh synthetic world evidence after activation
 host:SetTarget(F.Target(), env.context)
 env:Flush()
 local foreign = { extractTarget = function() return nil, true end }
@@ -102,6 +117,7 @@ assert(awp.record == foreignRecord and awp.provider == foreign)
 -- AWP routing off is an explicit stop, not absence permitting WUI fallback.
 host, wui, awp, env, api = F.Host()
 host:Enable(F.Graph())
+host:ObserveWorld(false) -- fresh synthetic world evidence after activation
 host:SetTarget(F.Target(), env.context)
 env:Flush()
 awp.routingEnabled = false

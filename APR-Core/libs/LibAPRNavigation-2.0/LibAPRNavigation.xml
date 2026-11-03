@@ -1,10 +1,14 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
     <Script file="Graph.lua"/>
     <Script file="Search.lua"/>
+    <Script file="Movement/Forever.lua"/>
     <Script file="Waypoints/Target.lua"/>
     <Script file="Waypoints/WaypointUI.lua"/>
     <Script file="Waypoints/AzerothWaypoint.lua"/>
     <Script file="Waypoints/Session.lua"/>
+    <Script file="Transports/Portals.lua"/>
+    <Script file="Transports/Scheduled.lua"/>
+    <Script file="Transports/Actions.lua"/>
     <Script file="Navigation.lua"/>
     <Script file="Data/Loader.lua"/>
     <Script file="Data/Sectors.lua"/>

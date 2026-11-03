@@ -144,6 +144,38 @@ this remains an explicit NAV-03 acceptance gap, documented in the output module'
 README and source probe report. Passing synthetic contracts do not validate that
 missing provider behavior. No Forever AWP build is claimed from its Retail TOC.
 
+`lua/navigation_v2_portals` and `scripts/test_navigation_v2_portals.py` exercise
+portal/walk cost comparison, bounded catalogue preparation, conservative unknown
+access/phase, closed portals, adjustable loading costs, stale observations and
+actual XML/APR execution. Synthetic correlated transitions must include a reliable
+destination identity and an opaque active-use token; proximity/loading/events alone
+cannot arrive. Tests cover continuation, terminal timeout, cancellation, stale step
+contexts, coordinate-free labels and missing positions, without quest progression
+or output during planning. A generated static atlas is deliberately made obsolete
+by a faster portal; stale bounds/certificates stay disabled, adjacency/cache stay
+lazy and the default budgets remain unchanged. Run
+`python -m unittest tests.lua.navigation_v2_portals.test_portals
+tests.scripts.test_navigation_v2_portals -v`.
+Real portal data/provenance and trustworthy identity observation are still client
+data/validation work; both Forever and Retail in-game travel/taint checks block
+rollout. The library does not fabricate confirmation from native loading events.
+
+The same portal integration family reads the V2 entries from the real APR.toc,
+executes their actual XML/adapter/host order and drives mixed mount/portal/scheduled
+paths through WUI and AWP ownership. It covers scheduled timeout/cancellation,
+nonpositional phases, profile/cost replacement, and event invalidation without
+mount-journal scans in Step, GetResult or execution display. Periodic fixtures
+choose79s via transport versus60s walking after a missed departure, test exact
+departures, and charge dismount before waiting exactly once. The independent
+NAV-09 oracle runs100 synthetic movement graphs through the same search. Prepared
+terrain without movement metadata remains unknown under a dynamic profile;
+static seconds are not reinterpreted as mounted/swim geometry. The enabled host
+also keeps two event-only world subscriptions with fixed or explicit movement;
+these outlive mount-journal subscriptions and all end at Disable. Shared V2 event
+fakes store registrations per frame. Idle tests require exactly the two world
+listeners, no provider listeners/output, and fresh localization after world entry.
+Terrain loading without Enable still creates no observer.
+
 `merchant_sales_test.lua` exercises both auto-vendor and `SellItems` with native
 junk selling and the container fallback: large inventories, delayed/rejected
 sales, locks, missing item data, equipped targets and cancelled retries. In game,
@@ -501,3 +533,14 @@ code and consumes no artifacts.
 
 The report workflow must be merged into the repository's default branch before
 GitHub triggers it. See [GitHub's workflow_run documentation](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#workflow_run).
+
+
+V2 host fixtures provide explicitly synthetic world-ready evidence after successful
+activation where the case requires readiness. Registration itself does not fabricate
+an event. The portal reconfiguration suite also deliberately omits all bootstrap:
+initial and post-Disable planning remain unknown with no marker until a fresh world
+observation and new localized request. It covers active Enable/EnableSectors without
+world unsubscribe, validation failure preserving old work, cancelled old targets and
+timers, and entering events missed while disabled. Native frame methods are modeled
+per frame, including selective UnregisterEvent; no geography or live guide content
+is frozen by these contracts.

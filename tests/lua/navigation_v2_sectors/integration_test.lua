@@ -21,6 +21,7 @@ assert(not APR.NavigationV2.enabled and APR.navigation==legacy)
 assert(APR.NavigationV2:EnableSectors(index,catalog,options,{clock=function()return 0 end,
     profileClock=options.profileClock}))
 assert(decodes==0 and APR.navigation==legacy)
+APR.NavigationV2:ObserveWorld(false) -- fresh synthetic world evidence, independent of sector data
 APR.NavigationV2:Plan({from='garden:terrain:1',to='garden:terrain:1'})
 for _=1,100 do
     local r=APR.NavigationV2:Step(1)

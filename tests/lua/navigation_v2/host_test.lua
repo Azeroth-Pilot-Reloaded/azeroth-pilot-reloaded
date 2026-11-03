@@ -8,17 +8,21 @@ APR = {
     IsStepContextCurrent = function(_, context) return context == current end,
 }
 local function Forbidden() error("Loading/using V2 must not touch live guidance or quest progress") end
-CreateFrame, C_Timer, LibStub = Forbidden, { NewTicker = Forbidden }, Forbidden
+local observation=dofile('tests/lua/navigation_v2_waypoint/fixture.lua').EventEnvironment()
+CreateFrame, C_Timer, LibStub = observation.CreateFrame, { NewTicker = Forbidden }, Forbidden
 APR.NextQuestStep, APR.UpdateMap = Forbidden, Forbidden
 assert(loadfile("APR-Core/features/navigation/NavigationV2.lua"))("APR", namespace)
 local host = APR.NavigationV2
 assert(host.enabled == false and APR.navigation == legacy)
+assert(#observation.frames==0,'Loading a disabled host creates no observation')
 local result, reason = host:Plan({ from = "start", to = "goal" })
 assert(not result and reason == "disabled")
 local time = 0
 GetTime = function() return time end
 debugprofilestop = function() return 0 end
 assert(host:Enable(F.Graph()))
+host:ObserveWorld(false)
+assert(#observation.frames==1 and observation:OnlyWorldEvents(),'Enable observes only world state, without live guidance')
 local job = host:Plan({ from = "start", to = "goal", via = { "gate" } }, current)
 for _ = 1, 100 do
     result = assert(host:Step(1))
@@ -47,6 +51,7 @@ assert(not host.enabled and APR.navigation == legacy)
 GetTime, debugprofilestop = nil, nil
 assert(select(2, host:Enable(F.Graph())) == "invalid_clocks")
 assert(host:Enable(F.Graph(), { clock = function() return 0 end, profileClock = function() return 0 end }))
+host:ObserveWorld(false)
 assert(not host:Enable(F.Graph(), false))
 assert(host.enabled, "A failed replacement cannot destroy a validated host")
 

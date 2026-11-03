@@ -67,9 +67,15 @@ local function Edge(preparation, _, declaration)
     if not from or not to or not Graph.Finite(declaration.seconds) or declaration.seconds < 0
         or (access ~= "available" and access ~= "unavailable" and access ~= "unknown") then return "invalid_edge" end
     preparation.seen[declaration.id] = true
+    local movement
+    if declaration.movement ~= nil then
+        if not namespace.NavigationV2Forever then return 'movement_unavailable' end
+        movement = namespace.NavigationV2Forever.CaptureMovement(declaration.movement)
+        if not movement then return 'invalid_movement' end
+    end
     local outgoing = graph.outgoing[from]
     outgoing[#outgoing + 1] = { id = declaration.id, from = from, to = to,
-        seconds = declaration.seconds, access = access }
+        seconds = declaration.seconds, access = access, movement = movement }
 end
 
 local function AdvanceArray(preparation, source, copy)

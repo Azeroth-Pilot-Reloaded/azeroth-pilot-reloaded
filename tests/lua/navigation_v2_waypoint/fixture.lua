@@ -1,5 +1,46 @@
 local F = dofile("tests/lua/navigation_v2/fixture.lua")
 
+-- Event-only frames: each registration/callback belongs to its own frame.
+function F.EventEnvironment()
+    local env = {frames={},events={}}
+    local function Sync()
+        for event in pairs(env.events) do env.events[event]=nil end
+        for _,frame in ipairs(env.frames) do
+            for event in pairs(frame.events) do env.events[event]=true end
+        end
+    end
+    env.CreateFrame = function(kind)
+        assert(kind=='Frame','Only nonvisual event observation is allowed')
+        local frame={events={}}
+        function frame:RegisterEvent(event) self.events[event]=true;Sync() end
+        function frame:UnregisterEvent(event) self.events[event]=nil;Sync() end
+        function frame:UnregisterAllEvents() self.events={};Sync() end
+        function frame:SetScript(name,callback)
+            assert(name=='OnEvent','No interaction or per-frame polling')
+            self.callback=callback
+        end
+        env.frames[#env.frames+1]=frame
+        return frame
+    end
+    function env:Fire(event,...)
+        for _,frame in ipairs(self.frames) do
+            if frame.events[event] and frame.callback then frame.callback(frame,event,...) end
+        end
+    end
+    function env:OnlyWorldEvents()
+        local count=0
+        for _,frame in ipairs(self.frames) do
+            for event in pairs(frame.events) do
+                assert(event=='PLAYER_ENTERING_WORLD' or event=='PLAYER_LEAVING_WORLD','Unexpected idle listener: '..event)
+                count=count+1
+            end
+        end
+        assert(count==2 and self.events.PLAYER_ENTERING_WORLD and self.events.PLAYER_LEAVING_WORLD)
+        return true
+    end
+    return env
+end
+
 function F.Provider()
     local state = { creates = {}, clears = {}, pins = { foreign = {} }, tracked = true }
     local api = {}
@@ -112,17 +153,16 @@ function F.Host()
     local wuiAPI, wui = F.Provider()
     local awpAPI, awp = F.AWP()
     local env = { combat = false, events = {}, timers = {}, context = "step", questCalls = 0, hooks = 0 }
+    local events = F.EventEnvironment()
+    env.events,env.frames=events.events,events.frames
+    function env:OnlyWorldEvents() return events:OnlyWorldEvents() end
     APR = { navigation = {}, IsStepContextCurrent = function(_, value) return value == env.context end,
         NextQuestStep = function() env.questCalls = env.questCalls + 1 end }
     GetTime, debugprofilestop = function() return 0 end, function() return 0 end
     MAP_PIN = "Map pin"
     InCombatLockdown = function() return env.combat end
     WaypointUIAPI, AzerothWaypointNS = { Navigation = wuiAPI }, awpAPI
-    CreateFrame = function()
-        return { RegisterEvent = function(_, event) env.events[event] = true end,
-            UnregisterAllEvents = function() env.events = {} end,
-            SetScript = function(_, _, fn) env.onEvent = fn end }
-    end
+    CreateFrame = events.CreateFrame
     C_Timer = { NewTimer = function(delay, callback)
         assert(delay > 0)
         local timer = { callback = callback }
@@ -157,7 +197,7 @@ function F.Host()
         return schedule(...)
     end
     function env:Fire(event, ...)
-        if self.events[event] then self.onEvent(nil, event, ...) end
+        events:Fire(event, ...)
     end
     function env:Flush()
         local timers = self.timers

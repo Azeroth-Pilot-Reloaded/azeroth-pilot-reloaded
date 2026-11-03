@@ -66,6 +66,7 @@ class PreparedBundleTests(unittest.TestCase):
                 assert(APR.NavigationV2:EnableSectors(bundle.index,bundle.catalog,options,{
                     clock=function()return 0 end,profileClock=options.profileClock}))
                 assert(APR.navigation==legacy)
+                APR.NavigationV2:ObserveWorld(false) -- explicit synthetic readiness after subscription
                 APR.NavigationV2:Plan({from=refs[1],to=refs[3]})
                 for i=1,10000 do
                     local result=APR.NavigationV2:Step(3)

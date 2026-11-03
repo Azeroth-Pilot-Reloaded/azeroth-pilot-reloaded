@@ -6,31 +6,39 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Opt-in host. Planning stays separate from explicit live segment guidance.
 local _, namespace = ...
 local Library = namespace.LibAPRNavigationV2
+-- worldLoading: true=observed loading, false=fresh ready, nil=unknown.
 local Host = { enabled = false, generation = 0 }
 local WAYPOINT_REFRESH_DELAY = 0.2
 local WAYPOINT_READY_RETRIES = 3
+local MOVEMENT_EVENTS = {'PLAYER_MOUNT_DISPLAY_CHANGED','PLAYER_LEVEL_UP',
+    'MOUNT_JOURNAL_USABILITY_CHANGED','NEW_MOUNT_ADDED'}
+local WORLD_EVENTS = {'PLAYER_LEAVING_WORLD','PLAYER_ENTERING_WORLD'}
 APR.NavigationV2 = Host
+
+local function WorldAvailable(self)
+    return self.worldLoading == false
+end--[[APR_DIAG]]; WorldAvailable = APRTrace("APR-Core/features/navigation/NavigationV2.lua:18:WorldAvailable#1", WorldAvailable)--[[/APR_DIAG]]
 
 local function ContextCurrent(context)
     if context == nil then return true end
     if type(APR.IsStepContextCurrent) ~= "function" then return false end
     local ok, current = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](APR.IsStepContextCurrent, APR, context)
     return ok and current == true
-end--[[APR_DIAG]]; ContextCurrent = APRTrace("APR-Core/features/navigation/NavigationV2.lua:14:ContextCurrent#1", ContextCurrent)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ContextCurrent = APRTrace("APR-Core/features/navigation/NavigationV2.lua:22:ContextCurrent#2", ContextCurrent)--[[/APR_DIAG]]
 
 local function StopWaypointTimer(self)
     if self.waypointTimer then self.waypointTimer:Cancel(); self.waypointTimer = nil end
-end--[[APR_DIAG]]; StopWaypointTimer = APRTrace("APR-Core/features/navigation/NavigationV2.lua:21:StopWaypointTimer#2", StopWaypointTimer)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; StopWaypointTimer = APRTrace("APR-Core/features/navigation/NavigationV2.lua:29:StopWaypointTimer#3", StopWaypointTimer)--[[/APR_DIAG]]
 
 local function QueueWaypointRefresh(self, retries)
     StopWaypointTimer(self)
     if not C_Timer or type(C_Timer.NewTimer) ~= "function" then return self:RefreshWaypoint() end
-    self.waypointTimer = C_Timer.NewTimer(WAYPOINT_REFRESH_DELAY, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationV2.lua:28:callback#4", --[[/APR_DIAG]]function()
+    self.waypointTimer = C_Timer.NewTimer(WAYPOINT_REFRESH_DELAY, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationV2.lua:36:callback#5", --[[/APR_DIAG]]function()
         self.waypointTimer = nil
         local status = self:RefreshWaypoint()
         if status == "provider_unavailable" and retries > 0 then QueueWaypointRefresh(self, retries - 1) end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; QueueWaypointRefresh = APRTrace("APR-Core/features/navigation/NavigationV2.lua:25:QueueWaypointRefresh#3", QueueWaypointRefresh)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; QueueWaypointRefresh = APRTrace("APR-Core/features/navigation/NavigationV2.lua:33:QueueWaypointRefresh#4", QueueWaypointRefresh)--[[/APR_DIAG]]
 
 local function AzerothWaypoint(self)
     local api = AzerothWaypointNS
@@ -40,23 +48,23 @@ local function AzerothWaypoint(self)
         and type(api.RegisterGuideTargetProvider) == "function" then
         -- Secure post-hooks cannot be removed. Install once per namespace; they
         -- hold only the host and become inert when it has no owned publication.
-        hooksecurefunc(api, "ClearGuideRouteState", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationV2.lua:43:callback#6", --[[/APR_DIAG]]function(provider)
+        hooksecurefunc(api, "ClearGuideRouteState", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationV2.lua:51:callback#7", --[[/APR_DIAG]]function(provider)
             if self.waypoint and self.waypoint:ObserveProviderClear(api, provider) then QueueWaypointRefresh(self, 0) end
         end--[[APR_DIAG]])--[[/APR_DIAG]])
-        hooksecurefunc(api, "RegisterGuideTargetProvider", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationV2.lua:46:callback#7", --[[/APR_DIAG]]function(provider)
+        hooksecurefunc(api, "RegisterGuideTargetProvider", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationV2.lua:54:callback#8", --[[/APR_DIAG]]function(provider)
             if provider == "apr" and self.waypoint and self.waypoint:ObserveProviderReplacement(api) then
                 QueueWaypointRefresh(self, 0)
             end
         end--[[APR_DIAG]])--[[/APR_DIAG]])
         if type(api.RecomputeCarrier) == "function" and type(api.IsRoutingEnabled) == "function" then
-            hooksecurefunc(api, "RecomputeCarrier", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationV2.lua:52:callback#8", --[[/APR_DIAG]]function()
+            hooksecurefunc(api, "RecomputeCarrier", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationV2.lua:60:callback#9", --[[/APR_DIAG]]function()
                 if self.waypoint and self.waypoint:ObserveProviderStop(api) then QueueWaypointRefresh(self, 0) end
             end--[[APR_DIAG]])--[[/APR_DIAG]])
         end
         self.waypointHooks[api] = true
     end
     return api
-end--[[APR_DIAG]]; AzerothWaypoint = APRTrace("APR-Core/features/navigation/NavigationV2.lua:35:AzerothWaypoint#5", AzerothWaypoint)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; AzerothWaypoint = APRTrace("APR-Core/features/navigation/NavigationV2.lua:43:AzerothWaypoint#6", AzerothWaypoint)--[[/APR_DIAG]]
 
 local function NativeArrival(self)
     if not C_Map or type(C_Map.GetUserWaypoint) ~= "function"
@@ -67,7 +75,7 @@ local function NativeArrival(self)
     if type(issecretvalue) == "function" and (issecretvalue(mapID) or issecretvalue(x)
         or issecretvalue(y) or issecretvalue(distance)) then return end
     self.waypoint:ObserveArrival(mapID, x, y, distance)
-end--[[APR_DIAG]]; NativeArrival = APRTrace("APR-Core/features/navigation/NavigationV2.lua:61:NativeArrival#9", NativeArrival)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; NativeArrival = APRTrace("APR-Core/features/navigation/NavigationV2.lua:69:NativeArrival#10", NativeArrival)--[[/APR_DIAG]]
 
 local function WaypointEvent(self, event, value)
     if event == "PLAYER_LEAVING_WORLD" then
@@ -89,14 +97,14 @@ local function WaypointEvent(self, event, value)
         -- its public session state to settle instead of depending on event order.
         QueueWaypointRefresh(self, 0)
     end
-end--[[APR_DIAG]]; WaypointEvent = APRTrace("APR-Core/features/navigation/NavigationV2.lua:72:WaypointEvent#10", WaypointEvent)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; WaypointEvent = APRTrace("APR-Core/features/navigation/NavigationV2.lua:80:WaypointEvent#11", WaypointEvent)--[[/APR_DIAG]]
 
 local function SyncWaypointEvents(self)
     local status = self.waypoint and self.waypoint:GetStatus() or "idle"
     local watch = status ~= "idle" and status ~= "arrived" and status ~= "dismissed" and status ~= "unlocated"
     if watch and not self.waypointFrame and type(CreateFrame) == "function" then
         self.waypointFrame = CreateFrame("Frame")
-        self.waypointFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationV2.lua:99:callback#12", --[[/APR_DIAG]]function(_, event, value) WaypointEvent(self, event, value) end--[[APR_DIAG]])--[[/APR_DIAG]])
+        self.waypointFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationV2.lua:107:callback#13", --[[/APR_DIAG]]function(_, event, value) WaypointEvent(self, event, value) end--[[APR_DIAG]])--[[/APR_DIAG]])
     end
     if self.waypointFrame then
         self.waypointFrame:UnregisterAllEvents()
@@ -107,11 +115,11 @@ local function SyncWaypointEvents(self)
         end
     end
     if not watch then StopWaypointTimer(self) end
-end--[[APR_DIAG]]; SyncWaypointEvents = APRTrace("APR-Core/features/navigation/NavigationV2.lua:94:SyncWaypointEvents#11", SyncWaypointEvents)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; SyncWaypointEvents = APRTrace("APR-Core/features/navigation/NavigationV2.lua:102:SyncWaypointEvents#12", SyncWaypointEvents)--[[/APR_DIAG]]
 
 function Host:GetWaypointStatus()
     return self.waypoint and self.waypoint:GetStatus() or "idle"
-end--[[APR_DIAG]]; Host.GetWaypointStatus = APRTrace("APR-Core/features/navigation/NavigationV2.lua:112:Host:GetWaypointStatus#13", Host.GetWaypointStatus)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Host.GetWaypointStatus = APRTrace("APR-Core/features/navigation/NavigationV2.lua:120:Host:GetWaypointStatus#14", Host.GetWaypointStatus)--[[/APR_DIAG]]
 
 function Host:RefreshWaypoint()
     if not self.waypoint then return "idle" end
@@ -120,22 +128,23 @@ function Host:RefreshWaypoint()
     local status = self.waypoint:Refresh()
     SyncWaypointEvents(self)
     return status
-end--[[APR_DIAG]]; Host.RefreshWaypoint = APRTrace("APR-Core/features/navigation/NavigationV2.lua:116:Host:RefreshWaypoint#14", Host.RefreshWaypoint)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Host.RefreshWaypoint = APRTrace("APR-Core/features/navigation/NavigationV2.lua:124:Host:RefreshWaypoint#15", Host.RefreshWaypoint)--[[/APR_DIAG]]
 
 -- Explicit execution boundary: the host supplies an already localized active
 -- segment/action. Search results alone contain no positions and publish nothing.
 function Host:SetTarget(target, context)
     if not self.enabled then return nil, "disabled" end
     if not ContextCurrent(context) then return nil, "stale_context" end
+    if not WorldAvailable(self) then return self.worldLoading == true and 'loading' or 'world_unknown' end
     if not self.waypoint then
         self.waypoint = Library.NewWaypointSession({
-            getProvider = --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationV2.lua:132:callback#16", --[[/APR_DIAG]]function() return WaypointUIAPI and WaypointUIAPI.Navigation end--[[APR_DIAG]])--[[/APR_DIAG]],
-            getAzerothWaypoint = --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationV2.lua:133:callback#17", --[[/APR_DIAG]]function() return AzerothWaypoint(self) end--[[APR_DIAG]])--[[/APR_DIAG]],
-            inCombat = --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationV2.lua:134:callback#18", --[[/APR_DIAG]]function()
+            getProvider = --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationV2.lua:141:callback#17", --[[/APR_DIAG]]function() return WaypointUIAPI and WaypointUIAPI.Navigation end--[[APR_DIAG]])--[[/APR_DIAG]],
+            getAzerothWaypoint = --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationV2.lua:142:callback#18", --[[/APR_DIAG]]function() return AzerothWaypoint(self) end--[[APR_DIAG]])--[[/APR_DIAG]],
+            inCombat = --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationV2.lua:143:callback#19", --[[/APR_DIAG]]function()
                 if type(InCombatLockdown) ~= "function" then return true end
                 return InCombatLockdown() == true
             end--[[APR_DIAG]])--[[/APR_DIAG]],
-            canPublish = --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationV2.lua:138:callback#19", --[[/APR_DIAG]]function()
+            canPublish = --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationV2.lua:147:callback#20", --[[/APR_DIAG]]function()
                 return C_Map and type(C_Map.GetUserWaypoint) == "function" and C_Map.GetUserWaypoint() == nil
             end--[[APR_DIAG]])--[[/APR_DIAG]],
             defaultTitle = MAP_PIN,
@@ -145,14 +154,14 @@ function Host:SetTarget(target, context)
     if status ~= "invalid_target" then self.waypointContext = context end
     SyncWaypointEvents(self)
     return status
-end--[[APR_DIAG]]; Host.SetTarget = APRTrace("APR-Core/features/navigation/NavigationV2.lua:127:Host:SetTarget#15", Host.SetTarget)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Host.SetTarget = APRTrace("APR-Core/features/navigation/NavigationV2.lua:135:Host:SetTarget#16", Host.SetTarget)--[[/APR_DIAG]]
 
 function Host:DismissTarget()
     if not self.waypoint then return "idle" end
     local status = self.waypoint:Dismiss()
     SyncWaypointEvents(self)
     return status
-end--[[APR_DIAG]]; Host.DismissTarget = APRTrace("APR-Core/features/navigation/NavigationV2.lua:150:Host:DismissTarget#20", Host.DismissTarget)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Host.DismissTarget = APRTrace("APR-Core/features/navigation/NavigationV2.lua:159:Host:DismissTarget#21", Host.DismissTarget)--[[/APR_DIAG]]
 
 function Host:ClearTarget()
     StopWaypointTimer(self)
@@ -161,53 +170,92 @@ function Host:ClearTarget()
     local status = self.waypoint:Clear()
     SyncWaypointEvents(self)
     return status
-end--[[APR_DIAG]]; Host.ClearTarget = APRTrace("APR-Core/features/navigation/NavigationV2.lua:157:Host:ClearTarget#21", Host.ClearTarget)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Host.ClearTarget = APRTrace("APR-Core/features/navigation/NavigationV2.lua:166:Host:ClearTarget#22", Host.ClearTarget)--[[/APR_DIAG]]
 
-function Host:Enable(graph, options)
-    if options == nil then options = {} end
-    if type(options) ~= "table" then return nil, "invalid_options" end
-    local planner, reason = Library.New(graph, {
-        clock = options.clock or GetTime,
-        profileClock = options.profileClock or debugprofilestop,
-        budgets = options.budgets,
-    })
-    if not planner then return nil, reason end
-    self:Disable()
-    self.planner, self.enabled = planner, true
-    return true
-end--[[APR_DIAG]]; Host.Enable = APRTrace("APR-Core/features/navigation/NavigationV2.lua:166:Host:Enable#22", Host.Enable)--[[/APR_DIAG]]
-
-function Host:Cancel()
-    self:ClearTarget()
-    local result = self.job and self.job:Cancel()
-    self.job, self.result, self.context = nil, nil, nil
-    self.generation = self.generation + 1
-    return result
-end--[[APR_DIAG]]; Host.Cancel = APRTrace("APR-Core/features/navigation/NavigationV2.lua:180:Host:Cancel#23", Host.Cancel)--[[/APR_DIAG]]
-
-function Host:Disable()
+-- Replace navigation without interrupting the independent world observation.
+local function ResetNavigation(self)
     self:Cancel()
     if self.waypoint then
         self.waypoint:Release()
         SyncWaypointEvents(self)
     end
-    self.enabled, self.planner = false, nil
-end--[[APR_DIAG]]; Host.Disable = APRTrace("APR-Core/features/navigation/NavigationV2.lua:188:Host:Disable#24", Host.Disable)--[[/APR_DIAG]]
+    self.planner = nil
+    self.movementSource,self.movementSnapshot,self.movementDirty=nil,nil,nil
+end--[[APR_DIAG]]; ResetNavigation = APRTrace("APR-Core/features/navigation/NavigationV2.lua:176:ResetNavigation#23", ResetNavigation)--[[/APR_DIAG]]
+
+function Host:Enable(graph, options)
+    if options == nil then options = {} end
+    if type(options) ~= "table" then return nil, "invalid_options" end
+    if options.observeMovement ~= nil and type(options.observeMovement) ~= 'boolean' then return nil, 'invalid_options' end
+    local movement, source, snapshot = options.movement
+    if options.observeMovement then
+        if movement ~= nil then return nil, 'conflicting_movement_options' end
+        if not namespace.NavigationV2Movement then return nil, 'movement_observer_unavailable' end
+        local settings = options.movementSettings
+        if settings ~= nil and type(settings) ~= 'table' then return nil, 'invalid_movement_settings' end
+        source = {api=options.movementAPI,settings={}}
+        for key, value in pairs(settings or {}) do source.settings[key] = value end
+        movement, snapshot = namespace.NavigationV2Movement.Capture(source.api, source.settings,not WorldAvailable(self))
+        if not movement then return nil, snapshot end
+    end
+    local planner, reason = Library.New(graph, {
+        clock = options.clock or GetTime,
+        profileClock = options.profileClock or debugprofilestop,
+        budgets = options.budgets,
+        portals = options.portals,
+        portalObservation = options.portalObservation,
+        movement = movement,
+        scheduled = options.scheduled,
+        scheduledOverrides = options.scheduledOverrides,
+    })
+    if not planner then return nil, reason end
+    ResetNavigation(self)
+    self.planner, self.enabled = planner, true
+    self.movementSource,self.movementSnapshot=source,snapshot
+    self:SyncObservationEvents()
+    return true
+end--[[APR_DIAG]]; Host.Enable = APRTrace("APR-Core/features/navigation/NavigationV2.lua:186:Host:Enable#24", Host.Enable)--[[/APR_DIAG]]
+
+function Host:Cancel()
+    self:StopTravel()
+    self:ClearTarget()
+    local result = self.job and self.job:Cancel()
+    self.job, self.result, self.context, self.journey = nil, nil, nil, nil
+    self.generation = self.generation + 1
+    return result
+end--[[APR_DIAG]]; Host.Cancel = APRTrace("APR-Core/features/navigation/NavigationV2.lua:219:Host:Cancel#25", Host.Cancel)--[[/APR_DIAG]]
+
+function Host:Disable()
+    ResetNavigation(self)
+    self.enabled = false
+    -- An actual subscription gap makes both old loading and old ready uncertain.
+    self.worldLoading = nil
+    self:SyncObservationEvents()
+end--[[APR_DIAG]]; Host.Disable = APRTrace("APR-Core/features/navigation/NavigationV2.lua:228:Host:Disable#26", Host.Disable)--[[/APR_DIAG]]
 
 function Host:Plan(request, context)
     if not self.enabled then return nil, "disabled" end
+    if self.movementSource then
+        local changed, reason = self:ObserveMovement()
+        if changed == nil then return nil, reason end
+    end
     self:Cancel()
-    self.job, self.context = self.planner:Plan(request), context
+    self.job, self.context = self.planner:Plan(request,{locationKnown=WorldAvailable(self)}), context
+    if self.job.objective then
+        self.journey = Library.NewJourney(self.job.objective)
+        if not WorldAvailable(self) then self.journey:Unlocate() end
+    end
     return self.job
-end--[[APR_DIAG]]; Host.Plan = APRTrace("APR-Core/features/navigation/NavigationV2.lua:197:Host:Plan#25", Host.Plan)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Host.Plan = APRTrace("APR-Core/features/navigation/NavigationV2.lua:236:Host:Plan#27", Host.Plan)--[[/APR_DIAG]]
 
 function Host:Invalidate()
     if not self.planner then return end
+    self:StopTravel()
     self:ClearTarget()
     self.planner:Invalidate()
     if self.job then self.result = self.job:Step() end
     return self.result
-end--[[APR_DIAG]]; Host.Invalidate = APRTrace("APR-Core/features/navigation/NavigationV2.lua:204:Host:Invalidate#26", Host.Invalidate)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Host.Invalidate = APRTrace("APR-Core/features/navigation/NavigationV2.lua:251:Host:Invalidate#28", Host.Invalidate)--[[/APR_DIAG]]
 
 function Host:Step(maxOperations, maxMilliseconds)
     if not self.enabled then return nil, "disabled" end
@@ -221,13 +269,13 @@ function Host:Step(maxOperations, maxMilliseconds)
     if not result then return nil, reason end
     self.result = result
     return result
-end--[[APR_DIAG]]; Host.Step = APRTrace("APR-Core/features/navigation/NavigationV2.lua:212:Host:Step#27", Host.Step)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Host.Step = APRTrace("APR-Core/features/navigation/NavigationV2.lua:260:Host:Step#29", Host.Step)--[[/APR_DIAG]]
 
 function Host:GetResult()
     if not self.enabled or not self.job then return nil end
     if not ContextCurrent(self.context) then return self:Invalidate() end
     return self.result or self.job:GetResult()
-end--[[APR_DIAG]]; Host.GetResult = APRTrace("APR-Core/features/navigation/NavigationV2.lua:226:Host:GetResult#28", Host.GetResult)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Host.GetResult = APRTrace("APR-Core/features/navigation/NavigationV2.lua:274:Host:GetResult#30", Host.GetResult)--[[/APR_DIAG]]
 
 -- Development opt-in: return an independent, cancellable load job. Loading
 -- alone never enables a planner, replaces an APR request or publishes a target.
@@ -242,7 +290,7 @@ function Host:LoadTerrain(id, options)
     local loader, reason = terrain.New(namespace.NavigationV2TerrainCatalog or {}, options)
     if not loader then return nil, reason end
     return loader:Load(id)
-end--[[APR_DIAG]]; Host.LoadTerrain = APRTrace("APR-Core/features/navigation/NavigationV2.lua:234:Host:LoadTerrain#29", Host.LoadTerrain)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Host.LoadTerrain = APRTrace("APR-Core/features/navigation/NavigationV2.lua:282:Host:LoadTerrain#31", Host.LoadTerrain)--[[/APR_DIAG]]
 
 -- Development opt-in, without decoding until the first planning slice.
 function Host:EnableSectors(index, catalog, decoderOptions, planOptions)
@@ -254,4 +302,201 @@ function Host:EnableSectors(index, catalog, decoderOptions, planOptions)
     local source, reason = Library.NewSectorGraph(index, catalog, decoderOptions)
     if not source then return nil, reason end
     return self:Enable(source, planOptions)
-end--[[APR_DIAG]]; Host.EnableSectors = APRTrace("APR-Core/features/navigation/NavigationV2.lua:248:Host:EnableSectors#30", Host.EnableSectors)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Host.EnableSectors = APRTrace("APR-Core/features/navigation/NavigationV2.lua:296:Host:EnableSectors#32", Host.EnableSectors)--[[/APR_DIAG]]
+
+local function StopTravelTimer(self)
+    if self.travelTimer then self.travelTimer:Cancel(); self.travelTimer = nil end
+    self.travelDeadline,self.travelAttempt=nil,nil
+end--[[APR_DIAG]]; StopTravelTimer = APRTrace("APR-Core/features/navigation/NavigationV2.lua:307:StopTravelTimer#33", StopTravelTimer)--[[/APR_DIAG]]
+
+function Host:StopTravel()
+    StopTravelTimer(self)
+    if self.travel then self.travel:Cancel() end
+    self.travel, self.travelContext, self.travelResolver = nil, nil, nil
+end--[[APR_DIAG]]; Host.StopTravel = APRTrace("APR-Core/features/navigation/NavigationV2.lua:312:Host:StopTravel#34", Host.StopTravel)--[[/APR_DIAG]]
+
+function Host:GetTravelAction()
+    if not self.travel then return nil end
+    return self:RefreshTravel()
+end--[[APR_DIAG]]; Host.GetTravelAction = APRTrace("APR-Core/features/navigation/NavigationV2.lua:318:Host:GetTravelAction#35", Host.GetTravelAction)--[[/APR_DIAG]]
+
+local function SyncTravelTimer(self, travel, action)
+    if not action.deadline then StopTravelTimer(self); return end
+    if self.travelTimer and self.travelDeadline == action.deadline and self.travelAttempt == action.attempt then return end
+    StopTravelTimer(self)
+    if not C_Timer or type(C_Timer.NewTimer) ~= 'function' then return end
+    local timer
+    timer = C_Timer.NewTimer(action.remainingSeconds, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationV2.lua:329:callback#37", --[[/APR_DIAG]]function()
+        if self.travelTimer ~= timer then return end
+        self.travelTimer,self.travelDeadline,self.travelAttempt=nil,nil,nil
+        if self.travel == travel then self:RefreshTravel() end
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self.travelTimer,self.travelDeadline,self.travelAttempt=timer,action.deadline,action.attempt
+end--[[APR_DIAG]]; SyncTravelTimer = APRTrace("APR-Core/features/navigation/NavigationV2.lua:323:SyncTravelTimer#36", SyncTravelTimer)--[[/APR_DIAG]]
+
+function Host:RefreshTravel()
+    local travel = self.travel
+    if not travel then return nil, 'no_travel' end
+    if not ContextCurrent(self.travelContext) then
+        self:StopTravel(); self:ClearTarget(); return nil, 'stale_context'
+    end
+    local action = travel:Tick()
+    SyncTravelTimer(self, travel, action)
+    if action.target or action.kind == 'walk' or action.kind == 'approach' then
+        local target = action.target
+        if action.position then
+            target = {key='travel:'..self.generation..':'..travel.index,title=action.title,position=action.position}
+        elseif not target and self.travelResolver then
+            local ok, value = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](self.travelResolver, action.node, action)
+            if ok then target = value end
+        end
+        if self.travel ~= travel then return nil, 'superseded' end
+        if not ContextCurrent(self.travelContext) then
+            self:StopTravel(); self:ClearTarget(); return nil, 'stale_context'
+        end
+        if target then self:SetTarget(target, self.travelContext) else self:ClearTarget() end
+    else self:ClearTarget() end
+    return action
+end--[[APR_DIAG]]; Host.RefreshTravel = APRTrace("APR-Core/features/navigation/NavigationV2.lua:337:Host:RefreshTravel#38", Host.RefreshTravel)--[[/APR_DIAG]]
+
+-- Explicit execution opt-in, after a current completed result. Planning alone
+-- never calls this boundary or supplies a synthetic action position.
+function Host:StartTravel(result, options, context)
+    if not self.enabled then return nil, 'disabled' end
+    if context == nil then context = self.context end
+    if not ContextCurrent(context) then return nil, 'stale_context' end
+    if self.movementSource then
+        local changed, reason = self:ObserveMovement()
+        if changed == nil then return nil, reason end
+    end
+    if result ~= self:GetResult() or not self.planner:IsCurrent(result) then return nil, 'stale_result' end
+    if options == nil then options = {} end
+    if type(options) ~= 'table' or (options.resolveTarget ~= nil and type(options.resolveTarget) ~= 'function') then
+        return nil, 'invalid_travel_options'
+    end
+    local travel, reason = self.planner:StartTravel(result, options, self.journey)
+    if not travel then return nil, reason end
+    self:StopTravel(); self:ClearTarget()
+    self.travel,self.travelContext,self.travelResolver=travel,context,options.resolveTarget
+    return self:RefreshTravel()
+end--[[APR_DIAG]]; Host.StartTravel = APRTrace("APR-Core/features/navigation/NavigationV2.lua:364:Host:StartTravel#39", Host.StartTravel)--[[/APR_DIAG]]
+
+function Host:ObserveTravel(observation)
+    if not self.travel then return nil, 'no_travel' end
+    if not ContextCurrent(self.travelContext) then
+        self:StopTravel(); self:ClearTarget(); return nil, 'stale_context'
+    end
+    self.travel:Observe(observation)
+    return self:RefreshTravel()
+end--[[APR_DIAG]]; Host.ObserveTravel = APRTrace("APR-Core/features/navigation/NavigationV2.lua:384:Host:ObserveTravel#40", Host.ObserveTravel)--[[/APR_DIAG]]
+
+function Host:BeginPortalUse()
+    if not self.travel then return nil, 'no_travel' end
+    if not ContextCurrent(self.travelContext) then
+        self:StopTravel(); self:ClearTarget(); return nil, 'stale_context'
+    end
+    local action, reason = self.travel:BeginUse()
+    if not action then return nil, reason end
+    return self:RefreshTravel()
+end--[[APR_DIAG]]; Host.BeginPortalUse = APRTrace("APR-Core/features/navigation/NavigationV2.lua:393:Host:BeginPortalUse#41", Host.BeginPortalUse)--[[/APR_DIAG]]
+
+function Host:ObservePortals(observation)
+    if not self.enabled then return nil, 'disabled' end
+    local objective, context = self.journey and self.journey:RemainingRequest(), self.context
+    local changed, reason = self.planner:ObservePortals(observation)
+    if changed then
+        if objective and ContextCurrent(context) then self:Plan(objective, context)
+        else
+            self:StopTravel(); self:ClearTarget()
+            if self.job then self.result = self.job:Step() end
+        end
+    end
+    return changed, reason
+end--[[APR_DIAG]]; Host.ObservePortals = APRTrace("APR-Core/features/navigation/NavigationV2.lua:403:Host:ObservePortals#42", Host.ObservePortals)--[[/APR_DIAG]]
+
+local function Updated(self, changed)
+    if changed then
+        self:StopTravel(); self:ClearTarget()
+        if self.job then self.result = self.job:Step() end
+    end
+end--[[APR_DIAG]]; Updated = APRTrace("APR-Core/features/navigation/NavigationV2.lua:417:Updated#43", Updated)--[[/APR_DIAG]]
+
+function Host:SyncObservationEvents()
+    if self.enabled and not self.observationFrame and type(CreateFrame) == 'function' then
+        self.observationFrame = CreateFrame('Frame')
+        self.observationFrame:SetScript('OnEvent',--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationV2.lua:427:callback#45", --[[/APR_DIAG]]function(_, event)
+            if event == 'PLAYER_LEAVING_WORLD' or event == 'PLAYER_ENTERING_WORLD' then
+                self:ObserveWorld(event == 'PLAYER_LEAVING_WORLD')
+            else self:MarkMovementDirty() end
+        end--[[APR_DIAG]])--[[/APR_DIAG]])
+    end
+    if not self.observationFrame then return end
+    if not self.enabled then self.observationFrame:UnregisterAllEvents(); return end
+    -- Idempotent registration keeps the world pair continuous across replacement.
+    for _, event in ipairs(WORLD_EVENTS) do self.observationFrame:RegisterEvent(event) end
+    for _, event in ipairs(MOVEMENT_EVENTS) do
+        if self.movementSource then self.observationFrame:RegisterEvent(event)
+        else self.observationFrame:UnregisterEvent(event) end
+    end
+end--[[APR_DIAG]]; Host.SyncObservationEvents = APRTrace("APR-Core/features/navigation/NavigationV2.lua:424:Host:SyncObservationEvents#44", Host.SyncObservationEvents)--[[/APR_DIAG]]
+
+-- World/localization lifetime is independent of optional mount observations.
+function Host:ObserveWorld(loading)
+    if not self.enabled then return nil, 'disabled' end
+    if type(loading) ~= 'boolean' then return nil, 'invalid_world_observation' end
+    self.worldLoading = loading
+    if self.journey then self.journey:Unlocate() end
+    self.movementDirty = self.movementSource and true or nil
+    return self:Invalidate()
+end--[[APR_DIAG]]; Host.ObserveWorld = APRTrace("APR-Core/features/navigation/NavigationV2.lua:444:Host:ObserveWorld#46", Host.ObserveWorld)--[[/APR_DIAG]]
+
+-- An event makes the snapshot unusable immediately; recapture at the next
+-- explicit planning/consumption boundary, never in a render or search loop.
+function Host:MarkMovementDirty()
+    if not self.movementSource or self.movementDirty then return false end
+    self.movementDirty = true
+    self:Invalidate()
+    return true
+end--[[APR_DIAG]]; Host.MarkMovementDirty = APRTrace("APR-Core/features/navigation/NavigationV2.lua:455:Host:MarkMovementDirty#47", Host.MarkMovementDirty)--[[/APR_DIAG]]
+
+function Host:ObserveMovement(loading)
+    if not self.movementSource then return nil, 'movement_observer_unavailable' end
+    if loading ~= nil and type(loading) ~= 'boolean' then return nil, 'invalid_movement_observation' end
+    local source, planner = self.movementSource, self.planner
+    if loading ~= nil then source.loading = loading == true end
+    if (not WorldAvailable(self) or source.loading) and self.journey then self.journey:Unlocate() end
+    local profile, snapshot = namespace.NavigationV2Movement.Capture(source.api,source.settings,not WorldAvailable(self) or source.loading)
+    if self.planner ~= planner or self.movementSource ~= source then return nil, 'superseded' end
+    if not profile then return nil, snapshot end
+    local different = not namespace.NavigationV2Movement.Same(self.movementSnapshot,snapshot)
+    local changed = planner:SetMovement(profile)
+    if different and not changed and not self.movementDirty then planner:Invalidate();changed=true end
+    self.movementSnapshot,self.movementDirty=snapshot,nil
+    Updated(self, changed)
+    return changed or different
+end--[[APR_DIAG]]; Host.ObserveMovement = APRTrace("APR-Core/features/navigation/NavigationV2.lua:462:Host:ObserveMovement#48", Host.ObserveMovement)--[[/APR_DIAG]]
+
+function Host:SetMovement(profile)
+    if not self.enabled then return nil, 'disabled' end
+    local changed, reason = self.planner:SetMovement(profile)
+    if changed == nil then return nil, reason end
+    if self.movementSource and not changed then self.planner:Invalidate();changed=true end
+    self.movementSource,self.movementSnapshot,self.movementDirty=nil,nil,nil
+    self:SyncObservationEvents()
+    Updated(self, changed)
+    return changed
+end--[[APR_DIAG]]; Host.SetMovement = APRTrace("APR-Core/features/navigation/NavigationV2.lua:479:Host:SetMovement#49", Host.SetMovement)--[[/APR_DIAG]]
+
+function Host:SetScheduled(declarations, overrides)
+    if not self.enabled then return nil, 'disabled' end
+    local changed, reason = self.planner:SetScheduled(declarations, overrides)
+    Updated(self, changed)
+    return changed, reason
+end--[[APR_DIAG]]; Host.SetScheduled = APRTrace("APR-Core/features/navigation/NavigationV2.lua:490:Host:SetScheduled#50", Host.SetScheduled)--[[/APR_DIAG]]
+
+function Host:SetPortalCosts(id, costs)
+    if not self.enabled then return nil, 'disabled' end
+    local changed, reason = self.planner:SetPortalCosts(id, costs)
+    Updated(self, changed)
+    return changed, reason
+end--[[APR_DIAG]]; Host.SetPortalCosts = APRTrace("APR-Core/features/navigation/NavigationV2.lua:497:Host:SetPortalCosts#51", Host.SetPortalCosts)--[[/APR_DIAG]]

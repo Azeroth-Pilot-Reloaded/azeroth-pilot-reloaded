@@ -34,17 +34,20 @@ local function Pop(heap)
     return first
 end
 
-local function Entry(search, node, via, cost, parent, edge, milliseconds)
+local function Entry(search, node, via, cost, parent, edge, milliseconds, mode)
     local id = search.graph.partitioned and node or search.graph.nodes[node]
     while search.objective.via[via + 1] == id do via = via + 1 end
     local key = search.graph.partitioned and (via..'\0'..node) or (via * #search.graph.nodes + node)
+    if mode then key = key..'\0'..mode end
     local rank = cost
     if milliseconds then
         rank = milliseconds
-        if milliseconds <= SAFE_INTEGER - 4294967295 then rank = rank + search.graph:Estimate(search, node) end
+        if not search.dynamic and milliseconds <= SAFE_INTEGER - 4294967295 then
+            rank = rank + search.graph:Estimate(search, node)
+        end
     end
     return { node = node, via = via, key = key, rank = rank, milliseconds=milliseconds,
-        cost = cost, parent = parent, edge = edge }
+        cost = cost, parent = parent, edge = edge, mode = mode }
 end
 
 local function Locate(graph, id)
@@ -60,13 +63,18 @@ local function Start(search, phase)
     search.phase, search.heap, search.best, search.current = phase, {}, {}, nil
     search.diagnostics.phase = phase
     local entry = Entry(search, Locate(search.graph, search.objective.from), 0, 0, nil, nil,
-        search.graph.integerCosts and 0 or nil)
+        not search.dynamic and search.graph.integerCosts and 0 or nil,
+        search.movement and search.movement.initialMode)
     search.best[entry.key] = entry
     Push(search.heap, entry)
 end
 
-function Search.New(graph, objective, diagnostics)
-    return setmetatable({ graph = graph, objective = objective, diagnostics = diagnostics, validationIndex = 0 }, Search)
+function Search.New(graph, objective, diagnostics, options)
+    options = options or {}
+    return setmetatable({ graph = graph, objective = objective, diagnostics = diagnostics,
+        portals = options.portals, movement = options.movement, scheduled = options.scheduled,
+        dynamic = options.portals or options.movement or options.scheduled,
+        startedAt = options.startedAt, validationIndex = 0 }, Search)
 end
 
 local function ValidateRequest(search)
@@ -75,7 +83,8 @@ local function ValidateRequest(search)
     elseif search.validationIndex == 1 then id = search.objective.to
     else id = search.objective.via[search.validationIndex - 1] end
     if not id then
-        if search.graph.PrepareRequest then
+        if search.movement and not search.movement.initialMode then return 'unknown', 'movement_state_unknown' end
+        if not search.dynamic and search.graph.PrepareRequest then
             local ready, status, reason = search.graph:PrepareRequest(search)
             if not ready then if status ~= 'running' then return status, reason end; return end
         end
@@ -103,6 +112,7 @@ local function ExpandNode(search, entry)
         return
     end
     search.current, search.edgeIndex = entry, 1
+    search.portalIndex, search.scheduledIndex = search.portals and 1, search.scheduled and 1
 end
 
 local function SelectNode(search)
@@ -120,27 +130,104 @@ local function Missing(search, status, reason)
 end
 
 local function LoadSelected(search)
+    -- Dynamic arcs invalidate the atlas's potentials/witnesses, while its
+    -- audited adjacency pages remain useful. Do not even decode a stale bound.
+    if search.dynamic and search.graph.routing then
+        local selected = search.selected
+        search.selected = nil
+        return ExpandNode(search, selected)
+    end
     local entry, status, reason = search.graph:Ensure(search, search.selected.node)
     if status == 'running' then return end
     local selected = search.selected
     search.selected = nil
     if not entry then return Missing(search, status, reason) end
-    if search.graph.Refine then
+    if not search.dynamic and search.graph.Refine then
         local rank = search.graph:Refine(search, selected, entry)
         if rank > selected.rank then selected.rank = rank; Push(search.heap, selected); return end
     end
     return ExpandNode(search, selected)
 end
 
-local function RelaxEdge(search)
+local function Access(a, b)
+    if a == 'unavailable' or b == 'unavailable' then return 'unavailable' end
+    if a == 'unknown' or b == 'unknown' then return 'unknown' end
+    return 'available'
+end
+
+local function ScheduledEdge(search)
+    local transition, transitionReason
+    if search.movement then
+        local reason
+        transition, reason = search.movement:Evaluate({seconds=0,access='available'},
+            search.current.mode, not search.current.parent)
+        if not transition then transitionReason = reason
+        elseif transition.transitionSeconds == nil then transitionReason = 'movement_transition_unknown' end
+    end
+    local arrival = not transitionReason and search.startedAt
+        and search.startedAt + search.current.cost + (transition and transition.seconds or 0)
+    local edge, reason = search.scheduled:Edge(NodeId(search.graph, search.current.node),search.scheduledIndex,arrival)
+    search.scheduledIndex = search.scheduledIndex + 1
+    if not edge and not reason then search.scheduledIndex = nil; return nil, 'running' end
+    if transitionReason or reason then return nil, 'unknown', transitionReason or reason end
+    if transition then
+        edge.seconds = edge.seconds + transition.seconds
+        edge.mode, edge.transitionSeconds = transition.mode, transition.transitionSeconds
+        edge.access = Access(edge.access, transition.access)
+    end
+    return edge
+end
+
+-- Each overlay item, row load or base edge is one existing search operation.
+local function ReadEdge(search)
     local edge, status, reason
-    if search.graph.partitioned then
+    local overlay = search.portalIndex or search.scheduledIndex
+    if search.portalIndex then
+        edge = search.portals:Edge(NodeId(search.graph, search.current.node), search.portalIndex)
+        search.portalIndex = search.portalIndex + 1
+        if not edge then search.portalIndex = nil; return nil, 'running' end
+    elseif search.scheduledIndex then
+        edge, status, reason = ScheduledEdge(search)
+    elseif search.graph.partitioned then
         edge, status, reason = search.graph:ReadEdge(search, search.current.node, search.edgeIndex)
     else edge = search.graph.outgoing[search.current.node][search.edgeIndex] end
-    if status == 'running' then return end
-    if status then search.current = nil; return Missing(search, status, reason) end
+    if status then
+        if not overlay and status ~= 'running' then search.current = nil end
+        return nil, status, reason
+    end
     if not edge then search.current = nil; return end
-    search.edgeIndex = search.edgeIndex + 1
+    if overlay then
+        local to, locateStatus, locateReason = Locate(search.graph, edge.to)
+        if not to then return nil, locateStatus or 'invalid', locateReason or 'invalid_transport_node' end
+        edge.to, edge.from = to, search.current.node
+    else search.edgeIndex = search.edgeIndex + 1 end
+    return edge
+end
+
+local function MovementEdge(search, edge)
+    if not search.movement or edge.kind == 'scheduled' then return edge end
+    -- Generated terrain seconds already include static mode changes. They do
+    -- not prove geometry/mode and must not be reinterpreted as walking distance.
+    if search.graph.partitioned and not edge.kind and not edge.movement then
+        return nil, 'movement_metadata_missing'
+    end
+    local evaluated, reason = search.movement:Evaluate(edge,search.current.mode,not search.current.parent)
+    if not evaluated then return nil, reason end
+    local copy = {}
+    for key, value in pairs(edge) do copy[key] = value end
+    copy.seconds, copy.access, copy.mode = evaluated.seconds, evaluated.access, evaluated.mode
+    copy.transitionSeconds = evaluated.transitionSeconds
+    return copy
+end
+
+local function RelaxEdge(search)
+    local edge, status, reason = ReadEdge(search)
+    if status == 'running' then return end
+    if status then return Missing(search, status, reason) end
+    if not edge then return end
+    if edge.access == "unavailable" then return end
+    edge, reason = MovementEdge(search, edge)
+    if not edge then return Missing(search, 'unknown', reason) end
     if edge.access == "unavailable" then return end
     if edge.access == "unknown" and search.phase == "known" then search.sawUnknown = true; return end
     search.diagnostics.relaxed = search.diagnostics.relaxed + 1
@@ -148,7 +235,7 @@ local function RelaxEdge(search)
     if milliseconds and milliseconds > SAFE_INTEGER then return 'unknown', 'cost_overflow' end
     local cost = milliseconds and milliseconds / 1000 or (search.current.cost + edge.seconds)
     if not Finite(cost) then return "unknown", "cost_overflow" end
-    local candidate = Entry(search, edge.to, search.current.via, cost, search.current, edge, milliseconds)
+    local candidate = Entry(search, edge.to, search.current.via, cost, search.current, edge, milliseconds, edge.mode)
     local previous = search.best[candidate.key]
     local value = milliseconds or cost
     if not previous or value < (previous.milliseconds or previous.cost) then
@@ -162,7 +249,9 @@ local function BuildPath(search)
     if not entry.parent then search.build, search.reverseIndex = nil, 1; return end
     local edge = entry.edge
     search.segments[#search.segments + 1] = { edgeId = edge.id, from = NodeId(graph, edge.from),
-        to = NodeId(graph, edge.to), seconds = edge.seconds }
+        to = NodeId(graph, edge.to), seconds = edge.seconds, kind = edge.kind, portalId = edge.portalId,
+        transportId = edge.transportId, costDetail = edge.costDetail,
+        mode = entry.mode, transitionSeconds = edge.transitionSeconds }
     search.nodes[#search.nodes + 1] = NodeId(graph, entry.parent.node)
     search.build = entry.parent
 end

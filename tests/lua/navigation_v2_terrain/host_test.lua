@@ -7,7 +7,8 @@ end
 local legacy={sentinel=true}
 local function Forbidden() error('Terrain loading must not publish guidance or change quest progress') end
 APR={navigation=legacy,NextQuestStep=Forbidden}
-CreateFrame,WaypointUIAPI=Forbidden,{Navigation={Set=Forbidden}}
+local observation=dofile('tests/lua/navigation_v2_waypoint/fixture.lua').EventEnvironment()
+CreateFrame,WaypointUIAPI=observation.CreateFrame,{Navigation={Set=Forbidden}}
 assert(loadfile('APR-Core/features/navigation/NavigationV2.lua'))('APR',ns)
 local host=APR.NavigationV2
 local count=0
@@ -20,7 +21,10 @@ local loading=assert(host:LoadTerrain('synthetic',options))
 assert(count==0 and not host.enabled and APR.navigation==legacy)
 local result=loading:Step()
 assert(result.status=='complete' and count==1 and not host.enabled)
+assert(#observation.frames==0,'Loading terrain alone creates no world observation or guidance')
 assert(host:Enable(result.graph,{clock=function()return 0 end,profileClock=options.profileClock}))
+host:ObserveWorld(false)
+assert(#observation.frames==1 and observation:OnlyWorldEvents())
 host:Plan({from='terrain:1',to='terrain:2'})
 local planned=host:Step()
 assert(planned.status=='complete' and planned.estimatedSeconds==1 and APR.navigation==legacy)
@@ -34,4 +38,4 @@ Enum={Base64Variant={Standard=0},CompressionMethod={Deflate=0}}
 C_EncodingUtil={DecodeBase64=function(s,v)assert(v==0);return 'x' end,
     DecompressString=function(s,v)assert(v==0);return 'x' end,DeserializeCBOR=function()return data end}
 assert(host:LoadTerrain('synthetic'):Step().status=='complete')
-host:Disable();assert(APR.navigation==legacy)
+host:Disable();assert(APR.navigation==legacy and next(observation.events)==nil)

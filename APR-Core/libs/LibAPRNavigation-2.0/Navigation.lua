@@ -13,6 +13,10 @@ function Navigation.NewWaypointSession(options)
     return namespace.NavigationV2WaypointSession.New(options)
 end
 
+function Navigation.NewForeverMovement(observation, settings)
+    return namespace.NavigationV2Forever.New(observation, settings)
+end
+
 local function ReadClock(clock)
     local ok, value = pcall(clock)
     if ok and Finite(value) and value >= 0 then return value end
@@ -39,8 +43,66 @@ function Navigation.New(graph, options)
     local budgets = Budgets(options.budgets)
     if not budgets then return nil, "invalid_budgets" end
     if not ReadClock(options.clock) or not ReadClock(options.profileClock) then return nil, "clock_unavailable" end
+    if options.movement ~= nil and (not namespace.NavigationV2Forever
+        or not namespace.NavigationV2Forever.IsProfile(options.movement)) then return nil, 'invalid_movement_profile' end
+    local portals
+    if options.portals ~= nil then
+        if not namespace.NavigationV2Portals then return nil, 'portals_unavailable' end
+        portals, reason = namespace.NavigationV2Portals.New(options.portals, options.portalObservation)
+        if not portals then return nil, reason end
+    end
+    local scheduled
+    if options.scheduled ~= nil then
+        if not namespace.NavigationV2Scheduled then return nil, 'scheduled_unavailable' end
+        scheduled, reason = namespace.NavigationV2Scheduled.NewCatalog(options.scheduled, options.scheduledOverrides)
+        if not scheduled then return nil, reason end
+    end
     return setmetatable({ preparation = preparation, clock = options.clock, profileClock = options.profileClock,
-        budgets = budgets, revision = 1, identity = {} }, Planner)
+        movement = options.movement, scheduled = scheduled,
+        portals = portals, budgets = budgets, revision = 1, identity = {} }, Planner)
+end
+
+function Planner:SetMovement(profile)
+    if not namespace.NavigationV2Forever or not namespace.NavigationV2Forever.IsProfile(profile) then
+        return nil, 'invalid_movement_profile'
+    end
+    if namespace.NavigationV2Forever.Same(self.movement, profile) then return false end
+    self.movement = profile
+    self:Invalidate()
+    return true
+end
+
+function Planner:SetScheduled(declarations, overrides)
+    if not namespace.NavigationV2Scheduled then return nil, 'scheduled_unavailable' end
+    local catalog, reason = namespace.NavigationV2Scheduled.NewCatalog(declarations, overrides)
+    if not catalog then return nil, reason end
+    if self.scheduled and namespace.NavigationV2WaypointTarget.Same(self.scheduled.byId, catalog.byId) then return false end
+    self.scheduled = catalog
+    self.scheduledPrepared,self.scheduledCursor=nil,nil
+    self:Invalidate()
+    return true
+end
+
+function Planner:ObservePortals(observation)
+    if not self.portals then return nil, 'portals_unavailable' end
+    local changed, reason = self.portals:Observe(observation)
+    if changed then self:Invalidate() end
+    return changed, reason
+end
+
+function Planner:SetPortalCosts(id, costs)
+    if not self.portals then return nil, 'portals_unavailable' end
+    local changed, reason = self.portals:SetCosts(id, costs)
+    if changed then self:Invalidate() end
+    return changed, reason
+end
+
+function Navigation.NewJourney(request)
+    return namespace.NavigationV2Actions.NewJourney(request)
+end
+
+function Planner:StartTravel(result, options, journey)
+    return namespace.NavigationV2Actions.New(self, result, options, journey)
 end
 
 function Job:GetResult()
@@ -64,13 +126,20 @@ local function Finish(job, status, reason)
     return result
 end
 
-function Planner:Plan(request)
+function Planner:Plan(request, context)
     local job = setmetatable({ planner = self, revision = self.revision,
         objective = Graph.CaptureRequest(request), cpuMs = 0,
         diagnostics = { operations = 0, slices = 0, expanded = 0, relaxed = 0,
             preparedNodes = 0, preparedEdges = 0, cpuMs = 0, elapsedMs = 0,
             phase = self.preparation.phase } }, Job)
     if not job.objective then Finish(job, "invalid", "invalid_request"); return job end
+    if context ~= nil and (type(context) ~= 'table'
+        or (context.locationKnown ~= nil and type(context.locationKnown) ~= 'boolean')) then
+        Finish(job, 'invalid', 'invalid_request_context'); return job
+    end
+    if context and context.locationKnown == false then
+        Finish(job, 'unknown', 'location_unknown'); return job
+    end
     job.started = ReadClock(self.clock)
     if not job.started then Finish(job, "unknown", "clock_unavailable"); return job end
     job.lastWall = job.started
@@ -100,7 +169,30 @@ local function Advance(job)
     if state == "node" then job.diagnostics.preparedNodes = job.diagnostics.preparedNodes + 1 end
     if state == "edge" then job.diagnostics.preparedEdges = job.diagnostics.preparedEdges + 1 end
     if state == "ready" then
-        job.search = Search.New(preparation.compiled, job.objective, job.diagnostics)
+        if job.planner.portals then
+            job.diagnostics.phase = 'prepare_portals'
+            local ready, status, portalReason = job.planner.portals:Prepare(preparation.compiled)
+            if not ready then return status, portalReason end
+        end
+        if job.planner.scheduled and not job.planner.scheduledPrepared then
+            local planner, graph = job.planner, preparation.compiled
+            local id, route = next(planner.scheduled.byId,planner.scheduledCursor)
+            job.diagnostics.phase = 'prepare_scheduled'
+            if id then
+                for _, node in ipairs({route.from,route.to}) do
+                    local found, status, locateReason
+                    if graph.partitioned then found,status,locateReason=graph:Locate(node)
+                    else found=graph.index[node] end
+                    if not found then return status or 'invalid',locateReason or 'invalid_transport_node' end
+                end
+                planner.scheduledCursor = id
+                return
+            end
+            planner.scheduledPrepared = true
+        end
+        job.search = Search.New(preparation.compiled, job.objective, job.diagnostics, {
+            portals = job.planner.portals, movement = job.planner.movement,
+            scheduled = job.planner.scheduled, startedAt = job.started })
         job.diagnostics.phase = "validate_request"
     end
 end
