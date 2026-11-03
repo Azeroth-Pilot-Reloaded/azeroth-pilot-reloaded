@@ -250,7 +250,8 @@ entries, unrelated gates, unknown eligibility or unknown access do not authorize
 an unlock. `diagnostics.unlockReason` explains refusal, including
 `absence_unproven`, `no_simple_unlock`, `unlock_eligibility_unknown`,
 `unlock_eligibility_denied` and `ambiguous_unlock`. Multiple eligible declarations
-are deliberately ambiguous; chains and comparative alternatives belong to NAV18.
+without declared realization durations remain deliberately ambiguous. Timed
+chains and comparative alternatives use the NAV-18 contract below.
 No hypothetical access is installed. The authored destination relation is trusted
 data, not a guarantee that all future conditions will remain unchanged.
 
@@ -298,6 +299,68 @@ to complete the prerequisite.
 No real prerequisites have been fabricated. Trusted access proof producers,
 quest-history readiness, physical arrival, UI rendering and combat/taint still
 require both clients' in-game validation before an engine switch. V1 stays default.
+
+## Conditional prerequisite chains and alternatives (NAV-18)
+
+The same declaration can additionally specify `completionSeconds` (finite,
+nonnegative) and `resources` (the existing cumulative resource schema). This
+duration prices realization at `node`; it includes the work required before the
+declared positive `opens` effect applies. It does not move the character. Model
+physical travel with graph/transport declarations. Explicit zero is permitted;
+an absent duration is unknown and is never substituted with zero. Existing
+untimed NAV-17 declarations retain only their approach contract.
+
+After certified normal-route absence, a catalogue containing a timed applicable
+declaration activates conditional labels in the existing bounded Search. An
+action is considered only at its declared node, for its declared `destination`,
+with a known-false observed effect and satisfied eligibility. Each label owns
+its declared positive effects. Those effects can satisfy later traversal and
+prerequisite conjunctions and invalidate negative requirements; they
+never alter Conditions, native snapshots or quest completion. Missing facts,
+identity/phase, raw access and missing terrain remain unknown or denied. No
+solver or budget is created for each alternative.
+
+The comparison includes approach, realization and the complete known remainder
+through the original ordered visits. Shared effects are realized once; effects
+form part of label identity, so cycles cannot grant access without a reachable
+first action. Existing movement modes, origin restrictions, resource Pareto
+labels, shared cooldowns, schedules, cast and loading costs continue across
+realization actions. Preparation, conditional search, proof registration and
+reconstruction all consume the original job's operation/CPU/elapsed budget.
+Cancellation, staleness and budget failure publish no partial unlock.
+
+The executable result still has `optimal=false`, `estimateScope='unlock_approach'`
+and an `estimatedSeconds`/`segments`/`nodes`/`resourcesSpent` prefix containing
+only the approach to the first actually accessible action. `objective` retains
+the original goal and visits. `unlockPlan` is explanatory conditional metadata:
+
+```lua
+unlockPlan = {
+    conditional = true, scope = 'conditional_known_graph',
+    estimatedSeconds = totalApproachRealizationAndRemainder,
+    optimal = true, -- only if explored alternatives have known facts/costs
+    steps = {{id = firstPrerequisiteID, node = firstNode, completionSeconds = knownDuration}},
+    resourcesSpent = totalConditionalConsumption,
+}
+```
+
+`steps` includes all selected realizations in order; it is not an execution queue.
+Unknown-duration actions are excluded from total-cost comparison. Encountering
+one, or an unknown alternative, prevents `unlockPlan.optimal=true`. No estimate
+guarantees that future observations will retain those facts or timings. The
+normal currently usable route always has priority, regardless of this estimate.
+
+All evaluated conditional bindings carry a captured supporting proof, checked
+incrementally before publication and watched afterward. Losing support retires
+old results/jobs/subobjectives even at constant aggregate Conditions status;
+identical captures preserve eligibility. At the first action, guidance waits
+for fresh real evidence. A confirmed current node and positive observed effect
+resume the original Journey, reconsider normal travel first and recompute any
+remaining chain from real state. Arrival, loading or the estimate cannot complete
+a quest, create a fact, advance APR or publish a future waypoint. Existing WUI/AWP
+ownership, combat and context replacement behavior is unchanged. No new native
+API or localization key is introduced; both clients still require in-game proof
+before switching engines.
 
 ## Optional host calibration (NAV-19 integration)
 

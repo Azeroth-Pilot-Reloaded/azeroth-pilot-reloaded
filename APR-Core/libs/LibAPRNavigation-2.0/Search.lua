@@ -40,6 +40,14 @@ local function Entry(search, node, via, cost, parent, edge, milliseconds, mode)
     while search.objective.via[via + 1] == id do via = via + 1 end
     local key = search.graph.partitioned and (via..'\0'..node) or (via * #search.graph.nodes + node)
     if mode then key = key..'\0'..mode end
+    local atStart=not parent or edge.unlockEntry and parent.atStart or false
+    local assumed,planState
+    if search.planUnlocks then
+        assumed,planState=parent and parent.assumed or {},parent and parent.planState or string.rep('0',#search.planUnlocks.entries)
+        if edge and edge.unlockEntry then assumed,planState=search.planUnlocks:Activate(parent,edge.unlockEntry) end
+        key=key..'\0'..planState
+        if search.movement then key=key..(atStart and '\0origin' or '\0travelled') end
+    end
     local rank = cost
     if milliseconds then
         rank = milliseconds
@@ -48,7 +56,8 @@ local function Entry(search, node, via, cost, parent, edge, milliseconds, mode)
         end
     end
     return { node = node, via = via, key = key, rank = rank, milliseconds=milliseconds,
-        cost = cost, parent = parent, edge = edge, mode = mode }
+        cost = cost, parent = parent, edge = edge, mode = mode,assumed=assumed,planState=planState,
+        atStart=atStart }
 end
 
 local function Locate(graph, id)
@@ -76,9 +85,11 @@ function Search.New(graph, objective, diagnostics, options)
         portals = options.portals, movement = options.movement, scheduled = options.scheduled, taxi = options.taxi,
         personal=options.personal, cooldowns=options.personal and options.personal.cooldowns,
         conditions=options.conditions,
-        resources = (options.taxi or options.personal or graph.resourceCosts or options.resources) and (options.resources or {}),
+        resources = (options.taxi or options.personal or graph.resourceCosts or options.resources or options.planUnlocks) and (options.resources or {}),
+        planUnlocks=options.planUnlocks,planSnapshot=options.planUnlocks and options.conditions.tracker.snapshot,
+        planBindings=options.planUnlocks and {},
         dynamic = options.portals or options.movement or options.scheduled or options.taxi or options.personal or graph.resourceCosts or options.resources
-            or (options.conditions and options.conditions.conditional),
+            or options.planUnlocks or (options.conditions and options.conditions.conditional),
         deniedFacts=options.conditions and options.conditions.unlockProofs and {},
         requestProof=options.conditions and options.conditions.unlockProofs and {},
         startedAt = options.startedAt, validationIndex = 0 }, Search)
@@ -113,7 +124,7 @@ local function ValidateRequest(search)
     end
     local node, status, reason = Locate(search.graph, id)
     if not node then return status or "invalid", reason or "invalid_request" end
-    if search.conditions and search.conditions.conditional then
+    if search.conditions and search.conditions.conditional and (not search.planUnlocks or search.validationIndex==0) then
         local access,why=namespace.NavigationV2Graph.NodeAccess(search.graph,node,search,search.requestProof)
         if access=='unavailable' then search.requestDenied=search.requestDenied or why
         elseif access=='unknown' then search.requestUnknown=search.requestUnknown or why end
@@ -141,6 +152,7 @@ local function ExpandNode(search, entry)
     search.portalIndex, search.scheduledIndex = search.portals and 1, search.scheduled and 1
     search.taxiIndex = search.taxi and 1
     search.personalIndex=search.personal and 1
+    search.unlockIndex=search.planUnlocks and 1
 end
 
 local function SelectNode(search)
@@ -189,7 +201,7 @@ local function ScheduledEdge(search)
     if search.movement then
         local reason
         transition, reason = search.movement:Evaluate({seconds=0,access='available'},
-            search.current.mode, not search.current.parent)
+            search.current.mode, search.current.atStart)
         if not transition then transitionReason = reason
         elseif transition.transitionSeconds == nil then transitionReason = 'movement_transition_unknown' end
     end
@@ -210,8 +222,14 @@ end
 -- Each overlay item, row load or base edge is one existing search operation.
 local function ReadEdge(search)
     local edge, status, reason
-    local overlay = search.portalIndex or search.scheduledIndex or search.taxiIndex or search.personalIndex
-    if search.portalIndex then
+    local overlay = search.unlockIndex or search.portalIndex or search.scheduledIndex or search.taxiIndex or search.personalIndex
+    if search.unlockIndex then
+        local done
+        edge,done=search.planUnlocks:Edge(search,NodeId(search.graph,search.current.node),search.unlockIndex)
+        search.unlockIndex=search.unlockIndex+1
+        if done then search.unlockIndex=nil end
+        if not edge then return nil,'running' end
+    elseif search.portalIndex then
         edge = search.portals:Edge(NodeId(search.graph, search.current.node), search.portalIndex)
         search.portalIndex = search.portalIndex + 1
         if not edge then search.portalIndex = nil; return nil, 'running' end
@@ -274,13 +292,13 @@ local function PruneLabel(search)
 end
 
 local function MovementEdge(search, edge)
-    if not search.movement or edge.kind == 'scheduled' then return edge end
+    if not search.movement or edge.kind == 'scheduled' or edge.kind=='unlock' then return edge end
     -- Generated terrain seconds already include static mode changes. They do
     -- not prove geometry/mode and must not be reinterpreted as walking distance.
     if search.graph.partitioned and not edge.kind and not edge.movement then
         return nil, 'movement_metadata_missing'
     end
-    local evaluated, reason = search.movement:Evaluate(edge,search.current.mode,not search.current.parent)
+    local evaluated, reason = search.movement:Evaluate(edge,search.current.mode,search.current.atStart)
     if not evaluated then return nil, reason end
     local copy = {}
     for key, value in pairs(edge) do copy[key] = value end
@@ -368,7 +386,7 @@ local function BuildPath(search)
         to = NodeId(graph, edge.to), seconds = edge.seconds, kind = edge.kind, portalId = edge.portalId,
         transportId = edge.transportId, costDetail = edge.costDetail, taxiId=edge.taxiId,
         resources=edge.resources, fareCopper=edge.fareCopper, personalId=edge.personalId,
-        mode = entry.mode, transitionSeconds = edge.transitionSeconds }
+        mode = entry.mode, transitionSeconds = edge.transitionSeconds,unlockEntry=edge.unlockEntry }
     search.nodes[#search.nodes + 1] = NodeId(graph, entry.parent.node)
     search.build = entry.parent
 end

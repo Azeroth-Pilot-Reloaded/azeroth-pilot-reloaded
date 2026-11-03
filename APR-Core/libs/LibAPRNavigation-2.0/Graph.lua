@@ -26,9 +26,10 @@ function Graph.BindRequirements(context,source,existingOnly)
     local parts,facts={},context.unlockProofs and {}
     local function Part(group,key,value)
         local name,expected=tostring(key),type(value)..':'..tostring(value)
-        local id=group..#name..':'..name..#expected..':'..expected
+        local variable=group..#name..':'..name
+        local id=variable..#expected..':'..expected
         parts[#parts+1]=id
-        if facts then facts[#facts+1]={group=group,key=key,expected=value,id=id} end
+        if facts then facts[#facts+1]={group=group,key=key,expected=value,id=id,variable=variable} end
     end
     for _,key in ipairs({'world','space','floor','phase'}) do
         if source[key]~=nil then Part('identity',key,source[key]) end
@@ -80,8 +81,27 @@ local function Denial(context,binding)
     return cached
 end
 
+-- A planning label owns its assumptions. Neither the tracker nor its captured
+-- native snapshot is altered; unknown facts cannot become declared effects.
+local function PlannedAccess(context,binding,search)
+    search.planBindings[binding]=true
+    local snapshot,missing,denied=search.planSnapshot,false,false
+    local assumed=search.current and search.current.assumed or {}
+    if snapshot.worldState~='ready' then return 'unknown','world_unknown' end
+    for _,fact in ipairs(context.bindingFacts[binding])do
+        local value=snapshot[fact.group][fact.key]
+        if assumed[fact.variable] then value=true end
+        if value==nil then missing=true elseif value~=fact.expected then denied=true end
+    end
+    if missing then search.conditionUnknown=true end
+    if denied then return 'unavailable','conditional_requirement_unmet' end
+    if missing then return 'unknown','conditional_requirement_unknown' end
+    return 'available'
+end
+
 function Graph.ConditionAccess(graph,binding,search,proof)
     local context=graph.conditionContext
+    if search and search.planSnapshot then return PlannedAccess(context,binding,search) end
     local access,reason=context.tracker:Get(binding)
     if proof then
         proof.bindings=proof.bindings or {}

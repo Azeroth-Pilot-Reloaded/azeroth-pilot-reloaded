@@ -590,6 +590,20 @@ an in-flight native capture cannot overwrite a newer request. A conditional
 sector source also rejects old static witnesses. The NAV-16 family independently
 owns its module and actual-chain counter-tests; this family never edits them.
 
+`lua/navigation_v2_unlock_chains` extends that prerequisite contract with timed
+realizations, alternatives and shared/cyclic prerequisites. Its independent
+finite-state relaxation oracle compares total costs on generated synthetic
+graphs; hand-calculated fixtures cover ordered visits, equal costs, unknown
+durations/facts, cumulative resources, timetable shifts, shared cooldowns and
+loading, origin mount restrictions, the original budget and cancellation through
+reconstruction/proof registration. Snapshot/support changes, identical captures
+and actual two-client WUI/AWP host continuations verify that only the first real
+approach executes and no waypoint progresses APR. The partitioned integration
+uses synthetic sectors through the actual loader with stale atlas bounds off.
+Run `python -m unittest tests.lua.navigation_v2_unlock_chains.test_chains
+tests.scripts.test_navigation_v2_unlock_chains -v`. Native quest/access proof,
+movement, rendering and combat/taint remain unverified before either switch.
+
 `lua/navigation_v2_unlocks` checks an explicit simple prerequisite only after
 proven absence on complete known graphs. Synthetic denials, missing entries,
 unknown/dirty facts, budgets, cancellation and replacement cannot fabricate an

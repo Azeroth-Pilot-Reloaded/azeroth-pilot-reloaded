@@ -260,13 +260,15 @@ local function Finish(job, status, reason)
             result.unlock={id=job.unlock.id,node=job.unlock.node,title=job.unlock.title}
             result.travelObjective=Graph.CaptureRequest(job.travelObjective)
             result.unlockEntry,result.unlockSequence=job.unlock,job.unlockSequence
+            result.unlockPlan=job.unlockPlan
             result.optimal,result.reason,result.estimateScope=false,'prerequisite_approach','unlock_approach'
         end
     else
         result.estimatedSeconds, result.segments, result.nodes = nil, nil, nil
         result.unlock,result.unlockEntry,result.unlockSequence,result.travelObjective,result.estimateScope=nil,nil,nil,nil,nil
+        result.unlockPlan=nil
     end
-    job.result, job.search = result, nil
+    job.result, job.search, job.chain = result, nil, nil
     return result
 end
 
@@ -395,15 +397,56 @@ function Job:Cancel()
     return Finish(self, "cancelled", "cancelled")
 end
 
+-- Read one reconstructed segment per operation. Future conditional segments
+-- are explanatory estimates only; execution receives the native-access prefix.
+local function ChainResult(job)
+    local chain,search=job.chain,job.search
+    local segment=chain.segments[chain.index]
+    if not segment then job.chain=nil;return 'complete','optimal_known_graph' end
+    if segment.unlockEntry then
+        local entry=segment.unlockEntry
+        job.unlockPlan.steps[#job.unlockPlan.steps+1]={id=entry.id,node=entry.node,completionSeconds=entry.completionSeconds}
+        if not job.unlock then
+            job.unlock=job.planner.unlocks:PlanSelection(search,entry)
+            job.unlockSequence=search.planSnapshot.sequence
+            job.travelObjective={from=job.objective.from,to=entry.node,via={}}
+        end
+    elseif not job.unlock then
+        search.segments[#search.segments+1]=segment
+        search.nodes[#search.nodes+1]=chain.nodes[chain.index+1]
+        search.total=search.total+segment.seconds
+        for key,value in pairs(segment.resources or {})do search.resourcesSpent[key]=(search.resourcesSpent[key] or 0)+value end
+    end
+    chain.index=chain.index+1
+end
+
 local function Advance(job)
     if job.unlock and not job.unlock.proof.ready then
         local ready,status,reason=job.planner.unlocks:TrackProof(job.unlock)
         if not ready then return status,reason end
         return
     end
+    if job.chain then return ChainResult(job) end
     if job.search then
         local status,reason=job.search:Advance()
-        if status=='no_path' and job.planner.unlocks and not job.unlockApproach then
+        if status=='complete' and job.planUnlocks then
+            local search=job.search
+            job.chain={segments=search.segments,nodes=search.nodes,index=1}
+            job.unlockPlan={estimatedSeconds=search.total,conditional=true,
+                optimal=not search.sawUnknown and not search.conditionUnknown and not search.unknownUnlockCosts
+                    and not search.sawMissing and not search.sawIncomplete,
+                scope='conditional_known_graph',steps={},resourcesSpent=search.resourcesSpent}
+            search.total,search.segments,search.nodes,search.resourcesSpent=0,{},{job.objective.from},{}
+            job.diagnostics.phase='unlock_reconstruction'
+            return
+        end
+        if status=='no_path' and job.planner.unlocks and not job.unlockApproach and not job.planUnlocks then
+            if job.search.provenNoPath and job.planner.unlocks:HasTimed(job.objective) then
+                job.planUnlocks=job.planner.unlocks
+                job.search:Cancel();job.search=nil
+                job.diagnostics.phase='unlock_chains'
+                return
+            end
             local entry,why=job.planner.unlocks:Select(job.search,job.objective)
             job.diagnostics.unlockReason=why
             if entry then
@@ -462,6 +505,7 @@ local function Advance(job)
             job.awaitingConditions=true;job.diagnostics.phase='observe_conditions';return
         end
         job.search = Search.New(preparation.compiled, job.travelObjective or job.objective, job.diagnostics, {
+            planUnlocks=job.planUnlocks,
             conditions=job.planner.conditionContext,
             portals = job.planner.portals, movement = job.planner.movement,
             scheduled = job.planner.scheduled, taxi=job.planner.taxi,personal=job.planner.personal,
