@@ -46,7 +46,8 @@ local function Budgets(options)
 end
 
 function Navigation.New(graph, options)
-    local context={tracker=namespace.NavigationV2Conditions.New(),bindings={},transports={}}
+    local context={tracker=namespace.NavigationV2Conditions.New(),bindings={},transports={},
+        unlockProofs=type(options)=='table' and options.unlocks~=nil}
     local preparation, reason = Graph.New(graph,context)
     if not preparation then return nil, reason end
     if type(options) ~= "table" or type(options.clock) ~= "function"
@@ -101,23 +102,33 @@ function Navigation.New(graph, options)
         end
         context.transports[kind]=bindings
     end
+    local unlocks
+    if options.unlocks~=nil then
+        if not namespace.NavigationV2Unlocks then return nil,'unlocks_unavailable' end
+        unlocks,reason=namespace.NavigationV2Unlocks.New(options.unlocks,context)
+        if not unlocks then return nil,reason end
+    end
     return setmetatable({ preparation = preparation, clock = options.clock, profileClock = options.profileClock,
+        unlocks=unlocks,
         conditions=context.tracker,conditionContext=context,deferConditions=options.deferConditions==true,conditionObservedCount=0,
         movement = options.movement, scheduled = scheduled, taxi=taxi, resources=resources,personal=personal,
-        portals = portals, budgets = budgets, revision = 1, identity = {} }, Planner)
+        scheduledDeclarations=scheduled and namespace.NavigationV2WaypointTarget.Copy(options.scheduled),
+        scheduledOverrides=scheduled and namespace.NavigationV2WaypointTarget.Copy(options.scheduledOverrides or {}),
+        portals = portals, budgets = budgets, revision = 1, routeRevision=1, identity = {} }, Planner)
 end
 
 function Planner:ObserveConditions(observation)
     local changed,reason,recovered=self.conditions:Observe(observation)
     if changed==nil or reason then return changed,reason,recovered end
+    if self.unlocks and self.unlocks:ObserveProofs() then changed=true end
     self.conditionObservedCount=self.conditions.dependencyCount
-    if changed or recovered then self:Invalidate() end
+    if changed or recovered then self:Invalidate(not changed) end
     return changed,nil,recovered
 end
 
 function Planner:MarkConditionsDirty(dependencies)
     local changed,reason=self.conditions:MarkDirty(dependencies)
-    if changed then self:Invalidate() end
+    if changed then self:Invalidate(true) end
     return changed,reason
 end
 
@@ -200,6 +211,8 @@ function Planner:SetScheduled(declarations, overrides)
     end
     if self.scheduled and namespace.NavigationV2WaypointTarget.Same(self.scheduled.byId, catalog.byId) then return false end
     self.scheduled = catalog
+    self.scheduledDeclarations=namespace.NavigationV2WaypointTarget.Copy(declarations)
+    self.scheduledOverrides=namespace.NavigationV2WaypointTarget.Copy(overrides or {})
     self.scheduledPrepared,self.scheduledCursor=nil,nil
     self:Invalidate()
     return true
@@ -243,8 +256,15 @@ local function Finish(job, status, reason)
     if status == "complete" then
         result.estimatedSeconds, result.segments, result.nodes = job.search.total, job.search.segments, job.search.nodes
         result.resourcesSpent = job.search.resourcesSpent
+        if job.unlock then
+            result.unlock={id=job.unlock.id,node=job.unlock.node,title=job.unlock.title}
+            result.travelObjective=Graph.CaptureRequest(job.travelObjective)
+            result.unlockEntry,result.unlockSequence=job.unlock,job.unlockSequence
+            result.optimal,result.reason,result.estimateScope=false,'prerequisite_approach','unlock_approach'
+        end
     else
         result.estimatedSeconds, result.segments, result.nodes = nil, nil, nil
+        result.unlock,result.unlockEntry,result.unlockSequence,result.travelObjective,result.estimateScope=nil,nil,nil,nil,nil
     end
     job.result, job.search = result, nil
     return result
@@ -272,8 +292,85 @@ function Planner:Plan(request, context)
     return job
 end
 
-function Planner:Invalidate()
+-- Continuations retain original ordered visits and the selected subobjective.
+function Planner:PlanJourney(journey,context)
+    if not namespace.NavigationV2Actions.IsJourney(journey) then return nil,'invalid_journey' end
+    if journey.unlock and journey.unlock.owner==self.identity and not self.unlocks:CurrentProof(journey.unlock.entry) then
+        journey.unlock=nil
+    end
+    local request=journey:OriginalRequest()
+    if not request then return nil,'location_unknown' end
+    local job=self:Plan(request,context)
+    if journey.unlock then
+        if journey.unlock.owner~=self.identity then job:Cancel();return nil,'stale_unlock' end
+        journey.unlock.planRevision,journey.unlock.routeRevision=self.revision,self.routeRevision
+    end
+    return job
+end
+
+function Planner:UnlockReady(journey)
+    if not namespace.NavigationV2Actions.IsJourney(journey) or not journey.unlock then return nil,'no_unlock' end
+    local session=journey.unlock
+    if session.owner~=self.identity or not self.unlocks then return nil,'stale_unlock' end
+    if not journey.node then return nil,'location_unknown' end
+    if not self.unlocks:Proven(session.entry,session.sequence) then return false,'unlock_proof_required' end
+    return true
+end
+
+function Planner:ResumeUnlock(journey,context)
+    local mode,reason=self:UnlockContinuation(journey)
+    if not mode then return nil,reason end
+    if mode=='original' then journey.unlock=nil end
+    return self:PlanJourney(journey,context)
+end
+
+function Planner:UnlockContinuation(journey)
+    local ready,reason=self:UnlockReady(journey)
+    if ready then return 'original' end
+    if ready~=false then return nil,reason end
+    local session=journey.unlock
+    if self.conditions:IsCurrent(self.conditions:GetToken()) and (session.routeRevision~=self.routeRevision
+        or (journey.node~=session.entry.node and session.planRevision~=self.revision
+            and self.unlocks:Approachable(session.entry))) then return 'reconsider' end
+    return nil,reason
+end
+
+function Planner:Invalidate(proofOnly)
+    if self.costBatch then self.costBatchChanged=true;return end
     self.revision = self.revision + 1
+    if not proofOnly then self.routeRevision=self.routeRevision+1 end
+end
+
+-- Adapter-generated numeric payloads, applied through existing catalogue
+-- setters. Keep replacement-style settings whole and invalidate once per batch.
+function Planner:ApplyCalibrationCosts(updates,revisionAtBoundary)
+    local Copy=namespace.NavigationV2WaypointTarget.Copy
+    local scheduled,reason
+    self.costBatch,self.costBatchChanged=true,nil
+    for _,update in ipairs(updates)do
+        local changed
+        if update.kind=='portal' then changed,reason=self:SetPortalCosts(update.id,update.costs)
+        elseif update.kind=='personal' then changed,reason=self:SetPersonalCosts(update.id,update.costs)
+        elseif update.kind=='taxi' then
+            local costs=Copy(self.taxi.settings[update.id] or {})
+            for key,value in pairs(update.costs)do costs[key]=value end
+            changed,reason=self:SetTaxiCosts(update.id,costs)
+        elseif update.kind=='scheduled' then
+            scheduled=scheduled or Copy(self.scheduledOverrides)
+            scheduled[update.id]=scheduled[update.id] or {}
+            for key,value in pairs(update.costs)do scheduled[update.id][key]=value end
+        else reason='invalid_calibration_update' end
+        if reason then break end
+    end
+    if not reason and scheduled then
+        local _
+        _,reason=self:SetScheduled(self.scheduledDeclarations,scheduled)
+    end
+    local changed=self.costBatchChanged==true
+    self.costBatch,self.costBatchChanged=nil,nil
+    if changed and (revisionAtBoundary==nil or self.revision==revisionAtBoundary) then self:Invalidate() end
+    if reason then return nil,reason end
+    return changed
 end
 
 function Planner:IsCurrent(result)
@@ -299,7 +396,26 @@ function Job:Cancel()
 end
 
 local function Advance(job)
-    if job.search then return job.search:Advance() end
+    if job.unlock and not job.unlock.proof.ready then
+        local ready,status,reason=job.planner.unlocks:TrackProof(job.unlock)
+        if not ready then return status,reason end
+        return
+    end
+    if job.search then
+        local status,reason=job.search:Advance()
+        if status=='no_path' and job.planner.unlocks and not job.unlockApproach then
+            local entry,why=job.planner.unlocks:Select(job.search,job.objective)
+            job.diagnostics.unlockReason=why
+            if entry then
+                job.unlock,job.unlockSequence=entry,job.planner.conditions.snapshot.sequence
+                job.travelObjective={from=job.objective.from,to=entry.node,via={}}
+                job.unlockApproach=true;job.search:Cancel();job.search=nil
+                job.diagnostics.phase='unlock_approach'
+                return
+            end
+        end
+        return status,reason
+    end
     local preparation = job.planner.preparation
     local state, reason = preparation:Advance()
     job.diagnostics.phase = preparation.phase
@@ -336,10 +452,16 @@ local function Advance(job)
             end
             planner.scheduledPrepared = true
         end
+        if job.planner.unlocks and not job.planner.unlocksPrepared then
+            job.diagnostics.phase='prepare_unlocks'
+            local ready,status,why=job.planner.unlocks:Prepare(preparation.compiled)
+            if not ready then return status,why end
+            job.planner.unlocksPrepared=true
+        end
         if job.planner.deferConditions and job.planner.conditionObservedCount<job.planner.conditions.dependencyCount then
             job.awaitingConditions=true;job.diagnostics.phase='observe_conditions';return
         end
-        job.search = Search.New(preparation.compiled, job.objective, job.diagnostics, {
+        job.search = Search.New(preparation.compiled, job.travelObjective or job.objective, job.diagnostics, {
             conditions=job.planner.conditionContext,
             portals = job.planner.portals, movement = job.planner.movement,
             scheduled = job.planner.scheduled, taxi=job.planner.taxi,personal=job.planner.personal,

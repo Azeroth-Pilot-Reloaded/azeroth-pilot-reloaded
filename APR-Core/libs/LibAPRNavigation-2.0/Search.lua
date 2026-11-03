@@ -79,7 +79,15 @@ function Search.New(graph, objective, diagnostics, options)
         resources = (options.taxi or options.personal or graph.resourceCosts or options.resources) and (options.resources or {}),
         dynamic = options.portals or options.movement or options.scheduled or options.taxi or options.personal or graph.resourceCosts or options.resources
             or (options.conditions and options.conditions.conditional),
+        deniedFacts=options.conditions and options.conditions.unlockProofs and {},
+        requestProof=options.conditions and options.conditions.unlockProofs and {},
         startedAt = options.startedAt, validationIndex = 0 }, Search)
+end
+
+local function RecordDenial(search,proof)
+    if proof and proof.blocker and not proof.conflict and not proof.unknown then
+        search.deniedFacts[proof.blocker]=search.deniedFacts[proof.blocker] or proof
+    end
 end
 
 local function ValidateRequest(search)
@@ -88,7 +96,11 @@ local function ValidateRequest(search)
     elseif search.validationIndex == 1 then id = search.objective.to
     else id = search.objective.via[search.validationIndex - 1] end
     if not id then
-        if search.requestDenied then return 'no_path',search.requestDenied end
+        if search.requestDenied then
+            RecordDenial(search,search.requestProof)
+            search.provenNoPath=search.graph.complete and not search.requestUnknown and not search.conditionUnknown
+            return 'no_path',search.requestDenied
+        end
         if search.requestUnknown then return 'unknown',search.requestUnknown end
         if search.movement and not search.movement.initialMode then return 'unknown', 'movement_state_unknown' end
         if not search.dynamic and search.graph.PrepareRequest then
@@ -102,7 +114,7 @@ local function ValidateRequest(search)
     local node, status, reason = Locate(search.graph, id)
     if not node then return status or "invalid", reason or "invalid_request" end
     if search.conditions and search.conditions.conditional then
-        local access,why=namespace.NavigationV2Graph.NodeAccess(search.graph,node)
+        local access,why=namespace.NavigationV2Graph.NodeAccess(search.graph,node,search,search.requestProof)
         if access=='unavailable' then search.requestDenied=search.requestDenied or why
         elseif access=='unknown' then search.requestUnknown=search.requestUnknown or why end
     end
@@ -113,6 +125,7 @@ local function Exhausted(search)
     if search.sawMissing then return "unknown", search.sawMissing end
     if not search.graph.complete or search.sawIncomplete then return "unknown", "incomplete_graph" end
     if search.phase == "known" and search.sawUnknown then Start(search, "possible"); return end
+    search.provenNoPath=not search.sawUnknown and not search.conditionUnknown
     return "no_path", "disconnected"
 end
 
@@ -282,24 +295,29 @@ local function RelaxEdge(search)
     if status then return Missing(search, status, reason) end
     if not edge then return end
     if edge.kind=='personal' then edge.access=edge.forecastAccess end
+    local rawAccess,proof=edge.access,search.deniedFacts and {}
+    if proof and rawAccess=='unknown' then proof.unknown=true;search.conditionUnknown=true end
     if search.conditions and search.conditions.conditional then
         -- Prepared adjacency is shared across requests. A denied/unknown live
         -- conjunction must never overwrite its immutable authored access.
         local captured={}
         for key,value in pairs(edge) do captured[key]=value end
         edge=captured
-        local from=namespace.NavigationV2Graph.NodeAccess(search.graph,edge.from)
-        local to=namespace.NavigationV2Graph.NodeAccess(search.graph,edge.to)
+        local from=namespace.NavigationV2Graph.NodeAccess(search.graph,edge.from,search,proof)
+        local to=namespace.NavigationV2Graph.NodeAccess(search.graph,edge.to,search,proof)
         edge.access=namespace.NavigationV2Graph.CombineAccess(edge.access,
             namespace.NavigationV2Graph.CombineAccess(from,to))
         local transport=search.conditions.transports[edge.kind]
         local binding=edge.condition or transport and transport[edge.portalId or edge.transportId or edge.taxiId or edge.personalId]
         if binding then
-            local access=search.conditions.tracker:Get(binding)
+            local access=namespace.NavigationV2Graph.ConditionAccess(search.graph,binding,search,proof)
             edge.access=namespace.NavigationV2Graph.CombineAccess(edge.access,access)
         end
     end
-    if edge.access == "unavailable" then return end
+    if edge.access == "unavailable" then
+        if rawAccess=='available' then RecordDenial(search,proof) end
+        return
+    end
     edge, reason = MovementEdge(search, edge)
     if not edge then return Missing(search, 'unknown', reason) end
     if edge.access == "unavailable" then return end

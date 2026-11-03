@@ -589,3 +589,28 @@ access, loading and owner replacement tests prevent stale proof restoration;
 an in-flight native capture cannot overwrite a newer request. A conditional
 sector source also rejects old static witnesses. The NAV-16 family independently
 owns its module and actual-chain counter-tests; this family never edits them.
+
+`lua/navigation_v2_unlocks` checks an explicit simple prerequisite only after
+proven absence on complete known graphs. Synthetic denials, missing entries,
+unknown/dirty facts, budgets, cancellation and replacement cannot fabricate an
+unlock. A longer usable route wins both initially and when new evidence opens
+an alternative during the approach or while waiting at the prerequisite. The
+same bounded job handles initial search and approach; partial approach estimates
+are explicit. Fresh actual access/character quest proof, confirmed origin,
+ordered visits and the unchanged APR step context govern resumption. Actual
+Standard/Camelot XML/TOC and WUI/AWP public hooks exercise output ownership,
+foreign markers, text without coordinates and cancellation with no quest advance.
+`scripts/test_navigation_v2_unlocks.py` verifies normal discovery and actual
+partitioned/missing-sector behavior without loading a maintained itinerary.
+Run `python -m unittest tests.lua.navigation_v2_unlocks.test_unlocks
+tests.scripts.test_navigation_v2_unlocks -v`. Both clients' native quest/proof
+timing, physical movement, rendering and combat/taint remain rollout requirements.
+
+The same owned unlock family covers NAV19's shared host raccord without editing
+its frozen modules/tests: manual/reset/COW persistence, deferred prices and
+replacement, real portal/taxi/scheduled receipts, paired world loading, immutable
+committed deadlines, no arrival from events, rejected interruption and preserved
+catalogue/fare/requirements. Ride excludes loading/disembark; taxi elapsed is
+not charged twice. Batches and Personal's fresh-origin capture recover once.
+The separate `navigation_v2_calibration` family independently checks the frozen
+model/adapter and actual-chain integration. No native measurement is claimed.

@@ -23,10 +23,12 @@ function Graph.BindRequirements(context,source,existingOnly)
     if source==nil then return nil end
     local compiled,reason=namespace.NavigationV2Conditions.Compile(source)
     if not compiled then return nil,reason end
-    local parts={}
+    local parts,facts={},context.unlockProofs and {}
     local function Part(group,key,value)
-        key,value=tostring(key),type(value)..':'..tostring(value)
-        parts[#parts+1]=group..#key..':'..key..#value..':'..value
+        local name,expected=tostring(key),type(value)..':'..tostring(value)
+        local id=group..#name..':'..name..#expected..':'..expected
+        parts[#parts+1]=id
+        if facts then facts[#facts+1]={group=group,key=key,expected=value,id=id} end
     end
     for _,key in ipairs({'world','space','floor','phase'}) do
         if source[key]~=nil then Part('identity',key,source[key]) end
@@ -42,6 +44,10 @@ function Graph.BindRequirements(context,source,existingOnly)
     binding,reason=context.tracker:Track(compiled)
     if not binding then return nil,reason end
     context.bindings[key],context.conditional=binding,true
+    if facts then
+        context.bindingFacts=context.bindingFacts or {}
+        context.bindingFacts[binding]=facts
+    end
     return binding
 end
 
@@ -51,16 +57,64 @@ function Graph.CombineAccess(a,b)
     return 'available'
 end
 
-function Graph.NodeAccess(graph,node)
-    local status,reason='available',nil
+-- At most64 captured facts, once per denied binding/accepted snapshot. A token
+-- alone is insufficient: a conjunction can stay denied when its blocker changes.
+local function Denial(context,binding)
+    local tracker=context.tracker
+    context.denialCache=context.denialCache or {}
+    local cached=context.denialCache[binding]
+    if cached and cached.sequence==tracker.snapshot.sequence and cached.revision==tracker.revision then return cached end
+    local snapshot,count,blocker,unknown=tracker.snapshot,0,nil,false
+    if snapshot.worldState~='ready' then unknown=true end
+    for _,fact in ipairs(context.bindingFacts[binding])do
+        local value=snapshot[fact.group][fact.key]
+        if value==nil then unknown=true
+        elseif value~=fact.expected then
+            count=count+1
+            if count==1 and fact.expected==true and (fact.group=='quests' or fact.group=='access') then blocker=fact.id
+            else blocker=false end
+        end
+    end
+    cached={sequence=snapshot.sequence,revision=tracker.revision,blocker=blocker,unknown=unknown}
+    context.denialCache[binding]=cached
+    return cached
+end
+
+function Graph.ConditionAccess(graph,binding,search,proof)
+    local context=graph.conditionContext
+    local access,reason=context.tracker:Get(binding)
+    if proof then
+        proof.bindings=proof.bindings or {}
+        proof.bindings[binding]=true
+    end
+    if search then
+        if access=='unknown' then
+            search.conditionUnknown=true
+            if proof then proof.unknown=true end
+        elseif access=='unavailable' and proof then
+            local denial=Denial(context,binding)
+            if denial.unknown then proof.unknown=true;search.conditionUnknown=true end
+            if not denial.blocker or proof.blocker and proof.blocker~=denial.blocker then proof.conflict=true
+            else proof.blocker=denial.blocker end
+        end
+    end
+    return access,reason
+end
+
+function Graph.NodeAccess(graph,node,search,proof)
+    local status,reason,denied='available',nil,nil
     for _,binding in pairs({graph.condition,graph.nodeConditions and graph.nodeConditions[node],
         graph.nodeZones and graph.zoneConditions[graph.nodeZones[node]]}) do
         if binding then
-            local value,why=graph.conditionContext.tracker:Get(binding)
-            if value=='unavailable' then return value,why end
+            local value,why=Graph.ConditionAccess(graph,binding,search,proof)
+            if value=='unavailable' then
+                if not search then return value,why end
+                denied=denied or why
+            end
             if value=='unknown' then status,reason=value,reason or why end
         end
     end
+    if denied then return 'unavailable',denied end
     return status,reason
 end
 

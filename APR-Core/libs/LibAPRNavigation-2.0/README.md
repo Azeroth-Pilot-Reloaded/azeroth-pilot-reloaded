@@ -1,16 +1,19 @@
 # LibAPRNavigation-2.0 — NAV-01
 
-This first slice plans travel through a **supplied synthetic directed graph**.
-It does not yet infer terrain connectivity, transport eligibility, cooldowns,
-resources or unlock prerequisites. No world data or V1 implementation is loaded.
+The pure planner consumes explicitly supplied graphs, transports, observations
+and prerequisites. It never infers missing terrain connectivity or access facts.
+No V1 implementation is loaded.
 APR keeps its existing navigation engine active by default.
 
 ## Pure Lua 5.1 API
 
 ```lua
 local namespace = {}
-for _, module in ipairs({ "Graph", "Search", "Navigation" }) do
-    assert(loadfile("APR-Core/libs/LibAPRNavigation-2.0/" .. module .. ".lua"))("standalone", namespace)
+local root = "APR-Core/libs/LibAPRNavigation-2.0/"
+local manifest = assert(io.open(root .. "LibAPRNavigation.xml"))
+local xml = manifest:read("*a"); manifest:close()
+for module in xml:gmatch('<Script%s+file="([^"]+)"') do
+    assert(loadfile(root .. module))("standalone", namespace)
 end
 local Navigation = namespace.LibAPRNavigationV2
 local graph = {
@@ -105,7 +108,7 @@ checks; do not display, persist or change it. Terminal states:
 
 | status | meaning |
 | --- | --- |
-| `complete` | Minimum estimated time in the known usable graph, including all required visits. `optimal=true`, `estimatedSeconds`, ordered `segments` and `nodes`. |
+| `complete` | A usable itinerary. Normally minimum estimated time through all visits with `optimal=true`. An explicit prerequisite approach has `unlock`, `optimal=false`, `estimateScope='unlock_approach'`; it has not reached the original destination. |
 | `no_path` | Complete modeled domain proves disconnection, even allowing uncertain edges. |
 | `unknown` | Incomplete domain, a necessary uncertain edge, unavailable/regressing clock or cost overflow. No usable itinerary is asserted. |
 | `cancelled` | Explicit cancellation. |
@@ -216,3 +219,122 @@ Journey origin. Reconfiguration/Disable discard the source. Hardware use
 revalidates facts and preserves only an already committed immutable travel
 receipt, never an old itinerary. Native timing, proof lifetime and combat/taint
 still require in-game verification before rollout.
+
+## Simple prerequisites as a last resort (NAV-17)
+
+`options.unlocks` is an optional dense array of at most64 explicit declarations:
+
+```lua
+unlocks = {{
+    id = 'speak-keeper', destination = 'garden', node = 'keeper',
+    title = localizedPrerequisiteTitle,
+    opens = {access = {{key = 'garden-open', allowed = true}}},
+    requirements = {quests = {{questID = knownEligibilityQuestID, completed = true}}},
+}}
+```
+
+These names illustrate a schema, not a shipped world quest/access declaration.
+`destination` explicitly declares applicability to the requested final node.
+`node` identifies the concrete prerequisite location. `opens` is exactly one
+positive access fact or one completed-character-quest fact, using the existing
+Conditions schema. `requirements` is an optional currently observed eligibility
+conjunction. Titles must be localized text accepted by the existing coordinate
+filter. No new localization key, phase inference or native API is introduced.
+
+The original request always runs first. Even a very expensive usable route
+wins. Only proven absence on complete known coverage can select a declaration
+whose positive gate fact is the sole known refusal among the traversal requirements.
+The fact may belong to a conjunction with other observed satisfied requirements;
+an independent refusal or unknown fact cannot justify this simple prerequisite. Missing
+entries, unrelated gates, unknown eligibility or unknown access do not authorize
+an unlock. `diagnostics.unlockReason` explains refusal, including
+`absence_unproven`, `no_simple_unlock`, `unlock_eligibility_unknown`,
+`unlock_eligibility_denied` and `ambiguous_unlock`. Multiple eligible declarations
+are deliberately ambiguous; chains and comparative alternatives belong to NAV18.
+No hypothetical access is installed. The authored destination relation is trusted
+data, not a guarantee that all future conditions will remain unchanged.
+
+The SAME job then searches the prerequisite approach with the SAME preparation,
+operations, monotonic clocks, slice/CPU/elapsed budgets and cancellation owner.
+An incomplete/unknown/budget/stale/cancelled approach exposes no executable
+unlock. A successful approach has `status='complete'`, `optimal=false`,
+`reason='prerequisite_approach'`, `estimateScope='unlock_approach'`,
+`unlock={id,node,title}` and `travelObjective`. `objective` remains the original
+request. `estimatedSeconds` covers only the actual approach; it does not pretend
+to price the future prerequisite or a completed journey to the destination.
+
+Explicit `StartTravel` creates guidance through the existing lib-owned WUI/AWP
+session. At the prerequisite it returns a text-only `kind='unlock'` action with
+`reason='unlock_proof_required'`. Marker arrival cannot complete a quest or
+change an access fact. No position is fabricated for an unlocalized action.
+
+Journey retains the original objective/ordered visit cursor and confirmed node.
+`OriginalRequest()` returns the remaining original request; `RemainingRequest()`
+exposes the active concrete subobjective when applicable. `planner:PlanJourney`
+and the host's internal continuation preserve this same Journey on changed
+conditions, costs and correlated transport arrivals, always checking the normal
+destination first. `planner:ResumeUnlock(journey)` and `host:ResumeUnlock()`
+resume only after positive actual evidence newer than the denial and from a
+confirmed current node. `ResumeConditions` uses that boundary for an active
+prerequisite. An unknown origin holds without reusing the original departure.
+
+A genuinely useful revision can make a normal route usable while the selected
+gate stays closed. One bounded reconsideration restores that normal route's
+priority, retaining APR progress and visits. A dirty burst with identical proof
+can recover an interrupted approach once, but cannot repeatedly replan from the
+prerequisite. Pure `routeRevision` distinguishes effective routing changes from
+condition-token retirement/recovery; ordinary stale-result checks still use the
+full planner revision and condition token. Unchanged captures do not loop.
+
+The selected prerequisite owns its supporting proof. Its captured dependencies
+are registered incrementally inside the same job budgets; observation of a real
+support change retires old jobs/results and guidance even when the whole
+conjunction stays denied and its Conditions token stays unchanged. A fresh
+identical capture preserves eligibility. Lost support discards the obsolete
+subobjective during reconsideration while retaining the original goal and visits.
+This proves only the current selection/approach, not a future itinerary or time
+to complete the prerequisite.
+
+No real prerequisites have been fabricated. Trusted access proof producers,
+quest-history readiness, physical arrival, UI rendering and combat/taint still
+require both clients' in-game validation before an engine switch. V1 stays default.
+
+## Optional host calibration (NAV-19 integration)
+
+`Enable(graph,{calibration={client='Forever',build=publicBuild,
+computer=explicitInstallationKey,api=optionalApi}, ...})` captures the public
+character GUID once and binds the existing catalogues' adjustable fields.
+Retail uses `client='Retail'`. Omit calibration to retain existing behavior;
+there is no invented native PC identity or extra frame/ticker. Read
+[Calibration.md](Calibration.md) for the frozen model, storage schema and policy.
+
+The host exposes `GetCalibrationCost(key)`, `GetCalibrationStats()`,
+`SetCalibrationCost(key,secondsOrNil)` and
+`ResetCalibrationCosts(keyOrNil,'manual'|'measured'|'all')` (default all).
+Readable keys use `portal/<id>/loading`, `personal/<id>/loading`,
+`taxi/<id>/ride|loading` or `scheduled/<id>/ride|loading`. Fixed use duration,
+fare, approach/boarding/disembark/final costs, observations, requirements and
+timetables remain captured from their existing sources. Re-enable to bind a
+new catalogue/identity. Persistence copies only `navigationV2Costs` under the
+existing `APRNavigationCharacterSettings`; unsupported future storage is not
+overwritten. Masked/equal measurements can persist without changing a price.
+
+Actual accepted execution receipts govern measurements: portal use, committed
+personal use, taxi boarding and scheduled departure. Scheduled destination
+marks the ride end, but only confirmed disembark accepts its measurement.
+Ride excludes observed loading and disembark time. The existing world observer
+forwards leaving/entering pairs; entry only ends loading. Login/reload, unknown
+entry flags, logout, timeout, cancellation, replacement or lost correlation
+reject the sample. The accepted receipt/attempt and deadline remain immutable.
+The previous full elapsed taxi-duration update is suppressed for a calibrated
+attempt, and remains available when calibration is off.
+
+`ApplyCalibrationCosts(recover)` consumes the frozen adapter's numeric Pending
+payloads through existing setters, acknowledges successful installation and
+coalesces a batch into one revision. Committed transport defers new prices;
+arrival applies them and replans the same original Journey/visits/unlock from
+the confirmed node once. `ResumeCalibration()` is that explicit recovery seam.
+An external replacement cancels the old sample and installs deferred prices
+before searching. No pending numeric change means no revision or search.
+Step/GetResult/relaxation perform no calibration capture or persistence. Source
+and synthetic contracts do not certify native performance or game/taint behavior.

@@ -1,0 +1,31 @@
+local F=dofile('tests/lua/navigation_v2_calibration/fixture.lua')
+local cost={manualSeconds=9,measuredSeconds=8,samples=3,foreign={keep=true}}
+local leaf={costs={['taxi/flight/ride']=cost,unknown='keep'},foreign='leaf'}
+local store={version=0,foreign='root',profiles={Forever={['test-build']={['invented-character']={desk=leaf,lap={costs={}}}}},Retail={foreign='keep'}}}
+local c=F.New(store)
+assert(c:Get('taxi/flight/ride')==9)
+assert(not c:Reset('taxi/flight/ride','measured'),'manual masks reset')
+assert(c:GetRevision()==0)
+local exported=assert(c:Export())
+assert(exported~=store and exported.profiles~=store.profiles)
+local result=exported.profiles.Forever['test-build']['invented-character'].desk
+assert(result~=leaf and result.costs~=leaf.costs)
+assert(result.costs['taxi/flight/ride']~=cost and result.costs['taxi/flight/ride'].foreign==cost.foreign)
+assert(cost.measuredSeconds==8 and leaf.costs.unknown=='keep' and result.costs.unknown=='keep')
+assert(exported.profiles.Retail==store.profiles.Retail and result.foreign=='leaf')
+assert(c:Reset('taxi/flight/ride','manual'))
+assert(c:Get('taxi/flight/ride')==20 and c:GetRevision()==1)
+local legacy=F.New({version=0,profiles={Forever={['test-build']={['invented-character']={desk={costs={['taxi/flight/ride']=7}}}}}}})
+assert(legacy:Get('taxi/flight/ride')==7)
+legacy:SetManual('taxi/flight/ride',8)
+local migrated=legacy:Export()
+assert(migrated.version==1 and migrated.profiles.Forever['test-build']['invented-character'].desk.costs['taxi/flight/ride'].measuredSeconds==7)
+local future={version=98,profiles=store.profiles}
+local f=F.New(future)
+assert(f:Get('taxi/flight/ride')==20,'future data must not be interpreted using an older schema')
+f:SetManual('taxi/flight/ride',1)
+local out,why=f:Export()
+assert(out==nil and why=='unsupported_calibration_version' and future.version==98)
+local malformed=F.New({version=1,profiles='foreign-value'})
+malformed:SetManual('taxi/flight/ride',2)
+assert(malformed:Export()==nil,'do not erase malformed persisted containers')
