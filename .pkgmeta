@@ -11,6 +11,7 @@ ignore:
   - .githooks
   - .vscode
   - .cache
+  - .scratch
   - .venv
   - .release
   - .editorconfig
@@ -31,6 +32,7 @@ ignore:
   - readme
   - APR-Core/README.md
   - APR-Core/libs/LibAPRNavigation-1.0/README.md
+  - APR-Core/libs/LibAPRNavigation-2.0/README.md
 
   # Embedded libraries load through XML; their standalone TOCs/logo are unused.
   - "APR-Core/libs/*.toc"
