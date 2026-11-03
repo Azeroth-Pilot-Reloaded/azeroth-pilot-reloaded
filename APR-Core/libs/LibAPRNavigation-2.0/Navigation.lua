@@ -5,7 +5,7 @@ local Finite = Graph.Finite
 local Navigation, Planner, Job = {}, {}, {}
 Planner.__index, Job.__index = Planner, Job
 
-local DEFAULTS = { sliceMs = 1, cpuMs = 100, elapsedMs = 5000 }
+local DEFAULTS = Graph.Budgets
 local DEFAULT_OPERATIONS = 64
 
 local function PersonalKeys(catalog)
@@ -46,9 +46,11 @@ local function Budgets(options)
 end
 
 function Navigation.New(graph, options)
+    local limits=Graph.CaptureLimits(type(options)=='table' and options.limits)
+    if not limits then return nil,'invalid_limits' end
     local context={tracker=namespace.NavigationV2Conditions.New(),bindings={},transports={},
         unlockProofs=type(options)=='table' and options.unlocks~=nil}
-    local preparation, reason = Graph.New(graph,context)
+    local preparation, reason = Graph.New(graph,context,limits)
     if not preparation then return nil, reason end
     if type(options) ~= "table" or type(options.clock) ~= "function"
         or type(options.profileClock) ~= "function" then return nil, "invalid_clocks" end
@@ -114,7 +116,7 @@ function Navigation.New(graph, options)
         movement = options.movement, scheduled = scheduled, taxi=taxi, resources=resources,personal=personal,
         scheduledDeclarations=scheduled and namespace.NavigationV2WaypointTarget.Copy(options.scheduled),
         scheduledOverrides=scheduled and namespace.NavigationV2WaypointTarget.Copy(options.scheduledOverrides or {}),
-        portals = portals, budgets = budgets, revision = 1, routeRevision=1, identity = {} }, Planner)
+        portals = portals, budgets = budgets,limits=limits, revision = 1, routeRevision=1, identity = {} }, Planner)
 end
 
 function Planner:ObserveConditions(observation)
@@ -252,6 +254,12 @@ end
 local function Finish(job, status, reason)
     if job.search then job.search:Cancel() end
     local result = job:GetResult()
+    local actions=namespace.NavigationV2Actions
+    if actions then
+        if status=='complete' then
+            if not actions.PublishResult(job,result) then status,reason='unknown','execution_snapshot_unavailable' end
+        else actions.AbortResult(job) end
+    end
     result.status, result.reason, result.optimal = status, reason, status == "complete"
     if status == "complete" then
         result.estimatedSeconds, result.segments, result.nodes = job.search.total, job.search.segments, job.search.nodes
@@ -297,7 +305,8 @@ end
 -- Continuations retain original ordered visits and the selected subobjective.
 function Planner:PlanJourney(journey,context)
     if not namespace.NavigationV2Actions.IsJourney(journey) then return nil,'invalid_journey' end
-    if journey.unlock and journey.unlock.owner==self.identity and not self.unlocks:CurrentProof(journey.unlock.entry) then
+    if journey.unlock and journey.unlock.owner==self.identity
+        and not self.unlocks:CurrentProof(namespace.NavigationV2Actions.UnlockEntry(journey.unlock)) then
         journey.unlock=nil
     end
     local request=journey:OriginalRequest()
@@ -315,7 +324,7 @@ function Planner:UnlockReady(journey)
     local session=journey.unlock
     if session.owner~=self.identity or not self.unlocks then return nil,'stale_unlock' end
     if not journey.node then return nil,'location_unknown' end
-    if not self.unlocks:Proven(session.entry,session.sequence) then return false,'unlock_proof_required' end
+    if not self.unlocks:Proven(namespace.NavigationV2Actions.UnlockEntry(session),session.sequence) then return false,'unlock_proof_required' end
     return true
 end
 
@@ -331,9 +340,10 @@ function Planner:UnlockContinuation(journey)
     if ready then return 'original' end
     if ready~=false then return nil,reason end
     local session=journey.unlock
+    local entry=namespace.NavigationV2Actions.UnlockEntry(session)
     if self.conditions:IsCurrent(self.conditions:GetToken()) and (session.routeRevision~=self.routeRevision
-        or (journey.node~=session.entry.node and session.planRevision~=self.revision
-            and self.unlocks:Approachable(session.entry))) then return 'reconsider' end
+        or (journey.node~=entry.node and session.planRevision~=self.revision
+            and self.unlocks:Approachable(entry))) then return 'reconsider' end
     return nil,reason
 end
 
@@ -378,6 +388,7 @@ end
 function Planner:IsCurrent(result)
     return type(result) == "table" and result.owner == self.identity and result.revision == self.revision
         and result.status == "complete" and self.conditions:IsCurrent(result.conditionToken)
+        and (not namespace.NavigationV2Actions or namespace.NavigationV2Actions.CurrentResult(self,result))
 end
 
 -- Only a pre-search suspended job may adopt freshly captured dependencies.
@@ -421,6 +432,11 @@ local function ChainResult(job)
 end
 
 local function Advance(job)
+    if job.capturing then
+        local ready,status,reason=namespace.NavigationV2Actions.PrepareResult(job)
+        if ready then job.executionReady=true;return 'complete',job.completionReason end
+        return status,reason
+    end
     if job.unlock and not job.unlock.proof.ready then
         local ready,status,reason=job.planner.unlocks:TrackProof(job.unlock)
         if not ready then return status,reason end
@@ -462,7 +478,7 @@ local function Advance(job)
     local preparation = job.planner.preparation
     local state, reason = preparation:Advance()
     job.diagnostics.phase = preparation.phase
-    if state == "invalid" then return state, reason end
+    if state == "invalid" or state=='budget_exceeded' then return state, reason end
     if state == "node" then job.diagnostics.preparedNodes = job.diagnostics.preparedNodes + 1 end
     if state == "edge" then job.diagnostics.preparedEdges = job.diagnostics.preparedEdges + 1 end
     if state == "ready" then
@@ -505,7 +521,7 @@ local function Advance(job)
             job.awaitingConditions=true;job.diagnostics.phase='observe_conditions';return
         end
         job.search = Search.New(preparation.compiled, job.travelObjective or job.objective, job.diagnostics, {
-            planUnlocks=job.planUnlocks,
+            planUnlocks=job.planUnlocks,limits=job.planner.limits,
             conditions=job.planner.conditionContext,
             portals = job.planner.portals, movement = job.planner.movement,
             scheduled = job.planner.scheduled, taxi=job.planner.taxi,personal=job.planner.personal,
@@ -554,6 +570,11 @@ function Job:Step(maxOperations, maxMilliseconds)
     self.diagnostics.slices = self.diagnostics.slices + 1
     for _ = 1, maxOperations do
         local status, reason = Advance(self)
+        if status=='complete' and namespace.NavigationV2Actions and not self.executionReady then
+            self.capturing,self.completionReason=true,reason
+            self.diagnostics.phase='execution_snapshot'
+            status=nil
+        end
         self.diagnostics.operations = self.diagnostics.operations + 1
         local _, profile, sampleReason = Sample(self, previous)
         stopped = Stopped(self)

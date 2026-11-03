@@ -107,6 +107,13 @@ APR step-context ownership. A 20,000-node synthetic graph also verifies that
 slice/CPU budgets, and the prepared index survives cancellation and is reused.
 The fixture loads the library's actual XML module order. Run it with
 `python -m unittest tests.lua.navigation_v2.test_navigation_v2 -v`.
+`lua/navigation_v2_performance` adds synthetic structure-limit boundaries,
+terminal/no-retry behavior, standalone loading CPU/wall stops, and a controlled
+parallel-edge allocation regression with GC suspended. Its fake clocks test
+correctness only; they are not latency evidence. Actual desktop cold/warm
+pilot CPU, wall, slice and static/decoded memory observations remain diagnostic
+receipts under `.scratch/libaprnavigation-2/reports/NAV-20`, not guide fixtures
+or native-client frame/render/taint proof.
 The APR host is disabled on load; no live guidance, waypoint or quest progression
 is produced by these planning-only tests. Retail and Forever in-game checks are
 still required before any later switch of the active navigation engine.

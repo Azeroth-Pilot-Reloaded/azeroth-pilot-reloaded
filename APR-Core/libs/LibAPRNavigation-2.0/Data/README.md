@@ -29,6 +29,15 @@ The concrete sector is a Forever development sample, not a default route for
 either client. Do not activate it outside its documented client/build/domain.
 
 Load defers decoding; Step checks a 1 ms cooperative slice between work units.
+When loaded with the library's `Graph.lua` (the actual XML path), standalone
+loading also uses its centralized 100 ms accumulated profiling and 5 s elapsed
+defaults. Optional `options.clock` supplies monotonic seconds; otherwise elapsed
+time is derived from `profileClock` milliseconds. All slices share the same
+budget; a stop is terminal `budget_exceeded`, never an unchanged decode retry.
+Isolated legacy loader-only consumers keep their earlier slice-only contract.
+Partitioned planning calls the loader's internal one-unit `Advance`, since its
+outer job already owns preparation/decoding/search/reconstruction budgets.
+Do not drive that internal operation directly from a frame loop.
 One unit is one bounded native decode, one validation stage, one copied node,
 one copied edge or one reference check. At most 32 blocks, 128 nodes per block,
 768 outgoing edges per block and 16 KiB CBOR per block are accepted. Each job
@@ -146,6 +155,11 @@ this descriptor in the normal `Navigation.New`/APR `Enable` planning path.
 The public factory and explicit APR `EnableSectors` wrapper require the shared
 XML/factory/host integration recorded in NAV-07's report; no default is switched.
 
+Prepared routing retains only the active adjacency row and its edge-validation
+bits in each search, rather than locating/touching the same page for every edge.
+This row may outlive eviction of its page; it does not pin the other decoded
+rows. Include that one bounded row per open search in memory accounting.
+
 Offline, `tools/navigation_v2/sectors.py` exposes `build_catalog(sectors, links)`
 and `lua_catalog(result)`. Inputs are surveyed milliyard node triples and
 directed local edges with millisecond costs, plus named explicit boundary
@@ -226,11 +240,19 @@ Schema 1 uses integer/array CBOR, raw Deflate and standard Base64. A block holds
 `[1, firstLocalNode, rows]`. Adjacency tuples contain target sector ordinal,
 target local node, milliseconds, access code and source edge serial. There are
 separate pages for directed landmark potentials and each witness direction.
-Default adjacency/potential/witness page sizes are 16/32/8 rows; all have a hard
+Default adjacency/potential/witness page sizes are 16/32/64 rows; all have a hard
 128-row bound, 16,384 raw-byte bound and 22,000-byte Base64 envelope bound.
 Two landmarks are selected offline by deterministic distance sampling, with a
 supported range of 0–8. The planner does not scan a world-sized per-node index,
 merge geometry, decompress all pages, or select landmarks in `New`/`Plan`.
+The schema and declared row-size attributes are unchanged; older audited
+16/32/8 archives remain valid. Larger default pages reduce the resident Lua
+record/string overhead of tiny witness blocks and compress repeated values
+together. Adjacency and potential defaults retain their smaller native decode
+granularity. The controlled 1024-node fixture checks a192KiB static Lua ceiling
+before decoding; this fixture is not an aggregate
+addon/world residency bound; real codecs and larger payloads still need timing
+validation on both clients.
 
 Each prepared planner caches at most `cacheSize * 128` adjacency rows (default
 256, supported 128–1024), plus 1024 potential rows and 1024 witness rows in
@@ -259,3 +281,90 @@ identities, unavailable/unknown access, zero cycles, changed costs, partial data
 interleaved jobs and cancellation during decoding and reconstruction. The
 actual exporter/import gate/XML/public factory/APR opt-in host are exercised.
 Desktop codec equivalents are not in-game codec or movement evidence.
+
+## Explicit flat-page backend (NAV-20 seam)
+
+`Pages.lua` adds an opt-in backend for an already audited runtime sector bundle.
+The pure offline `tools.navigation_v2.pages.compile_pages(bundle)` compiler lives
+in Route-generator. It neither extracts geometry nor prepares routes, reads
+client data, writes exports, or publishes addon folders. Publication/import must
+still bind the input to its original graph through the existing audited-import
+gate. `generate.py` and the host have no automatic flat-format integration.
+Legacy envelope catalogs and prepared routing remain supported.
+
+The package has `format="apr-flat-pages-1"`, a small `bootstrap` map containing
+only each sector's node count, completeness and metadata record ordinal, and
+the unchanged global routing header. Encoded `index`, `payloads`, `extras` and
+offline-only `attributes` are strings. No permanent Lua envelope is created for
+each page. Source page order/boundaries/payload bytes, human names, routing
+identity, costs, access, geometry movement attributes and other envelope fields
+are conserved; navigation payloads are never recompressed by this compiler.
+
+The index is Base64 over19-byte big-endian records: first/count/rawBytes
+(uint16 each), payload offset (uint32), payload length (uint16), extras offset
+(uint32), extras length (uint16), and kind (uint8:1routing,2geometry,3metadata).
+Offsets are zero-based; exposed record ordinals are one-based. An explicit
+read decodes at most28 Base64 index characters. It returns one temporary
+envelope; there is no metatable that decodes when callers index a page array.
+The complete decoded index is never retained.
+
+Each sector has a bounded CBOR header; its boundary links use CBOR chunks of at
+most16 links. Headers reference contiguous page families by first/count spans.
+Metadata uses the existing Deflate/Base64/CBOR pipeline, with definite CBOR
+arrays/maps, UTF-8 text keys/values, booleans and finite binary64 numbers. The
+encoder's default integer/array mode and existing geometry/routing CBOR bytes
+are unchanged. Metadata mode rejects nil/None, non-finite values, byte strings
+and non-text map keys rather than coercing or dropping fields. Envelope extras
+are Base64 CBOR without another compression layer; package attributes are
+opaque offline-only CBOR and are not materialized by the runtime.
+
+Use the existing factory explicitly:
+
+```lua
+options.routing = packed.routing or nil
+options.routingIdentity = packed.routingIdentity
+local source = assert(namespace.LibAPRNavigationV2.NewSectorGraph(
+    packed.bootstrap, packed, options))
+local planner = assert(namespace.LibAPRNavigationV2.New(source, plannerOptions))
+local job = planner:Plan(request)
+-- Metadata, index reads and native decoding occur only in subsequent Step work.
+```
+
+`New`/`Plan` do not decode metadata. The first loading job validates bootstrap
+entries and routing name references one per advance; progress is shared by the
+immutable package, so later requests do not restart a world scan. Header/link
+decode, incremental field validation and envelope reads belong to the existing
+`search.loading.job` or standalone loader job. Existing cumulative CPU/wall and
+slice checks therefore include this work. Cancellation/staleness releases its
+partial state. An unchanged terminal job never retries a failed decode; a new
+explicit request can recover. A request may retain its active sector metadata
+while another request evicts the shared entry; decoded row caches do not pin a
+metadata object for every cached page.
+
+Limits are centralized in `Pages.lua`:16MiB encoded strings,4MiB decoded index
+equivalent,1,024 bootstrap sectors/4,096 routing names and64KiB charged bootstrap
+IDs,16KiB raw metadata record,64KiB aggregate raw metadata per sector,4,096
+validated fields and depth16 per assembled sector,256 links, and an8-entry /
+512KiB raw-metadata-charge LRU. The offline compiler also checks the bootstrap's
+encoded CBOR size against64KiB and only accepts lower overrides. Transport
+Base64 is capped at22,000 characters, deriving a16,500-byte packed/extra CBOR
+maximum; decompressed metadata and original inner page raw caps remain16KiB.
+`pages.stats` exposes bootstrap units, operations, index/native decode counts,
+loads/hits/evictions, resident entries and raw-byte charge. Existing geometry
+and routing row-cache bounds remain in effect.
+
+The metadata byte charge counts source CBOR, not Lua allocator bytes. Field,
+depth, string transport, entry and active-job bounds constrain structure;
+temporary native decode allocations and Lua table overhead are not a strict
+allocator-byte certificate. Native decode is still indivisible. The native
+EncodingUtil signatures/Deflate/Standard Base64 contracts were checked for
+Forever and supported Retail11.2.7,12.0.0/1/5/7,12.1.0/5 against their primary
+client API documentation; tests inject an independent RFC CBOR cross-reader.
+Actual client CBOR mapping, frame timing, combat/taint and native allocator
+behavior remain unverified. See the linked Forever/Retail API sources above.
+
+This seam does not resolve the prior prototype's18.75ms desktop Lua literal
+load observation. This backend has no whole-pilot profile yet. Admission before
+package construction, accumulated world/package
+residency, or arbitrary native file IO. No game API, JSON parser, per-page addon,
+new planner lifecycle, host integration or default-client switch is introduced.

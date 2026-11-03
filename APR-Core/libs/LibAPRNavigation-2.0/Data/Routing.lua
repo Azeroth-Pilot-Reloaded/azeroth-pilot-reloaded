@@ -37,6 +37,13 @@ end
 
 function Routing.New(source)
     local atlas, units = source.routing, source.cacheSize
+    local pages=source.loader and source.loader.pages
+    if pages and type(atlas)=='table' then
+        local header={}
+        for _,key in ipairs({'version','identity','names','ordinals','landmarks','landmarkNodes',
+            'rowsPerBlock','potentialRowsPerBlock','witnessRowsPerBlock'}) do header[key]=atlas[key] end
+        header.sectors=pages.bootstrap;atlas=header
+    end
     if units == nil then units = 2 end
     if type(atlas) ~= 'table' or atlas.version ~= VERSION or not Identity(atlas.identity)
         or type(atlas.names) ~= 'table' or type(atlas.sectors) ~= 'table' or type(atlas.ordinals)~='table'
@@ -49,7 +56,8 @@ function Routing.New(source)
     if source.routingIdentity ~= atlas.identity then return nil, 'routing_identity_mismatch' end
     local maxRows = units * ROWS_PER_CACHE_UNIT
     return setmetatable({partitioned=true, routing=true, integerCosts=true, complete=source.complete,
-        index=source.index, atlas=atlas, options=source.loader.options, maxRows=maxRows,
+        index=source.index, atlas=atlas, pages=pages, checkedMetadata=setmetatable({},{__mode='k'}),
+        options=source.loader.options, maxRows=maxRows,
         capacity=math.floor(maxRows / atlas.rowsPerBlock), cache={},
         potentialCache={capacity=math.floor(POTENTIAL_CACHE_ROWS/atlas.potentialRowsPerBlock),cache={},stats={resident=0,evictions=0}},
         witnessCache={capacity=math.floor(WITNESS_CACHE_ROWS/atlas.witnessRowsPerBlock),cache={},stats={resident=0,evictions=0}},
@@ -60,6 +68,7 @@ function Routing.New(source)
 end
 
 local function Metadata(graph, sector)
+    if graph.pages then return graph.pages:Lookup(sector) end
     local source, item = graph.index[sector], graph.atlas.sectors[sector]
     if source == nil or item == nil then return nil, 'unknown', 'sector_absent' end
     if type(source) ~= 'table' or type(item) ~= 'table' or type(source.name) ~= 'string'
@@ -92,7 +101,7 @@ local function Ranges(graph, item)
 end
 
 local function Edge(job, edge)
-    local graph, source = job.graph, job.graph.index[job.sector]
+    local graph, source = job.graph, job.index or job.graph.index[job.sector]
     if Array(edge, 5) ~= 5 or not Integer(edge[1], 1, 65535) or not Integer(edge[2], 1, MAX_NODES)
         or not Integer(edge[3], 0, CAP) or not Integer(edge[4], 0, 2)
         or not Integer(edge[5], -256, 24576) or edge[5] == 0 then return 'invalid_routing_edge' end
@@ -116,6 +125,7 @@ local function Edge(job, edge)
 end
 
 function Page:Cancel()
+    if self.read then self.read:Cancel();self.read=nil end
     self.cancelled, self.decoded, self.bytes, self.rows = true, nil, nil, nil
 end
 
@@ -139,7 +149,7 @@ local function Header(job)
         or not Integer(raw.rawBytes, 1, MAX_RAW) or type(raw.payload) ~= 'string' or #raw.payload > MAX_PAYLOAD then
         return 'invalid', 'invalid_routing_block'
     end
-    if not Ranges(job.graph, job.item) then return 'invalid', 'invalid_routing_potentials' end
+    if not job.graph.pages and not Ranges(job.graph, job.item) then return 'invalid', 'invalid_routing_potentials' end
     job.bytes, job.phase = raw.payload, 'base64'
 end
 
@@ -169,6 +179,14 @@ end
 function Page:Advance()
     if self.cancelled then return 'cancelled', 'cancelled' end
     self.graph.stats.operations = self.graph.stats.operations + 1
+    if self.phase=='flat' then
+        local status,reason=self.read:Advance()
+        if status=='ready' then
+            if self.read.kind~=1 then return 'invalid','invalid_flat_routing' end
+            self.metadata,self.read,self.phase=self.read.value,nil,'header';return
+        end
+        return status,reason
+    end
     if self.phase == 'header' then return Header(self) end
     if self.phase == 'base64' then return Decode(self, 'decodeBase64', 'inflate') end
     if self.phase == 'inflate' then return Decode(self, 'inflate', 'deserialize') end
@@ -176,16 +194,40 @@ function Page:Advance()
     if self.phase == 'block' then return Block(self) end
 end
 
-local function PageRow(entry,localNode)
+local function FlatMetadata(graph,search,sector)
+    local metadata,status,reason=graph.pages:Ensure(search,sector)
+    if not metadata then return nil,status,reason end
+    if graph.checkedMetadata[metadata] then return metadata end
+    local item=metadata.routing
+    local b=graph.pages.bootstrap[sector]
+    if type(item)~='table' or item.nodes~=b.nodes or item.complete~=b.complete or not Ranges(graph,item)
+        or not graph.pages.ValidSpan(graph.pages,item.blocks) or not graph.pages.ValidSpan(graph.pages,item.potentialBlocks)
+        or Array(item.witnessBlocks,MAX_LANDMARKS)~=graph.atlas.landmarks then return nil,'invalid','invalid_routing_sector' end
+    for _,pair in ipairs(item.witnessBlocks) do
+        if Array(pair,2)~=2 or not graph.pages.ValidSpan(graph.pages,pair[1])
+            or not graph.pages.ValidSpan(graph.pages,pair[2]) then return nil,'invalid','invalid_routing_sector' end
+    end
+    graph.checkedMetadata[metadata]=true
+    return metadata
+end
+
+local function PageRow(entry,localNode,metadata)
     local cursor=localNode-entry.first+1
     local row=entry.rows[cursor]
     if type(row)~='table' then return nil,'invalid','invalid_routing_row' end
-    return row,nil,nil,entry,cursor
+    return row,nil,nil,entry,cursor,metadata
 end
 
 function Routing:GetPage(search, node, potential, witness, forward)
     local located, sector, item, localNode = self:Locate(node)
     if not located then return nil, sector, item end
+    local flatMetadata
+    if self.pages then
+        local status,reason
+        flatMetadata,status,reason=FlatMetadata(self,search,sector)
+        if not flatMetadata then return nil,status,reason end
+        item=flatMetadata.routing
+    end
     local size=witness and self.atlas.witnessRowsPerBlock or potential and self.atlas.potentialRowsPerBlock or self.atlas.rowsPerBlock
     local owner=witness and self.witnessCache or potential and self.potentialCache or self
     local page = math.floor((localNode - 1) / size) + 1
@@ -199,7 +241,7 @@ function Routing:GetPage(search, node, potential, witness, forward)
         elseif potential then self.stats.potentialHits=self.stats.potentialHits+1
         else self.stats.hits = self.stats.hits + 1 end
         if not item.complete then search.sawIncomplete = true end
-        return PageRow(entry,localNode)
+        return PageRow(entry,localNode,flatMetadata)
     end
     if search.routingFailures and search.routingFailures[key] then return nil, 'unknown', search.routingFailures[key] end
     if not search.loading then
@@ -214,10 +256,14 @@ function Routing:GetPage(search, node, potential, witness, forward)
         else blocks=item.blocks end
         if blocks==nil then return nil,'unknown','routing_block_absent' end
         if type(blocks)~='table' then return nil,'invalid','invalid_routing_block' end
-        local raw=blocks[page]
-        if raw == nil then return nil, 'unknown', 'routing_block_absent' end
+        local raw=not self.pages and blocks[page]
+        if self.pages and (page>blocks.count) then return nil,'unknown','routing_block_absent' end
+        local read=self.pages and self.pages:Read(blocks.first+page-1)
+        if raw == nil and not read then return nil, 'unknown', 'routing_block_absent' end
         search.loading = {id=key, job=setmetatable({graph=self, sector=sector, item=item,
-            metadata=raw, first=first, potential=potential or witness, count=math.min(size,item.nodes-first+1), phase='header'}, Page)}
+            metadata=raw,read=read, first=first, potential=potential or witness,
+            count=math.min(size,item.nodes-first+1), phase=read and 'flat' or 'header'}, Page),
+            sector=sector,sectorMetadata=flatMetadata}
         if witness then self.stats.witnessLoads=self.stats.witnessLoads+1
         elseif potential then self.stats.potentialLoads=self.stats.potentialLoads+1
         else self.stats.loads = self.stats.loads + 1 end
@@ -237,7 +283,7 @@ function Routing:GetPage(search, node, potential, witness, forward)
         else self.stats.residentRows=self.stats.residentRows+#entry.rows-(removed and #removed.rows or 0) end
         search.loading = nil
         if not item.complete then search.sawIncomplete = true end
-        return PageRow(entry,localNode)
+        return PageRow(entry,localNode,flatMetadata)
     end
     if status then
         search.loading = nil
@@ -251,10 +297,11 @@ function Routing:GetPage(search, node, potential, witness, forward)
 end
 
 function Routing:Ensure(search,node)
-    local row,status,reason,entry,cursor=self:GetPage(search,node,true)
+    local row,status,reason,entry,cursor,metadata=self:GetPage(search,node,true)
     if not row then return nil,status,reason end
     local sector=node:match('^([^:]+):')
-    if not Potential(self,entry,cursor,self.atlas.sectors[sector]) then
+    local item=metadata and metadata.routing or self.atlas.sectors[sector]
+    if not Potential(self,entry,cursor,item) then
         return nil,'invalid','invalid_routing_potentials'
     end
     return row
@@ -262,7 +309,8 @@ end
 
 function Routing:Estimate(search, node, row)
     local sector = node:match('^([^:]+):')
-    local goal, bounds = search.goalPotential, self.atlas.sectors[sector]
+    local metadata=self.pages and self.pages:Peek(sector)
+    local goal, bounds = search.goalPotential, self.pages and metadata and metadata.routing or not self.pages and self.atlas.sectors[sector]
     if not goal or not bounds then return 0 end
     if not row then
         local localNode=tonumber(node:match(':terrain:(%d+)$'))
@@ -291,24 +339,32 @@ function Routing:Refine(search, entry, row)
 end
 
 function Routing:ReadEdge(search, node, cursor)
-    local row, status, reason,entry,localCursor = self:GetPage(search, node, false)
-    if not row then return nil, status, reason end
-    if not entry.validatedRows[localCursor] then
-        if not Array(row,MAX_EDGES) then return nil,'invalid','invalid_routing_row' end
-        entry.validatedRows[localCursor]=true
-        entry.checkedEdges[localCursor]={}
-        self.stats.rowsValidated=self.stats.rowsValidated+1
+    local active=search.adjacency
+    if not active or active.node~=node then
+        local row,status,reason,entry,localCursor,metadata=self:GetPage(search,node,false)
+        if not row then return nil,status,reason end
+        if not entry.validatedRows[localCursor] then
+            if not Array(row,MAX_EDGES) then return nil,'invalid','invalid_routing_row' end
+            entry.validatedRows[localCursor]=true
+            entry.checkedEdges[localCursor]={}
+            self.stats.rowsValidated=self.stats.rowsValidated+1
+        end
+        active={node=node,row=row,checked=entry.checkedEdges[localCursor],localNode=entry.first+localCursor-1,
+            sector=node:match('^([^:]+):')}
+        active.index=metadata and metadata.index or self.index[active.sector]
+        search.adjacency=active
     end
+    local row=active.row
     local edge = row[cursor]
     if not edge then return end
-    local sector = node:match('^([^:]+):')
-    if not entry.checkedEdges[localCursor][cursor] then
-        local invalid=Edge({graph=self,sector=sector,first=entry.first,cursor=localCursor},edge)
+    local sector = active.sector
+    if not active.checked[cursor] then
+        local invalid=Edge({graph=self,sector=sector,index=active.index,first=active.localNode,cursor=1},edge)
         if invalid then return nil,'invalid',invalid end
-        entry.checkedEdges[localCursor][cursor]=true
+        active.checked[cursor]=true
         self.stats.edgesValidated=self.stats.edgesValidated+1
     end
-    local id = edge[5] > 0 and ('route:'..edge[5]) or self.index[sector].links[-edge[5]].id
+    local id = edge[5] > 0 and ('route:'..edge[5]) or active.index.links[-edge[5]].id
     return {id=sector..':'..id, from=node, to=NodeId(self.atlas.names[edge[1]], edge[2]),
         seconds=edge[3] / 1000, milliseconds=edge[3],
         access=edge[4] == 0 and 'available' or edge[4] == 1 and 'unknown' or 'unavailable'}
@@ -335,7 +391,7 @@ end
 
 local function BeginCertificate(graph,search,origin)
     search.certificateTried=true
-    if #search.objective.via>0 then return end
+    if #search.objective.via>0 or search.limits.labels<3 then return end
     local lower=0
     for i=1,graph.atlas.landmarks do
         lower=math.max(lower,search.goalPotential[1][i]-origin[1][i],origin[2][i]-search.goalPotential[2][i])
@@ -349,7 +405,7 @@ local function BeginCertificate(graph,search,origin)
             local goal={node=search.objective.to}
             search.certificate={index=i,landmark=NodeId(graph.atlas.names[landmark[1]],landmark[2]),
                 expected=lower,total=0,goal=goal,back=goal,front={node=search.objective.from},
-                seenBack={},seenFront={},phase='back_witness'}
+                seenBack={},seenFront={},retained=3,phase='back_witness'}
             search.diagnostics.phase='certificate'
             return
         end
@@ -371,6 +427,9 @@ local function Trace(graph,search)
         return true,'prepared'
     end
     if c.phase=='back_witness' or c.phase=='front_witness' then
+        if c.retained>=search.limits.labels then
+            return nil,'budget_exceeded','label_limit'
+        end
         local seen=back and c.seenBack or c.seenFront
         if seen[current.node] then return Reject(search,'witness_cycle') end
         local witness,status,reason=Witness(graph,search,current.node,c.index,not back)
@@ -387,10 +446,16 @@ local function Trace(graph,search)
     local sector,localNode=c.source:match('^([^:]+):terrain:(%d+)$')
     local located,_,locateReason=graph:Locate(c.source)
     if not located then return Reject(search,locateReason) end
-    local invalid=Edge({graph=graph,sector=sector,first=tonumber(localNode),cursor=1},c.edge)
+    local index=graph.index[sector]
+    if graph.pages then
+        local metadata,status,reason=FlatMetadata(graph,search,sector)
+        if not metadata then if status=='running' then return nil,status end;return Reject(search,reason) end
+        index=metadata.index
+    end
+    local invalid=Edge({graph=graph,sector=sector,index=index,first=tonumber(localNode),cursor=1},c.edge)
     if invalid then return Reject(search,invalid) end
     local raw=c.edge
-    local id=raw[5]>0 and ('route:'..raw[5]) or graph.index[sector].links[-raw[5]].id
+    local id=raw[5]>0 and ('route:'..raw[5]) or index.links[-raw[5]].id
     local edge={id=sector..':'..id,from=c.source,to=NodeId(graph.atlas.names[raw[1]],raw[2]),
         milliseconds=raw[3],seconds=raw[3]/1000,
         access=raw[4]==0 and 'available' or raw[4]==1 and 'unknown' or 'unavailable'}
@@ -406,6 +471,8 @@ local function Trace(graph,search)
         c.front={node=edge.to,parent=current,edge=edge}
         c.phase='front_witness'
     end
+    c.retained=c.retained+1
+    search.diagnostics.witnessLabels=c.retained
     search.diagnostics.witnessEdges=(search.diagnostics.witnessEdges or 0)+1
     return nil,'running'
 end

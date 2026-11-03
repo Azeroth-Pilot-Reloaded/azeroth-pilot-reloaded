@@ -18,8 +18,11 @@
     <Script file="Unlocks.lua"/>
     <Script file="Calibration.lua"/>
     <Script file="Navigation.lua"/>
+    <Script file="Data/Pages.lua"/>
     <Script file="Data/Loader.lua"/>
     <Script file="Data/Sectors.lua"/>
     <Script file="Data/Routing.lua"/>
     <Script file="Data/ForeverFirstTile.lua"/>
+    <Script file="Data/forever/Transports/Catalog.lua"/>
+    <Script file="Data/forever/Transports/Bindings.lua"/>
 </Ui>

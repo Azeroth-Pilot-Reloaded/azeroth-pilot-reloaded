@@ -33,11 +33,15 @@ function Sectors.New(source)
         or type(source.loader) ~= 'table' or type(source.loader.Load) ~= 'function'
         or not Integer(capacity, MAX_CACHE) then return nil, 'invalid_sector_graph' end
     return setmetatable({partitioned=true, complete=source.complete, index=source.index,
-        loader=source.loader, capacity=capacity, cache={},
+        loader=source.loader, pages=source.loader.pages, capacity=capacity, cache={},
         stats={resident=0, loads=0, hits=0, evictions=0}}, Sectors)
 end
 
 local function Metadata(graph, id)
+    if graph.pages then
+        local value,_,reason=graph.pages:Lookup(id)
+        return value,reason
+    end
     local entry = graph.index[id]
     if entry == nil then return nil, 'sector_absent' end
     if type(entry) ~= 'table' or not Name(entry.name) or not Integer(entry.nodes, MAX_NODES)
@@ -111,7 +115,7 @@ end
 
 local function Advance(graph, state)
     if state.job then
-        local result = state.job:Step(1)
+        local result = state.job:Advance()
         if result.status == 'running' then return end
         if result.status ~= 'complete' then return result.status, result.reason end
         local preparation, reason = Graph.New(result.graph)
@@ -156,10 +160,17 @@ function Sectors:Ensure(search, node)
     if not located then return nil, sector, metadata end
     local failure = search.sectorFailures and search.sectorFailures[sector]
     if failure then return nil, 'unknown', failure end
+    local flatMetadata
+    if self.pages then
+        local status,reason
+        flatMetadata,status,reason=self.pages:Ensure(search,sector)
+        if not flatMetadata then return nil,status,reason end
+        metadata=flatMetadata.index
+    end
     local state = search.loading
     if not state then
         search.loading = {id=sector, metadata=metadata, job=self.loader:Load(sector, true),
-            boundaries={}, seen={}, count=0, maximum=0}
+            sector=sector,sectorMetadata=flatMetadata,boundaries={}, seen={}, count=0, maximum=0}
         self.stats.loads = self.stats.loads + 1
         search.diagnostics.sectorLoads = (search.diagnostics.sectorLoads or 0) + 1
         return nil, 'running'
@@ -188,6 +199,7 @@ end
 function Sectors.Source(index, catalog, options)
     local loader, reason = ns.NavigationV2Terrain.New(catalog, options)
     if not loader then return nil, reason end
+    if loader.pages and index~=loader.pages.bootstrap then return nil,'invalid_flat_bootstrap' end
     local complete = options.complete
     if complete == nil then complete = false end
     local source = {partitioned=true, index=index, loader=loader,

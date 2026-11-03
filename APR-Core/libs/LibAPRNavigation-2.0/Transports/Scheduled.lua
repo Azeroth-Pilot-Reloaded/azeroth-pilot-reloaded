@@ -7,7 +7,7 @@ local Scheduled, Execution, Catalog = {}, {}, {}
 Execution.__index, Catalog.__index = Execution, Catalog
 local MAX_ROUTES = 256
 local COST_FIELDS = { "approach", "boarding", "ride", "loading", "disembark", "final" }
-local KINDS = { boat = true, zeppelin = true, elevator = true }
+local KINDS = { boat = true, zeppelin = true, elevator = true, tram = true }
 
 local function Identifier(value)
     return type(value) == "string" and value ~= ""
@@ -65,6 +65,32 @@ local function Costs(source, overrides)
     return costs, total
 end
 
+-- A declared total is an alternative model, never a fabricated timetable or
+-- decomposition. Component overrides cannot partially modify an aggregate.
+local function CostModel(declaration, overrides)
+    if declaration.totalSeconds~=nil then
+        if not Nonnegative(declaration.totalSeconds) or declaration.costs~=nil or declaration.wait~=nil then
+            return nil,'invalid_scheduled_total'
+        end
+        for key in pairs(overrides) do
+            if key~='totalSeconds' then return nil,'invalid_scheduled_total_override' end
+        end
+        local total=overrides.totalSeconds
+        if total==nil then total=declaration.totalSeconds end
+        if not Nonnegative(total) then return nil,'invalid_scheduled_total' end
+        return {totalSeconds=total,seconds=total}
+    end
+    local costs,base=Costs(declaration.costs,overrides)
+    if not costs then return nil,'invalid_scheduled_costs' end
+    local source=overrides.wait
+    if source==nil then source=declaration.wait end
+    local wait=Wait(source)
+    if not wait then return nil,'unknown_scheduled_wait' end
+    local seconds=wait.seconds and base+wait.seconds
+    if seconds and not Finite(seconds) then return nil,'scheduled_cost_overflow' end
+    return {costs=costs,baseSeconds=base,wait=wait,seconds=seconds}
+end
+
 -- Capture once per planning request. Treat the returned route as immutable.
 -- Periodic routes deliberately have no static seconds: use Cost at relaxation.
 function Scheduled.Compile(declaration, overrides)
@@ -72,32 +98,35 @@ function Scheduled.Compile(declaration, overrides)
         or not Identifier(declaration.from) or not Identifier(declaration.to)
         or declaration.from == declaration.to then return nil, "invalid_scheduled_route" end
     if overrides == nil then overrides = {} end
-    local costs, base = Costs(declaration.costs, overrides)
-    if not costs then return nil, "invalid_scheduled_costs" end
-    local waitSource = overrides.wait
-    if waitSource == nil then waitSource = declaration.wait end
-    local wait = Wait(waitSource)
-    if not wait then return nil, "unknown_scheduled_wait" end
+    if type(overrides)~='table' then return nil,'invalid_scheduled_costs' end
+    local model,reason=CostModel(declaration,overrides)
+    if not model then return nil,reason end
     local origin, destination = Stop(declaration.origin), Stop(declaration.destination)
     if not origin or not destination then return nil, "invalid_scheduled_stops" end
     if origin.id == destination.id and origin.worldID == destination.worldID
         and origin.floorID == destination.floorID and origin.phaseID == destination.phaseID then
         return nil, "identical_scheduled_stops"
     end
-    local seconds = wait.seconds and base + wait.seconds
-    if seconds and not Finite(seconds) then return nil, "scheduled_cost_overflow" end
     local access = declaration.access
     if access == nil then access = "unknown" end
     if access ~= "available" and access ~= "unavailable" and access ~= "unknown" then return nil, "invalid_scheduled_access" end
     return { id = declaration.id, kind = declaration.kind, from = declaration.from, to = declaration.to, access = access,
         origin = origin, destination = destination,
-        costs = costs, baseSeconds = base, wait = wait, seconds = seconds }
+        costs = model.costs, baseSeconds = model.baseSeconds, wait = model.wait,
+        seconds = model.seconds,totalSeconds=model.totalSeconds }
 end
 
 -- elapsedSeconds is the cost of preceding legs; startedAt is a frozen epoch in
 -- the timetable's clock domain. Boarding must finish before the chosen departure.
 -- Only fixed waits and known FIFO periodic departures are supported.
 function Scheduled.Cost(route, elapsedSeconds, startedAt)
+    if type(route)=='table' and route.totalSeconds~=nil then
+        if not Nonnegative(route.totalSeconds) or route.costs~=nil or route.wait~=nil then
+            return nil,'invalid_scheduled_route'
+        end
+        if not Nonnegative(elapsedSeconds) then return nil,'invalid_elapsed_cost' end
+        return route.totalSeconds,{totalSeconds=route.totalSeconds}
+    end
     if type(route) ~= "table" or not Finite(route.baseSeconds) or type(route.wait) ~= "table"
         or type(route.costs) ~= "table" then return nil, "invalid_scheduled_route" end
     if not Nonnegative(elapsedSeconds) then return nil, "invalid_elapsed_cost" end
@@ -184,7 +213,7 @@ function Execution:GetState()
     return { status = self.status, phase = self.phase, reason = self.reason, revision = self.revision,
         routeID = self.route.id, objectiveID = self.objectiveID, deadline = self.deadline, attempt = self.attempt,
         instruction = { kind = self.route.kind, phase = self.phase },
-        wait = Target.Copy(self.route.wait), target = GuidanceTarget(self) }
+        wait = self.route.wait and Target.Copy(self.route.wait), target = GuidanceTarget(self) }
 end
 
 local function Finish(execution, status, reason)

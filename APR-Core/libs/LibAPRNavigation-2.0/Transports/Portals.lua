@@ -17,6 +17,20 @@ local function Duration(value)
     return Finite(value) and value >= 0
 end
 
+local function CaptureCosts(declaration,result)
+    if declaration.totalSeconds~=nil then
+        if not Duration(declaration.totalSeconds) or declaration.waitSeconds~=nil
+            or declaration.useSeconds~=nil or declaration.loadingSeconds~=nil then return nil end
+        result.totalSeconds=declaration.totalSeconds
+        return true
+    end
+    for _,key in ipairs({'waitSeconds','useSeconds','loadingSeconds'}) do
+        if not Duration(declaration[key]) then return nil end
+        result[key]=declaration[key]
+    end
+    return Finite(result.waitSeconds+result.useSeconds+result.loadingSeconds)
+end
+
 local function Capture(declaration)
     if type(declaration) ~= 'table' or not Name(declaration.id) or not Name(declaration.from)
         or not Name(declaration.to) or not Name(declaration.phase)
@@ -24,12 +38,7 @@ local function Capture(declaration)
         or not Name(declaration.destination.phase) then return nil end
     local result = {id=declaration.id,from=declaration.from,to=declaration.to,phase=declaration.phase,
         destination={space=declaration.destination.space,phase=declaration.destination.phase}}
-    for _, key in ipairs({'waitSeconds','useSeconds','loadingSeconds'}) do
-        local value = declaration[key]
-        if not Duration(value) then return nil end
-        result[key] = value
-    end
-    if not Finite(result.waitSeconds + result.useSeconds + result.loadingSeconds) then return nil end
+    if not CaptureCosts(declaration,result) then return nil end
     if not Duration(declaration.timeoutSeconds) or declaration.timeoutSeconds == 0 then return nil end
     result.timeoutSeconds = declaration.timeoutSeconds
     local target = ns.NavigationV2WaypointTarget.Capture({key='portal:'..result.id,
@@ -99,6 +108,14 @@ function Catalog:SetCosts(id, costs)
     local portal = self.byId[id]
     if not portal or type(costs) ~= 'table' then return nil, 'invalid_portal_costs' end
     local changed = false
+    if portal.totalSeconds~=nil then
+        for key,value in pairs(costs) do
+            if key~='totalSeconds' or not Duration(value) then return nil,'invalid_portal_costs' end
+            changed=changed or value~=portal.totalSeconds
+        end
+        if costs.totalSeconds~=nil then portal.totalSeconds=costs.totalSeconds end
+        return changed
+    end
     for key, value in pairs(costs) do
         if (key ~= 'waitSeconds' and key ~= 'useSeconds' and key ~= 'loadingSeconds')
             or not Duration(value) then return nil, 'invalid_portal_costs' end
@@ -113,7 +130,8 @@ end
 function Catalog:Edge(node, cursor)
     local portal = (self.outgoing[node] or {})[cursor]
     if not portal then return end
-    local seconds = portal.waitSeconds + portal.useSeconds + portal.loadingSeconds
+    local seconds = portal.totalSeconds
+    if seconds==nil then seconds=portal.waitSeconds + portal.useSeconds + portal.loadingSeconds end
     return {id='portal:'..portal.id,from=portal.from,to=portal.to,seconds=seconds,
         access=portal.access,kind='portal',portalId=portal.id}
 end

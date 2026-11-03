@@ -47,7 +47,7 @@ function Adapter.Describe(planner,options)
             local overrides={}
             if kind=='taxi' then overrides=catalog.settings[id] or {}
             elseif kind=='scheduled' then overrides=(options.scheduledOverrides or {})[id] or {} end
-            for component,field in pairs(FIELDS[kind]) do
+            for component,field in pairs(d.totalSeconds==nil and FIELDS[kind] or {}) do
                 local default,current
                 if kind=='taxi' or kind=='scheduled' then default=d.costs[field] else default=d[field] end
                 if kind=='taxi' and component=='ride' then

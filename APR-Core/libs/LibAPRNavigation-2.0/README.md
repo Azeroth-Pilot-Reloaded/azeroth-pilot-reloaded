@@ -99,6 +99,44 @@ invalidates its revision; any subsequent `Step` on an older job returns `stale`.
 Independent jobs on one planner may coexist; APR retains only its newest one.
 The planner keeps no result cache or collection of completed jobs.
 
+NAV-20 adds deterministic structure ceilings in `Graph.Limits`: 4096 zones,
+65536 prepared nodes, 262144 prepared edges, 65536 retained search labels
+(including replaced heap entries), 32768 reconstructed segments and 262144
+copied execution-snapshot fields. Pass
+`limits={nodes=...,edges=...,labels=...,segments=...,zones=...,snapshotFields=...}` to `New` to
+lower selected ceilings. Invalid values or attempts to raise them return
+`invalid_limits`. Crossing a ceiling returns terminal `budget_exceeded` with
+`zone_limit`, `node_limit`, `edge_limit`, `label_limit`, `segment_limit` or `snapshot_limit`,
+without a partial route or a disconnection claim. Ordered visits, modes,
+resources, cooldowns and prerequisite state retain their existing state spaces.
+Resource dominance comparisons and witness reconstruction obey the label cap.
+The count bounds apply per planner/job; callers own their source declarations
+and the number of concurrent planners/jobs they retain.
+
+These ceilings are count bounds, not an aggregate addon byte guarantee. The
+current bundle format still registers its entire encoded atlas. Decoded-page
+LRUs do not bound that static residency. Native decoding, GC and return overhead
+are cooperative units; the desktop receipt does not certify a strict 1 ms
+end-to-end deadline or whole-world residency.
+
+With the actual XML module order, completion includes an `execution_snapshot`
+phase. One field at a time is copied into a private execution payload under the
+same job slice/CPU/wall and field-count budgets. Search, reconstruction and this
+capture share one clock origin: a budget stop/cancel/stale capture publishes no
+completed route. `StartTravel` consumes the already captured payload; it does
+not traverse the itinerary. Public result edits cannot change existing or later
+executions. No caller-supplied trust flag or result snapshot is accepted.
+
+The private payload is never exposed as a travel segment array. Execution only
+reads it and returns fresh action records. Repeated executions can therefore
+reuse it without sharing caller-mutable segment/resource/cost-detail tables.
+Each travel has its own mutable condition token, state, index and attempt.
+Prerequisite support stays private too; `journey.unlock.entry` contains only
+the semantic id/node/title needed by host display. Original destination/visits,
+fresh proof checks and committed transport receipts keep their previous rules.
+Private weak-key stores release discarded results, travels and prerequisite
+sessions and do not create a result-history cache.
+
 Results are caller-read-only tables. They retain `objective`, `revision` and
 `diagnostics`: operations, slices, prepared nodes/edges, expanded nodes, relaxed
 edges, CPU/elapsed milliseconds and preparation/search phase. Preparation counts

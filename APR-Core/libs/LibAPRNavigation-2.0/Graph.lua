@@ -3,6 +3,22 @@ local _, namespace = ...
 local Graph, Preparation = {}, {}
 Preparation.__index = Preparation
 local MAX_VIA = 64
+-- Shared physical defaults. Callers may lower memory ceilings, never raise them.
+Graph.Budgets = {sliceMs=1,cpuMs=100,elapsedMs=5000}
+Graph.Limits = {zones=4096,nodes=65536,edges=262144,labels=65536,segments=32768,snapshotFields=262144}
+
+function Graph.CaptureLimits(source)
+    if source~=nil and type(source)~='table' then return nil end
+    local result={}
+    for key,maximum in pairs(Graph.Limits)do
+        local value=source and source[key]
+        if value==nil then value=maximum end
+        if type(value)~='number' or value<1 or value>maximum or value%1~=0 then return nil end
+        result[key]=value
+    end
+    for key in pairs(source or {})do if not Graph.Limits[key] then return nil end end
+    return result
+end
 Graph.SAFE_INTEGER = 9007199254740991
 
 function Graph.Finite(value)
@@ -157,7 +173,7 @@ function Graph.CaptureRequest(request)
     end
 end
 
-function Graph.New(source,context)
+function Graph.New(source,context,limits)
     context=context or {tracker=namespace.NavigationV2Conditions.New(),bindings={}}
     if type(source) == "table" and source.partitioned == true then
         if not namespace.NavigationV2Sectors then return nil, "sectors_unavailable" end
@@ -170,7 +186,7 @@ function Graph.New(source,context)
     if type(source) ~= "table" or type(source.complete) ~= "boolean"
         or type(source.nodes) ~= "table" or type(source.edges) ~= "table"
         or (source.zones~=nil and type(source.zones)~='table') then return nil, "invalid_graph" end
-    return setmetatable({ sourceNodes = source.nodes, sourceEdges = source.edges,
+    return setmetatable({ sourceNodes = source.nodes, sourceEdges = source.edges,limits=limits or Graph.Limits,
         sourceZones=source.zones,sourceRequirements=source.requirements,rootPrepared=source.requirements==nil,
         phase = source.zones and 'prepare_zones' or "prepare_nodes", count = 0, maximum = 0, seen = {},
         compiled = { complete = source.complete, nodes = {}, index = {}, outgoing = {},
@@ -236,6 +252,10 @@ local function AdvanceArray(preparation, source, copy)
         return true
     end
     if not ArrayKey(key) then return nil, "invalid_graph" end
+    local field=copy==Node and 'nodes' or copy==Edge and 'edges' or 'zones'
+    if preparation.count>=preparation.limits[field] then
+        return nil,copy==Node and 'node_limit' or copy==Edge and 'edge_limit' or 'zone_limit'
+    end
     local reason = copy(preparation, key, value)
     if reason then return nil, reason end
     preparation.count = preparation.count + 1
@@ -244,7 +264,7 @@ local function AdvanceArray(preparation, source, copy)
 end
 
 function Preparation:Advance()
-    if self.reason then return "invalid", self.reason end
+    if self.reason then return self.status or "invalid", self.reason end
     if not self.rootPrepared then
         local binding,reason=Graph.BindRequirements(self.compiled.conditionContext,self.sourceRequirements)
         if reason then self.reason=reason;return 'invalid',reason end
@@ -257,8 +277,9 @@ function Preparation:Advance()
     local done, reason = AdvanceArray(self, source, zones and Zone or nodes and Node or Edge)
     if done and nodes and self.count == 0 then reason = "invalid_graph" end
     if reason then
-        self.reason, self.compiled, self.sourceNodes, self.sourceEdges, self.seen = reason, nil, nil, nil, nil
-        return "invalid", reason
+        self.reason, self.compiled, self.sourceNodes, self.sourceEdges, self.seen, self.sourceZones = reason, nil, nil, nil, nil, nil
+        self.status=(reason=='node_limit' or reason=='edge_limit' or reason=='zone_limit') and 'budget_exceeded' or 'invalid'
+        return self.status, reason
     end
     if done then
         self.cursor, self.count, self.maximum = nil, 0, 0

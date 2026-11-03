@@ -4,6 +4,78 @@ local Finite = ns.NavigationV2Graph.Finite
 local Copy = ns.NavigationV2WaypointTarget.Copy
 local Actions, Travel, Journey = {}, {}, {}
 Travel.__index, Journey.__index = Travel, Journey
+-- Values never reference their weak keys. Execution data has no public alias.
+local PENDING=setmetatable({}, {__mode='k'})
+local CAPTURED=setmetatable({}, {__mode='k'})
+local EXECUTIONS=setmetatable({}, {__mode='k'})
+local UNLOCKS=setmetatable({}, {__mode='k'})
+
+local function BeginCapture(job)
+    local entry=job.unlock
+    local source={objective=job.objective,segments=job.search.segments,owner=job.planner.identity,
+        revision=job.revision,conditionToken=job.conditionToken,unlockSequence=job.unlockSequence}
+    local seen={[job.planner.identity]=job.planner.identity,
+        [job.conditionToken.owner]=job.conditionToken.owner}
+    if entry then
+        -- The selected result must not expose catalogue resource prices or the
+        -- live tracker snapshot. These bounded maps/support are job-owned now.
+        if entry.resources then entry.resources=Copy(entry.resources) end
+        entry.proof={ready=entry.proof.ready,plan=entry.proof.plan,required=entry.proof.required}
+        local selected={}
+        for key,value in pairs(entry)do if key~='proof' then selected[key]=value end end
+        -- Only completed support is execution data, not tracker/search history.
+        selected.proof={ready=entry.proof.ready,plan=entry.proof.plan,required=entry.proof.required}
+        source.unlockEntry=selected
+        seen[entry.opens]=entry.opens
+        if entry.eligible then seen[entry.eligible]=entry.eligible end
+    end
+    local copy={}
+    seen[source]=copy
+    return {copy=copy,seen=seen,stack={{source=source,target=copy}},fields=0}
+end
+
+-- Internal job seam: one copied table field or one stack exit per Advance.
+function Actions.PrepareResult(job)
+    local state=PENDING[job]
+    if not state then state=BeginCapture(job);PENDING[job]=state end
+    local frame=state.stack[#state.stack]
+    if not frame then state.ready=true;return true end
+    local key,value=next(frame.source,frame.cursor)
+    if key==nil then state.stack[#state.stack]=nil;return false end
+    if state.fields>=job.planner.limits.snapshotFields then return nil,'budget_exceeded','snapshot_limit' end
+    state.fields=state.fields+1
+    job.diagnostics.snapshotFields=state.fields
+    frame.cursor=key
+    if type(value)=='table' then
+        local copy=state.seen[value]
+        if not copy then
+            copy={};state.seen[value]=copy
+            state.stack[#state.stack+1]={source=value,target=copy}
+        end
+        value=copy
+    end
+    frame.target[key]=value
+    return false
+end
+
+function Actions.PublishResult(job,result)
+    local state=PENDING[job]
+    if not state or not state.ready then return false end
+    CAPTURED[result]=state.copy;PENDING[job]=nil
+    return true
+end
+
+function Actions.AbortResult(job)PENDING[job]=nil end
+
+function Actions.CurrentResult(planner,result)
+    local plan=CAPTURED[result]
+    return plan and plan.owner==planner.identity and plan.revision==planner.revision
+        and planner.conditions:IsCurrent(plan.conditionToken) or false
+end
+
+function Actions.UnlockEntry(session)return UNLOCKS[session] end
+
+local function Segments(travel)return EXECUTIONS[travel].segments end
 local function Revision(value)
     return Finite(value) and value >= 1 and value % 1 == 0
 end
@@ -27,7 +99,7 @@ end
 function Journey:RemainingRequest()
     if self.unlock then
         if not self.node then return nil end
-        return {from=self.node,to=self.unlock.entry.node,via={}}
+        return {from=self.node,to=UNLOCKS[self.unlock].node,via={}}
     end
     return self:OriginalRequest()
 end
@@ -45,6 +117,8 @@ end
 
 function Actions.New(planner, result, options, journey)
     if not planner:IsCurrent(result) then return nil, 'stale_result' end
+    local plan=CAPTURED[result]
+    if not plan then return nil,'stale_result' end
     if options ~= nil and type(options) ~= 'table' then return nil, 'invalid_travel_options' end
     options = options or {}
     local timeout = options.scheduledTimeoutSeconds
@@ -54,20 +128,23 @@ function Actions.New(planner, result, options, journey)
     if not Finite(timeout) or timeout <= 0 or type(objectiveID) ~= 'string' or objectiveID == '' then
         return nil, 'invalid_travel_options'
     end
-    if journey == nil then journey = Actions.NewJourney(result.objective) end
+    if journey == nil then journey = Actions.NewJourney(plan.objective) end
     if getmetatable(journey) ~= Journey then return nil, 'invalid_journey' end
     if not journey.node then return nil, 'location_unknown' end
-    if journey.node ~= result.objective.from then return nil, 'location_changed' end
+    if journey.node ~= plan.objective.from then return nil, 'location_changed' end
     if journey.unlock and journey.unlock.owner~=planner.identity then return nil,'stale_unlock' end
-    if result.unlock then
-        journey.unlock={entry=result.unlockEntry,sequence=result.unlockSequence,owner=planner.identity,
+    if plan.unlockEntry then
+        local entry=plan.unlockEntry
+        journey.unlock={entry={id=entry.id,node=entry.node,title=entry.title},sequence=plan.unlockSequence,owner=planner.identity,
             planRevision=planner.revision,routeRevision=planner.routeRevision}
+        UNLOCKS[journey.unlock]=entry
     else journey.unlock=nil end
-    local travel = setmetatable({planner=planner,revision=planner.revision,segments=Copy(result.segments),
-        conditionToken=result.conditionToken,
+    local travel = setmetatable({planner=planner,revision=planner.revision,
+        conditionToken={owner=plan.conditionToken.owner,revision=plan.conditionToken.revision},
         journey=journey,
         preserveCommitted=options.preserveCommitted==true,
         index=1,sequence=0,state='moving',scheduledTimeoutSeconds=timeout,objectiveID=objectiveID}, Travel)
+    EXECUTIONS[travel]=plan
     return travel
 end
 
@@ -211,11 +288,12 @@ function Travel:GetAction()
     local state = self.state
     if state == 'cancelled' or state == 'failed' then return {kind=state,reason=self.reason} end
     if state=='replan' then return {kind='replan',reason=self.reason or 'personal_arrival'} end
-    local segment = self.segments[self.index]
+    local segment = Segments(self)[self.index]
     if not segment then
-        local unlock=self.journey.unlock
+        local session=self.journey.unlock
+        local unlock=session and UNLOCKS[session]
         if unlock then
-            return {kind='unlock',unlockId=unlock.entry.id,node=unlock.entry.node,title=unlock.entry.title,
+            return {kind='unlock',unlockId=unlock.id,node=unlock.node,title=unlock.title,
                 reason='unlock_proof_required'}
         end
         self.state='complete'; return {kind='complete'}
@@ -231,7 +309,7 @@ function Travel:GetAction()
             remainingSeconds=self.deadline and self.deadline-self.lastClock,
             mode=segment.mode,transitionSeconds=segment.transitionSeconds}
     end
-    local nextSegment = self.segments[self.index+1]
+    local nextSegment = Segments(self)[self.index+1]
     local portal = nextSegment and nextSegment.kind == 'portal' and self.planner.portals.byId[nextSegment.portalId]
     local taxi=nextSegment and nextSegment.kind=='taxi' and self.planner.taxi.byId[nextSegment.taxiId]
     local position=(portal and portal.entry or taxi and taxi.origin.position) or nil
@@ -242,7 +320,7 @@ end
 function Travel:BeginPersonal()
     local action=self:Tick()
     if action.kind~='personal' or action.phase~='ready' then return nil,'personal_not_ready' end
-    local _,reason=ns.NavigationV2Resources.Spend(self.planner.resources or {},{},self.segments[self.index].resources)
+    local _,reason=ns.NavigationV2Resources.Spend(self.planner.resources or {},{},Segments(self)[self.index].resources)
     if reason then return nil,reason end
     local ok,now=pcall(self.planner.clock)
     local state
@@ -257,7 +335,7 @@ end
 function Travel:BeginTaxi(quote, balances)
     local action=self:Tick()
     if action.kind~='board_taxi' then return nil,'taxi_not_ready' end
-    local segment=self.segments[self.index]
+    local segment=Segments(self)[self.index]
     local captured,reason=ns.NavigationV2Resources.Capture(balances)
     if not captured then return nil,reason end
     local ready
@@ -353,7 +431,7 @@ function Travel:Observe(observation)
     local action = self:Tick()
     if action.kind == 'failed' or action.kind == 'cancelled' or action.kind == 'complete' or action.kind=='replan' then return action end
     if action.kind == 'scheduled' then
-        local segment = self.segments[self.index]
+        local segment = Segments(self)[self.index]
         local departed=self.scheduledExecution.departed
         local state = self.scheduledExecution:Observe(observation, self.scheduledNow)
         if not departed and self.scheduledExecution.departed then
@@ -387,13 +465,13 @@ function Travel:Observe(observation)
         return self:GetAction()
     end
     if observation.reliable ~= true or observation.loading == true then self.journey:Unlocate();return action end
-    local segment = self.segments[self.index]
+    local segment = Segments(self)[self.index]
     if segment.kind=='taxi' then return ObserveTaxi(self,segment,observation) end
     if segment.kind ~= 'portal' then
         if observation.node == segment.to then self.journey:Locate(segment.to);self.index = self.index+1
         elseif observation.node == segment.from then self.journey:Locate(segment.from)
         else self.journey:Unlocate() end
-        segment = self.segments[self.index]
+        segment = Segments(self)[self.index]
         if not segment then return self:GetAction() end
     end
     if segment.kind == 'portal' then

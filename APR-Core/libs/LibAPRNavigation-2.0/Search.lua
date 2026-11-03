@@ -35,11 +35,16 @@ local function Pop(heap)
     return first
 end
 
-local function Entry(search, node, via, cost, parent, edge, milliseconds, mode)
+local function StateKey(search,node,via,mode)
     local id = search.graph.partitioned and node or search.graph.nodes[node]
     while search.objective.via[via + 1] == id do via = via + 1 end
     local key = search.graph.partitioned and (via..'\0'..node) or (via * #search.graph.nodes + node)
     if mode then key = key..'\0'..mode end
+    return via,key
+end
+
+local function Entry(search, node, via, cost, parent, edge, milliseconds, mode,key)
+    if not key then via,key=StateKey(search,node,via,mode) end
     local atStart=not parent or edge.unlockEntry and parent.atStart or false
     local assumed,planState
     if search.planUnlocks then
@@ -70,6 +75,7 @@ local function NodeId(graph, node)
 end
 
 local function Start(search, phase)
+    if (search.retainedLabels or 0)>=search.limits.labels then return 'budget_exceeded','label_limit' end
     search.phase, search.heap, search.best, search.current = phase, {}, {}, nil
     search.diagnostics.phase = phase
     local entry = Entry(search, Locate(search.graph, search.objective.from), 0, 0, nil, nil,
@@ -77,11 +83,12 @@ local function Start(search, phase)
         search.movement and search.movement.initialMode)
     if search.resources then entry.spent={};entry.cooldowns={};search.best[entry.key]={entry} else search.best[entry.key] = entry end
     Push(search.heap, entry)
+    search.retainedLabels=(search.retainedLabels or 0)+1
 end
 
 function Search.New(graph, objective, diagnostics, options)
     options = options or {}
-    return setmetatable({ graph = graph, objective = objective, diagnostics = diagnostics,
+    return setmetatable({ graph = graph, objective = objective, diagnostics = diagnostics,limits=options.limits or namespace.NavigationV2Graph.Limits,
         portals = options.portals, movement = options.movement, scheduled = options.scheduled, taxi = options.taxi,
         personal=options.personal, cooldowns=options.personal and options.personal.cooldowns,
         conditions=options.conditions,
@@ -120,7 +127,7 @@ local function ValidateRequest(search)
         end
         search.validationIndex = nil
         if search.build then return end
-        Start(search, "known"); return
+        return Start(search, "known")
     end
     local node, status, reason = Locate(search.graph, id)
     if not node then return status or "invalid", reason or "invalid_request" end
@@ -135,7 +142,7 @@ end
 local function Exhausted(search)
     if search.sawMissing then return "unknown", search.sawMissing end
     if not search.graph.complete or search.sawIncomplete then return "unknown", "incomplete_graph" end
-    if search.phase == "known" and search.sawUnknown then Start(search, "possible"); return end
+    if search.phase == "known" and search.sawUnknown then return Start(search, "possible") end
     search.provenNoPath=not search.sawUnknown and not search.conditionUnknown
     return "no_path", "disconnected"
 end
@@ -144,11 +151,13 @@ local function ExpandNode(search, entry)
     if entry.node == Locate(search.graph, search.objective.to) and entry.via == #search.objective.via then
         if search.phase == "possible" then return "unknown", "unknown_access" end
         search.total, search.build, search.segments = entry.cost, entry, {}
+        search.diagnostics.phase='reconstruct'
         search.resourcesSpent={}
         search.nodes = { NodeId(search.graph, entry.node) }
         return
     end
     search.current, search.edgeIndex = entry, 1
+    search.adjacency=nil
     search.portalIndex, search.scheduledIndex = search.portals and 1, search.scheduled and 1
     search.taxiIndex = search.taxi and 1
     search.personalIndex=search.personal and 1
@@ -276,8 +285,10 @@ local function CompareLabel(search)
         return
     end
     if pending.prune then
+        if search.retainedLabels>=search.limits.labels then return 'budget_exceeded','label_limit' end
         pending.row[#pending.row+1]=pending.entry
         Push(search.heap,pending.entry)
+        search.retainedLabels=search.retainedLabels+1
         search.pending=nil
     else pending.prune=true;pending.index=1 end
 end
@@ -288,7 +299,7 @@ local function PruneLabel(search)
     if previous then
         pending.index=pending.index+1
         if Dominates(search,pending.entry,previous) then previous.dominated=true end
-    else CompareLabel(search) end
+    else return CompareLabel(search) end
 end
 
 local function MovementEdge(search, edge)
@@ -351,8 +362,8 @@ local function RelaxEdge(search)
     if milliseconds and milliseconds > SAFE_INTEGER then return 'unknown', 'cost_overflow' end
     local cost = milliseconds and milliseconds / 1000 or (search.current.cost + edge.seconds)
     if not Finite(cost) then return "unknown", "cost_overflow" end
-    local candidate = Entry(search, edge.to, search.current.via, cost, search.current, edge, milliseconds, edge.mode)
     if search.resources then
+        local candidate = Entry(search, edge.to, search.current.via, cost, search.current, edge, milliseconds, edge.mode)
         local spent, resourceReason = Resources.Spend(search.resources, search.current.spent, edge.resources,search.cooldowns)
         if not spent then
             if resourceReason ~= 'resources_insufficient' then return Missing(search,'unknown',resourceReason) end
@@ -367,25 +378,41 @@ local function RelaxEdge(search)
         search.pending={entry=candidate,row=row,index=1}
         return
     end
-    local previous = search.best[candidate.key]
+    local via,key=StateKey(search,edge.to,search.current.via,edge.mode)
+    local previous = search.best[key]
     local value = milliseconds or cost
     if not previous or value < (previous.milliseconds or previous.cost) then
+        if search.retainedLabels>=search.limits.labels then return 'budget_exceeded','label_limit' end
+        local candidate=Entry(search,edge.to,via,cost,search.current,edge,milliseconds,edge.mode,key)
         search.best[candidate.key] = candidate
         Push(search.heap, candidate)
+        search.retainedLabels=search.retainedLabels+1
     end
 end
 
 local function BuildPath(search)
     local entry, graph = search.build, search.graph
-    if not entry.parent then search.build, search.reverseIndex = nil, 1; return end
+    if not entry.parent then
+        search.build, search.reverseIndex = nil, 1
+        search.diagnostics.phase='reverse_path'
+        return
+    end
+    if #search.segments>=search.limits.segments then return 'budget_exceeded','segment_limit' end
     local edge = entry.edge
+    local resources
+    if edge.resources then
+        -- Resource maps were validated/capped at graph/catalogue entry. The
+        -- public path must not expose the reusable edge's mutable price map.
+        resources={}
+        for key,value in pairs(edge.resources)do resources[key]=value end
+    end
     for key,value in pairs(edge.resources or {}) do
         search.resourcesSpent[key]=(search.resourcesSpent[key] or 0)+value
     end
     search.segments[#search.segments + 1] = { edgeId = edge.id, from = NodeId(graph, edge.from),
         to = NodeId(graph, edge.to), seconds = edge.seconds, kind = edge.kind, portalId = edge.portalId,
         transportId = edge.transportId, costDetail = edge.costDetail, taxiId=edge.taxiId,
-        resources=edge.resources, fareCopper=edge.fareCopper, personalId=edge.personalId,
+        resources=resources, fareCopper=edge.fareCopper, personalId=edge.personalId,
         mode = entry.mode, transitionSeconds = edge.transitionSeconds,unlockEntry=edge.unlockEntry }
     search.nodes[#search.nodes + 1] = NodeId(graph, entry.parent.node)
     search.build = entry.parent
@@ -418,7 +445,7 @@ end
 
 function Search:Cancel()
     if self.loading and self.loading.job then self.loading.job:Cancel() end
-    self.loading = nil
+    self.loading,self.adjacency = nil,nil
 end
 
 namespace.NavigationV2Search = Search
