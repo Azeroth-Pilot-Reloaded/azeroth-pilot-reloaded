@@ -982,6 +982,74 @@ layout recovery and debug/performance capture. Substituting the pre-fix source
 in memory fails the intermediate-publication assertion. Generated instrumentation covers
 2,916 definitions across 117 files and `git diff --check` is clean.
 
+## Navigation controller observation overhead
+
+The controller validates live inputs once before each pending slice, then again
+after a terminal result before publishing it. Context/generation guards remain
+around provider and telemetry callbacks. A mutation during unfinished work is
+rejected before the next slice; it cannot publish an itinerary. Authored and
+resolved coordinates share one immutable snapshot only when they are the same
+table. Distinct or replaced targets, inaccessible values and in-place edits
+remain subject to the complete freshness checks.
+
+The synthetic controller fixture measured the following before/after counts for
+120 pending slices on both supported profiles:
+
+| Observation | Before | After |
+| --- | ---: | ---: |
+| Player positions | 360 | 120 |
+| Objective resolutions | 360 | 120 |
+| Value-access checks | 16,200 | 3,960 |
+
+Continuation timers wait at least 10 ms, bounding background planning to at most
+100 slices per second even at high FPS; each planner slice retains its existing
+1 ms work allowance. The 400 FPS fixture runs 100 slices instead of 400 per
+second, while the 60 FPS fixture continues on every frame. These are controlled
+call counts, not measurements of in-game FPS or total CPU consumption. Freshness
+checks, scheduling and publication add overhead outside the planner's allowance.
+At very high FPS a large candidate can therefore take longer to finish; valid
+existing guidance and the immediate direct baseline retain their normal behavior.
+
+No new client API is needed. The existing cancellable `C_Timer.NewTimer` contract
+is also used by Blizzard's shared `TimedCallbackMixin` on
+[Retail](https://github.com/Gethe/wow-ui-source/blob/live/Interface/AddOns/Blizzard_SharedXMLBase/TimedCallback.lua)
+and [Classic](https://github.com/Gethe/wow-ui-source/blob/classic/Interface/AddOns/Blizzard_SharedXMLBase/TimedCallback.lua).
+Run a fresh in-game diagnostic capture on Retail and Forever to compare the
+controller's observations, planning duration and responsiveness during zone,
+objective, loading and access changes; an older capture can include retired
+planner stages that no longer exist in this checkout.
+
+## Navigation candidate materialization
+
+Search keeps read-only transport references while comparing arrivals and copies
+only the winning segments during incremental reconstruction. Automatic walk
+segments and personal-action departure rebinding are also deferred until then.
+In the synthetic 501-transport regression, only the winning transport is copied
+instead of all 501. Returned segment fields remain independently writable.
+
+APR also opts into `deferInstructions` for its catalogue. Names and instruction
+formatting run only for selected guidance or relevant blocked passages, inside
+the planner's existing publication budget. The synthetic 501-transport test
+reduces name queries from 501 to one on Retail and Forever. Default library
+consumers still receive eagerly resolved instructions.
+
+Local Lua 5.1 benchmarks (not in-game CPU/FPS measurements):
+
+| Scenario | Before | After |
+| --- | ---: | ---: |
+| Dense search, median of 15 runs | 9.69 ms | 7.39 ms |
+| Dense search allocations with GC paused | 2,112 KiB | 1,609 KiB |
+| Warm Retail catalogue, median of 7 runs | 8.04 ms | 6.04 ms |
+| Warm Forever catalogue, median of 7 runs | 0.73 ms | 0.50 ms |
+
+The dense scenario performs the same 4,818 search operations and returns the same
+route. Paused-GC figures measure temporary allocation volume, not retained addon
+memory. Catalogue timings exclude the later resolution of selected labels;
+`benchmark_navigation.py --scenario catalog` reports eager and deferred variants
+side by side. Timings vary with the host; regression tests use bounded work and
+query counts instead of timing thresholds. No WoW API, event or secure-action
+call signature changes in this optimization.
+
 ## Navigation catalogue review
 
 Navigation catalogue research, generation and static data audits live in

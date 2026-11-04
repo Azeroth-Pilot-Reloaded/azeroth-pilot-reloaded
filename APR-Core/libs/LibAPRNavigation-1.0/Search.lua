@@ -2,7 +2,7 @@
 -- arrival can still be useful if it leaves enough resources to finish.
 -- Graph loading, candidate checks and result assembly all run through Step.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("search", 10) then return end
+if not Lib:BeginModule("search", 11) then return end
 Lib.Engine = {}
 local Engine = Lib.Engine
 local Search = {}
@@ -191,7 +191,9 @@ function Search:IngestEdge(edge)
     -- A custom walking rule may require one of these points as a bridge even
     -- when its transport loses. Only a transitive rule makes removal safe.
     if tooSlow then return end
-    local link = { target = target, edge = CopyEdge(edge, edge.from, edge.to) }
+    -- Inputs are immutable for this search. Copy only the winning itinerary,
+    -- not every transport in the catalogue or every speculative arrival.
+    local link = { target = target, edge = edge }
     if edge.sourceFree then
         link.allowedAtStart = not edge.canStart or not not edge.canStart(self.nodes[self.startNode])
         if link.allowedAtStart then
@@ -337,19 +339,12 @@ end
 
 function Search:AcceptCandidate(candidate)
     local previous, edge = candidate.previous, candidate.edge
-    if candidate.walkSeconds then
-        edge = { id = "walk:" .. previous.node .. ":" .. candidate.node, kind = "walk",
-            from = self.nodes[previous.node], to = self.nodes[candidate.node],
-            seconds = candidate.walkSeconds, copper = 0, mandatory = false }
-    elseif edge and edge.sourceFree then
-        edge = CopyEdge(edge, self.nodes[previous.node], self.nodes[candidate.node])
-    end
     -- Resource-free travel shares an immutable usage table. Allocate a new one
     -- only for an edge that actually consumes something.
     self.serial = self.serial + 1
     local label = { node = candidate.node, previous = previous, edge = edge, used = candidate.used,
         copper = candidate.copper, seconds = candidate.seconds, serial = self.serial,
-        walked = candidate.walkSeconds ~= nil }
+        walkSeconds = candidate.walkSeconds }
     local labels = self.labels[candidate.node]
     if not labels then labels = {}; self.labels[candidate.node] = labels end
     labels[#labels + 1] = label
@@ -487,7 +482,7 @@ function Search:ExpandOne()
         -- of the walking clique. Mixed speeds still need all links. If a walk
         -- loses its origin's Z, only destinations with Z can improve: the
         -- intermediate point suppresses their otherwise nonzero vertical cost.
-        if label.walked and self.walkingIsTransitive and not pending.walking.mixedSpeed
+        if label.walkSeconds ~= nil and self.walkingIsTransitive and not pending.walking.mixedSpeed
             and (self.walkSpeedAt or not self.walkSpeedFor) then
             if IsFinite(self.nodes[label.previous.node].z) and not IsFinite(self.nodes[label.node].z) then
                 pending.walking = pending.walking.withZ or EMPTY
@@ -509,8 +504,19 @@ end
 function Search:AssembleOne()
     local assembly = self.assembly
     if assembly.label.previous then
-        assembly.segments[#assembly.segments + 1] = assembly.label.edge
-        assembly.label = assembly.label.previous
+        local label, edge = assembly.label, assembly.label.edge
+        local previous = label.previous
+        if label.walkSeconds ~= nil then
+            edge = { id = "walk:" .. previous.node .. ":" .. label.node, kind = "walk",
+                from = self.nodes[previous.node], to = self.nodes[label.node],
+                seconds = label.walkSeconds, copper = 0, mandatory = false }
+        elseif edge.sourceFree then
+            edge = CopyEdge(edge, self.nodes[previous.node], self.nodes[label.node])
+        else
+            edge = CopyEdge(edge, edge.from, edge.to)
+        end
+        assembly.segments[#assembly.segments + 1] = edge
+        assembly.label = previous
         return
     end
     local segments, index = assembly.segments, assembly.index

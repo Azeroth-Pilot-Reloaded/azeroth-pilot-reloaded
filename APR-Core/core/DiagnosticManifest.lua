@@ -26,7 +26,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/features/navigation/Map.lua"] = {instrumented = 36, diagnosticHelpers = 0},
     ["APR-Core/features/navigation/Navigation.lua"] = {instrumented = 78, diagnosticHelpers = 0},
     ["APR-Core/features/navigation/NavigationAdapter.lua"] = {instrumented = 110, diagnosticHelpers = 0},
-    ["APR-Core/features/navigation/NavigationPlanner.lua"] = {instrumented = 11, diagnosticHelpers = 0},
+    ["APR-Core/features/navigation/NavigationPlanner.lua"] = {instrumented = 12, diagnosticHelpers = 0},
     ["APR-Core/features/navigation/NavigationTaxi.lua"] = {instrumented = 52, diagnosticHelpers = 0},
     ["APR-Core/features/navigation/NavigationUnlocks.lua"] = {instrumented = 11, diagnosticHelpers = 0},
     ["APR-Core/features/navigation/Preview.lua"] = {instrumented = 17, diagnosticHelpers = 0},

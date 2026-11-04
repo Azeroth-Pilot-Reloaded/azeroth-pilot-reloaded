@@ -209,6 +209,14 @@ check the 1 ms planning budget, cache invalidation and cancellation. They cover
 catalogue preparation, taxi indexing, search ingestion and guidance publication.
 Timing benchmarks are separate from regression assertions because wall-clock
 results depend on the host, client APIs, garbage collection and scheduling.
+`navigation_controller_performance_test.lua` checks live-observation counts around
+long-running jobs, bounded scheduling at high FPS, shared coordinate validation,
+and rejection of changes made by providers or telemetry before publication.
+`navigation_search_materialization_test.lua` checks that discarded transports
+are not copied and selected segments remain independent of catalogue inputs.
+`navigation_deferred_instructions_test.lua` checks selected/blocked labels (including zone entrances),
+custom instruction keys, eager API compatibility, cancellation and bounded
+publication work on synthetic Retail/Forever graphs.
 
 `quest_cache_performance_test.lua` uses 150 synthetic objectives to check stable
 record identities, zero unchanged layouts, percentage-only updates and shrinking
