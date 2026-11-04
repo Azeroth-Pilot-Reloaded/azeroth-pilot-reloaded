@@ -685,6 +685,7 @@ function t.nav:GetThreshold() return threshold end
 function GetUnitSpeed() return 0, run, 321, 4.7 end
 function IsMounted() return mounted end
 function IsIndoors() return indoors end
+function IsFlyableArea() return true end -- This block measures speed returns in a permitted flight area.
 function APR:IsSpellKnown() return true end
 C_MountJournal = { GetMountIDs = function() return { 1 } end,
     GetMountInfoByID = function() return "Mount", 123, 1, false, usable, 1, false, false, nil, false, collected end,

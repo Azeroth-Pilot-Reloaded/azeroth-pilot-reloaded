@@ -18,6 +18,10 @@ local data = fixture:Load({ config = { actionLoadingSeconds = 5 }, connections =
         actions = { { type = "item", id = 20, consumable = true } } },
 } })
 local nativeAdapter = APR.NavigationAdapter
+-- This fixture supplies one synthetic travel speed to the legacy planner API.
+-- Per-position flight evidence is covered by navigation_future_movement_test;
+-- its unrelated restrictions must not reinterpret the controlled 1000 yd/s case.
+data.GetWalkingSpeed = false -- Shadow the inherited method for this legacy API fixture.
 data.env.getActionCastSeconds = function(kind) return kind == "spell" and 3 or 1 end
 
 local function noop() end

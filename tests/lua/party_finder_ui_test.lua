@@ -13,6 +13,7 @@ UIParent:SetSize(1920, 1080)
 function env.methods:SetChecked(value) self.checked = value end
 function env.methods:GetChecked() return self.checked end
 function env.methods:SetAtlas(value) self.atlas = value end
+function env.methods:SetTexture(value) self.texture = value end
 function env.methods:SetJustifyH(value) self.justifyH = value end
 function env.methods:SetJustifyV(value) self.justifyV = value end
 local setPoint = env.methods.SetPoint
@@ -82,8 +83,8 @@ APR.partyFinder = {
     OpenSettings = function() call("configure") end,
     OpenBlizzard = function() error("Companions must only search for and group APR players") end,
 }
-APR.PartyFinderProtocol = {LanguageAtlas = function(code)
-    return ({fr = "Lang-Regions-frFR", en = "Lang-Regions-enUS"})[code]
+APR.PartyFinderProtocol = {LanguageFlagTexture = function(code)
+    return ({fr = "synthetic-french-flag.tga", en = "synthetic-english-flag.tga"})[code]
 end}
 dofile("APR-Core/integrations/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
@@ -160,10 +161,12 @@ assert(panel.route == nil and panel.results.points.TOPLEFT[5] == beforeRouteTop
     "Selecting a route adds no label or spacing and does not reflow the companion window")
 local first = panel.list.active[1]
 assert(first and first.name:GetText() == "Alpha")
-assert(first.flag.atlas == "Lang-Regions-frFR" and first.extraLanguages:GetText() == "+1")
+assert(first.flag.texture == "synthetic-french-flag.tga" and first.flag:IsShown()
+    and not first.languageFallback:IsShown() and first.extraLanguages:GetText() == "+1")
 assert(first.age:GetText() == "Age 20")
 assert(not panel.list.active[3].invite:IsEnabled(), "The action respects current invitation eligibility")
-assert(panel.list.active[3].languageFallback:IsShown(), "Unknown languages have a neutral text fallback")
+assert(panel.list.active[3].languageFallback:IsShown() and not panel.list.active[3].flag:IsShown(),
+    "Unknown languages have a neutral text fallback")
 
 first.invite.scripts.OnClick(first.invite)
 assert(calls[#calls].kind == "invite" and calls[#calls].key == "Alpha-Realm")

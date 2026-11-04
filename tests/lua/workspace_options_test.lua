@@ -103,6 +103,13 @@ for _, section in ipairs(sections) do
         inlineOnly(view.options)
     end
 end
+local rewardScale
+walk(panels.automation.group_reward_automation.options, function(option, path)
+    if path:match("([^/]+)$") == "rewardWeightScale" then rewardScale = option end
+end)
+assert(rewardScale and rewardScale.dialogControl == "APRSettingsSelect",
+    "Pawn weights use APR's shared select instead of the native dropdown")
+
 local current = categories.group_Current_Step
 assert(not current.options.args.subgroup_FillersFrame, "Secondary objectives have their own category")
 assert(not current.actions and panels.group_Current_Step.placement.options.args.resetCurrentStepPosition,

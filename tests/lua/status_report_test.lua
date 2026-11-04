@@ -220,6 +220,8 @@ local navigationStep = {
     from = { x = -439.8, y = -263.9, uiMapID = 2576, instanceID = 2695 },
     to = { x = 1570, y = -4397, uiMapID = 85, instanceID = 1 },
     diagnosticDetail = { arrivalRadius = 17, note = "Private_name: pending arrival" },
+    terrainHeightReason = "ambiguous_terrain_surface",
+    terrainPosition = { x = 10, y = 20, z = 25, observedZ = 0, positionSource = "unit", heightSource = "terrain", indoors = true },
     canStart = function() error("Status must not check travel availability") end,
 }
 APR.navigation = {
@@ -231,12 +233,19 @@ APR.navigation = {
     lastContinuation = { status = "reused", reason = "expected_arrival", queuedSteps = 4, distance = 0.1,
         privateGraph = "never-export-the-continuation-graph" },
     destination = { x = 15000, y = 0, instanceID = 44, uiMapID = 77 },
-    start = { x = 10, y = 20, instanceID = 45, uiMapID = 78 },
+    start = { x = 10, y = 20, z = 25, instanceID = 45, uiMapID = 78,
+        observedZ = 0, positionSource = "unit", heightSource = "terrain", indoors = true,
+        spaceID = "synthetic-cave", spaceKind = "cave", groundOnly = true, requiresExit = true },
     queue = { navigationStep, { id = "12:2", kind = "walk", label = "Final synthetic waypoint", seconds = 321,
         from = navigationStep.to, to = { x = 15000, y = 0, instanceID = 44, uiMapID = 77 },
         canStart = function() error("Export cannot validate a future leg") end } },
     search = { privateGraph = "never-export-the-graph",
-        status = "planning", slices = 7, elapsedMilliseconds = 125, totalSliceMilliseconds = 5 },
+        status = "planning", slices = 7, elapsedMilliseconds = 125, totalSliceMilliseconds = 5,
+        terrainReason = "ambiguous_terrain_surface",
+        active = { phase = "nodes", status = "planning", workLastStep = 17, index = 123,
+            completed = 122, total = 300, expansions = 47, walkChecks = 631,
+            walkDominanceSkipped = 419, ingestedEdges = 157, graph = "never-export-worker-graph",
+            co = coroutine.create(function() error("Export must not resume a worker") end) } },
     retainedArrow = { Coord = { x = 10, y = 20 }, instanceID = 2695,
         context = { privateContext = "never-export-the-context" } },
     GetActiveStep = function(self)
@@ -246,6 +255,8 @@ APR.navigation = {
     Update = function() error("Status must not start routing") end,
 }
 APR.Arrow = { Active = true, x = -263.9, y = -439.8, Distance = 38, currentStep = 0 }
+APR.NavigationTerrain = {lastFailure={source="forever:45:synthetic-room",profile="forever",packID="synthetic-room",
+    file="NavigationData/example/ground.lua",sourceError="Synthetic constructor failure",worldID=45,reason="terrain_source_failed"}}
 APR.currentStep.questsList = {
     ["01_NAVIGATION_PATH-12:1"] = { font = navigationFont, objectiveText = "Take the portal",
         IconButton = { itemID = 3567, attribute = "spell" } },
@@ -265,6 +276,35 @@ assert(activeStepReads == 1 and zoneReportReads == 1,
 assert(text:find("**elapsedMilliseconds**: 125", 1, true)
     and text:find("**totalSliceMilliseconds**: 5", 1, true) and text:find("**slices**: 7", 1, true),
     "The bounded navigation snapshot reports actual planning latency and CPU work")
+assert(text:find("**workerPhase**: nodes", 1, true) and text:find("**workerStatus**: planning", 1, true)
+    and text:find("**workerWorkLastStep**: 17", 1, true) and text:find("**workerIndex**: 123", 1, true)
+    and text:find("**workerCompleted**: 122", 1, true) and text:find("**workerTotal**: 300", 1, true),
+    "The planning snapshot identifies the active provider's bounded scalar progress")
+assert(text:find("**workerExpansions**: 47", 1, true)
+    and text:find("**workerWalkChecks**: 631", 1, true)
+    and text:find("**workerWalkDominanceSkipped**: 419", 1, true)
+    and text:find("**workerIngestedEdges**: 157", 1, true),
+    "Search progress distinguishes expanded arrivals, walking proofs and skipped dominated walks")
+APR.navigation.search.active.phase = opaque
+APR.navigation.search.active.total = { privateGraph = "never-export-progress-graph" }
+APR:ExportStatusReport()
+assert(export.edit:GetText():find("**workerPhase**: " .. UNKNOWN, 1, true)
+    and not export.edit:GetText():find("never-export-progress-graph", 1, true)
+    and not export.edit:GetText():find("**workerTotal**:", 1, true),
+    "Restricted progress is redacted and non-scalar progress never traverses a graph")
+APR.navigation.search.active.phase, APR.navigation.search.active.total = "nodes", 300
+assert(text:find("**observedZ**: 0", 1, true) and text:find("**heightSource**: terrain", 1, true)
+    and text:find("**positionSource**: unit", 1, true) and text:find("**indoors**: true", 1, true)
+    and text:find("**terrainReason**: ambiguous\\_terrain\\_surface", 1, true)
+    and text:find("**terrainHeightReason**: ambiguous\\_terrain\\_surface", 1, true)
+    and text:find("**terrainPosition**:", 1, true),
+    "Diagnostics distinguish measured height, projected height and unresolved floor evidence")
+assert(text:find("**spaceID**: synthetic-cave",1,true) and text:find("**spaceKind**: cave",1,true)
+    and text:find("**requiresExit**: true",1,true)
+    and text:find("**packID**: synthetic-room",1,true)
+    and text:find("**file**: NavigationData/example/ground.lua",1,true)
+    and text:find("**sourceError**: Synthetic constructor failure",1,true),
+    "The report identifies the internal terrain source and its constructor failure")
 assert(text:find("**continuationReuses**: 3", 1, true), "Status identifies reuse of a precomputed continuation")
 assert(text:find("**controllerRevision**: 5", 1, true) and text:find("**reason**: expected\\_arrival", 1, true)
     and text:find("**lastInvalidation**: BAG\\_UPDATE\\_DELAYED", 1, true)
@@ -323,12 +363,22 @@ assert(export.edit:GetText():find("**arrivalRadius**: 17", 1, true),
     "The dump follows GetActiveStep's default cursor")
 APR.navigation.queue = {}
 APR.navigation.search = nil
-APR.navigation.lastPlanning = { status = "ready", elapsedMilliseconds = 250, totalSliceMilliseconds = 8, slices = 12 }
+APR.navigation.lastPlanning = { status = "ready", elapsedMilliseconds = 250, totalSliceMilliseconds = 8, slices = 12,
+    workerPhase = "search", workerStatus = "ready", workerWorkLastStep = 9,
+    workerIndex = 8, workerCompleted = 7, workerTotal = 7,
+    workerExpansions = 52, workerWalkChecks = 684, workerWalkDominanceSkipped = 438, workerIngestedEdges = 157 }
 APR:ExportStatusReport()
 assert(export.edit:GetText():find("**ActiveStep**: nil", 1, true), "No active navigation step is explicit")
 assert(export.edit:GetText():find("**elapsedMilliseconds**: 250", 1, true)
     and export.edit:GetText():find("**totalSliceMilliseconds**: 8", 1, true),
     "Completed planning timings remain available after its search graph is released")
+assert(export.edit:GetText():find("**workerPhase**: search", 1, true)
+    and export.edit:GetText():find("**workerCompleted**: 7", 1, true)
+    and export.edit:GetText():find("**workerTotal**: 7", 1, true)
+    and export.edit:GetText():find("**workerExpansions**: 52", 1, true)
+    and export.edit:GetText():find("**workerWalkChecks**: 684", 1, true)
+    and export.edit:GetText():find("**workerWalkDominanceSkipped**: 438", 1, true),
+    "Completed worker progress stays available without retaining its provider")
 APR.navigation, APR.GetZoneDetectionReport = nil, nil
 APR:ExportStatusReport()
 assert(export.edit:GetText():find("**ActiveStep**: nil", 1, true)

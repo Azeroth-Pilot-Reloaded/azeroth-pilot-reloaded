@@ -45,6 +45,17 @@ temporary fixtures; content validation only reports invalid input. Keep tests
 deterministic and run the complete suite before finishing. Repository-wide agent
 instructions are in [AGENTS.md](../AGENTS.md).
 
+`reward_scoring_test.lua` uses invented item variants and equipped configurations
+for weighted gains, usability, unique-equipped categories and weapon replacement.
+`pawn_rewards_test.lua` models the public Pawn API, scale mutations, explicit
+choices, deferred offers and stale callbacks. `pawn_options_refresh_test.lua`
+uses the embedded AceConfig renderer with a custom host to check live settings
+updates and cancellation. `quest_reward_selection_test.lua`
+checks the real NPC selection lifecycle with controlled scores, priorities and
+bounded item-data retries. `settings_select_test.lua` exercises the real APR
+select through its AceGUI adapter, including value keys, ordering and pooled release.
+None loads or freezes a shipped guide or Pawn's weights.
+
 - `scripts/test_*.py`: TOC updates, localization notifications, package validation
   and PR report behavior against a mocked GitHub API. The latter uses Node.js.
 - `lua/*_test.lua`: automatically discovered addon regression suites, each in its
@@ -84,6 +95,104 @@ the same graph exercises library and APR host lifecycles. The shortest-path orac
 also compares 200 generated graphs against exhaustive enumeration. Shipped
 navigation data is checked separately for schema and catalog integrity across
 client/faction/language combinations; no expected inventory counts are frozen.
+
+`lua/navigation_v2` is a separate opt-in 2.0 contract family, discovered by the
+standard runner. It executes fresh Lua 5.1 runtimes without loading V1. Bundled
+V2 compact declarations register through the real XML and remain undecoded.
+Synthetic graphs cover ordered mandatory visits, shortest estimated
+time (including an independent exhaustive oracle), known/unknown/disconnected
+outcomes, cancellation, time budgets, input validation, planner revisions and
+APR step-context ownership. A 20,000-node synthetic graph also verifies that
+`New`/`Plan` avoid graph-wide work, node/edge preparation observes the injected
+slice/CPU budgets, and the prepared index survives cancellation and is reused.
+The fixture loads the library's actual XML module order. Run it with
+`python -m unittest tests.lua.navigation_v2.test_navigation_v2 -v`.
+`lua/navigation_v2_performance` adds synthetic structure-limit boundaries,
+terminal/no-retry behavior, standalone loading CPU/wall stops, and a controlled
+parallel-edge allocation regression with GC suspended. Its fake clocks test
+correctness only; they are not latency evidence. Actual desktop cold/warm
+pilot CPU, wall, slice and static/decoded memory observations remain diagnostic
+receipts under `.scratch/libaprnavigation-2/reports/NAV-20`, not guide fixtures
+or native-client frame/render/taint proof.
+The APR host is disabled on load; no live guidance, waypoint or quest progression
+is produced by these planning-only tests. Retail and Forever in-game checks are
+still required before any later switch of the active navigation engine.
+
+`lua/navigation_v2_terrain` discovers every V2 Data script and declaration from
+the actual library XML and checks its reachability from both client manifests.
+Common CBOR/Deflate/Base64, shape, size and reference rules apply to every sector;
+no real itinerary or sector inventory is frozen. Synthetic contracts cover the
+bounded loader, missing data, cancellation and the opt-in APR `LoadTerrain`
+factory followed by explicit Enable/Plan/Step, without live guidance. The separate
+Route-generator checkout supplies binary and native generator tests; all raw and
+offline exports belong in its cache or scratch reports, outside NavigationData.
+Run `python -m unittest tests.lua.navigation_v2_terrain.test_loader
+tests.lua.navigation_v2_terrain.test_data tests.scripts.test_navigation_v2_terrain -v`.
+Native WoW codec latency and actual client movement remain unverified.
+
+The `navigation_benchmark_*_test.lua` suites exercise the read-only V1/V2
+diagnostic through its public capture, measurement, driver, host, command and
+window interfaces. Controlled inputs cover shared immutable endpoints, native
+position refusal, cancellation/replacement, actual API call counters, optional
+metrics and separate compute time/travel ETA. A TOC lifecycle check requires
+the shipped modules to stay dormant until explicitly opened and started.
+V1 algorithms are executed through existing public fixtures, never copied into
+the benchmark. Synthetic clocks and widget fixtures establish behavior only;
+they do not establish client latency, rendering, physical coverage or rollout.
+No maintained itinerary or imported terrain route is frozen by these tests.
+
+`lua/navigation_v2_waypoint` tests the optional V2 output session with
+synthetic targets and providers implementing their public dot-call contracts.
+It covers normalized positions converted to provider percentages, coordinate-free
+labels, APR visual metadata, ownership, foreign markers, manual dismissal,
+combat deferral/cancellation, late loading, bounded event retries and cleanup
+recovery. AWP contracts cover APR adapter registration, objective/visual metadata,
+isolated snapshots, AWP-before-WUI selection, late loading and sequential handoff,
+combat, cancellation, public route clearing, routing-off, foreign ownership and
+restoration. The real opt-in APR host is exercised through events and secure
+post-observers, with neither addon, either addon, both and late discovery.
+The APR host creates output only through `SetTarget`, never from a
+planning result. Native arrival requires the owned tracked map point and a valid
+distance; it cannot advance a quest. No ticker runs at rest. Run with
+`python -m unittest tests.lua.navigation_v2_waypoint.test_waypoint -v`.
+WUI rendering, event timing, native waypoint ownership and combat/taint behavior
+on actual Retail and Forever clients remain required before either engine switch.
+AWP's own TomTom guide-carrier removal reassertion has no public dismissal signal;
+this remains an explicit NAV-03 acceptance gap, documented in the output module's
+README and source probe report. Passing synthetic contracts do not validate that
+missing provider behavior. No Forever AWP build is claimed from its Retail TOC.
+
+`lua/navigation_v2_portals` and `scripts/test_navigation_v2_portals.py` exercise
+portal/walk cost comparison, bounded catalogue preparation, conservative unknown
+access/phase, closed portals, adjustable loading costs, stale observations and
+actual XML/APR execution. Synthetic correlated transitions must include a reliable
+destination identity and an opaque active-use token; proximity/loading/events alone
+cannot arrive. Tests cover continuation, terminal timeout, cancellation, stale step
+contexts, coordinate-free labels and missing positions, without quest progression
+or output during planning. A generated static atlas is deliberately made obsolete
+by a faster portal; stale bounds/certificates stay disabled, adjacency/cache stay
+lazy and the default budgets remain unchanged. Run
+`python -m unittest tests.lua.navigation_v2_portals.test_portals
+tests.scripts.test_navigation_v2_portals -v`.
+Real portal data/provenance and trustworthy identity observation are still client
+data/validation work; both Forever and Retail in-game travel/taint checks block
+rollout. The library does not fabricate confirmation from native loading events.
+
+The same portal integration family reads the V2 entries from the real APR.toc,
+executes their actual XML/adapter/host order and drives mixed mount/portal/scheduled
+paths through WUI and AWP ownership. It covers scheduled timeout/cancellation,
+nonpositional phases, profile/cost replacement, and event invalidation without
+mount-journal scans in Step, GetResult or execution display. Periodic fixtures
+choose79s via transport versus60s walking after a missed departure, test exact
+departures, and charge dismount before waiting exactly once. The independent
+NAV-09 oracle runs100 synthetic movement graphs through the same search. Prepared
+terrain without movement metadata remains unknown under a dynamic profile;
+static seconds are not reinterpreted as mounted/swim geometry. The enabled host
+also keeps two event-only world subscriptions with fixed or explicit movement;
+these outlive mount-journal subscriptions and all end at Disable. Shared V2 event
+fakes store registrations per frame. Idle tests require exactly the two world
+listeners, no provider listeners/output, and fresh localization after world entry.
+Terrain loading without Enable still creates no observer.
 
 `merchant_sales_test.lua` exercises both auto-vendor and `SellItems` with native
 junk selling and the container fallback: large inventories, delayed/rejected
@@ -334,6 +443,55 @@ with a personal spell or item, then changes distance, movement speed and action
 availability. Cast, loading and arrival costs decide the winner; ordinary travel
 must not stop at an access-only physical itinerary.
 
+`navigation_road_coverage_budget_test.lua` suspends an invented road calculation
+on both profiles. Terrain coverage checks stay bounded across slices and search
+restarts, while endpoint height/access evidence, source replacement and fresh
+requests require a new proof.
+
+`navigation_road_direct_budget_test.lua` validates local collision proofs before
+unrelated road indexes and joins, retaining blocked paths, water costs, source
+validation, overlapping floors and concurrent compilation. It also bounds local
+join lookups and long-diagonal index growth. Synthetic fixtures exercise both
+profiles.
+`navigation_explicit_space_budget_test.lua` resolves named spaces among hundreds
+of overlapping declarations with bounded lookups, preserving ancestry and access.
+`navigation_foreground_budget_test.lua` compares bounded foreground work (3 ms)
+with background work (1 ms) while retaining useful guidance, cancellation and the
+operation limit on clients without a profiling clock.
+`navigation_departure_height_budget_test.lua` keeps usable personal escapes and
+taxi consultations before stopping a pointless relaxed search when the native
+departure floor is unknown. `navigation_height_wait_recovery_test.lua` retains
+that precise reason without repeated builds, then resumes on nearby proved
+ground, real altitude or source/access/action changes. Ordinary missing-data
+retries remain independent of these height waits.
+
+`navigation_terrain_scope_query_budget_test.lua` uses many distinct chords to
+check one owned scope inventory per world/revision while public queries remain
+live. `navigation_terrain_coverage_budget_test.lua` applies the same rule to
+terrain walking permission, with mutable points, weak caches, invalid sources,
+boundaries and source retirement.
+They also compare indexed chord decisions with independent linear geometry,
+cover native world certificates and batch limits, and preserve mutable coverage
+while checking immutable endpoint caching. `navigation_terrain_walk_bound_test.lua`
+covers free zero-cost pockets, empty gaps, arbitrary foreign edges and conservative
+fallbacks. `navigation_terrain_batch_planner_test.lua` checks one complete search
+for small inter-world inventories, the inclusive cap, lazy local/large worlds,
+and usable routes beside unavailable unrelated scopes on both profiles.
+`navigation_walk_dominance_budget_test.lua` rejects already dominated walking
+arrivals before terrain callbacks, keeping money/resource alternatives and
+independently enumerated non-metric paths. It also separates movement modes.
+`navigation_autoconnect_membership_budget_test.lua` excludes proved interior
+endpoints once while preserving explicit crossings and personal escapes.
+`navigation_search_heuristic_test.lua` checks consistent relaxed-graph ordering
+against independent resource-constrained oracles, hidden zero-cost terrain,
+personal actions and mixed speeds. `navigation_planner_search_heuristic_test.lua`
+keeps the native certificate separate from custom zero costs and pair speeds.
+`navigation_walking_permission_query_test.lua` bounds endpoint classification
+while keeping target-map requirements live, incomplete maps retryable and
+custom walking policies intact. `navigation_controller_observation_budget_test.lua`
+checks two live observations per slice and rejects stale results after provider
+or performance-recorder callbacks change the world, objective or capabilities.
+
 `navigation_controller_lifecycle_test.lua` also retains full synthetic trips
 across expected spell, item and portal arrivals. It tests missing loading data,
 consumed cooldowns, repeated native world-event retries, arrival/event ordering,
@@ -393,3 +551,98 @@ code and consumes no artifacts.
 
 The report workflow must be merged into the repository's default branch before
 GitHub triggers it. See [GitHub's workflow_run documentation](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#workflow_run).
+
+
+V2 host fixtures provide explicitly synthetic world-ready evidence after successful
+activation where the case requires readiness. Registration itself does not fabricate
+an event. The portal reconfiguration suite also deliberately omits all bootstrap:
+initial and post-Disable planning remain unknown with no marker until a fresh world
+observation and new localized request. It covers active Enable/EnableSectors without
+world unsubscribe, validation failure preserving old work, cancelled old targets and
+timers, and entering events missed while disabled. Native frame methods are modeled
+per frame, including selective UnregisterEvent; no geography or live guide content
+is frozen by these contracts.
+
+`scripts/test_navigation_v2_taxi.py` discovers synthetic Lua taxi contracts and
+tests the real XML, TOC, planner, APR host and WUI/AWP sessions. Two consecutive
+fares, slower free arrivals, cumulative money/reagents, unknown/insufficient
+balances, undiscovered/ambiguous destinations, changed quotes, duration fallback
+and override/reset, confirmed boarding/arrival, loading, deadlines, cancellation
+and stale context are covered. An independent exhaustive oracle checks 80 tiny
+resource-constrained DAGs. A deliberately obsolete compiled witness cannot hide
+a faster taxi; adjacency stays lazy and budgets remain unchanged. No real guide,
+flight itinerary, live API catalogue or quest progression is frozen. Run
+`python -m unittest tests.scripts.test_navigation_v2_taxi -v`.
+
+The same synthetic family checks the shared Personal integration through the real
+TOC/XML: a cave recall versus walking/taxi, cumulative shared money and inventory,
+unknown inventory revocation, the complete resource-key limit, a captured attempt
+surviving changed future plans with a fixed deadline, reliable correlated arrival
+and failure, one remaining-plan request, and an APR-owned hardware-click button.
+Combat cases model the separately verified secure guard; no test calls a real
+protected action or claims native taint validation. An obsolete prepared witness
+also cannot hide a faster Personal action. NAV-13/NAV-15 independently own their
+module/host counter-tests; no shared fixture assumes a shipped route or catalogue.
+
+`lua/navigation_v2_cooldowns` exercises future personal use at exact epochs after
+approach, movement transitions and scheduled transport, wait-versus-walk choices,
+shared cooldowns, successive known charges, sequential regeneration, unknown
+rates/data, cumulative money/reagents and consumed-item rejection. Two independent
+path/calendar oracles cover90 tiny synthetic graphs. Label contracts discard past
+timers/restored queues and bound cheap-loop expansion without retaining unrelated
+balances. The actual XML/TOC/host handles a text-only bounded wait, one replan at
+its boundary, stale callbacks, click recapture and cancellation without protected
+automatic actions or quest progress. `scripts/test_navigation_v2_cooldowns.py`
+also verifies real TestLoader discovery and obsolete-static-witness rejection.
+Run `python -m unittest tests.lua.navigation_v2_cooldowns.test_cooldowns
+tests.scripts.test_navigation_v2_cooldowns -v`. Native client timing, combat/taint,
+cast/use and correlated physical arrival remain required before either rollout.
+
+The same synthetic family also checks the shared Conditions integration:
+global/zone/from/to/passage/transport conjunctions, semantic binding reuse,
+origin/destination validation, conservative unknown alternatives and a real
+first-job `observation_required`/`ResumeConditions` continuation. Native queries
+are counted at explicit capture boundaries, with none in Step/GetResult. Phase,
+access, loading and owner replacement tests prevent stale proof restoration;
+an in-flight native capture cannot overwrite a newer request. A conditional
+sector source also rejects old static witnesses. The NAV-16 family independently
+owns its module and actual-chain counter-tests; this family never edits them.
+
+`lua/navigation_v2_unlock_chains` extends that prerequisite contract with timed
+realizations, alternatives and shared/cyclic prerequisites. Its independent
+finite-state relaxation oracle compares total costs on generated synthetic
+graphs; hand-calculated fixtures cover ordered visits, equal costs, unknown
+durations/facts, cumulative resources, timetable shifts, shared cooldowns and
+loading, origin mount restrictions, the original budget and cancellation through
+reconstruction/proof registration. Snapshot/support changes, identical captures
+and actual two-client WUI/AWP host continuations verify that only the first real
+approach executes and no waypoint progresses APR. The partitioned integration
+uses synthetic sectors through the actual loader with stale atlas bounds off.
+Run `python -m unittest tests.lua.navigation_v2_unlock_chains.test_chains
+tests.scripts.test_navigation_v2_unlock_chains -v`. Native quest/access proof,
+movement, rendering and combat/taint remain unverified before either switch.
+
+`lua/navigation_v2_unlocks` checks an explicit simple prerequisite only after
+proven absence on complete known graphs. Synthetic denials, missing entries,
+unknown/dirty facts, budgets, cancellation and replacement cannot fabricate an
+unlock. A longer usable route wins both initially and when new evidence opens
+an alternative during the approach or while waiting at the prerequisite. The
+same bounded job handles initial search and approach; partial approach estimates
+are explicit. Fresh actual access/character quest proof, confirmed origin,
+ordered visits and the unchanged APR step context govern resumption. Actual
+Standard/Camelot XML/TOC and WUI/AWP public hooks exercise output ownership,
+foreign markers, text without coordinates and cancellation with no quest advance.
+`scripts/test_navigation_v2_unlocks.py` verifies normal discovery and actual
+partitioned/missing-sector behavior without loading a maintained itinerary.
+Run `python -m unittest tests.lua.navigation_v2_unlocks.test_unlocks
+tests.scripts.test_navigation_v2_unlocks -v`. Both clients' native quest/proof
+timing, physical movement, rendering and combat/taint remain rollout requirements.
+
+The same owned unlock family covers NAV19's shared host raccord without editing
+its frozen modules/tests: manual/reset/COW persistence, deferred prices and
+replacement, real portal/taxi/scheduled receipts, paired world loading, immutable
+committed deadlines, no arrival from events, rejected interruption and preserved
+catalogue/fare/requirements. Ride excludes loading/disembark; taxi elapsed is
+not charged twice. Batches and Personal's fresh-origin capture recover once.
+The separate `navigation_v2_calibration` family independently checks the frozen
+model/adapter and actual-chain integration. No native measurement is claimed.

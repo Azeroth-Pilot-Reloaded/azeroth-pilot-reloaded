@@ -8,7 +8,7 @@
 ## Author: Core: Neogeekmo, Rycia, Kamian | Route: Pahonix, Neogeekmo | Support: NightofStarrs, Pahonix | (legacy: zyrrael, Deathmessinger, 8goldbow)
 ## IconTexture: Interface\AddOns\APR\APR-Core\assets\APR_logo
 ## Version: @project-version@
-## OptionalDeps: LibTaxiData, ElvUI, EllesmereUI
+## OptionalDeps: LibTaxiData, ElvUI, EllesmereUI, Pawn
 
 ## SavedVariables: APRSettings, APRData, APRCustomPath, APRZoneCompleted, APRTaxiNodes, APRTaxiNodesTimer, APRScenarioCompleted, APRScenarioMapIDCompleted, APRItemLooted, APRGossipValidated
 ## SavedVariablesPerCharacter: APRNavigationCharacterSettings
@@ -34,6 +34,7 @@
 
 APR-Core/libs/embeds.xml
 APR-Core/libs/LibAPRNavigation-1.0/LibAPRNavigation.xml
+APR-Core/libs/LibAPRNavigation-2.0/LibAPRNavigation.xml
 APR-Core/locales/locales.xml
 
 APR-Core/core/Diagnostics.lua
@@ -88,6 +89,9 @@ APR-Core/integrations/QuestTracker.lua
 APR-Core/utils/BuyMerchantUtils.lua
 APR-Core/utils/LootUtils.lua
 APR-Core/utils/PlayerPositionUtils.lua
+APR-Core/features/navigation/TerrainIndex.lua
+APR-Core/features/navigation/NavigationTerrain.lua
+NavigationData/Terrain_[Game].xml
 APR-Core/features/navigation/NavigationAdapter.lua
 APR-Core/integrations/NavigationEntrances.lua
 APR-Core/utils/NavigationZones.lua
@@ -120,6 +124,8 @@ APR-Core/core/CommunicationChannel.lua
 APR-Core/core/VersionCheck.lua
 
 APR-Core/core/Event.lua
+APR-Core/features/questing/RewardScoring.lua
+APR-Core/integrations/Pawn.lua
 APR-Core/features/questing/NPCInteraction.lua
 
 APR-Core/features/questing/StepInstructions.lua
@@ -134,6 +140,21 @@ APR-Core/features/navigation/Preview.lua
 APR-Core/features/navigation/NavigationPlanner.lua
 APR-Core/features/navigation/NavigationUnlocks.lua
 APR-Core/features/navigation/Navigation.lua
+APR-Core/features/navigation/NavigationV2Movement.lua
+APR-Core/features/navigation/NavigationV2Taxi.lua
+APR-Core/features/navigation/NavigationV2Position.lua
+APR-Core/features/navigation/NavigationV2Personal.lua
+APR-Core/features/navigation/NavigationV2Conditions.lua
+APR-Core/features/navigation/NavigationV2Calibration.lua
+APR-Core/features/navigation/NavigationV2.lua
+APR-Core/features/navigation/NavigationBenchmarkCase.lua
+APR-Core/features/navigation/NavigationBenchmarkRun.lua
+APR-Core/features/navigation/NavigationBenchmarkV1.lua
+APR-Core/features/navigation/NavigationBenchmarkV2.lua
+APR-Core/features/navigation/NavigationBenchmarkPreparation.lua
+APR-Core/features/navigation/NavigationV2Planner.lua
+APR-Core/features/navigation/NavigationBenchmarkHost.lua
+APR-Core/ui/NavigationBenchmark.lua
 APR-Core/features/navigation/FlightPath.lua
 
 APR-Core/features/navigation/Arrow.lua

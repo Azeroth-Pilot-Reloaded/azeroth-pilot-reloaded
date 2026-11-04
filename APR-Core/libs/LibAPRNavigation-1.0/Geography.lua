@@ -1,7 +1,7 @@
 -- Project endpoints into world coordinates and identify their access regions.
 -- A shared position alone does not permit walking through a required entrance.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("geography", 11) then return end
+if not Lib:BeginModule("geography", 17) then return end
 local Instance = Lib.Instance
 -- These defaults are read-only, including CheckRequirements' character input.
 -- Reuse them across walking checks and retries of unavailable map ancestry.
@@ -39,6 +39,29 @@ local function WorldRegion(region, source, target)
     return region
 end
 
+local function BoundedMaplessSpace(space)
+    return space and space.bounds ~= nil and space.mapIDs and #space.mapIDs == 0
+end
+
+function Instance:CanObserveWithoutUiMap(position)
+    if not position or position.uiMapID ~= nil or not self.ResolveNavigationSpace then return false end
+    local space, reason = self:ResolveNavigationSpace(position)
+    if space and space.known and BoundedMaplessSpace(space) then return true, space, reason end
+    if reason ~= "ambiguous_navigation_space" then return false, nil, reason end
+    -- Retain raw world observations during an ambiguous floor lookup, but only
+    -- when one of the actual candidates is a declared bounded mapless space.
+    local query = {}
+    for key, value in pairs(position) do query[key] = value end
+    for _, candidate in ipairs(self.config.NavigationSpaces or EMPTY) do
+        if BoundedMaplessSpace(candidate) and candidate.worldID == self:GetWorldInstanceID(position.instanceID) then
+            query.spaceID = candidate.id
+            local matched, pending = self:ResolveNavigationSpace(query)
+            if (matched and matched.known) or pending == "navigation_space_identity_unavailable" then return true, nil, reason end
+        end
+    end
+    return false, nil, reason
+end
+
 function Instance:NormalizeLocation(location, hint)
     if type(location) ~= "table" then return nil end
     local x, y = location.x, location.y
@@ -52,7 +75,10 @@ function Instance:NormalizeLocation(location, hint)
         -- that coordinate space without replacing the observed X/Y position.
         instanceID = self.env.mapToWorld(mapID, 0.5, 0.5)
     elseif not mapID and self.env.worldToMap and instanceID ~= nil then
-        mapID = self.env.worldToMap(instanceID, x, y, hint)
+        local definition = location.spaceID and self.GetNavigationSpace and self:GetNavigationSpace(location.spaceID)
+        if not BoundedMaplessSpace(definition) and not self:CanObserveWithoutUiMap(location) then
+            mapID = self.env.worldToMap(instanceID, x, y, hint)
+        end
     end
     instanceID = self:GetWorldInstanceID(instanceID)
     if not Finite(instanceID) or not Finite(x) or not Finite(y) then return nil end
@@ -69,13 +95,34 @@ function Instance:NormalizeLocation(location, hint)
         noAutoconnect = location.noAutoconnect,
         phaseAgnostic = location.phaseAgnostic,
         isInstance = location.isInstance,
+        terrainNodeKey = location.terrainNodeKey,
+        movementMode = location.movementMode,
+        positionSource = location.positionSource,
+        observedZ = location.observedZ,
+        heightSource = location.heightSource,
+        indoors = location.indoors,
+        airborne = location.airborne,
+        spaceID = location.spaceID,
+        spaceKind = location.spaceKind,
+        groundOnly = location.groundOnly,
+        noFly = location.noFly,
+        requiresExit = location.requiresExit,
         region = WorldRegion(location.region, location.instanceID, instanceID),
     }
+    if self.ResolveNavigationSpace then
+        local space = self:ResolveNavigationSpace(position)
+        if space then
+            position.spaceID, position.spaceKind = space.id, space.kind
+            position.floor, position.accessKey = position.floor or space.floor, position.accessKey or space.accessKey
+            position.groundOnly = position.groundOnly or space.groundOnly
+            position.requiresExit = space.requiresExit
+        end
+    end
     position.region = self:GetPositionRegion(position)
     return position
 end
 
-function Instance:GetPositionRegion(position)
+function Instance:GetNativePositionRegion(position)
     if not position then return nil end
     local instanceID = self:GetWorldInstanceID(position.instanceID)
     if position.region then return WorldRegion(position.region, position.instanceID, instanceID) end
@@ -134,9 +181,29 @@ function Instance:GetPositionRegion(position)
     end
 end
 
+function Instance:GetPositionRegion(position)
+    if not position then return nil end
+    if self.ResolveNavigationSpace then
+        local space, reason = self:ResolveNavigationSpace(position)
+        if space and space.known then
+            if space.region then return space.region end
+            if position.uiMapID == nil and BoundedMaplessSpace(space) then
+                return tostring(self:GetWorldInstanceID(position.instanceID)) .. ":space:" .. space.id
+            end
+        end
+        if not space and (reason ~= "navigation_space_unavailable" or position.spaceID ~= nil) then return nil end
+    end
+    return self:GetNativePositionRegion(position)
+end
+
 function Instance:IsSameAccessRegion(from, to)
     if not from or not to or self:GetWorldInstanceID(from.instanceID) ~= self:GetWorldInstanceID(to.instanceID) then return false end
     if from.accessKey ~= to.accessKey or from.floor ~= to.floor then return false end
+    if self.ResolveNavigationSpace then
+        local sourceSpace, targetSpace = self:ResolveNavigationSpace(from), self:ResolveNavigationSpace(to)
+        if sourceSpace and targetSpace and sourceSpace.id ~= targetSpace.id
+            and (sourceSpace.requiresExit or targetSpace.requiresExit) then return false end
+    end
     local source, target = self:GetPositionRegion(from), self:GetPositionRegion(to)
     return source ~= nil and source == target
 end
@@ -150,7 +217,113 @@ function Instance:CanWalk(from, to)
     return self:IsSameAccessRegion(from, to)
 end
 
+local NativeCanWalk, NativeSameAccess = Instance.CanWalk, Instance.IsSameAccessRegion
+local NativeRegion, NativeWorldRegion = Instance.GetPositionRegion, Instance.GetNativePositionRegion
+local NativeWorld, NativeMapInfo = Instance.GetWorldInstanceID, Instance.GetMapAncestryInfo
+local WALK_POSITION_FIELDS = { "x", "y", "z", "instanceID", "uiMapID", "spaceID", "region",
+    "accessKey", "floor", "areaID", "positionSource", "heightSource", "isInstance", "noAutoconnect", "phaseAgnostic" }
+local WALK_CONFIG_FIELDS = { "WorldInstanceOverrides", "IsolatedAreas", "MapTypeOverrides", "ContinentMapOverrides",
+    "IsolatedContinents", "NavigationSpaces" }
+local WEAK_KEYS = { __mode = "k" }
+
+local function SameWalkPosition(point, snapshot)
+    for _, key in ipairs(WALK_POSITION_FIELDS) do if point[key] ~= snapshot[key] then return false end end
+    return true
+end
+
+local function CompleteWalkMap(owner, point, space)
+    if point.uiMapID == nil then
+        return space and space.known and (space.region ~= nil or BoundedMaplessSpace(space)) or false
+    end
+    local current, seen, config = point.uiMapID, {}, owner.config
+    for _ = 1, 50 do
+        if not current or current == 0 or seen[current] then return false end
+        seen[current] = true
+        local info = owner:GetMapAncestryInfo(current)
+        if not info then return false end
+        local override = config.MapTypeOverrides and config.MapTypeOverrides[current]
+        local mapType = override and override.mapType or info.mapType
+        if mapType == 2 or mapType == 4 or mapType == 6 or info.parentMapID == 0
+            or (config.ContinentMapOverrides and config.ContinentMapOverrides[current])
+            or (owner.entranceMaps and owner.entranceMaps[current]) then return true end
+        current = info.parentMapID
+    end
+    return false
+end
+
+-- Only endpoint geography is reused; target-map requirements remain live.
+-- Default queries detect reused/mutated point tables. A search which owns its
+-- immutable inputs may explicitly skip those comparisons for this request's
+-- lifetime. Public predicates and custom policies keep resolving live data.
+function Instance:CreateWalkingPermissionQuery(options)
+    local owner, resolver = self, Instance.ResolveNavigationSpace
+    local immutable = type(options) == "table" and options.immutablePositions == true
+    local cache, epoch = setmetatable({}, WEAK_KEYS), {}
+    local function nativePolicy()
+        return owner.CanWalk == NativeCanWalk and owner.IsSameAccessRegion == NativeSameAccess
+            and owner.GetPositionRegion == NativeRegion and owner.GetNativePositionRegion == NativeWorldRegion
+            and owner.GetWorldInstanceID == NativeWorld and owner.GetMapAncestryInfo == NativeMapInfo
+            and owner.ResolveNavigationSpace == resolver and Instance.ResolveNavigationSpace == resolver
+    end
+    local function refresh()
+        local config = owner.config
+        local spaces = config.NavigationSpaces
+        local changed = epoch.config ~= config or epoch.maps ~= owner.mapInfos or epoch.positions ~= owner.positions
+            or epoch.regions ~= owner.regions or epoch.entrances ~= owner.entranceMaps
+            or epoch.spaceCount ~= #(spaces or EMPTY)
+        for _, key in ipairs(WALK_CONFIG_FIELDS) do
+            if epoch[key] ~= config[key] then changed = true end
+        end
+        if not changed then return end
+        cache = setmetatable({}, WEAK_KEYS)
+        epoch.config, epoch.maps, epoch.positions = config, owner.mapInfos, owner.positions
+        epoch.regions, epoch.entrances, epoch.spaceCount = owner.regions, owner.entranceMaps, #(spaces or EMPTY)
+        for _, key in ipairs(WALK_CONFIG_FIELDS) do epoch[key] = config[key] end
+    end
+    local function classify(point)
+        local current = cache[point]
+        if current and (immutable or SameWalkPosition(point, current.snapshot)) then return current end
+        -- Probe completeness before resolving: a map can become available
+        -- during these callbacks. Never memoize an earlier partial result just
+        -- because a final retry happened to obtain the missing map record.
+        local complete = point.uiMapID ~= nil and CompleteWalkMap(owner, point)
+        local region = owner:GetPositionRegion(point)
+        local space = resolver and owner:ResolveNavigationSpace(point)
+        current = { region = region, spaceID = space and space.id, requiresExit = space and space.requiresExit }
+        -- Do not retain a negative lookup or a partially loaded native map.
+        -- Its next query must be able to observe newly available map metadata.
+        if region ~= nil and ((not resolver and point.region ~= nil) or complete
+            or (point.uiMapID == nil and CompleteWalkMap(owner, point, space))) then
+            if not immutable then
+                local snapshot = {}
+                for _, key in ipairs(WALK_POSITION_FIELDS) do snapshot[key] = point[key] end
+                current.snapshot = snapshot
+            end
+            cache[point] = current
+        else cache[point] = nil end
+        return current
+    end
+    return function(from, to)
+        if not nativePolicy() then return owner:CanWalk(from, to) end
+        if not from or not to or from.noAutoconnect or to.noAutoconnect then return false end
+        if not to.phaseAgnostic and owner.config.MapRequirements then
+            local requirements = owner:GetMapAccessRequirements(to.uiMapID)
+            if requirements and owner:CheckRequirements(requirements, EMPTY) ~= true then return false end
+        end
+        if owner:GetWorldInstanceID(from.instanceID) ~= owner:GetWorldInstanceID(to.instanceID)
+            or from.accessKey ~= to.accessKey or from.floor ~= to.floor then return false end
+        refresh()
+        local source, target = classify(from), classify(to)
+        if source.spaceID and target.spaceID and source.spaceID ~= target.spaceID
+            and (source.requiresExit or target.requiresExit) then return false end
+        return source.region ~= nil and source.region == target.region
+    end
+end
+
 function Instance:GetWalkingSpeed(position, travelSpeed, groundSpeed)
+    if position and (position.groundOnly or position.noFly) then return math.min(travelSpeed,groundSpeed) end
+    local space = position and self.ResolveNavigationSpace and self:ResolveNavigationSpace(position)
+    if space and space.groundOnly then return math.min(travelSpeed,groundSpeed) end
     local mapID = position and position.uiMapID
     if not mapID then return travelSpeed end
     self.groundMaps = self.groundMaps or {}

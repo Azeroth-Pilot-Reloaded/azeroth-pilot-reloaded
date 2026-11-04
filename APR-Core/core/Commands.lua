@@ -41,6 +41,8 @@ function APR.command:GetHelpEntries()
         {"/apr zoneinfo, zi", L["ZONEINFO_COMMAND"]},
         {"/apr zonecache", L["ZONECACHE_COMMAND"]},
         {"/apr perf", L["UI_PERFORMANCE"]},
+        {"/apr navbench", L["UI_PERFORMANCE"] .. " V1 / V2"},
+        {"/apr navengine v1|v2", "V1 / V2"},
         {"/apr perf on", L["UI_CAPTURE"]},
         {"/apr perf off", L["UI_STOP"]},
         {"/apr worldcoords, wc", L["UI_STATUS_WORLD_COORDINATES"]},
@@ -51,6 +53,21 @@ function APR.command:SlashCmd(input)
     local normalizedInput = APR:TrimString(input or "")
     normalizedInput = APR:RemoveContiguousSpaces(normalizedInput)
     local inputText = string.lower(normalizedInput)
+    local engine = inputText:match("^navengine%s+(%S+)$")
+    if inputText == "navengine" or engine then
+        local navigation = APR.navigation
+        if navigation and navigation.GetEngine and navigation.SetEngine then
+            local accepted, reason = true, nil
+            if engine then accepted, reason = navigation:SetEngine(engine) end
+            if accepted then APR:PrintInfo("APR : " .. navigation:GetEngine():upper())
+            else APR:PrintInfo("APR : " .. (NOT_AVAILABLE or UNAVAILABLE or UNKNOWN or "?") .. " (" .. tostring(reason) .. ")") end
+        end
+        return
+    end
+    if inputText == "navbench" then
+        if APR.NavigationBenchmark then APR.NavigationBenchmark:Show() end
+        return
+    end
     local settingsOpened
     if not APR.settings.profile.enableAddon then
         APR.settings:OpenSettings(APR.title)
@@ -96,7 +113,7 @@ function APR.command:SlashCmd(input)
         if type(data) ~= "table" then return end
         local catalog, profile = data.CustomRoute, settings.profile
         local enabled, playerID, activeRoute = profile.enableAddon, APR.PlayerID, APR.ActiveRoute
-        APR:RequestReload(--[[APR_DIAG]]APRTrace("APR-Core/core/Commands.lua:99:callback#4", --[[/APR_DIAG]]function()
+        APR:RequestReload(--[[APR_DIAG]]APRTrace("APR-Core/core/Commands.lua:116:callback#4", --[[/APR_DIAG]]function()
             if not IsResetContextCurrent(settings, profile, enabled, playerID, activeRoute)
                 or APRData ~= data or data.CustomRoute ~= catalog then return false end
             data.CustomRoute = {}
@@ -108,7 +125,7 @@ function APR.command:SlashCmd(input)
         local progress, completed, path = data[playerID], zones[playerID], paths[playerID]
         local profile = settings.profile
         local enabled = profile.enableAddon
-        APR:RequestReload(--[[APR_DIAG]]APRTrace("APR-Core/core/Commands.lua:111:callback#5", --[[/APR_DIAG]]function()
+        APR:RequestReload(--[[APR_DIAG]]APRTrace("APR-Core/core/Commands.lua:128:callback#5", --[[/APR_DIAG]]function()
             if not IsResetContextCurrent(settings, profile, enabled, playerID, activeRoute)
                 or APRData ~= data or APRZoneCompleted ~= zones or APRCustomPath ~= paths
                 or data[playerID] ~= progress or zones[playerID] ~= completed or paths[playerID] ~= path then
@@ -172,11 +189,11 @@ function APR.command:SlashCmd(input)
     elseif (inputText == "help" or inputText == "h") then
         local function printHelp(command, description)
             print(APR:WrapTextWithAppearanceColor(command, "general", "accent") .. " - " .. description)
-        end--[[APR_DIAG]]; printHelp = APRTrace("APR-Core/core/Commands.lua:173:printHelp#6", printHelp)--[[/APR_DIAG]]
+        end--[[APR_DIAG]]; printHelp = APRTrace("APR-Core/core/Commands.lua:190:printHelp#6", printHelp)--[[/APR_DIAG]]
 
         APR:PrintInfo(L["COMMAND_LIST"])
         for _, entry in ipairs(self:GetHelpEntries()) do printHelp(entry[1], entry[2]) end
     elseif not settingsOpened then
         APR.settings:OpenSettings(APR.title)
     end
-end--[[APR_DIAG]]; APR.command.SlashCmd = APRTrace("APR-Core/core/Commands.lua:50:APR.command:SlashCmd#3", APR.command.SlashCmd)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.command.SlashCmd = APRTrace("APR-Core/core/Commands.lua:52:APR.command:SlashCmd#3", APR.command.SlashCmd)--[[/APR_DIAG]]

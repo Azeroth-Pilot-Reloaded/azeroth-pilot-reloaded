@@ -8,7 +8,7 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 APR.SettingsRows = {}
 local Rows, UI = APR.SettingsRows, APR.UI
 local supported = {CheckBox = true, Slider = true, Dropdown = true, ColorPicker = true, EditBox = true,
-    APRSettingsAction = true, APRSettingsSoundSelect = true, APRSettingsFontSelect = true, APRThemeAccent = true}
+    APRSettingsAction = true, APRSettingsSelect = true, APRSettingsSoundSelect = true, APRSettingsFontSelect = true, APRThemeAccent = true}
 
 -- Only the audio section uses this layout. Shared AceGUI Flow still lays out
 -- each card's controls, while the parent keeps a gap between event cards.
@@ -103,7 +103,7 @@ local function LayoutInline(widget, label, width)
         if kind == "Dropdown" then
             PlaceDropdown(widget, width - 8, -4, -labelHeight - 6)
             widget:SetHeight(labelHeight + 36)
-        elseif kind == "APRSettingsSoundSelect" or kind == "APRSettingsFontSelect" then
+        elseif kind == "APRSettingsSelect" or kind == "APRSettingsSoundSelect" or kind == "APRSettingsFontSelect" then
             Anchor(widget.select, "TOPLEFT", frame, "TOPLEFT", 4, -labelHeight - 6, width - 8, 28)
             widget:SetHeight(labelHeight + 36)
         elseif kind == "Slider" then
@@ -170,7 +170,7 @@ local function Layout(widget)
     elseif kind == "Dropdown" then
         PlaceDropdown(widget, controlWidth, -inset, compact and -6 or -12)
         if not compact then widget.dropdown:SetHeight(30); widget.button_cover:SetHeight(30) end
-    elseif kind == "APRSettingsSoundSelect" or kind == "APRSettingsFontSelect" then
+    elseif kind == "APRSettingsSelect" or kind == "APRSettingsSoundSelect" or kind == "APRSettingsFontSelect" then
         Anchor(widget.select, "TOPRIGHT", frame, "TOPRIGHT", -inset, compact and -6 or -12, controlWidth, 28)
     elseif kind == "EditBox" then
         Anchor(widget.editbox, "TOPRIGHT", frame, "TOPRIGHT", -12, -12, controlWidth, 30)

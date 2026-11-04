@@ -1,7 +1,7 @@
 -- Turn declarative connections into usable edges for one character snapshot.
 -- Each build owns its API cache and yields between connection directions.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("catalog", 17) then return end
+if not Lib:BeginModule("catalog", 19) then return end
 local Instance = Lib.Instance
 local EdgeBuild = {}
 EdgeBuild.__index = EdgeBuild
@@ -257,6 +257,35 @@ function EdgeBuild:AddResources(edge, definition, action)
     end
 end
 
+local function TerrainReplacesWalking(owner, definition, from, to)
+    if not definition.terrainWalk or not owner.HasTerrainData or from.instanceID ~= to.instanceID
+        or from.accessKey ~= to.accessKey then return false end
+    local region = owner:GetPositionRegion(from)
+    if not region or region ~= owner:GetPositionRegion(to) then return false end
+    -- These records are coarse walking hints, not transports or access gates.
+    -- Retain their endpoints through the real transports/objective; only the
+    -- proved terrain graph may connect them inside a managed interior.
+    return owner:HasTerrainData(from) or owner:HasTerrainData(to)
+end
+
+local function TransitDepartureCheck(build,from,to,physical,sourceFree)
+    if not build.owner.CheckTransitAccess then return physical end
+    local owner,snapshot,character,context=build.owner,build.snapshot,build.character,build.context
+    return function(position,live)
+        if physical then
+            local allowed=physical(position,live)
+            if allowed~=true then return allowed end
+        end
+        local provider,current,departure=snapshot,character,context
+        if live then
+            provider=owner
+            current=owner.env.getCharacter and owner.env.getCharacter() or {}
+            departure={start=position,goal=context.goal}
+        end
+        return provider:CheckTransitAccess(sourceFree and position or from,to,departure,current)
+    end
+end
+
 function EdgeBuild:AddDirection(definition, prepared, source, destination, suffix)
     local blockedRequirements = prepared.blockedRequirements
     local from = self.snapshot:ResolvePosition(source, self.context)
@@ -269,6 +298,15 @@ function EdgeBuild:AddDirection(definition, prepared, source, destination, suffi
             self.metadata.waitingData = true
         end
         return
+    end
+    if TerrainReplacesWalking(self.owner, definition, from, to) then return end
+    if self.snapshot.CheckTransitAccess then
+        local allowed=self.snapshot:CheckTransitAccess(from,to,self.context,self.character)
+        if allowed~=true then
+            self.metadata.skipped=self.metadata.skipped+1
+            if allowed==nil then self.metadata.waitingData=true end
+            return
+        end
     end
 
     local requirements = self.snapshot:GetTravelRequirements(definition.requirements, from, to)
@@ -323,7 +361,7 @@ function EdgeBuild:AddDirection(definition, prepared, source, destination, suffi
         rawDynamicDestination = destination.dynamic ~= nil,
         arrivalZTolerance = definition.arrivalZTolerance,
         verifiedBuild = definition.verifiedBuild,
-        canStart = canStart,
+        canStart = TransitDepartureCheck(self,from,to,canStart,source.dynamic=="player"),
     }
     edge.instruction = definition.instructionKey
         and Format(self.snapshot:GetText(definition.instructionKey), self.snapshot:GetDisplayMapName(to))

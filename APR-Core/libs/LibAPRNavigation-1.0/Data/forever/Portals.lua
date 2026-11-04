@@ -26,13 +26,5 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "portals", {
             requirements = { faction = "Alliance" },
             seconds = 10,
         },
-        {
-            id = "portal-stormwind-to-ironforge",
-            kind = "portal",
-            bidirectional = true,
-            from = { space = "map", uiMapID = 1453, x = 0.6962, y = 0.3111 },
-            to = { space = "map", uiMapID = 1455, x = 0.7693, y = 0.5125, areaID = 1537 },
-            seconds = 30,
-        },
     },
-}, 30)
+}, 31)

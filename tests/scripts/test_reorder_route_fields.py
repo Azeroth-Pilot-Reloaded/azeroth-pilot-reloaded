@@ -209,8 +209,11 @@ class RouteHookTests(unittest.TestCase):
         return reorder.normalize_text(indexes.normalize_text(self.original)).encode("utf-8")
 
     def test_add_formats_staged_route_and_matching_working_copy(self):
-        self.git("add", "--", "Routes/route with spaces.lua")
-        self.assertEqual(self.git("show", ":Routes/route with spaces.lua"), self.expected())
+        # post-index-change requires an index write; a redundant add may skip it.
+        self.git("rm", "--cached", "--", "Routes/route with spaces.lua")
+        staging_output = self.git("add", "--", "Routes/route with spaces.lua")
+        self.assertEqual(self.git("show", ":Routes/route with spaces.lua"), self.expected(),
+                         "git add output:\n" + staging_output.decode("utf-8", errors="replace"))
         self.assertEqual(self.path.read_bytes(), self.expected())
         self.assertEqual(self.git("diff", "--", "Routes"), b"")
 

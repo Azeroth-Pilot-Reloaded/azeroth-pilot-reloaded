@@ -98,6 +98,8 @@ sandbox.WaypointUIAPI = api
 local point = assert(late:SetWaypoint(MapPoint(0.25, 0.75), { name = "Late provider" }))
 assert(point == state.current and point.x == 0.25 and point.y == 0.75)
 assert(state.creates[1].x == 25 and state.creates[1].y == 75)
+assert(state.creates[1].stripCoordinates == true,
+    "Waypoint UI must not append coordinates to a library target's semantic label")
 assert(late:ClearWaypoint() == true and state.clears[1].preserve == nil)
 sandbox.WaypointUIAPI = nil
 
@@ -120,6 +122,24 @@ assert(direct:SetWaypoint(MapPoint(0, 1), { name = "Map edge" }))
 assert(#injected.creates == creations, "Unchanged targets must not be recreated every frame")
 assert(direct:SetWaypoint(MapPoint(0, 1), { name = "Renamed map edge" }))
 assert(#injected.creates == creations + 1 and injected.current.name == "Renamed map edge")
+assert(direct:ClearWaypoint() == true)
+
+-- Coordinate visibility is a per-publication option. Explicitly showing
+-- coordinates must remain possible without changing the provider's settings.
+local label = "Use exit 12\nKeep 3 supplies"
+assert(direct:SetWaypoint(MapPoint(0.25, 0.75), { name = label }))
+local labelled = injected.creates[#injected.creates]
+assert(labelled.name == label and labelled.x == 25 and labelled.y == 75 and labelled.stripCoordinates == true,
+    "Hiding generated coordinates must preserve instruction numbers and numeric target coordinates")
+creations = #injected.creates
+assert(direct:SetWaypoint(MapPoint(0.25, 0.75), { name = label, stripCoordinates = true }))
+assert(#injected.creates == creations, "The implicit and explicit hidden-coordinate defaults are equivalent")
+assert(direct:SetWaypoint(MapPoint(0.25, 0.75), { name = label, stripCoordinates = false }))
+assert(#injected.creates == creations + 1 and injected.creates[#injected.creates].stripCoordinates == false,
+    "An explicit coordinate-display override must republish an otherwise unchanged target")
+assert(direct:SetWaypoint(MapPoint(0.25, 0.75), { name = label }))
+assert(#injected.creates == creations + 2 and injected.creates[#injected.creates].stripCoordinates == true,
+    "Removing the override must restore hidden coordinates")
 assert(direct:ClearWaypoint() == true)
 
 local projectionAPI, projected = Provider()

@@ -1,0 +1,33 @@
+local H=assert(loadfile('tests/lua/navigation_v2_road_collision/support.lua'))()
+local api=H.Load()
+local a,b={x=3.8,y=3.8},{x=3.2,y=3.2}
+local base=H.Mask('base',{'##','##'})
+local source=H.Source(api,base,{H.Mask('top',{'i'}),H.Mask('lower',{'.'})})
+assert(H.Query(source,a,b).status=='complete','inherit must consult the next mask')
+source=H.Source(api,base,{H.Mask('top',{'?'}),H.Mask('lower',{'.'})})
+assert(H.Query(source,a,b).reason=='unknown_floor','Unknown is never inherit')
+source=H.Source(api,base,{H.Mask('top',{'#'}),H.Mask('lower',{'.'})})
+assert(H.Query(source,a,b).status=='blocked','First supplied overlay has priority')
+source=H.Source(api,H.Mask('land',{'..','..'}),{H.Mask('remote',{'#'},{originX=30,originY=30})})
+assert(H.Query(source,a,b).status=='complete')
+
+local split=H.Mask('split',{'.i'});split.splitHeight=7
+source=H.Source(api,H.Mask('land',{'..','..'}),{split})
+assert(H.Query(source,a,b).reason=='split_height_unresolved')
+assert(H.Query(source,{x=3.8,y=2.8},{x=3.2,y=2.2}).status=='complete','inherit is unaffected')
+assert(H.Query(source,{x=2.8,y=3.8},{x=2.2,y=3.2}).status=='complete','Other mask area stays usable')
+local mask=H.Mask('runs',{'....','....'})
+mask.blockedRuns={{row=1,column=2,count=1}}
+source=H.Source(api,mask)
+assert(H.Query(source,a,b).status=='complete')
+assert(H.Query(source,{x=3.8,y=2.8},{x=3.2,y=2.2}).reason=='blocked_run_unresolved')
+assert(H.Query(source,{x=2.8,y=2.8},{x=2.2,y=2.2}).status=='complete')
+source=H.Source(api,H.Mask('walls',{'....','....','....','....'}),{},
+    {walls={{from={x=2,y=4},to={x=2,y=0}}}})
+local state=H.Query(source,{x=3.5,y=3.5},{x=.5,y=3.5})
+assert(state.status=='blocked' and state.reason=='wall_intersection')
+state=H.Query(source,a,b)
+assert(state.status=='complete' and state.wallScope=='supplied_barrier_segments')
+source=H.Source(api,H.Mask('no-walls',{'.'}))
+assert(H.Query(source,a,b).wallScope=='not_supplied','Mask proof does not claim absent walls/openings')
+print('Road collision: overlay priority, local modifiers and supplied walls passed')

@@ -136,7 +136,11 @@ APRNavigationCharacterSettings.housingExitLocation = nil
 assert(data:GetBindPosition(), "A known hearth bind exists while testing an unknown housing return")
 assert(not env.getDynamicPosition("housing_exit"), "An unknown housing return must not borrow the hearth destination")
 local Lib = LibStub("LibAPRNavigation-1.0")
-Lib:RegisterData("adapter-return-test", "return", { connections = { { id = "return", kind = "portal", seconds = 10,
+Lib:RegisterData("adapter-return-test", "return", {
+    -- Dynamic positions belong to this provider's geography, even when this
+    -- isolated test supplies only one transport instead of its live catalogue.
+    config = { NavigationSpaces = data:GetConfig().NavigationSpaces },
+    connections = { { id = "return", kind = "portal", seconds = 10,
     from = { dynamic = "player" }, to = { dynamic = "housing_exit" }, actions = { { type = "housing_return" } } } } })
 local returnData = Lib:New({ profile = "adapter-return-test", environment = env })
 assert(#returnData:BuildEdges({ playerPosition = env.getPlayerPosition() }) == 0,

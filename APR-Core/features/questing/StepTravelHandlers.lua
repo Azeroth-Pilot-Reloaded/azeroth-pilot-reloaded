@@ -164,6 +164,14 @@ function handlers.TakePortal(step, showStepDetails, currentStepIndex)
     end
 end--[[APR_DIAG]]; handlers.TakePortal = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:137:handlers.TakePortal#6", handlers.TakePortal)--[[/APR_DIAG]]
 
+local function CanSkipFlyingWaypoint()
+    local data = APR.NavigationData
+    if data and data.HasTerrainData and data:HasTerrainData() and APR.navigation and APR.navigation.CanSkipFlyingWaypoint then
+        return APR.navigation:CanSkipFlyingWaypoint()
+    end
+    return IsFlyableArea and IsFlyableArea() and not (IsIndoors and IsIndoors()) and APR:CheckFlySkill()
+end--[[APR_DIAG]]; CanSkipFlyingWaypoint = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:167:CanSkipFlyingWaypoint#7", CanSkipFlyingWaypoint)--[[/APR_DIAG]]
+
 function handlers.Waypoint(step, showStepDetails, currentStepIndex)
     -- Explicit arrival waypoints survive completed quest anchors and hidden arrows.
     if step.ZoneStepTrigger then return handlers.Transport(step, showStepDetails) end
@@ -171,7 +179,7 @@ function handlers.Waypoint(step, showStepDetails, currentStepIndex)
 
     if (canAutoSkipWaypoint and APR.settings.profile.autoSkipAllWaypoints) then
         APR:NextQuestStep()
-    elseif (canAutoSkipWaypoint and APR.settings.profile.autoSkipWaypointsFly and IsFlyableArea() and not IsIndoors() and APR:CheckFlySkill()) then
+    elseif (canAutoSkipWaypoint and APR.settings.profile.autoSkipWaypointsFly and CanSkipFlyingWaypoint()) then
         APR:NextQuestStep()
     else
         if step.WaypointDB then
@@ -193,7 +201,7 @@ function handlers.Waypoint(step, showStepDetails, currentStepIndex)
             APR.currentStep:AddExtraLineText("Waypoint" .. questID, APR:CheckWaypointText())
         end
     end
-end--[[APR_DIAG]]; handlers.Waypoint = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:167:handlers.Waypoint#7", handlers.Waypoint)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.Waypoint = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:175:handlers.Waypoint#8", handlers.Waypoint)--[[/APR_DIAG]]
 
 function handlers.UseHS(step, showStepDetails, currentStepIndex)
     local questKey, questText, useHSKey, spellID, type
@@ -240,7 +248,7 @@ function handlers.UseHS(step, showStepDetails, currentStepIndex)
         APR:UpdateNextStep()
         return true
     end
-end--[[APR_DIAG]]; handlers.UseHS = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:198:handlers.UseHS#8", handlers.UseHS)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.UseHS = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:206:handlers.UseHS#9", handlers.UseHS)--[[/APR_DIAG]]
 
 function handlers.SetHS(step, showStepDetails, currentStepIndex)
     if showStepDetails then
@@ -250,7 +258,7 @@ function handlers.SetHS(step, showStepDetails, currentStepIndex)
         APR:UpdateNextStep()
         return true
     end
-end--[[APR_DIAG]]; handlers.SetHS = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:245:handlers.SetHS#9", handlers.SetHS)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.SetHS = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:253:handlers.SetHS#10", handlers.SetHS)--[[/APR_DIAG]]
 
 function handlers.GetFP(step, showStepDetails, currentStepIndex)
     local routeZoneMapIDs, mapID, routeName, expansion = APR:GetCurrentRouteMapIDsAndName()
@@ -279,7 +287,7 @@ function handlers.GetFP(step, showStepDetails, currentStepIndex)
         APR:UpdateNextStep()
         return true
     end
-end--[[APR_DIAG]]; handlers.GetFP = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:255:handlers.GetFP#10", handlers.GetFP)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.GetFP = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:263:handlers.GetFP#11", handlers.GetFP)--[[/APR_DIAG]]
 
 function handlers.UseFlightPath(step, showStepDetails, currentStepIndex)
     if step.ZoneStepTrigger then
@@ -293,7 +301,7 @@ function handlers.UseFlightPath(step, showStepDetails, currentStepIndex)
         APR:UpdateNextStep()
         return true
     end
-end--[[APR_DIAG]]; handlers.UseFlightPath = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:284:handlers.UseFlightPath#11", handlers.UseFlightPath)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.UseFlightPath = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:292:handlers.UseFlightPath#12", handlers.UseFlightPath)--[[/APR_DIAG]]
 
 function handlers.RenderScenarioProgress(step)
     if step.Scenario then
@@ -344,4 +352,4 @@ function handlers.RenderScenarioProgress(step)
             end
         end
     end
-end--[[APR_DIAG]]; handlers.RenderScenarioProgress = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:298:handlers.RenderScenarioProgress#12", handlers.RenderScenarioProgress)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.RenderScenarioProgress = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:306:handlers.RenderScenarioProgress#13", handlers.RenderScenarioProgress)--[[/APR_DIAG]]

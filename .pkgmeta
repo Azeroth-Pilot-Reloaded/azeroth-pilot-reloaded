@@ -4,16 +4,19 @@ enable-toc-creation: yes
 required-dependencies:
   - libtaxidata
 
+
 ignore:
   # Repository metadata, local environments and developer tooling.
   - .github
   - .githooks
   - .vscode
   - .cache
+  - .scratch
   - .venv
   - .release
   - .editorconfig
   - .gitignore
+  - .gitattributes
   - .luacheckrc
   - .pkgmeta
   - .env
@@ -21,6 +24,7 @@ ignore:
   - tools
   - tests
   - Update-Libraries.cmd
+  - NavigationData/manifest.json
 
   # Documentation is kept in the repository, not loaded by the addon.
   - README.md
@@ -29,6 +33,8 @@ ignore:
   - readme
   - APR-Core/README.md
   - APR-Core/libs/LibAPRNavigation-1.0/README.md
+  - APR-Core/libs/LibAPRNavigation-2.0/README.md
+  - "APR-Core/libs/LibAPRNavigation-2.0/**/README.md"
 
   # Embedded libraries load through XML; their standalone TOCs/logo are unused.
   - "APR-Core/libs/*.toc"

@@ -14,7 +14,12 @@ class InstrumentationTests(unittest.TestCase):
                      'step_progression', 'navigation_scheduling', 'navigation_unlock_routes',
                      'navigation_map_projection', 'navigation_projection_cache', 'route_path_performance',
                      'navigation_forever_performance', 'navigation_forever_projection',
-                     'ui_foundations', 'route_panels_render', 'waypoint_integration'):
+                     'ui_foundations', 'route_panels_render', 'waypoint_integration',
+                     'navigation_benchmark_case', 'navigation_benchmark_command',
+                     'navigation_benchmark_host', 'navigation_benchmark_integration',
+                     'navigation_benchmark_loading', 'navigation_benchmark_run',
+                     'navigation_benchmark_ui', 'navigation_benchmark_v1',
+                     'navigation_benchmark_v2'):
             with self.subTest(suite=name):
                 runtime = LuaRuntime(unpack_returned_tuples=True)
                 runtime.execute('function GetTime() return 0 end; function debugprofilestop() return 0 end')

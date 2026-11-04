@@ -100,14 +100,20 @@ for _, profile in ipairs({ "retail", "forever" }) do
     for mapID, id in pairs(data:GetConfig().ZoneRoutes or {}) do
         assert(data.connectionLookup[id], "Zone " .. mapID .. " references an unknown connection: " .. id)
     end
-    local edges = data:BuildEdges({ playerPosition = { instanceID = 0, uiMapID = 2395, x = 0, y = 0 } })
-    for _, edge in ipairs(edges) do
-        local id = edge.id:match("^[^:]+:(.*):forward$") or edge.id:match("^[^:]+:(.*):reverse$")
-        local definition = id and data.connectionLookup[id]
-        if definition then
-            assert(not definition.disabled and (not definition.reviewStatus or definition.reviewStatus == "confirmed"),
-                "Unreviewed/disabled records cannot publish usable connections: " .. id)
+    for _, faction in ipairs({ "Alliance", "Horde" }) do
+        fixture.faction = faction
+        local edges = data:BuildEdges({ playerPosition = { instanceID = 0, uiMapID = 2395, x = 0, y = 0 } })
+        for _, edge in ipairs(edges) do
+            local id = edge.id:match("^[^:]+:(.*):forward$") or edge.id:match("^[^:]+:(.*):reverse$")
+            local definition = id and data.connectionLookup[id]
+            if definition then
+                assert(not definition.disabled and (not definition.reviewStatus or definition.reviewStatus == "confirmed"),
+                    "Unreviewed/disabled records cannot publish usable connections: " .. id)
+                assert(FactionPossible(definition.requirements, faction),
+                    "Published transport must satisfy its declared faction eligibility: " .. id)
+            end
         end
     end
+    fixture.faction = "Alliance"
 end
 print("Navigation catalogue integrity: " .. checked .. " faction-consistent connections passed")
