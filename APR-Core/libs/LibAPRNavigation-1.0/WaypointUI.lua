@@ -1,7 +1,7 @@
 -- Optional waypoint output. A consumer may publish explicitly or enable an
 -- observer of its current target; route progression always belongs to the host.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("waypoint-ui", 4) then return end
+if not Lib:BeginModule("waypoint-ui", 5) then return end
 local Instance = Lib.Instance
 local visualKeys = { "name", "iconTexture", "iconType", "r", "g", "b", "requestRecolor", "stripCoordinates" }
 
@@ -156,6 +156,7 @@ local function PublishWaypoint(self, position, options, automatic)
     request.name = request.name or position.title or self:GetText("RUN_WAYPOINT")
     request.token = options.token or position.token
     request.suppressAudio = options.suppressAudio ~= false
+    request.stripCoordinates = options.stripCoordinates ~= false
     -- The host has already selected the active leg. Avoid another planner
     -- immediately replacing it when Waypoint UI receives this request.
     request.suppressPathfinding = true
