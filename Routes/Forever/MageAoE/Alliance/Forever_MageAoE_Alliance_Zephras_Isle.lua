@@ -1564,7 +1564,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         {
             Qpart = { [92516] = { 1, 2, 3 } },
             Fillers = { [92515] = { 1 }, [92553] = { 2, 1 } },
-            Note = { "PRIORITIZE_OBJECTIVES" },
+            Note = { "PRIORITIZE_OBJECTIVES", "SKYBORNE_HIPPOGRYPHS_FAST_ESCAPE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 36.49, 54.785),
             Range = 30,
             RaidIcon = 251261,
@@ -2277,6 +2277,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         {
             Qpart = { [92550] = { 1 } },
             Fillers = { [92553] = { 2, 1 } },
+            Note = { "SKYBORNE_MOVE_OUT_LIGHTNING_CLOUD" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 49.0205, 55.391),
             Range = 30,
             RaidIcon = 252068,
@@ -2295,6 +2296,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         {
             Qpart = { [92550] = { 2 } },
             Fillers = { [92553] = { 2, 1 } },
+            Note = { "SKYBORNE_LIVING_LIGHTNING_HEAVY_HIT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 49.0205, 55.391),
             Range = 30,
             RaidIcon = 251662,
@@ -3049,6 +3051,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92684] = { 1 } },
+            Note = { "SKYBORNE_GALESTRIDER_DUST_CLOUD" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 50.27, 80.6995),
             Range = 30,
             RaidIcon = 251707,
@@ -3655,6 +3658,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         {
             Qpart = { [92642] = { 1, 2 } },
             Fillers = { [92834] = { 1 } },
+            Note = { "SKYBORNE_INTERRUPT_HEALERS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.525, 66.09),
             Range = 30,
             RaidIcon = 253511,
@@ -3886,6 +3890,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [98512] = { 1 } },
+            Note = { "SKYBORNE_ASSASSIN_KNOCKDOWN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 55.31, 59.8),
             Range = 30,
             RaidIcon = 254626,
@@ -4171,6 +4176,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         {
             Qpart = { [93165] = { 1 }, [94487] = { 1 }, [92834] = { 1 } },
             Fillers = { [94485] = { 1 }, [93160] = { 1 }, [92741] = { 1 }, [94486] = { 1 } },
+            Note = { "SKYBORNE_INTERRUPT_HEALERS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.835, 37.435),
             Range = 30,
             RaidIcon = 252664,
