@@ -201,8 +201,9 @@ function createCatalogFixture(profile)
             if cold then instance:InvalidatePositionCache() end
             collectgarbage("collect")
         end,
-        create = function()
-            return instance:CreateEdgeBuild({ start = start, playerPosition = start, clock = benchmarkClock })
+        create = function(deferInstructions)
+            return instance:CreateEdgeBuild({ start = start, playerPosition = start, clock = benchmarkClock,
+                deferInstructions = deferInstructions })
         end,
     }
 end
@@ -213,11 +214,11 @@ def benchmark_catalog(options, profile: str) -> dict:
     runtime = new_runtime()
     runtime.execute(CATALOG_FIXTURE)
     fixture = runtime.globals().createCatalogFixture(profile)
-    measurements = {"cold": [], "warm": []}
+    measurements = {"cold": [], "warm": [], "deferred_cold": [], "deferred_warm": []}
     for _ in range(options.runs):
         for mode in measurements:
-            fixture.reset(mode == "cold")
-            run = timed_job(fixture.create, options)
+            fixture.reset(mode.endswith("cold"))
+            run = timed_job(lambda: fixture.create(mode.startswith("deferred_")), options)
             run["api_calls"] = capture_counters(fixture.counters)
             measurements[mode].append(run)
     return {
@@ -599,6 +600,7 @@ def main(argv=None) -> int:
                 "Times include Lua/Python crossings and mock API calls; real client calls may cost more.",
                 "Preparation, search and complete Lua/runtime initialization are separate; initialization is not timed.",
                 "Cold taxi clears the static index; cold catalogs clear position caches. Warm runs retain them.",
+                "Deferred catalogs omit labels for unused edges; selected labels are resolved at publication, outside this catalogue-only benchmark.",
                 "Garbage collection runs before each measurement; collection during a slice remains included.",
                 "Budgets are cooperative: an indivisible operation or OS scheduling may exceed the requested slice.",
                 "There are no timing thresholds or performance assertions in this benchmark.",

@@ -78,6 +78,19 @@ local status, route = search:Step(64, 1)
 
 `Step` limits both operations and, when a clock is supplied, elapsed milliseconds.
 Graph ingestion, resource checks and route reconstruction share that budget.
+Inputs remain immutable until the search finishes or is cancelled. Search holds
+transport references while comparing alternatives and materializes independent
+segment tables only for the winning itinerary, including automatic walks and
+the actual departure of a personal action.
+
+`CreateEdgeBuild({ deferInstructions = true, ... })` opts out of resolving names
+for every candidate. These edges carry `instructionDeferred = true` and an
+optional `instructionKey`; `navigator:GetEdgeInstruction(edge)` returns their
+localized label without modifying the edge. Resolve selected segments and
+relevant diagnostic blockers before displaying them. APR does this in its
+incremental queue/explanation phases. Default builds retain eager instructions
+for existing consumers. Deferral changes presentation work only; requirements,
+action availability, costs and resources are still evaluated during planning.
 The default is one millisecond. The scheduler checks the clock between operations;
 a synchronous host API call, garbage collection or OS preemption can overrun it.
 `BuildEdges` remains available as a synchronous compatibility helper.
