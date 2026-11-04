@@ -17,6 +17,8 @@ function Fixture.New(options)
         instance = options.instance == true, restricted = options.restricted == true,
         outgoingRestricted = options.outgoingRestricted == true,
         channels = {}, population = options.population or 2, populationReads = 0,
+        friends = Copy(options.friends or {}), bnetFriends = Copy(options.bnetFriends or {}),
+        friendReads = 0, bnetReads = 0,
     }
     local locale = setmetatable({ GROUP_STEPS_AHEAD = "%d ahead", GROUP_STEPS_BEHIND = "%d behind" },
         { __index = function(_, key) return key end })
@@ -122,6 +124,54 @@ function Fixture.New(options)
             return result
         end,
     }
+    WOW_PROJECT_ID, BNET_CLIENT_WOW = options.projectID or 1, "WoW"
+    C_FriendList = {
+        GetNumFriends = function() return #env.friends end,
+        GetFriendInfoByIndex = function(index)
+            env.friendReads = env.friendReads + 1
+            return env.friends[index]
+        end,
+    }
+    function BNGetNumFriends() return #env.bnetFriends end
+    C_BattleNet = {
+        GetFriendAccountInfo = function(index)
+            env.bnetReads = env.bnetReads + 1
+            local friend = env.bnetFriends[index]
+            if not friend or friend.missingInfo then return end
+            local info = Copy(friend)
+            info.gameAccountInfo = info.gameAccountInfo or info.accounts and info.accounts[1]
+            info.accounts = nil
+            return info
+        end,
+        GetFriendNumGameAccounts = function(index)
+            local friend = env.bnetFriends[index]
+            return friend and not friend.missingCount and #(friend.accounts or {}) or nil
+        end,
+        GetFriendGameAccountInfo = function(index, accountIndex)
+            local friend = env.bnetFriends[index]
+            return friend and friend.accounts and friend.accounts[accountIndex]
+        end,
+        GetGameAccountInfoByID = function(gameAccountID)
+            for _, friend in ipairs(env.bnetFriends) do
+                for _, game in ipairs(friend.accounts or {}) do
+                    if game.gameAccountID == gameAccountID then return game end
+                end
+            end
+        end,
+        SendGameData = function(target, prefix, wire)
+            assert(prefix == "APRFindV1" and #wire <= 240)
+            local packet = APR.PartyFinderProtocol.Decode(wire)
+            assert(packet, "Battle.net sends must satisfy the same real wire contract")
+            local result = env.bnetSendResult or 0
+            if type(result) == "function" then result = result(packet, target) end
+            env.sent[#env.sent + 1] = { prefix = prefix, wire = wire, packet = packet,
+                channel = "BNET", target = target, at = env.now, result = result }
+            return result
+        end,
+    }
+    if not options.friends and not options.bnetFriends then
+        C_FriendList, C_BattleNet, BNGetNumFriends = nil, nil, nil
+    end
     ChatThrottleLib = options.throttle and { SendAddonMessage = function(_, priority, prefix, wire, channel, target, _, callback)
         assert(priority == "BULK")
         local result = C_ChatInfo.SendAddonMessage(prefix, wire, channel, target)
@@ -158,6 +208,7 @@ function Fixture.New(options)
     dofile("APR-Core/features/group/PartyFinder.lua")
     dofile("APR-Core/features/group/PartyFinderDirect.lua")
     dofile("APR-Core/features/group/PartyFinderWorld.lua")
+    dofile("APR-Core/features/group/PartyFinderFriends.lua")
     local finder = APR.partyFinder
     function finder:MaybeNotifyCandidate(candidate) env.lastCandidate = candidate end
     function finder:HandleInviteMessage() end
@@ -243,6 +294,16 @@ function Fixture.New(options)
             details.target or "Local-Home", 0,
             details.localID or (details.world and finder.worldChannelID or self.channelID),
             details.name or (details.world and finder.worldChannelName or finder.channelName))
+    end
+    function env:ReceiveBattleNet(kind, data, gameAccountID, details)
+        local wire = self.protocol.Encode(kind, data)
+        assert(wire, "Battle.net fixtures must satisfy the real wire contract")
+        self:ReceiveBattleNetWire(wire, gameAccountID, details)
+    end
+    function env:ReceiveBattleNetWire(wire, gameAccountID, details)
+        details = details or {}
+        self:Event("BN_CHAT_MSG_ADDON", details.prefix or "APRFindV1", wire,
+            details.distribution or "WHISPER", gameAccountID)
     end
     function env:SetStep(step)
         self.step = step
