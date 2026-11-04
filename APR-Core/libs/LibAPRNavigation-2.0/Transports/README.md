@@ -6,7 +6,7 @@ declarations and sources before rollout. V1 remains the active default.
 
 `Library.New(graph, options)` accepts `portals` (dense array, at most256) and an
 optional `portalObservation`. Each portal declares `id`, graph node `from`/`to`,
-origin `phase`, `destination={space,phase}`, nonnegative finite `waitSeconds`,
+optional origin `phase`, `destination={space,phase?}`, nonnegative finite `waitSeconds`,
 `useSeconds`, `loadingSeconds`, positive `timeoutSeconds`, optional `name` and
 optional real `entry={mapID,x,y}` with normalized map coordinates. Graph node IDs
 must describe distinct localized world/floor/phase nodes; proximity creates no
@@ -15,8 +15,9 @@ once. Waiting, use and loading are charged by the portal edge. Positions are
 technical data; names pass the shared coordinate-free text boundary.
 
 Observations have `{revision,phase,portals={[id]={open,access}}}`. A known phase
-mismatch, closed portal or denied access blocks the arc. Missing phase/open/access
-is unknown. A known route wins over an unknown candidate. Missing observations
+mismatch against a declared constraint, closed portal or denied access blocks the arc.
+Missing required phase/open/access is unknown. An undeclared phase needs no
+observation and is never assigned a default. A known route wins over an unknown candidate. Missing observations
 cannot prove no path. `planner:ObservePortals(snapshot)` accepts strictly newer
 revisions, captures the effective access and invalidates only an actual change.
 `planner:SetPortalCosts(id, partialCosts)` accepts the three cost fields above;
@@ -39,10 +40,11 @@ the real entry position only where declared. No fake position is generated.
 game action. It returns an opaque per-use `attempt` token and absolute deadline.
 
 Travel observations require a fresh positive `sequence`. A movement observation
-needs `reliable=true` and an exact localized node; the portal origin also needs
-its known phase. After BeginUse, completion requires all of:
+needs `reliable=true` and an exact localized node; a declared portal origin phase
+also needs matching evidence. After BeginUse, completion requires all of:
 
-- a fresh reliable location at the portal's exact destination node, space and phase;
+- a fresh reliable location at the portal's exact destination node and space,
+  matching its phase when declared;
 - `loading` not true;
 - `transition={portalId,from,to,complete=true,attempt}` matching the active use.
 
@@ -88,7 +90,12 @@ a changed captured profile and invalidates old jobs/results; equal profiles do
 nothing. No mount/spell action is performed by this code.
 
 `options.scheduled` is an authored array accepted by Scheduled.NewCatalog;
-`scheduledOverrides` holds manual per-id cost/wait settings. The route's own
+`scheduledOverrides` holds manual per-id cost/wait settings. Stops require native
+`worldID` and a localized `id`; `floorID` and `phaseID` constrain the stop only
+when declared. A missing expected constraint cannot confirm a stop; an extra
+observed floor/phase imposes no new condition on an unconstrained stop. No floor
+zero or default phase is synthesized. Sequence, attempt, vehicle state, departure
+and confirmed disembarkation remain necessary throughout execution. The route's own
 approach/boarding costs are separate from preceding graph edges; authors must not
 declare the same movement twice. Each relaxation passes the frozen query epoch
 plus the accumulated label cost AND preceding dismount time to Catalog.Edge.
@@ -274,9 +281,12 @@ Known and latent declared keys count toward the32-key limit; exceeding it return
 personal arcs also disable static witnesses/potentials while retaining adjacency.
 
 Host native opt-in is `observePersonal=true`, with independent `personalAPI`,
-`personalOrigin={node,space,phase,reliable,indoors?}`, and optional
+`personalOrigin={node,space,phase?,reliable,indoors?}`, and optional
 `personalSettings={allowRare=true}`. Unknown/loading observations stay sparse.
-Origin/phase must be genuine supplied evidence; no outdoor check is added unless
+Origin and any observed phase must be genuine supplied evidence; a declared
+origin phase stays unknown until observed. Personal `destination={space,phase?}`
+always requires space, with phase checked only when declared. A missing expected
+arrival phase stays pending; a known incompatible phase is refused. No outdoor check is added unless
 authored, and no cave exit or map point is invented. A fresh localized Plan may
 supply its trusted source node. Loading revokes old scope. API reads occur at
 explicit observation/planning/use boundaries; events mark dirty immediately and

@@ -31,7 +31,7 @@ local t=assert(noPosition:StartTravel(F.Finish(noPosition:Plan({from='gate',to='
 assert(t:GetAction().kind=='approach' and t:GetAction().position==nil)
 
 for _, edit in ipairs({function(c) c[1].loadingSeconds=0/0 end,
-    function(c) c[1].timeoutSeconds=0 end,function(c) c[1].destination.phase=nil end,
+    function(c) c[1].timeoutSeconds=0 end,function(c) c[1].destination.phase=false end,
     function(c) c[1].entry.x=2 end,function(c) c[2]=c[1] end,
     function(c) c[3]=c[1];c[1]=nil end}) do
     local c=F.Catalog();edit(c);options.portals=c

@@ -91,7 +91,8 @@ class TerrainCanonicalMetadataTests(unittest.TestCase):
                 self.assertEqual(plain(namespace),{'NavigationV2'+client.capitalize()+'TerrainData':expected})
 
 
-def load_tests(loader, tests, pattern):
+def synthetic_suite(loader):
+    """Lightweight public contracts; excludes canonical whole-corpus conversion."""
     root = Path(__file__).resolve().parents[3].parent / 'Route-generator'
     importer, roads, sectors = exporter('import_terrain'), exporter('import_roads'), exporter()
     spec = importlib.util.spec_from_file_location(
@@ -101,5 +102,18 @@ def load_tests(loader, tests, pattern):
                                  'tools.navigation_v2.import_roads': roads,
                                  'tools.navigation_v2.sectors': sectors}):
         spec.loader.exec_module(module)
-    tests.addTests(loader.loadTestsFromModule(module))
+        links = exporter('terrain_links')
+        link_spec = importlib.util.spec_from_file_location(
+            'synthetic_terrain_link_contracts', root / 'tests/navigation_v2/test_terrain_links.py')
+        link_module = importlib.util.module_from_spec(link_spec)
+        with patch.dict(sys.modules, {'tests.navigation_v2.test_import_terrain': module,
+                                     'tools.navigation_v2.terrain_links': links}):
+            link_spec.loader.exec_module(link_module)
+            suite = loader.loadTestsFromModule(module)
+            suite.addTests(loader.loadTestsFromModule(link_module))
+    return suite
+
+
+def load_tests(loader, tests, pattern):
+    tests.addTests(synthetic_suite(loader))
     return tests

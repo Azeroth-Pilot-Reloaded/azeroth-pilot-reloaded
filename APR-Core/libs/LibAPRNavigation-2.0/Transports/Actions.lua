@@ -353,7 +353,8 @@ end
 
 local function AtStop(observation,stop,node)
     return observation.node==node and observation.stopID==stop.id and observation.worldID==stop.worldID
-        and observation.floorID==stop.floorID and observation.phaseID==stop.phaseID
+        and (stop.floorID==nil or observation.floorID==stop.floorID)
+        and (stop.phaseID==nil or observation.phaseID==stop.phaseID)
 end
 
 local function ObserveTaxi(travel,segment,observation)
@@ -457,7 +458,8 @@ function Travel:Observe(observation)
                 execution:Cancel('personal_failed');self.state,self.reason='failed','personal_failed'
             elseif proof.complete==true and observation.loading==false
                 and (proof.personalId~=d.id or proof.from~=execution.from or proof.to~=d.to
-                or observation.node~=d.to or observation.space~=d.destination.space or observation.phase~=d.destination.phase) then
+                or observation.node~=d.to or observation.space~=d.destination.space
+                or (d.destination.phase~=nil and observation.phase~=nil and observation.phase~=d.destination.phase)) then
                 execution:Cancel('personal_destination_mismatch')
                 self.state,self.reason='failed','personal_destination_mismatch'
             elseif observation.loading==false then execution:Observe(observation,execution.lastClock) end
@@ -478,7 +480,8 @@ function Travel:Observe(observation)
         local portal, proof = self.planner.portals.byId[segment.portalId], observation.transition
         if self.state == 'awaiting_transition' then
             if observation.node == portal.to and observation.space == portal.destination.space
-                and observation.phase == portal.destination.phase and type(proof) == 'table'
+                and (portal.destination.phase == nil or observation.phase == portal.destination.phase)
+                and type(proof) == 'table'
                 and proof.portalId == portal.id and proof.from == portal.from and proof.to == portal.to
                 and proof.complete == true and proof.attempt == self.attempt and observation.sequence > self.useSequence then
                 self.index,self.atEntry,self.deadline,self.state=self.index+1,nil,nil,'moving'
@@ -486,7 +489,7 @@ function Travel:Observe(observation)
                 MeasureEnd(self,self.lastClock,true)
             end
         else
-            self.atEntry = observation.node == portal.from and observation.phase == portal.phase
+            self.atEntry = observation.node == portal.from and (portal.phase == nil or observation.phase == portal.phase)
             if self.atEntry then self.journey:Locate(portal.from) else self.journey:Unlocate() end
         end
     end

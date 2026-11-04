@@ -2,8 +2,8 @@ local F = assert(loadfile("tests/lua/navigation_v2_scheduled/fixture.lua"))()
 local S = F.Scheduled
 
 local invalid = { function(r) r.id = nil end, function(r) r.kind = "unknown" end,
-    function(r) r.from = r.to end, function(r) r.origin.floorID = nil end,
-    function(r) r.destination.worldID = nil end, function(r) r.destination.phaseID = nil end,
+    function(r) r.from = r.to end, function(r) r.origin.floorID = false end,
+    function(r) r.destination.worldID = nil end, function(r) r.destination.phaseID = false end,
     function(r) r.wait = nil end, function(r) r.wait.seconds = 0 end,
     function(r) r.wait.seconds = -1 end, function(r) r.wait.seconds = math.huge end,
     function(r) r.wait.mode = "non_fifo" end, function(r) r.costs.loading = nil end,

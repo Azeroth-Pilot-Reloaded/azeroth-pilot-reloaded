@@ -25,13 +25,17 @@ caller; there is no inferred approach, nearby join, floor/phase or world coverag
 The caller merging bundles owns exact node identity and remains incomplete.
 
 Every binding supplies `from` and `to` records:
-`{node,space,phase,worldID,floorID}`. World and floor are nonnegative native
-integers; space and phase are explicit business identities. A source world ID
+`{node,space,worldID,phase?,floorID?}`. World and any declared floor are nonnegative
+native integers; space and any declared phase are business identities. A source world ID
 must agree. A map-space position remains a map position; it never supplies world
 or floor identity. A dynamic bind destination additionally needs
 `bindObserved=true`, supplied from trustworthy current binding evidence.
-No default phase exists. Missing/changed evidence must invalidate the owning
-planner through the existing observation/setter contracts.
+No default floor or phase is created. Scheduled stops retain optional floor/phase
+constraints; portal and personal declarations retain their optional phase
+constraints. An unrelated observed phase does not constrain an undeclared one.
+A declared constraint still requires matching evidence: missing evidence stays
+unknown/pending, and an observed mismatch is refused. Missing/changed evidence
+must invalidate the owning planner through the existing observation/setter contracts.
 
 - Boat/zeppelin/elevator/tram: retain the declared aggregate automatically, or
   supply `costs={approach,boarding,ride,loading,disembark,final}` with explicit
@@ -40,7 +44,7 @@ planner through the existing observation/setter contracts.
 - Portal/passage: retain the declared aggregate automatically, or supply
   `costs={waitSeconds,useSeconds,loadingSeconds}`; positive
   `timeoutSeconds`, through the existing confirmed-transition Portal lifecycle.
-  Native portal open/access/phase observations remain necessary. The passage
+  Portal open/access observations and any declared phase remain necessary. The passage
   mapping describes an observed transition; it creates no terrain walk edge.
 - Spell/item: `costs={useSeconds,loadingSeconds}`, positive `timeoutSeconds`,
   `cooldownSeconds`, explicit booleans `consumable/rare/chargeBased`, and positive

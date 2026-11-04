@@ -33,9 +33,9 @@ end
 
 local function Capture(declaration)
     if type(declaration) ~= 'table' or not Name(declaration.id) or not Name(declaration.from)
-        or not Name(declaration.to) or not Name(declaration.phase)
+        or not Name(declaration.to) or (declaration.phase ~= nil and not Name(declaration.phase))
         or type(declaration.destination) ~= 'table' or not Name(declaration.destination.space)
-        or not Name(declaration.destination.phase) then return nil end
+        or (declaration.destination.phase ~= nil and not Name(declaration.destination.phase)) then return nil end
     local result = {id=declaration.id,from=declaration.from,to=declaration.to,phase=declaration.phase,
         destination={space=declaration.destination.space,phase=declaration.destination.phase}}
     if not CaptureCosts(declaration,result) then return nil end
@@ -57,9 +57,10 @@ local function Access(portal, observation)
     if state and ((state.open ~= nil and type(state.open) ~= 'boolean')
         or (state.access ~= nil and type(state.access) ~= 'boolean')) then return nil end
     if observation.phase ~= nil and not Name(observation.phase) then return nil end
-    if observation.phase and observation.phase ~= portal.phase then return 'unavailable' end
+    if portal.phase and observation.phase and observation.phase ~= portal.phase then return 'unavailable' end
     if state and (state.open == false or state.access == false) then return 'unavailable' end
-    if observation.phase and state and state.open == true and state.access == true then return 'available' end
+    if (portal.phase == nil or observation.phase ~= nil)
+        and state and state.open == true and state.access == true then return 'available' end
     return 'unknown'
 end
 

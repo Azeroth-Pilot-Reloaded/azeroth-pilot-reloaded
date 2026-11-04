@@ -14,8 +14,8 @@ local function Integer(value)
 end
 
 local function Identity(value)
-    return type(value)=='table' and Name(value.node) and Name(value.space) and Name(value.phase)
-        and Integer(value.worldID) and Integer(value.floorID)
+    return type(value)=='table' and Name(value.node) and Name(value.space) and Integer(value.worldID)
+        and (value.phase==nil or Name(value.phase)) and (value.floorID==nil or Integer(value.floorID))
 end
 
 local function Requirements(record)

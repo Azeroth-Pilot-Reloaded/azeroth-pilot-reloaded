@@ -25,6 +25,34 @@ pas les données éditables et leur absence dans un nouveau checkout est normale
 Les 32 conversions initiales produisent 172 452 nœuds et 186 412 arcs développés,
 avec 2 208 références externes non résolues. Ces références restent des lacunes,
 sans pont implicite. Tous les accès de ce premier graphe restent inconnus.
+Ce constat décrit les **anciens dérivés**, pas une absence de liaisons V1 :
+le contrat public du format 1 déclare déjà ces liaisons et leurs polylignes.
+Le traducteur traite maintenant une liaison ground valide sans champ `access`
+comme disponible dans le modèle déclaré. Les accès unknown/unavailable et disabled
+explicites, les conditions, la hauteur et les coûts restent contrôlés ; une
+référence collision opaque demeure conservatrice. Ce n'est pas une nouvelle
+validation physique ni une permission de relier des points proches.
+
+`tools.navigation_v2.terrain_links.resolve_terrain_links(registrations, ...)`
+normalise les liaisons inter-paquets d'une collection fournie, par client, UID,
+nœud et neighborScopeID exacts. Il retourne `sources`, `links`, `gaps`, `counts`.
+Chaque link conserve ses deux références, positions, polyligne complète,
+faits (dont sharedPoint, conditions et bidirectional), accès et coût explicite
+ou modèle. Chaque gap conserve la déclaration complète et sa cause. Les
+contraintes des sources/portées et des nœuds restent accessibles ; leur vérité
+n'est pas inventée. Le sens inverse n'est jamais déduit de coordonnées égales.
+Les liens nuls déclarés sont valides lorsque leur géométrie est cohérente.
+Bornes offline : 128 sources et 262 144 candidats au maximum ; annulation
+optionnelle sans résultat partiel trompeur. Cette API ne lit ni n'écrit de fichier.
+
+L'audit en lecture seule des canoniques a trouvé les cibles exactes des 2 208
+références dans les 32 relevés : 2 204 coutures nulles et quatre connexions
+non nulles avec leurs polylignes. L'unité de normalisation a été vérifiée avec
+des collections inventées ; aucun export massif ou catalogue n'a été réécrit.
+Le convertisseur d'un fichier isolé continue à signaler ses références externes
+sans contexte comme lacunes. Le futur packaging doit utiliser la collection,
+sans confondre ce manque de contexte local avec du terrain source manquant.
+
 Le build historique `1.60.1.70707` ne prouve pas la compatibilité du terrain avec
 un autre build. Les mentions de couverture dans les données d'origine sont
 conservées comme faits de provenance, sans devenir une validation physique V2.

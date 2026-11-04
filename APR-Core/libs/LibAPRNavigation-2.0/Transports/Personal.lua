@@ -24,7 +24,7 @@ local function Capture(d)
         or (d.from~=nil and not Name(d.from)) or (d.kind~='spell' and d.kind~='item')
         or not ID(d[d.kind=='spell' and 'spellID' or 'itemID'])
         or type(d.destination)~='table' or not Name(d.destination.space)
-        or not Name(d.destination.phase) then return nil end
+        or (d.destination.phase~=nil and not Name(d.destination.phase)) then return nil end
     local r={id=d.id,from=d.from,to=d.to,kind=d.kind,spellID=d.kind=='spell' and d.spellID or nil,
         itemID=d.kind=='item' and d.itemID or nil,name=Target.Text(d.name),
         destination={space=d.destination.space,phase=d.destination.phase},reagents={}}
@@ -358,7 +358,8 @@ function Execution:Observe(o,now)
     self.sequence=o.sequence
     local d,proof=self.declaration,o.transition
     if self.phase=='awaiting_transition' and o.reliable==true and o.loading~=true
-        and o.node==d.to and o.space==d.destination.space and o.phase==d.destination.phase
+        and o.node==d.to and o.space==d.destination.space
+        and (d.destination.phase==nil or o.phase==d.destination.phase)
         and type(proof)=='table' and proof.personalId==d.id and proof.from==self.from and proof.to==d.to
         and proof.attempt==self.attempt and proof.complete==true and o.sequence>self.useSequence then
         self.status,self.deadline='complete',nil

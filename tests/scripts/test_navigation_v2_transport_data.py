@@ -68,6 +68,10 @@ class TransportBindingTests(unittest.TestCase):
         self.lua, self.ns = runtime()
         self.lua.globals().ns = self.ns
 
+    def test_synthetic_public_binding_lifecycle_contracts(self):
+        path = ROOT/'tests/lua/navigation_v2_transport_data_test.lua'
+        self.lua.execute(path.read_text(encoding='utf-8'), name='@'+path.as_posix())
+
     def test_explicit_directions_costs_and_conditions_use_the_existing_solver(self):
         self.lua.execute('''
             ns.NavigationV2ForeverTransportsData={routes={crossing={id='crossing',kind='boat',

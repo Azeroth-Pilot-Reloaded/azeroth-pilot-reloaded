@@ -30,7 +30,8 @@ end
 
 local function Stop(value)
     if type(value) ~= "table" or not Identifier(value.id) or not Integer(value.worldID)
-        or not Integer(value.floorID) or not Identifier(value.phaseID) then return nil end
+        or (value.floorID ~= nil and not Integer(value.floorID))
+        or (value.phaseID ~= nil and not Identifier(value.phaseID)) then return nil end
     local position = value.position and Position(value.position)
     if value.position ~= nil and not position then return nil end
     return { id = value.id, worldID = value.worldID, floorID = value.floorID,
@@ -239,7 +240,8 @@ end
 
 local function AtStop(observation, stop)
     return observation.stopID == stop.id and observation.worldID == stop.worldID
-        and observation.floorID == stop.floorID and observation.phaseID == stop.phaseID
+        and (stop.floorID == nil or observation.floorID == stop.floorID)
+        and (stop.phaseID == nil or observation.phaseID == stop.phaseID)
 end
 
 local function Advance(execution, observation)
