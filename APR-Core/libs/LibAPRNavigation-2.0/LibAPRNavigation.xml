@@ -29,4 +29,5 @@
     <Script file="Data/forever/Roads/Catalog.lua"/>
     <Script file="Data/forever/Terrain/Catalog.lua"/>
     <Script file="Data/retail/Terrain/Catalog.lua"/>
+    <Script file="Data/retail/Declarations/Catalog.lua"/>
 </Ui>
