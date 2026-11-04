@@ -130,6 +130,17 @@ Run `python -m unittest tests.lua.navigation_v2_terrain.test_loader
 tests.lua.navigation_v2_terrain.test_data tests.scripts.test_navigation_v2_terrain -v`.
 Native WoW codec latency and actual client movement remain unverified.
 
+The `navigation_benchmark_*_test.lua` suites exercise the read-only V1/V2
+diagnostic through its public capture, measurement, driver, host, command and
+window interfaces. Controlled inputs cover shared immutable endpoints, native
+position refusal, cancellation/replacement, actual API call counters, optional
+metrics and separate compute time/travel ETA. A TOC lifecycle check requires
+the shipped modules to stay dormant until explicitly opened and started.
+V1 algorithms are executed through existing public fixtures, never copied into
+the benchmark. Synthetic clocks and widget fixtures establish behavior only;
+they do not establish client latency, rendering, physical coverage or rollout.
+No maintained itinerary or imported terrain route is frozen by these tests.
+
 `lua/navigation_v2_waypoint` tests the optional V2 output session with
 synthetic targets and providers implementing their public dot-call contracts.
 It covers normalized positions converted to provider percentages, coordinate-free

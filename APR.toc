@@ -147,6 +147,12 @@ APR-Core/features/navigation/NavigationV2Personal.lua
 APR-Core/features/navigation/NavigationV2Conditions.lua
 APR-Core/features/navigation/NavigationV2Calibration.lua
 APR-Core/features/navigation/NavigationV2.lua
+APR-Core/features/navigation/NavigationBenchmarkCase.lua
+APR-Core/features/navigation/NavigationBenchmarkRun.lua
+APR-Core/features/navigation/NavigationBenchmarkV1.lua
+APR-Core/features/navigation/NavigationBenchmarkV2.lua
+APR-Core/features/navigation/NavigationBenchmarkHost.lua
+APR-Core/ui/NavigationBenchmark.lua
 APR-Core/features/navigation/FlightPath.lua
 
 APR-Core/features/navigation/Arrow.lua
