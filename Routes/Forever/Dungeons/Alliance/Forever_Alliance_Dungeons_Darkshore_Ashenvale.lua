@@ -840,6 +840,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         {
             UseItem = { itemID = 5251, itemSpellID = 5809 },
             Note = { "USE_PHIAL_SCRYING_PLACE_GROUND" },
+            ItemTarget = "player",
             _index = 100,
         },
         {
@@ -847,6 +848,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
             Note = { "CLICK_SCRYING_BOWL_GROUND" },
             Coord = { x = 417.3, y = 4575.82 },
             Button = { ["944"] = 5251 },
+            ItemTarget = "player",
             Zone = 1439,
             _index = 101,
         },
@@ -855,6 +857,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
             Note = { "CLICK_SCRYING_BOWL_GROUND" },
             Coord = { x = 417.3, y = 4575.82 },
             Button = { ["949"] = 5251 },
+            ItemTarget = "player",
             Zone = 1439,
             _index = 102,
         },
