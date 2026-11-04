@@ -100,9 +100,9 @@ function APR.currentStep:AddQuestSteps(id, label, objective, _, noTooltip)
     self.questsList[id .. "-" .. objective] = { noTooltip = noTooltip, label = label }
 end
 
-function APR.currentStep:AddStepButton(key, id, kind)
+function APR.currentStep:AddStepButton(key, id, kind, equipSlot, itemTarget)
     assert(self.questsList[key] or self.fillersList[key], "Button needs a rendered row")
-    buttons[#buttons + 1] = { key = key, id = id, kind = kind }
+    buttons[#buttons + 1] = { key = key, id = id, kind = kind, itemTarget = itemTarget }
 end
 
 dofile("APR-Core/features/questing/StepTransitions.lua")
@@ -138,6 +138,11 @@ checkButtons({ Button = { ["item:100"] = 100, ["item:101"] = 101 }, SpellButton 
 assert(#buttons == 3, "All uses on a manual step must be rendered")
 checkButtons({ SpellButton = { ["spell:200"] = 200 } })
 assert(#buttons == 1 and buttons[1].kind == "spell", "Spell-only maps must not be interpreted as items")
+checkButtons({ Button = { ["11-1"] = 100 }, SpellButton = { ["11-1"] = 200 }, ItemTarget = "player" })
+for _, button in ipairs(buttons) do
+    assert(button.itemTarget == (button.kind == "item" and "player" or nil),
+        "Item targets pass through supporting item buttons without affecting spells")
+end
 checkButtons({ Done = { 10 }, Button = { ["10"] = 100 } })
 assert(#buttons == 1, "An item can be needed to reach a turn-in even when the quest is ready")
 current = { Button = { ["11-1"] = 100 }, SpellButton = { ["11-1"] = 200 } }

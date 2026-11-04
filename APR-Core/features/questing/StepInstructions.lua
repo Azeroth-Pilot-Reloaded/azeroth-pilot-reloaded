@@ -145,7 +145,7 @@ function APR:SetButton()
                         end
                         if not occupied then occupied = {} end
                         occupied[key] = true
-                        currentStep:AddStepButton(key, actionID, kind)
+                        currentStep:AddStepButton(key, actionID, kind, nil, kind == "item" and step.ItemTarget or nil)
                     end
                 end
             end

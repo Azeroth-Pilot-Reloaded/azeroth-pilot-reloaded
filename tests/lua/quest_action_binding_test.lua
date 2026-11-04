@@ -20,6 +20,12 @@ render(100, 200)
 local row = step.questsList["10-1"]
 assert(row.layoutOffset < step.questsList["20-1"].layoutOffset)
 assert(selectAction(pad.itemProxy) == "item" and pad.itemProxy:GetAttribute("item") == "item:100")
+step:AddStepButton("10-1", 100, "item", nil, "player")
+assert(selectAction(pad.itemProxy) == "item" and pad.itemProxy:GetAttribute("unit") == "player",
+    "The hardware proxy must preserve the item's explicit target")
+step:AddStepButton("10-1", 100, "item")
+assert(selectAction(pad.itemProxy) == "item" and pad.itemProxy:GetAttribute("unit") == nil,
+    "A later untargeted action clears the proxy's previous target")
 assert(step.questsList["20-1"].RaidIconButton, "Targeting shares a row with an action")
 assert(selectAction(pad.targetProxy) == "macro" and pad.targetProxy:GetAttribute("macrotext") == "/target NPC")
 local registered = #pad.actionButtons

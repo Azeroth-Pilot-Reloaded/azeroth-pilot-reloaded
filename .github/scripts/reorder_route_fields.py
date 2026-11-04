@@ -24,7 +24,7 @@ Waypoint TakePortal WaypointDB NonSkippableWaypoint PickUp PickUpDB Qpart QpartP
 Done DoneDB LeaveQuests Treasure Scenario Achievement EnterScenario DoScenario LeaveScenario
 EnterInstance LeaveInstance LearnProfession Grind Reputation DropQuest DroppableQuest LootItems
 LootMoney UseItem UseSpell ChromiePick SetHS GetFP UseHS UseDalaHS UseGarrisonHS UseFlightPath
-Name NodeID WarMode Coord Coords Zone Zones Fillers BuyMerchant Button SpellButton
+Name NodeID WarMode Coord Coords Zone Zones Fillers BuyMerchant Button SpellButton ItemTarget
 ExtraLineText ExtraLineText2 ExtraLineText3 ExtraLineText4 ExtraLineText5 ExtraLineText6
 ExtraLineText7 GossipOptionIDs Range NoArrow DenyNPC NpcDismount skipForLvl IsAdventureMap
 ZoneStepTrigger Buffs ReputationLevel SkipForReputation SkipForPrimaryProfessions
@@ -45,7 +45,7 @@ GROUPS = {
     "DroppableQuest": 2, "Fillers": 3, "Note": 4, "ExtraLine": 4, "_comment": 4,
     "Coord": 5, "Coords": 5, "Range": 6,
     "Gossip": 7, "GossipOptionIDs": 7, "GossipETA": 7,
-    "Button": 8, "SpellButton": 8, "ExtraActionB": 8,
+    "Button": 8, "SpellButton": 8, "ItemTarget": 8, "ExtraActionB": 8,
     "conditions": 10, "skipForLvl": 10, "InterfaceVersionExact": 10,
     "Zone": 11, "Zones": 11, "_index": 12,
 }

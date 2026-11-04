@@ -193,6 +193,7 @@ Only combat-log death events observed in the matching dungeon grant credit. Cred
 | `Bloodlust` | Adds a reminder to use Heroism / Bloodlust. | `Bloodlust = true` |
 | `Buffs` | List of buff spell IDs to recommend. | `Buffs = { { spellId = 311103, tooltipMessage = "FRESHLEAF_BUFF" } }` |
 | `Button` | Item buttons keyed by quest ID or `questID-objective`. A value may be one item ID or a nonempty list of item IDs, displayed in list order on the same step. Keep one key per quest/objective; repeated Lua keys overwrite earlier values. | `Button = { ["30778-1"] = 81356 }` or `Button = { ["5648"] = { 12345, 67890 } }` |
+| `ItemTarget` | Optional explicit target for `UseItem` and supporting `Button` actions. Only `"player"` is supported; the secure item button still requires a player click and respects combat lockdown. Omit for ordinary item targeting. | `ItemTarget = "player"` |
 | `DenyNPC` | NPC ID whose gossip should be closed automatically. | `DenyNPC = 209914` |
 | `Dontskipvid` | Prevents automatic skipping of cutscenes or videos. | `Dontskipvid = true` |
 | `ExtraActionB` | Prompts use of the special extra action button. | `ExtraActionB = true` |

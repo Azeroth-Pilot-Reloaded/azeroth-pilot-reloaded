@@ -221,6 +221,7 @@ class RouteSchema:
                 obj({"mapID": ID}, required=("mapID",))),
             "Button": mapping(objective, union(ID, array(ID, 1))),
             "SpellButton": mapping(objective, union(ID, TEXT, array(union(ID, TEXT), 1))),
+            "ItemTarget": enum(("player",)),
             "UseItem": obj({"itemID": ID, "questID": ID, "itemSpellID": ID}, required=("itemID",)),
             "UseSpell": obj({"spellID": ID, "questID": ID}, required=("spellID",)),
             "Treasure": obj({"questID": ID, "itemID": ID}, required=("questID",)),
