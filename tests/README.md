@@ -220,6 +220,10 @@ cover required elevators, per-map restrictions, observer detours, unknown phase
 evidence, event closure and initiative rotation. `navigation_conditional_adapter_test.lua`
 checks native calendar argument order, viewed-month offsets, exact server-time
 boundaries, unavailable responses and neighborhood identity without live APIs.
+`navigation_startup_requests_test.lua` exposes the same optional namespaces on
+synthetic Retail, Forever and unsupported clients. Login, reload and house events
+must not request unsupported/disabled initiatives or a calendar unused by the
+catalogue; enabled Retail initiatives and required holiday refreshes still work.
 
 The navigation performance tests use controlled clocks and API-call counters to
 check the 1 ms planning budget, cache invalidation and cancellation. They cover

@@ -1282,10 +1282,15 @@ frame:SetScript("OnEvent",
             if event == "CALENDAR_UPDATE_EVENT_LIST" then Adapter.calendarReady = true end
             if event == "PLAYER_ENTERING_WORLD" then
                 Adapter.calendarReady = false
-                if C_Calendar then Call(C_Calendar.OpenCalendar) end
+                if C_Calendar and next(Data.config.Holidays or {}) then Call(C_Calendar.OpenCalendar) end
             end
             if event == "PLAYER_ENTERING_WORLD" or event == "TRACKED_HOUSE_CHANGED" or event == "PLAYER_HOUSE_LIST_UPDATED" then
-                if C_NeighborhoodInitiative then Call(C_NeighborhoodInitiative.RequestNeighborhoodInitiativeInfo) end
+                -- Forever exposes Retail namespaces even when the server does not
+                -- support the feature. pcall cannot prevent a network disconnect.
+                if profile == "retail" and C_NeighborhoodInitiative
+                    and Call(C_NeighborhoodInitiative.IsInitiativeEnabled) == true then
+                    Call(C_NeighborhoodInitiative.RequestNeighborhoodInitiativeInfo)
+                end
             end
             if event == "GOSSIP_SHOW" then
                 CaptureInteraction("gossip", event)
@@ -1348,7 +1353,7 @@ frame:SetScript("OnEvent",
                     if Adapter.bindTicker then Adapter.bindTicker:Cancel() end
                     if C_Timer and C_Timer.NewTicker then
                         Adapter.bindTicker = C_Timer.NewTicker(0.25,
-                                --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1351:callback#109", --[[/APR_DIAG]]function() Adapter:CheckBindLanding() end--[[APR_DIAG]])--[[/APR_DIAG]] )
+                                --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1356:callback#109", --[[/APR_DIAG]]function() Adapter:CheckBindLanding() end--[[APR_DIAG]])--[[/APR_DIAG]] )
                     end
                 end
             elseif event == "PLAYER_HOUSE_LIST_UPDATED" then
@@ -1369,7 +1374,7 @@ frame:SetScript("OnEvent",
 -- Holiday boundaries can pass while the player remains in one zone. No saved
 -- calendar result survives them; live departure checks use the server clock.
 if C_Timer and C_Timer.NewTicker and C_Calendar and next(Data.config.Holidays or {}) then
-    Adapter.availabilityTicker = C_Timer.NewTicker(60,  --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1372:callback#110", --[[/APR_DIAG]]function()
+    Adapter.availabilityTicker = C_Timer.NewTicker(60,  --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1377:callback#110", --[[/APR_DIAG]]function()
             Call(C_Calendar.OpenCalendar)
             Changed(nil, "CALENDAR_UPDATE_EVENT_LIST")
         end--[[APR_DIAG]])--[[/APR_DIAG]] )
