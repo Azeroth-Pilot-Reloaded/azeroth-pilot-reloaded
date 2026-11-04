@@ -95,6 +95,9 @@ the same graph exercises library and APR host lifecycles. The shortest-path orac
 also compares 200 generated graphs against exhaustive enumeration. Shipped
 navigation data is checked separately for schema and catalog integrity across
 client/faction/language combinations; no expected inventory counts are frozen.
+`navigation_bind_candidates_test.lua` uses invented inns to verify localized
+area IDs, legacy numeric keys, budgeted lookup, ambiguous destinations and learned
+binds. The catalogue integrity suite validates every shipped bind position.
 
 `merchant_sales_test.lua` exercises both auto-vendor and `SellItems` with native
 junk selling and the container fallback: large inventories, delayed/rejected

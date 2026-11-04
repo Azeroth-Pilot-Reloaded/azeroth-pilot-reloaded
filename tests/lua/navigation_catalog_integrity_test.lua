@@ -11,14 +11,18 @@ local function FactionPossible(requirements, faction)
     if requirements.any then
         local possible = false
         for _, child in ipairs(requirements.any) do
-            if FactionPossible(child, faction) then possible = true; break end
+            if FactionPossible(child, faction) then
+                possible = true; break
+            end
         end
         if not possible then return false end
     end
     local excluded = requirements.notCondition
     if excluded and excluded.faction then
         local factionOnly = true
-        for key in pairs(excluded) do if key ~= "faction" then factionOnly = false; break end end
+        for key in pairs(excluded) do if key ~= "faction" then
+                factionOnly = false; break
+            end end
         if factionOnly and excluded.faction == faction then return false end
     end
     return true
@@ -37,14 +41,38 @@ for _, profile in ipairs({ "retail", "forever" }) do
         for key, value in pairs(requirements or {}) do
             if key == "all" or key == "any" then
                 for _, child in ipairs(value) do inspect(child) end
-            elseif key == "notCondition" then inspect(value)
+            elseif key == "notCondition" then
+                inspect(value)
             else
-                local _, reason = data:CheckRequirements({ [key] = value }, { faction = "Alliance", level = 90, class = "MAGE" })
+                local _, reason = data:CheckRequirements({ [key] = value },
+                    { faction = "Alliance", level = 90, class = "MAGE" })
                 assert(not reason, "A declared condition needs a runtime evaluator: " .. key .. " / " .. tostring(reason))
             end
         end
     end
     local seen = {}
+    for id, position in pairs(data:GetBindings()) do
+        local areaID = position.areaID or id
+        assert(type(areaID) == "number" and areaID > 0 and areaID % 1 == 0,
+            "A bind candidate needs a positive client area ID: " .. tostring(id))
+        assert(type(id) == "number" or (type(id) == "string" and id ~= ""), "Invalid bind candidate key")
+        assert(position.space == "map" or position.space == "world", "Explicit bind coordinate space required")
+        for _, axis in ipairs({ "x", "y" }) do
+            local value = position[axis]
+            assert(type(value) == "number" and value == value and math.abs(value) < math.huge,
+                "Finite bind coordinate required: " .. tostring(id))
+        end
+        if position.space == "map" then
+            assert(type(position.uiMapID) == "number" and position.uiMapID > 0 and position.uiMapID % 1 == 0
+                and position.x >= 0 and position.x <= 1 and position.y >= 0 and position.y <= 1,
+                "Invalid bind map position: " .. tostring(id))
+        else
+            assert(type(position.instanceID) == "number" and position.instanceID >= 0 and position.instanceID % 1 == 0,
+                "Invalid bind world instance: " .. tostring(id))
+        end
+        assert(position.z == nil or (type(position.z) == "number" and position.z == position.z
+            and math.abs(position.z) < math.huge), "Invalid bind altitude")
+    end
     local overrides = data:GetConfig().WorldInstanceOverrides or {}
     for phased, world in pairs(overrides) do
         assert(type(phased) == "number" and phased > 0 and phased % 1 == 0
