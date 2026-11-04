@@ -7,7 +7,8 @@ local P = APR.PartyFinderProtocol
 assert(P.LanguageFromLocale("enGB") == "en" and P.LanguageFromLocale("enUS") == "en")
 assert(P.LanguageFromLocale("esMX") == "es" and P.LanguageFromLocale("zh-Hant") == "zhTW")
 assert(P.LanguageFromLocale("arbitrary") == nil and P.LanguageFromLocale({}) == nil)
-assert(P.LanguageAtlas("fr") == "Lang-Regions-frFR" and P.LanguageAtlas("|Tbad") == nil)
+assert(P.LanguageFlagTexture("fr") == "Interface\\AddOns\\APR\\APR-Core\\assets\\ui\\flags\\fr.tga"
+    and P.LanguageFlagTexture("|Tbad") == nil)
 LocaleUtil = {GetLocaleDisplayName = function(locale) return "Native " .. locale end}
 assert(P.GetLanguageValues().fr == "Native frFR", "Language names come from Blizzard's locale provider")
 LocaleUtil = nil
