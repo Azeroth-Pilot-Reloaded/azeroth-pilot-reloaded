@@ -1,12 +1,17 @@
 -- Source wrappers cover locals and callbacks, including cached references.
 -- No runtime debug hooks or modifications to Blizzard/third-party functions.
-APRInstrumentation = {enabled = false, debug = false, registry = {}, registered = 0,
-    revision = "2026-10-30.1"}
+APRInstrumentation = {
+    enabled = false,
+    debug = false,
+    registry = {},
+    registered = 0,
+    revision = "2026-11-04.1"
+}
 local D = APRInstrumentation
-local main = {depth = 0, frames = {}, paused = 0}
-local threads = setmetatable({}, {__mode = "k"})
+local main = { depth = 0, frames = {}, paused = 0 }
+local threads = setmetatable({}, { __mode = "k" })
 local LOG_LIMIT = 1000
-local VALUE_REPLACEMENTS = {["\r"] = " ", ["\n"] = " ", ["\t"] = " ", ["|"] = "||"}
+local VALUE_REPLACEMENTS = { ["\r"] = " ", ["\n"] = " ", ["\t"] = " ", ["|"] = "||" }
 
 local function Context()
     local thread = coroutine.running()
@@ -15,7 +20,7 @@ local function Context()
     if not context then
         -- Lua 5.1 weak-key tables do not collect keys retained by their values.
         -- Only the distinction from the main context is needed here.
-        context = {depth = 0, frames = {}, paused = 0, thread = true}
+        context = { depth = 0, frames = {}, paused = 0, thread = true }
         threads[thread] = context
     end
     return context
@@ -45,7 +50,9 @@ function D.Value(value, depth, visited)
     local entries, count = {}, 0
     for key, item in pairs(value) do
         count = count + 1
-        if count > 8 then entries[#entries + 1] = "…"; break end
+        if count > 8 then
+            entries[#entries + 1] = "…"; break
+        end
         entries[#entries + 1] = D.Value(key, depth + 1, visited) .. "=" .. D.Value(item, depth + 1, visited)
     end
     table.sort(entries)
@@ -55,8 +62,17 @@ end
 
 function D.ResetLog()
     APRData = APRData or {}
-    APRData.DebugLog = {entries = {}, calls = {}, cursor = 0, count = 0, total = 0,
-        aggregatedCalls = 0, startedAt = GetTime(), limit = LOG_LIMIT, revision = D.revision}
+    APRData.DebugLog = {
+        entries = {},
+        calls = {},
+        cursor = 0,
+        count = 0,
+        total = 0,
+        aggregatedCalls = 0,
+        startedAt = GetTime(),
+        limit = LOG_LIMIT,
+        revision = D.revision
+    }
 end
 
 local function Accumulate(entry, now, duration, ownMs)
@@ -99,9 +115,23 @@ function D.Record(kind, source, message, data, duration, ownMs, failed)
     log.cursor = log.cursor % LOG_LIMIT + 1
     local replaced = log.entries[log.cursor]
     if replaced and log.calls[replaced.source] == replaced then log.calls[replaced.source] = nil end
-    local entry = {time = now, lastAt = now, kind = kind, source = source, name = source,
-        message = message, data = data, route = route, step = step, count = 1,
-        ms = duration, selfMs = ownMs, maxMs = duration, failed = failed, slot = log.cursor}
+    local entry = {
+        time = now,
+        lastAt = now,
+        kind = kind,
+        source = source,
+        name = source,
+        message = message,
+        data = data,
+        route = route,
+        step = step,
+        count = 1,
+        ms = duration,
+        selfMs = ownMs,
+        maxMs = duration,
+        failed = failed,
+        slot = log.cursor
+    }
     log.entries[log.cursor], log.count = entry, math.min(LOG_LIMIT, log.count + 1)
     if fastCall then log.calls[source] = entry end
     return entry
