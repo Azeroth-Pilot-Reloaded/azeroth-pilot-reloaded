@@ -25,4 +25,6 @@
     <Script file="Data/ForeverFirstTile.lua"/>
     <Script file="Data/forever/Transports/Catalog.lua"/>
     <Script file="Data/forever/Transports/Bindings.lua"/>
+    <Script file="Data/forever/Geography/Catalog.lua"/>
+    <Script file="Data/forever/Roads/Catalog.lua"/>
 </Ui>
