@@ -178,7 +178,7 @@ end--[[APR_DIAG]]; Finder.InitializeDirectTransport = APRTrace("APR-Core/feature
 
 function Finder:SendDirect(kind, wire, target, guard, ttl)
     if self.TraceTraffic then self:TraceTraffic("QUEUE", kind, "WHISPER", target, "requested", wire) end
-    if kind ~= "P" and kind ~= "I" and kind ~= "R" or not Envelope(wire)
+    if kind ~= "P" and kind ~= "I" and kind ~= "R" and kind ~= "Q" and kind ~= "D" and kind ~= "W" or not Envelope(wire)
         or not Public(target) or type(target) ~= "string" or #target == 0 or #target > 128
         or target:find("[%c|]") or guard ~= nil and type(guard) ~= "function"
         or recordCount >= LIMIT or not self:IsEnabled() or self:IsRestricted()
