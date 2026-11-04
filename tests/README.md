@@ -45,6 +45,17 @@ temporary fixtures; content validation only reports invalid input. Keep tests
 deterministic and run the complete suite before finishing. Repository-wide agent
 instructions are in [AGENTS.md](../AGENTS.md).
 
+`reward_scoring_test.lua` uses invented item variants and equipped configurations
+for weighted gains, usability, unique-equipped categories and weapon replacement.
+`pawn_rewards_test.lua` models the public Pawn API, scale mutations, explicit
+choices, deferred offers and stale callbacks. `pawn_options_refresh_test.lua`
+uses the embedded AceConfig renderer with a custom host to check live settings
+updates and cancellation. `quest_reward_selection_test.lua`
+checks the real NPC selection lifecycle with controlled scores, priorities and
+bounded item-data retries. `settings_select_test.lua` exercises the real APR
+select through its AceGUI adapter, including value keys, ordering and pooled release.
+None loads or freezes a shipped guide or Pawn's weights.
+
 - `scripts/test_*.py`: TOC updates, localization notifications, package validation
   and PR report behavior against a mocked GitHub API. The latter uses Node.js.
 - `lua/*_test.lua`: automatically discovered addon regression suites, each in its
