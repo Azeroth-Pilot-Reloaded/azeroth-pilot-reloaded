@@ -757,6 +757,7 @@ function APR.currentStep:ResetSecureStepButton(container, questsListKey, force)
     button:SetAttribute("type1", nil)
     button:SetAttribute("item", nil)
     button:SetAttribute("spell", nil)
+    button:SetAttribute("unit", nil)
     button:SetAttribute("macrotext", nil)
     button:SetAttribute("house-neighborhood-guid", nil)
     button:SetAttribute("house-guid", nil)
@@ -774,6 +775,8 @@ function APR.currentStep:ResetSecureStepButton(container, questsListKey, force)
         pushedTexture:SetTexture(nil)
     end
     button.itemID = nil
+    button.itemTarget = nil
+    button.equipSlot = nil
     button.attribute = nil
     button.actionUsable = nil
     button.actionReason = nil
@@ -819,14 +822,14 @@ function APR.currentStep:ResetSecureRaidIconButton(container, questsListKey, for
     if self.raidIconButton == button then
         self.raidIconButton = nil
     end
-end--[[APR_DIAG]]; APR.currentStep.ResetSecureRaidIconButton = APRTrace("APR-Core/ui/route/CurrentStep.lua:789:APR.currentStep:ResetSecureRaidIconButton#51", APR.currentStep.ResetSecureRaidIconButton)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.currentStep.ResetSecureRaidIconButton = APRTrace("APR-Core/ui/route/CurrentStep.lua:792:APR.currentStep:ResetSecureRaidIconButton#51", APR.currentStep.ResetSecureRaidIconButton)--[[/APR_DIAG]]
 
 function APR.currentStep:ResetSecureButtonsByKey(questsListKey, force)
     local containerQuest = self.questsList[questsListKey]
     local containerRaid = self.questsList[questsListKey] or self.questsExtraTextList[questsListKey]
     self:ResetSecureStepButton(containerQuest, questsListKey, force)
     self:ResetSecureRaidIconButton(containerRaid, questsListKey, force)
-end--[[APR_DIAG]]; APR.currentStep.ResetSecureButtonsByKey = APRTrace("APR-Core/ui/route/CurrentStep.lua:824:APR.currentStep:ResetSecureButtonsByKey#52", APR.currentStep.ResetSecureButtonsByKey)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.currentStep.ResetSecureButtonsByKey = APRTrace("APR-Core/ui/route/CurrentStep.lua:827:APR.currentStep:ResetSecureButtonsByKey#52", APR.currentStep.ResetSecureButtonsByKey)--[[/APR_DIAG]]
 
 function APR.currentStep:ProcessPendingButtonResets()
     if InCombatLockdown() then
@@ -837,14 +840,14 @@ function APR.currentStep:ProcessPendingButtonResets()
         self:ResetSecureButtonsByKey(questsListKey, true)
         self.pendingButtonResets[questsListKey] = nil
     end
-end--[[APR_DIAG]]; APR.currentStep.ProcessPendingButtonResets = APRTrace("APR-Core/ui/route/CurrentStep.lua:831:APR.currentStep:ProcessPendingButtonResets#53", APR.currentStep.ProcessPendingButtonResets)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.currentStep.ProcessPendingButtonResets = APRTrace("APR-Core/ui/route/CurrentStep.lua:834:APR.currentStep:ProcessPendingButtonResets#53", APR.currentStep.ProcessPendingButtonResets)--[[/APR_DIAG]]
 
 function APR.currentStep:PrepareRaidIcon(step)
     local droppableQuest = step and step.DroppableQuest
     local npcID = step and ((step.KillNPC and step.KillNPC.npcID) or step.RaidIcon or (droppableQuest and droppableQuest.MobId))
     self.pendingRaidIconNpcId = tonumber(npcID)
     self.raidIconAdded = false
-end--[[APR_DIAG]]; APR.currentStep.PrepareRaidIcon = APRTrace("APR-Core/ui/route/CurrentStep.lua:842:APR.currentStep:PrepareRaidIcon#54", APR.currentStep.PrepareRaidIcon)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.currentStep.PrepareRaidIcon = APRTrace("APR-Core/ui/route/CurrentStep.lua:845:APR.currentStep:PrepareRaidIcon#54", APR.currentStep.PrepareRaidIcon)--[[/APR_DIAG]]
 
 function APR.currentStep:MaybeAttachRaidIconButton(key)
     if not self.pendingRaidIconNpcId or self.raidIconAdded then
@@ -852,7 +855,7 @@ function APR.currentStep:MaybeAttachRaidIconButton(key)
     end
     self.raidIconAdded = true
     self:AddRaidIconButton(key, self.pendingRaidIconNpcId)
-end--[[APR_DIAG]]; APR.currentStep.MaybeAttachRaidIconButton = APRTrace("APR-Core/ui/route/CurrentStep.lua:849:APR.currentStep:MaybeAttachRaidIconButton#55", APR.currentStep.MaybeAttachRaidIconButton)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.currentStep.MaybeAttachRaidIconButton = APRTrace("APR-Core/ui/route/CurrentStep.lua:852:APR.currentStep:MaybeAttachRaidIconButton#55", APR.currentStep.MaybeAttachRaidIconButton)--[[/APR_DIAG]]
 
 function APR.currentStep:CreateSecureRaidIconButton(questsListKey, npcID)
     local container = GetRaidIconContainer(self, questsListKey)
@@ -883,7 +886,7 @@ function APR.currentStep:CreateSecureRaidIconButton(questsListKey, npcID)
     RaidIconButton:SetAttribute("type1", "macro")
     RaidIconButton:SetAttribute("macrotext", APR:BuildRaidIconMacro(npcID))
 
-    RaidIconButton:SetScript("OnEnter", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:886:callback#57", --[[/APR_DIAG]]function(self)
+    RaidIconButton:SetScript("OnEnter", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:889:callback#57", --[[/APR_DIAG]]function(self)
         local npcName = APR:GetRaidIconNpcName(self.npcID)
         GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
         APR:AddTooltipLine(GameTooltip, "Raid icon (skull)", "currentStep", "accent")
@@ -895,7 +898,7 @@ function APR.currentStep:CreateSecureRaidIconButton(questsListKey, npcID)
         GameTooltip:Show()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 
-    RaidIconButton:SetScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:898:callback#58", --[[/APR_DIAG]]function(self) GameTooltip:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    RaidIconButton:SetScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:901:callback#58", --[[/APR_DIAG]]function(self) GameTooltip:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
 
     RaidIconButton.npcID = npcID
     container.RaidIconButton = RaidIconButton
@@ -908,7 +911,7 @@ function APR.currentStep:CreateSecureRaidIconButton(questsListKey, npcID)
     end
     self.raidIconButton = RaidIconButton
     self:UpdateRaidIconButtonMacro()
-end--[[APR_DIAG]]; APR.currentStep.CreateSecureRaidIconButton = APRTrace("APR-Core/ui/route/CurrentStep.lua:857:APR.currentStep:CreateSecureRaidIconButton#56", APR.currentStep.CreateSecureRaidIconButton)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.currentStep.CreateSecureRaidIconButton = APRTrace("APR-Core/ui/route/CurrentStep.lua:860:APR.currentStep:CreateSecureRaidIconButton#56", APR.currentStep.CreateSecureRaidIconButton)--[[/APR_DIAG]]
 
 function APR.currentStep:AddRaidIconButton(questsListKey, npcID)
     if not APR.settings.profile.currentStepShow or not npcID then
@@ -924,7 +927,7 @@ function APR.currentStep:AddRaidIconButton(questsListKey, npcID)
 
     self.pendingRaidIconRequests[questsListKey] = nil
     self:CreateSecureRaidIconButton(questsListKey, npcID)
-end--[[APR_DIAG]]; APR.currentStep.AddRaidIconButton = APRTrace("APR-Core/ui/route/CurrentStep.lua:913:APR.currentStep:AddRaidIconButton#59", APR.currentStep.AddRaidIconButton)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.currentStep.AddRaidIconButton = APRTrace("APR-Core/ui/route/CurrentStep.lua:916:APR.currentStep:AddRaidIconButton#59", APR.currentStep.AddRaidIconButton)--[[/APR_DIAG]]
 
 function APR.currentStep:UpdateRaidIconButtonMacro()
     if InCombatLockdown() then
@@ -939,9 +942,9 @@ function APR.currentStep:UpdateRaidIconButtonMacro()
 
     local unitToken = APR:FindRaidIconUnitToken(button.npcID)
     button:SetAttribute("macrotext", APR:BuildRaidIconMacro(button.npcID, unitToken))
-end--[[APR_DIAG]]; APR.currentStep.UpdateRaidIconButtonMacro = APRTrace("APR-Core/ui/route/CurrentStep.lua:929:APR.currentStep:UpdateRaidIconButtonMacro#60", APR.currentStep.UpdateRaidIconButtonMacro)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.currentStep.UpdateRaidIconButtonMacro = APRTrace("APR-Core/ui/route/CurrentStep.lua:932:APR.currentStep:UpdateRaidIconButtonMacro#60", APR.currentStep.UpdateRaidIconButtonMacro)--[[/APR_DIAG]]
 
-function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute, equipSlot)
+function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute, equipSlot, itemTarget)
     attribute = attribute or "item"
     if attribute == "emote" and (type(itemID) ~= "string" or not itemID:match("^[a-zA-Z]+$")) then return end
     local container = self.questsList[questsListKey] or self.fillersList[questsListKey]
@@ -951,6 +954,7 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
 
     if container.IconButton and container.IconButton.itemID == itemID and
         container.IconButton.attribute == attribute and container.IconButton.equipSlot == equipSlot and
+        container.IconButton.itemTarget == itemTarget and
         attribute ~= "housing" then
         PositionStepButtons(container, container.IconButton)
         if container.RaidIconButton then
@@ -1002,12 +1006,13 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
         if equipSlot then
             IconButton:SetAttribute("type1", "macro")
             IconButton:SetAttribute("macrotext", "/equipslot [nocombat] " .. equipSlot .. " item:" .. itemID)
-        elseif PlayerHasToy and PlayerHasToy(itemID) then
+        elseif not itemTarget and PlayerHasToy and PlayerHasToy(itemID) then
             IconButton:SetAttribute("type1", "toy")
             IconButton:SetAttribute("toy", itemID)
         else
             IconButton:SetAttribute("type1", "item")
             IconButton:SetAttribute("item", "item:" .. tostring(itemID))
+            IconButton:SetAttribute("unit", itemTarget == "player" and "player" or nil)
         end
     elseif attribute == "emote" then
         IconButton:SetAttribute("type1", "macro")
@@ -1021,7 +1026,7 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
         IconButton:SetAttribute("house-neighborhood-guid", housingData.neighborhoodGUID)
         IconButton:SetAttribute("house-guid", housingData.houseGUID)
         IconButton:SetAttribute("house-plot-id", housingData.plotID)
-        IconButton:SetScript("PreClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1024:callback#62", --[[/APR_DIAG]]function()
+        IconButton:SetScript("PreClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1029:callback#62", --[[/APR_DIAG]]function()
             if navigationData and type(navigationData.UpdateHousingExitLocation) == "function" then
                 navigationData:UpdateHousingExitLocation()
             end
@@ -1031,7 +1036,7 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
         IconButton:SetAttribute("type1", "returnhome")
     end
 
-    IconButton:SetScript("OnEnter", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1034:callback#63", --[[/APR_DIAG]]function(self)
+    IconButton:SetScript("OnEnter", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1039:callback#63", --[[/APR_DIAG]]function(self)
         GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
         if attribute == "item" then
             GameTooltip:SetItemByID(itemID)
@@ -1063,7 +1068,7 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
         GameTooltip:Show()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 
-    IconButton:SetScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1066:callback#64", --[[/APR_DIAG]]function(self) GameTooltip:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    IconButton:SetScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1071:callback#64", --[[/APR_DIAG]]function(self) GameTooltip:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
 
     IconButton.cooldown = IconButton.cooldown or CreateFrame("Cooldown", "$parentCooldown", IconButton,
         "CooldownFrameTemplate")
@@ -1073,6 +1078,7 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
     IconButton.itemID = itemID
     IconButton.attribute = attribute
     IconButton.equipSlot = equipSlot
+    IconButton.itemTarget = itemTarget
     container.IconButton = IconButton
     if APR.Gamepad then
         APR.Gamepad:RegisterActionButton(IconButton, questsListKey, self.fillersList[questsListKey] == container)
@@ -1093,13 +1099,13 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
     if container.RaidIconButton then
         PositionStepButtons(container, container.RaidIconButton, IconButton)
     end
-end--[[APR_DIAG]]; APR.currentStep.CreateSecureStepButton = APRTrace("APR-Core/ui/route/CurrentStep.lua:944:APR.currentStep:CreateSecureStepButton#61", APR.currentStep.CreateSecureStepButton)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.currentStep.CreateSecureStepButton = APRTrace("APR-Core/ui/route/CurrentStep.lua:947:APR.currentStep:CreateSecureStepButton#61", APR.currentStep.CreateSecureStepButton)--[[/APR_DIAG]]
 
 --- Queue or create a secure button depending on combat lockdown state
 ---@param questsListKey string
 ---@param itemID number|nil
 ---@param attribute string
-function APR.currentStep:AddStepButton(questsListKey, itemID, attribute, equipSlot)
+function APR.currentStep:AddStepButton(questsListKey, itemID, attribute, equipSlot, itemTarget)
     if attribute == 'spell' and type(itemID) == 'string' and C_Spell then
         local info = C_Spell.GetSpellInfo(itemID)
         itemID = info and info.spellID or itemID
@@ -1113,13 +1119,13 @@ function APR.currentStep:AddStepButton(questsListKey, itemID, attribute, equipSl
     if container then container.actionSeen = true end
     self:MaybeAttachRaidIconButton(questsListKey)
     if InCombatLockdown() then
-        self.pendingButtonRequests[questsListKey] = { itemID = itemID, attribute = attribute, equipSlot = equipSlot }
+        self.pendingButtonRequests[questsListKey] = { itemID = itemID, attribute = attribute, equipSlot = equipSlot, itemTarget = itemTarget }
         return
     end
 
     self.pendingButtonRequests[questsListKey] = nil
-    self:CreateSecureStepButton(questsListKey, itemID, attribute, equipSlot)
-end--[[APR_DIAG]]; APR.currentStep.AddStepButton = APRTrace("APR-Core/ui/route/CurrentStep.lua:1102:APR.currentStep:AddStepButton#65", APR.currentStep.AddStepButton)--[[/APR_DIAG]]
+    self:CreateSecureStepButton(questsListKey, itemID, attribute, equipSlot, itemTarget)
+end--[[APR_DIAG]]; APR.currentStep.AddStepButton = APRTrace("APR-Core/ui/route/CurrentStep.lua:1108:APR.currentStep:AddStepButton#65", APR.currentStep.AddStepButton)--[[/APR_DIAG]]
 
 function APR.currentStep:ProcessPendingStepButtons()
     if InCombatLockdown() then
@@ -1132,7 +1138,7 @@ function APR.currentStep:ProcessPendingStepButtons()
     self:RecycleCombatRows()
 
     for questsListKey, data in pairs(self.pendingButtonRequests) do
-        self:CreateSecureStepButton(questsListKey, data.itemID, data.attribute, data.equipSlot)
+        self:CreateSecureStepButton(questsListKey, data.itemID, data.attribute, data.equipSlot, data.itemTarget)
         self.pendingButtonRequests[questsListKey] = nil
     end
 
@@ -1149,7 +1155,7 @@ function APR.currentStep:ProcessPendingStepButtons()
         self:ReOrderQuestSteps()
         if APR.fillersFrame and APR.fillersFrame.FlushPendingLayout then APR.fillersFrame:FlushPendingLayout(true) end
     end
-end--[[APR_DIAG]]; APR.currentStep.ProcessPendingStepButtons = APRTrace("APR-Core/ui/route/CurrentStep.lua:1124:APR.currentStep:ProcessPendingStepButtons#66", APR.currentStep.ProcessPendingStepButtons)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.currentStep.ProcessPendingStepButtons = APRTrace("APR-Core/ui/route/CurrentStep.lua:1130:APR.currentStep:ProcessPendingStepButtons#66", APR.currentStep.ProcessPendingStepButtons)--[[/APR_DIAG]]
 
 local function ShouldUpdateStepButton(IconButton, filter)
     if not filter then
@@ -1166,12 +1172,12 @@ local function ShouldUpdateStepButton(IconButton, filter)
 
     local actionID = tonumber(IconButton.itemID) or IconButton.itemID
     return attributeFilter[actionID] == true
-end--[[APR_DIAG]]; ShouldUpdateStepButton = APRTrace("APR-Core/ui/route/CurrentStep.lua:1154:ShouldUpdateStepButton#67", ShouldUpdateStepButton)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ShouldUpdateStepButton = APRTrace("APR-Core/ui/route/CurrentStep.lua:1160:ShouldUpdateStepButton#67", ShouldUpdateStepButton)--[[/APR_DIAG]]
 
 local function ClearStepButtonCooldown(IconButton)
     IconButton.cooldown:Clear()
     IconButton.cooldown:Hide()
-end--[[APR_DIAG]]; ClearStepButtonCooldown = APRTrace("APR-Core/ui/route/CurrentStep.lua:1171:ClearStepButtonCooldown#68", ClearStepButtonCooldown)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ClearStepButtonCooldown = APRTrace("APR-Core/ui/route/CurrentStep.lua:1177:ClearStepButtonCooldown#68", ClearStepButtonCooldown)--[[/APR_DIAG]]
 
 local function UpdateSpellButtonCooldown(IconButton)
     local spellID = tonumber(IconButton.itemID)
@@ -1216,7 +1222,7 @@ local function UpdateSpellButtonCooldown(IconButton)
     else
         ClearStepButtonCooldown(IconButton)
     end
-end--[[APR_DIAG]]; UpdateSpellButtonCooldown = APRTrace("APR-Core/ui/route/CurrentStep.lua:1176:UpdateSpellButtonCooldown#69", UpdateSpellButtonCooldown)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; UpdateSpellButtonCooldown = APRTrace("APR-Core/ui/route/CurrentStep.lua:1182:UpdateSpellButtonCooldown#69", UpdateSpellButtonCooldown)--[[/APR_DIAG]]
 
 local function UpdateItemButtonCooldown(IconButton)
     local itemID = tonumber(IconButton.itemID)
@@ -1235,7 +1241,7 @@ local function UpdateItemButtonCooldown(IconButton)
     else
         ClearStepButtonCooldown(IconButton)
     end
-end--[[APR_DIAG]]; UpdateItemButtonCooldown = APRTrace("APR-Core/ui/route/CurrentStep.lua:1221:UpdateItemButtonCooldown#70", UpdateItemButtonCooldown)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; UpdateItemButtonCooldown = APRTrace("APR-Core/ui/route/CurrentStep.lua:1227:UpdateItemButtonCooldown#70", UpdateItemButtonCooldown)--[[/APR_DIAG]]
 
 local function UpdateContainerCooldowns(list, filter)
     for _, container in pairs(list) do
@@ -1255,14 +1261,14 @@ local function UpdateContainerCooldowns(list, filter)
             end
         end
     end
-end--[[APR_DIAG]]; UpdateContainerCooldowns = APRTrace("APR-Core/ui/route/CurrentStep.lua:1240:UpdateContainerCooldowns#71", UpdateContainerCooldowns)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; UpdateContainerCooldowns = APRTrace("APR-Core/ui/route/CurrentStep.lua:1246:UpdateContainerCooldowns#71", UpdateContainerCooldowns)--[[/APR_DIAG]]
 
 --- Refresh the secure action buttons from dedicated cooldown events.
 ---@param filter table|nil A map such as { spell = true } or { item = { [itemID] = true } }.
 function APR.currentStep:UpdateStepButtonCooldowns(filter)
     UpdateContainerCooldowns(self.questsList, filter)
     UpdateContainerCooldowns(self.fillersList, filter)
-end--[[APR_DIAG]]; APR.currentStep.UpdateStepButtonCooldowns = APRTrace("APR-Core/ui/route/CurrentStep.lua:1262:APR.currentStep:UpdateStepButtonCooldowns#72", APR.currentStep.UpdateStepButtonCooldowns)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.currentStep.UpdateStepButtonCooldowns = APRTrace("APR-Core/ui/route/CurrentStep.lua:1268:APR.currentStep:UpdateStepButtonCooldowns#72", APR.currentStep.UpdateStepButtonCooldowns)--[[/APR_DIAG]]
 
 local function UpdateContainerUsability(self, list, filter)
     for _, container in pairs(list) do
@@ -1296,14 +1302,14 @@ local function UpdateContainerUsability(self, list, filter)
             end
         end
     end
-end--[[APR_DIAG]]; UpdateContainerUsability = APRTrace("APR-Core/ui/route/CurrentStep.lua:1267:UpdateContainerUsability#73", UpdateContainerUsability)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; UpdateContainerUsability = APRTrace("APR-Core/ui/route/CurrentStep.lua:1273:UpdateContainerUsability#73", UpdateContainerUsability)--[[/APR_DIAG]]
 
 --- Refresh visual availability without changing protected secure-action attributes.
 ---@param filter table|nil
 function APR.currentStep:UpdateStepButtonUsability(filter)
     UpdateContainerUsability(self, self.questsList, filter)
     UpdateContainerUsability(self, self.fillersList, filter)
-end--[[APR_DIAG]]; APR.currentStep.UpdateStepButtonUsability = APRTrace("APR-Core/ui/route/CurrentStep.lua:1303:APR.currentStep:UpdateStepButtonUsability#74", APR.currentStep.UpdateStepButtonUsability)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.currentStep.UpdateStepButtonUsability = APRTrace("APR-Core/ui/route/CurrentStep.lua:1309:APR.currentStep:UpdateStepButtonUsability#74", APR.currentStep.UpdateStepButtonUsability)--[[/APR_DIAG]]
 
 --- Disable Button, Reset ProgressBar and Remove all quest and extra line
 function APR.currentStep:Reset()
@@ -1342,7 +1348,7 @@ function APR.currentStep:Reset()
     self.raidIconButton = nil
     self:RemoveQuestStepsAndExtraLineTexts()
     APR.fillersFrame:RemoveFillerSteps()
-end--[[APR_DIAG]]; APR.currentStep.Reset = APRTrace("APR-Core/ui/route/CurrentStep.lua:1309:APR.currentStep:Reset#75", APR.currentStep.Reset)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.currentStep.Reset = APRTrace("APR-Core/ui/route/CurrentStep.lua:1315:APR.currentStep:Reset#75", APR.currentStep.Reset)--[[/APR_DIAG]]
 
 function APR.GetMenu(owner, rootDescription)
     local toggleAddon = ''
@@ -1354,8 +1360,8 @@ function APR.GetMenu(owner, rootDescription)
 
     local function createToggleItem(label, getChecked, onToggle)
         if rootDescription.CreateCheckbox then
-            local ok = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](--[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1357:callback#78", --[[/APR_DIAG]]function()
-                rootDescription:CreateCheckbox(label, getChecked, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1358:callback#79", --[[/APR_DIAG]]function(...)
+            local ok = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](--[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1363:callback#78", --[[/APR_DIAG]]function()
+                rootDescription:CreateCheckbox(label, getChecked, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1364:callback#79", --[[/APR_DIAG]]function(...)
                     onToggle(...)
                 end--[[APR_DIAG]])--[[/APR_DIAG]])
             end--[[APR_DIAG]])--[[/APR_DIAG]])
@@ -1364,38 +1370,38 @@ function APR.GetMenu(owner, rootDescription)
             end
         end
 
-        rootDescription:CreateButton(label .. " (" .. (getChecked() and YES or NO) .. ")", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1367:callback#80", --[[/APR_DIAG]]function()
+        rootDescription:CreateButton(label .. " (" .. (getChecked() and YES or NO) .. ")", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1373:callback#80", --[[/APR_DIAG]]function()
             onToggle()
         end--[[APR_DIAG]])--[[/APR_DIAG]])
-    end--[[APR_DIAG]]; createToggleItem = APRTrace("APR-Core/ui/route/CurrentStep.lua:1355:createToggleItem#77", createToggleItem)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; createToggleItem = APRTrace("APR-Core/ui/route/CurrentStep.lua:1361:createToggleItem#77", createToggleItem)--[[/APR_DIAG]]
 
     local function sectionTitle(text)
         return APR:WrapTextWithAppearanceColor(text, "currentStep", "accent")
-    end--[[APR_DIAG]]; sectionTitle = APRTrace("APR-Core/ui/route/CurrentStep.lua:1372:sectionTitle#81", sectionTitle)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; sectionTitle = APRTrace("APR-Core/ui/route/CurrentStep.lua:1378:sectionTitle#81", sectionTitle)--[[/APR_DIAG]]
 
     rootDescription:CreateTitle(sectionTitle(APR.title))
 
     if APR.PartyFinderPanel then
-        rootDescription:CreateButton(L["GF_TITLE"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1379:callback#82", --[[/APR_DIAG]]function() APR.PartyFinderPanel:Show() end--[[APR_DIAG]])--[[/APR_DIAG]])
+        rootDescription:CreateButton(L["GF_TITLE"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1385:callback#82", --[[/APR_DIAG]]function() APR.PartyFinderPanel:Show() end--[[APR_DIAG]])--[[/APR_DIAG]])
     end
 
-    rootDescription:CreateButton(L["SHOW_MENU"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1382:callback#83", --[[/APR_DIAG]]function()
+    rootDescription:CreateButton(L["SHOW_MENU"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1388:callback#83", --[[/APR_DIAG]]function()
         APR.settings:OpenSettings(APR.title)
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 
-    rootDescription:CreateButton(L["ROUTE"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1386:callback#84", --[[/APR_DIAG]]function()
+    rootDescription:CreateButton(L["ROUTE"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1392:callback#84", --[[/APR_DIAG]]function()
         APR.settings:OpenSettings(L["ROUTE"])
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 
-    rootDescription:CreateButton(L["PROFILES"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1390:callback#85", --[[/APR_DIAG]]function()
+    rootDescription:CreateButton(L["PROFILES"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1396:callback#85", --[[/APR_DIAG]]function()
         APR.settings:OpenSettings(L["PROFILES"])
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 
-    rootDescription:CreateButton(L["ABOUT_HELP"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1394:callback#86", --[[/APR_DIAG]]function()
+    rootDescription:CreateButton(L["ABOUT_HELP"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1400:callback#86", --[[/APR_DIAG]]function()
         APR.settings:OpenSettings(L["ABOUT_HELP"])
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 
-    rootDescription:CreateButton(toggleAddon .. " " .. L["ADDON"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1398:callback#87", --[[/APR_DIAG]]function()
+    rootDescription:CreateButton(toggleAddon .. " " .. L["ADDON"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1404:callback#87", --[[/APR_DIAG]]function()
         APR.settings.profile.enableAddon = not APR.settings.profile.enableAddon
         APR.settings:ToggleAddon()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
@@ -1403,60 +1409,60 @@ function APR.GetMenu(owner, rootDescription)
     rootDescription:CreateDivider()
     rootDescription:CreateTitle(sectionTitle(L["CURRENT_STEP"]))
 
-    createToggleItem(L["QLIST_ATTACH_QUESTLOG"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1406:callback#88", --[[/APR_DIAG]]function()
+    createToggleItem(L["QLIST_ATTACH_QUESTLOG"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1412:callback#88", --[[/APR_DIAG]]function()
         return APR.settings.profile.currentStepAttachFrameToQuestLog
-    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1408:callback#89", --[[/APR_DIAG]]function()
+    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1414:callback#89", --[[/APR_DIAG]]function()
         APR:ChangeTrackerOption("currentStep", "currentStepAttachFrameToQuestLog",
-            not APR.settings.profile.currentStepAttachFrameToQuestLog, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1410:callback#90", --[[/APR_DIAG]]function()
+            not APR.settings.profile.currentStepAttachFrameToQuestLog, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1416:callback#90", --[[/APR_DIAG]]function()
                 APR.currentStep:RefreshCurrentStepFrameAnchor()
-            end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1412:callback#91", --[[/APR_DIAG]]function() APR.QuestTracker:GetSide(APR.settings.profile) end--[[APR_DIAG]])--[[/APR_DIAG]])
+            end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1418:callback#91", --[[/APR_DIAG]]function() APR.QuestTracker:GetSide(APR.settings.profile) end--[[APR_DIAG]])--[[/APR_DIAG]])
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 
     local trackerPosition = rootDescription:CreateButton(L["UI_TRACKER_SIDE"])
     trackerPosition:SetEnabled(APR.settings.profile.currentStepAttachFrameToQuestLog == true)
     for _, side in ipairs({ "above", "below" }) do
-        trackerPosition:CreateRadio(L[side == "above" and "UI_TRACKER_ABOVE" or "UI_TRACKER_BELOW"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1418:callback#92", --[[/APR_DIAG]]function()
+        trackerPosition:CreateRadio(L[side == "above" and "UI_TRACKER_ABOVE" or "UI_TRACKER_BELOW"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1424:callback#92", --[[/APR_DIAG]]function()
             return APR.QuestTracker:GetSide(APR.settings.profile) == side
-        end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1420:callback#93", --[[/APR_DIAG]]function()
+        end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1426:callback#93", --[[/APR_DIAG]]function()
             APR.QuestTracker:SetSide(side)
         end--[[APR_DIAG]])--[[/APR_DIAG]])
     end
 
-    createToggleItem(L["LOCK_WINDOW"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1425:callback#94", --[[/APR_DIAG]]function()
+    createToggleItem(L["LOCK_WINDOW"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1431:callback#94", --[[/APR_DIAG]]function()
         return APR.settings.profile.currentStepLock
-    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1427:callback#95", --[[/APR_DIAG]]function()
+    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1433:callback#95", --[[/APR_DIAG]]function()
         APR.settings.profile.currentStepLock = not APR.settings.profile.currentStepLock
         APR.currentStep:RefreshCurrentStepFrameAnchor()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 
     rootDescription:CreateButton(L["CURRENT_STEP_QUEST_BUTTON_POSITION"] .. ": " ..
-        (APR.settings.profile.currentStepQuestButtonPositionRight and L["RIGHT"] or L["LEFT"]), --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1433:callback#96", --[[/APR_DIAG]]function()
+        (APR.settings.profile.currentStepQuestButtonPositionRight and L["RIGHT"] or L["LEFT"]), --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1439:callback#96", --[[/APR_DIAG]]function()
             APR.settings.profile.currentStepQuestButtonPositionRight = not APR.settings.profile
                 .currentStepQuestButtonPositionRight
             APR:UpdateMapId()
         end--[[APR_DIAG]])--[[/APR_DIAG]])
 
-    rootDescription:CreateButton(L["RESET_POSITION"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1439:callback#97", --[[/APR_DIAG]]function()
+    rootDescription:CreateButton(L["RESET_POSITION"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1445:callback#97", --[[/APR_DIAG]]function()
         APR.currentStep:ResetPosition()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 
     rootDescription:CreateDivider()
     rootDescription:CreateTitle(sectionTitle(L["FILLERS_FRAME"]))
 
-    createToggleItem(L["SNAP_TO_CURRENT_STEP"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1446:callback#98", --[[/APR_DIAG]]function()
+    createToggleItem(L["SNAP_TO_CURRENT_STEP"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1452:callback#98", --[[/APR_DIAG]]function()
         return APR.settings.profile.fillersFrameSnapToCurrentStep
-    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1448:callback#99", --[[/APR_DIAG]]function()
+    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1454:callback#99", --[[/APR_DIAG]]function()
         APR:ChangeTrackerOption("fillers", "fillersFrameSnapToCurrentStep",
-            not APR.settings.profile.fillersFrameSnapToCurrentStep, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1450:callback#100", --[[/APR_DIAG]]function()
+            not APR.settings.profile.fillersFrameSnapToCurrentStep, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1456:callback#100", --[[/APR_DIAG]]function()
                 if APR.fillersFrame and APR.fillersFrame.RefreshFillersFrame then
                     APR.fillersFrame:RefreshFillersFrame()
                 end
             end--[[APR_DIAG]])--[[/APR_DIAG]])
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 
-    createToggleItem(L["FILLERS_SHOW_HEADER"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1457:callback#101", --[[/APR_DIAG]]function()
+    createToggleItem(L["FILLERS_SHOW_HEADER"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1463:callback#101", --[[/APR_DIAG]]function()
         return APR.settings.profile.fillersFrameShowHeader
-    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1459:callback#102", --[[/APR_DIAG]]function()
+    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1465:callback#102", --[[/APR_DIAG]]function()
         APR.settings.profile.fillersFrameShowHeader = not APR.settings.profile.fillersFrameShowHeader
         if APR.fillersFrame and APR.fillersFrame.RefreshFillersFrame then
             APR.fillersFrame:RefreshFillersFrame()
@@ -1467,18 +1473,18 @@ function APR.GetMenu(owner, rootDescription)
     rootDescription:CreateDivider()
     rootDescription:CreateTitle(sectionTitle(L["QUEST_ORDER_LIST"]))
 
-    createToggleItem(L["SNAP_TO_CURRENT_STEP"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1470:callback#103", --[[/APR_DIAG]]function()
+    createToggleItem(L["SNAP_TO_CURRENT_STEP"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1476:callback#103", --[[/APR_DIAG]]function()
         return APR.settings.profile.questOrderListSnapToCurrentStep
-    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1472:callback#104", --[[/APR_DIAG]]function()
+    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1478:callback#104", --[[/APR_DIAG]]function()
         APR:ChangeTrackerOption("questOrderList", "questOrderListSnapToCurrentStep",
-            not APR.settings.profile.questOrderListSnapToCurrentStep, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1474:callback#105", --[[/APR_DIAG]]function()
+            not APR.settings.profile.questOrderListSnapToCurrentStep, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1480:callback#105", --[[/APR_DIAG]]function()
                 APR.questOrderList:RefreshFrameAnchor()
             end--[[APR_DIAG]])--[[/APR_DIAG]])
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 
-    createToggleItem(L["SHOW_QORDERLIST"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1479:callback#106", --[[/APR_DIAG]]function()
+    createToggleItem(L["SHOW_QORDERLIST"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1485:callback#106", --[[/APR_DIAG]]function()
         return APR.settings.profile.showQuestOrderList
-    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1481:callback#107", --[[/APR_DIAG]]function()
+    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1487:callback#107", --[[/APR_DIAG]]function()
         APR.settings.profile.showQuestOrderList = not APR.settings.profile.showQuestOrderList
         APR.questOrderList:RefreshFrameAnchor()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
@@ -1488,17 +1494,17 @@ function APR.GetMenu(owner, rootDescription)
     rootDescription:CreateDivider()
     rootDescription:CreateTitle(sectionTitle(L["AFK"]))
 
-    createToggleItem(L["SNAP_TO_CURRENT_STEP"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1491:callback#108", --[[/APR_DIAG]]function()
+    createToggleItem(L["SNAP_TO_CURRENT_STEP"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1497:callback#108", --[[/APR_DIAG]]function()
         return APR.settings.profile.afkSnapToCurrentStep
-    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1493:callback#109", --[[/APR_DIAG]]function()
+    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1499:callback#109", --[[/APR_DIAG]]function()
         APR:ChangeTrackerOption("afk", "afkSnapToCurrentStep", not APR.settings.profile.afkSnapToCurrentStep,
-            --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1495:callback#110", --[[/APR_DIAG]]function() APR.AFK:RefreshFrameAnchor() end--[[APR_DIAG]])--[[/APR_DIAG]])
+            --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1501:callback#110", --[[/APR_DIAG]]function() APR.AFK:RefreshFrameAnchor() end--[[APR_DIAG]])--[[/APR_DIAG]])
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.GetMenu = APRTrace("APR-Core/ui/route/CurrentStep.lua:1347:APR.GetMenu#76", APR.GetMenu)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetMenu = APRTrace("APR-Core/ui/route/CurrentStep.lua:1353:APR.GetMenu#76", APR.GetMenu)--[[/APR_DIAG]]
 
 function APR.currentStep:IsShown()
     return CurrentStepScreenPanel:IsShown()
-end--[[APR_DIAG]]; APR.currentStep.IsShown = APRTrace("APR-Core/ui/route/CurrentStep.lua:1499:APR.currentStep:IsShown#111", APR.currentStep.IsShown)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.currentStep.IsShown = APRTrace("APR-Core/ui/route/CurrentStep.lua:1505:APR.currentStep:IsShown#111", APR.currentStep.IsShown)--[[/APR_DIAG]]
 
 function APR.currentStep:CanSafelyHide(container)
     -- Retired secure children still belong to their row. Remember this even
@@ -1506,7 +1512,7 @@ function APR.currentStep:CanSafelyHide(container)
     return not InCombatLockdown() or not (container.hasSecureControls or
         (container.IconButton and container.IconButton:IsProtected()) or
         (container.RaidIconButton and container.RaidIconButton:IsProtected()))
-end--[[APR_DIAG]]; APR.currentStep.CanSafelyHide = APRTrace("APR-Core/ui/route/CurrentStep.lua:1503:APR.currentStep:CanSafelyHide#112", APR.currentStep.CanSafelyHide)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.currentStep.CanSafelyHide = APRTrace("APR-Core/ui/route/CurrentStep.lua:1509:APR.currentStep:CanSafelyHide#112", APR.currentStep.CanSafelyHide)--[[/APR_DIAG]]
 
 function APR.currentStep:SoftHide(container)
     container.hiddenInCombat = true
@@ -1532,7 +1538,7 @@ function APR.currentStep:SoftHide(container)
             container.RaidIconButton:EnableMouse(false)
         end
     end
-end--[[APR_DIAG]]; APR.currentStep.SoftHide = APRTrace("APR-Core/ui/route/CurrentStep.lua:1511:APR.currentStep:SoftHide#113", APR.currentStep.SoftHide)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.currentStep.SoftHide = APRTrace("APR-Core/ui/route/CurrentStep.lua:1517:APR.currentStep:SoftHide#113", APR.currentStep.SoftHide)--[[/APR_DIAG]]
 
 function APR.currentStep:FlushPendingContainers()
     if InCombatLockdown() then return end
@@ -1559,7 +1565,7 @@ function APR.currentStep:FlushPendingContainers()
     if APR.fillersFrame then
         APR.fillersFrame:ReOrderFillerSteps()
     end
-end--[[APR_DIAG]]; APR.currentStep.FlushPendingContainers = APRTrace("APR-Core/ui/route/CurrentStep.lua:1537:APR.currentStep:FlushPendingContainers#114", APR.currentStep.FlushPendingContainers)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.currentStep.FlushPendingContainers = APRTrace("APR-Core/ui/route/CurrentStep.lua:1543:APR.currentStep:FlushPendingContainers#114", APR.currentStep.FlushPendingContainers)--[[/APR_DIAG]]
 
 -- The party wire may omit an oversized tooltip, but must retain its progress.
 -- Bound construction before copying/sorting rows that would then be discarded.
@@ -1572,13 +1578,13 @@ local function ReserveSnapshotRow(budget, text)
         if budget.bytes < 0 then return false end
     end
     return true
-end--[[APR_DIAG]]; ReserveSnapshotRow = APRTrace("APR-Core/ui/route/CurrentStep.lua:1566:ReserveSnapshotRow#115", ReserveSnapshotRow)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ReserveSnapshotRow = APRTrace("APR-Core/ui/route/CurrentStep.lua:1572:ReserveSnapshotRow#115", ReserveSnapshotRow)--[[/APR_DIAG]]
 
 local function OmitSnapshotRows(details)
     details.extraLines, details.questSteps = {}, {}
     if details.fillerSteps then details.fillerSteps = {} end
     return details
-end--[[APR_DIAG]]; OmitSnapshotRows = APRTrace("APR-Core/ui/route/CurrentStep.lua:1577:OmitSnapshotRows#116", OmitSnapshotRows)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; OmitSnapshotRows = APRTrace("APR-Core/ui/route/CurrentStep.lua:1583:OmitSnapshotRows#116", OmitSnapshotRows)--[[/APR_DIAG]]
 
 function APR.currentStep:GetCurrentStepDetails(includeFillers, maxRows, maxBytes)
     if not APR.ActiveRoute then return nil end
@@ -1667,8 +1673,8 @@ function APR.currentStep:GetCurrentStepDetails(includeFillers, maxRows, maxBytes
 
     -- Stable order prevents a recycled row from changing an otherwise identical
     -- snapshot just because Lua's table traversal order changed.
-    local function ByKey(a, b) return tostring(a.key) < tostring(b.key) end--[[APR_DIAG]]; ByKey = APRTrace("APR-Core/ui/route/CurrentStep.lua:1670:ByKey#118", ByKey)--[[/APR_DIAG]]
+    local function ByKey(a, b) return tostring(a.key) < tostring(b.key) end--[[APR_DIAG]]; ByKey = APRTrace("APR-Core/ui/route/CurrentStep.lua:1676:ByKey#118", ByKey)--[[/APR_DIAG]]
     table.sort(stepDetails.extraLines, ByKey)
     table.sort(stepDetails.questSteps, ByKey)
     return stepDetails
-end--[[APR_DIAG]]; APR.currentStep.GetCurrentStepDetails = APRTrace("APR-Core/ui/route/CurrentStep.lua:1583:APR.currentStep:GetCurrentStepDetails#117", APR.currentStep.GetCurrentStepDetails)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.currentStep.GetCurrentStepDetails = APRTrace("APR-Core/ui/route/CurrentStep.lua:1589:APR.currentStep:GetCurrentStepDetails#117", APR.currentStep.GetCurrentStepDetails)--[[/APR_DIAG]]

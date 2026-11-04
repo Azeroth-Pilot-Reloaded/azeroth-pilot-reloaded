@@ -62,7 +62,7 @@ function handlers.UseItem(step, showStepDetails, currentStepIndex)
         local itemName = C_Item.GetItemInfo(itemID)
         local questText = string.format(L["USE_ITEM"], itemName or UNKNOWN)
         APR.currentStep:AddQuestSteps(questKey, questText, "UseItem", false, not questID)
-        APR.currentStep:AddStepButton(questKey .. "-UseItem", itemID, 'item')
+        APR.currentStep:AddStepButton(questKey .. "-UseItem", itemID, 'item', nil, step.ItemTarget)
     end
 
     if questID and C_QuestLog.IsQuestFlaggedCompleted(questID) then

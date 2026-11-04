@@ -62,7 +62,7 @@ def examples():
         "Note": seq("First instruction", "Second instruction"), "PreviewImages": seq("image.jpg"),
         "Coord": {"x": -42.5, "y": 123.5}, "Coords": seq({"Zone": 1, "x": 1, "y": 2}),
         "ZoneStepTrigger": {"x": 1, "y": 2, "Range": 10, "mapID": 2},
-        "Button": {"123-1": 123}, "SpellButton": {"123-1": "Spell"},
+        "Button": {"123-1": 123}, "SpellButton": {"123-1": "Spell"}, "ItemTarget": "player",
         "UseItem": {"itemID": 123, "itemSpellID": 456}, "UseSpell": {"spellID": 123},
         "Treasure": {"questID": 123, "itemID": 456},
         "Achievement": {"achievementID": 123, "criteriaID": 456, "criteriaIndex": 1, "questID": 2},
@@ -160,6 +160,13 @@ class RouteSchemaTests(unittest.TestCase):
         for value in ({}, {2: 1243}, seq(2050, 0), seq(True), seq(""), seq(seq(2050)), seq(2050.5)):
             with self.subTest(value=value), self.assertRaises(InvalidRoute):
                 self.schema.step({"SpellButton": {"5648": value}}, "step")
+
+    def test_explicit_item_target_is_restricted_to_player(self):
+        self.schema.step({"UseItem": {"itemID": 101}, "ItemTarget": "player"}, "step")
+        self.schema.step({"Button": {"202": 101}, "ItemTarget": "player"}, "step")
+        for target in ("target", "mouseover", "[@player]", "", 1, True):
+            with self.subTest(target=target), self.assertRaises(InvalidRoute):
+                self.schema.step({"Button": {"202": 101}, "ItemTarget": target}, "step")
 
     def test_multiple_item_buttons_for_one_quest_or_objective(self):
         for value in (12345, seq(12345, 67890)):
