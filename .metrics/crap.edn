@@ -1,0 +1,4 @@
+{:entries [
+  {:name "test_condition_dependencies_precede_their_consumers", :namespace "tests.scripts.test_navigation_v2_conditions.ConditionsManifestTests", :complexity 3, :coverage nil, :crap nil}
+  {:name "test_contracts", :namespace "tests.lua.navigation_v2_conditions.test_conditions.ConditionsTests", :complexity 2, :coverage nil, :crap nil}
+]}

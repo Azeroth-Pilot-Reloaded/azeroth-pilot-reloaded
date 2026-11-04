@@ -176,8 +176,14 @@ end
 function Graph.New(source,context,limits)
     context=context or {tracker=namespace.NavigationV2Conditions.New(),bindings={}}
     if type(source) == "table" and source.partitioned == true then
-        if not namespace.NavigationV2Sectors then return nil, "sectors_unavailable" end
-        local graph, reason = namespace.NavigationV2Sectors.New(source)
+        local factories={sectors=namespace.NavigationV2Sectors,roads=namespace.NavigationV2RoadDomain,
+            domains=namespace.NavigationV2DomainGraph}
+        local kind=source.kind or 'sectors'
+        local factory=factories[kind]
+        if not factory then return nil,kind=='sectors' and 'sectors_unavailable' or 'partitioned_kind_unavailable' end
+        local create=kind=='roads' and factory.Compile or factory.New
+        if type(create)~='function' then return nil,'partitioned_factory_unavailable' end
+        local graph, reason = create(source,context,limits)
         if not graph then return nil, reason end
         graph.conditionContext=context
         return setmetatable({ phase = "ready", compiled = graph,sourceRequirements=source.requirements,
@@ -228,8 +234,14 @@ local function Edge(preparation, _, declaration)
     preparation.seen[declaration.id] = true
     local movement
     if declaration.movement ~= nil then
-        if not namespace.NavigationV2Forever then return 'movement_unavailable' end
-        movement = namespace.NavigationV2Forever.CaptureMovement(declaration.movement)
+        local source=declaration.movement
+        local api=namespace.NavigationV2Forever
+        if type(source)=='table' and (source.mode=='skyriding' or source.groundOnly~=nil
+            or source.requiresExit~=nil or source.canFly~=nil or source.rise~=nil or source.fall~=nil) then
+            api=namespace.NavigationV2Retail
+        end
+        if not api then return 'movement_unavailable' end
+        movement = api.CaptureMovement(source)
         if not movement then return 'invalid_movement' end
     end
     local resources

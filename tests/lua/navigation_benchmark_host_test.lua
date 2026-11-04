@@ -104,4 +104,38 @@ assert(characterHost:Start(manual,'both'));level=40
 for _=1,4 do characterHost:Step()end
 assert(characterReads==1 and seen[1]==7 and seen[2]==7)
 assert(characterHost:GetContext().characterLevel==7)
+
+-- The real-data preparation seam is resolved lazily for the V2 factory only.
+local preparation=function()error('Only the V2 driver may start preparation')end
+local movementCaptures,movement=0,{source='captured movement model'}
+ns.NavigationV2Movement={Capture=function(observedApi)
+ assert(observedApi==api);movementCaptures=movementCaptures+1
+ return {source='player location'}, {level=45,mountOwned=true,mountUsable=true,
+  initialMode='mount',canMountHere=false,canSkyridingHere=false,costs={walkSpeed=7}}
+end}
+ns.NavigationV2Forever={New=function(observed,costs)
+ assert(observed.initialMode=='walk' and observed.mountOwned and observed.mountUsable)
+ assert(observed.canMountHere==nil and observed.canSkyridingHere==nil and costs.walkSpeed==7)
+ return movement
+end}
+local selected,shared={},{from={mapID=2,x=0,y=100},to={mapID=8,x=100,y=0}}
+local lateHost=Host.New({api=api,apr={},engines={
+ v1={Create=function(request,context)
+  assert(context.prepare==nil);selected[1]=request.from.x;request.from.x=99
+  return {Step=function()return {status='complete'}end}
+ end},
+ v2={Create=function(request,context)
+  assert(context.prepare==preparation and context.movement==movement);selected[2]=request.from.x
+  return {Step=function()return {status='unknown',reason='diagnostic'}end}
+ end}}})
+ns.NavigationV2PrepareBenchmark=preparation
+assert(lateHost:Start(shared,'both'))
+for _=1,4 do lateHost:Step()end
+assert(lateHost:GetState().status=='finished' and selected[1]==0 and selected[2]==0)
+assert(lateHost:GetCapture().from.x==0 and shared.from.x==0)
+assert(movementCaptures==1)
+assert(lateHost:GetContext().movementOrigin=='manual_walk_model_local_permissions_unknown')
+ns.NavigationV2PrepareBenchmark=nil
+ns.NavigationV2Movement=nil
+ns.NavigationV2Forever=nil
 print('Benchmark host: native capture once, secrets/nils/transition, isolated measured engines, cancelled replacement and honest report passed')

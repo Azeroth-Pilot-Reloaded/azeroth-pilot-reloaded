@@ -53,25 +53,24 @@ local function Capture(request)
     if not from then return nil,why end
     local to;to,why=Point(request.to)
     if not to then return nil,why end
-    if from.identity.worldID~=nil and to.identity.worldID~=nil
-        and from.identity.worldID~=to.identity.worldID then return nil,"benchmark_v2_cross_world_uncovered" end
-    return {from=from,to=to,world=from.identity.worldID or to.identity.worldID}
+    return {from=from,to=to,world=from.identity.worldID or to.identity.worldID,
+        coordinateUnit="map-percent",startMode=request.startMode}
 end--[[APR_DIAG]]; Capture = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:50:Capture#5", Capture)--[[/APR_DIAG]]
 
 local function Sample(clock)
-    local ok,value=--[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:62:callback#7", --[[/APR_DIAG]]function()
+    local ok,value=--[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:61:callback#7", --[[/APR_DIAG]]function()
         local now=clock()
         if Finite(now) and now>=0 then return now end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     if ok then return value end
-end--[[APR_DIAG]]; Sample = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:61:Sample#6", Sample)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Sample = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:60:Sample#6", Sample)--[[/APR_DIAG]]
 
 local function CancelJob(self, job)
     if type(job)=="table" and type(job.Cancel)=="function" then
         self.metrics.cancelCalls=self.metrics.cancelCalls+1
         --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](job.Cancel,job)
     end
-end--[[APR_DIAG]]; CancelJob = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:69:CancelJob#8", CancelJob)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; CancelJob = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:68:CancelJob#8", CancelJob)--[[/APR_DIAG]]
 
 local function Stop(self, status, reason, abort, replace)
     if self.result and not replace then return self.result end
@@ -80,44 +79,153 @@ local function Stop(self, status, reason, abort, replace)
     self.result={status=status,reason=reason}
     if abort then CancelJob(self,loading);CancelJob(self,search) end
     return self.result
-end--[[APR_DIAG]]; Stop = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:76:Stop#9", Stop)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Stop = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:75:Stop#9", Stop)--[[/APR_DIAG]]
 
 function Benchmark.Create(request, context)
     if type(context)~="table" then return nil,"benchmark_v2_context_missing" end
     if context.profile~="forever" and context.profile~="retail" then return nil,"benchmark_v2_client_unknown" end
-    if type(context.build)~="string" or context.build=="" then return nil,"benchmark_v2_build_unknown" end
+    local prepared=type(context.prepare)=="function"
+    if context.prepare~=nil and not prepared then return nil,"benchmark_v2_preparation_unavailable" end
+    if not prepared and (type(context.build)~="string" or context.build=="") then return nil,"benchmark_v2_build_unknown" end
     if type(context.clock)~="function" then return nil,"benchmark_v2_clock_unavailable" end
     local ok,captured,reason=--[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](Capture,request)
     if not ok then return nil,"benchmark_v2_request_invalid" end
     if not captured then return nil,reason end
     local host,library,terrain,world=context.host,context.library,context.terrain,context.world
     local position=namespace.NavigationV2Position
-    if type(host)~="table" or type(host.LoadTerrain)~="function"
-        or type(library)~="table" or type(library.New)~="function"
-        or type(terrain)~="table" or type(terrain.ClientOptions)~="function"
-        or type(world)~="table" or type(world.FromTerrain)~="function" or type(world.Match)~="function"
-        or type(position)~="table" or type(position.Project)~="function" then
+    if type(library)~="table" or type(library.New)~="function" then
         return nil,"benchmark_v2_engine_unavailable"
     end
+    if not prepared and (type(host)~="table" or type(host.LoadTerrain)~="function"
+        or type(terrain)~="table" or type(terrain.ClientOptions)~="function"
+        or type(world)~="table" or type(world.FromTerrain)~="function" or type(world.Match)~="function"
+        or type(position)~="table" or type(position.Project)~="function") then
+        return nil,"benchmark_v2_engine_unavailable"
+    end
+    if not prepared and captured.from.identity.worldID~=nil and captured.to.identity.worldID~=nil
+        and captured.from.identity.worldID~=captured.to.identity.worldID then return nil,"benchmark_v2_cross_world_uncovered" end
     local started=Sample(context.clock)
     if not started then return nil,"benchmark_v2_clock_unavailable" end
     return setmetatable({request=captured,host=host,library=library,terrain=terrain,world=world,
         position=position,api=context.api or _G,clock=context.clock,profile=context.profile,build=context.build,
-        catalog=namespace.NavigationV2TerrainCatalog or {},phase="catalog",matches=0,
+        prepare=context.prepare,preparationContext=context,
+        catalog=namespace.NavigationV2TerrainCatalog or {},phase=prepared and "prepare_open" or "catalog",matches=0,
         started=started,last=started,cpuMs=0,scopeProven=true,
         budgets=namespace.NavigationV2Graph.Budgets,
-        metrics={stepCalls=0,preparationStepCalls=0,searchStepCalls=0,newCalls=0,
+        metrics={stepCalls=0,preparationStepCalls=0,searchStepCalls=0,newCalls=0,planCalls=0,preparationCalls=0,
             calculationsStarted=0,calculationsCompleted=0,cancelCalls=0},
         provenance={scope="unknown",cache="independent_loader_and_planner; native_cache_unknown",
             profile=context.profile,build=context.build,approachEdgesAdded=0,
             binding="unique_declared_node_native_roundtrip",roundtripToleranceYards=0.01,
             heightScope="explicit_case_only; never inferred",bindingChecks=0}},Driver)
-end--[[APR_DIAG]]; Benchmark.Create = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:85:Benchmark.Create#10", Benchmark.Create)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Benchmark.Create = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:84:Benchmark.Create#10", Benchmark.Create)--[[/APR_DIAG]]
+
+-- One budget spans the factory, data jobs, binding and the independent search.
+local function Remaining(self)
+    local now=Sample(self.clock)
+    if not now or now<self.last then return nil,"benchmark_v2_clock_invalid","unknown" end
+    local active=self.stepStarted and now-self.stepStarted or 0
+    local cpu=self.budgets.cpuMs-self.cpuMs-active
+    local elapsed=self.budgets.elapsedMs-(now-self.started)
+    if cpu<=0 or elapsed<=0 then return nil,"benchmark_v2_budget","budget_exceeded" end
+    return {sliceMs=self.budgets.sliceMs,cpuMs=cpu,elapsedMs=elapsed}
+end--[[APR_DIAG]]; Remaining = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:124:Remaining#11", Remaining)--[[/APR_DIAG]]
+
+function Driver:OpenPreparation()
+    local budgets,reason,status=Remaining(self)
+    if self.result then return end
+    if not budgets then return Stop(self,status,reason,true) end
+    local context={api=self.api,profile=self.profile,build=self.build,clock=self.clock,budgets=budgets}
+    self.preparationBudgets=budgets
+    for _,key in ipairs({"environment","walkSpeed","adapter","taxiData","data","movement","terrainHost","dynamicPositions","actionPolicies",
+        "actor","conditionObservation","connectionPositions","connections","config"}) do
+        context[key]=self.preparationContext[key]
+    end
+    self.metrics.preparationCalls=self.metrics.preparationCalls+1
+    local ok,job,why=APRPCall(self.prepare,self.request,context)
+    if self.result then CancelJob(self,job);return end
+    if not ok then return Stop(self,"unknown","benchmark_v2_preparation_error") end
+    if type(job)~="table" or type(job.Step)~="function" or type(job.Cancel)~="function" then
+        CancelJob(self,job)
+        return Stop(self,"unknown",why or "benchmark_v2_preparation_unavailable")
+    end
+    self.loading,self.phase=job,"prepare"
+    self.provenance.binding="prepared_source_references"
+    self.provenance.approachEdgesAdded,self.provenance.roundtripToleranceYards=nil,nil
+    self.provenance.heightScope="source_declared_constraints"
+end--[[APR_DIAG]]; Driver.OpenPreparation = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:134:Driver:OpenPreparation#12", Driver.OpenPreparation)--[[/APR_DIAG]]
+
+local function PreparedOptions(source)
+    if source==nil then return {} end
+    if type(source)~="table" then return end
+    local result,count={},0
+    for key,value in pairs(source) do
+        count=count+1
+        if count>32 or type(key)~="string" then return end
+        result[key]=value
+    end
+    return result
+end--[[APR_DIAG]]; PreparedOptions = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:158:PreparedOptions#13", PreparedOptions)--[[/APR_DIAG]]
+
+local function PreparedProvenance(self,source)
+    if source==nil then source={} end
+    if type(source)~="table" then return false end
+    local count=0
+    for key,value in pairs(source) do
+        count=count+1
+        if count>32 then return false end
+        if type(key)=="string" and #key<=80 then
+            if type(value)=="string" then self.provenance[key]=value:sub(1,512)
+            elseif type(value)=="boolean" or Finite(value) then self.provenance[key]=value end
+        end
+    end
+    self.provenance.scope=source.scope or "prepared_graph"
+    return type(self.provenance.scope)=="string"
+end--[[APR_DIAG]]; PreparedProvenance = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:170:PreparedProvenance#14", PreparedProvenance)--[[/APR_DIAG]]
+
+function Driver:PreparationStep(operations,milliseconds)
+    local budgets,why,status=Remaining(self)
+    if self.result then return end
+    if not budgets then return Stop(self,status,why,true) end
+    for key,value in pairs(budgets)do self.preparationBudgets[key]=value end
+    self.metrics.stepCalls=self.metrics.stepCalls+1
+    self.metrics.preparationStepCalls=self.metrics.preparationStepCalls+1
+    local ok,result,reason=APRPCall(self.loading.Step,self.loading,operations,milliseconds)
+    if self.result then return end
+    if not ok then return Stop(self,"unknown","benchmark_v2_preparation_error",true) end
+    if type(result)~="table" then return Stop(self,"unknown",reason or "benchmark_v2_preparation_invalid",true) end
+    if type(result.diagnostics)=="table" and Finite(result.diagnostics.operations) then
+        self.provenance.preparationOperations=result.diagnostics.operations
+    end
+    if type(result.diagnostics)=="table" and Integer(result.diagnostics.dataLoadCalls,0) then
+        self.provenance.dataLoadCalls=result.diagnostics.dataLoadCalls
+    end
+    for _,key in ipairs({'producerFactoryCalls','producerStepCalls','observationResumeCalls','observationResumes','captureCalls','personalCaptureCalls',
+        'conditionCaptureCalls','capturedActions','capturedQuests','capturedAccess','capturedDynamic',
+        'observedAPIReads','readinessCalls','originCaptureCalls','environmentCaptureCalls'})do
+        local value=type(result.diagnostics)=='table' and result.diagnostics[key]
+        if Integer(value,0) then self.provenance[key]=value end
+    end
+    if result.status=="running" then return end
+    if result.status~="complete" then
+        return Stop(self,TERMINAL[result.status] and result.status or "unknown",result.reason,true)
+    end
+    local objective=namespace.NavigationV2Graph.CaptureRequest(result.request)
+    local options=PreparedOptions(result.options)
+    if type(result.graph)~="table" or not objective or not options
+        or not PreparedProvenance(self,result.provenance) then
+        return Stop(self,"unknown","benchmark_v2_preparation_invalid",true)
+    end
+    self.loading=nil
+    self.loaded,self.bindings,self.planOptions=result,objective,options
+    self.provenance.graphComplete=result.graph.complete
+    self.prepared,self.phase=true,"new"
+end--[[APR_DIAG]]; Driver.PreparationStep = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:186:Driver:PreparationStep#15", Driver.PreparationStep)--[[/APR_DIAG]]
 
 function Driver:OpenLoad()
     local options,reason=self.terrain.ClientOptions(self.api.C_EncodingUtil,self.api.Enum,self.clock)
     if not options then return Stop(self,"unknown",reason) end
-    options.clock=--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:120:callback#12", --[[/APR_DIAG]]function()return self.clock()/1000 end--[[APR_DIAG]])--[[/APR_DIAG]]
+    options.clock=--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:228:callback#17", --[[/APR_DIAG]]function()return self.clock()/1000 end--[[APR_DIAG]])--[[/APR_DIAG]]
     local ok,job,why=--[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](self.host.LoadTerrain,self.host,self.sector,options)
     if self.result then CancelJob(self,job);return end
     if not ok then return Stop(self,"unknown","benchmark_v2_load_error") end
@@ -127,7 +235,7 @@ function Driver:OpenLoad()
     self.loading,self.phase=job,"load"
     self.provenance.sector,self.provenance.dataBuild=self.sector,self.entry.build
     self.provenance.buildMatches=self.entry.build==self.build
-end--[[APR_DIAG]]; Driver.OpenLoad = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:117:Driver:OpenLoad#11", Driver.OpenLoad)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Driver.OpenLoad = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:225:Driver:OpenLoad#16", Driver.OpenLoad)--[[/APR_DIAG]]
 
 function Driver:CatalogUnit()
     local key,entry=next(self.catalog,self.catalogKey)
@@ -156,7 +264,7 @@ function Driver:CatalogUnit()
             end
         end
     end
-end--[[APR_DIAG]]; Driver.CatalogUnit = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:132:Driver:CatalogUnit#13", Driver.CatalogUnit)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Driver.CatalogUnit = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:240:Driver:CatalogUnit#18", Driver.CatalogUnit)--[[/APR_DIAG]]
 
 function Driver:LoadStep(operations)
     self.metrics.stepCalls=self.metrics.stepCalls+1
@@ -178,7 +286,7 @@ function Driver:LoadStep(operations)
     self.loaded,self.phase,self.cursor,self.side=result,"bind",1,1
     self.bindings,self.bindingCounts={}, {from=0,to=0}
     self.provenance.graphComplete=result.graph.complete
-end--[[APR_DIAG]]; Driver.LoadStep = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:161:Driver:LoadStep#14", Driver.LoadStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Driver.LoadStep = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:269:Driver:LoadStep#19", Driver.LoadStep)--[[/APR_DIAG]]
 
 function Driver:MatchIdentity(point, position)
     local identity=point.identity
@@ -199,13 +307,13 @@ function Driver:MatchIdentity(point, position)
         end
     end
     return true
-end--[[APR_DIAG]]; Driver.MatchIdentity = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:183:Driver:MatchIdentity#15", Driver.MatchIdentity)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Driver.MatchIdentity = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:291:Driver:MatchIdentity#20", Driver.MatchIdentity)--[[/APR_DIAG]]
 
 function Driver:Inverse(point)
     -- Keep optional/secret native results inside pcall. Project validates the
     -- returned public world/vector and its same-map roundtrip through the
     -- existing native adapter; this creates no observed height or identity.
-    local ok,position,reason=--[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:208:callback#17", --[[/APR_DIAG]]function()
+    local ok,position,reason=--[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:316:callback#22", --[[/APR_DIAG]]function()
         local api,maps=self.api,self.api.C_Map
         if type(maps)~="table" or type(maps.GetWorldPosFromMapPos)~="function"
             or type(api.CreateVector2D)~="function" then return nil,"projection_unavailable" end
@@ -219,7 +327,7 @@ function Driver:Inverse(point)
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     if not ok then return nil,"projection_unavailable" end
     return position,reason
-end--[[APR_DIAG]]; Driver.Inverse = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:204:Driver:Inverse#16", Driver.Inverse)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Driver.Inverse = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:312:Driver:Inverse#21", Driver.Inverse)--[[/APR_DIAG]]
 
 function Driver:BindUnit()
     local id=self.loaded.graph.nodes[self.cursor]
@@ -261,17 +369,23 @@ function Driver:BindUnit()
     end
     self.side=self.side+1
     if self.side>2 then self.side,self.cursor=1,self.cursor+1 end
-end--[[APR_DIAG]]; Driver.BindUnit = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:224:Driver:BindUnit#18", Driver.BindUnit)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Driver.BindUnit = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:332:Driver:BindUnit#23", Driver.BindUnit)--[[/APR_DIAG]]
 
 function Driver:OpenPlanner()
+    local options=self.planOptions or {}
+    local budgets,why,status=Remaining(self)
+    if self.result then return end
+    if not budgets then return Stop(self,status,why,true) end
+    options.clock=--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:379:callback#25", --[[/APR_DIAG]]function()return self.clock()/1000 end--[[APR_DIAG]])--[[/APR_DIAG]]
+    options.profileClock,options.budgets=self.clock,budgets
     self.metrics.newCalls=self.metrics.newCalls+1
-    local ok,planner,reason=--[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](self.library.New,self.loaded.graph,
-        {clock=--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:269:callback#20", --[[/APR_DIAG]]function()return self.clock()/1000 end--[[APR_DIAG]])--[[/APR_DIAG]],profileClock=self.clock})
+    local ok,planner,reason=APRPCall(self.library.New,self.loaded.graph,options)
     if self.result then return end
     if not ok then return Stop(self,"unknown","benchmark_v2_new_error") end
     if type(planner)~="table" or type(planner.Plan)~="function" then return Stop(self,"unknown",reason or "benchmark_v2_planner_unavailable") end
     local job
-    ok,job=--[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](planner.Plan,planner,{from=self.bindings.from,to=self.bindings.to})
+    self.metrics.planCalls=self.metrics.planCalls+1
+    ok,job=APRPCall(planner.Plan,planner,self.bindings)
     if self.result then CancelJob(self,job);return end
     if not ok or type(job)~="table" or type(job.Step)~="function" or type(job.Cancel)~="function" then
         CancelJob(self,job);return Stop(self,"unknown","benchmark_v2_plan_error")
@@ -279,10 +393,12 @@ function Driver:OpenPlanner()
     self.metrics.calculationsStarted=self.metrics.calculationsStarted+1
     self.planner,self.search,self.phase=planner,job,"search"
     self.loaded,self.entry,self.catalog=nil,nil,nil
-    self.provenance.scope=self.scopeProven and "declared_graph" or "unknown"
-    self.provenance.queryScope=self.scopeProven and "declared_graph" or "graph_query_only"
-    self.provenance.endpointPhysicalIdentity=self.scopeProven and "declared_identity_matched" or "unproven"
-end--[[APR_DIAG]]; Driver.OpenPlanner = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:266:Driver:OpenPlanner#19", Driver.OpenPlanner)--[[/APR_DIAG]]
+    if not self.prepared then
+        self.provenance.scope=self.scopeProven and "declared_graph" or "unknown"
+        self.provenance.queryScope=self.scopeProven and "declared_graph" or "graph_query_only"
+        self.provenance.endpointPhysicalIdentity=self.scopeProven and "declared_identity_matched" or "unproven"
+    end
+end--[[APR_DIAG]]; Driver.OpenPlanner = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:374:Driver:OpenPlanner#24", Driver.OpenPlanner)--[[/APR_DIAG]]
 
 function Driver:SearchStep(operations, milliseconds)
     self.metrics.stepCalls=self.metrics.stepCalls+1
@@ -312,35 +428,42 @@ function Driver:SearchStep(operations, milliseconds)
         finished.estimatedSeconds,finished.optimal=result.estimatedSeconds,result.optimal
         finished.estimateScope=result.estimateScope or "declared_graph"
     end
-end--[[APR_DIAG]]; Driver.SearchStep = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:287:Driver:SearchStep#21", Driver.SearchStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Driver.SearchStep = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:403:Driver:SearchStep#26", Driver.SearchStep)--[[/APR_DIAG]]
 
 function Driver:GetResult()
     local result={}
     for key,value in pairs(self.result or {status="running"}) do result[key]=value end
     return result
-end--[[APR_DIAG]]; Driver.GetResult = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:317:Driver:GetResult#22", Driver.GetResult)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Driver.GetResult = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:433:Driver:GetResult#27", Driver.GetResult)--[[/APR_DIAG]]
 
 function Driver:GetMetrics()
     local result={};for key,value in pairs(self.metrics) do result[key]=value end;return result
-end--[[APR_DIAG]]; Driver.GetMetrics = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:323:Driver:GetMetrics#23", Driver.GetMetrics)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Driver.GetMetrics = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:439:Driver:GetMetrics#28", Driver.GetMetrics)--[[/APR_DIAG]]
 
 function Driver:GetContext()
     local result={};for key,value in pairs(self.provenance) do result[key]=value end
     result.phase=self.result and "terminal" or self.phase
     result.driverTicks=self.driverTicks or 0
-    result.stepCallScope="public_loader_and_planner_job_Step"
-    result.preparationStepCallScope="public_loader_job_Step"
+    result.preparationCalls=self.metrics.preparationCalls
+    result.planCalls=self.metrics.planCalls
+    result.producerStepCallScope='public_data_preparer_child_Step'
+    result.captureCallScope='Personal_Observe_and_Conditions_Capture'
+    result.capturedActionScope='returned_adapter_rows; fields_can_remain_unknown'
+    result.observedAPIReadScope='cached_adapter_and_readiness_reads; excludes_clocks_and_environment_callback_internals'
+    result.observationResumeScope='actual_calls_and_accepted_resumes_on_same_job'
+    result.stepCallScope=self.prepare and "public_preparation_and_planner_job_Step" or "public_loader_and_planner_job_Step"
+    result.preparationStepCallScope=self.prepare and "public_preparation_job_Step" or "public_loader_job_Step"
     result.searchStepCallScope="public_planner_job_Step"
     result.operationsScope="planner_diagnostics_only"
     result.newCallScope="library_New_invocations"
     result.calculationScope="validated_Plan_jobs; terminal_Step_results"
     return result
-end--[[APR_DIAG]]; Driver.GetContext = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:327:Driver:GetContext#24", Driver.GetContext)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Driver.GetContext = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:443:Driver:GetContext#29", Driver.GetContext)--[[/APR_DIAG]]
 
 function Driver:Cancel()
     if not self.result then Stop(self,"cancelled","benchmark_cancelled",true) end
     return self:GetResult()
-end--[[APR_DIAG]]; Driver.Cancel = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:340:Driver:Cancel#25", Driver.Cancel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Driver.Cancel = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:463:Driver:Cancel#30", Driver.Cancel)--[[/APR_DIAG]]
 
 function Driver:Step(operations, milliseconds)
     if self.result then return self:GetResult() end
@@ -356,9 +479,12 @@ function Driver:Step(operations, milliseconds)
         Stop(self,"budget_exceeded","benchmark_v2_budget",true);return self:GetResult()
     end
     self.driverTicks=(self.driverTicks or 0)+1
+    self.stepStarted=started
     if self.phase=="search" then self:SearchStep(operations,milliseconds)
     else
-        if self.phase=="load" then self:LoadStep(milliseconds<self.budgets.sliceMs and 1 or operations)
+        if self.phase=="prepare_open" then self:OpenPreparation()
+        elseif self.phase=="prepare" then self:PreparationStep(operations,milliseconds)
+        elseif self.phase=="load" then self:LoadStep(milliseconds<self.budgets.sliceMs and 1 or operations)
         elseif self.phase=="new" then self:OpenPlanner()
         else
             for _=1,operations do
@@ -372,6 +498,7 @@ function Driver:Step(operations, milliseconds)
         end
     end
     local stopped=Sample(self.clock)
+    self.stepStarted=nil
     if self.result and self.result.status=="cancelled" then return self:GetResult() end
     if not stopped or stopped<started then
         Stop(self,"unknown","benchmark_v2_clock_invalid",true,true);return self:GetResult()
@@ -382,6 +509,6 @@ function Driver:Step(operations, milliseconds)
         Stop(self,"budget_exceeded","benchmark_v2_budget",true,true);return self:GetResult()
     end
     return self:GetResult()
-end--[[APR_DIAG]]; Driver.Step = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:345:Driver:Step#26", Driver.Step)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Driver.Step = APRTrace("APR-Core/features/navigation/NavigationBenchmarkV2.lua:468:Driver:Step#31", Driver.Step)--[[/APR_DIAG]]
 
 namespace.NavigationBenchmarkV2=Benchmark

@@ -22,7 +22,7 @@ local function NodeId(sector, node)
     return sector..':terrain:'..node
 end
 
-function Sectors.New(source)
+function Sectors.New(source,context,limits)
     if source.routing ~= nil then
         if not ns.NavigationV2Routing then return nil, 'routing_unavailable' end
         return ns.NavigationV2Routing.New(source)
@@ -34,6 +34,7 @@ function Sectors.New(source)
         or not Integer(capacity, MAX_CACHE) then return nil, 'invalid_sector_graph' end
     return setmetatable({partitioned=true, complete=source.complete, index=source.index,
         loader=source.loader, pages=source.loader.pages, capacity=capacity, cache={},
+        conditionContext=context,limits=limits,
         stats={resident=0, loads=0, hits=0, evictions=0}}, Sectors)
 end
 
@@ -111,6 +112,17 @@ local function Boundary(graph, state, key, link)
     state.boundaries[from] = row
     row[#row + 1] = {id=state.id..':'..link.id, name=link.name, from=from,
         to=NodeId(link.sector, link.to), seconds=link.seconds, access=access}
+    local boundary=row[#row]
+    local facts=state.facts and state.facts.edges[link.terrainFact]
+    if link.terrainFact and not facts then return 'terrain_boundary_facts_missing' end
+    if facts then
+        local reason
+        boundary.condition,reason=Graph.BindRequirements(graph.conditionContext,facts.requirements)
+        if reason then return reason end
+        boundary.movement,reason=ns.NavigationV2Forever.CaptureMovement(facts.movement)
+        if reason then return reason end
+        boundary.access=Graph.CombineAccess(boundary.access,facts.access)
+    end
 end
 
 local function Advance(graph, state)
@@ -118,10 +130,11 @@ local function Advance(graph, state)
         local result = state.job:Advance()
         if result.status == 'running' then return end
         if result.status ~= 'complete' then return result.status, result.reason end
-        local preparation, reason = Graph.New(result.graph)
+        local preparation, reason = Graph.New(result.graph,graph.conditionContext,graph.limits)
         if not preparation then return 'invalid', reason end
+        graph.conditionContext=graph.conditionContext or preparation.compiled.conditionContext
         state.preparation = preparation
-        state.positions, state.job = result.positions, nil
+        state.positions, state.facts, state.job = result.positions, result.terrainFacts, nil
         return
     end
     if state.preparation.phase ~= 'ready' then
@@ -218,7 +231,8 @@ function Sectors:ReadEdge(search, node, cursor)
     local row = compiled.outgoing[compiled.index[node]]
     local edge = row[cursor]
     if edge then
-        return {id=edge.id, from=node, to=compiled.nodes[edge.to], seconds=edge.seconds, access=edge.access}
+        return {id=edge.id, from=node, to=compiled.nodes[edge.to], seconds=edge.seconds, access=edge.access,
+            condition=edge.condition,movement=edge.movement,resources=edge.resources}
     end
     return (entry.boundaries[node] or {})[cursor - #row]
 end

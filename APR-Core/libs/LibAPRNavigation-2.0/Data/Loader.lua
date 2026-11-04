@@ -62,8 +62,11 @@ local function Finish(job, status, reason)
     if job.metadataJob then job.metadataJob:Cancel();job.metadataJob=nil end
     if job.flatRead then job.flatRead:Cancel();job.flatRead=nil end
     job.result={status=status,reason=reason,diagnostics=job.diagnostics}
-    if status=='complete' then job.result.graph,job.result.positions=job.graph,job.positions end
-    job.graph,job.positions,job.decoded,job.bytes,job.sector=nil,nil,nil,nil,nil
+    if status=='complete' then
+        job.result.graph,job.result.positions=job.graph,job.positions
+        job.result.terrainFacts=job.facts
+    end
+    job.graph,job.positions,job.decoded,job.bytes,job.sector,job.facts=nil,nil,nil,nil,nil,nil
     return job.result
 end
 
@@ -182,9 +185,61 @@ end
 
 local function References(job)
     local edge=job.graph.edges[job.cursor]
-    if not edge then return 'complete' end
+    if not edge then
+        if not job.sector.terrain then return 'complete' end
+        if not job.loader.pages or job.sector.terrain.version~=1 then return 'invalid','invalid_terrain_facts' end
+        job.facts={nodes={},edges={}}
+        job.phase,job.factGroup,job.factChunk,job.factRow='facts','nodes',1,1
+        return
+    end
     if not job.positions[edge.from] or not job.positions[edge.to] then return 'invalid','invalid_edge' end
     job.cursor=job.cursor+1
+end
+
+local function ApplyFacts(job)
+    local terrain=job.sector.terrain
+    if job.factGroup=='nodes' then
+        local original=job.graph.nodes[job.cursor]
+        if not original then job.factGroup,job.cursor='edges',1;return end
+        local fact=job.facts.nodes[job.cursor]
+        if type(fact)~='table' then return 'invalid','terrain_node_facts_missing' end
+        job.graph.nodes[job.cursor]={id=original,requirements=fact.requirements}
+    else
+        local edge=job.graph.edges[job.cursor]
+        if not edge then return 'complete' end
+        local index=type(terrain['local'])=='table' and terrain['local'][job.cursor]
+        local fact=job.facts.edges[index]
+        if type(fact)~='table' or type(fact.id)~='string' then return 'invalid','terrain_edge_facts_missing' end
+        edge.id,edge.access=job.prefix..fact.id,fact.access
+        edge.requirements,edge.movement=fact.requirements,fact.movement
+    end
+    job.cursor=job.cursor+1
+end
+
+local function Facts(job)
+    local chunks=job.sector.terrain[job.factGroup]
+    if not Array(chunks,256) then return 'invalid','invalid_terrain_facts' end
+    local chunk=chunks[job.factChunk]
+    if not chunk then
+        if job.factGroup=='nodes' then job.factGroup,job.factChunk='edges',1
+        else job.phase,job.factGroup,job.cursor='apply_facts','nodes',1 end
+        return
+    end
+    if not job.flatRead then
+        if type(chunk)~='table' or not Integer(chunk.first,1,24576) or not Integer(chunk.count,1,32)
+            or chunk.first~=#job.facts[job.factGroup]+1 then return 'invalid','invalid_terrain_facts' end
+        job.flatRead=job.loader.pages:Read(chunk.record,true);job.factRow=1;return
+    end
+    local status,reason=job.flatRead:Advance()
+    if status=='ready' then
+        local value=job.flatRead.value
+        if value.kind~='terrain-rows' or Array(value.rows,32)~=chunk.count then return 'invalid','invalid_terrain_facts' end
+        local row=value.rows[job.factRow]
+        if not row then job.flatRead=nil;job.factChunk=job.factChunk+1;return end
+        local rows=job.facts[job.factGroup]
+        if #rows>=24576 then return 'invalid','terrain_facts_over_limit' end
+        rows[#rows+1]=row;job.factRow=job.factRow+1
+    elseif status then return status,reason end
 end
 
 local function Advance(job)
@@ -208,6 +263,8 @@ local function Advance(job)
     if phase=='validate' then return Validate(job) end
     if phase=='nodes' then return Node(job) end
     if phase=='edges' then return Edge(job) end
+    if phase=='facts' then return Facts(job) end
+    if phase=='apply_facts' then return ApplyFacts(job) end
     return References(job)
 end
 

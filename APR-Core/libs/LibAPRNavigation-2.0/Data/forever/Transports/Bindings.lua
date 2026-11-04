@@ -128,14 +128,31 @@ end
 -- Return an isolated graph/options bundle for the existing Navigation.New API.
 -- The graph only has the two EXPLICITLY bound nodes; no approach/terrain edge.
 -- A caller merging several bundles owns those exact identities and coverage.
-function API.Bind(id,binding)
-    local data=ns.NavigationV2ForeverTransportsData
-    if type(id)~='string' then return nil,'transport_id_invalid' end
-    if not data then return nil,'transport_data_unavailable' end
-    local excluded=data.excluded[id]
-    if excluded then return nil,excluded.reason end
-    local record=data.routes[id]
-    if not record then return nil,'transport_unknown' end
+local function Ground(record,binding)
+    local g=binding.ground
+    if type(g)~='table' or not Identity(binding.from) or not Identity(binding.to)
+        or not Finite(g.distance) or g.distance<0 or not Finite(g.speed) or g.speed<=0 then
+        return nil,'transport_ground_geometry_missing'
+    end
+    local seconds=record.costMode=='ground' and g.distance/g.speed or record.seconds
+    if not Finite(seconds) or seconds<0 then return nil,'transport_ground_cost_unknown' end
+    if type(record.bidirectional)~='boolean' then return nil,'transport_direction_unspecified' end
+    local edges={{id=record.id..'-forward',from=binding.from.node,to=binding.to.node,
+        seconds=seconds,access='available',requirements=Requirements(record),
+        movement={mode='walk',distance=g.distance,canMount='unavailable'}}}
+    if record.bidirectional then
+        edges[2]=Copy(edges[1]);edges[2].id=record.id..'-reverse'
+        edges[2].from,edges[2].to=binding.to.node,binding.from.node
+    end
+    return {graph={complete=false,nodes={binding.from.node,binding.to.node},edges=edges},options={}}
+end
+
+function API.BindRecord(record,binding)
+    if type(record)~='table' or not Name(record.id) or type(record.from)~='table'
+        or type(record.to)~='table' then return nil,'transport_record_invalid' end
+    if record.disabled or record.reviewStatus=='disabled' then return nil,'disabled_in_v1' end
+    if record.reviewStatus=='candidate' then return nil,'candidate_in_v1' end
+    if record.kind=='walk' and type(binding)=='table' and binding.ground~=nil then return Ground(record,binding) end
     local reason=Check(record,binding)
     if reason then return nil,reason end
     local options,values={},{}
@@ -171,6 +188,22 @@ function API.Bind(id,binding)
     if not conditions then return nil,reason end
     return {graph={complete=false,nodes={binding.from.node,binding.to.node},edges={}},options=options,
         travelOptions={scheduledTimeoutSeconds=binding.timeoutSeconds}}
+end
+
+function API.Bind(id,binding)
+    local data=ns.NavigationV2ForeverTransportsData
+    if type(id)~='string' then return nil,'transport_id_invalid' end
+    if not data then return nil,'transport_data_unavailable' end
+    local excluded=data.excluded[id]
+    if excluded then
+        if excluded.reason=='ground_cost_missing' and type(binding)=='table' and binding.ground~=nil then
+            return API.BindRecord(excluded.declaration,binding)
+        end
+        return nil,excluded.reason
+    end
+    local record=data.routes[id]
+    if not record then return nil,'transport_unknown' end
+    return API.BindRecord(record,binding)
 end
 
 ns.NavigationV2ForeverTransports=API

@@ -67,8 +67,8 @@ local function Better(mount,selected)
     return candidate>current or (candidate==current and mount.id<selected.id)
 end--[[APR_DIAG]]; Better = APRTrace("APR-Core/features/navigation/NavigationV2Movement.lua:63:Better#7", Better)--[[/APR_DIAG]]
 
-local function Identifiers(api,journal)
-    local ids=First(api,journal.GetMountIDs)
+local function Identifiers(api,journal,method)
+    local ids=First(api,method or journal.GetMountIDs)
     if type(ids)~='table' then return nil end
     local seen,copy={},{}
     for _,raw in pairs(ids) do
@@ -119,23 +119,102 @@ local function CurrentMode(api,mount)
     if mount.anyActive==false then return 'walk' end
 end--[[APR_DIAG]]; CurrentMode = APRTrace("APR-Core/features/navigation/NavigationV2Movement.lua:114:CurrentMode#11", CurrentMode)--[[/APR_DIAG]]
 
+local function RetailClient()
+    if type(APR.GetGameVersion)~='function' or type(APR.GAME_VERSIONS)~='table'
+        or APR.GAME_VERSIONS.Retail==nil then return false end
+    local ok,version=--[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](APR.GetGameVersion,APR)
+    return ok and version==APR.GAME_VERSIONS.Retail
+end--[[APR_DIAG]]; RetailClient = APRTrace("APR-Core/features/navigation/NavigationV2Movement.lua:122:RetailClient#12", RetailClient)--[[/APR_DIAG]]
+
+local function SkyMounts(api)
+    local journal=Public(api,api.C_MountJournal)
+    if type(journal)~='table' or type(journal.GetCollectedDragonridingMounts)~='function' then return {} end
+    local ids=Identifiers(api,journal,journal.GetCollectedDragonridingMounts)
+    if not ids then return {} end
+    if #ids==0 then return {owned=false,usable=false,active=false,localUsable=false} end
+    local state={active=false,localUsable=false}
+    local uncertain=false
+    for _,id in ipairs(ids)do
+        local info=Call(api,journal.GetMountInfoByID,id)
+        if info and info[11]==true and info[10]==false then
+            state.owned=true
+            local usable=Boolean(First(api,journal.GetMountUsabilityByID,id,false))
+            local here=Boolean(First(api,journal.GetMountUsabilityByID,id,true))
+            -- A positive usable observation proves a capability. A negative
+            -- result can be local; do not export it as a future-world denial.
+            if usable==true then state.usable=true end
+            if here==true then state.localUsable=true elseif here==nil then uncertain=true end
+            if info[4]==true then state.active,state.id=true,id end
+        else uncertain=true end
+    end
+    if state.localUsable~=true and uncertain then state.localUsable=nil end
+    return state
+end--[[APR_DIAG]]; SkyMounts = APRTrace("APR-Core/features/navigation/NavigationV2Movement.lua:129:SkyMounts#13", SkyMounts)--[[/APR_DIAG]]
+
+local function FlightHere(api,sky,canGlide)
+    local flyable=Boolean(First(api,api.IsAdvancedFlyableArea))
+    local indoors=Boolean(First(api,api.IsIndoors))
+    local usable=sky.localUsable
+    if sky.active and canGlide==true then usable=true end
+    if flyable==false or indoors==true or usable==false then return false end
+    if flyable==true and indoors==false and usable==true then return true end
+end--[[APR_DIAG]]; FlightHere = APRTrace("APR-Core/features/navigation/NavigationV2Movement.lua:154:FlightHere#14", FlightHere)--[[/APR_DIAG]]
+
+local function RetailObservation(api,observation)
+    local sky=SkyMounts(api)
+    local player=Public(api,api.C_PlayerInfo)
+    local glide=type(player)=='table' and Call(api,player.GetGlidingInfo) or {}
+    glide=glide or {}
+    local gliding,canGlide=Boolean(glide[1]),Boolean(glide[2])
+    observation.client='retail'
+    observation.skyridingOwned=sky.owned
+    observation.skyridingUsable=sky.usable
+    if sky.active and canGlide==true then observation.skyridingUsable=true end
+    observation.canSkyridingHere=FlightHere(api,sky,canGlide)
+    if sky.owned then
+        observation.mountOwned=true
+        if sky.usable then observation.mountUsable=true end
+        if sky.localUsable==true then observation.canMountHere=true
+        elseif observation.canMountHere~=true then observation.canMountHere=sky.localUsable end
+    end
+    -- GetGlidingInfo also describes non-mount abilities. A collected, active
+    -- journal mount is required before calling that state mounted skyriding.
+    if observation.initialMode~='swim' then
+        if gliding==true then
+            observation.initialMode=sky.active and 'skyriding' or nil
+        elseif Boolean(First(api,api.IsFlying))==true then observation.initialMode=nil
+        elseif sky.active then
+            local grounded=gliding==false and Boolean(First(api,api.IsFlying))==false
+            observation.initialMode=grounded and 'mount' or nil
+        end
+    end
+    -- The ground observer's false usability may also reflect current location.
+    if observation.mountUsable==false and observation.mountOwned~=false then observation.mountUsable=nil end
+    observation.skyridingMountID=sky.id
+    return observation
+end--[[APR_DIAG]]; RetailObservation = APRTrace("APR-Core/features/navigation/NavigationV2Movement.lua:163:RetailObservation#15", RetailObservation)--[[/APR_DIAG]]
+
 function Adapter.Observe(api,loading)
     api=api or _G
-    if loading==true then return {loading=true} end
+    local retail=RetailClient()
+    if loading==true then return {loading=true,client=retail and 'retail' or nil} end
     local mount=Mounts(api)
     local level=Positive(First(api,api.UnitLevel,'player'))
     if level and level%1~=0 then level=nil end
     local speeds=Call(api,api.GetUnitSpeed,'player') or {}
-    return {level=level,mountOwned=mount.owned,mountUsable=mount.usable,
+    local observation={level=level,mountOwned=mount.owned,mountUsable=mount.usable,
         mountID=mount.id,initialMode=CurrentMode(api,mount),loading=false,
         runSpeed=Positive(speeds[2]),swimSpeed=Positive(speeds[4]),
         canMountHere=mount.localUsable}
-end--[[APR_DIAG]]; Adapter.Observe = APRTrace("APR-Core/features/navigation/NavigationV2Movement.lua:122:Adapter.Observe#12", Adapter.Observe)--[[/APR_DIAG]]
+    if retail then return RetailObservation(api,observation) end
+    return observation
+end--[[APR_DIAG]]; Adapter.Observe = APRTrace("APR-Core/features/navigation/NavigationV2Movement.lua:197:Adapter.Observe#16", Adapter.Observe)--[[/APR_DIAG]]
 
 function Adapter.Same(a,b)
     if type(a)~='table' or type(b)~='table' then return false end
     for _,key in ipairs({'level','mountOwned','mountUsable','mountID','initialMode',
-        'loading','runSpeed','swimSpeed','canMountHere'}) do
+        'loading','runSpeed','swimSpeed','canMountHere','client','skyridingOwned',
+        'skyridingUsable','skyridingMountID','canSkyridingHere'}) do
         if a[key]~=b[key] then return false end
     end
     if (a.costs==nil)~=(b.costs==nil) then return false end
@@ -143,7 +222,7 @@ function Adapter.Same(a,b)
         if b.costs[key]~=value then return false end
     end
     return true
-end--[[APR_DIAG]]; Adapter.Same = APRTrace("APR-Core/features/navigation/NavigationV2Movement.lua:135:Adapter.Same#13", Adapter.Same)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Adapter.Same = APRTrace("APR-Core/features/navigation/NavigationV2Movement.lua:213:Adapter.Same#17", Adapter.Same)--[[/APR_DIAG]]
 
 function Adapter.Capture(api,settings,loading)
     local observation=Adapter.Observe(api,loading)
@@ -152,13 +231,16 @@ function Adapter.Capture(api,settings,loading)
     for key,value in pairs(settings or {}) do costs[key]=value end
     if costs.swimSpeed==nil then costs.swimSpeed=observation.swimSpeed or false end
     local key=observation.initialMode=='mount' and 'mountSpeed' or 'walkSpeed'
-    if costs[key]==nil then costs[key]=observation.runSpeed or false end
-    local profile,reason=ns.NavigationV2Forever.New(observation,costs)
+    if costs[key]==nil and (observation.client~='retail' or observation.initialMode=='walk'
+        or observation.initialMode=='mount') then costs[key]=observation.runSpeed or false end
+    local module=observation.client=='retail' and ns.NavigationV2Retail or ns.NavigationV2Forever
+    if not module then return nil,'movement_unavailable' end
+    local profile,reason=module.New(observation,costs)
     if not profile then return nil,reason end
     observation.costs={}
     for name,value in pairs(profile.costs) do observation.costs[name]=value end
     return profile,observation
-end--[[APR_DIAG]]; Adapter.Capture = APRTrace("APR-Core/features/navigation/NavigationV2Movement.lua:148:Adapter.Capture#14", Adapter.Capture)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Adapter.Capture = APRTrace("APR-Core/features/navigation/NavigationV2Movement.lua:227:Adapter.Capture#18", Adapter.Capture)--[[/APR_DIAG]]
 
 ns.NavigationV2Movement=Adapter
 APR.NavigationV2Movement=Adapter

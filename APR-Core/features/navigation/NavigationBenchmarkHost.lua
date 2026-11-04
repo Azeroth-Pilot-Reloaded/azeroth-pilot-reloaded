@@ -101,7 +101,34 @@ function Session:CaptureEnvironment()
     return result
 end--[[APR_DIAG]]; Session.CaptureEnvironment = APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:79:Session:CaptureEnvironment#11", Session.CaptureEnvironment)--[[/APR_DIAG]]
 
-function Session:Environment(clocks)
+function Session:ManualMovement(observation)
+    self.context.movementOrigin="manual_walk_model_local_permissions_unknown"
+    if type(observation)~="table" then return end
+    local module=self.context.profile=="retail" and namespace.NavigationV2Retail or namespace.NavigationV2Forever
+    if type(module)~="table" or type(module.New)~="function" then return end
+    local modeled={initialMode="walk"}
+    for _,key in ipairs({"level","mountOwned","mountUsable","skyridingOwned","skyridingUsable"}) do
+        modeled[key]=observation[key]
+    end
+    local ok,profile=APRPCall(module.New,modeled,observation.costs)
+    if ok then return profile end
+end--[[APR_DIAG]]; Session.ManualMovement = APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:104:Session:ManualMovement#13", Session.ManualMovement)--[[/APR_DIAG]]
+
+function Session:CaptureMovement(startMode)
+    local adapter=namespace.NavigationV2Movement
+    if type(adapter)~="table" or type(adapter.Capture)~="function" then return end
+    local ok,profile,observation=APRPCall(adapter.Capture,self.api)
+    if ok and type(profile)=="table" then
+        if startMode~="player" then profile=self:ManualMovement(observation)
+        else self.context.movementOrigin="captured_player_mode_and_local_permissions" end
+        self.context.movement="V1: walk 7 yards/second; V2: captured movement model; costs are estimates"
+        self.context.movementObservation="one capture before engine timings"
+        return profile
+    end
+    self.context.movementObservation=type(observation)=="string" and observation or "unavailable"
+end--[[APR_DIAG]]; Session.CaptureMovement = APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:117:Session:CaptureMovement#14", Session.CaptureMovement)--[[/APR_DIAG]]
+
+function Session:Environment(clocks,mode,startMode)
     local api,apr=self.api,self.apr
     local version,build,_,interface=Call(apr,api.GetBuildInfo)
     local profile="unsupported"
@@ -116,27 +143,32 @@ function Session:Environment(clocks)
         comparison="non-comparable until route domain and assumptions are verified",
         movement="explicit walking model: 7 yards/second; not measured player speed",
         data="existing V1 facts; runtime coverage and binding reported separately by each engine"}
-    return {api=api,profile=profile,build=buildName,clock=clocks.profile or --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:119:callback#14", --[[/APR_DIAG]]function()return clocks.wall()*1000 end--[[APR_DIAG]])--[[/APR_DIAG]],
+    local movement=mode~="v1" and self:CaptureMovement(startMode) or nil
+    return {api=api,profile=profile,build=buildName,movement=movement,clock=clocks.profile or --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:147:callback#16", --[[/APR_DIAG]]function()return clocks.wall()*1000 end--[[APR_DIAG]])--[[/APR_DIAG]],
         walkSpeed=7,environment=self:CaptureEnvironment(),
-        adapter=apr.NavigationAdapter,planner=apr.NavigationPlanner,taxiData=apr.taxiData,
+        adapter=apr.NavigationAdapter,planner=apr.NavigationPlanner,taxiData=apr.taxiData,data=apr.NavigationData,
+        terrainHost=apr.NavigationTerrain,
         host=apr.NavigationV2,terrain=namespace.NavigationV2Terrain,world=namespace.NavigationV2World}
-end--[[APR_DIAG]]; Session.Environment = APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:104:Session:Environment#13", Session.Environment)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Session.Environment = APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:131:Session:Environment#15", Session.Environment)--[[/APR_DIAG]]
 
 function Session:Factory(name, context)
     local engine=self.engines[name]
     if not engine or type(engine.Create)~="function" then return end
-    return --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:128:callback#16", --[[/APR_DIAG]]function(request)
+    return --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:157:callback#18", --[[/APR_DIAG]]function(request)
         local specific={}
         for key,value in pairs(context) do specific[key]=value end
         if name=="v1" then
-            local ok,library=--[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:132:callback#17", --[[/APR_DIAG]]function()return self.api.LibStub("LibAPRNavigation-1.0",true)end--[[APR_DIAG]])--[[/APR_DIAG]])
+            local ok,library=--[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:161:callback#19", --[[/APR_DIAG]]function()return self.api.LibStub("LibAPRNavigation-1.0",true)end--[[APR_DIAG]])--[[/APR_DIAG]])
             if ok then specific.library=library end
-        else specific.library=namespace.LibAPRNavigationV2 end
+        else
+            specific.library=namespace.LibAPRNavigationV2
+            specific.prepare=namespace.NavigationV2PrepareBenchmark
+        end
         local driver,reason=engine.Create(request,specific)
         self.drivers[name]=driver
         return driver,reason
     end--[[APR_DIAG]])--[[/APR_DIAG]]
-end--[[APR_DIAG]]; Session.Factory = APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:125:Session:Factory#15", Session.Factory)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Session.Factory = APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:154:Session:Factory#17", Session.Factory)--[[/APR_DIAG]]
 
 function Session:Start(input, mode)
     self:Cancel()
@@ -145,12 +177,12 @@ function Session:Start(input, mode)
     if mode~="v1" and mode~="v2" and mode~="both" then
         self.reason="benchmark_engine_invalid";return nil,self.reason
     end
-    local snapshot,reason=namespace.NavigationBenchmarkCase.Capture(input,--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:148:callback#19", --[[/APR_DIAG]]function()return self:ReadPlayer()end--[[APR_DIAG]])--[[/APR_DIAG]])
+    local snapshot,reason=namespace.NavigationBenchmarkCase.Capture(input,--[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:180:callback#21", --[[/APR_DIAG]]function()return self:ReadPlayer()end--[[APR_DIAG]])--[[/APR_DIAG]])
     if not snapshot then self.reason=reason;return nil,reason end
     local clocks
     clocks,reason=self:Clocks()
     if not clocks then self.reason=reason;return nil,reason end
-    local context=self:Environment(clocks)
+    local context=self:Environment(clocks,mode,snapshot:Copy().startMode)
     local factories={v1=self:Factory("v1",context),v2=self:Factory("v2",context)}
     local runner
     runner,reason=namespace.NavigationBenchmarkRun.New({clock=clocks.wall,
@@ -161,26 +193,26 @@ function Session:Start(input, mode)
     if not ok then self.reason=reason;return nil,reason end
     self.runner,self.snapshot=runner,snapshot
     return true
-end--[[APR_DIAG]]; Session.Start = APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:141:Session:Start#18", Session.Start)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Session.Start = APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:173:Session:Start#20", Session.Start)--[[/APR_DIAG]]
 
 function Session:Step()
     if self.runner then return self.runner:Step() end
     return self:GetState()
-end--[[APR_DIAG]]; Session.Step = APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:166:Session:Step#20", Session.Step)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Session.Step = APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:198:Session:Step#22", Session.Step)--[[/APR_DIAG]]
 
 function Session:Cancel()
     if self.runner then return self.runner:Cancel() end
     return self:GetState()
-end--[[APR_DIAG]]; Session.Cancel = APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:171:Session:Cancel#21", Session.Cancel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Session.Cancel = APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:203:Session:Cancel#23", Session.Cancel)--[[/APR_DIAG]]
 
 function Session:GetState()
     if self.runner then return self.runner:GetState() end
     return {status=self.status,reason=self.reason,engines={}}
-end--[[APR_DIAG]]; Session.GetState = APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:176:Session:GetState#22", Session.GetState)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Session.GetState = APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:208:Session:GetState#24", Session.GetState)--[[/APR_DIAG]]
 
 function Session:GetCapture()
     return self.snapshot and self.snapshot:Copy() or nil
-end--[[APR_DIAG]]; Session.GetCapture = APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:181:Session:GetCapture#23", Session.GetCapture)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Session.GetCapture = APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:213:Session:GetCapture#25", Session.GetCapture)--[[/APR_DIAG]]
 
 function Session:GetContext()
     local result=Scalars(self.context)
@@ -193,7 +225,7 @@ function Session:GetContext()
         end
     end
     return result
-end--[[APR_DIAG]]; Session.GetContext = APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:185:Session:GetContext#24", Session.GetContext)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Session.GetContext = APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:217:Session:GetContext#26", Session.GetContext)--[[/APR_DIAG]]
 
 local function Lines(output,prefix,source)
     local keys={}
@@ -206,7 +238,7 @@ local function Lines(output,prefix,source)
             output[#output+1]=prefix..key.."\t"..tostring(value):gsub("[\r\n\t]"," ")
         end
     end
-end--[[APR_DIAG]]; Lines = APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:198:Lines#25", Lines)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Lines = APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:230:Lines#27", Lines)--[[/APR_DIAG]]
 
 function Session:GetReport()
     local lines={"APR navigation benchmark; map-percent; unavailable counters are omitted, never zero-filled",
@@ -215,7 +247,7 @@ function Session:GetReport()
     Lines(lines,"context.",self:GetContext())
     Lines(lines,"result.",self:GetState())
     return table.concat(lines,"\n")
-end--[[APR_DIAG]]; Session.GetReport = APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:211:Session:GetReport#26", Session.GetReport)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Session.GetReport = APRTrace("APR-Core/features/navigation/NavigationBenchmarkHost.lua:243:Session:GetReport#28", Session.GetReport)--[[/APR_DIAG]]
 
 namespace.NavigationBenchmarkHost=Host
 APR.NavigationBenchmark=Host.New({api=_G,apr=APR,

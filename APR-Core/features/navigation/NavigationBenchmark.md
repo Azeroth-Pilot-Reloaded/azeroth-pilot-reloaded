@@ -29,14 +29,19 @@ V1 remains the default. The frame is lazy and does no per-frame work while idle.
 
 ## Data and scope limits
 
-Retained/imported V1 source facts are not automatically admitted runtime graphs.
-V2 can query an existing declared graph for the same client. A source/current
-build mismatch stays unknown and does not authorize runtime navigation.
-Unmapped or ambiguous positions and missing identity remain explicit.
-A technical query of uniquely matched graph nodes cannot establish the physical
-floor, phase or height of an endpoint. Without that proof, its final outcome
-stays unknown, even if the graph query itself completes and reports counters.
-No approach edge or direct line is invented to make an input routable.
+V2 prepares the existing V1 data through public data getters. Forever uses its
+declared terrain, paths, collisions and transports, preserving direction and
+conditions. Its loader also requests explicitly declared intermediate neighbor
+scopes. Retail uses declared spaces, mandatory passages and transports with the
+available movement model, including mounted skyriding; it does not require a
+complete ground-path or collision network.
+
+Graphs remain partial and request-scoped. A complete calculation means a route
+was found in that declared model, not a global optimum or a verified journey in
+the game. A source/current build mismatch, ambiguous spatial identity, missing
+required observation or unsupported declaration remains explicit. Authored
+geometry can justify an arrival without inventing a current-player height or
+floor. No proximity edge or unproven physical shortcut is added to force success.
 
 V1 uses a separate public planner/instance with an explicit 7 yards/second walk
 model and zero fare budget. Shared mutating action/cooldown observers, dynamic

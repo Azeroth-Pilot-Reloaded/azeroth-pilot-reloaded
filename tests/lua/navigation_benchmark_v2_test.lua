@@ -155,6 +155,193 @@ context,spy=setup();context.api.C_Map.GetMapPosFromWorldPos=function()error("nat
 result=finish(assert(Benchmark.Create(request(),context)))
 assert(result.status=="unknown" and result.reason=="projection_unavailable" and spy.new==0)
 
+-- Prepared data binds the captured coordinates to existing graph references.
+-- No terrain catalog, exact-node snapping or absent identity is required here.
+local function preparedSetup()
+    local observed={factory=0,prep=0,new=0,plans=0,search=0,cancel=0,clock=0}
+    local ctx={profile="retail",clock=function()return observed.clock end}
+    ctx.prepare=function(captured,options)
+        observed.factory=observed.factory+1
+        observed.capture,observed.context=captured,options
+        return {Step=function()
+            observed.prep=observed.prep+1
+            if observed.prep==1 then return {status="running",diagnostics={operations=700}} end
+            return {status="complete",graph={complete=true,nodes={"start","gate","goal"},edges={
+                {id="direct",from="start",to="goal",seconds=1},
+                {id="approach",from="start",to="gate",seconds=4},
+                {id="exit",from="gate",to="goal",seconds=6}}},
+                request={from="start",to="goal",via={"gate"}},
+                provenance={scope="synthetic_passages",source="invented",nested={}},
+                diagnostics={operations=701},options={resources={money=9}}}
+        end,Cancel=function()observed.cancel=observed.cancel+1 end}
+    end
+    ctx.library={New=function(graph,options)
+        observed.new=observed.new+1;observed.options=options
+        local planner=assert(ns.LibAPRNavigationV2.New(graph,options))
+        local plan=planner.Plan
+        function planner:Plan(objective)
+            observed.plans=observed.plans+1
+            local job=plan(self,objective);local step,cancel=job.Step,job.Cancel
+            function job:Step(...)
+                observed.search=observed.search+1;return step(self,...)
+            end
+            function job:Cancel()observed.cancel=observed.cancel+1;return cancel(self)end
+            return job
+        end
+        return planner
+    end}
+    return ctx,observed
+end
+local function arbitraryRequest()
+    return {coordinateUnit="map-percent",startMode="manual",
+        from={mapID=71,x=12.345,y=23.456,identity={worldID=1}},
+        to={mapID=72,x=67.89,y=78.91,identity={worldID=2}}}
+end
+context,spy=preparedSetup();input=arbitraryRequest()
+driver=assert(Benchmark.Create(input,context))
+assert(spy.factory==0 and spy.new==0)
+input.from.x=99
+result=finish(driver)
+assert(result.status=="complete" and result.estimatedSeconds==10)
+assert(spy.capture.from.x==12.345 and spy.capture.to.identity.worldID==2)
+assert(spy.capture.coordinateUnit=="map-percent" and spy.capture.startMode=="manual")
+assert(spy.factory==1 and spy.prep==2 and spy.plans==1 and spy.search>0)
+assert(spy.context.profile=="retail" and spy.context.budgets.cpuMs<=100)
+assert(spy.options.resources.money==9 and spy.options.clock()==0)
+metrics=driver:GetMetrics()
+assert(metrics.preparationStepCalls==2 and metrics.searchStepCalls==spy.search)
+assert(metrics.stepCalls==2+spy.search and metrics.calculationsStarted==1)
+assert(metrics.preparedNodes==3 and metrics.preparedEdges==3 and metrics.operations~=701)
+assert(driver:GetContext().source=="invented" and driver:GetContext().nested==nil)
+assert(driver:GetContext().preparationOperations==701 and driver:GetContext().planCalls==1)
+assert(driver:GetContext().preparationCalls==1)
+assert(driver:GetContext().scope=="synthetic_passages")
+assert(driver:Step().estimatedSeconds==10 and spy.factory==1 and spy.cancel==0)
+
+-- Both client preparations use the same solver and the unchanged timing owner.
+for _,profile in ipairs({"forever","retail"}) do
+    context,spy=preparedSetup();context.profile=profile
+    local snapshot=assert(ns.NavigationBenchmarkCase.Capture(arbitraryRequest()))
+    local preparedRunner=assert(ns.NavigationBenchmarkRun.New({clock=function()return 0 end,
+        profileClock=context.clock,factories={v2=function(r)return Benchmark.Create(r,context)end}}))
+    assert(preparedRunner:Start(snapshot,"v2"))
+    for _=1,100 do if preparedRunner:Step().status~="running" then break end end
+    local measured=preparedRunner:GetState().engines.v2
+    assert(measured.status=="complete" and measured.estimatedSeconds==10)
+    assert(measured.wallMs==0 and measured.cpuMs==0 and measured.driverCalls>0)
+    assert(measured.metrics.preparationStepCalls==2 and measured.metrics.newCalls==1)
+    assert(measured.metrics.searchStepCalls==spy.search and measured.metrics.expandedNodes>0)
+    assert(measured.metrics.preparationMs==nil and measured.metrics.searchMs==nil)
+end
+
+-- Preparation failure is terminal and cannot fall back to another data domain.
+for _,case in ipairs({
+    {status="unknown",reason="source_floor_ambiguous"},
+    {status="invalid",reason="source_malformed"},
+    {status="budget_exceeded",reason="source_budget"},
+    {status="no_path",reason="declared_disconnected"}}) do
+    context,spy=preparedSetup()
+    context.prepare=function()return {Step=function()return case end,Cancel=function()spy.cancel=spy.cancel+1 end}end
+    driver=assert(Benchmark.Create(arbitraryRequest(),context));result=finish(driver)
+    assert(result.status==case.status and result.reason==case.reason and spy.new==0)
+    driver:Step();assert(spy.new==0)
+end
+
+-- Malformed or throwing factories/results are refused before New/Plan.
+for _,value in ipairs({"throw","nil","job","graph","request","options","provenance"}) do
+    context,spy=preparedSetup()
+    local prepare=context.prepare
+    context.prepare=function(...)
+        if value=="throw" then error("source failed") end
+        if value=="nil" then return nil,"source_absent" end
+        if value=="job" then return {Cancel=function()spy.cancel=spy.cancel+1 end} end
+        local job=prepare(...);local step=job.Step
+        job.Step=function()
+            local state=step()
+            if state.status=="complete" then
+                if value=="request" then state.request.from={} else state[value]=false end
+            end
+            return state
+        end
+        return job
+    end
+    driver=assert(Benchmark.Create(arbitraryRequest(),context));result=finish(driver)
+    assert(result.status=="unknown" and spy.new==0 and driver:GetMetrics().calculationsStarted==0)
+end
+
+-- Cancellation owns only the preparation or the independent search, exactly once.
+context,spy=preparedSetup();driver=assert(Benchmark.Create(arbitraryRequest(),context))
+assert(driver:Step().status=="running" and spy.factory==1)
+driver:Cancel();driver:Cancel()
+assert(driver:Step().status=="cancelled" and spy.cancel==1 and spy.prep==0)
+context,spy=preparedSetup()
+local prepare=context.prepare
+context.prepare=function(...)local job=prepare(...);driver:Cancel();return job end
+driver=assert(Benchmark.Create(arbitraryRequest(),context))
+assert(driver:Step().status=="cancelled" and spy.cancel==1 and spy.prep==0)
+
+context,spy=preparedSetup();local clockReads=0
+context.clock=function()
+    clockReads=clockReads+1
+    if clockReads==3 then driver:Cancel() end
+    return 0
+end
+driver=assert(Benchmark.Create(arbitraryRequest(),context))
+assert(driver:Step().status=="cancelled" and spy.factory==0 and spy.new==0)
+
+context,spy=preparedSetup();clockReads=0
+context.clock=function()
+    clockReads=clockReads+1
+    return clockReads==3 and -1 or 0
+end
+driver=assert(Benchmark.Create(arbitraryRequest(),context));result=driver:Step()
+assert(result.status=="unknown" and result.reason=="benchmark_v2_clock_invalid" and spy.factory==0)
+
+-- A running source owns no geometry permission; an explicit refusal stays exact.
+context,spy=preparedSetup()
+context.prepare=function()
+    return {Step=function()error("data callback failed")end,Cancel=function()spy.cancel=spy.cancel+1 end}
+end
+driver=assert(Benchmark.Create(arbitraryRequest(),context));result=finish(driver)
+assert(result.status=="unknown" and result.reason=="benchmark_v2_preparation_error")
+assert(spy.cancel==1 and spy.new==0)
+
+-- A phase change cannot reset CPU/wall budgets or accept producer clocks.
+context,spy=preparedSetup();prepare=context.prepare
+context.prepare=function(...)
+    local job=prepare(...);local step=job.Step
+    job.Step=function(...)
+        local state=step(...)
+        if state.status=="complete" then
+            spy.clock=80;state.options.clock=function()return 999 end
+            state.options.profileClock=function()return 999 end
+            state.options.budgets={cpuMs=100,elapsedMs=5000,sliceMs=1}
+        end
+        return state
+    end
+    return job
+end
+local preparedNew=context.library.New
+context.library.New=function(graph,options)
+    assert(options.budgets.cpuMs<=20 and options.budgets.elapsedMs<=4920)
+    assert(options.clock()==.08 and options.profileClock()==80)
+    local planner=preparedNew(graph,options);local plan=planner.Plan
+    function planner:Plan(...)
+        local job=plan(self,...);local step=job.Step
+        function job:Step(...)spy.clock=101;return step(self,...)end
+        return job
+    end
+    return planner
+end
+driver=assert(Benchmark.Create(arbitraryRequest(),context));result=finish(driver)
+assert(result.status=="budget_exceeded" and result.estimatedSeconds==nil and spy.plans==1 and spy.cancel<=1,
+    tostring(result.status)..":"..tostring(result.reason)..":"..spy.plans..":"..spy.cancel)
+assert(driver:GetMetrics().preparationStepCalls==2)
+
+context,spy=preparedSetup();driver=assert(Benchmark.Create(arbitraryRequest(),context))
+driver:Step();spy.clock=5001
+assert(driver:Step().status=="budget_exceeded" and spy.new==0 and spy.cancel==1)
+
 -- A validated Plan job starts a calculation; nil/throw/incomplete results do not.
 for _,outcome in ipairs({"nil","throw","incomplete"}) do
     context,spy=setup()

@@ -27,6 +27,18 @@ function Navigation.NewForeverMovement(observation, settings)
     return namespace.NavigationV2Forever.New(observation, settings)
 end
 
+function Navigation.NewRetailMovement(observation, settings)
+    if not namespace.NavigationV2Retail then return nil,'movement_unavailable' end
+    return namespace.NavigationV2Retail.New(observation, settings)
+end
+
+local function MovementModule(profile)
+    for _,name in ipairs({'NavigationV2Forever','NavigationV2Retail'}) do
+        local api=namespace[name]
+        if api and api.IsProfile(profile) then return api end
+    end
+end
+
 local function ReadClock(clock)
     local ok, value = pcall(clock)
     if ok and Finite(value) and value >= 0 then return value end
@@ -63,8 +75,7 @@ function Navigation.New(graph, options)
     local budgets = Budgets(options.budgets)
     if not budgets then return nil, "invalid_budgets" end
     if not ReadClock(options.clock) or not ReadClock(options.profileClock) then return nil, "clock_unavailable" end
-    if options.movement ~= nil and (not namespace.NavigationV2Forever
-        or not namespace.NavigationV2Forever.IsProfile(options.movement)) then return nil, 'invalid_movement_profile' end
+    if options.movement ~= nil and not MovementModule(options.movement) then return nil, 'invalid_movement_profile' end
     local portals
     if options.portals ~= nil then
         if not namespace.NavigationV2Portals then return nil, 'portals_unavailable' end
@@ -181,10 +192,9 @@ function Planner:SetTaxiCosts(id,costs)
 end
 
 function Planner:SetMovement(profile)
-    if not namespace.NavigationV2Forever or not namespace.NavigationV2Forever.IsProfile(profile) then
-        return nil, 'invalid_movement_profile'
-    end
-    if namespace.NavigationV2Forever.Same(self.movement, profile) then return false end
+    local api=MovementModule(profile)
+    if not api then return nil, 'invalid_movement_profile' end
+    if api.Same(self.movement, profile) then return false end
     self.movement = profile
     self:Invalidate()
     return true
