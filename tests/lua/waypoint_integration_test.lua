@@ -296,6 +296,8 @@ scenario("WUI public contract, runtime target and authored hints", function(t)
     near(t.creates[1].x, 25); near(t.creates[1].y, 35)
     near(t.session.x, 0.25); near(t.native.position.y, 0.35)
     assert(type(t.creates[1].flags) == "string" and t.creates[1].suppressAudio == true)
+    assert(t.creates[1].stripCoordinates == true,
+        "APR's ordinary step output must suppress the provider's generated coordinate line")
     assert(t.session.name == "Travel to goal\nLocalized hint\nSame hint\nAnother hint")
     assert(t.source.Coord.x == 200 and APRData.p.route == 1, "Waypoint consumers cannot rewrite the route")
     local summaryReads = t.summaryReads
@@ -337,6 +339,8 @@ scenario("active transient guidance overrides ordinary quest coordinates", funct
     assert(#t.creates == 1 and t.session.mapID == 2)
     near(t.session.x, 0.6); near(t.session.y, 0.7)
     assert(t.session.name == "Use the active passage\nLocalized hint\nSame hint\nAnother hint")
+    assert(t.creates[#t.creates].stripCoordinates == true,
+        "Temporary navigation guidance must also suppress generated coordinates")
     APR.navigation.active = t:Guidance("8:3", 650, 750, 2)
     t:Refresh()
     assert(#t.creates == 2 and APRData.p.route == 1, "A synthetic leg update never advances the authored objective")
