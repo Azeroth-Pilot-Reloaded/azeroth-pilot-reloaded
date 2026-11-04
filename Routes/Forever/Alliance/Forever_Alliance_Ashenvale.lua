@@ -1018,7 +1018,11 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 1440,
     conditions = { MinLevel = 21, Race = { APR.RACES.Dwarf, APR.RACES.Human, APR.RACES.NightElf, APR.RACES.Skyborne }, Class = APR.Classes.Hunter, Faction = "Alliance" },
-    nextRoute = { "Forever-Alliance-Wetlands-Hunter" },
+    nextRoute = {
+        "Forever-Alliance-Wetlands-Hunter",
+        { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Alliance", Race = { APR.RACES.Dwarf, APR.RACES.Human, APR.RACES.NightElf, APR.RACES.Skyborne }, Class = APR.Classes.Hunter, SkipForLvl = 26 } },
+        { route = "Forever-Shared-Dungeons-Deadmines", conditions = { MinLevel = 18, Faction = "Alliance", Race = { APR.RACES.Dwarf, APR.RACES.Human, APR.RACES.NightElf, APR.RACES.Skyborne }, Class = APR.Classes.Hunter, SkipForLvl = 24 } },
+    },
     parallelSteps = {
         {
             repeatable = true,

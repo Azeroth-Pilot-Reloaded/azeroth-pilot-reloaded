@@ -83,6 +83,9 @@ The Forever compatibility command reuses the common route suite.
 
 `route_prefab_test_env.lua` supplies invented guides for prefab ordering,
 character eligibility, future chapters, popup scope and label/progress tests.
+`next_route_suggestions_test.lua` covers explicit leveling/dungeon continuations
+on both clients, including level/XP boundaries, conditional branches, completion,
+prerequisites and popup callbacks. Unlisted routes never become implicit successors.
 `reward_groups_test.lua` varies group size and checks readiness, level/zone
 boundaries, fallback hand-ins and character/account separation.
 

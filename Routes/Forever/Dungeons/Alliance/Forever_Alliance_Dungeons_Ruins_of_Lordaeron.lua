@@ -8,7 +8,11 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
     category = APR.CATEGORIES.Dungeons,
     mapID = 1455,
     conditions = { MinLevel = 17, Faction = "Alliance" },
-    nextRoute = { { route = "Forever-Alliance-Dungeons-Deadmines" } },
+    nextRoute = {
+        { route = "Forever-Alliance-Dungeons-Deadmines" },
+        { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Alliance", SkipForLvl = 26 } },
+        { route = "Forever-Shared-Dungeons-Deadmines", conditions = { MinLevel = 18, Faction = "Alliance", SkipForLvl = 24 } },
+    },
     prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 7 } },
     steps = {
         {

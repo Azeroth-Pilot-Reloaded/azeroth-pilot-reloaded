@@ -8,7 +8,13 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
     category = APR.CATEGORIES.Dungeons,
     mapID = 1413,
     conditions = { MinLevel = 12, Faction = "Horde" },
-    nextRoute = { "Forever-Horde-Dungeons-Ragefire-Chasm" },
+    nextRoute = {
+        "Forever-Horde-Dungeons-Ragefire-Chasm",
+        { route = "Forever-Shared-Dungeons-Hall-of-Thanes", conditions = { MinLevel = 13, Faction = "Horde", SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, Faction = "Horde", SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ruins-of-Lordaeron", conditions = { MinLevel = 15, Faction = "Horde", SkipForLvl = 21 } },
+        { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Horde", SkipForLvl = 26 } },
+    },
     prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 4 } },
     parallelSteps = {
         {

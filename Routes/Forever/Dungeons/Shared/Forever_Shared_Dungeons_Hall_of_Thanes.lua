@@ -7,7 +7,13 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Dungeons,
     mapID = 1455,
-    conditions = {  },
+    conditions = { MinLevel = 13 },
+    nextRoute = {
+        { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ruins-of-Lordaeron", conditions = { MinLevel = 15, SkipForLvl = 21 } },
+        { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, SkipForLvl = 26 } },
+        { route = "Forever-Shared-Dungeons-Deadmines", conditions = { MinLevel = 18, SkipForLvl = 24 } },
+    },
     parallelSteps = {
         {
             conditions = { ItemCount = { itemID = 281030, count = 1 }, IsQuestNotOnQuest = 98423, IsQuestUncompleted = 98423, Faction = "Alliance", MinLevel = 9 },

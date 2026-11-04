@@ -8,7 +8,13 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
     category = APR.CATEGORIES.Dungeons,
     mapID = 1455,
     conditions = { MinLevel = 16, Faction = "Alliance" },
-    nextRoute = { { route = "Forever-Alliance-Dungeons-Ruins-of-Lordaeron" } },
+    nextRoute = {
+        { route = "Forever-Alliance-Dungeons-Ruins-of-Lordaeron" },
+        { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, Faction = "Alliance", SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ruins-of-Lordaeron", conditions = { MinLevel = 15, Faction = "Alliance", SkipForLvl = 21 } },
+        { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Alliance", SkipForLvl = 26 } },
+        { route = "Forever-Shared-Dungeons-Deadmines", conditions = { MinLevel = 18, Faction = "Alliance", SkipForLvl = 24 } },
+    },
     prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 6 } },
     steps = {
         {

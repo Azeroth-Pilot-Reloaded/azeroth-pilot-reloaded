@@ -7,7 +7,13 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Dungeons,
     mapID = 1413,
-    conditions = {  },
+    conditions = { MinLevel = 17 },
+    nextRoute = {
+        { route = "Forever-Shared-Dungeons-Hall-of-Thanes", conditions = { MinLevel = 13, SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ruins-of-Lordaeron", conditions = { MinLevel = 15, SkipForLvl = 21 } },
+        { route = "Forever-Shared-Dungeons-Deadmines", conditions = { MinLevel = 18, SkipForLvl = 24 } },
+    },
     parallelSteps = {
         {
             conditions = { ItemCount = { itemID = 10441, count = 1 }, IsQuestNotOnQuest = 6981, IsQuestUncompleted = 6981, MinLevel = 15 },

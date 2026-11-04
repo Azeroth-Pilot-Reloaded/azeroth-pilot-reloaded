@@ -8,7 +8,11 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-18-21"] = {
     category = APR.CATEGORIES.Dungeons,
     mapID = 1413,
     conditions = { MinLevel = 18, Faction = "Horde" },
-    nextRoute = { "Forever-Horde-Dungeons-Wailing-Caverns" },
+    nextRoute = {
+        "Forever-Horde-Dungeons-Wailing-Caverns",
+        { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Horde", SkipForLvl = 26 } },
+        { route = "Forever-Shared-Dungeons-Deadmines", conditions = { MinLevel = 18, Faction = "Horde", SkipForLvl = 24 } },
+    },
     prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 7 } },
     parallelSteps = {
         {

@@ -7,7 +7,10 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 1424,
     conditions = { MinLevel = 22, Faction = "Horde" },
-    nextRoute = { "Forever-Horde-Southern-Barrens-Stonetalon" },
+    nextRoute = {
+        "Forever-Horde-Southern-Barrens-Stonetalon",
+        { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Horde", SkipForLvl = 26 } },
+    },
     parallelSteps = {
         {
             conditions = { Class = { "DRUID", "HUNTER", "ROGUE", "SHAMAN" }, MinLevel = 21, ItemCount = { itemID = 4831, count = 1 }, EquippedItem = { itemID = 4831, slot = 7, invert = true }, EquippedItemStat = { slot = 7, stat = "ITEM_MOD_ARMOR_SHORT", operator = "<", value = 76, precision = 1, allowMissing = true } },

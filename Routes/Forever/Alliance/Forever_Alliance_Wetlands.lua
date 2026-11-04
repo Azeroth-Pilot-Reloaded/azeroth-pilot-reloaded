@@ -7,7 +7,10 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 1437,
     conditions = { MinLevel = 23, Class = { APR.Classes.Druid, APR.Classes.Mage, APR.Classes.Paladin, APR.Classes.Priest, APR.Classes.Rogue, APR.Classes.Shaman, APR.Classes.Warlock, APR.Classes.Warrior }, Faction = "Alliance" },
-    nextRoute = { "Forever-Alliance-Duskwood-Redridge-Mountains" },
+    nextRoute = {
+        "Forever-Alliance-Duskwood-Redridge-Mountains",
+        { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Alliance", Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock, APR.Classes.Druid }, SkipForLvl = 26 } },
+    },
     parallelSteps = {
         {
             repeatable = true,
@@ -602,7 +605,10 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 1437,
     conditions = { MinLevel = 22, Faction = "Alliance" },
-    nextRoute = { "Forever-Alliance-Duskwood-Redridge-Mountains" },
+    nextRoute = {
+        "Forever-Alliance-Duskwood-Redridge-Mountains",
+        { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Alliance", SkipForLvl = 26 } },
+    },
     parallelSteps = {
         {
             repeatable = true,
@@ -3050,7 +3056,10 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 1437,
     conditions = { MinLevel = 23, Race = { APR.RACES.Dwarf, APR.RACES.Human, APR.RACES.NightElf, APR.RACES.Skyborne }, Class = APR.Classes.Hunter, Faction = "Alliance" },
-    nextRoute = { "Forever-Alliance-Duskwood-Redridge-Mountains" },
+    nextRoute = {
+        "Forever-Alliance-Duskwood-Redridge-Mountains",
+        { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Alliance", Race = { APR.RACES.Dwarf, APR.RACES.Human, APR.RACES.NightElf, APR.RACES.Skyborne }, Class = APR.Classes.Hunter, SkipForLvl = 26 } },
+    },
     parallelSteps = {
         {
             conditions = { ItemCount = { itemID = 3493, count = 1 }, EquippedItemStat = { allowMissing = true, slot = 18, value = 12.06, precision = 1, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<" }, EquippedItem = { invert = true, itemID = 3493, slot = 18 } },

@@ -7,7 +7,10 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 1438,
     conditions = { Race = APR.RACES.NightElf, Faction = "Alliance" },
-    nextRoute = { "Forever-Alliance-Darkshore" },
+    nextRoute = {
+        "Forever-Alliance-Darkshore",
+        { route = "Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf", conditions = { MinLevel = 11, Faction = "Alliance", Race = APR.RACES.NightElf, SkipForLvl = 17 } },
+    },
     prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 1 }, [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1 }, [APR.PREFAB_TYPES.StartingZone] = 1 },
     parallelSteps = {
         {

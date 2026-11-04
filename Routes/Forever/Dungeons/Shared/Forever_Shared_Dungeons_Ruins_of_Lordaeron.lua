@@ -7,7 +7,13 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Dungeons,
     mapID = 1458,
-    conditions = {  },
+    conditions = { MinLevel = 15 },
+    nextRoute = {
+        { route = "Forever-Shared-Dungeons-Hall-of-Thanes", conditions = { MinLevel = 13, SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, SkipForLvl = 26 } },
+        { route = "Forever-Shared-Dungeons-Deadmines", conditions = { MinLevel = 18, SkipForLvl = 24 } },
+    },
     parallelSteps = {
         {
             conditions = { ItemCount = { itemID = 275521, count = 1 }, IsQuestNotOnQuest = 95204, IsQuestUncompleted = 95204, Faction = "Horde", MinLevel = 16 },

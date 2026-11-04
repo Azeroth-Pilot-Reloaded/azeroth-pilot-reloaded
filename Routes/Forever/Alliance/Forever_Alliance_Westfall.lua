@@ -7,7 +7,13 @@ APR.RouteQuestStepList["Forever-Alliance-Westfall"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 1436,
     conditions = { MinLevel = 13, Class = { APR.Classes.Druid, APR.Classes.Mage, APR.Classes.Paladin, APR.Classes.Priest, APR.Classes.Rogue, APR.Classes.Shaman, APR.Classes.Warlock, APR.Classes.Warrior }, Faction = "Alliance" },
-    nextRoute = { "Forever-Alliance-Darkshore" },
+    nextRoute = {
+        "Forever-Alliance-Darkshore",
+        { route = "Forever-Alliance-Dungeons-Darkshore", conditions = { MinLevel = 15, Faction = "Alliance", Race = { APR.RACES.Dwarf, APR.RACES.Gnome, APR.RACES.Human, APR.RACES.Skyborne }, Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock, APR.Classes.Druid }, SkipForLvl = 18 } },
+        { route = "Forever-Shared-Dungeons-Hall-of-Thanes", conditions = { MinLevel = 13, Faction = "Alliance", Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock, APR.Classes.Druid }, SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, Faction = "Alliance", Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock, APR.Classes.Druid }, SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ruins-of-Lordaeron", conditions = { MinLevel = 15, Faction = "Alliance", Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock, APR.Classes.Druid }, SkipForLvl = 21 } },
+    },
     -- prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 15 }, [APR.PREFAB_TYPES.Speedrun] = { index = 15 } },
     parallelSteps = {
         {

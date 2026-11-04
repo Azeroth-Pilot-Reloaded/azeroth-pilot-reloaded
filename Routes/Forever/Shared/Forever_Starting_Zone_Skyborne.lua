@@ -7,7 +7,17 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 2521,
     conditions = { Race = APR.RACES.Skyborne },
-    nextRoute = { { route = "Forever-Alliance-Westfall", conditions = { Faction = "Alliance", ClassNot = APR.Classes.Hunter } }, { route = "Forever-Alliance-Darkshore", conditions = { Faction = "Alliance", Class = APR.Classes.Hunter } }, { route = "Forever-Horde-Silverpine-Forest", conditions = { Faction = "Horde", ClassNot = { APR.Classes.Hunter, APR.Classes.Shaman } } }, { route = "Forever-Horde-The-Barrens", conditions = { Faction = "Horde", Class = { APR.Classes.Hunter, APR.Classes.Shaman } } } },
+    nextRoute = {
+        { route = "Forever-Alliance-Westfall", conditions = { Faction = "Alliance", ClassNot = APR.Classes.Hunter } },
+        { route = "Forever-Alliance-Darkshore", conditions = { Faction = "Alliance", Class = APR.Classes.Hunter } },
+        { route = "Forever-Horde-Silverpine-Forest", conditions = { Faction = "Horde", ClassNot = { APR.Classes.Hunter, APR.Classes.Shaman } } },
+        { route = "Forever-Horde-The-Barrens", conditions = { Faction = "Horde", Class = { APR.Classes.Hunter, APR.Classes.Shaman } } },
+        { route = "Forever-Alliance-Dungeons-Westfall", conditions = { MinLevel = 13, Faction = "Alliance", Race = APR.RACES.Skyborne, SkipForLvl = 16 } },
+        { route = "Forever-Horde-Dungeons-Silverpine", conditions = { MinLevel = 12, Faction = "Horde", Race = APR.RACES.Skyborne, Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Mage, APR.Classes.Warlock, APR.Classes.Druid }, SkipForLvl = 15 } },
+        { route = "Forever-Horde-Dungeons-Barrens-12-16", conditions = { MinLevel = 12, Faction = "Horde", Race = APR.RACES.Skyborne, Class = { APR.Classes.Hunter, APR.Classes.Shaman }, SkipForLvl = 17 } },
+        { route = "Forever-Shared-Dungeons-Hall-of-Thanes", conditions = { MinLevel = 13, Race = APR.RACES.Skyborne, SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, Race = APR.RACES.Skyborne, SkipForLvl = 19 } },
+    },
     prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 1 }, [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1 }, [APR.PREFAB_TYPES.StartingZone] = 1 },
     parallelSteps = {
         {
@@ -10789,6 +10799,10 @@ APR.RouteQuestStepList["Forever-Alliance-Horde-Zephras-Isle"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 2521,
     conditions = { Race = "Skyborne", MinLevel = 10 },
+    nextRoute = {
+        { route = "Forever-Shared-Dungeons-Hall-of-Thanes", conditions = { MinLevel = 13, Race = APR.RACES.Skyborne, SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, Race = APR.RACES.Skyborne, SkipForLvl = 19 } },
+    },
     hiddenFromSelection = true,
     parallelSteps = {
         {

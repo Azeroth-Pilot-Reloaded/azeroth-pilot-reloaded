@@ -8,7 +8,11 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Scourge"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 1420,
     conditions = { Faction = "Horde", Race = { APR.RACES.Scourge }, Class = APR.Classes.Mage },
-    nextRoute = { "Forever-MageAoE-Horde-The-Barrens" },
+    nextRoute = {
+        "Forever-MageAoE-Horde-The-Barrens",
+        { route = "Forever-Shared-Dungeons-Hall-of-Thanes", conditions = { MinLevel = 13, Faction = "Horde", Race = APR.RACES.Scourge, Class = APR.Classes.Mage, SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, Faction = "Horde", Race = APR.RACES.Scourge, Class = APR.Classes.Mage, SkipForLvl = 19 } },
+    },
     parallelSteps = {
         {
             conditions = { ItemCount = { count = 1, itemID = 247840, operator = ">=" }, Skill = { rank = 15, operator = "<", skillID = 186 }, AnyOf = { { Skill = { rank = 1, operator = ">=", skillID = 186 } }, { SkipForPrimaryProfessions = 2 } } },

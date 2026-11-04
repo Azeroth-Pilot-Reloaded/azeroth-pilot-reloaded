@@ -8,7 +8,11 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
     category = APR.CATEGORIES.Dungeons,
     mapID = 1453,
     conditions = { MinLevel = 19, Faction = "Alliance" },
-    nextRoute = { { route = "Forever-Alliance-Dungeons-Darkshore-Ashenvale" } },
+    nextRoute = {
+        { route = "Forever-Alliance-Dungeons-Darkshore-Ashenvale" },
+        { route = "Forever-Shared-Dungeons-Ruins-of-Lordaeron", conditions = { MinLevel = 15, Faction = "Alliance", SkipForLvl = 21 } },
+        { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Alliance", SkipForLvl = 26 } },
+    },
     prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 8 } },
     steps = {
         {
@@ -195,7 +199,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
             _index = 25,
         },
         {
-            DestroyItems = { items = { 7907 }, text = "Destroy the [Certificate of Thievery]. You don't need it" },
+            DestroyItems = { items = { 7907 } },
             Class = "ROGUE",
             _index = 26,
         },

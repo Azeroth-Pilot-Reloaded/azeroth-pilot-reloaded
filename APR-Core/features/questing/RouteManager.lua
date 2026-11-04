@@ -1290,7 +1290,7 @@ end--[[APR_DIAG]]; APR.GetRouteVisibility = APRTrace("APR-Core/features/questing
 ---------------------------------------------------------------------------------------
 
 --- Get the list of valid next routes after completing a route.
---- Filters out routes whose conditions are not fully met, and excludes the just-completed route.
+--- Preserve authored order and conditions across leveling and dungeon alternatives.
 ---@param completedRouteKey string
 ---@return table validRoutes  Array of { key = routeKey, label = displayName }
 function APR:GetNextRouteSuggestions(completedRouteKey)
@@ -1299,25 +1299,27 @@ function APR:GetNextRouteSuggestions(completedRouteKey)
         return {}
     end
 
-    local completedLabel = routeData.label
     local suggestions = {}
+    local added = {}
+
+    local function AddSuggestion(nextKey, conditions)
+        if added[nextKey] or nextKey == completedRouteKey then return end
+        local nextData = self:GetRouteData(nextKey)
+        if not nextData or not nextData.label or nextData.label == routeData.label
+            or nextData.temporary or nextData.hiddenFromSelection
+            or (self.IsDelveRoute and self:IsDelveRoute(nextKey)) or IsRouteCompletedByKey(nextKey) then return end
+        if self:EvaluateRouteConditions(nextData.conditions) and self:AreConditionalFiltersMet(conditions)
+            and self:CanStartRoute(nextKey) then
+            added[nextKey] = true
+            suggestions[#suggestions + 1] = { key = nextKey, label = nextData.label }
+        end
+    end--[[APR_DIAG]]; AddSuggestion = APRTrace("APR-Core/features/questing/RouteManager.lua:1305:AddSuggestion#44", AddSuggestion)--[[/APR_DIAG]]
 
     for _, nextEntry in ipairs(routeData.nextRoute) do
         local nextKey = type(nextEntry) == "table" and nextEntry.route or nextEntry
         local conditions = type(nextEntry) == "table" and nextEntry.conditions or nil
-        local nextData = self:GetRouteData(nextKey)
-        if nextData and nextData.label then
-            -- Only include routes whose conditions are fully met
-            if self:EvaluateRouteConditions(nextData.conditions) and self:AreConditionalFiltersMet(conditions)
-                and self:CanStartRoute(nextKey) then
-                -- Exclude the just-completed route itself
-                if nextKey ~= completedRouteKey then
-                    table.insert(suggestions, {
-                        key = nextKey,
-                        label = nextData.label,
-                    })
-                end
-            end
+        if type(nextKey) == "string" then
+            AddSuggestion(nextKey, conditions)
         end
     end
 
@@ -1336,8 +1338,8 @@ function APR:SuggestNextRoutes(completedRouteKey, onComplete)
     -- Check if any suggestion is already queued in the remaining custom path
     -- (skip index 1 which is the route being completed right now)
     local customPath = APRCustomPath[self.PlayerID] or {}
-    -- The dungeon prefab deliberately reuses authored starting routes, whose
-    -- normal nextRoute points at the outdoor path. Respect its queued successor.
+    -- Dungeon prefabs can queue chapters above the player's current level.
+    -- Respect the planned successor even when it is not an eligible suggestion.
     local queued = customPath[2] and self.GetRouteKeyFromDisplayName and
         self:GetRouteData(self:GetRouteKeyFromDisplayName(customPath[2]))
     if queued and queued.prefab and queued.prefab[APR.PREFAB_TYPES.Dungeons] then
@@ -1364,17 +1366,16 @@ function APR:SuggestNextRoutes(completedRouteKey, onComplete)
         L["NEXT_ROUTE_SUGGESTION"],
         suggestions,
 
-            --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteManager.lua:1367:callback#45", --[[/APR_DIAG]]function(route)
-                -- Add the selected route's display name to the custom path
-                APRCustomPath[self.PlayerID] = APRCustomPath[self.PlayerID] or {}
-                tinsert(APRCustomPath[self.PlayerID], route.label)
+            --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteManager.lua:1369:callback#46", --[[/APR_DIAG]]function(route)
+                -- Preserve prerequisite insertion and duplicate checks for the selected continuation.
+                self:AddRouteToCustomPathByKey(route.key)
                 -- NOTE: Do NOT send APR_Custom_Path_Update here - it triggers UpdateStep()
                 -- which re-enters RouteCompleted and double-calls finalizeRouteCompletion.
                 if onComplete then onComplete() end
             end--[[APR_DIAG]])--[[/APR_DIAG]] ,
-         --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteManager.lua:1375:callback#46", --[[/APR_DIAG]]function()              -- onCancel
+         --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteManager.lua:1376:callback#47", --[[/APR_DIAG]]function()              -- onCancel
             if onComplete then onComplete() end
         end--[[APR_DIAG]])--[[/APR_DIAG]] ,
         nil
     )
-end--[[APR_DIAG]]; APR.SuggestNextRoutes = APRTrace("APR-Core/features/questing/RouteManager.lua:1333:APR:SuggestNextRoutes#44", APR.SuggestNextRoutes)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.SuggestNextRoutes = APRTrace("APR-Core/features/questing/RouteManager.lua:1335:APR:SuggestNextRoutes#45", APR.SuggestNextRoutes)--[[/APR_DIAG]]

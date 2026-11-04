@@ -8,7 +8,12 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
     category = APR.CATEGORIES.Dungeons,
     mapID = 1436,
     conditions = { MinLevel = 13, Faction = "Alliance", Race = { APR.RACES.Dwarf, APR.RACES.Gnome, APR.RACES.Human, APR.RACES.Skyborne } },
-    nextRoute = { { route = "Forever-Alliance-Dungeons-Darkshore" } },
+    nextRoute = {
+        { route = "Forever-Alliance-Dungeons-Darkshore" },
+        { route = "Forever-Shared-Dungeons-Hall-of-Thanes", conditions = { MinLevel = 13, Faction = "Alliance", Race = { APR.RACES.Dwarf, APR.RACES.Gnome, APR.RACES.Human, APR.RACES.Skyborne }, SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, Faction = "Alliance", Race = { APR.RACES.Dwarf, APR.RACES.Gnome, APR.RACES.Human, APR.RACES.Skyborne }, SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ruins-of-Lordaeron", conditions = { MinLevel = 15, Faction = "Alliance", Race = { APR.RACES.Dwarf, APR.RACES.Gnome, APR.RACES.Human, APR.RACES.Skyborne }, SkipForLvl = 21 } },
+    },
     prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 4 } },
     steps = {
         {

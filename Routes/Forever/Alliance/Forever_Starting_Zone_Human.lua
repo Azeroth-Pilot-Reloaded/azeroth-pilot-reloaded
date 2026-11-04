@@ -7,7 +7,12 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 1429,
     conditions = { MinLevel = 11, Race = { APR.RACES.Dwarf, APR.RACES.Gnome }, Class = { APR.Classes.Mage, APR.Classes.Paladin, APR.Classes.Priest, APR.Classes.Rogue, APR.Classes.Shaman, APR.Classes.Warlock, APR.Classes.Warrior } },
-    nextRoute = { "Forever-Alliance-Loch-Modan-Dwarf-Gnome" },
+    nextRoute = {
+        "Forever-Alliance-Loch-Modan-Dwarf-Gnome",
+        { route = "Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome", conditions = { MinLevel = 12, Faction = "Alliance", Race = { APR.RACES.Dwarf, APR.RACES.Gnome }, Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock }, SkipForLvl = 15 } },
+        { route = "Forever-Shared-Dungeons-Hall-of-Thanes", conditions = { MinLevel = 13, Race = { APR.RACES.Dwarf, APR.RACES.Gnome }, Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock }, SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, Race = { APR.RACES.Dwarf, APR.RACES.Gnome }, Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock }, SkipForLvl = 19 } },
+    },
     -- prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 9 }, [APR.PREFAB_TYPES.Speedrun] = { index = 9 } },
     parallelSteps = {
         {
@@ -899,7 +904,10 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 1429,
     conditions = { Race = APR.RACES.Human, Faction = "Alliance" },
-    nextRoute = { "Forever-Alliance-Loch-Modan-Human" },
+    nextRoute = {
+        "Forever-Alliance-Loch-Modan-Human",
+        { route = "Forever-Alliance-Dungeons-Loch-Modan-Human", conditions = { MinLevel = 11, Faction = "Alliance", Race = APR.RACES.Human, SkipForLvl = 14 } },
+    },
     prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 1 }, [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1 }, [APR.PREFAB_TYPES.StartingZone] = 1 },
     parallelSteps = {
         {
