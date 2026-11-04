@@ -13,7 +13,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
     steps = {
         {
             GetFP = 6,
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 55.491, 47.751),
+            Coord = { x = -1152.4, y = -4821.13 },
             Race = "Skyborne",
             Zone = 1455,
             _index = 1,
@@ -508,8 +508,26 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             _index = 63,
         },
         {
-            RouteCompleted = true,
+            LearnSkill = { spellID = 266 },
+            Coord = { x = -1197.27, y = -5041.49 },
+            Class = "HUNTER",
+            MinLevel = 1,
+            Race = { "Dwarf", "Human", "NightElf", "Skyborne" },
+            Zone = 1455,
             _index = 64,
+        },
+        {
+            LearnSkill = { spellID = 199 },
+            Coord = { x = -1197.27, y = -5041.49 },
+            Class = "DRUID",
+            MinLevel = 1,
+            Race = { "NightElf", "Skyborne" },
+            Zone = 1455,
+            _index = 65,
+        },
+        {
+            RouteCompleted = true,
+            _index = 66,
         },
     },
 }

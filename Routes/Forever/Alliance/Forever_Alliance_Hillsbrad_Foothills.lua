@@ -736,7 +736,7 @@ APR.RouteQuestStepList["Forever-Alliance-Hillsbrad-Foothills"] = {
         {
             Waypoint = 658,
             Fillers = { [658] = { 1 } },
-            Note = { "CAST_EAGLE_EYE_TRY_FIND_PLAINS_CREEPER", "CAST_TAME_BEAST_PLAINS_CREEPER_TAME" },
+            Note = { "SCOUT_TARGET_EAGLE_EYE", "CAST_TAME_BEAST_PLAINS_CREEPER_TAME" },
             Coord = { x = -2364.27, y = -1280.53 },
             Range = 20,
             Class = "HUNTER",
@@ -746,7 +746,7 @@ APR.RouteQuestStepList["Forever-Alliance-Hillsbrad-Foothills"] = {
         {
             Waypoint = 658,
             Fillers = { [658] = { 1 } },
-            Note = { "CAST_EAGLE_EYE_TRY_FIND_PLAINS_CREEPER", "CAST_TAME_BEAST_PLAINS_CREEPER_TAME" },
+            Note = { "SCOUT_TARGET_EAGLE_EYE", "CAST_TAME_BEAST_PLAINS_CREEPER_TAME" },
             Coord = { x = -2371.47, y = -1539.73 },
             Range = 20,
             Class = "HUNTER",
@@ -756,7 +756,7 @@ APR.RouteQuestStepList["Forever-Alliance-Hillsbrad-Foothills"] = {
         {
             Waypoint = 658,
             Fillers = { [658] = { 1 } },
-            Note = { "CAST_EAGLE_EYE_TRY_FIND_PLAINS_CREEPER", "CAST_TAME_BEAST_PLAINS_CREEPER_TAME" },
+            Note = { "SCOUT_TARGET_EAGLE_EYE", "CAST_TAME_BEAST_PLAINS_CREEPER_TAME" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 49, 50.2),
             Range = 20,
             Class = "HUNTER",
@@ -764,7 +764,7 @@ APR.RouteQuestStepList["Forever-Alliance-Hillsbrad-Foothills"] = {
             _index = 90,
         },
         {
-            Note = { "CAST_EAGLE_EYE_TRY_FIND_PLAINS_CREEPER", "CAST_TAME_BEAST_PLAINS_CREEPER_TAME", "FIGHT_PET_LEARN_ABILITIES", "TEACH_PET_LEARNED_ABILITIES", "SKIP_PET_LESSON_ABILITY_KNOWN" },
+            Note = { "SCOUT_TARGET_EAGLE_EYE", "CAST_TAME_BEAST_PLAINS_CREEPER_TAME", "FIGHT_PET_LEARN_ABILITIES", "TEACH_PET_LEARNED_ABILITIES", "SKIP_PET_LESSON_ABILITY_KNOWN" },
             Fillers = { [658] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 48, 58.6),
             Class = "HUNTER",

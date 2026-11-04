@@ -676,7 +676,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
         },
         {
             Emote = { manual = true, emote = "sit", npcID = 0 },
-            Note = { "DIE_RESPAWN_GRAVEYARD", "USE_SIT_MACRO_COMBAT_DIE_FASTER" },
+            Note = { "DIE_RESPAWN_GRAVEYARD" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 36.09, 24.685),
             Range = 30,
             RaidIcon = 6491,

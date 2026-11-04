@@ -1833,6 +1833,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Qpart = { [95494] = { 1 } },
             Fillers = { [821] = { 1 }, [95507] = { 1 } },
+            Note = { "NOT_WANT_SKIP_STEP" },
             Coord = { x = -1856.4, y = 566.85 },
             Range = 30,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -1842,6 +1843,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Qpart = { [95494] = { 1 } },
+            Note = { "NOT_WANT_SKIP_STEP" },
             Coord = { x = -1856.4, y = 566.85 },
             Range = 30,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },

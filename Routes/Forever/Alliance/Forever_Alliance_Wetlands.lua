@@ -2575,7 +2575,7 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
         },
         {
             Qpart = { [275] = { 1 } },
-            Note = { "FINISH_OFF_KILLING_FEN_CREEPERS_SPAWNS_PONDS", "STEALTHED", "FINISH_LATER_SPAWNS_RUN_OUT" },
+            Note = { "FEN_CREEPERS_PONDS_NORTH_SOUTH_GREENWARDEN", "STEALTHED", "FINISH_LATER_SPAWNS_RUN_OUT" },
             Coord = { x = -2655.79, y = -3189.78 },
             Range = 30,
             IsQuestOnQuest = 275,

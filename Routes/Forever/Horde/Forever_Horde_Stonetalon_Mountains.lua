@@ -720,7 +720,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             DropQuest = 883,
             DroppableQuest = { MobId = 3474, Text = "Lakota'mani", Qid = 883 },
             Fillers = { [821] = { 3 }, [899] = { 1 }, [95774] = { 1 }, [878] = { 1, 2, 3 } },
-            Note = { "CHECK_OTHER_MARKED_SPAWNS", "ESCORTS_NPC_SKIP" },
+            Note = { "MULTIPLE_SPAWN_LOCATIONS", "ESCORTS_NPC_SKIP" },
             Coord = { x = -2202.575, y = -1847.375 },
             Range = 370,
             Zone = 1413,
@@ -1248,7 +1248,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 123,
         },
         {
-            Note = { "USE_BLOOD_SHARDS_BUFFS_SAVE_LEAST_FOUR", "DISABLE_AUTOMATIC_EXTRA_TURN_INS" },
+            Note = { "USE_BLOOD_SHARDS_BUFFS_SAVE_LEAST_FOUR", "BYPASS_AUTO" },
             Coord = { x = -1891.48, y = -2391.93 },
             AnyOf = { { Class = { "DRUID", "HUNTER", "ROGUE", "SHAMAN" } }, { Race = { "Orc", "Scourge", "Tauren", "Troll" } } },
             IsQuestUncompleted = 882,
@@ -1256,20 +1256,11 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 124,
         },
         {
-            Note = { "DISABLE_AUTOMATIC_EXTRA_TURN_INS" },
-            Coord = { x = -1891.48, y = -2391.93 },
-            Class = "WARRIOR",
-            IsQuestUncompleted = 882,
-            Race = "Skyborne",
-            Zone = 1413,
-            _index = 125,
-        },
-        {
             Done = { 882 },
             Coord = { x = -1921.88, y = -2383.15 },
             IsQuestOnQuest = 882,
             Zone = 1413,
-            _index = 126,
+            _index = 125,
         },
         {
             PickUp = { 907 },
@@ -1277,50 +1268,50 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestCompleted = 882,
             MinLevel = 10,
             Zone = 1413,
-            _index = 127,
+            _index = 126,
         },
         {
             Done = { 883 },
             Coord = { x = -1921.88, y = -2383.15 },
             IsQuestOnQuest = 883,
             Zone = 1413,
-            _index = 128,
+            _index = 127,
         },
         {
             DropQuest = 884,
             DroppableQuest = { MobId = 3473, Text = "Owatanka", Qid = 884 },
-            Note = { "CHECK_OTHER_MARKED_SPAWNS" },
+            Note = { "MULTIPLE_SPAWN_LOCATIONS" },
             Coord = { x = -2149.88, y = -2524.02 },
             Range = 361,
             Zone = 1413,
-            _index = 129,
+            _index = 128,
         },
         {
             Qpart = { [907] = { 1 } },
             Coord = { x = -2135.695, y = -2514.895 },
             Range = 371,
             Zone = 1413,
-            _index = 130,
+            _index = 129,
         },
         {
             Qpart = { [884] = { 1 } },
             NoArrow = true,
             IsQuestOnQuest = 884,
-            _index = 131,
+            _index = 130,
         },
         {
             Done = { 884 },
             Coord = { x = -1921.88, y = -2383.15 },
             IsQuestOnQuest = 884,
             Zone = 1413,
-            _index = 132,
+            _index = 131,
         },
         {
             Done = { 907 },
             Coord = { x = -1921.88, y = -2383.15 },
             IsQuestOnQuest = 907,
             Zone = 1413,
-            _index = 133,
+            _index = 132,
         },
         {
             PickUp = { 913 },
@@ -1328,18 +1319,18 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestCompleted = 907,
             MinLevel = 10,
             Zone = 1413,
-            _index = 134,
+            _index = 133,
         },
         {
             DropQuest = 884,
             DroppableQuest = { MobId = 3473, Text = "Owatanka", Qid = 884 },
-            Note = { "CHECK_OTHER_MARKED_SPAWNS" },
+            Note = { "MULTIPLE_SPAWN_LOCATIONS" },
             Coord = { x = -2149.88, y = -2524.02 },
             Range = 361,
             Class = "SHAMAN",
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1413,
-            _index = 135,
+            _index = 134,
         },
         {
             Waypoint = 1530,
@@ -1348,7 +1339,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "SHAMAN",
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1413,
-            _index = 136,
+            _index = 135,
         },
         {
             Done = { 1530 },
@@ -1358,7 +1349,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 1530,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1413,
-            _index = 137,
+            _index = 136,
         },
         {
             PickUp = { 1535 },
@@ -1369,7 +1360,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1413,
-            _index = 138,
+            _index = 137,
         },
         {
             Qpart = { [1535] = { 1 } },
@@ -1379,7 +1370,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "SHAMAN",
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1413,
-            _index = 139,
+            _index = 138,
         },
         {
             Done = { 1535 },
@@ -1388,7 +1379,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 1535,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1413,
-            _index = 140,
+            _index = 139,
         },
         {
             PickUp = { 1536 },
@@ -1398,36 +1389,36 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1413,
-            _index = 141,
+            _index = 140,
         },
         {
             Class = "SHAMAN",
             IsQuestUncompleted = 884,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
-            _index = 142,
+            _index = 141,
         },
         {
             DropQuest = 884,
             DroppableQuest = { MobId = 3473, Text = "Owatanka", Qid = 884 },
-            Note = { "CHECK_OTHER_MARKED_SPAWNS" },
+            Note = { "MULTIPLE_SPAWN_LOCATIONS" },
             Coord = { x = -2149.88, y = -2524.02 },
             Range = 361,
             Zone = 1413,
-            _index = 143,
+            _index = 142,
         },
         {
             Qpart = { [913] = { 1 } },
             Coord = { x = -2058.68, y = -2434.83 },
             Range = 406,
             Zone = 1413,
-            _index = 144,
+            _index = 143,
         },
         {
             Qpart = { [884] = { 1 } },
             NoArrow = true,
             Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
             IsQuestOnQuest = 884,
-            _index = 145,
+            _index = 144,
         },
         {
             Done = { 884 },
@@ -1435,7 +1426,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
             IsQuestOnQuest = 884,
             Zone = 1413,
-            _index = 146,
+            _index = 145,
         },
         {
             Done = { 913 },
@@ -1443,7 +1434,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
             IsQuestOnQuest = 913,
             Zone = 1413,
-            _index = 147,
+            _index = 146,
         },
         {
             PickUp = { 874 },
@@ -1452,7 +1443,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestCompleted = 913,
             MinLevel = 9,
             Zone = 1413,
-            _index = 148,
+            _index = 147,
         },
         {
             Qpart = { [884] = { 1 } },
@@ -1460,7 +1451,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "HUNTER",
             IsQuestOnQuest = 884,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
-            _index = 149,
+            _index = 148,
         },
         {
             Done = { 884 },
@@ -1469,7 +1460,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 884,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1413,
-            _index = 150,
+            _index = 149,
         },
         {
             Done = { 913 },
@@ -1478,7 +1469,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 913,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1413,
-            _index = 151,
+            _index = 150,
         },
         {
             PickUp = { 874, 6382 },
@@ -1488,7 +1479,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1413,
-            _index = 152,
+            _index = 151,
         },
         {
             Waypoint = 853,
@@ -1500,7 +1491,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             ItemCount = { itemID = 5075, count = 10, operator = ">=" },
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1413,
-            _index = 153,
+            _index = 152,
         },
         {
             Waypoint = 853,
@@ -1513,7 +1504,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             ItemCount = { itemID = 5075, count = 10, operator = ">=" },
             Race = { "Orc", "Troll" },
             Zone = 1413,
-            _index = 154,
+            _index = 153,
         },
         {
             Waypoint = 853,
@@ -1526,7 +1517,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             ItemCount = { itemID = 5075, count = 10, operator = ">=" },
             Race = { "Orc", "Troll" },
             Zone = 1413,
-            _index = 155,
+            _index = 154,
         },
         {
             Waypoint = 853,
@@ -1534,7 +1525,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 120,
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1412,
-            _index = 156,
+            _index = 155,
         },
         {
             Waypoint = 853,
@@ -1543,7 +1534,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 5,
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1456,
-            _index = 157,
+            _index = 156,
         },
         {
             UseFlightPath = 853,
@@ -1553,7 +1544,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             OnlyInZones = { 1413 },
             Race = { "Skyborne", "Tauren" },
             Zone = 1413,
-            _index = 158,
+            _index = 157,
         },
         {
             LearnSkill = { spellIDs = { 199, 227 } },
@@ -1563,7 +1554,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 1,
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1456,
-            _index = 159,
+            _index = 158,
         },
         {
             LearnSkill = { spellID = 227 },
@@ -1572,7 +1563,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestUncompleted = 853,
             MinLevel = 1,
             Zone = 1456,
-            _index = 160,
+            _index = 159,
         },
         {
             LearnSkill = { spellID = 198 },
@@ -1582,7 +1573,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 1,
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1456,
-            _index = 161,
+            _index = 160,
         },
         {
             BuyMerchant = { { itemID = 3137, quantity = 1 } },
@@ -1597,7 +1588,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Money = { copper = 200, operator = ">=" },
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1456,
-            _index = 162,
+            _index = 161,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -1607,14 +1598,14 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestUncompleted = 853,
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1456,
-            _index = 163,
+            _index = 162,
         },
         {
             BankDeposit = { items = { 5075 } },
             Coord = { x = 24.85, y = -1252.75 },
             ItemCount = { itemID = 5075, count = 1, operator = ">=", includeBank = false },
             Zone = 1456,
-            _index = 164,
+            _index = 163,
         },
         {
             BankDeposit = { items = { 5059 } },
@@ -1622,13 +1613,13 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 868,
             ItemCount = { itemID = 5059, count = 1, operator = ">=" },
             Zone = 1456,
-            _index = 165,
+            _index = 164,
         },
         {
             SetHS = 853,
             Coord = { x = 38.32, y = -1300.48 },
             Zone = 1456,
-            _index = 166,
+            _index = 165,
         },
         {
             Waypoint = 853,
@@ -1638,7 +1629,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             AnyOf = { { IsQuestOnQuest = 853 }, { IsQuestNotOnQuest = 264, IsQuestUncompleted = 264 } },
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 167,
+            _index = 166,
         },
         {
             Waypoint = 853,
@@ -1648,7 +1639,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             AnyOf = { { IsQuestOnQuest = 853 }, { IsQuestNotOnQuest = 264, IsQuestUncompleted = 264 } },
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 168,
+            _index = 167,
         },
         {
             Waypoint = 853,
@@ -1658,7 +1649,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             AnyOf = { { IsQuestOnQuest = 853 }, { IsQuestNotOnQuest = 264, IsQuestUncompleted = 264 } },
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 169,
+            _index = 168,
         },
         {
             Waypoint = 853,
@@ -1668,7 +1659,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             AnyOf = { { IsQuestOnQuest = 853 }, { IsQuestNotOnQuest = 264, IsQuestUncompleted = 264 } },
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 170,
+            _index = 169,
         },
         {
             Waypoint = 853,
@@ -1676,7 +1667,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Coord = { x = 222.96, y = -1079.42 },
             Range = 40,
             Zone = 1456,
-            _index = 171,
+            _index = 170,
         },
         {
             Waypoint = 853,
@@ -1684,7 +1675,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Coord = { x = 219.09, y = -1051.44 },
             Range = 10,
             Zone = 1456,
-            _index = 172,
+            _index = 171,
         },
         {
             Waypoint = 853,
@@ -1695,21 +1686,21 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestCompleted = 853,
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 173,
+            _index = 172,
         },
         {
             PickUp = { 264 },
             Coord = { x = 218.68, y = -1028.41 },
             MinLevel = 12,
             Zone = 1456,
-            _index = 174,
+            _index = 173,
         },
         {
             Done = { 853 },
             Coord = { x = 278.48, y = -995.29 },
             IsQuestOnQuest = 853,
             Zone = 1456,
-            _index = 175,
+            _index = 174,
         },
         {
             PickUp = { 5642 },
@@ -1718,7 +1709,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = "Troll",
             Zone = 1456,
-            _index = 176,
+            _index = 175,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -1728,7 +1719,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 1,
             Race = "Troll",
             Zone = 1456,
-            _index = 177,
+            _index = 176,
         },
         {
             PickUp = { 5644 },
@@ -1737,7 +1728,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = "Scourge",
             Zone = 1456,
-            _index = 178,
+            _index = 177,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -1747,7 +1738,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 1,
             Race = "Scourge",
             Zone = 1456,
-            _index = 179,
+            _index = 178,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -1756,7 +1747,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestUncompleted = 1489,
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1456,
-            _index = 180,
+            _index = 179,
         },
         {
             LearnSkill = { spellID = 1866 },
@@ -1767,7 +1758,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Race = "Scourge",
             SkipForLvl = 22,
             Zone = 1456,
-            _index = 181,
+            _index = 180,
         },
         {
             LearnSkill = { spellID = 1026 },
@@ -1777,7 +1768,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 22,
             Race = "Scourge",
             Zone = 1456,
-            _index = 182,
+            _index = 181,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -1786,14 +1777,14 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestUncompleted = 1489,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1456,
-            _index = 183,
+            _index = 182,
         },
         {
             Note = { "CREATE_HEAVY_LINEN_BANDAGES_SKILL_80_HIGHER" },
             HasSpell = 3273,
             IsQuestUncompleted = 1489,
             Skill = { operator = "<", skill = "firstaid", rank = 80 },
-            _index = 184,
+            _index = 183,
         },
         {
             LearnProfession = 3277,
@@ -1805,7 +1796,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 5,
             Skill = { skill = "firstaid", rank = 80, operator = ">=" },
             Zone = 1456,
-            _index = 185,
+            _index = 184,
         },
         {
             LearnProfession = 3277,
@@ -1818,7 +1809,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Skill = { skill = "firstaid", rank = 80, operator = ">=" },
             Zone = 1456,
-            _index = 186,
+            _index = 185,
         },
         {
             LearnProfession = 7934,
@@ -1831,7 +1822,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Skill = { skill = "firstaid", rank = 80, operator = ">=" },
             Zone = 1456,
-            _index = 187,
+            _index = 186,
         },
         {
             LootItems = { { quantity = 1, itemID = 6452, includeBank = false } },
@@ -1841,7 +1832,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestUncompleted = 1489,
             ItemCount = { itemID = 1475, count = 1, operator = ">=" },
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
-            _index = 188,
+            _index = 187,
         },
         {
             Waypoint = 1489,
@@ -1851,7 +1842,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             AnyOf = { { IsQuestOnQuest = 1489 }, { IsQuestOnQuest = 1490 }, { IsQuestCompleted = 1489, IsQuestNotOnQuest = 1490, IsQuestUncompleted = 1490 }, { Class = "DRUID", Race = { "Skyborne", "Tauren" }, MinLevel = 16, IsQuestUncompleted = 27 }, { Class = "DRUID", Race = { "Tauren", "Skyborne" }, MinLevel = 20, DontHaveSpell = 768, IsQuestNotOnQuest = 98340, IsQuestUncompleted = 98340 } },
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 189,
+            _index = 188,
         },
         {
             Waypoint = 1489,
@@ -1861,7 +1852,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             AnyOf = { { IsQuestOnQuest = 1489 }, { IsQuestOnQuest = 1490 }, { IsQuestCompleted = 1489, IsQuestNotOnQuest = 1490, IsQuestUncompleted = 1490 }, { Class = "DRUID", Race = { "Skyborne", "Tauren" }, MinLevel = 16, IsQuestUncompleted = 27 }, { Class = "DRUID", Race = { "Tauren", "Skyborne" }, MinLevel = 20, DontHaveSpell = 768, IsQuestNotOnQuest = 98340, IsQuestUncompleted = 98340 } },
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 190,
+            _index = 189,
         },
         {
             Waypoint = 1489,
@@ -1871,21 +1862,21 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             AnyOf = { { IsQuestOnQuest = 1489 }, { IsQuestOnQuest = 1490 }, { IsQuestCompleted = 1489, IsQuestNotOnQuest = 1490, IsQuestUncompleted = 1490 }, { Class = "DRUID", Race = { "Skyborne", "Tauren" }, MinLevel = 16, IsQuestUncompleted = 27 }, { Class = "DRUID", Race = { "Tauren", "Skyborne" }, MinLevel = 20, DontHaveSpell = 768, IsQuestNotOnQuest = 98340, IsQuestUncompleted = 98340 } },
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 191,
+            _index = 190,
         },
         {
             Waypoint = 1489,
             Coord = { x = -212.71, y = -1065.01 },
             Range = 80,
             Zone = 1456,
-            _index = 192,
+            _index = 191,
         },
         {
             Done = { 1489 },
             Coord = { x = -303.83, y = -1048.66 },
             IsQuestOnQuest = 1489,
             Zone = 1456,
-            _index = 193,
+            _index = 192,
         },
         {
             PickUp = { 1490 },
@@ -1893,14 +1884,14 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestCompleted = 1489,
             MinLevel = 12,
             Zone = 1456,
-            _index = 194,
+            _index = 193,
         },
         {
             Done = { 1490 },
             Coord = { x = -272.93, y = -1069.67 },
             IsQuestOnQuest = 1490,
             Zone = 1456,
-            _index = 195,
+            _index = 194,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -1910,7 +1901,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 1,
             Race = { "Skyborne", "Tauren" },
             Zone = 1456,
-            _index = 196,
+            _index = 195,
         },
         {
             PickUp = { 27 },
@@ -1919,7 +1910,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 16,
             Race = { "Skyborne", "Tauren" },
             Zone = 1456,
-            _index = 197,
+            _index = 196,
         },
         {
             PickUp = { 98340 },
@@ -1931,7 +1922,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = { "Tauren", "Skyborne" },
             Zone = 1456,
-            _index = 198,
+            _index = 197,
         },
         {
             UseSpell = { spellID = 18960 },
@@ -1939,7 +1930,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "DRUID",
             Race = { "Skyborne", "Tauren" },
             SkipInZones = { 1450 },
-            _index = 199,
+            _index = 198,
         },
         {
             Done = { 27 },
@@ -1948,7 +1939,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 27,
             Race = { "Skyborne", "Tauren" },
             Zone = 1450,
-            _index = 200,
+            _index = 199,
         },
         {
             Done = { 98340 },
@@ -1958,7 +1949,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = { "Tauren", "Skyborne" },
             Zone = 1450,
-            _index = 201,
+            _index = 200,
         },
         {
             PickUp = { 28 },
@@ -1968,7 +1959,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 16,
             Race = { "Skyborne", "Tauren" },
             Zone = 1450,
-            _index = 202,
+            _index = 201,
         },
         {
             PickUp = { 98405 },
@@ -1981,7 +1972,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = "Tauren",
             Zone = 1450,
-            _index = 203,
+            _index = 202,
         },
         {
             PickUp = { 98341 },
@@ -1994,7 +1985,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = "Skyborne",
             Zone = 1450,
-            _index = 204,
+            _index = 203,
         },
         {
             LootItems = { { quantity = 1, itemID = 15877, includeBank = false } },
@@ -2005,7 +1996,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 28,
             ItemCount = { itemID = 15877, count = 1, operator = "<" },
             Zone = 1450,
-            _index = 205,
+            _index = 204,
         },
         {
             Qpart = { [28] = { 1 } },
@@ -2014,7 +2005,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "DRUID",
             Race = { "Skyborne", "Tauren" },
             Zone = 1450,
-            _index = 206,
+            _index = 205,
         },
         {
             Done = { 28 },
@@ -2023,7 +2014,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 28,
             Race = { "Skyborne", "Tauren" },
             Zone = 1450,
-            _index = 207,
+            _index = 206,
         },
         {
             PickUp = { 30 },
@@ -2033,7 +2024,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 16,
             Race = { "Skyborne", "Tauren" },
             Zone = 1450,
-            _index = 208,
+            _index = 207,
         },
         {
             Done = { 98405 },
@@ -2043,7 +2034,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = "Tauren",
             Zone = 1450,
-            _index = 209,
+            _index = 208,
         },
         {
             PickUp = { 98342 },
@@ -2056,7 +2047,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = "Tauren",
             Zone = 1450,
-            _index = 210,
+            _index = 209,
         },
         {
             Waypoint = 98341,
@@ -2066,7 +2057,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 98341,
             Race = "Skyborne",
             Zone = 1450,
-            _index = 211,
+            _index = 210,
         },
         {
             Done = { 98341 },
@@ -2076,7 +2067,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = "Skyborne",
             Zone = 1450,
-            _index = 212,
+            _index = 211,
         },
         {
             PickUp = { 98404 },
@@ -2089,7 +2080,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = "Skyborne",
             Zone = 1450,
-            _index = 213,
+            _index = 212,
         },
         {
             Waypoint = 98342,
@@ -2100,7 +2091,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 98342,
             Race = "Tauren",
             Zone = 1450,
-            _index = 214,
+            _index = 213,
         },
         {
             Qpart = { [98342] = { 2 } },
@@ -2111,7 +2102,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 98342,
             Race = "Tauren",
             Zone = 1450,
-            _index = 215,
+            _index = 214,
         },
         {
             Qpart = { [98342] = { 3 } },
@@ -2122,7 +2113,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 98342,
             Race = "Tauren",
             Zone = 1450,
-            _index = 216,
+            _index = 215,
         },
         {
             Qpart = { [98342] = { 1 } },
@@ -2133,7 +2124,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 98342,
             Race = "Tauren",
             Zone = 1450,
-            _index = 217,
+            _index = 216,
         },
         {
             Waypoint = 98404,
@@ -2144,7 +2135,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 98404,
             Race = "Skyborne",
             Zone = 1450,
-            _index = 218,
+            _index = 217,
         },
         {
             Qpart = { [98404] = { 2 } },
@@ -2155,7 +2146,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 98404,
             Race = "Skyborne",
             Zone = 1450,
-            _index = 219,
+            _index = 218,
         },
         {
             Qpart = { [98404] = { 3 } },
@@ -2166,7 +2157,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 98404,
             Race = "Skyborne",
             Zone = 1450,
-            _index = 220,
+            _index = 219,
         },
         {
             Qpart = { [98404] = { 1 } },
@@ -2177,7 +2168,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 98404,
             Race = "Skyborne",
             Zone = 1450,
-            _index = 221,
+            _index = 220,
         },
         {
             Done = { 98342 },
@@ -2187,7 +2178,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = "Tauren",
             Zone = 1450,
-            _index = 222,
+            _index = 221,
         },
         {
             PickUp = { 98739 },
@@ -2200,7 +2191,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = "Tauren",
             Zone = 1450,
-            _index = 223,
+            _index = 222,
         },
         {
             Done = { 98404 },
@@ -2210,7 +2201,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = "Skyborne",
             Zone = 1450,
-            _index = 224,
+            _index = 223,
         },
         {
             PickUp = { 98738 },
@@ -2223,7 +2214,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = "Skyborne",
             Zone = 1450,
-            _index = 225,
+            _index = 224,
         },
         {
             Waypoint = 98739,
@@ -2233,7 +2224,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             AnyOf = { { IsQuestOnQuest = 98739 }, { IsQuestOnQuest = 98738 } },
             Class = "DRUID",
             Zone = 1450,
-            _index = 226,
+            _index = 225,
         },
         {
             Waypoint = 98738,
@@ -2243,7 +2234,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             AnyOf = { { IsQuestOnQuest = 98739 }, { IsQuestOnQuest = 98738 } },
             Class = "DRUID",
             Zone = 1450,
-            _index = 227,
+            _index = 226,
         },
         {
             Done = { 98739 },
@@ -2253,7 +2244,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = "Tauren",
             Zone = 1450,
-            _index = 228,
+            _index = 227,
         },
         {
             Done = { 98738 },
@@ -2263,7 +2254,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = "Skyborne",
             Zone = 1450,
-            _index = 229,
+            _index = 228,
         },
         {
             PickUp = { 98362 },
@@ -2276,7 +2267,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = { "Tauren", "Skyborne" },
             Zone = 1450,
-            _index = 230,
+            _index = 229,
         },
         {
             UseHS = 98362,
@@ -2285,7 +2276,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "DRUID",
             Race = { "Skyborne", "Tauren" },
             SkipInZones = { 1456 },
-            _index = 231,
+            _index = 230,
         },
         {
             UseFlightPath = 98362,
@@ -2296,7 +2287,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             OnlyInZones = { 1450 },
             Race = { "Skyborne", "Tauren" },
             Zone = 1450,
-            _index = 232,
+            _index = 231,
         },
         {
             Waypoint = 98362,
@@ -2308,7 +2299,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             OnlyInZones = { 1456 },
             Race = { "Tauren", "Skyborne" },
             Zone = 1456,
-            _index = 233,
+            _index = 232,
         },
         {
             Waypoint = 98362,
@@ -2320,7 +2311,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             OnlyInZones = { 1456 },
             Race = { "Tauren", "Skyborne" },
             Zone = 1456,
-            _index = 234,
+            _index = 233,
         },
         {
             Waypoint = 98362,
@@ -2332,7 +2323,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             OnlyInZones = { 1456 },
             Race = { "Tauren", "Skyborne" },
             Zone = 1456,
-            _index = 235,
+            _index = 234,
         },
         {
             Done = { 98362 },
@@ -2342,7 +2333,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = { "Tauren", "Skyborne" },
             Zone = 1456,
-            _index = 236,
+            _index = 235,
         },
         {
             Waypoint = 852,
@@ -2352,7 +2343,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             OnlyInZones = { 1456 },
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1456,
-            _index = 237,
+            _index = 236,
         },
         {
             Waypoint = 852,
@@ -2362,7 +2353,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             OnlyInZones = { 1456 },
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1456,
-            _index = 238,
+            _index = 237,
         },
         {
             Waypoint = 852,
@@ -2371,7 +2362,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "HUNTER",
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1456,
-            _index = 239,
+            _index = 238,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -2380,7 +2371,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestUncompleted = 852,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1456,
-            _index = 240,
+            _index = 239,
         },
         {
             LearnSkill = { spellID = 24494 },
@@ -2390,7 +2381,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1456,
-            _index = 241,
+            _index = 240,
         },
         {
             Waypoint = 852,
@@ -2401,7 +2392,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "WARRIOR",
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 242,
+            _index = 241,
         },
         {
             Waypoint = 852,
@@ -2412,7 +2403,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "WARRIOR",
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 243,
+            _index = 242,
         },
         {
             Waypoint = 852,
@@ -2420,7 +2411,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 60,
             Class = "WARRIOR",
             Zone = 1456,
-            _index = 244,
+            _index = 243,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -2428,7 +2419,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "WARRIOR",
             IsQuestUncompleted = 852,
             Zone = 1456,
-            _index = 245,
+            _index = 244,
         },
         {
             PickUp = { 1823 },
@@ -2436,7 +2427,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "WARRIOR",
             MinLevel = 20,
             Zone = 1456,
-            _index = 246,
+            _index = 245,
         },
         {
             BuyMerchant = { { itemID = 923, quantity = 1 } },
@@ -2451,13 +2442,13 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Money = { copper = 9203, operator = ">=" },
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1456,
-            _index = 247,
+            _index = 246,
         },
         {
             Note = { "CHECK_AUCTION_HOUSE_GEAR_UPGRADE" },
             Class = { "SHAMAN", "WARRIOR" },
             IsQuestUncompleted = 852,
-            _index = 248,
+            _index = 247,
         },
         {
             BuyMerchant = { { itemID = 928, quantity = 1 } },
@@ -2471,7 +2462,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Money = { copper = 10378, operator = ">=" },
             Zone = 1456,
-            _index = 249,
+            _index = 248,
         },
         {
             BuyMerchant = { { itemID = 928, quantity = 1 } },
@@ -2486,7 +2477,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Money = { copper = 10378, operator = ">=" },
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1456,
-            _index = 250,
+            _index = 249,
         },
         {
             BuyMerchant = { { itemID = 3027, quantity = 1 } },
@@ -2501,7 +2492,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Money = { copper = 6683, operator = ">=" },
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1456,
-            _index = 251,
+            _index = 250,
         },
         {
             BuyMerchant = { { quantity = 1600, itemID = 2515, targetStock = true } },
@@ -2514,7 +2505,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Money = { copper = 416, operator = ">=" },
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1456,
-            _index = 252,
+            _index = 251,
         },
         {
             UseFlightPath = 852,
@@ -2524,7 +2515,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 253,
+            _index = 252,
         },
         {
             UseFlightPath = 852,
@@ -2535,30 +2526,30 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             OnlyInZones = { 1456 },
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1456,
-            _index = 254,
+            _index = 253,
         },
         {
             Done = { 852 },
             Coord = { x = -1972.55, y = -306.95 },
             IsQuestOnQuest = 852,
             Zone = 1413,
-            _index = 255,
+            _index = 254,
         },
         {
             Done = { 855 },
             Coord = { x = -1972.55, y = -306.95 },
             IsQuestOnQuest = 855,
             Zone = 1413,
-            _index = 256,
+            _index = 255,
         },
         {
             LeaveQuests = { 855 },
-            _index = 257,
+            _index = 256,
         },
         {
             Note = { "GROUP_UP_KITE_TARGET_AROUND_QUEST_GIVER" },
             IsQuestUncompleted = 4021,
-            _index = 258,
+            _index = 257,
         },
         {
             PickUp = { 4021 },
@@ -2566,7 +2557,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestCompleted = 852,
             MinLevel = 11,
             Zone = 1413,
-            _index = 259,
+            _index = 258,
         },
         {
             Qpart = { [4021] = { 1 } },
@@ -2575,19 +2566,19 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 30,
             IsQuestCompleted = 852,
             Zone = 1413,
-            _index = 260,
+            _index = 259,
         },
         {
             Qpart = { [4021] = { 1 } },
             NoArrow = true,
-            _index = 261,
+            _index = 260,
         },
         {
             Done = { 4021 },
             Coord = { x = -1972.55, y = -306.95 },
             IsQuestOnQuest = 4021,
             Zone = 1413,
-            _index = 262,
+            _index = 261,
         },
         {
             Qpart = { [876] = { 1 } },
@@ -2595,7 +2586,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 10,
             IsQuestCompleted = 875,
             Zone = 1413,
-            _index = 263,
+            _index = 262,
         },
         {
             Qpart = { [95494] = { 1 } },
@@ -2603,70 +2594,70 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Coord = { x = -1856.4, y = 566.85 },
             Range = 186,
             Zone = 1413,
-            _index = 264,
+            _index = 263,
         },
         {
             Qpart = { [95507] = { 1 } },
             Coord = { x = -1856.4, y = 566.85 },
             Range = 186,
             Zone = 1413,
-            _index = 265,
+            _index = 264,
         },
         {
             Done = { 95494 },
             Coord = { x = -1812.6, y = 789.8 },
             IsQuestOnQuest = 95494,
             Zone = 1413,
-            _index = 266,
+            _index = 265,
         },
         {
             Done = { 95507 },
             Coord = { x = -1812.6, y = 789.8 },
             IsQuestOnQuest = 95507,
             Zone = 1413,
-            _index = 267,
+            _index = 266,
         },
         {
             PickUp = { 95495 },
             Coord = { x = -1812.6, y = 789.8 },
             MinLevel = 14,
             Zone = 1413,
-            _index = 268,
+            _index = 267,
         },
         {
             Waypoint = 95495,
             Coord = { x = -1736.9, y = 650.3 },
             Range = 25,
             Zone = 1413,
-            _index = 269,
+            _index = 268,
         },
         {
             Waypoint = 95495,
             Coord = { x = -1741.7, y = 721.4 },
             Range = 25,
             Zone = 1413,
-            _index = 270,
+            _index = 269,
         },
         {
             Waypoint = 95495,
             Coord = { x = -1643.9, y = 786 },
             Range = 25,
             Zone = 1413,
-            _index = 271,
+            _index = 270,
         },
         {
             Waypoint = 95495,
             Coord = { x = -1605.3, y = 818.3 },
             Range = 20,
             Zone = 1413,
-            _index = 272,
+            _index = 271,
         },
         {
             Done = { 95495 },
             Coord = { x = -1635.4, y = 838.9 },
             IsQuestOnQuest = 95495,
             Zone = 1413,
-            _index = 273,
+            _index = 272,
         },
         {
             PickUp = { 95621 },
@@ -2674,7 +2665,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestCompleted = 95495,
             MinLevel = 14,
             Zone = 1413,
-            _index = 274,
+            _index = 273,
         },
         {
             Qpart = { [95621] = { 1 } },
@@ -2683,49 +2674,49 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 10,
             IsQuestCompleted = 95494,
             Zone = 1413,
-            _index = 275,
+            _index = 274,
         },
         {
             Waypoint = 95621,
             Coord = { x = -1736.9, y = 650.3 },
             Range = 25,
             Zone = 1413,
-            _index = 276,
+            _index = 275,
         },
         {
             Waypoint = 95621,
             Coord = { x = -1741.7, y = 721.4 },
             Range = 25,
             Zone = 1413,
-            _index = 277,
+            _index = 276,
         },
         {
             Waypoint = 95621,
             Coord = { x = -1643.9, y = 786 },
             Range = 25,
             Zone = 1413,
-            _index = 278,
+            _index = 277,
         },
         {
             Waypoint = 95621,
             Coord = { x = -1605.3, y = 818.3 },
             Range = 20,
             Zone = 1413,
-            _index = 279,
+            _index = 278,
         },
         {
             Done = { 95621 },
             Coord = { x = -1635.5, y = 838.9 },
             IsQuestOnQuest = 95621,
             Zone = 1413,
-            _index = 280,
+            _index = 279,
         },
         {
             PickUp = { 95508 },
             Coord = { x = -1635.5, y = 838.9 },
             MinLevel = 14,
             Zone = 1413,
-            _index = 281,
+            _index = 280,
         },
         {
             Qpart = { [95508] = { 1 } },
@@ -2734,14 +2725,14 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             ETA = 67,
             IsQuestCompleted = 95494,
             Zone = 1413,
-            _index = 282,
+            _index = 281,
         },
         {
             Done = { 95508 },
             Coord = { x = -1635.4, y = 838.8 },
             IsQuestOnQuest = 95508,
             Zone = 1413,
-            _index = 283,
+            _index = 282,
         },
         {
             Done = { 3921 },
@@ -2750,7 +2741,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 3921,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1413,
-            _index = 284,
+            _index = 283,
         },
         {
             Done = { 6541 },
@@ -2759,7 +2750,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 6541,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1413,
-            _index = 285,
+            _index = 284,
         },
         {
             PickUp = { 6544 },
@@ -2769,7 +2760,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1440,
-            _index = 286,
+            _index = 285,
         },
         {
             Waypoint = 6544,
@@ -2779,7 +2770,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "HUNTER",
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1440,
-            _index = 287,
+            _index = 286,
         },
         {
             Waypoint = 6544,
@@ -2789,7 +2780,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "HUNTER",
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1440,
-            _index = 288,
+            _index = 287,
         },
         {
             Waypoint = 6544,
@@ -2799,7 +2790,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "HUNTER",
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1440,
-            _index = 289,
+            _index = 288,
         },
         {
             Qpart = { [6544] = { 1 } },
@@ -2808,7 +2799,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "HUNTER",
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1440,
-            _index = 290,
+            _index = 289,
         },
         {
             Done = { 6544 },
@@ -2817,7 +2808,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 6544,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1440,
-            _index = 291,
+            _index = 290,
         },
         {
             Done = { 6382 },
@@ -2826,7 +2817,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 6382,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1440,
-            _index = 292,
+            _index = 291,
         },
         {
             PickUp = { 6383 },
@@ -2835,7 +2826,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsOneOfQuestsCompleted = { 235, 742, 6382 },
             MinLevel = 20,
             Zone = 1440,
-            _index = 293,
+            _index = 292,
         },
         {
             Done = { 6383 },
@@ -2844,7 +2835,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 6383,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1440,
-            _index = 294,
+            _index = 293,
         },
         {
             GetFP = 61,
@@ -2852,7 +2843,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "HUNTER",
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1440,
-            _index = 295,
+            _index = 294,
         },
         {
             UseFlightPath = 876,
@@ -2863,7 +2854,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             OnlyInZones = { 1440 },
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1440,
-            _index = 296,
+            _index = 295,
         },
         {
             Waypoint = 876,
@@ -2871,19 +2862,19 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 15,
             ClassNot = "HUNTER",
             Zone = 1413,
-            _index = 297,
+            _index = 296,
         },
         {
             Qpart = { [876] = { 1 } },
             NoArrow = true,
-            _index = 298,
+            _index = 297,
         },
         {
             Done = { 876 },
             Coord = { x = -2607.91, y = -474.51 },
             IsQuestOnQuest = 876,
             Zone = 1413,
-            _index = 299,
+            _index = 298,
         },
         {
             PickUp = { 1060 },
@@ -2891,14 +2882,14 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestCompleted = 876,
             MinLevel = 15,
             Zone = 1413,
-            _index = 300,
+            _index = 299,
         },
         {
             Waypoint = 1062,
             Coord = { x = -950.1, y = -271.14 },
             Range = 15,
             Zone = 1413,
-            _index = 301,
+            _index = 300,
         },
         {
             Waypoint = 1062,
@@ -2906,14 +2897,14 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 5,
             IsQuestReadyForTurnIn = { 6523, 6629 },
             Zone = 1413,
-            _index = 302,
+            _index = 301,
         },
         {
             Done = { 1062 },
             Coord = { x = -943, y = -265.06 },
             IsQuestOnQuest = 1062,
             Zone = 1413,
-            _index = 303,
+            _index = 302,
         },
         {
             PickUp = { 1063 },
@@ -2922,7 +2913,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestCompleted = 1062,
             MinLevel = 13,
             Zone = 1413,
-            _index = 304,
+            _index = 303,
         },
         {
             PickUp = { 1068 },
@@ -2930,18 +2921,18 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestCompleted = 1062,
             MinLevel = 13,
             Zone = 1413,
-            _index = 305,
+            _index = 304,
         },
         {
             Qpart = { [6629] = { 1, 2 }, [6523] = { 1 } },
             NoArrow = true,
-            _index = 306,
+            _index = 305,
         },
         {
             Done = { 6629, 6523 },
             Coord = { x = -943, y = -265.06 },
             Zone = 1413,
-            _index = 307,
+            _index = 306,
         },
         {
             PickUp = { 6401 },
@@ -2949,7 +2940,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestCompleted = 6523,
             MinLevel = 12,
             Zone = 1413,
-            _index = 308,
+            _index = 307,
         },
         {
             Waypoint = 1062,
@@ -2957,7 +2948,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 5,
             IsQuestUncompleted = 6629,
             Zone = 1413,
-            _index = 309,
+            _index = 308,
         },
         {
             Waypoint = 1062,
@@ -2965,14 +2956,14 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 5,
             IsQuestUncompleted = 6523,
             Zone = 1413,
-            _index = 310,
+            _index = 309,
         },
         {
             Done = { 1062 },
             Coord = { x = -950.1, y = -271.14 },
             IsQuestOnQuest = 1062,
             Zone = 1413,
-            _index = 311,
+            _index = 310,
         },
         {
             PickUp = { 1063 },
@@ -2981,7 +2972,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestCompleted = 1062,
             MinLevel = 13,
             Zone = 1413,
-            _index = 312,
+            _index = 311,
         },
         {
             PickUp = { 1068 },
@@ -2989,7 +2980,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestCompleted = 1062,
             MinLevel = 13,
             Zone = 1413,
-            _index = 313,
+            _index = 312,
         },
         {
             Waypoint = 1060,
@@ -2997,7 +2988,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Coord = { x = -786.33, y = -294.97 },
             Range = 60,
             Zone = 1442,
-            _index = 314,
+            _index = 313,
         },
         {
             Waypoint = 1060,
@@ -3005,7 +2996,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Coord = { x = -665.72, y = -280.97 },
             Range = 40,
             Zone = 1442,
-            _index = 315,
+            _index = 314,
         },
         {
             Waypoint = 1060,
@@ -3013,21 +3004,21 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Coord = { x = -522.63, y = -294.32 },
             Range = 40,
             Zone = 1442,
-            _index = 316,
+            _index = 315,
         },
         {
             Done = { 1060 },
             Coord = { x = -394.2, y = -272.5 },
             IsQuestOnQuest = 1060,
             Zone = 1442,
-            _index = 317,
+            _index = 316,
         },
         {
             PickUp = { 1058 },
             Coord = { x = -394.2, y = -272.5 },
             MinLevel = 20,
             Zone = 1442,
-            _index = 318,
+            _index = 317,
         },
         {
             Done = { 1510 },
@@ -3036,7 +3027,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 1510,
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1442,
-            _index = 319,
+            _index = 318,
         },
         {
             PickUp = { 1511 },
@@ -3046,14 +3037,14 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1442,
-            _index = 320,
+            _index = 319,
         },
         {
             Done = { 6461 },
             Coord = { x = -233.54, y = -177.42 },
             IsQuestOnQuest = 6461,
             Zone = 1442,
-            _index = 321,
+            _index = 320,
         },
         {
             PickUp = { 6284 },
@@ -3062,7 +3053,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 15,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1442,
-            _index = 322,
+            _index = 321,
         },
         {
             Qpart = { [6284] = { 1 } },
@@ -3072,11 +3063,11 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "HUNTER",
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1442,
-            _index = 323,
+            _index = 322,
         },
         {
             IsQuestUncompleted = 6284,
-            _index = 324,
+            _index = 323,
         },
         {
             Waypoint = 6562,
@@ -3087,7 +3078,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestCompleted = 6284,
             OnlyInZones = { 1442 },
             Zone = 1442,
-            _index = 325,
+            _index = 324,
         },
         {
             Waypoint = 6562,
@@ -3098,7 +3089,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestCompleted = 6284,
             OnlyInZones = { 1442 },
             Zone = 1442,
-            _index = 326,
+            _index = 325,
         },
         {
             Waypoint = 6562,
@@ -3109,7 +3100,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestCompleted = 6284,
             OnlyInZones = { 1442 },
             Zone = 1442,
-            _index = 327,
+            _index = 326,
         },
         {
             Waypoint = 6562,
@@ -3120,7 +3111,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestCompleted = 6284,
             OnlyInZones = { 1442 },
             Zone = 1442,
-            _index = 328,
+            _index = 327,
         },
         {
             Waypoint = 6562,
@@ -3131,7 +3122,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestCompleted = 6284,
             OnlyInZones = { 1442 },
             Zone = 1442,
-            _index = 329,
+            _index = 328,
         },
         {
             Waypoint = 6562,
@@ -3142,49 +3133,49 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestCompleted = 6284,
             OnlyInZones = { 1442 },
             Zone = 1442,
-            _index = 330,
+            _index = 329,
         },
         {
             Waypoint = 6284,
             Coord = { x = 834.44, y = 908.21 },
             Range = 30,
             Zone = 1442,
-            _index = 331,
+            _index = 330,
         },
         {
             Waypoint = 6284,
             Coord = { x = 856.91, y = 874.67 },
             Range = 30,
             Zone = 1442,
-            _index = 332,
+            _index = 331,
         },
         {
             Waypoint = 6284,
             Coord = { x = 896.46, y = 836.57 },
             Range = 30,
             Zone = 1442,
-            _index = 333,
+            _index = 332,
         },
         {
             Waypoint = 6284,
             Coord = { x = 940.41, y = 831.04 },
             Range = 30,
             Zone = 1442,
-            _index = 334,
+            _index = 333,
         },
         {
             PickUp = { 6562, 6393 },
             Coord = { x = 933.09, y = 824.53 },
             MinLevel = 19,
             Zone = 1442,
-            _index = 335,
+            _index = 334,
         },
         {
             SellItems = { junk = true, questID = 6401 },
             Coord = { x = 927.72, y = 893.56 },
             Class = { "ROGUE", "WARRIOR" },
             Zone = 1442,
-            _index = 336,
+            _index = 335,
         },
         {
             BuyMerchant = { { itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
@@ -3194,14 +3185,14 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             RaidIcon = 7731,
             Class = { "ROGUE", "WARRIOR" },
             Zone = 1442,
-            _index = 337,
+            _index = 336,
         },
         {
             SellItems = { junk = true, questID = 6401 },
             Coord = { x = 927.72, y = 893.56 },
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" },
             Zone = 1442,
-            _index = 338,
+            _index = 337,
         },
         {
             BuyMerchant = { { itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
@@ -3211,13 +3202,25 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             RaidIcon = 7731,
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" },
             Zone = 1442,
-            _index = 339,
+            _index = 338,
         },
         {
             BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } }, { itemID = 3357, quantity = 8, targetStock = true, optional = true, conditions = { Class = "WARRIOR", IsQuestUncompleted = 1712 } } },
 
 
             Coord = { x = 925.27, y = 885.42 },
+            Range = 5,
+            RaidIcon = 4083,
+            AllOf = { { AnyOf = { { ItemCount = { itemID = 929, count = 5, operator = "<" } }, { Class = "WARRIOR", IsQuestUncompleted = 1712, ItemCount = { itemID = 3357, count = 8, operator = "<" } } } } },
+            Class = "WARRIOR",
+            Zone = 1442,
+            _index = 339,
+        },
+        {
+            BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } }, { itemID = 3357, quantity = 8, targetStock = true, optional = true, conditions = { Class = "WARRIOR", IsQuestUncompleted = 1712 } } },
+
+
+            Coord = { x = 920.88, y = 911.47 },
             Range = 5,
             RaidIcon = 4083,
             AllOf = { { AnyOf = { { ItemCount = { itemID = 929, count = 5, operator = "<" } }, { Class = "WARRIOR", IsQuestUncompleted = 1712, ItemCount = { itemID = 3357, count = 8, operator = "<" } } } } },
@@ -3226,18 +3229,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 340,
         },
         {
-            BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } }, { itemID = 3357, quantity = 8, targetStock = true, optional = true, conditions = { Class = "WARRIOR", IsQuestUncompleted = 1712 } } },
-
-
-            Coord = { x = 920.88, y = 911.47 },
-            Range = 5,
-            RaidIcon = 4083,
-            AllOf = { { AnyOf = { { ItemCount = { itemID = 929, count = 5, operator = "<" } }, { Class = "WARRIOR", IsQuestUncompleted = 1712, ItemCount = { itemID = 3357, count = 8, operator = "<" } } } } },
-            Class = "WARRIOR",
-            Zone = 1442,
-            _index = 341,
-        },
-        {
             BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
 
 
@@ -3247,7 +3238,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             AllOf = { { AnyOf = { { ItemCount = { itemID = 929, count = 5, operator = "<" } } } } },
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK" },
             Zone = 1442,
-            _index = 342,
+            _index = 341,
         },
         {
             BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
@@ -3259,28 +3250,28 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             AllOf = { { AnyOf = { { ItemCount = { itemID = 929, count = 5, operator = "<" } } } } },
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK" },
             Zone = 1442,
-            _index = 343,
+            _index = 342,
         },
         {
             Done = { 6401 },
             Coord = { x = 928.2, y = 1015.99 },
             IsQuestOnQuest = 6401,
             Zone = 1442,
-            _index = 344,
+            _index = 343,
         },
         {
             PickUp = { 6301 },
             Coord = { x = 928.2, y = 1015.99 },
             MinLevel = 17,
             Zone = 1442,
-            _index = 345,
+            _index = 344,
         },
         {
             Done = { 1095 },
             Coord = { x = 365.16, y = 878.25 },
             IsQuestOnQuest = 1095,
             Zone = 1442,
-            _index = 346,
+            _index = 345,
         },
         {
             PickUp = { 1096 },
@@ -3288,15 +3279,15 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestCompleted = 1095,
             MinLevel = 16,
             Zone = 1442,
-            _index = 347,
+            _index = 346,
         },
         {
             Qpart = { [1068] = { 2 } },
-            Note = { "KILL_XT_9_SOUTHERN_SIDE_RIVER_SEARCH" },
+            Note = { "XT9_PATROLS_SOUTHERN_RIVER_SEARCH_WEST" },
             Coord = { x = 265.54, y = 1213.0 },
             Range = 80,
             Zone = 1442,
-            _index = 348,
+            _index = 347,
         },
         {
             Waypoint = 98251,
@@ -3304,7 +3295,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1442,
-            _index = 349,
+            _index = 348,
         },
         {
             Waypoint = 98251,
@@ -3312,7 +3303,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1442,
-            _index = 350,
+            _index = 349,
         },
         {
             Waypoint = 98251,
@@ -3320,7 +3311,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1442,
-            _index = 351,
+            _index = 350,
         },
         {
             Waypoint = 98251,
@@ -3328,7 +3319,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Coord = { x = -577.33, y = 1532.43 },
             Range = 30,
             Zone = 1442,
-            _index = 352,
+            _index = 351,
         },
         {
             Waypoint = 98251,
@@ -3336,7 +3327,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1442,
-            _index = 353,
+            _index = 352,
         },
         {
             Waypoint = 98251,
@@ -3344,7 +3335,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1442,
-            _index = 354,
+            _index = 353,
         },
         {
             Waypoint = 98251,
@@ -3352,7 +3343,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1442,
-            _index = 355,
+            _index = 354,
         },
         {
             Waypoint = 98251,
@@ -3360,7 +3351,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1442,
-            _index = 356,
+            _index = 355,
         },
         {
             Waypoint = 98251,
@@ -3368,7 +3359,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1442,
-            _index = 357,
+            _index = 356,
         },
         {
             Waypoint = 98251,
@@ -3376,7 +3367,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1442,
-            _index = 358,
+            _index = 357,
         },
         {
             Waypoint = 98251,
@@ -3384,7 +3375,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1442,
-            _index = 359,
+            _index = 358,
         },
         {
             Waypoint = 98251,
@@ -3392,7 +3383,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1442,
-            _index = 360,
+            _index = 359,
         },
         {
             Waypoint = 98251,
@@ -3400,7 +3391,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1442,
-            _index = 361,
+            _index = 360,
         },
         {
             Waypoint = 98251,
@@ -3408,7 +3399,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1442,
-            _index = 362,
+            _index = 361,
         },
         {
             Waypoint = 98251,
@@ -3416,7 +3407,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1442,
-            _index = 363,
+            _index = 362,
         },
         {
             Waypoint = 98251,
@@ -3424,7 +3415,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1442,
-            _index = 364,
+            _index = 363,
         },
         {
             Waypoint = 98251,
@@ -3432,7 +3423,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1442,
-            _index = 365,
+            _index = 364,
         },
         {
             Waypoint = 98251,
@@ -3440,7 +3431,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1442,
-            _index = 366,
+            _index = 365,
         },
         {
             Waypoint = 98251,
@@ -3448,7 +3439,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1442,
-            _index = 367,
+            _index = 366,
         },
         {
             Waypoint = 98251,
@@ -3456,7 +3447,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1442,
-            _index = 368,
+            _index = 367,
         },
         {
             Waypoint = 98251,
@@ -3464,7 +3455,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1442,
-            _index = 369,
+            _index = 368,
         },
         {
             Waypoint = 98251,
@@ -3472,7 +3463,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1442,
-            _index = 370,
+            _index = 369,
         },
         {
             Waypoint = 98251,
@@ -3480,7 +3471,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1442,
-            _index = 371,
+            _index = 370,
         },
         {
             Waypoint = 98251,
@@ -3488,7 +3479,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1442,
-            _index = 372,
+            _index = 371,
         },
         {
             Waypoint = 98251,
@@ -3496,7 +3487,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1440,
-            _index = 373,
+            _index = 372,
         },
         {
             Waypoint = 98251,
@@ -3504,14 +3495,14 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 3,
             IsQuestUncompleted = 98251,
             Zone = 1440,
-            _index = 374,
+            _index = 373,
         },
         {
             PickUp = { 98251 },
             Coord = { x = -632.7, y = 2311.5 },
             MinLevel = 18,
             Zone = 1440,
-            _index = 375,
+            _index = 374,
         },
         {
             Qpart = { [98251] = { 2, 1 } },
@@ -3519,14 +3510,14 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Coord = { x = -706.45, y = 2122.95 },
             Range = 239,
             Zone = 1440,
-            _index = 376,
+            _index = 375,
         },
         {
             Done = { 98251 },
             Coord = { x = -632.9, y = 2312 },
             IsQuestOnQuest = 98251,
             Zone = 1440,
-            _index = 377,
+            _index = 376,
         },
         {
             PickUp = { 98252 },
@@ -3534,20 +3525,20 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestCompleted = 98251,
             MinLevel = 18,
             Zone = 1440,
-            _index = 378,
+            _index = 377,
         },
         {
             Qpart = { [98252] = { 1 } },
             Coord = { x = -545.2, y = 2446.6 },
             Zone = 1440,
-            _index = 379,
+            _index = 378,
         },
         {
             Done = { 98252 },
             Coord = { x = -545.5, y = 2445.4 },
             IsQuestOnQuest = 98252,
             Zone = 1440,
-            _index = 380,
+            _index = 379,
         },
         {
             Waypoint = 6562,
@@ -3555,7 +3546,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Coord = { x = -268.74, y = 2612.28 },
             Range = 50,
             Zone = 1440,
-            _index = 381,
+            _index = 380,
         },
         {
             Waypoint = 6562,
@@ -3563,7 +3554,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Coord = { x = 637.2, y = 3406.79 },
             Range = 50,
             Zone = 1440,
-            _index = 382,
+            _index = 381,
         },
         {
             Waypoint = 6562,
@@ -3571,7 +3562,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Coord = { x = 1010.31, y = 3355.28 },
             Range = 80,
             Zone = 1440,
-            _index = 383,
+            _index = 382,
         },
         {
             Grind = 21,
@@ -3579,56 +3570,56 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 30,
             SkipForLvl = 21,
             Zone = 1440,
-            _index = 384,
+            _index = 383,
         },
         {
             GetFP = 58,
             Coord = { x = 994.16, y = 3373.73 },
             IsQuestUncompleted = 6442,
             Zone = 1440,
-            _index = 385,
+            _index = 384,
         },
         {
             Waypoint = 6562,
             Coord = { x = 1033.37, y = 3354.89 },
             Range = 5,
             Zone = 1440,
-            _index = 386,
+            _index = 385,
         },
         {
             PickUp = { 216 },
             Coord = { x = 1013.77, y = 3345.67 },
             MinLevel = 21,
             Zone = 1440,
-            _index = 387,
+            _index = 386,
         },
         {
             Waypoint = 6562,
             Coord = { x = 1028.18, y = 3333.37 },
             Range = 5,
             Zone = 1440,
-            _index = 388,
+            _index = 387,
         },
         {
             Done = { 6562 },
             Coord = { x = 1033.37, y = 3354.89 },
             IsQuestOnQuest = 6562,
             Zone = 1440,
-            _index = 389,
+            _index = 388,
         },
         {
             PickUp = { 6462 },
             Coord = { x = 1028.18, y = 3333.37 },
             MinLevel = 19,
             Zone = 1440,
-            _index = 390,
+            _index = 389,
         },
         {
             PickUp = { 6442 },
             Coord = { x = 1025.88, y = 3331.45 },
             MinLevel = 14,
             Zone = 1440,
-            _index = 391,
+            _index = 390,
         },
         {
             PickUp = { 6641 },
@@ -3637,7 +3628,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             NoAutoAccept = true,
             MinLevel = 20,
             Zone = 1440,
-            _index = 392,
+            _index = 391,
         },
         {
             Qpart = { [6641] = { 1 } },
@@ -3645,7 +3636,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Note = { "ENEMY_WAVES_BOSS", "LET_ESCORT_TAKE_AGGRO_ATTACKING" },
             Coord = { x = 1144.67, y = 3610.89 },
             Zone = 1440,
-            _index = 393,
+            _index = 392,
         },
         {
             Qpart = { [6442] = { 1 } },
@@ -3653,41 +3644,41 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Coord = { x = 942.835, y = 3798.08 },
             Range = 387,
             Zone = 1440,
-            _index = 394,
+            _index = 393,
         },
         {
             Grind = { level = 22, xp = 0, questLogXP = { 6442, 6641 } },
             Coord = { x = 942.835, y = 3798.08 },
             Range = 30,
             Zone = 1440,
-            _index = 395,
+            _index = 394,
         },
         {
             Waypoint = 6641,
             Coord = { x = 995.31, y = 3357.97 },
             Range = 5,
             Zone = 1440,
-            _index = 396,
+            _index = 395,
         },
         {
             Done = { 6641 },
             Coord = { x = 995.31, y = 3357.97 },
             IsQuestOnQuest = 6641,
             Zone = 1440,
-            _index = 397,
+            _index = 396,
         },
         {
             Done = { 6442 },
             Coord = { x = 1025.88, y = 3331.45 },
             IsQuestOnQuest = 6442,
             Zone = 1440,
-            _index = 398,
+            _index = 397,
         },
         {
             UseHS = 1063,
             UseHSIfAvailable = true,
             OnlyInZones = { 1440 },
-            _index = 399,
+            _index = 398,
         },
         {
             UseFlightPath = 1063,
@@ -3696,7 +3687,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             ZoneStepTrigger = { x = 26.1, y = -1196.66, Range = 25, mapID = 1456 },
             OnlyInZones = { 1440 },
             Zone = 1440,
-            _index = 400,
+            _index = 399,
         },
         {
             Waypoint = 1063,
@@ -3706,7 +3697,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             AnyOf = { { IsQuestOnQuest = 1063 }, { IsQuestCompleted = 1063, IsQuestNotOnQuest = 1064, IsQuestUncompleted = 1064 } },
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 401,
+            _index = 400,
         },
         {
             Waypoint = 1063,
@@ -3716,7 +3707,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             AnyOf = { { IsQuestOnQuest = 1063 }, { IsQuestCompleted = 1063, IsQuestNotOnQuest = 1064, IsQuestUncompleted = 1064 } },
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 402,
+            _index = 401,
         },
         {
             Waypoint = 1063,
@@ -3726,14 +3717,14 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             AnyOf = { { IsQuestOnQuest = 1063 }, { IsQuestCompleted = 1063, IsQuestNotOnQuest = 1064, IsQuestUncompleted = 1064 } },
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 403,
+            _index = 402,
         },
         {
             Waypoint = 1063,
             Coord = { x = -212.71, y = -1065.01 },
             Range = 80,
             Zone = 1456,
-            _index = 404,
+            _index = 403,
         },
         {
             Done = { 1063 },
@@ -3741,7 +3732,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Coord = { x = -212.71, y = -1065.01 },
             IsQuestOnQuest = 1063,
             Zone = 1456,
-            _index = 405,
+            _index = 404,
         },
         {
             PickUp = { 1064 },
@@ -3751,7 +3742,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestCompleted = 1063,
             MinLevel = 13,
             Zone = 1456,
-            _index = 406,
+            _index = 405,
         },
         {
             Waypoint = 1064,
@@ -3759,14 +3750,14 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Coord = { x = 219.09, y = -1051.44 },
             Range = 10,
             Zone = 1456,
-            _index = 407,
+            _index = 406,
         },
         {
             Done = { 1064 },
             Coord = { x = 278.48, y = -995.29 },
             IsQuestOnQuest = 1064,
             Zone = 1456,
-            _index = 408,
+            _index = 407,
         },
         {
             PickUp = { 1065 },
@@ -3774,7 +3765,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestCompleted = 1064,
             MinLevel = 13,
             Zone = 1456,
-            _index = 409,
+            _index = 408,
         },
         {
             LearnSkill = { spellID = 1866 },
@@ -3784,7 +3775,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Race = "Scourge",
             SkipForLvl = 22,
             Zone = 1456,
-            _index = 410,
+            _index = 409,
         },
         {
             LearnSkill = { spellID = 1026 },
@@ -3793,7 +3784,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 22,
             Race = "Scourge",
             Zone = 1456,
-            _index = 411,
+            _index = 410,
         },
         {
             UseFlightPath = 1511,
@@ -3804,7 +3795,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             OnlyInZones = { 1456 },
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1456,
-            _index = 412,
+            _index = 411,
         },
         {
             BankDeposit = { items = { 16645, 16646, 16647, 16648, 16649, 16650, 16651, 16652, 16653, 16654, 16655, 16656 } },
@@ -3813,7 +3804,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             AnyOf = { { ItemCount = { itemID = 16645, count = 1, includeBank = false } }, { ItemCount = { itemID = 16646, count = 1, includeBank = false } }, { ItemCount = { itemID = 16647, count = 1, includeBank = false } }, { ItemCount = { itemID = 16648, count = 1, includeBank = false } }, { ItemCount = { itemID = 16649, count = 1, includeBank = false } }, { ItemCount = { itemID = 16650, count = 1, includeBank = false } }, { ItemCount = { itemID = 16651, count = 1, includeBank = false } }, { ItemCount = { itemID = 16652, count = 1, includeBank = false } }, { ItemCount = { itemID = 16653, count = 1, includeBank = false } }, { ItemCount = { itemID = 16654, count = 1, includeBank = false } }, { ItemCount = { itemID = 16655, count = 1, includeBank = false } }, { ItemCount = { itemID = 16656, count = 1, includeBank = false } } },
             IsQuestNotOnQuest = 6504,
             Zone = 1456,
-            _index = 413,
+            _index = 412,
         },
         {
             UseFlightPath = 1065,
@@ -3824,7 +3815,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             ClassNot = "WARLOCK",
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 414,
+            _index = 413,
         },
         {
             UseFlightPath = 2460,
@@ -3835,7 +3826,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             ClassNot = "WARLOCK",
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 415,
+            _index = 414,
         },
         {
             UseFlightPath = 5642,
@@ -3846,7 +3837,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             ClassNot = "WARLOCK",
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 416,
+            _index = 415,
         },
         {
             UseFlightPath = 1511,
@@ -3857,7 +3848,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             OnlyInZones = { 1440 },
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1440,
-            _index = 417,
+            _index = 416,
         },
         {
             UseFlightPath = 1065,
@@ -3868,7 +3859,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             ClassNot = "WARLOCK",
             OnlyInZones = { 1440 },
             Zone = 1440,
-            _index = 418,
+            _index = 417,
         },
         {
             UseFlightPath = 2460,
@@ -3879,7 +3870,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             ClassNot = "WARLOCK",
             OnlyInZones = { 1440 },
             Zone = 1440,
-            _index = 419,
+            _index = 418,
         },
         {
             UseFlightPath = 5642,
@@ -3890,7 +3881,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             ClassNot = "WARLOCK",
             OnlyInZones = { 1440 },
             Zone = 1440,
-            _index = 420,
+            _index = 419,
         },
         {
             Done = { 1511 },
@@ -3899,7 +3890,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 1511,
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1413,
-            _index = 421,
+            _index = 420,
         },
         {
             PickUp = { 1515 },
@@ -3909,7 +3900,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1413,
-            _index = 422,
+            _index = 421,
         },
         {
             Done = { 1515 },
@@ -3918,7 +3909,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 1515,
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1413,
-            _index = 423,
+            _index = 422,
         },
         {
             PickUp = { 1512 },
@@ -3928,7 +3919,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1413,
-            _index = 424,
+            _index = 423,
         },
         {
             UseFlightPath = 1512,
@@ -3939,7 +3930,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             OnlyInZones = { 1413 },
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1413,
-            _index = 425,
+            _index = 424,
         },
         {
             Done = { 1512 },
@@ -3948,7 +3939,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 1512,
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1454,
-            _index = 426,
+            _index = 425,
         },
         {
             PickUp = { 1513 },
@@ -3958,7 +3949,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1454,
-            _index = 427,
+            _index = 426,
         },
         {
             UseItem = { itemID = 6626, itemSpellID = 9224 },
@@ -3966,7 +3957,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "WARLOCK",
             IsQuestUncompleted = 1513,
             Race = { "Orc", "Scourge", "Troll" },
-            _index = 428,
+            _index = 427,
         },
         {
             Qpart = { [1513] = { 1 } },
@@ -3976,7 +3967,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "WARLOCK",
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1454,
-            _index = 429,
+            _index = 428,
         },
         {
             Done = { 1513 },
@@ -3985,7 +3976,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 1513,
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1454,
-            _index = 430,
+            _index = 429,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -3993,7 +3984,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "WARLOCK",
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1454,
-            _index = 431,
+            _index = 430,
         },
         {
             BuyMerchant = { { itemID = 2207, quantity = 1, targetStock = true, optional = true } },
@@ -4007,7 +3998,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Not = { AnyOf = { { EquippedItemStat = { slot = 16, stat = "SUBCLASS", operator = "==", value = 15 } }, { EquippedItemStat = { slot = 17, stat = "SUBCLASS", operator = "==", value = 15 } } } },
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1454,
-            _index = 432,
+            _index = 431,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -4016,7 +4007,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestUncompleted = 2460,
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1454,
-            _index = 433,
+            _index = 432,
         },
         {
             PickUp = { 2460 },
@@ -4025,7 +4016,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1454,
-            _index = 434,
+            _index = 433,
         },
         {
             Qpart = { [2460] = { 1 } },
@@ -4035,7 +4026,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "ROGUE",
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1454,
-            _index = 435,
+            _index = 434,
         },
         {
             Done = { 2460 },
@@ -4044,7 +4035,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 2460,
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1454,
-            _index = 436,
+            _index = 435,
         },
         {
             PickUp = { 2458 },
@@ -4054,7 +4045,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1454,
-            _index = 437,
+            _index = 436,
         },
         {
             BuyMerchant = { { quantity = 40, itemID = 2928, targetStock = true } },
@@ -4066,7 +4057,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Money = { copper = 840, operator = ">=" },
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1454,
-            _index = 438,
+            _index = 437,
         },
         {
             BuyMerchant = { { quantity = 40, itemID = 3371, targetStock = true } },
@@ -4078,7 +4069,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Money = { copper = 168, operator = ">=" },
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1454,
-            _index = 439,
+            _index = 438,
         },
         {
             BuyMerchant = { { quantity = 20, itemID = 5140, targetStock = true } },
@@ -4090,7 +4081,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Money = { copper = 520, operator = ">=" },
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1454,
-            _index = 440,
+            _index = 439,
         },
         {
             BuyMerchant = { { itemID = 5210, quantity = 1 } },
@@ -4104,7 +4095,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Money = { copper = 6113, operator = ">=" },
             Zone = 1454,
-            _index = 441,
+            _index = 440,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -4112,7 +4103,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "MAGE",
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1454,
-            _index = 442,
+            _index = 441,
         },
         {
             LearnSkill = { spellID = 12051 },
@@ -4121,7 +4112,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1454,
-            _index = 443,
+            _index = 442,
         },
         {
             LearnSkill = { spellID = 2138 },
@@ -4130,7 +4121,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 22,
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1454,
-            _index = 444,
+            _index = 443,
         },
         {
             LearnSkill = { spellID = 2121 },
@@ -4139,7 +4130,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 24,
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1454,
-            _index = 445,
+            _index = 444,
         },
         {
             LearnSkill = { spellID = 3567 },
@@ -4148,7 +4139,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1454,
-            _index = 446,
+            _index = 445,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -4156,7 +4147,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "MAGE",
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1454,
-            _index = 447,
+            _index = 446,
         },
         {
             Done = { 5642 },
@@ -4165,7 +4156,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 5642,
             Race = "Troll",
             Zone = 1454,
-            _index = 448,
+            _index = 447,
         },
         {
             LearnSkill = { npcID = 6018, allAvailable = true },
@@ -4174,7 +4165,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 1,
             Race = "Troll",
             Zone = 1454,
-            _index = 449,
+            _index = 448,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -4182,7 +4173,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "PRIEST",
             Race = "Scourge",
             Zone = 1454,
-            _index = 450,
+            _index = 449,
         },
         {
             Waypoint = 2458,
@@ -4192,7 +4183,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             SkipInZones = { 1413 },
             Zone = 1454,
-            _index = 451,
+            _index = 450,
         },
         {
             Waypoint = 1065,
@@ -4203,7 +4194,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Race = { "Skyborne", "Tauren" },
             SkipInZones = { 1413 },
             Zone = 1454,
-            _index = 452,
+            _index = 451,
         },
         {
             Waypoint = 2458,
@@ -4213,7 +4204,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             SkipInZones = { 1413 },
             Zone = 1454,
-            _index = 453,
+            _index = 452,
         },
         {
             Waypoint = 1065,
@@ -4224,7 +4215,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Race = { "Skyborne", "Tauren" },
             SkipInZones = { 1413 },
             Zone = 1454,
-            _index = 454,
+            _index = 453,
         },
         {
             Waypoint = 2458,
@@ -4234,7 +4225,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             SkipInZones = { 1413 },
             Zone = 1454,
-            _index = 455,
+            _index = 454,
         },
         {
             Waypoint = 1065,
@@ -4245,7 +4236,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Race = { "Skyborne", "Tauren" },
             SkipInZones = { 1413 },
             Zone = 1454,
-            _index = 456,
+            _index = 455,
         },
         {
             Waypoint = 2458,
@@ -4253,7 +4244,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Range = 120,
             Class = "ROGUE",
             Zone = 1413,
-            _index = 457,
+            _index = 456,
         },
         {
             Waypoint = 1065,
@@ -4262,7 +4253,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "DRUID",
             IsQuestOnQuest = 30,
             Zone = 1413,
-            _index = 458,
+            _index = 457,
         },
         {
             LootItems = { { quantity = 1, itemID = 15883, includeBank = false } },
@@ -4272,7 +4263,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             ItemCount = { itemID = 15883, count = 1, operator = "<" },
             Race = { "Skyborne", "Tauren" },
             Zone = 1413,
-            _index = 459,
+            _index = 458,
         },
         {
             Emote = { manual = true, emote = "salute", npcID = 0 },
@@ -4283,7 +4274,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestUncompleted = 2458,
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1413,
-            _index = 460,
+            _index = 459,
         },
         {
             Done = { 2458 },
@@ -4292,7 +4283,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 2458,
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1413,
-            _index = 461,
+            _index = 460,
         },
         {
             PickUp = { 2478 },
@@ -4302,7 +4293,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1413,
-            _index = 462,
+            _index = 461,
         },
         {
             Qpart = { [2478] = { 5 } },
@@ -4311,14 +4302,14 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "ROGUE",
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1413,
-            _index = 463,
+            _index = 462,
         },
         {
             Note = { "MOB_TAKE_INCREASED_DAMAGE_CERTAIN_ABILITIES", "USE_AMBUSH_MUTATED_VENTURE_CO_DRONES", "USE_RUPTURE_VENTURE_CO_PATROLLERS", "USE_EVISCERATE_VENTURE_CO_LOOKOUTS_1_COMBO" },
             Class = "ROGUE",
             IsQuestUncompleted = 2478,
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
-            _index = 464,
+            _index = 463,
         },
         {
             Qpart = { [2478] = { 1, 3, 2 } },
@@ -4328,7 +4319,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "ROGUE",
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1413,
-            _index = 465,
+            _index = 464,
         },
         {
             Qpart = { [2478] = { 4 } },
@@ -4337,7 +4328,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "ROGUE",
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1413,
-            _index = 466,
+            _index = 465,
         },
         {
             Qpart = { [2478] = { 6 } },
@@ -4345,7 +4336,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "ROGUE",
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1413,
-            _index = 467,
+            _index = 466,
         },
         {
             Waypoint = 2478,
@@ -4355,7 +4346,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "ROGUE",
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1414,
-            _index = 468,
+            _index = 467,
         },
         {
             Waypoint = 1065,
@@ -4365,7 +4356,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "DRUID",
             Race = { "Skyborne", "Tauren" },
             Zone = 1414,
-            _index = 469,
+            _index = 468,
         },
         {
             Done = { 2478 },
@@ -4374,7 +4365,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestOnQuest = 2478,
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1454,
-            _index = 470,
+            _index = 469,
         },
         {
             PickUp = { 2479 },
@@ -4384,7 +4375,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 20,
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1454,
-            _index = 471,
+            _index = 470,
         },
         {
             BuyMerchant = { { quantity = 20, itemID = 2928, targetStock = true } },
@@ -4396,7 +4387,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Money = { copper = 420, operator = ">=" },
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1454,
-            _index = 472,
+            _index = 471,
         },
         {
             BuyMerchant = { { quantity = 20, itemID = 3371, targetStock = true } },
@@ -4408,7 +4399,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Money = { copper = 84, operator = ">=" },
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1454,
-            _index = 473,
+            _index = 472,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -4416,7 +4407,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "SHAMAN",
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1454,
-            _index = 474,
+            _index = 473,
         },
         {
             LearnSkill = { spellID = 197 },
@@ -4425,7 +4416,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 1,
             Race = { "Scourge", "Tauren", "Troll" },
             Zone = 1454,
-            _index = 475,
+            _index = 474,
         },
         {
             LearnSkill = { spellID = 197 },
@@ -4435,14 +4426,14 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 1,
             Race = "Scourge",
             Zone = 1454,
-            _index = 476,
+            _index = 475,
         },
         {
             LearnSkill = { allAvailable = true },
             Coord = { x = -4801.42, y = 1980.53 },
             Class = "WARRIOR",
             Zone = 1454,
-            _index = 477,
+            _index = 476,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -4450,7 +4441,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Class = "HUNTER",
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1454,
-            _index = 478,
+            _index = 477,
         },
         {
             LearnSkill = { spellID = 24558 },
@@ -4459,7 +4450,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             MinLevel = 24,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1454,
-            _index = 479,
+            _index = 478,
         },
         {
             GossipOptionIDs = { 95758 },
@@ -4469,7 +4460,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestUncompleted = 2842,
             MinLevel = 23,
             Zone = 1454,
-            _index = 480,
+            _index = 479,
         },
         {
             PickUp = { 2842 },
@@ -4478,7 +4469,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             IsQuestUncompleted = 2842,
             MinLevel = 23,
             Zone = 1454,
-            _index = 481,
+            _index = 480,
         },
         {
             BuyMerchant = { { itemID = 3137, quantity = 1 } },
@@ -4493,7 +4484,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Money = { copper = 210, operator = ">=" },
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1454,
-            _index = 482,
+            _index = 481,
         },
         {
             UseItem = { itemID = 6452 },
@@ -4501,27 +4492,67 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             HasAura = 9991,
             ItemCount = { itemID = 6452, count = 1, operator = ">=" },
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
-            _index = 483,
+            _index = 482,
         },
         {
             DestroyItems = { items = { 8051 } },
             Class = "ROGUE",
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
-            _index = 484,
+            _index = 483,
         },
         {
             DestroyItems = { items = { 8066 } },
             Class = "ROGUE",
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
+            _index = 484,
+        },
+        {
+            LeaveQuests = { 6421, 4021, 6481, 6284, 6641, 6563, 97003 },
             _index = 485,
         },
         {
-            LeaveQuests = { 6421, 4021, 6481, 6284, 6641, 6563 },
+            Waypoint = 1,
+            Note = { "LEAVE_ORGRIMMAR" },
+            Coord = { x = -4417.1, y = 1480.6 },
+            Range = 15,
+            ZoneStepTrigger = { mapID = 1454, x = -4417.1, y = 1480.6, Range = 15 },
+            OnlyInZones = { 1454 },
+            Zone = 1454,
             _index = 486,
         },
         {
-            RouteCompleted = true,
+            Waypoint = 1,
+            Note = { "LEAVE_ORGRIMMAR" },
+            Coord = { x = -4412.5, y = 1436.4 },
+            Range = 15,
+            ZoneStepTrigger = { mapID = 1454, x = -4412.5, y = 1436.4, Range = 15 },
+            OnlyInZones = { 1454 },
+            Zone = 1454,
             _index = 487,
+        },
+        {
+            Waypoint = 1,
+            Note = { "LEAVE_ORGRIMMAR" },
+            Coord = { x = -4363.9, y = 1420.2 },
+            Range = 15,
+            ZoneStepTrigger = { mapID = 1454, x = -4363.9, y = 1420.2, Range = 15 },
+            OnlyInZones = { 1454 },
+            Zone = 1454,
+            _index = 488,
+        },
+        {
+            Waypoint = 1,
+            Note = { "LEAVE_ORGRIMMAR" },
+            Coord = { x = -4370, y = 1382.2 },
+            Range = 15,
+            ZoneStepTrigger = { mapID = 1411, x = -4370, y = 1382.2, Range = 15 },
+            OnlyInZones = { 1454 },
+            Zone = 1411,
+            _index = 489,
+        },
+        {
+            RouteCompleted = true,
+            _index = 490,
         },
     },
 }

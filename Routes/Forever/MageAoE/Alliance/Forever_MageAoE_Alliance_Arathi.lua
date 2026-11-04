@@ -109,7 +109,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         {
             Grind = 36,
             Fillers = { [658] = { 1 } },
-            Note = { "CHECK_VIDEO_GUIDE_NEED_HELP", "REPAIR" },
+            Note = { "REPAIR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 61.89, 58.12),
             IsQuestUncompleted = 658,
             Zone = 1417,
@@ -236,7 +236,6 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
         {
             Grind = 37,
             Fillers = { [658] = { 1 } },
-            Note = { "CHECK_VIDEO_GUIDE_NEED_HELP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 61.89, 58.12),
             IsQuestUncompleted = 658,
             Zone = 1417,
