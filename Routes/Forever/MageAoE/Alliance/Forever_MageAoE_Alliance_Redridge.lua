@@ -8,7 +8,11 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Redridge"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 1433,
     conditions = { MinLevel = 18, Race = { APR.RACES.Gnome, APR.RACES.Human, APR.RACES.Skyborne }, Class = APR.Classes.Mage, Faction = "Alliance" },
-    nextRoute = { "Forever-MageAoE-Alliance-Duskwood-First-Visit" },
+    nextRoute = {
+        "Forever-MageAoE-Alliance-Duskwood-First-Visit",
+        { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Alliance", Race = { APR.RACES.Gnome, APR.RACES.Human, APR.RACES.Skyborne }, Class = APR.Classes.Mage, SkipForLvl = 26 } },
+        { route = "Forever-Shared-Dungeons-Deadmines", conditions = { MinLevel = 18, Faction = "Alliance", Race = { APR.RACES.Gnome, APR.RACES.Human, APR.RACES.Skyborne }, Class = APR.Classes.Mage, SkipForLvl = 24 } },
+    },
     parallelSteps = {
         {
             repeatable = true,

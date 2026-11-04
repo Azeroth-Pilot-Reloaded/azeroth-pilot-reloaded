@@ -10,6 +10,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
     nextRoute = {
         { route = "Forever-Horde-Tirisfal-Glades", conditions = { Class = { APR.Classes.Mage, APR.Classes.Priest, APR.Classes.Rogue, APR.Classes.Warlock, APR.Classes.Warrior } } },
         { route = "Forever-Horde-The-Barrens",     conditions = { Class = { APR.Classes.Hunter, APR.Classes.Shaman } } },
+        { route = "Forever-Horde-Dungeons-Barrens-12-16", conditions = { MinLevel = 12, Faction = "Horde", Race = { APR.RACES.Orc, APR.RACES.Troll }, Class = { APR.Classes.Hunter, APR.Classes.Shaman }, SkipForLvl = 17 } },
+        { route = "Forever-Shared-Dungeons-Hall-of-Thanes", conditions = { MinLevel = 13, Race = { APR.RACES.Orc, APR.RACES.Troll }, SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, Race = { APR.RACES.Orc, APR.RACES.Troll }, SkipForLvl = 19 } },
     },
     prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 1, conditions = { Faction = "Horde" } }, [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1 }, [APR.PREFAB_TYPES.StartingZone] = 1 },
     parallelSteps = {

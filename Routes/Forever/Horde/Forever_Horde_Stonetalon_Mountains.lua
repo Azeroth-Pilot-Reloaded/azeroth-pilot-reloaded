@@ -8,7 +8,11 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
     mapID = 1442,
     conditions = { MinLevel = 17, Faction = "Horde" },
     -- prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 3 }, [APR.PREFAB_TYPES.Speedrun] = { index = 3 } },
-    nextRoute = { "Forever-Horde-Hillsbrad" },
+    nextRoute = {
+        "Forever-Horde-Hillsbrad",
+        { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Horde", SkipForLvl = 26 } },
+        { route = "Forever-Shared-Dungeons-Deadmines", conditions = { MinLevel = 18, Faction = "Horde", SkipForLvl = 24 } },
+    },
     parallelSteps = {
         {
             conditions = { ItemCount = { itemID = 928, count = 1 }, EquippedItemStat = { { allowMissing = true, slot = 16, value = 7, precision = 1, stat = "QUALITY", operator = "<" }, { allowMissing = true, slot = 16, value = 15.17, precision = 2, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<" } }, Race = { "Orc", "Tauren", "Troll" }, Class = "WARRIOR", EquippedItem = { invert = true, itemID = 928, slot = 16 }, MinLevel = 20 },

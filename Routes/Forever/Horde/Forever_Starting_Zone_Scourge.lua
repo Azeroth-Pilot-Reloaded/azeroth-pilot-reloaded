@@ -7,7 +7,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 1420,
     conditions = { Race = APR.RACES.Scourge, Faction = "Horde" },
-    nextRoute = { "Forever-Horde-Silverpine-Forest", "Forever-Horde-The-Barrens" },
+    nextRoute = {
+        "Forever-Horde-Silverpine-Forest",
+        "Forever-Horde-The-Barrens",
+        { route = "Forever-Horde-Dungeons-Silverpine", conditions = { MinLevel = 12, Faction = "Horde", Race = APR.RACES.Scourge, Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Mage, APR.Classes.Warlock, APR.Classes.Druid }, SkipForLvl = 15 } },
+        { route = "Forever-Horde-Dungeons-Barrens-12-16", conditions = { MinLevel = 12, Faction = "Horde", Race = APR.RACES.Scourge, Class = { APR.Classes.Hunter, APR.Classes.Shaman }, SkipForLvl = 17 } },
+        { route = "Forever-Shared-Dungeons-Hall-of-Thanes", conditions = { MinLevel = 13, Faction = "Horde", Race = APR.RACES.Scourge, SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, Faction = "Horde", Race = APR.RACES.Scourge, SkipForLvl = 19 } },
+    },
     prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 1, conditions = { Faction = "Horde" } }, [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1 }, [APR.PREFAB_TYPES.StartingZone] = 1 },
     parallelSteps = {
         {
@@ -6497,7 +6504,12 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 1420,
     conditions = { MinLevel = 10, Race = { APR.RACES.Orc, APR.RACES.Troll }, Class = { APR.Classes.Mage, APR.Classes.Priest, APR.Classes.Rogue, APR.Classes.Warlock, APR.Classes.Warrior } },
-    nextRoute = { { route = "Forever-Horde-Silverpine-Forest" } },
+    nextRoute = {
+        { route = "Forever-Horde-Silverpine-Forest" },
+        { route = "Forever-Horde-Dungeons-Silverpine", conditions = { MinLevel = 12, Faction = "Horde", Race = { APR.RACES.Orc, APR.RACES.Troll }, Class = { APR.Classes.Warrior, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Mage, APR.Classes.Warlock }, SkipForLvl = 15 } },
+        { route = "Forever-Shared-Dungeons-Hall-of-Thanes", conditions = { MinLevel = 13, Race = { APR.RACES.Orc, APR.RACES.Troll }, Class = { APR.Classes.Warrior, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Mage, APR.Classes.Warlock }, SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, Race = { APR.RACES.Orc, APR.RACES.Troll }, Class = { APR.Classes.Warrior, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Mage, APR.Classes.Warlock }, SkipForLvl = 19 } },
+    },
     prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 2, conditions = { Faction = "Horde" } } },
     -- prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 2 }, [APR.PREFAB_TYPES.Speedrun] = { index = 2 } },
     parallelSteps = {

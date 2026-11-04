@@ -7,7 +7,13 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Dungeons,
     mapID = 1454,
-    conditions = {  },
+    conditions = { MinLevel = 13 },
+    nextRoute = {
+        { route = "Forever-Shared-Dungeons-Hall-of-Thanes", conditions = { MinLevel = 13, SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ruins-of-Lordaeron", conditions = { MinLevel = 15, SkipForLvl = 21 } },
+        { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, SkipForLvl = 26 } },
+        { route = "Forever-Shared-Dungeons-Deadmines", conditions = { MinLevel = 18, SkipForLvl = 24 } },
+    },
     steps = {
         {
             PickUp = { 5722 },

@@ -8,7 +8,12 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
     category = APR.CATEGORIES.Dungeons,
     mapID = 1439,
     conditions = { MinLevel = 20, Faction = "Alliance" },
-    nextRoute = { { route = "Forever-Alliance-Stonetalon-Ashenvale", conditions = { Class = { APR.Classes.Druid, APR.Classes.Mage, APR.Classes.Paladin, APR.Classes.Priest, APR.Classes.Rogue, APR.Classes.Shaman, APR.Classes.Warlock, APR.Classes.Warrior } } }, { route = "Forever-Alliance-Ashenvale-Stonetalon-Hunter", conditions = { Race = { APR.RACES.Dwarf, APR.RACES.Human, APR.RACES.NightElf, APR.RACES.Skyborne }, Class = APR.Classes.Hunter } } },
+    nextRoute = {
+        { route = "Forever-Alliance-Stonetalon-Ashenvale", conditions = { Class = { APR.Classes.Druid, APR.Classes.Mage, APR.Classes.Paladin, APR.Classes.Priest, APR.Classes.Rogue, APR.Classes.Shaman, APR.Classes.Warlock, APR.Classes.Warrior } } },
+        { route = "Forever-Alliance-Ashenvale-Stonetalon-Hunter", conditions = { Race = { APR.RACES.Dwarf, APR.RACES.Human, APR.RACES.NightElf, APR.RACES.Skyborne }, Class = APR.Classes.Hunter } },
+        { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Alliance", SkipForLvl = 26 } },
+        { route = "Forever-Shared-Dungeons-Deadmines", conditions = { MinLevel = 18, Faction = "Alliance", SkipForLvl = 24 } },
+    },
     prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 9 } },
     steps = {
         {

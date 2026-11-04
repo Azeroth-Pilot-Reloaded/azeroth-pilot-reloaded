@@ -8,7 +8,11 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 1432,
     conditions = { MinLevel = 10, Race = { APR.RACES.Gnome, APR.RACES.Human }, Class = APR.Classes.Mage, Faction = "Alliance" },
-    nextRoute = { "Forever-MageAoE-Alliance-Darkshore" },
+    nextRoute = {
+        "Forever-MageAoE-Alliance-Darkshore",
+        { route = "Forever-Shared-Dungeons-Hall-of-Thanes", conditions = { MinLevel = 13, Faction = "Alliance", Race = { APR.RACES.Gnome, APR.RACES.Human }, Class = APR.Classes.Mage, SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, Faction = "Alliance", Race = { APR.RACES.Gnome, APR.RACES.Human }, Class = APR.Classes.Mage, SkipForLvl = 19 } },
+    },
     parallelSteps = {
         {
             repeatable = true,

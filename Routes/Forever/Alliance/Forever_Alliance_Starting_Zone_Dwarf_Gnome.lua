@@ -10,6 +10,8 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
     nextRoute = {
         { route = "Forever-Alliance-Loch-Modan-Hunter", conditions = { Race = APR.RACES.Dwarf, Class = APR.Classes.Hunter } },
         { route = "Forever-Alliance-Elwynn-Forest",     conditions = { ClassNot = APR.Classes.Hunter } },
+        { route = "Forever-Alliance-Dungeons-Loch-Modan-Hunter", conditions = { MinLevel = 11, Faction = "Alliance", Race = APR.RACES.Dwarf, Class = APR.Classes.Hunter, SkipForLvl = 14 } },
+        { route = "Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome", conditions = { MinLevel = 11, Faction = "Alliance", Race = { APR.RACES.Dwarf, APR.RACES.Gnome }, Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock }, SkipForLvl = 13 } },
     },
     prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 1 }, [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1 }, [APR.PREFAB_TYPES.StartingZone] = 1 },
     parallelSteps = {

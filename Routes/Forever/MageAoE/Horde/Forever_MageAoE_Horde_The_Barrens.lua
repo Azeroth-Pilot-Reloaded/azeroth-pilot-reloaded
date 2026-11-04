@@ -8,7 +8,14 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-The-Barrens"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 1413,
     conditions = { MinLevel = 12, Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Troll }, Class = APR.Classes.Mage, Faction = "Horde" },
-    nextRoute = { "Forever-MageAoE-Horde-Stonetalon-Barrens" },
+    nextRoute = {
+        "Forever-MageAoE-Horde-Stonetalon-Barrens",
+        { route = "Forever-Shared-Dungeons-Hall-of-Thanes", conditions = { MinLevel = 13, Faction = "Horde", Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Troll }, Class = APR.Classes.Mage, SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, Faction = "Horde", Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Troll }, Class = APR.Classes.Mage, SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ruins-of-Lordaeron", conditions = { MinLevel = 15, Faction = "Horde", Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Troll }, Class = APR.Classes.Mage, SkipForLvl = 21 } },
+        { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Horde", Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Troll }, Class = APR.Classes.Mage, SkipForLvl = 26 } },
+        { route = "Forever-Shared-Dungeons-Deadmines", conditions = { MinLevel = 18, Faction = "Horde", Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Troll }, Class = APR.Classes.Mage, SkipForLvl = 24 } },
+    },
     parallelSteps = {
         {
             repeatable = true,

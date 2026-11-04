@@ -8,7 +8,11 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 2521,
     conditions = { Faction = "Alliance", Race = { APR.RACES.Skyborne }, Class = APR.Classes.Mage },
-    nextRoute = { "Forever-MageAoE-Alliance-Darkshore" },
+    nextRoute = {
+        "Forever-MageAoE-Alliance-Darkshore",
+        { route = "Forever-Shared-Dungeons-Hall-of-Thanes", conditions = { MinLevel = 13, Faction = "Alliance", Race = APR.RACES.Skyborne, Class = APR.Classes.Mage, SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, Faction = "Alliance", Race = APR.RACES.Skyborne, Class = APR.Classes.Mage, SkipForLvl = 19 } },
+    },
     parallelSteps = {
         {
             conditions = { ItemCount = { count = 1, itemID = 247840, operator = ">=" }, Skill = { rank = 15, operator = "<", skillID = 186 }, AnyOf = { { Skill = { rank = 1, operator = ">=", skillID = 186 } }, { SkipForPrimaryProfessions = 2 } } },

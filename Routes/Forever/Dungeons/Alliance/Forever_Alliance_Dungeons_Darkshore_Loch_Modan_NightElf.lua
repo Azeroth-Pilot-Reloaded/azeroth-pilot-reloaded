@@ -8,7 +8,13 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
     category = APR.CATEGORIES.Dungeons,
     mapID = 1439,
     conditions = { Race = APR.RACES.NightElf, Faction = "Alliance", MinLevel = 11 },
-    nextRoute = { { route = "Forever-Alliance-Dungeons-Hall-of-Thanes" } },
+    nextRoute = {
+        { route = "Forever-Alliance-Dungeons-Hall-of-Thanes" },
+        { route = "Forever-Shared-Dungeons-Hall-of-Thanes", conditions = { MinLevel = 13, Faction = "Alliance", Race = APR.RACES.NightElf, SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, Faction = "Alliance", Race = APR.RACES.NightElf, SkipForLvl = 19 } },
+        { route = "Forever-Shared-Dungeons-Ruins-of-Lordaeron", conditions = { MinLevel = 15, Faction = "Alliance", Race = APR.RACES.NightElf, SkipForLvl = 21 } },
+        { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Alliance", Race = APR.RACES.NightElf, SkipForLvl = 26 } },
+    },
     prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 4 } },
     parallelSteps = {
         {
