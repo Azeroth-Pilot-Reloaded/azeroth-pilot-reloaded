@@ -107,6 +107,11 @@ objectives, public instance identity without coordinates, stable work while
 restricted, loading and recovery. It never treats an entrance landing as the
 player's position. `arrow_visibility_test.lua` also rejects stale arrows during
 that restriction.
+The same instance-position cases cover party, raid, scenario, battleground and
+arena types on Retail and Forever, plus an invented non-outdoor type to reject
+a closed whitelist. Each case checks local/exterior objectives, formatted exit
+names, stable work and recovery. `instance_travel_text_test.lua` checks entry
+and exit templates for dungeon, raid, delve and scenario actions on both clients.
 `navigation_transport_labels_test.lua` uses invented stops and cities to check
 shared-interior travel labels in both directions, authored/library consistency,
 world and radius boundaries, conflicting stops and late client names.
