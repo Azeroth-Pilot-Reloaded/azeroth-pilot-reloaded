@@ -330,6 +330,27 @@ Returned configuration and data belong to that instance. Modify data before
 planning and invalidate cached positions after a geometry change.
 Each edge build caches repeated quest, spell, item and name queries for that build.
 
+For verified interiors without a native UI map, `config.UnmappedAreas` maps a
+legacy guide map ID to `{ instanceID = worldInstanceID, areaID = clientAreaID }`.
+Each world instance must identify only one fallback map. The Forever catalogue
+uses this for the Deeprun Tram. `GetFallbackMapForInstance(instanceID)` resolves
+that identity, and `GetMapWorldInstanceID(mapID)` resolves its world space (or
+asks the client for ordinary maps). World positions retain their observed yards;
+no normalized map coordinates or continent are invented. Local access stays
+inside that interior and external travel still requires declared crossings.
+The APR host prefers native player map identity and uses this fallback only
+when it is unavailable. Undeclared instances remain pending.
+
+`config.TransportDestinations[kind]` optionally lists served-city labels for
+transport stops sharing one interior map. Each stop has world `instanceID`,
+`x`, `y`, a positive `radius` in yards, and a display `mapID`. The tram data
+names the city served by each platform. `GetTransportDestinationName(kind,
+position)` returns the client's localized city name and whether that world has
+declared stops. Out-of-range, conflicting or not-yet-named stops return no name;
+names are retried on the next call. These labels never replace the position's
+map or its access region. APR's authored tram instructions and library guidance
+use the same resolution and the existing `ENTER_TRAM` translation template.
+
 ### External waypoint output
 
 Both automatic and manual output are included in `LibAPRNavigation.xml`, without

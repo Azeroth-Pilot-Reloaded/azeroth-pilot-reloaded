@@ -1,6 +1,15 @@
 -- Declarative travel data. Names are resolved through the game client.
 LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "geography", {
     config = {
+        -- Classic exposes world instance 369 in the tram, but no native UI map.
+        -- Retain the legacy guide identity; coordinates remain world yards.
+        UnmappedAreas = { [499] = { instanceID = 369, areaID = 2257 } },
+        -- Both platforms share the tram's world/UI map. Name the city served
+        -- by each arrival platform, including nearby quest givers.
+        TransportDestinations = { tram = {
+            { instanceID = 369, x = 69.22769927979, y = 10.39319992065, radius = 150, mapID = 1455 },
+            { instanceID = 369, x = 45.09560012817, y = 2490.5200195312, radius = 150, mapID = 1453 },
+        } },
         ContinentMapOverrides = {},
         IsolatedAreas = {
             [1441] = "forever:thousand-needles",
@@ -16,4 +25,4 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "geography", {
         defaultSpellCastSeconds = 10,
         threshold = 2000,
     },
-}, 31)
+}, 33)

@@ -36,6 +36,8 @@ assert(APR:GetTransportStepText({ Boat = true, NodeID = 999,
 assert(APR:GetTransportStepText({ Boat = true, UseFlightPath = 42, Name = "Port" }) == "Boat to Port")
 assert(APR:GetTransportStepText({ Zeppelin = true, TakePortal = { mapID = 20 } }) == "Zeppelin to Desert")
 assert(APR:GetTransportStepText({ Tram = true, TakePortal = { mapID = 20 } }) == "Take tram - Desert")
+assert(APR:GetTransportStepText({ Tram = true, Waypoint = 123, ZoneStepTrigger = { mapID = 10 } }) == "WAYPOINT",
+    "An explicit waypoint keeps its presentation priority on a transport")
 assert(APR:GetTransportStepText({ TakePortal = { mapID = 20 } }) == "Portal to Desert")
 
 local bindName, bindMap = "Auberge", 11

@@ -1,7 +1,7 @@
 -- Turn declarative connections into usable edges for one character snapshot.
 -- Each build owns its API cache and yields between connection directions.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("catalog", 18) then return end
+if not Lib:BeginModule("catalog", 19) then return end
 local Instance = Lib.Instance
 local EdgeBuild = {}
 EdgeBuild.__index = EdgeBuild
@@ -25,6 +25,15 @@ end
 
 function Instance:GetInstruction(kind, action, destination)
     local destinationName = self:GetDisplayMapName(destination)
+    if not action then
+        local stopName, interior = self:GetTransportDestinationName(kind, destination)
+        if interior then
+            -- Missing/ambiguous city names must not turn the shared interior
+            -- name into a false destination. Native names remain retryable.
+            if not stopName then return self:GetText("RUN_WAYPOINT") end
+            destinationName = stopName
+        end
+    end
     if action and (action.type == "spell" or action.type == "item") then
         local getter = action.type == "spell" and self.env.getSpellName or self.env.getItemName
         local actionName = getter and getter(action.data) or self:GetText("UNKNOWN")

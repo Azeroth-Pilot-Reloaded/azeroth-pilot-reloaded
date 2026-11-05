@@ -103,7 +103,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/utils/InstanceUtils.lua"] = {instrumented = 8, diagnosticHelpers = 0},
     ["APR-Core/utils/LootUtils.lua"] = {instrumented = 9, diagnosticHelpers = 0},
     ["APR-Core/utils/NavigationUtils.lua"] = {instrumented = 4, diagnosticHelpers = 0},
-    ["APR-Core/utils/NavigationZones.lua"] = {instrumented = 26, diagnosticHelpers = 0},
+    ["APR-Core/utils/NavigationZones.lua"] = {instrumented = 27, diagnosticHelpers = 0},
     ["APR-Core/utils/OutdoorKillUtils.lua"] = {instrumented = 8, diagnosticHelpers = 0},
     ["APR-Core/utils/PlayerPositionUtils.lua"] = {instrumented = 1, diagnosticHelpers = 0},
     ["APR-Core/utils/PlayerUtils.lua"] = {instrumented = 37, diagnosticHelpers = 0},

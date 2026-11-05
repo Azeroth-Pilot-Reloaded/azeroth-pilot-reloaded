@@ -1,6 +1,10 @@
 -- Declarative travel data. Names are resolved through the game client.
 LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "geography", {
     config = {
+        TransportDestinations = { tram = {
+            { instanceID = 369, x = 69.22769927979, y = 10.39319992065, radius = 150, mapID = 87 },
+            { instanceID = 369, x = 45.09560012817, y = 2490.5200195312, radius = 150, mapID = 84 },
+        } },
         -- These phased garrisons use Draenor's world coordinates, as in HBD's
         -- verified instance overrides. Keep ordinary dungeons/worlds separate.
         WorldInstanceOverrides = {
@@ -210,4 +214,4 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "geography", {
         skyridingThreshold = 10000,
         threshold = 2000,
     },
-}, 34)
+}, 35)
