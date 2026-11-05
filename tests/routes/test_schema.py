@@ -107,6 +107,30 @@ class RouteSchemaTests(unittest.TestCase):
                 with self.assertRaises(InvalidRoute):
                     self.schema.condition({"Not": {name: None}}, "condition")
 
+    def test_standalone_steps_cannot_contain_only_conditions_and_metadata(self):
+        stubs = [{}, {"_index": 1, "_comment": "No instruction"}]
+        stubs.extend({name: examples()[name], "_index": 1} for name in self.schema.condition_fields)
+        for step in stubs:
+            for content in (
+                {"steps": seq(step)},
+                {"steps": {}, "parallelSteps": seq({"conditions": {"Class": "MAGE"}, "steps": seq(step)})},
+                {"scenarios": seq({"scenarioID": 1, "steps": seq(step)})},
+                {"steps": seq({"scenarioID": 1, "steps": seq(step)})},
+            ):
+                with self.subTest(step=step, content=content), self.assertRaisesRegex(
+                    InvalidRoute, "standalone step requires content beyond conditions and metadata"
+                ):
+                    self.schema.validate("synthetic", {"label": "Synthetic", **content})
+
+        for instruction in (
+            {"Note": "Keep this instruction"}, {"ExtraLineText": "Keep this hint"},
+            {"Waypoint": 101}, {"BuyMerchant": seq({"itemID": 102, "quantity": 1})},
+            {"Done": seq(103)}, {"RouteCompleted": True}, {"PickUp": {}},
+        ):
+            with self.subTest(instruction=instruction):
+                self.schema.validate("synthetic", {"label": "Synthetic", "steps": seq(
+                    {"IsQuestUncompleted": 104, "_index": 1, **instruction})})
+
     def test_dungeon_instance_ids_are_not_ui_map_ids(self):
         for name in ("EnterInstance", "LeaveInstance"):
             self.schema.step({name: {"dungeonKey": "ROL"}}, "step")

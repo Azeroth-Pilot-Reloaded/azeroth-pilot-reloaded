@@ -23,6 +23,7 @@ for _, version in ipairs({ APR.GAME_VERSIONS.Retail, APR.GAME_VERSIONS.Forever }
     APR.Level = 12
     assert(APR:GetRouteVisibility("chapter") == "visible" and APR:CanStartRoute("chapter"))
     assert(contains(APR:GetRouteLevelWarnings("chapter"), ">= 14"))
+    assert(contains(APR:GetRouteLevelWarnings("chapter"), ": 12)"), "Whole levels do not display redundant decimal places")
     assert(not APR:EvaluateRouteConditions(APR.RouteQuestStepList.chapter.conditions),
         "Automatic recommendations still respect the suggested range")
     assert(APR:AddRouteToCustomPathByKey("chapter") and APR:ActivateRoute("chapter"))
@@ -38,6 +39,7 @@ for _, version in ipairs({ APR.GAME_VERSIONS.Retail, APR.GAME_VERSIONS.Forever }
     APR.Level = 18.25
     local warnings = APR:GetRouteLevelWarnings("chapter")
     assert(#warnings == 1 and contains(warnings, "<= 18"))
+    assert(contains(warnings, ": 18.25)"), "Fractional XP levels remain precise")
     assert(APR:CanStartRoute("chapter"), "Overlevel routes remain selectable")
     assert(step.SkipForLvl == 18, "Warnings and execution never rewrite the declaration")
     APR.Level = 14
@@ -121,10 +123,10 @@ rows:Bind(row, record, 1, browser, false)
 assert(row.name:GetText() == "Advisory route" and row.name.role == "routeNotStarted",
     "A recycled row clears the warning color while preserving the original label")
 APR.Level = 24
-assert(#catalog:Build()[1].levelWarnings == 0, "An authored step cutoff cannot color the route as advisory")
+assert(#catalog:Build()[1].warnings == 0, "An authored step cutoff cannot color the route as advisory")
 APR.Level = 24.5
 record = catalog:Build()[1]
-assert(#record.levelWarnings == 1 and contains(record.levelWarnings, "<= 24"))
+assert(#record.warnings == 1 and contains(record.warnings, "<= 24"))
 APRCustomPath.test = { record.label }
 local pathRow = rows:Create(UIParent, browser, true)
 pathRow.item = record

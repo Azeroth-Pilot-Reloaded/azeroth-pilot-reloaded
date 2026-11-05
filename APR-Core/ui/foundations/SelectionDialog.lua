@@ -30,15 +30,21 @@ local function CreateSelectionDialog()
     frame.description:SetWordWrap(true)
     frame.body = UI:Panel(frame, "borderedPanel", "stone")
     frame.scroll = UI:Scroll(frame.body)
+    frame.scroll.scrollBarHideable = true
     frame.scroll:SetPoint("TOPLEFT", 8, -8)
     frame.measure = UI:Label(frame, "", 12)
     frame.measure:SetWordWrap(true)
     frame.measure:Hide()
-    frame.cancelButton = UI:Button(frame, CANCEL, 120, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:37:callback#4", --[[/APR_DIAG]]function() frame:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    frame.detailMeasure = UI:Label(frame, "", 13)
+    frame.detailMeasure:SetWordWrap(true)
+    frame.detailMeasure:Hide()
+    frame.cancelButton = UI:Button(frame, CANCEL, 120, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:41:callback#4", --[[/APR_DIAG]]function() frame:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
     frame.cancelButton:SetPoint("BOTTOMRIGHT", -16, 14)
-    frame.acceptButton = UI:Button(frame, ACCEPT, 120, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:39:callback#5", --[[/APR_DIAG]]function() frame:Accept() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    frame.acceptButton = UI:Button(frame, ACCEPT, 120, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:43:callback#5", --[[/APR_DIAG]]function() frame:Accept() end--[[APR_DIAG]])--[[/APR_DIAG]])
     frame.acceptButton:SetPoint("RIGHT", frame.cancelButton, "LEFT", -10, 0)
     UI:SetButtonActive(frame.acceptButton, true)
+    frame.acceptButton:GetFontString():SetWordWrap(true)
+    frame.cancelButton:GetFontString():SetWordWrap(true)
     frame.acceptButton:Hide()
 
     function frame:Accept()
@@ -46,7 +52,7 @@ local function CreateSelectionDialog()
         self.onAccept, self.onCancel = nil, nil
         self:Hide()
         if callback then callback() end
-    end--[[APR_DIAG]]; frame.Accept = APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:44:frame:Accept#6", frame.Accept)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; frame.Accept = APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:50:frame:Accept#6", frame.Accept)--[[/APR_DIAG]]
 
     function frame:Choose(option)
         if not option or option.enabled == false then return end
@@ -55,37 +61,63 @@ local function CreateSelectionDialog()
         self.onSelect, self.onCancel = nil, nil
         self:Hide()
         if callback then callback(option) end
-    end--[[APR_DIAG]]; frame.Choose = APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:51:frame:Choose#7", frame.Choose)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; frame.Choose = APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:57:frame:Choose#7", frame.Choose)--[[/APR_DIAG]]
 
-    frame.list = APR.VirtualList:New(frame.scroll, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:60:callback#8", --[[/APR_DIAG]]function(parent)
+    frame.list = APR.VirtualList:New(frame.scroll, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:66:callback#8", --[[/APR_DIAG]]function(parent)
         local row = CreateFrame("Frame", nil, parent)
-        row.button = UI:ListButton(row, "", 1, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:62:callback#9", --[[/APR_DIAG]]function() frame:Choose(row.item.option) end--[[APR_DIAG]])--[[/APR_DIAG]])
+        row.button = UI:ListButton(row, "", 1, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:68:callback#9", --[[/APR_DIAG]]function() frame:Choose(row.item.option) end--[[APR_DIAG]])--[[/APR_DIAG]])
         -- A locked expansion still explains its level requirement on hover.
         row.button:SetMotionScriptsWhileDisabled(true)
         row.button:SetPoint("TOPLEFT")
         row.button:SetPoint("BOTTOMRIGHT", 0, 6)
         row.button:GetFontString():SetJustifyH("LEFT")
         row.button:GetFontString():SetWordWrap(true)
-        UI:Tooltip(row.button, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:69:callback#10", --[[/APR_DIAG]]function() return row.item and row.item.option.label end--[[APR_DIAG]])--[[/APR_DIAG]],
-            --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:70:callback#11", --[[/APR_DIAG]]function() return row.item and row.item.option.tooltip end--[[APR_DIAG]])--[[/APR_DIAG]])
+        row.detail = UI:Label(row, "", 13, "base")
+        row.detail:SetPoint("TOPLEFT", 28, -10)
+        row.detail:SetWordWrap(true)
+        row.detail:SetJustifyV("TOP")
+        row.marker = UI:Label(row, "•", 13, "warning")
+        row.marker:SetPoint("TOPLEFT", 12, -10)
+        row.marker:SetWidth(12)
+        UI:Tooltip(row.button, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:82:callback#10", --[[/APR_DIAG]]function() return row.item and row.item.option.label end--[[APR_DIAG]])--[[/APR_DIAG]],
+            --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:83:callback#11", --[[/APR_DIAG]]function() return row.item and row.item.option.tooltip end--[[APR_DIAG]])--[[/APR_DIAG]])
         function row:onRecycle()
             if GameTooltip:GetOwner() == self.button then GameTooltip:Hide() end
-        end--[[APR_DIAG]]; row.onRecycle = APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:71:row:onRecycle#12", row.onRecycle)--[[/APR_DIAG]]
+        end--[[APR_DIAG]]; row.onRecycle = APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:84:row:onRecycle#12", row.onRecycle)--[[/APR_DIAG]]
         return row
-    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:75:callback#13", --[[/APR_DIAG]]function(row, item)
+    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:88:callback#13", --[[/APR_DIAG]]function(row, item)
         row:onRecycle()
+        row.button:SetShown(not item.detail)
+        row.detail:SetShown(item.detail == true)
+        row.marker:SetShown(item.detail == true)
+        if item.detail then
+            row.detail:SetWidth(math.max(1, row:GetWidth() - 40))
+            row.detail:SetText(item.text)
+            return
+        end
         row.button:SetText(item.option.label)
         row.button:SetEnabled(item.option.enabled ~= false)
         UI:SetListRowState(row.button, false, nil, item.option.enabled ~= false)
-    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:80:callback#14", --[[/APR_DIAG]]function(item) return item.height end--[[APR_DIAG]])--[[/APR_DIAG]])
+    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:101:callback#14", --[[/APR_DIAG]]function(item) return item.height end--[[APR_DIAG]])--[[/APR_DIAG]])
+
+    function frame:UpdateScrollBar()
+        if self.scroll.ScrollBar then
+            self.scroll.ScrollBar:SetShown(self.list.height > self.scroll:GetHeight() + 0.5)
+        end
+    end--[[APR_DIAG]]; frame.UpdateScrollBar = APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:103:frame:UpdateScrollBar#15", frame.UpdateScrollBar)--[[/APR_DIAG]]
+    -- Native range updates can run after layout; keep their chrome in sync with
+    -- the actual list instead of showing an empty scrollbar on short prompts.
+    frame.scroll:HookScript("OnScrollRangeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:110:callback#16", --[[/APR_DIAG]]function() frame:UpdateScrollBar() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    frame.scroll:HookScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:111:callback#17", --[[/APR_DIAG]]function() frame:UpdateScrollBar() end--[[APR_DIAG]])--[[/APR_DIAG]])
 
     function frame:Layout()
         if not self.options or self.layingOut then return end
         self.layingOut = true
-        local width = math.min(self.confirming and 440 or 560, UIParent:GetWidth() - 40)
-        local innerWidth = width - 32
+        local padding = self.confirmationDetails and 20 or 16
+        local width = math.min(self.confirmationDetails and 480 or self.confirming and 440 or 560, UIParent:GetWidth() - 40)
+        local innerWidth = width - padding * 2
         self:SetWidth(width)
-        self.header:SetPoint("TOPLEFT", 16, -16)
+        self.header:SetPoint("TOPLEFT", padding, -padding)
         self.header:SetWidth(innerWidth)
         self.title:SetWidth(innerWidth - 40)
         local headerHeight = math.max(30, self.title:GetStringHeight())
@@ -93,21 +125,49 @@ local function CreateSelectionDialog()
         self.description:SetWidth(innerWidth)
         local descriptionHeight = self.description:GetText() ~= "" and self.description:GetStringHeight() or 0
         self.description:SetShown(descriptionHeight > 0)
-        self.description:SetPoint("TOPLEFT", 16, -(16 + headerHeight + 10))
+        self.description:ClearAllPoints()
+        self.description:SetPoint("TOPLEFT", padding, -(padding + headerHeight + 10))
         self.acceptButton:SetShown(self.confirming)
-        self.body:SetShown(not self.confirming)
+        self.body:SetShown(not self.confirming or #self.options > 0)
+        self.cancelButton:ClearAllPoints()
+        self.acceptButton:ClearAllPoints()
         if self.confirming then
-            local buttonWidth = (innerWidth - 10) / 2
+            local buttonWidth = self.confirmationDetails and math.min(160, (innerWidth - 12) / 2) or (innerWidth - 10) / 2
             self.acceptButton:SetWidth(buttonWidth)
             self.cancelButton:SetWidth(buttonWidth)
-            local buttonHeight = math.max(30, self.acceptButton:GetFontString():GetStringHeight() + 12,
+            self.acceptButton:SetPoint("BOTTOMRIGHT", -padding, 16)
+            self.cancelButton:SetPoint("RIGHT", self.acceptButton, "LEFT", -12, 0)
+            local buttonHeight = math.max(self.confirmationDetails and 36 or 30, self.acceptButton:GetFontString():GetStringHeight() + 12,
                 self.cancelButton:GetFontString():GetStringHeight() + 12)
             self.acceptButton:SetHeight(buttonHeight)
             self.cancelButton:SetHeight(buttonHeight)
-            self:SetHeight(16 + headerHeight + 24 + buttonHeight + 14)
+            local bodyTop = padding + headerHeight + 16
+            local items, totalHeight = {}, 0
+            self.detailMeasure:SetWidth(innerWidth - 74)
+            for _, text in ipairs(self.options) do
+                self.detailMeasure:SetText(text)
+                local height = math.max(32, self.detailMeasure:GetStringHeight() + 20) + 4
+                items[#items + 1] = {text = text, detail = true, height = height}
+                totalHeight = totalHeight + height
+            end
+            local bodyHeight = 0
+            if #items > 0 then
+                local available = UIParent:GetHeight() - 40 - bodyTop - descriptionHeight - buttonHeight - 68
+                bodyHeight = math.min(totalHeight + 16, math.max(44, available))
+                self.body:SetPoint("TOPLEFT", padding, -bodyTop)
+                self.body:SetSize(innerWidth, bodyHeight)
+                self.scroll:SetSize(innerWidth - 34, bodyHeight - 16)
+            end
+            self.list:SetItems(items)
+            self:UpdateScrollBar()
+            local promptTop = bodyTop + bodyHeight + (bodyHeight > 0 and 16 or 0)
+            self.description:ClearAllPoints()
+            self.description:SetPoint("TOPLEFT", padding, -promptTop)
+            self:SetHeight(promptTop + descriptionHeight + (descriptionHeight > 0 and 20 or 8) + buttonHeight + 16)
             self.layingOut = nil
             return
         end
+        self.cancelButton:SetPoint("BOTTOMRIGHT", -16, 14)
         self.cancelButton:SetSize(120, 30)
         local bodyTop = 16 + headerHeight + (descriptionHeight > 0 and 10 + descriptionHeight or 0) + 16
 
@@ -125,11 +185,12 @@ local function CreateSelectionDialog()
         self.scroll:SetSize(innerWidth - 34, bodyHeight - 16)
         self:SetHeight(bodyTop + bodyHeight + 58)
         self.list:SetItems(items)
+        self:UpdateScrollBar()
         self.layingOut = nil
-    end--[[APR_DIAG]]; frame.Layout = APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:82:frame:Layout#15", frame.Layout)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; frame.Layout = APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:113:frame:Layout#18", frame.Layout)--[[/APR_DIAG]]
 
     -- Escape, the cross and Cancel share the same lifecycle, including the delve prompt's callback.
-    frame:SetScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:132:callback#16", --[[/APR_DIAG]]function(self)
+    frame:SetScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:193:callback#19", --[[/APR_DIAG]]function(self)
         self:StopMovingOrSizing()
         GameTooltip:Hide()
         local callback = self.onCancel
@@ -139,11 +200,13 @@ local function CreateSelectionDialog()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     frame:RegisterEvent("DISPLAY_SIZE_CHANGED")
     frame:RegisterEvent("UI_SCALE_CHANGED")
-    frame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:142:callback#17", --[[/APR_DIAG]]function(self) if self:IsShown() then self:Layout() end end--[[APR_DIAG]])--[[/APR_DIAG]])
-    for _, font in ipairs({frame.title, frame.description, frame.measure}) do
+    frame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:203:callback#20", --[[/APR_DIAG]]function(self) if self:IsShown() then self:Layout() end end--[[APR_DIAG]])--[[/APR_DIAG]])
+    for _, font in ipairs({frame.title, frame.description, frame.measure, frame.detailMeasure,
+        frame.acceptButton:GetFontString(), frame.cancelButton:GetFontString()}) do
         local title = font == frame.title
-        APR:RegisterFontString(font, "general", {role = title and "accent" or "base", sizeDelta = title and 6 or 0, themeAccent = true,
-            onApplied = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:146:callback#18", --[[/APR_DIAG]]function() frame:Layout() end--[[APR_DIAG]])--[[/APR_DIAG]]})
+        APR:RegisterFontString(font, "general", {role = (title or font == frame.acceptButton:GetFontString()) and "accent" or "base",
+            sizeDelta = title and 6 or font == frame.detailMeasure and 1 or 0, themeAccent = true,
+            onApplied = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:209:callback#21", --[[/APR_DIAG]]function() frame:Layout() end--[[APR_DIAG]])--[[/APR_DIAG]]})
     end
     UISpecialFrames = UISpecialFrames or {}
     table.insert(UISpecialFrames, "APRSelectionPopup")
@@ -162,9 +225,13 @@ local function ShowDialog(settings)
     -- Replacing an open prompt resolves its previous cancellation callback first.
     frame:Hide()
     frame.title:SetText(settings.title or "APR")
+    APR:SetFontStringRole(frame.title, settings.details and "base" or "accent")
     frame.description:SetText(settings.description or "")
     frame.confirming = settings.confirmation == true
-    frame.options, frame.onSelect = settings.options or {}, settings.onSelect
+    frame.confirmationDetails = settings.details ~= nil
+    frame.options, frame.onSelect = settings.details or settings.options or {}, settings.onSelect
+    frame.acceptButton:SetText(settings.acceptText or ACCEPT)
+    frame.cancelButton:SetText(settings.cancelText or CANCEL)
     frame.onAccept, frame.onCancel = settings.onAccept, settings.onCancel
     frame:Layout()
     frame:ClearAllPoints()
@@ -173,13 +240,18 @@ local function ShowDialog(settings)
     frame:Show()
     frame.list:RefreshVisible(true)
     return frame
-end--[[APR_DIAG]]; ShowDialog = APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:158:ShowDialog#19", ShowDialog)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ShowDialog = APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:221:ShowDialog#22", ShowDialog)--[[/APR_DIAG]]
 
 function UI:ShowSelectionDialog(title, description, options, onSelect, onCancel, owner)
     return ShowDialog({title = title, description = description, options = options,
         onSelect = onSelect, onCancel = onCancel, owner = owner})
-end--[[APR_DIAG]]; UI.ShowSelectionDialog = APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:178:UI:ShowSelectionDialog#20", UI.ShowSelectionDialog)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; UI.ShowSelectionDialog = APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:245:UI:ShowSelectionDialog#23", UI.ShowSelectionDialog)--[[/APR_DIAG]]
 
 function UI:ShowConfirmationDialog(text, onAccept, onCancel, owner)
+    if type(text) == "table" then
+        return ShowDialog({title = text.title, description = text.description, details = text.details,
+            acceptText = text.acceptText, cancelText = text.cancelText,
+            onAccept = onAccept, onCancel = onCancel, owner = owner, confirmation = true})
+    end
     return ShowDialog({title = text, onAccept = onAccept, onCancel = onCancel, owner = owner, confirmation = true})
-end--[[APR_DIAG]]; UI.ShowConfirmationDialog = APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:183:UI:ShowConfirmationDialog#21", UI.ShowConfirmationDialog)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; UI.ShowConfirmationDialog = APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:250:UI:ShowConfirmationDialog#24", UI.ShowConfirmationDialog)--[[/APR_DIAG]]

@@ -34,7 +34,7 @@ function Catalog:Build()
                     scope = APR:GetRouteSelectionScope(key, data),
                     category = data.category or APR.CATEGORIES.Leveling, author = author, community = community,
                     description = description, visibility = visibility, favorite = favorites[key] == true,
-                    levelWarnings = APR:GetRouteLevelWarnings(key)}
+                    warnings = APR:GetRouteSelectionWarnings(key)}
                 -- Queuing or resetting initializes step 1 without starting the route.
                 -- Only the engine's completion flag confirms completion, not an x/x counter.
                 local started = APR.ActiveRoute == key or (type(progress[key]) == "number" and progress[key] > 1)
@@ -178,10 +178,16 @@ function Catalog:GetNavigation(records)
 end--[[APR_DIAG]]; Catalog.GetNavigation = APRTrace("APR-Core/features/questing/RouteCatalog.lua:142:Catalog:GetNavigation#9", Catalog.GetNavigation)--[[/APR_DIAG]]
 
 function Catalog:GetPathRecords(records)
-    local byLabel, result = {}, {}
-    for _, record in ipairs(records) do byLabel[record.label] = record end
+    local byLabel, byKey, ambiguous, result = {}, {}, {}, {}
+    for _, record in ipairs(records) do
+        if byLabel[record.label] then ambiguous[record.label] = true end
+        byLabel[record.label], byKey[record.key] = record, record
+    end
     for _, label in ipairs(self:GetPath()) do
-        if byLabel[label] then result[#result + 1] = byLabel[label] end
+        local choice = APR:GetSavedRouteChoice(label)
+            or (ambiguous[label] and APR:GetRouteKeyFromDisplayName(label))
+        local record = byKey[choice] or byLabel[label]
+        if record then result[#result + 1] = record end
     end
     return result
 end--[[APR_DIAG]]; Catalog.GetPathRecords = APRTrace("APR-Core/features/questing/RouteCatalog.lua:180:Catalog:GetPathRecords#10", Catalog.GetPathRecords)--[[/APR_DIAG]]
@@ -192,7 +198,7 @@ function Catalog:ToggleFavorite(record)
     profile.routeFavorites = profile.routeFavorites or {}
     profile.routeFavorites[record.key] = not profile.routeFavorites[record.key] or nil
     record.favorite = profile.routeFavorites[record.key] == true
-end--[[APR_DIAG]]; Catalog.ToggleFavorite = APRTrace("APR-Core/features/questing/RouteCatalog.lua:189:Catalog:ToggleFavorite#11", Catalog.ToggleFavorite)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Catalog.ToggleFavorite = APRTrace("APR-Core/features/questing/RouteCatalog.lua:195:Catalog:ToggleFavorite#11", Catalog.ToggleFavorite)--[[/APR_DIAG]]
 
 local function AddRouteToPath(catalog, record, restart)
     if APR:GetRouteVisibility(record.key) ~= "visible" then return false end
@@ -202,7 +208,7 @@ local function AddRouteToPath(catalog, record, restart)
     if not APR:AddRouteToCustomPathByKey(record.key) then return false end
     APR.routeconfig:SendCustomPathUpdate()
     return true
-end--[[APR_DIAG]]; AddRouteToPath = APRTrace("APR-Core/features/questing/RouteCatalog.lua:197:AddRouteToPath#12", AddRouteToPath)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; AddRouteToPath = APRTrace("APR-Core/features/questing/RouteCatalog.lua:203:AddRouteToPath#12", AddRouteToPath)--[[/APR_DIAG]]
 
 function Catalog:ChangePath(record, action, restart)
     if not record then return false end
@@ -210,26 +216,26 @@ function Catalog:ChangePath(record, action, restart)
     for i, label in ipairs(path) do if label == record.label then index = i; break end end
     if action == "add" then
         if index or APR:GetRouteVisibility(record.key) ~= "visible" then return false end
-        local warnings = APR:GetRouteLevelWarnings(record.key)
+        local warnings = APR:GetRouteSelectionWarnings(record.key)
         if #warnings == 0 then return AddRouteToPath(self, record, restart) end
         local request = {
             key = record.key, label = record.label, data = APR:GetRouteData(record.key), player = APR.PlayerID,
             paths = APRCustomPath, path = APRCustomPath[APR.PlayerID], profile = APR:GetSettingsProfile(),
         }
-        self.levelWarningRequest = request
-        local text = record.label .. "\n\n" .. table.concat(warnings, "\n") .. "\n\n" .. CONFIRM_CONTINUE
+        self.warningRequest = request
+        local prompt = {title = record.label, details = warnings, description = CONFIRM_CONTINUE, acceptText = ADD}
         -- The owned confirmation uses FULLSCREEN_DIALOG above the DIALOG workspace.
         local owner = (APR.Workspace and APR.Workspace.frame) or (APR.RouteBrowser and APR.RouteBrowser.frame)
-        APR.UI:ShowConfirmationDialog(text, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteCatalog.lua:223:callback#14", --[[/APR_DIAG]]function()
-            if self.levelWarningRequest ~= request then return end
-            self.levelWarningRequest = nil
+        APR.UI:ShowConfirmationDialog(prompt, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteCatalog.lua:229:callback#14", --[[/APR_DIAG]]function()
+            if self.warningRequest ~= request then return end
+            self.warningRequest = nil
             if APR.PlayerID ~= request.player or APRCustomPath ~= request.paths
                 or APRCustomPath[APR.PlayerID] ~= request.path or APR:GetSettingsProfile() ~= request.profile
                 or (request.profile and request.profile.enableAddon == false)
                 or APR:GetRouteData(request.key) ~= request.data then return end
             AddRouteToPath(self, request, restart)
-        end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteCatalog.lua:231:callback#15", --[[/APR_DIAG]]function()
-            if self.levelWarningRequest == request then self.levelWarningRequest = nil end
+        end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteCatalog.lua:237:callback#15", --[[/APR_DIAG]]function()
+            if self.warningRequest == request then self.warningRequest = nil end
         end--[[APR_DIAG]])--[[/APR_DIAG]], owner)
         return false
     elseif action == "remove" and index then table.remove(path, index)
@@ -238,4 +244,4 @@ function Catalog:ChangePath(record, action, restart)
     else return false end
     APR.routeconfig:SendCustomPathUpdate()
     return true
-end--[[APR_DIAG]]; Catalog.ChangePath = APRTrace("APR-Core/features/questing/RouteCatalog.lua:207:Catalog:ChangePath#13", Catalog.ChangePath)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Catalog.ChangePath = APRTrace("APR-Core/features/questing/RouteCatalog.lua:213:Catalog:ChangePath#13", Catalog.ChangePath)--[[/APR_DIAG]]

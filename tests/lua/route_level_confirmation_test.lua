@@ -10,9 +10,9 @@ function APR:GetPlayerEffectiveLevel() return self.Level end
 local catalog, rows = APR.RouteCatalog, APR.RouteBrowserRows
 local popup, prompts, resets, checks, notifications = nil, 0, 0, 0, 0
 local showConfirmation = APR.UI.ShowConfirmationDialog
-function APR.UI:ShowConfirmationDialog(text, accept, cancel, owner)
+function APR.UI:ShowConfirmationDialog(prompt, accept, cancel, owner)
     prompts = prompts + 1
-    popup = { text = text, accept = accept, cancel = cancel, owner = owner }
+    popup = { prompt = prompt, accept = accept, cancel = cancel, owner = owner }
 end
 function APR:ResetRoute(key) resets = resets + 1; APRData.test[key] = 1 end
 function APR:CheckRouteChanges() checks = checks + 1 end
@@ -34,9 +34,10 @@ assert(row.name:GetText() == "100% invented chapter" and row.name.role == "warni
     "Warning color must not change the route's label")
 row.add.scripts.OnClick()
 assert(prompts == 1 and #APRCustomPath.test == 0 and checks == 0 and resets == 0 and notifications == 0)
-local text = popup.text
-assert(text:find("100% invented chapter", 1, true) and text:find(">= 22", 1, true)
-    and text:find("Continue?", 1, true), "The popup names the route, its unmet level and the confirmation")
+local prompt = popup.prompt
+assert(prompt.title == "100% invented chapter" and table.concat(prompt.details, "\n"):find(">= 22", 1, true)
+    and prompt.description == "Continue?" and prompt.acceptText == ADD,
+    "The popup separates the route, unmet level, question and explicit add action")
 local cancelled = popup
 cancelled.cancel()
 cancelled.accept()
@@ -69,7 +70,7 @@ assert(not catalog:ChangePath(matching, "add") and prompts == previousPrompts + 
 popup.cancel()
 APR.Level = 25
 local above = request("advice")
-assert(above.text:find("<= 24", 1, true))
+assert(table.concat(above.prompt.details, "\n"):find("<= 24", 1, true))
 above.accept()
 assert(#APRCustomPath.test == 1)
 
@@ -138,6 +139,9 @@ assert(main:GetFrameStrata() == "DIALOG" and dialog:GetFrameStrata() == "FULLSCR
     "The warning must occupy a higher stratum even when the main window has a high frame level")
 assert(dialog:IsShown() and dialog.confirming and dialog.point[2] == main)
 assert(dialog.title:GetText():find("100% invented chapter", 1, true), "Owned text preserves literal percent signs")
+assert(dialog.description:GetText() == "Continue?" and dialog.title.role == "base"
+    and dialog.body:IsShown() and dialog.acceptButton:GetFontString():GetText() == ADD,
+    "The route title is neutral, recommendations have their own body and the action says Add")
 assert(#APRCustomPath.test == 0, "Bringing the modal forward never accepts the route")
 dialog:Accept()
 assert(#APRCustomPath.test == 1 and APRCustomPath.test[1] == "100% invented chapter")
