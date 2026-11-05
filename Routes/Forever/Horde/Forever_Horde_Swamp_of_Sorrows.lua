@@ -376,7 +376,6 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
             PickUp = { 1392 },
             Note = { "PATROLS_AROUND_AREA" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 45.77, 36.75),
-            Range = 30,
             Button = { ["1392"] = 6196 },
             AllOf = { { AnyOf = { { IsQuestOnQuest = 1392 }, { ItemCount = { itemID = 6196, count = 1, operator = ">=" } } } } },
             AnyOf = { { SkipForLvl = 44 }, { IsQuestOnQuest = 1392 } },

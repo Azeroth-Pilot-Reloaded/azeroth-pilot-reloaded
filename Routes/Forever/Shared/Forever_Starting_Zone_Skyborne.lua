@@ -4514,7 +4514,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         {
             PickUp = { 92679 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 61.95, 72.84),
-            Range = 10.0,
+            Range = 5,
             RaidIcon = 252448,
             Zone = 2521,
             _index = 438,
@@ -5223,7 +5223,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             PickUp = { 92698 },
             Fillers = { [92684] = { 1 }, [92683] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 48.853, 78.3715),
-            Range = 30,
+            Range = 5,
             Button = { ["92683-1"] = 253666 },
             RaidIcon = 250929,
             Zone = 2521,

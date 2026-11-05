@@ -2239,7 +2239,6 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
             PickUp = { 5083 },
             Fillers = { [5082] = { 1, 2, 3 } },
             Coord = { x = -2879.77, y = 6649.465 },
-            Range = 30,
             Button = { ["5083"] = 12771 },
             Zone = 1452,
             _index = 115,

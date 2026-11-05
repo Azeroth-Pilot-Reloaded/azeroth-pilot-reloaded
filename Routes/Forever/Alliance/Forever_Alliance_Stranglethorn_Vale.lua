@@ -3732,7 +3732,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         {
             PickUp = { 594 },
             Coord = { x = 154.58, y = -14666.95 },
-            Range = 30,
             Button = { ["594"] = 4098 },
             ItemCount = { itemID = 4098, count = 1, operator = ">=" },
             Zone = 1434,
@@ -3816,7 +3815,6 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
             PickUp = { 594 },
             Note = { "RIGHT_CLICK", "CANNOT_FIND_GO_BACK_MAINLAND_CHECK" },
             Coord = { x = -246.16, y = -13796.97 },
-            Range = 30,
             Button = { ["594"] = 4098 },
             ItemCount = { itemID = 4098, count = 1, operator = ">=" },
             Zone = 1434,

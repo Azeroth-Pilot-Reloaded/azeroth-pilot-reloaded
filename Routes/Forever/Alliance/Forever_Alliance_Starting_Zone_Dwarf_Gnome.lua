@@ -129,7 +129,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             PickUp = { 3108 },
             Coord = { x = 329.1, y = -6216.9 },
-            Range = 15,
+            Range = 5,
             Class = { "HUNTER" },
             Race = { "Dwarf" },
             Zone = 1426,
@@ -138,7 +138,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             PickUp = { 3114 },
             Coord = { x = 329.1, y = -6216.9 },
-            Range = 15,
+            Range = 5,
             Class = { "MAGE" },
             Race = { "Gnome" },
             Zone = 1426,
@@ -147,7 +147,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             PickUp = { 3107 },
             Coord = { x = 329.1, y = -6216.9 },
-            Range = 15,
+            Range = 5,
             Class = { "PALADIN" },
             Race = { "Dwarf" },
             Zone = 1426,
@@ -156,7 +156,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             PickUp = { 3110 },
             Coord = { x = 329.1, y = -6216.9 },
-            Range = 15,
+            Range = 5,
             Class = { "PRIEST" },
             Race = { "Dwarf" },
             Zone = 1426,
@@ -165,7 +165,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             PickUp = { 98574 },
             Coord = { x = 328.5, y = -6216 },
-            Range = 15,
+            Range = 5,
             Class = { "PRIEST" },
             Race = { "Gnome" },
             Zone = 1426,
@@ -174,7 +174,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             PickUp = { 3113 },
             Coord = { x = 329.1, y = -6216.9 },
-            Range = 15,
+            Range = 5,
             Class = { "ROGUE" },
             Race = { "Gnome" },
             Zone = 1426,
@@ -183,7 +183,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             PickUp = { 3109 },
             Coord = { x = 329.1, y = -6216.9 },
-            Range = 15,
+            Range = 5,
             Class = { "ROGUE" },
             Race = { "Dwarf" },
             Zone = 1426,
@@ -192,7 +192,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             PickUp = { 98581 },
             Coord = { x = 329.1, y = -6216.9 },
-            Range = 15,
+            Range = 5,
             Class = { "SHAMAN" },
             Race = { "Dwarf" },
             Zone = 1426,
@@ -201,7 +201,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             PickUp = { 3115 },
             Coord = { x = 329.1, y = -6216.9 },
-            Range = 15,
+            Range = 5,
             Class = { "WARLOCK" },
             Race = { "Gnome" },
             Zone = 1426,
@@ -210,7 +210,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             PickUp = { 3112 },
             Coord = { x = 329.1, y = -6216.9 },
-            Range = 15,
+            Range = 5,
             Class = { "WARRIOR" },
             Race = { "Gnome" },
             Zone = 1426,
@@ -219,7 +219,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             PickUp = { 3106 },
             Coord = { x = 329.1, y = -6216.9 },
-            Range = 15,
+            Range = 5,
             Class = { "WARRIOR" },
             Race = { "Dwarf" },
             Zone = 1426,
@@ -228,7 +228,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             PickUp = { 170 },
             Coord = { x = 337.4, y = -6217.7 },
-            Range = 15,
+            Range = 5,
             Zone = 1426,
             _index = 16,
         },
@@ -558,7 +558,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             PickUp = { 94373 },
             Coord = { x = 383.5, y = -6050.6 },
-            Range = 15,
+            Range = 5,
             RaidIcon = 257446,
             Class = "SHAMAN",
             Race = "Dwarf",
@@ -588,7 +588,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             PickUp = { 1599 },
             Coord = { x = 393.6, y = -6051.7 },
-            Range = 15,
+            Range = 5,
             Class = { "WARLOCK" },
             Race = "Gnome",
             Zone = 1426,
@@ -946,7 +946,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             PickUp = { 94374 },
             Coord = { x = 383.7, y = -6050.7 },
-            Range = 15,
+            Range = 5,
             RaidIcon = 257446,
             Class = { "SHAMAN" },
             Race = "Dwarf",
@@ -1009,7 +1009,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             PickUp = { 94375 },
             Coord = { x = 581.9, y = -5907.6 },
-            Range = 15,
+            Range = 5,
             RaidIcon = 5891,
             Class = { "SHAMAN" },
             Race = "Dwarf",
@@ -1060,7 +1060,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             PickUp = { 5626 },
             Coord = { x = 393.3, y = -6057.6 },
-            Range = 15,
+            Range = 5,
             RaidIcon = 837,
             Class = { "PRIEST" },
             MinLevel = 5,
@@ -1307,7 +1307,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         {
             PickUp = { 5625 },
             Coord = { x = -529.4, y = -5590 },
-            Range = 15,
+            Range = 5,
             RaidIcon = 1226,
             Class = { "PRIEST" },
             MinLevel = 5,

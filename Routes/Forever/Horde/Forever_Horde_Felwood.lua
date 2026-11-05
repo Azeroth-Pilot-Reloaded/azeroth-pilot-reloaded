@@ -549,7 +549,6 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
             PickUp = { 5083 },
             Note = { "LOW_DROP_RATE_ITEM_NOT_SHARED_GROUP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 31.8, 35.9),
-            Range = 30,
             Button = { ["5083"] = 12771 },
             AllOf = { { AnyOf = { { IsQuestOnQuest = 5083 }, { IsQuestCompleted = 5083 }, { ItemCount = { itemID = 12771, count = 1 } } } } },
             Zone = 1452,

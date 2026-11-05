@@ -565,7 +565,6 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
             PickUp = { 2766 },
             Fillers = { [3520] = { 1 }, [1452] = { 2, 3 } },
             Coord = { x = 1575.38, y = -4981.72 },
-            Range = 30,
             Button = { ["2766"] = 8705, ["3520-1"] = 10699 },
             ItemCount = { count = 1, itemID = 8705, operator = ">=" },
             Zone = 1444,

@@ -369,7 +369,6 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             Fillers = { [1396] = { 1, 2, 3 } },
             Note = { "PATROLS_AROUND_AREA" },
             Coord = { x = -2975.5, y = -10212.31 },
-            Range = 30,
             Button = { ["1392"] = 6196 },
             Zone = 1435,
             _index = 41,
