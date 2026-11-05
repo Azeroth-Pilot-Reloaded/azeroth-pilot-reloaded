@@ -18,6 +18,13 @@ APR.LevelBonusSources = {
         bonus = 5,
         items = { 6888 }, -- Herb Baked Egg
     },
+    ForeverSleepingBag = {
+        gameVersion = "forever",
+        -- Well-Rested lasts two hours; each minute in the bag grants one stack, up to three.
+        auras = { 429959 },
+        auraBonuses = { [429959] = { [1] = 1, [2] = 2, [3] = 3 } },
+        items = { 211527 }, -- Cozy Sleeping Bag
+    },
     MysteriousWisdom = {
         auras = { 1221184 },
         bonus = 10,
@@ -48,7 +55,8 @@ APR.LevelBonusSources = {
         },
     },
     WarMode = {
-        isActive = --[[APR_DIAG]]APRTrace("APR-Core/config/LevelProfiles.lua:51:callback#1", --[[/APR_DIAG]]function() return C_PvP and C_PvP.IsWarModeActive and C_PvP.IsWarModeActive() or false end--[[APR_DIAG]])--[[/APR_DIAG]],
+        gameVersion = "retail",
+        isActive = --[[APR_DIAG]]APRTrace("APR-Core/config/LevelProfiles.lua:59:callback#1", --[[/APR_DIAG]]function() return C_PvP and C_PvP.IsWarModeActive and C_PvP.IsWarModeActive() or false end--[[APR_DIAG]])--[[/APR_DIAG]],
         bonus = 15,
     },
     Below80Mentorship = {

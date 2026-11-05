@@ -2,7 +2,7 @@ local function noop() end
 local L = setmetatable({ USE_ITEM = "Use %s" }, { __index = function(_, key) return key end })
 function LibStub() return setmetatable({ GetLocale = function() return L end }, { __index = function() return noop end }) end
 
-APR = { RegisterFontString = noop, Debug = noop, version = "new", PlayerID = "player" }
+APR = { RegisterFontString = noop, Debug = noop, version = "new", PlayerID = "player", interfaceVersion = 120105 }
 function APR:NewModule() return {} end
 
 dofile("APR-Core/data/models/Enums.lua")
@@ -23,6 +23,8 @@ function GetMaxLevelForPlayerExpansion() return 90 end
 function InCombatLockdown() return combat end
 
 function APR:HasAura(id) return auras[id] ~= nil end
+
+C_UnitAuras = { GetPlayerAuraBySpellID = function(id) return auras[id] end }
 
 C_PvP = {
     IsWarModeActive = function() return active end,
@@ -300,6 +302,97 @@ assert(APR:GetLevelProfileTarget("ForeverFoodTest", true) == 20,
 APR.LevelRequirementProfiles.ForeverFoodTest = nil
 APR.levelProfileCache.ForeverFoodTest = nil
 APR.levelProfileCacheLevels.ForeverFoodTest = nil
+
+-- API presence alone must not expose a Retail-only feature on another client.
+do
+    local pvp = C_PvP
+    APR.LevelRequirementProfiles.TestWarMode = {
+        bonuses = { "WarMode" }, levels = { [0] = 40, [15] = 39 },
+    }
+    level, bags, auras, desired, active = 30, {}, {}, false, false
+    APR.settings.profile.hiddenXPBonuses.WarMode = nil
+    for _, version in ipairs({ 110207, 120105, 16001, 11508 }) do
+        APR.interfaceVersion = version
+        APR.settings.profile.xpBuffOverlayDismissed = nil
+        local retail = version >= 100000
+        C_PvP = pvp
+        APR.XPBuffOverlay:Refresh()
+        assert(visibleRows() == (retail and 1 or 0), "War Mode reminders belong only to Retail")
+        assert((APR.XPBuffOverlay:GetBonusOptions().WarMode ~= nil) == retail,
+            "War Mode selection belongs only to Retail")
+        active = true
+        assert(APR:GetLevelProfileTarget("TestWarMode", true) == (retail and 39 or 40),
+            "Only active Retail War Mode contributes XP")
+        active = false
+        if not retail then
+            local function unsupported() error("War Mode API called on an unsupported client") end
+            C_PvP = {
+                IsWarModeActive = unsupported, IsWarModeDesired = unsupported,
+                CanToggleWarMode = unsupported, CanToggleWarModeInArea = unsupported,
+            }
+            APR.XPBuffOverlay:Refresh()
+            APR.XPBuffOverlay:HideOverlay()
+            APR.XPBuffOverlay:Refresh()
+            assert(visibleRows() == 0 and not next(APR.settings.profile.xpBuffOverlayDismissed.actionable))
+            assert(APR:GetLevelProfileTarget("TestWarMode", true) == 40)
+        end
+    end
+    C_PvP = nil
+    APR.interfaceVersion = 120105
+    APR.settings.profile.xpBuffOverlayDismissed = nil
+    APR.XPBuffOverlay:Refresh()
+    assert(visibleRows() == 0 and APR:GetLevelProfileTarget("TestWarMode", true) == 40,
+        "Missing PvP APIs remain safe on Retail")
+    C_PvP = pvp
+    APR.LevelRequirementProfiles.TestWarMode = nil
+    APR.levelProfileCache.TestWarMode, APR.levelProfileCacheLevels.TestWarMode = nil, nil
+end
+
+-- Sleeping Bag ownership is permanent, but its XP bonus requires the temporary aura.
+do
+    APR.interfaceVersion, level, bags, auras, desired = 16001, 30, { [211527] = 1 }, {}, false
+    APR.LevelRequirementProfiles.TestSleepingBag = {
+        bonuses = { "ForeverSleepingBag" }, levels = { [0] = 40, [1] = 39, [2] = 38, [3] = 37 },
+    }
+    APR.XPBuffOverlay:Refresh()
+    assert(visibleRows() == 1 and APR.XPBuffOverlay:GetBonusOptions().ForeverSleepingBag,
+        "Forever suggests an owned Sleeping Bag without its buff")
+    assert(APR:GetLevelProfileTarget("TestSleepingBag", true) == 40,
+        "Owning the bag does not permanently grant XP")
+    for stacks = 1, 3 do
+        auras[429959] = { applications = stacks }
+        APR.XPBuffOverlay:Refresh()
+        assert(visibleRows() == 0, "The active Sleeping Bag buff suppresses its reminder")
+        assert(APR:GetLevelProfileTarget("TestSleepingBag", true) == 40 - stacks,
+            "Each active stack contributes one percent XP")
+    end
+    auras = {}
+    APR.XPBuffOverlay:Refresh()
+    assert(visibleRows() == 1 and APR:GetLevelProfileTarget("TestSleepingBag", true) == 40,
+        "Buff expiry restores the reminder and removes its XP contribution")
+    DismissBonus("ForeverSleepingBag")
+    assert(visibleRows() == 0 and not APR.XPBuffOverlay:IsBonusEnabled("ForeverSleepingBag"))
+    APR.XPBuffOverlay:SetBonusEnabled("ForeverSleepingBag", true)
+    assert(visibleRows() == 1)
+    unusable[211527] = true
+    APR.XPBuffOverlay:Refresh()
+    assert(visibleRows() == 0, "An unusable Sleeping Bag is not suggested")
+    unusable, bags = {}, {}
+    APR.XPBuffOverlay:Refresh()
+    assert(visibleRows() == 0, "An absent Sleeping Bag is not suggested")
+    bags, auras, desired = { [211527] = 1 }, { [429959] = { applications = 3 } }, true
+    for _, version in ipairs({ 120105, 11508 }) do
+        APR.interfaceVersion = version
+        APR.XPBuffOverlay:Refresh()
+        assert(visibleRows() == 0 and not APR.XPBuffOverlay:GetBonusOptions().ForeverSleepingBag,
+            "The Forever bonus is not offered on other clients")
+        assert(APR:GetLevelProfileTarget("TestSleepingBag", true) == 40)
+    end
+    APR.LevelRequirementProfiles.TestSleepingBag = nil
+    APR.levelProfileCache.TestSleepingBag, APR.levelProfileCacheLevels.TestSleepingBag = nil, nil
+    bags = {}
+end
+
 auras = {}
 APR.interfaceVersion, level = nil, 87
 

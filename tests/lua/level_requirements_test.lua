@@ -8,7 +8,7 @@ C_UnitAuras = {
 }
 function LibStub() return { GetLocale = function() return { GRIND = "Reach level %d", USE_ITEM = "Use %s" } end } end
 
-APR = {}
+APR = { interfaceVersion = 120105 }
 dofile("APR-Core/data/models/Enums.lua")
 dofile("APR-Core/utils/PlayerUtils.lua")
 function APR:HasAura(id)
