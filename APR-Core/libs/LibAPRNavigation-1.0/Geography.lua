@@ -1,7 +1,7 @@
 -- Project endpoints into world coordinates and identify their access regions.
 -- A shared position alone does not permit walking through a required entrance.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("geography", 11) then return end
+if not Lib:BeginModule("geography", 12) then return end
 local Instance = Lib.Instance
 -- These defaults are read-only, including CheckRequirements' character input.
 -- Reuse them across walking checks and retries of unavailable map ancestry.
@@ -94,7 +94,7 @@ function Instance:GetPositionRegion(position)
     local mapTypeOverrides = config.MapTypeOverrides or EMPTY
     local continentOverrides = config.ContinentMapOverrides or EMPTY
     local isolatedContinents = config.IsolatedContinents or EMPTY
-    local current, outer = mapID, mapID
+    local current, outer, outerType = mapID, mapID, nil
     local seen, isolation = {}, nil
     -- The nearest isolated ancestor wins. Two points can share world
     -- coordinates while still requiring a portal or an instance entrance.
@@ -125,12 +125,18 @@ function Instance:GetPositionRegion(position)
             -- parent. Standalone zones/micro maps likewise bound local access,
             -- including descendants, without connecting separate roots.
             region = tostring(instanceID) .. ":map:" .. current .. ":" .. tostring(isolation or "outdoor")
+        elseif mapType == 0 or mapType == 1 then
+            -- A zone may sit directly under a Cosmic/World presentation map,
+            -- without a continent. Keep its outermost Zone/Micro as the local
+            -- walking root; the presentation parent cannot connect siblings.
+            if outerType ~= 3 and outerType ~= 5 then return nil end
+            region = tostring(instanceID) .. ":map:" .. outer .. ":" .. tostring(isolation or "outdoor")
         end
         if region then
             self.regions[cacheKey] = region
             return region
         end
-        outer, current = current, info.parentMapID
+        outer, outerType, current = current, mapType, info.parentMapID
     end
 end
 

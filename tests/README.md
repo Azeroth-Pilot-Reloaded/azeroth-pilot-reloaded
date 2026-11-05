@@ -92,6 +92,10 @@ boundaries, fallback hand-ins and character/account separation.
 Navigation behavior can pass a synthetic declaration to `navigation_fixture:Load`
 to load the real library/adapter without any shipped data. The shortcut,
 mandatory-chain, passage-lifecycle and action-selection suites use this path.
+`navigation_standalone_geography_test.lua` covers local Zone/Micro/Orphan maps
+with no parent or a World/Cosmic parent on both profiles, including descendants,
+separate islands/interiors, missing ancestry recovery and stable arrow guidance
+through quest-log replanning.
 `navigation_unlock_test_catalog.lua` supplies an independent acquisition graph
 with shared prerequisites, cycles, tracker progress and progressive activities;
 the same graph exercises library and APR host lifecycles. The shortest-path oracle

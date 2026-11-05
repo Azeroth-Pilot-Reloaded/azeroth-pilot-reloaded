@@ -2,12 +2,13 @@
 -- identity still establishes local access without connecting unrelated maps.
 local fixture = dofile("tests/lua/navigation_fixture.lua")
 local originalMapInfo = C_Map.GetMapInfo
-local function Run(profile, nativeMapType)
+local function Run(profile, nativeMapType, parentMapType)
     fixture.profile = profile
-    fixture.maps[81001] = { mapID = 81001, mapType = nativeMapType, parentMapID = 0 }
+    local parentMapID = parentMapType ~= nil and 81020 or 0
+    fixture.maps[81001] = { mapID = 81001, mapType = nativeMapType, parentMapID = parentMapID }
     fixture.maps[81002] = { mapID = 81002, mapType = 5, parentMapID = 81001 }
-    fixture.maps[81003] = { mapID = 81003, mapType = 3, parentMapID = 0 }
-    fixture.maps[81004] = { mapID = 81004, mapType = 5, parentMapID = 0 }
+    fixture.maps[81003] = { mapID = 81003, mapType = 3, parentMapID = parentMapID }
+    fixture.maps[81004] = { mapID = 81004, mapType = 5, parentMapID = parentMapID }
     fixture.maps[81005] = { mapID = 81005, mapType = 5, parentMapID = 81001 }
     fixture.maps[81006] = { mapID = 81006, mapType = 0, parentMapID = 0 }
     fixture.maps[81007] = { mapID = 81007, mapType = 3, parentMapID = 81008 }
@@ -22,8 +23,13 @@ local function Run(profile, nativeMapType)
     fixture.maps[81016] = { mapID = 81016, mapType = 3, parentMapID = 81015 }
     fixture.maps[81018] = { mapID = 81018, mapType = 6, parentMapID = 81015 }
     fixture.maps[81019] = { mapID = 81019, mapType = 6, parentMapID = 81015 }
+    fixture.maps[81020] = { mapID = 81020, mapType = parentMapType or 1, parentMapID = 81006 }
+    fixture.maps[81021] = { mapID = 81021, mapType = 4, parentMapID = 81001 }
+    fixture.maps[81022] = { mapID = 81022, mapType = 3, parentMapID = 81023 }
+    fixture.maps[81023] = nil
+    fixture.maps[81024] = { mapID = 81024, mapType = 7, parentMapID = 81020 }
     C_Map.GetMapInfo = function(id)
-        if id >= 81001 and id <= 81019 then return fixture.maps[id] end
+        if id >= 81001 and id <= 81024 then return fixture.maps[id] end
         return originalMapInfo(id)
     end
     local data = fixture:Load({ config = { IsolatedAreas = {
@@ -54,7 +60,18 @@ local function Run(profile, nativeMapType)
     assert(not data:CanWalk(start, point(81005)), "An isolated descendant keeps its entrance boundary")
     assert(data:CanWalk(point(81005), point(81005, { x = 10 })),
         "Points inside the same isolated descendant remain connected")
-    assert(data:GetPositionRegion(point(81006)) == nil, "A world map is not a local walking region")
+    assert(data:GetPositionRegion(point(81006)) == nil and data:GetPositionRegion(point(81020)) == nil,
+        "Cosmic and World maps never become local walking regions themselves")
+    assert(not data:CanWalk(start, point(81021))
+        and data:CanWalk(point(81021), point(81021, { x = 10 })),
+        "A dungeon descendant retains its own interior access boundary")
+    assert(data:GetPositionRegion(point(81024)) == nil,
+        "An unsupported map type under a presentation parent cannot prove outdoor access")
+    assert(data:GetPositionRegion(point(81022)) == nil,
+        "A missing parent is not evidence of a standalone zone")
+    fixture.maps[81023] = { mapID = 81023, mapType = 1, parentMapID = 81006 }
+    assert(data:GetPositionRegion(point(81022)) == "73:map:81022:outdoor",
+        "Local access recovers when the missing World parent becomes available")
     assert(data:GetPositionRegion(point(81007)) == nil, "Cyclic ancestry is not evidence of local access")
     assert(data:GetPositionRegion(point(81009)) == nil, "Missing map data remains unknown")
     fixture.maps[81009] = { mapID = 81009, mapType = 3, parentMapID = 0 }
@@ -173,6 +190,10 @@ local function Run(profile, nativeMapType)
         "Unchanged standalone objectives must not restart planning after publication")
 end
 for _, profile in ipairs({ "retail", "forever" }) do
-    for _, nativeMapType in ipairs({ 3, 5, 6 }) do Run(profile, nativeMapType) end
+    for _, nativeMapType in ipairs({ 3, 5, 6 }) do
+        Run(profile, nativeMapType)
+        Run(profile, nativeMapType, 0)
+        Run(profile, nativeMapType, 1)
+    end
 end
-print("Standalone geography: native Zone/Micro/Orphan access, boundaries and stable host guidance passed")
+print("Standalone geography: parentless/World/Cosmic Zone/Micro/Orphan access, boundaries and stable host guidance passed")
