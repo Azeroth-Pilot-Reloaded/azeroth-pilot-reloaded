@@ -96,6 +96,14 @@ mandatory-chain, passage-lifecycle and action-selection suites use this path.
 with no parent or a World/Cosmic parent on both profiles, including descendants,
 separate islands/interiors, missing ancestry recovery and stable arrow guidance
 through quest-log replanning.
+`navigation_unmapped_area_test.lua` covers verified world interiors without a
+native UI map or projection: local quests, coordinate-free instructions,
+mandatory exits, missing observations and recovery on both profiles. Authored
+tram journeys retain their step at the departure platform and through loading;
+only the destination radius advances to the next quest, once.
+`navigation_transport_labels_test.lua` uses invented stops and cities to check
+shared-interior travel labels in both directions, authored/library consistency,
+world and radius boundaries, conflicting stops and late client names.
 `navigation_unlock_test_catalog.lua` supplies an independent acquisition graph
 with shared prerequisites, cycles, tracker progress and progressive activities;
 the same graph exercises library and APR host lifecycles. The shortest-path oracle

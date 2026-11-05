@@ -80,6 +80,38 @@ for _, profile in ipairs({ "retail", "forever" }) do
             and phased ~= world and overrides[world] == nil,
             "World-space overrides must resolve directly to a distinct canonical world")
     end
+    local unmappedInstances = {}
+    for mapID, area in pairs(data:GetConfig().UnmappedAreas or {}) do
+        assert(type(mapID) == "number" and mapID > 0 and mapID % 1 == 0
+            and type(area) == "table", "Unmapped areas need a positive guide map identity")
+        for key in pairs(area) do
+            assert(key == "instanceID" or key == "areaID", "Unsupported unmapped area field: " .. key)
+        end
+        assert(type(area.instanceID) == "number" and area.instanceID > 0 and area.instanceID % 1 == 0,
+            "Unmapped areas need a dedicated world instance")
+        assert(type(area.areaID) == "number" and area.areaID > 0 and area.areaID % 1 == 0,
+            "Unmapped areas need a client-localized area identity")
+        local world = data:GetWorldInstanceID(area.instanceID)
+        assert(not unmappedInstances[world], "A mapless world instance cannot identify multiple guide maps")
+        unmappedInstances[world] = true
+    end
+    for kind, stops in pairs(data:GetConfig().TransportDestinations or {}) do
+        assert(type(kind) == "string" and kind ~= "" and type(stops) == "table")
+        for _, stop in ipairs(stops) do
+            for key in pairs(stop) do
+                assert(key == "instanceID" or key == "x" or key == "y" or key == "radius" or key == "mapID",
+                    "Unsupported transport destination field: " .. key)
+            end
+            assert(type(stop.instanceID) == "number" and stop.instanceID >= 0 and stop.instanceID % 1 == 0,
+                "Transport destination coordinates need a world instance")
+            for _, key in ipairs({ "x", "y", "radius" }) do
+                assert(type(stop[key]) == "number" and stop[key] == stop[key] and math.abs(stop[key]) < math.huge,
+                    "Transport destination needs finite " .. key)
+            end
+            assert(stop.radius > 0 and type(stop.mapID) == "number" and stop.mapID > 0 and stop.mapID % 1 == 0,
+                "Transport destinations need a positive radius and display map")
+        end
+    end
     for _, requirements in pairs(data:GetConfig().MapRequirements or {}) do inspect(requirements) end
     for group, definition in pairs(data:GetConfig().PhaseGroups or {}) do
         assert(type(group) == "string" and type(definition.sides) == "table")

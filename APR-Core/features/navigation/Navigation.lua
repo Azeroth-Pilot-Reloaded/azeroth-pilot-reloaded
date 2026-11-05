@@ -445,8 +445,12 @@ function nav:GetDestination(step)
     if not coord then return nil, map, nil, nil, true end
     if type(coord.x) ~= "number" or type(coord.y) ~= "number" then return nil, map, "pending_data" end
     local instance = coord.instanceID
-    if not instance and map and C_Map and C_Map.GetWorldPosFromMapPos then
-        instance = C_Map.GetWorldPosFromMapPos(map, CreateVector2D(0.5, 0.5))
+    if not instance and map then
+        if APR.NavigationData and APR.NavigationData.GetMapWorldInstanceID then
+            instance = APR.NavigationData:GetMapWorldInstanceID(map)
+        elseif C_Map and C_Map.GetWorldPosFromMapPos then
+            instance = C_Map.GetWorldPosFromMapPos(map, CreateVector2D(0.5, 0.5))
+        end
     end
     if not instance then return nil, map end
     if type(instance) ~= "number" or not ReadableLocationValue(instance) then return nil, map, "pending_data" end
@@ -466,7 +470,7 @@ function nav:RequiresScenarioNavigation(step)
     else inside = C_Map.GetBestMapForUnit("player") == map or APR:GetPlayerParentMapID() == map end
     if step.LeaveScenario or step.LeaveInstance then return inside end
     return not inside and not step.EnterScenario and not step.EnterInstance
-end--[[APR_DIAG]]; nav.RequiresScenarioNavigation = APRTrace("APR-Core/features/navigation/Navigation.lua:461:nav:RequiresScenarioNavigation#47", nav.RequiresScenarioNavigation)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.RequiresScenarioNavigation = APRTrace("APR-Core/features/navigation/Navigation.lua:465:nav:RequiresScenarioNavigation#47", nav.RequiresScenarioNavigation)--[[/APR_DIAG]]
 local function Exempt(step)
     local unregisteredDungeon = step.Dungeon and step.InstanceQuest and step.NoArrow
     if unregisteredDungeon and APR.GetScenarioStepTarget then
@@ -480,16 +484,16 @@ local function Exempt(step)
         or (APR.IsInDelveRouteContext and APR:IsInDelveRouteContext(APR.ActiveRoute))
         or (APR.IsInDungeonStepContext and APR:IsInDungeonStepContext(step))
         or (step.UseItem and not step.UseItem.questID and not step.Coord and not step.Coords and not step.Zone and not step.Zones)
-end--[[APR_DIAG]]; Exempt = APRTrace("APR-Core/features/navigation/Navigation.lua:470:Exempt#48", Exempt)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Exempt = APRTrace("APR-Core/features/navigation/Navigation.lua:474:Exempt#48", Exempt)--[[/APR_DIAG]]
 function nav:Notify()
     if APR.Arrow then APR.Arrow.currentStep = 0; APR.Arrow:SetCoord() end
     if APR.event and APR.event.QueueStepRefresh then APR.event:QueueStepRefresh() end
     if APR.SendMessage then APR:SendMessage("APR_MAP_UPDATE") end
     self:Render()
-end--[[APR_DIAG]]; nav.Notify = APRTrace("APR-Core/features/navigation/Navigation.lua:484:nav:Notify#49", nav.Notify)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.Notify = APRTrace("APR-Core/features/navigation/Navigation.lua:488:nav:Notify#49", nav.Notify)--[[/APR_DIAG]]
 function nav:RefreshStepForNavigation()
     if APR.UpdateStep then APR:UpdateStep() end
-end--[[APR_DIAG]]; nav.RefreshStepForNavigation = APRTrace("APR-Core/features/navigation/Navigation.lua:490:nav:RefreshStepForNavigation#50", nav.RefreshStepForNavigation)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.RefreshStepForNavigation = APRTrace("APR-Core/features/navigation/Navigation.lua:494:nav:RefreshStepForNavigation#50", nav.RefreshStepForNavigation)--[[/APR_DIAG]]
 function nav:MarkRouteReady(forceRefresh)
     local unlock = APR.GetNavigationUnlockStep and APR:GetNavigationUnlockStep()
     if unlock and unlock.unlockAction and (unlock.unlockAction.target or unlock.unlockAction.positionOptional) then
@@ -521,7 +525,7 @@ function nav:MarkRouteReady(forceRefresh)
     self._routedStepContext = APR:CaptureStepContext()
     self.context, self._routeInputs, self.destination, self.start = self._routedStepContext, inputs, destination, start
     self:Notify()
-end--[[APR_DIAG]]; nav.MarkRouteReady = APRTrace("APR-Core/features/navigation/Navigation.lua:493:nav:MarkRouteReady#51", nav.MarkRouteReady)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.MarkRouteReady = APRTrace("APR-Core/features/navigation/Navigation.lua:497:nav:MarkRouteReady#51", nav.MarkRouteReady)--[[/APR_DIAG]]
 function nav:Render()
     if self.worldLoading then return end
     local ui = APR.currentStep
@@ -563,7 +567,7 @@ function nav:Render()
         ui:AddQuestSteps(self.NavigationStepKey, text, 0, nil, true, false)
         if blocked and ui.AddQuestDivider then ui:AddQuestDivider(self.NavigationDividerStepKey) end
     end
-end--[[APR_DIAG]]; nav.Render = APRTrace("APR-Core/features/navigation/Navigation.lua:525:nav:Render#52", nav.Render)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.Render = APRTrace("APR-Core/features/navigation/Navigation.lua:529:nav:Render#52", nav.Render)--[[/APR_DIAG]]
 
 function nav:IsItineraryValid()
     if not self:IsNavigating() or not ContextCurrent(self.context) then return false end
@@ -598,7 +602,7 @@ function nav:IsItineraryValid()
     local money = GetMoney and GetMoney() or 0
     if issecretvalue and issecretvalue(money) then return true end
     return copper <= money
-end--[[APR_DIAG]]; nav.IsItineraryValid = APRTrace("APR-Core/features/navigation/Navigation.lua:568:nav:IsItineraryValid#53", nav.IsItineraryValid)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.IsItineraryValid = APRTrace("APR-Core/features/navigation/Navigation.lua:572:nav:IsItineraryValid#53", nav.IsItineraryValid)--[[/APR_DIAG]]
 
 function nav:GetRemainingSeconds(walkSpeedFor)
     local position, seconds = Position(), 0
@@ -611,7 +615,7 @@ function nav:GetRemainingSeconds(walkSpeedFor)
             liveSpeed = speed
         end
         return math.sqrt(distance * distance + dz * dz) / liveSpeed
-    end--[[APR_DIAG]]; walkSeconds = APRTrace("APR-Core/features/navigation/Navigation.lua:606:walkSeconds#55", walkSeconds)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; walkSeconds = APRTrace("APR-Core/features/navigation/Navigation.lua:610:walkSeconds#55", walkSeconds)--[[/APR_DIAG]]
     for index = self.cursor, #self.queue do
         local step = self.queue[index]
         local duration = step.seconds or 0
@@ -624,7 +628,7 @@ function nav:GetRemainingSeconds(walkSpeedFor)
         seconds = seconds + duration
     end
     return seconds
-end--[[APR_DIAG]]; nav.GetRemainingSeconds = APRTrace("APR-Core/features/navigation/Navigation.lua:603:nav:GetRemainingSeconds#54", nav.GetRemainingSeconds)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.GetRemainingSeconds = APRTrace("APR-Core/features/navigation/Navigation.lua:607:nav:GetRemainingSeconds#54", nav.GetRemainingSeconds)--[[/APR_DIAG]]
 
 function nav:SearchFailed(blockers)
     self.search, self._searchTimer = nil, nil
@@ -644,7 +648,7 @@ function nav:SearchFailed(blockers)
     self.blockers = blockers
     self:Notify()
     if state == "no_path" and APR.StartNavigationUnlock then APR:StartNavigationUnlock(blockers, context) end
-end--[[APR_DIAG]]; nav.SearchFailed = APRTrace("APR-Core/features/navigation/Navigation.lua:629:nav:SearchFailed#56", nav.SearchFailed)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.SearchFailed = APRTrace("APR-Core/features/navigation/Navigation.lua:633:nav:SearchFailed#56", nav.SearchFailed)--[[/APR_DIAG]]
 
 function nav:IsDirectRouteValid(position)
     return self.state == "ready" and ContextCurrent(self._routedStepContext)
@@ -652,7 +656,7 @@ function nav:IsDirectRouteValid(position)
         and self:IsObjectiveCurrent(self._routeInputs)
         and self.destination and position and APR.NavigationData
         and APR.NavigationData:CanWalk(position, self.destination) == true
-end--[[APR_DIAG]]; nav.IsDirectRouteValid = APRTrace("APR-Core/features/navigation/Navigation.lua:649:nav:IsDirectRouteValid#57", nav.IsDirectRouteValid)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.IsDirectRouteValid = APRTrace("APR-Core/features/navigation/Navigation.lua:653:nav:IsDirectRouteValid#57", nav.IsDirectRouteValid)--[[/APR_DIAG]]
 
 function nav:CapturePlanningInputs(step, position, context)
     local definition = context.definition
@@ -673,7 +677,7 @@ function nav:CapturePlanningInputs(step, position, context)
         coordValues = coordValues, resolvedCoord = resolvedCoord, resolvedValues = resolvedValues,
         resolvedMap = resolvedMap, fallbackMap = fallback,
         coords = step.Coords, zone = step.Zone, zones = step.Zones, noArrow = step.NoArrow }
-end--[[APR_DIAG]]; nav.CapturePlanningInputs = APRTrace("APR-Core/features/navigation/Navigation.lua:657:nav:CapturePlanningInputs#58", nav.CapturePlanningInputs)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.CapturePlanningInputs = APRTrace("APR-Core/features/navigation/Navigation.lua:661:nav:CapturePlanningInputs#58", nav.CapturePlanningInputs)--[[/APR_DIAG]]
 
 function nav:IsObjectiveCurrent(inputs)
     if not inputs then return false end
@@ -703,7 +707,7 @@ function nav:IsObjectiveCurrent(inputs)
         and (not coord or sharedCoordinate or SameLocationFields(coord, inputs.coordValues, LOCATION_FIELDS))
         and step.Coords == inputs.coords and step.Zone == inputs.zone and step.Zones == inputs.zones
         and step.NoArrow == inputs.noArrow
-end--[[APR_DIAG]]; nav.IsObjectiveCurrent = APRTrace("APR-Core/features/navigation/Navigation.lua:678:nav:IsObjectiveCurrent#59", nav.IsObjectiveCurrent)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.IsObjectiveCurrent = APRTrace("APR-Core/features/navigation/Navigation.lua:682:nav:IsObjectiveCurrent#59", nav.IsObjectiveCurrent)--[[/APR_DIAG]]
 
 function nav:HasPlanningInputsChanged(position)
     local inputs = self._routeInputs
@@ -721,7 +725,7 @@ function nav:HasPlanningInputsChanged(position)
     if self.search then return false end
     return Now() - inputs.startedAt >= MOVEMENT_REPLAN_SECONDS
         and Distance(position, inputs.position) >= MOVEMENT_REPLAN_YARDS
-end--[[APR_DIAG]]; nav.HasPlanningInputsChanged = APRTrace("APR-Core/features/navigation/Navigation.lua:708:nav:HasPlanningInputsChanged#60", nav.HasPlanningInputsChanged)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.HasPlanningInputsChanged = APRTrace("APR-Core/features/navigation/Navigation.lua:712:nav:HasPlanningInputsChanged#60", nav.HasPlanningInputsChanged)--[[/APR_DIAG]]
 
 function nav:RefreshStalePlanningInputs()
     local inputs, context, destination, start = self._routeInputs, self.context, self.destination, self.start
@@ -735,7 +739,7 @@ function nav:RefreshStalePlanningInputs()
     self:ForceRefresh("planning_inputs_changed")
     self:Render()
     self:RequestUpdate()
-end--[[APR_DIAG]]; nav.RefreshStalePlanningInputs = APRTrace("APR-Core/features/navigation/Navigation.lua:726:nav:RefreshStalePlanningInputs#61", nav.RefreshStalePlanningInputs)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.RefreshStalePlanningInputs = APRTrace("APR-Core/features/navigation/Navigation.lua:730:nav:RefreshStalePlanningInputs#61", nav.RefreshStalePlanningInputs)--[[/APR_DIAG]]
 
 -- The published queue contains the complete trip. A loading screen changes
 -- location/geometry caches, but need not discard its remaining legs. Confirm
@@ -749,7 +753,7 @@ function nav:RecordContinuation(status, reason, step, position)
         distance = position and target and Distance(position, target) }
     if status == "waiting" then return nil, status end
     return status == "reused", status
-end--[[APR_DIAG]]; nav.RecordContinuation = APRTrace("APR-Core/features/navigation/Navigation.lua:743:nav:RecordContinuation#62", nav.RecordContinuation)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.RecordContinuation = APRTrace("APR-Core/features/navigation/Navigation.lua:747:nav:RecordContinuation#62", nav.RecordContinuation)--[[/APR_DIAG]]
 
 function nav:TryResumeAfterTransition(position)
     local inputs = self._routeInputs
@@ -856,7 +860,7 @@ function nav:TryResumeAfterTransition(position)
     if APR.CountPerformanceEvent then APR:CountPerformanceEvent("NavigationContinuationReused") end
     return self:RecordContinuation("reused", coarseMap and "parent_map_arrival" or "expected_arrival",
         { to = arrival.target }, position)
-end--[[APR_DIAG]]; nav.TryResumeAfterTransition = APRTrace("APR-Core/features/navigation/Navigation.lua:754:nav:TryResumeAfterTransition#63", nav.TryResumeAfterTransition)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.TryResumeAfterTransition = APRTrace("APR-Core/features/navigation/Navigation.lua:758:nav:TryResumeAfterTransition#63", nav.TryResumeAfterTransition)--[[/APR_DIAG]]
 
 function nav:GuideHousingExit(context, step, start, goal)
     local data = APR.NavigationData
@@ -874,7 +878,7 @@ function nav:GuideHousingExit(context, step, start, goal)
     if APR.CountPerformanceEvent then APR:CountPerformanceEvent("NavigationHousingExit") end
     self:Notify()
     return true
-end--[[APR_DIAG]]; nav.GuideHousingExit = APRTrace("APR-Core/features/navigation/Navigation.lua:861:nav:GuideHousingExit#64", nav.GuideHousingExit)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.GuideHousingExit = APRTrace("APR-Core/features/navigation/Navigation.lua:865:nav:GuideHousingExit#64", nav.GuideHousingExit)--[[/APR_DIAG]]
 
 -- Convert a single world-space segment to APR's route-row coordinates. The
 -- planner calls this incrementally; published rows remain separate from quests.
@@ -905,7 +909,7 @@ function nav:PrepareGuidanceStep(segment, index, generation, position)
         breakAfter = segment.kind == "verify_taxi", contextKey = segment.contextKey,
         label = label,
     }
-end--[[APR_DIAG]]; nav.PrepareGuidanceStep = APRTrace("APR-Core/features/navigation/Navigation.lua:881:nav:PrepareGuidanceStep#65", nav.PrepareGuidanceStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.PrepareGuidanceStep = APRTrace("APR-Core/features/navigation/Navigation.lua:885:nav:PrepareGuidanceStep#65", nav.PrepareGuidanceStep)--[[/APR_DIAG]]
 
 function nav:Publish(result, context, generation)
     if self.worldLoading then return end
@@ -963,7 +967,7 @@ function nav:Publish(result, context, generation)
     self.totalSeconds, self.totalCopper = result and result.totalSeconds, result and result.totalCopper
     self._routedStepContext = context
     self:Notify(); self:PollArrival()
-end--[[APR_DIAG]]; nav.Publish = APRTrace("APR-Core/features/navigation/Navigation.lua:910:nav:Publish#66", nav.Publish)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.Publish = APRTrace("APR-Core/features/navigation/Navigation.lua:914:nav:Publish#66", nav.Publish)--[[/APR_DIAG]]
 function nav:Update(context)
     if APR.routeValidationPending or APR.routeValidationFailed then return end
     local profile = APR.settings and APR.settings.profile
@@ -1018,7 +1022,8 @@ function nav:Update(context)
     if not goal and coordinateFree and not self:RequiresScenarioNavigation(step) then
         -- Native map identity is sufficient for a positionless instruction.
         -- Moving transports can lack world/map coordinates or a continent.
-        local currentMap = C_Map and C_Map.GetBestMapForUnit and C_Map.GetBestMapForUnit("player")
+        local currentMap = APR.GetPlayerMapID and APR:GetPlayerMapID()
+            or (C_Map and C_Map.GetBestMapForUnit and C_Map.GetBestMapForUnit("player"))
         if type(currentMap) == "number" and ReadableLocationValue(currentMap) and map
             and (currentMap == map or APR:GetPlayerParentMapID() == map) then
             self._routeInputs = nil; self:MarkRouteReady(); return
@@ -1100,14 +1105,14 @@ function nav:Update(context)
             return currentGroundSpeed
         end
         return groundSpeed
-    end--[[APR_DIAG]]; groundSpeedAt = APRTrace("APR-Core/features/navigation/Navigation.lua:1095:groundSpeedAt#68", groundSpeedAt)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; groundSpeedAt = APRTrace("APR-Core/features/navigation/Navigation.lua:1100:groundSpeedAt#68", groundSpeedAt)--[[/APR_DIAG]]
     local function walkSpeedAt(point)
         if not data.GetWalkingSpeed then return walkSpeed end
         return data:GetWalkingSpeed(point, walkSpeed, groundSpeedAt(point))
-    end--[[APR_DIAG]]; walkSpeedAt = APRTrace("APR-Core/features/navigation/Navigation.lua:1104:walkSpeedAt#69", walkSpeedAt)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; walkSpeedAt = APRTrace("APR-Core/features/navigation/Navigation.lua:1109:walkSpeedAt#69", walkSpeedAt)--[[/APR_DIAG]]
     local function walkSpeedFor(from, to)
         return math.min(walkSpeedAt(from), walkSpeedAt(to))
-    end--[[APR_DIAG]]; walkSpeedFor = APRTrace("APR-Core/features/navigation/Navigation.lua:1108:walkSpeedFor#70", walkSpeedFor)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; walkSpeedFor = APRTrace("APR-Core/features/navigation/Navigation.lua:1113:walkSpeedFor#70", walkSpeedFor)--[[/APR_DIAG]]
     local generation = self.generation
     local contextKey = tostring(context.route) .. ":" .. tostring(context.index) .. ":" .. tostring(context.revision)
     self.waitingData = false
@@ -1121,12 +1126,12 @@ function nav:Update(context)
         clock = debugprofilestop, walkSpeed = walkSpeed, walkSpeedFor = walkSpeedFor, walkSpeedAt = walkSpeedAt,
         contextKey = contextKey, walkingIsTransitive = true,
         budget = GetMoney and GetMoney() or 0,
-        canWalk = --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1124:callback#71", --[[/APR_DIAG]]function(from, to) return data:CanWalk(from, to) end--[[APR_DIAG]])--[[/APR_DIAG]],
-        walkingRegionFor = data.GetPositionRegion and --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1125:callback#72", --[[/APR_DIAG]]function(point) return data:GetPositionRegion(point) end--[[APR_DIAG]])--[[/APR_DIAG]],
-        prepareSegment = --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1126:callback#73", --[[/APR_DIAG]]function(segment, index)
+        canWalk = --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1129:callback#71", --[[/APR_DIAG]]function(from, to) return data:CanWalk(from, to) end--[[APR_DIAG]])--[[/APR_DIAG]],
+        walkingRegionFor = data.GetPositionRegion and --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1130:callback#72", --[[/APR_DIAG]]function(point) return data:GetPositionRegion(point) end--[[APR_DIAG]])--[[/APR_DIAG]],
+        prepareSegment = --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1131:callback#73", --[[/APR_DIAG]]function(segment, index)
             return self:PrepareGuidanceStep(segment, index, generation, start)
         end--[[APR_DIAG]])--[[/APR_DIAG]],
-        probeSegments = --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1129:callback#74", --[[/APR_DIAG]]function(probe)
+        probeSegments = --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1134:callback#74", --[[/APR_DIAG]]function(probe)
             return {
                 { kind = "walk", from = start, to = probe.from, instruction = NavigationText("RUN_WAYPOINT") },
                 { kind = "verify_taxi", from = probe.from, to = probe.from,
@@ -1182,12 +1187,12 @@ function nav:Update(context)
         else
             self:SearchFailed(job.blockers)
         end
-    end--[[APR_DIAG]]; advance = APRTrace("APR-Core/features/navigation/Navigation.lua:1138:advance#75", advance)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; advance = APRTrace("APR-Core/features/navigation/Navigation.lua:1143:advance#75", advance)--[[/APR_DIAG]]
     -- MarkRouteReady would cancel this newly created search. Notify through
     -- the ordinary arrow/step refresh flow while faster alternatives continue.
     if seedDirect then self:Notify() else self:Render() end
     advance()
-end--[[APR_DIAG]]; nav.Update = APRTrace("APR-Core/features/navigation/Navigation.lua:967:nav:Update#67", nav.Update)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.Update = APRTrace("APR-Core/features/navigation/Navigation.lua:971:nav:Update#67", nav.Update)--[[/APR_DIAG]]
 function nav:PollArrival()
     if self.worldLoading then return end
     if not Enabled() or (UnitIsDeadOrGhost and UnitIsDeadOrGhost("player")) then self:Cancel("inactive"); return end
@@ -1263,9 +1268,9 @@ function nav:PollArrival()
         -- Otherwise remove stale actions immediately and refresh the route.
         self:ForceRefresh(); self:Render(); self:RequestUpdate()
     end
-end--[[APR_DIAG]]; nav.PollArrival = APRTrace("APR-Core/features/navigation/Navigation.lua:1191:nav:PollArrival#76", nav.PollArrival)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; nav.PollArrival = APRTrace("APR-Core/features/navigation/Navigation.lua:1196:nav:PollArrival#76", nav.PollArrival)--[[/APR_DIAG]]
 local frame, elapsed = CreateFrame("Frame"), 0
-frame:SetScript("OnUpdate", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1268:callback#77", --[[/APR_DIAG]]function(_, delta)
+frame:SetScript("OnUpdate", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1273:callback#77", --[[/APR_DIAG]]function(_, delta)
     if nav.worldLoading then return end
     elapsed = elapsed + delta
     if elapsed < 0.5 then return end
@@ -1300,7 +1305,7 @@ for _, event in ipairs({ "PLAYER_LEAVING_WORLD", "PLAYER_ENTERING_WORLD", "LOADI
     elseif APR.TryRegisterEvent then APR:TryRegisterEvent(frame, event)
     else --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](frame.RegisterEvent, frame, event) end
 end
-frame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1303:callback#78", --[[/APR_DIAG]]function(_, event, unit, _, spellID)
+frame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1308:callback#78", --[[/APR_DIAG]]function(_, event, unit, _, spellID)
     if event == "PLAYER_LEAVING_WORLD" or event == "LOADING_SCREEN_ENABLED" then nav:BeginWorldLoading(event); return end
     if event == "PLAYER_ENTERING_WORLD" or event == "LOADING_SCREEN_DISABLED" then nav:EndWorldLoading(event); return end
     if event == "SPELL_UPDATE_COOLDOWN" or event == "BAG_UPDATE_COOLDOWN" then nav:RequestCooldownRefresh(); return end
