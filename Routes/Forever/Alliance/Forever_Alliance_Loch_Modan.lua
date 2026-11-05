@@ -1173,7 +1173,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Dwarf-Gnome"] = {
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
     mapID = 1432,
-    conditions = { MinLevel = 12, Race = { APR.RACES.Dwarf, APR.RACES.Gnome }, Class = { APR.Classes.Mage, APR.Classes.Paladin, APR.Classes.Priest, APR.Classes.Rogue, APR.Classes.Shaman, APR.Classes.Warlock, APR.Classes.Warrior } },
+    conditions = { MinLevel = 12, Faction = "Alliance", Race = { APR.RACES.Dwarf, APR.RACES.Gnome }, Class = { APR.Classes.Mage, APR.Classes.Paladin, APR.Classes.Priest, APR.Classes.Rogue, APR.Classes.Shaman, APR.Classes.Warlock, APR.Classes.Warrior } },
     nextRoute = {
         "Forever-Alliance-Westfall",
         { route = "Forever-Alliance-Dungeons-Westfall",         conditions = { MinLevel = 13, Faction = "Alliance", Race = { APR.RACES.Dwarf, APR.RACES.Gnome }, Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock }, SkipForLvl = 16 } },

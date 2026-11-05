@@ -6,7 +6,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
     mapID = 1411,
-    conditions = { Race = { APR.RACES.Troll, APR.RACES.Orc } },
+    conditions = { Faction = "Horde", Race = { APR.RACES.Troll, APR.RACES.Orc } },
     nextRoute = {
         { route = "Forever-Horde-Tirisfal-Glades", conditions = { Class = { APR.Classes.Mage, APR.Classes.Priest, APR.Classes.Rogue, APR.Classes.Warlock, APR.Classes.Warrior } } },
         { route = "Forever-Horde-The-Barrens",     conditions = { Class = { APR.Classes.Hunter, APR.Classes.Shaman } } },
