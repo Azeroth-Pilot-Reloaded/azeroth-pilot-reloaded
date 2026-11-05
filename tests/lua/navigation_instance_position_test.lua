@@ -137,12 +137,40 @@ for _, profile in ipairs({ "retail", "forever" }) do
     for _ = 1, 20 do navFrame.OnUpdate(navFrame, 0.5); drain() end
     assert(nav.generation == generation, "Stable coordinate restrictions do not replan forever")
 
-    for _, kind in ipairs({ "raid", "scenario", "pvp", "arena" }) do
+    for _, kind in ipairs({ "party", "raid", "scenario", "pvp", "arena", "invented_instance_type" }) do
         observedKind = kind
+        nativeMap, f.player = nil, {}
+        step.Zone, step.Coord = 2395, { x = 600, y = 500 }
         update()
-        assert(nav:GetState() == "instance" and not APR.IsInRouteZone, "Restricted instance kind: " .. kind)
+        local observed = APR:GetNavigationPlayerContext()
+        assert(observed.isInstance and observed.instanceType == kind and not observed.coordinatesAvailable,
+            "Every non-outdoor instance type retains its public identity on " .. profile .. ": " .. kind)
+        assert(nav:GetState() == "instance" and not APR.IsInRouteZone and not nav.search and #nav.queue == 0,
+            "A restricted exterior objective cannot plan an invented position: " .. kind)
+        assert(rows["01_NAVIGATION_PATH-0"].text == "Leave the instance: Invented interior",
+            "Every instance kind formats its exit name without placeholders or parentheses: " .. kind)
+        local stable = nav.generation
+        for _ = 1, 3 do navFrame.OnUpdate(navFrame, 0.5); drain() end
+        assert(nav.generation == stable, "A restricted instance does not continually replan: " .. kind)
+
+        nativeMap, step.Zone, step.Coord = 83002, 83002, { x = 40, y = 330 }
+        update()
+        assert(nav:GetState() == "instance" and APR.IsInRouteZone and next(rows) == nil,
+            "Local objectives remain visible in every instance kind: " .. kind)
+        assert(APRData.player[APR.ActiveRoute] == 1, "Instance identity alone never completes a quest")
+
+        -- A normal outdoor observation must recover without another forced
+        -- refresh or loading event, even after a mapless/restricted visit.
+        nativeMap, observedID, observedKind = 2395, 0, "none"
+        f.player = { x = 500, y = 600, instanceID = 0 }
+        step.Zone, step.Coord = 2395, { x = 600, y = 500 }
+        navFrame.OnUpdate(navFrame, 0.5); drain()
+        assert(nav:GetState() == "ready" and APR.IsInRouteZone and not nav.instanceContext,
+            "Outdoor navigation recovers after every instance kind: " .. kind)
+        observedID = 74
     end
     observedKind, nativeMap = "party", 83002
+    f.player = {}
     step.Zone, step.Coord = 83002, { x = 40, y = 330 }
     update()
     assert(nav:GetState() == "instance" and APR.IsInRouteZone and next(rows) == nil,
@@ -174,6 +202,11 @@ for _, profile in ipairs({ "retail", "forever" }) do
     local changed = APR:GetNavigationPlayerContext()
     assert(changed.instanceID == 0 and not changed.isInstance and not changed.instanceName,
         "Late instance metadata cannot relabel a fresh outdoor position")
+    observedID, observedKind = 0, "none"
+    changed = APR:GetNavigationPlayerContext()
+    assert(not changed.isInstance, "Outdoor identity never becomes an instance on either client")
+    observedKind = ""
+    assert(not APR:GetNavigationPlayerContext().isInstance, "An empty instance type is not evidence of an interior")
     GetInstanceInfo = nil
 end
 print("Instance position: world-only exits, restricted local/exterior objectives, stable work, loading and recovery passed")
