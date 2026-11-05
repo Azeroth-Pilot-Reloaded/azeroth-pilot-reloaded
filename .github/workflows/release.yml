@@ -1,17 +1,18 @@
 name: Release Addon
 
 on:
-  push:
-    branches:
-      - '**'
-      # Automation can push using a personal token, so also exclude its branches.
-      - '!interface-version'
-      - '!automation/**'
-    tags:
-      - '**'
+  # Automatic releases are paused. Uncomment push and schedule to re-enable them.
+  # push:
+  #   branches:
+  #     - '**'
+  #     # Automation can push using a personal token, so also exclude its branches.
+  #     - '!interface-version'
+  #     - '!automation/**'
+  #   tags:
+  #     - '**'
   # Catch up on default-branch changes skipped during the alpha cooldown.
-  schedule:
-    - cron: '17 * * * *'
+  # schedule:
+  #   - cron: '17 * * * *'
   workflow_dispatch:
     inputs:
       tag:
