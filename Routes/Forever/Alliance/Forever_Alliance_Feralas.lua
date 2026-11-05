@@ -1334,28 +1334,10 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
             _index = 157,
         },
         {
-            Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "WARRIOR" },
-            IsQuestUncompleted = 2982,
-            Race = "Human",
-            _index = 158,
-        },
-        {
-            Class = { "HUNTER", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" },
-            IsQuestUncompleted = 2982,
-            Race = "Dwarf",
-            _index = 159,
-        },
-        {
-            Class = { "MAGE", "PRIEST", "ROGUE", "WARRIOR" },
-            IsQuestUncompleted = 2982,
-            Race = "Gnome",
-            _index = 160,
-        },
-        {
             UseHS = 2982,
             UseHSIfAvailable = true,
             Class = { "ROGUE", "WARRIOR" },
-            _index = 161,
+            _index = 158,
         },
         {
             BuyMerchant = { { itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } } },
@@ -1370,7 +1352,7 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
             UseHS = 2982,
             UseHSIfAvailable = true,
             ClassNot = { "ROGUE", "WARRIOR" },
-            _index = 162,
+            _index = 159,
         },
         {
             BuyMerchant = { { itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } } },
@@ -1387,7 +1369,7 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
             IsQuestUncompleted = 2982,
             OnlyInZones = { 1457 },
             Zone = 1457,
-            _index = 163,
+            _index = 160,
         },
         {
             UseFlightPath = 2982,
@@ -1395,20 +1377,20 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
             Coord = { x = 841.1, y = 8640.58 },
             ZoneStepTrigger = { x = 3340.06, y = -4370.63, mapID = 1444, Range = 25 },
             Zone = 1438,
-            _index = 164,
+            _index = 161,
         },
         {
             Grind = 48,
             Coord = { x = 3621.46, y = -5494.63 },
             Range = 30,
             Zone = 1444,
-            _index = 165,
+            _index = 162,
         },
         {
             UseHS = 2982,
             UseHSIfAvailable = true,
             Class = { "ROGUE", "WARRIOR" },
-            _index = 166,
+            _index = 163,
         },
         {
             BuyMerchant = { { itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } } },
@@ -1423,7 +1405,7 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
             UseHS = 2982,
             UseHSIfAvailable = true,
             ClassNot = { "ROGUE", "WARRIOR" },
-            _index = 167,
+            _index = 164,
         },
         {
             BuyMerchant = { { itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } } },
@@ -1440,19 +1422,19 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
             Range = 20,
             OnlyInZones = { 1444 },
             Zone = 1444,
-            _index = 168,
+            _index = 165,
         },
         {
             Done = { 2982 },
             Coord = { x = 3229.62, y = -4479.98 },
             Zone = 1444,
-            _index = 169,
+            _index = 166,
         },
         {
             PickUp = { 3445 },
             Coord = { x = 3229.62, y = -4479.98 },
             Zone = 1444,
-            _index = 170,
+            _index = 167,
         },
         {
             BuyMerchant = { { itemID = 11285, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 40, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 2, operator = "==" } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 18, operator = "==" } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", value = 45, operator = "<=", allowMissing = true } } }, { itemID = 11284, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 40, EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 3, operator = "==" }, AllOf = { { EquippedItemStat = { slot = 0, stat = "LEVEL", value = 45, operator = "<=", allowMissing = true } } } } } },
@@ -1460,7 +1442,7 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
             Range = 5,
             Class = "HUNTER",
             Zone = 1444,
-            _index = 171,
+            _index = 168,
         },
         {
             UseFlightPath = 4281,
@@ -1468,14 +1450,14 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
             Coord = { x = 3340.06, y = -4370.63 },
             ZoneStepTrigger = { x = -778.37, y = -4491.19, mapID = 1444, Range = 25 },
             Zone = 1444,
-            _index = 172,
+            _index = 169,
         },
         {
             Done = { 4281 },
             Coord = { x = -787.9, y = -4524.09 },
             Button = { ["4281"] = 11463 },
             Zone = 1444,
-            _index = 173,
+            _index = 170,
         },
         {
             UseFlightPath = 2741,
@@ -1483,11 +1465,11 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
             Coord = { x = -778.37, y = -4491.19 },
             ZoneStepTrigger = { x = -3738.16, y = -7224.87, mapID = 1446, Range = 25 },
             Zone = 1444,
-            _index = 174,
+            _index = 171,
         },
         {
             RouteCompleted = true,
-            _index = 175,
+            _index = 172,
         },
     },
 }

@@ -734,16 +734,12 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
             _index = 90,
         },
         {
-            Class = "ROGUE",
-            _index = 91,
-        },
-        {
             Waypoint = 1195,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1414, 44.36, 34.86),
             Range = 5,
             Class = "ROGUE",
             Zone = 1414,
-            _index = 92,
+            _index = 91,
         },
         {
             Waypoint = 1195,
@@ -752,7 +748,7 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
             Range = 20,
             Class = "ROGUE",
             Zone = 1414,
-            _index = 93,
+            _index = 92,
         },
         {
             Done = { 6564 },
@@ -761,14 +757,14 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
             IsQuestOnQuest = 6564,
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1440,
-            _index = 94,
+            _index = 93,
         },
         {
             Done = { 6563 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 11.56, 34.29),
             Class = "ROGUE",
             Zone = 1440,
-            _index = 95,
+            _index = 94,
         },
         {
             Done = { 6921 },
@@ -778,7 +774,7 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
             IsQuestReadyForTurnIn = 6921,
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1440,
-            _index = 96,
+            _index = 95,
         },
         {
             Done = { 6922 },
@@ -788,7 +784,7 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
             IsQuestReadyForTurnIn = 6922,
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1440,
-            _index = 97,
+            _index = 96,
         },
         {
             UseFlightPath = 1195,
@@ -798,7 +794,7 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
             Class = { "ROGUE", "WARLOCK" },
             SkipInZones = { 1454 },
             Zone = 1440,
-            _index = 98,
+            _index = 97,
         },
         {
             LearnSkill = { spellID = 1833 },
@@ -807,7 +803,7 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
             MinLevel = 26,
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1454,
-            _index = 99,
+            _index = 98,
         },
         {
             LearnSkill = { spellID = 8687 },
@@ -816,7 +812,7 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
             MinLevel = 28,
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1454,
-            _index = 100,
+            _index = 99,
         },
         {
             LearnSkill = { spellID = 1456 },
@@ -825,7 +821,7 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
             MinLevel = 26,
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1454,
-            _index = 101,
+            _index = 100,
         },
         {
             LearnSkill = { spellID = 6217 },
@@ -834,7 +830,7 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
             MinLevel = 28,
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1454,
-            _index = 102,
+            _index = 101,
         },
         {
             Waypoint = 1195,
@@ -845,7 +841,7 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
             OnlyInZones = { 1454 },
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1454,
-            _index = 103,
+            _index = 102,
         },
         {
             BuyMerchant = { { itemID = 5347, quantity = 1 } },
@@ -860,7 +856,7 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
             OnlyInZones = { 1454 },
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1454,
-            _index = 104,
+            _index = 103,
         },
         {
             EquipItem = { itemID = 5347, slot = 18 },
@@ -869,7 +865,7 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
             EquippedItemStat = { { operator = "<", slot = 18, value = 7, precision = 1, stat = "QUALITY", allowMissing = true }, { operator = "<", slot = 18, value = 26.9, precision = 1, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", allowMissing = true } },
             ItemCount = { itemID = 5347, count = 1 },
             MinLevel = 30,
-            _index = 105,
+            _index = 104,
         },
         {
             UseFlightPath = 1195,
@@ -880,7 +876,7 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
             OnlyInZones = { 1454 },
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1454,
-            _index = 106,
+            _index = 105,
         },
         {
             UseSpell = { spellID = 18960 },
@@ -888,7 +884,7 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
             HasSpell = 18960,
             Race = { "Skyborne", "Tauren" },
             SkipInZones = { 1450 },
-            _index = 107,
+            _index = 106,
         },
         {
             LearnSkill = { spellID = 1850 },
@@ -897,7 +893,7 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
             MinLevel = 26,
             Race = { "Skyborne", "Tauren" },
             Zone = 1450,
-            _index = 108,
+            _index = 107,
         },
         {
             LearnSkill = { spellID = 3029 },
@@ -906,7 +902,7 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
             MinLevel = 28,
             Race = { "Skyborne", "Tauren" },
             Zone = 1450,
-            _index = 109,
+            _index = 108,
         },
         {
             UseFlightPath = 1195,
@@ -916,7 +912,7 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
             ClassNot = "ROGUE",
             OnlyInZones = { 1440 },
             Zone = 1440,
-            _index = 110,
+            _index = 109,
         },
         {
             UseFlightPath = 1195,
@@ -926,7 +922,7 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
             ClassNot = "ROGUE",
             OnlyInZones = { 1454 },
             Zone = 1454,
-            _index = 111,
+            _index = 110,
         },
         {
             UseFlightPath = 1195,
@@ -936,7 +932,7 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
             Class = "DRUID",
             OnlyInZones = { 1450 },
             Zone = 1450,
-            _index = 112,
+            _index = 111,
         },
         {
             UseFlightPath = 1195,
@@ -947,11 +943,11 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
             OnlyInZones = { 1413 },
             SkipInZones = { 1456 },
             Zone = 1413,
-            _index = 113,
+            _index = 112,
         },
         {
             RouteCompleted = true,
-            _index = 114,
+            _index = 113,
         },
     },
 }

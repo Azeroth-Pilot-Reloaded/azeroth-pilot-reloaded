@@ -2567,18 +2567,12 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 247,
         },
         {
-            Class = { "ROGUE", "SHAMAN", "WARRIOR" },
-            HasSpell = 2018,
-            IsQuestUncompleted = 93319,
-            _index = 248,
-        },
-        {
             Done = { 93319 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.465, 44.966),
             RaidIcon = 251906,
             Class = { "DRUID", "MAGE", "ROGUE", "SHAMAN", "WARRIOR" },
             Zone = 2521,
-            _index = 249,
+            _index = 248,
         },
         {
             BuyMerchant = { { itemID = 2495, quantity = 1 } },
@@ -2594,7 +2588,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 3,
             Money = { operator = ">=", copper = 504 },
             Zone = 2521,
-            _index = 250,
+            _index = 249,
         },
         {
             BuyMerchant = { { quantity = 1, itemID = 2946, targetStock = true } },
@@ -2608,7 +2602,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { itemID = 2946, count = 1, operator = "<" },
             Money = { copper = 30, operator = ">=" },
             Zone = 2521,
-            _index = 251,
+            _index = 250,
         },
         {
             BuyMerchant = { { itemID = 1179, quantity = 10, targetStock = true } },
@@ -2621,7 +2615,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { itemID = 1179, count = 10, operator = "<" },
             MinLevel = 5,
             Zone = 2521,
-            _index = 252,
+            _index = 251,
         },
         {
             BuyMerchant = { { itemID = 4496, quantity = 1, targetStock = true } },
@@ -2633,7 +2627,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { itemID = 4496, count = 1, operator = "<" },
             Money = { copper = 500 },
             Zone = 2521,
-            _index = 253,
+            _index = 252,
         },
         {
             Done = { 94411 },
@@ -2641,13 +2635,13 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251902,
             Faction = "Horde",
             Zone = 2521,
-            _index = 254,
+            _index = 253,
         },
         {
             PickUp = { 93318 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.37, 45.86),
             Zone = 2521,
-            _index = 255,
+            _index = 254,
         },
         {
             LearnProfession = 3273,
@@ -2660,7 +2654,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 5,
             Money = { copper = 100, operator = ">=" },
             Zone = 2521,
-            _index = 256,
+            _index = 255,
         },
         {
             LearnProfession = 3273,
@@ -2672,21 +2666,21 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 5,
             Money = { copper = 100, operator = ">=" },
             Zone = 2521,
-            _index = 257,
+            _index = 256,
         },
         {
             Done = { 96638 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 41.67, 44.79),
             RaidIcon = 263664,
             Zone = 2521,
-            _index = 258,
+            _index = 257,
         },
         {
             PickUp = { 96101 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 41.67, 44.79),
             RaidIcon = 263664,
             Zone = 2521,
-            _index = 259,
+            _index = 258,
         },
         {
             Qpart = { [96101] = { 1 } },
@@ -2695,7 +2689,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             EmoteETA = 59,
             RaidIcon = 263664,
             Zone = 2521,
-            _index = 260,
+            _index = 259,
         },
         {
             Qpart = { [96101] = { 2 } },
@@ -2703,7 +2697,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             NoArrow = true,
             AllOf = { { HasSpell = 2550 } },
             HasSpell = 3273,
-            _index = 261,
+            _index = 260,
         },
         {
             Qpart = { [96101] = { 2 } },
@@ -2711,7 +2705,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             NoArrow = true,
             DontHaveSpell = 2550,
             HasSpell = 3273,
-            _index = 262,
+            _index = 261,
         },
         {
             Qpart = { [96101] = { 2 } },
@@ -2719,21 +2713,21 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             NoArrow = true,
             DontHaveSpell = 3273,
             HasSpell = 2550,
-            _index = 263,
+            _index = 262,
         },
         {
             Qpart = { [96101] = { 2 } },
             Note = { "REMAIN_SEATED_FOOD_BUFF_APPEARS", "REFRESH_BUFFS_WAITING", "NOT_MOVE_JUMP_REST_EFFECT_ENDS_QUEST_COMPLETION", "EAT_BUFF_FOOD_WAITING" },
             NoArrow = true,
             DontHaveSpell = { 3273, 2550 },
-            _index = 264,
+            _index = 263,
         },
         {
             Done = { 96101 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 41.67, 44.79),
             RaidIcon = 263664,
             Zone = 2521,
-            _index = 265,
+            _index = 264,
         },
         {
             PickUp = { 97970 },
@@ -2741,7 +2735,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 263664,
             HasSpell = 2575,
             Zone = 2521,
-            _index = 266,
+            _index = 265,
         },
         {
             PickUp = { 97971 },
@@ -2749,14 +2743,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 263664,
             HasSpell = 8613,
             Zone = 2521,
-            _index = 267,
+            _index = 266,
         },
         {
             PickUp = { 96646 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 41.658, 44.784),
             RaidIcon = 263664,
             Zone = 2521,
-            _index = 268,
+            _index = 267,
         },
         {
             PickUp = { 97968 },
@@ -2764,7 +2758,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 263664,
             HasSpell = 2366,
             Zone = 2521,
-            _index = 269,
+            _index = 268,
         },
         {
             PickUp = { 97965 },
@@ -2772,7 +2766,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 263664,
             HasSpell = 3273,
             Zone = 2521,
-            _index = 270,
+            _index = 269,
         },
         {
             PickUp = { 97967 },
@@ -2780,7 +2774,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 263664,
             HasSpell = 7620,
             Zone = 2521,
-            _index = 271,
+            _index = 270,
         },
         {
             PickUp = { 97963 },
@@ -2788,7 +2782,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 263664,
             HasSpell = 2259,
             Zone = 2521,
-            _index = 272,
+            _index = 271,
         },
         {
             PickUp = { 97964 },
@@ -2796,7 +2790,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 263664,
             HasSpell = 2018,
             Zone = 2521,
-            _index = 273,
+            _index = 272,
         },
         {
             PickUp = { 97973 },
@@ -2804,7 +2798,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 263664,
             HasSpell = 3908,
             Zone = 2521,
-            _index = 274,
+            _index = 273,
         },
         {
             PickUp = { 98286 },
@@ -2812,7 +2806,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 263664,
             HasSpell = 7411,
             Zone = 2521,
-            _index = 275,
+            _index = 274,
         },
         {
             PickUp = { 97969 },
@@ -2820,7 +2814,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 263664,
             HasSpell = 2108,
             Zone = 2521,
-            _index = 276,
+            _index = 275,
         },
         {
             UseSpell = { spellID = 1259705, questID = 94413 },
@@ -2831,7 +2825,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             Not = { IsQuestReadyForTurnIn = 94413 },
             Zone = 2521,
-            _index = 277,
+            _index = 276,
         },
         {
             Qpart = { [94413] = { 1 } },
@@ -2843,7 +2837,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 257532,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 278,
+            _index = 277,
         },
         {
             UseSpell = { spellID = 1259416, questID = 92516 },
@@ -2852,7 +2846,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 36.44, 50.93),
             Not = { IsQuestReadyForTurnIn = 92516 },
             Zone = 2521,
-            _index = 279,
+            _index = 278,
         },
         {
             Qpart = { [93951] = { 1 } },
@@ -2860,7 +2854,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 36.49, 54.785),
             Range = 30,
             Zone = 2521,
-            _index = 280,
+            _index = 279,
         },
         {
             Qpart = { [92516] = { 1, 2, 3 } },
@@ -2870,7 +2864,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             RaidIcon = 251261,
             Zone = 2521,
-            _index = 281,
+            _index = 280,
         },
         {
             Qpart = { [93318] = { 1 } },
@@ -2880,7 +2874,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             RaidIcon = 254589,
             Zone = 2521,
-            _index = 282,
+            _index = 281,
         },
         {
             Done = { 97965 },
@@ -2891,7 +2885,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 97965,
             IsQuestReadyForTurnIn = 97965,
             Zone = 2521,
-            _index = 283,
+            _index = 282,
         },
         {
             Done = { 98286 },
@@ -2902,7 +2896,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 98286,
             IsQuestReadyForTurnIn = 98286,
             Zone = 2521,
-            _index = 284,
+            _index = 283,
         },
         {
             Done = { 97971 },
@@ -2913,7 +2907,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 97971,
             IsQuestReadyForTurnIn = 97971,
             Zone = 2521,
-            _index = 285,
+            _index = 284,
         },
         {
             SellItems = { questID = 92553, junk = true, npcID = 251905 },
@@ -2925,7 +2919,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestReadyForTurnIn = 92553,
             IsQuestUncompleted = 92553,
             Zone = 2521,
-            _index = 286,
+            _index = 285,
         },
         {
             BuyMerchant = { { quantity = 5, itemID = 2678, targetStock = true } },
@@ -2940,7 +2934,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { itemID = 2678, count = 5, operator = "<" },
             Money = { copper = 10, operator = ">=" },
             Zone = 2521,
-            _index = 287,
+            _index = 286,
         },
         {
             Done = { 92553 },
@@ -2950,7 +2944,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251905,
             IsQuestReadyForTurnIn = 92553,
             Zone = 2521,
-            _index = 288,
+            _index = 287,
         },
         {
             Done = { 96646 },
@@ -2960,7 +2954,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             HasSpell = 2550,
             IsQuestReadyForTurnIn = 96646,
             Zone = 2521,
-            _index = 289,
+            _index = 288,
         },
         {
             Note = { "MOST_BUFF_FOOD_GRANTS_5_INCREASED_EXPERIENCE" },
@@ -2972,7 +2966,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 97963,
             ItemCount = { itemID = 6889, count = 1, operator = ">=" },
             Zone = 2521,
-            _index = 290,
+            _index = 289,
         },
         {
             BuyMerchant = { { itemID = 2678, quantity = 20, targetStock = true } },
@@ -2987,7 +2981,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { itemID = 6889, count = 1, operator = ">=" },
             Money = { operator = ">=", copper = 40 },
             Zone = 2521,
-            _index = 291,
+            _index = 290,
         },
         {
             Note = { "MOST_BUFF_FOOD_GRANTS_5_INCREASED_EXPERIENCE" },
@@ -3001,7 +2995,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { count = 1, itemID = 6888, operator = "<" },
             Not = { IsQuestReadyForTurnIn = 92553, IsQuestUncompleted = 92553 },
             Zone = 2521,
-            _index = 292,
+            _index = 291,
         },
         {
             BuyMerchant = { { itemID = 2678, quantity = 20, targetStock = true } },
@@ -3017,7 +3011,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Money = { operator = ">=", copper = 40 },
             Not = { IsQuestReadyForTurnIn = 92553, IsQuestUncompleted = 92553 },
             Zone = 2521,
-            _index = 293,
+            _index = 292,
         },
         {
             Note = { "KEEP_LEAST_3_SMALL_EGGS_LATER_QUEST", "MOST_BUFF_FOOD_GRANTS_5_INCREASED_EXPERIENCE" },
@@ -3029,7 +3023,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 97963,
             ItemCount = { itemID = 6889, count = 3, operator = ">" },
             Zone = 2521,
-            _index = 294,
+            _index = 293,
         },
         {
             BuyMerchant = { { itemID = 2678, quantity = 20, targetStock = true } },
@@ -3044,7 +3038,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { itemID = 2678, count = 20, operator = "<" },
             Money = { operator = ">=", copper = 40 },
             Zone = 2521,
-            _index = 295,
+            _index = 294,
         },
         {
             Done = { 97963 },
@@ -3055,7 +3049,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 97963,
             IsQuestReadyForTurnIn = 97963,
             Zone = 2521,
-            _index = 296,
+            _index = 295,
         },
         {
             Done = { 93951 },
@@ -3063,7 +3057,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.873, 44.187),
             RaidIcon = 251991,
             Zone = 2521,
-            _index = 297,
+            _index = 296,
         },
         {
             Done = { 97973 },
@@ -3073,7 +3067,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 97973,
             IsQuestReadyForTurnIn = 97973,
             Zone = 2521,
-            _index = 298,
+            _index = 297,
         },
         {
             Done = { 97964 },
@@ -3083,7 +3077,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 97964,
             IsQuestReadyForTurnIn = 97964,
             Zone = 2521,
-            _index = 299,
+            _index = 298,
         },
         {
             Done = { 97970 },
@@ -3093,7 +3087,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 97970,
             IsQuestReadyForTurnIn = 97970,
             Zone = 2521,
-            _index = 300,
+            _index = 299,
         },
         {
             Done = { 92515 },
@@ -3102,7 +3096,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestReadyForTurnIn = 92515,
             IsQuestUncompleted = 93319,
             Zone = 2521,
-            _index = 301,
+            _index = 300,
         },
         {
             Done = { 97969 },
@@ -3112,14 +3106,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 97969,
             IsQuestReadyForTurnIn = 97969,
             Zone = 2521,
-            _index = 302,
+            _index = 301,
         },
         {
             Done = { 92516, 93319 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.465, 44.966),
             RaidIcon = 251906,
             Zone = 2521,
-            _index = 303,
+            _index = 302,
         },
         {
             BuyMerchant = { { itemID = 2495, quantity = 1 } },
@@ -3134,7 +3128,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 3,
             Money = { operator = ">=", copper = 504 },
             Zone = 2521,
-            _index = 304,
+            _index = 303,
         },
         {
             LearnSkill = { spellIDs = { 284, 1715 } },
@@ -3147,7 +3141,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 8,
             Money = { operator = ">=", copper = 500 },
             Zone = 2521,
-            _index = 305,
+            _index = 304,
         },
         {
             LearnSkill = { spellID = 6343 },
@@ -3160,14 +3154,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 8,
             Money = { copper = 500, operator = ">=" },
             Zone = 2521,
-            _index = 306,
+            _index = 305,
         },
         {
             Done = { 93318 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.234, 45.186),
             RaidIcon = 252172,
             Zone = 2521,
-            _index = 307,
+            _index = 306,
         },
         {
             LearnSkill = { spellIDs = { 774, 8921 } },
@@ -3177,7 +3171,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 92517,
             MinLevel = 4,
             Zone = 2521,
-            _index = 308,
+            _index = 307,
         },
         {
             LearnSkill = { spellIDs = { 467, 5177 } },
@@ -3187,7 +3181,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 92517,
             MinLevel = 6,
             Zone = 2521,
-            _index = 309,
+            _index = 308,
         },
         {
             LearnSkill = { spellIDs = { 339, 5186 } },
@@ -3199,7 +3193,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 8,
             Money = { operator = ">=", copper = 400 },
             Zone = 2521,
-            _index = 310,
+            _index = 309,
         },
         {
             LearnSkill = { spellIDs = { 1978, 13163 } },
@@ -3209,7 +3203,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 92517,
             MinLevel = 4,
             Zone = 2521,
-            _index = 311,
+            _index = 310,
         },
         {
             LearnSkill = { spellIDs = { 1130, 3044 } },
@@ -3219,7 +3213,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 92517,
             MinLevel = 6,
             Zone = 2521,
-            _index = 312,
+            _index = 311,
         },
         {
             LearnSkill = { spellIDs = { 5116, 3127, 14260 } },
@@ -3231,14 +3225,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 8,
             Money = { operator = ">=", copper = 400 },
             Zone = 2521,
-            _index = 313,
+            _index = 312,
         },
         {
             Done = { 92517 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.667, 45.5),
             RaidIcon = 251523,
             Zone = 2521,
-            _index = 314,
+            _index = 313,
         },
         {
             Grind = 5,
@@ -3246,28 +3240,28 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             AllOf = { { AnyOf = { { IsQuestNotOnQuest = 93036, IsQuestUncompleted = 93036 } } } },
             Zone = 2521,
-            _index = 315,
+            _index = 314,
         },
         {
             PickUp = { 93036 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.667, 45.5),
             RaidIcon = 251523,
             Zone = 2521,
-            _index = 316,
+            _index = 315,
         },
         {
             Done = { 93036 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.831, 45.515),
             RaidIcon = 251904,
             Zone = 2521,
-            _index = 317,
+            _index = 316,
         },
         {
             PickUp = { 92529 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.831, 45.515),
             RaidIcon = 251904,
             Zone = 2521,
-            _index = 318,
+            _index = 317,
         },
         {
             BuyMerchant = { { itemID = 1179, quantity = 1, targetStock = true } },
@@ -3281,7 +3275,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { count = 1, itemID = 1179, operator = "<" },
             Money = { operator = ">=", copper = 25 },
             Zone = 2521,
-            _index = 319,
+            _index = 318,
         },
         {
             BuyMerchant = { { itemID = 1179, quantity = 1, targetStock = true } },
@@ -3295,7 +3289,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { count = 1, itemID = 1179, operator = "<" },
             Money = { operator = ">=", copper = 25 },
             Zone = 2521,
-            _index = 320,
+            _index = 319,
         },
         {
             BuyMerchant = { { itemID = 4496, quantity = 3, targetStock = true } },
@@ -3308,7 +3302,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "HUNTER", "ROGUE", "WARRIOR" },
             ItemCount = { itemID = 4496, count = 3, operator = "<" },
             Zone = 2521,
-            _index = 321,
+            _index = 320,
         },
         {
             Waypoint = 92529,
@@ -3317,7 +3311,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251904,
             DontHaveAura = 1254832,
             Zone = 2521,
-            _index = 322,
+            _index = 321,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -3329,7 +3323,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 8,
             Money = { operator = ">=", copper = 1000 },
             Zone = 2521,
-            _index = 323,
+            _index = 322,
         },
         {
             BuyMerchant = { { itemID = 2495, quantity = 1 } },
@@ -3344,7 +3338,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 3,
             Money = { operator = ">=", copper = 504 },
             Zone = 2521,
-            _index = 324,
+            _index = 323,
         },
         {
             BuyMerchant = { { itemID = 4496, quantity = 3, targetStock = true } },
@@ -3358,7 +3352,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 97967,
             ItemCount = { itemID = 4496, count = 3, operator = "<" },
             Zone = 2521,
-            _index = 325,
+            _index = 324,
         },
         {
             LearnSkill = { spellID = 116 },
@@ -3368,7 +3362,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 94413,
             MinLevel = 4,
             Zone = 2521,
-            _index = 326,
+            _index = 325,
         },
         {
             LearnSkill = { spellIDs = { 143, 2136, 1296017 } },
@@ -3378,7 +3372,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 94413,
             MinLevel = 6,
             Zone = 2521,
-            _index = 327,
+            _index = 326,
         },
         {
             LearnSkill = { spellIDs = { 5143, 205, 118 } },
@@ -3391,7 +3385,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 8,
             Money = { operator = ">=", copper = 600 },
             Zone = 2521,
-            _index = 328,
+            _index = 327,
         },
         {
             LearnSkill = { spellID = 5143 },
@@ -3404,7 +3398,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 8,
             Money = { operator = ">=", copper = 200 },
             Zone = 2521,
-            _index = 329,
+            _index = 328,
         },
         {
             Done = { 94413 },
@@ -3412,7 +3406,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251903,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 330,
+            _index = 329,
         },
         {
             Done = { 97967 },
@@ -3422,7 +3416,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 97967,
             IsQuestReadyForTurnIn = 97967,
             Zone = 2521,
-            _index = 331,
+            _index = 330,
         },
         {
             Waypoint = 92529,
@@ -3430,7 +3424,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.374, 53.512),
             Range = 25.0,
             Zone = 2521,
-            _index = 332,
+            _index = 331,
         },
         {
             UseSpell = { spellID = 1259416, questID = 92529 },
@@ -3438,7 +3432,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Note = { "JUMP_USE_WALK_AIR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 46.88, 56.242),
             Zone = 2521,
-            _index = 333,
+            _index = 332,
         },
         {
             Waypoint = 92529,
@@ -3447,7 +3441,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 20,
             RaidIcon = 257065,
             Zone = 2521,
-            _index = 334,
+            _index = 333,
         },
         {
             Done = { 92529 },
@@ -3457,7 +3451,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 257065,
             Class = { "ROGUE", "WARRIOR" },
             Zone = 2521,
-            _index = 335,
+            _index = 334,
         },
         {
             PickUp = { 92528 },
@@ -3467,7 +3461,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 257065,
             Class = { "ROGUE", "WARRIOR" },
             Zone = 2521,
-            _index = 336,
+            _index = 335,
         },
         {
             Done = { 92529 },
@@ -3476,7 +3470,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 257065,
             Class = { "DRUID", "HUNTER", "MAGE", "SHAMAN" },
             Zone = 2521,
-            _index = 337,
+            _index = 336,
         },
         {
             PickUp = { 92528 },
@@ -3485,7 +3479,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 257065,
             Class = { "DRUID", "HUNTER", "MAGE", "SHAMAN" },
             Zone = 2521,
-            _index = 338,
+            _index = 337,
         },
         {
             Waypoint = 92528,
@@ -3495,7 +3489,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251904,
             DontHaveAura = 1254832,
             Zone = 2521,
-            _index = 339,
+            _index = 338,
         },
         {
             UseSpell = { spellID = 1259686, questID = 92528 },
@@ -3503,7 +3497,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 48.497, 55.827),
             Faction = "Horde",
             Zone = 2521,
-            _index = 340,
+            _index = 339,
         },
         {
             Waypoint = 92528,
@@ -3512,7 +3506,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 48.85, 53.91),
             Range = 5,
             Zone = 2521,
-            _index = 341,
+            _index = 340,
         },
         {
             Qpart = { [92528] = { 1 } },
@@ -3520,7 +3514,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 48.9, 53.685),
             Range = 30,
             Zone = 2521,
-            _index = 342,
+            _index = 341,
         },
         {
             Qpart = { [92528] = { 1 } },
@@ -3529,7 +3523,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 47.52, 53.015),
             Range = 30,
             Zone = 2521,
-            _index = 343,
+            _index = 342,
         },
         {
             Waypoint = 92528,
@@ -3537,7 +3531,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 46.86, 51.54),
             Range = 25.0,
             Zone = 2521,
-            _index = 344,
+            _index = 343,
         },
         {
             UseSpell = { spellID = 1259416, questID = 92528 },
@@ -3545,7 +3539,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Note = { "JUMP_USE_WALK_AIR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.37, 46.69),
             Zone = 2521,
-            _index = 345,
+            _index = 344,
         },
         {
             Waypoint = 92528,
@@ -3557,7 +3551,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 8,
             Money = { operator = ">=", copper = 400 },
             Zone = 2521,
-            _index = 346,
+            _index = 345,
         },
         {
             LearnSkill = { spellID = 1757 },
@@ -3566,7 +3560,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "ROGUE",
             MinLevel = 6,
             Zone = 2521,
-            _index = 347,
+            _index = 346,
         },
         {
             LearnSkill = { spellID = 1776 },
@@ -3576,7 +3570,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             DontHaveSpell = 1777,
             MinLevel = 6,
             Zone = 2521,
-            _index = 348,
+            _index = 347,
         },
         {
             LearnSkill = { spellIDs = { 5277, 6760 } },
@@ -3588,7 +3582,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 8,
             Money = { copper = 400, operator = ">=" },
             Zone = 2521,
-            _index = 349,
+            _index = 348,
         },
         {
             Waypoint = 92528,
@@ -3598,7 +3592,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251523,
             Class = { "DRUID", "HUNTER", "MAGE", "SHAMAN", "WARRIOR" },
             Zone = 2521,
-            _index = 350,
+            _index = 349,
         },
         {
             Waypoint = 92528,
@@ -3608,7 +3602,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251523,
             Class = { "DRUID", "HUNTER", "MAGE", "SHAMAN", "WARRIOR" },
             Zone = 2521,
-            _index = 351,
+            _index = 350,
         },
         {
             Waypoint = 92528,
@@ -3618,7 +3612,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251523,
             Class = { "DRUID", "HUNTER", "MAGE", "SHAMAN", "WARRIOR" },
             Zone = 2521,
-            _index = 352,
+            _index = 351,
         },
         {
             Waypoint = 92528,
@@ -3628,7 +3622,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251523,
             Class = { "DRUID", "HUNTER", "MAGE", "SHAMAN", "WARRIOR" },
             Zone = 2521,
-            _index = 353,
+            _index = 352,
         },
         {
             Waypoint = 92528,
@@ -3638,7 +3632,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251523,
             Class = { "DRUID", "HUNTER", "MAGE", "SHAMAN", "WARRIOR" },
             Zone = 2521,
-            _index = 354,
+            _index = 353,
         },
         {
             Done = { 92528 },
@@ -3646,7 +3640,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.67, 45.5),
             RaidIcon = 251523,
             Zone = 2521,
-            _index = 355,
+            _index = 354,
         },
         {
             PickUp = { 92550, 93926 },
@@ -3654,7 +3648,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.67, 45.5),
             RaidIcon = 251523,
             Zone = 2521,
-            _index = 356,
+            _index = 355,
         },
         {
             PickUp = { 92551 },
@@ -3664,7 +3658,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252172,
             Class = { "ROGUE", "WARRIOR" },
             Zone = 2521,
-            _index = 357,
+            _index = 356,
         },
         {
             PickUp = { 92551 },
@@ -3674,7 +3668,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252172,
             Class = "HUNTER",
             Zone = 2521,
-            _index = 358,
+            _index = 357,
         },
         {
             PickUp = { 92551 },
@@ -3683,7 +3677,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252172,
             Class = { "DRUID", "SHAMAN" },
             Zone = 2521,
-            _index = 359,
+            _index = 358,
         },
         {
             PickUp = { 92551 },
@@ -3693,7 +3687,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252172,
             Class = "MAGE",
             Zone = 2521,
-            _index = 360,
+            _index = 359,
         },
         {
             Waypoint = 93926,
@@ -3702,7 +3696,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 93926,
             Not = { IsQuestReadyForTurnIn = 93926 },
             Zone = 2521,
-            _index = 361,
+            _index = 360,
         },
         {
             UseSpell = { questID = 93926, spellID = 1259416 },
@@ -3711,7 +3705,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 93926,
             Not = { IsQuestReadyForTurnIn = 93926 },
             Zone = 2521,
-            _index = 362,
+            _index = 361,
         },
         {
             Qpart = { [93926] = { 1 } },
@@ -3720,7 +3714,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 15,
             Not = { IsQuestReadyForTurnIn = 93926 },
             Zone = 2521,
-            _index = 363,
+            _index = 362,
         },
         {
             Qpart = { [93926] = { 1 } },
@@ -3728,7 +3722,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 42.32, 62.03),
             RaidIcon = 252155,
             Zone = 2521,
-            _index = 364,
+            _index = 363,
         },
         {
             Done = { 93926 },
@@ -3736,7 +3730,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 42.33, 62.01),
             RaidIcon = 252155,
             Zone = 2521,
-            _index = 365,
+            _index = 364,
         },
         {
             PickUp = { 93927 },
@@ -3744,7 +3738,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 42.33, 62.01),
             RaidIcon = 252155,
             Zone = 2521,
-            _index = 366,
+            _index = 365,
         },
         {
             Qpart = { [93927] = { 1 } },
@@ -3752,7 +3746,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Note = { "CLICK_BLOODY_NOTE", "KEEP_ONE_BAG_SLOT_FREE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 42.38, 62.07),
             Zone = 2521,
-            _index = 367,
+            _index = 366,
         },
         {
             Qpart = { [93927] = { 4 } },
@@ -3760,7 +3754,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Note = { "INTERACT_DISTANCE", "KEEP_ONE_BAG_SLOT_FREE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 40.988, 64.088),
             Zone = 2521,
-            _index = 368,
+            _index = 367,
         },
         {
             Qpart = { [93927] = { 3 } },
@@ -3768,7 +3762,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Note = { "INTERACT_DISTANCE", "KEEP_ONE_BAG_SLOT_FREE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 41.12, 64.09),
             Zone = 2521,
-            _index = 369,
+            _index = 368,
         },
         {
             Qpart = { [93927] = { 2 } },
@@ -3778,7 +3772,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             RaidIcon = 256966,
             Zone = 2521,
-            _index = 370,
+            _index = 369,
         },
         {
             UseSpell = { spellID = 1259416, questID = 92551 },
@@ -3788,7 +3782,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             Not = { IsQuestReadyForTurnIn = 92551 },
             Zone = 2521,
-            _index = 371,
+            _index = 370,
         },
         {
             UseSpell = { spellID = 1259416, questID = 92551 },
@@ -3798,7 +3792,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             Not = { IsQuestReadyForTurnIn = 92551 },
             Zone = 2521,
-            _index = 372,
+            _index = 371,
         },
         {
             Waypoint = 92550,
@@ -3808,7 +3802,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             Not = { IsQuestReadyForTurnIn = 92550 },
             Zone = 2521,
-            _index = 373,
+            _index = 372,
         },
         {
             UseSpell = { spellID = 1259705, questID = 92550 },
@@ -3818,7 +3812,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             Not = { IsQuestReadyForTurnIn = 92550 },
             Zone = 2521,
-            _index = 374,
+            _index = 373,
         },
         {
             Qpart = { [92550] = { 3 } },
@@ -3827,7 +3821,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             RaidIcon = 251966,
             Zone = 2521,
-            _index = 375,
+            _index = 374,
         },
         {
             Qpart = { [92550] = { 1 } },
@@ -3838,7 +3832,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252068,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 376,
+            _index = 375,
         },
         {
             Qpart = { [92551] = { 1 } },
@@ -3848,7 +3842,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252068,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 377,
+            _index = 376,
         },
         {
             Qpart = { [92550] = { 1 } },
@@ -3859,7 +3853,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252068,
             Faction = "Horde",
             Zone = 2521,
-            _index = 378,
+            _index = 377,
         },
         {
             Qpart = { [92551] = { 1 } },
@@ -3869,7 +3863,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252068,
             Faction = "Horde",
             Zone = 2521,
-            _index = 379,
+            _index = 378,
         },
         {
             Qpart = { [92550] = { 2 } },
@@ -3880,7 +3874,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251662,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 380,
+            _index = 379,
         },
         {
             Qpart = { [92550] = { 2 } },
@@ -3891,14 +3885,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251662,
             Faction = "Horde",
             Zone = 2521,
-            _index = 381,
+            _index = 380,
         },
         {
             UseSpell = { spellID = 1259686, questID = 92550 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 48.497, 55.827),
             Faction = "Horde",
             Zone = 2521,
-            _index = 382,
+            _index = 381,
         },
         {
             Qpart = { [92515] = { 1 } },
@@ -3907,7 +3901,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             RaidIcon = 251245,
             Zone = 2521,
-            _index = 383,
+            _index = 382,
         },
         {
             Qpart = { [92553] = { 2, 1 } },
@@ -3915,7 +3909,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             RaidIcon = 251661,
             Zone = 2521,
-            _index = 384,
+            _index = 383,
         },
         {
             Grind = 8,
@@ -3925,7 +3919,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 94484,
             SkipForLvl = 8,
             Zone = 2521,
-            _index = 385,
+            _index = 384,
         },
         {
             Done = { 97967 },
@@ -3935,7 +3929,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 97967,
             IsQuestReadyForTurnIn = 97967,
             Zone = 2521,
-            _index = 386,
+            _index = 385,
         },
         {
             Done = { 97965 },
@@ -3945,7 +3939,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 97965,
             IsQuestReadyForTurnIn = 97965,
             Zone = 2521,
-            _index = 387,
+            _index = 386,
         },
         {
             Done = { 98286 },
@@ -3955,7 +3949,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 98286,
             IsQuestReadyForTurnIn = 98286,
             Zone = 2521,
-            _index = 388,
+            _index = 387,
         },
         {
             Done = { 97971 },
@@ -3965,7 +3959,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 97971,
             IsQuestReadyForTurnIn = 97971,
             Zone = 2521,
-            _index = 389,
+            _index = 388,
         },
         {
             BuyMerchant = { { quantity = 1, itemID = 4471, targetStock = true } },
@@ -3978,7 +3972,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { itemID = 4471, count = 1, operator = "<" },
             Money = { copper = 135, operator = ">=" },
             Zone = 2521,
-            _index = 390,
+            _index = 389,
         },
         {
             SellItems = { questID = 92553, junk = true, npcID = 251905 },
@@ -3988,7 +3982,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251905,
             ItemCount = { itemID = 4471, count = 1, operator = "<" },
             Zone = 2521,
-            _index = 391,
+            _index = 390,
         },
         {
             BuyMerchant = { { quantity = 5, itemID = 4470, targetStock = true } },
@@ -4001,7 +3995,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { itemID = 4470, count = 5, operator = "<" },
             Money = { copper = 190, operator = ">=" },
             Zone = 2521,
-            _index = 392,
+            _index = 391,
         },
         {
             SellItems = { questID = 92553, junk = true, npcID = 251905 },
@@ -4011,7 +4005,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251905,
             ItemCount = { itemID = 4470, count = 5, operator = "<" },
             Zone = 2521,
-            _index = 393,
+            _index = 392,
         },
         {
             SellItems = { questID = 92553, junk = true, npcID = 251905 },
@@ -4021,7 +4015,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251905,
             ItemCount = { itemID = 2678, count = 5, operator = "<" },
             Zone = 2521,
-            _index = 394,
+            _index = 393,
         },
         {
             BuyMerchant = { { quantity = 5, itemID = 2678, targetStock = true } },
@@ -4034,7 +4028,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { itemID = 2678, count = 5, operator = "<" },
             Money = { copper = 10, operator = ">=" },
             Zone = 2521,
-            _index = 395,
+            _index = 394,
         },
         {
             Done = { 92553 },
@@ -4042,7 +4036,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             GossipOptionIDs = { 137550 },
             RaidIcon = 251905,
             Zone = 2521,
-            _index = 396,
+            _index = 395,
         },
         {
             Note = { "MOST_BUFF_FOOD_GRANTS_5_INCREASED_EXPERIENCE" },
@@ -4052,7 +4046,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 96646,
             ItemCount = { itemID = 6889, count = 1, operator = ">=" },
             Zone = 2521,
-            _index = 397,
+            _index = 396,
         },
         {
             Done = { 96646 },
@@ -4061,7 +4055,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             HasSpell = 2550,
             IsQuestReadyForTurnIn = 96646,
             Zone = 2521,
-            _index = 398,
+            _index = 397,
         },
         {
             Done = { 97963 },
@@ -4071,7 +4065,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 97963,
             IsQuestReadyForTurnIn = 97963,
             Zone = 2521,
-            _index = 399,
+            _index = 398,
         },
         {
             Done = { 97973 },
@@ -4081,7 +4075,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 97973,
             IsQuestReadyForTurnIn = 97973,
             Zone = 2521,
-            _index = 400,
+            _index = 399,
         },
         {
             Done = { 97964 },
@@ -4091,7 +4085,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 97964,
             IsQuestReadyForTurnIn = 97964,
             Zone = 2521,
-            _index = 401,
+            _index = 400,
         },
         {
             Done = { 97970 },
@@ -4101,14 +4095,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 97970,
             IsQuestReadyForTurnIn = 97970,
             Zone = 2521,
-            _index = 402,
+            _index = 401,
         },
         {
             Done = { 92515 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.686, 44.518),
             RaidIcon = 251993,
             Zone = 2521,
-            _index = 403,
+            _index = 402,
         },
         {
             Done = { 97969 },
@@ -4118,7 +4112,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 97969,
             IsQuestReadyForTurnIn = 97969,
             Zone = 2521,
-            _index = 404,
+            _index = 403,
         },
         {
             SellItems = { questID = 92551, junk = true, npcID = 254358 },
@@ -4127,7 +4121,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 254358,
             AnyOf = { { Race = "Skyborne", Class = { "DRUID", "MAGE", "WARRIOR" }, Faction = "Alliance" }, { Race = "Skyborne", Class = { "DRUID", "ROGUE", "SHAMAN", "WARRIOR" }, Faction = "Horde" } },
             Zone = 2521,
-            _index = 405,
+            _index = 404,
         },
         {
             SellItems = { questID = 92551, junk = true, npcID = 254358 },
@@ -4136,7 +4130,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 254358,
             Class = "HUNTER",
             Zone = 2521,
-            _index = 406,
+            _index = 405,
         },
         {
             BuyMerchant = { { quantity = 600, itemID = 2512, targetStock = true }, { quantity = 1000, itemID = 2515, targetStock = true } },
@@ -4149,7 +4143,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 92551,
             Money = { copper = 280, operator = ">=" },
             Zone = 2521,
-            _index = 407,
+            _index = 406,
         },
         {
             BuyMerchant = { { itemID = 2512, quantity = 600, targetStock = true }, { itemID = 2515, quantity = 1000, targetStock = true } },
@@ -4161,7 +4155,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             IsQuestUncompleted = 92551,
             Zone = 2521,
-            _index = 408,
+            _index = 407,
         },
         {
             SellItems = { questID = 92551, junk = true, npcID = 254358 },
@@ -4171,7 +4165,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "ROGUE",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 409,
+            _index = 408,
         },
         {
             Note = { "KEEP_COOKING_MEAT_EGGS", "THROWING_WEAPONS_NOT_NEED_AMMUNITION" },
@@ -4182,7 +4176,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             IsQuestUncompleted = 92551,
             Zone = 2521,
-            _index = 410,
+            _index = 409,
         },
         {
             BuyMerchant = { { itemID = 4496, quantity = 3, targetStock = true } },
@@ -4195,7 +4189,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             ItemCount = { itemID = 4496, count = 3, operator = "<" },
             Zone = 2521,
-            _index = 411,
+            _index = 410,
         },
         {
             BuyMerchant = { { itemID = 4496, quantity = 3, targetStock = true } },
@@ -4210,7 +4204,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { itemID = 4496, count = 3, operator = "<" },
             Money = { copper = 280, operator = ">=" },
             Zone = 2521,
-            _index = 412,
+            _index = 411,
         },
         {
             BuyMerchant = { { itemID = 4496, quantity = 3, targetStock = true } },
@@ -4223,7 +4217,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             ItemCount = { itemID = 4496, count = 3, operator = "<" },
             Zone = 2521,
-            _index = 413,
+            _index = 412,
         },
         {
             BuyMerchant = { { itemID = 4496, quantity = 3, targetStock = true } },
@@ -4237,7 +4231,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 92551,
             ItemCount = { itemID = 4496, count = 3, operator = "<" },
             Zone = 2521,
-            _index = 414,
+            _index = 413,
         },
         {
             BuyMerchant = { { itemID = 4496, quantity = 3, targetStock = true } },
@@ -4248,6 +4242,21 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             AllOf = { { AnyOf = { { AllOf = { { AnyOf = { { Faction = "Alliance", IsQuestUncompleted = 92551, Class = "ROGUE" }, { Faction = "Horde", Class = { "DRUID", "ROGUE", "SHAMAN", "WARRIOR" } } } } } }, { Faction = "Horde", Class = "HUNTER" } } } },
             AnyOf = { { Money = { copper = 1500 } }, { ItemCount = { itemID = 4496, count = 1 }, Money = { copper = 1000 } }, { ItemCount = { itemID = 4496, count = 2 }, Money = { copper = 500 } } },
             ItemCount = { itemID = 4496, count = 3, operator = "<" },
+            Zone = 2521,
+            _index = 414,
+        },
+        {
+            BuyMerchant = { { itemID = 4496, quantity = 3, targetStock = true } },
+            Note = { "EQUIPPING_BAGS_MAKE_SURE_REAGENT_BAG_DEDICATED" },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.71, 45.48),
+            Range = 5,
+            RaidIcon = 254358,
+            AnyOf = { { Money = { copper = 1500 } }, { ItemCount = { itemID = 4496, count = 1 }, Money = { copper = 1000 } }, { ItemCount = { itemID = 4496, count = 2 }, Money = { copper = 500 } } },
+            Class = "HUNTER",
+            Faction = "Horde",
+            IsQuestUncompleted = 92551,
+            ItemCount = { itemID = 4496, count = 3, operator = "<" },
+            Money = { copper = 280, operator = ">=" },
             Zone = 2521,
             _index = 415,
         },
@@ -4262,37 +4271,22 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             IsQuestUncompleted = 92551,
             ItemCount = { itemID = 4496, count = 3, operator = "<" },
-            Money = { copper = 280, operator = ">=" },
             Zone = 2521,
             _index = 416,
-        },
-        {
-            BuyMerchant = { { itemID = 4496, quantity = 3, targetStock = true } },
-            Note = { "EQUIPPING_BAGS_MAKE_SURE_REAGENT_BAG_DEDICATED" },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.71, 45.48),
-            Range = 5,
-            RaidIcon = 254358,
-            AnyOf = { { Money = { copper = 1500 } }, { ItemCount = { itemID = 4496, count = 1 }, Money = { copper = 1000 } }, { ItemCount = { itemID = 4496, count = 2 }, Money = { copper = 500 } } },
-            Class = "HUNTER",
-            Faction = "Horde",
-            IsQuestUncompleted = 92551,
-            ItemCount = { itemID = 4496, count = 3, operator = "<" },
-            Zone = 2521,
-            _index = 417,
         },
         {
             Done = { 92551 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.24, 45.19),
             RaidIcon = 252172,
             Zone = 2521,
-            _index = 418,
+            _index = 417,
         },
         {
             Done = { 92550, 93927 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 45.67, 45.5),
             RaidIcon = 251523,
             Zone = 2521,
-            _index = 419,
+            _index = 418,
         },
         {
             Grind = 6,
@@ -4300,7 +4294,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             AnyOf = { { AllOf = { { AnyOf = { { IsQuestNotOnQuest = 92701, IsQuestUncompleted = 92701 }, { IsQuestNotOnQuest = 93948, IsQuestUncompleted = 93948 } } } }, Faction = "Alliance" }, { AllOf = { { AnyOf = { { IsQuestNotOnQuest = 92579, IsQuestUncompleted = 92579 }, { IsQuestNotOnQuest = 93948, IsQuestUncompleted = 93948 } } } }, Faction = "Horde" } },
             Zone = 2521,
-            _index = 420,
+            _index = 419,
         },
         {
             PickUp = { 92701, 93948 },
@@ -4308,7 +4302,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251523,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 421,
+            _index = 420,
         },
         {
             PickUp = { 92579, 93948 },
@@ -4316,7 +4310,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251523,
             Faction = "Horde",
             Zone = 2521,
-            _index = 422,
+            _index = 421,
         },
         {
             UseSpell = { spellID = 1259416, questID = 93948 },
@@ -4327,7 +4321,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestNotOnQuest = 93317,
             SkipForLvl = 10,
             Zone = 2521,
-            _index = 423,
+            _index = 422,
         },
         {
             BuyMerchant = { { itemID = 277110, quantity = 1 } },
@@ -4346,7 +4340,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 9,
             Money = { copper = 1345, operator = ">=" },
             Zone = 2521,
-            _index = 424,
+            _index = 423,
         },
         {
             BuyMerchant = { { itemID = 277106, quantity = 1, targetStock = true, optional = true } },
@@ -4364,7 +4358,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 9,
             Money = { copper = 2151, operator = ">=" },
             Zone = 2521,
-            _index = 425,
+            _index = 424,
         },
         {
             EquipItem = { itemID = 277106, slot = 16 },
@@ -4375,7 +4369,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             HasSpell = 199,
             ItemCount = { itemID = 277106, count = 1, operator = ">=" },
             MinLevel = 9,
-            _index = 426,
+            _index = 425,
         },
         {
             BuyMerchant = { { itemID = 277109, quantity = 1, targetStock = true, optional = true } },
@@ -4393,7 +4387,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 9,
             Money = { copper = 2176, operator = ">=" },
             Zone = 2521,
-            _index = 427,
+            _index = 426,
         },
         {
             EquipItem = { itemID = 277109, slot = 16 },
@@ -4404,7 +4398,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             HasSpell = 227,
             ItemCount = { itemID = 277109, count = 1, operator = ">=" },
             MinLevel = 9,
-            _index = 428,
+            _index = 427,
         },
         {
             BuyMerchant = { { itemID = 277107, quantity = 1, targetStock = true, optional = true } },
@@ -4422,7 +4416,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 9,
             Money = { copper = 1727, operator = ">=" },
             Zone = 2521,
-            _index = 429,
+            _index = 428,
         },
         {
             EquipItem = { itemID = 277107, slot = 16 },
@@ -4433,7 +4427,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             HasSpell = 198,
             ItemCount = { itemID = 277107, count = 1, operator = ">=" },
             MinLevel = 9,
-            _index = 430,
+            _index = 429,
         },
         {
             SellItems = { questID = 93948, junk = true, npcID = 271465 },
@@ -4448,7 +4442,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 92679,
             Money = { copper = 1345, operator = ">=" },
             Zone = 2521,
-            _index = 431,
+            _index = 430,
         },
         {
             Waypoint = 93317,
@@ -4457,7 +4451,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 257006,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 432,
+            _index = 431,
         },
         {
             PickUp = { 93317 },
@@ -4466,7 +4460,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             GossipOptionIDs = { 96031, 98031 },
             RaidIcon = 257006,
             Zone = 2521,
-            _index = 433,
+            _index = 432,
         },
         {
             Note = { "MOST_BUFF_FOOD_GRANTS_5_INCREASED_EXPERIENCE" },
@@ -4477,14 +4471,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 93948,
             ItemCount = { itemID = 2678, count = 1, operator = ">=" },
             Zone = 2521,
-            _index = 434,
+            _index = 433,
         },
         {
             SetHS = 93948,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.18, 72.616),
             RaidIcon = 255940,
             Zone = 2521,
-            _index = 435,
+            _index = 434,
         },
         {
             SellItems = { questID = 93948, junk = true, npcID = 255940 },
@@ -4494,7 +4488,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 255940,
             IsQuestNotOnQuest = 92679,
             Zone = 2521,
-            _index = 436,
+            _index = 435,
         },
         {
             BuyMerchant = { { quantity = 20, itemID = 1179, targetStock = true } },
@@ -4509,7 +4503,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { count = 20, itemID = 1179, operator = "<" },
             Money = { copper = 500, operator = ">=" },
             Zone = 2521,
-            _index = 437,
+            _index = 436,
         },
         {
             PickUp = { 92679 },
@@ -4517,7 +4511,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5,
             RaidIcon = 252448,
             Zone = 2521,
-            _index = 438,
+            _index = 437,
         },
         {
             Waypoint = 93948,
@@ -4525,14 +4519,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.096, 73.339),
             Range = 20.0,
             Zone = 2521,
-            _index = 439,
+            _index = 438,
         },
         {
             PickUp = { 92679 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.096, 73.339),
             RaidIcon = 252448,
             Zone = 2521,
-            _index = 440,
+            _index = 439,
         },
         {
             Waypoint = 93948,
@@ -4540,7 +4534,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 15.0,
             IsQuestNotOnQuest = 94484,
             Zone = 2521,
-            _index = 441,
+            _index = 440,
         },
         {
             Waypoint = 93948,
@@ -4548,14 +4542,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 25.0,
             IsQuestNotOnQuest = 94484,
             Zone = 2521,
-            _index = 442,
+            _index = 441,
         },
         {
             PickUp = { 94484 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.973, 75.095),
             RaidIcon = 252359,
             Zone = 2521,
-            _index = 443,
+            _index = 442,
         },
         {
             PickUp = { 94896, 94897 },
@@ -4563,14 +4557,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 259012,
             Faction = "Horde",
             Zone = 2521,
-            _index = 444,
+            _index = 443,
         },
         {
             Done = { 93948 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.17, 76.51),
             RaidIcon = 252476,
             Zone = 2521,
-            _index = 445,
+            _index = 444,
         },
         {
             Waypoint = 93948,
@@ -4578,7 +4572,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.93, 76.37),
             Range = 5.0,
             Zone = 2521,
-            _index = 446,
+            _index = 445,
         },
         {
             Waypoint = 93948,
@@ -4586,7 +4580,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.46, 76.8),
             Range = 5.0,
             Zone = 2521,
-            _index = 447,
+            _index = 446,
         },
         {
             Waypoint = 93948,
@@ -4594,7 +4588,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.43, 76.58),
             Range = 5.0,
             Zone = 2521,
-            _index = 448,
+            _index = 447,
         },
         {
             Waypoint = 93948,
@@ -4602,7 +4596,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.43, 76.83),
             Range = 5.0,
             Zone = 2521,
-            _index = 449,
+            _index = 448,
         },
         {
             Waypoint = 93948,
@@ -4610,7 +4604,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.31, 77.08),
             Range = 5.0,
             Zone = 2521,
-            _index = 450,
+            _index = 449,
         },
         {
             Waypoint = 93948,
@@ -4618,7 +4612,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66, 76.57),
             Range = 8.0,
             Zone = 2521,
-            _index = 451,
+            _index = 450,
         },
         {
             Waypoint = 93948,
@@ -4626,7 +4620,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.19, 76.22),
             Range = 8.0,
             Zone = 2521,
-            _index = 452,
+            _index = 451,
         },
         {
             Waypoint = 93948,
@@ -4634,7 +4628,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.44, 76.4),
             Range = 5.0,
             Zone = 2521,
-            _index = 453,
+            _index = 452,
         },
         {
             Done = { 92701 },
@@ -4642,7 +4636,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252383,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 454,
+            _index = 453,
         },
         {
             PickUp = { 92699, 93949 },
@@ -4650,7 +4644,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252383,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 455,
+            _index = 454,
         },
         {
             Done = { 92579 },
@@ -4658,7 +4652,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252383,
             Faction = "Horde",
             Zone = 2521,
-            _index = 456,
+            _index = 455,
         },
         {
             PickUp = { 92700 },
@@ -4666,7 +4660,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252383,
             Faction = "Horde",
             Zone = 2521,
-            _index = 457,
+            _index = 456,
         },
         {
             Waypoint = 92700,
@@ -4675,7 +4669,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 6,
             Faction = "Horde",
             Zone = 2521,
-            _index = 458,
+            _index = 457,
         },
         {
             UseSpell = { spellID = 1259416, questID = 92700 },
@@ -4684,7 +4678,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "DRUID", "ROGUE", "SHAMAN", "WARRIOR" },
             Faction = "Horde",
             Zone = 2521,
-            _index = 459,
+            _index = 458,
         },
         {
             UseSpell = { spellID = 1259416, questID = 92700 },
@@ -4693,7 +4687,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Horde",
             Zone = 2521,
-            _index = 460,
+            _index = 459,
         },
         {
             Waypoint = 92699,
@@ -4702,7 +4696,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 10.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 461,
+            _index = 460,
         },
         {
             UseSpell = { spellID = 1259416, questID = 92699 },
@@ -4710,7 +4704,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.63, 79.94),
             Faction = "Alliance",
             Zone = 2521,
-            _index = 462,
+            _index = 461,
         },
         {
             Done = { 92699 },
@@ -4719,7 +4713,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252475,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 463,
+            _index = 462,
         },
         {
             PickUp = { 92727 },
@@ -4728,7 +4722,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 253204,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 464,
+            _index = 463,
         },
         {
             Grind = 8,
@@ -4737,7 +4731,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             AllOf = { { AnyOf = { { IsQuestNotOnQuest = 92741, IsQuestUncompleted = 92741 } } } },
             Faction = "Alliance",
             Zone = 2521,
-            _index = 465,
+            _index = 464,
         },
         {
             PickUp = { 92741 },
@@ -4746,7 +4740,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 253004,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 466,
+            _index = 465,
         },
         {
             BuyMerchant = { { itemID = 2512, quantity = 600, targetStock = true } },
@@ -4759,7 +4753,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { count = 600, itemID = 2512, operator = "<" },
             Money = { operator = ">=", copper = 30 },
             Zone = 2521,
-            _index = 467,
+            _index = 466,
         },
         {
             Waypoint = 92700,
@@ -4768,7 +4762,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251968,
             Faction = "Horde",
             Zone = 2521,
-            _index = 468,
+            _index = 467,
         },
         {
             Waypoint = 92700,
@@ -4777,7 +4771,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251968,
             Faction = "Horde",
             Zone = 2521,
-            _index = 469,
+            _index = 468,
         },
         {
             Done = { 92700 },
@@ -4785,7 +4779,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251968,
             Faction = "Horde",
             Zone = 2521,
-            _index = 470,
+            _index = 469,
         },
         {
             Grind = 7,
@@ -4794,7 +4788,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             AllOf = { { AnyOf = { { IsQuestNotOnQuest = 92708, IsQuestUncompleted = 92708 } } } },
             Faction = "Horde",
             Zone = 2521,
-            _index = 471,
+            _index = 470,
         },
         {
             PickUp = { 92708 },
@@ -4802,7 +4796,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251968,
             Faction = "Horde",
             Zone = 2521,
-            _index = 472,
+            _index = 471,
         },
         {
             PickUp = { 93735 },
@@ -4811,14 +4805,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251968,
             Faction = "Horde",
             Zone = 2521,
-            _index = 473,
+            _index = 472,
         },
         {
             UseSpell = { questID = 93735, spellID = 1259686 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.154, 79.783),
             Faction = "Horde",
             Zone = 2521,
-            _index = 474,
+            _index = 473,
         },
         {
             Done = { 97968 },
@@ -4829,7 +4823,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 97968,
             IsQuestReadyForTurnIn = 97968,
             Zone = 2521,
-            _index = 475,
+            _index = 474,
         },
         {
             BuyMerchant = { { itemID = 277110, quantity = 1 } },
@@ -4847,7 +4841,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 9,
             Money = { copper = 1345, operator = ">=" },
             Zone = 2521,
-            _index = 476,
+            _index = 475,
         },
         {
             BuyMerchant = { { itemID = 277106, quantity = 1, targetStock = true, optional = true } },
@@ -4865,7 +4859,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 9,
             Money = { copper = 2151, operator = ">=" },
             Zone = 2521,
-            _index = 477,
+            _index = 476,
         },
         {
             EquipItem = { itemID = 277106, slot = 16 },
@@ -4876,7 +4870,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             HasSpell = 199,
             ItemCount = { itemID = 277106, count = 1, operator = ">=" },
             MinLevel = 9,
-            _index = 478,
+            _index = 477,
         },
         {
             BuyMerchant = { { itemID = 277109, quantity = 1, targetStock = true, optional = true } },
@@ -4894,7 +4888,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 9,
             Money = { copper = 2176, operator = ">=" },
             Zone = 2521,
-            _index = 479,
+            _index = 478,
         },
         {
             EquipItem = { itemID = 277109, slot = 16 },
@@ -4905,7 +4899,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             HasSpell = 227,
             ItemCount = { itemID = 277109, count = 1, operator = ">=" },
             MinLevel = 9,
-            _index = 480,
+            _index = 479,
         },
         {
             BuyMerchant = { { itemID = 277107, quantity = 1, targetStock = true, optional = true } },
@@ -4923,7 +4917,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 9,
             Money = { copper = 1727, operator = ">=" },
             Zone = 2521,
-            _index = 481,
+            _index = 480,
         },
         {
             EquipItem = { itemID = 277107, slot = 16 },
@@ -4934,7 +4928,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             HasSpell = 198,
             ItemCount = { itemID = 277107, count = 1, operator = ">=" },
             MinLevel = 9,
-            _index = 482,
+            _index = 481,
         },
         {
             Done = { 93735 },
@@ -4942,7 +4936,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 256083,
             Faction = "Horde",
             Zone = 2521,
-            _index = 483,
+            _index = 482,
         },
         {
             PickUp = { 93737 },
@@ -4950,7 +4944,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 256083,
             Faction = "Horde",
             Zone = 2521,
-            _index = 484,
+            _index = 483,
         },
         {
             Qpart = { [93737] = { 1 } },
@@ -4958,7 +4952,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 256083,
             Faction = "Horde",
             Zone = 2521,
-            _index = 485,
+            _index = 484,
         },
         {
             Waypoint = 93737,
@@ -4968,7 +4962,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 93737,
             Not = { IsQuestReadyForTurnIn = 93737 },
             Zone = 2521,
-            _index = 486,
+            _index = 485,
         },
         {
             Qpart = { [93737] = { 2 } },
@@ -4977,7 +4971,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             IsQuestOnQuest = 93737,
             Zone = 2521,
-            _index = 487,
+            _index = 486,
         },
         {
             Waypoint = 93737,
@@ -4986,7 +4980,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             IsQuestOnQuest = 93737,
             Zone = 2521,
-            _index = 488,
+            _index = 487,
         },
         {
             Done = { 92727 },
@@ -4994,7 +4988,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 581822,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 489,
+            _index = 488,
         },
         {
             PickUp = { 92849 },
@@ -5002,7 +4996,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 581822,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 490,
+            _index = 489,
         },
         {
             Waypoint = 92849,
@@ -5013,7 +5007,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 92849,
             Not = { IsQuestReadyForTurnIn = 92849 },
             Zone = 2521,
-            _index = 491,
+            _index = 490,
         },
         {
             Qpart = { [92849] = { 1 } },
@@ -5022,7 +5016,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 492,
+            _index = 491,
         },
         {
             Waypoint = 92849,
@@ -5034,7 +5028,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             Not = { IsQuestReadyForTurnIn = 92849 },
             Zone = 2521,
-            _index = 493,
+            _index = 492,
         },
         {
             Qpart = { [92849] = { 2 } },
@@ -5045,7 +5039,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 253281,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 494,
+            _index = 493,
         },
         {
             Done = { 92849 },
@@ -5053,7 +5047,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 253284,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 495,
+            _index = 494,
         },
         {
             PickUp = { 92850 },
@@ -5061,7 +5055,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 253284,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 496,
+            _index = 495,
         },
         {
             Waypoint = 92850,
@@ -5071,7 +5065,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 92850,
             Not = { IsQuestReadyForTurnIn = 92850 },
             Zone = 2521,
-            _index = 497,
+            _index = 496,
         },
         {
             Waypoint = 92850,
@@ -5081,7 +5075,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             Not = { IsQuestReadyForTurnIn = 92850 },
             Zone = 2521,
-            _index = 498,
+            _index = 497,
         },
         {
             Waypoint = 92850,
@@ -5090,7 +5084,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             Not = { IsQuestReadyForTurnIn = 92850 },
             Zone = 2521,
-            _index = 499,
+            _index = 498,
         },
         {
             UseSpell = { spellID = 1259705, questID = 92850 },
@@ -5099,7 +5093,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             Not = { IsQuestReadyForTurnIn = 92850 },
             Zone = 2521,
-            _index = 500,
+            _index = 499,
         },
         {
             Qpart = { [92850] = { 1 } },
@@ -5108,7 +5102,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 253283,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 501,
+            _index = 500,
         },
         {
             Waypoint = 92679,
@@ -5117,7 +5111,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 15.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 502,
+            _index = 501,
         },
         {
             Waypoint = 92679,
@@ -5126,7 +5120,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 15.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 503,
+            _index = 502,
         },
         {
             Waypoint = 92679,
@@ -5135,7 +5129,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 15.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 504,
+            _index = 503,
         },
         {
             Waypoint = 92679,
@@ -5144,7 +5138,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 15.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 505,
+            _index = 504,
         },
         {
             Waypoint = 92679,
@@ -5153,7 +5147,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 15,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 506,
+            _index = 505,
         },
         {
             Qpart = { [92679] = { 1 } },
@@ -5163,7 +5157,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252800,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 507,
+            _index = 506,
         },
         {
             Qpart = { [92679] = { 1 } },
@@ -5172,7 +5166,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252800,
             Faction = "Horde",
             Zone = 2521,
-            _index = 508,
+            _index = 507,
         },
         {
             Done = { 92679 },
@@ -5181,7 +5175,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             RaidIcon = 252800,
             Zone = 2521,
-            _index = 509,
+            _index = 508,
         },
         {
             PickUp = { 92682, 92684, 92683 },
@@ -5190,7 +5184,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             RaidIcon = 252800,
             Zone = 2521,
-            _index = 510,
+            _index = 509,
         },
         {
             Qpart = { [92682] = { 1, 2 } },
@@ -5200,7 +5194,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252802,
             Class = { "DRUID", "MAGE", "ROGUE", "SHAMAN", "WARRIOR" },
             Zone = 2521,
-            _index = 511,
+            _index = 510,
         },
         {
             Qpart = { [92682] = { 1, 2 } },
@@ -5210,14 +5204,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252802,
             Class = "HUNTER",
             Zone = 2521,
-            _index = 512,
+            _index = 511,
         },
         {
             UseSpell = { spellID = 1259686, questID = 92684 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 48.416, 80.537),
             Faction = "Horde",
             Zone = 2521,
-            _index = 513,
+            _index = 512,
         },
         {
             PickUp = { 92698 },
@@ -5227,7 +5221,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Button = { ["92683-1"] = 253666 },
             RaidIcon = 250929,
             Zone = 2521,
-            _index = 514,
+            _index = 513,
         },
         {
             Qpart = { [92683] = { 1 } },
@@ -5238,7 +5232,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Button = { ["92683-1"] = 253666 },
             RaidIcon = 251622,
             Zone = 2521,
-            _index = 515,
+            _index = 514,
         },
         {
             Qpart = { [92684] = { 1 } },
@@ -5247,7 +5241,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             RaidIcon = 251707,
             Zone = 2521,
-            _index = 516,
+            _index = 515,
         },
         {
             Done = { 92682, 92684, 92698, 92683 },
@@ -5256,7 +5250,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             RaidIcon = 252800,
             Zone = 2521,
-            _index = 517,
+            _index = 516,
         },
         {
             PickUp = { 92685 },
@@ -5265,7 +5259,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             RaidIcon = 252800,
             Zone = 2521,
-            _index = 518,
+            _index = 517,
         },
         {
             Grind = 10,
@@ -5276,14 +5270,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "SHAMAN",
             Faction = "Horde",
             Zone = 2521,
-            _index = 519,
+            _index = 518,
         },
         {
             UseHS = 97243,
             UseHSIfAvailable = true,
             Class = "SHAMAN",
             Faction = "Horde",
-            _index = 520,
+            _index = 519,
         },
         {
             Waypoint = 97243,
@@ -5293,7 +5287,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "SHAMAN",
             Faction = "Horde",
             Zone = 2521,
-            _index = 521,
+            _index = 520,
         },
         {
             BuyMerchant = { { quantity = 20, itemID = 1179, targetStock = true, optional = true } },
@@ -5308,7 +5302,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { count = 20, itemID = 1179, operator = "<" },
             Money = { copper = 500, operator = ">=" },
             Zone = 2521,
-            _index = 522,
+            _index = 521,
         },
         {
             PickUp = { 97243 },
@@ -5317,7 +5311,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "SHAMAN",
             Faction = "Horde",
             Zone = 2521,
-            _index = 523,
+            _index = 522,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -5329,7 +5323,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 10,
             Money = { operator = ">=", copper = 1200 },
             Zone = 2521,
-            _index = 524,
+            _index = 523,
         },
         {
             Waypoint = 97243,
@@ -5339,7 +5333,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "SHAMAN",
             Faction = "Horde",
             Zone = 2521,
-            _index = 525,
+            _index = 524,
         },
         {
             Done = { 97243 },
@@ -5348,7 +5342,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "SHAMAN",
             Faction = "Horde",
             Zone = 2521,
-            _index = 526,
+            _index = 525,
         },
         {
             PickUp = { 97244 },
@@ -5357,7 +5351,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "SHAMAN",
             Faction = "Horde",
             Zone = 2521,
-            _index = 527,
+            _index = 526,
         },
         {
             Qpart = { [97244] = { 1 } },
@@ -5367,7 +5361,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "SHAMAN",
             Faction = "Horde",
             Zone = 2521,
-            _index = 528,
+            _index = 527,
         },
         {
             Done = { 97244 },
@@ -5376,7 +5370,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "SHAMAN",
             Faction = "Horde",
             Zone = 2521,
-            _index = 529,
+            _index = 528,
         },
         {
             PickUp = { 97245 },
@@ -5385,7 +5379,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "SHAMAN",
             Faction = "Horde",
             Zone = 2521,
-            _index = 530,
+            _index = 529,
         },
         {
             UseSpell = { spellID = 1259705, questID = 92685 },
@@ -5394,7 +5388,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             Not = { IsQuestReadyForTurnIn = 92685 },
             Zone = 2521,
-            _index = 531,
+            _index = 530,
         },
         {
             Waypoint = 92685,
@@ -5403,7 +5397,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.81, 74.4),
             Range = 30,
             Zone = 2521,
-            _index = 532,
+            _index = 531,
         },
         {
             Qpart = { [92685] = { 1 } },
@@ -5412,7 +5406,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             NoArrow = true,
             RaidIcon = 252820,
             ClassNot = "ROGUE",
-            _index = 533,
+            _index = 532,
         },
         {
             Qpart = { [92685] = { 1 } },
@@ -5421,7 +5415,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252820,
             ClassNot = "ROGUE",
             Zone = 2521,
-            _index = 534,
+            _index = 533,
         },
         {
             Qpart = { [92685] = { 1 } },
@@ -5431,7 +5425,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252820,
             Class = "ROGUE",
             ItemCount = { itemID = 277107, count = 1, operator = ">=" },
-            _index = 535,
+            _index = 534,
         },
         {
             Qpart = { [92685] = { 1 } },
@@ -5441,7 +5435,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252820,
             Class = "ROGUE",
             ItemCount = { itemID = 277107, count = 1, operator = "<" },
-            _index = 536,
+            _index = 535,
         },
         {
             Qpart = { [92685] = { 1 } },
@@ -5450,7 +5444,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252820,
             Class = "ROGUE",
             Zone = 2521,
-            _index = 537,
+            _index = 536,
         },
         {
             Qpart = { [93737] = { 4 } },
@@ -5459,7 +5453,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             IsQuestOnQuest = 93737,
             Zone = 2521,
-            _index = 538,
+            _index = 537,
         },
         {
             Qpart = { [97245] = { 1 } },
@@ -5471,7 +5465,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "SHAMAN",
             Faction = "Horde",
             Zone = 2521,
-            _index = 539,
+            _index = 538,
         },
         {
             Done = { 92685 },
@@ -5480,7 +5474,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             RaidIcon = 252800,
             Zone = 2521,
-            _index = 540,
+            _index = 539,
         },
         {
             Waypoint = 92685,
@@ -5488,7 +5482,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             IsQuestOnQuest = 92685,
             Zone = 2521,
-            _index = 541,
+            _index = 540,
         },
         {
             Waypoint = 92685,
@@ -5496,7 +5490,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 15,
             IsQuestOnQuest = 92685,
             Zone = 2521,
-            _index = 542,
+            _index = 541,
         },
         {
             UseSpell = { questID = 92685, spellID = 1259416 },
@@ -5504,7 +5498,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 47.511, 78.49),
             IsQuestOnQuest = 92685,
             Zone = 2521,
-            _index = 543,
+            _index = 542,
         },
         {
             Done = { 92685 },
@@ -5513,7 +5507,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             RaidIcon = 252800,
             Zone = 2521,
-            _index = 544,
+            _index = 543,
         },
         {
             PickUp = { 92693 },
@@ -5523,7 +5517,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252800,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 545,
+            _index = 544,
         },
         {
             Qpart = { [92693] = { 1 } },
@@ -5532,7 +5526,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252800,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 546,
+            _index = 545,
         },
         {
             Qpart = { [92693] = { 2 } },
@@ -5542,7 +5536,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ETA = 75,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 547,
+            _index = 546,
         },
         {
             Done = { 92693 },
@@ -5551,7 +5545,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252800,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 548,
+            _index = 547,
         },
         {
             PickUp = { 92703 },
@@ -5559,7 +5553,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252800,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 549,
+            _index = 548,
         },
         {
             UseSpell = { questID = 92703, spellID = 1259686 },
@@ -5567,14 +5561,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             IsQuestOnQuest = 92703,
             Zone = 2521,
-            _index = 550,
+            _index = 549,
         },
         {
             UseHS = 92703,
             UseHSIfAvailable = true,
             Class = { "DRUID", "HUNTER", "MAGE", "ROGUE", "WARRIOR" },
             IsQuestUncompleted = 92703,
-            _index = 551,
+            _index = 550,
         },
         {
             Waypoint = 92703,
@@ -5583,7 +5577,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(2521, 62.18, 72.616, 10),
             Class = { "DRUID", "HUNTER", "MAGE", "ROGUE", "WARRIOR" },
             Zone = 2521,
-            _index = 552,
+            _index = 551,
         },
         {
             SellItems = { questID = 92703, junk = true, npcID = 255940 },
@@ -5593,7 +5587,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 255940,
             AnyOf = { { Faction = "Alliance" }, { IsQuestUncompleted = 92703, Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" }, Faction = "Horde" } },
             Zone = 2521,
-            _index = 553,
+            _index = 552,
         },
         {
             BuyMerchant = { { quantity = 20, itemID = 1179, targetStock = true } },
@@ -5607,7 +5601,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { itemID = 1179, count = 20, operator = "<" },
             Money = { copper = 500, operator = ">=" },
             Zone = 2521,
-            _index = 554,
+            _index = 553,
         },
         {
             Done = { 97245 },
@@ -5616,7 +5610,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "SHAMAN",
             Faction = "Horde",
             Zone = 2521,
-            _index = 555,
+            _index = 554,
         },
         {
             PickUp = { 97257 },
@@ -5625,7 +5619,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "SHAMAN",
             Faction = "Horde",
             Zone = 2521,
-            _index = 556,
+            _index = 555,
         },
         {
             Qpart = { [97257] = { 1 } },
@@ -5636,7 +5630,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "SHAMAN",
             Faction = "Horde",
             Zone = 2521,
-            _index = 557,
+            _index = 556,
         },
         {
             Qpart = { [97257] = { 2 } },
@@ -5647,7 +5641,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "SHAMAN",
             Faction = "Horde",
             Zone = 2521,
-            _index = 558,
+            _index = 557,
         },
         {
             Done = { 97257 },
@@ -5656,7 +5650,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "SHAMAN",
             Faction = "Horde",
             Zone = 2521,
-            _index = 559,
+            _index = 558,
         },
         {
             SellItems = { questID = 92703, junk = true, npcID = 257422 },
@@ -5668,7 +5662,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             IsQuestOnQuest = 92703,
             Zone = 2521,
-            _index = 560,
+            _index = 559,
         },
         {
             Waypoint = 92703,
@@ -5678,7 +5672,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             IsQuestUncompleted = 92703,
             Zone = 2521,
-            _index = 561,
+            _index = 560,
         },
         {
             BuyMerchant = { { itemID = 4604, quantity = 5, targetStock = true } },
@@ -5690,7 +5684,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { count = 5, itemID = 4604, operator = "<" },
             Money = { operator = ">=", copper = 25 },
             Zone = 2521,
-            _index = 562,
+            _index = 561,
         },
         {
             Waypoint = 92703,
@@ -5701,7 +5695,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestReadyForTurnIn = 92703,
             IsQuestUncompleted = 92703,
             Zone = 2521,
-            _index = 563,
+            _index = 562,
         },
         {
             Waypoint = 92703,
@@ -5712,7 +5706,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestReadyForTurnIn = 92703,
             IsQuestUncompleted = 92703,
             Zone = 2521,
-            _index = 564,
+            _index = 563,
         },
         {
             Done = { 92703 },
@@ -5721,25 +5715,25 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 92703,
             IsQuestReadyForTurnIn = 92703,
             Zone = 2521,
-            _index = 565,
+            _index = 564,
         },
         {
             Note = { "EQUIP_PLANTING_SHOVEL", "ONLY_SWAP_STUFF_IF_STRONGER" },
             AnyOf = { { IsQuestUncompleted = 92850, Faction = "Alliance" }, { IsQuestUncompleted = 93159, Faction = "Horde" } },
             Class = { "SHAMAN", "WARRIOR" },
-            _index = 566,
+            _index = 565,
         },
         {
             Note = { "EQUIP_TRUSTY_WRENCH", "ONLY_SWAP_STUFF_IF_STRONGER" },
             AnyOf = { { IsQuestUncompleted = 92850, Faction = "Alliance" }, { IsQuestUncompleted = 93159, Faction = "Horde" } },
             Class = "ROGUE",
-            _index = 567,
+            _index = 566,
         },
         {
             Note = { "EQUIP_ROOFING_HAMMER", "ONLY_SWAP_STUFF_IF_STRONGER" },
             AnyOf = { { IsQuestUncompleted = 92850, Faction = "Alliance" }, { IsQuestUncompleted = 94006, Faction = "Horde" } },
             Class = "DRUID",
-            _index = 568,
+            _index = 567,
         },
         {
             Grind = 10,
@@ -5747,7 +5741,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             AnyOf = { { AllOf = { { AnyOf = { { IsQuestNotOnQuest = 93791, IsQuestUncompleted = 93791 } } } }, Faction = "Alliance", Class = "MAGE" }, { AllOf = { { AnyOf = { { IsQuestNotOnQuest = 94003, IsQuestUncompleted = 94003 } } } }, Class = "WARRIOR" } },
             Zone = 2521,
-            _index = 569,
+            _index = 568,
         },
         {
             PickUp = { 93791 },
@@ -5757,7 +5751,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "MAGE",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 570,
+            _index = 569,
         },
         {
             Done = { 93791 },
@@ -5767,7 +5761,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "MAGE",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 571,
+            _index = 570,
         },
         {
             PickUp = { 93797 },
@@ -5777,7 +5771,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "MAGE",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 572,
+            _index = 571,
         },
         {
             PickUp = { 94003 },
@@ -5787,7 +5781,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "WARRIOR",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 573,
+            _index = 572,
         },
         {
             PickUp = { 94003 },
@@ -5796,7 +5790,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "WARRIOR",
             Faction = "Horde",
             Zone = 2521,
-            _index = 574,
+            _index = 573,
         },
         {
             LearnSkill = { spellID = 3127 },
@@ -5806,7 +5800,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "WARRIOR",
             MinLevel = 6,
             Zone = 2521,
-            _index = 575,
+            _index = 574,
         },
         {
             LearnSkill = { spellIDs = { 6546, 2687 } },
@@ -5820,7 +5814,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 10,
             Money = { operator = ">=", copper = 1200 },
             Zone = 2521,
-            _index = 576,
+            _index = 575,
         },
         {
             LearnSkill = { spellIDs = { 6546, 2687 } },
@@ -5833,13 +5827,25 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 10,
             Money = { operator = ">=", copper = 1200 },
             Zone = 2521,
-            _index = 577,
+            _index = 576,
         },
         {
             Waypoint = 92850,
             Fillers = { [93949] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.33, 73.65),
             Range = 15.0,
+            Class = "DRUID",
+            Faction = "Alliance",
+            IsQuestNotOnQuest = 94006,
+            IsQuestUncompleted = 94006,
+            Zone = 2521,
+            _index = 577,
+        },
+        {
+            Waypoint = 92850,
+            Fillers = { [93949] = { 1 } },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.973, 75.095),
+            Range = 25.0,
             Class = "DRUID",
             Faction = "Alliance",
             IsQuestNotOnQuest = 94006,
@@ -5848,18 +5854,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 578,
         },
         {
-            Waypoint = 92850,
-            Fillers = { [93949] = { 1 } },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.973, 75.095),
-            Range = 25.0,
-            Class = "DRUID",
-            Faction = "Alliance",
-            IsQuestNotOnQuest = 94006,
-            IsQuestUncompleted = 94006,
-            Zone = 2521,
-            _index = 579,
-        },
-        {
             Waypoint = 94006,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.33, 73.65),
             Range = 15.0,
@@ -5868,7 +5862,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestNotOnQuest = 94006,
             IsQuestUncompleted = 94006,
             Zone = 2521,
-            _index = 580,
+            _index = 579,
         },
         {
             Waypoint = 94006,
@@ -5879,7 +5873,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestNotOnQuest = 94006,
             IsQuestUncompleted = 94006,
             Zone = 2521,
-            _index = 581,
+            _index = 580,
         },
         {
             Grind = 10,
@@ -5888,7 +5882,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             AllOf = { { AnyOf = { { IsQuestNotOnQuest = 94006, IsQuestUncompleted = 94006 } } } },
             Class = "DRUID",
             Zone = 2521,
-            _index = 582,
+            _index = 581,
         },
         {
             PickUp = { 94006 },
@@ -5898,7 +5892,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 583,
+            _index = 582,
         },
         {
             PickUp = { 94006 },
@@ -5907,7 +5901,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Horde",
             Zone = 2521,
-            _index = 584,
+            _index = 583,
         },
         {
             LearnSkill = { spellIDs = { 774, 8921 } },
@@ -5917,7 +5911,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             MinLevel = 4,
             Zone = 2521,
-            _index = 585,
+            _index = 584,
         },
         {
             LearnSkill = { spellIDs = { 467, 5177 } },
@@ -5927,7 +5921,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             MinLevel = 6,
             Zone = 2521,
-            _index = 586,
+            _index = 585,
         },
         {
             LearnSkill = { spellIDs = { 339, 5186 } },
@@ -5937,7 +5931,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             MinLevel = 8,
             Zone = 2521,
-            _index = 587,
+            _index = 586,
         },
         {
             LearnSkill = { spellIDs = { 16689, 1058, 5232, 8924 } },
@@ -5951,7 +5945,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 10,
             Money = { operator = ">=", copper = 1200 },
             Zone = 2521,
-            _index = 588,
+            _index = 587,
         },
         {
             LearnSkill = { spellIDs = { 16689, 1058, 5232, 8924 } },
@@ -5964,7 +5958,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 10,
             Money = { operator = ">=", copper = 1200 },
             Zone = 2521,
-            _index = 589,
+            _index = 588,
         },
         {
             Waypoint = 92850,
@@ -5978,7 +5972,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 10,
             Money = { operator = ">=", copper = 900 },
             Zone = 2521,
-            _index = 590,
+            _index = 589,
         },
         {
             LearnSkill = { spellID = 1757 },
@@ -5989,7 +5983,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             DontHaveSpell = { 8696, 6774, 2070 },
             MinLevel = 6,
             Zone = 2521,
-            _index = 591,
+            _index = 590,
         },
         {
             LearnSkill = { spellID = 1776 },
@@ -6000,7 +5994,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             DontHaveSpell = { 8696, 6774, 2070, 1777 },
             MinLevel = 6,
             Zone = 2521,
-            _index = 592,
+            _index = 591,
         },
         {
             LearnSkill = { spellIDs = { 5277, 6760 } },
@@ -6011,7 +6005,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             DontHaveSpell = { 8696, 6774, 2070 },
             MinLevel = 8,
             Zone = 2521,
-            _index = 593,
+            _index = 592,
         },
         {
             LearnSkill = { spellIDs = { 674, 6770, 5171, 2983 } },
@@ -6026,7 +6020,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 10,
             Money = { operator = ">=", copper = 900 },
             Zone = 2521,
-            _index = 594,
+            _index = 593,
         },
         {
             Waypoint = 93159,
@@ -6039,7 +6033,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 10,
             Money = { operator = ">=", copper = 900 },
             Zone = 2521,
-            _index = 595,
+            _index = 594,
         },
         {
             LearnSkill = { spellIDs = { 674, 6770, 5171, 2983 } },
@@ -6053,7 +6047,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 10,
             Money = { operator = ">=", copper = 900 },
             Zone = 2521,
-            _index = 596,
+            _index = 595,
         },
         {
             LearnSkill = { spellIDs = { 1978, 13163 } },
@@ -6063,7 +6057,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             MinLevel = 4,
             Zone = 2521,
-            _index = 597,
+            _index = 596,
         },
         {
             LearnSkill = { spellIDs = { 1130, 3044 } },
@@ -6073,7 +6067,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             MinLevel = 6,
             Zone = 2521,
-            _index = 598,
+            _index = 597,
         },
         {
             LearnSkill = { spellIDs = { 3127, 5116, 14260 } },
@@ -6083,7 +6077,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             MinLevel = 8,
             Zone = 2521,
-            _index = 599,
+            _index = 598,
         },
         {
             LearnSkill = { spellIDs = { 13165, 13549 } },
@@ -6097,7 +6091,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 10,
             Money = { operator = ">=", copper = 800 },
             Zone = 2521,
-            _index = 600,
+            _index = 599,
         },
         {
             LearnSkill = { spellIDs = { 13165, 13549 } },
@@ -6110,7 +6104,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 10,
             Money = { operator = ">=", copper = 800 },
             Zone = 2521,
-            _index = 601,
+            _index = 600,
         },
         {
             Grind = 10,
@@ -6119,7 +6113,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             AllOf = { { AnyOf = { { IsQuestNotOnQuest = 94978, IsQuestUncompleted = 94978 } } } },
             Class = "HUNTER",
             Zone = 2521,
-            _index = 602,
+            _index = 601,
         },
         {
             PickUp = { 94978 },
@@ -6129,7 +6123,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 603,
+            _index = 602,
         },
         {
             PickUp = { 94978 },
@@ -6138,7 +6132,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Horde",
             Zone = 2521,
-            _index = 604,
+            _index = 603,
         },
         {
             SellItems = { npcID = 252390, junk = true, questID = 92850 },
@@ -6149,7 +6143,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 605,
+            _index = 604,
         },
         {
             BuyMerchant = { { itemID = 2515, quantity = 1000, targetStock = true } },
@@ -6164,7 +6158,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { count = 1000, itemID = 2515, operator = "<" },
             Money = { operator = ">=", copper = 250 },
             Zone = 2521,
-            _index = 606,
+            _index = 605,
         },
         {
             LearnSkill = { spellID = 116 },
@@ -6174,7 +6168,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 92850,
             MinLevel = 4,
             Zone = 2521,
-            _index = 607,
+            _index = 606,
         },
         {
             LearnSkill = { spellIDs = { 143, 2136, 1296017 } },
@@ -6184,7 +6178,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 92850,
             MinLevel = 6,
             Zone = 2521,
-            _index = 608,
+            _index = 607,
         },
         {
             LearnSkill = { spellIDs = { 118, 205, 5143 } },
@@ -6194,7 +6188,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 92850,
             MinLevel = 8,
             Zone = 2521,
-            _index = 609,
+            _index = 608,
         },
         {
             LearnSkill = { spellIDs = { 168, 122, 5504, 5505 } },
@@ -6208,7 +6202,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 10,
             Money = { operator = ">=", copper = 800 },
             Zone = 2521,
-            _index = 610,
+            _index = 609,
         },
         {
             Done = { 92850 },
@@ -6218,7 +6212,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "DRUID", "HUNTER", "MAGE", "WARRIOR" },
             Faction = "Alliance",
             Zone = 2521,
-            _index = 611,
+            _index = 610,
         },
         {
             PickUp = { 99260 },
@@ -6228,10 +6222,21 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "DRUID", "HUNTER", "MAGE", "WARRIOR" },
             Faction = "Alliance",
             Zone = 2521,
-            _index = 612,
+            _index = 611,
         },
         {
             Done = { 92850 },
+            Fillers = { [93949] = { 1 } },
+            Note = { "DUAL_WIELD_TRUSTY_WRENCH_FLUTTERFLY_SWATTER", "ONLY_SWAP_STUFF_IF_STRONGER" },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.26, 79.9),
+            RaidIcon = 253284,
+            Class = "ROGUE",
+            Faction = "Alliance",
+            Zone = 2521,
+            _index = 612,
+        },
+        {
+            PickUp = { 99260 },
             Fillers = { [93949] = { 1 } },
             Note = { "DUAL_WIELD_TRUSTY_WRENCH_FLUTTERFLY_SWATTER", "ONLY_SWAP_STUFF_IF_STRONGER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.26, 79.9),
@@ -6242,24 +6247,13 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 613,
         },
         {
-            PickUp = { 99260 },
-            Fillers = { [93949] = { 1 } },
-            Note = { "DUAL_WIELD_TRUSTY_WRENCH_FLUTTERFLY_SWATTER", "ONLY_SWAP_STUFF_IF_STRONGER" },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.26, 79.9),
-            RaidIcon = 253284,
-            Class = "ROGUE",
-            Faction = "Alliance",
-            Zone = 2521,
-            _index = 614,
-        },
-        {
             Done = { 99260 },
             Fillers = { [93949] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 66.627, 79.942),
             RaidIcon = 252475,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 615,
+            _index = 614,
         },
         {
             PickUp = { 92840 },
@@ -6268,7 +6262,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252475,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 616,
+            _index = 615,
         },
         {
             Qpart = { [94978] = { 1 } },
@@ -6280,7 +6274,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Horde",
             Zone = 2521,
-            _index = 617,
+            _index = 616,
         },
         {
             Done = { 94978 },
@@ -6289,7 +6283,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Horde",
             Zone = 2521,
-            _index = 618,
+            _index = 617,
         },
         {
             PickUp = { 94979 },
@@ -6298,14 +6292,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Horde",
             Zone = 2521,
-            _index = 619,
+            _index = 618,
         },
         {
             Note = { "DISMISS_PET_EXPLAIN", "TAMING_ANOTHER_PET_DISMISS_TEMPORARY_QUEST_PET" },
             Class = "HUNTER",
             Faction = "Horde",
             IsQuestUncompleted = 94979,
-            _index = 620,
+            _index = 619,
         },
         {
             Qpart = { [94979] = { 1 } },
@@ -6317,7 +6311,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Horde",
             Zone = 2521,
-            _index = 621,
+            _index = 620,
         },
         {
             Done = { 94979 },
@@ -6326,7 +6320,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Horde",
             Zone = 2521,
-            _index = 622,
+            _index = 621,
         },
         {
             PickUp = { 94013 },
@@ -6335,14 +6329,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Horde",
             Zone = 2521,
-            _index = 623,
+            _index = 622,
         },
         {
             Note = { "DISMISS_PET_EXPLAIN", "TAMING_ANOTHER_PET_DISMISS_TEMPORARY_QUEST_PET" },
             Class = "HUNTER",
             Faction = "Horde",
             IsQuestUncompleted = 94013,
-            _index = 624,
+            _index = 623,
         },
         {
             Qpart = { [94013] = { 1 } },
@@ -6354,7 +6348,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Horde",
             Zone = 2521,
-            _index = 625,
+            _index = 624,
         },
         {
             Done = { 94013 },
@@ -6363,7 +6357,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Horde",
             Zone = 2521,
-            _index = 626,
+            _index = 625,
         },
         {
             PickUp = { 94050 },
@@ -6372,7 +6366,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Horde",
             Zone = 2521,
-            _index = 627,
+            _index = 626,
         },
         {
             Done = { 94050 },
@@ -6381,7 +6375,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Horde",
             Zone = 2521,
-            _index = 628,
+            _index = 627,
         },
         {
             LearnSkill = { spellIDs = { 4195, 24547 } },
@@ -6393,7 +6387,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 98512,
             MinLevel = 10,
             Zone = 2521,
-            _index = 629,
+            _index = 628,
         },
         {
             TameBeast = { Text = "Windsong Crawler", spellID = 1515, npcID = 254588 },
@@ -6406,7 +6400,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             IsQuestUncompleted = 98512,
             Zone = 2521,
-            _index = 630,
+            _index = 629,
         },
         {
             LearnSkill = { spellID = 2981 },
@@ -6419,7 +6413,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 98512,
             MinLevel = 10,
             Zone = 2521,
-            _index = 631,
+            _index = 630,
         },
         {
             Waypoint = 97968,
@@ -6431,7 +6425,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "DRUID", "MAGE", "ROGUE", "WARRIOR" },
             Faction = "Alliance",
             Zone = 2521,
-            _index = 632,
+            _index = 631,
         },
         {
             Waypoint = 94978,
@@ -6443,7 +6437,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 633,
+            _index = 632,
         },
         {
             Qpart = { [92840] = { 1 } },
@@ -6452,7 +6446,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Button = { ["92840-1"] = 254584 },
             Faction = "Alliance",
             Zone = 2521,
-            _index = 634,
+            _index = 633,
         },
         {
             Qpart = { [92840] = { 1 } },
@@ -6461,7 +6455,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Button = { ["92840-1"] = 254584 },
             Faction = "Alliance",
             Zone = 2521,
-            _index = 635,
+            _index = 634,
         },
         {
             Qpart = { [93797] = { 1 } },
@@ -6470,7 +6464,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "MAGE",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 636,
+            _index = 635,
         },
         {
             Qpart = { [94978] = { 1 } },
@@ -6484,7 +6478,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 94978,
             Not = { IsQuestUncompleted = 94978, IsQuestReadyForTurnIn = 94978, IsQuestOnQuest = 94978 },
             Zone = 2521,
-            _index = 637,
+            _index = 636,
         },
         {
             Waypoint = 94978,
@@ -6496,7 +6490,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestReadyForTurnIn = 94978,
             IsQuestUncompleted = 94978,
             Zone = 2521,
-            _index = 638,
+            _index = 637,
         },
         {
             UseSpell = { spellID = 1259416, questID = 92840 },
@@ -6508,7 +6502,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestReadyForTurnIn = 94978,
             IsQuestUncompleted = 94978,
             Zone = 2521,
-            _index = 639,
+            _index = 638,
         },
         {
             Waypoint = 97968,
@@ -6517,7 +6511,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "DRUID", "MAGE", "ROGUE", "WARRIOR" },
             Faction = "Alliance",
             Zone = 2521,
-            _index = 640,
+            _index = 639,
         },
         {
             UseSpell = { spellID = 1259416, questID = 92840 },
@@ -6526,7 +6520,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "DRUID", "MAGE", "ROGUE", "WARRIOR" },
             Faction = "Alliance",
             Zone = 2521,
-            _index = 641,
+            _index = 640,
         },
         {
             Qpart = { [94978] = { 1 } },
@@ -6539,7 +6533,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 642,
+            _index = 641,
         },
         {
             Done = { 94978 },
@@ -6549,7 +6543,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 643,
+            _index = 642,
         },
         {
             PickUp = { 94979 },
@@ -6559,7 +6553,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 644,
+            _index = 643,
         },
         {
             Done = { 97968 },
@@ -6570,7 +6564,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 97968,
             IsQuestReadyForTurnIn = 97968,
             Zone = 2521,
-            _index = 645,
+            _index = 644,
         },
         {
             Done = { 93797 },
@@ -6580,7 +6574,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "MAGE",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 646,
+            _index = 645,
         },
         {
             Qpart = { [93949] = { 1 } },
@@ -6590,14 +6584,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "MAGE",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 647,
+            _index = 646,
         },
         {
             Note = { "DISMISS_PET_EXPLAIN", "TAMING_ANOTHER_PET_DISMISS_TEMPORARY_QUEST_PET" },
             Class = "HUNTER",
             Faction = "Alliance",
             IsQuestUncompleted = 94979,
-            _index = 648,
+            _index = 647,
         },
         {
             Qpart = { [94979] = { 1 } },
@@ -6609,7 +6603,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 649,
+            _index = 648,
         },
         {
             Done = { 94979 },
@@ -6618,7 +6612,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 650,
+            _index = 649,
         },
         {
             PickUp = { 94013 },
@@ -6627,7 +6621,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 651,
+            _index = 650,
         },
         {
             Qpart = { [94013] = { 1 } },
@@ -6640,7 +6634,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 652,
+            _index = 651,
         },
         {
             Done = { 94013 },
@@ -6649,7 +6643,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 653,
+            _index = 652,
         },
         {
             PickUp = { 94050 },
@@ -6658,7 +6652,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 654,
+            _index = 653,
         },
         {
             Done = { 94050 },
@@ -6667,7 +6661,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 655,
+            _index = 654,
         },
         {
             LearnSkill = { spellIDs = { 4195, 24547 } },
@@ -6679,7 +6673,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 92840,
             MinLevel = 10,
             Zone = 2521,
-            _index = 656,
+            _index = 655,
         },
         {
             Qpart = { [93949] = { 1 } },
@@ -6689,7 +6683,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" },
             Faction = "Alliance",
             Zone = 2521,
-            _index = 657,
+            _index = 656,
         },
         {
             PickUp = { 92709 },
@@ -6698,7 +6692,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 92840,
             Zone = 2521,
-            _index = 658,
+            _index = 657,
         },
         {
             Done = { 92840 },
@@ -6706,7 +6700,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252475,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 659,
+            _index = 658,
         },
         {
             PickUp = { 92834, 92860 },
@@ -6714,7 +6708,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252475,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 660,
+            _index = 659,
         },
         {
             Done = { 92860, 93949 },
@@ -6722,7 +6716,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252383,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 661,
+            _index = 660,
         },
         {
             Note = { "EQUIP_BOW_HOURS" },
@@ -6730,7 +6724,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252383,
             Class = "HUNTER",
             Faction = "Alliance",
-            _index = 662,
+            _index = 661,
         },
         {
             Waypoint = 92860,
@@ -6739,7 +6733,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 663,
+            _index = 662,
         },
         {
             Waypoint = 92860,
@@ -6748,7 +6742,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 664,
+            _index = 663,
         },
         {
             Waypoint = 92860,
@@ -6757,7 +6751,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 8.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 665,
+            _index = 664,
         },
         {
             Waypoint = 92860,
@@ -6766,7 +6760,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 666,
+            _index = 665,
         },
         {
             Waypoint = 92860,
@@ -6775,7 +6769,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 667,
+            _index = 666,
         },
         {
             Waypoint = 92860,
@@ -6784,7 +6778,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 668,
+            _index = 667,
         },
         {
             Waypoint = 92860,
@@ -6793,7 +6787,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 669,
+            _index = 668,
         },
         {
             Waypoint = 92860,
@@ -6802,7 +6796,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 8.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 670,
+            _index = 669,
         },
         {
             Waypoint = 92860,
@@ -6811,7 +6805,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 8.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 671,
+            _index = 670,
         },
         {
             Waypoint = 92860,
@@ -6820,7 +6814,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 672,
+            _index = 671,
         },
         {
             PickUp = { 93320 },
@@ -6828,7 +6822,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252383,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 673,
+            _index = 672,
         },
         {
             Waypoint = 93320,
@@ -6838,7 +6832,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             IsQuestNotOnQuest = 94896,
             Zone = 2521,
-            _index = 674,
+            _index = 673,
         },
         {
             UseSpell = { spellID = 1259416, questID = 93320 },
@@ -6848,7 +6842,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             IsQuestNotOnQuest = 94896,
             Zone = 2521,
-            _index = 675,
+            _index = 674,
         },
         {
             PickUp = { 94896, 94897 },
@@ -6856,7 +6850,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 259012,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 676,
+            _index = 675,
         },
         {
             UseSpell = { spellID = 1259705, questID = 94897 },
@@ -6864,7 +6858,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 64, 74.06),
             Faction = "Alliance",
             Zone = 2521,
-            _index = 677,
+            _index = 676,
         },
         {
             Waypoint = 93320,
@@ -6874,7 +6868,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252378,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 678,
+            _index = 677,
         },
         {
             Waypoint = 93320,
@@ -6884,7 +6878,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252378,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 679,
+            _index = 678,
         },
         {
             Waypoint = 93320,
@@ -6894,7 +6888,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252378,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 680,
+            _index = 679,
         },
         {
             Waypoint = 93320,
@@ -6904,7 +6898,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252378,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 681,
+            _index = 680,
         },
         {
             Done = { 93320 },
@@ -6914,7 +6908,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252378,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 682,
+            _index = 681,
         },
         {
             PickUp = { 92642, 92645 },
@@ -6924,7 +6918,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252378,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 683,
+            _index = 682,
         },
         {
             Qpart = { [92645] = { 1 } },
@@ -6936,7 +6930,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "HUNTER", "MAGE", "ROGUE", "WARRIOR" },
             Faction = "Alliance",
             Zone = 2521,
-            _index = 684,
+            _index = 683,
         },
         {
             Qpart = { [92642] = { 1, 2 } },
@@ -6948,7 +6942,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "ROGUE",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 685,
+            _index = 684,
         },
         {
             Qpart = { [92642] = { 1, 2 } },
@@ -6960,7 +6954,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "HUNTER", "MAGE", "WARRIOR" },
             Faction = "Alliance",
             Zone = 2521,
-            _index = 686,
+            _index = 685,
         },
         {
             Waypoint = 92834,
@@ -6969,7 +6963,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 687,
+            _index = 686,
         },
         {
             UseSpell = { spellID = 1259416, questID = 92834 },
@@ -6978,7 +6972,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 688,
+            _index = 687,
         },
         {
             Done = { 94006 },
@@ -6987,7 +6981,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 689,
+            _index = 688,
         },
         {
             PickUp = { 94638 },
@@ -6996,7 +6990,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 690,
+            _index = 689,
         },
         {
             Waypoint = 92645,
@@ -7006,7 +7000,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 691,
+            _index = 690,
         },
         {
             Qpart = { [92645] = { 1 } },
@@ -7018,7 +7012,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 692,
+            _index = 691,
         },
         {
             Qpart = { [92645] = { 1 } },
@@ -7029,7 +7023,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 693,
+            _index = 692,
         },
         {
             Qpart = { [92642] = { 1, 2 } },
@@ -7041,7 +7035,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 694,
+            _index = 693,
         },
         {
             Done = { 92645, 92642 },
@@ -7049,7 +7043,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252378,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 695,
+            _index = 694,
         },
         {
             PickUp = { 92880 },
@@ -7057,7 +7051,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252378,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 696,
+            _index = 695,
         },
         {
             Done = { 92880 },
@@ -7065,7 +7059,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252383,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 697,
+            _index = 696,
         },
         {
             PickUp = { 92881 },
@@ -7073,7 +7067,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252383,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 698,
+            _index = 697,
         },
         {
             Waypoint = 92880,
@@ -7082,7 +7076,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 699,
+            _index = 698,
         },
         {
             Waypoint = 92880,
@@ -7091,7 +7085,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 700,
+            _index = 699,
         },
         {
             Waypoint = 92880,
@@ -7100,7 +7094,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 701,
+            _index = 700,
         },
         {
             Waypoint = 92880,
@@ -7109,7 +7103,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 702,
+            _index = 701,
         },
         {
             Waypoint = 92880,
@@ -7118,7 +7112,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 703,
+            _index = 702,
         },
         {
             Waypoint = 92880,
@@ -7127,7 +7121,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 704,
+            _index = 703,
         },
         {
             Waypoint = 92880,
@@ -7136,7 +7130,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 8.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 705,
+            _index = 704,
         },
         {
             Waypoint = 92880,
@@ -7145,7 +7139,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 8.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 706,
+            _index = 705,
         },
         {
             Waypoint = 92880,
@@ -7154,7 +7148,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 707,
+            _index = 706,
         },
         {
             PickUp = { 92881 },
@@ -7162,7 +7156,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252383,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 708,
+            _index = 707,
         },
         {
             Done = { 92881 },
@@ -7170,7 +7164,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252476,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 709,
+            _index = 708,
         },
         {
             PickUp = { 92643 },
@@ -7178,21 +7172,21 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252476,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 710,
+            _index = 709,
         },
         {
             Note = { "EQUIP_BALANCED_QUARTERSTAFF" },
             Class = "MAGE",
             Faction = "Alliance",
             IsQuestUncompleted = 92643,
-            _index = 711,
+            _index = 710,
         },
         {
             Note = { "EQUIP_QUICKBLADE_DAGGER_OFF_HAND" },
             Class = "ROGUE",
             Faction = "Alliance",
             IsQuestUncompleted = 92643,
-            _index = 712,
+            _index = 711,
         },
         {
             Waypoint = 92643,
@@ -7202,7 +7196,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestNotOnQuest = 98512,
             IsQuestUncompleted = 98512,
             Zone = 2521,
-            _index = 713,
+            _index = 712,
         },
         {
             Waypoint = 92643,
@@ -7212,7 +7206,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestNotOnQuest = 98512,
             IsQuestUncompleted = 98512,
             Zone = 2521,
-            _index = 714,
+            _index = 713,
         },
         {
             UseSpell = { spellID = 1259416, questID = 98512 },
@@ -7222,7 +7216,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestNotOnQuest = 98512,
             IsQuestUncompleted = 98512,
             Zone = 2521,
-            _index = 715,
+            _index = 714,
         },
         {
             Waypoint = 92643,
@@ -7234,7 +7228,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestNotOnQuest = 98512,
             IsQuestUncompleted = 98512,
             Zone = 2521,
-            _index = 716,
+            _index = 715,
         },
         {
             SellItems = { npcID = 256507, junk = true, questID = 92643 },
@@ -7246,7 +7240,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestNotOnQuest = 98512,
             IsQuestUncompleted = 98512,
             Zone = 2521,
-            _index = 717,
+            _index = 716,
         },
         {
             UseSpell = { spellID = 1259705, questID = 98512 },
@@ -7256,7 +7250,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestNotOnQuest = 98512,
             IsQuestUncompleted = 98512,
             Zone = 2521,
-            _index = 718,
+            _index = 717,
         },
         {
             Waypoint = 94006,
@@ -7265,7 +7259,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Horde",
             Zone = 2521,
-            _index = 719,
+            _index = 718,
         },
         {
             Waypoint = 94006,
@@ -7274,7 +7268,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Horde",
             Zone = 2521,
-            _index = 720,
+            _index = 719,
         },
         {
             Waypoint = 94006,
@@ -7283,7 +7277,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Horde",
             Zone = 2521,
-            _index = 721,
+            _index = 720,
         },
         {
             UseSpell = { spellID = 1259416, questID = 94006 },
@@ -7292,7 +7286,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Horde",
             Zone = 2521,
-            _index = 722,
+            _index = 721,
         },
         {
             Done = { 94006 },
@@ -7301,7 +7295,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Horde",
             Zone = 2521,
-            _index = 723,
+            _index = 722,
         },
         {
             PickUp = { 94638 },
@@ -7310,7 +7304,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Horde",
             Zone = 2521,
-            _index = 724,
+            _index = 723,
         },
         {
             UseSpell = { spellID = 1259686, questID = 94638 },
@@ -7320,7 +7314,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             IsQuestOnQuest = 94638,
             Zone = 2521,
-            _index = 725,
+            _index = 724,
         },
         {
             PickUp = { 98512 },
@@ -7331,7 +7325,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             MinLevel = 9,
             Zone = 2521,
-            _index = 726,
+            _index = 725,
         },
         {
             Waypoint = 98512,
@@ -7343,7 +7337,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Horde",
             Zone = 2521,
-            _index = 727,
+            _index = 726,
         },
         {
             PickUp = { 98512 },
@@ -7355,7 +7349,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             MinLevel = 9,
             Zone = 2521,
-            _index = 728,
+            _index = 727,
         },
         {
             Qpart = { [98512] = { 1 } },
@@ -7365,7 +7359,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 254626,
             Faction = "Horde",
             Zone = 2521,
-            _index = 729,
+            _index = 728,
         },
         {
             Done = { 98512 },
@@ -7374,7 +7368,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" },
             Faction = "Horde",
             Zone = 2521,
-            _index = 730,
+            _index = 729,
         },
         {
             Done = { 98512 },
@@ -7383,7 +7377,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Horde",
             Zone = 2521,
-            _index = 731,
+            _index = 730,
         },
         {
             Waypoint = 94638,
@@ -7393,7 +7387,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             IsQuestOnQuest = 94638,
             Zone = 2521,
-            _index = 732,
+            _index = 731,
         },
         {
             Qpart = { [94638] = { 1 } },
@@ -7403,7 +7397,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Horde",
             Zone = 2521,
-            _index = 733,
+            _index = 732,
         },
         {
             Qpart = { [93737] = { 3 } },
@@ -7413,7 +7407,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             IsQuestOnQuest = 93737,
             Zone = 2521,
-            _index = 734,
+            _index = 733,
         },
         {
             PickUp = { 98512 },
@@ -7423,7 +7417,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "HUNTER", "MAGE", "ROGUE", "WARRIOR" },
             Faction = "Alliance",
             Zone = 2521,
-            _index = 735,
+            _index = 734,
         },
         {
             Waypoint = 98512,
@@ -7433,7 +7427,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 736,
+            _index = 735,
         },
         {
             PickUp = { 98512 },
@@ -7443,7 +7437,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 737,
+            _index = 736,
         },
         {
             Qpart = { [92643] = { 1 } },
@@ -7451,7 +7445,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 56.13, 60.26),
             Faction = "Alliance",
             Zone = 2521,
-            _index = 738,
+            _index = 737,
         },
         {
             Qpart = { [92643] = { 2 } },
@@ -7460,7 +7454,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 253372,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 739,
+            _index = 738,
         },
         {
             Done = { 92643 },
@@ -7469,7 +7463,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 253372,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 740,
+            _index = 739,
         },
         {
             PickUp = { 92644 },
@@ -7478,7 +7472,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 253372,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 741,
+            _index = 740,
         },
         {
             Qpart = { [98512] = { 1 } },
@@ -7488,7 +7482,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 254626,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 742,
+            _index = 741,
         },
         {
             Done = { 98512 },
@@ -7496,7 +7490,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 273017,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 743,
+            _index = 742,
         },
         {
             Qpart = { [94638] = { 1 } },
@@ -7506,7 +7500,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 744,
+            _index = 743,
         },
         {
             Waypoint = 94638,
@@ -7516,7 +7510,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Horde",
             Zone = 2521,
-            _index = 745,
+            _index = 744,
         },
         {
             Waypoint = 94638,
@@ -7526,7 +7520,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Horde",
             Zone = 2521,
-            _index = 746,
+            _index = 745,
         },
         {
             Waypoint = 94638,
@@ -7536,7 +7530,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Horde",
             Zone = 2521,
-            _index = 747,
+            _index = 746,
         },
         {
             UseSpell = { spellID = 1259416, questID = 94638 },
@@ -7545,7 +7539,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Horde",
             Zone = 2521,
-            _index = 748,
+            _index = 747,
         },
         {
             Done = { 94638 },
@@ -7553,7 +7547,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 255853,
             Class = "DRUID",
             Zone = 2521,
-            _index = 749,
+            _index = 748,
         },
         {
             Waypoint = 93159,
@@ -7563,7 +7557,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 750,
+            _index = 749,
         },
         {
             Qpart = { [93317] = { 1 } },
@@ -7573,7 +7567,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 751,
+            _index = 750,
         },
         {
             Qpart = { [93317] = { 1 } },
@@ -7583,7 +7577,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 752,
+            _index = 751,
         },
         {
             Waypoint = 93317,
@@ -7593,7 +7587,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 93317,
             Not = { IsQuestReadyForTurnIn = 93317 },
             Zone = 2521,
-            _index = 753,
+            _index = 752,
         },
         {
             Qpart = { [93317] = { 1 } },
@@ -7602,7 +7596,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 254588,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 754,
+            _index = 753,
         },
         {
             Waypoint = 93159,
@@ -7612,7 +7606,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             IsQuestUncompleted = 93159,
             Zone = 2521,
-            _index = 755,
+            _index = 754,
         },
         {
             Waypoint = 93159,
@@ -7622,7 +7616,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             IsQuestUncompleted = 93159,
             Zone = 2521,
-            _index = 756,
+            _index = 755,
         },
         {
             Waypoint = 93159,
@@ -7632,7 +7626,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             IsQuestUncompleted = 93159,
             Zone = 2521,
-            _index = 757,
+            _index = 756,
         },
         {
             Waypoint = 93159,
@@ -7642,7 +7636,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             IsQuestUncompleted = 93159,
             Zone = 2521,
-            _index = 758,
+            _index = 757,
         },
         {
             Waypoint = 93159,
@@ -7653,7 +7647,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             IsQuestUncompleted = 93159,
             Zone = 2521,
-            _index = 759,
+            _index = 758,
         },
         {
             Waypoint = 93159,
@@ -7664,7 +7658,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             IsQuestUncompleted = 93159,
             Zone = 2521,
-            _index = 760,
+            _index = 759,
         },
         {
             Waypoint = 93159,
@@ -7675,7 +7669,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             IsQuestUncompleted = 93159,
             Zone = 2521,
-            _index = 761,
+            _index = 760,
         },
         {
             Qpart = { [94003] = { 1 } },
@@ -7684,7 +7678,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 257196,
             Class = "WARRIOR",
             Zone = 2521,
-            _index = 762,
+            _index = 761,
         },
         {
             Waypoint = 93159,
@@ -7693,7 +7687,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 763,
+            _index = 762,
         },
         {
             Waypoint = 93159,
@@ -7702,7 +7696,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 40.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 764,
+            _index = 763,
         },
         {
             Waypoint = 93159,
@@ -7710,10 +7704,20 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 40.0,
             Faction = "Horde",
             Zone = 2521,
-            _index = 765,
+            _index = 764,
         },
         {
             PickUp = { 93159 },
+            Fillers = { [92741] = { 1 } },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 53.95, 38.9),
+            GossipOptionIDs = { 135787, 135786, 135785, 135784 },
+            RaidIcon = 251684,
+            Faction = "Alliance",
+            Zone = 2521,
+            _index = 765,
+        },
+        {
+            Qpart = { [93159] = { 1 } },
             Fillers = { [92741] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 53.95, 38.9),
             GossipOptionIDs = { 135787, 135786, 135785, 135784 },
@@ -7723,7 +7727,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 766,
         },
         {
-            Qpart = { [93159] = { 1 } },
+            Done = { 93159 },
             Fillers = { [92741] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 53.95, 38.9),
             GossipOptionIDs = { 135787, 135786, 135785, 135784 },
@@ -7733,7 +7737,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 767,
         },
         {
-            Done = { 93159 },
+            PickUp = { 93160, 93172 },
             Fillers = { [92741] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 53.95, 38.9),
             GossipOptionIDs = { 135787, 135786, 135785, 135784 },
@@ -7743,23 +7747,13 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 768,
         },
         {
-            PickUp = { 93160, 93172 },
-            Fillers = { [92741] = { 1 } },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 53.95, 38.9),
-            GossipOptionIDs = { 135787, 135786, 135785, 135784 },
-            RaidIcon = 251684,
-            Faction = "Alliance",
-            Zone = 2521,
-            _index = 769,
-        },
-        {
             Grind = 8,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 53.19, 57.39),
             Range = 30,
             AllOf = { { AnyOf = { { IsQuestNotOnQuest = 93159, IsQuestUncompleted = 93159 } } } },
             Faction = "Horde",
             Zone = 2521,
-            _index = 770,
+            _index = 769,
         },
         {
             PickUp = { 93159 },
@@ -7768,7 +7762,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251684,
             Faction = "Horde",
             Zone = 2521,
-            _index = 771,
+            _index = 770,
         },
         {
             Qpart = { [93159] = { 1 } },
@@ -7777,7 +7771,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251684,
             Faction = "Horde",
             Zone = 2521,
-            _index = 772,
+            _index = 771,
         },
         {
             Done = { 93159 },
@@ -7786,7 +7780,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251684,
             Faction = "Horde",
             Zone = 2521,
-            _index = 773,
+            _index = 772,
         },
         {
             PickUp = { 93160, 93172 },
@@ -7795,7 +7789,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251684,
             Faction = "Horde",
             Zone = 2521,
-            _index = 774,
+            _index = 773,
         },
         {
             PickUp = { 98285 },
@@ -7804,7 +7798,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251684,
             HasSpell = 4036,
             Zone = 2521,
-            _index = 775,
+            _index = 774,
         },
         {
             QpartPart = { [94896] = { 1 } },
@@ -7813,7 +7807,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             NoArrow = true,
             Faction = "Alliance",
             IsQuestUncompleted = 94484,
-            _index = 776,
+            _index = 775,
         },
         {
             Waypoint = 94897,
@@ -7822,7 +7816,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 94897,
             Not = { IsQuestReadyForTurnIn = 94897 },
             Zone = 2521,
-            _index = 777,
+            _index = 776,
         },
         {
             Qpart = { [94897] = { 1 } },
@@ -7832,7 +7826,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             GossipOptionIDs = { 138670 },
             RaidIcon = 259013,
             Zone = 2521,
-            _index = 778,
+            _index = 777,
         },
         {
             Waypoint = 94484,
@@ -7841,7 +7835,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 20.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 779,
+            _index = 778,
         },
         {
             Waypoint = 94484,
@@ -7850,7 +7844,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 10.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 780,
+            _index = 779,
         },
         {
             Waypoint = 94484,
@@ -7859,7 +7853,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 20.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 781,
+            _index = 780,
         },
         {
             Waypoint = 94484,
@@ -7868,7 +7862,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 20.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 782,
+            _index = 781,
         },
         {
             Waypoint = 94484,
@@ -7877,7 +7871,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 783,
+            _index = 782,
         },
         {
             Waypoint = 94484,
@@ -7886,7 +7880,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 784,
+            _index = 783,
         },
         {
             Waypoint = 94484,
@@ -7895,7 +7889,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 785,
+            _index = 784,
         },
         {
             Waypoint = 94484,
@@ -7904,7 +7898,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 20.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 786,
+            _index = 785,
         },
         {
             Waypoint = 94484,
@@ -7913,7 +7907,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 787,
+            _index = 786,
         },
         {
             Waypoint = 94484,
@@ -7922,7 +7916,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 788,
+            _index = 787,
         },
         {
             UseSpell = { spellID = 1259705, questID = 94896 },
@@ -7931,7 +7925,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.1, 33.38),
             Faction = "Alliance",
             Zone = 2521,
-            _index = 789,
+            _index = 788,
         },
         {
             Qpart = { [94896] = { 1 } },
@@ -7940,7 +7934,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 790,
+            _index = 789,
         },
         {
             Qpart = { [93172] = { 1 } },
@@ -7948,10 +7942,19 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             RaidIcon = 251676,
             Zone = 2521,
-            _index = 791,
+            _index = 790,
         },
         {
             Done = { 94484 },
+            Fillers = { [92741] = { 1 }, [93160] = { 1 } },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 61.76, 39.14),
+            RaidIcon = 257944,
+            Faction = "Alliance",
+            Zone = 2521,
+            _index = 791,
+        },
+        {
+            PickUp = { 94485, 94486, 94487 },
             Fillers = { [92741] = { 1 }, [93160] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 61.76, 39.14),
             RaidIcon = 257944,
@@ -7960,16 +7963,16 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 792,
         },
         {
-            PickUp = { 94485, 94486, 94487 },
-            Fillers = { [92741] = { 1 }, [93160] = { 1 } },
+            Done = { 94484 },
+            Fillers = { [93160] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 61.76, 39.14),
             RaidIcon = 257944,
-            Faction = "Alliance",
+            Faction = "Horde",
             Zone = 2521,
             _index = 793,
         },
         {
-            Done = { 94484 },
+            PickUp = { 94485, 94486, 94487 },
             Fillers = { [93160] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 61.76, 39.14),
             RaidIcon = 257944,
@@ -7978,21 +7981,12 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 794,
         },
         {
-            PickUp = { 94485, 94486, 94487 },
-            Fillers = { [93160] = { 1 } },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 61.76, 39.14),
-            RaidIcon = 257944,
-            Faction = "Horde",
-            Zone = 2521,
-            _index = 795,
-        },
-        {
             PickUp = { 93165 },
             Fillers = { [92834] = { 1 }, [93160] = { 1 }, [94487] = { 1 }, [92741] = { 1 }, [94485] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.8, 36.03),
             RaidIcon = 254151,
             Zone = 2521,
-            _index = 796,
+            _index = 795,
         },
         {
             Qpart = { [93165] = { 1 }, [94487] = { 1 }, [92834] = { 1 } },
@@ -8003,7 +7997,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252664,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 797,
+            _index = 796,
         },
         {
             Qpart = { [94487] = { 1 } },
@@ -8013,7 +8007,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252664,
             Faction = "Horde",
             Zone = 2521,
-            _index = 798,
+            _index = 797,
         },
         {
             Qpart = { [93160] = { 1 } },
@@ -8023,7 +8017,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             Faction = "Horde",
             Zone = 2521,
-            _index = 799,
+            _index = 798,
         },
         {
             Done = { 93160, 93172 },
@@ -8032,7 +8026,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251684,
             Faction = "Horde",
             Zone = 2521,
-            _index = 800,
+            _index = 799,
         },
         {
             Qpart = { [93160] = { 1 } },
@@ -8041,7 +8035,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 801,
+            _index = 800,
         },
         {
             Done = { 93160, 93172 },
@@ -8050,7 +8044,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251684,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 802,
+            _index = 801,
         },
         {
             Done = { 98285 },
@@ -8060,7 +8054,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 98285,
             IsQuestReadyForTurnIn = 98285,
             Zone = 2521,
-            _index = 803,
+            _index = 802,
         },
         {
             Qpart = { [94485] = { 1 } },
@@ -8069,7 +8063,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 804,
+            _index = 803,
         },
         {
             Qpart = { [94485] = { 1 } },
@@ -8078,7 +8072,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             Faction = "Horde",
             Zone = 2521,
-            _index = 805,
+            _index = 804,
         },
         {
             Qpart = { [92741] = { 1 }, [94486] = { 1 } },
@@ -8087,7 +8081,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 256092,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 806,
+            _index = 805,
         },
         {
             Grind = 13,
@@ -8096,7 +8090,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             SkipForLvl = 13,
             Zone = 2521,
-            _index = 807,
+            _index = 806,
         },
         {
             Qpart = { [94486] = { 1 } },
@@ -8105,7 +8099,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 256092,
             Faction = "Horde",
             Zone = 2521,
-            _index = 808,
+            _index = 807,
         },
         {
             Grind = 12,
@@ -8114,21 +8108,21 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipForLvl = 12,
             Zone = 2521,
-            _index = 809,
+            _index = 808,
         },
         {
             Done = { 94485, 94487, 94486 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 61.76, 39.13),
             RaidIcon = 257944,
             Zone = 2521,
-            _index = 810,
+            _index = 809,
         },
         {
             PickUp = { 94488, 94489 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 61.76, 39.13),
             RaidIcon = 257944,
             Zone = 2521,
-            _index = 811,
+            _index = 810,
         },
         {
             Qpart = { [94488] = { 1 } },
@@ -8136,7 +8130,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 10,
             RaidIcon = 253622,
             Zone = 2521,
-            _index = 812,
+            _index = 811,
         },
         {
             LootItems = { { itemID = 265476, quantity = 1, includeBank = false } },
@@ -8145,7 +8139,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestNotOnQuest = 94490,
             IsQuestUncompleted = 94490,
             Zone = 2521,
-            _index = 813,
+            _index = 812,
         },
         {
             LootItems = { { itemID = 265476, quantity = 1, includeBank = false } },
@@ -8155,14 +8149,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestNotOnQuest = 94490,
             IsQuestUncompleted = 94490,
             Zone = 2521,
-            _index = 814,
+            _index = 813,
         },
         {
             PickUp = { 94490 },
             Button = { ["94490"] = 265476 },
             IsQuestNotOnQuest = 94490,
             IsQuestUncompleted = 94490,
-            _index = 815,
+            _index = 814,
         },
         {
             Waypoint = 93165,
@@ -8171,7 +8165,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 254151,
             AnyOf = { { Faction = "Alliance" }, { Faction = "Horde", IsQuestOnQuest = 93165, IsQuestReadyForTurnIn = 93165 } },
             Zone = 2521,
-            _index = 816,
+            _index = 815,
         },
         {
             Done = { 93165 },
@@ -8179,7 +8173,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 254151,
             AnyOf = { { Faction = "Alliance" }, { Faction = "Horde", IsQuestOnQuest = 93165, IsQuestReadyForTurnIn = 93165 } },
             Zone = 2521,
-            _index = 817,
+            _index = 816,
         },
         {
             Waypoint = 94489,
@@ -8188,7 +8182,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 94489,
             Not = { IsQuestReadyForTurnIn = 94489 },
             Zone = 2521,
-            _index = 818,
+            _index = 817,
         },
         {
             QpartPart = { [94489] = { 1 } },
@@ -8198,14 +8192,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 258277,
             IsQuestUncompleted = 94489,
             Zone = 2521,
-            _index = 819,
+            _index = 818,
         },
         {
             Waypoint = 94489,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 64.703, 30.067),
             Range = 20.0,
             Zone = 2521,
-            _index = 820,
+            _index = 819,
         },
         {
             QpartPart = { [94489] = { 1 } },
@@ -8216,7 +8210,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 258289,
             IsQuestUncompleted = 94489,
             Zone = 2521,
-            _index = 821,
+            _index = 820,
         },
         {
             QpartPart = { [94489] = { 1 } },
@@ -8226,7 +8220,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 258134,
             IsQuestUncompleted = 94489,
             Zone = 2521,
-            _index = 822,
+            _index = 821,
         },
         {
             Qpart = { [94489] = { 2 } },
@@ -8235,7 +8229,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             GossipOptionIDs = { 137859 },
             RaidIcon = 258130,
             Zone = 2521,
-            _index = 823,
+            _index = 822,
         },
         {
             Done = { 94489 },
@@ -8243,7 +8237,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 15.0,
             RaidIcon = 257944,
             Zone = 2521,
-            _index = 824,
+            _index = 823,
         },
         {
             Waypoint = 94489,
@@ -8251,37 +8245,37 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 61.77, 39.14),
             Range = 15,
             Zone = 2521,
-            _index = 825,
+            _index = 824,
         },
         {
             Qpart = { [94488] = { 1 } },
             NoArrow = true,
-            _index = 826,
+            _index = 825,
         },
         {
             Done = { 94489, 94490, 94488 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 61.77, 39.14),
             RaidIcon = 257944,
             Zone = 2521,
-            _index = 827,
+            _index = 826,
         },
         {
             PickUp = { 94491 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 61.77, 39.14),
             RaidIcon = 257944,
             Zone = 2521,
-            _index = 828,
+            _index = 827,
         },
         {
             LeaveQuests = { 93165 },
             IsQuestOnQuest = 93165,
-            _index = 829,
+            _index = 828,
         },
         {
             UseHS = 94491,
             UseHSIfAvailable = true,
             Faction = "Alliance",
-            _index = 830,
+            _index = 829,
         },
         {
             Waypoint = 94491,
@@ -8290,13 +8284,13 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(2521, 62.18, 72.616, 10),
             Faction = "Alliance",
             Zone = 2521,
-            _index = 831,
+            _index = 830,
         },
         {
             UseHS = 94896,
             UseHSIfAvailable = true,
             Faction = "Horde",
-            _index = 832,
+            _index = 831,
         },
         {
             Waypoint = 94896,
@@ -8305,7 +8299,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(2521, 62.18, 72.616, 10),
             Faction = "Horde",
             Zone = 2521,
-            _index = 833,
+            _index = 832,
         },
         {
             SellItems = { npcID = 255940, junk = true, questID = 94003 },
@@ -8316,7 +8310,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "WARRIOR",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 834,
+            _index = 833,
         },
         {
             SellItems = { questID = 94491, junk = true, npcID = 255940 },
@@ -8327,7 +8321,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "DRUID", "HUNTER", "MAGE", "ROGUE" },
             Faction = "Alliance",
             Zone = 2521,
-            _index = 835,
+            _index = 834,
         },
         {
             BuyMerchant = { { itemID = 1179, quantity = 20, targetStock = true } },
@@ -8342,7 +8336,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { itemID = 1179, count = 20, operator = "<" },
             Money = { operator = ">=", copper = 500 },
             Zone = 2521,
-            _index = 836,
+            _index = 835,
         },
         {
             SellItems = { questID = 94896, junk = true, npcID = 255940 },
@@ -8352,7 +8346,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 255940,
             Faction = "Horde",
             Zone = 2521,
-            _index = 837,
+            _index = 836,
         },
         {
             BuyMerchant = { { itemID = 1179, quantity = 20, targetStock = true } },
@@ -8367,7 +8361,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { itemID = 1179, count = 20, operator = "<" },
             Money = { operator = ">=", copper = 500 },
             Zone = 2521,
-            _index = 838,
+            _index = 837,
         },
         {
             Done = { 94003 },
@@ -8376,7 +8370,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "WARRIOR",
             Faction = "Alliance",
             Zone = 2521,
-            _index = 839,
+            _index = 838,
         },
         {
             LearnSkill = { spellID = 3127 },
@@ -8387,7 +8381,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             DontHaveSpell = { 6574, 6190 },
             MinLevel = 6,
             Zone = 2521,
-            _index = 840,
+            _index = 839,
         },
         {
             LearnSkill = { spellIDs = { 2687, 6546 } },
@@ -8398,7 +8392,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             DontHaveSpell = { 6574, 6190 },
             MinLevel = 10,
             Zone = 2521,
-            _index = 841,
+            _index = 840,
         },
         {
             Waypoint = 94491,
@@ -8410,7 +8404,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 12,
             Money = { operator = ">=", copper = 1600 },
             Zone = 2521,
-            _index = 842,
+            _index = 841,
         },
         {
             LearnSkill = { spellID = 1757 },
@@ -8420,7 +8414,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "ROGUE",
             MinLevel = 6,
             Zone = 2521,
-            _index = 843,
+            _index = 842,
         },
         {
             LearnSkill = { spellID = 1776 },
@@ -8431,7 +8425,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             DontHaveSpell = 1777,
             MinLevel = 6,
             Zone = 2521,
-            _index = 844,
+            _index = 843,
         },
         {
             LearnSkill = { spellIDs = { 5277, 6760 } },
@@ -8441,7 +8435,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "ROGUE",
             MinLevel = 8,
             Zone = 2521,
-            _index = 845,
+            _index = 844,
         },
         {
             LearnSkill = { spellIDs = { 674, 2983, 5171, 6770 } },
@@ -8452,7 +8446,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             DontHaveSpell = { 8696, 6774, 2070 },
             MinLevel = 10,
             Zone = 2521,
-            _index = 846,
+            _index = 845,
         },
         {
             LearnSkill = { spellIDs = { 1766, 3127 } },
@@ -8465,7 +8459,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 12,
             Money = { operator = ">=", copper = 1600 },
             Zone = 2521,
-            _index = 847,
+            _index = 846,
         },
         {
             LearnSkill = { spellIDs = { 1978, 13163 } },
@@ -8475,7 +8469,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             MinLevel = 4,
             Zone = 2521,
-            _index = 848,
+            _index = 847,
         },
         {
             LearnSkill = { spellIDs = { 1130, 3044 } },
@@ -8485,7 +8479,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             MinLevel = 6,
             Zone = 2521,
-            _index = 849,
+            _index = 848,
         },
         {
             LearnSkill = { spellIDs = { 3127, 5116, 14260 } },
@@ -8495,7 +8489,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             MinLevel = 8,
             Zone = 2521,
-            _index = 850,
+            _index = 849,
         },
         {
             LearnSkill = { spellIDs = { 13165, 13549 } },
@@ -8505,7 +8499,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             MinLevel = 10,
             Zone = 2521,
-            _index = 851,
+            _index = 850,
         },
         {
             LearnSkill = { spellID = 14281 },
@@ -8517,7 +8511,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 12,
             Money = { operator = ">=", copper = 800 },
             Zone = 2521,
-            _index = 852,
+            _index = 851,
         },
         {
             LearnSkill = { spellIDs = { 5242, 7384, 72 } },
@@ -8531,7 +8525,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 12,
             Money = { operator = ">=", copper = 3000 },
             Zone = 2521,
-            _index = 853,
+            _index = 852,
         },
         {
             Waypoint = 93317,
@@ -8542,7 +8536,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 93317,
             IsQuestReadyForTurnIn = 93317,
             Zone = 2521,
-            _index = 854,
+            _index = 853,
         },
         {
             Done = { 93317 },
@@ -8553,7 +8547,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 93317,
             IsQuestReadyForTurnIn = 93317,
             Zone = 2521,
-            _index = 855,
+            _index = 854,
         },
         {
             Waypoint = 94491,
@@ -8562,7 +8556,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252359,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 856,
+            _index = 855,
         },
         {
             Done = { 94491 },
@@ -8570,7 +8564,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252359,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 857,
+            _index = 856,
         },
         {
             LearnSkill = { spellIDs = { 774, 8921 } },
@@ -8580,7 +8574,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 94896,
             MinLevel = 4,
             Zone = 2521,
-            _index = 858,
+            _index = 857,
         },
         {
             LearnSkill = { spellIDs = { 467, 5177 } },
@@ -8590,7 +8584,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 94896,
             MinLevel = 6,
             Zone = 2521,
-            _index = 859,
+            _index = 858,
         },
         {
             LearnSkill = { spellIDs = { 339, 5186 } },
@@ -8600,7 +8594,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 94896,
             MinLevel = 8,
             Zone = 2521,
-            _index = 860,
+            _index = 859,
         },
         {
             LearnSkill = { spellIDs = { 1058, 5232, 8924, 16689 } },
@@ -8610,7 +8604,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 94896,
             MinLevel = 10,
             Zone = 2521,
-            _index = 861,
+            _index = 860,
         },
         {
             LearnSkill = { spellIDs = { 5229, 8936 } },
@@ -8622,7 +8616,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 12,
             Money = { operator = ">=", copper = 1600 },
             Zone = 2521,
-            _index = 862,
+            _index = 861,
         },
         {
             Done = { 94491 },
@@ -8630,7 +8624,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252359,
             Faction = "Horde",
             Zone = 2521,
-            _index = 863,
+            _index = 862,
         },
         {
             Done = { 94896, 94897 },
@@ -8638,7 +8632,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 259012,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 864,
+            _index = 863,
         },
         {
             Done = { 94896 },
@@ -8648,7 +8642,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 94896,
             IsQuestReadyForTurnIn = 94896,
             Zone = 2521,
-            _index = 865,
+            _index = 864,
         },
         {
             Done = { 94897 },
@@ -8657,13 +8651,13 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             IsQuestOnQuest = 94897,
             Zone = 2521,
-            _index = 866,
+            _index = 865,
         },
         {
             LeaveQuests = { 94896 },
             Faction = "Horde",
             IsQuestOnQuest = 94896,
-            _index = 867,
+            _index = 866,
         },
         {
             Done = { 92644 },
@@ -8671,7 +8665,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252476,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 868,
+            _index = 867,
         },
         {
             PickUp = { 94568 },
@@ -8679,7 +8673,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252476,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 869,
+            _index = 868,
         },
         {
             Waypoint = 92644,
@@ -8688,7 +8682,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 870,
+            _index = 869,
         },
         {
             Waypoint = 92644,
@@ -8697,7 +8691,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 871,
+            _index = 870,
         },
         {
             Waypoint = 92644,
@@ -8706,7 +8700,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 872,
+            _index = 871,
         },
         {
             Waypoint = 92644,
@@ -8715,7 +8709,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 873,
+            _index = 872,
         },
         {
             Waypoint = 92644,
@@ -8724,7 +8718,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 874,
+            _index = 873,
         },
         {
             Waypoint = 92644,
@@ -8733,7 +8727,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 8.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 875,
+            _index = 874,
         },
         {
             Waypoint = 92644,
@@ -8742,7 +8736,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 8.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 876,
+            _index = 875,
         },
         {
             Waypoint = 92644,
@@ -8751,7 +8745,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 877,
+            _index = 876,
         },
         {
             PickUp = { 94568 },
@@ -8759,7 +8753,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252476,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 878,
+            _index = 877,
         },
         {
             Waypoint = 94568,
@@ -8768,7 +8762,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 879,
+            _index = 878,
         },
         {
             Qpart = { [94568] = { 1 } },
@@ -8777,7 +8771,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252476,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 880,
+            _index = 879,
         },
         {
             Done = { 94568 },
@@ -8785,7 +8779,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252476,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 881,
+            _index = 880,
         },
         {
             PickUp = { 92640 },
@@ -8793,7 +8787,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252476,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 882,
+            _index = 881,
         },
         {
             Qpart = { [92640] = { 1 } },
@@ -8802,7 +8796,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252383,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 883,
+            _index = 882,
         },
         {
             Waypoint = 92640,
@@ -8811,7 +8805,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             Not = { IsQuestReadyForTurnIn = 92640 },
             Zone = 2521,
-            _index = 884,
+            _index = 883,
         },
         {
             UseSpell = { spellID = 1259416, questID = 92640 },
@@ -8820,7 +8814,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             Not = { IsQuestReadyForTurnIn = 92640 },
             Zone = 2521,
-            _index = 885,
+            _index = 884,
         },
         {
             Qpart = { [92640] = { 2 } },
@@ -8830,7 +8824,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251968,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 886,
+            _index = 885,
         },
         {
             Waypoint = 92741,
@@ -8839,7 +8833,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 253004,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 887,
+            _index = 886,
         },
         {
             Waypoint = 92741,
@@ -8848,7 +8842,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 253004,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 888,
+            _index = 887,
         },
         {
             Waypoint = 92741,
@@ -8857,7 +8851,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 253004,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 889,
+            _index = 888,
         },
         {
             Waypoint = 92741,
@@ -8866,7 +8860,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 253004,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 890,
+            _index = 889,
         },
         {
             Done = { 92741 },
@@ -8874,7 +8868,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 253004,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 891,
+            _index = 890,
         },
         {
             Qpart = { [92640] = { 3 } },
@@ -8883,7 +8877,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252475,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 892,
+            _index = 891,
         },
         {
             Done = { 92709 },
@@ -8893,7 +8887,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 92709,
             IsQuestReadyForTurnIn = 92709,
             Zone = 2521,
-            _index = 893,
+            _index = 892,
         },
         {
             Done = { 92834 },
@@ -8901,7 +8895,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252475,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 894,
+            _index = 893,
         },
         {
             LearnSkill = { spellID = 116 },
@@ -8911,7 +8905,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 92640,
             MinLevel = 4,
             Zone = 2521,
-            _index = 895,
+            _index = 894,
         },
         {
             LearnSkill = { spellIDs = { 143, 2136, 1296017 } },
@@ -8921,7 +8915,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 92640,
             MinLevel = 6,
             Zone = 2521,
-            _index = 896,
+            _index = 895,
         },
         {
             LearnSkill = { spellIDs = { 118, 205, 5143 } },
@@ -8931,7 +8925,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 92640,
             MinLevel = 8,
             Zone = 2521,
-            _index = 897,
+            _index = 896,
         },
         {
             LearnSkill = { spellIDs = { 122, 168, 5504, 5505 } },
@@ -8941,7 +8935,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 92640,
             MinLevel = 10,
             Zone = 2521,
-            _index = 898,
+            _index = 897,
         },
         {
             LearnSkill = { spellIDs = { 145, 604, 130 } },
@@ -8954,7 +8948,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 12,
             Money = { operator = ">=", copper = 2400 },
             Zone = 2521,
-            _index = 899,
+            _index = 898,
         },
         {
             Done = { 92640 },
@@ -8962,7 +8956,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252383,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 900,
+            _index = 899,
         },
         {
             PickUp = { 93065 },
@@ -8970,7 +8964,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252383,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 901,
+            _index = 900,
         },
         {
             Waypoint = 92640,
@@ -8979,7 +8973,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 902,
+            _index = 901,
         },
         {
             Waypoint = 92640,
@@ -8988,7 +8982,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 903,
+            _index = 902,
         },
         {
             Waypoint = 92640,
@@ -8997,7 +8991,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 904,
+            _index = 903,
         },
         {
             Waypoint = 92640,
@@ -9006,7 +9000,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 905,
+            _index = 904,
         },
         {
             Waypoint = 92640,
@@ -9015,7 +9009,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 906,
+            _index = 905,
         },
         {
             Waypoint = 92640,
@@ -9024,7 +9018,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 907,
+            _index = 906,
         },
         {
             Waypoint = 92640,
@@ -9033,7 +9027,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 908,
+            _index = 907,
         },
         {
             Waypoint = 92640,
@@ -9042,7 +9036,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 8.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 909,
+            _index = 908,
         },
         {
             Waypoint = 92640,
@@ -9051,7 +9045,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 8.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 910,
+            _index = 909,
         },
         {
             Waypoint = 92640,
@@ -9060,7 +9054,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 5.0,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 911,
+            _index = 910,
         },
         {
             PickUp = { 93065 },
@@ -9068,7 +9062,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 252383,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 912,
+            _index = 911,
         },
         {
             Waypoint = 93065,
@@ -9077,7 +9071,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             Not = { IsQuestReadyForTurnIn = 93065 },
             Zone = 2521,
-            _index = 913,
+            _index = 912,
         },
         {
             Waypoint = 93065,
@@ -9086,7 +9080,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             Not = { IsQuestReadyForTurnIn = 93065 },
             Zone = 2521,
-            _index = 914,
+            _index = 913,
         },
         {
             UseSpell = { spellID = 1259416, questID = 93065 },
@@ -9095,7 +9089,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             Not = { IsQuestReadyForTurnIn = 93065 },
             Zone = 2521,
-            _index = 915,
+            _index = 914,
         },
         {
             UseSpell = { spellID = 1259705, questID = 93065 },
@@ -9103,7 +9097,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.9, 74.16),
             Faction = "Alliance",
             Zone = 2521,
-            _index = 916,
+            _index = 915,
         },
         {
             Waypoint = 93065,
@@ -9112,7 +9106,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 253844,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 917,
+            _index = 916,
         },
         {
             Qpart = { [93065] = { 1 } },
@@ -9121,7 +9115,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 253844,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 918,
+            _index = 917,
         },
         {
             Done = { 93065 },
@@ -9130,7 +9124,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 253844,
             Faction = "Alliance",
             Zone = 2521,
-            _index = 919,
+            _index = 918,
         },
         {
             Waypoint = 93317,
@@ -9140,7 +9134,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "DRUID", "MAGE" },
             Faction = "Alliance",
             Zone = 2521,
-            _index = 920,
+            _index = 919,
         },
         {
             Waypoint = 93317,
@@ -9150,7 +9144,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "DRUID", "MAGE" },
             Faction = "Alliance",
             Zone = 2521,
-            _index = 921,
+            _index = 920,
         },
         {
             Done = { 93317 },
@@ -9159,11 +9153,11 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "DRUID", "MAGE" },
             Faction = "Alliance",
             Zone = 2521,
-            _index = 922,
+            _index = 921,
         },
         {
             LeaveQuests = { 97970, 97971, 96646, 97968, 97965, 97967, 97963, 97964, 97973, 98286, 97969, 98285, 93318, 92709 },
-            _index = 923,
+            _index = 922,
         },
         {
             Zeppelin = true,
@@ -9174,7 +9168,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             SkipInZones = { 1453, 1439 },
             Zone = 2521,
-            _index = 924,
+            _index = 923,
         },
         {
             PickUp = { 94947 },
@@ -9183,7 +9177,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 259084,
             Faction = "Alliance",
             Zone = 1416,
-            _index = 925,
+            _index = 924,
         },
         {
             PickUp = { 94912 },
@@ -9192,14 +9186,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Alliance",
             Zone = 1416,
-            _index = 926,
+            _index = 925,
         },
         {
             Qpart = { [94947] = { 1 } },
             Coord = { x = 445.93, y = 450.0 },
             Faction = "Alliance",
             Zone = 1416,
-            _index = 927,
+            _index = 926,
         },
         {
             TakePortal = { mapID = 1453 },
@@ -9207,7 +9201,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             SkipInZones = { 1439 },
             Zone = 1416,
-            _index = 928,
+            _index = 927,
         },
         {
             Waypoint = 94947,
@@ -9216,7 +9210,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 1748,
             Faction = "Alliance",
             Zone = 1453,
-            _index = 929,
+            _index = 928,
         },
         {
             Waypoint = 94947,
@@ -9225,7 +9219,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 1748,
             Faction = "Alliance",
             Zone = 1453,
-            _index = 930,
+            _index = 929,
         },
         {
             Waypoint = 94947,
@@ -9234,7 +9228,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 1748,
             Faction = "Alliance",
             Zone = 1453,
-            _index = 931,
+            _index = 930,
         },
         {
             Waypoint = 94947,
@@ -9243,7 +9237,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 1748,
             Faction = "Alliance",
             Zone = 1453,
-            _index = 932,
+            _index = 931,
         },
         {
             Done = { 94912 },
@@ -9252,7 +9246,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Alliance",
             Zone = 1453,
-            _index = 933,
+            _index = 932,
         },
         {
             PickUp = { 94914 },
@@ -9261,7 +9255,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Alliance",
             Zone = 1453,
-            _index = 934,
+            _index = 933,
         },
         {
             BuyMerchant = { { quantity = 1, itemID = 6529, questID = 95065, targetStock = true } },
@@ -9273,7 +9267,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { count = 1, itemID = 6529, operator = "<" },
             Money = { operator = ">=", copper = 52 },
             Zone = 1453,
-            _index = 935,
+            _index = 934,
         },
         {
             BuyMerchant = { { quantity = 3, itemID = 6530, questID = 95065, targetStock = true } },
@@ -9285,7 +9279,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { count = 3, itemID = 6530, operator = "<" },
             Money = { operator = ">=", copper = 315 },
             Zone = 1453,
-            _index = 936,
+            _index = 935,
         },
         {
             BuyMerchant = { { itemID = 4470, quantity = 1, targetStock = true } },
@@ -9301,7 +9295,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Money = { operator = ">=", copper = 40 },
             Skill = { operator = "<", skill = "cooking", rank = 50 },
             Zone = 1453,
-            _index = 937,
+            _index = 936,
         },
         {
             BuyMerchant = { { itemID = 4471, quantity = 1, targetStock = true } },
@@ -9317,7 +9311,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Money = { operator = ">=", copper = 142 },
             Skill = { operator = "<", skill = "cooking", rank = 50 },
             Zone = 1453,
-            _index = 938,
+            _index = 937,
         },
         {
             Note = { "OPTIONAL_BUY_MISSING_QUEST_SUPPLIES_AUCTION_HOUSE" },
@@ -9328,7 +9322,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Alliance",
             Skill = { rank = 50, skill = "cooking", operator = "<" },
             Zone = 1453,
-            _index = 939,
+            _index = 938,
         },
         {
             Waypoint = 94947,
@@ -9337,7 +9331,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 1748,
             Faction = "Alliance",
             Zone = 1453,
-            _index = 940,
+            _index = 939,
         },
         {
             Waypoint = 94947,
@@ -9346,7 +9340,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 1748,
             Faction = "Alliance",
             Zone = 1453,
-            _index = 941,
+            _index = 940,
         },
         {
             Waypoint = 94947,
@@ -9355,7 +9349,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 1748,
             Faction = "Alliance",
             Zone = 1453,
-            _index = 942,
+            _index = 941,
         },
         {
             Waypoint = 94947,
@@ -9364,7 +9358,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 1748,
             Faction = "Alliance",
             Zone = 1453,
-            _index = 943,
+            _index = 942,
         },
         {
             Waypoint = 94947,
@@ -9373,7 +9367,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 1748,
             Faction = "Alliance",
             Zone = 1453,
-            _index = 944,
+            _index = 943,
         },
         {
             Waypoint = 94947,
@@ -9382,7 +9376,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 1748,
             Faction = "Alliance",
             Zone = 1453,
-            _index = 945,
+            _index = 944,
         },
         {
             Waypoint = 94947,
@@ -9391,7 +9385,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 1748,
             Faction = "Alliance",
             Zone = 1453,
-            _index = 946,
+            _index = 945,
         },
         {
             Waypoint = 94947,
@@ -9400,7 +9394,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 1748,
             Faction = "Alliance",
             Zone = 1453,
-            _index = 947,
+            _index = 946,
         },
         {
             Waypoint = 94947,
@@ -9409,7 +9403,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 1748,
             Faction = "Alliance",
             Zone = 1453,
-            _index = 948,
+            _index = 947,
         },
         {
             Waypoint = 94947,
@@ -9418,7 +9412,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 1748,
             Faction = "Alliance",
             Zone = 1453,
-            _index = 949,
+            _index = 948,
         },
         {
             Waypoint = 94947,
@@ -9427,7 +9421,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 1748,
             Faction = "Alliance",
             Zone = 1453,
-            _index = 950,
+            _index = 949,
         },
         {
             Waypoint = 94947,
@@ -9436,7 +9430,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 1748,
             Faction = "Alliance",
             Zone = 1453,
-            _index = 951,
+            _index = 950,
         },
         {
             Waypoint = 94947,
@@ -9445,7 +9439,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 1748,
             Faction = "Alliance",
             Zone = 1453,
-            _index = 952,
+            _index = 951,
         },
         {
             Done = { 94947 },
@@ -9453,7 +9447,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 1748,
             Faction = "Alliance",
             Zone = 1453,
-            _index = 953,
+            _index = 952,
         },
         {
             PickUp = { 93963, 98021 },
@@ -9462,7 +9456,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "DRUID", "MAGE", "ROGUE", "WARRIOR" },
             Faction = "Alliance",
             Zone = 1453,
-            _index = 954,
+            _index = 953,
         },
         {
             PickUp = { 93963 },
@@ -9471,7 +9465,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Alliance",
             Zone = 1453,
-            _index = 955,
+            _index = 954,
         },
         {
             PickUp = { 95065 },
@@ -9480,14 +9474,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Alliance",
             Zone = 1453,
-            _index = 956,
+            _index = 955,
         },
         {
             Qpart = { [95065] = { 1 } },
             NoArrow = true,
             Class = "HUNTER",
             Faction = "Alliance",
-            _index = 957,
+            _index = 956,
         },
         {
             Done = { 95065 },
@@ -9496,7 +9490,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Alliance",
             Zone = 1453,
-            _index = 958,
+            _index = 957,
         },
         {
             UseSpell = { spellID = 818, questID = 1141 },
@@ -9506,7 +9500,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { operator = ">=", count = 1, itemID = 4470 },
             Skill = { skill = "cooking", rank = 50, operator = "<" },
             SkipInZones = { 1439 },
-            _index = 959,
+            _index = 958,
         },
         {
             UseSpell = { spellID = 2550, questID = 1141 },
@@ -9516,7 +9510,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             ItemCount = { operator = ">=", count = 1, itemIDs = { 769, 2672 } },
             Skill = { skill = "cooking", rank = 50, operator = "<" },
             SkipInZones = { 1439 },
-            _index = 960,
+            _index = 959,
         },
         {
             Note = { "CRAFT_WAITING" },
@@ -9527,7 +9521,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "HUNTER",
             Faction = "Alliance",
             Zone = 1453,
-            _index = 961,
+            _index = 960,
         },
         {
             Done = { 93317 },
@@ -9537,7 +9531,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 93317,
             IsQuestReadyForTurnIn = 93317,
             Zone = 2521,
-            _index = 962,
+            _index = 961,
         },
         {
             Done = { 94003 },
@@ -9546,7 +9540,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "WARRIOR",
             Faction = "Horde",
             Zone = 2521,
-            _index = 963,
+            _index = 962,
         },
         {
             LearnSkill = { spellID = 3127 },
@@ -9558,7 +9552,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 93737,
             MinLevel = 6,
             Zone = 2521,
-            _index = 964,
+            _index = 963,
         },
         {
             LearnSkill = { spellIDs = { 2687, 6546 } },
@@ -9570,7 +9564,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 93737,
             MinLevel = 10,
             Zone = 2521,
-            _index = 965,
+            _index = 964,
         },
         {
             LearnSkill = { spellIDs = { 5242, 7384, 72 } },
@@ -9584,7 +9578,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 12,
             Money = { copper = 3000, operator = ">=" },
             Zone = 2521,
-            _index = 966,
+            _index = 965,
         },
         {
             LearnSkill = { spellIDs = { 1160, 6572, 1310185 } },
@@ -9598,7 +9592,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 14,
             Money = { copper = 4500, operator = ">=" },
             Zone = 2521,
-            _index = 967,
+            _index = 966,
         },
         {
             LearnSkill = { spellID = 1757 },
@@ -9609,7 +9603,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 93737,
             MinLevel = 6,
             Zone = 2521,
-            _index = 968,
+            _index = 967,
         },
         {
             LearnSkill = { spellID = 1776 },
@@ -9621,7 +9615,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 93737,
             MinLevel = 6,
             Zone = 2521,
-            _index = 969,
+            _index = 968,
         },
         {
             LearnSkill = { spellIDs = { 5277, 6760 } },
@@ -9632,7 +9626,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 93737,
             MinLevel = 8,
             Zone = 2521,
-            _index = 970,
+            _index = 969,
         },
         {
             LearnSkill = { spellIDs = { 674, 2983, 5171, 6770 } },
@@ -9644,7 +9638,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 93737,
             MinLevel = 10,
             Zone = 2521,
-            _index = 971,
+            _index = 970,
         },
         {
             LearnSkill = { spellIDs = { 1766, 3127 } },
@@ -9657,7 +9651,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 12,
             Money = { operator = ">=", copper = 1600 },
             Zone = 2521,
-            _index = 972,
+            _index = 971,
         },
         {
             Done = { 93737 },
@@ -9667,7 +9661,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 93737,
             IsQuestReadyForTurnIn = 93737,
             Zone = 2521,
-            _index = 973,
+            _index = 972,
         },
         {
             PickUp = { 93738 },
@@ -9676,7 +9670,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             IsQuestCompleted = 93737,
             Zone = 2521,
-            _index = 974,
+            _index = 973,
         },
         {
             SellItems = { questID = 95350, junk = true, npcID = 257422 },
@@ -9687,7 +9681,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             OnlyInZones = { 2521 },
             Zone = 2521,
-            _index = 975,
+            _index = 974,
         },
         {
             Done = { 93736 },
@@ -9697,7 +9691,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 93736,
             IsQuestReadyForTurnIn = 93736,
             Zone = 2521,
-            _index = 976,
+            _index = 975,
         },
         {
             Done = { 93738 },
@@ -9708,7 +9702,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 93738,
             IsQuestReadyForTurnIn = 93738,
             Zone = 2521,
-            _index = 977,
+            _index = 976,
         },
         {
             Done = { 92708 },
@@ -9716,12 +9710,12 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 251968,
             Faction = "Horde",
             Zone = 2521,
-            _index = 978,
+            _index = 977,
         },
         {
             LeaveQuests = { 92708 },
             Faction = "Horde",
-            _index = 979,
+            _index = 978,
         },
         {
             Zeppelin = true,
@@ -9731,7 +9725,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1456, 1454, 1411, 1413, 1420, 1458, 1421 },
             Zone = 2521,
-            _index = 980,
+            _index = 979,
         },
         {
             PickUp = { 94911 },
@@ -9740,7 +9734,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Horde",
             Zone = 1412,
-            _index = 981,
+            _index = 980,
         },
         {
             PickUp = { 95350 },
@@ -9748,7 +9742,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 259119,
             Faction = "Horde",
             Zone = 1412,
-            _index = 982,
+            _index = 981,
         },
         {
             Waypoint = 94911,
@@ -9759,7 +9753,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1454, 1411, 1413, 1420, 1458, 1421 },
             Zone = 1456,
-            _index = 983,
+            _index = 982,
         },
         {
             Waypoint = 94911,
@@ -9770,7 +9764,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1454, 1411, 1413, 1420, 1458, 1421 },
             Zone = 1456,
-            _index = 984,
+            _index = 983,
         },
         {
             Waypoint = 94911,
@@ -9781,7 +9775,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1454, 1411, 1413, 1420, 1458, 1421 },
             Zone = 1456,
-            _index = 985,
+            _index = 984,
         },
         {
             Waypoint = 94911,
@@ -9792,7 +9786,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1454, 1411, 1413, 1420, 1458, 1421 },
             Zone = 1456,
-            _index = 986,
+            _index = 985,
         },
         {
             Waypoint = 94911,
@@ -9803,7 +9797,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1454, 1411, 1413, 1420, 1458, 1421 },
             Zone = 1456,
-            _index = 987,
+            _index = 986,
         },
         {
             Waypoint = 94911,
@@ -9814,7 +9808,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1454, 1411, 1413, 1420, 1458, 1421 },
             Zone = 1456,
-            _index = 988,
+            _index = 987,
         },
         {
             Waypoint = 94911,
@@ -9825,7 +9819,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1454, 1411, 1413, 1420, 1458, 1421 },
             Zone = 1456,
-            _index = 989,
+            _index = 988,
         },
         {
             Waypoint = 94911,
@@ -9836,7 +9830,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1454, 1411, 1413, 1420, 1458, 1421 },
             Zone = 1456,
-            _index = 990,
+            _index = 989,
         },
         {
             Done = { 94911 },
@@ -9845,7 +9839,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Horde",
             Zone = 1456,
-            _index = 991,
+            _index = 990,
         },
         {
             PickUp = { 94913 },
@@ -9854,7 +9848,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = "DRUID",
             Faction = "Horde",
             Zone = 1456,
-            _index = 992,
+            _index = 991,
         },
         {
             LearnSkill = { spellIDs = { 774, 8921 } },
@@ -9865,7 +9859,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 97246,
             MinLevel = 4,
             Zone = 1456,
-            _index = 993,
+            _index = 992,
         },
         {
             LearnSkill = { spellIDs = { 467, 5177 } },
@@ -9876,7 +9870,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 97246,
             MinLevel = 6,
             Zone = 1456,
-            _index = 994,
+            _index = 993,
         },
         {
             LearnSkill = { spellIDs = { 339, 5186 } },
@@ -9887,7 +9881,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 97246,
             MinLevel = 8,
             Zone = 1456,
-            _index = 995,
+            _index = 994,
         },
         {
             LearnSkill = { spellIDs = { 1058, 5232, 8924, 16689 } },
@@ -9898,7 +9892,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 97246,
             MinLevel = 10,
             Zone = 1456,
-            _index = 996,
+            _index = 995,
         },
         {
             LearnSkill = { spellID = 5229 },
@@ -9909,7 +9903,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 97246,
             MinLevel = 12,
             Zone = 1456,
-            _index = 997,
+            _index = 996,
         },
         {
             LearnSkill = { spellID = 8936 },
@@ -9921,7 +9915,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 12,
             SkipForLvl = 14,
             Zone = 1456,
-            _index = 998,
+            _index = 997,
         },
         {
             LearnSkill = { spellID = 5178 },
@@ -9932,7 +9926,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 97246,
             MinLevel = 14,
             Zone = 1456,
-            _index = 999,
+            _index = 998,
         },
         {
             Waypoint = 97246,
@@ -9941,7 +9935,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" },
             Faction = "Horde",
             Zone = 1456,
-            _index = 1000,
+            _index = 999,
         },
         {
             Waypoint = 97246,
@@ -9950,7 +9944,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" },
             Faction = "Horde",
             Zone = 1456,
-            _index = 1001,
+            _index = 1000,
         },
         {
             Waypoint = 97246,
@@ -9959,7 +9953,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" },
             Faction = "Horde",
             Zone = 1456,
-            _index = 1002,
+            _index = 1001,
         },
         {
             Waypoint = 97246,
@@ -9968,7 +9962,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" },
             Faction = "Horde",
             Zone = 1456,
-            _index = 1003,
+            _index = 1002,
         },
         {
             UseFlightPath = 95350,
@@ -9979,7 +9973,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1411, 1413, 1420, 1458, 1421 },
             Zone = 1456,
-            _index = 1004,
+            _index = 1003,
         },
         {
             SetHS = 97246,
@@ -9987,7 +9981,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 6929,
             Faction = "Horde",
             Zone = 1454,
-            _index = 1005,
+            _index = 1004,
         },
         {
             Waypoint = 97246,
@@ -9996,7 +9990,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 268701,
             Faction = "Horde",
             Zone = 1454,
-            _index = 1006,
+            _index = 1005,
         },
         {
             PickUp = { 97246 },
@@ -10005,7 +9999,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 268701,
             Faction = "Horde",
             Zone = 1454,
-            _index = 1007,
+            _index = 1006,
         },
         {
             Done = { 97246 },
@@ -10013,7 +10007,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 3368,
             Faction = "Horde",
             Zone = 1454,
-            _index = 1008,
+            _index = 1007,
         },
         {
             PickUp = { 97249 },
@@ -10021,7 +10015,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 3368,
             Faction = "Horde",
             Zone = 1454,
-            _index = 1009,
+            _index = 1008,
         },
         {
             PickUp = { 97242 },
@@ -10029,7 +10023,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 3348,
             Faction = "Horde",
             Zone = 1454,
-            _index = 1010,
+            _index = 1009,
         },
         {
             Waypoint = 97242,
@@ -10037,7 +10031,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 15.0,
             Faction = "Horde",
             Zone = 1454,
-            _index = 1011,
+            _index = 1010,
         },
         {
             Waypoint = 97242,
@@ -10045,7 +10039,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 15.0,
             Faction = "Horde",
             Zone = 1454,
-            _index = 1012,
+            _index = 1011,
         },
         {
             Waypoint = 97242,
@@ -10053,7 +10047,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 15.0,
             Faction = "Horde",
             Zone = 1454,
-            _index = 1013,
+            _index = 1012,
         },
         {
             Waypoint = 97242,
@@ -10061,7 +10055,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 15.0,
             Faction = "Horde",
             Zone = 1454,
-            _index = 1014,
+            _index = 1013,
         },
         {
             Qpart = { [97242] = { 1, 2 } },
@@ -10069,7 +10063,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Range = 30,
             Faction = "Horde",
             Zone = 1454,
-            _index = 1015,
+            _index = 1014,
         },
         {
             LearnSkill = { spellIDs = { 1978, 13163 } },
@@ -10080,7 +10074,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 97242,
             MinLevel = 4,
             Zone = 1454,
-            _index = 1016,
+            _index = 1015,
         },
         {
             LearnSkill = { spellIDs = { 1130, 3044 } },
@@ -10091,7 +10085,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 97242,
             MinLevel = 6,
             Zone = 1454,
-            _index = 1017,
+            _index = 1016,
         },
         {
             LearnSkill = { spellIDs = { 3127, 5116, 14260 } },
@@ -10102,7 +10096,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 97242,
             MinLevel = 8,
             Zone = 1454,
-            _index = 1018,
+            _index = 1017,
         },
         {
             LearnSkill = { spellIDs = { 13165, 13549 } },
@@ -10113,7 +10107,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 97242,
             MinLevel = 10,
             Zone = 1454,
-            _index = 1019,
+            _index = 1018,
         },
         {
             LearnSkill = { spellID = 14281 },
@@ -10124,7 +10118,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 97242,
             MinLevel = 12,
             Zone = 1454,
-            _index = 1020,
+            _index = 1019,
         },
         {
             LearnSkill = { spellID = 13795 },
@@ -10135,7 +10129,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 97242,
             MinLevel = 12,
             Zone = 1454,
-            _index = 1021,
+            _index = 1020,
         },
         {
             LearnSkill = { spellID = 24556 },
@@ -10146,7 +10140,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 97242,
             MinLevel = 12,
             Zone = 1454,
-            _index = 1022,
+            _index = 1021,
         },
         {
             LearnSkill = { spellID = 3127 },
@@ -10157,7 +10151,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 97242,
             MinLevel = 6,
             Zone = 1454,
-            _index = 1023,
+            _index = 1022,
         },
         {
             LearnSkill = { spellIDs = { 2687, 6546 } },
@@ -10168,7 +10162,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 97242,
             MinLevel = 10,
             Zone = 1454,
-            _index = 1024,
+            _index = 1023,
         },
         {
             LearnSkill = { spellIDs = { 6572, 1310185 } },
@@ -10180,7 +10174,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 97242,
             MinLevel = 14,
             Zone = 1454,
-            _index = 1025,
+            _index = 1024,
         },
         {
             LearnSkill = { spellIDs = { 72, 5242 } },
@@ -10192,7 +10186,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 97242,
             MinLevel = 12,
             Zone = 1454,
-            _index = 1026,
+            _index = 1025,
         },
         {
             LearnSkill = { spellID = 7384 },
@@ -10204,7 +10198,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 12,
             SkipForLvl = 14,
             Zone = 1454,
-            _index = 1027,
+            _index = 1026,
         },
         {
             LearnSkill = { spellID = 1160 },
@@ -10215,7 +10209,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 97242,
             MinLevel = 14,
             Zone = 1454,
-            _index = 1028,
+            _index = 1027,
         },
         {
             Done = { 97242 },
@@ -10223,7 +10217,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 3348,
             Faction = "Horde",
             Zone = 1454,
-            _index = 1029,
+            _index = 1028,
         },
         {
             PickUp = { 97275 },
@@ -10232,7 +10226,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 3347,
             Faction = "Horde",
             Zone = 1454,
-            _index = 1030,
+            _index = 1029,
         },
         {
             Done = { 97275 },
@@ -10240,7 +10234,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 11046,
             Faction = "Horde",
             Zone = 1454,
-            _index = 1031,
+            _index = 1030,
         },
         {
             Done = { 97249 },
@@ -10248,7 +10242,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 268682,
             Faction = "Horde",
             Zone = 1454,
-            _index = 1032,
+            _index = 1031,
         },
         {
             PickUp = { 97326 },
@@ -10256,7 +10250,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 268684,
             Faction = "Horde",
             Zone = 1454,
-            _index = 1033,
+            _index = 1032,
         },
         {
             Qpart = { [97326] = { 1 } },
@@ -10264,7 +10258,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Coord = { x = -4293.6, y = 1949.9 },
             Faction = "Horde",
             Zone = 1454,
-            _index = 1034,
+            _index = 1033,
         },
         {
             Done = { 97326 },
@@ -10272,7 +10266,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 268684,
             Faction = "Horde",
             Zone = 1454,
-            _index = 1035,
+            _index = 1034,
         },
         {
             Done = { 95350 },
@@ -10280,7 +10274,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 4949,
             Faction = "Horde",
             Zone = 1454,
-            _index = 1036,
+            _index = 1035,
         },
         {
             PickUp = { 98024 },
@@ -10288,7 +10282,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             RaidIcon = 4949,
             Faction = "Horde",
             Zone = 1454,
-            _index = 1037,
+            _index = 1036,
         },
         {
             PickUp = { 1061 },
@@ -10297,7 +10291,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             MinLevel = 13,
             Zone = 1454,
-            _index = 1038,
+            _index = 1037,
         },
         {
             LearnSkill = { spellID = 408341 },
@@ -10309,7 +10303,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 12,
             SkipForLvl = 14,
             Zone = 1454,
-            _index = 1039,
+            _index = 1038,
         },
         {
             LearnSkill = { spellID = 8045 },
@@ -10320,7 +10314,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 96895,
             MinLevel = 14,
             Zone = 1454,
-            _index = 1040,
+            _index = 1039,
         },
         {
             LearnSkill = { spellID = 1757 },
@@ -10331,7 +10325,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 96895,
             MinLevel = 6,
             Zone = 1454,
-            _index = 1041,
+            _index = 1040,
         },
         {
             LearnSkill = { spellID = 1776 },
@@ -10343,7 +10337,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 96895,
             MinLevel = 6,
             Zone = 1454,
-            _index = 1042,
+            _index = 1041,
         },
         {
             LearnSkill = { spellIDs = { 5277, 6760 } },
@@ -10354,7 +10348,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 96895,
             MinLevel = 8,
             Zone = 1454,
-            _index = 1043,
+            _index = 1042,
         },
         {
             LearnSkill = { spellIDs = { 674, 2983, 5171, 6770 } },
@@ -10366,7 +10360,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 96895,
             MinLevel = 10,
             Zone = 1454,
-            _index = 1044,
+            _index = 1043,
         },
         {
             LearnSkill = { spellID = 3127 },
@@ -10377,7 +10371,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 96895,
             MinLevel = 12,
             Zone = 1454,
-            _index = 1045,
+            _index = 1044,
         },
         {
             LearnSkill = { spellID = 1766 },
@@ -10389,7 +10383,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             MinLevel = 12,
             SkipForLvl = 14,
             Zone = 1454,
-            _index = 1046,
+            _index = 1045,
         },
         {
             LearnSkill = { spellID = 1758 },
@@ -10400,7 +10394,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestUncompleted = 96895,
             MinLevel = 14,
             Zone = 1454,
-            _index = 1047,
+            _index = 1046,
         },
         {
             Waypoint = 96895,
@@ -10410,7 +10404,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1413, 1420, 1458, 1421 },
             Zone = 1454,
-            _index = 1048,
+            _index = 1047,
         },
         {
             Waypoint = 96895,
@@ -10420,7 +10414,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1413, 1420, 1458, 1421 },
             Zone = 1454,
-            _index = 1049,
+            _index = 1048,
         },
         {
             Waypoint = 96895,
@@ -10430,7 +10424,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1413, 1420, 1458, 1421 },
             Zone = 1454,
-            _index = 1050,
+            _index = 1049,
         },
         {
             Waypoint = 96895,
@@ -10440,7 +10434,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1413, 1420, 1458, 1421 },
             Zone = 1411,
-            _index = 1051,
+            _index = 1050,
         },
         {
             Waypoint = 840,
@@ -10451,7 +10445,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1413 },
             Zone = 1411,
-            _index = 1052,
+            _index = 1051,
         },
         {
             PickUp = { 840 },
@@ -10460,7 +10454,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "HUNTER", "SHAMAN" },
             Faction = "Horde",
             Zone = 1411,
-            _index = 1053,
+            _index = 1052,
         },
         {
             Waypoint = 842,
@@ -10470,7 +10464,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "HUNTER", "SHAMAN" },
             Faction = "Horde",
             Zone = 1413,
-            _index = 1054,
+            _index = 1053,
         },
         {
             Done = { 840 },
@@ -10479,7 +10473,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "HUNTER", "SHAMAN" },
             Faction = "Horde",
             Zone = 1413,
-            _index = 1055,
+            _index = 1054,
         },
         {
             PickUp = { 842 },
@@ -10488,7 +10482,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "HUNTER", "SHAMAN" },
             Faction = "Horde",
             Zone = 1413,
-            _index = 1056,
+            _index = 1055,
         },
         {
             Waypoint = 96895,
@@ -10499,7 +10493,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1420, 1458, 1421 },
             Zone = 1411,
-            _index = 1057,
+            _index = 1056,
         },
         {
             Waypoint = 96895,
@@ -10510,7 +10504,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1420, 1458, 1421 },
             Zone = 1411,
-            _index = 1058,
+            _index = 1057,
         },
         {
             Zeppelin = true,
@@ -10520,7 +10514,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "DRUID", "ROGUE", "WARRIOR" },
             Faction = "Horde",
             Zone = 1411,
-            _index = 1059,
+            _index = 1058,
         },
         {
             Waypoint = 96895,
@@ -10531,7 +10525,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1421 },
             Zone = 1420,
-            _index = 1060,
+            _index = 1059,
         },
         {
             PickUp = { 96895 },
@@ -10541,7 +10535,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipForLvl = 13,
             Zone = 1420,
-            _index = 1061,
+            _index = 1060,
         },
         {
             PickUp = { 445 },
@@ -10551,7 +10545,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipForLvl = 13,
             Zone = 1420,
-            _index = 1062,
+            _index = 1061,
         },
         {
             Done = { 96895 },
@@ -10562,7 +10556,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 96895,
             IsQuestReadyForTurnIn = 96895,
             Zone = 1420,
-            _index = 1063,
+            _index = 1062,
         },
         {
             PickUp = { 96897, 96898 },
@@ -10572,7 +10566,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipForLvl = 13,
             Zone = 1420,
-            _index = 1064,
+            _index = 1063,
         },
         {
             Qpart = { [96897] = { 2, 1 } },
@@ -10584,7 +10578,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             IsQuestOnQuest = 96897,
             Zone = 1420,
-            _index = 1065,
+            _index = 1064,
         },
         {
             Qpart = { [96898] = { 1 } },
@@ -10595,7 +10589,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             IsQuestOnQuest = 96898,
             Zone = 1420,
-            _index = 1066,
+            _index = 1065,
         },
         {
             Done = { 96897 },
@@ -10606,7 +10600,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 96897,
             IsQuestReadyForTurnIn = 96897,
             Zone = 1420,
-            _index = 1067,
+            _index = 1066,
         },
         {
             Done = { 96898 },
@@ -10617,7 +10611,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             IsQuestOnQuest = 96898,
             IsQuestReadyForTurnIn = 96898,
             Zone = 1420,
-            _index = 1068,
+            _index = 1067,
         },
         {
             Waypoint = 435,
@@ -10629,7 +10623,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 1069,
+            _index = 1068,
         },
         {
             Waypoint = 435,
@@ -10641,7 +10635,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 1070,
+            _index = 1069,
         },
         {
             Waypoint = 435,
@@ -10653,7 +10647,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 1071,
+            _index = 1070,
         },
         {
             Waypoint = 435,
@@ -10665,7 +10659,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 1072,
+            _index = 1071,
         },
         {
             Waypoint = 435,
@@ -10677,7 +10671,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 1073,
+            _index = 1072,
         },
         {
             Waypoint = 435,
@@ -10689,7 +10683,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 1074,
+            _index = 1073,
         },
         {
             GetFP = 11,
@@ -10698,7 +10692,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Class = { "DRUID", "ROGUE", "WARRIOR" },
             Faction = "Horde",
             Zone = 1458,
-            _index = 1075,
+            _index = 1074,
         },
         {
             Note = { "OPTIONAL_BUY_MISSING_QUEST_SUPPLIES_AUCTION_HOUSE" },
@@ -10709,7 +10703,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             OnlyInZones = { 1458 },
             Zone = 1458,
-            _index = 1076,
+            _index = 1075,
         },
         {
             Waypoint = 435,
@@ -10720,7 +10714,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 1077,
+            _index = 1076,
         },
         {
             Waypoint = 435,
@@ -10731,7 +10725,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 1078,
+            _index = 1077,
         },
         {
             Waypoint = 435,
@@ -10742,7 +10736,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 1079,
+            _index = 1078,
         },
         {
             Waypoint = 435,
@@ -10753,7 +10747,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 1080,
+            _index = 1079,
         },
         {
             Waypoint = 435,
@@ -10764,7 +10758,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 1081,
+            _index = 1080,
         },
         {
             Waypoint = 435,
@@ -10775,7 +10769,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 1082,
+            _index = 1081,
         },
         {
             Waypoint = 435,
@@ -10786,7 +10780,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 1083,
+            _index = 1082,
         },
         {
             Waypoint = 435,
@@ -10797,7 +10791,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 1084,
+            _index = 1083,
         },
         {
             Waypoint = 435,
@@ -10808,7 +10802,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1421 },
             Zone = 1420,
-            _index = 1085,
+            _index = 1084,
         },
         {
             Waypoint = 435,
@@ -10819,16 +10813,17 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             Faction = "Horde",
             SkipInZones = { 1421 },
             Zone = 1420,
-            _index = 1086,
+            _index = 1085,
         },
         {
             RouteCompleted = true,
-            _index = 1087,
+            _index = 1086,
         },
     },
 }
 
 APR.RouteQuestStepList["Forever-Alliance-Horde-Zephras-Isle"] = {
+    prefab = { [APR.PREFAB_TYPES.StartingZone] = 1 },
     label = L["Forever - Alliance-Horde - Zephras Isle"] .. " (10-13)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
