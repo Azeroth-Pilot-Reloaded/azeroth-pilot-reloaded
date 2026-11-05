@@ -36,6 +36,7 @@ end
 local frame = open()
 assert(frame == APRSelectionPopup and frame:IsShown() and frame.backdropColor[4] == 1)
 assert(frame:GetHeight() < UIParent:GetHeight() and frame.close.icon)
+assert(not frame.scroll.ScrollBar:IsShown(), "Short choice lists do not show an empty scrollbar")
 local disabled = frame.list.active[2].button
 assert(not disabled:IsEnabled())
 disabled.scripts.OnClick()
@@ -63,6 +64,7 @@ UIParent:SetSize(800, 480)
 open(many)
 assert(frame:GetHeight() <= UIParent:GetHeight() - 38)
 assert(frame.list.height > frame.scroll:GetHeight())
+assert(frame.scroll.ScrollBar:IsShown(), "Overflowing choices retain their scrollbar")
 frame.list:ScrollToIndex(100)
 local row = frame.list.active[100]
 assert(row and row.item.option.key == 100)
@@ -93,6 +95,51 @@ confirm(); frame.acceptButton.scripts.OnClick(); frame:Hide()
 assert(accepted == 1 and declined == 3 and not frame.onAccept)
 open()
 assert(not frame.acceptButton:IsShown() and frame.body:IsShown() and #frame.list.items == 2)
+frame:Hide()
+-- Structured route warnings stay readable and scrollable without turning text into actions.
+local warningDetails = {"Level >= 20 (Current: 1)", "Class: Mage, Priest, Warlock"}
+local structuredAccepted, structuredCancelled = 0, 0
+local function warn(details)
+    return APR.UI:ShowConfirmationDialog({title = "Invented route", description = "Continue?", details = details or warningDetails,
+        acceptText = "Add route"}, function() structuredAccepted = structuredAccepted + 1 end,
+        function() structuredCancelled = structuredCancelled + 1 end)
+end
+UIParent:SetSize(380, 320)
+frame = warn()
+assert(frame.title:GetText() == "Invented route" and frame.title.role == "base"
+    and frame.description:GetText() == "Continue?" and frame.acceptButton:GetFontString():GetText() == "Add route")
+assert(frame.body:IsShown() and frame:GetHeight() <= UIParent:GetHeight() - 40)
+assert(not frame.scroll.ScrollBar:IsShown(), "Recommendations that fit have no scrollbar")
+local detail = frame.list.active[1]
+assert(detail.detail:GetText() == warningDetails[1] and detail.detail:IsShown() and detail.marker:IsShown()
+    and not detail.button:IsShown(), "Warning rows are ordinary body text with a separate marker")
+local longDetails = {}
+for index = 1, 40 do longDetails[index] = string.rep("Long translated recommendation ", 8) .. index end
+warn(longDetails)
+assert(frame:GetHeight() <= UIParent:GetHeight() - 40 and frame.list.height > frame.scroll:GetHeight())
+assert(frame.scroll.ScrollBar:IsShown(), "Long recommendations remain visibly scrollable")
+frame.list:ScrollToIndex(40)
+assert(frame.list.active[40].detail:GetText() == longDetails[40], "The last recommendation remains reachable")
+-- A delayed native event or viewport resize must use the new content capacity.
+local oldHeight = frame.scroll:GetHeight()
+frame.scroll:SetHeight(frame.list.height)
+frame.scroll.scripts.OnSizeChanged(frame.scroll)
+assert(not frame.scroll.ScrollBar:IsShown(), "An exact fit hides the scrollbar after resizing")
+frame.scroll.ScrollBar:Show()
+frame.scroll.scripts.OnScrollRangeChanged(frame.scroll, 0, 0)
+assert(not frame.scroll.ScrollBar:IsShown(), "A native range update cannot resurrect an empty scrollbar")
+frame.scroll:SetHeight(oldHeight)
+frame.scroll.scripts.OnSizeChanged(frame.scroll)
+assert(frame.scroll.ScrollBar:IsShown(), "Shrinking the viewport restores scrolling")
+frame.acceptButton.scripts.OnClick()
+assert(structuredAccepted == 1 and structuredCancelled == 1, "Replacement cancels once and acceptance fires once")
+frame = confirm()
+assert(frame.title.role == "accent" and not frame.body:IsShown()
+    and frame.acceptButton:GetFontString():GetText() == ACCEPT, "Plain confirmations clear structured labels and styles")
+frame:Hide()
+open()
+assert(frame.list.active[1].button:IsShown() and not frame.list.active[1].detail:IsShown(),
+    "Recycled choice rows clear the read-only warning presentation")
 frame:Hide()
 -- Suggestions remain above settings even when the workspace is raised again.
 local settings = APR.UI:Window("APRWorkspaceTest", "Settings", 800, 600)

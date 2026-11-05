@@ -59,7 +59,8 @@ assert(maps ~= nil and APRData.player.Later == 2 and #APRCustomPath.player == 1,
     "An advisory level resumes the queued route without resetting progress")
 soloAccessLevel = 25
 APR.ClassName, APR.ClassId = "MAGE", 8
-assert(APR:GetRouteVisibility("Later") == "hidden", "Class eligibility remains enforced")
+assert(APR:GetRouteVisibility("Later") == "visible" and APR:CanStartRoute("Later"),
+    "Forever class recommendations allow manual entry")
 APR.ClassName, APR.ClassId, APR.Faction = "WARRIOR", 1, "Horde"
 assert(APR:GetRouteVisibility("Later") == "hidden", "Faction eligibility remains enforced")
 APR.Faction = "Alliance"

@@ -641,15 +641,29 @@ local function RouteMatchesDisplayName(routeData, displayName)
     return false
 end--[[APR_DIAG]]; RouteMatchesDisplayName = APRTrace("APR-Core/utils/RouteUtils.lua:624:RouteMatchesDisplayName#30", RouteMatchesDisplayName)--[[/APR_DIAG]]
 
+-- Optional character state, added lazily by explicit Forever selection. Existing
+-- saved paths without this map keep their recommended-variant resolution.
+function APR:GetSavedRouteChoice(label, requireMetadata)
+    local player = APRData and APRData[self.PlayerID]
+    local choices = player and player.RouteChoices
+    local key = type(choices) == "table" and choices[label]
+    if type(key) ~= "string" then return nil end
+    local data = self:GetRouteData(key)
+    if data and RouteMatchesDisplayName(data, label)
+        and (not requireMetadata or (data.expansion and data.label)) then return key end
+end--[[APR_DIAG]]; APR.GetSavedRouteChoice = APRTrace("APR-Core/utils/RouteUtils.lua:646:APR:GetSavedRouteChoice#31", APR.GetSavedRouteChoice)--[[/APR_DIAG]]
+
 -- A display name usually has one declaration. Keep the lexical preference
 -- without sorting the whole candidate list, and let startup callers budget the
 -- catalogue scan itself rather than only yielding after a complete lookup.
 local function LookupCandidateIsCurrent(catalogue, key, definition, displayName, requireMetadata)
     return catalogue[key] == definition and RouteMatchesDisplayName(definition, displayName)
         and (not requireMetadata or (definition.expansion and definition.label))
-end--[[APR_DIAG]]; LookupCandidateIsCurrent = APRTrace("APR-Core/utils/RouteUtils.lua:647:LookupCandidateIsCurrent#31", LookupCandidateIsCurrent)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; LookupCandidateIsCurrent = APRTrace("APR-Core/utils/RouteUtils.lua:659:LookupCandidateIsCurrent#32", LookupCandidateIsCurrent)--[[/APR_DIAG]]
 
 local function FindRouteKeyForDisplayName(self, displayName, requireMetadata, checkpoint)
+    local chosen = self:GetSavedRouteChoice(displayName, requireMetadata)
+    if chosen then return chosen end
     local catalogue, revision = self.RouteQuestStepList, self._routeLookupRevision
     local first, firstDefinition, matches, definitions
     for routeKey, routeData in pairs(catalogue or {}) do
@@ -673,6 +687,25 @@ local function FindRouteKeyForDisplayName(self, displayName, requireMetadata, ch
     end
     if not first then return nil end
     if not LookupCandidateIsCurrent(catalogue, first, firstDefinition, displayName, requireMetadata) then return nil, true end
+    -- Old paths have labels only. Preserve their previous suitable variant when
+    -- relaxed Forever visibility makes several declarations selectable at once.
+    if matches and self.UsesRouteCharacterAdvice and self:UsesRouteCharacterAdvice(first, firstDefinition) then
+        local recommended, definition
+        for index, key in ipairs(matches) do
+            if not LookupCandidateIsCurrent(catalogue, key, definitions[index], displayName, requireMetadata) then return nil, true end
+            if (not recommended or key < recommended) and self:GetRouteVisibility(key, true) ~= "hidden" then
+                recommended, definition = key, definitions[index]
+            end
+            if checkpoint then
+                checkpoint()
+                if self.RouteQuestStepList ~= catalogue or self._routeLookupRevision ~= revision then return nil, true end
+            end
+        end
+        if recommended then
+            if not LookupCandidateIsCurrent(catalogue, recommended, definition, displayName, requireMetadata) then return nil, true end
+            return recommended
+        end
+    end
     -- Most labels are unique, or their first variant is available. Avoid
     -- evaluating every variant's dynamic predicates in that common case.
     if self:GetRouteVisibility(first) ~= "hidden" then return first end
@@ -692,7 +725,7 @@ local function FindRouteKeyForDisplayName(self, displayName, requireMetadata, ch
         or (visible and not LookupCandidateIsCurrent(catalogue, visible, visibleDefinition, displayName, requireMetadata)) then return nil, true end
     if checkpoint and visible and self:GetRouteVisibility(visible) == "hidden" then return nil, true end
     return visible or first
-end--[[APR_DIAG]]; FindRouteKeyForDisplayName = APRTrace("APR-Core/utils/RouteUtils.lua:652:FindRouteKeyForDisplayName#32", FindRouteKeyForDisplayName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; FindRouteKeyForDisplayName = APRTrace("APR-Core/utils/RouteUtils.lua:664:FindRouteKeyForDisplayName#33", FindRouteKeyForDisplayName)--[[/APR_DIAG]]
 
 --- Get Route zone mapID and name
 ---@return Array<number> routeZoneMapIDs MapIDs declared by the route
@@ -715,7 +748,7 @@ function APR:GetRouteMapIDsAndName(targetedRoute, checkpoint)
                 seenMapIDs[value] = true
                 tinsert(routeMapIDs, value)
             end
-        end--[[APR_DIAG]]; AddMapID = APRTrace("APR-Core/utils/RouteUtils.lua:713:AddMapID#35", AddMapID)--[[/APR_DIAG]]
+        end--[[APR_DIAG]]; AddMapID = APRTrace("APR-Core/utils/RouteUtils.lua:746:AddMapID#36", AddMapID)--[[/APR_DIAG]]
 
         AddMapID(mapID)
         local conditionZones = routeData.conditions and routeData.conditions.Zones or nil
@@ -726,7 +759,7 @@ function APR:GetRouteMapIDsAndName(targetedRoute, checkpoint)
         end
 
         return routeMapIDs, mapID or 0, routeFileName, expansion
-    end--[[APR_DIAG]]; BuildRouteResult = APRTrace("APR-Core/utils/RouteUtils.lua:707:BuildRouteResult#34", BuildRouteResult)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; BuildRouteResult = APRTrace("APR-Core/utils/RouteUtils.lua:740:BuildRouteResult#35", BuildRouteResult)--[[/APR_DIAG]]
 
     -- Fast path: route key provided directly.
     local directRouteData = self.RouteQuestStepList[targetedRoute]
@@ -739,7 +772,7 @@ function APR:GetRouteMapIDsAndName(targetedRoute, checkpoint)
     if routeKey then return BuildRouteResult(routeKey, self.RouteQuestStepList[routeKey]) end
 
     return nil, 0, '', ''
-end--[[APR_DIAG]]; APR.GetRouteMapIDsAndName = APRTrace("APR-Core/utils/RouteUtils.lua:702:APR:GetRouteMapIDsAndName#33", APR.GetRouteMapIDsAndName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetRouteMapIDsAndName = APRTrace("APR-Core/utils/RouteUtils.lua:735:APR:GetRouteMapIDsAndName#34", APR.GetRouteMapIDsAndName)--[[/APR_DIAG]]
 
 --- Get Current Route zone mapID and name
 ---@return Array<number> routeZoneMapIDs MapIDs declared by the route
@@ -827,17 +860,22 @@ function APR:GetCurrentRouteMapIDsAndName()
     local routeData = self:GetRouteData(routeFileName)
     if currentRouteIndex and routeData and routeData.label and currentRouteName ~= routeData.label then
         customPath[currentRouteIndex] = routeData.label
+        local player = APRData and APRData[self.PlayerID]
+        local choices = player and player.RouteChoices
+        if type(choices) == "table" and choices[currentRouteName] == routeFileName then
+            choices[routeData.label] = routeFileName
+        end
         self:Debug("APR:GetCurrentRouteMapIDsAndName - migrated route label", currentRouteName, routeData.label)
     end
 
     return routeZoneMapIDs, mapID, routeFileName, expansion
-end--[[APR_DIAG]]; APR.GetCurrentRouteMapIDsAndName = APRTrace("APR-Core/utils/RouteUtils.lua:749:APR:GetCurrentRouteMapIDsAndName#36", APR.GetCurrentRouteMapIDsAndName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetCurrentRouteMapIDsAndName = APRTrace("APR-Core/utils/RouteUtils.lua:782:APR:GetCurrentRouteMapIDsAndName#37", APR.GetCurrentRouteMapIDsAndName)--[[/APR_DIAG]]
 
 local function MetadataText(value)
     if type(value) ~= "string" then return nil end
     local text = value:match("^%s*(.-)%s*$")
     return text ~= "" and text or nil
-end--[[APR_DIAG]]; MetadataText = APRTrace("APR-Core/utils/RouteUtils.lua:836:MetadataText#37", MetadataText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; MetadataText = APRTrace("APR-Core/utils/RouteUtils.lua:874:MetadataText#38", MetadataText)--[[/APR_DIAG]]
 
 -- Attribution comes only from route data; names and filenames never imply authorship.
 -- Keep this resolution shared by route tooltips and future consumers of route metadata.
@@ -854,7 +892,7 @@ function APR:GetRouteAttribution(routeKey)
         if #names > 0 then author = table.concat(names, ", ") end
     end
     return author or "APR", route.community == true or route.source == "community", MetadataText(route.description)
-end--[[APR_DIAG]]; APR.GetRouteAttribution = APRTrace("APR-Core/utils/RouteUtils.lua:844:APR:GetRouteAttribution#38", APR.GetRouteAttribution)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetRouteAttribution = APRTrace("APR-Core/utils/RouteUtils.lua:882:APR:GetRouteAttribution#39", APR.GetRouteAttribution)--[[/APR_DIAG]]
 
 --- Resolve a route file name into a friendly display name.
 function APR:GetRouteDisplayName(routeFileName)
@@ -868,7 +906,7 @@ function APR:GetRouteDisplayName(routeFileName)
     end
 
     return nil
-end--[[APR_DIAG]]; APR.GetRouteDisplayName = APRTrace("APR-Core/utils/RouteUtils.lua:860:APR:GetRouteDisplayName#39", APR.GetRouteDisplayName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetRouteDisplayName = APRTrace("APR-Core/utils/RouteUtils.lua:898:APR:GetRouteDisplayName#40", APR.GetRouteDisplayName)--[[/APR_DIAG]]
 
 --- Resolve a route display name into a route file name.
 function APR:GetRouteKeyFromDisplayName(displayName, checkpoint)
@@ -889,7 +927,7 @@ function APR:GetRouteKeyFromDisplayName(displayName, checkpoint)
     end
 
     return nil
-end--[[APR_DIAG]]; APR.GetRouteKeyFromDisplayName = APRTrace("APR-Core/utils/RouteUtils.lua:874:APR:GetRouteKeyFromDisplayName#40", APR.GetRouteKeyFromDisplayName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetRouteKeyFromDisplayName = APRTrace("APR-Core/utils/RouteUtils.lua:912:APR:GetRouteKeyFromDisplayName#41", APR.GetRouteKeyFromDisplayName)--[[/APR_DIAG]]
 
 --- Clear all saved state for a route.
 function APR:ClearSavedRouteData(routeFileName, validating)
@@ -932,7 +970,7 @@ function APR:ClearSavedRouteData(routeFileName, validating)
     if self.InvalidateEffectiveRouteStepsCache then
         self:InvalidateEffectiveRouteStepsCache(routeFileName)
     end
-end--[[APR_DIAG]]; APR.ClearSavedRouteData = APRTrace("APR-Core/utils/RouteUtils.lua:895:APR:ClearSavedRouteData#41", APR.ClearSavedRouteData)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ClearSavedRouteData = APRTrace("APR-Core/utils/RouteUtils.lua:933:APR:ClearSavedRouteData#42", APR.ClearSavedRouteData)--[[/APR_DIAG]]
 
 --- Compare saved step totals and signatures to the live route to detect changes.
 function APR:CheckRouteChanges(route)
@@ -947,7 +985,7 @@ function APR:CheckRouteChanges(route)
     if currentRouteName and not self.RouteQuestStepList[currentRoute] then
         self.questionDialog:CreateMandatoryAction(
             L["ROUTE_DELETED_NEED_RESET"],
-            --[[APR_DIAG]]APRTrace("APR-Core/utils/RouteUtils.lua:950:callback#43", --[[/APR_DIAG]]function()
+            --[[APR_DIAG]]APRTrace("APR-Core/utils/RouteUtils.lua:988:callback#44", --[[/APR_DIAG]]function()
                 APRZoneCompleted[APR.PlayerID][currentRoute] = nil
                 APR:ClearSavedRouteData(currentRoute)
 
@@ -959,7 +997,7 @@ function APR:CheckRouteChanges(route)
     elseif savedTotalSteps and savedTotalSteps ~= currentTotalSteps then
         self.questionDialog:CreateMandatoryAction(
             L["ROUTE_UPDATED_NEED_RESET"],
-            --[[APR_DIAG]]APRTrace("APR-Core/utils/RouteUtils.lua:962:callback#44", --[[/APR_DIAG]]function()
+            --[[APR_DIAG]]APRTrace("APR-Core/utils/RouteUtils.lua:1000:callback#45", --[[/APR_DIAG]]function()
                 self:SetRouteProgress(currentRoute, 1, "definition_changed")
                 APRData[APR.PlayerID][currentRoute .. '-SkippedStep'] = 0
                 APRData[APR.PlayerID][currentRoute .. '-RawTotalSteps'] = currentTotalSteps
@@ -974,7 +1012,7 @@ function APR:CheckRouteChanges(route)
         -- Ensure raw total is persisted even if no change detected
         APRData[APR.PlayerID][currentRoute .. '-RawTotalSteps'] = currentTotalSteps
     end
-end--[[APR_DIAG]]; APR.CheckRouteChanges = APRTrace("APR-Core/utils/RouteUtils.lua:938:APR:CheckRouteChanges#42", APR.CheckRouteChanges)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CheckRouteChanges = APRTrace("APR-Core/utils/RouteUtils.lua:976:APR:CheckRouteChanges#43", APR.CheckRouteChanges)--[[/APR_DIAG]]
 
 --- Check saved routes (progress, custom paths, completed routes) against the current
 --- live route definitions and clear/refresh stored data if definitions changed.
@@ -1011,7 +1049,7 @@ function APR:CheckCurrentRouteUpToDate(currentRoute, checkpoint, options)
             if displayName and displayName == self:GetRouteDisplayName(self.ActiveRoute) then return true end
         end
         return false
-    end--[[APR_DIAG]]; IsExcluded = APRTrace("APR-Core/utils/RouteUtils.lua:1005:IsExcluded#46", IsExcluded)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; IsExcluded = APRTrace("APR-Core/utils/RouteUtils.lua:1043:IsExcluded#47", IsExcluded)--[[/APR_DIAG]]
 
     if not currentOnly then
         -- 1) Only maintenance discovers historical progress. The urgent path
@@ -1063,7 +1101,7 @@ function APR:CheckCurrentRouteUpToDate(currentRoute, checkpoint, options)
         local definition = result.definition
         return not definition or (definition.steps == result.sourceSteps
             and definition.parallelSteps == result.sourceParallel and definition.scenarios == result.sourceScenarios)
-    end--[[APR_DIAG]]; IsResultCurrent = APRTrace("APR-Core/utils/RouteUtils.lua:1061:IsResultCurrent#47", IsResultCurrent)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; IsResultCurrent = APRTrace("APR-Core/utils/RouteUtils.lua:1099:IsResultCurrent#48", IsResultCurrent)--[[/APR_DIAG]]
 
     -- 5) For each tracked route, compare saved data with the live route definition
     for routeFileName in pairs(trackedRoutes) do
@@ -1201,12 +1239,12 @@ function APR:CheckCurrentRouteUpToDate(currentRoute, checkpoint, options)
     -- A single foreground route does not certify maintenance of the history.
     if not currentOnly then self.settings.profile.lastRecordedVersion = self.version end
     return true
-end--[[APR_DIAG]]; APR.CheckCurrentRouteUpToDate = APRTrace("APR-Core/utils/RouteUtils.lua:985:APR:CheckCurrentRouteUpToDate#45", APR.CheckCurrentRouteUpToDate)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CheckCurrentRouteUpToDate = APRTrace("APR-Core/utils/RouteUtils.lua:1023:APR:CheckCurrentRouteUpToDate#46", APR.CheckCurrentRouteUpToDate)--[[/APR_DIAG]]
 
 function APR:BuildSpecRouteKey(prefix, specName)
     if not prefix or not specName then return nil end
     return prefix .. " - " .. specName
-end--[[APR_DIAG]]; APR.BuildSpecRouteKey = APRTrace("APR-Core/utils/RouteUtils.lua:1206:APR:BuildSpecRouteKey#48", APR.BuildSpecRouteKey)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.BuildSpecRouteKey = APRTrace("APR-Core/utils/RouteUtils.lua:1244:APR:BuildSpecRouteKey#49", APR.BuildSpecRouteKey)--[[/APR_DIAG]]
 
 function APR:FindAllSpecRoutesInCustomPath()
     local results = {}
@@ -1234,7 +1272,7 @@ function APR:FindAllSpecRoutesInCustomPath()
     end
 
     return results
-end--[[APR_DIAG]]; APR.FindAllSpecRoutesInCustomPath = APRTrace("APR-Core/utils/RouteUtils.lua:1211:APR:FindAllSpecRoutesInCustomPath#49", APR.FindAllSpecRoutesInCustomPath)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.FindAllSpecRoutesInCustomPath = APRTrace("APR-Core/utils/RouteUtils.lua:1249:APR:FindAllSpecRoutesInCustomPath#50", APR.FindAllSpecRoutesInCustomPath)--[[/APR_DIAG]]
 
 function APR:ResolveSpecRouteReplacements(specName, foundRoutes)
     local replacements = {}
@@ -1254,4 +1292,4 @@ function APR:ResolveSpecRouteReplacements(specName, foundRoutes)
     end
 
     return replacements
-end--[[APR_DIAG]]; APR.ResolveSpecRouteReplacements = APRTrace("APR-Core/utils/RouteUtils.lua:1239:APR:ResolveSpecRouteReplacements#50", APR.ResolveSpecRouteReplacements)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ResolveSpecRouteReplacements = APRTrace("APR-Core/utils/RouteUtils.lua:1277:APR:ResolveSpecRouteReplacements#51", APR.ResolveSpecRouteReplacements)--[[/APR_DIAG]]

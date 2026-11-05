@@ -70,6 +70,9 @@ None loads or freezes a shipped guide or Pawn's weights.
   file, route and field (Lua errors also include the line).
   Core files are compiled separately. Both client manifests must register all
   route files exactly once.
+  Standalone steps containing only conditions and metadata are rejected: filters
+  select an instruction but cannot render or complete a step on their own. The
+  same rule covers ordinary, parallel and scenario steps.
 - `routes/test_schema.py`: valid/invalid examples of every option and condition,
   nested conditions, metadata, scenarios, prefabs and strict loader failures.
   Also checks that engine condition names and primary actions have schema rules.
@@ -83,6 +86,20 @@ The Forever compatibility command reuses the common route suite.
 
 `route_prefab_test_env.lua` supplies invented guides for prefab ordering,
 character eligibility, future chapters, popup scope and label/progress tests.
+`route_character_recommendations_test.lua` covers manual Forever entry with race
+and class advice, live warnings and confirmation, strict factions/starters/Mage
+AoE, nested predicates, localized label fallbacks and unchanged step filters.
+`APR.PREFAB_TYPES.StartingZone` identifies all starters, including specialized
+variants and hidden internal chapters, and retains hard character filters.
+`starting_zone_prefab_scope_test.lua` checks that the default Forever starting
+preset only queues ordinary routes, while AoE starts remain available through
+their explicit leveling scope and hidden chapters are never queued automatically.
+Presets and automatic suggestions retain the authored character recommendations
+while manual selection can waive them.
+Explicit Forever additions lazily store `APRData[player].RouteChoices[label]` to
+preserve variants with shared labels. Existing paths need no migration: absent,
+invalid or deleted choices use the usual resolver, which prefers a recommended
+variant for legacy Forever labels. Declared label aliases migrate saved choices.
 `next_route_suggestions_test.lua` covers explicit leveling/dungeon continuations
 on both clients, including level/XP boundaries, conditional branches, completion,
 prerequisites and popup callbacks. Unlisted routes never become implicit successors.

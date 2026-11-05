@@ -37,7 +37,7 @@ function Rows:Tooltip(row, path)
             shown[condition] = true
             APR:AddTooltipLine(GameTooltip, condition, "general", "warning", true)
         end
-        for _, warning in ipairs(APR:GetRouteLevelWarnings(record.key)) do
+        for _, warning in ipairs(APR:GetRouteSelectionWarnings(record.key)) do
             if not shown[warning] then APR:AddTooltipLine(GameTooltip, warning, "general", "warning", true) end
         end
     end
@@ -120,8 +120,8 @@ function Rows:Bind(row, record, index, browser, path)
     UI:SetListRowState(row, selected)
     local width = row:GetWidth()
     local progress = APR.RouteCatalog.progressStates[record.progressState]
-    local levelWarning = record.levelWarnings and #record.levelWarnings > 0
-    local role = record.visibility == "visible" and (levelWarning and "warning" or progress and progress.role) or "muted"
+    local warning = record.warnings and #record.warnings > 0
+    local role = record.visibility == "visible" and (warning and "warning" or progress and progress.role) or "muted"
     row.progressMarker:SetShown(progress ~= nil)
     if progress then APR:RegisterThemeRegion(row.progressMarker, progress.role) end
     row.name:SetText(record.label)

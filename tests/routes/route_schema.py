@@ -286,7 +286,14 @@ class RouteSchema:
             if trigger and set(trigger) == {"mapID"} and not (value.get("UseFlightPath") or value.get("Waypoint")):
                 fail(path + ".ZoneStepTrigger", "Map-only arrivals require a flight or waypoint; boats, trams and zeppelins need coordinates")
         self.step = flight_arrival_step
-        steps = array(self.step)
+        def declared_step(value, path):
+            self.step(value, path)
+            # Predicates select an instruction; they cannot advance or render
+            # anything on their own. Keep raw field checks usable independently.
+            if not value.keys() - self.condition_fields.keys() - {"_index", "_comment"}:
+                fail(path, "standalone step requires content beyond conditions and metadata")
+
+        steps = array(declared_step)
         scenario = obj({"label": TEXT, "scenarioID": ID, "index": ID, "steps": steps},
                        required=("scenarioID", "steps"))
         self.route_fields = {
@@ -298,7 +305,7 @@ class RouteSchema:
             "autoStartOnMap": BOOL, "notSkippable": BOOL, "hiddenFromSelection": BOOL, "temporary": BOOL,
             "sojournerAchievementID": ID, "delve": obj({}),
             "steps": union(steps, array(scenario, 1)), "scenarios": array(scenario),
-            "parallelSteps": array(obj({"conditions": condition, "steps": array(self.step, 1), "repeatable": BOOL}, required=("steps",))),
+            "parallelSteps": array(obj({"conditions": condition, "steps": array(declared_step, 1), "repeatable": BOOL}, required=("steps",))),
             "requiredRoute": array(TEXT),
             "nextRoute": array(union(TEXT, obj({"route": TEXT, "conditions": condition}, required=("route",)))),
             "prefab": mapping(constants("PREFAB_TYPES"), union(NUMBER,
