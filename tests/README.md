@@ -163,10 +163,21 @@ Retail and Forever clients before releasing the feature.
 memberships/populations to exercise all discovery filters on the single stable
 `APR` channel. `communication_channel_test.lua` and
 `version_shared_channel_integration_test.lua` exercise independent discovery and
-version-check owners of that same membership. Startup is delayed by two seconds;
-joining has one ten-second timeout. Map, instance and chat-lockdown transitions
-retain membership, while traffic is suspended as needed. No channel permutation,
-native-channel reset, chat-window modification or roster request is permitted.
+version-check owners of that same membership. Startup waits for the player to be
+in the world, then gives native channels five seconds to settle; loading-screen
+completion restarts that grace period. Slow login/reload fixtures retain the
+native /1 and /2 slots, including retries, cancellation and missing readiness APIs.
+Empty or noncontiguous native channel lists defer membership without polling.
+After loading, a confirmed public zero from `GetChannelName(1)` permits one
+`C_ChatInfo.ResetDefaultZoneChannels()` attempt per loaded UI session. Any channel
+already occupying /1 vetoes that repair. Combat, chat restrictions, missing APIs
+and unknown/opaque slot data defer it; native errors never cause a reset loop.
+Native events (plus one coalesced read after a successful reset) resume joining
+when the list is complete. An attempted join has one ten-second timeout. Map,
+instance and chat-lockdown transitions retain membership while traffic is
+suspended as needed. Channel permutations, chat-window modifications and roster
+requests remain forbidden; only the explicitly guarded default-channel reset
+is permitted.
 Prejoined channels are not owned or left, and a manual leave requires an explicit
 retry. Version queries/replies keep their prefix, persisted cache, suppression
 and one bounded twelve-second startup retry; no `APRVersion` channel is joined.

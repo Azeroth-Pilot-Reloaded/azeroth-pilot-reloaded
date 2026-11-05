@@ -24,7 +24,7 @@ for _, client in ipairs({"retail", "forever"}) do
         assert(channel.owners.versionCheck and channel.owners.partyFinder and #env.frames == 1,
             "Both consumers borrow the one service frame")
         env:Event("PLAYER_ENTERING_WORLD", unpack(flags))
-        env:Advance(1.99)
+        env:Advance(4.99)
         assert(#env.joined == 0 and #env.sent == 0)
         env:Advance(0.01)
         assert(#env.joined == 1 and env.joined[1].name == "APR" and finderID == 7
@@ -55,7 +55,7 @@ end
 -- A newer direct response still suppresses the startup retry and updates cache.
 local env = New()
 env.channel:Acquire("partyFinder", function() end)
-env:Advance(2)
+env:Advance(5)
 Receive(env, "V:7.4.0")
 assert(env.alerts == 1 and APRData.versionCheck.retail == "7.4.0")
 env:Advance(60)
@@ -65,7 +65,7 @@ assert(#env.sent == 1 and env:ActiveTimers() == 0 and #env.joined == 1 and #env.
 env = New()
 local finderID
 env.channel:Acquire("partyFinder", function(id) finderID = id end)
-env:Advance(2)
+env:Advance(5)
 env.id = 9
 env:Event("CHANNEL_UI_UPDATE")
 env:Advance(0.1)
@@ -94,7 +94,7 @@ for _, options in ipairs({{prejoined = true, restricted = true}, {delayedJoin = 
     env = New(options)
     env.channel:Acquire("partyFinder", function() end)
     if options.delayedJoin then
-        env:Advance(2)
+        env:Advance(5)
         env.restricted, env.id = true, 7
         env:Advance(10) -- Native membership completes without CHANNEL_UI_UPDATE.
     end
@@ -113,7 +113,7 @@ end
 -- send API, but never revokes either consumer's membership or starts polling.
 env = New()
 env.channel:Acquire("partyFinder", function() end)
-env:Advance(2)
+env:Advance(5)
 Receive(env, "Q:7.2.0")
 env.restricted = true
 env:Event("CHANNEL_UI_UPDATE")

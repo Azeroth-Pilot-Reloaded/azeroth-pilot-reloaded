@@ -8,7 +8,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/config/LevelProfiles.lua"] = {instrumented = 1, diagnosticHelpers = 0},
     ["APR-Core/config/WorkspaceOptions.lua"] = {instrumented = 12, diagnosticHelpers = 0},
     ["APR-Core/core/Commands.lua"] = {instrumented = 6, diagnosticHelpers = 0},
-    ["APR-Core/core/CommunicationChannel.lua"] = {instrumented = 23, diagnosticHelpers = 0},
+    ["APR-Core/core/CommunicationChannel.lua"] = {instrumented = 27, diagnosticHelpers = 0},
     ["APR-Core/core/Core.lua"] = {instrumented = 3, diagnosticHelpers = 0},
     ["APR-Core/core/Event.lua"] = {instrumented = 107, diagnosticHelpers = 0},
     ["APR-Core/core/VersionCheck.lua"] = {instrumented = 25, diagnosticHelpers = 0},

@@ -400,7 +400,7 @@ function Finder:RefreshTransport(noResume)
     end
     if transport and not self.channelReadyCallback then
         self.channelReadyCallback = --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:402:callback#35", --[[/APR_DIAG]]function(id, status)
-            self:TraceTraffic("STATE", "channel", "APR", id, status)
+            self:TraceTraffic("STATE", "channel", transport.name, id, status)
             local changed = self.channelID ~= id
             self.channelID, self.channelName = id, transport.name
             -- Kept as local aliases for population/discovery helpers, never a second membership.
