@@ -806,6 +806,16 @@ assert(party.GroupListSteps["Local Meadow"] and not party.GroupListSteps.Local,
 assert(APR.PlayerID == savedPlayerID and APR.Username == savedUsername)
 local wireSuccess, regionalWire = serializer:Deserialize(party.lastGroupPayload)
 assert(wireSuccess and regionalWire.username == "Local Meadow")
+local nativeGetUnitName, localSnapshot, localRow = GetUnitName,
+    party.GroupListSteps["Local Meadow"], party.teamList["Local Meadow"]
+GetUnitName = nil
+party:PopulateMissingGroupMembers()
+assert(party.GroupListSteps["Local Meadow"] == localSnapshot
+    and party.teamList["Local Meadow"] == localRow and not localRow.playerData.noAddon,
+    "A missing native full name must preserve the local snapshot and its addon-enabled row")
+assert(APR.PlayerID == savedPlayerID and APR.Username == savedUsername)
+GetUnitName = nativeGetUnitName
+party:PopulateMissingGroupMembers()
 assert(party.teamList["Peer Meadow"].playerData.noAddon and party.teamList["Peer Brook"].playerData.noAddon,
     "Regional roster rows preserve surnames instead of treating them as realms")
 receive("Peer Meadow", "Peer Meadow", 7)

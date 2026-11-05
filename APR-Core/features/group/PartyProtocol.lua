@@ -91,7 +91,13 @@ end--[[APR_DIAG]]; protocol.UnitName = APRTrace("APR-Core/features/group/PartyPr
 -- SavedVariables still use APR.Username/PlayerID. Only the group identity
 -- needs the complete regional name, so existing route progress is unchanged.
 function protocol.LocalName()
-    if RegionalUniqueNamesEnabled and RegionalUniqueNamesEnabled() then return protocol.UnitName("player") end
+    if RegionalUniqueNamesEnabled and RegionalUniqueNamesEnabled() then
+        local name = protocol.UnitName("player")
+        if name then return name end
+        local first, last = APR:SafeUnitName("player")
+        if not first then return end
+        return last and last ~= "" and (first .. " " .. last) or first
+    end
     return APR.Username
 end--[[APR_DIAG]]; protocol.LocalName = APRTrace("APR-Core/features/group/PartyProtocol.lua:93:protocol.LocalName#7", protocol.LocalName)--[[/APR_DIAG]]
 
@@ -102,7 +108,7 @@ function protocol.PlayerKey(value)
     if realm then return name .. "-" .. realm end
     local home = GetNormalizedRealmName and GetNormalizedRealmName() or GetRealmName and GetRealmName() or ""
     return name .. "-" .. home:gsub("%s", "")
-end--[[APR_DIAG]]; protocol.PlayerKey = APRTrace("APR-Core/features/group/PartyProtocol.lua:98:protocol.PlayerKey#8", protocol.PlayerKey)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; protocol.PlayerKey = APRTrace("APR-Core/features/group/PartyProtocol.lua:104:protocol.PlayerKey#8", protocol.PlayerKey)--[[/APR_DIAG]]
 
 function protocol.DisplayName(value)
     local name, realm = NameParts(value)
@@ -110,7 +116,7 @@ function protocol.DisplayName(value)
     if not realm then return name end
     local home = GetNormalizedRealmName and GetNormalizedRealmName() or GetRealmName and GetRealmName() or ""
     return realm ~= home:gsub("%s", "") and (name .. "-" .. realm) or name
-end--[[APR_DIAG]]; protocol.DisplayName = APRTrace("APR-Core/features/group/PartyProtocol.lua:107:protocol.DisplayName#9", protocol.DisplayName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; protocol.DisplayName = APRTrace("APR-Core/features/group/PartyProtocol.lua:113:protocol.DisplayName#9", protocol.DisplayName)--[[/APR_DIAG]]
 
 -- Sender is authoritative. Legacy peers may send only a character name in their payload.
 function protocol.NormalizeSnapshot(data, sender)
@@ -207,7 +213,7 @@ function protocol.NormalizeSnapshot(data, sender)
         end
     end
     return result
-end--[[APR_DIAG]]; protocol.NormalizeSnapshot = APRTrace("APR-Core/features/group/PartyProtocol.lua:116:protocol.NormalizeSnapshot#10", protocol.NormalizeSnapshot)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; protocol.NormalizeSnapshot = APRTrace("APR-Core/features/group/PartyProtocol.lua:122:protocol.NormalizeSnapshot#10", protocol.NormalizeSnapshot)--[[/APR_DIAG]]
 
 -- Compare consumed values before serialization or frame work. Metadata, filler
 -- rows and duplicated effective indices never affect another player's display.
@@ -219,7 +225,7 @@ function protocol.SameProgress(a, b)
     if left == right then return true end
     return left ~= nil and right ~= nil and left.id == right.id
         and left.step == right.step and left.total == right.total
-end--[[APR_DIAG]]; protocol.SameProgress = APRTrace("APR-Core/features/group/PartyProtocol.lua:214:protocol.SameProgress#11", protocol.SameProgress)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; protocol.SameProgress = APRTrace("APR-Core/features/group/PartyProtocol.lua:220:protocol.SameProgress#11", protocol.SameProgress)--[[/APR_DIAG]]
 
 local function SameRows(a, b)
     if a == b then return true end
@@ -235,10 +241,10 @@ local function SameRows(a, b)
         end
     end
     return true
-end--[[APR_DIAG]]; SameRows = APRTrace("APR-Core/features/group/PartyProtocol.lua:224:SameRows#12", SameRows)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; SameRows = APRTrace("APR-Core/features/group/PartyProtocol.lua:230:SameRows#12", SameRows)--[[/APR_DIAG]]
 
 function protocol.SameDetails(a, b)
     if a == b then return true end
     return SameRows(a and a.extraLines, b and b.extraLines)
         and SameRows(a and a.questSteps, b and b.questSteps)
-end--[[APR_DIAG]]; protocol.SameDetails = APRTrace("APR-Core/features/group/PartyProtocol.lua:240:protocol.SameDetails#13", protocol.SameDetails)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; protocol.SameDetails = APRTrace("APR-Core/features/group/PartyProtocol.lua:246:protocol.SameDetails#13", protocol.SameDetails)--[[/APR_DIAG]]

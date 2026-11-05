@@ -62,6 +62,15 @@ print(string.format("Party schema: identity, ranges, row budgets and legacy payl
 function RegionalUniqueNamesEnabled() return true end
 local fullName = "Violet Meadow"
 function GetUnitName() return fullName end
+local firstName, surname = "Violet", "Brook"
+function UnitName(unit)
+    assert(unit == "player", "Local identity reads the player unit")
+    return firstName, surname
+end
+dofile("APR-Core/utils/SecretUtils.lua")
+APRSecret:Attach(APR)
+APR.Username = "Violet"
+assert(protocol.LocalName() == "Violet Meadow", "The native full name takes precedence over the fallback")
 assert(protocol.PlayerKey("Violet Meadow") == "Violet Meadow")
 assert(protocol.PlayerKey("Violet Brook") ~= protocol.PlayerKey("Violet Meadow"))
 assert(protocol.DisplayName("Violet Meadow") == "Violet Meadow")
@@ -82,4 +91,30 @@ function issecretvalue(value) return value == opaque end
 fullName = opaque
 assert(protocol.UnitName("party1") == nil and protocol.PlayerKey(opaque) == nil,
     "Restricted native names cannot enter membership or string operations")
+assert(protocol.LocalName() == "Violet Brook", "Restricted full names fall back to safe name parts")
+for _, unavailable in ipairs({ false, 42, {}, "" }) do
+    fullName = unavailable
+    assert(protocol.LocalName() == "Violet Brook", "Invalid full names fall back to safe name parts")
+end
+fullName = nil
+assert(protocol.LocalName() == "Violet Brook", "Missing full names fall back to safe name parts")
+local nativeGetUnitName = GetUnitName
+GetUnitName = nil
+assert(protocol.LocalName() == "Violet Brook", "An unavailable full-name API still permits local identity")
+surname = ""
+assert(protocol.LocalName() == "Violet", "An empty surname adds no separator")
+surname = nil
+assert(protocol.LocalName() == "Violet", "A missing surname preserves the first name")
+surname = opaque
+assert(protocol.LocalName() == "Violet", "A restricted surname is discarded by the safe reader")
+firstName = nil
+assert(protocol.LocalName() == nil, "Missing safe name parts leave the identity unavailable")
+firstName = opaque
+assert(protocol.LocalName() == nil, "A restricted first name cannot become a local identity")
+GetUnitName, fullName = nativeGetUnitName, "Violet Meadow"
+assert(protocol.LocalName() == "Violet Meadow", "Native identity recovers without caching a fallback")
+function RegionalUniqueNamesEnabled() return false end
+assert(protocol.LocalName() == "Violet", "Nonregional clients retain the saved username")
+RegionalUniqueNamesEnabled = nil
+assert(protocol.LocalName() == "Violet", "Clients without the regional API retain the saved username")
 print("Party regional schema: complete names, namesake isolation, authoritative legacy claims and unavailable/restricted data passed")
