@@ -101,6 +101,12 @@ native UI map or projection: local quests, coordinate-free instructions,
 mandatory exits, missing observations and recovery on both profiles. Authored
 tram journeys retain their step at the departure platform and through loading;
 only the destination radius advances to the next quest, once.
+`navigation_instance_position_test.lua` uses invented mapless interiors and
+restricted instances on both profiles: real exit planning, local/exterior
+objectives, public instance identity without coordinates, stable work while
+restricted, loading and recovery. It never treats an entrance landing as the
+player's position. `arrow_visibility_test.lua` also rejects stale arrows during
+that restriction.
 `navigation_transport_labels_test.lua` uses invented stops and cities to check
 shared-interior travel labels in both directions, authored/library consistency,
 world and radius boundaries, conflicting stops and late client names.

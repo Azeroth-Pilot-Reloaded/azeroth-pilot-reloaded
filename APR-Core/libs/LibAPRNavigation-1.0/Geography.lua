@@ -1,7 +1,7 @@
 -- Project endpoints into world coordinates and identify their access regions.
 -- A shared position alone does not permit walking through a required entrance.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("geography", 14) then return end
+if not Lib:BeginModule("geography", 15) then return end
 local Instance = Lib.Instance
 -- These defaults are read-only, including CheckRequirements' character input.
 -- Reuse them across walking checks and retries of unavailable map ancestry.
@@ -51,6 +51,14 @@ function Instance:GetMapWorldInstanceID(mapID)
     end
 end
 
+function Instance:GetUnmappedInstanceRegion(instanceID)
+    instanceID = self:GetWorldInstanceID(instanceID)
+    if Finite(instanceID) and ((self.config.UnmappedInstances and self.config.UnmappedInstances[instanceID])
+        or (self.entranceInstances and self.entranceInstances[instanceID])) then
+        return tostring(instanceID) .. ":instance:" .. tostring(instanceID) .. ":interior"
+    end
+end
+
 local function WorldRegion(region, source, target)
     if type(region) == "string" and source ~= nil and source ~= target then
         local prefix = tostring(source) .. ":"
@@ -74,7 +82,10 @@ function Instance:NormalizeLocation(location, hint)
         instanceID = self:GetMapWorldInstanceID(mapID)
     elseif not mapID and instanceID ~= nil then
         mapID = self:GetFallbackMapForInstance(instanceID)
-        if not mapID and self.env.worldToMap then mapID = self.env.worldToMap(instanceID, x, y, hint) end
+        if not mapID and not (self.config.UnmappedInstances and self.config.UnmappedInstances[instanceID])
+            and self.env.worldToMap then
+            mapID = self.env.worldToMap(instanceID, x, y, hint)
+        end
     end
     instanceID = self:GetWorldInstanceID(instanceID)
     if not Finite(instanceID) or not Finite(x) or not Finite(y) then return nil end
@@ -105,9 +116,13 @@ function Instance:GetPositionRegion(position)
     local mapID = position.uiMapID
     if not mapID and position.instanceID ~= nil then
         mapID = self:GetFallbackMapForInstance(instanceID)
+        if not mapID and self.config.UnmappedInstances and self.config.UnmappedInstances[instanceID] then
+            local region = self:GetUnmappedInstanceRegion(instanceID)
+            if region then return region end
+        end
         if not mapID and self.env.worldToMap then mapID = self.env.worldToMap(instanceID, position.x, position.y) end
     end
-    if not mapID then return nil end
+    if not mapID then return self:GetUnmappedInstanceRegion(instanceID) end
     self.regions = self.regions or {}
     local cacheKey = tostring(instanceID) .. ":" .. mapID .. ":" .. tostring(position.isInstance == true)
     local cached = self.regions[cacheKey]

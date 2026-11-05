@@ -1055,3 +1055,28 @@ call signature changes in this optimization.
 Navigation catalogue research, generation and static data audits live in
 `Route-generator/tools/validation/navigation_data` in the route-gen repository.
 APR's runtime tests and CI do not depend on that checkout.
+# Mapless interiors and restricted instance positions
+
+The navigation instance-position regression uses synthetic worlds, maps and
+quests on both client profiles. A mapless interior with public world coordinates
+must route through its explicit exit. A coordinate-restricted instance keeps its
+identity but cannot publish an invented direction, advance a quest, or endlessly
+replan. Local objectives stay visible and outdoor guidance recovers after exit.
+
+API compatibility was checked against Blizzard's generated
+[Forever instance API](https://github.com/Gethe/wow-ui-source/blob/forever/Interface/AddOns/Blizzard_APIDocumentationGenerated/InstanceDocumentation.lua),
+[Retail instance API](https://github.com/Gethe/wow-ui-source/blob/live/Interface/AddOns/Blizzard_APIDocumentationGenerated/InstanceDocumentation.lua),
+[Forever unit API](https://github.com/Gethe/wow-ui-source/blob/forever/Interface/AddOns/Blizzard_APIDocumentationGenerated/UnitDocumentation.lua)
+and [Retail unit API](https://github.com/Gethe/wow-ui-source/blob/live/Interface/AddOns/Blizzard_APIDocumentationGenerated/UnitDocumentation.lua).
+`GetInstanceInfo`'s eighth result is the world instance ID. It is identity only;
+`UnitPosition` results are independently guarded for absent/restricted values.
+HereBeDragons follows the same unavailable-position behavior; it cannot restore
+coordinates that the client does not expose.
+
+The Forever PvP hall exits use Classic AreaTrigger 2534 and 2530 positions
+([trigger geometry](https://github.com/azerothcore/azerothcore-wotlk/blob/master/data/sql/base/db_world/areatrigger.sql))
+and their corresponding exterior landings
+([Classic teleport definitions](https://github.com/mangoszero/database/blob/master/World/Setup/FullDB/areatrigger_teleport.sql)).
+They are exit-only passages with no invented native map or entry permission.
+Verify both halls in the actual Forever client, plus local objectives and an
+exterior objective while inside a dungeon, before claiming native-client QA.

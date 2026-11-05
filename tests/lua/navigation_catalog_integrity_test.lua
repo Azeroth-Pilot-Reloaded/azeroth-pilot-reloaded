@@ -95,6 +95,12 @@ for _, profile in ipairs({ "retail", "forever" }) do
         assert(not unmappedInstances[world], "A mapless world instance cannot identify multiple guide maps")
         unmappedInstances[world] = true
     end
+    for world, enabled in pairs(data:GetConfig().UnmappedInstances or {}) do
+        assert(type(world) == "number" and world > 0 and world < math.huge and world % 1 == 0
+            and enabled == true, "World-only interiors need a dedicated world instance")
+        assert(not unmappedInstances[data:GetWorldInstanceID(world)],
+            "A world-only interior cannot also claim a fallback guide map")
+    end
     for kind, stops in pairs(data:GetConfig().TransportDestinations or {}) do
         assert(type(kind) == "string" and kind ~= "" and type(stops) == "table")
         for _, stop in ipairs(stops) do

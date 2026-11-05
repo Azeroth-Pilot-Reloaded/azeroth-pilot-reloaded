@@ -341,6 +341,23 @@ inside that interior and external travel still requires declared crossings.
 The APR host prefers native player map identity and uses this fallback only
 when it is unavailable. Undeclared instances remain pending.
 
+`config.UnmappedInstances[worldInstanceID] = true` describes verified interiors
+that have no UI map or legacy guide map at all. `GetUnmappedInstanceRegion` keeps
+their observed world positions in a distinct access region; it can also identify
+registered instance worlds whose projection is unavailable. No synthetic UI map
+ID, continent or percentage coordinates are assigned. The Forever PvP halls use
+this form and have exit-only passages to their cities; their entry restrictions
+are not inferred from the ability to leave.
+
+When the client withholds world coordinates inside a dungeon, raid, scenario or
+PvP instance, the APR host reads its identity from `GetInstanceInfo`, without
+substituting an entrance or saved point for the player's position. Local
+objectives remain visible; an exterior objective shows the existing
+`LEAVE_INSTANCE` instruction. Navigation resumes when coordinates return or the
+player exits. This state is distinct from retryable loading data and never
+advances the authored route. Zone/status exports include world identity, map
+source and coordinate availability even when no native map can be reported.
+
 `config.TransportDestinations[kind]` optionally lists served-city labels for
 transport stops sharing one interior map. Each stop has world `instanceID`,
 `x`, `y`, a positive `radius` in yards, and a display `mapID`. The tram data

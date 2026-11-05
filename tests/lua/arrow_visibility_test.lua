@@ -419,3 +419,12 @@ assert(frame:IsShown(), "A declared phased world cannot hide the parent world's 
 instanceID = 91
 refresh(); tick()
 assert(not frame:IsShown(), "An unrelated world must still hide that guidance")
+
+APR.navigation.state = "instance"
+frame:Hide(); frame.showCount = 0
+refresh()
+assert(not arrow.Active and not frame:IsShown() and frame.showCount == 0,
+    "An identified instance without coordinates cannot flash a stale geographic arrow")
+APR.navigation.state, instanceID = "ready", 90
+refresh(); tick()
+assert(frame:IsShown(), "A real position restores ordinary guidance after the instance restriction ends")
