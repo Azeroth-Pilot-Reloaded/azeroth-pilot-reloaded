@@ -12,7 +12,7 @@ dofile("APR-Core/utils/QuestUtils.lua")
 dofile("APR-Core/features/questing/RouteActions.lua")
 
 local quests, rewarded, account, ready, bags, equipment, known, steps
-local abandoned, rows, buttons, selected, questReads, advances, mutations, buys, timers
+local abandoned, rows, buttons, selected, abandonTarget, questReads, advances, mutations, buys, timers
 local cursor, learned, clock, target, durability, repairs, durabilityReads, resurrections
 local ui = {}
 function ui:AddQuestSteps(id, text, objective)
@@ -37,9 +37,11 @@ C_QuestLog = {
     IsQuestFlaggedCompleted = function(id) questReads = questReads + 1; return rewarded[id] == true end,
     IsQuestFlaggedCompletedOnAccount = function(id) questReads = questReads + 1; return account[id] == true end,
     SetSelectedQuest = function(id) selected = id end,
+    SetAbandonQuest = function() abandonTarget = selected end,
     AbandonQuest = function()
-        assert(selected and quests[selected], "Only a live quest can be abandoned")
-        abandoned[#abandoned + 1], quests[selected] = selected, nil
+        assert(abandonTarget and quests[abandonTarget], "Only a prepared live quest can be abandoned")
+        abandoned[#abandoned + 1], quests[abandonTarget] = abandonTarget, nil
+        abandonTarget = nil
     end,
 }
 C_Container = {
@@ -79,7 +81,7 @@ local function reset(step)
     quests, rewarded, account, ready = {}, {}, {}, {}
     bags, equipment, known = {}, {}, {}
     abandoned, rows, buttons, timers = {}, {}, {}, {}
-    selected, questReads, advances, mutations, buys = nil, 0, 0, 0, 0
+    selected, abandonTarget, questReads, advances, mutations, buys = nil, nil, 0, 0, 0, 0
     cursor, learned, clock, target = nil, false, 10, 4401
     durability, repairs, durabilityReads, resurrections = 50, 0, 0, 0
     APR.currentStep, APR.routeActionState, APR.startupQuestStatePending = ui, nil, true
