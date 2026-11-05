@@ -1,15 +1,15 @@
 name: Release Addon
 
 on:
-  # Automatic releases are paused. Uncomment push and schedule to re-enable them.
-  # push:
+  # Automatic alpha releases are paused. Uncomment branches and schedule to re-enable them.
+  push:
   #   branches:
   #     - '**'
   #     # Automation can push using a personal token, so also exclude its branches.
   #     - '!interface-version'
   #     - '!automation/**'
-  #   tags:
-  #     - '**'
+    tags:
+      - '**'
   # Catch up on default-branch changes skipped during the alpha cooldown.
   # schedule:
   #   - cron: '17 * * * *'
