@@ -60,6 +60,7 @@ def examples():
         "AllOf": seq({"IsQuestCompleted": 1}, {"AnyOf": seq({"MinLevel": 5}, {"Hardcore": True})}),
         "Not": {"AllOf": seq({"HasAura": 1}, {"Money": {"copper": 10}})},
         "Note": seq("First instruction", "Second instruction"), "PreviewImages": seq("image.jpg"),
+        "FillerPreviewImages": {1: seq("optional-image.jpg")},
         "Coord": {"x": -42.5, "y": 123.5}, "Coords": seq({"Zone": 1, "x": 1, "y": 2}),
         "ZoneStepTrigger": {"x": 1, "y": 2, "Range": 10, "mapID": 2},
         "Button": {"123-1": 123}, "SpellButton": {"123-1": "Spell"}, "ItemTarget": "player",
@@ -121,6 +122,13 @@ class RouteSchemaTests(unittest.TestCase):
         for invalid in ({"x": 1, "y": 2, "instanceID": -1}, {"x": 1, "y": 2, "instanceID": "2601"}):
             with self.assertRaises(InvalidRoute):
                 self.schema.step({"Coord": invalid}, "step")
+
+    def test_filler_preview_images(self):
+        self.schema.step({"FillerPreviewImages": {12: seq("a.jpg", "b.jpg"), 34: seq("c.jpg")}}, "step")
+        for invalid in ("image.jpg", {0: seq("image.jpg")}, {"12": seq("image.jpg")},
+                        {12: {}}, {12: "image.jpg"}, {12: seq(1)}, {12: seq("")}):
+            with self.subTest(value=invalid), self.assertRaises(InvalidRoute):
+                self.schema.step({"FillerPreviewImages": invalid}, "step")
 
     def test_primary_profession_limit(self):
         for count in (1, 2, 3):

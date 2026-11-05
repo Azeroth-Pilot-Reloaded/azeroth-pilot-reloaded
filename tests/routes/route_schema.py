@@ -212,6 +212,7 @@ class RouteSchema:
             "Dungeon": enum(DUNGEON_KEYS),
             "KillNPC": obj({"npcID": ID, "name": TEXT, "dungeonKey": enum(DUNGEON_KEYS)}, required=("npcID", "name")),
             "Name": TEXT, "Note": union(TEXT, array(TEXT, 1)), "PreviewImages": array(TEXT, 1),
+            "FillerPreviewImages": mapping(ID, array(TEXT, 1)),
             "_index": ID, "_comment": TEXT, "Grind": level,
             "Coord": union(xy, multi_coord), "Coords": multi_coord,
             # StepUtils.NormalizeZoneList accepts navigation-only Zone lists.

@@ -74,7 +74,7 @@ An action waits for completion; a failed step condition skips the step. Use one 
 | `EnterInstance` | Guides the player into an instance. Forever dungeon checkpoints use `dungeonKey` to match the instance ID. | `EnterInstance = { questID = 12345, mapID = 2505 }` or `{ dungeonKey = "RFC" }` |
 | `EnterScenario` | Guides the player to a scenario entrance. | `EnterScenario = { questID = 86636, mapID = 2502 }` |
 | `ExitTutorial` | Exile's Reach specific step that auto-skips if the exit quest is no longer tracked. | `ExitTutorial = 59985` |
-| `Fillers` | Optional side objectives that can progress during any step without blocking the route. | `Fillers = { [49529] = { 1 }, [49897] = { 1 } }` |
+| `Fillers` | Optional side objectives that can progress during any step without blocking the route. Associate images with their quest using `FillerPreviewImages`; see [Image previews](#image-previews). | `Fillers = { [49529] = { 1 }, [49897] = { 1 } }` |
 | `GetFP` | Learn a flight path node. | `GetFP = 2395` |
 | `Grind` | Wait until the level/XP threshold is reached; supports numbers, absolute XP and named profiles. | `Grind = 60` |
 | `Group` | Marks an optional group quest and shows a popup (`questID`, `Number`). | `Group = { questID = 51384, Number = 3 }` |
@@ -198,18 +198,41 @@ Only combat-log death events observed in the matching dungeon grant credit. Cred
 | `Dontskipvid` | Prevents automatic skipping of cutscenes or videos. | `Dontskipvid = true` |
 | `ExtraActionB` | Prompts use of the special extra action button. | `ExtraActionB = true` |
 | `ExtraLineText*` | Additional helper lines displayed in the current step panel. Supports numbered variants such as `ExtraLineText2`, `ExtraLineText3`, etc. Accepts localization keys or literal text. | `ExtraLineText = "Interact with the second console"` |
+| `FillerPreviewImages` | Clickable image previews in the Fillers panel, keyed by numeric quest ID from the same step's `Fillers`. Each image list follows that quest's visible objectives and disappears when none remain. Uses the same paths as `PreviewImages`. | `FillerPreviewImages = { [93552] = { "routeHelper\\93552.jpg" } }` |
 | `GossipOptionIDs` | Automatically select dialogue by option ID, rather than position. | `GossipOptionIDs = { 51901, 51902 }` |
 | `InVehicle` | Indicates vehicle status (`1` = enter, `2` = stay in vehicle). | `InVehicle = 1` |
 | `MerchantNPC` | Limit the step purchase to this merchant NPC. | `MerchantNPC = 54` |
 | `NoAutoAccept` | Keep the quest pickup visible but require manual acceptance. | `NoAutoAccept = true` |
 | `NoAutoTurnIn` | Keep the quest hand-in visible but require manual interaction. | `NoAutoTurnIn = true` |
-| `PreviewImages` | Displays one or more clickable image previews in the current step panel. Relative paths are resolved from `APR-Core/assets/`; full `Interface\\...` paths are also accepted. | `PreviewImages = { "routeHelper\\86644.jpg" }` |
+| `PreviewImages` | Displays one or more clickable image previews in the current step panel. Use `FillerPreviewImages` for images associated with optional objectives. Relative paths are resolved from `APR-Core/assets/`; full `Interface\\...` paths are also accepted. | `PreviewImages = { "routeHelper\\86644.jpg" }` |
 | `RaidIcon` | NPC ID to mark with a raid icon. | `RaidIcon = 241743` |
 | `SpellButton` | Spell buttons keyed by quest ID or `questID-objective`. A value may be one spell or a nonempty list of spells, displayed in list order on the same step. Prefer numeric spell IDs; names must be understood by the client language. Keep one key per quest/objective; repeated Lua keys overwrite earlier values. | `SpellButton = { ["49939-1"] = 294197 }` or `SpellButton = { ["5648"] = { 2050, 1243 } }` |
 | `SpellTrigger` | Automatically completes the step when the given spell is cast. | `SpellTrigger = 306719` |
 | `TrigText*` | Text fragments used as completion triggers (`TrigText`, `TrigText2`, etc.). | `TrigText = "Restore the console"` |
 | `UseGlider` | Displays available gliders for controlled jumps. | `UseGlider = true` |
 | `IsCampaignQuest` | Marks the step as part of a campaign. | `IsCampaignQuest = true` |
+
+### Image previews
+
+Use `PreviewImages` for the main step and `FillerPreviewImages` for a quest tracked in that step's `Fillers`. Both options can appear on the same step and display independently in their respective panels. Clicking a thumbnail opens an enlarged image with zoom and pan controls.
+
+`FillerPreviewImages` maps numeric quest IDs to nonempty lists of image paths. A quest's images appear once, below its visible filler objectives, while at least one of those objectives remains active. Completed, skipped or unavailable fillers do not display images. Images never block step progression.
+
+For example, show `93552.jpg` in the Fillers panel while working on another quest, then in the main panel when finishing quest 93552:
+
+```lua
+{
+    Qpart = { [92465] = { 1, 2 } },
+    Fillers = { [93552] = { 1 } },
+    FillerPreviewImages = { [93552] = { "routeHelper\\93552.jpg" } },
+},
+{
+    Qpart = { [93552] = { 1 } },
+    PreviewImages = { "routeHelper\\93552.jpg" },
+},
+```
+
+Declare the association on each step that needs the filler preview. Both options accept paths relative to `APR-Core/assets/` or full `Interface\\...` paths; escape backslashes in Lua strings as shown above.
 
 ## Filters and Conditions
 

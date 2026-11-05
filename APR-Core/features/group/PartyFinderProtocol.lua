@@ -137,7 +137,7 @@ local routeDisplayFields = {
     label = true, author = true, authors = true, description = true, community = true, source = true,
     legacyLabels = true,
 }
-local stepDisplayFields = { Name = true, Note = true, PreviewImages = true, _index = true, _comment = true }
+local stepDisplayFields = { Name = true, Note = true, PreviewImages = true, FillerPreviewImages = true, _index = true, _comment = true }
 local textActions = { DroppableQuest = true, TameBeast = true, LearnSkill = true }
 local inventoryActions = { SellItems = true, BankDeposit = true, BankWithdraw = true, DestroyItems = true }
 

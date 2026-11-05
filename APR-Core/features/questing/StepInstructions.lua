@@ -260,6 +260,7 @@ function handlers.RenderRequirements(step, showStepDetails, currentStepIndex)
         for questId, objectives in pairs(questIDs) do
             questId = tonumber(questId)
             local questData = APR.ActiveQuests[questId]
+            local hasVisibleObjective = false
             for _, objectiveId in pairs(objectives) do
                 objectiveId = tonumber(objectiveId)
                 if not C_QuestLog.IsQuestFlaggedCompleted(questId) and not APRData[APR.PlayerID].BonusSkips[questId] then
@@ -269,8 +270,13 @@ function handlers.RenderRequirements(step, showStepDetails, currentStepIndex)
                     then
                         local questText = APR:GetQuestTextForProgressBar(questId, objectiveId)
                         APR.fillersFrame:AddFillerStep(questId, questText, objectiveId)
+                        hasVisibleObjective = true
                     end
                 end
+            end
+            if hasVisibleObjective and type(step.FillerPreviewImages) == "table"
+                and step.FillerPreviewImages[questId] then
+                APR.currentStepImagePreview:SetPreviewImages(APR.currentStep, step, questId)
             end
         end
     end

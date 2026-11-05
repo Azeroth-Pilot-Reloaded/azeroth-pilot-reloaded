@@ -66,6 +66,7 @@ assert(fingerprint({ a = "1" }) ~= fingerprint({ a = 1 }), "Scalar types partici
 local function localizedDefinition(text)
     return { label = text, legacyLabels = { text }, steps = {
         { Waypoint = 7001, Note = { text }, Name = text, PreviewImages = { text },
+            FillerPreviewImages = { [7002] = { text } },
             ExtraLineText = text, ExtraLineText42 = { text }, _comment = text,
             DroppableQuest = { Qid = 7002, MobId = 8001, Text = text },
             LearnSkill = { spellID = 9001, text = text }, TameBeast = { npcID = 8002, Text = text },
