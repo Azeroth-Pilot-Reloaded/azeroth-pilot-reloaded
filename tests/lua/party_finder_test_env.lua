@@ -42,6 +42,7 @@ function Fixture.New(options)
     function IsInGroup() return env.size > 0 end
     function IsInRaid() return false end
     function IsInInstance() return env.instance == true end
+    function IsPlayerInWorld() return true end
     function InCombatLockdown() return env.combat == true end
     function PlaySound(id, channel)
         env.soundEvents[#env.soundEvents + 1] = { id = id, channel = channel, at = env.now }
@@ -85,6 +86,10 @@ function Fixture.New(options)
         if options.prejoined or options.prejoinedWorld then env.channels[name] = env.channelID > 0 and env.channelID or 7 end
         local id = env.channels[name]
         return id or 0, id and name or nil
+    end
+    function GetChannelList()
+        return 1, "Synthetic one", false, 2, "Synthetic two", true, 3, "Synthetic three", false,
+            4, "Synthetic four", true, 5, "Synthetic five", false, 6, "Synthetic six", false
     end
     function JoinTemporaryChannel(name)
         env.joined[#env.joined + 1] = name
@@ -315,7 +320,7 @@ function Fixture.New(options)
     end
     if options.invites then env:LoadInvites() end
     finder:OnInit()
-    env:Advance(options.noSettle and 0 or 3)
+    env:Advance(options.noSettle and 0 or 6)
     return env
 end
 

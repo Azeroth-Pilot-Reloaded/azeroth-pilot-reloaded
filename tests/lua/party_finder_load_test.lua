@@ -8,7 +8,7 @@ local function Count(entries)
 end
 
 local function ForbiddenChat()
-    error("Discovery cannot reorder channels, reset native channels or modify chat windows")
+    error("Unexpected channel mutation or chat-window/roster access")
 end
 
 local function New(options)
