@@ -52,10 +52,11 @@ APR.ActiveRoute = nil -- Simulate reload with the selected path and saved progre
 local _, _, key = APR:GetCurrentRouteMapIDsAndName()
 assert(key == "Later" and APRData.player.Later == 2 and next(APRZoneCompleted.player) == nil)
 soloAccessLevel = 24
-assert(APR:GetRouteVisibility("Later") == "disabled" and not APR:CanStartRoute("Later"))
+assert(APR:GetRouteVisibility("Later") == "visible" and APR:CanStartRoute("Later"))
+assert(#APR:GetRouteLevelWarnings("Later") == 1, "An unmet chapter level is a visible recommendation")
 local maps = APR:GetCurrentRouteMapIDsAndName()
-assert(maps == nil and APRData.player.Later == 2 and #APRCustomPath.player == 1,
-    "A level gate preserves the queued route and its progress")
+assert(maps ~= nil and APRData.player.Later == 2 and #APRCustomPath.player == 1,
+    "An advisory level resumes the queued route without resetting progress")
 soloAccessLevel = 25
 APR.ClassName, APR.ClassId = "MAGE", 8
 assert(APR:GetRouteVisibility("Later") == "hidden", "Class eligibility remains enforced")

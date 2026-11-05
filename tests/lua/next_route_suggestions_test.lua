@@ -128,7 +128,9 @@ for _, version in ipairs({ APR.GAME_VERSIONS.Retail, APR.GAME_VERSIONS.Forever }
     APR:SuggestNextRoutes("finished", complete)
     APR.Level = 12
     popup.selectRoute(popup.suggestions[3])
-    assert(#APRCustomPath.player == 1, "A stale dungeon choice cannot bypass its entry level")
+    assert(#APRCustomPath.player == 2 and APRCustomPath.player[2] == routes["dungeon-only"].label,
+        "An explicit dungeon choice above level 10 remains allowed outside its recommended level")
+    assert(#APR:GetRouteLevelWarnings("dungeon-only") == 1)
 
     -- Missing/empty nextRoute must not reintroduce a broad catalog fallback.
     finished.nextRoute = nil

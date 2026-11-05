@@ -19,7 +19,8 @@ local function expectPath(expected)
 end
 assert(APR.routeconfig:BuildDungeonPrefab())
 expectPath({ first, middle, later })
-assert(not APR:CanStartRoute("fixture-later"), "Queuing a future chapter cannot waive activation's level gate")
+assert(APR:CanStartRoute("fixture-later"), "A future chapter above level 10 is selectable with a level warning")
+assert(#APR:GetRouteLevelWarnings("fixture-later") == 1)
 APR.Level = 20
 assert(APR:CanStartRoute("fixture-later"))
 APR.Level = 1

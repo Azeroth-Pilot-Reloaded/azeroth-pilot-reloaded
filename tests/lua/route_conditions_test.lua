@@ -353,6 +353,7 @@ do
     check({ Zones = { 2393, 2413 }, SkipInZones = { 2393 } }, 2393, false)
     check({ Zones = { 2393, 2413 }, SkipInZones = { 2393 } }, 2413, true)
     check({ OnlyInZones = { 2541 }, SkipForLvl = 88 }, 2541, false)
+    check({ OnlyInZones = { 2541 }, SkipForLvl = 88 }, 2393, false)
     check({ Zone = 2541 }, 2393, true)
     print(
         "Zone conditions: inclusion/exclusion, multiple maps, missing map, composition and navigation-only Zone passed")

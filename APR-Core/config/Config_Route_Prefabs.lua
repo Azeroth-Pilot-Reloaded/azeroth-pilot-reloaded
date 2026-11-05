@@ -27,8 +27,8 @@ local function AddRouteToCustomPath(routeName, routeFileName, queueDungeonChapte
     end
 
     if routeFileName and queueDungeonChapter then
-        -- Queue future chapters without waiving CanStartRoute at activation.
-        -- The preset already filters client/race/class; only level gates wait.
+        -- Queue planned chapters; activation still checks starting-level limits
+        -- and explicit prerequisites. Higher chapter levels are advisory.
         if APR:IsRequiredRouteApplicable(routeFileName) and not APR:Contains(APRCustomPath[APR.PlayerID], routeName) then
             tinsert(APRCustomPath[APR.PlayerID], routeName)
         end

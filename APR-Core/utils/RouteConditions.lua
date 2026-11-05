@@ -108,14 +108,14 @@ function APR:GetPrimaryProfessionCount()
 end--[[APR_DIAG]]; APR.GetPrimaryProfessionCount = APRTrace("APR-Core/utils/RouteConditions.lua:96:APR:GetPrimaryProfessionCount#3", APR.GetPrimaryProfessionCount)--[[/APR_DIAG]]
 
 -- Nested conditions use the full predicate set, exactly like top-level step filters.
-function APR:MeetsExtendedRouteConditions(conditions)
+function APR:MeetsExtendedRouteConditions(conditions, levelPolicy)
     local allOf = conditions.AllOf
     if allOf then
         for _, required in ipairs(allOf) do
-            if not self:AreConditionalFiltersMet(required) then return false end
+            if not self:AreConditionalFiltersMet(required, levelPolicy) then return false end
         end
     end
-    if conditions.Not and self:AreConditionalFiltersMet(conditions.Not) then return false end
+    if conditions.Not and self:AreConditionalFiltersMet(conditions.Not, levelPolicy) then return false end
 
     local skill = conditions.Skill
     if skill and not self:CompareRouteNumber(self:GetRouteSkill(skill), skill.operator or ">=", skill.rank or 1) then
