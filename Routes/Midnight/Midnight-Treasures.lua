@@ -503,12 +503,21 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             _index = 61,
         },
         {
+            Waypoint = 89168,
+            NonSkippableWaypoint = true,
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2413, 69.89, 50.34),
+            Range = 5,
+            HasSpell = 471014,
+            Zone = 2413,
+            _index = 62,
+        },
+        {
             Treasure = { questID = 89168, itemID = 238630 },
             Coord = { x = -1685.5, y = 45.0 },
             Range = 0.5,
             HasSpell = 471014,
             Zone = 2413,
-            _index = 62,
+            _index = 63,
         },
         {
             Treasure = { questID = 89159, itemID = 238471 },
@@ -516,7 +525,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471009,
             Zone = 2413,
-            _index = 63,
+            _index = 64,
         },
         {
             Treasure = { questID = 89095, itemID = 238594 },
@@ -524,7 +533,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471012,
             Zone = 2413,
-            _index = 64,
+            _index = 65,
         },
         {
             Treasure = { questID = 89113, itemID = 238534 },
@@ -532,7 +541,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471003,
             Zone = 2413,
-            _index = 65,
+            _index = 66,
         },
         {
             Treasure = { questID = 89104, itemID = 238552 },
@@ -540,7 +549,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471006,
             Zone = 2413,
-            _index = 66,
+            _index = 67,
         },
         {
             Treasure = { questID = 89162, itemID = 238468 },
@@ -548,7 +557,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471009,
             Zone = 2413,
-            _index = 67,
+            _index = 68,
         },
         {
             Treasure = { questID = 89151, itemID = 238603 },
@@ -556,7 +565,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471013,
             Zone = 2413,
-            _index = 68,
+            _index = 69,
         },
         {
             Treasure = { questID = 89155, itemID = 238475 },
@@ -564,14 +573,14 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471009,
             Zone = 2413,
-            _index = 69,
+            _index = 70,
         },
         {
             TakePortal = { questID = 89102, mapID = 2405 },
             Coord = { x = -434.4, y = -285.5 },
             ZoneStepTrigger = { Range = 15, x = -448.9, y = 895.8 },
             Zone = 2413,
-            _index = 70,
+            _index = 71,
         },
         {
             Treasure = { questID = 89102, itemID = 238550 },
@@ -579,7 +588,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471006,
             Zone = 2405,
-            _index = 71,
+            _index = 72,
         },
         {
             Treasure = { questID = 89156, itemID = 238474 },
@@ -587,7 +596,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471009,
             Zone = 2405,
-            _index = 72,
+            _index = 73,
         },
         {
             Treasure = { questID = 89090, itemID = 238589 },
@@ -595,7 +604,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471012,
             Zone = 2405,
-            _index = 73,
+            _index = 74,
         },
         {
             Treasure = { questID = 89118, itemID = 238539 },
@@ -603,15 +612,15 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471003,
             Zone = 2405,
-            _index = 74,
+            _index = 75,
         },
         {
             Treasure = { questID = 89150, itemID = 238602 },
-            Coord = { x = 547.8, y = 3065.1 },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2444, 34.27, 76.07),
             Range = 0.5,
             HasSpell = 471013,
-            Zone = 2405,
-            _index = 75,
+            Zone = 2444,
+            _index = 76,
         },
         {
             Treasure = { questID = 89144, itemID = 238596 },
@@ -619,7 +628,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471013,
             Zone = 2405,
-            _index = 76,
+            _index = 77,
         },
         {
             Treasure = { questID = 89123, itemID = 238581 },
@@ -627,7 +636,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471011,
             Zone = 2405,
-            _index = 77,
+            _index = 78,
         },
         {
             Treasure = { questID = 89181, itemID = 238544 },
@@ -635,7 +644,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471004,
             Zone = 2405,
-            _index = 78,
+            _index = 79,
         },
         {
             Treasure = { questID = 89134, itemID = 238557 },
@@ -643,7 +652,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471007,
             Zone = 2405,
-            _index = 79,
+            _index = 80,
         },
         {
             Treasure = { questID = 89148, itemID = 238600 },
@@ -651,7 +660,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471013,
             Zone = 2405,
-            _index = 80,
+            _index = 81,
         },
         {
             Treasure = { questID = 89112, itemID = 238533 },
@@ -659,7 +668,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471003,
             Zone = 2405,
-            _index = 81,
+            _index = 82,
         },
         {
             Treasure = { questID = 89169, itemID = 238631 },
@@ -667,7 +676,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471014,
             Zone = 2405,
-            _index = 82,
+            _index = 83,
         },
         {
             Treasure = { questID = 89093, itemID = 238592 },
@@ -675,7 +684,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471012,
             Zone = 2405,
-            _index = 83,
+            _index = 84,
         },
         {
             Treasure = { questID = 89137, itemID = 238560 },
@@ -683,7 +692,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471007,
             Zone = 2405,
-            _index = 84,
+            _index = 85,
         },
         {
             Treasure = { questID = 89128, itemID = 238586 },
@@ -691,7 +700,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471011,
             Zone = 2405,
-            _index = 85,
+            _index = 86,
         },
         {
             Treasure = { questID = 89146, itemID = 238598 },
@@ -699,7 +708,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471013,
             Zone = 2405,
-            _index = 86,
+            _index = 87,
         },
         {
             Treasure = { questID = 89126, itemID = 238584 },
@@ -707,7 +716,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471011,
             Zone = 2405,
-            _index = 87,
+            _index = 88,
         },
         {
             Treasure = { questID = 89082, itemID = 238616 },
@@ -715,7 +724,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471015,
             Zone = 2405,
-            _index = 88,
+            _index = 89,
         },
         {
             Treasure = { questID = 89067, itemID = 238572 },
@@ -723,7 +732,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471010,
             Zone = 2405,
-            _index = 89,
+            _index = 90,
         },
         {
             Treasure = { questID = 89083, itemID = 238617 },
@@ -731,11 +740,11 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             Range = 0.5,
             HasSpell = 471015,
             Zone = 2405,
-            _index = 90,
+            _index = 91,
         },
         {
             RouteCompleted = true,
-            _index = 91,
+            _index = 92,
         },
     }
 }
