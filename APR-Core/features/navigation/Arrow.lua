@@ -380,6 +380,10 @@ function APR.Arrow:SetCoord()
     APR:Debug("APR.Arrow:SetCoord()")
 
     local navigation = APR.navigation
+    if navigation and navigation.state == "instance" then
+        self:SetArrowActive(false, 0, 0)
+        return
+    end
     if navigation and navigation.retainedArrow then
         local retained = navigation:GetRetainedArrow()
         local coord = retained and retained.Coord
@@ -542,7 +546,7 @@ local function UpdatePosition(self, playerX, playerY, facing, instanceID)
         APR.ArrowFrame.distance:SetText(displayedDistance .. " " .. L["YARDS"])
         self.lastDisplayedDistance = displayedDistance
     end
-end--[[APR_DIAG]]; UpdatePosition = APRTrace("APR-Core/features/navigation/Arrow.lua:447:UpdatePosition#21", UpdatePosition)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; UpdatePosition = APRTrace("APR-Core/features/navigation/Arrow.lua:451:UpdatePosition#21", UpdatePosition)--[[/APR_DIAG]]
 
 function APR.Arrow:UpdatePosition()
     local playerY, playerX, _, instanceID = UnitPosition("player")
@@ -588,12 +592,12 @@ function APR.Arrow:UpdatePosition()
     local started = APR.StartPerformanceSample and APR:StartPerformanceSample()
     UpdatePosition(self, playerX, playerY, facing, instanceID)
     if APR.FinishPerformanceSample then APR:FinishPerformanceSample("ArrowPositionUpdate", started) end
-end--[[APR_DIAG]]; APR.Arrow.UpdatePosition = APRTrace("APR-Core/features/navigation/Arrow.lua:547:APR.Arrow:UpdatePosition#22", APR.Arrow.UpdatePosition)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Arrow.UpdatePosition = APRTrace("APR-Core/features/navigation/Arrow.lua:551:APR.Arrow:UpdatePosition#22", APR.Arrow.UpdatePosition)--[[/APR_DIAG]]
 
 function APR.Arrow:RefreshVisibility()
     self.positionCache = nil
     self:UpdatePosition()
-end--[[APR_DIAG]]; APR.Arrow.RefreshVisibility = APRTrace("APR-Core/features/navigation/Arrow.lua:593:APR.Arrow:RefreshVisibility#23", APR.Arrow.RefreshVisibility)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Arrow.RefreshVisibility = APRTrace("APR-Core/features/navigation/Arrow.lua:597:APR.Arrow:RefreshVisibility#23", APR.Arrow.RefreshVisibility)--[[/APR_DIAG]]
 
 function APR.Arrow:SetArrowActive(isActive, x, y, displayAction)
     local a = APR.Arrow
@@ -612,4 +616,4 @@ function APR.Arrow:SetArrowActive(isActive, x, y, displayAction)
     end
     local data = APR.NavigationData
     if data and data.RefreshWaypoints then data:RefreshWaypoints() end
-end--[[APR_DIAG]]; APR.Arrow.SetArrowActive = APRTrace("APR-Core/features/navigation/Arrow.lua:598:APR.Arrow:SetArrowActive#24", APR.Arrow.SetArrowActive)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Arrow.SetArrowActive = APRTrace("APR-Core/features/navigation/Arrow.lua:602:APR.Arrow:SetArrowActive#24", APR.Arrow.SetArrowActive)--[[/APR_DIAG]]

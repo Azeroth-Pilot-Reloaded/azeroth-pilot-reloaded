@@ -1,6 +1,22 @@
 -- Declarative travel data. Names are resolved through the game client.
 LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "passages", {
     connections = {
+        -- Classic AreaTrigger 2534/2530 and their server return landings.
+        -- Exit-only: entering the PvP halls has additional access conditions.
+        {
+            id = "passage-champions-hall-to-stormwind",
+            kind = "passage",
+            from = { space = "world", instanceID = 449, x = -0.358041, y = -1.97986, z = -0.255884 },
+            to = { space = "world", uiMapID = 1453, instanceID = 0, x = -8762.45, y = 403.062, z = 103.902 },
+            seconds = 5,
+        },
+        {
+            id = "passage-hall-of-legends-to-orgrimmar",
+            kind = "passage",
+            from = { space = "world", instanceID = 450, x = 215.194, y = 71.157, z = 30.1276 },
+            to = { space = "world", uiMapID = 1454, instanceID = 1, x = 1637.32, y = -4242.7, z = 56.1827 },
+            seconds = 5,
+        },
         {
             id = "passage-tram-stormwind-entry-2173",
             kind = "passage",
@@ -263,4 +279,4 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "passages", {
             arrivalZTolerance = 8,
         },
     },
-}, 30)
+}, 31)

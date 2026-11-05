@@ -127,7 +127,10 @@ function APR:GetDungeonTravelText(step)
         end
         if accessible(localized) and type(localized) == "string" and localized ~= "" then name = localized end
     end
-    if step.EnterInstance then return ENTER_DUNGEON .. ": " .. name end
+    if step.EnterInstance then
+        if ENTER_DUNGEON:find("%%s") then return string.format(ENTER_DUNGEON, name) end
+        return ENTER_DUNGEON .. ": " .. name
+    end
     return string.format(LEAVE_ZONE, name)
 end--[[APR_DIAG]]; APR.GetDungeonTravelText = APRTrace("APR-Core/utils/DungeonUtils.lua:117:APR:GetDungeonTravelText#13", APR.GetDungeonTravelText)--[[/APR_DIAG]]
 
@@ -145,7 +148,7 @@ function APR:RenderDungeonTravel(step)
     end
     local label = entering and "EnterInstance" or "LeaveInstance"
     self.currentStep:AddQuestSteps(label, self:GetDungeonTravelText(step), label, false, true)
-end--[[APR_DIAG]]; APR.RenderDungeonTravel = APRTrace("APR-Core/utils/DungeonUtils.lua:134:APR:RenderDungeonTravel#14", APR.RenderDungeonTravel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RenderDungeonTravel = APRTrace("APR-Core/utils/DungeonUtils.lua:137:APR:RenderDungeonTravel#14", APR.RenderDungeonTravel)--[[/APR_DIAG]]
 
 -- Encounter names can replace the route's English fallback when the encounter
 -- and its sole NPC have the same name in the source data. Group encounter titles
@@ -170,7 +173,7 @@ function APR:RememberDungeonEncounterNames(step, encounterID, encounterName, uni
         end
     end
     return changed
-end--[[APR_DIAG]]; APR.RememberDungeonEncounterNames = APRTrace("APR-Core/utils/DungeonUtils.lua:153:APR:RememberDungeonEncounterNames#15", APR.RememberDungeonEncounterNames)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RememberDungeonEncounterNames = APRTrace("APR-Core/utils/DungeonUtils.lua:156:APR:RememberDungeonEncounterNames#15", APR.RememberDungeonEncounterNames)--[[/APR_DIAG]]
 
 -- Successful encounters grant credit through explicit dead-boss data or a known
 -- encounter ID. Unidentified or previously killed bosses need manual completion.
@@ -181,7 +184,7 @@ events:RegisterEvent("ENCOUNTER_END")
 events:RegisterEvent("ENCOUNTER_START")
 events:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 events:RegisterEvent("PLAYER_ENTERING_WORLD")
-events:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/utils/DungeonUtils.lua:184:callback#16", --[[/APR_DIAG]]function(_, event, ...)
+events:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/utils/DungeonUtils.lua:187:callback#16", --[[/APR_DIAG]]function(_, event, ...)
     if not APR.ActiveRoute or not APR.settings or not APR.settings.profile.enableAddon then return end
     local step = APR:GetCurrentStep()
     if not dungeonKey(step) then return end

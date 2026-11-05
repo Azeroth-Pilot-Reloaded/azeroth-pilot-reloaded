@@ -4,6 +4,8 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "geography", {
         -- Classic exposes world instance 369 in the tram, but no native UI map.
         -- Retain the legacy guide identity; coordinates remain world yards.
         UnmappedAreas = { [499] = { instanceID = 369, areaID = 2257 } },
+        -- Vanilla PvP halls have world positions but no native/legacy UI map.
+        UnmappedInstances = { [449] = true, [450] = true },
         -- Both platforms share the tram's world/UI map. Name the city served
         -- by each arrival platform, including nearby quest givers.
         TransportDestinations = { tram = {
@@ -25,4 +27,4 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "geography", {
         defaultSpellCastSeconds = 10,
         threshold = 2000,
     },
-}, 33)
+}, 34)

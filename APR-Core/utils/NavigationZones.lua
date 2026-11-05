@@ -25,17 +25,58 @@ end--[[APR_DIAG]]; GetNavigationConfig = APRTrace("APR-Core/utils/NavigationZone
 
 -- A verified world interior may have no native UI map (for example the
 -- Classic tram). Never infer the player's map from the active guide.
+local function PublicPositionNumber(value)
+    if (issecretvalue and issecretvalue(value))
+        or (APR.CanAccessValue and not APR:CanAccessValue(value)) then return nil end
+    if type(value) == "number" and value == value and math.abs(value) < math.huge then return value end
+end--[[APR_DIAG]]; PublicPositionNumber = APRTrace("APR-Core/utils/NavigationZones.lua:28:PublicPositionNumber#4", PublicPositionNumber)--[[/APR_DIAG]]
+
+-- Instance identity remains public when the client withholds coordinates.
+-- It proves where we are, never where inside the instance we are standing.
+function APR:GetNavigationPlayerContext()
+    local x, y, z, world
+    if UnitPosition then x, y, z, world = UnitPosition("player") end
+    x, y, z, world = PublicPositionNumber(x), PublicPositionNumber(y), PublicPositionNumber(z), PublicPositionNumber(world)
+    local name, kind, instanceID
+    if GetInstanceInfo then
+        local ok, n, k, _, _, _, _, _, id = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetInstanceInfo)
+        if ok then
+            if (not issecretvalue or not issecretvalue(n)) and (not self.CanAccessValue or self:CanAccessValue(n))
+                and type(n) == "string" then name = n end
+            if (not issecretvalue or not issecretvalue(k)) and (not self.CanAccessValue or self:CanAccessValue(k))
+                and type(k) == "string" then kind = k end
+            instanceID = PublicPositionNumber(id)
+        end
+    end
+    local data = self.NavigationData
+    local observedWorld = world
+    world = world or instanceID
+    if not world or world < 0 or world % 1 ~= 0 then return nil end
+    if data and data.GetWorldInstanceID then world = data:GetWorldInstanceID(world) end
+    -- During transitions the two APIs can describe different worlds. Do not
+    -- attach the previous instance's name/type to a fresh outdoor position.
+    if instanceID and data and data.GetWorldInstanceID then instanceID = data:GetWorldInstanceID(instanceID) end
+    if instanceID ~= world then name, kind = nil, nil end
+    local mapID = C_Map and C_Map.GetBestMapForUnit and PublicPositionNumber(C_Map.GetBestMapForUnit("player"))
+    local mapSource = "native"
+    if not mapID or mapID <= 0 or mapID % 1 ~= 0 then
+        mapID = data and data.GetFallbackMapForInstance and data:GetFallbackMapForInstance(world)
+        mapSource = mapID and "catalogue" or "unavailable"
+    end
+    local coordinatesAvailable = observedWorld ~= nil and x ~= nil and y ~= nil
+    return { instanceID = world, instanceName = name, instanceType = kind,
+        isInstance = kind == "party" or kind == "raid" or kind == "scenario" or kind == "pvp" or kind == "arena",
+        uiMapID = mapID, mapSource = mapSource, coordinatesAvailable = coordinatesAvailable,
+        x = coordinatesAvailable and x or nil, y = coordinatesAvailable and y or nil, z = z }
+end--[[APR_DIAG]]; APR.GetNavigationPlayerContext = APRTrace("APR-Core/utils/NavigationZones.lua:36:APR:GetNavigationPlayerContext#5", APR.GetNavigationPlayerContext)--[[/APR_DIAG]]
+
 function APR:GetPlayerMapID()
     local mapID = C_Map and C_Map.GetBestMapForUnit and C_Map.GetBestMapForUnit("player")
     if self.CanAccessValue and not self:CanAccessValue(mapID) then return nil end
     if type(mapID) == "number" and mapID > 0 and mapID < math.huge and mapID % 1 == 0 then return mapID end
-    local data = self.NavigationData
-    if not UnitPosition or not data or not data.GetFallbackMapForInstance then return nil end
-    local _, _, _, instanceID = UnitPosition("player")
-    if self.CanAccessValue and not self:CanAccessValue(instanceID) then return nil end
-    if type(instanceID) ~= "number" or instanceID < 0 or instanceID >= math.huge or instanceID % 1 ~= 0 then return nil end
-    return data:GetFallbackMapForInstance(instanceID)
-end--[[APR_DIAG]]; APR.GetPlayerMapID = APRTrace("APR-Core/utils/NavigationZones.lua:28:APR:GetPlayerMapID#4", APR.GetPlayerMapID)--[[/APR_DIAG]]
+    local context = self:GetNavigationPlayerContext()
+    return context and context.uiMapID
+end--[[APR_DIAG]]; APR.GetPlayerMapID = APRTrace("APR-Core/utils/NavigationZones.lua:73:APR:GetPlayerMapID#6", APR.GetPlayerMapID)--[[/APR_DIAG]]
 
 --- Initialize zone detector module
 function APR:InitZoneDetectionCache()
@@ -57,7 +98,7 @@ function APR:InitZoneDetectionCache()
         -- Debug flag (synchronized with settings)
         debug = (self.settings and self.settings.profile and self.settings.profile.zoneDetectionDebug) or false
     }
-end--[[APR_DIAG]]; APR.InitZoneDetectionCache = APRTrace("APR-Core/utils/NavigationZones.lua:41:APR:InitZoneDetectionCache#5", APR.InitZoneDetectionCache)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.InitZoneDetectionCache = APRTrace("APR-Core/utils/NavigationZones.lua:82:APR:InitZoneDetectionCache#7", APR.InitZoneDetectionCache)--[[/APR_DIAG]]
 
 ---=============================================================================
 -- CONTINENT & MAP INFO FUNCTIONS
@@ -90,7 +131,7 @@ function APR:GetContinent(mapId)
     end
 
     return 0
-end--[[APR_DIAG]]; APR.GetContinent = APRTrace("APR-Core/utils/NavigationZones.lua:70:APR:GetContinent#6", APR.GetContinent)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetContinent = APRTrace("APR-Core/utils/NavigationZones.lua:111:APR:GetContinent#8", APR.GetContinent)--[[/APR_DIAG]]
 
 --- Return the parent map for the player (zone by default) at a given hierarchy level
 --- Uses zone detection system for reliable results
@@ -125,7 +166,7 @@ function APR:GetPlayerParentMapID(mapType)
 
     -- Fallback to current map if no parent of requested type found
     return currentMapId
-end--[[APR_DIAG]]; APR.GetPlayerParentMapID = APRTrace("APR-Core/utils/NavigationZones.lua:99:APR:GetPlayerParentMapID#7", APR.GetPlayerParentMapID)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetPlayerParentMapID = APRTrace("APR-Core/utils/NavigationZones.lua:140:APR:GetPlayerParentMapID#9", APR.GetPlayerParentMapID)--[[/APR_DIAG]]
 
 --- Get map info with caching to reduce API calls
 ---@param mapID number Zone MapID
@@ -144,14 +185,14 @@ function APR:GetMapInfoCached(mapID)
     end
 
     return cache[mapID]
-end--[[APR_DIAG]]; APR.GetMapInfoCached = APRTrace("APR-Core/utils/NavigationZones.lua:133:APR:GetMapInfoCached#8", APR.GetMapInfoCached)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetMapInfoCached = APRTrace("APR-Core/utils/NavigationZones.lua:174:APR:GetMapInfoCached#10", APR.GetMapInfoCached)--[[/APR_DIAG]]
 
 --- Invalidate map info cache (call on significant map changes)
 function APR:InvalidateMapInfoCache()
     if self.ZoneDetection and self.ZoneDetection.mapInfoCache then
         wipe(self.ZoneDetection.mapInfoCache)
     end
-end--[[APR_DIAG]]; APR.InvalidateMapInfoCache = APRTrace("APR-Core/utils/NavigationZones.lua:150:APR:InvalidateMapInfoCache#9", APR.InvalidateMapInfoCache)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.InvalidateMapInfoCache = APRTrace("APR-Core/utils/NavigationZones.lua:191:APR:InvalidateMapInfoCache#11", APR.InvalidateMapInfoCache)--[[/APR_DIAG]]
 
 ---=============================================================================
 -- CACHE MANAGEMENT
@@ -171,7 +212,7 @@ function APR:InvalidatePlayerZoneCache(mapGeometryChanged)
     -- Also invalidate route zone check throttle
     self._lastRouteZoneCheck = nil
     self._lastRouteZoneResult = nil
-end--[[APR_DIAG]]; APR.InvalidatePlayerZoneCache = APRTrace("APR-Core/utils/NavigationZones.lua:162:APR:InvalidatePlayerZoneCache#10", APR.InvalidatePlayerZoneCache)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.InvalidatePlayerZoneCache = APRTrace("APR-Core/utils/NavigationZones.lua:203:APR:InvalidatePlayerZoneCache#12", APR.InvalidatePlayerZoneCache)--[[/APR_DIAG]]
 
 --- Check if cache is still valid
 local function IsCacheValid(cache)
@@ -184,7 +225,7 @@ local function IsCacheValid(cache)
     end
     local elapsed = now - cache.timestamp
     return elapsed >= 0 and elapsed < cache.ttl
-end--[[APR_DIAG]]; IsCacheValid = APRTrace("APR-Core/utils/NavigationZones.lua:177:IsCacheValid#11", IsCacheValid)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; IsCacheValid = APRTrace("APR-Core/utils/NavigationZones.lua:218:IsCacheValid#13", IsCacheValid)--[[/APR_DIAG]]
 
 ---=============================================================================
 -- CORE HIERARCHY FUNCTIONS
@@ -216,7 +257,7 @@ function APR:GetMapParentChain(mapID)
     end
 
     return chain
-end--[[APR_DIAG]]; APR.GetMapParentChain = APRTrace("APR-Core/utils/NavigationZones.lua:197:APR:GetMapParentChain#12", APR.GetMapParentChain)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetMapParentChain = APRTrace("APR-Core/utils/NavigationZones.lua:238:APR:GetMapParentChain#14", APR.GetMapParentChain)--[[/APR_DIAG]]
 
 --- Get all descendants of a map recursively
 --- Returns: flat list of all child mapIDs at any depth
@@ -256,7 +297,7 @@ function APR:GetAllMapDescendants(parentMapID, maxDepth)
                 recurse(childInfo.mapID, depth + 1)
             end
         end
-    end--[[APR_DIAG]]; recurse = APRTrace("APR-Core/utils/NavigationZones.lua:242:recurse#14", recurse)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; recurse = APRTrace("APR-Core/utils/NavigationZones.lua:283:recurse#16", recurse)--[[/APR_DIAG]]
 
     recurse(parentMapID, 0)
 
@@ -264,7 +305,7 @@ function APR:GetAllMapDescendants(parentMapID, maxDepth)
     self.ZoneDetection.descendantsCache[parentMapID] = descendants
 
     return descendants
-end--[[APR_DIAG]]; APR.GetAllMapDescendants = APRTrace("APR-Core/utils/NavigationZones.lua:226:APR:GetAllMapDescendants#13", APR.GetAllMapDescendants)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetAllMapDescendants = APRTrace("APR-Core/utils/NavigationZones.lua:267:APR:GetAllMapDescendants#15", APR.GetAllMapDescendants)--[[/APR_DIAG]]
 
 ---=============================================================================
 -- PLAYER CONTEXT RESOLUTION
@@ -322,7 +363,7 @@ function APR:ResolvePlayerZoneContext()
     self.ZoneDetection.playerContextCache.timestamp = GetTime and GetTime() or 0
 
     return context
-end--[[APR_DIAG]]; APR.ResolvePlayerZoneContext = APRTrace("APR-Core/utils/NavigationZones.lua:276:APR:ResolvePlayerZoneContext#15", APR.ResolvePlayerZoneContext)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ResolvePlayerZoneContext = APRTrace("APR-Core/utils/NavigationZones.lua:317:APR:ResolvePlayerZoneContext#17", APR.ResolvePlayerZoneContext)--[[/APR_DIAG]]
 
 ---=============================================================================
 -- ZONE MATCHING FUNCTIONS
@@ -344,7 +385,7 @@ function APR:CheckDirectMatch(playerContext, stepZones)
     end
 
     return false
-end--[[APR_DIAG]]; APR.CheckDirectMatch = APRTrace("APR-Core/utils/NavigationZones.lua:335:APR:CheckDirectMatch#16", APR.CheckDirectMatch)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CheckDirectMatch = APRTrace("APR-Core/utils/NavigationZones.lua:376:APR:CheckDirectMatch#18", APR.CheckDirectMatch)--[[/APR_DIAG]]
 
 --- Check if player ancestry matches step zones (hierarchy climbing)
 ---@param playerContext table Player zone context
@@ -362,7 +403,7 @@ function APR:CheckHierarchyMatch(playerContext, stepZones)
     end
 
     return false
-end--[[APR_DIAG]]; APR.CheckHierarchyMatch = APRTrace("APR-Core/utils/NavigationZones.lua:353:APR:CheckHierarchyMatch#17", APR.CheckHierarchyMatch)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CheckHierarchyMatch = APRTrace("APR-Core/utils/NavigationZones.lua:394:APR:CheckHierarchyMatch#19", APR.CheckHierarchyMatch)--[[/APR_DIAG]]
 
 --- Check if any player map is child of step zones (hierarchy descending)
 ---@param playerContext table Player zone context
@@ -381,7 +422,7 @@ function APR:CheckDescendantMatch(playerContext, stepZones)
     end
 
     return false
-end--[[APR_DIAG]]; APR.CheckDescendantMatch = APRTrace("APR-Core/utils/NavigationZones.lua:371:APR:CheckDescendantMatch#18", APR.CheckDescendantMatch)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CheckDescendantMatch = APRTrace("APR-Core/utils/NavigationZones.lua:412:APR:CheckDescendantMatch#20", APR.CheckDescendantMatch)--[[/APR_DIAG]]
 
 --- Check if player is on same continent as step zones
 ---@param playerContext table Player zone context
@@ -405,7 +446,7 @@ function APR:CheckContinentMatch(playerContext, stepZones)
     end
 
     return false
-end--[[APR_DIAG]]; APR.CheckContinentMatch = APRTrace("APR-Core/utils/NavigationZones.lua:390:APR:CheckContinentMatch#19", APR.CheckContinentMatch)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CheckContinentMatch = APRTrace("APR-Core/utils/NavigationZones.lua:431:APR:CheckContinentMatch#21", APR.CheckContinentMatch)--[[/APR_DIAG]]
 
 -- Follow outdoor ancestry symmetrically, including a city's parent zone.
 -- Do not cross dungeon maps, unknown hierarchy, or explicit access regions.
@@ -432,7 +473,7 @@ local function GetOutdoorMapContext(self, mapID)
         outerZone = mapID
         mapID = info.parentMapID
     end
-end--[[APR_DIAG]]; GetOutdoorMapContext = APRTrace("APR-Core/utils/NavigationZones.lua:412:GetOutdoorMapContext#20", GetOutdoorMapContext)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; GetOutdoorMapContext = APRTrace("APR-Core/utils/NavigationZones.lua:453:GetOutdoorMapContext#22", GetOutdoorMapContext)--[[/APR_DIAG]]
 
 --- Accept a nearby step across connected outdoor maps, including nested cities.
 -- Shared world coordinates establish proximity; the solver still checks whether
@@ -460,7 +501,7 @@ function APR:IsNearbyStepInConnectedZone(step, playerContext, fallbackMapID)
         return source.outerZone == target.outerZone
     end
     return true
-end--[[APR_DIAG]]; APR.IsNearbyStepInConnectedZone = APRTrace("APR-Core/utils/NavigationZones.lua:440:APR:IsNearbyStepInConnectedZone#21", APR.IsNearbyStepInConnectedZone)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.IsNearbyStepInConnectedZone = APRTrace("APR-Core/utils/NavigationZones.lua:481:APR:IsNearbyStepInConnectedZone#23", APR.IsNearbyStepInConnectedZone)--[[/APR_DIAG]]
 
 --- Check if player is in special instance content
 ---@return boolean
@@ -474,7 +515,7 @@ function APR:IsInSpecialContent()
     end
 
     return false
-end--[[APR_DIAG]]; APR.IsInSpecialContent = APRTrace("APR-Core/utils/NavigationZones.lua:467:APR:IsInSpecialContent#22", APR.IsInSpecialContent)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.IsInSpecialContent = APRTrace("APR-Core/utils/NavigationZones.lua:508:APR:IsInSpecialContent#24", APR.IsInSpecialContent)--[[/APR_DIAG]]
 
 ---=============================================================================
 -- DEBUGGING & DIAGNOSTICS
@@ -503,12 +544,13 @@ function APR:DebugZoneDetection(context, playerContext, stepZones, result)
     )
 
     self:PrintZoneDebug(msg)
-end--[[APR_DIAG]]; APR.DebugZoneDetection = APRTrace("APR-Core/utils/NavigationZones.lua:488:APR:DebugZoneDetection#23", APR.DebugZoneDetection)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.DebugZoneDetection = APRTrace("APR-Core/utils/NavigationZones.lua:529:APR:DebugZoneDetection#25", APR.DebugZoneDetection)--[[/APR_DIAG]]
 
 --- Get complete zone detection report
 ---@return table report Detailed diagnostic info
 function APR:GetZoneDetectionReport()
     local playerContext = self:ResolvePlayerZoneContext()
+    local world = self:GetNavigationPlayerContext()
 
     return {
         playerCurrent = playerContext.current,
@@ -518,9 +560,14 @@ function APR:GetZoneDetectionReport()
         allRelevantMaps = playerContext.allRelevant,
         cacheValid = IsCacheValid(self.ZoneDetection.playerContextCache),
         specialContent = self:IsInSpecialContent(),
+        worldInstanceID = world and world.instanceID,
+        instanceName = world and world.instanceName,
+        instanceType = world and world.instanceType,
+        mapSource = world and world.mapSource,
+        coordinatesAvailable = world and world.coordinatesAvailable,
         timestamp = GetTime()
     }
-end--[[APR_DIAG]]; APR.GetZoneDetectionReport = APRTrace("APR-Core/utils/NavigationZones.lua:510:APR:GetZoneDetectionReport#24", APR.GetZoneDetectionReport)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetZoneDetectionReport = APRTrace("APR-Core/utils/NavigationZones.lua:551:APR:GetZoneDetectionReport#26", APR.GetZoneDetectionReport)--[[/APR_DIAG]]
 
 ---=============================================================================
 -- INITIALIZATION
@@ -532,7 +579,7 @@ zoneChangeFrame:RegisterEvent("ZONE_CHANGED")
 zoneChangeFrame:RegisterEvent("ZONE_CHANGED_INDOORS")
 zoneChangeFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 local observedMapArt = {}
-zoneChangeFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/utils/NavigationZones.lua:535:callback#25", --[[/APR_DIAG]]function(self, event)
+zoneChangeFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/utils/NavigationZones.lua:582:callback#27", --[[/APR_DIAG]]function(self, event)
     if APR and APR.InvalidatePlayerZoneCache then
         local geometryChanged = event == "ZONE_CHANGED_NEW_AREA"
         local mapID = C_Map and C_Map.GetBestMapForUnit and C_Map.GetBestMapForUnit("player")
@@ -554,21 +601,21 @@ end--[[APR_DIAG]])--[[/APR_DIAG]])
 -- A map relationship describes geography; only the data provider can establish
 -- whether it is reachable without a mandatory crossing.
 function APR:GetNavigationPlayerPosition()
-    local worldX, worldY, z, instanceID = UnitPosition("player")
-    if worldX == nil or worldY == nil or instanceID == nil then return nil end
-    if self.CanAccessValue and (not self:CanAccessValue(worldX) or not self:CanAccessValue(worldY)
-        or not self:CanAccessValue(instanceID)) then return nil end
-    if self.NavigationData and self.NavigationData.GetWorldInstanceID then
-        instanceID = self.NavigationData:GetWorldInstanceID(instanceID)
-    end
-    local position = { x = worldX, y = worldY, z = z or 0, instanceID = instanceID,
-        uiMapID = self:GetPlayerMapID() }
-    if not position.uiMapID then return nil end
-    local sanctum = C_Map.GetAreaInfo and C_Map.GetAreaInfo(10523)
+    local context = self:GetNavigationPlayerContext()
+    if not context or not context.coordinatesAvailable then return nil end
+    local position = { x = context.x, y = context.y, z = context.z, instanceID = context.instanceID,
+        uiMapID = context.uiMapID, isInstance = context.isInstance or nil }
+    local sanctum = C_Map and C_Map.GetAreaInfo and C_Map.GetAreaInfo(10523)
     if sanctum and GetSubZoneText and GetSubZoneText() == sanctum then position.accessKey = "wizards-sanctum" end
-    if self.NavigationData then position.region = self.NavigationData:GetPositionRegion(position) end
+    if self.NavigationData then
+        if position.uiMapID then position.region = self.NavigationData:GetPositionRegion(position)
+        elseif self.NavigationData.GetUnmappedInstanceRegion then
+            position.region = self.NavigationData:GetUnmappedInstanceRegion(position.instanceID)
+        end
+    end
+    if not position.uiMapID and not position.region then return nil end
     return position
-end--[[APR_DIAG]]; APR.GetNavigationPlayerPosition = APRTrace("APR-Core/utils/NavigationZones.lua:556:APR:GetNavigationPlayerPosition#26", APR.GetNavigationPlayerPosition)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetNavigationPlayerPosition = APRTrace("APR-Core/utils/NavigationZones.lua:603:APR:GetNavigationPlayerPosition#28", APR.GetNavigationPlayerPosition)--[[/APR_DIAG]]
 
 function APR:CheckNavigationZoneReady(target, options)
     options = options or {}
@@ -590,4 +637,4 @@ function APR:CheckNavigationZoneReady(target, options)
     local limit = options.threshold or 2000
     if dx * dx + dy * dy < limit * limit then return true, "nearby_connected" end
     return false, "too_far"
-end--[[APR_DIAG]]; APR.CheckNavigationZoneReady = APRTrace("APR-Core/utils/NavigationZones.lua:573:APR:CheckNavigationZoneReady#27", APR.CheckNavigationZoneReady)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CheckNavigationZoneReady = APRTrace("APR-Core/utils/NavigationZones.lua:620:APR:CheckNavigationZoneReady#29", APR.CheckNavigationZoneReady)--[[/APR_DIAG]]
