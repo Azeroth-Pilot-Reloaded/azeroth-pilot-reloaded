@@ -167,7 +167,9 @@ version-check owners of that same membership. Startup waits for the player to be
 in the world, then gives native channels five seconds to settle; loading-screen
 completion restarts that grace period. Slow login/reload fixtures retain the
 native /1 and /2 slots, including retries, cancellation and missing readiness APIs.
-Empty or noncontiguous native channel lists defer membership without polling.
+Empty native lists, or gaps at /1 or /2 before a later channel, defer membership
+without polling. Gaps after /2 are allowed, including when a community retains
+a high channel number; joining must preserve every existing channel number.
 After loading, a confirmed public zero from `GetChannelName(1)` permits one
 `C_ChatInfo.ResetDefaultZoneChannels()` attempt per loaded UI session. Any channel
 already occupying /1 vetoes that repair. Combat, chat restrictions, missing APIs
