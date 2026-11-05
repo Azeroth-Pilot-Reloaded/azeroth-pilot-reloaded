@@ -51,6 +51,7 @@
       <h3>02 &nbsp; Choose your route</h3>
       <p>Type <code>/apr route</code>. Search compatible routes by expansion and category, select a route, or build an ordered custom path.</p>
       <p>Use the <strong>Leveling</strong>, <strong>Speedrun</strong>, or <strong>All Quests</strong> presets to get started.</p>
+      <p>Route level limits above 10 are recommendations: routes outside your level range appear in yellow, and a warning asks you to confirm before adding one to your path. All conditions within the route's steps and starting-level limits still apply.</p>
     </td>
   </tr>
   <tr>

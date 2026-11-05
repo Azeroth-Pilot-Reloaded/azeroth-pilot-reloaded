@@ -32,8 +32,13 @@ function Rows:Tooltip(row, path)
     if record.visibility == "hidden" then
         APR:AddTooltipLine(GameTooltip, UNAVAILABLE, "general", "warning", true)
     else
+        local shown = {}
         for _, condition in ipairs(APR:GetUnmetConditions(record.key)) do
+            shown[condition] = true
             APR:AddTooltipLine(GameTooltip, condition, "general", "warning", true)
+        end
+        for _, warning in ipairs(APR:GetRouteLevelWarnings(record.key)) do
+            if not shown[warning] then APR:AddTooltipLine(GameTooltip, warning, "general", "warning", true) end
         end
     end
     APR:AddTooltipLine(GameTooltip, L[path and "REMOVE_ZONE_FROM_CUSTOM_PATH" or "UI_ROUTE_SHORTCUTS"], "general",
@@ -51,9 +56,9 @@ function Rows:Create(parent, browser, path)
     row.name = UI:Label(row, "", 12)
     row.name:SetWordWrap(false)
     row.aprGamepadRect = row.name
-    row:SetScript("OnEnter", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:54:callback#3", --[[/APR_DIAG]]function() self:Tooltip(row, path) end--[[APR_DIAG]])--[[/APR_DIAG]])
-    row:SetScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:55:callback#4", --[[/APR_DIAG]]function() GameTooltip:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
-    row:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:56:callback#5", --[[/APR_DIAG]]function(_, button)
+    row:SetScript("OnEnter", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:59:callback#3", --[[/APR_DIAG]]function() self:Tooltip(row, path) end--[[APR_DIAG]])--[[/APR_DIAG]])
+    row:SetScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:60:callback#4", --[[/APR_DIAG]]function() GameTooltip:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    row:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:61:callback#5", --[[/APR_DIAG]]function(_, button)
         if button == "RightButton" then
             APR.RouteCatalog:ChangePath(row.item, path and "remove" or "add", not path and IsShiftKeyDown())
         else
@@ -64,14 +69,14 @@ function Rows:Create(parent, browser, path)
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     if path then
         row.index = UI:Label(row, "", 11, "muted")
-        row.up = UI:IconButton(row, "up", 24, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:67:callback#6", --[[/APR_DIAG]]function() APR.RouteCatalog:ChangePath(row.item, "up") end--[[APR_DIAG]])--[[/APR_DIAG]])
-        row.down = UI:IconButton(row, "down", 24, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:68:callback#7", --[[/APR_DIAG]]function() APR.RouteCatalog:ChangePath(row.item, "down") end--[[APR_DIAG]])--[[/APR_DIAG]])
-        UI:Tooltip(row.up, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:69:callback#8", --[[/APR_DIAG]]function() return string.format(NARRATION_MOVE_UP_IN_LIST, row.item.label) end--[[APR_DIAG]])--[[/APR_DIAG]])
-        UI:Tooltip(row.down, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:70:callback#9", --[[/APR_DIAG]]function() return string.format(NARRATION_MOVE_DOWN_IN_LIST, row.item.label) end--[[APR_DIAG]])--[[/APR_DIAG]])
-        row.remove = UI:IconButton(row, "remove", 24, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:71:callback#10", --[[/APR_DIAG]]function() APR.RouteCatalog:ChangePath(row.item, "remove") end--[[APR_DIAG]])--[[/APR_DIAG]])
+        row.up = UI:IconButton(row, "up", 24, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:72:callback#6", --[[/APR_DIAG]]function() APR.RouteCatalog:ChangePath(row.item, "up") end--[[APR_DIAG]])--[[/APR_DIAG]])
+        row.down = UI:IconButton(row, "down", 24, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:73:callback#7", --[[/APR_DIAG]]function() APR.RouteCatalog:ChangePath(row.item, "down") end--[[APR_DIAG]])--[[/APR_DIAG]])
+        UI:Tooltip(row.up, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:74:callback#8", --[[/APR_DIAG]]function() return string.format(NARRATION_MOVE_UP_IN_LIST, row.item.label) end--[[APR_DIAG]])--[[/APR_DIAG]])
+        UI:Tooltip(row.down, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:75:callback#9", --[[/APR_DIAG]]function() return string.format(NARRATION_MOVE_DOWN_IN_LIST, row.item.label) end--[[APR_DIAG]])--[[/APR_DIAG]])
+        row.remove = UI:IconButton(row, "remove", 24, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:76:callback#10", --[[/APR_DIAG]]function() APR.RouteCatalog:ChangePath(row.item, "remove") end--[[APR_DIAG]])--[[/APR_DIAG]])
         UI:Tooltip(row.remove, REMOVE)
     else
-        row.favorite = UI:IconButton(row, "favorite", 24, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:74:callback#11", --[[/APR_DIAG]]function()
+        row.favorite = UI:IconButton(row, "favorite", 24, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:79:callback#11", --[[/APR_DIAG]]function()
             APR.RouteCatalog:ToggleFavorite(row.item)
             browser:Refresh()
         end--[[APR_DIAG]])--[[/APR_DIAG]], "flat")
@@ -81,20 +86,20 @@ function Rows:Create(parent, browser, path)
         row.status = UI:Label(row, "", 11)
         for _, field in ipairs({ "category", "author", "status" }) do row[field]:SetWordWrap(false) end
         row.add = UI:IconButton(row, "add", 24,
-            --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:84:callback#12", --[[/APR_DIAG]]function() APR.RouteCatalog:ChangePath(row.item, "add", IsShiftKeyDown()) end--[[APR_DIAG]])--[[/APR_DIAG]])
+            --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:89:callback#12", --[[/APR_DIAG]]function() APR.RouteCatalog:ChangePath(row.item, "add", IsShiftKeyDown()) end--[[APR_DIAG]])--[[/APR_DIAG]])
         UI:Tooltip(row.add, ADD, L["UI_ROUTE_SHORTCUTS"])
     end
     if APR.Gamepad then
         APR.Gamepad:LinkHorizontal(path and {row, row.up, row.down, row.remove} or {row.favorite, row, row.add}, true)
     end
     return row
-end--[[APR_DIAG]]; Rows.Create = APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:44:Rows:Create#2", Rows.Create)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Rows.Create = APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:49:Rows:Create#2", Rows.Create)--[[/APR_DIAG]]
 
 local function Place(region, parent, left, width)
     region:ClearAllPoints()
     region:SetPoint("LEFT", parent, "LEFT", left, 0)
     region:SetSize(math.max(1, width), 24)
-end--[[APR_DIAG]]; Place = APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:93:Place#13", Place)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Place = APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:98:Place#13", Place)--[[/APR_DIAG]]
 
 -- Narrow windows prioritize names; authors and progress remain available in tooltips.
 function Rows:Columns(width)
@@ -108,14 +113,15 @@ function Rows:Columns(width)
         status = { 28 + name + category + author, status },
         add = { width - 26, 24 }
     }
-end--[[APR_DIAG]]; Rows.Columns = APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:100:Rows:Columns#14", Rows.Columns)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Rows.Columns = APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:105:Rows:Columns#14", Rows.Columns)--[[/APR_DIAG]]
 
 function Rows:Bind(row, record, index, browser, path)
     local selected = browser.selectedKey == record.key
     UI:SetListRowState(row, selected)
     local width = row:GetWidth()
     local progress = APR.RouteCatalog.progressStates[record.progressState]
-    local role = record.visibility == "visible" and progress and progress.role or "muted"
+    local levelWarning = record.levelWarnings and #record.levelWarnings > 0
+    local role = record.visibility == "visible" and (levelWarning and "warning" or progress and progress.role) or "muted"
     row.progressMarker:SetShown(progress ~= nil)
     if progress then APR:RegisterThemeRegion(row.progressMarker, progress.role) end
     row.name:SetText(record.label)
@@ -153,4 +159,4 @@ function Rows:Bind(row, record, index, browser, path)
         APR:SetFontStringRole(row.status, progress and progress.role or "muted")
         row.add:SetEnabled(record.visibility == "visible" and not record.queued)
     end
-end--[[APR_DIAG]]; Rows.Bind = APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:113:Rows:Bind#15", Rows.Bind)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Rows.Bind = APRTrace("APR-Core/ui/route/RouteBrowserRows.lua:118:Rows:Bind#15", Rows.Bind)--[[/APR_DIAG]]

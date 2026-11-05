@@ -65,7 +65,8 @@ assert(APR:GetRouteVisibility("shared") == "visible")
 assert(APR:GetRouteData("retail") == nil)
 assert(not APR:IsRequiredRouteApplicable("retail"))
 APR.RouteQuestStepList.forever.conditions.Level = 20
-assert(APR:GetRouteVisibility("forever") == "disabled", "Compatible routes still obey soft level locks")
+assert(APR:GetRouteVisibility("forever") == "visible", "Compatible routes above level 10 remain selectable")
+assert(#APR:GetRouteLevelWarnings("forever") == 1, "An unmet recommended level produces a warning")
 APR.interfaceVersion = 120105
 tabs = APR:GetRouteSelectionExpansions()
 assert(#tabs == #APR.EXPANSION_ORDER_KEYS - 1)
