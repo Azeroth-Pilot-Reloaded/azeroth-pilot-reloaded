@@ -284,7 +284,7 @@ function APR.versionCheck:HandleSharedMessage(prefix, message, channel, sender, 
     local kind, version = message:match("^([QV]):(.+)$")
     if not kind or not ParseVersion(version) then return end
     local senderKey = APR.PartyProtocol.PlayerKey(sender)
-    if not senderKey or senderKey == APR.PartyProtocol.PlayerKey(APR.Username) then return end
+    if not senderKey or senderKey == APR.PartyProtocol.PlayerKey(APR.PartyProtocol.LocalName()) then return end
 
     self:RememberVersion(version)
     self:CheckKnownVersion()

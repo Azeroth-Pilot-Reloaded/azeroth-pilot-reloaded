@@ -21,7 +21,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/features/group/PartyFinderInvites.lua"] = {instrumented = 33, diagnosticHelpers = 0},
     ["APR-Core/features/group/PartyFinderProtocol.lua"] = {instrumented = 24, diagnosticHelpers = 0},
     ["APR-Core/features/group/PartyFinderWorld.lua"] = {instrumented = 8, diagnosticHelpers = 0},
-    ["APR-Core/features/group/PartyProtocol.lua"] = {instrumented = 11, diagnosticHelpers = 0},
+    ["APR-Core/features/group/PartyProtocol.lua"] = {instrumented = 13, diagnosticHelpers = 0},
     ["APR-Core/features/navigation/Arrow.lua"] = {instrumented = 24, diagnosticHelpers = 0},
     ["APR-Core/features/navigation/FlightPath.lua"] = {instrumented = 2, diagnosticHelpers = 0},
     ["APR-Core/features/navigation/Map.lua"] = {instrumented = 36, diagnosticHelpers = 0},
