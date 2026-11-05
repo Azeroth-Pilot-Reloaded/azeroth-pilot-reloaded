@@ -305,7 +305,6 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
         {
             PickUp = { 4882 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 65.6, 19.7),
-            Range = 30,
             Button = { ["4882"] = 12558 },
             ItemCount = { itemID = 12558, count = 1, operator = ">=" },
             Zone = 1452,

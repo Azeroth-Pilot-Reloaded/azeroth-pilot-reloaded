@@ -1462,7 +1462,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
             PickUp = { 86614 },
             Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "NOTE_SPAWN_ONE_MANY_DIFFERENT_LOCATIONS_SWIM_SEE", "CAREFUL_HIGH_LEVEL_YOUNG_THRESHADON" },
             Coord = { x = -3319.12905, y = -5351.077 },
-            Range = 30,
+            Range = 5,
             MinLevel = 13,
             Zone = 1432,
             _index = 162,

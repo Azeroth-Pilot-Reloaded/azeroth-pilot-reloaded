@@ -1213,19 +1213,19 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             UseSpell = { spellID = 818, questID = 1141 },
-            Note = { "WAITING_BOAT_DOCK", "CREATE_BASIC_CAMPFIRE_PROFESSION_BOOK" },
+            Note = { "CREATE_BASIC_CAMPFIRE_PROFESSION_BOOK" },
             AnyOf = { { Race = "Human", Skill = { skill = "cooking", rank = 50, operator = "<" }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 } }, { ItemCount = { operator = ">=", count = 1, itemID = 4470 } }, { ItemCount = { operator = ">=", count = 1, itemID = 2672 } }, { ItemCount = { operator = ">=", count = 1, itemID = 769 } } }, SkipInZones = { 1439 } }, { Race = "Dwarf", Skill = { skill = "cooking", rank = 50, operator = "<" }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 } }, { ItemCount = { operator = ">=", count = 1, itemID = 4470 } }, { ItemCount = { operator = ">=", count = 1, itemID = 2672 } }, { ItemCount = { operator = ">=", count = 1, itemID = 769 } } }, SkipInZones = { 1439 } }, { Race = "Gnome", Skill = { skill = "cooking", rank = 50, operator = "<" }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 } }, { ItemCount = { operator = ">=", count = 1, itemID = 4470 } }, { ItemCount = { operator = ">=", count = 1, itemID = 2672 } }, { ItemCount = { operator = ">=", count = 1, itemID = 769 } } }, SkipInZones = { 1439 } }, { Race = "Skyborne", Skill = { skill = "cooking", rank = 50, operator = "<" }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 } }, { ItemCount = { operator = ">=", count = 1, itemID = 4470 } }, { ItemCount = { operator = ">=", count = 1, itemID = 2672 } }, { ItemCount = { operator = ">=", count = 1, itemID = 769 } } }, SkipInZones = { 1439 } } },
             _index = 137,
         },
         {
             UseSpell = { spellID = 818, questID = 1141 },
-            Note = { "WAITING_BOAT_DOCK", "CREATE_BASIC_CAMPFIRE_PROFESSION_BOOK" },
+            Note = { "CREATE_BASIC_CAMPFIRE_PROFESSION_BOOK" },
             AnyOf = { { Race = "Human", Skill = { skill = "cooking", rank = 50, operator = "<" }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 } }, { ItemCount = { operator = ">=", count = 1, itemID = 4470 } }, { ItemCount = { operator = ">=", count = 1, itemID = 2672 } }, { ItemCount = { operator = "<", count = 1, itemID = 769 } } }, SkipInZones = { 1439 } }, { Race = "Dwarf", Skill = { skill = "cooking", rank = 50, operator = "<" }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 } }, { ItemCount = { operator = ">=", count = 1, itemID = 4470 } }, { ItemCount = { operator = ">=", count = 1, itemID = 2672 } }, { ItemCount = { operator = "<", count = 1, itemID = 769 } } }, SkipInZones = { 1439 } }, { Race = "Gnome", Skill = { skill = "cooking", rank = 50, operator = "<" }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 } }, { ItemCount = { operator = ">=", count = 1, itemID = 4470 } }, { ItemCount = { operator = ">=", count = 1, itemID = 2672 } }, { ItemCount = { operator = "<", count = 1, itemID = 769 } } }, SkipInZones = { 1439 } }, { Race = "Skyborne", Skill = { skill = "cooking", rank = 50, operator = "<" }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 } }, { ItemCount = { operator = ">=", count = 1, itemID = 4470 } }, { ItemCount = { operator = ">=", count = 1, itemID = 2672 } }, { ItemCount = { operator = "<", count = 1, itemID = 769 } } }, SkipInZones = { 1439 } } },
             _index = 138,
         },
         {
             UseSpell = { spellID = 818, questID = 1141 },
-            Note = { "WAITING_BOAT_DOCK", "CREATE_BASIC_CAMPFIRE_PROFESSION_BOOK" },
+            Note = { "CREATE_BASIC_CAMPFIRE_PROFESSION_BOOK" },
             AnyOf = { { Race = "Human", Skill = { skill = "cooking", rank = 50, operator = "<" }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 } }, { ItemCount = { operator = ">=", count = 1, itemID = 4470 } }, { ItemCount = { operator = "<", count = 1, itemID = 2672 } }, { ItemCount = { operator = ">=", count = 1, itemID = 769 } } }, SkipInZones = { 1439 } }, { Race = "Dwarf", Skill = { skill = "cooking", rank = 50, operator = "<" }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 } }, { ItemCount = { operator = ">=", count = 1, itemID = 4470 } }, { ItemCount = { operator = "<", count = 1, itemID = 2672 } }, { ItemCount = { operator = ">=", count = 1, itemID = 769 } } }, SkipInZones = { 1439 } }, { Race = "Gnome", Skill = { skill = "cooking", rank = 50, operator = "<" }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 } }, { ItemCount = { operator = ">=", count = 1, itemID = 4470 } }, { ItemCount = { operator = "<", count = 1, itemID = 2672 } }, { ItemCount = { operator = ">=", count = 1, itemID = 769 } } }, SkipInZones = { 1439 } }, { Race = "Skyborne", Skill = { skill = "cooking", rank = 50, operator = "<" }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 } }, { ItemCount = { operator = ">=", count = 1, itemID = 4470 } }, { ItemCount = { operator = "<", count = 1, itemID = 2672 } }, { ItemCount = { operator = ">=", count = 1, itemID = 769 } } }, SkipInZones = { 1439 } } },
             _index = 139,
         },
@@ -1248,7 +1248,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
             _index = 142,
         },
         {
-            Note = { "LEVEL_FIRST_AID_WAITING_BOAT_DARKSHORE" },
+            Note = { "WAITING_BOAT_DOCK", "LEVEL_FIRST_AID_WAITING_BOAT_DARKSHORE" },
             Boat = true,
             Coord = { x = 1330.1, y = -8645.4 },
             Range = 5,
@@ -1258,6 +1258,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
             _index = 143,
         },
         {
+            Note = { "WAITING_BOAT_DOCK" },
             Boat = true,
             Coord = { x = 1330.1, y = -8645.4 },
             Range = 5,

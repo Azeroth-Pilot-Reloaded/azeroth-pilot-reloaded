@@ -1951,7 +1951,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
             PickUp = { 97246 },
             Note = { "UPSTAIRS" },
             Coord = { x = -4460.6, y = 1584.3 },
-            Range = 10,
+            Range = 5,
             Zone = 1454,
             _index = 268,
         },

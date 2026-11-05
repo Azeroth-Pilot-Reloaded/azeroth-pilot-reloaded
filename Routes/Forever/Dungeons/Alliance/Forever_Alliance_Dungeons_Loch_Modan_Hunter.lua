@@ -826,7 +826,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
             PickUp = { 86614 },
             Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "NOTE_SPAWN_ONE_MANY_DIFFERENT_LOCATIONS_SWIM_SEE", "CAREFUL_HIGH_LEVEL_YOUNG_THRESHADON" },
             Coord = { x = -3386.7082, y = -5462.479 },
-            Range = 20.0,
+            Range = 5,
             MinLevel = 13,
             Zone = 1432,
             _index = 105,
