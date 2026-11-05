@@ -58,3 +58,28 @@ local started = os.clock()
 for _ = 1, 10000 do assert(protocol.NormalizeSnapshot(data, "Player-Home")) end
 local elapsed = os.clock() - started
 print(string.format("Party schema: identity, ranges, row budgets and legacy payloads passed; 10000 snapshots in %.3f s", elapsed))
+
+function RegionalUniqueNamesEnabled() return true end
+local fullName = "Violet Meadow"
+function GetUnitName() return fullName end
+assert(protocol.PlayerKey("Violet Meadow") == "Violet Meadow")
+assert(protocol.PlayerKey("Violet Brook") ~= protocol.PlayerKey("Violet Meadow"))
+assert(protocol.DisplayName("Violet Meadow") == "Violet Meadow")
+assert(protocol.UnitName("party1") == "Violet Meadow")
+for _, claimed in ipairs({ "Violet Meadow", "Violet" }) do
+    data = snapshot(); data.username = claimed
+    clean = assert(protocol.NormalizeSnapshot(data, "Violet Meadow"))
+    assert(clean.username == "Violet Meadow" and clean.sender == "Violet Meadow")
+end
+data = snapshot(); data.username = "Violet Brook"
+assert(not protocol.NormalizeSnapshot(data, "Violet Meadow"))
+data.username = "Vio"
+assert(not protocol.NormalizeSnapshot(data, "Violet Meadow"))
+fullName = nil
+assert(protocol.UnitName("party1") == nil, "Missing native regional names stay unavailable")
+local opaque = {}
+function issecretvalue(value) return value == opaque end
+fullName = opaque
+assert(protocol.UnitName("party1") == nil and protocol.PlayerKey(opaque) == nil,
+    "Restricted native names cannot enter membership or string operations")
+print("Party regional schema: complete names, namesake isolation, authoritative legacy claims and unavailable/restricted data passed")

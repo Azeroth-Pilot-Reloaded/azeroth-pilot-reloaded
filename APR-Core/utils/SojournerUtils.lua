@@ -159,9 +159,10 @@ function APR:CheckSojournerPartySync()
 
     local groupList = self.party and self.party.GroupListSteps
     if not groupList then return end
+    local ownName = self.PartyProtocol and self.PartyProtocol.LocalName() or self.Username
 
     for username, data in pairs(groupList) do
-        if username ~= self.Username and data.routeFileName == self.ActiveRoute then
+        if username ~= ownName and data.routeFileName == self.ActiveRoute then
             local theirState = data.sojournerSkipCampaign and true or false
             if theirState ~= myState then
                 table.insert(mismatched, {

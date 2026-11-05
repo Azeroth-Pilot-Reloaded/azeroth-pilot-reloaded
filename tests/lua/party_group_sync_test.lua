@@ -285,6 +285,7 @@ assert(PartyScreenPanel:IsShown(), "Returning to a party restores the progress f
 assert(sent[#sent].channel == "INSTANCE_CHAT", "Instance parties still exchange progress")
 receive("RaidPeer", "RaidPeer-OtherRealm", 10, "INSTANCE_CHAT")
 assert(party.GroupListSteps["RaidPeer-OtherRealm"].currentStep == 10)
+advance(3) -- Settle the join handshake before measuring ordinary progression traffic.
 
 -- Bursts build only the newest state and obey the same interval for peer replies.
 local displayedStep, builds = 4, 0
@@ -698,16 +699,24 @@ local function dataSends()
     for _, message in ipairs(sent) do if message.prefix == "APRPartyData" then count = count + 1 end end
     return count
 end
+local function requestSends()
+    local count = 0
+    for _, message in ipairs(sent) do if message.prefix == "APRPartyRequest" then count = count + 1 end end
+    return count
+end
 local start = dataSends()
 APR.event.functions.group("GROUP_ROSTER_UPDATE")
 assert(dataSends() > start and party.groupSyncTimer,
     "The inviter must resend its unchanged snapshot without receiving GROUP_JOINED")
-local afterJoin = dataSends()
+local afterJoin, requestsAfterJoin = dataSends(), requestSends()
 for _ = 1, 100 do APR.event.functions.group("GROUP_ROSTER_UPDATE") end
 assert(dataSends() == afterJoin, "Unchanged roster events cannot cause a broadcast storm")
 advance(3)
-assert(dataSends() > afterJoin and not party.groupSyncTimer,
-    "One bounded retry covers a new member whose receiver was not ready on the first send")
+assert(party.groupSyncTimer and dataSends() == afterJoin and requestSends() == requestsAfterJoin,
+    "The handshake retry must wait until its request can pass the five-second cooldown")
+advance(2)
+assert(dataSends() > afterJoin and requestSends() == requestsAfterJoin + 1 and not party.groupSyncTimer,
+    "One bounded retry republishes our snapshot and requests the initially unavailable peer")
 local beforeSecond = dataSends()
 roster.party2 = {"Second", "Home"}
 APR.event.functions.group("GROUP_ROSTER_UPDATE")
@@ -718,3 +727,114 @@ grouped = false
 party:RemoveTeam()
 assert(retry.cancelled and not party.groupSyncTimer and not party.syncMembers)
 print("Party join: inviter handshake, unchanged roster suppression, bounded retry, second join and departure cleanup passed")
+
+-- A login/reload can finish without another roster notification. The world
+-- event must advertise us as well as request peers, with one delayed retry.
+grouped = true
+roster = { party1 = { "Delayed", "Home" } }
+advance(10)
+function APR:RefreshLevelProfileTargets() end
+local nativeSend, receiverReady = C_ChatInfo.SendAddonMessage, false
+local delayedPayload = party:BuildGroupPayload("Delayed")
+C_ChatInfo.SendAddonMessage = function(prefix, message, channel)
+    nativeSend(prefix, message, channel)
+    if prefix == "APRPartyRequest" and receiverReady then
+        receivePayload(delayedPayload, "Delayed-Home", channel)
+    end
+end
+start, requestsAfterJoin = dataSends(), requestSends()
+APR.event.functions.partyData("PLAYER_ENTERING_WORLD", false, true)
+assert(dataSends() > start and requestSends() == requestsAfterJoin + 1 and party.groupSyncTimer,
+    "Reloading an existing party publishes a snapshot and starts the handshake without a roster event")
+assert(party.teamList.Delayed.playerData.noAddon, "The receiver is initially unavailable")
+advance(4)
+receiverReady = true
+advance(1)
+assert(party.GroupListSteps.Delayed and not party.teamList.Delayed.playerData.noAddon,
+    "A peer ready after the first handshake replaces the missing-addon placeholder without changing steps")
+assert(not party.groupSyncTimer)
+local settledData, settledRequests = dataSends(), requestSends()
+advance(20)
+assert(dataSends() == settledData and requestSends() == settledRequests,
+    "Handshake recovery must not introduce periodic broadcasts")
+
+-- Entering the world again keeps the same roster, but can change the delivery
+-- channel or reload a peer. An unchanged snapshot still needs publication.
+instance = true
+APR.event.functions.partyData("PLAYER_ENTERING_WORLD", false, false)
+assert(dataSends() > settledData and sent[#sent].channel == "INSTANCE_CHAT" and party.groupSyncTimer,
+    "World entry restarts the handshake for unchanged members on the current group channel")
+retry = party.groupSyncTimer
+APR.settings.profile.enableAddon = false
+settledData, settledRequests = dataSends(), requestSends()
+advance(5)
+assert(not party.groupSyncTimer and dataSends() == settledData and requestSends() == settledRequests,
+    "Disabling APR before the retry prevents further handshake traffic")
+APR.settings.profile.enableAddon = true
+party:RemoveTeam()
+grouped, instance = false, false
+APR.event.functions.partyData("PLAYER_ENTERING_WORLD", true, false)
+assert(not party.groupSyncTimer and dataSends() == settledData and requestSends() == settledRequests,
+    "Solo world entry never starts a group handshake")
+C_ChatInfo.SendAddonMessage = nativeSend
+print("Party reload: world-entry advertisement, delayed peer recovery, current channel, bounded traffic and disable/solo guards passed")
+
+-- Forever's second UnitName result is a surname, not a realm. Keep the
+-- existing first-name SavedVariables identity, but use full names on the wire.
+function RegionalUniqueNamesEnabled() return true end
+function GetUnitName(unit)
+    local first, last = APR:SafeUnitName(unit)
+    if not first then return end
+    return last and last ~= "" and (first .. " " .. last) or first
+end
+local shortUnitName = APR.SafeUnitName
+function APR:SafeUnitName(unit)
+    if unit == "player" then return "Local", "Meadow" end
+    return shortUnitName(self, unit)
+end
+grouped, raid, instance = true, false, false
+roster = { party1 = { "Peer", "Meadow" }, party2 = { "Peer", "Brook" }, party3 = { "Local", "Brook" } }
+party:RemoveTeam()
+advance(10)
+local savedPlayerID, savedUsername = APR.PlayerID, APR.Username
+function APR.currentStep:GetCurrentStepDetails()
+    return { progress = { index = 4, step = 4, total = 12 } }
+end
+party:SendGroupMessage(true)
+assert(party.GroupListSteps["Local Meadow"] and not party.GroupListSteps.Local,
+    "The local group snapshot must use the full regional name without changing saved identity")
+assert(APR.PlayerID == savedPlayerID and APR.Username == savedUsername)
+local wireSuccess, regionalWire = serializer:Deserialize(party.lastGroupPayload)
+assert(wireSuccess and regionalWire.username == "Local Meadow")
+assert(party.teamList["Peer Meadow"].playerData.noAddon and party.teamList["Peer Brook"].playerData.noAddon,
+    "Regional roster rows preserve surnames instead of treating them as realms")
+receive("Peer Meadow", "Peer Meadow", 7)
+receive("Peer Brook", "Peer Brook", 8)
+receive("Local Brook", "Local Brook", 6)
+assert(party.GroupListSteps["Peer Meadow"].currentStep == 7
+    and party.GroupListSteps["Peer Brook"].currentStep == 8
+    and party.GroupListSteps["Local Brook"].currentStep == 6,
+    "Native regional senders pass roster validation and same-first-name peers remain distinct")
+receive("Peer", "Peer Meadow", 9)
+assert(party.GroupListSteps["Peer Meadow"].currentStep == 9,
+    "Legacy first-name payloads use the authoritative full sender identity")
+receive("Peer Brook", "Peer Meadow", 10)
+receive("Peer Meadow", "Peer Stranger", 10)
+receive("Local Meadow", "Local Meadow", 10)
+assert(party.GroupListSteps["Peer Meadow"].currentStep == 9
+    and party.GroupListSteps["Peer Brook"].currentStep == 8
+    and party.GroupListSteps["Local Meadow"].currentStep == 4,
+    "Regional claim mismatches, outsiders and self echoes cannot overwrite another member")
+party:GroupUpdateHandler("APRPartyDelete", "Peer", "PARTY", "Peer Meadow")
+assert(not party.GroupListSteps["Peer Meadow"] and party.GroupListSteps["Peer Brook"])
+assert(party.teamList["Peer Meadow"].playerData.noAddon)
+receive("Peer Meadow", "Peer Meadow", 7)
+assert(party.GroupListSteps["Peer Meadow"].currentStep == 7)
+roster.party1 = nil
+party:PopulateMissingGroupMembers()
+assert(not party.teamList["Peer Meadow"] and party.teamList["Peer Brook"],
+    "Removing one regional namesake preserves the other member")
+party:RemoveTeam()
+RegionalUniqueNamesEnabled = nil
+APR.SafeUnitName = shortUnitName
+print("Party Forever names: full local/roster/wire identities, legacy peers, namesakes, spoof rejection, delete/rejoin and saved progress preservation passed")

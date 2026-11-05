@@ -217,6 +217,11 @@ different zones, server/faction reach, missing counts and chat restrictions. The
 wire protocol remains compatible, but discovery peers must use the new shared
 channel; this release does not join legacy channels as a bridge. Group version
 checks continue to communicate with older APR releases.
+`party_group_sync_test.lua` also checks world-entry handshakes without a roster
+event, a receiver becoming ready after the first exchange, request cooldowns,
+unchanged progress, current group channels and cancellation without idle traffic.
+Regional-name fixtures also cover Forever surnames in roster, wire and display
+identities, legacy first-name payloads, namesakes and unchanged SavedVariables keys.
 UI tests use placeholder labels and do not validate localized wording or load
 translation catalogs. Text assertions cover synthetic data and behavior only.
 `settings_audio_test.lua` covers responsive sound-event cards and the real AceGUI
