@@ -9,14 +9,28 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local UI = APR.UI
 APR.OptionsPanel = {}
 local Options = APR.OptionsPanel
-local categoryIcons = {automation = "automation", group_Current_Step = "current-step", group_FillersFrame = "objectives",
-    group_quest_order_list_step = "steps", group_Arrow = "arrow", group_map_minimap = "map", group_AFK = "afk", groupFinder = "group",
-    group_Group = "group", group_Heirloom = "heirloom", group_XP_Buff = "xp", appearance = "appearance",
-    profiles = "profiles", changelog = "changelog", debug = "debug"}
+local categoryIcons = {
+    automation = "automation",
+    group_Current_Step = "current-step",
+    group_FillersFrame = "objectives",
+    group_quest_order_list_step = "steps",
+    group_Arrow = "arrow",
+    group_map_minimap = "map",
+    group_AFK = "afk",
+    groupFinder = "group",
+    group_Group = "group",
+    group_Heirloom = "heirloom",
+    group_XP_Buff = "xp",
+    appearance = "appearance",
+    profiles = "profiles",
+    changelog = "changelog",
+    debug = "debug",
+}
 local function Resolve(value)
     if type(value) == "function" then return value() end
     return value
-end--[[APR_DIAG]]; Resolve = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:16:Resolve#1", Resolve)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Resolve = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:16:Resolve#1", Resolve)--[[/APR_DIAG]]
 
 function Options:Create(parent)
     self.frame = UI:Page(parent)
@@ -29,14 +43,38 @@ function Options:Create(parent)
     self.body:SetPoint("TOPLEFT", 228, 0)
     self.body:SetPoint("BOTTOMRIGHT")
     local reset = APR.WorkspaceOptions:ResetAction(APR.settings)
-    self.resetButton = UI:Button(self.body, Resolve(reset.name), 200, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:32:callback#3", --[[/APR_DIAG]]function() reset.func() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self.resetButton = UI:Button(
+        self.body,
+        Resolve(reset.name),
+        200, --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/panels/OptionsPanel.lua:32:callback#3", --[[/APR_DIAG]]
+            function() reset.func() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
     self.resetButton:SetPoint("TOPRIGHT", self.body, "TOPRIGHT", -44, -8)
-    UI:Tooltip(self.resetButton, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:34:callback#4", --[[/APR_DIAG]]function() return Resolve(reset.name) end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:34:callback#5", --[[/APR_DIAG]]function() return Resolve(reset.desc) end--[[APR_DIAG]])--[[/APR_DIAG]])
+    UI:Tooltip(
+        self.resetButton, --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/panels/OptionsPanel.lua:34:callback#4", --[[/APR_DIAG]]
+            function() return Resolve(reset.name) end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]], --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/panels/OptionsPanel.lua:34:callback#5", --[[/APR_DIAG]]
+            function() return Resolve(reset.desc) end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
     self.content = CreateFrame("Frame", nil, self.body)
     self.content:SetPoint("TOPLEFT", 12, -42)
     self.content:SetPoint("BOTTOMRIGHT", -12, 12)
     self.host = UI:SettingsHost(self.content)
-    self.host:SetCallback("OnOptionsRefreshed", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:39:callback#6", --[[/APR_DIAG]]function() self:RefreshActions() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self.host:SetCallback(
+        "OnOptionsRefreshed", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/panels/OptionsPanel.lua:39:callback#6", --[[/APR_DIAG]]
+            function() self:RefreshActions() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
     self.viewTabs, self.selectedViews, self.actionButtons, self.footerButtons = {}, {}, {}, {}
     self.footer = CreateFrame("Frame", nil, self.body)
     self.footer:SetPoint("BOTTOMLEFT", 12, 12)
@@ -53,51 +91,94 @@ function Options:Create(parent)
     local scroll = UI:Scroll(self.navigationPanel)
     scroll:SetPoint("TOPLEFT", 10, -40)
     scroll:SetPoint("BOTTOMRIGHT", -26, 12)
-    self.navigation = APR.VirtualList:New(scroll, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:56:callback#7", --[[/APR_DIAG]]function(container)
-        local row = UI:ListButton(container, "", 1, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:57:callback#8", --[[/APR_DIAG]]function(button) self:Select(button.item.id) end--[[APR_DIAG]])--[[/APR_DIAG]], "appearance")
-        if APR.Gamepad then
-            APR.Gamepad:BindDetails(row, "RIGHT", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:59:callback#9", --[[/APR_DIAG]]function() self:Select(row.item.id) end--[[APR_DIAG]])--[[/APR_DIAG]],
-                --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:60:callback#10", --[[/APR_DIAG]]function() return self.content end--[[APR_DIAG]])--[[/APR_DIAG]])
-        end
-        return row
-    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:63:callback#11", --[[/APR_DIAG]]function(row, section)
-        row:SetText(section.label)
-        UI:StyleListRow(row, categoryIcons[section.id] or "appearance")
-        UI:SetButtonActive(row, section.id == self.selected)
-    end--[[APR_DIAG]])--[[/APR_DIAG]], 42)
+    self.navigation = APR.VirtualList:New(
+        scroll, --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/panels/OptionsPanel.lua:56:callback#7", --[[/APR_DIAG]] function(container)
+            local row = UI:ListButton(
+                container,
+                "",
+                1, --[[APR_DIAG]]
+                APRTrace(
+                    "APR-Core/ui/panels/OptionsPanel.lua:57:callback#8", --[[/APR_DIAG]]
+                    function(button) self:Select(button.item.id) end --[[APR_DIAG]]
+                ) --[[/APR_DIAG]],
+                "appearance"
+            )
+            if APR.Gamepad then
+                APR.Gamepad:BindDetails(
+                    row,
+                    "RIGHT", --[[APR_DIAG]]
+                    APRTrace(
+                        "APR-Core/ui/panels/OptionsPanel.lua:59:callback#9", --[[/APR_DIAG]]
+                        function() self:Select(row.item.id) end --[[APR_DIAG]]
+                    ) --[[/APR_DIAG]],
+                    --[[APR_DIAG]]
+                    APRTrace(
+                        "APR-Core/ui/panels/OptionsPanel.lua:60:callback#10", --[[/APR_DIAG]]
+                        function() return self.content end --[[APR_DIAG]]
+                    ) --[[/APR_DIAG]]
+                )
+            end
+            return row
+        end--[[APR_DIAG]]) --[[/APR_DIAG]], --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/panels/OptionsPanel.lua:63:callback#11", --[[/APR_DIAG]] function(row, section)
+            row:SetText(section.label)
+            UI:StyleListRow(row, categoryIcons[section.id] or "appearance")
+            UI:SetButtonActive(row, section.id == self.selected)
+        end--[[APR_DIAG]]) --[[/APR_DIAG]],
+        42
+    )
     self.navigation:SetItems(self.sections)
-    self.body:HookScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:69:callback#12", --[[/APR_DIAG]]function() self:LayoutViews() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self.body:HookScript(
+        "OnSizeChanged", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/panels/OptionsPanel.lua:69:callback#12", --[[/APR_DIAG]]
+            function() self:LayoutViews() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
     APR:RegisterSupportedEvent(self.frame, "PLAYER_REGEN_DISABLED")
     APR:RegisterSupportedEvent(self.frame, "PLAYER_REGEN_ENABLED")
-    self.frame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:72:callback#13", --[[/APR_DIAG]]function()
-        self:RefreshActions()
-        if APR.ThemeCustomization and self.selected == "appearance" and self.view and self.view.id == "theme" then
-            LibStub("AceConfigRegistry-3.0"):NotifyChange(self.view.app)
-        end
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-    self.frame:SetScript("OnShow", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:78:callback#14", --[[/APR_DIAG]]function()
-        self:Select(self.pendingWorkspaceSection or self.selected or "automation")
-        if self.pendingWorkspaceSection then
-            -- Unknown entry points retain the previous category, as before.
-            self:Select(self.selected or "automation")
-            self.pendingWorkspaceSection = nil
-        end
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-    self.frame:SetScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:86:callback#15", --[[/APR_DIAG]]function()
-        self:CancelRefresh()
-        self.host:ReleaseChildren()
-        self.host:SetUserData("appName", nil)
-        if self.themePreview then self.themePreview:SetPreviewActive(false) end
-        if APR.ThemeCustomization then APR.ThemeCustomization:Discard() end
-        if self.releaseNotes then self.releaseNotes:Hide() end
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; Options.Create = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:21:Options:Create#2", Options.Create)--[[/APR_DIAG]]
+    self.frame:SetScript(
+        "OnEvent", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/panels/OptionsPanel.lua:72:callback#13", --[[/APR_DIAG]] function()
+            self:RefreshActions()
+            if APR.ThemeCustomization and self.selected == "appearance" and self.view and self.view.id == "theme" then
+                LibStub("AceConfigRegistry-3.0"):NotifyChange(self.view.app)
+            end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+    self.frame:SetScript(
+        "OnShow", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/panels/OptionsPanel.lua:78:callback#14", --[[/APR_DIAG]] function()
+            self:Select(self.pendingWorkspaceSection or self.selected or "automation")
+            if self.pendingWorkspaceSection then
+                -- Unknown entry points retain the previous category, as before.
+                self:Select(self.selected or "automation")
+                self.pendingWorkspaceSection = nil
+            end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+    self.frame:SetScript(
+        "OnHide", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/panels/OptionsPanel.lua:86:callback#15", --[[/APR_DIAG]] function()
+            self:CancelRefresh()
+            self.host:ReleaseChildren()
+            self.host:SetUserData("appName", nil)
+            if self.themePreview then self.themePreview:SetPreviewActive(false) end
+            if APR.ThemeCustomization then APR.ThemeCustomization:Discard() end
+            if self.releaseNotes then self.releaseNotes:Hide() end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+end--[[APR_DIAG]]
+Options.Create = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:21:Options:Create#2", Options.Create)--[[/APR_DIAG]]
 
 function Options:CancelRefresh()
     local request = self.refreshRequest
     self.refreshRequest = nil
     if request then request.timer:Cancel() end
-end--[[APR_DIAG]]; Options.CancelRefresh = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:96:Options:CancelRefresh#16", Options.CancelRefresh)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Options.CancelRefresh =
+    APRTrace("APR-Core/ui/panels/OptionsPanel.lua:96:Options:CancelRefresh#16", Options.CancelRefresh)--[[/APR_DIAG]]
 
 -- AceConfig does not track custom hosts for NotifyChange. Reopen this host
 -- after the current control callback, retaining its normal saved scroll state.
@@ -109,32 +190,59 @@ function Options:QueueRefresh()
     self:CancelRefresh()
     local request = { view = view, host = host }
     self.refreshRequest = request
-    request.timer = C_Timer.NewTimer(0, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:112:callback#18", --[[/APR_DIAG]]function()
-        if self.refreshRequest ~= request then return end
-        self.refreshRequest = nil
-        if self.view ~= view or self.host ~= host or not self.frame:IsVisible()
-            or host:GetUserData("appName") ~= view.app then return end
-        LibStub("AceConfigDialog-3.0"):Open(view.app, host)
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; Options.QueueRefresh = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:104:Options:QueueRefresh#17", Options.QueueRefresh)--[[/APR_DIAG]]
+    request.timer = C_Timer.NewTimer(
+        0, --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/panels/OptionsPanel.lua:112:callback#18", --[[/APR_DIAG]] function()
+            if self.refreshRequest ~= request then return end
+            self.refreshRequest = nil
+            if
+                self.view ~= view
+                or self.host ~= host
+                or not self.frame:IsVisible()
+                or host:GetUserData("appName") ~= view.app
+            then
+                return
+            end
+            LibStub("AceConfigDialog-3.0"):Open(view.app, host)
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+end--[[APR_DIAG]]
+Options.QueueRefresh = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:104:Options:QueueRefresh#17", Options.QueueRefresh)--[[/APR_DIAG]]
 
 -- View actions stay outside AceConfig's scroll area but use the authoritative option callbacks.
 function Options:SetActions(actions)
     self.actions = actions or {}
-    for _, button in ipairs(self.actionButtons) do button:Hide() end
+    for _, button in ipairs(self.actionButtons) do
+        button:Hide()
+    end
     for index, action in ipairs(self.actions) do
         local button = self.actionButtons[index]
         if not button then
-            button = UI:Button(self.body, "", 160, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:128:callback#20", --[[/APR_DIAG]]function(control)
-                self:RefreshActions()
-                if control:IsEnabled() then
-                    control.option.func()
+            button = UI:Button(
+                self.body,
+                "",
+                160, --[[APR_DIAG]]
+                APRTrace("APR-Core/ui/panels/OptionsPanel.lua:128:callback#20", --[[/APR_DIAG]] function(control)
                     self:RefreshActions()
-                    self:LayoutViews()
-                end
-            end--[[APR_DIAG]])--[[/APR_DIAG]])
-            UI:Tooltip(button, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:136:callback#21", --[[/APR_DIAG]]function() return Resolve(button.option.name) end--[[APR_DIAG]])--[[/APR_DIAG]],
-                --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:137:callback#22", --[[/APR_DIAG]]function() return Resolve(button.option.desc) end--[[APR_DIAG]])--[[/APR_DIAG]])
+                    if control:IsEnabled() then
+                        control.option.func()
+                        self:RefreshActions()
+                        self:LayoutViews()
+                    end
+                end--[[APR_DIAG]]) --[[/APR_DIAG]]
+            )
+            UI:Tooltip(
+                button, --[[APR_DIAG]]
+                APRTrace(
+                    "APR-Core/ui/panels/OptionsPanel.lua:136:callback#21", --[[/APR_DIAG]]
+                    function() return Resolve(button.option.name) end --[[APR_DIAG]]
+                ) --[[/APR_DIAG]],
+                --[[APR_DIAG]]
+                APRTrace(
+                    "APR-Core/ui/panels/OptionsPanel.lua:137:callback#22", --[[/APR_DIAG]]
+                    function() return Resolve(button.option.desc) end --[[APR_DIAG]]
+                ) --[[/APR_DIAG]]
+            )
             self.actionButtons[index] = button
         end
         button.option = action.option
@@ -142,10 +250,11 @@ function Options:SetActions(actions)
         button:Show()
     end
     self:RefreshActions()
-end--[[APR_DIAG]]; Options.SetActions = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:122:Options:SetActions#19", Options.SetActions)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Options.SetActions = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:122:Options:SetActions#19", Options.SetActions)--[[/APR_DIAG]]
 
 function Options:RefreshActions()
-    for _, buttons in ipairs({self.actionButtons, self.footerButtons}) do
+    for _, buttons in ipairs({ self.actionButtons, self.footerButtons }) do
         for _, button in ipairs(buttons) do
             local option = button.option
             local disabled = option and option.disabled
@@ -154,24 +263,43 @@ function Options:RefreshActions()
             if option then button:SetText(Resolve(option.name)) end
         end
     end
-end--[[APR_DIAG]]; Options.RefreshActions = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:147:Options:RefreshActions#23", Options.RefreshActions)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Options.RefreshActions =
+    APRTrace("APR-Core/ui/panels/OptionsPanel.lua:147:Options:RefreshActions#23", Options.RefreshActions)--[[/APR_DIAG]]
 
 function Options:SetFooterActions(actions)
     self.footerActions = actions or {}
-    for _, button in ipairs(self.footerButtons) do button:Hide() end
+    for _, button in ipairs(self.footerButtons) do
+        button:Hide()
+    end
     for index, action in ipairs(self.footerActions) do
         local button = self.footerButtons[index]
         if not button then
-            button = UI:Button(self.footer, "", 200, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:165:callback#25", --[[/APR_DIAG]]function(control)
-                self:RefreshActions()
-                if control:IsEnabled() then
-                    control.option.func()
-                    LibStub("AceConfigRegistry-3.0"):NotifyChange(self.view.app)
+            button = UI:Button(
+                self.footer,
+                "",
+                200, --[[APR_DIAG]]
+                APRTrace("APR-Core/ui/panels/OptionsPanel.lua:165:callback#25", --[[/APR_DIAG]] function(control)
                     self:RefreshActions()
-                end
-            end--[[APR_DIAG]])--[[/APR_DIAG]])
-            UI:Tooltip(button, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:173:callback#26", --[[/APR_DIAG]]function() return Resolve(button.option.name) end--[[APR_DIAG]])--[[/APR_DIAG]],
-                --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:174:callback#27", --[[/APR_DIAG]]function() return Resolve(button.option.desc) end--[[APR_DIAG]])--[[/APR_DIAG]])
+                    if control:IsEnabled() then
+                        control.option.func()
+                        LibStub("AceConfigRegistry-3.0"):NotifyChange(self.view.app)
+                        self:RefreshActions()
+                    end
+                end--[[APR_DIAG]]) --[[/APR_DIAG]]
+            )
+            UI:Tooltip(
+                button, --[[APR_DIAG]]
+                APRTrace(
+                    "APR-Core/ui/panels/OptionsPanel.lua:173:callback#26", --[[/APR_DIAG]]
+                    function() return Resolve(button.option.name) end --[[APR_DIAG]]
+                ) --[[/APR_DIAG]],
+                --[[APR_DIAG]]
+                APRTrace(
+                    "APR-Core/ui/panels/OptionsPanel.lua:174:callback#27", --[[/APR_DIAG]]
+                    function() return Resolve(button.option.desc) end --[[APR_DIAG]]
+                ) --[[/APR_DIAG]]
+            )
             self.footerButtons[index] = button
         end
         button.option = action.option
@@ -180,7 +308,9 @@ function Options:SetFooterActions(actions)
     end
     self.footer:SetShown(#self.footerActions > 0)
     self:RefreshActions()
-end--[[APR_DIAG]]; Options.SetFooterActions = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:159:Options:SetFooterActions#24", Options.SetFooterActions)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Options.SetFooterActions =
+    APRTrace("APR-Core/ui/panels/OptionsPanel.lua:159:Options:SetFooterActions#24", Options.SetFooterActions)--[[/APR_DIAG]]
 
 function Options:LayoutViews()
     if not self.section then return end
@@ -215,8 +345,11 @@ function Options:LayoutViews()
         tab:SetShown(visible)
         if visible then
             local tabWidth = math.min(width, math.max(100, tab:GetFontString():GetStringWidth() + 28))
-            if x + tabWidth > tabRowWidth then x, y, tabRowWidth = 0, y + 36, width end
-            tab:ClearAllPoints(); tab:SetPoint("TOPLEFT", self.body, "TOPLEFT", 12 + x, -y)
+            if x + tabWidth > tabRowWidth then
+                x, y, tabRowWidth = 0, y + 36, width
+            end
+            tab:ClearAllPoints()
+            tab:SetPoint("TOPLEFT", self.body, "TOPLEFT", 12 + x, -y)
             tab:SetSize(tabWidth, 28)
             x = x + tabWidth + 6
         end
@@ -244,18 +377,26 @@ function Options:LayoutViews()
     for index in ipairs(self.footerActions) do
         local button = self.footerButtons[index]
         button:ClearAllPoints()
-        button:SetPoint("LEFT", self.footer, "LEFT", (footerWidth - totalWidth) / 2 + (index - 1) * (buttonWidth + 12), 0)
+        button:SetPoint(
+            "LEFT",
+            self.footer,
+            "LEFT",
+            (footerWidth - totalWidth) / 2 + (index - 1) * (buttonWidth + 12),
+            0
+        )
         button:SetSize(buttonWidth, 30)
     end
     if self.host.ResizeToParent then self.host:ResizeToParent() end
-end--[[APR_DIAG]]; Options.LayoutViews = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:185:Options:LayoutViews#28", Options.LayoutViews)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Options.LayoutViews = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:185:Options:LayoutViews#28", Options.LayoutViews)--[[/APR_DIAG]]
 
 function Options:SelectView(id)
     for _, view in ipairs(self.section.views) do
         if view.id == id then
             self.view = view
             self.selectedViews[self.selected] = id
-            self.themePreviewActive = APR.ThemeCustomization and self.selected == "appearance" and id == "theme" or false
+            self.themePreviewActive = APR.ThemeCustomization and self.selected == "appearance" and id == "theme"
+                or false
             if self.themePreviewActive and not self.themePreview then
                 self.themePreview = LibStub("AceGUI-3.0"):Create("APRThemePreview")
                 self.themePreview.frame:SetParent(self.content)
@@ -278,26 +419,53 @@ function Options:SelectView(id)
             return
         end
     end
-end--[[APR_DIAG]]; Options.SelectView = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:253:Options:SelectView#29", Options.SelectView)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Options.SelectView = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:253:Options:SelectView#29", Options.SelectView)--[[/APR_DIAG]]
 
 function Options:Select(id)
     if id == "general" then id = "automation" end
     for _, section in ipairs(self.sections) do
         -- Old category entry points still open the corresponding panel inside its new category.
         local requestedView
-        for _, view in ipairs(section.views) do if view.id == id then requestedView = id; break end end
+        for _, view in ipairs(section.views) do
+            if view.id == id then
+                requestedView = id
+                break
+            end
+        end
         if section.id == id or requestedView then
             self.pendingWorkspaceSection = nil
             self.selected, self.section = section.id, section
             self.body.title:SetText(section.label)
-            for _, tab in ipairs(self.viewTabs) do tab:Hide() end
+            for _, tab in ipairs(self.viewTabs) do
+                tab:Hide()
+            end
             for index, view in ipairs(section.views) do
                 if not self.viewTabs[index] then
-                    self.viewTabs[index] = UI:Button(self.body, "", 100, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:296:callback#31", --[[/APR_DIAG]]function(button) self:SelectView(button.viewID) end--[[APR_DIAG]])--[[/APR_DIAG]])
+                    self.viewTabs[index] = UI:Button(
+                        self.body,
+                        "",
+                        100, --[[APR_DIAG]]
+                        APRTrace(
+                            "APR-Core/ui/panels/OptionsPanel.lua:296:callback#31", --[[/APR_DIAG]]
+                            function(button) self:SelectView(button.viewID) end --[[APR_DIAG]]
+                        ) --[[/APR_DIAG]]
+                    )
                     if APR.Gamepad then
                         local tab = self.viewTabs[index]
-                        APR.Gamepad:BindDetails(tab, "DOWN", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:299:callback#32", --[[/APR_DIAG]]function() self:SelectView(tab.viewID) end--[[APR_DIAG]])--[[/APR_DIAG]],
-                            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/OptionsPanel.lua:300:callback#33", --[[/APR_DIAG]]function() return self.content end--[[APR_DIAG]])--[[/APR_DIAG]])
+                        APR.Gamepad:BindDetails(
+                            tab,
+                            "DOWN", --[[APR_DIAG]]
+                            APRTrace(
+                                "APR-Core/ui/panels/OptionsPanel.lua:299:callback#32", --[[/APR_DIAG]]
+                                function() self:SelectView(tab.viewID) end --[[APR_DIAG]]
+                            ) --[[/APR_DIAG]],
+                            --[[APR_DIAG]]
+                            APRTrace(
+                                "APR-Core/ui/panels/OptionsPanel.lua:300:callback#33", --[[/APR_DIAG]]
+                                function() return self.content end --[[APR_DIAG]]
+                            ) --[[/APR_DIAG]]
+                        )
                     end
                 end
                 self.viewTabs[index].viewID = view.id
@@ -309,4 +477,5 @@ function Options:Select(id)
             return
         end
     end
-end--[[APR_DIAG]]; Options.Select = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:283:Options:Select#30", Options.Select)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Options.Select = APRTrace("APR-Core/ui/panels/OptionsPanel.lua:283:Options:Select#30", Options.Select)--[[/APR_DIAG]]

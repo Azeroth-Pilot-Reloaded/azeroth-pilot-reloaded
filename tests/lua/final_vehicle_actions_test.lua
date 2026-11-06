@@ -5,27 +5,47 @@ local L = setmetatable({
     MOUNT_HORSE_SCARE_SPIDER = "Board the test vehicle",
     SCARE_SPIDER_INTO_LUMBERMILL = "Use the test vehicle action",
 }, { __index = function(_, key) return key end })
-function LibStub() return { GetLocale = function() return L end } end
+function LibStub()
+    return { GetLocale = function() return L end }
+end
 
 local npc, modifier, mounted, inVehicle = 71001, false, true, false
 local dismounts, exits, refreshes, advances = 0, 0, 0, 0
 local errors = {}
-function geterrorhandler() return function(message) errors[#errors + 1] = message end end
+function geterrorhandler()
+    return function(message) errors[#errors + 1] = message end
+end
 function IsModifierKeyDown() return modifier end
-function UnitCreatureID(unit) assert(unit == "target"); return npc end
-function UnitInVehicle(unit) assert(unit == "player"); return inVehicle end
-function Dismount() dismounts = dismounts + 1; mounted = false end
-function VehicleExit() exits = exits + 1; inVehicle = false end
+function UnitCreatureID(unit)
+    assert(unit == "target")
+    return npc
+end
+function UnitInVehicle(unit)
+    assert(unit == "player")
+    return inVehicle
+end
+function Dismount()
+    dismounts = dismounts + 1
+    mounted = false
+end
+function VehicleExit()
+    exits = exits + 1
+    inVehicle = false
+end
 C_GossipInfo = { GetAvailableQuests = function() return {} end, GetActiveQuests = function() return {} end }
 C_EventUtils = { IsEventValid = function() return true end }
-C_Timer = { NewTimer = function(_, callback)
-    return { callback = callback, Cancel = function(self) self.cancelled = true end }
-end }
+C_Timer = {
+    NewTimer = function(_, callback)
+        return { callback = callback, Cancel = function(self) self.cancelled = true end }
+    end,
+}
 function env.methods:RegisterEvent(event)
-    self.events = self.events or {}; self.events[event] = true
+    self.events = self.events or {}
+    self.events[event] = true
 end
 function env.methods:RegisterUnitEvent(event, unit)
-    self.units = self.units or {}; self.units[event] = unit
+    self.units = self.units or {}
+    self.units[event] = unit
     self:RegisterEvent(event)
 end
 
@@ -86,8 +106,10 @@ local function expectHint(key, expected)
     assert(count == (key and 1 or 0), "The current vehicle state must expose exactly its applicable hint")
     if key then
         local row = current.questsExtraTextList[key]
-        assert(row and row:IsShown() and row.font:GetText() == expected,
-            "The real current-step widget must contain the resolved vehicle instruction")
+        assert(
+            row and row:IsShown() and row.font:GetText() == expected,
+            "The real current-step widget must contain the resolved vehicle instruction"
+        )
     end
 end
 
@@ -154,8 +176,11 @@ for _, mode in ipairs({ 1, 2 }) do
     expectHint("MOUNT_HORSE_SCARE_SPIDER", "Board the test vehicle")
     emit("vehicle", "UNIT_ENTERED_VEHICLE", "player")
     assert(refreshes == before + 1)
-    if mode == 2 then expectHint("SCARE_SPIDER_INTO_LUMBERMILL", "Use the test vehicle action")
-    else expectHint(nil) end
+    if mode == 2 then
+        expectHint("SCARE_SPIDER_INTO_LUMBERMILL", "Use the test vehicle action")
+    else
+        expectHint(nil)
+    end
     inVehicle = false
     emit("vehicle", "UNIT_EXITED_VEHICLE", "player")
     assert(refreshes == before + 2)

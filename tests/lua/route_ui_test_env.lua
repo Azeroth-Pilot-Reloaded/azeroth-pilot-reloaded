@@ -11,17 +11,29 @@ local function widget(parent)
         height = 12,
         width = 250,
         hideCount = 0,
-        anchors = 0
+        anchors = 0,
     }, {
         __index = function(_, key)
-            return methods[key] or ((key:match("^Set") or key:match("^Register") or
-                key:match("^Enable") or key:match("^Disable") or key == "Clear") and noop or nil)
-        end
+            return methods[key]
+                or (
+                    (
+                            key:match("^Set")
+                            or key:match("^Register")
+                            or key:match("^Enable")
+                            or key:match("^Disable")
+                            or key == "Clear"
+                        )
+                        and noop
+                    or nil
+                )
+        end,
     })
 end
 local function protected(frame)
     if frame.secure then return true end
-    for _, child in ipairs(frame.children or {}) do if protected(child) then return true end end
+    for _, child in ipairs(frame.children or {}) do
+        if protected(child) then return true end
+    end
     return false
 end
 local function check(frame) assert(not combat or not protected(frame), "Protected mutation in combat") end
@@ -35,7 +47,13 @@ function methods:HookScript(key, fn)
     end
 end
 
-function methods:SetShown(value) if value then self:Show() else self:Hide() end end
+function methods:SetShown(value)
+    if value then
+        self:Show()
+    else
+        self:Hide()
+    end
+end
 
 function methods:IsEnabled() return self.enabled ~= false end
 
@@ -82,7 +100,8 @@ function methods:GetStringHeight() return math.max(1, math.ceil(#(self.text or "
 function methods:GetStringWidth() return #(self.text or "") * 6 end
 
 function methods:SetHeight(height)
-    check(self); self.height = height
+    check(self)
+    self.height = height
 end
 
 function methods:GetHeight() return self.height end
@@ -97,19 +116,22 @@ function methods:GetPoint() return unpack(self.point or {}) end
 function methods:GetNumPoints() return self.point and 1 or 0 end
 
 function methods:SetScale(value)
-    check(self); self.scale = value
+    check(self)
+    self.scale = value
 end
 
 function methods:GetParent() return self.parent end
 
 function methods:SetScrollChild(child)
-    self.scrollChild = child; self.swaps = (self.swaps or 0) + 1
+    self.scrollChild = child
+    self.swaps = (self.swaps or 0) + 1
 end
 
 function methods:GetVerticalScroll() return self.scroll or 0 end
 
-function methods:GetVerticalScrollRange() return math.max(0,
-        (self.scrollChild and self.scrollChild:GetHeight() or 0) - self.height) end
+function methods:GetVerticalScrollRange()
+    return math.max(0, (self.scrollChild and self.scrollChild:GetHeight() or 0) - self.height)
+end
 
 function methods:SetVerticalScroll(value) self.scroll = value end
 
@@ -118,29 +140,37 @@ function methods:GetOwner() return self.owner end
 function methods:SetOwner(owner) self.owner = owner end
 
 function methods:ClearAllPoints()
-    check(self); self.anchors = self.anchors + 1
+    check(self)
+    self.anchors = self.anchors + 1
 end
 
 function methods:SetPoint(...)
-    check(self); self.point = { ... }
+    check(self)
+    self.point = { ... }
 end
 
-function methods:SetSize(width, height) self.width, self.height = width, height end
+function methods:SetSize(width, height)
+    self.width, self.height = width, height
+end
 
 function methods:GetSize() return self.width, self.height end
 
 function methods:Raise() self.raised = true end
 
 function methods:SetParent(parent)
-    check(self); self.parent = parent
+    check(self)
+    self.parent = parent
 end
 
 function methods:Hide()
-    check(self); self.shown = false; self.hideCount = self.hideCount + 1
+    check(self)
+    self.shown = false
+    self.hideCount = self.hideCount + 1
 end
 
 function methods:Show()
-    check(self); self.shown = true
+    check(self)
+    self.shown = true
 end
 
 function methods:IsShown() return self.shown end
@@ -148,15 +178,16 @@ function methods:IsShown() return self.shown end
 function methods:IsProtected() return self.secure end
 
 function methods:CreateFontString()
-    fonts = fonts + 1; return widget(self)
+    fonts = fonts + 1
+    return widget(self)
 end
 
 function methods:CreateTexture() return widget(self) end
 function methods:CreateLine() return widget(self) end
-function methods:SetStartPoint(...) self.startPoint = {...} end
-function methods:SetEndPoint(...) self.endPoint = {...} end
+function methods:SetStartPoint(...) self.startPoint = { ... } end
+function methods:SetEndPoint(...) self.endPoint = { ... } end
 
-for _, state in ipairs({"Normal", "Pushed", "Disabled", "Highlight", "Thumb"}) do
+for _, state in ipairs({ "Normal", "Pushed", "Disabled", "Highlight", "Thumb" }) do
     local key = state .. "Texture"
     methods["Set" .. key] = function(self, value)
         self[key] = rawget(self, key) or widget(self)
@@ -165,7 +196,9 @@ for _, state in ipairs({"Normal", "Pushed", "Disabled", "Highlight", "Thumb"}) d
     methods["Get" .. key] = function(self) return rawget(self, key) end
 end
 
-function methods:SetMinMaxValues(low, high) self.minimum, self.maximum = low, high end
+function methods:SetMinMaxValues(low, high)
+    self.minimum, self.maximum = low, high
+end
 
 function methods:SetValue(value) self.value = value end
 
@@ -186,7 +219,8 @@ function CreateFrame(_, name, parent, template)
     frame.secure = template and template:find("SecureActionButtonTemplate") ~= nil
     if template == "UIPanelScrollFrameTemplate" then
         frame.ScrollBar = widget(frame)
-        frame.ScrollBar.ScrollUpButton, frame.ScrollBar.ScrollDownButton = widget(frame.ScrollBar), widget(frame.ScrollBar)
+        frame.ScrollBar.ScrollUpButton, frame.ScrollBar.ScrollDownButton =
+            widget(frame.ScrollBar), widget(frame.ScrollBar)
         frame.ScrollBar:SetThumbTexture("Blizzard thumb")
     end
     if parent then
@@ -201,7 +235,11 @@ function InCombatLockdown() return combat end
 
 function hooksecurefunc() end
 
-function wipe(t) for key in pairs(t) do t[key] = nil end end
+function wipe(t)
+    for key in pairs(t) do
+        t[key] = nil
+    end
+end
 
 function LibStub()
     return {
@@ -225,7 +263,9 @@ APR = {
     SetupFrameDrag = noop,
     SetupMinimizeButton = noop,
     RegisterFontString = noop,
-    SetFontStringRole = function(_, font, role) if font then font.role = role end end,
+    SetFontStringRole = function(_, font, role)
+        if font then font.role = role end
+    end,
     fillersFrame = { RemoveFillerSteps = noop },
     questOrderList = { ApplySnapAnchor = function() layouts = layouts + 1 end },
     GetQuestObjectiveProgressPercent = noop,

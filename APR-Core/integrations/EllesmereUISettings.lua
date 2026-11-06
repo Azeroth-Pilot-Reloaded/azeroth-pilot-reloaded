@@ -27,23 +27,33 @@ function APR:EnableEllesmereUISettings(S)
 
     local function Enabled()
         return APR.EllesmereUISkin and APR.EllesmereUISkin:GetFont() ~= nil
-    end--[[APR_DIAG]]; Enabled = APRTrace("APR-Core/integrations/EllesmereUISettings.lua:28:Enabled#2", Enabled)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    Enabled = APRTrace("APR-Core/integrations/EllesmereUISettings.lua:28:Enabled#2", Enabled)--[[/APR_DIAG]]
     local function IsAPR(app)
         return type(app) == "string" and (app == APR.title or app:sub(1, #APR.title + 1) == APR.title .. "/")
-    end--[[APR_DIAG]]; IsAPR = APRTrace("APR-Core/integrations/EllesmereUISettings.lua:31:IsAPR#3", IsAPR)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    IsAPR = APRTrace("APR-Core/integrations/EllesmereUISettings.lua:31:IsAPR#3", IsAPR)--[[/APR_DIAG]]
     local function TextColor(text, role, r, g, b)
         local custom = APR.GetCustomTextColor and APR:GetCustomTextColor("general", role)
-        if custom then text:SetTextColor(unpack(custom))
-        elseif r then text:SetTextColor(r, g, b)
-        else text:SetTextColor(S.GetAccentColor()) end
-    end--[[APR_DIAG]]; TextColor = APRTrace("APR-Core/integrations/EllesmereUISettings.lua:34:TextColor#4", TextColor)--[[/APR_DIAG]]
+        if custom then
+            text:SetTextColor(unpack(custom))
+        elseif r then
+            text:SetTextColor(r, g, b)
+        else
+            text:SetTextColor(S.GetAccentColor())
+        end
+    end--[[APR_DIAG]]
+    TextColor = APRTrace("APR-Core/integrations/EllesmereUISettings.lua:34:TextColor#4", TextColor)--[[/APR_DIAG]]
     local function WithContext(fn, ...)
         depth = depth + 1
-        local result = { --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](fn, ...) }
+        local result = { --[[APR_DIAG]]
+            APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](fn, ...),
+        }
         depth = depth - 1
         if not result[1] then error(result[2], 0) end
         return unpack(result, 2)
-    end--[[APR_DIAG]]; WithContext = APRTrace("APR-Core/integrations/EllesmereUISettings.lua:40:WithContext#5", WithContext)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    WithContext = APRTrace("APR-Core/integrations/EllesmereUISettings.lua:40:WithContext#5", WithContext)--[[/APR_DIAG]]
     local function Fonts(root)
         if not root or not root.GetRegions then return end
 
@@ -73,8 +83,11 @@ function APR:EnableEllesmereUISettings(S)
                 end
             end
         end
-        for _, region in ipairs(regions) do S.Font(region) end
-    end--[[APR_DIAG]]; Fonts = APRTrace("APR-Core/integrations/EllesmereUISettings.lua:47:Fonts#6", Fonts)--[[/APR_DIAG]]
+        for _, region in ipairs(regions) do
+            S.Font(region)
+        end
+    end--[[APR_DIAG]]
+    Fonts = APRTrace("APR-Core/integrations/EllesmereUISettings.lua:47:Fonts#6", Fonts)--[[/APR_DIAG]]
     local function Style(widget, visited)
         if not widget then return end
         visited = visited or {}
@@ -82,7 +95,10 @@ function APR:EnableEllesmereUISettings(S)
         visited[widget] = true
         if not Enabled() then return end
         if gui.IsReleasing and gui:IsReleasing(widget) then return end
-        if InCombatLockdown() then pending[widget] = true; return end
+        if InCombatLockdown() then
+            pending[widget] = true
+            return
+        end
         pending[widget] = nil
         styling[widget] = true
         local frame, kind = widget.frame, widget.type
@@ -147,7 +163,9 @@ function APR:EnableEllesmereUISettings(S)
                 end
             end
         elseif kind == "TabGroup" then
-            for _, tab in pairs(widget.tabs or {}) do S.Tab(tab) end
+            for _, tab in pairs(widget.tabs or {}) do
+                S.Tab(tab)
+            end
         elseif kind == "Heading" then
             for _, line in ipairs({ widget.left, widget.right }) do
                 line:SetColorTexture(S.GetAccentColor())
@@ -173,7 +191,8 @@ function APR:EnableEllesmereUISettings(S)
         for _, key in ipairs({ "titletext", "title", "label" }) do
             local text = widget[key]
             if (type(text) == "table" or type(text) == "userdata") and text.SetTextColor then
-                if widget.disabled then TextColor(text, "muted", 0.5, 0.5, 0.5)
+                if widget.disabled then
+                    TextColor(text, "muted", 0.5, 0.5, 0.5)
                 elseif kind == "Heading" or key == "titletext" or key == "title" then
                     TextColor(text, "accent")
                 else
@@ -182,78 +201,123 @@ function APR:EnableEllesmereUISettings(S)
             end
         end
         if widget.text then
-            if kind == "Heading" then TextColor(widget.text, "accent")
-            elseif widget.disabled then TextColor(widget.text, "muted", 0.5, 0.5, 0.5)
-            else TextColor(widget.text, "base", 0.85, 0.85, 0.85) end
+            if kind == "Heading" then
+                TextColor(widget.text, "accent")
+            elseif widget.disabled then
+                TextColor(widget.text, "muted", 0.5, 0.5, 0.5)
+            else
+                TextColor(widget.text, "base", 0.85, 0.85, 0.85)
+            end
         end
         if widget.check and kind ~= "CheckBox" then widget.check:SetVertexColor(S.GetAccentColor()) end
         if APR.UI and APR.UI.StyleDropdownListItem then APR.UI:StyleDropdownListItem(widget) end
         if APR.UI and APR.UI.StyleDropdownList then APR.UI:StyleDropdownList(widget) end
-        for _, child in ipairs(widget.children or {}) do Style(child, visited) end
+        for _, child in ipairs(widget.children or {}) do
+            Style(child, visited)
+        end
         if widget.pullout then
             Style(widget.pullout, visited)
-            for _, item in widget.pullout:IterateItems() do Style(item, visited) end
+            for _, item in widget.pullout:IterateItems() do
+                Style(item, visited)
+            end
         end
         if not hooked[widget] then
             hooked[widget] = true
-            for _, method in ipairs({ "RefreshTree", "BuildTabs", "SetDisabled", "SetLabel", "SetDescription", "SetValue" }) do
-                if widget[method] then hooksecurefunc(widget, method, --[[APR_DIAG]]APRTrace("APR-Core/integrations/EllesmereUISettings.lua:200:callback#8", --[[/APR_DIAG]]function() Style(widget) end--[[APR_DIAG]])--[[/APR_DIAG]]) end
+            for _, method in ipairs({
+                "RefreshTree",
+                "BuildTabs",
+                "SetDisabled",
+                "SetLabel",
+                "SetDescription",
+                "SetValue",
+            }) do
+                if widget[method] then
+                    hooksecurefunc(
+                        widget,
+                        method, --[[APR_DIAG]]
+                        APRTrace(
+                            "APR-Core/integrations/EllesmereUISettings.lua:200:callback#8", --[[/APR_DIAG]]
+                            function() Style(widget) end --[[APR_DIAG]]
+                        ) --[[/APR_DIAG]]
+                    )
+                end
             end
         end
         styling[widget] = nil
-    end--[[APR_DIAG]]; Style = APRTrace("APR-Core/integrations/EllesmereUISettings.lua:78:Style#7", Style)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    Style = APRTrace("APR-Core/integrations/EllesmereUISettings.lua:78:Style#7", Style)--[[/APR_DIAG]]
 
     local create, release = gui.Create, gui.Release
-    gui.Create = --[[APR_DIAG]]APRTrace("APR-Core/integrations/EllesmereUISettings.lua:207:callback#9", --[[/APR_DIAG]]function(self, kind)
-        if depth == 0 or not Enabled() then return create(self, kind) end
-        local privateType = "APREllesmere:" .. kind
-        local constructor = self.WidgetRegistry[kind]
-        if not constructor then return create(self, kind) end
-        self:RegisterWidgetType(privateType, constructor, self:GetWidgetVersion(kind))
-        local widget = create(self, privateType)
-        owned[widget] = privateType
-        return widget
-    end--[[APR_DIAG]])--[[/APR_DIAG]]
-    gui.Release = --[[APR_DIAG]]APRTrace("APR-Core/integrations/EllesmereUISettings.lua:217:callback#10", --[[/APR_DIAG]]function(self, widget)
-        local privateType = owned[widget]
-        local wasReleasing = widget.isQueuedForRelease
-        release(self, widget)
-        if privateType and not wasReleasing then
-            self.objPools[widget.type][widget] = nil
-            self.objPools[privateType] = self.objPools[privateType] or {}
-            self.objPools[privateType][widget] = true
-        end
-    end--[[APR_DIAG]])--[[/APR_DIAG]]
+    gui.Create = --[[APR_DIAG]]
+        APRTrace("APR-Core/integrations/EllesmereUISettings.lua:207:callback#9", --[[/APR_DIAG]] function(self, kind)
+            if depth == 0 or not Enabled() then return create(self, kind) end
+            local privateType = "APREllesmere:" .. kind
+            local constructor = self.WidgetRegistry[kind]
+            if not constructor then return create(self, kind) end
+            self:RegisterWidgetType(privateType, constructor, self:GetWidgetVersion(kind))
+            local widget = create(self, privateType)
+            owned[widget] = privateType
+            return widget
+        end--[[APR_DIAG]])--[[/APR_DIAG]]
+    gui.Release = --[[APR_DIAG]]
+        APRTrace("APR-Core/integrations/EllesmereUISettings.lua:217:callback#10", --[[/APR_DIAG]] function(self, widget)
+            local privateType = owned[widget]
+            local wasReleasing = widget.isQueuedForRelease
+            release(self, widget)
+            if privateType and not wasReleasing then
+                self.objPools[widget.type][widget] = nil
+                self.objPools[privateType] = self.objPools[privateType] or {}
+                self.objPools[privateType][widget] = true
+            end
+        end--[[APR_DIAG]])--[[/APR_DIAG]]
     for _, method in ipairs({ "Open", "FeedGroup", "AddToBlizOptions" }) do
         local original = dialog[method]
-        dialog[method] = --[[APR_DIAG]]APRTrace("APR-Core/integrations/EllesmereUISettings.lua:229:callback#11", --[[/APR_DIAG]]function(self, app, ...)
-            if not IsAPR(app) or not Enabled() then return original(self, app, ...) end
-            local result = { WithContext(original, self, app, ...) }
-            -- Open also handles redraws triggered by option changes. FeedGroup
-            -- covers tree/tab navigation without scanning the Blizzard settings UI.
-            if method == "FeedGroup" then Style(select(2, ...)) end
-            if method == "Open" then
-                local container = ...
-                if type(container) == "table" then Style(container)
-                elseif self.OpenFrames then Style(self.OpenFrames[app]) end
-            end
-            return unpack(result)
-        end--[[APR_DIAG]])--[[/APR_DIAG]]
+        dialog[method] = --[[APR_DIAG]]
+            APRTrace(
+                "APR-Core/integrations/EllesmereUISettings.lua:229:callback#11", --[[/APR_DIAG]]
+                function(self, app, ...)
+                    if not IsAPR(app) or not Enabled() then return original(self, app, ...) end
+                    local result = { WithContext(original, self, app, ...) }
+                    -- Open also handles redraws triggered by option changes. FeedGroup
+                    -- covers tree/tab navigation without scanning the Blizzard settings UI.
+                    if method == "FeedGroup" then Style(select(2, ...)) end
+                    if method == "Open" then
+                        local container = ...
+                        if type(container) == "table" then
+                            Style(container)
+                        elseif self.OpenFrames then
+                            Style(self.OpenFrames[app])
+                        end
+                    end
+                    return unpack(result)
+                end --[[APR_DIAG]]
+            )--[[/APR_DIAG]]
     end
-    S.OnLooksChanged(--[[APR_DIAG]]APRTrace("APR-Core/integrations/EllesmereUISettings.lua:243:callback#12", --[[/APR_DIAG]]function()
-        -- Both containers and their children are hooked; one refresh owns the
-        -- whole traversal without remembering widgets across live changes.
-        local visited = {}
-        for widget in pairs(hooked) do
-            if widget.frame:IsShown() then Style(widget, visited) end
-        end
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    S.OnLooksChanged(--[[APR_DIAG]]
+        APRTrace("APR-Core/integrations/EllesmereUISettings.lua:243:callback#12", --[[/APR_DIAG]] function()
+            -- Both containers and their children are hooked; one refresh owns the
+            -- whole traversal without remembering widgets across live changes.
+            local visited = {}
+            for widget in pairs(hooked) do
+                if widget.frame:IsShown() then Style(widget, visited) end
+            end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     local events = CreateFrame("Frame")
     events:RegisterEvent("PLAYER_REGEN_ENABLED")
-    events:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/integrations/EllesmereUISettings.lua:253:callback#13", --[[/APR_DIAG]]function()
-        local queued = pending
-        pending = setmetatable({}, { __mode = "k" })
-        local visited = {}
-        for widget in pairs(queued) do Style(widget, visited) end
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.EnableEllesmereUISettings = APRTrace("APR-Core/integrations/EllesmereUISettings.lua:12:APR:EnableEllesmereUISettings#1", APR.EnableEllesmereUISettings)--[[/APR_DIAG]]
+    events:SetScript(
+        "OnEvent", --[[APR_DIAG]]
+        APRTrace("APR-Core/integrations/EllesmereUISettings.lua:253:callback#13", --[[/APR_DIAG]] function()
+            local queued = pending
+            pending = setmetatable({}, { __mode = "k" })
+            local visited = {}
+            for widget in pairs(queued) do
+                Style(widget, visited)
+            end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+end--[[APR_DIAG]]
+APR.EnableEllesmereUISettings = APRTrace(
+    "APR-Core/integrations/EllesmereUISettings.lua:12:APR:EnableEllesmereUISettings#1",
+    APR.EnableEllesmereUISettings
+)--[[/APR_DIAG]]

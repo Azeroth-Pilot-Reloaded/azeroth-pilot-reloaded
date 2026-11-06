@@ -42,29 +42,38 @@ CoordinateFrame.Text:SetJustifyH("CENTER")
 CoordinateFrame.Text:SetPoint("CENTER", 0, 0)
 APR:RegisterFontString(CoordinateFrame.Text, "general", { role = "base" })
 
-CoordinateFrame:SetScript("OnUpdate", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Coordinates.lua:45:callback#1", --[[/APR_DIAG]]function(self, elapsed)
-    fpsCounter = fpsCounter + elapsed
-    if fpsCounter >= frequency then
-        -- Drop missed intervals after a stall instead of refreshing on every catch-up frame.
-        fpsCounter = fpsCounter % frequency
+CoordinateFrame:SetScript(
+    "OnUpdate", --[[APR_DIAG]]
+    APRTrace("APR-Core/ui/panels/Coordinates.lua:45:callback#1", --[[/APR_DIAG]] function(self, elapsed)
+        fpsCounter = fpsCounter + elapsed
+        if fpsCounter >= frequency then
+            -- Drop missed intervals after a stall instead of refreshing on every catch-up frame.
+            fpsCounter = fpsCounter % frequency
 
-        local y, x = UnitPosition("player")
-        local text
-        if not x or not y then
-            text = ("-"):rep(8)
-        else
-            if self.lastX == x and self.lastY == y then return end
-            text = APR.coordinate:RoundCoords(x, y, 2)
+            local y, x = UnitPosition("player")
+            local text
+            if not x or not y then
+                text = ("-"):rep(8)
+            else
+                if self.lastX == x and self.lastY == y then return end
+                text = APR.coordinate:RoundCoords(x, y, 2)
+            end
+            self.lastX, self.lastY = x, y
+            if self.lastText ~= text then
+                self.Text:SetText(text)
+                self.lastText = text
+            end
         end
-        self.lastX, self.lastY = x, y
-        if self.lastText ~= text then self.Text:SetText(text); self.lastText = text end
-    end
-end--[[APR_DIAG]])--[[/APR_DIAG]])
-CoordinateFrame:SetScript("OnMouseDown", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Coordinates.lua:63:callback#2", --[[/APR_DIAG]]function(self, button)
-    if button == "RightButton" then
-        APR.questionDialog:CreateEditBoxPopup('Coordinate X,Y', nil, CoordinateFrame.Text:GetText())
-    end
-end--[[APR_DIAG]])--[[/APR_DIAG]])
+    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+)
+CoordinateFrame:SetScript(
+    "OnMouseDown", --[[APR_DIAG]]
+    APRTrace("APR-Core/ui/panels/Coordinates.lua:63:callback#2", --[[/APR_DIAG]] function(self, button)
+        if button == "RightButton" then
+            APR.questionDialog:CreateEditBoxPopup("Coordinate X,Y", nil, CoordinateFrame.Text:GetText())
+        end
+    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+)
 ---------------------------------------------------------------------------------------
 ----------------------------- Function Coordinate Frames ------------------------------
 ---------------------------------------------------------------------------------------
@@ -75,16 +84,21 @@ function APR.coordinate:OnInit()
     LibWindow.MakeDraggable(CoordinateScreenPanel)
 
     self:RefreshFrameAnchor()
-end--[[APR_DIAG]]; APR.coordinate.OnInit = APRTrace("APR-Core/ui/panels/Coordinates.lua:72:APR.coordinate:OnInit#3", APR.coordinate.OnInit)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.coordinate.OnInit = APRTrace("APR-Core/ui/panels/Coordinates.lua:72:APR.coordinate:OnInit#3", APR.coordinate.OnInit)--[[/APR_DIAG]]
 
 function APR.coordinate:RefreshFrameAnchor()
-    if (not APR.settings.profile.coordinateShow or not APR.settings.profile.enableAddon) then
+    if not APR.settings.profile.coordinateShow or not APR.settings.profile.enableAddon then
         CoordinateScreenPanel:Hide()
         return
     end
     LibWindow.RestorePosition(CoordinateScreenPanel)
     CoordinateScreenPanel:Show()
-end--[[APR_DIAG]]; APR.coordinate.RefreshFrameAnchor = APRTrace("APR-Core/ui/panels/Coordinates.lua:80:APR.coordinate:RefreshFrameAnchor#4", APR.coordinate.RefreshFrameAnchor)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.coordinate.RefreshFrameAnchor = APRTrace(
+    "APR-Core/ui/panels/Coordinates.lua:80:APR.coordinate:RefreshFrameAnchor#4",
+    APR.coordinate.RefreshFrameAnchor
+)--[[/APR_DIAG]]
 
 function APR.coordinate:RoundCoords(x, y, prec)
     local coord_fmt = "%%.%df, %%.%df"
@@ -93,4 +107,6 @@ function APR.coordinate:RoundCoords(x, y, prec)
         return "---"
     end
     return fmt:format(x, y)
-end--[[APR_DIAG]]; APR.coordinate.RoundCoords = APRTrace("APR-Core/ui/panels/Coordinates.lua:89:APR.coordinate:RoundCoords#5", APR.coordinate.RoundCoords)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.coordinate.RoundCoords =
+    APRTrace("APR-Core/ui/panels/Coordinates.lua:89:APR.coordinate:RoundCoords#5", APR.coordinate.RoundCoords)--[[/APR_DIAG]]

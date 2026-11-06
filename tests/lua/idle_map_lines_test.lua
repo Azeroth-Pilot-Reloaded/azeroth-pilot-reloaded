@@ -18,36 +18,43 @@ function env.methods:SetEndPoint(...)
     self.endpointWrites = (self.endpointWrites or 0) + 1
     setEndPoint(self, ...)
 end
-function APR:NewModule() return {RegisterMessage = function() end} end
+function APR:NewModule()
+    return { RegisterMessage = function() end }
+end
 function APR:IsInstanceWithUI() return true end
 local playerX, playerY, facing, radius = 10, 20, 0, 200
 function UnitPosition() return playerY, playerX end
 function GetPlayerFacing() return facing end
 function GetCVar() return "0" end
 function GetMinimapShape() return "ROUND" end
-C_Minimap = {GetViewRadius = function() return radius end}
-C_Map = {GetPlayerMapPosition = function() return {x = playerX / 100, y = playerY / 100} end}
-local coord = {x = 50, y = 100}
+C_Minimap = { GetViewRadius = function() return radius end }
+C_Map = { GetPlayerMapPosition = function() return { x = playerX / 100, y = playerY / 100 } end }
+local coord = { x = 50, y = 100 }
 function APR:GetPlayerMapPos(_, y, x) return x / 100, y / 100 end
 function APR:GetCurrentStep() return {} end
 function APR:GetStep() return {} end
 function APR:GetStepCoord() return coord end
-APR.Arrow = {Active = true, x = coord.x, y = coord.y}
-APR.Color.red = {1, 0, 0}
-APR.ActiveRoute, APR.PlayerID, APRData = "route", "player", {player = {route = 1}}
+APR.Arrow = { Active = true, x = coord.x, y = coord.y }
+APR.Color.red = { 1, 0, 0 }
+APR.ActiveRoute, APR.PlayerID, APRData = "route", "player", { player = { route = 1 } }
 local profile = APR.settings.profile
 profile.enableAddon, profile.showMiniMapLine, profile.showMapLine = true, true, true
-profile.showMiniMapLineColor, profile.showMapLineColor = {1, 0, 0}, {1, 0, 0}
+profile.showMiniMapLineColor, profile.showMapLineColor = { 1, 0, 0 }, { 1, 0, 0 }
 profile.showMiniMapLineThickness, profile.showMapLineThickness = 2, 2
 dofile("APR-Core/features/navigation/Map.lua")
 APR.map:OnInit()
 local tick = APR.map.stepLines.scripts.OnLoop
 local minimapLine = Minimap.line
 local worldUpdates, updateWorld = 0, APR.map.UpdateLine
-function APR.map:UpdateLine() worldUpdates = worldUpdates + 1; updateWorld(self) end
+function APR.map:UpdateLine()
+    worldUpdates = worldUpdates + 1
+    updateWorld(self)
+end
 tick()
 local writes = minimapLine.endpointWrites
-for _ = 1, 100 do tick() end
+for _ = 1, 100 do
+    tick()
+end
 assert(worldUpdates == 0, "A closed world map never resolves route/coordinate data")
 assert(minimapLine.endpointWrites == writes, "A stationary player never rewrites the minimap endpoint")
 playerX = playerX + 1
@@ -75,13 +82,19 @@ tick()
 local mapLine = WorldMapFrame.children[1].line
 local start, finish = mapLine.startPoint[2], mapLine.endPoint[2]
 local startWrites, finishWrites = start.anchors, finish.anchors
-for _ = 1, 100 do tick() end
-assert(start.anchors == startWrites and finish.anchors == finishWrites,
-    "Unchanged world-map geometry never reanchors the line")
+for _ = 1, 100 do
+    tick()
+end
+assert(
+    start.anchors == startWrites and finish.anchors == finishWrites,
+    "Unchanged world-map geometry never reanchors the line"
+)
 playerY = playerY + 1
 tick()
-assert(start.anchors == startWrites + 1 and finish.anchors == finishWrites,
-    "Movement only reanchors the changed endpoint")
+assert(
+    start.anchors == startWrites + 1 and finish.anchors == finishWrites,
+    "Movement only reanchors the changed endpoint"
+)
 finishWrites = finish.anchors
 APR.Arrow.y = APR.Arrow.y + 10
 tick()
@@ -94,7 +107,9 @@ WorldMapFrame:Hide()
 tick()
 assert(not mapLine:IsShown())
 local hides, updates = mapLine.hideCount, worldUpdates
-for _ = 1, 100 do tick() end
+for _ = 1, 100 do
+    tick()
+end
 assert(mapLine.hideCount == hides and worldUpdates == updates, "Closed maps do no repeated hide/update work")
 WorldMapFrame:Show()
 tick()
@@ -102,7 +117,7 @@ assert(mapLine:IsShown(), "Reopening the world map restores the line")
 APR.Arrow.Active, coord = false, nil
 tick()
 assert(not minimapLine:IsShown() and not mapLine:IsShown(), "Missing step coordinates clear obsolete lines")
-coord = {x = 50, y = 100}
+coord = { x = 50, y = 100 }
 tick()
 assert(minimapLine:IsShown() and mapLine:IsShown())
 profile.enableAddon = false

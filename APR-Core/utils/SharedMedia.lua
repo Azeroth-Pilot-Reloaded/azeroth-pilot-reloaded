@@ -11,9 +11,12 @@ APR.CompanionSoundFiles = {
     error = soundRoot .. "companion-error.ogg",
 }
 APR.CompanionSoundNames = {
-    match = "APR - Companion Match", received = "APR - Companion Received",
-    joined = "APR - Companion Joined", declined = "APR - Companion Declined",
-    expired = "APR - Companion Expired", error = "APR - Companion Error",
+    match = "APR - Companion Match",
+    received = "APR - Companion Received",
+    joined = "APR - Companion Joined",
+    declined = "APR - Companion Declined",
+    expired = "APR - Companion Expired",
+    error = "APR - Companion Error",
 }
 local media = LibStub and LibStub("LibSharedMedia-3.0", true)
 if not media or not media.Register then return end

@@ -7,7 +7,10 @@ do
     local previous = GetAchievementInfo
     assert(env.isAchievementCompleted(42045) == nil, "Absent achievement APIs must remain unknown")
     GetAchievementInfo = function(id) return id, "Client name", 0, true, nil, nil, nil, nil, nil, nil, nil, nil, false end
-    assert(env.isAchievementCompleted(42045) == true, "Account completion applies even when this character did not earn it")
+    assert(
+        env.isAchievementCompleted(42045) == true,
+        "Account completion applies even when this character did not earn it"
+    )
     GetAchievementInfo = function(id) return id, "Client name", 0, false end
     assert(env.isAchievementCompleted(42045) == false)
     GetAchievementInfo = function() error("unavailable") end
@@ -18,8 +21,8 @@ assert(APR.NavigationEngine == LibStub("LibAPRNavigation-1.0").Engine)
 local instance, x, y = env.mapToWorld(2413, 0.25, 0.75)
 assert(instance == 2694 and x == 2500 and y == 7500, "Map conversion preserves every API return")
 do
-    local originalProjection, originalLookup, originalInfo = C_Map.GetMapPosFromWorldPos,
-        C_Map.GetMapInfoAtPosition, C_Map.GetMapInfo
+    local originalProjection, originalLookup, originalInfo =
+        C_Map.GetMapPosFromWorldPos, C_Map.GetMapInfoAtPosition, C_Map.GetMapInfo
     local projections, lookups, mapReads = 0, 0, 0
     local sourceMap, localResult, failProjection = 12, { mapID = 85, mapType = 3 }, false
     C_Map.GetMapInfo = function(id)
@@ -39,16 +42,22 @@ do
         return localResult
     end
     local map, mapX, mapY = env.worldToMap(1, 1445.21, -4499.56)
-    assert(map == 85 and mapX == 0.571 and mapY == 0.8981 and projections == 2 and lookups == 1,
-        "A continent result resolves through the client to consistent city coordinates")
+    assert(
+        map == 85 and mapX == 0.571 and mapY == 0.8981 and projections == 2 and lookups == 1,
+        "A continent result resolves through the client to consistent city coordinates"
+    )
     local endpoint = data:NormalizeLocation({ space = "world", instanceID = 1, x = 1445.21, y = -4499.56 })
-    assert(endpoint.uiMapID == 85 and data:GetDisplayMapName(endpoint) == "Orgrimmar",
-        "Unlabelled world endpoints use the client's local map name instead of the continent")
+    assert(
+        endpoint.uiMapID == 85 and data:GetDisplayMapName(endpoint) == "Orgrimmar",
+        "Unlabelled world endpoints use the client's local map name instead of the continent"
+    )
 
     failProjection = true
     map, mapX, mapY = env.worldToMap(1, 1445.21, -4499.56)
-    assert(map == 12 and mapX == 0.6 and mapY == 0.4,
-        "A failed local projection keeps the original map and its coordinates together")
+    assert(
+        map == 12 and mapX == 0.6 and mapY == 0.4,
+        "A failed local projection keeps the original map and its coordinates together"
+    )
     failProjection, localResult = false, nil
     map, mapX, mapY = env.worldToMap(1, 1445.21, -4499.56)
     assert(map == 12 and mapX == 0.6 and mapY == 0.4, "Missing local map information preserves the original result")
@@ -58,14 +67,19 @@ do
     local beforeLookups, beforeReads, beforeProjections = lookups, mapReads, projections
     C_Map.GetMapInfoAtPosition = function() error("Specific maps must not be refined") end
     assert(env.worldToMap(1, 1445.21, -4499.56, 85) == 85)
-    assert(projections == beforeProjections + 1 and mapReads == beforeReads and lookups == beforeLookups,
-        "An explicit map hint avoids all refinement queries")
+    assert(
+        projections == beforeProjections + 1 and mapReads == beforeReads and lookups == beforeLookups,
+        "An explicit map hint avoids all refinement queries"
+    )
     sourceMap = 85
     beforeReads, beforeProjections = mapReads, projections
     assert(env.worldToMap(1, 1445.21, -4499.56) == 85)
-    assert(projections == beforeProjections + 1 and mapReads == beforeReads + 1 and lookups == beforeLookups,
-        "An already specific map needs no local lookup or second projection")
-    C_Map.GetMapPosFromWorldPos, C_Map.GetMapInfoAtPosition, C_Map.GetMapInfo = originalProjection, originalLookup, originalInfo
+    assert(
+        projections == beforeProjections + 1 and mapReads == beforeReads + 1 and lookups == beforeLookups,
+        "An already specific map needs no local lookup or second projection"
+    )
+    C_Map.GetMapPosFromWorldPos, C_Map.GetMapInfoAtPosition, C_Map.GetMapInfo =
+        originalProjection, originalLookup, originalInfo
 end
 local player = env.getPlayerPosition()
 assert(player.x == 100 and player.y == 200 and player.instanceID == 0)
@@ -73,7 +87,10 @@ assert(env.getCharacter().class == "MAGE")
 assert(env.getText("USE_PORTAL_TO") == APR.NavigationData:GetText("USE_PORTAL_TO"))
 PORTAL = "Client portal"
 assert(env.getText("USE_PORTAL_TO", "PORTAL") ~= PORTAL)
-assert(env.getItemName(1) == APR.NavigationData:GetText("UNKNOWN") and env.getSpellName(1) == APR.NavigationData:GetText("UNKNOWN"))
+assert(
+    env.getItemName(1) == APR.NavigationData:GetText("UNKNOWN")
+        and env.getSpellName(1) == APR.NavigationData:GetText("UNKNOWN")
+)
 assert(env.hasAura(123) == nil, "Missing aura API remains unknown")
 C_UnitAuras = { GetPlayerAuraBySpellID = function() return nil end }
 assert(env.hasAura(123) == false)
@@ -86,8 +103,8 @@ data:GetBindings()[999999] = { space = "world", instanceID = 0, uiMapID = 2395, 
 local area = C_Map.GetAreaInfo
 C_Map.GetAreaInfo = function(id) return id == 999999 and clientInnName or area(id) end
 assert(data:GetBindPosition().x == 700, "Binding coordinates resolve through the client's localized area name")
-APRNavigationCharacterSettings.bindLocation = { name = fixture.bindName,
-    location = { x = 950, y = 850, instanceID = 0, uiMapID = 2395 } }
+APRNavigationCharacterSettings.bindLocation =
+    { name = fixture.bindName, location = { x = 950, y = 850, instanceID = 0, uiMapID = 2395 } }
 assert(data:GetBindPosition().x == 950, "Observed bind beats coarse area coordinates")
 fixture.bindName = "An inn absent from the area API"
 assert(not data:GetBindPosition(), "A changed unknown bind never reuses the old location")
@@ -100,8 +117,10 @@ adapter:CheckBindLanding()
 assert(not APRNavigationCharacterSettings.bindLocation, "A successful cast does not record the departure as home")
 fixture.player = { x = 1000, y = 2000, z = 10, instanceID = 0 }
 adapter:CheckBindLanding()
-assert(data:GetBindPosition().x == 1000 and not adapter.pendingBindLanding,
-    "Actual arrival without a loading screen also learns the hearth destination")
+assert(
+    data:GetBindPosition().x == 1000 and not adapter.pendingBindLanding,
+    "Actual arrival without a loading screen also learns the hearth destination"
+)
 
 local houses = {
     { houseGUID = "house-one", neighborhoodGUID = "neighborhood-one", plotID = 12 },
@@ -118,8 +137,14 @@ C_HousingNeighborhood = {
     CanReturnAfterVisitingHouse = function() return true end,
 }
 adapter.frame:OnEvent("PLAYER_HOUSE_LIST_UPDATED", houses)
-assert(data:GetHousingData().houseGUID == "house-two", "Secure action and destination use the same selected owned house")
-assert(not env.getDynamicPosition("housing"), "A different neighborhood's matching plot number is not the selected house")
+assert(
+    data:GetHousingData().houseGUID == "house-two",
+    "Secure action and destination use the same selected owned house"
+)
+assert(
+    not env.getDynamicPosition("housing"),
+    "A different neighborhood's matching plot number is not the selected house"
+)
 local usable, reason = env.getActionUsability("housing")
 assert(not usable and reason == "pending_data")
 C_Housing.GetCurrentNeighborhoodGUID = function() return "neighborhood-two" end
@@ -136,19 +161,35 @@ APRNavigationCharacterSettings.housingExitLocation = nil
 assert(data:GetBindPosition(), "A known hearth bind exists while testing an unknown housing return")
 assert(not env.getDynamicPosition("housing_exit"), "An unknown housing return must not borrow the hearth destination")
 local Lib = LibStub("LibAPRNavigation-1.0")
-Lib:RegisterData("adapter-return-test", "return", { connections = { { id = "return", kind = "portal", seconds = 10,
-    from = { dynamic = "player" }, to = { dynamic = "housing_exit" }, actions = { { type = "housing_return" } } } } })
+Lib:RegisterData("adapter-return-test", "return", {
+    connections = {
+        {
+            id = "return",
+            kind = "portal",
+            seconds = 10,
+            from = { dynamic = "player" },
+            to = { dynamic = "housing_exit" },
+            actions = { { type = "housing_return" } },
+        },
+    },
+})
 local returnData = Lib:New({ profile = "adapter-return-test", environment = env })
-assert(#returnData:BuildEdges({ playerPosition = env.getPlayerPosition() }) == 0,
-    "Native return availability alone cannot create an edge with an invented endpoint")
+assert(
+    #returnData:BuildEdges({ playerPosition = env.getPlayerPosition() }) == 0,
+    "Native return availability alone cannot create an edge with an invented endpoint"
+)
 data:UpdateHousingExitLocation()
 assert(env.getDynamicPosition("housing_exit").x == 1000)
 local returnEdges = returnData:BuildEdges({ playerPosition = env.getPlayerPosition() })
-assert(#returnEdges == 1 and returnEdges[1].to.x == 1000 and returnEdges[1].to.y == 2000,
-    "A recorded departure enables return to that exact point")
+assert(
+    #returnEdges == 1 and returnEdges[1].to.x == 1000 and returnEdges[1].to.y == 2000,
+    "A recorded departure enables return to that exact point"
+)
 
 local cancelled, refreshed, requested = 0, 0, 0
-APR.navigation = { generation = 1, cursor = 1,
+APR.navigation = {
+    generation = 1,
+    cursor = 1,
     queue = { { kind = "walk" }, { action = { type = "housing" } } },
     GetActiveStep = function(self) return self.queue[self.cursor] end,
     Cancel = function(self, reason)
@@ -156,32 +197,52 @@ APR.navigation = { generation = 1, cursor = 1,
         cancelled = cancelled + 1
         self.generation, self.queue, self.search = self.generation + 1, {}, nil
     end,
-    ForceRefresh = function(self) refreshed = refreshed + 1; self.dirty = true end,
+    ForceRefresh = function(self)
+        refreshed = refreshed + 1
+        self.dirty = true
+    end,
     RequestUpdate = function(self)
-        assert(self.dirty and #self.queue == 0 and not self.search,
-            "Replanning starts after cancellation and the refreshed data snapshot")
+        assert(
+            self.dirty and #self.queue == 0 and not self.search,
+            "Replanning starts after cancellation and the refreshed data snapshot"
+        )
         requested = requested + 1
         self.updateScheduled = true
     end,
 }
 trackedHouse = "house-one"
 adapter.frame:OnEvent("TRACKED_HOUSE_CHANGED", trackedHouse)
-assert(cancelled == 1 and requested == 1 and APR.navigation.updateScheduled
-    and APR.navigation.generation == 2 and #APR.navigation.queue == 0
-    and data:GetHousingData().houseGUID == "house-one",
-    "Changing houses cancels even an approach walk before a later housing action can target another house")
+assert(
+    cancelled == 1
+        and requested == 1
+        and APR.navigation.updateScheduled
+        and APR.navigation.generation == 2
+        and #APR.navigation.queue == 0
+        and data:GetHousingData().houseGUID == "house-one",
+    "Changing houses cancels even an approach walk before a later housing action can target another house"
+)
 APR.navigation.queue = { { action = { type = "housing" } } }
 adapter.frame:OnEvent("PLAYER_HOUSE_LIST_UPDATED", {})
-assert(not data:GetHousingData() and not env.getDynamicPosition("housing"), "Revoked ownership removes its optional shortcut")
-assert(cancelled == 2 and requested == 2, "Ownership changes discard the old housing action and schedule its replacement")
+assert(
+    not data:GetHousingData() and not env.getDynamicPosition("housing"),
+    "Revoked ownership removes its optional shortcut"
+)
+assert(
+    cancelled == 2 and requested == 2,
+    "Ownership changes discard the old housing action and schedule its replacement"
+)
 APR.navigation.queue = { { action = { type = "item", data = 6948 } } }
 adapter.frame:OnEvent("TRACKED_HOUSE_CHANGED", nil)
-assert(cancelled == 2 and requested == 2 and #APR.navigation.queue == 1,
-    "A settled itinerary without housing keeps its guidance")
+assert(
+    cancelled == 2 and requested == 2 and #APR.navigation.queue == 1,
+    "A settled itinerary without housing keeps its guidance"
+)
 APR.navigation.queue, APR.navigation.search = {}, { pending = true }
 adapter.frame:OnEvent("PLAYER_HOUSE_LIST_UPDATED", houses)
-assert(cancelled == 3 and requested == 3 and not APR.navigation.search and refreshed == 4,
-    "An unfinished search cannot publish housing edges built for the previous selection")
+assert(
+    cancelled == 3 and requested == 3 and not APR.navigation.search and refreshed == 4,
+    "An unfinished search cannot publish housing edges built for the previous selection"
+)
 APR.navigation = nil
 assert(data._catalog == nil, "APR uses the standalone library's public interface")
 
@@ -197,18 +258,24 @@ APRNavigationCharacterSettings.bindLocation = nil
 adapter.frame:OnEvent("UNIT_SPELLCAST_SUCCEEDED", "player", "cast", 8690)
 UnitIsDeadOrGhost = function() return true end
 adapter:CheckBindLanding(true)
-assert(not APRNavigationCharacterSettings.bindLocation and not adapter.pendingBindLanding,
-    "Death must not turn a later loading-screen position into the hearth destination")
+assert(
+    not APRNavigationCharacterSettings.bindLocation and not adapter.pendingBindLanding,
+    "Death must not turn a later loading-screen position into the hearth destination"
+)
 UnitIsDeadOrGhost = nil
 
 C_Item.GetItemSpell = function() return "Client item spell", 98765 end
 C_Spell.GetSpellInfo = function(id) return { name = "Client spell", castTime = id == 98765 and 2500 or 1000 } end
-assert(env.getActionCastSeconds("item", 1) == 2.5 and env.getActionCastSeconds("spell", 2) == 1,
-    "Cast durations come from the item spell or spell API")
+assert(
+    env.getActionCastSeconds("item", 1) == 2.5 and env.getActionCastSeconds("spell", 2) == 1,
+    "Cast durations come from the item spell or spell API"
+)
 APR.CanAccessValue = function(_, value) return value ~= "restricted" end
 C_Spell.GetSpellInfo = function() return { name = "Client spell", castTime = "restricted" } end
-assert(env.getSpellInfo(1).castTime == nil and env.getActionCastSeconds("spell", 1) == nil,
-    "Restricted cast data does not cross the library boundary")
+assert(
+    env.getSpellInfo(1).castTime == nil and env.getActionCastSeconds("spell", 1) == nil,
+    "Restricted cast data does not cross the library boundary"
+)
 
 fixture.bindName = "An unobserved inn for the budget test"
 APRNavigationCharacterSettings.bindLocation = nil
@@ -220,14 +287,21 @@ C_Map.GetAreaInfo = function(id)
 end
 local lookup = adapter:CreatePreparation({ clock = function() return elapsed end })
 assert(areaReads == 0, "Preparing a bind lookup does not synchronously scan the area catalogue")
-assert(lookup:Step(64, 1) == "planning" and areaReads == 8,
-    "Binding names obey the same deadline as the later graph preparation")
+assert(
+    lookup:Step(64, 1) == "planning" and areaReads == 8,
+    "Binding names obey the same deadline as the later graph preparation"
+)
 lookup:Cancel()
 local stoppedAt = areaReads
 assert(lookup:Step(64, 1) == "cancelled" and areaReads == stoppedAt)
 lookup = adapter:CreatePreparation({ clock = function() return elapsed end })
-while lookup:Step(64, 1) == "planning" do end
+while lookup:Step(64, 1) == "planning" do
+end
 local preparedReads = areaReads
-for _ = 1, 100 do assert(data:GetBindPosition() == nil) end
+for _ = 1, 100 do
+    assert(data:GetBindPosition() == nil)
+end
 assert(areaReads == preparedReads, "Hearth variants reuse the completed negative lookup")
-print("Navigation adapter: API coordinates, localized names, bind landing, selected-house geography, ownership and separate APR state passed")
+print(
+    "Navigation adapter: API coordinates, localized names, bind landing, selected-house geography, ownership and separate APR state passed"
+)

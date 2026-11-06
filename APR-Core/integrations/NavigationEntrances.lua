@@ -31,7 +31,8 @@ local function EntranceView(data, definition, resolved, reason, key)
         view.Coord = nil
     end
     return view
-end--[[APR_DIAG]]; EntranceView = APRTrace("APR-Core/integrations/NavigationEntrances.lua:11:EntranceView#1", EntranceView)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+EntranceView = APRTrace("APR-Core/integrations/NavigationEntrances.lua:11:EntranceView#1", EntranceView)--[[/APR_DIAG]]
 
 function APR:GetNavigationEntranceInfo(mapID)
     local data = self.NavigationData
@@ -40,7 +41,11 @@ function APR:GetNavigationEntranceInfo(mapID)
     if not definition then return nil end
     local resolved, reason = data:GetEntranceForMap(mapID)
     return EntranceView(data, definition, resolved, reason, mapID)
-end--[[APR_DIAG]]; APR.GetNavigationEntranceInfo = APRTrace("APR-Core/integrations/NavigationEntrances.lua:36:APR:GetNavigationEntranceInfo#2", APR.GetNavigationEntranceInfo)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetNavigationEntranceInfo = APRTrace(
+    "APR-Core/integrations/NavigationEntrances.lua:36:APR:GetNavigationEntranceInfo#2",
+    APR.GetNavigationEntranceInfo
+)--[[/APR_DIAG]]
 
 function APR:GetNavigationEntranceInfoForInstance(instanceID)
     local data = self.NavigationData
@@ -49,8 +54,16 @@ function APR:GetNavigationEntranceInfoForInstance(instanceID)
     if not definition then return nil end
     local resolved, reason = data:GetEntranceForInstance(instanceID)
     return EntranceView(data, definition, resolved, reason, "instance:" .. instanceID)
-end--[[APR_DIAG]]; APR.GetNavigationEntranceInfoForInstance = APRTrace("APR-Core/integrations/NavigationEntrances.lua:45:APR:GetNavigationEntranceInfoForInstance#3", APR.GetNavigationEntranceInfoForInstance)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetNavigationEntranceInfoForInstance = APRTrace(
+    "APR-Core/integrations/NavigationEntrances.lua:45:APR:GetNavigationEntranceInfoForInstance#3",
+    APR.GetNavigationEntranceInfoForInstance
+)--[[/APR_DIAG]]
 
 APR.ScenarioEntrances = setmetatable({}, {
-    __index = --[[APR_DIAG]]APRTrace("APR-Core/integrations/NavigationEntrances.lua:55:callback#4", --[[/APR_DIAG]]function(_, mapID) return APR:GetNavigationEntranceInfo(mapID) end--[[APR_DIAG]])--[[/APR_DIAG]],
+    --[[APR_DIAG]]
+    __index = APRTrace(
+        "APR-Core/integrations/NavigationEntrances.lua:55:callback#4", --[[/APR_DIAG]]
+        function(_, mapID) return APR:GetNavigationEntranceInfo(mapID) end --[[APR_DIAG]]
+    ) --[[/APR_DIAG]],
 })

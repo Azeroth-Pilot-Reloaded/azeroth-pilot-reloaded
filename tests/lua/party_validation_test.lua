@@ -3,9 +3,17 @@ function GetNormalizedRealmName() return "Home" end
 dofile("APR-Core/features/group/PartyProtocol.lua")
 local protocol = APR.PartyProtocol
 local function snapshot()
-    return { username = "Player", route = "A route", routeFileName = "route-key", currentStep = 4, totalSteps = 10,
-        stepFrameDetails = { progress = { index = 5, step = 4, total = 10 },
-            questSteps = { { text = "|cffffff00Quest|r", subSteps = { { text = "1/5 items" } } } } } }
+    return {
+        username = "Player",
+        route = "A route",
+        routeFileName = "route-key",
+        currentStep = 4,
+        totalSteps = 10,
+        stepFrameDetails = {
+            progress = { index = 5, step = 4, total = 10 },
+            questSteps = { { text = "|cffffff00Quest|r", subSteps = { { text = "1/5 items" } } } },
+        },
+    }
 end
 local clean = assert(protocol.NormalizeSnapshot(snapshot(), "Player-Home"))
 assert(clean.username == "Player" and clean.stepFrameDetails.questSteps[1].text == "Quest")
@@ -15,49 +23,81 @@ local data = snapshot()
 data.username = "Player-Other"
 assert(not protocol.NormalizeSnapshot(data, "Player-Home"))
 for _, bad in ipairs({ {}, "4", -1, math.huge }) do
-    data = snapshot(); data.currentStep = bad
+    data = snapshot()
+    data.currentStep = bad
     assert(not protocol.NormalizeSnapshot(data, "Player-Home"))
 end
-data = snapshot(); data.currentStep = 0/0
-assert(not protocol.NormalizeSnapshot(data, "Player-Home"))
-data = snapshot(); data.currentStep = 12
-assert(not protocol.NormalizeSnapshot(data, "Player-Home"))
-data = snapshot(); data.stepFrameDetails.questSteps[1].text = {}
-assert(not protocol.NormalizeSnapshot(data, "Player-Home"))
-data = snapshot(); data.stepFrameDetails.questSteps[1].text = string.rep("x", 1025)
+data = snapshot()
+data.currentStep = 0 / 0
 assert(not protocol.NormalizeSnapshot(data, "Player-Home"))
 data = snapshot()
-for index = 1, 129 do data.stepFrameDetails.questSteps[index] = { text = "row" } end
+data.currentStep = 12
 assert(not protocol.NormalizeSnapshot(data, "Player-Home"))
-data = snapshot(); data.unused = data
-assert(protocol.NormalizeSnapshot(data, "Player-Home").unused == nil, "Unknown/cyclic fields are never walked or retained")
-data = snapshot(); data.stepFrameDetails = nil; data.currentStep = nil; data.totalSteps = 0; data.route = nil
+data = snapshot()
+data.stepFrameDetails.questSteps[1].text = {}
+assert(not protocol.NormalizeSnapshot(data, "Player-Home"))
+data = snapshot()
+data.stepFrameDetails.questSteps[1].text = string.rep("x", 1025)
+assert(not protocol.NormalizeSnapshot(data, "Player-Home"))
+data = snapshot()
+for index = 1, 129 do
+    data.stepFrameDetails.questSteps[index] = { text = "row" }
+end
+assert(not protocol.NormalizeSnapshot(data, "Player-Home"))
+data = snapshot()
+data.unused = data
+assert(
+    protocol.NormalizeSnapshot(data, "Player-Home").unused == nil,
+    "Unknown/cyclic fields are never walked or retained"
+)
+data = snapshot()
+data.stepFrameDetails = nil
+data.currentStep = nil
+data.totalSteps = 0
+data.route = nil
 assert(protocol.NormalizeSnapshot(data, "Player-Home"), "Peers without a route remain compatible")
 
-data = snapshot(); data.routeProgress = { id = "main:7", step = 7, total = 12, unused = {} }
+data = snapshot()
+data.routeProgress = { id = "main:7", step = 7, total = 12, unused = {} }
 clean = assert(protocol.NormalizeSnapshot(data, "Player-Home"))
 assert(clean.routeProgress.id == "main:7" and clean.routeProgress.unused == nil)
 for _, progress in ipairs({
-    "7", {}, { id = "main:7", step = 6, total = 12 },
-    { id = "main:13", step = 13, total = 12 }, { id = "main:0", step = 0, total = 12 },
-    { id = "parallel:0:1", step = 7, total = 12 }, { id = "parallel:1:0", step = 7, total = 12 },
-    { id = "parallel:1:2", step = 14, total = 12 }, { id = "end", step = 12, total = 12 },
-    { id = "main:7", step = "7", total = 12 }, { id = "main:7", step = 7, total = math.huge },
-    { id = "unknown:7", step = 7, total = 12 }, { id = string.rep("x", 65), step = 7, total = 12 },
+    "7",
+    {},
+    { id = "main:7", step = 6, total = 12 },
+    { id = "main:13", step = 13, total = 12 },
+    { id = "main:0", step = 0, total = 12 },
+    { id = "parallel:0:1", step = 7, total = 12 },
+    { id = "parallel:1:0", step = 7, total = 12 },
+    { id = "parallel:1:2", step = 14, total = 12 },
+    { id = "end", step = 12, total = 12 },
+    { id = "main:7", step = "7", total = 12 },
+    { id = "main:7", step = 7, total = math.huge },
+    { id = "unknown:7", step = 7, total = 12 },
+    { id = string.rep("x", 65), step = 7, total = 12 },
 }) do
-    data = snapshot(); data.routeProgress = progress
+    data = snapshot()
+    data.routeProgress = progress
     assert(not protocol.NormalizeSnapshot(data, "Player-Home"), "Invalid stable positions are rejected")
 end
 for _, progress in ipairs({ { id = "parallel:1:2", step = 7, total = 12 }, { id = "end", step = 13, total = 12 } }) do
-    data = snapshot(); data.routeProgress = progress
+    data = snapshot()
+    data.routeProgress = progress
     assert(protocol.NormalizeSnapshot(data, "Player-Home"))
 end
 
 data = snapshot()
 local started = os.clock()
-for _ = 1, 10000 do assert(protocol.NormalizeSnapshot(data, "Player-Home")) end
+for _ = 1, 10000 do
+    assert(protocol.NormalizeSnapshot(data, "Player-Home"))
+end
 local elapsed = os.clock() - started
-print(string.format("Party schema: identity, ranges, row budgets and legacy payloads passed; 10000 snapshots in %.3f s", elapsed))
+print(
+    string.format(
+        "Party schema: identity, ranges, row budgets and legacy payloads passed; 10000 snapshots in %.3f s",
+        elapsed
+    )
+)
 
 function RegionalUniqueNamesEnabled() return true end
 local fullName = "Violet Meadow"
@@ -76,11 +116,13 @@ assert(protocol.PlayerKey("Violet Brook") ~= protocol.PlayerKey("Violet Meadow")
 assert(protocol.DisplayName("Violet Meadow") == "Violet Meadow")
 assert(protocol.UnitName("party1") == "Violet Meadow")
 for _, claimed in ipairs({ "Violet Meadow", "Violet" }) do
-    data = snapshot(); data.username = claimed
+    data = snapshot()
+    data.username = claimed
     clean = assert(protocol.NormalizeSnapshot(data, "Violet Meadow"))
     assert(clean.username == "Violet Meadow" and clean.sender == "Violet Meadow")
 end
-data = snapshot(); data.username = "Violet Brook"
+data = snapshot()
+data.username = "Violet Brook"
 assert(not protocol.NormalizeSnapshot(data, "Violet Meadow"))
 data.username = "Vio"
 assert(not protocol.NormalizeSnapshot(data, "Violet Meadow"))
@@ -89,8 +131,10 @@ assert(protocol.UnitName("party1") == nil, "Missing native regional names stay u
 local opaque = {}
 function issecretvalue(value) return value == opaque end
 fullName = opaque
-assert(protocol.UnitName("party1") == nil and protocol.PlayerKey(opaque) == nil,
-    "Restricted native names cannot enter membership or string operations")
+assert(
+    protocol.UnitName("party1") == nil and protocol.PlayerKey(opaque) == nil,
+    "Restricted native names cannot enter membership or string operations"
+)
 assert(protocol.LocalName() == "Violet Brook", "Restricted full names fall back to safe name parts")
 for _, unavailable in ipairs({ false, 42, {}, "" }) do
     fullName = unavailable
@@ -117,4 +161,6 @@ function RegionalUniqueNamesEnabled() return false end
 assert(protocol.LocalName() == "Violet", "Nonregional clients retain the saved username")
 RegionalUniqueNamesEnabled = nil
 assert(protocol.LocalName() == "Violet", "Clients without the regional API retain the saved username")
-print("Party regional schema: complete names, namesake isolation, authoritative legacy claims and unavailable/restricted data passed")
+print(
+    "Party regional schema: complete names, namesake isolation, authoritative legacy claims and unavailable/restricted data passed"
+)

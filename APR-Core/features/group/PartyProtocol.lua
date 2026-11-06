@@ -14,9 +14,9 @@ local PROGRESS_FIELDS = { "index", "step", "total" }
 local DETAIL_FIELDS = { "extraLines", "questSteps", "fillerSteps" }
 
 local function IsInteger(value, minimum)
-    return type(value) == "number" and value == value and value >= minimum
-        and value <= MAX_INDEX and value % 1 == 0
-end--[[APR_DIAG]]; IsInteger = APRTrace("APR-Core/features/group/PartyProtocol.lua:16:IsInteger#1", IsInteger)--[[/APR_DIAG]]
+    return type(value) == "number" and value == value and value >= minimum and value <= MAX_INDEX and value % 1 == 0
+end--[[APR_DIAG]]
+IsInteger = APRTrace("APR-Core/features/group/PartyProtocol.lua:16:IsInteger#1", IsInteger)--[[/APR_DIAG]]
 
 local function StripHyperlinkMarkup(value)
     local parts, cursor = nil, 1
@@ -36,7 +36,9 @@ local function StripHyperlinkMarkup(value)
     if not parts then return value end
     parts[#parts + 1] = value:sub(cursor)
     return table.concat(parts)
-end--[[APR_DIAG]]; StripHyperlinkMarkup = APRTrace("APR-Core/features/group/PartyProtocol.lua:21:StripHyperlinkMarkup#2", StripHyperlinkMarkup)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+StripHyperlinkMarkup =
+    APRTrace("APR-Core/features/group/PartyProtocol.lua:21:StripHyperlinkMarkup#2", StripHyperlinkMarkup)--[[/APR_DIAG]]
 
 local function StripArtMarkup(value)
     local parts, cursor = nil, 1
@@ -52,7 +54,8 @@ local function StripArtMarkup(value)
     if not parts then return value end
     parts[#parts + 1] = value:sub(cursor)
     return table.concat(parts)
-end--[[APR_DIAG]]; StripArtMarkup = APRTrace("APR-Core/features/group/PartyProtocol.lua:41:StripArtMarkup#3", StripArtMarkup)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+StripArtMarkup = APRTrace("APR-Core/features/group/PartyProtocol.lua:41:StripArtMarkup#3", StripArtMarkup)--[[/APR_DIAG]]
 
 local function Text(value, limit)
     if type(value) ~= "string" or #value > limit then return nil end
@@ -65,7 +68,8 @@ local function Text(value, limit)
         value = value:gsub("|c%x%x%x%x%x%x%x%x", ""):gsub("|r", "")
     end
     return value:gsub("[%z\1-\8\11\12\14-\31]", "")
-end--[[APR_DIAG]]; Text = APRTrace("APR-Core/features/group/PartyProtocol.lua:57:Text#4", Text)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Text = APRTrace("APR-Core/features/group/PartyProtocol.lua:57:Text#4", Text)--[[/APR_DIAG]]
 
 local function NameParts(value)
     if issecretvalue and issecretvalue(value) then return end
@@ -75,7 +79,8 @@ local function NameParts(value)
     if RegionalUniqueNamesEnabled and RegionalUniqueNamesEnabled() then return value end
     local name, realm = value:match("^([^%-]+)%-(.+)$")
     return name or value, realm and realm:gsub("%s", "")
-end--[[APR_DIAG]]; NameParts = APRTrace("APR-Core/features/group/PartyProtocol.lua:70:NameParts#5", NameParts)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+NameParts = APRTrace("APR-Core/features/group/PartyProtocol.lua:70:NameParts#5", NameParts)--[[/APR_DIAG]]
 
 function protocol.UnitName(unit)
     if RegionalUniqueNamesEnabled and RegionalUniqueNamesEnabled() then
@@ -86,7 +91,8 @@ function protocol.UnitName(unit)
     local name, realm = APR:SafeUnitName(unit)
     if not name then return end
     return realm and realm ~= "" and (name .. "-" .. realm) or name
-end--[[APR_DIAG]]; protocol.UnitName = APRTrace("APR-Core/features/group/PartyProtocol.lua:80:protocol.UnitName#6", protocol.UnitName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+protocol.UnitName = APRTrace("APR-Core/features/group/PartyProtocol.lua:80:protocol.UnitName#6", protocol.UnitName)--[[/APR_DIAG]]
 
 -- SavedVariables still use APR.Username/PlayerID. Only the group identity
 -- needs the complete regional name, so existing route progress is unchanged.
@@ -99,7 +105,8 @@ function protocol.LocalName()
         return last and last ~= "" and (first .. " " .. last) or first
     end
     return APR.Username
-end--[[APR_DIAG]]; protocol.LocalName = APRTrace("APR-Core/features/group/PartyProtocol.lua:93:protocol.LocalName#7", protocol.LocalName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+protocol.LocalName = APRTrace("APR-Core/features/group/PartyProtocol.lua:93:protocol.LocalName#7", protocol.LocalName)--[[/APR_DIAG]]
 
 function protocol.PlayerKey(value)
     local name, realm = NameParts(value)
@@ -108,7 +115,8 @@ function protocol.PlayerKey(value)
     if realm then return name .. "-" .. realm end
     local home = GetNormalizedRealmName and GetNormalizedRealmName() or GetRealmName and GetRealmName() or ""
     return name .. "-" .. home:gsub("%s", "")
-end--[[APR_DIAG]]; protocol.PlayerKey = APRTrace("APR-Core/features/group/PartyProtocol.lua:104:protocol.PlayerKey#8", protocol.PlayerKey)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+protocol.PlayerKey = APRTrace("APR-Core/features/group/PartyProtocol.lua:104:protocol.PlayerKey#8", protocol.PlayerKey)--[[/APR_DIAG]]
 
 function protocol.DisplayName(value)
     local name, realm = NameParts(value)
@@ -116,7 +124,9 @@ function protocol.DisplayName(value)
     if not realm then return name end
     local home = GetNormalizedRealmName and GetNormalizedRealmName() or GetRealmName and GetRealmName() or ""
     return realm ~= home:gsub("%s", "") and (name .. "-" .. realm) or name
-end--[[APR_DIAG]]; protocol.DisplayName = APRTrace("APR-Core/features/group/PartyProtocol.lua:113:protocol.DisplayName#9", protocol.DisplayName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+protocol.DisplayName =
+    APRTrace("APR-Core/features/group/PartyProtocol.lua:113:protocol.DisplayName#9", protocol.DisplayName)--[[/APR_DIAG]]
 
 -- Sender is authoritative. Legacy peers may send only a character name in their payload.
 function protocol.NormalizeSnapshot(data, sender)
@@ -130,7 +140,9 @@ function protocol.NormalizeSnapshot(data, sender)
     if not name or not claimed or (claimed ~= name and not legacyClaim) then return nil, "sender_mismatch" end
     -- Reuse the two parsed identities; read the live home realm once without
     -- retaining it across loading screens or other native context changes.
-    local home = not regional and (GetNormalizedRealmName and GetNormalizedRealmName() or GetRealmName and GetRealmName()) or ""
+    local home = not regional
+            and (GetNormalizedRealmName and GetNormalizedRealmName() or GetRealmName and GetRealmName())
+        or ""
     home = home:gsub("%s", "")
     if claimedRealm and claimedRealm ~= (realm or home) then
         return nil, "sender_mismatch"
@@ -145,7 +157,9 @@ function protocol.NormalizeSnapshot(data, sender)
             if not result[field] then return nil, "route_type" end
         end
     end
-    if data.sojournerSkipCampaign ~= nil and type(data.sojournerSkipCampaign) ~= "boolean" then return nil, "campaign_type" end
+    if data.sojournerSkipCampaign ~= nil and type(data.sojournerSkipCampaign) ~= "boolean" then
+        return nil, "campaign_type"
+    end
     result.sojournerSkipCampaign = data.sojournerSkipCampaign == true
     if data.currentStep ~= nil and not IsInteger(data.currentStep, 0) then return nil, "step_range" end
     if data.totalSteps ~= nil and not IsInteger(data.totalSteps, 0) then return nil, "total_range" end
@@ -155,9 +169,16 @@ function protocol.NormalizeSnapshot(data, sender)
     result.currentStep, result.totalSteps = data.currentStep, data.totalSteps
     if data.routeProgress ~= nil then
         local progress = data.routeProgress
-        if type(progress) ~= "table" or type(progress.id) ~= "string" or #progress.id > 64
-            or not IsInteger(progress.step, 1) or not IsInteger(progress.total, 1)
-            or progress.step > progress.total + 1 then return nil, "route_progress" end
+        if
+            type(progress) ~= "table"
+            or type(progress.id) ~= "string"
+            or #progress.id > 64
+            or not IsInteger(progress.step, 1)
+            or not IsInteger(progress.total, 1)
+            or progress.step > progress.total + 1
+        then
+            return nil, "route_progress"
+        end
         local mainIndex = progress.id:match("^main:(%d+)$")
         local group, index = progress.id:match("^parallel:(%d+):(%d+)$")
         local valid = mainIndex and tonumber(mainIndex) == progress.step and progress.step <= progress.total
@@ -213,19 +234,32 @@ function protocol.NormalizeSnapshot(data, sender)
         end
     end
     return result
-end--[[APR_DIAG]]; protocol.NormalizeSnapshot = APRTrace("APR-Core/features/group/PartyProtocol.lua:122:protocol.NormalizeSnapshot#10", protocol.NormalizeSnapshot)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+protocol.NormalizeSnapshot =
+    APRTrace("APR-Core/features/group/PartyProtocol.lua:122:protocol.NormalizeSnapshot#10", protocol.NormalizeSnapshot)--[[/APR_DIAG]]
 
 -- Compare consumed values before serialization or frame work. Metadata, filler
 -- rows and duplicated effective indices never affect another player's display.
 function protocol.SameProgress(a, b)
     if not a or not b then return false end
-    if a.route ~= b.route or a.routeFileName ~= b.routeFileName
-        or a.currentStep ~= b.currentStep or a.totalSteps ~= b.totalSteps then return false end
+    if
+        a.route ~= b.route
+        or a.routeFileName ~= b.routeFileName
+        or a.currentStep ~= b.currentStep
+        or a.totalSteps ~= b.totalSteps
+    then
+        return false
+    end
     local left, right = a.routeProgress, b.routeProgress
     if left == right then return true end
-    return left ~= nil and right ~= nil and left.id == right.id
-        and left.step == right.step and left.total == right.total
-end--[[APR_DIAG]]; protocol.SameProgress = APRTrace("APR-Core/features/group/PartyProtocol.lua:220:protocol.SameProgress#11", protocol.SameProgress)--[[/APR_DIAG]]
+    return left ~= nil
+        and right ~= nil
+        and left.id == right.id
+        and left.step == right.step
+        and left.total == right.total
+end--[[APR_DIAG]]
+protocol.SameProgress =
+    APRTrace("APR-Core/features/group/PartyProtocol.lua:220:protocol.SameProgress#11", protocol.SameProgress)--[[/APR_DIAG]]
 
 local function SameRows(a, b)
     if a == b then return true end
@@ -241,10 +275,12 @@ local function SameRows(a, b)
         end
     end
     return true
-end--[[APR_DIAG]]; SameRows = APRTrace("APR-Core/features/group/PartyProtocol.lua:230:SameRows#12", SameRows)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+SameRows = APRTrace("APR-Core/features/group/PartyProtocol.lua:230:SameRows#12", SameRows)--[[/APR_DIAG]]
 
 function protocol.SameDetails(a, b)
     if a == b then return true end
-    return SameRows(a and a.extraLines, b and b.extraLines)
-        and SameRows(a and a.questSteps, b and b.questSteps)
-end--[[APR_DIAG]]; protocol.SameDetails = APRTrace("APR-Core/features/group/PartyProtocol.lua:246:protocol.SameDetails#13", protocol.SameDetails)--[[/APR_DIAG]]
+    return SameRows(a and a.extraLines, b and b.extraLines) and SameRows(a and a.questSteps, b and b.questSteps)
+end--[[APR_DIAG]]
+protocol.SameDetails =
+    APRTrace("APR-Core/features/group/PartyProtocol.lua:246:protocol.SameDetails#13", protocol.SameDetails)--[[/APR_DIAG]]

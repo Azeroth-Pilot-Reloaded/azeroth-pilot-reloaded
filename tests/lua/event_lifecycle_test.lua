@@ -1,16 +1,27 @@
 local function noop() end
-function wipe(values) for key in pairs(values) do values[key] = nil end end
-function LibStub() return { GetLocale = function() return {} end } end
+function wipe(values)
+    for key in pairs(values) do
+        values[key] = nil
+    end
+end
+function LibStub()
+    return { GetLocale = function() return {} end }
+end
 local timers, errors = {}, {}
-C_Timer = { NewTimer = function(_, callback)
-    local timer = { callback = callback, Cancel = function(self) self.cancelled = true end }
-    timers[#timers + 1] = timer
-    return timer
-end }
-function geterrorhandler() return function(message) errors[#errors + 1] = message end end
+C_Timer = {
+    NewTimer = function(_, callback)
+        local timer = { callback = callback, Cancel = function(self) self.cancelled = true end }
+        timers[#timers + 1] = timer
+        return timer
+    end,
+}
+function geterrorhandler()
+    return function(message) errors[#errors + 1] = message end
+end
 function CreateFrame()
     return {
-        events = {}, scripts = {},
+        events = {},
+        scripts = {},
         RegisterEvent = function(self, event)
             if event == "UNSUPPORTED" then error("Unknown event") end
             self.events[event] = true
@@ -39,8 +50,10 @@ C_EventUtils = { IsEventValid = function(event) return event ~= "UNSUPPORTED" en
 assert(not APR:RegisterSupportedEvent(frame, "UNSUPPORTED"))
 assert(APR:RegisterSupportedEvent(frame, "PLAYER_ENTERING_WORLD"))
 APR.event:RegisterEvents()
-assert(APR.event.framePool.group.events.GROUP_ROSTER_UPDATE,
-    "Group visibility is refreshed when a party is converted to a raid")
+assert(
+    APR.event.framePool.group.events.GROUP_ROSTER_UPDATE,
+    "Group visibility is refreshed when a party is converted to a raid"
+)
 assert(APR.event.framePool.load == nil, "The bootstrap event must not allocate an unbound runtime handler")
 assert(not APR.event.framePool.lootItems.events.CURRENCY_DISPLAY_UPDATE)
 assert(APR.event.framePool.buffs.units.UNIT_AURA == "player")
@@ -49,8 +62,10 @@ assert(APR.event.framePool.tame.units.UNIT_SPELLCAST_START == "player")
 assert(APR.event.framePool.updateQuest.units.UNIT_QUEST_LOG_CHANGED == "player")
 local fallback = CreateFrame()
 fallback.RegisterUnitEvent = nil
-assert(APR:RegisterSupportedEvent(fallback, "UNIT_AURA", "player") and fallback.events.UNIT_AURA,
-    "Clients without native unit filtering retain event delivery")
+assert(
+    APR:RegisterSupportedEvent(fallback, "UNIT_AURA", "player") and fallback.events.UNIT_AURA,
+    "Clients without native unit filtering retain event delivery"
+)
 
 APR.IsInstanceWithUI = function() return true end
 APR.RefreshInstanceUIVisibility, APR.MaybePromptInstanceUIPreference = noop, noop
@@ -66,11 +81,18 @@ local opaque = {}
 APRSecret = { CanAccessValue = function(_, unit) return unit ~= opaque end }
 local unitFrame = { tag = "buffs", callback = function() unitCalls = unitCalls + 1 end }
 local getProfile = APR.GetSettingsProfile
-function APR:GetSettingsProfile() probes = probes + 1; return getProfile(self) end
-for _ = 1, 1000 do APR.event.EventHandler(unitFrame, "UNIT_AURA", "raid7") end
+function APR:GetSettingsProfile()
+    probes = probes + 1
+    return getProfile(self)
+end
+for _ = 1, 1000 do
+    APR.event.EventHandler(unitFrame, "UNIT_AURA", "raid7")
+end
 APR.event.EventHandler(unitFrame, "UNIT_AURA", nil)
 assert(probes == 0 and unitCalls == 0, "Irrelevant units cannot probe instance state, route steps or NPCs")
-for _ = 1, 1000 do APR.event.EventHandler({tag = "party"}, "CHAT_MSG_ADDON", "OtherAddon", "data", "RAID") end
+for _ = 1, 1000 do
+    APR.event.EventHandler({ tag = "party" }, "CHAT_MSG_ADDON", "OtherAddon", "data", "RAID")
+end
 assert(probes == 0, "Foreign addon-message bursts cannot enter gameplay dispatch")
 APR.event.EventHandler(unitFrame, "UNIT_AURA", "player")
 APR.event.EventHandler(unitFrame, "UNIT_AURA", opaque)
@@ -97,8 +119,12 @@ assert(refreshes == 1)
 dofile("APR-Core/ui/route/QuestOrderListSupport.lua")
 local standings = { [1] = false, [2] = false }
 function APR:IsReputationLevelReached(requirement) return standings[requirement.factionID] end
-local steps = { { AllOf = { { Reputation = { factionID = 1, level = 5 } } },
-    Not = { Reputation = { factionID = 2, level = 5 } } } }
+local steps = {
+    {
+        AllOf = { { Reputation = { factionID = 1, level = 5 } } },
+        Not = { Reputation = { factionID = 2, level = 5 } },
+    },
+}
 local signature = APR.questOrderListSupport:GetReputationStateSignature(steps)
 standings[1] = true
 local afterAllOf = APR.questOrderListSupport:GetReputationStateSignature(steps)

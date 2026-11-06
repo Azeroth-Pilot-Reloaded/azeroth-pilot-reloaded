@@ -5,7 +5,7 @@ APRInstrumentation = {
     debug = false,
     registry = {},
     registered = 0,
-    revision = "2026-11-04.1"
+    revision = "2026-11-04.1",
 }
 local D = APRInstrumentation
 local main = { depth = 0, frames = {}, paused = 0 }
@@ -51,7 +51,8 @@ function D.Value(value, depth, visited)
     for key, item in pairs(value) do
         count = count + 1
         if count > 8 then
-            entries[#entries + 1] = "…"; break
+            entries[#entries + 1] = "…"
+            break
         end
         entries[#entries + 1] = D.Value(key, depth + 1, visited) .. "=" .. D.Value(item, depth + 1, visited)
     end
@@ -71,7 +72,7 @@ function D.ResetLog()
         aggregatedCalls = 0,
         startedAt = GetTime(),
         limit = LOG_LIMIT,
-        revision = D.revision
+        revision = D.revision,
     }
 end
 
@@ -98,8 +99,14 @@ function D.Record(kind, source, message, data, duration, ownMs, failed)
     local fastCall = kind == "CALL" and duration and duration < 3 and not failed
     log.calls = log.calls or {}
     local recent = fastCall and log.calls[source]
-    if recent and log.entries[recent.slot] == recent and recent.route == route and recent.step == step
-        and now >= recent.time and now - recent.time < 1 then
+    if
+        recent
+        and log.entries[recent.slot] == recent
+        and recent.route == route
+        and recent.step == step
+        and now >= recent.time
+        and now - recent.time < 1
+    then
         log.aggregatedCalls = (log.aggregatedCalls or 0) + 1
         return Accumulate(recent, now, duration, ownMs)
     end
@@ -107,9 +114,17 @@ function D.Record(kind, source, message, data, duration, ownMs, failed)
     data = type(data) ~= "nil" and D.Value(data) or nil
     source = source or D.CurrentName() or "APR"
     local previous = log.entries[log.cursor]
-    if previous and previous.kind == kind and previous.source == source and previous.message == message
-        and previous.data == data and previous.route == route and previous.step == step and previous.failed == failed
-        and kind ~= "CALL" then
+    if
+        previous
+        and previous.kind == kind
+        and previous.source == source
+        and previous.message == message
+        and previous.data == data
+        and previous.route == route
+        and previous.step == step
+        and previous.failed == failed
+        and kind ~= "CALL"
+    then
         return Accumulate(previous, now, duration, ownMs)
     end
     log.cursor = log.cursor % LOG_LIMIT + 1
@@ -130,7 +145,7 @@ function D.Record(kind, source, message, data, duration, ownMs, failed)
         selfMs = ownMs,
         maxMs = duration,
         failed = failed,
-        slot = log.cursor
+        slot = log.cursor,
     }
     log.entries[log.cursor], log.count = entry, math.min(LOG_LIMIT, log.count + 1)
     if fastCall then log.calls[source] = entry end
@@ -164,7 +179,9 @@ end
 
 local function End(context, frame, failure)
     -- Retire scopes unwound by a pcall inside a coroutine.
-    while context.depth > frame.depth do End(context, context.frames[context.depth], "unwound") end
+    while context.depth > frame.depth do
+        End(context, context.frames[context.depth], "unwound")
+    end
     local finished = debugprofilestop()
     local elapsed = math.max(0, finished - frame.started - (context.paused - frame.paused))
     local own = math.max(0, elapsed - frame.children)
@@ -204,7 +221,9 @@ local function FinishObserver(context, frame, ok, ...)
 end
 
 function D.Wrap(name, original)
-    if not D.registry[name] then D.registry[name], D.registered = true, D.registered + 1 end
+    if not D.registry[name] then
+        D.registry[name], D.registered = true, D.registered + 1
+    end
     local observer = name:find("APR-Core/ui/panels/PerformanceDashboard.lua:", 1, true) == 1
         or name:find("APR-Core/ui/panels/PerformanceResources.lua:", 1, true) == 1
     return function(...)
@@ -237,7 +256,9 @@ local function Resumed(thread, parent, started, ok, ...)
     if not ok and context and context.depth > 0 and coroutine.status(thread) == "dead" then
         if D.enabled then
             local failure = D.Value((...))
-            while context.depth > 0 do End(context, context.frames[context.depth], failure) end
+            while context.depth > 0 do
+                End(context, context.frames[context.depth], failure)
+            end
         else
             -- Scopes opened before capture stopped still own their old log.
             -- Release it without publishing errors into a replacement capture.
@@ -269,7 +290,9 @@ end
 local function ProtectedResult(context, depth, ok, ...)
     if not ok and context.depth > depth then
         local failure = D.Value((...))
-        while context.depth > depth do End(context, context.frames[context.depth], failure) end
+        while context.depth > depth do
+            End(context, context.frames[context.depth], failure)
+        end
     end
     return ok, ...
 end

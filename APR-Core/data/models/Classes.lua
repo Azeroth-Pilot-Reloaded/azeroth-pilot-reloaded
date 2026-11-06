@@ -62,9 +62,8 @@ APR.Specs = {
     ["Evoker - Devastation"] = 1467,
     ["Evoker - Preservation"] = 1468,
     ["Evoker - Augmentation"] = 1473,
-    ["Adventurer"] = 1478
+    ["Adventurer"] = 1478,
 }
-
 
 function APR:GetClassNameById(id)
     for className, classId in pairs(APR.Classes) do
@@ -73,7 +72,8 @@ function APR:GetClassNameById(id)
         end
     end
     return nil
-end--[[APR_DIAG]]; APR.GetClassNameById = APRTrace("APR-Core/data/models/Classes.lua:69:APR:GetClassNameById#1", APR.GetClassNameById)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetClassNameById = APRTrace("APR-Core/data/models/Classes.lua:69:APR:GetClassNameById#1", APR.GetClassNameById)--[[/APR_DIAG]]
 
 function APR:GetClassSpecName()
     if not C_SpecializationInfo or not C_SpecializationInfo.GetSpecialization then return nil end
@@ -87,4 +87,5 @@ function APR:GetClassSpecName()
         end
     end
     return nil
-end--[[APR_DIAG]]; APR.GetClassSpecName = APRTrace("APR-Core/data/models/Classes.lua:78:APR:GetClassSpecName#2", APR.GetClassSpecName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetClassSpecName = APRTrace("APR-Core/data/models/Classes.lua:78:APR:GetClassSpecName#2", APR.GetClassSpecName)--[[/APR_DIAG]]

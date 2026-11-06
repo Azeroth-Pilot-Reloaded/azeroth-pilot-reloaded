@@ -7,7 +7,7 @@ function env.methods:Hide()
     if shown and self.scripts.OnHide then self.scripts.OnHide(self) end
 end
 local reloads, mutations = 0, 0
-C_UI = {Reload = function() reloads = reloads + 1 end}
+C_UI = { Reload = function() reloads = reloads + 1 end }
 local popup = APR:RequestReload(function() mutations = mutations + 1 end)
 local staleAccept = popup.onAccept
 assert(popup:IsShown() and mutations == 0 and reloads == 0 and popup.title:GetText() == "UI_RELOAD_CONFIRM")
@@ -30,8 +30,10 @@ APR:RequestReload(function()
     APR:RequestReload() -- AceDB RefreshProfile callback.
 end)
 popup:Accept()
-assert(mutations == 4 and reloads == 3 and not popup:IsShown() and not APR.reloadConfirmationAccepted,
-    "Accepted profile callbacks cannot display another popup or reload twice")
+assert(
+    mutations == 4 and reloads == 3 and not popup:IsShown() and not APR.reloadConfirmationAccepted,
+    "Accepted profile callbacks cannot display another popup or reload twice"
+)
 APR:RequestReload(function() return false end)
 popup:Accept()
 assert(reloads == 3, "An obsolete profile or combat-blocked action cannot reload")
@@ -41,18 +43,23 @@ assert(not pcall(popup.Accept, popup) and not APR.reloadConfirmationAccepted and
 -- Slash resets must wait before clearing any character or custom-route data.
 APR.settings.profile.enableAddon = true
 dofile("APR-Core/core/Commands.lua")
-APRData.test, APRZoneCompleted.test, APRCustomPath.test = {first = 4}, {first = true}, {"first"}
+APRData.test, APRZoneCompleted.test, APRCustomPath.test = { first = 4 }, { first = true }, { "first" }
 local progress, completed, path = APRData.test, APRZoneCompleted.test, APRCustomPath.test
-APRData.other = {kept = true}
+APRData.other = { kept = true }
 APR.command:SlashCmd("fr")
 assert(APRData.test == progress and APRZoneCompleted.test == completed and APRCustomPath.test == path and reloads == 3)
 popup:Hide()
 assert(APRData.test == progress and APRCustomPath.test == path, "Closing the popup cancels force reset")
 APR.command:SlashCmd("forcereset")
 popup:Accept()
-assert(reloads == 4 and not next(APRData.test) and not next(APRZoneCompleted.test)
-    and not next(APRCustomPath.test) and APRData.other.kept)
-APRData.CustomRoute = {kept = true}
+assert(
+    reloads == 4
+        and not next(APRData.test)
+        and not next(APRZoneCompleted.test)
+        and not next(APRCustomPath.test)
+        and APRData.other.kept
+)
+APRData.CustomRoute = { kept = true }
 APR.command:SlashCmd("resetcustom")
 assert(APRData.CustomRoute.kept and reloads == 4)
 popup:Accept()
@@ -60,23 +67,41 @@ assert(not next(APRData.CustomRoute) and reloads == 5)
 
 -- AceDB options use a private schema; string handlers and validators remain authoritative.
 local profileName, resets, copies = "Default", 0, 0
-local database = {GetCurrentProfile = function() return profileName end}
+local database = { GetCurrentProfile = function() return profileName end }
 APR.settings.db = database
 local handler = {}
-function handler:SetProfile(_, value) profileName = value; APR:RequestReload() end
-function handler:CopyProfile(_, value) copies = copies + 1; assert(value == "Other"); APR:RequestReload() end
-function handler:Reset() resets = resets + 1; APR:RequestReload() end
+function handler:SetProfile(_, value)
+    profileName = value
+    APR:RequestReload()
+end
+function handler:CopyProfile(_, value)
+    copies = copies + 1
+    assert(value == "Other")
+    APR:RequestReload()
+end
+function handler:Reset()
+    resets = resets + 1
+    APR:RequestReload()
+end
 local validator = function() return true end
-local source = {handler = handler, args = {
-    new = {type = "input", set = "SetProfile", validate = validator},
-    choose = {type = "select", set = "SetProfile", get = "GetCurrentProfile"},
-    copyfrom = {type = "select", set = "CopyProfile"},
-    reset = {type = "execute", func = "Reset"},
-    delete = {type = "select", set = "DeleteProfile", confirm = true},
-}}
+local source = {
+    handler = handler,
+    args = {
+        new = { type = "input", set = "SetProfile", validate = validator },
+        choose = { type = "select", set = "SetProfile", get = "GetCurrentProfile" },
+        copyfrom = { type = "select", set = "CopyProfile" },
+        reset = { type = "execute", func = "Reset" },
+        delete = { type = "select", set = "DeleteProfile", confirm = true },
+    },
+}
 local options = APR:ConfirmProfileOptions(source)
-assert(options ~= source and options.handler == handler and options.args.new.validate == validator
-    and source.args.choose.set == "SetProfile" and options.args.delete.confirm)
+assert(
+    options ~= source
+        and options.handler == handler
+        and options.args.new.validate == validator
+        and source.args.choose.set == "SetProfile"
+        and options.args.delete.confirm
+)
 options.args.choose.set(nil, "Other")
 assert(profileName == "Default" and reloads == 5)
 popup:Hide()
@@ -99,17 +124,29 @@ assert(not popup:IsShown() and reloads == 8, "Choosing the active profile does n
 local profile = APR.settings.profile
 profile.uiTheme, profile.currentStepTrackerAppearance = "wow", "EllesmereUI"
 profile.currentStepAttachFrameToQuestLog = true
-profile.fillersFrameSnapToCurrentStep, profile.questOrderListSnapToCurrentStep, profile.afkSnapToCurrentStep = true, true, true
-EllesmereUI = {RegisterSkin = function() end}
+profile.fillersFrameSnapToCurrentStep, profile.questOrderListSnapToCurrentStep, profile.afkSnapToCurrentStep =
+    true, true, true
+EllesmereUI = { RegisterSkin = function() end }
 local geometry, prepared = 0, 0
-for _, entry in ipairs({{"currentStep", "currentStepAttachFrameToQuestLog"}, {"fillers", "fillersFrameSnapToCurrentStep"},
-    {"questOrderList", "questOrderListSnapToCurrentStep"}, {"afk", "afkSnapToCurrentStep"}}) do
+for _, entry in ipairs({
+    { "currentStep", "currentStepAttachFrameToQuestLog" },
+    { "fillers", "fillersFrameSnapToCurrentStep" },
+    { "questOrderList", "questOrderListSnapToCurrentStep" },
+    { "afk", "afkSnapToCurrentStep" },
+}) do
     profile.currentStepAttachFrameToQuestLog = true
     local scope, key = unpack(entry)
     profile[key] = true
     local before = reloads
-    assert(APR:ChangeTrackerOption(scope, key, false, function() geometry = geometry + 1 end,
-        function() prepared = prepared + 1 end))
+    assert(
+        APR:ChangeTrackerOption(
+            scope,
+            key,
+            false,
+            function() geometry = geometry + 1 end,
+            function() prepared = prepared + 1 end
+        )
+    )
     assert(profile[key] and reloads == before and geometry == 0 and prepared == 0)
     popup:Hide()
     assert(profile[key], "Cancel keeps attachment and geometry unchanged")
@@ -120,10 +157,18 @@ end
 profile.currentStepTrackerAppearance = "theme"
 profile.currentStepAttachFrameToQuestLog = false
 local before = reloads
-assert(not APR:ChangeTrackerOption("currentStep", "currentStepAttachFrameToQuestLog", true,
-    function() geometry = geometry + 1 end))
-assert(profile.currentStepAttachFrameToQuestLog and geometry == 1 and reloads == before and not popup:IsShown(),
-    "Geometry changes without a renderer change apply immediately")
+assert(
+    not APR:ChangeTrackerOption(
+        "currentStep",
+        "currentStepAttachFrameToQuestLog",
+        true,
+        function() geometry = geometry + 1 end
+    )
+)
+assert(
+    profile.currentStepAttachFrameToQuestLog and geometry == 1 and reloads == before and not popup:IsShown(),
+    "Geometry changes without a renderer change apply immediately"
+)
 
 -- Legacy clients still use the global reload entry point when C_UI is absent.
 C_UI = nil
@@ -137,7 +182,7 @@ function APR:GetGameVersion() return self.GAME_VERSIONS.Forever end
 local notices = {}
 function APR:PrintInfo(message) notices[#notices + 1] = message end
 local function blockedReload() error("Forever blocked the addon reload") end
-C_UI, ReloadUI = {Reload = blockedReload}, blockedReload
+C_UI, ReloadUI = { Reload = blockedReload }, blockedReload
 before = mutations
 APR:RequestReload(function() mutations = mutations + 1 end, "Custom confirmation")
 assert(popup.title:GetText() == "Custom confirmation\n\nUI_RELOAD_MANUAL_INSTRUCTION")
@@ -152,12 +197,21 @@ end)
 staleAccept = popup.onAccept
 popup.acceptButton.scripts.OnClick(popup.acceptButton)
 staleAccept()
-assert(mutations == before + 1 and #notices == 1 and notices[1] == "UI_RELOAD_MANUAL_INSTRUCTION"
-    and not APR.reloadConfirmationAccepted, "Forever applies once and asks the player to reload manually")
+assert(
+    mutations == before + 1
+        and #notices == 1
+        and notices[1] == "UI_RELOAD_MANUAL_INSTRUCTION"
+        and not APR.reloadConfirmationAccepted,
+    "Forever applies once and asks the player to reload manually"
+)
 APR:RequestReload(function() return false end)
 popup:Accept()
 APR:RequestReload(function() error("Expected failure") end)
-assert(not pcall(popup.Accept, popup) and not APR.reloadConfirmationAccepted and #notices == 1,
-    "Rejected or failed actions must not claim changes need reloading")
+assert(
+    not pcall(popup.Accept, popup) and not APR.reloadConfirmationAccepted and #notices == 1,
+    "Rejected or failed actions must not claim changes need reloading"
+)
 
-print("Reload confirmation: cancellation, one-shot acceptance, reset commands, isolated profile handlers, conditional snaps and manual Forever reloads passed")
+print(
+    "Reload confirmation: cancellation, one-shot acceptance, reset commands, isolated profile handlers, conditional snaps and manual Forever reloads passed"
+)

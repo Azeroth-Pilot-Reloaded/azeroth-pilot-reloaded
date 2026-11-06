@@ -27,15 +27,28 @@ local function fixture(unitCost)
     }
     navFixture.translations = setmetatable({}, { __index = function(_, key) return key end })
     local alternatives = {}
-    for i = 1, 500 do alternatives[i] = { type = "spell", id = 880000 + i } end
+    for i = 1, 500 do
+        alternatives[i] = { type = "spell", id = 880000 + i }
+    end
     navFixture.spells[880500] = true
-    local data = navFixture:Load({ config = { IsolatedAreas = {} }, connections = {
-        { id = "invented-shortcut", kind = "spell", seconds = 2,
-            from = { dynamic = "player" }, to = point(1490), actions = alternatives },
-    } })
+    local data = navFixture:Load({
+        config = { IsolatedAreas = {} },
+        connections = {
+            {
+                id = "invented-shortcut",
+                kind = "spell",
+                seconds = 2,
+                from = { dynamic = "player" },
+                to = point(1490),
+                actions = alternatives,
+            },
+        },
+    })
     local navigationAPR, actualLibStub = APR, LibStub
     local env = dofile("tests/lua/route_ui_test_env.lua")
-    for key, value in pairs(navigationAPR) do APR[key] = value end
+    for key, value in pairs(navigationAPR) do
+        APR[key] = value
+    end
     local uiLibStub, createFrame = LibStub, CreateFrame
     LibStub = actualLibStub
     dofile("APR-Core/libs/AceSerializer-3.0/AceSerializer-3.0.lua")
@@ -54,13 +67,31 @@ local function fixture(unitCost)
         end
         return frame
     end
-    local s = { frame = 0, wall = 0, cpu = 0, timers = {}, ledger = {}, enabled = false,
-        owner = "setup", queries = 0, journalRefreshes = 0, bankReads = 0, partyReads = 0, actionReads = 0,
-        renders = 0, sends = {}, paints = {}, unitCost = unitCost }
+    local s = {
+        frame = 0,
+        wall = 0,
+        cpu = 0,
+        timers = {},
+        ledger = {},
+        enabled = false,
+        owner = "setup",
+        queries = 0,
+        journalRefreshes = 0,
+        bankReads = 0,
+        partyReads = 0,
+        actionReads = 0,
+        renders = 0,
+        sends = {},
+        paints = {},
+        unitCost = unitCost,
+    }
     function s:charge(kind, units, cost)
         if not self.enabled then return end
         local frame = self.ledger[self.frame]
-        if not frame then frame = { cpu = 0, owners = {}, counts = {} }; self.ledger[self.frame] = frame end
+        if not frame then
+            frame = { cpu = 0, owners = {}, counts = {} }
+            self.ledger[self.frame] = frame
+        end
         local spent = (units or 1) * (cost or unitCost)
         self.cpu, frame.cpu = self.cpu + spent, frame.cpu + spent
         frame.owners[self.owner] = (frame.owners[self.owner] or 0) + spent
@@ -74,14 +105,22 @@ local function fixture(unitCost)
         assert(ok, message)
     end
     function GetTime() return 10 + s.wall / 1000 end
-    function debugprofilestop() s:charge("clock", 1, 0.001); return s.cpu end
-    C_Timer = { NewTimer = function(delay, callback)
-        local timer = { callback = callback, owner = s.owner,
-            due = math.max(s.frame + 1, math.ceil((s.wall + delay * 1000) / FRAME_MS - 0.000001)),
-            Cancel = function(self) self.cancelled = true end }
-        s.timers[#s.timers + 1] = timer
-        return timer
-    end }
+    function debugprofilestop()
+        s:charge("clock", 1, 0.001)
+        return s.cpu
+    end
+    C_Timer = {
+        NewTimer = function(delay, callback)
+            local timer = {
+                callback = callback,
+                owner = s.owner,
+                due = math.max(s.frame + 1, math.ceil((s.wall + delay * 1000) / FRAME_MS - 0.000001)),
+                Cancel = function(self) self.cancelled = true end,
+            }
+            s.timers[#s.timers + 1] = timer
+            return timer
+        end,
+    }
     C_Timer.After = function(delay, callback) C_Timer.NewTimer(delay, callback) end
     function s:frameOnce()
         self.frame, self.wall = self.frame + 1, (self.frame + 1) * FRAME_MS
@@ -90,18 +129,29 @@ local function fixture(unitCost)
             self.paints[#self.paints + 1] = { frame = self.frame, context = commit.context, revision = commit.revision }
             self.firstPaint = self.firstPaint or self.paints[#self.paints]
         end
-        local pending = self.timers; self.timers = {}
+        local pending = self.timers
+        self.timers = {}
         for _, timer in ipairs(pending) do
             if not timer.cancelled then
-                if timer.due <= self.frame then self:as(timer.owner, timer.callback)
-                else self.timers[#self.timers + 1] = timer end
+                if timer.due <= self.frame then
+                    self:as(timer.owner, timer.callback)
+                else
+                    self.timers[#self.timers + 1] = timer
+                end
             end
         end
     end
-    function s:untilFrame(frame) while self.frame < frame do self:frameOnce() end end
+    function s:untilFrame(frame)
+        while self.frame < frame do
+            self:frameOnce()
+        end
+    end
     function s:drain()
         local deadline = self.frame + 2000
-        while #self.timers > 0 do assert(self.frame < deadline, "Composed jobs must terminate"); self:frameOnce() end
+        while #self.timers > 0 do
+            assert(self.frame < deadline, "Composed jobs must terminate")
+            self:frameOnce()
+        end
     end
     function UnitIsDeadOrGhost() return false end
     function IsFlyableArea() return false end
@@ -136,7 +186,9 @@ local function fixture(unitCost)
         return { id = "main:" .. index, step = index, total = 3 }
     end
     function APR:StepUsesAnyOption(value, keys)
-        for _, key in ipairs(keys) do if value and value[key] ~= nil then return true end end
+        for _, key in ipairs(keys) do
+            if value and value[key] ~= nil then return true end
+        end
         return false
     end
     APR.Debug, APR.ResetQuestTitleRequests = noop, noop
@@ -159,17 +211,36 @@ local function fixture(unitCost)
     local objectives, revision = {}, 0
     for id = 1, QUESTS do
         step.Qpart[id], objectives[id] = { 1, 2, 3 }, {}
-        for index = 1, OBJECTIVES do objectives[id][index] = { text = "q" .. id .. ":0", finished = false } end
+        for index = 1, OBJECTIVES do
+            objectives[id][index] = { text = "q" .. id .. ":0", finished = false }
+        end
     end
     APR.ActiveQuests = {}
-    local function questRead() s.queries = s.queries + 1; s:charge("quest") end
-    C_QuestLog.GetNumQuestLogEntries = function()
-        s.journalRefreshes = s.journalRefreshes + 1; questRead(); return QUESTS
+    local function questRead()
+        s.queries = s.queries + 1
+        s:charge("quest")
     end
-    C_QuestLog.GetInfo = function(index) questRead(); return { questID = index } end
-    C_QuestLog.IsComplete = function() questRead(); return false end
-    C_QuestLog.GetNumQuestObjectives = function() questRead(); return OBJECTIVES end
-    C_QuestLog.GetQuestObjectives = function(id) questRead(); return objectives[id] end
+    C_QuestLog.GetNumQuestLogEntries = function()
+        s.journalRefreshes = s.journalRefreshes + 1
+        questRead()
+        return QUESTS
+    end
+    C_QuestLog.GetInfo = function(index)
+        questRead()
+        return { questID = index }
+    end
+    C_QuestLog.IsComplete = function()
+        questRead()
+        return false
+    end
+    C_QuestLog.GetNumQuestObjectives = function()
+        questRead()
+        return OBJECTIVES
+    end
+    C_QuestLog.GetQuestObjectives = function(id)
+        questRead()
+        return objectives[id]
+    end
     C_QuestLog.GetTitleForQuestID = function(id) return "Quest " .. id end
     C_QuestLog.IsQuestFlaggedCompleted = function() return false end
     local bankContents = {}
@@ -180,7 +251,8 @@ local function fixture(unitCost)
             return bag == -1 and 28 or (bag >= 5 and bag <= 11 and 36 or 0)
         end,
         GetContainerItemInfo = function(bag, slot)
-            s.bankReads = s.bankReads + 1; s:charge("bank")
+            s.bankReads = s.bankReads + 1
+            s:charge("bank")
             return bankContents[bag] and bankContents[bag][slot]
         end,
     }
@@ -196,18 +268,27 @@ local function fixture(unitCost)
         return originalSetText(self, text)
     end
     function env.methods:GetText()
-        if s.owner == "party" then s.partyReads = s.partyReads + 1; s:charge("party") end
+        if s.owner == "party" then
+            s.partyReads = s.partyReads + 1
+            s:charge("party")
+        end
         return originalGetText(self)
     end
     local actionUsability = APR.GetRouteActionUsability
     function APR:GetRouteActionUsability(kind, id)
-        s.actionReads = s.actionReads + 1; s:charge("navigationAction", 1, 0.25)
+        s.actionReads = s.actionReads + 1
+        s:charge("navigationAction", 1, 0.25)
         return actionUsability(self, kind, id)
     end
     data.env.getActionCastSeconds = function() return 2 end
     local function recordCommit()
-        if s.rendered and APR:IsStepContextCurrent(s.rendered) and APR.navigation.state == "ready"
-            and APR.Arrow.Active and APR.IsInRouteZone then
+        if
+            s.rendered
+            and APR:IsStepContextCurrent(s.rendered)
+            and APR.navigation.state == "ready"
+            and APR.Arrow.Active
+            and APR.IsInRouteZone
+        then
             s.commit = { frame = s.frame, context = s.rendered, revision = revision }
         end
     end
@@ -215,9 +296,11 @@ local function fixture(unitCost)
         s.renders = s.renders + 1
         local rows = self.currentStep
         rows:BeginContentUpdate()
-        for id = 1, QUESTS do for index = 1, OBJECTIVES do
-            rows:AddQuestSteps(id, self.ActiveQuests[id].objectives[index].text, index)
-        end end
+        for id = 1, QUESTS do
+            for index = 1, OBJECTIVES do
+                rows:AddQuestSteps(id, self.ActiveQuests[id].objectives[index].text, index)
+            end
+        end
         rows:EndContentUpdate(true)
         rows.progressBar = { key = self.ActiveRoute, currentStep = APRData.player[self.ActiveRoute] - 1 }
         s.rendered = self:CaptureStepContext()
@@ -228,31 +311,55 @@ local function fixture(unitCost)
         local guidance = APR.navigation:GetActiveStep()
         local coord = guidance and guidance.Coord or (APR.IsInRouteZone and select(1, APR:GetCurrentStep()).Coord)
         self.Active = coord ~= nil
-        if coord then self.x, self.y = coord.x, coord.y end
+        if coord then
+            self.x, self.y = coord.x, coord.y
+        end
         recordCommit()
     end
     APR.Arrow.UpdateActionText = noop
     function APR:SendAddonMessageSplit(prefix, wire, channel, target, callback)
         assert(prefix == "APRPartyData" and channel == "PARTY" and target == nil)
-        s.sends[#s.sends + 1] = { wire = wire, frame = s.frame }; callback(true)
+        s.sends[#s.sends + 1] = { wire = wire, frame = s.frame }
+        callback(true)
     end
-    APR:UpdateQuest(true); APR:UpdateStep()
-    APR.routeBankOpen = true; APR:SaveBankItemCounts()
+    APR:UpdateQuest(true)
+    APR:UpdateStep()
+    APR.routeBankOpen = true
+    APR:SaveBankItemCounts()
     APR.party.GroupListSteps.Local = APR.party:BuildGroupPayload()
     s.queries, s.journalRefreshes, s.bankReads, s.partyReads, s.actionReads = 0, 0, 0, 0, 0
     s.enabled = true
     s:as("navigation", function() APR.navigation:Update() end)
-    assert(APR.navigation.state == "ready" and APR.navigation.search and s.actionReads < 500,
-        "A useful direct baseline must precede catalogue completion")
-    for id = 1, QUESTS do for index = 1, OBJECTIVES do objectives[id][index].text = "q" .. id .. ":1" end end
+    assert(
+        APR.navigation.state == "ready" and APR.navigation.search and s.actionReads < 500,
+        "A useful direct baseline must precede catalogue completion"
+    )
+    for id = 1, QUESTS do
+        for index = 1, OBJECTIVES do
+            objectives[id][index].text = "q" .. id .. ":1"
+        end
+    end
     revision = 1
-    s:as("quest", function() for _ = 1, 100 do APR.event:DebouncedUpdateQuest(0.5) end end)
-    s:as("party", function() for _ = 1, 100 do APR.party:SendGroupMessage() end end)
-    s:as("bank", function() C_Timer.NewTimer(27 * FRAME_MS / 1000, function()
-        bankContents[-1][1] = { itemID = 770003, stackCount = 9 }
-        for _ = 1, 1000 do APR.event.functions.bank("PLAYERBANKSLOTS_CHANGED"); APR.event:QueueBankRefresh() end
-        s.queuedBankTimer = APR.event.bankRefreshTimer
-    end) end)
+    s:as("quest", function()
+        for _ = 1, 100 do
+            APR.event:DebouncedUpdateQuest(0.5)
+        end
+    end)
+    s:as("party", function()
+        for _ = 1, 100 do
+            APR.party:SendGroupMessage()
+        end
+    end)
+    s:as("bank", function()
+        C_Timer.NewTimer(27 * FRAME_MS / 1000, function()
+            bankContents[-1][1] = { itemID = 770003, stackCount = 9 }
+            for _ = 1, 1000 do
+                APR.event.functions.bank("PLAYERBANKSLOTS_CHANGED")
+                APR.event:QueueBankRefresh()
+            end
+            s.queuedBankTimer = APR.event.bankRefreshTimer
+        end)
+    end)
     s.env, s.data, s.objectives, s.serializer, s.bankContents = env, data, objectives, serializer, bankContents
     return s
 end
@@ -261,25 +368,45 @@ local reports = {}
 for _, unitCost in ipairs({ 0.01, 0.02 }) do
     local s = fixture(unitCost)
     s:untilFrame(31)
-    assert(s.firstPaint and s.firstPaint.frame == 1 and s.firstPaint.context.route == "invented-composition"
-        and s.firstPaint.context.index == 2, "Useful guidance must paint before the overlapping dense refresh")
-    assert(s.paints[#s.paints].revision == 1 and s.paints[#s.paints].frame == 31,
-        "The updated objective content paints on the next frame, never in its callback frame")
-    for id = 1, QUESTS do for index = 1, OBJECTIVES do
-        assert(APR.ActiveQuests[id].objectives[index].text == "q" .. id .. ":1")
-        assert(APR.currentStep.questsList[id .. "-" .. index].objectiveText == "q" .. id .. ":1")
-    end end
-    assert(s.journalRefreshes == 1 and s.queries <= 1 + QUESTS * 4 + 3 * QUESTS * OBJECTIVES
-        and s.bankReads == BANK_SLOTS,
-        "Dense event bursts cause one complete quest refresh and one bank scan")
-    assert(APRData.player.BankItems[770001] == 139 and APRData.player.BankItems[770002] == 140
-        and APRData.player.BankItems[770003] == 9 and not APR.event.bankRefreshTimer)
+    assert(
+        s.firstPaint
+            and s.firstPaint.frame == 1
+            and s.firstPaint.context.route == "invented-composition"
+            and s.firstPaint.context.index == 2,
+        "Useful guidance must paint before the overlapping dense refresh"
+    )
+    assert(
+        s.paints[#s.paints].revision == 1 and s.paints[#s.paints].frame == 31,
+        "The updated objective content paints on the next frame, never in its callback frame"
+    )
+    for id = 1, QUESTS do
+        for index = 1, OBJECTIVES do
+            assert(APR.ActiveQuests[id].objectives[index].text == "q" .. id .. ":1")
+            assert(APR.currentStep.questsList[id .. "-" .. index].objectiveText == "q" .. id .. ":1")
+        end
+    end
+    assert(
+        s.journalRefreshes == 1 and s.queries <= 1 + QUESTS * 4 + 3 * QUESTS * OBJECTIVES and s.bankReads == BANK_SLOTS,
+        "Dense event bursts cause one complete quest refresh and one bank scan"
+    )
+    assert(
+        APRData.player.BankItems[770001] == 139
+            and APRData.player.BankItems[770002] == 140
+            and APRData.player.BankItems[770003] == 9
+            and not APR.event.bankRefreshTimer
+    )
     assert(#s.sends == 1 and s.sends[1].frame == 30 and s.partyReads <= 129)
     local ok, received = s.serializer:Deserialize(s.sends[1].wire)
-    assert(ok and #s.sends[1].wire <= 2048 and received.currentStep == 1 and received.totalSteps == 3
-        and received.routeProgress.id == "main:2" and received.sojournerSkipCampaign
-        and #received.stepFrameDetails.questSteps == 0,
-        "The bounded party snapshot preserves exact progress and drops the whole oversized tooltip")
+    assert(
+        ok
+            and #s.sends[1].wire <= 2048
+            and received.currentStep == 1
+            and received.totalSteps == 3
+            and received.routeProgress.id == "main:2"
+            and received.sojournerSkipCampaign
+            and #received.stepFrameDetails.questSteps == 0,
+        "The bounded party snapshot preserves exact progress and drops the whole oversized tooltip"
+    )
     local overlap = assert(s.ledger[30])
     for _, owner in ipairs({ "quest", "navigation", "party", "bank" }) do
         assert((overlap.owners[owner] or 0) > 0, "All four real owners must spend work in the same frame")
@@ -291,13 +418,17 @@ for _, unitCost in ipairs({ 0.01, 0.02 }) do
     -- overshoot (0.25 ms) and measured clock-probe overhead outside the slice.
     assert(overlap.counts.quest <= 501 and overlap.counts.bank == 280 and overlap.counts.bankSlots == 9)
     assert((overlap.counts.fontWrite or 0) <= 150 and (overlap.counts.party or 0) <= 129)
-    local additiveBound = (501 + 150 + 129 + 280 + 9) * unitCost + 1.25
-        + (overlap.counts.clock or 0) * 0.001
+    local additiveBound = (501 + 150 + 129 + 280 + 9) * unitCost + 1.25 + (overlap.counts.clock or 0) * 0.001
     assert(overlap.cpu <= additiveBound + 0.000001, "The common frame must respect the sum of current local bounds")
     s:drain()
-    assert(APR.navigation:IsNavigating() and not APR.navigation.search
-        and APR.navigation:GetActiveStep().kind == "spell" and APR.navigation:GetActiveStep().action.data == 880500
-        and APRData.player[APR.ActiveRoute] == 2 and not APR.party.groupSendTimer)
+    assert(
+        APR.navigation:IsNavigating()
+            and not APR.navigation.search
+            and APR.navigation:GetActiveStep().kind == "spell"
+            and APR.navigation:GetActiveStep().action.data == 880500
+            and APRData.player[APR.ActiveRoute] == 2
+            and not APR.party.groupSendTimer
+    )
     -- Public cancellations are exercised with the same scheduler, including a
     -- manually delivered stale native timer after close/context replacement.
     s:as("bank", function() APR.event:QueueBankRefresh() end)
@@ -314,7 +445,10 @@ for _, unitCost in ipairs({ 0.01, 0.02 }) do
     assert(staleParty.cancelled)
     staleParty.callback()
     assert(#s.sends == sends)
-    s:as("navigation", function() APR.navigation:ForceRefresh(); APR.navigation:Update() end)
+    s:as("navigation", function()
+        APR.navigation:ForceRefresh()
+        APR.navigation:Update()
+    end)
     local obsolete, obsoleteTimer, probes = APR.navigation.search, APR.navigation._searchTimer, s.actionReads
     local paints = #s.paints
     APRData.player[APR.ActiveRoute] = 3
@@ -322,17 +456,40 @@ for _, unitCost in ipairs({ 0.01, 0.02 }) do
     if obsoleteTimer then obsoleteTimer.callback() end
     assert(obsolete.status == "cancelled" and s.actionReads == probes and not APR.navigation.search)
     s:drain()
-    assert(#s.sends == sends and APRData.player[APR.ActiveRoute] == 3 and #s.paints == paints,
-        "Cancelled group/native/navigation callbacks cannot publish an obsolete route state")
+    assert(
+        #s.sends == sends and APRData.player[APR.ActiveRoute] == 3 and #s.paints == paints,
+        "Cancelled group/native/navigation callbacks cannot publish an obsolete route state"
+    )
     local maximum, peakFrame = 0, 0
-    for frame, entry in pairs(s.ledger) do if entry.cpu > maximum then maximum, peakFrame = entry.cpu, frame end end
-    reports[#reports + 1] = { unitCostMs = unitCost, peakFrame = peakFrame, peakMs = maximum,
-        frameBudgetMs = FRAME_MS, modelSpike = maximum > FRAME_MS, additiveBoundMs = additiveBound,
-        firstUsefulPaintFrame = s.firstPaint.frame, firstUsefulPaintMs = s.firstPaint.frame * FRAME_MS,
-        overlapOwners = overlap.owners, overlapCounts = overlap.counts }
-    print(string.format("Composed budget %.0f us: frame %d peak %.3f ms / %.3f ms at 60 FPS (%s); " ..
-        "frame30 additive bound %.3f ms; first useful paint %d; all cancellations passed",
-        unitCost * 1000, peakFrame, maximum, FRAME_MS, maximum > FRAME_MS and "MODEL SPIKE" or "within model",
-        additiveBound, s.firstPaint.frame))
+    for frame, entry in pairs(s.ledger) do
+        if entry.cpu > maximum then
+            maximum, peakFrame = entry.cpu, frame
+        end
+    end
+    reports[#reports + 1] = {
+        unitCostMs = unitCost,
+        peakFrame = peakFrame,
+        peakMs = maximum,
+        frameBudgetMs = FRAME_MS,
+        modelSpike = maximum > FRAME_MS,
+        additiveBoundMs = additiveBound,
+        firstUsefulPaintFrame = s.firstPaint.frame,
+        firstUsefulPaintMs = s.firstPaint.frame * FRAME_MS,
+        overlapOwners = overlap.owners,
+        overlapCounts = overlap.counts,
+    }
+    print(
+        string.format(
+            "Composed budget %.0f us: frame %d peak %.3f ms / %.3f ms at 60 FPS (%s); "
+                .. "frame30 additive bound %.3f ms; first useful paint %d; all cancellations passed",
+            unitCost * 1000,
+            peakFrame,
+            maximum,
+            FRAME_MS,
+            maximum > FRAME_MS and "MODEL SPIKE" or "within model",
+            additiveBound,
+            s.firstPaint.frame
+        )
+    )
 end
 return reports

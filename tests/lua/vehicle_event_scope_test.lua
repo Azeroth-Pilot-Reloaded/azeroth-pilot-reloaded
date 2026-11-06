@@ -3,14 +3,22 @@
 local noop = function() end
 local opaque = {}
 function canaccessvalue(value) return value ~= opaque end
-function LibStub() return { GetLocale = function() return {} end } end
+function LibStub()
+    return { GetLocale = function() return {} end }
+end
 function GetTime() return 0 end
 function debugprofilestop() return 0 end
-function wipe(values) for key in pairs(values) do values[key] = nil end end
+function wipe(values)
+    for key in pairs(values) do
+        values[key] = nil
+    end
+end
 
 local function fixture(nativeFiltering)
     local state = { errors = {}, refreshes = 0, nextCalls = 0, questRefreshes = 0, observations = 0, timers = {} }
-    function geterrorhandler() return function(message) state.errors[#state.errors + 1] = message end end
+    function geterrorhandler()
+        return function(message) state.errors[#state.errors + 1] = message end
+    end
     function CreateFrame()
         local frame = { events = {}, scripts = {} }
         function frame:RegisterEvent(event) self.events[event] = true end
@@ -19,27 +27,40 @@ local function fixture(nativeFiltering)
         function frame:SetScript(name, callback) self.scripts[name] = callback end
         if nativeFiltering then
             function frame:RegisterUnitEvent(event, unit)
-                self.units = self.units or {}; self.units[event] = unit
+                self.units = self.units or {}
+                self.units[event] = unit
                 self:RegisterEvent(event)
             end
         end
         return frame
     end
-    C_Timer = { NewTimer = function(_, callback)
-        local timer = { callback = callback, Cancel = function(self) self.cancelled = true end }
-        state.timers[#state.timers + 1] = timer
-        return timer
-    end }
+    C_Timer = {
+        NewTimer = function(_, callback)
+            local timer = { callback = callback, Cancel = function(self) self.cancelled = true end }
+            state.timers[#state.timers + 1] = timer
+            return timer
+        end,
+    }
     C_EventUtils = { IsEventValid = function() return true end }
-    APR = { PlayerID = "player", ActiveRoute = "carriage", ActiveQuests = {},
-        settings = { profile = { enableAddon = true } }, NewModule = function() return {} end,
+    APR = {
+        PlayerID = "player",
+        ActiveRoute = "carriage",
+        ActiveQuests = {},
+        settings = { profile = { enableAddon = true } },
+        NewModule = function() return {} end,
         RouteQuestStepList = {
             carriage = { steps = { { MountVehicle = true }, { Note = "Boarding complete" } } },
             other = { steps = { { Note = "Another context" } } },
-        }, Debug = noop, DebugEvent = noop, StartPerformanceSample = noop, FinishPerformanceSample = noop,
-        IsInstanceWithUI = function() return true end, RefreshInstanceUIVisibility = noop,
+        },
+        Debug = noop,
+        DebugEvent = noop,
+        StartPerformanceSample = noop,
+        FinishPerformanceSample = noop,
+        IsInstanceWithUI = function() return true end,
+        RefreshInstanceUIVisibility = noop,
         MaybePromptInstanceUIPreference = noop,
-        npcInteraction = { Track = function() state.observations = state.observations + 1 end } }
+        npcInteraction = { Track = function() state.observations = state.observations + 1 end },
+    }
     APRData = { player = { carriage = 1, other = 1 } }
     dofile("APR-Core/utils/SecretUtils.lua")
     dofile("APR-Core/utils/Utils.lua")
@@ -68,7 +89,9 @@ local function fixture(nativeFiltering)
     assert(receiver.events.UNIT_ENTERED_VEHICLE and receiver.events.UNIT_EXITED_VEHICLE)
     if nativeFiltering then
         assert(receiver.units.UNIT_ENTERED_VEHICLE == "player" and receiver.units.UNIT_EXITED_VEHICLE == "player")
-    else assert(not receiver.units, "A client adapter without RegisterUnitEvent uses ordinary event registration") end
+    else
+        assert(not receiver.units, "A client adapter without RegisterUnitEvent uses ordinary event registration")
+    end
     function state:Emit(event, unit, ...)
         assert(receiver.events[event])
         -- Deliberately deliver foreign units even for the natively filtered
@@ -90,40 +113,55 @@ for _, nativeFiltering in ipairs({ true, false }) do
         for _, event in ipairs({ "UNIT_ENTERED_VEHICLE", "UNIT_EXITED_VEHICLE" }) do
             state:Reset({ MountVehicle = true, InVehicle = 1 })
             state:Emit(event, unit)
-            assert(APRData.player.carriage == 1 and state.nextCalls == 0 and state.refreshes == 0
-                and state.questRefreshes == 0 and state.observations == 0,
-                "Another unit's vehicle event cannot inspect or mutate the player's step")
+            assert(
+                APRData.player.carriage == 1
+                    and state.nextCalls == 0
+                    and state.refreshes == 0
+                    and state.questRefreshes == 0
+                    and state.observations == 0,
+                "Another unit's vehicle event cannot inspect or mutate the player's step"
+            )
         end
     end
     for _, event in ipairs({ "UNIT_ENTERED_VEHICLE", "UNIT_EXITED_VEHICLE" }) do
         state:Reset({ MountVehicle = true, InVehicle = 1 })
         state:Emit(event, nil)
         state:Emit(event, opaque)
-        assert(APRData.player.carriage == 1 and state.nextCalls == 0 and state.refreshes == 0,
-            "The native contract requires a unit; absent or inaccessible payloads cannot prove boarding")
+        assert(
+            APRData.player.carriage == 1 and state.nextCalls == 0 and state.refreshes == 0,
+            "The native contract requires a unit; absent or inaccessible payloads cannot prove boarding"
+        )
     end
 
     state:Reset({ MountVehicle = true })
     state:Emit("UNIT_ENTERED_VEHICLE", "player", true, true, 5, "synthetic-vehicle", true, false)
-    assert(APRData.player.carriage == 2 and state.nextCalls == 1 and state.questRefreshes == 1
-        and state.refreshes == 1, "The player's completed entry retains normal quest/step progression")
+    assert(
+        APRData.player.carriage == 2 and state.nextCalls == 1 and state.questRefreshes == 1 and state.refreshes == 1,
+        "The player's completed entry retains normal quest/step progression"
+    )
 
     state:Reset({ MountVehicle = true })
     state:Emit("UNIT_EXITED_VEHICLE", "player")
-    assert(APRData.player.carriage == 1 and state.nextCalls == 0 and state.refreshes == 0,
-        "Leaving a vehicle never satisfies a request to board it")
+    assert(
+        APRData.player.carriage == 1 and state.nextCalls == 0 and state.refreshes == 0,
+        "Leaving a vehicle never satisfies a request to board it"
+    )
 
     for _, event in ipairs({ "UNIT_ENTERED_VEHICLE", "UNIT_EXITED_VEHICLE" }) do
         state:Reset({ InVehicle = 2 })
         state:Emit(event, "player")
-        assert(APRData.player.carriage == 1 and state.refreshes == 1 and state.nextCalls == 0,
-            "Entering and leaving refresh the player's current InVehicle presentation without inventing progress")
+        assert(
+            APRData.player.carriage == 1 and state.refreshes == 1 and state.nextCalls == 0,
+            "Entering and leaving refresh the player's current InVehicle presentation without inventing progress"
+        )
     end
 
     state:Reset({ MountVehicle = true, InVehicle = 1 })
     state:Emit("UNIT_ENTERED_VEHICLE", "player")
-    assert(APRData.player.carriage == 2 and state.nextCalls == 1 and state.refreshes == 2,
-        "A combined instruction preserves both the state refresh and one valid boarding transition")
+    assert(
+        APRData.player.carriage == 2 and state.nextCalls == 1 and state.refreshes == 2,
+        "A combined instruction preserves both the state refresh and one valid boarding transition"
+    )
 
     for _, replace in ipairs({
         function() APR:ActivateRoute("other", "manual") end,
@@ -133,8 +171,10 @@ for _, nativeFiltering in ipairs({ true, false }) do
         state:Reset({ MountVehicle = true, InVehicle = 1 })
         state.refreshHook = replace
         state:Emit("UNIT_ENTERED_VEHICLE", "player")
-        assert(state.refreshes == 1 and state.nextCalls == 0 and state.questRefreshes == 0,
-            "A refresh which replaces route, progress or definition retires the old boarding context")
+        assert(
+            state.refreshes == 1 and state.nextCalls == 0 and state.questRefreshes == 0,
+            "A refresh which replaces route, progress or definition retires the old boarding context"
+        )
         assert(APRData.player.other == 1)
     end
 
@@ -145,8 +185,15 @@ for _, nativeFiltering in ipairs({ true, false }) do
     assert(unitless == 1, "The unit filter must not drop native payload-free notifications")
     local beforeRefreshes, beforeCalls = state.refreshes, state.nextCalls
     APR.event.EventHandler({ tag = "vehicle", callback = APR.event.functions.vehicle }, "VEHICLE_UPDATE")
-    assert(state.refreshes == beforeRefreshes and state.nextCalls == beforeCalls,
-        "A payload-free notification is not an entered-vehicle confirmation")
-    assert(#state.errors == 0 and #state.timers == 0, "Vehicle handling is synchronous and owns no stale delayed actions")
+    assert(
+        state.refreshes == beforeRefreshes and state.nextCalls == beforeCalls,
+        "A payload-free notification is not an entered-vehicle confirmation"
+    )
+    assert(
+        #state.errors == 0 and #state.timers == 0,
+        "Vehicle handling is synchronous and owns no stale delayed actions"
+    )
 end
-print("Vehicle events: player entry/exit, foreign/missing/opaque units, changed contexts and unit-filter fallback passed")
+print(
+    "Vehicle events: player entry/exit, foreign/missing/opaque units, changed contexts and unit-filter fallback passed"
+)

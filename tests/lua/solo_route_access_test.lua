@@ -1,16 +1,26 @@
 -- Solo chapter ordering is advisory; explicit route dependencies still gate.
 local locale = setmetatable({}, { __index = function(_, key) return key end })
-function LibStub() return { GetLocale = function() return locale end } end
+function LibStub()
+    return { GetLocale = function() return locale end }
+end
 tinsert, tremove = table.insert, table.remove
 soloAccessLevel, soloAccessMap, soloAccessKey = 25, 1, "Later"
-APR = { PlayerID = "player", Faction = "Alliance", Race = "Human",
-    ClassName = "WARRIOR", ClassId = 1, RouteQuestStepList = {} }
+APR = {
+    PlayerID = "player",
+    Faction = "Alliance",
+    Race = "Human",
+    ClassName = "WARRIOR",
+    ClassId = 1,
+    RouteQuestStepList = {},
+}
 APRData, APRCustomPath, APRZoneCompleted = { player = {} }, { player = {} }, { player = {} }
 C_Map = { GetBestMapForUnit = function() return soloAccessMap end }
 C_QuestLog = { IsQuestFlaggedCompleted = function() return false end }
 function GetTime() return 1 end
 function tContains(values, wanted)
-    for _, value in ipairs(values) do if value == wanted then return true end end
+    for _, value in ipairs(values) do
+        if value == wanted then return true end
+    end
     return false
 end
 dofile("APR-Core/data/models/Enums.lua")
@@ -29,20 +39,33 @@ function APR:Contains(values, wanted) return tContains(values, wanted) end
 function APR:GetPrimaryCustomPathRouteKey() return soloAccessKey end
 
 local routes = APR.RouteQuestStepList
-routes.Earlier = { label = "Earlier chapter", expansion = APR.EXPANSIONS.Forever,
-    conditions = { Faction = "Alliance" }, nextRoute = { "Later" } }
-routes.Later = { label = "Later chapter", mapID = 1, expansion = APR.EXPANSIONS.Forever,
+routes.Earlier = {
+    label = "Earlier chapter",
+    expansion = APR.EXPANSIONS.Forever,
+    conditions = { Faction = "Alliance" },
+    nextRoute = { "Later" },
+}
+routes.Later = {
+    label = "Later chapter",
+    mapID = 1,
+    expansion = APR.EXPANSIONS.Forever,
     conditions = { Faction = "Alliance", Class = "WARRIOR", MinLevel = 25 },
-    steps = { { PickUp = { 10 }, IsQuestCompleted = 9 },
+    steps = {
+        { PickUp = { 10 }, IsQuestCompleted = 9 },
         { Qpart = { [10] = { 1 } }, IsQuestOnQuest = 10 },
-        { Done = { 10 }, IsQuestOnQuest = 10 }, { RouteCompleted = true } } }
+        { Done = { 10 }, IsQuestOnQuest = 10 },
+        { RouteCompleted = true },
+    },
+}
 
 assert(next(APRZoneCompleted.player) == nil)
 assert(APR:GetRouteVisibility("Later") == "visible", "No APR chapter history is required to join solo")
 assert(APR:CanStartRoute("Later") and APR:MeetsRoutePrerequisites("Later"))
 assert(APR:AddRouteToCustomPathByKey("Later"))
-assert(#APRCustomPath.player == 1 and APRCustomPath.player[1] == routes.Later.label,
-    "Selecting a later chapter must not enqueue earlier chapters")
+assert(
+    #APRCustomPath.player == 1 and APRCustomPath.player[1] == routes.Later.label,
+    "Selecting a later chapter must not enqueue earlier chapters"
+)
 assert(APR:ActivateRoute("Later"))
 assert(#APR:GetNextRouteSuggestions("Earlier") == 1, "nextRoute still supplies the continuation")
 assert(not APR:AreConditionalFiltersMet(routes.Later.steps[1]), "A genuine quest prerequisite still applies")
@@ -55,12 +78,16 @@ soloAccessLevel = 24
 assert(APR:GetRouteVisibility("Later") == "visible" and APR:CanStartRoute("Later"))
 assert(#APR:GetRouteLevelWarnings("Later") == 1, "An unmet chapter level is a visible recommendation")
 local maps = APR:GetCurrentRouteMapIDsAndName()
-assert(maps ~= nil and APRData.player.Later == 2 and #APRCustomPath.player == 1,
-    "An advisory level resumes the queued route without resetting progress")
+assert(
+    maps ~= nil and APRData.player.Later == 2 and #APRCustomPath.player == 1,
+    "An advisory level resumes the queued route without resetting progress"
+)
 soloAccessLevel = 25
 APR.ClassName, APR.ClassId = "MAGE", 8
-assert(APR:GetRouteVisibility("Later") == "visible" and APR:CanStartRoute("Later"),
-    "Forever class recommendations allow manual entry")
+assert(
+    APR:GetRouteVisibility("Later") == "visible" and APR:CanStartRoute("Later"),
+    "Forever class recommendations allow manual entry"
+)
 APR.ClassName, APR.ClassId, APR.Faction = "WARRIOR", 1, "Horde"
 assert(APR:GetRouteVisibility("Later") == "hidden", "Faction eligibility remains enforced")
 APR.Faction = "Alliance"
@@ -71,4 +98,6 @@ APRZoneCompleted.player[routes.Earlier.label] = true
 assert(APR:CanStartRoute("Later"))
 routes.Later.requiredRoute = nil
 APRZoneCompleted.player = {}
-print("Solo access: direct entry, saved progress, suggestions, level/class/faction and explicit quest/route dependencies passed")
+print(
+    "Solo access: direct entry, saved progress, suggestions, level/class/faction and explicit quest/route dependencies passed"
+)

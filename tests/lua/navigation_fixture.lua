@@ -32,7 +32,11 @@ function CreateFrame()
     function frame:SetScript(key, callback) self[key] = callback end
     return frame
 end
-function wipe(t) for k in pairs(t) do t[k] = nil end end
+function wipe(t)
+    for k in pairs(t) do
+        t[k] = nil
+    end
+end
 WOW_PROJECT_MAINLINE, WOW_PROJECT_ID = 1, 1
 Enum = { UIMapType = { World = 0, Continent = 2, Zone = 3, Dungeon = 4, Micro = 5 } }
 C_Item = { GetItemCount = function(id) return fixture.items[id] or 0 end }
@@ -53,14 +57,24 @@ C_Map = {
     GetAreaInfo = function(id) return "Area " .. id end,
     GetBestMapForUnit = function() return fixture.currentMap or 2395 end,
     GetMapInfo = function(id)
-        return fixture.maps[id] or { mapID = id, mapType = 3, parentMapID = fixture.profile == "forever" and 1415 or 13, name = "Map " .. id }
+        return fixture.maps[id]
+            or {
+                mapID = id,
+                mapType = 3,
+                parentMapID = fixture.profile == "forever" and 1415 or 13,
+                name = "Map " .. id,
+            }
     end,
     GetWorldPosFromMapPos = function(id, pos) return id == 2413 and 2694 or 0, { x = pos.x * 10000, y = pos.y * 10000 } end,
-    GetMapPosFromWorldPos = function(instance) return instance == 2694 and 2413 or instance == 2771 and 2405 or 2395, {} end,
+    GetMapPosFromWorldPos = function(instance)
+        return instance == 2694 and 2413 or instance == 2771 and 2405 or 2395, {}
+    end,
 }
 function fixture:Load(catalog)
     APR = {}
-    function APR:GetRouteActionUsability(kind, id) return self.fixture[kind == "item" and "items" or "spells"][id] ~= nil end
+    function APR:GetRouteActionUsability(kind, id)
+        return self.fixture[kind == "item" and "items" or "spells"][id] ~= nil
+    end
     APR.fixture = self
     LibStub = nil
     dofile("APR-Core/libs/HereBeDragons/LibStub/LibStub.lua")
@@ -68,7 +82,8 @@ function fixture:Load(catalog)
     function locale:GetLocale() return fixture.translations or {} end
     local root = "APR-Core/libs/LibAPRNavigation-1.0/"
     local file = assert(io.open(root .. "LibAPRNavigation.xml"))
-    local xml = file:read("*a"); file:close()
+    local xml = file:read("*a")
+    file:close()
     for path in xml:gmatch('file="([^"]+)"') do
         if catalog == nil or not path:match("^Data/") then dofile(root .. path) end
     end

@@ -2,11 +2,11 @@ name: Discord Release Notification
 
 on:
   release:
-    types: [published]  # Triggers on newly published releases
+    types: [published] # Triggers on newly published releases
   workflow_dispatch:
     inputs:
       release_tag:
-        description: 'Release tag to notify'
+        description: "Release tag to notify"
         required: false
         type: string
 

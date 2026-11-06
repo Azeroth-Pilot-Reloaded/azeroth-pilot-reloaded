@@ -7,7 +7,9 @@ local completed, active, offers = {}, {}, {}
 local unknownQuest
 local env = {
     getCharacter = function() return { level = 90, faction = "Horde", mapID = 101 } end,
-    isQuestCompleted = function(id) if id ~= unknownQuest then return completed[id] == true end end,
+    isQuestCompleted = function(id)
+        if id ~= unknownQuest then return completed[id] == true end
+    end,
     isQuestActive = function(id) return active[id] == true end,
     isQuestAvailable = function(id) return offers[id] end,
     getLocale = function() return "frFR" end,
@@ -15,11 +17,19 @@ local env = {
 }
 local position = { space = "world", uiMapID = 101, instanceID = 1, x = 350, y = 450 }
 local function quest(id, prerequisite)
-    return { id = "quest:" .. id, goal = { key = "quest", value = id }, steps = {
-        { kind = "accept", questID = id, position = position,
-            acceptance = { known = true, requirements = prerequisite and { quest = prerequisite } or {} } },
-        { kind = "turnin", questID = id, position = position },
-    } }
+    return {
+        id = "quest:" .. id,
+        goal = { key = "quest", value = id },
+        steps = {
+            {
+                kind = "accept",
+                questID = id,
+                position = position,
+                acceptance = { known = true, requirements = prerequisite and { quest = prerequisite } or {} },
+            },
+            { kind = "turnin", questID = id, position = position },
+        },
+    }
 end
 Lib:RegisterData("acceptance-tests", "unlocks", { unlockRoutes = { quest(42, 41), quest(41, 40), quest(40) } })
 local navigator = Lib:New({ profile = "acceptance-tests", environment = env })
@@ -49,8 +59,10 @@ status, action = tick(session)
 assert(action.questID == 42 and action.kind == "accept")
 offers[42] = false
 status, action = tick(session)
-assert(status == "missing_data" and action.kind == "missing" and not action.target,
-    "A negative live offer suppresses acceptance even if known prerequisites pass")
+assert(
+    status == "missing_data" and action.kind == "missing" and not action.target,
+    "A negative live offer suppresses acceptance even if known prerequisites pass"
+)
 assert(action.label:find("indisponible", 1, true))
 offers[42] = true
 status, action = tick(session)
@@ -71,8 +83,10 @@ local blocked = session:GetBlockers()
 assert(blocked[1].id == "quest-acceptance:40", "Consumers see the deepest failed prerequisite")
 offers[42] = true
 status, action = tick(session)
-assert(status == "action" and action.questID == 42,
-    "A direct server offer retires obsolete prerequisite detours, even when a tracker is incomplete")
+assert(
+    status == "action" and action.questID == 42,
+    "A direct server offer retires obsolete prerequisite detours, even when a tracker is incomplete"
+)
 
 -- Cycles and unknown flags do not degrade into a blind acceptance action.
 completed, active, offers = {}, {}, {}
@@ -88,34 +102,51 @@ unknownQuest = nil
 
 -- Independent offer metadata preserves a character-only tracker prerequisite.
 data.env = env
-gate = { id = "karesh", from = { uiMapID = 101 },
-    blockedRequirements = { any = { { quest = 12 }, { questActive = 12 } }, minLevel = 80 } }
+gate = {
+    id = "karesh",
+    from = { uiMapID = 101 },
+    blockedRequirements = { any = { { quest = 12 }, { questActive = 12 } }, minLevel = 80 },
+}
 session = create(data)
 status, action = tick(session)
-assert(status ~= "action" or action.questID ~= 11,
-    "The Horde level-90 character is never sent to accept 11 with missing campaign conditions")
+assert(
+    status ~= "action" or action.questID ~= 11,
+    "The Horde level-90 character is never sent to accept 11 with missing campaign conditions"
+)
 local invitation
 for _, recipe in ipairs(data:GetUnlockRoutes()) do
     for _, step in ipairs(recipe.steps) do
-        if step.kind == "accept" and step.questID == 11 then invitation = step.acceptance; break end
+        if step.kind == "accept" and step.questID == 11 then
+            invitation = step.acceptance
+            break
+        end
     end
     if invitation then break end
 end
-assert(invitation and invitation.known == true and invitation.complete ~= true,
-    "All supplied conditions are interpreted without claiming exhaustive world knowledge")
+assert(
+    invitation and invitation.known == true and invitation.complete ~= true,
+    "All supplied conditions are interpreted without claiming exhaustive world knowledge"
+)
 completed[13] = true
 assert(data:CheckRequirements(invitation.requirements, env.getCharacter()) == true)
 completed[13] = nil
-assert(data:CheckRequirements(invitation.requirements, env.getCharacter()) == false,
-    "The character's tracker completion is required before the next offer")
+assert(
+    data:CheckRequirements(invitation.requirements, env.getCharacter()) == false,
+    "The character's tracker completion is required before the next offer"
+)
 completed[14] = true
-assert(data:CheckRequirements(invitation.requirements, env.getCharacter()) == false,
-    "The authored upto quest does not replace the actual campaign tracker")
+assert(
+    data:CheckRequirements(invitation.requirements, env.getCharacter()) == false,
+    "The authored upto quest does not replace the actual campaign tracker"
+)
 local marker
 for _, recipe in ipairs(data:GetUnlockRoutes()) do
     if recipe.goal.key == "quest" and recipe.goal.value == 13 then marker = recipe end
 end
-assert(marker and marker.guidanceQuestID == 14, "Tracker guidance uses the sourced upto quest without fabricated coordinates")
+assert(
+    marker and marker.guidanceQuestID == 14,
+    "Tracker guidance uses the sourced upto quest without fabricated coordinates"
+)
 
 for _, locale in ipairs({ "enUS", "deDE", "esES", "esMX", "frFR", "itIT", "koKR", "ptBR", "ruRU", "zhCN", "zhTW" }) do
     for _, suffix in ipairs({ "accept_unverified", "accept_unavailable" }) do
@@ -123,4 +154,6 @@ for _, locale in ipairs({ "enUS", "deDE", "esES", "esMX", "frFR", "itIT", "koKR"
         assert(Lib:GetText(key, locale) ~= key)
     end
 end
-print("Quest acceptance: recursive prerequisites, live availability, cycles, hidden trackers and original destination passed")
+print(
+    "Quest acceptance: recursive prerequisites, live availability, cycles, hidden trackers and original destination passed"
+)

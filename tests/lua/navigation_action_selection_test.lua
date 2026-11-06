@@ -3,23 +3,57 @@ local fixture = dofile("tests/lua/navigation_fixture.lua")
 fixture.profile, fixture.currentMap = "forever", 101
 fixture.spells, fixture.items = { [10] = true, [11] = true }, { [20] = 1, [21] = 1, [40] = 1, [41] = 2 }
 local function point(world, map, x) return { instanceID = world, uiMapID = map, x = x, y = 0 } end
-local catalog = { config = { actionLoadingSeconds = 5, IsolatedAreas = { [103] = "interior" } }, connections = {
-    { id = "learned-destination", kind = "spell", from = { dynamic = "player" }, to = point(0, 102, 100),
-        actions = { { type = "spell", id = 10, reagentID = 20, groupSpellID = 11, groupReagentID = 21 } } },
-    { id = "owned-toy", kind = "item", from = { dynamic = "player" }, to = point(0, 103, 0),
-        actions = { { type = "item", id = 30 } } },
-    { id = "first-consumable", kind = "item", from = { dynamic = "player" }, to = point(0, 102, 100), cooldownGroup = "shared",
-        actions = { { type = "item", id = 40, consumable = true } } },
-    { id = "second-consumable", kind = "item", from = { dynamic = "player" }, to = point(0, 102, 200), cooldownGroup = "shared",
-        actions = { { type = "item", id = 41, consumable = true } } },
-    { id = "ferry", kind = "boat", from = point(0, 101, 0), to = point(1, 104, 100), seconds = 25, bidirectional = true },
-} }
+local catalog = {
+    config = { actionLoadingSeconds = 5, IsolatedAreas = { [103] = "interior" } },
+    connections = {
+        {
+            id = "learned-destination",
+            kind = "spell",
+            from = { dynamic = "player" },
+            to = point(0, 102, 100),
+            actions = { { type = "spell", id = 10, reagentID = 20, groupSpellID = 11, groupReagentID = 21 } },
+        },
+        {
+            id = "owned-toy",
+            kind = "item",
+            from = { dynamic = "player" },
+            to = point(0, 103, 0),
+            actions = { { type = "item", id = 30 } },
+        },
+        {
+            id = "first-consumable",
+            kind = "item",
+            from = { dynamic = "player" },
+            to = point(0, 102, 100),
+            cooldownGroup = "shared",
+            actions = { { type = "item", id = 40, consumable = true } },
+        },
+        {
+            id = "second-consumable",
+            kind = "item",
+            from = { dynamic = "player" },
+            to = point(0, 102, 200),
+            cooldownGroup = "shared",
+            actions = { { type = "item", id = 41, consumable = true } },
+        },
+        {
+            id = "ferry",
+            kind = "boat",
+            from = point(0, 101, 0),
+            to = point(1, 104, 100),
+            seconds = 25,
+            bidirectional = true,
+        },
+    },
+}
 local owned, toyUsable, cooling = true, true, false
 function PlayerHasToy(id) return id == 30 and owned end
 C_ToyBox = { IsToyUsable = function() return toyUsable end }
 C_Item.IsUsableItem = function() return true end
 C_Item.GetItemCooldown = function() return cooling and 1 or 0, cooling and 60 or 0, 1 end
-C_Spell.GetSpellInfo = function(id) if fixture.spells[id] then return { name = "Fixture spell " .. id } end end
+C_Spell.GetSpellInfo = function(id)
+    if fixture.spells[id] then return { name = "Fixture spell " .. id } end
+end
 C_SpellBook = { IsSpellKnown = function(id) return fixture.spells[id] == true end }
 local data = fixture:Load(catalog)
 dofile("APR-Core/utils/PlayerUtils.lua")
@@ -28,7 +62,9 @@ local player = point(0, 101, 0)
 local function build()
     local edges, meta = data:BuildEdges({ playerPosition = player, inGroup = fixture.inGroup })
     local indexed = {}
-    for _, edge in ipairs(edges) do indexed[edge.id] = edge end
+    for _, edge in ipairs(edges) do
+        indexed[edge.id] = edge
+    end
     return indexed, meta
 end
 local key = "forever:learned-destination:forward"

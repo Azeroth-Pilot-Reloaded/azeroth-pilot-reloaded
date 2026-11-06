@@ -10,7 +10,9 @@ local function CommitStepPresentation(self, success)
     if success and not self.stepUpdatePending and self.stepMapUpdatePending then
         self:SendMessage("APR_MAP_UPDATE")
     end
-end--[[APR_DIAG]]; CommitStepPresentation = APRTrace("APR-Core/features/questing/QuestHandler.lua:8:CommitStepPresentation#1", CommitStepPresentation)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+CommitStepPresentation =
+    APRTrace("APR-Core/features/questing/QuestHandler.lua:8:CommitStepPresentation#1", CommitStepPresentation)--[[/APR_DIAG]]
 
 -- Automatic completions request another pass instead of nesting UpdateStep calls.
 -- Bound each batch so a long run of completed objectives also yields to the UI.
@@ -33,13 +35,21 @@ function APR:UpdateStep()
         local profileStart = self:StartPerformanceSample()
         if self.currentStep.BeginContentUpdate then self.currentStep:BeginContentUpdate() end
         local renderStart = self:StartPerformanceSample()
-        local ok, err = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](self.RenderCurrentStep, self)
+        local ok, err = --[[APR_DIAG]]
+            APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](self.RenderCurrentStep, self)
         self:FinishPerformanceSample("StepRenderContent", renderStart)
         local commitStart = self:StartPerformanceSample()
-        local rendered, renderError = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](CommitStepPresentation, self, ok and not self.stepUpdatePending)
+        local rendered, renderError = --[[APR_DIAG]]
+            APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](
+                CommitStepPresentation,
+                self,
+                ok and not self.stepUpdatePending
+            )
         self.stepMapUpdatePending = nil
         self:FinishPerformanceSample("StepRenderCommit", commitStart)
-        if not rendered then ok, err = false, renderError end
+        if not rendered then
+            ok, err = false, renderError
+        end
         self:FinishPerformanceSample("UpdateStepPass", profileStart)
         if not ok then
             self.stepUpdateRunning = false
@@ -59,9 +69,13 @@ function APR:UpdateStep()
 
     if self.stepUpdatePending then
         local context = self:CaptureStepContext()
-        self.stepUpdateTimer = C_Timer.NewTimer(0, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/QuestHandler.lua:62:callback#3", --[[/APR_DIAG]]function()
-            self.stepUpdateTimer = nil
-            if self:IsStepContextCurrent(context) then self:UpdateStep() end
-        end--[[APR_DIAG]])--[[/APR_DIAG]])
+        self.stepUpdateTimer = C_Timer.NewTimer(
+            0, --[[APR_DIAG]]
+            APRTrace("APR-Core/features/questing/QuestHandler.lua:62:callback#3", --[[/APR_DIAG]] function()
+                self.stepUpdateTimer = nil
+                if self:IsStepContextCurrent(context) then self:UpdateStep() end
+            end--[[APR_DIAG]]) --[[/APR_DIAG]]
+        )
     end
-end--[[APR_DIAG]]; APR.UpdateStep = APRTrace("APR-Core/features/questing/QuestHandler.lua:17:APR:UpdateStep#2", APR.UpdateStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.UpdateStep = APRTrace("APR-Core/features/questing/QuestHandler.lua:17:APR:UpdateStep#2", APR.UpdateStep)--[[/APR_DIAG]]

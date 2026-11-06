@@ -20,7 +20,9 @@ local button = row.IconButton
 assert(button.attributes.type1 == "item" and button.attributes.item == "item:50")
 local initialFrames, initialFonts, initialLayouts = env.frames(), env.fonts(), env.layouts()
 local anchors = row.anchors
-for _ = 1, 100 do render("Collect 0/10") end
+for _ = 1, 100 do
+    render("Collect 0/10")
+end
 assert(step.questsList["1-1"] == row and step.questsExtraTextList.hint == hint)
 assert(step.questsList.PickUp == detail and row.IconButton == button)
 assert(env.frames() == initialFrames and env.fonts() == initialFonts, "Unchanged refreshes allocate no widgets")
@@ -75,10 +77,14 @@ for _ = 1, 600 do
     step:Reset()
     step:EndContentUpdate(false)
 end
-assert(env.layouts() == interruptedLayouts and step.layoutDirty,
-    "Skipped-step passes retain dirty geometry without repeatedly laying out the old content")
-assert(step.questsList["1-1"] == replacement and not step.contentUpdateActive,
-    "An interrupted or failed pass retains content and releases the batching guard")
+assert(
+    env.layouts() == interruptedLayouts and step.layoutDirty,
+    "Skipped-step passes retain dirty geometry without repeatedly laying out the old content"
+)
+assert(
+    step.questsList["1-1"] == replacement and not step.contentUpdateActive,
+    "An interrupted or failed pass retains content and releases the batching guard"
+)
 step:BeginContentUpdate()
 step:Reset()
 step:AddQuestSteps(1, "Recovered", 1)
@@ -110,7 +116,7 @@ APR.IsNavigationExtraTextUiKey = function(_, key) return key == "00_DEST" end
 APR.navigation = {
     showOutOfZoneStepContent = true,
     NavigationDividerStepKey = "01_NAV",
-    ErrorDestinationLineKey = "00_DEST"
+    ErrorDestinationLineKey = "00_DEST",
 }
 step:AddQuestDivider("01_NAV")
 step:AddExtraLineText("00_DEST", "Destination", nil, false)
@@ -135,7 +141,9 @@ function APR:ResolveUIFileAsset(path) return path end
 
 function APR:AreOrderedStringListsEqual(a, b)
     if #a ~= #b then return false end
-    for index, value in ipairs(a) do if b[index] ~= value then return false end end
+    for index, value in ipairs(a) do
+        if b[index] ~= value then return false end
+    end
     return true
 end
 
@@ -144,7 +152,9 @@ APR.currentStepImagePreview:ConfigureCurrentStepPreview(CurrentStepFrame_StepHol
 local previewStep = { PreviewImages = { "test-image" } }
 APR.currentStepImagePreview:SetPreviewImages(step, previewStep)
 local preview
-for _, container in pairs(step.questsList) do if container.previewButtons then preview = container end end
+for _, container in pairs(step.questsList) do
+    if container.previewButtons then preview = container end
+end
 assert(preview)
 step:BeginContentUpdate()
 step:Reset()
@@ -155,10 +165,13 @@ local previewButton, beforeProbeLayouts = preview.previewButtons[1], env.layouts
 for _ = 1, 20 do
     if previewButton.scripts.OnUpdate then previewButton.scripts.OnUpdate(previewButton, 0.05) end
 end
-assert(not previewButton.scripts.OnUpdate and env.layouts() == beforeProbeLayouts,
-    "Missing image dimensions stop probing without repeated layout")
+assert(
+    not previewButton.scripts.OnUpdate and env.layouts() == beforeProbeLayouts,
+    "Missing image dimensions stop probing without repeated layout"
+)
 print(
-    "Current step: 100 refreshes without allocations or hide/show; single layout, wrapping, tooltips, progress, combat and recovery passed")
+    "Current step: 100 refreshes without allocations or hide/show; single layout, wrapping, tooltips, progress, combat and recovery passed"
+)
 
 -- Learned toys use the secure toy action, independent of bag contents.
 function PlayerHasToy(id) return id == 263933 end
@@ -214,32 +227,48 @@ dofile("APR-Core/features/navigation/Navigation.lua")
 local navigation = APR.navigation
 navigation.context, navigation.state, navigation.cursor = {}, "guiding", 1
 navigation.queue = {
-    { id = "4:1", kind = "spell", sourceFree = true, label = "Teleport to Orgrimmar",
-        action = { type = "spell", data = 3567 }, from = { x = 0, y = 0, instanceID = 0 } },
-    { id = "4:2", kind = "portal", label = "Take the portal to Silvermoon",
-        from = { x = 38, y = 0, instanceID = 0 } },
+    {
+        id = "4:1",
+        kind = "spell",
+        sourceFree = true,
+        label = "Teleport to Orgrimmar",
+        action = { type = "spell", data = 3567 },
+        from = { x = 0, y = 0, instanceID = 0 },
+    },
+    {
+        id = "4:2",
+        kind = "portal",
+        label = "Take the portal to Silvermoon",
+        from = { x = 38, y = 0, instanceID = 0 },
+    },
 }
 for _, inCombat in ipairs({ false, true }) do
     navigation.cursor = 1
     navigation:Render()
     local teleportRow = step.questsList["01_NAVIGATION_PATH-4:1"]
-    assert(teleportRow.font:GetText() == "Teleport to Orgrimmar"
-        and teleportRow.IconButton.attributes.spell == 3567)
+    assert(teleportRow.font:GetText() == "Teleport to Orgrimmar" and teleportRow.IconButton.attributes.spell == 3567)
     env.setCombat(inCombat)
     navigation.cursor = 2
     navigation:Render()
     local portalRow = step.questsList["01_NAVIGATION_PATH-4:2"]
-    assert(not step.questsList["01_NAVIGATION_PATH-4:1"]
-        and portalRow.font:GetText() == "Take the portal to Silvermoon" and not portalRow.IconButton,
-        "Advancing navigation replaces both the old teleport instruction and its secure button")
+    assert(
+        not step.questsList["01_NAVIGATION_PATH-4:1"]
+            and portalRow.font:GetText() == "Take the portal to Silvermoon"
+            and not portalRow.IconButton,
+        "Advancing navigation replaces both the old teleport instruction and its secure button"
+    )
     if inCombat then
-        assert(teleportRow.hiddenInCombat and teleportRow.alpha == 0.001,
-            "The old protected row is visually retired while combat prevents recycling")
+        assert(
+            teleportRow.hiddenInCombat and teleportRow.alpha == 0.001,
+            "The old protected row is visually retired while combat prevents recycling"
+        )
     end
     env.setCombat(false)
     step:FlushPendingContainers()
     step:ProcessPendingStepButtons()
-    assert(not portalRow.IconButton and not step.questsList["01_NAVIGATION_PATH-4:1"],
-        "Deferred cleanup must not restore a retired navigation action")
+    assert(
+        not portalRow.IconButton and not step.questsList["01_NAVIGATION_PATH-4:1"],
+        "Deferred cleanup must not restore a retired navigation action"
+    )
 end
 print("Navigation rows: teleport-to-portal transitions clear old instructions and actions in and out of combat")

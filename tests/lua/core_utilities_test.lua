@@ -1,6 +1,8 @@
 -- Shared helpers must preserve saved data and work before character initialization.
 local locale = setmetatable({}, { __index = function(_, key) return key end })
-function LibStub() return { GetLocale = function() return locale end } end
+function LibStub()
+    return { GetLocale = function() return locale end }
+end
 APR = {}
 dofile("APR-Core/ui/foundations/ReloadConfirmation.lua")
 dofile("APR-Core/utils/Utils.lua")
@@ -34,7 +36,10 @@ print = function(...) messages[#messages + 1] = { ... } end
 APR.settings = { profile = { debug = false } }
 APR:Debug("nested", { value = "visible" }, true)
 print = realPrint
-assert(#messages == 1 and messages[1][1]:find("value=visible", 1, true), "Forced debug formats nested values into one readable line")
+assert(
+    #messages == 1 and messages[1][1]:find("value=visible", 1, true),
+    "Forced debug formats nested values into one readable line"
+)
 
 assert(APR:GetCurrentStep() == nil and APR:GetCharacterSettings() == nil)
 APR.PlayerID, APR.ActiveRoute = "player", "route"
@@ -61,13 +66,21 @@ function APR:GetGameVersion() return "retail" end
 assert(APR:GetHeirloomWarning() == false)
 APR:SetRouteSuggestionDontAsk(true)
 assert(character.routeSuggestionDontAsk and not SettingsDB.char.routeSuggestionDontAsk)
-local saved = {global = {appearanceIntroSeen = 2, appearanceIntroChoice = "modern", layoutEditorSeen = true}, char = { player = character },
-    profiles = { Default = { size = 15 }, Other = {} }, profileKeys = { player = "Other" } }
+local saved = {
+    global = { appearanceIntroSeen = 2, appearanceIntroChoice = "modern", layoutEditorSeen = true },
+    char = { player = character },
+    profiles = { Default = { size = 15 }, Other = {} },
+    profileKeys = { player = "Other" },
+}
 APRSettings = saved
 local reloads = 0
 C_UI = { Reload = function() reloads = reloads + 1 end }
 local acceptReset, cancelReset
-APR.UI = {ShowConfirmationDialog = function(_, _, accept, cancel) acceptReset, cancelReset = accept, cancel end}
+APR.UI = {
+    ShowConfirmationDialog = function(_, _, accept, cancel)
+        acceptReset, cancelReset = accept, cancel
+    end,
+}
 APR:ResetAllProfilesToDefault()
 assert(reloads == 0 and APRSettings == saved, "Bulk reset waits for confirmation before changing saved profiles")
 cancelReset()
@@ -77,23 +90,33 @@ APR:ResetAllProfilesToDefault()
 acceptReset()
 assert(reloads == 1 and not next(APRSettings.profileKeys) and not APRSettings.profiles.Other)
 assert(APRSettings.profiles.Default.size == 15 and APRSettings.char.player.showHeirloomWarning == false)
-assert(APRSettings.global.appearanceIntroSeen == 2 and APRSettings.global.appearanceIntroChoice == "modern"
-    and APRSettings.global.layoutEditorSeen
-    and APRSettings.global ~= saved.global, "Profile resets preserve account-wide onboarding markers")
+assert(
+    APRSettings.global.appearanceIntroSeen == 2
+        and APRSettings.global.appearanceIntroChoice == "modern"
+        and APRSettings.global.layoutEditorSeen
+        and APRSettings.global ~= saved.global,
+    "Profile resets preserve account-wide onboarding markers"
+)
 APRSettings.char.player.showHeirloomWarning = true
 assert(saved.char.player.showHeirloomWarning == false)
-print("Core utilities: isolated copies, cycles, literal text, diagnostics, current-step ownership and AceDB scope passed")
+print(
+    "Core utilities: isolated copies, cycles, literal text, diagnostics, current-step ownership and AceDB scope passed"
+)
 
-local formatted = APR:FormatDebugTable({z = false, a = {2, "quoted\"value"}, ["end"] = "keyword"})
+local formatted = APR:FormatDebugTable({ z = false, a = { 2, 'quoted"value' }, ["end"] = "keyword" })
 assert(formatted:find('\n    ["a"] = {', 1, true))
 assert(formatted:find('["a"]', 1, true) < formatted:find('["z"]', 1, true))
 local restored = assert(loadstring("return " .. formatted))()
 assert(restored.z == false and restored.a[2] == 'quoted"value' and restored["end"] == "keyword")
-local loop = {}; loop.self = loop
+local loop = {}
+loop.self = loop
 assert(APR:FormatDebugTable(loop):find("<circular>", 1, true))
 local restricted = {}
 function APR:CanAccessValue(value) return value ~= restricted end
-assert(APR:FormatDebugTable({data = restricted}):find("<unavailable>", 1, true))
-local large = {}; for index = 1, 10020 do large[index] = index end
+assert(APR:FormatDebugTable({ data = restricted }):find("<unavailable>", 1, true))
+local large = {}
+for index = 1, 10020 do
+    large[index] = index
+end
 assert(APR:FormatDebugTable(large):find("<entry-limit>", 1, true))
 print("Diagnostic formatting: stable keys, valid Lua, indentation, cycles, restricted values and bounded output passed")

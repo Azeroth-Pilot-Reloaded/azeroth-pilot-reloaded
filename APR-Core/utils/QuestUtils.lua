@@ -23,7 +23,9 @@ function APR:RequiresManualQuestReward()
         if not itemID or (isForever and self.ProfessionTrainingItems[itemID]) then return true end
     end
     return false
-end--[[APR_DIAG]]; APR.RequiresManualQuestReward = APRTrace("APR-Core/utils/QuestUtils.lua:14:APR:RequiresManualQuestReward#1", APR.RequiresManualQuestReward)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.RequiresManualQuestReward =
+    APRTrace("APR-Core/utils/QuestUtils.lua:14:APR:RequiresManualQuestReward#1", APR.RequiresManualQuestReward)--[[/APR_DIAG]]
 
 --- Read a title and request uncached data only when the caller needs it.
 --- Failed or unanswered requests can be retried on a later read without flooding the server.
@@ -45,7 +47,8 @@ function APR:GetQuestTitle(questID, requestMissing)
         request.route = self.ActiveRoute
     end
     return nil
-end--[[APR_DIAG]]; APR.GetQuestTitle = APRTrace("APR-Core/utils/QuestUtils.lua:30:APR:GetQuestTitle#2", APR.GetQuestTitle)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetQuestTitle = APRTrace("APR-Core/utils/QuestUtils.lua:30:APR:GetQuestTitle#2", APR.GetQuestTitle)--[[/APR_DIAG]]
 
 --- Consume only results requested by APR, including quests outside the pickup pool.
 function APR:OnQuestTitleLoaded(questID, success)
@@ -56,11 +59,14 @@ function APR:OnQuestTitleLoaded(questID, success)
 
     questTitleRequests[questID] = nil
     return request.route == self.ActiveRoute
-end--[[APR_DIAG]]; APR.OnQuestTitleLoaded = APRTrace("APR-Core/utils/QuestUtils.lua:51:APR:OnQuestTitleLoaded#3", APR.OnQuestTitleLoaded)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.OnQuestTitleLoaded = APRTrace("APR-Core/utils/QuestUtils.lua:51:APR:OnQuestTitleLoaded#3", APR.OnQuestTitleLoaded)--[[/APR_DIAG]]
 
 function APR:ResetQuestTitleRequests()
     wipe(questTitleRequests)
-end--[[APR_DIAG]]; APR.ResetQuestTitleRequests = APRTrace("APR-Core/utils/QuestUtils.lua:61:APR:ResetQuestTitleRequests#4", APR.ResetQuestTitleRequests)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.ResetQuestTitleRequests =
+    APRTrace("APR-Core/utils/QuestUtils.lua:61:APR:ResetQuestTitleRequests#4", APR.ResetQuestTitleRequests)--[[/APR_DIAG]]
 
 --- Only quests still in this character's log can activate deferred hand-ins.
 --- Lists require every quest to be ready.
@@ -79,7 +85,9 @@ function APR:IsQuestReadyForTurnIn(questID)
 
     return (C_QuestLog.IsOnQuest(questID) and C_QuestLog.IsComplete(questID))
         or C_QuestLog.IsQuestFlaggedCompleted(questID)
-end--[[APR_DIAG]]; APR.IsQuestReadyForTurnIn = APRTrace("APR-Core/utils/QuestUtils.lua:67:APR:IsQuestReadyForTurnIn#5", APR.IsQuestReadyForTurnIn)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.IsQuestReadyForTurnIn =
+    APRTrace("APR-Core/utils/QuestUtils.lua:67:APR:IsQuestReadyForTurnIn#5", APR.IsQuestReadyForTurnIn)--[[/APR_DIAG]]
 
 APR.QuestPool = APR.QuestPool or { ids = {} }
 
@@ -88,26 +96,40 @@ function APR:AcceptQuest()
     local options = data and self.ActiveRoute and self:GetStep(data[self.ActiveRoute])
     if options and options.NoAutoAccept then return end
     AcceptQuest()
-end--[[APR_DIAG]]; APR.AcceptQuest = APRTrace("APR-Core/utils/QuestUtils.lua:86:APR:AcceptQuest#6", APR.AcceptQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.AcceptQuest = APRTrace("APR-Core/utils/QuestUtils.lua:86:APR:AcceptQuest#6", APR.AcceptQuest)--[[/APR_DIAG]]
 
 function APR:CloseQuest()
     CloseQuest()
-end--[[APR_DIAG]]; APR.CloseQuest = APRTrace("APR-Core/utils/QuestUtils.lua:93:APR:CloseQuest#7", APR.CloseQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.CloseQuest = APRTrace("APR-Core/utils/QuestUtils.lua:93:APR:CloseQuest#7", APR.CloseQuest)--[[/APR_DIAG]]
 
 --- Open only the quest starter requested by the active step; QUEST_DETAIL handles acceptance.
 function APR:UseDroppedQuestItem(step)
     local questID = step and (step.DropQuest or (step.DroppableQuest and step.DroppableQuest.Qid))
     local profile = self:GetSettingsProfile()
-    if not questID or not profile or not profile.enableAddon or not self.IsInRouteZone
-        or step.NoAutoAccept or not (profile.autoAccept or profile.autoAcceptQuestRoute) then
+    if
+        not questID
+        or not profile
+        or not profile.enableAddon
+        or not self.IsInRouteZone
+        or step.NoAutoAccept
+        or not (profile.autoAccept or profile.autoAcceptQuestRoute)
+    then
         return false
     end
 
     if not C_Container or not C_Container.GetContainerItemQuestInfo then return false end
-    if IsModifierKeyDown() or InCombatLockdown() or UnitIsDeadOrGhost("player")
-        or self.routeMerchantOpen or self.routeBankOpen
-        or self.ActiveQuests[questID] or C_QuestLog.IsOnQuest(questID)
-        or C_QuestLog.IsQuestFlaggedCompleted(questID) then
+    if
+        IsModifierKeyDown()
+        or InCombatLockdown()
+        or UnitIsDeadOrGhost("player")
+        or self.routeMerchantOpen
+        or self.routeBankOpen
+        or self.ActiveQuests[questID]
+        or C_QuestLog.IsOnQuest(questID)
+        or C_QuestLog.IsQuestFlaggedCompleted(questID)
+    then
         return false
     end
 
@@ -130,21 +152,25 @@ function APR:UseDroppedQuestItem(step)
         end
     end
     return false
-end--[[APR_DIAG]]; APR.UseDroppedQuestItem = APRTrace("APR-Core/utils/QuestUtils.lua:98:APR:UseDroppedQuestItem#8", APR.UseDroppedQuestItem)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.UseDroppedQuestItem =
+    APRTrace("APR-Core/utils/QuestUtils.lua:98:APR:UseDroppedQuestItem#8", APR.UseDroppedQuestItem)--[[/APR_DIAG]]
 
 local function AddQuestToPool(pool, questID)
     questID = tonumber(questID)
     if questID and not APR:Contains(pool.ids, questID) then
         table.insert(pool.ids, questID)
     end
-end--[[APR_DIAG]]; AddQuestToPool = APRTrace("APR-Core/utils/QuestUtils.lua:135:AddQuestToPool#9", AddQuestToPool)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+AddQuestToPool = APRTrace("APR-Core/utils/QuestUtils.lua:135:AddQuestToPool#9", AddQuestToPool)--[[/APR_DIAG]]
 
 local function GetQuestProgressPercentSafe(questID)
     if not questID or not GetQuestProgressBarPercent then
         return nil
     end
 
-    local ok, percent = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetQuestProgressBarPercent, questID)
+    local ok, percent = --[[APR_DIAG]]
+        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetQuestProgressBarPercent, questID)
     if not ok then
         return nil
     end
@@ -155,7 +181,9 @@ local function GetQuestProgressPercentSafe(questID)
     end
 
     return math.floor(numeric)
-end--[[APR_DIAG]]; GetQuestProgressPercentSafe = APRTrace("APR-Core/utils/QuestUtils.lua:142:GetQuestProgressPercentSafe#10", GetQuestProgressPercentSafe)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+GetQuestProgressPercentSafe =
+    APRTrace("APR-Core/utils/QuestUtils.lua:142:GetQuestProgressPercentSafe#10", GetQuestProgressPercentSafe)--[[/APR_DIAG]]
 
 function APR:ResetQuestPool()
     self.QuestPool = {
@@ -164,7 +192,8 @@ function APR:ResetQuestPool()
         stepIndex = nil,
         lookahead = nil,
     }
-end--[[APR_DIAG]]; APR.ResetQuestPool = APRTrace("APR-Core/utils/QuestUtils.lua:160:APR:ResetQuestPool#11", APR.ResetQuestPool)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.ResetQuestPool = APRTrace("APR-Core/utils/QuestUtils.lua:160:APR:ResetQuestPool#11", APR.ResetQuestPool)--[[/APR_DIAG]]
 
 --- Builds a quest pool for pickup based on the specified step index and lookahead distance.
 ---
@@ -206,7 +235,9 @@ function APR:BuildQuestPoolForPickup(stepIndex, lookahead)
 
     self.QuestPool = pool
     return pool
-end--[[APR_DIAG]]; APR.BuildQuestPoolForPickup = APRTrace("APR-Core/utils/QuestUtils.lua:175:APR:BuildQuestPoolForPickup#12", APR.BuildQuestPoolForPickup)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.BuildQuestPoolForPickup =
+    APRTrace("APR-Core/utils/QuestUtils.lua:175:APR:BuildQuestPoolForPickup#12", APR.BuildQuestPoolForPickup)--[[/APR_DIAG]]
 
 --- Ensures that the quest pool is initialized and ready for use.
 --- Initializes the quest pool if it hasn't been created yet, or validates
@@ -241,7 +272,8 @@ function APR:EnsureQuestPool()
     end
 
     return pool
-end--[[APR_DIAG]]; APR.EnsureQuestPool = APRTrace("APR-Core/utils/QuestUtils.lua:218:APR:EnsureQuestPool#13", APR.EnsureQuestPool)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.EnsureQuestPool = APRTrace("APR-Core/utils/QuestUtils.lua:218:APR:EnsureQuestPool#13", APR.EnsureQuestPool)--[[/APR_DIAG]]
 
 --- Determines if a quest is part of a quest pool.
 --- @param questID number The ID of the quest to check
@@ -252,7 +284,8 @@ function APR:IsQuestInPool(questID)
         return false
     end
     return self:Contains(pool.ids, questID)
-end--[[APR_DIAG]]; APR.IsQuestInPool = APRTrace("APR-Core/utils/QuestUtils.lua:249:APR:IsQuestInPool#14", APR.IsQuestInPool)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.IsQuestInPool = APRTrace("APR-Core/utils/QuestUtils.lua:249:APR:IsQuestInPool#14", APR.IsQuestInPool)--[[/APR_DIAG]]
 
 --- Check if at least one quest in the list is completed on this character.
 -- This allows step handlers to gate progress on any-quest-complete conditions.
@@ -267,7 +300,9 @@ function APR:IsOneOfQuestsCompleted(questIds)
     end
 
     return false
-end--[[APR_DIAG]]; APR.IsOneOfQuestsCompleted = APRTrace("APR-Core/utils/QuestUtils.lua:259:APR:IsOneOfQuestsCompleted#15", APR.IsOneOfQuestsCompleted)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.IsOneOfQuestsCompleted =
+    APRTrace("APR-Core/utils/QuestUtils.lua:259:APR:IsOneOfQuestsCompleted#15", APR.IsOneOfQuestsCompleted)--[[/APR_DIAG]]
 
 --- Check that every quest in the list is completed on this character.
 -- Used for strict gating when multiple prerequisites must be met.
@@ -282,7 +317,8 @@ function APR:IsQuestsCompleted(questIds)
     end
 
     return true
-end--[[APR_DIAG]]; APR.IsQuestsCompleted = APRTrace("APR-Core/utils/QuestUtils.lua:274:APR:IsQuestsCompleted#16", APR.IsQuestsCompleted)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.IsQuestsCompleted = APRTrace("APR-Core/utils/QuestUtils.lua:274:APR:IsQuestsCompleted#16", APR.IsQuestsCompleted)--[[/APR_DIAG]]
 
 --- Check if at least one quest is completed on the account (cross-character).
 function APR:IsOneOfQuestsCompletedOnAccount(questIds)
@@ -296,7 +332,11 @@ function APR:IsOneOfQuestsCompletedOnAccount(questIds)
     end
 
     return false
-end--[[APR_DIAG]]; APR.IsOneOfQuestsCompletedOnAccount = APRTrace("APR-Core/utils/QuestUtils.lua:288:APR:IsOneOfQuestsCompletedOnAccount#17", APR.IsOneOfQuestsCompletedOnAccount)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.IsOneOfQuestsCompletedOnAccount = APRTrace(
+    "APR-Core/utils/QuestUtils.lua:288:APR:IsOneOfQuestsCompletedOnAccount#17",
+    APR.IsOneOfQuestsCompletedOnAccount
+)--[[/APR_DIAG]]
 
 --- Check that every quest is completed on the account (cross-character check).
 function APR:IsQuestsCompletedOnAccount(questIds)
@@ -310,7 +350,9 @@ function APR:IsQuestsCompletedOnAccount(questIds)
     end
 
     return true
-end--[[APR_DIAG]]; APR.IsQuestsCompletedOnAccount = APRTrace("APR-Core/utils/QuestUtils.lua:302:APR:IsQuestsCompletedOnAccount#18", APR.IsQuestsCompletedOnAccount)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.IsQuestsCompletedOnAccount =
+    APRTrace("APR-Core/utils/QuestUtils.lua:302:APR:IsQuestsCompletedOnAccount#18", APR.IsQuestsCompletedOnAccount)--[[/APR_DIAG]]
 
 --- Split a composite quest string into quest ID and objective index (when available).
 function APR:SplitQuestAndObjective(questID)
@@ -328,7 +370,9 @@ function APR:SplitQuestAndObjective(questID)
         return tonumber(id), tonumber(objective)
     end
     return tonumber(questIDText), nil
-end--[[APR_DIAG]]; APR.SplitQuestAndObjective = APRTrace("APR-Core/utils/QuestUtils.lua:316:APR:SplitQuestAndObjective#19", APR.SplitQuestAndObjective)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.SplitQuestAndObjective =
+    APRTrace("APR-Core/utils/QuestUtils.lua:316:APR:SplitQuestAndObjective#19", APR.SplitQuestAndObjective)--[[/APR_DIAG]]
 
 --- Notify the player that an interaction is not available yet.
 function APR:NotYet()
@@ -336,13 +380,15 @@ function APR:NotYet()
     APR:PrintInfo(message)
     local color = APR:GetTextColor("general", "warning")
     UIErrorsFrame:AddMessage(message, color[1], color[2], color[3], color[4], 5)
-end--[[APR_DIAG]]; APR.NotYet = APRTrace("APR-Core/utils/QuestUtils.lua:334:APR:NotYet#20", APR.NotYet)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.NotYet = APRTrace("APR-Core/utils/QuestUtils.lua:334:APR:NotYet#20", APR.NotYet)--[[/APR_DIAG]]
 
 --- Add a quest to the watch list and super-track it for clarity.
 function APR:TrackQuest(questID)
-    C_QuestLog.AddQuestWatch(questID)            -- add to the quest log
+    C_QuestLog.AddQuestWatch(questID) -- add to the quest log
     C_SuperTrack.SetSuperTrackedQuestID(questID) -- highlight the quest
-end--[[APR_DIAG]]; APR.TrackQuest = APRTrace("APR-Core/utils/QuestUtils.lua:342:APR:TrackQuest#21", APR.TrackQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.TrackQuest = APRTrace("APR-Core/utils/QuestUtils.lua:342:APR:TrackQuest#21", APR.TrackQuest)--[[/APR_DIAG]]
 
 --- Detect if the provided questID belongs to a campaign quest line.
 -- Uses C_CampaignInfo.IsCampaignQuest (works without quest in log) as primary,
@@ -361,7 +407,8 @@ function APR:IsCampaignQuest(questID)
     if not questIndex then return false end
     local questInfo = C_QuestLog.GetInfo(questIndex)
     return questInfo and questInfo.campaignID ~= nil
-end--[[APR_DIAG]]; APR.IsCampaignQuest = APRTrace("APR-Core/utils/QuestUtils.lua:350:APR:IsCampaignQuest#22", APR.IsCampaignQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.IsCampaignQuest = APRTrace("APR-Core/utils/QuestUtils.lua:350:APR:IsCampaignQuest#22", APR.IsCampaignQuest)--[[/APR_DIAG]]
 
 function APR:GetQuestStorylineInfo(questID)
     local questIDNum = tonumber(questID)
@@ -374,7 +421,9 @@ function APR:GetQuestStorylineInfo(questID)
         return lineInfo.questLineName, lineInfo.isAccountCompleted
     end
     return nil, nil
-end--[[APR_DIAG]]; APR.GetQuestStorylineInfo = APRTrace("APR-Core/utils/QuestUtils.lua:366:APR:GetQuestStorylineInfo#23", APR.GetQuestStorylineInfo)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetQuestStorylineInfo =
+    APRTrace("APR-Core/utils/QuestUtils.lua:366:APR:GetQuestStorylineInfo#23", APR.GetQuestStorylineInfo)--[[/APR_DIAG]]
 
 --- Determine if a step is a campaign quest step.
 --- Fast path: checks the explicit `IsCampaignQuest` flag on the step.
@@ -396,7 +445,9 @@ function APR:IsStepCampaignQuest(step)
     end
 
     return false
-end--[[APR_DIAG]]; APR.IsStepCampaignQuest = APRTrace("APR-Core/utils/QuestUtils.lua:384:APR:IsStepCampaignQuest#24", APR.IsStepCampaignQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.IsStepCampaignQuest =
+    APRTrace("APR-Core/utils/QuestUtils.lua:384:APR:IsStepCampaignQuest#24", APR.IsStepCampaignQuest)--[[/APR_DIAG]]
 
 --- Remove a quest from the log.
 -- This function wraps the abandonment flow to keep call sites concise.
@@ -405,7 +456,8 @@ function APR:LeaveQuest(questId)
     C_QuestLog.SetSelectedQuest(questId)
     C_QuestLog.SetAbandonQuest()
     C_QuestLog.AbandonQuest()
-end--[[APR_DIAG]]; APR.LeaveQuest = APRTrace("APR-Core/utils/QuestUtils.lua:403:APR:LeaveQuest#25", APR.LeaveQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.LeaveQuest = APRTrace("APR-Core/utils/QuestUtils.lua:403:APR:LeaveQuest#25", APR.LeaveQuest)--[[/APR_DIAG]]
 
 --- Returns quest/objective ids for the active step so consumers can branch on type.
 function APR:GetQuestAndStepIds()
@@ -422,7 +474,8 @@ function APR:GetQuestAndStepIds()
     elseif step.Done then
         return step.Done, "Done"
     end
-end--[[APR_DIAG]]; APR.GetQuestAndStepIds = APRTrace("APR-Core/utils/QuestUtils.lua:411:APR:GetQuestAndStepIds#26", APR.GetQuestAndStepIds)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetQuestAndStepIds = APRTrace("APR-Core/utils/QuestUtils.lua:411:APR:GetQuestAndStepIds#26", APR.GetQuestAndStepIds)--[[/APR_DIAG]]
 
 --- Helper to detect whether a set of gossip options has all been validated.
 function APR:hasEveryGossipsCompleted(tbl)
@@ -436,7 +489,9 @@ function APR:hasEveryGossipsCompleted(tbl)
         end
     end
     return isCompleted
-end--[[APR_DIAG]]; APR.hasEveryGossipsCompleted = APRTrace("APR-Core/utils/QuestUtils.lua:428:APR:hasEveryGossipsCompleted#27", APR.hasEveryGossipsCompleted)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.hasEveryGossipsCompleted =
+    APRTrace("APR-Core/utils/QuestUtils.lua:428:APR:hasEveryGossipsCompleted#27", APR.hasEveryGossipsCompleted)--[[/APR_DIAG]]
 
 --- Queue a missing quest message to show the player they need to pick it up.
 function APR:MissingQuest(questId, objectiveId)
@@ -452,14 +507,16 @@ function APR:MissingQuest(questId, objectiveId)
         questTextToAdd = string.format(L["ERROR_MISSING_Q"], questLabel)
     end
     APR.currentStep:AddQuestSteps(questId, questTextToAdd, objectiveId, false, false)
-end--[[APR_DIAG]]; APR.MissingQuest = APRTrace("APR-Core/utils/QuestUtils.lua:442:APR:MissingQuest#28", APR.MissingQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.MissingQuest = APRTrace("APR-Core/utils/QuestUtils.lua:442:APR:MissingQuest#28", APR.MissingQuest)--[[/APR_DIAG]]
 
 --- Reset the local missing quest cache.
 function APR:ResetMissingQuests()
     for k in pairs(self.MissingQuests) do
         self.MissingQuests[k] = nil
     end
-end--[[APR_DIAG]]; APR.ResetMissingQuests = APRTrace("APR-Core/utils/QuestUtils.lua:458:APR:ResetMissingQuests#29", APR.ResetMissingQuests)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.ResetMissingQuests = APRTrace("APR-Core/utils/QuestUtils.lua:458:APR:ResetMissingQuests#29", APR.ResetMissingQuests)--[[/APR_DIAG]]
 
 --- Only log a missing quest once to avoid chat spam.
 function APR:HandleMissingQuest(questId, objectiveId)
@@ -467,7 +524,8 @@ function APR:HandleMissingQuest(questId, objectiveId)
         self:MissingQuest(questId, objectiveId)
         self.MissingQuests[questId] = true
     end
-end--[[APR_DIAG]]; APR.HandleMissingQuest = APRTrace("APR-Core/utils/QuestUtils.lua:465:APR:HandleMissingQuest#30", APR.HandleMissingQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.HandleMissingQuest = APRTrace("APR-Core/utils/QuestUtils.lua:465:APR:HandleMissingQuest#30", APR.HandleMissingQuest)--[[/APR_DIAG]]
 
 --- Step through QpartPart steps and advance when the objective text matches expected triggers.
 function APR:UpdateQpartPart()
@@ -489,7 +547,8 @@ function APR:UpdateQpartPart()
             end
         end
     end
-end--[[APR_DIAG]]; APR.UpdateQpartPart = APRTrace("APR-Core/utils/QuestUtils.lua:473:APR:UpdateQpartPart#31", APR.UpdateQpartPart)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.UpdateQpartPart = APRTrace("APR-Core/utils/QuestUtils.lua:473:APR:UpdateQpartPart#31", APR.UpdateQpartPart)--[[/APR_DIAG]]
 
 --- Advance QpartPart steps when the quest text from the UI matches trigger values.
 --- @return boolean true if the step was advanced, false otherwise.
@@ -499,7 +558,9 @@ function APR:UpdateQpartPartWithQuestText(step, questText, questID)
         return true
     end
     return false
-end--[[APR_DIAG]]; APR.UpdateQpartPartWithQuestText = APRTrace("APR-Core/utils/QuestUtils.lua:496:APR:UpdateQpartPartWithQuestText#32", APR.UpdateQpartPartWithQuestText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.UpdateQpartPartWithQuestText =
+    APRTrace("APR-Core/utils/QuestUtils.lua:496:APR:UpdateQpartPartWithQuestText#32", APR.UpdateQpartPartWithQuestText)--[[/APR_DIAG]]
 
 --- Checks if a step defines one or more TrigText keys.
 -- Supports TrigText, TrigText1, TrigText2, etc.
@@ -517,7 +578,8 @@ function APR:StepHasTrigText(step)
     end
 
     return false
-end--[[APR_DIAG]]; APR.StepHasTrigText = APRTrace("APR-Core/utils/QuestUtils.lua:508:APR:StepHasTrigText#33", APR.StepHasTrigText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.StepHasTrigText = APRTrace("APR-Core/utils/QuestUtils.lua:508:APR:StepHasTrigText#33", APR.StepHasTrigText)--[[/APR_DIAG]]
 
 --- Compare a single TrigText value against an objective text.
 -- Supports percentage thresholds ("50%"), ratio comparisons ("2/6"), and plain substring matching.
@@ -563,7 +625,8 @@ function APR:TrigTextValueMatch(trigValue, objectiveText, currentPercent)
 
     -- Plain substring match
     return self:ContainsText(objectiveText, trigValue)
-end--[[APR_DIAG]]; APR.TrigTextValueMatch = APRTrace("APR-Core/utils/QuestUtils.lua:528:APR:TrigTextValueMatch#34", APR.TrigTextValueMatch)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.TrigTextValueMatch = APRTrace("APR-Core/utils/QuestUtils.lua:528:APR:TrigTextValueMatch#34", APR.TrigTextValueMatch)--[[/APR_DIAG]]
 
 --- Checks if the provided objective text matches the trigger text for a specific quest part.
 -- @param step The current step or stage in the quest sequence.
@@ -584,7 +647,9 @@ function APR:QpartPart_TrigTextMatch(step, questID, objectiveText)
     end
 
     return false
-end--[[APR_DIAG]]; APR.QpartPart_TrigTextMatch = APRTrace("APR-Core/utils/QuestUtils.lua:573:APR:QpartPart_TrigTextMatch#35", APR.QpartPart_TrigTextMatch)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.QpartPart_TrigTextMatch =
+    APRTrace("APR-Core/utils/QuestUtils.lua:573:APR:QpartPart_TrigTextMatch#35", APR.QpartPart_TrigTextMatch)--[[/APR_DIAG]]
 
 --- Returns scenario criteria text with progress when available.
 -- Example output: "Collect Crystals (2/6)" when quantityString exists.
@@ -611,7 +676,11 @@ function APR:GetScenarioCriteriaProgressText(scenario)
     end
 
     return description
-end--[[APR_DIAG]]; APR.GetScenarioCriteriaProgressText = APRTrace("APR-Core/utils/QuestUtils.lua:593:APR:GetScenarioCriteriaProgressText#36", APR.GetScenarioCriteriaProgressText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetScenarioCriteriaProgressText = APRTrace(
+    "APR-Core/utils/QuestUtils.lua:593:APR:GetScenarioCriteriaProgressText#36",
+    APR.GetScenarioCriteriaProgressText
+)--[[/APR_DIAG]]
 
 --- Checks TrigText conditions for a scenario step using live scenario criteria data.
 -- Supports exact/substring text, X/Y ratios, and percentage thresholds.
@@ -674,7 +743,9 @@ function APR:IsScenarioTrigTextMatched(step, scenario)
     end
 
     return false
-end--[[APR_DIAG]]; APR.IsScenarioTrigTextMatched = APRTrace("APR-Core/utils/QuestUtils.lua:621:APR:IsScenarioTrigTextMatched#37", APR.IsScenarioTrigTextMatched)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.IsScenarioTrigTextMatched =
+    APRTrace("APR-Core/utils/QuestUtils.lua:621:APR:IsScenarioTrigTextMatched#37", APR.IsScenarioTrigTextMatched)--[[/APR_DIAG]]
 
 -- QuestCache owns this synchronous scope. Never revive it after observing a
 -- different context, even if the caller later restores the old identities.
@@ -683,14 +754,18 @@ local function IsQuestObjectiveSnapshotCurrent(self, snapshot)
     local player, route = self.PlayerID, self.ActiveRoute
     local progress = APRData and player and APRData[player]
     local current = self._questObjectiveSnapshot == snapshot
-        and snapshot.player == player and snapshot.quests == self.ActiveQuests
-        and snapshot.route == route and snapshot.progress == progress
+        and snapshot.player == player
+        and snapshot.quests == self.ActiveQuests
+        and snapshot.route == route
+        and snapshot.progress == progress
         and snapshot.index == (progress and route and progress[route])
         and snapshot.revision == (self.stepRevision or 0)
         and snapshot.definition == (route and self.RouteQuestStepList and self.RouteQuestStepList[route])
     if not current then snapshot.invalid = true end
     return current
-end--[[APR_DIAG]]; IsQuestObjectiveSnapshotCurrent = APRTrace("APR-Core/utils/QuestUtils.lua:681:IsQuestObjectiveSnapshotCurrent#38", IsQuestObjectiveSnapshotCurrent)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+IsQuestObjectiveSnapshotCurrent =
+    APRTrace("APR-Core/utils/QuestUtils.lua:681:IsQuestObjectiveSnapshotCurrent#38", IsQuestObjectiveSnapshotCurrent)--[[/APR_DIAG]]
 
 local function ReadQuestObjectiveSnapshot(self, questID)
     local snapshot = self._questObjectiveSnapshot
@@ -707,14 +782,21 @@ local function ReadQuestObjectiveSnapshot(self, questID)
         snapshot[questID] = objectives or false
     end
     return objectives
-end--[[APR_DIAG]]; ReadQuestObjectiveSnapshot = APRTrace("APR-Core/utils/QuestUtils.lua:695:ReadQuestObjectiveSnapshot#39", ReadQuestObjectiveSnapshot)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+ReadQuestObjectiveSnapshot =
+    APRTrace("APR-Core/utils/QuestUtils.lua:695:ReadQuestObjectiveSnapshot#39", ReadQuestObjectiveSnapshot)--[[/APR_DIAG]]
 
 --- Returns a percentage only for a progress-bar objective in an active quest.
 function APR:GetQuestObjectiveProgressPercent(questId, objectiveId)
     questId, objectiveId = tonumber(questId), tonumber(objectiveId)
     local quest = questId and self.ActiveQuests and self.ActiveQuests[questId]
-    if not quest or not quest.objectives or not quest.objectives[objectiveId]
-        or not C_QuestLog or not C_QuestLog.GetQuestObjectives then
+    if
+        not quest
+        or not quest.objectives
+        or not quest.objectives[objectiveId]
+        or not C_QuestLog
+        or not C_QuestLog.GetQuestObjectives
+    then
         IsQuestObjectiveSnapshotCurrent(self, self._questObjectiveSnapshot)
         return nil
     end
@@ -725,7 +807,11 @@ function APR:GetQuestObjectiveProgressPercent(questId, objectiveId)
 
     local percent = GetQuestProgressPercentSafe(questId)
     if percent then return math.max(0, math.min(100, percent)) end
-end--[[APR_DIAG]]; APR.GetQuestObjectiveProgressPercent = APRTrace("APR-Core/utils/QuestUtils.lua:713:APR:GetQuestObjectiveProgressPercent#40", APR.GetQuestObjectiveProgressPercent)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetQuestObjectiveProgressPercent = APRTrace(
+    "APR-Core/utils/QuestUtils.lua:713:APR:GetQuestObjectiveProgressPercent#40",
+    APR.GetQuestObjectiveProgressPercent
+)--[[/APR_DIAG]]
 
 --- Retrieves the quest text associated with a specific progress bar objective.
 -- @param questId number The unique identifier of the quest.
@@ -764,4 +850,6 @@ function APR:GetQuestTextForProgressBar(questId, objectiveId)
         end
     end
     return questText
-end--[[APR_DIAG]]; APR.GetQuestTextForProgressBar = APRTrace("APR-Core/utils/QuestUtils.lua:734:APR:GetQuestTextForProgressBar#41", APR.GetQuestTextForProgressBar)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetQuestTextForProgressBar =
+    APRTrace("APR-Core/utils/QuestUtils.lua:734:APR:GetQuestTextForProgressBar#41", APR.GetQuestTextForProgressBar)--[[/APR_DIAG]]

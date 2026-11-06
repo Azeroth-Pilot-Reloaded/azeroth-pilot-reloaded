@@ -1,12 +1,16 @@
 -- Collection goals follow the live profession rank, including zero remaining work.
 local rank, carried, advanced = 7, 0, 0
 local L = { LOOT_ITEM = "Collect %s" }
-function LibStub() return { GetLocale = function() return L end } end
+function LibStub()
+    return { GetLocale = function() return L end }
+end
 UNKNOWN, format = "Unknown", string.format
-C_SkillInfo = { GetSkillLineInfoByID = function(id)
-    assert(id == 185)
-    return { rank = rank, maxRank = 75 }
-end }
+C_SkillInfo = {
+    GetSkillLineInfoByID = function(id)
+        assert(id == 185)
+        return { rank = rank, maxRank = 75 }
+    end,
+}
 C_Item = { GetItemCount = function() return carried end, GetItemInfo = function() return "Reagent" end }
 C_QuestLog = { IsQuestFlaggedCompleted = function() return false end }
 APR = { PlayerID = "player", stepHandlers = {}, Buff = { RemoveAllBuffIcon = function() end } }
@@ -38,4 +42,6 @@ item.quantity = 4
 assert(APR:GetCollectionRequiredQuantity(item) == 4, "An explicit quantity caps the skill requirement")
 assert(APR:GetCollectionRequiredQuantity({ itemID = 769 }) == 1)
 assert(APR:GetCollectionRequiredQuantity({ itemID = 769, quantity = 5 }) == 5)
-print("Skill collection: live rank, decreasing quantities, completion without reagents, caps and current-step rendering passed")
+print(
+    "Skill collection: live rank, decreasing quantities, completion without reagents, caps and current-step rendering passed"
+)

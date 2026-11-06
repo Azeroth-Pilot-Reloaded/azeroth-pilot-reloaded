@@ -17,17 +17,24 @@ local function IsFinite(value)
 end
 
 local function IsPosition(position)
-    return type(position) == "table" and IsFinite(position.x) and IsFinite(position.y)
-        and IsFinite(position.instanceID)
+    return type(position) == "table" and IsFinite(position.x) and IsFinite(position.y) and IsFinite(position.instanceID)
 end
 
 local function PositionKey(position)
     -- Map identity matters even where two map layers share world coordinates:
     -- an item may be usable on one layer and forbidden on another.
-    return string.format("%s:%.5f:%.5f:%s:%s:%s:%s:%s:%s", tostring(position.instanceID), position.x, position.y,
-        tostring(position.uiMapID or ""), tostring(position.region or ""),
-        tostring(position.accessKey or ""), tostring(position.noAutoconnect or false),
-        tostring(position.z or 0), tostring(position.floor or ""))
+    return string.format(
+        "%s:%.5f:%.5f:%s:%s:%s:%s:%s:%s",
+        tostring(position.instanceID),
+        position.x,
+        position.y,
+        tostring(position.uiMapID or ""),
+        tostring(position.region or ""),
+        tostring(position.accessKey or ""),
+        tostring(position.noAutoconnect or false),
+        tostring(position.z or 0),
+        tostring(position.floor or "")
+    )
 end
 
 local function Earlier(left, right)
@@ -63,12 +70,20 @@ local function DominatesOne(candidate, left, right, futureResources)
         candidate.resourceCursor, candidate.resourceCount = nil, nil
         return false
     end
-    if left.used == right.used then candidate.resourceCursor, candidate.resourceCount = nil, nil; return true end
+    if left.used == right.used then
+        candidate.resourceCursor, candidate.resourceCount = nil, nil
+        return true
+    end
     -- Origin-only cooldowns cannot constrain a later leg. An empty relevance
     -- set makes resource comparisons unnecessary, even with distinct tables.
-    if futureResources == EMPTY then candidate.resourceCursor, candidate.resourceCount = nil, nil; return true end
+    if futureResources == EMPTY then
+        candidate.resourceCursor, candidate.resourceCount = nil, nil
+        return true
+    end
     local key, count = candidate.resourceCursor, candidate.resourceCount
-    if key == nil then key, count = next(left.used) end
+    if key == nil then
+        key, count = next(left.used)
+    end
     if key == nil then return true end
     if (not futureResources or futureResources[key]) and count > (right.used[key] or 0) then
         candidate.resourceCursor, candidate.resourceCount = nil, nil
@@ -84,7 +99,9 @@ end
 
 local function CopyEdge(edge, from, to)
     local copy = {}
-    for key, value in pairs(edge) do copy[key] = value end
+    for key, value in pairs(edge) do
+        copy[key] = value
+    end
     copy.from, copy.to = from, to
     copy.mandatory = edge.mandatory == true or edge.kind ~= "walk"
     return copy
@@ -122,15 +139,24 @@ function Search:GetWalkingBucket(position, create)
         if region == nil then return EMPTY end
         local regions = bucket
         bucket = regions[region]
-        if not bucket and create then bucket = {}; regions[region] = bucket end
+        if not bucket and create then
+            bucket = {}
+            regions[region] = bucket
+        end
         if not bucket then return EMPTY end
         local access = position.accessKey or false
         local entries = bucket[access]
-        if not entries and create then entries = {}; bucket[access] = entries end
+        if not entries and create then
+            entries = {}
+            bucket[access] = entries
+        end
         if not entries then return EMPTY end
         local floor = position.floor or false
         local floors = entries[floor]
-        if not floors and create then floors = {}; entries[floor] = floors end
+        if not floors and create then
+            floors = {}
+            entries[floor] = floors
+        end
         return floors or EMPTY
     end
     return bucket
@@ -174,11 +200,18 @@ function Search:AddNode(position)
 end
 
 function Search:IngestEdge(edge)
-    if type(edge) ~= "table" or not IsPosition(edge.from) or not IsPosition(edge.to)
-        or not IsFinite(edge.seconds) or edge.seconds < 0
+    if
+        type(edge) ~= "table"
+        or not IsPosition(edge.from)
+        or not IsPosition(edge.to)
+        or not IsFinite(edge.seconds)
+        or edge.seconds < 0
         or (edge.copper ~= nil and (not IsFinite(edge.copper) or edge.copper < 0))
         or (edge.resources ~= nil and type(edge.resources) ~= "table")
-        or edge.condition == false then return end
+        or edge.condition == false
+    then
+        return
+    end
     local tooSlow = self.directSeconds and edge.seconds > self.directSeconds
     if tooSlow and self.walkingIsTransitive and not self.keepActionOrigins then
         -- Keep references until every action has been read. A later action
@@ -207,11 +240,16 @@ function Search:IngestEdge(edge)
         end
     else
         local outgoing = self.outgoing[from]
-        if not outgoing then outgoing = {}; self.outgoing[from] = outgoing end
+        if not outgoing then
+            outgoing = {}
+            self.outgoing[from] = outgoing
+        end
         outgoing[#outgoing + 1] = link
     end
-    if (not edge.sourceFree or not link.allowedAtStart)
-        and (edge.resourceKey ~= nil or next(edge.resources or EMPTY) ~= nil) then
+    if
+        (not edge.sourceFree or not link.allowedAtStart)
+        and (edge.resourceKey ~= nil or next(edge.resources or EMPTY) ~= nil)
+    then
         self.resourceEdges[#self.resourceEdges + 1] = link.edge
     end
     self.ingestedEdges = self.ingestedEdges + 1
@@ -220,10 +258,19 @@ end
 function Search:PrepareDirectWalk()
     self:PrepareNodeSpeed(self.startNode)
     self:PrepareNodeSpeed(self.goalNode)
-    if self.startNode == self.goalNode then self.directSeconds = 0; return end
+    if self.startNode == self.goalNode then
+        self.directSeconds = 0
+        return
+    end
     local from, to = self.nodes[self.startNode], self.nodes[self.goalNode]
-    if from.instanceID ~= to.instanceID or from.noAutoconnect or to.noAutoconnect
-        or (self.defaultWalking and not DefaultCanWalk(from, to)) then return end
+    if
+        from.instanceID ~= to.instanceID
+        or from.noAutoconnect
+        or to.noAutoconnect
+        or (self.defaultWalking and not DefaultCanWalk(from, to))
+    then
+        return
+    end
 
     -- A permitted direct walk is a complete, free route. Its duration bounds
     -- useful alternatives, but a rejected walk proves nothing about shortcuts.
@@ -254,7 +301,10 @@ function Search:LoadOne()
         if edge then
             local key = next(edge.resources or EMPTY, self.resourceCursor)
             self.resourceCursor = key
-            if key ~= nil then self.futureResources[key] = true; return end
+            if key ~= nil then
+                self.futureResources[key] = true
+                return
+            end
             if edge.resourceKey ~= nil then self.futureResources[edge.resourceKey] = true end
             self.resourceIndex = self.resourceIndex + 1
             return
@@ -323,17 +373,30 @@ function Search:QueueCandidate(node, previous, edge, walkSeconds)
     local requirements = edge and edge.resources or EMPTY
     local consumes = next(requirements) ~= nil or (edge and edge.resourceKey ~= nil)
     self.candidate = {
-        node = node, previous = previous, edge = edge, walkSeconds = walkSeconds,
-        copper = copper, seconds = seconds,
-        used = consumes and {} or used, previousUsage = used, requirements = requirements,
-        stage = consumes and "copy_resources" or "dominance", index = 1,
+        node = node,
+        previous = previous,
+        edge = edge,
+        walkSeconds = walkSeconds,
+        copper = copper,
+        seconds = seconds,
+        used = consumes and {} or used,
+        previousUsage = used,
+        requirements = requirements,
+        stage = consumes and "copy_resources" or "dominance",
+        index = 1,
     }
 end
 
 function Search:AddResource(candidate, key, count)
-    if not IsFinite(count) or count < 0 then self.candidate = nil; return end
+    if not IsFinite(count) or count < 0 then
+        self.candidate = nil
+        return
+    end
     local total = (candidate.used[key] or 0) + count
-    if total > (self.resources[key] or 0) then self.candidate = nil; return end
+    if total > (self.resources[key] or 0) then
+        self.candidate = nil
+        return
+    end
     if total > 0 then candidate.used[key] = total end
 end
 
@@ -342,18 +405,27 @@ function Search:AcceptCandidate(candidate)
     -- Resource-free travel shares an immutable usage table. Allocate a new one
     -- only for an edge that actually consumes something.
     self.serial = self.serial + 1
-    local label = { node = candidate.node, previous = previous, edge = edge, used = candidate.used,
-        copper = candidate.copper, seconds = candidate.seconds, serial = self.serial,
-        walkSeconds = candidate.walkSeconds }
+    local label = {
+        node = candidate.node,
+        previous = previous,
+        edge = edge,
+        used = candidate.used,
+        copper = candidate.copper,
+        seconds = candidate.seconds,
+        serial = self.serial,
+        walkSeconds = candidate.walkSeconds,
+    }
     local labels = self.labels[candidate.node]
-    if not labels then labels = {}; self.labels[candidate.node] = labels end
+    if not labels then
+        labels = {}
+        self.labels[candidate.node] = labels
+    end
     labels[#labels + 1] = label
     Push(self.heap, label)
     -- Only a fully validated arrival proves a complete feasible itinerary.
     -- Nonnegative costs cannot improve it from a strictly slower prefix; ties
     -- remain eligible so Pareto/resource checks keep their existing order.
-    if candidate.node == self.goalNode
-        and (not self.bestGoalSeconds or label.seconds < self.bestGoalSeconds) then
+    if candidate.node == self.goalNode and (not self.bestGoalSeconds or label.seconds < self.bestGoalSeconds) then
         self.bestGoalSeconds = label.seconds
     end
     self.candidate = nil
@@ -366,14 +438,20 @@ function Search:CheckCandidate()
     if candidate.stage == "copy_resources" then
         local key, count = next(candidate.previousUsage, candidate.cursor)
         candidate.cursor = key
-        if key ~= nil then candidate.used[key] = count; return end
+        if key ~= nil then
+            candidate.used[key] = count
+            return
+        end
         candidate.stage = "edge_resources"
         return
     end
     if candidate.stage == "edge_resources" then
         local key, count = next(candidate.requirements, candidate.cursor)
         candidate.cursor = key
-        if key ~= nil then self:AddResource(candidate, key, count); return end
+        if key ~= nil then
+            self:AddResource(candidate, key, count)
+            return
+        end
         candidate.stage = "resource_key"
         return
     end
@@ -386,12 +464,17 @@ function Search:CheckCandidate()
 
     local labels = self.labels[candidate.node] or EMPTY
     local other = labels[candidate.index]
-    if not other then self:AcceptCandidate(candidate); return end
+    if not other then
+        self:AcceptCandidate(candidate)
+        return
+    end
     if not other.stale then
         -- Scalar rejection needs no continuation. Keep ordinary incomparable
         -- arrivals on the same direct path as before the resource slicing.
-        if not candidate.reverseDominance
-            and (other.seconds > candidate.seconds or other.copper > candidate.copper) then
+        if
+            not candidate.reverseDominance
+            and (other.seconds > candidate.seconds or other.copper > candidate.copper)
+        then
             candidate.reverseDominance = true
         end
         local dominated
@@ -402,12 +485,18 @@ function Search:CheckCandidate()
         end
         if dominated == nil then return end
         if not candidate.reverseDominance then
-            if dominated then self.candidate = nil
-            else candidate.reverseDominance = true end
+            if dominated then
+                self.candidate = nil
+            else
+                candidate.reverseDominance = true
+            end
             return
         end
         candidate.reverseDominance = nil
-        if not dominated then candidate.index = candidate.index + 1; return end
+        if not dominated then
+            candidate.index = candidate.index + 1
+            return
+        end
     end
     other.stale = true
     -- Frontier order is irrelevant. Swap removal avoids retaining stale
@@ -456,7 +545,10 @@ function Search:ExpandOne()
     pending.index = index + 1
     if pending.stage == "outgoing" then
         local link = (self.outgoing[label.node] or EMPTY)[index]
-        if link then self:QueueCandidate(link.target, label, link.edge); return end
+        if link then
+            self:QueueCandidate(link.target, label, link.edge)
+            return
+        end
         pending.stage, pending.index = "actions", 1
     elseif pending.stage == "actions" then
         local atStart = label.node == self.startNode
@@ -482,8 +574,12 @@ function Search:ExpandOne()
         -- of the walking clique. Mixed speeds still need all links. If a walk
         -- loses its origin's Z, only destinations with Z can improve: the
         -- intermediate point suppresses their otherwise nonzero vertical cost.
-        if label.walkSeconds ~= nil and self.walkingIsTransitive and not pending.walking.mixedSpeed
-            and (self.walkSpeedAt or not self.walkSpeedFor) then
+        if
+            label.walkSeconds ~= nil
+            and self.walkingIsTransitive
+            and not pending.walking.mixedSpeed
+            and (self.walkSpeedAt or not self.walkSpeedFor)
+        then
             if IsFinite(self.nodes[label.previous.node].z) and not IsFinite(self.nodes[label.node].z) then
                 pending.walking = pending.walking.withZ or EMPTY
                 self.walkingExpansionsNarrowed = self.walkingExpansionsNarrowed + 1
@@ -496,7 +592,10 @@ function Search:ExpandOne()
         if #pending.walking > 0 then pending.walkCache = self:GetWalkingCache(label.node) end
     else
         local target = pending.walking[index]
-        if target then self:CheckWalk(pending, target); return end
+        if target then
+            self:CheckWalk(pending, target)
+            return
+        end
         self.pending = nil
     end
 end
@@ -507,9 +606,15 @@ function Search:AssembleOne()
         local label, edge = assembly.label, assembly.label.edge
         local previous = label.previous
         if label.walkSeconds ~= nil then
-            edge = { id = "walk:" .. previous.node .. ":" .. label.node, kind = "walk",
-                from = self.nodes[previous.node], to = self.nodes[label.node],
-                seconds = label.walkSeconds, copper = 0, mandatory = false }
+            edge = {
+                id = "walk:" .. previous.node .. ":" .. label.node,
+                kind = "walk",
+                from = self.nodes[previous.node],
+                to = self.nodes[label.node],
+                seconds = label.walkSeconds,
+                copper = 0,
+                mandatory = false,
+            }
         elseif edge.sourceFree then
             edge = CopyEdge(edge, self.nodes[previous.node], self.nodes[label.node])
         else
@@ -526,18 +631,37 @@ function Search:AssembleOne()
         assembly.index = index + 1
         return
     end
-    self.result = { segments = segments, totalSeconds = self.winner.seconds,
-        totalCopper = self.winner.copper, resourcesUsed = self.winner.used }
+    self.result = {
+        segments = segments,
+        totalSeconds = self.winner.seconds,
+        totalCopper = self.winner.copper,
+        resourcesUsed = self.winner.used,
+    }
     self.assembly, self.status = nil, "ready"
 end
 
 function Search:AdvanceOne()
-    if self.phase ~= "search" then self:LoadOne(); return end
-    if self.assembly then self:AssembleOne(); return end
-    if self.candidate then self:CheckCandidate(); return end
-    if self.pending then self:ExpandOne(); return end
+    if self.phase ~= "search" then
+        self:LoadOne()
+        return
+    end
+    if self.assembly then
+        self:AssembleOne()
+        return
+    end
+    if self.candidate then
+        self:CheckCandidate()
+        return
+    end
+    if self.pending then
+        self:ExpandOne()
+        return
+    end
     local label = Pop(self.heap)
-    if not label then self.status = "no_path"; return end
+    if not label then
+        self.status = "no_path"
+        return
+    end
     if label.stale then return end
     self.expansions = self.expansions + 1
     if label.node == self.goalNode then
@@ -583,19 +707,41 @@ function Search:GetResult() return self.result, self.status end
 function Engine:CreateSearch(request)
     request = type(request) == "table" and request or {}
     local search = setmetatable({
-        status = "planning", phase = "resources", nodes = {}, nodeKeys = {}, outgoing = {}, actions = {}, startActions = {},
+        status = "planning",
+        phase = "resources",
+        nodes = {},
+        nodeKeys = {},
+        outgoing = {},
+        actions = {},
+        startActions = {},
         resourceEdges = {},
-        labels = {}, heap = {}, serial = 0, expansions = 0, resources = {}, emptyUsage = {}, clock = request.clock,
+        labels = {},
+        heap = {},
+        serial = 0,
+        expansions = 0,
+        resources = {},
+        emptyUsage = {},
+        clock = request.clock,
         sourceResources = type(request.resources) == "table" and request.resources or EMPTY,
         sourceEdges = type(request.edges) == "table" and request.edges or EMPTY,
         sourceGroups = type(request.edgeGroups) == "table" and request.edgeGroups or EMPTY,
-        edgeGroup = 0, edgeIndex = 1, ingestedEdges = 0,
-        walkingByInstance = {}, walkingCache = {}, walkingCacheOrder = {}, walkingCacheCursor = 1,
-        walkChecks = 0, walkingCacheHits = 0, walkingExpansionsSkipped = 0, walkingExpansionsNarrowed = 0, walkingSpeeds = {},
+        edgeGroup = 0,
+        edgeIndex = 1,
+        ingestedEdges = 0,
+        walkingByInstance = {},
+        walkingCache = {},
+        walkingCacheOrder = {},
+        walkingCacheCursor = 1,
+        walkChecks = 0,
+        walkingCacheHits = 0,
+        walkingExpansionsSkipped = 0,
+        walkingExpansionsNarrowed = 0,
+        walkingSpeeds = {},
         defaultWalking = request.canWalk == nil,
         walkingIsTransitive = request.canWalk == nil or request.walkingIsTransitive == true,
         budget = IsFinite(request.budget) and math.max(0, request.budget) or 0,
-        walkSpeedFor = request.walkSpeedFor, walkSpeedAt = request.walkSpeedAt,
+        walkSpeedFor = request.walkSpeedFor,
+        walkSpeedAt = request.walkSpeedAt,
         walkSpeed = IsFinite(request.walkSpeed) and request.walkSpeed > 0 and request.walkSpeed or 7,
         canWalk = request.canWalk or DefaultCanWalk,
         walkingRegionFor = request.walkingRegionFor,

@@ -12,7 +12,8 @@ local function FactionPossible(requirements, faction)
         local possible = false
         for _, child in ipairs(requirements.any) do
             if FactionPossible(child, faction) then
-                possible = true; break
+                possible = true
+                break
             end
         end
         if not possible then return false end
@@ -20,9 +21,12 @@ local function FactionPossible(requirements, faction)
     local excluded = requirements.notCondition
     if excluded and excluded.faction then
         local factionOnly = true
-        for key in pairs(excluded) do if key ~= "faction" then
-                factionOnly = false; break
-            end end
+        for key in pairs(excluded) do
+            if key ~= "faction" then
+                factionOnly = false
+                break
+            end
+        end
         if factionOnly and excluded.faction == faction then return false end
     end
     return true
@@ -40,85 +44,135 @@ for _, profile in ipairs({ "retail", "forever" }) do
     local function inspect(requirements)
         for key, value in pairs(requirements or {}) do
             if key == "all" or key == "any" then
-                for _, child in ipairs(value) do inspect(child) end
+                for _, child in ipairs(value) do
+                    inspect(child)
+                end
             elseif key == "notCondition" then
                 inspect(value)
             else
-                local _, reason = data:CheckRequirements({ [key] = value },
-                    { faction = "Alliance", level = 90, class = "MAGE" })
-                assert(not reason, "A declared condition needs a runtime evaluator: " .. key .. " / " .. tostring(reason))
+                local _, reason = data:CheckRequirements(
+                    { [key] = value },
+                    { faction = "Alliance", level = 90, class = "MAGE" }
+                )
+                assert(
+                    not reason,
+                    "A declared condition needs a runtime evaluator: " .. key .. " / " .. tostring(reason)
+                )
             end
         end
     end
     local seen = {}
     for id, position in pairs(data:GetBindings()) do
         local areaID = position.areaID or id
-        assert(type(areaID) == "number" and areaID > 0 and areaID % 1 == 0,
-            "A bind candidate needs a positive client area ID: " .. tostring(id))
+        assert(
+            type(areaID) == "number" and areaID > 0 and areaID % 1 == 0,
+            "A bind candidate needs a positive client area ID: " .. tostring(id)
+        )
         assert(type(id) == "number" or (type(id) == "string" and id ~= ""), "Invalid bind candidate key")
         assert(position.space == "map" or position.space == "world", "Explicit bind coordinate space required")
         for _, axis in ipairs({ "x", "y" }) do
             local value = position[axis]
-            assert(type(value) == "number" and value == value and math.abs(value) < math.huge,
-                "Finite bind coordinate required: " .. tostring(id))
+            assert(
+                type(value) == "number" and value == value and math.abs(value) < math.huge,
+                "Finite bind coordinate required: " .. tostring(id)
+            )
         end
         if position.space == "map" then
-            assert(type(position.uiMapID) == "number" and position.uiMapID > 0 and position.uiMapID % 1 == 0
-                and position.x >= 0 and position.x <= 1 and position.y >= 0 and position.y <= 1,
-                "Invalid bind map position: " .. tostring(id))
+            assert(
+                type(position.uiMapID) == "number"
+                    and position.uiMapID > 0
+                    and position.uiMapID % 1 == 0
+                    and position.x >= 0
+                    and position.x <= 1
+                    and position.y >= 0
+                    and position.y <= 1,
+                "Invalid bind map position: " .. tostring(id)
+            )
         else
-            assert(type(position.instanceID) == "number" and position.instanceID >= 0 and position.instanceID % 1 == 0,
-                "Invalid bind world instance: " .. tostring(id))
+            assert(
+                type(position.instanceID) == "number" and position.instanceID >= 0 and position.instanceID % 1 == 0,
+                "Invalid bind world instance: " .. tostring(id)
+            )
         end
-        assert(position.z == nil or (type(position.z) == "number" and position.z == position.z
-            and math.abs(position.z) < math.huge), "Invalid bind altitude")
+        assert(
+            position.z == nil
+                or (type(position.z) == "number" and position.z == position.z and math.abs(position.z) < math.huge),
+            "Invalid bind altitude"
+        )
     end
     local overrides = data:GetConfig().WorldInstanceOverrides or {}
     for phased, world in pairs(overrides) do
-        assert(type(phased) == "number" and phased > 0 and phased % 1 == 0
-            and type(world) == "number" and world > 0 and world % 1 == 0
-            and phased ~= world and overrides[world] == nil,
-            "World-space overrides must resolve directly to a distinct canonical world")
+        assert(
+            type(phased) == "number"
+                and phased > 0
+                and phased % 1 == 0
+                and type(world) == "number"
+                and world > 0
+                and world % 1 == 0
+                and phased ~= world
+                and overrides[world] == nil,
+            "World-space overrides must resolve directly to a distinct canonical world"
+        )
     end
     local unmappedInstances = {}
     for mapID, area in pairs(data:GetConfig().UnmappedAreas or {}) do
-        assert(type(mapID) == "number" and mapID > 0 and mapID % 1 == 0
-            and type(area) == "table", "Unmapped areas need a positive guide map identity")
+        assert(
+            type(mapID) == "number" and mapID > 0 and mapID % 1 == 0 and type(area) == "table",
+            "Unmapped areas need a positive guide map identity"
+        )
         for key in pairs(area) do
             assert(key == "instanceID" or key == "areaID", "Unsupported unmapped area field: " .. key)
         end
-        assert(type(area.instanceID) == "number" and area.instanceID > 0 and area.instanceID % 1 == 0,
-            "Unmapped areas need a dedicated world instance")
-        assert(type(area.areaID) == "number" and area.areaID > 0 and area.areaID % 1 == 0,
-            "Unmapped areas need a client-localized area identity")
+        assert(
+            type(area.instanceID) == "number" and area.instanceID > 0 and area.instanceID % 1 == 0,
+            "Unmapped areas need a dedicated world instance"
+        )
+        assert(
+            type(area.areaID) == "number" and area.areaID > 0 and area.areaID % 1 == 0,
+            "Unmapped areas need a client-localized area identity"
+        )
         local world = data:GetWorldInstanceID(area.instanceID)
         assert(not unmappedInstances[world], "A mapless world instance cannot identify multiple guide maps")
         unmappedInstances[world] = true
     end
     for world, enabled in pairs(data:GetConfig().UnmappedInstances or {}) do
-        assert(type(world) == "number" and world > 0 and world < math.huge and world % 1 == 0
-            and enabled == true, "World-only interiors need a dedicated world instance")
-        assert(not unmappedInstances[data:GetWorldInstanceID(world)],
-            "A world-only interior cannot also claim a fallback guide map")
+        assert(
+            type(world) == "number" and world > 0 and world < math.huge and world % 1 == 0 and enabled == true,
+            "World-only interiors need a dedicated world instance"
+        )
+        assert(
+            not unmappedInstances[data:GetWorldInstanceID(world)],
+            "A world-only interior cannot also claim a fallback guide map"
+        )
     end
     for kind, stops in pairs(data:GetConfig().TransportDestinations or {}) do
         assert(type(kind) == "string" and kind ~= "" and type(stops) == "table")
         for _, stop in ipairs(stops) do
             for key in pairs(stop) do
-                assert(key == "instanceID" or key == "x" or key == "y" or key == "radius" or key == "mapID",
-                    "Unsupported transport destination field: " .. key)
+                assert(
+                    key == "instanceID" or key == "x" or key == "y" or key == "radius" or key == "mapID",
+                    "Unsupported transport destination field: " .. key
+                )
             end
-            assert(type(stop.instanceID) == "number" and stop.instanceID >= 0 and stop.instanceID % 1 == 0,
-                "Transport destination coordinates need a world instance")
+            assert(
+                type(stop.instanceID) == "number" and stop.instanceID >= 0 and stop.instanceID % 1 == 0,
+                "Transport destination coordinates need a world instance"
+            )
             for _, key in ipairs({ "x", "y", "radius" }) do
-                assert(type(stop[key]) == "number" and stop[key] == stop[key] and math.abs(stop[key]) < math.huge,
-                    "Transport destination needs finite " .. key)
+                assert(
+                    type(stop[key]) == "number" and stop[key] == stop[key] and math.abs(stop[key]) < math.huge,
+                    "Transport destination needs finite " .. key
+                )
             end
-            assert(stop.radius > 0 and type(stop.mapID) == "number" and stop.mapID > 0 and stop.mapID % 1 == 0,
-                "Transport destinations need a positive radius and display map")
+            assert(
+                stop.radius > 0 and type(stop.mapID) == "number" and stop.mapID > 0 and stop.mapID % 1 == 0,
+                "Transport destinations need a positive radius and display map"
+            )
         end
     end
-    for _, requirements in pairs(data:GetConfig().MapRequirements or {}) do inspect(requirements) end
+    for _, requirements in pairs(data:GetConfig().MapRequirements or {}) do
+        inspect(requirements)
+    end
     for group, definition in pairs(data:GetConfig().PhaseGroups or {}) do
         assert(type(group) == "string" and type(definition.sides) == "table")
         for _, side in ipairs(definition.sides) do
@@ -130,24 +184,34 @@ for _, profile in ipairs({ "retail", "forever" }) do
     end
     for holiday, icons in pairs(data:GetConfig().Holidays or {}) do
         assert(type(holiday) == "string" and type(icons) == "table")
-        for icon, active in pairs(icons) do assert(type(icon) == "number" and active == true) end
+        for icon, active in pairs(icons) do
+            assert(type(icon) == "number" and active == true)
+        end
     end
     for _, connection in ipairs(data:GetConnections()) do
         if connection.instructionKey then
             for locale, strings in pairs(LibStub("LibAPRNavigation-1.0").locales) do
-                assert(type(strings[connection.instructionKey]) == "string" and strings[connection.instructionKey] ~= "",
-                    connection.id .. " needs its interaction instruction in " .. locale)
+                assert(
+                    type(strings[connection.instructionKey]) == "string" and strings[connection.instructionKey] ~= "",
+                    connection.id .. " needs its interaction instruction in " .. locale
+                )
             end
         end
         assert(not seen[connection.id], "Duplicate connection: " .. connection.id)
         seen[connection.id] = true
         inspect(connection.requirements)
-        assert(FactionPossible(connection.requirements, "Alliance")
-            or FactionPossible(connection.requirements, "Horde"),
-            connection.id .. " requires incompatible factions")
+        assert(
+            FactionPossible(connection.requirements, "Alliance") or FactionPossible(connection.requirements, "Horde"),
+            connection.id .. " requires incompatible factions"
+        )
         for _, action in ipairs(connection.actions or {}) do
-            assert(action.type == "item" or action.type == "spell" or action.type == "housing"
-                or action.type == "housing_return", connection.id)
+            assert(
+                action.type == "item"
+                    or action.type == "spell"
+                    or action.type == "housing"
+                    or action.type == "housing_return",
+                connection.id
+            )
             if action.type == "item" or action.type == "spell" then
                 assert(type(action.id) == "number" and action.id > 0 and action.id % 1 == 0, connection.id)
             end
@@ -171,8 +235,10 @@ for _, profile in ipairs({ "retail", "forever" }) do
         local id = edge.id:match("^[^:]+:(.*):forward$") or edge.id:match("^[^:]+:(.*):reverse$")
         local definition = id and data.connectionLookup[id]
         if definition then
-            assert(not definition.disabled and (not definition.reviewStatus or definition.reviewStatus == "confirmed"),
-                "Unreviewed/disabled records cannot publish usable connections: " .. id)
+            assert(
+                not definition.disabled and (not definition.reviewStatus or definition.reviewStatus == "confirmed"),
+                "Unreviewed/disabled records cannot publish usable connections: " .. id
+            )
         end
     end
 end

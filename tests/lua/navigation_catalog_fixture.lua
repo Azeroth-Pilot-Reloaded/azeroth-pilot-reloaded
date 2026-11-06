@@ -1,10 +1,25 @@
 -- Load the library and synthetic actions without changing mocked client globals.
 local environment = {
-    assert = assert, error = error, ipairs = ipairs, pairs = pairs, next = next,
-    type = type, tonumber = tonumber, tostring = tostring, select = select,
-    pcall = pcall, xpcall = xpcall, unpack = unpack, rawget = rawget, rawset = rawset,
-    setmetatable = setmetatable, getmetatable = getmetatable,
-    math = math, string = string, table = table, strmatch = string.match,
+    assert = assert,
+    error = error,
+    ipairs = ipairs,
+    pairs = pairs,
+    next = next,
+    type = type,
+    tonumber = tonumber,
+    tostring = tostring,
+    select = select,
+    pcall = pcall,
+    xpcall = xpcall,
+    unpack = unpack,
+    rawget = rawget,
+    rawset = rawset,
+    setmetatable = setmetatable,
+    getmetatable = getmetatable,
+    math = math,
+    string = string,
+    table = table,
+    strmatch = string.match,
 }
 environment._G = environment
 local function loadModule(path)

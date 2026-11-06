@@ -94,12 +94,10 @@ APR.PREFAB_TYPES = {
     StartingZone = "starting_zone",
 }
 
-
 APR.EVENTS = {
     Holidays = "Holidays",
     Remix = "Remix",
 }
-
 
 APR.RACES = {
     -- Alliance
@@ -141,4 +139,5 @@ function APR:GetEnumKeyByValue(enum, value)
         end
     end
     return nil
-end--[[APR_DIAG]]; APR.GetEnumKeyByValue = APRTrace("APR-Core/data/models/Enums.lua:137:APR:GetEnumKeyByValue#1", APR.GetEnumKeyByValue)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetEnumKeyByValue = APRTrace("APR-Core/data/models/Enums.lua:137:APR:GetEnumKeyByValue#1", APR.GetEnumKeyByValue)--[[/APR_DIAG]]

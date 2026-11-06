@@ -5,16 +5,25 @@ local kind = APR.PREFAB_TYPES
 local normal = env.route("fixture-leveling", "Ordinary offer", nil, { [kind.Leveling] = 1 })
 local dungeon = env.route("fixture-dungeon", "Dungeon offer", nil, { [kind.Dungeons] = 1 }, APR.CATEGORIES.Dungeons)
 -- This prefix is the public scope discriminator, not a packaged guide key.
-local mage = env.route("Forever-MageAoE-fixture", "Specialized offer", { Class = "MAGE", MinLevel = 20 }, { [kind.Leveling] = 1 })
+local mage = env.route(
+    "Forever-MageAoE-fixture",
+    "Specialized offer",
+    { Class = "MAGE", MinLevel = 20 },
+    { [kind.Leveling] = 1 }
+)
 local popup, selectOption, messages
 APR.questionDialog = {
-    CreateSelectionPopup = function(_, _, _, options, callback) popup, selectOption = options, callback end,
+    CreateSelectionPopup = function(_, _, _, options, callback)
+        popup, selectOption = options, callback
+    end,
     CreateMessagePopup = function() messages = (messages or 0) + 1 end,
 }
 local config = APR.routeconfig
 assert(not config:HasPrefab("all_quests"))
-assert(not config:HasPrefab("speedrun") and config:HasPrefab("leveling") and config:HasPrefab("dungeons"),
-    "A Leveling offer alone cannot advertise the distinct Speedrun preset")
+assert(
+    not config:HasPrefab("speedrun") and config:HasPrefab("leveling") and config:HasPrefab("dungeons"),
+    "A Leveling offer alone cannot advertise the distinct Speedrun preset"
+)
 assert(#config:GetPrefabOptions("leveling") == 2, "A high-level AoE entry is not offered as a low-level start")
 APR.Level = 20
 config:OpenLevelingPopup()

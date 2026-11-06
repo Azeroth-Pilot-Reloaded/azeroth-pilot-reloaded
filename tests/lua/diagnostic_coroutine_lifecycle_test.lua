@@ -19,10 +19,11 @@ end
 retireWorkers()
 collectgarbage("collect")
 collectgarbage("collect")
-assert(next(observed) == nil,
-    "Neither completed nor abandoned diagnostic coroutine contexts may retain their workers")
-assert(APRData.PerformanceLog.summary.SyntheticRetiredWorker.count == 100,
-    "Completed workers still contribute their timing records")
+assert(next(observed) == nil, "Neither completed nor abandoned diagnostic coroutine contexts may retain their workers")
+assert(
+    APRData.PerformanceLog.summary.SyntheticRetiredWorker.count == 100,
+    "Completed workers still contribute their timing records"
+)
 
 local live = coroutine.create(D.Wrap("SyntheticLiveWorker", function()
     D.Yield("paused")
@@ -42,4 +43,6 @@ collectgarbage("collect")
 collectgarbage("collect")
 assert(liveReference[1] == nil, "A finished worker is collectible after its caller releases it")
 APR:SetPerformanceCapture(false)
-print("Diagnostic coroutine lifetime: 200 retired workers released, completed timings retained and live suspension/resume preserved")
+print(
+    "Diagnostic coroutine lifetime: 200 retired workers released, completed timings retained and live suspension/resume preserved"
+)

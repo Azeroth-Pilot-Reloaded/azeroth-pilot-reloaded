@@ -49,7 +49,9 @@ local first, second = step.fillersList["10-1"], step.fillersList["20-2"]
 local icon = second.IconButton
 local initialFrames, initialFonts = env.frames(), env.fonts()
 local hidden, positioned, passes = fillers.Frame.hideCount, first.anchors, fillerPasses
-for _ = 1, 100 do renderFillers() end
+for _ = 1, 100 do
+    renderFillers()
+end
 assert(env.frames() == initialFrames and env.fonts() == initialFonts)
 assert(step.fillersList["20-2"] == second and second.IconButton == icon)
 assert(first.layoutOffset < second.layoutOffset and first.anchors == positioned)
@@ -96,14 +98,21 @@ local function changingFiller(id)
     fillers:AddFillerStep(id, "Changing bonus objective", 1)
     step:EndContentUpdate(true)
 end
-changingFiller(30); changingFiller(40); changingFiller(30)
+changingFiller(30)
+changingFiller(40)
+changingFiller(30)
 initialFrames, initialFonts = env.frames(), env.fonts()
-for index = 1, 1000 do changingFiller(index % 2 == 0 and 30 or 40) end
-assert(env.frames() == initialFrames and env.fonts() == initialFonts,
-    "Changing bonus objectives must recycle rows from the filler holder's own pool")
+for index = 1, 1000 do
+    changingFiller(index % 2 == 0 and 30 or 40)
+end
+assert(
+    env.frames() == initialFrames and env.fonts() == initialFonts,
+    "Changing bonus objectives must recycle rows from the filler holder's own pool"
+)
 fillers:RemoveFillerSteps()
 print(
-"Fillers: stable rows/actions, 100 refreshes without allocation or hide/show, wrapping, order, collapse, snap and combat passed")
+    "Fillers: stable rows/actions, 100 refreshes without allocation or hide/show, wrapping, order, collapse, snap and combat passed"
+)
 
 -- Run the actual route-list window, presenter and scheduler with a long route.
 local timers, ticks, failures = {}, 0, {}
@@ -112,24 +121,31 @@ C_Timer = {
         local timer = { callback = callback, Cancel = function(self) self.cancelled = true end }
         timers[#timers + 1] = timer
         return timer
-    end
+    end,
 }
 local function drainTimers()
     local pending = timers
     timers = {}
-    for _, timer in ipairs(pending) do if not timer.cancelled then timer.callback() end end
+    for _, timer in ipairs(pending) do
+        if not timer.cancelled then timer.callback() end
+    end
 end
 function debugprofilestop()
-    ticks = ticks + 1; return ticks
+    ticks = ticks + 1
+    return ticks
 end
 
-function geterrorhandler() return function(err) failures[#failures + 1] = err end end
+function geterrorhandler()
+    return function(err) failures[#failures + 1] = err end
+end
 
 APR.StartPerformanceSample, APR.FinishPerformanceSample, APR.SetFontStringRole = noop, noop, noop
 APR.ActiveRoute, APR.PlayerID = "route", "player"
 APRData = { player = { route = 1, other = 1 } }
 local route = {}
-for index = 1, 1200 do route[index] = { Note = "Step " .. index } end
+for index = 1, 1200 do
+    route[index] = { Note = "Step " .. index }
+end
 APR.RouteQuestStepList = { route = route, other = { { Note = "Other route" } } }
 APR.routeconfig = { HasRouteInCustomPath = function() return true end }
 function APR:GetRouteSteps(key) return self.RouteQuestStepList[key] end
@@ -145,9 +161,13 @@ dofile("APR-Core/ui/foundations/VirtualList.lua")
 dofile("APR-Core/ui/route/QuestOrderList.lua")
 dofile("APR-Core/ui/route/QuestOrderListRows.lua")
 local list, scroll = APR.questOrderList, QuestOrderListFrame_ScrollFrame
-assert(scroll.point[1] == "TOPLEFT" and scroll.point[2] == QuestOrderListFrame_StepHolderHeader
-    and scroll.point[3] == "BOTTOMLEFT" and scroll.point[5] == -2,
-    "Both WoW and Modern list viewports start below the actual header, including when scrolling")
+assert(
+    scroll.point[1] == "TOPLEFT"
+        and scroll.point[2] == QuestOrderListFrame_StepHolderHeader
+        and scroll.point[3] == "BOTTOMLEFT"
+        and scroll.point[5] == -2,
+    "Both WoW and Modern list viewports start below the actual header, including when scrolling"
+)
 scroll:SetSize(236, 400)
 local beforeFrames, beforeFonts = env.frames(), env.fonts()
 local function drainViewport()
@@ -174,8 +194,10 @@ end
 list:AddStepFromRoute(true)
 assert(#list.stepList == 0)
 assert(drainRender() > 1 and #list.stepList == 1200 and list.renderComplete)
-assert(env.frames() - beforeFrames < 45 and env.fonts() - beforeFonts < 100,
-    "1200 step models must only create viewport rows and one hidden measurement row")
+assert(
+    env.frames() - beforeFrames < 45 and env.fonts() - beforeFonts < 100,
+    "1200 step models must only create viewport rows and one hidden measurement row"
+)
 for index = 1, 1200, 79 do
     list.virtualList:ScrollToIndex(index)
     drainViewport()
@@ -193,25 +215,35 @@ GameTooltip:SetOwner(hovered)
 local tooltipHides = GameTooltip.hideCount
 list:AddStepFromRoute(true)
 list.renderFrame.scripts.OnUpdate()
-assert(scroll.scrollChild == visibleChild and list.stepList == rows and visibleChild:IsShown(),
-    "Published rows remain visible throughout a budgeted refresh")
+assert(
+    scroll.scrollChild == visibleChild and list.stepList == rows and visibleChild:IsShown(),
+    "Published rows remain visible throughout a budgeted refresh"
+)
 drainRender()
-assert(scroll.swaps == swaps and scroll:GetVerticalScroll() == 500,
-    "An unchanged refresh neither swaps the view nor changes manual scroll")
+assert(
+    scroll.swaps == swaps and scroll:GetVerticalScroll() == 500,
+    "An unchanged refresh neither swaps the view nor changes manual scroll"
+)
 assert(GameTooltip.hideCount == tooltipHides, "An unchanged refresh retains the hovered tooltip")
 local warmFrames, warmFonts = env.frames(), env.fonts()
 for _ = 1, 5 do
-    list:AddStepFromRoute(true); drainRender()
+    list:AddStepFromRoute(true)
+    drainRender()
 end
-assert(env.frames() == warmFrames and env.fonts() == warmFonts, "Model refreshes must not allocate additional viewport frames")
+assert(
+    env.frames() == warmFrames and env.fonts() == warmFonts,
+    "Model refreshes must not allocate additional viewport frames"
+)
 
 route[20].Note = "Changed description"
 list:AddStepFromRoute(true)
 list.renderFrame.scripts.OnUpdate()
 assert(scroll.scrollChild == visibleChild)
 drainRender()
-assert(scroll.swaps == swaps and list.stepList ~= rows and scroll:GetVerticalScroll() == 500,
-    "Changed data publishes once without scroll jumps")
+assert(
+    scroll.swaps == swaps and list.stepList ~= rows and scroll:GetVerticalScroll() == 500,
+    "Changed data publishes once without scroll jumps"
+)
 assert(GameTooltip.hideCount == tooltipHides + 1, "Publishing changed rows dismisses their old tooltip")
 assert(list.rawStepContainers[20].stepText:find("Changed description"))
 local offset = 0
@@ -247,7 +279,9 @@ list.CreateRouteRenderer = function(self, ...)
     buildCount = buildCount + 1
     return originalBuild(self, ...)
 end
-for width = 270, 300 do QuestOrderListPanel.scripts.OnSizeChanged(QuestOrderListPanel, width, 400) end
+for width = 270, 300 do
+    QuestOrderListPanel.scripts.OnSizeChanged(QuestOrderListPanel, width, 400)
+end
 assert(buildCount == 0, "Resizing does not synchronously rebuild the route")
 drainTimers()
 assert(buildCount == 1, "A width burst schedules one rebuild")
@@ -257,7 +291,9 @@ assert(not list.updateTimer, "Height-only resizing does not rebuild rows")
 assert(list.stepList[1].width == 278, "Scrollbar space is excluded from measured content width")
 
 local previousView = scroll.scrollChild
-list.CreateRouteRenderer = function() return function() error("simulated row failure") end end
+list.CreateRouteRenderer = function()
+    return function() error("simulated row failure") end
+end
 list:AddStepFromRoute(true)
 drainRender()
 assert(#failures == 1 and scroll.scrollChild == previousView and list.renderFailed)
@@ -274,29 +310,38 @@ end
 local publishedModels = list.stepList
 APRData.player.route = 20
 list:AddStepFromRoute()
-assert(visibilityChecks == 0 and list.currentStepIndex == 1,
-    "Advancing does not synchronously scan the route")
+assert(visibilityChecks == 0 and list.currentStepIndex == 1, "Advancing does not synchronously scan the route")
 list.renderFrame.scripts.OnUpdate()
-assert(visibilityChecks > 0 and visibilityChecks <= 3 and list.stepList == publishedModels,
-    "The fast progression path budgets visibility checks and retains published rows")
+assert(
+    visibilityChecks > 0 and visibilityChecks <= 3 and list.stepList == publishedModels,
+    "The fast progression path budgets visibility checks and retains published rows"
+)
 drainRender()
-assert(list.currentStepIndex == 20 and list.stepList == publishedModels,
-    "Unchanged visibility advances using the existing models")
+assert(
+    list.currentStepIndex == 20 and list.stepList == publishedModels,
+    "Unchanged visibility advances using the existing models"
+)
 drainTimers()
 route[22].hidden = true
 APRData.player.route = 21
 list:AddStepFromRoute()
 drainRender()
-assert(list.currentStepIndex == 21 and not list.rawStepContainers[22],
-    "Visibility changes still rebuild and publish the correct route")
-assert(scroll:GetVerticalScroll() == list.virtualList.offsets[list.rawStepContainers[21].displayIndex],
-    "A rebuilt view immediately follows the current step without a second scroll timer")
+assert(
+    list.currentStepIndex == 21 and not list.rawStepContainers[22],
+    "Visibility changes still rebuild and publish the correct route"
+)
+assert(
+    scroll:GetVerticalScroll() == list.virtualList.offsets[list.rawStepContainers[21].displayIndex],
+    "A rebuilt view immediately follows the current step without a second scroll timer"
+)
 APRData.player.route = 23
 list:AddStepFromRoute()
 list:RemoveSteps()
 drainTimers()
-assert(scroll:GetVerticalScroll() == 0 and #list.stepList == 0 and not QuestOrderListPanel:IsShown(),
-    "Removing the list also cancels queued scrolling")
+assert(
+    scroll:GetVerticalScroll() == 0 and #list.stepList == 0 and not QuestOrderListPanel:IsShown(),
+    "Removing the list also cancels queued scrolling"
+)
 
 -- Loot rows can render before visiting any collection step. There is no
 -- QuestVirtualItemCount table; use the same live/saved counts as Current Step.
@@ -355,7 +400,8 @@ loot.quantityFromSkill, APR.GetRouteSkill = nil, previousSkill
 APRData.player.loot = 3
 assertLootDetails(0)
 print(
-"Quest order loot: absent cache, optional quest, unavailable count, bags, saved/live bank, completion and passed steps passed")
+    "Quest order loot: absent cache, optional quest, unavailable count, bags, saved/live bank, completion and passed steps passed"
+)
 -- Merchant purchases may have no linked quest, including in future route steps.
 local completedMerchantQuests = { [123] = true }
 C_QuestLog.IsQuestFlaggedCompleted = function(id)
@@ -376,13 +422,21 @@ local errorsBeforeMerchant = #failures
 local function renderMerchant()
     list:AddStepFromRoute(true)
     drainRender()
-    assert(#failures == errorsBeforeMerchant and not list.renderFailed,
-        "A purchase without a linked quest must not abort the route render")
+    assert(
+        #failures == errorsBeforeMerchant and not list.renderFailed,
+        "A purchase without a linked quest must not abort the route render"
+    )
     assert(#list.stepList == 6, "Rows after merchant purchases must still render")
 end
 renderMerchant()
-assert(list.rawStepContainers[2].questInfo[1].questID == 1 and list.rawStepContainers[2].questInfo[1].questName == "Item 2207")
-assert(list.rawStepContainers[3].questInfo[1].questID == 5 and list.rawStepContainers[3].questInfo[1].questName == "Item 159")
+assert(
+    list.rawStepContainers[2].questInfo[1].questID == 1
+        and list.rawStepContainers[2].questInfo[1].questName == "Item 2207"
+)
+assert(
+    list.rawStepContainers[3].questInfo[1].questID == 5
+        and list.rawStepContainers[3].questInfo[1].questName == "Item 159"
+)
 assert(#list.rawStepContainers[4].questInfo == 0, "Completed linked quests hide purchase details")
 assert(#list.rawStepContainers[5].questInfo == 1, "Mixed purchases retain only pending items")
 APRData.player.merchant = 2
@@ -404,8 +458,10 @@ local collapseButton = QuestOrderListFrame_StepHolderHeader.MinimizeButton
 list:AddStepFromRoute(true)
 list.renderFrame.scripts.OnUpdate()
 collapseButton.scripts.OnClick()
-assert(list.renderRequest == nil and list.renderFrame.scripts.OnUpdate == nil,
-    "Collapsing immediately cancels an in-flight model build")
+assert(
+    list.renderRequest == nil and list.renderFrame.scripts.OnUpdate == nil,
+    "Collapsing immediately cancels an in-flight model build"
+)
 local checksBeforeCollapse = visibilityChecks
 drainTimers()
 for index = 24, 123 do
@@ -413,18 +469,26 @@ for index = 24, 123 do
     list:AddStepFromRoute(true)
     list:DelayedUpdate(true)
 end
-assert(visibilityChecks == checksBeforeCollapse and list.renderRequest == nil,
-    "Progress events perform zero visibility scans or model builds while collapsed")
+assert(
+    visibilityChecks == checksBeforeCollapse and list.renderRequest == nil,
+    "Progress events perform zero visibility scans or model builds while collapsed"
+)
 assert(#timers == 0 and not list.updateTimer, "Collapsed progress updates allocate no render timers")
-assert(QuestOrderListPanel:IsShown() and not QuestOrderListFrame_StepHolder:IsShown(),
-    "The collapsed list header remains available to expand")
-assert(list.stepList == publishedBeforeCollapse and list.currentStepIndex == indexBeforeCollapse,
-    "A collapsed list retains its previous complete publication")
+assert(
+    QuestOrderListPanel:IsShown() and not QuestOrderListFrame_StepHolder:IsShown(),
+    "The collapsed list header remains available to expand"
+)
+assert(
+    list.stepList == publishedBeforeCollapse and list.currentStepIndex == indexBeforeCollapse,
+    "A collapsed list retains its previous complete publication"
+)
 collapseButton.scripts.OnClick()
 assert(list.renderRequest, "Expansion schedules a fresh render despite the old collapsed flag")
 drainRender()
-assert(list.currentStepIndex == 123 and list.renderComplete,
-    "Expansion publishes current progress after all hidden updates")
+assert(
+    list.currentStepIndex == 123 and list.renderComplete,
+    "Expansion publishes current progress after all hidden updates"
+)
 
 -- A parent can collapse while its independent render frame is already scheduled.
 profile.questOrderListSnapToCurrentStep = true
@@ -433,17 +497,20 @@ list.renderFrame.scripts.OnUpdate()
 checksBeforeCollapse = visibilityChecks
 CurrentStepScreenPanel.collapsed = true
 list.renderFrame.scripts.OnUpdate()
-assert(list.renderFrame.scripts.OnUpdate == nil and list.renderRequest == nil,
-    "A parent collapse cancels pending work on the next batch")
-assert(visibilityChecks == checksBeforeCollapse,
-    "No hidden route work is performed by the cancellation batch")
+assert(
+    list.renderFrame.scripts.OnUpdate == nil and list.renderRequest == nil,
+    "A parent collapse cancels pending work on the next batch"
+)
+assert(visibilityChecks == checksBeforeCollapse, "No hidden route work is performed by the cancellation batch")
 list:AddStepFromRoute(true)
 assert(list.renderRequest == nil, "Background refreshes do not restart a collapsed parent's list")
 CurrentStepScreenPanel.collapsed = false
 list:RefreshFrameAnchor()
 drainRender()
-assert(list.currentStepIndex == 123 and QuestOrderListPanel:IsShown(),
-    "The list resumes after its parent is restored")
-print("Quest order collapse: cancelled builds, zero hidden scans, retained publication and current-progress recovery passed")
+assert(list.currentStepIndex == 123 and QuestOrderListPanel:IsShown(), "The list resumes after its parent is restored")
 print(
-"Quest order: 1200 rows, bounded build/recycling, atomic publishing, buffer reuse, scroll, filters, cancellation, resize and recovery passed")
+    "Quest order collapse: cancelled builds, zero hidden scans, retained publication and current-progress recovery passed"
+)
+print(
+    "Quest order: 1200 rows, bounded build/recycling, atomic publishing, buffer reuse, scroll, filters, cancellation, resize and recovery passed"
+)

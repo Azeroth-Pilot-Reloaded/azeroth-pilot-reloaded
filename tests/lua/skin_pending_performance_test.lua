@@ -2,12 +2,12 @@
 local combat, events = false, nil
 function InCombatLockdown() return combat end
 function CreateFrame()
-    local frame = {RegisterEvent = function() end}
+    local frame = { RegisterEvent = function() end }
     function frame:SetScript(_, callback) self.callback = callback end
     events = frame
     return frame
 end
-APR = {settings = {profile = {uiTheme = "wow"}}}
+APR = { settings = { profile = { uiTheme = "wow" } } }
 local skins, regions, fonts, bars, text = 0, 0, 0, 0, 0
 function APR:ApplyNativeTheme(frame)
     assert(not combat)
@@ -26,15 +26,19 @@ for i = 1, 1000 do
 end
 assert(skins == 1000)
 combat = true
-for i = 1, 100 do APR:RegisterSkinTarget(controls[1], "button") end
+for i = 1, 100 do
+    APR:RegisterSkinTarget(controls[1], "button")
+end
 local newControl = {}
 APR:RegisterSkinTarget(newControl, "button")
 assert(APR:AreSkinsPending() and not newControl.styled and skins == 1000)
 combat = false
 events.callback()
 assert(newControl.styled and skins == 1001 and not APR:AreSkinsPending())
-assert(regions == 0 and fonts == 0 and bars == 0,
-    "Deferred control registration must never restyle every font/region/window")
+assert(
+    regions == 0 and fonts == 0 and bars == 0,
+    "Deferred control registration must never restyle every font/region/window"
+)
 events.callback()
 assert(skins == 1001 and fonts == 0, "Further combat exits do no appearance work")
 

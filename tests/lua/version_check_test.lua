@@ -5,7 +5,9 @@ local function loadVersion(version, saved, notifications)
     sent, popups, timers, tickers = {}, {}, {}, {}
     APRData = saved or {}
     APR = {
-        version = version, tocVersion = 120105, interfaceVersion = 120105,
+        version = version,
+        tocVersion = 120105,
+        interfaceVersion = 120105,
         settings = { profile = { checkForUpdate = notifications ~= false, enableAddon = true } },
         NewModule = function() return {} end,
         GAME_VERSIONS = { Classic = "classic", Retail = "retail", Forever = "forever" },
@@ -14,14 +16,20 @@ local function loadVersion(version, saved, notifications)
         questionDialog = { CreateMessagePopup = function(_, text) popups[#popups + 1] = text end },
     }
     function LibStub()
-        return { GetLocale = function() return {
-            OUTDATED_VERSION_ALERT = "version=%s url=%s", OUTDATED_TOC_ALERT = "toc=%s",
-        } end }
+        return {
+            GetLocale = function()
+                return {
+                    OUTDATED_VERSION_ALERT = "version=%s url=%s",
+                    OUTDATED_TOC_ALERT = "toc=%s",
+                }
+            end,
+        }
     end
     function GetTime() return now end
     function CreateFrame()
         return {
-            events = {}, scripts = {},
+            events = {},
+            scripts = {},
             RegisterEvent = function(self, event) self.events[event] = true end,
             UnregisterEvent = function(self, event) self.events[event] = nil end,
             UnregisterAllEvents = function(self) self.events = {} end,
@@ -31,9 +39,11 @@ local function loadVersion(version, saved, notifications)
     LE_PARTY_CATEGORY_INSTANCE, OKAY = 2, "Okay"
     function IsInGroup(category) return grouped and (category ~= 2 or instance) end
     function IsInRaid() return raid end
-    C_ChatInfo = { SendAddonMessage = function(prefix, message, channel)
-        sent[#sent + 1] = { prefix = prefix, message = message, channel = channel }
-    end }
+    C_ChatInfo = {
+        SendAddonMessage = function(prefix, message, channel)
+            sent[#sent + 1] = { prefix = prefix, message = message, channel = channel }
+        end,
+    }
     C_Timer = {
         NewTimer = function(delay, callback)
             local timer = { delay = delay, callback = callback, Cancel = function(self) self.cancelled = true end }
@@ -52,9 +62,12 @@ end
 -- Public message handling exercises parsing and ordering, including real
 -- BigWigs git-describe versions that the old parser silently discarded.
 for _, row in ipairs({
-    { "v7.2.1", "v7.2.2", true }, { "7.9.0", "V7.10.0", true },
-    { "7.2", "7.2.0", false }, { "7.2.1", "7.2.1", false },
-    { "7.2.1", "7.1.99", false }, { "7.2.1", "7.2.1-12-gabcdef0", true },
+    { "v7.2.1", "v7.2.2", true },
+    { "7.9.0", "V7.10.0", true },
+    { "7.2", "7.2.0", false },
+    { "7.2.1", "7.2.1", false },
+    { "7.2.1", "7.1.99", false },
+    { "7.2.1", "7.2.1-12-gabcdef0", true },
     { "7.2.1-9-gabcdef0", "7.2.1-10-g123abcd", true },
     { "7.2.1-10-gabcdef0", "7.2.1-9-g123abcd", false },
     { "7.2.1-10-gabcdef0", "7.2.1-10-g123abcd", false },
@@ -62,7 +75,8 @@ for _, row in ipairs({
     { "7.3.0-alpha.9", "7.3.0-alpha.10", true },
     { "7.3.0-alpha.10", "7.3.0-beta.1", true },
     { "7.3.0-beta.2", "7.3.0-rc.1", true },
-    { "7.3.0-rc.1", "7.3.0", true }, { "7.3.0", "7.3.0-beta.2", false },
+    { "7.3.0-rc.1", "7.3.0", true },
+    { "7.3.0", "7.3.0-beta.2", false },
     { "7.3.0-alpha", "7.3.0-alpha.1", true },
     { "7.3.0-alpha.1", "7.3.0-alpha", false },
     { "7.3.0-1", "7.3.0-alpha", true },
@@ -70,15 +84,29 @@ for _, row in ipairs({
     { "7.2.1+abc", "7.2.1+def", false },
     { "7.2.1", "7.2.2+build.12", true },
     { "7.2.1001", "7.3.0", true }, -- no arithmetic component collisions
-    { "r123", "r124", true }, { "123", "124", true },
-    { "r123", "7.2.1", false }, { "7.2.1", "12345678", false },
+    { "r123", "r124", true },
+    { "123", "124", true },
+    { "r123", "7.2.1", false },
+    { "7.2.1", "12345678", false },
 }) do
     local check = loadVersion(row[1])
     check:HandleVersionMessage(row[2])
     assert((#popups == 1) == row[3], row[1] .. " compared to " .. row[2])
 end
-for _, invalid in ipairs({ false, 123, {}, "", "@project-version@", "dev", "7.2.2junk",
-    "7.2.2|Hitem:1", "7.2.2\n", "7.2.2-alpha..1", "7.2.2-", string.rep("9", 65) }) do
+for _, invalid in ipairs({
+    false,
+    123,
+    {},
+    "",
+    "@project-version@",
+    "dev",
+    "7.2.2junk",
+    "7.2.2|Hitem:1",
+    "7.2.2\n",
+    "7.2.2-alpha..1",
+    "7.2.2-",
+    string.rep("9", 65),
+}) do
     local check = loadVersion("7.2.1")
     check:HandleVersionMessage(invalid)
     assert(#popups == 0 and APRData.versionCheck.retail == "7.2.1")
@@ -130,12 +158,16 @@ assert(#sent == 2, "Equal versions never create reply loops")
 -- Login/reload and roster events use a bounded exchange with no idle polling.
 check = loadVersion("7.2.1")
 grouped = true
-for _ = 1, 10 do check:ScheduleBroadcast() end
+for _ = 1, 10 do
+    check:ScheduleBroadcast()
+end
 assert(#timers == 1 and timers[1].delay == 2)
 timers[1].callback()
 assert(#sent == 1 and sent[1].channel == "PARTY")
 assert(#timers == 2 and timers[2].delay == 5, "Only one finite retry covers loading races")
-for _ = 1, 10 do check:ScheduleBroadcast() end
+for _ = 1, 10 do
+    check:ScheduleBroadcast()
+end
 assert(#timers == 2, "Roster bursts cannot multiply the pending exchange")
 now = now + 5
 timers[2].callback()
@@ -161,8 +193,10 @@ assert(timers[5].cancelled and not check.broadcastRetryTimer, "Module shutdown c
 check:ScheduleBroadcast()
 grouped = false
 timers[6].callback()
-assert(#timers == 6 and not check.broadcastTimer and not check.broadcastRetryTimer,
-    "Leaving while loading cannot create a retry")
+assert(
+    #timers == 6 and not check.broadcastTimer and not check.broadcastRetryTimer,
+    "Leaving while loading cannot create a retry"
+)
 
 check = loadVersion("7.2.1")
 grouped = true

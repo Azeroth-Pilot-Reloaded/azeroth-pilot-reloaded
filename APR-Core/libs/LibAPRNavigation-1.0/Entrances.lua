@@ -21,7 +21,10 @@ function Instance:GetEntranceDefinitionsForMap(mapID)
         end
         seen[current] = true
         local entries = self.entranceMaps and self.entranceMaps[current]
-        if entries then self.entranceLookup[mapID] = entries; return entries end
+        if entries then
+            self.entranceLookup[mapID] = entries
+            return entries
+        end
         local info = self:GetMapAncestryInfo(current)
         if not info then return nil end -- Loading failures remain retryable.
         current = info.parentMapID
@@ -65,7 +68,7 @@ local function ChooseClosest(self, entries, positions, count, character)
         if target then
             local distance = math.huge
             if position and position.instanceID == target.instanceID then
-                distance = (target.x - position.x)^2 + (target.y - position.y)^2
+                distance = (target.x - position.x) ^ 2 + (target.y - position.y) ^ 2
             end
             if not best or distance < bestDistance then
                 best, bestPosition, bestDistance = definition, target, distance
@@ -87,7 +90,8 @@ local function ResolveEntrances(self, entries, character, closest)
         if definition.reviewStatus == "confirmed" then
             local requirements = self:GetTravelRequirements(definition.requirements, definition.exterior)
             local allowed, invalid = self:CheckRequirements(requirements, character)
-            if allowed == nil then reason = "pending_data"
+            if allowed == nil then
+                reason = "pending_data"
             elseif not allowed then
                 if reason ~= "pending_data" then reason = invalid or "requirements_unmet" end
             else
@@ -102,7 +106,9 @@ local function ResolveEntrances(self, entries, character, closest)
                     else
                         result[count] = CopyEntrance(definition, position)
                     end
-                else reason = "pending_data" end
+                else
+                    reason = "pending_data"
+                end
             end
         end
     end

@@ -15,9 +15,13 @@ local MISSING_PROJECTION_RETRY = 0.2
 local hbd = LibStub("HereBeDragons-2.0", true)
 
 local function finite(value)
-    return type(value) == "number" and not (issecretvalue and issecretvalue(value))
-        and value == value and value > -math.huge and value < math.huge
-end--[[APR_DIAG]]; finite = APRTrace("APR-Core/features/navigation/Preview.lua:17:finite#1", finite)--[[/APR_DIAG]]
+    return type(value) == "number"
+        and not (issecretvalue and issecretvalue(value))
+        and value == value
+        and value > -math.huge
+        and value < math.huge
+end--[[APR_DIAG]]
+finite = APRTrace("APR-Core/features/navigation/Preview.lua:17:finite#1", finite)--[[/APR_DIAG]]
 
 function Preview:GetMapInstance(mapID)
     if not mapID or not C_Map or not C_Map.GetWorldPosFromMapPos or not CreateVector2D then return nil end
@@ -27,23 +31,30 @@ function Preview:GetMapInstance(mapID)
     if finite(instanceID) and data and data.GetWorldInstanceID then instanceID = data:GetWorldInstanceID(instanceID) end
     if pos and type(instanceID) == "number" then mapInstances[mapID] = instanceID end
     return pos and instanceID or nil
-end--[[APR_DIAG]]; Preview.GetMapInstance = APRTrace("APR-Core/features/navigation/Preview.lua:22:Preview:GetMapInstance#2", Preview.GetMapInstance)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Preview.GetMapInstance =
+    APRTrace("APR-Core/features/navigation/Preview.lua:22:Preview:GetMapInstance#2", Preview.GetMapInstance)--[[/APR_DIAG]]
 
 local function MapInfo(mapID)
     if mapInfos[mapID] then return mapInfos[mapID] end
     local info = C_Map and C_Map.GetMapInfo and C_Map.GetMapInfo(mapID)
     if info and finite(info.parentMapID) then mapInfos[mapID] = info end
     return info
-end--[[APR_DIAG]]; MapInfo = APRTrace("APR-Core/features/navigation/Preview.lua:32:MapInfo#3", MapInfo)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+MapInfo = APRTrace("APR-Core/features/navigation/Preview.lua:32:MapInfo#3", MapInfo)--[[/APR_DIAG]]
 
 local function ParentRect(mapID, parentID)
     local cached = parentRects[mapID]
     if cached and cached.parent == parentID then return cached end
     local minX, maxX, minY, maxY
-    if C_Map and C_Map.GetMapRectOnMap then minX, maxX, minY, maxY = C_Map.GetMapRectOnMap(mapID, parentID) end
-    if (not finite(minX) or not finite(maxX) or not finite(minY) or not finite(maxY)
-        or maxX <= minX or maxY <= minY)
-        and hbd and hbd.TranslateZoneCoordinates then
+    if C_Map and C_Map.GetMapRectOnMap then
+        minX, maxX, minY, maxY = C_Map.GetMapRectOnMap(mapID, parentID)
+    end
+    if
+        (not finite(minX) or not finite(maxX) or not finite(minY) or not finite(maxY) or maxX <= minX or maxY <= minY)
+        and hbd
+        and hbd.TranslateZoneCoordinates
+    then
         -- Classic/Forever may not expose native parent rectangles. HBD's
         -- same-instance zone conversion is affine; derive its rectangle once.
         -- Different-instance parent artwork keeps the existing retryable path.
@@ -53,12 +64,14 @@ local function ParentRect(mapID, parentID)
             maxX, maxY = hbd:TranslateZoneCoordinates(1, 1, mapID, parentID, true)
         end
     end
-    if not finite(minX) or not finite(maxX) or not finite(minY) or not finite(maxY)
-        or maxX <= minX or maxY <= minY then return nil end
+    if not finite(minX) or not finite(maxX) or not finite(minY) or not finite(maxY) or maxX <= minX or maxY <= minY then
+        return nil
+    end
     cached = { parent = parentID, x = minX, y = minY, width = maxX - minX, height = maxY - minY }
     parentRects[mapID] = cached
     return cached
-end--[[APR_DIAG]]; ParentRect = APRTrace("APR-Core/features/navigation/Preview.lua:39:ParentRect#4", ParentRect)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+ParentRect = APRTrace("APR-Core/features/navigation/Preview.lua:39:ParentRect#4", ParentRect)--[[/APR_DIAG]]
 
 function Preview:InvalidateProjectionCache()
     mapInstances, mapInfos, parentRects, parentTransforms = {}, {}, {}, {}
@@ -66,7 +79,11 @@ function Preview:InvalidateProjectionCache()
     self.projectionGeometryRevision, self.projectionData = APR.navigationGeometryRevision, APR.NavigationData
     self.projectionPositions = APR.NavigationData and APR.NavigationData.positions
     self.projectionRevision = (self.projectionRevision or 0) + 1
-end--[[APR_DIAG]]; Preview.InvalidateProjectionCache = APRTrace("APR-Core/features/navigation/Preview.lua:63:Preview:InvalidateProjectionCache#5", Preview.InvalidateProjectionCache)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Preview.InvalidateProjectionCache = APRTrace(
+    "APR-Core/features/navigation/Preview.lua:63:Preview:InvalidateProjectionCache#5",
+    Preview.InvalidateProjectionCache
+)--[[/APR_DIAG]]
 
 -- Coord uses HBD's x/y order (the reverse of UnitPosition/the routing library).
 -- Project into the point's native map first. Parent artwork can use a different
@@ -81,8 +98,11 @@ function Preview:ComputeProjection(point, mapID)
         if hbd and hbd.GetZoneCoordinatesFromWorldInstance and instance ~= nil then
             x, y = hbd:GetZoneCoordinatesFromWorldInstance(coord.x, coord.y, instance, sourceMap, true)
         end
-        if (not finite(x) or not finite(y)) and APR.GetPlayerMapPos
-            and (instance == nil or instance == self:GetMapInstance(sourceMap)) then
+        if
+            (not finite(x) or not finite(y))
+            and APR.GetPlayerMapPos
+            and (instance == nil or instance == self:GetMapInstance(sourceMap))
+        then
             x, y = APR:GetPlayerMapPos(sourceMap, coord.y, coord.x)
         end
         if finite(x) and finite(y) then
@@ -104,11 +124,14 @@ function Preview:ComputeProjection(point, mapID)
                         elseif hbd and hbd.TranslateZoneCoordinates then
                             x, y = hbd:TranslateZoneCoordinates(x, y, child.mapID, child.parent, true)
                             cacheable = false
-                        else return nil end
+                        else
+                            return nil
+                        end
                         if not finite(x) or not finite(y) then return nil end
                     end
                     if cacheable then
-                        transforms = transforms or {}; parentTransforms[sourceMap] = transforms
+                        transforms = transforms or {}
+                        parentTransforms[sourceMap] = transforms
                         transforms[mapID] = { x = offsetX, y = offsetY, width = scaleX, height = scaleY }
                     end
                     return x, y, nil, not cacheable
@@ -122,17 +145,37 @@ function Preview:ComputeProjection(point, mapID)
             local sourceInfo, targetInfo = MapInfo(sourceMap), MapInfo(mapID)
             -- A sibling interior/floor is not a view of this native point even
             -- when both maps have identical XY bounds in the same world.
-            if (sourceInfo and sourceInfo.mapType and sourceInfo.mapType >= 4)
-                or (targetInfo and targetInfo.mapType and targetInfo.mapType >= 4) then
+            if
+                (sourceInfo and sourceInfo.mapType and sourceInfo.mapType >= 4)
+                or (targetInfo and targetInfo.mapType and targetInfo.mapType >= 4)
+            then
                 return nil, nil, sourceInfo ~= nil and targetInfo ~= nil and current == 0
             end
             local data = APR.NavigationData
-            if data and data.IsSameAccessRegion and sourceInfo and sourceInfo.mapType == 3
-                and targetInfo and targetInfo.mapType == 3 then
-                local source = { instanceID = instance, uiMapID = sourceMap,
-                    x = coord.y, y = coord.x, accessKey = point.accessKey, floor = point.floor }
-                local target = { instanceID = self:GetMapInstance(mapID), uiMapID = mapID,
-                    x = coord.y, y = coord.x, accessKey = point.accessKey, floor = point.floor }
+            if
+                data
+                and data.IsSameAccessRegion
+                and sourceInfo
+                and sourceInfo.mapType == 3
+                and targetInfo
+                and targetInfo.mapType == 3
+            then
+                local source = {
+                    instanceID = instance,
+                    uiMapID = sourceMap,
+                    x = coord.y,
+                    y = coord.x,
+                    accessKey = point.accessKey,
+                    floor = point.floor,
+                }
+                local target = {
+                    instanceID = self:GetMapInstance(mapID),
+                    uiMapID = mapID,
+                    x = coord.y,
+                    y = coord.x,
+                    accessKey = point.accessKey,
+                    floor = point.floor,
+                }
                 if not data:IsSameAccessRegion(source, target) then
                     local sourceRegion = data.GetPositionRegion and data:GetPositionRegion(source)
                     local targetRegion = data.GetPositionRegion and data:GetPositionRegion(target)
@@ -151,48 +194,92 @@ function Preview:ComputeProjection(point, mapID)
     local targetInstance = self:GetMapInstance(mapID)
     if instance ~= nil and targetInstance ~= nil and instance ~= targetInstance then return nil, nil, true end
     if APR.GetPlayerMapPos then return APR:GetPlayerMapPos(mapID, coord.y, coord.x) end
-end--[[APR_DIAG]]; Preview.ComputeProjection = APRTrace("APR-Core/features/navigation/Preview.lua:74:Preview:ComputeProjection#6", Preview.ComputeProjection)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Preview.ComputeProjection =
+    APRTrace("APR-Core/features/navigation/Preview.lua:74:Preview:ComputeProjection#6", Preview.ComputeProjection)--[[/APR_DIAG]]
 
 function Preview:ProjectPoint(point, mapID)
     if not point or not point.Coord or not mapID then return nil end
     local coord = point.Coord
     local sourceMap, instance = point.uiMapID or coord.mapID, point.instanceID or coord.instanceID
-    if issecretvalue and (issecretvalue(coord.x) or issecretvalue(coord.y) or issecretvalue(sourceMap)
-        or issecretvalue(instance) or issecretvalue(mapID) or issecretvalue(point.accessKey)
-        or issecretvalue(point.floor)) then return nil end
-    if self.projectionGeometryRevision ~= APR.navigationGeometryRevision or self.projectionData ~= APR.NavigationData
-        or self.projectionPositions ~= (APR.NavigationData and APR.NavigationData.positions) then
+    if
+        issecretvalue
+        and (
+            issecretvalue(coord.x)
+            or issecretvalue(coord.y)
+            or issecretvalue(sourceMap)
+            or issecretvalue(instance)
+            or issecretvalue(mapID)
+            or issecretvalue(point.accessKey)
+            or issecretvalue(point.floor)
+        )
+    then
+        return nil
+    end
+    if
+        self.projectionGeometryRevision ~= APR.navigationGeometryRevision
+        or self.projectionData ~= APR.NavigationData
+        or self.projectionPositions ~= (APR.NavigationData and APR.NavigationData.positions)
+    then
         self:InvalidateProjectionCache()
     end
     local cache = pointProjections[point]
-    if not cache or cache.x ~= coord.x or cache.y ~= coord.y or cache.sourceMap ~= sourceMap
-        or cache.instance ~= instance or cache.accessKey ~= point.accessKey or cache.floor ~= point.floor then
-        cache = { x = coord.x, y = coord.y, sourceMap = sourceMap, instance = instance,
-            accessKey = point.accessKey, floor = point.floor, maps = {}, count = 0 }
+    if
+        not cache
+        or cache.x ~= coord.x
+        or cache.y ~= coord.y
+        or cache.sourceMap ~= sourceMap
+        or cache.instance ~= instance
+        or cache.accessKey ~= point.accessKey
+        or cache.floor ~= point.floor
+    then
+        cache = {
+            x = coord.x,
+            y = coord.y,
+            sourceMap = sourceMap,
+            instance = instance,
+            accessKey = point.accessKey,
+            floor = point.floor,
+            maps = {},
+            count = 0,
+        }
         pointProjections[point] = cache
     end
     local result = cache.maps[mapID]
-    if result and (not result.retryAt or (GetTime and GetTime() or 0) < result.retryAt) then return result.x, result.y end
+    if result and (not result.retryAt or (GetTime and GetTime() or 0) < result.retryAt) then
+        return result.x, result.y
+    end
     local x, y, stableFailure, retryable = self:ComputeProjection(point, mapID)
-    if not finite(x) or not finite(y) then x, y = nil, nil end
+    if not finite(x) or not finite(y) then
+        x, y = nil, nil
+    end
     if not result then
-        if cache.count >= MAX_POINT_MAPS then cache.maps, cache.count = {}, 0 end
-        result = {}; cache.maps[mapID] = result; cache.count = cache.count + 1
+        if cache.count >= MAX_POINT_MAPS then
+            cache.maps, cache.count = {}, 0
+        end
+        result = {}
+        cache.maps[mapID] = result
+        cache.count = cache.count + 1
     end
     result.x, result.y = x, y
     -- Loading failures are transient. A short retry window avoids rebuilding
     -- ancestry for every neighboring segment without hiding late map records.
     result.retryAt = (retryable or ((x == nil or y == nil) and not stableFailure))
-        and ((GetTime and GetTime() or 0) + MISSING_PROJECTION_RETRY) or nil
+            and ((GetTime and GetTime() or 0) + MISSING_PROJECTION_RETRY)
+        or nil
     return x, y
-end--[[APR_DIAG]]; Preview.ProjectPoint = APRTrace("APR-Core/features/navigation/Preview.lua:156:Preview:ProjectPoint#7", Preview.ProjectPoint)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Preview.ProjectPoint =
+    APRTrace("APR-Core/features/navigation/Preview.lua:156:Preview:ProjectPoint#7", Preview.ProjectPoint)--[[/APR_DIAG]]
 
 function Preview:Point(value, generated)
     if type(value) ~= "table" then return nil end
     local coord = value.Coord or value.coord
     if not coord or not finite(coord.x) or not finite(coord.y) then return nil end
     local point = {}
-    for key, entry in pairs(value) do point[key] = entry end
+    for key, entry in pairs(value) do
+        point[key] = entry
+    end
     point.Coord = { x = coord.x, y = coord.y }
     point.generated = generated == true or value.generated == true
     point.uiMapID = coord.mapID or value.uiMapID or value.mapID or value.Zone
@@ -203,27 +290,48 @@ function Preview:Point(value, generated)
         point.instanceID = data:GetWorldInstanceID(point.instanceID)
     end
     return point
-end--[[APR_DIAG]]; Preview.Point = APRTrace("APR-Core/features/navigation/Preview.lua:190:Preview:Point#8", Preview.Point)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Preview.Point = APRTrace("APR-Core/features/navigation/Preview.lua:190:Preview:Point#8", Preview.Point)--[[/APR_DIAG]]
 
 local function enginePoint(position, source)
     if type(position) ~= "table" or not finite(position.x) or not finite(position.y) then return nil end
     return {
-        Coord = { x = position.y, y = position.x }, instanceID = position.instanceID,
-        uiMapID = position.uiMapID, generated = true, kind = "arrival", arrival = true,
-        label = source.label or source.instruction, mandatory = source.mandatory,
+        Coord = { x = position.y, y = position.x },
+        instanceID = position.instanceID,
+        uiMapID = position.uiMapID,
+        generated = true,
+        kind = "arrival",
+        arrival = true,
+        label = source.label or source.instruction,
+        mandatory = source.mandatory,
     }
-end--[[APR_DIAG]]; enginePoint = APRTrace("APR-Core/features/navigation/Preview.lua:208:enginePoint#9", enginePoint)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+enginePoint = APRTrace("APR-Core/features/navigation/Preview.lua:208:enginePoint#9", enginePoint)--[[/APR_DIAG]]
 
 local function append(points, point)
     if not point then return end
     local previous = points[#points]
-    if previous and previous.Coord.x == point.Coord.x and previous.Coord.y == point.Coord.y
-        and previous.instanceID == point.instanceID and not point.breakBefore then
+    if
+        previous
+        and previous.Coord.x == point.Coord.x
+        and previous.Coord.y == point.Coord.y
+        and previous.instanceID == point.instanceID
+        and not point.breakBefore
+    then
         -- A coincident walk must not swallow a mandatory transport/probe or its
         -- discontinuity. An authored objective keeps its real route identity.
         local keep = previous
-        if previous.generated and (not point.generated or (point.kind ~= "walk" and point.kind ~= "arrival")
-            or previous.kind == "walk" or previous.kind == "arrival") then keep = point end
+        if
+            previous.generated
+            and (
+                not point.generated
+                or (point.kind ~= "walk" and point.kind ~= "arrival")
+                or previous.kind == "walk"
+                or previous.kind == "arrival"
+            )
+        then
+            keep = point
+        end
         keep.breakBefore = previous.breakBefore or point.breakBefore
         keep.breakAfter = previous.breakAfter or point.breakAfter
         keep.mandatory = previous.mandatory or point.mandatory
@@ -231,16 +339,28 @@ local function append(points, point)
         return
     end
     points[#points + 1] = point
-end--[[APR_DIAG]]; append = APRTrace("APR-Core/features/navigation/Preview.lua:217:append#10", append)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+append = APRTrace("APR-Core/features/navigation/Preview.lua:217:append#10", append)--[[/APR_DIAG]]
 
 function Preview:BuildRoutePoints(step, index, steps)
-    if not step then step, index, steps = APR:GetCurrentStep() end
+    if not step then
+        step, index, steps = APR:GetCurrentStep()
+    end
     if not step or not index or not steps then return {} end
     local playerMapID = C_Map and C_Map.GetBestMapForUnit and C_Map.GetBestMapForUnit("player")
     local cache = self.routeCache
-    if cache and cache.step == step and cache.steps == steps and cache.index == index
-        and cache.revision == APR.stepRevision and cache.playerMapID == playerMapID
-        and cache.coord == step.Coord and cache.noArrow == step.NoArrow then return cache.points end
+    if
+        cache
+        and cache.step == step
+        and cache.steps == steps
+        and cache.index == index
+        and cache.revision == APR.stepRevision
+        and cache.playerMapID == playerMapID
+        and cache.coord == step.Coord
+        and cache.noArrow == step.NoArrow
+    then
+        return cache.points
+    end
     local definition = APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute]
     local routeMapID = definition and definition.mapID or tonumber((APR.ActiveRoute or ""):match("^(%d+)"))
     local points = {}
@@ -255,25 +375,50 @@ function Preview:BuildRoutePoints(step, index, steps)
             if not coord then break end
             local uiMapID = coord.mapID or zone or current.Zone or routeMapID
             if type(uiMapID) ~= "number" then uiMapID = routeMapID end
-            append(points, self:Point({ Coord = coord, uiMapID = uiMapID,
-                instanceID = current.instanceID, routeIndex = cursor, step = current,
-                kind = current.Waypoint and "waypoint" or "objective" }, false))
+            append(
+                points,
+                self:Point({
+                    Coord = coord,
+                    uiMapID = uiMapID,
+                    instanceID = current.instanceID,
+                    routeIndex = cursor,
+                    step = current,
+                    kind = current.Waypoint and "waypoint" or "objective",
+                }, false)
+            )
             if not current.Waypoint then break end
         end
         cursor = cursor + 1
     end
-    self.routeCache = { step = step, steps = steps, index = index, revision = APR.stepRevision,
-        playerMapID = playerMapID, coord = step.Coord, noArrow = step.NoArrow, points = points }
+    self.routeCache = {
+        step = step,
+        steps = steps,
+        index = index,
+        revision = APR.stepRevision,
+        playerMapID = playerMapID,
+        coord = step.Coord,
+        noArrow = step.NoArrow,
+        points = points,
+    }
     return points
-end--[[APR_DIAG]]; Preview.BuildRoutePoints = APRTrace("APR-Core/features/navigation/Preview.lua:236:Preview:BuildRoutePoints#11", Preview.BuildRoutePoints)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Preview.BuildRoutePoints =
+    APRTrace("APR-Core/features/navigation/Preview.lua:236:Preview:BuildRoutePoints#11", Preview.BuildRoutePoints)--[[/APR_DIAG]]
 
 function Preview:Build(guidance, step, index, steps, cursor)
     local routePoints = self:BuildRoutePoints(step, index, steps)
     local cached = self.guidanceCache
     -- Published guidance is immutable. Arrow and map refreshes can reuse its
     -- points until the queue advances or the authored route cache changes.
-    if cursor and cached and cached.guidance == guidance and cached.cursor == cursor
-        and cached.routePoints == routePoints then return cached.points end
+    if
+        cursor
+        and cached
+        and cached.guidance == guidance
+        and cached.cursor == cursor
+        and cached.routePoints == routePoints
+    then
+        return cached.points
+    end
     local points = {}
     for guidanceIndex = cursor or 1, #(guidance or {}) do
         local entry = guidance[guidanceIndex]
@@ -286,18 +431,26 @@ function Preview:Build(guidance, step, index, steps, cursor)
         if (point or personalAction) and entry.to and kind ~= "walk" and kind ~= "waypoint" and not entry.arrival then
             local arrival = enginePoint(entry.to, entry)
             if arrival then
-                arrival.breakBefore = personalAction == true or (point and point.instanceID ~= nil
-                    and arrival.instanceID ~= nil and point.instanceID ~= arrival.instanceID)
+                arrival.breakBefore = personalAction == true
+                    or (
+                        point
+                        and point.instanceID ~= nil
+                        and arrival.instanceID ~= nil
+                        and point.instanceID ~= arrival.instanceID
+                    )
                 append(points, arrival)
             end
         end
     end
-    for _, point in ipairs(routePoints) do append(points, self:Point(point, false)) end
+    for _, point in ipairs(routePoints) do
+        append(points, self:Point(point, false))
+    end
     if cursor then
         self.guidanceCache = { guidance = guidance, cursor = cursor, routePoints = routePoints, points = points }
     end
     return points
-end--[[APR_DIAG]]; Preview.Build = APRTrace("APR-Core/features/navigation/Preview.lua:270:Preview:Build#12", Preview.Build)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Preview.Build = APRTrace("APR-Core/features/navigation/Preview.lua:270:Preview:Build#12", Preview.Build)--[[/APR_DIAG]]
 
 function Preview:GetPoints()
     local navigation = APR.navigation
@@ -315,36 +468,63 @@ function Preview:GetPoints()
     local sourceSteps = definition and (definition.steps or definition)
     local sourceStep = sourceSteps and index and sourceSteps[index]
     local playerMapID = C_Map and C_Map.GetBestMapForUnit and C_Map.GetBestMapForUnit("player")
-    local queue, cursor, state = navigation and navigation.queue, navigation and navigation.cursor,
-        navigation and navigation.state
+    local queue, cursor, state =
+        navigation and navigation.queue, navigation and navigation.cursor, navigation and navigation.state
     local runtime = APR.runtimeRouteStep
     local coord = runtime and runtime.step and runtime.step.Coord
     local noArrow = runtime and runtime.step and runtime.step.NoArrow
     local cached = self.publishedCache
-    if cached and cached.route == route and cached.index == index and cached.definition == definition
-        and cached.sourceSteps == sourceSteps and cached.sourceStep == sourceStep
-        and cached.revision == APR.stepRevision and cached.playerMapID == playerMapID
-        and cached.queue == queue and cached.cursor == cursor and cached.state == state
-        and cached.runtime == runtime and cached.coord == coord and cached.noArrow == noArrow
-        and cached.routeCache == self.routeCache then return cached.points end
+    if
+        cached
+        and cached.route == route
+        and cached.index == index
+        and cached.definition == definition
+        and cached.sourceSteps == sourceSteps
+        and cached.sourceStep == sourceStep
+        and cached.revision == APR.stepRevision
+        and cached.playerMapID == playerMapID
+        and cached.queue == queue
+        and cached.cursor == cursor
+        and cached.state == state
+        and cached.runtime == runtime
+        and cached.coord == coord
+        and cached.noArrow == noArrow
+        and cached.routeCache == self.routeCache
+    then
+        return cached.points
+    end
 
     -- Resolving the effective route may activate parallel steps. Do it only
     -- when its identity changes, not on every minimap refresh.
     local points = navigation and navigation.GetPreview and navigation:GetPreview() or self:BuildRoutePoints()
     runtime = APR.runtimeRouteStep
-    self.publishedCache = { route = route, index = index, definition = definition, revision = APR.stepRevision,
-        sourceSteps = sourceSteps, sourceStep = sourceStep,
-        playerMapID = playerMapID, queue = queue, cursor = cursor, state = state, runtime = runtime,
+    self.publishedCache = {
+        route = route,
+        index = index,
+        definition = definition,
+        revision = APR.stepRevision,
+        sourceSteps = sourceSteps,
+        sourceStep = sourceStep,
+        playerMapID = playerMapID,
+        queue = queue,
+        cursor = cursor,
+        state = state,
+        runtime = runtime,
         coord = runtime and runtime.step and runtime.step.Coord,
-        noArrow = runtime and runtime.step and runtime.step.NoArrow, routeCache = self.routeCache, points = points }
+        noArrow = runtime and runtime.step and runtime.step.NoArrow,
+        routeCache = self.routeCache,
+        points = points,
+    }
     return points
-end--[[APR_DIAG]]; Preview.GetPoints = APRTrace("APR-Core/features/navigation/Preview.lua:302:Preview:GetPoints#13", Preview.GetPoints)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Preview.GetPoints = APRTrace("APR-Core/features/navigation/Preview.lua:302:Preview:GetPoints#13", Preview.GetPoints)--[[/APR_DIAG]]
 
 function Preview:CanConnect(a, b)
     if not a or not b or a.breakAfter or b.breakBefore then return false end
     if a.instanceID ~= nil and b.instanceID ~= nil and a.instanceID ~= b.instanceID then return false end
     return true
-end--[[APR_DIAG]]; Preview.CanConnect = APRTrace("APR-Core/features/navigation/Preview.lua:343:Preview:CanConnect#14", Preview.CanConnect)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Preview.CanConnect = APRTrace("APR-Core/features/navigation/Preview.lua:343:Preview:CanConnect#14", Preview.CanConnect)--[[/APR_DIAG]]
 
 -- Restrict a segment's parameter interval to one axis of the rectangle.
 -- Scalar bounds avoid allocating temporary tables for every rendered line.
@@ -354,11 +534,14 @@ local function ClipAxis(origin, delta, minimum, maximum, first, last)
         return first, last
     end
     local entry, exit = (minimum - origin) / delta, (maximum - origin) / delta
-    if entry > exit then entry, exit = exit, entry end
+    if entry > exit then
+        entry, exit = exit, entry
+    end
     first, last = math.max(first, entry), math.min(last, exit)
     if first > last then return nil end
     return first, last
-end--[[APR_DIAG]]; ClipAxis = APRTrace("APR-Core/features/navigation/Preview.lua:351:ClipAxis#15", ClipAxis)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+ClipAxis = APRTrace("APR-Core/features/navigation/Preview.lua:351:ClipAxis#15", ClipAxis)--[[/APR_DIAG]]
 
 -- Liang-Barsky clipping for world-map bounds and the minimap's square.
 function Preview:ClipRectangle(ax, ay, bx, by, minX, minY, maxX, maxY)
@@ -368,7 +551,9 @@ function Preview:ClipRectangle(ax, ay, bx, by, minX, minY, maxX, maxY)
     first, last = ClipAxis(ay, dy, minY, maxY, first, last)
     if not first then return nil end
     return ax + first * dx, ay + first * dy, ax + last * dx, ay + last * dy
-end--[[APR_DIAG]]; Preview.ClipRectangle = APRTrace("APR-Core/features/navigation/Preview.lua:364:Preview:ClipRectangle#16", Preview.ClipRectangle)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Preview.ClipRectangle =
+    APRTrace("APR-Core/features/navigation/Preview.lua:364:Preview:ClipRectangle#16", Preview.ClipRectangle)--[[/APR_DIAG]]
 
 -- Clip each quadrant to its own round/square boundary. This supports WoW's
 -- corner/side minimap shapes without pulling off-screen waypoint legs inward.
@@ -381,12 +566,18 @@ function Preview:ClipMinimapSegment(ax, ay, bx, by, shape)
     local cut1, cut2, parts = 1, 1, 1
     if dx ~= 0 then
         local cut = -ax / dx
-        if cut > 0 and cut < 1 then cut1, parts = cut, 2 end
+        if cut > 0 and cut < 1 then
+            cut1, parts = cut, 2
+        end
     end
     if dy ~= 0 then
         local cut = -ay / dy
         if cut > 0 and cut < 1 then
-            if cut < cut1 then cut1, cut2 = cut, cut1 else cut2 = cut end
+            if cut < cut1 then
+                cut1, cut2 = cut, cut1
+            else
+                cut2 = cut
+            end
             parts = parts + 1
         end
     end
@@ -402,10 +593,12 @@ function Preview:ClipMinimapSegment(ax, ay, bx, by, shape)
             -- only if needed; keep the interval local to this segment.
             if circleFirst == nil then
                 local a, b, c = dx * dx + dy * dy, 2 * (ax * dx + ay * dy), ax * ax + ay * ay - 0.81
-                if a == 0 then circleFirst, circleLast = 0, c > 0 and -1 or 1
+                if a == 0 then
+                    circleFirst, circleLast = 0, c > 0 and -1 or 1
                 else
                     local discriminant = b * b - 4 * a * c
-                    if discriminant < 0 then circleFirst, circleLast = 0, -1
+                    if discriminant < 0 then
+                        circleFirst, circleLast = 0, -1
                     else
                         local root = math.sqrt(discriminant)
                         circleFirst, circleLast = (-b - root) / (2 * a), (-b + root) / (2 * a)
@@ -414,8 +607,12 @@ function Preview:ClipMinimapSegment(ax, ay, bx, by, shape)
             end
             low, high = math.max(low, circleFirst), math.min(high, circleLast)
         end
-        if low <= high then first, last = first or low, high end
+        if low <= high then
+            first, last = first or low, high
+        end
     end
     if first == nil then return nil end
     return ax + dx * first, ay + dy * first, ax + dx * last, ay + dy * last
-end--[[APR_DIAG]]; Preview.ClipMinimapSegment = APRTrace("APR-Core/features/navigation/Preview.lua:375:Preview:ClipMinimapSegment#17", Preview.ClipMinimapSegment)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Preview.ClipMinimapSegment =
+    APRTrace("APR-Core/features/navigation/Preview.lua:375:Preview:ClipMinimapSegment#17", Preview.ClipMinimapSegment)--[[/APR_DIAG]]

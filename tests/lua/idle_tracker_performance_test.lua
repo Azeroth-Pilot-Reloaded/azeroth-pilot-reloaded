@@ -15,25 +15,37 @@ function root:GetTop() return top end
 function root:GetBottom() return top - 200 end
 local realGetAnchor, realSnap = tracker.GetAnchor, APR.RefreshSnappedFrames
 local anchors, snaps, appearances = 0, 0, 0
-function tracker:GetAnchor() anchors = anchors + 1; return realGetAnchor(self) end
-function APR:RefreshSnappedFrames() snaps = snaps + 1; return realSnap(self) end
+function tracker:GetAnchor()
+    anchors = anchors + 1
+    return realGetAnchor(self)
+end
+function APR:RefreshSnappedFrames()
+    snaps = snaps + 1
+    return realSnap(self)
+end
 tracker.RefreshAppearance = function() appearances = appearances + 1 end
 tracker:Initialize()
 local function tick(delta) tracker.observer.scripts.OnUpdate(tracker.observer, delta or 0.2) end
 tick()
 local observedState = tracker.layoutObservation
 local initialAnchors, initialSnaps = anchors, snaps
-for _ = 1, 100 do tick() end
-assert(anchors - initialAnchors <= 21 and snaps - initialSnaps <= 21,
-    "Twenty idle seconds cannot perform one hundred complete layouts")
+for _ = 1, 100 do
+    tick()
+end
+assert(
+    anchors - initialAnchors <= 21 and snaps - initialSnaps <= 21,
+    "Twenty idle seconds cannot perform one hundred complete layouts"
+)
 assert(appearances <= 21, "Style checks run at most once a second rather than every geometry poll")
 assert(tracker.layoutObservation == observedState, "Idle geometry probes reuse their storage")
 
 local before = anchors
 top = top - 100
 tick()
-assert(anchors == before + 1 and CurrentStepScreenPanel.point[5] == 465,
-    "A tracker move is followed on the next geometry poll")
+assert(
+    anchors == before + 1 and CurrentStepScreenPanel.point[5] == 465,
+    "A tracker move is followed on the next geometry poll"
+)
 before = anchors
 APR:RefreshSnappedFrames() -- A content/layout change can keep every outer frame dimension unchanged.
 tick()
@@ -62,7 +74,9 @@ profile.currentStepAttachFrameToQuestLog = false
 tick()
 assert(anchors == before and tracker.layoutObservation == nil, "Detached panels do no geometry work")
 local detachedAppearances = appearances
-for _ = 1, 100 do tick() end
+for _ = 1, 100 do
+    tick()
+end
 assert(appearances == detachedAppearances, "Detached panels do no recurring appearance work")
 profile.currentStepAttachFrameToQuestLog = true
 tick()
@@ -73,7 +87,9 @@ CurrentStepScreenPanel:Hide()
 tick()
 assert(anchors == before, "Hidden panels do no geometry work")
 local hiddenAppearances = appearances
-for _ = 1, 100 do tick() end
+for _ = 1, 100 do
+    tick()
+end
 assert(appearances == hiddenAppearances, "Hidden panels do no recurring appearance work")
 CurrentStepScreenPanel:Show()
 tick()
@@ -87,6 +103,10 @@ assert(anchors == before, "CurrentStep stays dormant while the shared observer i
 assert(CurrentStepScreenPanel.scripts.OnUpdate == nil, "The redundant per-frame fallback uninstalls itself")
 profile.enableAddon = false
 local previousAppearances = appearances
-for _ = 1, 10 do tick() end
+for _ = 1, 10 do
+    tick()
+end
 assert(appearances == previousAppearances and anchors == before, "Disabled APR does no style or layout polling")
-print("Idle tracker: cheap geometry probes, bounded safety checks, immediate invalidation and combat/visibility guards passed")
+print(
+    "Idle tracker: cheap geometry probes, bounded safety checks, immediate invalidation and combat/visibility guards passed"
+)

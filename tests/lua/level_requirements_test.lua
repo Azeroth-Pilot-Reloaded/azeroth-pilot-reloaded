@@ -4,26 +4,33 @@ C_UnitAuras = {
     GetPlayerAuraBySpellID = function(id)
         reads = reads + 1
         return auras[id]
-    end
+    end,
 }
-function LibStub() return { GetLocale = function() return { GRIND = "Reach level %d", USE_ITEM = "Use %s" } end } end
+function LibStub()
+    return { GetLocale = function() return { GRIND = "Reach level %d", USE_ITEM = "Use %s" } end }
+end
 
 APR = { interfaceVersion = 120105 }
 dofile("APR-Core/data/models/Enums.lua")
 dofile("APR-Core/utils/PlayerUtils.lua")
 function APR:HasAura(id)
-    reads = reads + 1; return auras[id]
+    reads = reads + 1
+    return auras[id]
 end
 
 function APR:HasAchievement(id)
-    reads = reads + 1; return achievements[id]
+    reads = reads + 1
+    return achievements[id]
 end
 
 local level, xp, maxXP = 87, 0, 1000
 local warMode = false
-C_PvP = { IsWarModeActive = function()
-    reads = reads + 1; return warMode
-end }
+C_PvP = {
+    IsWarModeActive = function()
+        reads = reads + 1
+        return warMode
+    end,
+}
 function UnitLevel() return level end
 
 function UnitXP() return xp end
@@ -38,14 +45,18 @@ local targets = { 88.00, 87.85, 87.75, 87.65, 87.55, 87.45 }
 local eventTargets = { 87.55, 87.45, 87.30, 87.30, 87.18, 86.88 }
 for tier = 0, 5 do
     achievements = {}
-    for n = 1, tier do achievements[42327 + n] = true end
+    for n = 1, tier do
+        achievements[42327 + n] = true
+    end
     for _, eventAura in ipairs({ 0, 1287282, 1214848 }) do
         auras = { [430191] = tier > 0 }
         if eventAura ~= 0 then auras[eventAura] = true end
         local expected = (eventAura ~= 0 and eventTargets or targets)[tier + 1]
         assert(APR:GetLevelProfileTarget("MidnightDelves", true) == expected, "Unexpected bonus tier")
         local before = reads
-        for _ = 1, 1200 do APR:ResolveLevelRequirement("MidnightDelves") end
+        for _ = 1, 1200 do
+            APR:ResolveLevelRequirement("MidnightDelves")
+        end
         assert(reads == before, "Long routes reuse the policy without scanning auras per row")
     end
 end
@@ -62,15 +73,22 @@ local updates, lists = 0, 0
 APR.ActiveRoute = "test"
 function APR:UpdateStep() updates = updates + 1 end
 
-APR.questOrderList = { DelayedUpdate = function(_, force)
-    assert(force); lists = lists + 1
-end }
+APR.questOrderList = {
+    DelayedUpdate = function(_, force)
+        assert(force)
+        lists = lists + 1
+    end,
+}
 auras[1214848], auras[1287282] = nil, nil
 APR:RefreshLevelProfileTargets()
-assert(APR:GetLevelProfileTarget("MidnightDelves") == 87.85 and updates == 1 and lists == 1,
-    "Event expiry raises the target and refreshes the guide")
+assert(
+    APR:GetLevelProfileTarget("MidnightDelves") == 87.85 and updates == 1 and lists == 1,
+    "Event expiry raises the target and refreshes the guide"
+)
 assert(not APR:AreConditionalFiltersMet({ MinLevel = "MidnightDelves" }))
-for _ = 1, 100 do APR:RefreshLevelProfileTargets() end
+for _ = 1, 100 do
+    APR:RefreshLevelProfileTargets()
+end
 assert(updates == 1 and lists == 1, "Unrelated aura changes do not rebuild the guide")
 auras[430191] = nil
 assert(APR:GetLevelProfileTarget("MidnightDelves", true) == 88.00, "An inactive mentor aura grants no bonus")
@@ -84,8 +102,10 @@ APR.LevelRequirementProfiles.OtherRoute = {
     levels = { [0] = 70, [10] = 69.5, [20] = 69 },
 }
 auras = { [123] = true }
-assert(APR:ResolveLevelRequirement("OtherRoute") == 69.5,
-    "Select the lower breakpoint and do not double-count duplicate sources")
+assert(
+    APR:ResolveLevelRequirement("OtherRoute") == 69.5,
+    "Select the lower breakpoint and do not double-count duplicate sources"
+)
 assert(APR:GetLevelProfileTarget("MidnightDelves", true) == 88.00, "Profiles use only their configured bonuses")
 APR.LevelRequirementProfiles.FixedRoute = { levels = { [0] = 60 } }
 assert(APR:ResolveLevelRequirement("FixedRoute") == 60, "A profile may omit bonus sources")
@@ -98,7 +118,8 @@ assert(updates == 1 and lists == 1, "Multiple changed profiles trigger a single 
 assert(APR:ResolveLevelRequirement("OtherRoute") == 70)
 assert(APR:ResolveLevelRequirement("MidnightDelves") == 87.45)
 print(
-"Level profiles: independent configuration, breakpoints, duplicate sources, unknown names and batched refresh passed")
+    "Level profiles: independent configuration, breakpoints, duplicate sources, unknown names and batched refresh passed"
+)
 
 -- Both mentorship sources may be listed; their disjoint level ranges prevent stacking.
 APR.LevelRequirementProfiles.AllLevelMentorship = {
@@ -109,22 +130,30 @@ local legacyIDs = { 19470, 19460, 19475, 19476, 19477 }
 auras = { [430191] = true }
 for tier = 1, 5 do
     achievements = { [42332] = true }
-    for n = 1, tier do achievements[legacyIDs[n]] = true end
+    for n = 1, tier do
+        achievements[legacyIDs[n]] = true
+    end
     level = 79
-    assert(APR:GetLevelProfileTarget("AllLevelMentorship", true) == 90 - tier,
-        "Below 80 only the legacy achievement tier applies")
+    assert(
+        APR:GetLevelProfileTarget("AllLevelMentorship", true) == 90 - tier,
+        "Below 80 only the legacy achievement tier applies"
+    )
 end
 achievements = { [19477] = true, [42328] = true }
 level = 79
 assert(APR:GetLevelProfileTarget("AllLevelMentorship", true) == 85)
 level = 80
-assert(APR:GetLevelProfileTarget("AllLevelMentorship") == 89,
-    "Reaching 80 invalidates the cache and selects the Midnight tier")
+assert(
+    APR:GetLevelProfileTarget("AllLevelMentorship") == 89,
+    "Reaching 80 invalidates the cache and selects the Midnight tier"
+)
 level = 89
 assert(APR:GetLevelProfileTarget("AllLevelMentorship") == 89)
 level = 90
-assert(APR:GetLevelProfileTarget("AllLevelMentorship") == 90,
-    "Neither mentorship source grants XP beyond its level cap")
+assert(
+    APR:GetLevelProfileTarget("AllLevelMentorship") == 90,
+    "Neither mentorship source grants XP beyond its level cap"
+)
 level = 79
 auras = {}
 assert(APR:GetLevelProfileTarget("AllLevelMentorship") == 90, "Achievements alone do not activate mentorship")
@@ -137,14 +166,18 @@ local warTargets = { 87.65, 87.55, 87.45, 87.30, 87.30, 87.18 }
 local bothTargets = { 87.30, 87.18, 86.88, 86.68, 86.38, 86.18 }
 for tier = 0, 5 do
     achievements = {}
-    for n = 1, tier do achievements[42327 + n] = true end
+    for n = 1, tier do
+        achievements[42327 + n] = true
+    end
     for _, eventAura in ipairs({ 0, 1287282, 1214848 }) do
         auras = { [430191] = tier > 0 }
         if eventAura ~= 0 then auras[eventAura] = true end
         local expected = (eventAura ~= 0 and bothTargets or warTargets)[tier + 1]
         assert(APR:GetLevelProfileTarget("MidnightDelves", true) == expected)
         local before = reads
-        for _ = 1, 1200 do APR:ResolveLevelRequirement("MidnightDelves") end
+        for _ = 1, 1200 do
+            APR:ResolveLevelRequirement("MidnightDelves")
+        end
         assert(reads == before, "War Mode checks are cached too")
     end
 end
@@ -175,22 +208,26 @@ for _, id in ipairs({ 1269517, 423860 }) do
 end
 for _, id in ipairs({ 1269518, 1229050, 423861 }) do
     auras = { [id] = { applications = 0 }, [1269517] = { applications = 3 } }
-    assert(APR:GetLevelProfileTarget("MidnightDelves", true) == 87.30,
-        "Mastery replaces Knowledge rather than adding to it")
+    assert(
+        APR:GetLevelProfileTarget("MidnightDelves", true) == 87.30,
+        "Mastery replaces Knowledge rather than adding to it"
+    )
 end
 auras = { [1269517] = { applications = 2 }, [423860] = { applications = 3 } }
-assert(APR:GetLevelProfileTarget("MidnightDelves", true) == 87.65,
-    "Knowledge variants use the highest stack bonus")
+assert(APR:GetLevelProfileTarget("MidnightDelves", true) == 87.65, "Knowledge variants use the highest stack bonus")
 auras[1269518], auras[1229050], auras[423861] = {}, {}, {}
-assert(APR:GetLevelProfileTarget("MidnightDelves", true) == 87.30,
-    "Mastery variants do not stack")
+assert(APR:GetLevelProfileTarget("MidnightDelves", true) == 87.30, "Mastery variants do not stack")
 auras[430191], auras[1287282], auras[1214848] = true, true, true
 achievements[42332] = true
 warMode = true
-assert(APR:GetLevelProfileTarget("MidnightDelves", true) == 84.68,
-    "The table covers the combined 90% bonus used in this scenario")
+assert(
+    APR:GetLevelProfileTarget("MidnightDelves", true) == 84.68,
+    "The table covers the combined 90% bonus used in this scenario"
+)
 local before = reads
-for _ = 1, 1200 do APR:ResolveLevelRequirement("MidnightDelves") end
+for _ = 1, 1200 do
+    APR:ResolveLevelRequirement("MidnightDelves")
+end
 assert(reads == before, "Timeways stacks are cached across route rows")
 warMode = false
 achievements = {}
@@ -266,7 +303,8 @@ auras = { [430191] = true, [1287282] = true, [1269518] = {}, [1221184] = true, [
 achievements, warMode = { [42332] = true }, true
 assert(APR:GetLevelProfileTarget("MidnightDelves", true) == 83.68, "Maximum configured bonus is 110%")
 print(
-"XP consumables: active bonuses, bag-only reminders, variants, levels, expiry, buttons and coalesced refresh passed")
+    "XP consumables: active bonuses, bag-only reminders, variants, levels, expiry, buttons and coalesced refresh passed"
+)
 
 -- Absolute XP offsets use the client XP total, independently of bonus profiles.
 do

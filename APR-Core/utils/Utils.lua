@@ -16,7 +16,8 @@ function APR:Contains(list, x)
         end
     end
     return false
-end--[[APR_DIAG]]; APR.Contains = APRTrace("APR-Core/utils/Utils.lua:12:APR:Contains#1", APR.Contains)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.Contains = APRTrace("APR-Core/utils/Utils.lua:12:APR:Contains#1", APR.Contains)--[[/APR_DIAG]]
 
 function APR:ContainsAny(list, candidates)
     if not list or not candidates then
@@ -28,11 +29,13 @@ function APR:ContainsAny(list, candidates)
         end
     end
     return false
-end--[[APR_DIAG]]; APR.ContainsAny = APRTrace("APR-Core/utils/Utils.lua:21:APR:ContainsAny#2", APR.ContainsAny)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.ContainsAny = APRTrace("APR-Core/utils/Utils.lua:21:APR:ContainsAny#2", APR.ContainsAny)--[[/APR_DIAG]]
 
 function APR:IsTableEmpty(table)
     return table and next(table) == nil or false
-end--[[APR_DIAG]]; APR.IsTableEmpty = APRTrace("APR-Core/utils/Utils.lua:33:APR:IsTableEmpty#3", APR.IsTableEmpty)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.IsTableEmpty = APRTrace("APR-Core/utils/Utils.lua:33:APR:IsTableEmpty#3", APR.IsTableEmpty)--[[/APR_DIAG]]
 
 local function NormalizeHexColorCode(hex)
     if not hex then
@@ -52,7 +55,8 @@ local function NormalizeHexColorCode(hex)
     end
 
     return normalized
-end--[[APR_DIAG]]; NormalizeHexColorCode = APRTrace("APR-Core/utils/Utils.lua:37:NormalizeHexColorCode#4", NormalizeHexColorCode)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+NormalizeHexColorCode = APRTrace("APR-Core/utils/Utils.lua:37:NormalizeHexColorCode#4", NormalizeHexColorCode)--[[/APR_DIAG]]
 
 function APR:WrapTextInColorCode(text, hex)
     if text == nil then
@@ -71,16 +75,19 @@ function APR:WrapTextInColorCode(text, hex)
     end
 
     return "|c" .. normalized .. asText .. "|r"
-end--[[APR_DIAG]]; APR.WrapTextInColorCode = APRTrace("APR-Core/utils/Utils.lua:57:APR:WrapTextInColorCode#5", APR.WrapTextInColorCode)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.WrapTextInColorCode = APRTrace("APR-Core/utils/Utils.lua:57:APR:WrapTextInColorCode#5", APR.WrapTextInColorCode)--[[/APR_DIAG]]
 
 function APR:FormatMilliseconds(value, precise)
     return string.format(precise and "%.3f" or "%.2f", value) .. " " .. MILLISECONDS_ABBR
-end--[[APR_DIAG]]; APR.FormatMilliseconds = APRTrace("APR-Core/utils/Utils.lua:76:APR:FormatMilliseconds#6", APR.FormatMilliseconds)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.FormatMilliseconds = APRTrace("APR-Core/utils/Utils.lua:76:APR:FormatMilliseconds#6", APR.FormatMilliseconds)--[[/APR_DIAG]]
 
 function APR:FormatSeconds(value)
     -- FontStrings resolve Blizzard's |4 singular/plural markers on the game client.
     return string.format(SECONDS_ABBR, math.floor(value + 0.5))
-end--[[APR_DIAG]]; APR.FormatSeconds = APRTrace("APR-Core/utils/Utils.lua:80:APR:FormatSeconds#7", APR.FormatSeconds)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.FormatSeconds = APRTrace("APR-Core/utils/Utils.lua:80:APR:FormatSeconds#7", APR.FormatSeconds)--[[/APR_DIAG]]
 
 function APR:TrimString(text)
     if text == nil then
@@ -96,7 +103,8 @@ function APR:TrimString(text)
     end
 
     return (tostring(text):match("^%s*(.-)%s*$"))
-end--[[APR_DIAG]]; APR.TrimString = APRTrace("APR-Core/utils/Utils.lua:85:APR:TrimString#8", APR.TrimString)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.TrimString = APRTrace("APR-Core/utils/Utils.lua:85:APR:TrimString#8", APR.TrimString)--[[/APR_DIAG]]
 
 function APR:RemoveContiguousSpaces(text)
     if text == nil then
@@ -108,7 +116,9 @@ function APR:RemoveContiguousSpaces(text)
     end
 
     return tostring(text):gsub("%s+", " ")
-end--[[APR_DIAG]]; APR.RemoveContiguousSpaces = APRTrace("APR-Core/utils/Utils.lua:101:APR:RemoveContiguousSpaces#9", APR.RemoveContiguousSpaces)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.RemoveContiguousSpaces =
+    APRTrace("APR-Core/utils/Utils.lua:101:APR:RemoveContiguousSpaces#9", APR.RemoveContiguousSpaces)--[[/APR_DIAG]]
 
 -- Objective text is literal, including punctuation that has meaning in Lua patterns.
 function APR:ContainsText(haystack, needle)
@@ -117,11 +127,13 @@ function APR:ContainsText(haystack, needle)
     end
 
     return string.find(tostring(haystack), tostring(needle), 1, true) ~= nil
-end--[[APR_DIAG]]; APR.ContainsText = APRTrace("APR-Core/utils/Utils.lua:114:APR:ContainsText#10", APR.ContainsText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.ContainsText = APRTrace("APR-Core/utils/Utils.lua:114:APR:ContainsText#10", APR.ContainsText)--[[/APR_DIAG]]
 
 function APR:Clamp(value, minimum, maximum)
     return math.max(minimum, math.min(maximum, value))
-end--[[APR_DIAG]]; APR.Clamp = APRTrace("APR-Core/utils/Utils.lua:122:APR:Clamp#11", APR.Clamp)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.Clamp = APRTrace("APR-Core/utils/Utils.lua:122:APR:Clamp#11", APR.Clamp)--[[/APR_DIAG]]
 
 -- Feature availability varies independently of the client's interface number.
 -- The protected call is needed on clients without C_EventUtils, where unknown events throw.
@@ -130,12 +142,20 @@ function APR:RegisterSupportedEvent(frame, event, unit)
     local register = unit and frame.RegisterUnitEvent or frame.RegisterEvent
     if C_EventUtils and C_EventUtils.IsEventValid then
         if not C_EventUtils.IsEventValid(event) then return false end
-        if unit then register(frame, event, unit) else register(frame, event) end
+        if unit then
+            register(frame, event, unit)
+        else
+            register(frame, event)
+        end
         return true
     end
-    if unit then return --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](register, frame, event, unit) end
-    return --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](register, frame, event)
-end--[[APR_DIAG]]; APR.RegisterSupportedEvent = APRTrace("APR-Core/utils/Utils.lua:128:APR:RegisterSupportedEvent#12", APR.RegisterSupportedEvent)--[[/APR_DIAG]]
+    if unit then
+        return  --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](register, frame, event, unit)
+    end
+    return  --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](register, frame, event)
+end--[[APR_DIAG]]
+APR.RegisterSupportedEvent =
+    APRTrace("APR-Core/utils/Utils.lua:128:APR:RegisterSupportedEvent#12", APR.RegisterSupportedEvent)--[[/APR_DIAG]]
 
 function APR:StripHyperlinks(text)
     if text == nil then
@@ -147,7 +167,8 @@ function APR:StripHyperlinks(text)
     end
 
     return tostring(text)
-end--[[APR_DIAG]]; APR.StripHyperlinks = APRTrace("APR-Core/utils/Utils.lua:140:APR:StripHyperlinks#13", APR.StripHyperlinks)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.StripHyperlinks = APRTrace("APR-Core/utils/Utils.lua:140:APR:StripHyperlinks#13", APR.StripHyperlinks)--[[/APR_DIAG]]
 
 function APR:GetSettingsProfile()
     return self.settings and self.settings.profile or nil
@@ -175,7 +196,8 @@ end
 --- @return boolean True if mapID is valid (non-nil and ~= 0)
 function APR:IsValidMapID(mapID)
     return mapID ~= nil and mapID ~= 0
-end--[[APR_DIAG]]; APR.IsValidMapID = APRTrace("APR-Core/utils/Utils.lua:176:APR:IsValidMapID#16", APR.IsValidMapID)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.IsValidMapID = APRTrace("APR-Core/utils/Utils.lua:176:APR:IsValidMapID#16", APR.IsValidMapID)--[[/APR_DIAG]]
 
 function APR:Debug(msg, data, force)
     if APRInstrumentation then
@@ -192,8 +214,10 @@ function APR:Debug(msg, data, force)
             APR:Debug(msg, value, force)
         end
     elseif data then
-        print(APR:WrapTextWithAppearanceColor(tostring(msg), "general", "accent") .. " - ",
-            APR:WrapTextWithAppearanceColor(tostring(data), "general", "success"))
+        print(
+            APR:WrapTextWithAppearanceColor(tostring(msg), "general", "accent") .. " - ",
+            APR:WrapTextWithAppearanceColor(tostring(data), "general", "success")
+        )
     else
         print(APR:WrapTextWithAppearanceColor(tostring(msg), "general", "accent"))
     end
@@ -213,9 +237,9 @@ end
 --- @param errorMessage string
 --- @param data any
 function APR:PrintError(errorMessage, data)
-    if (errorMessage and type(errorMessage) == "string") then
-        local errorText = APR:WrapTextWithAppearanceColor(string.format(L["ERROR_MESSAGE"], errorMessage),
-            "general", "error")
+    if errorMessage and type(errorMessage) == "string" then
+        local errorText =
+            APR:WrapTextWithAppearanceColor(string.format(L["ERROR_MESSAGE"], errorMessage), "general", "error")
         if data then
             DEFAULT_CHAT_FRAME:AddMessage(errorText .. " - " .. tostring(data))
         else
@@ -224,7 +248,8 @@ function APR:PrintError(errorMessage, data)
         local color = APR:GetTextColor("general", "error")
         UIErrorsFrame:AddMessage(errorMessage, color[1], color[2], color[3], color[4], 5)
     end
-end--[[APR_DIAG]]; APR.PrintError = APRTrace("APR-Core/utils/Utils.lua:215:APR:PrintError#19", APR.PrintError)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.PrintError = APRTrace("APR-Core/utils/Utils.lua:215:APR:PrintError#19", APR.PrintError)--[[/APR_DIAG]]
 
 --- Display zone detection debug info in chat
 --- @param msg string
@@ -255,13 +280,16 @@ function APR:PrintInfo(msg, data)
                 APR:PrintInfo(msg, value)
             end
         elseif data then
-            print(APR:WrapTextWithAppearanceColor(tostring(msg), "general", "accent") .. " - ",
-                APR:WrapTextWithAppearanceColor(tostring(data), "general", "success"))
+            print(
+                APR:WrapTextWithAppearanceColor(tostring(msg), "general", "accent") .. " - ",
+                APR:WrapTextWithAppearanceColor(tostring(data), "general", "success")
+            )
         else
             print(APR:WrapTextWithAppearanceColor(tostring(msg), "general", "accent"))
         end
     end
-end--[[APR_DIAG]]; APR.PrintInfo = APRTrace("APR-Core/utils/Utils.lua:246:APR:PrintInfo#21", APR.PrintInfo)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.PrintInfo = APRTrace("APR-Core/utils/Utils.lua:246:APR:PrintInfo#21", APR.PrintInfo)--[[/APR_DIAG]]
 
 -- Diagnostic output only: cycles/deep branches become markers, so this is not an export format.
 function APR:TableToDebugString(value, skipKey, depth, visited)
@@ -272,10 +300,10 @@ function APR:TableToDebugString(value, skipKey, depth, visited)
     depth = depth or 0
     visited = visited or {}
     if visited[value] then
-        return "\"<circular>\""
+        return '"<circular>"'
     end
     if depth > 10 then
-        return "\"<max-depth>\""
+        return '"<max-depth>"'
     end
 
     visited[value] = true
@@ -333,7 +361,10 @@ function APR:FormatDebugTable(value, entryLimit)
         visited[item] = true
         local keys, truncated, scanned = {}, false, 0
         for key in pairs(item) do
-            if entries + scanned >= entryLimit then truncated = true; break end
+            if entries + scanned >= entryLimit then
+                truncated = true
+                break
+            end
             scanned = scanned + 1
             if available(key) and (type(key) == "number" or type(key) == "string") then
                 keys[#keys + 1] = key
@@ -376,7 +407,8 @@ function APR:DeepCopyTable(value, copies)
         copy[copiedKey] = copiedChild
     end
     return copy
-end--[[APR_DIAG]]; APR.DeepCopyTable = APRTrace("APR-Core/utils/Utils.lua:363:APR:DeepCopyTable#27", APR.DeepCopyTable)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.DeepCopyTable = APRTrace("APR-Core/utils/Utils.lua:363:APR:DeepCopyTable#27", APR.DeepCopyTable)--[[/APR_DIAG]]
 
 -- Fold complete UTF-8 characters, never individual bytes of accented letters.
 local searchAccents = {
@@ -446,11 +478,14 @@ local function NormalizeSearchCharacter(character)
         return ""
     end
     return searchAccents[character] or character
-end--[[APR_DIAG]]; NormalizeSearchCharacter = APRTrace("APR-Core/utils/Utils.lua:443:NormalizeSearchCharacter#28", NormalizeSearchCharacter)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+NormalizeSearchCharacter =
+    APRTrace("APR-Core/utils/Utils.lua:443:NormalizeSearchCharacter#28", NormalizeSearchCharacter)--[[/APR_DIAG]]
 
 function APR:NormalizeSearchText(value)
     return ((value or ""):gsub("[%z\1-\127\194-\244][\128-\191]*", NormalizeSearchCharacter):lower())
-end--[[APR_DIAG]]; APR.NormalizeSearchText = APRTrace("APR-Core/utils/Utils.lua:451:APR:NormalizeSearchText#29", APR.NormalizeSearchText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.NormalizeSearchText = APRTrace("APR-Core/utils/Utils.lua:451:APR:NormalizeSearchText#29", APR.NormalizeSearchText)--[[/APR_DIAG]]
 
 --- Compare two ordered string lists.
 ---@param a table|nil
@@ -471,8 +506,9 @@ function APR:AreOrderedStringListsEqual(a, b)
     end
 
     return true
-end--[[APR_DIAG]]; APR.AreOrderedStringListsEqual = APRTrace("APR-Core/utils/Utils.lua:459:APR:AreOrderedStringListsEqual#30", APR.AreOrderedStringListsEqual)--[[/APR_DIAG]]
-
+end--[[APR_DIAG]]
+APR.AreOrderedStringListsEqual =
+    APRTrace("APR-Core/utils/Utils.lua:459:APR:AreOrderedStringListsEqual#30", APR.AreOrderedStringListsEqual)--[[/APR_DIAG]]
 
 -- Preserve APR's existing group protocol; keep transport framing out of window code.
 function APR:SendAddonMessageSplit(prefix, fullMessage, channel, target, onComplete)
@@ -484,7 +520,8 @@ function APR:SendAddonMessageSplit(prefix, fullMessage, channel, target, onCompl
         allSent = allSent and didSend
         remaining = remaining - 1
         if remaining == 0 and onComplete then onComplete(allSent) end
-    end--[[APR_DIAG]]; OnFragmentSent = APRTrace("APR-Core/utils/Utils.lua:483:OnFragmentSent#32", OnFragmentSent)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    OnFragmentSent = APRTrace("APR-Core/utils/Utils.lua:483:OnFragmentSent#32", OnFragmentSent)--[[/APR_DIAG]]
     APR:Debug("Splitting message", { msgID = msgID, totalParts = total })
 
     for i = 1, total do
@@ -503,4 +540,6 @@ function APR:SendAddonMessageSplit(prefix, fullMessage, channel, target, onCompl
         end
     end
     if total == 0 and onComplete then onComplete(true) end
-end--[[APR_DIAG]]; APR.SendAddonMessageSplit = APRTrace("APR-Core/utils/Utils.lua:478:APR:SendAddonMessageSplit#31", APR.SendAddonMessageSplit)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.SendAddonMessageSplit =
+    APRTrace("APR-Core/utils/Utils.lua:478:APR:SendAddonMessageSplit#31", APR.SendAddonMessageSplit)--[[/APR_DIAG]]

@@ -30,14 +30,18 @@ local function expectLayers(first)
         assert(path[index + 1] == "Layer " .. level .. " right")
         index = index + 2
     end
-    assert(path[index] == "Requested route" and #path == index,
-        "Prerequisite ordering, existing selections and the requested route stay unchanged")
+    assert(
+        path[index] == "Requested route" and #path == index,
+        "Prerequisite ordering, existing selections and the requested route stay unchanged"
+    )
 end
 APRCustomPath.player = { "Existing selection" }
 assert(APR:AddRouteToCustomPathByKey("root"))
 expectLayers(1)
-assert(expansions == depth * 2 + 1,
-    "Each declaration in a shared prerequisite graph is expanded once, got " .. expansions)
+assert(
+    expansions == depth * 2 + 1,
+    "Each declaration in a shared prerequisite graph is expanded once, got " .. expansions
+)
 assert(clock < 1.3, "A small diamond graph cannot amplify one query into hundreds of simulated milliseconds")
 
 expansions = 0
@@ -60,15 +64,20 @@ route("leaf", "Leaf")
 APRCustomPath.player = {}
 expansions = 0
 assert(APR:AddRouteToCustomPathByKey("cycle-a"))
-assert(table.concat(APRCustomPath.player, ",") == "Leaf,Cycle B,Cycle A" and expansions == 3,
-    "Cycles, repeated edges and absent prerequisites remain finite and preserve dependency order")
+assert(
+    table.concat(APRCustomPath.player, ",") == "Leaf,Cycle B,Cycle A" and expansions == 3,
+    "Cycles, repeated edges and absent prerequisites remain finite and preserve dependency order"
+)
 local unchanged = APRCustomPath.player
 assert(not APR:AddRouteToCustomPathByKey("absent") and APRCustomPath.player == unchanged)
 
 -- A failed call leaves no persistent traversal marks that could poison retry.
 local realData, fail = APR.GetRouteData, true
 function APR:GetRouteData(key)
-    if fail and key == "leaf" then fail = false; error("Synthetic lookup unavailable") end
+    if fail and key == "leaf" then
+        fail = false
+        error("Synthetic lookup unavailable")
+    end
     return realData(self, key)
 end
 APRCustomPath.player = {}
@@ -76,4 +85,6 @@ local ok, err = pcall(APR.AddRouteToCustomPathByKey, APR, "cycle-a")
 assert(not ok and err:find("Synthetic lookup unavailable", 1, true))
 assert(APR:AddRouteToCustomPathByKey("cycle-a"))
 assert(table.concat(APRCustomPath.player, ",") == "Leaf,Cycle B,Cycle A")
-print("Prerequisite graphs: shared diamonds expanded once, stable order/cycles, live eligibility and failure retry passed")
+print(
+    "Prerequisite graphs: shared diamonds expanded once, stable order/cycles, live eligibility and failure retry passed"
+)

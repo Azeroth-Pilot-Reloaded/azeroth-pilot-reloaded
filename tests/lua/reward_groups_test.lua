@@ -1,9 +1,17 @@
 -- Reserved rewards use reusable condition semantics on synthetic guides.
 local locale = setmetatable({}, { __index = function(_, key) return key end })
-function LibStub() return { GetLocale = function() return locale end } end
-function wipe(value) for key in pairs(value) do value[key] = nil end end
+function LibStub()
+    return { GetLocale = function() return locale end }
+end
+function wipe(value)
+    for key in pairs(value) do
+        value[key] = nil
+    end
+end
 function tContains(values, value)
-    for _, entry in ipairs(values) do if entry == value then return true end end
+    for _, entry in ipairs(values) do
+        if entry == value then return true end
+    end
     return false
 end
 local level, zone = 50.5, 101
@@ -31,20 +39,29 @@ function APR:IsDelveRoute() return false end
 for _, size in ipairs({ 1, 2, 5 }) do
     local key = "fixture-rewards-" .. size
     local rewards, group = {}, { steps = {} }
-    local route = { label = "Arbitrary reward guide " .. size, steps = { { Note = { "Main" } } }, parallelSteps = { group } }
+    local route =
+        { label = "Arbitrary reward guide " .. size, steps = { { Note = { "Main" } } }, parallelSteps = { group } }
     for index = 1, size do
         local quest = 1000 + index
         rewards[index] = quest
         local function handin()
-            return { Done = { quest }, MinLevel = "FixtureRewards", MaxLevel = 51,
-                Zones = { 101 }, IsQuestReadyForTurnIn = quest, IsQuestUncompleted = quest }
+            return {
+                Done = { quest },
+                MinLevel = "FixtureRewards",
+                MaxLevel = 51,
+                Zones = { 101 },
+                IsQuestReadyForTurnIn = quest,
+                IsQuestUncompleted = quest,
+            }
         end
         group.steps[index] = handin()
         route.steps[#route.steps + 1] = handin()
     end
     route.steps[#route.steps + 1] = { RouteCompleted = true }
     local alternatives = {}
-    for index, quest in ipairs(rewards) do alternatives[index] = { IsQuestReadyForTurnIn = quest } end
+    for index, quest in ipairs(rewards) do
+        alternatives[index] = { IsQuestReadyForTurnIn = quest }
+    end
     group.conditions = { MinLevel = "FixtureRewards", MaxLevel = 51, Zones = { 101 }, AnyOf = alternatives }
     APR.RouteQuestStepList[key] = route
     local function reset()
@@ -62,7 +79,10 @@ for _, size in ipairs({ 1, 2, 5 }) do
         zone, level = 102, 50.5
         assert(not APR:AreConditionalFiltersMet(group.conditions) and APR:IsQuestTurnInDeferred(quest))
         zone = 101
-        assert(APR:AreConditionalFiltersMet(group.conditions), "One ready quest enables the group despite absent siblings")
+        assert(
+            APR:AreConditionalFiltersMet(group.conditions),
+            "One ready quest enables the group despite absent siblings"
+        )
         assert(not APR:IsQuestTurnInDeferred(quest))
         for siblingIndex, step in ipairs(group.steps) do
             assert(APR:AreConditionalFiltersMet(step) == (siblingIndex == index))
@@ -72,7 +92,10 @@ for _, size in ipairs({ 1, 2, 5 }) do
         assert(APR:GetRouteSteps(key) == expanded)
         assert(APR:AreConditionalFiltersMet(route.steps[index + 1]))
         ready[quest] = nil
-        assert(not APR:AreConditionalFiltersMet(route.steps[index + 1]), "An unfinished reward cannot block the fallback")
+        assert(
+            not APR:AreConditionalFiltersMet(route.steps[index + 1]),
+            "An unfinished reward cannot block the fallback"
+        )
         ready[quest], complete[quest] = true, true
         assert(not APR:AreConditionalFiltersMet(route.steps[index + 1]), "A spent reward is skipped")
         complete[quest], level = nil, 51
@@ -81,7 +104,9 @@ for _, size in ipairs({ 1, 2, 5 }) do
         assert(not APR:AreConditionalFiltersMet(group.conditions), "The maximum level ends the reward circuit")
     end
     reset()
-    for _, quest in ipairs(rewards) do active[quest], ready[quest] = true, true end
+    for _, quest in ipairs(rewards) do
+        active[quest], ready[quest] = true, true
+    end
     assert(APR:AreConditionalFiltersMet(group.conditions))
     assert(#APR:GetRouteSteps(key) == #route.steps + size)
     reset()

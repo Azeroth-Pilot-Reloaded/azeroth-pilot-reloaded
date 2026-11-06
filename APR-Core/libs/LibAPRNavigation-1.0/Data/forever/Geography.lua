@@ -8,10 +8,12 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "geography", {
         UnmappedInstances = { [449] = true, [450] = true },
         -- Both platforms share the tram's world/UI map. Name the city served
         -- by each arrival platform, including nearby quest givers.
-        TransportDestinations = { tram = {
-            { instanceID = 369, x = 69.22769927979, y = 10.39319992065, radius = 150, mapID = 1455 },
-            { instanceID = 369, x = 45.09560012817, y = 2490.5200195312, radius = 150, mapID = 1453 },
-        } },
+        TransportDestinations = {
+            tram = {
+                { instanceID = 369, x = 69.22769927979, y = 10.39319992065, radius = 150, mapID = 1455 },
+                { instanceID = 369, x = 45.09560012817, y = 2490.5200195312, radius = 150, mapID = 1453 },
+            },
+        },
         ContinentMapOverrides = {},
         IsolatedAreas = {
             [1441] = "forever:thousand-needles",

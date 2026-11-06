@@ -19,8 +19,8 @@ local function start(step)
     serial = serial + 1
     local route = "choice-contract-" .. serial
     step.Note = step.Note or "Synthetic choice instruction"
-    APR.RouteQuestStepList[route] = { label = "Synthetic choice", mapID = 10,
-        steps = { step, { Note = "Choice completed" } } }
+    APR.RouteQuestStepList[route] =
+        { label = "Synthetic choice", mapID = 10, steps = { step, { Note = "Choice completed" } } }
     APRData.player[route] = 1
     APRCustomPath.player[#APRCustomPath.player + 1] = route
     assert(APR:ActivateRoute(route, "choice_test"))
@@ -43,7 +43,11 @@ local function run(name, test)
     APR.routeValidationPending, APR.routeValidationFailed = nil, nil
     H.errors = {}
     local ok, err = pcall(test)
-    if ok then passed = passed + 1 else failures[#failures + 1] = name .. ": " .. tostring(err) end
+    if ok then
+        passed = passed + 1
+    else
+        failures[#failures + 1] = name .. ": " .. tostring(err)
+    end
     -- Continue independent cases so one rejected boundary does not hide the
     -- behavior of the other choice type or the native Loa mapping.
     onResponse = nil
@@ -113,9 +117,13 @@ for _, boundary in ipairs({ "disabled option", "disabled button", "empty buttons
     run(boundary, function()
         local route = start({ Brewery = 61 })
         local option = offered(61, 6101)
-        if boundary == "disabled option" then option.disabledOption = true
-        elseif boundary == "disabled button" then option.buttons[1].disabled = true
-        else option.buttons = {} end
+        if boundary == "disabled option" then
+            option.disabledOption = true
+        elseif boundary == "disabled button" then
+            option.buttons[1].disabled = true
+        else
+            option.buttons = {}
+        end
         choice = { options = { option } }
         update()
         assert(#sent == 0, "An unavailable native response must not be sent")
@@ -133,8 +141,11 @@ end
 run("synchronous native close changes context", function()
     local previous = start({ SparringRing = 71 })
     local replacement = "choice-replacement-during-close"
-    APR.RouteQuestStepList[replacement] = { label = "Synthetic replacement", mapID = 10,
-        steps = { { Note = "Keep this instruction" }, { Note = "Replacement finish" } } }
+    APR.RouteQuestStepList[replacement] = {
+        label = "Synthetic replacement",
+        mapID = 10,
+        steps = { { Note = "Keep this instruction" }, { Note = "Replacement finish" } },
+    }
     APRData.player[replacement] = 1
     APRCustomPath.player[#APRCustomPath.player + 1] = replacement
     choice = { options = { offered(71, 7101) } }
@@ -151,8 +162,10 @@ end)
 local function clearProof()
     H.quests, H.order, H.rewarded, APR.ActiveQuests = {}, {}, {}, {}
 end
-for _, mapping in ipairs({ { loa = 1, quest = 47439, opposite = 47440 },
-    { loa = 2, quest = 47440, opposite = 47439 } }) do
+for _, mapping in ipairs({
+    { loa = 1, quest = 47439, opposite = 47440 },
+    { loa = 2, quest = 47440, opposite = 47439 },
+}) do
     run("PickedLoa " .. mapping.loa .. " accepted", function()
         clearProof()
         local route = start({ PickedLoa = mapping.loa })

@@ -3,23 +3,48 @@ local Fixture = {}
 
 function Fixture.New(options)
     options = options or {}
-    local env = {now = 100, timers = {}, joined = {}, left = {}, sent = {}, frames = {}, errors = {},
-        id = options.prejoined and 7 or 0, restricted = options.restricted == true, map = 501, instance = false,
-        inWorld = options.inWorld ~= false, combat = options.combat == true, legacyID = options.legacyVersion and 9 or 0,
-        unrelatedChannels = {General = 1, Trade = 2, ["Synthetic three"] = 3, ["Synthetic four"] = 4,
-            ["Synthetic five"] = 5, ["Synthetic user channel"] = 6},
-        lookups = 0, legacyLookups = 0, client = options.client or "retail", options = options}
+    local env = {
+        now = 100,
+        timers = {},
+        joined = {},
+        left = {},
+        sent = {},
+        frames = {},
+        errors = {},
+        id = options.prejoined and 7 or 0,
+        restricted = options.restricted == true,
+        map = 501,
+        instance = false,
+        inWorld = options.inWorld ~= false,
+        combat = options.combat == true,
+        legacyID = options.legacyVersion and 9 or 0,
+        unrelatedChannels = {
+            General = 1,
+            Trade = 2,
+            ["Synthetic three"] = 3,
+            ["Synthetic four"] = 4,
+            ["Synthetic five"] = 5,
+            ["Synthetic user channel"] = 6,
+        },
+        lookups = 0,
+        legacyLookups = 0,
+        client = options.client or "retail",
+        options = options,
+    }
     APR = {
-        version = options.version or "7.3.0", Username = "Local-Home",
-        settings = {profile = {enableAddon = true, checkForUpdate = true}},
-        GAME_VERSIONS = {Classic = "classic", Retail = "retail", Forever = "forever"},
+        version = options.version or "7.3.0",
+        Username = "Local-Home",
+        settings = { profile = { enableAddon = true, checkForUpdate = true } },
+        GAME_VERSIONS = { Classic = "classic", Retail = "retail", Forever = "forever" },
         NewModule = function() return {} end,
         GetGameVersion = function() return env.client end,
         RegisterSupportedEvent = function(_, frame, event) frame:RegisterEvent(event) end,
         WrapTextWithAppearanceColor = function(_, value) return value end,
-        questionDialog = {CreateMessagePopup = function() env.alerts = (env.alerts or 0) + 1 end},
+        questionDialog = { CreateMessagePopup = function() env.alerts = (env.alerts or 0) + 1 end },
     }
-    function LibStub() return {GetLocale = function() return {OUTDATED_VERSION_ALERT = "%s %s"} end} end
+    function LibStub()
+        return { GetLocale = function() return { OUTDATED_VERSION_ALERT = "%s %s" } end }
+    end
     function GetTime() return env.now end
     function GetNormalizedRealmName() return "Home" end
     function IsInGroup() return false end
@@ -27,24 +52,29 @@ function Fixture.New(options)
     if options.noWorldAPI then IsPlayerInWorld = nil end
     function IsInInstance() return env.instance end
     function InCombatLockdown() return env.combat end
-    C_Map = {GetBestMapForUnit = function() return env.map end}
+    C_Map = { GetBestMapForUnit = function() return env.map end }
     function issecretvalue(value) return env.secret ~= nil and value == env.secret end
-    function geterrorhandler() return function(err) env.errors[#env.errors + 1] = err end end
+    function geterrorhandler()
+        return function(err) env.errors[#env.errors + 1] = err end
+    end
     function CreateFrame()
-        local frame = {events = {}, scripts = {}}
+        local frame = { events = {}, scripts = {} }
         function frame:RegisterEvent(event) self.events[event] = true end
         function frame:UnregisterAllEvents() self.events = {} end
         function frame:SetScript(event, callback) self.scripts[event] = callback end
         env.frames[#env.frames + 1] = frame
         return frame
     end
-    C_Timer = {NewTimer = function(delay, callback)
-        assert(type(delay) == "number" and delay >= 0 and delay < math.huge)
-        local timer = {at = env.now + delay, callback = callback}
-        function timer:Cancel() self.cancelled = true end
-        env.timers[#env.timers + 1] = timer
-        return timer
-    end, NewTicker = function() error("The shared channel must not poll") end}
+    C_Timer = {
+        NewTimer = function(delay, callback)
+            assert(type(delay) == "number" and delay >= 0 and delay < math.huge)
+            local timer = { at = env.now + delay, callback = callback }
+            function timer:Cancel() self.cancelled = true end
+            env.timers[#env.timers + 1] = timer
+            return timer
+        end,
+        NewTicker = function() error("The shared channel must not poll") end,
+    }
     function GetChannelName(name)
         if type(name) == "number" then
             assert(name == 1, "Native restoration may inspect only the /1 slot")
@@ -78,7 +108,7 @@ function Fixture.New(options)
     end
     function JoinTemporaryChannel(name)
         assert(name == "APR", "Discovery and versions must share one channel")
-        env.joined[#env.joined + 1] = {name = name, at = env.now}
+        env.joined[#env.joined + 1] = { name = name, at = env.now }
         if options.joinError then error("Unavailable join") end
         if not options.delayedJoin then env.id = 7 end
     end
@@ -96,17 +126,31 @@ function Fixture.New(options)
     local function ProtectedChat() error("Shared membership cannot reorder or alter chat windows") end
     SwapChatChannelsByChannelIndex, SwapChatChannelByLocalID = ProtectedChat, ProtectedChat
     ChatConfigChannelSettings_SwapChannelsByIndex = ProtectedChat
-    SetSelectedDisplayChannel, AddChatWindowChannel, RemoveChatWindowChannel = ProtectedChat, ProtectedChat, ProtectedChat
+    SetSelectedDisplayChannel, AddChatWindowChannel, RemoveChatWindowChannel =
+        ProtectedChat, ProtectedChat, ProtectedChat
     ChatFrame_AddChannel, ChatFrame_RemoveChannel, JoinPermanentChannel = ProtectedChat, ProtectedChat, ProtectedChat
-    ChatFrameUtil = {AddChannel = ProtectedChat, RemoveChannel = ProtectedChat}
-    Enum = {SendAddonMessageResult = {Success = 0, InvalidChatType = 4, InvalidChannel = 7,
-        AddonMessageThrottle = 3, AddOnMessageLockdown = 11}}
+    ChatFrameUtil = { AddChannel = ProtectedChat, RemoveChannel = ProtectedChat }
+    Enum = {
+        SendAddonMessageResult = {
+            Success = 0,
+            InvalidChatType = 4,
+            InvalidChannel = 7,
+            AddonMessageThrottle = 3,
+            AddOnMessageLockdown = 11,
+        },
+    }
     C_ChatInfo = {
         InChatMessagingLockdown = function() return env.restricted end,
         SwapChatChannelsByChannelIndex = ProtectedChat,
         SendAddonMessage = function(prefix, message, distribution, target)
-            env.sent[#env.sent + 1] = {prefix = prefix, message = message, distribution = distribution,
-                target = target, at = env.now, restricted = env.restricted}
+            env.sent[#env.sent + 1] = {
+                prefix = prefix,
+                message = message,
+                distribution = distribution,
+                target = target,
+                at = env.now,
+                restricted = env.restricted,
+            }
             if env.restricted then return Enum.SendAddonMessageResult.AddOnMessageLockdown end
             return options.sendResult or 0
         end,
@@ -119,8 +163,14 @@ function Fixture.New(options)
         while true do
             local earliest
             for _, timer in ipairs(self.timers) do
-                if not timer.cancelled and not timer.fired and timer.at <= target
-                    and (not earliest or timer.at < earliest.at) then earliest = timer end
+                if
+                    not timer.cancelled
+                    and not timer.fired
+                    and timer.at <= target
+                    and (not earliest or timer.at < earliest.at)
+                then
+                    earliest = timer
+                end
             end
             if not earliest then break end
             iterations = iterations + 1
@@ -132,7 +182,9 @@ function Fixture.New(options)
     end
     function env:ActiveTimers()
         local count = 0
-        for _, timer in ipairs(self.timers) do if not timer.cancelled and not timer.fired then count = count + 1 end end
+        for _, timer in ipairs(self.timers) do
+            if not timer.cancelled and not timer.fired then count = count + 1 end
+        end
         return count
     end
     function env:Event(event, ...)
@@ -147,9 +199,9 @@ end
 if ... == "fixture" then return Fixture end
 
 -- A slow login/reload cannot claim the native /1 or /2 slots while addons load.
-for _, client in ipairs({"retail", "forever"}) do
-    for _, flags in ipairs({{true, false}, {false, true}}) do
-        local env = Fixture.New({client = client, inWorld = false})
+for _, client in ipairs({ "retail", "forever" }) do
+    for _, flags in ipairs({ { true, false }, { false, true } }) do
+        local env = Fixture.New({ client = client, inWorld = false })
         local channel = env.channel
         env.unrelatedChannels = {}
         channel:Acquire("versionCheck", function() end)
@@ -160,28 +212,37 @@ for _, client in ipairs({"retail", "forever"}) do
         env:Event("CHANNEL_UI_UPDATE")
         env:Event("PLAYER_REGEN_ENABLED")
         env:Advance(30)
-        assert(#env.joined == 0 and env:ActiveTimers() == 0 and not channel.attempted,
-            "Addon initialization, retries and native UI events must wait for the world")
+        assert(
+            #env.joined == 0 and env:ActiveTimers() == 0 and not channel.attempted,
+            "Addon initialization, retries and native UI events must wait for the world"
+        )
         -- The world event may precede native loading-screen readiness.
         channel.frame.scripts.OnEvent(channel.frame, "PLAYER_ENTERING_WORLD", unpack(flags))
         env:Advance(10)
         assert(#env.joined == 0 and env:ActiveTimers() == 0)
         env.inWorld = true
-        env.unrelatedChannels = {General = 1, Trade = 2}
+        env.unrelatedChannels = { General = 1, Trade = 2 }
         function JoinTemporaryChannel(name)
             local slot = 1
-            while slot == env.unrelatedChannels.General or slot == env.unrelatedChannels.Trade do slot = slot + 1 end
+            while slot == env.unrelatedChannels.General or slot == env.unrelatedChannels.Trade do
+                slot = slot + 1
+            end
             env.id = slot
-            env.joined[#env.joined + 1] = {name = name, at = env.now}
+            env.joined[#env.joined + 1] = { name = name, at = env.now }
         end
         env:Event("LOADING_SCREEN_DISABLED")
         env:Advance(4.99)
         channel:Retry()
         assert(#env.joined == 0, "A manual retry cannot shorten the startup grace period")
         env:Advance(0.01)
-        assert(#env.joined == 1 and env.joined[1].at == 175 and channel:GetSendChannelID() == 3
-            and env.unrelatedChannels.General == 1 and env.unrelatedChannels.Trade == 2,
-            "Native channel restoration precedes APR's first membership on login and reload")
+        assert(
+            #env.joined == 1
+                and env.joined[1].at == 175
+                and channel:GetSendChannelID() == 3
+                and env.unrelatedChannels.General == 1
+                and env.unrelatedChannels.Trade == 2,
+            "Native channel restoration precedes APR's first membership on login and reload"
+        )
         env:Event("PLAYER_ENTERING_WORLD", false, false)
         env:Event("LOADING_SCREEN_DISABLED")
         env:Advance(30)
@@ -207,7 +268,7 @@ end
 
 -- Missing world-state APIs use native events, and cancellation removes all startup work.
 do
-    local env = Fixture.New({noWorldAPI = true})
+    local env = Fixture.New({ noWorldAPI = true })
     env.channel:Acquire("partyFinder", function() end)
     env:Advance(30)
     assert(#env.joined == 0 and env:ActiveTimers() == 0)
@@ -222,7 +283,7 @@ do
     env.channel:Acquire("partyFinder", function() end)
     assert(#env.joined == 2 and env.channel:IsReady(), "Late re-enabling keeps the completed session readiness")
 
-    env = Fixture.New({inWorld = false})
+    env = Fixture.New({ inWorld = false })
     env.channel:Acquire("partyFinder", function() end)
     env:Event("PLAYER_ENTERING_WORLD")
     env.channel:Release("partyFinder")
@@ -231,45 +292,62 @@ do
 end
 
 -- Elapsed startup time is insufficient when native channels still have holes.
-for _, client in ipairs({"retail", "forever"}) do
-    for _, native in ipairs({{}, {Alpha = 2, Beta = 3}, {Alpha = 1, Beta = 3}}) do
-        local env = Fixture.New({client = client})
+for _, client in ipairs({ "retail", "forever" }) do
+    for _, native in ipairs({ {}, { Alpha = 2, Beta = 3 }, { Alpha = 1, Beta = 3 } }) do
+        local env = Fixture.New({ client = client })
         local channel = env.channel
         env.unrelatedChannels = native
         channel:Acquire("versionCheck", function() end)
         env:Advance(5)
-        assert(#env.joined == 0 and channel.status == "joining" and not channel.attempted
-            and env:ActiveTimers() == 0, "Empty/gapped native slots must not become addon destinations")
+        assert(
+            #env.joined == 0 and channel.status == "joining" and not channel.attempted and env:ActiveTimers() == 0,
+            "Empty/gapped native slots must not become addon destinations"
+        )
         local reads = env.channelListReads
         env:Advance(60)
         assert(env.channelListReads == reads and #env.joined == 0, "No timeout may force a join into a gap")
         channel:Retry()
         assert(#env.joined == 0 and env:ActiveTimers() == 0)
-        env.unrelatedChannels = {Alpha = 1, Beta = 2}
+        env.unrelatedChannels = { Alpha = 1, Beta = 2 }
         function JoinTemporaryChannel(name)
             env.id = 3
-            env.joined[#env.joined + 1] = {name = name, at = env.now}
+            env.joined[#env.joined + 1] = { name = name, at = env.now }
         end
-        for _ = 1, 1000 do env:Event("CHANNEL_UI_UPDATE") end
+        for _ = 1, 1000 do
+            env:Event("CHANNEL_UI_UPDATE")
+        end
         assert(#env.joined == 0)
         env:Advance(0.1)
-        assert(#env.joined == 1 and channel:GetSendChannelID() == 3 and env:ActiveTimers() == 0
-            and env.unrelatedChannels.Alpha == 1 and env.unrelatedChannels.Beta == 2,
-            "A complete native list resumes exactly one join after the player's channels")
+        assert(
+            #env.joined == 1
+                and channel:GetSendChannelID() == 3
+                and env:ActiveTimers() == 0
+                and env.unrelatedChannels.Alpha == 1
+                and env.unrelatedChannels.Beta == 2,
+            "A complete native list resumes exactly one join after the player's channels"
+        )
     end
 end
 
 -- Slot checks ignore display order and inactive status, but reject unknown/invalid IDs.
-for _, result in ipairs({{}, {2, "Alpha", false}, {1, "Alpha", false, 1, "Duplicate", true},
-    {0, "Alpha", false}, {1.5, "Alpha", false}, {"1", "Alpha", false},
-    {math.huge, "Alpha", false}, {129, "Alpha", false}, {1, "Incomplete"}}) do
+for _, result in ipairs({
+    {},
+    { 2, "Alpha", false },
+    { 1, "Alpha", false, 1, "Duplicate", true },
+    { 0, "Alpha", false },
+    { 1.5, "Alpha", false },
+    { "1", "Alpha", false },
+    { math.huge, "Alpha", false },
+    { 129, "Alpha", false },
+    { 1, "Incomplete" },
+}) do
     local env = Fixture.New()
     env.channelListResult = result
     assert(not env.channel:ChannelsReady())
 end
 do
     local env = Fixture.New()
-    env.channelListResult = {2, "Inactive", true, 1, "Active", false}
+    env.channelListResult = { 2, "Inactive", true, 1, "Active", false }
     assert(env.channel:ChannelsReady(), "Inactive channels still reserve their native slots")
     env.secret = 2
     assert(not env.channel:ChannelsReady(), "Opaque IDs cannot authorize membership")
@@ -282,34 +360,36 @@ do
     GetChannelList = original
 
     env = Fixture.New()
-    env.unrelatedChannels = {Alpha = 2}
+    env.unrelatedChannels = { Alpha = 2 }
     env.channel:Acquire("partyFinder", function() end)
     env:Advance(5)
     env.channel:Release("partyFinder")
-    env.unrelatedChannels = {Alpha = 1}
+    env.unrelatedChannels = { Alpha = 1 }
     env:Advance(30)
-    assert(#env.joined == 0 and env:ActiveTimers() == 0 and not next(env.channel.frame.events),
-        "Cancelling a native-list wait leaves no listener or delayed join")
+    assert(
+        #env.joined == 0 and env:ActiveTimers() == 0 and not next(env.channel.frame.events),
+        "Cancelling a native-list wait leaves no listener or delayed join"
+    )
 end
 
 -- Native defaults may be restored once, only after the grace period and only
 -- for a positively empty /1. Both synchronous and delayed native updates work.
-for _, client in ipairs({"retail", "forever"}) do
-    for _, scenario in ipairs({"synchronous", "delayed", "empty"}) do
+for _, client in ipairs({ "retail", "forever" }) do
+    for _, scenario in ipairs({ "synchronous", "delayed", "empty" }) do
         local delayed = scenario == "delayed"
-        local env = Fixture.New({client = client})
+        local env = Fixture.New({ client = client })
         local channel, resets = env.channel, 0
-        env.unrelatedChannels = scenario == "empty" and {} or {Alpha = 2, Beta = 3}
+        env.unrelatedChannels = scenario == "empty" and {} or { Alpha = 2, Beta = 3 }
         C_ChatInfo.ResetDefaultZoneChannels = function()
             assert(GetChannelName(1) == 0 and not env.combat and not env.restricted)
             resets = resets + 1
             assert(not channel:RestoreNativeChannels(), "A synchronous native callback cannot reset twice")
-            if not delayed then env.unrelatedChannels = {Alpha = 1, Beta = 2} end
+            if not delayed then env.unrelatedChannels = { Alpha = 1, Beta = 2 } end
         end
         function JoinTemporaryChannel(name)
             assert(resets == 1 and env.unrelatedChannels.Alpha == 1 and env.unrelatedChannels.Beta == 2)
             env.id = 3
-            env.joined[#env.joined + 1] = {name = name, at = env.now}
+            env.joined[#env.joined + 1] = { name = name, at = env.now }
         end
         channel:Acquire("versionCheck", function() end)
         channel:Acquire("partyFinder", function() end)
@@ -322,12 +402,14 @@ for _, client in ipairs({"retail", "forever"}) do
             env:Advance(30)
             channel:Retry()
             assert(resets == 1 and #env.joined == 0 and env:ActiveTimers() == 0)
-            env.unrelatedChannels = {Alpha = 1, Beta = 2}
+            env.unrelatedChannels = { Alpha = 1, Beta = 2 }
             env:Event("CHANNEL_UI_UPDATE")
             env:Advance(0.1)
         end
         assert(resets == 1 and #env.joined == 1 and channel:GetSendChannelID() == 3)
-        for _ = 1, 1000 do env:Event("CHANNEL_UI_UPDATE") end
+        for _ = 1, 1000 do
+            env:Event("CHANNEL_UI_UPDATE")
+        end
         env:Advance(30)
         assert(resets == 1 and #env.joined == 1 and env:ActiveTimers() == 0)
     end
@@ -336,13 +418,13 @@ end
 -- The same empty-slot repair also applies to restored native APR memberships.
 -- It waits for world readiness, re-resolves renumbering and retains user ownership.
 do
-    local env = Fixture.New({prejoined = true, inWorld = false})
+    local env = Fixture.New({ prejoined = true, inWorld = false })
     local resets = 0
-    env.unrelatedChannels = {Alpha = 2, Beta = 3}
+    env.unrelatedChannels = { Alpha = 2, Beta = 3 }
     C_ChatInfo.ResetDefaultZoneChannels = function()
         assert(GetChannelName(1) == 0 and env.inWorld)
         resets = resets + 1
-        env.unrelatedChannels, env.id = {Alpha = 1, Beta = 2}, 6
+        env.unrelatedChannels, env.id = { Alpha = 1, Beta = 2 }, 6
     end
     env.channel:Acquire("partyFinder", function() end)
     assert(resets == 0 and env.channel:GetChannelID() == 7)
@@ -356,9 +438,9 @@ do
 end
 
 -- A populated /1 is an absolute veto, regardless of which channel occupies it.
-for _, label in ipairs({"Native", "Custom", "APR"}) do
+for _, label in ipairs({ "Native", "Custom", "APR" }) do
     local env = Fixture.New()
-    env.unrelatedChannels = {[label] = 1, Other = 3}
+    env.unrelatedChannels = { [label] = 1, Other = 3 }
     if label == "APR" then env.id = 1 end
     local resets = 0
     C_ChatInfo.ResetDefaultZoneChannels = function() resets = resets + 1 end
@@ -368,8 +450,12 @@ for _, label in ipairs({"Native", "Custom", "APR"}) do
 end
 
 -- Unknown slot data, combat and native failures never trigger reset loops.
-for _, lookup in ipairs({function() return nil end, function() return "0" end,
-    function() return 1 end, function() error("Missing slot data") end}) do
+for _, lookup in ipairs({
+    function() return nil end,
+    function() return "0" end,
+    function() return 1 end,
+    function() error("Missing slot data") end,
+}) do
     local env = Fixture.New()
     env.unrelatedChannels, env.slotOneLookup = {}, lookup
     local resets = 0
@@ -397,7 +483,9 @@ do
     env:Event("PLAYER_REGEN_ENABLED")
     env:Advance(0.1)
     assert(resets == 1 and env.channel.nativeRestoreAttempted and env:ActiveTimers() == 0)
-    for _ = 1, 1000 do env:Event("CHANNEL_UI_UPDATE") end
+    for _ = 1, 1000 do
+        env:Event("CHANNEL_UI_UPDATE")
+    end
     env:Advance(100)
     env.channel:Retry()
     assert(resets == 1 and #env.joined == 0 and env:ActiveTimers() == 0)
@@ -405,32 +493,45 @@ end
 
 -- Sending must re-resolve the named channel even before CHANNEL_UI_UPDATE.
 do
-    local env = Fixture.New({prejoined = true})
+    local env = Fixture.New({ prejoined = true })
     env.channel:Acquire("partyFinder", function() end)
     env.id = 9
     assert(env.channel:GetChannelID() == 7 and env.channel:GetSendChannelID() == 9)
     env.id = 0
-    assert(env.channel:GetSendChannelID() == nil and env.channel:GetChannelID() == nil,
-        "A recently vacated slot must never be used as APR's destination")
+    assert(
+        env.channel:GetSendChannelID() == nil and env.channel:GetChannelID() == nil,
+        "A recently vacated slot must never be used as APR's destination"
+    )
     assert(#env.joined == 0 and #env.left == 0)
 end
 
-for _, client in ipairs({"retail", "forever"}) do
-    local env = Fixture.New({client = client})
+for _, client in ipairs({ "retail", "forever" }) do
+    local env = Fixture.New({ client = client })
     local channel, updates = env.channel, {}
-    local status, id = channel:Acquire("versionCheck", function(currentID, currentStatus)
-        updates[#updates + 1] = {id = currentID, status = currentStatus}
-    end)
+    local status, id = channel:Acquire(
+        "versionCheck",
+        function(currentID, currentStatus)
+            updates[#updates + 1] = { id = currentID, status = currentStatus }
+        end
+    )
     assert(status == "joining" and id == nil and #env.joined == 0 and env:ActiveTimers() == 1)
     local finderID
     channel:Acquire("partyFinder", function(currentID) finderID = currentID end)
     env:Advance(4.99)
     assert(#env.joined == 0)
     env:Advance(0.01)
-    assert(#env.joined == 1 and env.joined[1].at == 105 and channel:IsReady()
-        and channel:GetChannelID() == 7 and finderID == 7 and env:ActiveTimers() == 0)
+    assert(
+        #env.joined == 1
+            and env.joined[1].at == 105
+            and channel:IsReady()
+            and channel:GetChannelID() == 7
+            and finderID == 7
+            and env:ActiveTimers() == 0
+    )
     local callbacks, lookups, timers = #updates, env.lookups, #env.timers
-    for _ = 1, 1000 do env:Event("CHANNEL_UI_UPDATE") end
+    for _ = 1, 1000 do
+        env:Event("CHANNEL_UI_UPDATE")
+    end
     assert(env.lookups == lookups and #env.timers == timers + 1, "UI event bursts coalesce before native lookup")
     env:Advance(0.1)
     assert(env.lookups == lookups + 1 and #updates == callbacks and #env.joined == 1 and #env.left == 0)
@@ -441,7 +542,7 @@ for _, client in ipairs({"retail", "forever"}) do
 end
 
 -- Native membership may complete asynchronously, including without its UI event.
-local env = Fixture.New({delayedJoin = true})
+local env = Fixture.New({ delayedJoin = true })
 local channel = env.channel
 channel:Acquire("partyFinder", function() end)
 env:Advance(5)
@@ -450,25 +551,31 @@ env:Advance(9.9)
 assert(channel.status == "joining")
 env.id = 7
 env:Advance(0.1)
-assert(channel:IsReady() and channel:GetChannelID() == 7 and env:ActiveTimers() == 0,
-    "The single ten-second timeout resolves a missed native readiness event")
+assert(
+    channel:IsReady() and channel:GetChannelID() == 7 and env:ActiveTimers() == 0,
+    "The single ten-second timeout resolves a missed native readiness event"
+)
 
-for _, options in ipairs({{delayedJoin = true}, {joinError = true}, {lookupError = true}}) do
+for _, options in ipairs({ { delayedJoin = true }, { joinError = true }, { lookupError = true } }) do
     env = Fixture.New(options)
     channel = env.channel
     channel:Acquire("partyFinder", function() end)
     env:Advance(15)
     assert(channel.status == "unavailable" and #env.joined == 1 and env:ActiveTimers() == 0)
-    for _ = 1, 100 do env:Event("CHANNEL_UI_UPDATE") end
+    for _ = 1, 100 do
+        env:Event("CHANNEL_UI_UPDATE")
+    end
     env:Advance(100)
     assert(#env.joined == 1 and env:ActiveTimers() == 0, "A failed join cannot become an automatic join loop")
     channel:Release("partyFinder")
 end
 
-env = Fixture.New({prejoined = true})
+env = Fixture.New({ prejoined = true })
 channel = env.channel
 local synchronousID
-channel:Acquire("versionCheck", function(id, status) if status == "ready" then synchronousID = id end end)
+channel:Acquire("versionCheck", function(id, status)
+    if status == "ready" then synchronousID = id end
+end)
 assert(synchronousID == 7 and #env.joined == 0 and env:ActiveTimers() == 0)
 channel:Release("versionCheck")
 assert(#env.left == 0 and env.id == 7, "A prejoined channel belongs to the user")
@@ -492,7 +599,10 @@ env.id = 0
 env:Event("CHANNEL_UI_UPDATE")
 env:Advance(0.1)
 assert(channel.status == "unavailable" and not channel:GetChannelID())
-for _ = 1, 100 do env:Event("CHANNEL_UI_UPDATE"); env:Event("PLAYER_ENTERING_WORLD") end
+for _ = 1, 100 do
+    env:Event("CHANNEL_UI_UPDATE")
+    env:Event("PLAYER_ENTERING_WORLD")
+end
 env:Advance(100)
 assert(#env.joined == 1, "A manual leave must be respected until an explicit retry")
 channel:Retry()
@@ -500,7 +610,7 @@ assert(#env.joined == 2 and channel:IsReady())
 channel:Retry()
 assert(#env.joined == 2, "A ready service has nothing to retry")
 
-for _, options in ipairs({{client = "classic"}, {noJoinAPI = true}}) do
+for _, options in ipairs({ { client = "classic" }, { noJoinAPI = true } }) do
     env = Fixture.New(options)
     channel = env.channel
     channel:Acquire("versionCheck", function() end)
@@ -513,12 +623,17 @@ end
 -- Every callback boundary must tolerate the final owner releasing itself.
 env = Fixture.New()
 channel = env.channel
-channel:Acquire("versionCheck", function(_, status) if status == "joining" then channel:Release("versionCheck") end end)
-assert(not next(channel.owners) and env:ActiveTimers() == 0, "Release inside Acquire cannot leave a startup timer behind")
+channel:Acquire("versionCheck", function(_, status)
+    if status == "joining" then channel:Release("versionCheck") end
+end)
+assert(
+    not next(channel.owners) and env:ActiveTimers() == 0,
+    "Release inside Acquire cannot leave a startup timer behind"
+)
 env:Advance(30)
 assert(#env.joined == 0 and #env.left == 0)
 
-env = Fixture.New({restricted = true})
+env = Fixture.New({ restricted = true })
 channel = env.channel
 local cancelResume = false
 channel:Acquire("versionCheck", function(_, status)
@@ -528,14 +643,20 @@ env:Advance(5)
 assert(channel.status == "restricted" and #env.joined == 0 and env:ActiveTimers() == 0)
 cancelResume, env.restricted = true, false
 env:Event("PLAYER_REGEN_ENABLED")
-assert(not next(channel.owners) and env:ActiveTimers() == 0 and #env.joined == 0,
-    "Release during restriction recovery cannot create an orphan join")
+assert(
+    not next(channel.owners) and env:ActiveTimers() == 0 and #env.joined == 0,
+    "Release during restriction recovery cannot create an orphan join"
+)
 
 env = Fixture.New()
 channel = env.channel
 local secondReady = 0
-channel:Acquire("versionCheck", function(_, status) if status == "ready" then error("Synthetic consumer failure") end end)
-channel:Acquire("partyFinder", function(_, status) if status == "ready" then secondReady = secondReady + 1 end end)
+channel:Acquire("versionCheck", function(_, status)
+    if status == "ready" then error("Synthetic consumer failure") end
+end)
+channel:Acquire("partyFinder", function(_, status)
+    if status == "ready" then secondReady = secondReady + 1 end
+end)
 local ok = pcall(function() env:Advance(5) end)
 assert(ok and secondReady == 1 and channel:IsReady(), "One failed callback cannot abort another consumer's readiness")
 env:Event("PLAYER_LOGOUT")
@@ -543,8 +664,8 @@ assert(#env.left == 1 and env:ActiveTimers() == 0 and not next(channel.frame.eve
 
 -- A native legacy membership survives Lua reloads; retire only that exact name
 -- after the new shared channel is confirmed ready, once per loaded session.
-for _, client in ipairs({"retail", "forever"}) do
-    env = Fixture.New({client = client, legacyVersion = true, delayedJoin = true})
+for _, client in ipairs({ "retail", "forever" }) do
+    env = Fixture.New({ client = client, legacyVersion = true, delayedJoin = true })
     assert(env.legacyID == 9)
     dofile("APR-Core/core/CommunicationChannel.lua")
     env.channel, channel = APR.CommunicationChannel, APR.CommunicationChannel
@@ -552,21 +673,33 @@ for _, client in ipairs({"retail", "forever"}) do
     channel:Acquire("versionCheck", function() end)
     channel:Acquire("partyFinder", function() end)
     env:Advance(5)
-    assert(#env.joined == 1 and channel.status == "joining" and env.legacyID == 9
-        and env.legacyLookups == 0 and #env.left == 0,
-        "Legacy membership is retained until the replacement channel is ready")
+    assert(
+        #env.joined == 1
+            and channel.status == "joining"
+            and env.legacyID == 9
+            and env.legacyLookups == 0
+            and #env.left == 0,
+        "Legacy membership is retained until the replacement channel is ready"
+    )
     env.id = 7
     env:Event("CHANNEL_UI_UPDATE")
     env:Advance(0.1)
     assert(channel:IsReady() and channel:GetChannelID() == 7 and env.legacyID == 0)
     assert(#env.joined == 1 and #env.left == 1 and env.left[1] == "APRVersion" and env.legacyLookups == 1)
-    assert(env.unrelatedChannels.General == 1 and env.unrelatedChannels.Trade == 2
-        and env.unrelatedChannels["Synthetic user channel"] == 6)
+    assert(
+        env.unrelatedChannels.General == 1
+            and env.unrelatedChannels.Trade == 2
+            and env.unrelatedChannels["Synthetic user channel"] == 6
+    )
     local legacyLookups, left = env.legacyLookups, #env.left
-    for _ = 1, 1000 do env:Event("CHANNEL_UI_UPDATE") end
+    for _ = 1, 1000 do
+        env:Event("CHANNEL_UI_UPDATE")
+    end
     env:Advance(0.1)
-    assert(env.legacyLookups == legacyLookups and #env.left == left and #env.joined == 1
-        and env:ActiveTimers() == 0, "A completed migration performs no repeated legacy work")
+    assert(
+        env.legacyLookups == legacyLookups and #env.left == left and #env.joined == 1 and env:ActiveTimers() == 0,
+        "A completed migration performs no repeated legacy work"
+    )
     channel:Release("versionCheck")
     assert(channel:IsReady() and channel.owners.partyFinder and #env.left == left)
     channel:Release("partyFinder")
@@ -574,11 +707,13 @@ for _, client in ipairs({"retail", "forever"}) do
     -- A later explicit user membership is not removed after all owners restart.
     env.id, env.legacyID = 7, 9
     channel:Acquire("partyFinder", function() end)
-    assert(channel:IsReady() and env.legacyID == 9 and env.legacyLookups == legacyLookups
-        and #env.left == left + 1, "Shutdown preserves the session's completed migration marker")
+    assert(
+        channel:IsReady() and env.legacyID == 9 and env.legacyLookups == legacyLookups and #env.left == left + 1,
+        "Shutdown preserves the session's completed migration marker"
+    )
 end
 
-env = Fixture.New({prejoined = true, legacyVersion = true})
+env = Fixture.New({ prejoined = true, legacyVersion = true })
 channel = env.channel
 channel:Acquire("versionCheck", function() end)
 channel:Acquire("partyFinder", function() end)
@@ -588,42 +723,63 @@ channel:Release("versionCheck")
 channel:Release("partyFinder")
 assert(env.id == 7 and #env.left == 1, "Retiring the legacy name does not take ownership of prejoined APR")
 
-env = Fixture.New({prejoined = true, legacyVersion = true, legacyRenumbersAPR = 8})
+env = Fixture.New({ prejoined = true, legacyVersion = true, legacyRenumbersAPR = 8 })
 channel = env.channel
 local readyDestination
 channel:Acquire("versionCheck", function(_, status)
     if status == "ready" then readyDestination = channel:GetSendChannelID() end
 end)
-assert(readyDestination == 8 and channel:GetChannelID() == 8 and env.id == 8 and env.legacyID == 0
-    and env.legacyLookups == 1 and #env.joined == 0 and #env.left == 1,
-    "Readiness consumers re-resolve APR after a legacy leave renumbers its slot, before any native UI event")
+assert(
+    readyDestination == 8
+        and channel:GetChannelID() == 8
+        and env.id == 8
+        and env.legacyID == 0
+        and env.legacyLookups == 1
+        and #env.joined == 0
+        and #env.left == 1,
+    "Readiness consumers re-resolve APR after a legacy leave renumbers its slot, before any native UI event"
+)
 
-env = Fixture.New({prejoined = true})
+env = Fixture.New({ prejoined = true })
 channel = env.channel
 channel:Acquire("versionCheck", function() end)
 assert(channel:IsReady() and env.legacyLookups == 1 and #env.left == 0)
-for _ = 1, 1000 do env:Event("CHANNEL_UI_UPDATE") end
+for _ = 1, 1000 do
+    env:Event("CHANNEL_UI_UPDATE")
+end
 env:Advance(0.1)
-assert(env.legacyLookups == 1 and #env.left == 0 and env:ActiveTimers() == 0,
-    "A confirmed absent legacy channel also completes the one-session check")
+assert(
+    env.legacyLookups == 1 and #env.left == 0 and env:ActiveTimers() == 0,
+    "A confirmed absent legacy channel also completes the one-session check"
+)
 
-for _, blocked in ipairs({"combat", "restricted"}) do
-    env = Fixture.New({prejoined = true, legacyVersion = true, [blocked] = true})
+for _, blocked in ipairs({ "combat", "restricted" }) do
+    env = Fixture.New({ prejoined = true, legacyVersion = true, [blocked] = true })
     channel = env.channel
     channel:Acquire("versionCheck", function() end)
-    for _ = 1, 1000 do env:Event("CHANNEL_UI_UPDATE") end
+    for _ = 1, 1000 do
+        env:Event("CHANNEL_UI_UPDATE")
+    end
     env:Advance(20)
-    assert(env.legacyID == 9 and #env.left == 0 and env.legacyLookups == 0 and env:ActiveTimers() == 0,
-        "Combat and chat restrictions defer migration without polling")
+    assert(
+        env.legacyID == 9 and #env.left == 0 and env.legacyLookups == 0 and env:ActiveTimers() == 0,
+        "Combat and chat restrictions defer migration without polling"
+    )
     env[blocked] = false
     env:Event("PLAYER_REGEN_ENABLED")
     env:Advance(0.1)
-    assert(channel:IsReady() and env.id == 7 and env.legacyID == 0
-        and #env.left == 1 and env.left[1] == "APRVersion" and env:ActiveTimers() == 0,
-        "An unrestricted recovery event also retries migration when readiness is unchanged")
+    assert(
+        channel:IsReady()
+            and env.id == 7
+            and env.legacyID == 0
+            and #env.left == 1
+            and env.left[1] == "APRVersion"
+            and env:ActiveTimers() == 0,
+        "An unrestricted recovery event also retries migration when readiness is unchanged"
+    )
 end
 
-env = Fixture.New({prejoined = true, legacyVersion = true})
+env = Fixture.New({ prejoined = true, legacyVersion = true })
 channel = env.channel
 local leave = LeaveChannelByName
 LeaveChannelByName = nil
@@ -633,51 +789,94 @@ assert(channel:IsReady() and env.id == 7 and env.legacyID == 9 and #env.left == 
 LeaveChannelByName = leave
 env:Event("PLAYER_REGEN_ENABLED")
 env:Advance(0.1)
-assert(env.legacyID == 0 and #env.left == 1 and env.left[1] == "APRVersion",
-    "A missing optional leave API can recover on the next native event")
+assert(
+    env.legacyID == 0 and #env.left == 1 and env.left[1] == "APRVersion",
+    "A missing optional leave API can recover on the next native event"
+)
 
-env = Fixture.New({prejoined = true, legacyVersion = true})
+env = Fixture.New({ prejoined = true, legacyVersion = true })
 channel = env.channel
 local lookup = GetChannelName
 GetChannelName = nil
 channel:Acquire("versionCheck", function() end)
 env:Advance(20)
-assert(channel.status == "unavailable" and env.id == 7 and env.legacyID == 9
-    and env.legacyLookups == 0 and #env.left == 0 and env:ActiveTimers() == 0)
+assert(
+    channel.status == "unavailable"
+        and env.id == 7
+        and env.legacyID == 9
+        and env.legacyLookups == 0
+        and #env.left == 0
+        and env:ActiveTimers() == 0
+)
 GetChannelName = lookup
 env:Event("PLAYER_REGEN_ENABLED")
 env:Advance(0.1)
 assert(channel:IsReady() and env.id == 7 and env.legacyID == 0 and #env.left == 1)
 
 -- Invalid or private native lookup results cannot authorize a membership change.
-for _, result in ipairs({{}, {0}, {-1}, {1.5}, {math.huge}, {0 / 0}, {"9"}, {false},
-    {9}, {9, "General"}, {9, "APRVersion", secret = 9}, {9, "APRVersion", secret = "APRVersion"}}) do
-    env = Fixture.New({prejoined = true, legacyVersion = true})
+for _, result in ipairs({
+    {},
+    { 0 },
+    { -1 },
+    { 1.5 },
+    { math.huge },
+    { 0 / 0 },
+    { "9" },
+    { false },
+    { 9 },
+    { 9, "General" },
+    { 9, "APRVersion", secret = 9 },
+    { 9, "APRVersion", secret = "APRVersion" },
+}) do
+    env = Fixture.New({ prejoined = true, legacyVersion = true })
     channel = env.channel
     env.secret = result.secret
     env.legacyLookup = function() return result[1], result[2] end
-    local ok = pcall(function() channel:Acquire("versionCheck", function() end) end)
-    assert(ok and channel:IsReady() and env.id == 7 and env.legacyID == 9 and #env.left == 0,
-        "Only a public positive integer ID with the exact public legacy name can be retired")
-    for _ = 1, 1000 do env:Event("CHANNEL_UI_UPDATE") end
+    local ok = pcall(function()
+        channel:Acquire("versionCheck", function() end)
+    end)
+    assert(
+        ok and channel:IsReady() and env.id == 7 and env.legacyID == 9 and #env.left == 0,
+        "Only a public positive integer ID with the exact public legacy name can be retired"
+    )
+    for _ = 1, 1000 do
+        env:Event("CHANNEL_UI_UPDATE")
+    end
     env:Advance(0.1)
-    assert(env.legacyLookups == 1 and #env.left == 0 and env:ActiveTimers() == 0,
-        "An invalid native result does not trigger repeated migration attempts")
+    assert(
+        env.legacyLookups == 1 and #env.left == 0 and env:ActiveTimers() == 0,
+        "An invalid native result does not trigger repeated migration attempts"
+    )
 end
 
-for _, failure in ipairs({"legacyLookupError", "legacyLeaveError"}) do
-    env = Fixture.New({prejoined = true, legacyVersion = true, [failure] = true})
+for _, failure in ipairs({ "legacyLookupError", "legacyLeaveError" }) do
+    env = Fixture.New({ prejoined = true, legacyVersion = true, [failure] = true })
     channel = env.channel
-    local ok = pcall(function() channel:Acquire("versionCheck", function() end) end)
+    local ok = pcall(function()
+        channel:Acquire("versionCheck", function() end)
+    end)
     local expectedLeaves = failure == "legacyLeaveError" and 1 or 0
-    assert(ok and channel:IsReady() and env.id == 7 and env.legacyID == 9
-        and env.legacyLookups == 1 and #env.left == expectedLeaves,
-        "A failed native migration operation cannot abort the shared channel")
-    for _ = 1, 1000 do env:Event("CHANNEL_UI_UPDATE"); env:Event("PLAYER_REGEN_ENABLED") end
+    assert(
+        ok
+            and channel:IsReady()
+            and env.id == 7
+            and env.legacyID == 9
+            and env.legacyLookups == 1
+            and #env.left == expectedLeaves,
+        "A failed native migration operation cannot abort the shared channel"
+    )
+    for _ = 1, 1000 do
+        env:Event("CHANNEL_UI_UPDATE")
+        env:Event("PLAYER_REGEN_ENABLED")
+    end
     env:Advance(20)
-    assert(env.legacyLookups == 1 and #env.left == expectedLeaves and env:ActiveTimers() == 0,
-        "A failed migration is best effort, with no retry loop or polling timer")
+    assert(
+        env.legacyLookups == 1 and #env.left == expectedLeaves and env:ActiveTimers() == 0,
+        "A failed migration is best effort, with no retry loop or polling timer"
+    )
     if expectedLeaves == 1 then assert(env.left[1] == "APRVersion") end
 end
 
-print("Shared channel: delayed shared membership, bounded events, owner isolation, transient recovery and exact legacy retirement passed")
+print(
+    "Shared channel: delayed shared membership, bounded events, owner isolation, transient recovery and exact legacy retirement passed"
+)

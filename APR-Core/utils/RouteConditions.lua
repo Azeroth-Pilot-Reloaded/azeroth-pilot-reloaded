@@ -19,7 +19,7 @@ local skills = {
     mining = 186,
     skinning = 393,
     tailoring = 197,
-    riding = 762
+    riding = 762,
 }
 local skillSpells = {
     alchemy = 2259,
@@ -34,14 +34,16 @@ local skillSpells = {
     mining = 2575,
     skinning = 8613,
     tailoring = 3908,
-    riding = 33388
+    riding = 33388,
 }
 
 -- Keep lookup criteria explicit so repeated reads do not allocate captured predicates.
 local function Matches(name, id, wanted, wantedName, requirement)
-    return (wanted and id == wanted) or (wantedName and name == wantedName)
+    return (wanted and id == wanted)
+        or (wantedName and name == wantedName)
         or (name and requirement.skill and name:lower():gsub("%s", "") == requirement.skill)
-end--[[APR_DIAG]]; Matches = APRTrace("APR-Core/utils/RouteConditions.lua:41:Matches#1", Matches)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Matches = APRTrace("APR-Core/utils/RouteConditions.lua:41:Matches#1", Matches)--[[/APR_DIAG]]
 
 function APR:GetRouteSkill(requirement)
     local wanted = tonumber(requirement.skillID) or tonumber(requirement.skill) or skills[requirement.skill]
@@ -55,7 +57,8 @@ function APR:GetRouteSkill(requirement)
     if wanted and not spellID then
         for key, id in pairs(skills) do
             if id == wanted then
-                spellID = skillSpells[key]; break
+                spellID = skillSpells[key]
+                break
             end
         end
     end
@@ -90,7 +93,8 @@ function APR:GetRouteSkill(requirement)
         end
     end
     return 0
-end--[[APR_DIAG]]; APR.GetRouteSkill = APRTrace("APR-Core/utils/RouteConditions.lua:46:APR:GetRouteSkill#2", APR.GetRouteSkill)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetRouteSkill = APRTrace("APR-Core/utils/RouteConditions.lua:46:APR:GetRouteSkill#2", APR.GetRouteSkill)--[[/APR_DIAG]]
 
 --- Count learned primary professions, excluding every secondary skill.
 function APR:GetPrimaryProfessionCount()
@@ -105,7 +109,9 @@ function APR:GetPrimaryProfessionCount()
         if self:GetRouteSkill({ skillID = skillID }) > 0 then count = count + 1 end
     end
     return count
-end--[[APR_DIAG]]; APR.GetPrimaryProfessionCount = APRTrace("APR-Core/utils/RouteConditions.lua:96:APR:GetPrimaryProfessionCount#3", APR.GetPrimaryProfessionCount)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetPrimaryProfessionCount =
+    APRTrace("APR-Core/utils/RouteConditions.lua:96:APR:GetPrimaryProfessionCount#3", APR.GetPrimaryProfessionCount)--[[/APR_DIAG]]
 
 -- Nested conditions use the full predicate set, exactly like top-level step filters.
 function APR:MeetsExtendedRouteConditions(conditions, levelPolicy)
@@ -126,4 +132,8 @@ function APR:MeetsExtendedRouteConditions(conditions, levelPolicy)
     if conditions.EquippedItem and not self:MeetsEquippedItem(conditions.EquippedItem) then return false end
     if conditions.Collection and not self:IsRouteCollectionComplete(conditions.Collection) then return false end
     return true
-end--[[APR_DIAG]]; APR.MeetsExtendedRouteConditions = APRTrace("APR-Core/utils/RouteConditions.lua:111:APR:MeetsExtendedRouteConditions#4", APR.MeetsExtendedRouteConditions)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.MeetsExtendedRouteConditions = APRTrace(
+    "APR-Core/utils/RouteConditions.lua:111:APR:MeetsExtendedRouteConditions#4",
+    APR.MeetsExtendedRouteConditions
+)--[[/APR_DIAG]]

@@ -2,7 +2,9 @@
 local noop = function() end
 local nativePairs, nativeIpairs = pairs, ipairs
 local locale = setmetatable({}, { __index = function(_, key) return key end })
-function LibStub() return { GetLocale = function() return locale end } end
+function LibStub()
+    return { GetLocale = function() return locale end }
+end
 function tinsert(values, value) values[#values + 1] = value end
 APR = { PlayerID = "player", version = "new", EXPANSIONS = { Test = "test" }, Debug = noop }
 dofile("APR-Core/utils/RouteUtils.lua")
@@ -37,17 +39,27 @@ local function fixture()
         stored = { label = "Stored", expansion = "test", steps = { {}, {} }, signature = "stored-current" },
         spare = { label = "Spare", expansion = "test", steps = { {}, {}, {} }, signature = "spare-current" },
     }
-    APRData = { player = { swift = 3, stored = 6, spare = 7,
-        ["swift-RawTotalSteps"] = 4, ["stored-RawTotalSteps"] = 2, ["spare-RawTotalSteps"] = 3,
-        ["swift-ParallelStepsState"] = { groups = { saved = true } },
-        RouteSignatures = { swift = "swift-current", stored = "stored-old", spare = "spare-old" } } }
+    APRData = {
+        player = {
+            swift = 3,
+            stored = 6,
+            spare = 7,
+            ["swift-RawTotalSteps"] = 4,
+            ["stored-RawTotalSteps"] = 2,
+            ["spare-RawTotalSteps"] = 3,
+            ["swift-ParallelStepsState"] = { groups = { saved = true } },
+            RouteSignatures = { swift = "swift-current", stored = "stored-old", spare = "spare-old" },
+        },
+    }
     APRCustomPath = { player = { "Swift", "Stored", "Spare" } }
     APRZoneCompleted = { player = { Stored = true, Spare = true } }
     APR.questionDialog = { CreateMessagePopup = function(_, message) state.popups[#state.popups + 1] = message end }
-    APR.routeconfig = { SendMessage = function(_, message)
-        assert(message == "APR_Custom_Path_Update")
-        state.refreshes = state.refreshes + 1
-    end }
+    APR.routeconfig = {
+        SendMessage = function(_, message)
+            assert(message == "APR_Custom_Path_Update")
+            state.refreshes = state.refreshes + 1
+        end,
+    }
     APR.InvalidateEffectiveRouteStepsCache = function(_, route) state.invalidated[route] = true end
 end
 local function checkpoint()
@@ -66,9 +78,11 @@ local function finish(thread)
     return value
 end
 local function pendingAfterHash(options, route)
-    local thread = coroutine.create(function()
-        return APR:CheckCurrentRouteUpToDate(route, checkpoint, options)
-    end)
+    local thread = coroutine.create(
+        function()
+            return APR:CheckCurrentRouteUpToDate(route, checkpoint, options)
+        end
+    )
     repeat
         local ok, message = resume(thread)
         assert(ok, message)
@@ -103,13 +117,17 @@ APR.GetRouteMapIDsAndName = function() error("Current-only must not resolve comp
 -- publication/callback with its route/index, then its following paint. The
 -- Event integration suite owns rendered job tokens; this tests the scoped work.
 local frame, frameMs, queue, useful, paint = 0, 1000 / 60, {}, nil, nil
-C_Timer = { NewTimer = function(delay, callback)
-    assert(delay == 0)
-    queue[#queue + 1] = { due = frame + 1, callback = callback }
-end }
-local thread = coroutine.create(function()
-    return APR:CheckCurrentRouteUpToDate("swift", checkpoint, { currentOnly = true })
-end)
+C_Timer = {
+    NewTimer = function(delay, callback)
+        assert(delay == 0)
+        queue[#queue + 1] = { due = frame + 1, callback = callback }
+    end,
+}
+local thread = coroutine.create(
+    function()
+        return APR:CheckCurrentRouteUpToDate("swift", checkpoint, { currentOnly = true })
+    end
+)
 local advance
 advance = function()
     local started = state.cpu
@@ -118,8 +136,12 @@ advance = function()
         assert(ok, valid)
         if coroutine.status(thread) == "dead" then
             assert(valid and APRData.player.swift == 3 and APRData.player.RouteSignatures.swift == "swift-current")
-            useful = { route = APR.ActiveRoute, index = APRData.player.swift,
-                at = frame * frameMs + state.cpu - started, frame = frame }
+            useful = {
+                route = APR.ActiveRoute,
+                index = APRData.player.swift,
+                at = frame * frameMs + state.cpu - started,
+                frame = frame,
+            }
             return
         end
     until state.cpu - started >= 2
@@ -140,8 +162,12 @@ end
 assert(useful.route == "swift" and useful.index == 3)
 assert(useful.at < paint and paint <= 100, "The current guide must publish and paint within 100 ms")
 assert(#state.hashes == 1 and state.hashes[1] == "swift" and state.cpu < 1)
-assert(APRData.player.stored == 6 and APRData.player.RouteSignatures.stored == "stored-old"
-    and APRData.player["history-6000"] == 9 and APRZoneCompleted.player["history-6000"])
+assert(
+    APRData.player.stored == 6
+        and APRData.player.RouteSignatures.stored == "stored-old"
+        and APRData.player["history-6000"] == 9
+        and APRZoneCompleted.player["history-6000"]
+)
 assert(APRData.player["swift-ParallelStepsState"].groups.saved)
 assert(APR.settings.profile.lastRecordedVersion == "old" and #state.popups == 0 and state.refreshes == 0)
 pairs, ipairs, APR.GetRouteMapIDsAndName = nativePairs, nativeIpairs, realResolver
@@ -152,7 +178,11 @@ APRData.player.RouteSignatures.swift = "swift-old"
 assert(APR:CheckCurrentRouteUpToDate("swift", nil, { currentOnly = true }))
 assert(APRData.player.swift == nil and APRData.player["swift-ParallelStepsState"] == nil)
 assert(APRData.player["swift-RawTotalSteps"] == 4 and APRData.player.RouteSignatures.swift == "swift-current")
-assert(APRData.player.stored == 6 and APRZoneCompleted.player.Stored and APRData.player.RouteSignatures.stored == "stored-old")
+assert(
+    APRData.player.stored == 6
+        and APRZoneCompleted.player.Stored
+        and APRData.player.RouteSignatures.stored == "stored-old"
+)
 assert(APR.settings.profile.lastRecordedVersion == "old" and #state.popups == 1 and state.refreshes == 1)
 assert(not state.popups[1]:find("Stored", 1, true), "Foreground notifications contain only its route")
 
@@ -169,15 +199,27 @@ local oldSignature = APRData.player.RouteSignatures[selected]
 local oldRaw = APRData.player[selected .. "-RawTotalSteps"]
 assert(APR:ActivateRoute(selected, "manual"))
 local prior = APRData.player[selected]
-assert(APR:AdvanceStep(false) and APRData.player[selected] == prior + 1,
-    "Background maintenance must not lock current-route progress")
+assert(
+    APR:AdvanceStep(false) and APRData.player[selected] == prior + 1,
+    "Background maintenance must not lock current-route progress"
+)
 assert(finish(thread))
-assert(APRData.player[selected] == prior + 1 and APRData.player.RouteSignatures[selected] == oldSignature
-    and APRData.player[selected .. "-RawTotalSteps"] == oldRaw and APRZoneCompleted.player[selectedLabel])
+assert(
+    APRData.player[selected] == prior + 1
+        and APRData.player.RouteSignatures[selected] == oldSignature
+        and APRData.player[selected .. "-RawTotalSteps"] == oldRaw
+        and APRZoneCompleted.player[selectedLabel]
+)
 assert(not state.invalidated[selected])
-for _, message in ipairs(state.popups) do assert(not message:find(selectedLabel, 1, true)) end
+for _, message in ipairs(state.popups) do
+    assert(not message:find(selectedLabel, 1, true))
+end
 assert(APRData.player.swift == 3 and APRData.player["swift-ParallelStepsState"].groups.saved)
-assert(APR.settings.profile.lastRecordedVersion == "new" and not APR.routeValidationPending and not APR.routeValidationFailed)
+assert(
+    APR.settings.profile.lastRecordedVersion == "new"
+        and not APR.routeValidationPending
+        and not APR.routeValidationFailed
+)
 
 -- An explicit exclusion added after hashing has the same publication protection.
 fixture()
@@ -185,9 +227,12 @@ local excluded = {}
 thread = pendingAfterHash({ background = true, excludeRoutes = excluded })
 local excludedRoute = state.hashed
 excluded[excludedRoute] = true
-assert(finish(thread) and APRData.player[excludedRoute] ~= nil
-    and APRData.player.RouteSignatures[excludedRoute] == excludedRoute .. "-old"
-    and APRZoneCompleted.player[APR:GetRouteDisplayName(excludedRoute)])
+assert(
+    finish(thread)
+        and APRData.player[excludedRoute] ~= nil
+        and APRData.player.RouteSignatures[excludedRoute] == excludedRoute .. "-old"
+        and APRZoneCompleted.player[APR:GetRouteDisplayName(excludedRoute)]
+)
 
 -- Distinct keys can share a completion label; neither key may clear the live
 -- label or report it reset. An existing exclusion also prevents hashing.
@@ -196,8 +241,12 @@ APR.RouteQuestStepList.alias = { label = "Swift", expansion = "test", steps = { 
 APRData.player.alias, APRData.player["alias-RawTotalSteps"] = 8, 1
 APRData.player.RouteSignatures.alias, APRZoneCompleted.player.Swift = "alias-old", true
 assert(APR:CheckCurrentRouteUpToDate(nil, nil, { background = true, excludeRoutes = { stored = true } }))
-assert(APRData.player.alias == 8 and APRData.player.RouteSignatures.alias == "alias-old" and APRZoneCompleted.player.Swift)
-for _, route in ipairs(state.hashes) do assert(route == "spare") end
+assert(
+    APRData.player.alias == 8 and APRData.player.RouteSignatures.alias == "alias-old" and APRZoneCompleted.player.Swift
+)
+for _, route in ipairs(state.hashes) do
+    assert(route == "spare")
+end
 assert(APRData.player.stored == 6 and APRData.player.spare == nil)
 
 -- The request passed explicitly owns its receipts. A foreground request must
@@ -206,8 +255,13 @@ fixture()
 APR.routeValidationPending = { manualClears = { stored = true }, manualResets = { spare = true } }
 request = { manualResets = { stored = true } }
 assert(APR:CheckCurrentRouteUpToDate(nil, nil, { background = true, intentions = request }))
-assert(APRData.player.stored == 6 and APRData.player.RouteSignatures.stored == "stored-current"
-    and APRZoneCompleted.player.Stored and APRData.player.spare == nil and not APRZoneCompleted.player.Spare)
+assert(
+    APRData.player.stored == 6
+        and APRData.player.RouteSignatures.stored == "stored-current"
+        and APRZoneCompleted.player.Stored
+        and APRData.player.spare == nil
+        and not APRZoneCompleted.player.Spare
+)
 
 -- A manual clear reaches all live request owners and invalidates a suspended
 -- snapshot. On retry its receipt prevents raw totals/signatures reappearing.
@@ -225,9 +279,13 @@ end
 assert(not foreground.advance and not suspended.advance and request.advance.route == "swift")
 assert(finish(thread) == false and APR.settings.profile.lastRecordedVersion == "old")
 assert(APR:CheckCurrentRouteUpToDate(nil, nil, { background = true, intentions = request }))
-assert(APRData.player.stored == nil and APRData.player["stored-RawTotalSteps"] == nil
-    and APRData.player.RouteSignatures.stored == nil and APRZoneCompleted.player.Stored,
-    "Maintenance must preserve an explicit clear, including its completion flag")
+assert(
+    APRData.player.stored == nil
+        and APRData.player["stored-RawTotalSteps"] == nil
+        and APRData.player.RouteSignatures.stored == nil
+        and APRZoneCompleted.player.Stored,
+    "Maintenance must preserve an explicit clear, including its completion flag"
+)
 
 -- Error retry/disable pauses keep the same receipts even when there is no
 -- running maintenance job. A new snapshot must not resurrect an explicit clear.
@@ -238,8 +296,12 @@ APR:ClearSavedRouteData("stored")
 assert(request.manualClears.stored and not request.advance)
 APR.event.routeMaintenanceResume, APR.event.routeMaintenanceJob = nil, request
 assert(APR:CheckCurrentRouteUpToDate(nil, nil, { background = true, intentions = request }))
-assert(APRData.player.stored == nil and APRData.player["stored-RawTotalSteps"] == nil
-    and APRData.player.RouteSignatures.stored == nil and APRZoneCompleted.player.Stored)
+assert(
+    APRData.player.stored == nil
+        and APRData.player["stored-RawTotalSteps"] == nil
+        and APRData.player.RouteSignatures.stored == nil
+        and APRZoneCompleted.player.Stored
+)
 
 -- Owner retirement is independent of source identities. A stale request that
 -- finishes hashing before noticing cancellation still has no right to publish.
@@ -248,8 +310,12 @@ local current = true
 request = { isCurrent = function() return current end }
 thread = pendingAfterHash({ currentOnly = true, intentions = request }, "stored")
 current = false
-assert(finish(thread) == false and APRData.player.stored == 6
-    and APRData.player.RouteSignatures.stored == "stored-old" and #state.popups == 0)
+assert(
+    finish(thread) == false
+        and APRData.player.stored == 6
+        and APRData.player.RouteSignatures.stored == "stored-old"
+        and #state.popups == 0
+)
 assert(APR.settings.profile.lastRecordedVersion == "old")
 
 -- Cache invalidation can synchronously reenter a route owner. A direct clear
@@ -266,8 +332,12 @@ APR.InvalidateEffectiveRouteStepsCache = function(_, route)
     end
 end
 assert(APR:CheckCurrentRouteUpToDate("stored", nil, { currentOnly = true, intentions = request }) == false)
-assert(APRData.player.stored == nil and APRData.player["stored-RawTotalSteps"] == nil
-    and APRData.player.RouteSignatures.stored == nil and APRZoneCompleted.player.Stored)
+assert(
+    APRData.player.stored == nil
+        and APRData.player["stored-RawTotalSteps"] == nil
+        and APRData.player.RouteSignatures.stored == nil
+        and APRZoneCompleted.player.Stored
+)
 assert(request.manualClears.stored and #state.popups == 0 and state.refreshes == 0)
 
 fixture()
@@ -278,9 +348,15 @@ APR.InvalidateEffectiveRouteStepsCache = function(_, route)
     end
 end
 assert(APR:CheckCurrentRouteUpToDate(nil, nil, { background = true }))
-assert(APRData.player.stored == 1 and APRData.player["stored-RawTotalSteps"] == nil
-    and APRData.player.RouteSignatures.stored == nil and APRZoneCompleted.player.Stored)
-for _, message in ipairs(state.popups) do assert(not message:find("Stored", 1, true)) end
+assert(
+    APRData.player.stored == 1
+        and APRData.player["stored-RawTotalSteps"] == nil
+        and APRData.player.RouteSignatures.stored == nil
+        and APRZoneCompleted.player.Stored
+)
+for _, message in ipairs(state.popups) do
+    assert(not message:find("Stored", 1, true))
+end
 
 -- Every source/container identity remains part of the transaction. Nothing
 -- from a retired current-only snapshot may publish, including its version.
@@ -310,8 +386,14 @@ state.failRoute = "spare"
 request = { manualResets = { stored = true } }
 local ok, message = pcall(APR.CheckCurrentRouteUpToDate, APR, nil, nil, { background = true, intentions = request })
 assert(not ok and tostring(message):find("synthetic hash failure", 1, true))
-assert(APRData.player.stored == 6 and APRData.player.spare == 7 and APRZoneCompleted.player.Spare
-    and APRData.player.RouteSignatures.stored == "stored-old" and #state.popups == 0 and state.refreshes == 0)
+assert(
+    APRData.player.stored == 6
+        and APRData.player.spare == 7
+        and APRZoneCompleted.player.Spare
+        and APRData.player.RouteSignatures.stored == "stored-old"
+        and #state.popups == 0
+        and state.refreshes == 0
+)
 assert(APR.settings.profile.lastRecordedVersion == "old")
 state.failRoute = nil
 assert(APR:CheckCurrentRouteUpToDate(nil, nil, { background = true, intentions = request }))
@@ -324,7 +406,9 @@ assert(#state.popups == 1 and state.refreshes == 1, "A second successful pass ca
 fixture()
 APRData.player.RouteSignatures.swift = "swift-old"
 assert(finish(coroutine.create(function() return APR:CheckCurrentRouteUpToDate("swift", checkpoint) end)))
-assert(#state.hashes == 3 and APRData.player.swift == nil and APRData.player.stored == nil and APRData.player.spare == nil)
+assert(
+    #state.hashes == 3 and APRData.player.swift == nil and APRData.player.stored == nil and APRData.player.spare == nil
+)
 assert(not APRZoneCompleted.player.Stored and not APRZoneCompleted.player.Spare and #state.popups == 1)
 assert(APR.settings.profile.lastRecordedVersion == "new" and state.refreshes == 1)
 
@@ -338,9 +422,15 @@ assert(APR:SetRouteProgress("stored", 1, "reset"))
 assert(request.manualResets and request.manualResets.stored, "The maintenance owner must receive manual resets")
 assert(APR:AdvanceStep(false) and APRData.player.swift == 4)
 assert(not request.manualResets.swift, "Automatic progress is not a manual reset receipt")
-assert(finish(thread) and APRData.player.stored == 1 and APRData.player.RouteSignatures.stored == "stored-current"
-    and APRZoneCompleted.player.Stored)
-print("Startup validation scopes: bounded foreground, live-route isolation, receipts, atomic retirement and recovery passed")
+assert(
+    finish(thread)
+        and APRData.player.stored == 1
+        and APRData.player.RouteSignatures.stored == "stored-current"
+        and APRZoneCompleted.player.Stored
+)
+print(
+    "Startup validation scopes: bounded foreground, live-route isolation, receipts, atomic retirement and recovery passed"
+)
 
 -- Unknown initial quest state is distinct from an observed, legitimately empty
 -- journal. Exercise the real renderer/cache/condition and parallel-group engine.
@@ -352,12 +442,23 @@ do
         APR.routeValidationPending, APR.routeValidationFailed = nil, nil
         APRData.player[routeKey], APRData.player[routeKey .. "-SkippedStep"] = 1, 0
         APRData.player[routeKey .. "-ParallelStepsState"] = nil
-        APR.RouteQuestStepList[routeKey] = { label = "Invented initial quest state", mapID = 10,
-            steps = { { PickUp = { pickup }, IsQuestOnQuest = conditions and conditions.IsQuestOnQuest,
-                AnyOf = conditions and conditions.AnyOf, AllOf = conditions and conditions.AllOf,
-                Not = conditions and conditions.Not, Note = "Keep this instruction" },
-                { PickUp = { 8403 }, Note = "Following instruction" }, { Note = "Final instruction" } },
-            parallelSteps = groups }
+        APR.RouteQuestStepList[routeKey] = {
+            label = "Invented initial quest state",
+            mapID = 10,
+            steps = {
+                {
+                    PickUp = { pickup },
+                    IsQuestOnQuest = conditions and conditions.IsQuestOnQuest,
+                    AnyOf = conditions and conditions.AnyOf,
+                    AllOf = conditions and conditions.AllOf,
+                    Not = conditions and conditions.Not,
+                    Note = "Keep this instruction",
+                },
+                { PickUp = { 8403 }, Note = "Following instruction" },
+                { Note = "Final instruction" },
+            },
+            parallelSteps = groups,
+        }
         APR:InvalidateEffectiveRouteStepsCache(routeKey)
         H.quests, H.order, H.rewarded, APR.ActiveQuests, H.timers = {}, {}, {}, {}, {}
     end
@@ -365,25 +466,45 @@ do
     -- Every supported quest predicate, even under multiple nested operators,
     -- must remain unknown before consulting its native/cache implementation.
     local filters = {
-        { IsQuestReadyForTurnIn = prerequisite }, { IsQuestOnQuest = prerequisite },
-        { IsQuestNotOnQuest = prerequisite }, { IsQuestCompleted = prerequisite },
-        { IsQuestUncompleted = prerequisite }, { IsOneOfQuestsCompleted = { prerequisite } },
-        { IsOneOfQuestsUncompleted = { prerequisite } }, { IsOneOfQuestsCompletedOnAccount = { prerequisite } },
-        { IsOneOfQuestsUncompletedOnAccount = { prerequisite } }, { IsQuestsCompleted = { prerequisite } },
-        { IsQuestsUncompleted = { prerequisite } }, { IsQuestsCompletedOnAccount = { prerequisite } },
+        { IsQuestReadyForTurnIn = prerequisite },
+        { IsQuestOnQuest = prerequisite },
+        { IsQuestNotOnQuest = prerequisite },
+        { IsQuestCompleted = prerequisite },
+        { IsQuestUncompleted = prerequisite },
+        { IsOneOfQuestsCompleted = { prerequisite } },
+        { IsOneOfQuestsUncompleted = { prerequisite } },
+        { IsOneOfQuestsCompletedOnAccount = { prerequisite } },
+        { IsOneOfQuestsUncompletedOnAccount = { prerequisite } },
+        { IsQuestsCompleted = { prerequisite } },
+        { IsQuestsUncompleted = { prerequisite } },
+        { IsQuestsCompletedOnAccount = { prerequisite } },
         { IsQuestsUncompletedOnAccount = { prerequisite } },
     }
     resetQuestRoute({ IsQuestOnQuest = prerequisite })
     local questReads, originalPredicates = 0, {}
-    for _, name in ipairs({ "IsQuestReadyForTurnIn", "IsOneOfQuestsCompleted", "IsOneOfQuestsCompletedOnAccount",
-        "IsQuestsCompleted", "IsQuestsCompletedOnAccount" }) do
+    for _, name in ipairs({
+        "IsQuestReadyForTurnIn",
+        "IsOneOfQuestsCompleted",
+        "IsOneOfQuestsCompletedOnAccount",
+        "IsQuestsCompleted",
+        "IsQuestsCompletedOnAccount",
+    }) do
         local original = APR[name]
         originalPredicates[name] = original
-        APR[name] = function(...) questReads = questReads + 1; return original(...) end
+        APR[name] = function(...)
+            questReads = questReads + 1
+            return original(...)
+        end
     end
     local onQuest, flagged = C_QuestLog.IsOnQuest, C_QuestLog.IsQuestFlaggedCompleted
-    C_QuestLog.IsOnQuest = function(...) questReads = questReads + 1; return onQuest(...) end
-    C_QuestLog.IsQuestFlaggedCompleted = function(...) questReads = questReads + 1; return flagged(...) end
+    C_QuestLog.IsOnQuest = function(...)
+        questReads = questReads + 1
+        return onQuest(...)
+    end
+    C_QuestLog.IsQuestFlaggedCompleted = function(...)
+        questReads = questReads + 1
+        return flagged(...)
+    end
     for _, condition in ipairs(filters) do
         assert(APR:HasPendingStartupQuestConditions(condition))
         assert(not APR:AreConditionalFiltersMet(condition) and not APR:StepFilterQuestHandler(condition))
@@ -394,11 +515,18 @@ do
     end
     assert(questReads == 0, "Unknown condition trees must not read temporary native/cache quest values")
     C_QuestLog.IsOnQuest, C_QuestLog.IsQuestFlaggedCompleted = onQuest, flagged
-    for name, original in pairs(originalPredicates) do APR[name] = original end
+    for name, original in pairs(originalPredicates) do
+        APR[name] = original
+    end
     assert(APRData.player[routeKey] == 1 and APRData.player[routeKey .. "-SkippedStep"] == 0)
-    assert(APR:AreConditionalFiltersMet({ Faction = "Alliance" }) and not APR:HasPendingStartupQuestConditions({ PickUp = { pickup } }))
-    assert(not APR:AreConditionalFiltersMet({ Faction = "Horde" }) and APR:StepFilterQuestHandler({ Faction = "Horde" }),
-        "Known nonquest filters retain their ordinary behavior during startup")
+    assert(
+        APR:AreConditionalFiltersMet({ Faction = "Alliance" })
+            and not APR:HasPendingStartupQuestConditions({ PickUp = { pickup } })
+    )
+    assert(
+        not APR:AreConditionalFiltersMet({ Faction = "Horde" }) and APR:StepFilterQuestHandler({ Faction = "Horde" }),
+        "Known nonquest filters retain their ordinary behavior during startup"
+    )
 
     -- First content commit and following paint retain the real instruction;
     -- keeping this one step does not impose routeValidationPending on the guide.
@@ -428,7 +556,10 @@ do
     resetQuestRoute(nil, {
         { conditions = { IsQuestNotOnQuest = prerequisite }, steps = { { PickUp = { 8411 } } } },
         { conditions = { Not = { AnyOf = { { IsQuestOnQuest = prerequisite } } } }, steps = { { PickUp = { 8412 } } } },
-        { conditions = { AllOf = { { Not = { IsQuestCompleted = prerequisite } } } }, steps = { { PickUp = { 8413 } } } },
+        {
+            conditions = { AllOf = { { Not = { IsQuestCompleted = prerequisite } } } },
+            steps = { { PickUp = { 8413 } } },
+        },
         { conditions = { Faction = "Alliance" }, steps = { { PickUp = { 8414 } } } },
     })
     APR:GetRouteSteps(routeKey)
@@ -463,7 +594,9 @@ do
     assert(APRData.player[routeKey] == 2 and APRData.player[routeKey .. "-SkippedStep"] == 1)
     assert(APR:AreConditionalFiltersMet({ IsQuestNotOnQuest = prerequisite }))
 end
-print("Startup quest conditions: unknown snapshots preserve rendered steps and manual stops; ready empty logs restore decisions")
+print(
+    "Startup quest conditions: unknown snapshots preserve rendered steps and manual stops; ready empty logs restore decisions"
+)
 
 do
     -- The real native observer releases only after a phase and an explicit
@@ -490,13 +623,18 @@ do
         dofile = realLoad
         if not ok then error(value, 0) end
         APR.ActiveRoute = routeKey
-        APR.RouteQuestStepList[routeKey] = { label = "Invented native startup phase", mapID = 10,
-            steps = { { IsQuestOnQuest = prerequisite, PickUp = { pickup } }, { PickUp = { 8503 } } } }
+        APR.RouteQuestStepList[routeKey] = {
+            label = "Invented native startup phase",
+            mapID = 10,
+            steps = { { IsQuestOnQuest = prerequisite, PickUp = { pickup } }, { PickUp = { 8503 } } },
+        }
         APRData.player[routeKey], APRData.player[routeKey .. "-SkippedStep"] = 1, 0
         APR:InvalidateEffectiveRouteStepsCache(routeKey)
         local observer = assert(APR.event.startupQuestStateFrame)
-        assert(not APR.startupQuestStatePending and not APR.event.startupQuestStateStarted and H.questReads == 0,
-            "Importing Event handlers alone must not arm startup or read a quest snapshot")
+        assert(
+            not APR.startupQuestStatePending and not APR.event.startupQuestStateStarted and H.questReads == 0,
+            "Importing Event handlers alone must not arm startup or read a quest snapshot"
+        )
         -- Route validation/history scheduling is exercised above and in the
         -- login latency suite. Keep it from replacing this fixture's current
         -- route when the real ADDON_LOADED bootstrap runs on the next frame.
@@ -520,8 +658,10 @@ do
     assert(context and context.index == 1 and APR:IsStepContextCurrent(context) and APRData.player[routeKey] == 1)
     assert(APR.currentStep.questsList.PickUp.detailFonts[1]:GetText():find("Quest " .. pickup, 1, true))
     H.frame(0.5 - 1 / 60)
-    assert(APR.startupQuestStatePending and APRData.player[routeKey] == 1,
-        "Passing a timer deadline alone cannot certify an unobserved quest phase")
+    assert(
+        APR.startupQuestStatePending and APRData.player[routeKey] == 1,
+        "Passing a timer deadline alone cannot certify an unobserved quest phase"
+    )
     H.quest(prerequisite)
     nativeEvent(observer, "QUEST_LOG_UPDATE")
     assert(not APR.startupQuestStatePending and APR.ActiveQuests[prerequisite] and APRData.player[routeKey] == 1)
@@ -540,8 +680,10 @@ do
     -- an explicit read of both empty and nonempty journals without a new event.
     for _, seeded in ipairs({ false, true }) do
         observer = nativeFixture(true, seeded)
-        assert(not APR.startupQuestStatePending and H.questReads > 0,
-            "The already-observed native login phase still requires a snapshot read")
+        assert(
+            not APR.startupQuestStatePending and H.questReads > 0,
+            "The already-observed native login phase still requires a snapshot read"
+        )
         APR:UpdateStep()
         assert(APRData.player[routeKey] == (seeded and 1 or 2))
         assert((APR.ActiveQuests[prerequisite] ~= nil) == seeded)
@@ -558,15 +700,25 @@ do
     dofile("tests/lua/addon_journey_quest_env.lua")
     local routeKey, issues = "startup-repeatable-group", {}
     APR.ActiveRoute, APR.startupQuestStatePending = routeKey, true
-    APR.RouteQuestStepList[routeKey] = { label = "Invented repeatable startup group", mapID = 10,
+    APR.RouteQuestStepList[routeKey] = {
+        label = "Invented repeatable startup group",
+        mapID = 10,
         steps = { { Note = "First" }, { Note = "Second" }, { Note = "Third" } },
-        parallelSteps = { { repeatable = true, conditions = { Not = { IsQuestCompleted = 8601 } },
-            steps = { { UseItem = { itemID = 8602 } } } } } }
+        parallelSteps = {
+            {
+                repeatable = true,
+                conditions = { Not = { IsQuestCompleted = 8601 } },
+                steps = { { UseItem = { itemID = 8602 } } },
+            },
+        },
+    }
     local entry = { activationOrder = 1, effectiveBeforeIndex = 2 }
     local saved = { groups = { entry }, activationSequence = 1 }
     APRData.player[routeKey], APRData.player[routeKey .. "-ParallelStepsState"] = 3, saved
     APR:GetRouteSteps(routeKey)
-    if entry.rearm then issues[#issues + 1] = "RouteManager must not rearm a repeatable group from unknown quest state" end
+    if entry.rearm then
+        issues[#issues + 1] = "RouteManager must not rearm a repeatable group from unknown quest state"
+    end
     APR.startupQuestStatePending = nil
     APR:GetRouteSteps(routeKey)
     if saved.activationSequence ~= 1 then

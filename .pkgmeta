@@ -15,6 +15,13 @@ ignore:
   - .editorconfig
   - .gitignore
   - .luacheckrc
+  - .prettierignore
+  - .prettierrc.json
+  - .styluaignore
+  - stylua.toml
+  - package.json
+  - package-lock.json
+  - node_modules
   - .pkgmeta
   - .env
   - docs

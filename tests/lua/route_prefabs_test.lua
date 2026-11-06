@@ -4,18 +4,28 @@ local dungeon = APR.PREFAB_TYPES.Dungeons
 local routes = APR.RouteQuestStepList
 local first = env.route("fixture-first", "A translated starter", { Faction = "Horde", Race = "Orc" }, { [dungeon] = 1 })
 local later = env.route("fixture-later", "A future chapter", { Faction = "Horde", MinLevel = 20 }, { [dungeon] = 3 })
-local middle = env.route("fixture-middle", "An eligible class chapter", { Faction = "Horde", Class = "WARRIOR" },
-    { [dungeon] = { index = 2, conditions = { Race = "Orc" } } })
+local middle = env.route(
+    "fixture-middle",
+    "An eligible class chapter",
+    { Faction = "Horde", Class = "WARRIOR" },
+    { [dungeon] = { index = 2, conditions = { Race = "Orc" } } }
+)
 env.route("fixture-other-faction", "Other faction", { Faction = "Alliance" }, { [dungeon] = 1 })
 env.route("fixture-other-race", "Other race", { Race = "Tauren" }, { [dungeon] = 1 })
 env.route("fixture-other-class", "Other class", { Class = "MAGE" }, { [dungeon] = 1 })
-env.route("fixture-entry-filter", "Filtered prefab entry", {},
-    { [dungeon] = { index = 1, conditions = { Race = "Tauren" } } })
+env.route(
+    "fixture-entry-filter",
+    "Filtered prefab entry",
+    {},
+    { [dungeon] = { index = 1, conditions = { Race = "Tauren" } } }
+)
 env.route("Forever-MageAoE-fixture", "Separate scope", { Class = "MAGE" }, { [dungeon] = 1 })
 env.route("fixture-standalone", "Standalone dungeon", nil, nil, APR.CATEGORIES.Dungeons)
 local function expectPath(expected)
     assert(#APRCustomPath.player == #expected, "Only eligible, unfinished prefab entries are queued")
-    for index, route in ipairs(expected) do assert(APRCustomPath.player[index] == route.label) end
+    for index, route in ipairs(expected) do
+        assert(APRCustomPath.player[index] == route.label)
+    end
 end
 assert(APR.routeconfig:BuildDungeonPrefab())
 expectPath({ first, middle, later })

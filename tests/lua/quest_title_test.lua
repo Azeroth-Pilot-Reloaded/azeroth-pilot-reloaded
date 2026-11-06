@@ -2,9 +2,15 @@
 local function noop() end
 local now, titles, requests, timers = 0, {}, {}, {}
 local updates, renders, enabled = 0, 0, true
-function LibStub() return { GetLocale = function() return {} end } end
+function LibStub()
+    return { GetLocale = function() return {} end }
+end
 function GetTime() return now end
-function wipe(values) for key in pairs(values) do values[key] = nil end end
+function wipe(values)
+    for key in pairs(values) do
+        values[key] = nil
+    end
+end
 function CreateFrame() return { RegisterEvent = noop, SetScript = noop } end
 C_QuestLog = {
     GetTitleForQuestID = function(id) return titles[id] end,
@@ -26,10 +32,12 @@ APR = {
     StartPerformanceSample = noop,
     FinishPerformanceSample = noop,
     UpdateStep = function() updates = updates + 1 end,
-    questOrderList = { DelayedUpdate = function(_, force)
-        assert(force, "Loaded titles must force a list refresh")
-        renders = renders + 1
-    end },
+    questOrderList = {
+        DelayedUpdate = function(_, force)
+            assert(force, "Loaded titles must force a list refresh")
+            renders = renders + 1
+        end,
+    },
 }
 dofile("APR-Core/utils/QuestUtils.lua")
 dofile("APR-Core/features/questing/StepTransitions.lua")
@@ -45,7 +53,9 @@ titles[1] = "Cached title"
 assert(APR:GetQuestTitle("1") == "Cached title" and #requests == 0)
 assert(APR:GetQuestTitle(2, false) == nil and #requests == 0)
 titles[2] = ""
-for _ = 1, 100 do assert(APR:GetQuestTitle(2) == nil) end
+for _ = 1, 100 do
+    assert(APR:GetQuestTitle(2) == nil)
+end
 assert(#requests == 1 and requests[1] == 2, "Repeated reads must share one pending request")
 assert(not APR:OnQuestTitleLoaded(2, false))
 now = 29
@@ -78,8 +88,10 @@ for id = 10, 29 do
     titles[id] = "Quest " .. id
     APR.event.functions.questData("QUEST_DATA_LOAD_RESULT", id, true)
 end
-assert(#timers == 1 and timers[1].delay == 0.15 and updates == 0,
-    "A burst of loaded titles must schedule a single bounded refresh")
+assert(
+    #timers == 1 and timers[1].delay == 0.15 and updates == 0,
+    "A burst of loaded titles must schedule a single bounded refresh"
+)
 timers[1].callback()
 assert(updates == 1 and renders == 1, "Both panels refresh once with loaded titles")
 APR.event.functions.questData("QUEST_DATA_LOAD_RESULT", 999, true)

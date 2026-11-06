@@ -12,18 +12,29 @@ local View, UI = APR.PerformanceResources, APR.UI
 View.__index = View
 local function Memory(kb, signed)
     return kb and string.format(signed and "%+.2f" or "%.2f", kb / 1024) .. " " .. L["UI_MEMORY_UNIT"] or "-"
-end--[[APR_DIAG]]; Memory = APRTrace("APR-Core/ui/panels/PerformanceResources.lua:13:Memory#1", Memory)--[[/APR_DIAG]]
-local function Count(value) return value and (value >= 10000 and "10000+" or tostring(value)) or "-" end--[[APR_DIAG]]; Count = APRTrace("APR-Core/ui/panels/PerformanceResources.lua:16:Count#2", Count)--[[/APR_DIAG]]
-local function Percent(value) return string.format("%.0f %%", value) end--[[APR_DIAG]]; Percent = APRTrace("APR-Core/ui/panels/PerformanceResources.lua:17:Percent#3", Percent)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Memory = APRTrace("APR-Core/ui/panels/PerformanceResources.lua:13:Memory#1", Memory)--[[/APR_DIAG]]
+local function Count(value) return value and (value >= 10000 and "10000+" or tostring(value)) or "-" end--[[APR_DIAG]]
+Count = APRTrace("APR-Core/ui/panels/PerformanceResources.lua:16:Count#2", Count)--[[/APR_DIAG]]
+local function Percent(value) return string.format("%.0f %%", value) end--[[APR_DIAG]]
+Percent = APRTrace("APR-Core/ui/panels/PerformanceResources.lua:17:Percent#3", Percent)--[[/APR_DIAG]]
 local function TooltipLine(label, value)
     APR:AddTooltipDoubleLine(GameTooltip, label, tostring(value), "general", "muted", "base")
-end--[[APR_DIAG]]; TooltipLine = APRTrace("APR-Core/ui/panels/PerformanceResources.lua:18:TooltipLine#4", TooltipLine)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+TooltipLine = APRTrace("APR-Core/ui/panels/PerformanceResources.lua:18:TooltipLine#4", TooltipLine)--[[/APR_DIAG]]
 
 function View:Tooltip(frame, point, key)
     GameTooltip:SetOwner(frame, "ANCHOR_CURSOR")
-    APR:SetTooltipText(GameTooltip, key == "cpuPercent" and "CPU · APR" or L["UI_RESOURCE_MEMORY"], "general", "accent")
-    TooltipLine(L["UI_RESOURCE_TIME"],
-        APR:FormatSeconds(point.from - self.view.finish) .. " – " .. APR:FormatSeconds(point.to - self.view.finish))
+    APR:SetTooltipText(
+        GameTooltip,
+        key == "cpuPercent" and "CPU · APR" or L["UI_RESOURCE_MEMORY"],
+        "general",
+        "accent"
+    )
+    TooltipLine(
+        L["UI_RESOURCE_TIME"],
+        APR:FormatSeconds(point.from - self.view.finish) .. " – " .. APR:FormatSeconds(point.to - self.view.finish)
+    )
     local sample = key == "cpuPercent" and point.cpuSample or point.memorySample
     if not sample or point[key] == nil then
         APR:AddTooltipLine(GameTooltip, UNAVAILABLE, "general", "muted", true)
@@ -35,7 +46,9 @@ function View:Tooltip(frame, point, key)
     else
         TooltipLine(L["UI_RESOURCE_MEMORY"], Memory(sample.memoryKB))
         TooltipLine(L["UI_RESOURCE_MEMORY_AGE"], APR:FormatSeconds(sample.time - sample.memoryAt))
-        if sample.memoryScanMs then TooltipLine(L["UI_RESOURCE_SCAN_TIME"], APR:FormatMilliseconds(sample.memoryScanMs)) end
+        if sample.memoryScanMs then
+            TooltipLine(L["UI_RESOURCE_SCAN_TIME"], APR:FormatMilliseconds(sample.memoryScanMs))
+        end
     end
     if key == "cpuPercent" and point.frameSample then
         TooltipLine(L["UI_RESOURCE_FRAME_PEAK"], APR:FormatMilliseconds(point.frameSample.peakFrameMs, true))
@@ -45,10 +58,16 @@ function View:Tooltip(frame, point, key)
         if sample.route then APR:AddTooltipLine(GameTooltip, sample.route, "general", "base", true) end
         if sample.step then TooltipLine(L["CURRENT_STEP"], sample.step) end
     end
-    APR:AddTooltipLine(GameTooltip, key == "cpuPercent" and L["UI_RESOURCE_CPU_HELP"] or L["UI_RESOURCE_MEMORY_HELP"],
-        "general", "muted", true)
+    APR:AddTooltipLine(
+        GameTooltip,
+        key == "cpuPercent" and L["UI_RESOURCE_CPU_HELP"] or L["UI_RESOURCE_MEMORY_HELP"],
+        "general",
+        "muted",
+        true
+    )
     GameTooltip:Show()
-end--[[APR_DIAG]]; View.Tooltip = APRTrace("APR-Core/ui/panels/PerformanceResources.lua:22:View:Tooltip#5", View.Tooltip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+View.Tooltip = APRTrace("APR-Core/ui/panels/PerformanceResources.lua:22:View:Tooltip#5", View.Tooltip)--[[/APR_DIAG]]
 
 local function CreateCard(view, title, color)
     local card = UI:Panel(view.frame, "borderedPanel", "inset")
@@ -59,8 +78,15 @@ local function CreateCard(view, title, color)
     card.detail = UI:Label(card, "", 11, "muted")
     card.detail:SetPoint("TOPLEFT", 12, -70)
     card.detail:SetPoint("TOPRIGHT", -12, -70)
-    card.graph = APR.TimeSeriesGraph:New(card, color,
-            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceResources.lua:63:callback#7", --[[/APR_DIAG]]function(...) view:Tooltip(...) end--[[APR_DIAG]])--[[/APR_DIAG]] )
+    card.graph = APR.TimeSeriesGraph:New(
+        card,
+        color,
+        --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/panels/PerformanceResources.lua:63:callback#7", --[[/APR_DIAG]]
+            function(...) view:Tooltip(...) end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
     card.graph.frame:SetPoint("TOPLEFT", 12, -105)
     card.graph.frame:SetPoint("BOTTOMRIGHT", -12, 35)
     card.interval = UI:Label(card, "", 11, "muted")
@@ -68,30 +94,47 @@ local function CreateCard(view, title, color)
     card.now = UI:Label(card, APR:FormatSeconds(0), 11, "muted")
     card.now:SetPoint("BOTTOMRIGHT", -12, 12)
     return card
-end--[[APR_DIAG]]; CreateCard = APRTrace("APR-Core/ui/panels/PerformanceResources.lua:53:CreateCard#6", CreateCard)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+CreateCard = APRTrace("APR-Core/ui/panels/PerformanceResources.lua:53:CreateCard#6", CreateCard)--[[/APR_DIAG]]
 
 function View:New(parent)
     local view = setmetatable({ frame = CreateFrame("Frame", nil, parent), duration = 120 }, self)
     view.frame:SetAllPoints()
     view.cpu = CreateCard(view, "CPU · APR", { 0.25, 0.72, 1 })
     view.memory = CreateCard(view, L["UI_RESOURCE_MEMORY"], { 0.73, 0.48, 1 })
-    view.scanMemory = UI:Button(view.memory, L["UI_RESOURCE_SCAN_MEMORY"], 160,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceResources.lua:78:callback#9", --[[/APR_DIAG]]function()
+    view.scanMemory = UI:Button(
+        view.memory,
+        L["UI_RESOURCE_SCAN_MEMORY"],
+        160, --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/panels/PerformanceResources.lua:78:callback#9", --[[/APR_DIAG]] function()
             APR.ResourceMonitor:ScanMemory()
             view.frozenView = nil
             view:Refresh()
-        end--[[APR_DIAG]])--[[/APR_DIAG]] )
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     view.scanMemory:SetPoint("TOPRIGHT", -12, -8)
-    view.range = UI:Select(view.frame, 165,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceResources.lua:84:callback#10", --[[/APR_DIAG]]function(value)
+    view.range = UI:Select(
+        view.frame,
+        165, --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/panels/PerformanceResources.lua:84:callback#10", --[[/APR_DIAG]] function(value)
             view.duration, view.frozenView = value, nil
             view:Refresh()
-        end--[[APR_DIAG]])--[[/APR_DIAG]] )
-    view.range:SetOptions({ { value = 120, label = string.format(D_MINUTES, 2) },
-        { value = 300, label = string.format(D_MINUTES, 5) }, { value = 600, label = string.format(D_MINUTES, 10) } },
-        120)
-    view.freeze = UI:Button(view.frame, L["UI_PERF_FREEZE_GRAPH"], 225,  --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceResources.lua:91:callback#11", --[[/APR_DIAG]]function()
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+    view.range:SetOptions({
+        { value = 120, label = string.format(D_MINUTES, 2) },
+        { value = 300, label = string.format(D_MINUTES, 5) },
+        { value = 600, label = string.format(D_MINUTES, 10) },
+    }, 120)
+    view.freeze = UI:Button(
+        view.frame,
+        L["UI_PERF_FREEZE_GRAPH"],
+        225, --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/panels/PerformanceResources.lua:91:callback#11", --[[/APR_DIAG]] function()
             view.frozenView = not view.frozenView and view.view or nil
             view:Refresh()
-        end--[[APR_DIAG]])--[[/APR_DIAG]] )
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     view.state = UI:Label(view.frame, "", 11, "muted")
     view.state:SetJustifyH("RIGHT")
     view.summaryPanel = UI:Panel(view.frame, "borderedPanel", "stone")
@@ -103,16 +146,24 @@ function View:New(parent)
     view.note = UI:Label(view.frame, L["UI_RESOURCE_MEMORY_HELP"], 11, "muted")
     view.note:SetPoint("BOTTOMLEFT")
     view.note:SetPoint("BOTTOMRIGHT")
-    view.frame:HookScript("OnSizeChanged",
-            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PerformanceResources.lua:107:callback#12", --[[/APR_DIAG]]function() view:Layout() end--[[APR_DIAG]])--[[/APR_DIAG]] )
+    view.frame:HookScript(
+        "OnSizeChanged",
+        --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/panels/PerformanceResources.lua:107:callback#12", --[[/APR_DIAG]]
+            function() view:Layout() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
     view:Layout()
     return view
-end--[[APR_DIAG]]; View.New = APRTrace("APR-Core/ui/panels/PerformanceResources.lua:73:View:New#8", View.New)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+View.New = APRTrace("APR-Core/ui/panels/PerformanceResources.lua:73:View:New#8", View.New)--[[/APR_DIAG]]
 
 function View:Layout()
     local width, height = math.max(1, self.frame:GetWidth()), math.max(1, self.frame:GetHeight())
     local cardWidth, cardHeight = (width - 12) / 2, math.max(260, math.min(365, height - 220))
-    self.cpu:ClearAllPoints(); self.memory:ClearAllPoints()
+    self.cpu:ClearAllPoints()
+    self.memory:ClearAllPoints()
     self.cpu:SetPoint("TOPLEFT")
     self.memory:SetPoint("TOPRIGHT")
     self.cpu:SetSize(cardWidth, cardHeight)
@@ -124,18 +175,26 @@ function View:Layout()
     self.state:ClearAllPoints()
     self.state:SetPoint("LEFT", self.freeze, "RIGHT", 12, 0)
     self.state:SetPoint("RIGHT", self.frame, "TOPRIGHT", -4, -cardHeight - 27)
-    self.summary:ClearAllPoints(); self.counts:ClearAllPoints()
-    self.summaryPanel:ClearAllPoints(); self.countsPanel:ClearAllPoints()
+    self.summary:ClearAllPoints()
+    self.counts:ClearAllPoints()
+    self.summaryPanel:ClearAllPoints()
+    self.countsPanel:ClearAllPoints()
     self.summaryPanel:SetPoint("TOPLEFT", 0, -cardHeight - 56)
     self.countsPanel:SetPoint("TOPRIGHT", 0, -cardHeight - 56)
-    self.summaryPanel:SetSize(cardWidth, 118); self.countsPanel:SetSize(cardWidth, 118)
-    self.summary:SetPoint("TOPLEFT", 12, -12); self.summary:SetWidth(cardWidth - 24)
-    self.counts:SetPoint("TOPLEFT", 12, -12); self.counts:SetWidth(cardWidth - 24)
-end--[[APR_DIAG]]; View.Layout = APRTrace("APR-Core/ui/panels/PerformanceResources.lua:112:View:Layout#13", View.Layout)--[[/APR_DIAG]]
+    self.summaryPanel:SetSize(cardWidth, 118)
+    self.countsPanel:SetSize(cardWidth, 118)
+    self.summary:SetPoint("TOPLEFT", 12, -12)
+    self.summary:SetWidth(cardWidth - 24)
+    self.counts:SetPoint("TOPLEFT", 12, -12)
+    self.counts:SetWidth(cardWidth - 24)
+end--[[APR_DIAG]]
+View.Layout = APRTrace("APR-Core/ui/panels/PerformanceResources.lua:112:View:Layout#13", View.Layout)--[[/APR_DIAG]]
 
 function View:Refresh()
     local log = APRData and APRData.PerformanceLog
-    if self.log ~= log then self.log, self.frozenView = log, nil end
+    if self.log ~= log then
+        self.log, self.frozenView = log, nil
+    end
     local view = self.frozenView or APR.ResourceMonitor:GetView(self.duration)
     self.view = view
     local sample = view.latest or {}
@@ -145,28 +204,50 @@ function View:Refresh()
     self.cpu.value:SetText(sample.cpuPercent and string.format("%.2f %%", sample.cpuPercent) or "-")
     self.memory.value:SetText(Memory(sample.memoryKB))
     local fps = sample.fps and string.format("%.0f", sample.fps) or "-"
-    self.cpu.detail:SetText(sample.cpuMs and
-        (L["UI_RESOURCE_CPU_TIME"] .. ": " .. APR:FormatMilliseconds(sample.cpuMs, true)
-            .. "\n" .. FRAMERATE_LABEL .. " " .. fps)
-        or (view.latest and L["UI_RESOURCE_CPU_UNAVAILABLE"] or L["UI_RESOURCE_WAITING"]))
+    self.cpu.detail:SetText(
+        sample.cpuMs
+                and (L["UI_RESOURCE_CPU_TIME"] .. ": " .. APR:FormatMilliseconds(sample.cpuMs, true) .. "\n" .. FRAMERATE_LABEL .. " " .. fps)
+            or (view.latest and L["UI_RESOURCE_CPU_UNAVAILABLE"] or L["UI_RESOURCE_WAITING"])
+    )
     if sample.peakFrameMs then
-        self.cpu.detail:SetText(self.cpu.detail:GetText() .. "\n" .. L["UI_RESOURCE_FRAME_PEAK"] .. ": "
-            .. APR:FormatMilliseconds(sample.peakFrameMs))
+        self.cpu.detail:SetText(
+            self.cpu.detail:GetText()
+                .. "\n"
+                .. L["UI_RESOURCE_FRAME_PEAK"]
+                .. ": "
+                .. APR:FormatMilliseconds(sample.peakFrameMs)
+        )
     end
-    self.memory.detail:SetText(sample.memoryKB and
-    string.format(L["UI_RESOURCE_MEMORY_DETAIL"], Memory(view.peakMemoryKB),
-        math.max(0, view.finish - sample.memoryAt)) or
-    (view.latest and L["UI_RESOURCE_MEMORY_UNAVAILABLE"] or L["UI_RESOURCE_WAITING"]))
+    self.memory.detail:SetText(
+        sample.memoryKB
+                and string.format(
+                    L["UI_RESOURCE_MEMORY_DETAIL"],
+                    Memory(view.peakMemoryKB),
+                    math.max(0, view.finish - sample.memoryAt)
+                )
+            or (view.latest and L["UI_RESOURCE_MEMORY_UNAVAILABLE"] or L["UI_RESOURCE_WAITING"])
+    )
     local delta = sample.memoryKB and view.firstMemoryKB and sample.memoryKB - view.firstMemoryKB
     local elapsed = sample.memoryAt and view.firstMemoryAt and sample.memoryAt - view.firstMemoryAt
     local rate = delta and elapsed and elapsed > 0 and Memory(delta * 60 / elapsed, true) or "-"
-    self.summary:SetText(string.format(L["UI_RESOURCE_MEMORY_SUMMARY"], Memory(view.firstMemoryKB), Memory(delta, true),
-        rate))
-    self.counts:SetText(string.format(L["UI_RESOURCE_RETAINED"], Count(sample.routeCache), Count(sample.mapCache),
-        Count(sample.stepModels)))
+    self.summary:SetText(
+        string.format(L["UI_RESOURCE_MEMORY_SUMMARY"], Memory(view.firstMemoryKB), Memory(delta, true), rate)
+    )
+    self.counts:SetText(
+        string.format(
+            L["UI_RESOURCE_RETAINED"],
+            Count(sample.routeCache),
+            Count(sample.mapCache),
+            Count(sample.stepModels)
+        )
+    )
     self.freeze:SetText(self.frozenView and L["UI_PERF_RESUME_GRAPH"] or L["UI_PERF_FREEZE_GRAPH"])
-    self.state:SetText(self.frozenView and L["UI_RESOURCE_FROZEN"] or APR.performanceLogging and L["UI_RESOURCE_LIVE"] or
-    L["UI_RESOURCE_STOPPED"])
+    self.state:SetText(
+        self.frozenView and L["UI_RESOURCE_FROZEN"]
+            or APR.performanceLogging and L["UI_RESOURCE_LIVE"]
+            or L["UI_RESOURCE_STOPPED"]
+    )
     self.cpu.interval:SetText(string.format(D_MINUTES, self.duration / 60))
     self.memory.interval:SetText(string.format(D_MINUTES, self.duration / 60))
-end--[[APR_DIAG]]; View.Refresh = APRTrace("APR-Core/ui/panels/PerformanceResources.lua:136:View:Refresh#14", View.Refresh)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+View.Refresh = APRTrace("APR-Core/ui/panels/PerformanceResources.lua:136:View:Refresh#14", View.Refresh)--[[/APR_DIAG]]

@@ -10,37 +10,70 @@ local MODULO = 4294967296
 
 local function Public(value)
     return not (issecretvalue and issecretvalue(value))
-end--[[APR_DIAG]]; Public = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:11:Public#1", Public)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Public = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:11:Public#1", Public)--[[/APR_DIAG]]
 
 local function PositiveInteger(value)
-    return Public(value) and type(value) == "number" and value > 0
-        and value < math.huge and value == math.floor(value)
-end--[[APR_DIAG]]; PositiveInteger = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:15:PositiveInteger#2", PositiveInteger)--[[/APR_DIAG]]
+    return Public(value) and type(value) == "number" and value > 0 and value < math.huge and value == math.floor(value)
+end--[[APR_DIAG]]
+PositiveInteger = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:15:PositiveInteger#2", PositiveInteger)--[[/APR_DIAG]]
 
 function Finder:RefreshWorldPopulation()
     self.worldPopulation, self.worldDisplayIndex = nil, nil
-    if not self.worldChannelID or not self.worldChannelName
-        or type(GetNumDisplayChannels) ~= "function" or type(GetChannelDisplayInfo) ~= "function" then return end
-    local ok, count = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetNumDisplayChannels)
+    if
+        not self.worldChannelID
+        or not self.worldChannelName
+        or type(GetNumDisplayChannels) ~= "function"
+        or type(GetChannelDisplayInfo) ~= "function"
+    then
+        return
+    end
+    local ok, count = --[[APR_DIAG]]
+        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetNumDisplayChannels)
     if not ok or not PositiveInteger(count) then return end
     -- Blizzard's Retail and Forever channel lists read this cached fifth return.
     -- The display index is not the channel number; never request/select a roster.
     for index = 1, math.min(128, count) do
-        local valid, name, header, _, number, population, active = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetChannelDisplayInfo, index)
-        if valid and Public(name) and Public(header) and Public(number) and Public(active)
-            and type(name) == "string" and not header and active == true and number == self.worldChannelID
-            and name:lower() == self.worldChannelName:lower() then
+        local valid, name, header, _, number, population, active = --[[APR_DIAG]]
+            APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetChannelDisplayInfo, index)
+        if
+            valid
+            and Public(name)
+            and Public(header)
+            and Public(number)
+            and Public(active)
+            and type(name) == "string"
+            and not header
+            and active == true
+            and number == self.worldChannelID
+            and name:lower() == self.worldChannelName:lower()
+        then
             self.worldDisplayIndex = index
             if PositiveInteger(population) then self.worldPopulation = population end
             return self.worldPopulation
         end
     end
-end--[[APR_DIAG]]; Finder.RefreshWorldPopulation = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:20:Finder:RefreshWorldPopulation#3", Finder.RefreshWorldPopulation)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.RefreshWorldPopulation = APRTrace(
+    "APR-Core/features/group/PartyFinderWorld.lua:20:Finder:RefreshWorldPopulation#3",
+    Finder.RefreshWorldPopulation
+)--[[/APR_DIAG]]
 
 function Finder:QueueWorldPopulationRefresh()
     if self.worldCountTimer or not self.worldChannelID then return end
-    self:SetTimer("worldCountTimer", 0.25, --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinderWorld.lua:42:callback#5", --[[/APR_DIAG]]function() self:RefreshWorldPopulation() end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; Finder.QueueWorldPopulationRefresh = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:40:Finder:QueueWorldPopulationRefresh#4", Finder.QueueWorldPopulationRefresh)--[[/APR_DIAG]]
+    self:SetTimer(
+        "worldCountTimer",
+        0.25, --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/features/group/PartyFinderWorld.lua:42:callback#5", --[[/APR_DIAG]]
+            function() self:RefreshWorldPopulation() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
+end--[[APR_DIAG]]
+Finder.QueueWorldPopulationRefresh = APRTrace(
+    "APR-Core/features/group/PartyFinderWorld.lua:40:Finder:QueueWorldPopulationRefresh#4",
+    Finder.QueueWorldPopulationRefresh
+)--[[/APR_DIAG]]
 
 -- Local matches are never sampled against the whole realm's population.
 -- A population-aware stagger lets crowded zones fill and cancel before later replies,
@@ -54,13 +87,26 @@ function Finder:GetDiscoveryResponseDelay(query)
         ticket = (1664525 * ticket + 1013904223) % MODULO
     end
     return math.min(9, 0.25 + 1.2 * math.log(1 + math.max(0, population - 1) * ticket / MODULO / 24) / math.log(2))
-end--[[APR_DIAG]]; Finder.GetDiscoveryResponseDelay = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:48:Finder:GetDiscoveryResponseDelay#6", Finder.GetDiscoveryResponseDelay)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.GetDiscoveryResponseDelay = APRTrace(
+    "APR-Core/features/group/PartyFinderWorld.lua:48:Finder:GetDiscoveryResponseDelay#6",
+    Finder.GetDiscoveryResponseDelay
+)--[[/APR_DIAG]]
 
 function Finder:CanQueueWorldResponse(query)
-    if type(query) ~= "table" or query.mode ~= "world" or query.context ~= self.worldContext
-        or not self.worldChannelID or not PositiveInteger(self.worldPopulation)
-        or not Public(query.id) or type(query.id) ~= "string"
-        or not Public(self.playerKey) or type(self.playerKey) ~= "string" then return false end
+    if
+        type(query) ~= "table"
+        or query.mode ~= "world"
+        or query.context ~= self.worldContext
+        or not self.worldChannelID
+        or not PositiveInteger(self.worldPopulation)
+        or not Public(query.id)
+        or type(query.id) ~= "string"
+        or not Public(self.playerKey)
+        or type(self.playerKey) ~= "string"
+    then
+        return false
+    end
     if self.lastWorldResponse and GetTime() - self.lastWorldResponse < 5 then return false end
     -- A known population permits best-effort sampling before route/state work.
     -- This targets 24 replies, reserving room below 30; it is not an exact cap.
@@ -75,7 +121,11 @@ function Finder:CanQueueWorldResponse(query)
         ticket = (1664525 * ticket + 1013904223) % MODULO
     end
     return ticket / MODULO < math.min(1, 24 / math.max(1, self.worldPopulation - 1))
-end--[[APR_DIAG]]; Finder.CanQueueWorldResponse = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:59:Finder:CanQueueWorldResponse#7", Finder.CanQueueWorldResponse)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.CanQueueWorldResponse = APRTrace(
+    "APR-Core/features/group/PartyFinderWorld.lua:59:Finder:CanQueueWorldResponse#7",
+    Finder.CanQueueWorldResponse
+)--[[/APR_DIAG]]
 
 function Finder:AcceptWorldMessage(control)
     local second = math.floor(GetTime())
@@ -91,4 +141,6 @@ function Finder:AcceptWorldMessage(control)
     end
     self.droppedCount = (self.droppedCount or 0) + 1
     return false
-end--[[APR_DIAG]]; Finder.AcceptWorldMessage = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:80:Finder:AcceptWorldMessage#8", Finder.AcceptWorldMessage)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.AcceptWorldMessage =
+    APRTrace("APR-Core/features/group/PartyFinderWorld.lua:80:Finder:AcceptWorldMessage#8", Finder.AcceptWorldMessage)--[[/APR_DIAG]]

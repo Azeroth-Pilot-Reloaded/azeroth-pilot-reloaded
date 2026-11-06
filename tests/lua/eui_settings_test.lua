@@ -44,26 +44,35 @@ end
 function hooksecurefunc(object, key, callback)
     local previous = object[key]
     object[key] = function(...)
-        previous(...); callback(...)
+        previous(...)
+        callback(...)
     end
 end
 
 local gui = { WidgetRegistry = {}, objPools = {}, versions = {} }
 function gui:GetWidgetVersion(kind) return self.versions[kind] or 1 end
 
-function gui:RegisterWidgetType(kind, fn, version) self.WidgetRegistry[kind], self.versions[kind] = fn, version end
+function gui:RegisterWidgetType(kind, fn, version)
+    self.WidgetRegistry[kind], self.versions[kind] = fn, version
+end
 
 function gui:Create(kind)
     self.objPools[kind] = self.objPools[kind] or {}
     local w = next(self.objPools[kind])
-    if w then self.objPools[kind][w] = nil else w = self.WidgetRegistry[kind]() end
+    if w then
+        self.objPools[kind][w] = nil
+    else
+        w = self.WidgetRegistry[kind]()
+    end
     w.frame.shown = true
     return w
 end
 
 function gui:Release(w)
     if w.isQueuedForRelease then return end
-    for _, child in ipairs(w.children or {}) do self:Release(child) end
+    for _, child in ipairs(w.children or {}) do
+        self:Release(child)
+    end
     w.children = nil
     w.frame.shown = false
     self.objPools[w.type] = self.objPools[w.type] or {}
@@ -94,14 +103,22 @@ end
 
 function LibStub(name) return name == "AceGUI-3.0" and gui or dialog end
 
-APR = { title = "APR", EllesmereUISkin = { GetFont = function() if enabled then return "font.ttf" end end } }
+APR = {
+    title = "APR",
+    EllesmereUISkin = {
+        GetFont = function()
+            if enabled then return "font.ttf" end
+        end,
+    },
+}
 local changes = {}
 local S = { OnLooksChanged = function(fn) changes[#changes + 1] = fn end }
 function S.GetAccentColor() return 0, 0.8, 0.6 end
 
 for _, name in ipairs({ "Panel", "Dropdown", "EditBox", "ScrollBar", "Tab", "CloseButton" }) do
     S[name] = function(frame)
-        assert(frame.GetRegions, "Expected a frame, not an AceGUI widget"); frame.themed = true
+        assert(frame.GetRegions, "Expected a frame, not an AceGUI widget")
+        frame.themed = true
     end
 end
 local fontCalls = 0
@@ -117,7 +134,8 @@ function S.Font(frame)
 end
 
 function S.Button(frame)
-    assert(not combat); frame.themed = true
+    assert(not combat)
+    frame.themed = true
 end
 
 function S.StateButtonLabel() end
@@ -133,7 +151,9 @@ assert(button.frame.themed and button ~= native and button.type == "Button")
 local fontRegion = { owner = root.frame, IsObjectType = function(_, kind) return kind == "FontString" end }
 root.frame.regions[1] = fontRegion
 root.frame.children[1] = root.frame
-for _, callback in ipairs(changes) do callback() end
+for _, callback in ipairs(changes) do
+    callback()
+end
 assert(fontCalls == 1, "Font shadow helpers and cyclic frame references must not recurse")
 assert(gui.objPools.Button[native], "APR cannot acquire a widget from another addon's pool")
 gui:Release(root)
@@ -158,10 +178,30 @@ enabled = false
 dialog:Open("APR/About")
 assert(not dialog.OpenFrames["APR/About"].children[1].frame.themed)
 enabled = true
-for _, kind in ipairs({ "CheckBox", "Slider", "ColorPicker", "Dropdown", "DropdownGroup", "Heading", "MultiLineEditBox", "CyclicDropdown" }) do
+for _, kind in ipairs({
+    "CheckBox",
+    "Slider",
+    "ColorPicker",
+    "Dropdown",
+    "DropdownGroup",
+    "Heading",
+    "MultiLineEditBox",
+    "CyclicDropdown",
+}) do
     gui:RegisterWidgetType(kind, function()
         local widget = { type = kind, frame = CreateFrame() }
-        for _, key in ipairs({ "checkbg", "check", "colorSwatch", "slider", "editBox", "scrollBG", "scrollBar", "left", "right", "label" }) do
+        for _, key in ipairs({
+            "checkbg",
+            "check",
+            "colorSwatch",
+            "slider",
+            "editBox",
+            "scrollBG",
+            "scrollBar",
+            "left",
+            "right",
+            "label",
+        }) do
             widget[key] = CreateFrame()
         end
         widget.slider.thumb = CreateFrame()
@@ -185,27 +225,44 @@ for _, kind in ipairs({ "CheckBox", "Slider", "ColorPicker", "Dropdown", "Dropdo
         return widget
     end, 1)
 end
-dialog:FeedGroup("APR",
-    { types = { "CheckBox", "Slider", "ColorPicker", "DropdownGroup", "Heading", "MultiLineEditBox", "CyclicDropdown" } },
-    root)
+dialog:FeedGroup("APR", {
+    types = {
+        "CheckBox",
+        "Slider",
+        "ColorPicker",
+        "DropdownGroup",
+        "Heading",
+        "MultiLineEditBox",
+        "CyclicDropdown",
+    },
+}, root)
 assert(root.children[1].checkbg.alpha == 0 and root.children[1].check.color[2] == 0.8)
 assert(root.children[2].slider.thumb.alpha == 1 and root.children[2].editBox.themed)
 assert(root.children[4].dropdown.dropdown.themed, "Dropdown groups contain widgets, not raw dropdown frames")
 assert(root.children[6].scrollBG.themed and root.children[6].scrollBar.themed)
 assert(root.children[7].pullout.frame.themed, "Cyclic dropdown ownership must terminate after one style pass")
-for _, callback in ipairs(changes) do callback() end
+for _, callback in ipairs(changes) do
+    callback()
+end
 assert(fontCalls == 1, "Already styled fonts remain idempotent across theme refreshes")
 assert(#changes == 1)
 APR:EnableEllesmereUISettings(S)
 assert(#changes == 1, "Installing twice must not stack wrappers")
-local customTextColors = {base = {0.2, 0.4, 0.9, 0.7}, accent = {0.6, 0.1, 0.8, 0.5}, muted = {0.3, 0.6, 0.7, 0.4}}
+local customTextColors =
+    { base = { 0.2, 0.4, 0.9, 0.7 }, accent = { 0.6, 0.1, 0.8, 0.5 }, muted = { 0.3, 0.6, 0.7, 0.4 } }
 function APR:GetCustomTextColor(scope, role)
     assert(scope == "general")
     return customTextColors[role]
 end
-for _, callback in ipairs(changes) do callback() end
-assert(root.children[1].label.color[1] == 0.2 and root.children[1].label.color[4] == 0.7,
-    "EUI settings labels retain the user's explicit base color and alpha")
-assert(root.children[5].label.color[1] == 0.6 and root.children[5].label.color[4] == 0.5,
-    "EUI settings headings retain the user's explicit accent color and alpha")
+for _, callback in ipairs(changes) do
+    callback()
+end
+assert(
+    root.children[1].label.color[1] == 0.2 and root.children[1].label.color[4] == 0.7,
+    "EUI settings labels retain the user's explicit base color and alpha"
+)
+assert(
+    root.children[5].label.color[1] == 0.6 and root.children[5].label.color[4] == 0.5,
+    "EUI settings headings retain the user's explicit accent color and alpha"
+)
 print("PASS: EllesmereUI settings pages, private widget pools, reuse, errors, combat deferral and disabled skin")

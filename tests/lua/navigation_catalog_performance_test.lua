@@ -36,13 +36,34 @@ local environment = {
         if state.characterMissing then return nil end
         return { level = 40, mapID = 10, inGroup = false }
     end,
-    isQuestCompleted = function() Count("quest"); return state.quest end,
-    hasAura = function() Count("aura"); return state.aura end,
-    getActionUsability = function() Count("usability"); return true end,
-    getItemCount = function() Count("inventory"); return state.items end,
-    getActionCastSeconds = function() Count("cast"); return state.castSeconds end,
-    getSpellName = function() Count("name"); return "Portal" end,
-    getText = function() Count("text"); return "%s" end,
+    isQuestCompleted = function()
+        Count("quest")
+        return state.quest
+    end,
+    hasAura = function()
+        Count("aura")
+        return state.aura
+    end,
+    getActionUsability = function()
+        Count("usability")
+        return true
+    end,
+    getItemCount = function()
+        Count("inventory")
+        return state.items
+    end,
+    getActionCastSeconds = function()
+        Count("cast")
+        return state.castSeconds
+    end,
+    getSpellName = function()
+        Count("name")
+        return "Portal"
+    end,
+    getText = function()
+        Count("text")
+        return "%s"
+    end,
     getMapInfo = function(id)
         Count("map:" .. id)
         if state.mapsMissing then return nil end
@@ -64,19 +85,25 @@ local context = {
 }
 
 local build = instance:CreateEdgeBuild(context)
-assert(calls.character == 1 and calls.quest == nil and calls.projection == nil,
-    "Creating a job must not scan definitions or project endpoints")
+assert(
+    calls.character == 1 and calls.quest == nil and calls.projection == nil,
+    "Creating a job must not scan definitions or project endpoints"
+)
 local status, edges = build:Step(0, 1)
 assert(status == "planning" and edges == nil and calls.quest == nil)
 status = build:Step(1, 1)
-assert(status == "planning" and #build.edges == 1 and build.reverse,
-    "A bidirectional connection can yield between its directions")
+assert(
+    status == "planning" and #build.edges == 1 and build.reverse,
+    "A bidirectional connection can yield between its directions"
+)
 status = build:Step(1, 1)
 assert(status == "planning" and #build.edges == 2 and not build.reverse)
 local before = #build.edges
 status = build:Step(1000, 1)
-assert(status == "planning" and #build.edges > before and #build.edges - before <= 10,
-    "Elapsed budget limits a slice even when its operation allowance is large")
+assert(
+    status == "planning" and #build.edges > before and #build.edges - before <= 10,
+    "Elapsed budget limits a slice even when its operation allowance is large"
+)
 while status == "planning" do
     status, edges = build:Step(17, 1)
 end
@@ -85,10 +112,14 @@ local result, metadata = build:GetResult()
 assert(result == edges and metadata.resources.external == 3 and metadata.resources["item:88"] == 10)
 assert(context.resources["item:88"] == nil, "Resource collection must not mutate caller input")
 assert(calls.quest == 1 and calls.aura == 1 and calls.usability == 1 and calls.inventory == 1)
-assert(calls.cast == 1 and calls.name == 1 and calls.text == nil,
-    "Repeated actions share API answers only within this build")
-assert(calls["map:10"] == 1 and calls["map:1"] == 1,
-    "Different positions on the same map share its ancestry and display lookup")
+assert(
+    calls.cast == 1 and calls.name == 1 and calls.text == nil,
+    "Repeated actions share API answers only within this build"
+)
+assert(
+    calls["map:10"] == 1 and calls["map:1"] == 1,
+    "Different positions on the same map share its ancestry and display lookup"
+)
 assert(edges[1].seconds == 7 and edges[1].durationSource == "client-cast-estimated-loading")
 build:Cancel()
 assert(build:GetResult() == edges, "Cancelling a completed build keeps its published result")
@@ -104,8 +135,10 @@ assert(#freshEdges == 0, "A later build must observe changed quest state")
 
 state.quest = true
 state.characterMissing = true
-assert(edges[1].canStart(context.start, true) == nil,
-    "A missing live character answer must not reuse a previously known level")
+assert(
+    edges[1].canStart(context.start, true) == nil,
+    "A missing live character answer must not reuse a previously known level"
+)
 state.characterMissing = false
 local cancelled = instance:CreateEdgeBuild(context)
 cancelled:Step(2, 1)
@@ -120,8 +153,12 @@ local left = instance:CreateEdgeBuild(context)
 left:Step(1, 1)
 state.items = 0
 local right = instance:CreateEdgeBuild(context)
-while right.status == "planning" do right:Step(20, 1) end
-while left.status == "planning" do left:Step(20, 1) end
+while right.status == "planning" do
+    right:Step(20, 1)
+end
+while left.status == "planning" do
+    left:Step(20, 1)
+end
 local leftEdges, leftMetadata = left:GetResult()
 assert(#leftEdges == 101 and leftMetadata.resources["item:88"] == 10)
 assert(#right:GetResult() == 0, "Insufficient reagents remove the action in a fresh build")
@@ -135,4 +172,6 @@ local unsupported = library:New({ profile = "missing", environment = environment
 local _, unsupportedEdges, unsupportedMetadata = unsupported:Step()
 assert(#unsupportedEdges == 0 and unsupportedMetadata.reason == "unsupported_client")
 
-print("Navigation catalogue performance: incremental construction, operation/time budgets, cancellation, shared API reads and live departure checks passed")
+print(
+    "Navigation catalogue performance: incremental construction, operation/time budgets, cancellation, shared API reads and live departure checks passed"
+)

@@ -2,13 +2,13 @@
 local fixture = dofile("tests/lua/gamepad_test.lua")
 local pad, step, selectAction = fixture.pad, APR.currentStep, fixture.selectAction
 local profile = APR.settings.profile
-profile.currentStepShow, profile.currentStepbackgroundColorAlpha = true, {0, 0, 0, 1}
+profile.currentStepShow, profile.currentStepbackgroundColorAlpha = true, { 0, 0, 0, 1 }
 step.UpdateStepButtonCooldowns, step.UpdateStepButtonUsability = function() end, function() end
 step:PreviousNextStepButton()
 local function render(first, second)
     step:BeginContentUpdate()
     step:Reset()
-    step:PrepareRaidIcon({RaidIcon = 42})
+    step:PrepareRaidIcon({ RaidIcon = 42 })
     -- Deliberately create bottom row first.
     step:AddQuestSteps(20, "Second action", 1)
     step:AddStepButton("20-1", second, "item")
@@ -21,15 +21,21 @@ local row = step.questsList["10-1"]
 assert(row.layoutOffset < step.questsList["20-1"].layoutOffset)
 assert(selectAction(pad.itemProxy) == "item" and pad.itemProxy:GetAttribute("item") == "item:100")
 step:AddStepButton("10-1", 100, "item", nil, "player")
-assert(selectAction(pad.itemProxy) == "item" and pad.itemProxy:GetAttribute("unit") == "player",
-    "The hardware proxy must preserve the item's explicit target")
+assert(
+    selectAction(pad.itemProxy) == "item" and pad.itemProxy:GetAttribute("unit") == "player",
+    "The hardware proxy must preserve the item's explicit target"
+)
 step:AddStepButton("10-1", 100, "item")
-assert(selectAction(pad.itemProxy) == "item" and pad.itemProxy:GetAttribute("unit") == nil,
-    "A later untargeted action clears the proxy's previous target")
+assert(
+    selectAction(pad.itemProxy) == "item" and pad.itemProxy:GetAttribute("unit") == nil,
+    "A later untargeted action clears the proxy's previous target"
+)
 assert(step.questsList["20-1"].RaidIconButton, "Targeting shares a row with an action")
 assert(selectAction(pad.targetProxy) == "macro" and pad.targetProxy:GetAttribute("macrotext") == "/target NPC")
 local registered = #pad.actionButtons
-for _ = 1, 20 do render(101, 201) end
+for _ = 1, 20 do
+    render(101, 201)
+end
 assert(#pad.actionButtons == registered, "Pooled buttons must never accumulate duplicate refs")
 assert(pad.itemProxy:GetAttribute("item") == "item:100", "Payloads are resolved on the hardware click")
 assert(selectAction(pad.itemProxy) == "item" and pad.itemProxy:GetAttribute("item") == "item:101")

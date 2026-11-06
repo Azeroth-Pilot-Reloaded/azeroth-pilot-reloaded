@@ -14,7 +14,9 @@ end
 tinsert = table.insert
 tremove = table.remove
 function wipe(value)
-    for key in pairs(value) do value[key] = nil end
+    for key in pairs(value) do
+        value[key] = nil
+    end
 end
 
 function CreateVector2D(x, y) return { x = x, y = y } end
@@ -92,10 +94,15 @@ local route = {
     steps = {},
     parallelSteps = {
         { conditions = { MinLevel = 89, Zones = { 2393 }, IsQuestReadyForTurnIn = questIDs }, steps = {} },
-        { conditions = { MinLevel = 90 },                                                     steps = { { Done = { 93427 } } } },
+        {
+            conditions = { MinLevel = 90 },
+            steps = { { Done = { 93427 } } },
+        },
     },
 }
-for index = 1, 12 do route.steps[index] = { Note = "Main step", _index = index } end
+for index = 1, 12 do
+    route.steps[index] = { Note = "Main step", _index = index }
+end
 for _, id in ipairs(questIDs) do
     table.insert(route.parallelSteps[1].steps, { Done = { id } })
 end
@@ -104,41 +111,59 @@ local introKey = "test-prerequisite"
 local intro = { label = "Test prerequisite", conditions = { DontHaveAchievement = 1 } }
 APR.RouteQuestStepList[introKey] = intro
 APRCustomPath.test = {}
-check(APR:AddRouteToCustomPathByKey("missing-route") == false,
-    "A missing target route cannot modify the custom path in the isolated test")
+check(
+    APR:AddRouteToCustomPathByKey("missing-route") == false,
+    "A missing target route cannot modify the custom path in the isolated test"
+)
 APR.RouteQuestStepList["test-dependent-route"] = {
-    label = "Test dependent route", requiredRoute = { introKey }, conditions = { Level = 80 },
+    label = "Test dependent route",
+    requiredRoute = { introKey },
+    conditions = { Level = 80 },
 }
 check(not APR:IsRequiredRouteApplicable(introKey), "The account achievement waives the hidden introduction")
 check(APR:AddRouteToCustomPathByKey("test-dependent-route"), "The dependent route can be added for an eligible alt")
-check(#APRCustomPath.test == 1 and APRCustomPath.test[1] == "Test dependent route",
-    "The hidden introduction is not inserted into the alt custom path")
+check(
+    #APRCustomPath.test == 1 and APRCustomPath.test[1] == "Test dependent route",
+    "The hidden introduction is not inserted into the alt custom path"
+)
 achievement = false
 APRCustomPath.test = {}
 check(APR:IsRequiredRouteApplicable(introKey), "A first character still requires the introduction")
 check(APR:AddRouteToCustomPathByKey("test-dependent-route"), "The first-character path is assembled")
-check(#APRCustomPath.test == 2 and APRCustomPath.test[1] == intro.label
-    and APRCustomPath.test[2] == "Test dependent route", "The applicable introduction is prepended")
+check(
+    #APRCustomPath.test == 2
+        and APRCustomPath.test[1] == intro.label
+        and APRCustomPath.test[2] == "Test dependent route",
+    "The applicable introduction is prepended"
+)
 APRZoneCompleted.test[intro.label] = true
 APRCustomPath.test = {}
 check(not APR:IsRequiredRouteApplicable(introKey), "A personally completed introduction is already satisfied")
-check(APR:AddRouteToCustomPathByKey("test-dependent-route") and #APRCustomPath.test == 1,
-    "A completed introduction is not inserted again")
+check(
+    APR:AddRouteToCustomPathByKey("test-dependent-route") and #APRCustomPath.test == 1,
+    "A completed introduction is not inserted again"
+)
 APRZoneCompleted.test[intro.label] = nil
 APR.RouteQuestStepList["test-soft-required"] = {
-    label = "Soft requirement", conditions = { Level = 90, Zones = { 9999 } },
+    label = "Soft requirement",
+    conditions = { Level = 90, Zones = { 9999 } },
 }
 APR.RouteQuestStepList["test-soft-target"] = {
-    label = "Soft target", requiredRoute = { "test-soft-required" },
+    label = "Soft target",
+    requiredRoute = { "test-soft-required" },
 }
 APRCustomPath.test = {}
 check(APR:IsRequiredRouteApplicable("test-soft-required"), "Level and zone never waive a required route")
-check(APR:AddRouteToCustomPathByKey("test-soft-target") and #APRCustomPath.test == 2,
-    "A temporarily disabled required route remains in the path")
+check(
+    APR:AddRouteToCustomPathByKey("test-soft-target") and #APRCustomPath.test == 2,
+    "A temporarily disabled required route remains in the path"
+)
 achievement = true
 
 local questID = questIDs[1]
-for _, id in ipairs(questIDs) do active[id], ready[id] = true, true end
+for _, id in ipairs(questIDs) do
+    active[id], ready[id] = true, true
+end
 ready[questIDs[#questIDs]] = nil
 
 APR.ActiveRoute = routeKey
@@ -190,7 +215,11 @@ APR:InvalidateEffectiveRouteStepsCache(routeKey)
 check(#APR:GetRouteSteps(routeKey) == #effective, "Reloaded parallel state preserves the effective route")
 
 check(APR:GetParallelStepsInsertionIndex(2, {
-    {}, { InstanceQuest = true }, { InstanceQuest = true }, { InstanceQuest = true }, {},
+    {},
+    { InstanceQuest = true },
+    { InstanceQuest = true },
+    { InstanceQuest = true },
+    {},
 }) == 5, "A parallel group waits for the entire instance block")
 
 local coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2393, 25, 75)
@@ -198,8 +227,10 @@ check(coord.x == -2025 and coord.y == 3468, "Converter preserves APR's swapped w
 check(APR.worldCoordinateConverter:ConvertMapCoordinate(2393, -1, 75) == nil, "Invalid map percentages are rejected")
 local projection = C_Map.GetWorldPosFromMapPos
 C_Map.GetWorldPosFromMapPos = function() return nil end
-check(APR.worldCoordinateConverter:ConvertMapCoordinate(2393, 25, 75) == nil,
-    "A missing game projection never produces fabricated world coordinates")
+check(
+    APR.worldCoordinateConverter:ConvertMapCoordinate(2393, 25, 75) == nil,
+    "A missing game projection never produces fabricated world coordinates"
+)
 C_Map.GetWorldPosFromMapPos = projection
 
 -- Exercise the real scenario handler with a reserved reward after a reload.
@@ -276,10 +307,14 @@ dofile("APR-Core/utils/StepUtils.lua")
 
 local inferredScenarioStep = { PickUp = { 93427 }, Zone = 2528 }
 local inferredCoord, inferredZone = APR:GetStepCoord(inferredScenarioStep, 2393)
-check(APR:GetScenarioMapIDForStep(inferredScenarioStep) == 2528,
-    "An interior-only step resolves its scenario from the registered Zone")
-check(inferredCoord == APR.ScenarioEntrances[2528].Coord and inferredZone == 2405,
-    "An interior-only step outside the scenario targets its registered entrance")
+check(
+    APR:GetScenarioMapIDForStep(inferredScenarioStep) == 2528,
+    "An interior-only step resolves its scenario from the registered Zone"
+)
+check(
+    inferredCoord == APR.ScenarioEntrances[2528].Coord and inferredZone == 2405,
+    "An interior-only step outside the scenario targets its registered entrance"
+)
 
 -- Alias support is generic; the current route no longer declares the old label.
 local legacyRouteLabel = "Historical route label"
@@ -287,20 +322,26 @@ route.legacyLabels = { legacyRouteLabel }
 APRCustomPath.test = { legacyRouteLabel }
 APR.ActiveRoute = nil
 local _, _, migratedRouteKey = APR:GetCurrentRouteMapIDsAndName()
-check(migratedRouteKey == routeKey and APRCustomPath.test[1] == route.label,
-    "A saved legacy label is migrated without losing the active route")
+check(
+    migratedRouteKey == routeKey and APRCustomPath.test[1] == route.label,
+    "A saved legacy label is migrated without losing the active route"
+)
 
 APRCustomPath.test = { "Renamed route without an alias" }
 APR.ActiveRoute = routeKey
 APRData.test[routeKey] = 1
 _, _, migratedRouteKey = APR:GetCurrentRouteMapIDsAndName()
-check(migratedRouteKey == routeKey and APRCustomPath.test[1] == route.label,
-    "The live stable key recovers a renamed route during the same session")
+check(
+    migratedRouteKey == routeKey and APRCustomPath.test[1] == route.label,
+    "The live stable key recovers a renamed route during the same session"
+)
 
 APRCustomPath.test = {}
 local emptyMaps, emptyMapID, emptyRouteKey = APR:GetCurrentRouteMapIDsAndName()
-check(emptyMaps == nil and emptyMapID == 0 and emptyRouteKey == "",
-    "An empty path cannot resurrect the active route through display-name recovery")
+check(
+    emptyMaps == nil and emptyMapID == 0 and emptyRouteKey == "",
+    "An empty path cannot resurrect the active route through display-name recovery"
+)
 
 local missingRouteError, missingRoutePopup, emptyPathChecks
 APRCustomPath.test = { "Deleted route", route.label }
@@ -314,10 +355,14 @@ APR.routeconfig = {
     CheckIsCustomPathEmpty = function() emptyPathChecks = (emptyPathChecks or 0) + 1 end,
 }
 _, _, migratedRouteKey = APR:GetCurrentRouteMapIDsAndName()
-check(migratedRouteKey == routeKey and APRCustomPath.test[1] == route.label,
-    "A missing route is removed and the following valid route stays usable")
-check(missingRouteError and missingRoutePopup == missingRouteError and emptyPathChecks == 1,
-    "A missing route reports an error and opens the route-suggestion popup")
+check(
+    migratedRouteKey == routeKey and APRCustomPath.test[1] == route.label,
+    "A missing route is removed and the following valid route stays usable"
+)
+check(
+    missingRouteError and missingRoutePopup == missingRouteError and emptyPathChecks == 1,
+    "A missing route reports an error and opens the route-suggestion popup"
+)
 
 local context = { mapID = 2528, scenarioID = 123, sessionKey = "test" }
 local prompts, accept, decline = 0, nil, nil
@@ -339,17 +384,23 @@ local after = { Qpart = { [93427] = { 1 } } }
 local guideStep = { Note = "Guide" }
 APR.RouteQuestStepList["test-parent"] = { steps = { setup, completion, after } }
 APR.RouteQuestStepList["test-delve"] = {
-    delve = {}, scenarios = { { scenarioID = 123, steps = { guideStep } } },
+    delve = {},
+    scenarios = { { scenarioID = 123, steps = { guideStep } } },
 }
 APR.ActiveRoute, APRData.test["test-parent"] = "test-parent", 1
 APR:RefreshTemporaryDelveRoute()
-check(prompts == 1 and APR.ActiveRoute == "test-parent", "InstanceQuest allows a suggestion without automatic acceptance")
+check(
+    prompts == 1 and APR.ActiveRoute == "test-parent",
+    "InstanceQuest allows a suggestion without automatic acceptance"
+)
 APR:RefreshTemporaryDelveRoute()
 check(prompts == 1, "A pending suggestion is not repeated")
 accept()
 local injected = APR:GetRouteSteps("test-delve")
-check(#injected == 2 and injected[1] == setup and injected[2] == guideStep,
-    "The pickup precedes the inserted guide and DoScenario is replaced")
+check(
+    #injected == 2 and injected[1] == setup and injected[2] == guideStep,
+    "The pickup precedes the inserted guide and DoScenario is replaced"
+)
 APR.RouteQuestStepList["test-parent"].parallelSteps = {
     { conditions = { MinLevel = 88 }, steps = { { Done = { 93427 } } } },
 }
@@ -363,8 +414,10 @@ APR:ClearTemporaryRoute()
 check(APRData.test["test-parent"] == 2, "Early exit preserves completed setup but keeps unfinished DoScenario")
 APR:ActivateTemporaryRoute("test-delve", { mapID = 2528, scenarioID = 123, sessionKey = "test" })
 APR:ClearTemporaryRoute({ completed = true, preserveSessionKey = true })
-check(APR.ActiveRoute == "test-parent" and APRData.test["test-parent"] == 3,
-    "Guide completion resumes after the replaced DoScenario")
+check(
+    APR.ActiveRoute == "test-parent" and APRData.test["test-parent"] == 3,
+    "Guide completion resumes after the replaced DoScenario"
+)
 APR:RefreshTemporaryDelveRoute()
 check(prompts == 1, "A completed guide is not proposed again inside the same delve")
 APR.RouteQuestStepList["test-parent"].steps = { setup, {}, {}, {}, {}, completion, after }

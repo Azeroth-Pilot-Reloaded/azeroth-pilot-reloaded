@@ -1,5 +1,7 @@
 -- Exercise the structured Forever API, with legacy globals deliberately unavailable.
-function LibStub() return { GetLocale = function() return {} end } end
+function LibStub()
+    return { GetLocale = function() return {} end }
+end
 APR = {}
 dofile("APR-Core/utils/PlayerUtils.lua")
 dofile("APR-Core/utils/RouteConditions.lua")
@@ -9,7 +11,9 @@ GetNumSkillLines, GetSkillLineInfo, GetProfessions, GetSpellInfo =
     unexpectedLegacy, unexpectedLegacy, unexpectedLegacy, unexpectedLegacy
 C_Spell = { GetSpellInfo = function() return { name = "Cuisine" } end }
 C_SkillInfo = {
-    GetSkillLineInfoByID = function(id) if id == 185 then return info end end,
+    GetSkillLineInfoByID = function(id)
+        if id == 185 then return info end
+    end,
     GetNumSkillLines = function() return 3 end,
     GetSkillLineInfo = function(index)
         if index == 1 then return { name = "Cuisine", isHeader = true } end
@@ -58,9 +62,11 @@ GetProfessions = nil
 
 -- The skill-line fallback is independent of locale and collapsed UI headers.
 local learned = { [171] = 1, [333] = 75, [185] = 100, [129] = 50, [356] = 20, [762] = 75 }
-C_SkillInfo = { GetSkillLineInfoByID = function(id)
-    if learned[id] then return { skillID = id, name = "Localized", isHeader = false, rank = learned[id] } end
-end }
+C_SkillInfo = {
+    GetSkillLineInfoByID = function(id)
+        if learned[id] then return { skillID = id, name = "Localized", isHeader = false, rank = learned[id] } end
+    end,
+}
 assert(APR:GetPrimaryProfessionCount() == 2, "Secondary skills and riding must be excluded")
 learned[333] = 0
 assert(APR:GetPrimaryProfessionCount() == 1, "Unlearned skills must not count")

@@ -1,12 +1,17 @@
 -- Real NPC reward handling against invented rewards and controlled score/data responses.
 local function noop() end
 local L = setmetatable({}, { __index = function(_, key) return key end })
-function LibStub() return { GetLocale = function() return L end } end
+function LibStub()
+    return { GetLocale = function() return L end }
+end
 
 local clock, timers, choices, items, selected, profile = 0, {}, {}, {}, {}, {}
 local questID, revision, modifier, deferred, visible, manual = 7301, 1, false, false, true, false
 local scoringCalls, scorerCalls = {}, 0
-local pawnScorer = function() scorerCalls = scorerCalls + 1; return 17 end
+local pawnScorer = function()
+    scorerCalls = scorerCalls + 1
+    return 17
+end
 APR = {
     NewModule = function() return {} end,
     event = { TalkToDenyNpcLogic = noop },
@@ -23,15 +28,19 @@ function APR:GetCurrentStep() return {} end
 function APR:IsQuestTurnInDeferred() return deferred end
 function APR:RequiresManualQuestReward()
     if manual then return true end
-    for _, link in ipairs(choices) do if not link then return true end end
+    for _, link in ipairs(choices) do
+        if not link then return true end
+    end
     return false
 end
-APR.RewardScoring = { GetUpgrade = function(_, link, scale)
-    scoringCalls[#scoringCalls + 1] = { link = link, scale = scale }
-    local item = assert(items[link], "Scoring must keep the exact item link")
-    if scale and scale.score then scale.score(link) end
-    return item.gain, item.scoreReady ~= false
-end }
+APR.RewardScoring = {
+    GetUpgrade = function(_, link, scale)
+        scoringCalls[#scoringCalls + 1] = { link = link, scale = scale }
+        local item = assert(items[link], "Scoring must keep the exact item link")
+        if scale and scale.score then scale.score(link) end
+        return item.gain, item.scoreReady ~= false
+    end,
+}
 function GetQuestID() return questID end
 function IsModifierKeyDown() return modifier end
 function GetNumQuestChoices() return #choices end
@@ -44,15 +53,29 @@ function GetQuestReward(index) selected[#selected + 1] = index end
 function GetInventoryItemLink() return nil end
 function GetTime() return clock end
 function InCombatLockdown() return false end
-Enum = { ItemQuality = { Heirloom = 7 }, InventoryType = setmetatable({}, {
-    __index = function(_, key) return key end,
-}) }
+Enum = {
+    ItemQuality = { Heirloom = 7 },
+    InventoryType = setmetatable({}, {
+        __index = function(_, key) return key end,
+    }),
+}
 C_Item = {
     GetItemInfo = function(link)
         local item = items[link]
         if not item or item.cached == false then return nil end
-        return "Reward", link, 2, item.ilvl or 1, 1, "Armor", "Synthetic", 1,
-            item.equipLoc or "INVTYPE_HEAD", 1, item.price or 0, item.classID or 4, item.subClassID or 1
+        return "Reward",
+            link,
+            2,
+            item.ilvl or 1,
+            1,
+            "Armor",
+            "Synthetic",
+            1,
+            item.equipLoc or "INVTYPE_HEAD",
+            1,
+            item.price or 0,
+            item.classID or 4,
+            item.subClassID or 1
     end,
     GetDetailedItemLevelInfo = function(link) return items[link] and items[link].ilvl end,
     GetItemInfoInstant = function(link) return items[link] and items[link].id end,
@@ -66,29 +89,40 @@ C_TransmogCollection = {
     GetItemInfo = function(itemInfo)
         local item = items[itemInfo]
         if not item then
-            for _, candidate in pairs(items) do if candidate.id == itemInfo then item = candidate; break end end
+            for _, candidate in pairs(items) do
+                if candidate.id == itemInfo then
+                    item = candidate
+                    break
+                end
+            end
         end
         if item then return item.id + 100000, item.id + 200000 end
     end,
     PlayerHasTransmogByItemInfo = transmogByLink,
     PlayerHasTransmog = function(id)
-        for _, item in pairs(items) do if item.id == id then return item.known == true end end
+        for _, item in pairs(items) do
+            if item.id == id then return item.known == true end
+        end
         error("PlayerHasTransmog accepts an item ID, never an appearance or source ID")
     end,
 }
 QuestFrameRewardPanel = { IsVisible = function() return visible end }
 QuestFrame = QuestFrameRewardPanel
-C_Timer = { NewTimer = function(delay, callback)
-    local timer = { time = clock + delay, callback = callback, Cancel = function(self) self.cancelled = true end }
-    timers[#timers + 1] = timer
-    return timer
-end }
+C_Timer = {
+    NewTimer = function(delay, callback)
+        local timer = { time = clock + delay, callback = callback, Cancel = function(self) self.cancelled = true end }
+        timers[#timers + 1] = timer
+        return timer
+    end,
+}
 function C_Timer.After(delay, callback) return C_Timer.NewTimer(delay, callback) end
 dofile("APR-Core/features/questing/NPCInteraction.lua")
 
 local function activeTimers()
     local count = 0
-    for _, timer in ipairs(timers) do if not timer.cancelled then count = count + 1 end end
+    for _, timer in ipairs(timers) do
+        if not timer.cancelled then count = count + 1 end
+    end
     return count
 end
 local function tick(duration)
@@ -115,14 +149,25 @@ local function reset()
     questID, revision, modifier, deferred, visible, manual = 7301, revision + 1, false, false, true, false
     APR.routeValidationPending, APR.routeValidationFailed = nil, nil
     APR.PawnRewards = { GetScorer = function() return pawnScorer end }
-    profile = { enableAddon = true, autoHandIn = true, autoHandInChoice = true,
-        rewardPriority1 = "ilvl", rewardPriority2 = "price", rewardPriority3 = "cosmetic", rewardPriority4 = "transmog",
-        autoCosmeticMulti = true, autoTransmogMulti = true }
+    profile = {
+        enableAddon = true,
+        autoHandIn = true,
+        autoHandInChoice = true,
+        rewardPriority1 = "ilvl",
+        rewardPriority2 = "price",
+        rewardPriority3 = "cosmetic",
+        rewardPriority4 = "transmog",
+        autoCosmeticMulti = true,
+        autoTransmogMulti = true,
+    }
 end
 local function reward(id, attributes)
     attributes = attributes or {}
-    local link = "|Hitem:" .. id .. ":0:0:0:0:0:0:0:40:0:0:1:"
-        .. (attributes.variant or 731) .. "|h[Synthetic reward]|h"
+    local link = "|Hitem:"
+        .. id
+        .. ":0:0:0:0:0:0:0:40:0:0:1:"
+        .. (attributes.variant or 731)
+        .. "|h[Synthetic reward]|h"
     attributes.id = id
     if attributes.usable == nil then attributes.usable = true end
     items[link], choices[#choices + 1] = attributes, link
@@ -141,8 +186,10 @@ reward(101, { gain = 8, ilvl = 150, price = 900 })
 local strongest = reward(102, { gain = 27, ilvl = 90, price = 1 })
 open()
 chosen(2, "Weighted improvement wins over item level and vendor price")
-assert(scoringCalls[2].link == strongest and scoringCalls[2].scale.score == pawnScorer and scorerCalls == 2,
-    "The exact reward variants and selected Pawn scorer reach the scoring contract")
+assert(
+    scoringCalls[2].link == strongest and scoringCalls[2].scale.score == pawnScorer and scorerCalls == 2,
+    "The exact reward variants and selected Pawn scorer reach the scoring contract"
+)
 open()
 assert(#selected == 1, "Repeated completion events cannot claim the same reward twice")
 
@@ -162,8 +209,10 @@ open()
 assert(claimAttempts == 1, "An immediate duplicate event still suppresses a refused claim burst")
 tick(1.01)
 open()
-assert(APR.npcInteraction.interaction == refusedInteraction and claimAttempts == 2,
-    "A later native completion event can retry a refused claim on the same open page")
+assert(
+    APR.npcInteraction.interaction == refusedInteraction and claimAttempts == 2,
+    "A later native completion event can retry a refused claim on the same open page"
+)
 chosen(2, "Recovery re-evaluates rewards and claims the independently better eligible choice")
 GetQuestReward = originalClaim
 
@@ -171,8 +220,10 @@ reset()
 reward(130, { gain = 3, variant = 7 })
 local upgradedVariant = reward(130, { gain = 18, variant = 11 })
 local previewIndex, previewReady = APR.npcInteraction:SelectQuestReward(profile)
-assert(previewIndex == 2 and previewReady and #selected == 0,
-    "Previewing a choice evaluates exact variants without claiming the quest reward")
+assert(
+    previewIndex == 2 and previewReady and #selected == 0,
+    "Previewing a choice evaluates exact variants without claiming the quest reward"
+)
 assert(scoringCalls[2].link == upgradedVariant, "Two variants sharing an item ID retain distinct scoring input")
 open()
 chosen(2, "The exact higher-scoring variant wins even when item IDs match")
@@ -196,8 +247,10 @@ reward(105, { gain = 100, usable = false, price = 10 })
 local eligible = reward(106, { gain = 4, price = 1 })
 open()
 chosen(2, "An unusable reward cannot win the equipment priority")
-assert(#scoringCalls == 1 and scoringCalls[1].link == eligible,
-    "The native usability rejection is respected before invoking item scoring")
+assert(
+    #scoringCalls == 1 and scoringCalls[1].link == eligible,
+    "The native usability rejection is respected before invoking item scoring"
+)
 
 reset()
 reward(107, { gain = -2, price = 20 })
@@ -271,7 +324,9 @@ local delayed = reward(119, { gain = 25, scoreReady = false, price = 1 })
 reward(120, { gain = 2, price = 100 })
 open()
 assert(#selected == 0 and activeTimers() == 1, "Missing scoring data must wait instead of choosing a fallback")
-for _ = 1, 100 do open() end
+for _ = 1, 100 do
+    open()
+end
 assert(activeTimers() == 1, "Completion bursts share one pending retry")
 items[delayed].scoreReady = true
 tick(10)
@@ -324,7 +379,9 @@ local nextSessionItem = reward(139, { gain = 30, scoreReady = false })
 reward(140, { gain = 1 })
 open()
 local retired
-for _, timer in ipairs(timers) do if not timer.cancelled then retired = timer end end
+for _, timer in ipairs(timers) do
+    if not timer.cancelled then retired = timer end
+end
 APR.npcInteraction:Track("questFinished", "QUEST_FINISHED")
 questID = questID + 1
 open()
@@ -342,16 +399,27 @@ for _, invalidation in ipairs({ "closed", "profile", "modifier", "quest", "route
     reward(126, { gain = 1 })
     open()
     local pending
-    for _, timer in ipairs(timers) do if not timer.cancelled then pending = timer end end
+    for _, timer in ipairs(timers) do
+        if not timer.cancelled then pending = timer end
+    end
     assert(pending, "An incomplete reward interaction needs one cancellable retry")
-    if invalidation == "closed" then APR.npcInteraction:Track("questFinished", "QUEST_FINISHED")
-    elseif invalidation == "profile" then profile = { enableAddon = true, autoHandIn = true, autoHandInChoice = true }
-    elseif invalidation == "modifier" then modifier = true
-    elseif invalidation == "quest" then questID = questID + 1
-    elseif invalidation == "route" then revision = revision + 1
-    elseif invalidation == "disabled" then profile.enableAddon = false
-    elseif invalidation == "preference" then profile.autoHandInChoice = false
-    else visible = false end
+    if invalidation == "closed" then
+        APR.npcInteraction:Track("questFinished", "QUEST_FINISHED")
+    elseif invalidation == "profile" then
+        profile = { enableAddon = true, autoHandIn = true, autoHandInChoice = true }
+    elseif invalidation == "modifier" then
+        modifier = true
+    elseif invalidation == "quest" then
+        questID = questID + 1
+    elseif invalidation == "route" then
+        revision = revision + 1
+    elseif invalidation == "disabled" then
+        profile.enableAddon = false
+    elseif invalidation == "preference" then
+        profile.autoHandInChoice = false
+    else
+        visible = false
+    end
     items[link].scoreReady = true
     pending.callback() -- Simulate a stale callback already delivered by a timer adapter.
     tick(10)
@@ -363,12 +431,19 @@ for _, guard in ipairs({ "manual", "modifier", "deferred", "routeValidation", "s
     reward(127, { gain = 20 })
     reward(128, { gain = 1 })
     local step
-    if guard == "manual" then manual = true
-    elseif guard == "modifier" then modifier = true
-    elseif guard == "deferred" then deferred = true
-    elseif guard == "routeValidation" then APR.routeValidationPending = true
-    elseif guard == "step" then step = { NoAutoTurnIn = true }
-    else profile[guard] = false end
+    if guard == "manual" then
+        manual = true
+    elseif guard == "modifier" then
+        modifier = true
+    elseif guard == "deferred" then
+        deferred = true
+    elseif guard == "routeValidation" then
+        APR.routeValidationPending = true
+    elseif guard == "step" then
+        step = { NoAutoTurnIn = true }
+    else
+        profile[guard] = false
+    end
     open(step)
     assert(#selected == 0, "Existing quest automation guard remains effective: " .. guard)
 end
@@ -399,9 +474,16 @@ C_PlayerInfo = { CanUseItem = function() return true end }
 C_Item.IsEquippableItem = function(link) return items[link] and items[link].equipLoc ~= "" end
 C_Item.GetItemUniqueness = function() return nil end
 C_Item.GetItemStats = function(link) return items[link] and items[link].stats end
-PawnCommon = { Scales = { Imported = {
-    Values = { Strength = 0.1, CritRating = 2 }, NormalizationFactor = 1, ClassID = 1, SpecID = 9001,
-} } }
+PawnCommon = {
+    Scales = {
+        Imported = {
+            Values = { Strength = 0.1, CritRating = 2 },
+            NormalizationFactor = 1,
+            ClassID = 1,
+            SpecID = 9001,
+        },
+    },
+}
 function PawnIsReady() return true end
 function PawnGetAllScalesEx()
     local result = {}
@@ -415,10 +497,13 @@ function PawnGetItemData(link)
     pawnReads[#pawnReads + 1] = link
     local item = items[link]
     if not item or item.pawnMissing then return nil end
-    return { UnenchantedStats = {
-        Strength = item.stats.ITEM_MOD_STRENGTH_SHORT or 0,
-        CritRating = item.stats.ITEM_MOD_CRIT_RATING_SHORT or 0,
-    }, Link = link }
+    return {
+        UnenchantedStats = {
+            Strength = item.stats.ITEM_MOD_STRENGTH_SHORT or 0,
+            CritRating = item.stats.ITEM_MOD_CRIT_RATING_SHORT or 0,
+        },
+        Link = link,
+    }
 end
 function PawnGetSingleValueFromItem(item, name)
     local value = 0
@@ -427,9 +512,11 @@ function PawnGetSingleValueFromItem(item, name)
     end
     return value + 999, value -- APR must use unenchanted values for both compared items.
 end
-APR.questionDialog = { CreateQuestionPopup = function(_, _, _, accept, cancel)
-    popup = { accept = accept, cancel = cancel }
-end }
+APR.questionDialog = {
+    CreateQuestionPopup = function(_, _, _, accept, cancel)
+        popup = { accept = accept, cancel = cancel }
+    end,
+}
 dofile("APR-Core/features/questing/RewardScoring.lua")
 dofile("APR-Core/integrations/Pawn.lua")
 APR.PawnRewards.RegisterEvent, APR.PawnRewards.UnregisterEvent = noop, noop
@@ -440,8 +527,10 @@ assert(not popup, "Initial discovery of imported Pawn scales does not manufactur
 local equipped = reward(143, { stats = { ITEM_MOD_STRENGTH_SHORT = 10, ITEM_MOD_CRIT_RATING_SHORT = 2 } })
 inventory[1] = equipped
 choices = {}
-local primaryReward = reward(144, { stats = { ITEM_MOD_STRENGTH_SHORT = 20, ITEM_MOD_CRIT_RATING_SHORT = 0 }, price = 1 })
-local critReward = reward(145, { stats = { ITEM_MOD_STRENGTH_SHORT = 11, ITEM_MOD_CRIT_RATING_SHORT = 20 }, price = 100 })
+local primaryReward =
+    reward(144, { stats = { ITEM_MOD_STRENGTH_SHORT = 20, ITEM_MOD_CRIT_RATING_SHORT = 0 }, price = 1 })
+local critReward =
+    reward(145, { stats = { ITEM_MOD_STRENGTH_SHORT = 11, ITEM_MOD_CRIT_RATING_SHORT = 20 }, price = 100 })
 local function freshQuest()
     APR.npcInteraction:Track("questFinished", "QUEST_FINISHED")
     questID, selected = questID + 1, {}
@@ -456,20 +545,30 @@ assert(pawnReads[#pawnReads] == equipped, "The real Pawn adapter scores the equi
 
 PawnCommon.Scales.Imported.Values = { Strength = 2, CritRating = 0.01 }
 APR.PawnRewards:RefreshSettings()
-assert(popup and APR.PawnRewards:GetSelectedScale() == "apr",
-    "Changing a selected Pawn scale offers confirmation while APR temporarily uses its default")
+assert(
+    popup and APR.PawnRewards:GetSelectedScale() == "apr",
+    "Changing a selected Pawn scale offers confirmation while APR temporarily uses its default"
+)
 popup.accept()
 tick(1)
-assert(APR.PawnRewards:GetSelectedScale() == "pawn:Imported", "Accepting the changed scale confirms its current fingerprint")
+assert(
+    APR.PawnRewards:GetSelectedScale() == "pawn:Imported",
+    "Accepting the changed scale confirms its current fingerprint"
+)
 freshQuest()
 chosen(1, "The accepted edited Pawn weights reverse the real quest choice again")
 
 items[primaryReward].pawnMissing = true
 freshQuest()
-assert(#selected == 0 and activeTimers() == 1, "Missing Pawn item data propagates through scoring to a deferred NPC choice")
+assert(
+    #selected == 0 and activeTimers() == 1,
+    "Missing Pawn item data propagates through scoring to a deferred NPC choice"
+)
 items[primaryReward].pawnMissing = false
 tick(10)
 chosen(1, "The composed Pawn-to-equipment-to-NPC path recovers from delayed exact item data")
 APR.PawnRewards:OnDisable()
 
-print("Quest rewards: weighted priorities, eligibility, exact variants, delayed data, bounded retries and stale-session guards passed")
+print(
+    "Quest rewards: weighted priorities, eligibility, exact variants, delayed data, bounded retries and stale-session guards passed"
+)

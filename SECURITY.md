@@ -4,11 +4,11 @@
 
 Security updates are provided for the latest released version of the addon.
 
-| Version | Supported |
-| --- | --- |
-| Latest release | :white_check_mark:  |
-| Older releases | :x: |
-| Alpha, beta, and development builds | Best effort |
+| Version                             | Supported          |
+| ----------------------------------- | ------------------ |
+| Latest release                      | :white_check_mark: |
+| Older releases                      | :x:                |
+| Alpha, beta, and development builds | Best effort        |
 
 Before reporting an issue, please verify that it can still be reproduced with
 the latest version available from an official distribution source.

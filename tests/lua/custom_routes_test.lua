@@ -1,5 +1,7 @@
 local L = setmetatable({}, { __index = function(_, key) return key end })
-function LibStub() return { GetLocale = function() return L end } end
+function LibStub()
+    return { GetLocale = function() return L end }
+end
 
 APR = { RouteQuestStepList = {}, EXPANSIONS = { Custom = "Custom" }, CATEGORIES = { Miscellaneous = "Misc" } }
 APRData = { CustomRoute = {} }
@@ -20,12 +22,13 @@ local definition = {
     requiredRoute = { "intro" },
     prefab = { speedrun = 5 },
     parallelSteps = { { conditions = { Level = 10 }, steps = { { Note = "Parallel" } } } },
-    futureMetadata = { enabled = false }
+    futureMetadata = { enabled = false },
 }
 assert(APR:RegisterCustomRoute("84-Example", definition))
 assert(APR:RegisterCustomRoute("85-Other", { steps = {} }))
 assert(#timers == 1 and invalidated["84-Example"])
-timers[1](); timers = {}
+timers[1]()
+timers = {}
 assert(#messages == 1 and messages[1] == "APR_Route_Catalog_Update")
 definition.steps[1].Note = "Caller mutation"
 APR.RouteQuestStepList["84-Example"].steps[1].Note = "Runtime mutation"

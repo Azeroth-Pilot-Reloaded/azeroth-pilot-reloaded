@@ -1,5 +1,7 @@
 -- Map percentages must be converted to world yards before computing area radii.
-function LibStub() return { GetLocale = function() return {} end } end
+function LibStub()
+    return { GetLocale = function() return {} end }
+end
 
 APR = {}
 function APR:NewModule() return {} end
@@ -21,8 +23,10 @@ for _, point in ipairs(points) do
 end
 assert(converter:GetMapAreaRadius(2521, 5, 5, { { 5, 5, 35 } }) == 35)
 assert(converter:GetMapAreaRadius(2521, 99, 5, points) == nil)
-assert(converter:GetMapAreaRadius(2521, 5, 5, { { 99, 5, 35 } }) == nil,
-    "Missing client geometry must not produce a fabricated radius")
+assert(
+    converter:GetMapAreaRadius(2521, 5, 5, { { 99, 5, 35 } }) == nil,
+    "Missing client geometry must not produce a fabricated radius"
+)
 print("Farming areas: world-yard conversion, full point coverage, arrival margins and missing geometry passed")
 
 local mixed = { { 0, 0, 10, true }, { 10, 10, 20, true }, { -200, 300, 40, false } }

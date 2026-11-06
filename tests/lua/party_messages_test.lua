@@ -13,11 +13,13 @@ dofile("APR-Core/features/group/Party.lua")
 APR.settings.profile.receiveGroupData = true
 local now, tickers, completed, sent = 0, {}, {}, {}
 function GetTime() return now end
-C_Timer = { NewTicker = function(_, callback)
-    local ticker = { callback = callback, Cancel = function(self) self.cancelled = true end }
-    tickers[#tickers + 1] = ticker
-    return ticker
-end }
+C_Timer = {
+    NewTicker = function(_, callback)
+        local ticker = { callback = callback, Cancel = function(self) self.cancelled = true end }
+        tickers[#tickers + 1] = ticker
+        return ticker
+    end,
+}
 function APR.party:UpdateGroupListing(message) completed[#completed + 1] = message end
 local party = APR.party
 party:HandleMessageFragment("shared|2|2|B", "one")
@@ -28,8 +30,15 @@ party:HandleMessageFragment("shared|1|2|C", "two")
 assert(#completed == 2 and completed[1] == "AB" and completed[2] == "CD")
 assert(not next(party.incomingFragments) and not next(party.fragmentExpiry))
 assert(tickers[1].cancelled and not party.fragmentCleanupTicker)
-for _, malformed in ipairs({ "bad", "id|x|2|x", "id|0|2|x", "id|3|2|x", "id|1|0|x",
-    "id|1|999999999999999|x", "id|1|2|" .. string.rep("x", 181) }) do
+for _, malformed in ipairs({
+    "bad",
+    "id|x|2|x",
+    "id|0|2|x",
+    "id|3|2|x",
+    "id|1|0|x",
+    "id|1|999999999999999|x",
+    "id|1|2|" .. string.rep("x", 181),
+}) do
     party:HandleMessageFragment(malformed, "one")
 end
 assert(not next(party.incomingFragments))
@@ -54,13 +63,21 @@ for i = #sent, 1, -1 do
     party:HandleMessageFragment(sent[i], "roundtrip")
 end
 assert(completed[4] == payload)
-for index = 1, 10 do party:HandleMessageFragment("pending" .. index .. "|1|2|x", "busy") end
+for index = 1, 10 do
+    party:HandleMessageFragment("pending" .. index .. "|1|2|x", "busy")
+end
 local pending = 0
-for _ in pairs(party.incomingFragments) do pending = pending + 1 end
+for _ in pairs(party.incomingFragments) do
+    pending = pending + 1
+end
 assert(pending == 2, "A sender can retain at most two incomplete snapshots")
-for index = 1, 200 do party:HandleMessageFragment("pending|1|2|x", "sender" .. index) end
+for index = 1, 200 do
+    party:HandleMessageFragment("pending|1|2|x", "sender" .. index)
+end
 pending = 0
-for _ in pairs(party.incomingFragments) do pending = pending + 1 end
+for _ in pairs(party.incomingFragments) do
+    pending = pending + 1
+end
 assert(pending == 80, "Pending memory and cleanup work have a global bound")
 now = now + 11
 party:CleanupExpiredFragments()
@@ -72,7 +89,9 @@ Enum = {}
 table.wipe = wipe
 function GetFramerate() return 60 end
 function securecallfunction(callback, ...) return callback(...) end
-function geterrorhandler() return function(message) error(message) end end
+function geterrorhandler()
+    return function(message) error(message) end
+end
 -- WoW's Lua 5.1 supports arguments to xpcall; standard Lua 5.1 does not.
 local luaXpcall = xpcall
 function xpcall(callback, handler, ...)
@@ -91,18 +110,26 @@ APR:SendAddonMessageSplit("APRPartyData", payload, "PARTY", nil, function(succes
     assert(success)
     callbacks = callbacks + 1
 end)
-assert(#sent == before and ChatThrottleLib.bQueueing and callbacks == 0,
-    "Fragments wait for transport bandwidth instead of being sent as a burst")
+assert(
+    #sent == before and ChatThrottleLib.bQueueing and callbacks == 0,
+    "Fragments wait for transport bandwidth instead of being sent as a burst"
+)
 for _ = 1, 60 do
     now = now + 0.25
     ChatThrottleLib.OnUpdate(ChatThrottleLib.Frame, 0.25)
 end
-assert(callbacks == 1 and completed[5] == payload and not ChatThrottleLib.bQueueing,
-    "Throttled fragments retain the legacy wire format and complete exactly once")
+assert(
+    callbacks == 1 and completed[5] == payload and not ChatThrottleLib.bQueueing,
+    "Throttled fragments retain the legacy wire format and complete exactly once"
+)
 assert(not next(party.incomingFragments) and not party.fragmentCleanupTicker)
 print("Party transport: embedded bandwidth limiter, complete wire roundtrip and callback passed")
 local tickerCount = #tickers
 party:HandleMessageFragment("single|1|1|small", "one")
-assert(completed[#completed] == "small" and #tickers == tickerCount
-    and not next(party.incomingFragments) and not next(party.fragmentExpiry),
-    "Single-fragment snapshots bypass reassembly tables and expiry tickers")
+assert(
+    completed[#completed] == "small"
+        and #tickers == tickerCount
+        and not next(party.incomingFragments)
+        and not next(party.fragmentExpiry),
+    "Single-fragment snapshots bypass reassembly tables and expiry tickers"
+)

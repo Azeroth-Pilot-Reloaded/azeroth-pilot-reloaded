@@ -25,12 +25,21 @@ dofile("APR-Core/ui/foundations/VirtualList.lua")
 dofile("APR-Core/ui/foundations/SelectionDialog.lua")
 dofile("APR-Core/ui/route/QuestionPopUp.lua")
 local selected, cancelled, chosen = 0, 0, nil
-local options = {{key = "open", label = "Available expansion"},
-    {key = "locked", label = "Requires level 80", enabled = false, tooltip = "Level restriction"}}
+local options = {
+    { key = "open", label = "Available expansion" },
+    { key = "locked", label = "Requires level 80", enabled = false, tooltip = "Level restriction" },
+}
 local function open(choices)
-    APR.questionDialog:CreateSelectionPopup("Choose an expansion", "Pick a route for your character.", choices or options,
-        function(option) selected = selected + 1; chosen = option end,
-        function() cancelled = cancelled + 1 end)
+    APR.questionDialog:CreateSelectionPopup(
+        "Choose an expansion",
+        "Pick a route for your character.",
+        choices or options,
+        function(option)
+            selected = selected + 1
+            chosen = option
+        end,
+        function() cancelled = cancelled + 1 end
+    )
     return APR.UI.selectionDialog
 end
 local frame = open()
@@ -47,19 +56,26 @@ frame.list.active[1].button.scripts.OnClick()
 assert(selected == 1 and chosen == options[1] and cancelled == 0 and not frame:IsShown())
 assert(not frame.onSelect and not frame.onCancel and not frame.options and #frame.list.items == 0)
 assert(not GameTooltip:IsShown())
-open(); frame.close.scripts.OnClick()
+open()
+frame.close.scripts.OnClick()
 assert(cancelled == 1 and selected == 1)
-open(); frame.cancelButton.scripts.OnClick()
+open()
+frame.cancelButton.scripts.OnClick()
 assert(cancelled == 2)
-open(); frame:Hide(); frame:Hide() -- Escape hides UISpecialFrames; repeated hides must not cancel twice.
+open()
+frame:Hide()
+frame:Hide() -- Escape hides UISpecialFrames; repeated hides must not cancel twice.
 assert(cancelled == 3)
-open(); open()
+open()
+open()
 assert(cancelled == 4 and frame:IsShown(), "Replacing a visible choice resolves the old prompt")
 frame:Hide()
 
 -- Long translated choices fit the viewport and callbacks always use the newly bound option.
 local many = {}
-for index = 1, 100 do many[index] = {key = index, label = string.rep("Expansion ", 8) .. index} end
+for index = 1, 100 do
+    many[index] = { key = index, label = string.rep("Expansion ", 8) .. index }
+end
 UIParent:SetSize(800, 480)
 open(many)
 assert(frame:GetHeight() <= UIParent:GetHeight() - 38)
@@ -70,51 +86,88 @@ local row = frame.list.active[100]
 assert(row and row.item.option.key == 100)
 row.button.scripts.OnClick()
 assert(chosen == many[100] and selected == 2 and cancelled == 5)
-open(); frame:Hide(); open(many); frame:Hide()
+open()
+frame:Hide()
+open(many)
+frame:Hide()
 local frames, fonts = env.frames(), env.fonts()
-for _ = 1, 30 do open(); frame:Hide(); open(many); frame:Hide() end
+for _ = 1, 30 do
+    open()
+    frame:Hide()
+    open(many)
+    frame:Hide()
+end
 assert(env.frames() == frames and env.fonts() == fonts, "Reopening and resizing must reuse dialog and row controls")
 local registrations = 0
-for _, name in ipairs(UISpecialFrames) do if name == "APRSelectionPopup" then registrations = registrations + 1 end end
+for _, name in ipairs(UISpecialFrames) do
+    if name == "APRSelectionPopup" then registrations = registrations + 1 end
+end
 assert(registrations == 1)
 -- Confirmation reuses the shell, but only an explicit Accept invokes its action.
 local accepted, declined = 0, 0
 local function confirm()
-    return APR.UI:ShowConfirmationDialog("Clear custom routes?", function() accepted = accepted + 1 end,
-        function() declined = declined + 1 end)
+    return APR.UI:ShowConfirmationDialog(
+        "Clear custom routes?",
+        function() accepted = accepted + 1 end,
+        function() declined = declined + 1 end
+    )
 end
 frame = confirm()
 assert(frame.acceptButton:IsShown() and not frame.body:IsShown())
-assert(frame.acceptButton:GetFontString():GetText() == ACCEPT and frame.cancelButton:GetFontString():GetText() == CANCEL)
+assert(
+    frame.acceptButton:GetFontString():GetText() == ACCEPT and frame.cancelButton:GetFontString():GetText() == CANCEL
+)
 frame.cancelButton.scripts.OnClick()
 assert(accepted == 0 and declined == 1)
-confirm(); frame.close.scripts.OnClick()
-confirm(); frame:Hide() -- Escape.
+confirm()
+frame.close.scripts.OnClick()
+confirm()
+frame:Hide() -- Escape.
 assert(accepted == 0 and declined == 3)
-confirm(); frame.acceptButton.scripts.OnClick(); frame:Hide()
+confirm()
+frame.acceptButton.scripts.OnClick()
+frame:Hide()
 assert(accepted == 1 and declined == 3 and not frame.onAccept)
 open()
 assert(not frame.acceptButton:IsShown() and frame.body:IsShown() and #frame.list.items == 2)
 frame:Hide()
 -- Structured route warnings stay readable and scrollable without turning text into actions.
-local warningDetails = {"Level >= 20 (Current: 1)", "Class: Mage, Priest, Warlock"}
+local warningDetails = { "Level >= 20 (Current: 1)", "Class: Mage, Priest, Warlock" }
 local structuredAccepted, structuredCancelled = 0, 0
 local function warn(details)
-    return APR.UI:ShowConfirmationDialog({title = "Invented route", description = "Continue?", details = details or warningDetails,
-        acceptText = "Add route"}, function() structuredAccepted = structuredAccepted + 1 end,
-        function() structuredCancelled = structuredCancelled + 1 end)
+    return APR.UI:ShowConfirmationDialog(
+        {
+            title = "Invented route",
+            description = "Continue?",
+            details = details or warningDetails,
+            acceptText = "Add route",
+        },
+        function() structuredAccepted = structuredAccepted + 1 end,
+        function() structuredCancelled = structuredCancelled + 1 end
+    )
 end
 UIParent:SetSize(380, 320)
 frame = warn()
-assert(frame.title:GetText() == "Invented route" and frame.title.role == "base"
-    and frame.description:GetText() == "Continue?" and frame.acceptButton:GetFontString():GetText() == "Add route")
+assert(
+    frame.title:GetText() == "Invented route"
+        and frame.title.role == "base"
+        and frame.description:GetText() == "Continue?"
+        and frame.acceptButton:GetFontString():GetText() == "Add route"
+)
 assert(frame.body:IsShown() and frame:GetHeight() <= UIParent:GetHeight() - 40)
 assert(not frame.scroll.ScrollBar:IsShown(), "Recommendations that fit have no scrollbar")
 local detail = frame.list.active[1]
-assert(detail.detail:GetText() == warningDetails[1] and detail.detail:IsShown() and detail.marker:IsShown()
-    and not detail.button:IsShown(), "Warning rows are ordinary body text with a separate marker")
+assert(
+    detail.detail:GetText() == warningDetails[1]
+        and detail.detail:IsShown()
+        and detail.marker:IsShown()
+        and not detail.button:IsShown(),
+    "Warning rows are ordinary body text with a separate marker"
+)
 local longDetails = {}
-for index = 1, 40 do longDetails[index] = string.rep("Long translated recommendation ", 8) .. index end
+for index = 1, 40 do
+    longDetails[index] = string.rep("Long translated recommendation ", 8) .. index
+end
 warn(longDetails)
 assert(frame:GetHeight() <= UIParent:GetHeight() - 40 and frame.list.height > frame.scroll:GetHeight())
 assert(frame.scroll.ScrollBar:IsShown(), "Long recommendations remain visibly scrollable")
@@ -134,22 +187,32 @@ assert(frame.scroll.ScrollBar:IsShown(), "Shrinking the viewport restores scroll
 frame.acceptButton.scripts.OnClick()
 assert(structuredAccepted == 1 and structuredCancelled == 1, "Replacement cancels once and acceptance fires once")
 frame = confirm()
-assert(frame.title.role == "accent" and not frame.body:IsShown()
-    and frame.acceptButton:GetFontString():GetText() == ACCEPT, "Plain confirmations clear structured labels and styles")
+assert(
+    frame.title.role == "accent" and not frame.body:IsShown() and frame.acceptButton:GetFontString():GetText() == ACCEPT,
+    "Plain confirmations clear structured labels and styles"
+)
 frame:Hide()
 open()
-assert(frame.list.active[1].button:IsShown() and not frame.list.active[1].detail:IsShown(),
-    "Recycled choice rows clear the read-only warning presentation")
+assert(
+    frame.list.active[1].button:IsShown() and not frame.list.active[1].detail:IsShown(),
+    "Recycled choice rows clear the read-only warning presentation"
+)
 frame:Hide()
 -- Suggestions remain above settings even when the workspace is raised again.
 local settings = APR.UI:Window("APRWorkspaceTest", "Settings", 800, 600)
 settings:Show()
-local suggested = {key = "route", label = "Suggested route"}
+local suggested = { key = "route", label = "Suggested route" }
 local chosenRoute
-APR.questionDialog:CreateRouteTriggerPopup("Suggested route", {suggested}, function(route) chosenRoute = route end)
+APR.questionDialog:CreateRouteTriggerPopup("Suggested route", { suggested }, function(route) chosenRoute = route end)
 local suggestion = APRRouteTriggerPopup
-assert(suggestion:IsShown() and suggestion:GetFrameStrata() == "FULLSCREEN_DIALOG"
-    and settings:GetFrameStrata() == "DIALOG", "Route suggestions must render above the settings window")
+assert(
+    suggestion:IsShown()
+        and suggestion:GetFrameStrata() == "FULLSCREEN_DIALOG"
+        and settings:GetFrameStrata() == "DIALOG",
+    "Route suggestions must render above the settings window"
+)
 suggestion.routeButtons[1].scripts.OnClick()
 assert(chosenRoute == suggested and not suggestion:IsShown())
-print("Selection dialog: disabled choices, callbacks, cancellation, replacement, tooltips, bounded layout and recycled controls passed")
+print(
+    "Selection dialog: disabled choices, callbacks, cancellation, replacement, tooltips, bounded layout and recycled controls passed"
+)

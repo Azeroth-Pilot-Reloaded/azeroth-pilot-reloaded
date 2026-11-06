@@ -13,7 +13,7 @@ string.gsub = function(subject, ...)
 end
 local plainResult = D.Value(plain)
 local escapedResult = D.Value(escaped)
-local nested = D.Value({payload = plain})
+local nested = D.Value({ payload = plain })
 string.gsub = originalGsub
 assert(plainResult == string.rep("x", 240))
 assert(escapedResult == string.rep("||   ", 48), "Truncation preserves whitespace and pipe escaping")

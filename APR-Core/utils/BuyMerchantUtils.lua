@@ -14,7 +14,8 @@ function APR:GetMerchantPurchaseQuantity(item)
     if item.questID and C_QuestLog.IsQuestFlaggedCompleted(item.questID) then return 0 end
     if item.conditions and not self:AreConditionalFiltersMet(item.conditions) then return 0 end
     local quantity = item.quantityFromItemID and self:GetCollectionItemCount(item.quantityFromItemID, false)
-        or item.quantity or 1
+        or item.quantity
+        or 1
     if item.bagSlots then
         local slots = C_Container and C_Container.GetContainerNumSlots or GetContainerNumSlots
         local bagItem = C_Container and C_Container.GetContainerItemID or GetContainerItemID
@@ -35,16 +36,24 @@ function APR:GetMerchantPurchaseQuantity(item)
         quantity = math.max(0, quantity - self:GetCollectionItemCount(item.itemID, false))
     end
     return quantity
-end--[[APR_DIAG]]; APR.GetMerchantPurchaseQuantity = APRTrace("APR-Core/utils/BuyMerchantUtils.lua:13:APR:GetMerchantPurchaseQuantity#1", APR.GetMerchantPurchaseQuantity)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetMerchantPurchaseQuantity = APRTrace(
+    "APR-Core/utils/BuyMerchantUtils.lua:13:APR:GetMerchantPurchaseQuantity#1",
+    APR.GetMerchantPurchaseQuantity
+)--[[/APR_DIAG]]
 
 local function IsPurchaseContextCurrent(self)
     return not currentPurchaseContext or self:IsStepContextCurrent(currentPurchaseContext)
-end--[[APR_DIAG]]; IsPurchaseContextCurrent = APRTrace("APR-Core/utils/BuyMerchantUtils.lua:40:IsPurchaseContextCurrent#2", IsPurchaseContextCurrent)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+IsPurchaseContextCurrent =
+    APRTrace("APR-Core/utils/BuyMerchantUtils.lua:40:IsPurchaseContextCurrent#2", IsPurchaseContextCurrent)--[[/APR_DIAG]]
 
 function APR:StartPurchaseTracking(BuyMerchant)
     if not BuyMerchant then return end
     -- Reopening a merchant or refreshing the same step retains its partial delivery.
-    if currentPurchaseItems == BuyMerchant and currentPurchaseTracking and IsPurchaseContextCurrent(self) then return end
+    if currentPurchaseItems == BuyMerchant and currentPurchaseTracking and IsPurchaseContextCurrent(self) then
+        return
+    end
     currentPurchaseItems = BuyMerchant
     currentPurchaseContext = self.CaptureStepContext and self:CaptureStepContext()
     purchaseCompleted = false
@@ -55,14 +64,22 @@ function APR:StartPurchaseTracking(BuyMerchant)
         local required = self:GetMerchantPurchaseQuantity(item)
         currentPurchaseTracking[item.itemID] = { required = required, purchased = 0, initialCarried = carried }
     end
-end--[[APR_DIAG]]; APR.StartPurchaseTracking = APRTrace("APR-Core/utils/BuyMerchantUtils.lua:44:APR:StartPurchaseTracking#3", APR.StartPurchaseTracking)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.StartPurchaseTracking =
+    APRTrace("APR-Core/utils/BuyMerchantUtils.lua:44:APR:StartPurchaseTracking#3", APR.StartPurchaseTracking)--[[/APR_DIAG]]
 
 -- Cash/bag filters describe entry eligibility. Once a request is made, money
 -- and inventory events must not skip the current step before its loot receipts.
 function APR:HasPendingMerchantPurchase(items)
-    return currentPurchaseItems == items and currentPurchaseTracking and purchaseRequested
-        and not purchaseCompleted and IsPurchaseContextCurrent(self) or false
-end--[[APR_DIAG]]; APR.HasPendingMerchantPurchase = APRTrace("APR-Core/utils/BuyMerchantUtils.lua:62:APR:HasPendingMerchantPurchase#4", APR.HasPendingMerchantPurchase)--[[/APR_DIAG]]
+    return currentPurchaseItems == items
+            and currentPurchaseTracking
+            and purchaseRequested
+            and not purchaseCompleted
+            and IsPurchaseContextCurrent(self)
+        or false
+end--[[APR_DIAG]]
+APR.HasPendingMerchantPurchase =
+    APRTrace("APR-Core/utils/BuyMerchantUtils.lua:62:APR:HasPendingMerchantPurchase#4", APR.HasPendingMerchantPurchase)--[[/APR_DIAG]]
 
 function APR:CheckPurchaseCompletion()
     if not currentPurchaseTracking or not IsPurchaseContextCurrent(self) then return false end
@@ -73,7 +90,9 @@ function APR:CheckPurchaseCompletion()
     purchaseCompleted = true
     self:UpdateNextStep()
     return true
-end--[[APR_DIAG]]; APR.CheckPurchaseCompletion = APRTrace("APR-Core/utils/BuyMerchantUtils.lua:67:APR:CheckPurchaseCompletion#5", APR.CheckPurchaseCompletion)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.CheckPurchaseCompletion =
+    APRTrace("APR-Core/utils/BuyMerchantUtils.lua:67:APR:CheckPurchaseCompletion#5", APR.CheckPurchaseCompletion)--[[/APR_DIAG]]
 
 function APR:UpdatePurchaseTracking(itemID, quantity)
     if purchaseCompleted or not IsPurchaseContextCurrent(self) then return end
@@ -81,11 +100,19 @@ function APR:UpdatePurchaseTracking(itemID, quantity)
         currentPurchaseTracking[itemID].purchased = currentPurchaseTracking[itemID].purchased + quantity
         self:CheckPurchaseCompletion()
     end
-end--[[APR_DIAG]]; APR.UpdatePurchaseTracking = APRTrace("APR-Core/utils/BuyMerchantUtils.lua:78:APR:UpdatePurchaseTracking#6", APR.UpdatePurchaseTracking)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.UpdatePurchaseTracking =
+    APRTrace("APR-Core/utils/BuyMerchantUtils.lua:78:APR:UpdatePurchaseTracking#6", APR.UpdatePurchaseTracking)--[[/APR_DIAG]]
 
 function APR:BuyItemFromMerchant(BuyMerchant)
-    if not BuyMerchant or #BuyMerchant == 0 or currentPurchaseItems ~= BuyMerchant
-        or not IsPurchaseContextCurrent(self) then return end
+    if
+        not BuyMerchant
+        or #BuyMerchant == 0
+        or currentPurchaseItems ~= BuyMerchant
+        or not IsPurchaseContextCurrent(self)
+    then
+        return
+    end
     if self:CheckPurchaseCompletion() then return end
     if APR.settings.profile.debug then
         for _, item in ipairs(BuyMerchant) do
@@ -112,8 +139,8 @@ function APR:BuyItemFromMerchant(BuyMerchant)
                     if C_MerchantFrame and C_MerchantFrame.GetItemInfo then
                         local info = C_MerchantFrame.GetItemInfo(i)
                         if info then
-                            price, bundleSize, available, extendedCost = info.price, info.stackCount, info.numAvailable,
-                                info.hasExtendedCost
+                            price, bundleSize, available, extendedCost =
+                                info.price, info.stackCount, info.numAvailable, info.hasExtendedCost
                         end
                     elseif GetMerchantItemInfo then
                         local _, _, p, size, stock, _, _, extended = GetMerchantItemInfo(i)
@@ -121,13 +148,22 @@ function APR:BuyItemFromMerchant(BuyMerchant)
                     end
                     -- Optional advice must never force a currency purchase or
                     -- spend the money reserved for a later trainer/quest.
-                    if type(price) == "number" and type(bundleSize) == "number" and bundleSize > 0
-                        and type(budget) == "number" and not extendedCost then
+                    if
+                        type(price) == "number"
+                        and type(bundleSize) == "number"
+                        and bundleSize > 0
+                        and type(budget) == "number"
+                        and not extendedCost
+                    then
                         if price > 0 then
-                            quantity = math.min(quantity, math.floor(math.max(0, budget - (item.reserveCopper or 0))
-                                / (price / bundleSize)))
+                            quantity = math.min(
+                                quantity,
+                                math.floor(math.max(0, budget - (item.reserveCopper or 0)) / (price / bundleSize))
+                            )
                         end
-                        if type(available) == "number" and available >= 0 then quantity = math.min(quantity, available) end
+                        if type(available) == "number" and available >= 0 then
+                            quantity = math.min(quantity, available)
+                        end
                         budget = budget - quantity * price / bundleSize
                     else
                         quantity = 0
@@ -149,7 +185,9 @@ function APR:BuyItemFromMerchant(BuyMerchant)
         end
     end
     self:CheckPurchaseCompletion()
-end--[[APR_DIAG]]; APR.BuyItemFromMerchant = APRTrace("APR-Core/utils/BuyMerchantUtils.lua:86:APR:BuyItemFromMerchant#7", APR.BuyItemFromMerchant)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.BuyItemFromMerchant =
+    APRTrace("APR-Core/utils/BuyMerchantUtils.lua:86:APR:BuyItemFromMerchant#7", APR.BuyItemFromMerchant)--[[/APR_DIAG]]
 
 function APR:GetQuantityfromLootMessage(message)
     local quantity = 1 -- by default the quantity if not specified is 1
@@ -160,4 +198,6 @@ function APR:GetQuantityfromLootMessage(message)
         quantity = tonumber(extractedQuantity)
     end
     return quantity
-end--[[APR_DIAG]]; APR.GetQuantityfromLootMessage = APRTrace("APR-Core/utils/BuyMerchantUtils.lua:154:APR:GetQuantityfromLootMessage#8", APR.GetQuantityfromLootMessage)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetQuantityfromLootMessage =
+    APRTrace("APR-Core/utils/BuyMerchantUtils.lua:154:APR:GetQuantityfromLootMessage#8", APR.GetQuantityfromLootMessage)--[[/APR_DIAG]]

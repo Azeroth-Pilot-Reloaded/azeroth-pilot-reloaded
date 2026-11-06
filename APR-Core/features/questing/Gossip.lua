@@ -53,26 +53,30 @@ local IGNORE_GOSSIP = {
 -- To handle gossipOptionID
 if C_GossipInfo and C_GossipInfo.SelectOption and hooksecurefunc then
     if not APR.gossip._hookedSelectOption then
-        hooksecurefunc(C_GossipInfo, "SelectOption", --[[APR_DIAG]]APRTrace("APR-Core/features/questing/Gossip.lua:56:callback#1", --[[/APR_DIAG]]function(optionID)
-            if APR.ActiveRoute then
-                local currentStepIndex = APRData[APR.PlayerID][APR.ActiveRoute]
-                local step = APR:GetStep(currentStepIndex)
-                if step and step.GossipOptionIDs and optionID and tContains(step.GossipOptionIDs, optionID) then
-                    if not APR:HasAnyMainStepOption(step) then
-                        APRGossipValidated[APR.PlayerID][optionID] = true
-                        APR:Debug("Gossip selected option ID:", optionID)
+        hooksecurefunc(
+            C_GossipInfo,
+            "SelectOption", --[[APR_DIAG]]
+            APRTrace("APR-Core/features/questing/Gossip.lua:56:callback#1", --[[/APR_DIAG]] function(optionID)
+                if APR.ActiveRoute then
+                    local currentStepIndex = APRData[APR.PlayerID][APR.ActiveRoute]
+                    local step = APR:GetStep(currentStepIndex)
+                    if step and step.GossipOptionIDs and optionID and tContains(step.GossipOptionIDs, optionID) then
+                        if not APR:HasAnyMainStepOption(step) then
+                            APRGossipValidated[APR.PlayerID][optionID] = true
+                            APR:Debug("Gossip selected option ID:", optionID)
 
-                        --check if all completed
-                        local isFullCompleted = APR:hasEveryGossipsCompleted(step.GossipOptionIDs)
-                        if isFullCompleted then
-                            APR:UpdateNextStep()
+                            --check if all completed
+                            local isFullCompleted = APR:hasEveryGossipsCompleted(step.GossipOptionIDs)
+                            if isFullCompleted then
+                                APR:UpdateNextStep()
+                            end
+                        elseif step.GossipETA then
+                            APR.gossip:TriggerGossipETA(currentStepIndex, step)
                         end
-                    elseif step.GossipETA then
-                        APR.gossip:TriggerGossipETA(currentStepIndex, step)
                     end
                 end
-            end
-        end--[[APR_DIAG]])--[[/APR_DIAG]])
+            end--[[APR_DIAG]]) --[[/APR_DIAG]]
+        )
         APR.gossip._hookedSelectOption = true
     end
 end
@@ -83,7 +87,8 @@ local function SelectOption(optionID, text, confirm)
     end
     C_GossipInfo.SelectOption(optionID, text, confirm)
     return true
-end--[[APR_DIAG]]; SelectOption = APRTrace("APR-Core/features/questing/Gossip.lua:80:SelectOption#2", SelectOption)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+SelectOption = APRTrace("APR-Core/features/questing/Gossip.lua:80:SelectOption#2", SelectOption)--[[/APR_DIAG]]
 
 local function HandleQuickQuestGossipFallback(profile)
     local gossip = C_GossipInfo.GetOptions()
@@ -112,7 +117,14 @@ local function HandleQuickQuestGossipFallback(profile)
                 firstQuestOption = firstQuestOption or info.gossipOptionID
                 questOptionCount = questOptionCount + 1
             end
-        elseif FlagsUtil and FlagsUtil.IsSet and Enum and Enum.GossipOptionRecFlags and Enum.GossipOptionRecFlags.QuestLabelPrepend and FlagsUtil.IsSet(info.flags, Enum.GossipOptionRecFlags.QuestLabelPrepend) then
+        elseif
+            FlagsUtil
+            and FlagsUtil.IsSet
+            and Enum
+            and Enum.GossipOptionRecFlags
+            and Enum.GossipOptionRecFlags.QuestLabelPrepend
+            and FlagsUtil.IsSet(info.flags, Enum.GossipOptionRecFlags.QuestLabelPrepend)
+        then
             if info.gossipOptionID then
                 firstQuestOption = firstQuestOption or info.gossipOptionID
                 questOptionCount = questOptionCount + 1
@@ -174,7 +186,11 @@ local function HandleQuickQuestGossipFallback(profile)
     end
 
     return SelectOption(gossip[1].gossipOptionID)
-end--[[APR_DIAG]]; HandleQuickQuestGossipFallback = APRTrace("APR-Core/features/questing/Gossip.lua:88:HandleQuickQuestGossipFallback#3", HandleQuickQuestGossipFallback)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+HandleQuickQuestGossipFallback = APRTrace(
+    "APR-Core/features/questing/Gossip.lua:88:HandleQuickQuestGossipFallback#3",
+    HandleQuickQuestGossipFallback
+)--[[/APR_DIAG]]
 
 local function PickGossipByIcon(iconId, optionType)
     local gossipOption = C_GossipInfo.GetOptions()
@@ -189,7 +205,8 @@ local function PickGossipByIcon(iconId, optionType)
         end
     end
     return false
-end--[[APR_DIAG]]; PickGossipByIcon = APRTrace("APR-Core/features/questing/Gossip.lua:179:PickGossipByIcon#4", PickGossipByIcon)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+PickGossipByIcon = APRTrace("APR-Core/features/questing/Gossip.lua:179:PickGossipByIcon#4", PickGossipByIcon)--[[/APR_DIAG]]
 
 function APR.gossip:HandleGossip(step)
     local profile = APR:GetSettingsProfile()
@@ -199,8 +216,14 @@ function APR.gossip:HandleGossip(step)
     end
     if repair then
         local npcID = APRSecret:SafeUnitCreatureID("npc") or APRSecret:SafeUnitCreatureID("target")
-        if npcID ~= repair.npcID or not APR:AreConditionalFiltersMet(step) or
-            not APR:IsRouteRepairNeeded(repair) or IsModifierKeyDown() then return end
+        if
+            npcID ~= repair.npcID
+            or not APR:AreConditionalFiltersMet(step)
+            or not APR:IsRouteRepairNeeded(repair)
+            or IsModifierKeyDown()
+        then
+            return
+        end
     end
 
     local selectedOption = false
@@ -230,7 +253,7 @@ function APR.gossip:HandleGossip(step)
     ------------------------------------
     -- GOSSIP
     if step and (step.Gossip or step.GossipOptionIDs) then
-        if (step.Gossip == 28202) then -- GOSSIP HARDCODED
+        if step.Gossip == 28202 then -- GOSSIP HARDCODED
             -- //TODO Remove this when all hardcoded gossip are removed
             -- This is a hardcoded gossip for the quest https://www.wowhead.com/quest=28205/a-perfect-costume
             self.counter = self:HandleHardcodedGossip()
@@ -253,7 +276,7 @@ function APR.gossip:HandleGossip(step)
                     end
                 else
                     for _, v in pairs(info) do
-                        if (v.orderIndex + 1 == step.Gossip) then
+                        if v.orderIndex + 1 == step.Gossip then
                             if SelectOption(v.gossipOptionID) then
                                 selectedOption = true
                                 handledByAPR = true
@@ -264,14 +287,22 @@ function APR.gossip:HandleGossip(step)
             end
 
             --CHROMIE
-            if (step.ChromiePick) then
+            if step.ChromiePick then
                 local targetID = APR:GetTargetID()
-                if (targetID == 167032) then
-                    local extraText = string.format(L["SWITCH_TO_CHROMIE"],
-                        C_ChromieTime.GetChromieTimeExpansionOption(step.ChromiePick).name)
-                    APR.currentStep:AddExtraLineText('ChromiePick', extraText)
-                    C_Timer.After(1,
-                        --[[APR_DIAG]]APRTrace("APR-Core/features/questing/Gossip.lua:274:callback#6", --[[/APR_DIAG]]function() C_ChromieTime.SelectChromieTimeOption(step.ChromiePick) end--[[APR_DIAG]])--[[/APR_DIAG]])
+                if targetID == 167032 then
+                    local extraText = string.format(
+                        L["SWITCH_TO_CHROMIE"],
+                        C_ChromieTime.GetChromieTimeExpansionOption(step.ChromiePick).name
+                    )
+                    APR.currentStep:AddExtraLineText("ChromiePick", extraText)
+                    C_Timer.After(
+                        1,
+                        --[[APR_DIAG]]
+                        APRTrace(
+                            "APR-Core/features/questing/Gossip.lua:274:callback#6", --[[/APR_DIAG]]
+                            function() C_ChromieTime.SelectChromieTimeOption(step.ChromiePick) end --[[APR_DIAG]]
+                        ) --[[/APR_DIAG]]
+                    )
                 end
             end
         end
@@ -282,47 +313,53 @@ function APR.gossip:HandleGossip(step)
     end
 
     return selectedOption
-end--[[APR_DIAG]]; APR.gossip.HandleGossip = APRTrace("APR-Core/features/questing/Gossip.lua:194:APR.gossip:HandleGossip#5", APR.gossip.HandleGossip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.gossip.HandleGossip =
+    APRTrace("APR-Core/features/questing/Gossip.lua:194:APR.gossip:HandleGossip#5", APR.gossip.HandleGossip)--[[/APR_DIAG]]
 
 function APR.gossip:HandleHardcodedGossip()
     local count = self.counter + 1
-    if (count == 1) then
+    if count == 1 then
         C_GossipInfo.SelectOptionByIndex(1)
-    elseif (count == 2) then
-        if (APR.Race == "Gnome") then
+    elseif count == 2 then
+        if APR.Race == "Gnome" then
             C_GossipInfo.SelectOptionByIndex(1)
-        elseif (APR.Race == "Human" or APR.Race == "Dwarf") then
+        elseif APR.Race == "Human" or APR.Race == "Dwarf" then
             C_GossipInfo.SelectOptionByIndex(2)
-        elseif (APR.Race == "NightElf") then
+        elseif APR.Race == "NightElf" then
             C_GossipInfo.SelectOptionByIndex(3)
-        elseif (APR.Race == "Draenei" or APR.Race == "Worgen") then
+        elseif APR.Race == "Draenei" or APR.Race == "Worgen" then
             C_GossipInfo.SelectOptionByIndex(4)
         end
-    elseif (count == 3) then
-        if (APR.Race == "Gnome") then
+    elseif count == 3 then
+        if APR.Race == "Gnome" then
             C_GossipInfo.SelectOptionByIndex(3)
-        elseif (APR.Race == "Human" or APR.Race == "Dwarf") then
+        elseif APR.Race == "Human" or APR.Race == "Dwarf" then
             C_GossipInfo.SelectOptionByIndex(4)
-        elseif (APR.Race == "NightElf") then
+        elseif APR.Race == "NightElf" then
             C_GossipInfo.SelectOptionByIndex(2)
-        elseif (APR.Race == "Draenei" or APR.Race == "Worgen") then
+        elseif APR.Race == "Draenei" or APR.Race == "Worgen" then
             C_GossipInfo.SelectOptionByIndex(1)
         end
-    elseif (count == 4) then
-        if (APR.Race == "Gnome") then
+    elseif count == 4 then
+        if APR.Race == "Gnome" then
             C_GossipInfo.SelectOptionByIndex(4)
-        elseif (APR.Race == "Human" or APR.Race == "Dwarf") then
+        elseif APR.Race == "Human" or APR.Race == "Dwarf" then
             C_GossipInfo.SelectOptionByIndex(2)
-        elseif (APR.Race == "NightElf") then
+        elseif APR.Race == "NightElf" then
             C_GossipInfo.SelectOptionByIndex(1)
-        elseif (APR.Race == "Draenei" or APR.Race == "Worgen") then
+        elseif APR.Race == "Draenei" or APR.Race == "Worgen" then
             C_GossipInfo.SelectOptionByIndex(3)
         end
-    elseif (count == 5) then
+    elseif count == 5 then
         APR:UpdateNextStep()
     end
     return count
-end--[[APR_DIAG]]; APR.gossip.HandleHardcodedGossip = APRTrace("APR-Core/features/questing/Gossip.lua:287:APR.gossip:HandleHardcodedGossip#7", APR.gossip.HandleHardcodedGossip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.gossip.HandleHardcodedGossip = APRTrace(
+    "APR-Core/features/questing/Gossip.lua:287:APR.gossip:HandleHardcodedGossip#7",
+    APR.gossip.HandleHardcodedGossip
+)--[[/APR_DIAG]]
 
 function APR.gossip:TriggerGossipETA(stepIndex, step)
     if not step or not step.GossipETA or step.SpecialETAHide then
@@ -335,4 +372,6 @@ function APR.gossip:TriggerGossipETA(stepIndex, step)
 
     APR.AFK:SetAfkTimer(step.GossipETA)
     APR.AFK.lastStep = stepIndex
-end--[[APR_DIAG]]; APR.gossip.TriggerGossipETA = APRTrace("APR-Core/features/questing/Gossip.lua:327:APR.gossip:TriggerGossipETA#8", APR.gossip.TriggerGossipETA)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.gossip.TriggerGossipETA =
+    APRTrace("APR-Core/features/questing/Gossip.lua:327:APR.gossip:TriggerGossipETA#8", APR.gossip.TriggerGossipETA)--[[/APR_DIAG]]

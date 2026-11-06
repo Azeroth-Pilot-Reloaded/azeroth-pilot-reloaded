@@ -10,21 +10,26 @@ APR.CommunicationChannel = Channel
 
 local function Public(value)
     return not (issecretvalue and issecretvalue(value))
-end--[[APR_DIAG]]; Public = APRTrace("APR-Core/core/CommunicationChannel.lua:11:Public#1", Public)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Public = APRTrace("APR-Core/core/CommunicationChannel.lua:11:Public#1", Public)--[[/APR_DIAG]]
 
 local function ValidID(value)
-    return Public(value) and type(value) == "number" and value > 0
-        and value < math.huge and value == math.floor(value)
-end--[[APR_DIAG]]; ValidID = APRTrace("APR-Core/core/CommunicationChannel.lua:15:ValidID#2", ValidID)--[[/APR_DIAG]]
+    return Public(value) and type(value) == "number" and value > 0 and value < math.huge and value == math.floor(value)
+end--[[APR_DIAG]]
+ValidID = APRTrace("APR-Core/core/CommunicationChannel.lua:15:ValidID#2", ValidID)--[[/APR_DIAG]]
 
 local function Restricted()
-    return C_ChatInfo and C_ChatInfo.InChatMessagingLockdown
-        and C_ChatInfo.InChatMessagingLockdown() == true
-end--[[APR_DIAG]]; Restricted = APRTrace("APR-Core/core/CommunicationChannel.lua:20:Restricted#3", Restricted)--[[/APR_DIAG]]
+    return C_ChatInfo and C_ChatInfo.InChatMessagingLockdown and C_ChatInfo.InChatMessagingLockdown() == true
+end--[[APR_DIAG]]
+Restricted = APRTrace("APR-Core/core/CommunicationChannel.lua:20:Restricted#3", Restricted)--[[/APR_DIAG]]
 
 function Channel:CancelTimer(key)
-    if self[key] then self[key]:Cancel(); self[key] = nil end
-end--[[APR_DIAG]]; Channel.CancelTimer = APRTrace("APR-Core/core/CommunicationChannel.lua:25:Channel:CancelTimer#4", Channel.CancelTimer)--[[/APR_DIAG]]
+    if self[key] then
+        self[key]:Cancel()
+        self[key] = nil
+    end
+end--[[APR_DIAG]]
+Channel.CancelTimer = APRTrace("APR-Core/core/CommunicationChannel.lua:25:Channel:CancelTimer#4", Channel.CancelTimer)--[[/APR_DIAG]]
 
 function Channel:SetState(status, id)
     local changed = self.status ~= status or self.id ~= id
@@ -33,33 +38,53 @@ function Channel:SetState(status, id)
     if not changed then return end
     -- Owners may release themselves from a callback.
     local callbacks = {}
-    for owner, callback in pairs(self.owners) do callbacks[owner] = callback end
-    for owner, callback in pairs(callbacks) do
-        if self.owners[owner] == callback and type(callback) == "function" then --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](callback, id, status) end
+    for owner, callback in pairs(self.owners) do
+        callbacks[owner] = callback
     end
-end--[[APR_DIAG]]; Channel.SetState = APRTrace("APR-Core/core/CommunicationChannel.lua:29:Channel:SetState#5", Channel.SetState)--[[/APR_DIAG]]
+    for owner, callback in pairs(callbacks) do
+        if self.owners[owner] == callback and type(callback) == "function" then --[[APR_DIAG]]
+            APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](callback, id, status)
+        end
+    end
+end--[[APR_DIAG]]
+Channel.SetState = APRTrace("APR-Core/core/CommunicationChannel.lua:29:Channel:SetState#5", Channel.SetState)--[[/APR_DIAG]]
 
 function Channel:GetChannelID()
     return self.id
-end--[[APR_DIAG]]; Channel.GetChannelID = APRTrace("APR-Core/core/CommunicationChannel.lua:42:Channel:GetChannelID#6", Channel.GetChannelID)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Channel.GetChannelID =
+    APRTrace("APR-Core/core/CommunicationChannel.lua:42:Channel:GetChannelID#6", Channel.GetChannelID)--[[/APR_DIAG]]
 
 function Channel:IsReady()
     return self.status == "ready" and ValidID(self.id) and not Restricted()
-end--[[APR_DIAG]]; Channel.IsReady = APRTrace("APR-Core/core/CommunicationChannel.lua:46:Channel:IsReady#7", Channel.IsReady)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Channel.IsReady = APRTrace("APR-Core/core/CommunicationChannel.lua:46:Channel:IsReady#7", Channel.IsReady)--[[/APR_DIAG]]
 
 function Channel:RetireLegacyVersionChannel()
-    if self.legacyVersionRetired or not self:IsReady()
+    if
+        self.legacyVersionRetired
+        or not self:IsReady()
         or (type(InCombatLockdown) == "function" and InCombatLockdown())
-        or type(GetChannelName) ~= "function" or type(LeaveChannelByName) ~= "function" then return end
+        or type(GetChannelName) ~= "function"
+        or type(LeaveChannelByName) ~= "function"
+    then
+        return
+    end
     -- A UI reload can retain the old native membership. Check it once, only
     -- after APR is ready; native events retry a combat/API deferral without polling.
     -- Mark before either call so failures or reentrant events cannot loop.
     self.legacyVersionRetired = true
-    local ok, id, name = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetChannelName, "APRVersion")
+    local ok, id, name = --[[APR_DIAG]]
+        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetChannelName, "APRVersion")
     if ok and ValidID(id) and Public(name) and name == "APRVersion" then
-        --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](LeaveChannelByName, "APRVersion")
+        --[[APR_DIAG]]
+        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](LeaveChannelByName, "APRVersion")
     end
-end--[[APR_DIAG]]; Channel.RetireLegacyVersionChannel = APRTrace("APR-Core/core/CommunicationChannel.lua:50:Channel:RetireLegacyVersionChannel#8", Channel.RetireLegacyVersionChannel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Channel.RetireLegacyVersionChannel = APRTrace(
+    "APR-Core/core/CommunicationChannel.lua:50:Channel:RetireLegacyVersionChannel#8",
+    Channel.RetireLegacyVersionChannel
+)--[[/APR_DIAG]]
 
 function Channel:GetSendChannelID()
     if not self:IsReady() then return end
@@ -68,11 +93,14 @@ function Channel:GetSendChannelID()
     local id = self:Lookup()
     if id ~= self.id then self:SetState(id and "ready" or "unavailable", id) end
     return self:IsReady() and self.id or nil
-end--[[APR_DIAG]]; Channel.GetSendChannelID = APRTrace("APR-Core/core/CommunicationChannel.lua:64:Channel:GetSendChannelID#9", Channel.GetSendChannelID)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Channel.GetSendChannelID =
+    APRTrace("APR-Core/core/CommunicationChannel.lua:64:Channel:GetSendChannelID#9", Channel.GetSendChannelID)--[[/APR_DIAG]]
 
 function Channel:Lookup()
     if type(GetChannelName) ~= "function" then return end
-    local ok, id = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetChannelName, self.name)
+    local ok, id = --[[APR_DIAG]]
+        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetChannelName, self.name)
     if ok and ValidID(id) then
         if self.owned then self.ownedConfirmed = true end
         return id
@@ -82,13 +110,17 @@ function Channel:Lookup()
     if self.ownedConfirmed and ok and Public(id) and id == 0 then
         self.owned, self.ownedConfirmed = nil, nil
     end
-end--[[APR_DIAG]]; Channel.Lookup = APRTrace("APR-Core/core/CommunicationChannel.lua:73:Channel:Lookup#10", Channel.Lookup)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Channel.Lookup = APRTrace("APR-Core/core/CommunicationChannel.lua:73:Channel:Lookup#10", Channel.Lookup)--[[/APR_DIAG]]
 
 function Channel:Supported()
-    return type(JoinTemporaryChannel) == "function" and type(GetChannelName) == "function"
-        and C_ChatInfo and type(C_ChatInfo.SendAddonMessage) == "function"
+    return type(JoinTemporaryChannel) == "function"
+        and type(GetChannelName) == "function"
+        and C_ChatInfo
+        and type(C_ChatInfo.SendAddonMessage) == "function"
         and APR:GetGameVersion() ~= "classic"
-end--[[APR_DIAG]]; Channel.Supported = APRTrace("APR-Core/core/CommunicationChannel.lua:87:Channel:Supported#11", Channel.Supported)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Channel.Supported = APRTrace("APR-Core/core/CommunicationChannel.lua:87:Channel:Supported#11", Channel.Supported)--[[/APR_DIAG]]
 
 function Channel:Refresh()
     if not next(self.owners) then return end
@@ -102,22 +134,30 @@ function Channel:Refresh()
     elseif self.id then
         -- Respect a manual leave. Only an explicit retry may join again.
         self:SetState("unavailable")
-    elseif (self.status == "restricted" or self.status == "joining" and self.startupReady)
-        and not self.attempted and not self.startTimer and not Restricted() then
+    elseif
+        (self.status == "restricted" or self.status == "joining" and self.startupReady)
+        and not self.attempted
+        and not self.startTimer
+        and not Restricted()
+    then
         -- Native events can finish map restrictions or channel restoration.
         -- Resume only a deferred first join, never a lost or failed join.
         self:Join()
     end
-end--[[APR_DIAG]]; Channel.Refresh = APRTrace("APR-Core/core/CommunicationChannel.lua:93:Channel:Refresh#12", Channel.Refresh)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Channel.Refresh = APRTrace("APR-Core/core/CommunicationChannel.lua:93:Channel:Refresh#12", Channel.Refresh)--[[/APR_DIAG]]
 
 function Channel:WorldReady()
     if type(IsPlayerInWorld) == "function" then return IsPlayerInWorld() == true end
     return self.enteredWorld == true
-end--[[APR_DIAG]]; Channel.WorldReady = APRTrace("APR-Core/core/CommunicationChannel.lua:113:Channel:WorldReady#13", Channel.WorldReady)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Channel.WorldReady = APRTrace("APR-Core/core/CommunicationChannel.lua:113:Channel:WorldReady#13", Channel.WorldReady)--[[/APR_DIAG]]
 
 function Channel:ChannelsReady()
     if type(GetChannelList) ~= "function" then return false end
-    local channels = {--[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetChannelList)}
+    local channels = {--[[APR_DIAG]]
+        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetChannelList),
+    }
     if not channels[1] or #channels <= 1 or (#channels - 1) % 3 ~= 0 then return false end
     local occupied, count, highest = {}, 0, 0
     for index = 2, #channels, 3 do
@@ -129,38 +169,63 @@ function Channel:ChannelsReady()
     -- in /1 or /2 before General/Trade. Later gaps are normal after channels
     -- leave, especially when a community retains a high channel number.
     return highest == count or occupied[1] == true and occupied[2] == true
-end--[[APR_DIAG]]; Channel.ChannelsReady = APRTrace("APR-Core/core/CommunicationChannel.lua:118:Channel:ChannelsReady#14", Channel.ChannelsReady)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Channel.ChannelsReady =
+    APRTrace("APR-Core/core/CommunicationChannel.lua:118:Channel:ChannelsReady#14", Channel.ChannelsReady)--[[/APR_DIAG]]
 
 function Channel:RestoreNativeChannels()
-    if self.nativeRestoreAttempted or (not self.startupReady and not ValidID(self.id)) or not next(self.owners)
-        or not self:WorldReady() or Restricted()
+    if
+        self.nativeRestoreAttempted
+        or (not self.startupReady and not ValidID(self.id))
+        or not next(self.owners)
+        or not self:WorldReady()
+        or Restricted()
         or (type(InCombatLockdown) == "function" and InCombatLockdown())
-        or type(GetChannelName) ~= "function" or not C_ChatInfo
-        or type(C_ChatInfo.ResetDefaultZoneChannels) ~= "function" then return false end
-    local ok, id = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetChannelName, 1)
+        or type(GetChannelName) ~= "function"
+        or not C_ChatInfo
+        or type(C_ChatInfo.ResetDefaultZoneChannels) ~= "function"
+    then
+        return false
+    end
+    local ok, id = --[[APR_DIAG]]
+        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetChannelName, 1)
     -- A failed/opaque lookup is not proof of an empty slot. Respect any channel
     -- already at /1, including custom channels and APR itself.
     if not ok or not Public(id) or id ~= 0 then return false end
     -- Mark before calling Blizzard: synchronous native events and failures must
     -- not cause repeated resets. The result can arrive on CHANNEL_UI_UPDATE.
     self.nativeRestoreAttempted = true
-    return --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](C_ChatInfo.ResetDefaultZoneChannels)
-end--[[APR_DIAG]]; Channel.RestoreNativeChannels = APRTrace("APR-Core/core/CommunicationChannel.lua:134:Channel:RestoreNativeChannels#15", Channel.RestoreNativeChannels)--[[/APR_DIAG]]
+    return  --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](C_ChatInfo.ResetDefaultZoneChannels)
+end--[[APR_DIAG]]
+Channel.RestoreNativeChannels = APRTrace(
+    "APR-Core/core/CommunicationChannel.lua:134:Channel:RestoreNativeChannels#15",
+    Channel.RestoreNativeChannels
+)--[[/APR_DIAG]]
 
 function Channel:QueueJoin()
     if self.startTimer or self.attempted or self.id or not next(self.owners) or not self:WorldReady() then return end
-    if self.startupReady then self:Join(); return end
-    -- Start the grace period in the world, not while addons are still loading.
-    self.startTimer = C_Timer.NewTimer(5, --[[APR_DIAG]]APRTrace("APR-Core/core/CommunicationChannel.lua:154:callback#17", --[[/APR_DIAG]]function()
-        self.startTimer = nil
-        self.startupReady = true
+    if self.startupReady then
         self:Join()
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; Channel.QueueJoin = APRTrace("APR-Core/core/CommunicationChannel.lua:150:Channel:QueueJoin#16", Channel.QueueJoin)--[[/APR_DIAG]]
+        return
+    end
+    -- Start the grace period in the world, not while addons are still loading.
+    self.startTimer = C_Timer.NewTimer(
+        5, --[[APR_DIAG]]
+        APRTrace("APR-Core/core/CommunicationChannel.lua:154:callback#17", --[[/APR_DIAG]] function()
+            self.startTimer = nil
+            self.startupReady = true
+            self:Join()
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+end--[[APR_DIAG]]
+Channel.QueueJoin = APRTrace("APR-Core/core/CommunicationChannel.lua:150:Channel:QueueJoin#16", Channel.QueueJoin)--[[/APR_DIAG]]
 
 function Channel:Join()
     if not next(self.owners) then return end
-    if not self:Supported() then self:SetState("unavailable"); return end
+    if not self:Supported() then
+        self:SetState("unavailable")
+        return
+    end
     local id = self:Lookup()
     if id then
         self:CancelTimer("startTimer")
@@ -173,7 +238,10 @@ function Channel:Join()
         self:QueueJoin()
         return
     end
-    if Restricted() then self:SetState("restricted"); return end
+    if Restricted() then
+        self:SetState("restricted")
+        return
+    end
     if self.attempted then return end
     if not self:ChannelsReady() then
         -- Repair missing native defaults only when /1 is positively empty.
@@ -185,49 +253,76 @@ function Channel:Join()
     self.attempted, self.owned, self.ownedConfirmed = true, true, nil
     self:SetState("joining")
     if not next(self.owners) then return end
-    self.joinTimer = C_Timer.NewTimer(10, --[[APR_DIAG]]APRTrace("APR-Core/core/CommunicationChannel.lua:188:callback#19", --[[/APR_DIAG]]function()
-        self.joinTimer = nil
-        if not next(self.owners) then return end
-        local joined = self:Lookup()
-        self:SetState(joined and (Restricted() and "restricted" or "ready") or "unavailable", joined)
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-    local ok = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](JoinTemporaryChannel, self.name)
+    self.joinTimer = C_Timer.NewTimer(
+        10, --[[APR_DIAG]]
+        APRTrace("APR-Core/core/CommunicationChannel.lua:188:callback#19", --[[/APR_DIAG]] function()
+            self.joinTimer = nil
+            if not next(self.owners) then return end
+            local joined = self:Lookup()
+            self:SetState(joined and (Restricted() and "restricted" or "ready") or "unavailable", joined)
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+    local ok = --[[APR_DIAG]]
+        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](JoinTemporaryChannel, self.name)
     if not ok then
         self:CancelTimer("joinTimer")
         self:SetState("unavailable")
         return
     end
     self:Refresh()
-end--[[APR_DIAG]]; Channel.Join = APRTrace("APR-Core/core/CommunicationChannel.lua:161:Channel:Join#18", Channel.Join)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Channel.Join = APRTrace("APR-Core/core/CommunicationChannel.lua:161:Channel:Join#18", Channel.Join)--[[/APR_DIAG]]
 
 function Channel:QueueRefresh()
     if self.refreshTimer or not next(self.owners) then return end
-    self.refreshTimer = C_Timer.NewTimer(0.1, --[[APR_DIAG]]APRTrace("APR-Core/core/CommunicationChannel.lua:205:callback#21", --[[/APR_DIAG]]function()
-        self.refreshTimer = nil
-        self:Refresh()
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; Channel.QueueRefresh = APRTrace("APR-Core/core/CommunicationChannel.lua:203:Channel:QueueRefresh#20", Channel.QueueRefresh)--[[/APR_DIAG]]
+    self.refreshTimer = C_Timer.NewTimer(
+        0.1, --[[APR_DIAG]]
+        APRTrace("APR-Core/core/CommunicationChannel.lua:205:callback#21", --[[/APR_DIAG]] function()
+            self.refreshTimer = nil
+            self:Refresh()
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+end--[[APR_DIAG]]
+Channel.QueueRefresh =
+    APRTrace("APR-Core/core/CommunicationChannel.lua:203:Channel:QueueRefresh#20", Channel.QueueRefresh)--[[/APR_DIAG]]
 
 function Channel:Listen()
     if not self.frame then self.frame = CreateFrame("Frame") end
-    self.frame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/core/CommunicationChannel.lua:213:callback#23", --[[/APR_DIAG]]function(_, event)
-        if event == "PLAYER_LOGOUT" then self:Shutdown()
-        elseif event == "PLAYER_ENTERING_WORLD" or event == "LOADING_SCREEN_DISABLED" then
-            self.enteredWorld = true
-            if not self.attempted and not self.id then
-                self.startupReady = nil
-                self:CancelTimer("startTimer")
-                self:QueueJoin()
+    self.frame:SetScript(
+        "OnEvent", --[[APR_DIAG]]
+        APRTrace("APR-Core/core/CommunicationChannel.lua:213:callback#23", --[[/APR_DIAG]] function(_, event)
+            if event == "PLAYER_LOGOUT" then
+                self:Shutdown()
+            elseif event == "PLAYER_ENTERING_WORLD" or event == "LOADING_SCREEN_DISABLED" then
+                self.enteredWorld = true
+                if not self.attempted and not self.id then
+                    self.startupReady = nil
+                    self:CancelTimer("startTimer")
+                    self:QueueJoin()
+                end
+                self:QueueRefresh()
+            elseif event == "PLAYER_REGEN_ENABLED" and self.status == "restricted" then
+                self:Join()
+            else
+                self:QueueRefresh()
             end
-            self:QueueRefresh()
-        elseif event == "PLAYER_REGEN_ENABLED" and self.status == "restricted" then self:Join()
-        else self:QueueRefresh() end
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-    for _, event in ipairs({ "CHANNEL_UI_UPDATE", "PLAYER_ENTERING_WORLD", "LOADING_SCREEN_DISABLED", "PLAYER_REGEN_ENABLED", "PLAYER_LOGOUT" }) do
-        if APR.RegisterSupportedEvent then APR:RegisterSupportedEvent(self.frame, event)
-        else self.frame:RegisterEvent(event) end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+    for _, event in ipairs({
+        "CHANNEL_UI_UPDATE",
+        "PLAYER_ENTERING_WORLD",
+        "LOADING_SCREEN_DISABLED",
+        "PLAYER_REGEN_ENABLED",
+        "PLAYER_LOGOUT",
+    }) do
+        if APR.RegisterSupportedEvent then
+            APR:RegisterSupportedEvent(self.frame, event)
+        else
+            self.frame:RegisterEvent(event)
+        end
     end
-end--[[APR_DIAG]]; Channel.Listen = APRTrace("APR-Core/core/CommunicationChannel.lua:211:Channel:Listen#22", Channel.Listen)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Channel.Listen = APRTrace("APR-Core/core/CommunicationChannel.lua:211:Channel:Listen#22", Channel.Listen)--[[/APR_DIAG]]
 
 function Channel:Acquire(owner, callback)
     if type(owner) ~= "string" or type(callback) ~= "function" then return "unavailable" end
@@ -235,7 +330,8 @@ function Channel:Acquire(owner, callback)
     self.owners[owner] = callback
     if first then
         self:Listen()
-        if not self:Supported() then self:SetState("unavailable")
+        if not self:Supported() then
+            self:SetState("unavailable")
         else
             local id = self:Lookup()
             if id then
@@ -251,26 +347,36 @@ function Channel:Acquire(owner, callback)
                 self:QueueJoin()
             end
         end
-    elseif added then --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](callback, self.id, self.status) end
+    elseif added then --[[APR_DIAG]]
+        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](callback, self.id, self.status)
+    end
     return self.status, self.id
-end--[[APR_DIAG]]; Channel.Acquire = APRTrace("APR-Core/core/CommunicationChannel.lua:232:Channel:Acquire#24", Channel.Acquire)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Channel.Acquire = APRTrace("APR-Core/core/CommunicationChannel.lua:232:Channel:Acquire#24", Channel.Acquire)--[[/APR_DIAG]]
 
 function Channel:Retry()
     if not next(self.owners) or self:IsReady() or self.startTimer or self.joinTimer then return end
     self.attempted = nil
     self:Join()
-end--[[APR_DIAG]]; Channel.Retry = APRTrace("APR-Core/core/CommunicationChannel.lua:258:Channel:Retry#25", Channel.Retry)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Channel.Retry = APRTrace("APR-Core/core/CommunicationChannel.lua:258:Channel:Retry#25", Channel.Retry)--[[/APR_DIAG]]
 
 function Channel:Release(owner)
     self.owners[owner] = nil
     if not next(self.owners) then self:Shutdown() end
-end--[[APR_DIAG]]; Channel.Release = APRTrace("APR-Core/core/CommunicationChannel.lua:264:Channel:Release#26", Channel.Release)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Channel.Release = APRTrace("APR-Core/core/CommunicationChannel.lua:264:Channel:Release#26", Channel.Release)--[[/APR_DIAG]]
 
 function Channel:Shutdown()
     local owned = self.owned
     -- A completed startup grace period belongs to the loaded UI session.
     self.owners, self.id, self.owned, self.ownedConfirmed, self.attempted, self.status = {}, nil, nil, nil, nil, "idle"
-    for _, key in ipairs({ "startTimer", "joinTimer", "refreshTimer" }) do self:CancelTimer(key) end
+    for _, key in ipairs({ "startTimer", "joinTimer", "refreshTimer" }) do
+        self:CancelTimer(key)
+    end
     if self.frame then self.frame:UnregisterAllEvents() end
-    if owned and type(LeaveChannelByName) == "function" then --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](LeaveChannelByName, self.name) end
-end--[[APR_DIAG]]; Channel.Shutdown = APRTrace("APR-Core/core/CommunicationChannel.lua:269:Channel:Shutdown#27", Channel.Shutdown)--[[/APR_DIAG]]
+    if owned and type(LeaveChannelByName) == "function" then --[[APR_DIAG]]
+        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](LeaveChannelByName, self.name)
+    end
+end--[[APR_DIAG]]
+Channel.Shutdown = APRTrace("APR-Core/core/CommunicationChannel.lua:269:Channel:Shutdown#27", Channel.Shutdown)--[[/APR_DIAG]]

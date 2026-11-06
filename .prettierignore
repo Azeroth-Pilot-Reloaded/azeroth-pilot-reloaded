@@ -1,0 +1,6 @@
+Routes/
+APR-Core/libs/*
+!APR-Core/libs/LibAPRNavigation-1.0/
+.cache/
+.venv/
+.scratch/

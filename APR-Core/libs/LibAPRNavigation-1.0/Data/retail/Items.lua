@@ -831,7 +831,12 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "items", {
                 { id = 263489, type = "item", useSpellID = 1270583 },
                 { id = 263933, type = "item", useSpellID = 1270814 },
                 { id = 265100, type = "item", useSpellID = 1273401 },
-                { id = 210455, useSpellID = 438606, requirements = { any = { { raceID = 11 }, { raceID = 30 } } }, type = "item" },
+                {
+                    id = 210455,
+                    useSpellID = 438606,
+                    requirements = { any = { { raceID = 11 }, { raceID = 30 } } },
+                    type = "item",
+                },
             },
             cooldownGroup = "hearthstone",
             selection = "random",

@@ -24,24 +24,35 @@ end
 
 local catalogueEdges, taxiEdges = { { id = "catalogue" } }, { { id = "taxi" } }
 local result = { segments = {}, totalSeconds = 100 }
-for index = 1, 30 do result.segments[index] = { id = index } end
+for index = 1, 30 do
+    result.segments[index] = { id = index }
+end
 local request = {
-    clock = clock, contextKey = "new-objective", canWalk = function() return true end,
+    clock = clock,
+    contextKey = "new-objective",
+    canWalk = function() return true end,
     adapter = { CreatePreparation = function() return Work("prepare") end },
     data = { CreateEdgeBuild = function() return Work("catalogue", catalogueEdges, { resources = {} }) end },
     taxiData = {
         SetProbeContext = function(self, contextKey) self.probeContext = contextKey end,
         CreateEdgeBuild = function(self)
-            assert(self.probeContext == "new-objective", "A new objective clears old taxi refusals before graph filtering")
+            assert(
+                self.probeContext == "new-objective",
+                "A new objective clears old taxi refusals before graph filtering"
+            )
             return Work("taxi", taxiEdges, { waitingData = true })
         end,
         CreateProbeSearch = function() return Work("probe") end,
     },
-    engine = { CreateSearch = function(_, options)
-        assert(options.edgeGroups[1] == catalogueEdges and options.edgeGroups[2] == taxiEdges,
-            "The planner passes graph groups without flattening or copying the taxi network")
-        return Work("search", result)
-    end },
+    engine = {
+        CreateSearch = function(_, options)
+            assert(
+                options.edgeGroups[1] == catalogueEdges and options.edgeGroups[2] == taxiEdges,
+                "The planner passes graph groups without flattening or copying the taxi network"
+            )
+            return Work("search", result)
+        end,
+    },
     prepareSegment = function(segment)
         now = now + 0.25
         return { id = segment.id }
@@ -57,12 +68,18 @@ while job.status == "planning" do
     iterations = iterations + 1
     assert(iterations < 200)
 end
-assert(job.status == "ready" and #job:GetResult().queue == 30 and job.waitingData,
-    "The resumable pipeline publishes all rows and preserves provider coverage")
-assert(created.prepare == 1 and created.catalogue == 1 and created.taxi == 1
-    and created.search == 1 and created.probe == 1, "Resuming a phase never recreates its job")
-assert(job.totalSliceMilliseconds == 32.5 and job.elapsedMilliseconds == 32.5,
-    "The report distinguishes total computation from elapsed scheduling time")
+assert(
+    job.status == "ready" and #job:GetResult().queue == 30 and job.waitingData,
+    "The resumable pipeline publishes all rows and preserves provider coverage"
+)
+assert(
+    created.prepare == 1 and created.catalogue == 1 and created.taxi == 1 and created.search == 1 and created.probe == 1,
+    "Resuming a phase never recreates its job"
+)
+assert(
+    job.totalSliceMilliseconds == 32.5 and job.elapsedMilliseconds == 32.5,
+    "The report distinguishes total computation from elapsed scheduling time"
+)
 local completedAt = now
 assert(job:Step(64, 1) == "ready" and now == completedAt, "Completed planning performs no more clock or API work")
 
@@ -71,9 +88,10 @@ repeat
     delayed:Step(64, 1)
     if delayed.status == "planning" then now = now + 10 end
 until delayed.status ~= "planning"
-assert(delayed.status == "ready" and delayed.totalSliceMilliseconds == 32.5
-    and delayed.elapsedMilliseconds > 42.5,
-    "Time waiting between frames is not charged as CPU computation")
+assert(
+    delayed.status == "ready" and delayed.totalSliceMilliseconds == 32.5 and delayed.elapsedMilliseconds > 42.5,
+    "Time waiting between frames is not charged as CPU computation"
+)
 
 job = APR.NavigationPlanner:Create(request)
 job:Step(1, 1)
@@ -97,12 +115,18 @@ request.taxiData.CreateProbeSearch = function(_, _, _, baseline)
 end
 request.probeSegments = function(probe) return { probe } end
 job = APR.NavigationPlanner:Create(request)
-while job:Step(64, 1) == "planning" do end
-assert(job.status == "ready" and job:GetResult().queue[1].id == "check-master",
-    "Missing taxi data can lead to bounded exploration even when the known graph has no route")
-request.taxiData.CreateProbeSearch = function() return { Step = function() return "ready" end } end
+while job:Step(64, 1) == "planning" do
+end
+assert(
+    job.status == "ready" and job:GetResult().queue[1].id == "check-master",
+    "Missing taxi data can lead to bounded exploration even when the known graph has no route"
+)
+request.taxiData.CreateProbeSearch = function()
+    return { Step = function() return "ready" end }
+end
 job = APR.NavigationPlanner:Create(request)
-while job:Step(64, 1) == "planning" do end
+while job:Step(64, 1) == "planning" do
+end
 assert(job.status == "no_path", "A graph failure remains a failure when exploration finds no candidate")
 
 -- A valid nearby route needs no flight-master exploration when boarding alone
@@ -120,21 +144,31 @@ request.taxiData.CreateProbeSearch = function()
     return { Step = function() return "ready" end }
 end
 job = APR.NavigationPlanner:Create(request)
-while job:Step(64, 1) == "planning" do end
-assert(job.status == "ready" and baseline == 3 and probes == 0,
-    "A provider lower bound skips a provably useless probe without scanning its network")
+while job:Step(64, 1) == "planning" do
+end
+assert(
+    job.status == "ready" and baseline == 3 and probes == 0,
+    "A provider lower bound skips a provably useless probe without scanning its network"
+)
 request.engine.CreateSearch = function()
     return { Step = function() return "no_path" end, GetResult = function() end }
 end
 job = APR.NavigationPlanner:Create(request)
-while job:Step(64, 1) == "planning" do end
-assert(job.status == "no_path" and baseline == math.huge and probes == 1,
-    "The same lower bound preserves exploration when the known graph has no path")
-print("Navigation planner: shared 1 ms allowance, incremental providers/publication, zero graph copies and cancellation passed")
+while job:Step(64, 1) == "planning" do
+end
+assert(
+    job.status == "no_path" and baseline == math.huge and probes == 1,
+    "The same lower bound preserves exploration when the known graph has no path"
+)
+print(
+    "Navigation planner: shared 1 ms allowance, incremental providers/publication, zero graph copies and cancellation passed"
+)
 
 local locked = { id = "locked", blockedRequirements = { quest = 84957 } }
 local diagnostics = { segments = {}, totalSeconds = 50 }
-for index = 1, 40 do diagnostics.segments[index] = locked end
+for index = 1, 40 do
+    diagnostics.segments[index] = locked
+end
 request.taxiData.CanProbeBeat = function() return false end
 request.data.CreateEdgeBuild = function()
     return Work("catalogue", {}, { resources = {}, blockedEdges = { locked } })
@@ -155,7 +189,11 @@ while job:Step(2, 1) == "planning" do
 end
 assert(job.status == "no_path" and #job.blockers == 40)
 job = APR.NavigationPlanner:Create(request)
-while job.phase ~= "explain_collect" do job:Step(2, 1) end
+while job.phase ~= "explain_collect" do
+    job:Step(2, 1)
+end
 job:Cancel()
-assert(job.status == "cancelled" and not job.blockers and not job.diagnosticSegments,
-    "Cancelled diagnostics release their partial result and cannot report obsolete gates")
+assert(
+    job.status == "cancelled" and not job.blockers and not job.diagnosticSegments,
+    "Cancelled diagnostics release their partial result and cannot report obsolete gates"
+)

@@ -1,24 +1,49 @@
 -- Native quest synchronization must not invent activation/rearm edges or
 -- permanently omit a prerequisite. Every declaration here is synthetic.
 local locale = setmetatable({}, { __index = function(_, key) return key end })
-function LibStub() return { GetLocale = function() return locale end } end
+function LibStub()
+    return { GetLocale = function() return locale end }
+end
 tinsert, tremove = table.insert, table.remove
 function tContains(values, wanted)
-    for _, value in ipairs(values) do if value == wanted then return true end end
+    for _, value in ipairs(values) do
+        if value == wanted then return true end
+    end
     return false
 end
-function wipe(values) for key in pairs(values) do values[key] = nil end end
+function wipe(values)
+    for key in pairs(values) do
+        values[key] = nil
+    end
+end
 
 local state
 local function fixture()
     state = { active = {}, complete = {}, account = {}, ready = {}, reads = 0 }
     C_QuestLog = {
-        IsOnQuest = function(id) state.reads = state.reads + 1; return state.active[id] == true end,
-        IsQuestFlaggedCompleted = function(id) state.reads = state.reads + 1; return state.complete[id] == true end,
-        IsQuestFlaggedCompletedOnAccount = function(id) state.reads = state.reads + 1; return state.account[id] == true end,
+        IsOnQuest = function(id)
+            state.reads = state.reads + 1
+            return state.active[id] == true
+        end,
+        IsQuestFlaggedCompleted = function(id)
+            state.reads = state.reads + 1
+            return state.complete[id] == true
+        end,
+        IsQuestFlaggedCompletedOnAccount = function(id)
+            state.reads = state.reads + 1
+            return state.account[id] == true
+        end,
     }
-    APR = { PlayerID = "player", Faction = "Horde", Race = "Orc", RaceID = 2,
-        ClassName = "WARRIOR", ClassId = 1, Level = 30, RouteQuestStepList = {} }
+    APR = {
+        PlayerID = "player",
+        Faction = "Horde",
+        Race = "Orc",
+        RaceID = 2,
+        ClassName = "WARRIOR",
+        ClassId = 1,
+        Level = 30,
+        RouteQuestStepList = {},
+    }
     APRData, APRCustomPath, APRZoneCompleted = { player = {} }, { player = {} }, { player = {} }
     dofile("APR-Core/data/models/Enums.lua")
     dofile("APR-Core/utils/Utils.lua")
@@ -32,21 +57,27 @@ local function fixture()
     function APR:IsQuestReadyForTurnIn(ids)
         state.reads = state.reads + 1
         if type(ids) == "number" then return state.ready[ids] == true end
-        for _, id in ipairs(ids) do if not state.ready[id] then return false end end
+        for _, id in ipairs(ids) do
+            if not state.ready[id] then return false end
+        end
         return true
     end
 end
 local function route(key, conditions, required)
-    local value = { label = "Invented " .. key, expansion = APR.EXPANSIONS.Custom,
-        conditions = conditions, requiredRoute = required,
-        steps = { { Note = "First" }, { Note = "Second" }, { Note = "Third" } } }
+    local value = {
+        label = "Invented " .. key,
+        expansion = APR.EXPANSIONS.Custom,
+        conditions = conditions,
+        requiredRoute = required,
+        steps = { { Note = "First" }, { Note = "Second" }, { Note = "Third" } },
+    }
     APR.RouteQuestStepList[key] = value
     return value
 end
 local function parallel(conditions, repeatable)
     local value = route("parallel")
-    value.parallelSteps = { { conditions = conditions, repeatable = repeatable,
-        steps = { { UseItem = { itemID = 4102 } } } } }
+    value.parallelSteps =
+        { { conditions = conditions, repeatable = repeatable, steps = { { UseItem = { itemID = 4102 } } } } }
     APR.ActiveRoute, APRData.player.parallel = "parallel", 1
     return value
 end
@@ -83,8 +114,10 @@ for _, case in ipairs(cases) do
     assert(state.reads == 0, case[1] .. " cannot consult an unknown native snapshot")
     APR.startupQuestStatePending = nil
     assert(#APR:GetRouteSteps("parallel") == 4 and savedState().activationSequence == 1)
-    assert(#APR:GetRouteSteps("parallel") == 4 and savedState().activationSequence == 1,
-        case[1] .. " must activate once when the matching snapshot becomes ready")
+    assert(
+        #APR:GetRouteSteps("parallel") == 4 and savedState().activationSequence == 1,
+        case[1] .. " must activate once when the matching snapshot becomes ready"
+    )
 end
 
 -- A matching static AnyOf arm cannot bypass an unknown quest sibling. Static
@@ -118,19 +151,27 @@ for _, initialRearm in ipairs({ "absent", false }) do
     local saved = { groups = { entry }, activationSequence = 1 }
     APRData.player["parallel-ParallelStepsState"], APRData.player.parallel = saved, 3
     APR.startupQuestStatePending = true
-    for _ = 1, 5 do assert(#APR:GetRouteSteps("parallel") == 4) end
-    assert(entry.rearm == previousRearm and entry.activations == nil and saved.activationSequence == 1,
-        "An unknown predicate cannot mutate the saved repeatable edge")
+    for _ = 1, 5 do
+        assert(#APR:GetRouteSteps("parallel") == 4)
+    end
+    assert(
+        entry.rearm == previousRearm and entry.activations == nil and saved.activationSequence == 1,
+        "An unknown predicate cannot mutate the saved repeatable edge"
+    )
     APR.startupQuestStatePending = nil
     assert(#APR:GetRouteSteps("parallel") == 4 and saved.activationSequence == 1 and entry.activations == nil)
 
     state.complete[4101] = true
-    assert(#APR:GetRouteSteps("parallel") == 4 and entry.rearm == true,
-        "An observed false predicate rearms the completed activation")
+    assert(
+        #APR:GetRouteSteps("parallel") == 4 and entry.rearm == true,
+        "An observed false predicate rearms the completed activation"
+    )
     state.complete[4101] = false
     assert(#APR:GetRouteSteps("parallel") == 5 and saved.activationSequence == 2)
     assert(#entry.activations == 2 and entry.activations[2].activationOrder == 2 and entry.rearm == false)
-    for _ = 1, 5 do assert(#APR:GetRouteSteps("parallel") == 5) end
+    for _ = 1, 5 do
+        assert(#APR:GetRouteSteps("parallel") == 5)
+    end
     assert(saved.activationSequence == 2, "One real false->true edge creates exactly one new activation")
 end
 
@@ -157,8 +198,7 @@ route("foreign", { Faction = "Alliance" })
 route("negative", { IsQuestUncompleted = 4101 })
 route("positive", { IsQuestCompleted = 4101 })
 route("reward", { IsQuestReadyForTurnIn = 4101 })
-route("nested", { AnyOf = { { Faction = "Horde" },
-    { AllOf = { { Not = { IsQuestCompleted = 4101 } } } } } })
+route("nested", { AnyOf = { { Faction = "Horde" }, { AllOf = { { Not = { IsQuestCompleted = 4101 } } } } } })
 local target = route("forever", nil, { "negative", "positive" })
 target.gameVersion = APR.GAME_VERSIONS.Forever
 function APR:GetGameVersion() return self.GAME_VERSIONS.Forever end
@@ -196,8 +236,10 @@ for _, completed in ipairs({ false, true }) do
     assert(not APR:IsRequiredRouteApplicable("uncertain"))
     assert(not APR:AddRouteToCustomPathByKey("uncertain"), "An unknown target cannot be enqueued as eligible")
     assert(not APR:AddRouteToCustomPathByKey("requested"))
-    assert(APRCustomPath.player == path and #path == 1 and path[1] == "Existing",
-        "An unknown prerequisite cannot commit a partially evaluated selection")
+    assert(
+        APRCustomPath.player == path and #path == 1 and path[1] == "Existing",
+        "An unknown prerequisite cannot commit a partially evaluated selection"
+    )
     state.complete[4101] = completed
     APR.startupQuestStatePending = nil
     assert(APR:AddRouteToCustomPathByKey("requested"))
@@ -261,18 +303,26 @@ for _, pending in ipairs({ false, true }) do
                 end
                 return realApplicable(self, key)
             end
-            assert(APR:AddRouteToCustomPathByKey("requested") and mutated,
-                "A removed label retains the historical addedAny result even if the path was already populated")
+            assert(
+                APR:AddRouteToCustomPathByKey("requested") and mutated,
+                "A removed label retains the historical addedAny result even if the path was already populated"
+            )
             assert(APRCustomPath.player == path and path[1] == "Invented required")
             if mutation.label == nil then
-                assert(#path == 1 and path[2] == nil,
-                    "A callback removing the parent label publishes the prerequisite alone")
+                assert(
+                    #path == 1 and path[2] == nil,
+                    "A callback removing the parent label publishes the prerequisite alone"
+                )
             else
-                assert(#path == 2 and path[2] == mutation.label and path[3] == nil,
-                    "A changed label uses the value observed after the prerequisite callback")
+                assert(
+                    #path == 2 and path[2] == mutation.label and path[3] == nil,
+                    "A changed label uses the value observed after the prerequisite callback"
+                )
             end
-            assert(not APR:AddRouteToCustomPathByKey("requested"),
-                "A later call observes the changed declaration without inserting duplicates")
+            assert(
+                not APR:AddRouteToCustomPathByKey("requested"),
+                "A later call observes the changed declaration without inserting duplicates"
+            )
         end
     end
 end
@@ -304,13 +354,17 @@ if diagnostics then
             route("required")
             route("requested", nil, "required")
             local path = { "Invented required", "Invented requested" }
-            for index = 3, 2000 do path[index] = "Unrelated selection " .. index end
+            for index = 3, 2000 do
+                path[index] = "Unrelated selection " .. index
+            end
             APRCustomPath.player = path
             APR.startupQuestStatePending = pending and true or nil
             diagnostics.enabled, diagnostics.debug = enabled, enabled
             diagnostics.ResetLog()
             local function repeatedReads()
-                for _ = 1, 100 do assert(not APR:AddRouteToCustomPathByKey("requested")) end
+                for _ = 1, 100 do
+                    assert(not APR:AddRouteToCustomPathByKey("requested"))
+                end
             end
             repeatedReads()
             collectgarbage("collect")
@@ -322,11 +376,22 @@ if diagnostics then
             if not enabled then
                 assert(bytes < 128000, "Diagnostic wrappers must fit the existing early membership allocation budget")
             end
-            assert(APRCustomPath.player == path and #path == 2000 and path[1] == "Invented required"
-                and path[2] == "Invented requested" and path[2000] == "Unrelated selection 2000")
+            assert(
+                APRCustomPath.player == path
+                    and #path == 2000
+                    and path[1] == "Invented required"
+                    and path[2] == "Invented requested"
+                    and path[2000] == "Unrelated selection 2000"
+            )
             assert(diagnostics.CurrentName() == nil, "Instrumented lookups must leave no active diagnostic scope")
-            print(string.format("Startup membership: diagnostics %s, pending %s, %.0f B / 100 early hits",
-                tostring(enabled), tostring(pending), bytes))
+            print(
+                string.format(
+                    "Startup membership: diagnostics %s, pending %s, %.0f B / 100 early hits",
+                    tostring(enabled),
+                    tostring(pending),
+                    bytes
+                )
+            )
 
             -- Suspend a promoted lookup, then run another selection through
             -- the same helper. Each operation must retain its own cursor.
@@ -334,7 +399,9 @@ if diagnostics then
             route("required")
             route("requested", nil, "required")
             path = {}
-            for index = 1, 32 do path[index] = "Saved " .. index end
+            for index = 1, 32 do
+                path[index] = "Saved " .. index
+            end
             APRCustomPath.player = path
             APR.startupQuestStatePending = pending and true or nil
             local nativePairs, visits, paused = pairs, 0, false
@@ -351,7 +418,9 @@ if diagnostics then
                         end
                     end
                     return key, value
-                end, iterState, first
+                end,
+                    iterState,
+                    first
             end
             local thread = coroutine.create(function() return APR:AddRouteToCustomPathByKey("requested") end)
             local ok, result = diagnostics.Resume(thread)
@@ -362,7 +431,9 @@ if diagnostics then
             pairs = nativePairs
             assert(ok and result and coroutine.status(thread) == "dead")
             assert(#path == 34 and path[33] == "Invented required" and path[34] == "Invented requested")
-            for index = 1, 32 do assert(path[index] == "Saved " .. index) end
+            for index = 1, 32 do
+                assert(path[index] == "Saved " .. index)
+            end
             assert(diagnostics.CurrentName() == nil)
 
             local realContains = APR.Contains
@@ -371,11 +442,15 @@ if diagnostics then
             ok, result = diagnostics.Resume(thread)
             APR.Contains = realContains
             assert(not ok and result:find("Synthetic lookup failure", 1, true))
-            assert(diagnostics.CurrentName() == nil and #path == 34,
-                "A failed lookup leaves no diagnostic scope or partial insertion")
+            assert(
+                diagnostics.CurrentName() == nil and #path == 34,
+                "A failed lookup leaves no diagnostic scope or partial insertion"
+            )
             assert(not APR:AddRouteToCustomPathByKey("requested") and #path == 34)
         end
     end
     diagnostics.enabled, diagnostics.debug = previousEnabled, previousDebug
 end
-print("Startup parallel conditions: unknown eligibility preserves activations, rearm and paths; ready snapshots restore one-shot decisions")
+print(
+    "Startup parallel conditions: unknown eligibility preserves activations, rearm and paths; ready snapshots restore one-shot decisions"
+)

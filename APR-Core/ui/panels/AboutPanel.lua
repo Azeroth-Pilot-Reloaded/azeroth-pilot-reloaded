@@ -11,46 +11,65 @@ local About = APR.AboutPanel
 
 local function TextList(panel, top)
     local scroll = UI:Scroll(panel)
-    scroll:SetPoint("TOPLEFT", 14, -top); scroll:SetPoint("BOTTOMRIGHT", -28, 12)
+    scroll:SetPoint("TOPLEFT", 14, -top)
+    scroll:SetPoint("BOTTOMRIGHT", -28, 12)
     local content = CreateFrame("Frame", nil, scroll)
     scroll:SetScrollChild(content)
-    local list = {scroll = scroll, content = content, rows = {}}
+    local list = { scroll = scroll, content = content, rows = {} }
     function list:Layout()
         local width, y = math.max(1, self.scroll:GetWidth()), 0
         self.content:SetWidth(width)
         for _, row in ipairs(self.rows) do
             if row:IsShown() then
-                row:ClearAllPoints(); row:SetPoint("TOPLEFT", self.content, "TOPLEFT", 0, -y)
+                row:ClearAllPoints()
+                row:SetPoint("TOPLEFT", self.content, "TOPLEFT", 0, -y)
                 row:SetWidth(width)
-                row.title:SetWidth(math.max(1, width - 24)); row.text:SetWidth(math.max(1, width - 24))
+                row.title:SetWidth(math.max(1, width - 24))
+                row.text:SetWidth(math.max(1, width - 24))
                 local titleHeight = math.max(18, row.title:GetStringHeight())
-                row.text:ClearAllPoints(); row.text:SetPoint("TOPLEFT", 12, -titleHeight - 11)
+                row.text:ClearAllPoints()
+                row.text:SetPoint("TOPLEFT", 12, -titleHeight - 11)
                 local height = titleHeight + row.text:GetStringHeight() + 25
-                row:SetHeight(height); y = y + height
+                row:SetHeight(height)
+                y = y + height
             end
         end
         self.content:SetHeight(math.max(1, y))
-    end--[[APR_DIAG]]; list.Layout = APRTrace("APR-Core/ui/panels/AboutPanel.lua:18:list:Layout#2", list.Layout)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    list.Layout = APRTrace("APR-Core/ui/panels/AboutPanel.lua:18:list:Layout#2", list.Layout)--[[/APR_DIAG]]
     function list:SetItems(items)
-        for _, row in ipairs(self.rows) do row:Hide() end
+        for _, row in ipairs(self.rows) do
+            row:Hide()
+        end
         for index, item in ipairs(items) do
             local row = self.rows[index]
             if not row then
                 row = CreateFrame("Frame", nil, self.content)
-                row.title = UI:Label(row, "", 13, "accent"); row.title:SetPoint("TOPLEFT", 12, -6)
+                row.title = UI:Label(row, "", 13, "accent")
+                row.title:SetPoint("TOPLEFT", 12, -6)
                 row.text = UI:Label(row, "", 12)
                 UI:StyleListRow(row)
                 self.rows[index] = row
             end
-            row.title:SetText(item.title); row.text:SetText(item.text); row:Show()
+            row.title:SetText(item.title)
+            row.text:SetText(item.text)
+            row:Show()
             UI:SetListRowState(row, false, index == #items)
         end
         self.scroll:SetVerticalScroll(0)
         self:Layout()
-    end--[[APR_DIAG]]; list.SetItems = APRTrace("APR-Core/ui/panels/AboutPanel.lua:34:list:SetItems#3", list.SetItems)--[[/APR_DIAG]]
-    scroll:HookScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AboutPanel.lua:51:callback#4", --[[/APR_DIAG]]function() list:Layout() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    end--[[APR_DIAG]]
+    list.SetItems = APRTrace("APR-Core/ui/panels/AboutPanel.lua:34:list:SetItems#3", list.SetItems)--[[/APR_DIAG]]
+    scroll:HookScript(
+        "OnSizeChanged", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/panels/AboutPanel.lua:51:callback#4", --[[/APR_DIAG]]
+            function() list:Layout() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
     return list
-end--[[APR_DIAG]]; TextList = APRTrace("APR-Core/ui/panels/AboutPanel.lua:12:TextList#1", TextList)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+TextList = APRTrace("APR-Core/ui/panels/AboutPanel.lua:12:TextList#1", TextList)--[[/APR_DIAG]]
 
 function About:SetPage(id)
     self.page = id
@@ -59,18 +78,19 @@ function About:SetPage(id)
     if id == "commands" then
         local items = {}
         for _, command in ipairs(APR.command:GetHelpEntries()) do
-            items[#items + 1] = {title = command[1], text = command[2]}
+            items[#items + 1] = { title = command[1], text = command[2] }
         end
         self.help:SetItems(items)
     else
         self.help:SetItems({
-            {title = L["ROUTE_SELECTION"], text = L["UI_ABOUT_ROUTES_HELP"]},
-            {title = L["UI_LAYOUT_TITLE"], text = L["UI_LAYOUT_HELP"]},
-            {title = L["DISABLED_AUTOMATION"], text = L["DISABLED_AUTOMATION_DESC"]},
-            {title = L["STATUS"], text = L["UI_ABOUT_STATUS_HELP"]},
+            { title = L["ROUTE_SELECTION"], text = L["UI_ABOUT_ROUTES_HELP"] },
+            { title = L["UI_LAYOUT_TITLE"], text = L["UI_LAYOUT_HELP"] },
+            { title = L["DISABLED_AUTOMATION"], text = L["DISABLED_AUTOMATION_DESC"] },
+            { title = L["STATUS"], text = L["UI_ABOUT_STATUS_HELP"] },
         })
     end
-end--[[APR_DIAG]]; About.SetPage = APRTrace("APR-Core/ui/panels/AboutPanel.lua:55:About:SetPage#5", About.SetPage)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+About.SetPage = APRTrace("APR-Core/ui/panels/AboutPanel.lua:55:About:SetPage#5", About.SetPage)--[[/APR_DIAG]]
 
 function About:Refresh()
     if not self.frame then return end
@@ -80,50 +100,118 @@ function About:Refresh()
     local routes, expansions, authors = APR.AboutData:GetRouteSummary()
     self.version:SetText(L["UI_STATUS_ADDON_VERSION"] .. ": " .. version)
     local client = APR:GetGameVersion():gsub("^%l", string.upper)
-    self.installation:SetText(client .. " · " .. select(1, GetBuildInfo()) .. " · " ..
-        (APR:GetSkinProviderName() or "WoW"))
+    self.installation:SetText(
+        client .. " · " .. select(1, GetBuildInfo()) .. " · " .. (APR:GetSkinProviderName() or "WoW")
+    )
     self.routeCount:SetText(string.format(L["UI_ABOUT_ROUTE_COUNT"], routes, expansions))
     local credits = APR.AboutData:GetCredits()
-    if authors ~= "" then credits[#credits + 1] = {title = L["UI_ABOUT_LOADED_AUTHORS"], text = authors} end
+    if authors ~= "" then credits[#credits + 1] = { title = L["UI_ABOUT_LOADED_AUTHORS"], text = authors } end
     self.credits:SetItems(credits)
     self:SetPage(self.page or "guide")
-end--[[APR_DIAG]]; About.Refresh = APRTrace("APR-Core/ui/panels/AboutPanel.lua:75:About:Refresh#6", About.Refresh)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+About.Refresh = APRTrace("APR-Core/ui/panels/AboutPanel.lua:75:About:Refresh#6", About.Refresh)--[[/APR_DIAG]]
 
 function About:Create(parent)
     self.frame = UI:Page(parent)
     local root = self.frame.content
     local previous
     for _, link in ipairs({
-        {label = "Discord", width = 125, action = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AboutPanel.lua:97:callback#8", --[[/APR_DIAG]]function() UI:ShowTextReport("Discord", APR.discord) end--[[APR_DIAG]])--[[/APR_DIAG]]},
-        {label = "GitHub", width = 125, action = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AboutPanel.lua:98:callback#9", --[[/APR_DIAG]]function() UI:ShowTextReport("GitHub", APR.github) end--[[APR_DIAG]])--[[/APR_DIAG]]},
-        {label = "Wiki", width = 100, action = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AboutPanel.lua:99:callback#10", --[[/APR_DIAG]]function() UI:ShowTextReport("Wiki", APR.github .. "/wiki") end--[[APR_DIAG]])--[[/APR_DIAG]]},
-        {label = L["UI_RELEASE_NOTES"], width = 220, action = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AboutPanel.lua:100:callback#11", --[[/APR_DIAG]]function() APR.Workspace:Show("options", "changelog") end--[[APR_DIAG]])--[[/APR_DIAG]]},
+        {
+            label = "Discord",
+            width = 125,
+            --[[APR_DIAG]]
+            action = APRTrace(
+                "APR-Core/ui/panels/AboutPanel.lua:97:callback#8", --[[/APR_DIAG]]
+                function() UI:ShowTextReport("Discord", APR.discord) end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]],
+        },
+        {
+            label = "GitHub",
+            width = 125,
+            --[[APR_DIAG]]
+            action = APRTrace(
+                "APR-Core/ui/panels/AboutPanel.lua:98:callback#9", --[[/APR_DIAG]]
+                function() UI:ShowTextReport("GitHub", APR.github) end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]],
+        },
+        {
+            label = "Wiki",
+            width = 100,
+            --[[APR_DIAG]]
+            action = APRTrace(
+                "APR-Core/ui/panels/AboutPanel.lua:99:callback#10", --[[/APR_DIAG]]
+                function() UI:ShowTextReport("Wiki", APR.github .. "/wiki") end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]],
+        },
+        {
+            label = L["UI_RELEASE_NOTES"],
+            width = 220,
+            --[[APR_DIAG]]
+            action = APRTrace(
+                "APR-Core/ui/panels/AboutPanel.lua:100:callback#11", --[[/APR_DIAG]]
+                function() APR.Workspace:Show("options", "changelog") end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]],
+        },
     }) do
         local button = UI:Button(root, link.label, link.width, link.action)
-        if previous then button:SetPoint("LEFT", previous, "RIGHT", 8, 0) else button:SetPoint("TOPLEFT") end
+        if previous then
+            button:SetPoint("LEFT", previous, "RIGHT", 8, 0)
+        else
+            button:SetPoint("TOPLEFT")
+        end
         previous = button
     end
     self.facts = UI:Panel(root, "borderedPanel", "stone")
-    self.facts:SetPoint("TOPLEFT", 0, -44); self.facts:SetPoint("TOPRIGHT", 0, -44); self.facts:SetHeight(86)
+    self.facts:SetPoint("TOPLEFT", 0, -44)
+    self.facts:SetPoint("TOPRIGHT", 0, -44)
+    self.facts:SetHeight(86)
     self.version = UI:Label(self.facts, "", 14)
-    self.version:SetPoint("TOPLEFT", 14, -12); self.version:SetPoint("TOPRIGHT", -14, -12)
+    self.version:SetPoint("TOPLEFT", 14, -12)
+    self.version:SetPoint("TOPRIGHT", -14, -12)
     self.installation = UI:Label(self.facts, "", 12, "muted")
-    self.installation:SetPoint("TOPLEFT", 14, -36); self.installation:SetPoint("TOPRIGHT", -14, -36)
+    self.installation:SetPoint("TOPLEFT", 14, -36)
+    self.installation:SetPoint("TOPRIGHT", -14, -36)
     self.routeCount = UI:Label(self.facts, "", 12)
-    self.routeCount:SetPoint("TOPLEFT", 14, -59); self.routeCount:SetPoint("TOPRIGHT", -14, -59)
+    self.routeCount:SetPoint("TOPLEFT", 14, -59)
+    self.routeCount:SetPoint("TOPRIGHT", -14, -59)
     self.helpPanel = UI:Panel(root, "borderedPanel", "inset")
-    self.helpPanel:SetPoint("TOPLEFT", 0, -142); self.helpPanel:SetPoint("BOTTOMLEFT")
+    self.helpPanel:SetPoint("TOPLEFT", 0, -142)
+    self.helpPanel:SetPoint("BOTTOMLEFT")
     self.creditsPanel = UI:Section(root, L["UI_ABOUT_CONTRIBUTORS"], "stone")
     self.creditsPanel:SetPoint("TOPLEFT", self.helpPanel, "TOPRIGHT", 12, 0)
     self.creditsPanel:SetPoint("BOTTOMRIGHT")
-    self.guideTab = UI:Button(self.helpPanel, L["HELP"], 150, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AboutPanel.lua:119:callback#12", --[[/APR_DIAG]]function() self:SetPage("guide") end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self.guideTab = UI:Button(
+        self.helpPanel,
+        L["HELP"],
+        150, --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/panels/AboutPanel.lua:119:callback#12", --[[/APR_DIAG]]
+            function() self:SetPage("guide") end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
     self.guideTab:SetPoint("TOPLEFT", 12, -12)
-    self.commandsTab = UI:Button(self.helpPanel, L["COMMAND_LIST"], 160, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AboutPanel.lua:121:callback#13", --[[/APR_DIAG]]function() self:SetPage("commands") end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self.commandsTab = UI:Button(
+        self.helpPanel,
+        L["COMMAND_LIST"],
+        160, --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/panels/AboutPanel.lua:121:callback#13", --[[/APR_DIAG]]
+            function() self:SetPage("commands") end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
     self.commandsTab:SetPoint("LEFT", self.guideTab, "RIGHT", 8, 0)
     self.help = TextList(self.helpPanel, 56)
     self.credits = TextList(self.creditsPanel, 44)
-    local function layout() self.helpPanel:SetWidth(math.floor(root:GetWidth() * 0.58) - 6) end--[[APR_DIAG]]; layout = APRTrace("APR-Core/ui/panels/AboutPanel.lua:125:layout#14", layout)--[[/APR_DIAG]]
+    local function layout() self.helpPanel:SetWidth(math.floor(root:GetWidth() * 0.58) - 6) end--[[APR_DIAG]]
+    layout = APRTrace("APR-Core/ui/panels/AboutPanel.lua:125:layout#14", layout)--[[/APR_DIAG]]
     root:HookScript("OnSizeChanged", layout)
-    self.frame:HookScript("OnShow", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AboutPanel.lua:127:callback#15", --[[/APR_DIAG]]function() layout(); self:Refresh() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self.frame:HookScript(
+        "OnShow", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/panels/AboutPanel.lua:127:callback#15", --[[/APR_DIAG]] function()
+            layout()
+            self:Refresh()
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     layout()
-end--[[APR_DIAG]]; About.Create = APRTrace("APR-Core/ui/panels/AboutPanel.lua:92:About:Create#7", About.Create)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+About.Create = APRTrace("APR-Core/ui/panels/AboutPanel.lua:92:About:Create#7", About.Create)--[[/APR_DIAG]]

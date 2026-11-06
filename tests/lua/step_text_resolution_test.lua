@@ -3,7 +3,9 @@ local locale = setmetatable({
     SYNTHETIC_EMPTY_HINT = "",
     SYNTHETIC_COLOR_HINT = "[COLOR:#00ff00]Translated color hint",
 }, { __index = function(_, key) return key end })
-function LibStub() return { GetLocale = function() return locale end } end
+function LibStub()
+    return { GetLocale = function() return locale end }
+end
 APR = {}
 dofile("APR-Core/utils/StepUtils.lua")
 

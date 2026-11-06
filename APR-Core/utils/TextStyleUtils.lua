@@ -19,12 +19,12 @@ TextStyleUtils.BASE_TEXT_COLORS = {
 }
 
 TextStyleUtils.FRAME_TEXT_COLORS = {
-    { key = "color",        name = L["TEXT_COLOR"] },
-    { key = "accentColor",  name = L["ACCENT_TEXT_COLOR"] },
+    { key = "color", name = L["TEXT_COLOR"] },
+    { key = "accentColor", name = L["ACCENT_TEXT_COLOR"] },
     { key = "successColor", name = L["SUCCESS_TEXT_COLOR"] },
     { key = "warningColor", name = L["WARNING_TEXT_COLOR"] },
-    { key = "errorColor",   name = L["ERROR_TEXT_COLOR"] },
-    { key = "mutedColor",   name = L["MUTED_TEXT_COLOR"] },
+    { key = "errorColor", name = L["ERROR_TEXT_COLOR"] },
+    { key = "mutedColor", name = L["MUTED_TEXT_COLOR"] },
 }
 
 local TEXT_STYLE_FLAGS = {
@@ -35,30 +35,45 @@ local TEXT_STYLE_FLAGS = {
     ["MONOCHROME,OUTLINE"] = L["FONT_STYLE_MONOCHROME_OUTLINE"],
 }
 
-local COLOR_ROLES = {color = "base", accentColor = "accent", successColor = "success",
-    warningColor = "warning", errorColor = "error", mutedColor = "muted"}
+local COLOR_ROLES = {
+    color = "base",
+    accentColor = "accent",
+    successColor = "success",
+    warningColor = "warning",
+    errorColor = "error",
+    mutedColor = "muted",
+}
 local EMPTY_FONT_CATALOG = {}
-local FONT_VALUES = setmetatable({}, {__index = --[[APR_DIAG]]APRTrace("APR-Core/utils/TextStyleUtils.lua:41:callback#1", --[[/APR_DIAG]]function(_, name)
-    if type(name) == "string" and name ~= "" then return name end
-end--[[APR_DIAG]])--[[/APR_DIAG]]})
+local FONT_VALUES = setmetatable({}, {
+    --[[APR_DIAG]]
+    __index = APRTrace("APR-Core/utils/TextStyleUtils.lua:41:callback#1", --[[/APR_DIAG]] function(_, name)
+        if type(name) == "string" and name ~= "" then return name end
+    end--[[APR_DIAG]]) --[[/APR_DIAG]],
+})
 
 function TextStyleUtils:GetFontValues()
     -- AceConfig only needs the selected label when it builds an appearance
     -- section. Media enumeration belongs to the open font picker, not the page.
     return FONT_VALUES
-end--[[APR_DIAG]]; TextStyleUtils.GetFontValues = APRTrace("APR-Core/utils/TextStyleUtils.lua:45:TextStyleUtils:GetFontValues#2", TextStyleUtils.GetFontValues)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+TextStyleUtils.GetFontValues =
+    APRTrace("APR-Core/utils/TextStyleUtils.lua:45:TextStyleUtils:GetFontValues#2", TextStyleUtils.GetFontValues)--[[/APR_DIAG]]
 
 function TextStyleUtils:GetFontCatalog()
     -- LibSharedMedia updates this shared sorted index when other addons register
     -- fonts, including registrations made after the settings page was opened.
     local names = LSM.List and LSM:List("font")
     return type(names) == "table" and names or EMPTY_FONT_CATALOG
-end--[[APR_DIAG]]; TextStyleUtils.GetFontCatalog = APRTrace("APR-Core/utils/TextStyleUtils.lua:51:TextStyleUtils:GetFontCatalog#3", TextStyleUtils.GetFontCatalog)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+TextStyleUtils.GetFontCatalog =
+    APRTrace("APR-Core/utils/TextStyleUtils.lua:51:TextStyleUtils:GetFontCatalog#3", TextStyleUtils.GetFontCatalog)--[[/APR_DIAG]]
 
 function TextStyleUtils:GetAppearance(profileKey)
     local profile = APR:GetSettingsProfile()
     return profile and profile[profileKey]
-end--[[APR_DIAG]]; TextStyleUtils.GetAppearance = APRTrace("APR-Core/utils/TextStyleUtils.lua:58:TextStyleUtils:GetAppearance#4", TextStyleUtils.GetAppearance)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+TextStyleUtils.GetAppearance =
+    APRTrace("APR-Core/utils/TextStyleUtils.lua:58:TextStyleUtils:GetAppearance#4", TextStyleUtils.GetAppearance)--[[/APR_DIAG]]
 
 function TextStyleUtils:SetAppearanceValue(profileKey, key, value, scope)
     local appearance = self:GetAppearance(profileKey)
@@ -71,14 +86,21 @@ function TextStyleUtils:SetAppearanceValue(profileKey, key, value, scope)
     end
     APR:RefreshTextAppearance(scope)
     if APR.ThemeCustomization then APR.ThemeCustomization:UpdatePreviews() end
-end--[[APR_DIAG]]; TextStyleUtils.SetAppearanceValue = APRTrace("APR-Core/utils/TextStyleUtils.lua:63:TextStyleUtils:SetAppearanceValue#5", TextStyleUtils.SetAppearanceValue)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+TextStyleUtils.SetAppearanceValue = APRTrace(
+    "APR-Core/utils/TextStyleUtils.lua:63:TextStyleUtils:SetAppearanceValue#5",
+    TextStyleUtils.SetAppearanceValue
+)--[[/APR_DIAG]]
 
 local function CopyDefaults(value)
     if type(value) ~= "table" then return value end
     local copy = {}
-    for key, child in pairs(value) do copy[key] = CopyDefaults(child) end
+    for key, child in pairs(value) do
+        copy[key] = CopyDefaults(child)
+    end
     return copy
-end--[[APR_DIAG]]; CopyDefaults = APRTrace("APR-Core/utils/TextStyleUtils.lua:76:CopyDefaults#6", CopyDefaults)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+CopyDefaults = APRTrace("APR-Core/utils/TextStyleUtils.lua:76:CopyDefaults#6", CopyDefaults)--[[/APR_DIAG]]
 
 function TextStyleUtils:ResetAppearance(profileKey, scope, includeInheritance)
     local profile = APR:GetSettingsProfile()
@@ -88,7 +110,9 @@ function TextStyleUtils:ResetAppearance(profileKey, scope, includeInheritance)
     profile[profileKey] = CopyDefaults(defaults or APR:CreateTextAppearanceDefaults(includeInheritance))
     APR:RefreshTextAppearance(scope)
     if APR.ThemeCustomization then APR.ThemeCustomization:UpdatePreviews() end
-end--[[APR_DIAG]]; TextStyleUtils.ResetAppearance = APRTrace("APR-Core/utils/TextStyleUtils.lua:83:TextStyleUtils:ResetAppearance#7", TextStyleUtils.ResetAppearance)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+TextStyleUtils.ResetAppearance =
+    APRTrace("APR-Core/utils/TextStyleUtils.lua:83:TextStyleUtils:ResetAppearance#7", TextStyleUtils.ResetAppearance)--[[/APR_DIAG]]
 
 function TextStyleUtils:CreateAppearanceOptions(profileKey, scope, order, colorOptions, includeInheritance, inline)
     local args = {}
@@ -101,11 +125,13 @@ function TextStyleUtils:CreateAppearanceOptions(profileKey, scope, order, colorO
             name = L["USE_GLOBAL_TEXT_STYLE"],
             desc = L["USE_GLOBAL_TEXT_STYLE_DESC"],
             width = "full",
-            get = --[[APR_DIAG]]APRTrace("APR-Core/utils/TextStyleUtils.lua:104:callback#9", --[[/APR_DIAG]]function()
+            --[[APR_DIAG]]
+            get = APRTrace("APR-Core/utils/TextStyleUtils.lua:104:callback#9", --[[/APR_DIAG]] function()
                 local appearance = self:GetAppearance(profileKey)
                 return appearance and appearance.useGlobal ~= false
-            end--[[APR_DIAG]])--[[/APR_DIAG]],
-            set = --[[APR_DIAG]]APRTrace("APR-Core/utils/TextStyleUtils.lua:108:callback#10", --[[/APR_DIAG]]function(_, value)
+            end--[[APR_DIAG]]) --[[/APR_DIAG]],
+            --[[APR_DIAG]]
+            set = APRTrace("APR-Core/utils/TextStyleUtils.lua:108:callback#10", --[[/APR_DIAG]] function(_, value)
                 local appearance = self:GetAppearance(profileKey)
                 if appearance and not value then
                     local globalAppearance = self:GetAppearance(self.GLOBAL_PROFILE_KEY)
@@ -116,7 +142,7 @@ function TextStyleUtils:CreateAppearanceOptions(profileKey, scope, order, colorO
                     end
                 end
                 self:SetAppearanceValue(profileKey, "useGlobal", value, scope)
-            end--[[APR_DIAG]])--[[/APR_DIAG]],
+            end--[[APR_DIAG]]) --[[/APR_DIAG]],
         }
         nextOrder = nextOrder + 1
     end
@@ -124,7 +150,9 @@ function TextStyleUtils:CreateAppearanceOptions(profileKey, scope, order, colorO
     local function IsTypographyInherited()
         local appearance = self:GetAppearance(profileKey)
         return includeInheritance and appearance and appearance.useGlobal ~= false
-    end--[[APR_DIAG]]; IsTypographyInherited = APRTrace("APR-Core/utils/TextStyleUtils.lua:124:IsTypographyInherited#11", IsTypographyInherited)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    IsTypographyInherited =
+        APRTrace("APR-Core/utils/TextStyleUtils.lua:124:IsTypographyInherited#11", IsTypographyInherited)--[[/APR_DIAG]]
 
     local function GetDisplayedTypography()
         local appearance = self:GetAppearance(profileKey)
@@ -132,7 +160,9 @@ function TextStyleUtils:CreateAppearanceOptions(profileKey, scope, order, colorO
             return self:GetAppearance(self.GLOBAL_PROFILE_KEY) or appearance
         end
         return appearance
-    end--[[APR_DIAG]]; GetDisplayedTypography = APRTrace("APR-Core/utils/TextStyleUtils.lua:129:GetDisplayedTypography#12", GetDisplayedTypography)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    GetDisplayedTypography =
+        APRTrace("APR-Core/utils/TextStyleUtils.lua:129:GetDisplayedTypography#12", GetDisplayedTypography)--[[/APR_DIAG]]
 
     args.font = {
         order = nextOrder,
@@ -141,16 +171,25 @@ function TextStyleUtils:CreateAppearanceOptions(profileKey, scope, order, colorO
         name = L["FONT_FACE"],
         desc = L["FONT_FACE_DESC"],
         width = "full",
-        values = --[[APR_DIAG]]APRTrace("APR-Core/utils/TextStyleUtils.lua:144:callback#13", --[[/APR_DIAG]]function()
-            return self:GetFontValues()
-        end--[[APR_DIAG]])--[[/APR_DIAG]],
-        get = --[[APR_DIAG]]APRTrace("APR-Core/utils/TextStyleUtils.lua:147:callback#14", --[[/APR_DIAG]]function()
+        --[[APR_DIAG]]
+        values = APRTrace(
+            "APR-Core/utils/TextStyleUtils.lua:144:callback#13", --[[/APR_DIAG]]
+            function()
+                return self:GetFontValues()
+            end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]],
+        --[[APR_DIAG]]
+        get = APRTrace("APR-Core/utils/TextStyleUtils.lua:147:callback#14", --[[/APR_DIAG]] function()
             local appearance = GetDisplayedTypography()
             return appearance and appearance.font
-        end--[[APR_DIAG]])--[[/APR_DIAG]],
-        set = --[[APR_DIAG]]APRTrace("APR-Core/utils/TextStyleUtils.lua:151:callback#15", --[[/APR_DIAG]]function(_, value)
-            self:SetAppearanceValue(profileKey, "font", value, scope)
-        end--[[APR_DIAG]])--[[/APR_DIAG]],
+        end--[[APR_DIAG]]) --[[/APR_DIAG]],
+        --[[APR_DIAG]]
+        set = APRTrace(
+            "APR-Core/utils/TextStyleUtils.lua:151:callback#15", --[[/APR_DIAG]]
+            function(_, value)
+                self:SetAppearanceValue(profileKey, "font", value, scope)
+            end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]],
         disabled = IsTypographyInherited,
     }
     nextOrder = nextOrder + 1
@@ -161,13 +200,18 @@ function TextStyleUtils:CreateAppearanceOptions(profileKey, scope, order, colorO
         name = L["FONT_STYLE"],
         width = "full",
         values = TEXT_STYLE_FLAGS,
-        get = --[[APR_DIAG]]APRTrace("APR-Core/utils/TextStyleUtils.lua:164:callback#16", --[[/APR_DIAG]]function()
+        --[[APR_DIAG]]
+        get = APRTrace("APR-Core/utils/TextStyleUtils.lua:164:callback#16", --[[/APR_DIAG]] function()
             local appearance = GetDisplayedTypography()
             return appearance and appearance.flags or "NONE"
-        end--[[APR_DIAG]])--[[/APR_DIAG]],
-        set = --[[APR_DIAG]]APRTrace("APR-Core/utils/TextStyleUtils.lua:168:callback#17", --[[/APR_DIAG]]function(_, value)
-            self:SetAppearanceValue(profileKey, "flags", value, scope)
-        end--[[APR_DIAG]])--[[/APR_DIAG]],
+        end--[[APR_DIAG]]) --[[/APR_DIAG]],
+        --[[APR_DIAG]]
+        set = APRTrace(
+            "APR-Core/utils/TextStyleUtils.lua:168:callback#17", --[[/APR_DIAG]]
+            function(_, value)
+                self:SetAppearanceValue(profileKey, "flags", value, scope)
+            end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]],
         disabled = IsTypographyInherited,
     }
     nextOrder = nextOrder + 1
@@ -180,13 +224,18 @@ function TextStyleUtils:CreateAppearanceOptions(profileKey, scope, order, colorO
         max = 32,
         step = 1,
         width = "full",
-        get = --[[APR_DIAG]]APRTrace("APR-Core/utils/TextStyleUtils.lua:183:callback#18", --[[/APR_DIAG]]function()
+        --[[APR_DIAG]]
+        get = APRTrace("APR-Core/utils/TextStyleUtils.lua:183:callback#18", --[[/APR_DIAG]] function()
             local appearance = GetDisplayedTypography()
             return appearance and appearance.size or 12
-        end--[[APR_DIAG]])--[[/APR_DIAG]],
-        set = --[[APR_DIAG]]APRTrace("APR-Core/utils/TextStyleUtils.lua:187:callback#19", --[[/APR_DIAG]]function(_, value)
-            self:SetAppearanceValue(profileKey, "size", value, scope)
-        end--[[APR_DIAG]])--[[/APR_DIAG]],
+        end--[[APR_DIAG]]) --[[/APR_DIAG]],
+        --[[APR_DIAG]]
+        set = APRTrace(
+            "APR-Core/utils/TextStyleUtils.lua:187:callback#19", --[[/APR_DIAG]]
+            function(_, value)
+                self:SetAppearanceValue(profileKey, "size", value, scope)
+            end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]],
         disabled = IsTypographyInherited,
     }
     nextOrder = nextOrder + 1
@@ -200,25 +249,33 @@ function TextStyleUtils:CreateAppearanceOptions(profileKey, scope, order, colorO
             desc = definition.desc,
             hasAlpha = true,
             width = 1,
-            disabled = --[[APR_DIAG]]APRTrace("APR-Core/utils/TextStyleUtils.lua:203:callback#20", --[[/APR_DIAG]]function()
+            --[[APR_DIAG]]
+            disabled = APRTrace("APR-Core/utils/TextStyleUtils.lua:203:callback#20", --[[/APR_DIAG]] function()
                 if colorKey ~= "accentColor" then return false end
                 local profile = APR:GetSettingsProfile()
                 local name = APR.GetAppearanceProvider and APR:GetAppearanceProvider(scope) or profile.uiTheme
                 local theme = APR.Themes and APR.Themes[name]
-                return (APR.UsesClassAccent and APR:UsesClassAccent()) or
-                    (theme and theme.style == "modern" and profile.uiThemeCustomization
-                        and profile.uiThemeCustomization.classColor == true) or false
-            end--[[APR_DIAG]])--[[/APR_DIAG]],
-            get = --[[APR_DIAG]]APRTrace("APR-Core/utils/TextStyleUtils.lua:212:callback#21", --[[/APR_DIAG]]function()
+                return (APR.UsesClassAccent and APR:UsesClassAccent())
+                    or (theme and theme.style == "modern" and profile.uiThemeCustomization and profile.uiThemeCustomization.classColor == true)
+                    or false
+            end--[[APR_DIAG]]) --[[/APR_DIAG]],
+            --[[APR_DIAG]]
+            get = APRTrace("APR-Core/utils/TextStyleUtils.lua:212:callback#21", --[[/APR_DIAG]] function()
                 local appearance = self:GetAppearance(profileKey)
-                local role = scope == "questOrderList" and colorKey == "warningColor" and "activeStep" or COLOR_ROLES[colorKey]
+                local role = scope == "questOrderList" and colorKey == "warningColor" and "activeStep"
+                    or COLOR_ROLES[colorKey]
                 local color = APR.GetTextColor and APR:GetTextColor(scope, role)
-                    or appearance and appearance[colorKey] or { 1, 1, 1, 1 }
+                    or appearance and appearance[colorKey]
+                    or { 1, 1, 1, 1 }
                 return unpack(color)
-            end--[[APR_DIAG]])--[[/APR_DIAG]],
-            set = --[[APR_DIAG]]APRTrace("APR-Core/utils/TextStyleUtils.lua:219:callback#22", --[[/APR_DIAG]]function(_, r, g, b, a)
-                self:SetAppearanceValue(profileKey, colorKey, { r, g, b, a }, scope)
-            end--[[APR_DIAG]])--[[/APR_DIAG]],
+            end--[[APR_DIAG]]) --[[/APR_DIAG]],
+            --[[APR_DIAG]]
+            set = APRTrace(
+                "APR-Core/utils/TextStyleUtils.lua:219:callback#22", --[[/APR_DIAG]]
+                function(_, r, g, b, a)
+                    self:SetAppearanceValue(profileKey, colorKey, { r, g, b, a }, scope)
+                end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]],
         }
         nextOrder = nextOrder + 1
     end
@@ -229,7 +286,11 @@ function TextStyleUtils:CreateAppearanceOptions(profileKey, scope, order, colorO
         name = L["UI_TEXT_APPEARANCE_RESET"],
         desc = L["UI_TEXT_APPEARANCE_RESET_DESC"],
         width = "full",
-        func = --[[APR_DIAG]]APRTrace("APR-Core/utils/TextStyleUtils.lua:232:callback#23", --[[/APR_DIAG]]function() self:ResetAppearance(profileKey, scope, includeInheritance) end--[[APR_DIAG]])--[[/APR_DIAG]],
+        --[[APR_DIAG]]
+        func = APRTrace(
+            "APR-Core/utils/TextStyleUtils.lua:232:callback#23", --[[/APR_DIAG]]
+            function() self:ResetAppearance(profileKey, scope, includeInheritance) end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]],
     }
 
     return {
@@ -239,4 +300,8 @@ function TextStyleUtils:CreateAppearanceOptions(profileKey, scope, order, colorO
         inline = inline ~= false,
         args = args,
     }
-end--[[APR_DIAG]]; TextStyleUtils.CreateAppearanceOptions = APRTrace("APR-Core/utils/TextStyleUtils.lua:93:TextStyleUtils:CreateAppearanceOptions#8", TextStyleUtils.CreateAppearanceOptions)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+TextStyleUtils.CreateAppearanceOptions = APRTrace(
+    "APR-Core/utils/TextStyleUtils.lua:93:TextStyleUtils:CreateAppearanceOptions#8",
+    TextStyleUtils.CreateAppearanceOptions
+)--[[/APR_DIAG]]

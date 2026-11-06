@@ -17,40 +17,67 @@ local L = setmetatable({
     LEAVE_INSTANCE = "Leave instance: %s",
     GRIND = "Grind to level %s",
 }, { __index = function(_, key) return key end })
-function LibStub() return { GetLocale = function() return L end } end
+function LibStub()
+    return { GetLocale = function() return L end }
+end
 UNKNOWN, ABANDON_QUEST, LEAVE_VEHICLE, DISMOUNT = "Unknown", "Abandon quest", "Leave vehicle", "Dismount"
 INSTANCE = "Localized instance"
 BOSS, ENTER_DUNGEON, LEAVE_ZONE = "Boss", "Enter Dungeon", "Leave %s"
 format = string.format
 local function no() return false end
 local function forbidden() error("A preview must not perform actions or mutate action state") end
-APR = { questOrderList = {}, questOrderListSupport = {}, PlayerID = "player", ActiveRoute = "test",
-    ActiveQuests = {}, QUEST_STATUS = { COMPLETE = 1 }, MaxLevel = 60,
-    GAME_VERSIONS = { Retail = "retail", Classic = "classic", Forever = "forever" }, interfaceVersion = 16001 }
+APR = {
+    questOrderList = {},
+    questOrderListSupport = {},
+    PlayerID = "player",
+    ActiveRoute = "test",
+    ActiveQuests = {},
+    QUEST_STATUS = { COMPLETE = 1 },
+    MaxLevel = 60,
+    GAME_VERSIONS = { Retail = "retail", Classic = "classic", Forever = "forever" },
+    interfaceVersion = 16001,
+}
 dofile("APR-Core/utils/PlayerUtils.lua")
 APRData = { player = { test = 1 }, NPCList = { [54] = "Vendor" } }
 local known, equipped, onQuest = {}, {}, { [10] = true }
 function GetInventoryItemID(_, slot) return equipped[slot] end
 function UnitLevel() return 10 end
 function tContains(values, wanted)
-    for _, value in ipairs(values) do if value == wanted then return true end end
+    for _, value in ipairs(values) do
+        if value == wanted then return true end
+    end
     return false
 end
-C_Item = { GetItemInfo = function(id) if id ~= 404 then return "Item " .. id end end }
-C_Spell = { GetSpellInfo = function(id) if id ~= 404 then return { name = "Spell " .. id } end end }
-C_QuestLog = { GetTitleForQuestID = function(id) return "Quest " .. id end,
-    IsQuestFlaggedCompleted = no, IsOnQuest = function(id) return onQuest[id] end,
-    GetQuestObjectives = function() return {} end }
+C_Item = {
+    GetItemInfo = function(id)
+        if id ~= 404 then return "Item " .. id end
+    end,
+}
+C_Spell = {
+    GetSpellInfo = function(id)
+        if id ~= 404 then return { name = "Spell " .. id } end
+    end,
+}
+C_QuestLog = {
+    GetTitleForQuestID = function(id) return "Quest " .. id end,
+    IsQuestFlaggedCompleted = no,
+    IsOnQuest = function(id) return onQuest[id] end,
+    GetQuestObjectives = function() return {} end,
+}
 C_Map = { GetBestMapForUnit = function() return 1 end }
 C_PvP = { IsWarModeDesired = no }
-C_ScenarioInfo = { GetScenarioInfo = function() return { name = "Scenario" } end,
-    GetCriteriaInfoByStep = function() return { description = "Objective", completed = false } end }
+C_ScenarioInfo = {
+    GetScenarioInfo = function() return { name = "Scenario" } end,
+    GetCriteriaInfoByStep = function() return { description = "Objective", completed = false } end,
+}
 C_ChromieTime = { GetChromieTimeExpansionOption = function() return { name = "Legion" } end }
 dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/utils/StepUtils.lua")
 dofile("APR-Core/utils/QuestUtils.lua")
 dofile("APR-Core/utils/LootUtils.lua")
-function CreateFrame() return { RegisterEvent = function() end, SetScript = function() end } end
+function CreateFrame()
+    return { RegisterEvent = function() end, SetScript = function() end }
+end
 dofile("tests/lua/dungeon_data_test_env.lua")
 dofile("APR-Core/utils/DungeonUtils.lua")
 dofile("APR-Core/features/questing/RouteActions.lua")
@@ -96,26 +123,59 @@ end
 
 local fixtures = {
     KillNPC = { npcID = 11520, name = "Taragaman", dungeonKey = "RFC" },
-    ExitTutorial = 10, PickUp = { 10 }, DropQuest = 10, Qpart = { [10] = { 1 } },
-    QpartPart = { [10] = { 1 } }, Treasure = { questID = 10 }, Group = { questID = 10, Number = 3 },
-    Done = { 10 }, Scenario = { stepID = 1, criteriaIndex = 1 },
-    EnterInstance = { mapID = 2 }, LeaveInstance = { mapID = 2 },
-    EnterScenario = { mapID = 2 }, DoScenario = { mapID = 2 }, LeaveScenario = { mapID = 2 },
-    UseHS = 10, UseDalaHS = 10, UseGarrisonHS = 10, UseItem = { itemID = 20, questID = 10 },
-    UseSpell = { spellID = 20, questID = 10 }, GetFP = 20, UseFlightPath = 10, TakePortal = { mapID = 2 },
-    LearnProfession = 20, LootItems = { { itemID = 20 } }, WarMode = 10, Grind = 20,
-    Reputation = { factionID = 20, level = 4 }, LootMoney = { copper = 100 }, Emote = { emote = "wave" },
-    Achievement = { achievementID = 20 }, RouteCompleted = true, Note = "Hello",
-    DeathSkip = true, SellItems = { items = { 20 }, junk = true }, LearnSkill = { spellIDs = { 20, 21 } },
-    BankDeposit = { items = { 20 } }, BankWithdraw = { items = { 20 } }, TameBeast = { npcID = 54 },
-    DestroyItems = { items = { 20 } }, EquipItem = { slot = 16, itemID = 20 },
-    Repair = { npcID = 54 }, Zeppelin = true, Boat = true, Tram = true,
+    ExitTutorial = 10,
+    PickUp = { 10 },
+    DropQuest = 10,
+    Qpart = { [10] = { 1 } },
+    QpartPart = { [10] = { 1 } },
+    Treasure = { questID = 10 },
+    Group = { questID = 10, Number = 3 },
+    Done = { 10 },
+    Scenario = { stepID = 1, criteriaIndex = 1 },
+    EnterInstance = { mapID = 2 },
+    LeaveInstance = { mapID = 2 },
+    EnterScenario = { mapID = 2 },
+    DoScenario = { mapID = 2 },
+    LeaveScenario = { mapID = 2 },
+    UseHS = 10,
+    UseDalaHS = 10,
+    UseGarrisonHS = 10,
+    UseItem = { itemID = 20, questID = 10 },
+    UseSpell = { spellID = 20, questID = 10 },
+    GetFP = 20,
+    UseFlightPath = 10,
+    TakePortal = { mapID = 2 },
+    LearnProfession = 20,
+    LootItems = { { itemID = 20 } },
+    WarMode = 10,
+    Grind = 20,
+    Reputation = { factionID = 20, level = 4 },
+    LootMoney = { copper = 100 },
+    Emote = { emote = "wave" },
+    Achievement = { achievementID = 20 },
+    RouteCompleted = true,
+    Note = "Hello",
+    DeathSkip = true,
+    SellItems = { items = { 20 }, junk = true },
+    LearnSkill = { spellIDs = { 20, 21 } },
+    BankDeposit = { items = { 20 } },
+    BankWithdraw = { items = { 20 } },
+    TameBeast = { npcID = 54 },
+    DestroyItems = { items = { 20 } },
+    EquipItem = { slot = 16, itemID = 20 },
+    Repair = { npcID = 54 },
+    Zeppelin = true,
+    Boat = true,
+    Tram = true,
 }
 fixtures.SetHS = 10
 fixtures.LeaveQuest, fixtures.LeaveQuests, fixtures.ResetRoute = 10, { 10, 11 }, true
 fixtures.PickUpDB, fixtures.DoneDB, fixtures.QpartDB = { 11 }, { 11 }, { 11 }
 local companions = {
-    DoneDB = "Done", PickUpDB = "PickUp", QpartDB = "Qpart", DropQuest = "DroppableQuest",
+    DoneDB = "Done",
+    PickUpDB = "PickUp",
+    QpartDB = "Qpart",
+    DropQuest = "DroppableQuest",
 }
 local steps = {}
 for _, key in ipairs(APR.mainStepOptions) do
@@ -135,15 +195,20 @@ for index in ipairs(steps) do
 end
 assert(APR.routeActionState == nil, "Preview must not create action state")
 assert(APRData.player.DungeonRuns == nil, "A dungeon preview must not start a run")
-local dungeon = render({ { EnterInstance = { dungeonKey = "ROL" } },
-    { KillNPC = fixtures.KillNPC }, { LeaveInstance = { dungeonKey = "ROL" } } })
+local dungeon = render({
+    { EnterInstance = { dungeonKey = "ROL" } },
+    { KillNPC = fixtures.KillNPC },
+    { LeaveInstance = { dungeonKey = "ROL" } },
+})
 assert(dungeon.stepList[1].title == "Enter Dungeon: Ruins of Lordaeron")
 assert(dungeon.stepList[2].title == "Boss: Taragaman")
 assert(dungeon.stepList[3].title == "Leave Ruins of Lordaeron")
 local outdoor = render({ { KillNPC = { npcID = 3100, name = "Boar" }, Zone = 1411 } })
 assert(outdoor.stepList[1].title == "Boar")
-assert(APR.routeActionState == nil and APRData.player.OutdoorKills == nil,
-    "An outdoor preview must not observe targets or mutate kill state")
+assert(
+    APR.routeActionState == nil and APRData.player.OutdoorKills == nil,
+    "An outdoor preview must not observe targets or mutate kill state"
+)
 
 -- Loot values remain in detail rows, while known travel destinations fill the title.
 local lootStep = { LootItems = { { itemID = 20, quantity = 3 }, { itemID = 404 } } }
@@ -152,7 +217,9 @@ assert(lootRow.title == "Loot: Item 20, Unknown")
 assert(lootRow.quests[1].questID == 3 and lootRow.quests[1].questName == "Item 20")
 assert(lootRow.quests[2].questName == UNKNOWN)
 local completedLoot = render({ lootStep }, 2).stepList[1]
-assert(completedLoot.title == "Loot: Item 20, Unknown" and completedLoot.color == "green" and #completedLoot.quests == 0)
+assert(
+    completedLoot.title == "Loot: Item 20, Unknown" and completedLoot.color == "green" and #completedLoot.quests == 0
+)
 assert(render({ { UseFlightPath = 10 } }).stepList[1].title == "Fly to Flight destination")
 assert(render({ { UseItem = { itemID = 20 } } }).stepList[1].title == "Use Item 20")
 
@@ -186,27 +253,39 @@ assert(APR:GetStepString({ LeaveInstance = { dungeonKey = "ROL" } }) == "Leave R
 C_ScenarioInfo.GetScenarioInfo = function() end
 C_ScenarioInfo.GetScenarioStepInfo = function() end
 C_ScenarioInfo.GetCriteriaInfoByStep = function() end
-assert(#render({ { Scenario = { stepID = 1, criteriaID = 2 } }, { Note = "After scenario" } }).stepList == 2,
-    "Unavailable future scenario details must not interrupt later rows")
+assert(
+    #render({ { Scenario = { stepID = 1, criteriaID = 2 } }, { Note = "After scenario" } }).stepList == 2,
+    "Unavailable future scenario details must not interrupt later rows"
+)
 C_ScenarioInfo.GetScenarioInfo = function() return { name = "Scenario" } end
 assert(#render({ { Scenario = { stepID = 1, criteriaID = 2 } } }).stepList == 1)
 
 -- Buttons remain visible in previews after redundant cast/use notes are removed.
-local buttonPreview = render({ {
-    Note = "Prepare your actions",
-    Button = { ["10"] = { 20, 404 } },
-    SpellButton = { ["11"] = { 1243, "Named spell" }, ["10"] = 2050 },
-} }).stepList[1]
+local buttonPreview = render({
+    {
+        Note = "Prepare your actions",
+        Button = { ["10"] = { 20, 404 } },
+        SpellButton = { ["11"] = { 1243, "Named spell" }, ["10"] = 2050 },
+    },
+}).stepList[1]
 assert(buttonPreview.color == "gray", "Supporting buttons must not complete the primary step")
 known[20] = true
-assert(render({ { LearnProfession = 20, SpellButton = { ["10"] = 2050 } } }).stepList[1].color == "green",
-    "Optional buttons must not turn a completed primary action into an incomplete action")
+assert(
+    render({ { LearnProfession = 20, SpellButton = { ["10"] = 2050 } } }).stepList[1].color == "green",
+    "Optional buttons must not turn a completed primary action into an incomplete action"
+)
 known[20] = nil
 
 local extras = {
-    { LeaveQuest = 10 }, { LeaveQuests = { 10, 11 } }, { ChromiePick = 6 }, { ResetRoute = true },
-    { MountVehicle = true }, { VehicleExit = true },
-    { Waypoint = 10 }, { SetHS = 10 }, { BuyMerchant = { { itemID = 20, quantity = 2 } } },
+    { LeaveQuest = 10 },
+    { LeaveQuests = { 10, 11 } },
+    { ChromiePick = 6 },
+    { ResetRoute = true },
+    { MountVehicle = true },
+    { VehicleExit = true },
+    { Waypoint = 10 },
+    { SetHS = 10 },
+    { BuyMerchant = { { itemID = 20, quantity = 2 } } },
     { GossipOptionIDs = { 1 } },
 }
 preview = render(extras)
@@ -221,8 +300,12 @@ assert(render({ extras[3] }).stepList[1].title == format(L.SWITCH_TO_CHROMIE, "U
 -- Promoted main actions retain their own title, details and completion even
 -- when a waypoint, merchant or completed gossip accompanies the step.
 for _, key in ipairs({ "LeaveQuest", "LeaveQuests", "ResetRoute" }) do
-    local step = { [key] = fixtures[key], BuyMerchant = { { itemID = 20, quantity = 1 } },
-        GossipOptionIDs = { 1 }, Waypoint = 10 }
+    local step = {
+        [key] = fixtures[key],
+        BuyMerchant = { { itemID = 20, quantity = 1 } },
+        GossipOptionIDs = { 1 },
+        Waypoint = 10,
+    }
     local expected = key == "ResetRoute" and L.RESET_ROUTE or L.LEAVE_QUEST
     assert(APR:GetStepString(step) == expected)
     assert(APR:HasAnyMainStepOption(step))
@@ -241,14 +324,19 @@ assert(render({ { ResetRoute = true } }).stepList[1].color == "gray", "Reset req
 
 local actions = {
     { SellItems = { items = { 20, 404 }, junk = true, text = "Sell supplies" } },
-    { LearnSkill = { spellIDs = { 20, 21 } } }, { DeathSkip = true }, { TameBeast = { npcID = 999 } },
-    { BankDeposit = { items = { 404 } } }, { DestroyItems = { items = { 20 } } },
-    { EquipItem = { slot = 16, itemID = 20 } }, { LearnSkill = { allAvailable = true } },
+    { LearnSkill = { spellIDs = { 20, 21 } } },
+    { DeathSkip = true },
+    { TameBeast = { npcID = 999 } },
+    { BankDeposit = { items = { 404 } } },
+    { DestroyItems = { items = { 20 } } },
+    { EquipItem = { slot = 16, itemID = 20 } },
+    { LearnSkill = { allAvailable = true } },
 }
 equipped[16], known[20] = 20, true
 preview = render(actions)
-assert(preview.stepList[1].title ==
-    "SELLITEMS: Item 20 (SELL_ITEM_EQUIPPED), Unknown (404)\nSell supplies\nVENDOR_TRASH")
+assert(
+    preview.stepList[1].title == "SELLITEMS: Item 20 (SELL_ITEM_EQUIPPED), Unknown (404)\nSell supplies\nVENDOR_TRASH"
+)
 assert(preview.stepList[2].color == "gray", "Every requested skill must be known")
 assert(preview.stepList[7].color == "green")
 known[21] = true
@@ -256,8 +344,10 @@ assert(render(actions).stepList[2].color == "green")
 APR.routeActionState = { token = "test:3", complete = true }
 preview = render(actions, 3)
 assert(preview.stepList[1].color == "green" and preview.stepList[3].color == "green")
-assert(preview.stepList[4].color == "gray" and preview.stepList[8].color == "gray",
-    "Current action state must not complete future actions")
+assert(
+    preview.stepList[4].color == "gray" and preview.stepList[8].color == "gray",
+    "Current action state must not complete future actions"
+)
 APR.routeActionState.token = "other:3"
 assert(render(actions, 3).stepList[3].color == "gray", "Ignore stale completion from another route")
 assert(APR.routeActionState.token == "other:3", "Preview must not reset stale state")
@@ -266,7 +356,9 @@ assert(APR.routeActionState.token == "other:3", "Preview must not reset stale st
 RepairAllItems = forbidden
 APR.HandleRouteRepair = forbidden
 local durability = 50
-function GetInventoryItemDurability(slot) if slot == 16 then return durability, 100 end end
+function GetInventoryItemDurability(slot)
+    if slot == 16 then return durability, 100 end
+end
 local repair = { Repair = { npcID = 3331 } }
 local repairRow = render({ repair }).stepList[1]
 assert(repairRow.color == "gray")
@@ -276,8 +368,10 @@ GetInventoryItemDurability = nil
 
 preview = render({ { SellItems = { junk = true }, hidden = true }, { Note = "Visible" } })
 assert(#preview.stepList == 1 and preview.rawStepContainers[2].displayIndex == 1)
-preview = render({ { PickUp = { 10 }, LeaveQuest = 11, VehicleExit = true },
-    { SellItems = { junk = true }, Note = "Vendor advice" } })
+preview = render({
+    { PickUp = { 10 }, LeaveQuest = 11, VehicleExit = true },
+    { SellItems = { junk = true }, Note = "Vendor advice" },
+})
 assert(preview.stepList[1].title:find("PICK_UP_Q\nLEAVE_QUEST: 11 - Quest 11\nLEAVE_VEHICLE", 1, true))
 assert(preview.stepList[2].title == "VENDOR_TRASH")
 
@@ -286,10 +380,14 @@ assert(APR:GetStepQuestIDs(linkedSale)[1] == 4641, "Tooltips recognize the sale'
 assert(#APR:GetStepQuestIDs({ SellItems = { junk = true } }) == 0)
 assert(render({ linkedSale }).stepList[1].color == "gray")
 C_QuestLog.IsQuestFlaggedCompleted = function(id) return id == 4641 end
-assert(render({ linkedSale }).stepList[1].color == "green",
-    "A rewarded quest marks the sale complete without running merchant actions")
-assert(render({ { Note = "First" }, linkedSale }).stepList[2].color == "green",
-    "Future sales also reflect their linked quest after a route reset")
+assert(
+    render({ linkedSale }).stepList[1].color == "green",
+    "A rewarded quest marks the sale complete without running merchant actions"
+)
+assert(
+    render({ { Note = "First" }, linkedSale }).stepList[2].color == "green",
+    "Future sales also reflect their linked quest after a route reset"
+)
 assert(render({ { SellItems = { junk = true, questID = 4642 } } }).stepList[1].color == "gray")
 C_QuestLog.IsQuestFlaggedCompleted = no
 
@@ -326,8 +424,10 @@ end
 for alias, base in pairs({ PickUpDB = "PickUp", DoneDB = "Done", QpartDB = "Qpart" }) do
     local originalRow = render({ { [base] = fixtures[base] } }).stepList[1]
     local variantRow = render({ { [base] = fixtures[base], [alias] = fixtures[alias] } }).stepList[1]
-    assert(variantRow.title == originalRow.title and #variantRow.quests == #originalRow.quests,
-        "Quest variants use the normal row without additional instructions")
+    assert(
+        variantRow.title == originalRow.title and #variantRow.quests == #originalRow.quests,
+        "Quest variants use the normal row without additional instructions"
+    )
     assert(APR:GetStepString({ [alias] = fixtures[alias] }) == APR:GetStepString({ [base] = fixtures[base] }))
 end
 for _, key in ipairs(APR.secondaryStepOptions) do
@@ -344,27 +444,45 @@ for _, key in ipairs(documented) do
     if companions[key] then step[companions[key]] = fixtures[companions[key]] end
     local result = render({ step, { Note = "After " .. key } })
     if hiddenOptions[key] then
-        assert(#result.stepList == 1 and result.rawStepContainers[1] == nil,
-            "filler or automatic action must stay hidden: " .. key)
+        assert(
+            #result.stepList == 1 and result.rawStepContainers[1] == nil,
+            "filler or automatic action must stay hidden: " .. key
+        )
     else
         assert(#result.stepList == 2, "missing row for " .. key)
         assert(result.rawStepContainers[1].title ~= "", "empty action " .. key)
     end
 end
 
-local combined = { Qpart = { [10] = { 1 } }, BuyMerchant = fixtures.BuyMerchant,
-    Fillers = fixtures.Fillers, DroppableQuest = fixtures.DroppableQuest,
-    GroupTask = 11, LeaveQuest = 12, LeaveQuests = { 12, 13 }, ChromiePick = 6,
-    MountVehicle = true, NpcDismount = 54, VehicleExit = true, ResetRoute = true,
-    PickUpDB = { 11 }, DoneDB = { 12 }, QpartDB = { 13 } }
+local combined = {
+    Qpart = { [10] = { 1 } },
+    BuyMerchant = fixtures.BuyMerchant,
+    Fillers = fixtures.Fillers,
+    DroppableQuest = fixtures.DroppableQuest,
+    GroupTask = 11,
+    LeaveQuest = 12,
+    LeaveQuests = { 12, 13 },
+    ChromiePick = 6,
+    MountVehicle = true,
+    NpcDismount = 54,
+    VehicleExit = true,
+    ResetRoute = true,
+    PickUpDB = { 11 },
+    DoneDB = { 12 },
+    QpartDB = { 13 },
+}
 local result = render({ combined })
 assert(#result.stepList == 1, "Companion actions belong on the same step")
 local title = result.stepList[1].title
 local expected = {
     L.Q_PART,
-    format(L.GROUP_QUEST_TASK, "11 - Quest 11"), L.LEAVE_QUEST .. ": 12 - Quest 12",
-    L.LEAVE_QUEST .. ": 13 - Quest 13", format(L.SWITCH_TO_CHROMIE, "Unknown (6)"),
-    L.RESET_ROUTE, L.MOUNT_VEHICLE, L.LEAVE_VEHICLE,
+    format(L.GROUP_QUEST_TASK, "11 - Quest 11"),
+    L.LEAVE_QUEST .. ": 12 - Quest 12",
+    L.LEAVE_QUEST .. ": 13 - Quest 13",
+    format(L.SWITCH_TO_CHROMIE, "Unknown (6)"),
+    L.RESET_ROUTE,
+    L.MOUNT_VEHICLE,
+    L.LEAVE_VEHICLE,
     format(L.BUY_ITEM, 2, "Item 20"),
 }
 assert(title == table.concat(expected, "\n"), "only actionable instructions belong in the title")
@@ -387,10 +505,17 @@ assert(render({ combined }).stepList[1].title == title, "Loaded titles replace t
 
 -- The preview uses the next entry belonging to the rendered route, including future HS steps.
 function GetBindLocation() return "Zone" end
-local travel = render({ { GetFP = 2 }, { UseFlightPath = 42, NodeID = 8 },
-    { UseHS = 42 }, { Note = "Arrival", Zone = 10 }, { UseHS = 42 } })
+local travel = render({
+    { GetFP = 2 },
+    { UseFlightPath = 42, NodeID = 8 },
+    { UseHS = 42 },
+    { Note = "Arrival", Zone = 10 },
+    { UseHS = 42 },
+})
 assert(travel.rawStepContainers[1].title == L.GET_FLIGHTPATH .. " - Flight destination")
 assert(travel.rawStepContainers[2].title == "Fly to Flight destination")
 assert(travel.rawStepContainers[3].title == L.USE_HEARTHSTONE .. " - Zone")
 assert(travel.rawStepContainers[5].title == L.USE_HEARTHSTONE)
-print("Quest order actions: every primary action, standalone helpers, sale details, completion, filters and read-only preview passed")
+print(
+    "Quest order actions: every primary action, standalone helpers, sale details, completion, filters and read-only preview passed"
+)

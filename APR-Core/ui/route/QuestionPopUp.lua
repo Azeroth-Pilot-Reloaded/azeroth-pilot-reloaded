@@ -35,7 +35,7 @@ local function EnsureRouteTriggerPopup()
         tile = true,
         tileSize = 16,
         edgeSize = 16,
-        insets = { left = 4, right = 4, top = 4, bottom = 4 }
+        insets = { left = 4, right = 4, top = 4, bottom = 4 },
     })
 
     frame.title = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlightLarge")
@@ -65,10 +65,13 @@ local function EnsureRouteTriggerPopup()
         frame.routeScrollBar:SetPoint("BOTTOMLEFT", frame.routeScroll, "BOTTOMRIGHT", 6, 0)
         ScrollUtil.InitScrollFrameWithScrollBar(frame.routeScroll, frame.routeScrollBar)
     else
-        frame.routeScroll:SetScript("OnMouseWheel", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:68:callback#2", --[[/APR_DIAG]]function(scroll, delta)
-            local range = math.max(0, frame.routeButtonContainer:GetHeight() - scroll:GetHeight())
-            scroll:SetVerticalScroll(math.max(0, math.min(range, scroll:GetVerticalScroll() - delta * 36)))
-        end--[[APR_DIAG]])--[[/APR_DIAG]])
+        frame.routeScroll:SetScript(
+            "OnMouseWheel", --[[APR_DIAG]]
+            APRTrace("APR-Core/ui/route/QuestionPopUp.lua:68:callback#2", --[[/APR_DIAG]] function(scroll, delta)
+                local range = math.max(0, frame.routeButtonContainer:GetHeight() - scroll:GetHeight())
+                scroll:SetVerticalScroll(math.max(0, math.min(range, scroll:GetVerticalScroll() - delta * 36)))
+            end--[[APR_DIAG]]) --[[/APR_DIAG]]
+        )
     end
     if APR.Gamepad and APR.Gamepad.PrepareScroll then APR.Gamepad:PrepareScroll(frame.routeScroll) end
 
@@ -87,13 +90,16 @@ local function EnsureRouteTriggerPopup()
         APR:RegisterSkinTarget(frame.cancelButton, "button")
     end
     APR:RegisterButtonText(frame.cancelButton, "general", { role = "base" })
-    frame.cancelButton:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:90:callback#3", --[[/APR_DIAG]]function()
-        local callback = frame.onCancel
-        frame:Hide()
-        if callback then
-            callback()
-        end
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    frame.cancelButton:SetScript(
+        "OnClick", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/route/QuestionPopUp.lua:90:callback#3", --[[/APR_DIAG]] function()
+            local callback = frame.onCancel
+            frame:Hide()
+            if callback then
+                callback()
+            end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
 
     frame.dontAskButton = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
     frame.dontAskButton:SetSize(110, 24)
@@ -106,13 +112,16 @@ local function EnsureRouteTriggerPopup()
         frame.dontAskButton.Text:SetWordWrap(true)
         frame.dontAskButton.Text:SetJustifyH("CENTER")
     end
-    frame.dontAskButton:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:109:callback#4", --[[/APR_DIAG]]function()
-        local callback = frame.onDontAsk
-        frame:Hide()
-        if callback then
-            callback()
-        end
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    frame.dontAskButton:SetScript(
+        "OnClick", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/route/QuestionPopUp.lua:109:callback#4", --[[/APR_DIAG]] function()
+            local callback = frame.onDontAsk
+            frame:Hide()
+            if callback then
+                callback()
+            end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
 
     frame.routeSelectionButton = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
     frame.routeSelectionButton:SetSize(110, 24)
@@ -125,12 +134,15 @@ local function EnsureRouteTriggerPopup()
         frame.routeSelectionButton.Text:SetWordWrap(true)
         frame.routeSelectionButton.Text:SetJustifyH("CENTER")
     end
-    frame.routeSelectionButton:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:128:callback#5", --[[/APR_DIAG]]function()
-        frame:Hide()
-        if APR and APR.settings and APR.settings.OpenSettings then
-            APR.settings:OpenSettings(L["ROUTE"])
-        end
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    frame.routeSelectionButton:SetScript(
+        "OnClick", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/route/QuestionPopUp.lua:128:callback#5", --[[/APR_DIAG]] function()
+            frame:Hide()
+            if APR and APR.settings and APR.settings.OpenSettings then
+                APR.settings:OpenSettings(L["ROUTE"])
+            end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
 
     frame.previousPageButton = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
     frame.nextPageButton = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
@@ -145,26 +157,44 @@ local function EnsureRouteTriggerPopup()
     end
     frame.previousPageButton:SetText(PREVIOUS)
     frame.nextPageButton:SetText(NEXT)
-    frame.previousPageButton:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:148:callback#6", --[[/APR_DIAG]]function()
-        if frame.routes and frame.page > 1 then ShowRoutePage(frame, frame.page - 1, true) end
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-    frame.nextPageButton:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:151:callback#7", --[[/APR_DIAG]]function()
-        if frame.routes and frame.page < frame.pageCount then ShowRoutePage(frame, frame.page + 1, true) end
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-    frame:SetScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:154:callback#8", --[[/APR_DIAG]]function()
-        frame.routes, frame.onRouteSelected, frame.onCancel, frame.onDontAsk = nil, nil, nil, nil
-        for _, button in ipairs(frame.routeButtons) do
-            button.route = nil
-            button:Hide()
-        end
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    frame.previousPageButton:SetScript(
+        "OnClick", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/route/QuestionPopUp.lua:148:callback#6", --[[/APR_DIAG]] function()
+            if frame.routes and frame.page > 1 then ShowRoutePage(frame, frame.page - 1, true) end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+    frame.nextPageButton:SetScript(
+        "OnClick", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/route/QuestionPopUp.lua:151:callback#7", --[[/APR_DIAG]] function()
+            if frame.routes and frame.page < frame.pageCount then ShowRoutePage(frame, frame.page + 1, true) end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+    frame:SetScript(
+        "OnHide", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/route/QuestionPopUp.lua:154:callback#8", --[[/APR_DIAG]] function()
+            frame.routes, frame.onRouteSelected, frame.onCancel, frame.onDontAsk = nil, nil, nil, nil
+            for _, button in ipairs(frame.routeButtons) do
+                button.route = nil
+                button:Hide()
+            end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     frame:Hide()
     if APR.Gamepad then
-        APR.Gamepad:RegisterWindow(frame, true, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:163:callback#9", --[[/APR_DIAG]]function() frame.cancelButton:Click() end--[[APR_DIAG]])--[[/APR_DIAG]])
+        APR.Gamepad:RegisterWindow(
+            frame,
+            true, --[[APR_DIAG]]
+            APRTrace(
+                "APR-Core/ui/route/QuestionPopUp.lua:163:callback#9", --[[/APR_DIAG]]
+                function() frame.cancelButton:Click() end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]]
+        )
     end
     routeTriggerPopupFrame = frame
     return frame
-end--[[APR_DIAG]]; EnsureRouteTriggerPopup = APRTrace("APR-Core/ui/route/QuestionPopUp.lua:16:EnsureRouteTriggerPopup#1", EnsureRouteTriggerPopup)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+EnsureRouteTriggerPopup =
+    APRTrace("APR-Core/ui/route/QuestionPopUp.lua:16:EnsureRouteTriggerPopup#1", EnsureRouteTriggerPopup)--[[/APR_DIAG]]
 
 local function EnsureRouteButton(frame, index)
     local button = frame.routeButtons[index]
@@ -183,78 +213,90 @@ local function EnsureRouteButton(frame, index)
     end
 
     if APR.RegisterSkinTarget then APR:RegisterSkinTarget(button, "button") end
-    button:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:186:callback#11", --[[/APR_DIAG]]function()
-        local route, callback = button.route, frame.onRouteSelected
-        if not route or not frame:IsShown() or not button:IsShown() then return end
-        frame:Hide()
-        if callback then callback(route) end
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    button:SetScript(
+        "OnClick", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/route/QuestionPopUp.lua:186:callback#11", --[[/APR_DIAG]] function()
+            local route, callback = button.route, frame.onRouteSelected
+            if not route or not frame:IsShown() or not button:IsShown() then return end
+            frame:Hide()
+            if callback then callback(route) end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     frame.routeButtons[index] = button
     return button
-end--[[APR_DIAG]]; EnsureRouteButton = APRTrace("APR-Core/ui/route/QuestionPopUp.lua:169:EnsureRouteButton#10", EnsureRouteButton)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+EnsureRouteButton = APRTrace("APR-Core/ui/route/QuestionPopUp.lua:169:EnsureRouteButton#10", EnsureRouteButton)--[[/APR_DIAG]]
 
-ShowRoutePage = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:196:callback#12", --[[/APR_DIAG]]function(frame, page, focus)
-    local routes = frame.routes
-    if not routes then return end
-    local routeCount = #routes
-    frame.pageCount = math.max(1, math.ceil(routeCount / ROUTES_PER_PAGE))
-    frame.page = math.max(1, math.min(page, frame.pageCount))
-    local first = (frame.page - 1) * ROUTES_PER_PAGE + 1
-    local count = math.min(ROUTES_PER_PAGE, routeCount - first + 1)
-    local yOffset = 0
-    -- Only the current page is read, measured and bound. Pool size and work per
-    -- interaction stay bounded even when a quest suggests thousands of routes.
-    for i = 1, count do
-        local index = first + i - 1
-        local route = routes[index]
-        local button = EnsureRouteButton(frame, i)
-        button.route = route
-        button:ClearAllPoints()
-        button:SetPoint("TOP", frame.routeButtonContainer, "TOP", 0, -yOffset)
-        button:SetText(route.label or route.key or ("Route " .. index))
-        local textHeight = button.Text and button.Text:GetStringHeight() or 0
-        button:SetHeight(math.max(30, textHeight + 10))
-        yOffset = yOffset + button:GetHeight() + (i < count and 6 or 0)
-        button:Show()
-    end
-    for i = count + 1, #frame.routeButtons do
-        local button = frame.routeButtons[i]
-        button.route = nil
-        button:Hide()
-    end
-    frame.routeButtonContainer:SetHeight(math.max(1, yOffset))
-
-    local paged = frame.pageCount > 1
-    local pagerHeight = paged and (frame.pagerHeight + 8) or 0
-    local baseHeight = frame.baseHeight + pagerHeight
-    local availableHeight = math.max(30, (UIParent:GetHeight() or 600) - 40 - baseHeight)
-    local viewportHeight = math.min(math.max(1, yOffset), 300, availableHeight)
-    frame.routeScroll:SetHeight(viewportHeight)
-    frame.routeScroll:SetVerticalScroll(0)
-    if frame.routeScrollBar then
-        -- The native track needs room for its thumb and both stepper controls.
-        frame.routeScrollBar:SetShown(yOffset > viewportHeight and viewportHeight >= 64)
-    end
-    frame:SetHeight(math.max(120, baseHeight + viewportHeight))
-    frame.previousPageButton:SetShown(paged)
-    frame.nextPageButton:SetShown(paged)
-    frame.previousPageButton:SetEnabled(frame.page > 1)
-    frame.nextPageButton:SetEnabled(frame.page < frame.pageCount)
-    frame.message:SetText(frame.page .. " / " .. frame.pageCount)
-    frame.message:SetShown(paged)
-    if APR.Gamepad then
-        if APR.Gamepad.Refresh then APR.Gamepad:Refresh(frame) end
-        if focus and count > 0 and APR.Gamepad.RequestFocus then
-            APR.Gamepad:RequestFocus(frame.routeButtonContainer)
+ShowRoutePage = --[[APR_DIAG]]
+    APRTrace("APR-Core/ui/route/QuestionPopUp.lua:196:callback#12", --[[/APR_DIAG]] function(frame, page, focus)
+        local routes = frame.routes
+        if not routes then return end
+        local routeCount = #routes
+        frame.pageCount = math.max(1, math.ceil(routeCount / ROUTES_PER_PAGE))
+        frame.page = math.max(1, math.min(page, frame.pageCount))
+        local first = (frame.page - 1) * ROUTES_PER_PAGE + 1
+        local count = math.min(ROUTES_PER_PAGE, routeCount - first + 1)
+        local yOffset = 0
+        -- Only the current page is read, measured and bound. Pool size and work per
+        -- interaction stay bounded even when a quest suggests thousands of routes.
+        for i = 1, count do
+            local index = first + i - 1
+            local route = routes[index]
+            local button = EnsureRouteButton(frame, i)
+            button.route = route
+            button:ClearAllPoints()
+            button:SetPoint("TOP", frame.routeButtonContainer, "TOP", 0, -yOffset)
+            button:SetText(route.label or route.key or ("Route " .. index))
+            local textHeight = button.Text and button.Text:GetStringHeight() or 0
+            button:SetHeight(math.max(30, textHeight + 10))
+            yOffset = yOffset + button:GetHeight() + (i < count and 6 or 0)
+            button:Show()
         end
-    end
-end--[[APR_DIAG]])--[[/APR_DIAG]]
+        for i = count + 1, #frame.routeButtons do
+            local button = frame.routeButtons[i]
+            button.route = nil
+            button:Hide()
+        end
+        frame.routeButtonContainer:SetHeight(math.max(1, yOffset))
+
+        local paged = frame.pageCount > 1
+        local pagerHeight = paged and (frame.pagerHeight + 8) or 0
+        local baseHeight = frame.baseHeight + pagerHeight
+        local availableHeight = math.max(30, (UIParent:GetHeight() or 600) - 40 - baseHeight)
+        local viewportHeight = math.min(math.max(1, yOffset), 300, availableHeight)
+        frame.routeScroll:SetHeight(viewportHeight)
+        frame.routeScroll:SetVerticalScroll(0)
+        if frame.routeScrollBar then
+            -- The native track needs room for its thumb and both stepper controls.
+            frame.routeScrollBar:SetShown(yOffset > viewportHeight and viewportHeight >= 64)
+        end
+        frame:SetHeight(math.max(120, baseHeight + viewportHeight))
+        frame.previousPageButton:SetShown(paged)
+        frame.nextPageButton:SetShown(paged)
+        frame.previousPageButton:SetEnabled(frame.page > 1)
+        frame.nextPageButton:SetEnabled(frame.page < frame.pageCount)
+        frame.message:SetText(frame.page .. " / " .. frame.pageCount)
+        frame.message:SetShown(paged)
+        if APR.Gamepad then
+            if APR.Gamepad.Refresh then APR.Gamepad:Refresh(frame) end
+            if focus and count > 0 and APR.Gamepad.RequestFocus then
+                APR.Gamepad:RequestFocus(frame.routeButtonContainer)
+            end
+        end
+    end--[[APR_DIAG]])--[[/APR_DIAG]]
 
 ---------------------------------------------------------------------------------------
 --------------------------- Dialog for some actions xD --------------------------------
 ---------------------------------------------------------------------------------------
-function APR.questionDialog:CreateQuestionPopup(dialogName, text, onAcceptFunction, onCancelFunction, acceptButtonText,
-                                                cancelButtonText, hideOnEscape)
+function APR.questionDialog:CreateQuestionPopup(
+    dialogName,
+    text,
+    onAcceptFunction,
+    onCancelFunction,
+    acceptButtonText,
+    cancelButtonText,
+    hideOnEscape
+)
     dialogName = dialogName or "QUESTION_DIALOG"
     StaticPopup_Hide(dialogName)
 
@@ -270,7 +312,11 @@ function APR.questionDialog:CreateQuestionPopup(dialogName, text, onAcceptFuncti
     }
 
     APR:StyleStaticPopup(StaticPopup_Show(dialogName))
-end--[[APR_DIAG]]; APR.questionDialog.CreateQuestionPopup = APRTrace("APR-Core/ui/route/QuestionPopUp.lua:256:APR.questionDialog:CreateQuestionPopup#13", APR.questionDialog.CreateQuestionPopup)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.questionDialog.CreateQuestionPopup = APRTrace(
+    "APR-Core/ui/route/QuestionPopUp.lua:256:APR.questionDialog:CreateQuestionPopup#13",
+    APR.questionDialog.CreateQuestionPopup
+)--[[/APR_DIAG]]
 
 function APR.questionDialog:CreateMessagePopup(text, closeButtonText)
     local dialogName = "MESSAGE_DIALOG"
@@ -283,7 +329,11 @@ function APR.questionDialog:CreateMessagePopup(text, closeButtonText)
     }
 
     APR:StyleStaticPopup(StaticPopup_Show(dialogName))
-end--[[APR_DIAG]]; APR.questionDialog.CreateMessagePopup = APRTrace("APR-Core/ui/route/QuestionPopUp.lua:275:APR.questionDialog:CreateMessagePopup#14", APR.questionDialog.CreateMessagePopup)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.questionDialog.CreateMessagePopup = APRTrace(
+    "APR-Core/ui/route/QuestionPopUp.lua:275:APR.questionDialog:CreateMessagePopup#14",
+    APR.questionDialog.CreateMessagePopup
+)--[[/APR_DIAG]]
 
 function APR.questionDialog:CreateMandatoryAction(text, onAcceptFunction)
     local dialogName = "MANDATORY_DIALOG"
@@ -300,7 +350,11 @@ function APR.questionDialog:CreateMandatoryAction(text, onAcceptFunction)
     }
 
     APR:StyleStaticPopup(StaticPopup_Show(dialogName))
-end--[[APR_DIAG]]; APR.questionDialog.CreateMandatoryAction = APRTrace("APR-Core/ui/route/QuestionPopUp.lua:288:APR.questionDialog:CreateMandatoryAction#15", APR.questionDialog.CreateMandatoryAction)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.questionDialog.CreateMandatoryAction = APRTrace(
+    "APR-Core/ui/route/QuestionPopUp.lua:288:APR.questionDialog:CreateMandatoryAction#15",
+    APR.questionDialog.CreateMandatoryAction
+)--[[/APR_DIAG]]
 
 function APR.questionDialog:CreateEditBoxPopup(text, closeButtonText, editBoxText)
     local dialogName = "EDITBOX_DIALOG"
@@ -308,7 +362,8 @@ function APR.questionDialog:CreateEditBoxPopup(text, closeButtonText, editBoxTex
         text = text or "General Kenobi",
         hasEditBox = 1,
         button1 = closeButtonText or OKAY or "YES",
-        OnShow = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:311:callback#17", --[[/APR_DIAG]]function(self)
+        --[[APR_DIAG]]
+        OnShow = APRTrace("APR-Core/ui/route/QuestionPopUp.lua:311:callback#17", --[[/APR_DIAG]] function(self)
             if editBoxText then
                 local box = self.editBox or self.EditBox or (self:GetName() and _G[self:GetName() .. "EditBox"])
                 if box then
@@ -318,15 +373,23 @@ function APR.questionDialog:CreateEditBoxPopup(text, closeButtonText, editBoxTex
                     box:HighlightText()
                 end
             end
-        end--[[APR_DIAG]])--[[/APR_DIAG]],
-        EditBoxOnEscapePressed = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:322:callback#18", --[[/APR_DIAG]]function(self) self:GetParent():Hide() end--[[APR_DIAG]])--[[/APR_DIAG]],
+        end--[[APR_DIAG]]) --[[/APR_DIAG]],
+        --[[APR_DIAG]]
+        EditBoxOnEscapePressed = APRTrace(
+            "APR-Core/ui/route/QuestionPopUp.lua:322:callback#18", --[[/APR_DIAG]]
+            function(self) self:GetParent():Hide() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]],
         timeout = 0,
         whileDead = true,
         hideOnEscape = true,
     }
 
     APR:StyleStaticPopup(StaticPopup_Show(dialogName))
-end--[[APR_DIAG]]; APR.questionDialog.CreateEditBoxPopup = APRTrace("APR-Core/ui/route/QuestionPopUp.lua:305:APR.questionDialog:CreateEditBoxPopup#16", APR.questionDialog.CreateEditBoxPopup)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.questionDialog.CreateEditBoxPopup = APRTrace(
+    "APR-Core/ui/route/QuestionPopUp.lua:305:APR.questionDialog:CreateEditBoxPopup#16",
+    APR.questionDialog.CreateEditBoxPopup
+)--[[/APR_DIAG]]
 
 function APR.questionDialog:CreateRouteTriggerPopup(titleText, routes, onRouteSelected, onCancel, onDontAsk)
     local frame = EnsureRouteTriggerPopup()
@@ -385,9 +448,17 @@ function APR.questionDialog:CreateRouteTriggerPopup(titleText, routes, onRouteSe
     ShowRoutePage(frame, 1)
 
     frame:Show()
-end--[[APR_DIAG]]; APR.questionDialog.CreateRouteTriggerPopup = APRTrace("APR-Core/ui/route/QuestionPopUp.lua:331:APR.questionDialog:CreateRouteTriggerPopup#19", APR.questionDialog.CreateRouteTriggerPopup)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.questionDialog.CreateRouteTriggerPopup = APRTrace(
+    "APR-Core/ui/route/QuestionPopUp.lua:331:APR.questionDialog:CreateRouteTriggerPopup#19",
+    APR.questionDialog.CreateRouteTriggerPopup
+)--[[/APR_DIAG]]
 
 function APR.questionDialog:CreateSelectionPopup(titleText, descriptionText, options, onOptionSelected, onCancel)
     local owner = APR.RouteBrowser and APR.RouteBrowser.frame
     APR.UI:ShowSelectionDialog(titleText, descriptionText, options, onOptionSelected, onCancel, owner)
-end--[[APR_DIAG]]; APR.questionDialog.CreateSelectionPopup = APRTrace("APR-Core/ui/route/QuestionPopUp.lua:390:APR.questionDialog:CreateSelectionPopup#20", APR.questionDialog.CreateSelectionPopup)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.questionDialog.CreateSelectionPopup = APRTrace(
+    "APR-Core/ui/route/QuestionPopUp.lua:390:APR.questionDialog:CreateSelectionPopup#20",
+    APR.questionDialog.CreateSelectionPopup
+)--[[/APR_DIAG]]

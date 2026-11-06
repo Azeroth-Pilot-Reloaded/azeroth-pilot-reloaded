@@ -50,7 +50,10 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "instance_entrances", {
             kind = "dungeon",
             reviewStatus = "confirmed",
             instanceID = 47,
-            approach = { { space = "map", uiMapID = 1413, x = 0.4371, y = 0.9011 }, { space = "map", uiMapID = 1413, x = 0.4228, y = 0.8989 } },
+            approach = {
+                { space = "map", uiMapID = 1413, x = 0.4371, y = 0.9011 },
+                { space = "map", uiMapID = 1413, x = 0.4228, y = 0.8989 },
+            },
             exterior = { space = "map", uiMapID = 1413, x = 0.4228, y = 0.8989 },
             interiorMapIDs = {},
         },
@@ -183,7 +186,10 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "instance_entrances", {
             kind = "dungeon",
             reviewStatus = "confirmed",
             instanceID = 329,
-            approach = { { space = "map", uiMapID = 1423, x = 0.3085, y = 0.1978 }, { space = "map", uiMapID = 1423, x = 0.3134, y = 0.1578 } },
+            approach = {
+                { space = "map", uiMapID = 1423, x = 0.3085, y = 0.1978 },
+                { space = "map", uiMapID = 1423, x = 0.3134, y = 0.1578 },
+            },
             exterior = { space = "map", uiMapID = 1423, x = 0.3134, y = 0.1578 },
             interiorMapIDs = {},
         },

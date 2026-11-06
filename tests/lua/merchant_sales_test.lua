@@ -1,7 +1,9 @@
 -- Real merchant option/action paths against delayed, locked and rejected sales.
 local function noop() end
 local L = setmetatable({ ITEM_SOLD = "Sold %s" }, { __index = function(_, key) return key end })
-function LibStub() return { GetLocale = function() return L end } end
+function LibStub()
+    return { GetLocale = function() return L end }
+end
 dofile("APR-Core/utils/SecretUtils.lua")
 
 local clock, timers, bags, step, cursor, combat, modifier, npc = 0
@@ -15,12 +17,13 @@ function CursorHasItem() return cursor end
 function GetInventoryItemID(_, slot) return equipment[slot] end
 function UnitCreatureID() return npc end
 C_QuestLog = { IsQuestFlaggedCompleted = function() return false end }
-C_Timer = { NewTimer = function(delay, callback)
-    local timer = { time = clock + delay, callback = callback,
-        Cancel = function(self) self.cancelled = true end }
-    timers[#timers + 1] = timer
-    return timer
-end }
+C_Timer = {
+    NewTimer = function(delay, callback)
+        local timer = { time = clock + delay, callback = callback, Cancel = function(self) self.cancelled = true end }
+        timers[#timers + 1] = timer
+        return timer
+    end,
+}
 local function tick(duration)
     local untilTime, iterations = clock + duration, 0
     while true do
@@ -41,30 +44,43 @@ local function tick(duration)
 end
 local function activeTimers()
     local count = 0
-    for _, timer in ipairs(timers) do if not timer.cancelled then count = count + 1 end end
+    for _, timer in ipairs(timers) do
+        if not timer.cancelled then count = count + 1 end
+    end
     return count
 end
 
-APR = { MaxBagSlots = 4, ActiveRoute = "test", PlayerID = "player", currentStep = {},
+APR = {
+    MaxBagSlots = 4,
+    ActiveRoute = "test",
+    PlayerID = "player",
+    currentStep = {},
     NewModule = function() return {} end,
     settings = { profile = { enableAddon = true, autoVendor = true } },
     GetSettingsProfile = function(self) return self.settings.profile end,
     GetCurrentStep = function() return step end,
     GetCurrentStepToken = function(_, _, index) return "test:" .. index end,
     ResolveStepText = function(_, text) return text end,
-    NextQuestStep = function() advances = advances + 1; APRData.player.test = APRData.player.test + 1 end,
+    NextQuestStep = function()
+        advances = advances + 1
+        APRData.player.test = APRData.player.test + 1
+    end,
     PrintInfo = function(_, message) printed[#printed + 1] = message end,
 }
 APR.currentStep.AddQuestSteps = noop
 APRData = { player = { test = 1 } }
-APR.event = { QueueStepRefresh = function()
-    C_Timer.NewTimer(0.01, function()
-        if step and step.SellItems then APR:HandleRouteAction(step) end
-    end)
-end }
-C_Item = { GetItemInfo = function(id)
-    return "Item " .. id, nil, nil, nil, nil, nil, nil, nil, nil, nil, prices[id]
-end }
+APR.event = {
+    QueueStepRefresh = function()
+        C_Timer.NewTimer(0.01, function()
+            if step and step.SellItems then APR:HandleRouteAction(step) end
+        end)
+    end,
+}
+C_Item = {
+    GetItemInfo = function(id)
+        return "Item " .. id, nil, nil, nil, nil, nil, nil, nil, nil, nil, prices[id]
+    end,
+}
 C_CurrencyInfo = { GetCoinTextureString = function(value) return tostring(value) end }
 C_Container = {
     GetContainerNumSlots = function() return 32 end,
@@ -74,7 +90,10 @@ C_Container = {
         assert(APR.routeMerchantOpen and not combat and not cursor and not modifier)
         assert(info and not info.isLocked and not info.hasNoValue, "Revalidate each sale")
         requests = requests + 1
-        if dropNext then dropNext = false; return end
+        if dropNext then
+            dropNext = false
+            return
+        end
         info.isLocked = true
         C_Timer.NewTimer(saleDelay, function()
             assert(bags[bag][slot] == info)
@@ -110,7 +129,9 @@ local function item(bag, slot, id, quality, count, noValue)
     return bags[bag][slot]
 end
 local function fill(count)
-    for i = 1, count do item(math.floor((i - 1) / 32), (i - 1) % 32 + 1, 1000 + i, 0, 2) end
+    for i = 1, count do
+        item(math.floor((i - 1) / 32), (i - 1) % 32 + 1, 1000 + i, 0, 2)
+    end
 end
 local function open()
     APR.npcInteraction:HandleMerchant("MERCHANT_SHOW", step)
@@ -134,8 +155,13 @@ local function nativeAPI()
             local batch = {}
             for bag, contents in pairs(bags) do
                 for slot, info in pairs(contents) do
-                    if #batch < nativeLimit and not excluded[bag] and info.quality == 0
-                        and not info.hasNoValue and not info.isLocked then
+                    if
+                        #batch < nativeLimit
+                        and not excluded[bag]
+                        and info.quality == 0
+                        and not info.hasNoValue
+                        and not info.isLocked
+                    then
                         info.isLocked = true
                         batch[#batch + 1] = { bag = bag, slot = slot, info = info }
                     end
@@ -172,7 +198,8 @@ assert(activeTimers() == 0 and not APR.npcInteraction.autoVendorState)
 reset()
 fill(3)
 saleDelay = 1.5
-open(); tick(1.2)
+open()
+tick(1.2)
 assert(requests == 1 and #printed == 0, "Do not abandon a locked request when the acknowledgement is slow")
 tick(5)
 assert(sold == 3 and requests == 3 and printed[1] == "Sold 30")
@@ -199,10 +226,14 @@ nativeAPI()
 C_MerchantFrame.SellAllJunkItems = function()
     nativeCalls = nativeCalls + 1
     for slot = 1, 5 do
-        C_Timer.NewTimer(slot * 0.6, function() bags[0][slot] = nil; sold = sold + 1 end)
+        C_Timer.NewTimer(slot * 0.6, function()
+            bags[0][slot] = nil
+            sold = sold + 1
+        end)
     end
 end
-open(); tick(4)
+open()
+tick(4)
 assert(nativeCalls == 1 and sold == 5 and printed[1] == "Sold 50" and activeTimers() == 0)
 
 -- Both paths use the fallback when the merchant disables the native feature or it fails.
@@ -214,7 +245,8 @@ for _, mode in ipairs({ "disabled", "missing", "error" }) do
         if mode == "disabled" then nativeEnabled = false end
         if mode == "missing" then C_MerchantFrame.SellAllJunkItems = nil end
         if mode == "error" then nativeError = true end
-        open(); tick(15)
+        open()
+        tick(15)
         assert(sold == 45 and requests == 45 and advances == (route and 1 or 0), mode)
         assert(nativeCalls == (mode == "error" and 1 or 0))
     end
@@ -227,9 +259,13 @@ for _, native in ipairs({ false, true }) do
     item(5, 1, 200, 1, 4)
     item(5, 2, 201, 2)
     equipment[16] = 202
-    if native then nativeAPI(); nativeLimit = 12 end
+    if native then
+        nativeAPI()
+        nativeLimit = 12
+    end
     npc = 99
-    open(); tick(0.5)
+    open()
+    tick(0.5)
     assert(sold == 0 and requests == 0 and nativeCalls == 0 and advances == 0)
     assert(activeTimers() == 0, "A different NPC must not keep refreshing the route")
     npc = 42
@@ -264,12 +300,14 @@ end
 reset()
 fill(2)
 modifier = true
-open(); tick(1)
+open()
+tick(1)
 assert(requests == 0 and activeTimers() == 0, "Holding a modifier when opening opts out of automatic selling")
 reset()
 local uncached = item(0, 1, 100)
 uncached.quality, prices[100] = nil, nil
-open(); tick(0.5)
+open()
+tick(0.5)
 assert(requests == 0 and APR.npcInteraction.autoVendorState, "Unknown quality cannot complete a junk sale")
 uncached.quality = 0
 tick(1)
@@ -316,10 +354,12 @@ item(0, 9, 99, 0, 1, true)
 GetContainerNumSlots, UseContainerItem = containers.GetContainerNumSlots, containers.UseContainerItem
 function GetContainerItemInfo(bag, slot)
     local info = containers.GetContainerItemInfo(bag, slot)
-    if info then return nil, info.stackCount, info.isLocked, info.quality, nil, nil, nil, nil,
-        info.hasNoValue, info.itemID end
+    if info then
+        return nil, info.stackCount, info.isLocked, info.quality, nil, nil, nil, nil, info.hasNoValue, info.itemID
+    end
 end
 C_Container = nil
-open(); tick(3)
+open()
+tick(3)
 assert(sold == 8 and bags[0][9] and activeTimers() == 0)
 print("Merchant sales: native/fallback, large inventories, acknowledgements, retries and cancellation passed")

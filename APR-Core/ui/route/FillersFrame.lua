@@ -21,49 +21,73 @@ local HEADER_HEIGHT, CONTENT_PADDING = 22, 5
 ---------------------------------------------------------------------------------------
 
 -- Create the Fillers frame
-local FillersFrame = APR:CreateStandardFrame("FillersScreenPanel", UIParent, FRAME_WIDTH, 30, "BackdropTemplate",
-    {preserveBackground = true, roundedGameplay = true})
+local FillersFrame = APR:CreateStandardFrame(
+    "FillersScreenPanel",
+    UIParent,
+    FRAME_WIDTH,
+    30,
+    "BackdropTemplate",
+    { preserveBackground = true, roundedGameplay = true }
+)
 FillersFrame:Hide()
 
 -- Setup drag and drop for the frame
-APR:SetupFrameDrag(FillersFrame, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/FillersFrame.lua:29:callback#1", --[[/APR_DIAG]]function()
-    -- Defensive nil check: settings may not be initialized yet
-    local profile = APR:GetSettingsProfile()
-    local shouldAllowDrag = profile and profile.fillersFrameSnapToCurrentStep
-    return not InCombatLockdown() and not shouldAllowDrag
-end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/FillersFrame.lua:34:callback#2", --[[/APR_DIAG]]function()
-    LibWindow.SavePosition(FillersFrame)
-end--[[APR_DIAG]])--[[/APR_DIAG]])
+APR:SetupFrameDrag(
+    FillersFrame, --[[APR_DIAG]]
+    APRTrace("APR-Core/ui/route/FillersFrame.lua:29:callback#1", --[[/APR_DIAG]] function()
+        -- Defensive nil check: settings may not be initialized yet
+        local profile = APR:GetSettingsProfile()
+        local shouldAllowDrag = profile and profile.fillersFrameSnapToCurrentStep
+        return not InCombatLockdown() and not shouldAllowDrag
+    end--[[APR_DIAG]]) --[[/APR_DIAG]], --[[APR_DIAG]]
+    APRTrace(
+        "APR-Core/ui/route/FillersFrame.lua:34:callback#2", --[[/APR_DIAG]]
+        function()
+            LibWindow.SavePosition(FillersFrame)
+        end --[[APR_DIAG]]
+    ) --[[/APR_DIAG]]
+)
 
 -- Create the step holder frame for fillers
-local FillersFrame_StepHolder = CreateFrame("Frame", "FillersFrame_StepHolder", FillersFrame,
-    "BackdropTemplate")
+local FillersFrame_StepHolder = CreateFrame("Frame", "FillersFrame_StepHolder", FillersFrame, "BackdropTemplate")
 FillersFrame_StepHolder:SetAllPoints()
 
 -- Create the fillers header
-local FillersFrameHeader = APR:CreateFrameHeader("FillersFrameHeader", FillersFrame, L["STEP_FILLERS"], nil,
-    "fillers")
+local FillersFrameHeader = APR:CreateFrameHeader("FillersFrameHeader", FillersFrame, L["STEP_FILLERS"], nil, "fillers")
 
 -- Setup drag and drop for the header
-APR:SetupHeaderDrag(FillersFrameHeader, FillersFrame, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/FillersFrame.lua:48:callback#3", --[[/APR_DIAG]]function()
-    local profile = APR:GetSettingsProfile()
+APR:SetupHeaderDrag(
+    FillersFrameHeader,
+    FillersFrame, --[[APR_DIAG]]
+    APRTrace("APR-Core/ui/route/FillersFrame.lua:48:callback#3", --[[/APR_DIAG]] function()
+        local profile = APR:GetSettingsProfile()
 
-    -- Defensive nil check: settings may not be initialized yet
-    local shouldAllowDrag = profile and profile.fillersFrameSnapToCurrentStep
-    return not InCombatLockdown() and not shouldAllowDrag
-end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/FillersFrame.lua:54:callback#4", --[[/APR_DIAG]]function()
-    LibWindow.SavePosition(FillersFrame)
-end--[[APR_DIAG]])--[[/APR_DIAG]])
+        -- Defensive nil check: settings may not be initialized yet
+        local shouldAllowDrag = profile and profile.fillersFrameSnapToCurrentStep
+        return not InCombatLockdown() and not shouldAllowDrag
+    end--[[APR_DIAG]]) --[[/APR_DIAG]], --[[APR_DIAG]]
+    APRTrace(
+        "APR-Core/ui/route/FillersFrame.lua:54:callback#4", --[[/APR_DIAG]]
+        function()
+            LibWindow.SavePosition(FillersFrame)
+        end --[[APR_DIAG]]
+    ) --[[/APR_DIAG]]
+)
 
 -- Setup minimize button for Fillers frame
-APR:SetupMinimizeButton(FillersFrameHeader, FillersFrame, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/FillersFrame.lua:59:callback#5", --[[/APR_DIAG]]function()
-    -- Collapse
-    FillersFrame.collapsed = true
-    APR.fillersFrame:RefreshFillersFrame(true)
-end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/FillersFrame.lua:63:callback#6", --[[/APR_DIAG]]function()
-    -- Expand
-    APR.fillersFrame:SetDefaultDisplay()
-end--[[APR_DIAG]])--[[/APR_DIAG]])
+APR:SetupMinimizeButton(
+    FillersFrameHeader,
+    FillersFrame, --[[APR_DIAG]]
+    APRTrace("APR-Core/ui/route/FillersFrame.lua:59:callback#5", --[[/APR_DIAG]] function()
+        -- Collapse
+        FillersFrame.collapsed = true
+        APR.fillersFrame:RefreshFillersFrame(true)
+    end--[[APR_DIAG]]) --[[/APR_DIAG]], --[[APR_DIAG]]
+    APRTrace("APR-Core/ui/route/FillersFrame.lua:63:callback#6", --[[/APR_DIAG]] function()
+        -- Expand
+        APR.fillersFrame:SetDefaultDisplay()
+    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+)
 
 ---------------------------------------------------------------------------------------
 ---------------------------------- Fillers Methods ------------------------------------
@@ -83,18 +107,31 @@ function APR.fillersFrame:OnInit()
 
     self:UpdateFrameScale()
     self:RefreshFillersFrame(true) -- Force refresh on init
-end--[[APR_DIAG]]; APR.fillersFrame.OnInit = APRTrace("APR-Core/ui/route/FillersFrame.lua:72:APR.fillersFrame:OnInit#7", APR.fillersFrame.OnInit)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.fillersFrame.OnInit =
+    APRTrace("APR-Core/ui/route/FillersFrame.lua:72:APR.fillersFrame:OnInit#7", APR.fillersFrame.OnInit)--[[/APR_DIAG]]
 
 function APR.fillersFrame:SetDefaultDisplay()
     FillersFrame.collapsed = false
     self:RefreshFillersFrame(true)
-end--[[APR_DIAG]]; APR.fillersFrame.SetDefaultDisplay = APRTrace("APR-Core/ui/route/FillersFrame.lua:88:APR.fillersFrame:SetDefaultDisplay#8", APR.fillersFrame.SetDefaultDisplay)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.fillersFrame.SetDefaultDisplay = APRTrace(
+    "APR-Core/ui/route/FillersFrame.lua:88:APR.fillersFrame:SetDefaultDisplay#8",
+    APR.fillersFrame.SetDefaultDisplay
+)--[[/APR_DIAG]]
 
 -- Update the frame scale
 function APR.fillersFrame:UpdateFrameScale()
-    if InCombatLockdown() then self.pendingRefresh = true; return end
+    if InCombatLockdown() then
+        self.pendingRefresh = true
+        return
+    end
     LibWindow.SetScale(FillersFrame, APR.settings.profile.currentStepScale)
-end--[[APR_DIAG]]; APR.fillersFrame.UpdateFrameScale = APRTrace("APR-Core/ui/route/FillersFrame.lua:94:APR.fillersFrame:UpdateFrameScale#9", APR.fillersFrame.UpdateFrameScale)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.fillersFrame.UpdateFrameScale = APRTrace(
+    "APR-Core/ui/route/FillersFrame.lua:94:APR.fillersFrame:UpdateFrameScale#9",
+    APR.fillersFrame.UpdateFrameScale
+)--[[/APR_DIAG]]
 
 -- Content shares the current-step transaction, so Reset/Add calls never hide
 -- an unchanged panel between two update passes.
@@ -109,7 +146,8 @@ local function MeasureRow(container)
             APR.fillersFrame.layoutDirty = true
         end
     end
-end--[[APR_DIAG]]; MeasureRow = APRTrace("APR-Core/ui/route/FillersFrame.lua:101:MeasureRow#10", MeasureRow)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+MeasureRow = APRTrace("APR-Core/ui/route/FillersFrame.lua:101:MeasureRow#10", MeasureRow)--[[/APR_DIAG]]
 
 local function ShowQuestTooltip(container)
     GameTooltip:SetOwner(container, "ANCHOR_BOTTOM")
@@ -120,9 +158,11 @@ local function ShowQuestTooltip(container)
         includeStoryline = true,
     })
     GameTooltip:Show()
-end--[[APR_DIAG]]; ShowQuestTooltip = APRTrace("APR-Core/ui/route/FillersFrame.lua:114:ShowQuestTooltip#11", ShowQuestTooltip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+ShowQuestTooltip = APRTrace("APR-Core/ui/route/FillersFrame.lua:114:ShowQuestTooltip#11", ShowQuestTooltip)--[[/APR_DIAG]]
 
-local function HideTooltip() GameTooltip:Hide() end--[[APR_DIAG]]; HideTooltip = APRTrace("APR-Core/ui/route/FillersFrame.lua:125:HideTooltip#12", HideTooltip)--[[/APR_DIAG]]
+local function HideTooltip() GameTooltip:Hide() end--[[APR_DIAG]]
+HideTooltip = APRTrace("APR-Core/ui/route/FillersFrame.lua:125:HideTooltip#12", HideTooltip)--[[/APR_DIAG]]
 
 function APR.fillersFrame:SetContentWidth(width)
     if InCombatLockdown() or FRAME_WIDTH == width then return end
@@ -134,7 +174,11 @@ function APR.fillersFrame:SetContentWidth(width)
         if row.rowKind == "preview" then APR.currentStepImagePreview:RefreshPreviewLayout(row) end
     end
     self:ReOrderFillerSteps()
-end--[[APR_DIAG]]; APR.fillersFrame.SetContentWidth = APRTrace("APR-Core/ui/route/FillersFrame.lua:127:APR.fillersFrame:SetContentWidth#13", APR.fillersFrame.SetContentWidth)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.fillersFrame.SetContentWidth = APRTrace(
+    "APR-Core/ui/route/FillersFrame.lua:127:APR.fillersFrame:SetContentWidth#13",
+    APR.fillersFrame.SetContentWidth
+)--[[/APR_DIAG]]
 
 function APR.fillersFrame:AddFillerStep(questID, text, objectiveIndex)
     if not APR.settings.profile.currentStepShow then return end
@@ -146,18 +190,22 @@ function APR.fillersFrame:AddFillerStep(questID, text, objectiveIndex)
         container = nil
     end
     if not container then
-        container = currentStep:AcquirePooledRow(FillersFrame_StepHolder, "filler") or
-            APR:CreateStepTextContainer(FillersFrame_StepHolder, FRAME_WIDTH, text, false,
-            nil, nil, true, "fillers")
+        container = currentStep:AcquirePooledRow(FillersFrame_StepHolder, "filler")
+            or APR:CreateStepTextContainer(FillersFrame_StepHolder, FRAME_WIDTH, text, false, nil, nil, true, "fillers")
         container.rowKind, container.key = "filler", key
         -- The panel owns the fill; transparent rows must stay transparent after theme refreshes.
-        APR:SetPanelColor(container, {0, 0, 0, 0})
+        APR:SetPanelColor(container, { 0, 0, 0, 0 })
         container:SetWidth(FRAME_WIDTH)
         container.font:ClearAllPoints()
         container.font:SetPoint("TOPLEFT", TEXT_PADDING, -5)
         container.font:SetWidth(FRAME_WIDTH - TEXT_PADDING * 2)
         APR:RegisterFontString(container.font, "fillers", {
-            role = "base", onApplied = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/FillersFrame.lua:160:callback#15", --[[/APR_DIAG]]function() MeasureRow(container) end--[[APR_DIAG]])--[[/APR_DIAG]],
+            role = "base",
+            --[[APR_DIAG]]
+            onApplied = APRTrace(
+                "APR-Core/ui/route/FillersFrame.lua:160:callback#15", --[[/APR_DIAG]]
+                function() MeasureRow(container) end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]],
         })
         container:SetScript("OnEnter", ShowQuestTooltip)
         container:SetScript("OnLeave", HideTooltip)
@@ -168,7 +216,9 @@ function APR.fillersFrame:AddFillerStep(questID, text, objectiveIndex)
     if container.font:GetText() ~= "- " .. text then container.font:SetText("- " .. text) end
     currentStep:MaybeAttachRaidIconButton(key)
     self:ReOrderFillerSteps()
-end--[[APR_DIAG]]; APR.fillersFrame.AddFillerStep = APRTrace("APR-Core/ui/route/FillersFrame.lua:139:APR.fillersFrame:AddFillerStep#14", APR.fillersFrame.AddFillerStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.fillersFrame.AddFillerStep =
+    APRTrace("APR-Core/ui/route/FillersFrame.lua:139:APR.fillersFrame:AddFillerStep#14", APR.fillersFrame.AddFillerStep)--[[/APR_DIAG]]
 
 function APR.fillersFrame:UpdateFillerStep(questID, text, objectiveIndex)
     local container = APR.currentStep.fillersList[questID .. "-" .. (objectiveIndex or 0)]
@@ -178,11 +228,18 @@ function APR.fillersFrame:UpdateFillerStep(questID, text, objectiveIndex)
         container.font:SetText("- " .. text)
         self:ReOrderFillerSteps()
     end
-end--[[APR_DIAG]]; APR.fillersFrame.UpdateFillerStep = APRTrace("APR-Core/ui/route/FillersFrame.lua:173:APR.fillersFrame:UpdateFillerStep#16", APR.fillersFrame.UpdateFillerStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.fillersFrame.UpdateFillerStep = APRTrace(
+    "APR-Core/ui/route/FillersFrame.lua:173:APR.fillersFrame:UpdateFillerStep#16",
+    APR.fillersFrame.UpdateFillerStep
+)--[[/APR_DIAG]]
 
 function APR.fillersFrame:ReOrderFillerSteps()
     self.layoutDirty = true
-    if APR.currentStep.questUpdateDepth then APR.currentStep.questFillerLayoutPending = true; return end
+    if APR.currentStep.questUpdateDepth then
+        APR.currentStep.questFillerLayoutPending = true
+        return
+    end
     if APR.currentStep.contentUpdateActive then return end
     APR.currentStep.questFillerLayoutPending = nil
     self.layoutDirty = false
@@ -201,18 +258,23 @@ function APR.fillersFrame:ReOrderFillerSteps()
         end
     end
     -- Quest then objective order is stable even when the quest log uses pairs().
-    table.sort(keys, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/FillersFrame.lua:204:callback#18", --[[/APR_DIAG]]function(a, b)
-        local left, right = APR.currentStep.fillersList[a], APR.currentStep.fillersList[b]
-        local leftID, rightID = tonumber(left.questID), tonumber(right.questID)
-        if leftID and rightID and leftID ~= rightID then return leftID < rightID end
-        if tostring(left.questID) ~= tostring(right.questID) then return tostring(left.questID) < tostring(right.questID) end
-        if (left.rowKind == "preview") ~= (right.rowKind == "preview") then
-            return right.rowKind == "preview"
-        end
-        local leftIndex, rightIndex = tonumber(left.objectiveIndex) or 0, tonumber(right.objectiveIndex) or 0
-        if leftIndex ~= rightIndex then return leftIndex < rightIndex end
-        return tostring(a) < tostring(b)
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    table.sort(
+        keys, --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/route/FillersFrame.lua:204:callback#18", --[[/APR_DIAG]] function(a, b)
+            local left, right = APR.currentStep.fillersList[a], APR.currentStep.fillersList[b]
+            local leftID, rightID = tonumber(left.questID), tonumber(right.questID)
+            if leftID and rightID and leftID ~= rightID then return leftID < rightID end
+            if tostring(left.questID) ~= tostring(right.questID) then
+                return tostring(left.questID) < tostring(right.questID)
+            end
+            if (left.rowKind == "preview") ~= (right.rowKind == "preview") then
+                return right.rowKind == "preview"
+            end
+            local leftIndex, rightIndex = tonumber(left.objectiveIndex) or 0, tonumber(right.objectiveIndex) or 0
+            if leftIndex ~= rightIndex then return leftIndex < rightIndex end
+            return tostring(a) < tostring(b)
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     local offset = CONTENT_PADDING
     for _, key in ipairs(keys) do
         local container = APR.currentStep.fillersList[key]
@@ -230,12 +292,23 @@ function APR.fillersFrame:ReOrderFillerSteps()
     end
     self.contentHeight = offset + CONTENT_PADDING
     self:RefreshFillersFrame(true)
-end--[[APR_DIAG]]; APR.fillersFrame.ReOrderFillerSteps = APRTrace("APR-Core/ui/route/FillersFrame.lua:183:APR.fillersFrame:ReOrderFillerSteps#17", APR.fillersFrame.ReOrderFillerSteps)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.fillersFrame.ReOrderFillerSteps = APRTrace(
+    "APR-Core/ui/route/FillersFrame.lua:183:APR.fillersFrame:ReOrderFillerSteps#17",
+    APR.fillersFrame.ReOrderFillerSteps
+)--[[/APR_DIAG]]
 
-function APR.fillersFrame:RefreshTextLayout() self:ReOrderFillerSteps() end--[[APR_DIAG]]; APR.fillersFrame.RefreshTextLayout = APRTrace("APR-Core/ui/route/FillersFrame.lua:235:APR.fillersFrame:RefreshTextLayout#19", APR.fillersFrame.RefreshTextLayout)--[[/APR_DIAG]]
+function APR.fillersFrame:RefreshTextLayout() self:ReOrderFillerSteps() end--[[APR_DIAG]]
+APR.fillersFrame.RefreshTextLayout = APRTrace(
+    "APR-Core/ui/route/FillersFrame.lua:235:APR.fillersFrame:RefreshTextLayout#19",
+    APR.fillersFrame.RefreshTextLayout
+)--[[/APR_DIAG]]
 
 function APR.fillersFrame:FlushPendingLayout(force)
-    if InCombatLockdown() then self:RefreshFillersFrame(true); return end
+    if InCombatLockdown() then
+        self:RefreshFillersFrame(true)
+        return
+    end
     if self.pendingPositionReset then
         self.pendingPositionReset = nil
         self:ResetPosition()
@@ -245,7 +318,11 @@ function APR.fillersFrame:FlushPendingLayout(force)
     elseif self.pendingRefresh then
         self:RefreshFillersFrame(true)
     end
-end--[[APR_DIAG]]; APR.fillersFrame.FlushPendingLayout = APRTrace("APR-Core/ui/route/FillersFrame.lua:237:APR.fillersFrame:FlushPendingLayout#20", APR.fillersFrame.FlushPendingLayout)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.fillersFrame.FlushPendingLayout = APRTrace(
+    "APR-Core/ui/route/FillersFrame.lua:237:APR.fillersFrame:FlushPendingLayout#20",
+    APR.fillersFrame.FlushPendingLayout
+)--[[/APR_DIAG]]
 
 function APR.fillersFrame:RemoveFillerSteps()
     local currentStep = APR.currentStep
@@ -258,7 +335,11 @@ function APR.fillersFrame:RemoveFillerSteps()
         end
     end
     self:ReOrderFillerSteps()
-end--[[APR_DIAG]]; APR.fillersFrame.RemoveFillerSteps = APRTrace("APR-Core/ui/route/FillersFrame.lua:250:APR.fillersFrame:RemoveFillerSteps#21", APR.fillersFrame.RemoveFillerSteps)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.fillersFrame.RemoveFillerSteps = APRTrace(
+    "APR-Core/ui/route/FillersFrame.lua:250:APR.fillersFrame:RemoveFillerSteps#21",
+    APR.fillersFrame.RemoveFillerSteps
+)--[[/APR_DIAG]]
 
 -- Check if any filler container should be shown
 local function HasActiveFillers()
@@ -268,12 +349,17 @@ local function HasActiveFillers()
         end
     end
     return false
-end--[[APR_DIAG]]; HasActiveFillers = APRTrace("APR-Core/ui/route/FillersFrame.lua:264:HasActiveFillers#22", HasActiveFillers)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+HasActiveFillers = APRTrace("APR-Core/ui/route/FillersFrame.lua:264:HasActiveFillers#22", HasActiveFillers)--[[/APR_DIAG]]
 
 local function SetShown(frame, shown)
-    if shown and not frame:IsShown() then frame:Show()
-    elseif not shown and frame:IsShown() then frame:Hide() end
-end--[[APR_DIAG]]; SetShown = APRTrace("APR-Core/ui/route/FillersFrame.lua:273:SetShown#23", SetShown)--[[/APR_DIAG]]
+    if shown and not frame:IsShown() then
+        frame:Show()
+    elseif not shown and frame:IsShown() then
+        frame:Hide()
+    end
+end--[[APR_DIAG]]
+SetShown = APRTrace("APR-Core/ui/route/FillersFrame.lua:273:SetShown#23", SetShown)--[[/APR_DIAG]]
 
 -- Apply only the final geometry. Combat work is replayed from the current state
 -- after PLAYER_REGEN_ENABLED; no timer or per-frame polling is needed.
@@ -283,7 +369,10 @@ function APR.fillersFrame:RefreshFillersFrame(forceRefresh)
         self.pendingRefresh = true
         return
     end
-    if APR.currentStep.contentUpdateActive then self.pendingRefresh = true; return end
+    if APR.currentStep.contentUpdateActive then
+        self.pendingRefresh = true
+        return
+    end
     local profile = APR:GetSettingsProfile()
     if not profile then return end
     local visible = not APR:ShouldHideFrames() and not self.hiddenByCurrentStep and HasActiveFillers()
@@ -313,7 +402,8 @@ function APR.fillersFrame:RefreshFillersFrame(forceRefresh)
             if anchor then
                 local gap = profile.fillersFrameSnapGap or 0
                 APR:SnapFrameToAnchor(FillersFrame, anchor, anchorHeight, gap, showHeader and HEADER_HEIGHT or nil)
-                self.anchor, self.anchorHeight, self.anchorGap, self.anchorHeader = anchor, anchorHeight, gap, showHeader
+                self.anchor, self.anchorHeight, self.anchorGap, self.anchorHeader =
+                    anchor, anchorHeight, gap, showHeader
             elseif APR.SetFrameSnapAnchor then
                 APR:SetFrameSnapAnchor(FillersFrame, nil)
             end
@@ -335,7 +425,11 @@ function APR.fillersFrame:RefreshFillersFrame(forceRefresh)
     end
     if APR.AFK and APR.AFK.RefreshFrameAnchor then APR.AFK:RefreshFrameAnchor() end
     if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then APR.questOrderList:ApplySnapAnchor() end
-end--[[APR_DIAG]]; APR.fillersFrame.RefreshFillersFrame = APRTrace("APR-Core/ui/route/FillersFrame.lua:280:APR.fillersFrame:RefreshFillersFrame#24", APR.fillersFrame.RefreshFillersFrame)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.fillersFrame.RefreshFillersFrame = APRTrace(
+    "APR-Core/ui/route/FillersFrame.lua:280:APR.fillersFrame:RefreshFillersFrame#24",
+    APR.fillersFrame.RefreshFillersFrame
+)--[[/APR_DIAG]]
 
 -- Update background color of fillers frame
 function APR.fillersFrame:UpdateBackgroundColorAlpha(color)
@@ -345,21 +439,32 @@ function APR.fillersFrame:UpdateBackgroundColorAlpha(color)
     if FillersFrame then
         APR:SetPanelColor(FillersFrame, rgba)
     end
-end--[[APR_DIAG]]; APR.fillersFrame.UpdateBackgroundColorAlpha = APRTrace("APR-Core/ui/route/FillersFrame.lua:341:APR.fillersFrame:UpdateBackgroundColorAlpha#25", APR.fillersFrame.UpdateBackgroundColorAlpha)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.fillersFrame.UpdateBackgroundColorAlpha = APRTrace(
+    "APR-Core/ui/route/FillersFrame.lua:341:APR.fillersFrame:UpdateBackgroundColorAlpha#25",
+    APR.fillersFrame.UpdateBackgroundColorAlpha
+)--[[/APR_DIAG]]
 
 function APR.fillersFrame:Hide()
     self.hiddenByCurrentStep = true
     self:RefreshFillersFrame(true)
-end--[[APR_DIAG]]; APR.fillersFrame.Hide = APRTrace("APR-Core/ui/route/FillersFrame.lua:350:APR.fillersFrame:Hide#26", APR.fillersFrame.Hide)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.fillersFrame.Hide =
+    APRTrace("APR-Core/ui/route/FillersFrame.lua:350:APR.fillersFrame:Hide#26", APR.fillersFrame.Hide)--[[/APR_DIAG]]
 
 function APR.fillersFrame:Show()
     self.hiddenByCurrentStep = false
     self:RefreshFillersFrame(true)
-end--[[APR_DIAG]]; APR.fillersFrame.Show = APRTrace("APR-Core/ui/route/FillersFrame.lua:355:APR.fillersFrame:Show#27", APR.fillersFrame.Show)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.fillersFrame.Show =
+    APRTrace("APR-Core/ui/route/FillersFrame.lua:355:APR.fillersFrame:Show#27", APR.fillersFrame.Show)--[[/APR_DIAG]]
 
 -- Reset the frame position
 function APR.fillersFrame:ResetPosition()
-    if InCombatLockdown() then self.pendingPositionReset = true; return end
+    if InCombatLockdown() then
+        self.pendingPositionReset = true
+        return
+    end
     self.anchor = nil
     if APR.settings.profile.fillersFrameSnapToCurrentStep then
         -- If snapped, just refresh to re-snap
@@ -391,7 +496,9 @@ function APR.fillersFrame:ResetPosition()
         -- Save the new position
         LibWindow.SavePosition(FillersFrame)
     end
-end--[[APR_DIAG]]; APR.fillersFrame.ResetPosition = APRTrace("APR-Core/ui/route/FillersFrame.lua:361:APR.fillersFrame:ResetPosition#28", APR.fillersFrame.ResetPosition)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.fillersFrame.ResetPosition =
+    APRTrace("APR-Core/ui/route/FillersFrame.lua:361:APR.fillersFrame:ResetPosition#28", APR.fillersFrame.ResetPosition)--[[/APR_DIAG]]
 
 -- Export frames for external access
 APR.fillersFrame.Frame = FillersFrame

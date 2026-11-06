@@ -1,7 +1,11 @@
-local L = setmetatable({ MANUAL_SKIP = "Manually skip this step if it does not complete automatically" },
-    { __index = function(_, key) return key end })
+local L = setmetatable(
+    { MANUAL_SKIP = "Manually skip this step if it does not complete automatically" },
+    { __index = function(_, key) return key end }
+)
 BOSS, ENTER_DUNGEON, LEAVE_ZONE = "Boss", "Enter Dungeon", "Leave %s"
-function LibStub() return { GetLocale = function() return L end } end
+function LibStub()
+    return { GetLocale = function() return L end }
+end
 local eventHandler
 WOW_PROJECT_ID, WOW_PROJECT_CAMELOT = 14, 14
 local registered = {}
@@ -16,8 +20,13 @@ function IsInInstance() return inside, instanceType end
 function GetInstanceInfo() return "instance", instanceType, 0, "", 0, 0, false, instanceID end
 local step = { EnterInstance = { dungeonKey = "RFC" }, Dungeon = "RFC", InstanceQuest = true }
 local advanced, refreshes, labels = 0, 0, {}
-APR = { PlayerID = "one", ActiveRoute = "rfc", stepHandlers = {}, currentStep = {},
-    settings = { profile = { enableAddon = true } } }
+APR = {
+    PlayerID = "one",
+    ActiveRoute = "rfc",
+    stepHandlers = {},
+    currentStep = {},
+    settings = { profile = { enableAddon = true } },
+}
 APRData = { one = { rfc = 1 }, two = { rfc = 1 } }
 function APR:GetCurrentStep() return step end
 function APR:UpdateNextStep() advanced = advanced + 1 end
@@ -41,12 +50,10 @@ assert(advanced == 1 and APR:IsInDungeonStepContext(step))
 
 -- Death observed on an earlier quest step counts at the later boss checkpoint.
 step = { Dungeon = "RFC", InstanceQuest = true, Qpart = { [5723] = { 1 } } }
-eventHandler(nil, "ENCOUNTER_END", 1, "Taragaman", 1, 5, 1,
-    { { creatureID = 11520, remainingHealthPercent = 0 } })
+eventHandler(nil, "ENCOUNTER_END", 1, "Taragaman", 1, 5, 1, { { creatureID = 11520, remainingHealthPercent = 0 } })
 assert(APR:GetDungeonRun("rfc", "RFC").kills[11520])
 assert(refreshes == 0, "Credit on an earlier quest step must not rebuild the step")
-step = { Dungeon = "RFC", InstanceQuest = true,
-    KillNPC = { dungeonKey = "RFC", npcID = 11520, name = "Taragaman" } }
+step = { Dungeon = "RFC", InstanceQuest = true, KillNPC = { dungeonKey = "RFC", npcID = 11520, name = "Taragaman" } }
 APR:RenderDungeonKill(step, true)
 assert(advanced == 2)
 local saved = APR:GetDungeonRun("rfc", "RFC")
@@ -58,8 +65,7 @@ APR:RenderDungeonKill(step, true)
 assert(advanced == 2, "Other characters have separate runs")
 APR.PlayerID = "one"
 instanceID = 43
-eventHandler(nil, "ENCOUNTER_END", 1, "Taragaman", 1, 5, 1,
-    { { creatureID = 11520, remainingHealthPercent = 0 } })
+eventHandler(nil, "ENCOUNTER_END", 1, "Taragaman", 1, 5, 1, { { creatureID = 11520, remainingHealthPercent = 0 } })
 assert(refreshes == 0, "Matching NPC IDs in another instance must not refresh the step")
 APR:RenderDungeonKill(step, true)
 assert(advanced == 2, "Matching NPC ID in the wrong instance cannot count")
@@ -95,19 +101,28 @@ step = { Dungeon = "RFC", KillNPC = { dungeonKey = "RFC", npcID = 11520 } }
 local deadBoss = { { creatureID = 11520, remainingHealthPercent = 0 } }
 eventHandler(nil, "ENCOUNTER_END", 1, "Taragaman", 1, 5, 0, deadBoss)
 eventHandler(nil, "ENCOUNTER_END", 1, "Taragaman", 1, 5, 1)
-eventHandler(nil, "ENCOUNTER_END", 1, "Taragaman", 1, 5, 1,
-    { { creatureID = 11520, remainingHealthPercent = 10 },
-      { creatureID = 11518 }, { remainingHealthPercent = 0 },
-      { creatureID = 11319, remainingHealthPercent = 0 } })
+eventHandler(nil, "ENCOUNTER_END", 1, "Taragaman", 1, 5, 1, {
+    { creatureID = 11520, remainingHealthPercent = 10 },
+    { creatureID = 11518 },
+    { remainingHealthPercent = 0 },
+    { creatureID = 11319, remainingHealthPercent = 0 },
+})
 assert(not APR:GetDungeonRun("rfc", "RFC"))
 assert(refreshes == 0)
 APR.settings.profile.enableAddon = false
 eventHandler(nil, "ENCOUNTER_END", 1, "Taragaman", 1, 5, 1, deadBoss)
 assert(not APR:GetDungeonRun("rfc", "RFC"), "Disabled addon must ignore encounter credit")
 APR.settings.profile.enableAddon = true
-eventHandler(nil, "ENCOUNTER_END", 1, "Taragaman", 1, 5, 1,
-    { { creatureID = 11520, remainingHealthPercent = 0 },
-      { creatureID = 11518, remainingHealthPercent = 0 } })
+eventHandler(
+    nil,
+    "ENCOUNTER_END",
+    1,
+    "Taragaman",
+    1,
+    5,
+    1,
+    { { creatureID = 11520, remainingHealthPercent = 0 }, { creatureID = 11518, remainingHealthPercent = 0 } }
+)
 assert(APR:GetDungeonRun("rfc", "RFC").kills[11520])
 assert(APR:GetDungeonRun("rfc", "RFC").kills[11518])
 assert(refreshes == 1, "Multiple kills refresh the current boss checkpoint only once")
@@ -116,8 +131,7 @@ assert(refreshes == 1, "Multiple kills refresh the current boss checkpoint only 
 APR.ActiveRoute = "dm"
 step = { Dungeon = "DM", KillNPC = { dungeonKey = "DM", npcID = 644, name = "Rhahk'Zor" } }
 inside, instanceID, instanceType = true, 36, "party"
-eventHandler(nil, "ENCOUNTER_END", 2, "Rhahk'Zor", 1, 5, 1,
-    { { creatureID = 274298, remainingHealthPercent = 0 } })
+eventHandler(nil, "ENCOUNTER_END", 2, "Rhahk'Zor", 1, 5, 1, { { creatureID = 274298, remainingHealthPercent = 0 } })
 assert(APR:GetDungeonRun("dm", "DM").kills[644])
 assert(not APR:GetDungeonRun("dm", "DM").kills[274298], "Alias credit uses the canonical checkpoint")
 instanceID = 3065

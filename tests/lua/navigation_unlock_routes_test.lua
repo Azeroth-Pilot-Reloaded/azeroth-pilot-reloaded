@@ -11,10 +11,13 @@ data.env.isQuestActive = function(id) return active[id] == true end
 data.env.isQuestCompletedOnAccount = function() return false end
 data.env.getCharacter = function() return { level = 90, faction = "Alliance", mapID = 101 } end
 local timers = {}
-C_Timer = { NewTimer = function(_, callback)
-    local timer = { callback = callback, Cancel = function(self) self.cancelled = true end }
-    timers[#timers+1] = timer; return timer
-end }
+C_Timer = {
+    NewTimer = function(_, callback)
+        local timer = { callback = callback, Cancel = function(self) self.cancelled = true end }
+        timers[#timers + 1] = timer
+        return timer
+    end,
+}
 function debugprofilestop() return 0 end
 function UnitIsDeadOrGhost() return false end
 function UnitOnTaxi() return false end
@@ -61,8 +64,11 @@ dofile("APR-Core/features/navigation/Navigation.lua")
 dofile("APR-Core/features/navigation/NavigationUnlocks.lua")
 local nav = APR.navigation
 nav.destination = { x = 99, y = 44, instanceID = 3, uiMapID = 105 }
-local edge = { id = "karesh", from = { uiMapID = 101 },
-    blockedRequirements = { minLevel = 80, any = { { quest = 12 }, { questActive = 12 } } } }
+local edge = {
+    id = "karesh",
+    from = { uiMapID = 101 },
+    blockedRequirements = { minLevel = 80, any = { { quest = 12 }, { questActive = 12 } } },
+}
 local function drain()
     for _ = 1, 10000 do
         local timer = table.remove(timers, 1)
@@ -76,51 +82,74 @@ drain()
 local step = assert(APR:GetNavigationUnlockStep())
 assert(step.unlockAction.questID == 11 and step.unlockAction.kind == "accept")
 local target = assert(nav:GetDestination(step))
-assert(target.phaseAgnostic and target.accessKey == "fixture-observer-approach",
-    "The host preserves observer access metadata through its temporary coordinate representation")
+assert(
+    target.phaseAgnostic and target.accessKey == "fixture-observer-approach",
+    "The host preserves observer access metadata through its temporary coordinate representation"
+)
 assert(nav:GetActiveStep().kind == "unlock" and nav:IsNavigating(), "Arrival displays the native quest action")
 assert(APR.ActiveRoute == "parent" and APRData.test.parent == 8 and APRCustomPath.test[1] == "parent")
-assert(not APRData.test.TemporaryRouteState and APRData.test.NavigationUnlockState,
-    "Only a library checkpoint is persisted; APR's temporary route state stays unused")
+assert(
+    not APRData.test.TemporaryRouteState and APRData.test.NavigationUnlockState,
+    "Only a library checkpoint is persisted; APR's temporary route state stays unused"
+)
 assert(nav:IsObjectiveCurrent(nav._routeInputs), "The unlock target participates in normal stale-result protection")
-APR.navigationPreview = { Build = function(_, _, target)
-    assert(target == APR:GetNavigationUnlockStep(), "The map previews the unlock target while the original destination is blocked")
-end }
+APR.navigationPreview = {
+    Build = function(_, _, target)
+        assert(
+            target == APR:GetNavigationUnlockStep(),
+            "The map previews the unlock target while the original destination is blocked"
+        )
+    end,
+}
 nav:GetPreview()
 APR.navigationPreview = nil
 data.env.getQuestName = function(id) return "Loaded quest " .. id end
 APR:RefreshNavigationUnlockRoute()
-assert(nav:GetActiveStep().label:find("Loaded quest", 1, true), "Client names arriving later refresh the existing native action")
-nav:PollArrival(); drain()
+assert(
+    nav:GetActiveStep().label:find("Loaded quest", 1, true),
+    "Client names arriving later refresh the existing native action"
+)
+nav:PollArrival()
+drain()
 assert(APR:GetNavigationUnlockStep() == step, "Arrival alone does not advance the native quest action")
 active[11] = true
-nav:Update(); drain()
+nav:Update()
+drain()
 step = APR:GetNavigationUnlockStep()
 assert(step.unlockAction.kind == "turnin" and APRData.test.parent == 8)
 completed[11], active[11] = true, nil
-nav:Update(); drain()
+nav:Update()
+drain()
 assert(APR:GetNavigationUnlockStep().unlockAction.questID == 12)
 -- Simulate a reload with only the persisted standalone checkpoint.
 APR._navigationUnlock = nil
 assert(APR:RestoreNavigationUnlockRoute())
-nav:Update(); drain()
+nav:Update()
+drain()
 assert(APR:GetNavigationUnlockStep().unlockAction.questID == 12)
 active[12] = true
 assert(APR:RefreshNavigationUnlockRoute() == false and not APR._navigationUnlock)
-assert(not APRData.test.NavigationUnlockState and nav.dirty and APR.ActiveRoute == "parent" and APRData.test.parent == 8,
-    "Live access resumes the same authored step without incrementing its progress")
+assert(
+    not APRData.test.NavigationUnlockState and nav.dirty and APR.ActiveRoute == "parent" and APRData.test.parent == 8,
+    "Live access resumes the same authored step without incrementing its progress"
+)
 assert(not APR:StartNavigationUnlock({ edge }, context), "A retired detour is not forced repeatedly at one parent step")
 
 active, completed = {}, {}
 context = { route = "parent", index = 9 }
 assert(APR:StartNavigationUnlock({ edge }, context))
 context = { route = "another", index = 1 }
-APR:RefreshNavigationUnlockRoute(); drain()
-assert(not APR._navigationUnlock and not APRData.test.NavigationUnlockState,
-    "Changing the route or its step cancels the saved detour and stale callbacks")
+APR:RefreshNavigationUnlockRoute()
+drain()
+assert(
+    not APR._navigationUnlock and not APRData.test.NavigationUnlockState,
+    "Changing the route or its step cancels the saved detour and stale callbacks"
+)
 context = { route = "parent", index = 10 }
 assert(APR:StartNavigationUnlock({ edge }, context))
 nav:Cancel("disabled")
 drain()
 assert(not APR._navigationUnlock, "Disabling navigation releases the standalone session")
-print("Navigation unlock adapter: no APR routes/engine, native actions, reload, original progress, stale callbacks and cancellation passed")
+print(
+    "Navigation unlock adapter: no APR routes/engine, native actions, reload, original progress, stale callbacks and cancellation passed"
+)

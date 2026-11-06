@@ -20,13 +20,21 @@ profile.forceHideUiInPartyRaid, profile.currentStepShow, profile.enableAddon = f
 APR.routeconfig.HasRouteInCustomPath = function() return true end
 APR:ActivateRoute(nil)
 APR.RouteQuestStepList = {
-    contract = { label = "Synthetic instance guide", mapID = 10, expansion = APR.EXPANSIONS.Custom,
+    contract = {
+        label = "Synthetic instance guide",
+        mapID = 10,
+        expansion = APR.EXPANSIONS.Custom,
         steps = {
             { Note = "Ordinary objective", Fillers = { [9103] = { 1 } } },
             { Note = "Explicit instance objective", InstanceQuest = true, Fillers = { [9103] = { 1 } } },
-        } },
-    replacement = { label = "Synthetic replacement guide", mapID = 10, expansion = APR.EXPANSIONS.Custom,
-        steps = { { Note = "Replacement ordinary objective", Fillers = { [9103] = { 1 } } } } },
+        },
+    },
+    replacement = {
+        label = "Synthetic replacement guide",
+        mapID = 10,
+        expansion = APR.EXPANSIONS.Custom,
+        steps = { { Note = "Replacement ordinary objective", Fillers = { [9103] = { 1 } } } },
+    },
 }
 APRData.player.contract, APRData.player.replacement = 1, 1
 APRCustomPath.player = { "Synthetic instance guide" }
@@ -54,9 +62,15 @@ local function drain()
         local work = false
         for _, owner in ipairs({ APR.questOrderList, APR.questOrderList.virtualList }) do
             local frame = owner.renderFrame
-            if frame and frame.scripts.OnUpdate then frame.scripts.OnUpdate(); work = true end
+            if frame and frame.scripts.OnUpdate then
+                frame.scripts.OnUpdate()
+                work = true
+            end
         end
-        if #H.timers > 0 then H.frame(0.2); work = true end
+        if #H.timers > 0 then
+            H.frame(0.2)
+            work = true
+        end
         if not work then return end
     end
     error("A small synthetic instance guide must settle its UI work")
@@ -81,12 +95,18 @@ end
 -- Expected outcomes are authored independently of IsInstanceWithUI. PvP wins
 -- even over an InstanceQuest override; that override wins over a raid preference.
 for _, case in ipairs({
-    { "none", 1, false, true }, { "none", 1, true, true },
-    { "party", 1, false, true }, { "party", 1, true, false },
-    { "raid", 1, false, true }, { "raid", 1, true, false },
-    { "party", 2, true, true }, { "raid", 2, true, true },
-    { "pvp", 1, false, false }, { "pvp", 2, false, false },
-    { "arena", 1, false, false }, { "arena", 2, true, false },
+    { "none", 1, false, true },
+    { "none", 1, true, true },
+    { "party", 1, false, true },
+    { "party", 1, true, false },
+    { "raid", 1, false, true },
+    { "raid", 1, true, false },
+    { "party", 2, true, true },
+    { "raid", 2, true, true },
+    { "pvp", 1, false, false },
+    { "pvp", 2, false, false },
+    { "arena", 1, false, false },
+    { "arena", 2, true, false },
     { "scenario", 1, true, true },
 }) do
     enter(case[1])
@@ -96,8 +116,10 @@ for _, case in ipairs({
     emit()
     assert(APR:IsInstanceWithUI() == case[4], "Unexpected UI policy for " .. case[1])
     assert(APR:IsScenarioInstance() == (case[1] == "scenario"))
-    assert(state.dispatched - before == ((case[1] == "pvp" or case[1] == "arena") and 0 or 1),
-        "PvP events must not run ordinary guide handlers")
+    assert(
+        state.dispatched - before == ((case[1] == "pvp" or case[1] == "arena") and 0 or 1),
+        "PvP events must not run ordinary guide handlers"
+    )
     refresh()
     panels(case[4], case[4], case[4])
 end
@@ -107,15 +129,25 @@ assert(#state.prompts == 0, "An already answered character must not be prompted 
 -- reusing the previous dungeon step or its visibility override.
 enter("party")
 profile.forceHideUiInPartyRaid = true
-selectStep(2); refresh(); panels(true, true, true)
+selectStep(2)
+refresh()
+panels(true, true, true)
 assert(APR:ActivateRoute("replacement"))
 APRCustomPath.player = { "Synthetic replacement guide" }
-APR:UpdateQuestAndStep(); emit(); refresh(); panels(false, false, false)
+APR:UpdateQuestAndStep()
+emit()
+refresh()
+panels(false, false, false)
 assert(APR:ActivateRoute(nil))
 assert(not APR:IsInstanceWithUI(), "A party cannot show an inactive ordinary guide")
-emit(); refresh(); panels(false, false, false)
+emit()
+refresh()
+panels(false, false, false)
 -- World UI is allowed again, but the route-order list has no active route.
-enter("none"); emit(); refresh(); panels(true, true, false)
+enter("none")
+emit()
+refresh()
+panels(true, true, false)
 APRCustomPath.player = { "Synthetic instance guide" }
 assert(APR:ActivateRoute("contract"))
 selectStep(1)
@@ -124,33 +156,59 @@ selectStep(1)
 -- without a selected route, or on an explicit instance objective.
 local character = APR.settings.db.char
 character.instanceUiPromptShown = false
-for _, kind in ipairs({ "none", "pvp", "arena", "scenario" }) do enter(kind); emit() end
+for _, kind in ipairs({ "none", "pvp", "arena", "scenario" }) do
+    enter(kind)
+    emit()
+end
 assert(not character.instanceUiPromptShown and #state.prompts == 0)
 enter("raid")
-APR:ActivateRoute(nil); emit()
+APR:ActivateRoute(nil)
+emit()
 assert(not character.instanceUiPromptShown and #state.prompts == 0)
-APR:ActivateRoute("contract"); selectStep(2); emit()
+APR:ActivateRoute("contract")
+selectStep(2)
+emit()
 assert(not character.instanceUiPromptShown and #state.prompts == 0)
-selectStep(1); emit()
+selectStep(1)
+emit()
 assert(character.instanceUiPromptShown and #state.prompts == 1)
 local prompt = state.prompts[1]
 assert(prompt.name == "APR_INSTANCE_UI_PREFERENCE" and type(prompt.dialog.text) == "string" and #prompt.dialog.text > 0)
-for _ = 1, 50 do emit() end
+for _ = 1, 50 do
+    emit()
+end
 assert(#state.prompts == 1, "Repeated instance/group events share the one character prompt")
 
 -- An answer applies to the currently displayed step, not the ordinary step
 -- that originally opened the prompt. The instance override remains authoritative.
-selectStep(2); emit()
+selectStep(2)
+emit()
 prompt.dialog.OnCancel()
 assert(profile.forceHideUiInPartyRaid == true)
-drain(); panels(true, true, true)
-selectStep(1); emit(); refresh(); panels(false, false, false)
+drain()
+panels(true, true, true)
+selectStep(1)
+emit()
+refresh()
+panels(false, false, false)
 -- Preferences survive exits/returns without another prompt.
-enter("none"); emit(); refresh(); panels(true, true, true)
-enter("party"); emit(); refresh(); panels(false, false, false)
+enter("none")
+emit()
+refresh()
+panels(true, true, true)
+enter("party")
+emit()
+refresh()
+panels(false, false, false)
 assert(#state.prompts == 1)
-selectStep(2); emit(); refresh(); panels(true, true, true)
-selectStep(1); emit(); refresh(); panels(false, false, false)
+selectStep(2)
+emit()
+refresh()
+panels(true, true, true)
+selectStep(1)
+emit()
+refresh()
+panels(false, false, false)
 
 -- A different character has an independent prompt receipt even when it shares
 -- the profile. Its answer updates that profile and the currently owned panels.
@@ -162,23 +220,32 @@ emit()
 assert(character.instanceUiPromptShown and secondCharacter.instanceUiPromptShown and #state.prompts == 2)
 state.prompts[2].dialog.OnAccept()
 assert(profile.forceHideUiInPartyRaid == false)
-drain(); panels(true, true, true)
-enter("raid"); emit(); refresh(); panels(true, true, true)
+drain()
+panels(true, true, true)
+enter("raid")
+emit()
+refresh()
+panels(true, true, true)
 assert(#state.prompts == 2)
 
 -- Visibility settings remain independent of instance eligibility. Disabling the
 -- addon rejects event dispatch; the public refresh applies the toggle to panels.
 profile.enableAddon = false
 local dispatched, prompts = state.dispatched, #state.prompts
-emit(); refresh(); panels(false, false, false)
+emit()
+refresh()
+panels(false, false, false)
 assert(state.dispatched == dispatched and #state.prompts == prompts)
 profile.enableAddon, profile.currentStepShow = true, false
 assert(APR:IsInstanceWithUI())
-refresh(); panels(false, false, true)
+refresh()
+panels(false, false, true)
 profile.currentStepShow, profile.showQuestOrderList = true, false
-refresh(); panels(true, true, false)
+refresh()
+panels(true, true, false)
 profile.showQuestOrderList = true
-refresh(); panels(true, true, true)
+refresh()
+panels(true, true, true)
 
 -- Protected current-step parents defer geometry during combat. Instance policy
 -- still changes immediately; fillers use alpha until the post-combat refresh.
@@ -194,8 +261,11 @@ assert(APR.currentStep.pendingAnchorRefresh and CurrentStepScreenPanel.hideCount
 assert(APR.fillersFrame.pendingRefresh and FillersScreenPanel.alpha == 0)
 assert(not QuestOrderListPanel:IsShown())
 env.setCombat(false)
-refresh(); panels(false, false, false)
-enter("none"); refresh(); panels(true, true, true)
+refresh()
+panels(false, false, false)
+enter("none")
+refresh()
+panels(true, true, true)
 assert(not APR.currentStep.pendingAnchorRefresh and not APR.fillersFrame.pendingRefresh)
 
 -- Optional result/settings/owner data supported by the module must not invent
@@ -228,11 +298,13 @@ APR:RefreshInstanceUIVisibility()
 assert(remainingRefreshes == 1, "Absent optional panels cannot suppress a remaining owner's refresh")
 APR.currentStep, APR.fillersFrame, APR.questOrderList = main, fillers, order
 
-local recorded = { { stepID = 61, criteriaID = 71, criteriaIndex = 1 },
-    { stepID = 61, criteriaID = 72, criteriaIndex = 2 } }
+local recorded =
+    { { stepID = 61, criteriaID = 71, criteriaIndex = 1 }, { stepID = 61, criteriaID = 72, criteriaIndex = 2 } }
 assert(APR:ContainsScenarioStepCriteria(recorded, 61, 71, 1))
 assert(not APR:ContainsScenarioStepCriteria(recorded, 62, 71, 1))
 assert(not APR:ContainsScenarioStepCriteria(recorded, 61, 72, 1))
 assert(not APR:ContainsScenarioStepCriteria(recorded, 61, 71, 2))
 assert(not APR:ContainsScenarioStepCriteria(nil, 61, 71, 1))
-print("Instance UI: native instance states, real panels/events/prompts, character receipts, overrides, settings, combat and missing optional data passed")
+print(
+    "Instance UI: native instance states, real panels/events/prompts, character receipts, overrides, settings, combat and missing optional data passed"
+)

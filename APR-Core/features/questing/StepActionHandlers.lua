@@ -16,14 +16,18 @@ function handlers.LootMoney(step, showStepDetails, currentStepIndex)
     elseif showStepDetails then
         APR.currentStep:AddLootMoneyStep(step.LootMoney, cash, resale, required)
     end
-end--[[APR_DIAG]]; handlers.LootMoney = APRTrace("APR-Core/features/questing/StepActionHandlers.lua:11:handlers.LootMoney#1", handlers.LootMoney)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+handlers.LootMoney =
+    APRTrace("APR-Core/features/questing/StepActionHandlers.lua:11:handlers.LootMoney#1", handlers.LootMoney)--[[/APR_DIAG]]
 
 function handlers.ExitTutorial(step, showStepDetails, currentStepIndex)
     if C_QuestLog.IsOnQuest(step.ExitTutorial) then
         APR:NextQuestStep()
         return true
     end
-end--[[APR_DIAG]]; handlers.ExitTutorial = APRTrace("APR-Core/features/questing/StepActionHandlers.lua:21:handlers.ExitTutorial#2", handlers.ExitTutorial)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+handlers.ExitTutorial =
+    APRTrace("APR-Core/features/questing/StepActionHandlers.lua:21:handlers.ExitTutorial#2", handlers.ExitTutorial)--[[/APR_DIAG]]
 
 function handlers.Treasure(step, showStepDetails, currentStepIndex)
     local questID = step.Treasure.questID
@@ -40,19 +44,20 @@ function handlers.Treasure(step, showStepDetails, currentStepIndex)
         if questName and questName ~= "" then text = text .. ": " .. questName end
         if itemID then
             local itemName = C_Item.GetItemInfo(itemID) or UNKNOWN
-            APR.currentStep:AddQuestStepsWithDetails("Treasure" .. tostring(questID or itemID),
-                text, {
-                    {
-                        questID = questID,
-                        itemID = itemID,
-                        itemName = itemName,
-                    }
-                })
+            APR.currentStep:AddQuestStepsWithDetails("Treasure" .. tostring(questID or itemID), text, {
+                {
+                    questID = questID,
+                    itemID = itemID,
+                    itemName = itemName,
+                },
+            })
         else
             APR.currentStep:AddQuestSteps(questID, text, "Treasure")
         end
     end
-end--[[APR_DIAG]]; handlers.Treasure = APRTrace("APR-Core/features/questing/StepActionHandlers.lua:28:handlers.Treasure#3", handlers.Treasure)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+handlers.Treasure =
+    APRTrace("APR-Core/features/questing/StepActionHandlers.lua:28:handlers.Treasure#3", handlers.Treasure)--[[/APR_DIAG]]
 
 function handlers.UseItem(step, showStepDetails, currentStepIndex)
     local questID = step.UseItem.questID
@@ -62,14 +67,15 @@ function handlers.UseItem(step, showStepDetails, currentStepIndex)
         local itemName = C_Item.GetItemInfo(itemID)
         local questText = string.format(L["USE_ITEM"], itemName or UNKNOWN)
         APR.currentStep:AddQuestSteps(questKey, questText, "UseItem", false, not questID)
-        APR.currentStep:AddStepButton(questKey .. "-UseItem", itemID, 'item', nil, step.ItemTarget)
+        APR.currentStep:AddStepButton(questKey .. "-UseItem", itemID, "item", nil, step.ItemTarget)
     end
 
     if questID and C_QuestLog.IsQuestFlaggedCompleted(questID) then
         APR:UpdateNextStep()
         return true
     end
-end--[[APR_DIAG]]; handlers.UseItem = APRTrace("APR-Core/features/questing/StepActionHandlers.lua:57:handlers.UseItem#4", handlers.UseItem)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+handlers.UseItem = APRTrace("APR-Core/features/questing/StepActionHandlers.lua:57:handlers.UseItem#4", handlers.UseItem)--[[/APR_DIAG]]
 
 function handlers.UseSpell(step, showStepDetails, currentStepIndex)
     local questID = step.UseSpell.questID
@@ -79,23 +85,26 @@ function handlers.UseSpell(step, showStepDetails, currentStepIndex)
         local spellInfo = C_Spell.GetSpellInfo(spellID)
         local questText = string.format(L["USE_SPELL"], (spellInfo and spellInfo.name) or UNKNOWN)
         APR.currentStep:AddQuestSteps(questKey, questText, "UseSpell", false, not questID)
-        APR.currentStep:AddStepButton(questKey .. "-UseSpell", spellID, 'spell')
+        APR.currentStep:AddStepButton(questKey .. "-UseSpell", spellID, "spell")
     end
 
     if questID and C_QuestLog.IsQuestFlaggedCompleted(questID) then
         APR:UpdateNextStep()
         return true
     end
-end--[[APR_DIAG]]; handlers.UseSpell = APRTrace("APR-Core/features/questing/StepActionHandlers.lua:74:handlers.UseSpell#5", handlers.UseSpell)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+handlers.UseSpell =
+    APRTrace("APR-Core/features/questing/StepActionHandlers.lua:74:handlers.UseSpell#5", handlers.UseSpell)--[[/APR_DIAG]]
 
 function handlers.Group(step, showStepDetails, currentStepIndex)
-    if (C_QuestLog.IsQuestFlaggedCompleted(step.Group.questID)) then
+    if C_QuestLog.IsQuestFlaggedCompleted(step.Group.questID) then
         APR:UpdateNextStep()
         return true
     else
         handlers.GroupQuestPopup()
     end
-end--[[APR_DIAG]]; handlers.Group = APRTrace("APR-Core/features/questing/StepActionHandlers.lua:91:handlers.Group#6", handlers.Group)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+handlers.Group = APRTrace("APR-Core/features/questing/StepActionHandlers.lua:91:handlers.Group#6", handlers.Group)--[[/APR_DIAG]]
 
 function handlers.Achievement(step, showStepDetails, currentStepIndex)
     local achievementData = step.Achievement
@@ -107,13 +116,20 @@ function handlers.Achievement(step, showStepDetails, currentStepIndex)
         end
 
         if showStepDetails then
-            local objectiveKey = "Achievement-" ..
-                tostring(achievementData.achievementID) .. "-" .. tostring(achievementData.criteriaIndex or 0)
-            APR.currentStep:AddQuestSteps(objectiveKey, progressText,
-                achievementData.criteriaIndex or achievementData.achievementID)
+            local objectiveKey = "Achievement-"
+                .. tostring(achievementData.achievementID)
+                .. "-"
+                .. tostring(achievementData.criteriaIndex or 0)
+            APR.currentStep:AddQuestSteps(
+                objectiveKey,
+                progressText,
+                achievementData.criteriaIndex or achievementData.achievementID
+            )
         end
     end
-end--[[APR_DIAG]]; handlers.Achievement = APRTrace("APR-Core/features/questing/StepActionHandlers.lua:100:handlers.Achievement#7", handlers.Achievement)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+handlers.Achievement =
+    APRTrace("APR-Core/features/questing/StepActionHandlers.lua:100:handlers.Achievement#7", handlers.Achievement)--[[/APR_DIAG]]
 
 function handlers.GossipOptionIDs(step, showStepDetails, currentStepIndex)
     local alreadyTalked = APR:hasEveryGossipsCompleted(step.GossipOptionIDs)
@@ -125,4 +141,8 @@ function handlers.GossipOptionIDs(step, showStepDetails, currentStepIndex)
     if showStepDetails then
         APR.currentStep:AddQuestSteps("GOSSIP_ONLY", L["TALK_NPC"], next(step.GossipOptionIDs))
     end
-end--[[APR_DIAG]]; handlers.GossipOptionIDs = APRTrace("APR-Core/features/questing/StepActionHandlers.lua:118:handlers.GossipOptionIDs#8", handlers.GossipOptionIDs)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+handlers.GossipOptionIDs = APRTrace(
+    "APR-Core/features/questing/StepActionHandlers.lua:118:handlers.GossipOptionIDs#8",
+    handlers.GossipOptionIDs
+)--[[/APR_DIAG]]

@@ -51,19 +51,39 @@ end
 local function ValidatePosition(position)
     assert(type(position) == "table", "connection endpoint required")
     if position.dynamic then
-        assert(position.dynamic == "player" or position.dynamic == "bind" or position.dynamic == "housing"
-            or position.dynamic == "housing_exit" or position.dynamic == "camp", "unknown dynamic destination")
+        assert(
+            position.dynamic == "player"
+                or position.dynamic == "bind"
+                or position.dynamic == "housing"
+                or position.dynamic == "housing_exit"
+                or position.dynamic == "camp",
+            "unknown dynamic destination"
+        )
     else
-        assert(type(position.x) == "number" and position.x == position.x and math.abs(position.x) < math.huge
-            and type(position.y) == "number" and position.y == position.y and math.abs(position.y) < math.huge,
-            "finite endpoint coordinates required")
+        assert(
+            type(position.x) == "number"
+                and position.x == position.x
+                and math.abs(position.x) < math.huge
+                and type(position.y) == "number"
+                and position.y == position.y
+                and math.abs(position.y) < math.huge,
+            "finite endpoint coordinates required"
+        )
         if position.space == "map" then
-            assert(NonnegativeNumber(position.uiMapID) and position.x >= 0 and position.x <= 1
-                and position.y >= 0 and position.y <= 1, "invalid map endpoint")
+            assert(
+                NonnegativeNumber(position.uiMapID)
+                    and position.x >= 0
+                    and position.x <= 1
+                    and position.y >= 0
+                    and position.y <= 1,
+                "invalid map endpoint"
+            )
         else
-            assert(NonnegativeNumber(position.instanceID) or
-                (position.instanceID == nil and NonnegativeNumber(position.uiMapID)),
-                "world instance or projection map required")
+            assert(
+                NonnegativeNumber(position.instanceID)
+                    or (position.instanceID == nil and NonnegativeNumber(position.uiMapID)),
+                "world instance or projection map required"
+            )
         end
     end
 end
@@ -78,10 +98,21 @@ function Lib:RegisterData(profile, category, data, revision)
     for _, connection in ipairs(copy.connections or {}) do
         assert(type(connection.id) == "string" and type(connection.kind) == "string", "connection identity required")
         assert(connection.selection == nil or connection.selection == "random", "invalid action selection")
-        assert(connection.reviewStatus == nil or connection.reviewStatus == "confirmed"
-            or connection.reviewStatus == "candidate" or connection.reviewStatus == "disabled", "invalid review status")
-        assert(connection.arrivalZTolerance == nil or NonnegativeNumber(connection.arrivalZTolerance), "invalid arrival height tolerance")
-        assert(connection.instructionKey == nil or type(connection.instructionKey) == "string", "invalid travel instruction key")
+        assert(
+            connection.reviewStatus == nil
+                or connection.reviewStatus == "confirmed"
+                or connection.reviewStatus == "candidate"
+                or connection.reviewStatus == "disabled",
+            "invalid review status"
+        )
+        assert(
+            connection.arrivalZTolerance == nil or NonnegativeNumber(connection.arrivalZTolerance),
+            "invalid arrival height tolerance"
+        )
+        assert(
+            connection.instructionKey == nil or type(connection.instructionKey) == "string",
+            "invalid travel instruction key"
+        )
         ValidatePosition(connection.from)
         ValidatePosition(connection.to)
         assert(connection.seconds == nil or NonnegativeNumber(connection.seconds), "invalid travel duration")
@@ -90,12 +121,24 @@ function Lib:RegisterData(profile, category, data, revision)
     end
     for _, entrance in ipairs(copy.entrances or {}) do
         assert(type(entrance.id) == "string", "entrance identity required")
-        assert(entrance.kind == "delve" or entrance.kind == "scenario" or entrance.kind == "dungeon"
-            or entrance.kind == "raid", "invalid entrance kind")
-        assert(entrance.reviewStatus == "confirmed" or entrance.reviewStatus == "candidate"
-            or entrance.reviewStatus == "disabled", "entrance review status required")
-        assert(type(entrance.interiorMapIDs) == "table" and (#entrance.interiorMapIDs > 0
-            or NonnegativeNumber(entrance.instanceID)), "native interior identity required")
+        assert(
+            entrance.kind == "delve"
+                or entrance.kind == "scenario"
+                or entrance.kind == "dungeon"
+                or entrance.kind == "raid",
+            "invalid entrance kind"
+        )
+        assert(
+            entrance.reviewStatus == "confirmed"
+                or entrance.reviewStatus == "candidate"
+                or entrance.reviewStatus == "disabled",
+            "entrance review status required"
+        )
+        assert(
+            type(entrance.interiorMapIDs) == "table"
+                and (#entrance.interiorMapIDs > 0 or NonnegativeNumber(entrance.instanceID)),
+            "native interior identity required"
+        )
         for _, mapID in ipairs(entrance.interiorMapIDs) do
             assert(NonnegativeNumber(mapID) and mapID > 0 and mapID % 1 == 0, "invalid interior UI map")
         end
@@ -106,37 +149,72 @@ function Lib:RegisterData(profile, category, data, revision)
     for _, recipe in ipairs(copy.unlockRoutes or {}) do
         assert(type(recipe.id) == "string" and not recipeIDs[recipe.id], "unique unlock identity required")
         recipeIDs[recipe.id] = true
-        assert(type(recipe.goal) == "table" and type(recipe.goal.key) == "string"
-            and recipe.goal.value ~= nil, "unlock goal required")
-        assert(type(recipe.steps) == "table" and #recipe.steps > 0 and #recipe.steps <= 4096, "bounded unlock steps required")
+        assert(
+            type(recipe.goal) == "table" and type(recipe.goal.key) == "string" and recipe.goal.value ~= nil,
+            "unlock goal required"
+        )
+        assert(
+            type(recipe.steps) == "table" and #recipe.steps > 0 and #recipe.steps <= 4096,
+            "bounded unlock steps required"
+        )
         for _, step in ipairs(recipe.steps) do
-            assert(step.kind == "accept" or step.kind == "turnin" or step.kind == "objective"
-                or step.kind == "waypoint" or step.kind == "missing" or step.kind == "interact"
-                or step.kind == "scenario" or step.kind == "transport" or step.kind == "action", "unknown unlock action")
+            assert(
+                step.kind == "accept"
+                    or step.kind == "turnin"
+                    or step.kind == "objective"
+                    or step.kind == "waypoint"
+                    or step.kind == "missing"
+                    or step.kind == "interact"
+                    or step.kind == "scenario"
+                    or step.kind == "transport"
+                    or step.kind == "action",
+                "unknown unlock action"
+            )
             if step.kind == "accept" or step.kind == "turnin" or step.kind == "objective" then
-                assert(NonnegativeNumber(step.questID) and step.questID > 0 and step.questID % 1 == 0, "unlock quest required")
+                assert(
+                    NonnegativeNumber(step.questID) and step.questID > 0 and step.questID % 1 == 0,
+                    "unlock quest required"
+                )
             end
             if step.acceptance ~= nil then
-                assert(type(step.acceptance) == "table" and type(step.acceptance.known) == "boolean"
-                    and type(step.acceptance.requirements) == "table", "invalid quest acceptance metadata")
+                assert(
+                    type(step.acceptance) == "table"
+                        and type(step.acceptance.known) == "boolean"
+                        and type(step.acceptance.requirements) == "table",
+                    "invalid quest acceptance metadata"
+                )
                 if step.acceptance.autoAccept == true then step.autoAccept = true end
             end
             if step.position then ValidatePosition(step.position) end
-            for _, position in ipairs(step.positions or {}) do ValidatePosition(position) end
+            for _, position in ipairs(step.positions or {}) do
+                ValidatePosition(position)
+            end
             if not step.position and #(step.positions or {}) > 0 then step.position = Copy(step.positions[1]) end
             if step.kind ~= "missing" and not step.position then
-                local sourced = step.sourceID ~= nil or (type(step.source) == "string" and step.source ~= "")
+                local sourced = step.sourceID ~= nil
+                    or (type(step.source) == "string" and step.source ~= "")
                     or #(step.acceptance and step.acceptance.sources or {}) > 0
-                assert(sourced and (step.positionOptional == true or step.noArrow == true or step.autoAccept == true),
-                    "sourced positionless unlock action required")
+                assert(
+                    sourced and (step.positionOptional == true or step.noArrow == true or step.autoAccept == true),
+                    "sourced positionless unlock action required"
+                )
                 assert(step.kind ~= "accept" or step.autoAccept == true, "sourced auto acceptance required")
                 step.positionOptional = true
             end
             assert(step.radius == nil or NonnegativeNumber(step.radius), "invalid unlock radius")
             for _, threshold in ipairs(step.progressAny or {}) do
-                assert(type(threshold) == "table" and ((NonnegativeNumber(threshold.percent) and threshold.percent <= 100)
-                    or (NonnegativeNumber(threshold.count) and NonnegativeNumber(threshold.total) and threshold.total > 0)),
-                    "numeric unlock progress required")
+                assert(
+                    type(threshold) == "table"
+                        and (
+                            (NonnegativeNumber(threshold.percent) and threshold.percent <= 100)
+                            or (
+                                NonnegativeNumber(threshold.count)
+                                and NonnegativeNumber(threshold.total)
+                                and threshold.total > 0
+                            )
+                        ),
+                    "numeric unlock progress required"
+                )
             end
             if step.arrival then
                 assert(type(step.arrival) == "table", "invalid unlock arrival")
@@ -145,13 +223,23 @@ function Lib:RegisterData(profile, category, data, revision)
             if step.kind == "scenario" then assert(type(step.scenario) == "table", "scenario identity required") end
             if step.kind == "transport" then assert(type(step.transport) == "table", "transport identity required") end
             if step.kind == "action" then assert(type(step.actionType) == "string", "action identity required") end
-            if step.kind == "interact" then assert(type(step.completeWhen) == "table", "observed interaction completion required") end
+            if step.kind == "interact" then
+                assert(type(step.completeWhen) == "table", "observed interaction completion required")
+            end
             for _, action in ipairs(step.useActions or {}) do
-                assert((action.type == "item" or action.type == "spell") and NonnegativeNumber(action.id)
-                    and action.id > 0 and action.id % 1 == 0, "invalid unlock use action")
+                assert(
+                    (action.type == "item" or action.type == "spell")
+                        and NonnegativeNumber(action.id)
+                        and action.id > 0
+                        and action.id % 1 == 0,
+                    "invalid unlock use action"
+                )
             end
             if step.kind == "objective" then
-                assert(type(step.objectiveIndices) == "table" and #step.objectiveIndices > 0, "unlock objective indices required")
+                assert(
+                    type(step.objectiveIndices) == "table" and #step.objectiveIndices > 0,
+                    "unlock objective indices required"
+                )
                 for _, index in ipairs(step.objectiveIndices) do
                     assert(NonnegativeNumber(index) and index > 0 and index % 1 == 0, "invalid unlock objective index")
                 end
@@ -247,8 +335,11 @@ function Lib:New(options)
                         assert(not ids[id], "duplicate entrance approach id")
                         ids[id] = true
                         local connection = {
-                            id = id, kind = "passage", costMode = "ground",
-                            from = entrance.approach[index - 1], to = position,
+                            id = id,
+                            kind = "passage",
+                            costMode = "ground",
+                            from = entrance.approach[index - 1],
+                            to = position,
                             requirements = Copy(entrance.requirements),
                         }
                         instance.connections[#instance.connections + 1] = connection
@@ -260,12 +351,18 @@ function Lib:New(options)
             instance.entrances[#instance.entrances + 1] = entrance
             if entrance.instanceID then
                 local entries = instance.entranceInstances[entrance.instanceID]
-                if not entries then entries = {}; instance.entranceInstances[entrance.instanceID] = entries end
+                if not entries then
+                    entries = {}
+                    instance.entranceInstances[entrance.instanceID] = entries
+                end
                 entries[#entries + 1] = entrance
             end
             for _, mapID in ipairs(entrance.interiorMapIDs) do
                 local entries = instance.entranceMaps[mapID]
-                if not entries then entries = {}; instance.entranceMaps[mapID] = entries end
+                if not entries then
+                    entries = {}
+                    instance.entranceMaps[mapID] = entries
+                end
                 entries[#entries + 1] = entrance
             end
         end
@@ -281,9 +378,13 @@ function Lib:New(options)
         end
     end
     instance.supported = #categories > 0
-    if (options.waypoints == true or (type(options.waypoints) == "table" and options.waypoints.enabled ~= false)
-        or options.waypointUI == true)
-        and instance.SetWaypointUIEnabled then
+    if
+        (
+            options.waypoints == true
+            or (type(options.waypoints) == "table" and options.waypoints.enabled ~= false)
+            or options.waypointUI == true
+        ) and instance.SetWaypointUIEnabled
+    then
         instance:SetWaypointUIEnabled(true)
     end
     return instance

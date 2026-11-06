@@ -2,10 +2,31 @@
 -- Coordinates are deterministic fixtures; transport definitions are real data.
 local fixture = dofile("tests/lua/navigation_fixture.lua")
 fixture.profile, fixture.currentMap, fixture.faction = "forever", 1453, "Alliance"
-local kalimdor = { [1411] = true, [1412] = true, [1413] = true, [1438] = true, [1439] = true,
-    [1440] = true, [1441] = true, [1442] = true, [1443] = true, [1444] = true, [1445] = true,
-    [1446] = true, [1447] = true, [1448] = true, [1449] = true, [1450] = true, [1451] = true,
-    [1452] = true, [1454] = true, [1456] = true, [1457] = true, [2521] = true, [2548] = true }
+local kalimdor = {
+    [1411] = true,
+    [1412] = true,
+    [1413] = true,
+    [1438] = true,
+    [1439] = true,
+    [1440] = true,
+    [1441] = true,
+    [1442] = true,
+    [1443] = true,
+    [1444] = true,
+    [1445] = true,
+    [1446] = true,
+    [1447] = true,
+    [1448] = true,
+    [1449] = true,
+    [1450] = true,
+    [1451] = true,
+    [1452] = true,
+    [1454] = true,
+    [1456] = true,
+    [1457] = true,
+    [2521] = true,
+    [2548] = true,
+}
 function fixture:WorldForMap(map) return map == 225 and 369 or kalimdor[map] and 1 or 0 end
 function fixture:ParentForMap(map) return kalimdor[map] and 1414 or 1415 end
 local originalInfo = C_Map.GetMapInfo

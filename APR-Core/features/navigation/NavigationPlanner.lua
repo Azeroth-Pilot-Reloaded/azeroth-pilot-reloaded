@@ -15,24 +15,33 @@ local function ResolveInstruction(request, edge)
         edge.instruction = request.data:GetEdgeInstruction(edge)
         edge.instructionDeferred, edge.instructionKey = nil, nil
     end
-end--[[APR_DIAG]]; ResolveInstruction = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:13:ResolveInstruction#1", ResolveInstruction)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+ResolveInstruction =
+    APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:13:ResolveInstruction#1", ResolveInstruction)--[[/APR_DIAG]]
 
 local function ProviderJob(provider, context)
     if provider.CreateEdgeBuild then return provider:CreateEdgeBuild(context) end
     -- Small external providers may still implement only the synchronous API.
     return {
-        Step = --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:24:callback#3", --[[/APR_DIAG]]function()
+        --[[APR_DIAG]]
+        Step = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:24:callback#3", --[[/APR_DIAG]] function()
             local edges, metadata = provider:BuildEdges(context)
             return "ready", edges, metadata
-        end--[[APR_DIAG]])--[[/APR_DIAG]],
+        end--[[APR_DIAG]]) --[[/APR_DIAG]],
     }
-end--[[APR_DIAG]]; ProviderJob = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:20:ProviderJob#2", ProviderJob)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+ProviderJob = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:20:ProviderJob#2", ProviderJob)--[[/APR_DIAG]]
 
 function Planner:Create(request)
-    return setmetatable({ request = request,
-        phase = request.preferZoneAccess and request.data.CreateZoneRoute and "zone" or "prepare", status = "planning",
-        slices = 0, maxSliceMilliseconds = 0 }, Job)
-end--[[APR_DIAG]]; Planner.Create = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:31:Planner:Create#4", Planner.Create)--[[/APR_DIAG]]
+    return setmetatable({
+        request = request,
+        phase = request.preferZoneAccess and request.data.CreateZoneRoute and "zone" or "prepare",
+        status = "planning",
+        slices = 0,
+        maxSliceMilliseconds = 0,
+    }, Job)
+end--[[APR_DIAG]]
+Planner.Create = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:31:Planner:Create#4", Planner.Create)--[[/APR_DIAG]]
 
 function Job:BeginCatalogue()
     -- A refused offer belongs to one authored objective. Clear that context
@@ -41,14 +50,20 @@ function Job:BeginCatalogue()
     if taxiData.SetProbeContext then taxiData:SetProbeContext(self.request.contextKey) end
     self.phase = "catalogue"
     self.active = ProviderJob(self.request.data, self.request)
-end--[[APR_DIAG]]; Job.BeginCatalogue = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:37:Job:BeginCatalogue#5", Job.BeginCatalogue)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Job.BeginCatalogue =
+    APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:37:Job:BeginCatalogue#5", Job.BeginCatalogue)--[[/APR_DIAG]]
 
 function Job:BeginSearch()
     local request = self.request
     self.phase = "search"
     self.active = request.engine:CreateSearch({
-        start = request.start, goal = request.goal, clock = request.clock,
-        walkSpeed = request.walkSpeed, walkSpeedFor = request.walkSpeedFor, walkSpeedAt = request.walkSpeedAt,
+        start = request.start,
+        goal = request.goal,
+        clock = request.clock,
+        walkSpeed = request.walkSpeed,
+        walkSpeedFor = request.walkSpeedFor,
+        walkSpeedAt = request.walkSpeedAt,
         budget = request.budget,
         resources = self.catalogueMetadata.resources,
         edgeGroups = { self.catalogueEdges, self.taxiEdges },
@@ -56,13 +71,15 @@ function Job:BeginSearch()
         walkingRegionFor = request.walkingRegionFor,
         walkingIsTransitive = request.walkingIsTransitive,
     })
-end--[[APR_DIAG]]; Job.BeginSearch = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:46:Job:BeginSearch#6", Job.BeginSearch)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Job.BeginSearch = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:46:Job:BeginSearch#6", Job.BeginSearch)--[[/APR_DIAG]]
 
 function Job:BeginQueue()
     self.phase, self.queueIndex = "queue", 1
     self.result.queue = {}
     self.result.probeChecked = true
-end--[[APR_DIAG]]; Job.BeginQueue = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:61:Job:BeginQueue#7", Job.BeginQueue)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Job.BeginQueue = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:61:Job:BeginQueue#7", Job.BeginQueue)--[[/APR_DIAG]]
 
 -- A relaxed graph is diagnostic only. Never publish its segments as guidance.
 -- It identifies missing gates on a connected potential route, not unrelated
@@ -71,18 +88,32 @@ function Job:ExplainFailure(includeActions)
     local blocked = self.catalogueMetadata.blockedEdges or {}
     local actions = self.catalogueMetadata.blockedActionEdges or {}
     if #blocked == 0 then includeActions = true end
-    if #blocked == 0 and #actions == 0 then self.status, self.active = "no_path", nil; return end
+    if #blocked == 0 and #actions == 0 then
+        self.status, self.active = "no_path", nil
+        return
+    end
     local r = self.request
     -- Explain a physical portal's unlock before suggesting an unlearned rare
     -- teleport or an unowned item as the only way to reach the destination.
     self.explainActions = includeActions
     self.phase = "explain"
-    self.active = r.engine:CreateSearch({ start = r.start, goal = r.goal, clock = r.clock,
+    self.active = r.engine:CreateSearch({
+        start = r.start,
+        goal = r.goal,
+        clock = r.clock,
         edgeGroups = { self.catalogueEdges, self.taxiEdges, blocked, includeActions and actions or {} },
         resources = self.catalogueMetadata.resources,
-        budget = r.budget, walkSpeed = r.walkSpeed, walkSpeedFor = r.walkSpeedFor, walkSpeedAt = r.walkSpeedAt,
-        canWalk = r.canWalk, walkingRegionFor = r.walkingRegionFor, walkingIsTransitive = r.walkingIsTransitive })
-end--[[APR_DIAG]]; Job.ExplainFailure = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:70:Job:ExplainFailure#8", Job.ExplainFailure)--[[/APR_DIAG]]
+        budget = r.budget,
+        walkSpeed = r.walkSpeed,
+        walkSpeedFor = r.walkSpeedFor,
+        walkSpeedAt = r.walkSpeedAt,
+        canWalk = r.canWalk,
+        walkingRegionFor = r.walkingRegionFor,
+        walkingIsTransitive = r.walkingIsTransitive,
+    })
+end--[[APR_DIAG]]
+Job.ExplainFailure =
+    APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:70:Job:ExplainFailure#8", Job.ExplainFailure)--[[/APR_DIAG]]
 
 function Job:AdvancePhase(maxOperations, remainingMilliseconds)
     local request = self.request
@@ -102,8 +133,11 @@ function Job:AdvancePhase(maxOperations, remainingMilliseconds)
             self.blockers, self.diagnosticIndex = {}, 1
             self.diagnosticSegments = metadata and metadata.blockers or {}
             self.phase = "explain_collect"
-        elseif status == "cancelled" then self:Cancel()
-        else self.zoneFallback, self.phase = true, "prepare" end
+        elseif status == "cancelled" then
+            self:Cancel()
+        else
+            self.zoneFallback, self.phase = true, "prepare"
+        end
         return
     end
     if self.phase == "prepare" then
@@ -113,7 +147,10 @@ function Job:AdvancePhase(maxOperations, remainingMilliseconds)
         if self.active then
             local status = self.active:Step(maxOperations, remainingMilliseconds)
             if status == "planning" then return end
-            if status == "cancelled" then self:Cancel(); return end
+            if status == "cancelled" then
+                self:Cancel()
+                return
+            end
         end
         self:BeginCatalogue()
         return
@@ -138,7 +175,9 @@ function Job:AdvancePhase(maxOperations, remainingMilliseconds)
         end
         -- Finishing the last row needs no extra frame, even when it used the
         -- last operation or reached the deadline. No more row work runs here.
-        if not segments[self.queueIndex] then self.status, self.active = "ready", nil end
+        if not segments[self.queueIndex] then
+            self.status, self.active = "ready", nil
+        end
         return
     end
 
@@ -166,7 +205,10 @@ function Job:AdvancePhase(maxOperations, remainingMilliseconds)
 
     local status, result, metadata = self.active:Step(maxOperations, remainingMilliseconds)
     if status == "planning" then return end
-    if status == "cancelled" then self:Cancel(); return end
+    if status == "cancelled" then
+        self:Cancel()
+        return
+    end
 
     if self.phase == "explain" then
         if status ~= "ready" and not self.explainActions and self.catalogueMetadata.blockedActionEdges then
@@ -197,8 +239,8 @@ function Job:AdvancePhase(maxOperations, remainingMilliseconds)
             -- An incomplete taxi offer can be the only route between regions.
             -- Try its bounded exploration before publishing a final failure.
             self.phase = "probe"
-            self.active = request.taxiData:CreateProbeSearch(request.start, request.goal,
-                self.result.totalSeconds, request)
+            self.active =
+                request.taxiData:CreateProbeSearch(request.start, request.goal, self.result.totalSeconds, request)
         elseif self.searchFailed then
             self:ExplainFailure()
         else
@@ -213,7 +255,9 @@ function Job:AdvancePhase(maxOperations, remainingMilliseconds)
         end
         self:BeginQueue()
     end
-end--[[APR_DIAG]]; Job.AdvancePhase = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:87:Job:AdvancePhase#9", Job.AdvancePhase)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Job.AdvancePhase =
+    APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:87:Job:AdvancePhase#9", Job.AdvancePhase)--[[/APR_DIAG]]
 
 function Job:Step(maxOperations, maxMilliseconds)
     if self.status ~= "planning" then return self.status, self.result end
@@ -240,14 +284,17 @@ function Job:Step(maxOperations, maxMilliseconds)
         self.maxSliceMilliseconds = math.max(self.maxSliceMilliseconds, self.lastSliceMilliseconds)
     end
     return self.status, self.result
-end--[[APR_DIAG]]; Job.Step = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:218:Job:Step#10", Job.Step)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Job.Step = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:218:Job:Step#10", Job.Step)--[[/APR_DIAG]]
 
 function Job:Cancel()
     if self.status == "planning" then self.status = "cancelled" end
     if self.active and self.active.Cancel then self.active:Cancel() end
     self.active, self.catalogueEdges, self.taxiEdges, self.diagnosticSegments, self.blockers = nil, nil, nil, nil, nil
-end--[[APR_DIAG]]; Job.Cancel = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:245:Job:Cancel#11", Job.Cancel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Job.Cancel = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:245:Job:Cancel#11", Job.Cancel)--[[/APR_DIAG]]
 
 function Job:GetResult()
     return self.result, self.status
-end--[[APR_DIAG]]; Job.GetResult = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:251:Job:GetResult#12", Job.GetResult)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Job.GetResult = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:251:Job:GetResult#12", Job.GetResult)--[[/APR_DIAG]]

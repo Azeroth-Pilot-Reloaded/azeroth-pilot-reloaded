@@ -1,11 +1,15 @@
 -- Frame fixtures and a small synthetic catalog; the UI consumes real catalog/path/row code.
 local env = dofile("tests/lua/route_ui_test_env.lua")
 function tContains(values, wanted)
-    for _, value in ipairs(values) do if value == wanted then return true end end
+    for _, value in ipairs(values) do
+        if value == wanted then return true end
+    end
     return false
 end
 dofile("tests/lua/localization_test_env.lua")
-for _, key in ipairs({"ALL", "FAVORITES", "ADD", "REMOVE", "RESET", "TYPE", "STATUS", "EXPANSION_FILTER_TEXT"}) do _G[key] = key end
+for _, key in ipairs({ "ALL", "FAVORITES", "ADD", "REMOVE", "RESET", "TYPE", "STATUS", "EXPANSION_FILTER_TEXT" }) do
+    _G[key] = key
+end
 UIParent:SetSize(1920, 1080)
 function env.methods:GetTop() return self.top or 900 end
 function env.methods:GetBottom() return self.bottom or (self:GetTop() - self:GetHeight()) end
@@ -19,26 +23,38 @@ function APR:GetRouteVisibility(key)
     return route and (route.visibility or "visible") or "hidden"
 end
 function APR:GetUnmetConditions(key)
-    return self:GetRouteVisibility(key) == "disabled" and {"Requires level 20"} or {}
+    return self:GetRouteVisibility(key) == "disabled" and { "Requires level 20" } or {}
 end
-function APR:GetRouteSelectionExpansions() return {"Old", "Midnight", "Custom"} end
+function APR:GetRouteSelectionExpansions() return { "Old", "Midnight", "Custom" } end
 APR.PlayerID = "test"
 APR.RouteQuestStepList = {
-    first = {label = "First by Someone", expansion = "Midnight", category = "Campaign", prefab = {leveling = 1, speedrun = 1, all_quests = 1}},
-    second = {label = "Second", expansion = "Midnight", category = "Daily", author = "  Test author  ", community = true,
-        description = "A route description", visibility = "disabled"},
-    old = {label = "Older route", expansion = "Old", category = "Campaign", author = "Writer"},
+    first = {
+        label = "First by Someone",
+        expansion = "Midnight",
+        category = "Campaign",
+        prefab = { leveling = 1, speedrun = 1, all_quests = 1 },
+    },
+    second = {
+        label = "Second",
+        expansion = "Midnight",
+        category = "Daily",
+        author = "  Test author  ",
+        community = true,
+        description = "A route description",
+        visibility = "disabled",
+    },
+    old = { label = "Older route", expansion = "Old", category = "Campaign", author = "Writer" },
 }
-APRCustomPath, APRData, APRZoneCompleted = {test = {}}, {test = {}}, {test = {}}
+APRCustomPath, APRData, APRZoneCompleted = { test = {} }, { test = {} }, { test = {} }
 local shift = false
 function IsShiftKeyDown() return shift end
 function env.setShift(value) shift = value end
 function env.methods:Raise() end
 local tooltipLines = {}
-function APR:SetTooltipText(_, text) tooltipLines = {text} end
+function APR:SetTooltipText(_, text) tooltipLines = { text } end
 function APR:AddTooltipLine(_, text) tooltipLines[#tooltipLines + 1] = text end
 function env.tooltip() return table.concat(tooltipLines, "\n") end
-APR.routeconfig = {SendCustomPathUpdate = function() APR.RouteBrowser:Refresh(true) end}
+APR.routeconfig = { SendCustomPathUpdate = function() APR.RouteBrowser:Refresh(true) end }
 APR.Level = 80
 function UnitLevel() return APR.Level end
 function APR:GetPlayerParentMapID() return nil end

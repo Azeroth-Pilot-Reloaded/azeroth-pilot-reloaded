@@ -2,7 +2,9 @@
 -- These routes describe writer contracts; no shipped itinerary is a fixture.
 local function fixture()
     APR = {
-        PlayerID = "player", ActiveRoute = "alpha", stepRevision = 7,
+        PlayerID = "player",
+        ActiveRoute = "alpha",
+        stepRevision = 7,
         RouteQuestStepList = {
             alpha = { steps = { {}, {}, {}, {} } },
             beta = { steps = { {}, {}, {}, {} } },
@@ -64,13 +66,19 @@ local selectedContext = APR:CaptureStepContext()
 assert(not APR:AdvanceStep(false, selectedContext) and APRData.player.beta == 3)
 local request = APR.routeValidationPending
 assert(request.advance == selectedContext)
-assert(not APR:AdvanceStep(false) and request.advance == selectedContext,
-    "Repeated completion observations keep one contextual receipt")
-assert(not APR:AdvanceStep(false, oldContext) and request.advance == selectedContext,
-    "A stale callback cannot replace the selected route's receipt")
+assert(
+    not APR:AdvanceStep(false) and request.advance == selectedContext,
+    "Repeated completion observations keep one contextual receipt"
+)
+assert(
+    not APR:AdvanceStep(false, oldContext) and request.advance == selectedContext,
+    "A stale callback cannot replace the selected route's receipt"
+)
 APR.routeValidationPending = nil
-assert(not APR:ActivateRoute("beta", "validated_activation") and hookCalls == 1,
-    "An already selected route does not invoke its activation hook a second time")
+assert(
+    not APR:ActivateRoute("beta", "validated_activation") and hookCalls == 1,
+    "An already selected route does not invoke its activation hook a second time"
+)
 assert(APR:AdvanceStep(false, request.advance) and APRData.player.beta == 4)
 assert(not APR:AdvanceStep(false, request.advance), "A consumed receipt is stale after the writer advances")
 
@@ -89,31 +97,48 @@ assert(not APR:AdvanceStep(false) and APRData.player.beta == 4)
 -- Background maintenance is not a writer barrier and ordinary progress must not
 -- turn into manual reset intentions or invalidate its existing intentions.
 fixture()
-local maintenance = { player = APR.PlayerID, data = APRData.player,
-    manualResets = { untouched = true }, manualClears = { beta = true } }
+local maintenance = {
+    player = APR.PlayerID,
+    data = APRData.player,
+    manualResets = { untouched = true },
+    manualClears = { beta = true },
+}
 APR.event = { routeMaintenanceJob = maintenance }
 assert(APR:AdvanceStep(false) and APRData.player.alpha == 3)
 assert(APR:CommitManualSkip(4) and APR:CanUndoManualSkip())
 assert(APR:UndoManualSkip() and APRData.player.alpha == 3)
 assert(APR:SetRouteProgress("beta", 2, "initialization"))
 assert(APR:SetRouteProgress("beta", 1, "definition_changed"))
-assert(maintenance.manualResets.untouched and not maintenance.manualResets.alpha
-    and not maintenance.manualResets.beta and maintenance.manualClears.beta,
-    "Only an explicit reset may supersede the maintenance job's saved intentions")
+assert(
+    maintenance.manualResets.untouched
+        and not maintenance.manualResets.alpha
+        and not maintenance.manualResets.beta
+        and maintenance.manualClears.beta,
+    "Only an explicit reset may supersede the maintenance job's saved intentions"
+)
 
 -- Foreground and background jobs both retain explicit resets, including no-op
 -- writes, while each receipt is retired only by a reset of its own route.
 fixture()
 local receipt = APR:CaptureStepContext()
-local foreground = { advance = receipt, manualResets = { other = true },
-    manualClears = { alpha = true, beta = true, other = true } }
-maintenance = { player = APR.PlayerID, data = APRData.player, advance = receipt,
-    manualClears = { alpha = true, beta = true, other = true } }
+local foreground = {
+    advance = receipt,
+    manualResets = { other = true },
+    manualClears = { alpha = true, beta = true, other = true },
+}
+maintenance = {
+    player = APR.PlayerID,
+    data = APRData.player,
+    advance = receipt,
+    manualClears = { alpha = true, beta = true, other = true },
+}
 APR.routeValidationPending = foreground
 APR.event = { routeMaintenanceJob = maintenance }
 assert(APR:SetRouteProgress("beta", 1, "reset"))
-assert(foreground.advance == receipt and maintenance.advance == receipt,
-    "Resetting an inactive route cannot lose the current route's one-shot completion")
+assert(
+    foreground.advance == receipt and maintenance.advance == receipt,
+    "Resetting an inactive route cannot lose the current route's one-shot completion"
+)
 assert(foreground.manualResets.beta and maintenance.manualResets.beta)
 assert(not foreground.manualClears.beta and not maintenance.manualClears.beta)
 assert(foreground.manualResets.other and foreground.manualClears.other and maintenance.manualClears.other)
@@ -127,16 +152,19 @@ foreground.manualResets.alpha, maintenance.manualResets.alpha = nil, nil
 foreground.manualClears.alpha, maintenance.manualClears.alpha = true, true
 local revision = APR.stepRevision
 assert(not APR:SetRouteProgress("alpha", 1, "reset"))
-assert(foreground.manualResets.alpha and maintenance.manualResets.alpha
-    and not foreground.manualClears.alpha and not maintenance.manualClears.alpha)
+assert(
+    foreground.manualResets.alpha
+        and maintenance.manualResets.alpha
+        and not foreground.manualClears.alpha
+        and not maintenance.manualClears.alpha
+)
 assert(APR.stepRevision == revision, "A no-op reset signals intentions without fabricating a transition")
 
 -- Suspended foreground validation retains the same reset/receipt contract.
 APR.routeValidationPending = nil
 APR.event.routeValidationResume = { advance = { route = "beta" } }
 assert(not APR:SetRouteProgress("alpha", 1, "reset"))
-assert(APR.event.routeValidationResume.manualResets.alpha
-    and APR.event.routeValidationResume.advance.route == "beta")
+assert(APR.event.routeValidationResume.manualResets.alpha and APR.event.routeValidationResume.advance.route == "beta")
 
 -- Invalid writes and a stale maintenance snapshot cannot acquire intentions for
 -- a different player or a replacement SavedVariables dictionary.

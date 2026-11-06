@@ -13,7 +13,10 @@ local function execute(frame, attribute, newstate)
             bindings[frame] = bindings[frame] or {}
             bindings[frame][key] = button
         end,
-        ClearBindings = function() assert(restricted); bindings[frame] = {} end,
+        ClearBindings = function()
+            assert(restricted)
+            bindings[frame] = {}
+        end,
         Hide = function()
             frame.shown = false
             execute(frame, "_onhide")
@@ -51,14 +54,21 @@ pad:RegisterWindow(owner)
 local changes, releases, editing = 0, 0, false
 pad:RegisterInputHandler(owner, {
     buttons = {
-        PADLTRIGGER = function(down) if down then changes = changes - 1 end end,
-        PADRTRIGGER = function(down) if down then changes = changes + 1 end end,
-        PAD1 = function(down) if down then changes = changes + 10 end end,
+        PADLTRIGGER = function(down)
+            if down then changes = changes - 1 end
+        end,
+        PADRTRIGGER = function(down)
+            if down then changes = changes + 1 end
+        end,
+        PAD1 = function(down)
+            if down then changes = changes + 10 end
+        end,
     },
     wantsKey = function(key) return key ~= "PAD1" or editing end,
     release = function() releases = releases + 1 end,
 })
-pad:FocusWindow(owner); pad:RefreshInputOwner()
+pad:FocusWindow(owner)
+pad:RefreshInputOwner()
 local router = pad.inputHandlers[owner].router
 assert(router:IsShown() and bindings[router].PADRTRIGGER and bindings[router].PADLTRIGGER)
 assert(not bindings[router].PAD1, "Native Confirm stays available outside placement mode")
@@ -66,32 +76,45 @@ local function press(key, down)
     local button = _G[assert(bindings[router][key])]
     button:GetScript("OnClick")(button, "LeftButton", down)
 end
-press("PADRTRIGGER", true); press("PADRTRIGGER", false)
+press("PADRTRIGGER", true)
+press("PADRTRIGGER", false)
 assert(changes == 1, "A trigger produces one page change per press")
-press("PADLTRIGGER", true); assert(changes == 0)
-editing = true; pad:RefreshInputOwner()
+press("PADLTRIGGER", true)
+assert(changes == 0)
+editing = true
+pad:RefreshInputOwner()
 assert(bindings[router].PAD1)
-press("PAD1", true); assert(changes == 10)
+press("PAD1", true)
+assert(changes == 10)
 local beforeDisconnect = releases
 watcher:GetScript("OnEvent")(watcher, "GAME_PAD_DISCONNECTED")
 assert(releases == beforeDisconnect + 1, "Unplugging a controller must release held movement immediately")
 local popup = CreateFrame("Frame", nil, UIParent)
 pad:RegisterWindow(popup, true)
-pad:FocusWindow(popup); pad:RefreshInputOwner()
-assert(not router:IsShown() and next(bindings[router]) == nil and releases > 0,
-    "A popup must release every owner-specific override")
+pad:FocusWindow(popup)
+pad:RefreshInputOwner()
+assert(
+    not router:IsShown() and next(bindings[router]) == nil and releases > 0,
+    "A popup must release every owner-specific override"
+)
 pad:DispatchInput(owner, "PADRTRIGGER", true)
 assert(changes == 10, "A stale callback cannot change an unfocused window")
-popup:Hide(); pad:FocusWindow(owner); pad:RefreshInputOwner()
+popup:Hide()
+pad:FocusWindow(owner)
+pad:RefreshInputOwner()
 assert(router:IsShown())
 env.setCombat(true)
 execute(router, "_onstate-combat", "1")
-assert(not router:IsShown() and next(bindings[router]) == nil,
-    "The secure state driver releases overrides during combat without an addon protected call")
-pad:RefreshInputOwner(); pad:DispatchInput(owner, "PAD1", true)
+assert(
+    not router:IsShown() and next(bindings[router]) == nil,
+    "The secure state driver releases overrides during combat without an addon protected call"
+)
+pad:RefreshInputOwner()
+pad:DispatchInput(owner, "PAD1", true)
 assert(changes == 10)
 env.setCombat(false)
-pad:RefreshInputOwner(); assert(router:IsShown())
+pad:RefreshInputOwner()
+assert(router:IsShown())
 owner:Hide()
 assert(not router:IsShown() and next(bindings[router]) == nil)
 print("Gamepad input: secure scoped overrides, down/up events, modal focus, stale callbacks and combat release passed")

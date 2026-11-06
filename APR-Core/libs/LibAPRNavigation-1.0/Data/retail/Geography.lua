@@ -1,19 +1,36 @@
 -- Declarative travel data. Names are resolved through the game client.
 LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "geography", {
     config = {
-        TransportDestinations = { tram = {
-            { instanceID = 369, x = 69.22769927979, y = 10.39319992065, radius = 150, mapID = 87 },
-            { instanceID = 369, x = 45.09560012817, y = 2490.5200195312, radius = 150, mapID = 84 },
-        } },
+        TransportDestinations = {
+            tram = {
+                { instanceID = 369, x = 69.22769927979, y = 10.39319992065, radius = 150, mapID = 87 },
+                { instanceID = 369, x = 45.09560012817, y = 2490.5200195312, radius = 150, mapID = 84 },
+            },
+        },
         -- These phased garrisons use Draenor's world coordinates, as in HBD's
         -- verified instance overrides. Keep ordinary dungeons/worlds separate.
         WorldInstanceOverrides = {
-            [1152] = 1116, [1330] = 1116, [1153] = 1116, [1154] = 1116,
-            [1158] = 1116, [1331] = 1116, [1159] = 1116, [1160] = 1116,
+            [1152] = 1116,
+            [1330] = 1116,
+            [1153] = 1116,
+            [1154] = 1116,
+            [1158] = 1116,
+            [1331] = 1116,
+            [1159] = 1116,
+            [1160] = 1116,
         },
         HousingMaps = { [2351] = true, [2352] = true },
         ContinentMapOverrides = { [2509] = 13, [2537] = 13 },
-        GroundOnlyAreas = { [90] = true, [407] = true, [1670] = true, [1671] = true, [2266] = true, [2346] = true, [2509] = true, [2541] = true },
+        GroundOnlyAreas = {
+            [90] = true,
+            [407] = true,
+            [1670] = true,
+            [1671] = true,
+            [2266] = true,
+            [2346] = true,
+            [2509] = true,
+            [2541] = true,
+        },
         IsolatedAreas = {
             [2] = "floor:2",
             [3] = "floor:3",

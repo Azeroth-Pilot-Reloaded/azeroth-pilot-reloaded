@@ -20,7 +20,8 @@ local hiddenInstanceTypes = {
 
 local function HasActiveRoute()
     return APR.ActiveRoute and APRData and APRData[APR.PlayerID] and APRData[APR.PlayerID][APR.ActiveRoute]
-end--[[APR_DIAG]]; HasActiveRoute = APRTrace("APR-Core/utils/InstanceUtils.lua:21:HasActiveRoute#1", HasActiveRoute)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+HasActiveRoute = APRTrace("APR-Core/utils/InstanceUtils.lua:21:HasActiveRoute#1", HasActiveRoute)--[[/APR_DIAG]]
 
 function APR:RefreshInstanceUIVisibility()
     if self.currentStep and self.currentStep.RefreshCurrentStepFrameAnchor then
@@ -34,7 +35,9 @@ function APR:RefreshInstanceUIVisibility()
     if self.questOrderList and self.questOrderList.RefreshFrameAnchor then
         self.questOrderList:RefreshFrameAnchor()
     end
-end--[[APR_DIAG]]; APR.RefreshInstanceUIVisibility = APRTrace("APR-Core/utils/InstanceUtils.lua:25:APR:RefreshInstanceUIVisibility#2", APR.RefreshInstanceUIVisibility)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.RefreshInstanceUIVisibility =
+    APRTrace("APR-Core/utils/InstanceUtils.lua:25:APR:RefreshInstanceUIVisibility#2", APR.RefreshInstanceUIVisibility)--[[/APR_DIAG]]
 
 function APR:MaybePromptInstanceUIPreference()
     local profile = self:GetSettingsProfile()
@@ -63,25 +66,37 @@ function APR:MaybePromptInstanceUIPreference()
     self.questionDialog:CreateQuestionPopup(
         "APR_INSTANCE_UI_PREFERENCE",
         L["INSTANCE_UI_PROMPT"],
-        --[[APR_DIAG]]APRTrace("APR-Core/utils/InstanceUtils.lua:66:callback#4", --[[/APR_DIAG]]function()
+        --[[APR_DIAG]]
+        APRTrace("APR-Core/utils/InstanceUtils.lua:66:callback#4", --[[/APR_DIAG]] function()
             -- A delayed reply must still belong to its original profile and character.
-            if APR.PlayerID ~= playerID or APR:GetCharacterSettings() ~= charDB or
-                APR:GetSettingsProfile() ~= profile then
+            if
+                APR.PlayerID ~= playerID
+                or APR:GetCharacterSettings() ~= charDB
+                or APR:GetSettingsProfile() ~= profile
+            then
                 return
             end
             profile.forceHideUiInPartyRaid = false
             APR:RefreshInstanceUIVisibility()
-        end--[[APR_DIAG]])--[[/APR_DIAG]],
-        --[[APR_DIAG]]APRTrace("APR-Core/utils/InstanceUtils.lua:75:callback#5", --[[/APR_DIAG]]function()
-            if APR.PlayerID ~= playerID or APR:GetCharacterSettings() ~= charDB or
-                APR:GetSettingsProfile() ~= profile then
+        end--[[APR_DIAG]]) --[[/APR_DIAG]],
+        --[[APR_DIAG]]
+        APRTrace("APR-Core/utils/InstanceUtils.lua:75:callback#5", --[[/APR_DIAG]] function()
+            if
+                APR.PlayerID ~= playerID
+                or APR:GetCharacterSettings() ~= charDB
+                or APR:GetSettingsProfile() ~= profile
+            then
                 return
             end
             profile.forceHideUiInPartyRaid = true
             APR:RefreshInstanceUIVisibility()
-        end--[[APR_DIAG]])--[[/APR_DIAG]]
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
     )
-end--[[APR_DIAG]]; APR.MaybePromptInstanceUIPreference = APRTrace("APR-Core/utils/InstanceUtils.lua:39:APR:MaybePromptInstanceUIPreference#3", APR.MaybePromptInstanceUIPreference)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.MaybePromptInstanceUIPreference = APRTrace(
+    "APR-Core/utils/InstanceUtils.lua:39:APR:MaybePromptInstanceUIPreference#3",
+    APR.MaybePromptInstanceUIPreference
+)--[[/APR_DIAG]]
 
 function APR:IsInstanceWithUI()
     local isInstance, instanceType = IsInInstance()
@@ -108,12 +123,15 @@ function APR:IsInstanceWithUI()
     end
 
     return true
-end--[[APR_DIAG]]; APR.IsInstanceWithUI = APRTrace("APR-Core/utils/InstanceUtils.lua:86:APR:IsInstanceWithUI#6", APR.IsInstanceWithUI)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.IsInstanceWithUI = APRTrace("APR-Core/utils/InstanceUtils.lua:86:APR:IsInstanceWithUI#6", APR.IsInstanceWithUI)--[[/APR_DIAG]]
 
 function APR:IsScenarioInstance()
     local _, instanceType = IsInInstance()
     return instanceType == "scenario"
-end--[[APR_DIAG]]; APR.IsScenarioInstance = APRTrace("APR-Core/utils/InstanceUtils.lua:113:APR:IsScenarioInstance#7", APR.IsScenarioInstance)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.IsScenarioInstance =
+    APRTrace("APR-Core/utils/InstanceUtils.lua:113:APR:IsScenarioInstance#7", APR.IsScenarioInstance)--[[/APR_DIAG]]
 
 --- Check whether a scenario objective is already recorded so we do not double count progress.
 function APR:ContainsScenarioStepCriteria(table, stepID, criteriaID, criteriaIndex)
@@ -126,4 +144,8 @@ function APR:ContainsScenarioStepCriteria(table, stepID, criteriaID, criteriaInd
         end
     end
     return false
-end--[[APR_DIAG]]; APR.ContainsScenarioStepCriteria = APRTrace("APR-Core/utils/InstanceUtils.lua:119:APR:ContainsScenarioStepCriteria#8", APR.ContainsScenarioStepCriteria)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.ContainsScenarioStepCriteria = APRTrace(
+    "APR-Core/utils/InstanceUtils.lua:119:APR:ContainsScenarioStepCriteria#8",
+    APR.ContainsScenarioStepCriteria
+)--[[/APR_DIAG]]

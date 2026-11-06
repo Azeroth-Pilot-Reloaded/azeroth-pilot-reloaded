@@ -2,7 +2,9 @@
 local locale = setmetatable({
     COMPLETE_ONE_REQUIRED_ROUTE = "Complete one: %s",
 }, { __index = function(_, key) return key end })
-function LibStub() return { GetLocale = function() return locale end } end
+function LibStub()
+    return { GetLocale = function() return locale end }
+end
 tinsert, tremove = table.insert, table.remove
 local level = 9
 APR = { PlayerID = "player", Faction = "Alliance", RouteQuestStepList = {} }
@@ -17,14 +19,22 @@ dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/features/questing/RouteSuggestions.lua")
 function APR:GetPlayerEffectiveLevel() return level end
 function APR:IsDelveRoute() return false end
-function APR:Contains(t, value) for _, v in ipairs(t) do if v == value then return true end end end
+function APR:Contains(t, value)
+    for _, v in ipairs(t) do
+        if v == value then return true end
+    end
+end
 function APR:AreConditionalFiltersMet() return true end
 local routes = APR.RouteQuestStepList
 routes.normal = { label = "Normal", conditions = { Faction = "Alliance" }, nextRoute = { "next" } }
 routes.technical = { label = "Technical", conditions = { Faction = "Alliance" } }
 routes.horde = { label = "Horde", conditions = { Faction = "Horde" } }
-routes.next = { label = "Next", gameVersion = "forever", conditions = { MinLevel = 10 },
-    requiredRoute = { "normal", "technical", "horde" } }
+routes.next = {
+    label = "Next",
+    gameVersion = "forever",
+    conditions = { MinLevel = 10 },
+    requiredRoute = { "normal", "technical", "horde" },
+}
 assert(APR:GetRouteVisibility("next") == "disabled")
 assert(not APR:AddRouteToCustomPathByKey("next") and #APRCustomPath.player == 0)
 assert(not APR:ActivateRoute("next") and APR.ActiveRoute == nil)
@@ -56,7 +66,7 @@ assert(APR:CanStartRoute("next"))
 -- Restored or manually reordered paths cannot bypass the gate; keep the entry.
 APR.ActiveRoute = nil
 function APR:GetPrimaryCustomPathRouteKey() return "next" end
-function APR:GetRouteMapIDsAndName() return {1}, 1, "next", "Forever" end
+function APR:GetRouteMapIDsAndName() return { 1 }, 1, "next", "Forever" end
 level = 9
 local maps, mapID, key = APR:GetCurrentRouteMapIDsAndName()
 assert(maps == nil and key == "" and APRCustomPath.player[1] == "Next")

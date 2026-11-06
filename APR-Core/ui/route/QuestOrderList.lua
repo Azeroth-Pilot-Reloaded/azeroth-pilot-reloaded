@@ -41,13 +41,19 @@ local SNAP_ANCHOR_GAP = 30
 local resizeButton
 
 local function isFrameSuppressed()
-    return not APR.settings.profile.showQuestOrderList or not APR.settings.profile.enableAddon or
-        APR:IsPetBattleActive() or not APR:IsInstanceWithUI()
-end--[[APR_DIAG]]; isFrameSuppressed = APRTrace("APR-Core/ui/route/QuestOrderList.lua:43:isFrameSuppressed#1", isFrameSuppressed)--[[/APR_DIAG]]
+    return not APR.settings.profile.showQuestOrderList
+        or not APR.settings.profile.enableAddon
+        or APR:IsPetBattleActive()
+        or not APR:IsInstanceWithUI()
+end--[[APR_DIAG]]
+isFrameSuppressed = APRTrace("APR-Core/ui/route/QuestOrderList.lua:43:isFrameSuppressed#1", isFrameSuppressed)--[[/APR_DIAG]]
 
 local function canRenderSteps()
-    return not isFrameSuppressed() and APR.RouteQuestStepList[APR.ActiveRoute] and APR.routeconfig:HasRouteInCustomPath()
-end--[[APR_DIAG]]; canRenderSteps = APRTrace("APR-Core/ui/route/QuestOrderList.lua:48:canRenderSteps#2", canRenderSteps)--[[/APR_DIAG]]
+    return not isFrameSuppressed()
+        and APR.RouteQuestStepList[APR.ActiveRoute]
+        and APR.routeconfig:HasRouteInCustomPath()
+end--[[APR_DIAG]]
+canRenderSteps = APRTrace("APR-Core/ui/route/QuestOrderList.lua:48:canRenderSteps#2", canRenderSteps)--[[/APR_DIAG]]
 
 local function buildLayout(scrollChild)
     return {
@@ -57,185 +63,255 @@ local function buildLayout(scrollChild)
         frameWidth = math.max(1, FRAME_WIDTH - 22),
         signatureParts = { tostring(FRAME_WIDTH) },
         frameOffset = FRAME_OFFSET,
-        dataHeight = FRAME_DATA_START
+        dataHeight = FRAME_DATA_START,
     }
-end--[[APR_DIAG]]; buildLayout = APRTrace("APR-Core/ui/route/QuestOrderList.lua:52:buildLayout#3", buildLayout)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+buildLayout = APRTrace("APR-Core/ui/route/QuestOrderList.lua:52:buildLayout#3", buildLayout)--[[/APR_DIAG]]
 
 local function isStepVisible(step, sojournerSkipActive)
     return APR:StepFilterQoL(step) and not (sojournerSkipActive and APR:IsStepCampaignQuest(step))
-end--[[APR_DIAG]]; isStepVisible = APRTrace("APR-Core/ui/route/QuestOrderList.lua:64:isStepVisible#4", isStepVisible)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+isStepVisible = APRTrace("APR-Core/ui/route/QuestOrderList.lua:64:isStepVisible#4", isStepVisible)--[[/APR_DIAG]]
 
 local function getVisibilityState(steps, sojournerSkipActive)
     local state = {}
     for rawIndex, step in ipairs(steps or {}) do
         state[rawIndex] = isStepVisible(step, sojournerSkipActive) and "1" or "0"
-        --[[APR_DIAG]]APRYield--[=[--[[/APR_DIAG]]coroutine.yield--[[APR_DIAG]]]=]--[[/APR_DIAG]]()
+        --[[APR_DIAG]]
+        APRYield--[=[--[[/APR_DIAG]]coroutine.yield--[[APR_DIAG]]]=]--[[/APR_DIAG]]()
     end
     return table.concat(state)
-end--[[APR_DIAG]]; getVisibilityState = APRTrace("APR-Core/ui/route/QuestOrderList.lua:68:getVisibilityState#5", getVisibilityState)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+getVisibilityState = APRTrace("APR-Core/ui/route/QuestOrderList.lua:68:getVisibilityState#5", getVisibilityState)--[[/APR_DIAG]]
 
 local function isSnapEnabled()
     return APR.settings.profile.questOrderListSnapToCurrentStep
-end--[[APR_DIAG]]; isSnapEnabled = APRTrace("APR-Core/ui/route/QuestOrderList.lua:77:isSnapEnabled#6", isSnapEnabled)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+isSnapEnabled = APRTrace("APR-Core/ui/route/QuestOrderList.lua:77:isSnapEnabled#6", isSnapEnabled)--[[/APR_DIAG]]
 
 function APR.questOrderList:IsSnapped()
     return isSnapEnabled() and getSnapAnchor() ~= nil
-end--[[APR_DIAG]]; APR.questOrderList.IsSnapped = APRTrace("APR-Core/ui/route/QuestOrderList.lua:81:APR.questOrderList:IsSnapped#7", APR.questOrderList.IsSnapped)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.questOrderList.IsSnapped =
+    APRTrace("APR-Core/ui/route/QuestOrderList.lua:81:APR.questOrderList:IsSnapped#7", APR.questOrderList.IsSnapped)--[[/APR_DIAG]]
 
-getSnapAnchor = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderList.lua:85:callback#8", --[[/APR_DIAG]]function()
-    if not isSnapEnabled() then
-        return nil
-    end
-
-    local currentStepPanel = _G.CurrentStepScreenPanel
-    if not currentStepPanel or not currentStepPanel:IsShown() or currentStepPanel.collapsed then
-        return nil
-    end
-
-    -- Use centralized snap anchor logic from Core
-    -- Hierarchy: Fillers (highest) -> AFK (medium) -> CurrentStep (lowest)
-    local anchorFrame, anchorHeight = APR:GetSnapAnchorFrame()
-    return anchorFrame, anchorHeight
-end--[[APR_DIAG]])--[[/APR_DIAG]]
-
-snapToAnchor = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderList.lua:101:callback#9", --[[/APR_DIAG]]function(anchorFrame, anchorHeight)
-    if not anchorFrame or not QuestOrderListPanel then
-        APR.questOrderList.snapAnchor = nil
-        if APR.SetFrameSnapAnchor then APR:SetFrameSnapAnchor(QuestOrderListPanel, nil) end
-        return false
-    end
-
-    local effectiveHeight = (anchorHeight and anchorHeight > 0) and anchorHeight or (anchorFrame:GetHeight() or 0)
-    local owner = APR.questOrderList
-    -- Use centralized snap positioning helper (no header adjustment for QuestOrderList)
-    local anchored = APR:SnapFrameToAnchor(QuestOrderListPanel, anchorFrame, effectiveHeight, SNAP_ANCHOR_GAP, nil)
-    if anchored then owner.snapAnchor, owner.snapHeight = anchorFrame, effectiveHeight end
-    return anchored
-end--[[APR_DIAG]])--[[/APR_DIAG]]
-
-updateSnapSizing = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderList.lua:116:callback#10", --[[/APR_DIAG]]function(anchored, anchorFrame)
-    if not QuestOrderListFrame then
-        return
-    end
-
-    if anchored and anchorFrame then
-        QuestOrderListFrame:SetResizable(true)
-        if resizeButton then
-            resizeButton:Show()
-            resizeButton:EnableMouse(true)
-        end
-        if QuestOrderListFrame_StepHolderHeader and QuestOrderListFrame_StepHolderHeader.MinimizeButton then
-            QuestOrderListFrame_StepHolderHeader.MinimizeButton:Hide()
+getSnapAnchor = --[[APR_DIAG]]
+    APRTrace("APR-Core/ui/route/QuestOrderList.lua:85:callback#8", --[[/APR_DIAG]] function()
+        if not isSnapEnabled() then
+            return nil
         end
 
-        local anchorWidth = anchorFrame:GetWidth()
-        if anchorWidth and anchorWidth > 0 then
-            local maxHeight = (UIParent and UIParent.GetHeight and UIParent:GetHeight()) or 2000
-            if QuestOrderListFrame:GetWidth() ~= anchorWidth then QuestOrderListFrame:SetWidth(anchorWidth) end
-            -- Keep width in sync with the parent while still allowing the user to resize height.
-            QuestOrderListFrame:SetResizeBounds(anchorWidth, FRAME_MIN_HEIGHT, anchorWidth, maxHeight)
+        local currentStepPanel = _G.CurrentStepScreenPanel
+        if not currentStepPanel or not currentStepPanel:IsShown() or currentStepPanel.collapsed then
+            return nil
         end
-    else
-        QuestOrderListFrame:SetClampedToScreen(true)
-        QuestOrderListFrame:SetResizeBounds(FRAME_MIN_WIDTH, FRAME_MIN_HEIGHT)
-        QuestOrderListFrame:SetResizable(true)
-        if resizeButton then
-            resizeButton:Show()
-            resizeButton:EnableMouse(true)
+
+        -- Use centralized snap anchor logic from Core
+        -- Hierarchy: Fillers (highest) -> AFK (medium) -> CurrentStep (lowest)
+        local anchorFrame, anchorHeight = APR:GetSnapAnchorFrame()
+        return anchorFrame, anchorHeight
+    end--[[APR_DIAG]])--[[/APR_DIAG]]
+
+snapToAnchor = --[[APR_DIAG]]
+    APRTrace("APR-Core/ui/route/QuestOrderList.lua:101:callback#9", --[[/APR_DIAG]] function(anchorFrame, anchorHeight)
+        if not anchorFrame or not QuestOrderListPanel then
+            APR.questOrderList.snapAnchor = nil
+            if APR.SetFrameSnapAnchor then APR:SetFrameSnapAnchor(QuestOrderListPanel, nil) end
+            return false
         end
-        if QuestOrderListFrame_StepHolderHeader and QuestOrderListFrame_StepHolderHeader.MinimizeButton then
-            QuestOrderListFrame_StepHolderHeader.MinimizeButton:Show()
+
+        local effectiveHeight = (anchorHeight and anchorHeight > 0) and anchorHeight or (anchorFrame:GetHeight() or 0)
+        local owner = APR.questOrderList
+        -- Use centralized snap positioning helper (no header adjustment for QuestOrderList)
+        local anchored = APR:SnapFrameToAnchor(QuestOrderListPanel, anchorFrame, effectiveHeight, SNAP_ANCHOR_GAP, nil)
+        if anchored then
+            owner.snapAnchor, owner.snapHeight = anchorFrame, effectiveHeight
         end
-    end
-end--[[APR_DIAG]])--[[/APR_DIAG]]
+        return anchored
+    end--[[APR_DIAG]])--[[/APR_DIAG]]
+
+updateSnapSizing = --[[APR_DIAG]]
+    APRTrace("APR-Core/ui/route/QuestOrderList.lua:116:callback#10", --[[/APR_DIAG]] function(anchored, anchorFrame)
+        if not QuestOrderListFrame then
+            return
+        end
+
+        if anchored and anchorFrame then
+            QuestOrderListFrame:SetResizable(true)
+            if resizeButton then
+                resizeButton:Show()
+                resizeButton:EnableMouse(true)
+            end
+            if QuestOrderListFrame_StepHolderHeader and QuestOrderListFrame_StepHolderHeader.MinimizeButton then
+                QuestOrderListFrame_StepHolderHeader.MinimizeButton:Hide()
+            end
+
+            local anchorWidth = anchorFrame:GetWidth()
+            if anchorWidth and anchorWidth > 0 then
+                local maxHeight = (UIParent and UIParent.GetHeight and UIParent:GetHeight()) or 2000
+                if QuestOrderListFrame:GetWidth() ~= anchorWidth then QuestOrderListFrame:SetWidth(anchorWidth) end
+                -- Keep width in sync with the parent while still allowing the user to resize height.
+                QuestOrderListFrame:SetResizeBounds(anchorWidth, FRAME_MIN_HEIGHT, anchorWidth, maxHeight)
+            end
+        else
+            QuestOrderListFrame:SetClampedToScreen(true)
+            QuestOrderListFrame:SetResizeBounds(FRAME_MIN_WIDTH, FRAME_MIN_HEIGHT)
+            QuestOrderListFrame:SetResizable(true)
+            if resizeButton then
+                resizeButton:Show()
+                resizeButton:EnableMouse(true)
+            end
+            if QuestOrderListFrame_StepHolderHeader and QuestOrderListFrame_StepHolderHeader.MinimizeButton then
+                QuestOrderListFrame_StepHolderHeader.MinimizeButton:Show()
+            end
+        end
+    end--[[APR_DIAG]])--[[/APR_DIAG]]
 
 ---------------------------------------------------------------------------------------
 ---------------------------- Quest Order List Frames ----------------------------------
 ---------------------------------------------------------------------------------------
 
-QuestOrderListFrame = APR:CreateStandardFrame("QuestOrderListPanel", UIParent, FRAME_WIDTH, FRAME_HEIGHT,
-    "BackdropTemplate")
-QuestOrderListFrame:HookScript("OnShow", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderList.lua:158:callback#11", --[[/APR_DIAG]]function()
-    if not InCombatLockdown() then APR.questOrderList:ApplySnapAnchor() end
-end--[[APR_DIAG]])--[[/APR_DIAG]])
+QuestOrderListFrame =
+    APR:CreateStandardFrame("QuestOrderListPanel", UIParent, FRAME_WIDTH, FRAME_HEIGHT, "BackdropTemplate")
+QuestOrderListFrame:HookScript(
+    "OnShow", --[[APR_DIAG]]
+    APRTrace("APR-Core/ui/route/QuestOrderList.lua:158:callback#11", --[[/APR_DIAG]] function()
+        if not InCombatLockdown() then APR.questOrderList:ApplySnapAnchor() end
+    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+)
 
 QuestOrderListFrame:SetResizable(true)
 QuestOrderListFrame:SetResizeBounds(FRAME_MIN_WIDTH, FRAME_MIN_HEIGHT)
-APR:SetupFrameDrag(QuestOrderListFrame, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderList.lua:164:callback#12", --[[/APR_DIAG]]function()
-    return not APR.settings.profile.questOrderListSnapToCurrentStep and not APR.settings.profile.questOrderListLock
-end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderList.lua:166:callback#13", --[[/APR_DIAG]]function()
-    LibWindow.SavePosition(QuestOrderListPanel)
-end--[[APR_DIAG]])--[[/APR_DIAG]])
-QuestOrderListFrame:SetScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderList.lua:169:callback#14", --[[/APR_DIAG]]function(self, width, height)
-    local widthChanged = FRAME_WIDTH ~= width
-    FRAME_WIDTH = width
-    FRAME_HEIGHT = height
-    QuestOrderListFrame_StepHolder:SetSize(width, height)
-    if widthChanged then APR.questOrderList:UpdateFrameContents() end
-    if not APR.questOrderList:IsSnapped() then
-        LibWindow.SavePosition(QuestOrderListPanel)
-    end
-end--[[APR_DIAG]])--[[/APR_DIAG]])
+APR:SetupFrameDrag(
+    QuestOrderListFrame, --[[APR_DIAG]]
+    APRTrace(
+        "APR-Core/ui/route/QuestOrderList.lua:164:callback#12", --[[/APR_DIAG]]
+        function()
+            return not APR.settings.profile.questOrderListSnapToCurrentStep
+                and not APR.settings.profile.questOrderListLock
+        end --[[APR_DIAG]]
+    ) --[[/APR_DIAG]], --[[APR_DIAG]]
+    APRTrace(
+        "APR-Core/ui/route/QuestOrderList.lua:166:callback#13", --[[/APR_DIAG]]
+        function()
+            LibWindow.SavePosition(QuestOrderListPanel)
+        end --[[APR_DIAG]]
+    ) --[[/APR_DIAG]]
+)
+QuestOrderListFrame:SetScript(
+    "OnSizeChanged", --[[APR_DIAG]]
+    APRTrace("APR-Core/ui/route/QuestOrderList.lua:169:callback#14", --[[/APR_DIAG]] function(self, width, height)
+        local widthChanged = FRAME_WIDTH ~= width
+        FRAME_WIDTH = width
+        FRAME_HEIGHT = height
+        QuestOrderListFrame_StepHolder:SetSize(width, height)
+        if widthChanged then APR.questOrderList:UpdateFrameContents() end
+        if not APR.questOrderList:IsSnapped() then
+            LibWindow.SavePosition(QuestOrderListPanel)
+        end
+    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+)
 
 -- Create the step holder frame
-QuestOrderListFrame_StepHolder = CreateFrame("Frame", "QuestOrderListFrame_StepHolder", QuestOrderListFrame,
-    "BackdropTemplate")
+QuestOrderListFrame_StepHolder =
+    CreateFrame("Frame", "QuestOrderListFrame_StepHolder", QuestOrderListFrame, "BackdropTemplate")
 QuestOrderListFrame_StepHolder:SetSize(FRAME_WIDTH, FRAME_HEIGHT)
 QuestOrderListFrame_StepHolder:SetAllPoints()
 
 -- Create a scroll frame for the step holder
-QuestOrderListFrame_ScrollFrame = CreateFrame("ScrollFrame", "QuestOrderListFrame_ScrollFrame",
-    QuestOrderListFrame_StepHolder, "UIPanelScrollFrameTemplate")
+QuestOrderListFrame_ScrollFrame = CreateFrame(
+    "ScrollFrame",
+    "QuestOrderListFrame_ScrollFrame",
+    QuestOrderListFrame_StepHolder,
+    "UIPanelScrollFrameTemplate"
+)
 QuestOrderListFrame_ScrollFrame:SetPoint("TOPLEFT", QuestOrderListFrame_StepHolder, "TOPLEFT", 0, 0)
 QuestOrderListFrame_ScrollFrame:SetPoint("BOTTOMRIGHT", QuestOrderListFrame_StepHolder, "BOTTOMRIGHT", -22, 0)
 
 -- Create a child frame for the scroll frame
-QuestOrderListFrame_ScrollChild = CreateFrame("Frame", "QuestOrderListFrame_ScrollChild",
-    QuestOrderListFrame_ScrollFrame)
+QuestOrderListFrame_ScrollChild =
+    CreateFrame("Frame", "QuestOrderListFrame_ScrollChild", QuestOrderListFrame_ScrollFrame)
 QuestOrderListFrame_ScrollChild:SetSize(FRAME_WIDTH, 1)
 QuestOrderListFrame_ScrollFrame:SetScrollChild(QuestOrderListFrame_ScrollChild)
-APR.questOrderList.virtualList = APR.VirtualList:New(QuestOrderListFrame_ScrollFrame, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderList.lua:197:callback#15", --[[/APR_DIAG]]function(parent)
-    local row = CreateFrame("Frame", nil, parent, "BackdropTemplate")
-    row.onRecycle = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderList.lua:199:callback#16", --[[/APR_DIAG]]function(self)
-        self.modelBinding = nil
-        if self.model then
-            self.model.frame = nil; self.model = nil
-        end
-    end--[[APR_DIAG]])--[[/APR_DIAG]]
-    return row
-end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderList.lua:206:callback#17", --[[/APR_DIAG]]function(row, model, _, deadline, generation)
-    return QuestOrderListUtils:BindStepModel(row, model, QuestOrderListFrame_ScrollChild, deadline, generation)
-end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderList.lua:208:callback#18", --[[/APR_DIAG]]function(model) return model.height end--[[APR_DIAG]])--[[/APR_DIAG]], QuestOrderListFrame_ScrollChild)
+APR.questOrderList.virtualList = APR.VirtualList:New(
+    QuestOrderListFrame_ScrollFrame, --[[APR_DIAG]]
+    APRTrace("APR-Core/ui/route/QuestOrderList.lua:197:callback#15", --[[/APR_DIAG]] function(parent)
+        local row = CreateFrame("Frame", nil, parent, "BackdropTemplate")
+        row.onRecycle = --[[APR_DIAG]]
+            APRTrace("APR-Core/ui/route/QuestOrderList.lua:199:callback#16", --[[/APR_DIAG]] function(self)
+                self.modelBinding = nil
+                if self.model then
+                    self.model.frame = nil
+                    self.model = nil
+                end
+            end--[[APR_DIAG]])--[[/APR_DIAG]]
+        return row
+    end--[[APR_DIAG]]) --[[/APR_DIAG]], --[[APR_DIAG]]
+    APRTrace(
+        "APR-Core/ui/route/QuestOrderList.lua:206:callback#17", --[[/APR_DIAG]]
+        function(row, model, _, deadline, generation)
+            return QuestOrderListUtils:BindStepModel(row, model, QuestOrderListFrame_ScrollChild, deadline, generation)
+        end --[[APR_DIAG]]
+    ) --[[/APR_DIAG]], --[[APR_DIAG]]
+    APRTrace(
+        "APR-Core/ui/route/QuestOrderList.lua:208:callback#18", --[[/APR_DIAG]]
+        function(model) return model.height end --[[APR_DIAG]]
+    ) --[[/APR_DIAG]],
+    QuestOrderListFrame_ScrollChild
+)
 APR.questOrderList.virtualList:SetRenderBudget(2, "QuestOrderListViewportBatch")
 QuestOrderListFrame_ScrollFrame.aprVirtualList = APR.questOrderList.virtualList
 
 -- Create the frame header
-QuestOrderListFrame_StepHolderHeader = APR:CreateFrameHeader("QuestOrderListFrame_StepHolderHeader",
-    QuestOrderListFrame, L["QUEST_ORDER_LIST"], "ObjectiveTrackerContainerHeaderTemplate", "questOrderList")
+QuestOrderListFrame_StepHolderHeader = APR:CreateFrameHeader(
+    "QuestOrderListFrame_StepHolderHeader",
+    QuestOrderListFrame,
+    L["QUEST_ORDER_LIST"],
+    "ObjectiveTrackerContainerHeaderTemplate",
+    "questOrderList"
+)
 QuestOrderListFrame_StepHolderHeader:SetPoint("TOPLEFT", QuestOrderListFrame, "TOPLEFT", 0, 30)
 -- The native header height varies with the client/template. Start the viewport
 -- below its actual lower edge so neither initial nor scrolled rows cross it.
 QuestOrderListFrame_ScrollFrame:SetPoint("TOPLEFT", QuestOrderListFrame_StepHolderHeader, "BOTTOMLEFT", 0, -2)
 
-APR:SetupHeaderDrag(QuestOrderListFrame_StepHolderHeader, QuestOrderListFrame, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderList.lua:220:callback#19", --[[/APR_DIAG]]function()
-    return not APR.settings.profile.questOrderListLock and not APR.settings.profile.questOrderListSnapToCurrentStep
-end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderList.lua:222:callback#20", --[[/APR_DIAG]]function()
-    LibWindow.SavePosition(QuestOrderListPanel)
-end--[[APR_DIAG]])--[[/APR_DIAG]])
+APR:SetupHeaderDrag(
+    QuestOrderListFrame_StepHolderHeader,
+    QuestOrderListFrame, --[[APR_DIAG]]
+    APRTrace(
+        "APR-Core/ui/route/QuestOrderList.lua:220:callback#19", --[[/APR_DIAG]]
+        function()
+            return not APR.settings.profile.questOrderListLock
+                and not APR.settings.profile.questOrderListSnapToCurrentStep
+        end --[[APR_DIAG]]
+    ) --[[/APR_DIAG]], --[[APR_DIAG]]
+    APRTrace(
+        "APR-Core/ui/route/QuestOrderList.lua:222:callback#20", --[[/APR_DIAG]]
+        function()
+            LibWindow.SavePosition(QuestOrderListPanel)
+        end --[[APR_DIAG]]
+    ) --[[/APR_DIAG]]
+)
 
-APR:SetupMinimizeButton(QuestOrderListFrame_StepHolderHeader, QuestOrderListFrame, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderList.lua:226:callback#21", --[[/APR_DIAG]]function()
-    -- Collapse
-    QuestOrderListFrame_StepHolder:Hide()
-    QuestOrderListUtils:CancelRender(APR.questOrderList)
-    QuestOrderListUtils:CancelScroll(QuestOrderListFrame_ScrollFrame)
-    APR.questOrderList:UpdateBackgroundColorAlpha({ 0, 0, 0, 0 })
-end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderList.lua:232:callback#22", --[[/APR_DIAG]]function()
-    -- Expand
-    QuestOrderListFrame_StepHolder:Show()
-    APR.questOrderList:UpdateBackgroundColorAlpha()
-    APR.questOrderList:AddStepFromRoute(true)
-end--[[APR_DIAG]])--[[/APR_DIAG]], "ui-questtrackerbutton-collapse-all", "ui-questtrackerbutton-expand-all")
-
+APR:SetupMinimizeButton(
+    QuestOrderListFrame_StepHolderHeader,
+    QuestOrderListFrame, --[[APR_DIAG]]
+    APRTrace("APR-Core/ui/route/QuestOrderList.lua:226:callback#21", --[[/APR_DIAG]] function()
+        -- Collapse
+        QuestOrderListFrame_StepHolder:Hide()
+        QuestOrderListUtils:CancelRender(APR.questOrderList)
+        QuestOrderListUtils:CancelScroll(QuestOrderListFrame_ScrollFrame)
+        APR.questOrderList:UpdateBackgroundColorAlpha({ 0, 0, 0, 0 })
+    end--[[APR_DIAG]]) --[[/APR_DIAG]], --[[APR_DIAG]]
+    APRTrace("APR-Core/ui/route/QuestOrderList.lua:232:callback#22", --[[/APR_DIAG]] function()
+        -- Expand
+        QuestOrderListFrame_StepHolder:Show()
+        APR.questOrderList:UpdateBackgroundColorAlpha()
+        APR.questOrderList:AddStepFromRoute(true)
+    end--[[APR_DIAG]]) --[[/APR_DIAG]],
+    "ui-questtrackerbutton-collapse-all",
+    "ui-questtrackerbutton-expand-all"
+)
 
 resizeButton = CreateFrame("Button", "QuestOrderListFrameResizeHandle", QuestOrderListFrame)
 resizeButton:SetSize(16, 16)
@@ -245,18 +321,27 @@ resizeButton:SetNormalTexture("Interface/CHATFRAME/UI-ChatIM-SizeGrabber-Up")
 resizeButton:SetHighlightTexture("Interface/CHATFRAME/UI-ChatIM-SizeGrabber-Highlight")
 resizeButton:SetPushedTexture("Interface/CHATFRAME/UI-ChatIM-SizeGrabber-Down")
 
-resizeButton:SetScript("OnMouseDown", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderList.lua:248:callback#23", --[[/APR_DIAG]]function(self, button)
-    if button == "LeftButton" then
-        QuestOrderListFrame:StartSizing("BOTTOMRIGHT")
-    end
-end--[[APR_DIAG]])--[[/APR_DIAG]])
-resizeButton:SetScript("OnMouseUp", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderList.lua:253:callback#24", --[[/APR_DIAG]]function(self, button)
-    QuestOrderListFrame:StopMovingOrSizing()
-    LibWindow.SavePosition(QuestOrderListPanel)
-end--[[APR_DIAG]])--[[/APR_DIAG]])
+resizeButton:SetScript(
+    "OnMouseDown", --[[APR_DIAG]]
+    APRTrace("APR-Core/ui/route/QuestOrderList.lua:248:callback#23", --[[/APR_DIAG]] function(self, button)
+        if button == "LeftButton" then
+            QuestOrderListFrame:StartSizing("BOTTOMRIGHT")
+        end
+    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+)
+resizeButton:SetScript(
+    "OnMouseUp", --[[APR_DIAG]]
+    APRTrace("APR-Core/ui/route/QuestOrderList.lua:253:callback#24", --[[/APR_DIAG]] function(self, button)
+        QuestOrderListFrame:StopMovingOrSizing()
+        LibWindow.SavePosition(QuestOrderListPanel)
+    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+)
 if APR.RegisterSkinTarget then
-    APR:RegisterSkinTarget(resizeButton, "resize",
-        { bottomRightResize = true, scrollFrame = QuestOrderListFrame_ScrollFrame })
+    APR:RegisterSkinTarget(
+        resizeButton,
+        "resize",
+        { bottomRightResize = true, scrollFrame = QuestOrderListFrame_ScrollFrame }
+    )
 end
 
 ---------------------------------------------------------------------------------------
@@ -272,7 +357,11 @@ function APR.questOrderList:QuestOrderListFrameOnInit()
     QuestOrderListFrame_StepHolder:Show()
     self.currentStepIndex = nil
     self:RefreshFrameAnchor()
-end--[[APR_DIAG]]; APR.questOrderList.QuestOrderListFrameOnInit = APRTrace("APR-Core/ui/route/QuestOrderList.lua:267:APR.questOrderList:QuestOrderListFrameOnInit#25", APR.questOrderList.QuestOrderListFrameOnInit)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.questOrderList.QuestOrderListFrameOnInit = APRTrace(
+    "APR-Core/ui/route/QuestOrderList.lua:267:APR.questOrderList:QuestOrderListFrameOnInit#25",
+    APR.questOrderList.QuestOrderListFrameOnInit
+)--[[/APR_DIAG]]
 
 function APR.questOrderList:ApplySnapAnchor()
     if InCombatLockdown() then return false end
@@ -284,13 +373,21 @@ function APR.questOrderList:ApplySnapAnchor()
     updateSnapSizing(anchored, anchorFrame)
 
     -- When snapped to Current Step, force expanded state for readability.
-    if anchored and QuestOrderListFrame.collapsed and QuestOrderListFrame_StepHolderHeader and
-        QuestOrderListFrame_StepHolderHeader.MinimizeButton then
+    if
+        anchored
+        and QuestOrderListFrame.collapsed
+        and QuestOrderListFrame_StepHolderHeader
+        and QuestOrderListFrame_StepHolderHeader.MinimizeButton
+    then
         QuestOrderListFrame_StepHolderHeader.MinimizeButton:Click()
     end
 
     return anchored
-end--[[APR_DIAG]]; APR.questOrderList.ApplySnapAnchor = APRTrace("APR-Core/ui/route/QuestOrderList.lua:277:APR.questOrderList:ApplySnapAnchor#26", APR.questOrderList.ApplySnapAnchor)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.questOrderList.ApplySnapAnchor = APRTrace(
+    "APR-Core/ui/route/QuestOrderList.lua:277:APR.questOrderList:ApplySnapAnchor#26",
+    APR.questOrderList.ApplySnapAnchor
+)--[[/APR_DIAG]]
 
 function APR.questOrderList:RefreshFrameAnchor()
     if isFrameSuppressed() then
@@ -319,7 +416,11 @@ function APR.questOrderList:RefreshFrameAnchor()
 
     QuestOrderListPanel:Show()
     self:AddStepFromRoute(true)
-end--[[APR_DIAG]]; APR.questOrderList.RefreshFrameAnchor = APRTrace("APR-Core/ui/route/QuestOrderList.lua:295:APR.questOrderList:RefreshFrameAnchor#27", APR.questOrderList.RefreshFrameAnchor)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.questOrderList.RefreshFrameAnchor = APRTrace(
+    "APR-Core/ui/route/QuestOrderList.lua:295:APR.questOrderList:RefreshFrameAnchor#27",
+    APR.questOrderList.RefreshFrameAnchor
+)--[[/APR_DIAG]]
 
 -- Reset the frame position
 function APR.questOrderList:ResetPosition()
@@ -329,17 +430,29 @@ function APR.questOrderList:ResetPosition()
     LibWindow.SavePosition(QuestOrderListPanel)
     QuestOrderListPanel:SetSize(FRAME_WIDTH, FRAME_HEIGHT)
     APR.questOrderList:UpdateBackgroundColorAlpha()
-end--[[APR_DIAG]]; APR.questOrderList.ResetPosition = APRTrace("APR-Core/ui/route/QuestOrderList.lua:325:APR.questOrderList:ResetPosition#28", APR.questOrderList.ResetPosition)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.questOrderList.ResetPosition = APRTrace(
+    "APR-Core/ui/route/QuestOrderList.lua:325:APR.questOrderList:ResetPosition#28",
+    APR.questOrderList.ResetPosition
+)--[[/APR_DIAG]]
 
 -- Update the frame scale
 function APR.questOrderList:UpdateFrameScale()
     if self:IsSnapped() then return end
     LibWindow.SetScale(QuestOrderListPanel, APR.settings.profile.questOrderListScale)
-end--[[APR_DIAG]]; APR.questOrderList.UpdateFrameScale = APRTrace("APR-Core/ui/route/QuestOrderList.lua:335:APR.questOrderList:UpdateFrameScale#29", APR.questOrderList.UpdateFrameScale)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.questOrderList.UpdateFrameScale = APRTrace(
+    "APR-Core/ui/route/QuestOrderList.lua:335:APR.questOrderList:UpdateFrameScale#29",
+    APR.questOrderList.UpdateFrameScale
+)--[[/APR_DIAG]]
 
 function APR.questOrderList:UpdateBackgroundColorAlpha(color)
     APR:SetPanelColor(QuestOrderListFrame, color or APR.settings.profile.questOrderListbackgroundColorAlpha)
-end--[[APR_DIAG]]; APR.questOrderList.UpdateBackgroundColorAlpha = APRTrace("APR-Core/ui/route/QuestOrderList.lua:340:APR.questOrderList:UpdateBackgroundColorAlpha#30", APR.questOrderList.UpdateBackgroundColorAlpha)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.questOrderList.UpdateBackgroundColorAlpha = APRTrace(
+    "APR-Core/ui/route/QuestOrderList.lua:340:APR.questOrderList:UpdateBackgroundColorAlpha#30",
+    APR.questOrderList.UpdateBackgroundColorAlpha
+)--[[/APR_DIAG]]
 
 -- Remove all quest steps
 function APR.questOrderList:RemoveSteps(hideFrame)
@@ -347,7 +460,8 @@ function APR.questOrderList:RemoveSteps(hideFrame)
     QuestOrderListUtils:CancelRender(self)
     QuestOrderListUtils:CancelScroll(QuestOrderListFrame_ScrollFrame)
     if self.updateTimer then
-        self.updateTimer:Cancel(); self.updateTimer = nil
+        self.updateTimer:Cancel()
+        self.updateTimer = nil
     end
     self.pendingUpdate = false
     self.contentSignature = nil
@@ -368,7 +482,11 @@ function APR.questOrderList:RemoveSteps(hideFrame)
         QuestOrderListFrame:Hide()
     end
     APR:FinishPerformanceSample("QuestOrderListRelease", profileStart)
-end--[[APR_DIAG]]; APR.questOrderList.RemoveSteps = APRTrace("APR-Core/ui/route/QuestOrderList.lua:345:APR.questOrderList:RemoveSteps#31", APR.questOrderList.RemoveSteps)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.questOrderList.RemoveSteps = APRTrace(
+    "APR-Core/ui/route/QuestOrderList.lua:345:APR.questOrderList:RemoveSteps#31",
+    APR.questOrderList.RemoveSteps
+)--[[/APR_DIAG]]
 
 function APR.questOrderList:AdvanceRenderedStep(currentStepIndex, visibilityState)
     local previousStepIndex = self.currentStepIndex
@@ -390,18 +508,29 @@ function APR.questOrderList:AdvanceRenderedStep(currentStepIndex, visibilityStat
 
     self.currentStepIndex = currentStepIndex
     self.visibilityState = visibilityState
-    QuestOrderListUtils:SetCurrentStepIndicator(self.stepList, QuestOrderListFrame_ScrollFrame,
-        currentContainer.displayIndex)
+    QuestOrderListUtils:SetCurrentStepIndicator(
+        self.stepList,
+        QuestOrderListFrame_ScrollFrame,
+        currentContainer.displayIndex
+    )
     if layoutChanged then self:UpdateFrameContents() end
     return true
-end--[[APR_DIAG]]; APR.questOrderList.AdvanceRenderedStep = APRTrace("APR-Core/ui/route/QuestOrderList.lua:373:APR.questOrderList:AdvanceRenderedStep#32", APR.questOrderList.AdvanceRenderedStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.questOrderList.AdvanceRenderedStep = APRTrace(
+    "APR-Core/ui/route/QuestOrderList.lua:373:APR.questOrderList:AdvanceRenderedStep#32",
+    APR.questOrderList.AdvanceRenderedStep
+)--[[/APR_DIAG]]
 
 function APR.questOrderList:UpdateFrameContents()
     -- Width/font changes share the budgeted renderer instead of synchronously
     -- measuring every route row for each mouse movement during a resize.
     self.contentSignature = nil
     self:DelayedUpdate(true)
-end--[[APR_DIAG]]; APR.questOrderList.UpdateFrameContents = APRTrace("APR-Core/ui/route/QuestOrderList.lua:399:APR.questOrderList:UpdateFrameContents#33", APR.questOrderList.UpdateFrameContents)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.questOrderList.UpdateFrameContents = APRTrace(
+    "APR-Core/ui/route/QuestOrderList.lua:399:APR.questOrderList:UpdateFrameContents#33",
+    APR.questOrderList.UpdateFrameContents
+)--[[/APR_DIAG]]
 
 function APR.questOrderList:AddStepFromRoute(forceRendering)
     if not canRenderSteps() then
@@ -437,8 +566,13 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
 
     local routeKey = APR.ActiveRoute
     local pending = self.renderRequest
-    if not forceRendering and pending and pending.route == routeKey and pending.index == currentStepIndex and
-        pending.width == FRAME_WIDTH then
+    if
+        not forceRendering
+        and pending
+        and pending.route == routeKey
+        and pending.index == currentStepIndex
+        and pending.width == FRAME_WIDTH
+    then
         return
     end
     if pending then QuestOrderListUtils:CancelRender(self) end
@@ -451,7 +585,8 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
     if self.currentRouteKey == routeKey and not forceRendering and not self.renderFailed then
         if currentStepIndex == self.currentStepIndex then return end
 
-        canAdvance = self.renderComplete and currentStepIndex > (self.currentStepIndex or currentStepIndex)
+        canAdvance = self.renderComplete
+            and currentStepIndex > (self.currentStepIndex or currentStepIndex)
             and self.rawStepContainers[currentStepIndex] ~= nil
     end
 
@@ -477,70 +612,105 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
         -- Release old model references incrementally before rebuilding the pending view.
         for index in pairs(target.stepList) do
             target.stepList[index] = nil
-            --[[APR_DIAG]]APRYield--[=[--[[/APR_DIAG]]coroutine.yield--[[APR_DIAG]]]=]--[[/APR_DIAG]]()
+            --[[APR_DIAG]]
+            APRYield--[=[--[[/APR_DIAG]]coroutine.yield--[[APR_DIAG]]]=]--[[/APR_DIAG]]()
         end
         wipe(target.rawStepContainers)
         renderRows()
-        reputationState = QuestOrderListUtils:GetReputationStateSignature(activeRouteSteps, --[[APR_DIAG]]APRYield--[=[--[[/APR_DIAG]]coroutine.yield--[[APR_DIAG]]]=]--[[/APR_DIAG]])
+        reputationState = QuestOrderListUtils:GetReputationStateSignature(
+            activeRouteSteps, --[[APR_DIAG]]
+            APRYield --[=[--[[/APR_DIAG]]coroutine.yield--[[APR_DIAG]]]=] --[[/APR_DIAG]]
+        )
         signature = table.concat(layout.signatureParts, "|")
         visibilityState = table.concat(target.visibilityParts)
-        preparedItems = self.virtualList:PrepareItems(target.stepList, --[[APR_DIAG]]APRYield--[=[--[[/APR_DIAG]]coroutine.yield--[[APR_DIAG]]]=]--[[/APR_DIAG]])
-    end--[[APR_DIAG]]; worker = APRTrace("APR-Core/ui/route/QuestOrderList.lua:469:worker#35", worker)--[[/APR_DIAG]]
+        preparedItems = self.virtualList:PrepareItems(
+            target.stepList, --[[APR_DIAG]]
+            APRYield --[=[--[[/APR_DIAG]]coroutine.yield--[[APR_DIAG]]]=] --[[/APR_DIAG]]
+        )
+    end--[[APR_DIAG]]
+    worker = APRTrace("APR-Core/ui/route/QuestOrderList.lua:469:worker#35", worker)--[[/APR_DIAG]]
     local playerID = APR.PlayerID
     local request = { route = routeKey, index = currentStepIndex, width = FRAME_WIDTH }
-    QuestOrderListUtils:StartRender(self, worker, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderList.lua:491:callback#36", --[[/APR_DIAG]]function()
-        local parent = isSnapEnabled() and _G.CurrentStepScreenPanel
-        if not QuestOrderListFrame_StepHolder:IsShown() or (parent and parent.collapsed) then
+    QuestOrderListUtils:StartRender(
+        self,
+        worker, --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/route/QuestOrderList.lua:491:callback#36", --[[/APR_DIAG]] function()
+            local parent = isSnapEnabled() and _G.CurrentStepScreenPanel
+            if not QuestOrderListFrame_StepHolder:IsShown() or (parent and parent.collapsed) then
+                QuestOrderListUtils:CancelScroll(QuestOrderListFrame_ScrollFrame)
+                return false
+            end
+            if not canRenderSteps() then
+                self:RemoveSteps()
+                return false
+            end
+            if
+                APR.ActiveRoute ~= routeKey
+                or APRData[playerID][routeKey] ~= currentStepIndex
+                or FRAME_WIDTH ~= request.width
+            then
+                self:DelayedUpdate(true)
+                return false
+            end
+            return true
+        end--[[APR_DIAG]]) --[[/APR_DIAG]], --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/route/QuestOrderList.lua:507:callback#37", --[[/APR_DIAG]] function(finished)
+            if not finished then return end
+            if advancedVisibility then
+                self:AdvanceRenderedStep(currentStepIndex, advancedVisibility)
+                self.contentSignature = nil
+                return
+            end
+            self.reputationState = reputationState
+            if
+                self.currentRouteKey == routeKey
+                and self.currentStepIndex == currentStepIndex
+                and self.contentSignature == signature
+                and self.visibilityState == visibilityState
+            then
+                return
+            end
+            local publishStart = APR:StartPerformanceSample()
+            local followStep = self.currentRouteKey ~= routeKey or self.currentStepIndex ~= currentStepIndex
             QuestOrderListUtils:CancelScroll(QuestOrderListFrame_ScrollFrame)
-            return false
-        end
-        if not canRenderSteps() then
-            self:RemoveSteps()
-            return false
-        end
-        if APR.ActiveRoute ~= routeKey or APRData[playerID][routeKey] ~= currentStepIndex or
-            FRAME_WIDTH ~= request.width then
-            self:DelayedUpdate(true)
-            return false
-        end
-        return true
-    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderList.lua:507:callback#37", --[[/APR_DIAG]]function(finished)
-        if not finished then return end
-        if advancedVisibility then
-            self:AdvanceRenderedStep(currentStepIndex, advancedVisibility)
-            self.contentSignature = nil
-            return
-        end
-        self.reputationState = reputationState
-        if self.currentRouteKey == routeKey and self.currentStepIndex == currentStepIndex and
-            self.contentSignature == signature and self.visibilityState == visibilityState then
-            return
-        end
-        local publishStart = APR:StartPerformanceSample()
-        local followStep = self.currentRouteKey ~= routeKey or self.currentStepIndex ~= currentStepIndex
-        QuestOrderListUtils:CancelScroll(QuestOrderListFrame_ScrollFrame)
-        local previous = {
-            stepList = self.stepList,
-            rawStepContainers = self.rawStepContainers
-        }
-        local tooltipOwner = GameTooltip:GetOwner()
-        if tooltipOwner and tooltipOwner:GetParent() == QuestOrderListFrame_ScrollChild then GameTooltip:Hide() end
-        self.stepList, self.rawStepContainers = target.stepList, target.rawStepContainers
-        self.renderBuffer = previous
-        self.currentStepIndex, self.currentRouteKey = currentStepIndex, routeKey
-        self.questID, self.contentSignature = target.questID, signature
-        self.renderComplete, self.visibilityState = true, visibilityState
-        local parentCollapsed = isSnapEnabled() and _G.CurrentStepScreenPanel and _G.CurrentStepScreenPanel.collapsed
-        self.virtualList:SetItems(self.stepList, not followStep, followStep and target.currentDisplayIndex or nil, preparedItems)
-        if target.currentDisplayIndex then
-            QuestOrderListUtils:SetCurrentStepIndicator(self.stepList, QuestOrderListFrame_ScrollFrame,
-                target.currentDisplayIndex, false)
-        end
-        if not parentCollapsed then QuestOrderListPanel:Show() end
-        APR:FinishPerformanceSample("QuestOrderListPublish", publishStart)
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
+            local previous = {
+                stepList = self.stepList,
+                rawStepContainers = self.rawStepContainers,
+            }
+            local tooltipOwner = GameTooltip:GetOwner()
+            if tooltipOwner and tooltipOwner:GetParent() == QuestOrderListFrame_ScrollChild then GameTooltip:Hide() end
+            self.stepList, self.rawStepContainers = target.stepList, target.rawStepContainers
+            self.renderBuffer = previous
+            self.currentStepIndex, self.currentRouteKey = currentStepIndex, routeKey
+            self.questID, self.contentSignature = target.questID, signature
+            self.renderComplete, self.visibilityState = true, visibilityState
+            local parentCollapsed = isSnapEnabled()
+                and _G.CurrentStepScreenPanel
+                and _G.CurrentStepScreenPanel.collapsed
+            self.virtualList:SetItems(
+                self.stepList,
+                not followStep,
+                followStep and target.currentDisplayIndex or nil,
+                preparedItems
+            )
+            if target.currentDisplayIndex then
+                QuestOrderListUtils:SetCurrentStepIndicator(
+                    self.stepList,
+                    QuestOrderListFrame_ScrollFrame,
+                    target.currentDisplayIndex,
+                    false
+                )
+            end
+            if not parentCollapsed then QuestOrderListPanel:Show() end
+            APR:FinishPerformanceSample("QuestOrderListPublish", publishStart)
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     self.renderRequest = request
-end--[[APR_DIAG]]; APR.questOrderList.AddStepFromRoute = APRTrace("APR-Core/ui/route/QuestOrderList.lua:406:APR.questOrderList:AddStepFromRoute#34", APR.questOrderList.AddStepFromRoute)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.questOrderList.AddStepFromRoute = APRTrace(
+    "APR-Core/ui/route/QuestOrderList.lua:406:APR.questOrderList:AddStepFromRoute#34",
+    APR.questOrderList.AddStepFromRoute
+)--[[/APR_DIAG]]
 
 function APR.questOrderList:DelayedUpdate(forceRendering)
     local parent = isSnapEnabled() and _G.CurrentStepScreenPanel
@@ -548,10 +718,17 @@ function APR.questOrderList:DelayedUpdate(forceRendering)
     self.pendingUpdate = self.pendingUpdate or forceRendering == true
     if self.updateTimer then return end
     -- Render once after a burst of quest/step changes has settled.
-    self.updateTimer = C_Timer.NewTimer(0.1, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestOrderList.lua:551:callback#39", --[[/APR_DIAG]]function()
-        self.updateTimer = nil
-        local force = self.pendingUpdate
-        self.pendingUpdate = false
-        self:AddStepFromRoute(force)
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.questOrderList.DelayedUpdate = APRTrace("APR-Core/ui/route/QuestOrderList.lua:545:APR.questOrderList:DelayedUpdate#38", APR.questOrderList.DelayedUpdate)--[[/APR_DIAG]]
+    self.updateTimer = C_Timer.NewTimer(
+        0.1, --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/route/QuestOrderList.lua:551:callback#39", --[[/APR_DIAG]] function()
+            self.updateTimer = nil
+            local force = self.pendingUpdate
+            self.pendingUpdate = false
+            self:AddStepFromRoute(force)
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+end--[[APR_DIAG]]
+APR.questOrderList.DelayedUpdate = APRTrace(
+    "APR-Core/ui/route/QuestOrderList.lua:545:APR.questOrderList:DelayedUpdate#38",
+    APR.questOrderList.DelayedUpdate
+)--[[/APR_DIAG]]

@@ -32,19 +32,33 @@ for _, version in ipairs({ APR.GAME_VERSIONS.Retail, APR.GAME_VERSIONS.Forever }
     end
     local finished = route("finished", "Finished")
     finished.nextRoute = {
-        "preferred", "preferred", "finished", "missing", "alias", "unlabelled",
+        "preferred",
+        "preferred",
+        "finished",
+        "missing",
+        "alias",
+        "unlabelled",
         { route = "dungeon-leveling", conditions = { SkipForLvl = 15 } },
         { route = "dungeon-only", conditions = { SkipForLvl = 15 } },
         "outdoor",
         { route = "branch", conditions = { Class = "MAGE" } },
         { route = "alternate-branch", conditions = { Class = "MAGE" } },
         { route = "alternate-branch", conditions = { Class = "WARRIOR" } },
-        "campaign", "hidden", "temporary", "delve", "done", "future", "other-client",
-        "faction", "class", "race", "zone", "spec",
+        "campaign",
+        "hidden",
+        "temporary",
+        "delve",
+        "done",
+        "future",
+        "other-client",
+        "faction",
+        "class",
+        "race",
+        "zone",
+        "spec",
     }
     route("preferred", "Z preferred", { MinLevel = 13 })
-    route("dungeon-leveling", "B dungeon leveling", { MinLevel = 13 }, dungeons,
-        { [APR.PREFAB_TYPES.Dungeons] = 1 })
+    route("dungeon-leveling", "B dungeon leveling", { MinLevel = 13 }, dungeons, { [APR.PREFAB_TYPES.Dungeons] = 1 })
     route("dungeon-only", "C standalone dungeon", { MinLevel = 13 }, dungeons)
     route("outdoor", "A outdoor", { MinLevel = 12, MaxLevel = 14 })
     route("branch", "Rejected authored branch")
@@ -63,7 +77,8 @@ for _, version in ipairs({ APR.GAME_VERSIONS.Retail, APR.GAME_VERSIONS.Forever }
     route("alias", "Finished")
     route("unlabelled", "Missing label").label = nil
     route("other-client", "Other client").gameVersion = version == APR.GAME_VERSIONS.Forever
-        and APR.GAME_VERSIONS.Retail or APR.GAME_VERSIONS.Forever
+            and APR.GAME_VERSIONS.Retail
+        or APR.GAME_VERSIONS.Forever
     -- Available catalog entries must not be inserted without a declared transition.
     route("unlisted-leveling", "Unlisted leveling")
     route("unlisted-dungeon", "Unlisted dungeon", nil, dungeons)
@@ -93,21 +108,34 @@ for _, version in ipairs({ APR.GAME_VERSIONS.Retail, APR.GAME_VERSIONS.Forever }
         finished.nextRoute[#finished.nextRoute + 1] = "gated"
         expect({ "preferred", "dungeon-leveling", "dungeon-only", "outdoor", "alternate-branch", "campaign", "branch" })
         APRZoneCompleted.player[finished.label] = true
-        expect({ "preferred", "dungeon-leveling", "dungeon-only", "outdoor", "alternate-branch", "campaign", "branch", "gated" })
+        expect({
+            "preferred",
+            "dungeon-leveling",
+            "dungeon-only",
+            "outdoor",
+            "alternate-branch",
+            "campaign",
+            "branch",
+            "gated",
+        })
     end
 
     local popup, callbackCount, popupCount = nil, 0, 0
-    APR.questionDialog = { CreateRouteTriggerPopup = function(_, _, suggestions, selectRoute, cancel)
-        popupCount = popupCount + 1
-        popup = { suggestions = suggestions, selectRoute = selectRoute, cancel = cancel }
-    end }
+    APR.questionDialog = {
+        CreateRouteTriggerPopup = function(_, _, suggestions, selectRoute, cancel)
+            popupCount = popupCount + 1
+            popup = { suggestions = suggestions, selectRoute = selectRoute, cancel = cancel }
+        end,
+    }
     local function complete() callbackCount = callbackCount + 1 end
     APRCustomPath.player = { finished.label }
     APR:SuggestNextRoutes("finished", complete)
     assert(popupCount == 1 and callbackCount == 0)
     popup.selectRoute(popup.suggestions[3])
-    assert(callbackCount == 1 and #APRCustomPath.player == 2
-        and APRCustomPath.player[2] == routes["dungeon-only"].label, "Standalone dungeon selection appends exactly once")
+    assert(
+        callbackCount == 1 and #APRCustomPath.player == 2 and APRCustomPath.player[2] == routes["dungeon-only"].label,
+        "Standalone dungeon selection appends exactly once"
+    )
     APR:SuggestNextRoutes("finished", complete)
     assert(popupCount == 1 and callbackCount == 2, "A queued continuation skips the popup")
     APRCustomPath.player = { finished.label }
@@ -120,16 +148,22 @@ for _, version in ipairs({ APR.GAME_VERSIONS.Retail, APR.GAME_VERSIONS.Forever }
         routes.campaign.requiredRoute = { "intro" }
         APR:SuggestNextRoutes("finished", complete)
         popup.selectRoute(popup.suggestions[6])
-        assert(callbackCount == 4 and #APRCustomPath.player == 3
-            and APRCustomPath.player[2] == routes.intro.label and APRCustomPath.player[3] == routes.campaign.label,
-            "Choosing a Retail continuation preserves prerequisite insertion")
+        assert(
+            callbackCount == 4
+                and #APRCustomPath.player == 3
+                and APRCustomPath.player[2] == routes.intro.label
+                and APRCustomPath.player[3] == routes.campaign.label,
+            "Choosing a Retail continuation preserves prerequisite insertion"
+        )
     end
     APRCustomPath.player = { finished.label }
     APR:SuggestNextRoutes("finished", complete)
     APR.Level = 12
     popup.selectRoute(popup.suggestions[3])
-    assert(#APRCustomPath.player == 2 and APRCustomPath.player[2] == routes["dungeon-only"].label,
-        "An explicit dungeon choice above level 10 remains allowed outside its recommended level")
+    assert(
+        #APRCustomPath.player == 2 and APRCustomPath.player[2] == routes["dungeon-only"].label,
+        "An explicit dungeon choice above level 10 remains allowed outside its recommended level"
+    )
     assert(#APR:GetRouteLevelWarnings("dungeon-only") == 1)
 
     -- Missing/empty nextRoute must not reintroduce a broad catalog fallback.
@@ -140,8 +174,10 @@ for _, version in ipairs({ APR.GAME_VERSIONS.Retail, APR.GAME_VERSIONS.Forever }
     assert(#APR:GetNextRouteSuggestions("missing") == 0)
     local previousPopups, previousCallbacks = popupCount, callbackCount
     APR:SuggestNextRoutes("finished", complete)
-    assert(popupCount == previousPopups and callbackCount == previousCallbacks + 1,
-        "No declared alternatives still finalizes completion")
+    assert(
+        popupCount == previousPopups and callbackCount == previousCallbacks + 1,
+        "No declared alternatives still finalizes completion"
+    )
 
     -- Equal entry levels do not authorize skipping an authored preparation chapter.
     -- Dungeon alternatives follow the same character branch as their outdoor path.
@@ -153,7 +189,8 @@ for _, version in ipairs({ APR.GAME_VERSIONS.Retail, APR.GAME_VERSIONS.Forever }
         { route = "plains-dungeon", conditions = { Class = "HUNTER" } },
     }
     route("preparation", "Preparation", { Class = "MAGE" }).nextRoute = {
-        "forest", { route = "forest-dungeon", conditions = { Class = "MAGE" } },
+        "forest",
+        { route = "forest-dungeon", conditions = { Class = "MAGE" } },
     }
     route("forest", "Forest", { MinLevel = 10 })
     route("forest-dungeon", "Forest dungeon", { MinLevel = 10 }, dungeons)
@@ -162,16 +199,24 @@ for _, version in ipairs({ APR.GAME_VERSIONS.Retail, APR.GAME_VERSIONS.Forever }
     route("aoe", "Separate class path", { MinLevel = 10, Class = "MAGE" })
     APR.ClassName, APR.ClassId, APR.Level = "MAGE", 8, 30
     local starter = APR:GetNextRouteSuggestions("start")
-    assert(#starter == 1 and starter[1].key == "preparation",
-        "Neither a later forest nor the class-specific alternate path may bypass preparation")
+    assert(
+        #starter == 1 and starter[1].key == "preparation",
+        "Neither a later forest nor the class-specific alternate path may bypass preparation"
+    )
     local prepared = APR:GetNextRouteSuggestions("preparation")
-    assert(#prepared == 2 and prepared[1].key == "forest" and prepared[2].key == "forest-dungeon",
-        "The outdoor and dungeon forest become successors at their authored transition")
+    assert(
+        #prepared == 2 and prepared[1].key == "forest" and prepared[2].key == "forest-dungeon",
+        "The outdoor and dungeon forest become successors at their authored transition"
+    )
     APR.ClassName, APR.ClassId = "HUNTER", 3
     starter = APR:GetNextRouteSuggestions("start")
-    assert(#starter == 2 and starter[1].key == "plains" and starter[2].key == "plains-dungeon",
-        "The other class keeps its own outdoor/dungeon branch")
+    assert(
+        #starter == 2 and starter[1].key == "plains" and starter[2].key == "plains-dungeon",
+        "The other class keeps its own outdoor/dungeon branch"
+    )
     APR.ClassName, APR.ClassId = "WARRIOR", 1
 end
 
-print("Next routes: explicit solo/dungeon choices, eligibility/XP boundaries, branches, completion and callbacks passed")
+print(
+    "Next routes: explicit solo/dungeon choices, eligibility/XP boundaries, branches, completion and callbacks passed"
+)

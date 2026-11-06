@@ -72,7 +72,9 @@ function fillers:RefreshFillersFrame(...)
     return nativeFillerRefresh(self, ...)
 end
 local function change(mainText, extraText)
-    for index = 1, count do model[1][index].text, model[2][index].text = mainText, extraText end
+    for index = 1, count do
+        model[1][index].text, model[2][index].text = mainText, extraText
+    end
 end
 local function observedRefresh()
     local before = env.layouts()
@@ -82,18 +84,30 @@ local function observedRefresh()
 end
 change("Main 1/2", "Extra 1/2")
 local layouts, measurements, arrows = observedRefresh()
-assert(layouts == 2 and measurements == 300 and arrows == 1,
+assert(
+    layouts == 2 and measurements == 300 and arrows == 1,
     "100 main +100 optional changes publish one main/filler layout and one arrow update: "
-    .. layouts .. " layouts, " .. measurements .. " measurements, " .. arrows .. " arrow updates")
+        .. layouts
+        .. " layouts, "
+        .. measurements
+        .. " measurements, "
+        .. arrows
+        .. " arrow updates"
+)
 assert(renders == 1 and main.objectiveText == "Main 1/2" and extra.objectiveText == "Extra 1/2")
-assert(APR.ActiveQuests[1].objectives[100].text == "Main 1/2"
-    and APR.ActiveQuests[2].objectives[100].text == "Extra 1/2")
+assert(
+    APR.ActiveQuests[1].objectives[100].text == "Main 1/2" and APR.ActiveQuests[2].objectives[100].text == "Extra 1/2"
+)
 assert(step.questsList["1-1"] == main and step.fillersList["2-1"] == extra and main.IconButton == button)
-assert(env.frames() == frames and env.fonts() == fonts and not step.questUpdateDepth and not step.pendingQuestActionText)
+assert(
+    env.frames() == frames and env.fonts() == fonts and not step.questUpdateDepth and not step.pendingQuestActionText
+)
 for _ = 1, 30 do
     local idleLayouts, idleMeasurements, idleArrows = observedRefresh()
-    assert(idleLayouts == 0 and idleMeasurements == 0 and idleArrows == 0,
-        "An unchanged cache remains dormant even after a batched publication")
+    assert(
+        idleLayouts == 0 and idleMeasurements == 0 and idleArrows == 0,
+        "An unchanged cache remains dormant even after a batched publication"
+    )
 end
 
 -- Nesting has one owner. Inner cache completion cannot release the outer batch.
@@ -136,13 +150,17 @@ assert(env.layouts() - before == 2 and arrowUpdates == 1)
 env.setCombat(true)
 change(string.rep("Wrapped in combat ", 8), "Extra combat")
 APR:UpdateQuest()
-assert(not step.questUpdateDepth and main.IconButton == button and main:IsShown()
-    and extra.objectiveText == "Extra combat", "Batch completion respects the existing secure-row combat deferral")
+assert(
+    not step.questUpdateDepth and main.IconButton == button and main:IsShown() and extra.objectiveText == "Extra combat",
+    "Batch completion respects the existing secure-row combat deferral"
+)
 assert(step.layoutDirty and fillers.pendingRefresh, "Protected layout remains pending until combat ends")
 for _ = 1, 30 do
     local idleLayouts, idleMeasurements, idleArrows, idleFillers = observedRefresh()
-    assert(idleLayouts == 0 and idleMeasurements == 0 and idleArrows == 0 and idleFillers == 0,
-        "An unchanged combat refresh must not retry already-deferred geometry or publish filler visibility")
+    assert(
+        idleLayouts == 0 and idleMeasurements == 0 and idleArrows == 0 and idleFillers == 0,
+        "An unchanged combat refresh must not retry already-deferred geometry or publish filler visibility"
+    )
 end
 env.setCombat(false)
 step:ReOrderQuestSteps()
@@ -160,9 +178,11 @@ APR.StartPerformanceSample, APR.FinishPerformanceSample = noop, noop
 function APR:CaptureStepContext() return context end
 function APR:IsStepContextCurrent(value) return value == context end
 function debugprofilestop() return 0 end
-C_Timer = { NewTimer = function(_, callback)
-    return { callback = callback, Cancel = noop }
-end }
+C_Timer = {
+    NewTimer = function(_, callback)
+        return { callback = callback, Cancel = noop }
+    end,
+}
 function APR:RenderCurrentStep()
     renderPasses = renderPasses + 1
     step:Reset()
@@ -181,21 +201,37 @@ change("Main deferred to continuation", "Extra deferred to continuation")
 before, arrowUpdates = env.layouts(), 0
 APR:UpdateQuest()
 assert(renderPasses == 25 and APR.stepUpdatePending and APR.stepUpdateTimer)
-assert(env.layouts() == before and arrowUpdates == 0 and not step.questUpdateDepth
-    and step.layoutDirty and fillers.layoutDirty,
-    "A cache batch cannot publish an intermediate layout while the renderer owns a continuation")
+assert(
+    env.layouts() == before
+        and arrowUpdates == 0
+        and not step.questUpdateDepth
+        and step.layoutDirty
+        and fillers.layoutDirty,
+    "A cache batch cannot publish an intermediate layout while the renderer owns a continuation"
+)
 local continuation = APR.stepUpdateTimer
 continuation.callback()
 assert(renderPasses == 30 and not APR.stepUpdatePending and not APR.stepUpdateTimer)
-assert(env.layouts() - before == 2 and arrowUpdates == 5,
-    "The final render publishes geometry once; its five passes retain their existing arrow-refresh contract")
-assert(not step.questLayoutPending and not step.questFillerLayoutPending and not step.pendingQuestActionText
-    and not step.questUpdateDepth and not step.contentUpdateActive and not step.layoutDirty and not fillers.layoutDirty,
-    "The final content owner retires batch demands instead of stranding stale requests")
+assert(
+    env.layouts() - before == 2 and arrowUpdates == 5,
+    "The final render publishes geometry once; its five passes retain their existing arrow-refresh contract"
+)
+assert(
+    not step.questLayoutPending
+        and not step.questFillerLayoutPending
+        and not step.pendingQuestActionText
+        and not step.questUpdateDepth
+        and not step.contentUpdateActive
+        and not step.layoutDirty
+        and not fillers.layoutDirty,
+    "The final content owner retires batch demands instead of stranding stale requests"
+)
 APR.UpdateStep, APR.RenderCurrentStep = savedUpdate, savedRender
 APR.CaptureStepContext, APR.IsStepContextCurrent = savedCapture, savedCurrent
 APR.StartPerformanceSample, APR.FinishPerformanceSample = savedStart, savedFinish
 C_Timer, debugprofilestop = savedTimers, savedClock
 env.methods.GetStringHeight = nativeHeight
 fillers.RefreshFillersFrame = nativeFillerRefresh
-print("Quest UI batching: 100 main +100 fillers, 300 ->2 publications, 20100 ->300 font reads; nested/error/deferred/content/combat recovery passed")
+print(
+    "Quest UI batching: 100 main +100 fillers, 300 ->2 publications, 20100 ->300 font reads; nested/error/deferred/content/combat recovery passed"
+)

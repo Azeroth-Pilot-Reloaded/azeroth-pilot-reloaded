@@ -10,11 +10,12 @@ APR.ReleaseNotesPanel = {}
 local Panel = APR.ReleaseNotesPanel
 
 function Panel:Create(parent)
-    local page = setmetatable({rows = {}}, {__index = self})
+    local page = setmetatable({ rows = {} }, { __index = self })
     page.frame = CreateFrame("Frame", nil, parent)
     page.frame:SetAllPoints()
     page.preferences = UI:Section(page.frame, GAMEOPTIONS_MENU)
-    page.preferences:SetPoint("TOPLEFT"); page.preferences:SetPoint("TOPRIGHT")
+    page.preferences:SetPoint("TOPLEFT")
+    page.preferences:SetPoint("TOPRIGHT")
     page.preferences:SetHeight(218)
     local controls = CreateFrame("Frame", nil, page.preferences)
     controls:SetPoint("TOPLEFT", 2, -34)
@@ -32,23 +33,48 @@ function Panel:Create(parent)
     edit:SetPoint("BOTTOMLEFT", 14, 14)
     edit:SetPoint("BOTTOMRIGHT", -172, 14)
     edit:SetHeight(30)
-    APR:RegisterSkinTarget(edit, "editbox", {themeSurface = true})
-    APR:RegisterFontString(edit, "general", {role = "base"})
-    edit:SetScript("OnEscapePressed", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:37:callback#2", --[[/APR_DIAG]]function() edit:ClearFocus() end--[[APR_DIAG]])--[[/APR_DIAG]])
-    edit:SetScript("OnEditFocusGained", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:38:callback#3", --[[/APR_DIAG]]function() edit:HighlightText() end--[[APR_DIAG]])--[[/APR_DIAG]])
-    edit:SetScript("OnTextChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:39:callback#4", --[[/APR_DIAG]]function(_, userInput)
-        if userInput then edit:SetText(page.url); edit:HighlightText() end
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-    page.copy = UI:Button(page.preferences, "GitHub · Ctrl+C", 144, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:42:callback#5", --[[/APR_DIAG]]function()
-        edit:SetFocus(); edit:HighlightText()
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    APR:RegisterSkinTarget(edit, "editbox", { themeSurface = true })
+    APR:RegisterFontString(edit, "general", { role = "base" })
+    edit:SetScript(
+        "OnEscapePressed", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/panels/ReleaseNotesPanel.lua:37:callback#2", --[[/APR_DIAG]]
+            function() edit:ClearFocus() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
+    edit:SetScript(
+        "OnEditFocusGained", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/panels/ReleaseNotesPanel.lua:38:callback#3", --[[/APR_DIAG]]
+            function() edit:HighlightText() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
+    edit:SetScript(
+        "OnTextChanged", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:39:callback#4", --[[/APR_DIAG]] function(_, userInput)
+            if userInput then
+                edit:SetText(page.url)
+                edit:HighlightText()
+            end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+    page.copy = UI:Button(
+        page.preferences,
+        "GitHub · Ctrl+C",
+        144, --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:42:callback#5", --[[/APR_DIAG]] function()
+            edit:SetFocus()
+            edit:HighlightText()
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     page.copy:SetPoint("BOTTOMRIGHT", -14, 14)
     UI:Tooltip(page.copy, L["COPY_HELPER"])
     page:CreateNotes(page.frame)
     page.notes:SetPoint("TOPLEFT", page.preferences, "BOTTOMLEFT", 0, -12)
     page.notes:SetPoint("BOTTOMRIGHT")
     return page
-end--[[APR_DIAG]]; Panel.Create = APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:12:Panel:Create#1", Panel.Create)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Panel.Create = APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:12:Panel:Create#1", Panel.Create)--[[/APR_DIAG]]
 
 -- Both surfaces share the formatter, row pool, theme roles and scroll behavior.
 function Panel:CreateNotes(parent)
@@ -59,22 +85,40 @@ function Panel:CreateNotes(parent)
     self.scroll:SetPoint("BOTTOMRIGHT", -30, 14)
     self.content = CreateFrame("Frame", nil, self.scroll)
     self.scroll:SetScrollChild(self.content)
-    self.scroll:HookScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:62:callback#7", --[[/APR_DIAG]]function() self:QueueLayout() end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; Panel.CreateNotes = APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:54:Panel:CreateNotes#6", Panel.CreateNotes)--[[/APR_DIAG]]
+    self.scroll:HookScript(
+        "OnSizeChanged", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/panels/ReleaseNotesPanel.lua:62:callback#7", --[[/APR_DIAG]]
+            function() self:QueueLayout() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
+end--[[APR_DIAG]]
+Panel.CreateNotes = APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:54:Panel:CreateNotes#6", Panel.CreateNotes)--[[/APR_DIAG]]
 
 -- Applying a theme calls every registered row's font callback in one pass.
 -- Measure the final fonts once instead of laying out all rows for every callback.
 function Panel:QueueLayout()
-    if self.layingOut or self.layoutRequest or not self.notes or not self.notes:IsShown()
-        or (self.notes.IsVisible and not self.notes:IsVisible()) then return end
+    if
+        self.layingOut
+        or self.layoutRequest
+        or not self.notes
+        or not self.notes:IsShown()
+        or (self.notes.IsVisible and not self.notes:IsVisible())
+    then
+        return
+    end
     local request = {}
     self.layoutRequest = request
-    C_Timer.After(0, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:72:callback#9", --[[/APR_DIAG]]function()
-        if self.layoutRequest ~= request then return end
-        self.layoutRequest = nil
-        if self.notes:IsShown() and (not self.notes.IsVisible or self.notes:IsVisible()) then self:Layout() end
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; Panel.QueueLayout = APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:67:Panel:QueueLayout#8", Panel.QueueLayout)--[[/APR_DIAG]]
+    C_Timer.After(
+        0, --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:72:callback#9", --[[/APR_DIAG]] function()
+            if self.layoutRequest ~= request then return end
+            self.layoutRequest = nil
+            if self.notes:IsShown() and (not self.notes.IsVisible or self.notes:IsVisible()) then self:Layout() end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+end--[[APR_DIAG]]
+Panel.QueueLayout = APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:67:Panel:QueueLayout#8", Panel.QueueLayout)--[[/APR_DIAG]]
 
 function Panel:Layout()
     if self.layingOut then return end
@@ -96,13 +140,19 @@ function Panel:Layout()
     self.content:SetHeight(math.max(1, y))
     self.scroll:SetVerticalScroll(math.min(self.scroll:GetVerticalScroll(), math.max(0, y - self.scroll:GetHeight())))
     self.layingOut = nil
-end--[[APR_DIAG]]; Panel.Layout = APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:79:Panel:Layout#10", Panel.Layout)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Panel.Layout = APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:79:Panel:Layout#10", Panel.Layout)--[[/APR_DIAG]]
 
 function Panel:RefreshNotes()
     local blocks = APR.changelog:GetBlocks()
-    if self.renderedBlocks == blocks then self:Layout(); return end
+    if self.renderedBlocks == blocks then
+        self:Layout()
+        return
+    end
     self.layingOut = true
-    for _, row in ipairs(self.rows) do row:Hide() end
+    for _, row in ipairs(self.rows) do
+        row:Hide()
+    end
     for index, block in ipairs(blocks) do
         local row = self.rows[index]
         if not row then
@@ -113,13 +163,22 @@ function Panel:RefreshNotes()
         row.block = block
         row:SetText(block.text)
         row:Show()
-        APR:RegisterFontString(row, "general", {role = block.role, sizeDelta = block.size - 12,
-            themeAccent = true, onApplied = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:117:callback#12", --[[/APR_DIAG]]function() self:QueueLayout() end--[[APR_DIAG]])--[[/APR_DIAG]]})
+        APR:RegisterFontString(row, "general", {
+            role = block.role,
+            sizeDelta = block.size - 12,
+            themeAccent = true,
+            --[[APR_DIAG]]
+            onApplied = APRTrace(
+                "APR-Core/ui/panels/ReleaseNotesPanel.lua:117:callback#12", --[[/APR_DIAG]]
+                function() self:QueueLayout() end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]],
+        })
     end
     self.layingOut = nil
     self.renderedBlocks = blocks
     self:Layout()
-end--[[APR_DIAG]]; Panel.RefreshNotes = APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:101:Panel:RefreshNotes#11", Panel.RefreshNotes)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Panel.RefreshNotes = APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:101:Panel:RefreshNotes#11", Panel.RefreshNotes)--[[/APR_DIAG]]
 
 function Panel:Show(app)
     self.frame:Show()
@@ -129,11 +188,13 @@ function Panel:Show(app)
     self:RefreshNotes()
     self.link:SetFocus()
     self.link:HighlightText()
-end--[[APR_DIAG]]; Panel.Show = APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:124:Panel:Show#13", Panel.Show)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Panel.Show = APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:124:Panel:Show#13", Panel.Show)--[[/APR_DIAG]]
 
 function Panel:Hide()
     self.link:ClearFocus()
     self.host:ReleaseChildren()
     self.host:SetUserData("appName", nil)
     self.frame:Hide()
-end--[[APR_DIAG]]; Panel.Hide = APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:134:Panel:Hide#14", Panel.Hide)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Panel.Hide = APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:134:Panel:Hide#14", Panel.Hide)--[[/APR_DIAG]]

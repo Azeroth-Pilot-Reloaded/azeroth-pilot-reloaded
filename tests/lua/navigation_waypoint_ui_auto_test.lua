@@ -1,11 +1,26 @@
 -- Automatic output observes host guidance without APR, frames or a second
 -- arrival controller. Only the enabled instance may resolve its dependencies.
 local sandbox = {
-    assert = assert, error = error, ipairs = ipairs, pairs = pairs, next = next,
-    type = type, tonumber = tonumber, tostring = tostring, select = select,
-    pcall = pcall, xpcall = xpcall, unpack = unpack, rawget = rawget, rawset = rawset,
-    setmetatable = setmetatable, getmetatable = getmetatable,
-    math = math, string = string, table = table, strmatch = string.match,
+    assert = assert,
+    error = error,
+    ipairs = ipairs,
+    pairs = pairs,
+    next = next,
+    type = type,
+    tonumber = tonumber,
+    tostring = tostring,
+    select = select,
+    pcall = pcall,
+    xpcall = xpcall,
+    unpack = unpack,
+    rawget = rawget,
+    rawset = rawset,
+    setmetatable = setmetatable,
+    getmetatable = getmetatable,
+    math = math,
+    string = string,
+    table = table,
+    strmatch = string.match,
 }
 sandbox._G = sandbox
 local function Load(path)
@@ -14,14 +29,18 @@ local function Load(path)
     return chunk()
 end
 Load("APR-Core/libs/HereBeDragons/LibStub/LibStub.lua")
-setmetatable(sandbox, { __index = function(_, key)
-    error("Unexpected automatic waypoint global dependency: " .. tostring(key))
-end })
+setmetatable(sandbox, {
+    __index = function(_, key)
+        error("Unexpected automatic waypoint global dependency: " .. tostring(key))
+    end,
+})
 local root = "APR-Core/libs/LibAPRNavigation-1.0/"
 local manifest = assert(io.open(root .. "LibAPRNavigation.xml"))
 local xml = manifest:read("*a")
 manifest:close()
-for path in xml:gmatch('file="([^"]+)"') do Load(root .. path) end
+for path in xml:gmatch('file="([^"]+)"') do
+    Load(root .. path)
+end
 local library = sandbox.LibStub("LibAPRNavigation-1.0")
 
 local function MapPoint(x, y)
@@ -37,8 +56,14 @@ local function Provider()
         if state.createError then error("creation failed") end
         if state.reject then return nil end
         state.creates = state.creates + 1
-        state.current = { mapID = request.mapID, x = request.x / 100, y = request.y / 100,
-            name = request.name, flags = request.flags, stripCoordinates = request.stripCoordinates }
+        state.current = {
+            mapID = request.mapID,
+            x = request.x / 100,
+            y = request.y / 100,
+            name = request.name,
+            flags = request.flags,
+            stripCoordinates = request.stripCoordinates,
+        }
         assert(request.suppressPathfinding == true)
         return state.current
     end
@@ -71,9 +96,11 @@ local function Reason(instance, expected)
 end
 
 -- Default/false modes must not even inspect target, API or scheduler callbacks.
-local unavailable = setmetatable({}, { __index = function(_, key)
-    error("Disabled automatic output inspected environment: " .. tostring(key))
-end })
+local unavailable = setmetatable({}, {
+    __index = function(_, key)
+        error("Disabled automatic output inspected environment: " .. tostring(key))
+    end,
+})
 local default, disabled = New(unavailable), New(unavailable, false)
 assert(default.waypointUIEnabled ~= true and disabled.waypointUIEnabled ~= true)
 Reason(default, "waypoint_ui_disabled")
@@ -81,9 +108,12 @@ disabled:SetWaypointUIEnabled(false)
 disabled:RefreshWaypointUI()
 
 local createTicker, timers = Scheduler()
-local missing = New({ newWaypointTicker = createTicker, getWaypointUIAPI = function()
-    error("A missing target must not resolve the renderer")
-end }, true)
+local missing = New({
+    newWaypointTicker = createTicker,
+    getWaypointUIAPI = function()
+        error("A missing target must not resolve the renderer")
+    end,
+}, true)
 Reason(missing, "waypoint_target_unavailable")
 assert(#timers == 1)
 missing:SetWaypointUIEnabled(false)
@@ -93,8 +123,10 @@ assert(timers[1].cancelled)
 -- lookups escape through the sandbox's erroring metatable.
 local manualAPI, manual = Provider()
 local unscheduledTarget = MapPoint(0.1, 0.2)
-local unscheduled = New({ getWaypointUIAPI = function() return manualAPI end,
-    getWaypointTarget = function() return unscheduledTarget end }, true)
+local unscheduled = New(
+    { getWaypointUIAPI = function() return manualAPI end, getWaypointTarget = function() return unscheduledTarget end },
+    true
+)
 assert(manual.creates == 1)
 Reason(unscheduled, "waypoint_scheduler_unavailable")
 unscheduledTarget.x = 0.3
@@ -105,10 +137,14 @@ assert(manual.current == nil)
 
 local labelsAPI, labels = Provider()
 local labelOptions = { name = "Follow path 12\nKeep 3 supplies" }
-local labelInstance = New({ getWaypointUIAPI = function() return labelsAPI end,
-    getWaypointTarget = function() return MapPoint(0.25, 0.75), labelOptions end }, true)
-assert(labels.current.stripCoordinates == true and labels.current.name == labelOptions.name,
-    "Automatic output must hide generated coordinates without editing semantic instructions")
+local labelInstance = New({
+    getWaypointUIAPI = function() return labelsAPI end,
+    getWaypointTarget = function() return MapPoint(0.25, 0.75), labelOptions end,
+}, true)
+assert(
+    labels.current.stripCoordinates == true and labels.current.name == labelOptions.name,
+    "Automatic output must hide generated coordinates without editing semantic instructions"
+)
 labelOptions.stripCoordinates = false
 labelInstance:RefreshWaypointUI()
 assert(labels.creates == 2 and labels.current.stripCoordinates == false)
@@ -116,8 +152,10 @@ labelOptions.stripCoordinates = nil
 labelInstance:RefreshWaypointUI()
 assert(labels.creates == 3 and labels.current.stripCoordinates == true)
 labelInstance:RefreshWaypointUI()
-assert(labels.creates == 3 and labels.current.x == 0.25 and labels.current.y == 0.75,
-    "Repeated automatic output must retain the target coordinates without recreating the pin")
+assert(
+    labels.creates == 3 and labels.current.x == 0.25 and labels.current.y == 0.75,
+    "Repeated automatic output must retain the target coordinates without recreating the pin"
+)
 labelInstance:SetWaypointUIEnabled(false)
 
 -- The normal WoW scheduler is optional and resolved only upon activation.
@@ -132,15 +170,19 @@ local api, state = Provider()
 local schedule, ticks = Scheduler()
 local target, options = MapPoint(0.2, 0.3), { name = "Current target" }
 local getterError = false
-local instance = New({ getWaypointUIAPI = function() return api end, newWaypointTicker = schedule,
+local instance = New({
+    getWaypointUIAPI = function() return api end,
+    newWaypointTicker = schedule,
     getWaypointTarget = function()
         if getterError then error("host not ready") end
         return target, options
-    end }, true)
+    end,
+}, true)
 local tick = ticks[1].callback
 assert(#ticks == 1 and state.creates == 1 and state.current.x == 0.2)
 Reason(instance, nil)
-tick(); tick()
+tick()
+tick()
 assert(state.creates == 1, "An unchanged target must be deduplicated")
 target.x = 0.4
 tick()
@@ -223,7 +265,8 @@ target, options = MapPoint(0.3, 0.4), { name = "Automatic target" }
 tick()
 assert(instance:SetWaypoint(MapPoint(0.8, 0.9), { name = "Manual target" }))
 local creates = state.creates
-tick(); tick()
+tick()
+tick()
 assert(state.creates == creates and state.current.name == "Manual target")
 Reason(instance, "waypoint_manual_override")
 options.name = "Automatic changed"
@@ -240,8 +283,10 @@ assert(instance:SetWaypointForSegment({ kind = "walk", from = from, to = to }, {
 tick()
 assert(state.current.name == "Manual segment")
 instance:SetWaypointUIEnabled(false)
-assert(ticks[1].cancelled and state.current.name == "Manual segment",
-    "Stopping automatic mode must preserve an explicit manual publication")
+assert(
+    ticks[1].cancelled and state.current.name == "Manual segment",
+    "Stopping automatic mode must preserve an explicit manual publication"
+)
 target.x = 0.45
 tick()
 assert(state.current.name == "Manual segment", "A cancelled callback must be harmless")
@@ -262,8 +307,11 @@ local lateAPI, lateState = Provider()
 local selectedAPI
 local lateSchedule, lateTicks = Scheduler()
 local lateTarget = MapPoint(0.6, 0.7)
-local late = New({ getWaypointUIAPI = function() return selectedAPI end, newWaypointTicker = lateSchedule,
-    getWaypointTarget = function() return lateTarget end }, true)
+local late = New({
+    getWaypointUIAPI = function() return selectedAPI end,
+    newWaypointTicker = lateSchedule,
+    getWaypointTarget = function() return lateTarget end,
+}, true)
 Reason(late, "waypoint_ui_unavailable")
 selectedAPI = lateAPI
 lateTicks[1].callback()
@@ -281,14 +329,18 @@ local sharedAPI, shared = Provider()
 local sharedSchedule, sharedTicks = Scheduler()
 local sharedEnv = { newWaypointTicker = sharedSchedule, getWaypointUIAPI = function() return sharedAPI end }
 local envA, envB = {}, {}
-for key, value in pairs(sharedEnv) do envA[key], envB[key] = value, value end
+for key, value in pairs(sharedEnv) do
+    envA[key], envB[key] = value, value
+end
 envA.getWaypointTarget = function() return MapPoint(0.1, 0.2), { name = "A" } end
 envB.getWaypointTarget = function() return MapPoint(0.3, 0.4), { name = "B" } end
 local a, b = New(envA, true), New(envB, true)
 assert(#sharedTicks == 2 and shared.current.name == "A")
 sharedTicks[1].callback()
-assert(shared.current.name == "A" and shared.creates == 1,
-    "An automatic consumer must preserve an existing consumer's waypoint")
+assert(
+    shared.current.name == "A" and shared.creates == 1,
+    "An automatic consumer must preserve an existing consumer's waypoint"
+)
 a:SetWaypointUIEnabled(false)
 assert(sharedTicks[1].cancelled and not sharedTicks[2].cancelled and shared.clears == 1)
 sharedTicks[2].callback()
@@ -296,9 +348,11 @@ assert(shared.current.name == "B" and shared.creates == 2)
 b:SetWaypointUIEnabled(false)
 assert(shared.current == nil and shared.clears == 2)
 
-local errorSchedule = New({ newWaypointTicker = function() error("scheduler unavailable") end,
+local errorSchedule = New({
+    newWaypointTicker = function() error("scheduler unavailable") end,
     getWaypointTarget = function() return MapPoint(0.4, 0.5) end,
-    getWaypointUIAPI = function() return sharedAPI end }, true)
+    getWaypointUIAPI = function() return sharedAPI end,
+}, true)
 Reason(errorSchedule, "waypoint_scheduler_error")
 assert(shared.current.x == 0.4)
 shared.clearError = true
@@ -309,4 +363,6 @@ shared.clearError = nil
 errorSchedule:SetWaypointUIEnabled(false)
 assert(shared.current == nil, "Disabling again must retry a failed owned cleanup")
 
-print("Navigation automatic Waypoint UI: optional observers, transitions, retries, manual overrides and ticker ownership passed")
+print(
+    "Navigation automatic Waypoint UI: optional observers, transitions, retries, manual overrides and ticker ownership passed"
+)

@@ -10,9 +10,11 @@ function canaccesstable(value) return not rawequal(value, restrictedTable) end
 
 dofile("APR-Core/utils/SecretUtils.lua")
 local L = setmetatable({}, { __index = function(_, key) return key end })
-function LibStub() return setmetatable({ GetLocale = function() return L end }, { __index = function() return noop end }) end
+function LibStub()
+    return setmetatable({ GetLocale = function() return L end }, { __index = function() return noop end })
+end
 
-APR = { RegisterFontString = noop, Color = { defaultBackdrop = {}, white = { 1, 1, 1 }, midGray = { .5, .5, .5 } } }
+APR = { RegisterFontString = noop, Color = { defaultBackdrop = {}, white = { 1, 1, 1 }, midGray = { 0.5, 0.5, 0.5 } } }
 function APR:NewModule() return {} end
 
 APRSecret:Attach(APR)
@@ -27,8 +29,10 @@ end
 
 C_CreatureInfo = {
     GetCreatureID = function(value)
-        assert(canaccessvalue(value)); calls = calls + 1; return creatureID
-    end
+        assert(canaccessvalue(value))
+        calls = calls + 1
+        return creatureID
+    end,
 }
 UnitCreatureID = forbidden
 dofile("APR-Core/utils/TargetUtils.lua")
@@ -81,8 +85,9 @@ C_Spell = { GetSpellInfo = function() return { iconID = 123 } end }
 local aura, queries = nil, 0
 C_UnitAuras = {
     GetPlayerAuraBySpellID = function()
-        queries = queries + 1; return aura
-    end
+        queries = queries + 1
+        return aura
+    end,
 }
 dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/features/player/Buff.lua")
@@ -96,7 +101,7 @@ APR.Buff:HandleUnitAuraUpdate("target", restrictedTable)
 assert(queries == before)
 aura = nil
 APR.Buff:HandleUnitAuraUpdate(secret, restrictedTable)
-assert(queries == before + 1 and icon.auraId == 0 and icon.texture.red == .5)
+assert(queries == before + 1 and icon.auraId == 0 and icon.texture.red == 0.5)
 for _, value in ipairs({ secret, restrictedTable, { auraInstanceID = secret, icon = secret } }) do
     aura = value
     APR.Buff:HandleUnitAuraUpdate("player", restrictedTable)
@@ -120,10 +125,12 @@ function APR:StepUsesAnyOption() return false end
 
 APR.currentStep = {
     UpdateStepButtonCooldowns = function(_, filter)
-        assert(filter == nil); cooldowns = cooldowns + 1
+        assert(filter == nil)
+        cooldowns = cooldowns + 1
     end,
     UpdateStepButtonUsability = function(_, filter)
-        assert(filter == nil); usability = usability + 1
+        assert(filter == nil)
+        usability = usability + 1
     end,
 }
 dofile("APR-Core/features/questing/StepTransitions.lua")

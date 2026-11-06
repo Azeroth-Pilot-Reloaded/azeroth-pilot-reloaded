@@ -39,8 +39,11 @@ local function Related(text)
     for line in text:gmatch("[^\n]+") do
         local path = line:lower():gsub("\\", "/")
         -- Our observing handler is on every stack; it must not attribute unrelated errors to APR.
-        if not path:find("apr/core/errorlog.lua", 1, true) and not path:find("apr-core/core/errorlog.lua", 1, true)
-            and (path:find("addons/apr/", 1, true) or path:find("@apr/", 1, true)) then
+        if
+            not path:find("apr/core/errorlog.lua", 1, true)
+            and not path:find("apr-core/core/errorlog.lua", 1, true)
+            and (path:find("addons/apr/", 1, true) or path:find("@apr/", 1, true))
+        then
             return line
         end
     end
@@ -51,7 +54,11 @@ local function Record(self, message, stack, occurrences, timestamp, attributedAd
     local entry = entriesByMessage[message]
     local source
     -- A retained message is immutable; generic messages still need a fresh stack attribution.
-    if entry then source = messagesFromAPR[message] and "APR" else source = Related(message) end
+    if entry then
+        source = messagesFromAPR[message] and "APR"
+    else
+        source = Related(message)
+    end
     local fromMessage = source ~= nil
     source = source or Related(stack)
     -- Protected-action failures can contain only Blizzard paths. Preserve the
@@ -67,8 +74,13 @@ local function Record(self, message, stack, occurrences, timestamp, attributedAd
                 entriesByMessage[removed.message], messagesFromAPR[removed.message] = nil, nil
             end
         end
-        entry = { message = message, stack = stack, source = source:match("([^/\\]+%.lua:%d+)") or "APR",
-            count = 0, first = now }
+        entry = {
+            message = message,
+            stack = stack,
+            source = source:match("([^/\\]+%.lua:%d+)") or "APR",
+            count = 0,
+            first = now,
+        }
         self.entries[#self.entries + 1] = entry
         entriesByMessage[message] = entry
         messagesFromAPR[message] = fromMessage or nil
@@ -136,14 +148,25 @@ local function ConnectBugGrabber(self, provider, binding)
     if type(provider.setupCallbacks) == "function" then provider.setupCallbacks() end
     -- Legacy providers can also expose GetErrorByID; their explicit callback API takes priority.
     if type(provider.RegisterCallback) == "function" then
-        provider.RegisterCallback(self, "BugGrabber_BugGrabbed", function(_, record)
-            Guard(ReadBoundBug, self, binding, record, false)
-        end)
-    elseif type(provider.GetErrorByID) == "function" and ReadableTable(EventRegistry)
-        and type(EventRegistry.RegisterCallback) == "function" then
-        EventRegistry:RegisterCallback("BugGrabber.BugGrabbed", function(_, id)
-            Guard(ReadBoundBug, self, binding, id, true)
-        end, self)
+        provider.RegisterCallback(
+            self,
+            "BugGrabber_BugGrabbed",
+            function(_, record)
+                Guard(ReadBoundBug, self, binding, record, false)
+            end
+        )
+    elseif
+        type(provider.GetErrorByID) == "function"
+        and ReadableTable(EventRegistry)
+        and type(EventRegistry.RegisterCallback) == "function"
+    then
+        EventRegistry:RegisterCallback(
+            "BugGrabber.BugGrabbed",
+            function(_, id)
+                Guard(ReadBoundBug, self, binding, id, true)
+            end,
+            self
+        )
     else
         return
     end
@@ -216,7 +239,9 @@ local function Connect(self)
         current = geterrorhandler()
     end
     self.provider = current == self.handler and "native" or "unavailable"
-    if self.provider == "native" then nativePending, nativePrevious = nil, nil end
+    if self.provider == "native" then
+        nativePending, nativePrevious = nil, nil
+    end
 end
 
 function Log:Connect()
@@ -245,7 +270,10 @@ local function OnEvent(event, addonName, addonFunc)
     end
     Connect(Log)
 end
-events:SetScript("OnEvent", function(_, event, addonName, addonFunc)
-    Guard(OnEvent, event, addonName, addonFunc)
-end)
+events:SetScript(
+    "OnEvent",
+    function(_, event, addonName, addonFunc)
+        Guard(OnEvent, event, addonName, addonFunc)
+    end
+)
 Log:Connect()

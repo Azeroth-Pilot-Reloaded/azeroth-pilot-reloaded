@@ -1,6 +1,8 @@
 -- Shared helpers must never attempt protected combat-log registration on either
 -- Retail or Forever, even when event-validity checks and legacy readers exist.
-function LibStub() return { GetLocale = function() return {} end } end
+function LibStub()
+    return { GetLocale = function() return {} end }
+end
 function CombatLogGetCurrentEventInfo() error("Retail must not read the combat log") end
 C_EventUtils = { IsEventValid = function() return true end }
 local registered, eventHandler
@@ -29,7 +31,7 @@ for _, project in ipairs({ { 1, 14 }, { 1 }, {}, { 14, 14 }, { 1, 14, 16001 } })
     function GetBuildInfo() return "version", "build", "date", project[3] or 120105 end
     registered = {}
     dofile("tests/lua/dungeon_data_test_env.lua")
-dofile("APR-Core/utils/DungeonUtils.lua")
+    dofile("APR-Core/utils/DungeonUtils.lua")
     assert(registered.ZONE_CHANGED_NEW_AREA and registered.PLAYER_ENTERING_WORLD)
     assert(registered.ENCOUNTER_END, "Public encounter completion must remain available")
     assert(APR.DungeonData.forever.RFC and APR.RenderDungeonKill, "Shared helpers must remain available")

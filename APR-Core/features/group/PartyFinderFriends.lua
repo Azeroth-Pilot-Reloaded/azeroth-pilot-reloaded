@@ -9,52 +9,86 @@ local P = APR.PartyFinderProtocol
 local PREFIX = "APRFindV1"
 local ROSTER_LIMIT, ACCOUNT_LIMIT, PEER_LIMIT = 512, 8, 512
 local SEARCH_LIMIT, QUEUE_LIMIT, SEND_INTERVAL = 32, 128, 0.125
-local SEARCH_FIELDS = {"context", "alternateContext", "route", "revision", "progressId", "step", "total",
-    "mode", "range", "minLevel", "maxLevel", "primary", "languages", "warMode", "showIncompatibleWarMode"}
+local SEARCH_FIELDS = {
+    "context",
+    "alternateContext",
+    "route",
+    "revision",
+    "progressId",
+    "step",
+    "total",
+    "mode",
+    "range",
+    "minLevel",
+    "maxLevel",
+    "primary",
+    "languages",
+    "warMode",
+    "showIncompatibleWarMode",
+}
 
 local function Public(value)
     return not (issecretvalue and issecretvalue(value))
-end--[[APR_DIAG]]; Public = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:15:Public#1", Public)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Public = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:15:Public#1", Public)--[[/APR_DIAG]]
 
 local function PositiveInteger(value)
-    return Public(value) and type(value) == "number" and value > 0 and value < math.huge
-        and value == math.floor(value)
-end--[[APR_DIAG]]; PositiveInteger = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:19:PositiveInteger#2", PositiveInteger)--[[/APR_DIAG]]
+    return Public(value) and type(value) == "number" and value > 0 and value < math.huge and value == math.floor(value)
+end--[[APR_DIAG]]
+PositiveInteger = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:19:PositiveInteger#2", PositiveInteger)--[[/APR_DIAG]]
 
 local function Read(fn, ...)
     if type(fn) ~= "function" then return end
-    local ok, value = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](fn, ...)
+    local ok, value = --[[APR_DIAG]]
+        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](fn, ...)
     if ok and Public(value) then return value end
-end--[[APR_DIAG]]; Read = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:24:Read#3", Read)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Read = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:24:Read#3", Read)--[[/APR_DIAG]]
 
 local function Table(value)
     return Public(value) and type(value) == "table"
-end--[[APR_DIAG]]; Table = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:30:Table#4", Table)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Table = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:30:Table#4", Table)--[[/APR_DIAG]]
 
 local function Envelope(wire)
-    return Public(wire) and type(wire) == "string" and #wire >= 3 and #wire <= 240
-        and not wire:find("[%z\1-\31\127]")
-end--[[APR_DIAG]]; Envelope = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:34:Envelope#5", Envelope)--[[/APR_DIAG]]
+    return Public(wire) and type(wire) == "string" and #wire >= 3 and #wire <= 240 and not wire:find("[%z\1-\31\127]")
+end--[[APR_DIAG]]
+Envelope = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:34:Envelope#5", Envelope)--[[/APR_DIAG]]
 
 local function BattleNetSender()
     return C_BattleNet and type(C_BattleNet.SendGameData) == "function" and C_BattleNet.SendGameData
-        or type(BNSendGameData) == "function" and BNSendGameData or nil
-end--[[APR_DIAG]]; BattleNetSender = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:39:BattleNetSender#6", BattleNetSender)--[[/APR_DIAG]]
+        or type(BNSendGameData) == "function" and BNSendGameData
+        or nil
+end--[[APR_DIAG]]
+BattleNetSender = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:39:BattleNetSender#6", BattleNetSender)--[[/APR_DIAG]]
 
 local function BattleNetConnected(self)
     if self.friendBattleNetDisconnected then return false end
     return type(BNConnected) ~= "function" or Read(BNConnected) == true
-end--[[APR_DIAG]]; BattleNetConnected = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:44:BattleNetConnected#7", BattleNetConnected)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+BattleNetConnected =
+    APRTrace("APR-Core/features/group/PartyFinderFriends.lua:44:BattleNetConnected#7", BattleNetConnected)--[[/APR_DIAG]]
 
 local function GameKey(self, game)
-    if not Table(game) or not Public(game.isOnline) or game.isOnline ~= true
-        or not Public(game.isAppearOffline) or game.isAppearOffline == true
-        or not Public(game.isInCurrentRegion) or game.isInCurrentRegion ~= true
-        or not Public(game.clientProgram) or game.clientProgram ~= (BNET_CLIENT_WOW or "WoW")
-        or not PositiveInteger(game.gameAccountID) or not Public(game.wowProjectID)
+    if
+        not Table(game)
+        or not Public(game.isOnline)
+        or game.isOnline ~= true
+        or not Public(game.isAppearOffline)
+        or game.isAppearOffline == true
+        or not Public(game.isInCurrentRegion)
+        or game.isInCurrentRegion ~= true
+        or not Public(game.clientProgram)
+        or game.clientProgram ~= (BNET_CLIENT_WOW or "WoW")
+        or not PositiveInteger(game.gameAccountID)
+        or not Public(game.wowProjectID)
         or WOW_PROJECT_ID and game.wowProjectID ~= WOW_PROJECT_ID
-        or not Public(game.characterName) or type(game.characterName) ~= "string"
-        or game.characterName:match("^%s*$") then return end
+        or not Public(game.characterName)
+        or type(game.characterName) ~= "string"
+        or game.characterName:match("^%s*$")
+    then
+        return
+    end
     local name = game.characterName
     if not (RegionalUniqueNamesEnabled and RegionalUniqueNamesEnabled()) and not name:find("-", 1, true) then
         if not Public(game.realmName) or type(game.realmName) ~= "string" or game.realmName == "" then return end
@@ -63,12 +97,17 @@ local function GameKey(self, game)
         name = name .. "-" .. realm
     end
     return self:PlayerKey(name)
-end--[[APR_DIAG]]; GameKey = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:49:GameKey#8", GameKey)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+GameKey = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:49:GameKey#8", GameKey)--[[/APR_DIAG]]
 
 local function FriendAccount(account)
-    return Table(account) and Public(account.isFriend) and account.isFriend == true
-        and Public(account.appearOffline) and account.appearOffline ~= true
-end--[[APR_DIAG]]; FriendAccount = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:68:FriendAccount#9", FriendAccount)--[[/APR_DIAG]]
+    return Table(account)
+        and Public(account.isFriend)
+        and account.isFriend == true
+        and Public(account.appearOffline)
+        and account.appearOffline ~= true
+end--[[APR_DIAG]]
+FriendAccount = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:68:FriendAccount#9", FriendAccount)--[[/APR_DIAG]]
 
 local function CurrentPeer(self, peer)
     if not peer then return false end
@@ -85,9 +124,13 @@ local function CurrentPeer(self, peer)
         return GameKey(self, game) == peer.key and game.gameAccountID == peer.gameAccountID
     end
     local info = Read(C_FriendList and C_FriendList.GetFriendInfoByIndex, peer.friendIndex)
-    return Table(info) and Public(info.connected) and info.connected == true
-        and Public(info.name) and self:PlayerKey(info.name) == peer.key
-end--[[APR_DIAG]]; CurrentPeer = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:73:CurrentPeer#10", CurrentPeer)--[[/APR_DIAG]]
+    return Table(info)
+        and Public(info.connected)
+        and info.connected == true
+        and Public(info.name)
+        and self:PlayerKey(info.name) == peer.key
+end--[[APR_DIAG]]
+CurrentPeer = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:73:CurrentPeer#10", CurrentPeer)--[[/APR_DIAG]]
 
 function Finder:RefreshFriendPeers(force)
     local bnetReady = BattleNetConnected(self)
@@ -108,13 +151,14 @@ function Finder:RefreshFriendPeers(force)
         end
         peers[peer.key] = peer
         if peer.gameAccountID then byGame[peer.gameAccountID] = peer end
-    end--[[APR_DIAG]]; Add = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:99:Add#12", Add)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    Add = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:99:Add#12", Add)--[[/APR_DIAG]]
     local count = Read(C_FriendList and C_FriendList.GetNumFriends)
     if PositiveInteger(count) then
         for index = 1, math.min(ROSTER_LIMIT, count) do
             local info = Read(C_FriendList and C_FriendList.GetFriendInfoByIndex, index)
             if Table(info) and Public(info.connected) and info.connected == true and Public(info.name) then
-                Add({key = self:PlayerKey(info.name), channel = "WHISPER", friendIndex = index})
+                Add({ key = self:PlayerKey(info.name), channel = "WHISPER", friendIndex = index })
             end
         end
     end
@@ -128,14 +172,27 @@ function Finder:RefreshFriendPeers(force)
                     for gameIndex = 1, math.min(ACCOUNT_LIMIT, games) do
                         local game = Read(C_BattleNet.GetFriendGameAccountInfo, index, gameIndex)
                         local key = GameKey(self, game)
-                        if key then Add({key = key, channel = "BNET", gameAccountID = game.gameAccountID,
-                            friendIndex = index, accountIndex = gameIndex}) end
+                        if key then
+                            Add({
+                                key = key,
+                                channel = "BNET",
+                                gameAccountID = game.gameAccountID,
+                                friendIndex = index,
+                                accountIndex = gameIndex,
+                            })
+                        end
                     end
                 elseif type(C_BattleNet.GetFriendNumGameAccounts) ~= "function" then
                     local game = account.gameAccountInfo
                     local key = GameKey(self, game)
-                    if key then Add({key = key, channel = "BNET", gameAccountID = game.gameAccountID,
-                        friendIndex = index}) end
+                    if key then
+                        Add({
+                            key = key,
+                            channel = "BNET",
+                            gameAccountID = game.gameAccountID,
+                            friendIndex = index,
+                        })
+                    end
                 end
             end
         end
@@ -153,11 +210,18 @@ function Finder:RefreshFriendPeers(force)
     end
     if changed then self:Notify() end
     return peers
-end--[[APR_DIAG]]; Finder.RefreshFriendPeers = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:92:Finder:RefreshFriendPeers#11", Finder.RefreshFriendPeers)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.RefreshFriendPeers = APRTrace(
+    "APR-Core/features/group/PartyFinderFriends.lua:92:Finder:RefreshFriendPeers#11",
+    Finder.RefreshFriendPeers
+)--[[/APR_DIAG]]
 
 function Finder:InvalidateFriendPeers(event)
-    if event == "BN_CONNECTED" then self.friendBattleNetDisconnected = nil
-    elseif event == "BN_DISCONNECTED" then self.friendBattleNetDisconnected = true end
+    if event == "BN_CONNECTED" then
+        self.friendBattleNetDisconnected = nil
+    elseif event == "BN_DISCONNECTED" then
+        self.friendBattleNetDisconnected = true
+    end
     self.friendPeersDirty = true
     if event == "BN_DISCONNECTED" then
         local remaining = {}
@@ -173,52 +237,84 @@ function Finder:InvalidateFriendPeers(event)
         -- Rebuild without Battle.net now so routes and candidates are revoked.
         self:RefreshFriendPeers(true)
     end
-end--[[APR_DIAG]]; Finder.InvalidateFriendPeers = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:158:Finder:InvalidateFriendPeers#13", Finder.InvalidateFriendPeers)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.InvalidateFriendPeers = APRTrace(
+    "APR-Core/features/group/PartyFinderFriends.lua:158:Finder:InvalidateFriendPeers#13",
+    Finder.InvalidateFriendPeers
+)--[[/APR_DIAG]]
 
 function Finder:HasFriendPeers()
     return next(self:RefreshFriendPeers()) ~= nil
-end--[[APR_DIAG]]; Finder.HasFriendPeers = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:178:Finder:HasFriendPeers#14", Finder.HasFriendPeers)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.HasFriendPeers =
+    APRTrace("APR-Core/features/group/PartyFinderFriends.lua:178:Finder:HasFriendPeers#14", Finder.HasFriendPeers)--[[/APR_DIAG]]
 
 function Finder:IsFriendSender(key)
     local peer = self:RefreshFriendPeers()[key]
     return CurrentPeer(self, peer) == true
-end--[[APR_DIAG]]; Finder.IsFriendSender = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:182:Finder:IsFriendSender#15", Finder.IsFriendSender)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.IsFriendSender =
+    APRTrace("APR-Core/features/group/PartyFinderFriends.lua:182:Finder:IsFriendSender#15", Finder.IsFriendSender)--[[/APR_DIAG]]
 
 function Finder:GetBattleNetPeer(gameAccountID)
     if not PositiveInteger(gameAccountID) then return end
     self:RefreshFriendPeers()
     local peer = self.friendBattleNetPeers[gameAccountID]
     if peer and CurrentPeer(self, peer) then return peer end
-end--[[APR_DIAG]]; Finder.GetBattleNetPeer = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:187:Finder:GetBattleNetPeer#16", Finder.GetBattleNetPeer)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.GetBattleNetPeer =
+    APRTrace("APR-Core/features/group/PartyFinderFriends.lua:187:Finder:GetBattleNetPeer#16", Finder.GetBattleNetPeer)--[[/APR_DIAG]]
 
 local function SameSearch(self, query)
-    if self.query ~= query or GetTime() >= query.expires or self.discoverySuspended or self:IsDiscoveryInstance() then return false end
+    if self.query ~= query or GetTime() >= query.expires or self.discoverySuspended or self:IsDiscoveryInstance() then
+        return false
+    end
     local state = self:GetLocalState()
     if not state then return false end
     local current = self:MakeQuery(state)
-    for _, field in ipairs(SEARCH_FIELDS) do if current[field] ~= query[field] then return false end end
+    for _, field in ipairs(SEARCH_FIELDS) do
+        if current[field] ~= query[field] then return false end
+    end
     return true
-end--[[APR_DIAG]]; SameSearch = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:194:SameSearch#17", SameSearch)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+SameSearch = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:194:SameSearch#17", SameSearch)--[[/APR_DIAG]]
 
 local function CurrentPacket(self, entry)
-    if GetTime() >= entry.expires or not self:IsEnabled() or self:IsRestricted()
-        or not CurrentPeer(self, self:RefreshFriendPeers()[entry.key]) then return false end
+    if
+        GetTime() >= entry.expires
+        or not self:IsEnabled()
+        or self:IsRestricted()
+        or not CurrentPeer(self, self:RefreshFriendPeers()[entry.key])
+    then
+        return false
+    end
     if entry.gameAccountID and self.friendPeers[entry.key].gameAccountID ~= entry.gameAccountID then return false end
-    if entry.kind == "Q" and (not entry.search or entry.id ~= entry.search.id or not SameSearch(self, entry.search)) then
+    if
+        entry.kind == "Q" and (not entry.search or entry.id ~= entry.search.id or not SameSearch(self, entry.search))
+    then
         return false
     end
     if entry.kind == "P" then
         local settings = self:GetSettings()
-        if not settings or settings.visible ~= true or self.visibilityPolicy ~= entry.policy
-            or self.discoverySuspended or self:IsDiscoveryInstance()
-            or entry.context ~= self.context and entry.context ~= self.worldContext then return false end
+        if
+            not settings
+            or settings.visible ~= true
+            or self.visibilityPolicy ~= entry.policy
+            or self.discoverySuspended
+            or self:IsDiscoveryInstance()
+            or entry.context ~= self.context and entry.context ~= self.worldContext
+        then
+            return false
+        end
     end
     if entry.guard then
-        local ok, allowed = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](entry.guard)
+        local ok, allowed = --[[APR_DIAG]]
+            APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](entry.guard)
         if not ok or not Public(allowed) or allowed ~= true then return false end
     end
     return true
-end--[[APR_DIAG]]; CurrentPacket = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:203:CurrentPacket#18", CurrentPacket)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+CurrentPacket = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:203:CurrentPacket#18", CurrentPacket)--[[/APR_DIAG]]
 
 local function Queue(self, entry)
     local queue = self.friendSendQueue or {}
@@ -227,39 +323,83 @@ local function Queue(self, entry)
     queue[#queue + 1] = entry
     self:ScheduleFriendSends()
     return true
-end--[[APR_DIAG]]; Queue = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:223:Queue#19", Queue)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Queue = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:223:Queue#19", Queue)--[[/APR_DIAG]]
 
 function Finder:ScheduleFriendSends()
     if self.friendSendTimer or not self.friendSendQueue or #self.friendSendQueue == 0 then return end
-    self:SetTimer("friendSendTimer", math.max(0, (self.friendLastSend or -100) + SEND_INTERVAL - GetTime()), --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinderFriends.lua:234:callback#21", --[[/APR_DIAG]]function()
-        local queue = self.friendSendQueue
-        local entry = queue and table.remove(queue, 1)
-        if entry and CurrentPacket(self, entry) then
-            self.friendLastSend = GetTime()
-            local sent
-            if entry.gameAccountID then
-                local send = BattleNetSender()
-                local ok, result = false, nil
-                if send then ok, result = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](send, entry.gameAccountID, PREFIX, entry.wire) end
-                sent = ok and (result == nil or result == true or result == 0)
-                if self.TraceTraffic then self:TraceTraffic("TX", entry.kind, "BNET", entry.key,
-                    sent and "accepted" or tostring(result or "unavailable"), entry.wire) end
-                if sent then self.sentCount = (self.sentCount or 0) + 1 end
-            else
-                sent = self:Send(entry.kind, entry.data, "WHISPER", entry.key, true, entry.guard,
-                    entry.expires - GetTime())
+    self:SetTimer(
+        "friendSendTimer",
+        math.max(0, (self.friendLastSend or -100) + SEND_INTERVAL - GetTime()), --[[APR_DIAG]]
+        APRTrace("APR-Core/features/group/PartyFinderFriends.lua:234:callback#21", --[[/APR_DIAG]] function()
+            local queue = self.friendSendQueue
+            local entry = queue and table.remove(queue, 1)
+            if entry and CurrentPacket(self, entry) then
+                self.friendLastSend = GetTime()
+                local sent
+                if entry.gameAccountID then
+                    local send = BattleNetSender()
+                    local ok, result = false, nil
+                    if send then
+                        ok, result = --[[APR_DIAG]]
+                            APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](
+                                send,
+                                entry.gameAccountID,
+                                PREFIX,
+                                entry.wire
+                            )
+                    end
+                    sent = ok and (result == nil or result == true or result == 0)
+                    if self.TraceTraffic then
+                        self:TraceTraffic(
+                            "TX",
+                            entry.kind,
+                            "BNET",
+                            entry.key,
+                            sent and "accepted" or tostring(result or "unavailable"),
+                            entry.wire
+                        )
+                    end
+                    if sent then self.sentCount = (self.sentCount or 0) + 1 end
+                else
+                    sent = self:Send(
+                        entry.kind,
+                        entry.data,
+                        "WHISPER",
+                        entry.key,
+                        true,
+                        entry.guard,
+                        entry.expires - GetTime()
+                    )
+                end
+                if
+                    sent
+                    and entry.search
+                    and self.friendSearchContacts
+                    and self.friendSearchContacts.query == entry.search
+                then
+                    self.friendSearchContacts.peers[entry.key] = entry.gameAccountID and "BNET" or "WHISPER"
+                end
             end
-            if sent and entry.search and self.friendSearchContacts and self.friendSearchContacts.query == entry.search then
-                self.friendSearchContacts.peers[entry.key] = entry.gameAccountID and "BNET" or "WHISPER"
-            end
-        end
-        self:ScheduleFriendSends()
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; Finder.ScheduleFriendSends = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:232:Finder:ScheduleFriendSends#20", Finder.ScheduleFriendSends)--[[/APR_DIAG]]
+            self:ScheduleFriendSends()
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+end--[[APR_DIAG]]
+Finder.ScheduleFriendSends = APRTrace(
+    "APR-Core/features/group/PartyFinderFriends.lua:232:Finder:ScheduleFriendSends#20",
+    Finder.ScheduleFriendSends
+)--[[/APR_DIAG]]
 
 function Finder:SendBattleNet(kind, wire, key, guard, ttl)
-    if not self:IsEnabled() or self:IsRestricted() or not Envelope(wire) or not BattleNetSender()
-        or guard ~= nil and type(guard) ~= "function" then return false end
+    if
+        not self:IsEnabled()
+        or self:IsRestricted()
+        or not Envelope(wire)
+        or not BattleNetSender()
+        or guard ~= nil and type(guard) ~= "function"
+    then
+        return false
+    end
     local peer = self:RefreshFriendPeers()[key]
     if not peer or not peer.gameAccountID or not CurrentPeer(self, peer) then return false end
     local packet = P.Decode(wire)
@@ -269,23 +409,35 @@ function Finder:SendBattleNet(kind, wire, key, guard, ttl)
         if not Public(ttl) or type(ttl) ~= "number" or ttl ~= ttl or ttl <= 0 or ttl >= math.huge then return false end
         lifetime = math.min(lifetime, ttl)
     end
-    local entry = {kind = kind, wire = wire, key = key, gameAccountID = peer.gameAccountID, id = packet.id,
-        context = packet.context, policy = self.visibilityPolicy, guard = guard, expires = GetTime() + lifetime}
+    local entry = {
+        kind = kind,
+        wire = wire,
+        key = key,
+        gameAccountID = peer.gameAccountID,
+        id = packet.id,
+        context = packet.context,
+        policy = self.visibilityPolicy,
+        guard = guard,
+        expires = GetTime() + lifetime,
+    }
     if kind == "Q" then entry.search = self.query end
     if not CurrentPacket(self, entry) then return false end
     return Queue(self, entry)
-end--[[APR_DIAG]]; Finder.SendBattleNet = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:260:Finder:SendBattleNet#22", Finder.SendBattleNet)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.SendBattleNet =
+    APRTrace("APR-Core/features/group/PartyFinderFriends.lua:260:Finder:SendBattleNet#22", Finder.SendBattleNet)--[[/APR_DIAG]]
 
 function Finder:StartFriendSearch(query)
     if not query or self.query ~= query or not self:IsEnabled() or self:IsRestricted() then return false end
     self:RefreshFriendPeers(true)
     local order = self.friendPeerOrder
     if #order == 0 then return false end
-    self.friendSearchContacts = {query = query, peers = {}}
+    self.friendSearchContacts = { query = query, peers = {} }
     local accepted = false
     local start = (self.friendSearchCursor or 0) % #order
     local count = math.min(SEARCH_LIMIT, #order)
-    local function guard() return SameSearch(self, query) end--[[APR_DIAG]]; guard = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:288:guard#24", guard)--[[/APR_DIAG]]
+    local function guard() return SameSearch(self, query) end--[[APR_DIAG]]
+    guard = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:288:guard#24", guard)--[[/APR_DIAG]]
     for offset = 1, count do
         local key = order[(start + offset - 1) % #order + 1]
         local peer = self.friendPeers[key]
@@ -293,20 +445,31 @@ function Finder:StartFriendSearch(query)
             local data = query
             if variant == 2 then
                 data = {}
-                for field, value in pairs(query) do data[field] = value end
+                for field, value in pairs(query) do
+                    data[field] = value
+                end
                 data.context = query.alternateContext
             end
             if peer.gameAccountID then
                 accepted = self:Send("Q", data, "BNET", key, true, guard, query.expires - GetTime()) or accepted
             else
-                accepted = Queue(self, {kind = "Q", data = data, key = key, id = query.id, search = query,
-                    guard = guard, expires = query.expires}) or accepted
+                accepted = Queue(self, {
+                    kind = "Q",
+                    data = data,
+                    key = key,
+                    id = query.id,
+                    search = query,
+                    guard = guard,
+                    expires = query.expires,
+                }) or accepted
             end
         end
     end
     self.friendSearchCursor = (start + count) % #order
     return accepted
-end--[[APR_DIAG]]; Finder.StartFriendSearch = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:279:Finder:StartFriendSearch#23", Finder.StartFriendSearch)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.StartFriendSearch =
+    APRTrace("APR-Core/features/group/PartyFinderFriends.lua:279:Finder:StartFriendSearch#23", Finder.StartFriendSearch)--[[/APR_DIAG]]
 
 function Finder:CancelFriendSearch(query)
     if not query then return end
@@ -320,9 +483,13 @@ function Finder:CancelFriendSearch(query)
     if not contacts or contacts.query ~= query then return end
     self.friendSearchContacts = nil
     for key, channel in pairs(contacts.peers) do
-        if self:IsFriendSender(key) then self:Send("D", {id = query.id}, channel, key, true, nil, 5) end
+        if self:IsFriendSender(key) then self:Send("D", { id = query.id }, channel, key, true, nil, 5) end
     end
-end--[[APR_DIAG]]; Finder.CancelFriendSearch = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:311:Finder:CancelFriendSearch#25", Finder.CancelFriendSearch)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.CancelFriendSearch = APRTrace(
+    "APR-Core/features/group/PartyFinderFriends.lua:311:Finder:CancelFriendSearch#25",
+    Finder.CancelFriendSearch
+)--[[/APR_DIAG]]
 
 function Finder:CancelFriendPresence(sender, id)
     local remaining = {}
@@ -333,14 +500,20 @@ function Finder:CancelFriendPresence(sender, id)
     end
     self.friendSendQueue = remaining
     if #remaining == 0 then self:CancelTimer("friendSendTimer") end
-end--[[APR_DIAG]]; Finder.CancelFriendPresence = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:327:Finder:CancelFriendPresence#26", Finder.CancelFriendPresence)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.CancelFriendPresence = APRTrace(
+    "APR-Core/features/group/PartyFinderFriends.lua:327:Finder:CancelFriendPresence#26",
+    Finder.CancelFriendPresence
+)--[[/APR_DIAG]]
 
 function Finder:WithdrawFriends()
     if self:IsRestricted() then return false end
     local peers, count, sent = self:RefreshFriendPeers(), 0, false
     local enabled = self:IsEnabled()
     local second = math.floor(GetTime())
-    if self.friendWithdrawSecond ~= second then self.friendWithdrawSecond, self.friendWithdrawCount = second, 0 end
+    if self.friendWithdrawSecond ~= second then
+        self.friendWithdrawSecond, self.friendWithdrawCount = second, 0
+    end
     for key, at in pairs(self.repliedTo or {}) do
         local peer = peers[key]
         if peer and GetTime() - at < 120 and CurrentPeer(self, peer) then
@@ -356,19 +529,45 @@ function Finder:WithdrawFriends()
                 local send = peer.gameAccountID and BattleNetSender() or C_ChatInfo and C_ChatInfo.SendAddonMessage
                 local ok, result = false, nil
                 if send then
-                    if peer.gameAccountID then ok, result = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](send, peer.gameAccountID, PREFIX, "1|W")
-                    else ok, result = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](send, PREFIX, "1|W", "WHISPER", key) end
+                    if peer.gameAccountID then
+                        ok, result = --[[APR_DIAG]]
+                            APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](
+                                send,
+                                peer.gameAccountID,
+                                PREFIX,
+                                "1|W"
+                            )
+                    else
+                        ok, result = --[[APR_DIAG]]
+                            APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](
+                                send,
+                                PREFIX,
+                                "1|W",
+                                "WHISPER",
+                                key
+                            )
+                    end
                 end
                 local accepted = ok and (result == nil or result == true or result == 0)
-                if self.TraceTraffic then self:TraceTraffic("TX", "W", peer.gameAccountID and "BNET" or "WHISPER",
-                    key, accepted and "accepted" or tostring(result or "unavailable"), "1|W") end
+                if self.TraceTraffic then
+                    self:TraceTraffic(
+                        "TX",
+                        "W",
+                        peer.gameAccountID and "BNET" or "WHISPER",
+                        key,
+                        accepted and "accepted" or tostring(result or "unavailable"),
+                        "1|W"
+                    )
+                end
                 if not accepted then break end
                 self.sentCount, sent = (self.sentCount or 0) + 1, true
             end
         end
     end
     return sent
-end--[[APR_DIAG]]; Finder.WithdrawFriends = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:338:Finder:WithdrawFriends#27", Finder.WithdrawFriends)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.WithdrawFriends =
+    APRTrace("APR-Core/features/group/PartyFinderFriends.lua:338:Finder:WithdrawFriends#27", Finder.WithdrawFriends)--[[/APR_DIAG]]
 
 function Finder:StopFriendTransport()
     self:CancelTimer("friendSendTimer")
@@ -376,12 +575,18 @@ function Finder:StopFriendTransport()
     self.friendPeers, self.friendBattleNetPeers, self.friendPeerOrder = nil, nil, nil
     self.friendBattleNetDisconnected, self.friendBattleNetReady = nil, nil
     self.friendPeersDirty = true
-end--[[APR_DIAG]]; Finder.StopFriendTransport = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:373:Finder:StopFriendTransport#28", Finder.StopFriendTransport)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.StopFriendTransport = APRTrace(
+    "APR-Core/features/group/PartyFinderFriends.lua:373:Finder:StopFriendTransport#28",
+    Finder.StopFriendTransport
+)--[[/APR_DIAG]]
 
 function Finder:HandleBattleNetMessage(prefix, wire, distribution, senderID)
     if not Public(prefix) or prefix ~= PREFIX or not self:IsEnabled() then return end
     local second = math.floor(GetTime())
-    if self.friendReceiveSecond ~= second then self.friendReceiveSecond, self.friendReceiveCount = second, 0 end
+    if self.friendReceiveSecond ~= second then
+        self.friendReceiveSecond, self.friendReceiveCount = second, 0
+    end
     self.friendReceiveCount = self.friendReceiveCount + 1
     if self.friendReceiveCount > 64 or not Envelope(wire) or not PositiveInteger(senderID) then return end
     local peer = self:GetBattleNetPeer(senderID)
@@ -389,4 +594,8 @@ function Finder:HandleBattleNetMessage(prefix, wire, distribution, senderID)
     self.friendRoutes = self.friendRoutes or {}
     self.friendRoutes[peer.key] = peer.gameAccountID
     self:HandleAddonMessage(prefix, wire, "BNET", peer.key, peer.gameAccountID)
-end--[[APR_DIAG]]; Finder.HandleBattleNetMessage = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:381:Finder:HandleBattleNetMessage#29", Finder.HandleBattleNetMessage)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.HandleBattleNetMessage = APRTrace(
+    "APR-Core/features/group/PartyFinderFriends.lua:381:Finder:HandleBattleNetMessage#29",
+    Finder.HandleBattleNetMessage
+)--[[/APR_DIAG]]

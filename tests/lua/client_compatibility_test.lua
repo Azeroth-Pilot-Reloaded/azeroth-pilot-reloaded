@@ -1,6 +1,8 @@
 -- Client filtering is hard visibility, regardless of otherwise valid level conditions.
 local L = setmetatable({}, { __index = function(_, key) return key end })
-function LibStub() return { GetLocale = function() return L end } end
+function LibStub()
+    return { GetLocale = function() return L end }
+end
 UNAVAILABLE = "Unavailable"
 DUNGEONS = "Dungeons"
 
@@ -12,7 +14,9 @@ function APR:IsDelveRoute() return false end
 function UnitLevel() return 12 end
 
 function tContains(values, value)
-    for _, entry in ipairs(values) do if entry == value then return true end end
+    for _, entry in ipairs(values) do
+        if entry == value then return true end
+    end
     return false
 end
 
@@ -48,12 +52,12 @@ APR.RouteQuestStepList.shared = { label = "Shared", expansion = APR.EXPANSIONS.C
 APR.RouteQuestStepList.versioned = {
     label = "Versioned",
     expansion = APR.EXPANSIONS.Vanilla,
-    conditions = { Level = 10, InterfaceVersion = 120100 }
+    conditions = { Level = 10, InterfaceVersion = 120100 },
 }
 APR.RouteQuestStepList.exactVersioned = {
     label = "Exact versioned",
     expansion = APR.EXPANSIONS.Vanilla,
-    conditions = { Level = 10, InterfaceVersionExact = 120105 }
+    conditions = { Level = 10, InterfaceVersionExact = 120105 },
 }
 assert(APR:GetGameVersion() == "forever")
 local tabs = APR:GetRouteSelectionExpansions()
@@ -70,7 +74,9 @@ assert(#APR:GetRouteLevelWarnings("forever") == 1, "An unmet recommended level p
 APR.interfaceVersion = 120105
 tabs = APR:GetRouteSelectionExpansions()
 assert(#tabs == #APR.EXPANSION_ORDER_KEYS - 1)
-for _, tab in ipairs(tabs) do assert(tab ~= APR.EXPANSIONS.Forever) end
+for _, tab in ipairs(tabs) do
+    assert(tab ~= APR.EXPANSIONS.Forever)
+end
 assert(APR:GetRouteVisibility("retail") == "visible")
 assert(APR:GetRouteVisibility("forever") == "hidden", "Client mismatch must not become a level lock")
 assert(APR:GetRouteVisibility("saved") == "visible")
@@ -97,7 +103,11 @@ GetMaxLevelForPlayerExpansion = function() return 70 end
 assert(APR:GetPlayerMaxLevel() == 70)
 C_PetBattles = { IsInBattle = function() return true end }
 assert(APR:IsPetBattleActive())
-C_UnitAuras = { GetPlayerAuraBySpellID = function(id) if id == 1232454 then return {} end end }
+C_UnitAuras = {
+    GetPlayerAuraBySpellID = function(id)
+        if id == 1232454 then return {} end
+    end,
+}
 assert(APR:IsRemixCharacter())
 
 -- Saved route client metadata survives the existing import path.
@@ -112,9 +122,9 @@ APR.PlayerID, APRData.player, APRCustomPath = "player", {}, { player = {} }
 function APR:GetPlayerParentMapID() return nil end
 tinsert = table.insert
 APR.RouteQuestStepList.forever.conditions.Level = 10
-APR.RouteQuestStepList.forever.prefab = {leveling = 1}
+APR.RouteQuestStepList.forever.prefab = { leveling = 1 }
 APR.RouteQuestStepList.retail.expansion = APR.EXPANSIONS.TheBurningCrusade
-APR.RouteQuestStepList.retail.prefab = {leveling = 1}
+APR.RouteQuestStepList.retail.prefab = { leveling = 1 }
 dofile("APR-Core/config/Config_Route_Prefabs.lua")
 local selected
 function APR.routeconfig:BuildLevelingPrefab(expansion) selected = expansion end

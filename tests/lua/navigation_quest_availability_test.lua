@@ -30,4 +30,6 @@ assert(env.isQuestAvailable(84956, acceptance) == nil, "Another quest detail is 
 mode = "gossip"
 C_GossipInfo.GetAvailableQuests = function() error("Client data restricted") end
 assert(env.isQuestAvailable(84956, acceptance) == nil)
-print("Quest availability adapter: current server offers, NPC identity, greetings, details, closed UI and restricted APIs passed")
+print(
+    "Quest availability adapter: current server offers, NPC identity, greetings, details, closed UI and restricted APIs passed"
+)

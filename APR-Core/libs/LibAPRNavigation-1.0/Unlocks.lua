@@ -24,8 +24,13 @@ end
 local function Plans(node)
     if not node then return {} end
     if not node.children then
-        if node.unknown or node.negated or (node.key ~= "quest" and node.key ~= "questAccount"
-            and node.key ~= "questActive") then return {} end
+        if
+            node.unknown
+            or node.negated
+            or (node.key ~= "quest" and node.key ~= "questAccount" and node.key ~= "questActive")
+        then
+            return {}
+        end
         return { { { key = node.key, questID = node.value } } }
     end
     local plans = node.key == "all" and { {} } or {}
@@ -62,18 +67,30 @@ function Instance:GetQuestUnlockPlans(blockers)
     for _, edge in ipairs(blockers or {}) do
         if edge.blockedRequirements and not edge.blockedActions then
             local character = {}
-            for key, value in pairs(self.env.getCharacter and self.env.getCharacter() or {}) do character[key] = value end
+            for key, value in pairs(self.env.getCharacter and self.env.getCharacter() or {}) do
+                character[key] = value
+            end
             character.mapID = edge.from and edge.from.uiMapID
             local failure = self:GetRequirementFailures(edge.blockedRequirements, character)
             for _, goals in ipairs(Plans(failure)) do
                 local possible = #goals > 0
                 for _, goal in ipairs(goals) do
-                    if goal.key == "questActive" and self.env.isQuestCompleted
-                        and self.env.isQuestCompleted(goal.questID) == true then possible = false end
+                    if
+                        goal.key == "questActive"
+                        and self.env.isQuestCompleted
+                        and self.env.isQuestCompleted(goal.questID) == true
+                    then
+                        possible = false
+                    end
                 end
                 if possible then
-                    result[#result + 1] = { edgeID = edge.id, instruction = edge.instruction,
-                        requirements = edge.blockedRequirements, departureMapID = character.mapID, goals = goals }
+                    result[#result + 1] = {
+                        edgeID = edge.id,
+                        instruction = edge.instruction,
+                        requirements = edge.blockedRequirements,
+                        departureMapID = character.mapID,
+                        goals = goals,
+                    }
                 end
             end
         end

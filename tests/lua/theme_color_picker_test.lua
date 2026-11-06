@@ -9,10 +9,12 @@ dofile("APR-Core/ui/panels/OptionsPanel.lua")
 
 strmatch = string.match
 table.wipe = wipe
-function geterrorhandler() return function(err) error(err) end end
+function geterrorhandler()
+    return function(err) error(err) end
+end
 local originalXpcall = xpcall
 function xpcall(fn, handler, ...)
-    local args = {...}
+    local args = { ... }
     return originalXpcall(function() return fn(unpack(args)) end, handler)
 end
 LibStub = nil
@@ -23,7 +25,7 @@ ColorPickerFrame = CreateFrame("Frame", nil, UIParent)
 function ColorPickerFrame:IsVisible() return self:IsShown() end
 function ColorPickerFrame:SetupColorPickerAndShow(info)
     self.info = info
-    self.rgb = {info.r, info.g, info.b}
+    self.rgb = { info.r, info.g, info.b }
     self:Show()
 end
 function ColorPickerFrame:GetColorRGB() return unpack(self.rgb) end
@@ -32,23 +34,35 @@ dofile("APR-Core/libs/AceGUI-3.0/widgets/AceGUIWidget-ColorPicker.lua")
 
 local editor, panel, profile = APR.ThemeCustomization, APR.OptionsPanel, APR.settings.profile
 profile.uiTheme = "modern"
-profile.uiThemeCustomization = {customColor = true, color = {0, 176 / 255, 150 / 255, 1}, rounded = true, radius = 8}
+profile.uiThemeCustomization =
+    { customColor = true, color = { 0, 176 / 255, 150 / 255, 1 }, rounded = true, radius = 8 }
 local options = editor:GetOptions()
 panel.actionButtons, panel.footerButtons = {}, {}
 panel.footer = CreateFrame("Frame", nil, UIParent)
-panel.view = {app = "APR/Workspace/Options/appearance/theme"}
+panel.view = { app = "APR/Workspace/Options/appearance/theme" }
 local selectedTheme
-panel.host = {children = {{GetUserData = function(_, key) if key == "path" then return {"uiSkin"} end end,
-    SetValue = function(_, value) selectedTheme = value end}}}
-panel:SetFooterActions({{option = options.themeDiscard}, {option = options.themeApply}})
+panel.host = {
+    children = {
+        {
+            GetUserData = function(_, key)
+                if key == "path" then return { "uiSkin" } end
+            end,
+            SetValue = function(_, value) selectedTheme = value end,
+        },
+    },
+}
+panel:SetFooterActions({ { option = options.themeDiscard }, { option = options.themeApply } })
 local cancel, apply = panel.footerButtons[1], panel.footerButtons[2]
 local registry = LibStub:NewLibrary("AceConfigRegistry-3.0", 1)
 local notifications = 0
-function registry:NotifyChange(app) assert(app == panel.view.app); notifications = notifications + 1 end
+function registry:NotifyChange(app)
+    assert(app == panel.view.app)
+    notifications = notifications + 1
+end
 assert(not apply:IsEnabled() and not cancel:IsEnabled())
 
 function UnitClass() return "Mage", "MAGE" end
-RAID_CLASS_COLORS = {MAGE = {r = 0.25, g = 0.78, b = 0.92}}
+RAID_CLASS_COLORS = { MAGE = { r = 0.25, g = 0.78, b = 0.92 } }
 local gui = LibStub("AceGUI-3.0")
 editor:InstallPreviewWidget(gui)
 local picker = gui:Create("APRThemeAccent")
@@ -65,82 +79,109 @@ picker:SetCallback("OnValueConfirmed", function(_, _, r, g, b)
 end)
 local liveAccent = APR:GetThemeColor("accent")
 local previews = 0
-local preview = {Refresh = function() previews = previews + 1 end}
+local preview = { Refresh = function() previews = previews + 1 end }
 editor.previews[preview] = true
 picker.frame.scripts.OnClick(picker.frame)
 local frames = env.frames()
-ColorPickerFrame.rgb = {0.8, 0.2, 0.4}
+ColorPickerFrame.rgb = { 0.8, 0.2, 0.4 }
 ColorPickerFrame.info.swatchFunc()
-assert(editor:IsDirty() and apply:IsEnabled() and cancel:IsEnabled(),
-    "Changing only the accent must enable the existing Apply/Cancel buttons immediately")
+assert(
+    editor:IsDirty() and apply:IsEnabled() and cancel:IsEnabled(),
+    "Changing only the accent must enable the existing Apply/Cancel buttons immediately"
+)
 assert(selectedTheme == "customModern", "The visible selector follows edits without rebuilding the open picker")
-assert(ColorPickerFrame:IsShown() and env.frames() == frames and previews == 1 and notifications == 0,
-    "The preview/actions refresh without releasing the picker or rebuilding the settings")
-assert(profile.uiThemeCustomization.color[1] == 0 and APR:GetThemeColor("accent")[1] == liveAccent[1],
-    "Choosing a color remains an isolated draft until Apply")
+assert(
+    ColorPickerFrame:IsShown() and env.frames() == frames and previews == 1 and notifications == 0,
+    "The preview/actions refresh without releasing the picker or rebuilding the settings"
+)
+assert(
+    profile.uiThemeCustomization.color[1] == 0 and APR:GetThemeColor("accent")[1] == liveAccent[1],
+    "Choosing a color remains an isolated draft until Apply"
+)
 
 -- Modern pickers may suppress confirmation when the live RGB already matches the chosen RGB.
 ColorPickerFrame:Hide()
 ColorPickerFrame.info.swatchFunc()
 if ColorPickerFrame.info.opacityFunc then ColorPickerFrame.info.opacityFunc() end
-assert(confirmed == 0 and changed == 1 and apply:IsEnabled(),
-    "Apply cannot depend on AceGUI emitting an unchanged OnValueConfirmed")
+assert(
+    confirmed == 0 and changed == 1 and apply:IsEnabled(),
+    "Apply cannot depend on AceGUI emitting an unchanged OnValueConfirmed"
+)
 apply.scripts.OnClick(apply)
 assert(profile.uiThemeCustomization.color[1] == 0.8 and not apply:IsEnabled() and not cancel:IsEnabled())
 
 picker:SetColor(options.themeAccent.get())
 picker.frame.scripts.OnClick(picker.frame)
-ColorPickerFrame.rgb = {0.1, 0.3, 0.5}
+ColorPickerFrame.rgb = { 0.1, 0.3, 0.5 }
 ColorPickerFrame.info.swatchFunc()
 ColorPickerFrame:Hide()
 ColorPickerFrame.info.cancelFunc()
-assert(not editor:IsDirty() and not apply:IsEnabled() and not cancel:IsEnabled(),
-    "Cancelling the native palette restores the prior draft and disables the actions again")
+assert(
+    not editor:IsDirty() and not apply:IsEnabled() and not cancel:IsEnabled(),
+    "Cancelling the native palette restores the prior draft and disables the actions again"
+)
 
 picker.frame.scripts.OnClick(picker.frame)
 env.setCombat(true)
-ColorPickerFrame.rgb = {0.3, 0.5, 0.7}
+ColorPickerFrame.rgb = { 0.3, 0.5, 0.7 }
 ColorPickerFrame.info.swatchFunc()
-assert(editor:IsDirty() and not apply:IsEnabled() and cancel:IsEnabled(), "Live color edits retain the combat restriction")
+assert(
+    editor:IsDirty() and not apply:IsEnabled() and cancel:IsEnabled(),
+    "Live color edits retain the combat restriction"
+)
 ColorPickerFrame:Hide()
 env.setCombat(false)
 panel:RefreshActions()
 assert(apply:IsEnabled())
 cancel.scripts.OnClick(cancel)
-assert(not editor:IsDirty() and not apply:IsEnabled() and profile.uiThemeCustomization.color[1] == 0.8,
-    "Footer Cancel discards the color edit without changing the saved accent")
-print("Theme color picker: live Apply/Cancel, missing confirmation, no rebuild, draft isolation, native cancellation and combat passed")
+assert(
+    not editor:IsDirty() and not apply:IsEnabled() and profile.uiThemeCustomization.color[1] == 0.8,
+    "Footer Cancel discards the color edit without changing the saved accent"
+)
+print(
+    "Theme color picker: live Apply/Cancel, missing confirmation, no rebuild, draft isolation, native cancellation and combat passed"
+)
 
 -- Both color choices work in the same row; class selection and canceled palette edits stay drafts.
 editor:SetTheme("wowModern")
 editor:Apply()
 picker:SetColor(options.themeAccent.get())
 picker.classButton.scripts.OnClick(picker.classButton)
-assert(editor:GetDraft().theme == "customModern" and editor:GetDraft().accentClassColor
-    and picker.classMark:IsShown() and not picker.themeMark:IsShown())
+assert(
+    editor:GetDraft().theme == "customModern"
+        and editor:GetDraft().accentClassColor
+        and picker.classMark:IsShown()
+        and not picker.themeMark:IsShown()
+)
 assert(profile.uiTheme == "wowModern" and not profile.uiThemeCustomization.accentClassColor)
 picker.frame.scripts.OnClick(picker.frame)
 assert(not editor:GetDraft().accentClassColor and picker.themeMark:IsShown())
 ColorPickerFrame:Hide()
 ColorPickerFrame.info.cancelFunc()
-assert(editor:GetDraft().accentClassColor and picker.classMark:IsShown(),
-    "Cancel restores the previous color source even if RGB was unchanged")
+assert(
+    editor:GetDraft().accentClassColor and picker.classMark:IsShown(),
+    "Cancel restores the previous color source even if RGB was unchanged"
+)
 editor:Discard()
 picker:SetColor(options.themeAccent.get())
 picker.frame.scripts.OnClick(picker.frame)
-ColorPickerFrame.rgb = {0.3, 0.8, 0.6}
+ColorPickerFrame.rgb = { 0.3, 0.8, 0.6 }
 ColorPickerFrame.info.swatchFunc()
 assert(editor:GetDraft().theme == "customModern")
 ColorPickerFrame:Hide()
 ColorPickerFrame.info.cancelFunc()
-assert(editor:GetDraft().theme == "wowModern" and not editor:IsDirty(),
-    "Cancel restores the preset identity as well as its RGB")
+assert(
+    editor:GetDraft().theme == "wowModern" and not editor:IsDirty(),
+    "Cancel restores the preset identity as well as its RGB"
+)
 assert(not options.themeCustomColor and options.themeAccent.dialogControl == "APRThemeAccent")
 dofile("APR-Core/ui/foundations/SettingsRows.lua")
 picker:SetUserData("option", options.themeAccent)
 APR.SettingsRows:Apply(picker)
 picker:SetWidth(720)
-assert(picker.colorSwatch.point[1] == "TOPRIGHT" and picker.classButton.point[2] == picker.colorSwatch,
-    "Both swatches remain together at the right edge of the settings row")
+assert(
+    picker.colorSwatch.point[1] == "TOPRIGHT" and picker.classButton.point[2] == picker.colorSwatch,
+    "Both swatches remain together at the right edge of the settings row"
+)
 gui:Release(picker)
 assert(not editor.accents[picker], "Released custom controls leave the refresh registry")

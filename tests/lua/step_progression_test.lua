@@ -1,7 +1,9 @@
 -- Exercise the real skip, QpartPart completion and update dispatcher without WoW.
 local function noop() end
 local L = { TEST_HINT = "[COLOR:#00ff00]Localized hint" }
-function LibStub() return { GetLocale = function() return L end } end
+function LibStub()
+    return { GetLocale = function() return L end }
+end
 
 function UnitIsDeadOrGhost() return false end
 
@@ -13,12 +15,14 @@ C_Timer = {
         local timer = { callback = callback, Cancel = function(self) self.cancelled = true end }
         timers[#timers + 1] = timer
         return timer
-    end
+    end,
 }
 C_QuestLog = { IsQuestFlaggedCompleted = function(id) return id == 1 end }
 APRData = { player = { route = 1 } }
 local route = { { Note = "Skip me" } }
-for _ = 1, 1250 do route[#route + 1] = { QpartPart = { [1] = { 1 } } } end
+for _ = 1, 1250 do
+    route[#route + 1] = { QpartPart = { [1] = { 1 } } }
+end
 route[#route + 1] = { QpartPart = { [2] = { 1 } } }
 APR = {
     StartPerformanceSample = noop,
@@ -73,10 +77,14 @@ APR.NavigationData = {
     ReleaseWaypoints = noop,
     RefreshWaypoints = function(self)
         assert(self == APR.NavigationData)
-        assert(not APR.stepUpdateRunning and not APR.stepUpdatePending and not APR.stepUpdateTimer,
-            "External waypoint publication waits for the complete step-update batch")
-        assert(APR:IsStepContextCurrent(APR.lastRenderedStepContext),
-            "External waypoints reuse the settled presentation context")
+        assert(
+            not APR.stepUpdateRunning and not APR.stepUpdatePending and not APR.stepUpdateTimer,
+            "External waypoint publication waits for the complete step-update batch"
+        )
+        assert(
+            APR:IsStepContextCurrent(APR.lastRenderedStepContext),
+            "External waypoints reuse the settled presentation context"
+        )
         waypointRefreshes = waypointRefreshes + 1
         waypointTargets[waypointRefreshes] = APRData.player[APR.ActiveRoute]
     end,
@@ -86,7 +94,10 @@ function APR:SendMessage(message)
     mapUpdates = mapUpdates + 1
 end
 APR:SkipQuestStep()
-assert(APRData.player.route > 2 and APRData.player.route < #route, "A long skip yields before processing the whole route")
+assert(
+    APRData.player.route > 2 and APRData.player.route < #route,
+    "A long skip yields before processing the whole route"
+)
 assert(mapUpdates == 0, "Intermediate completed steps do not rebuild map pins")
 assert(waypointRefreshes == 0, "Completed objectives cannot briefly publish external waypoints")
 assert(not APR.lastRenderedStepContext, "Pending catch-up is not reusable by navigation")
@@ -108,8 +119,10 @@ end
 assert(not APR.stepUpdateRunning and not APR.stepUpdateTimer, "Settled progression leaves no worker active")
 assert(mapUpdates == 1, "1250 completed objectives publish the map only at the final playable step")
 assert(APR:IsStepContextCurrent(APR.lastRenderedStepContext), "Only the settled step can be reused by navigation")
-assert(waypointRefreshes == 1 and waypointTargets[1] == #route,
-    "The final playable objective publishes its external waypoint exactly once")
+assert(
+    waypointRefreshes == 1 and waypointTargets[1] == #route,
+    "The final playable objective publishes its external waypoint exactly once"
+)
 
 -- A manual navigation during a pending batch supersedes the old continuation.
 APRData.player.route = 2
@@ -131,11 +144,15 @@ assert(not APR.lastRenderedStepContext, "Failed presentations cannot suppress na
 assert(waypointRefreshes == refreshesBeforeError, "A failed presentation cannot publish an external waypoint")
 APR.ResetMissingQuests = reset
 APR:UpdateStep()
-assert(waypointRefreshes == refreshesBeforeError + 1,
-    "A recovered presentation resumes external waypoint synchronization")
+assert(
+    waypointRefreshes == refreshesBeforeError + 1,
+    "A recovered presentation resumes external waypoint synchronization"
+)
 APR.NavigationData = nil
 APR:UpdateStep()
-print("Step progression: Note skip + 1250 completed objectives; bounded batches, cancellation and error recovery passed")
+print(
+    "Step progression: Note skip + 1250 completed objectives; bounded batches, cancellation and error recovery passed"
+)
 
 -- Keep the historical Tirisfal regression as a stable fixture: the original
 -- route was replaced by the race-based collection, but this UI bug must stay covered.
@@ -189,7 +206,7 @@ route[14] = {
     Waypoint = 404,
     NonSkippableWaypoint = true,
     ExtraLineText = { "TEST_HINT", "Second hint", "", "Second hint" },
-    ExtraLineText2 = "[COLOR:#ff0000]Final hint"
+    ExtraLineText2 = "[COLOR:#ff0000]Final hint",
 }
 for _, inZone in ipairs({ false, true }) do
     APR.IsInRouteZone = inZone
@@ -205,7 +222,8 @@ refreshHints()
 assert(#hints == 4, "Transient navigation preserves the authored objective and hints")
 route[14] = originalStep
 print(
-"Extra line text: historical Tirisfal step 14 fixture, navigation refresh, lists, legacy fields, colors and visibility passed")
+    "Extra line text: historical Tirisfal step 14 fixture, navigation refresh, lists, legacy fields, colors and visibility passed"
+)
 
 -- Global War Mode reminder coverage lives in xp_overlay_persistence_test.lua.
 
@@ -232,7 +250,9 @@ function APR:SuggestNextRoutes(key, callback)
     callback()
 end
 APR:UpdateStep()
-assert(pathChanges == 1 and delayedChanges == 0 and #APRCustomPath.player == 0,
-    "Route completion publishes exactly one path change without a delayed reset")
+assert(
+    pathChanges == 1 and delayedChanges == 0 and #APRCustomPath.player == 0,
+    "Route completion publishes exactly one path change without a delayed reset"
+)
 finalize()
 assert(pathChanges == 1, "A stale completion callback cannot reset the successor route")

@@ -1,6 +1,8 @@
 local function noop() end
 local L = { RENOWN = "Renown" }
-function LibStub() return { GetLocale = function() return L end } end
+function LibStub()
+    return { GetLocale = function() return L end }
+end
 
 UNKNOWN, REPUTATION, FACTION, LEVEL, RANK = "Unknown", "Reputation", "Faction", "Level", "Rank"
 function UnitSex() return 2 end
@@ -20,7 +22,7 @@ local faction = {
     reaction = 5,
     currentStanding = 4500,
     currentReactionThreshold = 3000,
-    nextReactionThreshold = 9000
+    nextReactionThreshold = 9000,
 }
 C_Reputation = { GetFactionDataByID = function() return faction end }
 local requirement = { factionID = 76, level = 6, type = "standard" }
@@ -38,7 +40,7 @@ assert(current == 1000 and total == 3000, "Negative standings have a positive lo
 C_MajorFactions = {
     GetMajorFactionData = function()
         return { name = "Major", renownLevel = 4, renownReputationEarned = 1250, renownLevelThreshold = 2500 }
-    end
+    end,
 }
 local renown = { factionID = 100, level = 5, type = "renown" }
 current, total = APR:GetReputationBarProgress(renown)
@@ -51,7 +53,7 @@ C_GossipInfo = {
             reaction = "Buddy",
             standing = 500,
             reactionThreshold = 200,
-            nextThreshold = 800
+            nextThreshold = 800,
         }
     end,
     GetFriendshipReputationRanks = function() return { currentLevel = 2, maxLevel = 6 } end,
@@ -71,13 +73,22 @@ assert(APR:GetReputationBarProgress(requirement) == nil)
 local methods, bars = {}, 0
 function methods:GetFrameLevel() return self.level or 1 end
 local function object(parent)
-    return setmetatable({ parent = parent, shown = true, scripts = {}, height = 12 },
-        {
-            __index = function(_, key)
-                return methods[key] or ((key:match("^Set") or key:match("^Get") or key:match("^Clear")
-                    or key:match("^Register") or key:match("^Enable")) and noop or nil)
-            end
-        })
+    return setmetatable({ parent = parent, shown = true, scripts = {}, height = 12 }, {
+        __index = function(_, key)
+            return methods[key]
+                or (
+                    (
+                            key:match("^Set")
+                            or key:match("^Get")
+                            or key:match("^Clear")
+                            or key:match("^Register")
+                            or key:match("^Enable")
+                        )
+                        and noop
+                    or nil
+                )
+        end,
+    })
 end
 function methods:SetScript(event, fn) self.scripts[event] = fn end
 
@@ -99,7 +110,9 @@ function methods:Hide() self.shown = false end
 
 function methods:IsShown() return self.shown and (not self.parent or self.parent:IsShown()) end
 
-function methods:SetMinMaxValues(minimum, maximum) self.minimum, self.maximum = minimum, maximum end
+function methods:SetMinMaxValues(minimum, maximum)
+    self.minimum, self.maximum = minimum, maximum
+end
 
 function methods:SetValue(value) self.value = value end
 
@@ -145,7 +158,9 @@ container.font.onApplied(container.font)
 assert(container:GetHeight() == 65, "Font updates preserve space for the bar")
 APR.currentStep:RefreshTextLayout()
 assert(container:GetHeight() == 65)
-for _ = 1, 20 do APR.currentStep:AddReputationStep(friend) end
+for _ = 1, 20 do
+    APR.currentStep:AddReputationStep(friend)
+end
 assert(bars == 1 and APR.currentStep.reputationBar == bar and bar.value == 300)
 CurrentStepFrame_StepHolder:Hide()
 assert(not bar:IsShown(), "Collapsing the step hides the bar through its parent")

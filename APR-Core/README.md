@@ -101,30 +101,30 @@ the authored route changes, rather than copied on every map refresh.
 
 ### Initialization and configuration
 
-| File                                                               | Responsibility                                                               |
-| ------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
-| [core/Core.lua](core/Core.lua)                                     | AceAddon object, identity, saves, and module initialization.                 |
-| [core/Event.lua](core/Event.lua)                                   | Events, notification grouping, and deferred callbacks.                       |
-| [features/questing/NPCInteraction.lua](features/questing/NPCInteraction.lua) | NPC interaction lifecycle, consecutive steps, quest acceptance/rewards and merchant actions. |
-| [core/Commands.lua](core/Commands.lua)                             | Routing of `/apr` commands to their modules.                                 |
-| [core/Performance.lua](core/Performance.lua)                       | Voluntary capture: aggregates, histograms, slow calls, and bounded counters. |
-| [core/VersionCheck.lua](core/VersionCheck.lua)                     | Client/addon versions and group announcements without web requests.          |
-| [core/ErrorLog.lua](core/ErrorLog.lua)                             | Session-only APR error references, deduplication, native handler chaining and BugGrabber integration; bounded to 100 entries. |
-| [config/Config.lua](config/Config.lua)                             | AceDB defaults, AceConfig options, profiles, and minimap button.             |
-| [config/WorkspaceOptions.lua](config/WorkspaceOptions.lua)         | Settings categories and task-specific subpages; retains authoritative callbacks and constraints. |
-| [config/AboutData.lua](config/AboutData.lua)                       | Verified credits and live counts/authors from loaded route definitions; never builds effective steps. |
-| [config/Config_Route.lua](config/Config_Route.lua)                 | Route/catalog notifications and AceConfig entry to the single library.       |
-| [config/Config_Route_Prefabs.lua](config/Config_Route_Prefabs.lua) | Predefined routes built from metadata and conditions.                        |
-| [config/LevelProfiles.lua](config/LevelProfiles.lua)               | XP bonus data and threshold profiles; no rendering.                          |
+| File                                                                         | Responsibility                                                                                                                |
+| ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| [core/Core.lua](core/Core.lua)                                               | AceAddon object, identity, saves, and module initialization.                                                                  |
+| [core/Event.lua](core/Event.lua)                                             | Events, notification grouping, and deferred callbacks.                                                                        |
+| [features/questing/NPCInteraction.lua](features/questing/NPCInteraction.lua) | NPC interaction lifecycle, consecutive steps, quest acceptance/rewards and merchant actions.                                  |
+| [core/Commands.lua](core/Commands.lua)                                       | Routing of `/apr` commands to their modules.                                                                                  |
+| [core/Performance.lua](core/Performance.lua)                                 | Voluntary capture: aggregates, histograms, slow calls, and bounded counters.                                                  |
+| [core/VersionCheck.lua](core/VersionCheck.lua)                               | Client/addon versions and group announcements without web requests.                                                           |
+| [core/ErrorLog.lua](core/ErrorLog.lua)                                       | Session-only APR error references, deduplication, native handler chaining and BugGrabber integration; bounded to 100 entries. |
+| [config/Config.lua](config/Config.lua)                                       | AceDB defaults, AceConfig options, profiles, and minimap button.                                                              |
+| [config/WorkspaceOptions.lua](config/WorkspaceOptions.lua)                   | Settings categories and task-specific subpages; retains authoritative callbacks and constraints.                              |
+| [config/AboutData.lua](config/AboutData.lua)                                 | Verified credits and live counts/authors from loaded route definitions; never builds effective steps.                         |
+| [config/Config_Route.lua](config/Config_Route.lua)                           | Route/catalog notifications and AceConfig entry to the single library.                                                        |
+| [config/Config_Route_Prefabs.lua](config/Config_Route_Prefabs.lua)           | Predefined routes built from metadata and conditions.                                                                         |
+| [config/LevelProfiles.lua](config/LevelProfiles.lua)                         | XP bonus data and threshold profiles; no rendering.                                                                           |
 
 ### Models
 
-| File                                                                 | Responsibility                                              |
-| -------------------------------------------------------------------- | ----------------------------------------------------------- |
-| [data/models/Classes.lua](data/models/Classes.lua)                   | Class/specialization IDs and locale-independent route keys. |
-| [data/models/Enums.lua](data/models/Enums.lua)                       | Shared clients, categories, expansions, and orders.         |
-| [data/models/Quest.lua](data/models/Quest.lua)                       | Priority of primary actions and quest/dialogue rules.       |
-| [integrations/NavigationEntrances.lua](integrations/NavigationEntrances.lua) | Compatibility view of library-owned instance entrances.    |
+| File                                                                         | Responsibility                                              |
+| ---------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| [data/models/Classes.lua](data/models/Classes.lua)                           | Class/specialization IDs and locale-independent route keys. |
+| [data/models/Enums.lua](data/models/Enums.lua)                               | Shared clients, categories, expansions, and orders.         |
+| [data/models/Quest.lua](data/models/Quest.lua)                               | Priority of primary actions and quest/dialogue rules.       |
+| [integrations/NavigationEntrances.lua](integrations/NavigationEntrances.lua) | Compatibility view of library-owned instance entrances.     |
 
 ### Features and route engine
 
@@ -158,49 +158,49 @@ the authored route changes, rather than copied on every map refresh.
 
 ### Integrations
 
-| File                                                                         | External boundary                                                               |
-| ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| [features/navigation/NavigationTaxi.lua](features/navigation/NavigationTaxi.lua)                       | `LibTaxiData_API` facade, capability control, and login diagnostics.            |
-| [features/navigation/Navigation.lua](features/navigation/Navigation.lua)                   | Transient guidance queue, incremental planning and independent arrival checks.          |
-| [libs/LibAPRNavigation-1.0/Search.lua](libs/LibAPRNavigation-1.0/Search.lua)             | Incremental shortest-time search with cumulative money and consumable budgets.                        |
-| [integrations/SkinRegistry.lua](integrations/SkinRegistry.lua)               | Low-level APR control registry, single provider, and out-of-combat application. |
-| [integrations/ElvUISkin.lua](integrations/ElvUISkin.lua)                     | ElvUI appearance and anchored panel backgrounds.                                |
-| [integrations/EllesmereUISkin.lua](integrations/EllesmereUISkin.lua)         | Public EUI API, updated theme fonts and colors.                                 |
-| [integrations/EllesmereUISettings.lua](integrations/EllesmereUISettings.lua) | Private AceGUI pool: the APR skin does not propagate to other addons.           |
+| File                                                                             | External boundary                                                               |
+| -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| [features/navigation/NavigationTaxi.lua](features/navigation/NavigationTaxi.lua) | `LibTaxiData_API` facade, capability control, and login diagnostics.            |
+| [features/navigation/Navigation.lua](features/navigation/Navigation.lua)         | Transient guidance queue, incremental planning and independent arrival checks.  |
+| [libs/LibAPRNavigation-1.0/Search.lua](libs/LibAPRNavigation-1.0/Search.lua)     | Incremental shortest-time search with cumulative money and consumable budgets.  |
+| [integrations/SkinRegistry.lua](integrations/SkinRegistry.lua)                   | Low-level APR control registry, single provider, and out-of-combat application. |
+| [integrations/ElvUISkin.lua](integrations/ElvUISkin.lua)                         | ElvUI appearance and anchored panel backgrounds.                                |
+| [integrations/EllesmereUISkin.lua](integrations/EllesmereUISkin.lua)             | Public EUI API, updated theme fonts and colors.                                 |
+| [integrations/EllesmereUISettings.lua](integrations/EllesmereUISettings.lua)     | Private AceGUI pool: the APR skin does not propagate to other addons.           |
 
 ### Interface
 
-| File                                                                         | Responsibility and contract                                                       |
-| ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| [ui/foundations/TextStyles.lua](ui/foundations/TextStyles.lua)               | Style inheritance, semantic colors, and low-level text/tooltip registry.          |
-| [ui/foundations/StatusBars.lua](ui/foundations/StatusBars.lua)               | Native bars; APR owns the colors, skins provide the texture.                      |
-| [ui/foundations/Themes.lua](ui/foundations/Themes.lua)                       | WoW surfaces and live skin colors for custom icons, highlights and selections.    |
-| [ui/foundations/Widgets.lua](ui/foundations/Widgets.lua)                     | Persistent windows, buttons, search, menus, tooltips, and shared copyable text.   |
+| File                                                                         | Responsibility and contract                                                                                       |
+| ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| [ui/foundations/TextStyles.lua](ui/foundations/TextStyles.lua)               | Style inheritance, semantic colors, and low-level text/tooltip registry.                                          |
+| [ui/foundations/StatusBars.lua](ui/foundations/StatusBars.lua)               | Native bars; APR owns the colors, skins provide the texture.                                                      |
+| [ui/foundations/Themes.lua](ui/foundations/Themes.lua)                       | WoW surfaces and live skin colors for custom icons, highlights and selections.                                    |
+| [ui/foundations/Widgets.lua](ui/foundations/Widgets.lua)                     | Persistent windows, buttons, search, menus, tooltips, and shared copyable text.                                   |
 | [ui/foundations/SettingsWidgets.lua](ui/foundations/SettingsWidgets.lua)     | Embedded AceConfig host and isolated WoW/ElvUI controls; delegates the EllesmereUI appearance to its integration. |
-| [ui/foundations/SettingsRows.lua](ui/foundations/SettingsRows.lua)           | Form rows with wrapping labels/descriptions and aligned controls; preserves AceGUI values and callbacks. |
-| [ui/foundations/VirtualList.lua](ui/foundations/VirtualList.lua)             | Height indexing and recycling of only visible lines.                              |
-| [ui/foundations/SelectionDialog.lua](ui/foundations/SelectionDialog.lua)     | Skinnable choices and confirmations, bounded scrolling and shared cancellation.   |
-| [ui/route/CurrentStep.lua](ui/route/CurrentStep.lua)                         | Window, bars, secure buttons, and delayed changes after combat.                   |
-| [ui/route/CurrentStepRows.lua](ui/route/CurrentStepRows.lua)                 | Transactions, matching by key, recycling, and line layout.                        |
-| [ui/route/CurrentStepImagePreview.lua](ui/route/CurrentStepImagePreview.lua) | Thumbnails and reusable windows; zoom, movement, and real ratio.                  |
-| [ui/route/FillersFrame.lua](ui/route/FillersFrame.lua)                       | Optional objectives, content transactions, and panel anchoring.                   |
-| [ui/route/QuestOrderList.lua](ui/route/QuestOrderList.lua)                   | Batch-built templates, atomic publication, and only visible lines instantiated.   |
-| [ui/route/QuestOrderListRows.lua](ui/route/QuestOrderListRows.lua)           | Presentation of future actions without executing business logic.                  |
-| [ui/route/QuestOrderListSupport.lua](ui/route/QuestOrderListSupport.lua)     | Shared template measurement, reusable rows, coroutine, reputation, and scrolling. |
-| [ui/route/QuestionPopUp.lua](ui/route/QuestionPopUp.lua)                     | Confirmations, text inputs, and selections with refreshed callbacks.              |
-| [ui/route/RouteSelection.lua](ui/route/RouteSelection.lua)                   | Invitation to choose a route when the path is unusable.                           |
-| [ui/route/RouteBrowser.lua](ui/route/RouteBrowser.lua)                       | Prefabs first, expansions/community, filters, favorites and ordered path.         |
-| [ui/route/RouteBrowserRows.lua](ui/route/RouteBrowserRows.lua) | Compact catalog/path rows, metadata tooltips and recycled actions. |
-| [ui/panels/Coordinates.lua](ui/panels/Coordinates.lua)                       | Coordinates for authors and saved window position.                                |
-| [ui/panels/Workspace.lua](ui/panels/Workspace.lua)                           | Shared lazy window, top-level navigation and optional Perf tab; owns geometry and Escape handling. |
-| [ui/panels/OptionsPanel.lua](ui/panels/OptionsPanel.lua)                     | Scrollable settings, category navigation and remembered subpages backed by AceConfig. |
-| [ui/panels/ReleaseNotesPanel.lua](ui/panels/ReleaseNotesPanel.lua)           | Release preferences, selectable GitHub URL and independently scrolling Markdown notes. |
-| [ui/panels/AboutPanel.lua](ui/panels/AboutPanel.lua)                         | Top links, installation facts, help, live command reference and contributors in reusable text rows. |
-| [ui/panels/ChangeLog.lua](ui/panels/ChangeLog.lua)                           | Formats version notes and opens the same Options category at startup or on request. |
-| [ui/panels/LayoutEditor.lua](ui/panels/LayoutEditor.lua)                     | Independent outlines; cancel without mutation, save LibWindow out of combat.      |
-| [ui/panels/StatusReport.lua](ui/panels/StatusReport.lua)                       | Complete status overview, bounded error table, shared identity masking and independent formatted exports. |
-| [ui/panels/PerformanceDashboard.lua](ui/panels/PerformanceDashboard.lua)     | Peak graph, compact sortable call table, slow calls, counters, and export. |
-| [ui/panels/PerformanceResources.lua](ui/panels/PerformanceResources.lua)     | CPU/memory graphs, time-window controls and retained-data summaries. |
+| [ui/foundations/SettingsRows.lua](ui/foundations/SettingsRows.lua)           | Form rows with wrapping labels/descriptions and aligned controls; preserves AceGUI values and callbacks.          |
+| [ui/foundations/VirtualList.lua](ui/foundations/VirtualList.lua)             | Height indexing and recycling of only visible lines.                                                              |
+| [ui/foundations/SelectionDialog.lua](ui/foundations/SelectionDialog.lua)     | Skinnable choices and confirmations, bounded scrolling and shared cancellation.                                   |
+| [ui/route/CurrentStep.lua](ui/route/CurrentStep.lua)                         | Window, bars, secure buttons, and delayed changes after combat.                                                   |
+| [ui/route/CurrentStepRows.lua](ui/route/CurrentStepRows.lua)                 | Transactions, matching by key, recycling, and line layout.                                                        |
+| [ui/route/CurrentStepImagePreview.lua](ui/route/CurrentStepImagePreview.lua) | Thumbnails and reusable windows; zoom, movement, and real ratio.                                                  |
+| [ui/route/FillersFrame.lua](ui/route/FillersFrame.lua)                       | Optional objectives, content transactions, and panel anchoring.                                                   |
+| [ui/route/QuestOrderList.lua](ui/route/QuestOrderList.lua)                   | Batch-built templates, atomic publication, and only visible lines instantiated.                                   |
+| [ui/route/QuestOrderListRows.lua](ui/route/QuestOrderListRows.lua)           | Presentation of future actions without executing business logic.                                                  |
+| [ui/route/QuestOrderListSupport.lua](ui/route/QuestOrderListSupport.lua)     | Shared template measurement, reusable rows, coroutine, reputation, and scrolling.                                 |
+| [ui/route/QuestionPopUp.lua](ui/route/QuestionPopUp.lua)                     | Confirmations, text inputs, and selections with refreshed callbacks.                                              |
+| [ui/route/RouteSelection.lua](ui/route/RouteSelection.lua)                   | Invitation to choose a route when the path is unusable.                                                           |
+| [ui/route/RouteBrowser.lua](ui/route/RouteBrowser.lua)                       | Prefabs first, expansions/community, filters, favorites and ordered path.                                         |
+| [ui/route/RouteBrowserRows.lua](ui/route/RouteBrowserRows.lua)               | Compact catalog/path rows, metadata tooltips and recycled actions.                                                |
+| [ui/panels/Coordinates.lua](ui/panels/Coordinates.lua)                       | Coordinates for authors and saved window position.                                                                |
+| [ui/panels/Workspace.lua](ui/panels/Workspace.lua)                           | Shared lazy window, top-level navigation and optional Perf tab; owns geometry and Escape handling.                |
+| [ui/panels/OptionsPanel.lua](ui/panels/OptionsPanel.lua)                     | Scrollable settings, category navigation and remembered subpages backed by AceConfig.                             |
+| [ui/panels/ReleaseNotesPanel.lua](ui/panels/ReleaseNotesPanel.lua)           | Release preferences, selectable GitHub URL and independently scrolling Markdown notes.                            |
+| [ui/panels/AboutPanel.lua](ui/panels/AboutPanel.lua)                         | Top links, installation facts, help, live command reference and contributors in reusable text rows.               |
+| [ui/panels/ChangeLog.lua](ui/panels/ChangeLog.lua)                           | Formats version notes and opens the same Options category at startup or on request.                               |
+| [ui/panels/LayoutEditor.lua](ui/panels/LayoutEditor.lua)                     | Independent outlines; cancel without mutation, save LibWindow out of combat.                                      |
+| [ui/panels/StatusReport.lua](ui/panels/StatusReport.lua)                     | Complete status overview, bounded error table, shared identity masking and independent formatted exports.         |
+| [ui/panels/PerformanceDashboard.lua](ui/panels/PerformanceDashboard.lua)     | Peak graph, compact sortable call table, slow calls, counters, and export.                                        |
+| [ui/panels/PerformanceResources.lua](ui/panels/PerformanceResources.lua)     | CPU/memory graphs, time-window controls and retained-data summaries.                                              |
 
 ### Shared utilities
 
@@ -222,30 +222,30 @@ the authored route changes, rather than copied on every map refresh.
 | [utils/InstanceUtils.lua](utils/InstanceUtils.lua)             | Instance visibility and character initial preference.                                  |
 | [utils/NavigationUtils.lua](utils/NavigationUtils.lua)         | Player body and normalized taxi discoveries.                                           |
 | [utils/PlayerPositionUtils.lua](utils/PlayerPositionUtils.lua) | Position and axis order at the WoW/APR boundary.                                       |
-| [utils/NavigationZones.lua](utils/NavigationZones.lua)   | Map cache, parent/child relationships, and player zone.                                |
+| [utils/NavigationZones.lua](utils/NavigationZones.lua)         | Map cache, parent/child relationships, and player zone.                                |
 | [utils/BuyMerchantUtils.lua](utils/BuyMerchantUtils.lua)       | Purchased quantities and localized loot messages.                                      |
 | [utils/LootUtils.lua](utils/LootUtils.lua)                     | Collections, remembered bank, and sale value without selling.                          |
 
 ## Dependencies, media, and entry points
 
-| Dependency                          | Usage                                                                           |
-| ----------------------------------- | ------------------------------------------------------------------------------- |
-| LibStub / CallbackHandler           | Internal Ace3/HBD libraries and callbacks.                                      |
-| AceAddon / AceEvent                 | Modules, lifecycle, and route/catalog messages.                                 |
-| AceDB / AceDBOptions                | Profiles and character scope; live object `APR.settings.db`.                    |
-| AceConfig / Registry / Dialog / Cmd | Options; sub-libraries loaded via AceConfig XML.                                |
-| AceGUI                              | Options and converter; recycling and private pool for EUI.                      |
-| AceConsole                          | Registration of `/apr`.                                                         |
-| AceLocale                           | 11 locales, English by default; strings injected at packaging time.             |
-| AceSerializer                       | Serialization of progression for the group.                                     |
-| AceComm / ChatThrottleLib           | Embedded transport bandwidth limiter used by group messages.                    |
-| HereBeDragons / Pins                | Coordinates and map/minimap markers.                                            |
-| APR navigation catalogues                | Directed graph, client-specific crossings and access regions; no external routing engine.            |
-| LibTaxiData                         | External dependency required by `.pkgmeta`, optional in the TOC for load order. |
-| LibDataBroker / LibDBIcon           | Minimap launcher.                                                               |
-| LibSharedMedia                      | Shared fonts and sounds, including bundled APR audio.                            |
-| LibWindow                           | Window positions and scales.                                                    |
-| ElvUI / EllesmereUI                 | Optional; absence of both keeps native rendering.                               |
+| Dependency                          | Usage                                                                                     |
+| ----------------------------------- | ----------------------------------------------------------------------------------------- |
+| LibStub / CallbackHandler           | Internal Ace3/HBD libraries and callbacks.                                                |
+| AceAddon / AceEvent                 | Modules, lifecycle, and route/catalog messages.                                           |
+| AceDB / AceDBOptions                | Profiles and character scope; live object `APR.settings.db`.                              |
+| AceConfig / Registry / Dialog / Cmd | Options; sub-libraries loaded via AceConfig XML.                                          |
+| AceGUI                              | Options and converter; recycling and private pool for EUI.                                |
+| AceConsole                          | Registration of `/apr`.                                                                   |
+| AceLocale                           | 11 locales, English by default; strings injected at packaging time.                       |
+| AceSerializer                       | Serialization of progression for the group.                                               |
+| AceComm / ChatThrottleLib           | Embedded transport bandwidth limiter used by group messages.                              |
+| HereBeDragons / Pins                | Coordinates and map/minimap markers.                                                      |
+| APR navigation catalogues           | Directed graph, client-specific crossings and access regions; no external routing engine. |
+| LibTaxiData                         | External dependency required by `.pkgmeta`, optional in the TOC for load order.           |
+| LibDataBroker / LibDBIcon           | Minimap launcher.                                                                         |
+| LibSharedMedia                      | Shared fonts and sounds, including bundled APR audio.                                     |
+| LibWindow                           | Window positions and scales.                                                              |
+| ElvUI / EllesmereUI                 | Optional; absence of both keeps native rendering.                                         |
 
 AceBucket, AceHook, AceTab, and AceTimer are no longer loaded by
 `embeds.xml`: no executed consumer was found in APR or the embedded libraries.
@@ -265,15 +265,15 @@ External inputs: `/apr`, XML bindings, AceAddon/AceDB callbacks, WoW events,
 group messages, and route imports. `RegisterCustomRoute`, legacy flat lists, and
 `AprRCData.ExtraLineTexts` remain supported. Option and SavedVariable names are kept.
 
-| Access                                   | Common usage                                                      |
-| ---------------------------------------- | ----------------------------------------------------------------- |
+| Access                                   | Common usage                                                                    |
+| ---------------------------------------- | ------------------------------------------------------------------------------- |
 | `/apr`                                   | Options in the shared APR workspace; Blizzard settings contain only a launcher. |
-| `/apr route`                             | Predefined paths, expansion/community browsing, filters and favorites. |
-| `/apr status` or `?` button on the guide | Compact status and copyable Lua report including current-step data.           |
-| `/apr rollback` / `/apr rb`               | Undo the last valid manual skip, otherwise return to the previous visible step. |
-| `/apr perf`                              | Open the dashboard; start/stop, sort, search, and export.         |
-| `/apr perf on` / `/apr perf off`         | Control capture without opening the dashboard.                    |
-| `/apr layout` or placement in settings             | Move previews, cancel, save or bring them back on screen.                       |
+| `/apr route`                             | Predefined paths, expansion/community browsing, filters and favorites.          |
+| `/apr status` or `?` button on the guide | Compact status and copyable Lua report including current-step data.             |
+| `/apr rollback` / `/apr rb`              | Undo the last valid manual skip, otherwise return to the previous visible step. |
+| `/apr perf`                              | Open the dashboard; start/stop, sort, search, and export.                       |
+| `/apr perf on` / `/apr perf off`         | Control capture without opening the dashboard.                                  |
+| `/apr layout` or placement in settings   | Move previews, cancel, save or bring them back on screen.                       |
 
 Settings retain their existing AceConfig categories. The route selector opens
 separately from `/apr route` and the existing route entry points. Performance
@@ -289,7 +289,7 @@ remains available through its slash command.
 | `APRTaxiNodes` / `APRTaxiNodesTimer`                 | Discoveries and trip measurements; legacy names normalized to booleans.                    |
 | `APRScenarioCompleted` / `APRScenarioMapIDCompleted` | Scenario progression per character.                                                        |
 | `APRItemLooted` / `APRGossipValidated`               | Historical state of items/dialogues; keys preserved for existing progression paths.        |
-| `APRNavigationCharacterSettings`                | Character housing exit and observed binding locations.                                      |
+| `APRNavigationCharacterSettings`                     | Character housing exit and observed binding locations.                                     |
 | Memory caches                                        | Steps, titles, XP, maps, paths, widgets, and skins; invalidation by owner.                 |
 
 Deep import copy (`DeepCopyTable`) isolates saves. Shallow runtime copy (`GetStep`)
@@ -531,7 +531,7 @@ antialiased TGA textures offline. The client only loads the exported textures.
 
 | Priority | Proposed follow-up                                                           | Required validation                                                                                     |
 | -------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| P1       | Fix discrepancies observed during manual UI validation.               | Reproduction with client, skin, resolution, and report; no visual certification outside the game.       |
+| P1       | Fix discrepancies observed during manual UI validation.                      | Reproduction with client, skin, resolution, and report; no visual certification outside the game.       |
 | P2       | Split the option families in `Config.lua` and event families in `Event.lua`. | Explicit contracts for shared state and behavior regressions; preserve keys and SavedVariables.         |
 | P2       | Localize the new labels beyond FR/EN.                                        | Proofreading via AceLocale `UI_*` keys and in-game length checks.                                       |
 | P2       | Complete community entries: descriptions and multiple authors.               | Metadata supplied by maintainers/authors, recorder compatibility; no inferred attribution.              |

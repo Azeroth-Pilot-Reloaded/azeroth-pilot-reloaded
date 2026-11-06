@@ -17,8 +17,14 @@ local function RegionKey(data, point)
     local key = Encode(point.instanceID) .. Encode(region) .. Encode(point.accessKey) .. Encode(point.floor)
     if point.noAutoconnect then
         -- Mandatory passage endpoints connect only at their exact graph point.
-        key = key .. string.format(":point:%.5f:%.5f:%s:%s", point.x, point.y,
-            tostring(point.z or 0), tostring(point.uiMapID or ""))
+        key = key
+            .. string.format(
+                ":point:%.5f:%.5f:%s:%s",
+                point.x,
+                point.y,
+                tostring(point.z or 0),
+                tostring(point.uiMapID or "")
+            )
     end
     return key
 end
@@ -26,14 +32,28 @@ end
 local function AddDirection(graph, definition, from, to, source, target, reverse)
     if source == target then return end
     local outgoing = graph.outgoing[source]
-    if not outgoing then outgoing = {}; graph.outgoing[source] = outgoing end
-    local link = { definition = definition, from = from, to = to, target = target,
-        suffix = reverse and ":reverse" or ":forward" }
+    if not outgoing then
+        outgoing = {}
+        graph.outgoing[source] = outgoing
+    end
+    local link = {
+        definition = definition,
+        from = from,
+        to = to,
+        target = target,
+        suffix = reverse and ":reverse" or ":forward",
+    }
     outgoing[#outgoing + 1] = link
     local destinations = graph.direct[source]
-    if not destinations then destinations = {}; graph.direct[source] = destinations end
+    if not destinations then
+        destinations = {}
+        graph.direct[source] = destinations
+    end
     local parallel = destinations[target]
-    if not parallel then parallel = {}; destinations[target] = parallel end
+    if not parallel then
+        parallel = {}
+        destinations[target] = parallel
+    end
     parallel[#parallel + 1] = link
 end
 
@@ -52,14 +72,33 @@ end
 
 function Instance:CreateZoneGraphRoute(context, makeWalk)
     local graph = self.zoneGraph
-    if not graph or graph.version ~= 2 or graph.source ~= self.connections or graph.count ~= #self.connections
-        or graph.positions ~= self.positions then
-        graph = { source = self.connections, count = #self.connections, positions = self.positions,
-            index = 1, outgoing = {}, direct = {}, pending = {}, status = "planning", version = 2 }
+    if
+        not graph
+        or graph.version ~= 2
+        or graph.source ~= self.connections
+        or graph.count ~= #self.connections
+        or graph.positions ~= self.positions
+    then
+        graph = {
+            source = self.connections,
+            count = #self.connections,
+            positions = self.positions,
+            index = 1,
+            outgoing = {},
+            direct = {},
+            pending = {},
+            status = "planning",
+            version = 2,
+        }
         self.zoneGraph = graph
     end
-    local job = { status = "planning", clock = context.clock or self.env.clock, graph = graph,
-        checkedLinks = 0, indexedConnections = 0 }
+    local job = {
+        status = "planning",
+        clock = context.clock or self.env.clock,
+        graph = graph,
+        checkedLinks = 0,
+        indexedConnections = 0,
+    }
     local function checkpoint() coroutine.yield() end
     job.worker = coroutine.create(function()
         -- Retry only unresolved geometry from an earlier request. Successful
@@ -74,10 +113,17 @@ function Instance:CreateZoneGraphRoute(context, makeWalk)
         end
         while graph.status == "planning" do
             local definition = graph.source[graph.index]
-            if not definition then graph.status = "ready"; break end
-            if not definition.actions and not definition.disabled
+            if not definition then
+                graph.status = "ready"
+                break
+            end
+            if
+                not definition.actions
+                and not definition.disabled
                 and not (definition.reviewStatus and definition.reviewStatus ~= "confirmed")
-                and not definition.from.dynamic and not definition.to.dynamic then
+                and not definition.from.dynamic
+                and not definition.to.dynamic
+            then
                 if not IndexDefinition(graph, self, definition, context) then
                     graph.pending[#graph.pending + 1] = definition
                 end
@@ -95,8 +141,11 @@ function Instance:CreateZoneGraphRoute(context, makeWalk)
             if cached then return cached end
             character.mapID = link.from.uiMapID
             local requirements = snapshot:GetTravelRequirements(link.definition.requirements, link.from, link.to)
-            cached = { requirements = requirements, possible = not Lib.RequirementsApplicable
-                or Lib.RequirementsApplicable(snapshot, requirements, character) }
+            cached = {
+                requirements = requirements,
+                possible = not Lib.RequirementsApplicable
+                    or Lib.RequirementsApplicable(snapshot, requirements, character),
+            }
             if cached.possible then cached.allowed = snapshot:CheckPlanningRequirements(requirements, character) end
             conditions[link] = cached
             job.checkedLinks = job.checkedLinks + 1
@@ -114,16 +163,21 @@ function Instance:CreateZoneGraphRoute(context, makeWalk)
                     local crossing = definition.seconds
                     if definition.costMode == "ground" then
                         crossing = link.from.instanceID == link.to.instanceID
-                            and math.max(1, makeWalk(context, link.from, link.to).seconds)
-                            or definition.seconds or self.config.passageSeconds or 30
+                                and math.max(1, makeWalk(context, link.from, link.to).seconds)
+                            or definition.seconds
+                            or self.config.passageSeconds
+                            or 30
                     elseif crossing == nil then
                         crossing = definition.kind == "portal" and (self.config.actionLoadingSeconds or 5) or 0
                     end
                     local seconds = makeWalk(context, context.start, link.from).seconds
-                        + crossing + (definition.waitSeconds or 0) + makeWalk(context, link.to, context.goal).seconds
+                        + crossing
+                        + (definition.waitSeconds or 0)
+                        + makeWalk(context, link.to, context.goal).seconds
                     if not directWinner or seconds < directSeconds then
                         directSeconds = seconds
-                        directWinner = { key = goal, copper = fare, previous = { key = start, copper = 0 }, link = link }
+                        directWinner =
+                            { key = goal, copper = fare, previous = { key = start, copper = 0 }, link = link }
                     end
                 end
                 checkpoint()
@@ -140,9 +194,12 @@ function Instance:CreateZoneGraphRoute(context, makeWalk)
                     local copper = label.copper + (link.definition.copper or 0)
                     -- BFS visits labels in nondecreasing transfer count. Keep
                     -- a later arrival only if it saves money for another leg.
-                    if state.possible and (state.allowed == true or relaxed)
+                    if
+                        state.possible
+                        and (state.allowed == true or relaxed)
                         and copper <= (context.budget or 0)
-                        and (bestCopper[link.target] == nil or copper < bestCopper[link.target]) then
+                        and (bestCopper[link.target] == nil or copper < bestCopper[link.target])
+                    then
                         bestCopper[link.target] = copper
                         local arrival = { key = link.target, copper = copper, previous = label, link = link }
                         if link.target == goal then return arrival end
@@ -154,7 +211,9 @@ function Instance:CreateZoneGraphRoute(context, makeWalk)
             end
         end
         local winner, relaxed = search(false), false
-        if not winner then winner, relaxed = search(true), true end
+        if not winner then
+            winner, relaxed = search(true), true
+        end
         if not winner then return "fallback" end
         local path = {}
         while winner.previous do
@@ -170,7 +229,9 @@ function Instance:CreateZoneGraphRoute(context, makeWalk)
                 if state.allowed ~= true then
                     metadata.blockers[#metadata.blockers + 1] = {
                         id = self.profile .. ":" .. link.definition.id .. link.suffix,
-                        from = link.from, to = link.to, kind = link.definition.kind,
+                        from = link.from,
+                        to = link.to,
+                        kind = link.definition.kind,
                         blockedRequirements = state.requirements,
                         instruction = self:GetInstruction(link.definition.kind, nil, link.to),
                     }
@@ -196,17 +257,34 @@ function Instance:CreateZoneGraphRoute(context, makeWalk)
             if status == "cancelled" then return "cancelled" end
             local id = self.profile .. ":" .. link.definition.id .. link.suffix
             local chosen
-            for _, edge in ipairs(edges or {}) do if edge.id == id then chosen = edge; break end end
+            for _, edge in ipairs(edges or {}) do
+                if edge.id == id then
+                    chosen = edge
+                    break
+                end
+            end
             if not chosen then
                 local blocked = {}
                 for _, edge in ipairs(metadata and metadata.blockedEdges or {}) do
-                    if edge.id == id then blocked[1] = edge; break end
+                    if edge.id == id then
+                        blocked[1] = edge
+                        break
+                    end
                 end
                 return "no_path", nil, { blockers = blocked, waitingData = metadata and metadata.waitingData }
             end
-            if not self:CanWalk(position, chosen.from) and (position.instanceID ~= chosen.from.instanceID
-                or position.x ~= chosen.from.x or position.y ~= chosen.from.y
-                or position.z ~= chosen.from.z or position.uiMapID ~= chosen.from.uiMapID) then return "fallback" end
+            if
+                not self:CanWalk(position, chosen.from)
+                and (
+                    position.instanceID ~= chosen.from.instanceID
+                    or position.x ~= chosen.from.x
+                    or position.y ~= chosen.from.y
+                    or position.z ~= chosen.from.z
+                    or position.uiMapID ~= chosen.from.uiMapID
+                )
+            then
+                return "fallback"
+            end
             local walk = makeWalk(context, position, chosen.from)
             result.segments[#result.segments + 1] = walk
             result.segments[#result.segments + 1] = chosen
@@ -215,9 +293,18 @@ function Instance:CreateZoneGraphRoute(context, makeWalk)
             position = chosen.to
             checkpoint()
         end
-        if not self:CanWalk(position, context.goal) and (position.instanceID ~= context.goal.instanceID
-            or position.x ~= context.goal.x or position.y ~= context.goal.y
-            or position.z ~= context.goal.z or position.uiMapID ~= context.goal.uiMapID) then return "fallback" end
+        if
+            not self:CanWalk(position, context.goal)
+            and (
+                position.instanceID ~= context.goal.instanceID
+                or position.x ~= context.goal.x
+                or position.y ~= context.goal.y
+                or position.z ~= context.goal.z
+                or position.uiMapID ~= context.goal.uiMapID
+            )
+        then
+            return "fallback"
+        end
         local walk = makeWalk(context, position, context.goal)
         result.segments[#result.segments + 1] = walk
         result.totalSeconds = result.totalSeconds + walk.seconds
@@ -225,7 +312,10 @@ function Instance:CreateZoneGraphRoute(context, makeWalk)
     end)
     function job:Step(maxOperations, milliseconds)
         if self.status ~= "planning" then return self.status, self.result, self.metadata end
-        if self.graph ~= self.owner.zoneGraph then self:Cancel(); return self.status end
+        if self.graph ~= self.owner.zoneGraph then
+            self:Cancel()
+            return self.status
+        end
         self.workLastStep = 0
         maxOperations, milliseconds = math.max(0, maxOperations or 64), math.max(0, milliseconds or 1)
         if maxOperations == 0 or milliseconds == 0 then return self.status end
@@ -234,7 +324,10 @@ function Instance:CreateZoneGraphRoute(context, makeWalk)
             if operation > 1 and self.deadline and self.clock() >= self.deadline then break end
             self.workLastStep = self.workLastStep + 1
             local ok, status, result, metadata = coroutine.resume(self.worker)
-            if not ok then self.worker, self.status = nil, "failed"; error(status, 0) end
+            if not ok then
+                self.worker, self.status = nil, "failed"
+                error(status, 0)
+            end
             if coroutine.status(self.worker) == "dead" then
                 self.worker, self.status, self.result, self.metadata = nil, status, result, metadata
                 break

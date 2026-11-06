@@ -21,6 +21,10 @@ boss order, coordinate or optional condition, or takes a particular world tour.
 A valid rename, removed optional guard, or edited guide must not require changing
 an engine test. Never copy a live guide or its expected quest list into a fixture.
 
+Offline addon tests use synthetic localization labels. Do not snapshot companion
+translation catalogs or assert their current keys, wording or cross-locale coverage.
+Current translation exports are validated by the dedicated translation CI workflow.
+
 Use two complementary layers:
 
 - **Behavior:** synthetic routes, characters, items and transport graphs with
@@ -44,6 +48,12 @@ Tests never repair tracked sources. Generators and repair tools are exercised on
 temporary fixtures; content validation only reports invalid input. Keep tests
 deterministic and run the complete suite before finishing. Repository-wide agent
 instructions are in [AGENTS.md](../AGENTS.md).
+
+Instrumentation checks compare Lua structure rather than exact generated text.
+Formatting, comments, body edits and shifted trace line hints do not invalidate
+coverage. Synthetic cases still reject missing/wrong wrappers, duplicate trace
+identifiers, missing call adapters and incorrect manifest counts. They also cover
+formatters moving diagnostic marker comments across authored table fields/operators.
 
 `reward_scoring_test.lua` uses invented item variants and equipped configurations
 for weighted gains, usability, unique-equipped categories and weapon replacement.

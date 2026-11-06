@@ -25,7 +25,9 @@ APR.StyleStaticPopup = noop
 local template = APR.settings.profile
 local function profile(hide)
     local result = {}
-    for key, value in pairs(template) do result[key] = value end
+    for key, value in pairs(template) do
+        result[key] = value
+    end
     result.forceHideUiInPartyRaid = hide
     return result
 end
@@ -56,11 +58,15 @@ local function panels(shown)
 end
 APR:ActivateRoute(nil)
 APR.RouteQuestStepList = {
-    context = { label = "Invented context route", mapID = 10, expansion = APR.EXPANSIONS.Custom,
+    context = {
+        label = "Invented context route",
+        mapID = 10,
+        expansion = APR.EXPANSIONS.Custom,
         steps = {
             { Note = "Ordinary instruction", Fillers = { [8201] = { 1 } } },
             { Note = "Instance instruction", InstanceQuest = true, Fillers = { [8201] = { 1 } } },
-        } },
+        },
+    },
 }
 local initialID, initialCharacter = character()
 use(profile(false), initialID, initialCharacter)
@@ -82,15 +88,23 @@ for _, answer in ipairs({ "OnAccept", "OnCancel" }) do
         local dialog = prompt()
         local newProfile = profile(initialHide)
         local settings, database = APR.settings, APR.settings.db
-        if change == "profile" then APR.settings.profile = newProfile
-        elseif change == "character" then APR.settings.db.char = {}
-        elseif change == "player" then APR.PlayerID = "other-player"
-        elseif change == "database" then APR.settings.db = nil
-        else APR.settings = nil end
+        if change == "profile" then
+            APR.settings.profile = newProfile
+        elseif change == "character" then
+            APR.settings.db.char = {}
+        elseif change == "player" then
+            APR.PlayerID = "other-player"
+        elseif change == "database" then
+            APR.settings.db = nil
+        else
+            APR.settings = nil
+        end
         local before = state.refreshes
         dialog[answer]()
-        assert(oldProfile.forceHideUiInPartyRaid == initialHide,
-            "A stale " .. answer .. " must not mutate its old " .. change .. " context")
+        assert(
+            oldProfile.forceHideUiInPartyRaid == initialHide,
+            "A stale " .. answer .. " must not mutate its old " .. change .. " context"
+        )
         assert(newProfile.forceHideUiInPartyRaid == initialHide)
         assert(state.refreshes == before, "A stale reply must not refresh unrelated panels")
         assert(record.instanceUiPromptShown, "Rejecting a stale reply must retain the character receipt")
@@ -192,7 +206,10 @@ assert(#H.errors == 0, table.concat(H.errors, "\n"))
 -- Absent scenario history needs no iterable container. Existing histories remain
 -- live: appends, in-place edits and removals must not need cache invalidation.
 local originalIpairs, iterations = ipairs, 0
-ipairs = function(values) iterations = iterations + 1; return originalIpairs(values) end
+ipairs = function(values)
+    iterations = iterations + 1
+    return originalIpairs(values)
+end
 for _ = 1, 10000 do
     assert(not APR:ContainsScenarioStepCriteria(nil, 21, 31, 1))
     assert(not APR:ContainsScenarioStepCriteria(false, 21, 31, 1))
@@ -208,4 +225,6 @@ assert(not APR:ContainsScenarioStepCriteria(history, 21, 31, 1))
 assert(APR:ContainsScenarioStepCriteria(history, 21, 31, 2))
 history[1] = nil
 assert(not APR:ContainsScenarioStepCriteria(history, 21, 31, 2))
-print("Instance context: stale profile/character replies rejected, live dialogs/exit/combat preserved; 20000 absent histories without iterator work")
+print(
+    "Instance context: stale profile/character replies rejected, live dialogs/exit/combat preserved; 20000 absent histories without iterator work"
+)

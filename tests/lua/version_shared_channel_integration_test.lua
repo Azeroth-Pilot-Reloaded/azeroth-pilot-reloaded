@@ -12,28 +12,49 @@ local function New(options)
 end
 
 local function Receive(env, message, id, name)
-    env.version:HandleSharedMessage("APRVersionCheck", message, "CHANNEL", "Peer-Home", nil, 0,
-        id or env.id, name or "APR")
+    env.version:HandleSharedMessage(
+        "APRVersionCheck",
+        message,
+        "CHANNEL",
+        "Peer-Home",
+        nil,
+        0,
+        id or env.id,
+        name or "APR"
+    )
 end
 
-for _, client in ipairs({"retail", "forever"}) do
-    for _, flags in ipairs({{true, false}, {false, true}}) do
-        local env = New({client = client})
+for _, client in ipairs({ "retail", "forever" }) do
+    for _, flags in ipairs({ { true, false }, { false, true } }) do
+        local env = New({ client = client })
         local channel, finderID = env.channel
         channel:Acquire("partyFinder", function(id) finderID = id end)
-        assert(channel.owners.versionCheck and channel.owners.partyFinder and #env.frames == 1,
-            "Both consumers borrow the one service frame")
+        assert(
+            channel.owners.versionCheck and channel.owners.partyFinder and #env.frames == 1,
+            "Both consumers borrow the one service frame"
+        )
         env:Event("PLAYER_ENTERING_WORLD", unpack(flags))
         env:Advance(4.99)
         assert(#env.joined == 0 and #env.sent == 0)
         env:Advance(0.01)
-        assert(#env.joined == 1 and env.joined[1].name == "APR" and finderID == 7
-            and channel:GetChannelID() == 7 and env.version.sharedChannelID == 7)
-        assert(#env.sent == 1 and env.sent[1].prefix == "APRVersionCheck"
-            and env.sent[1].message == "Q:7.3.0" and env.sent[1].target == 7)
+        assert(
+            #env.joined == 1
+                and env.joined[1].name == "APR"
+                and finderID == 7
+                and channel:GetChannelID() == 7
+                and env.version.sharedChannelID == 7
+        )
+        assert(
+            #env.sent == 1
+                and env.sent[1].prefix == "APRVersionCheck"
+                and env.sent[1].message == "Q:7.3.0"
+                and env.sent[1].target == 7
+        )
         env:Advance(12)
-        assert(#env.sent == 2 and env.sent[2].at - env.sent[1].at == 12 and env:ActiveTimers() == 0,
-            "Login and reload each retain exactly one bounded query retry")
+        assert(
+            #env.sent == 2 and env.sent[2].at - env.sent[1].at == 12 and env:ActiveTimers() == 0,
+            "Login and reload each retain exactly one bounded query retry"
+        )
         for index = 1, 100 do
             env.map = index % 2 == 0 and 501 + index or nil
             env.instance, env.restricted = index % 3 == 0, index % 4 == 0
@@ -41,8 +62,10 @@ for _, client in ipairs({"retail", "forever"}) do
             env:Event("CHANNEL_UI_UPDATE")
             env:Event("PLAYER_REGEN_ENABLED")
             env:Advance(0.1)
-            assert(#env.joined == 1 and #env.left == 0 and channel:GetChannelID() == 7,
-                "Zone/map/instance/restriction changes cannot churn either consumer's shared membership")
+            assert(
+                #env.joined == 1 and #env.left == 0 and channel:GetChannelID() == 7,
+                "Zone/map/instance/restriction changes cannot churn either consumer's shared membership"
+            )
         end
         assert(#env.sent == 2 and channel.owners.versionCheck and channel.owners.partyFinder)
         env.version:OnDisable()
@@ -78,7 +101,7 @@ Receive(env, "V:7.4.0", 9, "apr")
 assert(env.alerts == 1)
 
 -- Startup lockdown waits for the native restriction to end, keeping owners.
-env = New({restricted = true})
+env = New({ restricted = true })
 env.channel:Acquire("partyFinder", function() end)
 env:Advance(20)
 assert(#env.joined == 0 and #env.sent == 0 and env:ActiveTimers() == 0)
@@ -90,7 +113,7 @@ assert(#env.sent == 2 and #env.left == 0 and env:ActiveTimers() == 0)
 
 -- A prejoined or asynchronously completed channel can become ready while chat
 -- remains restricted. Its later usable transition must still start versions.
-for _, options in ipairs({{prejoined = true, restricted = true}, {delayedJoin = true}}) do
+for _, options in ipairs({ { prejoined = true, restricted = true }, { delayedJoin = true } }) do
     env = New(options)
     env.channel:Acquire("partyFinder", function() end)
     if options.delayedJoin then
@@ -103,8 +126,10 @@ for _, options in ipairs({{prejoined = true, restricted = true}, {delayedJoin = 
     env.restricted = false
     env:Event("PLAYER_REGEN_ENABLED")
     env:Advance(0.1)
-    assert(#env.sent == 1 and env.sent[1].message == "Q:7.3.0" and #env.joined == joins,
-        "The first usable callback starts discovery without replacing the existing membership")
+    assert(
+        #env.sent == 1 and env.sent[1].message == "Q:7.3.0" and #env.joined == joins,
+        "The first usable callback starts discovery without replacing the existing membership"
+    )
     env:Advance(12)
     assert(#env.sent == 2 and #env.left == 0 and env:ActiveTimers() == 0)
 end
@@ -118,9 +143,16 @@ Receive(env, "Q:7.2.0")
 env.restricted = true
 env:Event("CHANNEL_UI_UPDATE")
 env:Advance(15)
-assert(#env.sent == 1 and #env.joined == 1 and #env.left == 0 and env.channel:GetChannelID() == 7
-    and env.channel.owners.versionCheck and env.channel.owners.partyFinder and env:ActiveTimers() == 0,
-    "Temporary restrictions suppress native sends while preserving both references")
+assert(
+    #env.sent == 1
+        and #env.joined == 1
+        and #env.left == 0
+        and env.channel:GetChannelID() == 7
+        and env.channel.owners.versionCheck
+        and env.channel.owners.partyFinder
+        and env:ActiveTimers() == 0,
+    "Temporary restrictions suppress native sends while preserving both references"
+)
 env.restricted = false
 env:Event("PLAYER_REGEN_ENABLED")
 env:Advance(0.1)
@@ -130,17 +162,25 @@ assert(#env.sent == 2 and env.sent[2].message == "V:7.3.0" and #env.left == 0)
 
 -- A failed version transport must not leave or cancel a channel still used by
 -- discovery, including when the ready callback releases versions reentrantly.
-env = New({sendResult = 7})
+env = New({ sendResult = 7 })
 env.channel:Acquire("partyFinder", function() end)
 env:Advance(30)
-assert(not env.channel.owners.versionCheck and env.channel.owners.partyFinder and #env.joined == 1
-    and #env.left == 0 and env.channel:IsReady() and env:ActiveTimers() == 0)
+assert(
+    not env.channel.owners.versionCheck
+        and env.channel.owners.partyFinder
+        and #env.joined == 1
+        and #env.left == 0
+        and env.channel:IsReady()
+        and env:ActiveTimers() == 0
+)
 env.channel:Release("partyFinder")
 assert(#env.left == 1)
 
-env = New({client = "classic"})
+env = New({ client = "classic" })
 env.channel:Acquire("partyFinder", function() end)
 env:Advance(60)
 assert(#env.joined == 0 and #env.sent == 0 and env:ActiveTimers() == 0)
 
-print("Version/shared service integration: solo login/reload, one membership for both owners, 100 transitions, bounded retry, renumbering and restrictions passed")
+print(
+    "Version/shared service integration: solo login/reload, one membership for both owners, 100 transitions, bounded retry, renumbering and restrictions passed"
+)

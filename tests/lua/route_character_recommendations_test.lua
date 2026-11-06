@@ -6,13 +6,18 @@ CLASS, RACE, CHARACTER, YES, NO = "Class", "Race", "Character", "Yes", "No"
 local visibility = APR.GetRouteVisibility
 APR.Level, APR.Race, APR.RaceID, APR.ClassName, APR.ClassId = 20, "Tauren", 6, "SHAMAN", 7
 local route = env.route("fixture-chapter", "Invented chapter", {
-    Faction = "Horde", Race = { "Orc", "Troll" }, Class = { 1, "MAGE" }, MinLevel = 20,
+    Faction = "Horde",
+    Race = { "Orc", "Troll" },
+    Class = { 1, "MAGE" },
+    MinLevel = 20,
 })
 local conditions = route.conditions
 local step = { Race = "Orc", Class = "MAGE" }
 route.steps[1], route.parallelSteps = step, { { conditions = step, steps = { { Note = "Optional" } } } }
 local function contains(lines, text)
-    for _, line in ipairs(lines) do if line:find(text, 1, true) then return true end end
+    for _, line in ipairs(lines) do
+        if line:find(text, 1, true) then return true end
+    end
     return false
 end
 assert(APR:GetRouteVisibility("fixture-chapter") == "visible" and APR:CanStartRoute("fixture-chapter"))
@@ -43,10 +48,13 @@ warnings = APR:GetRouteSelectionWarnings("fixture-chapter")
 assert(APR:CanStartRoute("fixture-chapter") and #warnings == 2 and contains(warnings, "≠ "))
 
 -- Nested branch recommendations retain their faction/quest predicates.
-route.conditions = { Faction = "Horde", AnyOf = {
-    { Class = "MAGE", AllOf = { { Race = "Orc" } } },
-    { Class = "WARRIOR", Faction = "Alliance" },
-} }
+route.conditions = {
+    Faction = "Horde",
+    AnyOf = {
+        { Class = "MAGE", AllOf = { { Race = "Orc" } } },
+        { Class = "WARRIOR", Faction = "Alliance" },
+    },
+}
 assert(APR:GetRouteVisibility("fixture-chapter") == "visible")
 assert(#APR:GetRouteSelectionWarnings("fixture-chapter") > 0)
 APR.Faction = "Alliance"
@@ -70,12 +78,19 @@ C_CreatureInfo = { GetRaceInfo = function() error("Class localization must not c
 assert(#APR:GetRouteSelectionWarnings("fixture-chapter") == 1, "Missing optional class APIs use a safe label fallback")
 C_CreatureInfo = { GetClassInfo = function() return nil end }
 assert(#APR:GetRouteSelectionWarnings("fixture-chapter") == 1, "Missing optional class data is safe")
-C_CreatureInfo.GetClassInfo = function(id) assert(id == 8); return { className = "Localized mage" } end
+C_CreatureInfo.GetClassInfo = function(id)
+    assert(id == 8)
+    return { className = "Localized mage" }
+end
 assert(contains(APR:GetRouteSelectionWarnings("fixture-chapter"), "Localized mage"))
 C_CreatureInfo = nil
 
-local starter = env.route("fixture-starter", "Invented starter", { Race = "Orc", Class = "MAGE", Faction = "Horde" },
-    { [APR.PREFAB_TYPES.StartingZone] = { index = 1 } })
+local starter = env.route(
+    "fixture-starter",
+    "Invented starter",
+    { Race = "Orc", Class = "MAGE", Faction = "Horde" },
+    { [APR.PREFAB_TYPES.StartingZone] = { index = 1 } }
+)
 assert(APR:GetRouteVisibility("fixture-starter") == "hidden" and not APR:CanStartRoute("fixture-starter"))
 starter.prefab[APR.PREFAB_TYPES.StartingZone] = 1
 assert(APR:GetRouteVisibility("fixture-starter") == "hidden", "Numeric starter entries retain the same restrictions")
@@ -92,7 +107,10 @@ APR.ClassName = nil
 assert(APR:CanStartRoute(mageKey), "The Mage gate accepts the numeric client class ID too")
 APR.ClassName = "MAGE"
 mage.prefab = { [APR.PREFAB_TYPES.StartingZone] = 1 }
-assert(APR:GetRouteVisibility(mageKey) == "visible", "Same-faction AoE starters waive race while retaining the Mage gate")
+assert(
+    APR:GetRouteVisibility(mageKey) == "visible",
+    "Same-faction AoE starters waive race while retaining the Mage gate"
+)
 mage.prefab = nil
 APR.ClassName, APR.ClassId = "WARRIOR", 1
 assert(APR:GetRouteVisibility(mageKey) == "hidden" and not APR:CanStartRoute(mageKey))
@@ -128,7 +146,10 @@ assert(select(3, APR:GetRouteMapIDsAndName(first.label)) == "a-collision")
 first.label, first.legacyLabels = "Renamed invented label", { "Shared invented label" }
 APR:NormalizeSavedRouteLabels()
 assert(APRCustomPath.player[1] == first.label and APRData.player.RouteChoices[first.label] == "a-collision")
-assert(APR:GetRouteKeyFromDisplayName(first.label) == "a-collision", "A declared label migration preserves the chosen key")
+assert(
+    APR:GetRouteKeyFromDisplayName(first.label) == "a-collision",
+    "A declared label migration preserves the chosen key"
+)
 APR.RouteQuestStepList["a-collision"] = nil
 assert(APR:GetSavedRouteChoice(first.label) == nil, "Removed definitions cannot survive through saved choices")
 APRData.player.RouteChoices = "obsolete malformed value"
@@ -142,12 +163,17 @@ function APR:IsDelveRoute() return false end
 function APR:GetPlayerEffectiveLevel() return self.Level end
 APR.Level, APR.Faction, APR.Race, APR.RaceID, APR.ClassName, APR.ClassId = 20, "Horde", "Tauren", 6, "SHAMAN", 7
 APR.RouteQuestStepList = {
-    choice = { label = "Unadapted chapter", expansion = APR.EXPANSIONS.Forever,
-        conditions = { Faction = "Horde", Race = "Orc", Class = "MAGE" } },
+    choice = {
+        label = "Unadapted chapter",
+        expansion = APR.EXPANSIONS.Forever,
+        conditions = { Faction = "Horde", Race = "Orc", Class = "MAGE" },
+    },
 }
 CONFIRM_CONTINUE = "Continue?"
 local popup, notifications = nil, 0
-function APR.UI:ShowConfirmationDialog(prompt, accept, cancel) popup = { prompt = prompt, accept = accept, cancel = cancel } end
+function APR.UI:ShowConfirmationDialog(prompt, accept, cancel)
+    popup = { prompt = prompt, accept = accept, cancel = cancel }
+end
 function APR.routeconfig:SendCustomPathUpdate() notifications = notifications + 1 end
 local catalog, rows = APR.RouteCatalog, APR.RouteBrowserRows
 local record = catalog:Build()[1]
@@ -176,8 +202,16 @@ record = catalog:Build()[1]
 row.item = record
 rows:Bind(row, record, 1, {}, false)
 assert(#record.warnings == 0 and row.name.role == "routeNotStarted", "Recycled rows clear old character warnings")
-APR.RouteQuestStepList.other = { label = record.label, expansion = APR.EXPANSIONS.Forever,
-    conditions = { Faction = "Horde", Race = "Tauren", Class = "SHAMAN" } }
+APR.RouteQuestStepList.other = {
+    label = record.label,
+    expansion = APR.EXPANSIONS.Forever,
+    conditions = { Faction = "Horde", Race = "Tauren", Class = "SHAMAN" },
+}
 local pathRecords = catalog:GetPathRecords(catalog:Build())
-assert(#pathRecords == 1 and pathRecords[1].key == "choice", "The path displays the explicitly selected colliding variant")
-print("Forever character advice: manual entry, confirmation, starters, factions, AoE, nested predicates, steps and Retail isolation passed")
+assert(
+    #pathRecords == 1 and pathRecords[1].key == "choice",
+    "The path displays the explicitly selected colliding variant"
+)
+print(
+    "Forever character advice: manual entry, confirmation, starters, factions, AoE, nested predicates, steps and Retail isolation passed"
+)

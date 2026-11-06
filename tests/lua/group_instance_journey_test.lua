@@ -6,11 +6,17 @@ local FinderFixture = dofile("tests/lua/party_finder_test_env.lua")
 local function Setup(client)
     local ui = dofile("tests/lua/route_ui_test_env.lua")
     local uiAPR, uiCreateFrame, uiLibStub = APR, CreateFrame, LibStub
-    local env = FinderFixture.New({ client = client, world = true, invites = true,
-        settings = { matchMode = "world", notifications = false } })
+    local env = FinderFixture.New({
+        client = client,
+        world = true,
+        invites = true,
+        settings = { matchMode = "world", notifications = false },
+    })
     local finderLibStub = LibStub
     local finder, badge = env.finder, APR.currentStep.RefreshPartyFinderButton
-    for key, value in pairs(uiAPR) do if APR[key] == nil then APR[key] = value end end
+    for key, value in pairs(uiAPR) do
+        if APR[key] == nil then APR[key] = value end
+    end
     for key, value in pairs(uiAPR.settings.profile) do
         if APR.settings.profile[key] == nil then APR.settings.profile[key] = value end
     end
@@ -36,10 +42,14 @@ local function Setup(client)
     dofile("APR-Core/libs/HereBeDragons/LibStub/LibStub.lua")
     dofile("APR-Core/libs/AceSerializer-3.0/AceSerializer-3.0.lua")
     env.serializer = LibStub("AceSerializer-3.0")
-    local locale = setmetatable({ ROUTE_LABEL = "Route %s", CURRENT_STEP_LABEL = "Step %s",
-        GROUP_STEP_BEHIND = "%d behind", GROUP_STEPS_BEHIND = "%d behind",
-        GROUP_STEP_AHEAD = "%d ahead", GROUP_STEPS_AHEAD = "%d ahead" },
-        { __index = function(_, key) return key end })
+    local locale = setmetatable({
+        ROUTE_LABEL = "Route %s",
+        CURRENT_STEP_LABEL = "Step %s",
+        GROUP_STEP_BEHIND = "%d behind",
+        GROUP_STEPS_BEHIND = "%d behind",
+        GROUP_STEP_AHEAD = "%d ahead",
+        GROUP_STEPS_AHEAD = "%d ahead",
+    }, { __index = function(_, key) return key end })
     LibStub = function(name, silent)
         if name == "AceSerializer-3.0" then return env.serializer end
         if name == "AceLocale-3.0" then return { GetLocale = function() return locale end } end
@@ -98,8 +108,10 @@ local function Setup(client)
         InviteUnit = function(name) env.invited[#env.invited + 1] = name end,
         RequestInviteFromUnit = function(name) env.requested[#env.requested + 1] = name end,
     }
-    APR.navigation = { ForceRefresh = function() env.navigationRefreshes = (env.navigationRefreshes or 0) + 1 end,
-        RequestRouteCheck = function() end }
+    APR.navigation = {
+        ForceRefresh = function() env.navigationRefreshes = (env.navigationRefreshes or 0) + 1 end,
+        RequestRouteCheck = function() end,
+    }
     APR.versionCheck = { ScheduleBroadcast = function() end }
     dofile("APR-Core/data/models/Enums.lua")
     dofile("APR-Core/utils/Utils.lua")
@@ -109,12 +121,20 @@ local function Setup(client)
     dofile("APR-Core/features/questing/StepTransitions.lua")
     dofile("APR-Core/features/questing/RouteManager.lua")
     dofile("APR-Core/features/questing/DelveRoutes.lua")
-    APR.RouteQuestStepList = { synthetic = env.definition,
-        scenario = { label = "Invented scenario", temporary = true,
-            steps = { { Note = "First scenario objective" }, { Note = "Last scenario objective" } } },
-        delve = { label = "Invented delve", delve = {}, scenarios = {
-            { scenarioID = 7001, steps = { { Note = "Delve objective" }, { Note = "Delve exit" } } },
-        } },
+    APR.RouteQuestStepList = {
+        synthetic = env.definition,
+        scenario = {
+            label = "Invented scenario",
+            temporary = true,
+            steps = { { Note = "First scenario objective" }, { Note = "Last scenario objective" } },
+        },
+        delve = {
+            label = "Invented delve",
+            delve = {},
+            scenarios = {
+                { scenarioID = 7001, steps = { { Note = "Delve objective" }, { Note = "Delve exit" } } },
+            },
+        },
     }
     env.definition.steps[5] = { DoScenario = { mapID = 603 } }
     APR.ScenarioEntrances = { [603] = { type = "DELVE" } }
@@ -145,9 +165,17 @@ local function Setup(client)
     end
     function env:FinderPacket(kind, data, sender, channel, world)
         local wire = assert(self.protocol.Encode(kind, data))
-        self:Event("CHAT_MSG_ADDON", "APRFindV1", wire, channel or "WHISPER", sender or "Peer-Home",
-            "Local-Home", 0, world and finder.worldChannelID or finder.channelID,
-            world and finder.worldChannelName or finder.channelName)
+        self:Event(
+            "CHAT_MSG_ADDON",
+            "APRFindV1",
+            wire,
+            channel or "WHISPER",
+            sender or "Peer-Home",
+            "Local-Home",
+            0,
+            world and finder.worldChannelID or finder.channelID,
+            world and finder.worldChannelName or finder.channelName
+        )
     end
     function env:PeerSnapshot(sender, payload, channel)
         local first = #self.partySent + 1
@@ -170,8 +198,10 @@ end
 local function Journey(client)
     local env, finder, party = Setup(client)
     local ace, minor = LibStub("AceComm-3.0")
-    assert(ace == env.directAceComm and minor == 14 and finder.directReady,
-        "The composed journey retains the real embedded direct transport")
+    assert(
+        ace == env.directAceComm and minor == 14 and finder.directReady,
+        "The composed journey retains the real embedded direct transport"
+    )
     assert(finder.channelID == 7 and finder.worldChannelID == 7 and #env.joined == 1)
     assert(finder:Search())
     local query = finder.query
@@ -189,8 +219,8 @@ local function Journey(client)
     assert(candidate.status == "joined" and party.GroupListSteps.Local.currentStep == 3)
     assert(finder:GetLocalState().groupSize == 2 and PartyScreenPanel:IsShown())
     local peer = party:BuildGroupPayload("Peer")
-    peer.stepFrameDetails.questSteps = { { text = "Une étape |Hquest:100|h[française]|h",
-        subSteps = { { text = "2/4 objets" } } } }
+    peer.stepFrameDetails.questSteps =
+        { { text = "Une étape |Hquest:100|h[française]|h", subSteps = { { text = "2/4 objets" } } } }
     env:PeerSnapshot("Peer-Home", peer)
     assert(party.GroupListSteps.Peer.routeProgress.id == "main:3")
     assert(party.GroupListSteps.Peer.stepFrameDetails.questSteps[1].text == "Une étape [française]")
@@ -205,8 +235,10 @@ local function Journey(client)
     local replies = #env:Messages("P", "WHISPER")
     env:Enter(601, "party", false, false)
     assert(finder:GetStatus() == "instance" and finder.channelID == 7 and finder.worldChannelID == 7)
-    assert(env.channels.APR == 7 and #env.joined == 1 and #env.left == 0,
-        "Instance entry retains the shared membership while suspending discovery")
+    assert(
+        env.channels.APR == 7 and #env.joined == 1 and #env.left == 0,
+        "Instance entry retains the shared membership while suspending discovery"
+    )
     assert(not finder.query and not next(finder.responses) and not finder.replyTimer and not finder.queryTimer)
     env:Advance(12)
     assert(#env:Messages("P", "WHISPER") == replies, "Entering an instance cancels queued discovery replies")
@@ -223,7 +255,10 @@ local function Journey(client)
     party:SendGroupMessage(true)
     assert(env.partySent[#env.partySent].channel == "INSTANCE_CHAT")
     env:PeerSnapshot("Peer-Home", peer, "INSTANCE_CHAT")
-    assert(party.GroupListSteps.Peer.currentStep == 3, "Authenticated party progression still arrives in instance groups")
+    assert(
+        party.GroupListSteps.Peer.currentStep == 3,
+        "Authenticated party progression still arrives in instance groups"
+    )
 
     -- A scenario temporarily replaces the current route, then restores the same
     -- parent progress and custom path before the delve insertion case.
@@ -235,8 +270,10 @@ local function Journey(client)
     party:SendGroupMessage(true)
     assert(APR.ActiveRoute == "scenario" and party.GroupListSteps.Local.routeFileName == "scenario")
     assert(party.GroupListSteps.Local.routeProgress.id == "main:1" and party.GroupListSteps.Local.totalSteps == 2)
-    assert(finder:GetLocalState().route == env.protocol.Hash("scenario") and finder:GetLocalState().step == 1,
-        "The real party-send hook refreshes companion state after a route switch")
+    assert(
+        finder:GetLocalState().route == env.protocol.Hash("scenario") and finder:GetLocalState().step == 1,
+        "The real party-send hook refreshes companion state after a route switch"
+    )
     assert(APR:TransitionStep(2, "journey", false))
     assert(APR:ClearTemporaryRoute({ completed = true }))
     assert(APR.ActiveRoute == "synthetic" and APRData.fixture.synthetic == 5 and APRCustomPath.fixture == customPath)
@@ -247,8 +284,12 @@ local function Journey(client)
     env:Enter(603, "scenario", false, false)
     local context = assert(APR:GetCurrentDelveContext())
     assert(context.mapID == 603 and context.scenarioID == 7001 and context.sessionKey == "scenario:7001")
-    assert(APR:ActivateTemporaryRoute("delve", { kind = "delve", mapID = context.mapID,
-        scenarioID = context.scenarioID, sessionKey = context.sessionKey }))
+    assert(
+        APR:ActivateTemporaryRoute(
+            "delve",
+            { kind = "delve", mapID = context.mapID, scenarioID = context.scenarioID, sessionKey = context.sessionKey }
+        )
+    )
     local state = APRData.fixture.TemporaryRouteState
     assert(state.previousRouteKey == "synthetic" and state.parentStartIndex == 3 and state.replaceStepIndex == 5)
     local steps = APR:GetRouteSteps("delve")
@@ -256,18 +297,26 @@ local function Journey(client)
     if client == "retail" then
         env.map = nil
         APR:RefreshTemporaryDelveRoute()
-        assert(APR.ActiveRoute == "delve" and APRData.fixture.TemporaryRouteState == state,
-            "A loading screen with an active native delve retains the temporary session")
+        assert(
+            APR.ActiveRoute == "delve" and APRData.fixture.TemporaryRouteState == state,
+            "A loading screen with an active native delve retains the temporary session"
+        )
         env.map = 603
     end
     env.map, env.scenarioID, env.delve = 602, 7000, false
     APR:ScheduleDelveRouteRefresh(0.25)
     env:Advance(0.5)
-    assert(APR.ActiveRoute == "synthetic" and APRData.fixture.synthetic == 3 and not APRData.fixture.TemporaryRouteState,
-        "Abandoning a delve before its parent prefix advances restores the original parent position")
+    assert(
+        APR.ActiveRoute == "synthetic" and APRData.fixture.synthetic == 3 and not APRData.fixture.TemporaryRouteState,
+        "Abandoning a delve before its parent prefix advances restores the original parent position"
+    )
     env.map, env.scenarioID, env.delve = 603, 7001, true
-    assert(APR:ActivateTemporaryRoute("delve", { kind = "delve", mapID = 603,
-        scenarioID = 7001, sessionKey = "scenario:7001" }))
+    assert(
+        APR:ActivateTemporaryRoute(
+            "delve",
+            { kind = "delve", mapID = 603, scenarioID = 7001, sessionKey = "scenario:7001" }
+        )
+    )
     assert(APR:TransitionStep(3, "journey", false))
     -- Simulate active-route reconstruction while character SavedVariables retain
     -- the temporary session; the real lifecycle must resume without resetting.
@@ -281,15 +330,19 @@ local function Journey(client)
     env:Advance(4)
     assert(not party.groupSendInFlight and not party.pendingGroupSend)
     assert(party.GroupListSteps.Local.routeFileName == "delve" and party.GroupListSteps.Local.currentStep == 3)
-    assert(party.GroupListSteps.Local.routeProgress.id == "main:1" and party.GroupListSteps.Local.routeProgress.total == 2,
-        "Party wire identities exclude the temporary parent prefix")
+    assert(
+        party.GroupListSteps.Local.routeProgress.id == "main:1" and party.GroupListSteps.Local.routeProgress.total == 2,
+        "Party wire identities exclude the temporary parent prefix"
+    )
     assert(finder:GetCount() == 0 and not finder:Search())
     APRData.fixture.TemporaryRouteState.scenarioCompleted = true
     env.map, env.scenarioID, env.delve = 601, nil, false
     APR:ScheduleDelveRouteRefresh(0.25)
     env:Advance(0.5)
-    assert(APR.ActiveRoute == "synthetic" and APRData.fixture.synthetic == 6,
-        "Completing the temporary delve skips exactly its replaced parent action")
+    assert(
+        APR.ActiveRoute == "synthetic" and APRData.fixture.synthetic == 6,
+        "Completing the temporary delve skips exactly its replaced parent action"
+    )
     assert(APRCustomPath.fixture == customPath and #customPath == 1)
 
     -- Raid conversion tears down progress and partial fragments, while leaving
@@ -348,4 +401,6 @@ end
 
 Journey("retail")
 Journey("forever")
-print("Group journeys: private/world discovery, real invites/wire/UI, party/instance/scenario/delve/raid transitions and restoration passed")
+print(
+    "Group journeys: private/world discovery, real invites/wire/UI, party/instance/scenario/delve/raid transitions and restoration passed"
+)

@@ -12,7 +12,11 @@ dofile("APR-Core/core/Performance.lua")
 dofile("APR-Core/core/ResourceMonitor.lua")
 dofile("APR-Core/ui/panels/PerformanceResources.lua")
 dofile("APR-Core/ui/panels/PerformanceDashboard.lua")
-C_Timer = {NewTicker = function() return {Cancel = function() end} end}
+C_Timer = {
+    NewTicker = function()
+        return { Cancel = function() end }
+    end,
+}
 APRData = {}
 local milliseconds, seconds = 0, 0
 function GetTime() return seconds end
@@ -37,8 +41,12 @@ for index = 1, 9000 do
     APR:FinishPerformanceSample("Name" .. index, milliseconds)
 end
 local metrics, counters = 0, 0
-for _ in pairs(log.summary) do metrics = metrics + 1 end
-for _ in pairs(log.counters) do counters = counters + 1 end
+for _ in pairs(log.summary) do
+    metrics = metrics + 1
+end
+for _ in pairs(log.counters) do
+    counters = counters + 1
+end
 assert(metrics == 8193 and counters == 8193)
 APR.PerformanceDashboard:Show()
 assert(#APR.PerformanceDashboard.bars == 120)
@@ -50,7 +58,9 @@ function dashboard.plot:GetLeft() return 100 end
 function dashboard.plot:GetEffectiveScale() return 2 end
 local cursorX = (100 + 4 + 1195) * 2
 function GetCursorPosition() return cursorX, 0 end
-function APR:SetTooltipText(_, text) GameTooltip.title, GameTooltip.lines = text, {} end
+function APR:SetTooltipText(_, text)
+    GameTooltip.title, GameTooltip.lines = text, {}
+end
 function APR:AddTooltipDoubleLine(_, label, value) GameTooltip.lines[label] = value end
 function APR:AddTooltipLine(_, text) GameTooltip.note = text end
 dashboard:RefreshGraph()
@@ -89,11 +99,14 @@ seconds = 2000
 assert(APR:GetPerformanceTimeline()[120].second == 1001, "Stopped timeline must remain fixed")
 APR:ResetPerformanceCapture()
 assert(not APR.performanceLogging and next(APRData.PerformanceLog.summary) == nil)
-assert(APR:GetPerformanceBucketDetails({second = 1, count = 0, totalMs = 0, maxMs = 0}, 10).average == 0)
+assert(APR:GetPerformanceBucketDetails({ second = 1, count = 0, totalMs = 0, maxMs = 0 }, 10).average == 0)
 
-Enum = {AddOnProfilerMetric = {RecentAverageTime = 1}}
-C_AddOnProfiler = {IsEnabled = function() return true end,
-    GetAddOnMetric = function() return 2 end, GetApplicationMetric = function() return 20 end}
+Enum = { AddOnProfilerMetric = { RecentAverageTime = 1 } }
+C_AddOnProfiler = {
+    IsEnabled = function() return true end,
+    GetAddOnMetric = function() return 2 end,
+    GetApplicationMetric = function() return 20 end,
+}
 function UpdateAddOnMemoryUsage() end
 function GetAddOnMemoryUsage() return 4096 end
 APR:SetPerformanceCapture(true)
@@ -122,10 +135,14 @@ assert(resources.view == previousView and resources.view.finish < seconds)
 resources.freeze.scripts.OnClick()
 assert(resources.view.finish == seconds)
 local frames, fonts = env.frames(), env.fonts()
-for _ = 1, 20 do resources:Refresh() end
+for _ = 1, 20 do
+    resources:Refresh()
+end
 assert(env.frames() == frames and env.fonts() == fonts and #graph.lines == 120 and #graph.fills == 120)
 local points = {}
-for i = 1, 120 do points[i] = {} end
+for i = 1, 120 do
+    points[i] = {}
+end
 points[118].cpuPercent, points[120].cpuPercent = 10, 20
 graph:SetData(points, "cpuPercent", 100, tostring)
 assert(not graph.lines[119]:IsShown() and not graph.fills[119]:IsShown(), "No line or area for missing data")
@@ -134,19 +151,29 @@ assert(graph.fills[120]:GetHeight() <= graph.frame:GetHeight() - 12)
 local gridAnchors, fillAnchors = graph.grids[1].anchors, graph.fills[118].anchors
 local fillHides, lineHides = graph.fills[118].hideCount, graph.lines[120].hideCount
 local segment = graph.lines[120].startPoint
-for _ = 1, 20 do graph:SetData(points, "cpuPercent", 100, tostring) end
-assert(graph.grids[1].anchors == gridAnchors and graph.fills[118].anchors == fillAnchors
-    and graph.fills[118].hideCount == fillHides and graph.lines[120].hideCount == lineHides
-    and graph.lines[120].startPoint == segment,
-    "Repeated identical readings cannot mutate graph geometry or visibility")
+for _ = 1, 20 do
+    graph:SetData(points, "cpuPercent", 100, tostring)
+end
+assert(
+    graph.grids[1].anchors == gridAnchors
+        and graph.fills[118].anchors == fillAnchors
+        and graph.fills[118].hideCount == fillHides
+        and graph.lines[120].hideCount == lineHides
+        and graph.lines[120].startPoint == segment,
+    "Repeated identical readings cannot mutate graph geometry or visibility"
+)
 points[119].cpuPercent = 30
 graph:SetData(points, "cpuPercent", 100, tostring)
-assert(graph.lines[120].startPoint ~= segment and graph.lines[119]:IsShown(),
-    "A new reading redraws the segment to its unchanged neighbor")
+assert(
+    graph.lines[120].startPoint ~= segment and graph.lines[119]:IsShown(),
+    "A new reading redraws the segment to its unchanged neighbor"
+)
 points[119].cpuPercent = nil
 graph:SetData(points, "cpuPercent", 100, tostring)
-assert(not graph.lines[119]:IsShown() and graph.lines[120].startPoint[4] == graph.lines[120].endPoint[4],
-    "Removing a reading restores the gap and isolated neighbor")
+assert(
+    not graph.lines[119]:IsShown() and graph.lines[120].startPoint[4] == graph.lines[120].endPoint[4],
+    "Removing a reading restores the gap and isolated neighbor"
+)
 local previousHeight = graph.fills[120]:GetHeight()
 graph:SetData(points, "cpuPercent", 200, tostring)
 assert(graph.fills[120]:GetHeight() < previousHeight, "Scale changes invalidate unchanged readings")
@@ -160,13 +187,15 @@ dashboard.capture.scripts.OnClick()
 assert(not APR.performanceLogging and not resources.frozenView, "Stop shows the final captured resource values")
 assert(not resources.scanMemory.enabled, "Memory measurement is disabled after capture stops")
 
-print("Performance: bounded capture, peak context, scaled graph hover, frozen graph, metric selection and cleanup passed")
+print(
+    "Performance: bounded capture, peak context, scaled graph hover, frozen graph, metric selection and cleanup passed"
+)
 
 dofile("APR-Core/core/PerformanceScopes.lua")
 dofile("APR-Core/core/DiagnosticReport.lua")
 dashboard.debugCapture.scripts.OnClick()
 assert(APR.debugLogging and dashboard.mode == "logs" and dashboard.modeSelect.value == "logs")
-APRInstrumentation.Message("DEBUG", "Readable trace", {enabled = false})
+APRInstrumentation.Message("DEBUG", "Readable trace", { enabled = false })
 dashboard.query = "Readable trace"
 dashboard:Refresh()
 assert(dashboard.list:GetCount() == 1 and dashboard.list:GetItem(1).data:find("enabled=false", 1, true))
@@ -178,7 +207,9 @@ print("Diagnostic UI: independent debug toggle, log mode, readable data, search,
 
 -- Frozen captures are stable datasets; idle redraws must not sort/rebind them.
 APR:SetPerformanceCapture(true)
-for index = 1, 1200 do APR:RecordPerformanceDuration("Dense" .. index, index) end
+for index = 1, 1200 do
+    APR:RecordPerformanceDuration("Dense" .. index, index)
+end
 dashboard.mode, dashboard.sort, dashboard.query = "summary", "totalMs", ""
 local oldPrepare = dashboard.list.PrepareItems
 dashboard.list.PrepareItems = function() error("Uniform metric rows must not build dense offset arrays") end
@@ -187,17 +218,23 @@ assert(dashboard.list:GetCount() == 1200 and #dashboard.list.offsets == 1)
 APR:RecordPerformanceDuration("Dense1", 5000)
 APR:SetPerformanceCapture(false)
 dashboard:Refresh()
-assert(dashboard.list:GetItem(1).name == "Dense1" and dashboard.list:GetItem(1).count == 2,
-    "Stopping captures the final measurements after the preceding refresh")
+assert(
+    dashboard.list:GetItem(1).name == "Dense1" and dashboard.list:GetItem(1).count == 2,
+    "Stopping captures the final measurements after the preceding refresh"
+)
 local previousRows, reads = APR.GetPerformanceRows, 0
 APR.GetPerformanceRows = function(self, ...)
     reads = reads + 1
     return previousRows(self, ...)
 end
 local generation = dashboard.list.generation
-for _ = 1, 100 do dashboard:Refresh() end
-assert(reads == 0 and dashboard.list.generation == generation,
-    "A stopped capture performs zero repeated row construction or list rebinding")
+for _ = 1, 100 do
+    dashboard:Refresh()
+end
+assert(
+    reads == 0 and dashboard.list.generation == generation,
+    "A stopped capture performs zero repeated row construction or list rebinding"
+)
 dashboard.query = "Dense1200"
 dashboard:Refresh()
 assert(reads == 1 and dashboard.list:GetCount() == 1 and dashboard.list:GetItem(1).name == "Dense1200")
@@ -207,17 +244,37 @@ assert(dashboard.list:GetCount() == 0, "Reset invalidates the viewer's stopped-d
 APR.GetPerformanceRows, dashboard.list.PrepareItems = previousRows, oldPrepare
 print("Performance viewer: indexed publication, final stop update, zero idle row rebuilds, search and reset passed")
 
-local traffic = {{time = 24.5, direction = "RX", kind = "P", channel = "WHISPER",
-    peer = "Invented-Realm", result = "decoded", wire = "1|P|synthetic"}}
+local traffic = {
+    {
+        time = 24.5,
+        direction = "RX",
+        kind = "P",
+        channel = "WHISPER",
+        peer = "Invented-Realm",
+        result = "decoded",
+        wire = "1|P|synthetic",
+    },
+}
 local trafficReads = 0
-APR.CommunicationChannel = {status = "ready", id = 7}
-APR.partyFinder = {traffic = {total = 1, count = 1, sent = 0, received = 1, dropped = 0},
-    GetTrafficRows = function() trafficReads = trafficReads + 1; return traffic end}
+APR.CommunicationChannel = { status = "ready", id = 7 }
+APR.partyFinder = {
+    traffic = { total = 1, count = 1, sent = 0, received = 1, dropped = 0 },
+    GetTrafficRows = function()
+        trafficReads = trafficReads + 1
+        return traffic
+    end,
+}
 dashboard:SetPage("groupFinder")
-assert(dashboard.groupFinderPanel:IsShown() and not dashboard.callsPanel:IsShown()
-    and not dashboard.resourcesPanel:IsShown() and dashboard.trafficList:GetCount() == 1)
+assert(
+    dashboard.groupFinderPanel:IsShown()
+        and not dashboard.callsPanel:IsShown()
+        and not dashboard.resourcesPanel:IsShown()
+        and dashboard.trafficList:GetCount() == 1
+)
 assert(dashboard.groupFinderOverview:GetText():find("RX: 1", 1, true))
-for _ = 1, 100 do dashboard:Refresh() end
+for _ = 1, 100 do
+    dashboard:Refresh()
+end
 assert(trafficReads == 1, "An unchanged transport journal must not rebind its rows")
 report = APR:BuildDiagnosticReport()
 assert(report:find("1|P|synthetic", 1, true) and report:find("Invented-Realm", 1, true))

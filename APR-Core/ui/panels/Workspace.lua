@@ -27,7 +27,8 @@ function UI:Page(parent)
     page.content:SetAllPoints()
     page:Hide()
     return page
-end--[[APR_DIAG]]; UI.Page = APRTrace("APR-Core/ui/panels/Workspace.lua:23:UI:Page#1", UI.Page)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.Page = APRTrace("APR-Core/ui/panels/Workspace.lua:23:UI:Page#1", UI.Page)--[[/APR_DIAG]]
 
 function Workspace:Create()
     local frame = UI:Window("APRWorkspace", APR.title, 1240, 850, "library", "logo")
@@ -36,8 +37,10 @@ function Workspace:Create()
     frame:SetClampRectInsets(-24, 0, 26, 0)
     frame:SetFrameLevel(math.max(3, frame:GetFrameLevel()))
     frame:SetResizeBounds(math.min(940, UIParent:GetWidth() - 40), math.min(740, UIParent:GetHeight() - 60))
-    frame:SetSize(math.max(frame:GetWidth(), math.min(940, UIParent:GetWidth() - 40)),
-        math.max(frame:GetHeight(), math.min(740, UIParent:GetHeight() - 60)))
+    frame:SetSize(
+        math.max(frame:GetWidth(), math.min(940, UIParent:GetWidth() - 40)),
+        math.max(frame:GetHeight(), math.min(740, UIParent:GetHeight() - 60))
+    )
     -- Attached tabs sit outside the shell, leaving its original logo/title/content geometry intact.
     local line = frame:CreateTexture(nil, "ARTWORK")
     line:SetPoint("TOPLEFT", 72, -48)
@@ -45,48 +48,98 @@ function Workspace:Create()
     line:SetHeight(1)
     APR:RegisterThemeRegion(line, "border", 0.6)
     for _, definition in ipairs(definitions) do
-        local tab = UI:Button(frame, definition.label, 130, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:48:callback#3", --[[/APR_DIAG]]function() self:Show(definition.id) end--[[APR_DIAG]])--[[/APR_DIAG]])
+        local tab = UI:Button(
+            frame,
+            definition.label,
+            130, --[[APR_DIAG]]
+            APRTrace(
+                "APR-Core/ui/panels/Workspace.lua:48:callback#3", --[[/APR_DIAG]]
+                function() self:Show(definition.id) end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]]
+        )
         tab:SetHeight(28)
         -- The shell covers the lower edge of the tab, like a folder attached behind its border.
         tab:SetFrameLevel(frame:GetFrameLevel() - 1)
         self.tabs[definition.id] = tab
-        tab.OnSmartNavSelect = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:53:callback#4", --[[/APR_DIAG]]function()
-            self.selectedTab = definition.id
-            self:LayoutTabs()
-        end--[[APR_DIAG]])--[[/APR_DIAG]]
+        tab.OnSmartNavSelect = --[[APR_DIAG]]
+            APRTrace("APR-Core/ui/panels/Workspace.lua:53:callback#4", --[[/APR_DIAG]] function()
+                self.selectedTab = definition.id
+                self:LayoutTabs()
+            end--[[APR_DIAG]])--[[/APR_DIAG]]
         if APR.Gamepad and definition.id ~= "gamepad" then
             local id = definition.id
-            APR.Gamepad:BindDetails(tab, "DOWN", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:59:callback#5", --[[/APR_DIAG]]function() self:Show(id) end--[[APR_DIAG]])--[[/APR_DIAG]],
-                --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:60:callback#6", --[[/APR_DIAG]]function() return self.pages[id] end--[[APR_DIAG]])--[[/APR_DIAG]])
+            APR.Gamepad:BindDetails(
+                tab,
+                "DOWN", --[[APR_DIAG]]
+                APRTrace(
+                    "APR-Core/ui/panels/Workspace.lua:59:callback#5", --[[/APR_DIAG]]
+                    function() self:Show(id) end --[[APR_DIAG]]
+                ) --[[/APR_DIAG]],
+                --[[APR_DIAG]]
+                APRTrace(
+                    "APR-Core/ui/panels/Workspace.lua:60:callback#6", --[[/APR_DIAG]]
+                    function() return self.pages[id] end --[[APR_DIAG]]
+                ) --[[/APR_DIAG]]
+            )
         end
     end
     if APR.Gamepad then
         local tabs = {}
-        for _, definition in ipairs(definitions) do tabs[#tabs + 1] = self.tabs[definition.id] end
+        for _, definition in ipairs(definitions) do
+            tabs[#tabs + 1] = self.tabs[definition.id]
+        end
         APR.Gamepad:LinkHorizontal(tabs)
         frame.gamepadMenu = self.tabs.gamepad
-        APR.Gamepad:SetDirection(frame.gamepadMenu, "DOWN", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:68:callback#7", --[[/APR_DIAG]]function()
-            APR.Gamepad:RequestFocus(self.pages[self.active], frame.gamepadMenu)
-            return true
-        end--[[APR_DIAG]])--[[/APR_DIAG]])
+        APR.Gamepad:SetDirection(
+            frame.gamepadMenu,
+            "DOWN", --[[APR_DIAG]]
+            APRTrace("APR-Core/ui/panels/Workspace.lua:68:callback#7", --[[/APR_DIAG]] function()
+                APR.Gamepad:RequestFocus(self.pages[self.active], frame.gamepadMenu)
+                return true
+            end--[[APR_DIAG]]) --[[/APR_DIAG]]
+        )
         if APR.Gamepad.RegisterInputHandler then
-            APR.Gamepad:RegisterInputHandler(frame, {buttons = {
-                PADLTRIGGER = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:74:callback#8", --[[/APR_DIAG]]function(down) if down then self:CycleTab(-1) end end--[[APR_DIAG]])--[[/APR_DIAG]],
-                PADRTRIGGER = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:75:callback#9", --[[/APR_DIAG]]function(down) if down then self:CycleTab(1) end end--[[APR_DIAG]])--[[/APR_DIAG]],
-            }})
+            APR.Gamepad:RegisterInputHandler(frame, {
+                buttons = {
+                    --[[APR_DIAG]]
+                    PADLTRIGGER = APRTrace(
+                        "APR-Core/ui/panels/Workspace.lua:74:callback#8", --[[/APR_DIAG]]
+                        function(down)
+                            if down then self:CycleTab(-1) end
+                        end --[[APR_DIAG]]
+                    ) --[[/APR_DIAG]],
+                    --[[APR_DIAG]]
+                    PADRTRIGGER = APRTrace(
+                        "APR-Core/ui/panels/Workspace.lua:75:callback#9", --[[/APR_DIAG]]
+                        function(down)
+                            if down then self:CycleTab(1) end
+                        end --[[APR_DIAG]]
+                    ) --[[/APR_DIAG]],
+                },
+            })
         end
     end
     -- The close control belongs to the shell, independent of the title's width.
     frame.close:ClearAllPoints()
     frame.close:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -12, -10)
-    frame:HookScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:82:callback#10", --[[/APR_DIAG]]function() self:LayoutTabs() end--[[APR_DIAG]])--[[/APR_DIAG]])
-    frame:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:83:callback#11", --[[/APR_DIAG]]function()
-        if UI.activeMenu then UI.activeMenu:Hide() end
-        if UI.selectionDialog then UI.selectionDialog:Hide() end
-        if APR.LayoutEditor and APR.LayoutEditor.QueueOnboarding then APR.LayoutEditor.QueueOnboarding() end
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    frame:HookScript(
+        "OnSizeChanged", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/panels/Workspace.lua:82:callback#10", --[[/APR_DIAG]]
+            function() self:LayoutTabs() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
+    frame:HookScript(
+        "OnHide", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/panels/Workspace.lua:83:callback#11", --[[/APR_DIAG]] function()
+            if UI.activeMenu then UI.activeMenu:Hide() end
+            if UI.selectionDialog then UI.selectionDialog:Hide() end
+            if APR.LayoutEditor and APR.LayoutEditor.QueueOnboarding then APR.LayoutEditor.QueueOnboarding() end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     self:LayoutTabs()
-end--[[APR_DIAG]]; Workspace.Create = APRTrace("APR-Core/ui/panels/Workspace.lua:32:Workspace:Create#2", Workspace.Create)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Workspace.Create = APRTrace("APR-Core/ui/panels/Workspace.lua:32:Workspace:Create#2", Workspace.Create)--[[/APR_DIAG]]
 
 function Workspace:RefreshGamepadMenu()
     local frame = self.frame
@@ -95,7 +148,9 @@ function Workspace:RefreshGamepadMenu()
     frame.gamepadMenu:SetShown(visible)
     frame.header:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -52, -3)
     frame.header.Text:SetPoint("RIGHT", -8, 0)
-end--[[APR_DIAG]]; Workspace.RefreshGamepadMenu = APRTrace("APR-Core/ui/panels/Workspace.lua:91:Workspace:RefreshGamepadMenu#12", Workspace.RefreshGamepadMenu)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Workspace.RefreshGamepadMenu =
+    APRTrace("APR-Core/ui/panels/Workspace.lua:91:Workspace:RefreshGamepadMenu#12", Workspace.RefreshGamepadMenu)--[[/APR_DIAG]]
 
 function Workspace:LayoutTabs()
     if not self.frame then return end
@@ -105,7 +160,8 @@ function Workspace:LayoutTabs()
     for index = #definitions, 1, -1 do
         local definition = definitions[index]
         local tab = self.tabs[definition.id]
-        local visible = (definition.id ~= "perf" or showPerf) and APR[definition.controller] ~= nil
+        local visible = (definition.id ~= "perf" or showPerf)
+            and APR[definition.controller] ~= nil
             and (definition.id ~= "gamepad" or APR.Gamepad:IsEnabled())
         tab:SetShown(visible)
         if visible then
@@ -117,7 +173,8 @@ function Workspace:LayoutTabs()
             right = right - width - 4
         end
     end
-end--[[APR_DIAG]]; Workspace.LayoutTabs = APRTrace("APR-Core/ui/panels/Workspace.lua:100:Workspace:LayoutTabs#13", Workspace.LayoutTabs)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Workspace.LayoutTabs = APRTrace("APR-Core/ui/panels/Workspace.lua:100:Workspace:LayoutTabs#13", Workspace.LayoutTabs)--[[/APR_DIAG]]
 
 function Workspace:CycleTab(direction)
     local visible, selected = {}, 1
@@ -138,7 +195,8 @@ function Workspace:CycleTab(direction)
         self:Show(id)
         if APR.Gamepad then APR.Gamepad:RequestFocus(self.pages[id], self.tabs[id]) end
     end
-end--[[APR_DIAG]]; Workspace.CycleTab = APRTrace("APR-Core/ui/panels/Workspace.lua:122:Workspace:CycleTab#14", Workspace.CycleTab)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Workspace.CycleTab = APRTrace("APR-Core/ui/panels/Workspace.lua:122:Workspace:CycleTab#14", Workspace.CycleTab)--[[/APR_DIAG]]
 
 function Workspace:Show(id, section)
     id = id or "route"
@@ -157,7 +215,12 @@ function Workspace:Show(id, section)
     if APR.LayoutEditor and APR.LayoutEditor.active then APR.LayoutEditor:Hide(false) end
     if not self.frame then self:Create() end
     local definition
-    for _, entry in ipairs(definitions) do if entry.id == id then definition = entry; break end end
+    for _, entry in ipairs(definitions) do
+        if entry.id == id then
+            definition = entry
+            break
+        end
+    end
     if not definition then return end
     if UI.activeMenu then UI.activeMenu:Hide() end
     if self.active ~= id and UI.selectionDialog then UI.selectionDialog:Hide() end
@@ -170,7 +233,9 @@ function Workspace:Show(id, section)
     end
     if section and controller.Select then controller.pendingWorkspaceSection = section end
     self.active, self.selectedTab = id, id
-    for key, page in pairs(self.pages) do page:SetShown(key == id) end
+    for key, page in pairs(self.pages) do
+        page:SetShown(key == id)
+    end
     self.frame.header.Text:SetText(APR.title .. "  ·  " .. definition.label)
     self:LayoutTabs()
     self.frame:Show()
@@ -178,10 +243,14 @@ function Workspace:Show(id, section)
     if section and controller.Select then
         if controller.pendingWorkspaceSection then controller:Select(section) end
         controller.pendingWorkspaceSection = nil
-    elseif controller.Refresh and controller.refreshSerial == refreshSerial then controller:Refresh() end
+    elseif controller.Refresh and controller.refreshSerial == refreshSerial then
+        controller:Refresh()
+    end
     if APR.Gamepad then APR.Gamepad:Refresh(self.frame) end
-end--[[APR_DIAG]]; Workspace.Show = APRTrace("APR-Core/ui/panels/Workspace.lua:143:Workspace:Show#15", Workspace.Show)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Workspace.Show = APRTrace("APR-Core/ui/panels/Workspace.lua:143:Workspace:Show#15", Workspace.Show)--[[/APR_DIAG]]
 
 function Workspace:Hide()
     if self.frame then self.frame:Hide() end
-end--[[APR_DIAG]]; Workspace.Hide = APRTrace("APR-Core/ui/panels/Workspace.lua:185:Workspace:Hide#16", Workspace.Hide)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Workspace.Hide = APRTrace("APR-Core/ui/panels/Workspace.lua:185:Workspace:Hide#16", Workspace.Hide)--[[/APR_DIAG]]

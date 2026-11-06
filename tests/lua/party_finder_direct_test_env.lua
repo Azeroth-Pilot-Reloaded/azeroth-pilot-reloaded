@@ -10,13 +10,20 @@ function DirectEnv.Install(env)
     dofile("APR-Core/libs/HereBeDragons/LibStub/LibStub.lua")
     if locale then
         local library = LibStub:NewLibrary("AceLocale-3.0", 1)
-        for key, value in pairs(locale) do library[key] = value end
+        for key, value in pairs(locale) do
+            library[key] = value
+        end
     end
-    table.wipe = table.wipe or function(value) for key in pairs(value) do value[key] = nil end end
+    table.wipe = table.wipe
+        or function(value)
+            for key in pairs(value) do
+                value[key] = nil
+            end
+        end
     securecallfunction = function(callback, ...) return callback(...) end
     if not select(2, xpcall(function(value) return value end, function() end, true)) then
         xpcall = function(callback, handler, ...)
-            local args = {n = select("#", ...), ...}
+            local args = { n = select("#", ...), ... }
             return nativeXpcall(function() return callback(unpack(args, 1, args.n)) end, handler)
         end
     end
@@ -28,7 +35,7 @@ function DirectEnv.Install(env)
         end
     end
     Ambiguate = function(name) return name end
-    DEFAULT_CHAT_FRAME = {AddMessage = function() end}
+    DEFAULT_CHAT_FRAME = { AddMessage = function() end }
     SendChatMessage, BNSendGameData = function() end, function() end
     C_ChatInfo.SendChatMessage = C_ChatInfo.SendChatMessage or function() end
     C_ChatInfo.SendAddonMessageLogged = C_ChatInfo.SendAddonMessageLogged or function() end

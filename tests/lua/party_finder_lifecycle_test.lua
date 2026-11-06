@@ -8,9 +8,21 @@ for _, client in ipairs({ "retail", "forever" }) do
     assert(not finder.fingerprintJob and not finder.fingerprintRoute)
     local timers = #env.timers
     finder.GetLocalState = function() error("Invisible idle discovery must not prepare a route") end
-    local query = { id = "idle-query", context = "12345678", route = "23456789", revision = "34567890",
-        progressId = "main:3", step = 3, total = 20, mode = "nearby", range = 5,
-        minLevel = 0, maxLevel = 0, primary = "fr", languages = 2 }
+    local query = {
+        id = "idle-query",
+        context = "12345678",
+        route = "23456789",
+        revision = "34567890",
+        progressId = "main:3",
+        step = 3,
+        total = 20,
+        mode = "nearby",
+        range = 5,
+        minLevel = 0,
+        maxLevel = 0,
+        primary = "fr",
+        languages = 2,
+    }
     for index = 1, 64 do
         env:Receive("Q", query, "Other" .. index .. "-Home")
         finder:QueueResponse(query, "Direct" .. index .. "-Home")
@@ -34,10 +46,11 @@ env:Advance(11)
 assert(not finder.query and not finder.channelID and #env.left == 1 and finder:GetCount() == 1)
 assert(finder:GetStatus() == "idle", "Cached private results do not claim an active public connection")
 local invitations = 0
-C_PartyInfo = { CanInvite = function() return true end,
-    InviteUnit = function() invitations = invitations + 1 end }
-assert(finder:Invite("Peer-Home") and invitations == 1 and #env:Messages("I", "WHISPER") == 1,
-    "Leaving public discovery must not prevent an explicit invitation from a recent private result")
+C_PartyInfo = { CanInvite = function() return true end, InviteUnit = function() invitations = invitations + 1 end }
+assert(
+    finder:Invite("Peer-Home") and invitations == 1 and #env:Messages("I", "WHISPER") == 1,
+    "Leaving public discovery must not prevent an explicit invitation from a recent private result"
+)
 assert(finder.eventFrame.events.CHAT_MSG_ADDON and finder.eventFrame.events.GROUP_ROSTER_UPDATE)
 
 -- Auto scanning works invisibly and releases the channel between scans.
@@ -72,7 +85,9 @@ assert(finder.query and finder.channelID and #env.joined == 2)
 env = Fixture.New()
 finder = env.finder
 env.definition = { steps = {} }
-for index = 1, 1000 do env.definition.steps[index] = { PickUp = { 700000 + index } } end
+for index = 1, 1000 do
+    env.definition.steps[index] = { PickUp = { 700000 + index } }
+end
 finder.localDirty = true
 finder:GetLocalState()
 local abandoned = finder.fingerprintJob
@@ -84,8 +99,10 @@ assert(abandoned.visited == 0 and env:ActiveTimers() == 0, "Cancelled hashing co
 finder:Search()
 assert(finder.fingerprintJob and finder.fingerprintJob ~= abandoned)
 env:Advance(3)
-assert(finder.query and finder.revision and not finder.fingerprintJob,
-    "Cancellation must invalidate preparation so a deliberate search can finish it")
+assert(
+    finder.query and finder.revision and not finder.fingerprintJob,
+    "Cancellation must invalidate preparation so a deliberate search can finish it"
+)
 
 -- Hiding cancels pending presence while retaining the search the user actually requested.
 env = Fixture.New()
@@ -96,10 +113,16 @@ assert(next(finder.responses))
 finder:SetOption("visible", false)
 assert(finder.query and finder.channelID and not next(finder.responses))
 local requests, timerCount = 0, #env.timers
-for _ in pairs(finder.requestTimes) do requests = requests + 1 end
-for index = 1, 64 do env:Receive("Q", env:Query(), "Ignored" .. index .. "-Home") end
+for _ in pairs(finder.requestTimes) do
+    requests = requests + 1
+end
+for index = 1, 64 do
+    env:Receive("Q", env:Query(), "Ignored" .. index .. "-Home")
+end
 local after = 0
-for _ in pairs(finder.requestTimes) do after = after + 1 end
+for _ in pairs(finder.requestTimes) do
+    after = after + 1
+end
 assert(after == requests and #env.timers == timerCount, "Invisible active queries do not account for public requests")
 env:Advance(1) -- The next packet gets a fresh receive-rate budget.
 env:Receive("P", env:Presence(), "Result-Home", "WHISPER")
@@ -114,7 +137,9 @@ env = Fixture.New({ settings = { visibleLanguages = { fr = true } } })
 finder = env.finder
 local query = env:Query({ primary = "en", languages = 1 })
 timerCount = #env.timers
-for index = 1, 64 do env:Receive("Q", query, "Excluded" .. index .. "-Home") end
+for index = 1, 64 do
+    env:Receive("Q", query, "Excluded" .. index .. "-Home")
+end
 assert(#env.timers == timerCount + 1 and finder.expiryTimer and not next(finder.responses))
 env:Advance(121)
 assert(not next(finder.requestTimes) and env:ActiveTimers() == 0)
@@ -199,26 +224,48 @@ for _, client in ipairs({ "retail", "forever" }) do
     finder:SetOption("showButton", false)
     finder:SetOption("showBadge", false)
     finder:SetOption("showButton", true)
-    assert(#env.timers == timers + 1 and finder.notifyTimer,
-        "Presentation changes share one display notification")
-    assert(finder.query == activeQuery and finder.responses == responses and responses["Requester-Home"] == response,
-        "Changing presentation or audio retains the active search and queued private answer")
-    assert(finder.replyTimer == replyTimer and not replyTimer.cancelled
-        and finder.autoTimer == autoTimer and not autoTimer.cancelled,
-        "Changing presentation or audio cannot postpone discovery timers")
-    assert(finder.localState == snapshot and not finder.localDirty and finder.revision == revision
-        and not finder.fingerprintJob and transportRefreshes == 0 and progressReads == 0,
-        "Unrelated settings must not rebuild route state or refresh the transport")
+    assert(#env.timers == timers + 1 and finder.notifyTimer, "Presentation changes share one display notification")
+    assert(
+        finder.query == activeQuery and finder.responses == responses and responses["Requester-Home"] == response,
+        "Changing presentation or audio retains the active search and queued private answer"
+    )
+    assert(
+        finder.replyTimer == replyTimer
+            and not replyTimer.cancelled
+            and finder.autoTimer == autoTimer
+            and not autoTimer.cancelled,
+        "Changing presentation or audio cannot postpone discovery timers"
+    )
+    assert(
+        finder.localState == snapshot
+            and not finder.localDirty
+            and finder.revision == revision
+            and not finder.fingerprintJob
+            and transportRefreshes == 0
+            and progressReads == 0,
+        "Unrelated settings must not rebuild route state or refresh the transport"
+    )
     assert(#env.joined == joins and #env.left == leaves and #env.sent == messages)
     local settings = finder:GetSettings()
-    assert(settings.notifications and settings.notificationCooldown == 90 and not settings.soundEnabled
-        and settings.soundChannel == "Dialog" and settings.showButton and not settings.showBadge)
-    assert(settings.sounds.declined.enabled and settings.sounds.declined.sound == "media:Example"
-        and settings.sounds.declined.cooldown == 9)
+    assert(
+        settings.notifications
+            and settings.notificationCooldown == 90
+            and not settings.soundEnabled
+            and settings.soundChannel == "Dialog"
+            and settings.showButton
+            and not settings.showBadge
+    )
+    assert(
+        settings.sounds.declined.enabled
+            and settings.sounds.declined.sound == "media:Example"
+            and settings.sounds.declined.cooldown == 9
+    )
 
     env:Advance(4)
-    assert(#env:Messages("P", "WHISPER") == 1 and env:Messages("P", "WHISPER")[1].target == "Requester-Home",
-        "The queued answer is still sent after settings are changed")
+    assert(
+        #env:Messages("P", "WHISPER") == 1 and env:Messages("P", "WHISPER")[1].target == "Requester-Home",
+        "The queued answer is still sent after settings are changed"
+    )
     assert(finder.query == activeQuery and finder.autoTimer == autoTimer and not autoTimer.cancelled)
 end
 
@@ -228,43 +275,51 @@ for _, client in ipairs({ "retail", "forever" }) do
     env = Fixture.New({ client = client, outgoingRestricted = true })
     finder = env.finder
     assert(not finder:IsRestricted() and finder.channelID and finder:Search())
-    assert(#env:Messages("Q", "CHANNEL") == 1 and finder:GetStatus() == "searching",
-        "A realm flag alone cannot suppress a successful native channel send")
+    assert(
+        #env:Messages("Q", "CHANNEL") == 1 and finder:GetStatus() == "searching",
+        "A realm flag alone cannot suppress a successful native channel send"
+    )
 
     env = Fixture.New({ client = client, restricted = true })
     finder = env.finder
     assert(not finder:Search() and finder:GetStatus() == "restricted")
-    assert(#env.joined == 0 and #env.sent == 0 and not finder.fingerprintJob,
-        "Active chat lockdown prevents route preparation, joining and native sends")
+    assert(
+        #env.joined == 0 and #env.sent == 0 and not finder.fingerprintJob,
+        "Active chat lockdown prevents route preparation, joining and native sends"
+    )
     env.restricted = false
     env:Event("PLAYER_REGEN_ENABLED")
     env:Advance(6)
-    assert(finder.query and #env:Messages("Q") == 1,
-        "Discovery recovers after actual lockdown ends")
+    assert(finder.query and #env:Messages("Q") == 1, "Discovery recovers after actual lockdown ends")
 
     env = Fixture.New({ client = client })
     finder = env.finder
     env.sendResult = Enum.SendAddonMessageResult.AddOnMessageLockdown
     local ok, status = finder:Search()
-    assert(not ok and status == "restricted" and #env:Messages("Q") == 0 and #env.sent == 1,
-        "A native lockdown rejection is still reported even when the preflight API returns false")
+    assert(
+        not ok and status == "restricted" and #env:Messages("Q") == 0 and #env.sent == 1,
+        "A native lockdown rejection is still reported even when the preflight API returns false"
+    )
     env:Advance(200)
-    assert(#env.sent == 1 and env:ActiveTimers() == 0,
-        "A rejected manual query cannot create an automatic retry loop")
+    assert(#env.sent == 1 and env:ActiveTimers() == 0, "A rejected manual query cannot create an automatic retry loop")
     env.sendResult = 0
     assert(finder:Search() and #env:Messages("Q") == 1)
 
     env = Fixture.New({ client = client, instance = true, outgoingRestricted = true })
     finder = env.finder
     assert(not finder:IsRestricted() and finder:IsDiscoveryInstance())
-    assert(not finder:Search() and finder:GetStatus() == "instance"
-        and #env.joined == 0 and #env.sent == 0 and not finder.fingerprintJob,
-        "Outdoor discovery policy has its own status, not a claim that the game blocked communications")
+    assert(
+        not finder:Search()
+            and finder:GetStatus() == "instance"
+            and #env.joined == 0
+            and #env.sent == 0
+            and not finder.fingerprintJob,
+        "Outdoor discovery policy has its own status, not a claim that the game blocked communications"
+    )
     env.instance = false
     env:Event("PLAYER_ENTERING_WORLD")
     env:Advance(6)
-    assert(finder.query and #env:Messages("Q") == 1,
-        "Leaving an instance resumes normal discovery")
+    assert(finder.query and #env:Messages("Q") == 1, "Leaving an instance resumes normal discovery")
 
     -- Pending replies recheck the instance policy before the coalesced zone refresh.
     env = Fixture.New({ client = client })
@@ -278,13 +333,17 @@ for _, client in ipairs({ "retail", "forever" }) do
     C_ChatInfo.InChatMessagingLockdown = nil
     C_ChatInfo.AreOutgoingAddonChatMessagesRestricted = nil
     IsInInstance = nil
-    assert(not finder:IsRestricted() and not finder:IsDiscoveryInstance(),
-        "Optional restriction and instance APIs can be absent on a client variant")
+    assert(
+        not finder:IsRestricted() and not finder:IsDiscoveryInstance(),
+        "Optional restriction and instance APIs can be absent on a client variant"
+    )
     C_ChatInfo.InChatMessagingLockdown = function() return nil end
     assert(not finder:IsRestricted(), "Unavailable restriction data does not manufacture a blocked state")
 end
 
-print("Companion lifecycle: invisible idle, temporary search membership, private invitations, expiry coalescing, scoped settings and honest restriction/recovery states passed")
+print(
+    "Companion lifecycle: invisible idle, temporary search membership, private invitations, expiry coalescing, scoped settings and honest restriction/recovery states passed"
+)
 
 -- Disabling revokes all queued private traffic, including an invitation context.
 env = Fixture.New({ invites = true })
@@ -293,10 +352,14 @@ C_PartyInfo = { CanInvite = function() return true end, InviteUnit = function() 
 assert(finder:Search())
 env:Receive("P", env:Presence(), "Peer-Home", "WHISPER")
 env.directCTL.avail, env.directCTL.bQueueing = 0, true
-for _, priority in pairs(env.directCTL.Prio) do priority.avail = 0 end
+for _, priority in pairs(env.directCTL.Prio) do
+    priority.avail = 0
+end
 assert(finder:Invite("Peer-Home") and #env:Messages("I") == 0)
 finder:SetOption("enabled", false)
 finder:SetOption("enabled", true)
 env:Advance(3)
-assert(#env:Messages("I") == 0 and not next(finder.outgoingInvites),
-    "An invitation erased by disabling cannot reappear from AceComm after reenabling")
+assert(
+    #env:Messages("I") == 0 and not next(finder.outgoingInvites),
+    "An invitation erased by disabling cannot reappear from AceComm after reenabling"
+)

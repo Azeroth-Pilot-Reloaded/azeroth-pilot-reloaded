@@ -7,20 +7,27 @@ local function fixture()
         end
         return nativeTonumber(value, ...)
     end
-    function LibStub() return { GetLocale = function() return {} end } end
+    function LibStub()
+        return { GetLocale = function() return {} end }
+    end
     function debugprofilestop() return state.clock end
-    function geterrorhandler() return function(message) state.errors[#state.errors + 1] = message end end
-    C_Timer = { NewTimer = function(_, callback)
-        local timer = { callback = callback, Cancel = function(self) self.cancelled = true end }
-        state.timers[#state.timers + 1] = timer
-        return timer
-    end }
+    function geterrorhandler()
+        return function(message) state.errors[#state.errors + 1] = message end
+    end
+    C_Timer = {
+        NewTimer = function(_, callback)
+            local timer = { callback = callback, Cancel = function(self) self.cancelled = true end }
+            state.timers[#state.timers + 1] = timer
+            return timer
+        end,
+    }
     APR = { PlayerID = "player", RouteQuestStepList = {}, questionDialog = {} }
     APRData, APRCustomPath = { player = {} }, { player = {} }
     function APR:GetRouteData(key)
         state.routeReads = (state.routeReads or 0) + 1
         if state.fail or state.routeReads == state.failAt then
-            state.fail = false; error("Synthetic data not ready")
+            state.fail = false
+            error("Synthetic data not ready")
         end
         local route = self.RouteQuestStepList[key]
         return route and not route.incompatible and route or nil
@@ -32,11 +39,13 @@ local function fixture()
         state.popups[#state.popups + 1] = routes
     end
     function state:EmptyStep()
-        return setmetatable({}, { __index = function(_, key)
-            if key == "PickUp" or key == "Done" then
-                self.reads, self.clock = self.reads + 1, self.clock + self.cost
-            end
-        end })
+        return setmetatable({}, {
+            __index = function(_, key)
+                if key == "PickUp" or key == "Done" then
+                    self.reads, self.clock = self.reads + 1, self.clock + self.cost
+                end
+            end,
+        })
     end
     function state:Tick()
         local timer = table.remove(self.timers, 1)
@@ -47,7 +56,8 @@ local function fixture()
     function state:Drain()
         local count = 0
         while #self.timers > 0 do
-            count = count + 1; assert(count < 2000, "Index construction must terminate")
+            count = count + 1
+            assert(count < 2000, "Index construction must terminate")
             self:Tick()
         end
         assert(not APR._routeTriggerBuild)
@@ -58,14 +68,26 @@ end
 
 local state = fixture()
 local longSteps = {}
-for index = 1, 3000 do longSteps[index] = state:EmptyStep() end
+for index = 1, 3000 do
+    longSteps[index] = state:EmptyStep()
+end
 APR.RouteQuestStepList = {
     large = { label = "Invented long guide", steps = longSteps },
-    alpha = { label = "Invented alpha", steps = {
-        { PickUp = { 7 } }, { PickUp = { 11 }, Done = { 21, 22 } }, { Done = { 23 } } } },
-    zeta = { label = "Invented zeta", steps = {
-        { PickUp = { 11, 11, "12", 1 }, Done = { 31 } },
-        { PickUp = { 13, 14, 15, 16, 17 }, Done = { 32 } } } },
+    alpha = {
+        label = "Invented alpha",
+        steps = {
+            { PickUp = { 7 } },
+            { PickUp = { 11 }, Done = { 21, 22 } },
+            { Done = { 23 } },
+        },
+    },
+    zeta = {
+        label = "Invented zeta",
+        steps = {
+            { PickUp = { 11, 11, "12", 1 }, Done = { 31 } },
+            { PickUp = { 13, 14, 15, 16, 17 }, Done = { 32 } },
+        },
+    },
     hidden = { label = "Hidden", hiddenFromSelection = true, steps = { { PickUp = { 11 } } } },
     temporary = { label = "Temporary", temporary = true, steps = { { PickUp = { 11 } } } },
     delve = { label = "Delve", steps = { { PickUp = { 11 } } } },
@@ -73,9 +95,13 @@ APR.RouteQuestStepList = {
 }
 APRData.player["alpha-SkippedStep"] = 1
 APR:InitRouteTriggersSuggestion()
-assert(state.reads == 0 and #state.timers == 1,
-    "Initialization schedules indexing without reading the authored step catalogue")
-for _ = 1, 100 do APR:HandleTemporaryRouteTriggerQuestAccepted(11) end
+assert(
+    state.reads == 0 and #state.timers == 1,
+    "Initialization schedules indexing without reading the authored step catalogue"
+)
+for _ = 1, 100 do
+    APR:HandleTemporaryRouteTriggerQuestAccepted(11)
+end
 APR:HandleTemporaryRouteTriggerQuestAccepted(1)
 APR:HandleTemporaryRouteTriggerQuestAccepted("invalid")
 assert(#state.popups == 0, "Partial indexes cannot emit incomplete suggestions")
@@ -88,21 +114,31 @@ while #state.timers > 0 do
 end
 assert(slices > 1 and state.reads == 6000 and not APR._routeTriggerBuild)
 local triggers = APR.RouteTriggersSuggestion.routes
-assert(table.concat(triggers.alpha.triggers, ",") == "11,21,22,23",
-    "Skipped steps are excluded and hand-ins follow the available pickups")
-assert(table.concat(triggers.zeta.triggers, ",") == "11,12,13,14,15,16",
-    "Six distinct pickups take priority over every fallback hand-in")
+assert(
+    table.concat(triggers.alpha.triggers, ",") == "11,21,22,23",
+    "Skipped steps are excluded and hand-ins follow the available pickups"
+)
+assert(
+    table.concat(triggers.zeta.triggers, ",") == "11,12,13,14,15,16",
+    "Six distinct pickups take priority over every fallback hand-in"
+)
 assert(not triggers.hidden and not triggers.temporary and not triggers.delve and not triggers.otherClient)
-assert(#state.popups == 1 and #state.popups[1] == 2
-    and state.popups[1][1].key == "alpha" and state.popups[1][2].key == "zeta",
-    "Queued bursts replay once with complete, deterministic route choices")
+assert(
+    #state.popups == 1
+        and #state.popups[1] == 2
+        and state.popups[1][1].key == "alpha"
+        and state.popups[1][2].key == "zeta",
+    "Queued bursts replay once with complete, deterministic route choices"
+)
 APR:HandleTemporaryRouteTriggerQuestAccepted(7)
 assert(#state.popups == 1, "A skipped pickup cannot become a trigger")
 
 state = fixture()
 state.cost = 0.25
 longSteps = {}
-for index = 1, 100 do longSteps[index] = state:EmptyStep() end
+for index = 1, 100 do
+    longSteps[index] = state:EmptyStep()
+end
 APR.RouteQuestStepList.test = { label = "Time budget", steps = longSteps }
 APR:InitRouteTriggersSuggestion()
 while #state.timers > 0 do
@@ -114,7 +150,9 @@ assert(state.reads == 200)
 
 state = fixture()
 local invalidIDs = {}
-for index = 1, 1000 do invalidIDs[index] = "invalid-id" end
+for index = 1, 1000 do
+    invalidIDs[index] = "invalid-id"
+end
 APR.RouteQuestStepList.test = { label = "Large single step", steps = { { PickUp = invalidIDs, Done = { 61 } } } }
 APR:InitRouteTriggersSuggestion()
 while #state.timers > 0 do
@@ -122,8 +160,10 @@ while #state.timers > 0 do
     state:Tick()
     assert(state.numericReads - before <= 64, "One oversized quest field must yield between its entries")
 end
-assert(state.numericReads == 1000 and APR.RouteTriggersSuggestion.routes.test.triggers[1] == 61,
-    "Invalid candidate IDs cannot prevent the later valid hand-in fallback")
+assert(
+    state.numericReads == 1000 and APR.RouteTriggersSuggestion.routes.test.triggers[1] == 61,
+    "Invalid candidate IDs cannot prevent the later valid hand-in fallback"
+)
 
 state = fixture()
 APR.RouteQuestStepList.test = { label = "Restart", steps = { { PickUp = { 41 } } } }
@@ -172,9 +212,12 @@ APR.RouteQuestStepList.second = { label = "Second", steps = { { PickUp = { 82 } 
 state.failAt = 2
 APR:InitRouteTriggersSuggestion()
 state:Drain()
-assert(#state.errors == 1 and not next(APR.RouteTriggersSuggestion.routes)
-    and not next(APR.RouteTriggersSuggestion.byQuestID),
-    "A failure after registering one route discards the incomplete index")
+assert(
+    #state.errors == 1
+        and not next(APR.RouteTriggersSuggestion.routes)
+        and not next(APR.RouteTriggersSuggestion.byQuestID),
+    "A failure after registering one route discards the incomplete index"
+)
 APR:HandleTemporaryRouteTriggerQuestAccepted(81)
 APR:HandleTemporaryRouteTriggerQuestAccepted(82)
 assert(#state.popups == 0, "A failed generation cannot expose partial choices")

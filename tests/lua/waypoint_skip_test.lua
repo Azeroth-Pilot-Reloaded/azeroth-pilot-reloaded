@@ -12,27 +12,49 @@ function GetTime() return 10 end
 function IsFlyableArea() return true end
 function IsIndoors() return false end
 function LibStub()
-    return { GetLocale = function() return setmetatable({}, { __index = function(_, key) return key end }) end }
+    return {
+        GetLocale = function()
+            return setmetatable({}, { __index = function(_, key) return key end })
+        end,
+    }
 end
 C_Map = { GetBestMapForUnit = function() return position.uiMapID end }
-C_Timer = { NewTimer = function(delay, callback)
-    local timer = { delay = delay, callback = callback, Cancel = function(self) self.cancelled = true end }
-    timers[#timers + 1] = timer
-    return timer
-end }
+C_Timer = {
+    NewTimer = function(delay, callback)
+        local timer = { delay = delay, callback = callback, Cancel = function(self) self.cancelled = true end }
+        timers[#timers + 1] = timer
+        return timer
+    end,
+}
 C_QuestLog = { IsQuestFlaggedCompleted = function() return false end }
 local route = {}
 for index = 1, 5 do
-    route[index] = { Waypoint = 1, NonSkippableWaypoint = true, Zone = 2215, Range = 20,
+    route[index] = {
+        Waypoint = 1,
+        NonSkippableWaypoint = true,
+        Zone = 2215,
+        Range = 20,
         Coord = { x = index * 1000, y = 100 },
-        ZoneStepTrigger = { mapID = 2215, x = index * 1000, y = 100, Range = 20 } }
+        ZoneStepTrigger = { mapID = 2215, x = index * 1000, y = 100, Range = 20 },
+    }
 end
-APR = { PlayerID = "player", ActiveRoute = "route", RouteQuestStepList = { route = route },
-    settings = { profile = { enableAddon = true } }, stepHandlers = {}, IsInRouteZone = true,
+APR = {
+    PlayerID = "player",
+    ActiveRoute = "route",
+    RouteQuestStepList = { route = route },
+    settings = { profile = { enableAddon = true } },
+    stepHandlers = {},
+    IsInRouteZone = true,
     GAME_VERSIONS = { Forever = "forever" },
     currentStep = { AddQuestSteps = noop, AddExtraLineText = noop, AddQuestDivider = noop },
-    Arrow = { SetCoord = noop, SetArrowActive = noop }, event = { QueueStepRefresh = noop },
-    PrintInfo = noop, UpdateMapId = noop, UpdateQuest = noop, SendMessage = noop, Debug = noop }
+    Arrow = { SetCoord = noop, SetArrowActive = noop },
+    event = { QueueStepRefresh = noop },
+    PrintInfo = noop,
+    UpdateMapId = noop,
+    UpdateQuest = noop,
+    SendMessage = noop,
+    Debug = noop,
+}
 APRData = { player = { route = 1 } }
 function APR:NewModule() return {} end
 function APR:GetRouteSteps() return route end
@@ -64,8 +86,10 @@ for _, command in ipairs({ "skip", "s", "skippiedoodaa" }) do
     local transitions = #APR:GetRecentTransitions()
     APR.command:SlashCmd(command)
     assert(progress() == 2, command .. " must skip one waypoint, even on an all-waypoint route")
-    assert(#APR:GetRecentTransitions() == transitions + 1,
-        "The command and navigation cancellation must write authored progress exactly once")
+    assert(
+        #APR:GetRecentTransitions() == transitions + 1,
+        "The command and navigation cancellation must write authored progress exactly once"
+    )
     assert(APR:PreviousQuestStep() and progress() == 1, "Rollback restores the skipped authored waypoint")
 end
 
@@ -160,12 +184,15 @@ local segments = {
 }
 nav:Publish({ segments = segments }, context, generation)
 assert(nav:IsNavigating() and nav.cursor == 1 and progress() == 1)
-position.x = 100; nav:PollArrival()
+position.x = 100
+nav:PollArrival()
 assert(nav.cursor == 2 and nav:GetActiveStep().mandatory and progress() == 1)
 nav:PollArrival() -- Observe the mandatory passage's departure before its arrival.
-position.x = 200; nav:PollArrival()
+position.x = 200
+nav:PollArrival()
 assert(nav.cursor == 2, "A mandatory passage cannot complete from the wrong map")
-position.uiMapID = 2255; nav:PollArrival()
+position.uiMapID = 2255
+nav:PollArrival()
 assert(nav.cursor == 3 and progress() == 1, "Temporary passage arrival only advances its guidance cursor")
 nextClick()
 assert(progress() == 2 and not nav:IsNavigating() and nav.cursor == 1)
@@ -174,4 +201,6 @@ nav:PollArrival()
 assert(progress() == 2 and not nav:IsNavigating(), "A stale itinerary cannot republish after manual skip")
 previousClick()
 assert(progress() == 1 and not nav:IsNavigating(), "Undo cancels guidance and returns to the skipped authored index")
-print("Waypoint skip: command aliases/next button, protected consecutive steps, undo, stale timers, arrivals and transient cursors passed")
+print(
+    "Waypoint skip: command aliases/next button, protected consecutive steps, undo, stale timers, arrivals and transient cursors passed"
+)

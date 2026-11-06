@@ -38,7 +38,7 @@ APR.Color = {
     midGray = { 0.5, 0.5, 0.5 },
     darkGray = { 0.2, 0.2, 0.2 },
     defaultBackdrop = { 0, 0, 0, 0.75 },
-    defaultLightBackdrop = { 0, 0, 0, 0.4 }
+    defaultLightBackdrop = { 0, 0, 0, 0.4 },
 }
 
 APR.HEXColor = {
@@ -46,7 +46,7 @@ APR.HEXColor = {
     black = "000000",
     red = "ff3333",
     green = "00ff00",
-    yellow = "33ecc00f"
+    yellow = "33ecc00f",
 }
 
 -- Quest
@@ -68,8 +68,9 @@ function APR:OnInitialize()
     self.tocVersion = tonumber(GetAddOnMetadata("APR", "X-Interface"))
     self.interfaceVersion = select(4, GetBuildInfo())
     if self:GetGameVersion() == APR.GAME_VERSIONS.Forever then
-        self.tocVersion = tonumber(GetAddOnMetadata("APR", "Interface-Camelot")) or
-            tonumber(GetAddOnMetadata("APR", "Interface")) or self.tocVersion
+        self.tocVersion = tonumber(GetAddOnMetadata("APR", "Interface-Camelot"))
+            or tonumber(GetAddOnMetadata("APR", "Interface"))
+            or self.tocVersion
     end
     self.isBetaServer = GetCVar("portal") == "test"
 
@@ -184,7 +185,8 @@ function APR:OnInitialize()
     self.AppearanceIntro:Initialize()
     self.LayoutEditor:InitializeOnboarding()
     if self.partyFinder then self.partyFinder:OnInit() end
-end--[[APR_DIAG]]; APR.OnInitialize = APRTrace("APR-Core/core/Core.lua:56:APR:OnInitialize#1", APR.OnInitialize)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.OnInitialize = APRTrace("APR-Core/core/Core.lua:56:APR:OnInitialize#1", APR.OnInitialize)--[[/APR_DIAG]]
 
 -- Secret/taint helpers (12.0.0+). Attached during OnInitialize.
 function APR:InitSecretUtils()
@@ -193,7 +195,8 @@ function APR:InitSecretUtils()
     else
         self.Secret = {}
     end
-end--[[APR_DIAG]]; APR.InitSecretUtils = APRTrace("APR-Core/core/Core.lua:190:APR:InitSecretUtils#2", APR.InitSecretUtils)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.InitSecretUtils = APRTrace("APR-Core/core/Core.lua:190:APR:InitSecretUtils#2", APR.InitSecretUtils)--[[/APR_DIAG]]
 
 function APR:InitIdentity()
     local userId = (self.SafeUnitGUID and self:SafeUnitGUID("player", UNKNOWN))
@@ -212,4 +215,5 @@ function APR:InitIdentity()
             self.ClassLocalName, self.ClassName, self.ClassId = classLocal, className, classId
         end
     end
-end--[[APR_DIAG]]; APR.InitIdentity = APRTrace("APR-Core/core/Core.lua:198:APR:InitIdentity#3", APR.InitIdentity)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.InitIdentity = APRTrace("APR-Core/core/Core.lua:198:APR:InitIdentity#3", APR.InitIdentity)--[[/APR_DIAG]]

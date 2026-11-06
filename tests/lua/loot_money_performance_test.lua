@@ -1,4 +1,6 @@
-function LibStub() return { GetLocale = function() return {} end } end
+function LibStub()
+    return { GetLocale = function() return {} end }
+end
 APR = {}
 NUM_BAG_SLOTS = 4
 local reads, prices, bags, equipped = 0, {}, {}, {}
@@ -54,4 +56,6 @@ for _, modern in ipairs({ true, false }) do
     _, resale = APR:GetLootMoneyProgress({ copper = 100, junkOnly = true })
     assert(resale == 18 and reads == 3, "Items without a link keep their numeric-ID fallback")
 end
-print("Loot money: 200 stacks share one price query; distinct variants, late/missing prices and modern/legacy filtering passed")
+print(
+    "Loot money: 200 stacks share one price query; distinct variants, late/missing prices and modern/legacy filtering passed"
+)

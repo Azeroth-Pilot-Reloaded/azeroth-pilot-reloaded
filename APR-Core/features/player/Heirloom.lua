@@ -31,7 +31,9 @@ function APR.heirloom:GetUsedMaps()
     end
     self.usedMaps = self.usedMaps or {}
     return self.usedMaps
-end--[[APR_DIAG]]; APR.heirloom.GetUsedMaps = APRTrace("APR-Core/features/player/Heirloom.lua:26:APR.heirloom:GetUsedMaps#1", APR.heirloom.GetUsedMaps)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.heirloom.GetUsedMaps =
+    APRTrace("APR-Core/features/player/Heirloom.lua:26:APR.heirloom:GetUsedMaps#1", APR.heirloom.GetUsedMaps)--[[/APR_DIAG]]
 
 function APR.heirloom:IsMapUsed(entry)
     if self:GetUsedMaps()[entry.id] then return true end
@@ -40,7 +42,9 @@ function APR.heirloom:IsMapUsed(entry)
         return select(13, GetAchievementInfo(entry.achievementID)) == true
     end
     return false
-end--[[APR_DIAG]]; APR.heirloom.IsMapUsed = APRTrace("APR-Core/features/player/Heirloom.lua:36:APR.heirloom:IsMapUsed#2", APR.heirloom.IsMapUsed)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.heirloom.IsMapUsed =
+    APRTrace("APR-Core/features/player/Heirloom.lua:36:APR.heirloom:IsMapUsed#2", APR.heirloom.IsMapUsed)--[[/APR_DIAG]]
 
 function APR.heirloom:OnMapSpellSucceeded(unit, spellID)
     if APR.CanAccessValue and (not APR:CanAccessValue(unit) or not APR:CanAccessValue(spellID)) then return end
@@ -56,7 +60,11 @@ function APR.heirloom:OnMapSpellSucceeded(unit, spellID)
         end
     end
     if changed then self:RefreshFrameAnchor() end
-end--[[APR_DIAG]]; APR.heirloom.OnMapSpellSucceeded = APRTrace("APR-Core/features/player/Heirloom.lua:45:APR.heirloom:OnMapSpellSucceeded#3", APR.heirloom.OnMapSpellSucceeded)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.heirloom.OnMapSpellSucceeded = APRTrace(
+    "APR-Core/features/player/Heirloom.lua:45:APR.heirloom:OnMapSpellSucceeded#3",
+    APR.heirloom.OnMapSpellSucceeded
+)--[[/APR_DIAG]]
 
 function APR.heirloom:EnsureMapWatcher()
     if self.mapWatcher or APR:GetGameVersion() == APR.GAME_VERSIONS.Forever then return end
@@ -66,20 +74,28 @@ function APR.heirloom:EnsureMapWatcher()
     frame:RegisterEvent("SPELLS_CHANGED")
     frame:RegisterEvent("ACHIEVEMENT_EARNED")
     frame:RegisterEvent("GET_ITEM_INFO_RECEIVED")
-    frame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/player/Heirloom.lua:69:callback#5", --[[/APR_DIAG]]function(_, event, unit, result, spellID)
-        if event == "UNIT_SPELLCAST_SUCCEEDED" then
-            self:OnMapSpellSucceeded(unit, spellID)
-        elseif event == "GET_ITEM_INFO_RECEIVED" then
-            if result and pendingMapItems[unit] then
-                pendingMapItems[unit] = nil
-                self:RefreshFrameAnchor()
-            end
-        else
-            self:RefreshFrameAnchor()
-        end
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    frame:SetScript(
+        "OnEvent", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/features/player/Heirloom.lua:69:callback#5", --[[/APR_DIAG]]
+            function(_, event, unit, result, spellID)
+                if event == "UNIT_SPELLCAST_SUCCEEDED" then
+                    self:OnMapSpellSucceeded(unit, spellID)
+                elseif event == "GET_ITEM_INFO_RECEIVED" then
+                    if result and pendingMapItems[unit] then
+                        pendingMapItems[unit] = nil
+                        self:RefreshFrameAnchor()
+                    end
+                else
+                    self:RefreshFrameAnchor()
+                end
+            end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
     self.mapWatcher = frame
-end--[[APR_DIAG]]; APR.heirloom.EnsureMapWatcher = APRTrace("APR-Core/features/player/Heirloom.lua:61:APR.heirloom:EnsureMapWatcher#4", APR.heirloom.EnsureMapWatcher)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.heirloom.EnsureMapWatcher =
+    APRTrace("APR-Core/features/player/Heirloom.lua:61:APR.heirloom:EnsureMapWatcher#4", APR.heirloom.EnsureMapWatcher)--[[/APR_DIAG]]
 
 local function HasHeirlooms()
     if not C_Heirloom or not C_Heirloom.GetHeirloomItemIDs or not C_Heirloom.PlayerHasHeirloom then return false end
@@ -88,7 +104,8 @@ local function HasHeirlooms()
         if C_Heirloom.PlayerHasHeirloom(id) then return true end
     end
     return false
-end--[[APR_DIAG]]; HasHeirlooms = APRTrace("APR-Core/features/player/Heirloom.lua:84:HasHeirlooms#6", HasHeirlooms)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+HasHeirlooms = APRTrace("APR-Core/features/player/Heirloom.lua:84:HasHeirlooms#6", HasHeirlooms)--[[/APR_DIAG]]
 
 ---------------------------------------------------------------------------------------
 --------------------------------- Heirloom Frame --------------------------------------
@@ -102,37 +119,47 @@ HeirloomFrame:SetClampedToScreen(true)
 HeirloomFrame:SetBackdrop({
     bgFile = "Interface\\BUTTONS\\WHITE8X8",
     tile = true,
-    tileSize = 16
+    tileSize = 16,
 })
 APR:SetPanelColor(HeirloomFrame, APR.Color.defaultLightBackdrop)
 
-
 -- Create the body frame
-local HeirloomFrame_body = CreateFrame("Frame", "HeirloomFrame_body", HeirloomFrame,
-    "BackdropTemplate")
+local HeirloomFrame_body = CreateFrame("Frame", "HeirloomFrame_body", HeirloomFrame, "BackdropTemplate")
 HeirloomFrame_body:SetAllPoints()
 
 -- Create the frame header
-local HeirloomFrameHeader = CreateFrame("Frame", "HeirloomFrameHeader", HeirloomFrame,
-    "ObjectiveTrackerContainerHeaderTemplate")
+local HeirloomFrameHeader =
+    CreateFrame("Frame", "HeirloomFrameHeader", HeirloomFrame, "ObjectiveTrackerContainerHeaderTemplate")
 HeirloomFrameHeader:SetPoint("BOTTOM", HeirloomFrame, "TOP", 0, -1)
 HeirloomFrameHeader.Text:SetText(L["HEIRLOOM"])
 APR:RegisterFontString(HeirloomFrameHeader.Text, "heirloom", { role = "accent", sizeDelta = 2 })
-HeirloomFrameHeader:SetScript("OnMouseDown", --[[APR_DIAG]]APRTrace("APR-Core/features/player/Heirloom.lua:121:callback#7", --[[/APR_DIAG]]function(self, button)
-    self:GetParent():StartMoving()
-end--[[APR_DIAG]])--[[/APR_DIAG]])
+HeirloomFrameHeader:SetScript(
+    "OnMouseDown", --[[APR_DIAG]]
+    APRTrace(
+        "APR-Core/features/player/Heirloom.lua:121:callback#7", --[[/APR_DIAG]]
+        function(self, button)
+            self:GetParent():StartMoving()
+        end --[[APR_DIAG]]
+    ) --[[/APR_DIAG]]
+)
 
-HeirloomFrameHeader:SetScript("OnMouseUp", --[[APR_DIAG]]APRTrace("APR-Core/features/player/Heirloom.lua:125:callback#8", --[[/APR_DIAG]]function(self, button)
-    self:GetParent():StopMovingOrSizing()
-    LibWindow.SavePosition(HeirloomPanel)
-end--[[APR_DIAG]])--[[/APR_DIAG]])
+HeirloomFrameHeader:SetScript(
+    "OnMouseUp", --[[APR_DIAG]]
+    APRTrace("APR-Core/features/player/Heirloom.lua:125:callback#8", --[[/APR_DIAG]] function(self, button)
+        self:GetParent():StopMovingOrSizing()
+        LibWindow.SavePosition(HeirloomPanel)
+    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+)
 
 HeirloomFrameHeader.MinimizeButton:GetNormalTexture():SetAtlas("redbutton-exit")
 HeirloomFrameHeader.MinimizeButton:GetPushedTexture():SetAtlas("redbutton-exit-pressed")
-HeirloomFrameHeader.MinimizeButton:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/features/player/Heirloom.lua:132:callback#9", --[[/APR_DIAG]]function(self)
-    HeirloomPanel:Hide()
-    APR:SetHeirloomWarning(true)
-end--[[APR_DIAG]])--[[/APR_DIAG]])
+HeirloomFrameHeader.MinimizeButton:SetScript(
+    "OnClick", --[[APR_DIAG]]
+    APRTrace("APR-Core/features/player/Heirloom.lua:132:callback#9", --[[/APR_DIAG]] function(self)
+        HeirloomPanel:Hide()
+        APR:SetHeirloomWarning(true)
+    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+)
 
 ---------------------------------------------------------------------------------------
 ------------------------------ Function Party Frames ----------------------------------
@@ -145,15 +172,20 @@ local function EnsureHeirloomCombatWatcher()
     end
     local frame = CreateFrame("Frame")
     frame:RegisterEvent("PLAYER_REGEN_ENABLED")
-    frame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/player/Heirloom.lua:148:callback#11", --[[/APR_DIAG]]function(self)
-        self:UnregisterEvent("PLAYER_REGEN_ENABLED")
-        if APR.heirloom._pendingCombatRefresh then
-            APR.heirloom._pendingCombatRefresh = false
-            APR.heirloom:RefreshFrameAnchor()
-        end
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    frame:SetScript(
+        "OnEvent", --[[APR_DIAG]]
+        APRTrace("APR-Core/features/player/Heirloom.lua:148:callback#11", --[[/APR_DIAG]] function(self)
+            self:UnregisterEvent("PLAYER_REGEN_ENABLED")
+            if APR.heirloom._pendingCombatRefresh then
+                APR.heirloom._pendingCombatRefresh = false
+                APR.heirloom:RefreshFrameAnchor()
+            end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     APR.heirloom._combatWatcher = frame
-end--[[APR_DIAG]]; EnsureHeirloomCombatWatcher = APRTrace("APR-Core/features/player/Heirloom.lua:141:EnsureHeirloomCombatWatcher#10", EnsureHeirloomCombatWatcher)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+EnsureHeirloomCombatWatcher =
+    APRTrace("APR-Core/features/player/Heirloom.lua:141:EnsureHeirloomCombatWatcher#10", EnsureHeirloomCombatWatcher)--[[/APR_DIAG]]
 
 -- Initialize the frame
 function APR.heirloom:HeirloomOnInit()
@@ -164,7 +196,9 @@ function APR.heirloom:HeirloomOnInit()
     -- Set default display
     self:SetDefaultDisplay()
     self:RefreshFrameAnchor()
-end--[[APR_DIAG]]; APR.heirloom.HeirloomOnInit = APRTrace("APR-Core/features/player/Heirloom.lua:159:APR.heirloom:HeirloomOnInit#12", APR.heirloom.HeirloomOnInit)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.heirloom.HeirloomOnInit =
+    APRTrace("APR-Core/features/player/Heirloom.lua:159:APR.heirloom:HeirloomOnInit#12", APR.heirloom.HeirloomOnInit)--[[/APR_DIAG]]
 
 function APR.heirloom:SetDefaultDisplay()
     if APR:GetGameVersion() == APR.GAME_VERSIONS.Forever then
@@ -175,7 +209,11 @@ function APR.heirloom:SetDefaultDisplay()
     HeirloomFrame_body:Show()
     HeirloomFrameHeader:Show()
     HeirloomPanel:SetShown(#self.buttons > 0)
-end--[[APR_DIAG]]; APR.heirloom.SetDefaultDisplay = APRTrace("APR-Core/features/player/Heirloom.lua:169:APR.heirloom:SetDefaultDisplay#13", APR.heirloom.SetDefaultDisplay)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.heirloom.SetDefaultDisplay = APRTrace(
+    "APR-Core/features/player/Heirloom.lua:169:APR.heirloom:SetDefaultDisplay#13",
+    APR.heirloom.SetDefaultDisplay
+)--[[/APR_DIAG]]
 
 function APR.heirloom:RefreshFrameAnchor()
     if APR:GetGameVersion() == APR.GAME_VERSIONS.Forever then
@@ -194,7 +232,12 @@ function APR.heirloom:RefreshFrameAnchor()
         if self._combatWatcher then self._combatWatcher:UnregisterEvent("PLAYER_REGEN_ENABLED") end
     end
 
-    if APR:GetHeirloomWarning() or not APR.settings.profile.enableAddon or APR:IsPetBattleActive() or APR:IsRemixCharacter() then
+    if
+        APR:GetHeirloomWarning()
+        or not APR.settings.profile.enableAddon
+        or APR:IsPetBattleActive()
+        or APR:IsRemixCharacter()
+    then
         HeirloomPanel:Hide()
         return
     end
@@ -207,31 +250,50 @@ function APR.heirloom:RefreshFrameAnchor()
     HeirloomPanel:EnableMouse(true)
     LibWindow.RestorePosition(HeirloomPanel)
     HeirloomPanel:Show()
-end--[[APR_DIAG]]; APR.heirloom.RefreshFrameAnchor = APRTrace("APR-Core/features/player/Heirloom.lua:180:APR.heirloom:RefreshFrameAnchor#14", APR.heirloom.RefreshFrameAnchor)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.heirloom.RefreshFrameAnchor = APRTrace(
+    "APR-Core/features/player/Heirloom.lua:180:APR.heirloom:RefreshFrameAnchor#14",
+    APR.heirloom.RefreshFrameAnchor
+)--[[/APR_DIAG]]
 
 local function CreateHeirloomButton(parentFrame, iconTexture)
     local button = CreateFrame("Button", nil, parentFrame, "ActionButtonTemplate")
     button:SetSize(50, 50)
     button:SetHighlightTexture("Interface/Buttons/UI-Panel-Button-Highlight")
     button:SetNormalTexture(iconTexture)
-    button:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/features/player/Heirloom.lua:217:callback#16", --[[/APR_DIAG]]function()
-        ToggleCollectionsJournal(4)
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-    button:SetScript("OnEnter", --[[APR_DIAG]]APRTrace("APR-Core/features/player/Heirloom.lua:220:callback#17", --[[/APR_DIAG]]function(self)
-        GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
-        APR:SetTooltipText(GameTooltip, L["HEIRLOOM"], "heirloom", "base")
-        GameTooltip:Show()
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-    button:SetScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/features/player/Heirloom.lua:225:callback#18", --[[/APR_DIAG]]function(self) GameTooltip:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    button:SetScript(
+        "OnClick", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/features/player/Heirloom.lua:217:callback#16", --[[/APR_DIAG]]
+            function()
+                ToggleCollectionsJournal(4)
+            end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
+    button:SetScript(
+        "OnEnter", --[[APR_DIAG]]
+        APRTrace("APR-Core/features/player/Heirloom.lua:220:callback#17", --[[/APR_DIAG]] function(self)
+            GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
+            APR:SetTooltipText(GameTooltip, L["HEIRLOOM"], "heirloom", "base")
+            GameTooltip:Show()
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+    button:SetScript(
+        "OnLeave", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/features/player/Heirloom.lua:225:callback#18", --[[/APR_DIAG]]
+            function(self) GameTooltip:Hide() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
     return button
-end--[[APR_DIAG]]; CreateHeirloomButton = APRTrace("APR-Core/features/player/Heirloom.lua:212:CreateHeirloomButton#15", CreateHeirloomButton)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+CreateHeirloomButton =
+    APRTrace("APR-Core/features/player/Heirloom.lua:212:CreateHeirloomButton#15", CreateHeirloomButton)--[[/APR_DIAG]]
 local function CreateMapButton(parentFrame, itemID)
     local id, toyName, icon, isFavorite, hasFanfare, itemQuality = C_ToyBox.GetToyInfo(itemID)
 
-
     -- Use an unnamed secure button to prevent global name taint
-    local button = CreateFrame("Button", nil, parentFrame,
-        "SecureActionButtonTemplate, BackdropTemplate")
+    local button = CreateFrame("Button", nil, parentFrame, "SecureActionButtonTemplate, BackdropTemplate")
     button:SetSize(50, 50)
     button:SetNormalTexture(icon or [[Interface/icons/inv_misc_questionmark]])
     button:SetHighlightTexture([[Interface\Buttons\UI-Common-MouseHilight]])
@@ -239,15 +301,25 @@ local function CreateMapButton(parentFrame, itemID)
     button:SetAttribute("type1", "item")
     button:SetAttribute("item", "item:" .. tostring(itemID))
 
-    button:SetScript("OnEnter", --[[APR_DIAG]]APRTrace("APR-Core/features/player/Heirloom.lua:242:callback#20", --[[/APR_DIAG]]function(self)
-        GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
-        GameTooltip:SetItemByID(itemID)
-        GameTooltip:Show()
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-    button:SetScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/features/player/Heirloom.lua:247:callback#21", --[[/APR_DIAG]]function(self) GameTooltip:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    button:SetScript(
+        "OnEnter", --[[APR_DIAG]]
+        APRTrace("APR-Core/features/player/Heirloom.lua:242:callback#20", --[[/APR_DIAG]] function(self)
+            GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
+            GameTooltip:SetItemByID(itemID)
+            GameTooltip:Show()
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+    button:SetScript(
+        "OnLeave", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/features/player/Heirloom.lua:247:callback#21", --[[/APR_DIAG]]
+            function(self) GameTooltip:Hide() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
 
     return button
-end--[[APR_DIAG]]; CreateMapButton = APRTrace("APR-Core/features/player/Heirloom.lua:228:CreateMapButton#19", CreateMapButton)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+CreateMapButton = APRTrace("APR-Core/features/player/Heirloom.lua:228:CreateMapButton#19", CreateMapButton)--[[/APR_DIAG]]
 
 local function CreateSpellMapButton(parentFrame, spellID)
     local info = C_Spell and C_Spell.GetSpellInfo and C_Spell.GetSpellInfo(spellID)
@@ -258,35 +330,49 @@ local function CreateSpellMapButton(parentFrame, spellID)
     button:RegisterForClicks("AnyUp", "AnyDown")
     button:SetAttribute("type1", "spell")
     button:SetAttribute("spell", spellID)
-    button:SetScript("OnEnter", --[[APR_DIAG]]APRTrace("APR-Core/features/player/Heirloom.lua:261:callback#23", --[[/APR_DIAG]]function(self)
-        GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
-        GameTooltip:SetSpellByID(spellID)
-        GameTooltip:Show()
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-    button:SetScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/features/player/Heirloom.lua:266:callback#24", --[[/APR_DIAG]]function() GameTooltip:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    button:SetScript(
+        "OnEnter", --[[APR_DIAG]]
+        APRTrace("APR-Core/features/player/Heirloom.lua:261:callback#23", --[[/APR_DIAG]] function(self)
+            GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
+            GameTooltip:SetSpellByID(spellID)
+            GameTooltip:Show()
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+    button:SetScript(
+        "OnLeave", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/features/player/Heirloom.lua:266:callback#24", --[[/APR_DIAG]]
+            function() GameTooltip:Hide() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
     return button
-end--[[APR_DIAG]]; CreateSpellMapButton = APRTrace("APR-Core/features/player/Heirloom.lua:252:CreateSpellMapButton#22", CreateSpellMapButton)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+CreateSpellMapButton =
+    APRTrace("APR-Core/features/player/Heirloom.lua:252:CreateSpellMapButton#22", CreateSpellMapButton)--[[/APR_DIAG]]
 
 function APR.heirloom:GetReminders()
-    heirlooms = heirlooms or {
-        -- Warband exploration covers recent expansions; since 11.0.5 this is a spell, not a toy.
-        { name = "spellMap", id = WARBAND_MAP_SPELL_ID, spellID = WARBAND_MAP_SPELL_ID },
-        { name = "map", id = 150744, faction = "Horde", achievementID = 43 },
-        { name = "map", id = 150745, faction = "Horde", achievementID = 42 },
-        { name = "map", id = 150743, faction = "Alliance", achievementID = 43 },
-        { name = "map", id = 150746, faction = "Alliance", achievementID = 42 },
-        { name = "map", id = 187869, faction = "Neutral", achievementID = 15388 },
-        { name = "map", id = 187875, faction = "Neutral", achievementID = 11188 },
-        { name = "map", id = 187895, faction = "Neutral", achievementID = 8935 },
-        { name = "map", id = 187896, faction = "Neutral", achievementID = 6974 },
-        { name = "map", id = 187897, faction = "Neutral", achievementID = 4868 },
-        { name = "map", id = 187898, faction = "Neutral", achievementID = 45 },
-        { name = "map", id = 187899, faction = "Neutral", achievementID = 44 },
-        { name = "map", id = 187900, faction = "Neutral", achievementID = 12988 },
-        { name = "heirloom", id = 0, icon = "Interface\\Icons\\inv_icon_heirloomtoken_armor01" },
-    }
+    heirlooms = heirlooms
+        or {
+            -- Warband exploration covers recent expansions; since 11.0.5 this is a spell, not a toy.
+            { name = "spellMap", id = WARBAND_MAP_SPELL_ID, spellID = WARBAND_MAP_SPELL_ID },
+            { name = "map", id = 150744, faction = "Horde", achievementID = 43 },
+            { name = "map", id = 150745, faction = "Horde", achievementID = 42 },
+            { name = "map", id = 150743, faction = "Alliance", achievementID = 43 },
+            { name = "map", id = 150746, faction = "Alliance", achievementID = 42 },
+            { name = "map", id = 187869, faction = "Neutral", achievementID = 15388 },
+            { name = "map", id = 187875, faction = "Neutral", achievementID = 11188 },
+            { name = "map", id = 187895, faction = "Neutral", achievementID = 8935 },
+            { name = "map", id = 187896, faction = "Neutral", achievementID = 6974 },
+            { name = "map", id = 187897, faction = "Neutral", achievementID = 4868 },
+            { name = "map", id = 187898, faction = "Neutral", achievementID = 45 },
+            { name = "map", id = 187899, faction = "Neutral", achievementID = 44 },
+            { name = "map", id = 187900, faction = "Neutral", achievementID = 12988 },
+            { name = "heirloom", id = 0, icon = "Interface\\Icons\\inv_icon_heirloomtoken_armor01" },
+        }
     return heirlooms
-end--[[APR_DIAG]]; APR.heirloom.GetReminders = APRTrace("APR-Core/features/player/Heirloom.lua:270:APR.heirloom:GetReminders#25", APR.heirloom.GetReminders)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.heirloom.GetReminders =
+    APRTrace("APR-Core/features/player/Heirloom.lua:270:APR.heirloom:GetReminders#25", APR.heirloom.GetReminders)--[[/APR_DIAG]]
 
 function APR.heirloom:AddHeirloomIcons()
     if InCombatLockdown() then
@@ -314,17 +400,27 @@ function APR.heirloom:AddHeirloomIcons()
 
     for _, heirloom in ipairs(self:GetReminders()) do
         local button
-        if heirloom.name == "map" and PlayerHasToy and PlayerHasToy(heirloom.id) and
-            C_ToyBox and C_ToyBox.GetToyInfo and not self:IsMapUsed(heirloom) and
-            (APR.Faction == heirloom.faction or heirloom.faction == "Neutral") then
+        if
+            heirloom.name == "map"
+            and PlayerHasToy
+            and PlayerHasToy(heirloom.id)
+            and C_ToyBox
+            and C_ToyBox.GetToyInfo
+            and not self:IsMapUsed(heirloom)
+            and (APR.Faction == heirloom.faction or heirloom.faction == "Neutral")
+        then
             if not mapSpells[heirloom.id] and C_Item and C_Item.GetItemSpell then
                 local _, spellID = C_Item.GetItemSpell(heirloom.id)
                 mapSpells[heirloom.id] = spellID
                 if not spellID then pendingMapItems[heirloom.id] = true end
             end
             button = self.iconButtons[heirloom.id] or CreateMapButton(HeirloomFrame_body, heirloom.id)
-        elseif heirloom.name == "spellMap" and APR.IsSpellKnown and APR:IsSpellKnown(heirloom.spellID) and
-            not self:IsMapUsed(heirloom) then
+        elseif
+            heirloom.name == "spellMap"
+            and APR.IsSpellKnown
+            and APR:IsSpellKnown(heirloom.spellID)
+            and not self:IsMapUsed(heirloom)
+        then
             button = self.iconButtons[heirloom.id] or CreateSpellMapButton(HeirloomFrame_body, heirloom.spellID)
         elseif heirloom.name == "heirloom" and HasHeirlooms() then
             button = self.iconButtons[heirloom.id] or CreateHeirloomButton(HeirloomFrame_body, heirloom.icon)
@@ -346,5 +442,9 @@ function APR.heirloom:AddHeirloomIcons()
         end
     end
 
-    HeirloomFrame:SetSize(250, 55 + (-yOffset))
-end--[[APR_DIAG]]; APR.heirloom.AddHeirloomIcons = APRTrace("APR-Core/features/player/Heirloom.lua:291:APR.heirloom:AddHeirloomIcons#26", APR.heirloom.AddHeirloomIcons)--[[/APR_DIAG]]
+    HeirloomFrame:SetSize(250, 55 + -yOffset)
+end--[[APR_DIAG]]
+APR.heirloom.AddHeirloomIcons = APRTrace(
+    "APR-Core/features/player/Heirloom.lua:291:APR.heirloom:AddHeirloomIcons#26",
+    APR.heirloom.AddHeirloomIcons
+)--[[/APR_DIAG]]

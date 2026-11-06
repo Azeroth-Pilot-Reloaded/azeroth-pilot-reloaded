@@ -15,13 +15,13 @@ jobs:
       - name: Set up Lua
         uses: leafo/gh-actions-lua@v12
         with:
-          luaVersion: '5.1'
+          luaVersion: "5.1"
 
       - name: Set up Luarocks
         uses: leafo/gh-actions-luarocks@v6.1.0
 
       - name: Install Luacheck
-        run:  |
+        run: |
           sudo apt-get install luarocks
           sudo luarocks install luacheck
 
@@ -30,4 +30,3 @@ jobs:
 
       - name: Run Luacheck Routes
         run: luacheck ./Routes
-

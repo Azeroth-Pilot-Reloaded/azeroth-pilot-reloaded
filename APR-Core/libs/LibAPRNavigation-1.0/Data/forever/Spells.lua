@@ -31,7 +31,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "spells", {
             bidirectional = false,
             from = { dynamic = "player" },
             to = { space = "world", instanceID = 1, x = -3748.1101074219, y = -4440.2099609375, z = 30.56999969482 },
-            actions = { { id = 49359, groupReagentID = 17032, groupSpellID = 49360, reagentID = 17031, type = "spell" } },
+            actions = {
+                { id = 49359, groupReagentID = 17032, groupSpellID = 49360, reagentID = 17031, type = "spell" },
+            },
         },
         {
             id = "spell-3567-teleport-orgrimmar",
@@ -63,7 +65,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "spells", {
             bidirectional = false,
             from = { dynamic = "player" },
             to = { space = "world", instanceID = 0, x = -10469, y = -3331.5400390625, z = 25.46999931335 },
-            actions = { { id = 49358, groupReagentID = 17032, groupSpellID = 49361, reagentID = 17031, type = "spell" } },
+            actions = {
+                { id = 49358, groupReagentID = 17032, groupSpellID = 49361, reagentID = 17031, type = "spell" },
+            },
         },
         {
             id = "spell-120145-to-eastern-kingdoms",
@@ -71,7 +75,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "spells", {
             bidirectional = false,
             from = { dynamic = "player" },
             to = { space = "world", instanceID = 0, x = 303.2200012207, y = 347.20999145508, z = 125.5299987793 },
-            actions = { { id = 120145, groupReagentID = 17032, groupSpellID = 120146, reagentID = 17031, type = "spell" } },
+            actions = {
+                { id = 120145, groupReagentID = 17032, groupSpellID = 120146, reagentID = 17031, type = "spell" },
+            },
         },
         {
             id = "spell-18960-to-moonglade",

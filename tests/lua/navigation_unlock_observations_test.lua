@@ -16,13 +16,17 @@ local env = {
     isUnlockActionComplete = function() return localAction end,
 }
 local function make(steps, guidance)
-    Lib:RegisterData("unlock-observations", "test", { unlockRoutes = {
-        { id = "tracker", goal = { key = "quest", value = 99 }, guidanceQuestID = guidance, steps = steps },
-    } }, (Lib.dataRevisions["unlock-observations:test"] or 0) + 1)
+    Lib:RegisterData("unlock-observations", "test", {
+        unlockRoutes = {
+            { id = "tracker", goal = { key = "quest", value = 99 }, guidanceQuestID = guidance, steps = steps },
+        },
+    }, (Lib.dataRevisions["unlock-observations:test"] or 0) + 1)
     local data = Lib:New({ profile = "unlock-observations", environment = env })
     function data:CanWalk() return true end
-    local run = data:CreateUnlockSession({ destination = { uiMapID = 2472, x = 10, y = 20, instanceID = 2738 },
-        blockers = { { id = "destination", blockedRequirements = { quest = 99 } } } })
+    local run = data:CreateUnlockSession({
+        destination = { uiMapID = 2472, x = 10, y = 20, instanceID = 2738 },
+        blockers = { { id = "destination", blockedRequirements = { quest = 99 } } },
+    })
     return run, data
 end
 local function tick(run)
@@ -35,8 +39,17 @@ end
 
 -- A sourced no-arrow objective remains a real instruction while incomplete.
 active[7] = true
-local run, data = make({ { kind = "objective", questID = 7, sourceID = 1,
-    noArrow = true, positionOptional = true, objectiveIndices = { 1 }, progressAny = { { percent = 50 }, { count = 2, total = 10 } } } })
+local run, data = make({
+    {
+        kind = "objective",
+        questID = 7,
+        sourceID = 1,
+        noArrow = true,
+        positionOptional = true,
+        objectiveIndices = { 1 },
+        progressAny = { { percent = 50 }, { count = 2, total = 10 } },
+    },
+})
 local status, action = tick(run)
 assert(status == "action" and action.positionOptional and not action.target)
 quantity = 2
@@ -46,9 +59,16 @@ assert(tick(run) == "resume", "Only an observed actual access flag resumes the d
 done[99] = nil
 
 -- Scenario identity and completion remain tri-state; no coordinate is invented.
-run, data = make({ { kind = "scenario", sourceID = 1, noArrow = true, positionOptional = true,
-    scenario = { scenarioID = 2388, stepID = 6910, criteriaID = 65266, criteriaIndex = 2 } },
-    { kind = "turnin", questID = 7, position = a } })
+run, data = make({
+    {
+        kind = "scenario",
+        sourceID = 1,
+        noArrow = true,
+        positionOptional = true,
+        scenario = { scenarioID = 2388, stepID = 6910, criteriaID = 65266, criteriaIndex = 2 },
+    },
+    { kind = "turnin", questID = 7, position = a },
+})
 status, action = tick(run)
 assert(status == "action" and action.kind == "scenario" and action.waitingData and not action.target)
 criteria = { completed = false, quantity = 0, totalQuantity = 1 }
@@ -61,11 +81,16 @@ local saved = run:ExportState()
 criteria = nil
 run = data:RestoreUnlockSession(saved)
 status, action = tick(run)
-assert(status == "action" and action.kind == "turnin", "Observed scenario progress survives reload after leaving the scenario")
+assert(
+    status == "action" and action.kind == "turnin",
+    "Observed scenario progress survives reload after leaving the scenario"
+)
 
 -- A waypoint list is reached at any authored candidate, with authored radius.
-run, data = make({ { kind = "waypoint", position = a, positions = { a, b }, radius = 2 },
-    { kind = "turnin", questID = 7, position = a } })
+run, data = make({
+    { kind = "waypoint", position = a, positions = { a, b }, radius = 2 },
+    { kind = "turnin", questID = 7, position = a },
+})
 status, action = tick(run)
 assert(status == "action" and action.kind == "turnin")
 saved = run:ExportState()
@@ -75,8 +100,15 @@ status, action = tick(run)
 assert(action.kind == "turnin", "A completed navigation waypoint is not replayed after reloading")
 
 -- A transport advances only on its sourced destination; departure is not proof.
-run, data = make({ { kind = "transport", position = a, transport = { type = "portal", destinationMapID = 2472 },
-    arrival = { uiMapID = 2472 } }, { kind = "turnin", questID = 7, position = a } })
+run, data = make({
+    {
+        kind = "transport",
+        position = a,
+        transport = { type = "portal", destinationMapID = 2472 },
+        arrival = { uiMapID = 2472 },
+    },
+    { kind = "turnin", questID = 7, position = a },
+})
 status, action = tick(run)
 assert(status == "action" and action.kind == "transport")
 player.uiMapID = 2472
@@ -86,8 +118,10 @@ player.uiMapID = 2248
 run = make({ { kind = "transport", position = a, transport = { type = "boat" } } })
 localAction = nil
 status, action = tick(run)
-assert(status == "action" and action.kind == "transport" and action.waitingData,
-    "An unspecific arrival stays a usable instruction with unconfirmed completion")
+assert(
+    status == "action" and action.kind == "transport" and action.waitingData,
+    "An unspecific arrival stays a usable instruction with unconfirmed completion"
+)
 
 -- Hidden tracker guidance never fakes the actual account/character flag.
 done[7] = true
@@ -104,8 +138,15 @@ assert(not pcall(function()
     make({ { kind = "accept", questID = 7, noArrow = true, sourceID = 1 } })
 end))
 done, active = {}, {}
-run = make({ { kind = "accept", questID = 7, autoAccept = true, sourceID = 1,
-    acceptance = { known = false, requirements = {}, sources = { "verified:auto-accept" } } } })
+run = make({
+    {
+        kind = "accept",
+        questID = 7,
+        autoAccept = true,
+        sourceID = 1,
+        acceptance = { known = false, requirements = {}, sources = { "verified:auto-accept" } },
+    },
+})
 status, action = tick(run)
 assert(status == "action" and action.positionOptional and action.questID == 7)
 
@@ -119,4 +160,6 @@ for _, locale in ipairs({ "enUS", "deDE", "esES", "esMX", "frFR", "itIT", "koKR"
         assert(Lib:GetText(key, locale) ~= key)
     end
 end
-print("Unlock observations: numeric progress, no-arrow/source validation, scenarios, transport, waypoints, tracker waits and reload passed")
+print(
+    "Unlock observations: numeric progress, no-arrow/source validation, scenarios, transport, waypoints, tracker waits and reload passed"
+)

@@ -1,8 +1,12 @@
 local handler
-function LibStub() return { GetLocale = function() return {} end } end
+function LibStub()
+    return { GetLocale = function() return {} end }
+end
 function CreateFrame()
-    return { RegisterEvent = function(_, event) assert(event ~= "COMBAT_LOG_EVENT_UNFILTERED") end,
-        SetScript = function(_, _, fn) handler = fn end }
+    return {
+        RegisterEvent = function(_, event) assert(event ~= "COMBAT_LOG_EVENT_UNFILTERED") end,
+        SetScript = function(_, _, fn) handler = fn end,
+    }
 end
 local instance, step, advanced, refreshes = 389, {}, 0, 0
 function IsInInstance() return true, "party" end
@@ -25,17 +29,28 @@ function issecretvalue(value) return rawequal(value, secret) end
 -- Expected encounter/NPC associations independently checked against Forever's
 -- DungeonEncounter 1.60.1.70450 and the NPC IDs used by the playable routes.
 local cases = {
-    { "RFC", 389, 2732, { 11517 } }, { "RFC", 389, 2733, { 11520 } },
-    { "RFC", 389, 2734, { 11518 } }, { "RFC", 389, 2735, { 11519 } },
-    { "ROL", 2999, 3353, { 250483 } }, { "ROL", 2999, 3354, { 250657 } },
-    { "HOT", 3065, 3493, { 261306 } }, { "HOT", 3065, 3495, { 261316 } },
-    { "HOT", 3065, 3494, { 261311 } }, { "HOT", 3065, 3496, { 261319 } },
-    { "WC", 43, 585, { 3671 } }, { "WC", 43, 586, { 3669 } },
-    { "WC", 43, 588, { 3670 } }, { "WC", 43, 590, { 3673 } },
-    { "WC", 43, 591, { 5775 } }, { "WC", 43, 592, { 3654 } },
-    { "DM", 36, 2741, { 644 } }, { "DM", 36, 2742, { 642, 643 } },
-    { "DM", 36, 2743, { 1763 } }, { "DM", 36, 2744, { 647 } },
-    { "DM", 36, 2745, { 646 } }, { "DM", 36, 2746, { 645 } },
+    { "RFC", 389, 2732, { 11517 } },
+    { "RFC", 389, 2733, { 11520 } },
+    { "RFC", 389, 2734, { 11518 } },
+    { "RFC", 389, 2735, { 11519 } },
+    { "ROL", 2999, 3353, { 250483 } },
+    { "ROL", 2999, 3354, { 250657 } },
+    { "HOT", 3065, 3493, { 261306 } },
+    { "HOT", 3065, 3495, { 261316 } },
+    { "HOT", 3065, 3494, { 261311 } },
+    { "HOT", 3065, 3496, { 261319 } },
+    { "WC", 43, 585, { 3671 } },
+    { "WC", 43, 586, { 3669 } },
+    { "WC", 43, 588, { 3670 } },
+    { "WC", 43, 590, { 3673 } },
+    { "WC", 43, 591, { 5775 } },
+    { "WC", 43, 592, { 3654 } },
+    { "DM", 36, 2741, { 644 } },
+    { "DM", 36, 2742, { 642, 643 } },
+    { "DM", 36, 2743, { 1763 } },
+    { "DM", 36, 2744, { 647 } },
+    { "DM", 36, 2745, { 646 } },
+    { "DM", 36, 2746, { 645 } },
     { "DM", 36, 2747, { 639 } },
 }
 for _, case in ipairs(cases) do
@@ -55,7 +70,9 @@ for _, case in ipairs(cases) do
         local run = APR:GetDungeonRun(APR.ActiveRoute, key)
         assert(run and refreshes == before + 1, "A successful encounter refreshes once")
         local count = 0
-        for _ in pairs(run.kills) do count = count + 1 end
+        for _ in pairs(run.kills) do
+            count = count + 1
+        end
         assert(count == #npcs, "Only the encounter's NPCs receive credit")
         for _, npcID in ipairs(npcs) do
             assert(run.kills[npcID], "Missing canonical NPC credit: " .. npcID)

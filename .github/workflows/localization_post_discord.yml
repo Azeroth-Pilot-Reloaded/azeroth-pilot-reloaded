@@ -120,4 +120,3 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_LOCALES_WEBHOOK }}
         run: |
           python .github/scripts/localization_post_discord.py --send "$RUNNER_TEMP/localization-message.txt"
-

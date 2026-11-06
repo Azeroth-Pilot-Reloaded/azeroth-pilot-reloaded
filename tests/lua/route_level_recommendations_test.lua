@@ -5,7 +5,9 @@ dofile("APR-Core/features/questing/StepTransitions.lua")
 C_Map = { GetBestMapForUnit = function() return 1 end }
 C_QuestLog = { IsQuestFlaggedCompleted = function() return false end }
 local function contains(lines, text)
-    for _, line in ipairs(lines) do if line:find(text, 1, true) then return true end end
+    for _, line in ipairs(lines) do
+        if line:find(text, 1, true) then return true end
+    end
     return false
 end
 for _, version in ipairs({ APR.GAME_VERSIONS.Retail, APR.GAME_VERSIONS.Forever }) do
@@ -14,25 +16,39 @@ for _, version in ipairs({ APR.GAME_VERSIONS.Retail, APR.GAME_VERSIONS.Forever }
     APR.ActiveRoute = nil
     local step = { PickUp = { 4001 }, Race = "Orc", SkipForLvl = 18 }
     APR.RouteQuestStepList = {
-        chapter = { label = "Invented chapter", gameVersion = version,
-            conditions = { MinLevel = 14, MaxLevel = 18 }, steps = { step, { RouteCompleted = true } } },
+        chapter = {
+            label = "Invented chapter",
+            gameVersion = version,
+            conditions = { MinLevel = 14, MaxLevel = 18 },
+            steps = { step, { RouteCompleted = true } },
+        },
         boundary = { label = "Starting boundary", gameVersion = version, conditions = { MinLevel = 10 } },
-        nested = { label = "Character branch", gameVersion = version,
-            conditions = { AnyOf = { { Class = "MAGE", MinLevel = 20 }, { Class = "WARRIOR", MinLevel = 16 } } } },
+        nested = {
+            label = "Character branch",
+            gameVersion = version,
+            conditions = { AnyOf = { { Class = "MAGE", MinLevel = 20 }, { Class = "WARRIOR", MinLevel = 16 } } },
+        },
     }
     APR.Level = 12
     assert(APR:GetRouteVisibility("chapter") == "visible" and APR:CanStartRoute("chapter"))
     assert(contains(APR:GetRouteLevelWarnings("chapter"), ">= 14"))
-    assert(contains(APR:GetRouteLevelWarnings("chapter"), ": 12)"), "Whole levels do not display redundant decimal places")
-    assert(not APR:EvaluateRouteConditions(APR.RouteQuestStepList.chapter.conditions),
-        "Automatic recommendations still respect the suggested range")
+    assert(
+        contains(APR:GetRouteLevelWarnings("chapter"), ": 12)"),
+        "Whole levels do not display redundant decimal places"
+    )
+    assert(
+        not APR:EvaluateRouteConditions(APR.RouteQuestStepList.chapter.conditions),
+        "Automatic recommendations still respect the suggested range"
+    )
     assert(APR:AddRouteToCustomPathByKey("chapter") and APR:ActivateRoute("chapter"))
     APRData.player.chapter = 1
     APR.Level = 17.99
     assert(APR:StepFilterQoL(step) and not APR:StepFilterQuestHandler(step))
     APR.Level = 18
-    assert(not APR:StepFilterQoL(step) and APR:StepFilterQuestHandler(step),
-        "Route selection cannot waive a step's authored upper cutoff")
+    assert(
+        not APR:StepFilterQoL(step) and APR:StepFilterQuestHandler(step),
+        "Route selection cannot waive a step's authored upper cutoff"
+    )
     assert(not APR:AreConditionalFiltersMet(step), "Step conditions stay strict")
     assert(#APR:GetRouteLevelWarnings("chapter") == 0, "Step cutoffs never become route-level recommendations")
     assert(APRData.player.chapter == 1, "Checking recommendations never writes progress")
@@ -71,8 +87,12 @@ for _, version in ipairs({ APR.GAME_VERSIONS.Retail, APR.GAME_VERSIONS.Forever }
     assert(APR:CanStartRoute("boundary") and #APR:GetRouteLevelWarnings("boundary") == 1)
 
     APR.Level = 18
-    local conditional = { AnyOf = { { Class = "MAGE", SkipForLvl = 17 },
-        { Class = "WARRIOR", AllOf = { { Race = "Orc", SkipForLvl = 18 } } } } }
+    local conditional = {
+        AnyOf = {
+            { Class = "MAGE", SkipForLvl = 17 },
+            { Class = "WARRIOR", AllOf = { { Race = "Orc", SkipForLvl = 18 } } },
+        },
+    }
     assert(not APR:StepFilterQoL(conditional), "Nested step upper cutoffs stay strict")
     APR.Level = 17.99
     assert(APR:StepFilterQoL(conditional), "A matching step branch remains available below its cutoff")
@@ -85,7 +105,10 @@ for _, version in ipairs({ APR.GAME_VERSIONS.Retail, APR.GAME_VERSIONS.Forever }
     assert(not APR:StepFilterQoL({ MaxLevel = 17, SkipForLvl = 20 }), "Action maximum levels remain strict")
     assert(not APR:StepFilterQoL({ BeLvl = 17, SkipForLvl = 20 }), "Exact action levels remain strict")
     assert(not APR:StepFilterQoL({ IsQuestCompleted = 3999, SkipForLvl = 20 }), "Quest prerequisites stay strict")
-    assert(not APR:StepFilterQoL({ Not = { Race = "Orc", SkipForLvl = 20 } }), "Negated character conditions stay strict")
+    assert(
+        not APR:StepFilterQoL({ Not = { Race = "Orc", SkipForLvl = 20 } }),
+        "Negated character conditions stay strict"
+    )
 
     -- Only metadata contributes warnings, including after definition edits.
     APR.RouteQuestStepList.chapter.steps[1] = { PickUp = { 4002 }, SkipForLvl = 16 }
@@ -99,8 +122,11 @@ end
 -- Actual recycled rows expose warnings without disabling the route or hiding progress.
 env = dofile("tests/lua/route_browser_test_env.lua")
 APR.RouteQuestStepList = {
-    advice = { label = "Advisory route", conditions = { MinLevel = 22, MaxLevel = 24 },
-        steps = { { PickUp = { 5001 }, SkipForLvl = 24 } } },
+    advice = {
+        label = "Advisory route",
+        conditions = { MinLevel = 22, MaxLevel = 24 },
+        steps = { { PickUp = { 5001 }, SkipForLvl = 24 } },
+    },
 }
 APR.Level = 20
 function APR:GetPlayerEffectiveLevel() return self.Level end
@@ -111,7 +137,10 @@ local row = rows:Create(UIParent, browser, false)
 row.item = record
 rows:Bind(row, record, 1, browser, false)
 assert(row.name:GetText() == "Advisory route" and row.name.role == "warning")
-assert(row.add:IsEnabled() and row.progressMarker:IsShown(), "Advice must not disable the add action or remove progress")
+assert(
+    row.add:IsEnabled() and row.progressMarker:IsShown(),
+    "Advice must not disable the add action or remove progress"
+)
 rows:Tooltip(row, false)
 assert(env.tooltip():find(">= 22", 1, true))
 APR.Level = 22
@@ -120,8 +149,10 @@ assert(not env.tooltip():find(">= 22", 1, true), "Tooltips re-evaluate the level
 record = catalog:Build()[1]
 row.item = record
 rows:Bind(row, record, 1, browser, false)
-assert(row.name:GetText() == "Advisory route" and row.name.role == "routeNotStarted",
-    "A recycled row clears the warning color while preserving the original label")
+assert(
+    row.name:GetText() == "Advisory route" and row.name.role == "routeNotStarted",
+    "A recycled row clears the warning color while preserving the original label"
+)
 APR.Level = 24
 assert(#catalog:Build()[1].warnings == 0, "An authored step cutoff cannot color the route as advisory")
 APR.Level = 24.5
@@ -132,4 +163,6 @@ local pathRow = rows:Create(UIParent, browser, true)
 pathRow.item = record
 rows:Bind(pathRow, record, 1, browser, true)
 assert(pathRow.name.role == "warning" and pathRow.name:GetText() == "Advisory route")
-print("Route levels: advisory selection only, strict step prerequisites/cutoffs, live warnings and recycled rows passed")
+print(
+    "Route levels: advisory selection only, strict step prerequisites/cutoffs, live warnings and recycled rows passed"
+)

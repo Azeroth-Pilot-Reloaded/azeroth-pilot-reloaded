@@ -19,12 +19,16 @@ hooks.MovieFrame_PlayMovie()
 assert(#timers == 0, "Before initialization, skip hooks must leave movies alone")
 profile = { enableAddon = true, autoSkipCutScene = true }
 step = { Dontskipvid = true }
-hooks.MovieFrame_PlayMovie(); scripts.event(frame, "CINEMATIC_START")
+hooks.MovieFrame_PlayMovie()
+scripts.event(frame, "CINEMATIC_START")
 assert(#timers == 0, "The same route flag protects movies and cinematics")
 step = nil
-hooks.MovieFrame_PlayMovie(); scripts.event(frame, "CINEMATIC_START")
+hooks.MovieFrame_PlayMovie()
+scripts.event(frame, "CINEMATIC_START")
 assert(#timers == 2)
-for _, callback in ipairs(timers) do callback() end
+for _, callback in ipairs(timers) do
+    callback()
+end
 assert(movies == 1 and cinematics == 1)
 profile.enableAddon = false
 hooks.MovieFrame_PlayMovie()
@@ -35,6 +39,7 @@ profile.enableAddon = false
 timers[3]()
 assert(movies == 1, "A pending skip must respect disabling APR")
 profile.enableAddon, modifier = true, true
-hooks.MovieFrame_PlayMovie(); scripts.event(frame, "CINEMATIC_START")
+hooks.MovieFrame_PlayMovie()
+scripts.event(frame, "CINEMATIC_START")
 assert(#timers == 3)
 print("Cutscenes: startup, shared route protection, modifier override and delayed disable passed")

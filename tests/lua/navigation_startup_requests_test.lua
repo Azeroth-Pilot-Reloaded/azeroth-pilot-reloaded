@@ -30,19 +30,27 @@ for _, case in ipairs({
     assert(calendarRequests == 0 and initiativeRequests == 0, "Loading the adapter must not issue requests")
     for attempt = 1, 2 do
         frame.OnEvent(frame, "PLAYER_ENTERING_WORLD")
-        assert(calendarRequests == case.calendar * attempt,
-            "Login and reload must not request a calendar unused by the navigation catalogue")
-        assert(initiativeRequests == case.initiative * attempt,
-            "Exposed APIs do not authorize housing initiative requests on other clients or disabled services")
+        assert(
+            calendarRequests == case.calendar * attempt,
+            "Login and reload must not request a calendar unused by the navigation catalogue"
+        )
+        assert(
+            initiativeRequests == case.initiative * attempt,
+            "Exposed APIs do not authorize housing initiative requests on other clients or disabled services"
+        )
     end
     for _, event in ipairs({ "TRACKED_HOUSE_CHANGED", "PLAYER_HOUSE_LIST_UPDATED" }) do
         local before = initiativeRequests
         frame.OnEvent(frame, event)
-        assert(initiativeRequests == before + case.initiative,
-            "House events must retain the same client and feature checks as login")
+        assert(
+            initiativeRequests == before + case.initiative,
+            "House events must retain the same client and feature checks as login"
+        )
     end
     assert(#tickers == case.calendar, "Only a catalogue that uses holidays needs periodic refreshes")
-    for _, tick in ipairs(tickers) do tick() end
+    for _, tick in ipairs(tickers) do
+        tick()
+    end
     assert(calendarRequests == case.calendar * 3, "Required holidays must still refresh after login")
 end
 

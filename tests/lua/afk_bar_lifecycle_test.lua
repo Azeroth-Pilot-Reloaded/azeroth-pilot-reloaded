@@ -3,12 +3,16 @@ local function noop() end
 function InCombatLockdown() return false end
 local now, frames, timers = 100, {}, {}
 local methods = {}
-setmetatable(methods, { __index = function(_, key)
-    if key:match("^Set") or key:match("^Enable") then return noop end
-end })
+setmetatable(methods, {
+    __index = function(_, key)
+        if key:match("^Set") or key:match("^Enable") then return noop end
+    end,
+})
 local function widget(parent)
-    return setmetatable({ parent = parent, shown = true, scripts = {}, width = 250, height = 30 },
-        { __index = methods })
+    return setmetatable(
+        { parent = parent, shown = true, scripts = {}, width = 250, height = 30 },
+        { __index = methods }
+    )
 end
 function methods:Show() self.shown = true end
 function methods:Hide() self.shown = false end
@@ -17,7 +21,9 @@ function methods:SetParent(parent) self.parent = parent end
 function methods:GetParent() return self.parent end
 function methods:SetWidth(width) self.width = width end
 function methods:SetHeight(height) self.height = height end
-function methods:SetSize(width, height) self.width, self.height = width, height end
+function methods:SetSize(width, height)
+    self.width, self.height = width, height
+end
 function methods:SetAllPoints(target) self.allPoints = target or self.parent end
 function methods:GetWidth() return self.allPoints and self.allPoints:GetWidth() or self.width end
 function methods:GetHeight() return self.allPoints and self.allPoints:GetHeight() or self.height end
@@ -31,7 +37,9 @@ function methods:Stop() self.playing = false end
 function methods:SetText(text) self.text = text end
 function methods:SetFormattedText(format, ...) self.text = string.format(format, ...) end
 function methods:SetStatusBarColor(...) self.color = { ... } end
-function methods:SetMinMaxValues(minimum, maximum) self.minimum, self.maximum = minimum, maximum end
+function methods:SetMinMaxValues(minimum, maximum)
+    self.minimum, self.maximum = minimum, maximum
+end
 function methods:SetValue(value) self.value = value end
 function CreateFrame(kind, name, parent)
     local frame = widget(parent)
@@ -46,7 +54,9 @@ function LibStub(name)
     assert(name ~= "LibCandyBar-3.0", "APR must not obtain a shared bar or callback registry")
     return {
         GetLocale = function() return { AFK = "AFK" } end,
-        RegisterConfig = noop, MakeDraggable = noop, RestorePosition = noop,
+        RegisterConfig = noop,
+        MakeDraggable = noop,
+        RestorePosition = noop,
     }
 end
 UIParent = widget()
@@ -54,14 +64,17 @@ C_Timer = { After = function(_, callback) timers[#timers + 1] = callback end }
 local function drain()
     local pending = timers
     timers = {}
-    for _, callback in ipairs(pending) do callback() end
+    for _, callback in ipairs(pending) do
+        callback()
+    end
 end
 
 local refreshes = 0
 APR = {
     Color = { defaultBackdrop = { 0, 0, 0, 1 }, blue = { 0, 0.5, 1 }, orange = { 1, 0.6, 0.1 } },
-    settings = { profile = { enableAddon = true, afkWidth = 310, afkHeight = 24,
-        afkBarColor = { 0.2, 0.4, 0.6, 0.8 } } },
+    settings = {
+        profile = { enableAddon = true, afkWidth = 310, afkHeight = 24, afkBarColor = { 0.2, 0.4, 0.6, 0.8 } },
+    },
     textStyleRegistry = {},
     fillersFrame = { RefreshFillersFrame = function() refreshes = refreshes + 1 end },
     questOrderList = { ApplySnapAnchor = noop },
@@ -74,11 +87,18 @@ dofile("APR-Core/ui/foundations/StatusBars.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/features/player/AFK.lua")
 local afk, bar = APR.AFK
-for _, frame in ipairs(frames) do if frame.kind == "StatusBar" then assert(not bar); bar = frame end end
+for _, frame in ipairs(frames) do
+    if frame.kind == "StatusBar" then
+        assert(not bar)
+        bar = frame
+    end
+end
 assert(bar and bar:GetParent() == AfkFrameScreen)
 afk:AFKFrameOnInit()
 local allocated = #frames
-for _ = 1, 1250 do afk:HideFrame() end
+for _ = 1, 1250 do
+    afk:HideFrame()
+end
 assert(not AfkFrameScreen:IsShown() and not bar.scripts.OnUpdate)
 assert(#timers == 0, "1,250 ordinary steps without an AFK timer must not queue layout callbacks")
 drain()
@@ -109,8 +129,10 @@ for _, sample in ipairs({ { 3661, "1:01:01" }, { 61, "1:01" }, { 10.6, "11" }, {
 end
 afk:SetAfkTimer(10)
 tick(20)
-assert(not AfkFrameScreen:IsShown() and not bar.scripts.OnUpdate and not afk.timerEnd,
-    "Natural expiry clears the timer and its update script")
+assert(
+    not AfkFrameScreen:IsShown() and not bar.scripts.OnUpdate and not afk.timerEnd,
+    "Natural expiry clears the timer and its update script"
+)
 afk:HideFrame()
 drain()
 local beforeBurstRefreshes = refreshes
@@ -142,8 +164,14 @@ APR.settings = nil
 afk:SetAfkTimer(60)
 drain()
 
-APR.settings = { profile = { enableAddon = true, afkSnapToCurrentStep = true, afkHeight = 30,
-    afkBarColor = { 0.2, 0.4, 0.6, 0.8 } } }
+APR.settings = {
+    profile = {
+        enableAddon = true,
+        afkSnapToCurrentStep = true,
+        afkHeight = 30,
+        afkBarColor = { 0.2, 0.4, 0.6, 0.8 },
+    },
+}
 CurrentStepScreenPanel = widget()
 CurrentStepScreenPanel:SetSize(420, 100)
 afk:SetAfkTimer(15)
@@ -166,7 +194,9 @@ end
 afk:SetAfkTimer(nil)
 assert(not bar.scripts.OnUpdate)
 afk:SetAfkTimer(1e-20)
-assert(not bar.scripts.OnUpdate and not AfkFrameScreen:IsShown(),
-    "A duration already expired during startup must not leave a stale update script")
+assert(
+    not bar.scripts.OnUpdate and not AfkFrameScreen:IsShown(),
+    "A duration already expired during startup must not leave a stale update script"
+)
 drain()
 print("PASS: native AFK ownership, countdown formatting, restarts, expiry, settings, snapping and invalid durations")

@@ -34,7 +34,11 @@ local function GetCursorPositionInUiScale()
     local scale = UIParent and UIParent:GetEffectiveScale() or 1
     local cursorX, cursorY = GetCursorPosition()
     return cursorX / scale, cursorY / scale
-end--[[APR_DIAG]]; GetCursorPositionInUiScale = APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:33:GetCursorPositionInUiScale#1", GetCursorPositionInUiScale)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+GetCursorPositionInUiScale = APRTrace(
+    "APR-Core/ui/route/CurrentStepImagePreview.lua:33:GetCursorPositionInUiScale#1",
+    GetCursorPositionInUiScale
+)--[[/APR_DIAG]]
 
 local function StopOverlayPanning(window)
     if not window then
@@ -47,7 +51,9 @@ local function StopOverlayPanning(window)
     if window.panUpdater then
         window.panUpdater:SetScript("OnUpdate", nil)
     end
-end--[[APR_DIAG]]; StopOverlayPanning = APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:39:StopOverlayPanning#2", StopOverlayPanning)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+StopOverlayPanning =
+    APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:39:StopOverlayPanning#2", StopOverlayPanning)--[[/APR_DIAG]]
 
 local function ReturnWindowToPool(window)
     if not window or window.isPooled then
@@ -70,7 +76,9 @@ local function ReturnWindowToPool(window)
         window.texture:SetTexture(nil)
     end
     table.insert(overlayPool, window)
-end--[[APR_DIAG]]; ReturnWindowToPool = APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:52:ReturnWindowToPool#3", ReturnWindowToPool)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+ReturnWindowToPool =
+    APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:52:ReturnWindowToPool#3", ReturnWindowToPool)--[[/APR_DIAG]]
 
 local function CloseAllOverlayWindows(container)
     local toClose = {}
@@ -84,7 +92,9 @@ local function CloseAllOverlayWindows(container)
             panel:Hide()
         end
     end
-end--[[APR_DIAG]]; CloseAllOverlayWindows = APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:75:CloseAllOverlayWindows#4", CloseAllOverlayWindows)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+CloseAllOverlayWindows =
+    APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:75:CloseAllOverlayWindows#4", CloseAllOverlayWindows)--[[/APR_DIAG]]
 
 local STEP_PREVIEW_CONTAINER_KEY = "05_STEP_PREVIEW_IMAGES"
 local STEP_PREVIEW_GAP = 4
@@ -115,14 +125,22 @@ local function ProbeOverlayTextureAspectRatio(panel)
     elseif window.aspectProbeAttempts > 120 then
         panel:SetScript("OnUpdate", nil)
     end
-end--[[APR_DIAG]]; ProbeOverlayTextureAspectRatio = APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:101:ProbeOverlayTextureAspectRatio#5", ProbeOverlayTextureAspectRatio)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+ProbeOverlayTextureAspectRatio = APRTrace(
+    "APR-Core/ui/route/CurrentStepImagePreview.lua:101:ProbeOverlayTextureAspectRatio#5",
+    ProbeOverlayTextureAspectRatio
+)--[[/APR_DIAG]]
 
 local function StartOverlayTextureAspectRatioProbe(window)
     if not window or not window.panel then return end
     window.aspectProbeAttempts = 0
     window.panel.previewWindow = window
     window.panel:SetScript("OnUpdate", ProbeOverlayTextureAspectRatio)
-end--[[APR_DIAG]]; StartOverlayTextureAspectRatioProbe = APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:120:StartOverlayTextureAspectRatioProbe#6", StartOverlayTextureAspectRatioProbe)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+StartOverlayTextureAspectRatioProbe = APRTrace(
+    "APR-Core/ui/route/CurrentStepImagePreview.lua:120:StartOverlayTextureAspectRatioProbe#6",
+    StartOverlayTextureAspectRatioProbe
+)--[[/APR_DIAG]]
 
 local function CreateOverlayWindow(imagePath)
     if not imagePath then
@@ -186,61 +204,90 @@ local function CreateOverlayWindow(imagePath)
             isPanning = false,
         }
 
-        panel:SetScript("OnDragStart", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:189:callback#8", --[[/APR_DIAG]]function(self)
-            self:StartMoving()
-        end--[[APR_DIAG]])--[[/APR_DIAG]])
-        panel:SetScript("OnDragStop", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:192:callback#9", --[[/APR_DIAG]]function(self)
-            self:StopMovingOrSizing()
-        end--[[APR_DIAG]])--[[/APR_DIAG]])
-        panel:SetScript("OnMouseUp", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:195:callback#10", --[[/APR_DIAG]]function(self)
-            self:StopMovingOrSizing()
-            window.isSizing = false
-            window.resizeCenterX = nil
-            window.resizeCenterY = nil
-            StopOverlayPanning(window)
-        end--[[APR_DIAG]])--[[/APR_DIAG]])
+        panel:SetScript(
+            "OnDragStart", --[[APR_DIAG]]
+            APRTrace(
+                "APR-Core/ui/route/CurrentStepImagePreview.lua:189:callback#8", --[[/APR_DIAG]]
+                function(self)
+                    self:StartMoving()
+                end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]]
+        )
+        panel:SetScript(
+            "OnDragStop", --[[APR_DIAG]]
+            APRTrace(
+                "APR-Core/ui/route/CurrentStepImagePreview.lua:192:callback#9", --[[/APR_DIAG]]
+                function(self)
+                    self:StopMovingOrSizing()
+                end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]]
+        )
+        panel:SetScript(
+            "OnMouseUp", --[[APR_DIAG]]
+            APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:195:callback#10", --[[/APR_DIAG]] function(self)
+                self:StopMovingOrSizing()
+                window.isSizing = false
+                window.resizeCenterX = nil
+                window.resizeCenterY = nil
+                StopOverlayPanning(window)
+            end--[[APR_DIAG]]) --[[/APR_DIAG]]
+        )
         panel:EnableMouseWheel(true)
-        panel:SetScript("OnMouseWheel", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:203:callback#11", --[[/APR_DIAG]]function(_, delta)
-            if delta > 0 then
-                window.zoomLevel = APR:Clamp(window.zoomLevel + OVERLAY_ZOOM_STEP, OVERLAY_ZOOM_MIN, OVERLAY_ZOOM_MAX)
-            else
-                window.zoomLevel = APR:Clamp(window.zoomLevel - OVERLAY_ZOOM_STEP, OVERLAY_ZOOM_MIN, OVERLAY_ZOOM_MAX)
-            end
-
-            if ApplyOverlayTextureLayout then
-                ApplyOverlayTextureLayout(window)
-            end
-        end--[[APR_DIAG]])--[[/APR_DIAG]])
-
-        panel:SetScript("OnMouseDown", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:215:callback#12", --[[/APR_DIAG]]function(_, button)
-            -- Right-click drag pans inside the image while zoomed.
-            if button == "RightButton" and (window.zoomLevel or OVERLAY_ZOOM_MIN) > OVERLAY_ZOOM_MIN then
-                window.isPanning = true
-                window.panLastCursorX, window.panLastCursorY = GetCursorPositionInUiScale()
-
-                local panUpdater = window.panUpdater
-                if panUpdater and panUpdater.SetScript then
-                    panUpdater:SetScript("OnUpdate", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:223:callback#13", --[[/APR_DIAG]]function()
-                        if not window.isPanning then
-                            return
-                        end
-
-                        local cursorX, cursorY = GetCursorPositionInUiScale()
-                        local deltaX = cursorX - (window.panLastCursorX or cursorX)
-                        local deltaY = cursorY - (window.panLastCursorY or cursorY)
-
-                        window.panLastCursorX = cursorX
-                        window.panLastCursorY = cursorY
-                        window.panOffsetX = window.panOffsetX + deltaX
-                        window.panOffsetY = window.panOffsetY + deltaY
-
-                        if ApplyOverlayTextureLayout then
-                            ApplyOverlayTextureLayout(window)
-                        end
-                    end--[[APR_DIAG]])--[[/APR_DIAG]])
+        panel:SetScript(
+            "OnMouseWheel", --[[APR_DIAG]]
+            APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:203:callback#11", --[[/APR_DIAG]] function(_, delta)
+                if delta > 0 then
+                    window.zoomLevel =
+                        APR:Clamp(window.zoomLevel + OVERLAY_ZOOM_STEP, OVERLAY_ZOOM_MIN, OVERLAY_ZOOM_MAX)
+                else
+                    window.zoomLevel =
+                        APR:Clamp(window.zoomLevel - OVERLAY_ZOOM_STEP, OVERLAY_ZOOM_MIN, OVERLAY_ZOOM_MAX)
                 end
-            end
-        end--[[APR_DIAG]])--[[/APR_DIAG]])
+
+                if ApplyOverlayTextureLayout then
+                    ApplyOverlayTextureLayout(window)
+                end
+            end--[[APR_DIAG]]) --[[/APR_DIAG]]
+        )
+
+        panel:SetScript(
+            "OnMouseDown", --[[APR_DIAG]]
+            APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:215:callback#12", --[[/APR_DIAG]] function(_, button)
+                -- Right-click drag pans inside the image while zoomed.
+                if button == "RightButton" and (window.zoomLevel or OVERLAY_ZOOM_MIN) > OVERLAY_ZOOM_MIN then
+                    window.isPanning = true
+                    window.panLastCursorX, window.panLastCursorY = GetCursorPositionInUiScale()
+
+                    local panUpdater = window.panUpdater
+                    if panUpdater and panUpdater.SetScript then
+                        panUpdater:SetScript(
+                            "OnUpdate", --[[APR_DIAG]]
+                            APRTrace(
+                                "APR-Core/ui/route/CurrentStepImagePreview.lua:223:callback#13", --[[/APR_DIAG]]
+                                function()
+                                    if not window.isPanning then
+                                        return
+                                    end
+
+                                    local cursorX, cursorY = GetCursorPositionInUiScale()
+                                    local deltaX = cursorX - (window.panLastCursorX or cursorX)
+                                    local deltaY = cursorY - (window.panLastCursorY or cursorY)
+
+                                    window.panLastCursorX = cursorX
+                                    window.panLastCursorY = cursorY
+                                    window.panOffsetX = window.panOffsetX + deltaX
+                                    window.panOffsetY = window.panOffsetY + deltaY
+
+                                    if ApplyOverlayTextureLayout then
+                                        ApplyOverlayTextureLayout(window)
+                                    end
+                                end --[[APR_DIAG]]
+                            ) --[[/APR_DIAG]]
+                        )
+                    end
+                end
+            end--[[APR_DIAG]]) --[[/APR_DIAG]]
+        )
 
         window.panUpdater = CreateFrame("Frame", nil, panel)
 
@@ -249,16 +296,19 @@ local function CreateOverlayWindow(imagePath)
         texture:SetPoint("CENTER", panel, "CENTER", 0, 0)
         window.texture = texture
 
-        panel:SetScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:252:callback#14", --[[/APR_DIAG]]function()
-            if window.isSizing and window.resizeCenterX and window.resizeCenterY then
-                panel:ClearAllPoints()
-                panel:SetPoint("CENTER", UIParent, "BOTTOMLEFT", window.resizeCenterX, window.resizeCenterY)
-            end
+        panel:SetScript(
+            "OnSizeChanged", --[[APR_DIAG]]
+            APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:252:callback#14", --[[/APR_DIAG]] function()
+                if window.isSizing and window.resizeCenterX and window.resizeCenterY then
+                    panel:ClearAllPoints()
+                    panel:SetPoint("CENTER", UIParent, "BOTTOMLEFT", window.resizeCenterX, window.resizeCenterY)
+                end
 
-            if ApplyOverlayTextureLayout then
-                ApplyOverlayTextureLayout(window)
-            end
-        end--[[APR_DIAG]])--[[/APR_DIAG]])
+                if ApplyOverlayTextureLayout then
+                    ApplyOverlayTextureLayout(window)
+                end
+            end--[[APR_DIAG]]) --[[/APR_DIAG]]
+        )
 
         local resizeHandle = CreateFrame("Button", nil, panel)
         resizeHandle:SetSize(18, 18)
@@ -267,27 +317,39 @@ local function CreateOverlayWindow(imagePath)
         resizeTexture:SetAllPoints(resizeHandle)
         resizeTexture:SetTexture("Interface\\ChatFrame\\UI-ChatIM-SizeGrabber-Up")
         resizeHandle:SetHighlightTexture("Interface\\ChatFrame\\UI-ChatIM-SizeGrabber-Highlight", "ADD")
-        resizeHandle:SetScript("OnMouseDown", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:270:callback#15", --[[/APR_DIAG]]function(_, button)
-            if button == "LeftButton" then
-                window.resizeCenterX, window.resizeCenterY = panel:GetCenter()
-                window.isSizing = true
-                panel:StartSizing("BOTTOMRIGHT")
-            end
-        end--[[APR_DIAG]])--[[/APR_DIAG]])
-        resizeHandle:SetScript("OnMouseUp", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:277:callback#16", --[[/APR_DIAG]]function()
-            panel:StopMovingOrSizing()
-            window.isSizing = false
-            window.resizeCenterX = nil
-            window.resizeCenterY = nil
-        end--[[APR_DIAG]])--[[/APR_DIAG]])
+        resizeHandle:SetScript(
+            "OnMouseDown", --[[APR_DIAG]]
+            APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:270:callback#15", --[[/APR_DIAG]] function(_, button)
+                if button == "LeftButton" then
+                    window.resizeCenterX, window.resizeCenterY = panel:GetCenter()
+                    window.isSizing = true
+                    panel:StartSizing("BOTTOMRIGHT")
+                end
+            end--[[APR_DIAG]]) --[[/APR_DIAG]]
+        )
+        resizeHandle:SetScript(
+            "OnMouseUp", --[[APR_DIAG]]
+            APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:277:callback#16", --[[/APR_DIAG]] function()
+                panel:StopMovingOrSizing()
+                window.isSizing = false
+                window.resizeCenterX = nil
+                window.resizeCenterY = nil
+            end--[[APR_DIAG]]) --[[/APR_DIAG]]
+        )
 
         local closeButton = CreateFrame("Button", nil, panel, "UIPanelCloseButton")
         closeButton:SetPoint("TOPRIGHT", panel, "TOPRIGHT", -2, -2)
         closeButton:SetFrameStrata("FULLSCREEN_DIALOG")
         closeButton:SetFrameLevel((panel:GetFrameLevel() or 1) + 20)
-        closeButton:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:288:callback#17", --[[/APR_DIAG]]function()
-            panel:Hide()
-        end--[[APR_DIAG]])--[[/APR_DIAG]])
+        closeButton:SetScript(
+            "OnClick", --[[APR_DIAG]]
+            APRTrace(
+                "APR-Core/ui/route/CurrentStepImagePreview.lua:288:callback#17", --[[/APR_DIAG]]
+                function()
+                    panel:Hide()
+                end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]]
+        )
 
         if APR.RegisterSkinTarget then
             APR:RegisterSkinTarget(panel, "panel", { preserveContent = true })
@@ -295,30 +357,41 @@ local function CreateOverlayWindow(imagePath)
         end
 
         -- OnHide handles both close-button clicks and Escape-key (UISpecialFrames).
-        panel:SetScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:298:callback#18", --[[/APR_DIAG]]function(self)
-            self:SetScript("OnUpdate", nil)
-            ReturnWindowToPool(window)
-        end--[[APR_DIAG]])--[[/APR_DIAG]])
+        panel:SetScript(
+            "OnHide", --[[APR_DIAG]]
+            APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:298:callback#18", --[[/APR_DIAG]] function(self)
+                self:SetScript("OnUpdate", nil)
+                ReturnWindowToPool(window)
+            end--[[APR_DIAG]]) --[[/APR_DIAG]]
+        )
 
         if APR.Gamepad then
             APR.Gamepad:SetNavigationFlag(resizeHandle, "smartNavigationIgnored", true)
             local controls = {}
-            for index, action in ipairs({"-", "+", "", "", "", ""}) do
+            for index, action in ipairs({ "-", "+", "", "", "", "" }) do
                 local operation = index
-                local button = APR.UI:Button(panel, action, 44, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:308:callback#19", --[[/APR_DIAG]]function()
-                    if operation <= 2 then
-                        window.zoomLevel = APR:Clamp(window.zoomLevel + (operation == 1 and -0.1 or 0.1),
-                            OVERLAY_ZOOM_MIN, OVERLAY_ZOOM_MAX)
-                    elseif operation <= 4 then
-                        window.panOffsetX = window.panOffsetX + (operation == 3 and -24 or 24)
-                    else
-                        window.panOffsetY = window.panOffsetY + (operation == 5 and 24 or -24)
-                    end
-                    if ApplyOverlayTextureLayout then ApplyOverlayTextureLayout(window) end
-                end--[[APR_DIAG]])--[[/APR_DIAG]])
+                local button = APR.UI:Button(
+                    panel,
+                    action,
+                    44, --[[APR_DIAG]]
+                    APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:308:callback#19", --[[/APR_DIAG]] function()
+                        if operation <= 2 then
+                            window.zoomLevel = APR:Clamp(
+                                window.zoomLevel + (operation == 1 and -0.1 or 0.1),
+                                OVERLAY_ZOOM_MIN,
+                                OVERLAY_ZOOM_MAX
+                            )
+                        elseif operation <= 4 then
+                            window.panOffsetX = window.panOffsetX + (operation == 3 and -24 or 24)
+                        else
+                            window.panOffsetY = window.panOffsetY + (operation == 5 and 24 or -24)
+                        end
+                        if ApplyOverlayTextureLayout then ApplyOverlayTextureLayout(window) end
+                    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+                )
                 button:SetPoint("BOTTOMLEFT", 12 + (index - 1) * 48, 12)
                 if index > 2 then
-                    local rotations = {math.pi / 2, -math.pi / 2, 0, math.pi}
+                    local rotations = { math.pi / 2, -math.pi / 2, 0, math.pi }
                     APR.UI:ButtonIcon(button, "up", 20, true):SetRotation(rotations[index - 2])
                 end
                 button:SetFrameLevel(panel:GetFrameLevel() + 10)
@@ -368,7 +441,9 @@ local function CreateOverlayWindow(imagePath)
     end
 
     return window
-end--[[APR_DIAG]]; CreateOverlayWindow = APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:127:CreateOverlayWindow#7", CreateOverlayWindow)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+CreateOverlayWindow =
+    APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:127:CreateOverlayWindow#7", CreateOverlayWindow)--[[/APR_DIAG]]
 
 function APR.currentStepImagePreview:Show(imagePath, container)
     if not imagePath then
@@ -380,68 +455,84 @@ function APR.currentStepImagePreview:Show(imagePath, container)
         window.previewContainer = container
         window.panel:Show()
     end
-end--[[APR_DIAG]]; APR.currentStepImagePreview.Show = APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:373:APR.currentStepImagePreview:Show#20", APR.currentStepImagePreview.Show)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.currentStepImagePreview.Show = APRTrace(
+    "APR-Core/ui/route/CurrentStepImagePreview.lua:373:APR.currentStepImagePreview:Show#20",
+    APR.currentStepImagePreview.Show
+)--[[/APR_DIAG]]
 
 function APR.currentStepImagePreview:ConfigureCurrentStepPreview(stepHolder, frameWidth)
     currentStepFrameHolder = stepHolder
     currentStepFrameWidth = frameWidth or currentStepFrameWidth
-end--[[APR_DIAG]]; APR.currentStepImagePreview.ConfigureCurrentStepPreview = APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:385:APR.currentStepImagePreview:ConfigureCurrentStepPreview#21", APR.currentStepImagePreview.ConfigureCurrentStepPreview)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.currentStepImagePreview.ConfigureCurrentStepPreview = APRTrace(
+    "APR-Core/ui/route/CurrentStepImagePreview.lua:385:APR.currentStepImagePreview:ConfigureCurrentStepPreview#21",
+    APR.currentStepImagePreview.ConfigureCurrentStepPreview
+)--[[/APR_DIAG]]
 
 local function ClampPreviewDimension(value, minValue, maxValue)
     return math.max(minValue, math.min(maxValue, value))
-end--[[APR_DIAG]]; ClampPreviewDimension = APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:390:ClampPreviewDimension#22", ClampPreviewDimension)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+ClampPreviewDimension =
+    APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:390:ClampPreviewDimension#22", ClampPreviewDimension)--[[/APR_DIAG]]
 
-GetPreviewTextureAspectRatio = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:394:callback#23", --[[/APR_DIAG]]function(texture)
-    if not texture then
+GetPreviewTextureAspectRatio = --[[APR_DIAG]]
+    APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:394:callback#23", --[[/APR_DIAG]] function(texture)
+        if not texture then
+            return nil
+        end
+
+        local width = texture.GetTextureFileWidth and texture:GetTextureFileWidth() or 0
+        local height = texture.GetTextureFileHeight and texture:GetTextureFileHeight() or 0
+        if width and height and width > 0 and height > 0 then
+            return width / height
+        end
+
         return nil
-    end
-
-    local width = texture.GetTextureFileWidth and texture:GetTextureFileWidth() or 0
-    local height = texture.GetTextureFileHeight and texture:GetTextureFileHeight() or 0
-    if width and height and width > 0 and height > 0 then
-        return width / height
-    end
-
-    return nil
-end--[[APR_DIAG]])--[[/APR_DIAG]]
+    end--[[APR_DIAG]])--[[/APR_DIAG]]
 
 local function ResolvePreviewAspectRatio(texture)
     return GetPreviewTextureAspectRatio(texture) or STEP_PREVIEW_DEFAULT_ASPECT_RATIO
-end--[[APR_DIAG]]; ResolvePreviewAspectRatio = APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:408:ResolvePreviewAspectRatio#24", ResolvePreviewAspectRatio)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+ResolvePreviewAspectRatio = APRTrace(
+    "APR-Core/ui/route/CurrentStepImagePreview.lua:408:ResolvePreviewAspectRatio#24",
+    ResolvePreviewAspectRatio
+)--[[/APR_DIAG]]
 
-ApplyOverlayTextureLayout = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:412:callback#25", --[[/APR_DIAG]]function(window)
-    if not window or not window.panel or not window.texture or not window.texture:GetTexture() then
-        return
-    end
+ApplyOverlayTextureLayout = --[[APR_DIAG]]
+    APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:412:callback#25", --[[/APR_DIAG]] function(window)
+        if not window or not window.panel or not window.texture or not window.texture:GetTexture() then
+            return
+        end
 
-    local overlayPanel = window.panel
-    local overlayTexture = window.texture
+        local overlayPanel = window.panel
+        local overlayTexture = window.texture
 
-    local availableWidth = math.max((overlayPanel:GetWidth() or 0) - (OVERLAY_TEXTURE_PADDING * 2), 1)
-    local availableHeight = math.max((overlayPanel:GetHeight() or 0) - (OVERLAY_TEXTURE_PADDING * 2), 1)
-    local aspectRatio = window.imageAspectRatio or ResolvePreviewAspectRatio(overlayTexture)
+        local availableWidth = math.max((overlayPanel:GetWidth() or 0) - (OVERLAY_TEXTURE_PADDING * 2), 1)
+        local availableHeight = math.max((overlayPanel:GetHeight() or 0) - (OVERLAY_TEXTURE_PADDING * 2), 1)
+        local aspectRatio = window.imageAspectRatio or ResolvePreviewAspectRatio(overlayTexture)
 
-    local targetWidth = availableWidth
-    local targetHeight = math.floor(targetWidth / aspectRatio)
+        local targetWidth = availableWidth
+        local targetHeight = math.floor(targetWidth / aspectRatio)
 
-    if targetHeight > availableHeight then
-        targetHeight = availableHeight
-        targetWidth = math.floor(targetHeight * aspectRatio)
-    end
+        if targetHeight > availableHeight then
+            targetHeight = availableHeight
+            targetWidth = math.floor(targetHeight * aspectRatio)
+        end
 
-    local zoom = window.zoomLevel or OVERLAY_ZOOM_MIN
-    targetWidth = math.floor(targetWidth * zoom)
-    targetHeight = math.floor(targetHeight * zoom)
+        local zoom = window.zoomLevel or OVERLAY_ZOOM_MIN
+        targetWidth = math.floor(targetWidth * zoom)
+        targetHeight = math.floor(targetHeight * zoom)
 
-    local maxPanX = math.max((targetWidth - availableWidth) / 2, 0)
-    local maxPanY = math.max((targetHeight - availableHeight) / 2, 0)
-    window.panOffsetX = APR:Clamp(window.panOffsetX or 0, -maxPanX, maxPanX)
-    window.panOffsetY = APR:Clamp(window.panOffsetY or 0, -maxPanY, maxPanY)
+        local maxPanX = math.max((targetWidth - availableWidth) / 2, 0)
+        local maxPanY = math.max((targetHeight - availableHeight) / 2, 0)
+        window.panOffsetX = APR:Clamp(window.panOffsetX or 0, -maxPanX, maxPanX)
+        window.panOffsetY = APR:Clamp(window.panOffsetY or 0, -maxPanY, maxPanY)
 
-    overlayTexture:ClearAllPoints()
-    overlayTexture:SetSize(targetWidth, targetHeight)
-    overlayTexture:SetPoint("CENTER", overlayPanel, "CENTER", window.panOffsetX, window.panOffsetY)
-end--[[APR_DIAG]])--[[/APR_DIAG]]
+        overlayTexture:ClearAllPoints()
+        overlayTexture:SetSize(targetWidth, targetHeight)
+        overlayTexture:SetPoint("CENTER", overlayPanel, "CENTER", window.panOffsetX, window.panOffsetY)
+    end--[[APR_DIAG]])--[[/APR_DIAG]]
 
 local function BuildPreviewLayoutMetrics(availableWidth, count, aspectRatios)
     local safeCount = math.max(count or 0, 1)
@@ -469,11 +560,8 @@ local function BuildPreviewLayoutMetrics(availableWidth, count, aspectRatios)
         local scale = availableWidth / totalWidth
         totalWidth = totalGap
         for index = 1, safeCount do
-            local scaledWidth = ClampPreviewDimension(
-                math.floor(widths[index] * scale),
-                STEP_PREVIEW_MIN_WIDTH,
-                STEP_PREVIEW_MAX_WIDTH
-            )
+            local scaledWidth =
+                ClampPreviewDimension(math.floor(widths[index] * scale), STEP_PREVIEW_MIN_WIDTH, STEP_PREVIEW_MAX_WIDTH)
             widths[index] = scaledWidth
             totalWidth = totalWidth + scaledWidth
         end
@@ -500,7 +588,11 @@ local function BuildPreviewLayoutMetrics(availableWidth, count, aspectRatios)
         widths = widths,
         totalWidth = totalWidth,
     }
-end--[[APR_DIAG]]; BuildPreviewLayoutMetrics = APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:446:BuildPreviewLayoutMetrics#26", BuildPreviewLayoutMetrics)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+BuildPreviewLayoutMetrics = APRTrace(
+    "APR-Core/ui/route/CurrentStepImagePreview.lua:446:BuildPreviewLayoutMetrics#26",
+    BuildPreviewLayoutMetrics
+)--[[/APR_DIAG]]
 
 local function ComputePreviewRowSizes(previewCount)
     if previewCount <= STEP_PREVIEW_MAX_PER_ROW then
@@ -521,15 +613,18 @@ local function ComputePreviewRowSizes(previewCount)
     end
 
     return rowSizes
-end--[[APR_DIAG]]; ComputePreviewRowSizes = APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:505:ComputePreviewRowSizes#27", ComputePreviewRowSizes)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+ComputePreviewRowSizes =
+    APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:505:ComputePreviewRowSizes#27", ComputePreviewRowSizes)--[[/APR_DIAG]]
 
 local function ApplyPreviewButtonLayout(container)
     if not container or not container.previewButtons then
         return
     end
 
-    local availableWidth = container:GetWidth() - (STEP_PREVIEW_SIDE_PADDING * 2) -
-        (STEP_PREVIEW_HORIZONTAL_PADDING * 2)
+    local availableWidth = container:GetWidth()
+        - (STEP_PREVIEW_SIDE_PADDING * 2)
+        - (STEP_PREVIEW_HORIZONTAL_PADDING * 2)
     local aspectRatios = {}
     for index = 1, #(container.imagePaths or {}) do
         local button = container.previewButtons[index]
@@ -577,15 +672,25 @@ local function ApplyPreviewButtonLayout(container)
     end
 
     container:SetHeight(totalHeight)
-end--[[APR_DIAG]]; ApplyPreviewButtonLayout = APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:526:ApplyPreviewButtonLayout#28", ApplyPreviewButtonLayout)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+ApplyPreviewButtonLayout =
+    APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:526:ApplyPreviewButtonLayout#28", ApplyPreviewButtonLayout)--[[/APR_DIAG]]
 
 function APR.currentStepImagePreview:RefreshPreviewLayout(container)
     if not InCombatLockdown() then ApplyPreviewButtonLayout(container) end
-end--[[APR_DIAG]]; APR.currentStepImagePreview.RefreshPreviewLayout = APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:582:APR.currentStepImagePreview:RefreshPreviewLayout#29", APR.currentStepImagePreview.RefreshPreviewLayout)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.currentStepImagePreview.RefreshPreviewLayout = APRTrace(
+    "APR-Core/ui/route/CurrentStepImagePreview.lua:582:APR.currentStepImagePreview:RefreshPreviewLayout#29",
+    APR.currentStepImagePreview.RefreshPreviewLayout
+)--[[/APR_DIAG]]
 
 function APR.currentStepImagePreview:ClosePreviewWindows(container)
     if container then CloseAllOverlayWindows(container) end
-end--[[APR_DIAG]]; APR.currentStepImagePreview.ClosePreviewWindows = APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:586:APR.currentStepImagePreview:ClosePreviewWindows#30", APR.currentStepImagePreview.ClosePreviewWindows)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.currentStepImagePreview.ClosePreviewWindows = APRTrace(
+    "APR-Core/ui/route/CurrentStepImagePreview.lua:586:APR.currentStepImagePreview:ClosePreviewWindows#30",
+    APR.currentStepImagePreview.ClosePreviewWindows
+)--[[/APR_DIAG]]
 
 local function ReOrderPreview(container, currentStep)
     if container.previewFillerQuestID then
@@ -593,7 +698,8 @@ local function ReOrderPreview(container, currentStep)
     else
         currentStep:ReOrderQuestSteps(true)
     end
-end--[[APR_DIAG]]; ReOrderPreview = APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:590:ReOrderPreview#31", ReOrderPreview)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+ReOrderPreview = APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:590:ReOrderPreview#31", ReOrderPreview)--[[/APR_DIAG]]
 
 function APR.currentStepImagePreview:ClearPreviewImages(currentStep, fillerQuestID)
     if not currentStep then
@@ -608,13 +714,22 @@ function APR.currentStepImagePreview:ClearPreviewImages(currentStep, fillerQuest
     end
 
     currentStep:ReleaseRow(list, key)
-    if fillerQuestID then APR.fillersFrame:ReOrderFillerSteps()
-    else currentStep:ReOrderQuestSteps(true) end
-end--[[APR_DIAG]]; APR.currentStepImagePreview.ClearPreviewImages = APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:598:APR.currentStepImagePreview:ClearPreviewImages#32", APR.currentStepImagePreview.ClearPreviewImages)--[[/APR_DIAG]]
+    if fillerQuestID then
+        APR.fillersFrame:ReOrderFillerSteps()
+    else
+        currentStep:ReOrderQuestSteps(true)
+    end
+end--[[APR_DIAG]]
+APR.currentStepImagePreview.ClearPreviewImages = APRTrace(
+    "APR-Core/ui/route/CurrentStepImagePreview.lua:598:APR.currentStepImagePreview:ClearPreviewImages#32",
+    APR.currentStepImagePreview.ClearPreviewImages
+)--[[/APR_DIAG]]
 
 local function PreviewButtonClick(button)
     APR.currentStepImagePreview:Show(button.imagePath, button:GetParent())
-end--[[APR_DIAG]]; PreviewButtonClick = APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:615:PreviewButtonClick#33", PreviewButtonClick)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+PreviewButtonClick =
+    APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:615:PreviewButtonClick#33", PreviewButtonClick)--[[/APR_DIAG]]
 
 local function PreviewButtonEnter(button)
     GameTooltip:SetOwner(button, "ANCHOR_BOTTOM")
@@ -622,11 +737,15 @@ local function PreviewButtonEnter(button)
     APR:AddTooltipLine(GameTooltip, L["PREVIEW_IMG"], scope, "accent")
     APR:AddTooltipLine(GameTooltip, L["ENLARGE_IMG"], scope, "muted", true)
     GameTooltip:Show()
-end--[[APR_DIAG]]; PreviewButtonEnter = APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:619:PreviewButtonEnter#34", PreviewButtonEnter)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+PreviewButtonEnter =
+    APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:619:PreviewButtonEnter#34", PreviewButtonEnter)--[[/APR_DIAG]]
 
 local function PreviewButtonLeave()
     GameTooltip:Hide()
-end--[[APR_DIAG]]; PreviewButtonLeave = APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:627:PreviewButtonLeave#35", PreviewButtonLeave)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+PreviewButtonLeave =
+    APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:627:PreviewButtonLeave#35", PreviewButtonLeave)--[[/APR_DIAG]]
 
 -- One polling pass publishes one layout even when many images finish together.
 local function ProbePreviewTextures(container, elapsed)
@@ -657,16 +776,20 @@ local function ProbePreviewTextures(container, elapsed)
         container:SetScript("OnUpdate", nil)
         container.previewCurrentStep = nil
     end
-end--[[APR_DIAG]]; ProbePreviewTextures = APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:632:ProbePreviewTextures#36", ProbePreviewTextures)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+ProbePreviewTextures =
+    APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:632:ProbePreviewTextures#36", ProbePreviewTextures)--[[/APR_DIAG]]
 
 function APR.currentStepImagePreview:SetPreviewImages(currentStep, step, fillerQuestID)
     if not currentStep or not APR.settings.profile.currentStepShow then
         return
     end
 
-    local paths = type(step) == "table" and (fillerQuestID
-        and type(step.FillerPreviewImages) == "table" and step.FillerPreviewImages[fillerQuestID]
-        or not fillerQuestID and step.PreviewImages)
+    local paths = type(step) == "table"
+        and (
+            fillerQuestID and type(step.FillerPreviewImages) == "table" and step.FillerPreviewImages[fillerQuestID]
+            or not fillerQuestID and step.PreviewImages
+        )
     if type(paths) ~= "table" then
         self:ClearPreviewImages(currentStep, fillerQuestID)
         return
@@ -705,18 +828,22 @@ function APR.currentStepImagePreview:SetPreviewImages(currentStep, step, fillerQ
         return
     end
 
-    local container = currentStep:AcquirePooledRow(holder, "preview") or
-        CreateFrame("Frame", nil, holder, "BackdropTemplate")
+    local container = currentStep:AcquirePooledRow(holder, "preview")
+        or CreateFrame("Frame", nil, holder, "BackdropTemplate")
     container.rowKind = "preview"
     container.previewFillerQuestID, container.questID = fillerQuestID, fillerQuestID
     container:SetWidth(fillerQuestID and APR.fillersFrame.Frame:GetWidth() or currentStepFrameWidth)
     container:SetBackdrop({
         bgFile = "Interface\\BUTTONS\\WHITE8X8",
         tile = true,
-        tileSize = 16
+        tileSize = 16,
     })
-    APR:SetPanelColor(container, fillerQuestID and { 0, 0, 0, 0 }
-        or APR.settings.profile.currentStepbackgroundColorAlpha or APR.Color.defaultBackdrop)
+    APR:SetPanelColor(
+        container,
+        fillerQuestID and { 0, 0, 0, 0 }
+            or APR.settings.profile.currentStepbackgroundColorAlpha
+            or APR.Color.defaultBackdrop
+    )
     container.key = key
     container.imagePaths = imagePaths
     container.step = step
@@ -756,4 +883,8 @@ function APR.currentStepImagePreview:SetPreviewImages(currentStep, step, fillerQ
     container:SetScript("OnUpdate", ProbePreviewTextures)
     list[key] = container
     ReOrderPreview(container, currentStep)
-end--[[APR_DIAG]]; APR.currentStepImagePreview.SetPreviewImages = APRTrace("APR-Core/ui/route/CurrentStepImagePreview.lua:662:APR.currentStepImagePreview:SetPreviewImages#37", APR.currentStepImagePreview.SetPreviewImages)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.currentStepImagePreview.SetPreviewImages = APRTrace(
+    "APR-Core/ui/route/CurrentStepImagePreview.lua:662:APR.currentStepImagePreview:SetPreviewImages#37",
+    APR.currentStepImagePreview.SetPreviewImages
+)--[[/APR_DIAG]]

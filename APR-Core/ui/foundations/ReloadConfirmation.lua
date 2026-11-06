@@ -17,48 +17,83 @@ function APR:RequestReload(action, text, owner)
     local prompt = text or L["UI_RELOAD_CONFIRM"]
     if manualReload then prompt = prompt .. "\n\n" .. L["UI_RELOAD_MANUAL_INSTRUCTION"] end
     local finished = false
-    return self.UI:ShowConfirmationDialog(prompt, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:20:callback#2", --[[/APR_DIAG]]function()
-        if finished then return end
-        finished = true
-        self.reloadConfirmationAccepted = true
-        local ok, result = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](--[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:24:callback#3", --[[/APR_DIAG]]function() if action then return action() end end--[[APR_DIAG]])--[[/APR_DIAG]])
-        self.reloadConfirmationAccepted = nil
-        if not ok then error(result, 0) end
-        if result == false then return end
-        if manualReload then
-            self:PrintInfo(L["UI_RELOAD_MANUAL_INSTRUCTION"])
-            return
-        end
-        if C_UI and C_UI.Reload then C_UI.Reload() else ReloadUI() end
-    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:33:callback#4", --[[/APR_DIAG]]function() finished = true end--[[APR_DIAG]])--[[/APR_DIAG]], owner)
-end--[[APR_DIAG]]; APR.RequestReload = APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:8:APR:RequestReload#1", APR.RequestReload)--[[/APR_DIAG]]
+    return self.UI:ShowConfirmationDialog(
+        prompt, --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:20:callback#2", --[[/APR_DIAG]] function()
+            if finished then return end
+            finished = true
+            self.reloadConfirmationAccepted = true
+            local ok, result = --[[APR_DIAG]]
+                APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](--[[APR_DIAG]]
+                    APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:24:callback#3", --[[/APR_DIAG]] function()
+                        if action then return action() end
+                    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+                )
+            self.reloadConfirmationAccepted = nil
+            if not ok then error(result, 0) end
+            if result == false then return end
+            if manualReload then
+                self:PrintInfo(L["UI_RELOAD_MANUAL_INSTRUCTION"])
+                return
+            end
+            if C_UI and C_UI.Reload then
+                C_UI.Reload()
+            else
+                ReloadUI()
+            end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]], --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/foundations/ReloadConfirmation.lua:33:callback#4", --[[/APR_DIAG]]
+            function() finished = true end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]],
+        owner
+    )
+end--[[APR_DIAG]]
+APR.RequestReload = APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:8:APR:RequestReload#1", APR.RequestReload)--[[/APR_DIAG]]
 
 -- AceDB's callbacks run inside the accepted action and must not ask a second time.
 function APR:ConfirmProfileOptions(source)
     local options = {}
-    for key, value in pairs(source) do options[key] = value end
+    for key, value in pairs(source) do
+        options[key] = value
+    end
     options.args = {}
     for key, value in pairs(source.args) do
         local copy = {}
-        for field, setting in pairs(value) do copy[field] = setting end
+        for field, setting in pairs(value) do
+            copy[field] = setting
+        end
         options.args[key] = copy
     end
-    for _, key in ipairs({"new", "choose", "copyfrom", "reset"}) do
+    for _, key in ipairs({ "new", "choose", "copyfrom", "reset" }) do
         local option = options.args[key]
         if option then
             local method = option.type == "execute" and "func" or "set"
             local original = option[method]
-            option[method] = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:51:callback#6", --[[/APR_DIAG]]function(...)
-                local args = {...}
-                local count = select("#", ...)
-                if (key == "new" or key == "choose") and args[2] == self.settings.db:GetCurrentProfile() then return end
-                self:RequestReload(--[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:55:callback#7", --[[/APR_DIAG]]function()
-                    if type(original) == "string" then source.handler[original](source.handler, unpack(args, 1, count))
-                    else original(unpack(args, 1, count)) end
-                end--[[APR_DIAG]])--[[/APR_DIAG]])
-            end--[[APR_DIAG]])--[[/APR_DIAG]]
+            option[method] = --[[APR_DIAG]]
+                APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:51:callback#6", --[[/APR_DIAG]] function(...)
+                    local args = { ... }
+                    local count = select("#", ...)
+                    if (key == "new" or key == "choose") and args[2] == self.settings.db:GetCurrentProfile() then
+                        return
+                    end
+                    self:RequestReload(--[[APR_DIAG]]
+                        APRTrace(
+                            "APR-Core/ui/foundations/ReloadConfirmation.lua:55:callback#7", --[[/APR_DIAG]]
+                            function()
+                                if type(original) == "string" then
+                                    source.handler[original](source.handler, unpack(args, 1, count))
+                                else
+                                    original(unpack(args, 1, count))
+                                end
+                            end --[[APR_DIAG]]
+                        ) --[[/APR_DIAG]]
+                    )
+                end--[[APR_DIAG]])--[[/APR_DIAG]]
             option.confirm = false
         end
     end
     return options
-end--[[APR_DIAG]]; APR.ConfirmProfileOptions = APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:37:APR:ConfirmProfileOptions#5", APR.ConfirmProfileOptions)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.ConfirmProfileOptions =
+    APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:37:APR:ConfirmProfileOptions#5", APR.ConfirmProfileOptions)--[[/APR_DIAG]]

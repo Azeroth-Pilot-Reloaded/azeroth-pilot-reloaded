@@ -49,8 +49,11 @@ for _, client in ipairs({ "retail", "forever" }) do
     local function render(step, details, mainQuest)
         current:BeginContentUpdate()
         current:Reset()
-        if details ~= false then preview:SetPreviewImages(current, step)
-        else preview:ClearPreviewImages(current) end
+        if details ~= false then
+            preview:SetPreviewImages(current, step)
+        else
+            preview:ClearPreviewImages(current)
+        end
         APR.stepHandlers.RenderRequirements(step, details ~= false, 1)
         if mainQuest then current:AddQuestSteps(mainQuest, "Primary objective", 1) end
         current:EndContentUpdate(true)
@@ -65,11 +68,15 @@ for _, client in ipairs({ "retail", "forever" }) do
     local optional, other = imageRow(current.fillersList, 101), imageRow(current.fillersList, 202)
     assert(main and optional and other and optional ~= main)
     assert(main:GetParent() == CurrentStepFrame_StepHolder and optional:GetParent() == fillers.StepHolder)
-    assert(#optional.imagePaths == 1 and optional.imagePaths[1] ==
-        "Interface\\AddOns\\APR\\APR-Core\\assets\\optional.jpg", "Invalid assets are omitted from filler thumbnails")
+    assert(
+        #optional.imagePaths == 1 and optional.imagePaths[1] == "Interface\\AddOns\\APR\\APR-Core\\assets\\optional.jpg",
+        "Invalid assets are omitted from filler thumbnails"
+    )
     local first, second = current.fillersList["101-1"], current.fillersList["101-2"]
-    assert(optional.layoutOffset == second.layoutOffset + second:GetHeight()
-        and other.layoutOffset > optional.layoutOffset, "Each preview follows its quest's objectives")
+    assert(
+        optional.layoutOffset == second.layoutOffset + second:GetHeight() and other.layoutOffset > optional.layoutOffset,
+        "Each preview follows its quest's objectives"
+    )
     assert(optional.backdropColor[4] == 0, "Filler preview rows share the panel background")
 
     -- Stable refreshes reuse rows and do not tear down enlarged images.
@@ -80,7 +87,9 @@ for _, client in ipairs({ "retail", "forever" }) do
     main.previewButtons[1].scripts.OnClick(main.previewButtons[1])
     local mainWindow = APRCurrentStepImagePreviewFrame2
     local frames, fonts, hides = env.frames(), env.fonts(), optional.hideCount
-    for _ = 1, 100 do render(source) end
+    for _ = 1, 100 do
+        render(source)
+    end
     assert(imageRow(current.fillersList, 101) == optional and optional.hideCount == hides)
     assert(env.frames() == frames and env.fonts() == fonts and optionalWindow:IsShown() and mainWindow:IsShown())
 
@@ -98,13 +107,17 @@ for _, client in ipairs({ "retail", "forever" }) do
 
     APR.ActiveQuests[101].objectives[1].status = "complete"
     render(source)
-    assert(not current.fillersList["101-1"] and imageRow(current.fillersList, 101) == optional,
-        "A quest preview remains while another associated objective is active")
+    assert(
+        not current.fillersList["101-1"] and imageRow(current.fillersList, 101) == optional,
+        "A quest preview remains while another associated objective is active"
+    )
     APR.ActiveQuests[101].objectives[2].status = "complete"
     render(source)
     assert(not imageRow(current.fillersList, 101) and optional.inRowPool and not optionalWindow:IsShown())
-    assert(mainWindow:IsShown() and not optional.scripts.OnUpdate and not optionalButton.imagePath,
-        "Completing a filler releases its preview and window without closing the main preview")
+    assert(
+        mainWindow:IsShown() and not optional.scripts.OnUpdate and not optionalButton.imagePath,
+        "Completing a filler releases its preview and window without closing the main preview"
+    )
 
     -- No primary preview must leave the independently owned filler window open.
     source.PreviewImages = nil
@@ -152,8 +165,10 @@ for _, client in ipairs({ "retail", "forever" }) do
     assert(current.fillersList["202-1"] and not imageRow(current.fillersList, 202))
     source.FillerPreviewImages[202] = { "replacement.jpg" }
     render(source)
-    assert(imageRow(current.fillersList, 202) == reused and reused.previewButtons[1].imagePath ==
-        "Interface\\AddOns\\APR\\APR-Core\\assets\\replacement.jpg")
+    assert(
+        imageRow(current.fillersList, 202) == reused
+            and reused.previewButtons[1].imagePath == "Interface\\AddOns\\APR\\APR-Core\\assets\\replacement.jpg"
+    )
     source.FillerPreviewImages[202] = { "replacement.jpg", "pending.jpg" }
     render(source)
     local pendingRow = imageRow(current.fillersList, 202)
@@ -161,8 +176,12 @@ for _, client in ipairs({ "retail", "forever" }) do
     pendingRow.previewButtons[1].previewTexture.fileHeight = 200
     current:AddQuestSteps(202, "Now the primary objective", 1)
     pendingRow.scripts.OnUpdate(pendingRow, 0.05)
-    assert(not imageRow(current.fillersList, 202) and pendingRow.inRowPool and not pendingRow.scripts.OnUpdate,
-        "Late texture loading safely stops when the last filler becomes a primary objective")
+    assert(
+        not imageRow(current.fillersList, 202) and pendingRow.inRowPool and not pendingRow.scripts.OnUpdate,
+        "Late texture loading safely stops when the last filler becomes a primary objective"
+    )
     render({})
 end
-print("Filler previews: independent panels/windows, active objectives, layout, pooling and combat passed on both clients")
+print(
+    "Filler previews: independent panels/windows, active objectives, layout, pooling and combat passed on both clients"
+)

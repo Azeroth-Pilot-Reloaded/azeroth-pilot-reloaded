@@ -10,24 +10,42 @@ C_QuestLog.IsQuestFlaggedCompletedOnAccount = function(id)
 end
 GetAchievementInfo = function(id) return id, "Client achievement", 0, achievements[id] == true end
 local function point(map) return { instanceID = 0, uiMapID = map, x = 0, y = 0 } end
-local accountGate = { minLevel = 40, any = { { quest = 1 }, { questActive = 1 }, { questAccount = 1 }, { achievement = 2 } } }
-local data = fixture:Load({ connections = {
-    { id = "later-direction", kind = "portal", from = point(101), to = point(102), requirements = accountGate },
-    { id = "early-direction", kind = "portal", from = point(102), to = point(101),
-        requirements = { any = { { questActive = 3 }, accountGate } } },
-    { id = "intro-phase", kind = "portal", from = point(101), to = point(102),
-        requirements = { all = { { quest = 4 }, { notCondition = { quest = 1 } }, { notCondition = { achievement = 2 } } } } },
-} })
+local accountGate =
+    { minLevel = 40, any = { { quest = 1 }, { questActive = 1 }, { questAccount = 1 }, { achievement = 2 } } }
+local data = fixture:Load({
+    connections = {
+        { id = "later-direction", kind = "portal", from = point(101), to = point(102), requirements = accountGate },
+        {
+            id = "early-direction",
+            kind = "portal",
+            from = point(102),
+            to = point(101),
+            requirements = { any = { { questActive = 3 }, accountGate } },
+        },
+        {
+            id = "intro-phase",
+            kind = "portal",
+            from = point(101),
+            to = point(102),
+            requirements = {
+                all = { { quest = 4 }, { notCondition = { quest = 1 } }, { notCondition = { achievement = 2 } } },
+            },
+        },
+    },
+})
 local player = point(101)
 local function build()
     reads = {}
     local edges, metadata = data:BuildEdges({ start = player, playerPosition = player })
     local indexed = {}
-    for _, edge in ipairs(edges) do indexed[edge.id] = edge end
+    for _, edge in ipairs(edges) do
+        indexed[edge.id] = edge
+    end
     assert((reads[1] or 0) <= 1, "One build shares account reads between directions")
     return indexed, metadata
 end
-local inward, outward, intro = "retail:later-direction:forward", "retail:early-direction:forward", "retail:intro-phase:forward"
+local inward, outward, intro =
+    "retail:later-direction:forward", "retail:early-direction:forward", "retail:intro-phase:forward"
 assert(next((build())) == nil)
 active[3] = true
 local edges = build()
@@ -52,7 +70,10 @@ character.level = 39
 assert(data:CheckRequirements(accountGate, character) == false, "Account progress does not waive a level gate")
 character.level = 40
 assert(data:CheckRequirements({ all = { accountGate, { class = "DRUID" } } }, character) == false)
-assert(data:CheckRequirements({ quest = 1 }, character) == false, "Account progress cannot satisfy a character-only introduction")
+assert(
+    data:CheckRequirements({ quest = 1 }, character) == false,
+    "Account progress cannot satisfy a character-only introduction"
+)
 achievements[2], GetAchievementInfo, C_QuestLog.IsQuestFlaggedCompletedOnAccount = nil, nil, nil
 local metadata
 edges, metadata = build()

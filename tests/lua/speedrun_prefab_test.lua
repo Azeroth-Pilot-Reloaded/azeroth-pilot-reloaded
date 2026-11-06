@@ -9,11 +9,13 @@ function APR:GetPlayerEffectiveLevel() return self.Level end
 local map, spec = 7, 81
 function APR:GetPlayerParentMapID() return map end
 C_Map = { GetBestMapForUnit = function() return map end }
-C_SpecializationInfo = { GetSpecialization = function() return 1 end,
-    GetSpecializationInfo = function() return spec end }
+C_SpecializationInfo =
+    { GetSpecialization = function() return 1 end, GetSpecializationInfo = function() return spec end }
 C_QuestLog = { IsQuestFlaggedCompleted = function() return false end }
 function tContains(values, wanted)
-    for _, value in ipairs(values) do if value == wanted then return true end end
+    for _, value in ipairs(values) do
+        if value == wanted then return true end
+    end
     return false
 end
 function APR:IsDelveRoute() return false end
@@ -21,7 +23,9 @@ APR.Faction, APR.Race, APR.RaceID, APR.ClassName, APR.ClassId = "Horde", "Orc", 
 APR.Level, APR.MinBoostLvl, APR.MaxLevelChromie, APR.PreviousMaxLvl = 1, 10, 70, 80
 local kind = APR.PREFAB_TYPES
 local updates, checked = 0, {}
-function APR.routeconfig:SendCustomPathUpdate(suppress) if not suppress then updates = updates + 1 end end
+function APR.routeconfig:SendCustomPathUpdate(suppress)
+    if not suppress then updates = updates + 1 end
+end
 function APR.routeconfig:SendMessage() updates = updates + 1 end
 function APR:CheckRouteChanges(key) checked[key] = (checked[key] or 0) + 1 end
 local function reset()
@@ -30,9 +34,15 @@ local function reset()
     APR.Faction, APR.Race, APR.ClassName, APR.ClassId = "Horde", "Orc", "WARRIOR", 1
 end
 local function route(key, index, level, conditions)
-    local data = { label = "Invented " .. key, expansion = APR.EXPANSIONS.Forever,
-        category = APR.CATEGORIES.Leveling, mapID = 9, conditions = conditions or { Faction = "Horde", MinLevel = level },
-        prefab = { [kind.Speedrun] = index }, steps = { { Note = { "Invented instruction" } }, { RouteCompleted = true } } }
+    local data = {
+        label = "Invented " .. key,
+        expansion = APR.EXPANSIONS.Forever,
+        category = APR.CATEGORIES.Leveling,
+        mapID = 9,
+        conditions = conditions or { Faction = "Horde", MinLevel = level },
+        prefab = { [kind.Speedrun] = index },
+        steps = { { Note = { "Invented instruction" } }, { RouteCompleted = true } },
+    }
     APR.RouteQuestStepList[key] = data
     return data
 end
@@ -66,7 +76,8 @@ local otherClass = route("class", 0, 10, { Class = "MAGE", MinLevel = 10 })
 local otherRace = route("race", 0, 10, { Race = "Tauren", MinLevel = 10 })
 local otherFaction = route("faction", 0, 10, { Faction = "Alliance", MinLevel = 10 })
 local otherSpec = route("spec", 0, 10, { ClassSpec = 82, MinLevel = 10 })
-start.nextRoute = { "a-alternative", "dungeon", "Forever-MageAoE-invented", "hidden", "class", "race", "faction", "spec", "z-fast" }
+start.nextRoute =
+    { "a-alternative", "dungeon", "Forever-MageAoE-invented", "hidden", "class", "race", "faction", "spec", "z-fast" }
 alternative.nextRoute, fast.nextRoute, future.nextRoute = { "finish" }, { "future" }, { "finish" }
 assert(APR.routeconfig:HasPrefab("speedrun"))
 APR.RouteBrowser:Show()
@@ -82,28 +93,36 @@ assert(APR.Level == 1 and not checked.start, "Future-level planning cannot mutat
 
 -- Stable tie break selects one branch; equal indices do not append alternatives.
 alternative.prefab[kind.Speedrun] = 2
-click(); expect("start", "a-alternative", "finish")
+click()
+expect("start", "a-alternative", "finish")
 alternative.prefab[kind.Speedrun] = 20
 APRData.test["a-alternative"], APR.ActiveRoute = 2, "a-alternative"
-click(); expect("a-alternative", "finish")
+click()
+expect("a-alternative", "finish")
 assert(checked["a-alternative"] == 1, "A started compatible alternative takes precedence over a fresh faster branch")
 APRData.test["a-alternative"], APR.ActiveRoute = nil, nil
 APR.Level, map = 26, 99
-click(); expect("z-fast", "future", "finish")
+click()
+expect("z-fast", "future", "finish")
 assert(APRCustomPath.test[1] == fast.label, "An unmet predecessor is retained before a higher-level chapter")
 APRZoneCompleted.test[fast.label] = true
-click(); expect("future", "finish")
+click()
+expect("future", "finish")
 APRData.test.future, APR.ActiveRoute, APR.Level = 2, "future", 59
-click(); expect("future", "finish")
+click()
+expect("future", "finish")
 assert(APRData.test.future == 2 and checked.future == 1, "Retain and validate partially completed chapters")
 APRZoneCompleted.test[future.label] = true
-click(); expect("finish")
+click()
+expect("finish")
 APR.Level = 60
 local preserved, choices, unchanged = APRCustomPath.test, APRData.test.RouteChoices, updates
 assert(not APR.routeconfig:HasPrefab("speedrun"))
 click()
-assert(APRCustomPath.test == preserved and APRData.test.RouteChoices == choices and updates == unchanged,
-    "A stale unavailable click must preserve the current path and choices")
+assert(
+    APRCustomPath.test == preserved and APRData.test.RouteChoices == choices and updates == unchanged,
+    "A stale unavailable click must preserve the current path and choices"
+)
 
 -- Character filters stay strict in presets despite Forever's manual advice.
 reset()
@@ -116,17 +135,22 @@ route("alliance", 2, 10, { Faction = "Alliance", MinLevel = 10 })
 for _, key in ipairs({ "warrior", "mage", "tauren", "alliance" }) do
     APR.RouteQuestStepList[key].prefab[kind.Speedrun] = { index = 2, endLevel = 60 }
 end
-click(); expect("root", "warrior")
+click()
+expect("root", "warrior")
 APR.ClassName, APR.ClassId = "MAGE", 8
-click(); expect("root", "mage")
+click()
+expect("root", "mage")
 spec = 82
 preserved = APRCustomPath.test
-click(); assert(APRCustomPath.test == preserved and not APR.routeconfig:HasPrefab("speedrun"))
+click()
+assert(APRCustomPath.test == preserved and not APR.routeconfig:HasPrefab("speedrun"))
 APR.Race, APR.ClassName, APR.ClassId = "Tauren", "DRUID", 11
-click(); expect("root", "tauren")
+click()
+expect("root", "tauren")
 APR.Faction, APR.Race = "Alliance", "Human"
 APR.Level = 10
-click(); expect("alliance") -- root's Horde condition is an admission rule.
+click()
+expect("alliance") -- root's Horde condition is an admission rule.
 APR.Faction = "Neutral"
 assert(not APR.routeconfig:HasPrefab("speedrun"))
 
@@ -136,36 +160,52 @@ root = route("entry", 1, 1)
 root.nextRoute = { { route = "late", conditions = { MinLevel = 24, Not = { Class = "MAGE" } } } }
 local late = route("late", 2, 24)
 late.prefab[kind.Speedrun] = { index = 2, endLevel = 60, conditions = { ClassNot = 8, MinLevel = 24 } }
-click(); expect("entry", "late")
+click()
+expect("entry", "late")
 APR.ClassName, APR.ClassId = "MAGE", 8
 preserved = APRCustomPath.test
-click(); assert(APRCustomPath.test == preserved and not APR.routeconfig:HasPrefab("speedrun"))
+click()
+assert(APRCustomPath.test == preserved and not APR.routeconfig:HasPrefab("speedrun"))
 APR.ClassName, APR.ClassId = "WARRIOR", 1
 root.nextRoute[1].conditions.IsQuestCompleted = 12
-click(); assert(APRCustomPath.test == preserved and not APR.routeconfig:HasPrefab("speedrun"))
+click()
+assert(APRCustomPath.test == preserved and not APR.routeconfig:HasPrefab("speedrun"))
 C_QuestLog.IsQuestFlaggedCompleted = function(id) return id == 12 end
-click(); expect("entry", "late")
+click()
+expect("entry", "late")
 APRZoneCompleted.test[root.label] = true
-click(); expect("late")
+click()
+expect("late")
 late.nextRoute = { "entry" }
 late.prefab[kind.Speedrun].endLevel = nil
 preserved = APRCustomPath.test
-click(); assert(APRCustomPath.test == preserved and not APR.routeconfig:HasPrefab("speedrun"),
-    "A cycle without a terminal cannot masquerade as a complete plan")
+click()
+assert(
+    APRCustomPath.test == preserved and not APR.routeconfig:HasPrefab("speedrun"),
+    "A cycle without a terminal cannot masquerade as a complete plan"
+)
 late.prefab[kind.Speedrun].endLevel = 25
 late.nextRoute = nil
-click(); assert(APRCustomPath.test == preserved and not APR.routeconfig:HasPrefab("speedrun"),
-    "A nonempty prefix ending below the target is unavailable")
+click()
+assert(
+    APRCustomPath.test == preserved and not APR.routeconfig:HasPrefab("speedrun"),
+    "A nonempty prefix ending below the target is unavailable"
+)
 local fallback = route("fallback", 30, 24)
 fallback.prefab[kind.Speedrun] = { index = 30, endLevel = 60 }
 root.nextRoute = { "late", "fallback" }
-click(); expect("fallback")
+click()
+expect("fallback")
 APRZoneCompleted.test[root.label] = nil
-click(); expect("entry", "fallback")
+click()
+expect("entry", "fallback")
 fallback.requiredRoute = "missing"
 preserved = APRCustomPath.test
-click(); assert(APRCustomPath.test == preserved and not APR.routeconfig:HasPrefab("speedrun"),
-    "An unsatisfiable prerequisite refuses the entire replacement")
+click()
+assert(
+    APRCustomPath.test == preserved and not APR.routeconfig:HasPrefab("speedrun"),
+    "An unsatisfiable prerequisite refuses the entire replacement"
+)
 APR.RouteQuestStepList = {}
 preserved, unchanged = APRCustomPath.test, updates
 assert(not APR.routeconfig:HasPrefab("speedrun"))
@@ -180,7 +220,9 @@ root.nextRoute = { "dense-1", "complete" }
 for i = 1, 24 do
     local dead = route("dense-" .. i, i + 1, 20)
     dead.nextRoute = {}
-    for j = i + 1, 24 do dead.nextRoute[#dead.nextRoute + 1] = "dense-" .. j end
+    for j = i + 1, 24 do
+        dead.nextRoute[#dead.nextRoute + 1] = "dense-" .. j
+    end
 end
 finish = route("complete", 99, 58)
 finish.prefab[kind.Speedrun] = { index = 99, endLevel = 60 }
@@ -189,7 +231,8 @@ function APR:AreConditionalFiltersMet(...)
     calls = calls + 1
     return filters(self, ...)
 end
-click(); expect("dense-root", "complete")
+click()
+expect("dense-root", "complete")
 assert(calls < 1000, "Evaluate dense graph conditions with bounded work")
 APR.AreConditionalFiltersMet = filters
 
@@ -203,4 +246,6 @@ route("forever", 0, 1)
 function APR:GetStartingZonePrefab() end
 click()
 assert(#APRCustomPath.test == 1 and APRCustomPath.test[1] == retail.label)
-print("Speedrun: actual click, ranked branches, character/spec/quest filters, future levels, prerequisites, progress, refusal and Retail passed")
+print(
+    "Speedrun: actual click, ranked branches, character/spec/quest filters, future levels, prerequisites, progress, refusal and Retail passed"
+)

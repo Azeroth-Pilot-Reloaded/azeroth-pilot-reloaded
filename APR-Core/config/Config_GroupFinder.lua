@@ -7,12 +7,26 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.GroupFinderDefaults = {
-    enabled = true, visible = true, autoScan = false, showButton = true, showBadge = true,
-    recruiting = true, matchMode = "nearby", stepRange = 5, minLevel = 0, maxLevel = 0,
+    enabled = true,
+    visible = true,
+    autoScan = false,
+    showButton = true,
+    showBadge = true,
+    recruiting = true,
+    matchMode = "nearby",
+    stepRange = 5,
+    minLevel = 0,
+    maxLevel = 0,
     showIncompatibleWarMode = false,
-    languages = {}, blockedLanguages = {}, visibleLanguages = {},
-    primaryLanguage = "", spokenLanguages = {}, notifications = false,
-    notificationCooldown = 300, soundEnabled = true, soundChannel = "Master",
+    languages = {},
+    blockedLanguages = {},
+    visibleLanguages = {},
+    primaryLanguage = "",
+    spokenLanguages = {},
+    notifications = false,
+    notificationCooldown = 300,
+    soundEnabled = true,
+    soundChannel = "Master",
     sounds = {
         match = { enabled = true, sound = "default", cooldown = 300 },
         received = { enabled = false, sound = "default", cooldown = 5 },
@@ -25,21 +39,25 @@ APR.GroupFinderDefaults = {
 
 local function Owner()
     return APR.partyFinder
-end--[[APR_DIAG]]; Owner = APRTrace("APR-Core/config/Config_GroupFinder.lua:26:Owner#1", Owner)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Owner = APRTrace("APR-Core/config/Config_GroupFinder.lua:26:Owner#1", Owner)--[[/APR_DIAG]]
 
 local function Settings()
     local owner = Owner()
     return owner and owner:GetSettings() or APR.GroupFinderDefaults
-end--[[APR_DIAG]]; Settings = APRTrace("APR-Core/config/Config_GroupFinder.lua:30:Settings#2", Settings)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Settings = APRTrace("APR-Core/config/Config_GroupFinder.lua:30:Settings#2", Settings)--[[/APR_DIAG]]
 
 local function Unavailable()
     local profile = APR.GetSettingsProfile and APR:GetSettingsProfile()
     return not Owner() or not profile or profile.enableAddon == false
-end--[[APR_DIAG]]; Unavailable = APRTrace("APR-Core/config/Config_GroupFinder.lua:35:Unavailable#3", Unavailable)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Unavailable = APRTrace("APR-Core/config/Config_GroupFinder.lua:35:Unavailable#3", Unavailable)--[[/APR_DIAG]]
 
 local function Disabled()
     return Unavailable() or not Settings().enabled
-end--[[APR_DIAG]]; Disabled = APRTrace("APR-Core/config/Config_GroupFinder.lua:40:Disabled#4", Disabled)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Disabled = APRTrace("APR-Core/config/Config_GroupFinder.lua:40:Disabled#4", Disabled)--[[/APR_DIAG]]
 
 local function Get(info)
     local key = info[#info]
@@ -50,73 +68,136 @@ local function Get(info)
         return protocol and protocol.LanguageFromLocale(GetLocale())
     end
     return value
-end--[[APR_DIAG]]; Get = APRTrace("APR-Core/config/Config_GroupFinder.lua:44:Get#5", Get)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Get = APRTrace("APR-Core/config/Config_GroupFinder.lua:44:Get#5", Get)--[[/APR_DIAG]]
 
 local function Set(info, value)
     local owner = Owner()
     if owner then owner:SetOption(info[#info], value) end
-end--[[APR_DIAG]]; Set = APRTrace("APR-Core/config/Config_GroupFinder.lua:55:Set#6", Set)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Set = APRTrace("APR-Core/config/Config_GroupFinder.lua:55:Set#6", Set)--[[/APR_DIAG]]
 
 local function Languages()
     local owner = Owner()
     return owner and owner:GetLanguageValues() or {}
-end--[[APR_DIAG]]; Languages = APRTrace("APR-Core/config/Config_GroupFinder.lua:60:Languages#7", Languages)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Languages = APRTrace("APR-Core/config/Config_GroupFinder.lua:60:Languages#7", Languages)--[[/APR_DIAG]]
 
 local function Toggle(key, order, description)
-    local native = {enabled = ENABLE, soundEnabled = ENABLE_SOUND}
-    return { type = "toggle", name = native[key] or L["GF_OPTION_" .. key], desc = description and L[description],
-        order = order, width = "full", arg = {aprCompact = true}, get = Get, set = Set, disabled = Disabled }
-end--[[APR_DIAG]]; Toggle = APRTrace("APR-Core/config/Config_GroupFinder.lua:65:Toggle#8", Toggle)--[[/APR_DIAG]]
+    local native = { enabled = ENABLE, soundEnabled = ENABLE_SOUND }
+    return {
+        type = "toggle",
+        name = native[key] or L["GF_OPTION_" .. key],
+        desc = description and L[description],
+        order = order,
+        width = "full",
+        arg = { aprCompact = true },
+        get = Get,
+        set = Set,
+        disabled = Disabled,
+    }
+end--[[APR_DIAG]]
+Toggle = APRTrace("APR-Core/config/Config_GroupFinder.lua:65:Toggle#8", Toggle)--[[/APR_DIAG]]
 
 local function LanguageList(field, order, description)
-    return { type = "multiselect", dialogControl = "Dropdown", name = L["GF_OPTION_" .. field], desc = L[description],
-        order = order, width = "full", arg = {aprCompact = true,
-            aprEmptyText = (field == "languages" or field == "visibleLanguages") and ALL or NONE},
-        values = Languages, disabled = Disabled,
-        get = --[[APR_DIAG]]APRTrace("APR-Core/config/Config_GroupFinder.lua:76:callback#10", --[[/APR_DIAG]]function(_, code) return Settings()[field][code] == true end--[[APR_DIAG]])--[[/APR_DIAG]],
-        set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config_GroupFinder.lua:77:callback#11", --[[/APR_DIAG]]function(_, code, value)
+    return {
+        type = "multiselect",
+        dialogControl = "Dropdown",
+        name = L["GF_OPTION_" .. field],
+        desc = L[description],
+        order = order,
+        width = "full",
+        arg = {
+            aprCompact = true,
+            aprEmptyText = (field == "languages" or field == "visibleLanguages") and ALL or NONE,
+        },
+        values = Languages,
+        disabled = Disabled,
+        --[[APR_DIAG]]
+        get = APRTrace(
+            "APR-Core/config/Config_GroupFinder.lua:76:callback#10", --[[/APR_DIAG]]
+            function(_, code) return Settings()[field][code] == true end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]],
+        --[[APR_DIAG]]
+        set = APRTrace("APR-Core/config/Config_GroupFinder.lua:77:callback#11", --[[/APR_DIAG]] function(_, code, value)
             local owner = Owner()
             if owner then owner:SetLanguageOption(field, code, value) end
-        end--[[APR_DIAG]])--[[/APR_DIAG]] }
-end--[[APR_DIAG]]; LanguageList = APRTrace("APR-Core/config/Config_GroupFinder.lua:71:LanguageList#9", LanguageList)--[[/APR_DIAG]]
+        end--[[APR_DIAG]]) --[[/APR_DIAG]],
+    }
+end--[[APR_DIAG]]
+LanguageList = APRTrace("APR-Core/config/Config_GroupFinder.lua:71:LanguageList#9", LanguageList)--[[/APR_DIAG]]
 
 local function SoundOptions(event, order)
     local function Entry()
         return Settings().sounds[event]
-    end--[[APR_DIAG]]; Entry = APRTrace("APR-Core/config/Config_GroupFinder.lua:84:Entry#13", Entry)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    Entry = APRTrace("APR-Core/config/Config_GroupFinder.lua:84:Entry#13", Entry)--[[/APR_DIAG]]
     local function GetSound(info)
         return Entry()[info[#info]]
-    end--[[APR_DIAG]]; GetSound = APRTrace("APR-Core/config/Config_GroupFinder.lua:87:GetSound#14", GetSound)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    GetSound = APRTrace("APR-Core/config/Config_GroupFinder.lua:87:GetSound#14", GetSound)--[[/APR_DIAG]]
     local function SetSound(info, value)
         local owner = Owner()
         if owner then owner:SetSoundOption(event, info[#info], value) end
-    end--[[APR_DIAG]]; SetSound = APRTrace("APR-Core/config/Config_GroupFinder.lua:90:SetSound#15", SetSound)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    SetSound = APRTrace("APR-Core/config/Config_GroupFinder.lua:90:SetSound#15", SetSound)--[[/APR_DIAG]]
     local function Muted()
         local settings = Settings()
         return Disabled() or not settings.soundEnabled or (event == "match" and not settings.notifications)
-    end--[[APR_DIAG]]; Muted = APRTrace("APR-Core/config/Config_GroupFinder.lua:94:Muted#16", Muted)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    Muted = APRTrace("APR-Core/config/Config_GroupFinder.lua:94:Muted#16", Muted)--[[/APR_DIAG]]
     local args = {
-        enabled = { type = "toggle", order = 1, name = ENABLE,
+        enabled = {
+            type = "toggle",
+            order = 1,
+            name = ENABLE,
             desc = event == "match" and L["GF_NOTIFICATIONS_DESC"] or ENABLE_SOUND,
-            width = 0.625, arg = {aprInline = true, aprSoundEvent = event, aprSoundWidth = 0.625},
-            get = GetSound, set = SetSound, disabled = Muted },
-        sound = { type = "select", dialogControl = "APRSettingsSoundSelect", order = 3, name = AUDIO_LABEL,
+            width = 0.625,
+            arg = { aprInline = true, aprSoundEvent = event, aprSoundWidth = 0.625 },
+            get = GetSound,
+            set = SetSound,
+            disabled = Muted,
+        },
+        sound = {
+            type = "select",
+            dialogControl = "APRSettingsSoundSelect",
+            order = 3,
+            name = AUDIO_LABEL,
             width = 1,
-            arg = {aprInline = true, aprSoundEvent = event, aprSoundWidth = 1},
-            values = --[[APR_DIAG]]APRTrace("APR-Core/config/Config_GroupFinder.lua:106:callback#17", --[[/APR_DIAG]]function()
+            arg = { aprInline = true, aprSoundEvent = event, aprSoundWidth = 1 },
+            --[[APR_DIAG]]
+            values = APRTrace("APR-Core/config/Config_GroupFinder.lua:106:callback#17", --[[/APR_DIAG]] function()
                 local owner = Owner()
                 return owner and owner:GetSoundChoices() or { default = DEFAULT }
-            end--[[APR_DIAG]])--[[/APR_DIAG]], get = GetSound, set = SetSound, disabled = Muted },
-        preview = { type = "execute", order = 2, name = PREVIEW,
-            width = 0.375, arg = {aprInline = true, aprSoundEvent = event, aprSoundWidth = 0.375},
-            func = --[[APR_DIAG]]APRTrace("APR-Core/config/Config_GroupFinder.lua:112:callback#18", --[[/APR_DIAG]]function()
+            end--[[APR_DIAG]]) --[[/APR_DIAG]],
+            get = GetSound,
+            set = SetSound,
+            disabled = Muted,
+        },
+        preview = {
+            type = "execute",
+            order = 2,
+            name = PREVIEW,
+            width = 0.375,
+            arg = { aprInline = true, aprSoundEvent = event, aprSoundWidth = 0.375 },
+            --[[APR_DIAG]]
+            func = APRTrace("APR-Core/config/Config_GroupFinder.lua:112:callback#18", --[[/APR_DIAG]] function()
                 local owner = Owner()
                 if owner then owner:PreviewSound(event) end
-            end--[[APR_DIAG]])--[[/APR_DIAG]], disabled = Disabled },
+            end--[[APR_DIAG]]) --[[/APR_DIAG]],
+            disabled = Disabled,
+        },
     }
-    return { type = "group", inline = true, name = L["GF_SOUND_EVENT_" .. event], arg = {aprSoundCard = true},
-        order = order, args = args }
-end--[[APR_DIAG]]; SoundOptions = APRTrace("APR-Core/config/Config_GroupFinder.lua:83:SoundOptions#12", SoundOptions)--[[/APR_DIAG]]
+    return {
+        type = "group",
+        inline = true,
+        name = L["GF_SOUND_EVENT_" .. event],
+        arg = { aprSoundCard = true },
+        order = order,
+        args = args,
+    }
+end--[[APR_DIAG]]
+SoundOptions = APRTrace("APR-Core/config/Config_GroupFinder.lua:83:SoundOptions#12", SoundOptions)--[[/APR_DIAG]]
 
 function APR:CreateGroupFinderOptions()
     local general = {
@@ -129,26 +210,79 @@ function APR:CreateGroupFinderOptions()
     }
     general.enabled.disabled = Unavailable
     local criteria = {
-        matchMode = { type = "select", name = L["GF_MATCH_MODE"], order = 1, width = "full", arg = {aprCompact = true},
-            values = { step = L["GF_MATCH_STEP"], nearby = L["GF_MATCH_NEARBY"], zone = L["GF_MATCH_ZONE"], world = WORLD },
-            get = Get, set = Set, disabled = Disabled },
-        stepRange = { type = "range", name = L["GF_STEP_RANGE"], order = 2, min = 1, max = 30,
-            step = 1, width = "full", arg = {aprCompact = true}, get = Get, set = Set,
-            disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config_GroupFinder.lua:137:callback#20", --[[/APR_DIAG]]function() return Disabled() or Settings().matchMode ~= "nearby" end--[[APR_DIAG]])--[[/APR_DIAG]] },
+        matchMode = {
+            type = "select",
+            name = L["GF_MATCH_MODE"],
+            order = 1,
+            width = "full",
+            arg = { aprCompact = true },
+            values = {
+                step = L["GF_MATCH_STEP"],
+                nearby = L["GF_MATCH_NEARBY"],
+                zone = L["GF_MATCH_ZONE"],
+                world = WORLD,
+            },
+            get = Get,
+            set = Set,
+            disabled = Disabled,
+        },
+        stepRange = {
+            type = "range",
+            name = L["GF_STEP_RANGE"],
+            order = 2,
+            min = 1,
+            max = 30,
+            step = 1,
+            width = "full",
+            arg = { aprCompact = true },
+            get = Get,
+            set = Set,
+            --[[APR_DIAG]]
+            disabled = APRTrace(
+                "APR-Core/config/Config_GroupFinder.lua:137:callback#20", --[[/APR_DIAG]]
+                function() return Disabled() or Settings().matchMode ~= "nearby" end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]],
+        },
     }
     for order, field in ipairs({ "minLevel", "maxLevel" }) do
-        criteria[field] = { type = "range", name = L["GF_OPTION_" .. field], desc = L["GF_LEVEL_RANGE_DESC"],
-            order = order + 2, min = 0, max = 100, step = 1, width = "full", arg = {aprCompact = true},
-            get = Get, set = Set, disabled = Disabled }
+        criteria[field] = {
+            type = "range",
+            name = L["GF_OPTION_" .. field],
+            desc = L["GF_LEVEL_RANGE_DESC"],
+            order = order + 2,
+            min = 0,
+            max = 100,
+            step = 1,
+            width = "full",
+            arg = { aprCompact = true },
+            get = Get,
+            set = Set,
+            disabled = Disabled,
+        }
     end
-    criteria.showIncompatibleWarMode = { type = "toggle", order = 5, width = "full",
+    criteria.showIncompatibleWarMode = {
+        type = "toggle",
+        order = 5,
+        width = "full",
         name = L["SHOW_INCOMPATIBLE_PLAYERS"],
         desc = PARTY_WARMODE_MESSAGE or L["INCOMPATIBLE_WAR_MODE_DESC"],
-        get = Get, set = Set, disabled = Disabled }
+        get = Get,
+        set = Set,
+        disabled = Disabled,
+    }
     local languageOptions = {
         explanation = { type = "description", name = L["GF_LANGUAGE_DESC"], order = 1, width = "full" },
-        primaryLanguage = { type = "select", name = L["GF_PRIMARY_LANGUAGE"], order = 2,
-            width = "full", arg = {aprCompact = true}, values = Languages, get = Get, set = Set, disabled = Disabled },
+        primaryLanguage = {
+            type = "select",
+            name = L["GF_PRIMARY_LANGUAGE"],
+            order = 2,
+            width = "full",
+            arg = { aprCompact = true },
+            values = Languages,
+            get = Get,
+            set = Set,
+            disabled = Disabled,
+        },
         spokenLanguages = LanguageList("spokenLanguages", 3, "GF_SPOKEN_LANGUAGES_DESC"),
         languages = LanguageList("languages", 4, "GF_DISPLAY_LANGUAGES_DESC"),
         blockedLanguages = LanguageList("blockedLanguages", 5, "GF_BLOCKED_LANGUAGES_DESC"),
@@ -159,25 +293,64 @@ function APR:CreateGroupFinderOptions()
     }
     local soundOptions = {
         soundEnabled = Toggle("soundEnabled", 1),
-        soundChannel = { type = "select", name = L["GF_SOUND_CHANNEL"], order = 2, width = "full", arg = {aprCompact = true},
-            values = { Master = MASTER_VOLUME, SFX = FX_VOLUME,
-                Dialog = DIALOG_VOLUME }, get = Get, set = Set,
-            disabled = --[[APR_DIAG]]APRTrace("APR-Core/config/Config_GroupFinder.lua:165:callback#21", --[[/APR_DIAG]]function() return Disabled() or not Settings().soundEnabled end--[[APR_DIAG]])--[[/APR_DIAG]] },
+        soundChannel = {
+            type = "select",
+            name = L["GF_SOUND_CHANNEL"],
+            order = 2,
+            width = "full",
+            arg = { aprCompact = true },
+            values = { Master = MASTER_VOLUME, SFX = FX_VOLUME, Dialog = DIALOG_VOLUME },
+            get = Get,
+            set = Set,
+            --[[APR_DIAG]]
+            disabled = APRTrace(
+                "APR-Core/config/Config_GroupFinder.lua:165:callback#21", --[[/APR_DIAG]]
+                function() return Disabled() or not Settings().soundEnabled end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]],
+        },
         explanation = { type = "description", name = L["GF_SOUND_DESC"], order = 3, width = "full" },
     }
     for order, event in ipairs({ "match", "received", "joined", "declined", "expired", "error" }) do
         soundOptions[event] = SoundOptions(event, order + 3)
     end
-    return { type = "group", name = LFG_TITLE, order = 8.5, args = {
-        general = { type = "group", name = GENERAL, order = 1, args = {
-            general = { type = "group", inline = true, name = GENERAL, order = 1, args = general },
-            criteria = { type = "group", inline = true, name = L["GF_OPTIONS_CRITERIA"], order = 2, args = criteria },
-        } },
-        languages = { type = "group", name = LANGUAGES_LABEL, order = 2, args = languageOptions },
-        notifications = { type = "group", name = L["GF_OPTIONS_NOTIFICATIONS"], order = 3, args = {
-            notifications = { type = "group", inline = true, name = L["GF_OPTIONS_NOTIFICATIONS"], order = 1,
-                args = notificationOptions },
-            sounds = { type = "group", inline = true, name = AUDIO_LABEL, order = 2, args = soundOptions },
-        } },
-    } }
-end--[[APR_DIAG]]; APR.CreateGroupFinderOptions = APRTrace("APR-Core/config/Config_GroupFinder.lua:121:APR:CreateGroupFinderOptions#19", APR.CreateGroupFinderOptions)--[[/APR_DIAG]]
+    return {
+        type = "group",
+        name = LFG_TITLE,
+        order = 8.5,
+        args = {
+            general = {
+                type = "group",
+                name = GENERAL,
+                order = 1,
+                args = {
+                    general = { type = "group", inline = true, name = GENERAL, order = 1, args = general },
+                    criteria = {
+                        type = "group",
+                        inline = true,
+                        name = L["GF_OPTIONS_CRITERIA"],
+                        order = 2,
+                        args = criteria,
+                    },
+                },
+            },
+            languages = { type = "group", name = LANGUAGES_LABEL, order = 2, args = languageOptions },
+            notifications = {
+                type = "group",
+                name = L["GF_OPTIONS_NOTIFICATIONS"],
+                order = 3,
+                args = {
+                    notifications = {
+                        type = "group",
+                        inline = true,
+                        name = L["GF_OPTIONS_NOTIFICATIONS"],
+                        order = 1,
+                        args = notificationOptions,
+                    },
+                    sounds = { type = "group", inline = true, name = AUDIO_LABEL, order = 2, args = soundOptions },
+                },
+            },
+        },
+    }
+end--[[APR_DIAG]]
+APR.CreateGroupFinderOptions =
+    APRTrace("APR-Core/config/Config_GroupFinder.lua:121:APR:CreateGroupFinderOptions#19", APR.CreateGroupFinderOptions)--[[/APR_DIAG]]

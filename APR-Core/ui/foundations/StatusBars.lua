@@ -30,7 +30,9 @@ function APR:GetStatusBarClassColor()
     if custom and custom.classColor and theme and theme.style == "modern" then
         return self:GetPlayerClassColor()
     end
-end--[[APR_DIAG]]; APR.GetStatusBarClassColor = APRTrace("APR-Core/ui/foundations/StatusBars.lua:24:APR:GetStatusBarClassColor#1", APR.GetStatusBarClassColor)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetStatusBarClassColor =
+    APRTrace("APR-Core/ui/foundations/StatusBars.lua:24:APR:GetStatusBarClassColor#1", APR.GetStatusBarClassColor)--[[/APR_DIAG]]
 
 function APR:GetStatusBarColor(colorKey, scope)
     local profile = self:GetSettingsProfile()
@@ -40,7 +42,7 @@ function APR:GetStatusBarColor(colorKey, scope)
     -- Retain saved RGB for when the mode is disabled, and preserve each bar's opacity.
     local classColor = self:GetStatusBarClassColor()
     if classColor then
-        return {classColor[1], classColor[2], classColor[3], color[4] or 1}
+        return { classColor[1], classColor[2], classColor[3], color[4] or 1 }
     end
     local isDefault = not (profile and profile[colorKey .. "Custom"])
     if saved and nativeDefaults[colorKey] then
@@ -56,7 +58,9 @@ function APR:GetStatusBarColor(colorKey, scope)
         return { accent[1], accent[2], accent[3], color[4] or 1 }
     end
     return color
-end--[[APR_DIAG]]; APR.GetStatusBarColor = APRTrace("APR-Core/ui/foundations/StatusBars.lua:35:APR:GetStatusBarColor#2", APR.GetStatusBarColor)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetStatusBarColor =
+    APRTrace("APR-Core/ui/foundations/StatusBars.lua:35:APR:GetStatusBarColor#2", APR.GetStatusBarColor)--[[/APR_DIAG]]
 
 function APR:ApplyStatusBarColor(bar)
     local colorKey = bars[bar]
@@ -69,13 +73,17 @@ function APR:ApplyStatusBarColor(bar)
     end
     bar:SetStatusBarColor(color[1], color[2], color[3], color[4] or 1)
     return true
-end--[[APR_DIAG]]; APR.ApplyStatusBarColor = APRTrace("APR-Core/ui/foundations/StatusBars.lua:61:APR:ApplyStatusBarColor#3", APR.ApplyStatusBarColor)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.ApplyStatusBarColor =
+    APRTrace("APR-Core/ui/foundations/StatusBars.lua:61:APR:ApplyStatusBarColor#3", APR.ApplyStatusBarColor)--[[/APR_DIAG]]
 
 function APR:RefreshStatusBarColors(colorKey)
     for bar, key in pairs(bars) do
         if not colorKey or key == colorKey then self:ApplyStatusBarColor(bar) end
     end
-end--[[APR_DIAG]]; APR.RefreshStatusBarColors = APRTrace("APR-Core/ui/foundations/StatusBars.lua:74:APR:RefreshStatusBarColors#4", APR.RefreshStatusBarColors)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.RefreshStatusBarColors =
+    APRTrace("APR-Core/ui/foundations/StatusBars.lua:74:APR:RefreshStatusBarColors#4", APR.RefreshStatusBarColors)--[[/APR_DIAG]]
 
 function APR:CreateStatusBar(parent, name, scope, colorKey)
     local bar = CreateFrame("StatusBar", name, parent, "BackdropTemplate")
@@ -90,4 +98,5 @@ function APR:CreateStatusBar(parent, name, scope, colorKey)
     if self.RegisterSkinTarget then self:RegisterSkinTarget(bar, "statusbar") end
     self:ApplyStatusBarColor(bar)
     return bar
-end--[[APR_DIAG]]; APR.CreateStatusBar = APRTrace("APR-Core/ui/foundations/StatusBars.lua:80:APR:CreateStatusBar#5", APR.CreateStatusBar)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.CreateStatusBar = APRTrace("APR-Core/ui/foundations/StatusBars.lua:80:APR:CreateStatusBar#5", APR.CreateStatusBar)--[[/APR_DIAG]]

@@ -10,7 +10,8 @@ local HISTORY_LIMIT = 40
 
 local function GetProgress(self)
     return APRData and self.PlayerID and APRData[self.PlayerID]
-end--[[APR_DIAG]]; GetProgress = APRTrace("APR-Core/features/questing/StepTransitions.lua:11:GetProgress#1", GetProgress)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+GetProgress = APRTrace("APR-Core/features/questing/StepTransitions.lua:11:GetProgress#1", GetProgress)--[[/APR_DIAG]]
 
 local function InvalidateStep(self)
     if self.NavigationData and self.NavigationData.ReleaseWaypoints then self.NavigationData:ReleaseWaypoints() end
@@ -27,7 +28,8 @@ local function InvalidateStep(self)
         self.stepUpdateTimer:Cancel()
         self.stepUpdateTimer = nil
     end
-end--[[APR_DIAG]]; InvalidateStep = APRTrace("APR-Core/features/questing/StepTransitions.lua:15:InvalidateStep#2", InvalidateStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+InvalidateStep = APRTrace("APR-Core/features/questing/StepTransitions.lua:15:InvalidateStep#2", InvalidateStep)--[[/APR_DIAG]]
 
 local function RecordTransition(self, route, previous, destination, reason)
     local history = self.transitionHistory or { entries = {}, cursor = 0, count = 0 }
@@ -35,10 +37,14 @@ local function RecordTransition(self, route, previous, destination, reason)
     history.cursor = history.cursor % HISTORY_LIMIT + 1
     history.count = math.min(history.count + 1, HISTORY_LIMIT)
     history.entries[history.cursor] = {
-        route = route, from = previous, to = destination, reason = reason or "progress",
+        route = route,
+        from = previous,
+        to = destination,
+        reason = reason or "progress",
         time = GetTime and GetTime() or 0,
     }
-end--[[APR_DIAG]]; RecordTransition = APRTrace("APR-Core/features/questing/StepTransitions.lua:32:RecordTransition#3", RecordTransition)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+RecordTransition = APRTrace("APR-Core/features/questing/StepTransitions.lua:32:RecordTransition#3", RecordTransition)--[[/APR_DIAG]]
 
 function APR:GetRecentTransitions()
     local result, history = {}, self.transitionHistory
@@ -47,26 +53,36 @@ function APR:GetRecentTransitions()
         result[#result + 1] = history.entries[(history.cursor - offset - 1) % HISTORY_LIMIT + 1]
     end
     return result
-end--[[APR_DIAG]]; APR.GetRecentTransitions = APRTrace("APR-Core/features/questing/StepTransitions.lua:43:APR:GetRecentTransitions#4", APR.GetRecentTransitions)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetRecentTransitions =
+    APRTrace("APR-Core/features/questing/StepTransitions.lua:43:APR:GetRecentTransitions#4", APR.GetRecentTransitions)--[[/APR_DIAG]]
 
 -- Capture this before opening a dialog or scheduling work that can change progress.
 function APR:CaptureStepContext()
     local progress = GetProgress(self)
     local route = self.ActiveRoute
     return {
-        player = self.PlayerID, route = route, index = progress and route and progress[route],
+        player = self.PlayerID,
+        route = route,
+        index = progress and route and progress[route],
         revision = self.stepRevision or 0,
         definition = route and self.RouteQuestStepList and self.RouteQuestStepList[route],
     }
-end--[[APR_DIAG]]; APR.CaptureStepContext = APRTrace("APR-Core/features/questing/StepTransitions.lua:53:APR:CaptureStepContext#5", APR.CaptureStepContext)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.CaptureStepContext =
+    APRTrace("APR-Core/features/questing/StepTransitions.lua:53:APR:CaptureStepContext#5", APR.CaptureStepContext)--[[/APR_DIAG]]
 
 function APR:IsStepContextCurrent(context)
     if not context then return false end
     local current = self:CaptureStepContext()
-    return current.player == context.player and current.route == context.route
-        and current.index == context.index and current.revision == context.revision
+    return current.player == context.player
+        and current.route == context.route
+        and current.index == context.index
+        and current.revision == context.revision
         and current.definition == context.definition
-end--[[APR_DIAG]]; APR.IsStepContextCurrent = APRTrace("APR-Core/features/questing/StepTransitions.lua:63:APR:IsStepContextCurrent#6", APR.IsStepContextCurrent)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.IsStepContextCurrent =
+    APRTrace("APR-Core/features/questing/StepTransitions.lua:63:APR:IsStepContextCurrent#6", APR.IsStepContextCurrent)--[[/APR_DIAG]]
 
 -- Route owners still decide when to refresh navigation/UI; this method only changes state.
 function APR:ActivateRoute(route, reason)
@@ -87,15 +103,23 @@ function APR:ActivateRoute(route, reason)
         self.event:OnRouteActivated(route, previous, reason)
     end
     return true
-end--[[APR_DIAG]]; APR.ActivateRoute = APRTrace("APR-Core/features/questing/StepTransitions.lua:72:APR:ActivateRoute#7", APR.ActivateRoute)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.ActivateRoute = APRTrace("APR-Core/features/questing/StepTransitions.lua:72:APR:ActivateRoute#7", APR.ActivateRoute)--[[/APR_DIAG]]
 
 -- The single writer for route progress, including inactive route initialization/reset.
 -- Zero, NaN and infinity are rejected before they can reach SavedVariables.
 function APR:SetRouteProgress(route, index, reason)
     if (self.routeValidationPending or self.routeValidationFailed) and reason ~= "reset" then return false end
     local progress = GetProgress(self)
-    if not progress or type(route) ~= "string" or type(index) ~= "number"
-        or index ~= index or index == math.huge or index < 1 or index % 1 ~= 0 then
+    if
+        not progress
+        or type(route) ~= "string"
+        or type(index) ~= "number"
+        or index ~= index
+        or index == math.huge
+        or index < 1
+        or index % 1 ~= 0
+    then
         return false
     end
     local request = self.routeValidationPending or (self.event and self.event.routeValidationResume)
@@ -106,20 +130,23 @@ function APR:SetRouteProgress(route, index, reason)
         if request.advance and request.advance.route == route then request.advance = nil end
     end
     local maintenance = self.event and self.event.routeMaintenanceJob
-    if reason == "reset" and maintenance and maintenance ~= request
-        and maintenance.player == self.PlayerID and maintenance.data == progress then
+    if
+        reason == "reset"
+        and maintenance
+        and maintenance ~= request
+        and maintenance.player == self.PlayerID
+        and maintenance.data == progress
+    then
         maintenance.manualResets = maintenance.manualResets or {}
         maintenance.manualResets[route] = true
         if maintenance.manualClears then maintenance.manualClears[route] = nil end
         if maintenance.advance and maintenance.advance.route == route then maintenance.advance = nil end
     end
     local previous = progress[route]
-    if index == 1 and self.ResetDungeonRun and
-        (reason == "reset" or reason == "definition_changed") then
+    if index == 1 and self.ResetDungeonRun and (reason == "reset" or reason == "definition_changed") then
         self:ResetDungeonRun(route)
     end
-    if index == 1 and self.ResetOutdoorKills and
-        (reason == "reset" or reason == "definition_changed") then
+    if index == 1 and self.ResetOutdoorKills and (reason == "reset" or reason == "definition_changed") then
         self:ResetOutdoorKills(route)
     end
     if previous == index then return false end
@@ -130,7 +157,9 @@ function APR:SetRouteProgress(route, index, reason)
     end
     RecordTransition(self, route, previous, index, reason)
     return true
-end--[[APR_DIAG]]; APR.SetRouteProgress = APRTrace("APR-Core/features/questing/StepTransitions.lua:94:APR:SetRouteProgress#8", APR.SetRouteProgress)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.SetRouteProgress =
+    APRTrace("APR-Core/features/questing/StepTransitions.lua:94:APR:SetRouteProgress#8", APR.SetRouteProgress)--[[/APR_DIAG]]
 
 function APR:TransitionStep(index, reason, refresh, context)
     if self.routeValidationPending or self.routeValidationFailed then return false end
@@ -142,7 +171,9 @@ function APR:TransitionStep(index, reason, refresh, context)
         self:UpdateStep()
     end
     return true
-end--[[APR_DIAG]]; APR.TransitionStep = APRTrace("APR-Core/features/questing/StepTransitions.lua:135:APR:TransitionStep#9", APR.TransitionStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.TransitionStep =
+    APRTrace("APR-Core/features/questing/StepTransitions.lua:135:APR:TransitionStep#9", APR.TransitionStep)--[[/APR_DIAG]]
 
 function APR:AdvanceStep(refresh, context)
     local progress = GetProgress(self)
@@ -159,29 +190,50 @@ function APR:AdvanceStep(refresh, context)
         return false
     end
     return self:TransitionStep(index + 1, "automatic", refresh, context)
-end--[[APR_DIAG]]; APR.AdvanceStep = APRTrace("APR-Core/features/questing/StepTransitions.lua:147:APR:AdvanceStep#10", APR.AdvanceStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.AdvanceStep = APRTrace("APR-Core/features/questing/StepTransitions.lua:147:APR:AdvanceStep#10", APR.AdvanceStep)--[[/APR_DIAG]]
 
 -- Capture before the refresh: it can synchronously complete additional steps.
 function APR:CommitManualSkip(destination)
     local context = self:CaptureStepContext()
     if not context.route or not context.index or context.index == destination then return false end
     self.manualSkipRefreshing = true
-    local ok, changed = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](self.TransitionStep, self, destination, "manual_skip", "quests", context)
+    local ok, changed = --[[APR_DIAG]]
+        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](
+            self.TransitionStep,
+            self,
+            destination,
+            "manual_skip",
+            "quests",
+            context
+        )
     self.manualSkipRefreshing = nil
-    if not ok then self.manualSkipUndo = nil; error(changed, 0) end
+    if not ok then
+        self.manualSkipUndo = nil
+        error(changed, 0)
+    end
     if changed and self.ActiveRoute == context.route then
         self.manualSkipUndo = { before = context, after = self:CaptureStepContext() }
     end
     return changed
-end--[[APR_DIAG]]; APR.CommitManualSkip = APRTrace("APR-Core/features/questing/StepTransitions.lua:165:APR:CommitManualSkip#11", APR.CommitManualSkip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.CommitManualSkip =
+    APRTrace("APR-Core/features/questing/StepTransitions.lua:165:APR:CommitManualSkip#11", APR.CommitManualSkip)--[[/APR_DIAG]]
 
 function APR:CanUndoManualSkip()
     return self.manualSkipUndo ~= nil and self:IsStepContextCurrent(self.manualSkipUndo.after)
-end--[[APR_DIAG]]; APR.CanUndoManualSkip = APRTrace("APR-Core/features/questing/StepTransitions.lua:178:APR:CanUndoManualSkip#12", APR.CanUndoManualSkip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.CanUndoManualSkip =
+    APRTrace("APR-Core/features/questing/StepTransitions.lua:178:APR:CanUndoManualSkip#12", APR.CanUndoManualSkip)--[[/APR_DIAG]]
 
 function APR:UndoManualSkip()
-    if not self:CanUndoManualSkip() then self.manualSkipUndo = nil; return false end
+    if not self:CanUndoManualSkip() then
+        self.manualSkipUndo = nil
+        return false
+    end
     local undo = self.manualSkipUndo
     self.manualSkipUndo = nil
     return self:TransitionStep(undo.before.index, "undo_manual_skip", "quests", undo.after)
-end--[[APR_DIAG]]; APR.UndoManualSkip = APRTrace("APR-Core/features/questing/StepTransitions.lua:182:APR:UndoManualSkip#13", APR.UndoManualSkip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.UndoManualSkip =
+    APRTrace("APR-Core/features/questing/StepTransitions.lua:182:APR:UndoManualSkip#13", APR.UndoManualSkip)--[[/APR_DIAG]]

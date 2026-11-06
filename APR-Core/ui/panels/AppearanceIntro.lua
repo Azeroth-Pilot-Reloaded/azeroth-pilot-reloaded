@@ -7,38 +7,48 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Revision 2 rejects beta completion markers written by closing the old chooser.
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local UI = APR.UI
-APR.AppearanceIntro = {revision = 2, cards = {}}
+APR.AppearanceIntro = { revision = 2, cards = {} }
 local Intro = APR.AppearanceIntro
 local textureRoot = "Interface\\AddOns\\APR\\APR-Core\\assets\\ui\\theme-previews\\"
-local models = {wow = true, modern = true, ElvUI = true, EllesmereUI = true, custom = true}
+local models = { wow = true, modern = true, ElvUI = true, EllesmereUI = true, custom = true }
 
 function Intro:IsPending()
     local database = APR.settings and APR.settings.db
     if not database or not database.global then return false end
     local global = database.global
     -- Existing theme/settings values and an old seen flag do not prove a choice.
-    return (tonumber(global.appearanceIntroSeen) or 0) < self.revision
-        or not models[global.appearanceIntroChoice]
-end--[[APR_DIAG]]; Intro.IsPending = APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:15:Intro:IsPending#1", Intro.IsPending)--[[/APR_DIAG]]
+    return (tonumber(global.appearanceIntroSeen) or 0) < self.revision or not models[global.appearanceIntroChoice]
+end--[[APR_DIAG]]
+Intro.IsPending = APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:15:Intro:IsPending#1", Intro.IsPending)--[[/APR_DIAG]]
 
 function Intro:IsBlockingOnboarding()
     return self:IsPending() or (self.frame and self.frame:IsShown()) or false
-end--[[APR_DIAG]]; Intro.IsBlockingOnboarding = APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:24:Intro:IsBlockingOnboarding#2", Intro.IsBlockingOnboarding)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Intro.IsBlockingOnboarding =
+    APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:24:Intro:IsBlockingOnboarding#2", Intro.IsBlockingOnboarding)--[[/APR_DIAG]]
 
 function Intro:GetChoices()
     local choices = {
-        {id = "wow", label = L["UI_INTRO_WOW"], description = L["UI_INTRO_WOW_DESC"]},
-        {id = "modern", theme = "wowModern", label = LAYOUT_STYLE_MODERN or UNIT_NAMEPLATES_STYLE_MODERN or L["UI_THEME_WOW_MODERN"],
-            description = L["UI_INTRO_MODERN_DESC"]},
+        { id = "wow", label = L["UI_INTRO_WOW"], description = L["UI_INTRO_WOW_DESC"] },
+        {
+            id = "modern",
+            theme = "wowModern",
+            label = LAYOUT_STYLE_MODERN or UNIT_NAMEPLATES_STYLE_MODERN or L["UI_THEME_WOW_MODERN"],
+            description = L["UI_INTRO_MODERN_DESC"],
+        },
     }
-    if _G.ElvUI then choices[#choices + 1] = {id = "ElvUI", label = "ElvUI", description = L["UI_INTRO_DETECTED"]} end
+    if _G.ElvUI then choices[#choices + 1] = { id = "ElvUI", label = "ElvUI", description = L["UI_INTRO_DETECTED"] } end
     if _G.EllesmereUI and type(_G.EllesmereUI.RegisterSkin) == "function" then
-        choices[#choices + 1] = {id = "EllesmereUI", label = "EllesmereUI", description = L["UI_INTRO_DETECTED"]}
+        choices[#choices + 1] = { id = "EllesmereUI", label = "EllesmereUI", description = L["UI_INTRO_DETECTED"] }
     end
-    choices[#choices + 1] = {id = "custom", label = HOUSING_ITEM_TOAST_TYPE_CUSTOMIZATION or L["UI_THEME_CUSTOMIZATION"],
-        description = string.format(L["UI_INTRO_CUSTOM_DESC"], L["UI_APPEARANCE"])}
+    choices[#choices + 1] = {
+        id = "custom",
+        label = HOUSING_ITEM_TOAST_TYPE_CUSTOMIZATION or L["UI_THEME_CUSTOMIZATION"],
+        description = string.format(L["UI_INTRO_CUSTOM_DESC"], L["UI_APPEARANCE"]),
+    }
     return choices
-end--[[APR_DIAG]]; Intro.GetChoices = APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:28:Intro:GetChoices#3", Intro.GetChoices)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Intro.GetChoices = APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:28:Intro:GetChoices#3", Intro.GetChoices)--[[/APR_DIAG]]
 
 function Intro:Complete(id)
     if not models[id] then return false end
@@ -50,12 +60,18 @@ function Intro:Complete(id)
     if self.watcher then self.watcher:UnregisterAllEvents() end
     if APR.LayoutEditor and APR.LayoutEditor.QueueOnboarding then APR.LayoutEditor.QueueOnboarding() end
     return true
-end--[[APR_DIAG]]; Intro.Complete = APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:43:Intro:Complete#4", Intro.Complete)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Intro.Complete = APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:43:Intro:Complete#4", Intro.Complete)--[[/APR_DIAG]]
 
 function Intro:Choose(id)
     if InCombatLockdown() then return false end
     local selected
-    for _, choice in ipairs(self:GetChoices()) do if choice.id == id then selected = choice; break end end
+    for _, choice in ipairs(self:GetChoices()) do
+        if choice.id == id then
+            selected = choice
+            break
+        end
+    end
     if not selected then return false end
     if id == "custom" then
         self:Complete(id)
@@ -65,12 +81,18 @@ function Intro:Choose(id)
     end
     local editor = APR.ThemeCustomization
     editor:SetTheme(selected.theme or id)
-    editor:Apply(--[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:68:callback#6", --[[/APR_DIAG]]function() self:Complete(id) end--[[APR_DIAG]])--[[/APR_DIAG]])
+    editor:Apply(--[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/panels/AppearanceIntro.lua:68:callback#6", --[[/APR_DIAG]]
+            function() self:Complete(id) end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
     -- Canceling the shared reload popup leaves the chooser and its draft available.
     local popup = UI.selectionDialog
     self.confirmation = popup and popup:IsShown() and popup or nil
     return true
-end--[[APR_DIAG]]; Intro.Choose = APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:55:Intro:Choose#5", Intro.Choose)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Intro.Choose = APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:55:Intro:Choose#5", Intro.Choose)--[[/APR_DIAG]]
 
 function Intro:Layout()
     if not self.frame or not self.choices or self.layingOut then return end
@@ -96,7 +118,13 @@ function Intro:Layout()
         if card:IsShown() then
             local row, column = math.floor((index - 1) / columns), (index - 1) % columns
             card:ClearAllPoints()
-            card:SetPoint("TOPLEFT", self.content, "TOPLEFT", offset + column * (cardWidth + gap), -row * (cardHeight + gap))
+            card:SetPoint(
+                "TOPLEFT",
+                self.content,
+                "TOPLEFT",
+                offset + column * (cardWidth + gap),
+                -row * (cardHeight + gap)
+            )
             card:SetSize(cardWidth, cardHeight)
             card.image:SetSize(cardWidth - 20, imageHeight)
         end
@@ -105,7 +133,8 @@ function Intro:Layout()
     self.content:SetHeight(gridHeight)
     self.scroll:SetVerticalScroll(math.min(self.scroll:GetVerticalScroll(), self.scroll:GetVerticalScrollRange()))
     self.layingOut = nil
-end--[[APR_DIAG]]; Intro.Layout = APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:75:Intro:Layout#7", Intro.Layout)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Intro.Layout = APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:75:Intro:Layout#7", Intro.Layout)--[[/APR_DIAG]]
 
 function Intro:Create()
     local frame = UI:Panel(UIParent, "window", "library")
@@ -120,45 +149,89 @@ function Intro:Create()
     frame:EnableMouse(true)
     frame:SetMovable(true)
     frame:RegisterForDrag("LeftButton")
-    APR:SetupFrameDrag(frame, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:123:callback#9", --[[/APR_DIAG]]function() return not InCombatLockdown() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    APR:SetupFrameDrag(
+        frame, --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/panels/AppearanceIntro.lua:123:callback#9", --[[/APR_DIAG]]
+            function() return not InCombatLockdown() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
     local title = UI:Label(frame, L["UI_INTRO_TITLE"], 24, "accent")
     self.title = title
-    title:SetPoint("TOPLEFT", 24, -20); title:SetPoint("TOPRIGHT", -24, -20)
-    title:SetHeight(32); title:SetWordWrap(true)
+    title:SetPoint("TOPLEFT", 24, -20)
+    title:SetPoint("TOPRIGHT", -24, -20)
+    title:SetHeight(32)
+    title:SetWordWrap(true)
     self.subtitle = UI:Label(frame, L["UI_INTRO_DESCRIPTION"], 14, "muted")
     self.subtitle:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -10)
     self.subtitle:SetPoint("TOPRIGHT", title, "BOTTOMRIGHT", 0, -10)
-    self.subtitle:SetHeight(42); self.subtitle:SetWordWrap(true)
+    self.subtitle:SetHeight(42)
+    self.subtitle:SetWordWrap(true)
     self.scroll = UI:Scroll(frame)
     self.scroll:SetPoint("TOPLEFT", self.subtitle, "BOTTOMLEFT", 0, -20)
     self.scroll:SetPoint("BOTTOMRIGHT", -44, 60)
     self.content = CreateFrame("Frame", nil, self.scroll)
     self.scroll:SetScrollChild(self.content)
-    self.scroll:HookScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:137:callback#10", --[[/APR_DIAG]]function() self:Layout() end--[[APR_DIAG]])--[[/APR_DIAG]])
-    UIParent:HookScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:138:callback#11", --[[/APR_DIAG]]function()
-        if frame:IsShown() and not InCombatLockdown() then self:Layout() end
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self.scroll:HookScript(
+        "OnSizeChanged", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/panels/AppearanceIntro.lua:137:callback#10", --[[/APR_DIAG]]
+            function() self:Layout() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
+    UIParent:HookScript(
+        "OnSizeChanged", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:138:callback#11", --[[/APR_DIAG]] function()
+            if frame:IsShown() and not InCombatLockdown() then self:Layout() end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     -- Some bundled WoW fonts lack the arrow used in existing translations.
     local footer = L["UI_INTRO_FOOTER"]:gsub("→", "/")
     local note = UI:Label(frame, string.format(footer, GAMEOPTIONS_MENU, L["UI_APPEARANCE"]), 12, "muted")
     self.footer = note
-    note:SetPoint("BOTTOMLEFT", 24, 12); note:SetPoint("BOTTOMRIGHT", -24, 12)
-    note:SetHeight(36); note:SetWordWrap(true)
+    note:SetPoint("BOTTOMLEFT", 24, 12)
+    note:SetPoint("BOTTOMRIGHT", -24, 12)
+    note:SetHeight(36)
+    note:SetWordWrap(true)
     -- Only an explicit appearance choice completes onboarding. Do not register
     -- a close button or Escape dismissal: reloads/relogins must keep it pending.
     frame:Hide()
-    if APR.Gamepad then APR.Gamepad:RegisterWindow(frame, true, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:150:callback#12", --[[/APR_DIAG]]function() end--[[APR_DIAG]])--[[/APR_DIAG]]) end
-end--[[APR_DIAG]]; Intro.Create = APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:110:Intro:Create#8", Intro.Create)--[[/APR_DIAG]]
+    if APR.Gamepad then
+        APR.Gamepad:RegisterWindow(
+            frame,
+            true, --[[APR_DIAG]]
+            APRTrace(
+                "APR-Core/ui/panels/AppearanceIntro.lua:150:callback#12", --[[/APR_DIAG]]
+                function() end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]]
+        )
+    end
+end--[[APR_DIAG]]
+Intro.Create = APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:110:Intro:Create#8", Intro.Create)--[[/APR_DIAG]]
 
 function Intro:Show()
-    if not self:IsPending() or InCombatLockdown() or (IsLoggedIn and not IsLoggedIn())
-        or (APR.IsPetBattleActive and APR:IsPetBattleActive()) then return false end
+    if
+        not self:IsPending()
+        or InCombatLockdown()
+        or (IsLoggedIn and not IsLoggedIn())
+        or (APR.IsPetBattleActive and APR:IsPetBattleActive())
+    then
+        return false
+    end
     if not self.frame then self:Create() end
     self.choices = self:GetChoices()
     for index, choice in ipairs(self.choices) do
         local card = self.cards[index]
         if not card then
-            card = UI:Button(self.content, "", 304, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:161:callback#14", --[[/APR_DIAG]]function(button) self:Choose(button.choice.id) end--[[APR_DIAG]])--[[/APR_DIAG]])
+            card = UI:Button(
+                self.content,
+                "",
+                304, --[[APR_DIAG]]
+                APRTrace(
+                    "APR-Core/ui/panels/AppearanceIntro.lua:161:callback#14", --[[/APR_DIAG]]
+                    function(button) self:Choose(button.choice.id) end --[[APR_DIAG]]
+                ) --[[/APR_DIAG]]
+            )
             card:GetFontString():Hide()
             card.image = card:CreateTexture(nil, "ARTWORK")
             card.image:SetPoint("TOP", 0, -12)
@@ -166,24 +239,31 @@ function Intro:Show()
             card.title = UI:Label(card, "", 16, "accent")
             card.title:SetPoint("TOPLEFT", card.image, "BOTTOMLEFT", 0, -10)
             card.title:SetPoint("TOPRIGHT", card.image, "BOTTOMRIGHT", 0, -10)
-            card.title:SetHeight(22); card.title:SetJustifyH("CENTER")
+            card.title:SetHeight(22)
+            card.title:SetJustifyH("CENTER")
             card.description = UI:Label(card, "", 12, "muted")
             card.description:SetPoint("TOPLEFT", card.title, "BOTTOMLEFT", 0, -4)
             card.description:SetPoint("TOPRIGHT", card.title, "BOTTOMRIGHT", 0, -4)
-            card.description:SetHeight(32); card.description:SetWordWrap(true); card.description:SetJustifyH("CENTER")
+            card.description:SetHeight(32)
+            card.description:SetWordWrap(true)
+            card.description:SetJustifyH("CENTER")
             self.cards[index] = card
         end
         card.choice = choice
         -- Gameplay screenshots stay in English; only the surrounding chooser copy is localized.
         card.image:SetTexture(textureRoot .. choice.id .. "-en.tga")
-        card.title:SetText(choice.label); card.description:SetText(choice.description)
+        card.title:SetText(choice.label)
+        card.description:SetText(choice.description)
         card:Show()
     end
-    for index = #self.choices + 1, #self.cards do self.cards[index]:Hide() end
+    for index = #self.choices + 1, #self.cards do
+        self.cards[index]:Hide()
+    end
     self.frame:Show()
     self:Layout()
     return true
-end--[[APR_DIAG]]; Intro.Show = APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:153:Intro:Show#13", Intro.Show)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Intro.Show = APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:153:Intro:Show#13", Intro.Show)--[[/APR_DIAG]]
 
 function Intro:Initialize()
     if not self:IsPending() or self.watcher then return end
@@ -197,11 +277,19 @@ function Intro:Initialize()
     local function queue()
         if self.queued or not self:IsPending() then return end
         self.queued = true
-        C_Timer.After(1, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:200:callback#17", --[[/APR_DIAG]]function() self.queued = nil; self:Show() end--[[APR_DIAG]])--[[/APR_DIAG]])
-    end--[[APR_DIAG]]; queue = APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:197:queue#16", queue)--[[/APR_DIAG]]
-    for _, event in ipairs({"PLAYER_ENTERING_WORLD", "PLAYER_REGEN_ENABLED", "PET_BATTLE_CLOSE"}) do
+        C_Timer.After(
+            1, --[[APR_DIAG]]
+            APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:200:callback#17", --[[/APR_DIAG]] function()
+                self.queued = nil
+                self:Show()
+            end--[[APR_DIAG]]) --[[/APR_DIAG]]
+        )
+    end--[[APR_DIAG]]
+    queue = APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:197:queue#16", queue)--[[/APR_DIAG]]
+    for _, event in ipairs({ "PLAYER_ENTERING_WORLD", "PLAYER_REGEN_ENABLED", "PET_BATTLE_CLOSE" }) do
         APR:RegisterSupportedEvent(watcher, event)
     end
     watcher:SetScript("OnEvent", queue)
     queue()
-end--[[APR_DIAG]]; Intro.Initialize = APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:188:Intro:Initialize#15", Intro.Initialize)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Intro.Initialize = APRTrace("APR-Core/ui/panels/AppearanceIntro.lua:188:Intro:Initialize#15", Intro.Initialize)--[[/APR_DIAG]]

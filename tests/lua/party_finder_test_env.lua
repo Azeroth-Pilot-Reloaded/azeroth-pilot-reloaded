@@ -4,24 +4,46 @@ local Fixture = {}
 local function Copy(value)
     if type(value) ~= "table" then return value end
     local result = {}
-    for key, child in pairs(value) do result[key] = Copy(child) end
+    for key, child in pairs(value) do
+        result[key] = Copy(child)
+    end
     return result
 end
 
 function Fixture.New(options)
     options = options or {}
     local env = {
-        now = 100, timers = {}, sent = {}, joined = {}, left = {}, frames = {}, badges = {},
-        map = 501, level = 17, class = 8, step = 3, faction = "Alliance", size = 0,
-        channelID = options.prejoined and 7 or 0, options = options, soundEvents = {},
-        instance = options.instance == true, restricted = options.restricted == true,
+        now = 100,
+        timers = {},
+        sent = {},
+        joined = {},
+        left = {},
+        frames = {},
+        badges = {},
+        map = 501,
+        level = 17,
+        class = 8,
+        step = 3,
+        faction = "Alliance",
+        size = 0,
+        channelID = options.prejoined and 7 or 0,
+        options = options,
+        soundEvents = {},
+        instance = options.instance == true,
+        restricted = options.restricted == true,
         outgoingRestricted = options.outgoingRestricted == true,
-        channels = {}, population = options.population or 2, populationReads = 0,
-        friends = Copy(options.friends or {}), bnetFriends = Copy(options.bnetFriends or {}),
-        friendReads = 0, bnetReads = 0,
+        channels = {},
+        population = options.population or 2,
+        populationReads = 0,
+        friends = Copy(options.friends or {}),
+        bnetFriends = Copy(options.bnetFriends or {}),
+        friendReads = 0,
+        bnetReads = 0,
     }
-    local locale = setmetatable({ GROUP_STEPS_AHEAD = "%d ahead", GROUP_STEPS_BEHIND = "%d behind" },
-        { __index = function(_, key) return key end })
+    local locale = setmetatable(
+        { GROUP_STEPS_AHEAD = "%d ahead", GROUP_STEPS_BEHIND = "%d behind" },
+        { __index = function(_, key) return key end }
+    )
     function LibStub()
         return { GetLocale = function() return locale end }
     end
@@ -62,10 +84,18 @@ function Fixture.New(options)
         env.frames[#env.frames + 1] = frame
         return frame
     end
-    Enum = { UIMapType = { Zone = 3 },
+    Enum = {
+        UIMapType = { Zone = 3 },
         GameRule = { HardcoreRuleset = 1, PvPRuleset = 2, RPRuleset = 3 },
-        SendAddonMessageResult = { Success = 0, InvalidChatType = 4, InvalidChannel = 7,
-            AddonMessageThrottle = 3, AddOnMessageLockdown = 11, TargetOffline = 12 } }
+        SendAddonMessageResult = {
+            Success = 0,
+            InvalidChatType = 4,
+            InvalidChannel = 7,
+            AddonMessageThrottle = 3,
+            AddOnMessageLockdown = 11,
+            TargetOffline = 12,
+        },
+    }
     C_Map = {
         GetBestMapForUnit = function() return env.map end,
         GetMapInfo = function(map) return { mapID = map, mapType = 3, parentMapID = 0 } end,
@@ -73,29 +103,55 @@ function Fixture.New(options)
     C_GameRules = { IsGameRuleActive = function(rule) return options.rules and options.rules[rule] or false end }
     C_PvP = { IsWarModeActive = function() return env.warMode == true end }
     C_PlayerInfo = { IsPlayerInChromieTime = function() return env.chromie == true end }
-    C_Timer = { NewTimer = function(delay, callback)
-        assert(type(delay) == "number" and delay >= 0, "Timers need a finite nonnegative delay")
-        local timer = { at = env.now + delay, callback = callback,
-            Cancel = function(self) self.cancelled = true end }
-        env.timers[#env.timers + 1] = timer
-        return timer
-    end, NewTicker = function() error("Finder must use cancellable one-shot timers") end }
+    C_Timer = {
+        NewTimer = function(delay, callback)
+            assert(type(delay) == "number" and delay >= 0, "Timers need a finite nonnegative delay")
+            local timer = {
+                at = env.now + delay,
+                callback = callback,
+                Cancel = function(self) self.cancelled = true end,
+            }
+            env.timers[#env.timers + 1] = timer
+            return timer
+        end,
+        NewTicker = function() error("Finder must use cancellable one-shot timers") end,
+    }
     function GetChannelName(name)
         if name == "APRVersion" then return 0 end
         assert(name == "APR", "Discovery must only use the stable shared rendezvous")
-        if options.prejoined or options.prejoinedWorld then env.channels[name] = env.channelID > 0 and env.channelID or 7 end
+        if options.prejoined or options.prejoinedWorld then
+            env.channels[name] = env.channelID > 0 and env.channelID or 7
+        end
         local id = env.channels[name]
         return id or 0, id and name or nil
     end
     function GetChannelList()
-        return 1, "Synthetic one", false, 2, "Synthetic two", true, 3, "Synthetic three", false,
-            4, "Synthetic four", true, 5, "Synthetic five", false, 6, "Synthetic six", false
+        return 1,
+            "Synthetic one",
+            false,
+            2,
+            "Synthetic two",
+            true,
+            3,
+            "Synthetic three",
+            false,
+            4,
+            "Synthetic four",
+            true,
+            5,
+            "Synthetic five",
+            false,
+            6,
+            "Synthetic six",
+            false
     end
     function JoinTemporaryChannel(name)
         env.joined[#env.joined + 1] = name
         if options.joinError then error("Channel unavailable") end
         assert(name == "APR", "No per-zone or APRVersion channel may be joined")
-        if not options.delayedJoin then env.channels[name], env.channelID = 7, 7 end
+        if not options.delayedJoin then
+            env.channels[name], env.channelID = 7, 7
+        end
     end
     function LeaveChannelByName(name)
         env.left[#env.left + 1] = name
@@ -111,7 +167,9 @@ function Fixture.New(options)
         function GetChannelDisplayInfo(index)
             if index == 1 then return "Synthetic header", true, false, 0, 0, true end
             if index == 2 then return "Existing channel", false, false, 1, 1, true end
-            if index == 3 and env.channels.APR then return "APR", false, false, env.channels.APR, env.population, true end
+            if index == 3 and env.channels.APR then
+                return "APR", false, false, env.channels.APR, env.population, true
+            end
         end
     end
     C_ChatInfo = {
@@ -124,8 +182,15 @@ function Fixture.New(options)
             assert(packet, "Outgoing messages must satisfy the real wire contract")
             local result = env.sendResult or 0
             if type(result) == "function" then result = result(channel, packet, target) end
-            env.sent[#env.sent + 1] = { prefix = prefix, wire = wire, packet = packet,
-                channel = channel, target = target, at = env.now, result = result }
+            env.sent[#env.sent + 1] = {
+                prefix = prefix,
+                wire = wire,
+                packet = packet,
+                channel = channel,
+                target = target,
+                at = env.now,
+                result = result,
+            }
             return result
         end,
     }
@@ -169,19 +234,30 @@ function Fixture.New(options)
             assert(packet, "Battle.net sends must satisfy the same real wire contract")
             local result = env.bnetSendResult or 0
             if type(result) == "function" then result = result(packet, target) end
-            env.sent[#env.sent + 1] = { prefix = prefix, wire = wire, packet = packet,
-                channel = "BNET", target = target, at = env.now, result = result }
+            env.sent[#env.sent + 1] = {
+                prefix = prefix,
+                wire = wire,
+                packet = packet,
+                channel = "BNET",
+                target = target,
+                at = env.now,
+                result = result,
+            }
             return result
         end,
     }
     if not options.friends and not options.bnetFriends then
         C_FriendList, C_BattleNet, BNGetNumFriends = nil, nil, nil
     end
-    ChatThrottleLib = options.throttle and { SendAddonMessage = function(_, priority, prefix, wire, channel, target, _, callback)
-        assert(priority == "BULK")
-        local result = C_ChatInfo.SendAddonMessage(prefix, wire, channel, target)
-        if callback then callback(nil, result == 0) end
-    end } or nil
+    ChatThrottleLib = options.throttle
+            and {
+                SendAddonMessage = function(_, priority, prefix, wire, channel, target, _, callback)
+                    assert(priority == "BULK")
+                    local result = C_ChatInfo.SendAddonMessage(prefix, wire, channel, target)
+                    if callback then callback(nil, result == 0) end
+                end,
+            }
+        or nil
     local definition = { label = "Invented route", steps = {} }
     for index = 1, 20 do
         definition.steps[index] = { PickUp = { 900000 + index }, Coord = { x = index, y = index + 1 } }
@@ -189,7 +265,10 @@ function Fixture.New(options)
     env.definition = definition
     APRData = { fixture = { synthetic = env.step } }
     APR = {
-        PlayerID = "fixture", Username = "Local-Home", ActiveRoute = "synthetic", ClassId = 8,
+        PlayerID = "fixture",
+        Username = "Local-Home",
+        ActiveRoute = "synthetic",
+        ClassId = 8,
         settings = { profile = { enableAddon = options.enabled ~= false } },
         NewModule = function() return {} end,
         GetGameVersion = function() return options.client or "retail" end,
@@ -206,7 +285,9 @@ function Fixture.New(options)
     DirectEnv.Install(env)
     dofile("APR-Core/config/Config_GroupFinder.lua")
     APR.settings.profile.groupFinder = Copy(APR.GroupFinderDefaults)
-    for key, value in pairs(options.settings or {}) do APR.settings.profile.groupFinder[key] = Copy(value) end
+    for key, value in pairs(options.settings or {}) do
+        APR.settings.profile.groupFinder[key] = Copy(value)
+    end
     dofile("APR-Core/features/group/PartyFinderProtocol.lua")
     dofile("APR-Core/features/group/PartyProtocol.lua")
     dofile("APR-Core/core/CommunicationChannel.lua")
@@ -229,8 +310,14 @@ function Fixture.New(options)
         while true do
             local nextTimer
             for _, timer in ipairs(self.timers) do
-                if not timer.cancelled and not timer.fired and timer.at <= target
-                    and (not nextTimer or timer.at < nextTimer.at) then nextTimer = timer end
+                if
+                    not timer.cancelled
+                    and not timer.fired
+                    and timer.at <= target
+                    and (not nextTimer or timer.at < nextTimer.at)
+                then
+                    nextTimer = timer
+                end
             end
             if not nextTimer then break end
             limit = limit + 1
@@ -246,14 +333,21 @@ function Fixture.New(options)
     end
     function env:ActiveTimers()
         local count = 0
-        for _, timer in ipairs(self.timers) do if not timer.cancelled and not timer.fired then count = count + 1 end end
+        for _, timer in ipairs(self.timers) do
+            if not timer.cancelled and not timer.fired then count = count + 1 end
+        end
         return count
     end
     function env:Messages(kind, channel)
         local result = {}
         for _, message in ipairs(self.sent) do
-            if (not kind or message.packet.kind == kind) and (not channel or message.channel == channel)
-                and message.result == 0 then result[#result + 1] = message end
+            if
+                (not kind or message.packet.kind == kind)
+                and (not channel or message.channel == channel)
+                and message.result == 0
+            then
+                result[#result + 1] = message
+            end
         end
         return result
     end
@@ -269,20 +363,52 @@ function Fixture.New(options)
     end
     function env:Query(overrides)
         local own = finder:GetLocalState()
-        local packet = { id = "request-1", context = own.context, route = own.route, revision = own.revision,
-            progressId = "main:3", step = 3, total = 20, mode = "nearby", range = 5,
-            minLevel = 0, maxLevel = 0, primary = "fr", languages = 2 }
-        for key, value in pairs(overrides or {}) do packet[key] = value end
+        local packet = {
+            id = "request-1",
+            context = own.context,
+            route = own.route,
+            revision = own.revision,
+            progressId = "main:3",
+            step = 3,
+            total = 20,
+            mode = "nearby",
+            range = 5,
+            minLevel = 0,
+            maxLevel = 0,
+            primary = "fr",
+            languages = 2,
+        }
+        for key, value in pairs(overrides or {}) do
+            packet[key] = value
+        end
         return packet
     end
     function env:Presence(overrides)
         local own = finder:GetLocalState()
-        local packet = { id = finder.query and finder.query.id or "unrequested",
+        local packet = {
+            id = finder.query and finder.query.id or "unrequested",
             context = finder.query and finder.query.mode == "world" and own.worldContext or own.context,
-            route = own.route, revision = own.revision, progressId = "main:3", step = 3, total = 20,
-            map = env.map, level = 18, class = 1, primary = "fr", languages = 2, groupSize = 0,
-            leader = true, recruiting = false, afk = false, dnd = false, warMode = false, languageSource = "player" }
-        for key, value in pairs(overrides or {}) do packet[key] = value end
+            route = own.route,
+            revision = own.revision,
+            progressId = "main:3",
+            step = 3,
+            total = 20,
+            map = env.map,
+            level = 18,
+            class = 1,
+            primary = "fr",
+            languages = 2,
+            groupSize = 0,
+            leader = true,
+            recruiting = false,
+            afk = false,
+            dnd = false,
+            warMode = false,
+            languageSource = "player",
+        }
+        for key, value in pairs(overrides or {}) do
+            packet[key] = value
+        end
         return packet
     end
     function env:Receive(kind, data, sender, channel, details)
@@ -294,11 +420,24 @@ function Fixture.New(options)
         details = details or {}
         channel = channel or "CHANNEL"
         local frame = self.directAceComm.frame
-        frame:GetScript("OnEvent")(frame, "CHAT_MSG_ADDON", details.prefix or "APRFindV1", wire, channel, sender or "Peer-Home")
-        finder:HandleAddonMessage(details.prefix or "APRFindV1", wire, channel, sender or "Peer-Home",
-            details.target or "Local-Home", 0,
+        frame:GetScript("OnEvent")(
+            frame,
+            "CHAT_MSG_ADDON",
+            details.prefix or "APRFindV1",
+            wire,
+            channel,
+            sender or "Peer-Home"
+        )
+        finder:HandleAddonMessage(
+            details.prefix or "APRFindV1",
+            wire,
+            channel,
+            sender or "Peer-Home",
+            details.target or "Local-Home",
+            0,
             details.localID or (details.world and finder.worldChannelID or self.channelID),
-            details.name or (details.world and finder.worldChannelName or finder.channelName))
+            details.name or (details.world and finder.worldChannelName or finder.channelName)
+        )
     end
     function env:ReceiveBattleNet(kind, data, gameAccountID, details)
         local wire = self.protocol.Encode(kind, data)
@@ -307,8 +446,13 @@ function Fixture.New(options)
     end
     function env:ReceiveBattleNetWire(wire, gameAccountID, details)
         details = details or {}
-        self:Event("BN_CHAT_MSG_ADDON", details.prefix or "APRFindV1", wire,
-            details.distribution or "WHISPER", gameAccountID)
+        self:Event(
+            "BN_CHAT_MSG_ADDON",
+            details.prefix or "APRFindV1",
+            wire,
+            details.distribution or "WHISPER",
+            gameAccountID
+        )
     end
     function env:SetStep(step)
         self.step = step

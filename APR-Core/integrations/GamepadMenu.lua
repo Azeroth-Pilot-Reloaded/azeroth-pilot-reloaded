@@ -15,12 +15,13 @@ local panelNames = {
     xp = "APRXPBuffOverlay",
     group = "PartyScreenPanel",
     heirloom = "HeirloomPanel",
-    buffs = "BuffFrameScreen"
+    buffs = "BuffFrameScreen",
 }
 
 function Pad:GetMenuBinding()
     if not GetBindingKey then return nil, false end
-    local context = C_KeyBindings and C_KeyBindings.GetBindingContextForAction
+    local context = C_KeyBindings
+        and C_KeyBindings.GetBindingContextForAction
         and C_KeyBindings.GetBindingContextForAction("APR_MENU")
     local function choose(...)
         local first
@@ -32,10 +33,11 @@ function Pad:GetMenuBinding()
             end
         end
         return first, false
-    end --[[APR_DIAG]]; choose = APRTrace("APR-Core/integrations/GamepadMenu.lua:18:choose#2", choose) --[[/APR_DIAG]]
+    end --[[APR_DIAG]]
+    choose = APRTrace("APR-Core/integrations/GamepadMenu.lua:18:choose#2", choose) --[[/APR_DIAG]]
     return choose(GetBindingKey("APR_MENU", nil, context))
-end --[[APR_DIAG]]; Pad.GetMenuBinding = APRTrace("APR-Core/integrations/GamepadMenu.lua:14:Pad:GetMenuBinding#1",
-    Pad.GetMenuBinding) --[[/APR_DIAG]]
+end --[[APR_DIAG]]
+Pad.GetMenuBinding = APRTrace("APR-Core/integrations/GamepadMenu.lua:14:Pad:GetMenuBinding#1", Pad.GetMenuBinding) --[[/APR_DIAG]]
 
 function Pad:CloseMenu(confirmed)
     if not self.menu then return end
@@ -50,7 +52,8 @@ function Pad:CloseMenu(confirmed)
     self.menuCloseAllowed = true
     self.menu:Hide()
     self.menuCloseAllowed = nil
-end --[[APR_DIAG]]; Pad.CloseMenu = APRTrace("APR-Core/integrations/GamepadMenu.lua:32:Pad:CloseMenu#3", Pad.CloseMenu) --[[/APR_DIAG]]
+end --[[APR_DIAG]]
+Pad.CloseMenu = APRTrace("APR-Core/integrations/GamepadMenu.lua:32:Pad:CloseMenu#3", Pad.CloseMenu) --[[/APR_DIAG]]
 
 function Pad:WarnUnboundMenuClose()
     if self.menuClosePending then return end
@@ -65,24 +68,38 @@ function Pad:WarnUnboundMenuClose()
         -- Escape may already have hidden the window. Restore its native popup
         -- lifecycle before presenting the warning; never replace Frame:Hide.
         if not self.menu:IsShown() then
-            self.menu:Show(); self:FocusWindow(self.menu)
+            self.menu:Show()
+            self:FocusWindow(self.menu)
         end
-        self.menuCloseDialog = UI:ShowConfirmationDialog({
-            title = WARNING or L["GAMEPAD_MENU"],
-            description = L["GAMEPAD_MENU_UNBOUND_CONFIRM"],
-            acceptText = CLOSE,
-            cancelText = CANCEL,
-        }, --[[APR_DIAG]]
-            APRTrace("APR-Core/integrations/GamepadMenu.lua:63:callback#6", --[[/APR_DIAG]]
-                function() self:CloseMenu(true) end --[[APR_DIAG]]) --[[/APR_DIAG]], --[[APR_DIAG]]
+        self.menuCloseDialog = UI:ShowConfirmationDialog(
+            {
+                title = WARNING or L["GAMEPAD_MENU"],
+                description = L["GAMEPAD_MENU_UNBOUND_CONFIRM"],
+                acceptText = CLOSE,
+                cancelText = CANCEL,
+            }, --[[APR_DIAG]]
+            APRTrace(
+                "APR-Core/integrations/GamepadMenu.lua:63:callback#6", --[[/APR_DIAG]]
+                function() self:CloseMenu(true) end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]], --[[APR_DIAG]]
             APRTrace("APR-Core/integrations/GamepadMenu.lua:63:callback#7", --[[/APR_DIAG]] function()
                 self.menuClosePending, self.menuCloseDialog = nil, nil
-            end --[[APR_DIAG]]) --[[/APR_DIAG]], self.menu)
-        if self.menuCloseDialog then self:RequestControlFocus(self.menuCloseDialog, self.menuCloseDialog.cancelButton) end
-    end --[[APR_DIAG]]; warn = APRTrace("APR-Core/integrations/GamepadMenu.lua:50:warn#5", warn) --[[/APR_DIAG]]
-    if C_Timer and C_Timer.After then C_Timer.After(0, warn) else warn() end
-end --[[APR_DIAG]]; Pad.WarnUnboundMenuClose = APRTrace(
-"APR-Core/integrations/GamepadMenu.lua:47:Pad:WarnUnboundMenuClose#4", Pad.WarnUnboundMenuClose) --[[/APR_DIAG]]
+            end --[[APR_DIAG]]) --[[/APR_DIAG]],
+            self.menu
+        )
+        if self.menuCloseDialog then
+            self:RequestControlFocus(self.menuCloseDialog, self.menuCloseDialog.cancelButton)
+        end
+    end --[[APR_DIAG]]
+    warn = APRTrace("APR-Core/integrations/GamepadMenu.lua:50:warn#5", warn) --[[/APR_DIAG]]
+    if C_Timer and C_Timer.After then
+        C_Timer.After(0, warn)
+    else
+        warn()
+    end
+end --[[APR_DIAG]]
+Pad.WarnUnboundMenuClose =
+    APRTrace("APR-Core/integrations/GamepadMenu.lua:47:Pad:WarnUnboundMenuClose#4", Pad.WarnUnboundMenuClose) --[[/APR_DIAG]]
 
 function Pad:ObserveMenuState()
     self.menuObservedPanels = self.menuObservedPanels or setmetatable({}, { __mode = "k" })
@@ -90,22 +107,35 @@ function Pad:ObserveMenuState()
         local frame = _G[name]
         if frame and not self.menuObservedPanels[frame] then
             self.menuObservedPanels[frame] = true
-            frame:HookScript("OnShow", --[[APR_DIAG]]
-                APRTrace("APR-Core/integrations/GamepadMenu.lua:77:callback#9", --[[/APR_DIAG]]
-                    function() self:QueueMenuAvailability() end --[[APR_DIAG]]) --[[/APR_DIAG]])
-            frame:HookScript("OnHide", --[[APR_DIAG]]
-                APRTrace("APR-Core/integrations/GamepadMenu.lua:78:callback#10", --[[/APR_DIAG]]
-                    function() self:QueueMenuAvailability() end --[[APR_DIAG]]) --[[/APR_DIAG]])
+            frame:HookScript(
+                "OnShow", --[[APR_DIAG]]
+                APRTrace(
+                    "APR-Core/integrations/GamepadMenu.lua:77:callback#9", --[[/APR_DIAG]]
+                    function() self:QueueMenuAvailability() end --[[APR_DIAG]]
+                ) --[[/APR_DIAG]]
+            )
+            frame:HookScript(
+                "OnHide", --[[APR_DIAG]]
+                APRTrace(
+                    "APR-Core/integrations/GamepadMenu.lua:78:callback#10", --[[/APR_DIAG]]
+                    function() self:QueueMenuAvailability() end --[[APR_DIAG]]
+                ) --[[/APR_DIAG]]
+            )
         end
     end
     if not self.menuRouteObserved and hooksecurefunc and type(APR.ActivateRoute) == "function" then
         self.menuRouteObserved = true
-        hooksecurefunc(APR, "ActivateRoute", --[[APR_DIAG]]
-            APRTrace("APR-Core/integrations/GamepadMenu.lua:83:callback#11", --[[/APR_DIAG]]
-                function() self:QueueMenuAvailability() end --[[APR_DIAG]]) --[[/APR_DIAG]])
+        hooksecurefunc(
+            APR,
+            "ActivateRoute", --[[APR_DIAG]]
+            APRTrace(
+                "APR-Core/integrations/GamepadMenu.lua:83:callback#11", --[[/APR_DIAG]]
+                function() self:QueueMenuAvailability() end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]]
+        )
     end
-end --[[APR_DIAG]]; Pad.ObserveMenuState = APRTrace("APR-Core/integrations/GamepadMenu.lua:71:Pad:ObserveMenuState#8",
-    Pad.ObserveMenuState) --[[/APR_DIAG]]
+end --[[APR_DIAG]]
+Pad.ObserveMenuState = APRTrace("APR-Core/integrations/GamepadMenu.lua:71:Pad:ObserveMenuState#8", Pad.ObserveMenuState) --[[/APR_DIAG]]
 
 function Pad:QueueMenuAvailability()
     if not self.menu or not self.menu:IsShown() or self.menuAvailabilityPending then return end
@@ -116,39 +146,53 @@ function Pad:QueueMenuAvailability()
         self:ObserveMenuState()
         self:UpdateMenuAvailability()
         self:Refresh(self.menu)
-    end --[[APR_DIAG]]; refresh = APRTrace("APR-Core/integrations/GamepadMenu.lua:90:refresh#13", refresh) --[[/APR_DIAG]]
-    if C_Timer and C_Timer.After then C_Timer.After(0, refresh) else refresh() end
-end --[[APR_DIAG]]; Pad.QueueMenuAvailability = APRTrace(
-"APR-Core/integrations/GamepadMenu.lua:87:Pad:QueueMenuAvailability#12", Pad.QueueMenuAvailability) --[[/APR_DIAG]]
+    end --[[APR_DIAG]]
+    refresh = APRTrace("APR-Core/integrations/GamepadMenu.lua:90:refresh#13", refresh) --[[/APR_DIAG]]
+    if C_Timer and C_Timer.After then
+        C_Timer.After(0, refresh)
+    else
+        refresh()
+    end
+end --[[APR_DIAG]]
+Pad.QueueMenuAvailability =
+    APRTrace("APR-Core/integrations/GamepadMenu.lua:87:Pad:QueueMenuAvailability#12", Pad.QueueMenuAvailability) --[[/APR_DIAG]]
 
 local function MenuPages()
     return {
         {
             label = L["ROUTE"],
             actions = {
-                { "route", L["ROUTE_SELECTION"], "map" }, { "partyfinder", L["GF_TITLE"], "group" },
-                { "step",  L["CURRENT_STEP"],    "current-step" }, { "steps", L["QUEST_ORDER_LIST"], "steps" },
-                { "rollback", L["ROLLBACK"], "up", math.pi / 2 }, { "skip", L["SKIP"], "up", -math.pi / 2 },
-            }
+                { "route", L["ROUTE_SELECTION"], "map" },
+                { "partyfinder", L["GF_TITLE"], "group" },
+                { "step", L["CURRENT_STEP"], "current-step" },
+                { "steps", L["QUEST_ORDER_LIST"], "steps" },
+                { "rollback", L["ROLLBACK"], "up", math.pi / 2 },
+                { "skip", L["SKIP"], "up", -math.pi / 2 },
+            },
         },
         {
             label = DISPLAY or L["CURRENT_STEP"],
             actions = {
-                { "fillers", L["STEP_FILLERS"], "objectives" }, { "xp", L["XP_BUFF_OVERLAY"], "xp" },
-                { "group",   L["GROUP"],        "group" }, { "heirloom", L["HEIRLOOM"], "heirloom" },
+                { "fillers", L["STEP_FILLERS"], "objectives" },
+                { "xp", L["XP_BUFF_OVERLAY"], "xp" },
+                { "group", L["GROUP"], "group" },
+                { "heirloom", L["HEIRLOOM"], "heirloom" },
                 { "buffs", L["BUFF"], "favorite" },
-            }
+            },
         },
         {
             label = GAMEOPTIONS_MENU,
             actions = {
-                { "options", GAMEOPTIONS_MENU,     "automation" },
-                { "layout",  L["UI_LAYOUT_TITLE"], "resize" }, { "status", L["STATUS"], "check" },
-                { "about", L["ABOUT_HELP"], "changelog" }, { "perf", L["UI_PERFORMANCE"], "debug" },
-            }
+                { "options", GAMEOPTIONS_MENU, "automation" },
+                { "layout", L["UI_LAYOUT_TITLE"], "resize" },
+                { "status", L["STATUS"], "check" },
+                { "about", L["ABOUT_HELP"], "changelog" },
+                { "perf", L["UI_PERFORMANCE"], "debug" },
+            },
         },
     }
-end --[[APR_DIAG]]; MenuPages = APRTrace("APR-Core/integrations/GamepadMenu.lua:100:MenuPages#14", MenuPages) --[[/APR_DIAG]]
+end --[[APR_DIAG]]
+MenuPages = APRTrace("APR-Core/integrations/GamepadMenu.lua:100:MenuPages#14", MenuPages) --[[/APR_DIAG]]
 
 local function StyleTile(button, iconName, rotation)
     UI:ButtonIcon(button, iconName, 36)
@@ -156,29 +200,41 @@ local function StyleTile(button, iconName, rotation)
     button.icon:GetParent():SetPoint("LEFT", 18, 0)
     local label = button:GetFontString()
     label:ClearAllPoints()
-    label:SetPoint("LEFT", 72, 0); label:SetPoint("RIGHT", -16, 0)
-    label:SetJustifyH("LEFT"); label:SetWordWrap(true)
+    label:SetPoint("LEFT", 72, 0)
+    label:SetPoint("RIGHT", -16, 0)
+    label:SetJustifyH("LEFT")
+    label:SetWordWrap(true)
     APR:RegisterFontString(label, "general", { sizeDelta = 4, themeAccent = true })
     local selected = button:CreateTexture(nil, "BACKGROUND")
     selected:SetAllPoints()
     APR:RegisterThemeRegion(selected, "accent", 0.16)
     selected:Hide()
-    button.OnSmartNavSelect = --[[APR_DIAG]] APRTrace("APR-Core/integrations/GamepadMenu.lua:133:callback#16", --[[/APR_DIAG]]
-        function()
-            selected:Show(); UI:SetButtonActive(button, true)
+    button.OnSmartNavSelect = --[[APR_DIAG]]
+        APRTrace("APR-Core/integrations/GamepadMenu.lua:133:callback#16", --[[/APR_DIAG]] function()
+            selected:Show()
+            UI:SetButtonActive(button, true)
         end --[[APR_DIAG]]) --[[/APR_DIAG]]
-    button.OnSmartNavDeselect = --[[APR_DIAG]] APRTrace("APR-Core/integrations/GamepadMenu.lua:136:callback#17", --[[/APR_DIAG]]
-        function()
-            selected:Hide(); UI:SetButtonActive(button, false)
+    button.OnSmartNavDeselect = --[[APR_DIAG]]
+        APRTrace("APR-Core/integrations/GamepadMenu.lua:136:callback#17", --[[/APR_DIAG]] function()
+            selected:Hide()
+            UI:SetButtonActive(button, false)
         end --[[APR_DIAG]]) --[[/APR_DIAG]]
-    button:HookScript("OnEnter", --[[APR_DIAG]]
-        APRTrace("APR-Core/integrations/GamepadMenu.lua:139:callback#18", --[[/APR_DIAG]]
-            function() if button:IsEnabled() then selected:Show() end end --[[APR_DIAG]]) --[[/APR_DIAG]])
-    button:HookScript("OnLeave", --[[APR_DIAG]]
-        APRTrace("APR-Core/integrations/GamepadMenu.lua:140:callback#19", --[[/APR_DIAG]]
-            function() selected:SetShown(button.active == true) end --[[APR_DIAG]]) --[[/APR_DIAG]])
+    button:HookScript(
+        "OnEnter", --[[APR_DIAG]]
+        APRTrace("APR-Core/integrations/GamepadMenu.lua:139:callback#18", --[[/APR_DIAG]] function()
+            if button:IsEnabled() then selected:Show() end
+        end --[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+    button:HookScript(
+        "OnLeave", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/integrations/GamepadMenu.lua:140:callback#19", --[[/APR_DIAG]]
+            function() selected:SetShown(button.active == true) end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
     button:HookScript("OnHide", button.OnSmartNavDeselect)
-end --[[APR_DIAG]]; StyleTile = APRTrace("APR-Core/integrations/GamepadMenu.lua:120:StyleTile#15", StyleTile) --[[/APR_DIAG]]
+end --[[APR_DIAG]]
+StyleTile = APRTrace("APR-Core/integrations/GamepadMenu.lua:120:StyleTile#15", StyleTile) --[[/APR_DIAG]]
 
 function Pad:RefreshMenuBindings()
     local frame = self.menu
@@ -186,18 +242,28 @@ function Pad:RefreshMenuBindings()
     local chosen = self:GetMenuBinding()
     local bindingText = chosen and (GetBindingText and GetBindingText(chosen, "KEY_") or chosen)
     frame.bindingLabel:SetText(KEY_BINDINGS .. ": " .. (bindingText or NOT_BOUND or "—"))
-    for _, hint in ipairs(frame.inputHints) do self:RefreshInputHint(hint) end
-    for _, hint in ipairs(frame.triggerHints) do self:RefreshInputHint(hint) end
-end --[[APR_DIAG]]; Pad.RefreshMenuBindings = APRTrace(
-"APR-Core/integrations/GamepadMenu.lua:144:Pad:RefreshMenuBindings#20", Pad.RefreshMenuBindings) --[[/APR_DIAG]]
+    for _, hint in ipairs(frame.inputHints) do
+        self:RefreshInputHint(hint)
+    end
+    for _, hint in ipairs(frame.triggerHints) do
+        self:RefreshInputHint(hint)
+    end
+end --[[APR_DIAG]]
+Pad.RefreshMenuBindings =
+    APRTrace("APR-Core/integrations/GamepadMenu.lua:144:Pad:RefreshMenuBindings#20", Pad.RefreshMenuBindings) --[[/APR_DIAG]]
 
 function Pad:LayoutMenu()
     local frame = self.menu
     if not frame or InCombatLockdown() then return end
     -- A fixed grid preserves readable targets; fit the complete menu on smaller
     -- UI canvases instead of introducing a controller-only scroll requirement.
-    frame:SetScale(math.min(1, math.max(0.3, (UIParent:GetWidth() - 48) / WIDTH),
-        math.max(0.3, (UIParent:GetHeight() - 48) / HEIGHT)))
+    frame:SetScale(
+        math.min(
+            1,
+            math.max(0.3, (UIParent:GetWidth() - 48) / WIDTH),
+            math.max(0.3, (UIParent:GetHeight() - 48) / HEIGHT)
+        )
+    )
     frame:SetSize(WIDTH, HEIGHT)
     local innerWidth = WIDTH - 32
     local tabWidth = (innerWidth - 80 - GAP * 2) / 3
@@ -208,14 +274,13 @@ function Pad:LayoutMenu()
         tab:SetSize(tabWidth, 40)
         for slot, action in ipairs(page.actions) do
             local button = self.menuButtons[action[1]]
-            button:SetPoint("TOPLEFT", ((slot - 1) % 2) * (tileWidth + GAP),
-                -math.floor((slot - 1) / 2) * (94 + GAP))
+            button:SetPoint("TOPLEFT", ((slot - 1) % 2) * (tileWidth + GAP), -math.floor((slot - 1) / 2) * (94 + GAP))
             button:SetSize(tileWidth, 94)
         end
     end
     self:Refresh(frame)
-end --[[APR_DIAG]]; Pad.LayoutMenu = APRTrace("APR-Core/integrations/GamepadMenu.lua:154:Pad:LayoutMenu#21",
-    Pad.LayoutMenu) --[[/APR_DIAG]]
+end --[[APR_DIAG]]
+Pad.LayoutMenu = APRTrace("APR-Core/integrations/GamepadMenu.lua:154:Pad:LayoutMenu#21", Pad.LayoutMenu) --[[/APR_DIAG]]
 
 function Pad:ShowMenuPage(index, focus)
     if not self.menuPages or not self.menuPages[index] then return end
@@ -232,19 +297,20 @@ function Pad:ShowMenuPage(index, focus)
         for _, action in ipairs(self.menuPages[index].actions) do
             local button = self.menuButtons[action[1]]
             if self:CanFocus(button) then
-                first = button; break
+                first = button
+                break
             end
         end
         self:RequestControlFocus(self.menu, first or self.menuTabs[index])
     end
-end --[[APR_DIAG]]; Pad.ShowMenuPage = APRTrace("APR-Core/integrations/GamepadMenu.lua:179:Pad:ShowMenuPage#22",
-    Pad.ShowMenuPage) --[[/APR_DIAG]]
+end --[[APR_DIAG]]
+Pad.ShowMenuPage = APRTrace("APR-Core/integrations/GamepadMenu.lua:179:Pad:ShowMenuPage#22", Pad.ShowMenuPage) --[[/APR_DIAG]]
 
 function Pad:CycleMenuPage(direction)
     if not self.menu or not self.menu:IsShown() or InCombatLockdown() then return end
     self:ShowMenuPage(((self.menuPage or 1) - 1 + direction) % #self.menuPages + 1, true)
-end --[[APR_DIAG]]; Pad.CycleMenuPage = APRTrace("APR-Core/integrations/GamepadMenu.lua:199:Pad:CycleMenuPage#23",
-    Pad.CycleMenuPage) --[[/APR_DIAG]]
+end --[[APR_DIAG]]
+Pad.CycleMenuPage = APRTrace("APR-Core/integrations/GamepadMenu.lua:199:Pad:CycleMenuPage#23", Pad.CycleMenuPage) --[[/APR_DIAG]]
 
 function Pad:MenuGridNeighbour(page, slot, direction)
     local horizontal = direction == "LEFT" or direction == "RIGHT"
@@ -270,8 +336,9 @@ function Pad:MenuGridNeighbour(page, slot, direction)
         if self:CanFocus(last) then return last end
     end
     return self.menu.bindingButton
-end --[[APR_DIAG]]; Pad.MenuGridNeighbour = APRTrace(
-"APR-Core/integrations/GamepadMenu.lua:204:Pad:MenuGridNeighbour#24", Pad.MenuGridNeighbour) --[[/APR_DIAG]]
+end --[[APR_DIAG]]
+Pad.MenuGridNeighbour =
+    APRTrace("APR-Core/integrations/GamepadMenu.lua:204:Pad:MenuGridNeighbour#24", Pad.MenuGridNeighbour) --[[/APR_DIAG]]
 
 function Pad:UpdateMenuAvailability()
     local enabled = not APR.settings or not APR.settings.profile or APR.settings.profile.enableAddon ~= false
@@ -282,77 +349,122 @@ function Pad:UpdateMenuAvailability()
     for _, action in ipairs({ "skip", "rollback" }) do
         self.menuButtons[action]:SetEnabled(enabled and APR.ActiveRoute ~= nil)
     end
-    for action, owner in pairs({ layout = "LayoutEditor", partyfinder = "PartyFinderPanel", perf = "PerformanceDashboard" }) do
+    for action, owner in pairs({
+        layout = "LayoutEditor",
+        partyfinder = "PartyFinderPanel",
+        perf = "PerformanceDashboard",
+    }) do
         self.menuButtons[action]:SetEnabled(APR[owner] ~= nil)
     end
-end --[[APR_DIAG]]; Pad.UpdateMenuAvailability = APRTrace(
-"APR-Core/integrations/GamepadMenu.lua:230:Pad:UpdateMenuAvailability#25", Pad.UpdateMenuAvailability) --[[/APR_DIAG]]
+end --[[APR_DIAG]]
+Pad.UpdateMenuAvailability =
+    APRTrace("APR-Core/integrations/GamepadMenu.lua:230:Pad:UpdateMenuAvailability#25", Pad.UpdateMenuAvailability) --[[/APR_DIAG]]
 
 function Pad:CreateMenu()
     local frame = UI:Window("APRGamepadMenu", L["GAMEPAD_MENU"], WIDTH, HEIGHT, "library", "logo")
     self.menu, self.menuButtons, self.menuTabs, self.menuPages = frame, {}, {}, MenuPages()
     self.windows[frame].popup = true
-    self.windows[frame].close = --[[APR_DIAG]] APRTrace("APR-Core/integrations/GamepadMenu.lua:248:callback#27", --[[/APR_DIAG]]
-        function() self:CloseMenu() end --[[APR_DIAG]]) --[[/APR_DIAG]]
-    frame.close:SetScript("OnClick", --[[APR_DIAG]]
-        APRTrace("APR-Core/integrations/GamepadMenu.lua:249:callback#28", --[[/APR_DIAG]]
-            function() self:CloseMenu() end --[[APR_DIAG]]) --[[/APR_DIAG]])
-    frame:HookScript("OnShow", --[[APR_DIAG]]
-        APRTrace("APR-Core/integrations/GamepadMenu.lua:250:callback#29", --[[/APR_DIAG]]
-            function() self:QueueMenuAvailability() end --[[APR_DIAG]]) --[[/APR_DIAG]])
-    frame:HookScript("OnHide", --[[APR_DIAG]]
+    self.windows[frame].close = --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/integrations/GamepadMenu.lua:248:callback#27", --[[/APR_DIAG]]
+            function() self:CloseMenu() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    frame.close:SetScript(
+        "OnClick", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/integrations/GamepadMenu.lua:249:callback#28", --[[/APR_DIAG]]
+            function() self:CloseMenu() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
+    frame:HookScript(
+        "OnShow", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/integrations/GamepadMenu.lua:250:callback#29", --[[/APR_DIAG]]
+            function() self:QueueMenuAvailability() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
+    frame:HookScript(
+        "OnHide", --[[APR_DIAG]]
         APRTrace("APR-Core/integrations/GamepadMenu.lua:251:callback#30", --[[/APR_DIAG]] function()
             if not self.menuCloseAllowed and not InCombatLockdown() and self:IsEnabled() and UIParent:IsShown() then
                 local _, bound = self:GetMenuBinding()
                 if not bound then self:WarnUnboundMenuClose() end
             end
-        end --[[APR_DIAG]]) --[[/APR_DIAG]])
+        end --[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     frame:SetFrameStrata("FULLSCREEN_DIALOG")
-    frame:SetResizable(false); frame.resize:Hide()
+    frame:SetResizable(false)
+    frame.resize:Hide()
     frame:SetResizeBounds(1, 1)
     local content = frame.content
     for index, page in ipairs(self.menuPages) do
         page.frame = CreateFrame("Frame", nil, content)
-        page.frame:SetPoint("TOPLEFT", 0, -60); page.frame:SetPoint("TOPRIGHT", 0, -60)
+        page.frame:SetPoint("TOPLEFT", 0, -60)
+        page.frame:SetPoint("TOPRIGHT", 0, -60)
         page.frame:SetHeight(306)
-        local tab = UI:Button(content, page.label, 1, --[[APR_DIAG]]
-            APRTrace("APR-Core/integrations/GamepadMenu.lua:265:callback#31", --[[/APR_DIAG]]
-                function() self:ShowMenuPage(index, true) end --[[APR_DIAG]]) --[[/APR_DIAG]])
+        local tab = UI:Button(
+            content,
+            page.label,
+            1, --[[APR_DIAG]]
+            APRTrace(
+                "APR-Core/integrations/GamepadMenu.lua:265:callback#31", --[[/APR_DIAG]]
+                function() self:ShowMenuPage(index, true) end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]]
+        )
         self.menuTabs[index] = tab
-        tab.OnSmartNavSelect = --[[APR_DIAG]] APRTrace("APR-Core/integrations/GamepadMenu.lua:267:callback#32", --[[/APR_DIAG]]
-            function() self:ShowMenuPage(index) end --[[APR_DIAG]]) --[[/APR_DIAG]]
-        self:SetDirection(tab, "DOWN", --[[APR_DIAG]]
+        tab.OnSmartNavSelect = --[[APR_DIAG]]
+            APRTrace(
+                "APR-Core/integrations/GamepadMenu.lua:267:callback#32", --[[/APR_DIAG]]
+                function() self:ShowMenuPage(index) end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]]
+        self:SetDirection(
+            tab,
+            "DOWN", --[[APR_DIAG]]
             APRTrace("APR-Core/integrations/GamepadMenu.lua:268:callback#33", --[[/APR_DIAG]] function()
                 self:ShowMenuPage(index, true)
                 return true
-            end --[[APR_DIAG]]) --[[/APR_DIAG]])
+            end --[[APR_DIAG]]) --[[/APR_DIAG]]
+        )
         self:SetDirection(tab, "UP", true)
         for slot, entry in ipairs(page.actions) do
             local action = entry[1]
-            local button = UI:Button(page.frame, entry[2], 1, --[[APR_DIAG]]
-                APRTrace("APR-Core/integrations/GamepadMenu.lua:275:callback#34", --[[/APR_DIAG]]
-                    function()
-                        self:CloseMenu(true); self:RunAction(action)
-                    end --[[APR_DIAG]]) --[[/APR_DIAG]])
+            local button = UI:Button(
+                page.frame,
+                entry[2],
+                1, --[[APR_DIAG]]
+                APRTrace("APR-Core/integrations/GamepadMenu.lua:275:callback#34", --[[/APR_DIAG]] function()
+                    self:CloseMenu(true)
+                    self:RunAction(action)
+                end --[[APR_DIAG]]) --[[/APR_DIAG]]
+            )
             self.menuButtons[action] = button
             StyleTile(button, entry[3], entry[4])
             for _, direction in ipairs({ "LEFT", "RIGHT", "UP", "DOWN" }) do
-                self:SetDirection(button, direction, --[[APR_DIAG]]
-                    APRTrace("APR-Core/integrations/GamepadMenu.lua:279:callback#35", --[[/APR_DIAG]]
-                        function() return self:MenuGridNeighbour(page, slot, direction) end --[[APR_DIAG]]) --[[/APR_DIAG]])
+                self:SetDirection(
+                    button,
+                    direction, --[[APR_DIAG]]
+                    APRTrace(
+                        "APR-Core/integrations/GamepadMenu.lua:279:callback#35", --[[/APR_DIAG]]
+                        function() return self:MenuGridNeighbour(page, slot, direction) end --[[APR_DIAG]]
+                    ) --[[/APR_DIAG]]
+                )
             end
         end
     end
     self:LinkHorizontal(self.menuTabs)
     local divider = content:CreateTexture(nil, "ARTWORK")
-    divider:SetPoint("TOPLEFT", 0, -382); divider:SetPoint("TOPRIGHT", 0, -382); divider:SetHeight(1)
+    divider:SetPoint("TOPLEFT", 0, -382)
+    divider:SetPoint("TOPRIGHT", 0, -382)
+    divider:SetHeight(1)
     APR:RegisterThemeRegion(divider, "border", 0.6)
     frame.inputHints = {
         self:CreateInputHint(content, "", GAMEPAD_DPAD, "+"),
         self:CreateInputHint(content, ACTION_LABEL_SELECT or ACCEPT, GAMEPAD_FACE_BOTTOM or "PAD1", "A"),
         self:CreateInputHint(content, FRAME_ACTION_BACK or BACK or L["ROLLBACK"], GAMEPAD_FACE_RIGHT or "PAD2", "B"),
     }
-    for index, hint in ipairs(frame.inputHints) do hint:SetPoint("TOPLEFT", (index - 1) * 220, -394) end
+    for index, hint in ipairs(frame.inputHints) do
+        hint:SetPoint("TOPLEFT", (index - 1) * 220, -394)
+    end
     frame.triggerHints = {
         self:CreateInputHint(content, "", GAMEPAD_TRIGGER_LEFT or "PADLTRIGGER", "LT"),
         self:CreateInputHint(content, "", GAMEPAD_TRIGGER_RIGHT or "PADRTRIGGER", "RT"),
@@ -360,26 +472,47 @@ function Pad:CreateMenu()
     frame.triggerHints[1]:SetPoint("TOPLEFT", 0, -6)
     frame.triggerHints[2]:SetPoint("TOPRIGHT", 0, -6)
     for _, hint in ipairs(frame.triggerHints) do
-        hint:SetWidth(28); hint.text:Hide()
+        hint:SetWidth(28)
+        hint.text:Hide()
     end
     self:RegisterInputHandler(frame, {
         buttons = {
-            PADLTRIGGER = --[[APR_DIAG]] APRTrace("APR-Core/integrations/GamepadMenu.lua:301:callback#36", --[[/APR_DIAG]]
-                function(down) if down then self:CycleMenuPage(-1) end end --[[APR_DIAG]]) --[[/APR_DIAG]],
-            PADRTRIGGER = --[[APR_DIAG]] APRTrace("APR-Core/integrations/GamepadMenu.lua:302:callback#37", --[[/APR_DIAG]]
-                function(down) if down then self:CycleMenuPage(1) end end --[[APR_DIAG]]) --[[/APR_DIAG]],
-        }
+            --[[APR_DIAG]]
+            PADLTRIGGER = APRTrace(
+                "APR-Core/integrations/GamepadMenu.lua:301:callback#36", --[[/APR_DIAG]]
+                function(down)
+                    if down then self:CycleMenuPage(-1) end
+                end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]],
+            --[[APR_DIAG]]
+            PADRTRIGGER = APRTrace(
+                "APR-Core/integrations/GamepadMenu.lua:302:callback#37", --[[/APR_DIAG]]
+                function(down)
+                    if down then self:CycleMenuPage(1) end
+                end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]],
+        },
     })
-    frame.bindingButton = UI:Button(content, KEY_BINDINGS, 196, --[[APR_DIAG]]
-        APRTrace("APR-Core/integrations/GamepadMenu.lua:304:callback#38", --[[/APR_DIAG]]
-            function() self:RunAction("binding") end --[[APR_DIAG]]) --[[/APR_DIAG]])
-    frame.bindingButton:SetPoint("BOTTOMRIGHT"); frame.bindingButton:SetHeight(44)
+    frame.bindingButton = UI:Button(
+        content,
+        KEY_BINDINGS,
+        196, --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/integrations/GamepadMenu.lua:304:callback#38", --[[/APR_DIAG]]
+            function() self:RunAction("binding") end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
+    frame.bindingButton:SetPoint("BOTTOMRIGHT")
+    frame.bindingButton:SetHeight(44)
     UI:ButtonIcon(frame.bindingButton, "automation", 22)
     frame.bindingLabel = UI:Label(content, "", 14, "muted")
     frame.bindingLabel:SetPoint("LEFT", content, "BOTTOMLEFT", 0, 22)
     frame.bindingLabel:SetPoint("RIGHT", frame.bindingButton, "LEFT", -16, 0)
-    frame.bindingLabel:SetHeight(40); frame.bindingLabel:SetWordWrap(true)
-    self:SetDirection(frame.bindingButton, "UP", --[[APR_DIAG]]
+    frame.bindingLabel:SetHeight(40)
+    frame.bindingLabel:SetWordWrap(true)
+    self:SetDirection(
+        frame.bindingButton,
+        "UP", --[[APR_DIAG]]
         APRTrace("APR-Core/integrations/GamepadMenu.lua:311:callback#39", --[[/APR_DIAG]] function()
             local actions = self.menuPages[self.menuPage].actions
             for slot = #actions, 1, -1 do
@@ -387,31 +520,42 @@ function Pad:CreateMenu()
                 if self:CanFocus(button) then return button end
             end
             return self.menuTabs[self.menuPage]
-        end --[[APR_DIAG]]) --[[/APR_DIAG]])
-    for _, direction in ipairs({ "LEFT", "RIGHT", "DOWN" }) do self:SetDirection(frame.bindingButton, direction, true) end
+        end --[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+    for _, direction in ipairs({ "LEFT", "RIGHT", "DOWN" }) do
+        self:SetDirection(frame.bindingButton, direction, true)
+    end
     frame:RegisterEvent("UPDATE_BINDINGS")
     frame:RegisterEvent("DISPLAY_SIZE_CHANGED")
     frame:RegisterEvent("UI_SCALE_CHANGED")
-    frame:SetScript("OnEvent", --[[APR_DIAG]]
+    frame:SetScript(
+        "OnEvent", --[[APR_DIAG]]
         APRTrace("APR-Core/integrations/GamepadMenu.lua:323:callback#40", --[[/APR_DIAG]] function(_, event)
-            if event == "UPDATE_BINDINGS" then self:RefreshMenuBindings() else self:LayoutMenu() end
-        end --[[APR_DIAG]]) --[[/APR_DIAG]])
+            if event == "UPDATE_BINDINGS" then
+                self:RefreshMenuBindings()
+            else
+                self:LayoutMenu()
+            end
+        end --[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     self:ObserveMenuState()
     self:LayoutMenu()
     self:ShowMenuPage(1)
-end --[[APR_DIAG]]; Pad.CreateMenu = APRTrace("APR-Core/integrations/GamepadMenu.lua:244:Pad:CreateMenu#26",
-    Pad.CreateMenu) --[[/APR_DIAG]]
+end --[[APR_DIAG]]
+Pad.CreateMenu = APRTrace("APR-Core/integrations/GamepadMenu.lua:244:Pad:CreateMenu#26", Pad.CreateMenu) --[[/APR_DIAG]]
 
 function Pad:ToggleMenu()
     if self.menu and self.menu:IsShown() then
-        self:CloseMenu(); return
+        self:CloseMenu()
+        return
     end
     if not self.menu then self:CreateMenu() end
     self:UpdateMenuAvailability()
     self:LayoutMenu()
     self:ShowMenuPage(1)
-    self.menu:Show(); self.menu:Raise()
+    self.menu:Show()
+    self.menu:Raise()
     self:FocusWindow(self.menu)
     self:RequestFocus(self.menuPages[1].frame)
-end --[[APR_DIAG]]; Pad.ToggleMenu = APRTrace("APR-Core/integrations/GamepadMenu.lua:331:Pad:ToggleMenu#41",
-    Pad.ToggleMenu) --[[/APR_DIAG]]
+end --[[APR_DIAG]]
+Pad.ToggleMenu = APRTrace("APR-Core/integrations/GamepadMenu.lua:331:Pad:ToggleMenu#41", Pad.ToggleMenu) --[[/APR_DIAG]]

@@ -8,64 +8,91 @@ APR.flightPath = APR:NewModule("FlightPath")
 local flight = APR.flightPath
 flight.CurrentTaxiNode, flight.StepTaxiNode, flight.unavailableNodes = {}, {}, {}
 flight.eventFrame = CreateFrame("Frame")
-for _, event in ipairs({ "TAXIMAP_OPENED", "TAXIMAP_CLOSED", "PLAYER_CONTROL_LOST" }) do flight.eventFrame:RegisterEvent(event) end
-flight.eventFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/FlightPath.lua:12:callback#1", --[[/APR_DIAG]]function(_, event)
-    if event == "TAXIMAP_CLOSED" then
-        flight.unavailableNodes = {}
-        APR.taxiData:CloseTaxiMap()
-        if APR.settings.profile.enableAddon then
+for _, event in ipairs({ "TAXIMAP_OPENED", "TAXIMAP_CLOSED", "PLAYER_CONTROL_LOST" }) do
+    flight.eventFrame:RegisterEvent(event)
+end
+flight.eventFrame:SetScript(
+    "OnEvent", --[[APR_DIAG]]
+    APRTrace("APR-Core/features/navigation/FlightPath.lua:12:callback#1", --[[/APR_DIAG]] function(_, event)
+        if event == "TAXIMAP_CLOSED" then
+            flight.unavailableNodes = {}
+            APR.taxiData:CloseTaxiMap()
+            if APR.settings.profile.enableAddon then
+                if APR.event and APR.event.QueueStepRefresh then APR.event:QueueStepRefresh() end
+                if APR.questOrderList then APR.questOrderList:DelayedUpdate(true) end
+            end
+            return
+        end
+        if not APR.settings.profile.enableAddon then return end
+        local guidance = APR.navigation and APR.navigation:IsNavigating() and APR.navigation:GetActiveStep()
+        local step = guidance or (APR.ActiveRoute and APR:GetCurrentStep())
+        local generated = guidance ~= nil and guidance ~= false
+        if event == "TAXIMAP_OPENED" then
+            local map = GetTaxiMapID()
+            local nodes = (map and C_TaxiMap.GetAllTaxiNodes(map)) or {}
+            flight.CurrentTaxiNode, flight.StepTaxiNode, flight.unavailableNodes = {}, {}, {}
+            for _, node in ipairs(nodes) do
+                if node.state == Enum.FlightPathState.Current or node.state == Enum.FlightPathState.Reachable then
+                    APRTaxiNodes[APR.PlayerID][node.nodeID] = true
+                elseif node.state == Enum.FlightPathState.Unreachable then
+                    flight.unavailableNodes[node.nodeID] = true
+                end
+                if node.state == Enum.FlightPathState.Current then flight.CurrentTaxiNode = node end
+                if step and (step.toNodeID or step.NodeID) == node.nodeID then flight.StepTaxiNode = node end
+            end
+            if generated and guidance.kind == "verify_taxi" and APR.taxiData.MarkProbeAttempt then
+                APR.taxiData:MarkProbeAttempt(guidance.fromNodeID, guidance.toNodeID, guidance.contextKey)
+            end
+            APR.taxiData:ObserveTaxiMap(nodes)
+            if
+                not APR.routeValidationPending
+                and not APR.routeValidationFailed
+                and step
+                and (step.UseFlightPath or step.kind == "taxi")
+            then
+                local current, target = flight.CurrentTaxiNode.nodeID, flight.StepTaxiNode.nodeID
+                if not generated and current and current == target then
+                    if
+                        not step.ZoneStepTrigger
+                        or (not UnitOnTaxi("player") and APR:IsZoneStepTriggerReached(step.ZoneStepTrigger))
+                    then
+                        APR:NextQuestStep()
+                    end
+                elseif target and not IsModifierKeyDown() and APR.settings.profile.autoFlight then
+                    local affordable, slot = APR.taxiData:CanTake(target)
+                    if affordable then
+                        if generated then
+                            APR.navigation.dirty = false
+                            guidance.departureSeen = true
+                        end
+                        TakeTaxiNode(slot)
+                    elseif generated then
+                        APR.navigation:ForceRefresh()
+                        APR.navigation:RequestUpdate()
+                    end
+                end
+            end
             if APR.event and APR.event.QueueStepRefresh then APR.event:QueueStepRefresh() end
             if APR.questOrderList then APR.questOrderList:DelayedUpdate(true) end
-        end
-        return
-    end
-    if not APR.settings.profile.enableAddon then return end
-    local guidance = APR.navigation and APR.navigation:IsNavigating() and APR.navigation:GetActiveStep()
-    local step = guidance or (APR.ActiveRoute and APR:GetCurrentStep())
-    local generated = guidance ~= nil and guidance ~= false
-    if event == "TAXIMAP_OPENED" then
-        local map = GetTaxiMapID()
-        local nodes = (map and C_TaxiMap.GetAllTaxiNodes(map)) or {}
-        flight.CurrentTaxiNode, flight.StepTaxiNode, flight.unavailableNodes = {}, {}, {}
-        for _, node in ipairs(nodes) do
-            if node.state == Enum.FlightPathState.Current or node.state == Enum.FlightPathState.Reachable then
-                APRTaxiNodes[APR.PlayerID][node.nodeID] = true
-            elseif node.state == Enum.FlightPathState.Unreachable then flight.unavailableNodes[node.nodeID] = true end
-            if node.state == Enum.FlightPathState.Current then flight.CurrentTaxiNode = node end
-            if step and (step.toNodeID or step.NodeID) == node.nodeID then flight.StepTaxiNode = node end
-        end
-        if generated and guidance.kind == "verify_taxi" and APR.taxiData.MarkProbeAttempt then
-            APR.taxiData:MarkProbeAttempt(guidance.fromNodeID, guidance.toNodeID, guidance.contextKey)
-        end
-        APR.taxiData:ObserveTaxiMap(nodes)
-        if not APR.routeValidationPending and not APR.routeValidationFailed
-            and step and (step.UseFlightPath or step.kind == "taxi") then
-            local current, target = flight.CurrentTaxiNode.nodeID, flight.StepTaxiNode.nodeID
-            if not generated and current and current == target then
-                if not step.ZoneStepTrigger or (not UnitOnTaxi("player") and APR:IsZoneStepTriggerReached(step.ZoneStepTrigger)) then
-                    APR:NextQuestStep()
-                end
-            elseif target and not IsModifierKeyDown() and APR.settings.profile.autoFlight then
-                local affordable, slot = APR.taxiData:CanTake(target)
-                if affordable then
-                    if generated then APR.navigation.dirty = false; guidance.departureSeen = true end
-                    TakeTaxiNode(slot)
-                elseif generated then APR.navigation:ForceRefresh(); APR.navigation:RequestUpdate() end
+        elseif event == "PLAYER_CONTROL_LOST" then
+            -- Most losses of control have no taxi departure work. Do not allocate
+            -- a context, timer and diagnostic callback for those unrelated events.
+            if not step or not (step.ETA or (not generated and step.UseFlightPath and not step.ZoneStepTrigger)) then
+                return
             end
+            local context = APR:CaptureStepContext()
+            C_Timer.After(
+                2, --[[APR_DIAG]]
+                APRTrace("APR-Core/features/navigation/FlightPath.lua:63:callback#2", --[[/APR_DIAG]] function()
+                    if not APR.settings.profile.enableAddon then return end
+                    if APR.routeValidationPending or APR.routeValidationFailed then return end
+                    if not UnitOnTaxi("player") or not APR:IsStepContextCurrent(context) then return end
+                    if step and step.ETA then APR.AFK:SetAfkTimer(step.ETA) end
+                    if not generated and step and step.UseFlightPath and not step.ZoneStepTrigger then
+                        APR:UpdateNextStep()
+                    end
+                end--[[APR_DIAG]]) --[[/APR_DIAG]]
+            )
         end
-        if APR.event and APR.event.QueueStepRefresh then APR.event:QueueStepRefresh() end
-        if APR.questOrderList then APR.questOrderList:DelayedUpdate(true) end
-    elseif event == "PLAYER_CONTROL_LOST" then
-        -- Most losses of control have no taxi departure work. Do not allocate
-        -- a context, timer and diagnostic callback for those unrelated events.
-        if not step or not (step.ETA or (not generated and step.UseFlightPath and not step.ZoneStepTrigger)) then return end
-        local context = APR:CaptureStepContext()
-        C_Timer.After(2, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/FlightPath.lua:63:callback#2", --[[/APR_DIAG]]function()
-            if not APR.settings.profile.enableAddon then return end
-            if APR.routeValidationPending or APR.routeValidationFailed then return end
-            if not UnitOnTaxi("player") or not APR:IsStepContextCurrent(context) then return end
-            if step and step.ETA then APR.AFK:SetAfkTimer(step.ETA) end
-            if not generated and step and step.UseFlightPath and not step.ZoneStepTrigger then APR:UpdateNextStep() end
-        end--[[APR_DIAG]])--[[/APR_DIAG]])
-    end
-end--[[APR_DIAG]])--[[/APR_DIAG]])
+    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+)

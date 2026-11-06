@@ -12,26 +12,40 @@ local positions = data.positions
 local graph = {}
 data.zoneGraph = graph
 for _ = 1, 20 do
-    for _, event in ipairs({ "QUEST_LOG_UPDATE", "BAG_UPDATE_DELAYED", "CURRENCY_DISPLAY_UPDATE", "GOSSIP_SHOW", "GOSSIP_CLOSED" }) do
+    for _, event in ipairs({
+        "QUEST_LOG_UPDATE",
+        "BAG_UPDATE_DELAYED",
+        "CURRENCY_DISPLAY_UPDATE",
+        "GOSSIP_SHOW",
+        "GOSSIP_CLOSED",
+    }) do
         adapter.frame.OnEvent(adapter.frame, event)
     end
 end
-assert(refreshes >= 100 and data.zoneGraph == graph and data.positions == positions
-    and data:ResolvePosition(definition, {}) == first,
-    "Character/UI events must refresh navigation without discarding static geometry")
+assert(
+    refreshes >= 100
+        and data.zoneGraph == graph
+        and data.positions == positions
+        and data:ResolvePosition(definition, {}) == first,
+    "Character/UI events must refresh navigation without discarding static geometry"
+)
 
 local completed = false
 C_QuestLog.IsQuestFlaggedCompleted = function() return completed end
 assert(data:CheckRequirements({ quest = 1 }, {}) == false)
 completed = true
 adapter.frame.OnEvent(adapter.frame, "QUEST_TURNED_IN", 1)
-assert(data:CheckRequirements({ quest = 1 }, {}) == true and data.zoneGraph == graph,
-    "Current server quest flags remain authoritative while geometry is reused")
+assert(
+    data:CheckRequirements({ quest = 1 }, {}) == true and data.zoneGraph == graph,
+    "Current server quest flags remain authoritative while geometry is reused"
+)
 
 art = 101
 adapter.frame.OnEvent(adapter.frame, "QUEST_TURNED_IN", 1)
-assert(data.zoneGraph == nil and data.positions ~= positions,
-    "An actual map-art change invalidates the zone index and normalized endpoints")
+assert(
+    data.zoneGraph == nil and data.positions ~= positions,
+    "An actual map-art change invalidates the zone index and normalized endpoints"
+)
 local phased = assert(data:ResolvePosition(definition, {}))
 data.zoneGraph = graph
 adapter.frame.OnEvent(adapter.frame, "QUEST_LOG_UPDATE")
@@ -45,4 +59,6 @@ adapter.frame.OnEvent(adapter.frame, "QUEST_LOG_UPDATE")
 assert(data.zoneGraph == graph, "Unreadable map art does not make every UI event a world reload")
 adapter.frame.OnEvent(adapter.frame, "NEIGHBORHOOD_MAP_DATA_UPDATED")
 assert(data.zoneGraph == nil)
-print("Adapter geometry cache: 100 character/UI events retain static topology; fresh quest flags, real phase changes and unavailable-art recovery passed")
+print(
+    "Adapter geometry cache: 100 character/UI events retain static topology; fresh quest flags, real phase changes and unavailable-art recovery passed"
+)

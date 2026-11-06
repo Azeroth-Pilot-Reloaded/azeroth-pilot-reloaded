@@ -9,12 +9,15 @@ function APR:GetPlayerParentMapID() return map end
 function APR:CheckRouteChanges() end
 C_Map = { GetBestMapForUnit = function() return map end }
 C_QuestLog = { IsQuestFlaggedCompleted = function(id) return quests[id] or false end }
-C_SpecializationInfo = { GetSpecialization = function() return 1 end,
-    GetSpecializationInfo = function() return spec end }
+C_SpecializationInfo =
+    { GetSpecialization = function() return 1 end, GetSpecializationInfo = function() return spec end }
 local function starter(key, race, zone)
-    local data = env.route(key, "Invented " .. key, { Faction = "Horde", Race = race },
-        { [kind.StartingZone] = 1, [kind.Leveling] = 1, [kind.Dungeons] = 1,
-            [kind.Speedrun] = { index = 1, conditions = { SkipForLvl = 12 } } }, APR.CATEGORIES.Leveling)
+    local data = env.route(key, "Invented " .. key, { Faction = "Horde", Race = race }, {
+        [kind.StartingZone] = 1,
+        [kind.Leveling] = 1,
+        [kind.Dungeons] = 1,
+        [kind.Speedrun] = { index = 1, conditions = { SkipForLvl = 12 } },
+    }, APR.CATEGORIES.Leveling)
     data.mapID = zone
     return data
 end
@@ -26,9 +29,14 @@ assert(foreign.conditions == original and original.Race == "Orc", "Entry policy 
 foreign.steps[1].Race = "Orc"
 foreign.parallelSteps = { { conditions = { Race = "Orc" }, steps = { { Note = "Invented optional action" } } } }
 assert(not APR:AreConditionalFiltersMet(foreign.steps[1]))
-assert(not APR:AreConditionalFiltersMet(foreign.parallelSteps[1].conditions), "Step and parallel race filters remain strict")
+assert(
+    not APR:AreConditionalFiltersMet(foreign.parallelSteps[1].conditions),
+    "Step and parallel race filters remain strict"
+)
 for _, conditions in ipairs({
-    { Faction = "Alliance", Race = "Orc" }, { Race = "Orc" }, { Faction = "Neutral", Race = "Orc" },
+    { Faction = "Alliance", Race = "Orc" },
+    { Race = "Orc" },
+    { Faction = "Neutral", Race = "Orc" },
     { Race = "Orc", AnyOf = { { Faction = "Horde" }, { Faction = "Alliance" } } },
     { Race = "Orc", AnyOf = { { Faction = "Horde" }, { Class = "DRUID" } } },
     { Race = "Orc", Not = { Faction = "Alliance" } },
@@ -42,11 +50,22 @@ for _, conditions in ipairs({
     { Faction = "Horde", Race = "Orc", Not = { AllOf = { { Race = "Tauren" }, { Class = "DRUID" } } } },
 }) do
     foreign.conditions = conditions
-    assert(not APR:CanStartRoute("a-foreign"), "An entry exception cannot bypass a missing/ambiguous faction or a non-racial gate")
+    assert(
+        not APR:CanStartRoute("a-foreign"),
+        "An entry exception cannot bypass a missing/ambiguous faction or a non-racial gate"
+    )
 end
-local nested = { AllOf = { { Not = { Not = { Faction = "Horde" } } },
-    { AnyOf = { { Race = "Orc", Class = "DRUID", IsQuestCompleted = 107 },
-        { Faction = "Alliance", Race = "Human" } } } } }
+local nested = {
+    AllOf = {
+        { Not = { Not = { Faction = "Horde" } } },
+        {
+            AnyOf = {
+                { Race = "Orc", Class = "DRUID", IsQuestCompleted = 107 },
+                { Faction = "Alliance", Race = "Human" },
+            },
+        },
+    },
+}
 foreign.conditions = nested
 assert(not APR:CanStartRoute("a-foreign"))
 quests[107] = true
@@ -69,15 +88,19 @@ APR.Level = 1.5
 assert(APR:CanStartRoute("a-foreign"), "Starter entry retains fractional level boundaries")
 foreign.conditions.MinLevel, APR.Level = nil, 1
 env.gameVersion = APR.GAME_VERSIONS.Retail
-assert(APR:GetRouteSelectionConditions("a-foreign", foreign, true) == original,
-    "Retail cannot project even directly supplied Forever metadata")
+assert(
+    APR:GetRouteSelectionConditions("a-foreign", foreign, true) == original,
+    "Retail cannot project even directly supplied Forever metadata"
+)
 local retail = starter("retail", "Orc", 81)
 retail.gameVersion, retail.expansion = APR.GAME_VERSIONS.Retail, APR.EXPANSIONS.Vanilla
 assert(not APR:CanStartRoute("retail") and APR:GetRouteVisibility("retail") == "hidden")
 env.gameVersion = APR.GAME_VERSIONS.Forever
 local chapter = env.route("ordinary", "Ordinary invented chapter", { Race = "Orc", Class = "MAGE" })
-assert(APR:GetRouteSelectionConditions("ordinary", chapter, true) == chapter.conditions,
-    "Non-starter recommendation policy stays unchanged")
+assert(
+    APR:GetRouteSelectionConditions("ordinary", chapter, true) == chapter.conditions,
+    "Non-starter recommendation policy stays unchanged"
+)
 
 local function reset()
     APR.RouteQuestStepList, APRData.player, APRCustomPath.player, APRZoneCompleted.player = {}, {}, {}, {}
@@ -86,16 +109,23 @@ local function reset()
     local native = starter("z-natural", "Tauren", 82)
     starter("b-unadopted", "Scourge", 83)
     for _, key in ipairs({ "a-foreign", "z-natural", "b-unadopted" }) do
-        local finish = env.route(key .. "-finish", "Invented finish " .. key, { Faction = "Horde", MinLevel = 20 },
-            { [kind.Leveling] = 2, [kind.Dungeons] = 2, [kind.Speedrun] = { index = 2, endLevel = 60 } }, APR.CATEGORIES.Leveling)
+        local finish = env.route(
+            key .. "-finish",
+            "Invented finish " .. key,
+            { Faction = "Horde", MinLevel = 20 },
+            { [kind.Leveling] = 2, [kind.Dungeons] = 2, [kind.Speedrun] = { index = 2, endLevel = 60 } },
+            APR.CATEGORIES.Leveling
+        )
         finish.requiredRoute = key
         APR.RouteQuestStepList[key].nextRoute = { key .. "-finish" }
     end
     return native
 end
 local function expect(first)
-    assert(#APRCustomPath.player == 2 and APRCustomPath.player[1] == APR.RouteQuestStepList[first].label,
-        "Choose one coherent starting branch: " .. first)
+    assert(
+        #APRCustomPath.player == 2 and APRCustomPath.player[1] == APR.RouteQuestStepList[first].label,
+        "Choose one coherent starting branch: " .. first
+    )
     assert(APRCustomPath.player[2] == APR.RouteQuestStepList[first .. "-finish"].label)
     assert(APRData.player.RouteChoices[APRCustomPath.player[1]] == first, "Persist the exact starter")
 end
@@ -106,20 +136,26 @@ local builders = {
 }
 for _, build in ipairs(builders) do
     local native = reset()
-    assert(build()); expect("z-natural")
+    assert(build())
+    expect("z-natural")
     APRCustomPath.player, APRData.player = {}, {}
     map = 81
-    assert(build()); expect("a-foreign")
+    assert(build())
+    expect("a-foreign")
     -- A completion receipt alone must not outweigh the newly adopted map.
     APRCustomPath.player, APRData.player = {}, {}
     APRZoneCompleted.player[native.label] = true
-    assert(build()); expect("a-foreign")
+    assert(build())
+    expect("a-foreign")
     map, APRData.player["a-foreign"], APR.ActiveRoute = 99, 2, "a-foreign"
-    assert(build()); expect("a-foreign")
+    assert(build())
+    expect("a-foreign")
     assert(APRData.player["a-foreign"] == 2, "Resuming cannot reset progress")
     APR.ActiveRoute = nil
-    assert(APR:GetRouteKeyFromDisplayName(foreign.label) == "a-foreign" and APR:ActivateRoute("a-foreign"),
-        "A saved same-faction starter remains activatable after reload away from its map")
+    assert(
+        APR:GetRouteKeyFromDisplayName(foreign.label) == "a-foreign" and APR:ActivateRoute("a-foreign"),
+        "A saved same-faction starter remains activatable after reload away from its map"
+    )
     APR.ActiveRoute, APR.Level = nil, 20
     assert(not APR:CanStartRoute("a-foreign-finish"), "Planning cannot fabricate prerequisite completion")
     APRZoneCompleted.player[foreign.label] = true
@@ -133,12 +169,16 @@ reset()
 map = 81
 assert(APR:AddRouteToCustomPathByKey("a-foreign"))
 map = 99
-assert(APR.routeconfig:BuildLevelingPrefab(APR.EXPANSIONS.Forever)); expect("a-foreign")
+assert(APR.routeconfig:BuildLevelingPrefab(APR.EXPANSIONS.Forever))
+expect("a-foreign")
 reset()
 map = 81
 foreign.autoStartOnMap, APR.Level = true, 15
 APR.routeconfig:GetStartingZonePrefab()
-assert(#APRCustomPath.player == 1 and APRCustomPath.player[1] == foreign.label, "Map auto-start accepts the adopted same-faction starter")
+assert(
+    #APRCustomPath.player == 1 and APRCustomPath.player[1] == foreign.label,
+    "Map auto-start accepts the adopted same-faction starter"
+)
 APRCustomPath.player, APRData.player = {}, {}
 foreign.conditions.Class = "MAGE"
 APR.routeconfig:GetStartingZonePrefab()
@@ -149,16 +189,30 @@ APR.ClassName, APR.ClassId, map = "MAGE", 8, 81
 local mageKey, laterKey = "Forever-MageAoE-fixture-adopted", "Forever-MageAoE-fixture-later"
 local mage = starter(mageKey, "Orc", 81)
 mage.conditions.Class, mage.nextRoute = "MAGE", { laterKey }
-env.route(laterKey, "Invented mage continuation", { Faction = "Horde", Class = "MAGE", MinLevel = 12 },
-    { [kind.Leveling] = 2 }, APR.CATEGORIES.Leveling)
+env.route(
+    laterKey,
+    "Invented mage continuation",
+    { Faction = "Horde", Class = "MAGE", MinLevel = 12 },
+    { [kind.Leveling] = 2 },
+    APR.CATEGORIES.Leveling
+)
 assert(APR.routeconfig:BuildLevelingPrefab(APR.EXPANSIONS.Forever, "forever_mage_aoe"))
-assert(#APRCustomPath.player == 2 and APRCustomPath.player[1] == mage.label
-    and APRCustomPath.player[2] == "Invented mage continuation", "Explicit AoE scope keeps the adopted Mage branch")
+assert(
+    #APRCustomPath.player == 2
+        and APRCustomPath.player[1] == mage.label
+        and APRCustomPath.player[2] == "Invented mage continuation",
+    "Explicit AoE scope keeps the adopted Mage branch"
+)
 local path, choices = APRCustomPath.player, APRData.player.RouteChoices
 APR.ClassName, APR.ClassId = "DRUID", 11
 assert(not APR.routeconfig:BuildLevelingPrefab(APR.EXPANSIONS.Forever, "forever_mage_aoe"))
-assert(APRCustomPath.player == path and APRData.player.RouteChoices == choices, "A stale class choice cannot erase the existing plan")
+assert(
+    APRCustomPath.player == path and APRData.player.RouteChoices == choices,
+    "A stale class choice cannot erase the existing plan"
+)
 APR.ClassName, APR.ClassId, APR.Faction = "MAGE", 8, "Alliance"
 assert(not APR.routeconfig:BuildLevelingPrefab(APR.EXPANSIONS.Forever, "forever_mage_aoe"))
 assert(APRCustomPath.player == path and APRData.player.RouteChoices == choices)
-print("Forever starters: race-only entry, faction proof, nested gates, steps, map/natural roots, plans and reload passed")
+print(
+    "Forever starters: race-only entry, faction proof, nested gates, steps, map/natural roots, plans and reload passed"
+)

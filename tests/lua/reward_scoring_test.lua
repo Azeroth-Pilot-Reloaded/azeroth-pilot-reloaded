@@ -11,7 +11,12 @@ C_SpecializationInfo = {
     GetSpecializationInfo = function() return 900, "Fixture spec", nil, nil, role, primaryStat end,
 }
 CanDualWield = function() return dual end
-C_SpellBook = { IsSpellKnown = function(id) assert(id == 46917); return titan end }
+C_SpellBook = {
+    IsSpellKnown = function(id)
+        assert(id == 46917)
+        return titan
+    end,
+}
 GetInventoryItemLink = function(_, slot) return inventory[slot] end
 GetInventoryItemID = function(_, slot)
     local item = items[inventory[slot]]
@@ -22,8 +27,19 @@ C_Item = {
     GetItemInfo = function(link)
         local item = items[link]
         if not item or item.missingInfo then return nil end
-        return "Synthetic item", link, 2, 20, item.requiredLevel or 0, "", "", 1,
-            item.loc, 0, 1, item.classID or 4, item.subclassID or 0
+        return "Synthetic item",
+            link,
+            2,
+            20,
+            item.requiredLevel or 0,
+            "",
+            "",
+            1,
+            item.loc,
+            0,
+            1,
+            item.classID or 4,
+            item.subclassID or 0
     end,
     GetItemStats = function(link)
         seenStats[#seenStats + 1] = link
@@ -50,16 +66,27 @@ local function item(loc, value, options)
     items[link], byID[options.id] = options, options
     return link
 end
-local external = { score = function(link)
-    local data = items[link]
-    if not data or data.missingScore then return nil, false end
-    if data.excluded then return nil, true end
-    return data.value, true
-end }
+local external = {
+    score = function(link)
+        local data = items[link]
+        if not data or data.missingScore then return nil, false end
+        if data.excluded then return nil, true end
+        return data.value, true
+    end,
+}
 local function expect(link, expected, ready, scale)
     local gain, actualReady = APR.RewardScoring:GetUpgrade(link, scale or external)
-    assert(gain == expected and actualReady == ready,
-        "Expected " .. tostring(expected) .. "," .. tostring(ready) .. "; got " .. tostring(gain) .. "," .. tostring(actualReady))
+    assert(
+        gain == expected and actualReady == ready,
+        "Expected "
+            .. tostring(expected)
+            .. ","
+            .. tostring(ready)
+            .. "; got "
+            .. tostring(gain)
+            .. ","
+            .. tostring(actualReady)
+    )
 end
 local function reset()
     inventory = {}
@@ -94,7 +121,8 @@ expect(item("INVTYPE_FINGER", 30, { category = 7, maximum = 1 }), 5, true)
 inventory[1] = item("INVTYPE_HEAD", 10, { category = 7, maximum = 1 })
 expect(item("INVTYPE_FINGER", 30, { category = 7, maximum = 1 }), nil, true)
 inventory[1] = nil
-inventory[13], inventory[14] = item("INVTYPE_TRINKET", 4, { category = 8, maximum = 2 }), item("INVTYPE_TRINKET", 7, { category = 8, maximum = 2 })
+inventory[13], inventory[14] =
+    item("INVTYPE_TRINKET", 4, { category = 8, maximum = 2 }), item("INVTYPE_TRINKET", 7, { category = 8, maximum = 2 })
 expect(item("INVTYPE_TRINKET", 10, { category = 8, maximum = 2 }), 6, true)
 inventory[11] = item("INVTYPE_FINGER", 25, { id = 8000, variant = "1", category = -1, maximum = 1 })
 inventory[12] = item("INVTYPE_FINGER", 2)
@@ -141,11 +169,13 @@ expect(item("INVTYPE_WEAPONMAINHAND", 90), -10, true)
 
 -- Uniqueness still sees the retained item after it changes hands.
 dual = true
-inventory[16], inventory[17] = item("INVTYPE_WEAPON", 100, { category = 51, maximum = 1 }), item("INVTYPE_WEAPONOFFHAND", 50)
+inventory[16], inventory[17] =
+    item("INVTYPE_WEAPON", 100, { category = 51, maximum = 1 }), item("INVTYPE_WEAPONOFFHAND", 50)
 expect(item("INVTYPE_WEAPONMAINHAND", 90, { category = 51, maximum = 1 }), -10, true)
 inventory[16], inventory[17] = item("INVTYPE_WEAPON", 50), item("INVTYPE_WEAPON", 100, { category = 52, maximum = 1 })
 expect(item("INVTYPE_WEAPONOFFHAND", 70, { category = 52, maximum = 1 }), -30, true)
-inventory[16], inventory[17] = item("INVTYPE_WEAPON", 100), item("INVTYPE_WEAPONOFFHAND", 50, { category = 53, maximum = 1 })
+inventory[16], inventory[17] =
+    item("INVTYPE_WEAPON", 100), item("INVTYPE_WEAPONOFFHAND", 50, { category = 53, maximum = 1 })
 expect(item("INVTYPE_WEAPONMAINHAND", 90, { category = 53, maximum = 1 }), 40, true)
 
 -- The discarded hand's missing score cannot be mistaken for an empty baseline.
@@ -156,7 +186,8 @@ expect(item("INVTYPE_WEAPONMAINHAND", 90), 40, true)
 
 -- Learned Titan's Grip supports both hands, but it never turns a staff into a one-hander.
 dual, titan = true, true
-inventory[16], inventory[17] = item("INVTYPE_2HWEAPON", 100, { subclassID = 1 }), item("INVTYPE_2HWEAPON", 90, { subclassID = 1 })
+inventory[16], inventory[17] =
+    item("INVTYPE_2HWEAPON", 100, { subclassID = 1 }), item("INVTYPE_2HWEAPON", 90, { subclassID = 1 })
 expect(item("INVTYPE_2HWEAPON", 110, { subclassID = 1 }), 20, true)
 expect(item("INVTYPE_2HWEAPON", 110, { subclassID = 10 }), -80, true)
 expect(item("INVTYPE_SHIELD", 200), nil, true)
@@ -164,19 +195,24 @@ expect(item("INVTYPE_HOLDABLE", 200), nil, true)
 expect(item("INVTYPE_WEAPONMAINHAND", 110), 20, true)
 inventory[16], inventory[17] = item("INVTYPE_WEAPON", 1000, { category = 9, maximum = 1 }), item("INVTYPE_SHIELD", 10)
 expect(item("INVTYPE_2HWEAPON", 150, { subclassID = 1, category = 9, maximum = 1 }), -860, true)
-inventory[16], inventory[17] = item("INVTYPE_2HWEAPON", 100, { subclassID = 1 }), item("INVTYPE_2HWEAPON", 90, { subclassID = 1 })
+inventory[16], inventory[17] =
+    item("INVTYPE_2HWEAPON", 100, { subclassID = 1 }), item("INVTYPE_2HWEAPON", 90, { subclassID = 1 })
 C_SpellBook.IsSpellKnown = function() return false end
 IsPlayerSpell = function() error("A present modern result is authoritative") end
 expect(item("INVTYPE_2HWEAPON", 150), -40, true)
 C_SpellBook.IsSpellKnown = nil
-IsPlayerSpell = function(id) assert(id == 46917); return true end
+IsPlayerSpell = function(id)
+    assert(id == 46917)
+    return true
+end
 expect(item("INVTYPE_2HWEAPON", 110, { subclassID = 1 }), 20, true)
 IsPlayerSpell = nil
 C_SpellBook.IsSpellKnown = function() return titan end
 
 -- The ranged slot exists on Forever. Retail bows replace both hands; wands preserve the offhand.
 reset()
-inventory[16], inventory[17], inventory[18] = item("INVTYPE_WEAPON", 20), item("INVTYPE_HOLDABLE", 15), item("INVTYPE_RANGED", 10)
+inventory[16], inventory[17], inventory[18] =
+    item("INVTYPE_WEAPON", 20), item("INVTYPE_HOLDABLE", 15), item("INVTYPE_RANGED", 10)
 local bow = item("INVTYPE_RANGED", 30, { subclassID = 2 })
 expect(bow, -5, true)
 expect(item("INVTYPE_RANGEDRIGHT", 30, { subclassID = 19 }), 10, true)
@@ -212,7 +248,8 @@ scale = scoring:GetDefaultScale()
 assert(scale.primaryStat == "Intellect" and scale.weights.Intellect > 0 and scale.weights.WeaponDPS == 0)
 assert(scoring:GetProfileDescription() == "Fixture class - Fixture spec")
 local intellect = item("INVTYPE_HEAD", 0, { stats = { ITEM_MOD_INTELLECT_SHORT = 8 } })
-local hybrid = item("INVTYPE_HEAD", 0, { stats = { ITEM_MOD_INTELLECT_SHORT = 8, ITEM_MOD_AGILITY_OR_INTELLECT_SHORT = 8 } })
+local hybrid =
+    item("INVTYPE_HEAD", 0, { stats = { ITEM_MOD_INTELLECT_SHORT = 8, ITEM_MOD_AGILITY_OR_INTELLECT_SHORT = 8 } })
 assert(scale.score(intellect) == scale.score(hybrid), "Native and hybrid representations must count once")
 local versatility = item("INVTYPE_HEAD", 0, { stats = { ITEM_MOD_VERSATILITY = 8 } })
 local aliases = item("INVTYPE_HEAD", 0, { stats = { ITEM_MOD_VERSATILITY = 8, ITEM_MOD_VERSATILITY_RATING_SHORT = 8 } })
@@ -236,7 +273,10 @@ expect(head, nil, false)
 C_PlayerInfo.CanUseItem = originalCanUse
 expect(head, 30, true)
 C_PlayerInfo.CanUseItem = nil
-C_Item.IsUsableItem = function(link) assert(link == head); return true end
+C_Item.IsUsableItem = function(link)
+    assert(link == head)
+    return true
+end
 expect(head, 30, true)
 C_Item.IsUsableItem = function() return false end
 expect(head, nil, true)
@@ -253,7 +293,9 @@ local gain, ready = scoring:GetUpgrade(head, { score = function() return math.hu
 assert(gain == nil and ready == false)
 local originalLink, originalID = GetInventoryItemLink, GetInventoryItemID
 GetInventoryItemLink = function() return nil end
-GetInventoryItemID = function(_, slot) if slot == 1 then return 55 end end
+GetInventoryItemID = function(_, slot)
+    if slot == 1 then return 55 end
+end
 expect(head, nil, false)
 GetInventoryItemLink, GetInventoryItemID = originalLink, originalID
 local secret = {}

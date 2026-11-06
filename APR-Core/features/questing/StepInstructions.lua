@@ -11,7 +11,8 @@ local handlers = APR.stepHandlers
 
 local function ActionTextScope(scope, action)
     if APR.currentStep.SetActionTextScope then APR.currentStep:SetActionTextScope(scope, action) end
-end--[[APR_DIAG]]; ActionTextScope = APRTrace("APR-Core/features/questing/StepInstructions.lua:12:ActionTextScope#1", ActionTextScope)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+ActionTextScope = APRTrace("APR-Core/features/questing/StepInstructions.lua:12:ActionTextScope#1", ActionTextScope)--[[/APR_DIAG]]
 
 function handlers.GroupQuestPopup()
     local step = APR:GetCurrentStep()
@@ -24,23 +25,28 @@ function handlers.GroupQuestPopup()
         local sugestGroupNumber = step.Group.Number
         local dialogText = string.format(L["OPTIONAL_SUGGESTED_PLAYERS"], sugestGroupNumber)
 
-        APR.questionDialog:CreateQuestionPopup(dialogText,
+        APR.questionDialog:CreateQuestionPopup(
             dialogText,
-            --[[APR_DIAG]]APRTrace("APR-Core/features/questing/StepInstructions.lua:29:callback#3", --[[/APR_DIAG]]function()
+            dialogText,
+            --[[APR_DIAG]]
+            APRTrace("APR-Core/features/questing/StepInstructions.lua:29:callback#3", --[[/APR_DIAG]] function()
                 if not APR:IsStepContextCurrent(context) then return end
                 APRData[APR.PlayerID].WantedQuestList[questId] = 1
                 APR:UpdateNextStep()
-            end--[[APR_DIAG]])--[[/APR_DIAG]],
-            --[[APR_DIAG]]APRTrace("APR-Core/features/questing/StepInstructions.lua:34:callback#4", --[[/APR_DIAG]]function()
+            end--[[APR_DIAG]]) --[[/APR_DIAG]],
+            --[[APR_DIAG]]
+            APRTrace("APR-Core/features/questing/StepInstructions.lua:34:callback#4", --[[/APR_DIAG]] function()
                 if not APR:IsStepContextCurrent(context) then return end
                 APRData[APR.PlayerID].WantedQuestList[questId] = 0
                 APR:UpdateNextStep()
-            end--[[APR_DIAG]])--[[/APR_DIAG]]
+            end--[[APR_DIAG]]) --[[/APR_DIAG]]
         )
     else
         APR:UpdateNextStep()
     end
-end--[[APR_DIAG]]; handlers.GroupQuestPopup = APRTrace("APR-Core/features/questing/StepInstructions.lua:16:handlers.GroupQuestPopup#2", handlers.GroupQuestPopup)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+handlers.GroupQuestPopup =
+    APRTrace("APR-Core/features/questing/StepInstructions.lua:16:handlers.GroupQuestPopup#2", handlers.GroupQuestPopup)--[[/APR_DIAG]]
 
 local extraLineQuests = {
     [13544] = { itemID = 44886, description = "KILL_FLEETFOOT", count = 1 },
@@ -56,14 +62,20 @@ local extraLineRequirements = {
 local function HandleSingleItemRequirement(questID, requirement)
     local itemCount = C_Item.GetItemCount(requirement.itemID)
     if itemCount < requirement.count then
-        APR.currentStep:AddQuestSteps(questID,
+        APR.currentStep:AddQuestSteps(
+            questID,
             L[requirement.description] .. " (" .. itemCount .. "/" .. requirement.count .. ")",
-            requirement.itemID)
+            requirement.itemID
+        )
         return false
     end
     APR:NextQuestStep()
     return true
-end--[[APR_DIAG]]; HandleSingleItemRequirement = APRTrace("APR-Core/features/questing/StepInstructions.lua:56:HandleSingleItemRequirement#5", HandleSingleItemRequirement)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+HandleSingleItemRequirement = APRTrace(
+    "APR-Core/features/questing/StepInstructions.lua:56:HandleSingleItemRequirement#5",
+    HandleSingleItemRequirement
+)--[[/APR_DIAG]]
 
 -- This helper centralises the handling of ExtraLine quest hints so future special cases stay readable.
 -- Returning true means the helper triggered a step transition and the caller should exit early.
@@ -105,14 +117,15 @@ function handlers.HandleExtraLine(extraline)
 
     -- No special ExtraLine handling triggered.
     return false
-end--[[APR_DIAG]]; handlers.HandleExtraLine = APRTrace("APR-Core/features/questing/StepInstructions.lua:70:handlers.HandleExtraLine#6", handlers.HandleExtraLine)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+handlers.HandleExtraLine =
+    APRTrace("APR-Core/features/questing/StepInstructions.lua:70:handlers.HandleExtraLine#6", handlers.HandleExtraLine)--[[/APR_DIAG]]
 
 function APR:SetButton()
     if not (APR.IsInRouteZone or APR.navigation ~= nil) then
         return
     end
     APR:Debug("Function: APR:SetButton()")
-
 
     local step = APR:GetCurrentStep()
     if not step then
@@ -139,7 +152,8 @@ function APR:SetButton()
                             if buttonIndex > 1 then rowID = rowID .. "_" .. buttonIndex end
                             local info = kind == "spell" and C_Spell.GetSpellInfo(actionID) or nil
                             local name = kind == "item" and C_Item.GetItemInfo(actionID) or (info and info.name)
-                            local label = string.format(L[kind == "item" and "USE_ITEM" or "USE_SPELL"], name or UNKNOWN)
+                            local label =
+                                string.format(L[kind == "item" and "USE_ITEM" or "USE_SPELL"], name or UNKNOWN)
                             currentStep:AddQuestSteps(rowID, label, "Action", false, true)
                             key = rowID .. "-Action"
                         end
@@ -154,7 +168,8 @@ function APR:SetButton()
 
     -- After doing some count to the current step, it updates the current step. So we need to sync the current cooldown
     APR.currentStep:UpdateStepButtonCooldowns()
-end--[[APR_DIAG]]; APR.SetButton = APRTrace("APR-Core/features/questing/StepInstructions.lua:110:APR:SetButton#7", APR.SetButton)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.SetButton = APRTrace("APR-Core/features/questing/StepInstructions.lua:110:APR:SetButton#7", APR.SetButton)--[[/APR_DIAG]]
 
 -- Shared secondary fields are evaluated before the primary route action.
 function handlers.RenderRequirements(step, showStepDetails, currentStepIndex)
@@ -175,18 +190,20 @@ function handlers.RenderRequirements(step, showStepDetails, currentStepIndex)
 
         for _, item in ipairs(step.BuyMerchant) do
             local quantity = APR.GetMerchantPurchaseQuantity and APR:GetMerchantPurchaseQuantity(item)
-                or item.quantity or 1
+                or item.quantity
+                or 1
             if quantity == 0 or (item.questID and C_QuestLog.IsQuestFlaggedCompleted(item.questID)) then
                 flagged = flagged + 1
             else
                 local itemName = C_Item.GetItemInfo(item.itemID)
                 local name = itemName or UNKNOWN
-                APR.currentStep:AddQuestSteps("BUY_ITEM_" .. name,
-                    format(L["BUY_ITEM"], quantity, name), name)
+                APR.currentStep:AddQuestSteps("BUY_ITEM_" .. name, format(L["BUY_ITEM"], quantity, name), name)
             end
         end
-        if flagged == #step.BuyMerchant and not (APR.HasPendingMerchantPurchase
-            and APR:HasPendingMerchantPurchase(step.BuyMerchant)) then
+        if
+            flagged == #step.BuyMerchant
+            and not (APR.HasPendingMerchantPurchase and APR:HasPendingMerchantPurchase(step.BuyMerchant))
+        then
             APR:NextQuestStep()
             return true
         end
@@ -220,38 +237,42 @@ function handlers.RenderRequirements(step, showStepDetails, currentStepIndex)
             APR.currentStep:AddQuestSteps(item.itemID, label, item.itemID)
         end
         if completed == #step.LootItems then
-            APR:NextQuestStep(); return true
+            APR:NextQuestStep()
+            return true
         end
     end
 
     ActionTextScope("secondary")
-    if (step.VehicleExit) then
+    if step.VehicleExit then
         VehicleExit()
     end
 
-    if (step.GroupTask and APRData[APR.PlayerID].WantedQuestList[step.GroupTask] and APRData[APR.PlayerID].WantedQuestList[step.GroupTask] == 0) then
+    if
+        step.GroupTask
+        and APRData[APR.PlayerID].WantedQuestList[step.GroupTask]
+        and APRData[APR.PlayerID].WantedQuestList[step.GroupTask] == 0
+    then
         APR:UpdateNextStep()
         return true
     end
-    if (step.ETA and not step.UseFlightPath and not step.SpecialETAHide) then
-        if (APR.AFK.lastStep ~= currentStepIndex) then
+    if step.ETA and not step.UseFlightPath and not step.SpecialETAHide then
+        if APR.AFK.lastStep ~= currentStepIndex then
             APR.AFK:SetAfkTimer(step.ETA)
             APR.AFK.lastStep = currentStepIndex
         end
     end
-    if (step.SpecialETAHide) then
+    if step.SpecialETAHide then
         APR.AFK:HideFrame()
     end
-    if (step.UseGlider and showStepDetails) then
-        APR.currentStep:AddExtraLineText("USE_ITEM_GLIDER",
-            string.format(L["USE_ITEM"], APR:UseGlider()))
+    if step.UseGlider and showStepDetails then
+        APR.currentStep:AddExtraLineText("USE_ITEM_GLIDER", string.format(L["USE_ITEM"], APR:UseGlider()))
     end
-    if (step.Bloodlust and showStepDetails) then
+    if step.Bloodlust and showStepDetails then
         APR.currentStep:AddExtraLineText("BLOODLUST", L["BLOODLUST"])
     end
-    if (step.InVehicle and not UnitInVehicle("player") and showStepDetails) then
+    if step.InVehicle and not UnitInVehicle("player") and showStepDetails then
         APR.currentStep:AddExtraLineText("MOUNT_HORSE_SCARE_SPIDER", L["MOUNT_HORSE_SCARE_SPIDER"])
-    elseif (step.InVehicle and step.InVehicle == 2 and UnitInVehicle("player") and showStepDetails) then
+    elseif step.InVehicle and step.InVehicle == 2 and UnitInVehicle("player") and showStepDetails then
         APR.currentStep:AddExtraLineText("SCARE_SPIDER_INTO_LUMBERMILL", L["SCARE_SPIDER_INTO_LUMBERMILL"])
     end
 
@@ -263,8 +284,13 @@ function handlers.RenderRequirements(step, showStepDetails, currentStepIndex)
             local hasVisibleObjective = false
             for _, objectiveId in pairs(objectives) do
                 objectiveId = tonumber(objectiveId)
-                if not C_QuestLog.IsQuestFlaggedCompleted(questId) and not APRData[APR.PlayerID].BonusSkips[questId] then
-                    if questData and questData.objectives and questData.objectives[objectiveId]
+                if
+                    not C_QuestLog.IsQuestFlaggedCompleted(questId) and not APRData[APR.PlayerID].BonusSkips[questId]
+                then
+                    if
+                        questData
+                        and questData.objectives
+                        and questData.objectives[objectiveId]
                         and questData.objectives[objectiveId].status ~= APR.QUEST_STATUS.COMPLETE
                         and showStepDetails
                     then
@@ -274,10 +300,17 @@ function handlers.RenderRequirements(step, showStepDetails, currentStepIndex)
                     end
                 end
             end
-            if hasVisibleObjective and type(step.FillerPreviewImages) == "table"
-                and step.FillerPreviewImages[questId] then
+            if
+                hasVisibleObjective
+                and type(step.FillerPreviewImages) == "table"
+                and step.FillerPreviewImages[questId]
+            then
                 APR.currentStepImagePreview:SetPreviewImages(APR.currentStep, step, questId)
             end
         end
     end
-end--[[APR_DIAG]]; handlers.RenderRequirements = APRTrace("APR-Core/features/questing/StepInstructions.lua:160:handlers.RenderRequirements#8", handlers.RenderRequirements)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+handlers.RenderRequirements = APRTrace(
+    "APR-Core/features/questing/StepInstructions.lua:160:handlers.RenderRequirements#8",
+    handlers.RenderRequirements
+)--[[/APR_DIAG]]

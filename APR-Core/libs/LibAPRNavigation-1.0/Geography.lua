@@ -53,8 +53,13 @@ end
 
 function Instance:GetUnmappedInstanceRegion(instanceID)
     instanceID = self:GetWorldInstanceID(instanceID)
-    if Finite(instanceID) and ((self.config.UnmappedInstances and self.config.UnmappedInstances[instanceID])
-        or (self.entranceInstances and self.entranceInstances[instanceID])) then
+    if
+        Finite(instanceID)
+        and (
+            (self.config.UnmappedInstances and self.config.UnmappedInstances[instanceID])
+            or (self.entranceInstances and self.entranceInstances[instanceID])
+        )
+    then
         return tostring(instanceID) .. ":instance:" .. tostring(instanceID) .. ":interior"
     end
 end
@@ -82,8 +87,11 @@ function Instance:NormalizeLocation(location, hint)
         instanceID = self:GetMapWorldInstanceID(mapID)
     elseif not mapID and instanceID ~= nil then
         mapID = self:GetFallbackMapForInstance(instanceID)
-        if not mapID and not (self.config.UnmappedInstances and self.config.UnmappedInstances[instanceID])
-            and self.env.worldToMap then
+        if
+            not mapID
+            and not (self.config.UnmappedInstances and self.config.UnmappedInstances[instanceID])
+            and self.env.worldToMap
+        then
             mapID = self.env.worldToMap(instanceID, x, y, hint)
         end
     end
@@ -96,8 +104,12 @@ function Instance:NormalizeLocation(location, hint)
         y = y,
         z = location.z,
         floor = location.floor,
-        areaID = location.areaID or (self.config.UnmappedAreas and self.config.UnmappedAreas[mapID]
-            and self.config.UnmappedAreas[mapID].areaID),
+        areaID = location.areaID
+            or (
+                self.config.UnmappedAreas
+                and self.config.UnmappedAreas[mapID]
+                and self.config.UnmappedAreas[mapID].areaID
+            ),
         nameGlobal = location.nameGlobal,
         accessKey = location.accessKey,
         noAutoconnect = location.noAutoconnect,
@@ -151,7 +163,11 @@ function Instance:GetPositionRegion(position)
             if isolatedContinents[current] and isolation == nil then
                 isolation = "area:" .. outer
             end
-            region = tostring(instanceID) .. ":" .. tostring(continent or current) .. ":" .. tostring(isolation or "outdoor")
+            region = tostring(instanceID)
+                .. ":"
+                .. tostring(continent or current)
+                .. ":"
+                .. tostring(isolation or "outdoor")
         elseif mapType == 4 or (self.entranceMaps and self.entranceMaps[current]) then
             -- Native interior maps remain isolated even when the host has no
             -- IsInInstance observation (for example an authored destination).
@@ -180,7 +196,9 @@ function Instance:GetPositionRegion(position)
 end
 
 function Instance:IsSameAccessRegion(from, to)
-    if not from or not to or self:GetWorldInstanceID(from.instanceID) ~= self:GetWorldInstanceID(to.instanceID) then return false end
+    if not from or not to or self:GetWorldInstanceID(from.instanceID) ~= self:GetWorldInstanceID(to.instanceID) then
+        return false
+    end
     if from.accessKey ~= to.accessKey or from.floor ~= to.floor then return false end
     local source, target = self:GetPositionRegion(from), self:GetPositionRegion(to)
     return source ~= nil and source == target
@@ -203,11 +221,17 @@ function Instance:GetWalkingSpeed(position, travelSpeed, groundSpeed)
     if groundOnly == nil then
         local current, restrictions = mapID, self.config.GroundOnlyAreas or EMPTY
         for _ = 1, 50 do
-            if restrictions[current] then groundOnly = true; break end
+            if restrictions[current] then
+                groundOnly = true
+                break
+            end
             local info = self:GetMapAncestryInfo(current)
             if not info then return groundSpeed end -- Retry incomplete map data later.
             current = info.parentMapID
-            if not current or current == 0 then groundOnly = false; break end
+            if not current or current == 0 then
+                groundOnly = false
+                break
+            end
         end
         if groundOnly == nil then return groundSpeed end
         self.groundMaps[mapID] = groundOnly
@@ -219,8 +243,15 @@ end
 -- belong to the served cities; this lookup never changes world/access data.
 function Instance:GetTransportDestinationName(kind, position)
     local stops = self.config.TransportDestinations and self.config.TransportDestinations[kind]
-    if not stops or not position or not Finite(position.instanceID)
-        or not Finite(position.x) or not Finite(position.y) then return nil, false end
+    if
+        not stops
+        or not position
+        or not Finite(position.instanceID)
+        or not Finite(position.x)
+        or not Finite(position.y)
+    then
+        return nil, false
+    end
     local world, matched, interior = self:GetWorldInstanceID(position.instanceID), nil, false
     for _, stop in ipairs(stops) do
         if world == self:GetWorldInstanceID(stop.instanceID) then
@@ -240,7 +271,10 @@ end
 function Instance:GetDisplayMapName(position)
     -- Some interiors have a client GlobalString but no separate UI map.
     -- Keep only its key in the catalogue and fall back to area/map names.
-    local name = position and position.nameGlobal and self.env.getGlobalText and self.env.getGlobalText(position.nameGlobal)
+    local name = position
+        and position.nameGlobal
+        and self.env.getGlobalText
+        and self.env.getGlobalText(position.nameGlobal)
     if type(name) == "string" and name ~= "" then return name end
     name = position and position.areaID and self.env.getAreaName and self.env.getAreaName(position.areaID)
     if type(name) == "string" and name ~= "" then return name end

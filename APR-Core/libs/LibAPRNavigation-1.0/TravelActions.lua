@@ -27,8 +27,16 @@ function Instance:GetHousingExitAction(start, goal)
     if self:GetActionUsability("housing_return") ~= true then return nil end
     local destination = self.env.getDynamicPosition and self.env.getDynamicPosition("housing_exit")
     if destination and self:IsHousingLocation(destination) ~= false then destination = nil end
-    return { kind = "housing_return", action = { type = "housing_return" }, from = start, to = destination,
-        sourceFree = true, mandatory = true, exitHousing = true, label = self:GetText("EXIT_HOUSING") }
+    return {
+        kind = "housing_return",
+        action = { type = "housing_return" },
+        from = start,
+        to = destination,
+        sourceFree = true,
+        mandatory = true,
+        exitHousing = true,
+        label = self:GetText("EXIT_HOUSING"),
+    }
 end
 
 local function Action(definition)
@@ -63,7 +71,10 @@ end
 
 local function AddTravelAction(index, key, definition)
     local entries = index.keys[key]
-    if not entries then entries = {}; index.keys[key] = entries end
+    if not entries then
+        entries = {}
+        index.keys[key] = entries
+    end
     entries[#entries + 1] = definition
 end
 
@@ -90,8 +101,13 @@ function Instance:IsTravelActionSpell(key, spellID, selectedItemID)
         for _, option in ipairs(definition.actions or EMPTY) do
             local effect = option.type == "spell" and option.id or option.useSpellID
             if effect == spellID then return true end
-            if option.type == "item" and (key ~= "UseHS" or option.id == selectedItemID)
-                and self:GetActionSpellID(option.type, option.id) == spellID then return true end
+            if
+                option.type == "item"
+                and (key ~= "UseHS" or option.id == selectedItemID)
+                and self:GetActionSpellID(option.type, option.id) == spellID
+            then
+                return true
+            end
         end
     end
     return false

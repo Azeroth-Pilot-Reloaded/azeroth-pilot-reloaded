@@ -7,7 +7,7 @@ for _, profile in ipairs({ "forever", "retail" }) do
         bindings = {
             [101] = { space = "world", instanceID = 0, uiMapID = 2395, x = 20, y = 30 },
             firstInn = { areaID = 202, space = "map", uiMapID = 2395, x = 0.35, y = 0.45 },
-        }
+        },
     })
     local adapter = APR.NavigationAdapter
     local reads = {}
@@ -22,12 +22,17 @@ for _, profile in ipairs({ "forever", "retail" }) do
     assert(lookup:Step(1) == "planning")
     local calls = (reads[101] or 0) + (reads[202] or 0)
     assert(calls == 1, "The operation budget includes named candidates")
-    while lookup:Step(1) == "planning" do end
+    while lookup:Step(1) == "planning" do
+    end
     local position = assert(data:GetBindPosition())
-    assert(position.x == 3500 and position.y == 4500 and position.uiMapID == 2395,
-        "Explicit area IDs resolve localized inn names and normalize map coordinates")
+    assert(
+        position.x == 3500 and position.y == 4500 and position.uiMapID == 2395,
+        "Explicit area IDs resolve localized inn names and normalize map coordinates"
+    )
     assert(reads[101] == 1 and reads[202] == 1)
-    for _ = 1, 10 do assert(data:GetBindPosition().x == 3500) end
+    for _ = 1, 10 do
+        assert(data:GetBindPosition().x == 3500)
+    end
     assert(reads[202] == 1, "Hearth variants reuse the resolved catalogue")
 
     fixture.bindName = "Ancienne auberge"

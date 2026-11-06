@@ -28,8 +28,11 @@ local serial = 0
 local function start(itemID, slot)
     serial = serial + 1
     local route = "equipment-contract-" .. serial
-    APR.RouteQuestStepList[route] = { label = "Synthetic equipment", mapID = 10,
-        steps = { { EquipItem = { itemID = itemID, slot = slot } }, { Note = "Equipment confirmed" } } }
+    APR.RouteQuestStepList[route] = {
+        label = "Synthetic equipment",
+        mapID = 10,
+        steps = { { EquipItem = { itemID = itemID, slot = slot } }, { Note = "Equipment confirmed" } },
+    }
     APRData.player[route] = 1
     APRCustomPath.player[#APRCustomPath.player + 1] = route
     assert(APR:ActivateRoute(route, "equipment_test"))
@@ -48,10 +51,15 @@ local function buttonFor(itemID, slot)
     local row = APR.currentStep.questsList["EquipItem-EquipItem"]
     assert(row and row.objectiveText:find("Item " .. itemID, 1, true), "Equipment instruction must name its item")
     local button = row.IconButton
-    assert(button and button.itemID == itemID and button.equipSlot == slot, "Current row must bind the requested item and slot")
+    assert(
+        button and button.itemID == itemID and button.equipSlot == slot,
+        "Current row must bind the requested item and slot"
+    )
     assert(button.attributes.type1 == "macro", "Equipment uses a secure hardware action")
-    assert(button.attributes.macrotext == "/equipslot [nocombat] " .. slot .. " item:" .. itemID,
-        "The secure action must equip the requested item in the requested slot outside combat")
+    assert(
+        button.attributes.macrotext == "/equipslot [nocombat] " .. slot .. " item:" .. itemID,
+        "The secure action must equip the requested item in the requested slot outside combat"
+    )
     return button
 end
 

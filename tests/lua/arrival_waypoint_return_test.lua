@@ -3,7 +3,8 @@ local advances, map, px, py, timer = 0, 1457, 0, 0, nil
 APR = {
     stepHandlers = {},
     settings = { profile = { enableAddon = true } },
-    PlayerID = "player", ActiveRoute = "fixture",
+    PlayerID = "player",
+    ActiveRoute = "fixture",
     NextQuestStep = function() advances = advances + 1 end,
     AdvanceStep = function() advances = advances + 1 end,
     Debug = function() end,
@@ -12,10 +13,17 @@ APR = {
     GetPlayerParentMapID = function() return map end,
 }
 APRData = { player = { fixture = 1 } }
-function LibStub() return { GetLocale = function() return {} end } end
+function LibStub()
+    return { GetLocale = function() return {} end }
+end
 C_QuestLog = { IsQuestFlaggedCompleted = function(id) return id == 10 end }
 C_Map = { GetBestMapForUnit = function() return map end }
-C_Timer = { NewTimer = function(_, callback) timer = callback; return { Cancel = function() end } end }
+C_Timer = {
+    NewTimer = function(_, callback)
+        timer = callback
+        return { Cancel = function() end }
+    end,
+}
 function UnitIsDeadOrGhost() return false end
 function UnitPosition() return py, px end
 dofile("APR-Core/utils/StepUtils.lua")

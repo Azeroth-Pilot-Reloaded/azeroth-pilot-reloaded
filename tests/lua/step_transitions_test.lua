@@ -42,12 +42,16 @@ APR.RouteQuestStepList.route = { { Note = "replacement" } }
 assert(not APR:CanUndoManualSkip(), "An import cannot undo into a previous definition")
 APR:ActivateRoute("other")
 assert(not APR:CanUndoManualSkip())
-for index = 2, 100 do APR:SetRouteProgress("other", index) end
+for index = 2, 100 do
+    APR:SetRouteProgress("other", index)
+end
 local history = APR:GetRecentTransitions()
 assert(#history == 40 and history[1].to == 100 and history[40].to == 61)
 
 -- Optional-group dialogs capture their original route and step.
-function LibStub() return { GetLocale = function() return { OPTIONAL_SUGGESTED_PLAYERS = "%d players" } end } end
+function LibStub()
+    return { GetLocale = function() return { OPTIONAL_SUGGESTED_PLAYERS = "%d players" } end }
+end
 C_QuestLog = { IsQuestFlaggedCompleted = function() return false end }
 APR.GetCurrentStep = function() return { Group = { questID = 10, Number = 3 } } end
 APRData.player.WantedQuestList = {}
@@ -67,21 +71,27 @@ function APR:StepFilterQuestHandler() return false end
 function APR:UpdateQuestAndStep() self:UpdateStep() end
 APR:SetRouteProgress("route", 1)
 assert(APR:CommitManualSkip(3))
-assert(APR:PreviousQuestStep() and APRData.player.route == 1,
-    "Rollback must undo the whole manual skip, not just return one step")
+assert(
+    APR:PreviousQuestStep() and APRData.player.route == 1,
+    "Rollback must undo the whole manual skip, not just return one step"
+)
 APR:SetRouteProgress("route", 3)
-assert(APR:PreviousQuestStep() and APRData.player.route == 2,
-    "Without a valid skip, rollback keeps its normal previous-step behavior")
+assert(
+    APR:PreviousQuestStep() and APRData.player.route == 2,
+    "Without a valid skip, rollback keeps its normal previous-step behavior"
+)
 assert(APR:PreviousQuestStep() and APRData.player.route == 1)
 assert(not APR:PreviousQuestStep() and APRData.player.route == 1)
 
 -- External waypoint ownership follows active route identity, independently of
 -- whether the caller refreshes the presentation immediately.
 local waypointReleases = 0
-APR.NavigationData = { ReleaseWaypoints = function(self)
-    assert(self == APR.NavigationData)
-    waypointReleases = waypointReleases + 1
-end }
+APR.NavigationData = {
+    ReleaseWaypoints = function(self)
+        assert(self == APR.NavigationData)
+        waypointReleases = waypointReleases + 1
+    end,
+}
 assert(APR:SetRouteProgress("route", 2, "waypoint_test"))
 assert(waypointReleases == 1, "Changing the authored step releases its external waypoint")
 assert(not APR:SetRouteProgress("route", 2, "waypoint_test"))
@@ -93,6 +103,8 @@ assert(waypointReleases == 2, "Switching routes releases ownership even when the
 assert(APR:ActivateRoute(nil))
 assert(waypointReleases == 3, "Removing the active route releases its external waypoint")
 APR.NavigationData = nil
-assert(APR:ActivateRoute("route") and APR:SetRouteProgress("route", 3, "waypoint_test"),
-    "Route and step transitions remain safe when the optional integration is absent")
+assert(
+    APR:ActivateRoute("route") and APR:SetRouteProgress("route", 3, "waypoint_test"),
+    "Route and step transitions remain safe when the optional integration is absent"
+)
 print("Transitions: context guards, rollback undo/fallback, expiry, bounded history and stale dialogs passed")

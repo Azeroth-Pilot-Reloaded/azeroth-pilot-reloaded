@@ -16,14 +16,22 @@ for _, profile in ipairs({ "retail", "forever" }) do
         { instanceID = 73, x = 0, y = 0, radius = 100, mapID = 83101 },
         { instanceID = 73, x = 0, y = 2000, radius = 100, mapID = 83102 },
     }
-    local data = f:Load({ config = {
-        UnmappedAreas = { [83001] = { instanceID = 73, areaID = 84001 } },
-        TransportDestinations = { tram = stops },
-    }, connections = {
-        { id = "invented-tram", kind = "tram", bidirectional = true, seconds = 30,
-            from = { instanceID = 73, uiMapID = 83001, x = 0, y = 2000 },
-            to = { instanceID = 73, uiMapID = 83001, x = 0, y = 0 } },
-    } })
+    local data = f:Load({
+        config = {
+            UnmappedAreas = { [83001] = { instanceID = 73, areaID = 84001 } },
+            TransportDestinations = { tram = stops },
+        },
+        connections = {
+            {
+                id = "invented-tram",
+                kind = "tram",
+                bidirectional = true,
+                seconds = 30,
+                from = { instanceID = 73, uiMapID = 83001, x = 0, y = 2000 },
+                to = { instanceID = 73, uiMapID = 83001, x = 0, y = 0 },
+            },
+        },
+    })
     local library = LibStub("LibAPRNavigation-1.0")
     library.locales.enUS.ENTER_TRAM = "Ride towards %s"
     library.locales.enUS.RUN_WAYPOINT = "Follow the marker"
@@ -31,30 +39,44 @@ for _, profile in ipairs({ "retail", "forever" }) do
     APR.Debug = function() end
     dofile("APR-Core/utils/NavigationZones.lua")
     dofile("APR-Core/utils/StepUtils.lua")
-    local step = { Tram = true, Zone = 83102,
-        ZoneStepTrigger = { mapID = 83001, x = 10, y = 90, Range = 20 } }
+    local step = { Tram = true, Zone = 83102, ZoneStepTrigger = { mapID = 83001, x = 10, y = 90, Range = 20 } }
     local text, kind = APR:GetTransportStepText(step)
-    assert(text == "Ride towards Terminal Alpha" and kind == "Tram",
-        "An authored journey names its arrival city before entering a mapless tram")
+    assert(
+        text == "Ride towards Terminal Alpha" and kind == "Tram",
+        "An authored journey names its arrival city before entering a mapless tram"
+    )
     local target = data:NormalizeLocation({ uiMapID = 83001, x = 90, y = 10 })
-    assert(data:GetInstruction("tram", nil, target) == "Ride towards Terminal Alpha",
-        "Temporary navigation uses the same arrival city as the authored journey")
-    assert(target.uiMapID == 83001 and target.instanceID == 73 and target.x == 90 and target.y == 10,
-        "A display destination cannot replace the interior's real location")
+    assert(
+        data:GetInstruction("tram", nil, target) == "Ride towards Terminal Alpha",
+        "Temporary navigation uses the same arrival city as the authored journey"
+    )
+    assert(
+        target.uiMapID == 83001 and target.instanceID == 73 and target.x == 90 and target.y == 10,
+        "A display destination cannot replace the interior's real location"
+    )
 
     f.player, f.currentMap = { instanceID = 73, x = 0, y = 2000 }, 83001
-    assert(APR:GetTransportStepText(step) == "Ride towards Terminal Alpha",
-        "Entering at the departure platform cannot reverse the displayed destination")
+    assert(
+        APR:GetTransportStepText(step) == "Ride towards Terminal Alpha",
+        "Entering at the departure platform cannot reverse the displayed destination"
+    )
     step.ZoneStepTrigger.x, step.ZoneStepTrigger.y = 1990, 10
-    assert(APR:GetTransportStepText(step) == "Ride towards Terminal Beta",
-        "The reverse journey names the opposite city inside the same map")
+    assert(
+        APR:GetTransportStepText(step) == "Ride towards Terminal Beta",
+        "The reverse journey names the opposite city inside the same map"
+    )
     local edges = data:BuildEdges({ start = target, walkSpeed = 7 })
-    assert(#edges == 2 and edges[1].instruction == "Ride towards Terminal Alpha"
-        and edges[2].instruction == "Ride towards Terminal Beta",
-        "Both directions of a declared transport resolve their own instructions")
+    assert(
+        #edges == 2
+            and edges[1].instruction == "Ride towards Terminal Alpha"
+            and edges[2].instruction == "Ride towards Terminal Beta",
+        "Both directions of a declared transport resolve their own instructions"
+    )
 
-    assert(data:GetTransportDestinationName("tram", { instanceID = 73, x = 100, y = 0 }) == "Terminal Alpha",
-        "A stop includes the exact radius boundary")
+    assert(
+        data:GetTransportDestinationName("tram", { instanceID = 73, x = 100, y = 0 }) == "Terminal Alpha",
+        "A stop includes the exact radius boundary"
+    )
     local name, interior = data:GetTransportDestinationName("tram", { instanceID = 73, x = 101, y = 0 })
     assert(name == nil and interior, "Nearby coordinates beyond a stop cannot guess a city")
     name, interior = data:GetTransportDestinationName("tram", { instanceID = 74, x = 0, y = 0 })
@@ -67,16 +89,24 @@ for _, profile in ipairs({ "retail", "forever" }) do
     assert(APR:GetTransportStepText(step) == "Board the tram")
     assert(data:GetInstruction("tram", nil, target) == "Follow the marker")
     names[83101] = "Terminal Alpha"
-    assert(APR:GetTransportStepText(step) == "Ride towards Terminal Alpha",
-        "Late client names recover without a cache reset")
+    assert(
+        APR:GetTransportStepText(step) == "Ride towards Terminal Alpha",
+        "Late client names recover without a cache reset"
+    )
     local declarations = data:GetConfig().TransportDestinations.tram
     declarations[#declarations + 1] = { instanceID = 73, x = 0, y = 0, radius = 100, mapID = 83102 }
-    assert(data:GetInstruction("tram", nil, target) == "Follow the marker",
-        "Conflicting stop declarations cannot arbitrarily choose a city")
+    assert(
+        data:GetInstruction("tram", nil, target) == "Follow the marker",
+        "Conflicting stop declarations cannot arbitrarily choose a city"
+    )
     declarations[#declarations] = nil
 
     APR.NavigationData = nil
-    assert(APR:GetTransportStepText(step) == "Board the tram",
-        "A missing provider leaves a generic tram instruction without an Unknown suffix")
+    assert(
+        APR:GetTransportStepText(step) == "Board the tram",
+        "A missing provider leaves a generic tram instruction without an Unknown suffix"
+    )
 end
-print("Transport labels: both terminal cities, shared interiors, authored/library parity, boundaries and late names passed")
+print(
+    "Transport labels: both terminal cities, shared interiors, authored/library parity, boundaries and late names passed"
+)

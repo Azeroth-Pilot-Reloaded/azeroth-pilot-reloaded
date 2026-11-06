@@ -6,7 +6,9 @@ local function noop() end
 local function copy(value)
     if type(value) ~= "table" then return value end
     local result = {}
-    for key, entry in pairs(value) do result[key] = copy(entry) end
+    for key, entry in pairs(value) do
+        result[key] = copy(entry)
+    end
     return result
 end
 
@@ -64,8 +66,12 @@ local function fixture(saved)
     }
 
     local function schedule(delay, callback)
-        local timer = { callback = callback, due = state.wallMs + delay * 1000,
-            earliestFrame = state.frameNumber + 1, Cancel = function(self) self.cancelled = true end }
+        local timer = {
+            callback = callback,
+            due = state.wallMs + delay * 1000,
+            earliestFrame = state.frameNumber + 1,
+            Cancel = function(self) self.cancelled = true end,
+        }
         state.timers[#state.timers + 1] = timer
         return timer
     end
@@ -76,12 +82,23 @@ local function fixture(saved)
     APR.version = "synthetic-current"
     APR.settings.profile.lastRecordedVersion = saved and saved.version or "synthetic-previous"
     APR.RouteQuestStepList = {
-        small = { label = "First invented guide", mapID = 10, expansion = APR.EXPANSIONS.Custom,
-            steps = { { Note = "Previously visited" }, { PickUp = { 8101 }, Zone = 10 }, { Note = "Next" } } },
-        alternate = { label = "Second invented guide", mapID = 10, expansion = APR.EXPANSIONS.Custom,
-            steps = { { Note = "Previously visited" }, { PickUp = { 8102 }, Zone = 10 }, { Note = "Next" } } },
-        history = { label = "Inactive invented history", mapID = 10,
-            steps = { { Note = string.rep("x", 184320) } } },
+        small = {
+            label = "First invented guide",
+            mapID = 10,
+            expansion = APR.EXPANSIONS.Custom,
+            steps = { { Note = "Previously visited" }, { PickUp = { 8101 }, Zone = 10 }, { Note = "Next" } },
+        },
+        alternate = {
+            label = "Second invented guide",
+            mapID = 10,
+            expansion = APR.EXPANSIONS.Custom,
+            steps = { { Note = "Previously visited" }, { PickUp = { 8102 }, Zone = 10 }, { Note = "Next" } },
+        },
+        history = {
+            label = "Inactive invented history",
+            mapID = 10,
+            steps = { { Note = string.rep("x", 184320) } },
+        },
     }
     if saved then
         APRData, APRCustomPath, APRZoneCompleted = copy(saved.data), copy(saved.path), copy(saved.completed)
@@ -100,18 +117,29 @@ local function fixture(saved)
 
     local function useful(route, questID)
         local row = APR.currentStep.questsList.PickUp
-        if not row or row.stale or row.hiddenInCombat or row.font:GetText() ~= "Pick up"
-            or not row.detailFonts or not row.detailFonts[1]
-            or not row.detailFonts[1]:GetText():find("Quest " .. questID, 1, true) then return false end
+        if
+            not row
+            or row.stale
+            or row.hiddenInCombat
+            or row.font:GetText() ~= "Pick up"
+            or not row.detailFonts
+            or not row.detailFonts[1]
+            or not row.detailFonts[1]:GetText():find("Quest " .. questID, 1, true)
+        then
+            return false
+        end
         local parent = row
         while parent do
             if not parent:IsShown() then return false end
             parent = parent:GetParent()
         end
         local context = APR.lastRenderedStepContext
-        return context and context.route == route and context.index == 2
+        return context
+            and context.route == route
+            and context.index == 2
             and context.definition == APR.RouteQuestStepList[route]
-            and APRData.player[route] == 2 and APR:IsStepContextCurrent(context)
+            and APRData.player[route] == 2
+            and APR:IsStepContextCurrent(context)
     end
     local finish = APR.currentStep.EndContentUpdate
     function APR.currentStep:EndContentUpdate(success)
@@ -129,7 +157,9 @@ local function fixture(saved)
             if not timer.cancelled then
                 if timer.earliestFrame <= self.frameNumber and timer.due <= self.wallMs + 0.000001 then
                     timer.callback()
-                else self.timers[#self.timers + 1] = timer end
+                else
+                    self.timers[#self.timers + 1] = timer
+                end
             end
         end
         local cpu = self.clock - before
@@ -151,14 +181,26 @@ local function fixture(saved)
             self:Frame()
         end
         local painted = self.paints[route]
-        assert(painted and painted - started <= DEADLINE_MS + 0.000001,
-            string.format("The correct playable %s guide must paint within 100 ms, not wait for historical routes (elapsed %.2f ms)",
-                route, self.wallMs - started))
-        assert(not APR.routeValidationPending and not APR.routeValidationFailed,
-            "A painted guide must also release foreground actions")
-        assert(not APR.startupQuestStatePending,
-            "The real native login snapshot must be observed before declaring startup gameplay ready")
-        assert(useful(route, route == "small" and 8101 or 8102), "The painted objective must retain its expected progress/token")
+        assert(
+            painted and painted - started <= DEADLINE_MS + 0.000001,
+            string.format(
+                "The correct playable %s guide must paint within 100 ms, not wait for historical routes (elapsed %.2f ms)",
+                route,
+                self.wallMs - started
+            )
+        )
+        assert(
+            not APR.routeValidationPending and not APR.routeValidationFailed,
+            "A painted guide must also release foreground actions"
+        )
+        assert(
+            not APR.startupQuestStatePending,
+            "The real native login snapshot must be observed before declaring startup gameplay ready"
+        )
+        assert(
+            useful(route, route == "small" and 8101 or 8102),
+            "The painted objective must retain its expected progress/token"
+        )
         return painted - started
     end
     for _, frame in ipairs(eventFrames) do
@@ -176,22 +218,35 @@ for _, mode in ipairs({ "login", "reload" }) do
         C_Timer.NewTimer(0, function() state.loginFrame.scripts.OnEvent(state.loginFrame, "PLAYER_LOGIN") end)
     end
     local firstMs = state:AwaitUseful("small", 0)
-    assert(APR.event.routeMaintenanceJob and APRData.player.history == 1,
-        "Large inactive history must still be in the background when the guide becomes usable")
+    assert(
+        APR.event.routeMaintenanceJob and APRData.player.history == 1,
+        "Large inactive history must still be in the background when the guide becomes usable"
+    )
     if mode == "login" then
-        savedForReload = { data = copy(APRData), path = copy(APRCustomPath), completed = copy(APRZoneCompleted),
-            version = APR.settings.profile.lastRecordedVersion }
-        assert(savedForReload.version == "synthetic-previous", "Foreground readiness must not certify the entire history")
+        savedForReload = {
+            data = copy(APRData),
+            path = copy(APRCustomPath),
+            completed = copy(APRZoneCompleted),
+            version = APR.settings.profile.lastRecordedVersion,
+        }
+        assert(
+            savedForReload.version == "synthetic-previous",
+            "Foreground readiness must not certify the entire history"
+        )
     end
 
     local current = APR:CaptureStepContext()
-    assert(APR:AdvanceStep(false, current) and APRData.player.small == 3,
-        "A ready guide must accept a real progression action while history is still running")
+    assert(
+        APR:AdvanceStep(false, current) and APRData.player.small == 3,
+        "A ready guide must accept a real progression action while history is still running"
+    )
     local switchedAt = state.wallMs
     APRCustomPath.player = { "Second invented guide" }
     assert(APR:ActivateRoute("alternate", "manual"))
-    assert(not APR:TransitionStep(3, "automatic", false, APR:CaptureStepContext()) and APRData.player.alternate == 2,
-        "The newly selected guide's actions must wait for its own validation")
+    assert(
+        not APR:TransitionStep(3, "automatic", false, APR:CaptureStepContext()) and APRData.player.alternate == 2,
+        "The newly selected guide's actions must wait for its own validation"
+    )
     APR:UpdateQuestAndStep()
     local switchMs = state:AwaitUseful("alternate", switchedAt)
     assert(APR.event.routeMaintenanceJob, "Selecting a small guide must not wait for the inactive history")
@@ -204,11 +259,23 @@ for _, mode in ipairs({ "login", "reload" }) do
         frames = frames + 1
         assert(frames < 2000, "Background maintenance and cancelled startup callbacks must eventually settle")
     end
-    assert(APR.ActiveRoute == "alternate" and APRData.player.small == 3 and APRData.player.alternate == 3,
-        "Background validation must not reset either validated guide's live progression")
-    assert(APRData.player.history == nil,
-        "Deferring history must still eventually repair its independently incompatible saved progress")
+    assert(
+        APR.ActiveRoute == "alternate" and APRData.player.small == 3 and APRData.player.alternate == 3,
+        "Background validation must not reset either validated guide's live progression"
+    )
+    assert(
+        APRData.player.history == nil,
+        "Deferring history must still eventually repair its independently incompatible saved progress"
+    )
     assert(not APR.routeValidationPending and not APR.routeValidationFailed)
-    print(string.format("Startup %s at 60 FPS: useful guide %.2f ms, manual selection %.2f ms; background %.2f ms, largest CPU frame %.2f ms",
-        mode, firstMs, switchMs, state.wallMs, state.maximumFrameCpu))
+    print(
+        string.format(
+            "Startup %s at 60 FPS: useful guide %.2f ms, manual selection %.2f ms; background %.2f ms, largest CPU frame %.2f ms",
+            mode,
+            firstMs,
+            switchMs,
+            state.wallMs,
+            state.maximumFrameCpu
+        )
+    )
 end

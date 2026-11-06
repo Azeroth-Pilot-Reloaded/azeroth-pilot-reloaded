@@ -10,7 +10,9 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 function APR:GetCharacterSettings()
     local database = self.settings and self.settings.db
     return database and database.char
-end--[[APR_DIAG]]; APR.GetCharacterSettings = APRTrace("APR-Core/utils/ProfileUtils.lua:10:APR:GetCharacterSettings#1", APR.GetCharacterSettings)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetCharacterSettings =
+    APRTrace("APR-Core/utils/ProfileUtils.lua:10:APR:GetCharacterSettings#1", APR.GetCharacterSettings)--[[/APR_DIAG]]
 
 --- Get the effective heirloom warning value for the current character.
 -- Checks character-specific override first, then falls back to profile setting.
@@ -24,7 +26,8 @@ function APR:GetHeirloomWarning()
         return character.showHeirloomWarning
     end
     return APR.settings.profile.heirloomWarning
-end--[[APR_DIAG]]; APR.GetHeirloomWarning = APRTrace("APR-Core/utils/ProfileUtils.lua:18:APR:GetHeirloomWarning#2", APR.GetHeirloomWarning)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetHeirloomWarning = APRTrace("APR-Core/utils/ProfileUtils.lua:18:APR:GetHeirloomWarning#2", APR.GetHeirloomWarning)--[[/APR_DIAG]]
 
 --- Set the heirloom warning value for the current character.
 -- Sets at character level to override the shared profile value.
@@ -35,7 +38,8 @@ function APR:SetHeirloomWarning(value)
     if character then
         character.showHeirloomWarning = value
     end
-end--[[APR_DIAG]]; APR.SetHeirloomWarning = APRTrace("APR-Core/utils/ProfileUtils.lua:32:APR:SetHeirloomWarning#3", APR.SetHeirloomWarning)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.SetHeirloomWarning = APRTrace("APR-Core/utils/ProfileUtils.lua:32:APR:SetHeirloomWarning#3", APR.SetHeirloomWarning)--[[/APR_DIAG]]
 
 --- Get whether route suggestion popup is disabled for this character.
 -- @return boolean - true to disable route suggestion popup, false to show it
@@ -45,7 +49,9 @@ function APR:GetRouteSuggestionDontAsk()
         return character.routeSuggestionDontAsk
     end
     return false
-end--[[APR_DIAG]]; APR.GetRouteSuggestionDontAsk = APRTrace("APR-Core/utils/ProfileUtils.lua:42:APR:GetRouteSuggestionDontAsk#4", APR.GetRouteSuggestionDontAsk)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetRouteSuggestionDontAsk =
+    APRTrace("APR-Core/utils/ProfileUtils.lua:42:APR:GetRouteSuggestionDontAsk#4", APR.GetRouteSuggestionDontAsk)--[[/APR_DIAG]]
 
 --- Set whether route suggestion popup is disabled for this character.
 -- @param value boolean
@@ -54,32 +60,43 @@ function APR:SetRouteSuggestionDontAsk(value)
     if character then
         character.routeSuggestionDontAsk = value and true or false
     end
-end--[[APR_DIAG]]; APR.SetRouteSuggestionDontAsk = APRTrace("APR-Core/utils/ProfileUtils.lua:52:APR:SetRouteSuggestionDontAsk#5", APR.SetRouteSuggestionDontAsk)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.SetRouteSuggestionDontAsk =
+    APRTrace("APR-Core/utils/ProfileUtils.lua:52:APR:SetRouteSuggestionDontAsk#5", APR.SetRouteSuggestionDontAsk)--[[/APR_DIAG]]
 
 -- Reset character-to-profile assignments while retaining the saved Default profile
 -- and character-only preferences; routes/progress live in separate SavedVariables.
 --- @return nil
 function APR:ResetAllProfilesToDefault()
     local L = LibStub("AceLocale-3.0"):GetLocale("APR")
-    return self:RequestReload(--[[APR_DIAG]]APRTrace("APR-Core/utils/ProfileUtils.lua:64:callback#7", --[[/APR_DIAG]]function()
-        local saved = APRSettings or {}
-        local database = self.settings and self.settings.db
-        local globalCopy = APR:DeepCopyTable(saved.global or (database and database.sv and database.sv.global)
-            or (database and database.global) or {})
-        local charCopy = APR:DeepCopyTable(saved.char or (database and database.sv and database.sv.char) or {})
-        local defaultProfileCopy = APR:DeepCopyTable(
-            (saved.profiles and saved.profiles.Default) or
-            (database and database.sv and database.sv.profiles and database.sv.profiles.Default) or
-            {}
-        )
+    return self:RequestReload(--[[APR_DIAG]]
+        APRTrace("APR-Core/utils/ProfileUtils.lua:64:callback#7", --[[/APR_DIAG]] function()
+            local saved = APRSettings or {}
+            local database = self.settings and self.settings.db
+            local globalCopy = APR:DeepCopyTable(
+                saved.global
+                    or (database and database.sv and database.sv.global)
+                    or (database and database.global)
+                    or {}
+            )
+            local charCopy = APR:DeepCopyTable(saved.char or (database and database.sv and database.sv.char) or {})
+            local defaultProfileCopy = APR:DeepCopyTable(
+                (saved.profiles and saved.profiles.Default)
+                    or (database and database.sv and database.sv.profiles and database.sv.profiles.Default)
+                    or {}
+            )
 
-        APRSettings = {
-            global = globalCopy,
-            char = charCopy,
-            profileKeys = {},
-            profiles = {
-                Default = defaultProfileCopy,
-            },
-        }
-    end--[[APR_DIAG]])--[[/APR_DIAG]], (L["RESET_ALL_PROFILES_CONFIRM_TEXT"] or "") .. "\n\n" .. L["UI_RELOAD_CONFIRM"])
-end--[[APR_DIAG]]; APR.ResetAllProfilesToDefault = APRTrace("APR-Core/utils/ProfileUtils.lua:62:APR:ResetAllProfilesToDefault#6", APR.ResetAllProfilesToDefault)--[[/APR_DIAG]]
+            APRSettings = {
+                global = globalCopy,
+                char = charCopy,
+                profileKeys = {},
+                profiles = {
+                    Default = defaultProfileCopy,
+                },
+            }
+        end--[[APR_DIAG]]) --[[/APR_DIAG]],
+        (L["RESET_ALL_PROFILES_CONFIRM_TEXT"] or "") .. "\n\n" .. L["UI_RELOAD_CONFIRM"]
+    )
+end--[[APR_DIAG]]
+APR.ResetAllProfilesToDefault =
+    APRTrace("APR-Core/utils/ProfileUtils.lua:62:APR:ResetAllProfilesToDefault#6", APR.ResetAllProfilesToDefault)--[[/APR_DIAG]]

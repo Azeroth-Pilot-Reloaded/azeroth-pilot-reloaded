@@ -43,23 +43,30 @@ for _, profile in ipairs({ "retail", "forever" }) do
     APR.currentStep = { questsList = rows, pendingRemoval = {}, questsExtraTextList = {} }
     function APR.currentStep:AddQuestSteps(key, text, id) rows[key .. "-" .. id] = { text = text } end
     function APR.currentStep:FlushPendingContainers()
-        for key in pairs(self.pendingRemoval) do rows[key] = nil end
+        for key in pairs(self.pendingRemoval) do
+            rows[key] = nil
+        end
         self.pendingRemoval = {}
     end
-    C_Timer = { NewTimer = function(_, callback)
-        return { callback = callback, Cancel = noop }
-    end }
+    C_Timer = {
+        NewTimer = function(_, callback)
+            return { callback = callback, Cancel = noop }
+        end,
+    }
     dofile("APR-Core/features/questing/StepTransitions.lua")
     local plans = 0
-    APR.NavigationPlanner = { Create = function()
-        plans = plans + 1
-        error("Positionless instructions must not invent a travel destination")
-    end }
+    APR.NavigationPlanner = {
+        Create = function()
+            plans = plans + 1
+            error("Positionless instructions must not invent a travel destination")
+        end,
+    }
     dofile("APR-Core/features/navigation/Navigation.lua")
     local nav = APR.navigation
     local function update()
         APR:InvalidatePlayerZoneCache(false)
-        nav:ForceRefresh(); nav:Update()
+        nav:ForceRefresh()
+        nav:Update()
     end
     local function ready()
         assert(nav:GetState() == "ready" and APR.IsInRouteZone and not nav.search and not nav:IsNavigating())
@@ -67,28 +74,38 @@ for _, profile in ipairs({ "retail", "forever" }) do
         assert(APRData.player[APR.ActiveRoute] == 1, "Zone readiness never completes an authored instruction")
     end
 
-    nav:Update(); ready()
+    nav:Update()
+    ready()
     assert(APR:GetContinent() == 0, "A missing continent cannot invalidate an explicit current-map match")
-    for _ = 1, 10 do nav:Update() end
+    for _ = 1, 10 do
+        nav:Update()
+    end
     ready()
 
     -- Available world coordinates do not change positionless zone selection.
     f.player = { x = 20, y = 30, z = 0, instanceID = 73 }
-    update(); ready()
+    update()
+    ready()
     f.player = {}
     f.currentMap = 82004 -- A micro map inside one declared zone.
-    update(); ready()
+    update()
+    ready()
 
     f.currentMap = 82005
     update()
-    assert(nav:GetState() == "waiting_data" and not APR.IsInRouteZone and next(rows),
-        "An unrelated map cannot satisfy a positionless instruction")
+    assert(
+        nav:GetState() == "waiting_data" and not APR.IsInRouteZone and next(rows),
+        "An unrelated map cannot satisfy a positionless instruction"
+    )
     f.currentMap = nil
     update()
-    assert(nav:GetState() == "waiting_data" and not APR.IsInRouteZone,
-        "Missing native map identity must remain pending")
+    assert(
+        nav:GetState() == "waiting_data" and not APR.IsInRouteZone,
+        "Missing native map identity must remain pending"
+    )
     f.currentMap = 82002
-    update(); ready()
+    update()
+    ready()
 
     -- A real coordinate target still needs its world data, even with a valid start.
     f.player = { x = 20, y = 30, z = 0, instanceID = 73 }
@@ -101,16 +118,21 @@ for _, profile in ipairs({ "retail", "forever" }) do
     step.Coord = nil
     scenarioRequired = true
     update()
-    assert(nav:GetState() == "waiting_data" and not APR.IsInRouteZone,
-        "A local zone match cannot bypass a required scenario entrance")
+    assert(
+        nav:GetState() == "waiting_data" and not APR.IsInRouteZone,
+        "A local zone match cannot bypass a required scenario entrance"
+    )
     scenarioRequired = false
-    update(); ready()
+    update()
+    ready()
 
     -- A single Zone and the route fallback follow the same map-only rule.
     step.Zones, step.Zone = nil, 82002
-    update(); ready()
+    update()
+    ready()
     step.Zone, f.currentMap = nil, 82001
-    update(); ready()
+    update()
+    ready()
     assert(data.profile == profile)
 end
 print("Positionless navigation: declared maps, missing positions, parent zones, recovery and entrance guards passed")

@@ -20,7 +20,8 @@ local function ShouldSkipCutscene(step)
         return false
     end
     return true
-end--[[APR_DIAG]]; ShouldSkipCutscene = APRTrace("APR-Core/features/player/Cutscenes.lua:11:ShouldSkipCutscene#1", ShouldSkipCutscene)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+ShouldSkipCutscene = APRTrace("APR-Core/features/player/Cutscenes.lua:11:ShouldSkipCutscene#1", ShouldSkipCutscene)--[[/APR_DIAG]]
 
 local function CancelCurrentMovie(movieFrame)
     -- Every start takes ownership, even when its modifier/settings prevent a
@@ -32,13 +33,20 @@ local function CancelCurrentMovie(movieFrame)
     end
 
     -- Defer past Blizzard's setup; recheck settings in case the addon was disabled.
-    C_Timer.After(0, --[[APR_DIAG]]APRTrace("APR-Core/features/player/Cutscenes.lua:35:callback#3", --[[/APR_DIAG]]function()
-        if generation == movieGeneration and (not movieFrame or movieFrame:IsShown())
-            and ShouldSkipCutscene(APR:GetCurrentStep()) then
-            CinematicFinished(Enum.CinematicType.GameMovie, true, false)
-        end
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; CancelCurrentMovie = APRTrace("APR-Core/features/player/Cutscenes.lua:25:CancelCurrentMovie#2", CancelCurrentMovie)--[[/APR_DIAG]]
+    C_Timer.After(
+        0, --[[APR_DIAG]]
+        APRTrace("APR-Core/features/player/Cutscenes.lua:35:callback#3", --[[/APR_DIAG]] function()
+            if
+                generation == movieGeneration
+                and (not movieFrame or movieFrame:IsShown())
+                and ShouldSkipCutscene(APR:GetCurrentStep())
+            then
+                CinematicFinished(Enum.CinematicType.GameMovie, true, false)
+            end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+end--[[APR_DIAG]]
+CancelCurrentMovie = APRTrace("APR-Core/features/player/Cutscenes.lua:25:CancelCurrentMovie#2", CancelCurrentMovie)--[[/APR_DIAG]]
 
 -- Modern clients call the frame method directly from PLAY_MOVIE; the legacy
 -- global only delegates to it. Hook one entry point to avoid duplicate timers.
@@ -48,35 +56,64 @@ else
     hooksecurefunc("MovieFrame_PlayMovie", CancelCurrentMovie)
 end
 if MovieFrame then
-    MovieFrame:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/features/player/Cutscenes.lua:51:callback#4", --[[/APR_DIAG]]function() movieGeneration = movieGeneration + 1 end--[[APR_DIAG]])--[[/APR_DIAG]])
+    MovieFrame:HookScript(
+        "OnHide", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/features/player/Cutscenes.lua:51:callback#4", --[[/APR_DIAG]]
+            function() movieGeneration = movieGeneration + 1 end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
 end
-CinematicFrame:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/features/player/Cutscenes.lua:53:callback#5", --[[/APR_DIAG]]function() cinematicGeneration = cinematicGeneration + 1 end--[[APR_DIAG]])--[[/APR_DIAG]])
+CinematicFrame:HookScript(
+    "OnHide", --[[APR_DIAG]]
+    APRTrace(
+        "APR-Core/features/player/Cutscenes.lua:53:callback#5", --[[/APR_DIAG]]
+        function() cinematicGeneration = cinematicGeneration + 1 end --[[APR_DIAG]]
+    ) --[[/APR_DIAG]]
+)
 
-CinematicFrame:HookScript("OnKeyDown", --[[APR_DIAG]]APRTrace("APR-Core/features/player/Cutscenes.lua:55:callback#6", --[[/APR_DIAG]]function(self, key)
-    if key == "ESCAPE" then
-        if CinematicFrame:IsShown() and CinematicFrame.closeDialog and CinematicFrameCloseDialogConfirmButton then
-            CinematicFrameCloseDialog:Hide()
+CinematicFrame:HookScript(
+    "OnKeyDown", --[[APR_DIAG]]
+    APRTrace("APR-Core/features/player/Cutscenes.lua:55:callback#6", --[[/APR_DIAG]] function(self, key)
+        if key == "ESCAPE" then
+            if CinematicFrame:IsShown() and CinematicFrame.closeDialog and CinematicFrameCloseDialogConfirmButton then
+                CinematicFrameCloseDialog:Hide()
+            end
         end
-    end
-end--[[APR_DIAG]])--[[/APR_DIAG]])
+    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+)
 
-CinematicFrame:HookScript("OnKeyUp", --[[APR_DIAG]]APRTrace("APR-Core/features/player/Cutscenes.lua:63:callback#7", --[[/APR_DIAG]]function(self, key)
-    if key == "SPACE" or key == "ESCAPE" or key == "ENTER" then
-        if CinematicFrame:IsShown() and CinematicFrame.closeDialog and CinematicFrameCloseDialogConfirmButton then
-            CinematicFrameCloseDialogConfirmButton:Click()
+CinematicFrame:HookScript(
+    "OnKeyUp", --[[APR_DIAG]]
+    APRTrace("APR-Core/features/player/Cutscenes.lua:63:callback#7", --[[/APR_DIAG]] function(self, key)
+        if key == "SPACE" or key == "ESCAPE" or key == "ENTER" then
+            if CinematicFrame:IsShown() and CinematicFrame.closeDialog and CinematicFrameCloseDialogConfirmButton then
+                CinematicFrameCloseDialogConfirmButton:Click()
+            end
         end
-    end
-end--[[APR_DIAG]])--[[/APR_DIAG]])
+    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+)
 
 APR.SceneCutterEventFrame = CreateFrame("Frame")
 APR.SceneCutterEventFrame:RegisterEvent("CINEMATIC_START")
-APR.SceneCutterEventFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/player/Cutscenes.lua:73:callback#8", --[[/APR_DIAG]]function(self, event, ...)
-    cinematicGeneration = cinematicGeneration + 1
-    local generation = cinematicGeneration
-    local step = APR:GetCurrentStep()
-    if not ShouldSkipCutscene(step) then return end
-    C_Timer.After(0.5, --[[APR_DIAG]]APRTrace("APR-Core/features/player/Cutscenes.lua:78:callback#9", --[[/APR_DIAG]]function()
-        if generation == cinematicGeneration and CinematicFrame
-            and ShouldSkipCutscene(APR:GetCurrentStep()) then CinematicFrame_CancelCinematic() end
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]])--[[/APR_DIAG]])
+APR.SceneCutterEventFrame:SetScript(
+    "OnEvent", --[[APR_DIAG]]
+    APRTrace("APR-Core/features/player/Cutscenes.lua:73:callback#8", --[[/APR_DIAG]] function(self, event, ...)
+        cinematicGeneration = cinematicGeneration + 1
+        local generation = cinematicGeneration
+        local step = APR:GetCurrentStep()
+        if not ShouldSkipCutscene(step) then return end
+        C_Timer.After(
+            0.5, --[[APR_DIAG]]
+            APRTrace("APR-Core/features/player/Cutscenes.lua:78:callback#9", --[[/APR_DIAG]] function()
+                if
+                    generation == cinematicGeneration
+                    and CinematicFrame
+                    and ShouldSkipCutscene(APR:GetCurrentStep())
+                then
+                    CinematicFrame_CancelCinematic()
+                end
+            end--[[APR_DIAG]]) --[[/APR_DIAG]]
+        )
+    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+)

@@ -58,7 +58,10 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "additional_portals", {
             bidirectional = false,
             from = { space = "map", uiMapID = 2339, x = 0.5247, y = 0.5047 },
             to = { space = "map", uiMapID = 2346, x = 0.2783, y = 0.5402 },
-            requirements = { any = { { questActive = 83137 }, { quest = 83137 }, { questAccount = 83137 }, { achievement = 40900 } }, minLevel = 80 },
+            requirements = {
+                any = { { questActive = 83137 }, { quest = 83137 }, { questAccount = 83137 }, { achievement = 40900 } },
+                minLevel = 80,
+            },
             seconds = 5,
         },
         {
@@ -67,7 +70,10 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "additional_portals", {
             bidirectional = false,
             from = { space = "map", uiMapID = 2346, x = 0.2783, y = 0.5402 },
             to = { space = "map", uiMapID = 2339, x = 0.5247, y = 0.5047 },
-            requirements = { any = { { questActive = 83137 }, { quest = 83137 }, { questAccount = 83137 }, { achievement = 40900 } }, minLevel = 80 },
+            requirements = {
+                any = { { questActive = 83137 }, { quest = 83137 }, { questAccount = 83137 }, { achievement = 40900 } },
+                minLevel = 80,
+            },
             seconds = 5,
         },
         {

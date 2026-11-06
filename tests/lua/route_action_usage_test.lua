@@ -1,9 +1,10 @@
 -- Exercise native use progression and supporting buttons, including questless steps.
 dofile("APR-Core/utils/SecretUtils.lua")
 local function noop() end
-local L = setmetatable({ USE_ITEM = "Use %s", USE_SPELL = "Cast %s" },
-    { __index = function(_, key) return key end })
-function LibStub() return { GetLocale = function() return L end } end
+local L = setmetatable({ USE_ITEM = "Use %s", USE_SPELL = "Cast %s" }, { __index = function(_, key) return key end })
+function LibStub()
+    return { GetLocale = function() return L end }
+end
 
 function UnitIsDeadOrGhost() return false end
 
@@ -20,21 +21,27 @@ C_Timer = {
         local timer = { callback = callback, Cancel = noop }
         timers[#timers + 1] = timer
         return timer
-    end
+    end,
 }
 C_QuestLog = {
     IsQuestFlaggedCompleted = function(id)
-        assert(type(id) == "number"); return id == 99
+        assert(type(id) == "number")
+        return id == 99
     end,
     ReadyForTurnIn = function(id)
-        assert(id ~= nil); return id == 10
+        assert(id ~= nil)
+        return id == 10
     end,
 }
 C_Item = {
     GetItemInfo = function(id) return "Item " .. id end,
     GetItemSpell = function(id) return "Item effect", id + 1000 end,
 }
-C_Spell = { GetSpellInfo = function(id) if id ~= 404 then return { name = "Spell " .. id } end end }
+C_Spell = {
+    GetSpellInfo = function(id)
+        if id ~= 404 then return { name = "Spell " .. id } end
+    end,
+}
 APRData = { player = { route = 1 } }
 APR = {
     PlayerID = "player",
@@ -51,7 +58,7 @@ APR = {
         PrepareRaidIcon = noop,
         SetProgressBar = noop,
         UpdateStepButtonCooldowns = noop,
-        AddExtraLineText = noop
+        AddExtraLineText = noop,
     },
     Buff = { RemoveAllBuffIcon = noop },
     AFK = { HideFrame = noop },
@@ -86,13 +93,16 @@ function APR:HasRouteResourceFilters() return false end
 function APR:NewModule() return {} end
 
 function APR:Contains(values, wanted)
-    for _, value in ipairs(values or {}) do if value == wanted then return true end end
+    for _, value in ipairs(values or {}) do
+        if value == wanted then return true end
+    end
     return false
 end
 
 local buttons = {}
 function APR.currentStep:Reset()
-    self.questsList = {}; buttons = {}
+    self.questsList = {}
+    buttons = {}
 end
 
 function APR.currentStep:AddQuestSteps(id, label, objective, _, noTooltip)
@@ -140,8 +150,10 @@ checkButtons({ SpellButton = { ["spell:200"] = 200 } })
 assert(#buttons == 1 and buttons[1].kind == "spell", "Spell-only maps must not be interpreted as items")
 checkButtons({ Button = { ["11-1"] = 100 }, SpellButton = { ["11-1"] = 200 }, ItemTarget = "player" })
 for _, button in ipairs(buttons) do
-    assert(button.itemTarget == (button.kind == "item" and "player" or nil),
-        "Item targets pass through supporting item buttons without affecting spells")
+    assert(
+        button.itemTarget == (button.kind == "item" and "player" or nil),
+        "Item targets pass through supporting item buttons without affecting spells"
+    )
 end
 checkButtons({ Done = { 10 }, Button = { ["10"] = 100 } })
 assert(#buttons == 1, "An item can be needed to reach a turn-in even when the quest is ready")
@@ -154,8 +166,10 @@ checkButtons({ Button = { ["10-1"] = 100 } })
 assert(#buttons == 0, "Completed quest objectives no longer need their action button")
 
 checkButtons({ SpellButton = { ["5648"] = { 2050, 1243 } } })
-assert(#buttons == 2 and buttons[1].id == 2050 and buttons[2].id == 1243,
-    "Both spells for the same quest must render in list order")
+assert(
+    #buttons == 2 and buttons[1].id == 2050 and buttons[2].id == 1243,
+    "Both spells for the same quest must render in list order"
+)
 assert(buttons[1].key ~= buttons[2].key, "Each spell must own a distinct secure-button row")
 local firstKey, secondKey = buttons[1].key, buttons[2].key
 checkButtons(current)
@@ -164,26 +178,31 @@ current = { SpellButton = { ["11-1"] = { 2050, 1243 } } }
 APR.currentStep:Reset()
 APR.currentStep.questsList["11-1"] = {}
 APR:SetButton()
-assert(#buttons == 2 and buttons[1].key == "11-1" and buttons[2].key ~= "11-1",
-    "The first spell can use the objective row; the second must not overwrite it")
+assert(
+    #buttons == 2 and buttons[1].key == "11-1" and buttons[2].key ~= "11-1",
+    "The first spell can use the objective row; the second must not overwrite it"
+)
 current = { Button = { ["11-1"] = 100 }, SpellButton = { ["11-1"] = { 2050, 1243 } } }
 APR.currentStep:Reset()
 APR.currentStep.fillersList["11-1"] = {}
 APR:SetButton()
 assert(#buttons == 3 and buttons[1].kind == "item" and buttons[2].id == 2050 and buttons[3].id == 1243)
-assert(buttons[1].key ~= buttons[2].key and buttons[2].key ~= buttons[3].key,
-    "An item and two spells can support the same filler objective")
+assert(
+    buttons[1].key ~= buttons[2].key and buttons[2].key ~= buttons[3].key,
+    "An item and two spells can support the same filler objective"
+)
 APR.currentStep.fillersList = {}
 checkButtons({ SpellButton = { ["10-1"] = { 2050, 1243 } } })
 assert(#buttons == 0, "A completed objective suppresses every associated spell button")
 checkButtons({ SpellButton = { ["5648"] = { 404, "Power Word: Fortitude" } } })
-assert(#buttons == 2,
-    "An uncached spell must not prevent the other spell from rendering")
+assert(#buttons == 2, "An uncached spell must not prevent the other spell from rendering")
 assert(buttons[2].id == "Power Word: Fortitude", "Lists preserve support for client-localized spell names")
 
 checkButtons({ Button = { ["5648"] = { 100, 101 } } })
-assert(#buttons == 2 and buttons[1].id == 100 and buttons[2].id == 101,
-    "Both items for the same quest must render in list order")
+assert(
+    #buttons == 2 and buttons[1].id == 100 and buttons[2].id == 101,
+    "Both items for the same quest must render in list order"
+)
 assert(buttons[1].kind == "item" and buttons[2].kind == "item" and buttons[1].key ~= buttons[2].key)
 firstKey, secondKey = buttons[1].key, buttons[2].key
 checkButtons(current)
@@ -192,8 +211,13 @@ current = { Button = { ["11-1"] = { 100, 101 } }, SpellButton = { ["11-1"] = { 2
 APR.currentStep:Reset()
 APR.currentStep.fillersList["11-1"] = {}
 APR:SetButton()
-assert(#buttons == 4 and buttons[1].key == "11-1" and buttons[2].id == 101 and
-    buttons[3].id == 2050 and buttons[4].id == 1243)
+assert(
+    #buttons == 4
+        and buttons[1].key == "11-1"
+        and buttons[2].id == 101
+        and buttons[3].id == 2050
+        and buttons[4].id == 1243
+)
 local seen = {}
 for _, button in ipairs(buttons) do
     assert(not seen[button.key], "Item and spell lists must never overwrite another secure button")
@@ -244,8 +268,10 @@ before = advanced
 current = { LeaveQuest = 10, LeaveQuests = { 10, 11 }, GossipOptionIDs = { 1 } }
 APR:UpdateStep()
 assert(advanced == before and #abandoned == 2 and abandoned[1] == 10 and abandoned[2] == 11)
-assert(APR.currentStep.questsList["10-10"] and APR.currentStep.questsList["11-11"],
-    "Pending abandonment is visible in the current step")
+assert(
+    APR.currentStep.questsList["10-10"] and APR.currentStep.questsList["11-11"],
+    "Pending abandonment is visible in the current step"
+)
 activeQuests = {}
 APR:UpdateStep()
 assert(advanced == before + 1 and #abandoned == 2, "Advance once all quests have left the log")
@@ -259,8 +285,10 @@ activeQuests, abandoned = { [10] = true }, {}
 before = advanced
 current = { UseSpell = { spellID = 200 }, LeaveQuest = 10 }
 APR:UpdateStep()
-assert(advanced == before and #abandoned == 1 and #buttons == 1,
-    "Abandonment accompanying another action must not advance past it")
+assert(
+    advanced == before and #abandoned == 1 and #buttons == 1,
+    "Abandonment accompanying another action must not advance past it"
+)
 
 local resetCallback, refreshed
 APR.questionDialog = { CreateQuestionPopup = function(_, _, _, callback) resetCallback = callback end }
@@ -271,8 +299,10 @@ before, current = advanced, { ResetRoute = true, GossipOptionIDs = { 1 } }
 APRData.player.route = 5
 function APR:GetStep() return current end
 APR:UpdateStep()
-assert(advanced == before and APRData.player.route == 5 and resetCallback,
-    "Reset waits for explicit popup confirmation even when gossip is complete")
+assert(
+    advanced == before and APRData.player.route == 5 and resetCallback,
+    "Reset waits for explicit popup confirmation even when gossip is complete"
+)
 assert(APR.currentStep.questsList["RESET_ROUTE-ResetRoute"], "Reset has a main action row")
 resetCallback()
 assert(APRData.player.route == 1 and refreshed, "Confirmed reset restarts and refreshes the route")
@@ -280,19 +310,25 @@ print("Promoted main actions: abandonment, mixed steps, gossip guards and confir
 
 -- Issue #480: run real UseHS rendering and cast completion with no hearthstone in bags.
 local travelLibrary = dofile("tests/lua/navigation_catalog_fixture.lua")
-APR.NavigationData = travelLibrary:New({ profile = "retail", environment = {
-    getCharacter = function() return { raceID = 11, level = 90 } end,
-    getActionUsability = function(kind, id, ignoreCooldown)
-        return APR:GetRouteActionUsability(kind, id, ignoreCooldown)
-    end,
-    getActionUsabilityIgnoringCooldown = function(kind, id)
-        return APR:GetRouteActionUsability(kind, id, true)
-    end,
-    getItemSpellID = function(id)
-        local getSpell = C_Item and C_Item.GetItemSpell or GetItemSpell
-        if getSpell then local _, spellID = getSpell(id); return spellID end
-    end,
-} })
+APR.NavigationData = travelLibrary:New({
+    profile = "retail",
+    environment = {
+        getCharacter = function() return { raceID = 11, level = 90 } end,
+        getActionUsability = function(kind, id, ignoreCooldown)
+            return APR:GetRouteActionUsability(kind, id, ignoreCooldown)
+        end,
+        getActionUsabilityIgnoringCooldown = function(kind, id)
+            return APR:GetRouteActionUsability(kind, id, true)
+        end,
+        getItemSpellID = function(id)
+            local getSpell = C_Item and C_Item.GetItemSpell or GetItemSpell
+            if getSpell then
+                local _, spellID = getSpell(id)
+                return spellID
+            end
+        end,
+    },
+})
 function APR:GetCurrentStep() return current end
 dofile("APR-Core/utils/Utils.lua")
 dofile("APR-Core/utils/PlayerUtils.lua")
@@ -310,12 +346,16 @@ function C_Item.GetItemCooldown() return 1, 1800, 1 end
 -- Every synthetic toy variant must finish UseHS using its declared or client-resolved effect.
 local toySpells = { [2] = 12, [3] = 13, [4] = 14 }
 
-for _, case in ipairs({ { key = "UseDalaHS", item = 5, effect = 15 },
-    { key = "UseGarrisonHS", item = 6, effect = 16 } }) do
+for _, case in ipairs({
+    { key = "UseDalaHS", item = 5, effect = 15 },
+    { key = "UseGarrisonHS", item = 6, effect = 16 },
+}) do
     current, before = { [case.key] = 10 }, advanced
     APR:UpdateStep()
-    assert(#buttons == 1 and buttons[1].id == case.item and buttons[1].kind == "item",
-        "Fixed hearthstones use the library's item action, including collected toys")
+    assert(
+        #buttons == 1 and buttons[1].id == case.item and buttons[1].kind == "item",
+        "Fixed hearthstones use the library's item action, including collected toys"
+    )
     cast(current, case.effect)
     assert(advanced == before + 1, "The fixed hearthstone's library cast effect completes its own action")
 end
@@ -323,8 +363,10 @@ for itemID, spellID in pairs(toySpells) do
     owned = { [itemID] = true }
     current, before = { UseHS = 10 }, advanced
     APR:UpdateStep()
-    assert(#buttons == 1 and buttons[1].id == itemID and buttons[1].kind == "item",
-        "UseHS must render an owned toy even on cooldown: " .. itemID)
+    assert(
+        #buttons == 1 and buttons[1].id == itemID and buttons[1].kind == "item",
+        "UseHS must render an owned toy even on cooldown: " .. itemID
+    )
     assert(advanced == before, "Rendering a hearthstone must not complete the step")
     cast(current, spellID, "pet")
     cast(current, 200)
@@ -391,8 +433,10 @@ assert(advanced == before and #buttons == 1, "False must preserve mandatory beha
 onCooldown = false
 before, current = advanced, { UseHS = 10, UseHSIfAvailable = true }
 APR:UpdateStep()
-assert(advanced == before and #buttons == 1 and buttons[1].id == 1,
-    "An available optional hearthstone must still be offered")
+assert(
+    advanced == before and #buttons == 1 and buttons[1].id == 1,
+    "An available optional hearthstone must still be offered"
+)
 canUse = false
 APR:UpdateStep()
 assert(advanced == before, "Temporary item restrictions must not select another journey")

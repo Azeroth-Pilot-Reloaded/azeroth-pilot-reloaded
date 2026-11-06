@@ -1,0 +1,9 @@
+{
+    "name": "apr-formatting",
+    "private": true,
+    "devDependencies": {
+        "@johnnymorganz/stylua-bin": "2.6.0",
+        "@prettier/plugin-xml": "3.4.2",
+        "prettier": "3.9.10"
+    }
+}

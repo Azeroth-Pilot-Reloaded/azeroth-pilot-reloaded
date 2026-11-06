@@ -13,19 +13,26 @@ local env = {
     isQuestObjectiveCompleted = function() return false end,
     getLocale = function() return "frFR" end,
 }
-Lib:RegisterData("positionless-host", "test", { unlockRoutes = {
-    { id = "tracker", goal = { key = "quest", value = 99 }, guidanceQuestID = 7, steps = {
-        { kind = "objective", questID = 7, objectiveIndices = { 1 }, noArrow = true, sourceID = 1 },
-    } },
-} })
+Lib:RegisterData("positionless-host", "test", {
+    unlockRoutes = {
+        {
+            id = "tracker",
+            goal = { key = "quest", value = 99 },
+            guidanceQuestID = 7,
+            steps = {
+                { kind = "objective", questID = 7, objectiveIndices = { 1 }, noArrow = true, sourceID = 1 },
+            },
+        },
+    },
+})
 local data = Lib:New({ profile = "positionless-host", environment = env })
 APR.NavigationData, APR.NavigationEngine = data, Lib.Engine
 APR.PlayerID, APR.ActiveRoute = "test", "parent"
 APRData = { test = { parent = 8 } }
 APR.settings = { profile = { enableAddon = true } }
 APR.Arrow, APR.event = { SetCoord = noop, SetArrowActive = noop }, { QueueStepRefresh = noop }
-APR.currentStep = { AddQuestSteps = function(_, _, text) rows[#rows + 1] = text end,
-    AddQuestDivider = noop, AddStepButton = noop }
+APR.currentStep =
+    { AddQuestSteps = function(_, _, text) rows[#rows + 1] = text end, AddQuestDivider = noop, AddStepButton = noop }
 APR.SendMessage = noop
 function APR:NewModule() return {} end
 function APR:GetNavigationPlayerPosition() return position end
@@ -38,11 +45,13 @@ function APR:CaptureStepContext() return context end
 function APR:IsStepContextCurrent(value) return value == context end
 function APR:GetCurrentStep() return parent, 8 end
 function APR:ActivateTemporaryRoute() error("Standalone guidance cannot activate APR routes") end
-C_Timer = { NewTimer = function(_, callback)
-    local timer = { callback = callback, Cancel = function(self) self.cancelled = true end }
-    timers[#timers + 1] = timer
-    return timer
-end }
+C_Timer = {
+    NewTimer = function(_, callback)
+        local timer = { callback = callback, Cancel = function(self) self.cancelled = true end }
+        timers[#timers + 1] = timer
+        return timer
+    end,
+}
 dofile("APR-Core/features/navigation/Navigation.lua")
 dofile("APR-Core/features/navigation/NavigationUnlocks.lua")
 local nav = APR.navigation
@@ -64,19 +73,28 @@ assert(APRData.test.parent == 8 and APR.ActiveRoute == "parent")
 assert(APRData.test.NavigationUnlockState.library.destination.uiMapID == 2472)
 nav:Cancel("disabled")
 assert(not APR._navigationUnlock)
-assert(APR:StartNavigationUnlock({ { id = "access", blockedRequirements = { quest = 99 } } }, context),
-    "Cancelling before access is obtained cannot permanently suppress the same entrance")
+assert(
+    APR:StartNavigationUnlock({ { id = "access", blockedRequirements = { quest = 99 } } }, context),
+    "Cancelling before access is obtained cannot permanently suppress the same entrance"
+)
 drain()
 completed[7] = true
-nav:Update(); drain()
+nav:Update()
+drain()
 step = assert(APR:GetNavigationUnlockStep())
-assert(step.unlockAction.reason == "tracker_not_observed" and nav:IsNavigating(), "Waiting for a hidden tracker remains an explicit instruction")
+assert(
+    step.unlockAction.reason == "tracker_not_observed" and nav:IsNavigating(),
+    "Waiting for a hidden tracker remains an explicit instruction"
+)
 assert(step.label:find("confirmation", 1, true))
 APR._navigationUnlock = nil
 assert(APR:RestoreNavigationUnlockRoute())
-nav:Update(); drain()
+nav:Update()
+drain()
 assert(nav:IsNavigating() and APR:GetNavigationUnlockStep().NoArrow)
 completed[99] = true
 assert(APR:RefreshNavigationUnlockRoute() == false and not APR._navigationUnlock)
 assert(APRData.test.parent == 8 and not APRData.test.NavigationUnlockState and nav.dirty)
-print("Positionless unlock host: visible sourced instruction, no fake arrow, tracker wait, reload and unchanged parent route passed")
+print(
+    "Positionless unlock host: visible sourced instruction, no fake arrow, tracker wait, reload and unchanged parent route passed"
+)

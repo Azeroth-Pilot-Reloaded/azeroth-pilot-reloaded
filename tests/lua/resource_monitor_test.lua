@@ -4,22 +4,30 @@ local enabled, failMemory, restricted = true, false, false
 local profileMs = 0
 local timers = {}
 function CreateFrame()
-    return {SetScript = function(self, key, fn) self[key] = fn end,
-        Show = function(self) self.shown = true end, Hide = function(self) self.shown = false end}
+    return {
+        SetScript = function(self, key, fn) self[key] = fn end,
+        Show = function(self) self.shown = true end,
+        Hide = function(self) self.shown = false end,
+    }
 end
-APR = {PlayerID = "player", ActiveRoute = "route", _effectiveRouteStepsCache = {route = {}},
-    ZoneDetection = {mapInfoCache = {[1] = {}}}, questOrderList = {stepList = {{}, {}}}}
-APRData = {player = {route = 42}}
+APR = {
+    PlayerID = "player",
+    ActiveRoute = "route",
+    _effectiveRouteStepsCache = { route = {} },
+    ZoneDetection = { mapInfoCache = { [1] = {} } },
+    questOrderList = { stepList = { {}, {} } },
+}
+APRData = { player = { route = 42 } }
 function APR:CanAccessValue(value) return type(value) ~= "table" or not value.restricted end
 function GetTime() return seconds end
 function debugprofilestop() return seconds * 1000 + profileMs end
 function GetFramerate() return 50 end
-Enum = {AddOnProfilerMetric = {RecentAverageTime = 1}}
+Enum = { AddOnProfilerMetric = { RecentAverageTime = 1 } }
 C_AddOnProfiler = {
     IsEnabled = function() return enabled end,
     GetAddOnMetric = function(name, metric)
         assert(name == "APR" and metric == 1)
-        return restricted and {restricted = true} or cpu
+        return restricted and { restricted = true } or cpu
     end,
     GetApplicationMetric = function() return frame end,
 }
@@ -28,13 +36,18 @@ function UpdateAddOnMemoryUsage()
     profileMs = profileMs + 280 -- Reproduce the expensive native scan from the client capture.
     if failMemory then error("Memory API unavailable") end
 end
-function GetAddOnMemoryUsage(name) assert(name == "APR"); return memory end
-C_Timer = {NewTicker = function(interval, callback)
-    assert(interval == 1)
-    local timer = {callback = callback, Cancel = function(self) self.cancelled = true end}
-    timers[#timers + 1] = timer
-    return timer
-end}
+function GetAddOnMemoryUsage(name)
+    assert(name == "APR")
+    return memory
+end
+C_Timer = {
+    NewTicker = function(interval, callback)
+        assert(interval == 1)
+        local timer = { callback = callback, Cancel = function(self) self.cancelled = true end }
+        timers[#timers + 1] = timer
+        return timer
+    end,
+}
 dofile("APR-Core/core/Performance.lua")
 dofile("APR-Core/core/ResourceMonitor.lua")
 local monitor = APR.ResourceMonitor
@@ -55,62 +68,104 @@ timers[1].callback()
 view = monitor:GetView(120)
 assert(view.latest.cpuPercent == 20 and view.latest.memoryKB == 2048 and view.latest.memoryAt == 0)
 assert(memoryReads == 1, "CPU ticks cannot trigger a full memory scan each second")
-seconds = 5; timers[1].callback()
-assert(memoryReads == 1 and monitor:GetView(120).latest.memoryAt == 0,
-    "Five-second ticks retain the timestamp of the requested reading without rescanning")
+seconds = 5
+timers[1].callback()
+assert(
+    memoryReads == 1 and monitor:GetView(120).latest.memoryAt == 0,
+    "Five-second ticks retain the timestamp of the requested reading without rescanning"
+)
 monitor:ScanMemory()
 view = monitor:GetView(120)
 assert(view.latest.memoryKB == 3072 and view.firstMemoryKB == 2048 and view.peakMemoryKB == 3072)
 assert(view.points[119].cpuPercent == nil, "Missed ticks remain gaps")
 local frozen = monitor:GetView(600)
-seconds, memory = 10, 1024; timers[1].callback()
+seconds, memory = 10, 1024
+timers[1].callback()
 monitor:ScanMemory()
 view = monitor:GetView(120)
 assert(view.latest.memoryKB == 1024 and view.peakMemoryKB == 3072, "Memory drops remain visible")
 assert(frozen.latest.memoryKB == 3072, "Frozen views cannot change under the sampler")
-enabled, seconds = false, 11; timers[1].callback()
+enabled, seconds = false, 11
+timers[1].callback()
 assert(monitor:GetView(120).latest.cpuPercent == nil, "Disabled profiling is unavailable, not zero")
-enabled, restricted, seconds = true, true, 12; timers[1].callback()
+enabled, restricted, seconds = true, true, 12
+timers[1].callback()
 assert(monitor:GetView(120).latest.cpuMs == nil)
-restricted, frame, seconds = false, 0, 13; timers[1].callback()
+restricted, frame, seconds = false, 0, 13
+timers[1].callback()
 assert(monitor:GetView(120).latest.cpuPercent == nil, "Do not divide by zero frame time")
-failMemory, seconds = true, 15; timers[1].callback()
+failMemory, seconds = true, 15
+timers[1].callback()
 monitor:ScanMemory()
 assert(monitor:GetView(120).latest.memoryKB == nil, "Failed scans cannot masquerade as fresh readings")
-assert(APRData.PerformanceLog.summary.ResourceMemoryScan.count == 4,
-    "Manual scan overhead, including failed scans, is visible in the performance summary")
-assert(APRData.PerformanceLog.summary.ResourceMemoryScan.maxMs == 280 and
-    APRData.PerformanceLog.summary.ResourceMemoryScan.totalMs == 1120,
-    "The actual blocking scan cost is recorded rather than the cheap memory read")
+assert(
+    APRData.PerformanceLog.summary.ResourceMemoryScan.count == 4,
+    "Manual scan overhead, including failed scans, is visible in the performance summary"
+)
+assert(
+    APRData.PerformanceLog.summary.ResourceMemoryScan.maxMs == 280
+        and APRData.PerformanceLog.summary.ResourceMemoryScan.totalMs == 1120,
+    "The actual blocking scan cost is recorded rather than the cheap memory read"
+)
 frame, failMemory = 20, false
-for index = 16, 1000 do seconds = index; timers[1].callback() end
+for index = 16, 1000 do
+    seconds = index
+    timers[1].callback()
+end
 local resources = APRData.PerformanceLog.resources
-assert(resources.count == 600 and #resources.samples == 600 and memoryReads == 4,
-    "Long CPU captures never perform additional full memory scans")
+assert(
+    resources.count == 600 and #resources.samples == 600 and memoryReads == 4,
+    "Long CPU captures never perform additional full memory scans"
+)
 view = monitor:GetView(600)
 assert(#view.points == 120 and view.latest.time == 1000)
 -- The exported ten-minute history must survive the bounded formatter without truncation.
-function LibStub() return {GetLocale = function() return {} end} end
+function LibStub()
+    return { GetLocale = function() return {} end }
+end
 dofile("APR-Core/utils/Utils.lua")
 for index = 1, 513 do
-    APRData.PerformanceLog.summary["Scope" .. index] = {count = 20, totalMs = 100, maxMs = 12, histogram = {1, 2, 3, 4}}
+    APRData.PerformanceLog.summary["Scope" .. index] =
+        { count = 20, totalMs = 100, maxMs = 12, histogram = { 1, 2, 3, 4 } }
 end
 for index = 1, 100 do
-    APRData.PerformanceLog.slow[index] = {name = "Scope1", ms = 12, time = index, route = "route", steps = 20, step = 42,
-        parent = "Caller", breadcrumb = "Debug context", breadcrumbAt = index}
+    APRData.PerformanceLog.slow[index] = {
+        name = "Scope1",
+        ms = 12,
+        time = index,
+        route = "route",
+        steps = 20,
+        step = 42,
+        parent = "Caller",
+        breadcrumb = "Debug context",
+        breadcrumbAt = index,
+    }
 end
 for index = 1, 120 do
-    APRData.PerformanceLog.timeline[index] = {second = index, count = 20, totalMs = 100, maxMs = 12,
-        peakName = "Scope1", peakRoute = "route", peakStep = 42, slowCount = 1}
+    APRData.PerformanceLog.timeline[index] = {
+        second = index,
+        count = 20,
+        totalMs = 100,
+        maxMs = 12,
+        peakName = "Scope1",
+        peakRoute = "route",
+        peakStep = 42,
+        slowCount = 1,
+    }
 end
 for _, sample in ipairs(resources.samples) do
     sample.peakFrameMs, sample.frameSpikes, sample.frameCount = 50, 1, 100
     sample.memoryKB, sample.memoryAt, sample.memoryScanMs = 2048, 1, 280
 end
 local log = APRData.PerformanceLog
-log.instrumented, log.frames = {}, {samples = {}, cursor = 100}
-for index = 1, 513 do log.counters["Counter" .. index] = 100; log.instrumented[index] = "Scope" .. index end
-for index = 1, 100 do log.frames.samples[index] = {time = index, ms = 50, baselineMs = 5, route = "route", step = 42} end
+log.instrumented, log.frames = {}, { samples = {}, cursor = 100 }
+for index = 1, 513 do
+    log.counters["Counter" .. index] = 100
+    log.instrumented[index] = "Scope" .. index
+end
+for index = 1, 100 do
+    log.frames.samples[index] = { time = index, ms = 50, baselineMs = 5, route = "route", step = 42 }
+end
 local exported = APR:FormatDebugTable(APRData.PerformanceLog, 40000)
 assert(not exported:find("<entry-limit>", 1, true))
 local restored = assert(loadstring("return " .. exported))()
@@ -119,7 +174,8 @@ APR:SetPerformanceCapture(false)
 assert(timers[1].cancelled)
 monitor:ScanMemory()
 assert(memoryReads == 4, "Stopped capture cannot trigger a memory scan")
-seconds = 1100; timers[1].callback()
+seconds = 1100
+timers[1].callback()
 assert(resources.lastAt == 1000 and monitor:GetView(120).finish == 1000)
 APR:ResetPerformanceCapture()
 assert(not APRData.PerformanceLog.resources and #timers == 1)
@@ -128,16 +184,22 @@ assert(#timers == 2 and APRData.PerformanceLog.resources.count == 1)
 APR:ResetPerformanceCapture()
 assert(timers[2].cancelled and #timers == 3, "Reset replaces the sampler rather than leaking tickers")
 C_AddOnProfiler, GetAddOnMemoryUsage, GetFramerate = nil, nil, nil
-seconds = 1200; timers[3].callback()
+seconds = 1200
+timers[3].callback()
 monitor:ScanMemory()
 view = monitor:GetView(120)
 assert(not view.latest.cpuPercent and not view.latest.memoryKB and not view.latest.fps)
-print("Resource monitor: scan-free CPU capture, explicit memory scans/drops, unavailable APIs, gaps, freeze and lifecycle passed")
+print(
+    "Resource monitor: scan-free CPU capture, explicit memory scans/drops, unavailable APIs, gaps, freeze and lifecycle passed"
+)
 
 -- A low average CPU sample must not hide a single long client frame.
-for _ = 1, 100 do monitor.frameObserver.OnUpdate(nil, 0.005) end
+for _ = 1, 100 do
+    monitor.frameObserver.OnUpdate(nil, 0.005)
+end
 monitor.frameObserver.OnUpdate(nil, 0.050)
-seconds = 1201; timers[3].callback()
+seconds = 1201
+timers[3].callback()
 local sample = monitor:GetView(120).latest
 assert(sample.peakFrameMs == 50 and sample.frameSpikes == 1 and sample.frameCount == 101)
 assert(APRData.PerformanceLog.frames.samples[1].ms == 50)

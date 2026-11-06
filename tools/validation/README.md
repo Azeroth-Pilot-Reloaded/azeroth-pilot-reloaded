@@ -3,6 +3,24 @@
 All regression tests now live in `tests/`. Run `python tests/run.py` for all
 Python, Lua and route syntax checks; see `tests/README.md` for dependencies and CI.
 
+## Formatting in VS Code
+
+Run `npm ci` at the repository root to install the pinned development tools:
+Prettier 3.9.10, its XML plugin 3.4.2 and StyLua 2.6.0. These packages are excluded
+from addon releases. Install the recommended Prettier and StyLua VS Code extensions.
+
+In local `.vscode/settings.json`, select `esbenp.prettier-vscode` as
+`editor.defaultFormatter`, override Lua with `JohnnyMorganz.stylua`, and override
+YAML with Prettier if your user settings select a different YAML formatter. Set
+`prettier.prettierPath` to `./node_modules/prettier`; the repository's
+`.prettierrc.json` and `.editorconfig` supply the formatting options and XML plugin.
+Use `stylua.targetReleaseVersion = "v2.6.0"` or point `stylua.styluaPath` at the
+installed executable for your platform. The current Windows workspace uses the
+pinned executable in `node_modules/@johnnymorganz/stylua-bin-win32-x64/`.
+
+Keep `.prettierignore` and `.styluaignore` active so routes and third-party
+libraries remain excluded. Local workspace settings are ignored by Git.
+
 ## Luacheck while editing in VS Code
 
 Install the recommended `trixnz.vscode-lua` extension alongside Lua Language
@@ -37,15 +55,15 @@ map/arrow updates, group traffic, pooled widgets and diagnostic collection.
 Findings below describe source behavior and synthetic workloads. They do not
 attribute a measured client freeze to APR or establish an FPS improvement.
 
-| Mechanism | Change | Regression evidence |
-| --- | --- | --- |
-| Every quest-log update replaced objective tables and relaid out unchanged visible rows | Reuse objective records; skip unchanged text/geometry and arrow writes; retire removed objectives | 100 unchanged refreshes, 150 synthetic objectives and 12 visible rows: **1,500 layout passes at HEAD b630fb76, zero after the change**; all 150 objective identities remain stable |
-| Percentage bars reset anchors and full guide geometry on every log refresh | Update only the value/label for an existing bar; rebuild geometry on appearance/removal | Percentage changes with identical objective text remain live; repeated hidden bars cause no further layouts |
-| Combined quest/step synchronization updated rows immediately before rebuilding them | Data-only synchronization when the caller already owns the following render | Deferred synchronization performs zero objective/filler row updates |
-| Bank slot notifications each scanned the entire bank | Coalesce slot/bag bursts into one 50 ms snapshot; flush a pending snapshot on close while data is still accessible | 1,000 notifications share one scan; closed, cancelled and disabled callbacks cannot overwrite it |
-| XP reminder events rebuilt unchanged labels, anchors and visibility | Reconcile existing rows; ignore unrelated item data; avoid scheduling inactive/combat refreshes | 100 identical refreshes produce zero visibility/anchor/label/icon/height writes; 1,000 unrelated item events schedule zero timers |
-| Other units and foreign addon messages entered the full gameplay dispatcher | Native player unit registration for aura/cast/quest-log events, with a Lua fallback; reject unknown communication prefixes early | 1,000 other-unit events and 1,000 foreign messages perform zero settings/instance/step probes; player and opaque unit payloads retain delivery |
-| Auto-complete notifications could each create a permanent one-second polling chain | One cancellable chain, at most five delayed attempts, validated against settings and step context | 1,000 duplicate requests share one timer; delayed data, route changes, modifier override and stale callbacks are covered |
+| Mechanism                                                                              | Change                                                                                                                           | Regression evidence                                                                                                                                                                |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Every quest-log update replaced objective tables and relaid out unchanged visible rows | Reuse objective records; skip unchanged text/geometry and arrow writes; retire removed objectives                                | 100 unchanged refreshes, 150 synthetic objectives and 12 visible rows: **1,500 layout passes at HEAD b630fb76, zero after the change**; all 150 objective identities remain stable |
+| Percentage bars reset anchors and full guide geometry on every log refresh             | Update only the value/label for an existing bar; rebuild geometry on appearance/removal                                          | Percentage changes with identical objective text remain live; repeated hidden bars cause no further layouts                                                                        |
+| Combined quest/step synchronization updated rows immediately before rebuilding them    | Data-only synchronization when the caller already owns the following render                                                      | Deferred synchronization performs zero objective/filler row updates                                                                                                                |
+| Bank slot notifications each scanned the entire bank                                   | Coalesce slot/bag bursts into one 50 ms snapshot; flush a pending snapshot on close while data is still accessible               | 1,000 notifications share one scan; closed, cancelled and disabled callbacks cannot overwrite it                                                                                   |
+| XP reminder events rebuilt unchanged labels, anchors and visibility                    | Reconcile existing rows; ignore unrelated item data; avoid scheduling inactive/combat refreshes                                  | 100 identical refreshes produce zero visibility/anchor/label/icon/height writes; 1,000 unrelated item events schedule zero timers                                                  |
+| Other units and foreign addon messages entered the full gameplay dispatcher            | Native player unit registration for aura/cast/quest-log events, with a Lua fallback; reject unknown communication prefixes early | 1,000 other-unit events and 1,000 foreign messages perform zero settings/instance/step probes; player and opaque unit payloads retain delivery                                     |
+| Auto-complete notifications could each create a permanent one-second polling chain     | One cancellable chain, at most five delayed attempts, validated against settings and step context                                | 1,000 duplicate requests share one timer; delayed data, route changes, modifier override and stale callbacks are covered                                                           |
 
 Cleanup removes the unused `navigation:OnArrowUpdate` forwarding hook and the
 duplicate `ShowQuestOffer(1)` calls preceding the actual quest popup. The
@@ -57,14 +75,14 @@ Navigation was already cooperative and cached. Running
 `python tools/validation/benchmark_navigation.py --runs 3` with Lua 5.1 on the
 audit host gave these observations (milliseconds, three runs per scenario):
 
-| Scenario | Median total work | 95th percentile slice | Maximum slice |
-| --- | ---: | ---: | ---: |
-| Taxi index, cold | 22.09 | 0.92 | 1.12 |
-| Taxi index, warm | 0.12 | 0.12 | 0.12 |
-| Retail catalogue, cold | 12.52 | 0.92 | 1.12 |
-| Forever catalogue, cold | 1.08 | 0.91 | 0.91 |
-| Synthetic search | 56.82 | 0.92 | 1.17 |
-| Dense synthetic search | 8.00 | 0.91 | 0.91 |
+| Scenario                | Median total work | 95th percentile slice | Maximum slice |
+| ----------------------- | ----------------: | --------------------: | ------------: |
+| Taxi index, cold        |             22.09 |                  0.92 |          1.12 |
+| Taxi index, warm        |              0.12 |                  0.12 |          0.12 |
+| Retail catalogue, cold  |             12.52 |                  0.92 |          1.12 |
+| Forever catalogue, cold |              1.08 |                  0.91 |          0.91 |
+| Synthetic search        |             56.82 |                  0.92 |          1.17 |
+| Dense synthetic search  |              8.00 |                  0.91 |          0.91 |
 
 Total worker duration spans multiple frames. These fixture timings include
 Lua/Python crossings and host scheduling; they are neither client measurements
@@ -90,17 +108,20 @@ group area, a long itinerary and first/repeated settings opens. Stop with
 with client frame spikes and repeat normal play with capture disabled; capture
 overhead and a global client spike alone cannot establish addon causation.
 
-The source-checkout localization contract currently reports an empty `enUS`
-companion catalog: locale files contain packager/CurseForge directives before
-translation injection. The complete runner reports this failure rather than
-skipping the contract or inventing translations for the performance patch.
+Companion translation catalogs are checked by the dedicated translation CI
+workflow. Offline addon regressions use synthetic labels, without translation
+snapshots or assertions about maintained catalog contents.
 
 `python tools/validation/instrument_lua.py --write` instruments every owned Lua
 function in `APR-Core/` and `Routes/`, including local functions, nested functions,
-anonymous callbacks, and coroutine workers. Edit function bodies normally and
-rerun the generator. Its marked additions are removed before regeneration;
-running it twice produces identical output. `--check` and the Lua CI suite reject
-missing/stale instrumentation. The generated `DiagnosticManifest.lua` records
+anonymous callbacks, and coroutine workers. Adding a function or a protected/coroutine
+call requires running the generator. Body edits, comments, whitespace, formatter
+changes and shifted diagnostic line hints do not require regeneration. Checks compare
+Lua structure and wrapper bindings, and still reject missing/incorrect wrappers,
+duplicate trace identifiers and incorrect manifest counts. The check is read-only;
+`--write` repairs only files that fail the structural check, leaving valid formatting
+intact. Its marked additions are removed before regeneration; running it twice produces
+identical output. The generated `DiagnosticManifest.lua` records
 coverage and explicit exclusions: third-party libraries, diagnostic recorders,
 resource sampling and safe error handling. Calls into libraries are measured at
 APR call sites, not attributed to individual library internals.
@@ -527,14 +548,14 @@ overlays was retained. The changes below are additional to that starting state.
 Operation counts use invented fixtures in Lua 5.1. They establish removed work,
 not a measured FPS increase or a worst-case duration in a running WoW client.
 
-| Controlled workload | Before | After |
-| --- | --- | --- |
-| 1,000 warm route reads with 60 active parallel groups | 1,000 sorts, 60,000 formats, 1,000 concatenations for cache keys | Zero key sorts, formats or concatenations |
-| 1,000 warm scenario reads with 50 steps, two blocks and an active parallel group | 56,000 table insertions and 2,000 sorts | Zero insertions or sorts |
-| A second burst of 500 player casts over 1,002 synthetic transport connections | 500,500 reads of absent route-action fields across the catalogue | Zero catalogue-field reads after the initial index |
-| 100 progress changes while a 1,200-step list is collapsed | Background preparation could continue or restart | Zero visibility scans and no pending model build; reopening publishes current progress |
-| 20 simulated seconds with the guide hidden or detached | Repeated appearance safety polls | Zero recurring appearance polls after one possible restoration |
-| Formatting a two-million-byte diagnostic string | Full-string substitutions before output truncation | At most 240 input bytes passed to sanitization |
+| Controlled workload                                                              | Before                                                           | After                                                                                  |
+| -------------------------------------------------------------------------------- | ---------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| 1,000 warm route reads with 60 active parallel groups                            | 1,000 sorts, 60,000 formats, 1,000 concatenations for cache keys | Zero key sorts, formats or concatenations                                              |
+| 1,000 warm scenario reads with 50 steps, two blocks and an active parallel group | 56,000 table insertions and 2,000 sorts                          | Zero insertions or sorts                                                               |
+| A second burst of 500 player casts over 1,002 synthetic transport connections    | 500,500 reads of absent route-action fields across the catalogue | Zero catalogue-field reads after the initial index                                     |
+| 100 progress changes while a 1,200-step list is collapsed                        | Background preparation could continue or restart                 | Zero visibility scans and no pending model build; reopening publishes current progress |
+| 20 simulated seconds with the guide hidden or detached                           | Repeated appearance safety polls                                 | Zero recurring appearance polls after one possible restoration                         |
+| Formatting a two-million-byte diagnostic string                                  | Full-string substitutions before output truncation               | At most 240 input bytes passed to sanitization                                         |
 
 `RouteManager` compares saved activation snapshots without constructing textual
 keys on every hit. Parallel definitions reuse their filtered group array.
@@ -618,18 +639,18 @@ The next pass covered startup suggestions, inventory labels and valuation,
 AFK layout notifications, party membership checks, companion filtering and the
 performance viewer. Operation counts below use independent synthetic fixtures.
 
-| Controlled workload | Before | After |
-| --- | --- | --- |
-| Text for 20 inventory-action items across 200 slots | 4,000 container item reads | 200 reads, one snapshot local to the render |
-| Resale estimate for 200 identical stacks plus equipped copies | 201 item-price queries | One query for the exact variant in that estimate |
-| 1,250 AFK hides with no active timer | 1,250 deferred callbacks | Zero callbacks |
-| 50 rapid AFK show/hide/hide cycles | 150 callbacks | One coalesced child-layout refresh |
-| 500 party packets in one frame | 2,000 native unit-name reads | Four reads, with immediate refresh on roster notifications |
-| Language filtering for 200 companion candidates | 600 normalizations and 601 sorts | Two normalizations and three sorts |
-| Startup index over 3,000 steps without quest triggers | 6,000 synchronous step-field reads | Zero during initialization; work resumes in at most 64 operations or a 1 ms cooperative slice |
-| Warm live-viewer refresh with 1,200 metric rows | 1,200 newly allocated metric row tables | Reuse of the same viewer-owned row objects |
-| Uniform publication of 1,200 metric rows | A dense 1,201-entry offset array | One sentinel offset; indexed access serves the viewport |
-| 100 refreshes of an unchanged stopped capture | 100 repeated row constructions and list publications | Zero repeated row constructions/publications |
+| Controlled workload                                           | Before                                               | After                                                                                         |
+| ------------------------------------------------------------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| Text for 20 inventory-action items across 200 slots           | 4,000 container item reads                           | 200 reads, one snapshot local to the render                                                   |
+| Resale estimate for 200 identical stacks plus equipped copies | 201 item-price queries                               | One query for the exact variant in that estimate                                              |
+| 1,250 AFK hides with no active timer                          | 1,250 deferred callbacks                             | Zero callbacks                                                                                |
+| 50 rapid AFK show/hide/hide cycles                            | 150 callbacks                                        | One coalesced child-layout refresh                                                            |
+| 500 party packets in one frame                                | 2,000 native unit-name reads                         | Four reads, with immediate refresh on roster notifications                                    |
+| Language filtering for 200 companion candidates               | 600 normalizations and 601 sorts                     | Two normalizations and three sorts                                                            |
+| Startup index over 3,000 steps without quest triggers         | 6,000 synchronous step-field reads                   | Zero during initialization; work resumes in at most 64 operations or a 1 ms cooperative slice |
+| Warm live-viewer refresh with 1,200 metric rows               | 1,200 newly allocated metric row tables              | Reuse of the same viewer-owned row objects                                                    |
+| Uniform publication of 1,200 metric rows                      | A dense 1,201-entry offset array                     | One sentinel offset; indexed access serves the viewport                                       |
+| 100 refreshes of an unchanged stopped capture                 | 100 repeated row constructions and list publications | Zero repeated row constructions/publications                                                  |
 
 Inventory counts and item prices are cached only inside their current render or
 estimate. The next call reads fresh bags, bank availability and late item data;
@@ -682,14 +703,14 @@ The third pass removes work that still escaped the existing frame budgets, plus
 a Lua 5.1 diagnostic lifetime leak. Every fixture uses invented steps, scenarios,
 mounts or workers; no shipped itinerary is required to retain a particular shape.
 
-| Controlled workload | Before | After |
-| --- | --- | --- |
-| 1,000 warm temporary-route reads with an inserted parent prefix | 1,000 effective-route misses/reconstructions and 1,000 sorts | 1,000 hits, zero reconstructions or sorts |
-| One mount lookup plus 100 replans over a 1,000-entry skyriding journal | 101 list requests and 101,000 usability reads | One list request, 1,100 usability reads and 100 ownership revalidations |
-| The equivalent ground-mount workload | 101 list requests and 101,000 information reads | One list request and 1,100 information reads |
-| 300 pending objectives from one quest in a preview row | 300 native objective-table requests | One native request per quest within that row build, including missing data |
-| 200 release-note font callbacks | 40,000 row-height measurements | One deferred layout with 200 measurements |
-| 200 diagnostic workers, half completed and half abandoned | All 200 retained after collection | All 200 collectible; caller-owned suspended workers remain usable |
+| Controlled workload                                                    | Before                                                       | After                                                                      |
+| ---------------------------------------------------------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------------- |
+| 1,000 warm temporary-route reads with an inserted parent prefix        | 1,000 effective-route misses/reconstructions and 1,000 sorts | 1,000 hits, zero reconstructions or sorts                                  |
+| One mount lookup plus 100 replans over a 1,000-entry skyriding journal | 101 list requests and 101,000 usability reads                | One list request, 1,100 usability reads and 100 ownership revalidations    |
+| The equivalent ground-mount workload                                   | 101 list requests and 101,000 information reads              | One list request and 1,100 information reads                               |
+| 300 pending objectives from one quest in a preview row                 | 300 native objective-table requests                          | One native request per quest within that row build, including missing data |
+| 200 release-note font callbacks                                        | 40,000 row-height measurements                               | One deferred layout with 200 measurements                                  |
+| 200 diagnostic workers, half completed and half abandoned              | All 200 retained after collection                            | All 200 collectible; caller-owned suspended workers remain usable          |
 
 The dense-row fixture assigns deterministic costs to API calls, font creation,
 text updates and measurements. With the same synthetic clock and 300 objectives,
@@ -741,13 +762,13 @@ explicit. This pass adds no translated UI text or SavedVariables schema changes.
 The fourth pass addresses work inside operations that were already scheduled,
 but could still monopolize one frame. All measurements below use synthetic input.
 
-| Controlled workload | Before | After |
-| --- | --- | --- |
-| Startup scan containing a 4,096-byte synthetic note, charging 0.01 ms per hashed byte | One 41.25 ms batch | 17 batches, largest 2.65 ms on the controlled clock |
-| One directional gamepad input among 200 controls in two nested scroll frames | 805 rectangle queries | 207 queries, including revealing the selected control |
-| A 1 ms catalogue-preparation slice with 500 alternatives costing 0.25 ms each | 500 probes, 125 ms on the controlled clock | At most four probes, 1 ms on the controlled clock |
-| Parsing 8,000 unmatched Markdown link openers | About 807 ms on the audit host | Less than 1 ms on the audit host |
-| Parsing a heading containing 8,000 spaces without closing hashes | About 714 ms on the audit host | About 1 ms on the audit host |
+| Controlled workload                                                                   | Before                                     | After                                                 |
+| ------------------------------------------------------------------------------------- | ------------------------------------------ | ----------------------------------------------------- |
+| Startup scan containing a 4,096-byte synthetic note, charging 0.01 ms per hashed byte | One 41.25 ms batch                         | 17 batches, largest 2.65 ms on the controlled clock   |
+| One directional gamepad input among 200 controls in two nested scroll frames          | 805 rectangle queries                      | 207 queries, including revealing the selected control |
+| A 1 ms catalogue-preparation slice with 500 alternatives costing 0.25 ms each         | 500 probes, 125 ms on the controlled clock | At most four probes, 1 ms on the controlled clock     |
+| Parsing 8,000 unmatched Markdown link openers                                         | About 807 ms on the audit host             | Less than 1 ms on the audit host                      |
+| Parsing a heading containing 8,000 spaces without closing hashes                      | About 714 ms on the audit host             | About 1 ms on the audit host                          |
 
 Startup route validation now runs in cooperative 2 ms batches. Key enumeration
 and strings longer than 128 bytes have checkpoints. The hash arithmetic,
@@ -807,19 +828,11 @@ combat guard. This pass changes no third-party library or translated UI text.
 
 ### Automated validation
 
-After the fourth pass, `.venv/Scripts/python.exe tests/run.py` ran 506 tests:
-505 passed and one errored.
 All Lua regressions, including instrumentation and the new performance fixtures,
 passed. Additional runs exercised startup suggestions, party text, companion
 filters, inventory actions and reusable metric rows with diagnostic tracing
 enabled. The dense-row, coroutine-lifecycle and startup-validation tests also
-enable diagnostic capture to check coroutine behavior. The error at that stage was
-`PartyFinderLocalizationTests.test_declared_locales_cover_companion_strings_and_preserve_formats`:
-it extracts literal `L["GF_..."]` assignments from locale source files, but this
-checkout contains packager localization directives instead. Parsing the resulting
-empty English catalogue raises `CatalogParseError`. The test, parser and English
-source are unchanged between HEAD, the initial index and the audited worktree;
-the same extraction fails in all three. No assertion was removed or relaxed.
+enable diagnostic capture to check coroutine behavior.
 
 On the managed Windows test host, temporary files were directed to
 `.cache/audit-test-temp`. The complete run required execution outside the network
@@ -833,14 +846,14 @@ changing player/native state rather than a fixed shipped guide. The existing
 behavior suites remain in place; the journey fixtures connect their module
 boundaries and check independently chosen progression and cancellation results.
 
-| Area | Journey coverage |
-| --- | --- |
-| Quests and suggestions | `addon_quest_journey_test.lua` and `test_addon_journey_quest.py`: native acceptance before indexing, suggestion/popup selection, opt-out, real conditions/cache/rendering, turn-in and next pickup, missing native records, duplicate/foreign events and stale choices |
-| Fillers and startup | The widget journey uses real CurrentStep/FillersFrame rows, conditional parallel insertion, filler completion without main-step advancement, actual signature validation, cancellation/resumption and one coalesced native completion |
-| Groups and companion discovery | `group_instance_journey_test.lua`: real Party/Finder/World/Invites, codecs and core dispatch; private/world queries, invitation/nonce/roster, party/instance channels, raid conversion, queued-message cancellation, disable/re-enable |
-| Instance lifecycle | The group journey uses real RouteManager/StepTransitions/DelveRoutes for party instances, scenarios, delves and raids; early/complete exit, missing loading map, session reload and parent/custom-path restoration |
-| Navigation | `navigation_journey_integration_test.lua`: real controller/adapter/planner/taxi/library on Retail/Forever profiles; denied access, wrong world/zone, movement, geometry invalidation, burst coalescing, manual taxi, portals, combat, teleport/loading, cooldowns, death and cancellation |
-| Conditions and objective actions | Existing synthetic `route_conditions`, `route_engine`, `reward_groups`, `native_route_actions`, `step_progression` and dungeon suites remain required alongside the journeys |
+| Area                             | Journey coverage                                                                                                                                                                                                                                                                          |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Quests and suggestions           | `addon_quest_journey_test.lua` and `test_addon_journey_quest.py`: native acceptance before indexing, suggestion/popup selection, opt-out, real conditions/cache/rendering, turn-in and next pickup, missing native records, duplicate/foreign events and stale choices                    |
+| Fillers and startup              | The widget journey uses real CurrentStep/FillersFrame rows, conditional parallel insertion, filler completion without main-step advancement, actual signature validation, cancellation/resumption and one coalesced native completion                                                     |
+| Groups and companion discovery   | `group_instance_journey_test.lua`: real Party/Finder/World/Invites, codecs and core dispatch; private/world queries, invitation/nonce/roster, party/instance channels, raid conversion, queued-message cancellation, disable/re-enable                                                    |
+| Instance lifecycle               | The group journey uses real RouteManager/StepTransitions/DelveRoutes for party instances, scenarios, delves and raids; early/complete exit, missing loading map, session reload and parent/custom-path restoration                                                                        |
+| Navigation                       | `navigation_journey_integration_test.lua`: real controller/adapter/planner/taxi/library on Retail/Forever profiles; denied access, wrong world/zone, movement, geometry invalidation, burst coalescing, manual taxi, portals, combat, teleport/loading, cooldowns, death and cancellation |
+| Conditions and objective actions | Existing synthetic `route_conditions`, `route_engine`, `reward_groups`, `native_route_actions`, `step_progression` and dungeon suites remain required alongside the journeys                                                                                                              |
 
 The journey uncovered a taxi defect already present in HEAD: manual boarding
 could be observed before an off-taxi origin poll, setting `boarded` without
@@ -854,14 +867,9 @@ comparison excludes intentional differences in asynchronous publication, cache
 object identity, startup suspension and the old empty-objective refresh behavior;
 the committed current-source tests retain those stronger checks separately.
 
-The previous localization-suite error was a source/package contract mismatch:
-repository locales contain CurseForge directives, not expanded dictionaries.
-The offline test now verifies those bindings separately and uses recorded
-CurseForge companion exports for every discovered locale. Cross-locale keys,
-printf arguments, line breaks and WoW markup keep their original assertions;
-invalid printf output, current static references and negative fixtures add checks.
-The snapshots contain only `GF_*` strings and no guide content. Current remote
-translator edits still belong to translation CI, not these offline snapshots.
+Repository locales contain CurseForge directives, not expanded dictionaries.
+Offline addon tests use synthetic labels; maintained companion translation
+catalogs and current remote translator edits belong to translation CI.
 
 Native APIs and widgets are simulated. These tests establish addon behavior and
 contracts under controlled observations; they cannot certify actual client
@@ -885,12 +893,12 @@ removes repeated work in guide-action registration and group snapshots. No
 third-party library, authored guide, translation or SavedVariables schema changed.
 The changes use existing APIs; the new scheduling/indexing logic is ordinary Lua.
 
-| Controlled workload | Before | After |
-| --- | --- | --- |
-| One 1 ms search slice comparing arrivals with 500 resources, charging 0.25 ms per resource observation | 125.25 ms on the controlled clock | At most 1.25 ms, including one small atomic observation |
-| Display-name resolution among 2,003 declarations at 0.02 ms per visited entry | One 40.06 ms operation inside startup validation | 20 cooperative batches, largest 2.02 ms; total scan work remains 40.06 ms |
-| A group tooltip with 3,000 populated rows | 6,000 font reads and 3,000 rows sorted before the tooltip is discarded | 129 font reads, no sort; the entire oversized tooltip is still omitted |
-| 100 warm re-registrations of 200 action buttons | 2,090,000 retained-registry visits | Zero registry visits, sorting or secure writes |
+| Controlled workload                                                                                    | Before                                                                 | After                                                                     |
+| ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| One 1 ms search slice comparing arrivals with 500 resources, charging 0.25 ms per resource observation | 125.25 ms on the controlled clock                                      | At most 1.25 ms, including one small atomic observation                   |
+| Display-name resolution among 2,003 declarations at 0.02 ms per visited entry                          | One 40.06 ms operation inside startup validation                       | 20 cooperative batches, largest 2.02 ms; total scan work remains 40.06 ms |
+| A group tooltip with 3,000 populated rows                                                              | 6,000 font reads and 3,000 rows sorted before the tooltip is discarded | 129 font reads, no sort; the entire oversized tooltip is still omitted    |
+| 100 warm re-registrations of 200 action buttons                                                        | 2,090,000 retained-registry visits                                     | Zero registry visits, sorting or secure writes                            |
 
 Resource dominance now advances through resource keys as part of `Search:Step`,
 without allocating a coroutine or comparison table. Empty/one-resource and
@@ -935,12 +943,12 @@ objective layout and exponential prerequisite traversal. All fixtures use
 invented data; no authored guide, translated text, third-party library or
 SavedVariables schema changed.
 
-| Controlled workload | Before | After |
-| --- | --- | --- |
-| Advance 200 steps while displaying five world and two minimap markers | 405 marker frames created/retained | Seven marker frames reused |
-| 200 quest/addon-map notifications before one existing animation pass | 200 marker rebuilds | One rebuild using final state |
-| One refresh changing 100 main objectives and 100 fillers | 300 layout publications, 20,100 height measurements, 100 arrow-text refreshes | Two publications, 300 measurements, one arrow-text refresh |
-| Add an invented prerequisite graph containing 25 declarations and 12 shared diamonds | 8,191 expansions | 25 expansions, same path and ordering |
+| Controlled workload                                                                  | Before                                                                        | After                                                      |
+| ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| Advance 200 steps while displaying five world and two minimap markers                | 405 marker frames created/retained                                            | Seven marker frames reused                                 |
+| 200 quest/addon-map notifications before one existing animation pass                 | 200 marker rebuilds                                                           | One rebuild using final state                              |
+| One refresh changing 100 main objectives and 100 fillers                             | 300 layout publications, 20,100 height measurements, 100 arrow-text refreshes | Two publications, 300 measurements, one arrow-text refresh |
+| Add an invented prerequisite graph containing 25 declarations and 12 shared diamonds | 8,191 expansions                                                              | 25 expansions, same path and ordering                      |
 
 Authored map markers are pooled by simultaneous visible slot, separately for
 world/minimap/guidance, instead of retaining each step number ever displayed.
@@ -995,11 +1003,11 @@ remain subject to the complete freshness checks.
 The synthetic controller fixture measured the following before/after counts for
 120 pending slices on both supported profiles:
 
-| Observation | Before | After |
-| --- | ---: | ---: |
-| Player positions | 360 | 120 |
-| Objective resolutions | 360 | 120 |
-| Value-access checks | 16,200 | 3,960 |
+| Observation           | Before | After |
+| --------------------- | -----: | ----: |
+| Player positions      |    360 |   120 |
+| Objective resolutions |    360 |   120 |
+| Value-access checks   | 16,200 | 3,960 |
 
 Continuation timers wait at least 10 ms, bounding background planning to at most
 100 slices per second even at high FPS; each planner slice retains its existing
@@ -1035,12 +1043,12 @@ consumers still receive eagerly resolved instructions.
 
 Local Lua 5.1 benchmarks (not in-game CPU/FPS measurements):
 
-| Scenario | Before | After |
-| --- | ---: | ---: |
-| Dense search, median of 15 runs | 9.69 ms | 7.39 ms |
-| Dense search allocations with GC paused | 2,112 KiB | 1,609 KiB |
-| Warm Retail catalogue, median of 7 runs | 8.04 ms | 6.04 ms |
-| Warm Forever catalogue, median of 7 runs | 0.73 ms | 0.50 ms |
+| Scenario                                 |    Before |     After |
+| ---------------------------------------- | --------: | --------: |
+| Dense search, median of 15 runs          |   9.69 ms |   7.39 ms |
+| Dense search allocations with GC paused  | 2,112 KiB | 1,609 KiB |
+| Warm Retail catalogue, median of 7 runs  |   8.04 ms |   6.04 ms |
+| Warm Forever catalogue, median of 7 runs |   0.73 ms |   0.50 ms |
 
 The dense scenario performs the same 4,818 search operations and returns the same
 route. Paused-GC figures measure temporary allocation volume, not retained addon
@@ -1055,6 +1063,7 @@ call signature changes in this optimization.
 Navigation catalogue research, generation and static data audits live in
 `Route-generator/tools/validation/navigation_data` in the route-gen repository.
 APR's runtime tests and CI do not depend on that checkout.
+
 # Mapless interiors and restricted instance positions
 
 The navigation instance-position regression uses synthetic worlds, maps and

@@ -4,7 +4,9 @@ local secret = {}
 function canaccessvalue(value) return not rawequal(value, secret) end
 dofile("APR-Core/utils/SecretUtils.lua")
 local L = setmetatable({}, { __index = function(_, key) return key end })
-function LibStub() return { GetLocale = function() return L end } end
+function LibStub()
+    return { GetLocale = function() return L end }
+end
 local handler, registered = nil, {}
 function CreateFrame()
     return {
@@ -12,7 +14,10 @@ function CreateFrame()
             assert(name ~= "COMBAT_LOG_EVENT_UNFILTERED")
             registered[name] = true
         end,
-        SetScript = function(_, name, fn) assert(name == "OnEvent"); handler = fn end,
+        SetScript = function(_, name, fn)
+            assert(name == "OnEvent")
+            handler = fn
+        end,
     }
 end
 local inside, map = false, 1411
@@ -26,13 +31,14 @@ function UnitIsTapDenied() return denied end
 function UnitCanAttack() return attackable end
 local step = { KillNPC = { npcID = 3100, name = "Boar" }, Zone = 1411 }
 local advanced, refreshed = 0, 0
-APR = { PlayerID = "one", ActiveRoute = "test", currentStep = {},
-    settings = { profile = { enableAddon = true } } }
+APR = { PlayerID = "one", ActiveRoute = "test", currentStep = {}, settings = { profile = { enableAddon = true } } }
 APRData = { one = { test = 1 }, two = { test = 1 } }
 function APR:GetCurrentStep() return step end
 function APR:GetRouteActionState()
     local token = self.PlayerID .. ":" .. self.ActiveRoute .. ":" .. APRData[self.PlayerID][self.ActiveRoute]
-    if not self.routeActionState or self.routeActionState.token ~= token then self.routeActionState = { token = token } end
+    if not self.routeActionState or self.routeActionState.token ~= token then
+        self.routeActionState = { token = token }
+    end
     return self.routeActionState
 end
 function APR:GetDungeonKillText(rule) return rule.name end
@@ -88,13 +94,19 @@ for _, invalid in ipairs({ "disabled", "npc", "map", "instance", "friendly", "ta
 end
 
 -- Losing a tap or crossing zones invalidates sightings, even on returning.
-reset(); handler(nil, "PLAYER_TARGET_CHANGED")
-denied = true; handler(nil, "UNIT_FACTION", "target")
-denied, dead = false, true; handler(nil, "UNIT_HEALTH", "target")
+reset()
+handler(nil, "PLAYER_TARGET_CHANGED")
+denied = true
+handler(nil, "UNIT_FACTION", "target")
+denied, dead = false, true
+handler(nil, "UNIT_HEALTH", "target")
 assert(not APR:IsOutdoorKillComplete(step))
-reset(); handler(nil, "PLAYER_TARGET_CHANGED")
-map = 1; handler(nil, "ZONE_CHANGED_NEW_AREA")
-map, dead = 1411, true; handler(nil, "UNIT_HEALTH", "target")
+reset()
+handler(nil, "PLAYER_TARGET_CHANGED")
+map = 1
+handler(nil, "ZONE_CHANGED_NEW_AREA")
+map, dead = 1411, true
+handler(nil, "UNIT_HEALTH", "target")
 assert(not APR:IsOutdoorKillComplete(step))
 
 -- Secret tokens/identity/death/tag/map/attackability never enter branches or keys.
@@ -113,8 +125,10 @@ for _, kind in ipairs({ "unit", "guid", "npc", "dead", "denied", "map", "attacka
 end
 
 -- Unit events can follow nameplates across target changes without health polling.
-reset(); handler(nil, "NAME_PLATE_UNIT_ADDED", "nameplate1")
-dead = true; handler(nil, "UNIT_HEALTH", "nameplate1")
+reset()
+handler(nil, "NAME_PLATE_UNIT_ADDED", "nameplate1")
+dead = true
+handler(nil, "UNIT_HEALTH", "nameplate1")
 assert(APR:IsOutdoorKillComplete(step))
 
 -- Route resets at step one still clear saved outdoor credit.

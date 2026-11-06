@@ -1,11 +1,18 @@
 local locale, version, handler = "frFR", "retail"
 function GetLocale() return locale end
-function LibStub() return { GetLocale = function() return {} end } end
-function CreateFrame() return { RegisterEvent = function() end, SetScript = function(_, _, fn) handler = fn end } end
+function LibStub()
+    return { GetLocale = function() return {} end }
+end
+function CreateFrame()
+    return { RegisterEvent = function() end, SetScript = function(_, _, fn) handler = fn end }
+end
 function IsInInstance() return true, "party" end
 function GetInstanceInfo() return "Ragefeu", "party", 0, "", 0, 0, false, 389 end
 function GetRealZoneText() return "Durotar" end
-function EJ_GetInstanceInfo(id) assert(id == 226); return "Gouffre de Ragefeu" end
+function EJ_GetInstanceInfo(id)
+    assert(id == 226)
+    return "Gouffre de Ragefeu"
+end
 BOSS, ENTER_DUNGEON, LEAVE_ZONE, UNKNOWN = "Boss", "Entrer", "Quitter %s", "Inconnu"
 APR = { PlayerID = "one", ActiveRoute = "test", settings = { profile = { enableAddon = true } } }
 APRData = { one = {} }
@@ -33,9 +40,16 @@ assert(APR:GetDungeonKillText(step.KillNPC) == "Boss: Dunkelschamane Koranthal",
 -- Forever without the adventure journal learns public localized encounter names.
 version, locale, EJ_GetCreatureInfo = "forever", "frFR", nil
 EJ_GetInstanceInfo = nil
-C_Map = { GetAreaInfo = function(areaID) assert(areaID == APR.DungeonData.forever.RFC.areaID); return "Gouffre de Ragefeu" end }
-assert(APR:GetDungeonTravelText({ EnterInstance = { dungeonKey = "RFC" } }) == "Entrer: Gouffre de Ragefeu",
-    "Travel uses the destination area rather than the player's current zone")
+C_Map = {
+    GetAreaInfo = function(areaID)
+        assert(areaID == APR.DungeonData.forever.RFC.areaID)
+        return "Gouffre de Ragefeu"
+    end,
+}
+assert(
+    APR:GetDungeonTravelText({ EnterInstance = { dungeonKey = "RFC" } }) == "Entrer: Gouffre de Ragefeu",
+    "Travel uses the destination area rather than the player's current zone"
+)
 step.KillNPC.npcID, step.KillNPC.name = 11520, "Taragaman the Hungerer"
 handler(nil, "ENCOUNTER_START", 2733, "Taragaman l'Affameur", 1, 5)
 assert(refreshes == 1 and APR:GetDungeonKillText(step.KillNPC) == "Boss: Taragaman l'Affameur")
@@ -48,8 +62,16 @@ function GetInstanceInfo() return "Ruines", "party", 0, "", 0, 0, false, 2999 en
 step = { Dungeon = "ROL", KillNPC = { dungeonKey = "ROL", npcID = 250660, name = "The Baron" } }
 handler(nil, "ENCOUNTER_START", 3355, "Le Boucher", 1, 5)
 assert(not APRData.NPCList[250660], "Encounter titles must not impersonate different NPC names")
-handler(nil, "ENCOUNTER_END", 3355, "Le Boucher", 1, 5, 1,
-    { { creatureID = 250660, creatureName = "Le Baron", remainingHealthPercent = 0 } })
+handler(
+    nil,
+    "ENCOUNTER_END",
+    3355,
+    "Le Boucher",
+    1,
+    5,
+    1,
+    { { creatureID = 250660, creatureName = "Le Baron", remainingHealthPercent = 0 } }
+)
 assert(APR:GetDungeonKillText(step.KillNPC) == "Boss: Le Baron")
 
 local secret = setmetatable({}, { __index = function() error("Secret name was read") end })

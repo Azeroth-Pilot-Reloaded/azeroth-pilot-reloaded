@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
     inputs:
       branch:
-        description: 'Branch'
+        description: "Branch"
         required: false
-        default: ''
+        default: ""
 
 permissions:
   contents: read

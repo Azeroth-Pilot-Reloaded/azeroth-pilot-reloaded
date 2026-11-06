@@ -70,7 +70,8 @@ function Instance:SelectAction(definition, character, metadata, checkpoint)
             local actionID, reagentID = option.id, option.reagentID
             local usable, reason
             if option.groupSpellID and character.inGroup then
-                usable, reason = self:GetActionUsability("spell", option.groupSpellID, character, metadata.ignoreCooldown)
+                usable, reason =
+                    self:GetActionUsability("spell", option.groupSpellID, character, metadata.ignoreCooldown)
                 MarkPending(metadata, reason)
                 if usable then
                     actionID, reagentID = option.groupSpellID, option.groupReagentID
@@ -113,10 +114,27 @@ end
 local nilKey = {}
 local unknownResult = {}
 local snapshotQueries = {
-    "isQuestCompleted", "isQuestCompletedOnAccount", "isQuestActive", "isAchievementCompleted", "hasAura", "hasToy", "getGarrisonLevel",
-    "getDynamicPosition", "getItemCount", "getActionUsability", "getActionCastSeconds",
-    "getSpellInfo", "getSpellName", "getItemName", "getAreaName", "getMapInfo", "getMapArtID", "getLocale", "getGlobalText",
-    "isHolidayActive", "getHousingInitiative",
+    "isQuestCompleted",
+    "isQuestCompletedOnAccount",
+    "isQuestActive",
+    "isAchievementCompleted",
+    "hasAura",
+    "hasToy",
+    "getGarrisonLevel",
+    "getDynamicPosition",
+    "getItemCount",
+    "getActionUsability",
+    "getActionCastSeconds",
+    "getSpellInfo",
+    "getSpellName",
+    "getItemName",
+    "getAreaName",
+    "getMapInfo",
+    "getMapArtID",
+    "getLocale",
+    "getGlobalText",
+    "isHolidayActive",
+    "getHousingInitiative",
 }
 
 local function MemoizeQuery(callback)
@@ -125,7 +143,10 @@ local function MemoizeQuery(callback)
         local firstKey = first == nil and nilKey or first
         if second == nil then
             local values = cache.unary
-            if not values then values = {}; cache.unary = values end
+            if not values then
+                values = {}
+                cache.unary = values
+            end
             local extras = cache.extraUnary
             local result = values[firstKey]
             if result == nil then
@@ -137,7 +158,10 @@ local function MemoizeQuery(callback)
                 -- A nested query may have created or populated this cache.
                 extras = cache.extraUnary
                 if extra ~= nil then
-                    if not extras then extras = {}; cache.extraUnary = extras end
+                    if not extras then
+                        extras = {}
+                        cache.extraUnary = extras
+                    end
                 end
                 if extras then extras[firstKey] = extra end
             end
@@ -145,7 +169,10 @@ local function MemoizeQuery(callback)
             return result, extras and extras[firstKey]
         end
         local binary = cache.binary
-        if not binary then binary = {}; cache.binary = binary end
+        if not binary then
+            binary = {}
+            cache.binary = binary
+        end
         local row = binary[firstKey]
         if not row then
             row = {}
@@ -205,9 +232,11 @@ end
 
 local function CreateDepartureCheck(owner, snapshot, requirements, character)
     local resultsByMap = {}
-    local departure = setmetatable({}, { __index = function(_, key)
-        if key ~= "mapID" then return character[key] end
-    end })
+    local departure = setmetatable({}, {
+        __index = function(_, key)
+            if key ~= "mapID" then return character[key] end
+        end,
+    })
     return function(position, live)
         if not position then return nil end
         if live then
@@ -215,9 +244,11 @@ local function CreateDepartureCheck(owner, snapshot, requirements, character)
             -- Snapshot caches are only for planning this particular route.
             local current = character
             if owner.env.getCharacter then current = owner.env.getCharacter() or {} end
-            local currentDeparture = setmetatable({ mapID = position.uiMapID }, { __index = function(_, key)
-                if key ~= "mapID" then return current[key] end
-            end })
+            local currentDeparture = setmetatable({ mapID = position.uiMapID }, {
+                __index = function(_, key)
+                    if key ~= "mapID" then return current[key] end
+                end,
+            })
             return owner:CheckRequirements(requirements, currentDeparture)
         end
 
@@ -252,7 +283,10 @@ function EdgeBuild:PrepareDefinition(definition, checkpoint)
 end
 
 local function IsUnknownOptionalPosition(definition)
-    return definition.dynamic == "bind" or definition.dynamic == "camp" or definition.dynamic == "housing" or definition.dynamic == "housing_exit"
+    return definition.dynamic == "bind"
+        or definition.dynamic == "camp"
+        or definition.dynamic == "housing"
+        or definition.dynamic == "housing_exit"
 end
 
 function EdgeBuild:AddResources(edge, definition, action)
@@ -378,12 +412,18 @@ function EdgeBuild:Advance()
         -- One connection can contain many hearthstone/toy alternatives. Yield
         -- between those native probes too, rather than treating the entire
         -- selection as one operation outside the scheduler's time budget.
-        self.preparation = self.preparation or coroutine.create(function()
-            return self:PrepareDefinition(definition, coroutine.yield)
-        end)
+        self.preparation = self.preparation
+            or coroutine.create(
+                function()
+                    return self:PrepareDefinition(definition, coroutine.yield)
+                end
+            )
         local ok
         ok, prepared = coroutine.resume(self.preparation)
-        if not ok then self.preparation = nil; error(prepared, 0) end
+        if not ok then
+            self.preparation = nil
+            error(prepared, 0)
+        end
         if coroutine.status(self.preparation) ~= "dead" then return end
         self.preparation = nil
     else
@@ -477,6 +517,8 @@ function Instance:BuildEdges(context)
     -- Compatibility helper for callers that intentionally want a synchronous
     -- result. Frame schedulers should retain a CreateEdgeBuild job instead.
     local build = self:CreateEdgeBuild(context)
-    while build.status == "planning" do build:Step(1024, math.huge) end
+    while build.status == "planning" do
+        build:Step(1024, math.huge)
+    end
     return build:GetResult()
 end

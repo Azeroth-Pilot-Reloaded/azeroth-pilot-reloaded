@@ -11,9 +11,14 @@ data.env.getCharacter = function() return { level = 90, faction = "Horde", class
 local route = "fixture-parent-guide"
 local context = { route = route, index = 8 }
 local original = { uiMapID = 104, instanceID = 3, x = -1343, y = -515.6 }
-local gate = { id = "karesh", from = { uiMapID = 101 }, blockedRequirements = {
-    minLevel = 80, any = { { quest = 12 }, { questActive = 12 } },
-} }
+local gate = {
+    id = "karesh",
+    from = { uiMapID = 101 },
+    blockedRequirements = {
+        minLevel = 80,
+        any = { { quest = 12 }, { questActive = 12 } },
+    },
+}
 APR.PlayerID, APR.ActiveRoute = "test", route
 function APR:CaptureStepContext() return context end
 function APR:IsStepContextCurrent(value) return value == context end
@@ -25,8 +30,11 @@ local function reset(attempted)
     if attempted then
         APRData.test.NavigationUnlockAttempts = { route = route, index = 8, edges = { karesh = true } }
     end
-    APR.navigation = { destination = original, updates = 0,
-        RequestUpdate = function(self) self.updates = self.updates + 1 end }
+    APR.navigation = {
+        destination = original,
+        updates = 0,
+        RequestUpdate = function(self) self.updates = self.updates + 1 end,
+    }
 end
 local failures = {}
 local function check(name, fn)
@@ -37,8 +45,10 @@ end
 check("orphaned saved attempt", function()
     reset(true)
     assert(APRData.test.NavigationUnlockState == nil and APR._navigationUnlock == nil)
-    assert(APR:StartNavigationUnlock({ gate }, context),
-        "A persisted attempt without a live/saved unlock must not permanently suppress this blocked entrance")
+    assert(
+        APR:StartNavigationUnlock({ gate }, context),
+        "A persisted attempt without a live/saved unlock must not permanently suppress this blocked entrance"
+    )
     assert(APR._navigationUnlock and APRData.test.NavigationUnlockState)
     assert(APR.navigation.dirty and APR.navigation.updates == 1)
     assert(APR.ActiveRoute == route and APRData.test[route] == 8)
@@ -53,10 +63,14 @@ check("idempotent active restore", function()
     assert(build:Step(1, 1) == "planning", "The regression covers a pending cooperative catalogue scan")
     for _ = 1, 3 do
         assert(APR:RestoreNavigationUnlockRoute())
-        assert(APR._navigationUnlock == state and APR._navigationUnlock.session == session,
-            "Repeated read-only restoration must reuse the active unlock session")
-        assert(session.build == build and build.status == "planning",
-            "Repeated route-map reads cannot cancel and restart pending unlock planning")
+        assert(
+            APR._navigationUnlock == state and APR._navigationUnlock.session == session,
+            "Repeated read-only restoration must reuse the active unlock session"
+        )
+        assert(
+            session.build == build and build.status == "planning",
+            "Repeated route-map reads cannot cancel and restart pending unlock planning"
+        )
     end
     assert(APR.ActiveRoute == route and APRData.test[route] == 8)
 end)

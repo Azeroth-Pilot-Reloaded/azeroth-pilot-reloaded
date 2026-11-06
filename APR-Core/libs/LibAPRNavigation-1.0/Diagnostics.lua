@@ -8,7 +8,9 @@ local Instance = Lib.Instance
 local function Describe(self, node, lines, depth, parentKey)
     -- Implicit conjunctions often wrap a single alternative. They carry no
     -- extra meaning and must not add another visual level.
-    while node.children and #node.children == 1 do node = node.children[1] end
+    while node.children and #node.children == 1 do
+        node = node.children[1]
+    end
     depth = depth or 2
     if node.children then
         if parentKey and node.key ~= parentKey then depth = depth + 2 end
@@ -27,17 +29,27 @@ local function Describe(self, node, lines, depth, parentKey)
         name = self.env.getQuestName and self.env.getQuestName(value)
     elseif key == "achievement" then
         name = self.env.getAchievementName and self.env.getAchievementName(value)
-    elseif key == "toyID" then name = self.env.getItemName and self.env.getItemName(value)
-    elseif key == "auraSpellID" or key == "spellKnown" or key == "spell" then name = self.env.getSpellName and self.env.getSpellName(value) end
+    elseif key == "toyID" then
+        name = self.env.getItemName and self.env.getItemName(value)
+    elseif key == "auraSpellID" or key == "spellKnown" or key == "spell" then
+        name = self.env.getSpellName and self.env.getSpellName(value)
+    end
     if (key == "currency" or key == "reputation" or key == "item" or key == "skill") and type(value) == "table" then
         local id = value.id or value.factionID
         local getter = key == "currency" and self.env.getCurrencyName
             or key == "reputation" and self.env.getReputationName
-            or key == "item" and self.env.getItemName or key == "skill" and self.env.getSkillName
+            or key == "item" and self.env.getItemName
+            or key == "skill" and self.env.getSkillName
         name = getter and getter(id)
         display = name and (name .. " [" .. tostring(id) .. "]") or tostring(id)
-        local minimum = value.amount or value.count or value.standing or value.minStanding
-            or value.minCount or value.min or value.level or value.minNativeValue
+        local minimum = value.amount
+            or value.count
+            or value.standing
+            or value.minStanding
+            or value.minCount
+            or value.min
+            or value.level
+            or value.minNativeValue
         if minimum ~= nil then display = display .. " ≥ " .. tostring(minimum) end
         if value.minAmount ~= nil or value.minStandingAmount ~= nil then
             display = display .. " (≥ " .. tostring(value.minStandingAmount or value.minAmount) .. ")"
@@ -47,9 +59,15 @@ local function Describe(self, node, lines, depth, parentKey)
     if type(value) == "boolean" then value = self:GetText(value and "NAVIGATION_YES" or "NAVIGATION_NO") end
     if type(value) == "table" then
         local ids = {}
-        for _, id in ipairs(value) do ids[#ids + 1] = tostring(id) end
-        value = #ids > 0 and table.concat(ids, ", ") or value.minLevel or value.artID
-            or (value.group and (value.group .. ": " .. tostring(value.phase))) or value.id or "?"
+        for _, id in ipairs(value) do
+            ids[#ids + 1] = tostring(id)
+        end
+        value = #ids > 0 and table.concat(ids, ", ")
+            or value.minLevel
+            or value.artID
+            or (value.group and (value.group .. ": " .. tostring(value.phase)))
+            or value.id
+            or "?"
     end
     local label = self:GetText("NAVIGATION_REQUIRES_" .. key)
     local text = string.format(label, display or (name and (name .. " [" .. tostring(value) .. "]") or tostring(value)))
@@ -65,7 +83,9 @@ function Instance:GetBlockedRouteText(blockers)
         if edge.blockedRequirements then
             local current = self.env.getCharacter and self.env.getCharacter() or {}
             local character = {}
-            for key, value in pairs(current) do if key ~= "mapID" then character[key] = value end end
+            for key, value in pairs(current) do
+                if key ~= "mapID" then character[key] = value end
+            end
             character.mapID = edge.from and edge.from.uiMapID
             local failure = self:GetRequirementFailures(edge.blockedRequirements, character)
             if failure then
@@ -81,25 +101,41 @@ function Instance:GetBlockedRouteText(blockers)
                 local name = getter and getter(option.id) or "?"
                 local reasonKey = "NAVIGATION_ACTION_" .. (reason or "unavailable")
                 local reasonText = self:GetText(reasonKey)
-                if not reasonText or reasonText == reasonKey then reasonText = self:GetText("NAVIGATION_ACTION_unavailable") end
-                reasons[#reasons + 1] = { { kind = "requirement",
-                    text = "  - " .. name .. " [" .. tostring(option.id) .. "]: " .. reasonText } }
+                if not reasonText or reasonText == reasonKey then
+                    reasonText = self:GetText("NAVIGATION_ACTION_unavailable")
+                end
+                reasons[#reasons + 1] = {
+                    {
+                        kind = "requirement",
+                        text = "  - " .. name .. " [" .. tostring(option.id) .. "]: " .. reasonText,
+                    },
+                }
             end
         end
-        local passage = { { kind = "spacer", text = "" },
-            { kind = "passage", text = edge.instruction or self:GetText("PATH_NOT_FOUND") } }
+        local passage = {
+            { kind = "spacer", text = "" },
+            { kind = "passage", text = edge.instruction or self:GetText("PATH_NOT_FOUND") },
+        }
         for index, reason in ipairs(reasons) do
             if index > 1 then
-                passage[#passage + 1] = { kind = "operator",
-                    text = "  " .. self:GetText("NAVIGATION_AND"):match("^%s*(.-)%s*$") }
+                passage[#passage + 1] = {
+                    kind = "operator",
+                    text = "  " .. self:GetText("NAVIGATION_AND"):match("^%s*(.-)%s*$"),
+                }
             end
-            for _, line in ipairs(reason) do passage[#passage + 1] = line end
+            for _, line in ipairs(reason) do
+                passage[#passage + 1] = line
+            end
         end
         local identity = {}
-        for _, line in ipairs(passage) do identity[#identity + 1] = line.text end
+        for _, line in ipairs(passage) do
+            identity[#identity + 1] = line.text
+        end
         local signature = table.concat(identity, "\n")
         if #reasons > 0 and not seen[signature] then
-            for _, line in ipairs(passage) do lines[#lines + 1] = line end
+            for _, line in ipairs(passage) do
+                lines[#lines + 1] = line
+            end
             seen[signature] = true
         end
     end
@@ -108,7 +144,9 @@ function Instance:GetBlockedRouteText(blockers)
         lines[#lines + 1] = { kind = "requirement", text = self:GetText("NAVIGATION_NO_KNOWN_PASSAGE") }
     end
     local text = {}
-    for _, line in ipairs(lines) do text[#text + 1] = line.text end
+    for _, line in ipairs(lines) do
+        text[#text + 1] = line.text
+    end
     -- Plain text stays usable outside WoW. Consumers may style the semantic
     -- lines without parsing translated strings or changing the explanation.
     return table.concat(text, "\n"), lines

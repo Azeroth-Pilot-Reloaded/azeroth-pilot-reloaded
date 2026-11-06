@@ -56,7 +56,11 @@ APR.LevelBonusSources = {
     },
     WarMode = {
         gameVersion = "retail",
-        isActive = --[[APR_DIAG]]APRTrace("APR-Core/config/LevelProfiles.lua:59:callback#1", --[[/APR_DIAG]]function() return C_PvP and C_PvP.IsWarModeActive and C_PvP.IsWarModeActive() or false end--[[APR_DIAG]])--[[/APR_DIAG]],
+        --[[APR_DIAG]]
+        isActive = APRTrace(
+            "APR-Core/config/LevelProfiles.lua:59:callback#1", --[[/APR_DIAG]]
+            function() return C_PvP and C_PvP.IsWarModeActive and C_PvP.IsWarModeActive() or false end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]],
         bonus = 15,
     },
     Below80Mentorship = {
@@ -93,8 +97,14 @@ APR.LevelBonusSources = {
 -- Fractional levels represent XP progress: 87.5 means level 87 with 50% XP.
 APR.LevelRequirementProfiles = {
     MidnightDelves = {
-        bonuses = { "MidnightMentorship", "WindsOfMysteriousFortune", "WarMode", "Timeways",
-            "MysteriousWisdom", "Darkmoon" },
+        bonuses = {
+            "MidnightMentorship",
+            "WindsOfMysteriousFortune",
+            "WarMode",
+            "Timeways",
+            "MysteriousWisdom",
+            "Darkmoon",
+        },
         -- Provisional full-tour anchor: 87.30 at 30% bonus, based on the report of
         -- six rewards taking ~87.8 to ~89.5 while four Silvermoon rewards were missed.
         -- At 87.30, XP remaining to 90 is 0.70 * 548535 + 570590 + 592980.
@@ -105,26 +115,26 @@ APR.LevelRequirementProfiles = {
         -- Derivation, assumptions and XP table source: wiki.md, Midnight Delver's Call Profile.
         levels = {
             -- Total active bonus -> required level
-            [0]   = 88.00,
-            [5]   = 87.85,
-            [10]  = 87.75,
-            [15]  = 87.65,
-            [20]  = 87.55,
-            [25]  = 87.45,
-            [30]  = 87.30,
-            [35]  = 87.30,
-            [40]  = 87.18,
-            [45]  = 86.88,
-            [50]  = 86.68,
-            [55]  = 86.38,
-            [60]  = 86.18,
-            [65]  = 85.88,
-            [70]  = 85.68,
-            [75]  = 85.38,
-            [80]  = 85.18,
-            [85]  = 84.88,
-            [90]  = 84.68,
-            [95]  = 84.38,
+            [0] = 88.00,
+            [5] = 87.85,
+            [10] = 87.75,
+            [15] = 87.65,
+            [20] = 87.55,
+            [25] = 87.45,
+            [30] = 87.30,
+            [35] = 87.30,
+            [40] = 87.18,
+            [45] = 86.88,
+            [50] = 86.68,
+            [55] = 86.38,
+            [60] = 86.18,
+            [65] = 85.88,
+            [70] = 85.68,
+            [75] = 85.38,
+            [80] = 85.18,
+            [85] = 84.88,
+            [90] = 84.68,
+            [95] = 84.38,
             [100] = 84.08,
             [105] = 83.88,
             [110] = 83.68,

@@ -15,80 +15,111 @@ function APR.routeconfig:SchedulePathUiRefresh(refreshStatus)
     self.pathUiRefreshStatus = self.pathUiRefreshStatus or refreshStatus ~= false
     if self.pathUiRefreshTimer then return end
     local timer
-    timer = C_Timer.NewTimer(0.05, --[[APR_DIAG]]APRTrace("APR-Core/config/Config_Route.lua:18:callback#2", --[[/APR_DIAG]]function()
-        if self.pathUiRefreshTimer ~= timer then return end
-        self.pathUiRefreshTimer = nil
-        if APR.stepUpdateRunning or APR.stepUpdatePending or APR.stepUpdateTimer then
-            self:SchedulePathUiRefresh(false)
-            return
-        end
-        local updateStatus = self.pathUiRefreshStatus
-        self.pathUiRefreshStatus = nil
-        local profileStart = APR:StartPerformanceSample()
-        APR.RouteBrowser:Refresh(true)
-        if updateStatus and APR.StatusFrame and APR.StatusFrame:IsShown() and APR.updateStatusFrame then
-            APR:updateStatusFrame()
-        end
-        APR:FinishPerformanceSample("RoutePathUiRefresh", profileStart)
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    timer = C_Timer.NewTimer(
+        0.05, --[[APR_DIAG]]
+        APRTrace("APR-Core/config/Config_Route.lua:18:callback#2", --[[/APR_DIAG]] function()
+            if self.pathUiRefreshTimer ~= timer then return end
+            self.pathUiRefreshTimer = nil
+            if APR.stepUpdateRunning or APR.stepUpdatePending or APR.stepUpdateTimer then
+                self:SchedulePathUiRefresh(false)
+                return
+            end
+            local updateStatus = self.pathUiRefreshStatus
+            self.pathUiRefreshStatus = nil
+            local profileStart = APR:StartPerformanceSample()
+            APR.RouteBrowser:Refresh(true)
+            if updateStatus and APR.StatusFrame and APR.StatusFrame:IsShown() and APR.updateStatusFrame then
+                APR:updateStatusFrame()
+            end
+            APR:FinishPerformanceSample("RoutePathUiRefresh", profileStart)
+        end --[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     self.pathUiRefreshTimer = timer
-end--[[APR_DIAG]]; APR.routeconfig.SchedulePathUiRefresh = APRTrace("APR-Core/config/Config_Route.lua:11:APR.routeconfig:SchedulePathUiRefresh#1", APR.routeconfig.SchedulePathUiRefresh)--[[/APR_DIAG]]
+end --[[APR_DIAG]]
+
+APR.routeconfig.SchedulePathUiRefresh = APRTrace(
+    "APR-Core/config/Config_Route.lua:11:APR.routeconfig:SchedulePathUiRefresh#1",
+    APR.routeconfig.SchedulePathUiRefresh
+) --[[/APR_DIAG]]
 
 function APR.routeconfig:InitRouteConfig()
     -- Catalog changes need not reset the active step or restart navigation.
-    APR.routeconfig:RegisterMessage("APR_Route_Catalog_Update", --[[APR_DIAG]]APRTrace("APR-Core/config/Config_Route.lua:39:callback#4", --[[/APR_DIAG]]function()
-        if APR.InvalidateDelveRouteIndex then APR:InvalidateDelveRouteIndex() end
-        self:SchedulePathUiRefresh(false)
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    APR.routeconfig:RegisterMessage(
+        "APR_Route_Catalog_Update", --[[APR_DIAG]]
+        APRTrace("APR-Core/config/Config_Route.lua:39:callback#4", --[[/APR_DIAG]] function()
+            if APR.InvalidateDelveRouteIndex then APR:InvalidateDelveRouteIndex() end
+            self:SchedulePathUiRefresh(false)
+        end --[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
 
-    APR.routeconfig:RegisterMessage("APR_Custom_Path_Update", --[[APR_DIAG]]APRTrace("APR-Core/config/Config_Route.lua:44:callback#5", --[[/APR_DIAG]]function()
-        -- Level-reset builders publish only their completed replacement path.
-        if self.levelResetBuild then
-            self.levelResetBuild.pathUpdate = true
-            return
-        end
-        self.levelResetRequest = nil
-        -- to trigger the frame
-        APR:Debug("Caller: APR.routeconfig:InitRouteConfig/Custom_Path_Update -> GetCurrentRouteMapIDsAndName")
-        APR.currentStep:Reset()
-        APR.Buff:RemoveAllBuffIcon()
+    APR.routeconfig:RegisterMessage(
+        "APR_Custom_Path_Update", --[[APR_DIAG]]
+        APRTrace("APR-Core/config/Config_Route.lua:44:callback#5", --[[/APR_DIAG]] function()
+            -- Level-reset builders publish only their completed replacement path.
+            if self.levelResetBuild then
+                self.levelResetBuild.pathUpdate = true
+                return
+            end
+            self.levelResetRequest = nil
+            -- to trigger the frame
+            APR:Debug("Caller: APR.routeconfig:InitRouteConfig/Custom_Path_Update -> GetCurrentRouteMapIDsAndName")
+            APR.currentStep:Reset()
+            APR.Buff:RemoveAllBuffIcon()
 
-        local routeZoneMapIDs, mapID, routeFileName, expansion = APR:GetCurrentRouteMapIDsAndName()
-        APR:ActivateRoute(routeFileName ~= "" and routeFileName or nil)
-        APR.XPBuffOverlay:QueueRefresh()
+            local routeZoneMapIDs, mapID, routeFileName, expansion = APR:GetCurrentRouteMapIDsAndName()
+            APR:ActivateRoute(routeFileName ~= "" and routeFileName or nil)
+            APR.XPBuffOverlay:QueueRefresh()
 
-        APR:UpdateMapId()
-        APR:UpdateStep()
+            APR:UpdateMapId()
+            APR:UpdateStep()
 
-        -- Invalidate zone check cache when route changes to ensure fresh detection
-        APR._lastRouteZoneCheck = nil
-        APR._lastRouteZoneResult = nil
+            -- Invalidate zone check cache when route changes to ensure fresh detection
+            APR._lastRouteZoneCheck = nil
+            APR._lastRouteZoneResult = nil
 
-        -- Trigger zone detection and navigation after loading new prefab routes
-        local profile = APR:GetSettingsProfile()
-        if APR.ActiveRoute and profile and profile.enableAddon then
-            APR:InvalidatePlayerZoneCache()
-        end
+            -- Trigger zone detection and navigation after loading new prefab routes
+            local profile = APR:GetSettingsProfile()
+            if APR.ActiveRoute and profile and profile.enableAddon then
+                APR:InvalidatePlayerZoneCache()
+            end
 
-        -- Completing several routes can emit this message while a step is rendering.
-        -- Rebuild the catalog/status once after the burst, outside the step transaction.
-        self:SchedulePathUiRefresh()
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
+            -- Completing several routes can emit this message while a step is rendering.
+            -- Rebuild the catalog/status once after the burst, outside the step transaction.
+            self:SchedulePathUiRefresh()
+        end --[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     return {
-        name = L["ROUTE_SELECTION"], type = "group",
+        name = L["ROUTE_SELECTION"],
+        type = "group",
         args = {
-            openRoutes = {type = "execute", order = 1, name = L["OPEN_ROUTE_OPTIONS"],
-                func = --[[APR_DIAG]]APRTrace("APR-Core/config/Config_Route.lua:81:callback#6", --[[/APR_DIAG]]function() APR.RouteBrowser:Show() end--[[APR_DIAG]])--[[/APR_DIAG]]},
+            openRoutes = {
+                type = "execute",
+                order = 1,
+                name = L["OPEN_ROUTE_OPTIONS"],
+                --[[APR_DIAG]]
+                func = APRTrace(
+                    "APR-Core/config/Config_Route.lua:81:callback#6", --[[/APR_DIAG]]
+                    function() APR.RouteBrowser:Show() end --[[APR_DIAG]]
+                ) --[[/APR_DIAG]],
+            },
         },
     }
-end--[[APR_DIAG]]; APR.routeconfig.InitRouteConfig = APRTrace("APR-Core/config/Config_Route.lua:37:APR.routeconfig:InitRouteConfig#3", APR.routeconfig.InitRouteConfig)--[[/APR_DIAG]]
+end --[[APR_DIAG]]
+
+APR.routeconfig.InitRouteConfig =
+    APRTrace("APR-Core/config/Config_Route.lua:37:APR.routeconfig:InitRouteConfig#3", APR.routeconfig.InitRouteConfig) --[[/APR_DIAG]]
 
 function APR.routeconfig:SendCustomPathUpdate(suppressUpdate)
     if suppressUpdate or self._isBuildingSpeedrunPrefab then
         return
     end
     self:SendMessage("APR_Custom_Path_Update")
-end--[[APR_DIAG]]; APR.routeconfig.SendCustomPathUpdate = APRTrace("APR-Core/config/Config_Route.lua:86:APR.routeconfig:SendCustomPathUpdate#7", APR.routeconfig.SendCustomPathUpdate)--[[/APR_DIAG]]
+end --[[APR_DIAG]]
+
+APR.routeconfig.SendCustomPathUpdate = APRTrace(
+    "APR-Core/config/Config_Route.lua:86:APR.routeconfig:SendCustomPathUpdate#7",
+    APR.routeconfig.SendCustomPathUpdate
+) --[[/APR_DIAG]]
 
 ---------------------------------------------------------------------------------------
 ------------------------------ Route config function ----------------------------------
@@ -103,7 +134,12 @@ function APR.routeconfig:HasRouteInCustomPath()
         return false
     end
     return true
-end--[[APR_DIAG]]; APR.routeconfig.HasRouteInCustomPath = APRTrace("APR-Core/config/Config_Route.lua:97:APR.routeconfig:HasRouteInCustomPath#8", APR.routeconfig.HasRouteInCustomPath)--[[/APR_DIAG]]
+end --[[APR_DIAG]]
+
+APR.routeconfig.HasRouteInCustomPath = APRTrace(
+    "APR-Core/config/Config_Route.lua:97:APR.routeconfig:HasRouteInCustomPath#8",
+    APR.routeconfig.HasRouteInCustomPath
+) --[[/APR_DIAG]]
 
 function APR.routeconfig:CheckIsCustomPathEmpty()
     APR:Debug("Function: APR.routeconfig:CheckIsCustomPathEmpty()")
@@ -120,21 +156,31 @@ function APR.routeconfig:CheckIsCustomPathEmpty()
         APR.Arrow.Active = false
         APR.party:SendGroupMessage()
     end
-end--[[APR_DIAG]]; APR.routeconfig.CheckIsCustomPathEmpty = APRTrace("APR-Core/config/Config_Route.lua:108:APR.routeconfig:CheckIsCustomPathEmpty#9", APR.routeconfig.CheckIsCustomPathEmpty)--[[/APR_DIAG]]
+end --[[APR_DIAG]]
+
+APR.routeconfig.CheckIsCustomPathEmpty = APRTrace(
+    "APR-Core/config/Config_Route.lua:108:APR.routeconfig:CheckIsCustomPathEmpty#9",
+    APR.routeconfig.CheckIsCustomPathEmpty
+) --[[/APR_DIAG]]
 
 local function GetLevelResetPrompt(routeData)
     if routeData and routeData.notSkippable then return nil end
     if APR.Level == 10 or APR.Level == APR.PreviousMaxLvl then
-        if APR.Level == APR.PreviousMaxLvl and routeData and
-            routeData.expansion == APR.EXPANSIONS.Midnight and
-            routeData.prefab and routeData.prefab[APR.PREFAB_TYPES.Speedrun] then
+        if
+            APR.Level == APR.PreviousMaxLvl
+            and routeData
+            and routeData.expansion == APR.EXPANSIONS.Midnight
+            and routeData.prefab
+            and routeData.prefab[APR.PREFAB_TYPES.Speedrun]
+        then
             return nil
         end
         return "RESET_ROUTE_FOR_SPEEDRUN"
     elseif APR.Level == APR.MaxLevelChromie then
         return "RESET_ROUTE_FOR_TWW"
     end
-end--[[APR_DIAG]]; GetLevelResetPrompt = APRTrace("APR-Core/config/Config_Route.lua:125:GetLevelResetPrompt#10", GetLevelResetPrompt)--[[/APR_DIAG]]
+end --[[APR_DIAG]]
+GetLevelResetPrompt = APRTrace("APR-Core/config/Config_Route.lua:125:GetLevelResetPrompt#10", GetLevelResetPrompt) --[[/APR_DIAG]]
 
 local function IsLevelResetPathCurrent(request)
     local count = 0
@@ -143,15 +189,25 @@ local function IsLevelResetPathCurrent(request)
         count = count + 1
     end
     return count == request.count
-end--[[APR_DIAG]]; IsLevelResetPathCurrent = APRTrace("APR-Core/config/Config_Route.lua:139:IsLevelResetPathCurrent#11", IsLevelResetPathCurrent)--[[/APR_DIAG]]
+end --[[APR_DIAG]]
+IsLevelResetPathCurrent =
+    APRTrace("APR-Core/config/Config_Route.lua:139:IsLevelResetPathCurrent#11", IsLevelResetPathCurrent) --[[/APR_DIAG]]
 
 local function IsLevelResetContextCurrent(request)
     local profile = APR:GetSettingsProfile()
-    return not request.cancelled and APR.PlayerID == request.player and APR.ActiveRoute == request.route and
-        APR.Level == request.level and profile == request.profile and (not profile or profile.enableAddon) and
-        APR:GetGameVersion() == APR.GAME_VERSIONS.Retail and APRCustomPath == request.paths and
-        APRCustomPath[request.player] == request.path and IsLevelResetPathCurrent(request)
-end--[[APR_DIAG]]; IsLevelResetContextCurrent = APRTrace("APR-Core/config/Config_Route.lua:148:IsLevelResetContextCurrent#12", IsLevelResetContextCurrent)--[[/APR_DIAG]]
+    return not request.cancelled
+        and APR.PlayerID == request.player
+        and APR.ActiveRoute == request.route
+        and APR.Level == request.level
+        and profile == request.profile
+        and (not profile or profile.enableAddon)
+        and APR:GetGameVersion() == APR.GAME_VERSIONS.Retail
+        and APRCustomPath == request.paths
+        and APRCustomPath[request.player] == request.path
+        and IsLevelResetPathCurrent(request)
+end --[[APR_DIAG]]
+IsLevelResetContextCurrent =
+    APRTrace("APR-Core/config/Config_Route.lua:148:IsLevelResetContextCurrent#12", IsLevelResetContextCurrent) --[[/APR_DIAG]]
 
 local function AcceptLevelReset(config, request)
     if config.levelResetRequest ~= request or config.levelResetBuild then return end
@@ -160,8 +216,14 @@ local function AcceptLevelReset(config, request)
     if not IsLevelResetContextCurrent(request) then return end
     local _, routeName = next(request.path)
     local routeKey = APR:GetRouteKeyFromDisplayName(routeName)
-    if routeKey ~= request.routeKey or GetLevelResetPrompt(APR:GetRouteData(routeKey)) ~= request.prompt or
-        config.levelResetRequest or not IsLevelResetContextCurrent(request) then return end
+    if
+        routeKey ~= request.routeKey
+        or GetLevelResetPrompt(APR:GetRouteData(routeKey)) ~= request.prompt
+        or config.levelResetRequest
+        or not IsLevelResetContextCurrent(request)
+    then
+        return
+    end
 
     -- Leveling owns its reset, including the preflight that can refuse it.
     if request.prompt ~= "RESET_ROUTE_FOR_SPEEDRUN" then
@@ -181,17 +243,26 @@ local function AcceptLevelReset(config, request)
     -- it during rollback or treat it as a result of this append-only builder.
     local ownsPath = APRCustomPath == request.paths and request.paths[request.player] == staged
     if request.paths[request.player] == staged then request.paths[request.player] = request.path end
-    local current = ownsPath and GetLevelResetPrompt(APR:GetRouteData(request.routeKey)) == request.prompt and
-        not config.levelResetRequest and IsLevelResetContextCurrent(request)
+    local current = ownsPath
+        and GetLevelResetPrompt(APR:GetRouteData(request.routeKey)) == request.prompt
+        and not config.levelResetRequest
+        and IsLevelResetContextCurrent(request)
     if ok and result ~= false and next(staged) and current then
         request.paths[request.player] = staged
         config:SendMessage("APR_Custom_Path_Update")
-    elseif build.pathUpdate and (APRCustomPath ~= request.paths or request.paths[request.player] ~= request.path or
-        not IsLevelResetPathCurrent(request)) then
+    elseif
+        build.pathUpdate
+        and (
+            APRCustomPath ~= request.paths
+            or request.paths[request.player] ~= request.path
+            or not IsLevelResetPathCurrent(request)
+        )
+    then
         config:SendMessage("APR_Custom_Path_Update")
     end
     if not ok then error(result, 0) end
-end--[[APR_DIAG]]; AcceptLevelReset = APRTrace("APR-Core/config/Config_Route.lua:156:AcceptLevelReset#13", AcceptLevelReset)--[[/APR_DIAG]]
+end --[[APR_DIAG]]
+AcceptLevelReset = APRTrace("APR-Core/config/Config_Route.lua:156:AcceptLevelReset#13", AcceptLevelReset) --[[/APR_DIAG]]
 
 function APR.routeconfig:CheckRouteResetOnLvlUp()
     self.levelResetRequest = nil
@@ -213,20 +284,40 @@ function APR.routeconfig:CheckRouteResetOnLvlUp()
     local prompt = GetLevelResetPrompt(currentRouteData)
     if not prompt then return end
     local request = {
-        player = APR.PlayerID, route = APR.ActiveRoute, level = APR.Level,
-        profile = profile, paths = APRCustomPath, path = path, entries = {}, count = 0,
-        routeKey = currentRouteKey, prompt = prompt,
+        player = APR.PlayerID,
+        route = APR.ActiveRoute,
+        level = APR.Level,
+        profile = profile,
+        paths = APRCustomPath,
+        path = path,
+        entries = {},
+        count = 0,
+        routeKey = currentRouteKey,
+        prompt = prompt,
     }
     for key, value in pairs(path) do
         request.entries[key] = value
         request.count = request.count + 1
     end
     self.levelResetRequest = request
-    APR.questionDialog:CreateQuestionPopup(prompt, string.format(L[prompt], APR.Level),
-        --[[APR_DIAG]]APRTrace("APR-Core/config/Config_Route.lua:226:callback#15", --[[/APR_DIAG]]function()
-            AcceptLevelReset(self, request)
-        end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/config/Config_Route.lua:228:callback#16", --[[/APR_DIAG]]function()
+    APR.questionDialog:CreateQuestionPopup(
+        prompt,
+        string.format(L[prompt], APR.Level),
+        --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/config/Config_Route.lua:226:callback#15", --[[/APR_DIAG]]
+            function()
+                AcceptLevelReset(self, request)
+            end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]], --[[APR_DIAG]]
+        APRTrace("APR-Core/config/Config_Route.lua:228:callback#16", --[[/APR_DIAG]] function()
             request.cancelled = true
             if self.levelResetRequest == request then self.levelResetRequest = nil end
-        end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.routeconfig.CheckRouteResetOnLvlUp = APRTrace("APR-Core/config/Config_Route.lua:196:APR.routeconfig:CheckRouteResetOnLvlUp#14", APR.routeconfig.CheckRouteResetOnLvlUp)--[[/APR_DIAG]]
+        end --[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+end --[[APR_DIAG]]
+
+APR.routeconfig.CheckRouteResetOnLvlUp = APRTrace(
+    "APR-Core/config/Config_Route.lua:196:APR.routeconfig:CheckRouteResetOnLvlUp#14",
+    APR.routeconfig.CheckRouteResetOnLvlUp
+) --[[/APR_DIAG]]

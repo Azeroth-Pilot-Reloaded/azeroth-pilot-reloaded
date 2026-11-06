@@ -20,7 +20,7 @@ function CreateFrame(kind, name, parent, template)
     end
     return frame
 end
-APR.Color.defaultLightBackdrop = {0, 0, 0, 1}
+APR.Color.defaultLightBackdrop = { 0, 0, 0, 1 }
 APR.settings.profile.enableAddon = true
 APR.settings.profile.heirloomFrame = {}
 APR.settings.db = { char = {} }
@@ -44,11 +44,11 @@ C_Spell = { GetSpellInfo = function(id) return { name = "Synthetic spell", iconI
 dofile("APR-Core/utils/ProfileUtils.lua")
 dofile("APR-Core/features/player/Heirloom.lua")
 local maps = {
-    {name = "map", id = 880001, faction = "Alliance", achievementID = 990001},
-    {name = "map", id = 880002, faction = "Neutral", achievementID = 990002},
-    {name = "map", id = 880003, faction = "Horde"},
-    {name = "map", id = 880004, faction = "Neutral"},
-    {name = "spellMap", id = 880005, spellID = 990005},
+    { name = "map", id = 880001, faction = "Alliance", achievementID = 990001 },
+    { name = "map", id = 880002, faction = "Neutral", achievementID = 990002 },
+    { name = "map", id = 880003, faction = "Horde" },
+    { name = "map", id = 880004, faction = "Neutral" },
+    { name = "spellMap", id = 880005, spellID = 990005 },
 }
 local function reminders() return maps end
 local module = APR.heirloom
@@ -60,7 +60,7 @@ module:HeirloomOnInit()
 local watcher = module.mapWatcher
 local function emit(event, ...) watcher.scripts.OnEvent(watcher, event, ...) end
 local function ids(...)
-    local expected = {...}
+    local expected = { ... }
     assert(#module.buttons == #expected, "Unexpected visible map count")
     for index, id in ipairs(expected) do
         assert(module.buttons[index] == module.iconButtons[id], "Unexpected visible map/order")
@@ -82,7 +82,9 @@ emit("UNIT_SPELLCAST_SUCCEEDED", "player", "cast", 12345)
 assert(next(APR.settings.db.char.usedHeirloomMaps) == nil)
 ids(880001, 880002, 880005)
 local before = loads
-for _ = 1, 100 do emit("UNIT_SPELLCAST_SUCCEEDED", "player", "cast", 12345) end
+for _ = 1, 100 do
+    emit("UNIT_SPELLCAST_SUCCEEDED", "player", "cast", 12345)
+end
 assert(loads == before, "Normal spellcasts must not request item data")
 local opaque = {}
 function APR:CanAccessValue(value) return value ~= opaque end

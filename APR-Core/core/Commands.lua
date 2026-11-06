@@ -12,41 +12,47 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 APR.command = APR:NewModule("Command")
 
 local function IsResetContextCurrent(settings, profile, enabled, playerID, activeRoute)
-    return APR.settings == settings and settings.profile == profile and profile.enableAddon == enabled
-        and APR.PlayerID == playerID and APR.ActiveRoute == activeRoute
-end--[[APR_DIAG]]; IsResetContextCurrent = APRTrace("APR-Core/core/Commands.lua:14:IsResetContextCurrent#1", IsResetContextCurrent)--[[/APR_DIAG]]
+    return APR.settings == settings
+        and settings.profile == profile
+        and profile.enableAddon == enabled
+        and APR.PlayerID == playerID
+        and APR.ActiveRoute == activeRoute
+end--[[APR_DIAG]]
+IsResetContextCurrent = APRTrace("APR-Core/core/Commands.lua:14:IsResetContextCurrent#1", IsResetContextCurrent)--[[/APR_DIAG]]
 
 -- Shared by chat help and the About page; each entry corresponds to a supported command below.
 function APR.command:GetHelpEntries()
     return {
-        {"/apr", L["SHOW_MENU"]},
-        {"/apr about", L["SHOW_ABOUT"]},
-        {"/apr coord", L["COORD_COMMAND"]},
-        {"/apr discord", L["DISCORD_COMMAND"]},
-        {"/apr forcereset, fr", L["FORCERESET_COMMAND"]},
-        {"/apr github", L["GITHUB_COMMAND"]},
-        {"/apr help, h", L["HELP_COMMAND"]},
-        {"/apr gamepad", L["GAMEPAD_MENU"]},
-        {"/apr gamepad debug", DEBUG or L["DEBUG"]},
-        {"/apr group", L["GF_HEADER_TOOLTIP"]},
-        {"/apr layout", L["UI_LAYOUT_TITLE"]},
-        {"/apr qol", L["QOL_COMMAND"]},
-        {"/apr reset, r", L["RESET_COMMAND"]},
-        {"/apr resetcustom", L["RESET_CUSTOM_COMMAND"]},
-        {"/apr rollback, rb", L["ROLLBACK_COMMAND"]},
-        {"/apr route", L["OPEN_ROUTE_OPTIONS"]},
-        {"/apr scribe, writer", L["SCRIBE_HEADER"]},
-        {"/apr skip, s, skippiedoodaa", L["SKIP_COMMAND"]},
-        {"/apr step", L["CURRENT_STEP"]},
-        {"/apr status", L["STATUS_COMMAND"]},
-        {"/apr zoneinfo, zi", L["ZONEINFO_COMMAND"]},
-        {"/apr zonecache", L["ZONECACHE_COMMAND"]},
-        {"/apr perf", L["UI_PERFORMANCE"]},
-        {"/apr perf on", L["UI_CAPTURE"]},
-        {"/apr perf off", L["UI_STOP"]},
-        {"/apr worldcoords, wc", L["UI_STATUS_WORLD_COORDINATES"]},
+        { "/apr", L["SHOW_MENU"] },
+        { "/apr about", L["SHOW_ABOUT"] },
+        { "/apr coord", L["COORD_COMMAND"] },
+        { "/apr discord", L["DISCORD_COMMAND"] },
+        { "/apr forcereset, fr", L["FORCERESET_COMMAND"] },
+        { "/apr github", L["GITHUB_COMMAND"] },
+        { "/apr help, h", L["HELP_COMMAND"] },
+        { "/apr gamepad", L["GAMEPAD_MENU"] },
+        { "/apr gamepad debug", DEBUG or L["DEBUG"] },
+        { "/apr group", L["GF_HEADER_TOOLTIP"] },
+        { "/apr layout", L["UI_LAYOUT_TITLE"] },
+        { "/apr qol", L["QOL_COMMAND"] },
+        { "/apr reset, r", L["RESET_COMMAND"] },
+        { "/apr resetcustom", L["RESET_CUSTOM_COMMAND"] },
+        { "/apr rollback, rb", L["ROLLBACK_COMMAND"] },
+        { "/apr route", L["OPEN_ROUTE_OPTIONS"] },
+        { "/apr scribe, writer", L["SCRIBE_HEADER"] },
+        { "/apr skip, s, skippiedoodaa", L["SKIP_COMMAND"] },
+        { "/apr step", L["CURRENT_STEP"] },
+        { "/apr status", L["STATUS_COMMAND"] },
+        { "/apr zoneinfo, zi", L["ZONEINFO_COMMAND"] },
+        { "/apr zonecache", L["ZONECACHE_COMMAND"] },
+        { "/apr perf", L["UI_PERFORMANCE"] },
+        { "/apr perf on", L["UI_CAPTURE"] },
+        { "/apr perf off", L["UI_STOP"] },
+        { "/apr worldcoords, wc", L["UI_STATUS_WORLD_COORDINATES"] },
     }
-end--[[APR_DIAG]]; APR.command.GetHelpEntries = APRTrace("APR-Core/core/Commands.lua:20:APR.command:GetHelpEntries#2", APR.command.GetHelpEntries)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.command.GetHelpEntries =
+    APRTrace("APR-Core/core/Commands.lua:20:APR.command:GetHelpEntries#2", APR.command.GetHelpEntries)--[[/APR_DIAG]]
 -- Chat commands, such as /apr reset, /apr skip, /apr skipcamp
 function APR.command:SlashCmd(input)
     local normalizedInput = APR:TrimString(input or "")
@@ -56,7 +62,7 @@ function APR.command:SlashCmd(input)
     if not APR.settings.profile.enableAddon then
         APR.settings:OpenSettings(APR.title)
         settingsOpened = true
-        APR:PrintInfo(L["ADDON"] .. ' ' .. L["DISABLE"])
+        APR:PrintInfo(L["ADDON"] .. " " .. L["DISABLE"])
     end
     if inputText == "gamepad debug" then
         APR.Gamepad:ShowDiagnostics()
@@ -88,9 +94,9 @@ function APR.command:SlashCmd(input)
         APR:PrintInfo(L["UI_PERF_CAPTURE_STOPPED"])
     elseif inputText == "perf" then
         APR.PerformanceDashboard:Show()
-    elseif (inputText == "step") then
+    elseif inputText == "step" then
         APR:PrintInfo(L["CURRENT_STEP"], APR:GetCurrentStep())
-    elseif (inputText == "reset" or inputText == "r") then
+    elseif inputText == "reset" or inputText == "r" then
         --Command to reset the current route
         local activeRoute = APR.ActiveRoute
         if activeRoute and activeRoute ~= "" then APR:ResetRoute(activeRoute) end
@@ -99,66 +105,84 @@ function APR.command:SlashCmd(input)
         if type(data) ~= "table" then return end
         local catalog, profile = data.CustomRoute, settings.profile
         local enabled, playerID, activeRoute = profile.enableAddon, APR.PlayerID, APR.ActiveRoute
-        APR:RequestReload(--[[APR_DIAG]]APRTrace("APR-Core/core/Commands.lua:102:callback#4", --[[/APR_DIAG]]function()
-            if not IsResetContextCurrent(settings, profile, enabled, playerID, activeRoute)
-                or APRData ~= data or data.CustomRoute ~= catalog then return false end
-            data.CustomRoute = {}
-        end--[[APR_DIAG]])--[[/APR_DIAG]], L["UI_RELOAD_RESET_CUSTOM_CONFIRM"])
-    elseif (inputText == "forcereset" or inputText == "fr") then
+        APR:RequestReload(--[[APR_DIAG]]
+            APRTrace("APR-Core/core/Commands.lua:102:callback#4", --[[/APR_DIAG]] function()
+                if
+                    not IsResetContextCurrent(settings, profile, enabled, playerID, activeRoute)
+                    or APRData ~= data
+                    or data.CustomRoute ~= catalog
+                then
+                    return false
+                end
+                data.CustomRoute = {}
+            end--[[APR_DIAG]]) --[[/APR_DIAG]],
+            L["UI_RELOAD_RESET_CUSTOM_CONFIRM"]
+        )
+    elseif inputText == "forcereset" or inputText == "fr" then
         local data, zones, paths = APRData, APRZoneCompleted, APRCustomPath
         local settings, playerID, activeRoute = APR.settings, APR.PlayerID, APR.ActiveRoute
         if playerID == nil or type(data) ~= "table" or type(zones) ~= "table" or type(paths) ~= "table" then return end
         local progress, completed, path = data[playerID], zones[playerID], paths[playerID]
         local profile = settings.profile
         local enabled = profile.enableAddon
-        APR:RequestReload(--[[APR_DIAG]]APRTrace("APR-Core/core/Commands.lua:114:callback#5", --[[/APR_DIAG]]function()
-            if not IsResetContextCurrent(settings, profile, enabled, playerID, activeRoute)
-                or APRData ~= data or APRZoneCompleted ~= zones or APRCustomPath ~= paths
-                or data[playerID] ~= progress or zones[playerID] ~= completed or paths[playerID] ~= path then
-                return false
-            end
-            data[playerID] = {}
-            zones[playerID] = {}
-            paths[playerID] = {}
-        end--[[APR_DIAG]])--[[/APR_DIAG]], L["UI_RELOAD_RESET_ROUTES_CONFIRM"])
-    elseif (inputText == "skip" or inputText == "s" or inputText == "skippiedoodaa") then
+        APR:RequestReload(--[[APR_DIAG]]
+            APRTrace("APR-Core/core/Commands.lua:114:callback#5", --[[/APR_DIAG]] function()
+                if
+                    not IsResetContextCurrent(settings, profile, enabled, playerID, activeRoute)
+                    or APRData ~= data
+                    or APRZoneCompleted ~= zones
+                    or APRCustomPath ~= paths
+                    or data[playerID] ~= progress
+                    or zones[playerID] ~= completed
+                    or paths[playerID] ~= path
+                then
+                    return false
+                end
+                data[playerID] = {}
+                zones[playerID] = {}
+                paths[playerID] = {}
+            end--[[APR_DIAG]]) --[[/APR_DIAG]],
+            L["UI_RELOAD_RESET_ROUTES_CONFIRM"]
+        )
+    elseif inputText == "skip" or inputText == "s" or inputText == "skippiedoodaa" then
         -- Command for skipping the current quest step
         APR:PrintInfo(L["SKIP"])
         APR:SkipQuestStep()
         APR:UpdateMapId()
-    elseif (inputText == "rollback" or inputText == "rb") then
+    elseif inputText == "rollback" or inputText == "rb" then
         -- Command for rollback the current quest step
         APR:PrintInfo(L["ROLLBACK"])
         APR:PreviousQuestStep()
         APR:UpdateMapId()
-    elseif (inputText == "qol") then
+    elseif inputText == "qol" then
         APR.settings.profile.showQuestOrderList = not APR.settings.profile.showQuestOrderList
         APR.questOrderList:RefreshFrameAnchor()
-    elseif (inputText == "discord") then
+    elseif inputText == "discord" then
         APR.UI:ShowTextReport("Discord", APR.discord)
-    elseif (inputText == "status") then
+    elseif inputText == "status" then
         APR:getStatus()
-    elseif (inputText == "github") then
+    elseif inputText == "github" then
         APR.UI:ShowTextReport("GitHub", APR.github)
-    elseif (inputText == "scribe" or inputText == "writer") then
+    elseif inputText == "scribe" or inputText == "writer" then
         APR.questionDialog:CreateMessagePopup(L["SCRIBE_HEADER"] .. "\n\n" .. L["SCRIBE"], CLOSE)
-    elseif inputText == 'coord' then
+    elseif inputText == "coord" then
         APR.settings.profile.coordinateShow = not APR.settings.profile.coordinateShow
         APR.coordinate:RefreshFrameAnchor()
-    elseif inputText == 'worldcoords' or inputText == 'wc' then
+    elseif inputText == "worldcoords" or inputText == "wc" then
         APR.worldCoordinateConverter:Show()
-    elseif inputText == 'route' then
+    elseif inputText == "route" then
         APR.settings:OpenSettings(L["ROUTE"])
-    elseif inputText == 'about' then
+    elseif inputText == "about" then
         APR.settings:OpenSettings(L["ABOUT_HELP"])
-    elseif inputText == '42' then
+    elseif inputText == "42" then
         PlaySoundFile("Interface\\Addons\\APR\\APR-Core\\assets\\sound\\42.mp3")
         local color = APR:GetTextColor("general", "warning")
         UIErrorsFrame:AddMessage(L["42_COMMAND"], color[1], color[2], color[3], color[4], UIERRORS_HOLD_TIME)
-    elseif inputText == 'zoneinfo' or inputText == 'zi' then
+    elseif inputText == "zoneinfo" or inputText == "zi" then
         -- Print detailed zone detection information
         local report = APR:GetZoneDetectionReport()
-        local msg = string.format(L["ZONEINFO_COMMAND_REPORT"],
+        local msg = string.format(
+            L["ZONEINFO_COMMAND_REPORT"],
             report.playerCurrent or 0,
             report.playerParent or 0,
             report.playerContinent or 0,
@@ -167,19 +191,23 @@ function APR.command:SlashCmd(input)
             report.cacheValid and YES or NO
         )
         APR:PrintInfo(msg)
-    elseif inputText == 'zonecache' then
+    elseif inputText == "zonecache" then
         -- Clear zone detection caches
         APR:InvalidatePlayerZoneCache()
         APR:InvalidateMapInfoCache()
         APR:PrintInfo(L["ZONECACHE_COMMAND_RESULT"])
-    elseif (inputText == "help" or inputText == "h") then
+    elseif inputText == "help" or inputText == "h" then
         local function printHelp(command, description)
             print(APR:WrapTextWithAppearanceColor(command, "general", "accent") .. " - " .. description)
-        end--[[APR_DIAG]]; printHelp = APRTrace("APR-Core/core/Commands.lua:176:printHelp#6", printHelp)--[[/APR_DIAG]]
+        end--[[APR_DIAG]]
+        printHelp = APRTrace("APR-Core/core/Commands.lua:176:printHelp#6", printHelp)--[[/APR_DIAG]]
 
         APR:PrintInfo(L["COMMAND_LIST"])
-        for _, entry in ipairs(self:GetHelpEntries()) do printHelp(entry[1], entry[2]) end
+        for _, entry in ipairs(self:GetHelpEntries()) do
+            printHelp(entry[1], entry[2])
+        end
     elseif not settingsOpened then
         APR.settings:OpenSettings(APR.title)
     end
-end--[[APR_DIAG]]; APR.command.SlashCmd = APRTrace("APR-Core/core/Commands.lua:51:APR.command:SlashCmd#3", APR.command.SlashCmd)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.command.SlashCmd = APRTrace("APR-Core/core/Commands.lua:51:APR.command:SlashCmd#3", APR.command.SlashCmd)--[[/APR_DIAG]]

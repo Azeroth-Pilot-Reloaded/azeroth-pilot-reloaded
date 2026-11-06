@@ -6,7 +6,9 @@ C_Timer = { After = function(_, callback) timers[#timers + 1] = callback end }
 local function drain()
     local pending = timers
     timers = {}
-    for _, callback in ipairs(pending) do callback() end
+    for _, callback in ipairs(pending) do
+        callback()
+    end
 end
 
 function APR:IsPetBattleActive() return false end

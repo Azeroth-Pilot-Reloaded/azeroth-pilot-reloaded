@@ -1,11 +1,19 @@
 -- A startup signature job must budget display-name resolution as well as bytes.
 local noop = function() end
 local locale = setmetatable({}, { __index = function(_, key) return key end })
-function LibStub() return { GetLocale = function() return locale end } end
+function LibStub()
+    return { GetLocale = function() return locale end }
+end
 function tinsert(values, value) values[#values + 1] = value end
-APR = { EXPANSIONS = { Test = "Test" }, PlayerID = "player", version = "1",
-    settings = { profile = { lastRecordedVersion = "1" } }, Debug = noop,
-    RouteQuestStepList = {}, questionDialog = { CreateMessagePopup = function() error("No reset expected") end } }
+APR = {
+    EXPANSIONS = { Test = "Test" },
+    PlayerID = "player",
+    version = "1",
+    settings = { profile = { lastRecordedVersion = "1" } },
+    Debug = noop,
+    RouteQuestStepList = {},
+    questionDialog = { CreateMessagePopup = function() error("No reset expected") end },
+}
 local state = { clock = 0, scans = 0, visibilityReads = 0, visibility = {} }
 local catalogue, keys = APR.RouteQuestStepList, {}
 for index = 1, 2000 do
@@ -18,8 +26,14 @@ local function declare(key, data)
     catalogue[key] = data
 end
 declare("z-shared", { label = "Shared", expansion = "Test", mapID = 30, steps = { {} } })
-declare("b-shared", { label = "Shared", legacyLabels = { "Legacy label" }, expansion = "Test", mapID = 20,
-    conditions = { Zones = { 20, 50, 20, 0 } }, steps = { {} } })
+declare("b-shared", {
+    label = "Shared",
+    legacyLabels = { "Legacy label" },
+    expansion = "Test",
+    mapID = 20,
+    conditions = { Zones = { 20, 50, 20, 0 } },
+    steps = { {} },
+})
 declare("a-shared", { label = "Shared", expansion = "Test", mapID = 10, steps = { {} } })
 local nativePairs, nativeSort = pairs, table.sort
 function pairs(values)
@@ -73,14 +87,19 @@ assert(select(3, APR:GetRouteMapIDsAndName("missing")) == "")
 
 declare("00-no-metadata", { label = "Shared", mapID = 2 })
 assert(APR:GetRouteKeyFromDisplayName("Shared") == "00-no-metadata")
-assert(select(3, APR:GetRouteMapIDsAndName("Shared")) == "a-shared",
-    "Map resolution retains its requirement for expansion metadata")
+assert(
+    select(3, APR:GetRouteMapIDsAndName("Shared")) == "a-shared",
+    "Map resolution retains its requirement for expansion metadata"
+)
 catalogue["00-no-metadata"].label = "Renamed"
 catalogue["a-shared"].label = "Renamed"
 assert(APR:GetRouteKeyFromDisplayName("Shared") == "b-shared", "In-place label changes are observed immediately")
 catalogue["a-shared"].label = "Shared"
 catalogue["b-shared"].legacyLabels[1] = "Changed alias"
-assert(APR:GetRouteKeyFromDisplayName("Legacy label") == nil and APR:GetRouteKeyFromDisplayName("Changed alias") == "b-shared")
+assert(
+    APR:GetRouteKeyFromDisplayName("Legacy label") == nil
+        and APR:GetRouteKeyFromDisplayName("Changed alias") == "b-shared"
+)
 catalogue["b-shared"].legacyLabels[1] = "Legacy label"
 
 local instrumentation = APRInstrumentation
@@ -110,8 +129,9 @@ assert(budgeted(function() return select(3, APR:GetRouteMapIDsAndName("Shared", 
 assert(state.scans == #keys and state.clock > 40 and batches > 10)
 
 -- Exercise the real startup caller, not just an optional argument in isolation.
-APRData = { player = { ["b-shared"] = 1, ["b-shared-RawTotalSteps"] = 1,
-    RouteSignatures = { ["b-shared"] = "unchanged" } } }
+APRData = {
+    player = { ["b-shared"] = 1, ["b-shared-RawTotalSteps"] = 1, RouteSignatures = { ["b-shared"] = "unchanged" } },
+}
 APRCustomPath, APRZoneCompleted = { player = { "Shared" } }, { player = { Shared = true } }
 state.visibility["a-shared"], state.visibility["b-shared"] = "hidden", "disabled"
 state.clock, state.scans, batches = 0, 0, 0
@@ -144,8 +164,12 @@ local function pendingSelection()
     return thread
 end
 local function unchanged()
-    assert(APRData.player["b-shared"] == 1 and APRData.player.RouteSignatures["b-shared"] == "unchanged"
-        and APRZoneCompleted.player.Shared, "A retired lookup publishes no partial saved-state change")
+    assert(
+        APRData.player["b-shared"] == 1
+            and APRData.player.RouteSignatures["b-shared"] == "unchanged"
+            and APRZoneCompleted.player.Shared,
+        "A retired lookup publishes no partial saved-state change"
+    )
 end
 local thread = pendingSelection()
 catalogue["b-shared"].label = "Renamed while suspended"
@@ -162,7 +186,9 @@ unchanged()
 catalogue["b-shared"] = previous
 thread = pendingSelection()
 local replacement = {}
-for key, value in nativePairs(catalogue) do replacement[key] = value end
+for key, value in nativePairs(catalogue) do
+    replacement[key] = value
+end
 APR.RouteQuestStepList = replacement
 assert(finish(thread) == false, "A replaced catalogue cannot publish the prior selection")
 unchanged()
@@ -173,12 +199,19 @@ APR.RouteQuestStepList = catalogue
 function APR:DeepCopyTable(value)
     if type(value) ~= "table" then return value end
     local copy = {}
-    for key, field in nativePairs(value) do copy[key] = self:DeepCopyTable(field) end
+    for key, field in nativePairs(value) do
+        copy[key] = self:DeepCopyTable(field)
+    end
     return copy
 end
 APR.CATEGORIES, APR._customRouteUpdatePending = { Miscellaneous = "Test" }, true
 thread = pendingSelection()
-assert(APR:RegisterCustomRoute("0-imported", { label = "Shared", expansion = "Test", category = "Test", mapID = 90, steps = { {} } }))
+assert(
+    APR:RegisterCustomRoute(
+        "0-imported",
+        { label = "Shared", expansion = "Test", category = "Test", mapID = 90, steps = { {} } }
+    )
+)
 keys[#keys + 1] = "0-imported"
 assert(finish(thread) == false, "An imported better alias retires the scan before resuming its catalogue iterator")
 unchanged()
@@ -187,4 +220,6 @@ assert(selected == "0-imported")
 assert(finish(coroutine.create(function() return APR:CheckCurrentRouteUpToDate(nil, checkpoint) end)))
 unchanged()
 table.sort, pairs = nativeSort, nativePairs
-print("Route labels: deterministic live aliases/visibility, no sorting, direct keys and budgeted completed-route scans passed")
+print(
+    "Route labels: deterministic live aliases/visibility, no sorting, direct keys and budgeted completed-route scans passed"
+)

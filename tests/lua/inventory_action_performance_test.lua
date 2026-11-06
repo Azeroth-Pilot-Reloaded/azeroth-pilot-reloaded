@@ -1,5 +1,7 @@
 local locale = setmetatable({}, { __index = function(_, key) return key end })
-function LibStub() return { GetLocale = function() return locale end } end
+function LibStub()
+    return { GetLocale = function() return locale end }
+end
 APR = { ResolveStepText = function(_, value) return value end }
 local reads, slotsAvailable = 0, true
 local bags = {}
@@ -24,7 +26,9 @@ C_Item = { GetItemInfo = function(id) return "item " .. id end }
 dofile("APR-Core/utils/LootUtils.lua")
 dofile("APR-Core/features/questing/RouteActions.lua")
 local items, expected = {}, {}
-for id = 1, 20 do items[id], expected[id] = id, "30 × item " .. id end
+for id = 1, 20 do
+    items[id], expected[id] = id, "30 × item " .. id
+end
 local rule = { items = items }
 local text = APR:GetRouteActionText("BankDeposit", rule, true)
 assert(text == "BANKDEPOSIT: " .. table.concat(expected, ", "))
@@ -40,26 +44,36 @@ assert(APR:GetRouteItemActionCount("DestroyItems", 999) == 0)
 
 reads = 0
 local preview = APR:GetRouteActionText("BankDeposit", { items = { 1, 999 } })
-assert(preview == "BANKDEPOSIT: item 1, item 999" and reads == 0,
-    "Future previews must not inspect today's bags")
+assert(preview == "BANKDEPOSIT: item 1, item 999" and reads == 0, "Future previews must not inspect today's bags")
 local closed = APR:GetRouteActionText("BankWithdraw", { items = { 1, 999 } }, true)
-assert(closed == "BANKWITHDRAW: item 1, item 999" and reads == 0,
-    "A closed bank has unknown quantities, not zero counts")
+assert(
+    closed == "BANKWITHDRAW: item 1, item 999" and reads == 0,
+    "A closed bank has unknown quantities, not zero counts"
+)
 
-bags[-1], bags[5], bags[11] = { [1] = { itemID = 1, stackCount = 7 } },
-    { [1] = { itemID = 1, stackCount = 2 } }, { [40] = { itemID = 2, stackCount = 4 } }
+bags[-1], bags[5], bags[11] =
+    { [1] = { itemID = 1, stackCount = 7 } },
+    { [1] = { itemID = 1, stackCount = 2 } },
+    { [40] = { itemID = 2, stackCount = 4 } }
 APR.routeBankOpen = true
 reads = 0
-assert(APR:GetRouteActionText("BankWithdraw", { items = { 1, 2, 999 } }, true)
-    == "BANKWITHDRAW: 9 × item 1, 4 × item 2, 0 × item 999")
+assert(
+    APR:GetRouteActionText("BankWithdraw", { items = { 1, 2, 999 } }, true)
+        == "BANKWITHDRAW: 9 × item 1, 4 × item 2, 0 × item 999"
+)
 assert(reads == 120, "Withdrawals scan only bank containers once")
 
 slotsAvailable, reads = false, 0
-assert(APR:GetRouteActionText("BankDeposit", { items = { 1, 2 } }, true)
-    == "BANKDEPOSIT: item 1, item 2",
-    "A partially unavailable container invalidates all counts instead of showing partial totals")
+assert(
+    APR:GetRouteActionText("BankDeposit", { items = { 1, 2 } }, true) == "BANKDEPOSIT: item 1, item 2",
+    "A partially unavailable container invalidates all counts instead of showing partial totals"
+)
 assert(reads == 160)
 slotsAvailable, reads = true, 0
-assert(APR:GetRouteActionText("BankDeposit", { items = {} }, true) == "BANKDEPOSIT" and reads == 0,
-    "Empty target lists do not scan inventory")
-print("Inventory action labels: 20 items share one 200-slot scan; fresh inventory, unknown banks, partial data and previews passed")
+assert(
+    APR:GetRouteActionText("BankDeposit", { items = {} }, true) == "BANKDEPOSIT" and reads == 0,
+    "Empty target lists do not scan inventory"
+)
+print(
+    "Inventory action labels: 20 items share one 200-slot scan; fresh inventory, unknown banks, partial data and previews passed"
+)

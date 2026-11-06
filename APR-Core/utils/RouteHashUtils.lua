@@ -12,7 +12,8 @@ local NATIVE_SORT_LIMIT = 64
 
 local function LegacyKeyLess(a, b)
     return tostring(a) < tostring(b)
-end--[[APR_DIAG]]; LegacyKeyLess = APRTrace("APR-Core/utils/RouteHashUtils.lua:13:LegacyKeyLess#1", LegacyKeyLess)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+LegacyKeyLess = APRTrace("APR-Core/utils/RouteHashUtils.lua:13:LegacyKeyLess#1", LegacyKeyLess)--[[/APR_DIAG]]
 
 -- Build a stable signature for a route to spot changes even when step counts stay identical.
 function APR:GetRouteSignature(routeFileName, checkpoint)
@@ -27,8 +28,11 @@ function APR:GetRouteSignature(routeFileName, checkpoint)
 
     for root = 1, 2 do
         local value
-        if root == 1 then value = routeData.steps or routeData
-        else value = routeData.parallelSteps or {} end
+        if root == 1 then
+            value = routeData.steps or routeData
+        else
+            value = routeData.parallelSteps or {}
+        end
 
         while true do
             local descending = false
@@ -51,10 +55,15 @@ function APR:GetRouteSignature(routeFileName, checkpoint)
                         strings = strings and keyType == "string"
                         if keyType == "number" and key >= 1 and key < 1e14 and key % 1 == 0 then
                             if key > maximum then maximum = key end
-                        else dense = false end
+                        else
+                            dense = false
+                        end
                     end
                     work = work + 1
-                    if checkpoint and work >= CHECKPOINT_WORK then work = 0; checkpoint() end
+                    if checkpoint and work >= CHECKPOINT_WORK then
+                        work = 0
+                        checkpoint()
+                    end
                 end
                 dense = dense and count == maximum
 
@@ -78,12 +87,17 @@ function APR:GetRouteSignature(routeFileName, checkpoint)
                                 local left, right = first, middle
                                 for index = first, last do
                                     if left < middle and (right > last or from[left] < from[right]) then
-                                        into[index] = from[left]; left = left + 1
+                                        into[index] = from[left]
+                                        left = left + 1
                                     else
-                                        into[index] = from[right]; right = right + 1
+                                        into[index] = from[right]
+                                        right = right + 1
                                     end
                                     work = work + 1
-                                    if checkpoint and work >= CHECKPOINT_WORK then work = 0; checkpoint() end
+                                    if checkpoint and work >= CHECKPOINT_WORK then
+                                        work = 0
+                                        checkpoint()
+                                    end
                                 end
                             end
                             from, into, width = into, from, width * 2
@@ -93,7 +107,10 @@ function APR:GetRouteSignature(routeFileName, checkpoint)
                             keys[i] = from[i]
                             frame.scratch[i] = nil
                             work = work + 1
-                            if checkpoint and work >= CHECKPOINT_WORK then work = 0; checkpoint() end
+                            if checkpoint and work >= CHECKPOINT_WORK then
+                                work = 0
+                                checkpoint()
+                            end
                         end
                     end
                 end
@@ -123,7 +140,10 @@ function APR:GetRouteSignature(routeFileName, checkpoint)
                             end
                             work = work + last - first + 1
                             first = last + 1
-                            if work >= CHECKPOINT_WORK then work = 0; checkpoint() end
+                            if work >= CHECKPOINT_WORK then
+                                work = 0
+                                checkpoint()
+                            end
                         end
                     else
                         for i = 1, #text do
@@ -134,7 +154,10 @@ function APR:GetRouteSignature(routeFileName, checkpoint)
                 hash = band(bxor(hash, 0) * FNV_PRIME, 0xFFFFFFFF)
                 work = work + 1
             end
-            if checkpoint and work >= CHECKPOINT_WORK then work = 0; checkpoint() end
+            if checkpoint and work >= CHECKPOINT_WORK then
+                work = 0
+                checkpoint()
+            end
 
             if not descending then
                 -- Finish a child, then visit its value or the next key. Read the
@@ -153,13 +176,18 @@ function APR:GetRouteSignature(routeFileName, checkpoint)
                             -- The scan proved a complete positive integer range
                             -- below tostring's scientific-notation boundary.
                             local key = frame.key
-                            if key * 10 <= frame.count then key = key * 10
+                            if key * 10 <= frame.count then
+                                key = key * 10
                             else
-                                while key % 10 == 9 or key == frame.count do key = math.floor(key / 10) end
+                                while key % 10 == 9 or key == frame.count do
+                                    key = math.floor(key / 10)
+                                end
                                 key = key + 1
                             end
                             frame.key = key
-                        else frame.key = frame.keys[frame.index] end
+                        else
+                            frame.key = frame.keys[frame.index]
+                        end
                         value, frame.readValue = frame.key, true
                         break
                     end
@@ -168,7 +196,10 @@ function APR:GetRouteSignature(routeFileName, checkpoint)
                     frame.source, frame.key = nil, nil
                     depth = depth - 1
                     work = work + 1
-                    if checkpoint and work >= CHECKPOINT_WORK then work = 0; checkpoint() end
+                    if checkpoint and work >= CHECKPOINT_WORK then
+                        work = 0
+                        checkpoint()
+                    end
                 end
                 if depth == 0 then break end
             end
@@ -177,4 +208,5 @@ function APR:GetRouteSignature(routeFileName, checkpoint)
 
     if checkpoint and work > 0 then checkpoint() end
     return string.format("%08x", hash)
-end--[[APR_DIAG]]; APR.GetRouteSignature = APRTrace("APR-Core/utils/RouteHashUtils.lua:18:APR:GetRouteSignature#2", APR.GetRouteSignature)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetRouteSignature = APRTrace("APR-Core/utils/RouteHashUtils.lua:18:APR:GetRouteSignature#2", APR.GetRouteSignature)--[[/APR_DIAG]]

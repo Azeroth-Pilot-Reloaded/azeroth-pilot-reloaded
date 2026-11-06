@@ -2,7 +2,7 @@ name: Update TOC Interface versions
 
 on:
   schedule:
-    - cron: '17 4 * * *'
+    - cron: "17 4 * * *"
   workflow_dispatch:
 
 permissions:
@@ -23,7 +23,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v7
         with:
-          python-version: '3.13'
+          python-version: "3.13"
 
       - name: Test the updater
         run: |

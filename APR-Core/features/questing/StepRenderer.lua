@@ -10,7 +10,8 @@ local handlers = APR.stepHandlers
 
 local function ActionTextScope(scope, action)
     if APR.currentStep.SetActionTextScope then APR.currentStep:SetActionTextScope(scope, action) end
-end--[[APR_DIAG]]; ActionTextScope = APRTrace("APR-Core/features/questing/StepRenderer.lua:11:ActionTextScope#1", ActionTextScope)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+ActionTextScope = APRTrace("APR-Core/features/questing/StepRenderer.lua:11:ActionTextScope#1", ActionTextScope)--[[/APR_DIAG]]
 
 local function CheckChromieTimeline(id)
     local level = APR.Level
@@ -22,14 +23,19 @@ local function CheckChromieTimeline(id)
     if not chromieExpansionOption then
         APR.currentStep:AddExtraLineText("NOT_IN_CHROMIE_TIMELINE", L["NOT_IN_CHROMIE_TIMELINE"])
     elseif chromieExpansionOption.alreadyOn == false then
-        APR.currentStep:AddExtraLineText("SWITCH_TO_CHROMIE" .. chromieExpansionOption.name,
-            string.format(L["SWITCH_TO_CHROMIE"], chromieExpansionOption.name))
+        APR.currentStep:AddExtraLineText(
+            "SWITCH_TO_CHROMIE" .. chromieExpansionOption.name,
+            string.format(L["SWITCH_TO_CHROMIE"], chromieExpansionOption.name)
+        )
     end
-end--[[APR_DIAG]]; CheckChromieTimeline = APRTrace("APR-Core/features/questing/StepRenderer.lua:15:CheckChromieTimeline#2", CheckChromieTimeline)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+CheckChromieTimeline =
+    APRTrace("APR-Core/features/questing/StepRenderer.lua:15:CheckChromieTimeline#2", CheckChromieTimeline)--[[/APR_DIAG]]
 
 local function CompareExtraLines(a, b)
     return a.key < b.key
-end--[[APR_DIAG]]; CompareExtraLines = APRTrace("APR-Core/features/questing/StepRenderer.lua:30:CompareExtraLines#3", CompareExtraLines)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+CompareExtraLines = APRTrace("APR-Core/features/questing/StepRenderer.lua:30:CompareExtraLines#3", CompareExtraLines)--[[/APR_DIAG]]
 
 -- Preserve route action precedence, including mixed legacy step definitions.
 function handlers.RenderPrimary(step, showStepDetails, currentStepIndex)
@@ -37,23 +43,23 @@ function handlers.RenderPrimary(step, showStepDetails, currentStepIndex)
         return APR:RenderDungeonKill(step, showStepDetails)
     elseif step.LootMoney then
         return handlers.LootMoney(step, showStepDetails, currentStepIndex)
-    elseif (step.Qpart) then
+    elseif step.Qpart then
         return handlers.Qpart(step, showStepDetails, currentStepIndex)
-    elseif (step.ExitTutorial) then
+    elseif step.ExitTutorial then
         return handlers.ExitTutorial(step, showStepDetails, currentStepIndex)
-    elseif (step.PickUp) then
+    elseif step.PickUp then
         return handlers.PickUp(step, showStepDetails, currentStepIndex)
     elseif step.TakePortal then
         return handlers.TakePortal(step, showStepDetails, currentStepIndex)
     elseif APR:IsTransportStep(step) then
         return handlers.Transport(step, showStepDetails, currentStepIndex)
-    elseif (step.Waypoint) then
+    elseif step.Waypoint then
         return handlers.Waypoint(step, showStepDetails, currentStepIndex)
-    elseif (step.Treasure) then
+    elseif step.Treasure then
         return handlers.Treasure(step, showStepDetails, currentStepIndex)
-    elseif (step.DropQuest) then
+    elseif step.DropQuest then
         return handlers.DropQuest(step, showStepDetails, currentStepIndex)
-    elseif (step.Done) then
+    elseif step.Done then
         return handlers.Done(step, showStepDetails, currentStepIndex)
     elseif step.UseItem then
         return handlers.UseItem(step, showStepDetails, currentStepIndex)
@@ -61,13 +67,13 @@ function handlers.RenderPrimary(step, showStepDetails, currentStepIndex)
         return handlers.UseSpell(step, showStepDetails, currentStepIndex)
     elseif step.UseHS or step.UseDalaHS or step.UseGarrisonHS or step.UseSpell then
         return handlers.UseHS(step, showStepDetails, currentStepIndex)
-    elseif (step.SetHS) then
+    elseif step.SetHS then
         return handlers.SetHS(step, showStepDetails, currentStepIndex)
-    elseif (step.GetFP) then
+    elseif step.GetFP then
         return handlers.GetFP(step, showStepDetails, currentStepIndex)
-    elseif (step.UseFlightPath) then
+    elseif step.UseFlightPath then
         return handlers.UseFlightPath(step, showStepDetails, currentStepIndex)
-    elseif (step.Group) then
+    elseif step.Group then
         return handlers.Group(step, showStepDetails, currentStepIndex)
     elseif step.QpartPart then
         return handlers.QpartPart(step, showStepDetails, currentStepIndex)
@@ -76,7 +82,9 @@ function handlers.RenderPrimary(step, showStepDetails, currentStepIndex)
     elseif step.GossipOptionIDs and not APR:HasAnyMainStepOption(step) then
         return handlers.GossipOptionIDs(step, showStepDetails, currentStepIndex)
     end
-end--[[APR_DIAG]]; handlers.RenderPrimary = APRTrace("APR-Core/features/questing/StepRenderer.lua:35:handlers.RenderPrimary#4", handlers.RenderPrimary)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+handlers.RenderPrimary =
+    APRTrace("APR-Core/features/questing/StepRenderer.lua:35:handlers.RenderPrimary#4", handlers.RenderPrimary)--[[/APR_DIAG]]
 
 function APR:RenderCurrentStep()
     if not APR.settings.profile.enableAddon then
@@ -84,7 +92,7 @@ function APR:RenderCurrentStep()
     end
     if self.RefreshNavigationUnlockRoute and self:RefreshNavigationUnlockRoute() then return end
 
-    if (APR.ActiveRoute and not APRData[APR.PlayerID][APR.ActiveRoute]) then
+    if APR.ActiveRoute and not APRData[APR.PlayerID][APR.ActiveRoute] then
         APR:SetRouteProgress(APR.ActiveRoute, 1, "initialize")
     end
 
@@ -143,8 +151,9 @@ function APR:RenderCurrentStep()
 
         -- Sojourner campaign auto-skip: skip campaign steps on eligible Sojourner routes
         if APR:ShouldSojournerSkipStep(step) then
-            APRData[APR.PlayerID][APR.ActiveRoute .. '-SkippedStep'] = (APRData[APR.PlayerID]
-                [APR.ActiveRoute .. '-SkippedStep'] or 0) + 1
+            APRData[APR.PlayerID][APR.ActiveRoute .. "-SkippedStep"] = (
+                APRData[APR.PlayerID][APR.ActiveRoute .. "-SkippedStep"] or 0
+            ) + 1
             APR:UpdateNextStep()
             return
         end
@@ -160,7 +169,7 @@ function APR:RenderCurrentStep()
         APR.Arrow.currentStep = 0
         APR.Arrow:SetCoord()
 
-        if (APR.ActiveRoute) then
+        if APR.ActiveRoute then
             local activeRouteData = APR.RouteQuestStepList[APR.ActiveRoute]
             local activeExpansion = activeRouteData and activeRouteData.expansion
 
@@ -204,19 +213,19 @@ function APR:RenderCurrentStep()
             ActionTextScope("primary")
             local noteLines = APR:ResolveStepTextList(step.Note)
             for index, note in ipairs(noteLines) do
-                APR.currentStep:AddExtraLineText(
-                    "NOTE_" .. tostring(index),
-                    note.text,
-                    note.color,
-                    false
-                )
+                APR.currentStep:AddExtraLineText("NOTE_" .. tostring(index), note.text, note.color, false)
             end
         end
 
         if showStepDetails and step.Emote then
             ActionTextScope("primary")
-            APR.currentStep:AddQuestSteps("EMOTE", string.format(L["PERFORM_EMOTE"], step.Emote.emote),
-                "Emote", false, true)
+            APR.currentStep:AddQuestSteps(
+                "EMOTE",
+                string.format(L["PERFORM_EMOTE"], step.Emote.emote),
+                "Emote",
+                false,
+                true
+            )
             APR.currentStep:AddStepButton("EMOTE-Emote", step.Emote.emote, "emote")
         end
 
@@ -235,13 +244,20 @@ function APR:RenderCurrentStep()
         ActionTextScope("primary")
         if handlers.HandleExtraLine(step.ExtraLine) then return end
 
-
         -- REWORK LOA (BfA Loa pick)
-        if step.PickedLoa and step.PickedLoa == 2 and (APR.ActiveQuests[47440] or C_QuestLog.IsQuestFlaggedCompleted(47440)) then
+        if
+            step.PickedLoa
+            and step.PickedLoa == 2
+            and (APR.ActiveQuests[47440] or C_QuestLog.IsQuestFlaggedCompleted(47440))
+        then
             APR:UpdateNextStep()
             APR:Debug("PickedLoa Skip 2 step:" .. currentStepIndex)
             return
-        elseif step.PickedLoa and step.PickedLoa == 1 and (APR.ActiveQuests[47439] or C_QuestLog.IsQuestFlaggedCompleted(47439)) then
+        elseif
+            step.PickedLoa
+            and step.PickedLoa == 1
+            and (APR.ActiveQuests[47439] or C_QuestLog.IsQuestFlaggedCompleted(47439))
+        then
             APR:UpdateNextStep()
             APR:Debug("PickedLoa Skip 1 step:" .. currentStepIndex)
             return
@@ -311,14 +327,18 @@ function APR:RenderCurrentStep()
             if showStepDetails then
                 APR.currentStep:AddQuestSteps("RESET_ROUTE", L["RESET_ROUTE"], "ResetRoute", false, true)
             end
-            APR.questionDialog:CreateQuestionPopup("RESET", "RESET" .. "?", --[[APR_DIAG]]APRTrace("APR-Core/features/questing/StepRenderer.lua:314:callback#6", --[[/APR_DIAG]]function()
-                if not APR:IsStepContextCurrent(context) then return end
-                APR:SetRouteProgress(APR.ActiveRoute, 1, "reset")
-                APR:PrintInfo(L["RESET_ROUTE"])
-                APR:UpdateQuestAndStep()
-            end--[[APR_DIAG]])--[[/APR_DIAG]])
+            APR.questionDialog:CreateQuestionPopup(
+                "RESET",
+                "RESET" .. "?", --[[APR_DIAG]]
+                APRTrace("APR-Core/features/questing/StepRenderer.lua:314:callback#6", --[[/APR_DIAG]] function()
+                    if not APR:IsStepContextCurrent(context) then return end
+                    APR:SetRouteProgress(APR.ActiveRoute, 1, "reset")
+                    APR:PrintInfo(L["RESET_ROUTE"])
+                    APR:UpdateQuestAndStep()
+                end--[[APR_DIAG]]) --[[/APR_DIAG]]
+            )
         end
-        if (step.RouteCompleted) then
+        if step.RouteCompleted then
             if APR:IsTemporaryRouteActive() then
                 APR:ClearTemporaryRoute({ completed = true, preserveSessionKey = true })
                 return
@@ -343,13 +363,16 @@ function APR:RenderCurrentStep()
                 tremove(APRCustomPath[APR.PlayerID], index)
                 APR.routeconfig:CheckIsCustomPathEmpty()
                 APR.routeconfig:SendMessage("APR_Custom_Path_Update")
-            end--[[APR_DIAG]]; finalizeRouteCompletion = APRTrace("APR-Core/features/questing/StepRenderer.lua:341:finalizeRouteCompletion#7", finalizeRouteCompletion)--[[/APR_DIAG]]
+            end--[[APR_DIAG]]
+            finalizeRouteCompletion = APRTrace(
+                "APR-Core/features/questing/StepRenderer.lua:341:finalizeRouteCompletion#7",
+                finalizeRouteCompletion
+            )--[[/APR_DIAG]]
 
             -- Suggest next routes immediately; finalize after selection/skip/cancel
             APR:SuggestNextRoutes(completedRouteKey, finalizeRouteCompletion)
             return
         end
-
 
         -- Set Quest Item Button
         ActionTextScope("secondary")
@@ -374,4 +397,6 @@ function APR:RenderCurrentStep()
 
         APR.routeconfig:CheckIsCustomPathEmpty()
     end
-end--[[APR_DIAG]]; APR.RenderCurrentStep = APRTrace("APR-Core/features/questing/StepRenderer.lua:81:APR:RenderCurrentStep#5", APR.RenderCurrentStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.RenderCurrentStep =
+    APRTrace("APR-Core/features/questing/StepRenderer.lua:81:APR:RenderCurrentStep#5", APR.RenderCurrentStep)--[[/APR_DIAG]]

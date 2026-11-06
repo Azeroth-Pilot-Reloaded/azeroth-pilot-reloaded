@@ -41,7 +41,9 @@ function APR:IsSojournerSkipEligible()
     if not self:HasAchievement(achievementID) then return false, nil end
 
     return true, routeData
-end--[[APR_DIAG]]; APR.IsSojournerSkipEligible = APRTrace("APR-Core/utils/SojournerUtils.lua:33:APR:IsSojournerSkipEligible#1", APR.IsSojournerSkipEligible)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.IsSojournerSkipEligible =
+    APRTrace("APR-Core/utils/SojournerUtils.lua:33:APR:IsSojournerSkipEligible#1", APR.IsSojournerSkipEligible)--[[/APR_DIAG]]
 
 --- Route-aware check for use in step counting / progress display.
 --- Returns true when the sojourner skip setting is enabled AND the
@@ -61,7 +63,9 @@ function APR:IsSojournerSkipActive(route)
     if not achievementID then return false end
 
     return self:HasAchievement(achievementID)
-end--[[APR_DIAG]]; APR.IsSojournerSkipActive = APRTrace("APR-Core/utils/SojournerUtils.lua:51:APR:IsSojournerSkipActive#2", APR.IsSojournerSkipActive)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.IsSojournerSkipActive =
+    APRTrace("APR-Core/utils/SojournerUtils.lua:51:APR:IsSojournerSkipActive#2", APR.IsSojournerSkipActive)--[[/APR_DIAG]]
 
 --- Determine if a step should be auto-skipped because it is a campaign
 --- step on an eligible Sojourner route and the setting is enabled.
@@ -77,7 +81,9 @@ function APR:ShouldSojournerSkipStep(step)
 
     local eligible = self:IsSojournerSkipEligible()
     return eligible
-end--[[APR_DIAG]]; APR.ShouldSojournerSkipStep = APRTrace("APR-Core/utils/SojournerUtils.lua:70:APR:ShouldSojournerSkipStep#3", APR.ShouldSojournerSkipStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.ShouldSojournerSkipStep =
+    APRTrace("APR-Core/utils/SojournerUtils.lua:70:APR:ShouldSojournerSkipStep#3", APR.ShouldSojournerSkipStep)--[[/APR_DIAG]]
 
 ---------------------------------------------------------------------------------------
 -- First-encounter popup
@@ -111,29 +117,34 @@ function APR:MaybeSojournerPrompt(step)
     local routeLabel = routeData.label or self.ActiveRoute
     local player, route = self.PlayerID, self.ActiveRoute
 
-    local text = string.format(
-        L["SOJOURNER_PROMPT_TEXT"] .. "\n\n" .. L["SOJOURNER_SETTING_FOOTER"],
-        routeLabel,
-        achieveName
-    )
+    local text =
+        string.format(L["SOJOURNER_PROMPT_TEXT"] .. "\n\n" .. L["SOJOURNER_SETTING_FOOTER"], routeLabel, achieveName)
 
     self.questionDialog:CreateQuestionPopup(
         "APR_SOJOURNER_SKIP_PROMPT",
         text,
-        --[[APR_DIAG]]APRTrace("APR-Core/utils/SojournerUtils.lua:123:callback#5", --[[/APR_DIAG]]function() -- Accept: enable auto-skip
-            if APR.PlayerID ~= player or APR.ActiveRoute ~= route or APR:GetSettingsProfile() ~= profile then return end
-            -- This is a profile preference, so advancing a step or refreshing
-            -- the declaration is fine while the current route still qualifies.
-            if not profile.enableAddon or not APR:IsSojournerSkipEligible() then return end
-            profile.sojournerSkipCampaign = true
-            APR:UpdateStep()
-        end--[[APR_DIAG]])--[[/APR_DIAG]],
+        --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/utils/SojournerUtils.lua:123:callback#5", --[[/APR_DIAG]]
+            function() -- Accept: enable auto-skip
+                if APR.PlayerID ~= player or APR.ActiveRoute ~= route or APR:GetSettingsProfile() ~= profile then
+                    return
+                end
+                -- This is a profile preference, so advancing a step or refreshing
+                -- the declaration is fine while the current route still qualifies.
+                if not profile.enableAddon or not APR:IsSojournerSkipEligible() then return end
+                profile.sojournerSkipCampaign = true
+                APR:UpdateStep()
+            end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]],
         nil, -- Cancel: do nothing, keep playing normally
         L["SOJOURNER_PROMPT_ACCEPT"],
         L["SOJOURNER_PROMPT_DECLINE"],
         true
     )
-end--[[APR_DIAG]]; APR.MaybeSojournerPrompt = APRTrace("APR-Core/utils/SojournerUtils.lua:90:APR:MaybeSojournerPrompt#4", APR.MaybeSojournerPrompt)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.MaybeSojournerPrompt =
+    APRTrace("APR-Core/utils/SojournerUtils.lua:90:APR:MaybeSojournerPrompt#4", APR.MaybeSojournerPrompt)--[[/APR_DIAG]]
 
 ---------------------------------------------------------------------------------------
 -- Party sync check
@@ -181,15 +192,14 @@ function APR:CheckSojournerPartySync()
     table.insert(lines, "")
 
     -- Local player line
-    local myLabel = myState
-        and APR:WrapTextWithAppearanceColor(L["SOJOURNER_PROMPT_ACCEPT"], "general", "success")
+    local myLabel = myState and APR:WrapTextWithAppearanceColor(L["SOJOURNER_PROMPT_ACCEPT"], "general", "success")
         or APR:WrapTextWithAppearanceColor(L["SOJOURNER_PROMPT_DECLINE"], "general", "error")
     table.insert(lines, APR.Username .. ": " .. myLabel)
 
     -- Remote players
     for _, entry in ipairs(mismatched) do
         local stateLabel = entry.state
-            and APR:WrapTextWithAppearanceColor(L["SOJOURNER_PROMPT_ACCEPT"], "general", "success")
+                and APR:WrapTextWithAppearanceColor(L["SOJOURNER_PROMPT_ACCEPT"], "general", "success")
             or APR:WrapTextWithAppearanceColor(L["SOJOURNER_PROMPT_DECLINE"], "general", "error")
         table.insert(lines, entry.name .. ": " .. stateLabel)
     end
@@ -199,4 +209,6 @@ function APR:CheckSojournerPartySync()
 
     sojournerPartySyncWarned[self.ActiveRoute] = true
     self.questionDialog:CreateMessagePopup(table.concat(lines, "\n"), OKAY)
-end--[[APR_DIAG]]; APR.CheckSojournerPartySync = APRTrace("APR-Core/utils/SojournerUtils.lua:145:APR:CheckSojournerPartySync#6", APR.CheckSojournerPartySync)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.CheckSojournerPartySync =
+    APRTrace("APR-Core/utils/SojournerUtils.lua:145:APR:CheckSojournerPartySync#6", APR.CheckSojournerPartySync)--[[/APR_DIAG]]

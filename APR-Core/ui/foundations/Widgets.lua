@@ -19,31 +19,47 @@ function UI:SetIcon(texture, name)
     -- Fractional UI scales must not snap the pictogram's edges to different pixels.
     texture:SetSnapToPixelGrid(false)
     texture:SetTexelSnappingBias(0)
-    if name == "logo" then texture:SetVertexColor(1, 1, 1, 1)
-    else APR:RegisterThemeRegion(texture, "icon", 1, true) end
-end--[[APR_DIAG]]; UI.SetIcon = APRTrace("APR-Core/ui/foundations/Widgets.lua:16:UI:SetIcon#1", UI.SetIcon)--[[/APR_DIAG]]
+    if name == "logo" then
+        texture:SetVertexColor(1, 1, 1, 1)
+    else
+        APR:RegisterThemeRegion(texture, "icon", 1, true)
+    end
+end--[[APR_DIAG]]
+UI.SetIcon = APRTrace("APR-Core/ui/foundations/Widgets.lua:16:UI:SetIcon#1", UI.SetIcon)--[[/APR_DIAG]]
 
 function UI:Icon(parent, name, size)
     local texture = parent:CreateTexture(nil, "OVERLAY")
     texture:SetSize(size or 18, size or 18)
     self:SetIcon(texture, name)
     return texture
-end--[[APR_DIAG]]; UI.Icon = APRTrace("APR-Core/ui/foundations/Widgets.lua:26:UI:Icon#2", UI.Icon)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.Icon = APRTrace("APR-Core/ui/foundations/Widgets.lua:26:UI:Icon#2", UI.Icon)--[[/APR_DIAG]]
 
 function UI:Label(parent, text, size, role, scope)
     local label = parent:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     label:SetJustifyH("LEFT")
     label:SetText(text or "")
-    APR:RegisterFontString(label, scope or "general", { role = role or "base", sizeDelta = (size or 12) - 12, themeAccent = true })
+    APR:RegisterFontString(
+        label,
+        scope or "general",
+        { role = role or "base", sizeDelta = (size or 12) - 12, themeAccent = true }
+    )
     return label
-end--[[APR_DIAG]]; UI.Label = APRTrace("APR-Core/ui/foundations/Widgets.lua:33:UI:Label#3", UI.Label)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.Label = APRTrace("APR-Core/ui/foundations/Widgets.lua:33:UI:Label#3", UI.Label)--[[/APR_DIAG]]
 
 function UI:Panel(parent, kind, surface, scope, options)
     local frame = CreateFrame("Frame", nil, parent, "BackdropTemplate")
-    APR:RegisterSkinTarget(frame, kind or "panel", { themeSurface = true, preserveContent = true, surface = surface, scope = scope,
-        nativeWoW = options and options.nativeWoW })
+    APR:RegisterSkinTarget(frame, kind or "panel", {
+        themeSurface = true,
+        preserveContent = true,
+        surface = surface,
+        scope = scope,
+        nativeWoW = options and options.nativeWoW,
+    })
     return frame
-end--[[APR_DIAG]]; UI.Panel = APRTrace("APR-Core/ui/foundations/Widgets.lua:41:UI:Panel#4", UI.Panel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.Panel = APRTrace("APR-Core/ui/foundations/Widgets.lua:41:UI:Panel#4", UI.Panel)--[[/APR_DIAG]]
 
 -- Keep the shadow above the panel and below the button, in a child that skins cannot strip.
 -- Short, tapered bands below the lower edge suggest depth without outlining the whole button.
@@ -55,7 +71,7 @@ function UI:ElevateButton(button)
     shadow:SetFrameLevel(button:GetFrameLevel() - 1)
     shadow:SetAllPoints(button)
     shadow:EnableMouse(false)
-    for index, opacity in ipairs({0.12, 0.065, 0.025}) do
+    for index, opacity in ipairs({ 0.12, 0.065, 0.025 }) do
         local inset = 4 + index * 2
         local layer = shadow:CreateTexture(nil, "BACKGROUND")
         layer:SetPoint("TOPLEFT", shadow, "BOTTOMLEFT", inset, 1 - index)
@@ -66,20 +82,61 @@ function UI:ElevateButton(button)
     local hovered, pressed = false, false
     local function update()
         shadow:SetAlpha(not button:IsEnabled() and 0.15 or pressed and 0.25 or hovered and 0.85 or 0.65)
-    end--[[APR_DIAG]]; update = APRTrace("APR-Core/ui/foundations/Widgets.lua:67:update#6", update)--[[/APR_DIAG]]
-    button:HookScript("OnEnter", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:70:callback#7", --[[/APR_DIAG]]function() hovered = true; update() end--[[APR_DIAG]])--[[/APR_DIAG]])
-    button:HookScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:71:callback#8", --[[/APR_DIAG]]function() hovered, pressed = false, false; update() end--[[APR_DIAG]])--[[/APR_DIAG]])
-    button:HookScript("OnMouseDown", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:72:callback#9", --[[/APR_DIAG]]function(_, key) if key == "LeftButton" then pressed = true; update() end end--[[APR_DIAG]])--[[/APR_DIAG]])
-    button:HookScript("OnMouseUp", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:73:callback#10", --[[/APR_DIAG]]function() pressed = false; update() end--[[APR_DIAG]])--[[/APR_DIAG]])
-    button:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:74:callback#11", --[[/APR_DIAG]]function() hovered, pressed = false, false; update() end--[[APR_DIAG]])--[[/APR_DIAG]])
-    button:HookScript("OnDisable", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:75:callback#12", --[[/APR_DIAG]]function() hovered, pressed = false, false; update() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    end--[[APR_DIAG]]
+    update = APRTrace("APR-Core/ui/foundations/Widgets.lua:67:update#6", update)--[[/APR_DIAG]]
+    button:HookScript(
+        "OnEnter", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/foundations/Widgets.lua:70:callback#7", --[[/APR_DIAG]] function()
+            hovered = true
+            update()
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+    button:HookScript(
+        "OnLeave", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/foundations/Widgets.lua:71:callback#8", --[[/APR_DIAG]] function()
+            hovered, pressed = false, false
+            update()
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+    button:HookScript(
+        "OnMouseDown", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/foundations/Widgets.lua:72:callback#9", --[[/APR_DIAG]] function(_, key)
+            if key == "LeftButton" then
+                pressed = true
+                update()
+            end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+    button:HookScript(
+        "OnMouseUp", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/foundations/Widgets.lua:73:callback#10", --[[/APR_DIAG]] function()
+            pressed = false
+            update()
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+    button:HookScript(
+        "OnHide", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/foundations/Widgets.lua:74:callback#11", --[[/APR_DIAG]] function()
+            hovered, pressed = false, false
+            update()
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+    button:HookScript(
+        "OnDisable", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/foundations/Widgets.lua:75:callback#12", --[[/APR_DIAG]] function()
+            hovered, pressed = false, false
+            update()
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     button:HookScript("OnEnable", update)
     update()
-end--[[APR_DIAG]]; UI.ElevateButton = APRTrace("APR-Core/ui/foundations/Widgets.lua:50:UI:ElevateButton#5", UI.ElevateButton)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.ElevateButton = APRTrace("APR-Core/ui/foundations/Widgets.lua:50:UI:ElevateButton#5", UI.ElevateButton)--[[/APR_DIAG]]
 
 function UI:Button(parent, text, width, callback, style, scope, options)
     local nativeWoW = options and options.nativeWoW
-    local button = CreateFrame("Button", nil, parent, nativeWoW and "UIPanelButtonTemplate,BackdropTemplate" or "BackdropTemplate")
+    local button =
+        CreateFrame("Button", nil, parent, nativeWoW and "UIPanelButtonTemplate,BackdropTemplate" or "BackdropTemplate")
     button:SetSize(width or 130, 30)
     button.aprThemeScope = scope
     local label = self:Label(button, text, 12, nativeWoW and "accent" or nil, scope)
@@ -88,17 +145,44 @@ function UI:Button(parent, text, width, callback, style, scope, options)
     label:SetJustifyH("CENTER")
     button:SetFontString(label)
     button:SetScript("OnClick", callback)
-    button:HookScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:91:callback#14", --[[/APR_DIAG]]function() if APR.Gamepad then APR.Gamepad:Refresh(button) end end--[[APR_DIAG]])--[[/APR_DIAG]])
-    button:SetScript("OnEnter", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:92:callback#15", --[[/APR_DIAG]]function(self)
-        if self.aprListRow or APR:GetSkinProviderName(scope) then return end
-        if self:IsEnabled() and self.SetBackdropBorderColor then self:SetBackdropBorderColor(unpack(APR:GetThemeColor("accent", scope))) end
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-    button:SetScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:96:callback#16", --[[/APR_DIAG]]function(self)
-        if self.aprListRow or APR:GetSkinProviderName(scope) then return end
-        if self.SetBackdropBorderColor then self:SetBackdropBorderColor(unpack(APR:GetThemeColor(self.active and "accent" or "border", scope))) end
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-    button:SetScript("OnEnable", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:100:callback#17", --[[/APR_DIAG]]function() label:SetAlpha(1) end--[[APR_DIAG]])--[[/APR_DIAG]])
-    button:SetScript("OnDisable", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:101:callback#18", --[[/APR_DIAG]]function() label:SetAlpha(0.4) end--[[APR_DIAG]])--[[/APR_DIAG]])
+    button:HookScript(
+        "OnClick", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/foundations/Widgets.lua:91:callback#14", --[[/APR_DIAG]] function()
+            if APR.Gamepad then APR.Gamepad:Refresh(button) end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+    button:SetScript(
+        "OnEnter", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/foundations/Widgets.lua:92:callback#15", --[[/APR_DIAG]] function(self)
+            if self.aprListRow or APR:GetSkinProviderName(scope) then return end
+            if self:IsEnabled() and self.SetBackdropBorderColor then
+                self:SetBackdropBorderColor(unpack(APR:GetThemeColor("accent", scope)))
+            end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+    button:SetScript(
+        "OnLeave", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/foundations/Widgets.lua:96:callback#16", --[[/APR_DIAG]] function(self)
+            if self.aprListRow or APR:GetSkinProviderName(scope) then return end
+            if self.SetBackdropBorderColor then
+                self:SetBackdropBorderColor(unpack(APR:GetThemeColor(self.active and "accent" or "border", scope)))
+            end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+    button:SetScript(
+        "OnEnable", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/foundations/Widgets.lua:100:callback#17", --[[/APR_DIAG]]
+            function() label:SetAlpha(1) end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
+    button:SetScript(
+        "OnDisable", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/foundations/Widgets.lua:101:callback#18", --[[/APR_DIAG]]
+            function() label:SetAlpha(0.4) end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
     if style == "flat" then
         local highlight = button:CreateTexture(nil, "HIGHLIGHT")
         highlight:SetAllPoints()
@@ -106,10 +190,14 @@ function UI:Button(parent, text, width, callback, style, scope, options)
     end
     if style == "raised" then self:ElevateButton(button) end
     local flat = style == "flat" or style == "list"
-    APR:RegisterSkinTarget(button, flat and "flatButton" or "button", { themeSurface = not flat, scope = scope,
-        nativeWoW = nativeWoW })
+    APR:RegisterSkinTarget(
+        button,
+        flat and "flatButton" or "button",
+        { themeSurface = not flat, scope = scope, nativeWoW = nativeWoW }
+    )
     return button
-end--[[APR_DIAG]]; UI.Button = APRTrace("APR-Core/ui/foundations/Widgets.lua:80:UI:Button#13", UI.Button)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.Button = APRTrace("APR-Core/ui/foundations/Widgets.lua:80:UI:Button#13", UI.Button)--[[/APR_DIAG]]
 
 function UI:SetButtonActive(button, active)
     button.active = active == true
@@ -119,15 +207,19 @@ function UI:SetButtonActive(button, active)
     elseif not APR:GetSkinProviderName(button.aprThemeScope) then
         button:SetBackdropBorderColor(unpack(APR:GetThemeColor(active and "accent" or "border", button.aprThemeScope)))
     end
-end--[[APR_DIAG]]; UI.SetButtonActive = APRTrace("APR-Core/ui/foundations/Widgets.lua:114:UI:SetButtonActive#19", UI.SetButtonActive)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.SetButtonActive = APRTrace("APR-Core/ui/foundations/Widgets.lua:114:UI:SetButtonActive#19", UI.SetButtonActive)--[[/APR_DIAG]]
 
 -- Shared list chrome lives beside the row so its translucent fill cannot cover text or actions.
-local listRows = setmetatable({}, {__mode = "k"})
-local pendingListRows = setmetatable({}, {__mode = "k"})
+local listRows = setmetatable({}, { __mode = "k" })
+local pendingListRows = setmetatable({}, { __mode = "k" })
 function UI:RefreshListRow(row)
     local look = row.aprListRow
     if not look then return end
-    if InCombatLockdown() then pendingListRows[row] = true; return end
+    if InCombatLockdown() then
+        pendingListRows[row] = true
+        return
+    end
     if not look.background then return end
     pendingListRows[row] = nil
     local scope = look.scope
@@ -145,12 +237,17 @@ function UI:RefreshListRow(row)
     local radius = APR:GetThemeStyle(scope) == "modern" and APR:GetThemeRadius(4, scope) or 4
     local accent = APR:GetThemeColor("accent", scope)
     if look.radius ~= radius then
-        APR:RenderThemePreviewPanel(background, {background = {0,0,0,0}, border = {0,0,0,0}}, radius)
+        APR:RenderThemePreviewPanel(background, { background = { 0, 0, 0, 0 }, border = { 0, 0, 0, 0 } }, radius)
         look.radius = radius
     end
     local available = look.enabled ~= false and (not row.IsEnabled or row:IsEnabled())
     local selected = look.selected and available
-    background:SetBackdropColor(accent[1], accent[2], accent[3], selected and 0.13 or look.hovered and available and 0.08 or 0)
+    background:SetBackdropColor(
+        accent[1],
+        accent[2],
+        accent[3],
+        selected and 0.13 or look.hovered and available and 0.08 or 0
+    )
     background:SetBackdropBorderColor(accent[1], accent[2], accent[3], selected and 0.7 or 0)
     local border = APR:GetThemeColor("border", scope)
     look.separator:SetColorTexture(border[1], border[2], border[3], 0.42)
@@ -161,40 +258,80 @@ function UI:RefreshListRow(row)
         local color = APR:GetThemeColor(selected and "accent" or "muted", scope)
         look.icon:SetVertexColor(color[1], color[2], color[3], available and 1 or 0.45)
     end
-end--[[APR_DIAG]]; UI.RefreshListRow = APRTrace("APR-Core/ui/foundations/Widgets.lua:127:UI:RefreshListRow#20", UI.RefreshListRow)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.RefreshListRow = APRTrace("APR-Core/ui/foundations/Widgets.lua:127:UI:RefreshListRow#20", UI.RefreshListRow)--[[/APR_DIAG]]
 
 function UI:StyleListRow(row, icon, scope, gameplay)
     local look = row.aprListRow
     if not look then
-        look = {scope = scope, gameplay = gameplay}
+        look = { scope = scope, gameplay = gameplay }
         row.aprListRow = look
         listRows[row] = true
     end
     look.requestedIcon = icon
-    if InCombatLockdown() then pendingListRows[row] = true; return look end
+    if InCombatLockdown() then
+        pendingListRows[row] = true
+        return look
+    end
     if not look.background then
         look.background = CreateFrame("Frame", nil, row:GetParent(), "BackdropTemplate")
         look.background:SetPoint("TOPLEFT", row, "TOPLEFT", 0, 0)
         look.background:SetPoint("BOTTOMRIGHT", row, "BOTTOMRIGHT", 0, 1)
         look.background:EnableMouse(false)
         look.separator = look.background:CreateTexture(nil, "BACKGROUND")
-        look.separator:SetPoint("BOTTOMLEFT", 12, 0); look.separator:SetPoint("BOTTOMRIGHT", -12, 0)
+        look.separator:SetPoint("BOTTOMLEFT", 12, 0)
+        look.separator:SetPoint("BOTTOMRIGHT", -12, 0)
         look.separator:SetHeight(1)
-        row:HookScript("OnEnter", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:183:callback#22", --[[/APR_DIAG]]function() look.hovered = true; UI:RefreshListRow(row) end--[[APR_DIAG]])--[[/APR_DIAG]])
-        row:HookScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:184:callback#23", --[[/APR_DIAG]]function() look.hovered = nil; UI:RefreshListRow(row) end--[[APR_DIAG]])--[[/APR_DIAG]])
-        row:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:185:callback#24", --[[/APR_DIAG]]function()
-            look.hovered = nil; look.background:Hide()
-            if look.iconHost then look.iconHost:Hide() end
-        end--[[APR_DIAG]])--[[/APR_DIAG]])
-        row:HookScript("OnShow", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:189:callback#25", --[[/APR_DIAG]]function() UI:RefreshListRow(row) end--[[APR_DIAG]])--[[/APR_DIAG]])
+        row:HookScript(
+            "OnEnter", --[[APR_DIAG]]
+            APRTrace("APR-Core/ui/foundations/Widgets.lua:183:callback#22", --[[/APR_DIAG]] function()
+                look.hovered = true
+                UI:RefreshListRow(row)
+            end--[[APR_DIAG]]) --[[/APR_DIAG]]
+        )
+        row:HookScript(
+            "OnLeave", --[[APR_DIAG]]
+            APRTrace("APR-Core/ui/foundations/Widgets.lua:184:callback#23", --[[/APR_DIAG]] function()
+                look.hovered = nil
+                UI:RefreshListRow(row)
+            end--[[APR_DIAG]]) --[[/APR_DIAG]]
+        )
+        row:HookScript(
+            "OnHide", --[[APR_DIAG]]
+            APRTrace("APR-Core/ui/foundations/Widgets.lua:185:callback#24", --[[/APR_DIAG]] function()
+                look.hovered = nil
+                look.background:Hide()
+                if look.iconHost then look.iconHost:Hide() end
+            end--[[APR_DIAG]]) --[[/APR_DIAG]]
+        )
+        row:HookScript(
+            "OnShow", --[[APR_DIAG]]
+            APRTrace(
+                "APR-Core/ui/foundations/Widgets.lua:189:callback#25", --[[/APR_DIAG]]
+                function() UI:RefreshListRow(row) end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]]
+        )
         if row.HasScript and row:HasScript("OnEnable") then
-            row:HookScript("OnEnable", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:191:callback#26", --[[/APR_DIAG]]function() UI:RefreshListRow(row) end--[[APR_DIAG]])--[[/APR_DIAG]])
-            row:HookScript("OnDisable", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:192:callback#27", --[[/APR_DIAG]]function() UI:RefreshListRow(row) end--[[APR_DIAG]])--[[/APR_DIAG]])
+            row:HookScript(
+                "OnEnable", --[[APR_DIAG]]
+                APRTrace(
+                    "APR-Core/ui/foundations/Widgets.lua:191:callback#26", --[[/APR_DIAG]]
+                    function() UI:RefreshListRow(row) end --[[APR_DIAG]]
+                ) --[[/APR_DIAG]]
+            )
+            row:HookScript(
+                "OnDisable", --[[APR_DIAG]]
+                APRTrace(
+                    "APR-Core/ui/foundations/Widgets.lua:192:callback#27", --[[/APR_DIAG]]
+                    function() UI:RefreshListRow(row) end --[[APR_DIAG]]
+                ) --[[/APR_DIAG]]
+            )
         end
     end
     if icon and not look.iconHost then
         look.iconHost = CreateFrame("Frame", nil, row)
-        look.iconHost:SetSize(18, 18); look.iconHost:SetPoint("LEFT", 12, 0)
+        look.iconHost:SetSize(18, 18)
+        look.iconHost:SetPoint("LEFT", 12, 0)
         look.iconHost:EnableMouse(false)
         look.icon = self:Icon(look.iconHost, icon, 18)
         look.icon:SetAllPoints()
@@ -204,7 +341,8 @@ function UI:StyleListRow(row, icon, scope, gameplay)
     look.iconName = icon
     self:RefreshListRow(row)
     return look
-end--[[APR_DIAG]]; UI.StyleListRow = APRTrace("APR-Core/ui/foundations/Widgets.lua:166:UI:StyleListRow#21", UI.StyleListRow)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.StyleListRow = APRTrace("APR-Core/ui/foundations/Widgets.lua:166:UI:StyleListRow#21", UI.StyleListRow)--[[/APR_DIAG]]
 
 function UI:SetListRowState(row, selected, last, enabled, heading)
     local look = row.aprListRow
@@ -214,24 +352,32 @@ function UI:SetListRowState(row, selected, last, enabled, heading)
     if enabled ~= nil then look.enabled = enabled end
     if heading ~= nil then look.heading = heading end
     self:RefreshListRow(row)
-end--[[APR_DIAG]]; UI.SetListRowState = APRTrace("APR-Core/ui/foundations/Widgets.lua:209:UI:SetListRowState#28", UI.SetListRowState)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.SetListRowState = APRTrace("APR-Core/ui/foundations/Widgets.lua:209:UI:SetListRowState#28", UI.SetListRowState)--[[/APR_DIAG]]
 
 function UI:ListButton(parent, text, width, callback, icon, scope)
     local row = self:Button(parent, text, width, callback, "list", scope)
     self:StyleListRow(row, icon, scope)
     local label = row:GetFontString()
-    label:ClearAllPoints(); label:SetPoint("LEFT", icon and 38 or 12, 0); label:SetPoint("RIGHT", -12, 0)
+    label:ClearAllPoints()
+    label:SetPoint("LEFT", icon and 38 or 12, 0)
+    label:SetPoint("RIGHT", -12, 0)
     label:SetJustifyH("LEFT")
     return row
-end--[[APR_DIAG]]; UI.ListButton = APRTrace("APR-Core/ui/foundations/Widgets.lua:219:UI:ListButton#29", UI.ListButton)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.ListButton = APRTrace("APR-Core/ui/foundations/Widgets.lua:219:UI:ListButton#29", UI.ListButton)--[[/APR_DIAG]]
 
 function UI:RefreshListRows()
     for row in pairs(listRows) do
         local look = row.aprListRow
-        if not look.background or pendingListRows[row] then self:StyleListRow(row, look.requestedIcon, look.scope, look.gameplay)
-        else self:RefreshListRow(row) end
+        if not look.background or pendingListRows[row] then
+            self:StyleListRow(row, look.requestedIcon, look.scope, look.gameplay)
+        else
+            self:RefreshListRow(row)
+        end
     end
-end--[[APR_DIAG]]; UI.RefreshListRows = APRTrace("APR-Core/ui/foundations/Widgets.lua:228:UI:RefreshListRows#30", UI.RefreshListRows)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.RefreshListRows = APRTrace("APR-Core/ui/foundations/Widgets.lua:228:UI:RefreshListRows#30", UI.RefreshListRows)--[[/APR_DIAG]]
 
 -- Combat recovery is incremental. Explicit theme changes still use the full
 -- registry above, including hidden and pooled rows that need the new palette.
@@ -242,26 +388,35 @@ function UI:RefreshPendingListRows()
         pendingListRows[row] = nil
         if look then self:StyleListRow(row, look.requestedIcon, look.scope, look.gameplay) end
     end
-end--[[APR_DIAG]]; UI.RefreshPendingListRows = APRTrace("APR-Core/ui/foundations/Widgets.lua:238:UI:RefreshPendingListRows#31", UI.RefreshPendingListRows)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.RefreshPendingListRows =
+    APRTrace("APR-Core/ui/foundations/Widgets.lua:238:UI:RefreshPendingListRows#31", UI.RefreshPendingListRows)--[[/APR_DIAG]]
 
 -- Both AceGUI settings and APR selectors use the same row geometry and theme roles.
 function UI:StyleSelectRow(row, text, check, selected, disabled, last)
     self:StyleListRow(row)
     row:SetHeight(26)
     text:ClearAllPoints()
-    text:SetPoint("LEFT", 26, 0); text:SetPoint("RIGHT", -8, 0)
+    text:SetPoint("LEFT", 26, 0)
+    text:SetPoint("RIGHT", -8, 0)
     text:SetJustifyH("LEFT")
     text:SetWordWrap(false)
     if check then
         self:SetIcon(check, "check")
         check:ClearAllPoints()
-        check:SetPoint("LEFT", 4, 0); check:SetSize(16, 16)
+        check:SetPoint("LEFT", 4, 0)
+        check:SetSize(16, 16)
         check:SetShown(selected == true)
         check:SetAlpha(disabled and 0.45 or 1)
     end
     self:SetListRowState(row, selected, last, not disabled)
-    APR:RegisterFontString(text, "general", {role = disabled and "muted" or selected and "accent" or "base", themeAccent = true})
-end--[[APR_DIAG]]; UI.StyleSelectRow = APRTrace("APR-Core/ui/foundations/Widgets.lua:248:UI:StyleSelectRow#32", UI.StyleSelectRow)--[[/APR_DIAG]]
+    APR:RegisterFontString(
+        text,
+        "general",
+        { role = disabled and "muted" or selected and "accent" or "base", themeAccent = true }
+    )
+end--[[APR_DIAG]]
+UI.StyleSelectRow = APRTrace("APR-Core/ui/foundations/Widgets.lua:248:UI:StyleSelectRow#32", UI.StyleSelectRow)--[[/APR_DIAG]]
 
 -- AceGUI's APR-only pools retain their native value/validation handlers.
 function UI:StyleDropdownListItem(widget)
@@ -273,13 +428,24 @@ function UI:StyleDropdownListItem(widget)
     if not row.aprListRow.dropdownClickHook then
         row.aprListRow.dropdownClickHook = true
         -- Toggle clicks assign value directly, bypassing AceGUI's SetValue hooks.
-        row:HookScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:276:callback#34", --[[/APR_DIAG]]function() UI:StyleDropdownListItem(widget) end--[[APR_DIAG]])--[[/APR_DIAG]])
+        row:HookScript(
+            "OnClick", --[[APR_DIAG]]
+            APRTrace(
+                "APR-Core/ui/foundations/Widgets.lua:276:callback#34", --[[/APR_DIAG]]
+                function() UI:StyleDropdownListItem(widget) end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]]
+        )
     end
-end--[[APR_DIAG]]; UI.StyleDropdownListItem = APRTrace("APR-Core/ui/foundations/Widgets.lua:267:UI:StyleDropdownListItem#33", UI.StyleDropdownListItem)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.StyleDropdownListItem =
+    APRTrace("APR-Core/ui/foundations/Widgets.lua:267:UI:StyleDropdownListItem#33", UI.StyleDropdownListItem)--[[/APR_DIAG]]
 
 function UI:StyleDropdownList(widget)
     if not widget or widget.type ~= "Dropdown-Pullout" then return end
-    if widget.aprListLayout then widget.aprListLayout(); return end
+    if widget.aprListLayout then
+        widget.aprListLayout()
+        return
+    end
     local function layout()
         if widget.isQueuedForRelease then return end
         for _, item in pairs(widget.items or {}) do
@@ -291,8 +457,12 @@ function UI:StyleDropdownList(widget)
         if owner and owner.multiselect and owner.hasClose then
             for index = #widget.items, 1, -1 do
                 local item = widget.items[index]
-                if item and item.type == "Dropdown-Item-Execute" and item:GetText() == CLOSE
-                    and item:GetUserData("obj") == nil then
+                if
+                    item
+                    and item.type == "Dropdown-Item-Execute"
+                    and item:GetText() == CLOSE
+                    and item:GetUserData("obj") == nil
+                then
                     table.remove(widget.items, index)
                     LibStub("AceGUI-3.0"):Release(item)
                 end
@@ -303,12 +473,15 @@ function UI:StyleDropdownList(widget)
             UI:StyleDropdownListItem(item)
             item:SetPoint("TOP", widget.itemFrame, "TOP", 0, -2 - height)
             height = height + item.frame:GetHeight()
-            if item.frame.aprListRow then UI:SetListRowState(item.frame, item:GetValue() == true, index == #widget.items) end
+            if item.frame.aprListRow then
+                UI:SetListRowState(item.frame, item:GetValue() == true, index == #widget.items)
+            end
         end
         widget.itemFrame:SetHeight(height + 8)
         widget.frame:SetHeight(math.min(height + 34, widget.maxHeight or 600))
         widget:FixScroll()
-    end--[[APR_DIAG]]; layout = APRTrace("APR-Core/ui/foundations/Widgets.lua:283:layout#36", layout)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    layout = APRTrace("APR-Core/ui/foundations/Widgets.lua:283:layout#36", layout)--[[/APR_DIAG]]
     if not widget.aprListLayout then
         widget.aprListLayout = layout
         local fixScroll, moveScroll = widget.FixScroll, widget.MoveScroll
@@ -320,62 +493,94 @@ function UI:StyleDropdownList(widget)
             else
                 fixScroll(self)
             end
-        end--[[APR_DIAG]]; widget.FixScroll = APRTrace("APR-Core/ui/foundations/Widgets.lua:315:widget:FixScroll#37", widget.FixScroll)--[[/APR_DIAG]]
+        end--[[APR_DIAG]]
+        widget.FixScroll = APRTrace("APR-Core/ui/foundations/Widgets.lua:315:widget:FixScroll#37", widget.FixScroll)--[[/APR_DIAG]]
         function widget:MoveScroll(value)
-            if self.itemFrame:GetHeight() <= self.scrollFrame:GetHeight() then self:FixScroll()
-            else moveScroll(self, value) end
-        end--[[APR_DIAG]]; widget.MoveScroll = APRTrace("APR-Core/ui/foundations/Widgets.lua:324:widget:MoveScroll#38", widget.MoveScroll)--[[/APR_DIAG]]
+            if self.itemFrame:GetHeight() <= self.scrollFrame:GetHeight() then
+                self:FixScroll()
+            else
+                moveScroll(self, value)
+            end
+        end--[[APR_DIAG]]
+        widget.MoveScroll = APRTrace("APR-Core/ui/foundations/Widgets.lua:324:widget:MoveScroll#38", widget.MoveScroll)--[[/APR_DIAG]]
         -- AceGUI's original Open places every item at 16px regardless of its height.
         -- Reflow only this APR-owned pullout after its native open/value callbacks.
         hooksecurefunc(widget, "Open", layout)
     end
     layout()
-end--[[APR_DIAG]]; UI.StyleDropdownList = APRTrace("APR-Core/ui/foundations/Widgets.lua:280:UI:StyleDropdownList#35", UI.StyleDropdownList)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.StyleDropdownList = APRTrace("APR-Core/ui/foundations/Widgets.lua:280:UI:StyleDropdownList#35", UI.StyleDropdownList)--[[/APR_DIAG]]
 
 local listWatcher = CreateFrame("Frame")
 listWatcher:RegisterEvent("PLAYER_REGEN_ENABLED")
-listWatcher:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:337:callback#39", --[[/APR_DIAG]]function() UI:RefreshPendingListRows() end--[[APR_DIAG]])--[[/APR_DIAG]])
+listWatcher:SetScript(
+    "OnEvent", --[[APR_DIAG]]
+    APRTrace(
+        "APR-Core/ui/foundations/Widgets.lua:337:callback#39", --[[/APR_DIAG]]
+        function() UI:RefreshPendingListRows() end --[[APR_DIAG]]
+    ) --[[/APR_DIAG]]
+)
 
 -- Blizzard and AceConfig own popup actions and reuse their frames for other addons.
 -- Only APR-owned background children receive persistent skins; original artwork is restored on hide.
-local pendingPopups = setmetatable({}, {__mode = "k"})
+local pendingPopups = setmetatable({}, { __mode = "k" })
 local popupWatcher = CreateFrame("Frame")
 popupWatcher:RegisterEvent("PLAYER_REGEN_ENABLED")
-popupWatcher:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:344:callback#40", --[[/APR_DIAG]]function()
-    for popup, buttons in pairs(pendingPopups) do
-        pendingPopups[popup] = nil
-        if popup:IsShown() and popup._aprTextOriginals then UI:StylePopupChrome(popup, buttons) end
-    end
-end--[[APR_DIAG]])--[[/APR_DIAG]])
+popupWatcher:SetScript(
+    "OnEvent", --[[APR_DIAG]]
+    APRTrace("APR-Core/ui/foundations/Widgets.lua:344:callback#40", --[[/APR_DIAG]] function()
+        for popup, buttons in pairs(pendingPopups) do
+            pendingPopups[popup] = nil
+            if popup:IsShown() and popup._aprTextOriginals then UI:StylePopupChrome(popup, buttons) end
+        end
+    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+)
 
 function UI:StylePopupChrome(popup, buttons)
-    if InCombatLockdown() then pendingPopups[popup] = buttons; return end
+    if InCombatLockdown() then
+        pendingPopups[popup] = buttons
+        return
+    end
     pendingPopups[popup] = nil
     local look = popup.aprPopupChrome
     if not look then
-        look = {buttons = {}}
+        look = { buttons = {} }
         popup.aprPopupChrome = look
         -- A child frame can render over its parent's FontStrings even when a lower
         -- frame level is requested. Keep the opaque chrome beside the popup instead.
-        look.background = self:Panel(popup:GetParent() or UIParent, "window", "library", nil, {nativeWoW = true})
+        look.background = self:Panel(popup:GetParent() or UIParent, "window", "library", nil, { nativeWoW = true })
         -- ResizeLayoutFrame must never measure its own all-points decorative children.
         look.background.ignoreInLayout = true
         look.background:SetAllPoints(popup)
         look.background:EnableMouse(false)
         look.background:SetFixedFrameLevel(true)
         look.background:SetFrameLevel(math.max(0, popup:GetFrameLevel() - 1))
-        popup:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:367:callback#42", --[[/APR_DIAG]]function()
-            for region, alpha in pairs(look.originalArt or {}) do region:SetAlpha(alpha) end
-            look.originalArt = nil
-            look.originalTextHeight = nil
-            if look.originalLevel ~= nil then popup:SetFrameLevel(look.originalLevel); look.originalLevel = nil end
-            if look.originalHeight then popup:SetHeight(look.originalHeight); look.originalHeight = nil end
-            look.background:Hide()
-            for button, entry in pairs(look.buttons) do
-                entry.background:Hide()
-                if entry.originalHeight then button:SetHeight(entry.originalHeight); entry.originalHeight = nil end
-            end
-        end--[[APR_DIAG]])--[[/APR_DIAG]])
+        popup:HookScript(
+            "OnHide", --[[APR_DIAG]]
+            APRTrace("APR-Core/ui/foundations/Widgets.lua:367:callback#42", --[[/APR_DIAG]] function()
+                for region, alpha in pairs(look.originalArt or {}) do
+                    region:SetAlpha(alpha)
+                end
+                look.originalArt = nil
+                look.originalTextHeight = nil
+                if look.originalLevel ~= nil then
+                    popup:SetFrameLevel(look.originalLevel)
+                    look.originalLevel = nil
+                end
+                if look.originalHeight then
+                    popup:SetHeight(look.originalHeight)
+                    look.originalHeight = nil
+                end
+                look.background:Hide()
+                for button, entry in pairs(look.buttons) do
+                    entry.background:Hide()
+                    if entry.originalHeight then
+                        button:SetHeight(entry.originalHeight)
+                        entry.originalHeight = nil
+                    end
+                end
+            end--[[APR_DIAG]]) --[[/APR_DIAG]]
+        )
     end
     look.originalArt = look.originalArt or {}
     if look.originalLevel == nil then look.originalLevel = popup:GetFrameLevel() end
@@ -387,15 +592,19 @@ function UI:StylePopupChrome(popup, buttons)
     look.originalHeight = look.originalHeight or popup:GetHeight()
     local text = APR:GetPopupText(popup)
     look.originalTextHeight = look.originalTextHeight or (text and text:GetStringHeight() or 0)
-    local excluded = {[look.background] = true}
-    for _, entry in pairs(look.buttons) do excluded[entry.background] = true end
-    for _, key in ipairs({"editBox", "EditBox", "AlertIcon", "alertIcon", "Icon", "icon"}) do
+    local excluded = { [look.background] = true }
+    for _, entry in pairs(look.buttons) do
+        excluded[entry.background] = true
+    end
+    for _, key in ipairs({ "editBox", "EditBox", "AlertIcon", "alertIcon", "Icon", "icon" }) do
         if popup[key] then excluded[popup[key]] = true end
     end
-    for _, button in ipairs(buttons) do excluded[button] = true end
+    for _, button in ipairs(buttons) do
+        excluded[button] = true
+    end
     local function retireArt(frame)
         if frame.GetRegions then
-            for _, region in ipairs({frame:GetRegions()}) do
+            for _, region in ipairs({ frame:GetRegions() }) do
                 if not excluded[region] and region.IsObjectType and region:IsObjectType("Texture") then
                     if look.originalArt[region] == nil then look.originalArt[region] = region:GetAlpha() end
                     region:SetAlpha(0)
@@ -403,37 +612,49 @@ function UI:StylePopupChrome(popup, buttons)
             end
         end
         if frame.GetChildren then
-            for _, child in ipairs({frame:GetChildren()}) do
+            for _, child in ipairs({ frame:GetChildren() }) do
                 local control = child.IsObjectType and (child:IsObjectType("Button") or child:IsObjectType("EditBox"))
                 if not excluded[child] and not control then retireArt(child) end
             end
         end
-    end--[[APR_DIAG]]; retireArt = APRTrace("APR-Core/ui/foundations/Widgets.lua:396:retireArt#43", retireArt)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    retireArt = APRTrace("APR-Core/ui/foundations/Widgets.lua:396:retireArt#43", retireArt)--[[/APR_DIAG]]
     retireArt(popup)
     look.background:Show()
     local native = APR:GetThemeStyle() == "wow" and not APR:GetSkinProviderName()
     for _, button in ipairs(buttons) do
         local entry = look.buttons[button]
         if not entry then
-            entry = {background = self:Panel(button:GetParent(), "button")}
+            entry = { background = self:Panel(button:GetParent(), "button") }
             look.buttons[button] = entry
             entry.background.ignoreInLayout = true
-            entry.background:SetAllPoints(button); entry.background:EnableMouse(false)
+            entry.background:SetAllPoints(button)
+            entry.background:EnableMouse(false)
             entry.background:SetFixedFrameLevel(true)
             entry.background:SetFrameLevel(math.max(0, button:GetFrameLevel() - 1))
-            button:HookScript("OnEnter", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:424:callback#44", --[[/APR_DIAG]]function()
-                if look.originalArt then entry.background:SetBackdropBorderColor(unpack(APR:GetThemeColor("accent"))) end
-            end--[[APR_DIAG]])--[[/APR_DIAG]])
-            button:HookScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:427:callback#45", --[[/APR_DIAG]]function()
-                if look.originalArt then entry.background:SetBackdropBorderColor(unpack(APR:GetThemeColor("border"))) end
-            end--[[APR_DIAG]])--[[/APR_DIAG]])
+            button:HookScript(
+                "OnEnter", --[[APR_DIAG]]
+                APRTrace("APR-Core/ui/foundations/Widgets.lua:424:callback#44", --[[/APR_DIAG]] function()
+                    if look.originalArt then
+                        entry.background:SetBackdropBorderColor(unpack(APR:GetThemeColor("accent")))
+                    end
+                end--[[APR_DIAG]]) --[[/APR_DIAG]]
+            )
+            button:HookScript(
+                "OnLeave", --[[APR_DIAG]]
+                APRTrace("APR-Core/ui/foundations/Widgets.lua:427:callback#45", --[[/APR_DIAG]] function()
+                    if look.originalArt then
+                        entry.background:SetBackdropBorderColor(unpack(APR:GetThemeColor("border")))
+                    end
+                end--[[APR_DIAG]]) --[[/APR_DIAG]]
+            )
         end
         entry.background:SetParent(button:GetParent())
         if button.GetFrameStrata then entry.background:SetFrameStrata(button:GetFrameStrata()) end
         entry.background:SetFrameLevel(math.max(0, button:GetFrameLevel() - 1))
         if button:IsShown() then entry.originalHeight = entry.originalHeight or button:GetHeight() end
         if button:IsShown() and not native then
-            for _, state in ipairs({"Normal", "Pushed", "Highlight", "Disabled"}) do
+            for _, state in ipairs({ "Normal", "Pushed", "Highlight", "Disabled" }) do
                 local texture = button["Get" .. state .. "Texture"] and button["Get" .. state .. "Texture"](button)
                 if texture then
                     if look.originalArt[texture] == nil then look.originalArt[texture] = texture:GetAlpha() end
@@ -448,7 +669,8 @@ function UI:StylePopupChrome(popup, buttons)
         end
     end
     self:LayoutPopupChrome(popup, buttons)
-end--[[APR_DIAG]]; UI.StylePopupChrome = APRTrace("APR-Core/ui/foundations/Widgets.lua:351:UI:StylePopupChrome#41", UI.StylePopupChrome)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.StylePopupChrome = APRTrace("APR-Core/ui/foundations/Widgets.lua:351:UI:StylePopupChrome#41", UI.StylePopupChrome)--[[/APR_DIAG]]
 
 function UI:LayoutPopupChrome(popup, buttons)
     if InCombatLockdown() then return end
@@ -462,33 +684,57 @@ function UI:LayoutPopupChrome(popup, buttons)
             buttonHeight = math.max(buttonHeight, label and label:GetStringHeight() + (native and 6 or 12) or 0)
         end
     end
-    for _, button in ipairs(buttons) do if button:IsShown() then button:SetHeight(buttonHeight) end end
+    for _, button in ipairs(buttons) do
+        if button:IsShown() then button:SetHeight(buttonHeight) end
+    end
     local text = APR:GetPopupText(popup)
     local textHeight, oldButtonHeight = text and text:GetStringHeight() or 0, 0
     for _, button in ipairs(buttons) do
         local entry = look.buttons[button]
-        if button:IsShown() and entry then oldButtonHeight = math.max(oldButtonHeight, entry.originalHeight or buttonHeight) end
+        if button:IsShown() and entry then
+            oldButtonHeight = math.max(oldButtonHeight, entry.originalHeight or buttonHeight)
+        end
     end
     -- Keep the native edit-box/icon spacing while accommodating taller translated labels.
-    local minimum = (look.originalHeight or 0) + math.max(0, buttonHeight - oldButtonHeight)
+    local minimum = (look.originalHeight or 0)
+        + math.max(0, buttonHeight - oldButtonHeight)
         + math.max(0, textHeight - (look.originalTextHeight or textHeight))
     local edit = popup.editBox or popup.EditBox
-    local extra = (edit and edit:IsShown()) or (popup.AlertIcon and popup.AlertIcon:IsShown())
+    local extra = (edit and edit:IsShown())
+        or (popup.AlertIcon and popup.AlertIcon:IsShown())
         or (popup.SubText and popup.SubText:IsShown() and (popup.SubText:GetText() or "") ~= "")
-        or popup.insertedFrame or (popup.Dropdown and popup.Dropdown:IsShown())
+        or popup.insertedFrame
+        or (popup.Dropdown and popup.Dropdown:IsShown())
     popup:SetHeight(extra and math.max(minimum, textHeight + buttonHeight + 40) or textHeight + buttonHeight + 40)
-end--[[APR_DIAG]]; UI.LayoutPopupChrome = APRTrace("APR-Core/ui/foundations/Widgets.lua:453:UI:LayoutPopupChrome#46", UI.LayoutPopupChrome)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.LayoutPopupChrome = APRTrace("APR-Core/ui/foundations/Widgets.lua:453:UI:LayoutPopupChrome#46", UI.LayoutPopupChrome)--[[/APR_DIAG]]
 
 -- A child frame keeps functional icons intact when an external skin strips button textures.
 function UI:ButtonIcon(button, name, size, centered)
     local host = CreateFrame("Frame", nil, button)
     host:SetSize(size or 18, size or 18)
-    if centered then host:SetPoint("CENTER") else host:SetPoint("LEFT", 12, 0) end
+    if centered then
+        host:SetPoint("CENTER")
+    else
+        host:SetPoint("LEFT", 12, 0)
+    end
     host:EnableMouse(false)
     button.icon = self:Icon(host, name, size)
     button.icon:SetAllPoints()
-    button:HookScript("OnEnable", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:490:callback#48", --[[/APR_DIAG]]function() host:SetAlpha(1) end--[[APR_DIAG]])--[[/APR_DIAG]])
-    button:HookScript("OnDisable", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:491:callback#49", --[[/APR_DIAG]]function() host:SetAlpha(0.3) end--[[APR_DIAG]])--[[/APR_DIAG]])
+    button:HookScript(
+        "OnEnable", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/foundations/Widgets.lua:490:callback#48", --[[/APR_DIAG]]
+            function() host:SetAlpha(1) end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
+    button:HookScript(
+        "OnDisable", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/foundations/Widgets.lua:491:callback#49", --[[/APR_DIAG]]
+            function() host:SetAlpha(0.3) end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
     if not centered then
         local label = button:GetFontString()
         label:ClearAllPoints()
@@ -496,14 +742,16 @@ function UI:ButtonIcon(button, name, size, centered)
         label:SetPoint("RIGHT", -10, 0)
     end
     return button.icon
-end--[[APR_DIAG]]; UI.ButtonIcon = APRTrace("APR-Core/ui/foundations/Widgets.lua:483:UI:ButtonIcon#47", UI.ButtonIcon)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.ButtonIcon = APRTrace("APR-Core/ui/foundations/Widgets.lua:483:UI:ButtonIcon#47", UI.ButtonIcon)--[[/APR_DIAG]]
 
 function UI:IconButton(parent, icon, size, callback, style)
     local button = self:Button(parent, "", size, callback, style or "flat")
     button:SetSize(size, size)
     self:ButtonIcon(button, icon, math.min(icon == "favorite" and 16 or 20, size - 4), true)
     return button
-end--[[APR_DIAG]]; UI.IconButton = APRTrace("APR-Core/ui/foundations/Widgets.lua:501:UI:IconButton#50", UI.IconButton)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.IconButton = APRTrace("APR-Core/ui/foundations/Widgets.lua:501:UI:IconButton#50", UI.IconButton)--[[/APR_DIAG]]
 
 function UI:Section(parent, title, surface)
     local panel = self:Panel(parent, "borderedPanel", surface or "inset")
@@ -513,7 +761,8 @@ function UI:Section(parent, title, surface)
     panel.title:SetHeight(22)
     panel.title:SetWordWrap(false)
     return panel
-end--[[APR_DIAG]]; UI.Section = APRTrace("APR-Core/ui/foundations/Widgets.lua:508:UI:Section#51", UI.Section)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.Section = APRTrace("APR-Core/ui/foundations/Widgets.lua:508:UI:Section#51", UI.Section)--[[/APR_DIAG]]
 
 -- Column labels share one header band; the sort indicator is a texture, not a font glyph.
 function UI:ColumnHeader(parent, text, callback)
@@ -532,7 +781,8 @@ function UI:ColumnHeader(parent, text, callback)
     button.icon:GetParent():ClearAllPoints()
     button.icon:GetParent():SetPoint("RIGHT", -3, 0)
     return button
-end--[[APR_DIAG]]; UI.ColumnHeader = APRTrace("APR-Core/ui/foundations/Widgets.lua:519:UI:ColumnHeader#52", UI.ColumnHeader)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.ColumnHeader = APRTrace("APR-Core/ui/foundations/Widgets.lua:519:UI:ColumnHeader#52", UI.ColumnHeader)--[[/APR_DIAG]]
 
 function UI:SearchBox(parent, width, placeholder, changed)
     local edit = CreateFrame("EditBox", nil, parent, "BackdropTemplate")
@@ -544,12 +794,27 @@ function UI:SearchBox(parent, width, placeholder, changed)
     edit.placeholder = self:Label(edit, placeholder, 12, "muted")
     edit.placeholder:SetPoint("LEFT", 30, 0)
     edit.placeholder:SetPoint("RIGHT", -10, 0)
-    edit:SetScript("OnEscapePressed", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:547:callback#54", --[[/APR_DIAG]]function(self) self:ClearFocus() end--[[APR_DIAG]])--[[/APR_DIAG]])
-    edit:SetScript("OnEnterPressed", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:548:callback#55", --[[/APR_DIAG]]function(self) self:ClearFocus() end--[[APR_DIAG]])--[[/APR_DIAG]])
-    edit:SetScript("OnTextChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:549:callback#56", --[[/APR_DIAG]]function(self)
-        self.placeholder:SetShown(self:GetText() == "")
-        changed(self:GetText())
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    edit:SetScript(
+        "OnEscapePressed", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/foundations/Widgets.lua:547:callback#54", --[[/APR_DIAG]]
+            function(self) self:ClearFocus() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
+    edit:SetScript(
+        "OnEnterPressed", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/foundations/Widgets.lua:548:callback#55", --[[/APR_DIAG]]
+            function(self) self:ClearFocus() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
+    edit:SetScript(
+        "OnTextChanged", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/foundations/Widgets.lua:549:callback#56", --[[/APR_DIAG]] function(self)
+            self.placeholder:SetShown(self:GetText() == "")
+            changed(self:GetText())
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     APR:RegisterSkinTarget(edit, "editbox", { themeSurface = true })
     -- EUI re-fades direct input textures when other windows refresh; keep the functional icon in a child.
     local iconHost = CreateFrame("Frame", nil, edit)
@@ -557,27 +822,38 @@ function UI:SearchBox(parent, width, placeholder, changed)
     iconHost:EnableMouse(false)
     edit.searchIcon = self:Icon(iconHost, "search", 16)
     edit.searchIcon:SetPoint("LEFT", 9, 0)
-    APR:RegisterFontString(edit, "general", {role = "base"})
+    APR:RegisterFontString(edit, "general", { role = "base" })
     return edit
-end--[[APR_DIAG]]; UI.SearchBox = APRTrace("APR-Core/ui/foundations/Widgets.lua:537:UI:SearchBox#53", UI.SearchBox)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.SearchBox = APRTrace("APR-Core/ui/foundations/Widgets.lua:537:UI:SearchBox#53", UI.SearchBox)--[[/APR_DIAG]]
 
 function UI:Tooltip(control, title, description)
-    control:HookScript("OnEnter", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:565:callback#58", --[[/APR_DIAG]]function(self)
-        GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-        -- Resolve recycled rows at hover time, including descriptions that return nil.
-        local heading, body = title, description
-        if type(heading) == "function" then heading = heading(self) end
-        if type(body) == "function" then body = body(self) end
-        APR:SetTooltipText(GameTooltip, heading, "general", "accent")
-        if body then APR:AddTooltipLine(GameTooltip, body, "general", "base", true) end
-        GameTooltip:Show()
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-    control:HookScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:575:callback#59", --[[/APR_DIAG]]function() GameTooltip:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; UI.Tooltip = APRTrace("APR-Core/ui/foundations/Widgets.lua:564:UI:Tooltip#57", UI.Tooltip)--[[/APR_DIAG]]
+    control:HookScript(
+        "OnEnter", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/foundations/Widgets.lua:565:callback#58", --[[/APR_DIAG]] function(self)
+            GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+            -- Resolve recycled rows at hover time, including descriptions that return nil.
+            local heading, body = title, description
+            if type(heading) == "function" then heading = heading(self) end
+            if type(body) == "function" then body = body(self) end
+            APR:SetTooltipText(GameTooltip, heading, "general", "accent")
+            if body then APR:AddTooltipLine(GameTooltip, body, "general", "base", true) end
+            GameTooltip:Show()
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+    control:HookScript(
+        "OnLeave", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/foundations/Widgets.lua:575:callback#59", --[[/APR_DIAG]]
+            function() GameTooltip:Hide() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
+end--[[APR_DIAG]]
+UI.Tooltip = APRTrace("APR-Core/ui/foundations/Widgets.lua:564:UI:Tooltip#57", UI.Tooltip)--[[/APR_DIAG]]
 
 -- Keep Blizzard's scroll behavior and hit areas, replacing only its framed arrow artwork.
 function UI:StyleScrollBar(bar)
-    for _, definition in ipairs({{bar.ScrollUpButton, "up"}, {bar.ScrollDownButton, "down"}}) do
+    for _, definition in ipairs({ { bar.ScrollUpButton, "up" }, { bar.ScrollDownButton, "down" } }) do
         local button, name = unpack(definition)
         if button then
             local path = iconRoot .. name .. ".tga"
@@ -585,7 +861,7 @@ function UI:StyleScrollBar(bar)
             button:SetPushedTexture(path)
             button:SetDisabledTexture(path)
             button:SetHighlightTexture(path, "ADD")
-            for _, state in ipairs({"Normal", "Pushed", "Disabled", "Highlight"}) do
+            for _, state in ipairs({ "Normal", "Pushed", "Disabled", "Highlight" }) do
                 local texture = button["Get" .. state .. "Texture"](button)
                 self:SetIcon(texture, name)
                 texture:ClearAllPoints()
@@ -601,14 +877,16 @@ function UI:StyleScrollBar(bar)
         APR:RegisterThemeRegion(thumb, "border", 1, true)
         thumb:SetSize(6, 24)
     end
-end--[[APR_DIAG]]; UI.StyleScrollBar = APRTrace("APR-Core/ui/foundations/Widgets.lua:579:UI:StyleScrollBar#60", UI.StyleScrollBar)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.StyleScrollBar = APRTrace("APR-Core/ui/foundations/Widgets.lua:579:UI:StyleScrollBar#60", UI.StyleScrollBar)--[[/APR_DIAG]]
 
 function UI:Scroll(parent)
     local scroll = CreateFrame("ScrollFrame", nil, parent, "UIPanelScrollFrameTemplate")
     if scroll.ScrollBar then APR:RegisterSkinTarget(scroll.ScrollBar, "scrollbar", { compact = true }) end
     if APR.Gamepad and APR.Gamepad.PrepareScroll then APR.Gamepad:PrepareScroll(scroll) end
     return scroll
-end--[[APR_DIAG]]; UI.Scroll = APRTrace("APR-Core/ui/foundations/Widgets.lua:606:UI:Scroll#61", UI.Scroll)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.Scroll = APRTrace("APR-Core/ui/foundations/Widgets.lua:606:UI:Scroll#61", UI.Scroll)--[[/APR_DIAG]]
 
 -- FontStrings expose measured text height on both clients; EditBoxes do not.
 function UI:CopyBox(parent)
@@ -623,7 +901,13 @@ function UI:CopyBox(parent)
     edit:SetJustifyH("LEFT")
     edit:SetJustifyV("TOP")
     edit:SetWidth(600)
-    edit:SetScript("OnEscapePressed", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:626:callback#63", --[[/APR_DIAG]]function(self) self:ClearFocus() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    edit:SetScript(
+        "OnEscapePressed", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/foundations/Widgets.lua:626:callback#63", --[[/APR_DIAG]]
+            function(self) self:ClearFocus() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
     local measure = scroll:CreateFontString(nil, "OVERLAY")
     measure:SetFontObject(ChatFontNormal)
     measure:SetWordWrap(true)
@@ -632,40 +916,54 @@ function UI:CopyBox(parent)
         local offset = scroll:GetVerticalScroll()
         -- Long edit boxes must not intercept clicks on the header or footer outside the viewport.
         edit:SetHitRectInsets(0, 0, offset, math.max(0, edit:GetHeight() - offset - scroll:GetHeight()))
-    end--[[APR_DIAG]]; updateHitRect = APRTrace("APR-Core/ui/foundations/Widgets.lua:631:updateHitRect#64", updateHitRect)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    updateHitRect = APRTrace("APR-Core/ui/foundations/Widgets.lua:631:updateHitRect#64", updateHitRect)--[[/APR_DIAG]]
     local function resize()
         local width = math.max(1, scroll:GetWidth())
         edit:SetWidth(width)
         measure:SetWidth(width)
         measure:SetText(edit:GetText() or "")
         edit:SetHeight(math.max(30, scroll:GetHeight(), measure:GetStringHeight() + 20))
-        scroll:SetVerticalScroll(math.min(scroll:GetVerticalScroll(), math.max(0, edit:GetHeight() - scroll:GetHeight())))
+        scroll:SetVerticalScroll(
+            math.min(scroll:GetVerticalScroll(), math.max(0, edit:GetHeight() - scroll:GetHeight()))
+        )
         updateHitRect()
-    end--[[APR_DIAG]]; resize = APRTrace("APR-Core/ui/foundations/Widgets.lua:636:resize#65", resize)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    resize = APRTrace("APR-Core/ui/foundations/Widgets.lua:636:resize#65", resize)--[[/APR_DIAG]]
     edit:SetScript("OnTextChanged", resize)
-    edit:SetScript("OnCursorChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:646:callback#66", --[[/APR_DIAG]]function(_, _, y, _, height)
-        local top, offset = -y, scroll:GetVerticalScroll()
-        if top < offset then offset = top
-        elseif top + height > offset + scroll:GetHeight() then offset = top + height - scroll:GetHeight() end
-        scroll:SetVerticalScroll(math.max(0, math.min(offset, edit:GetHeight() - scroll:GetHeight())))
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    edit:SetScript(
+        "OnCursorChanged", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/foundations/Widgets.lua:646:callback#66", --[[/APR_DIAG]] function(_, _, y, _, height)
+            local top, offset = -y, scroll:GetVerticalScroll()
+            if top < offset then
+                offset = top
+            elseif top + height > offset + scroll:GetHeight() then
+                offset = top + height - scroll:GetHeight()
+            end
+            scroll:SetVerticalScroll(math.max(0, math.min(offset, edit:GetHeight() - scroll:GetHeight())))
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     scroll:HookScript("OnSizeChanged", resize)
     scroll:HookScript("OnVerticalScroll", updateHitRect)
     scroll:HookScript("OnScrollRangeChanged", updateHitRect)
     scroll:SetScrollChild(edit)
     -- The measuring region and selectable text must use the same font and size.
-    APR:RegisterFontString(edit, "general", {role = "base"})
-    APR:RegisterFontString(measure, "general", {role = "base", onApplied = resize})
+    APR:RegisterFontString(edit, "general", { role = "base" })
+    APR:RegisterFontString(measure, "general", { role = "base", onApplied = resize })
     return scroll, edit
-end--[[APR_DIAG]]; UI.CopyBox = APRTrace("APR-Core/ui/foundations/Widgets.lua:614:UI:CopyBox#62", UI.CopyBox)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.CopyBox = APRTrace("APR-Core/ui/foundations/Widgets.lua:614:UI:CopyBox#62", UI.CopyBox)--[[/APR_DIAG]]
 
 function UI:FormatCodeBlock(text, language)
     -- A diagnostic may itself contain backticks; keep the complete payload inside one code block.
     local longest = 2
-    for first, after in text:gmatch("()`+()") do longest = math.max(longest, after - first) end
+    for first, after in text:gmatch("()`+()") do
+        longest = math.max(longest, after - first)
+    end
     local fence = string.rep("`", longest + 1)
     return fence .. (language or "") .. "\n" .. text .. "\n" .. fence
-end--[[APR_DIAG]]; UI.FormatCodeBlock = APRTrace("APR-Core/ui/foundations/Widgets.lua:662:UI:FormatCodeBlock#67", UI.FormatCodeBlock)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.FormatCodeBlock = APRTrace("APR-Core/ui/foundations/Widgets.lua:662:UI:FormatCodeBlock#67", UI.FormatCodeBlock)--[[/APR_DIAG]]
 
 function UI:ShowTextReport(title, report, owner, language)
     local frame = self.reportWindow
@@ -679,12 +977,24 @@ function UI:ShowTextReport(title, report, owner, language)
         frame.edit, frame.scroll = edit, scroll
         scroll:SetPoint("TOPLEFT", 12, -12)
         scroll:SetPoint("BOTTOMRIGHT", -32, 12)
-        local copy = self:Button(frame.content, L["STATUS_EXPORT"], 150, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:682:callback#69", --[[/APR_DIAG]]function()
-            edit:SetFocus(); edit:HighlightText()
-        end--[[APR_DIAG]])--[[/APR_DIAG]])
+        local copy = self:Button(
+            frame.content,
+            L["STATUS_EXPORT"],
+            150, --[[APR_DIAG]]
+            APRTrace("APR-Core/ui/foundations/Widgets.lua:682:callback#69", --[[/APR_DIAG]] function()
+                edit:SetFocus()
+                edit:HighlightText()
+            end--[[APR_DIAG]]) --[[/APR_DIAG]]
+        )
         copy:SetPoint("BOTTOMRIGHT")
         self:Tooltip(copy, L["COPY_HELPER"])
-        frame:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:687:callback#70", --[[/APR_DIAG]]function() edit:ClearFocus() end--[[APR_DIAG]])--[[/APR_DIAG]])
+        frame:HookScript(
+            "OnHide", --[[APR_DIAG]]
+            APRTrace(
+                "APR-Core/ui/foundations/Widgets.lua:687:callback#70", --[[/APR_DIAG]]
+                function() edit:ClearFocus() end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]]
+        )
     end
     frame.reportOwner = owner
     frame.header.Text:SetText(title)
@@ -699,7 +1009,8 @@ function UI:ShowTextReport(title, report, owner, language)
     frame.edit:SetFocus()
     frame.edit:HighlightText()
     frame.scroll:SetVerticalScroll(0)
-end--[[APR_DIAG]]; UI.ShowTextReport = APRTrace("APR-Core/ui/foundations/Widgets.lua:670:UI:ShowTextReport#68", UI.ShowTextReport)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.ShowTextReport = APRTrace("APR-Core/ui/foundations/Widgets.lua:670:UI:ShowTextReport#68", UI.ShowTextReport)--[[/APR_DIAG]]
 
 -- A scrollable menu keeps expansion/category pickers usable with large imported catalogs.
 function UI:Select(parent, width, changed, settings)
@@ -707,7 +1018,7 @@ function UI:Select(parent, width, changed, settings)
     local button = self:Button(parent, "", width)
     button.multiselect = settings.multiselect == true
     -- Match the settings dropdown's field surface as well as its list rows.
-    APR:RegisterSkinTarget(button, "panel", {themeSurface = true, preserveContent = true})
+    APR:RegisterSkinTarget(button, "panel", { themeSurface = true, preserveContent = true })
     button:GetFontString():SetJustifyH("LEFT")
     button:GetFontString():SetWordWrap(false)
     button:GetFontString():SetPoint("RIGHT", -30, 0)
@@ -727,8 +1038,13 @@ function UI:Select(parent, width, changed, settings)
         local available = upwards and above or below
         local capacity = math.max(34, math.floor((available - 8) / 26) * 26 + 8)
         self.menu:ClearAllPoints()
-        self.menu:SetPoint(upwards and "BOTTOMLEFT" or "TOPLEFT", self,
-            upwards and "TOPLEFT" or "BOTTOMLEFT", 0, upwards and 2 or -2)
+        self.menu:SetPoint(
+            upwards and "BOTTOMLEFT" or "TOPLEFT",
+            self,
+            upwards and "TOPLEFT" or "BOTTOMLEFT",
+            0,
+            upwards and 2 or -2
+        )
         self.menu:SetHeight(math.min(desired, capacity))
         self.menu:SetWidth(self:GetWidth())
         local scroll = self.menu.list.scroll
@@ -737,7 +1053,8 @@ function UI:Select(parent, width, changed, settings)
         scroll:SetSize(math.max(1, self:GetWidth() - (scrolling and 30 or 8)), viewport)
         if scroll.ScrollBar then scroll.ScrollBar:SetShown(scrolling) end
         self.menu.list:ScrollTo(scroll:GetVerticalScroll())
-    end--[[APR_DIAG]]; button.LayoutMenu = APRTrace("APR-Core/ui/foundations/Widgets.lua:717:button:LayoutMenu#72", button.LayoutMenu)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    button.LayoutMenu = APRTrace("APR-Core/ui/foundations/Widgets.lua:717:button:LayoutMenu#72", button.LayoutMenu)--[[/APR_DIAG]]
     local function isSelected(item)
         local value = item
         if not button.sourceProvider then value = item.value end
@@ -746,94 +1063,144 @@ function UI:Select(parent, width, changed, settings)
             return button.value and button.value[value] == true
         end
         return value == button.value
-    end--[[APR_DIAG]]; isSelected = APRTrace("APR-Core/ui/foundations/Widgets.lua:741:isSelected#73", isSelected)--[[/APR_DIAG]]
-    button:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:750:callback#74", --[[/APR_DIAG]]function()
-        if not button:IsEnabled() then return end
-        if button.menu and button.menu:IsShown() then button.menu:Hide(); return end
-        if UI.activeMenu then UI.activeMenu:Hide() end
-        local source = button.sourceProvider and button.sourceProvider()
-        if not button.menu then
-            -- Keep the popup outside settings scroll frames so their clipping
-            -- cannot cut it off. TOOLTIP is above every APR window/container.
-            local menu = self:Panel(UIParent)
-            button.menu = menu
-            menu:SetFrameStrata("TOOLTIP")
-            menu:SetClampedToScreen(true)
-            menu:SetWidth(width)
-            menu:EnableMouse(true)
-            menu:SetScript("OnShow", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:764:callback#75", --[[/APR_DIAG]]function()
-                UI.activeMenu = menu
-                menu:RegisterEvent("GLOBAL_MOUSE_DOWN")
-                menu:RegisterEvent("PLAYER_REGEN_DISABLED")
-                menu:EnableKeyboard(not InCombatLockdown())
-                if not InCombatLockdown() then menu:SetPropagateKeyboardInput(true) end
-                UI:SetIcon(button.arrow, "up")
-            end--[[APR_DIAG]])--[[/APR_DIAG]])
-            menu:SetScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:772:callback#76", --[[/APR_DIAG]]function()
-                menu:UnregisterEvent("GLOBAL_MOUSE_DOWN")
-                menu:UnregisterEvent("PLAYER_REGEN_DISABLED")
-                if UI.activeMenu == menu then UI.activeMenu = nil end
-                UI:SetIcon(button.arrow, "down")
-            end--[[APR_DIAG]])--[[/APR_DIAG]])
-            -- Observe the click without an overlay: the underlying control still receives it.
-            menu:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:779:callback#77", --[[/APR_DIAG]]function(_, event)
-                if event == "PLAYER_REGEN_DISABLED" or (not menu:IsMouseOver() and not button:IsMouseOver()) then menu:Hide() end
-            end--[[APR_DIAG]])--[[/APR_DIAG]])
-            menu:SetScript("OnKeyDown", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:782:callback#78", --[[/APR_DIAG]]function(_, key)
-                if not InCombatLockdown() then menu:SetPropagateKeyboardInput(key ~= "ESCAPE") end
-                if key == "ESCAPE" then menu:Hide() end
-            end--[[APR_DIAG]])--[[/APR_DIAG]])
-            local scroll = self:Scroll(menu)
-            scroll:SetPoint("TOPLEFT", 4, -4)
-            scroll:HookScript("OnScrollRangeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:788:callback#79", --[[/APR_DIAG]]function()
-                if scroll.ScrollBar then
-                    scroll.ScrollBar:SetShown(menu.list and menu.list.height > scroll:GetHeight() + 0.5 or false)
-                end
-            end--[[APR_DIAG]])--[[/APR_DIAG]])
-            menu.list = APR.VirtualList:New(scroll, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:793:callback#80", --[[/APR_DIAG]]function(owner)
-                local row = self:ListButton(owner, "", width - 32, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:794:callback#81", --[[/APR_DIAG]]function(row)
-                    local item = row.item
-                    if button.sourceProvider then
-                        menu:Hide()
-                        button:SetValue(item, row:GetText())
-                        if changed then changed(item, true) end
-                        return
-                    end
-                    local enabled = not isSelected(item)
-                    if button.multiselect then
-                        local values = {}
-                        for value, selected in pairs(button.value or {}) do
-                            if selected then values[value] = true end
+    end--[[APR_DIAG]]
+    isSelected = APRTrace("APR-Core/ui/foundations/Widgets.lua:741:isSelected#73", isSelected)--[[/APR_DIAG]]
+    button:SetScript(
+        "OnClick", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/foundations/Widgets.lua:750:callback#74", --[[/APR_DIAG]] function()
+            if not button:IsEnabled() then return end
+            if button.menu and button.menu:IsShown() then
+                button.menu:Hide()
+                return
+            end
+            if UI.activeMenu then UI.activeMenu:Hide() end
+            local source = button.sourceProvider and button.sourceProvider()
+            if not button.menu then
+                -- Keep the popup outside settings scroll frames so their clipping
+                -- cannot cut it off. TOOLTIP is above every APR window/container.
+                local menu = self:Panel(UIParent)
+                button.menu = menu
+                menu:SetFrameStrata("TOOLTIP")
+                menu:SetClampedToScreen(true)
+                menu:SetWidth(width)
+                menu:EnableMouse(true)
+                menu:SetScript(
+                    "OnShow", --[[APR_DIAG]]
+                    APRTrace("APR-Core/ui/foundations/Widgets.lua:764:callback#75", --[[/APR_DIAG]] function()
+                        UI.activeMenu = menu
+                        menu:RegisterEvent("GLOBAL_MOUSE_DOWN")
+                        menu:RegisterEvent("PLAYER_REGEN_DISABLED")
+                        menu:EnableKeyboard(not InCombatLockdown())
+                        if not InCombatLockdown() then menu:SetPropagateKeyboardInput(true) end
+                        UI:SetIcon(button.arrow, "up")
+                    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+                )
+                menu:SetScript(
+                    "OnHide", --[[APR_DIAG]]
+                    APRTrace("APR-Core/ui/foundations/Widgets.lua:772:callback#76", --[[/APR_DIAG]] function()
+                        menu:UnregisterEvent("GLOBAL_MOUSE_DOWN")
+                        menu:UnregisterEvent("PLAYER_REGEN_DISABLED")
+                        if UI.activeMenu == menu then UI.activeMenu = nil end
+                        UI:SetIcon(button.arrow, "down")
+                    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+                )
+                -- Observe the click without an overlay: the underlying control still receives it.
+                menu:SetScript(
+                    "OnEvent", --[[APR_DIAG]]
+                    APRTrace("APR-Core/ui/foundations/Widgets.lua:779:callback#77", --[[/APR_DIAG]] function(_, event)
+                        if
+                            event == "PLAYER_REGEN_DISABLED" or (not menu:IsMouseOver() and not button:IsMouseOver())
+                        then
+                            menu:Hide()
                         end
-                        if item.value == false then values = {}
-                        else values[item.value] = enabled or nil end
-                        button:SetOptions(button.options, values)
-                    else
-                        button:SetOptions(button.options, item.value)
-                        menu:Hide()
-                    end
-                    if changed then changed(item.value, enabled) end
-                end--[[APR_DIAG]])--[[/APR_DIAG]])
-                row.check = self:Icon(row, "check", 16)
-                return row
-            end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:819:callback#82", --[[/APR_DIAG]]function(row, item, index)
-                row:SetText(button.sourceProvider and button.sourceLabel(item, index) or item.label)
-                UI:StyleSelectRow(row, row:GetFontString(), row.check, isSelected(item), false)
-            end--[[APR_DIAG]])--[[/APR_DIAG]], 26)
-            button:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:823:callback#83", --[[/APR_DIAG]]function() menu:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
-            menu:Hide()
-            if APR.Gamepad then APR.Gamepad:RegisterWindow(menu, true) end
-        end
-        if source then
-            button.menu.list:SetSource(source)
-        else
-            button.menu.list:SetItems(button.options or {})
-        end
-        button:LayoutMenu()
-        button.menu:Show()
-        UI.activeMenu = button.menu
-        button.menu.list:RefreshVisible()
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
+                    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+                )
+                menu:SetScript(
+                    "OnKeyDown", --[[APR_DIAG]]
+                    APRTrace("APR-Core/ui/foundations/Widgets.lua:782:callback#78", --[[/APR_DIAG]] function(_, key)
+                        if not InCombatLockdown() then menu:SetPropagateKeyboardInput(key ~= "ESCAPE") end
+                        if key == "ESCAPE" then menu:Hide() end
+                    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+                )
+                local scroll = self:Scroll(menu)
+                scroll:SetPoint("TOPLEFT", 4, -4)
+                scroll:HookScript(
+                    "OnScrollRangeChanged", --[[APR_DIAG]]
+                    APRTrace("APR-Core/ui/foundations/Widgets.lua:788:callback#79", --[[/APR_DIAG]] function()
+                        if scroll.ScrollBar then
+                            scroll.ScrollBar:SetShown(
+                                menu.list and menu.list.height > scroll:GetHeight() + 0.5 or false
+                            )
+                        end
+                    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+                )
+                menu.list = APR.VirtualList:New(
+                    scroll, --[[APR_DIAG]]
+                    APRTrace("APR-Core/ui/foundations/Widgets.lua:793:callback#80", --[[/APR_DIAG]] function(owner)
+                        local row = self:ListButton(
+                            owner,
+                            "",
+                            width - 32, --[[APR_DIAG]]
+                            APRTrace("APR-Core/ui/foundations/Widgets.lua:794:callback#81", --[[/APR_DIAG]] function(row)
+                                local item = row.item
+                                if button.sourceProvider then
+                                    menu:Hide()
+                                    button:SetValue(item, row:GetText())
+                                    if changed then changed(item, true) end
+                                    return
+                                end
+                                local enabled = not isSelected(item)
+                                if button.multiselect then
+                                    local values = {}
+                                    for value, selected in pairs(button.value or {}) do
+                                        if selected then values[value] = true end
+                                    end
+                                    if item.value == false then
+                                        values = {}
+                                    else
+                                        values[item.value] = enabled or nil
+                                    end
+                                    button:SetOptions(button.options, values)
+                                else
+                                    button:SetOptions(button.options, item.value)
+                                    menu:Hide()
+                                end
+                                if changed then changed(item.value, enabled) end
+                            end--[[APR_DIAG]]) --[[/APR_DIAG]]
+                        )
+                        row.check = self:Icon(row, "check", 16)
+                        return row
+                    end--[[APR_DIAG]]) --[[/APR_DIAG]], --[[APR_DIAG]]
+                    APRTrace(
+                        "APR-Core/ui/foundations/Widgets.lua:819:callback#82", --[[/APR_DIAG]]
+                        function(row, item, index)
+                            row:SetText(button.sourceProvider and button.sourceLabel(item, index) or item.label)
+                            UI:StyleSelectRow(row, row:GetFontString(), row.check, isSelected(item), false)
+                        end --[[APR_DIAG]]
+                    ) --[[/APR_DIAG]],
+                    26
+                )
+                button:HookScript(
+                    "OnHide", --[[APR_DIAG]]
+                    APRTrace(
+                        "APR-Core/ui/foundations/Widgets.lua:823:callback#83", --[[/APR_DIAG]]
+                        function() menu:Hide() end --[[APR_DIAG]]
+                    ) --[[/APR_DIAG]]
+                )
+                menu:Hide()
+                if APR.Gamepad then APR.Gamepad:RegisterWindow(menu, true) end
+            end
+            if source then
+                button.menu.list:SetSource(source)
+            else
+                button.menu.list:SetItems(button.options or {})
+            end
+            button:LayoutMenu()
+            button.menu:Show()
+            UI.activeMenu = button.menu
+            button.menu.list:RefreshVisible()
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     function button:SetOptions(options, value)
         if self.sourceProvider then self:SetSourceProvider(nil) end
         self.options, self.value = options or {}, value
@@ -846,7 +1213,8 @@ function UI:Select(parent, width, changed, settings)
             self.menu.list:SetItems(self.options, true)
             self:LayoutMenu()
         end
-    end--[[APR_DIAG]]; button.SetOptions = APRTrace("APR-Core/ui/foundations/Widgets.lua:837:button:SetOptions#84", button.SetOptions)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    button.SetOptions = APRTrace("APR-Core/ui/foundations/Widgets.lua:837:button:SetOptions#84", button.SetOptions)--[[/APR_DIAG]]
     -- The selected caption is independent of catalog creation. A large catalog
     -- is borrowed only when opened and queried only for its visible rows.
     function button:SetSourceProvider(provider, labelForValue, maxHeight)
@@ -856,15 +1224,24 @@ function UI:Select(parent, width, changed, settings)
         end
         self.options = nil
         self.sourceProvider, self.sourceLabel, self.sourceMaxHeight = provider, labelForValue, maxHeight
-    end--[[APR_DIAG]]; button.SetSourceProvider = APRTrace("APR-Core/ui/foundations/Widgets.lua:852:button:SetSourceProvider#85", button.SetSourceProvider)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    button.SetSourceProvider =
+        APRTrace("APR-Core/ui/foundations/Widgets.lua:852:button:SetSourceProvider#85", button.SetSourceProvider)--[[/APR_DIAG]]
     function button:SetValue(value, label)
         self.value = value
         self:SetText(label or (self.sourceLabel and self.sourceLabel(value)) or "")
         if self.menu and self.menu:IsShown() then self.menu.list:RefreshVisible(true) end
-    end--[[APR_DIAG]]; button.SetValue = APRTrace("APR-Core/ui/foundations/Widgets.lua:860:button:SetValue#86", button.SetValue)--[[/APR_DIAG]]
-    button:HookScript("OnDisable", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:865:callback#87", --[[/APR_DIAG]]function() if button.menu then button.menu:Hide() end end--[[APR_DIAG]])--[[/APR_DIAG]])
+    end--[[APR_DIAG]]
+    button.SetValue = APRTrace("APR-Core/ui/foundations/Widgets.lua:860:button:SetValue#86", button.SetValue)--[[/APR_DIAG]]
+    button:HookScript(
+        "OnDisable", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/foundations/Widgets.lua:865:callback#87", --[[/APR_DIAG]] function()
+            if button.menu then button.menu:Hide() end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     return button
-end--[[APR_DIAG]]; UI.Select = APRTrace("APR-Core/ui/foundations/Widgets.lua:705:UI:Select#71", UI.Select)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.Select = APRTrace("APR-Core/ui/foundations/Widgets.lua:705:UI:Select#71", UI.Select)--[[/APR_DIAG]]
 
 function UI:Window(name, title, width, height, surface, logo)
     local frame = self:Panel(UIParent, "window", surface)
@@ -874,8 +1251,10 @@ function UI:Window(name, title, width, height, surface, logo)
     profile.uiWindows[name] = profile.uiWindows[name] or {}
     local position = profile.uiWindows[name]
     local window = LibStub("LibWindow-1.1")
-    frame:SetSize(math.min(tonumber(position.width) or width, UIParent:GetWidth() - 40),
-        math.min(tonumber(position.height) or height, UIParent:GetHeight() - 60))
+    frame:SetSize(
+        math.min(tonumber(position.width) or width, UIParent:GetWidth() - 40),
+        math.min(tonumber(position.height) or height, UIParent:GetHeight() - 60)
+    )
     frame:SetPoint("CENTER")
     frame:SetClampedToScreen(true)
     if logo then frame:SetClampRectInsets(-24, 0, 26, 0) end
@@ -890,7 +1269,8 @@ function UI:Window(name, title, width, height, surface, logo)
     local function saveGeometry()
         window.SavePosition(frame)
         position.width, position.height = frame:GetSize()
-    end--[[APR_DIAG]]; saveGeometry = APRTrace("APR-Core/ui/foundations/Widgets.lua:890:saveGeometry#89", saveGeometry)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    saveGeometry = APRTrace("APR-Core/ui/foundations/Widgets.lua:890:saveGeometry#89", saveGeometry)--[[/APR_DIAG]]
     frame.header = CreateFrame("Frame", nil, frame)
     frame.header:SetPoint("TOPLEFT", logo and 72 or 16, logo and -3 or -8)
     frame.header:SetPoint("TOPRIGHT", -52, logo and -3 or -8)
@@ -900,25 +1280,64 @@ function UI:Window(name, title, width, height, surface, logo)
     frame.header.Text:SetPoint("LEFT")
     frame.header.Text:SetPoint("RIGHT", -8, 0)
     frame.header.Text:SetWordWrap(false)
-    APR:SetupHeaderDrag(frame.header, frame, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:903:callback#90", --[[/APR_DIAG]]function() return not InCombatLockdown() end--[[APR_DIAG]])--[[/APR_DIAG]], saveGeometry)
+    APR:SetupHeaderDrag(
+        frame.header,
+        frame, --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/foundations/Widgets.lua:903:callback#90", --[[/APR_DIAG]]
+            function() return not InCombatLockdown() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]],
+        saveGeometry
+    )
     if logo then
         -- The artwork already contains its ring; a portrait template would add a second one and its own title bar.
         frame.logo = self:Icon(frame.header, logo, 80)
         -- Cover the frame's corner with the opaque part of the medallion, not its transparent margin.
         frame.logo:SetPoint("CENTER", frame, "TOPLEFT", 18, -18)
     end
-    frame.close = self:IconButton(frame, "close", 30, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:910:callback#91", --[[/APR_DIAG]]function() frame:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    frame.close = self:IconButton(
+        frame,
+        "close",
+        30, --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/foundations/Widgets.lua:910:callback#91", --[[/APR_DIAG]]
+            function() frame:Hide() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
     self:Tooltip(frame.close, CLOSE)
     frame.close:SetPoint("CENTER", frame.header, "RIGHT", 25, 0)
     frame.content = CreateFrame("Frame", nil, frame)
     frame.content:SetPoint("TOPLEFT", 16, -58)
     frame.content:SetPoint("BOTTOMRIGHT", -16, 16)
-    frame.resize = self:IconButton(frame, "resize", 22, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:916:callback#92", --[[/APR_DIAG]]function() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    frame.resize = self:IconButton(
+        frame,
+        "resize",
+        22, --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/foundations/Widgets.lua:916:callback#92", --[[/APR_DIAG]] function() end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     frame.resize:SetHeight(22)
     frame.resize:SetPoint("BOTTOMRIGHT", -2, 2)
-    frame.resize:SetScript("OnMouseDown", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:919:callback#93", --[[/APR_DIAG]]function() if not InCombatLockdown() then frame:StartSizing("BOTTOMRIGHT") end end--[[APR_DIAG]])--[[/APR_DIAG]])
-    frame.resize:SetScript("OnMouseUp", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:920:callback#94", --[[/APR_DIAG]]function() frame:StopMovingOrSizing(); saveGeometry() end--[[APR_DIAG]])--[[/APR_DIAG]])
-    frame:SetScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Widgets.lua:921:callback#95", --[[/APR_DIAG]]function(self) self:StopMovingOrSizing(); saveGeometry(); GameTooltip:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    frame.resize:SetScript(
+        "OnMouseDown", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/foundations/Widgets.lua:919:callback#93", --[[/APR_DIAG]] function()
+            if not InCombatLockdown() then frame:StartSizing("BOTTOMRIGHT") end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+    frame.resize:SetScript(
+        "OnMouseUp", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/foundations/Widgets.lua:920:callback#94", --[[/APR_DIAG]] function()
+            frame:StopMovingOrSizing()
+            saveGeometry()
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+    frame:SetScript(
+        "OnHide", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/foundations/Widgets.lua:921:callback#95", --[[/APR_DIAG]] function(self)
+            self:StopMovingOrSizing()
+            saveGeometry()
+            GameTooltip:Hide()
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     UISpecialFrames = UISpecialFrames or {}
     table.insert(UISpecialFrames, name)
     frame:Hide()
@@ -929,4 +1348,5 @@ function UI:Window(name, title, width, height, surface, logo)
         APR.Gamepad:RegisterWindow(frame)
     end
     return frame
-end--[[APR_DIAG]]; UI.Window = APRTrace("APR-Core/ui/foundations/Widgets.lua:869:UI:Window#88", UI.Window)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+UI.Window = APRTrace("APR-Core/ui/foundations/Widgets.lua:869:UI:Window#88", UI.Window)--[[/APR_DIAG]]

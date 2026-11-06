@@ -28,8 +28,10 @@ function Instance:GetWorldPhase(group)
     local definition = (self.config.PhaseGroups or {})[group]
     if not definition then return nil end
     local mapID
-    if self.phaseCharacter then mapID = self.phaseCharacter.mapID
-    elseif self.env.getCurrentMapID then mapID = self.env.getCurrentMapID()
+    if self.phaseCharacter then
+        mapID = self.phaseCharacter.mapID
+    elseif self.env.getCurrentMapID then
+        mapID = self.env.getCurrentMapID()
     else
         local current = self.env.getCharacter and self.env.getCharacter()
         mapID = current and current.mapID
@@ -72,7 +74,10 @@ function Instance:GetMapAccessRequirements(mapID)
             return nil
         end
         seen[mapID] = true
-        if rules[mapID] then self.mapAccessRequirements[original] = rules[mapID]; return rules[mapID] end
+        if rules[mapID] then
+            self.mapAccessRequirements[original] = rules[mapID]
+            return rules[mapID]
+        end
         local info = self:GetMapAncestryInfo(mapID)
         if not info then return nil end -- Retry incomplete ancestry later.
         mapID = info.parentMapID
@@ -83,14 +88,19 @@ function Instance:GetTravelRequirements(requirements, from, to)
     if not self.config.MapRequirements then return requirements end
     local fromRule = from and not from.phaseAgnostic and self:GetMapAccessRequirements(from.uiMapID)
     local toRule = to and not to.phaseAgnostic and self:GetMapAccessRequirements(to.uiMapID)
-    if not fromRule then fromRule, toRule = toRule, nil end
+    if not fromRule then
+        fromRule, toRule = toRule, nil
+    end
     if not fromRule then return requirements end
     if not toRule or toRule == fromRule then toRule = nil end
     -- There are only two endpoints. Keep identity-based deduplication without
     -- temporary endpoint/seen tables, and allocate only when a rule is added.
     local additions
-    if requirements then additions = { requirements, fromRule, toRule }
-    else additions = { fromRule, toRule } end
+    if requirements then
+        additions = { requirements, fromRule, toRule }
+    else
+        additions = { fromRule, toRule }
+    end
     return { all = additions }
 end
 
@@ -130,7 +140,8 @@ function Instance:CheckRequirements(requirements, character)
         elseif key == "minLevel" or key == "maxLevel" then
             if type(value) ~= "number" then return false, "invalid_requirements" end
             if type(character.level) == "number" then
-                result = (key == "minLevel" and character.level >= value) or (key == "maxLevel" and character.level <= value)
+                result = (key == "minLevel" and character.level >= value)
+                    or (key == "maxLevel" and character.level <= value)
             end
         elseif key == "quest" then
             if self.env.isQuestCompleted then result = self.env.isQuestCompleted(value) end
@@ -155,9 +166,14 @@ function Instance:CheckRequirements(requirements, character)
             local active = self.env.isHolidayActive and self.env.isHolidayActive(value)
             if type(active) == "boolean" then result = active end
         elseif key == "housingInitiative" then
-            if type(value) ~= "table" or type(value.id) ~= "number" or value.id <= 0 or value.id % 1 ~= 0
+            if
+                type(value) ~= "table"
+                or type(value.id) ~= "number"
+                or value.id <= 0
+                or value.id % 1 ~= 0
                 or (value.cycleID ~= nil and type(value.cycleID) ~= "number")
-                or (value.neighborhoodGUID ~= nil and type(value.neighborhoodGUID) ~= "string") then
+                or (value.neighborhoodGUID ~= nil and type(value.neighborhoodGUID) ~= "string")
+            then
                 return false, "invalid_requirements"
             end
             local info = self.env.getHousingInitiative and self.env.getHousingInitiative(character.mapID)
@@ -169,7 +185,9 @@ function Instance:CheckRequirements(requirements, character)
         elseif key == "questActive" then
             if self.env.isQuestActive then result = self.env.isQuestActive(value) end
         elseif key == "reputation" then
-            if type(value) ~= "table" or type(value.factionID or value.id) ~= "number" then return false, "invalid_requirements" end
+            if type(value) ~= "table" or type(value.factionID or value.id) ~= "number" then
+                return false, "invalid_requirements"
+            end
             local id, standing = value.factionID or value.id, value.standing or value.minStanding
             local minimum = value.minNativeValue or value.minAmount or (standing == nil and value.amount or nil)
             local relative = value.minStandingAmount or (standing ~= nil and value.amount or nil)
@@ -181,14 +199,20 @@ function Instance:CheckRequirements(requirements, character)
             if standing ~= nil then
                 if type(standing) ~= "number" then return false, "invalid_requirements" end
                 actualStanding = self.env.getReputationStanding and self.env.getReputationStanding(id)
-                if type(actualStanding) ~= "number" then unknown = true
-                elseif actualStanding < standing then result = false end
+                if type(actualStanding) ~= "number" then
+                    unknown = true
+                elseif actualStanding < standing then
+                    result = false
+                end
             end
             if minimum ~= nil then
                 if type(minimum) ~= "number" then return false, "invalid_requirements" end
                 local amount = self.env.getReputationAmount and self.env.getReputationAmount(id)
-                if type(amount) ~= "number" then unknown = true
-                elseif amount < minimum then result = false end
+                if type(amount) ~= "number" then
+                    unknown = true
+                elseif amount < minimum then
+                    result = false
+                end
             end
             -- BtW's amount is relative to the required reaction rank. Higher
             -- ranks already satisfy it; ATT's native bounds are independent.
@@ -196,29 +220,45 @@ function Instance:CheckRequirements(requirements, character)
                 if type(relative) ~= "number" then return false, "invalid_requirements" end
                 if actualStanding == standing then
                     local amount = self.env.getReputationProgressAmount and self.env.getReputationProgressAmount(id)
-                    if type(amount) ~= "number" then unknown = true
-                    elseif amount < relative then result = false end
-                elseif actualStanding == nil then unknown = true end
+                    if type(amount) ~= "number" then
+                        unknown = true
+                    elseif amount < relative then
+                        result = false
+                    end
+                elseif actualStanding == nil then
+                    unknown = true
+                end
             end
             if maximum ~= nil then
                 if type(maximum) ~= "number" then return false, "invalid_requirements" end
                 local amount = self.env.getReputationAmount and self.env.getReputationAmount(id)
-                if type(amount) ~= "number" then unknown = true
-                elseif amount > maximum then result = false end
+                if type(amount) ~= "number" then
+                    unknown = true
+                elseif amount > maximum then
+                    result = false
+                end
             end
             if result ~= false and unknown then result = nil end
         elseif key == "currency" or key == "item" or key == "skill" then
             if type(value) ~= "table" then return false, "invalid_requirements" end
             local id = value.id
             local minimum
-            if key == "currency" then minimum = value.amount or value.min
-            elseif key == "item" then minimum = value.count or value.minCount or value.min
-            elseif key == "skill" then minimum = value.min or value.level end
+            if key == "currency" then
+                minimum = value.amount or value.min
+            elseif key == "item" then
+                minimum = value.count or value.minCount or value.min
+            elseif key == "skill" then
+                minimum = value.min or value.level
+            end
             if type(id) ~= "number" or type(minimum) ~= "number" then return false, "invalid_requirements" end
             local getter
-            if key == "currency" then getter = self.env.getCurrencyQuantity
-            elseif key == "item" then getter = self.env.getItemCount
-            elseif key == "skill" then getter = self.env.getSkillLevel end
+            if key == "currency" then
+                getter = self.env.getCurrencyQuantity
+            elseif key == "item" then
+                getter = self.env.getItemCount
+            elseif key == "skill" then
+                getter = self.env.getSkillLevel
+            end
             local amount = getter and getter(id)
             if type(amount) == "number" then result = amount >= minimum end
         elseif key == "minTime" then
@@ -284,12 +324,16 @@ local function CollectDepartureMaps(requirements, maps)
     for _, key in ipairs(mapListKeys) do
         if type(requirements[key]) == "table" then
             maps = maps or {}
-            for _, mapID in ipairs(requirements[key]) do maps[mapID] = true end
+            for _, mapID in ipairs(requirements[key]) do
+                maps[mapID] = true
+            end
         end
     end
     for _, key in ipairs(booleanListKeys) do
         if type(requirements[key]) == "table" then
-            for _, child in ipairs(requirements[key]) do maps = CollectDepartureMaps(child, maps) end
+            for _, child in ipairs(requirements[key]) do
+                maps = CollectDepartureMaps(child, maps)
+            end
         end
     end
     return CollectDepartureMaps(requirements.notCondition, maps)
@@ -329,7 +373,9 @@ function Instance:GetRequirementFailures(requirements, character, expected)
     local state = self:CheckRequirements(requirements, character)
     if state == expected then return nil end
     local children, keys = {}, {}
-    for key in pairs(requirements or {}) do keys[#keys + 1] = key end
+    for key in pairs(requirements or {}) do
+        keys[#keys + 1] = key
+    end
     table.sort(keys)
     for _, key in ipairs(keys) do
         local value = requirements[key]

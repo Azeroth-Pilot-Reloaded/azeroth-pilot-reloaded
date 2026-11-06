@@ -1,9 +1,13 @@
 local handler
 local L = setmetatable({}, { __index = function(_, key) return key end })
-function LibStub() return { GetLocale = function() return L end } end
+function LibStub()
+    return { GetLocale = function() return L end }
+end
 function CreateFrame()
-    return { RegisterEvent = function(_, event) assert(event ~= "COMBAT_LOG_EVENT_UNFILTERED") end,
-        SetScript = function(_, _, fn) handler = fn end }
+    return {
+        RegisterEvent = function(_, event) assert(event ~= "COMBAT_LOG_EVENT_UNFILTERED") end,
+        SetScript = function(_, _, fn) handler = fn end,
+    }
 end
 local inside, instance, version = true, 389, "retail"
 function IsInInstance() return inside, "party" end
@@ -53,7 +57,11 @@ function canaccessvalue(value) return not rawequal(value, secret) end
 function issecretvalue(value) return rawequal(value, secret) end
 function canaccesstable(value) return not rawequal(value, lockedTable) end
 for _, payload in ipairs({
-    {}, secret, lockedTable, { secret }, { lockedTable },
+    {},
+    secret,
+    lockedTable,
+    { secret },
+    { lockedTable },
     { { creatureID = secret, remainingHealthPercent = secret } },
     { { creatureID = 61412, remainingHealthPercent = secret } },
     { { creatureID = secret, remainingHealthPercent = 0 } },
@@ -72,16 +80,23 @@ assert(not APR:RecordDungeonKill(secret), "Secret NPC IDs must never enter saved
 local before = refreshes
 handler(nil, "ENCOUNTER_END", 1444, "Koranthal", 1, 5, secret, {})
 handler(nil, "ENCOUNTER_END", secret, "Unknown", 1, 5, 1, {})
-for _, payload in ipairs({ secret, lockedTable, { secret }, { lockedTable },
+for _, payload in ipairs({
+    secret,
+    lockedTable,
+    { secret },
+    { lockedTable },
     { { creatureID = 61412, remainingHealthPercent = secret } },
     { { creatureID = secret, remainingHealthPercent = 0 } },
 }) do
     handler(nil, "ENCOUNTER_END", 123, "Unknown", 1, 5, 1, payload)
 end
-assert(not APR:GetDungeonRun("Retail-Test", "RFC") and refreshes == before,
-    "Unknown encounters require accessible explicit dead-boss data")
+assert(
+    not APR:GetDungeonRun("Retail-Test", "RFC") and refreshes == before,
+    "Unknown encounters require accessible explicit dead-boss data"
+)
 handler(nil, "ENCOUNTER_END", 123, "Unknown", 1, 5, 1, {
-    secret, { creatureID = 61408, remainingHealthPercent = secret },
+    secret,
+    { creatureID = 61408, remainingHealthPercent = secret },
     { creatureID = 61412, remainingHealthPercent = 0 },
 })
 assert(APR:GetDungeonRun("Retail-Test", "RFC").kills[61412], "Public death data still works among inaccessible rows")
@@ -95,7 +110,6 @@ step.KillNPC.npcID = 11517
 handler(nil, "ENCOUNTER_END", 1443, "Adarogg", 1, 5, 1, {})
 assert(not APR:GetDungeonRun("Forever-Test", "RFC"), "Retail encounter mappings cannot grant Forever credit")
 assert(not APR:RecordDungeonKill(61408))
-handler(nil, "ENCOUNTER_END", 1, "Oggleflint", 1, 5, 1,
-    { { creatureID = 11517, remainingHealthPercent = 0 } })
+handler(nil, "ENCOUNTER_END", 1, "Oggleflint", 1, 5, 1, { { creatureID = 11517, remainingHealthPercent = 0 } })
 assert(APR:GetDungeonRun("Forever-Test", "RFC").kills[11517])
 print("Ragefire: Retail/Forever boss isolation, public encounters and wrong-instance checks passed")

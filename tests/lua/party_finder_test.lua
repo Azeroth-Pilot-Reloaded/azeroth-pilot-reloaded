@@ -7,8 +7,10 @@ env:Receive("Q", env:Query({ context = "ffffffff" }), "Local-Home")
 local echoes = 0
 for _, row in ipairs(finder:GetTrafficRows()) do
     if row.kind == "Q" then
-        assert(row.direction == "RX" and row.result == "self_echo",
-            "Own packets from either War Mode context are echoes, never compatibility failures")
+        assert(
+            row.direction == "RX" and row.result == "self_echo",
+            "Own packets from either War Mode context are echoes, never compatibility failures"
+        )
         echoes = echoes + 1
     end
 end
@@ -48,12 +50,15 @@ env:Advance(0.5)
 env:Receive("Q", env:Query({ id = "visible-now" }))
 env:Advance(4)
 local replies = env:Messages("P")
-assert(#replies == 1 and replies[1].channel == "WHISPER" and replies[1].target == "Peer-Home",
-    "Eligible discovery replies are addressed privately to the real sender")
+assert(
+    #replies == 1 and replies[1].channel == "WHISPER" and replies[1].target == "Peer-Home",
+    "Eligible discovery replies are addressed privately to the real sender"
+)
 
 -- A permitted language wins for multilingual players; an English-only requester remains excluded.
-env = Fixture.New({ settings = { visibleLanguages = { fr = true }, blockedLanguages = { en = true },
-    languages = { fr = true } } })
+env = Fixture.New({
+    settings = { visibleLanguages = { fr = true }, blockedLanguages = { en = true }, languages = { fr = true } },
+})
 finder = env.finder
 env:Receive("Q", env:Query({ id = "english", primary = "en", languages = 1 }), "English-Home")
 env:Receive("Q", env:Query({ id = "bilingual", primary = "en", languages = 3 }), "Bilingual-Home")
@@ -77,8 +82,13 @@ env:Receive("P", env:Presence({ route = "ffffffff" }), "OtherRoute-Home", "WHISP
 env:Receive("P", env:Presence({ revision = "ffffffff" }), "OtherRevision-Home", "WHISPER")
 env:Receive("P", env:Presence({ progressId = "parallel:1:1" }), "OtherBranch-Home", "WHISPER")
 local ordered = finder:GetCandidates()
-assert(#ordered == 3 and ordered[1].key == "Exact-Home" and ordered[2].key == "Behind-Home"
-    and ordered[3].key == "Boundary-Home", "Same step, then two behind, then five ahead")
+assert(
+    #ordered == 3
+        and ordered[1].key == "Exact-Home"
+        and ordered[2].key == "Behind-Home"
+        and ordered[3].key == "Boundary-Home",
+    "Same step, then two behind, then five ahead"
+)
 finder:SetLanguageOption("blockedLanguages", "fr", true)
 assert(finder:GetCount() == 0, "A policy change immediately reevaluates already cached results")
 
@@ -103,8 +113,10 @@ env:Receive("P", env:Presence(), "Local-Home", "WHISPER")
 env:Receive("P", env:Presence(), "Unsafe|Name", "WHISPER")
 assert(finder:GetCount() == 0)
 env:Receive("P", env:Presence(), "Real-OtherRealm", "WHISPER")
-assert(finder:GetCount() == 1 and finder:GetCandidates()[1].key == "Real-OtherRealm",
-    "Real event senders retain their realm identity; payloads cannot claim another name")
+assert(
+    finder:GetCount() == 1 and finder:GetCandidates()[1].key == "Real-OtherRealm",
+    "Real event senders retain their realm identity; payloads cannot claim another name"
+)
 
 -- Irrelevant traffic returns before touching route state; world-event bursts share one deferred refresh.
 env = Fixture.New()
@@ -118,11 +130,15 @@ finder.GetLocalState = getState
 assert(env:ActiveTimers() == 0)
 local previousContext = finder.context
 env.map = 502
-for _ = 1, 100 do env:Event("ZONE_CHANGED_NEW_AREA") end
+for _ = 1, 100 do
+    env:Event("ZONE_CHANGED_NEW_AREA")
+end
 assert(env:ActiveTimers() == 1, "Zone bursts coalesce before any route or transport refresh")
 env:Advance(0.5)
-assert(finder.context ~= previousContext and #env.joined == 1 and #env.left == 0,
-    "Changing zone replaces exactly one discovery membership")
+assert(
+    finder.context ~= previousContext and #env.joined == 1 and #env.left == 0,
+    "Changing zone replaces exactly one discovery membership"
+)
 
 -- Without a route, step filters fall back to discovering players in the zone.
 env = Fixture.New()
@@ -138,7 +154,9 @@ assert(finder:GetCount() == 1, "Zone discovery does not require a shared route")
 -- Responses are coalesced per peer and paced globally; finished queries cancel pending work.
 env = Fixture.New({ throttle = true })
 finder = env.finder
-for _ = 1, 100 do env:Receive("Q", env:Query(), "Burst-Home") end
+for _ = 1, 100 do
+    env:Receive("Q", env:Query(), "Burst-Home")
+end
 env:Advance(4)
 assert(#env:Messages("P") == 1)
 env:Receive("Q", env:Query({ id = "repeat" }), "Burst-Home")
@@ -151,8 +169,12 @@ env:Receive("D", { id = "cancelled" }, "Cancelled-Home")
 env:Advance(10)
 replies = env:Messages("P")
 assert(#replies == 3)
-for index = 2, #replies do assert(replies[index].at - replies[index - 1].at >= 5) end
-for _, reply in ipairs(replies) do assert(reply.channel == "WHISPER" and reply.target ~= "Cancelled-Home") end
+for index = 2, #replies do
+    assert(replies[index].at - replies[index - 1].at >= 5)
+end
+for _, reply in ipairs(replies) do
+    assert(reply.channel == "WHISPER" and reply.target ~= "Cancelled-Home")
+end
 
 env = Fixture.New()
 finder = env.finder
@@ -160,8 +182,10 @@ env:Receive("Q", env:Query(), "Pending-Home")
 assert(next(finder.responses))
 finder:SetOption("visible", false)
 env:Advance(4)
-assert(#env:Messages("P") == 0 and not next(finder.responses),
-    "Hiding cancels delayed presence instead of leaking the old visible state")
+assert(
+    #env:Messages("P") == 0 and not next(finder.responses),
+    "Hiding cancels delayed presence instead of leaking the old visible state"
+)
 
 -- A discovery transport failure is explicit and a later user retry can recover.
 env = Fixture.New()
@@ -183,8 +207,11 @@ env = Fixture.New({ settings = { visibleLanguages = { fr = true } } })
 finder = env.finder
 for batch = 1, 5 do
     for index = 1, 40 do
-        env:Receive("Q", env:Query({ id = "excluded", primary = "en", languages = 1 }),
-            "Excluded" .. ((batch - 1) * 40 + index) .. "-Home")
+        env:Receive(
+            "Q",
+            env:Query({ id = "excluded", primary = "en", languages = 1 }),
+            "Excluded" .. ((batch - 1) * 40 + index) .. "-Home"
+        )
     end
     env:Advance(1)
 end
@@ -192,8 +219,10 @@ assert(#env:Messages("P") == 0)
 env:Advance(121)
 env:Receive("Q", env:Query({ id = "allowed-later" }), "Allowed-Home")
 env:Advance(4)
-assert(#env:Messages("P") == 1 and env:Messages("P")[1].target == "Allowed-Home",
-    "Expired rejected requests cannot permanently exhaust the sender budget")
+assert(
+    #env:Messages("P") == 1 and env:Messages("P")[1].target == "Allowed-Home",
+    "Expired rejected requests cannot permanently exhaust the sender budget"
+)
 
 -- A refused private reply transport never turns into a public presence broadcast.
 env = Fixture.New()
@@ -211,8 +240,7 @@ env = Fixture.New({ settings = { autoScan = true } })
 finder = env.finder
 assert(APR.Workspace == nil and finder.autoTimer)
 env:Advance(106)
-assert(#env:Messages("Q") >= 1 and finder.autoTimer,
-    "Automatic search continues while no companion window exists")
+assert(#env:Messages("Q") >= 1 and finder.autoTimer, "Automatic search continues while no companion window exists")
 finder:SetOption("autoScan", false)
 assert(finder.autoTimer == nil)
 local scans = #env:Messages("Q")
@@ -224,15 +252,20 @@ finder:SetOption("enabled", false)
 assert(not finder.autoTimer and finder:GetStatus() == "disabled")
 scans = #env:Messages("Q")
 env:Advance(250)
-assert(#env:Messages("Q") == scans and env:ActiveTimers() == 0,
-    "A disabled feature retains no periodic discovery or UI work")
+assert(
+    #env:Messages("Q") == scans and env:ActiveTimers() == 0,
+    "A disabled feature retains no periodic discovery or UI work"
+)
 
 -- Dense synthetic populations retain a fixed number of candidates across fresh queries.
 env = Fixture.New({ settings = { matchMode = "zone" } })
 finder = env.finder
 for batch = 1, 7 do
     -- Isolate cache capacity from the separately tested search cooldown.
-    if batch > 1 then env:Advance(1); finder.lastSearch = nil end
+    if batch > 1 then
+        env:Advance(1)
+        finder.lastSearch = nil
+    end
     assert(finder:Search())
     for index = 1, 30 do
         env:Receive("P", env:Presence(), "Dense" .. ((batch - 1) * 30 + index) .. "-Home", "WHISPER")
@@ -242,7 +275,9 @@ assert(finder:GetCount() == 200, "Discovery cache cannot grow beyond its declare
 env:Advance(122)
 assert(finder:GetCount() == 0)
 
-print("Companion discovery: private presence, independent visibility, bilingual policies, expiry, sender/channel validation, pacing, auto-scan and bounded caches passed")
+print(
+    "Companion discovery: private presence, independent visibility, bilingual policies, expiry, sender/channel validation, pacing, auto-scan and bounded caches passed"
+)
 
 env = Fixture.New()
 finder = env.finder
@@ -253,8 +288,10 @@ assert(finder:GetCandidates() == cached, "Unchanged badge/window reads reuse the
 finder:SetLanguageOption("languages", "en", true)
 assert(finder:GetCount() == 0)
 env:Advance(122)
-assert(not next(finder.candidates) and env:ActiveTimers() == 0,
-    "Filtered-out entries also expire without leaving a tight expiry polling loop")
+assert(
+    not next(finder.candidates) and env:ActiveTimers() == 0,
+    "Filtered-out entries also expire without leaving a tight expiry polling loop"
+)
 finder:SetOption("enabled", false)
 env:Advance(1)
 assert(not next(finder.eventFrame.events), "Disabled discovery unregisters its listeners")
@@ -265,14 +302,20 @@ assert(env:ActiveTimers() == 0, "Disabled discovery ignores world/progress refre
 env = Fixture.New()
 finder = env.finder
 local opened, searched, configured = 0, 0, 0
-APR.PartyFinderPanel = {Show = function() opened = opened + 1 end}
-APR.Workspace = {Show = function(_, page, section)
-    assert(page == "options" and section == "groupFinder",
-        "Only the dedicated finder settings category belongs to the workspace")
-    configured = configured + 1
-end}
+APR.PartyFinderPanel = { Show = function() opened = opened + 1 end }
+APR.Workspace = {
+    Show = function(_, page, section)
+        assert(
+            page == "options" and section == "groupFinder",
+            "Only the dedicated finder settings category belongs to the workspace"
+        )
+        configured = configured + 1
+    end,
+}
 function finder:Search() searched = searched + 1 end
 finder:Open()
 finder:OpenSettings()
-assert(opened == 1 and configured == 1 and searched == 0,
-    "The companions window owns its search; opening it must not also open the workspace or search twice")
+assert(
+    opened == 1 and configured == 1 and searched == 0,
+    "The companions window owns its search; opening it must not also open the workspace or search twice"
+)

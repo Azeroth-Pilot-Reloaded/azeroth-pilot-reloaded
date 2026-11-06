@@ -21,28 +21,28 @@ passages as separate edges rather than directing players through cave walls.
 
 ## Ownership
 
-| Location | Responsibility |
-| --- | --- |
-| `Core.lua` | LibStub registration, declarative data validation, independent instances |
-| `Locales.lua` | Complete navigation wording for all 11 client languages, with enGB/ptPT aliases |
-| `UnlockRunner.lua`, `Unlocks.lua` | Native access detours, bounded discovery, quest/objective progression and resumable destinations |
-| `UnlockLocales.lua` | Independent action wording in all eleven client languages |
-| `Diagnostics.lua` | Localized, structured explanations of blocked access without host UI dependencies |
-| `Geography.lua` | Map projection, access regions, legal free movement, names through the environment |
-| `Conditions.lua` | Availability predicates; missing answers remain unknown |
-| `Entrances.lua` | Native instance identities and verified exterior approaches; no guessed interior landings |
-| `Catalog.lua` | Character-specific transport edges, instructions and cumulative resources |
-| `ZoneRouting.lua` | Indexed preferred zone entrances and direct local unlock guidance |
-| `ZoneGraph.lua` | Shared physical region topology, bounded transfer search and live access conditions |
-| `TravelActions.lua` | Shared route actions and item cast effects for inn, Dalaran and garrison hearthstones |
-| `Search.lua` | Incremental Dijkstra, binary heap and non-dominated time/money/resource labels |
-| `WaypointUI.lua` | Shared manual/automatic output, lifecycle, projection, ownership and Waypoint UI fallback |
-| `AzerothWaypoint.lua` | Independent guide-provider wrapper, metadata preservation, provider arbitration and combat-safe release |
-| `Data/retail/`, `Data/forever/` | Positions, directions, costs and requirements, separated by client and transport type |
-| APR `NavigationAdapter.lua` | WoW API access, client locale/names, bind/house observations and character settings |
-| APR `integrations/NavigationEntrances.lua` | Lazy compatibility facade over the library entrance registry; contains no coordinates |
-| APR `Navigation.lua`, `NavigationTaxi.lua`, `Preview.lua` | Route lifecycle, character taxi knowledge, secure buttons and rendering |
-| APR `NavigationPlanner.lua` | One scheduler for preparation, search, optional probes and guidance rows |
+| Location                                                  | Responsibility                                                                                          |
+| --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `Core.lua`                                                | LibStub registration, declarative data validation, independent instances                                |
+| `Locales.lua`                                             | Complete navigation wording for all 11 client languages, with enGB/ptPT aliases                         |
+| `UnlockRunner.lua`, `Unlocks.lua`                         | Native access detours, bounded discovery, quest/objective progression and resumable destinations        |
+| `UnlockLocales.lua`                                       | Independent action wording in all eleven client languages                                               |
+| `Diagnostics.lua`                                         | Localized, structured explanations of blocked access without host UI dependencies                       |
+| `Geography.lua`                                           | Map projection, access regions, legal free movement, names through the environment                      |
+| `Conditions.lua`                                          | Availability predicates; missing answers remain unknown                                                 |
+| `Entrances.lua`                                           | Native instance identities and verified exterior approaches; no guessed interior landings               |
+| `Catalog.lua`                                             | Character-specific transport edges, instructions and cumulative resources                               |
+| `ZoneRouting.lua`                                         | Indexed preferred zone entrances and direct local unlock guidance                                       |
+| `ZoneGraph.lua`                                           | Shared physical region topology, bounded transfer search and live access conditions                     |
+| `TravelActions.lua`                                       | Shared route actions and item cast effects for inn, Dalaran and garrison hearthstones                   |
+| `Search.lua`                                              | Incremental Dijkstra, binary heap and non-dominated time/money/resource labels                          |
+| `WaypointUI.lua`                                          | Shared manual/automatic output, lifecycle, projection, ownership and Waypoint UI fallback               |
+| `AzerothWaypoint.lua`                                     | Independent guide-provider wrapper, metadata preservation, provider arbitration and combat-safe release |
+| `Data/retail/`, `Data/forever/`                           | Positions, directions, costs and requirements, separated by client and transport type                   |
+| APR `NavigationAdapter.lua`                               | WoW API access, client locale/names, bind/house observations and character settings                     |
+| APR `integrations/NavigationEntrances.lua`                | Lazy compatibility facade over the library entrance registry; contains no coordinates                   |
+| APR `Navigation.lua`, `NavigationTaxi.lua`, `Preview.lua` | Route lifecycle, character taxi knowledge, secure buttons and rendering                                 |
+| APR `NavigationPlanner.lua`                               | One scheduler for preparation, search, optional probes and guidance rows                                |
 
 No legacy connection-building runtime is loaded. The data notice records the
 provenance of retained coordinates; it does not introduce a dependency on the
@@ -562,37 +562,37 @@ See [the unlock audit](../../../tools/validation/navigation_data/README.md#trave
 All functions are called without a receiver. Missing optional capabilities make
 their corresponding transports unavailable; they never authorize a requirement.
 
-| Function | Result |
-| --- | --- |
-| `getMapInfo(uiMapID)` | Blizzard-shaped map information, including localized `name`, `parentMapID`, `mapType` |
-| `getMapArtID(uiMapID)` | Current map phase artwork ID; `nil` while unavailable |
-| `getCurrentMapID()` | Optional lightweight actual player UI map; phase detection otherwise uses `getCharacter().mapID` |
-| `getAreaName(areaID)` | Localized subzone/area name |
-| `mapToWorld(uiMapID, x, y)` | `instanceID, worldX, worldY` |
-| `worldToMap(instanceID, x, y, hint)` | `uiMapID`; also return normalized map X/Y for optional world waypoint output |
-| `getWaypointUIAPI()` | Optional late lookup of the full `WaypointUIAPI` table |
-| `getAzerothWaypointAPI()` | Optional late lookup of the full `AzerothWaypointNS` namespace |
-| `getWaypointTarget()` | Current segment or map/world location; optional display, token, context and guideMode options as the second result |
-| `isWaypointCombatLocked()` | Optional combat predicate; defaults to the live client |
-| `getNativeWaypoint()`, `isWaypointTrackingRelevant(target)` | Optional native-marker and relevant-objective observations |
-| `canSetWaypointOnMap(id)`, `getMapRectOnMap(child, parent)` | Optional waypoint map support and parent rectangle capabilities |
-| `newWaypointTicker(interval, callback)` | Optional automatic-output scheduler returning a cancellable ticker; defaults to WoW's `C_Timer.NewTicker` only when enabled |
-| `getCharacter()` | `faction`, `level`, `raceID`, `class`, `inGroup`, `mapID`, `indoors`, `inInstance` |
-| `getDynamicPosition(kind)` | Current world position for `bind`, `housing`, `housing_exit`; unknown is `nil` |
-| `getActionUsability(kind, id)` | `usable, reason`; pending reasons are `pending_data` or `restricted` |
-| `getItemCount(itemID)` | Inventory count; `nil` means unavailable |
-| `getActionCastSeconds(kind, id)` | Actual client cast duration in seconds; item spells are resolved through the client |
-| `getSpellInfo(spellID)` | Spell information, including `castTime` in milliseconds |
-| `getItemName(itemID)`, `getSpellName(spellID)` | Localized client names |
-| `getLocale()` | Client language code; library wording falls back to enUS for unsupported codes |
-| `getQuestName(id)`, `getAchievementName(id)` | Localized client titles; numeric IDs remain available as a fallback |
-| `getActionUsabilityIgnoringCooldown(kind, id)` | Optional owned/usable check for displaying an authored UseHS button on cooldown; never used to authorize a navigation edge |
-| `random(maximum)` | Optional random integer in `1..maximum`; defaults to Lua's `math.random` |
-| `getGlobalText(key)` | Client GlobalString, or `nil` when unavailable; used for named interiors without a UI map |
-| `isQuestCompleted(id)`, `isQuestActive(id)`, `hasAura(id)`, `hasToy(id)` | Boolean, or `nil` while unavailable |
-| `isQuestCompletedOnAccount(id)` | Account completion for explicitly shared unlocks; Boolean or `nil` |
-| `isAchievementCompleted(id)` | Completion including account achievements; Boolean or `nil` |
-| `getGarrisonLevel(type)` | Level, or `nil` while unavailable |
+| Function                                                                 | Result                                                                                                                      |
+| ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
+| `getMapInfo(uiMapID)`                                                    | Blizzard-shaped map information, including localized `name`, `parentMapID`, `mapType`                                       |
+| `getMapArtID(uiMapID)`                                                   | Current map phase artwork ID; `nil` while unavailable                                                                       |
+| `getCurrentMapID()`                                                      | Optional lightweight actual player UI map; phase detection otherwise uses `getCharacter().mapID`                            |
+| `getAreaName(areaID)`                                                    | Localized subzone/area name                                                                                                 |
+| `mapToWorld(uiMapID, x, y)`                                              | `instanceID, worldX, worldY`                                                                                                |
+| `worldToMap(instanceID, x, y, hint)`                                     | `uiMapID`; also return normalized map X/Y for optional world waypoint output                                                |
+| `getWaypointUIAPI()`                                                     | Optional late lookup of the full `WaypointUIAPI` table                                                                      |
+| `getAzerothWaypointAPI()`                                                | Optional late lookup of the full `AzerothWaypointNS` namespace                                                              |
+| `getWaypointTarget()`                                                    | Current segment or map/world location; optional display, token, context and guideMode options as the second result          |
+| `isWaypointCombatLocked()`                                               | Optional combat predicate; defaults to the live client                                                                      |
+| `getNativeWaypoint()`, `isWaypointTrackingRelevant(target)`              | Optional native-marker and relevant-objective observations                                                                  |
+| `canSetWaypointOnMap(id)`, `getMapRectOnMap(child, parent)`              | Optional waypoint map support and parent rectangle capabilities                                                             |
+| `newWaypointTicker(interval, callback)`                                  | Optional automatic-output scheduler returning a cancellable ticker; defaults to WoW's `C_Timer.NewTicker` only when enabled |
+| `getCharacter()`                                                         | `faction`, `level`, `raceID`, `class`, `inGroup`, `mapID`, `indoors`, `inInstance`                                          |
+| `getDynamicPosition(kind)`                                               | Current world position for `bind`, `housing`, `housing_exit`; unknown is `nil`                                              |
+| `getActionUsability(kind, id)`                                           | `usable, reason`; pending reasons are `pending_data` or `restricted`                                                        |
+| `getItemCount(itemID)`                                                   | Inventory count; `nil` means unavailable                                                                                    |
+| `getActionCastSeconds(kind, id)`                                         | Actual client cast duration in seconds; item spells are resolved through the client                                         |
+| `getSpellInfo(spellID)`                                                  | Spell information, including `castTime` in milliseconds                                                                     |
+| `getItemName(itemID)`, `getSpellName(spellID)`                           | Localized client names                                                                                                      |
+| `getLocale()`                                                            | Client language code; library wording falls back to enUS for unsupported codes                                              |
+| `getQuestName(id)`, `getAchievementName(id)`                             | Localized client titles; numeric IDs remain available as a fallback                                                         |
+| `getActionUsabilityIgnoringCooldown(kind, id)`                           | Optional owned/usable check for displaying an authored UseHS button on cooldown; never used to authorize a navigation edge  |
+| `random(maximum)`                                                        | Optional random integer in `1..maximum`; defaults to Lua's `math.random`                                                    |
+| `getGlobalText(key)`                                                     | Client GlobalString, or `nil` when unavailable; used for named interiors without a UI map                                   |
+| `isQuestCompleted(id)`, `isQuestActive(id)`, `hasAura(id)`, `hasToy(id)` | Boolean, or `nil` while unavailable                                                                                         |
+| `isQuestCompletedOnAccount(id)`                                          | Account completion for explicitly shared unlocks; Boolean or `nil`                                                          |
+| `isAchievementCompleted(id)`                                             | Completion including account achievements; Boolean or `nil`                                                                 |
+| `getGarrisonLevel(type)`                                                 | Level, or `nil` while unavailable                                                                                           |
 
 The environment must filter secret or otherwise inaccessible client values before
 returning them. The library uses conventional world X/Y; APR's historical route
@@ -731,7 +731,6 @@ The reproducible benchmark and measured limits are documented in
 [`NAVIGATION_PERFORMANCE.md`](../../../tools/validation/NAVIGATION_PERFORMANCE.md).
 Terrain obstacle avoidance is outside this planner's scope: free segments are
 direct lines within an authorized region, connected through mandatory passages.
-
 
 ## Catalogue maintenance and access floors
 

@@ -10,7 +10,10 @@ function methods:SetHeight(value)
     nativeHeight(self, value)
     if self == ObjectiveTrackerFrame then self.dirty = true end
 end
-function methods:SetClampedToScreen(value) assert(not InCombatLockdown()); self.clamped = value end
+function methods:SetClampedToScreen(value)
+    assert(not InCombatLockdown())
+    self.clamped = value
+end
 function methods:IsClampedToScreen() return self.clamped == true end
 function methods:GetTop()
     if self == UIParent then return self:GetHeight() end
@@ -19,7 +22,9 @@ function methods:GetTop()
     if p then
         local origin = p[3] == "BOTTOMLEFT" and 0 or p[2]:GetTop()
         top = origin * p[2]:GetEffectiveScale() / self:GetEffectiveScale() + p[5]
-    else top = self.parent and self.parent:GetTop() or 0 end
+    else
+        top = self.parent and self.parent:GetTop() or 0
+    end
     if self.clamped then top = math.max(self:GetHeight(), top) end
     return top
 end
@@ -53,7 +58,9 @@ function root:UpdateHeight()
     -- default layout, and the saved Edit Mode height in a customized layout.
     if self:IsInDefaultPosition() then
         self:SetHeight(math.max(self:GetParent():GetHeight() + select(5, self:GetPoint()), 20))
-    else self:SetHeight(self.editModeHeight) end
+    else
+        self:SetHeight(self.editModeHeight)
+    end
 end
 function manager:UpdateFrame(frame)
     frame:ClearAllPoints()
@@ -72,7 +79,9 @@ function manager:RemoveManagedFrame(frame)
     frame:UpdateHeight()
 end
 function manager:UpdateManagedFrames()
-    for frame in pairs(self.showingFrames) do self:UpdateFrame(frame) end
+    for frame in pairs(self.showingFrames) do
+        self:UpdateFrame(frame)
+    end
 end
 function root:ApplySystemAnchor()
     if self:IsInDefaultPosition() then
@@ -89,33 +98,45 @@ end
 root:ApplySystemAnchor()
 profile.currentStepAttachFrameToQuestLog, profile.enableAddon = true, true
 profile.currentStepTrackerSide = "above"
-profile.afkSnapToCurrentStep, profile.fillersFrameSnapToCurrentStep, profile.questOrderListSnapToCurrentStep = true, true, true
+profile.afkSnapToCurrentStep, profile.fillersFrameSnapToCurrentStep, profile.questOrderListSnapToCurrentStep =
+    true, true, true
 profile.fillersFrameShowHeader, profile.fillersFrameSnapGap = true, 7
 CurrentStepScreenPanel:SetHeight(30)
 CurrentStepFrameHeader:SetHeight(32)
 function APR.currentStep:GetContentHeight() return 120 end
-APR.AFK = {timerEnd = 30}
-AfkFrameScreen, FillersScreenPanel, QuestOrderListPanel = env.widget(UIParent), env.widget(UIParent), env.widget(UIParent)
-AfkFrameScreen:SetHeight(24); FillersScreenPanel:SetHeight(60); QuestOrderListPanel:SetHeight(240)
+APR.AFK = { timerEnd = 30 }
+AfkFrameScreen, FillersScreenPanel, QuestOrderListPanel =
+    env.widget(UIParent), env.widget(UIParent), env.widget(UIParent)
+AfkFrameScreen:SetHeight(24)
+FillersScreenPanel:SetHeight(60)
+QuestOrderListPanel:SetHeight(240)
 local function close(a, b, message) assert(math.abs(a - b) < 0.05, message .. ": " .. a .. " / " .. b) end
 local baseX, baseTop = 1700, 980
 local function checkAbove()
     local x, y = tracker:GetAnchor()
-    local offset = profile.currentStepTrackerOffset or {x = 0, y = 0}
+    local offset = profile.currentStepTrackerOffset or { x = 0, y = 0 }
     close(x, baseX + offset.x, "APR keeps its horizontal position")
     close(y, baseTop + offset.y - 32, "APR keeps its top when its stack grows")
     local scale = root:GetEffectiveScale() / UIParent:GetEffectiveScale()
-    close(root:GetTop() * scale, y - APR:GetSnappedStackHeight() - 12,
-        "Blizzard stays below the complete APR stack, including all gaps")
+    close(
+        root:GetTop() * scale,
+        y - APR:GetSnappedStackHeight() - 12,
+        "Blizzard stays below the complete APR stack, including all gaps"
+    )
     assert(root:GetBottom() * scale >= 11.95, "The native viewport must fit on screen")
-    assert(root:GetParent() == UIParent and root.point[2] == UIParent,
-        "Neither tracker parenting nor anchors may include APR's secure frames")
+    assert(
+        root:GetParent() == UIParent and root.point[2] == UIParent,
+        "Neither tracker parenting nor anchors may include APR's secure frames"
+    )
 end
 assert(APR:GetSnappedStackHeight() == 503)
 checkAbove()
 assert(root:GetHeight() == 421 and root.ignoreFramePositionManager and not manager.showingFrames[root])
 local moves = root.anchors
-for _ = 1, 10 do manager:UpdateManagedFrames(); checkAbove() end
+for _ = 1, 10 do
+    manager:UpdateManagedFrames()
+    checkAbove()
+end
 assert(root.anchors == moves, "Default managed updates cannot reset the anchor or create drift")
 QuestOrderListPanel:Hide()
 checkAbove()
@@ -143,7 +164,7 @@ checkAbove()
 root:ApplySystemAnchor()
 checkAbove()
 checkAbove()
-profile.currentStepTrackerOffset = {x = 0.12345, y = -0.54321}
+profile.currentStepTrackerOffset = { x = 0.12345, y = -0.54321 }
 checkAbove()
 checkAbove()
 env.setCombat(true)
@@ -155,13 +176,15 @@ env.setCombat(false)
 checkAbove()
 tracker:Release()
 assert(root:GetParent() == manager and manager.showingFrames[root] and root.ignoreFramePositionManager == nil)
-assert(root:GetTop() == 980 and root:GetHeight() == 980 and root:IsClampedToScreen(),
-    "Unsnap restores native position, managed layout, full height and screen clamping")
+assert(
+    root:GetTop() == 980 and root:GetHeight() == 980 and root:IsClampedToScreen(),
+    "Unsnap restores native position, managed layout, full height and screen clamping"
+)
 profile.currentStepTrackerOffset = nil
 
 -- Release before Edit Mode moves the tracker, then respect its new anchor/scale.
 checkAbove()
-EditModeManagerFrame = {IsShown = function() return true end}
+EditModeManagerFrame = { IsShown = function() return true end }
 assert(tracker:GetAnchor() == nil and not tracker.displacement)
 root.defaultPosition, root.ownerX, root.ownerY = false, 1400, -180
 root:SetScale(0.8)
@@ -184,6 +207,10 @@ baseX, baseTop = 1500, 980
 checkAbove()
 profile.currentStepTrackerSide = "below"
 tracker:GetAnchor()
-assert(not tracker.displacement and root:GetHeight() == 800 and root:IsClampedToScreen(),
-    "Switching to legacy below releases the above-only reservation")
-print("Blizzard tracker: managed layout, screen clamp, complete stack/gaps, dynamic visibility, Edit Mode, scale, combat and restoration passed")
+assert(
+    not tracker.displacement and root:GetHeight() == 800 and root:IsClampedToScreen(),
+    "Switching to legacy below releases the above-only reservation"
+)
+print(
+    "Blizzard tracker: managed layout, screen clamp, complete stack/gaps, dynamic visibility, Edit Mode, scale, combat and restoration passed"
+)

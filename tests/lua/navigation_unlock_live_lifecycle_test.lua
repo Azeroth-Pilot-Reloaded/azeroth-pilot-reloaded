@@ -18,8 +18,12 @@ function IsFlyableArea() return false end
 function GetMoney() return 0 end
 APR.PlayerID, APR.ActiveRoute = "live", "fixture-parent-guide"
 local route = APR.ActiveRoute
-local original = { Zone = 104, Waypoint = 1, NonSkippableWaypoint = true,
-    Coord = { x = -515.6, y = -1343, mapID = 104, instanceID = 3 } }
+local original = {
+    Zone = 104,
+    Waypoint = 1,
+    NonSkippableWaypoint = true,
+    Coord = { x = -515.6, y = -1343, mapID = 104, instanceID = 3 },
+}
 local definition = { label = route, expansion = "Custom", steps = { [8] = original } }
 APRData, APRCustomPath = { live = { [route] = 8 } }, { live = { route } }
 APR.RouteQuestStepList = { [route] = definition }
@@ -51,17 +55,25 @@ end
 APR.Arrow = { SetCoord = readMaps, SetArrowActive = noop }
 APR.event = { QueueStepRefresh = readMaps }
 APR.currentStep = {
-    AddQuestSteps = function(_, _, text) rows[#rows + 1] = text; readMaps() end,
-    AddQuestDivider = noop, AddStepButton = noop,
+    AddQuestSteps = function(_, _, text)
+        rows[#rows + 1] = text
+        readMaps()
+    end,
+    AddQuestDivider = noop,
+    AddStepButton = noop,
 }
-C_Timer = { NewTimer = function(_, callback)
-    local timer = { callback = callback, Cancel = function(self) self.cancelled = true end }
-    timers[#timers + 1] = timer
-    return timer
-end }
+C_Timer = {
+    NewTimer = function(_, callback)
+        local timer = { callback = callback, Cancel = function(self) self.cancelled = true end }
+        timers[#timers + 1] = timer
+        return timer
+    end,
+}
 APR.NavigationEngine = LibStub("LibAPRNavigation-1.0").Engine
 APR.taxiData = { BuildEdges = function() return {}, {} end }
-function data:CreateEdgeBuild() return { Step = function() return "ready", {}, { resources = {} } end } end
+function data:CreateEdgeBuild()
+    return { Step = function() return "ready", {}, { resources = {} } end }
+end
 function data:CanWalk(a, b) return a.uiMapID == b.uiMapID end
 function data:GetWalkingSpeed(_, speed) return speed end
 dofile("APR-Core/features/navigation/NavigationPlanner.lua")
@@ -69,21 +81,30 @@ dofile("APR-Core/features/navigation/NavigationUnlocks.lua")
 dofile("APR-Core/features/navigation/Navigation.lua")
 local nav = APR.navigation
 nav.destination = { x = -1343, y = -515.6, uiMapID = 104, instanceID = 3 }
-local blocker = { id = "karesh-live", from = { uiMapID = 101 }, blockedRequirements = {
-    minLevel = 80, any = { { quest = 12 }, { questActive = 12 } },
-} }
+local blocker = {
+    id = "karesh-live",
+    from = { uiMapID = 101 },
+    blockedRequirements = {
+        minLevel = 80,
+        any = { { quest = 12 }, { questActive = 12 } },
+    },
+}
 local context = APR:CaptureStepContext()
 nav.context = context
 APRData.live.NavigationUnlockAttempts = { route = route, index = 8, edges = { [blocker.id] = true } }
 nav:SearchFailed({ blocker })
-assert(APR._navigationUnlock and not APRData.live.NavigationUnlockAttempts,
-    "A real no_path result starts the unlock automatically despite an orphaned historical attempt")
+assert(
+    APR._navigationUnlock and not APRData.live.NavigationUnlockAttempts,
+    "A real no_path result starts the unlock automatically despite an orphaned historical attempt"
+)
 local state, session = APR._navigationUnlock, APR._navigationUnlock.session
 local function drain()
     for _ = 1, 10000 do
         readMaps()
-        assert(APR._navigationUnlock == state and state.session == session,
-            "Ordinary route-map reads cannot replace an active native unlock session")
+        assert(
+            APR._navigationUnlock == state and state.session == session,
+            "Ordinary route-map reads cannot replace an active native unlock session"
+        )
         local timer = table.remove(timers, 1)
         if not timer then return end
         if not timer.cancelled then timer.callback() end
@@ -95,7 +116,9 @@ local step = assert(APR:GetNavigationUnlockStep())
 assert(step.unlockAction.kind == "accept" and step.unlockAction.questID == 11)
 assert(nav:IsNavigating() and nav:GetActiveStep().kind == "unlock" and #rows > 0)
 local signature, cursor = state.signature, session.cursor
-for _ = 1, 25 do readMaps() end
+for _ = 1, 25 do
+    readMaps()
+end
 assert(state.step == step and state.signature == signature and session.cursor == cursor)
 assert(APRData.live[route] == 8 and APR.ActiveRoute == route and mapReads > 25)
 
@@ -105,14 +128,20 @@ APR._navigationUnlock = nil
 readMaps()
 state, session = APR._navigationUnlock, APR._navigationUnlock.session
 assert(state and session)
-for _ = 1, 25 do readMaps(); assert(APR._navigationUnlock == state and state.session == session) end
-nav:Update(); drain()
+for _ = 1, 25 do
+    readMaps()
+    assert(APR._navigationUnlock == state and state.session == session)
+end
+nav:Update()
+drain()
 assert(APR:GetNavigationUnlockStep().unlockAction.questID == 11)
 assert(nav:IsNavigating() and APRData.live[route] == 8)
 APR.stepRevision = (APR.stepRevision or 0) + 1
 readMaps()
-assert(not APR._navigationUnlock and not APRData.live.NavigationUnlockState,
-    "Idempotent restoration still cancels a session when its real step context becomes stale")
+assert(
+    not APR._navigationUnlock and not APRData.live.NavigationUnlockState,
+    "Idempotent restoration still cancels a session when its real step context becomes stale"
+)
 
 -- Exercise the same notification as both route-browser removal actions, with
 -- the real route resolver, transition invalidation and navigation controller.
@@ -133,7 +162,9 @@ APR.currentStep.pendingRemoval, APR.currentStep.questsList = {}, {}
 APR.currentStep.pendingButtonRequests = {}
 function APR.currentStep:Reset() self.questsList = {} end
 function APR.currentStep:FlushPendingContainers()
-    for key in pairs(self.pendingRemoval) do self.questsList[key] = nil end
+    for key in pairs(self.pendingRemoval) do
+        self.questsList[key] = nil
+    end
     self.pendingRemoval = {}
 end
 local addQuestSteps = APR.currentStep.AddQuestSteps
@@ -154,7 +185,10 @@ local function startUnlock(publish)
         assert(nav:GetActiveStep().kind == "unlock" and next(APR.currentStep.questsList))
     else
         local ticks = 0
-        debugprofilestop = function() ticks = ticks + 2; return ticks end
+        debugprofilestop = function()
+            ticks = ticks + 2
+            return ticks
+        end
         nav:Update()
         assert(state.timer, "The unlock planner must have a pending cooperative slice")
         debugprofilestop = function() return 0 end
@@ -164,11 +198,17 @@ end
 local function removePath(clearAll, simulateReload)
     local oldContext, oldGeneration = APR:CaptureStepContext(), nav.generation
     if simulateReload then APR._navigationUnlock = nil end
-    if clearAll then APRCustomPath.live = {} else table.remove(APRCustomPath.live, 1) end
+    if clearAll then
+        APRCustomPath.live = {}
+    else
+        table.remove(APRCustomPath.live, 1)
+    end
     APR.routeconfig:SendCustomPathUpdate()
     assert(APR.ActiveRoute == nil, "Removing the final route must deactivate it")
-    assert(not APR._navigationUnlock and not APRData.live.NavigationUnlockState,
-        "Removing the final route must discard live and saved unlock guidance")
+    assert(
+        not APR._navigationUnlock and not APRData.live.NavigationUnlockState,
+        "Removing the final route must discard live and saved unlock guidance"
+    )
     assert(not nav:GetActiveStep() and not nav:IsNavigating() and not nav.search and arrowActive == false)
     assert(not next(APR.currentStep.questsList) and not next(APR.currentStep.pendingButtonRequests))
     -- Even callbacks already dispatched when cancellation occurs cannot publish.
@@ -185,9 +225,15 @@ local function removePath(clearAll, simulateReload)
     assert(APRData.live[route] == 8, "Deselecting a route preserves authored progress")
 end
 
-startUnlock(true); removePath(false)
-startUnlock(true); removePath(true)
-startUnlock(false); removePath(true)
-startUnlock(true); removePath(true, true)
-print("Live unlock lifecycle: real route-map getter/UI readers preserve planning and published action; reload restores once")
+startUnlock(true)
+removePath(false)
+startUnlock(true)
+removePath(true)
+startUnlock(false)
+removePath(true)
+startUnlock(true)
+removePath(true, true)
+print(
+    "Live unlock lifecycle: real route-map getter/UI readers preserve planning and published action; reload restores once"
+)
 print("Route removal: last entry, clear all, pending planner and saved checkpoint discard orphaned guidance")

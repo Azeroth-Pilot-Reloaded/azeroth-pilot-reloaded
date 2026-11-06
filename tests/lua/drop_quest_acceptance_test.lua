@@ -2,9 +2,15 @@
 local function noop() end
 format = string.format
 local L = setmetatable({ Q_DROP = "Loot %s" }, { __index = function(_, key) return key end })
-function LibStub() return { GetLocale = function() return L end } end
+function LibStub()
+    return { GetLocale = function() return L end }
+end
 function CreateFrame() return { RegisterEvent = noop, SetScript = noop } end
-function wipe(values) for key in pairs(values) do values[key] = nil end end
+function wipe(values)
+    for key in pairs(values) do
+        values[key] = nil
+    end
+end
 function debugprofilestop() return 0 end
 
 local now, modifier, combat, completed, onQuest = 10, false, false, false, false
@@ -17,7 +23,10 @@ function UnitIsDeadOrGhost() return false end
 function IsInInstance() return false end
 function GetQuestID() return offeredQuest end
 function QuestGetAutoAccept() return false end
-function AcceptQuest() accepted = accepted + 1; onQuest = true end
+function AcceptQuest()
+    accepted = accepted + 1
+    onQuest = true
+end
 function CloseQuest() offeredQuest = nil end
 C_Timer = {
     NewTimer = function(_, callback)
@@ -49,30 +58,54 @@ C_Container = {
 }
 APRData = { player = { route = 1, BonusSkips = {} }, NPCList = {} }
 APR = {
-    PlayerID = "player", ActiveRoute = "route", IsInRouteZone = true, ActiveQuests = {},
+    PlayerID = "player",
+    ActiveRoute = "route",
+    IsInRouteZone = true,
+    ActiveQuests = {},
     settings = { profile = { enableAddon = true, autoAcceptQuestRoute = true, pickupQuestLookahead = 1 } },
     RouteQuestStepList = {},
     currentStep = {
-        previousState = {}, Reset = noop, ButtonEnable = noop, PrepareRaidIcon = noop,
-        SetProgressBar = noop, AddExtraLineText = noop, AddQuestSteps = noop,
-        UpdateStepButtonCooldowns = noop, UpdateStepButtonUsability = noop,
-        FlushPendingContainers = noop, ProcessPendingStepButtons = noop,
+        previousState = {},
+        Reset = noop,
+        ButtonEnable = noop,
+        PrepareRaidIcon = noop,
+        SetProgressBar = noop,
+        AddExtraLineText = noop,
+        AddQuestSteps = noop,
+        UpdateStepButtonCooldowns = noop,
+        UpdateStepButtonUsability = noop,
+        FlushPendingContainers = noop,
+        ProcessPendingStepButtons = noop,
     },
-    Buff = { RemoveAllBuffIcon = noop }, AFK = { HideFrame = noop }, Arrow = { SetCoord = noop },
+    Buff = { RemoveAllBuffIcon = noop },
+    AFK = { HideFrame = noop },
+    Arrow = { SetCoord = noop },
     questOrderList = { DelayedUpdate = noop },
     currentStepImagePreview = { ClearPreviewImages = noop },
     party = { SendGroupMessage = noop, RefreshPartyFrameAnchor = noop },
-    StartPerformanceSample = noop, FinishPerformanceSample = noop, Debug = noop, DebugEvent = noop,
-    SendMessage = noop, SkipStepCondition = noop, ShouldSojournerSkipStep = noop,
-    MaybeSojournerPrompt = noop, CheckSojournerPartySync = noop, ShowLevelConsumableReminders = noop,
-    RefreshInstanceUIVisibility = noop, MaybePromptInstanceUIPreference = noop,
-    SaveBankItemCounts = noop, RefreshLevelProfileTargets = noop, UpdateQuest = noop,
+    StartPerformanceSample = noop,
+    FinishPerformanceSample = noop,
+    Debug = noop,
+    DebugEvent = noop,
+    SendMessage = noop,
+    SkipStepCondition = noop,
+    ShouldSojournerSkipStep = noop,
+    MaybeSojournerPrompt = noop,
+    CheckSojournerPartySync = noop,
+    ShowLevelConsumableReminders = noop,
+    RefreshInstanceUIVisibility = noop,
+    MaybePromptInstanceUIPreference = noop,
+    SaveBankItemCounts = noop,
+    RefreshLevelProfileTargets = noop,
+    UpdateQuest = noop,
 }
 function APR:NewModule() return {} end
 function APR:GetSettingsProfile() return self.settings.profile end
 function APR:IsInstanceWithUI() return false end
 function APR:Contains(values, wanted)
-    for _, value in ipairs(values or {}) do if value == wanted then return true end end
+    for _, value in ipairs(values or {}) do
+        if value == wanted then return true end
+    end
     return false
 end
 
@@ -140,8 +173,7 @@ APR:ResetQuestPool()
 -- Loot messages can precede the bag update. Open only after the item is in bags.
 APR:UpdateStep()
 assert(opened == 0 and advanced == 0)
-bags[0] = { [1] = { itemID = 100 }, [2] = { itemID = 999, questID = 123 },
-    [3] = { itemID = 275722, questID = 96876 } }
+bags[0] = { [1] = { itemID = 100 }, [2] = { itemID = 999, questID = 123 }, [3] = { itemID = 275722, questID = 96876 } }
 dispatch("inventory", "BAG_UPDATE_DELAYED")
 drain()
 assert(opened == 1 and accepted == 1, "Loot opens Ukor's item and auto-accepts quest 96876")
@@ -159,17 +191,39 @@ local function blocked()
     APR:UpdateStep()
     assert(opened == before, "A blocked starter must stay in bags")
 end
-profile.autoAcceptQuestRoute = false; blocked(); profile.autoAcceptQuestRoute = true
-profile.enableAddon = false; blocked(); profile.enableAddon = true
-modifier = true; blocked(); modifier = false
-current = { DropQuest = 96876, NoAutoAccept = true }; blocked(); current = ukor
-completed = true; blocked(); completed = false
-onQuest = true; blocked(); onQuest = false
-APR.IsInRouteZone = false; blocked(); APR.IsInRouteZone = true
-APR.routeMerchantOpen = true; blocked(); APR.routeMerchantOpen = false
-APR.routeBankOpen = true; blocked(); APR.routeBankOpen = false
-bags[0][3].isLocked = true; blocked(); bags[0][3].isLocked = false
-combat = true; blocked(); combat = false
+profile.autoAcceptQuestRoute = false
+blocked()
+profile.autoAcceptQuestRoute = true
+profile.enableAddon = false
+blocked()
+profile.enableAddon = true
+modifier = true
+blocked()
+modifier = false
+current = { DropQuest = 96876, NoAutoAccept = true }
+blocked()
+current = ukor
+completed = true
+blocked()
+completed = false
+onQuest = true
+blocked()
+onQuest = false
+APR.IsInRouteZone = false
+blocked()
+APR.IsInRouteZone = true
+APR.routeMerchantOpen = true
+blocked()
+APR.routeMerchantOpen = false
+APR.routeBankOpen = true
+blocked()
+APR.routeBankOpen = false
+bags[0][3].isLocked = true
+blocked()
+bags[0][3].isLocked = false
+combat = true
+blocked()
+combat = false
 dispatch("leaveCombat", "PLAYER_REGEN_ENABLED")
 drain()
 assert(opened == 2 and accepted == 2, "The item opens after leaving combat")

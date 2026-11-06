@@ -9,18 +9,20 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 APR.RouteCatalog = {}
 local Catalog = APR.RouteCatalog
 Catalog.progressStates = {
-    notStarted = {label = L["UI_ROUTE_NOT_STARTED"], role = "routeNotStarted"},
-    inProgress = {label = L["UI_ROUTE_IN_PROGRESS"], role = "routeInProgress"},
-    completed = {label = L["ROUTE_COMPLETED"], role = "routeCompleted"},
+    notStarted = { label = L["UI_ROUTE_NOT_STARTED"], role = "routeNotStarted" },
+    inProgress = { label = L["UI_ROUTE_IN_PROGRESS"], role = "routeInProgress" },
+    completed = { label = L["ROUTE_COMPLETED"], role = "routeCompleted" },
 }
 
 function Catalog:GetPath()
     return APRCustomPath[APR.PlayerID] or {}
-end--[[APR_DIAG]]; Catalog.GetPath = APRTrace("APR-Core/features/questing/RouteCatalog.lua:17:Catalog:GetPath#1", Catalog.GetPath)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Catalog.GetPath = APRTrace("APR-Core/features/questing/RouteCatalog.lua:17:Catalog:GetPath#1", Catalog.GetPath)--[[/APR_DIAG]]
 
 local function ValidLevel(value)
     return type(value) == "number" and value > 0 and value < math.huge and value == math.floor(value) and value or nil
-end--[[APR_DIAG]]; ValidLevel = APRTrace("APR-Core/features/questing/RouteCatalog.lua:21:ValidLevel#2", ValidLevel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+ValidLevel = APRTrace("APR-Core/features/questing/RouteCatalog.lua:21:ValidLevel#2", ValidLevel)--[[/APR_DIAG]]
 
 -- Display metadata only: never turn a recommendation into a route-entry gate.
 -- Retail uses expansion bands, narrowed by authored requirements. Specialized
@@ -45,9 +47,13 @@ function Catalog:GetLevelRange(key, data, maps)
     -- StartingZone also tags hero/allied-race intros and returning-player
     -- tutorials. Their levels are not universally 1-10; use native/authored data.
     if not starter then
-        if data.expansion == APR.EXPANSIONS.TheWarWithin then floor, ceiling = 70, 80
-        elseif data.expansion == APR.EXPANSIONS.Midnight then floor, ceiling = 80, 90
-        else floor, ceiling = 10, 70 end
+        if data.expansion == APR.EXPANSIONS.TheWarWithin then
+            floor, ceiling = 70, 80
+        elseif data.expansion == APR.EXPANSIONS.Midnight then
+            floor, ceiling = 80, 90
+        else
+            floor, ceiling = 10, 70
+        end
     end
     if ceiling then
         minimum, maximum = math.max(required or floor, floor), math.min(limit or ceiling, ceiling)
@@ -60,20 +66,25 @@ function Catalog:GetLevelRange(key, data, maps)
     if not ceiling and ValidLevel(mapID) and C_Map and type(C_Map.GetMapLevels) == "function" then
         local cached = maps and maps[mapID]
         if cached == nil then
-            local ok, low, high = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](C_Map.GetMapLevels, mapID)
+            local ok, low, high = --[[APR_DIAG]]
+                APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](C_Map.GetMapLevels, mapID)
             low, high = ValidLevel(low), ValidLevel(high)
-            cached = ok and low and high and low <= high and {low, high} or false
+            cached = ok and low and high and low <= high and { low, high } or false
             if maps then maps[mapID] = cached end
         end
         if cached then
             minimum = math.max(required or floor or cached[1], cached[1])
             maximum = limit and math.min(limit, cached[2]) or cached[2]
-            if maximum < minimum then minimum, maximum = required or floor, limit or ceiling end
+            if maximum < minimum then
+                minimum, maximum = required or floor, limit or ceiling
+            end
         end
     end
     if minimum and maximum and maximum < minimum then maximum = nil end
     return minimum, maximum
-end--[[APR_DIAG]]; Catalog.GetLevelRange = APRTrace("APR-Core/features/questing/RouteCatalog.lua:29:Catalog:GetLevelRange#3", Catalog.GetLevelRange)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Catalog.GetLevelRange =
+    APRTrace("APR-Core/features/questing/RouteCatalog.lua:29:Catalog:GetLevelRange#3", Catalog.GetLevelRange)--[[/APR_DIAG]]
 
 function Catalog:FormatLevelRange(minimum, maximum)
     if minimum and maximum then
@@ -82,7 +93,9 @@ function Catalog:FormatLevelRange(minimum, maximum)
     if minimum then return minimum .. "+" end
     if maximum then return "≤" .. maximum end
     return ""
-end--[[APR_DIAG]]; Catalog.FormatLevelRange = APRTrace("APR-Core/features/questing/RouteCatalog.lua:78:Catalog:FormatLevelRange#4", Catalog.FormatLevelRange)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Catalog.FormatLevelRange =
+    APRTrace("APR-Core/features/questing/RouteCatalog.lua:78:Catalog:FormatLevelRange#4", Catalog.FormatLevelRange)--[[/APR_DIAG]]
 
 function Catalog:Build()
     local records, known, queued = {}, {}, {}
@@ -91,17 +104,27 @@ function Catalog:Build()
     local progress = APRData[APR.PlayerID] or {}
     local completed = APRZoneCompleted[APR.PlayerID] or {}
     local favorites = APR:GetSettingsProfile().routeFavorites or {}
-    for _, label in ipairs(self:GetPath()) do queued[label] = true end
+    for _, label in ipairs(self:GetPath()) do
+        queued[label] = true
+    end
     for key, data in pairs(APR.RouteQuestStepList) do
         if type(data) == "table" and data.label and not data.temporary and not data.hiddenFromSelection then
             local visibility = APR:GetRouteVisibility(key)
             if visibility ~= "hidden" or queued[data.label] then
                 local author, community, description = APR:GetRouteAttribution(key)
-                local record = {key = key, label = data.label, expansion = data.expansion or APR.EXPANSIONS.Custom,
+                local record = {
+                    key = key,
+                    label = data.label,
+                    expansion = data.expansion or APR.EXPANSIONS.Custom,
                     scope = APR:GetRouteSelectionScope(key, data),
-                    category = data.category or APR.CATEGORIES.Leveling, author = author, community = community,
-                    description = description, visibility = visibility, favorite = favorites[key] == true,
-                    warnings = APR:GetRouteSelectionWarnings(key)}
+                    category = data.category or APR.CATEGORIES.Leveling,
+                    author = author,
+                    community = community,
+                    description = description,
+                    visibility = visibility,
+                    favorite = favorites[key] == true,
+                    warnings = APR:GetRouteSelectionWarnings(key),
+                }
                 record.minLevel, record.maxLevel = self:GetLevelRange(key, data, maps)
                 record.level = self:FormatLevelRange(record.minLevel, record.maxLevel)
                 -- Queuing or resetting initializes step 1 without starting the route.
@@ -116,14 +139,30 @@ function Catalog:Build()
                 end
                 local cached = previousText[key]
                 local aliases = data.legacyLabels and table.concat(data.legacyLabels, " ") or ""
-                if not cached or cached.label ~= record.label or cached.expansion ~= record.expansion
-                    or cached.category ~= record.category or cached.author ~= author or cached.level ~= record.level
-                    or cached.aliases ~= aliases then
-                    local source = table.concat({record.label, key, record.expansion, record.category, author, record.level, aliases}, " ")
-                    cached = {source = source, label = record.label, expansion = record.expansion,
-                        category = record.category, author = author, level = record.level, aliases = aliases,
+                if
+                    not cached
+                    or cached.label ~= record.label
+                    or cached.expansion ~= record.expansion
+                    or cached.category ~= record.category
+                    or cached.author ~= author
+                    or cached.level ~= record.level
+                    or cached.aliases ~= aliases
+                then
+                    local source = table.concat(
+                        { record.label, key, record.expansion, record.category, author, record.level, aliases },
+                        " "
+                    )
+                    cached = {
+                        source = source,
+                        label = record.label,
+                        expansion = record.expansion,
+                        category = record.category,
+                        author = author,
+                        level = record.level,
+                        aliases = aliases,
                         search = APR:NormalizeSearchText(source),
-                        sortName = APR:NormalizeSearchText(record.label)}
+                        sortName = APR:NormalizeSearchText(record.label),
+                    }
                 end
                 nextText[key] = cached
                 record.search, record.sortName = cached.search, cached.sortName
@@ -134,21 +173,34 @@ function Catalog:Build()
     -- A deleted/imported route remains removable from the saved path.
     for label in pairs(queued) do
         if not known[label] then
-            records[#records + 1] = {key = "missing:" .. label, label = label, expansion = "", category = "", author = "APR",
-                visibility = "hidden", status = UNAVAILABLE, search = APR:NormalizeSearchText(label), sortName = APR:NormalizeSearchText(label)}
+            records[#records + 1] = {
+                key = "missing:" .. label,
+                label = label,
+                expansion = "",
+                category = "",
+                author = "APR",
+                visibility = "hidden",
+                status = UNAVAILABLE,
+                search = APR:NormalizeSearchText(label),
+                sortName = APR:NormalizeSearchText(label),
+            }
         end
     end
     self.textCache = nextText
     return records
-end--[[APR_DIAG]]; Catalog.Build = APRTrace("APR-Core/features/questing/RouteCatalog.lua:87:Catalog:Build#5", Catalog.Build)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Catalog.Build = APRTrace("APR-Core/features/questing/RouteCatalog.lua:87:Catalog:Build#5", Catalog.Build)--[[/APR_DIAG]]
 
 local function searchWords(query)
     local words = {}
     if query and query ~= "" then
-        for word in APR:NormalizeSearchText(query):gmatch("%S+") do words[#words + 1] = word end
+        for word in APR:NormalizeSearchText(query):gmatch("%S+") do
+            words[#words + 1] = word
+        end
     end
     return words
-end--[[APR_DIAG]]; searchWords = APRTrace("APR-Core/features/questing/RouteCatalog.lua:145:searchWords#6", searchWords)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+searchWords = APRTrace("APR-Core/features/questing/RouteCatalog.lua:145:searchWords#6", searchWords)--[[/APR_DIAG]]
 
 function Catalog:Matches(record, filters, ignoreCategory, words)
     if record.visibility == "hidden" then return false end
@@ -160,7 +212,8 @@ function Catalog:Matches(record, filters, ignoreCategory, words)
         if not record.search:find(word, 1, true) then return false end
     end
     return true
-end--[[APR_DIAG]]; Catalog.Matches = APRTrace("APR-Core/features/questing/RouteCatalog.lua:153:Catalog:Matches#7", Catalog.Matches)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Catalog.Matches = APRTrace("APR-Core/features/questing/RouteCatalog.lua:153:Catalog:Matches#7", Catalog.Matches)--[[/APR_DIAG]]
 
 function Catalog:Filter(records, filters)
     local result, values = {}, {}
@@ -174,58 +227,67 @@ function Catalog:Filter(records, filters)
                 record.sortValues = record.sortValues or {}
                 local cached = record.sortValues[key]
                 if not cached or cached.raw ~= raw then
-                    cached = {raw = raw, value = APR:NormalizeSearchText(raw)}
+                    cached = { raw = raw, value = APR:NormalizeSearchText(raw) }
                     record.sortValues[key] = cached
                 end
                 values[record] = cached.value
             end
         end
     end
-    table.sort(result, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteCatalog.lua:184:callback#9", --[[/APR_DIAG]]function(a, b)
-        -- Availability stays first even when the player reverses a column's sort order.
-        if (a.visibility == "visible") ~= (b.visibility == "visible") then return a.visibility == "visible" end
-        if key == "level" then
-            local knownA, knownB = a.minLevel ~= nil or a.maxLevel ~= nil, b.minLevel ~= nil or b.maxLevel ~= nil
-            if knownA ~= knownB then return knownA end
-            local lowA, lowB = a.minLevel or 0, b.minLevel or 0
-            if lowA ~= lowB then
-                if descending then return lowA > lowB end
-                return lowA < lowB
+    table.sort(
+        result, --[[APR_DIAG]]
+        APRTrace("APR-Core/features/questing/RouteCatalog.lua:184:callback#9", --[[/APR_DIAG]] function(a, b)
+            -- Availability stays first even when the player reverses a column's sort order.
+            if (a.visibility == "visible") ~= (b.visibility == "visible") then return a.visibility == "visible" end
+            if key == "level" then
+                local knownA, knownB = a.minLevel ~= nil or a.maxLevel ~= nil, b.minLevel ~= nil or b.maxLevel ~= nil
+                if knownA ~= knownB then return knownA end
+                local lowA, lowB = a.minLevel or 0, b.minLevel or 0
+                if lowA ~= lowB then
+                    if descending then return lowA > lowB end
+                    return lowA < lowB
+                end
+                local highA, highB = a.maxLevel or math.huge, b.maxLevel or math.huge
+                if highA ~= highB then
+                    if descending then return highA > highB end
+                    return highA < highB
+                end
             end
-            local highA, highB = a.maxLevel or math.huge, b.maxLevel or math.huge
-            if highA ~= highB then
-                if descending then return highA > highB end
-                return highA < highB
+            local left, right = values[a], values[b]
+            if left ~= right then
+                if descending then return left > right end
+                return left < right
             end
-        end
-        local left, right = values[a], values[b]
-        if left ~= right then
-            if descending then return left > right end
-            return left < right
-        end
-        if a.sortName ~= b.sortName then return a.sortName < b.sortName end
-        return a.key < b.key
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
+            if a.sortName ~= b.sortName then return a.sortName < b.sortName end
+            return a.key < b.key
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     return result
-end--[[APR_DIAG]]; Catalog.Filter = APRTrace("APR-Core/features/questing/RouteCatalog.lua:165:Catalog:Filter#8", Catalog.Filter)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Catalog.Filter = APRTrace("APR-Core/features/questing/RouteCatalog.lua:165:Catalog:Filter#8", Catalog.Filter)--[[/APR_DIAG]]
 
 function Catalog:GetCategories(records, filters)
-    local options, seen = {{value = false, label = ALL}}, {}
-    local scope = {expansion = filters.expansion, community = filters.community}
+    local options, seen = { { value = false, label = ALL } }, {}
+    local scope = { expansion = filters.expansion, community = filters.community }
     local words = {}
     for _, record in ipairs(records) do
         if self:Matches(record, scope, true, words) and not seen[record.category] then
             seen[record.category] = true
-            options[#options + 1] = {value = record.category, label = record.category}
+            options[#options + 1] = { value = record.category, label = record.category }
         end
     end
-    table.sort(options, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteCatalog.lua:222:callback#11", --[[/APR_DIAG]]function(a, b)
-        if a.value == false then return b.value ~= false end
-        if b.value == false then return false end
-        return a.label < b.label
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    table.sort(
+        options, --[[APR_DIAG]]
+        APRTrace("APR-Core/features/questing/RouteCatalog.lua:222:callback#11", --[[/APR_DIAG]] function(a, b)
+            if a.value == false then return b.value ~= false end
+            if b.value == false then return false end
+            return a.label < b.label
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     return options, seen
-end--[[APR_DIAG]]; Catalog.GetCategories = APRTrace("APR-Core/features/questing/RouteCatalog.lua:212:Catalog:GetCategories#10", Catalog.GetCategories)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Catalog.GetCategories =
+    APRTrace("APR-Core/features/questing/RouteCatalog.lua:212:Catalog:GetCategories#10", Catalog.GetCategories)--[[/APR_DIAG]]
 
 function Catalog:GetNavigation(records)
     local counts, total, community = {}, 0, 0
@@ -237,9 +299,9 @@ function Catalog:GetNavigation(records)
             counts[scope] = (counts[scope] or 0) + 1
         end
     end
-    local result = {{value = "all", label = ALL, count = total}}
+    local result = { { value = "all", label = ALL, count = total } }
     if community > 0 then
-        result[#result + 1] = {value = "community", label = CLUB_FINDER_COMMUNITY_TYPE, count = community}
+        result[#result + 1] = { value = "community", label = CLUB_FINDER_COMMUNITY_TYPE, count = community }
     end
     local headingIndex = #result + 1
     local expansions = APR:GetRouteSelectionExpansions()
@@ -247,23 +309,27 @@ function Catalog:GetNavigation(records)
     for index = #expansions, 1, -1 do
         local expansion = expansions[index]
         if expansion == APR.EXPANSIONS.Forever then
-            for _, scope in ipairs({expansion, "forever_dungeons", "forever_mage_aoe"}) do
+            for _, scope in ipairs({ expansion, "forever_dungeons", "forever_mage_aoe" }) do
                 if counts[scope] and (scope ~= "forever_mage_aoe" or APR.ClassName == "MAGE") then
-                    result[#result + 1] = {value = scope, label = APR:GetRouteSelectionScopeLabel(scope), count = counts[scope]}
+                    result[#result + 1] =
+                        { value = scope, label = APR:GetRouteSelectionScopeLabel(scope), count = counts[scope] }
                 end
             end
         elseif expansion ~= APR.EXPANSIONS.Custom and counts[expansion] then
-            result[#result + 1] = {value = expansion, label = expansion, count = counts[expansion]}
+            result[#result + 1] = { value = expansion, label = expansion, count = counts[expansion] }
         end
     end
     if counts[APR.EXPANSIONS.Custom] then
-        result[#result + 1] = {value = APR.EXPANSIONS.Custom, label = APR.EXPANSIONS.Custom, count = counts[APR.EXPANSIONS.Custom]}
+        result[#result + 1] =
+            { value = APR.EXPANSIONS.Custom, label = APR.EXPANSIONS.Custom, count = counts[APR.EXPANSIONS.Custom] }
     end
     if #result >= headingIndex then
-        table.insert(result, headingIndex, {heading = true, label = EXPANSION_FILTER_TEXT})
+        table.insert(result, headingIndex, { heading = true, label = EXPANSION_FILTER_TEXT })
     end
     return result
-end--[[APR_DIAG]]; Catalog.GetNavigation = APRTrace("APR-Core/features/questing/RouteCatalog.lua:230:Catalog:GetNavigation#12", Catalog.GetNavigation)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Catalog.GetNavigation =
+    APRTrace("APR-Core/features/questing/RouteCatalog.lua:230:Catalog:GetNavigation#12", Catalog.GetNavigation)--[[/APR_DIAG]]
 
 function Catalog:GetPathRecords(records)
     local byLabel, byKey, ambiguous, result = {}, {}, {}, {}
@@ -272,13 +338,14 @@ function Catalog:GetPathRecords(records)
         byLabel[record.label], byKey[record.key] = record, record
     end
     for _, label in ipairs(self:GetPath()) do
-        local choice = APR:GetSavedRouteChoice(label)
-            or (ambiguous[label] and APR:GetRouteKeyFromDisplayName(label))
+        local choice = APR:GetSavedRouteChoice(label) or (ambiguous[label] and APR:GetRouteKeyFromDisplayName(label))
         local record = byKey[choice] or byLabel[label]
         if record then result[#result + 1] = record end
     end
     return result
-end--[[APR_DIAG]]; Catalog.GetPathRecords = APRTrace("APR-Core/features/questing/RouteCatalog.lua:268:Catalog:GetPathRecords#13", Catalog.GetPathRecords)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Catalog.GetPathRecords =
+    APRTrace("APR-Core/features/questing/RouteCatalog.lua:268:Catalog:GetPathRecords#13", Catalog.GetPathRecords)--[[/APR_DIAG]]
 
 function Catalog:ToggleFavorite(record)
     if not record or record.visibility == "hidden" then return end
@@ -286,50 +353,86 @@ function Catalog:ToggleFavorite(record)
     profile.routeFavorites = profile.routeFavorites or {}
     profile.routeFavorites[record.key] = not profile.routeFavorites[record.key] or nil
     record.favorite = profile.routeFavorites[record.key] == true
-end--[[APR_DIAG]]; Catalog.ToggleFavorite = APRTrace("APR-Core/features/questing/RouteCatalog.lua:283:Catalog:ToggleFavorite#14", Catalog.ToggleFavorite)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Catalog.ToggleFavorite =
+    APRTrace("APR-Core/features/questing/RouteCatalog.lua:283:Catalog:ToggleFavorite#14", Catalog.ToggleFavorite)--[[/APR_DIAG]]
 
 local function AddRouteToPath(catalog, record, restart)
     if APR:GetRouteVisibility(record.key) ~= "visible" then return false end
-    for _, label in ipairs(catalog:GetPath()) do if label == record.label then return false end end
-    if restart then APR:ResetRoute(record.key)
-    elseif APRData[APR.PlayerID][record.key] then APR:CheckRouteChanges(record.key) end
+    for _, label in ipairs(catalog:GetPath()) do
+        if label == record.label then return false end
+    end
+    if restart then
+        APR:ResetRoute(record.key)
+    elseif APRData[APR.PlayerID][record.key] then
+        APR:CheckRouteChanges(record.key)
+    end
     if not APR:AddRouteToCustomPathByKey(record.key) then return false end
     APR.routeconfig:SendCustomPathUpdate()
     return true
-end--[[APR_DIAG]]; AddRouteToPath = APRTrace("APR-Core/features/questing/RouteCatalog.lua:291:AddRouteToPath#15", AddRouteToPath)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+AddRouteToPath = APRTrace("APR-Core/features/questing/RouteCatalog.lua:291:AddRouteToPath#15", AddRouteToPath)--[[/APR_DIAG]]
 
 function Catalog:ChangePath(record, action, restart)
     if not record then return false end
     local path, index = self:GetPath()
-    for i, label in ipairs(path) do if label == record.label then index = i; break end end
+    for i, label in ipairs(path) do
+        if label == record.label then
+            index = i
+            break
+        end
+    end
     if action == "add" then
         if index or APR:GetRouteVisibility(record.key) ~= "visible" then return false end
         local warnings = APR:GetRouteSelectionWarnings(record.key)
         if #warnings == 0 then return AddRouteToPath(self, record, restart) end
         local request = {
-            key = record.key, label = record.label, data = APR:GetRouteData(record.key), player = APR.PlayerID,
-            paths = APRCustomPath, path = APRCustomPath[APR.PlayerID], profile = APR:GetSettingsProfile(),
+            key = record.key,
+            label = record.label,
+            data = APR:GetRouteData(record.key),
+            player = APR.PlayerID,
+            paths = APRCustomPath,
+            path = APRCustomPath[APR.PlayerID],
+            profile = APR:GetSettingsProfile(),
         }
         self.warningRequest = request
-        local prompt = {title = record.label, details = warnings, description = CONFIRM_CONTINUE, acceptText = ADD}
+        local prompt = { title = record.label, details = warnings, description = CONFIRM_CONTINUE, acceptText = ADD }
         -- The owned confirmation uses FULLSCREEN_DIALOG above the DIALOG workspace.
         local owner = (APR.Workspace and APR.Workspace.frame) or (APR.RouteBrowser and APR.RouteBrowser.frame)
-        APR.UI:ShowConfirmationDialog(prompt, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteCatalog.lua:317:callback#17", --[[/APR_DIAG]]function()
-            if self.warningRequest ~= request then return end
-            self.warningRequest = nil
-            if APR.PlayerID ~= request.player or APRCustomPath ~= request.paths
-                or APRCustomPath[APR.PlayerID] ~= request.path or APR:GetSettingsProfile() ~= request.profile
-                or (request.profile and request.profile.enableAddon == false)
-                or APR:GetRouteData(request.key) ~= request.data then return end
-            AddRouteToPath(self, request, restart)
-        end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteCatalog.lua:325:callback#18", --[[/APR_DIAG]]function()
-            if self.warningRequest == request then self.warningRequest = nil end
-        end--[[APR_DIAG]])--[[/APR_DIAG]], owner)
+        APR.UI:ShowConfirmationDialog(
+            prompt, --[[APR_DIAG]]
+            APRTrace("APR-Core/features/questing/RouteCatalog.lua:317:callback#17", --[[/APR_DIAG]] function()
+                if self.warningRequest ~= request then return end
+                self.warningRequest = nil
+                if
+                    APR.PlayerID ~= request.player
+                    or APRCustomPath ~= request.paths
+                    or APRCustomPath[APR.PlayerID] ~= request.path
+                    or APR:GetSettingsProfile() ~= request.profile
+                    or (request.profile and request.profile.enableAddon == false)
+                    or APR:GetRouteData(request.key) ~= request.data
+                then
+                    return
+                end
+                AddRouteToPath(self, request, restart)
+            end--[[APR_DIAG]]) --[[/APR_DIAG]], --[[APR_DIAG]]
+            APRTrace("APR-Core/features/questing/RouteCatalog.lua:325:callback#18", --[[/APR_DIAG]] function()
+                if self.warningRequest == request then self.warningRequest = nil end
+            end--[[APR_DIAG]]) --[[/APR_DIAG]],
+            owner
+        )
         return false
-    elseif action == "remove" and index then table.remove(path, index)
-    elseif action == "up" and index and index > 1 then path[index - 1], path[index] = path[index], path[index - 1]
-    elseif action == "down" and index and index < #path then path[index + 1], path[index] = path[index], path[index + 1]
-    else return false end
+    elseif action == "remove" and index then
+        table.remove(path, index)
+    elseif action == "up" and index and index > 1 then
+        path[index - 1], path[index] = path[index], path[index - 1]
+    elseif action == "down" and index and index < #path then
+        path[index + 1], path[index] = path[index], path[index + 1]
+    else
+        return false
+    end
     APR.routeconfig:SendCustomPathUpdate()
     return true
-end--[[APR_DIAG]]; Catalog.ChangePath = APRTrace("APR-Core/features/questing/RouteCatalog.lua:301:Catalog:ChangePath#16", Catalog.ChangePath)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Catalog.ChangePath =
+    APRTrace("APR-Core/features/questing/RouteCatalog.lua:301:Catalog:ChangePath#16", Catalog.ChangePath)--[[/APR_DIAG]]

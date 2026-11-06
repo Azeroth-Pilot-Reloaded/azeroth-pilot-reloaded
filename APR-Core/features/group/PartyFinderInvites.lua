@@ -8,17 +8,23 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local Finder = APR.partyFinder
 local EMPTY_SOUND_CATALOG = {}
-local INVITE_DIALOG_ACTIONS = {LFGInvitePopupAcceptButton = "accepted", LFGInvitePopupDeclineButton = "declined"}
+local INVITE_DIALOG_ACTIONS = { LFGInvitePopupAcceptButton = "accepted", LFGInvitePopupDeclineButton = "declined" }
 
 function Finder:GetSoundChoices()
     if not self.soundChoices then
         -- AceConfig only needs the selected label while building the page.
         -- The sound picker reads the shared catalogue separately when opened.
-        self.soundChoices = setmetatable({ default = DEFAULT }, { __index = --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinderInvites.lua:17:callback#2", --[[/APR_DIAG]]function(_, value)
-            if type(value) == "string" and value:sub(1, 6) == "media:" and #value > 6 then
-                return value:sub(7)
-            end
-        end--[[APR_DIAG]])--[[/APR_DIAG]] })
+        self.soundChoices = setmetatable({ default = DEFAULT }, {
+            --[[APR_DIAG]]
+            __index = APRTrace(
+                "APR-Core/features/group/PartyFinderInvites.lua:17:callback#2", --[[/APR_DIAG]]
+                function(_, value)
+                    if type(value) == "string" and value:sub(1, 6) == "media:" and #value > 6 then
+                        return value:sub(7)
+                    end
+                end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]],
+        })
         -- Only APR's fixed palette needs translated names. Third-party media
         -- remain lazy labels and do not need a copied catalogue or subscription.
         for event, name in pairs(APR.CompanionSoundNames or EMPTY_SOUND_CATALOG) do
@@ -26,7 +32,9 @@ function Finder:GetSoundChoices()
         end
     end
     return self.soundChoices
-end--[[APR_DIAG]]; Finder.GetSoundChoices = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:13:Finder:GetSoundChoices#1", Finder.GetSoundChoices)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.GetSoundChoices =
+    APRTrace("APR-Core/features/group/PartyFinderInvites.lua:13:Finder:GetSoundChoices#1", Finder.GetSoundChoices)--[[/APR_DIAG]]
 
 function Finder:GetSoundCatalog()
     local media = LibStub("LibSharedMedia-3.0", true)
@@ -34,17 +42,23 @@ function Finder:GetSoundCatalog()
     -- Borrow it instead of copying every name for each event's selector.
     local names = media and media.List and media:List("sound")
     return type(names) == "table" and names or EMPTY_SOUND_CATALOG
-end--[[APR_DIAG]]; Finder.GetSoundCatalog = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:31:Finder:GetSoundCatalog#3", Finder.GetSoundCatalog)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.GetSoundCatalog =
+    APRTrace("APR-Core/features/group/PartyFinderInvites.lua:31:Finder:GetSoundCatalog#3", Finder.GetSoundCatalog)--[[/APR_DIAG]]
 
 function Finder:PlayEventSound(event, preview)
     -- Retired audio events stay silent even in profiles saved before their removal.
     if event == "sent" then return false end
     local settings = self:GetSettings()
     local entry = settings and settings.sounds and settings.sounds[event]
-    if not entry or not self:IsEnabled() or (not preview and (not settings.soundEnabled or not entry.enabled)) then return false end
+    if not entry or not self:IsEnabled() or (not preview and (not settings.soundEnabled or not entry.enabled)) then
+        return false
+    end
     self.soundTimes = self.soundTimes or {}
     local cooldown = event == "match" and settings.notificationCooldown or entry.cooldown
-    if not preview and self.soundTimes[event] and GetTime() - self.soundTimes[event] < (cooldown or 5) then return false end
+    if not preview and self.soundTimes[event] and GetTime() - self.soundTimes[event] < (cooldown or 5) then
+        return false
+    end
     local channel = settings.soundChannel
     if channel ~= "Master" and channel ~= "SFX" and channel ~= "Dialog" then channel = "Master" end
     local played = false
@@ -63,42 +77,72 @@ function Finder:PlayEventSound(event, preview)
         return true
     end
     return false
-end--[[APR_DIAG]]; Finder.PlayEventSound = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:39:Finder:PlayEventSound#4", Finder.PlayEventSound)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.PlayEventSound =
+    APRTrace("APR-Core/features/group/PartyFinderInvites.lua:39:Finder:PlayEventSound#4", Finder.PlayEventSound)--[[/APR_DIAG]]
 
 function Finder:PreviewSound(event)
     return self:PlayEventSound(event, true)
-end--[[APR_DIAG]]; Finder.PreviewSound = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:68:Finder:PreviewSound#5", Finder.PreviewSound)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.PreviewSound =
+    APRTrace("APR-Core/features/group/PartyFinderInvites.lua:68:Finder:PreviewSound#5", Finder.PreviewSound)--[[/APR_DIAG]]
 
 function Finder:MaybeNotifyCandidate(candidate)
     local settings = self:GetSettings()
     local own = self:GetLocalState()
-    if not settings.notifications or not settings.soundEnabled or not own or own.afk or own.dnd
-        or own.groupSize >= 5 or candidate.groupSize >= 5
-        or candidate.afk or candidate.dnd or (InCombatLockdown and InCombatLockdown())
+    if
+        not settings.notifications
+        or not settings.soundEnabled
+        or not own
+        or own.afk
+        or own.dnd
+        or own.groupSize >= 5
+        or candidate.groupSize >= 5
+        or candidate.afk
+        or candidate.dnd
+        or (InCombatLockdown and InCombatLockdown())
         or own.groupSize > 0 and not (own.leader and own.recruiting)
-        or candidate.groupSize > 1 and not (candidate.leader and candidate.recruiting) then return end
+        or candidate.groupSize > 1 and not (candidate.leader and candidate.recruiting)
+    then
+        return
+    end
     self.notificationTimes = self.notificationTimes or {}
     if self.notificationTimes[candidate.key] and GetTime() - self.notificationTimes[candidate.key] < 600 then return end
     if self:PlayEventSound("match") then self.notificationTimes[candidate.key] = GetTime() end
-end--[[APR_DIAG]]; Finder.MaybeNotifyCandidate = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:72:Finder:MaybeNotifyCandidate#6", Finder.MaybeNotifyCandidate)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.MaybeNotifyCandidate = APRTrace(
+    "APR-Core/features/group/PartyFinderInvites.lua:72:Finder:MaybeNotifyCandidate#6",
+    Finder.MaybeNotifyCandidate
+)--[[/APR_DIAG]]
 
 function Finder:FindCandidate(key)
-    for _, candidate in ipairs(self:GetCandidates()) do if candidate.key == key then return candidate end end
-end--[[APR_DIAG]]; Finder.FindCandidate = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:85:Finder:FindCandidate#7", Finder.FindCandidate)--[[/APR_DIAG]]
+    for _, candidate in ipairs(self:GetCandidates()) do
+        if candidate.key == key then return candidate end
+    end
+end--[[APR_DIAG]]
+Finder.FindCandidate =
+    APRTrace("APR-Core/features/group/PartyFinderInvites.lua:85:Finder:FindCandidate#7", Finder.FindCandidate)--[[/APR_DIAG]]
 
 local function BattleNetInvite(self, candidate, request)
     local id = candidate and (candidate.gameAccountID or self.friendRoutes and self.friendRoutes[candidate.key])
     local peer = id and self.GetBattleNetPeer and self:GetBattleNetPeer(id)
     if peer and peer.key == candidate.key then
-        local invite = request and BNRequestInviteFriend or not request and
-            (C_BattleNet and C_BattleNet.InviteFriend or BNInviteFriend)
+        local invite = request and BNRequestInviteFriend
+            or not request and (C_BattleNet and C_BattleNet.InviteFriend or BNInviteFriend)
         if type(invite) == "function" then return invite, id end
     end
-end--[[APR_DIAG]]; BattleNetInvite = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:89:BattleNetInvite#8", BattleNetInvite)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+BattleNetInvite = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:89:BattleNetInvite#8", BattleNetInvite)--[[/APR_DIAG]]
 
 function Finder:CanInvite(candidate)
-    if not candidate or not self:IsEnabled() or not self.candidates[candidate.key]
-        or GetTime() - candidate.seenAt >= 120 then return false, L["GF_INVITE_UNAVAILABLE"] end
+    if
+        not candidate
+        or not self:IsEnabled()
+        or not self.candidates[candidate.key]
+        or GetTime() - candidate.seenAt >= 120
+    then
+        return false, L["GF_INVITE_UNAVAILABLE"]
+    end
     if InCombatLockdown and InCombatLockdown() then return false, L["GF_STATUS_restricted"] end
     if self.outgoingInvites and self.outgoingInvites[candidate.key] then
         local pending = self.outgoingInvites[candidate.key]
@@ -108,39 +152,62 @@ function Finder:CanInvite(candidate)
     if size >= 5 or IsInRaid and IsInRaid() then return false, L["GF_INVITE_FULL"] end
     if candidate.groupSize > 1 then
         if not candidate.leader or not candidate.recruiting then return false, L["GF_INVITE_GROUPED"] end
-        if size > 0 or not BattleNetInvite(self, candidate, true)
-            and not (C_PartyInfo and C_PartyInfo.RequestInviteFromUnit) then return false, L["GF_INVITE_NO_PERMISSION"] end
+        if
+            size > 0
+            or not BattleNetInvite(self, candidate, true)
+                and not (C_PartyInfo and C_PartyInfo.RequestInviteFromUnit)
+        then
+            return false, L["GF_INVITE_NO_PERMISSION"]
+        end
         if candidate.groupSize >= 5 then return false, L["GF_INVITE_FULL"] end
         return true
     end
-    if C_PartyInfo and C_PartyInfo.CanInvite and not C_PartyInfo.CanInvite() then return false, L["GF_INVITE_NO_PERMISSION"] end
+    if C_PartyInfo and C_PartyInfo.CanInvite and not C_PartyInfo.CanInvite() then
+        return false, L["GF_INVITE_NO_PERMISSION"]
+    end
     if not BattleNetInvite(self, candidate) and not (C_PartyInfo and C_PartyInfo.InviteUnit) then
         return false, L["GF_INVITE_NO_PERMISSION"]
     end
     return true
-end--[[APR_DIAG]]; Finder.CanInvite = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:99:Finder:CanInvite#9", Finder.CanInvite)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.CanInvite = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:99:Finder:CanInvite#9", Finder.CanInvite)--[[/APR_DIAG]]
 
 function Finder:TrackInvitation(candidate, request)
     self.outgoingInvites = self.outgoingInvites or {}
     local count = 0
-    for _ in pairs(self.outgoingInvites) do count = count + 1 end
+    for _ in pairs(self.outgoingInvites) do
+        count = count + 1
+    end
     if count >= 8 then
         local oldest
         for key, pending in pairs(self.outgoingInvites) do
-            if pending.finished and (not oldest or pending.createdAt < self.outgoingInvites[oldest].createdAt) then oldest = key end
+            if pending.finished and (not oldest or pending.createdAt < self.outgoingInvites[oldest].createdAt) then
+                oldest = key
+            end
         end
         if not oldest then return end
         self.outgoingInvites[oldest] = nil
     end
     local state = self:GetLocalState()
-    local pending = {id = tostring(math.floor(GetTime() * 1000)) .. "-" .. math.random(100000, 999999),
-        key = candidate.key, createdAt = GetTime(), expires = GetTime() + 60, request = request,
-        route = state.route, revision = state.revision, progressId = state.progressId, step = state.step, total = state.total}
+    local pending = {
+        id = tostring(math.floor(GetTime() * 1000)) .. "-" .. math.random(100000, 999999),
+        key = candidate.key,
+        createdAt = GetTime(),
+        expires = GetTime() + 60,
+        request = request,
+        route = state.route,
+        revision = state.revision,
+        progressId = state.progressId,
+        step = state.step,
+        total = state.total,
+    }
     self.outgoingInvites[candidate.key] = pending
     candidate.status = "sent"
     self:ScheduleInvitations()
     return pending
-end--[[APR_DIAG]]; Finder.TrackInvitation = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:123:Finder:TrackInvitation#10", Finder.TrackInvitation)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.TrackInvitation =
+    APRTrace("APR-Core/features/group/PartyFinderInvites.lua:123:Finder:TrackInvitation#10", Finder.TrackInvitation)--[[/APR_DIAG]]
 
 function Finder:Invite(key)
     local candidate = self:FindCandidate(key)
@@ -156,11 +223,16 @@ function Finder:Invite(key)
         self:SetInvitationResult(key, "failed")
         return false, L["GF_INVITE_NO_PERMISSION"]
     end
-    local ok, result = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](invite, target)
-    if not ok or result == false then self:SetInvitationResult(key, "failed"); return false, L["GF_INVITE_failed"] end
+    local ok, result = --[[APR_DIAG]]
+        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](invite, target)
+    if not ok or result == false then
+        self:SetInvitationResult(key, "failed")
+        return false, L["GF_INVITE_failed"]
+    end
     self:Notify()
     return true
-end--[[APR_DIAG]]; Finder.Invite = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:145:Finder:Invite#11", Finder.Invite)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.Invite = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:145:Finder:Invite#11", Finder.Invite)--[[/APR_DIAG]]
 
 function Finder:RequestInvite(key)
     local candidate = self:FindCandidate(key)
@@ -175,16 +247,23 @@ function Finder:RequestInvite(key)
         self:SetInvitationResult(key, "failed")
         return false, L["GF_INVITE_NO_PERMISSION"]
     end
-    local ok, result = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](invite, target)
-    if not ok or result == false then self:SetInvitationResult(key, "failed"); return false, L["GF_INVITE_failed"] end
+    local ok, result = --[[APR_DIAG]]
+        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](invite, target)
+    if not ok or result == false then
+        self:SetInvitationResult(key, "failed")
+        return false, L["GF_INVITE_failed"]
+    end
     self:Notify()
     return true
-end--[[APR_DIAG]]; Finder.RequestInvite = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:165:Finder:RequestInvite#12", Finder.RequestInvite)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.RequestInvite =
+    APRTrace("APR-Core/features/group/PartyFinderInvites.lua:165:Finder:RequestInvite#12", Finder.RequestInvite)--[[/APR_DIAG]]
 
 function Finder:Whisper(key)
     local candidate = self:FindCandidate(key)
     if candidate and ChatFrame_SendTell then ChatFrame_SendTell(candidate.key) end
-end--[[APR_DIAG]]; Finder.Whisper = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:184:Finder:Whisper#13", Finder.Whisper)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.Whisper = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:184:Finder:Whisper#13", Finder.Whisper)--[[/APR_DIAG]]
 
 local function ApplyInvitationResult(self, key, status)
     local pending = self.outgoingInvites and self.outgoingInvites[key]
@@ -193,28 +272,41 @@ local function ApplyInvitationResult(self, key, status)
     if self.candidates[key] then self.candidates[key].status = status end
     self:PlayEventSound(status == "failed" and "error" or status)
     return true
-end--[[APR_DIAG]]; ApplyInvitationResult = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:189:ApplyInvitationResult#14", ApplyInvitationResult)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+ApplyInvitationResult =
+    APRTrace("APR-Core/features/group/PartyFinderInvites.lua:189:ApplyInvitationResult#14", ApplyInvitationResult)--[[/APR_DIAG]]
 
 function Finder:SetInvitationResult(key, status)
     if not ApplyInvitationResult(self, key, status) then return end
     self:ScheduleInvitations()
     self:Notify()
-end--[[APR_DIAG]]; Finder.SetInvitationResult = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:198:Finder:SetInvitationResult#15", Finder.SetInvitationResult)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.SetInvitationResult = APRTrace(
+    "APR-Core/features/group/PartyFinderInvites.lua:198:Finder:SetInvitationResult#15",
+    Finder.SetInvitationResult
+)--[[/APR_DIAG]]
 
 local function ExpireInvitations(self)
     local changed = false
     for key, pending in pairs(self.outgoingInvites or {}) do
         if GetTime() >= pending.expires then
-            if pending.finished then self.outgoingInvites[key] = nil
-            elseif ApplyInvitationResult(self, key, "expired") then changed = true end
+            if pending.finished then
+                self.outgoingInvites[key] = nil
+            elseif ApplyInvitationResult(self, key, "expired") then
+                changed = true
+            end
         end
     end
     return changed
-end--[[APR_DIAG]]; ExpireInvitations = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:204:ExpireInvitations#16", ExpireInvitations)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+ExpireInvitations =
+    APRTrace("APR-Core/features/group/PartyFinderInvites.lua:204:ExpireInvitations#16", ExpireInvitations)--[[/APR_DIAG]]
 
 function Finder:ScheduleInvitations()
     local expires = math.huge
-    for _, pending in pairs(self.outgoingInvites or {}) do expires = math.min(expires, pending.expires) end
+    for _, pending in pairs(self.outgoingInvites or {}) do
+        expires = math.min(expires, pending.expires)
+    end
     if expires == math.huge then
         self:CancelTimer("inviteTimer")
         self.inviteAt = nil
@@ -223,24 +315,34 @@ function Finder:ScheduleInvitations()
     -- The deadline is reusable only while its timer is still owned. SetTimer
     -- clears that handle before dispatch, and cancelled timers cannot block rearming.
     if self.inviteTimer and self.inviteAt == expires then return end
-    self:SetTimer("inviteTimer", math.max(0.1, expires - GetTime()), --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinderInvites.lua:226:callback#18", --[[/APR_DIAG]]function()
-        local ok, changed = APRPCall(ExpireInvitations, self)
-        -- Publish and schedule once after the batch, even if a native sound
-        -- failed after applying a result. Keep the error visible without
-        -- stranding the remaining invitations or retaining a batching flag.
-        self:ScheduleInvitations()
-        if changed or not ok then self:Notify() end
-        if not ok then error(changed, 0) end
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self:SetTimer(
+        "inviteTimer",
+        math.max(0.1, expires - GetTime()), --[[APR_DIAG]]
+        APRTrace("APR-Core/features/group/PartyFinderInvites.lua:226:callback#18", --[[/APR_DIAG]] function()
+            local ok, changed = APRPCall(ExpireInvitations, self)
+            -- Publish and schedule once after the batch, even if a native sound
+            -- failed after applying a result. Keep the error visible without
+            -- stranding the remaining invitations or retaining a batching flag.
+            self:ScheduleInvitations()
+            if changed or not ok then self:Notify() end
+            if not ok then error(changed, 0) end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     self.inviteAt = expires
-end--[[APR_DIAG]]; Finder.ScheduleInvitations = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:215:Finder:ScheduleInvitations#17", Finder.ScheduleInvitations)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.ScheduleInvitations = APRTrace(
+    "APR-Core/features/group/PartyFinderInvites.lua:215:Finder:ScheduleInvitations#17",
+    Finder.ScheduleInvitations
+)--[[/APR_DIAG]]
 
 function Finder:HandleInviteMessage(data, sender)
     if data.kind == "R" then
         local pending = self.outgoingInvites and self.outgoingInvites[sender]
         if pending and not pending.finished and pending.id == data.id and GetTime() < pending.expires then
             -- An accepted dialog still needs a matching native roster before it counts as joined.
-            if data.status == "declined" or data.status == "failed" then self:SetInvitationResult(sender, data.status) end
+            if data.status == "declined" or data.status == "failed" then
+                self:SetInvitationResult(sender, data.status)
+            end
         end
         return
     end
@@ -251,18 +353,32 @@ function Finder:HandleInviteMessage(data, sender)
     if self.nativeInviter and self.nativeInviter ~= sender then return end
     -- Retain the first admissible context until this invitation closes or the
     -- unmatched context expires. New nonces cannot replace it or replay its alert.
-    if self.incomingContext and self.incomingContext.sender == sender
-        and self.incomingContext.expires > GetTime() then return end
+    if self.incomingContext and self.incomingContext.sender == sender and self.incomingContext.expires > GetTime() then
+        return
+    end
     data.sender, data.name, data.expires = sender, APR.PartyProtocol.DisplayName(sender) or sender, GetTime() + 30
     self.incomingContext = data
-    self:SetTimer("incomingInviteTimer", 30, --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinderInvites.lua:258:callback#20", --[[/APR_DIAG]]function() self:CloseIncomingInvitation() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self:SetTimer(
+        "incomingInviteTimer",
+        30, --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/features/group/PartyFinderInvites.lua:258:callback#20", --[[/APR_DIAG]]
+            function() self:CloseIncomingInvitation() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
     self:ShowCorrelatedInvitation()
-end--[[APR_DIAG]]; Finder.HandleInviteMessage = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:238:Finder:HandleInviteMessage#19", Finder.HandleInviteMessage)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.HandleInviteMessage = APRTrace(
+    "APR-Core/features/group/PartyFinderInvites.lua:238:Finder:HandleInviteMessage#19",
+    Finder.HandleInviteMessage
+)--[[/APR_DIAG]]
 
 function Finder:OnNativeInvitation(name)
     local key = self:PlayerKey(name)
     if not key then return end
-    if self.nativeInviter and (self.nativeInviter ~= key or self.incomingContext and self.incomingContext.displayed) then
+    if
+        self.nativeInviter and (self.nativeInviter ~= key or self.incomingContext and self.incomingContext.displayed)
+    then
         self:CloseIncomingInvitation()
     end
     if self.incomingContext and self.incomingContext.sender ~= key then
@@ -272,41 +388,80 @@ function Finder:OnNativeInvitation(name)
     self.nativeInviter = key
     self.nativeInviteExpires = GetTime() + 60
     -- Native-first delivery must expire too, even if no APR context ever arrives.
-    self:SetTimer("incomingInviteTimer", 60, --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinderInvites.lua:275:callback#22", --[[/APR_DIAG]]function() self:CloseIncomingInvitation() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self:SetTimer(
+        "incomingInviteTimer",
+        60, --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/features/group/PartyFinderInvites.lua:275:callback#22", --[[/APR_DIAG]]
+            function() self:CloseIncomingInvitation() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
     self:ShowCorrelatedInvitation()
-end--[[APR_DIAG]]; Finder.OnNativeInvitation = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:262:Finder:OnNativeInvitation#21", Finder.OnNativeInvitation)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.OnNativeInvitation = APRTrace(
+    "APR-Core/features/group/PartyFinderInvites.lua:262:Finder:OnNativeInvitation#21",
+    Finder.OnNativeInvitation
+)--[[/APR_DIAG]]
 
 function Finder:ShowCorrelatedInvitation()
     local context = self.incomingContext
-    if not context or context.sender ~= self.nativeInviter or context.expires <= GetTime() or context.displayed
-        or GetTime() >= (self.nativeInviteExpires or 0) then return end
+    if
+        not context
+        or context.sender ~= self.nativeInviter
+        or context.expires <= GetTime()
+        or context.displayed
+        or GetTime() >= (self.nativeInviteExpires or 0)
+    then
+        return
+    end
     context.displayed = true
     context.expires = self.nativeInviteExpires
-    self:SetTimer("incomingInviteTimer", math.max(0.1, context.expires - GetTime()), --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinderInvites.lua:285:callback#24", --[[/APR_DIAG]]function() self:CloseIncomingInvitation() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self:SetTimer(
+        "incomingInviteTimer",
+        math.max(0.1, context.expires - GetTime()), --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/features/group/PartyFinderInvites.lua:285:callback#24", --[[/APR_DIAG]]
+            function() self:CloseIncomingInvitation() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
     local own = self:GetLocalState()
     context.description = self:GetCandidateDescription(context)
     if own and own.route ~= "00000000" and own.route == context.route then
         context.description = self:GetRouteLabel() .. " · " .. context.description
     end
-    if APR.PartyFinderPanel and APR.PartyFinderPanel.ShowInviteContext then APR.PartyFinderPanel:ShowInviteContext(context) end
+    if APR.PartyFinderPanel and APR.PartyFinderPanel.ShowInviteContext then
+        APR.PartyFinderPanel:ShowInviteContext(context)
+    end
     self:PlayEventSound("received")
-end--[[APR_DIAG]]; Finder.ShowCorrelatedInvitation = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:279:Finder:ShowCorrelatedInvitation#23", Finder.ShowCorrelatedInvitation)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.ShowCorrelatedInvitation = APRTrace(
+    "APR-Core/features/group/PartyFinderInvites.lua:279:Finder:ShowCorrelatedInvitation#23",
+    Finder.ShowCorrelatedInvitation
+)--[[/APR_DIAG]]
 
 function Finder:OnInviteDialogAction(action)
     local context = self.incomingContext
     if context and context.sender == self.nativeInviter and context.expires > GetTime() and not context.responded then
         context.responded = true
-        self:Send("R", {id = context.id, status = action}, "WHISPER", context.sender, true)
+        self:Send("R", { id = context.id, status = action }, "WHISPER", context.sender, true)
     end
     -- A late context must not revive a native dialog the player already dismissed.
     self:CloseIncomingInvitation()
-end--[[APR_DIAG]]; Finder.OnInviteDialogAction = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:295:Finder:OnInviteDialogAction#25", Finder.OnInviteDialogAction)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.OnInviteDialogAction = APRTrace(
+    "APR-Core/features/group/PartyFinderInvites.lua:295:Finder:OnInviteDialogAction#25",
+    Finder.OnInviteDialogAction
+)--[[/APR_DIAG]]
 
 function Finder:CloseIncomingInvitation()
     self:CancelTimer("incomingInviteTimer")
     self.incomingContext, self.nativeInviter, self.nativeInviteExpires = nil, nil, nil
     if APR.PartyFinderPanel and APR.PartyFinderPanel.HideInviteContext then APR.PartyFinderPanel:HideInviteContext() end
-end--[[APR_DIAG]]; Finder.CloseIncomingInvitation = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:305:Finder:CloseIncomingInvitation#26", Finder.CloseIncomingInvitation)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.CloseIncomingInvitation = APRTrace(
+    "APR-Core/features/group/PartyFinderInvites.lua:305:Finder:CloseIncomingInvitation#26",
+    Finder.CloseIncomingInvitation
+)--[[/APR_DIAG]]
 
 function Finder:CheckInvitationRoster()
     if not IsInGroup or not IsInGroup() then return end
@@ -316,42 +471,70 @@ function Finder:CheckInvitationRoster()
         if key then self:SetInvitationResult(key, "joined") end
     end
     self:CloseIncomingInvitation()
-end--[[APR_DIAG]]; Finder.CheckInvitationRoster = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:311:Finder:CheckInvitationRoster#27", Finder.CheckInvitationRoster)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.CheckInvitationRoster = APRTrace(
+    "APR-Core/features/group/PartyFinderInvites.lua:311:Finder:CheckInvitationRoster#27",
+    Finder.CheckInvitationRoster
+)--[[/APR_DIAG]]
 
 function Finder:ClearInvitations()
     self:CancelTimer("inviteTimer")
     self.inviteAt = nil
     self:CloseIncomingInvitation()
     self.outgoingInvites = {}
-end--[[APR_DIAG]]; Finder.ClearInvitations = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:321:Finder:ClearInvitations#28", Finder.ClearInvitations)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.ClearInvitations =
+    APRTrace("APR-Core/features/group/PartyFinderInvites.lua:321:Finder:ClearInvitations#28", Finder.ClearInvitations)--[[/APR_DIAG]]
 
 local function AttachInvitationDialogs(self)
     for name, action in pairs(INVITE_DIALOG_ACTIONS) do
         local button = _G[name]
         if button and not button.aprFinderHooked then
-            button:HookScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinderInvites.lua:332:callback#30", --[[/APR_DIAG]]function() self:OnInviteDialogAction(action) end--[[APR_DIAG]])--[[/APR_DIAG]])
+            button:HookScript(
+                "OnClick", --[[APR_DIAG]]
+                APRTrace(
+                    "APR-Core/features/group/PartyFinderInvites.lua:332:callback#30", --[[/APR_DIAG]]
+                    function() self:OnInviteDialogAction(action) end --[[APR_DIAG]]
+                ) --[[/APR_DIAG]]
+            )
             button.aprFinderHooked = true
         end
     end
-end--[[APR_DIAG]]; AttachInvitationDialogs = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:328:AttachInvitationDialogs#29", AttachInvitationDialogs)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+AttachInvitationDialogs =
+    APRTrace("APR-Core/features/group/PartyFinderInvites.lua:328:AttachInvitationDialogs#29", AttachInvitationDialogs)--[[/APR_DIAG]]
 
 function Finder:HookInvitationDialogs()
     if not hooksecurefunc then return end
     -- Observe actual button clicks only. DeclineGroup is also called by timeout/hide paths.
     if StaticPopup_OnClick and not self.dialogHooks then
         self.dialogHooks = true
-        hooksecurefunc("StaticPopup_OnClick", --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinderInvites.lua:343:callback#32", --[[/APR_DIAG]]function(dialog, index)
-            if dialog and dialog.which == "PARTY_INVITE" and (index == 1 or index == 2) then
-                self:OnInviteDialogAction(index == 1 and "accepted" or "declined")
-            end
-        end--[[APR_DIAG]])--[[/APR_DIAG]])
+        hooksecurefunc(
+            "StaticPopup_OnClick", --[[APR_DIAG]]
+            APRTrace(
+                "APR-Core/features/group/PartyFinderInvites.lua:343:callback#32", --[[/APR_DIAG]]
+                function(dialog, index)
+                    if dialog and dialog.which == "PARTY_INVITE" and (index == 1 or index == 2) then
+                        self:OnInviteDialogAction(index == 1 and "accepted" or "declined")
+                    end
+                end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]]
+        )
     end
     if not self.attachInviteDialogs then
-        self.attachInviteDialogs = --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinderInvites.lua:350:callback#33", --[[/APR_DIAG]]function() AttachInvitationDialogs(self) end--[[APR_DIAG]])--[[/APR_DIAG]]
+        self.attachInviteDialogs = --[[APR_DIAG]]
+            APRTrace(
+                "APR-Core/features/group/PartyFinderInvites.lua:350:callback#33", --[[/APR_DIAG]]
+                function() AttachInvitationDialogs(self) end --[[APR_DIAG]]
+            )--[[/APR_DIAG]]
     end
     self.attachInviteDialogs()
     if LFGInvitePopup_Update and not self.roleDialogHook then
         self.roleDialogHook = true
         hooksecurefunc("LFGInvitePopup_Update", self.attachInviteDialogs)
     end
-end--[[APR_DIAG]]; Finder.HookInvitationDialogs = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:338:Finder:HookInvitationDialogs#31", Finder.HookInvitationDialogs)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Finder.HookInvitationDialogs = APRTrace(
+    "APR-Core/features/group/PartyFinderInvites.lua:338:Finder:HookInvitationDialogs#31",
+    Finder.HookInvitationDialogs
+)--[[/APR_DIAG]]

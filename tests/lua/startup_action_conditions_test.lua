@@ -1,6 +1,8 @@
 -- Unknown startup quest state must not commit actions or action completion.
 local L = setmetatable({}, { __index = function(_, key) return key end })
-function LibStub() return { GetLocale = function() return L end } end
+function LibStub()
+    return { GetLocale = function() return L end }
+end
 
 APR = { PlayerID = "player", ActiveRoute = "synthetic", Faction = "Alliance" }
 APRData = { player = { synthetic = 1 } }
@@ -32,10 +34,22 @@ function APR:GetTargetID() return target end
 APR.AFK = { SetAfkTimer = function(_, seconds) timers[#timers + 1] = seconds end }
 
 C_QuestLog = {
-    IsOnQuest = function(id) questReads = questReads + 1; return quests[id] == true end,
-    IsComplete = function(id) questReads = questReads + 1; return ready[id] == true end,
-    IsQuestFlaggedCompleted = function(id) questReads = questReads + 1; return rewarded[id] == true end,
-    IsQuestFlaggedCompletedOnAccount = function(id) questReads = questReads + 1; return account[id] == true end,
+    IsOnQuest = function(id)
+        questReads = questReads + 1
+        return quests[id] == true
+    end,
+    IsComplete = function(id)
+        questReads = questReads + 1
+        return ready[id] == true
+    end,
+    IsQuestFlaggedCompleted = function(id)
+        questReads = questReads + 1
+        return rewarded[id] == true
+    end,
+    IsQuestFlaggedCompletedOnAccount = function(id)
+        questReads = questReads + 1
+        return account[id] == true
+    end,
     SetSelectedQuest = function(id) selected = id end,
     SetAbandonQuest = function() abandonTarget = selected end,
     AbandonQuest = function()
@@ -48,14 +62,21 @@ C_Container = {
     GetContainerNumSlots = function(bag) return bag == 0 and 2 or 0 end,
     GetContainerItemInfo = function(bag, slot) return bag == 0 and bags[slot] or nil end,
     UseContainerItem = function(bag, slot)
-        assert(bag == 0 and bags[slot]); mutations = mutations + 1; bags[slot] = nil
+        assert(bag == 0 and bags[slot])
+        mutations = mutations + 1
+        bags[slot] = nil
     end,
     PickupContainerItem = function(bag, slot)
-        assert(bag == 0 and bags[slot]); cursor, bags[slot] = bags[slot], nil
+        assert(bag == 0 and bags[slot])
+        cursor, bags[slot] = bags[slot], nil
     end,
 }
 C_Item = { GetItemInfo = function(id) return "Item " .. id end }
-function DeleteCursorItem() assert(cursor); cursor = nil; mutations = mutations + 1 end
+function DeleteCursorItem()
+    assert(cursor)
+    cursor = nil
+    mutations = mutations + 1
+end
 function GetCursorInfo() return cursor and "item", cursor and cursor.itemID end
 function ClearCursor() cursor = nil end
 function CursorHasItem() return cursor ~= nil end
@@ -64,7 +85,10 @@ function GetInventoryItemID(_, slot) return equipment[slot] end
 function GetTime() return clock end
 function GetMoney() return 100 end
 function UnitCreatureID() return target end
-function GetInventoryItemDurability() durabilityReads = durabilityReads + 1; return durability, 100 end
+function GetInventoryItemDurability()
+    durabilityReads = durabilityReads + 1
+    return durability, 100
+end
 function CanMerchantRepair() return true end
 function GetRepairAllCost() return 10, true end
 function RepairAllItems() repairs = repairs + 1 end
@@ -99,19 +123,28 @@ quests[4101] = true
 assert(current() == true, "A deferred abandonment must consume the action handler")
 assert(#abandoned == 0 and advances == 0, "Unknown quest conditions must not abandon or advance")
 assert(questReads == 0, "Unknown quest state must not be interpreted as a native false")
-assert(#rows == 1 and rows[1].id == 4101 and rows[1].text == "LEAVE_QUEST",
-    "The deferred quest instruction remains visible")
+assert(
+    #rows == 1 and rows[1].id == 4101 and rows[1].text == "LEAVE_QUEST",
+    "The deferred quest instruction remains visible"
+)
 APR.startupQuestStatePending = nil
 assert(current() and #abandoned == 1 and abandoned[1] == 4101 and advances == 0)
 assert(current() and advances == 1, "Advance only after the quest is observed absent")
-assert(current() == false and #abandoned == 1 and advances == 1,
-    "The following instruction must not repeat the abandoned action")
+assert(
+    current() == false and #abandoned == 1 and advances == 1,
+    "The following instruction must not repeat the abandoned action"
+)
 
 -- Every quest predicate, including nested alternatives with a true static arm,
 -- must defer effects before native state is consulted. Each known outcome below
 -- is chosen by the fixture, independently of the implementation's evaluator.
 local predicateCases = {
-    { { IsQuestReadyForTurnIn = 4102 }, function() quests[4102], ready[4102] = true, true end },
+    {
+        { IsQuestReadyForTurnIn = 4102 },
+        function()
+            quests[4102], ready[4102] = true, true
+        end,
+    },
     { { IsQuestOnQuest = 4102 }, function() quests[4102] = true end },
     { { IsQuestNotOnQuest = 4102 } },
     { { IsQuestCompleted = 4102 }, function() rewarded[4102] = true end },
@@ -120,9 +153,19 @@ local predicateCases = {
     { { IsOneOfQuestsUncompleted = { 4102, 4103 } } },
     { { IsOneOfQuestsCompletedOnAccount = { 4102, 4103 } }, function() account[4103] = true end },
     { { IsOneOfQuestsUncompletedOnAccount = { 4102, 4103 } } },
-    { { IsQuestsCompleted = { 4102, 4103 } }, function() rewarded[4102], rewarded[4103] = true, true end },
+    {
+        { IsQuestsCompleted = { 4102, 4103 } },
+        function()
+            rewarded[4102], rewarded[4103] = true, true
+        end,
+    },
     { { IsQuestsUncompleted = { 4102, 4103 } }, function() rewarded[4102] = true end },
-    { { IsQuestsCompletedOnAccount = { 4102, 4103 } }, function() account[4102], account[4103] = true, true end },
+    {
+        { IsQuestsCompletedOnAccount = { 4102, 4103 } },
+        function()
+            account[4102], account[4103] = true, true
+        end,
+    },
     { { IsQuestsUncompletedOnAccount = { 4102, 4103 } }, function() account[4102] = true end },
     { { AnyOf = { { Faction = "Alliance" }, { IsQuestOnQuest = 4102 } } } },
     { { AllOf = { { Faction = "Alliance" }, { IsQuestOnQuest = 4102 } } }, function() quests[4102] = true end },
@@ -131,15 +174,21 @@ local predicateCases = {
 }
 for index, case in ipairs(predicateCases) do
     local step = { LeaveQuest = 4101 }
-    for key, value in pairs(case[1]) do step[key] = value end
+    for key, value in pairs(case[1]) do
+        step[key] = value
+    end
     reset(step)
     quests[4101] = true
     if case[2] then case[2]() end
-    assert(current() == true and #abandoned == 0 and advances == 0 and questReads == 0,
-        "Pending predicate must defer abandonment: " .. index)
+    assert(
+        current() == true and #abandoned == 0 and advances == 0 and questReads == 0,
+        "Pending predicate must defer abandonment: " .. index
+    )
     APR.startupQuestStatePending = nil
-    assert(current() and #abandoned == 1 and abandoned[1] == 4101 and advances == 0,
-        "A known positive predicate resumes exactly one abandonment: " .. index)
+    assert(
+        current() and #abandoned == 1 and abandoned[1] == 4101 and advances == 0,
+        "A known positive predicate resumes exactly one abandonment: " .. index
+    )
     assert(current() and advances == 1 and #abandoned == 1)
     -- Inventory mutation has no intrinsic quest dependency, so this also
     -- verifies the conditional gate itself rather than only abandonment's wait.
@@ -147,11 +196,15 @@ for index, case in ipairs(predicateCases) do
     reset(step)
     item()
     if case[2] then case[2]() end
-    assert(current() and mutations == 0 and advances == 0 and questReads == 0
-        and APR.routeActionState == nil, "Pending predicate must defer inventory effects: " .. index)
+    assert(
+        current() and mutations == 0 and advances == 0 and questReads == 0 and APR.routeActionState == nil,
+        "Pending predicate must defer inventory effects: " .. index
+    )
     APR.startupQuestStatePending = nil
-    assert(current() and mutations == 1 and advances == 0 and bags[1] == nil,
-        "Known positive predicate resumes inventory effects: " .. index)
+    assert(
+        current() and mutations == 1 and advances == 0 and bags[1] == nil,
+        "Known positive predicate resumes inventory effects: " .. index
+    )
     assert(current() and mutations == 1 and advances == 1)
 end
 
@@ -161,17 +214,24 @@ for _, condition in ipairs({
     { Not = { IsQuestNotOnQuest = 4102 } },
 }) do
     local step = { DestroyItems = { items = { 4201 } } }
-    for key, value in pairs(condition) do step[key] = value end
-    reset(step); item()
+    for key, value in pairs(condition) do
+        step[key] = value
+    end
+    reset(step)
+    item()
     assert(current() and mutations == 0 and advances == 0)
     APR.startupQuestStatePending = nil
-    assert(current() and mutations == 0 and advances == 0 and bags[1]
-        and APR.routeActionState == nil, "Known negative nested conditions must still suppress effects")
+    assert(
+        current() and mutations == 0 and advances == 0 and bags[1] and APR.routeActionState == nil,
+        "Known negative nested conditions must still suppress effects"
+    )
 end
 
 reset({ LeaveQuest = 4101, LeaveQuests = { 4101, 4103, 4103 }, Note = "Keep this instruction" })
-assert(current() and advances == 0 and questReads == 0 and #rows == 2,
-    "An unknown empty journal must not complete intrinsic abandonment; rows are deduplicated")
+assert(
+    current() and advances == 0 and questReads == 0 and #rows == 2,
+    "An unknown empty journal must not complete intrinsic abandonment; rows are deduplicated"
+)
 quests[4101], quests[4103] = true, true
 APR.startupQuestStatePending = nil
 assert(current() and #abandoned == 2 and abandoned[1] == 4101 and abandoned[2] == 4103)
@@ -179,29 +239,39 @@ assert(current() and advances == 1 and #abandoned == 2)
 reset({ LeaveQuests = { 4101, 4103 } })
 assert(current() and advances == 0)
 APR.startupQuestStatePending = nil
-assert(current() and advances == 1 and #abandoned == 0,
-    "A synchronized empty journal is valid and completes abandonment")
+assert(
+    current() and advances == 1 and #abandoned == 0,
+    "A synchronized empty journal is valid and completes abandonment"
+)
 reset({ LeaveQuest = 4101 })
 APR.currentStep = nil
 assert(current() and advances == 0 and #abandoned == 0)
 quests[4101], APR.startupQuestStatePending = true, nil
 assert(current() and advances == 0 and #abandoned == 1)
-assert(current() and advances == 1 and #abandoned == 1,
-    "Deferred abandonment resumes correctly when the optional UI is absent")
+assert(
+    current() and advances == 1 and #abandoned == 1,
+    "Deferred abandonment resumes correctly when the optional UI is absent"
+)
 
 reset({ LeaveQuest = 4101, UseSpell = { spellID = 4301 } })
 quests[4101] = true
-assert(current() == false and #abandoned == 0 and advances == 0,
-    "An independent mixed primary action keeps its normal rendering fallback")
+assert(
+    current() == false and #abandoned == 0 and advances == 0,
+    "An independent mixed primary action keeps its normal rendering fallback"
+)
 APR.startupQuestStatePending = nil
 assert(current() == false and #abandoned == 1 and advances == 0)
 reset({ LeaveQuest = 4101, UseSpell = { spellID = 4301 }, IsQuestUncompleted = 4102 })
 quests[4101] = true
-assert(current() == true and #abandoned == 0 and #rows == 1,
-    "A conditional mixed action is consumed while unknown, with its instruction visible")
+assert(
+    current() == true and #abandoned == 0 and #rows == 1,
+    "A conditional mixed action is consumed while unknown, with its instruction visible"
+)
 rewarded[4102], APR.startupQuestStatePending = true, nil
-assert(current() == true and #abandoned == 0 and advances == 0,
-    "Re-evaluate changed eligibility before resuming an abandonment")
+assert(
+    current() == true and #abandoned == 0 and advances == 0,
+    "Re-evaluate changed eligibility before resuming an abandonment"
+)
 
 local actionCases = {
     { "DeathSkip", true },
@@ -216,28 +286,42 @@ local actionCases = {
 }
 for _, case in ipairs(actionCases) do
     reset({ [case[1]] = case[2], IsQuestUncompleted = 4102 })
-    item(); equipment[16] = 4201
+    item()
+    equipment[16] = 4201
     local prior = { token = "synthetic:1", complete = true, pending = { marker = "retained" } }
     APR.routeActionState = prior
-    assert(current() == true and advances == 0 and mutations == 0 and buys == 0 and repairs == 0,
-        "All recognized conditional actions must be consumed without effects: " .. case[1])
-    assert(questReads == 0 and #rows == 1 and rows[1].id == case[1]
-        and APR.routeActionState == prior and prior.pending.marker == "retained",
-        "Deferral must render without clearing or replacing existing operation state")
+    assert(
+        current() == true and advances == 0 and mutations == 0 and buys == 0 and repairs == 0,
+        "All recognized conditional actions must be consumed without effects: " .. case[1]
+    )
+    assert(
+        questReads == 0
+            and #rows == 1
+            and rows[1].id == case[1]
+            and APR.routeActionState == prior
+            and prior.pending.marker == "retained",
+        "Deferral must render without clearing or replacing existing operation state"
+    )
     APR.currentStep = nil
-    assert(current() == true and advances == 0 and mutations == 0,
-        "Deferred actions must also work before the optional UI exists")
+    assert(
+        current() == true and advances == 0 and mutations == 0,
+        "Deferred actions must also work before the optional UI exists"
+    )
 end
 
 reset({ DestroyItems = { items = { 4201 } }, Faction = "Alliance" })
 item()
-assert(current() and mutations == 1 and bags[1] == nil and advances == 0,
-    "A static positive condition must not wait for unrelated quest synchronization")
+assert(
+    current() and mutations == 1 and bags[1] == nil and advances == 0,
+    "A static positive condition must not wait for unrelated quest synchronization"
+)
 assert(current() and advances == 1)
 reset({ DestroyItems = { items = { 4201 } }, Faction = "Horde" })
 item()
-assert(current() and mutations == 0 and bags[1] and advances == 0,
-    "A static negative condition must not commit effects or completion")
+assert(
+    current() and mutations == 0 and bags[1] and advances == 0,
+    "A static negative condition must not commit effects or completion"
+)
 reset({ DestroyItems = { items = { 4201 } }, IsQuestUncompleted = 4102 })
 item()
 assert(current() and mutations == 0 and APR.routeActionState == nil)
@@ -249,15 +333,20 @@ assert(current() and advances == 1 and mutations == 1)
 
 -- A linked vendor visit is intrinsically quest-dependent even without filters.
 reset({ SellItems = { items = { 4201 }, equippedSlots = { 16 }, questID = 4102 } })
-item(); equipment[16] = 4201
+item()
+equipment[16] = 4201
 assert(current() and mutations == 0 and advances == 0 and APR.routeActionState == nil and questReads == 0)
 local sale = { saleNeedsRetry = true, pending = { marker = "unmodified" } }
 assert(not APR:ProcessRouteItems("SellItems", steps[1].SellItems, sale))
-assert(sale.saleNeedsRetry and sale.pending.marker == "unmodified" and mutations == 0 and questReads == 0,
-    "Direct linked sales must defer before any persistent snapshot or pending-state mutation")
+assert(
+    sale.saleNeedsRetry and sale.pending.marker == "unmodified" and mutations == 0 and questReads == 0,
+    "Direct linked sales must defer before any persistent snapshot or pending-state mutation"
+)
 rewarded[4102], APR.startupQuestStatePending = true, nil
-assert(current() and advances == 1 and mutations == 0 and bags[1] and equipment[16] == 4201,
-    "A rewarded linked quest resumes by skipping the obsolete sale without selling")
+assert(
+    current() and advances == 1 and mutations == 0 and bags[1] and equipment[16] == 4201,
+    "A rewarded linked quest resumes by skipping the obsolete sale without selling"
+)
 reset({ SellItems = { items = { 4201 }, questID = 4102 } })
 item()
 assert(current() and mutations == 0)
@@ -266,8 +355,7 @@ assert(current() and mutations == 1 and advances == 0 and bags[1] == nil)
 assert(current() and advances == 1 and mutations == 1)
 reset({ SellItems = { items = { 4201 } } })
 item()
-assert(current() and mutations == 1 and questReads == 0,
-    "An unlinked sale remains independent of quest initialization")
+assert(current() and mutations == 1 and questReads == 0, "An unlinked sale remains independent of quest initialization")
 
 -- Event entry points must enforce the same unknown-condition boundary.
 reset({ LearnSkill = { spellID = 4301 }, IsQuestUncompleted = 4102 })
@@ -277,18 +365,23 @@ rewarded[4102], APR.startupQuestStatePending = true, nil
 APR:HandleSkillTrainer(steps[1])
 assert(buys == 0 and APR.routeActionState == nil)
 rewarded[4102] = nil
-APR:HandleSkillTrainer(steps[1]); APR:HandleSkillTrainer(steps[1])
+APR:HandleSkillTrainer(steps[1])
+APR:HandleSkillTrainer(steps[1])
 assert(buys == 1 and known[4301], "Only the now-eligible trainer service is purchased once")
 assert(current() and advances == 1)
 reset({ LearnSkill = { allAvailable = true }, IsQuestUncompleted = 4102 })
 learned = true
 APR:HandleSkillTrainer(steps[1])
-assert(APR.routeActionState == nil and buys == 0,
-    "An unknown condition cannot latch all-services-complete from an empty trainer")
+assert(
+    APR.routeActionState == nil and buys == 0,
+    "An unknown condition cannot latch all-services-complete from an empty trainer"
+)
 learned, APR.startupQuestStatePending = false, nil
 assert(current() and buys == 1 and advances == 0)
-assert(current() and buys == 1 and advances == 1,
-    "The trainer is re-evaluated after synchronization, then completes on observed exhaustion")
+assert(
+    current() and buys == 1 and advances == 1,
+    "The trainer is re-evaluated after synchronization, then completes on observed exhaustion"
+)
 
 reset({ TameBeast = { npcID = 4401 }, IsQuestUncompleted = 4102 })
 APR:HandleTameBeast(steps[1], "UNIT_SPELLCAST_START", "player", 1515)
@@ -308,7 +401,8 @@ rewarded[4102], APR.startupQuestStatePending = true, nil
 APR:HandleSpellETA(steps[1], "player", 4301)
 assert(#timers == 0 and APR.routeActionState == nil)
 rewarded[4102] = nil
-APR:HandleSpellETA(steps[1], "player", 4301); APR:HandleSpellETA(steps[1], "player", 4301)
+APR:HandleSpellETA(steps[1], "player", 4301)
+APR:HandleSpellETA(steps[1], "player", 4301)
 assert(#timers == 1 and timers[1] == 17 and APR.routeActionState.timerStarted)
 
 reset({ Repair = { npcID = 4401 }, IsQuestUncompleted = 4102 })
@@ -341,18 +435,27 @@ assert(current() and mutations == 0 and APR.routeActionState == oldState)
 steps[2] = { DestroyItems = { items = { 4202 } }, IsQuestUncompleted = 4103 }
 APRData.player.synthetic = 2
 bags[2], APR.startupQuestStatePending = { itemID = 4202, stackCount = 1 }, nil
-assert(current() and mutations == 1 and bags[1].itemID == 4201 and bags[2] == nil
-    and APR.routeActionState ~= oldState and APR.routeActionState.token == "synthetic:2")
+assert(
+    current()
+        and mutations == 1
+        and bags[1].itemID == 4201
+        and bags[2] == nil
+        and APR.routeActionState ~= oldState
+        and APR.routeActionState.token == "synthetic:2"
+)
 assert(current() and advances == 1 and APRData.player.synthetic == 3 and mutations == 1)
 
 -- RouteActions also loads in small modules/fixtures without RouteUtils or UI.
 local pendingHelper, filters = APR.HasPendingStartupQuestConditions, APR.AreConditionalFiltersMet
 APR.HasPendingStartupQuestConditions, APR.AreConditionalFiltersMet = nil, nil
 reset({ DestroyItems = { items = { 4201 } } })
-item(); APR.currentStep = nil
+item()
+APR.currentStep = nil
 assert(current() and mutations == 1 and advances == 0)
 assert(current() and advances == 1)
 assert(APR:HandleRouteAction(nil) == false and APR:HandleRouteAction({ Note = "Ordinary" }) == false)
 APR.HasPendingStartupQuestConditions, APR.AreConditionalFiltersMet = pendingHelper, filters
 
-print("Startup action conditions: unknown predicates, native effects, intrinsic dependencies, UI and state resume passed")
+print(
+    "Startup action conditions: unknown predicates, native effects, intrinsic dependencies, UI and state resume passed"
+)

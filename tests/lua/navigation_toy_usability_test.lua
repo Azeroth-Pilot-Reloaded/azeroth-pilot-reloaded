@@ -3,12 +3,17 @@ local toyID = 253629
 local owned, usable, cooldown, bagQueries = true, true, false, 0
 local secret = {}
 APR = {}
-function LibStub() return { GetLocale = function() return {} end } end
+function LibStub()
+    return { GetLocale = function() return {} end }
+end
 function PlayerHasToy(id) return owned and id == toyID end
 function APR:CanAccessValue(value) return value ~= secret end
 C_ToyBox = { IsToyUsable = function() return usable end }
 C_Item = {
-    GetItemCount = function() bagQueries = bagQueries + 1; return 0 end,
+    GetItemCount = function()
+        bagQueries = bagQueries + 1
+        return 0
+    end,
     IsUsableItem = function() return true end,
     GetItemCooldown = function() return cooldown and 10 or 0, cooldown and 900 or 0, 1 end,
 }

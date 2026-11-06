@@ -2,7 +2,12 @@ APR = {}
 dofile("tests/lua/dungeon_data_test_env.lua")
 local function dataOnly(value)
     assert(type(value) ~= "function", "Catalogs must contain data only")
-    if type(value) == "table" then for k, v in pairs(value) do dataOnly(k); dataOnly(v) end end
+    if type(value) == "table" then
+        for k, v in pairs(value) do
+            dataOnly(k)
+            dataOnly(v)
+        end
+    end
 end
 dataOnly(APR.DungeonData)
 dataOnly(APR.DungeonNPCJournal)
@@ -21,15 +26,23 @@ for flavor, catalog in pairs(APR.DungeonData) do
             assert(data.encounterNames[encounter], "Mapped encounter must have source metadata")
             if type(ids) == "number" then ids = { ids } end
             assert(#ids > 0)
-            for _, npc in ipairs(ids) do assert(data.bosses[npc], "Encounter credit must belong to the instance") end
+            for _, npc in ipairs(ids) do
+                assert(data.bosses[npc], "Encounter credit must belong to the instance")
+            end
         end
-        for _, canonical in pairs(data.bossAliases or {}) do assert(data.bosses[canonical]) end
+        for _, canonical in pairs(data.bossAliases or {}) do
+            assert(data.bosses[canonical])
+        end
     end
     assert(count > 0, "An enabled client needs a nonempty instance catalog: " .. flavor)
 end
 
-function LibStub() return { GetLocale = function() return {} end } end
-function CreateFrame() return { RegisterEvent = function() end, SetScript = function() end } end
+function LibStub()
+    return { GetLocale = function() return {} end }
+end
+function CreateFrame()
+    return { RegisterEvent = function() end, SetScript = function() end }
+end
 APR.PlayerID, APR.ActiveRoute = "one", "raid"
 APRData = { one = {} }
 local inside, kind, instance = true, "raid", 409

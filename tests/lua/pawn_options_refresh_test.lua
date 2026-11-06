@@ -4,7 +4,9 @@ function env.methods:GetScript(event) return self.scripts[event] end
 function env.methods:IsVisible() return self:IsShown() and (not self.parent or self.parent:IsVisible()) end
 local now, timers, inSetter = 0, {}, false
 function securecallfunction(fn, ...) return fn(...) end
-function geterrorhandler() return function(message) error(message) end end
+function geterrorhandler()
+    return function(message) error(message) end
+end
 function CloseSpecialWindows() end
 local originalXpcall = xpcall
 function xpcall(fn, handler, ...)
@@ -12,24 +14,39 @@ function xpcall(fn, handler, ...)
     return originalXpcall(function() return fn(unpack(arguments)) end, handler)
 end
 table.wipe, strmatch = wipe, string.match
-C_Timer = { NewTimer = function(delay, callback)
-    local timer = { at = now + delay, callback = callback,
-        Cancel = function(self) self.cancelled = true end }
-    timers[#timers + 1] = timer
-    return timer
-end }
+C_Timer = {
+    NewTimer = function(delay, callback)
+        local timer = { at = now + delay, callback = callback, Cancel = function(self) self.cancelled = true end }
+        timers[#timers + 1] = timer
+        return timer
+    end,
+}
 
 LibStub = nil
 dofile("APR-Core/libs/HereBeDragons/LibStub/LibStub.lua")
 dofile("APR-Core/libs/HereBeDragons/CallbackHandler-1.0/CallbackHandler-1.0.lua")
-local strings = { REWARD_WEIGHT_SCALE_DESC = "Choose a scale", REWARD_WEIGHT_DEFAULT_DESC = "APR: %s",
-    REWARD_PAWN_UNAVAILABLE = "Unavailable: %s" }
+local strings = {
+    REWARD_WEIGHT_SCALE_DESC = "Choose a scale",
+    REWARD_WEIGHT_DEFAULT_DESC = "APR: %s",
+    REWARD_PAWN_UNAVAILABLE = "Unavailable: %s",
+}
 local locale = LibStub:NewLibrary("AceLocale-3.0", 1)
 function locale:GetLocale() return strings end
 
 local controlMethods = {}
-for _, method in ipairs({ "SetLabel", "SetTitle", "SetLayout", "PauseLayout", "ResumeLayout",
-    "DoLayout", "PerformLayout", "SetWidth", "SetStatusTable", "SetFontObject", "SetDisabled" }) do
+for _, method in ipairs({
+    "SetLabel",
+    "SetTitle",
+    "SetLayout",
+    "PauseLayout",
+    "ResumeLayout",
+    "DoLayout",
+    "PerformLayout",
+    "SetWidth",
+    "SetStatusTable",
+    "SetFontObject",
+    "SetDisabled",
+}) do
     controlMethods[method] = function() end
 end
 function controlMethods:SetUserData(key, value) self.user[key] = value end
@@ -60,15 +77,26 @@ local function advance(seconds)
     for _ = 1, 100 do
         local nextTimer
         for _, timer in ipairs(timers) do
-            if not timer.cancelled and not timer.fired and timer.at <= untilTime
-                and (not nextTimer or timer.at < nextTimer.at) then nextTimer = timer end
+            if
+                not timer.cancelled
+                and not timer.fired
+                and timer.at <= untilTime
+                and (not nextTimer or timer.at < nextTimer.at)
+            then
+                nextTimer = timer
+            end
         end
         if nextTimer then
             now, nextTimer.fired = nextTimer.at, true
             nextTimer.callback()
         else
             local update = dialog.frame:GetScript("OnUpdate")
-            if update then update(dialog.frame) else now = untilTime; return end
+            if update then
+                update(dialog.frame)
+            else
+                now = untilTime
+                return
+            end
         end
     end
     error("A settings refresh cannot keep scheduling itself")
@@ -82,8 +110,8 @@ function APR:NewModule()
 end
 APR.RewardScoring = { GetProfileDescription = function() return "Synthetic class" end }
 UnitClass = function() return "Synthetic class", "FIXTURE", 8 end
-C_SpecializationInfo = { GetSpecialization = function() return 1 end,
-    GetSpecializationInfo = function() return 901 end }
+C_SpecializationInfo =
+    { GetSpecialization = function() return 1 end, GetSpecializationInfo = function() return 901 end }
 function hooksecurefunc(name, callback)
     local previous = _G[name]
     _G[name] = function(...)
@@ -96,7 +124,9 @@ PawnCommon = { Scales = { Existing = { Values = { Intellect = 2 }, ClassID = 8 }
 function PawnIsReady() return true end
 function PawnGetAllScalesEx()
     local result = {}
-    for name in pairs(PawnCommon.Scales) do result[#result + 1] = { Name = name, LocalizedName = name } end
+    for name in pairs(PawnCommon.Scales) do
+        result[#result + 1] = { Name = name, LocalizedName = name }
+    end
     return result
 end
 function PawnGetAllStatValues(name) return PawnCommon.Scales[name].Values end
@@ -109,22 +139,33 @@ dofile("APR-Core/ui/panels/OptionsPanel.lua")
 local pawn, panel = APR.PawnRewards, APR.OptionsPanel
 pawn:OnEnable()
 local app = "Fixture/Options/rewards"
-registry:RegisterOptionsTable(app, { type = "group", name = "Synthetic rewards", args = {
-    scale = { type = "select", order = 1, name = "Scale", values = function() return pawn:GetScaleOptions() end,
-        get = function() return pawn:GetSelectedScale() end,
-        set = function(_, value)
-            inSetter = true
-            pawn:SetSelectedScale(value)
-            inSetter = false
-        end },
-    status = { type = "description", order = 2, name = function() return pawn:GetStatusText() end },
-} })
+registry:RegisterOptionsTable(app, {
+    type = "group",
+    name = "Synthetic rewards",
+    args = {
+        scale = {
+            type = "select",
+            order = 1,
+            name = "Scale",
+            values = function() return pawn:GetScaleOptions() end,
+            get = function() return pawn:GetSelectedScale() end,
+            set = function(_, value)
+                inSetter = true
+                pawn:SetSelectedScale(value)
+                inSetter = false
+            end,
+        },
+        status = { type = "description", order = 2, name = function() return pawn:GetStatusText() end },
+    },
+})
 panel.frame = CreateFrame("Frame")
 panel.host = control("APRSettingsHost")
 panel.view = { app = app }
 dialog:Open(app, panel.host)
-assert(not dialog.OpenFrames[app] and not dialog.BlizOptions[app],
-    "The custom APR host is deliberately outside AceConfig's standard window registry")
+assert(
+    not dialog.OpenFrames[app] and not dialog.BlizOptions[app],
+    "The custom APR host is deliberately outside AceConfig's standard window registry"
+)
 local function visible()
     local dropdown, status
     local function visit(parent)
@@ -148,22 +189,32 @@ assert(dropdown.values["pawn:Imported"], "An import must refresh the existing re
 dropdown.callbacks.OnValueChanged(dropdown, "OnValueChanged", "pawn:Imported")
 advance(0)
 dropdown, status = visible()
-assert(dropdown.value == "pawn:Imported" and status:find("Imported", 1, true),
-    "A choice must refresh the displayed selection and status together")
+assert(
+    dropdown.value == "pawn:Imported" and status:find("Imported", 1, true),
+    "A choice must refresh the displayed selection and status together"
+)
 PawnDeleteScale("Imported")
 advance(1)
 dropdown, status = visible()
-assert(not dropdown.values["pawn:Imported"] and dropdown.value == "apr" and status == "APR: Synthetic class",
-    "Deletion publishes the fallback without closing the current page")
+assert(
+    not dropdown.values["pawn:Imported"] and dropdown.value == "apr" and status == "APR: Synthetic class",
+    "Deletion publishes the fallback without closing the current page"
+)
 
 -- Bursts coalesce, and getters never trigger a self-sustaining rebuild.
 local releases = panel.host.releases
-for _ = 1, 20 do pawn:NotifyOptions() end
+for _ = 1, 20 do
+    pawn:NotifyOptions()
+end
 assert(panel.host.releases == releases, "Notifications leave the current control alive until the callback returns")
 advance(0)
 assert(panel.host.releases == releases + 1, "One burst causes one deferred reconstruction")
 releases = panel.host.releases
-for _ = 1, 20 do pawn:GetScaleOptions(); pawn:GetSelectedScale(); pawn:GetStatusText() end
+for _ = 1, 20 do
+    pawn:GetScaleOptions()
+    pawn:GetSelectedScale()
+    pawn:GetStatusText()
+end
 advance(1)
 assert(panel.host.releases == releases, "Reading values cannot schedule another refresh")
 

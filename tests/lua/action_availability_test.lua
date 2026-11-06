@@ -1,10 +1,17 @@
 local L = {
-    ACTION_ITEM_MISSING = "Item missing", ACTION_SPELL_UNKNOWN = "Spell not learned",
-    ACTION_COOLDOWN = "On cooldown", ACTION_AVAILABLE_IN = "Available in %s",
+    ACTION_ITEM_MISSING = "Item missing",
+    ACTION_SPELL_UNKNOWN = "Spell not learned",
+    ACTION_COOLDOWN = "On cooldown",
+    ACTION_AVAILABLE_IN = "Available in %s",
 }
-function LibStub() return { GetLocale = function() return L end } end
-local secret = setmetatable({}, { __tostring = function() error("Formatted a secret") end,
-    __lt = function() error("Compared a secret") end, __le = function() error("Compared a secret") end })
+function LibStub()
+    return { GetLocale = function() return L end }
+end
+local secret = setmetatable({}, {
+    __tostring = function() error("Formatted a secret") end,
+    __lt = function() error("Compared a secret") end,
+    __le = function() error("Compared a secret") end,
+})
 APR = { CanAccessValue = function(_, value) return not rawequal(value, secret) end }
 dofile("APR-Core/utils/PlayerUtils.lua")
 local reason
@@ -28,9 +35,15 @@ assert(APR:GetActionAvailabilityText("spell", 1) == "Spell not learned")
 reason = nil
 cooldown.startTime = secret
 assert(APR:GetActionAvailabilityText("spell", 1, true) == "On cooldown")
-assert(APR:GetActionAvailabilityText("item", 1, true) == nil, "Restricted timing alone does not prove an active cooldown")
+assert(
+    APR:GetActionAvailabilityText("item", 1, true) == nil,
+    "Restricted timing alone does not prove an active cooldown"
+)
 cooldown.isActive = false
-assert(APR:GetActionAvailabilityText("spell", 1, true) == nil, "The public inactive flag takes precedence over secret timing")
+assert(
+    APR:GetActionAvailabilityText("spell", 1, true) == nil,
+    "The public inactive flag takes precedence over secret timing"
+)
 cooldown.isActive = true
 cooldown.startTime, cooldown.duration = 100, secret
 assert(APR:GetActionAvailabilityText("spell", 1, true) == "On cooldown")
@@ -60,7 +73,9 @@ local button = row.IconButton
 assert(row.font:GetText():find("Use item\nItem missing", 1, true))
 assert(row.objectiveText == "Use item" and button.attributes.item == "item:1")
 local layouts = env.layouts()
-for _ = 1, 20 do step:UpdateStepButtonUsability() end
+for _ = 1, 20 do
+    step:UpdateStepButtonUsability()
+end
 assert(env.layouts() == layouts, "Unchanged availability must not relayout the guide")
 status = "On cooldown"
 step:UpdateStepButtonUsability()
@@ -69,4 +84,6 @@ status = nil
 step:UpdateStepButtonUsability()
 assert(not row.font:GetText():find("cooldown") and row.objectiveText == "Use item")
 assert(row.IconButton == button and button.attributes.item == "item:1")
-print("Action availability: missing/unknown, cooldown expiry, secret timing, live row refresh and stable buttons passed")
+print(
+    "Action availability: missing/unknown, cooldown expiry, secret timing, live row refresh and stable buttons passed"
+)

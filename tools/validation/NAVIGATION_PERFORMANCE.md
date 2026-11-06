@@ -53,15 +53,15 @@ It emits JSON with creation cost, total median time, slice percentiles, maximum
 slice time and API counters. Timings are observations, so the script has no
 pass/fail timing threshold.
 
-| Scenario | Total median | Median slices | Slice p95 | Maximum slice |
-| --- | ---: | ---: | ---: | ---: |
-| 4,000 taxi paths, cold cache | 18.967 ms | 21 | 0.937 ms | 1.104 ms |
-| Same taxi graph, warm cache | 0.118 ms | 1 | 0.112 ms | 0.112 ms |
-| Retail catalogue, cold cache | 4.823 ms | 6 | 0.942 ms | 1.099 ms |
-| Retail catalogue, warm cache | 3.619 ms | 4 | 0.914 ms | 0.915 ms |
-| Forever catalogue, cold cache | 0.654 ms | 1 | 0.675 ms | 0.682 ms |
-| Forever catalogue, warm cache | 0.359 ms | 1 | 0.400 ms | 0.412 ms |
-| 1,200-edge search across 20 world instances | 49.628 ms | 55 | 0.907 ms | 0.940 ms |
+| Scenario                                    | Total median | Median slices | Slice p95 | Maximum slice |
+| ------------------------------------------- | -----------: | ------------: | --------: | ------------: |
+| 4,000 taxi paths, cold cache                |    18.967 ms |            21 |  0.937 ms |      1.104 ms |
+| Same taxi graph, warm cache                 |     0.118 ms |             1 |  0.112 ms |      0.112 ms |
+| Retail catalogue, cold cache                |     4.823 ms |             6 |  0.942 ms |      1.099 ms |
+| Retail catalogue, warm cache                |     3.619 ms |             4 |  0.914 ms |      0.915 ms |
+| Forever catalogue, cold cache               |     0.654 ms |             1 |  0.675 ms |      0.682 ms |
+| Forever catalogue, warm cache               |     0.359 ms |             1 |  0.400 ms |      0.412 ms |
+| 1,200-edge search across 20 world instances |    49.628 ms |            55 |  0.907 ms |      0.940 ms |
 
 The catalogue rows were measured again after the travel-data review, with 655
 Retail and 64 Forever definitions. These are authored records, not a count of
@@ -85,12 +85,12 @@ The two client captures supplied on 21 October covered the same authored
 objective. The idle capture lasted 272.516 seconds; the movement capture lasted
 45.506 seconds. Complete function tracing was enabled in both.
 
-| Observation | Idle | Moving |
-| --- | ---: | ---: |
-| Planner jobs created | 0 | 14 |
-| Planner jobs cancelled | 0 | 8 |
-| Planning slices | 0 | 1,760 |
-| Taxi probe candidate evaluations | 0 | 27,578 |
+| Observation                      |     Idle |   Moving |
+| -------------------------------- | -------: | -------: |
+| Planner jobs created             |        0 |       14 |
+| Planner jobs cancelled           |        0 |        8 |
+| Planning slices                  |        0 |    1,760 |
+| Taxi probe candidate evaluations |        0 |   27,578 |
 | Median sampled APR CPU per frame | 0.152 ms | 1.185 ms |
 
 The moving capture spent 1,691.779 ms inside planning slices. Inclusive parent
@@ -116,10 +116,10 @@ The regression scenarios now verify:
 The taxi benchmark now includes nearby-objective probes. A paired five-run
 comparison, with the same 4,000 paths and warm static index, measured:
 
-| Probe | Previous operations | Current operations | Previous median | Current median |
-| --- | ---: | ---: | ---: | ---: |
-| 25-second candidate route | 4,001 | 221 | 5.912 ms | 0.270 ms |
-| 5-second candidate route | 4,001 | 1 | 6.214 ms | 0.016 ms |
+| Probe                     | Previous operations | Current operations | Previous median | Current median |
+| ------------------------- | ------------------: | -----------------: | --------------: | -------------: |
+| 25-second candidate route |               4,001 |                221 |        5.912 ms |       0.270 ms |
+| 5-second candidate route  |               4,001 |                  1 |        6.214 ms |       0.016 ms |
 
 The planner skips creating the second probe entirely because boarding alone
 takes longer. Longer probes reject groups of departures before inspecting their
@@ -308,12 +308,12 @@ teleports from a separate world and 80 mainland positions, with Lua 5.1 and a
 0.9 ms provider slice. The optimum remained 146.666667 seconds, including the
 selected teleport and final walk.
 
-| Measurement | Before | After |
-| --- | ---: | ---: |
-| Operations | 208,686 | 5,625 |
-| Action availability queries | 25,938 | 18 |
-| Median total computation | 127.716 ms | 8.669 ms |
-| Median scheduled slices | 141 | 10 |
+| Measurement                 |     Before |    After |
+| --------------------------- | ---------: | -------: |
+| Operations                  |    208,686 |    5,625 |
+| Action availability queries |     25,938 |       18 |
+| Median total computation    | 127.716 ms | 8.669 ms |
+| Median scheduled slices     |        141 |       10 |
 
 Reproduce the current result with
 `python tools/validation/benchmark_navigation.py --scenario actions --runs 5`.

@@ -3,20 +3,20 @@ name: Release Addon
 on:
   # Automatic alpha releases are paused. Uncomment branches and schedule to re-enable them.
   push:
-  #   branches:
-  #     - '**'
-  #     # Automation can push using a personal token, so also exclude its branches.
-  #     - '!interface-version'
-  #     - '!automation/**'
+    #   branches:
+    #     - '**'
+    #     # Automation can push using a personal token, so also exclude its branches.
+    #     - '!interface-version'
+    #     - '!automation/**'
     tags:
-      - '**'
+      - "**"
   # Catch up on default-branch changes skipped during the alpha cooldown.
   # schedule:
   #   - cron: '17 * * * *'
   workflow_dispatch:
     inputs:
       tag:
-        description: 'Tag to release (leave empty to force an alpha on the selected branch)'
+        description: "Tag to release (leave empty to force an alpha on the selected branch)"
         required: false
         type: string
 
@@ -78,4 +78,3 @@ jobs:
         uses: BigWigsMods/packager@v2.6.1
         with:
           args: -p 618667 -w 26457 -a XKq9xXKy
-

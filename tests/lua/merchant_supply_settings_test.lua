@@ -2,10 +2,14 @@ dofile("tests/lua/route_ui_test_env.lua")
 dofile("tests/lua/localization_test_env.lua")
 local stub, defaults = LibStub
 function LibStub(name, ...)
-    if name == "AceDB-3.0" then return { New = function(_, _, value)
-        defaults = value
-        return { profile = value.profile, char = value.char, global = {}, RegisterCallback = function() end }
-    end } end
+    if name == "AceDB-3.0" then
+        return {
+            New = function(_, _, value)
+                defaults = value
+                return { profile = value.profile, char = value.char, global = {}, RegisterCallback = function() end }
+            end,
+        }
+    end
     if name == "AceConfig-3.0" then return { RegisterOptionsTable = function() end } end
     if name == "AceDBOptions-3.0" then return { GetOptionsTable = function() return { args = {} } end } end
     return stub(name, ...)
@@ -33,13 +37,18 @@ for _, category in ipairs(APR.WorkspaceOptions:Build(APR.settings)) do
         end
     end
 end
-assert(option and option.type == "toggle" and option.get({ "autoBuySupplies" }) == false,
-    "Automation must expose the disabled supply option")
+assert(
+    option and option.type == "toggle" and option.get({ "autoBuySupplies" }) == false,
+    "Automation must expose the disabled supply option"
+)
 local resumes, current = 0, { BuyMerchant = { { itemID = 1, quantity = 3, isSupply = true } } }
 APR.GetCurrentStep = function() return current end
-APR.npcInteraction = { HandleMerchantPurchase = function(_, step)
-    assert(step == current); resumes = resumes + 1
-end }
+APR.npcInteraction = {
+    HandleMerchantPurchase = function(_, step)
+        assert(step == current)
+        resumes = resumes + 1
+    end,
+}
 option.set({ "autoBuySupplies" }, true)
 assert(APR.settings.profile.autoBuySupplies and resumes == 0, "Changing settings away from a merchant cannot buy")
 APR.routeMerchantOpen = true

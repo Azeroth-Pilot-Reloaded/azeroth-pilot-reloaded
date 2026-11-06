@@ -30,8 +30,17 @@ local function GlobalMethod(group, method)
 end
 
 local function SamePosition(a, b)
-    return a and b and Finite(a.mapID) and Finite(b.mapID) and a.mapID == b.mapID and Finite(a.x) and Finite(a.y)
-        and Finite(b.x) and Finite(b.y) and math.abs(a.x - b.x) < 0.0005 and math.abs(a.y - b.y) < 0.0005
+    return a
+        and b
+        and Finite(a.mapID)
+        and Finite(b.mapID)
+        and a.mapID == b.mapID
+        and Finite(a.x)
+        and Finite(a.y)
+        and Finite(b.x)
+        and Finite(b.y)
+        and math.abs(a.x - b.x) < 0.0005
+        and math.abs(a.y - b.y) < 0.0005
 end
 
 local function NativeWaypoint(instance)
@@ -55,10 +64,14 @@ local function NativeSourceEnabled(instance)
 end
 
 local function RelevantTracking(instance, target)
-    if instance.env.isWaypointTrackingRelevant then return Call(instance.env.isWaypointTrackingRelevant, target) == true end
+    if instance.env.isWaypointTrackingRelevant then
+        return Call(instance.env.isWaypointTrackingRelevant, target) == true
+    end
     if Call(GlobalMethod("C_SuperTrack", "IsSuperTrackingAnything")) ~= true then return false end
-    local x, y = Call(GlobalMethod("C_Navigation", "GetNextWaypointForMap")
-        or GlobalMethod("C_SuperTrack", "GetNextWaypointForMap"), target.mapID)
+    local x, y = Call(
+        GlobalMethod("C_Navigation", "GetNextWaypointForMap") or GlobalMethod("C_SuperTrack", "GetNextWaypointForMap"),
+        target.mapID
+    )
     return SamePosition(target, { mapID = target.mapID, x = x, y = y })
 end
 
@@ -74,8 +87,12 @@ local function NavigationAPI(instance)
         api = rawget(_G, "WaypointUIAPI")
     end
     local navigation = type(api) == "table" and api.Navigation
-    if type(navigation) ~= "table" or type(navigation.NewUserNavigation) ~= "function"
-        or type(navigation.GetUserNavigation) ~= "function" or type(navigation.ClearUserNavigation) ~= "function" then
+    if
+        type(navigation) ~= "table"
+        or type(navigation.NewUserNavigation) ~= "function"
+        or type(navigation.GetUserNavigation) ~= "function"
+        or type(navigation.ClearUserNavigation) ~= "function"
+    then
         return nil, "waypoint_ui_unavailable"
     end
     return navigation
@@ -108,19 +125,29 @@ local function MapPosition(instance, position, anyMap)
         local info = Call(instance.env.getMapInfo or GlobalMethod("C_Map", "GetMapInfo"), mapID)
         local parent = info and info.parentMapID
         if not MapID(parent) then return nil, "projection_unavailable" end
-        local minX, maxX, minY, maxY = Call(instance.env.getMapRectOnMap
-            or GlobalMethod("C_Map", "GetMapRectOnMap"), mapID, parent)
+        local minX, maxX, minY, maxY =
+            Call(instance.env.getMapRectOnMap or GlobalMethod("C_Map", "GetMapRectOnMap"), mapID, parent)
         if Finite(minX) and Finite(maxX) and Finite(minY) and Finite(maxY) and maxX > minX and maxY > minY then
             mapID, x, y = parent, minX + x * (maxX - minX), minY + y * (maxY - minY)
         else
             if not world then
                 local worldID, worldX, worldY
-                if mapSpace and instance.env.mapToWorld then worldID, worldX, worldY = Call(instance.env.mapToWorld, mapID, x, y)
-                elseif not mapSpace then worldID, worldX, worldY = position.instanceID, position.x, position.y end
+                if mapSpace and instance.env.mapToWorld then
+                    worldID, worldX, worldY = Call(instance.env.mapToWorld, mapID, x, y)
+                elseif not mapSpace then
+                    worldID, worldX, worldY = position.instanceID, position.x, position.y
+                end
                 world = { instanceID = worldID, x = worldX, y = worldY }
             end
-            if not world or not Finite(world.instanceID) or not Finite(world.x)
-                or not Finite(world.y) or not instance.env.worldToMap then return nil, "projection_unavailable" end
+            if
+                not world
+                or not Finite(world.instanceID)
+                or not Finite(world.x)
+                or not Finite(world.y)
+                or not instance.env.worldToMap
+            then
+                return nil, "projection_unavailable"
+            end
             mapID, x, y = Call(instance.env.worldToMap, world.instanceID, world.x, world.y, parent)
             if mapID ~= parent or not Finite(x) or not Finite(y) or x < 0 or x > 1 or y < 0 or y > 1 then
                 return nil, "projection_unavailable"
@@ -131,16 +158,23 @@ local function MapPosition(instance, position, anyMap)
 end
 
 local function SameRequest(a, b)
-    if a.mapID ~= b.mapID or a.x ~= b.x or a.y ~= b.y or a.suppressAudio ~= b.suppressAudio
-        or a.token ~= b.token then return false end
-    for _, key in ipairs(visualKeys) do if a[key] ~= b[key] then return false end end
+    if a.mapID ~= b.mapID or a.x ~= b.x or a.y ~= b.y or a.suppressAudio ~= b.suppressAudio or a.token ~= b.token then
+        return false
+    end
+    for _, key in ipairs(visualKeys) do
+        if a[key] ~= b[key] then return false end
+    end
     return true
 end
 
 local function OwnsWaypoint(state, current)
     local point = state.point
-    return current == state.session and type(current) == "table" and current.flags == state.flag
-        and current.mapID == point.mapID and current.x == point.x and current.y == point.y
+    return current == state.session
+        and type(current) == "table"
+        and current.flags == state.flag
+        and current.mapID == point.mapID
+        and current.x == point.x
+        and current.y == point.y
 end
 
 local ClearWaypoint
@@ -152,7 +186,9 @@ local function PublishWaypoint(self, position, options, automatic)
     local api
     api, reason = NavigationAPI(self)
     if not api then return nil, reason end
-    for _, key in ipairs(visualKeys) do request[key] = options[key] end
+    for _, key in ipairs(visualKeys) do
+        request[key] = options[key]
+    end
     request.name = request.name or position.title or self:GetText("RUN_WAYPOINT")
     request.token = options.token or position.token
     request.suppressAudio = options.suppressAudio ~= false
@@ -171,16 +207,22 @@ local function PublishWaypoint(self, position, options, automatic)
         end
         local token = request.token or automatic.target
         if self.waypointDismissedToken == token then return nil, "waypoint_replaced" end
-        if NativeSourceEnabled(self) then ClearWaypoint(self); return nil, "waypoint_native_source" end
+        if NativeSourceEnabled(self) then
+            ClearWaypoint(self)
+            return nil, "waypoint_native_source"
+        end
         if state then
             local native = NativeWaypoint(self)
-            if (native and not SamePosition(native, state.session) and not PathTracked(api))
-                or state.session.superTracked == false then
+            if
+                (native and not SamePosition(native, state.session) and not PathTracked(api))
+                or state.session.superTracked == false
+            then
                 self.waypointDismissedToken = token
                 ClearWaypoint(self)
                 return nil, "waypoint_replaced"
             end
-        elseif current or NativeWaypoint(self) then return nil, "waypoint_occupied"
+        elseif current or NativeWaypoint(self) then
+            return nil, "waypoint_occupied"
         elseif RelevantTracking(self, { mapID = request.mapID, x = request.x / 100, y = request.y / 100 }) then
             return nil, "waypoint_already_tracked"
         end
@@ -206,13 +248,20 @@ local function PublishWaypoint(self, position, options, automatic)
     request.flags = self.waypointUIFlag
     -- Keep our comparison independent from provider mutations of its input.
     local savedRequest = {}
-    for key, value in pairs(request) do savedRequest[key] = value end
+    for key, value in pairs(request) do
+        savedRequest[key] = value
+    end
     local ok, point = pcall(api.NewUserNavigation, request)
     if not ok then return nil, "waypoint_ui_error" end
     if type(point) ~= "table" then return nil, "waypoint_rejected" end
-    self.waypointUI = { api = api, flag = self.waypointUIFlag, request = savedRequest, session = point,
+    self.waypointUI = {
+        api = api,
+        flag = self.waypointUIFlag,
+        request = savedRequest,
+        session = point,
         token = request.token or (automatic and automatic.target),
-        point = { mapID = point.mapID, x = point.x, y = point.y } }
+        point = { mapID = point.mapID, x = point.x, y = point.y },
+    }
     return point
 end
 
@@ -252,11 +301,18 @@ local function PublishSegment(self, segment, options, automatic)
         return nil, reason or "no_waypoint"
     end
     local source, target = segment.from, segment.to
-    local walking = segment.kind == "walk" or (segment.kind == "passage"
-        and type(source) == "table" and type(target) == "table"
-        and source.instanceID ~= nil and source.instanceID == target.instanceID)
+    local walking = segment.kind == "walk"
+        or (
+            segment.kind == "passage"
+            and type(source) == "table"
+            and type(target) == "table"
+            and source.instanceID ~= nil
+            and source.instanceID == target.instanceID
+        )
     local output = {}
-    for key, value in pairs(options or {}) do output[key] = value end
+    for key, value in pairs(options or {}) do
+        output[key] = value
+    end
     output.name = output.name or segment.instruction
     local point = source
     if walking then point = target end
@@ -285,10 +341,16 @@ function Instance:SetWaypoint(position, options)
         if reason == "waypoint_combat" then return nil, reason end
         if self.ClearManualAzerothWaypoint then
             local _, cleanupReason = self:ClearManualAzerothWaypoint()
-            if cleanupReason then self.waypointAWPending = true; return nil, cleanupReason end
+            if cleanupReason then
+                self.waypointAWPending = true
+                return nil, cleanupReason
+            end
         end
         local released, cleanupReason = self:ReleaseAzerothWaypoint()
-        if not released then self.waypointAWPending = true; return nil, cleanupReason end
+        if not released then
+            self.waypointAWPending = true
+            return nil, cleanupReason
+        end
     end
     local point, reason = PublishWaypoint(self, position, options)
     if point then ManualOverride(self) end
@@ -331,7 +393,9 @@ local positionKeys = { "space", "mapID", "uiMapID", "instanceID", "x", "y", "z",
 local function PositionSnapshot(position)
     if type(position) ~= "table" then return position end
     local result = {}
-    for _, key in ipairs(positionKeys) do result[key] = position[key] end
+    for _, key in ipairs(positionKeys) do
+        result[key] = position[key]
+    end
     return result
 end
 
@@ -347,20 +411,31 @@ function Instance:GetWaypointMapTarget(target, options)
     local position = target
     if IsSegment(target) then
         local source, destination = target.from, target.to
-        local walking = target.kind == "walk" or (target.kind == "passage"
-            and type(source) == "table" and type(destination) == "table"
-            and source.instanceID ~= nil and source.instanceID == destination.instanceID)
+        local walking = target.kind == "walk"
+            or (
+                target.kind == "passage"
+                and type(source) == "table"
+                and type(destination) == "table"
+                and source.instanceID ~= nil
+                and source.instanceID == destination.instanceID
+            )
         position = source
         if walking then position = destination end
     end
     local point, reason = MapPosition(self, position, true)
     if not point then return nil, reason end
     local normalized = {}
-    for key, value in pairs(target) do normalized[key] = value end
+    for key, value in pairs(target) do
+        normalized[key] = value
+    end
     normalized.from, normalized.to = nil, nil
     normalized.space, normalized.uiMapID = "map", point.mapID
     normalized.mapID, normalized.x, normalized.y = point.mapID, point.x / 100, point.y / 100
-    normalized.title = options.title or target.title or options.name or target.instruction or self:GetText("RUN_WAYPOINT")
+    normalized.title = options.title
+        or target.title
+        or options.name
+        or target.instruction
+        or self:GetText("RUN_WAYPOINT")
     normalized.subtext, normalized.token = options.subtext or target.subtext, options.token or target.token
     if not normalized.worldPosition and position.space ~= "map" and position.mapID == nil then
         normalized.worldPosition = { instanceID = position.instanceID, x = position.x, y = position.y }
@@ -372,11 +447,20 @@ local function TargetSnapshot(target, options)
     local result = { options = {} }
     if IsSegment(target) then
         local action = target.action
-        result.target = { kind = target.kind, sourceFree = target.sourceFree,
-            instruction = target.instruction, from = PositionSnapshot(target.from), to = PositionSnapshot(target.to),
-            action = type(action) == "table" and { type = action.type, id = action.id, data = action.data } or action }
-    else result.target = PositionSnapshot(target) end
-    for _, key in ipairs(visualKeys) do result.options[key] = options and options[key] end
+        result.target = {
+            kind = target.kind,
+            sourceFree = target.sourceFree,
+            instruction = target.instruction,
+            from = PositionSnapshot(target.from),
+            to = PositionSnapshot(target.to),
+            action = type(action) == "table" and { type = action.type, id = action.id, data = action.data } or action,
+        }
+    else
+        result.target = PositionSnapshot(target)
+    end
+    for _, key in ipairs(visualKeys) do
+        result.options[key] = options and options[key]
+    end
     result.options.suppressAudio = not options or options.suppressAudio ~= false
     result.options.context = options and options.context
     result.options.token = options and options.token
@@ -386,7 +470,9 @@ end
 
 function Instance:GetWaypointTargetState()
     if not self.waypointUIEnabled then return nil, { guideMode = "blocked" }, "waypoint_ui_disabled" end
-    if type(self.env.getWaypointTarget) ~= "function" then return nil, { guideMode = "blocked" }, "waypoint_target_unavailable" end
+    if type(self.env.getWaypointTarget) ~= "function" then
+        return nil, { guideMode = "blocked" }, "waypoint_target_unavailable"
+    end
     local ok, target, options = pcall(self.env.getWaypointTarget)
     if not ok then return nil, { guideMode = "blocked" }, "waypoint_target_error" end
     if options ~= nil and type(options) ~= "table" then return nil, { guideMode = "blocked" }, "invalid_options" end
@@ -394,7 +480,9 @@ function Instance:GetWaypointTargetState()
     if self.waypointCancelledContext ~= nil then
         if self.waypointCancelledContext == options.context then
             local blocked = {}
-            for key, value in pairs(options) do blocked[key] = value end
+            for key, value in pairs(options) do
+                blocked[key] = value
+            end
             blocked.guideMode = "blocked"
             return nil, blocked
         end
@@ -405,14 +493,22 @@ end
 
 local function SameSnapshot(a, b)
     if type(a) ~= "table" or type(b) ~= "table" then return a == b end
-    for key, value in pairs(a) do if not SameSnapshot(value, b[key]) then return false end end
-    for key in pairs(b) do if a[key] == nil then return false end end
+    for key, value in pairs(a) do
+        if not SameSnapshot(value, b[key]) then return false end
+    end
+    for key in pairs(b) do
+        if a[key] == nil then return false end
+    end
     return true
 end
 
 local positionFields, optionFields = {}, { context = true, token = true, guideMode = true }
-for _, key in ipairs(positionKeys) do positionFields[key] = true end
-for _, key in ipairs(visualKeys) do optionFields[key] = true end
+for _, key in ipairs(positionKeys) do
+    positionFields[key] = true
+end
+for _, key in ipairs(visualKeys) do
+    optionFields[key] = true
+end
 local segmentFields = { kind = true, sourceFree = true, instruction = true, from = true, to = true, action = true }
 local actionFields = { type = true, id = true, data = true }
 
@@ -424,9 +520,13 @@ local function SameFields(snapshot, source, fields)
             if previous ~= nil then return false end
         elseif type(value) == "table" then
             if not SameSnapshot(value, previous) then return false end
-        elseif value ~= previous then return false end
+        elseif value ~= previous then
+            return false
+        end
     end
-    for key in pairs(snapshot) do if not fields[key] then return false end end
+    for key in pairs(snapshot) do
+        if not fields[key] then return false end
+    end
     return true
 end
 
@@ -441,10 +541,16 @@ local function SameTargetSnapshot(snapshot, target, options)
                 if not SameFields(previous, source, positionFields) then return false end
             elseif key == "action" then
                 if not SameFields(previous, source, actionFields) then return false end
-            elseif not SameSnapshot(source, previous) then return false end
+            elseif not SameSnapshot(source, previous) then
+                return false
+            end
         end
-        for key in pairs(captured) do if not segmentFields[key] then return false end end
-    elseif not SameFields(captured, target, positionFields) then return false end
+        for key in pairs(captured) do
+            if not segmentFields[key] then return false end
+        end
+    elseif not SameFields(captured, target, positionFields) then
+        return false
+    end
     local capturedOptions = snapshot.options
     if capturedOptions.suppressAudio ~= (options.suppressAudio ~= false) then return false end
     for key in pairs(optionFields) do
@@ -453,7 +559,9 @@ local function SameTargetSnapshot(snapshot, target, options)
             if previous ~= nil then return false end
         elseif type(value) == "table" then
             if not SameSnapshot(value, previous) then return false end
-        elseif value ~= previous then return false end
+        elseif value ~= previous then
+            return false
+        end
     end
     for key in pairs(capturedOptions) do
         if key ~= "suppressAudio" and not optionFields[key] then return false end
@@ -545,7 +653,11 @@ local function RefreshAutomatic(self, automatic)
             return automatic.point, awReason
         end
     end
-    if target == nil or options.guideMode == "blocked" or (type(target) == "table" and target.sourceFree and target.action) then
+    if
+        target == nil
+        or options.guideMode == "blocked"
+        or (type(target) == "table" and target.sourceFree and target.action)
+    then
         reason = ClearAutomatic(self, automatic) or "no_waypoint"
     elseif IsSegment(target) then
         point, reason = PublishSegment(self, target, options, automatic)
@@ -650,8 +762,12 @@ function Instance:SetWaypointUIEnabled(enabled)
         end)
         if ok and (type(ticker) == "table" or type(ticker) == "userdata") and type(ticker.Cancel) == "function" then
             automatic.ticker, automatic.cancelTicker = ticker, ticker.Cancel
-        else automatic.schedulerReason = ok and "waypoint_scheduler_unavailable" or "waypoint_scheduler_error" end
-    else automatic.schedulerReason = "waypoint_scheduler_unavailable" end
+        else
+            automatic.schedulerReason = ok and "waypoint_scheduler_unavailable" or "waypoint_scheduler_error"
+        end
+    else
+        automatic.schedulerReason = "waypoint_scheduler_unavailable"
+    end
     return self:RefreshWaypointUI()
 end
 

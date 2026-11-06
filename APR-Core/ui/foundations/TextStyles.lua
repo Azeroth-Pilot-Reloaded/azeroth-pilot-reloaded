@@ -22,7 +22,9 @@ local function GetDefaultUIFontName()
         end
     end
     return LSM:GetDefault("font") or "Friz Quadrata TT"
-end--[[APR_DIAG]]; GetDefaultUIFontName = APRTrace("APR-Core/ui/foundations/TextStyles.lua:11:GetDefaultUIFontName#1", GetDefaultUIFontName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+GetDefaultUIFontName =
+    APRTrace("APR-Core/ui/foundations/TextStyles.lua:11:GetDefaultUIFontName#1", GetDefaultUIFontName)--[[/APR_DIAG]]
 
 APR.GLOBAL_TEXT_APPEARANCE_KEY = "globalTextAppearance"
 
@@ -50,7 +52,8 @@ local DEFAULT_COLORS = {
 
 local function CopyColor(color)
     return { color[1], color[2], color[3], color[4] or 1 }
-end--[[APR_DIAG]]; CopyColor = APRTrace("APR-Core/ui/foundations/TextStyles.lua:51:CopyColor#2", CopyColor)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+CopyColor = APRTrace("APR-Core/ui/foundations/TextStyles.lua:51:CopyColor#2", CopyColor)--[[/APR_DIAG]]
 
 function APR:CreateTextAppearanceDefaults(useGlobal, overrides)
     local defaults = {
@@ -74,19 +77,22 @@ function APR:CreateTextAppearanceDefaults(useGlobal, overrides)
         defaults[key] = type(value) == "table" and CopyColor(value) or value
     end
     return defaults
-end--[[APR_DIAG]]; APR.CreateTextAppearanceDefaults = APRTrace("APR-Core/ui/foundations/TextStyles.lua:55:APR:CreateTextAppearanceDefaults#3", APR.CreateTextAppearanceDefaults)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.CreateTextAppearanceDefaults = APRTrace(
+    "APR-Core/ui/foundations/TextStyles.lua:55:APR:CreateTextAppearanceDefaults#3",
+    APR.CreateTextAppearanceDefaults
+)--[[/APR_DIAG]]
 
 APR.textStyleRegistry = APR.textStyleRegistry or setmetatable({}, { __mode = "k" })
 
 local function GetProfile()
-    return APR.GetSettingsProfile and APR:GetSettingsProfile() or
-        (APR.settings and APR.settings.profile)
-end--[[APR_DIAG]]; GetProfile = APRTrace("APR-Core/ui/foundations/TextStyles.lua:81:GetProfile#4", GetProfile)--[[/APR_DIAG]]
+    return APR.GetSettingsProfile and APR:GetSettingsProfile() or (APR.settings and APR.settings.profile)
+end--[[APR_DIAG]]
+GetProfile = APRTrace("APR-Core/ui/foundations/TextStyles.lua:81:GetProfile#4", GetProfile)--[[/APR_DIAG]]
 
 local function GetAppearance(scope)
     local profile = GetProfile()
-    local general = profile and profile[APR.GLOBAL_TEXT_APPEARANCE_KEY] or
-        APR:CreateTextAppearanceDefaults(false)
+    local general = profile and profile[APR.GLOBAL_TEXT_APPEARANCE_KEY] or APR:CreateTextAppearanceDefaults(false)
     if not scope or scope == "general" then
         return general, general
     end
@@ -94,7 +100,8 @@ local function GetAppearance(scope)
     local profileKey = APR.TEXT_APPEARANCE_SCOPES[scope]
     local scoped = profile and profileKey and profile[profileKey]
     return scoped or { useGlobal = true }, general
-end--[[APR_DIAG]]; GetAppearance = APRTrace("APR-Core/ui/foundations/TextStyles.lua:86:GetAppearance#5", GetAppearance)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+GetAppearance = APRTrace("APR-Core/ui/foundations/TextStyles.lua:86:GetAppearance#5", GetAppearance)--[[/APR_DIAG]]
 
 local function GetTypography(scope)
     local scoped, general = GetAppearance(scope)
@@ -102,7 +109,8 @@ local function GetTypography(scope)
         return general
     end
     return scoped
-end--[[APR_DIAG]]; GetTypography = APRTrace("APR-Core/ui/foundations/TextStyles.lua:99:GetTypography#6", GetTypography)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+GetTypography = APRTrace("APR-Core/ui/foundations/TextStyles.lua:99:GetTypography#6", GetTypography)--[[/APR_DIAG]]
 
 local function ResolveFont(fontName)
     local requestedFontName = fontName or GetDefaultUIFontName()
@@ -113,17 +121,17 @@ local function ResolveFont(fontName)
 
     local requestedFont = LSM:Fetch("font", requestedFontName, true)
     if requestedFont then
-        local resolvedFont = APR:ResolveUIFileAsset(requestedFont, nil,
-            string.format("font %s", requestedFontName or "default font"))
+        local resolvedFont =
+            APR:ResolveUIFileAsset(requestedFont, nil, string.format("font %s", requestedFontName or "default font"))
         if resolvedFont then
             return resolvedFont
         end
     end
 
     local defaultFont = fallback or "Fonts\\FRIZQT__.TTF"
-    return APR:ResolveUIFileAsset(defaultFont, "Fonts\\FRIZQT__.TTF", "default font") or
-        "Fonts\\FRIZQT__.TTF"
-end--[[APR_DIAG]]; ResolveFont = APRTrace("APR-Core/ui/foundations/TextStyles.lua:107:ResolveFont#7", ResolveFont)--[[/APR_DIAG]]
+    return APR:ResolveUIFileAsset(defaultFont, "Fonts\\FRIZQT__.TTF", "default font") or "Fonts\\FRIZQT__.TTF"
+end--[[APR_DIAG]]
+ResolveFont = APRTrace("APR-Core/ui/foundations/TextStyles.lua:107:ResolveFont#7", ResolveFont)--[[/APR_DIAG]]
 
 local VALID_FONT_FLAGS = {
     [""] = true,
@@ -141,7 +149,8 @@ local function NormalizeFontFlags(flags)
         return ""
     end
     return VALID_FONT_FLAGS[flags] and flags or ""
-end--[[APR_DIAG]]; NormalizeFontFlags = APRTrace("APR-Core/ui/foundations/TextStyles.lua:136:NormalizeFontFlags#8", NormalizeFontFlags)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+NormalizeFontFlags = APRTrace("APR-Core/ui/foundations/TextStyles.lua:136:NormalizeFontFlags#8", NormalizeFontFlags)--[[/APR_DIAG]]
 
 local ROLE_KEYS = {
     base = "color",
@@ -167,7 +176,8 @@ local function CustomColor(appearance, profileKey, key)
     for index = 1, 4 do
         if math.abs((color[index] or 1) - (original[index] or 1)) > 0.00001 then return color end
     end
-end--[[APR_DIAG]]; CustomColor = APRTrace("APR-Core/ui/foundations/TextStyles.lua:157:CustomColor#9", CustomColor)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+CustomColor = APRTrace("APR-Core/ui/foundations/TextStyles.lua:157:CustomColor#9", CustomColor)--[[/APR_DIAG]]
 
 function APR:GetCustomTextColor(scope, role, themeDraft)
     local key = ROLE_KEYS[role or "base"]
@@ -176,10 +186,14 @@ function APR:GetCustomTextColor(scope, role, themeDraft)
     if key == "accentColor" then
         local profile = GetProfile()
         local themeSettings = themeDraft or (profile and profile.uiThemeCustomization)
-        local themeName = themeDraft and themeDraft.theme or
-            (self.GetAppearanceProvider and self:GetAppearanceProvider(scope)) or (profile and profile.uiTheme)
+        local themeName = themeDraft and themeDraft.theme
+            or (self.GetAppearanceProvider and self:GetAppearanceProvider(scope))
+            or (profile and profile.uiTheme)
         local nativeModern = self.Themes and self.Themes[themeName] and self.Themes[themeName].style == "modern"
-        if (self.UsesClassAccent and self:UsesClassAccent(themeDraft)) or (nativeModern and themeSettings and themeSettings.classColor) then
+        if
+            (self.UsesClassAccent and self:UsesClassAccent(themeDraft))
+            or (nativeModern and themeSettings and themeSettings.classColor)
+        then
             local color = self.GetPlayerClassColor and self:GetPlayerClassColor()
             if color then return color end
         end
@@ -189,7 +203,9 @@ function APR:GetCustomTextColor(scope, role, themeDraft)
         if color then return color end
     end
     return CustomColor(general, self.GLOBAL_TEXT_APPEARANCE_KEY, key)
-end--[[APR_DIAG]]; APR.GetCustomTextColor = APRTrace("APR-Core/ui/foundations/TextStyles.lua:172:APR:GetCustomTextColor#10", APR.GetCustomTextColor)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetCustomTextColor =
+    APRTrace("APR-Core/ui/foundations/TextStyles.lua:172:APR:GetCustomTextColor#10", APR.GetCustomTextColor)--[[/APR_DIAG]]
 
 function APR:GetTextColor(scope, role, trackerStyle)
     if self.GetThemeStatusColor then
@@ -230,7 +246,8 @@ function APR:GetTextColor(scope, role, trackerStyle)
         return scoped[key]
     end
     return general[key] or DEFAULT_COLORS[key] or DEFAULT_COLORS.color
-end--[[APR_DIAG]]; APR.GetTextColor = APRTrace("APR-Core/ui/foundations/TextStyles.lua:194:APR:GetTextColor#11", APR.GetTextColor)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetTextColor = APRTrace("APR-Core/ui/foundations/TextStyles.lua:194:APR:GetTextColor#11", APR.GetTextColor)--[[/APR_DIAG]]
 
 function APR:GetTextColorHex(scope, role)
     local color = self:GetTextColor(scope, role)
@@ -238,11 +255,16 @@ function APR:GetTextColorHex(scope, role)
     local g = math.floor(math.max(0, math.min(1, color[2] or 1)) * 255 + 0.5)
     local b = math.floor(math.max(0, math.min(1, color[3] or 1)) * 255 + 0.5)
     return string.format("%02x%02x%02x", r, g, b)
-end--[[APR_DIAG]]; APR.GetTextColorHex = APRTrace("APR-Core/ui/foundations/TextStyles.lua:235:APR:GetTextColorHex#12", APR.GetTextColorHex)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetTextColorHex = APRTrace("APR-Core/ui/foundations/TextStyles.lua:235:APR:GetTextColorHex#12", APR.GetTextColorHex)--[[/APR_DIAG]]
 
 function APR:WrapTextWithAppearanceColor(text, scope, role)
     return self:WrapTextInColorCode(text, self:GetTextColorHex(scope, role))
-end--[[APR_DIAG]]; APR.WrapTextWithAppearanceColor = APRTrace("APR-Core/ui/foundations/TextStyles.lua:243:APR:WrapTextWithAppearanceColor#13", APR.WrapTextWithAppearanceColor)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.WrapTextWithAppearanceColor = APRTrace(
+    "APR-Core/ui/foundations/TextStyles.lua:243:APR:WrapTextWithAppearanceColor#13",
+    APR.WrapTextWithAppearanceColor
+)--[[/APR_DIAG]]
 
 local function RestoreTooltipTextStyles(tooltip)
     for _, original in ipairs(tooltip._aprTooltipTextOriginals or {}) do
@@ -256,7 +278,9 @@ local function RestoreTooltipTextStyles(tooltip)
     end
     tooltip._aprTooltipTextOriginals = nil
     tooltip._aprTooltipTextLookup = nil
-end--[[APR_DIAG]]; RestoreTooltipTextStyles = APRTrace("APR-Core/ui/foundations/TextStyles.lua:247:RestoreTooltipTextStyles#14", RestoreTooltipTextStyles)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+RestoreTooltipTextStyles =
+    APRTrace("APR-Core/ui/foundations/TextStyles.lua:247:RestoreTooltipTextStyles#14", RestoreTooltipTextStyles)--[[/APR_DIAG]]
 
 local function StyleTooltipRegion(tooltip, region, scope, role)
     if not tooltip or not region or not region.GetFont then return end
@@ -284,27 +308,32 @@ local function StyleTooltipRegion(tooltip, region, scope, role)
     if not tooltip.HasScript or tooltip:HasScript("OnTooltipCleared") then
         tooltip:HookScript("OnTooltipCleared", RestoreTooltipTextStyles)
     end
-end--[[APR_DIAG]]; StyleTooltipRegion = APRTrace("APR-Core/ui/foundations/TextStyles.lua:261:StyleTooltipRegion#15", StyleTooltipRegion)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+StyleTooltipRegion = APRTrace("APR-Core/ui/foundations/TextStyles.lua:261:StyleTooltipRegion#15", StyleTooltipRegion)--[[/APR_DIAG]]
 
 local function GetTooltipFontString(tooltip, side, line)
     local name = tooltip and tooltip.GetName and tooltip:GetName()
     if not name then return nil end
     return _G[name .. "Text" .. side .. tostring(line)]
-end--[[APR_DIAG]]; GetTooltipFontString = APRTrace("APR-Core/ui/foundations/TextStyles.lua:289:GetTooltipFontString#16", GetTooltipFontString)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+GetTooltipFontString =
+    APRTrace("APR-Core/ui/foundations/TextStyles.lua:289:GetTooltipFontString#16", GetTooltipFontString)--[[/APR_DIAG]]
 
 function APR:AddTooltipLine(tooltip, text, scope, role, wrap)
     if not tooltip then return end
     local color = self:GetTextColor(scope or "general", role or "base")
     tooltip:AddLine(text, color[1], color[2], color[3], wrap)
     StyleTooltipRegion(tooltip, GetTooltipFontString(tooltip, "Left", tooltip:NumLines()), scope, role)
-end--[[APR_DIAG]]; APR.AddTooltipLine = APRTrace("APR-Core/ui/foundations/TextStyles.lua:295:APR:AddTooltipLine#17", APR.AddTooltipLine)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.AddTooltipLine = APRTrace("APR-Core/ui/foundations/TextStyles.lua:295:APR:AddTooltipLine#17", APR.AddTooltipLine)--[[/APR_DIAG]]
 
 function APR:SetTooltipText(tooltip, text, scope, role)
     if not tooltip then return end
     local color = self:GetTextColor(scope or "general", role or "base")
     tooltip:SetText(text, color[1], color[2], color[3])
     StyleTooltipRegion(tooltip, GetTooltipFontString(tooltip, "Left", 1), scope, role)
-end--[[APR_DIAG]]; APR.SetTooltipText = APRTrace("APR-Core/ui/foundations/TextStyles.lua:302:APR:SetTooltipText#18", APR.SetTooltipText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.SetTooltipText = APRTrace("APR-Core/ui/foundations/TextStyles.lua:302:APR:SetTooltipText#18", APR.SetTooltipText)--[[/APR_DIAG]]
 
 function APR:AddTooltipDoubleLine(tooltip, leftText, rightText, scope, leftRole, rightRole)
     if not tooltip then return end
@@ -314,7 +343,9 @@ function APR:AddTooltipDoubleLine(tooltip, leftText, rightText, scope, leftRole,
     local line = tooltip:NumLines()
     StyleTooltipRegion(tooltip, GetTooltipFontString(tooltip, "Left", line), scope, leftRole)
     StyleTooltipRegion(tooltip, GetTooltipFontString(tooltip, "Right", line), scope, rightRole)
-end--[[APR_DIAG]]; APR.AddTooltipDoubleLine = APRTrace("APR-Core/ui/foundations/TextStyles.lua:309:APR:AddTooltipDoubleLine#19", APR.AddTooltipDoubleLine)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.AddTooltipDoubleLine =
+    APRTrace("APR-Core/ui/foundations/TextStyles.lua:309:APR:AddTooltipDoubleLine#19", APR.AddTooltipDoubleLine)--[[/APR_DIAG]]
 
 function APR:ResolveTextColorRole(hexColor, fallbackRole)
     local value = tostring(hexColor or ""):lower():gsub("^#", ""):gsub("^|c", "")
@@ -327,8 +358,7 @@ function APR:ResolveTextColorRole(hexColor, fallbackRole)
     if value == "00ff00" or value == "50c878" then
         return "success"
     end
-    if value == "ffff00" or value == "ffd100" or value == "eda55f" or value == "ff8800" or
-        value == "ecc00f" then
+    if value == "ffff00" or value == "ffd100" or value == "eda55f" or value == "ff8800" or value == "ecc00f" then
         return "warning"
     end
     if value == "696969" or value == "999999" or value == "808080" then
@@ -338,7 +368,9 @@ function APR:ResolveTextColorRole(hexColor, fallbackRole)
         return "base"
     end
     return fallbackRole or "accent"
-end--[[APR_DIAG]]; APR.ResolveTextColorRole = APRTrace("APR-Core/ui/foundations/TextStyles.lua:319:APR:ResolveTextColorRole#20", APR.ResolveTextColorRole)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.ResolveTextColorRole =
+    APRTrace("APR-Core/ui/foundations/TextStyles.lua:319:APR:ResolveTextColorRole#20", APR.ResolveTextColorRole)--[[/APR_DIAG]]
 
 function APR:ApplyTextStyle(fontString, scope, options)
     if not fontString or not fontString.SetFont then return end
@@ -356,15 +388,21 @@ function APR:ApplyTextStyle(fontString, scope, options)
     if trackerStyle and options.trackerHeader then size = trackerStyle.headerSize or size end
 
     local themedFont, themedFlags
-    if self.EllesmereUISkin then themedFont, themedFlags = self.EllesmereUISkin:GetFont(scope) end
-    if trackerStyle and trackerStyle.font then themedFont, themedFlags = trackerStyle.font, trackerStyle.flags end
+    if self.EllesmereUISkin then
+        themedFont, themedFlags = self.EllesmereUISkin:GetFont(scope)
+    end
+    if trackerStyle and trackerStyle.font then
+        themedFont, themedFlags = trackerStyle.font, trackerStyle.flags
+    end
     if trackerStyle and options.trackerHeader and trackerStyle.headerFont then
         themedFont, themedFlags = trackerStyle.headerFont, trackerStyle.headerFlags
     end
     local fontFlags = NormalizeFontFlags(themedFont and themedFlags or typography.flags)
     local requestedFont = themedFont or ResolveFont(typography.font)
     local currentFont, currentSize, currentFlags
-    if fontString.GetFont then currentFont, currentSize, currentFlags = fontString:GetFont() end
+    if fontString.GetFont then
+        currentFont, currentSize, currentFlags = fontString:GetFont()
+    end
     -- SetFont invalidates native text metrics even for the same font. Pooled
     -- settings and the quest-list measurement row frequently reapply one style.
     if currentFont ~= requestedFont or currentSize ~= size or NormalizeFontFlags(currentFlags) ~= fontFlags then
@@ -373,7 +411,7 @@ function APR:ApplyTextStyle(fontString, scope, options)
     end
     if themedFont and not trackerStyle then self.EllesmereUISkin:ApplyFont(fontString, scope) end
     if trackerStyle and trackerStyle.shadow ~= nil and fontString.GetShadowColor then
-        if not fontString.aprTrackerShadow then fontString.aprTrackerShadow = {fontString:GetShadowColor()} end
+        if not fontString.aprTrackerShadow then fontString.aprTrackerShadow = { fontString:GetShadowColor() } end
         fontString:SetShadowColor(0, 0, 0, trackerStyle.shadow)
     elseif fontString.aprTrackerShadow then
         fontString:SetShadowColor(unpack(fontString.aprTrackerShadow))
@@ -388,23 +426,38 @@ function APR:ApplyTextStyle(fontString, scope, options)
         end
         local custom = self:GetCustomTextColor(scope, options.role)
         color = color or self:GetTextColor(scope, options.role, trackerStyle or false)
-        if not custom and not trackerStyle and options.themeAccent and options.role == "accent" and
-            (self:GetSkinProviderName(scope) or (self.GetThemeStyle and self:GetThemeStyle(scope) == "modern")) then
+        if
+            not custom
+            and not trackerStyle
+            and options.themeAccent
+            and options.role == "accent"
+            and (self:GetSkinProviderName(scope) or (self.GetThemeStyle and self:GetThemeStyle(scope) == "modern"))
+        then
             color = self:GetThemeColor("accent", scope)
         end
         local r, g, b, a
-        if fontString.GetTextColor then r, g, b, a = fontString:GetTextColor() end
-        if not r or math.abs(r - color[1]) > 0.000001 or math.abs(g - color[2]) > 0.000001
-            or math.abs(b - color[3]) > 0.000001 or math.abs((a or 1) - (color[4] or 1)) > 0.000001 then
+        if fontString.GetTextColor then
+            r, g, b, a = fontString:GetTextColor()
+        end
+        if
+            not r
+            or math.abs(r - color[1]) > 0.000001
+            or math.abs(g - color[2]) > 0.000001
+            or math.abs(b - color[3]) > 0.000001
+            or math.abs((a or 1) - (color[4] or 1)) > 0.000001
+        then
             fontString:SetTextColor(color[1], color[2], color[3], color[4] or 1)
         end
-        if not custom and self.EllesmereUISkin and not trackerStyle then self.EllesmereUISkin:ApplyHeaderTextColor(fontString, scope) end
+        if not custom and self.EllesmereUISkin and not trackerStyle then
+            self.EllesmereUISkin:ApplyHeaderTextColor(fontString, scope)
+        end
     end
 
     if options.onApplied then
         options.onApplied(fontString)
     end
-end--[[APR_DIAG]]; APR.ApplyTextStyle = APRTrace("APR-Core/ui/foundations/TextStyles.lua:343:APR:ApplyTextStyle#21", APR.ApplyTextStyle)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.ApplyTextStyle = APRTrace("APR-Core/ui/foundations/TextStyles.lua:343:APR:ApplyTextStyle#21", APR.ApplyTextStyle)--[[/APR_DIAG]]
 
 function APR:RegisterFontString(fontString, scope, options)
     if not fontString then return fontString end
@@ -414,44 +467,54 @@ function APR:RegisterFontString(fontString, scope, options)
     }
     self:ApplyTextStyle(fontString, scope or "general", options)
     return fontString
-end--[[APR_DIAG]]; APR.RegisterFontString = APRTrace("APR-Core/ui/foundations/TextStyles.lua:409:APR:RegisterFontString#22", APR.RegisterFontString)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.RegisterFontString =
+    APRTrace("APR-Core/ui/foundations/TextStyles.lua:409:APR:RegisterFontString#22", APR.RegisterFontString)--[[/APR_DIAG]]
 
 function APR:RegisterButtonText(button, scope, options)
     if not button then return end
     local fontString = button.Text or (button.GetFontString and button:GetFontString())
     return self:RegisterFontString(fontString, scope, options)
-end--[[APR_DIAG]]; APR.RegisterButtonText = APRTrace("APR-Core/ui/foundations/TextStyles.lua:419:APR:RegisterButtonText#23", APR.RegisterButtonText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.RegisterButtonText =
+    APRTrace("APR-Core/ui/foundations/TextStyles.lua:419:APR:RegisterButtonText#23", APR.RegisterButtonText)--[[/APR_DIAG]]
 
 function APR:UnregisterFontString(fontString)
     self.textStyleRegistry[fontString] = nil
-end--[[APR_DIAG]]; APR.UnregisterFontString = APRTrace("APR-Core/ui/foundations/TextStyles.lua:425:APR:UnregisterFontString#24", APR.UnregisterFontString)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.UnregisterFontString =
+    APRTrace("APR-Core/ui/foundations/TextStyles.lua:425:APR:UnregisterFontString#24", APR.UnregisterFontString)--[[/APR_DIAG]]
 
 -- Retail exposes popup elements through accessors; legacy clients and AceConfig use fields.
 function APR:GetPopupText(popup)
     return (popup.GetTextFontString and popup:GetTextFontString()) or popup.text or popup.Text
-end--[[APR_DIAG]]; APR.GetPopupText = APRTrace("APR-Core/ui/foundations/TextStyles.lua:430:APR:GetPopupText#25", APR.GetPopupText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetPopupText = APRTrace("APR-Core/ui/foundations/TextStyles.lua:430:APR:GetPopupText#25", APR.GetPopupText)--[[/APR_DIAG]]
 
 function APR:GetPopupButtons(popup)
     local buttons = {}
     for index = 1, 4 do
-        local button = (popup.GetButton and popup:GetButton(index)) or popup["button" .. index]
+        local button = (popup.GetButton and popup:GetButton(index))
+            or popup["button" .. index]
             or (popup.ButtonContainer and popup.ButtonContainer["Button" .. index])
-            or (index == 1 and popup.accept) or (index == 2 and popup.cancel)
+            or (index == 1 and popup.accept)
+            or (index == 2 and popup.cancel)
         if button then buttons[#buttons + 1] = button end
     end
     return buttons
-end--[[APR_DIAG]]; APR.GetPopupButtons = APRTrace("APR-Core/ui/foundations/TextStyles.lua:434:APR:GetPopupButtons#26", APR.GetPopupButtons)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.GetPopupButtons = APRTrace("APR-Core/ui/foundations/TextStyles.lua:434:APR:GetPopupButtons#26", APR.GetPopupButtons)--[[/APR_DIAG]]
 
 function APR:StyleStaticPopup(popup)
     if not popup then return end
     local buttons = self:GetPopupButtons(popup)
     if self.UI and self.UI.StylePopupChrome then self.UI:StylePopupChrome(popup, buttons) end
     local regions = {
-        { self:GetPopupText(popup),                         { role = "base" } },
-        { popup.editBox or popup.EditBox,                  { role = "base" } },
+        { self:GetPopupText(popup), { role = "base" } },
+        { popup.editBox or popup.EditBox, { role = "base" } },
     }
     for index, button in ipairs(buttons) do
-        regions[#regions + 1] = {button:GetFontString(), {role = index == 1 and "accent" or "base"}}
+        regions[#regions + 1] = { button:GetFontString(), { role = index == 1 and "accent" or "base" } }
     end
 
     popup._aprTextOriginals = popup._aprTextOriginals or {}
@@ -464,43 +527,54 @@ function APR:StyleStaticPopup(popup)
             if region.GetTextColor then
                 r, g, b, a = region:GetTextColor()
             end
-            if not popup._aprTextLookup[region] then table.insert(popup._aprTextOriginals, {
-                region = region,
-                font = font,
-                size = size,
-                flags = flags,
-                color = r and { r, g, b, a } or nil,
-            }); popup._aprTextLookup[region] = true end
-            options.onApplied = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/TextStyles.lua:474:callback#28", --[[/APR_DIAG]]function()
-                if APR.UI and APR.UI.LayoutPopupChrome then APR.UI:LayoutPopupChrome(popup, buttons) end
-            end--[[APR_DIAG]])--[[/APR_DIAG]]
+            if not popup._aprTextLookup[region] then
+                table.insert(popup._aprTextOriginals, {
+                    region = region,
+                    font = font,
+                    size = size,
+                    flags = flags,
+                    color = r and { r, g, b, a } or nil,
+                })
+                popup._aprTextLookup[region] = true
+            end
+            options.onApplied = --[[APR_DIAG]]
+                APRTrace("APR-Core/ui/foundations/TextStyles.lua:474:callback#28", --[[/APR_DIAG]] function()
+                    if APR.UI and APR.UI.LayoutPopupChrome then APR.UI:LayoutPopupChrome(popup, buttons) end
+                end--[[APR_DIAG]])--[[/APR_DIAG]]
             self:RegisterFontString(region, "general", options)
         end
     end
 
     if popup._aprTextRestoreHooked then return end
     popup._aprTextRestoreHooked = true
-    popup:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/TextStyles.lua:483:callback#29", --[[/APR_DIAG]]function(frame)
-        for _, original in ipairs(frame._aprTextOriginals or {}) do
-            APR:UnregisterFontString(original.region)
-            if original.font and original.size then
-                original.region:SetFont(original.font, original.size, NormalizeFontFlags(original.flags))
+    popup:HookScript(
+        "OnHide", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/foundations/TextStyles.lua:483:callback#29", --[[/APR_DIAG]] function(frame)
+            for _, original in ipairs(frame._aprTextOriginals or {}) do
+                APR:UnregisterFontString(original.region)
+                if original.font and original.size then
+                    original.region:SetFont(original.font, original.size, NormalizeFontFlags(original.flags))
+                end
+                if original.color and original.region.SetTextColor then
+                    original.region:SetTextColor(unpack(original.color))
+                end
             end
-            if original.color and original.region.SetTextColor then
-                original.region:SetTextColor(unpack(original.color))
-            end
-        end
-        frame._aprTextOriginals = nil
-        frame._aprTextLookup = nil
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.StyleStaticPopup = APRTrace("APR-Core/ui/foundations/TextStyles.lua:445:APR:StyleStaticPopup#27", APR.StyleStaticPopup)--[[/APR_DIAG]]
+            frame._aprTextOriginals = nil
+            frame._aprTextLookup = nil
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+end--[[APR_DIAG]]
+APR.StyleStaticPopup =
+    APRTrace("APR-Core/ui/foundations/TextStyles.lua:445:APR:StyleStaticPopup#27", APR.StyleStaticPopup)--[[/APR_DIAG]]
 
 function APR:SetFontStringRole(fontString, role)
     local registration = self.textStyleRegistry[fontString]
     if not registration then return end
     registration.options.role = role
     self:ApplyTextStyle(fontString, registration.scope, registration.options)
-end--[[APR_DIAG]]; APR.SetFontStringRole = APRTrace("APR-Core/ui/foundations/TextStyles.lua:498:APR:SetFontStringRole#30", APR.SetFontStringRole)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.SetFontStringRole =
+    APRTrace("APR-Core/ui/foundations/TextStyles.lua:498:APR:SetFontStringRole#30", APR.SetFontStringRole)--[[/APR_DIAG]]
 
 local function ScopeAffects(requestedScope, targetScope)
     if not requestedScope or requestedScope == "general" then
@@ -510,7 +584,8 @@ local function ScopeAffects(requestedScope, targetScope)
     local requestedKey = APR.TEXT_APPEARANCE_SCOPES[requestedScope] or requestedScope
     local targetKey = APR.TEXT_APPEARANCE_SCOPES[targetScope] or targetScope
     return requestedKey == targetKey
-end--[[APR_DIAG]]; ScopeAffects = APRTrace("APR-Core/ui/foundations/TextStyles.lua:505:ScopeAffects#31", ScopeAffects)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+ScopeAffects = APRTrace("APR-Core/ui/foundations/TextStyles.lua:505:ScopeAffects#31", ScopeAffects)--[[/APR_DIAG]]
 
 function APR:ApplyAllTextStyles(scope)
     self.textStyleRevision = (self.textStyleRevision or 0) + 1
@@ -519,7 +594,9 @@ function APR:ApplyAllTextStyles(scope)
             self:ApplyTextStyle(fontString, registration.scope, registration.options)
         end
     end
-end--[[APR_DIAG]]; APR.ApplyAllTextStyles = APRTrace("APR-Core/ui/foundations/TextStyles.lua:515:APR:ApplyAllTextStyles#32", APR.ApplyAllTextStyles)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.ApplyAllTextStyles =
+    APRTrace("APR-Core/ui/foundations/TextStyles.lua:515:APR:ApplyAllTextStyles#32", APR.ApplyAllTextStyles)--[[/APR_DIAG]]
 
 function APR:RefreshTextAppearance(scope)
     self:ApplyAllTextStyles(scope)
@@ -527,16 +604,13 @@ function APR:RefreshTextAppearance(scope)
         self:RefreshStatusBarColors()
     end
 
-    if ScopeAffects(scope, "currentStep") and self.currentStep and
-        self.currentStep.RefreshTextLayout then
+    if ScopeAffects(scope, "currentStep") and self.currentStep and self.currentStep.RefreshTextLayout then
         self.currentStep:RefreshTextLayout()
     end
-    if ScopeAffects(scope, "fillers") and self.fillersFrame and
-        self.fillersFrame.RefreshTextLayout then
+    if ScopeAffects(scope, "fillers") and self.fillersFrame and self.fillersFrame.RefreshTextLayout then
         self.fillersFrame:RefreshTextLayout()
     end
-    if ScopeAffects(scope, "questOrderList") and self.questOrderList and
-        self.questOrderList.UpdateFrameContents then
+    if ScopeAffects(scope, "questOrderList") and self.questOrderList and self.questOrderList.UpdateFrameContents then
         self.questOrderList:UpdateFrameContents()
     end
     if ScopeAffects(scope, "party") and self.party and self.party.RefreshTextLayout then
@@ -558,4 +632,6 @@ function APR:RefreshTextAppearance(scope)
     if (not scope or scope == "general") and self.StatusFrame and self.updateStatusFrame then
         self:updateStatusFrame()
     end
-end--[[APR_DIAG]]; APR.RefreshTextAppearance = APRTrace("APR-Core/ui/foundations/TextStyles.lua:524:APR:RefreshTextAppearance#33", APR.RefreshTextAppearance)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.RefreshTextAppearance =
+    APRTrace("APR-Core/ui/foundations/TextStyles.lua:524:APR:RefreshTextAppearance#33", APR.RefreshTextAppearance)--[[/APR_DIAG]]

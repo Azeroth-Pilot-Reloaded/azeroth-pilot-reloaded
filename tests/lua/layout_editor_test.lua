@@ -8,7 +8,8 @@ local window = {
     RegisterConfig = function(frame, storage) configs[frame] = storage end,
     SavePosition = function(frame)
         local storage = configs[frame]
-        storage.x, storage.y, storage.point, storage.scale = frame:GetLeft(), frame:GetTop(), "TOPLEFT", frame:GetScale()
+        storage.x, storage.y, storage.point, storage.scale =
+            frame:GetLeft(), frame:GetTop(), "TOPLEFT", frame:GetScale()
     end,
     RestorePosition = function(frame) frame.restored = configs[frame] end,
 }
@@ -28,13 +29,13 @@ dofile("APR-Core/integrations/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")
 dofile("APR-Core/ui/panels/LayoutEditor.lua")
-APR.currentStep = {RefreshCurrentStepFrameAnchor = function() end}
-APR.fillersFrame = {RefreshFillersFrame = function() end}
-APR.AFK = {RefreshFrameAnchor = function() end}
-APR.questOrderList = {RefreshFrameAnchor = function() end}
+APR.currentStep = { RefreshCurrentStepFrameAnchor = function() end }
+APR.fillersFrame = { RefreshFillersFrame = function() end }
+APR.AFK = { RefreshFrameAnchor = function() end }
+APR.questOrderList = { RefreshFrameAnchor = function() end }
 APR.PrintInfo = function() end
 local profile = APR.settings.profile
-profile.currentStepFrame = {x = 5, y = 10, point = "CENTER", scale = 1.25}
+profile.currentStepFrame = { x = 5, y = 10, point = "CENTER", scale = 1.25 }
 profile.fillersFrameSnapToCurrentStep = true
 CurrentStepScreenPanel = env.widget(UIParent)
 CurrentStepScreenPanel:SetScale(1.25)
@@ -61,8 +62,10 @@ editor.previews[2].endDrag()
 editor.previews[8].endDrag() -- A lazy XP panel can be placed before it exists.
 assert(editor:Save())
 assert(profile.currentStepFrame == saved and saved.x == 525 and saved.y == -330 and saved.scale == 1.25)
-assert(profile.fillersFrameSnapToCurrentStep and profile.xpBuffFrame.point == "TOPLEFT",
-    "Saving a linked preview must keep the saved attachment")
+assert(
+    profile.fillersFrameSnapToCurrentStep and profile.xpBuffFrame.point == "TOPLEFT",
+    "Saving a linked preview must keep the saved attachment"
+)
 assert(CurrentStepScreenPanel.restored == saved)
 editor:Show()
 editor:Recover()
@@ -79,8 +82,8 @@ assert(not editor:Save(), "A stale draft cannot write into a different profile")
 editor:Hide()
 APR.settings.profile = profile
 local pending, opened, closed = {}, 0, 0
-C_Timer = {After = function(_, callback) pending[#pending + 1] = callback end}
-APR.Workspace = {active = "options", frame = env.widget(UIParent)}
+C_Timer = { After = function(_, callback) pending[#pending + 1] = callback end }
+APR.Workspace = { active = "options", frame = env.widget(UIParent) }
 function APR.settings:CloseSettings()
     closed = closed + 1
     APR.Workspace.frame:Hide()
@@ -93,23 +96,30 @@ end
 local function flush()
     local callbacks = pending
     pending = {}
-    for _, callback in ipairs(callbacks) do callback() end
+    for _, callback in ipairs(callbacks) do
+        callback()
+    end
 end
 editor:ShowFromSettings()
 editor:ShowFromSettings()
-assert(#pending == 1 and closed == 0 and not editor.active,
-    "AceConfig must finish its callback before any settings widgets are released")
+assert(
+    #pending == 1 and closed == 0 and not editor.active,
+    "AceConfig must finish its callback before any settings widgets are released"
+)
 flush()
 assert(editor.active and not APR.Workspace.frame:IsShown() and closed == 1)
 editor:Hide()
 assert(opened == 1 and APR.Workspace.frame:IsShown(), "Cancel returns to settings")
-editor:ShowFromSettings(); flush()
+editor:ShowFromSettings()
+flush()
 assert(editor:Save() and opened == 2 and APR.Workspace.frame:IsShown(), "Save returns to settings")
-editor:ShowFromSettings(); flush()
+editor:ShowFromSettings()
+flush()
 editor.frame:Hide()
 editor.frame.scripts.OnHide(editor.frame)
 assert(opened == 3 and not editor.active, "Escape/the close button also restore settings")
-editor:ShowFromSettings(); flush()
+editor:ShowFromSettings()
+flush()
 editor:Hide(false)
 assert(opened == 3, "Explicit navigation or a profile reload must not reopen the previous settings page")
 APR.Workspace.frame:Show()
@@ -118,21 +128,25 @@ env.setCombat(true)
 flush()
 assert(not editor.active and APR.Workspace.frame:IsShown(), "Combat before the deferred launch preserves settings")
 env.setCombat(false)
-editor:ShowFromSettings(); flush()
+editor:ShowFromSettings()
+flush()
 APR.settings.profile = {}
 editor:Hide()
 assert(opened == 3, "A stale profile cannot reopen settings")
 APR.settings.profile = profile
 APR.Workspace.active = "route"
-editor:Show(); editor:Hide()
+editor:Show()
+editor:Hide()
 assert(opened == 3, "The standalone command cannot open settings that were not previously visible")
 
 -- Exercise the reported crash through AceConfig's actual callback and AceGUI's release pool.
 local failures = {}
-function geterrorhandler() return function(err) failures[#failures + 1] = err end end
+function geterrorhandler()
+    return function(err) failures[#failures + 1] = err end
+end
 local originalXpcall = xpcall
 function xpcall(fn, handler, ...)
-    local args = {...}
+    local args = { ... }
     return originalXpcall(function() return fn(unpack(args)) end, handler)
 end
 function PlaySound() end
@@ -158,8 +172,10 @@ dofile("APR-Core/libs/AceConfig-3.0/AceConfigDialog-3.0/AceConfigDialog-3.0.lua"
 local gui, dialog = LibStub("AceGUI-3.0"), LibStub("AceConfigDialog-3.0")
 local host = gui:Create("SimpleGroup")
 LibStub("AceConfigRegistry-3.0"):RegisterOptionsTable("PlacementTest", {
-    type = "group", name = "General", args = {
-        placement = {type = "execute", name = "Place windows", func = function() editor:ShowFromSettings() end},
+    type = "group",
+    name = "General",
+    args = {
+        placement = { type = "execute", name = "Place windows", func = function() editor:ShowFromSettings() end },
     },
 })
 function APR.settings:CloseSettings()
@@ -185,7 +201,9 @@ host.children[1].frame.scripts.OnClick(host.children[1].frame, "LeftButton")
 flush()
 assert(editor:Save() and APR.Workspace.frame:IsShown())
 assert(#failures == 0, table.concat(failures, "\n"))
-print("Layout editor: cancel/save, linked dragging, hidden/lazy panels, scale, recovery, combat and profile isolation passed")
+print(
+    "Layout editor: cancel/save, linked dragging, hidden/lazy panels, scale, recovery, combat and profile isolation passed"
+)
 
 -- Hidden panels reserve space in the same chain as real panels, with no dependency
 -- on stale screen coordinates. Linked dragging moves the root, retaining flags.
@@ -202,7 +220,9 @@ assert(previews[1].moving and not previews[4].moving)
 previews[4].scripts.OnDragStop(previews[4])
 assert(previews[1].changed and not previews[4].changed)
 editor:Save()
-assert(profile.afkSnapToCurrentStep and profile.fillersFrameSnapToCurrentStep and profile.questOrderListSnapToCurrentStep)
+assert(
+    profile.afkSnapToCurrentStep and profile.fillersFrameSnapToCurrentStep and profile.questOrderListSnapToCurrentStep
+)
 
 -- Controller nudges use the same draft, scale and linked root as mouse dragging.
 editor:Show()
@@ -216,7 +236,8 @@ assert(root.changed and not editor.previews[2].changed)
 assert(profile.currentStepFrame.x == savedX and profile.currentStepFrame.y == savedY)
 env.setCombat(true)
 local anchor = root.point
-editor:NudgeSelected(10, 10); assert(root.point == anchor)
+editor:NudgeSelected(10, 10)
+assert(root.point == anchor)
 env.setCombat(false)
 editor:Hide()
 assert(profile.currentStepFrame.x == savedX and profile.currentStepFrame.y == savedY)

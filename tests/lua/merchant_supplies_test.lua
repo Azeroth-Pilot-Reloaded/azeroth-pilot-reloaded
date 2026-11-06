@@ -2,14 +2,19 @@
 -- receipts retain the same completion contract on both merchant API variants.
 local function noop() end
 local locale = { BUY_ITEM = "Buy %s %s" }
-function LibStub() return { GetLocale = function() return locale end } end
+function LibStub()
+    return { GetLocale = function() return locale end }
+end
 format, UNKNOWN = string.format, "Unknown"
 function IsModifierKeyDown() return false end
 local bags, goods, calls, advances, epoch, rows, step, selected = {}, {}, {}, 0, 0, {}, nil, true
 APRData = { player = { route = 1 } }
 APR = {
-    PlayerID = "player", ActiveRoute = "route", settings = { profile = {} },
-    Debug = noop, NewModule = function() return {} end,
+    PlayerID = "player",
+    ActiveRoute = "route",
+    settings = { profile = {} },
+    Debug = noop,
+    NewModule = function() return {} end,
     CaptureStepContext = function() return epoch end,
     IsStepContextCurrent = function(_, context) return context == epoch end,
     GetCollectionItemCount = function(_, id) return bags[id] or 0 end,
@@ -48,9 +53,11 @@ end
 for _, modern in ipairs({ false, true }) do
     C_MerchantFrame, GetMerchantItemInfo = nil, nil
     if modern then
-        C_MerchantFrame = { GetItemInfo = function()
-            return { price = 100, stackCount = 5, numAvailable = -1, hasExtendedCost = false }
-        end }
+        C_MerchantFrame = {
+            GetItemInfo = function()
+                return { price = 100, stackCount = 5, numAvailable = -1, hasExtendedCost = false }
+            end,
+        }
     else
         function GetMerchantItemInfo() return "Item", nil, 100, 5, -1, true, true, false end
     end
@@ -69,8 +76,10 @@ for _, modern in ipairs({ false, true }) do
     assert(advances == 1, "Repeated receipts cannot advance twice")
 
     start({ { itemID = 1, quantity = 5, optional = true, isSupply = true } }, {}, {}, false)
-    assert(#calls == 0 and advances == 0 and render() == "Buy 5 Item 1",
-        "Missing optional stock must not silently discard manual advice")
+    assert(
+        #calls == 0 and advances == 0 and render() == "Buy 5 Item 1",
+        "Missing optional stock must not silently discard manual advice"
+    )
 
     start({ { itemID = 1, quantity = 5, targetStock = true, isSupply = true } }, { [1] = 5 }, nil, false)
     assert(#calls == 0 and advances == 1, "Already carried stock completes without buying")
@@ -96,12 +105,17 @@ for _, modern in ipairs({ false, true }) do
     APR:UpdatePurchaseTracking(1, 3)
     assert(advances == 1)
 
-    start({ { itemID = 1, quantity = 4, isSupply = true },
-        { itemID = 2, quantity = 2, questID = 10 }, { itemID = 3, quantity = 1, isSupply = false } }, {},
-        { { itemID = 1 }, { itemID = 2 }, { itemID = 3 } }, false)
-    assert(#calls == 2 and calls[1][1] == 2 and calls[2][1] == 3,
-        "Mixed visits still buy quest requirements and unmarked items")
-    receipt(2, 2); receipt(3, 1)
+    start({
+        { itemID = 1, quantity = 4, isSupply = true },
+        { itemID = 2, quantity = 2, questID = 10 },
+        { itemID = 3, quantity = 1, isSupply = false },
+    }, {}, { { itemID = 1 }, { itemID = 2 }, { itemID = 3 } }, false)
+    assert(
+        #calls == 2 and calls[1][1] == 2 and calls[2][1] == 3,
+        "Mixed visits still buy quest requirements and unmarked items"
+    )
+    receipt(2, 2)
+    receipt(3, 1)
     assert(advances == 0, "Mixed visits retain their manual supply instruction")
     receipt(1, 4)
     assert(advances == 1, "Manual supplies can finish a mixed visit")

@@ -11,20 +11,34 @@ local function Walk(context, from, to)
     if type(speed) ~= "number" or speed ~= speed or speed <= 0 or speed == math.huge then speed = 7 end
     local dx, dy = to.x - from.x, to.y - from.y
     local dz = type(from.z) == "number" and type(to.z) == "number" and to.z - from.z or 0
-    return { kind = "walk", from = from, to = to, copper = 0,
-        seconds = math.sqrt(dx * dx + dy * dy + dz * dz) / speed }
+    return {
+        kind = "walk",
+        from = from,
+        to = to,
+        copper = 0,
+        seconds = math.sqrt(dx * dx + dy * dy + dz * dz) / speed,
+    }
 end
 
 function Instance:CreateZoneRoute(context)
-    return setmetatable({ owner = self, context = context, status = "planning", phase = "lookup",
-        mapID = context.goal and context.goal.uiMapID, depth = 0 }, Job)
+    return setmetatable({
+        owner = self,
+        context = context,
+        status = "planning",
+        phase = "lookup",
+        mapID = context.goal and context.goal.uiMapID,
+        depth = 0,
+    }, Job)
 end
 
 function Job:AdvanceLookup()
     local data, context = self.owner, self.context
     local start, goal = context.start, context.goal
     if self.phase == "lookup" then
-        if not start or not goal then self.status = "fallback"; return self.status end
+        if not start or not goal then
+            self.status = "fallback"
+            return self.status
+        end
         local routes = data.config.ZoneRoutes
         local id = routes and routes[self.mapID]
         if data:CanWalk(start, goal) then
@@ -62,13 +76,19 @@ function Job:AdvanceLookup()
             return self.status
         end
         local definition = data.connectionLookup[id]
-        if not definition or definition.actions or definition.disabled
-            or (definition.reviewStatus and definition.reviewStatus ~= "confirmed") then
+        if
+            not definition
+            or definition.actions
+            or definition.disabled
+            or (definition.reviewStatus and definition.reviewStatus ~= "confirmed")
+        then
             self.active, self.phase = data:CreateZoneGraphRoute(context, Walk), "graph"
             return self.status
         end
         local selected = {}
-        for key, value in pairs(context) do selected[key] = value end
+        for key, value in pairs(context) do
+            selected[key] = value
+        end
         selected.connectionID = id
         self.active, self.phase = data:CreateEdgeBuild(selected), "entrance"
         return "planning"
@@ -100,7 +120,10 @@ function Job:Step(maxOperations, milliseconds)
     end
 
     if status == "planning" then return status end
-    if status == "cancelled" then self.status = status; return status end
+    if status == "cancelled" then
+        self.status = status
+        return status
+    end
     self.active = nil
     local blockers = metadata and metadata.blockedEdges
     if blockers and #blockers > 0 then
@@ -115,9 +138,12 @@ function Job:Step(maxOperations, milliseconds)
             self.active, self.phase = data:CreateZoneGraphRoute(context, Walk), "graph"
         else
             local approach, arrival = Walk(context, start, edge.from), Walk(context, edge.to, goal)
-            self.result = { segments = { approach, edge, arrival },
+            self.result = {
+                segments = { approach, edge, arrival },
                 totalSeconds = approach.seconds + edge.seconds + arrival.seconds,
-                totalCopper = edge.copper or 0, resourcesUsed = {} }
+                totalCopper = edge.copper or 0,
+                resourcesUsed = {},
+            }
             self.status = "ready"
         end
     end

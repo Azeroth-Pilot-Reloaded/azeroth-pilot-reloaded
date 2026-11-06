@@ -1,21 +1,33 @@
 -- Synthetic treasure actions use loaded quest titles, including late data.
 local title, completed, advanced, row, details = nil, false, 0
-local locale = {GET_TREASURE = "Loot the treasure"}
-function LibStub() return {GetLocale = function() return locale end} end
-APRData = {player = {synthetic = 1}}
-APR = {PlayerID = "player", ActiveRoute = "synthetic", stepHandlers = {}, Debug = function() end,
-    GetQuestTitle = function(_, id) assert(id == 990001); return title end,
+local locale = { GET_TREASURE = "Loot the treasure" }
+function LibStub()
+    return { GetLocale = function() return locale end }
+end
+APRData = { player = { synthetic = 1 } }
+APR = {
+    PlayerID = "player",
+    ActiveRoute = "synthetic",
+    stepHandlers = {},
+    Debug = function() end,
+    GetQuestTitle = function(_, id)
+        assert(id == 990001)
+        return title
+    end,
     NextQuestStep = function() advanced = advanced + 1 end,
     currentStep = {
-        AddQuestSteps = function(_, id, text, kind) row = {id = id, text = text, kind = kind} end,
-        AddQuestStepsWithDetails = function(_, key, text, entries) row = {id = key, text = text}; details = entries end,
+        AddQuestSteps = function(_, id, text, kind) row = { id = id, text = text, kind = kind } end,
+        AddQuestStepsWithDetails = function(_, key, text, entries)
+            row = { id = key, text = text }
+            details = entries
+        end,
     },
 }
 UNKNOWN = "Unknown"
-C_QuestLog = {IsQuestFlaggedCompleted = function() return completed end}
-C_Item = {GetItemInfo = function() return "Invented reward" end}
+C_QuestLog = { IsQuestFlaggedCompleted = function() return completed end }
+C_Item = { GetItemInfo = function() return "Invented reward" end }
 dofile("APR-Core/features/questing/StepActionHandlers.lua")
-local step = {Treasure = {questID = 990001}}
+local step = { Treasure = { questID = 990001 } }
 APR.stepHandlers.Treasure(step, true, 1)
 assert(row.text == "Loot the treasure" and row.id == 990001)
 title = "Forgotten chest"

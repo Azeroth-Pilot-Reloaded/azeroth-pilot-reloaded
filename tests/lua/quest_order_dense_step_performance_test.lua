@@ -5,7 +5,9 @@ local function noop() end
 local now, charge, failures = 0, false, {}
 local failText
 function debugprofilestop() return now end
-function geterrorhandler() return function(err) failures[#failures + 1] = err end end
+function geterrorhandler()
+    return function(err) failures[#failures + 1] = err end
+end
 local createFont = env.methods.CreateFontString
 function env.methods:CreateFontString(...)
     if charge then now = now + 0.2 end
@@ -51,11 +53,13 @@ C_QuestLog.IsQuestFlaggedCompleted = function()
     return false
 end
 local timers = {}
-C_Timer = { NewTimer = function(_, callback)
-    local timer = { callback = callback, Cancel = function(self) self.cancelled = true end }
-    timers[#timers + 1] = timer
-    return timer
-end }
+C_Timer = {
+    NewTimer = function(_, callback)
+        local timer = { callback = callback, Cancel = function(self) self.cancelled = true end }
+        timers[#timers + 1] = timer
+        return timer
+    end,
+}
 APR.ActiveRoute, APR.PlayerID, APR.ActiveQuests = "synthetic-dense", "player", {}
 APRData = { player = { [APR.ActiveRoute] = 1 } }
 local route = { { Note = "Old publication" }, { Note = "Old tail" } }
@@ -86,7 +90,8 @@ end
 local function drainModel()
     local batches = 0
     while list.renderFrame and list.renderFrame.scripts.OnUpdate do
-        renderModel(); batches = batches + 1
+        renderModel()
+        batches = batches + 1
         assert(batches < 2000, "A dense model must eventually finish")
     end
     return batches
@@ -94,15 +99,20 @@ end
 local function drainViewport()
     local batches = 0
     while list.virtualList.renderFrame.scripts.OnUpdate do
-        renderViewport(); batches = batches + 1
+        renderViewport()
+        batches = batches + 1
         assert(batches < 2000, "A dense viewport row must eventually finish")
     end
     return batches
 end
-list:AddStepFromRoute(true); drainModel(); drainViewport()
+list:AddStepFromRoute(true)
+drainModel()
+drainViewport()
 local oldPublication = list.stepList
 local ids = {}
-for index = 1, 300 do ids[index] = index end
+for index = 1, 300 do
+    ids[index] = index
+end
 local dense = { PickUp = ids }
 route = { dense, { Note = "Tail two" }, { Note = "Tail three" } }
 APR.RouteQuestStepList[APR.ActiveRoute] = route
@@ -111,17 +121,22 @@ list:AddStepFromRoute(true)
 local batches = 0
 while list.renderFrame.scripts.OnUpdate do
     assert(list.stepList == oldPublication, "An incomplete dense model cannot replace the published route")
-    renderModel(); batches = batches + 1
+    renderModel()
+    batches = batches + 1
 end
 assert(batches > 50 and list.stepList ~= oldPublication and #list.stepList == 3)
 local denseModel = list.stepList[1]
-assert(#denseModel.questInfo == 300 and denseModel.questInfo[1].questID == 1
-    and denseModel.questInfo[300].questID == 300, "Every independently chosen objective remains present and ordered")
+assert(
+    #denseModel.questInfo == 300 and denseModel.questInfo[1].questID == 1 and denseModel.questInfo[300].questID == 300,
+    "Every independently chosen objective remains present and ordered"
+)
 assert(denseModel.frame == nil, "Publishing a model cannot synchronously bind its dense viewport row")
 renderViewport()
 local row = list.virtualList.active[1]
-assert(row and row.modelBinding and not row:IsShown() and denseModel.frame == nil,
-    "A partially bound row stays hidden and cannot receive tooltip/model updates")
+assert(
+    row and row.modelBinding and not row:IsShown() and denseModel.frame == nil,
+    "A partially bound row stays hidden and cannot receive tooltip/model updates"
+)
 assert(drainViewport() > 50)
 assert(row:IsShown() and row.model == denseModel and denseModel.frame == row and not row.modelBinding)
 assert(#row.questFonts == 300 and row.questFonts[300]:GetText() == "300 - Quest 300")
@@ -141,62 +156,90 @@ assert(row.titleFont.role == "activeStep" and row.questFonts[300].role == "base"
 
 -- Progress can change while a row is still binding. Retarget the pending
 -- coroutine even if the model identity and list generation remain unchanged.
-list.virtualList:RefreshVisible(true); renderViewport()
+list.virtualList:RefreshVisible(true)
+renderViewport()
 local changedRequest = row.modelBinding
 assert(changedRequest and denseModel.frame == nil)
 support:SetStepFrameState(denseModel, "green", false)
 assert(support:CollapseStepDetails(denseModel))
 drainViewport()
-assert(row.modelBinding ~= changedRequest and row.model == denseModel and #row.questFonts == 0
-    and row.titleFont.role == "success", "A pending bind cannot revive objectives removed by current progress")
+assert(
+    row.modelBinding ~= changedRequest
+        and row.model == denseModel
+        and #row.questFonts == 0
+        and row.titleFont.role == "success",
+    "A pending bind cannot revive objectives removed by current progress"
+)
 
 -- Cancelling during hidden measurement reuses its stored row/font pool.
 list:AddStepFromRoute(true)
 local waiting = 0
 while #support.measureRow.questFonts == 0 or #support.measureRow.questFonts >= 300 do
-    renderModel(); waiting = waiting + 1
+    renderModel()
+    waiting = waiting + 1
     assert(waiting < 1000 and list.renderFrame.scripts.OnUpdate, "The dense measurement must become partially prepared")
 end
 route = { { Note = "After cancelled model" } }
 APR.RouteQuestStepList[APR.ActiveRoute] = route
-list:AddStepFromRoute(true); drainModel(); drainViewport()
+list:AddStepFromRoute(true)
+drainModel()
+drainViewport()
 assert(list.stepList[1].stepText:find("After cancelled model") and #list.stepList == 1)
 local warmFrames, warmFonts = env.frames(), env.fonts()
 for _ = 1, 3 do
-    route = { dense }; APR.RouteQuestStepList[APR.ActiveRoute] = route
-    list:AddStepFromRoute(true); drainModel()
+    route = { dense }
+    APR.RouteQuestStepList[APR.ActiveRoute] = route
+    list:AddStepFromRoute(true)
+    drainModel()
     renderViewport()
     assert(list.virtualList.active[1].modelBinding, "The dense viewport bind is pending before replacement")
     local cancelledRequest = list.virtualList.active[1].modelBinding
-    route = { { Note = "After cancelled viewport" } }; APR.RouteQuestStepList[APR.ActiveRoute] = route
-    list:AddStepFromRoute(true); drainModel(); drainViewport()
+    route = { { Note = "After cancelled viewport" } }
+    APR.RouteQuestStepList[APR.ActiveRoute] = route
+    list:AddStepFromRoute(true)
+    drainModel()
+    drainViewport()
     local replacement = list.virtualList.active[1]
-    assert(replacement.modelBinding ~= cancelledRequest and not replacement.modelBinding
-        and replacement.model == list.stepList[1] and #replacement.questFonts == 0)
+    assert(
+        replacement.modelBinding ~= cancelledRequest
+            and not replacement.modelBinding
+            and replacement.model == list.stepList[1]
+            and #replacement.questFonts == 0
+    )
 end
-assert(env.frames() == warmFrames and env.fonts() == warmFonts,
-    "Cancelled dense work reuses measurement and viewport pools after warmup")
+assert(
+    env.frames() == warmFrames and env.fonts() == warmFonts,
+    "Cancelled dense work reuses measurement and viewport pools after warmup"
+)
 
 -- Scrolling away releases a pending bind before the recycled row gets new data.
 route = { dense, { Note = "Offscreen replacement two" }, { Note = "Offscreen replacement three" } }
 APR.RouteQuestStepList[APR.ActiveRoute] = route
-list:AddStepFromRoute(true); drainModel(); renderViewport()
+list:AddStepFromRoute(true)
+drainModel()
+renderViewport()
 row = list.virtualList.active[1]
 local pendingRequest = row.modelBinding
 assert(pendingRequest)
 QuestOrderListFrame_ScrollFrame:SetHeight(10)
-list.virtualList:ScrollToIndex(3); drainViewport()
-assert(not list.virtualList.active[1] and row.modelBinding ~= pendingRequest,
-    "Recycling an offscreen row cancels its old dense binding")
+list.virtualList:ScrollToIndex(3)
+drainViewport()
+assert(
+    not list.virtualList.active[1] and row.modelBinding ~= pendingRequest,
+    "Recycling an offscreen row cancels its old dense binding"
+)
 QuestOrderListFrame_ScrollFrame:SetHeight(300)
 
 -- A failed model retains the last complete route, and a retry can reuse its pool.
 local beforeFailure = list.stepList
 failText = "27 - Quest 27"
-list:AddStepFromRoute(true); drainModel()
+list:AddStepFromRoute(true)
+drainModel()
 assert(#failures == 1 and list.renderFailed and list.stepList == beforeFailure)
 failText = nil
-list:AddStepFromRoute(); drainModel(); drainViewport()
+list:AddStepFromRoute()
+drainModel()
+drainViewport()
 assert(not list.renderFailed and list.stepList[1].questInfo[27].questID == 27)
 
 -- A failed viewport bind releases the generic renderer guard; an explicit
@@ -206,11 +249,15 @@ failText = "27 - Quest 27"
 local failed = false
 while list.virtualList.renderFrame.scripts.OnUpdate do
     local ok = pcall(renderViewport)
-    if not ok then failed = true; break end
+    if not ok then
+        failed = true
+        break
+    end
 end
 assert(failed and not list.virtualList.rendering and not list.virtualList.active[1].modelBinding)
 failText = nil
-list.virtualList:RefreshVisible(true); drainViewport()
+list.virtualList:RefreshVisible(true)
+drainViewport()
 assert(list.virtualList.active[1].model == list.stepList[1] and list.virtualList.active[1]:IsShown())
 
 -- Native objective tables are per quest, not per objective. A single dense
@@ -225,9 +272,13 @@ end
 APR.QUEST_STATUS = { COMPLETE = "complete" }
 route = { { QpartPart = { [1001] = ids } } }
 APR.RouteQuestStepList[APR.ActiveRoute] = route
-list:AddStepFromRoute(true); drainModel(); drainViewport()
-assert(objectiveReads == 1 and #list.stepList[1].questInfo == 300,
-    "One native objective read supplies all pending objectives, including unavailable results")
+list:AddStepFromRoute(true)
+drainModel()
+drainViewport()
+assert(
+    objectiveReads == 1 and #list.stepList[1].questInfo == 300,
+    "One native objective read supplies all pending objectives, including unavailable results"
+)
 local beforeCollapse = now
 assert(support:CollapseStepDetails(list.stepList[1]))
 assert(now - beforeCollapse < 0.1, "Collapsing a published dense model does not hide every font inline")
@@ -239,10 +290,12 @@ assert(#list.virtualList.active[1].questFonts == 0)
 list:UpdateFrameContents()
 assert(list.updateTimer)
 list.updateTimer.callback()
-drainModel(); renderViewport()
+drainModel()
+renderViewport()
 local generationRequest = list.virtualList.active[1].modelBinding
 assert(generationRequest)
-list.virtualList:RefreshVisible(true); renderViewport()
+list.virtualList:RefreshVisible(true)
+renderViewport()
 assert(list.virtualList.active[1].modelBinding ~= generationRequest)
 drainViewport()
 assert(list.virtualList.active[1].model == list.stepList[1] and list.virtualList.active[1]:IsShown())
@@ -252,7 +305,9 @@ assert(list.virtualList.active[1].model == list.stepList[1] and list.virtualList
 local diagnostics = APRInstrumentation
 diagnostics.enabled = true
 list.contentSignature = nil
-list:AddStepFromRoute(true); drainModel(); drainViewport()
+list:AddStepFromRoute(true)
+drainModel()
+drainViewport()
 assert(diagnostics.CurrentName() == nil)
 list.virtualList:RefreshVisible(true)
 failed = false
@@ -260,14 +315,25 @@ failed = false
 failText = "1001-27 - Quest 1001"
 while list.virtualList.renderFrame.scripts.OnUpdate do
     local ok = pcall(renderViewport)
-    if not ok then failed = true; break end
+    if not ok then
+        failed = true
+        break
+    end
 end
-assert(failed and diagnostics.CurrentName() == nil and not list.virtualList.rendering,
-    "A yielding viewport error unwinds diagnostic scopes and the rendering guard")
+assert(
+    failed and diagnostics.CurrentName() == nil and not list.virtualList.rendering,
+    "A yielding viewport error unwinds diagnostic scopes and the rendering guard"
+)
 failText = nil
-list.virtualList:RefreshVisible(true); drainViewport()
+list.virtualList:RefreshVisible(true)
+drainViewport()
 assert(diagnostics.CurrentName() == nil and list.virtualList.active[1]:IsShown())
 diagnostics.enabled = false
 assert(largestModelBatch > 0 and largestViewportBatch > 0)
-print(string.format("Dense quest row: 300 objectives; model batches <= %.2f ms and viewport batches <= %.2f ms; atomic publication, cancellation, pools and failure recovery passed",
-    largestModelBatch, largestViewportBatch))
+print(
+    string.format(
+        "Dense quest row: 300 objectives; model batches <= %.2f ms and viewport batches <= %.2f ms; atomic publication, cancellation, pools and failure recovery passed",
+        largestModelBatch,
+        largestViewportBatch
+    )
+)

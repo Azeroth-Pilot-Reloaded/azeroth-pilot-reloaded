@@ -10,14 +10,19 @@ APR.WorkspaceOptions = {}
 local Model = APR.WorkspaceOptions
 
 local formResets = {
-    resetCurrentStepPosition = true, fillersFrameResetPosition = true,
-    arrowReset = true, afkResetPosition = true, resetPartyPosition = true,
+    resetCurrentStepPosition = true,
+    fillersFrameResetPosition = true,
+    arrowReset = true,
+    afkResetPosition = true,
+    resetPartyPosition = true,
     resetTextAppearance = true,
 }
 
 local function CopyOption(option)
     local copy = {}
-    for key, value in pairs(option) do copy[key] = value end
+    for key, value in pairs(option) do
+        copy[key] = value
+    end
     if option.type == "multiselect" and not copy.dialogControl then copy.dialogControl = "Dropdown" end
     if option.args then
         copy.args, copy.inline = {}, true
@@ -30,17 +35,24 @@ local function CopyOption(option)
                 if formResets[key] and childCopy.type == "execute" then
                     childCopy.order = 10000
                     spacing = spacing or {}
-                    spacing[key .. "Spacing"] = {type = "description", name = " ", width = "full", order = 9999}
+                    spacing[key .. "Spacing"] = { type = "description", name = " ", width = "full", order = 9999 }
                 end
             end
         end
         -- Apply last so a generated spacer still replaces any conflicting definition.
         if spacing then
-            for key, spacer in pairs(spacing) do copy.args[key] = spacer end
+            for key, spacer in pairs(spacing) do
+                copy.args[key] = spacer
+            end
         end
-    elseif option.type == "toggle" or option.type == "range" or option.type == "color"
-        or option.type == "select" or option.type == "multiselect"
-        or (option.type == "input" and not option.multiline) then
+    elseif
+        option.type == "toggle"
+        or option.type == "range"
+        or option.type == "color"
+        or option.type == "select"
+        or option.type == "multiselect"
+        or (option.type == "input" and not option.multiline)
+    then
         if not (type(option.arg) == "table" and option.arg.aprInline) then copy.width = "full" end
     elseif option.type == "execute" then
         if not (type(option.arg) == "table" and option.arg.aprInline) then
@@ -48,11 +60,13 @@ local function CopyOption(option)
         end
     end
     return copy
-end--[[APR_DIAG]]; CopyOption = APRTrace("APR-Core/config/WorkspaceOptions.lua:18:CopyOption#1", CopyOption)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+CopyOption = APRTrace("APR-Core/config/WorkspaceOptions.lua:18:CopyOption#1", CopyOption)--[[/APR_DIAG]]
 
 local function Group(name, args, order)
-    return {type = "group", name = name, args = args, inline = true, order = order or 1}
-end--[[APR_DIAG]]; Group = APRTrace("APR-Core/config/WorkspaceOptions.lua:53:Group#2", Group)--[[/APR_DIAG]]
+    return { type = "group", name = name, args = args, inline = true, order = order or 1 }
+end--[[APR_DIAG]]
+Group = APRTrace("APR-Core/config/WorkspaceOptions.lua:53:Group#2", Group)--[[/APR_DIAG]]
 
 -- Gameplay categories expose display, placement and typography as separate tabs.
 local function PanelOptions(source, mainKey, placementKeys)
@@ -61,7 +75,9 @@ local function PanelOptions(source, mainKey, placementKeys)
     main.name, main.order = DISPLAY, 1
     -- Only inherited group metadata is needed; the children are moved below.
     local placement = {}
-    for key, value in pairs(main) do placement[key] = value end
+    for key, value in pairs(main) do
+        placement[key] = value
+    end
     placement.name, placement.order, placement.args = L["UI_SETTINGS_PLACEMENT"], 2, {}
     for _, key in ipairs(placementKeys) do
         placement.args[key], main.args[key] = main.args[key], nil
@@ -76,7 +92,8 @@ local function PanelOptions(source, mainKey, placementKeys)
         end
     end
     return options
-end--[[APR_DIAG]]; PanelOptions = APRTrace("APR-Core/config/WorkspaceOptions.lua:58:PanelOptions#3", PanelOptions)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+PanelOptions = APRTrace("APR-Core/config/WorkspaceOptions.lua:58:PanelOptions#3", PanelOptions)--[[/APR_DIAG]]
 
 local function ProfileOptions(source)
     local options = CopyOption(source)
@@ -89,21 +106,25 @@ local function ProfileOptions(source)
             option.dialogControl, option.width = "APRSettingsAction", "full"
             option.desc = description or option.desc
         end
-    end--[[APR_DIAG]]; action = APRTrace("APR-Core/config/WorkspaceOptions.lua:86:action#5", action)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    action = APRTrace("APR-Core/config/WorkspaceOptions.lua:86:action#5", action)--[[/APR_DIAG]]
     action("reset", args.descreset and args.descreset.name)
     local bulkExplanation = args.reset_all_profiles and args.reset_all_profiles.confirmText
     if type(bulkExplanation) == "string" then bulkExplanation = bulkExplanation:match("[^\r\n]+") end
     action("reset_all_profiles", bulkExplanation)
     options.args = {
-        active = Group(args.current and args.current.name or source.name, {choose = args.choose}, 1),
-        setup = Group(L["UI_PROFILE_SETUP"], {new = args.new, copyfrom = args.copyfrom}, 2),
+        active = Group(args.current and args.current.name or source.name, { choose = args.choose }, 1),
+        setup = Group(L["UI_PROFILE_SETUP"], { new = args.new, copyfrom = args.copyfrom }, 2),
         management = Group(L["PROFILES"], {
-            delete = args.delete, reset = args.reset, reset_all_profiles = args.reset_all_profiles,
+            delete = args.delete,
+            reset = args.reset,
+            reset_all_profiles = args.reset_all_profiles,
         }, 3),
     }
     if args.reset then args.reset.order = 90 end
     return options
-end--[[APR_DIAG]]; ProfileOptions = APRTrace("APR-Core/config/WorkspaceOptions.lua:81:ProfileOptions#4", ProfileOptions)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+ProfileOptions = APRTrace("APR-Core/config/WorkspaceOptions.lua:81:ProfileOptions#4", ProfileOptions)--[[/APR_DIAG]]
 
 function Model:Build(settings)
     local source = settings.optionsTable.args
@@ -111,10 +132,11 @@ function Model:Build(settings)
     local sections = {}
     -- These helpers take ownership of already private presentation trees.
     local function category(id, options)
-        local entry = {id = id, label = options.name, options = options}
+        local entry = { id = id, label = options.name, options = options }
         sections[#sections + 1] = entry
         return entry
-    end--[[APR_DIAG]]; category = APRTrace("APR-Core/config/WorkspaceOptions.lua:113:category#7", category)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    category = APRTrace("APR-Core/config/WorkspaceOptions.lua:113:category#7", category)--[[/APR_DIAG]]
     local function section(id, label, entries)
         local args = {}
         for order, entry in ipairs(entries) do
@@ -122,31 +144,40 @@ function Model:Build(settings)
             option.order = order
             args[entry[1]] = option
         end
-        sections[#sections + 1] = {id = id, label = label, options = Group(label, args)}
-    end--[[APR_DIAG]]; section = APRTrace("APR-Core/config/WorkspaceOptions.lua:118:section#8", section)--[[/APR_DIAG]]
+        sections[#sections + 1] = { id = id, label = label, options = Group(label, args) }
+    end--[[APR_DIAG]]
+    section = APRTrace("APR-Core/config/WorkspaceOptions.lua:118:section#8", section)--[[/APR_DIAG]]
     local advanced = source.group_Advanced_Automation.args
     local main = CopyOption(source.group_Automation)
     local comfort = CopyOption(advanced.subgroup_advanced_automation)
     comfort.name, comfort.order = L["UI_AUTOMATION_COMFORT"], 2
     main.order = 1
     -- Quest-specific preferences belong with accepting quests and choosing routes.
-    for _, key in ipairs({"pickupQuestLookahead", "sojournerSkipCampaign"}) do
+    for _, key in ipairs({ "pickupQuestLookahead", "sojournerSkipCampaign" }) do
         main.args[key], comfort.args[key] = comfort.args[key], nil
     end
     section("automation", L["AUTOMATION"], {
-        {"main", Group(GENERAL, {quests = main, comfort = comfort})},
-        {"subgroup_waypoints", CopyOption(advanced.subgroup_waypoints)},
-        {"group_gossip_automation", CopyOption(source.group_gossip_automation)},
-        {"group_reward_automation", CopyOption(source.group_reward_automation)},
+        { "main", Group(GENERAL, { quests = main, comfort = comfort }) },
+        { "subgroup_waypoints", CopyOption(advanced.subgroup_waypoints) },
+        { "group_gossip_automation", CopyOption(source.group_gossip_automation) },
+        { "group_reward_automation", CopyOption(source.group_reward_automation) },
     })
 
     local current = PanelOptions(source.group_Current_Step, "subgroup_CurrentStep", {
-        "currentStepAttachFrameToQuestLog", "currentStepTrackerSide", "currentStepMatchTrackerStyle", "currentStepTrackerProvider", "currentStepLock", "currentStepScale",
-        "currentStepQuestButtonPositionRight", "resetCurrentStepPosition",
+        "currentStepAttachFrameToQuestLog",
+        "currentStepTrackerSide",
+        "currentStepMatchTrackerStyle",
+        "currentStepTrackerProvider",
+        "currentStepLock",
+        "currentStepScale",
+        "currentStepQuestButtonPositionRight",
+        "resetCurrentStepPosition",
     })
     current.args.subgroup_FillersFrame = nil
     local afk = CopyOption(source.group_AFK)
-    for key, option in pairs(afk.args.subgroup_AFK.args.afkSize.args) do afk.args.subgroup_AFK.args[key] = option end
+    for key, option in pairs(afk.args.subgroup_AFK.args.afkSize.args) do
+        afk.args.subgroup_AFK.args[key] = option
+    end
     afk.args.subgroup_AFK.args.afkSize = nil
     category("group_Current_Step", current)
     category("group_FillersFrame", CopyOption(source.group_Current_Step.args.subgroup_FillersFrame))
@@ -155,75 +186,94 @@ function Model:Build(settings)
     category("group_map_minimap", CopyOption(source.group_map_minimap))
     -- Flattening can replace reset controls, so normalize their spacers once more.
     local afkSection = category("group_AFK", CopyOption(afk))
-    afkSection.actions = {{key = "afkFakeTimer", option = afkSection.options.args.subgroup_AFK.args.afkFakeTimer}}
+    afkSection.actions = { { key = "afkFakeTimer", option = afkSection.options.args.subgroup_AFK.args.afkFakeTimer } }
     afkSection.options.args.subgroup_AFK.args.afkFakeTimer = nil
     category("group_Group", CopyOption(source.group_Group))
     if source.groupFinder then category("groupFinder", CopyOption(source.groupFinder)) end
     category("group_Heirloom", CopyOption(source.group_Heirloom))
     category("group_XP_Buff", CopyOption(source.group_XP_Buff.args.subgroup_XP_Buff))
-    local themeOptions = {uiSkin = debug.subgroup_Enable.args.uiSkin}
+    local themeOptions = { uiSkin = debug.subgroup_Enable.args.uiSkin }
     for key, option in pairs(debug.subgroup_Enable.args) do
         if key:match("^theme") then themeOptions[key] = option end
     end
     section("appearance", L["UI_APPEARANCE"], {
-        {"theme", CopyOption(Group(L["UI_THEME"], themeOptions))},
-        {"group_GlobalTextAppearance", CopyOption(source.group_GlobalTextAppearance)},
+        { "theme", CopyOption(Group(L["UI_THEME"], themeOptions)) },
+        { "group_GlobalTextAppearance", CopyOption(source.group_GlobalTextAppearance) },
     })
-    sections[#sections].actions = {{key = "layoutEditor", option = CopyOption(debug.layoutEditor)}}
-    sections[#sections + 1] = {id = "profiles", label = L["PROFILES"], options = ProfileOptions(settings.profileOptions)}
-    sections[#sections + 1] = {id = "changelog", label = L["UI_RELEASE_NOTES"], options = Group(L["UI_RELEASE_NOTES"], {
-        showChangeLog = CopyOption(debug.subgroup_Enable.args.showChangeLog),
-        checkForUpdate = CopyOption(debug.subgroup_Enable.args.checkForUpdate),
-    })}
+    sections[#sections].actions = { { key = "layoutEditor", option = CopyOption(debug.layoutEditor) } }
+    sections[#sections + 1] =
+        { id = "profiles", label = L["PROFILES"], options = ProfileOptions(settings.profileOptions) }
+    sections[#sections + 1] = {
+        id = "changelog",
+        label = L["UI_RELEASE_NOTES"],
+        options = Group(L["UI_RELEASE_NOTES"], {
+            showChangeLog = CopyOption(debug.subgroup_Enable.args.showChangeLog),
+            checkForUpdate = CopyOption(debug.subgroup_Enable.args.checkForUpdate),
+        }),
+    }
     local diagnostics = category("debug", CopyOption(debug.subgroup_debug))
     diagnostics.options.args.enableAddon = CopyOption(debug.subgroup_Enable.args.enableAddon)
     diagnostics.options.args.enableAddon.order = 0
     return sections
-end--[[APR_DIAG]]; Model.Build = APRTrace("APR-Core/config/WorkspaceOptions.lua:108:Model:Build#6", Model.Build)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Model.Build = APRTrace("APR-Core/config/WorkspaceOptions.lua:108:Model:Build#6", Model.Build)--[[/APR_DIAG]]
 
 -- One persistent action for the whole options workspace, outside every category's form.
 function Model:ResetAction(settings)
     return CopyOption(settings.optionsTable.args.resetButton)
-end--[[APR_DIAG]]; Model.ResetAction = APRTrace("APR-Core/config/WorkspaceOptions.lua:185:Model:ResetAction#9", Model.ResetAction)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Model.ResetAction = APRTrace("APR-Core/config/WorkspaceOptions.lua:185:Model:ResetAction#9", Model.ResetAction)--[[/APR_DIAG]]
 
 -- Split long pages by the task the player is performing; option definitions remain shared with AceConfig.
 function Model:Views(section)
     local options = CopyOption(section.options)
     if section.id == "profiles" then
         -- These forms use inline sections on a single page, without intermediate tabs.
-        return {{id = "general", label = section.label, options = options}}
+        return { { id = "general", label = section.label, options = options } }
     end
     local groups, direct = {}, {}
     for key, option in pairs(options.args) do
-        if option.type == "group" then groups[#groups + 1] = {key = key, option = option}
-        else direct[key] = option end
+        if option.type == "group" then
+            groups[#groups + 1] = { key = key, option = option }
+        else
+            direct[key] = option
+        end
     end
-    table.sort(groups, --[[APR_DIAG]]APRTrace("APR-Core/config/WorkspaceOptions.lua:201:callback#11", --[[/APR_DIAG]]function(a, b)
-        local aOrder, bOrder = a.option.order or 0, b.option.order or 0
-        return aOrder == bOrder and a.key < b.key or aOrder < bOrder
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    table.sort(
+        groups, --[[APR_DIAG]]
+        APRTrace("APR-Core/config/WorkspaceOptions.lua:201:callback#11", --[[/APR_DIAG]] function(a, b)
+            local aOrder, bOrder = a.option.order or 0, b.option.order or 0
+            return aOrder == bOrder and a.key < b.key or aOrder < bOrder
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     local views = {}
     local function view(id, label, args, group)
         local root = {}
-        for key, value in pairs(options) do root[key] = value end
-        for key, value in pairs(group or {}) do root[key] = value end
+        for key, value in pairs(options) do
+            root[key] = value
+        end
+        for key, value in pairs(group or {}) do
+            root[key] = value
+        end
         root.args = args
-        local entry = {id = id, label = label, options = root}
+        local entry = { id = id, label = label, options = root }
         if section.id == "appearance" and id == "theme" then
             entry.footerActions = {}
-            for _, key in ipairs({"themeDiscard", "themeApply"}) do
+            for _, key in ipairs({ "themeDiscard", "themeApply" }) do
                 if args[key] then
-                    entry.footerActions[#entry.footerActions + 1] = {key = key, option = args[key]}
+                    entry.footerActions[#entry.footerActions + 1] = { key = key, option = args[key] }
                     args[key] = nil
                 end
             end
         end
         views[#views + 1] = entry
-    end--[[APR_DIAG]]; view = APRTrace("APR-Core/config/WorkspaceOptions.lua:206:view#12", view)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    view = APRTrace("APR-Core/config/WorkspaceOptions.lua:206:view#12", view)--[[/APR_DIAG]]
     if next(direct) then view("general", GENERAL, direct) end
     for _, group in ipairs(groups) do
         view(group.key, group.option.name, group.option.args, group.option)
     end
     if #views == 0 then view("general", section.label, options.args) end
     return views
-end--[[APR_DIAG]]; Model.Views = APRTrace("APR-Core/config/WorkspaceOptions.lua:190:Model:Views#10", Model.Views)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Model.Views = APRTrace("APR-Core/config/WorkspaceOptions.lua:190:Model:Views#10", Model.Views)--[[/APR_DIAG]]

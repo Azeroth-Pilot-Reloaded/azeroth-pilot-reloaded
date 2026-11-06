@@ -12,7 +12,8 @@ Graph.__index = Graph
 local POINTS, INSET, TOP_INSET = 120, 6, 22
 
 function Graph:New(parent, color, tooltip)
-    local graph = setmetatable({frame = APR.UI:Panel(parent), lines = {}, fills = {}, grids = {}, tooltip = tooltip}, self)
+    local graph =
+        setmetatable({ frame = APR.UI:Panel(parent), lines = {}, fills = {}, grids = {}, tooltip = tooltip }, self)
     local frame = graph.frame
     frame:EnableMouse(true)
     for index = 1, 12 do
@@ -37,34 +38,52 @@ function Graph:New(parent, color, tooltip)
     graph.maximumLabel:SetPoint("TOPRIGHT", -8, -5)
     graph.zeroLabel = APR.UI:Label(frame, "0", 11, "muted")
     graph.zeroLabel:SetPoint("BOTTOMRIGHT", -8, 5)
-    local update = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/TimeSeriesGraph.lua:40:callback#2", --[[/APR_DIAG]]function(_, elapsed)
-        graph.elapsed = graph.elapsed + elapsed
-        if graph.elapsed >= 0.05 then graph.elapsed = 0; graph:UpdateTooltip() end
-    end--[[APR_DIAG]])--[[/APR_DIAG]]
-    frame:SetScript("OnEnter", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/TimeSeriesGraph.lua:44:callback#3", --[[/APR_DIAG]]function()
-        graph.hovered, graph.elapsed = true, 0
-        graph:UpdateTooltip(true)
-        frame:SetScript("OnUpdate", update)
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    local update = --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/foundations/TimeSeriesGraph.lua:40:callback#2", --[[/APR_DIAG]] function(_, elapsed)
+            graph.elapsed = graph.elapsed + elapsed
+            if graph.elapsed >= 0.05 then
+                graph.elapsed = 0
+                graph:UpdateTooltip()
+            end
+        end--[[APR_DIAG]])--[[/APR_DIAG]]
+    frame:SetScript(
+        "OnEnter", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/foundations/TimeSeriesGraph.lua:44:callback#3", --[[/APR_DIAG]] function()
+            graph.hovered, graph.elapsed = true, 0
+            graph:UpdateTooltip(true)
+            frame:SetScript("OnUpdate", update)
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
     local function leave()
         if graph.hovered then GameTooltip:Hide() end
         graph.hovered, graph.hoverIndex = nil, nil
         graph.marker:Hide()
         frame:SetScript("OnUpdate", nil)
-    end--[[APR_DIAG]]; leave = APRTrace("APR-Core/ui/foundations/TimeSeriesGraph.lua:49:leave#4", leave)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    leave = APRTrace("APR-Core/ui/foundations/TimeSeriesGraph.lua:49:leave#4", leave)--[[/APR_DIAG]]
     frame:SetScript("OnLeave", leave)
     frame:HookScript("OnHide", leave)
-    frame:HookScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/TimeSeriesGraph.lua:57:callback#5", --[[/APR_DIAG]]function() graph:Draw() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    frame:HookScript(
+        "OnSizeChanged", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/ui/foundations/TimeSeriesGraph.lua:57:callback#5", --[[/APR_DIAG]]
+            function() graph:Draw() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
     return graph
-end--[[APR_DIAG]]; Graph.New = APRTrace("APR-Core/ui/foundations/TimeSeriesGraph.lua:14:Graph:New#1", Graph.New)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Graph.New = APRTrace("APR-Core/ui/foundations/TimeSeriesGraph.lua:14:Graph:New#1", Graph.New)--[[/APR_DIAG]]
 
 function Graph:SetData(points, key, minimumScale, format)
     self.points, self.key, self.maximum = points, key, minimumScale
-    for _, point in ipairs(points) do self.maximum = math.max(self.maximum, point[key] or 0) end
+    for _, point in ipairs(points) do
+        self.maximum = math.max(self.maximum, point[key] or 0)
+    end
     self.maximumLabel:SetText(format(self.maximum))
     self:Draw()
     self:UpdateTooltip(true)
-end--[[APR_DIAG]]; Graph.SetData = APRTrace("APR-Core/ui/foundations/TimeSeriesGraph.lua:61:Graph:SetData#6", Graph.SetData)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Graph.SetData = APRTrace("APR-Core/ui/foundations/TimeSeriesGraph.lua:61:Graph:SetData#6", Graph.SetData)--[[/APR_DIAG]]
 
 function Graph:Draw()
     if not self.points then return end
@@ -116,7 +135,8 @@ function Graph:Draw()
         self.drawnValues[index], previousChanged = value, changed
     end
     self.drawnWidth, self.drawnHeight, self.drawnMaximum = width, height, self.maximum
-end--[[APR_DIAG]]; Graph.Draw = APRTrace("APR-Core/ui/foundations/TimeSeriesGraph.lua:69:Graph:Draw#7", Graph.Draw)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Graph.Draw = APRTrace("APR-Core/ui/foundations/TimeSeriesGraph.lua:69:Graph:Draw#7", Graph.Draw)--[[/APR_DIAG]]
 
 function Graph:UpdateTooltip(force)
     if not self.hovered or not self.points then return end
@@ -132,4 +152,6 @@ function Graph:UpdateTooltip(force)
     self.marker:SetHeight(math.max(1, self.frame:GetHeight() - INSET * 2))
     self.marker:Show()
     self.tooltip(self.frame, self.points[index], self.key)
-end--[[APR_DIAG]]; Graph.UpdateTooltip = APRTrace("APR-Core/ui/foundations/TimeSeriesGraph.lua:121:Graph:UpdateTooltip#8", Graph.UpdateTooltip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+Graph.UpdateTooltip =
+    APRTrace("APR-Core/ui/foundations/TimeSeriesGraph.lua:121:Graph:UpdateTooltip#8", Graph.UpdateTooltip)--[[/APR_DIAG]]

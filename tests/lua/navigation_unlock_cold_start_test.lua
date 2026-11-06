@@ -7,18 +7,37 @@ strmatch = string.match
 dofile("APR-Core/libs/HereBeDragons/LibStub/LibStub.lua")
 local root = "APR-Core/libs/LibAPRNavigation-1.0/"
 local manifest = assert(io.open(root .. "LibAPRNavigation.xml"))
-local xml = manifest:read("*a"); manifest:close()
-for file in xml:gmatch('file="([^"]+)"') do if not file:match("^Data/") then dofile(root .. file) end end
+local xml = manifest:read("*a")
+manifest:close()
+for file in xml:gmatch('file="([^"]+)"') do
+    if not file:match("^Data/") then dofile(root .. file) end
+end
 local Lib = LibStub("LibAPRNavigation-1.0")
 Lib:RegisterData("retail", "fixture", dofile("tests/lua/navigation_unlock_test_catalog.lua"))
 local completed, active, offers, reads = {}, {}, 0, 0
 local env = {
-    getCharacter = function() return { faction = "Horde", class = "PALADIN", raceID = 10,
-        level = 90, mapID = 102, inGroup = false, indoors = false, inInstance = false } end,
-    isQuestCompleted = function(id) reads = reads + 1; return completed[id] == true end,
+    getCharacter = function()
+        return {
+            faction = "Horde",
+            class = "PALADIN",
+            raceID = 10,
+            level = 90,
+            mapID = 102,
+            inGroup = false,
+            indoors = false,
+            inInstance = false,
+        }
+    end,
+    isQuestCompleted = function(id)
+        reads = reads + 1
+        return completed[id] == true
+    end,
     isQuestActive = function(id) return active[id] == true end,
     isQuestCompletedOnAccount = function() return false end,
-    isQuestAvailable = function() offers = offers + 1; return nil end,
+    isQuestAvailable = function()
+        offers = offers + 1
+        return nil
+    end,
     isQuestReadyForTurnIn = function() return false end,
     isQuestObjectiveCompleted = function() return false end,
     isAchievementCompleted = function() return false end,
@@ -33,11 +52,19 @@ local env = {
 local data = Lib:New({ profile = "retail", environment = env })
 assert(#data:GetUnlockRoutes() == 709, "The cold-start regression exercises the controlled acquisition graph")
 local destination = { uiMapID = 104, instanceID = 3, x = -1343, y = -515.6 }
-local run = data:CreateUnlockSession({ destination = destination, blockers = {
-    { id = "cold-karesh", from = { uiMapID = 101 }, blockedRequirements = {
-        minLevel = 80, any = { { quest = 12 }, { questActive = 12 } },
-    } },
-} })
+local run = data:CreateUnlockSession({
+    destination = destination,
+    blockers = {
+        {
+            id = "cold-karesh",
+            from = { uiMapID = 101 },
+            blockedRequirements = {
+                minLevel = 80,
+                any = { { quest = 12 }, { questActive = 12 } },
+            },
+        },
+    },
+})
 local function nextAction(session, limit)
     for slice = 1, limit do
         local status, action = session:Step(16, 1)
@@ -49,8 +76,10 @@ local status, action, slices = nextAction(run, 1500)
 assert(status == "action" and action.questID == 15 and action.kind == "accept")
 assert(action.target and action.target.uiMapID == 106 and action.target.instanceID == 4)
 assert(action.target.x == -500 and action.target.y == 600, "The first pickup keeps its actual recorded position")
-assert(offers > 0 and offers < 4000 and reads < 100000,
-    "Shared prerequisite scoring does not repeatedly poll every source's client flags")
+assert(
+    offers > 0 and offers < 4000 and reads < 100000,
+    "Shared prerequisite scoring does not repeatedly poll every source's client flags"
+)
 
 -- Progress invalidates the transient ranking snapshot. A newly observed direct
 -- gate prerequisite must retire the deep detour instead of using stale ranks.
@@ -60,5 +89,8 @@ status, action = nextAction(run, 1500)
 assert(status == "action" and action.questID == 11 and action.kind == "accept")
 assert(run:ExportState().destination.uiMapID == 104)
 assert(APR == nil and APRData == nil)
-print("Cold unlock: controlled acquisition graph reaches fixture quest 15 in " .. slices
-    .. " bounded slices; progress invalidates shared scores and resumes the shorter chain")
+print(
+    "Cold unlock: controlled acquisition graph reaches fixture quest 15 in "
+        .. slices
+        .. " bounded slices; progress invalidates shared scores and resumes the shorter chain"
+)

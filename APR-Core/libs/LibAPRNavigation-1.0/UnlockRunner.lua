@@ -26,8 +26,14 @@ local function Applicable(data, requirements, character, expected)
             possible = conjunction
             for _, child in ipairs(value) do
                 local childPossible = Applicable(data, child, character, expected)
-                if conjunction and not childPossible then possible = false; break end
-                if not conjunction and childPossible then possible = true; break end
+                if conjunction and not childPossible then
+                    possible = false
+                    break
+                end
+                if not conjunction and childPossible then
+                    possible = true
+                    break
+                end
             end
         end
         if expected and not possible then return false end
@@ -44,17 +50,25 @@ local function AcceptanceSourced(step)
     local acceptance = step.acceptance or {}
     if #(acceptance.blockingGaps or {}) > 0 then return false end
     local advisory = { prerequisites_unverified = true }
-    for _, gap in ipairs(acceptance.advisoryGaps or {}) do advisory[gap] = true end
+    for _, gap in ipairs(acceptance.advisoryGaps or {}) do
+        advisory[gap] = true
+    end
     if acceptance.blockingGaps == nil then
-        for _, gap in ipairs(acceptance.gaps or {}) do if not advisory[gap] then return false end end
+        for _, gap in ipairs(acceptance.gaps or {}) do
+            if not advisory[gap] then return false end
+        end
     end
     if acceptance.known == true then return true end
     -- 'known' describes completeness of extraction, not the existence of an
     -- observed server offer. A sourced starter and target support guidance;
     -- remaining gaps stay on the action for the consumer to display.
     return (step.position ~= nil or step.positionOptional == true)
-        and type(acceptance.sources) == "table" and #acceptance.sources > 0
-        and (step.positionOptional == true or (type(acceptance.starterNPCIDs) == "table" and #acceptance.starterNPCIDs > 0))
+        and type(acceptance.sources) == "table"
+        and #acceptance.sources > 0
+        and (
+            step.positionOptional == true
+            or (type(acceptance.starterNPCIDs) == "table" and #acceptance.starterNPCIDs > 0)
+        )
 end
 
 local function Character(data, mapID)
@@ -77,13 +91,18 @@ local function RecipeMatches(recipe, goal)
     local function equal(a, b)
         if type(a) ~= type(b) then return false end
         if type(a) ~= "table" then return a == b end
-        for k, v in pairs(a) do if not equal(v, b[k]) then return false end end
-        for k in pairs(b) do if a[k] == nil then return false end end
+        for k, v in pairs(a) do
+            if not equal(v, b[k]) then return false end
+        end
+        for k in pairs(b) do
+            if a[k] == nil then return false end
+        end
         return true
     end
     local value = goal.value
     if value == nil then value = goal.questID end
-    return recipe.goal.key == goal.key and (recipe.goal.negated == true) == (goal.negated == true)
+    return recipe.goal.key == goal.key
+        and (recipe.goal.negated == true) == (goal.negated == true)
         and equal(recipe.goal.value, value)
 end
 
@@ -94,9 +113,13 @@ local function GoalIdentity(goal)
             return type(value) .. #text .. ":" .. text
         end
         local keys, values = {}, {}
-        for key in pairs(value) do keys[#keys + 1] = key end
+        for key in pairs(value) do
+            keys[#keys + 1] = key
+        end
         table.sort(keys, function(a, b) return encode(a) < encode(b) end)
-        for _, key in ipairs(keys) do values[#values + 1] = encode(key) .. encode(value[key]) end
+        for _, key in ipairs(keys) do
+            values[#values + 1] = encode(key) .. encode(value[key])
+        end
         return "table{" .. table.concat(values, ";") .. "}"
     end
     local value = goal.value
@@ -111,8 +134,10 @@ end
 
 local function StepIdentity(data, recipe, index, step)
     local source = step.sourceID and data.unlockSources and data.unlockSources[step.sourceID]
-    return table.concat({ recipe.id, index, step.kind, step.questID or 0, step.sourceStep or 0,
-        source and source.sha256 or "" }, ":")
+    return table.concat(
+        { recipe.id, index, step.kind, step.questID or 0, step.sourceStep or 0, source and source.sha256 or "" },
+        ":"
+    )
 end
 
 local hearthTravel = { hearthstone = true, dalaran_hearthstone = true, garrison_hearthstone = true }
@@ -120,8 +145,13 @@ local function TravelHint(step, following)
     -- An authored hearth trip describes a means of reaching the next recorded
     -- actor. The journey planner can choose that means from the actual bind,
     -- or another route. Neither a cast nor this bypass proves an arrival.
-    return step.kind == "transport" and step.transport and hearthTravel[step.transport.type]
-        and not step.arrival and not step.completeWhen and following and following.position
+    return step.kind == "transport"
+        and step.transport
+        and hearthTravel[step.transport.type]
+        and not step.arrival
+        and not step.completeWhen
+        and following
+        and following.position
         and following.kind ~= "missing"
 end
 
@@ -135,10 +165,21 @@ local function AccessPlans(data, blockers, checkpoint, overflow)
             if (node.unknown and node.key ~= "phase") or fixed[node.key] then return {} end
             -- Rewarded quests cannot be uncompleted, even if a malformed
             -- catalogue claims to provide an inverse recipe.
-            if node.negated and (node.key == "quest" or node.key == "questAccount" or node.key == "achievement") then return {} end
-            return { { { key = node.key, value = Copy(node.value),
-                negated = node.negated == true,
-                questID = (node.key == "quest" or node.key == "questActive" or node.key == "questAccount") and node.value or nil } } }
+            if node.negated and (node.key == "quest" or node.key == "questAccount" or node.key == "achievement") then
+                return {}
+            end
+            return {
+                {
+                    {
+                        key = node.key,
+                        value = Copy(node.value),
+                        negated = node.negated == true,
+                        questID = (node.key == "quest" or node.key == "questActive" or node.key == "questAccount")
+                                and node.value
+                            or nil,
+                    },
+                },
+            }
         end
         local result = node.key == "all" and { {} } or {}
         for _, child in ipairs(node.children) do
@@ -150,9 +191,15 @@ local function AccessPlans(data, blockers, checkpoint, overflow)
                         -- Preserve the first 64 pairs in authored order. Once
                         -- a 65th exists, omitted pairs cannot affect this
                         -- product; later children must still be expanded.
-                        if #combined >= 64 then overflow(); truncated = true; break end
+                        if #combined >= 64 then
+                            overflow()
+                            truncated = true
+                            break
+                        end
                         local goals = Copy(a)
-                        for _, goal in ipairs(b) do goals[#goals + 1] = Copy(goal) end
+                        for _, goal in ipairs(b) do
+                            goals[#goals + 1] = Copy(goal)
+                        end
                         combined[#combined + 1] = goals
                         checkpoint()
                     end
@@ -161,7 +208,11 @@ local function AccessPlans(data, blockers, checkpoint, overflow)
                 result = combined
             else
                 for _, alternative in ipairs(alternatives) do
-                    if #result < 64 then result[#result + 1] = alternative else overflow() end
+                    if #result < 64 then
+                        result[#result + 1] = alternative
+                    else
+                        overflow()
+                    end
                 end
             end
         end
@@ -179,8 +230,13 @@ local function AccessPlans(data, blockers, checkpoint, overflow)
                     -- each plan is copied for publication. Capture the
                     -- edge once; public plans still receive isolated copies.
                     requirements = requirements or Copy(edge.blockedRequirements)
-                    result[#result + 1] = { edgeID = edge.id, instruction = edge.instruction,
-                        requirements = requirements, departureMapID = character.mapID, goals = goals }
+                    result[#result + 1] = {
+                        edgeID = edge.id,
+                        instruction = edge.instruction,
+                        requirements = requirements,
+                        departureMapID = character.mapID,
+                        goals = goals,
+                    }
                 end
             end
         end
@@ -241,9 +297,16 @@ function Instance:CreateUnlockBuild(blockers, options)
             local function dependencies(node, seen)
                 if not node or node.score or node.unknown then return end
                 if node.children then
-                    for _, child in ipairs(node.children) do dependencies(child, seen) end
-                elseif not fixed[node.key] and not (node.negated and (node.key == "quest"
-                    or node.key == "questAccount" or node.key == "achievement")) then
+                    for _, child in ipairs(node.children) do
+                        dependencies(child, seen)
+                    end
+                elseif
+                    not fixed[node.key]
+                    and not (
+                        node.negated
+                        and (node.key == "quest" or node.key == "questAccount" or node.key == "achievement")
+                    )
+                then
                     seen[GoalIdentity(node)] = true
                 end
             end
@@ -255,13 +318,23 @@ function Instance:CreateUnlockBuild(blockers, options)
                     local score = node.key == "all" and 0 or 10000
                     for _, child in ipairs(node.children) do
                         local value = evaluate(child)
-                        if node.key == "all" then score = math.max(score, value)
-                        else score = math.min(score, value) end
+                        if node.key == "all" then
+                            score = math.max(score, value)
+                        else
+                            score = math.min(score, value)
+                        end
                     end
                     return score
                 end
-                if fixed[node.key] or (node.negated and (node.key == "quest" or node.key == "questAccount"
-                    or node.key == "achievement")) then return 10000 end
+                if
+                    fixed[node.key]
+                    or (
+                        node.negated
+                        and (node.key == "quest" or node.key == "questAccount" or node.key == "achievement")
+                    )
+                then
+                    return 10000
+                end
                 return goalScores[GoalIdentity(node)] or 10000
             end
             -- Follow only failed guards reachable from this goal. Unrelated
@@ -274,8 +347,11 @@ function Instance:CreateUnlockBuild(blockers, options)
                 pendingIndex = pendingIndex + 1
                 local entry = { recipe = recipe, guards = {}, base = 0 }
                 local available = self:CheckRequirements(recipe.availability, character)
-                if not Applicable(self, recipe.requirements, character)
-                    or (options.exhaustedRecipes and options.exhaustedRecipes[recipe.id]) then entry.base = 10000
+                if
+                    not Applicable(self, recipe.requirements, character)
+                    or (options.exhaustedRecipes and options.exhaustedRecipes[recipe.id])
+                then
+                    entry.base = 10000
                 elseif available ~= true and not (options.selectedRecipes and options.selectedRecipes[recipe.id]) then
                     entry.base = available == nil and 100 or 10000
                 else
@@ -283,18 +359,34 @@ function Instance:CreateUnlockBuild(blockers, options)
                     local pending = false
                     for index, step in ipairs(recipe.steps) do
                         checkpoint()
-                        local remember = not step.completeWhen and (step.kind == "waypoint" or step.kind == "scenario"
-                            or step.kind == "transport" or step.kind == "action")
-                        if not TravelHint(step, recipe.steps[index + 1])
-                            and not (remember and options.observedSteps and options.observedSteps[StepIdentity(self, recipe, index, step)])
-                            and Complete(self, step, character) ~= true and Applicable(self, step.requirements, character) then
+                        local remember = not step.completeWhen
+                            and (
+                                step.kind == "waypoint"
+                                or step.kind == "scenario"
+                                or step.kind == "transport"
+                                or step.kind == "action"
+                            )
+                        if
+                            not TravelHint(step, recipe.steps[index + 1])
+                            and not (remember and options.observedSteps and options.observedSteps[StepIdentity(
+                                self,
+                                recipe,
+                                index,
+                                step
+                            )])
+                            and Complete(self, step, character) ~= true
+                            and Applicable(self, step.requirements, character)
+                        then
                             pending = true
                             entry.guards[#entry.guards + 1] = failure(step.requirements)
-                            if step.kind == "missing" then entry.base = 10000
+                            if step.kind == "missing" then
+                                entry.base = 10000
                             elseif step.kind == "accept" then
-                                local offered = self.env.isQuestAvailable and self.env.isQuestAvailable(step.questID, step.acceptance)
+                                local offered = self.env.isQuestAvailable
+                                    and self.env.isQuestAvailable(step.questID, step.acceptance)
                                 if offered ~= true then
-                                    entry.guards[#entry.guards + 1] = failure(step.acceptance and step.acceptance.requirements)
+                                    entry.guards[#entry.guards + 1] =
+                                        failure(step.acceptance and step.acceptance.requirements)
                                     if offered == false or not AcceptanceSourced(step) then entry.base = 10000 end
                                 end
                             end
@@ -305,7 +397,9 @@ function Instance:CreateUnlockBuild(blockers, options)
                 end
                 entries[recipe.id] = entry
                 local seen = {}
-                for _, guard in ipairs(entry.guards) do dependencies(guard, seen) end
+                for _, guard in ipairs(entry.guards) do
+                    dependencies(guard, seen)
+                end
                 for identity in pairs(seen) do
                     dependents[identity] = dependents[identity] or {}
                     table.insert(dependents[identity], entry)
@@ -319,7 +413,9 @@ function Instance:CreateUnlockBuild(blockers, options)
                 local entry = queue[cursor]
                 cursor, queued[entry.recipe.id] = cursor + 1, nil
                 local score = entry.base
-                for _, guard in ipairs(entry.guards) do score = math.max(score, evaluate(guard)) end
+                for _, guard in ipairs(entry.guards) do
+                    score = math.max(score, evaluate(guard))
+                end
                 entry.score = score
                 job.scoredRecipes = (job.scoredRecipes or 0) + 1
                 local identity = GoalIdentity(entry.recipe.goal)
@@ -352,10 +448,16 @@ function Instance:CreateUnlockBuild(blockers, options)
             for _, goal in ipairs(plan.goals) do
                 if goal.key == "questActive" and not goal.negated then
                     activeGoals[goal.value] = true
-                    if self.env.isQuestCompleted and self.env.isQuestCompleted(goal.value) == true then valid = false end
-                elseif goal.key == "quest" then completedGoals[goal.value] = true end
+                    if self.env.isQuestCompleted and self.env.isQuestCompleted(goal.value) == true then
+                        valid = false
+                    end
+                elseif goal.key == "quest" then
+                    completedGoals[goal.value] = true
+                end
             end
-            for id in pairs(activeGoals) do if completedGoals[id] then valid = false end end
+            for id in pairs(activeGoals) do
+                if completedGoals[id] then valid = false end
+            end
             for _, goal in ipairs(plan.goals) do
                 if not valid then break end
                 local best, bestScore
@@ -365,14 +467,27 @@ function Instance:CreateUnlockBuild(blockers, options)
                         local available = self:CheckRequirements(recipe.availability, character)
                         local selected = options.selectedRecipes and options.selectedRecipes[recipe.id] == true
                         if available == nil and not selected then job.waitingData = true end
-                        if not (options.exhaustedRecipes and options.exhaustedRecipes[recipe.id])
+                        if
+                            not (options.exhaustedRecipes and options.exhaustedRecipes[recipe.id])
                             and (available == true or selected)
-                            and Applicable(self, recipe.requirements, character) then
+                            and Applicable(self, recipe.requirements, character)
+                        then
                             local score = scoreRecipe(recipe, character, {}, 0)
                             local selected = options.selectedRecipes and options.selectedRecipes[recipe.id] == true
-                            local bestSelected = best and options.selectedRecipes and options.selectedRecipes[best.id] == true
-                            if not best or score < bestScore or (score == bestScore and
-                                ((selected and not bestSelected) or (selected == bestSelected and #recipe.steps < #best.steps))) then
+                            local bestSelected = best
+                                and options.selectedRecipes
+                                and options.selectedRecipes[best.id] == true
+                            if
+                                not best
+                                or score < bestScore
+                                or (
+                                    score == bestScore
+                                    and (
+                                        (selected and not bestSelected)
+                                        or (selected == bestSelected and #recipe.steps < #best.steps)
+                                    )
+                                )
+                            then
                                 best, bestScore = recipe, score
                             end
                         end
@@ -388,7 +503,10 @@ function Instance:CreateUnlockBuild(blockers, options)
                 viability = math.max(viability, bestScore)
                 if best.prerequisitesKnown == false then prerequisitesKnown = false end
                 for index, step in ipairs(best.steps) do
-                    if #steps >= MAX_STEPS then valid = false; break end
+                    if #steps >= MAX_STEPS then
+                        valid = false
+                        break
+                    end
                     local copy = Copy(step)
                     copy._unlockRecipeID, copy._unlockRecipeRequirements = best.id, Copy(best.requirements)
                     copy._unlockGoal, copy._unlockGuidanceQuestID = Copy(best.goal), best.guidanceQuestID
@@ -464,11 +582,14 @@ function Instance:GetUnlockStepText(step)
         arrival.uiMapID = arrival.uiMapID or step.transport.destinationMapID
         local kind = step.transport.type
         local key = "NAVIGATION_UNLOCK_" .. kind
-        if self:GetText(key) ~= key then customText = self:GetText(key)
+        if self:GetText(key) ~= key then
+            customText = self:GetText(key)
         elseif kind == "flight" and step.transport.nodeID then
             local name = self.env.getFlightNodeName and self.env.getFlightNodeName(step.transport.nodeID)
             customText = string.format(self:GetText("USE_FLIGHTPATH"), name or tostring(step.transport.nodeID))
-        else customText = self:GetInstruction(kind, nil, arrival) end
+        else
+            customText = self:GetInstruction(kind, nil, arrival)
+        end
     end
     if step.kind == "scenario" and self.env.getScenarioCriteria then
         local info = self.env.getScenarioCriteria(step.scenario)
@@ -477,12 +598,14 @@ function Instance:GetUnlockStepText(step)
     if step.kind == "action" then
         local kind, parameters = step.actionType, step.parameters
         if kind == "item" or kind == "spell" then
-            local id = type(parameters) == "number" and parameters or type(parameters) == "table"
-                and (parameters.id or parameters.itemID or parameters.spellID)
+            local id = type(parameters) == "number" and parameters
+                or type(parameters) == "table" and (parameters.id or parameters.itemID or parameters.spellID)
             local getter = kind == "item" and self.env.getItemName or self.env.getSpellName
             local name = id and getter and getter(id)
-            customText = string.format(self:GetText(kind == "item" and "USE_ITEM" or "USE_SPELL"),
-                name or (id and tostring(id)) or self:GetText("UNKNOWN"))
+            customText = string.format(
+                self:GetText(kind == "item" and "USE_ITEM" or "USE_SPELL"),
+                name or (id and tostring(id)) or self:GetText("UNKNOWN")
+            )
         else
             local key = "NAVIGATION_UNLOCK_" .. tostring(kind)
             if self:GetText(key) ~= key then customText = self:GetText(key) end
@@ -492,8 +615,11 @@ function Instance:GetUnlockStepText(step)
     local getter = step.questID and self.env.getQuestName or self.env.getNPCName
     local name = id and getter and getter(id)
     local label = name and (name .. " [" .. id .. "]") or (id and tostring(id) or self:GetText("UNKNOWN"))
-    if customText and step.kind == "action" and (step.actionType == "npc_activity"
-        or step.actionType == "phase_past" or step.actionType == "phase_present") then
+    if
+        customText
+        and step.kind == "action"
+        and (step.actionType == "npc_activity" or step.actionType == "phase_past" or step.actionType == "phase_present")
+    then
         customText = string.format(customText, label)
     end
     local text = customText or string.format(self:GetText("NAVIGATION_UNLOCK_" .. step.kind), label)
@@ -502,7 +628,9 @@ function Instance:GetUnlockStepText(step)
         local npcID = step.npcID or (#starters == 1 and starters[1])
         local npcName = npcID and self.env.getNPCName and self.env.getNPCName(npcID)
         if npcName then
-            text = text .. "\n" .. string.format(self:GetText("NAVIGATION_UNLOCK_interact"), npcName .. " [" .. npcID .. "]")
+            text = text
+                .. "\n"
+                .. string.format(self:GetText("NAVIGATION_UNLOCK_interact"), npcName .. " [" .. npcID .. "]")
         end
     end
     if step.kind == "objective" and self.env.getQuestObjectiveText then
@@ -521,8 +649,12 @@ function Instance:GetUnlockStepText(step)
     for _, purchase in ipairs(step.purchaseActions or {}) do
         if purchase.itemID then
             local name = self.env.getItemName and self.env.getItemName(purchase.itemID) or tostring(purchase.itemID)
-            text = text .. "\n" .. string.format(self:GetText("NAVIGATION_UNLOCK_buy"),
-                name .. " (" .. tostring(purchase.quantity or 1) .. ")")
+            text = text
+                .. "\n"
+                .. string.format(
+                    self:GetText("NAVIGATION_UNLOCK_buy"),
+                    name .. " (" .. tostring(purchase.quantity or 1) .. ")"
+                )
         end
     end
     return text
@@ -537,7 +669,7 @@ local function Reached(data, position, radius)
     if not target then return nil end
     if live.instanceID ~= target.instanceID then return false end
     if target.z ~= nil and (live.z == nil or math.abs(live.z - target.z) > 5) then return false end
-    return data:CanWalk(live, target) == true and (live.x-target.x)^2 + (live.y-target.y)^2 <= (radius or 5)^2
+    return data:CanWalk(live, target) == true and (live.x - target.x) ^ 2 + (live.y - target.y) ^ 2 <= (radius or 5) ^ 2
 end
 
 local function ProgressMet(thresholds, quantity, total)
@@ -555,20 +687,36 @@ function Instance:CreateUnlockSession(options)
     for _, edge in ipairs(options.blockers or {}) do
         -- Diagnostic edges can also carry canStart closures and search labels.
         -- Persist only their declarative access evidence.
-        blockers[#blockers + 1] = { id = edge.id, from = edge.from and Copy(edge.from), instruction = edge.instruction,
+        blockers[#blockers + 1] = {
+            id = edge.id,
+            from = edge.from and Copy(edge.from),
+            instruction = edge.instruction,
             blockedRequirements = edge.blockedRequirements and Copy(edge.blockedRequirements),
-            blockedActions = edge.blockedActions and Copy(edge.blockedActions) }
+            blockedActions = edge.blockedActions and Copy(edge.blockedActions),
+        }
     end
     Lib.unlockObservationSequence = (Lib.unlockObservationSequence or 0) + 1
-    local session = setmetatable({ data = self, destination = Copy(options.destination), clock = options.clock or self.env.clock,
+    local session = setmetatable({
+        data = self,
+        destination = Copy(options.destination),
+        clock = options.clock or self.env.clock,
         observationToken = Lib.unlockObservationSequence,
-        blockers = blockers, cursor = 1, status = "planning", observedSteps = options.observedSteps or {},
-        exhaustedRecipes = options.exhaustedRecipes or {} }, Session)
+        blockers = blockers,
+        cursor = 1,
+        status = "planning",
+        observedSteps = options.observedSteps or {},
+        exhaustedRecipes = options.exhaustedRecipes or {},
+    }, Session)
     session.selectedRecipes = options.selectedRecipes or {}
     session.preflightCache = options.preflightCache or {}
-    session.build = self:CreateUnlockBuild(session.blockers, { clock = session.clock,
-        observedSteps = session.observedSteps, observationToken = session.observationToken,
-        exhaustedRecipes = session.exhaustedRecipes, selectedRecipes = session.selectedRecipes, preflightCache = session.preflightCache })
+    session.build = self:CreateUnlockBuild(session.blockers, {
+        clock = session.clock,
+        observedSteps = session.observedSteps,
+        observationToken = session.observationToken,
+        exhaustedRecipes = session.exhaustedRecipes,
+        selectedRecipes = session.selectedRecipes,
+        preflightCache = session.preflightCache,
+    })
     return session
 end
 
@@ -585,16 +733,26 @@ function Session:Retry()
     -- Keep an acquisition already in progress: availability is a selection
     -- predicate, not an action guard (a rewarded source quest may be followed
     -- by using its item). Reconsider alternatives when the chosen path blocks.
-    if self.plan and (self.status == "missing_data" or (self.status == "waiting_data"
-        and not (self.action and self.action.reason == "tracker_not_observed"))) then
+    if
+        self.plan
+        and (
+            self.status == "missing_data"
+            or (self.status == "waiting_data" and not (self.action and self.action.reason == "tracker_not_observed"))
+        )
+    then
         if self.child then self.child:Cancel() end
         self.plan, self.child, self.action, self.acceptanceBlockers = nil, nil, nil, nil
         self.cursor = 1
     end
     if not self.plan and not self.build then
-        self.build = self.data:CreateUnlockBuild(self.blockers, { clock = self.clock, observedSteps = self.observedSteps,
-            observationToken = self.observationToken, exhaustedRecipes = self.exhaustedRecipes,
-            selectedRecipes = self.selectedRecipes, preflightCache = self.preflightCache })
+        self.build = self.data:CreateUnlockBuild(self.blockers, {
+            clock = self.clock,
+            observedSteps = self.observedSteps,
+            observationToken = self.observationToken,
+            exhaustedRecipes = self.exhaustedRecipes,
+            selectedRecipes = self.selectedRecipes,
+            preflightCache = self.preflightCache,
+        })
         self.status = "planning"
     end
 end
@@ -612,9 +770,15 @@ function Session:BeginDetour(blockers, options)
     for _, edge in ipairs(blockers or {}) do
         if not edge.id or ancestors[edge.id] then return false, "cyclic_unlock" end
     end
-    self.child = self.data:CreateUnlockSession({ destination = self.plan.steps[self.cursor].position or self.destination, blockers = blockers,
-        clock = options and options.clock, observedSteps = self.observedSteps,
-        exhaustedRecipes = self.exhaustedRecipes, selectedRecipes = self.selectedRecipes, preflightCache = self.preflightCache })
+    self.child = self.data:CreateUnlockSession({
+        destination = self.plan.steps[self.cursor].position or self.destination,
+        blockers = blockers,
+        clock = options and options.clock,
+        observedSteps = self.observedSteps,
+        exhaustedRecipes = self.exhaustedRecipes,
+        selectedRecipes = self.selectedRecipes,
+        preflightCache = self.preflightCache,
+    })
     self.child.ancestors, self.child.depth = ancestors, (self.depth or 0) + 1
     return true
 end
@@ -624,15 +788,25 @@ function Session:ResolveRequirements(requirements, id, step, character)
     if invalid then return false, "missing_data", invalid end
     if allowed == nil then return false, "waiting_data", "pending_requirements" end
     if allowed == true then return true end
-    local blocker = { id = id, from = character.mapID and { uiMapID = character.mapID },
-        instruction = self.data:GetUnlockStepText(step), blockedRequirements = Copy(requirements) }
+    local blocker = {
+        id = id,
+        from = character.mapID and { uiMapID = character.mapID },
+        instruction = self.data:GetUnlockStepText(step),
+        blockedRequirements = Copy(requirements),
+    }
     self.acceptanceBlockers = { blocker }
     local ancestors = Copy(self.ancestors or {})
     if self.plan.edgeID then ancestors[self.plan.edgeID] = true end
     if ancestors[id] or (self.depth or 0) >= 32 then return false, "missing_data", "cyclic_quest_prerequisites" end
-    self.child = self.data:CreateUnlockSession({ blockers = { blocker }, destination = step.position or self.destination,
-        clock = self.clock, observedSteps = self.observedSteps,
-        exhaustedRecipes = self.exhaustedRecipes, selectedRecipes = self.selectedRecipes, preflightCache = self.preflightCache })
+    self.child = self.data:CreateUnlockSession({
+        blockers = { blocker },
+        destination = step.position or self.destination,
+        clock = self.clock,
+        observedSteps = self.observedSteps,
+        exhaustedRecipes = self.exhaustedRecipes,
+        selectedRecipes = self.selectedRecipes,
+        preflightCache = self.preflightCache,
+    })
     ancestors[id] = true
     self.child.ancestors, self.child.depth = ancestors, (self.depth or 0) + 1
     return false, "planning"
@@ -646,36 +820,56 @@ function Session:CheckAcceptance(step, character)
         if value == nil then return "unknown" end
         return value and "passed" or "blocked"
     end
-    local evidence = { questID = step.questID, offer = offered == nil and "unknown" or (offered and "offered" or "unavailable"),
-        known = acceptance.known == true, complete = acceptance.complete == true,
-        requirements = state(data:CheckRequirements(acceptance.requirements, character)), conditions = {} }
+    local evidence = {
+        questID = step.questID,
+        offer = offered == nil and "unknown" or (offered and "offered" or "unavailable"),
+        known = acceptance.known == true,
+        complete = acceptance.complete == true,
+        requirements = state(data:CheckRequirements(acceptance.requirements, character)),
+        conditions = {},
+    }
     local function observe(requirements, negated)
         for key, value in pairs(requirements or {}) do
-            if #evidence.conditions >= 32 then evidence.truncated = true; return end
+            if #evidence.conditions >= 32 then
+                evidence.truncated = true
+                return
+            end
             if key == "all" or key == "any" then
-                for _, child in ipairs(value) do observe(child, negated) end
-            elseif key == "notCondition" then observe(value, not negated)
+                for _, child in ipairs(value) do
+                    observe(child, negated)
+                end
+            elseif key == "notCondition" then
+                observe(value, not negated)
             else
                 local actual = data:CheckRequirements({ [key] = value }, character)
                 if negated and actual ~= nil then actual = not actual end
                 local entry = { key = key, state = state(actual), negated = negated == true }
                 if type(value) == "table" then
                     entry.id = value.id or value.factionID or value.mapID
-                else entry.value = value end
+                else
+                    entry.value = value
+                end
                 evidence.conditions[#evidence.conditions + 1] = entry
             end
         end
     end
     observe(acceptance.requirements)
-    if data.env.getQuestAvailabilityEvidence then evidence.server = Copy(data.env.getQuestAvailabilityEvidence(step.questID)) end
+    if data.env.getQuestAvailabilityEvidence then
+        evidence.server = Copy(data.env.getQuestAvailabilityEvidence(step.questID))
+    end
     self.acceptanceEvidence = evidence
     -- A current server offer is direct evidence, including valid character skips.
-    if offered == true then self.acceptanceBlockers = nil; return true end
+    if offered == true then
+        self.acceptanceBlockers = nil
+        return true
+    end
     local questName = data.env.getQuestName and data.env.getQuestName(step.questID)
     local questLabel = questName and (questName .. " [" .. step.questID .. "]") or tostring(step.questID)
-    local blocker = { id = "quest-acceptance:" .. step.questID,
+    local blocker = {
+        id = "quest-acceptance:" .. step.questID,
         instruction = string.format(data:GetText("NAVIGATION_UNLOCK_accept_unverified"), questLabel),
-        blockedRequirements = Copy(acceptance.requirements or {}) }
+        blockedRequirements = Copy(acceptance.requirements or {}),
+    }
     self.acceptanceBlockers = { blocker }
     local allowed, status, reason = self:ResolveRequirements(acceptance.requirements, blocker.id, step, character)
     if not allowed then return false, status, reason end
@@ -683,8 +877,7 @@ function Session:CheckAcceptance(step, character)
         self.acceptanceBlockers = nil
         return true
     end
-    return false, "missing_data",
-        offered == false and "quest_unavailable" or "quest_availability_unverified"
+    return false, "missing_data", offered == false and "quest_unavailable" or "quest_availability_unverified"
 end
 
 Complete = function(data, step, character)
@@ -694,7 +887,9 @@ Complete = function(data, step, character)
         local info = data.env.getScenarioCriteria and data.env.getScenarioCriteria(step.scenario)
         if not info then return nil end
         if info.completed == true then return true end
-        if #(step.progressAny or {}) > 0 then return ProgressMet(step.progressAny, info.quantity, info.totalQuantity) end
+        if #(step.progressAny or {}) > 0 then
+            return ProgressMet(step.progressAny, info.quantity, info.totalQuantity)
+        end
         return info.completed
     elseif step.kind == "transport" then
         if step.arrival then return Reached(data, step.arrival, step.arrival.radius or step.radius) end
@@ -737,8 +932,14 @@ Complete = function(data, step, character)
         if step.arrival then return Reached(data, step.arrival, step.arrival.radius or step.radius) end
         if step.zoneStepTrigger then
             local trigger = step.zoneStepTrigger
-            return Reached(data, { space = "world", uiMapID = trigger.mapID, instanceID = trigger.instanceID,
-                x = trigger.y, y = trigger.x, z = trigger.z }, trigger.Range or step.radius)
+            return Reached(data, {
+                space = "world",
+                uiMapID = trigger.mapID,
+                instanceID = trigger.instanceID,
+                x = trigger.y,
+                y = trigger.x,
+                z = trigger.z,
+            }, trigger.Range or step.radius)
         end
         local unknown = false
         for _, position in ipairs(step.positions or { step.position }) do
@@ -755,28 +956,53 @@ end
 -- Return the next action and its observed position. Walking to it never accepts,
 -- completes or rewards a quest. Only live observations advance quest actions.
 function Session:Step(maxOperations, milliseconds)
-    if self.status == "cancelled" or self.status == "resume" then return self.status, self.action, Copy(self.destination) end
-    if self.plan and self.data:CheckRequirements(self.plan.requirements, Character(self.data, self.plan.departureMapID)) == true then
-        if self.child then self.child:Cancel(); self.child = nil end
+    if self.status == "cancelled" or self.status == "resume" then
+        return self.status, self.action, Copy(self.destination)
+    end
+    if
+        self.plan
+        and self.data:CheckRequirements(self.plan.requirements, Character(self.data, self.plan.departureMapID))
+            == true
+    then
+        if self.child then
+            self.child:Cancel()
+            self.child = nil
+        end
         self.status, self.action = "resume", nil
         return "resume", nil, Copy(self.destination)
     end
     if self.child then
         local current = self.plan and self.plan.steps[self.cursor]
         local env = self.data.env
-        local goalDone = current and current._unlockGoal and self.data:CheckRequirements(GoalRequirements(current._unlockGoal),
-            Character(self.data, self.plan.departureMapID)) == true
-        if goalDone or (current and current.kind == "accept" and (
-            (env.isQuestCompleted and env.isQuestCompleted(current.questID) == true)
-            or (env.isQuestActive and env.isQuestActive(current.questID) == true)
-            or (env.isQuestAvailable and env.isQuestAvailable(current.questID, current.acceptance) == true))) then
+        local goalDone = current
+            and current._unlockGoal
+            and self.data:CheckRequirements(
+                    GoalRequirements(current._unlockGoal),
+                    Character(self.data, self.plan.departureMapID)
+                )
+                == true
+        if
+            goalDone
+            or (
+                current
+                and current.kind == "accept"
+                and (
+                    (env.isQuestCompleted and env.isQuestCompleted(current.questID) == true)
+                    or (env.isQuestActive and env.isQuestActive(current.questID) == true)
+                    or (env.isQuestAvailable and env.isQuestAvailable(current.questID, current.acceptance) == true)
+                )
+            )
+        then
             self.child:Cancel()
             self.child = nil
             self.preflightCache.scoresByMap = nil
             return "planning"
         end
         local status, action = self.child:Step(maxOperations, milliseconds)
-        if status ~= "resume" then self.status = status; return status, action, Copy(self.destination) end
+        if status ~= "resume" then
+            self.status = status
+            return status, action, Copy(self.destination)
+        end
         self.child = nil
         self.preflightCache.scoresByMap = nil
         -- Resume the parent on the next slice so nested work shares its budget.
@@ -784,8 +1010,15 @@ function Session:Step(maxOperations, milliseconds)
     end
     if not self.plan then
         for _, edge in ipairs(self.blockers) do
-            if edge.blockedRequirements and not edge.blockedActions
-                and self.data:CheckRequirements(edge.blockedRequirements, Character(self.data, edge.from and edge.from.uiMapID)) == true then
+            if
+                edge.blockedRequirements
+                and not edge.blockedActions
+                and self.data:CheckRequirements(
+                        edge.blockedRequirements,
+                        Character(self.data, edge.from and edge.from.uiMapID)
+                    )
+                    == true
+            then
                 if self.build then self.build:Cancel() end
                 self.build, self.status, self.action = nil, "resume", nil
                 return "resume", nil, Copy(self.destination)
@@ -801,11 +1034,16 @@ function Session:Step(maxOperations, milliseconds)
         if not self.plan then
             self.status = "missing_data"
             for _, gap in ipairs(missing or {}) do
-                if gap.reason == "pending_availability" then self.status = "waiting_data"; break end
+                if gap.reason == "pending_availability" then
+                    self.status = "waiting_data"
+                    break
+                end
             end
             return self.status, nil, Copy(self.destination)
         end
-        for _, id in ipairs(self.plan.recipeIDs) do self.selectedRecipes[id] = true end
+        for _, id in ipairs(self.plan.recipeIDs) do
+            self.selectedRecipes[id] = true
+        end
         -- Discovery and progression share one caller allowance, rather than
         -- each spending another millisecond in the same frame.
         return "planning"
@@ -819,17 +1057,27 @@ function Session:Step(maxOperations, milliseconds)
     end
     local deadline = self.clock and self.clock() + (milliseconds or 1)
     for operation = 1, math.max(1, maxOperations or 64) do
-        if operation > 1 and deadline and self.clock() >= deadline then self.status = "planning"; return self.status end
+        if operation > 1 and deadline and self.clock() >= deadline then
+            self.status = "planning"
+            return self.status
+        end
         local step = plan.steps[self.cursor]
         if not step then
             local previous = plan.steps[#plan.steps]
             if previous and previous._unlockGuidanceQuestID then
                 local questID = previous._unlockGuidanceQuestID
                 self.status = "waiting_data"
-                self.action = { kind = "interact", questID = questID, positionOptional = true,
-                    waitingData = true, reason = "tracker_not_observed",
-                    label = string.format(data:GetText("NAVIGATION_UNLOCK_tracker_wait"),
-                        (data.env.getQuestName and data.env.getQuestName(questID)) or tostring(questID)) }
+                self.action = {
+                    kind = "interact",
+                    questID = questID,
+                    positionOptional = true,
+                    waitingData = true,
+                    reason = "tracker_not_observed",
+                    label = string.format(
+                        data:GetText("NAVIGATION_UNLOCK_tracker_wait"),
+                        (data.env.getQuestName and data.env.getQuestName(questID)) or tostring(questID)
+                    ),
+                }
                 return self.status, self.action, Copy(self.destination)
             end
             -- A reward source can make progress without reaching a numerical
@@ -843,15 +1091,22 @@ function Session:Step(maxOperations, milliseconds)
                         self.exhaustedRecipes[previous._unlockRecipeID] = true
                         self.selectedRecipes[previous._unlockRecipeID] = nil
                         acquisition = true
-                    elseif state == nil then acquisitionPending = true end
+                    elseif state == nil then
+                        acquisitionPending = true
+                    end
                 end
             end
             if acquisition then
                 self.preflightCache.scoresByMap = nil
                 self.plan, self.action, self.cursor, self.status = nil, nil, 1, "planning"
-                self.build = data:CreateUnlockBuild(self.blockers, { clock = self.clock, observedSteps = self.observedSteps,
-                    observationToken = self.observationToken, exhaustedRecipes = self.exhaustedRecipes,
-                    selectedRecipes = self.selectedRecipes, preflightCache = self.preflightCache })
+                self.build = data:CreateUnlockBuild(self.blockers, {
+                    clock = self.clock,
+                    observedSteps = self.observedSteps,
+                    observationToken = self.observationToken,
+                    exhaustedRecipes = self.exhaustedRecipes,
+                    selectedRecipes = self.selectedRecipes,
+                    preflightCache = self.preflightCache,
+                })
                 return "planning"
             end
             if acquisitionPending then
@@ -863,18 +1118,29 @@ function Session:Step(maxOperations, milliseconds)
         end
         -- Step restrictions refer to the live player, unlike the passage gate.
         local liveCharacter = Character(data)
-        local remember = not step.completeWhen and (step.kind == "waypoint" or step.kind == "scenario"
-            or step.kind == "transport" or step.kind == "action")
-        local goalDone = step._unlockGoal and data:CheckRequirements(GoalRequirements(step._unlockGoal), character) == true
-        local done = goalDone or (remember and self.observedSteps[step._unlockStepID]) or Complete(data, step, liveCharacter)
+        local remember = not step.completeWhen
+            and (
+                step.kind == "waypoint"
+                or step.kind == "scenario"
+                or step.kind == "transport"
+                or step.kind == "action"
+            )
+        local goalDone = step._unlockGoal
+            and data:CheckRequirements(GoalRequirements(step._unlockGoal), character) == true
+        local done = goalDone
+            or (remember and self.observedSteps[step._unlockStepID])
+            or Complete(data, step, liveCharacter)
         local travelHint = TravelHint(step, plan.steps[self.cursor + 1])
         local eligible = Applicable(data, step.requirements, liveCharacter)
         if eligible and done ~= true and not travelHint then
             local guards = { step._unlockRecipeRequirements or {}, step.requirements or {} }
             for index, guard in ipairs(guards) do
-                local ready, status, reason = self:ResolveRequirements(guard,
+                local ready, status, reason = self:ResolveRequirements(
+                    guard,
                     "unlock-requirement:" .. tostring(step._unlockRecipeID) .. ":" .. index .. ":" .. self.cursor,
-                    step, liveCharacter)
+                    step,
+                    liveCharacter
+                )
                 if not ready then
                     self.status, self.action = status, nil
                     self.requirementReason = reason
@@ -882,14 +1148,25 @@ function Session:Step(maxOperations, milliseconds)
                 end
             end
         end
-        if eligible == true and done ~= true and step.questID and step.kind ~= "accept" and step.kind ~= "missing"
-            and data.env.isQuestCompleted and data.env.isQuestCompleted(step.questID) == false
-            and data.env.isQuestActive and data.env.isQuestActive(step.questID) == false then
+        if
+            eligible == true
+            and done ~= true
+            and step.questID
+            and step.kind ~= "accept"
+            and step.kind ~= "missing"
+            and data.env.isQuestCompleted
+            and data.env.isQuestCompleted(step.questID) == false
+            and data.env.isQuestActive
+            and data.env.isQuestActive(step.questID) == false
+        then
             -- An abandoned quest must be accepted again at its observed start.
             for index = self.cursor - 1, 1, -1 do
                 local previous = plan.steps[index]
-                if previous.kind == "accept" and previous.questID == step.questID
-                    and data:CheckRequirements(previous.requirements, liveCharacter) == true then
+                if
+                    previous.kind == "accept"
+                    and previous.questID == step.questID
+                    and data:CheckRequirements(previous.requirements, liveCharacter) == true
+                then
                     self.cursor, step = index, previous
                     done = Complete(data, step, liveCharacter)
                     break
@@ -905,20 +1182,36 @@ function Session:Step(maxOperations, milliseconds)
                 local available, status, reason = self:CheckAcceptance(step, liveCharacter)
                 if not available then
                     self.status = status
-                    self.action = { kind = "missing", questID = step.questID, reason = reason,
+                    self.action = {
+                        kind = "missing",
+                        questID = step.questID,
+                        reason = reason,
                         requirements = step.acceptance and Copy(step.acceptance.requirements),
                         gaps = step.acceptance and Copy(step.acceptance.gaps),
-                        label = string.format(data:GetText(reason == "quest_unavailable" and "NAVIGATION_UNLOCK_accept_unavailable"
-                            or "NAVIGATION_UNLOCK_accept_unverified"),
+                        label = string.format(
+                            data:GetText(
+                                reason == "quest_unavailable" and "NAVIGATION_UNLOCK_accept_unavailable"
+                                    or "NAVIGATION_UNLOCK_accept_unverified"
+                            ),
                             (data.env.getQuestName and data.env.getQuestName(step.questID) or tostring(step.questID))
-                                .. " [" .. step.questID .. "]") }
+                                .. " ["
+                                .. step.questID
+                                .. "]"
+                        ),
+                    }
                     return self.status, self.action, Copy(self.destination)
                 end
             end
             self.acceptanceBlockers = nil
             self.action = Copy(step)
-            if step.kind == "accept" and not self.action.npcID and step.acceptance
-                and #(step.acceptance.starterNPCIDs or {}) == 1 then self.action.npcID = step.acceptance.starterNPCIDs[1] end
+            if
+                step.kind == "accept"
+                and not self.action.npcID
+                and step.acceptance
+                and #(step.acceptance.starterNPCIDs or {}) == 1
+            then
+                self.action.npcID = step.acceptance.starterNPCIDs[1]
+            end
             self.action.prerequisitesKnown = plan.prerequisitesKnown
             self.action.label = data:GetUnlockStepText(step)
             if step.kind == "action" and data.env.watchUnlockAction then data.env.watchUnlockAction(step) end
@@ -933,8 +1226,11 @@ function Session:Step(maxOperations, milliseconds)
                     for _, position in ipairs(step.positions or { step.position }) do
                         local target = data:NormalizeLocation(position)
                         if target then
-                            local distance = live and live.instanceID == target.instanceID and live.uiMapID == target.uiMapID
-                                and ((live.x-target.x)^2 + (live.y-target.y)^2) or math.huge
+                            local distance = live
+                                    and live.instanceID == target.instanceID
+                                    and live.uiMapID == target.uiMapID
+                                    and ((live.x - target.x) ^ 2 + (live.y - target.y) ^ 2)
+                                or math.huge
                             if not self.action.target or distance < bestDistance then
                                 self.action.target, bestDistance = target, distance
                             end
@@ -955,15 +1251,26 @@ function Session:Step(maxOperations, milliseconds)
 end
 
 function Session:ExportState()
-    return { schema = 1, destination = Copy(self.destination), blockers = Copy(self.blockers), observedSteps = Copy(self.observedSteps),
-        selectedRecipes = Copy(self.selectedRecipes), exhaustedRecipes = Copy(self.exhaustedRecipes) }
+    return {
+        schema = 1,
+        destination = Copy(self.destination),
+        blockers = Copy(self.blockers),
+        observedSteps = Copy(self.observedSteps),
+        selectedRecipes = Copy(self.selectedRecipes),
+        exhaustedRecipes = Copy(self.exhaustedRecipes),
+    }
 end
 
 function Instance:RestoreUnlockSession(state, options)
     assert(type(state) == "table" and state.schema == 1, "invalid unlock state")
     options = options or {}
     -- Re-evaluate all quest flags after reload; never trust a saved cursor.
-    return self:CreateUnlockSession({ destination = state.destination, blockers = state.blockers, clock = options.clock,
-        observedSteps = Copy(state.observedSteps or {}), selectedRecipes = Copy(state.selectedRecipes or {}),
-        exhaustedRecipes = Copy(state.exhaustedRecipes or {}) })
+    return self:CreateUnlockSession({
+        destination = state.destination,
+        blockers = state.blockers,
+        clock = options.clock,
+        observedSteps = Copy(state.observedSteps or {}),
+        selectedRecipes = Copy(state.selectedRecipes or {}),
+        exhaustedRecipes = Copy(state.exhaustedRecipes or {}),
+    })
 end

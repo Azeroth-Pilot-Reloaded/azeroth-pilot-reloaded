@@ -3,12 +3,33 @@
 -- renderers below are production code, not substitutes for the behavior tested.
 local env = dofile("tests/lua/route_ui_test_env.lua")
 local function noop() end
-H = { clock = 0, charge = 0.01, bytes = 0, time = 10, timers = {}, errors = {}, quests = {}, order = {},
-    rewarded = {}, items = {}, missingInfo = {}, missingTitles = {}, missingObjectives = {}, map = 10,
-    questReads = 0, mapRequests = 0, events = 0 }
-local locale = setmetatable({ Q_ACCEPTED = "Accepted %d", PICK_UP_Q = "Pick up", TURN_IN_Q = "Turn in",
-    ERROR_MISSING_Q = "Missing %s", DO_BONUS_OBJECTIVE = "Bonus %s", SET_HEARTHSTONE = "Bind %s" },
-    { __index = function(_, key) return key end })
+H = {
+    clock = 0,
+    charge = 0.01,
+    bytes = 0,
+    time = 10,
+    timers = {},
+    errors = {},
+    quests = {},
+    order = {},
+    rewarded = {},
+    items = {},
+    missingInfo = {},
+    missingTitles = {},
+    missingObjectives = {},
+    map = 10,
+    questReads = 0,
+    mapRequests = 0,
+    events = 0,
+}
+local locale = setmetatable({
+    Q_ACCEPTED = "Accepted %d",
+    PICK_UP_Q = "Pick up",
+    TURN_IN_Q = "Turn in",
+    ERROR_MISSING_Q = "Missing %s",
+    DO_BONUS_OBJECTIVE = "Bonus %s",
+    SET_HEARTHSTONE = "Bind %s",
+}, { __index = function(_, key) return key end })
 local originalLib = LibStub
 function LibStub(name, ...)
     if name == "AceLocale-3.0" then return { GetLocale = function() return locale end } end
@@ -22,24 +43,33 @@ function IsInInstance() return false end
 function IsInGroup() return false end
 function IsModifierKeyDown() return false end
 function GetBindLocation() return "Synthetic inn" end
-function geterrorhandler() return function(err) H.errors[#H.errors + 1] = err end end
+function geterrorhandler()
+    return function(err) H.errors[#H.errors + 1] = err end
+end
 tinsert, tremove, getn = table.insert, table.remove, table.getn
 function tContains(values, wanted)
-    for _, value in ipairs(values or {}) do if value == wanted then return true end end
+    for _, value in ipairs(values or {}) do
+        if value == wanted then return true end
+    end
     return false
 end
 function env.methods:RegisterEvent(event)
-    self.events = self.events or {}; self.events[event] = true
+    self.events = self.events or {}
+    self.events[event] = true
 end
 function env.methods:RegisterUnitEvent(event, unit)
-    self:RegisterEvent(event); self.units = self.units or {}; self.units[event] = unit
+    self:RegisterEvent(event)
+    self.units = self.units or {}
+    self.units[event] = unit
 end
 function env.methods:UnregisterAllEvents() self.events = {} end
-C_Timer = { NewTimer = function(delay, callback)
-    local timer = { due = H.time + delay, callback = callback, Cancel = function(self) self.cancelled = true end }
-    H.timers[#H.timers + 1] = timer
-    return timer
-end }
+C_Timer = {
+    NewTimer = function(delay, callback)
+        local timer = { due = H.time + delay, callback = callback, Cancel = function(self) self.cancelled = true end }
+        H.timers[#H.timers + 1] = timer
+        return timer
+    end,
+}
 function C_Timer.After(delay, callback) C_Timer.NewTimer(delay, callback) end
 function H.frame(elapsed)
     H.time = H.time + (elapsed or 0)
@@ -47,7 +77,11 @@ function H.frame(elapsed)
     H.timers = {}
     for _, timer in ipairs(pending) do
         if not timer.cancelled then
-            if timer.due <= H.time then timer.callback() else H.timers[#H.timers + 1] = timer end
+            if timer.due <= H.time then
+                timer.callback()
+            else
+                H.timers[#H.timers + 1] = timer
+            end
         end
     end
     assert(#H.errors == 0, table.concat(H.errors, "\n"))
@@ -61,7 +95,9 @@ function H.settle()
 end
 function H.emit(event, ...)
     local tags = {}
-    for tag, frame in pairs(APR.event.framePool) do if frame.events and frame.events[event] then tags[#tags + 1] = tag end end
+    for tag, frame in pairs(APR.event.framePool) do
+        if frame.events and frame.events[event] then tags[#tags + 1] = tag end
+    end
     table.sort(tags)
     for _, tag in ipairs(tags) do
         local frame = APR.event.framePool[tag]
@@ -78,16 +114,23 @@ function H.objective(id, text, finished)
     H.quests[id].objectives[1].text, H.quests[id].objectives[1].finished = text, finished
     H.quests[id].complete = finished
 end
-C_Map = { GetBestMapForUnit = function() return H.map end,
-    GetMapInfo = function(id) return { mapID = id, name = "Synthetic map " .. id, parentMapID = 0 } end }
+C_Map = {
+    GetBestMapForUnit = function() return H.map end,
+    GetMapInfo = function(id) return { mapID = id, name = "Synthetic map " .. id, parentMapID = 0 } end,
+}
 C_Item.GetItemCount = function(id) return H.items[id] or 0 end
-C_QuestLog.GetNumQuestLogEntries = function() H.questReads = H.questReads + 1; return #H.order end
+C_QuestLog.GetNumQuestLogEntries = function()
+    H.questReads = H.questReads + 1
+    return #H.order
+end
 C_QuestLog.GetInfo = function(index)
     if H.missingInfo[index] then return nil end
     local id = H.order[index]
     return id and H.quests[id].onQuest and { questID = id } or nil
 end
-C_QuestLog.GetTitleForQuestID = function(id) if not H.missingTitles[id] then return "Quest " .. id end end
+C_QuestLog.GetTitleForQuestID = function(id)
+    if not H.missingTitles[id] then return "Quest " .. id end
+end
 C_QuestLog.GetNumQuestObjectives = function(id) return #(H.quests[id] and H.quests[id].objectives or {}) end
 C_QuestLog.GetQuestObjectives = function(id)
     if not H.missingObjectives[id] then return H.quests[id] and H.quests[id].objectives end
@@ -101,7 +144,9 @@ C_QuestLog.SetSelectedQuest = noop
 C_QuestLog.AddQuestWatch = noop
 C_SuperTrack = { SetSuperTrackedQuestID = noop }
 C_QuestLog.GetLogIndexForQuestID = function(id)
-    for index, current in ipairs(H.order) do if current == id and C_QuestLog.IsOnQuest(id) then return index end end
+    for index, current in ipairs(H.order) do
+        if current == id and C_QuestLog.IsOnQuest(id) then return index end
+    end
 end
 function GetQuestLogSpecialItemInfo() return nil end
 WOW_PROJECT_MAINLINE, WOW_PROJECT_ID = 1, 1
@@ -123,9 +168,13 @@ APR.RefreshInstanceUIVisibility, APR.MaybePromptInstanceUIPreference = noop, noo
 APR.IsInstanceWithUI = function() return true end
 APR.IsPetBattleActive = function() return false end
 APR.SendMessage = noop -- Map and party transports are separate integration boundaries.
-APR.navigation = { Cancel = noop, InvalidatePathCache = noop, Render = noop,
+APR.navigation = {
+    Cancel = noop,
+    InvalidatePathCache = noop,
+    Render = noop,
     RequestRouteCheck = function() H.mapRequests = H.mapRequests + 1 end,
-    ScheduleRouteCheck = function() H.mapRequests = H.mapRequests + 1 end }
+    ScheduleRouteCheck = function() H.mapRequests = H.mapRequests + 1 end,
+}
 APR.RouteSelection, APR.heirloom, APR.coordinate = { RefreshFrameAnchor = noop }, {}, {}
 APR.party = { SendGroupMessage = noop, RefreshPartyFrameAnchor = noop }
 APR.AFK, APR.Buff = { HideFrame = noop }, { RemoveAllBuffIcon = noop }
@@ -169,19 +218,34 @@ dofile("APR-Core/features/questing/NPCInteraction.lua")
 APR.currentStep:PreviousNextStepButton()
 APR.event:RegisterEvents()
 APR.RouteQuestStepList.journey = {
-    label = "Synthetic quest path", mapID = 10, expansion = APR.EXPANSIONS.Custom, conditions = { MinLevel = 10 },
+    label = "Synthetic quest path",
+    mapID = 10,
+    expansion = APR.EXPANSIONS.Custom,
+    conditions = { MinLevel = 10 },
     steps = {
         { PickUp = { 701 }, Note = string.rep("Synthetic introduction. ", 30) },
         { Note = "Excluded faction instruction", Faction = "Horde" },
         { Qpart = { [701] = { 1 } }, Fillers = { [702] = { 1 } }, Zones = { 10 } },
-        { Done = { 701 } }, { SetHS = 10 }, { Note = "Synthetic finish" },
+        { Done = { 701 } },
+        { SetHS = 10 },
+        { Note = "Synthetic finish" },
     },
-    parallelSteps = { { conditions = { ItemCount = { itemID = 901, count = 2 } },
-        steps = { { Qpart = { [703] = { 1 } }, Fillers = { [702] = { 1 } } } } } },
+    parallelSteps = {
+        {
+            conditions = { ItemCount = { itemID = 901, count = 2 } },
+            steps = { { Qpart = { [703] = { 1 } }, Fillers = { [702] = { 1 } } } },
+        },
+    },
 }
-APR.RouteQuestStepList.other = { label = "Other quest path", mapID = 10, expansion = APR.EXPANSIONS.Custom,
-    steps = { { PickUp = { 888 } }, { Note = "Other finish" } } }
+APR.RouteQuestStepList.other = {
+    label = "Other quest path",
+    mapID = 10,
+    expansion = APR.EXPANSIONS.Custom,
+    steps = { { PickUp = { 888 } }, { Note = "Other finish" } },
+}
 local scan = {}
-for index = 1, 200 do scan[index] = { Note = "Synthetic index padding " .. index } end
+for index = 1, 200 do
+    scan[index] = { Note = "Synthetic index padding " .. index }
+end
 APR.RouteQuestStepList.padding = { label = "No trigger", steps = scan }
 return env

@@ -16,7 +16,9 @@ for _, method in ipairs({ "GetStringWidth", "GetStringHeight" }) do
         return original(self, ...)
     end
 end
-local function startTrackingUI() trackingUI, writes, measures = true, {}, 0 end
+local function startTrackingUI()
+    trackingUI, writes, measures = true, {}, 0
+end
 local function assertNoUIWork()
     assert(not next(writes) and measures == 0, "Unchanged or hidden data must not write or measure the UI")
 end
@@ -26,14 +28,19 @@ local uiLibStub, createFrame = LibStub, CreateFrame
 -- Packaged translations are injected by CurseForge; source locale files retain
 -- only packaging directives. Supply the consumed strings in the test fixture.
 local partyLocale = setmetatable({
-    ROUTE_LABEL = "Route %s", CURRENT_STEP_LABEL = "Step %s",
-    GROUP_SYNCED = "In sync", GROUP_BEHIND = "Behind you", GROUP_AHEAD = "Ahead of you",
-    GROUP_STEP_BEHIND = "%d step behind", GROUP_STEPS_BEHIND = "%d steps behind",
-    GROUP_STEP_AHEAD = "%d step ahead", GROUP_STEPS_AHEAD = "%d steps ahead",
-    GROUP_DIFFERENT_STEP = "Different step", GROUP_OTHER_ROUTE = "Different route",
+    ROUTE_LABEL = "Route %s",
+    CURRENT_STEP_LABEL = "Step %s",
+    GROUP_SYNCED = "In sync",
+    GROUP_BEHIND = "Behind you",
+    GROUP_AHEAD = "Ahead of you",
+    GROUP_STEP_BEHIND = "%d step behind",
+    GROUP_STEPS_BEHIND = "%d steps behind",
+    GROUP_STEP_AHEAD = "%d step ahead",
+    GROUP_STEPS_AHEAD = "%d steps ahead",
+    GROUP_DIFFERENT_STEP = "Different step",
+    GROUP_OTHER_ROUTE = "Different route",
     GROUP_SYNC_UNAVAILABLE = "Sync unavailable",
-},
-    { __index = function(_, key) return key end })
+}, { __index = function(_, key) return key end })
 strmatch = string.match
 LibStub = nil
 dofile("APR-Core/libs/HereBeDragons/LibStub/LibStub.lua")
@@ -65,8 +72,12 @@ function CreateFrame(kind, name, parent, template)
 end
 
 local grouped, raid, instance = true, false, false
-local roster = { party1 = { "Peer", "" }, party2 = { "Peer", "Other Realm" },
-    party3 = { "Local", "Other Realm" }, party4 = { "WithoutAddon", "Home" } }
+local roster = {
+    party1 = { "Peer", "" },
+    party2 = { "Peer", "Other Realm" },
+    party3 = { "Local", "Other Realm" },
+    party4 = { "WithoutAddon", "Home" },
+}
 local sent, timers, now = {}, {}, 10
 local function advance(seconds)
     now = now + seconds
@@ -74,7 +85,11 @@ local function advance(seconds)
     timers = {}
     for _, timer in ipairs(due) do
         if not timer.cancelled then
-            if timer.at <= now then timer.callback() else timers[#timers + 1] = timer end
+            if timer.at <= now then
+                timer.callback()
+            else
+                timers[#timers + 1] = timer
+            end
         end
     end
 end
@@ -97,8 +112,10 @@ function APR:SetPanelColor() end
 function APR:GetCurrentRouteMapIDsAndName() end
 function APR:GetRouteDisplayName() return "Test route" end
 function APR.currentStep:GetCurrentStepDetails()
-    return { progress = { index = 4, step = 4, total = 10 },
-        questSteps = { { text = "Quest", subSteps = { { text = "1/5 items" } } } } }
+    return {
+        progress = { index = 4, step = 4, total = 10 },
+        questSteps = { { text = "Quest", subSteps = { { text = "1/5 items" } } } },
+    }
 end
 APR.Username, APR.ActiveRoute = "Local", "test-route"
 APR.settings.profile.enableAddon = true
@@ -106,16 +123,20 @@ APR.settings.profile.receiveGroupData = true
 APR.settings.profile.showGroup = true
 APR.settings.profile.groupScale = 1
 C_Timer = {
-    NewTicker = function() return { Cancel = function() end } end,
+    NewTicker = function()
+        return { Cancel = function() end }
+    end,
     NewTimer = function(delay, callback)
         local timer = { at = now + delay, callback = callback, Cancel = function(self) self.cancelled = true end }
         timers[#timers + 1] = timer
         return timer
     end,
 }
-C_ChatInfo = { SendAddonMessage = function(prefix, message, channel)
-    sent[#sent + 1] = { prefix = prefix, message = message, channel = channel }
-end }
+C_ChatInfo = {
+    SendAddonMessage = function(prefix, message, channel)
+        sent[#sent + 1] = { prefix = prefix, message = message, channel = channel }
+    end,
+}
 dofile("APR-Core/utils/Utils.lua")
 dofile("APR-Core/features/group/PartyProtocol.lua")
 dofile("APR-Core/features/group/Party.lua")
@@ -138,16 +159,20 @@ party:SendGroupMessage(true)
 assert(party.GroupListSteps.Local.currentStep == 4)
 assert(PartyScreenPanel:IsShown(), "The progress frame is visible in a party")
 receive("Peer", "Peer-Home", 5)
-assert(party.GroupListSteps.Peer and party.GroupListSteps.Peer.currentStep == 5,
-    "Realm-qualified group senders must reach deserialization and remain visible")
+assert(
+    party.GroupListSteps.Peer and party.GroupListSteps.Peer.currentStep == 5,
+    "Realm-qualified group senders must reach deserialization and remain visible"
+)
 assert(party.teamList.Peer.fontIndex.text == "5")
 assert(party.GroupListSteps.Peer.stepFrameDetails.questSteps[1].subSteps[1].text == "1/5 items")
 receive("Peer", "Peer-OtherRealm", 6)
 assert(party.GroupListSteps["Peer-OtherRealm"].currentStep == 6)
 assert(party.teamList["Peer-OtherRealm"].fontIndex.text == "6")
 receive("Local", "Local-OtherRealm", 7)
-assert(party.GroupListSteps["Local-OtherRealm"].currentStep == 7,
-    "A peer with our character name on another realm is not our own echo")
+assert(
+    party.GroupListSteps["Local-OtherRealm"].currentStep == 7,
+    "A peer with our character name on another realm is not our own echo"
+)
 assert(party.teamList.WithoutAddon.playerData.noAddon, "Members without APR remain visible")
 local peerData = party:BuildGroupPayload("Peer")
 peerData.currentStep, peerData.stepFrameDetails.progress.step = 5, 5
@@ -155,7 +180,10 @@ local duplicate = serializer:Serialize(peerData)
 assert(party:UpdateGroupListing(duplicate, "Peer-Home"))
 local parsedBefore = deserializations
 startTrackingUI()
-for _ = 1, 1000 do assert(party:UpdateGroupListing(duplicate, "Peer-Home")); party:ReOrderTeam() end
+for _ = 1, 1000 do
+    assert(party:UpdateGroupListing(duplicate, "Peer-Home"))
+    party:ReOrderTeam()
+end
 assertNoUIWork()
 assert(deserializations == parsedBefore, "Duplicate snapshots are discarded before deserialization")
 trackingUI = false
@@ -164,15 +192,19 @@ local detailsOnly = serializer:Serialize(peerData)
 startTrackingUI()
 assert(party:UpdateGroupListing(detailsOnly, "Peer-Home"))
 assertNoUIWork()
-assert(party.teamList.Peer.playerData.stepFrameDetails.questSteps[1].subSteps[1].text == "2/5 items",
-    "Tooltip-only updates retain live objectives without refreshing the frame")
+assert(
+    party.teamList.Peer.playerData.stepFrameDetails.questSteps[1].subSteps[1].text == "2/5 items",
+    "Tooltip-only updates retain live objectives without refreshing the frame"
+)
 trackingUI = false
 peerData.currentStep = 6
 local changedCounter = serializer:Serialize(peerData)
 startTrackingUI()
 assert(party:UpdateGroupListing(changedCounter, "Peer-Home"))
-assert(writeCount("SetText") == 1 and writeCount("SetPoint") == 0 and writeCount("SetHeight") == 0,
-    "A changed counter writes one font and preserves unaffected rows and geometry")
+assert(
+    writeCount("SetText") == 1 and writeCount("SetPoint") == 0 and writeCount("SetHeight") == 0,
+    "A changed counter writes one font and preserves unaffected rows and geometry"
+)
 trackingUI = false
 APR.settings.profile.showGroup = false
 party:RefreshPartyFrameAnchor()
@@ -186,20 +218,23 @@ trackingUI = false
 assert(party.teamList.Peer.fontIndex.text == "6", "A hidden frame defers presentation")
 APR.settings.profile.showGroup = true
 party:RefreshPartyFrameAnchor()
-assert(party.teamList.Peer.fontIndex.text == "9" and PartyScreenPanel:IsShown(),
-    "Showing the frame presents the newest cached snapshot")
+assert(
+    party.teamList.Peer.fontIndex.text == "9" and PartyScreenPanel:IsShown(),
+    "Showing the frame presents the newest cached snapshot"
+)
 local function assertPartyLayout(expectedCount)
     local count, rowHeight = 0
     for _, row in pairs(party.teamList) do
         count = count + 1
         rowHeight = rowHeight or row:GetHeight()
         assert(row:GetHeight() == rowHeight, "Every member has the same row height")
-        assert(row.point[2] == PartyFrame_TeamHolder and row.point[5] <= 0,
-            "Member rows stay inside the holder")
+        assert(row.point[2] == PartyFrame_TeamHolder and row.point[5] <= 0, "Member rows stay inside the holder")
     end
     assert(count == expectedCount)
-    assert(PartyScreenPanel:GetHeight() == (PartyScreenPanel.collapsed and 1 or math.max(1, count * (rowHeight or 0))),
-        "The container fits the member rows without empty space")
+    assert(
+        PartyScreenPanel:GetHeight() == (PartyScreenPanel.collapsed and 1 or math.max(1, count * (rowHeight or 0))),
+        "The container fits the member rows without empty space"
+    )
 end
 assertPartyLayout(5)
 PartyFrameHeader.MinimizeButton.scripts.OnClick(PartyFrameHeader.MinimizeButton)
@@ -213,8 +248,10 @@ PartyFrameHeader.MinimizeButton.scripts.OnClick(PartyFrameHeader.MinimizeButton)
 assert(PartyFrame_TeamHolder:IsShown())
 assertPartyLayout(5)
 party:PopulateMissingGroupMembers()
-assert(party.teamList["Peer-OtherRealm"].playerData.currentStep == 6,
-    "Roster refresh must not replace remote progress with a missing-addon placeholder")
+assert(
+    party.teamList["Peer-OtherRealm"].playerData.currentStep == 6,
+    "Roster refresh must not replace remote progress with a missing-addon placeholder"
+)
 receive("Peer", "Peer", 8)
 assert(party.GroupListSteps.Peer.currentStep == 8, "Bare same-realm senders stay compatible")
 
@@ -244,8 +281,10 @@ assertPartyLayout(4)
 assert(party.GroupListSteps.Peer.currentStep == 8, "Leaving one realm must not remove the namesake")
 before = #sent
 party:GroupUpdateHandler("APRPartyDelete", "Peer", "PARTY", "Peer-Home")
-assert(#sent == before and party.GroupListSteps.Local and party.GroupListSteps["Local-OtherRealm"],
-    "A peer disabling APR does not clear other members or trigger a broadcast storm")
+assert(
+    #sent == before and party.GroupListSteps.Local and party.GroupListSteps["Local-OtherRealm"],
+    "A peer disabling APR does not clear other members or trigger a broadcast storm"
+)
 assert(party.teamList.Peer.playerData.noAddon)
 receive("Peer", "Peer-Home", 8)
 assert(party.GroupListSteps.Peer.currentStep == 8, "Rejoining peers are not suppressed by an old duplicate cache")
@@ -291,9 +330,13 @@ advance(3) -- Settle the join handshake before measuring ordinary progression tr
 local displayedStep, builds = 4, 0
 function APR.currentStep:GetCurrentStepDetails()
     builds = builds + 1
-    return { progress = { index = displayedStep, step = displayedStep, total = 100 },
+    return {
+        progress = { index = displayedStep, step = displayedStep, total = 100 },
         fillerSteps = { { text = "Unused filler" } },
-        questSteps = { { key = "unused", text = "Quest", subSteps = { { questID = 42, name = "unused", text = "1/5" } } } } }
+        questSteps = {
+            { key = "unused", text = "Quest", subSteps = { { questID = 42, name = "unused", text = "1/5" } } },
+        },
+    }
 end
 before = #sent
 for index = 1, 1000 do
@@ -308,32 +351,49 @@ assert(#sent > before and builds == 1 and party.GroupListSteps.Local.currentStep
 before = #sent
 local serializedBefore = serializations
 startTrackingUI()
-for _ = 1, 1000 do party:SendGroupMessage() end
+for _ = 1, 1000 do
+    party:SendGroupMessage()
+end
 advance(2)
 assert(#sent == before and builds == 2, "Unchanged progression causes no network traffic")
 assert(serializations == serializedBefore, "Unchanged data is compared before serialization")
 assertNoUIWork()
 trackingUI = false
 local wireOK, lean = serializer:Deserialize(party.lastGroupPayload)
-assert(wireOK and not lean.sojournerSkipCampaign and not lean.stepFrameDetails.progress
-    and not lean.stepFrameDetails.fillerSteps and not lean.stepFrameDetails.questSteps[1].key,
-    "The wire omits filler rows and duplicated progress while preserving consumed fields")
+assert(
+    wireOK
+        and not lean.sojournerSkipCampaign
+        and not lean.stepFrameDetails.progress
+        and not lean.stepFrameDetails.fillerSteps
+        and not lean.stepFrameDetails.questSteps[1].key,
+    "The wire omits filler rows and duplicated progress while preserving consumed fields"
+)
 local legacy = APR.PartyProtocol.NormalizeSnapshot(party.GroupListSteps.Local, APR.Username)
 legacy.sender = nil
 local legacyBytes, leanBytes = #serializer:Serialize(legacy), #party.lastGroupPayload
 assert(leanBytes < legacyBytes)
-print(string.format("Party payload: %d bytes vs %d before; 1000 duplicates cause zero deserializations/UI writes; unchanged sends cause zero serializations", leanBytes, legacyBytes))
+print(
+    string.format(
+        "Party payload: %d bytes vs %d before; 1000 duplicates cause zero deserializations/UI writes; unchanged sends cause zero serializations",
+        leanBytes,
+        legacyBytes
+    )
+)
 party:SendGroupMessage(true)
 assert(#sent > before, "An explicit peer reply can resend an unchanged snapshot after the cooldown")
 before = #sent
-for _ = 1, 1000 do party:SendGroupMessage(true) end
+for _ = 1, 1000 do
+    party:SendGroupMessage(true)
+end
 assert(#sent == before)
 advance(2)
 assert(#sent > before and not party.groupSendTimer, "Forced bursts coalesce into one reply")
 before = #sent
 party:RequestData()
 assert(#sent == before + 1)
-for _ = 1, 1000 do party:RequestData() end
+for _ = 1, 1000 do
+    party:RequestData()
+end
 assert(#sent == before + 1, "Data requests have their own cooldown")
 advance(5)
 party:RequestData()
@@ -341,20 +401,27 @@ assert(#sent == before + 2)
 
 -- A saturated transport retains one snapshot in flight and one latest state.
 local transport = {}
-ChatThrottleLib = { SendAddonMessage = function(_, priority, prefix, message, channel, target, _, callback)
-    assert(priority == "BULK" and #message <= 255)
-    transport[#transport + 1] = { message = message, callback = callback }
-end }
+ChatThrottleLib = {
+    SendAddonMessage = function(_, priority, prefix, message, channel, target, _, callback)
+        assert(priority == "BULK" and #message <= 255)
+        transport[#transport + 1] = { message = message, callback = callback }
+    end,
+}
 local function drain(success)
     local batch = transport
     transport = {}
-    for _, fragment in ipairs(batch) do fragment.callback(nil, success) end
+    for _, fragment in ipairs(batch) do
+        fragment.callback(nil, success)
+    end
     return batch
 end
 party:SendGroupMessage(true)
 local queued, previousBuilds = #transport, builds
 assert(queued > 0 and party.groupSendInFlight)
-for index = 1, 1000 do displayedStep = (index % 10) + 1; party:SendGroupMessage() end
+for index = 1, 1000 do
+    displayedStep = (index % 10) + 1
+    party:SendGroupMessage()
+end
 assert(#transport == queued and builds == previousBuilds)
 advance(10)
 assert(#transport == queued and builds == previousBuilds, "A blocked transport cannot accumulate obsolete snapshots")
@@ -369,14 +436,18 @@ displayedStep = 13
 party:SendGroupMessage()
 drain(true)
 advance(2)
-assert(#transport > 0 and party.GroupListSteps.Local.currentStep == 13,
-    "The latest changed state follows the completed snapshot")
+assert(
+    #transport > 0 and party.GroupListSteps.Local.currentStep == 13,
+    "The latest changed state follows the completed snapshot"
+)
 drain(false)
 assert(not party.lastGroupPayload, "Failed fragments do not suppress future retries as duplicates")
 
 function APR.currentStep:GetCurrentStepDetails()
     local rows = {}
-    for index = 1, 128 do rows[index] = { text = string.rep("x", 1000) } end
+    for index = 1, 128 do
+        rows[index] = { text = string.rep("x", 1000) }
+    end
     return { progress = { index = 14, step = 14, total = 100 }, questSteps = rows }
 end
 party:SendGroupMessage()
@@ -390,8 +461,10 @@ end
 local wire = table.concat(parts)
 assert(#wire <= 2048 and #batch <= 12, "Outgoing snapshots have a strict byte and fragment budget")
 local ok, decoded = serializer:Deserialize(wire)
-assert(ok and decoded.currentStep == 14 and not decoded.stepFrameDetails.questSteps,
-    "Oversized tooltips keep route and progress while dropping optional rows")
+assert(
+    ok and decoded.currentStep == 14 and not decoded.stepFrameDetails.questSteps,
+    "Oversized tooltips keep route and progress while dropping optional rows"
+)
 assert(#party.GroupListSteps.Local.stepFrameDetails.questSteps == 128, "The local tooltip remains complete")
 party:SendGroupMessage()
 grouped = false
@@ -401,7 +474,9 @@ ChatThrottleLib = nil
 grouped = false
 party:PopulateMissingGroupMembers()
 assert(not next(party.teamList) and not next(party.GroupListSteps))
-print("Party sync: real wire roundtrip, realms, raid silence, burst coalescing, deduplication, byte limits and transport backpressure passed")
+print(
+    "Party sync: real wire roundtrip, realms, raid silence, burst coalescing, deduplication, byte limits and transport backpressure passed"
+)
 
 -- Show personal filtered counters, but compare stable step identities for sync.
 dofile("APR-Core/data/models/Enums.lua")
@@ -410,14 +485,23 @@ function APR:IsDelveRoute() return false end
 local optional = false
 function APR:AreConditionalFiltersMet() return optional end
 local skipCampaign, filterReads = false, 0
-function APR:StepFilterQuestHandler(step) filterReads = filterReads + 1; return step.Hidden == true end
+function APR:StepFilterQuestHandler(step)
+    filterReads = filterReads + 1
+    return step.Hidden == true
+end
 function APR:IsSojournerSkipActive() return skipCampaign end
 function APR:IsStepCampaignQuest(step) return step.Campaign == true end
-local route = { label = "Shared route", steps = {}, parallelSteps = {
-    { steps = { { Note = "Profession pickup" }, { Note = "Profession hand-in" } } },
-    { conditions = { ItemCount = { [42] = 1 } }, steps = { { UseItem = { itemID = 42 } } }, repeatable = true },
-} }
-for index = 1, 1135 do route.steps[index] = { Note = "Main " .. index } end
+local route = {
+    label = "Shared route",
+    steps = {},
+    parallelSteps = {
+        { steps = { { Note = "Profession pickup" }, { Note = "Profession hand-in" } } },
+        { conditions = { ItemCount = { [42] = 1 } }, steps = { { UseItem = { itemID = 42 } } }, repeatable = true },
+    },
+}
+for index = 1, 1135 do
+    route.steps[index] = { Note = "Main " .. index }
+end
 APR.RouteQuestStepList = { shared = route, other = { label = route.label, steps = route.steps } }
 APR.ActiveRoute, APR.PlayerID = "shared", "local"
 APRData = { ["local"] = { shared = 50 }, peer = { shared = 107 } }
@@ -442,33 +526,47 @@ APR.PlayerID, personalStep = "local", 107
 receivePayload(peer, "Peer-Home")
 assert(party.GroupListSteps.Peer.currentStep == 105 and party.GroupListSteps.Local.currentStep == 107)
 assert(party.teamList.Local.fontIndex.text == "107" and party.teamList.Peer.fontIndex.text == "105")
-assert(party.teamList.Local.fontIndex.role == "success" and party.teamList.Peer.fontIndex.role == "success",
-    "Different personal counts and effective indices still identify the same main step")
+assert(
+    party.teamList.Local.fontIndex.role == "success" and party.teamList.Peer.fontIndex.role == "success",
+    "Different personal counts and effective indices still identify the same main step"
+)
 assert(party.teamList.Peer.fontStatus.text == "In sync")
 function APR:GetStepString(step) return step.Note or "Item action" end
-assert(party:GetStepDescription("shared", peer.routeProgress.id) == "Main 107",
-    "Remote descriptions must not resolve against our shifted effective index")
+assert(
+    party:GetStepDescription("shared", peer.routeProgress.id) == "Main 107",
+    "Remote descriptions must not resolve against our shifted effective index"
+)
 
 APR.PlayerID, personalStep = "peer", 104
 APRData.peer.shared = 106
 peer = party:BuildGroupPayload("Peer")
 APR.PlayerID, personalStep = "local", 107
 receivePayload(peer, "Peer-Home")
-assert(party.teamList.Peer.fontIndex.text == "104" and party.teamList.Peer.fontIndex.role == "warning",
-    "A member actually on another main step remains out of sync")
-assert(party.teamList.Peer.fontStatus.text == "1 step behind",
-    "The gap uses common identities projected onto our filters, not 107 minus 104")
+assert(
+    party.teamList.Peer.fontIndex.text == "104" and party.teamList.Peer.fontIndex.role == "warning",
+    "A member actually on another main step remains out of sync"
+)
+assert(
+    party.teamList.Peer.fontStatus.text == "1 step behind",
+    "The gap uses common identities projected onto our filters, not 107 minus 104"
+)
 local readsBefore = filterReads
 local nearby = APR:GetGroupRouteDisplayPositions("shared", { ["main:106"] = true, ["main:107"] = true })
-assert(nearby["main:107"] - nearby["main:106"] == 1 and filterReads - readsBefore == 2,
-    "A one-step gap evaluates two steps, not the entire 1138-step effective route")
+assert(
+    nearby["main:107"] - nearby["main:106"] == 1 and filterReads - readsBefore == 2,
+    "A one-step gap evaluates two steps, not the entire 1138-step effective route"
+)
 local definition = APR._groupRouteDefinition
-for _ = 1, 1000 do assert(APR:GetGroupRouteProgress("shared", 110).id == "main:107") end
+for _ = 1, 1000 do
+    assert(APR:GetGroupRouteProgress("shared", 110).id == "main:107")
+end
 assert(APR._groupRouteDefinition == definition, "Stable progress reuses the immutable definition index")
 peer.currentStep, peer.routeProgress = 107, { id = "main:106", step = 106, total = 1135 }
 receivePayload(peer, "Peer-Home")
-assert(party.teamList.Peer.fontIndex.role == "warning" and party.teamList.Peer.fontStatus.text == "1 step behind",
-    "Matching personal numbers do not make different steps synchronized")
+assert(
+    party.teamList.Peer.fontIndex.role == "warning" and party.teamList.Peer.fontStatus.text == "1 step behind",
+    "Matching personal numbers do not make different steps synchronized"
+)
 peer.currentStep = 104
 peer.routeFileName = "other"
 receivePayload(peer, "Peer-Home")
@@ -476,8 +574,10 @@ assert(party.teamList.Peer.fontIndex.role == "muted", "Identical route labels do
 assert(party.teamList.Peer.fontStatus.text == "Different route")
 peer.routeFileName, peer.routeProgress = "shared", nil
 receivePayload(peer, "Peer-Home")
-assert(party.teamList.Peer.fontIndex.text == "104" and party.teamList.Peer.fontIndex.role == "muted",
-    "Legacy peers remain visible without comparing character-specific counts")
+assert(
+    party.teamList.Peer.fontIndex.text == "104" and party.teamList.Peer.fontIndex.role == "muted",
+    "Legacy peers remain visible without comparing character-specific counts"
+)
 assert(party:GetStepDescription("shared", nil) == "", "Unknown legacy positions cannot invent a description")
 peer.routeProgress = { id = "main:106", step = 106, total = 1136 }
 receivePayload(peer, "Peer-Home")
@@ -490,23 +590,29 @@ route.steps[104].Campaign = true
 skipCampaign = true
 peer.routeProgress = { id = "main:103", step = 103, total = 1135 }
 receivePayload(peer, "Peer-Home")
-assert(party.teamList.Peer.fontStatus.text == "2 steps behind",
-    "Filtered steps and skipped campaign steps do not inflate the gap")
+assert(
+    party.teamList.Peer.fontStatus.text == "2 steps behind",
+    "Filtered steps and skipped campaign steps do not inflate the gap"
+)
 peer.routeProgress = { id = "main:108", step = 108, total = 1135 }
 receivePayload(peer, "Peer-Home")
 assert(party.teamList.Peer.fontStatus.text == "1 step ahead")
 peer.routeProgress = { id = "main:105", step = 105, total = 1135 }
 receivePayload(peer, "Peer-Home")
-assert(party.teamList.Peer.fontStatus.text == "Behind you" and not party.teamList.Peer.progressHasGap,
-    "A step hidden in our route cannot invent a numeric distance")
+assert(
+    party.teamList.Peer.fontStatus.text == "Behind you" and not party.teamList.Peer.progressHasGap,
+    "A step hidden in our route cannot invent a numeric distance"
+)
 route.steps[105].Hidden, route.steps[104].Campaign, skipCampaign = nil, nil, false
 
 local pickup = APR:GetGroupRouteProgress("shared", 50)
 local handin = APR:GetGroupRouteProgress("shared", 51)
 local item = APR:GetGroupRouteProgress("shared", 52)
 assert(pickup.id == "parallel:1:1" and handin.id == "parallel:1:2" and pickup.step == 50)
-assert(item.id == "parallel:2:1" and item.step == 50,
-    "Runtime copies keep their definition identity, including repeatable item actions")
+assert(
+    item.id == "parallel:2:1" and item.step == 50,
+    "Runtime copies keep their definition identity, including repeatable item actions"
+)
 assert(APR:GetGroupRouteStep("shared", pickup.id) == route.parallelSteps[1].steps[1])
 assert(APR:GetGroupRouteProgress("shared", 53).id == "main:50")
 peer.routeProgress = pickup
@@ -532,12 +638,16 @@ assert(APR:GetGroupRouteProgress("legacy", 107).id == "main:107", "Flat custom r
 assert(APR:GetGroupRouteStep("legacy", "main:107") == route.steps[107])
 local oldDefinition = APR._groupRouteDefinition
 APR:InvalidateEffectiveRouteStepsCache("legacy")
-assert(APR:GetGroupRouteProgress("legacy", 107).id == "main:107" and APR._groupRouteDefinition ~= oldDefinition,
-    "Route invalidation discards the identity cache")
+assert(
+    APR:GetGroupRouteProgress("legacy", 107).id == "main:107" and APR._groupRouteDefinition ~= oldDefinition,
+    "Route invalidation discards the identity cache"
+)
 APR.RouteQuestStepList.legacy = { { Note = "Replacement route" } }
-assert(APR:GetGroupRouteProgress("legacy", 1).total == 1
-    and APR:GetGroupRouteStep("legacy", "main:1").Note == "Replacement route",
-    "Replacing a custom route cannot reuse another definition's identities")
+assert(
+    APR:GetGroupRouteProgress("legacy", 1).total == 1
+        and APR:GetGroupRouteStep("legacy", "main:1").Note == "Replacement route",
+    "Replacing a custom route cannot reuse another definition's identities"
+)
 
 -- Tooltips use the same filtered number and total as the row and Current Step.
 local tooltipProgress
@@ -560,8 +670,10 @@ party:RemoveTeam()
 assertPartyLayout(0)
 
 -- Scenario selection and temporary parent prefixes also change effective indices.
-local blocks = { { scenarioID = 1, steps = { { Note = "Scenario one" } } },
-    { scenarioID = 2, steps = { { Note = "Scenario two" }, { Note = "Scenario two finish" } } } }
+local blocks = {
+    { scenarioID = 1, steps = { { Note = "Scenario one" } } },
+    { scenarioID = 2, steps = { { Note = "Scenario two" }, { Note = "Scenario two finish" } } },
+}
 APR.RouteQuestStepList.scenario = { scenarios = blocks }
 function APR:GetDelveScenarioBlocks(key) return key == "scenario" and blocks or nil end
 function APR:IsDelveRoute(key) return key == "scenario" end
@@ -569,7 +681,9 @@ function APR:HasDelveScenarioBlock(key, scenarioID) return key == "scenario" and
 function APR:GetCurrentDelveContext() return { scenarioID = 2 } end
 function APR:GetTemporaryRouteSteps(_, steps)
     local result = { { Note = "Parent prefix" } }
-    for _, step in ipairs(steps) do result[#result + 1] = step end
+    for _, step in ipairs(steps) do
+        result[#result + 1] = step
+    end
     return result
 end
 APR.ActiveRoute = "scenario"
@@ -577,7 +691,9 @@ assert(not APR:GetGroupRouteProgress("scenario", 1), "Unmapped prefixes must not
 local scenarioProgress = APR:GetGroupRouteProgress("scenario", 2)
 assert(scenarioProgress.id == "main:2" and scenarioProgress.total == 3)
 assert(APR:GetGroupRouteStep("scenario", scenarioProgress.id) == blocks[2].steps[1])
-print("Party progress: filtered numbering, stable sync, filtered gaps, uniform rows, fitted container, branches and tooltips passed")
+print(
+    "Party progress: filtered numbering, stable sync, filtered gaps, uniform rows, fitted container, branches and tooltips passed"
+)
 
 -- Version checks use the same authenticated roster path, independently of the
 -- optional progression stream, and remain available in raids/instance groups.
@@ -606,7 +722,10 @@ end
 party:GroupUpdateHandler("APRVersionCheck", "9.0.0", "WHISPER", "Peer-Home")
 party:GroupUpdateHandler("APRVersionCheck", {}, "PARTY", "Peer-Home")
 party:GroupUpdateHandler("APRVersionCheck", string.rep("9", 65), "PARTY", "Peer-Home")
-assert(#alerts == 0 and APRData.versionCheck[client] == "7.2.2", "Invalid senders/channels/payloads cannot affect version state")
+assert(
+    #alerts == 0 and APRData.versionCheck[client] == "7.2.2",
+    "Invalid senders/channels/payloads cannot affect version state"
+)
 local versionStart = #sent
 party:GroupUpdateHandler("APRVersionCheck", "7.2.1", "PARTY", "Peer-Home")
 assert(#sent == versionStart + 1 and sent[#sent].message == "7.2.2", "A legacy older client receives our version")
@@ -618,7 +737,10 @@ party:GroupUpdateHandler("APRVersionCheck", "7.3.1", "RAID", "Peer-Home")
 assert(APRData.versionCheck[client] == "7.3.1", "Version messages are handled before the raid progression guard")
 instance = true
 party:GroupUpdateHandler("APRVersionCheck", "7.3.2", "INSTANCE_CHAT", "Peer-Home")
-assert(APRData.versionCheck[client] == "7.3.2" and #alerts == 1, "Instance versions are remembered without repeated alerts")
+assert(
+    APRData.versionCheck[client] == "7.3.2" and #alerts == 1,
+    "Instance versions are remembered without repeated alerts"
+)
 print("Party versions: member validation, legacy replies, opt-out isolation, raid and instance delivery passed")
 
 -- The skip preference drives Sojourner mismatch warnings even when counters,
@@ -630,9 +752,14 @@ APR.settings.profile.receiveGroupData = true
 APR.settings.profile.sojournerSkipCampaign = false
 APR.ActiveRoute = "sojourner-wire-test"
 function APR.currentStep:GetCurrentStepDetails()
-    return { progress = { index = 3, step = 3, total = 12 }, questSteps = {
-        { text = string.rep("x", 1000) }, { text = string.rep("y", 1000) }, { text = string.rep("z", 1000) },
-    } }
+    return {
+        progress = { index = 3, step = 3, total = 12 },
+        questSteps = {
+            { text = string.rep("x", 1000) },
+            { text = string.rep("y", 1000) },
+            { text = string.rep("z", 1000) },
+        },
+    }
 end
 party:RemoveTeam()
 advance(2)
@@ -646,11 +773,15 @@ assert(#sent > before, "Enabling Sojourner skipping alone must publish the new s
 assertNoUIWork()
 trackingUI = false
 local enabledOK, enabledWire = serializer:Deserialize(party.lastGroupPayload)
-assert(enabledOK and enabledWire.sojournerSkipCampaign == true and not enabledWire.stepFrameDetails.questSteps,
-    "The enabled preference survives tooltip trimming and serialization")
+assert(
+    enabledOK and enabledWire.sojournerSkipCampaign == true and not enabledWire.stepFrameDetails.questSteps,
+    "The enabled preference survives tooltip trimming and serialization"
+)
 before, serializedBefore = #sent, serializations
 startTrackingUI()
-for _ = 1, 1000 do party:SendGroupMessage() end
+for _ = 1, 1000 do
+    party:SendGroupMessage()
+end
 advance(2)
 assert(#sent == before and serializations == serializedBefore, "An unchanged enabled setting remains deduplicated")
 assertNoUIWork()
@@ -677,48 +808,66 @@ trackingUI = false
 assert(party.GroupListSteps.Peer.sojournerSkipCampaign == true)
 APR:CheckSojournerPartySync()
 APR:CheckSojournerPartySync()
-assert(#mismatches == 1 and mismatches[1]:find("Peer", 1, true),
-    "An enabled peer warns a disabled local player once per route after a real wire roundtrip")
+assert(
+    #mismatches == 1 and mismatches[1]:find("Peer", 1, true),
+    "An enabled peer warns a disabled local player once per route after a real wire roundtrip"
+)
 APR.ActiveRoute = "sojourner-wire-test-off"
 APR.settings.profile.sojournerSkipCampaign = true
 disabledWire.username, disabledWire.routeFileName = "Peer", APR.ActiveRoute
 receivePayload(disabledWire, "Peer-Home")
 APR:CheckSojournerPartySync()
-assert(#mismatches == 2 and party.GroupListSteps.Peer.sojournerSkipCampaign == false,
-    "A disabled peer also warns an enabled local player")
-print("Party Sojourner: setting-only changes, deduplication, oversized snapshots and mismatch warnings in both directions passed")
+assert(
+    #mismatches == 2 and party.GroupListSteps.Peer.sojournerSkipCampaign == false,
+    "A disabled peer also warns an enabled local player"
+)
+print(
+    "Party Sojourner: setting-only changes, deduplication, oversized snapshots and mismatch warnings in both directions passed"
+)
 
 -- Both sides publish on actual roster additions, even with unchanged progress.
 ChatThrottleLib = nil
 grouped, raid, instance = true, false, false
 party:RemoveTeam()
-roster = {party1 = {"Arriving", "Home"}}
+roster = { party1 = { "Arriving", "Home" } }
 advance(10)
 local function dataSends()
     local count = 0
-    for _, message in ipairs(sent) do if message.prefix == "APRPartyData" then count = count + 1 end end
+    for _, message in ipairs(sent) do
+        if message.prefix == "APRPartyData" then count = count + 1 end
+    end
     return count
 end
 local function requestSends()
     local count = 0
-    for _, message in ipairs(sent) do if message.prefix == "APRPartyRequest" then count = count + 1 end end
+    for _, message in ipairs(sent) do
+        if message.prefix == "APRPartyRequest" then count = count + 1 end
+    end
     return count
 end
 local start = dataSends()
 APR.event.functions.group("GROUP_ROSTER_UPDATE")
-assert(dataSends() > start and party.groupSyncTimer,
-    "The inviter must resend its unchanged snapshot without receiving GROUP_JOINED")
+assert(
+    dataSends() > start and party.groupSyncTimer,
+    "The inviter must resend its unchanged snapshot without receiving GROUP_JOINED"
+)
 local afterJoin, requestsAfterJoin = dataSends(), requestSends()
-for _ = 1, 100 do APR.event.functions.group("GROUP_ROSTER_UPDATE") end
+for _ = 1, 100 do
+    APR.event.functions.group("GROUP_ROSTER_UPDATE")
+end
 assert(dataSends() == afterJoin, "Unchanged roster events cannot cause a broadcast storm")
 advance(3)
-assert(party.groupSyncTimer and dataSends() == afterJoin and requestSends() == requestsAfterJoin,
-    "The handshake retry must wait until its request can pass the five-second cooldown")
+assert(
+    party.groupSyncTimer and dataSends() == afterJoin and requestSends() == requestsAfterJoin,
+    "The handshake retry must wait until its request can pass the five-second cooldown"
+)
 advance(2)
-assert(dataSends() > afterJoin and requestSends() == requestsAfterJoin + 1 and not party.groupSyncTimer,
-    "One bounded retry republishes our snapshot and requests the initially unavailable peer")
+assert(
+    dataSends() > afterJoin and requestSends() == requestsAfterJoin + 1 and not party.groupSyncTimer,
+    "One bounded retry republishes our snapshot and requests the initially unavailable peer"
+)
 local beforeSecond = dataSends()
-roster.party2 = {"Second", "Home"}
+roster.party2 = { "Second", "Home" }
 APR.event.functions.group("GROUP_ROSTER_UPDATE")
 advance(2)
 assert(dataSends() > beforeSecond, "A later invitation also bypasses snapshot deduplication")
@@ -726,7 +875,9 @@ local retry = party.groupSyncTimer
 grouped = false
 party:RemoveTeam()
 assert(retry.cancelled and not party.groupSyncTimer and not party.syncMembers)
-print("Party join: inviter handshake, unchanged roster suppression, bounded retry, second join and departure cleanup passed")
+print(
+    "Party join: inviter handshake, unchanged roster suppression, bounded retry, second join and departure cleanup passed"
+)
 
 -- A login/reload can finish without another roster notification. The world
 -- event must advertise us as well as request peers, with one delayed retry.
@@ -744,40 +895,54 @@ C_ChatInfo.SendAddonMessage = function(prefix, message, channel)
 end
 start, requestsAfterJoin = dataSends(), requestSends()
 APR.event.functions.partyData("PLAYER_ENTERING_WORLD", false, true)
-assert(dataSends() > start and requestSends() == requestsAfterJoin + 1 and party.groupSyncTimer,
-    "Reloading an existing party publishes a snapshot and starts the handshake without a roster event")
+assert(
+    dataSends() > start and requestSends() == requestsAfterJoin + 1 and party.groupSyncTimer,
+    "Reloading an existing party publishes a snapshot and starts the handshake without a roster event"
+)
 assert(party.teamList.Delayed.playerData.noAddon, "The receiver is initially unavailable")
 advance(4)
 receiverReady = true
 advance(1)
-assert(party.GroupListSteps.Delayed and not party.teamList.Delayed.playerData.noAddon,
-    "A peer ready after the first handshake replaces the missing-addon placeholder without changing steps")
+assert(
+    party.GroupListSteps.Delayed and not party.teamList.Delayed.playerData.noAddon,
+    "A peer ready after the first handshake replaces the missing-addon placeholder without changing steps"
+)
 assert(not party.groupSyncTimer)
 local settledData, settledRequests = dataSends(), requestSends()
 advance(20)
-assert(dataSends() == settledData and requestSends() == settledRequests,
-    "Handshake recovery must not introduce periodic broadcasts")
+assert(
+    dataSends() == settledData and requestSends() == settledRequests,
+    "Handshake recovery must not introduce periodic broadcasts"
+)
 
 -- Entering the world again keeps the same roster, but can change the delivery
 -- channel or reload a peer. An unchanged snapshot still needs publication.
 instance = true
 APR.event.functions.partyData("PLAYER_ENTERING_WORLD", false, false)
-assert(dataSends() > settledData and sent[#sent].channel == "INSTANCE_CHAT" and party.groupSyncTimer,
-    "World entry restarts the handshake for unchanged members on the current group channel")
+assert(
+    dataSends() > settledData and sent[#sent].channel == "INSTANCE_CHAT" and party.groupSyncTimer,
+    "World entry restarts the handshake for unchanged members on the current group channel"
+)
 retry = party.groupSyncTimer
 APR.settings.profile.enableAddon = false
 settledData, settledRequests = dataSends(), requestSends()
 advance(5)
-assert(not party.groupSyncTimer and dataSends() == settledData and requestSends() == settledRequests,
-    "Disabling APR before the retry prevents further handshake traffic")
+assert(
+    not party.groupSyncTimer and dataSends() == settledData and requestSends() == settledRequests,
+    "Disabling APR before the retry prevents further handshake traffic"
+)
 APR.settings.profile.enableAddon = true
 party:RemoveTeam()
 grouped, instance = false, false
 APR.event.functions.partyData("PLAYER_ENTERING_WORLD", true, false)
-assert(not party.groupSyncTimer and dataSends() == settledData and requestSends() == settledRequests,
-    "Solo world entry never starts a group handshake")
+assert(
+    not party.groupSyncTimer and dataSends() == settledData and requestSends() == settledRequests,
+    "Solo world entry never starts a group handshake"
+)
 C_ChatInfo.SendAddonMessage = nativeSend
-print("Party reload: world-entry advertisement, delayed peer recovery, current channel, bounded traffic and disable/solo guards passed")
+print(
+    "Party reload: world-entry advertisement, delayed peer recovery, current channel, bounded traffic and disable/solo guards passed"
+)
 
 -- Forever's second UnitName result is a surname, not a realm. Keep the
 -- existing first-name SavedVariables identity, but use full names on the wire.
@@ -801,40 +966,53 @@ function APR.currentStep:GetCurrentStepDetails()
     return { progress = { index = 4, step = 4, total = 12 } }
 end
 party:SendGroupMessage(true)
-assert(party.GroupListSteps["Local Meadow"] and not party.GroupListSteps.Local,
-    "The local group snapshot must use the full regional name without changing saved identity")
+assert(
+    party.GroupListSteps["Local Meadow"] and not party.GroupListSteps.Local,
+    "The local group snapshot must use the full regional name without changing saved identity"
+)
 assert(APR.PlayerID == savedPlayerID and APR.Username == savedUsername)
 local wireSuccess, regionalWire = serializer:Deserialize(party.lastGroupPayload)
 assert(wireSuccess and regionalWire.username == "Local Meadow")
-local nativeGetUnitName, localSnapshot, localRow = GetUnitName,
-    party.GroupListSteps["Local Meadow"], party.teamList["Local Meadow"]
+local nativeGetUnitName, localSnapshot, localRow =
+    GetUnitName, party.GroupListSteps["Local Meadow"], party.teamList["Local Meadow"]
 GetUnitName = nil
 party:PopulateMissingGroupMembers()
-assert(party.GroupListSteps["Local Meadow"] == localSnapshot
-    and party.teamList["Local Meadow"] == localRow and not localRow.playerData.noAddon,
-    "A missing native full name must preserve the local snapshot and its addon-enabled row")
+assert(
+    party.GroupListSteps["Local Meadow"] == localSnapshot
+        and party.teamList["Local Meadow"] == localRow
+        and not localRow.playerData.noAddon,
+    "A missing native full name must preserve the local snapshot and its addon-enabled row"
+)
 assert(APR.PlayerID == savedPlayerID and APR.Username == savedUsername)
 GetUnitName = nativeGetUnitName
 party:PopulateMissingGroupMembers()
-assert(party.teamList["Peer Meadow"].playerData.noAddon and party.teamList["Peer Brook"].playerData.noAddon,
-    "Regional roster rows preserve surnames instead of treating them as realms")
+assert(
+    party.teamList["Peer Meadow"].playerData.noAddon and party.teamList["Peer Brook"].playerData.noAddon,
+    "Regional roster rows preserve surnames instead of treating them as realms"
+)
 receive("Peer Meadow", "Peer Meadow", 7)
 receive("Peer Brook", "Peer Brook", 8)
 receive("Local Brook", "Local Brook", 6)
-assert(party.GroupListSteps["Peer Meadow"].currentStep == 7
-    and party.GroupListSteps["Peer Brook"].currentStep == 8
-    and party.GroupListSteps["Local Brook"].currentStep == 6,
-    "Native regional senders pass roster validation and same-first-name peers remain distinct")
+assert(
+    party.GroupListSteps["Peer Meadow"].currentStep == 7
+        and party.GroupListSteps["Peer Brook"].currentStep == 8
+        and party.GroupListSteps["Local Brook"].currentStep == 6,
+    "Native regional senders pass roster validation and same-first-name peers remain distinct"
+)
 receive("Peer", "Peer Meadow", 9)
-assert(party.GroupListSteps["Peer Meadow"].currentStep == 9,
-    "Legacy first-name payloads use the authoritative full sender identity")
+assert(
+    party.GroupListSteps["Peer Meadow"].currentStep == 9,
+    "Legacy first-name payloads use the authoritative full sender identity"
+)
 receive("Peer Brook", "Peer Meadow", 10)
 receive("Peer Meadow", "Peer Stranger", 10)
 receive("Local Meadow", "Local Meadow", 10)
-assert(party.GroupListSteps["Peer Meadow"].currentStep == 9
-    and party.GroupListSteps["Peer Brook"].currentStep == 8
-    and party.GroupListSteps["Local Meadow"].currentStep == 4,
-    "Regional claim mismatches, outsiders and self echoes cannot overwrite another member")
+assert(
+    party.GroupListSteps["Peer Meadow"].currentStep == 9
+        and party.GroupListSteps["Peer Brook"].currentStep == 8
+        and party.GroupListSteps["Local Meadow"].currentStep == 4,
+    "Regional claim mismatches, outsiders and self echoes cannot overwrite another member"
+)
 party:GroupUpdateHandler("APRPartyDelete", "Peer", "PARTY", "Peer Meadow")
 assert(not party.GroupListSteps["Peer Meadow"] and party.GroupListSteps["Peer Brook"])
 assert(party.teamList["Peer Meadow"].playerData.noAddon)
@@ -842,9 +1020,13 @@ receive("Peer Meadow", "Peer Meadow", 7)
 assert(party.GroupListSteps["Peer Meadow"].currentStep == 7)
 roster.party1 = nil
 party:PopulateMissingGroupMembers()
-assert(not party.teamList["Peer Meadow"] and party.teamList["Peer Brook"],
-    "Removing one regional namesake preserves the other member")
+assert(
+    not party.teamList["Peer Meadow"] and party.teamList["Peer Brook"],
+    "Removing one regional namesake preserves the other member"
+)
 party:RemoveTeam()
 RegionalUniqueNamesEnabled = nil
 APR.SafeUnitName = shortUnitName
-print("Party Forever names: full local/roster/wire identities, legacy peers, namesakes, spoof rejection, delete/rejoin and saved progress preservation passed")
+print(
+    "Party Forever names: full local/roster/wire identities, legacy peers, namesakes, spoof rejection, delete/rejoin and saved progress preservation passed"
+)

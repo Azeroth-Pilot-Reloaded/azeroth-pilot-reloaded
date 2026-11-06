@@ -1,9 +1,15 @@
 -- Real route actions and bank/inventory refreshes, with independent container roles.
 local function noop() end
 local locale = setmetatable({}, { __index = function(_, key) return key end })
-function LibStub() return { GetLocale = function() return locale end } end
+function LibStub()
+    return { GetLocale = function() return locale end }
+end
 function CreateFrame() return { RegisterEvent = noop, SetScript = noop } end
-function wipe(values) for key in pairs(values) do values[key] = nil end end
+function wipe(values)
+    for key in pairs(values) do
+        values[key] = nil
+    end
+end
 local clock, timers, contents, sizes, bankBags, steps, requests, pending, accessible, tabData
 local combat, cursor, unavailable
 function GetTime() return clock end
@@ -21,16 +27,20 @@ function APR:GetCurrentStepToken(route, index) return route .. ":" .. index end
 function APR:NextQuestStep() APRData.player.synthetic = APRData.player.synthetic + 1 end
 function APR:UpdateStep() self:HandleRouteAction(self:GetStep(APRData.player.synthetic)) end
 function APR:StepUsesAnyOption(step, keys)
-    for _, key in ipairs(keys) do if step and step[key] then return true end end
+    for _, key in ipairs(keys) do
+        if step and step[key] then return true end
+    end
     return false
 end
 APR.npcInteraction = { Clear = noop }
 C_Item = { GetItemInfo = function(id) return "Item " .. id end }
-C_Timer = { NewTimer = function(delay, callback)
-    local timer = { time = clock + delay, callback = callback, Cancel = function(self) self.cancelled = true end }
-    timers[#timers + 1] = timer
-    return timer
-end }
+C_Timer = {
+    NewTimer = function(delay, callback)
+        local timer = { time = clock + delay, callback = callback, Cancel = function(self) self.cancelled = true end }
+        timers[#timers + 1] = timer
+        return timer
+    end,
+}
 local function tick(duration)
     local finish = clock + duration
     while true do
@@ -61,8 +71,12 @@ C_Container = {
         assert(not pending, "Only one native transfer can be in flight")
         assert(accessible and APR.routeBankOpen and not APR.routeMerchantOpen and not combat and not cursor)
         local source = assert(contents[bag] and contents[bag][slot])
-        if Enum then assert(unit == nil and bankType == Enum.BankType.Character,
-            "A bank transfer must explicitly target the character bank, even with an account tab selected") end
+        if Enum then
+            assert(
+                unit == nil and bankType == Enum.BankType.Character,
+                "A bank transfer must explicitly target the character bank, even with an account tab selected"
+            )
+        end
         pending = { bag = bag, slot = slot, item = source }
         requests[#requests + 1] = pending
         source.isLocked = true
@@ -83,15 +97,25 @@ local function reset(profile, action)
     if profile ~= "legacy" then
         first, last, carried, account = 6, profile == "forever" and 14 or 11, 5, profile == "forever" and 15 or 12
         Enum = { BagIndex = { Keyring = -1, Backpack = 0, ReagentBag = 5 }, BankType = { Character = 0, Account = 2 } }
-        for index = 1, last - first + 1 do Enum.BagIndex["CharacterBankTab_" .. index] = first + index - 1 end
+        for index = 1, last - first + 1 do
+            Enum.BagIndex["CharacterBankTab_" .. index] = first + index - 1
+        end
         Enum.BagIndex.AccountBankTab_1 = account
         tabData = { { ID = first }, { ID = last } }
         C_Bank = {
-            CanUseBank = function(kind) assert(kind == 0); return accessible end,
-            FetchPurchasedBankTabData = function(kind) assert(kind == 0); return tabData end,
+            CanUseBank = function(kind)
+                assert(kind == 0)
+                return accessible
+            end,
+            FetchPurchasedBankTabData = function(kind)
+                assert(kind == 0)
+                return tabData
+            end,
         }
-        BankFrame = { GetActiveBankType = function() return Enum.BankType.Account end,
-            SetTab = function() error("Automation must not change the player's selected bank tab") end }
+        BankFrame = {
+            GetActiveBankType = function() return Enum.BankType.Account end,
+            SetTab = function() error("Automation must not change the player's selected bank tab") end,
+        }
         -- The old -1 availability check accidentally succeeds on a populated keyring.
         sizes[-1] = 1
         item(-1, 1, 7101, 13)
@@ -99,9 +123,13 @@ local function reset(profile, action)
         item(account, 1, 7101, 17)
     else
         NUM_TOTAL_EQUIPPED_BAG_SLOTS, BANK_CONTAINER = 4, -1
-        for bag = 5, 11 do bankBags[bag] = true end
+        for bag = 5, 11 do
+            bankBags[bag] = true
+        end
     end
-    for bag = 0, NUM_TOTAL_EQUIPPED_BAG_SLOTS do sizes[bag] = 4 end
+    for bag = 0, NUM_TOTAL_EQUIPPED_BAG_SLOTS do
+        sizes[bag] = 4
+    end
     bankBags[first], bankBags[last], sizes[first], sizes[last] = true, true, 4, 4
     APRData = { player = { synthetic = 1 } }
     APR.routeActionState, APR.routeBankOpen, APR.routeMerchantOpen = nil, false, false
@@ -142,8 +170,10 @@ for _, profile in ipairs({ "retail", "forever", "legacy" }) do
     item(carried, 1, 7101, 2)
     item(first, 3, 7104, 9)
     APR.event.functions.bank("BANKFRAME_OPENED")
-    assert(APRData.player.BankItems[7101] == 7 and APRData.player.BankItems[7102] == 4,
-        profile .. ": snapshots must exclude carried reagents, keyring and account storage")
+    assert(
+        APRData.player.BankItems[7101] == 7 and APRData.player.BankItems[7102] == 4,
+        profile .. ": snapshots must exclude carried reagents, keyring and account storage"
+    )
     tick(0.2)
     assert(#requests == 1 and requests[1].bag == first and APRData.player.synthetic == 1)
     assert(APR:GetRouteItemActionCount("BankWithdraw", 7101) == 7)
@@ -151,22 +181,31 @@ for _, profile in ipairs({ "retail", "forever", "legacy" }) do
     assert(#requests == 1, "Successive events cannot duplicate a locked transfer")
     acknowledge(3)
     burst()
-    assert(#requests == 2 and requests[2].bag == first and APRData.player.synthetic == 1,
-        "A partial withdrawal must continue from the bank without redepositing its receipt")
+    assert(
+        #requests == 2 and requests[2].bag == first and APRData.player.synthetic == 1,
+        "A partial withdrawal must continue from the bank without redepositing its receipt"
+    )
     assert(contents[carried][1].stackCount == 5 and APRData.player.BankItems[7101] == 4)
     acknowledge()
     burst()
-    assert(#requests == 3 and requests[3].bag == last and APRData.player.synthetic == 1,
-        "All purchased personal containers, including Forever's later bags, must be processed")
+    assert(
+        #requests == 3 and requests[3].bag == last and APRData.player.synthetic == 1,
+        "All purchased personal containers, including Forever's later bags, must be processed"
+    )
     acknowledge()
     burst()
     assert(APRData.player.synthetic == 2 and #requests == 3)
     assert(contents[carried][1].stackCount == 9 and contents[carried][2].stackCount == 4)
-    assert(APRData.player.BankItems[7101] == nil and APRData.player.BankItems[7102] == nil
-        and APRData.player.BankItems[7104] == 9)
+    assert(
+        APRData.player.BankItems[7101] == nil
+            and APRData.player.BankItems[7102] == nil
+            and APRData.player.BankItems[7104] == 9
+    )
     burst()
-    assert(#requests == 3 and APRData.player.synthetic == 2,
-        "Late bank/bag events must not replay a completed withdrawal")
+    assert(
+        #requests == 3 and APRData.player.synthetic == 2,
+        "Late bank/bag events must not replay a completed withdrawal"
+    )
     APR.event.functions.bank("BANKFRAME_CLOSED")
     accessible = false
     assert(APR:GetRouteItemActionCount("BankWithdraw", 7101) == nil)
@@ -177,7 +216,10 @@ for _, profile in ipairs({ "retail", "forever", "legacy" }) do
     APR.event.functions.bank("BANKFRAME_OPENED")
     tick(0.2)
     assert(#requests == 1 and requests[1].bag == carried, "Explicit deposits still process carried bags")
-    acknowledge(); burst(); acknowledge(); burst()
+    acknowledge()
+    burst()
+    acknowledge()
+    burst()
     assert(#requests == 2 and APRData.player.synthetic == 2 and not contents[carried][1])
     assert(APRData.player.BankItems[7101] == 5 and APRData.player.BankItems[7102] == 2)
 end
@@ -209,7 +251,8 @@ item(first, 1, 7101, 3)
 APR.event.functions.bank("BANKFRAME_OPENED")
 tick(0.2)
 assert(#requests == 1 and requests[1].bag == first, "Keyring capacity does not gate modern banking")
-acknowledge(); burst()
+acknowledge()
+burst()
 assert(APRData.player.synthetic == 2)
 
 first, last = reset("forever")
@@ -230,8 +273,10 @@ for _, invalid in ipairs({ {}, { { ID = 5 } }, { { ID = 15 } }, { {} } }) do
     tabData = invalid
     assert(not APR:ProcessRouteItems("BankWithdraw", steps[1].BankWithdraw, {}))
     APR:SaveBankItemCounts()
-    assert(#requests == 0 and APRData.player.BankItems == saved,
-        "Empty or malformed bank metadata must not enable transfers or erase saved contents")
+    assert(
+        #requests == 0 and APRData.player.BankItems == saved,
+        "Empty or malformed bank metadata must not enable transfers or erase saved contents"
+    )
 end
 tabData, accessible = { { ID = first }, { ID = last } }, false
 assert(not APR:ProcessRouteItems("BankWithdraw", steps[1].BankWithdraw, {}))
@@ -256,6 +301,10 @@ local stale = APR.event.bankRefreshTimer
 APR.event.functions.bank("BANKFRAME_CLOSED")
 stale.callback()
 tick(0.2)
-assert(#requests == 0 and APRData.player.synthetic == 1 and not APR.routeBankOpen,
-    "Closing the bank cancels queued snapshots and prevents pending step refreshes from transferring")
-print("Bank transfers: Retail/Forever/legacy, reagent receipts, partial acknowledgements, events, deposits, unknown data and closure passed")
+assert(
+    #requests == 0 and APRData.player.synthetic == 1 and not APR.routeBankOpen,
+    "Closing the bank cancels queued snapshots and prevents pending step refreshes from transferring"
+)
+print(
+    "Bank transfers: Retail/Forever/legacy, reagent receipts, partial acknowledgements, events, deposits, unknown data and closure passed"
+)

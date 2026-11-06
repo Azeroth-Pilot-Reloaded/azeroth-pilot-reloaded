@@ -9,34 +9,47 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 local function accessible(value)
     return APRSecret:CanAccessValue(value)
-end--[[APR_DIAG]]; accessible = APRTrace("APR-Core/utils/OutdoorKillUtils.lua:10:accessible#1", accessible)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+accessible = APRTrace("APR-Core/utils/OutdoorKillUtils.lua:10:accessible#1", accessible)--[[/APR_DIAG]]
 
 local function locationMatches(step)
     if IsInInstance and IsInInstance() then return false end
     local mapID = C_Map and C_Map.GetBestMapForUnit("player")
     return accessible(mapID) and type(step.Zone) == "number" and mapID == step.Zone
-end--[[APR_DIAG]]; locationMatches = APRTrace("APR-Core/utils/OutdoorKillUtils.lua:14:locationMatches#2", locationMatches)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+locationMatches = APRTrace("APR-Core/utils/OutdoorKillUtils.lua:14:locationMatches#2", locationMatches)--[[/APR_DIAG]]
 
 local function progress()
     local player = APRData and APR.PlayerID and APRData[APR.PlayerID]
     return player, player and APR.ActiveRoute and player[APR.ActiveRoute]
-end--[[APR_DIAG]]; progress = APRTrace("APR-Core/utils/OutdoorKillUtils.lua:20:progress#3", progress)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+progress = APRTrace("APR-Core/utils/OutdoorKillUtils.lua:20:progress#3", progress)--[[/APR_DIAG]]
 
 function APR:ResetOutdoorKills(route)
     local player = APRData and self.PlayerID and APRData[self.PlayerID]
     if player and player.OutdoorKills then player.OutdoorKills[route] = nil end
-end--[[APR_DIAG]]; APR.ResetOutdoorKills = APRTrace("APR-Core/utils/OutdoorKillUtils.lua:25:APR:ResetOutdoorKills#4", APR.ResetOutdoorKills)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.ResetOutdoorKills =
+    APRTrace("APR-Core/utils/OutdoorKillUtils.lua:25:APR:ResetOutdoorKills#4", APR.ResetOutdoorKills)--[[/APR_DIAG]]
 
 function APR:IsOutdoorKillComplete(step)
     local player, index = progress()
     local completed = player and player.OutdoorKills and player.OutdoorKills[self.ActiveRoute]
     local entry = completed and completed[index]
     return entry and entry.npcID == step.KillNPC.npcID and entry.zone == step.Zone or false
-end--[[APR_DIAG]]; APR.IsOutdoorKillComplete = APRTrace("APR-Core/utils/OutdoorKillUtils.lua:30:APR:IsOutdoorKillComplete#5", APR.IsOutdoorKillComplete)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.IsOutdoorKillComplete =
+    APRTrace("APR-Core/utils/OutdoorKillUtils.lua:30:APR:IsOutdoorKillComplete#5", APR.IsOutdoorKillComplete)--[[/APR_DIAG]]
 
 function APR:ObserveOutdoorKill(unit)
-    if not self.ActiveRoute or not self.settings or not self.settings.profile
-        or not self.settings.profile.enableAddon then return false end
+    if
+        not self.ActiveRoute
+        or not self.settings
+        or not self.settings.profile
+        or not self.settings.profile.enableAddon
+    then
+        return false
+    end
     if not accessible(unit) or type(unit) ~= "string" then return false end
     if unit ~= "target" and unit ~= "mouseover" and not unit:match("^nameplate%d+$") then return false end
     local step = self:GetCurrentStep()
@@ -59,12 +72,18 @@ function APR:ObserveOutdoorKill(unit)
         return false
     end
     local seen = state.outdoorSeen or {}
-    if denied then seen[guid] = nil; return false end
+    if denied then
+        seen[guid] = nil
+        return false
+    end
     if not dead then
         local attackable = UnitCanAttack("player", unit)
         if not accessible(attackable) or not attackable then return false end
         if not seen[guid] then
-            if (state.outdoorSeenCount or 0) >= 32 then seen = {}; state.outdoorSeenCount = 0 end
+            if (state.outdoorSeenCount or 0) >= 32 then
+                seen = {}
+                state.outdoorSeenCount = 0
+            end
             state.outdoorSeenCount = (state.outdoorSeenCount or 0) + 1
             seen[guid] = true
         end
@@ -79,7 +98,9 @@ function APR:ObserveOutdoorKill(unit)
     completed[index] = { npcID = rule.npcID, zone = step.Zone }
     self:UpdateStep()
     return true
-end--[[APR_DIAG]]; APR.ObserveOutdoorKill = APRTrace("APR-Core/utils/OutdoorKillUtils.lua:37:APR:ObserveOutdoorKill#6", APR.ObserveOutdoorKill)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.ObserveOutdoorKill =
+    APRTrace("APR-Core/utils/OutdoorKillUtils.lua:37:APR:ObserveOutdoorKill#6", APR.ObserveOutdoorKill)--[[/APR_DIAG]]
 
 function APR:RenderOutdoorKill(step, showDetails)
     if locationMatches(step) and self:IsOutdoorKillComplete(step) then
@@ -87,12 +108,20 @@ function APR:RenderOutdoorKill(step, showDetails)
         return true
     end
     if showDetails then
-        self.currentStep:AddQuestSteps("KillNPC_" .. step.KillNPC.npcID, self:GetDungeonKillText(step.KillNPC), "KillNPC", false, true)
+        self.currentStep:AddQuestSteps(
+            "KillNPC_" .. step.KillNPC.npcID,
+            self:GetDungeonKillText(step.KillNPC),
+            "KillNPC",
+            false,
+            true
+        )
         self.currentStep:AddQuestSteps("OutdoorKillHelp", L["MANUAL_SKIP"], "KillNPC", false, true)
     end
     -- Events observe subsequent deaths; this captures a target already alive at entry.
     self:ObserveOutdoorKill("target")
-end--[[APR_DIAG]]; APR.RenderOutdoorKill = APRTrace("APR-Core/utils/OutdoorKillUtils.lua:84:APR:RenderOutdoorKill#7", APR.RenderOutdoorKill)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.RenderOutdoorKill =
+    APRTrace("APR-Core/utils/OutdoorKillUtils.lua:84:APR:RenderOutdoorKill#7", APR.RenderOutdoorKill)--[[/APR_DIAG]]
 
 local events = CreateFrame("Frame")
 events:RegisterEvent("PLAYER_TARGET_CHANGED")
@@ -102,6 +131,12 @@ events:RegisterEvent("UNIT_FACTION")
 events:RegisterEvent("NAME_PLATE_UNIT_ADDED")
 events:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 events:RegisterEvent("PLAYER_ENTERING_WORLD")
-events:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/utils/OutdoorKillUtils.lua:105:callback#8", --[[/APR_DIAG]]function(_, event, unit)
-    APR:ObserveOutdoorKill(event == "PLAYER_TARGET_CHANGED" and "target" or unit or "target")
-end--[[APR_DIAG]])--[[/APR_DIAG]])
+events:SetScript(
+    "OnEvent", --[[APR_DIAG]]
+    APRTrace(
+        "APR-Core/utils/OutdoorKillUtils.lua:105:callback#8", --[[/APR_DIAG]]
+        function(_, event, unit)
+            APR:ObserveOutdoorKill(event == "PLAYER_TARGET_CHANGED" and "target" or unit or "target")
+        end --[[APR_DIAG]]
+    ) --[[/APR_DIAG]]
+)

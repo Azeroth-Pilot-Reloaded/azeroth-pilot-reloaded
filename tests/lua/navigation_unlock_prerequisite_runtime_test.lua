@@ -28,22 +28,42 @@ local env = {
     getLocale = function() return "frFR" end,
 }
 local function quest(id, requirements)
-    return { id = "quest:" .. id, goal = { key = "quest", value = id }, requirements = requirements,
+    return {
+        id = "quest:" .. id,
+        goal = { key = "quest", value = id },
+        requirements = requirements,
         steps = {
-            { kind = "accept", questID = id, position = position,
-                acceptance = { known = false, requirements = {}, gaps = { "prerequisites_unverified" },
-                    sources = { "att:verified-record" }, starterNPCIDs = { 100 } } },
+            {
+                kind = "accept",
+                questID = id,
+                position = position,
+                acceptance = {
+                    known = false,
+                    requirements = {},
+                    gaps = { "prerequisites_unverified" },
+                    sources = { "att:verified-record" },
+                    starterNPCIDs = { 100 },
+                },
+            },
             { kind = "turnin", questID = id, position = position },
-        } }
+        },
+    }
 end
 local function navigator(recipes)
-    Lib:RegisterData("runtime-prerequisites", "test", { unlockRoutes = recipes }, (Lib.dataRevisions["runtime-prerequisites:test"] or 0) + 1)
+    Lib:RegisterData(
+        "runtime-prerequisites",
+        "test",
+        { unlockRoutes = recipes },
+        (Lib.dataRevisions["runtime-prerequisites:test"] or 0) + 1
+    )
     return Lib:New({ profile = "runtime-prerequisites", environment = env })
 end
 local destination = { instanceID = 2738, uiMapID = 2472, x = -1343, y = -515.6 }
 local function session(data, requirements)
-    return data:CreateUnlockSession({ destination = destination,
-        blockers = { { id = "destination", from = { uiMapID = 2248 }, blockedRequirements = requirements } } })
+    return data:CreateUnlockSession({
+        destination = destination,
+        blockers = { { id = "destination", from = { uiMapID = 2248 }, blockedRequirements = requirements } },
+    })
 end
 local function tick(run)
     for _ = 1, 10000 do
@@ -67,8 +87,10 @@ assert(status == "action" and action.questID == 3)
 offers[3] = false
 status, action = tick(run)
 assert(status == "missing_data" and action.reason == "quest_unavailable" and not action.target)
-assert(run.acceptanceEvidence.offer == "unavailable" and run.acceptanceEvidence.requirements == "passed",
-    "Diagnostics retain a server rejection separately from the known prerequisite results")
+assert(
+    run.acceptanceEvidence.offer == "unavailable" and run.acceptanceEvidence.requirements == "passed",
+    "Diagnostics retain a server rejection separately from the known prerequisite results"
+)
 offers[3] = nil
 completed[3] = true
 local goal
@@ -98,12 +120,19 @@ wrongFaction.id = "wrong-faction"
 wrongFaction.steps = { wrongFaction.steps[1] }
 data = navigator({ cycle, wrongFaction, other })
 status, action = tick(session(data, { any = { { quest = 3 }, { quest = 4 } } }))
-assert(status == "action" and action.questID == 4, "An impossible shorter recipe cannot starve the available alternative")
+assert(
+    status == "action" and action.questID == 4,
+    "An impossible shorter recipe cannot starve the available alternative"
+)
 
 -- Step-level mutable conditions are prerequisites, not skipped instructions.
-local achievement = { id = "achievement", goal = { key = "achievement", value = 5 }, steps = {
-    { kind = "interact", position = position, completeWhen = { achievement = 5 } },
-} }
+local achievement = {
+    id = "achievement",
+    goal = { key = "achievement", value = 5 },
+    steps = {
+        { kind = "interact", position = position, completeWhen = { achievement = 5 } },
+    },
+}
 root = quest(3)
 root.steps[1].requirements = { any = { { class = "MAGE" }, { achievement = 5 } } }
 data = navigator({ root, achievement })
@@ -125,20 +154,34 @@ account[7] = true
 assert(tick(run) == "resume")
 
 -- All non-quest goals use exact structured values and observed completion.
-local requirements = { currency = { id = 2900, amount = 4 }, reputation = { factionID = 10, standing = 5 },
-    item = { id = 12, count = 2 }, spellKnown = 14, skill = { id = 15, min = 75 } }
+local requirements = {
+    currency = { id = 2900, amount = 4 },
+    reputation = { factionID = 10, standing = 5 },
+    item = { id = 12, count = 2 },
+    spellKnown = 14,
+    skill = { id = 15, min = 75 },
+}
 local recipes = {}
 for key, value in pairs(requirements) do
-    recipes[#recipes + 1] = { id = key, goal = { key = key, value = value }, steps = {
-        { kind = "interact", position = position, completeWhen = { [key] = value } },
-    } }
+    recipes[#recipes + 1] = {
+        id = key,
+        goal = { key = key, value = value },
+        steps = {
+            { kind = "interact", position = position, completeWhen = { [key] = value } },
+        },
+    }
 end
 data = navigator(recipes)
 run = session(data, requirements)
 assert(tick(run) == "action")
 currency[2900], reputation[10], items[12], spells[14], skills[15] = 4, 5, 2, true, 75
 assert(tick(run) == "resume")
-assert(data:CheckRequirements({ currency = { id = 2900, min = 4 }, reputation = { id = 10, minStanding = 5 } }, env.getCharacter()))
+assert(
+    data:CheckRequirements(
+        { currency = { id = 2900, min = 4 }, reputation = { id = 10, minStanding = 5 } },
+        env.getCharacter()
+    )
+)
 
 -- Active acceptance bypasses unavailable/unknown entry metadata.
 root = quest(8)
@@ -198,19 +241,33 @@ status, action = tick(run)
 assert(status == "action" and action.actionType == "spell")
 run = data:RestoreUnlockSession(run:ExportState())
 status, action = tick(run)
-assert(status == "action" and action.actionType == "spell", "Reload retains a selected acquisition's post-reward instruction")
+assert(
+    status == "action" and action.actionType == "spell",
+    "Reload retains a selected acquisition's post-reward instruction"
+)
 actionDone = true
 status, action = tick(run)
-assert(status == "action" and action.questID == 111, "An exhausted source that did not reach the threshold is not repeated")
+assert(
+    status == "action" and action.questID == 111,
+    "An exhausted source that did not reach the threshold is not repeated"
+)
 
 -- Boolean false is a real goal value, distinct from an absent quest identity.
 env.isChromieTimeActive = function() return true end
-data = navigator({ { id = "leave-chromie", goal = { key = "chromieTime", value = false }, steps = {
-    { kind = "interact", position = position, completeWhen = { chromieTime = false } },
-} } })
+data = navigator({
+    {
+        id = "leave-chromie",
+        goal = { key = "chromieTime", value = false },
+        steps = {
+            { kind = "interact", position = position, completeWhen = { chromieTime = false } },
+        },
+    },
+})
 run = session(data, { chromieTime = false })
 assert(tick(run) == "action")
 env.isChromieTimeActive = function() return false end
 assert(tick(run) == "resume")
 
-print("Prerequisite runtime: recursive recipe/step guards, sourced offers, blocking gaps, OR viability, account and non-quest goals passed")
+print(
+    "Prerequisite runtime: recursive recipe/step guards, sourced offers, blocking gaps, OR viability, account and non-quest goals passed"
+)

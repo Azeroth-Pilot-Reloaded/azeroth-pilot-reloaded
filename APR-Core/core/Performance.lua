@@ -15,7 +15,7 @@ function APR:ResetPerformanceCapture()
         slowThresholdMs = self.performanceSlowThresholdMs,
         metricLimit = METRIC_LIMIT,
         diagnosticRevision = APRInstrumentation and APRInstrumentation.revision,
-        debugCallsDuringCapture = APRInstrumentation and APRInstrumentation.debug == true
+        debugCallsDuringCapture = APRInstrumentation and APRInstrumentation.debug == true,
     }
     self.performanceBreadcrumb, self.performanceBreadcrumbAt = nil, nil
     if APRInstrumentation then APRInstrumentation.ResetLog() end
@@ -74,7 +74,9 @@ function APR:RecordPerformanceFrameWork(name, elapsed)
         log.frameWork = current
     end
     current.ms, current.count = current.ms + elapsed, current.count + 1
-    if elapsed >= current.peakMs then current.peakMs, current.source = elapsed, name end
+    if elapsed >= current.peakMs then
+        current.peakMs, current.source = elapsed, name
+    end
 end
 
 function APR:RecordPerformanceDuration(name, elapsed, steps, parent, ownMs, failure)
@@ -133,8 +135,8 @@ function APR:GetPerformanceTimeline()
     local final = math.floor(self.performanceLogging and Now() or log.stoppedAt or log.lastAt or Now())
     for second = final - TIMELINE_SECONDS + 1, final do
         local bucket = log.timeline and log.timeline[second % TIMELINE_SECONDS + 1]
-        result[#result + 1] = bucket and bucket.second == second and bucket or
-            { second = second, count = 0, totalMs = 0, maxMs = 0 }
+        result[#result + 1] = bucket and bucket.second == second and bucket
+            or { second = second, count = 0, totalMs = 0, maxMs = 0 }
     end
     return result
 end
@@ -164,7 +166,9 @@ function APR:GetPerformanceRows(mode, sortKey, query, displayName, reusableRows)
     local rows = mode ~= "slow" and reusableRows or nil
     rows = rows or {}
     if not log then
-        for index = #rows, 1, -1 do rows[index] = nil end
+        for index = #rows, 1, -1 do
+            rows[index] = nil
+        end
         return rows
     end
     local count = 0
@@ -177,7 +181,8 @@ function APR:GetPerformanceRows(mode, sortKey, query, displayName, reusableRows)
     query = string.lower(query or "")
     -- Search translated display labels while keeping saved metric identifiers stable.
     local function matches(name)
-        return query == "" or string.lower(name):find(query, 1, true)
+        return query == ""
+            or string.lower(name):find(query, 1, true)
             or (displayName and string.lower(displayName(name)):find(query, 1, true))
     end
     if mode == "slow" then
@@ -214,7 +219,9 @@ function APR:GetPerformanceRows(mode, sortKey, query, displayName, reusableRows)
         end
     end
     if mode ~= "slow" then
-        for index = #rows, count + 1, -1 do rows[index] = nil end
+        for index = #rows, count + 1, -1 do
+            rows[index] = nil
+        end
         sortKey = mode == "counters" and "count" or sortKey or "totalMs"
         table.sort(rows, function(a, b)
             if a[sortKey] == b[sortKey] then return a.name < b.name end

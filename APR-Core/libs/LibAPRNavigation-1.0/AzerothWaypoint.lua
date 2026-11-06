@@ -18,11 +18,16 @@ local function Namespace(instance)
         local ok, value = pcall(instance.env.getAzerothWaypointAPI)
         if not ok then return nil, "azeroth_waypoint_error" end
         ns = value
-    else ns = rawget(_G, "AzerothWaypointNS") end
-    if type(ns) ~= "table" or type(ns.GetGuideTargetProvider) ~= "function"
+    else
+        ns = rawget(_G, "AzerothWaypointNS")
+    end
+    if
+        type(ns) ~= "table"
+        or type(ns.GetGuideTargetProvider) ~= "function"
         or type(ns.RegisterGuideTargetProvider) ~= "function"
         or type(ns.ScheduleGuideProviderEvaluation) ~= "function"
-        or type(ns.ClearGuideRouteState) ~= "function" then
+        or type(ns.ClearGuideRouteState) ~= "function"
+    then
         return nil, "azeroth_waypoint_unavailable"
     end
     return ns
@@ -35,7 +40,9 @@ end
 local function Copy(value)
     if type(value) ~= "table" then return value end
     local result = {}
-    for key, child in pairs(value) do result[key] = child end
+    for key, child in pairs(value) do
+        result[key] = child
+    end
     return result
 end
 
@@ -43,8 +50,12 @@ local function Same(a, b)
     if type(a) ~= "table" or type(b) ~= "table" then return a == b end
     -- Match shallow copies: inherited entries are absent, while the stored
     -- values retain their normal equality semantics (including __eq).
-    for key, value in pairs(a) do if rawget(b, key) ~= value then return false end end
-    for key in pairs(b) do if rawget(a, key) == nil then return false end end
+    for key, value in pairs(a) do
+        if rawget(b, key) ~= value then return false end
+    end
+    for key in pairs(b) do
+        if rawget(a, key) == nil then return false end
+    end
     return true
 end
 
@@ -55,13 +66,17 @@ local function ReadTarget(instance)
     if automatic and automatic.manualOverride then return nil, { guideMode = "blocked" } end
     if instance.waypointUIEnabled ~= true then return nil, { guideMode = "blocked" } end
     local ok, target, options = pcall(instance.GetWaypointTargetState, instance)
-    if not ok or instance.waypointUIEnabled ~= true
-        or (options ~= nil and type(options) ~= "table") then
+    if not ok or instance.waypointUIEnabled ~= true or (options ~= nil and type(options) ~= "table") then
         return nil, { guideMode = "blocked" }
     end
     options = options or {}
-    local needsProjection = type(target) == "table" and (target.from ~= nil or target.to ~= nil
-        or target.space == "world" or (target.instanceID ~= nil and target.mapID == nil and target.space ~= "map"))
+    local needsProjection = type(target) == "table"
+        and (
+            target.from ~= nil
+            or target.to ~= nil
+            or target.space == "world"
+            or (target.instanceID ~= nil and target.mapID == nil and target.space ~= "map")
+        )
     if needsProjection and type(instance.GetWaypointMapTarget) == "function" then
         local projected, normalized = pcall(instance.GetWaypointMapTarget, instance, target, options)
         if not projected then return nil, { guideMode = "blocked" } end
@@ -83,9 +98,15 @@ end
 local function ValidTarget(target)
     if type(target) ~= "table" then return false end
     local mapID = target.mapID or target.uiMapID
-    return Finite(mapID) and mapID > 0 and mapID % 1 == 0
-        and Finite(target.x) and target.x >= 0 and target.x <= 1
-        and Finite(target.y) and target.y >= 0 and target.y <= 1
+    return Finite(mapID)
+        and mapID > 0
+        and mapID % 1 == 0
+        and Finite(target.x)
+        and target.x >= 0
+        and target.x <= 1
+        and Finite(target.y)
+        and target.y >= 0
+        and target.y <= 1
 end
 
 local function ExtractOriginal(extract, ...)
@@ -159,20 +180,23 @@ function Instance:ConnectAzerothWaypoint()
     return true
 end
 
-local SnapshotFields = { "mapID", "uiMapID", "x", "y", "token", "title", "subtext",
-    "source", "kind", "guideProvider", "transient" }
+local SnapshotFields =
+    { "mapID", "uiMapID", "x", "y", "token", "title", "subtext", "source", "kind", "guideProvider", "transient" }
 
 local function Snapshot(target, options)
     local result = { mode = Mode(target, options), context = Copy(options.context) }
     if type(target) == "table" then
-        for _, key in ipairs(SnapshotFields) do result[key] = target[key] end
+        for _, key in ipairs(SnapshotFields) do
+            result[key] = target[key]
+        end
     end
     return result
 end
 
 local function SameTargetSnapshot(snapshot, target, options)
-    if not snapshot or snapshot.mode ~= Mode(target, options)
-        or not Same(snapshot.context, options.context) then return false end
+    if not snapshot or snapshot.mode ~= Mode(target, options) or not Same(snapshot.context, options.context) then
+        return false
+    end
     if type(target) ~= "table" then target = nil end
     for _, key in ipairs(SnapshotFields) do
         if snapshot[key] ~= (target and target[key]) then return false end
@@ -182,8 +206,12 @@ end
 
 local function SameSnapshot(a, b)
     if not a or not Same(a.context, b.context) then return false end
-    for key, value in pairs(a) do if key ~= "context" and b[key] ~= value then return false end end
-    for key, value in pairs(b) do if key ~= "context" and a[key] ~= value then return false end end
+    for key, value in pairs(a) do
+        if key ~= "context" and b[key] ~= value then return false end
+    end
+    for key, value in pairs(b) do
+        if key ~= "context" and a[key] ~= value then return false end
+    end
     return true
 end
 
@@ -202,7 +230,8 @@ function Instance:PublishAzerothWaypoint(target, options)
     local request = Snapshot(target, options)
     local previous = self.waypointAzerothManual
     if not target.token then
-        if previous and SameSnapshot(previous.request, request) then target.token = previous.target.token
+        if previous and SameSnapshot(previous.request, request) then
+            target.token = previous.target.token
         else
             Lib.waypointAzerothManualSequence = (Lib.waypointAzerothManualSequence or 0) + 1
             target.token = "LibAPRNavigation.manual:" .. Lib.waypointAzerothManualSequence
@@ -264,14 +293,23 @@ function Instance:ReleaseAzerothWaypoint()
     if not state then return true end
     state.snapshot = nil
     if not state.active and not state.pendingRelease then return true end
-    if Combat(self) then state.pendingRelease = true; return false, "waypoint_combat" end
+    if Combat(self) then
+        state.pendingRelease = true
+        return false, "waypoint_combat"
+    end
     -- Another consumer may have replaced this provider while we were paused.
     -- Leave its route and adapter alone; our inactive wrapper remains harmless.
     local ok, provider = pcall(state.ns.GetGuideTargetProvider, state.id)
-    if not ok then state.pendingRelease = true; return false, "azeroth_waypoint_error" end
+    if not ok then
+        state.pendingRelease = true
+        return false, "azeroth_waypoint_error"
+    end
     if provider == state.adapter then
         ok = pcall(state.ns.ClearGuideRouteState, state.id)
-        if not ok then state.pendingRelease = true; return false, "azeroth_waypoint_error" end
+        if not ok then
+            state.pendingRelease = true
+            return false, "azeroth_waypoint_error"
+        end
     end
     state.active, state.pendingRelease = nil, nil
     return true

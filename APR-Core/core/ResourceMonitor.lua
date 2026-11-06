@@ -17,7 +17,7 @@ function Monitor:ObserveFrame(elapsed)
         self.frameSpikes = (self.frameSpikes or 0) + 1
         local log = APRData and APRData.PerformanceLog
         if log then
-            log.frames = log.frames or {samples = {}, cursor = 0}
+            log.frames = log.frames or { samples = {}, cursor = 0 }
             local frames = log.frames
             frames.cursor = frames.cursor % 100 + 1
             local now = GetTime()
@@ -25,12 +25,18 @@ function Monitor:ObserveFrame(elapsed)
             if work and work.time >= now then work = log.previousFrameWork end
             -- Never attach stale work from an earlier idle frame to a new spike.
             if work and (work.time >= now or now - work.time > elapsed + 0.001) then work = nil end
-            frames.samples[frames.cursor] = {time = now, ms = ms, baselineMs = baseline,
+            frames.samples[frames.cursor] = {
+                time = now,
+                ms = ms,
+                baselineMs = baseline,
                 route = APR.ActiveRoute,
                 step = APRData[APR.PlayerID] and APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute],
-                aprMs = work and work.ms, aprCalls = work and work.count,
-                aprPeakMs = work and work.peakMs, aprSource = work and work.source,
-                aprAt = work and work.time}
+                aprMs = work and work.ms,
+                aprCalls = work and work.count,
+                aprPeakMs = work and work.peakMs,
+                aprSource = work and work.source,
+                aprAt = work and work.time,
+            }
         end
     end
     self.frameAverageMs = baseline + (ms - baseline) * 0.05
@@ -76,12 +82,15 @@ function Monitor:Sample(force)
     local now = GetTime()
     local resources = log.resources
     if not resources then
-        resources = {samples = {}, cursor = 0, count = 0}
+        resources = { samples = {}, cursor = 0, count = 0 }
         log.resources = resources
     end
     if not force and resources.lastAt and now - resources.lastAt < 1 then return end
-    local sample = {time = now, route = APR.ActiveRoute,
-        step = APRData[APR.PlayerID] and APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute]}
+    local sample = {
+        time = now,
+        route = APR.ActiveRoute,
+        step = APRData[APR.PlayerID] and APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute],
+    }
     local profiler, metric = C_AddOnProfiler, Enum and Enum.AddOnProfilerMetric
     if profiler and metric and Read(profiler.IsEnabled) == true then
         sample.cpuMs = Number(Read(profiler.GetAddOnMetric, "APR", metric.RecentAverageTime))
@@ -116,8 +125,14 @@ function Monitor:Sample(force)
 end
 
 function Monitor:Stop()
-    if self.ticker then self.ticker:Cancel(); self.ticker = nil end
-    if self.frameObserver then self.frameObserver:SetScript("OnUpdate", nil); self.frameObserver:Hide() end
+    if self.ticker then
+        self.ticker:Cancel()
+        self.ticker = nil
+    end
+    if self.frameObserver then
+        self.frameObserver:SetScript("OnUpdate", nil)
+        self.frameObserver:Hide()
+    end
 end
 
 function Monitor:Reset()
@@ -137,11 +152,14 @@ end
 -- in each time slice; absent samples remain gaps rather than fabricated zeros.
 function Monitor:GetView(duration)
     local resources = APRData and APRData.PerformanceLog and APRData.PerformanceLog.resources
-    local view = {points = {}, duration = duration, finish = resources and resources.lastAt or GetTime()}
+    local view = { points = {}, duration = duration, finish = resources and resources.lastAt or GetTime() }
     local start, interval = view.finish - duration, duration / 120
-    for index = 1, 120 do view.points[index] = {from = start + (index - 1) * interval, to = start + index * interval} end
+    for index = 1, 120 do
+        view.points[index] = { from = start + (index - 1) * interval, to = start + index * interval }
+    end
     if not resources then return view end
-    view.firstMemoryKB, view.firstMemoryAt, view.peakMemoryKB = resources.firstMemoryKB, resources.firstMemoryAt, resources.peakMemoryKB
+    view.firstMemoryKB, view.firstMemoryAt, view.peakMemoryKB =
+        resources.firstMemoryKB, resources.firstMemoryAt, resources.peakMemoryKB
     -- The ring is chronological. Find the first expired sample without scanning
     -- the older history; full-window views keep their single aggregation pass.
     local oldest = resources.count - 1
@@ -150,7 +168,11 @@ function Monitor:GetView(duration)
         while recent < expired do
             local middle = math.floor((recent + expired) / 2)
             local sample = resources.samples[(resources.cursor - middle - 1) % SAMPLE_LIMIT + 1]
-            if sample.time > start then recent = middle + 1 else expired = middle end
+            if sample.time > start then
+                recent = middle + 1
+            else
+                expired = middle
+            end
         end
         oldest = recent - 1
     end
@@ -162,7 +184,9 @@ function Monitor:GetView(duration)
             if sample.cpuPercent and (not point.cpuPercent or sample.cpuPercent >= point.cpuPercent) then
                 point.cpuPercent, point.cpuSample = sample.cpuPercent, sample
             end
-            if sample.peakFrameMs and (not point.frameSample or sample.peakFrameMs >= point.frameSample.peakFrameMs) then
+            if
+                sample.peakFrameMs and (not point.frameSample or sample.peakFrameMs >= point.frameSample.peakFrameMs)
+            then
                 point.frameSample = sample
             end
             point.frameSpikes = (point.frameSpikes or 0) + (sample.frameSpikes or 0)

@@ -6,98 +6,139 @@ GENERAL, OPTIONS = "General", "Options"
 DISPLAY = "Display"
 local oldLibStub = LibStub
 local registered = {}
-local config = {RegisterOptionsTable = function(_, name, options) registered[name] = options end}
-local dialog = {AddToBlizOptions = function() error("Blizzard must not expose AceConfig subcategories") end}
+local config = { RegisterOptionsTable = function(_, name, options) registered[name] = options end }
+local dialog = { AddToBlizOptions = function() error("Blizzard must not expose AceConfig subcategories") end }
 function LibStub(name, ...)
     if name == "AceConfig-3.0" then return config end
     if name == "AceConfigDialog-3.0" then return dialog end
-    if name == "AceDBOptions-3.0" then return {GetOptionsTable = function() return {type = "group", name = "Profiles", args = {}} end} end
+    if name == "AceDBOptions-3.0" then
+        return { GetOptionsTable = function() return { type = "group", name = "Profiles", args = {} } end }
+    end
     return oldLibStub(name, ...)
 end
 dofile("APR-Core/utils/TextStyleUtils.lua")
 dofile("APR-Core/config/AboutData.lua")
 dofile("APR-Core/config/Config.lua")
 APR.title, APR.version = "APR", "test"
-APR.GAME_VERSIONS = {Forever = "Forever"}
+APR.GAME_VERSIONS = { Forever = "Forever" }
 function APR:GetGameVersion() return "Retail" end
 function APR:IsRemixCharacter() return false end
 APR.settings.profile = {}
-APR.routeconfig = {InitRouteConfig = function() return {} end}
-Settings = {RegisterCanvasLayoutCategory = function() return {ID = 1} end}
+APR.routeconfig = { InitRouteConfig = function() return {} end }
+Settings = { RegisterCanvasLayoutCategory = function() return { ID = 1 } end }
 APR.settings:createBlizzOptions()
 dofile("APR-Core/config/WorkspaceOptions.lua")
 local sections = APR.WorkspaceOptions:Build(APR.settings)
 local rendered = {}
 local function walk(option, callback, path)
     if option.args then
-        for key, child in pairs(option.args) do walk(child, callback, (path or "") .. "/" .. key) end
-    elseif option.type ~= "header" and option.type ~= "description" then callback(option, path) end
+        for key, child in pairs(option.args) do
+            walk(child, callback, (path or "") .. "/" .. key)
+        end
+    elseif option.type ~= "header" and option.type ~= "description" then
+        callback(option, path)
+    end
 end
 local function retain(option, path)
     if option.type == "multiselect" then
         assert(option.dialogControl == "Dropdown", "Every workspace multiselect uses the shared dropdown presentation")
     end
-    rendered[#rendered + 1] = {option = option, key = path:match("([^/]+)$")}
+    rendered[#rendered + 1] = { option = option, key = path:match("([^/]+)$") }
 end
 retain(APR.WorkspaceOptions:ResetAction(APR.settings), "/resetButton")
 for _, section in ipairs(sections) do
     for _, view in ipairs(APR.WorkspaceOptions:Views(section)) do
         walk(view.options, retain)
-        for _, action in ipairs(view.actions or {}) do retain(action.option, "/" .. action.key) end
-        for _, action in ipairs(view.footerActions or {}) do retain(action.option, "/" .. action.key) end
+        for _, action in ipairs(view.actions or {}) do
+            retain(action.option, "/" .. action.key)
+        end
+        for _, action in ipairs(view.footerActions or {}) do
+            retain(action.option, "/" .. action.key)
+        end
     end
-    for _, action in ipairs(section.actions or {}) do retain(action.option, "/" .. action.key) end
+    for _, action in ipairs(section.actions or {}) do
+        retain(action.option, "/" .. action.key)
+    end
 end
 local count = 0
 walk(APR.settings.optionsTable, function(option, path)
     -- These actions have moved to top-level Status and the release-notes category itself.
-    if path == "/statusButton" or path == "/group_Debug/subgroup_Enable/resetPartyPosition"
-        or path == "/discordButton" or path == "/githubButton" then return end
+    if
+        path == "/statusButton"
+        or path == "/group_Debug/subgroup_Enable/resetPartyPosition"
+        or path == "/discordButton"
+        or path == "/githubButton"
+    then
+        return
+    end
     local found, matches = nil, 0
     for _, entry in ipairs(rendered) do
-        if entry.key == path:match("([^/]+)$") and entry.option.name == option.name
-            and entry.option.get == option.get and entry.option.set == option.set and entry.option.func == option.func then
+        if
+            entry.key == path:match("([^/]+)$")
+            and entry.option.name == option.name
+            and entry.option.get == option.get
+            and entry.option.set == option.set
+            and entry.option.func == option.func
+        then
             found = entry.option
             matches = matches + 1
         end
     end
     assert(found, "Missing setting/action: " .. path)
     assert(matches == 1, "Duplicated setting/action: " .. path)
-    for _, key in ipairs({"disabled", "hidden", "confirm", "confirmText", "values", "min", "max", "step"}) do
+    for _, key in ipairs({ "disabled", "hidden", "confirm", "confirmText", "values", "min", "max", "step" }) do
         assert(found[key] == option[key], "Lost constraint " .. key .. ": " .. path)
     end
     count = count + 1
 end)
 assert(count > 120, "The complete settings schema must be checked")
-local expectedOrder = {"automation", "group_Current_Step", "group_FillersFrame", "group_quest_order_list_step",
-    "group_Arrow", "group_map_minimap", "group_AFK", "group_Group", "group_Heirloom", "group_XP_Buff",
-    "appearance", "profiles", "changelog", "debug"}
+local expectedOrder = {
+    "automation",
+    "group_Current_Step",
+    "group_FillersFrame",
+    "group_quest_order_list_step",
+    "group_Arrow",
+    "group_map_minimap",
+    "group_AFK",
+    "group_Group",
+    "group_Heirloom",
+    "group_XP_Buff",
+    "appearance",
+    "profiles",
+    "changelog",
+    "debug",
+}
 assert(#sections == #expectedOrder)
-for index, id in ipairs(expectedOrder) do assert(sections[index].id == id, "Unexpected category order at " .. index) end
+for index, id in ipairs(expectedOrder) do
+    assert(sections[index].id == id, "Unexpected category order at " .. index)
+end
 local expectedViews = {
-    automation = {"main", "subgroup_waypoints", "group_gossip_automation", "group_reward_automation"},
-    group_Current_Step = {"subgroup_CurrentStep", "placement", "currentStepTextAppearance"},
-    group_quest_order_list_step = {"subgroup_QuestOrderList", "questOrderListTextAppearance"},
-    group_Arrow = {"subgroup_Arrow", "arrowTextAppearance"},
-    group_map_minimap = {"group_map", "group_minimap", "group_map_color"},
-    group_AFK = {"subgroup_AFK", "afkTextAppearance"},
-    group_Group = {"subgroup_Group", "partyTextAppearance"},
-    group_Heirloom = {"general", "heirloomTextAppearance"},
-    appearance = {"theme", "group_GlobalTextAppearance"},
+    automation = { "main", "subgroup_waypoints", "group_gossip_automation", "group_reward_automation" },
+    group_Current_Step = { "subgroup_CurrentStep", "placement", "currentStepTextAppearance" },
+    group_quest_order_list_step = { "subgroup_QuestOrderList", "questOrderListTextAppearance" },
+    group_Arrow = { "subgroup_Arrow", "arrowTextAppearance" },
+    group_map_minimap = { "group_map", "group_minimap", "group_map_color" },
+    group_AFK = { "subgroup_AFK", "afkTextAppearance" },
+    group_Group = { "subgroup_Group", "partyTextAppearance" },
+    group_Heirloom = { "general", "heirloomTextAppearance" },
+    appearance = { "theme", "group_GlobalTextAppearance" },
 }
 local panels, categories = {}, {}
 for _, section in ipairs(sections) do
     categories[section.id] = section
     panels[section.id] = {}
     local views = APR.WorkspaceOptions:Views(section)
-    local expected = expectedViews[section.id] or {"general"}
+    local expected = expectedViews[section.id] or { "general" }
     assert(#views == #expected, "Unexpected number of tabs in " .. section.id)
     for index, view in ipairs(views) do
         assert(view.id == expected[index], "Unexpected tab order in " .. section.id)
         panels[section.id][view.id] = view
         local function inlineOnly(options)
             for _, option in pairs(options.args or {}) do
-                if option.args then assert(option.inline, "No third level of tabs"); inlineOnly(option) end
+                if option.args then
+                    assert(option.inline, "No third level of tabs")
+                    inlineOnly(option)
+                end
             end
         end
         inlineOnly(view.options)
@@ -107,15 +148,21 @@ local rewardScale
 walk(panels.automation.group_reward_automation.options, function(option, path)
     if path:match("([^/]+)$") == "rewardWeightScale" then rewardScale = option end
 end)
-assert(rewardScale and rewardScale.dialogControl == "APRSettingsSelect",
-    "Pawn weights use APR's shared select instead of the native dropdown")
+assert(
+    rewardScale and rewardScale.dialogControl == "APRSettingsSelect",
+    "Pawn weights use APR's shared select instead of the native dropdown"
+)
 
 local current = categories.group_Current_Step
 assert(not current.options.args.subgroup_FillersFrame, "Secondary objectives have their own category")
-assert(not current.actions and panels.group_Current_Step.placement.options.args.resetCurrentStepPosition,
-    "Placement reset belongs at the bottom of the placement tab")
-assert(panels.group_Heirloom.general.options.disabled == APR.settings.optionsTable.args.group_Heirloom.disabled,
-    "Moving a group must preserve inherited restrictions")
+assert(
+    not current.actions and panels.group_Current_Step.placement.options.args.resetCurrentStepPosition,
+    "Placement reset belongs at the bottom of the placement tab"
+)
+assert(
+    panels.group_Heirloom.general.options.disabled == APR.settings.optionsTable.args.group_Heirloom.disabled,
+    "Moving a group must preserve inherited restrictions"
+)
 local fillerView = panels.group_FillersFrame.general
 local fillerReset = fillerView.options.args.fillersFrameResetPosition
 APR.settings.profile.fillersFrameSnapToCurrentStep = true
@@ -125,13 +172,17 @@ assert(not fillerReset.disabled(), "A detached filler can have its position rese
 assert(not categories.general and not categories.tracking and not categories.navigation and not categories.progression)
 local combined = panels.automation.main.options.args
 local automation = combined.quests.args
-assert(combined.quests.inline and combined.comfort.inline and combined.comfort.args.autoRepair,
-    "Principal and advanced automation share a page with separate boxes")
-assert(automation.pickupQuestLookahead and automation.sojournerSkipCampaign,
-    "Quest preferences belong with quests, not gameplay convenience")
+assert(
+    combined.quests.inline and combined.comfort.inline and combined.comfort.args.autoRepair,
+    "Principal and advanced automation share a page with separate boxes"
+)
+assert(
+    automation.pickupQuestLookahead and automation.sojournerSkipCampaign,
+    "Quest preferences belong with quests, not gameplay convenience"
+)
 local afkSection = categories.group_AFK
 assert(afkSection.actions[1].key == "afkFakeTimer" and not panels.group_AFK.subgroup_AFK.options.args.afkFakeTimer)
-APR.AFK = {ToggleFakeTimer = function(self) self.fakeTimerActive = not self.fakeTimerActive end}
+APR.AFK = { ToggleFakeTimer = function(self) self.fakeTimerActive = not self.fakeTimerActive end }
 local action = afkSection.actions[1].option
 local before = action.name()
 action.func()
@@ -143,19 +194,22 @@ end
 local appearance = categories.appearance
 assert(#appearance.actions == 1 and appearance.actions[1].key == "layoutEditor")
 local launched = false
-APR.LayoutEditor = {ShowFromSettings = function() launched = true end}
+APR.LayoutEditor = { ShowFromSettings = function() launched = true end }
 appearance.actions[1].option.func()
 assert(launched, "Placement uses the safe settings entry point")
 local xp = panels.group_XP_Buff.general.options.args
 assert(xp.showXPBuffOverlay and xp.xpBonusSelection, "XP keeps its own category and all preferences")
 local arrowStyle = panels.group_Arrow.subgroup_Arrow.options.args.arrowStyle
 local restyles = 0
-APR.Arrow = {ApplyStyle = function() restyles = restyles + 1 end}
+APR.Arrow = { ApplyStyle = function() restyles = restyles + 1 end }
 assert(arrowStyle.get() == "classic")
-arrowStyle.set({"arrowStyle"}, "apr")
+arrowStyle.set({ "arrowStyle" }, "apr")
 assert(APR.settings.profile.arrowStyle == "apr" and arrowStyle.get() == "apr" and restyles == 1)
-arrowStyle.set({"arrowStyle"}, "classic")
-assert(APR.settings.profile.arrowStyle == "classic" and restyles == 2, "The style changes immediately in both directions")
+arrowStyle.set({ "arrowStyle" }, "classic")
+assert(
+    APR.settings.profile.arrowStyle == "classic" and restyles == 2,
+    "The style changes immediately in both directions"
+)
 local arrowOptions = panels.group_Arrow.subgroup_Arrow.options.args
 local resized = 0
 function APR.Arrow:GetTextScale()
@@ -165,20 +219,26 @@ function APR.Arrow:GetTextScale()
 end
 function APR.Arrow:ApplySize() resized = resized + 1 end
 APR.settings.profile.arrowScale = 2
-arrowOptions.arrowScale.set({"arrowScale"}, 1.5)
-assert(APR.settings.profile.arrowScale == 1.5 and arrowOptions.arrowTextScale.get() == 2,
-    "Changing artwork size first retains the legacy text size before storing the new arrow size")
-arrowOptions.arrowTextScale.set({"arrowTextScale"}, 1.25)
+arrowOptions.arrowScale.set({ "arrowScale" }, 1.5)
+assert(
+    APR.settings.profile.arrowScale == 1.5 and arrowOptions.arrowTextScale.get() == 2,
+    "Changing artwork size first retains the legacy text size before storing the new arrow size"
+)
+arrowOptions.arrowTextScale.set({ "arrowTextScale" }, 1.25)
 assert(APR.settings.profile.arrowScale == 1.5 and APR.settings.profile.arrowTextScale == 1.25 and resized == 2)
-assert(arrowOptions.arrowScale.order < arrowOptions.arrowTextScale.order
-    and arrowOptions.arrowTextScale.order < arrowOptions.arrowFPS.order,
-    "Arrow and text size controls are adjacent")
+assert(
+    arrowOptions.arrowScale.order < arrowOptions.arrowTextScale.order
+        and arrowOptions.arrowTextScale.order < arrowOptions.arrowFPS.order,
+    "Arrow and text size controls are adjacent"
+)
 function GetScreenWidth() return 1920 end
 function GetScreenHeight() return 1080 end
 APR.ArrowFrameM = CreateFrame("Frame")
 arrowOptions.arrowReset.func()
-assert(APR.settings.profile.arrowScale == 1 and APR.settings.profile.arrowTextScale == 1 and resized == 3,
-    "Arrow reset restores both independent sizes")
+assert(
+    APR.settings.profile.arrowScale == 1 and APR.settings.profile.arrowTextScale == 1 and resized == 3,
+    "Arrow reset restores both independent sizes"
+)
 
 -- A single theme choice retains existing saved flags and only offers loaded integrations.
 local skin = panels.appearance.theme.options.args.uiSkin
@@ -186,7 +246,9 @@ local reloads = 0
 function ReloadUI() reloads = reloads + 1 end
 APR.UI = APR.UI or {}
 local acceptReload, cancelReload
-function APR.UI:ShowConfirmationDialog(_, accept, cancel) acceptReload, cancelReload = accept, cancel end
+function APR.UI:ShowConfirmationDialog(_, accept, cancel)
+    acceptReload, cancelReload = accept, cancel
+end
 local function setConfirmed(option, value)
     local before = reloads
     option.set(nil, value)
@@ -194,7 +256,7 @@ local function setConfirmed(option, value)
     acceptReload()
 end
 assert(skin.get() == "wow" and skin.values().wow and not skin.values().ElvUI and not skin.values().EllesmereUI)
-ElvUI, EllesmereUI = {}, {RegisterSkin = function() end}
+ElvUI, EllesmereUI = {}, { RegisterSkin = function() end }
 assert(skin.get() == "ElvUI" and skin.values().ElvUI and skin.values().EllesmereUI)
 assert(not skin.confirm, "The reload helper owns confirmation; AceConfig must not ask a second time")
 skin.set(nil, "EllesmereUI")
@@ -209,74 +271,138 @@ assert(skin.get() == "ElvUI" and APR.settings.profile.elvuiSkin and not APR.sett
 setConfirmed(skin, "wow")
 assert(skin.get() == "wow" and not APR.settings.profile.elvuiSkin and not APR.settings.profile.ellesmereuiSkin)
 setConfirmed(skin, "modern")
-assert(skin.get() == "modern" and skin.values().modern and APR.settings.profile.uiTheme == "modern",
-    "The standalone modern theme has a persisted choice even when both integrations are installed")
+assert(
+    skin.get() == "modern" and skin.values().modern and APR.settings.profile.uiTheme == "modern",
+    "The standalone modern theme has a persisted choice even when both integrations are installed"
+)
 setConfirmed(skin, "wow")
 local placement = panels.group_Current_Step.placement.options.args
 local appearance, target = placement.currentStepMatchTrackerStyle, placement.currentStepTrackerProvider
-assert(appearance.type == "select" and appearance.values().ElvUI and appearance.values().EllesmereUI
-    and appearance.values().modern and target.values().blizzard)
-for _, name in ipairs({"wowModern", "modern", "graphiteModern", "emeraldModern", "violetModern", "redModern"}) do
-    assert(skin.values()[name] and appearance.values()[name], "Every variant is offered globally and for attached frames")
+assert(
+    appearance.type == "select"
+        and appearance.values().ElvUI
+        and appearance.values().EllesmereUI
+        and appearance.values().modern
+        and target.values().blizzard
+)
+for _, name in ipairs({ "wowModern", "modern", "graphiteModern", "emeraldModern", "violetModern", "redModern" }) do
+    assert(
+        skin.values()[name] and appearance.values()[name],
+        "Every variant is offered globally and for attached frames"
+    )
     setConfirmed(skin, name)
     assert(skin.get() == name and not APR.settings.profile.elvuiSkin and not APR.settings.profile.ellesmereuiSkin)
     setConfirmed(appearance, "wowModern")
-    assert(appearance.get() == "wowModern" and skin.get() == name,
-        "A native variant can be selected independently for attached frames")
+    assert(
+        appearance.get() == "wowModern" and skin.get() == name,
+        "A native variant can be selected independently for attached frames"
+    )
 end
 setConfirmed(skin, "wow")
 setConfirmed(appearance, "EllesmereUI")
-assert(appearance.get() == "EllesmereUI" and skin.get() == "wow",
-    "Choosing a tracker appearance cannot change the global theme")
+assert(
+    appearance.get() == "EllesmereUI" and skin.get() == "wow",
+    "Choosing a tracker appearance cannot change the global theme"
+)
 setConfirmed(target, "blizzard")
-assert(target.get() == "blizzard" and appearance.get() == "EllesmereUI",
-    "Choosing tracker placement cannot change its appearance")
+assert(
+    target.get() == "blizzard" and appearance.get() == "EllesmereUI",
+    "Choosing tracker placement cannot change its appearance"
+)
 APR.settings.profile.currentStepTrackerAppearance, APR.settings.profile.currentStepTrackerProvider = nil, nil
 ElvUI, EllesmereUI = nil, {}
 assert(not skin.values().EllesmereUI, "An incompatible EllesmereUI version cannot be selected")
 EllesmereUI = nil
 
 -- Profile presentation must preserve inherited AceDB string handlers and confirmation semantics.
-local profileHandler = {GetCurrentProfile = function() return "Default" end}
+local profileHandler = { GetCurrentProfile = function() return "Default" end }
 local function currentProfile(info) return "Current: " .. info.handler:GetCurrentProfile() end
 local validate = function(_, text) return #text > 0 end
-local profileSource = {type = "group", name = "Profiles", handler = profileHandler, args = {
-    current = {type = "description", name = currentProfile},
-    descreset = {type = "description", name = "Restore the current profile to its defaults."},
-    choose = {type = "select", name = "Existing", get = "GetCurrentProfile", set = "SetProfile", values = "ListProfiles", arg = "common"},
-    new = {type = "input", name = "New", set = "SetProfile", validate = validate},
-    copyfrom = {type = "select", name = "Copy", set = "CopyProfile", values = "ListProfiles", arg = "nocurrent", disabled = "HasNoProfiles"},
-    delete = {type = "select", name = "Delete", set = "DeleteProfile", values = "ListProfiles", arg = "nocurrent", confirm = true, confirmText = "Delete?"},
-    reset = {type = "execute", name = "Reset", func = "Reset", order = 10},
-    reset_all_profiles = APR.settings.profileOptions.args.reset_all_profiles,
-}}
+local profileSource = {
+    type = "group",
+    name = "Profiles",
+    handler = profileHandler,
+    args = {
+        current = { type = "description", name = currentProfile },
+        descreset = { type = "description", name = "Restore the current profile to its defaults." },
+        choose = {
+            type = "select",
+            name = "Existing",
+            get = "GetCurrentProfile",
+            set = "SetProfile",
+            values = "ListProfiles",
+            arg = "common",
+        },
+        new = { type = "input", name = "New", set = "SetProfile", validate = validate },
+        copyfrom = {
+            type = "select",
+            name = "Copy",
+            set = "CopyProfile",
+            values = "ListProfiles",
+            arg = "nocurrent",
+            disabled = "HasNoProfiles",
+        },
+        delete = {
+            type = "select",
+            name = "Delete",
+            set = "DeleteProfile",
+            values = "ListProfiles",
+            arg = "nocurrent",
+            confirm = true,
+            confirmText = "Delete?",
+        },
+        reset = { type = "execute", name = "Reset", func = "Reset", order = 10 },
+        reset_all_profiles = APR.settings.profileOptions.args.reset_all_profiles,
+    },
+}
 APR.settings.profileOptions = profileSource
 for _, section in ipairs(APR.WorkspaceOptions:Build(APR.settings)) do
     if section.id == "profiles" then
         local views = APR.WorkspaceOptions:Views(section)
         assert(#views == 1 and views[1].options.handler == profileHandler)
         local groups = views[1].options.args
-        assert(groups.active.name({handler = profileHandler}) == "Current: Default")
+        assert(groups.active.name({ handler = profileHandler }) == "Current: Default")
         local found = {}
         walk(views[1].options, function(option, path) found[path:match("([^/]+)$")] = option end)
         for key, original in pairs(profileSource.args) do
             if original.type ~= "description" then
                 local option = assert(found[key], "Missing profile action: " .. key)
-                for _, field in ipairs({"get", "set", "func", "arg", "values", "validate", "disabled", "confirm", "confirmText"}) do
+                for _, field in ipairs({
+                    "get",
+                    "set",
+                    "func",
+                    "arg",
+                    "values",
+                    "validate",
+                    "disabled",
+                    "confirm",
+                    "confirmText",
+                }) do
                     assert(option[field] == original[field], "Lost profile behavior: " .. key .. "/" .. field)
                 end
             end
         end
         assert(found.reset.width == "full" and found.reset.dialogControl == "APRSettingsAction")
-        assert(found.reset_all_profiles.width == "full" and found.reset_all_profiles.dialogControl == "APRSettingsAction")
-        assert(found.reset_all_profiles.desc == found.reset_all_profiles.confirmText:match("[^\r\n]+"),
-            "The effect on all profiles is explained before the confirmation")
-        assert(not profileSource.args.reset.dialogControl and profileSource.args.reset.order == 10,
-            "The AceDB schema must not be mutated")
+        assert(
+            found.reset_all_profiles.width == "full" and found.reset_all_profiles.dialogControl == "APRSettingsAction"
+        )
+        assert(
+            found.reset_all_profiles.desc == found.reset_all_profiles.confirmText:match("[^\r\n]+"),
+            "The effect on all profiles is explained before the confirmation"
+        )
+        assert(
+            not profileSource.args.reset.dialogControl and profileSource.args.reset.order == 10,
+            "The AceDB schema must not be mutated"
+        )
     end
 end
-local resets = {resetCurrentStepPosition = true, fillersFrameResetPosition = true,
-    arrowReset = true, afkResetPosition = true, resetPartyPosition = true}
+local resets = {
+    resetCurrentStepPosition = true,
+    fillersFrameResetPosition = true,
+    arrowReset = true,
+    afkResetPosition = true,
+    resetPartyPosition = true,
+}
 local resetCount = 0
 local function checkSpacing(option)
     for key, child in pairs(option.args or {}) do
@@ -292,7 +418,9 @@ local function checkSpacing(option)
     end
 end
 for _, section in ipairs(sections) do
-    for _, view in ipairs(APR.WorkspaceOptions:Views(section)) do checkSpacing(view.options) end
+    for _, view in ipairs(APR.WorkspaceOptions:Views(section)) do
+        checkSpacing(view.options)
+    end
 end
 assert(resetCount == 6, "Every position reset is checked")
 local textResets = 0
@@ -301,28 +429,36 @@ for _, section in ipairs(sections) do
         walk(view.options, function(option, path)
             if path:match("/resetTextAppearance$") then
                 textResets = textResets + 1
-                assert(option.type == "execute" and option.order == 10000,
-                    "Each text reset is shown after the section's controls")
+                assert(
+                    option.type == "execute" and option.order == 10000,
+                    "Each text reset is shown after the section's controls"
+                )
             end
         end)
     end
 end
 assert(textResets == 8, "Global and all seven per-frame text settings have their reset action")
 
-automation.autoAccept.set({"autoAccept"}, true)
+automation.autoAccept.set({ "autoAccept" }, true)
 assert(APR.settings.profile.autoAccept and APR.settings.profile.autoAcceptQuestRoute == false)
-automation.autoAcceptQuestRoute.set({"autoAcceptQuestRoute"}, true)
+automation.autoAcceptQuestRoute.set({ "autoAcceptQuestRoute" }, true)
 assert(APR.settings.profile.autoAcceptQuestRoute and APR.settings.profile.autoAccept == false)
 local waypoints = panels.automation.subgroup_waypoints.options.args
-waypoints.autoSkipAllWaypoints.set({"autoSkipAllWaypoints"}, true)
+waypoints.autoSkipAllWaypoints.set({ "autoSkipAllWaypoints" }, true)
 assert(APR.settings.profile.autoSkipAllWaypoints and APR.settings.profile.autoSkipWaypointsFly == false)
-waypoints.autoSkipWaypointsFly.set({"autoSkipWaypointsFly"}, true)
+waypoints.autoSkipWaypointsFly.set({ "autoSkipWaypointsFly" }, true)
 assert(APR.settings.profile.autoSkipWaypointsFly and APR.settings.profile.autoSkipAllWaypoints == false)
-assert(APR.settings.optionsTable.args.group_Debug.args.subgroup_Enable.args.showChangeLog,
-    "Building the views cannot mutate the native schema")
-assert(APR.settings.optionsTable.args.group_Advanced_Automation.args.subgroup_waypoints,
-    "Moving automation cannot remove it from the native options schema")
-print("Workspace options: " .. count .. " settings/actions retained; original mutual exclusions and definitions preserved")
+assert(
+    APR.settings.optionsTable.args.group_Debug.args.subgroup_Enable.args.showChangeLog,
+    "Building the views cannot mutate the native schema"
+)
+assert(
+    APR.settings.optionsTable.args.group_Advanced_Automation.args.subgroup_waypoints,
+    "Moving automation cannot remove it from the native options schema"
+)
+print(
+    "Workspace options: " .. count .. " settings/actions retained; original mutual exclusions and definitions preserved"
+)
 
 -- Exercise the real navigation controller: moved categories still resolve to their panels,
 -- category changes retain the last tab and contextual actions do not leak to another page.
@@ -332,10 +468,14 @@ dofile("APR-Core/ui/foundations/VirtualList.lua")
 dofile("APR-Core/ui/panels/Workspace.lua")
 function APR:RegisterSupportedEvent(frame, event) frame:RegisterEvent(event) end
 function APR.UI:SettingsHost(parent)
-    return {frame = CreateFrame("Frame", nil, parent), data = {}, callbacks = {},
+    return {
+        frame = CreateFrame("Frame", nil, parent),
+        data = {},
+        callbacks = {},
         SetCallback = function(self, event, callback) self.callbacks[event] = callback end,
         SetUserData = function(self, key, value) self.data[key] = value end,
-        ReleaseChildren = function() end}
+        ReleaseChildren = function() end,
+    }
 end
 local opened
 function dialog:Open(app, host)
@@ -350,13 +490,16 @@ panel.body:SetSize(760, 600)
 APR.settings.profile.enableAddon = true
 panel.frame.scripts.OnShow()
 assert(panel.selected == "automation" and panel.view.id == "main", "Options opens on Automation")
-assert(panel.navigation.active[1].aprListRow.iconName == "automation"
-    and panel.navigation.active[1].aprListRow.iconHost:IsShown(), "Category navigation retains its MDI icons")
+assert(
+    panel.navigation.active[1].aprListRow.iconName == "automation"
+        and panel.navigation.active[1].aprListRow.iconHost:IsShown(),
+    "Category navigation retains its MDI icons"
+)
 local resetButton = panel.resetButton
 local resetPoint, resetParent, resetRelativePoint, resetX, resetY = unpack(resetButton.point)
 local confirmedReset, resetCount = nil, 0
 function APR.UI:ShowConfirmationDialog(_, accept) confirmedReset = accept end
-APR.settings.db = {ResetProfile = function() resetCount = resetCount + 1 end}
+APR.settings.db = { ResetProfile = function() resetCount = resetCount + 1 end }
 resetButton.scripts.OnClick(resetButton)
 assert(confirmedReset and resetCount == 0, "The persistent reset still asks before modifying settings")
 confirmedReset()
@@ -382,8 +525,10 @@ assert(panel.selected == "group_Arrow" and panel.view.id == "subgroup_Arrow")
 panel:Select("automation")
 panel:SelectView("subgroup_waypoints")
 panel:Select("group_map_minimap")
-assert(panel.selected == "group_map_minimap" and #panel.section.views == 3,
-    "Map and minimap retain their separate category")
+assert(
+    panel.selected == "group_map_minimap" and #panel.section.views == 3,
+    "Map and minimap retain their separate category"
+)
 panel:SelectView("group_minimap")
 panel:Select("automation")
 assert(panel.view.id == "subgroup_waypoints")
@@ -391,21 +536,33 @@ panel:Select("group_map_minimap")
 assert(panel.view.id == "group_minimap")
 panel:Select("appearance")
 assert(panel.view.id == "theme" and testButton:IsShown())
-assert(testButton.point[5] == -8 and testButton.point[4] < resetButton.point[4] - resetButton:GetWidth(),
-    "Placement sits in the heading beside the persistent reset")
+assert(
+    testButton.point[5] == -8 and testButton.point[4] < resetButton.point[4] - resetButton:GetWidth(),
+    "Placement sits in the heading beside the persistent reset"
+)
 panel:SelectView("group_GlobalTextAppearance")
 testButton.scripts.OnClick(testButton)
 assert(launched and testButton:IsShown(), "Placement remains available across Appearance tabs")
 -- Check the same reset button on every category, including the custom release-notes page.
-APR.ReleaseNotesPanel = {Create = function() return {Show = function() end, Hide = function() end} end}
+APR.ReleaseNotesPanel = {
+    Create = function()
+        return { Show = function() end, Hide = function() end }
+    end,
+}
 for _, section in ipairs(panel.sections) do
     panel:Select(section.id)
     for _, view in ipairs(section.views) do
         panel:SelectView(view.id)
         local point, parent, relativePoint, x, y = unpack(resetButton.point)
         assert(resetButton == panel.resetButton and resetButton:IsShown() and resetButton:IsEnabled())
-        assert(point == resetPoint and parent == resetParent and relativePoint == resetRelativePoint
-            and x == resetX and y == resetY, "Reset moves between option pages")
+        assert(
+            point == resetPoint
+                and parent == resetParent
+                and relativePoint == resetRelativePoint
+                and x == resetX
+                and y == resetY,
+            "Reset moves between option pages"
+        )
     end
 end
 print("Options navigation: standalone categories, remembered tabs, persistent reset and contextual actions passed")
@@ -417,13 +574,20 @@ local previewFactory, notified = nil, 0
 local previewGUI = {
     RegisterWidgetType = function(_, _, constructor) previewFactory = constructor end,
     RegisterAsWidget = function(_, widget)
-        function widget:SetWidth(width) self.frame:SetWidth(width); self:OnWidthSet(width) end
+        function widget:SetWidth(width)
+            self.frame:SetWidth(width)
+            self:OnWidthSet(width)
+        end
         function widget:SetHeight(height) self.frame:SetHeight(height) end
         return widget
     end,
-    Create = function() local widget = previewFactory(); widget:OnAcquire(); return widget end,
+    Create = function()
+        local widget = previewFactory()
+        widget:OnAcquire()
+        return widget
+    end,
 }
-local registry = {NotifyChange = function() notified = notified + 1 end}
+local registry = { NotifyChange = function() notified = notified + 1 end }
 local themeLibStub = LibStub
 function LibStub(name, ...)
     if name == "AceGUI-3.0" then return previewGUI end
@@ -435,39 +599,63 @@ APR.settings:createBlizzOptions()
 panel.sections = APR.WorkspaceOptions:Build(APR.settings)
 for _, section in ipairs(panel.sections) do
     section.views = APR.WorkspaceOptions:Views(section)
-    for _, view in ipairs(section.views) do view.app = "APR/Workspace/Options/" .. section.id .. "/" .. view.id end
+    for _, view in ipairs(section.views) do
+        view.app = "APR/Workspace/Options/" .. section.id .. "/" .. view.id
+    end
 end
 panel.selectedViews.appearance = "theme"
 panel:Select("appearance")
-assert(panel.themePreviewActive and panel.themePreview.frame:IsShown() and panel.host.aprRightInset > 200,
-    "The theme preview remains outside the scrolling form with reserved room")
+assert(
+    panel.themePreviewActive and panel.themePreview.frame:IsShown() and panel.host.aprRightInset > 200,
+    "The theme preview remains outside the scrolling form with reserved room"
+)
 local themeArgs = panel.view.options.args
 local canonicalTheme = APR.settings.optionsTable.args.group_Debug.args.subgroup_Enable.args
-assert(not themeArgs.themeApply and not themeArgs.themeDiscard and not themeArgs.themeAccentHex and not themeArgs.themeDefaults)
-assert(themeArgs.themePreviewHint.dialogControl == "APRThemeNotice"
-    and themeArgs.themeCustomizationHeader.order > themeArgs.themePreviewHint.order
-    and themeArgs.themeCustomizationHeader.order < themeArgs.themeAccent.order)
-assert(panel.footer:IsShown() and #panel.footerActions == 2
-    and panel.footerButtons[1].option.func == canonicalTheme.themeDiscard.func
-    and panel.footerButtons[2].option.func == canonicalTheme.themeApply.func,
-    "Apply/Cancel are fixed outside the scrolling form and retain their authoritative callbacks")
-assert(panel.footer:GetParent() == panel.body and panel.footerButtons[1]:GetParent() == panel.footer
-    and panel.footerButtons[1].point[5] == panel.footerButtons[2].point[5]
-    and panel.footerButtons[1].point[4] < panel.footerButtons[2].point[4],
-    "Cancel and Apply share a footer row, in that order")
+assert(
+    not themeArgs.themeApply
+        and not themeArgs.themeDiscard
+        and not themeArgs.themeAccentHex
+        and not themeArgs.themeDefaults
+)
+assert(
+    themeArgs.themePreviewHint.dialogControl == "APRThemeNotice"
+        and themeArgs.themeCustomizationHeader.order > themeArgs.themePreviewHint.order
+        and themeArgs.themeCustomizationHeader.order < themeArgs.themeAccent.order
+)
+assert(
+    panel.footer:IsShown()
+        and #panel.footerActions == 2
+        and panel.footerButtons[1].option.func == canonicalTheme.themeDiscard.func
+        and panel.footerButtons[2].option.func == canonicalTheme.themeApply.func,
+    "Apply/Cancel are fixed outside the scrolling form and retain their authoritative callbacks"
+)
+assert(
+    panel.footer:GetParent() == panel.body
+        and panel.footerButtons[1]:GetParent() == panel.footer
+        and panel.footerButtons[1].point[5] == panel.footerButtons[2].point[5]
+        and panel.footerButtons[1].point[4] < panel.footerButtons[2].point[4],
+    "Cancel and Apply share a footer row, in that order"
+)
 local formWidth = panel.body:GetWidth() - 24 - panel.host.aprRightInset
 local cancel, apply = panel.footerButtons[1], panel.footerButtons[2]
-assert(math.abs(cancel.point[4] - (formWidth - apply.point[4] - apply:GetWidth())) < 0.001,
-    "The footer buttons are centered together in the settings column")
+assert(
+    math.abs(cancel.point[4] - (formWidth - apply.point[4] - apply:GetWidth())) < 0.001,
+    "The footer buttons are centered together in the settings column"
+)
 assert(not panel.footerButtons[1]:IsEnabled() and not panel.footerButtons[2]:IsEnabled())
-assert(themeArgs.themePreview.hidden() and themeArgs.uiSkin.confirm == false,
-    "The pinned preview is not duplicated and selecting a draft never opens a reload confirmation")
+assert(
+    themeArgs.themePreview.hidden() and themeArgs.uiSkin.confirm == false,
+    "The pinned preview is not duplicated and selecting a draft never opens a reload confirmation"
+)
 themeArgs.uiSkin.set(nil, "violetModern")
 assert(not themeArgs.themeCustomColor)
 themeArgs.themeRadius.set(nil, 12)
-assert(APR.settings.profile.uiTheme == "modern" and not APR.settings.profile.uiThemeCustomization.rounded
-    and panel.themePreview.preview.body.backdrop.edgeSize == 12,
-    "The actual options callbacks update only the preview before Apply")
+assert(
+    APR.settings.profile.uiTheme == "modern"
+        and not APR.settings.profile.uiThemeCustomization.rounded
+        and panel.themePreview.preview.body.backdrop.edgeSize == 12,
+    "The actual options callbacks update only the preview before Apply"
+)
 panel.frame.scripts.OnEvent()
 assert(notified == 1, "Combat transitions refresh the form's Apply disabled state")
 assert(panel.footerButtons[1]:IsEnabled() and panel.footerButtons[2]:IsEnabled())
@@ -476,9 +664,13 @@ assert(not panel.themePreview.frame:IsShown() and panel.host.aprRightInset == 0 
 panel:SelectView("theme")
 assert(panel.themePreview.frame:IsShown() and APR.ThemeCustomization:GetDraft().radius == 12)
 panel.footerButtons[1].scripts.OnClick(panel.footerButtons[1])
-assert(notified == 2 and APR.ThemeCustomization:GetDraft().theme == "modern"
-    and APR.ThemeCustomization:GetDraft().radius == 8 and not panel.footerButtons[2]:IsEnabled(),
-    "The fixed Cancel restores the saved draft, preview and action states")
+assert(
+    notified == 2
+        and APR.ThemeCustomization:GetDraft().theme == "modern"
+        and APR.ThemeCustomization:GetDraft().radius == 8
+        and not panel.footerButtons[2]:IsEnabled(),
+    "The fixed Cancel restores the saved draft, preview and action states"
+)
 themeArgs.themeRadius.set(nil, 12)
 panel.host.callbacks.OnOptionsRefreshed()
 assert(panel.footerButtons[2]:IsEnabled())
@@ -487,15 +679,22 @@ function InCombatLockdown() return true end
 panel:RefreshActions()
 assert(not panel.footerButtons[2]:IsEnabled() and panel.footerButtons[1]:IsEnabled())
 panel.footerButtons[2].scripts.OnClick(panel.footerButtons[2])
-assert(not APR.settings.profile.uiThemeCustomization.radius and notified == 2,
-    "The fixed Apply cannot publish or notify changes during combat")
+assert(
+    not APR.settings.profile.uiThemeCustomization.radius and notified == 2,
+    "The fixed Apply cannot publish or notify changes during combat"
+)
 InCombatLockdown = previousCombat
 panel:RefreshActions()
 panel.footerButtons[2].scripts.OnClick(panel.footerButtons[2])
-assert(APR.settings.profile.uiThemeCustomization.radius == 12 and notified == 3
-    and not panel.footerButtons[2]:IsEnabled(), "The fixed Apply saves the draft and updates its enabled state")
+assert(
+    APR.settings.profile.uiThemeCustomization.radius == 12 and notified == 3 and not panel.footerButtons[2]:IsEnabled(),
+    "The fixed Apply saves the draft and updates its enabled state"
+)
 themeArgs.themeRadius.set(nil, 5)
 panel.frame.scripts.OnHide()
-assert(not panel.themePreview.frame:IsShown() and APR.ThemeCustomization:GetDraft().theme == "customModern"
-    and APR.ThemeCustomization:GetDraft().radius == 12,
-    "Closing Options discards unapplied drafts and stops preview refreshes")
+assert(
+    not panel.themePreview.frame:IsShown()
+        and APR.ThemeCustomization:GetDraft().theme == "customModern"
+        and APR.ThemeCustomization:GetDraft().radius == 12,
+    "Closing Options discards unapplied drafts and stops preview refreshes"
+)

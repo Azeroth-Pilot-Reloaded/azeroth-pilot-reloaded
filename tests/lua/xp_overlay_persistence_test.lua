@@ -1,6 +1,8 @@
 local function noop() end
 local L = setmetatable({ USE_ITEM = "Use %s" }, { __index = function(_, key) return key end })
-function LibStub() return setmetatable({ GetLocale = function() return L end }, { __index = function() return noop end }) end
+function LibStub()
+    return setmetatable({ GetLocale = function() return L end }, { __index = function() return noop end })
+end
 
 APR = { RegisterFontString = noop, Debug = noop, version = "new", PlayerID = "player", interfaceVersion = 120105 }
 function APR:NewModule() return {} end
@@ -30,7 +32,8 @@ C_PvP = {
     IsWarModeActive = function() return active end,
     IsWarModeDesired = function() return desired end,
     CanToggleWarMode = function(toggle)
-        assert(toggle == true); return canToggle
+        assert(toggle == true)
+        return canToggle
     end,
     CanToggleWarModeInArea = function() return canToggleInArea end,
 }
@@ -65,26 +68,37 @@ local methods = {}
 function methods:SetScript(event, callback) self.scripts[event] = callback end
 
 function methods:SetAttribute(key, value)
-    assert(not combat); self.attributes[key] = value
+    assert(not combat)
+    self.attributes[key] = value
 end
 
 function methods:Show()
-    assert(not combat); self.shown = true
+    assert(not combat)
+    self.shown = true
 end
 
 function methods:Hide()
-    assert(not combat); self.shown = false
+    assert(not combat)
+    self.shown = false
 end
 
-function methods:SetShown(value) if value then self:Show() else self:Hide() end end
+function methods:SetShown(value)
+    if value then
+        self:Show()
+    else
+        self:Hide()
+    end
+end
 
 function methods:SetText(value) self.text = value end
 
 function methods:IsShown() return self.shown and (not rawget(self, "parent") or self.parent:IsShown()) end
 
 local function object(parent)
-    return setmetatable({ parent = parent, shown = true, scripts = {}, attributes = {} },
-        { __index = function(_, key) return methods[key] or noop end })
+    return setmetatable(
+        { parent = parent, shown = true, scripts = {}, attributes = {} },
+        { __index = function(_, key) return methods[key] or noop end }
+    )
 end
 function methods:CreateTexture() return object(self) end
 
@@ -115,7 +129,9 @@ end
 UIParent = object()
 C_Timer = { After = function(_, callback) timers[#timers + 1] = callback end }
 local function drain()
-    while #timers > 0 do table.remove(timers, 1)() end
+    while #timers > 0 do
+        table.remove(timers, 1)()
+    end
 end
 local function visibleRows()
     local count = 0
@@ -124,7 +140,8 @@ local function visibleRows()
     end
     return count
 end
-APR.settings = { profile = { enableAddon = true, xpBuffFrame = {}, currentStepbackgroundColorAlpha = { 0, 0, 0, 0.5 } } }
+APR.settings =
+    { profile = { enableAddon = true, xpBuffFrame = {}, currentStepbackgroundColorAlpha = { 0, 0, 0, 0.5 } } }
 dofile("APR-Core/utils/UIUtils.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/features/player/XPBuffOverlay.lua")
@@ -133,8 +150,10 @@ assert(visibleRows() == 0, "XP reminders require an active route")
 APR.ActiveRoute = "route"
 APR.XPBuffOverlay:Refresh()
 assert(visibleRows() == 3, "With a route: War Mode and two missing item buffs")
-assert(APRXPBuffOverlay.Header.template == "ObjectiveTrackerContainerHeaderTemplate",
-    "The overlay uses the same header as the other APR windows")
+assert(
+    APRXPBuffOverlay.Header.template == "ObjectiveTrackerContainerHeaderTemplate",
+    "The overlay uses the same header as the other APR windows"
+)
 APRXPBuffOverlay.Header.MinimizeButton.scripts.OnClick()
 assert(APR.settings.profile.showXPBuffOverlay ~= false and visibleRows() == 0)
 assert(APR.settings.profile.xpBuffOverlayDismissed.route == "route")
@@ -147,8 +166,10 @@ assert(visibleRows() == 0, "War Mode remains unavailable in the new area")
 canToggleInArea = true
 frames[1].scripts.OnEvent(frames[1], "ZONE_CHANGED_NEW_AREA")
 drain()
-assert(visibleRows() == 3 and not APR.settings.profile.xpBuffOverlayDismissed,
-    "The overlay reopens when War Mode becomes activatable")
+assert(
+    visibleRows() == 3 and not APR.settings.profile.xpBuffOverlayDismissed,
+    "The overlay reopens when War Mode becomes activatable"
+)
 APRXPBuffOverlay.Header.MinimizeButton.scripts.OnClick()
 APR.XPBuffOverlay:Refresh()
 assert(visibleRows() == 0, "A close in an actionable area does not reopen immediately")
@@ -174,8 +195,10 @@ local function DismissBonus(sourceName)
     error("Missing visible reminder: " .. sourceName)
 end
 DismissBonus("WarMode")
-assert(visibleRows() == 2 and not APR.XPBuffOverlay:IsBonusEnabled("WarMode"),
-    "War Mode can be ignored without hiding usable item bonuses")
+assert(
+    visibleRows() == 2 and not APR.XPBuffOverlay:IsBonusEnabled("WarMode"),
+    "War Mode can be ignored without hiding usable item bonuses"
+)
 APRXPBuffOverlay.Header.MinimizeButton.scripts.OnClick()
 canToggle = false
 APR.XPBuffOverlay:Refresh()
@@ -193,7 +216,9 @@ assert(visibleRows() == 1, "Changing to the alternate hat cannot revive a dismis
 DismissBonus("MysteriousWisdom")
 assert(visibleRows() == 0 and not APRXPBuffOverlay:IsShown(), "No empty panel when all reminders are hidden")
 local restoredPreferences = {}
-for name, hidden in pairs(APR.settings.profile.hiddenXPBonuses) do restoredPreferences[name] = hidden end
+for name, hidden in pairs(APR.settings.profile.hiddenXPBonuses) do
+    restoredPreferences[name] = hidden
+end
 APR.settings.profile.hiddenXPBonuses = restoredPreferences
 APR.XPBuffOverlay:Refresh()
 assert(visibleRows() == 0, "Restoring persisted preferences keeps unwanted bonuses hidden")
@@ -228,7 +253,9 @@ combat = false
 frames[1].scripts.OnEvent(frames[1], "PLAYER_REGEN_ENABLED")
 drain()
 assert(visibleRows() == 1, "Leaving combat refreshes from current state")
-for _ = 1, 100 do APR.XPBuffOverlay:QueueRefresh() end
+for _ = 1, 100 do
+    APR.XPBuffOverlay:QueueRefresh()
+end
 assert(#timers == 1, "Aura/bag bursts coalesce")
 drain()
 APR.settings.profile.showXPBuffOverlay = false
@@ -247,8 +274,10 @@ APR.XPBuffOverlay:Refresh()
 assert(visibleRows() == 1)
 combat = true
 DismissBonus("MysteriousWisdom")
-assert(visibleRows() == 1 and not APR.XPBuffOverlay:IsBonusEnabled("MysteriousWisdom"),
-    "Dismissing during combat saves the preference without touching protected layout")
+assert(
+    visibleRows() == 1 and not APR.XPBuffOverlay:IsBonusEnabled("MysteriousWisdom"),
+    "Dismissing during combat saves the preference without touching protected layout"
+)
 combat = false
 frames[1].scripts.OnEvent(frames[1], "PLAYER_REGEN_ENABLED")
 drain()
@@ -258,15 +287,21 @@ assert(visibleRows() == 0, "Combat-end refresh applies the saved dismissal")
 level, bags, auras = 10, { [6888] = 1 }, {}
 APR.interfaceVersion = 120105
 APR.XPBuffOverlay:Refresh()
-assert(visibleRows() == 0 and not APR.XPBuffOverlay:GetBonusOptions().ForeverFood,
-    "Herb Baked Egg is not an XP bonus on Retail")
+assert(
+    visibleRows() == 0 and not APR.XPBuffOverlay:GetBonusOptions().ForeverFood,
+    "Herb Baked Egg is not an XP bonus on Retail"
+)
 APR.interfaceVersion = 11508
-assert(#APR:GetLevelConsumableReminders() == 0 and not APR.XPBuffOverlay:GetBonusOptions().ForeverFood,
-    "Classic food does not grant the Forever XP bonus")
+assert(
+    #APR:GetLevelConsumableReminders() == 0 and not APR.XPBuffOverlay:GetBonusOptions().ForeverFood,
+    "Classic food does not grant the Forever XP bonus"
+)
 APR.interfaceVersion = 16001
 APR.XPBuffOverlay:Refresh()
-assert(visibleRows() == 1 and APR.XPBuffOverlay:GetBonusOptions().ForeverFood,
-    "Forever exposes the food bonus in reminders and selection options")
+assert(
+    visibleRows() == 1 and APR.XPBuffOverlay:GetBonusOptions().ForeverFood,
+    "Forever exposes the food bonus in reminders and selection options"
+)
 local foodRow
 for _, row in ipairs(frames) do
     if rawget(row, "bonusSource") == "ForeverFood" then foodRow = row end
@@ -292,13 +327,13 @@ unusable, bags = {}, {}
 APR.XPBuffOverlay:Refresh()
 assert(visibleRows() == 0, "Absent food is not suggested")
 APR.LevelRequirementProfiles.ForeverFoodTest = {
-    bonuses = { "ForeverFood" }, levels = { [0] = 20, [5] = 19 },
+    bonuses = { "ForeverFood" },
+    levels = { [0] = 20, [5] = 19 },
 }
 auras[1243969] = true
 assert(APR:GetLevelProfileTarget("ForeverFoodTest", true) == 19)
 APR.interfaceVersion = 120105
-assert(APR:GetLevelProfileTarget("ForeverFoodTest", true) == 20,
-    "A Forever-only bonus cannot affect a Retail profile")
+assert(APR:GetLevelProfileTarget("ForeverFoodTest", true) == 20, "A Forever-only bonus cannot affect a Retail profile")
 APR.LevelRequirementProfiles.ForeverFoodTest = nil
 APR.levelProfileCache.ForeverFoodTest = nil
 APR.levelProfileCacheLevels.ForeverFoodTest = nil
@@ -307,7 +342,8 @@ APR.levelProfileCacheLevels.ForeverFoodTest = nil
 do
     local pvp = C_PvP
     APR.LevelRequirementProfiles.TestWarMode = {
-        bonuses = { "WarMode" }, levels = { [0] = 40, [15] = 39 },
+        bonuses = { "WarMode" },
+        levels = { [0] = 40, [15] = 39 },
     }
     level, bags, auras, desired, active = 30, {}, {}, false, false
     APR.settings.profile.hiddenXPBonuses.WarMode = nil
@@ -318,17 +354,23 @@ do
         C_PvP = pvp
         APR.XPBuffOverlay:Refresh()
         assert(visibleRows() == (retail and 1 or 0), "War Mode reminders belong only to Retail")
-        assert((APR.XPBuffOverlay:GetBonusOptions().WarMode ~= nil) == retail,
-            "War Mode selection belongs only to Retail")
+        assert(
+            (APR.XPBuffOverlay:GetBonusOptions().WarMode ~= nil) == retail,
+            "War Mode selection belongs only to Retail"
+        )
         active = true
-        assert(APR:GetLevelProfileTarget("TestWarMode", true) == (retail and 39 or 40),
-            "Only active Retail War Mode contributes XP")
+        assert(
+            APR:GetLevelProfileTarget("TestWarMode", true) == (retail and 39 or 40),
+            "Only active Retail War Mode contributes XP"
+        )
         active = false
         if not retail then
             local function unsupported() error("War Mode API called on an unsupported client") end
             C_PvP = {
-                IsWarModeActive = unsupported, IsWarModeDesired = unsupported,
-                CanToggleWarMode = unsupported, CanToggleWarModeInArea = unsupported,
+                IsWarModeActive = unsupported,
+                IsWarModeDesired = unsupported,
+                CanToggleWarMode = unsupported,
+                CanToggleWarModeInArea = unsupported,
             }
             APR.XPBuffOverlay:Refresh()
             APR.XPBuffOverlay:HideOverlay()
@@ -341,8 +383,10 @@ do
     APR.interfaceVersion = 120105
     APR.settings.profile.xpBuffOverlayDismissed = nil
     APR.XPBuffOverlay:Refresh()
-    assert(visibleRows() == 0 and APR:GetLevelProfileTarget("TestWarMode", true) == 40,
-        "Missing PvP APIs remain safe on Retail")
+    assert(
+        visibleRows() == 0 and APR:GetLevelProfileTarget("TestWarMode", true) == 40,
+        "Missing PvP APIs remain safe on Retail"
+    )
     C_PvP = pvp
     APR.LevelRequirementProfiles.TestWarMode = nil
     APR.levelProfileCache.TestWarMode, APR.levelProfileCacheLevels.TestWarMode = nil, nil
@@ -352,24 +396,30 @@ end
 do
     APR.interfaceVersion, level, bags, auras, desired = 16001, 30, { [211527] = 1 }, {}, false
     APR.LevelRequirementProfiles.TestSleepingBag = {
-        bonuses = { "ForeverSleepingBag" }, levels = { [0] = 40, [1] = 39, [2] = 38, [3] = 37 },
+        bonuses = { "ForeverSleepingBag" },
+        levels = { [0] = 40, [1] = 39, [2] = 38, [3] = 37 },
     }
     APR.XPBuffOverlay:Refresh()
-    assert(visibleRows() == 1 and APR.XPBuffOverlay:GetBonusOptions().ForeverSleepingBag,
-        "Forever suggests an owned Sleeping Bag without its buff")
-    assert(APR:GetLevelProfileTarget("TestSleepingBag", true) == 40,
-        "Owning the bag does not permanently grant XP")
+    assert(
+        visibleRows() == 1 and APR.XPBuffOverlay:GetBonusOptions().ForeverSleepingBag,
+        "Forever suggests an owned Sleeping Bag without its buff"
+    )
+    assert(APR:GetLevelProfileTarget("TestSleepingBag", true) == 40, "Owning the bag does not permanently grant XP")
     for stacks = 1, 3 do
         auras[429959] = { applications = stacks }
         APR.XPBuffOverlay:Refresh()
         assert(visibleRows() == 0, "The active Sleeping Bag buff suppresses its reminder")
-        assert(APR:GetLevelProfileTarget("TestSleepingBag", true) == 40 - stacks,
-            "Each active stack contributes one percent XP")
+        assert(
+            APR:GetLevelProfileTarget("TestSleepingBag", true) == 40 - stacks,
+            "Each active stack contributes one percent XP"
+        )
     end
     auras = {}
     APR.XPBuffOverlay:Refresh()
-    assert(visibleRows() == 1 and APR:GetLevelProfileTarget("TestSleepingBag", true) == 40,
-        "Buff expiry restores the reminder and removes its XP contribution")
+    assert(
+        visibleRows() == 1 and APR:GetLevelProfileTarget("TestSleepingBag", true) == 40,
+        "Buff expiry restores the reminder and removes its XP contribution"
+    )
     DismissBonus("ForeverSleepingBag")
     assert(visibleRows() == 0 and not APR.XPBuffOverlay:IsBonusEnabled("ForeverSleepingBag"))
     APR.XPBuffOverlay:SetBonusEnabled("ForeverSleepingBag", true)
@@ -384,8 +434,10 @@ do
     for _, version in ipairs({ 120105, 11508 }) do
         APR.interfaceVersion = version
         APR.XPBuffOverlay:Refresh()
-        assert(visibleRows() == 0 and not APR.XPBuffOverlay:GetBonusOptions().ForeverSleepingBag,
-            "The Forever bonus is not offered on other clients")
+        assert(
+            visibleRows() == 0 and not APR.XPBuffOverlay:GetBonusOptions().ForeverSleepingBag,
+            "The Forever bonus is not offered on other clients"
+        )
         assert(APR:GetLevelProfileTarget("TestSleepingBag", true) == 40)
     end
     APR.LevelRequirementProfiles.TestSleepingBag = nil
@@ -398,7 +450,7 @@ APR.interfaceVersion, level = nil, 87
 
 -- A synthetic bonus isolates event/layout costs from the maintained catalogue.
 local previousSources = APR.LevelBonusSources
-APR.LevelBonusSources = { TestPotion = { items = {7001}, auras = {7002} } }
+APR.LevelBonusSources = { TestPotion = { items = { 7001 }, auras = { 7002 } } }
 APR.interfaceVersion, level, active, desired, pet = 120105, 20, true, true, false
 APR.settings.profile.showXPBuffOverlay, APR.settings.profile.enableAddon = true, true
 APR.settings.profile.xpBuffOverlayDismissed, APR.settings.profile.hiddenXPBonuses = nil, {}
@@ -406,39 +458,57 @@ APR.ActiveRoute, auras, bags = "synthetic", {}, { [7001] = 1 }
 APR.XPBuffOverlay:Refresh()
 assert(visibleRows() == 1)
 local writes, savedMethods = 0, {}
-for _, name in ipairs({"Show", "Hide", "SetText", "SetPoint", "ClearAllPoints", "SetTexture", "SetHeight"}) do
+for _, name in ipairs({ "Show", "Hide", "SetText", "SetPoint", "ClearAllPoints", "SetTexture", "SetHeight" }) do
     local method = methods[name] or noop
     savedMethods[name] = methods[name]
-    methods[name] = function(self, ...) writes = writes + 1; return method(self, ...) end
+    methods[name] = function(self, ...)
+        writes = writes + 1
+        return method(self, ...)
+    end
 end
-for _ = 1, 100 do APR.XPBuffOverlay:Refresh() end
+for _ = 1, 100 do
+    APR.XPBuffOverlay:Refresh()
+end
 assert(writes == 0, "100 identical XP refreshes cause no visibility, anchor, label, icon or height writes")
-for name, method in pairs(savedMethods) do methods[name] = method end
+for name, method in pairs(savedMethods) do
+    methods[name] = method
+end
 -- Restore methods which were originally supplied by the fixture's fallback.
-for _, name in ipairs({"SetPoint", "ClearAllPoints", "SetTexture", "SetHeight"}) do methods[name] = nil end
+for _, name in ipairs({ "SetPoint", "ClearAllPoints", "SetTexture", "SetHeight" }) do
+    methods[name] = nil
+end
 local listener = frames[1]
-for _ = 1, 1000 do listener.scripts.OnEvent(listener, "GET_ITEM_INFO_RECEIVED", 8001) end
+for _ = 1, 1000 do
+    listener.scripts.OnEvent(listener, "GET_ITEM_INFO_RECEIVED", 8001)
+end
 assert(#timers == 0, "Unrelated item-cache traffic cannot wake the XP overlay")
 listener.scripts.OnEvent(listener, "GET_ITEM_INFO_RECEIVED", 7001)
 assert(#timers == 1, "A tracked item's loaded label still requests a refresh")
 drain()
 combat = true
-for _ = 1, 1000 do APR.XPBuffOverlay:QueueRefresh() end
+for _ = 1, 1000 do
+    APR.XPBuffOverlay:QueueRefresh()
+end
 assert(#timers == 0, "Combat creates no timers for protected XP layout work")
 combat = false
 APR.settings.profile.enableAddon = false
 APR.XPBuffOverlay:QueueRefresh()
 assert(#timers == 1, "Disabling a visible panel schedules its final hide")
 drain()
-for _ = 1, 1000 do APR.XPBuffOverlay:QueueRefresh() end
+for _ = 1, 1000 do
+    APR.XPBuffOverlay:QueueRefresh()
+end
 assert(#timers == 0 and visibleRows() == 0, "A disabled hidden overlay stays dormant under event bursts")
 APR.settings.profile.enableAddon, APR.ActiveRoute = true, nil
-for _ = 1, 1000 do APR.XPBuffOverlay:QueueRefresh() end
+for _ = 1, 1000 do
+    APR.XPBuffOverlay:QueueRefresh()
+end
 assert(#timers == 0, "No active route means no background XP refresh work")
 APR.LevelBonusSources, APR.interfaceVersion, level, active, desired, bags = previousSources, nil, 87, false, false, {}
 
 -- A scenario's runtime navigation remains shared with the arrow, not the definition.
-APR.RouteQuestStepList = { route = { label = "Route", steps = { { DoScenario = { mapID = 1 }, Coord = { x = 1 } }, {} } } }
+APR.RouteQuestStepList =
+    { route = { label = "Route", steps = { { DoScenario = { mapID = 1 }, Coord = { x = 1 } }, {} } } }
 APR.ActiveRoute = "route"
 function APR:GetRouteSteps(key) return self.RouteQuestStepList[key].steps end
 
@@ -464,8 +534,8 @@ APRData = {
     player = {
         route = 2,
         ["route-RawTotalSteps"] = 2,
-        ["route-ParallelStepsState"] = { groups = { [1] = { activationOrder = 1 } } }
-    }
+        ["route-ParallelStepsState"] = { groups = { [1] = { activationOrder = 1 } } },
+    },
 }
 APRCustomPath = { player = { "Route" } }
 APRZoneCompleted = { player = {} }
@@ -490,4 +560,5 @@ APR:CheckCurrentRouteUpToDate("route")
 assert(APRData.player.route == nil, "A real definition change still invalidates outdated indexes")
 assert(APRData.player["route-ParallelStepsState"] == nil)
 print(
-"PASS: accent search, route-scoped XP overlay, conditional reopening, persistent bonus dismissal, Forever food, aura variants, secure buttons, combat deferral and reconnect persistence")
+    "PASS: accent search, route-scoped XP overlay, conditional reopening, persistent bonus dismissal, Forever food, aura variants, secure buttons, combat deferral and reconnect persistence"
+)
