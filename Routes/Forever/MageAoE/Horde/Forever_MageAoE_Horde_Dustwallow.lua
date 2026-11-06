@@ -7,7 +7,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
     mapID = 1413,
-    conditions = { MinLevel = 36, Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Troll }, Class = APR.Classes.Mage, Faction = "Horde" },
+    conditions = { MinLevel = 36, Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Skyborne, APR.RACES.Troll }, Class = APR.Classes.Mage, Faction = "Horde" },
     parallelSteps = {
         {
             repeatable = true,

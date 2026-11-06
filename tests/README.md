@@ -98,12 +98,19 @@ priorities describe the authored fast path, not measured completion times.
 and class advice, live warnings and confirmation, strict factions/starters/Mage
 AoE, nested predicates, localized label fallbacks and unchanged step filters.
 `APR.PREFAB_TYPES.StartingZone` identifies all starters, including specialized
-variants and hidden internal chapters, and retains hard character filters.
+variants and hidden internal chapters. Forever alone can waive their race entry
+filter when the declaration proves one matching faction; class/spec, quest and
+level gates remain strict. Missing, neutral or ambiguous factions retain race.
 `starting_zone_prefab_scope_test.lua` checks that the default Forever starting
 preset only queues ordinary routes, while AoE starts remain available through
 their explicit leveling scope and hidden chapters are never queued automatically.
 Presets and automatic suggestions retain the authored character recommendations
-while manual selection can waive them.
+apart from that starter exception, while manual non-starter selection can waive them.
+`forever_starting_races_test.lua` checks the shared entry projection, nested
+faction proof and negations, unchanged action/parallel filters and Retail policy,
+manual choice, map adoption, natural fallback, old completion receipts, complete
+Leveling/Speedrun/dungeon branches, explicit AoE scope, reload, prerequisites and
+atomic refusal after a class/faction change. Every guide in this fixture is invented.
 
 `leveling_prefab_test.lua` drives the real Leveling button and stale popup
 callbacks with synthetic characters and routes. It covers fractional/open

@@ -911,6 +911,15 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
     nextRoute = {
         "Forever-Alliance-Loch-Modan-Human",
         { route = "Forever-Alliance-Dungeons-Loch-Modan-Human", conditions = { MinLevel = 11, Faction = "Alliance", Race = APR.RACES.Human, SkipForLvl = 14 } },
+        -- Adopted same-faction starts continue through compatible authored chapters.
+        "Forever-Alliance-Elwynn-Forest",
+        "Forever-Alliance-Loch-Modan-Hunter",
+        "Forever-Alliance-Darkshore",
+        "Forever-Alliance-Westfall",
+        { route = "Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome", conditions = { MinLevel = 11, Faction = "Alliance", SkipForLvl = 13 } },
+        { route = "Forever-Alliance-Dungeons-Loch-Modan-Hunter", conditions = { MinLevel = 11, Faction = "Alliance", SkipForLvl = 14 } },
+        { route = "Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf", conditions = { MinLevel = 11, Faction = "Alliance", SkipForLvl = 17 } },
+        { route = "Forever-Alliance-Dungeons-Westfall", conditions = { MinLevel = 13, Faction = "Alliance", SkipForLvl = 16 } },
     },
     prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 1 }, [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1, conditions = { SkipForLvl = 11 } }, [APR.PREFAB_TYPES.StartingZone] = 1 },
     parallelSteps = {

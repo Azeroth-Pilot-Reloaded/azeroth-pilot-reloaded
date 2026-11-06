@@ -14,6 +14,8 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         { route = "Forever-Horde-Dungeons-Barrens-12-16", conditions = { MinLevel = 12, Faction = "Horde", Race = APR.RACES.Tauren, SkipForLvl = 17 } },
         { route = "Forever-Shared-Dungeons-Hall-of-Thanes", conditions = { MinLevel = 13, Faction = "Horde", Race = APR.RACES.Tauren, SkipForLvl = 19 } },
         { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, Faction = "Horde", Race = APR.RACES.Tauren, SkipForLvl = 19 } },
+        -- Adopted same-faction starts continue through compatible authored chapters.
+        { route = "Forever-Horde-Dungeons-Barrens-12-16", conditions = { MinLevel = 12, Faction = "Horde", SkipForLvl = 17 } },
     },
     prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 1, conditions = { Faction = "Horde" } }, [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1, conditions = { SkipForLvl = 12 } }, [APR.PREFAB_TYPES.StartingZone] = 1 },
     parallelSteps = {

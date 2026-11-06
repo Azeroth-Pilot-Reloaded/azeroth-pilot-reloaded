@@ -9,7 +9,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-The-Barrens"] = {
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
     mapID = 1413,
-    conditions = { MinLevel = 12, Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Troll }, Class = APR.Classes.Mage, Faction = "Horde" },
+    conditions = { MinLevel = 12, Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Skyborne, APR.RACES.Troll }, Class = APR.Classes.Mage, Faction = "Horde" },
     nextRoute = {
         "Forever-MageAoE-Horde-Stonetalon-Barrens",
         { route = "Forever-Shared-Dungeons-Hall-of-Thanes", conditions = { MinLevel = 13, Faction = "Horde", Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Troll }, Class = APR.Classes.Mage, SkipForLvl = 19 } },
