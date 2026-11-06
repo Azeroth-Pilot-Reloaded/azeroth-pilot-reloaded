@@ -17,7 +17,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         { route = "Forever-Shared-Dungeons-Hall-of-Thanes", conditions = { MinLevel = 13, Faction = "Horde", Race = APR.RACES.Scourge, SkipForLvl = 19 } },
         { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, Faction = "Horde", Race = APR.RACES.Scourge, SkipForLvl = 19 } },
     },
-    prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 1, conditions = { Faction = "Horde" } }, [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1 }, [APR.PREFAB_TYPES.StartingZone] = 1 },
+    prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 1, conditions = { Faction = "Horde" } }, [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1, conditions = { SkipForLvl = 12 } }, [APR.PREFAB_TYPES.StartingZone] = 1 },
     parallelSteps = {
         {
             conditions = { EquippedItemStat = { { slot = 18, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 18, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 2.9, precision = 1, allowMissing = true } }, ItemCount = { itemID = 3131, count = 1 }, EquippedItem = { slot = 18, itemID = 3131, invert = true }, Class = "ROGUE", MinLevel = 3 },
@@ -6494,8 +6494,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         { route = "Forever-Shared-Dungeons-Hall-of-Thanes", conditions = { MinLevel = 13, Race = { APR.RACES.Orc, APR.RACES.Troll }, Class = { APR.Classes.Warrior, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Mage, APR.Classes.Warlock }, SkipForLvl = 19 } },
         { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, Race = { APR.RACES.Orc, APR.RACES.Troll }, Class = { APR.Classes.Warrior, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Mage, APR.Classes.Warlock }, SkipForLvl = 19 } },
     },
-    prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 2, conditions = { Faction = "Horde" } } },
-    -- prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 2 }, [APR.PREFAB_TYPES.Speedrun] = { index = 2 } },
+    prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 2, conditions = { Faction = "Horde" } }, [APR.PREFAB_TYPES.Speedrun] = { index = 2 } },
     parallelSteps = {
         {
             conditions = { HasSpell = 201, EquippedItemStat = { { slot = 16, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 6.8, precision = 1, allowMissing = true } }, DontHaveSpell = 201, ItemCount = { itemID = 851, count = 1 }, EquippedItem = { slot = 16, itemID = 851, invert = true }, Class = "ROGUE", MinLevel = 10 },

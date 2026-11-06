@@ -10,6 +10,7 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
     mapID = 1449,
     conditions = { MinLevel = 54, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Felwood-Winterspring" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 31 } },
     parallelSteps = {
         {
             conditions = { ItemCount = { count = 1, itemID = 247840, operator = ">=" }, Skill = { rank = 15, operator = "<", skillID = 186 }, AnyOf = { { Skill = { rank = 1, operator = ">=", skillID = 186 } }, { SkipForPrimaryProfessions = 2 } } },

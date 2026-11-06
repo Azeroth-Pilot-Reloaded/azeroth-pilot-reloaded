@@ -10,6 +10,7 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
     mapID = 1440,
     conditions = { MinLevel = 29, Class = { APR.Classes.Druid, APR.Classes.Mage, APR.Classes.Paladin, APR.Classes.Priest, APR.Classes.Rogue, APR.Classes.Shaman, APR.Classes.Warlock, APR.Classes.Warrior }, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Duskwood" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 12 } },
     parallelSteps = {
         {
             repeatable = true,
@@ -1027,6 +1028,7 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Alliance", Race = { APR.RACES.Dwarf, APR.RACES.Human, APR.RACES.NightElf, APR.RACES.Skyborne }, Class = APR.Classes.Hunter, SkipForLvl = 26 } },
         { route = "Forever-Shared-Dungeons-Deadmines", conditions = { MinLevel = 18, Faction = "Alliance", Race = { APR.RACES.Dwarf, APR.RACES.Human, APR.RACES.NightElf, APR.RACES.Skyborne }, Class = APR.Classes.Hunter, SkipForLvl = 24 } },
     },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 6 } },
     parallelSteps = {
         {
             repeatable = true,

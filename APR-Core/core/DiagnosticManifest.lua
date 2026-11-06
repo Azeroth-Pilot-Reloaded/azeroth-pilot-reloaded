@@ -4,7 +4,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/config/Config.lua"] = {instrumented = 210, diagnosticHelpers = 0},
     ["APR-Core/config/Config_GroupFinder.lua"] = {instrumented = 21, diagnosticHelpers = 0},
     ["APR-Core/config/Config_Route.lua"] = {instrumented = 16, diagnosticHelpers = 0},
-    ["APR-Core/config/Config_Route_Prefabs.lua"] = {instrumented = 33, diagnosticHelpers = 0},
+    ["APR-Core/config/Config_Route_Prefabs.lua"] = {instrumented = 40, diagnosticHelpers = 0},
     ["APR-Core/config/LevelProfiles.lua"] = {instrumented = 1, diagnosticHelpers = 0},
     ["APR-Core/config/WorkspaceOptions.lua"] = {instrumented = 12, diagnosticHelpers = 0},
     ["APR-Core/core/Commands.lua"] = {instrumented = 6, diagnosticHelpers = 0},

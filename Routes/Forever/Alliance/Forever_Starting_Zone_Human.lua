@@ -15,7 +15,7 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
         { route = "Forever-Shared-Dungeons-Hall-of-Thanes",           conditions = { MinLevel = 13, Race = { APR.RACES.Dwarf, APR.RACES.Gnome }, Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock }, SkipForLvl = 19 } },
         { route = "Forever-Shared-Dungeons-Ragefire-Chasm",           conditions = { MinLevel = 13, Race = { APR.RACES.Dwarf, APR.RACES.Gnome }, Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock }, SkipForLvl = 19 } },
     },
-    -- prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 9 }, [APR.PREFAB_TYPES.Speedrun] = { index = 9 } },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 2 } },
     parallelSteps = {
         {
             repeatable = true,
@@ -912,7 +912,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         "Forever-Alliance-Loch-Modan-Human",
         { route = "Forever-Alliance-Dungeons-Loch-Modan-Human", conditions = { MinLevel = 11, Faction = "Alliance", Race = APR.RACES.Human, SkipForLvl = 14 } },
     },
-    prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 1 }, [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1 }, [APR.PREFAB_TYPES.StartingZone] = 1 },
+    prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 1 }, [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1, conditions = { SkipForLvl = 11 } }, [APR.PREFAB_TYPES.StartingZone] = 1 },
     parallelSteps = {
         {
             conditions = { EquippedItem = { itemID = 2139, invert = true, slot = 16 }, Class = "ROGUE", EquippedItemStat = { operator = "<", slot = 16, value = 1.25, precision = 2, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", allowMissing = true }, ItemCount = { itemID = 2139, count = 1 }, HasSpell = 1180 },

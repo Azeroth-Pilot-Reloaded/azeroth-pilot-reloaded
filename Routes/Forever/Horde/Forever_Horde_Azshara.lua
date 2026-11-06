@@ -10,6 +10,7 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
     mapID = 1447,
     conditions = { MinLevel = 52, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Felwood" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 29 } },
     parallelSteps = {
         {
             repeatable = true,

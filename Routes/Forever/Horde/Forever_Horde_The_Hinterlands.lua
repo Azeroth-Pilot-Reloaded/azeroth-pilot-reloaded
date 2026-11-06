@@ -10,6 +10,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
     mapID = 1425,
     conditions = { MinLevel = 48, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Feralas-Second-Visit" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 25 } },
     parallelSteps = {
         {
             repeatable = true,

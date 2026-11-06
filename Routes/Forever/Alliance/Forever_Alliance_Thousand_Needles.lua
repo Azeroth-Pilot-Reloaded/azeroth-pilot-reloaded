@@ -10,6 +10,7 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
     mapID = 1441,
     conditions = { MinLevel = 33, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Stranglethorn-Vale-First-Visit" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 15 } },
     parallelSteps = {
         {
             repeatable = true,

@@ -10,6 +10,7 @@ APR.RouteQuestStepList["Forever-Alliance-Blasted-Lands"] = {
     mapID = 1419,
     conditions = { MinLevel = 51, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Western-Plaguelands" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 30 } },
     parallelSteps = {
         {
             repeatable = true,

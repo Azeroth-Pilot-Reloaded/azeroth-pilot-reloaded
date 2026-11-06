@@ -10,6 +10,7 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
     mapID = 1434,
     conditions = { MinLevel = 35, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Dustwallow-Marsh" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 13 } },
     parallelSteps = {
         {
             repeatable = true,
@@ -1922,6 +1923,7 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Second-Visit"] = {
     mapID = 1434,
     conditions = { MinLevel = 40, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Swamp-of-Sorrows-First-Visit" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 17 } },
     parallelSteps = {
         {
             repeatable = true,
@@ -2710,6 +2712,7 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Third-Visit"] = {
     mapID = 1434,
     conditions = { MinLevel = 44, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Swamp-of-Sorrows-Second-Visit" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 22 } },
     parallelSteps = {
         {
             repeatable = true,

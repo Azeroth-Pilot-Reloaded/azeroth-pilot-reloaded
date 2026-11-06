@@ -15,7 +15,7 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Alliance", Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock, APR.Classes.Druid }, SkipForLvl = 26 } },
         { route = "Forever-Shared-Dungeons-Deadmines", conditions = { MinLevel = 18, Faction = "Alliance", Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock, APR.Classes.Druid }, SkipForLvl = 24 } },
     },
-    -- prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 18 }, [APR.PREFAB_TYPES.Speedrun] = { index = 18 } },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 6 } },
     parallelSteps = {
         {
             conditions = { EquippedItemStat = { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 10.89, precision = 1, allowMissing = true }, MinLevel = 19, ItemCount = { itemID = 2209, count = 1 }, EquippedItem = { slot = 16, itemID = 2209, invert = true }, Class = "ROGUE" },

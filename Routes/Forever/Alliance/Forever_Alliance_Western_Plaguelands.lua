@@ -10,6 +10,7 @@ APR.RouteQuestStepList["Forever-Alliance-Western-Plaguelands"] = {
     mapID = 1422,
     conditions = { MinLevel = 51, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Felwood" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 31 } },
     parallelSteps = {
         {
             repeatable = true,

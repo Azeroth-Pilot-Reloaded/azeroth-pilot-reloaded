@@ -10,6 +10,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
     mapID = 1445,
     conditions = { MinLevel = 37, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Arathi-Highlands" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 14 } },
     parallelSteps = {
         {
             repeatable = true,

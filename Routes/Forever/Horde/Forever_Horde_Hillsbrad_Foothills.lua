@@ -13,6 +13,7 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
         "Forever-Horde-Southern-Barrens-Stonetalon",
         { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Horde", SkipForLvl = 26 } },
     },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 6 } },
     parallelSteps = {
         {
             conditions = { Class = { "DRUID", "HUNTER", "ROGUE", "SHAMAN" }, MinLevel = 21, ItemCount = { itemID = 4831, count = 1 }, EquippedItem = { itemID = 4831, slot = 7, invert = true }, EquippedItemStat = { slot = 7, stat = "ITEM_MOD_ARMOR_SHORT", operator = "<", value = 76, precision = 1, allowMissing = true } },
@@ -2688,6 +2689,7 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
     mapID = 1424,
     conditions = { MinLevel = 30, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Thousand-Needles-Second-Visit" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 10 } },
     parallelSteps = {
         {
             conditions = { ItemCount = { itemID = 2520, count = 1 }, EquippedItemStat = { { allowMissing = true, slot = 16, value = 7, precision = 1, stat = "QUALITY", operator = "<" }, { allowMissing = true, slot = 16, value = 17.6, precision = 1, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<" } }, Class = "ROGUE", EquippedItem = { invert = true, itemID = 2520, slot = 16 }, Race = { "Orc", "Scourge", "Skyborne", "Troll" }, MinLevel = 31 },

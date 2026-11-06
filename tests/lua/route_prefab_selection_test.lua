@@ -13,7 +13,8 @@ APR.questionDialog = {
 }
 local config = APR.routeconfig
 assert(not config:HasPrefab("all_quests"))
-assert(config:HasPrefab("speedrun") and config:HasPrefab("leveling") and config:HasPrefab("dungeons"))
+assert(not config:HasPrefab("speedrun") and config:HasPrefab("leveling") and config:HasPrefab("dungeons"),
+    "A Leveling offer alone cannot advertise the distinct Speedrun preset")
 config:OpenLevelingPopup()
 assert(#popup == 3 and popup[1].key == APR.EXPANSIONS.Forever)
 assert(popup[2].key == "forever_dungeons" and popup[3].key == "forever_mage_aoe")

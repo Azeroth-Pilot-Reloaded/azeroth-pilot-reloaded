@@ -8,8 +8,9 @@ APR.RouteQuestStepList["Forever-Alliance-Tanaris-First-Visit"] = {
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
     mapID = 1446,
-    conditions = { MinLevel = 43, Class = { APR.Classes.Druid, APR.Classes.Hunter, APR.Classes.Mage, APR.Classes.Paladin, APR.Classes.Priest, APR.Classes.Rogue, APR.Classes.Shaman, APR.Classes.Warrior }, Faction = "Alliance" },
+    conditions = { MinLevel = 43, AnyOf = { { Class = { APR.Classes.Druid, APR.Classes.Hunter, APR.Classes.Mage, APR.Classes.Paladin, APR.Classes.Priest, APR.Classes.Rogue, APR.Classes.Shaman, APR.Classes.Warrior } }, { Class = APR.Classes.Warlock, Race = APR.RACES.Skyborne } }, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Feralas-First-Visit" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 25 } },
     parallelSteps = {
         {
             conditions = { EquippedItemStat = { slot = 1, stat = "QUALITY", operator = ">", value = 1.0, precision = 1, allowMissing = true }, IsQuestOnQuest = 3161, Not = { IsQuestReadyForTurnIn = 3161 }, ItemCount = { itemID = 9978, count = 1 }, EquippedItem = { slot = 1, itemID = 9978, invert = true }, Race = { "Dwarf", "Human", "NightElf", "Skyborne" }, Class = "HUNTER" },
@@ -801,6 +802,7 @@ APR.RouteQuestStepList["Forever-Alliance-Tanaris-Second-Visit"] = {
     mapID = 1446,
     conditions = { MinLevel = 48, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Stranglethorn-Vale-Third-Visit" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 27 } },
     parallelSteps = {
         {
             conditions = { EquippedItemStat = { slot = 1, stat = "QUALITY", operator = ">", value = 1.0, precision = 1, allowMissing = true }, IsQuestOnQuest = 3161, Not = { IsQuestReadyForTurnIn = 3161 }, ItemCount = { itemID = 9978, count = 1 }, EquippedItem = { slot = 1, itemID = 9978, invert = true } },
@@ -2381,6 +2383,7 @@ APR.RouteQuestStepList["Forever-Alliance-Tanaris-Warlock"] = {
     mapID = 1446,
     conditions = { MinLevel = 43, Race = { APR.RACES.Gnome, APR.RACES.Human }, Class = APR.Classes.Warlock, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Feralas-First-Visit" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 25 } },
     parallelSteps = {
         {
             repeatable = true,
