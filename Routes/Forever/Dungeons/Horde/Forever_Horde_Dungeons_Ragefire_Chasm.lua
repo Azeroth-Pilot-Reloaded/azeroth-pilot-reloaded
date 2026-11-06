@@ -341,7 +341,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             _index = 34,
         },
         {
-            BuyMerchant = { { itemID = 3026, quantity = 1, questID = 3281 } },
+            BuyMerchant = { { isSupply = true, itemID = 3026, quantity = 1, questID = 3281 } },
             Coord = { x = -4819.1, y = 2099.05 },
             Class = "HUNTER",
             EquippedItemStat = { { slot = 18, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 18, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 7.4, precision = 1, allowMissing = true } },
@@ -353,7 +353,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             _index = 35,
         },
         {
-            BuyMerchant = { { itemID = 926, quantity = 1, questID = 3281 } },
+            BuyMerchant = { { isSupply = true, itemID = 926, quantity = 1, questID = 3281 } },
             Coord = { x = -4819.1, y = 2099.05 },
             Class = "WARRIOR",
             EquippedItemStat = { { slot = 16, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 15.2, precision = 1, allowMissing = true } },

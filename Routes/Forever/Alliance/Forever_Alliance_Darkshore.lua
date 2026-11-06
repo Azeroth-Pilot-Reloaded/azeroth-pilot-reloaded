@@ -828,7 +828,7 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
             _index = 79,
         },
         {
-            BuyMerchant = { { itemID = 2207, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2207, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.575, 40.348),
             MerchantNPC = 4183,
             RaidIcon = 4183,
@@ -860,7 +860,7 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
             _index = 82,
         },
         {
-            BuyMerchant = { { itemID = 2515, quantity = 1 }, { itemID = 2519, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2515, quantity = 1 }, { isSupply = true, itemID = 2519, quantity = 1 } },
             Coord = { x = 488.69, y = 6564.83 },
             Range = 5,
             RaidIcon = 4182,
@@ -2012,7 +2012,7 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
             _index = 216,
         },
         {
-            BuyMerchant = { { itemID = 3107, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 3107, quantity = 1 } },
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 62.378, 88.671),
             Class = "WARRIOR",
@@ -2429,7 +2429,7 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
             _index = 261,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 4778, questID = 307, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 4778, questID = 307, targetStock = true, optional = true } },
             Fillers = { [963] = { 1 }, [958] = { 1 }, [418] = { 1 }, [416] = { 1 } },
             Note = { "NOT_WISH_RATHER_TRY_BUY_CHEAPER_BETTER" },
             Coord = { x = -3176.16, y = -4669.34 },
@@ -2442,7 +2442,7 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
             _index = 262,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 4777, questID = 307, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 4777, questID = 307, targetStock = true, optional = true } },
             Fillers = { [963] = { 1 }, [958] = { 1 }, [418] = { 1 }, [416] = { 1 } },
             Note = { "NOT_WISH_RATHER_TRY_BUY_CHEAPER_BETTER" },
             Coord = { x = -3176.16, y = -4669.34 },
@@ -3046,7 +3046,7 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
             _index = 328,
         },
         {
-            BuyMerchant = { { itemID = 20744, quantity = 1, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 20744, quantity = 1, targetStock = true, optional = true } },
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "CHECK_HIGH_DPS_WAND_UPGRADES_USE_NOW" },
             Coord = { x = -909.665, y = -4957.82 },
@@ -3059,7 +3059,7 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
             _index = 329,
         },
         {
-            BuyMerchant = { { itemID = 21072, quantity = 20, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 21072, quantity = 20, targetStock = true, optional = true } },
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Note = { "CHECK_HIGH_DPS_WAND_UPGRADES_USE_NOW" },
             Coord = { x = -909.665, y = -4957.82 },
@@ -3072,7 +3072,7 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
             _index = 330,
         },
         {
-            BuyMerchant = { { itemID = 20744, quantity = 1, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 20744, quantity = 1, targetStock = true, optional = true } },
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = -909.665, y = -4957.82 },
             Range = 13,
@@ -3084,7 +3084,7 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
             _index = 331,
         },
         {
-            BuyMerchant = { { itemID = 21072, quantity = 20, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 21072, quantity = 20, targetStock = true, optional = true } },
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Coord = { x = -909.665, y = -4957.82 },
             Range = 13,
@@ -5028,7 +5028,7 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
             _index = 542,
         },
         {
-            BuyMerchant = { { itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = { "MAGE" } } }, { itemID = 1179, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = { "ROGUE", "WARRIOR" } } } },
+            BuyMerchant = { { isSupply = true, itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = { "MAGE" } } }, { isSupply = true, itemID = 1179, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = { "ROGUE", "WARRIOR" } } } },
             Fillers = { [1002] = { 1 } },
             Coord = { x = 531.27, y = 6403.27 },
             Range = 5,
@@ -5047,7 +5047,7 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
             _index = 544,
         },
         {
-            BuyMerchant = { { itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = { "MAGE" } } }, { itemID = 1179, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = { "ROGUE", "WARRIOR" } } } },
+            BuyMerchant = { { isSupply = true, itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = { "MAGE" } } }, { isSupply = true, itemID = 1179, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = { "ROGUE", "WARRIOR" } } } },
             Fillers = { [1002] = { 1 }, [6123] = { 1 } },
             Coord = { x = 531.27, y = 6403.27 },
             Range = 5,
@@ -5147,7 +5147,7 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
             _index = 554,
         },
         {
-            BuyMerchant = { { itemID = 2515, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 10, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 2, operator = "==" } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 18, operator = "==" } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", value = 15, operator = "<=", allowMissing = true } } }, { itemID = 2519, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 10, EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 3, operator = "==" }, AllOf = { { EquippedItemStat = { slot = 0, stat = "LEVEL", value = 15, operator = "<=", allowMissing = true } } } } } },
+            BuyMerchant = { { isSupply = true, itemID = 2515, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 10, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 2, operator = "==" } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 18, operator = "==" } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", value = 15, operator = "<=", allowMissing = true } } }, { isSupply = true, itemID = 2519, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 10, EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 3, operator = "==" }, AllOf = { { EquippedItemStat = { slot = 0, stat = "LEVEL", value = 15, operator = "<=", allowMissing = true } } } } } },
             Fillers = { [1002] = { 1 } },
             Coord = { x = 491.97, y = 6560.47 },
             Range = 5,
@@ -6326,7 +6326,7 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
             _index = 683,
         },
         {
-            BuyMerchant = { { itemID = 3027, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 3027, quantity = 1, targetStock = true } },
             Coord = { x = 2268.76, y = 9770.63 },
             Class = "HUNTER",
             EquippedItemStat = { slot = 18, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 9.2, precision = 1, allowMissing = true },
@@ -6562,7 +6562,7 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
             _index = 710,
         },
         {
-            BuyMerchant = { { itemID = 2515, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 10, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 2, operator = "==" } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 18, operator = "==" } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", value = 15, operator = "<=", allowMissing = true } } }, { itemID = 2519, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 10, EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 3, operator = "==" }, AllOf = { { EquippedItemStat = { slot = 0, stat = "LEVEL", value = 15, operator = "<=", allowMissing = true } } } } } },
+            BuyMerchant = { { isSupply = true, itemID = 2515, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 10, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 2, operator = "==" } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 18, operator = "==" } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", value = 15, operator = "<=", allowMissing = true } } }, { isSupply = true, itemID = 2519, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 10, EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 3, operator = "==" }, AllOf = { { EquippedItemStat = { slot = 0, stat = "LEVEL", value = 15, operator = "<=", allowMissing = true } } } } } },
             Coord = { x = 488.69, y = 6564.83 },
             Range = 5,
             Class = "HUNTER",
@@ -7556,7 +7556,7 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
             _index = 810,
         },
         {
-            BuyMerchant = { { itemID = 787, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4592, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4593, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4594, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 21552, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 8957, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } } },
+            BuyMerchant = { { isSupply = true, itemID = 787, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4592, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4593, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4594, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 21552, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 8957, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } } },
             Coord = { x = -410.6, y = 2758.73 },
             Range = 5,
             MerchantNPC = 6738,
@@ -7585,7 +7585,7 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
             _index = 813,
         },
         {
-            BuyMerchant = { { itemID = 2515, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 10, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 2, operator = "==" } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 18, operator = "==" } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", value = 15, operator = "<=", allowMissing = true } } }, { itemID = 2519, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 10, EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 3, operator = "==" }, AllOf = { { EquippedItemStat = { slot = 0, stat = "LEVEL", value = 15, operator = "<=", allowMissing = true } } } } } },
+            BuyMerchant = { { isSupply = true, itemID = 2515, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 10, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 2, operator = "==" } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 18, operator = "==" } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", value = 15, operator = "<=", allowMissing = true } } }, { isSupply = true, itemID = 2519, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 10, EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 3, operator = "==" }, AllOf = { { EquippedItemStat = { slot = 0, stat = "LEVEL", value = 15, operator = "<=", allowMissing = true } } } } } },
             Coord = { x = -306.8, y = 2720.29 },
             Range = 5,
             Class = "HUNTER",
@@ -7892,7 +7892,7 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
             _index = 846,
         },
         {
-            BuyMerchant = { { itemID = 2515, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 10, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 2, operator = "==" } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 18, operator = "==" } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", value = 15, operator = "<=", allowMissing = true } } }, { itemID = 2519, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 10, EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 3, operator = "==" }, AllOf = { { EquippedItemStat = { slot = 0, stat = "LEVEL", value = 15, operator = "<=", allowMissing = true } } } } } },
+            BuyMerchant = { { isSupply = true, itemID = 2515, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 10, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 2, operator = "==" } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 18, operator = "==" } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", value = 15, operator = "<=", allowMissing = true } } }, { isSupply = true, itemID = 2519, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 10, EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 3, operator = "==" }, AllOf = { { EquippedItemStat = { slot = 0, stat = "LEVEL", value = 15, operator = "<=", allowMissing = true } } } } } },
             Class = "HUNTER",
             IsQuestUncompleted = 995,
             Race = { "Dwarf", "Human", "NightElf", "Skyborne" },

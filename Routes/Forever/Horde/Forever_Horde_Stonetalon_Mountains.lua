@@ -363,7 +363,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 24,
         },
         {
-            BuyMerchant = { { itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 47.5, 62),
             Range = 5,
             MerchantNPC = 7731,
@@ -382,7 +382,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 26,
         },
         {
-            BuyMerchant = { { itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 47.5, 62),
             Range = 5,
             MerchantNPC = 7731,
@@ -393,7 +393,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 27,
         },
         {
-            BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } }, { itemID = 3357, quantity = 8, targetStock = true, optional = true, conditions = { Class = "WARRIOR", IsQuestUncompleted = 1712 } } },
+            BuyMerchant = { { isSupply = true, itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } }, { itemID = 3357, quantity = 8, targetStock = true, optional = true, conditions = { Class = "WARRIOR", IsQuestUncompleted = 1712 } } },
 
 
             Coord = { x = 920.88, y = 911.47 },
@@ -405,7 +405,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 28,
         },
         {
-            BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
+            BuyMerchant = { { isSupply = true, itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
 
 
             Coord = { x = 920.88, y = 911.47 },
@@ -471,7 +471,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 36,
         },
         {
-            BuyMerchant = { { itemID = 928, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 928, quantity = 1 } },
             Fillers = { [1069] = { 1 } },
             Coord = { x = 402.76, y = 1231.88 },
             Range = 5,
@@ -487,7 +487,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 37,
         },
         {
-            BuyMerchant = { { itemID = 4818, quantity = 1, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 4818, quantity = 1, targetStock = true, optional = true } },
             Fillers = { [1069] = { 1 } },
             Coord = { x = 402.76, y = 1231.88 },
             Range = 5,
@@ -503,7 +503,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 38,
         },
         {
-            BuyMerchant = { { itemID = 928, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 928, quantity = 1 } },
             Fillers = { [1069] = { 1 } },
             Coord = { x = 402.76, y = 1231.88 },
             Range = 5,
@@ -519,7 +519,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 39,
         },
         {
-            BuyMerchant = { { itemID = 923, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 923, quantity = 1 } },
             Fillers = { [1069] = { 1 } },
             Coord = { x = 402.76, y = 1231.88 },
             Range = 5,
@@ -676,7 +676,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 58,
         },
         {
-            BuyMerchant = { { itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 45.5, 59),
             Range = 5,
             MerchantNPC = 7714,
@@ -695,7 +695,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 60,
         },
         {
-            BuyMerchant = { { itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 45.5, 59),
             Range = 5,
             MerchantNPC = 7714,
@@ -1079,7 +1079,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 104,
         },
         {
-            BuyMerchant = { { itemID = 5210, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 5210, quantity = 1 } },
             Coord = { x = -4299.99, y = 1820.67 },
             Range = 5,
             RaidIcon = 5816,
@@ -1574,7 +1574,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 159,
         },
         {
-            BuyMerchant = { { itemID = 3137, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 3137, quantity = 1 } },
             Coord = { x = 110.13, y = -1299.65 },
             Range = 5,
             RaidIcon = 8362,
@@ -2428,7 +2428,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 244,
         },
         {
-            BuyMerchant = { { itemID = 923, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 923, quantity = 1 } },
             Coord = { x = -36.52, y = -1244.05 },
             Range = 5,
             RaidIcon = 3021,
@@ -2449,7 +2449,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 246,
         },
         {
-            BuyMerchant = { { itemID = 928, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 928, quantity = 1 } },
             Coord = { x = -38.71, y = -1255.32 },
             Range = 5,
             RaidIcon = 3020,
@@ -2463,7 +2463,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 247,
         },
         {
-            BuyMerchant = { { itemID = 928, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 928, quantity = 1 } },
             Coord = { x = -38.71, y = -1255.32 },
             Range = 5,
             RaidIcon = 3020,
@@ -2478,7 +2478,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 248,
         },
         {
-            BuyMerchant = { { itemID = 3027, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 3027, quantity = 1 } },
             Coord = { x = 26.31, y = -1167.93 },
             Range = 5,
             RaidIcon = 3015,
@@ -2493,7 +2493,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 249,
         },
         {
-            BuyMerchant = { { quantity = 1600, itemID = 2515, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1600, itemID = 2515, targetStock = true } },
             Coord = { x = 26.31, y = -1167.93 },
             Range = 5,
             RaidIcon = 3015,
@@ -3172,7 +3172,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 333,
         },
         {
-            BuyMerchant = { { itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 47.5, 62),
             Range = 5,
             MerchantNPC = 7731,
@@ -3189,7 +3189,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 335,
         },
         {
-            BuyMerchant = { { itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 47.5, 62),
             Range = 5,
             MerchantNPC = 7731,
@@ -3199,7 +3199,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 336,
         },
         {
-            BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } }, { itemID = 3357, quantity = 8, targetStock = true, optional = true, conditions = { Class = "WARRIOR", IsQuestUncompleted = 1712 } } },
+            BuyMerchant = { { isSupply = true, itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } }, { itemID = 3357, quantity = 8, targetStock = true, optional = true, conditions = { Class = "WARRIOR", IsQuestUncompleted = 1712 } } },
 
 
             Coord = { x = 925.27, y = 885.42 },
@@ -3211,7 +3211,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 337,
         },
         {
-            BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } }, { itemID = 3357, quantity = 8, targetStock = true, optional = true, conditions = { Class = "WARRIOR", IsQuestUncompleted = 1712 } } },
+            BuyMerchant = { { isSupply = true, itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } }, { itemID = 3357, quantity = 8, targetStock = true, optional = true, conditions = { Class = "WARRIOR", IsQuestUncompleted = 1712 } } },
 
 
             Coord = { x = 920.88, y = 911.47 },
@@ -3223,7 +3223,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 338,
         },
         {
-            BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
+            BuyMerchant = { { isSupply = true, itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
 
 
             Coord = { x = 925.27, y = 885.42 },
@@ -3235,7 +3235,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 339,
         },
         {
-            BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
+            BuyMerchant = { { isSupply = true, itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
 
 
             Coord = { x = 920.88, y = 911.47 },
@@ -3981,7 +3981,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 428,
         },
         {
-            BuyMerchant = { { itemID = 2207, quantity = 1, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2207, quantity = 1, targetStock = true, optional = true } },
             Coord = { x = -4320.75, y = 1750.51 },
             Range = 5,
             RaidIcon = 3331,
@@ -4066,7 +4066,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 436,
         },
         {
-            BuyMerchant = { { quantity = 20, itemID = 5140, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 20, itemID = 5140, targetStock = true } },
             Coord = { x = -4271.1, y = 1810.94 },
             Range = 5,
             RaidIcon = 3334,
@@ -4078,7 +4078,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 437,
         },
         {
-            BuyMerchant = { { itemID = 5210, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 5210, quantity = 1 } },
             Coord = { x = -4299.99, y = 1820.67 },
             Range = 5,
             RaidIcon = 5816,
@@ -4466,7 +4466,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 478,
         },
         {
-            BuyMerchant = { { itemID = 3137, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 3137, quantity = 1 } },
             Coord = { x = -4355.53, y = 1520.68 },
             Range = 5,
             RaidIcon = 3313,

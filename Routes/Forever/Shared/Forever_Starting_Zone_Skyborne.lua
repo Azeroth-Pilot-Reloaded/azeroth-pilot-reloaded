@@ -485,7 +485,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 42,
         },
         {
-            BuyMerchant = { { quantity = 1000, itemID = 2512, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1000, itemID = 2512, targetStock = true } },
             Note = { "KEEP_COOKING_MEAT_EGGS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 42.749, 24.496),
             Range = 5,
@@ -499,7 +499,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 43,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 42.749, 24.496),
             MerchantNPC = 251537,
             RaidIcon = 251537,
@@ -519,7 +519,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 45,
         },
         {
-            BuyMerchant = { { itemID = 1194, quantity = 1, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1194, quantity = 1, optional = true } },
             Fillers = { [93552] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.41, 23.51),
             Range = 5,
@@ -538,7 +538,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 46,
         },
         {
-            BuyMerchant = { { itemID = 2131, quantity = 1, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2131, quantity = 1, optional = true } },
             Fillers = { [93552] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.41, 23.51),
             Range = 5,
@@ -557,7 +557,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 47,
         },
         {
-            BuyMerchant = { { itemID = 1194, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 1194, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.37, 23.99),
             Range = 5,
             RaidIcon = 251364,
@@ -574,7 +574,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 48,
         },
         {
-            BuyMerchant = { { itemID = 1194, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 1194, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.41, 23.51),
             Range = 5,
             RaidIcon = 251364,
@@ -591,7 +591,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 49,
         },
         {
-            BuyMerchant = { { itemID = 2131, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2131, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.37, 23.99),
             Range = 5,
             RaidIcon = 251364,
@@ -1205,7 +1205,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 112,
         },
         {
-            BuyMerchant = { { itemID = 2512, quantity = 1200, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2512, quantity = 1200, targetStock = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 42.76, 24.5),
             Range = 5,
             RaidIcon = 251537,
@@ -1217,7 +1217,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 113,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 42.76, 24.5),
             MerchantNPC = 251537,
             RaidIcon = 251537,
@@ -1481,7 +1481,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 146,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 1179, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 1179, targetStock = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.72, 45.47),
             Range = 5,
             RaidIcon = 254358,
@@ -1894,7 +1894,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 188,
         },
         {
-            BuyMerchant = { { quantity = 5, itemID = 1179, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 5, itemID = 1179, targetStock = true } },
             Note = { "KEEP_COOKING_MEAT_EGGS", "KEEP_SPARE_MEAT_COOKING_NOT_MAKE_SEPARATE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.72, 45.47),
             Range = 5,
@@ -1930,7 +1930,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 192,
         },
         {
-            BuyMerchant = { { itemID = 2495, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2495, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.79, 44.168),
             Range = 5,
             RaidIcon = 257421,
@@ -1947,7 +1947,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 193,
         },
         {
-            BuyMerchant = { { itemID = 2506, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2506, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.79, 44.168),
             Range = 5,
             RaidIcon = 257421,
@@ -1962,7 +1962,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 194,
         },
         {
-            BuyMerchant = { { itemID = 2493, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2493, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.8, 44.18),
             Range = 5,
             RaidIcon = 257421,
@@ -1978,7 +1978,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 195,
         },
         {
-            BuyMerchant = { { itemID = 2488, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2488, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.8, 44.18),
             Range = 5,
             RaidIcon = 257421,
@@ -2575,7 +2575,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 248,
         },
         {
-            BuyMerchant = { { itemID = 2495, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2495, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.79, 44.168),
             Range = 5,
             RaidIcon = 257421,
@@ -2591,7 +2591,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 249,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2946, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2946, targetStock = true } },
             Note = { "EQUIPPING_BAGS_MAKE_SURE_REAGENT_BAG_DEDICATED", "KEEP_COOKING_MEAT_EGGS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.71, 45.48),
             Range = 5,
@@ -2605,7 +2605,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 250,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 10, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 10, targetStock = true } },
             Note = { "KEEP_COOKING_MEAT_EGGS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.71, 45.48),
             Range = 5,
@@ -3116,7 +3116,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 302,
         },
         {
-            BuyMerchant = { { itemID = 2495, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2495, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.79, 44.168),
             Range = 5,
             RaidIcon = 257421,
@@ -3264,7 +3264,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 317,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 1, targetStock = true } },
             Note = { "EQUIPPING_BAGS_MAKE_SURE_REAGENT_BAG_DEDICATED", "KEEP_COOKING_MEAT_EGGS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.71, 45.48),
             Range = 5,
@@ -3278,7 +3278,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 318,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 1, targetStock = true } },
             Note = { "EQUIPPING_BAGS_MAKE_SURE_REAGENT_BAG_DEDICATED", "KEEP_COOKING_MEAT_EGGS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.71, 45.48),
             Range = 5,
@@ -3326,7 +3326,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 322,
         },
         {
-            BuyMerchant = { { itemID = 2495, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2495, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.79, 44.168),
             Range = 5,
             RaidIcon = 257421,
@@ -4133,7 +4133,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 405,
         },
         {
-            BuyMerchant = { { quantity = 600, itemID = 2512, targetStock = true }, { quantity = 1000, itemID = 2515, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 600, itemID = 2512, targetStock = true }, { isSupply = true, quantity = 1000, itemID = 2515, targetStock = true } },
             Note = { "KEEP_COOKING_MEAT_EGGS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.71, 45.48),
             Range = 5,
@@ -4146,7 +4146,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 406,
         },
         {
-            BuyMerchant = { { itemID = 2512, quantity = 600, targetStock = true }, { itemID = 2515, quantity = 1000, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2512, quantity = 600, targetStock = true }, { isSupply = true, itemID = 2515, quantity = 1000, targetStock = true } },
             Note = { "KEEP_COOKING_MEAT_EGGS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.71, 45.48),
             MerchantNPC = 254358,
@@ -4324,7 +4324,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 422,
         },
         {
-            BuyMerchant = { { itemID = 277110, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 277110, quantity = 1 } },
             Note = { "REPAIR", "KEEP_COOKING_MEAT_EGGS", "KEEP_SPARE_MEAT_COOKING_NOT_MAKE_SEPARATE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.395, 75.73),
             Range = 5,
@@ -4343,7 +4343,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 423,
         },
         {
-            BuyMerchant = { { itemID = 277106, quantity = 1, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 277106, quantity = 1, targetStock = true, optional = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.395, 75.73),
             Range = 5,
             GossipOptionIDs = { 141556 },
@@ -4372,7 +4372,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 425,
         },
         {
-            BuyMerchant = { { itemID = 277109, quantity = 1, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 277109, quantity = 1, targetStock = true, optional = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.395, 75.73),
             Range = 5,
             GossipOptionIDs = { 141556 },
@@ -4401,7 +4401,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 427,
         },
         {
-            BuyMerchant = { { itemID = 277107, quantity = 1, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 277107, quantity = 1, targetStock = true, optional = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.395, 75.73),
             Range = 5,
             GossipOptionIDs = { 141556 },
@@ -4491,7 +4491,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 435,
         },
         {
-            BuyMerchant = { { quantity = 20, itemID = 1179, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 20, itemID = 1179, targetStock = true } },
             Note = { "KEEP_COOKING_MEAT_EGGS", "KEEP_SPARE_MEAT_COOKING_NOT_MAKE_SEPARATE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.18, 72.616),
             Range = 5,
@@ -4743,7 +4743,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 465,
         },
         {
-            BuyMerchant = { { itemID = 2512, quantity = 600, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2512, quantity = 600, targetStock = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.027, 77.807),
             Range = 5,
             RaidIcon = 252390,
@@ -4826,7 +4826,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 474,
         },
         {
-            BuyMerchant = { { itemID = 277110, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 277110, quantity = 1 } },
             Note = { "REPAIR", "KEEP_COOKING_MEAT_EGGS", "KEEP_SPARE_MEAT_COOKING_NOT_MAKE_SEPARATE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.395, 75.73),
             Range = 5,
@@ -4844,7 +4844,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 475,
         },
         {
-            BuyMerchant = { { itemID = 277106, quantity = 1, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 277106, quantity = 1, targetStock = true, optional = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.395, 75.73),
             Range = 5,
             GossipOptionIDs = { 141556 },
@@ -4873,7 +4873,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 477,
         },
         {
-            BuyMerchant = { { itemID = 277109, quantity = 1, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 277109, quantity = 1, targetStock = true, optional = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.395, 75.73),
             Range = 5,
             GossipOptionIDs = { 141556 },
@@ -4902,7 +4902,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 479,
         },
         {
-            BuyMerchant = { { itemID = 277107, quantity = 1, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 277107, quantity = 1, targetStock = true, optional = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.395, 75.73),
             Range = 5,
             GossipOptionIDs = { 141556 },
@@ -5290,7 +5290,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 520,
         },
         {
-            BuyMerchant = { { quantity = 20, itemID = 1179, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, quantity = 20, itemID = 1179, targetStock = true, optional = true } },
             Note = { "KEEP_COOKING_MEAT_EGGS", "KEEP_SPARE_MEAT_COOKING_NOT_MAKE_SEPARATE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.18, 72.616),
             Range = 5,
@@ -5590,7 +5590,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 552,
         },
         {
-            BuyMerchant = { { quantity = 20, itemID = 1179, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 20, itemID = 1179, targetStock = true } },
             Note = { "KEEP_COOKING_MEAT_EGGS", "KEEP_SPARE_MEAT_COOKING_NOT_MAKE_SEPARATE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.18, 72.616),
             Range = 5,
@@ -5675,7 +5675,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 560,
         },
         {
-            BuyMerchant = { { itemID = 4604, quantity = 5, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 4604, quantity = 5, targetStock = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.18, 72.616),
             Range = 5,
             RaidIcon = 255940,
@@ -6146,7 +6146,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 604,
         },
         {
-            BuyMerchant = { { itemID = 2515, quantity = 1000, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2515, quantity = 1000, targetStock = true } },
             Fillers = { [93949] = { 1 } },
             Note = { "KEEP_COOKING_MEAT_EGGS", "KEEP_SPARE_MEAT_COOKING_NOT_MAKE_SEPARATE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.023, 77.803),
@@ -8324,7 +8324,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 834,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 20, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 20, targetStock = true } },
             Note = { "KEEP_COOKING_MEAT_EGGS", "KEEP_SPARE_MEAT_COOKING_NOT_MAKE_SEPARATE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.18, 72.616),
             Range = 5,
@@ -8349,7 +8349,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 836,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 20, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 20, targetStock = true } },
             Note = { "KEEP_COOKING_MEAT_EGGS", "KEEP_SPARE_MEAT_COOKING_NOT_MAKE_SEPARATE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.18, 72.616),
             Range = 5,

@@ -96,7 +96,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
     },
     steps = {
         {
-            BuyMerchant = { { itemID = 12249, quantity = 1, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 12249, quantity = 1, targetStock = true, optional = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 54.06, 57.25),
             Range = 5,
             RaidIcon = 3019,
@@ -111,7 +111,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 1,
         },
         {
-            BuyMerchant = { { itemID = 2526, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2526, quantity = 1 } },
             Note = { "CHECK_AUCTION_HOUSE_GEAR_UPGRADE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 53, 56.63),
             Range = 5,
@@ -486,7 +486,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 39,
         },
         {
-            BuyMerchant = { { itemID = 11306, quantity = 1, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 11306, quantity = 1, targetStock = true, optional = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 46.98, 45.69),
             Range = 5,
             RaidIcon = 3015,
@@ -501,7 +501,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 40,
         },
         {
-            BuyMerchant = { { itemID = 3030, quantity = 1800, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 3030, quantity = 1800, targetStock = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 46.98, 45.69),
             Range = 5,
             RaidIcon = 3015,
@@ -862,7 +862,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 83,
         },
         {
-            BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } }, { itemID = 3357, quantity = 8, targetStock = true, optional = true, conditions = { Class = "WARRIOR", IsQuestUncompleted = 1712 } } },
+            BuyMerchant = { { isSupply = true, itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } }, { itemID = 3357, quantity = 8, targetStock = true, optional = true, conditions = { Class = "WARRIOR", IsQuestUncompleted = 1712 } } },
 
             Note = { "CHOOSE_USEFUL_STAT_SCROLLS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 45.15, 50.78),
@@ -874,7 +874,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 84,
         },
         {
-            BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
+            BuyMerchant = { { isSupply = true, itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
 
             Note = { "CHOOSE_USEFUL_STAT_SCROLLS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 45.15, 50.78),
@@ -886,7 +886,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 85,
         },
         {
-            BuyMerchant = { { itemID = 11305, quantity = 1, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 11305, quantity = 1, targetStock = true, optional = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 44.89, 50.68),
             Range = 5,
             RaidIcon = 9551,
@@ -1108,7 +1108,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 114,
         },
         {
-            BuyMerchant = { { itemID = 11305, quantity = 1, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 11305, quantity = 1, targetStock = true, optional = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 44.89, 50.68),
             Range = 5,
             RaidIcon = 9551,
@@ -1123,7 +1123,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 115,
         },
         {
-            BuyMerchant = { { itemID = 3030, quantity = 1800, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 3030, quantity = 1800, targetStock = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 44.89, 50.68),
             Range = 5,
             RaidIcon = 9551,
@@ -1135,7 +1135,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 116,
         },
         {
-            BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } }, { itemID = 3357, quantity = 8, targetStock = true, optional = true, conditions = { Class = "WARRIOR", IsQuestUncompleted = 1712 } } },
+            BuyMerchant = { { isSupply = true, itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } }, { itemID = 3357, quantity = 8, targetStock = true, optional = true, conditions = { Class = "WARRIOR", IsQuestUncompleted = 1712 } } },
 
             Note = { "CHOOSE_USEFUL_STAT_SCROLLS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 45.15, 50.78),
@@ -1147,7 +1147,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 117,
         },
         {
-            BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
+            BuyMerchant = { { isSupply = true, itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
 
             Note = { "CHOOSE_USEFUL_STAT_SCROLLS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 45.15, 50.78),
@@ -1159,7 +1159,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 118,
         },
         {
-            BuyMerchant = { { itemID = 17031, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 17031, quantity = 1, targetStock = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 45.15, 50.78),
             Range = 5,
             RaidIcon = 4878,
@@ -1328,7 +1328,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 139,
         },
         {
-            BuyMerchant = { { itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 21, 31.8),
             Range = 5,
             MerchantNPC = 3689,
@@ -1346,7 +1346,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 141,
         },
         {
-            BuyMerchant = { { itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 21, 31.8),
             Range = 5,
             MerchantNPC = 3689,
@@ -1618,7 +1618,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 171,
         },
         {
-            BuyMerchant = { { itemID = 2070, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 414, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 422, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1707, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 3927, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8932, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 2070, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 414, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 422, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 1707, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 3927, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8932, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 45.8, 64.6),
             Range = 5,
             MerchantNPC = 6746,
@@ -1635,7 +1635,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 173,
         },
         {
-            BuyMerchant = { { itemID = 2070, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 414, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 422, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1707, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 3927, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8932, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 2070, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 414, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 422, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 1707, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 3927, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8932, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 45.8, 64.6),
             Range = 5,
             MerchantNPC = 6746,
@@ -1899,7 +1899,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 201,
         },
         {
-            BuyMerchant = { { itemID = 11306, quantity = 1, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 11306, quantity = 1, targetStock = true, optional = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 46.98, 45.69),
             Range = 5,
             RaidIcon = 3015,
@@ -1914,7 +1914,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 202,
         },
         {
-            BuyMerchant = { { itemID = 3030, quantity = 1800, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 3030, quantity = 1800, targetStock = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 46.98, 45.69),
             Range = 5,
             RaidIcon = 3015,
@@ -1926,7 +1926,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 203,
         },
         {
-            BuyMerchant = { { itemID = 12249, quantity = 1, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 12249, quantity = 1, targetStock = true, optional = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 54.06, 57.25),
             Range = 5,
             RaidIcon = 3019,
@@ -1941,7 +1941,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 204,
         },
         {
-            BuyMerchant = { { itemID = 2520, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2520, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 53, 56.63),
             Range = 5,
             RaidIcon = 3021,
@@ -1957,7 +1957,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 205,
         },
         {
-            BuyMerchant = { { itemID = 2526, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2526, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 53, 56.63),
             Range = 5,
             RaidIcon = 3021,
@@ -2002,7 +2002,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 210,
         },
         {
-            BuyMerchant = { { itemID = 11305, quantity = 1, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 11305, quantity = 1, targetStock = true, optional = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 44.89, 50.68),
             Range = 5,
             RaidIcon = 9551,
@@ -2017,7 +2017,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 211,
         },
         {
-            BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } }, { itemID = 3357, quantity = 8, targetStock = true, optional = true, conditions = { Class = "WARRIOR", IsQuestUncompleted = 1712 } } },
+            BuyMerchant = { { isSupply = true, itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } }, { itemID = 3357, quantity = 8, targetStock = true, optional = true, conditions = { Class = "WARRIOR", IsQuestUncompleted = 1712 } } },
 
             Note = { "CHOOSE_USEFUL_STAT_SCROLLS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 45.15, 50.78),
@@ -2029,7 +2029,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 212,
         },
         {
-            BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
+            BuyMerchant = { { isSupply = true, itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
 
             Note = { "CHOOSE_USEFUL_STAT_SCROLLS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 45.15, 50.78),
@@ -2312,7 +2312,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 247,
         },
         {
-            BuyMerchant = { { itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
+            BuyMerchant = { { isSupply = true, itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
 
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 76.06, 43.28),
 
@@ -2361,7 +2361,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 253,
         },
         {
-            BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } }, { itemID = 3357, quantity = 8, targetStock = true, optional = true, conditions = { Class = "WARRIOR", IsQuestUncompleted = 1712 } } },
+            BuyMerchant = { { isSupply = true, itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } }, { itemID = 3357, quantity = 8, targetStock = true, optional = true, conditions = { Class = "WARRIOR", IsQuestUncompleted = 1712 } } },
 
             Note = { "CHOOSE_USEFUL_STAT_SCROLLS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 45.15, 50.78),
@@ -2373,7 +2373,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 254,
         },
         {
-            BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
+            BuyMerchant = { { isSupply = true, itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
 
             Note = { "CHOOSE_USEFUL_STAT_SCROLLS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 45.15, 50.78),
@@ -2385,7 +2385,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 255,
         },
         {
-            BuyMerchant = { { itemID = 11305, quantity = 1, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 11305, quantity = 1, targetStock = true, optional = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 44.89, 50.68),
             Range = 5,
             RaidIcon = 9551,
@@ -2400,7 +2400,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 256,
         },
         {
-            BuyMerchant = { { itemID = 3030, quantity = 1800, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 3030, quantity = 1800, targetStock = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 44.89, 50.68),
             Range = 5,
             RaidIcon = 9551,
@@ -2767,7 +2767,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 300,
         },
         {
-            BuyMerchant = { { itemID = 17031, quantity = 2, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 17031, quantity = 2, targetStock = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 45.43, 56.58),
             Range = 5,
             RaidIcon = 3335,
@@ -2857,7 +2857,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 309,
         },
         {
-            BuyMerchant = { { itemID = 5347, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 5347, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 44.16, 48.45),
             Range = 5,
             RaidIcon = 5816,
@@ -2958,7 +2958,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 319,
         },
         {
-            BuyMerchant = { { itemID = 3030, quantity = 1800, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 3030, quantity = 1800, targetStock = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 78.11, 38.46),
             Range = 5,
             RaidIcon = 3410,
@@ -3077,7 +3077,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
             _index = 1,
         },
         {
-            BuyMerchant = { { itemID = 11305, quantity = 1, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 11305, quantity = 1, targetStock = true, optional = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 44.89, 50.68),
             Range = 5,
             RaidIcon = 9551,
@@ -3092,7 +3092,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
             _index = 2,
         },
         {
-            BuyMerchant = { { itemID = 3030, quantity = 2600, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 3030, quantity = 2600, targetStock = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 44.89, 50.68),
             Range = 5,
             RaidIcon = 9551,
@@ -3104,7 +3104,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
             _index = 3,
         },
         {
-            BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } }, { itemID = 3357, quantity = 8, targetStock = true, optional = true, conditions = { Class = "WARRIOR", IsQuestUncompleted = 1712 } } },
+            BuyMerchant = { { isSupply = true, itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } }, { itemID = 3357, quantity = 8, targetStock = true, optional = true, conditions = { Class = "WARRIOR", IsQuestUncompleted = 1712 } } },
 
             Note = { "CHOOSE_USEFUL_STAT_SCROLLS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 45.15, 50.78),
@@ -3116,7 +3116,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
             _index = 4,
         },
         {
-            BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
+            BuyMerchant = { { isSupply = true, itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
 
             Note = { "CHOOSE_USEFUL_STAT_SCROLLS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 45.15, 50.78),
@@ -3128,7 +3128,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
             _index = 5,
         },
         {
-            BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
+            BuyMerchant = { { isSupply = true, itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
 
             Note = { "CHOOSE_USEFUL_STAT_SCROLLS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 45.15, 50.78),
@@ -3653,7 +3653,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
             _index = 77,
         },
         {
-            BuyMerchant = { { itemID = 12251, quantity = 1, targetStock = true, optional = true, conditions = { MinLevel = 32, HasSpell = 227 } } },
+            BuyMerchant = { { isSupply = true, itemID = 12251, quantity = 1, targetStock = true, optional = true, conditions = { MinLevel = 32, HasSpell = 227 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 28.4, 75.4),
 
             Range = 5,
@@ -3668,7 +3668,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
             _index = 78,
         },
         {
-            BuyMerchant = { { itemID = 12252, quantity = 1, targetStock = true, optional = true, conditions = { MinLevel = 34, HasSpell = 227 } } },
+            BuyMerchant = { { isSupply = true, itemID = 12252, quantity = 1, targetStock = true, optional = true, conditions = { MinLevel = 34, HasSpell = 227 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 28.4, 75.4),
             Range = 5,
             MerchantNPC = 2482,
@@ -3745,7 +3745,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
             _index = 88,
         },
         {
-            BuyMerchant = { { itemID = 1710, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 21 } } },
+            BuyMerchant = { { isSupply = true, itemID = 1710, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 21 } } },
 
             Coord = { x = 425.15, y = -14491.68 },
 

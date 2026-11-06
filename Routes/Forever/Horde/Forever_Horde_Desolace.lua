@@ -210,7 +210,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 17,
         },
         {
-            BuyMerchant = { { quantity = 1800, itemID = 3030, questID = 1480 } },
+            BuyMerchant = { { isSupply = true, quantity = 1800, itemID = 3030, questID = 1480 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 46.98, 45.69),
             AllOf = { { ItemCount = { itemID = 3030, count = 200, operator = "<" } } },
             Class = "HUNTER",
@@ -220,7 +220,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 18,
         },
         {
-            BuyMerchant = { { quantity = 1600, itemID = 3030, questID = 1480 } },
+            BuyMerchant = { { isSupply = true, quantity = 1600, itemID = 3030, questID = 1480 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 46.98, 45.69),
             AllOf = { { ItemCount = { itemID = 3030, count = 200, operator = ">=" } }, { ItemCount = { itemID = 3030, count = 400, operator = "<" } } },
             Class = "HUNTER",
@@ -230,7 +230,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 19,
         },
         {
-            BuyMerchant = { { quantity = 1400, itemID = 3030, questID = 1480 } },
+            BuyMerchant = { { isSupply = true, quantity = 1400, itemID = 3030, questID = 1480 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 46.98, 45.69),
             AllOf = { { ItemCount = { itemID = 3030, count = 400, operator = ">=" } }, { ItemCount = { itemID = 3030, count = 600, operator = "<" } } },
             Class = "HUNTER",
@@ -240,7 +240,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 20,
         },
         {
-            BuyMerchant = { { quantity = 1200, itemID = 3030, questID = 1480 } },
+            BuyMerchant = { { isSupply = true, quantity = 1200, itemID = 3030, questID = 1480 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 46.98, 45.69),
             AllOf = { { ItemCount = { itemID = 3030, count = 600, operator = ">=" } }, { ItemCount = { itemID = 3030, count = 800, operator = "<" } } },
             Class = "HUNTER",
@@ -250,7 +250,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 21,
         },
         {
-            BuyMerchant = { { quantity = 1000, itemID = 3030, questID = 1480 } },
+            BuyMerchant = { { isSupply = true, quantity = 1000, itemID = 3030, questID = 1480 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 46.98, 45.69),
             AllOf = { { ItemCount = { itemID = 3030, count = 800, operator = ">=" } }, { ItemCount = { itemID = 3030, count = 1000, operator = "<" } } },
             Class = "HUNTER",
@@ -260,7 +260,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 22,
         },
         {
-            BuyMerchant = { { quantity = 800, itemID = 3030, questID = 1480 } },
+            BuyMerchant = { { isSupply = true, quantity = 800, itemID = 3030, questID = 1480 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 46.98, 45.69),
             AllOf = { { ItemCount = { itemID = 3030, count = 1000, operator = ">=" } }, { ItemCount = { itemID = 3030, count = 1200, operator = "<" } } },
             Class = "HUNTER",
@@ -270,7 +270,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 23,
         },
         {
-            BuyMerchant = { { quantity = 600, itemID = 3030, questID = 1480 } },
+            BuyMerchant = { { isSupply = true, quantity = 600, itemID = 3030, questID = 1480 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 46.98, 45.69),
             AllOf = { { ItemCount = { itemID = 3030, count = 1200, operator = ">=" } }, { ItemCount = { itemID = 3030, count = 1400, operator = "<" } } },
             Class = "HUNTER",
@@ -280,7 +280,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 24,
         },
         {
-            BuyMerchant = { { quantity = 400, itemID = 3030, questID = 1480 } },
+            BuyMerchant = { { isSupply = true, quantity = 400, itemID = 3030, questID = 1480 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 46.98, 45.69),
             AllOf = { { ItemCount = { itemID = 3030, count = 1400, operator = ">=" } }, { ItemCount = { itemID = 3030, count = 1600, operator = "<" } } },
             Class = "HUNTER",
@@ -290,7 +290,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 25,
         },
         {
-            BuyMerchant = { { quantity = 200, itemID = 3030, questID = 1480 } },
+            BuyMerchant = { { isSupply = true, quantity = 200, itemID = 3030, questID = 1480 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 46.98, 45.69),
             AllOf = { { ItemCount = { itemID = 3030, count = 1600, operator = ">=" } }, { ItemCount = { itemID = 3030, count = 1800, operator = "<" } } },
             Class = "HUNTER",
@@ -523,7 +523,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 57,
         },
         {
-            BuyMerchant = { { itemID = 4604, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4605, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4606, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4607, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4608, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8948, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4604, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4605, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4606, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4607, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4608, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8948, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 51.2, 53.2),
             Range = 5,
             MerchantNPC = 8152,
@@ -542,7 +542,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 59,
         },
         {
-            BuyMerchant = { { itemID = 4604, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4605, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4606, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4607, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4608, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8948, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4604, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4605, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4606, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4607, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4608, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8948, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 51.2, 53.2),
             Range = 5,
             MerchantNPC = 8152,
@@ -700,7 +700,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 80,
         },
         {
-            BuyMerchant = { { quantity = 2600, itemID = 3030, questID = 5741 } },
+            BuyMerchant = { { isSupply = true, quantity = 2600, itemID = 3030, questID = 5741 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 24.93, 71.84),
             AllOf = { { ItemCount = { itemID = 3030, count = 200, operator = "<" } } },
             Class = "HUNTER",
@@ -709,7 +709,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 81,
         },
         {
-            BuyMerchant = { { quantity = 2400, itemID = 3030, questID = 5741 } },
+            BuyMerchant = { { isSupply = true, quantity = 2400, itemID = 3030, questID = 5741 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 24.93, 71.84),
             AllOf = { { ItemCount = { itemID = 3030, count = 200, operator = ">=" } }, { ItemCount = { itemID = 3030, count = 400, operator = "<" } } },
             Class = "HUNTER",
@@ -718,7 +718,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 82,
         },
         {
-            BuyMerchant = { { quantity = 2200, itemID = 3030, questID = 5741 } },
+            BuyMerchant = { { isSupply = true, quantity = 2200, itemID = 3030, questID = 5741 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 24.93, 71.84),
             AllOf = { { ItemCount = { itemID = 3030, count = 400, operator = ">=" } }, { ItemCount = { itemID = 3030, count = 600, operator = "<" } } },
             Class = "HUNTER",
@@ -727,7 +727,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 83,
         },
         {
-            BuyMerchant = { { quantity = 2000, itemID = 3030, questID = 5741 } },
+            BuyMerchant = { { isSupply = true, quantity = 2000, itemID = 3030, questID = 5741 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 24.93, 71.84),
             AllOf = { { ItemCount = { itemID = 3030, count = 600, operator = ">=" } }, { ItemCount = { itemID = 3030, count = 800, operator = "<" } } },
             Class = "HUNTER",
@@ -736,7 +736,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 84,
         },
         {
-            BuyMerchant = { { quantity = 1800, itemID = 3030, questID = 5741 } },
+            BuyMerchant = { { isSupply = true, quantity = 1800, itemID = 3030, questID = 5741 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 24.93, 71.84),
             AllOf = { { ItemCount = { itemID = 3030, count = 800, operator = ">=" } }, { ItemCount = { itemID = 3030, count = 1000, operator = "<" } } },
             Class = "HUNTER",
@@ -745,7 +745,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 85,
         },
         {
-            BuyMerchant = { { quantity = 1600, itemID = 3030, questID = 5741 } },
+            BuyMerchant = { { isSupply = true, quantity = 1600, itemID = 3030, questID = 5741 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 24.93, 71.84),
             AllOf = { { ItemCount = { itemID = 3030, count = 1000, operator = ">=" } }, { ItemCount = { itemID = 3030, count = 1200, operator = "<" } } },
             Class = "HUNTER",
@@ -754,7 +754,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 86,
         },
         {
-            BuyMerchant = { { quantity = 1400, itemID = 3030, questID = 5741 } },
+            BuyMerchant = { { isSupply = true, quantity = 1400, itemID = 3030, questID = 5741 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 24.93, 71.84),
             AllOf = { { ItemCount = { itemID = 3030, count = 1200, operator = ">=" } }, { ItemCount = { itemID = 3030, count = 1400, operator = "<" } } },
             Class = "HUNTER",
@@ -763,7 +763,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 87,
         },
         {
-            BuyMerchant = { { quantity = 1200, itemID = 3030, questID = 5741 } },
+            BuyMerchant = { { isSupply = true, quantity = 1200, itemID = 3030, questID = 5741 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 24.93, 71.84),
             AllOf = { { ItemCount = { itemID = 3030, count = 1400, operator = ">=" } }, { ItemCount = { itemID = 3030, count = 1600, operator = "<" } } },
             Class = "HUNTER",
@@ -772,7 +772,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 88,
         },
         {
-            BuyMerchant = { { quantity = 1000, itemID = 3030, questID = 5741 } },
+            BuyMerchant = { { isSupply = true, quantity = 1000, itemID = 3030, questID = 5741 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 24.93, 71.84),
             AllOf = { { ItemCount = { itemID = 3030, count = 1600, operator = ">=" } }, { ItemCount = { itemID = 3030, count = 1800, operator = "<" } } },
             Class = "HUNTER",
@@ -781,7 +781,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 89,
         },
         {
-            BuyMerchant = { { quantity = 800, itemID = 3030, questID = 5741 } },
+            BuyMerchant = { { isSupply = true, quantity = 800, itemID = 3030, questID = 5741 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 24.93, 71.84),
             AllOf = { { ItemCount = { itemID = 3030, count = 1800, operator = ">=" } }, { ItemCount = { itemID = 3030, count = 2000, operator = "<" } } },
             Class = "HUNTER",
@@ -790,7 +790,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 90,
         },
         {
-            BuyMerchant = { { quantity = 600, itemID = 3030, questID = 5741 } },
+            BuyMerchant = { { isSupply = true, quantity = 600, itemID = 3030, questID = 5741 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 24.93, 71.84),
             AllOf = { { ItemCount = { itemID = 3030, count = 2000, operator = ">=" } }, { ItemCount = { itemID = 3030, count = 2200, operator = "<" } } },
             Class = "HUNTER",
@@ -799,7 +799,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 91,
         },
         {
-            BuyMerchant = { { quantity = 400, itemID = 3030, questID = 5741 } },
+            BuyMerchant = { { isSupply = true, quantity = 400, itemID = 3030, questID = 5741 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 24.93, 71.84),
             AllOf = { { ItemCount = { itemID = 3030, count = 2200, operator = ">=" } }, { ItemCount = { itemID = 3030, count = 2400, operator = "<" } } },
             Class = "HUNTER",
@@ -808,7 +808,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 92,
         },
         {
-            BuyMerchant = { { quantity = 200, itemID = 3030, questID = 5741 } },
+            BuyMerchant = { { isSupply = true, quantity = 200, itemID = 3030, questID = 5741 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 24.93, 71.84),
             AllOf = { { ItemCount = { itemID = 3030, count = 2400, operator = ">=" } }, { ItemCount = { itemID = 3030, count = 2600, operator = "<" } } },
             Class = "HUNTER",
@@ -1058,7 +1058,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 124,
         },
         {
-            BuyMerchant = { { itemID = 4604, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4605, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4606, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4607, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4608, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8948, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4604, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4605, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4606, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4607, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4608, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8948, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 51.2, 53.2),
             Range = 5,
             MerchantNPC = 8152,
@@ -1075,7 +1075,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 126,
         },
         {
-            BuyMerchant = { { itemID = 4604, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4605, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4606, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4607, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4608, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8948, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4604, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4605, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4606, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4607, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4608, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8948, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 51.2, 53.2),
             Range = 5,
             MerchantNPC = 8152,

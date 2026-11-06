@@ -280,7 +280,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 7,
         },
         {
-            BuyMerchant = { { quantity = 1000, itemID = 2512, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1000, itemID = 2512, targetStock = true } },
             Coord = { x = -4214.1, y = -565.75 },
             RaidIcon = 3158,
             Class = "HUNTER",
@@ -678,7 +678,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 59,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2132, questID = 789, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2132, questID = 789, targetStock = true } },
             Coord = { x = -4102.35, y = -588.67 },
             RaidIcon = 3159,
             Class = "SHAMAN",
@@ -920,7 +920,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 89,
         },
         {
-            BuyMerchant = { { quantity = 1000, itemID = 2512, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1000, itemID = 2512, targetStock = true } },
             Coord = { x = -4214.45, y = -565.4 },
             RaidIcon = 3158,
             Class = "HUNTER",
@@ -1652,7 +1652,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 182,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 3131, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 3131, targetStock = true } },
             Coord = { x = -4938.83, y = -779.37 },
             RaidIcon = 3186,
             Class = "ROGUE",
@@ -1663,7 +1663,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 183,
         },
         {
-            BuyMerchant = { { quantity = 20, itemID = 159, questID = 786, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 20, itemID = 159, questID = 786, targetStock = true } },
             Coord = { x = -4938.83, y = -779.37 },
             RaidIcon = 3186,
             Class = { "MAGE", "PRIEST", "WARLOCK" },
@@ -1673,7 +1673,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 184,
         },
         {
-            BuyMerchant = { { quantity = 10, itemID = 159, questID = 786, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 10, itemID = 159, questID = 786, targetStock = true } },
             Coord = { x = -4938.83, y = -779.37 },
             RaidIcon = 3186,
             Class = { "MAGE", "PRIEST", "WARLOCK" },
@@ -1693,7 +1693,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 186,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2495, questID = 786, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2495, questID = 786, targetStock = true } },
             Coord = { x = -4948.35, y = -769.15 },
             RaidIcon = 10369,
             Class = "SHAMAN",
@@ -1714,7 +1714,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 188,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2494, questID = 786, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2494, questID = 786, targetStock = true } },
             Coord = { x = -4948.35, y = -769.15 },
             RaidIcon = 10369,
             Class = "ROGUE",
@@ -1734,7 +1734,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 190,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2491, questID = 786, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2491, questID = 786, targetStock = true } },
             Coord = { x = -4948.35, y = -769.15 },
             RaidIcon = 10369,
             Class = "WARRIOR",
@@ -1746,7 +1746,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 191,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2490, questID = 786, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2490, questID = 786, targetStock = true } },
             Coord = { x = -4948.35, y = -769.15 },
             RaidIcon = 10369,
             Class = "WARRIOR",
@@ -1768,7 +1768,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 193,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2506, questID = 786, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2506, questID = 786, targetStock = true } },
             Coord = { x = -4948.35, y = -769.15 },
             RaidIcon = 10369,
             Class = "HUNTER",
@@ -2086,7 +2086,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 238,
         },
         {
-            BuyMerchant = { { itemID = 2287, quantity = 15, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2287, quantity = 15, targetStock = true } },
             Coord = { x = -4686.09, y = 340.52 },
             RaidIcon = 6928,
             Class = { "ROGUE", "WARRIOR" },
@@ -2096,7 +2096,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 239,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 15, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 15, targetStock = true } },
             Coord = { x = -4686.09, y = 340.52 },
             RaidIcon = 6928,
             Class = { "MAGE", "PRIEST", "SHAMAN", "WARLOCK" },
@@ -2146,7 +2146,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 244,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2495, questID = 784, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2495, questID = 784, targetStock = true } },
             Coord = { x = -4713.06, y = 382.12 },
             RaidIcon = 3163,
             Class = "SHAMAN",
@@ -2167,7 +2167,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 246,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2494, questID = 784, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2494, questID = 784, targetStock = true } },
             Coord = { x = -4713.06, y = 382.12 },
             RaidIcon = 3163,
             Class = "ROGUE",
@@ -2200,7 +2200,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 249,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2491, questID = 784, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2491, questID = 784, targetStock = true } },
             Coord = { x = -4713.06, y = 382.12 },
             RaidIcon = 3163,
             Class = "WARRIOR",
@@ -2212,7 +2212,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 250,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2490, questID = 784, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2490, questID = 784, targetStock = true } },
             Coord = { x = -4713.06, y = 382.12 },
             RaidIcon = 3163,
             Class = "WARRIOR",
@@ -2234,7 +2234,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 252,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2506, questID = 784, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2506, questID = 784, targetStock = true } },
             Coord = { x = -4763.29, y = 361.67 },
             RaidIcon = 3165,
             Class = "HUNTER",
@@ -2265,7 +2265,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 255,
         },
         {
-            BuyMerchant = { { quantity = 1000, itemID = 2512, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1000, itemID = 2512, targetStock = true } },
             Coord = { x = -4763.29, y = 361.67 },
             RaidIcon = 3165,
             Class = "HUNTER",
@@ -3177,7 +3177,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 373,
         },
         {
-            BuyMerchant = { { quantity = 1200, itemID = 2515, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1200, itemID = 2515, targetStock = true } },
             Coord = { x = -4763.29, y = 361.67 },
             RaidIcon = 3165,
             Class = "HUNTER",
@@ -3311,7 +3311,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 387,
         },
         {
-            BuyMerchant = { { quantity = 5, itemID = 117, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 5, itemID = 117, targetStock = true } },
             Coord = { x = -4666, y = 305.63 },
             RaidIcon = 3881,
             Class = "HUNTER",
@@ -3726,7 +3726,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 437,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2507, questID = 835, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2507, questID = 835, targetStock = true } },
             Coord = { x = -4819.1, y = 2099.05 },
             RaidIcon = 3409,
             Class = "HUNTER",
@@ -3895,7 +3895,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 458,
         },
         {
-            BuyMerchant = { { quantity = 15, itemID = 2287, questID = 828, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 15, itemID = 2287, questID = 828, targetStock = true } },
             Coord = { x = -4686.09, y = 340.52 },
             RaidIcon = 6928,
             Class = { "ROGUE", "WARRIOR" },
@@ -3913,7 +3913,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 460,
         },
         {
-            BuyMerchant = { { quantity = 15, itemID = 1179, questID = 828, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 15, itemID = 1179, questID = 828, targetStock = true } },
             Coord = { x = -4686.09, y = 340.52 },
             RaidIcon = 6928,
             Class = { "MAGE", "PRIEST", "SHAMAN", "WARLOCK" },
@@ -5008,7 +5008,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 589,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 3135, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 3135, targetStock = true } },
             Coord = { x = -4355.53, y = 1520.68 },
             RaidIcon = 3313,
             Class = "ROGUE",
@@ -5058,7 +5058,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 595,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 854, questID = 924, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 854, questID = 924, targetStock = true } },
             Coord = { x = -4347.54, y = 1634.33 },
             RaidIcon = 3314,
             Class = "SHAMAN",

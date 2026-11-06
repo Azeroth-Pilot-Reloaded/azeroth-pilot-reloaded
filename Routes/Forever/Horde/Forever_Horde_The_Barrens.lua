@@ -519,7 +519,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 40,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2507 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2507 } },
             Coord = { x = -2556.23, y = -351.54 },
             Range = 5,
             RaidIcon = 3488,
@@ -535,7 +535,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 41,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2511 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2511 } },
             Coord = { x = -2556.23, y = -351.54 },
             Range = 5,
             RaidIcon = 3488,
@@ -1004,7 +1004,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 86,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2507 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2507 } },
             Coord = { x = -2556.23, y = -351.54 },
             Range = 5,
             RaidIcon = 3488,
@@ -1020,7 +1020,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 87,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2511 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2511 } },
             Coord = { x = -2556.23, y = -351.54 },
             Range = 5,
             RaidIcon = 3488,
@@ -1036,7 +1036,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 88,
         },
         {
-            BuyMerchant = { { itemID = 4778, quantity = 1, targetStock = true, optional = true, conditions = { HasSpell = 199 } }, { itemID = 858, quantity = 5, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 4778, quantity = 1, targetStock = true, optional = true, conditions = { HasSpell = 199 } }, { isSupply = true, itemID = 858, quantity = 5, targetStock = true, optional = true } },
             Note = { "LIZZARIK_CROSSROADS_SKIP_ABSENT" },
             Coord = { x = -2697.08, y = -461.67 },
             NoArrow = true,
@@ -1050,7 +1050,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 89,
         },
         {
-            BuyMerchant = { { itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
 
 
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 52, 29.8),
@@ -1062,7 +1062,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 90,
         },
         {
-            BuyMerchant = { { itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
 
 
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 52, 29.8),
@@ -1074,7 +1074,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 91,
         },
         {
-            BuyMerchant = { { itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
 
 
             Fillers = { [1525] = { 1 } },
@@ -1711,7 +1711,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 154,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2024 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2024 } },
             Coord = { x = -3684.07, y = -919.74 },
             Range = 5,
             RaidIcon = 3491,
@@ -1727,7 +1727,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 155,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2030 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2030 } },
             Coord = { x = -3684.07, y = -919.74 },
             Range = 5,
             RaidIcon = 3491,
@@ -1743,7 +1743,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 156,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2025 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2025 } },
             Coord = { x = -3684.07, y = -919.74 },
             Range = 5,
             RaidIcon = 3491,
@@ -1759,7 +1759,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 157,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2026 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2026 } },
             Coord = { x = -3684.07, y = -919.74 },
             Range = 5,
             RaidIcon = 3491,
@@ -1775,7 +1775,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 158,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2030 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2030 } },
             Coord = { x = -3684.07, y = -919.74 },
             Range = 5,
             RaidIcon = 3491,
@@ -1791,7 +1791,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 159,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2030 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2030 } },
             Coord = { x = -3684.07, y = -919.74 },
             Range = 5,
             RaidIcon = 3491,
@@ -1807,7 +1807,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 160,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2027 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2027 } },
             Coord = { x = -3684.07, y = -919.74 },
             Range = 5,
             RaidIcon = 3491,
@@ -1823,7 +1823,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 161,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2027 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2027 } },
             Coord = { x = -3684.07, y = -919.74 },
             Range = 5,
             RaidIcon = 3491,
@@ -1884,7 +1884,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 167,
         },
         {
-            BuyMerchant = { { quantity = 10, itemID = 1205, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 10, itemID = 1205, targetStock = true } },
             Coord = { x = -3664.82, y = -1050.14 },
             Range = 5,
             RaidIcon = 6791,
@@ -1905,7 +1905,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 169,
         },
         {
-            BuyMerchant = { { quantity = 10, itemID = 1205, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 10, itemID = 1205, targetStock = true } },
             Coord = { x = -3664.82, y = -1050.14 },
             Range = 5,
             RaidIcon = 6791,
@@ -2261,7 +2261,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 207,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2024 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2024 } },
             Coord = { x = -3684.07, y = -919.74 },
             Range = 5,
             RaidIcon = 3491,
@@ -2277,7 +2277,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 208,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2030 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2030 } },
             Coord = { x = -3684.07, y = -919.74 },
             Range = 5,
             RaidIcon = 3491,
@@ -2293,7 +2293,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 209,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2025 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2025 } },
             Coord = { x = -3684.07, y = -919.74 },
             Range = 5,
             RaidIcon = 3491,
@@ -2309,7 +2309,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 210,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2026 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2026 } },
             Coord = { x = -3684.07, y = -919.74 },
             Range = 5,
             RaidIcon = 3491,
@@ -2325,7 +2325,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 211,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2030 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2030 } },
             Coord = { x = -3684.07, y = -919.74 },
             Range = 5,
             RaidIcon = 3491,
@@ -2341,7 +2341,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 212,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2030 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2030 } },
             Coord = { x = -3684.07, y = -919.74 },
             Range = 5,
             RaidIcon = 3491,
@@ -2357,7 +2357,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 213,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2027 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2027 } },
             Coord = { x = -3684.07, y = -919.74 },
             Range = 5,
             RaidIcon = 3491,
@@ -2373,7 +2373,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 214,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2027 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2027 } },
             Coord = { x = -3684.07, y = -919.74 },
             Range = 5,
             RaidIcon = 3491,
@@ -2616,7 +2616,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 240,
         },
         {
-            BuyMerchant = { { quantity = 1200, itemID = 2515, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1200, itemID = 2515, targetStock = true } },
             Coord = { x = -2612.98, y = -411.0 },
             Range = 5,
             RaidIcon = 3481,
@@ -2630,7 +2630,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 241,
         },
         {
-            BuyMerchant = { { quantity = 1200, itemID = 2519, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1200, itemID = 2519, targetStock = true } },
             Coord = { x = -2612.98, y = -411.0 },
             Range = 5,
             RaidIcon = 3481,
@@ -2644,7 +2644,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 242,
         },
         {
-            BuyMerchant = { { quantity = 1000, itemID = 2519, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1000, itemID = 2519, targetStock = true } },
             Coord = { x = -2612.98, y = -411.0 },
             Range = 5,
             RaidIcon = 3481,
@@ -2658,7 +2658,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 243,
         },
         {
-            BuyMerchant = { { quantity = 1000, itemID = 2515, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1000, itemID = 2515, targetStock = true } },
             Coord = { x = -2612.98, y = -411.0 },
             Range = 5,
             RaidIcon = 3481,
@@ -2672,7 +2672,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 244,
         },
         {
-            BuyMerchant = { { itemID = 2515, quantity = 1200, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2515, quantity = 1200, targetStock = true } },
             Coord = { x = -2556.23, y = -351.54 },
             Range = 5,
             RaidIcon = 3488,
@@ -2686,7 +2686,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 245,
         },
         {
-            BuyMerchant = { { itemID = 2519, quantity = 1200, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2519, quantity = 1200, targetStock = true } },
             Coord = { x = -2556.23, y = -351.54 },
             Range = 5,
             RaidIcon = 3488,
@@ -2700,7 +2700,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 246,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2511 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2511 } },
             Coord = { x = -2556.23, y = -351.54 },
             Range = 5,
             RaidIcon = 3488,
@@ -3934,7 +3934,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 375,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 3026 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 3026 } },
             Coord = { x = -4819.1, y = 2099.05 },
             Range = 5,
             RaidIcon = 3409,
@@ -3950,7 +3950,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 376,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 926 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 926 } },
             Coord = { x = -4819.1, y = 2099.05 },
             Range = 5,
             RaidIcon = 3409,
@@ -4256,7 +4256,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 408,
         },
         {
-            BuyMerchant = { { itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 52, 29.8),
             Range = 5,
             MerchantNPC = 3934,
@@ -4275,7 +4275,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 410,
         },
         {
-            BuyMerchant = { { itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 52, 29.8),
             Range = 5,
             MerchantNPC = 3934,
@@ -4295,7 +4295,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 412,
         },
         {
-            BuyMerchant = { { itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 52, 29.8),
             Range = 5,
             MerchantNPC = 3934,
@@ -4588,7 +4588,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 444,
         },
         {
-            BuyMerchant = { { quantity = 1800, itemID = 2515, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1800, itemID = 2515, targetStock = true } },
             Coord = { x = -2612.98, y = -411.0 },
             Range = 5,
             RaidIcon = 3481,
@@ -4602,7 +4602,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 445,
         },
         {
-            BuyMerchant = { { quantity = 1800, itemID = 2519, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1800, itemID = 2519, targetStock = true } },
             Coord = { x = -2612.98, y = -411.0 },
             Range = 5,
             RaidIcon = 3481,
@@ -4909,7 +4909,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 479,
         },
         {
-            BuyMerchant = { { quantity = 10, itemID = 1205, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 10, itemID = 1205, targetStock = true } },
             Coord = { x = -3664.82, y = -1050.14 },
             Range = 5,
             RaidIcon = 6791,
@@ -4929,7 +4929,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 481,
         },
         {
-            BuyMerchant = { { quantity = 10, itemID = 1205, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 10, itemID = 1205, targetStock = true } },
             Coord = { x = -3664.82, y = -1050.14 },
             Range = 5,
             RaidIcon = 6791,
@@ -5535,7 +5535,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 544,
         },
         {
-            BuyMerchant = { { quantity = 2200, itemID = 2515, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 2200, itemID = 2515, targetStock = true } },
             Coord = { x = -2556.23, y = -351.54 },
             Range = 5,
             RaidIcon = 3488,
@@ -5549,7 +5549,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 545,
         },
         {
-            BuyMerchant = { { quantity = 2200, itemID = 2519, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 2200, itemID = 2519, targetStock = true } },
             Coord = { x = -2556.23, y = -351.54 },
             Range = 5,
             RaidIcon = 3488,
@@ -5891,7 +5891,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 580,
         },
         {
-            BuyMerchant = { { itemID = 4778, quantity = 1, targetStock = true, optional = true, conditions = { HasSpell = 199 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4778, quantity = 1, targetStock = true, optional = true, conditions = { HasSpell = 199 } } },
             Coord = { x = -1815.48, y = 786.89 },
             Range = 5,
             AnyOf = { { Class = "DRUID" }, { Class = { "DRUID", "SHAMAN", "WARRIOR" }, Race = "Tauren" } },

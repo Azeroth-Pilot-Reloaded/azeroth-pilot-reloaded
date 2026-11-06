@@ -219,7 +219,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 17,
         },
         {
-            BuyMerchant = { { quantity = 1000, itemID = 2516, questID = 750, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1000, itemID = 2516, questID = 750, targetStock = true } },
             Coord = { x = -279.37, y = -2893.73 },
             RaidIcon = 3072,
             Class = "HUNTER",
@@ -230,7 +230,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 18,
         },
         {
-            BuyMerchant = { { quantity = 1000, itemID = 2512, questID = 750, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1000, itemID = 2512, questID = 750, targetStock = true } },
             Coord = { x = -279.37, y = -2893.73 },
             RaidIcon = 3072,
             Class = "HUNTER",
@@ -277,7 +277,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 23,
         },
         {
-            BuyMerchant = { { targetStock = true, quantity = 1, itemID = 2132, questID = 750 } },
+            BuyMerchant = { { isSupply = true, targetStock = true, quantity = 1, itemID = 2132, questID = 750 } },
             Coord = { x = -216.18, y = -2926.26 },
             RaidIcon = 3073,
             Class = "SHAMAN",
@@ -426,7 +426,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 42,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 5, targetStock = true, questID = 755 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 5, targetStock = true, questID = 755 } },
             Coord = { x = -279.37, y = -2893.73 },
             MerchantNPC = 3072,
             RaidIcon = 3072,
@@ -974,7 +974,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 107,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2495, questID = 761, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2495, questID = 761, targetStock = true } },
             Coord = { x = -297.87, y = -2279.97 },
             RaidIcon = 3077,
             Class = { "DRUID", "SHAMAN" },
@@ -1011,7 +1011,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 110,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2493, questID = 761, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2493, questID = 761, targetStock = true } },
             Coord = { x = -297.87, y = -2279.97 },
             RaidIcon = 3077,
             Class = "WARRIOR",
@@ -1048,7 +1048,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 113,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2509, questID = 761, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2509, questID = 761, targetStock = true } },
             Coord = { x = -289.65, y = -2275.51 },
             RaidIcon = 3078,
             Class = "HUNTER",
@@ -1061,7 +1061,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 114,
         },
         {
-            BuyMerchant = { { quantity = 1000, itemID = 2516, questID = 761, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1000, itemID = 2516, questID = 761, targetStock = true } },
             Coord = { x = -289.65, y = -2275.51 },
             RaidIcon = 3078,
             Class = "HUNTER",
@@ -1072,7 +1072,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 115,
         },
         {
-            BuyMerchant = { { quantity = 1000, itemID = 2512, questID = 761, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1000, itemID = 2512, questID = 761, targetStock = true } },
             Coord = { x = -308.14, y = -2248.11 },
             RaidIcon = 3076,
             Class = "HUNTER",
@@ -1345,7 +1345,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 150,
         },
         {
-            BuyMerchant = { { quantity = 10, itemID = 4541, questID = 746, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 10, itemID = 4541, questID = 746, targetStock = true } },
             Fillers = { [99411] = { 1 } },
             Coord = { x = -399.07, y = -2378.95 },
             Button = { ["99411-1"] = 287505 },
@@ -1378,7 +1378,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 153,
         },
         {
-            BuyMerchant = { { quantity = 10, itemID = 1179, questID = 746, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 10, itemID = 1179, questID = 746, targetStock = true } },
             Fillers = { [99411] = { 1 } },
             Coord = { x = -399.07, y = -2378.95 },
             Button = { ["99411-1"] = 287505 },
@@ -1433,7 +1433,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 158,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2495, questID = 749, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2495, questID = 749, targetStock = true } },
             Fillers = { [99411] = { 1 } },
             Coord = { x = -297.87, y = -2279.97 },
             Button = { ["99411-1"] = 287505 },
@@ -1462,7 +1462,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 160,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2493, questID = 749, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2493, questID = 749, targetStock = true } },
             Fillers = { [99411] = { 1 } },
             Coord = { x = -297.87, y = -2279.97 },
             Button = { ["99411-1"] = 287505 },
@@ -1491,7 +1491,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 162,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2509, questID = 749, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2509, questID = 749, targetStock = true } },
             Fillers = { [99411] = { 1 } },
             Coord = { x = -289.65, y = -2275.51 },
             Button = { ["99411-1"] = 287505 },
@@ -1751,7 +1751,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 192,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2495, questID = 743, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2495, questID = 743, targetStock = true } },
             Fillers = { [99411] = { 1 } },
             Coord = { x = -297.87, y = -2279.97 },
             Button = { ["99411-1"] = 287505 },
@@ -1780,7 +1780,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 194,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2493, questID = 743, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2493, questID = 743, targetStock = true } },
             Fillers = { [99411] = { 1 } },
             Coord = { x = -297.87, y = -2279.97 },
             Button = { ["99411-1"] = 287505 },
@@ -1809,7 +1809,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 196,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2509, questID = 743, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2509, questID = 743, targetStock = true } },
             Fillers = { [99411] = { 1 } },
             Coord = { x = -289.65, y = -2275.51 },
             Button = { ["99411-1"] = 287505 },
@@ -1824,7 +1824,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 197,
         },
         {
-            BuyMerchant = { { quantity = 1000, itemID = 2516, questID = 743, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1000, itemID = 2516, questID = 743, targetStock = true } },
             Fillers = { [99411] = { 1 } },
             Coord = { x = -289.65, y = -2275.51 },
             Button = { ["99411-1"] = 287505 },
@@ -1837,7 +1837,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 198,
         },
         {
-            BuyMerchant = { { quantity = 1000, itemID = 2512, questID = 743, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1000, itemID = 2512, questID = 743, targetStock = true } },
             Fillers = { [99411] = { 1 } },
             Coord = { x = -308.14, y = -2248.11 },
             Button = { ["99411-1"] = 287505 },
@@ -1984,7 +1984,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 214,
         },
         {
-            BuyMerchant = { { quantity = 10, itemID = 4541, questID = 746, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 10, itemID = 4541, questID = 746, targetStock = true } },
             Fillers = { [99411] = { 1 } },
             Coord = { x = -347.7, y = -2364.91 },
             Button = { ["99411-1"] = 287505 },
@@ -2018,7 +2018,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 217,
         },
         {
-            BuyMerchant = { { quantity = 10, itemID = 1179, questID = 746, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 10, itemID = 1179, questID = 746, targetStock = true } },
             Fillers = { [99411] = { 1 } },
             Coord = { x = -347.7, y = -2364.91 },
             Button = { ["99411-1"] = 287505 },
@@ -2395,7 +2395,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 266,
         },
         {
-            BuyMerchant = { { quantity = 1000, itemID = 2519, questID = 764, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1000, itemID = 2519, questID = 764, targetStock = true } },
             Coord = { x = -289.65, y = -2275.51 },
             RaidIcon = 3078,
             Class = "HUNTER",
@@ -2407,7 +2407,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 267,
         },
         {
-            BuyMerchant = { { quantity = 1000, itemID = 2512, questID = 764, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1000, itemID = 2512, questID = 764, targetStock = true } },
             Coord = { x = -308.14, y = -2248.11 },
             RaidIcon = 3076,
             Class = "HUNTER",
@@ -2747,7 +2747,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 304,
         },
         {
-            BuyMerchant = { { quantity = 5, itemID = 117, questID = 744, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 5, itemID = 117, questID = 744, targetStock = true } },
             Coord = { x = -29.42, y = -1182.54 },
             RaidIcon = 3025,
             Class = "HUNTER",
@@ -2765,7 +2765,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 306,
         },
         {
-            BuyMerchant = { { quantity = 20, itemID = 4541, questID = 818, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 20, itemID = 4541, questID = 818, targetStock = true } },
             Coord = { x = -399.07, y = -2378.95 },
             RaidIcon = 3884,
             Class = "WARRIOR",
@@ -2785,7 +2785,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 308,
         },
         {
-            BuyMerchant = { { quantity = 20, itemID = 1179, questID = 818, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 20, itemID = 1179, questID = 818, targetStock = true } },
             Coord = { x = -399.07, y = -2378.95 },
             RaidIcon = 3884,
             Class = { "DRUID", "SHAMAN" },

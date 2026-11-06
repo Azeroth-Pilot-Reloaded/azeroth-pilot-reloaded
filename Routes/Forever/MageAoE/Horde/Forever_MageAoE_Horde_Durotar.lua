@@ -588,7 +588,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
             _index = 78,
         },
         {
-            BuyMerchant = { { quantity = 20, itemID = 159, questID = 786 } },
+            BuyMerchant = { { isSupply = true, quantity = 20, itemID = 159, questID = 786 } },
             Coord = { x = -4938.83, y = -779.37 },
             ItemCount = { itemID = 159, count = 20, operator = "<" },
             Money = { copper = 100, operator = ">=" },
@@ -596,7 +596,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
             _index = 79,
         },
         {
-            BuyMerchant = { { quantity = 10, itemID = 159, questID = 786 } },
+            BuyMerchant = { { isSupply = true, quantity = 10, itemID = 159, questID = 786 } },
             Coord = { x = -4938.83, y = -779.37 },
             ItemCount = { itemID = 159, count = 10, operator = "<" },
             Money = { copper = 50, operator = ">=" },
@@ -832,7 +832,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
             _index = 114,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 15 } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 15 } },
             Coord = { x = -4686.09, y = 340.52 },
             ItemCount = { itemID = 1179, count = 15, operator = "<" },
             Money = { copper = 375, operator = ">=" },
@@ -1653,7 +1653,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
             _index = 224,
         },
         {
-            BuyMerchant = { { quantity = 15, itemID = 1179, questID = 828 } },
+            BuyMerchant = { { isSupply = true, quantity = 15, itemID = 1179, questID = 828 } },
             Coord = { x = -4686.09, y = 340.52 },
             ItemCount = { itemID = 1179, count = 15, operator = "<" },
             Money = { copper = 375, operator = ">=" },

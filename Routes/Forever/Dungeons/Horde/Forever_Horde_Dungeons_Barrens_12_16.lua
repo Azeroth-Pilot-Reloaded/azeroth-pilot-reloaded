@@ -428,7 +428,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 39,
         },
         {
-            BuyMerchant = { { itemID = 2507, quantity = 1, questID = 871 } },
+            BuyMerchant = { { isSupply = true, itemID = 2507, quantity = 1, questID = 871 } },
             Coord = { x = -2556.23, y = -351.54 },
             Class = "HUNTER",
             EquippedItemStat = { { slot = 18, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 18, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 5.7, precision = 1, allowMissing = true } },
@@ -439,7 +439,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 40,
         },
         {
-            BuyMerchant = { { itemID = 2511, quantity = 1, questID = 871 } },
+            BuyMerchant = { { isSupply = true, itemID = 2511, quantity = 1, questID = 871 } },
             Coord = { x = -2556.23, y = -351.54 },
             Class = "HUNTER",
             EquippedItemStat = { { slot = 18, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 18, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 4.9, precision = 1, allowMissing = true } },
@@ -740,7 +740,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 72,
         },
         {
-            BuyMerchant = { { itemID = 2507, quantity = 1, questID = 871 } },
+            BuyMerchant = { { isSupply = true, itemID = 2507, quantity = 1, questID = 871 } },
             Coord = { x = -2556.23, y = -351.54 },
             Class = "HUNTER",
             EquippedItemStat = { { slot = 18, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 18, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 5.7, precision = 1, allowMissing = true } },
@@ -751,7 +751,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 73,
         },
         {
-            BuyMerchant = { { itemID = 2511, quantity = 1, questID = 871 } },
+            BuyMerchant = { { isSupply = true, itemID = 2511, quantity = 1, questID = 871 } },
             Coord = { x = -2556.23, y = -351.54 },
             Class = "HUNTER",
             EquippedItemStat = { { slot = 18, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 18, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 4.9, precision = 1, allowMissing = true } },
@@ -1125,7 +1125,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 115,
         },
         {
-            BuyMerchant = { { itemID = 2024, quantity = 1, questID = 895 } },
+            BuyMerchant = { { isSupply = true, itemID = 2024, quantity = 1, questID = 895 } },
             Coord = { x = -3684.07, y = -919.74 },
             Class = "WARRIOR",
             EquippedItemStat = { { slot = 16, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 12.5, precision = 1, allowMissing = true } },
@@ -1136,7 +1136,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 116,
         },
         {
-            BuyMerchant = { { itemID = 2030, quantity = 1, questID = 850 } },
+            BuyMerchant = { { isSupply = true, itemID = 2030, quantity = 1, questID = 850 } },
             Coord = { x = -3684.07, y = -919.74 },
             Class = "WARRIOR",
             EquippedItemStat = { { slot = 16, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 11.9, precision = 1, allowMissing = true } },
@@ -1147,7 +1147,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 117,
         },
         {
-            BuyMerchant = { { itemID = 2025, quantity = 1, questID = 850 } },
+            BuyMerchant = { { isSupply = true, itemID = 2025, quantity = 1, questID = 850 } },
             Coord = { x = -3684.07, y = -919.74 },
             Class = "WARRIOR",
             EquippedItemStat = { { slot = 16, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 11.8, precision = 1, allowMissing = true } },
@@ -1158,7 +1158,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 118,
         },
         {
-            BuyMerchant = { { itemID = 2026, quantity = 1, questID = 850 } },
+            BuyMerchant = { { isSupply = true, itemID = 2026, quantity = 1, questID = 850 } },
             Coord = { x = -3684.07, y = -919.74 },
             Class = "WARRIOR",
             EquippedItemStat = { { slot = 16, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 12.5, precision = 1, allowMissing = true } },
@@ -1169,7 +1169,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 119,
         },
         {
-            BuyMerchant = { { itemID = 2030, quantity = 1, questID = 895 } },
+            BuyMerchant = { { isSupply = true, itemID = 2030, quantity = 1, questID = 895 } },
             Coord = { x = -3684.07, y = -919.74 },
             Class = "SHAMAN",
             EquippedItemStat = { { slot = 16, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 11.9, precision = 1, allowMissing = true } },
@@ -1180,7 +1180,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 120,
         },
         {
-            BuyMerchant = { { itemID = 2027, quantity = 1, questID = 895 } },
+            BuyMerchant = { { isSupply = true, itemID = 2027, quantity = 1, questID = 895 } },
             Coord = { x = -3684.07, y = -919.74 },
             Class = "ROGUE",
             EquippedItemStat = { { slot = 16, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 8.6, precision = 1, allowMissing = true } },
@@ -1191,7 +1191,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 121,
         },
         {
-            BuyMerchant = { { itemID = 2027, quantity = 2, questID = 895 } },
+            BuyMerchant = { { isSupply = true, itemID = 2027, quantity = 2, questID = 895 } },
             Coord = { x = -3684.07, y = -919.74 },
             Class = "ROGUE",
             EquippedItemStat = { { slot = 17, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 17, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 8.6, precision = 1, allowMissing = true } },
@@ -1232,7 +1232,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 126,
         },
         {
-            BuyMerchant = { { itemID = 1205, quantity = 10, questID = 895 } },
+            BuyMerchant = { { isSupply = true, itemID = 1205, quantity = 10, questID = 895 } },
             Coord = { x = -3664.82, y = -1050.14 },
             Class = { "DRUID", "MAGE", "PRIEST", "SHAMAN", "WARLOCK" },
             IsQuestOnQuest = 887,
@@ -1362,7 +1362,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 142,
         },
         {
-            BuyMerchant = { { itemID = 2024, quantity = 1, questID = 850 } },
+            BuyMerchant = { { isSupply = true, itemID = 2024, quantity = 1, questID = 850 } },
             Coord = { x = -3684.07, y = -919.74 },
             Class = "WARRIOR",
             EquippedItemStat = { { slot = 16, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 12.5, precision = 1, allowMissing = true } },
@@ -1373,7 +1373,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 143,
         },
         {
-            BuyMerchant = { { itemID = 2030, quantity = 1, questID = 850 } },
+            BuyMerchant = { { isSupply = true, itemID = 2030, quantity = 1, questID = 850 } },
             Coord = { x = -3684.07, y = -919.74 },
             Class = "WARRIOR",
             EquippedItemStat = { { slot = 16, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 11.9, precision = 1, allowMissing = true } },
@@ -1384,7 +1384,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 144,
         },
         {
-            BuyMerchant = { { itemID = 2025, quantity = 1, questID = 850 } },
+            BuyMerchant = { { isSupply = true, itemID = 2025, quantity = 1, questID = 850 } },
             Coord = { x = -3684.07, y = -919.74 },
             Class = "WARRIOR",
             EquippedItemStat = { { slot = 16, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 11.8, precision = 1, allowMissing = true } },
@@ -1395,7 +1395,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 145,
         },
         {
-            BuyMerchant = { { itemID = 2026, quantity = 1, questID = 850 } },
+            BuyMerchant = { { isSupply = true, itemID = 2026, quantity = 1, questID = 850 } },
             Coord = { x = -3684.07, y = -919.74 },
             Class = "WARRIOR",
             EquippedItemStat = { { slot = 16, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 12.5, precision = 1, allowMissing = true } },
@@ -1406,7 +1406,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 146,
         },
         {
-            BuyMerchant = { { itemID = 2030, quantity = 1, questID = 850 } },
+            BuyMerchant = { { isSupply = true, itemID = 2030, quantity = 1, questID = 850 } },
             Coord = { x = -3684.07, y = -919.74 },
             Class = "SHAMAN",
             EquippedItemStat = { { slot = 16, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 11.9, precision = 1, allowMissing = true } },
@@ -1417,7 +1417,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 147,
         },
         {
-            BuyMerchant = { { itemID = 2027, quantity = 1, questID = 850 } },
+            BuyMerchant = { { isSupply = true, itemID = 2027, quantity = 1, questID = 850 } },
             Coord = { x = -3684.07, y = -919.74 },
             Class = "ROGUE",
             EquippedItemStat = { { slot = 16, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 8.6, precision = 1, allowMissing = true } },
@@ -1428,7 +1428,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 148,
         },
         {
-            BuyMerchant = { { itemID = 2027, quantity = 2, questID = 850 } },
+            BuyMerchant = { { isSupply = true, itemID = 2027, quantity = 2, questID = 850 } },
             Coord = { x = -3684.07, y = -919.74 },
             Class = "ROGUE",
             EquippedItemStat = { { slot = 17, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 17, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 8.6, precision = 1, allowMissing = true } },
@@ -1660,7 +1660,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 175,
         },
         {
-            BuyMerchant = { { itemID = 2515, quantity = 1200, questID = 850 } },
+            BuyMerchant = { { isSupply = true, itemID = 2515, quantity = 1200, questID = 850 } },
             Coord = { x = -2612.98, y = -411.0 },
             Class = "HUNTER",
             ItemCount = { itemID = 2515, count = 1200, operator = "<" },
@@ -1669,7 +1669,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 176,
         },
         {
-            BuyMerchant = { { itemID = 2519, quantity = 1000, questID = 850 } },
+            BuyMerchant = { { isSupply = true, itemID = 2519, quantity = 1000, questID = 850 } },
             Coord = { x = -2612.98, y = -411.0 },
             Class = "HUNTER",
             ItemCount = { itemID = 2519, count = 1000, operator = "<" },
@@ -1678,7 +1678,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 177,
         },
         {
-            BuyMerchant = { { itemID = 2515, quantity = 1200 } },
+            BuyMerchant = { { isSupply = true, itemID = 2515, quantity = 1200 } },
             Note = { "NOT_BUY_REINFORCED_BOW" },
             Coord = { x = -2556.23, y = -351.54 },
             Class = "HUNTER",
@@ -1689,7 +1689,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 178,
         },
         {
-            BuyMerchant = { { itemID = 2511, quantity = 1, questID = 871 } },
+            BuyMerchant = { { isSupply = true, itemID = 2511, quantity = 1, questID = 871 } },
             Coord = { x = -2556.23, y = -351.54 },
             Class = "HUNTER",
             EquippedItemStat = { { slot = 18, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 18, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 4.9, precision = 1, allowMissing = true } },

@@ -258,7 +258,7 @@ class RouteSchema:
                 fields["quantityFromSkill"] = obj({"skill": union(ID, TEXT), "skillID": ID, "rank": ID},
                                                    required=("rank",), choices=(("skill", "skillID"),))
             if name == "BuyMerchant":
-                fields.update(targetStock=BOOL, optional=BOOL, reserveCopper=COUNT, conditions=condition,
+                fields.update(targetStock=BOOL, optional=BOOL, isSupply=BOOL, reserveCopper=COUNT, conditions=condition,
                               quantityFromItemID=ID, bagSlots=number(1, 40, integer=True))
             self.step_fields[name] = array(obj(fields,
                                                required=("itemID",),

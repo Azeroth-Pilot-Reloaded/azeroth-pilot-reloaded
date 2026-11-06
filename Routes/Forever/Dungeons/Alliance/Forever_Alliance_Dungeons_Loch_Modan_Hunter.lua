@@ -246,7 +246,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
             _index = 31,
         },
         {
-            BuyMerchant = { { itemID = 2511, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2511, quantity = 1 } },
             Coord = { x = -2982.01, y = -5286.93 },
             EquippedItemStat = { slot = 18, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 5.0, precision = 1, allowMissing = true },
             ItemCount = { itemID = 2511, count = 1, operator = "<" },

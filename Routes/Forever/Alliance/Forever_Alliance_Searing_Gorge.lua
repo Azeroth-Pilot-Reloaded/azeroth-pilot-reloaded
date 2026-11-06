@@ -757,7 +757,7 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
             _index = 92,
         },
         {
-            BuyMerchant = { { itemID = 17031, quantity = 10 } },
+            BuyMerchant = { { isSupply = true, itemID = 17031, quantity = 10 } },
             Coord = { x = -961.29, y = -4715.92 },
             Class = "MAGE",
             ItemCount = { itemID = 17031, count = 0, operator = "==" },
@@ -767,7 +767,7 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
             _index = 93,
         },
         {
-            BuyMerchant = { { itemID = 17031, quantity = 9 } },
+            BuyMerchant = { { isSupply = true, itemID = 17031, quantity = 9 } },
             Coord = { x = -961.29, y = -4715.92 },
             Class = "MAGE",
             ItemCount = { itemID = 17031, count = 1, operator = "==" },
@@ -777,7 +777,7 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
             _index = 94,
         },
         {
-            BuyMerchant = { { itemID = 17031, quantity = 8 } },
+            BuyMerchant = { { isSupply = true, itemID = 17031, quantity = 8 } },
             Coord = { x = -961.29, y = -4715.92 },
             Class = "MAGE",
             ItemCount = { itemID = 17031, count = 2, operator = "==" },
@@ -787,7 +787,7 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
             _index = 95,
         },
         {
-            BuyMerchant = { { itemID = 17031, quantity = 7 } },
+            BuyMerchant = { { isSupply = true, itemID = 17031, quantity = 7 } },
             Coord = { x = -961.29, y = -4715.92 },
             Class = "MAGE",
             ItemCount = { itemID = 17031, count = 3, operator = "==" },
@@ -797,7 +797,7 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
             _index = 96,
         },
         {
-            BuyMerchant = { { itemID = 17031, quantity = 6 } },
+            BuyMerchant = { { isSupply = true, itemID = 17031, quantity = 6 } },
             Coord = { x = -961.29, y = -4715.92 },
             Class = "MAGE",
             ItemCount = { itemID = 17031, count = 4, operator = "==" },
@@ -807,7 +807,7 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
             _index = 97,
         },
         {
-            BuyMerchant = { { itemID = 17031, quantity = 5 } },
+            BuyMerchant = { { isSupply = true, itemID = 17031, quantity = 5 } },
             Coord = { x = -961.29, y = -4715.92 },
             Class = "MAGE",
             ItemCount = { itemID = 17031, count = 5, operator = "==" },
@@ -817,7 +817,7 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
             _index = 98,
         },
         {
-            BuyMerchant = { { itemID = 17031, quantity = 4 } },
+            BuyMerchant = { { isSupply = true, itemID = 17031, quantity = 4 } },
             Coord = { x = -961.29, y = -4715.92 },
             Class = "MAGE",
             ItemCount = { itemID = 17031, count = 6, operator = "==" },
@@ -827,7 +827,7 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
             _index = 99,
         },
         {
-            BuyMerchant = { { itemID = 17031, quantity = 3 } },
+            BuyMerchant = { { isSupply = true, itemID = 17031, quantity = 3 } },
             Coord = { x = -961.29, y = -4715.92 },
             Class = "MAGE",
             ItemCount = { itemID = 17031, count = 7, operator = "==" },
@@ -837,7 +837,7 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
             _index = 100,
         },
         {
-            BuyMerchant = { { itemID = 17031, quantity = 2 } },
+            BuyMerchant = { { isSupply = true, itemID = 17031, quantity = 2 } },
             Coord = { x = -961.29, y = -4715.92 },
             Class = "MAGE",
             ItemCount = { itemID = 17031, count = 8, operator = "==" },
@@ -847,7 +847,7 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
             _index = 101,
         },
         {
-            BuyMerchant = { { itemID = 17031, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 17031, quantity = 1 } },
             Coord = { x = -961.29, y = -4715.92 },
             Class = "MAGE",
             ItemCount = { itemID = 17031, count = 9, operator = "==" },
@@ -863,7 +863,7 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
             _index = 103,
         },
         {
-            BuyMerchant = { { itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } } },
+            BuyMerchant = { { isSupply = true, itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 52.4, 65.6),
             MerchantNPC = 6740,
             RaidIcon = 6740,

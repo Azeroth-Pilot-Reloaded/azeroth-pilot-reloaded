@@ -125,7 +125,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
             _index = 13,
         },
         {
-            BuyMerchant = { { itemID = 1710, quantity = 5, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1710, quantity = 5, targetStock = true, optional = true } },
             Coord = { x = 425.15, y = -14491.68 },
             Range = 5,
             Zone = 1434,
@@ -197,7 +197,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
             _index = 24,
         },
         {
-            BuyMerchant = { { itemID = 3030, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 25, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 2, operator = "==" } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 18, operator = "==" } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", value = 30, operator = "<=", allowMissing = true } } }, { itemID = 3033, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 25, EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 3, operator = "==" }, AllOf = { { EquippedItemStat = { slot = 0, stat = "LEVEL", value = 30, operator = "<=", allowMissing = true } } } } } },
+            BuyMerchant = { { isSupply = true, itemID = 3030, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 25, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 2, operator = "==" } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 18, operator = "==" } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", value = 30, operator = "<=", allowMissing = true } } }, { isSupply = true, itemID = 3033, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 25, EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 3, operator = "==" }, AllOf = { { EquippedItemStat = { slot = 0, stat = "LEVEL", value = 30, operator = "<=", allowMissing = true } } } } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 38, 3),
             Range = 5,
             Class = "HUNTER",
@@ -549,7 +549,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
             _index = 72,
         },
         {
-            BuyMerchant = { { itemID = 787, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { itemID = 4592, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { itemID = 4593, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { itemID = 4594, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { itemID = 21552, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { itemID = 8957, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } } },
+            BuyMerchant = { { isSupply = true, itemID = 787, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { isSupply = true, itemID = 4592, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { isSupply = true, itemID = 4593, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { isSupply = true, itemID = 4594, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { isSupply = true, itemID = 21552, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { isSupply = true, itemID = 8957, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 27, 77.2),
             MerchantNPC = 6807,
             RaidIcon = 6807,
@@ -564,7 +564,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
             _index = 73,
         },
         {
-            BuyMerchant = { { itemID = 787, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4592, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4593, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4594, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 21552, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 8957, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } } },
+            BuyMerchant = { { isSupply = true, itemID = 787, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4592, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4593, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4594, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 21552, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 8957, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 27, 77.2),
             MerchantNPC = 6807,
             RaidIcon = 6807,
@@ -657,7 +657,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
             _index = 86,
         },
         {
-            BuyMerchant = { { itemID = 1710, quantity = 5, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1710, quantity = 5, targetStock = true, optional = true } },
             Coord = { x = 425.15, y = -14491.68 },
             Range = 5,
             Zone = 1434,
@@ -1216,7 +1216,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
             _index = 11,
         },
         {
-            BuyMerchant = { { itemID = 1710, quantity = 5, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1710, quantity = 5, targetStock = true, optional = true } },
             Coord = { x = 425.15, y = -14491.68 },
             Range = 5,
             Zone = 1434,
@@ -1321,7 +1321,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
             _index = 26,
         },
         {
-            BuyMerchant = { { itemID = 3030, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 25, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 2, operator = "==" } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 18, operator = "==" } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", value = 30, operator = "<=", allowMissing = true } } }, { itemID = 3033, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 25, EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 3, operator = "==" }, AllOf = { { EquippedItemStat = { slot = 0, stat = "LEVEL", value = 30, operator = "<=", allowMissing = true } } } } } },
+            BuyMerchant = { { isSupply = true, itemID = 3030, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 25, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 2, operator = "==" } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 18, operator = "==" } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", value = 30, operator = "<=", allowMissing = true } } }, { isSupply = true, itemID = 3033, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 25, EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 3, operator = "==" }, AllOf = { { EquippedItemStat = { slot = 0, stat = "LEVEL", value = 30, operator = "<=", allowMissing = true } } } } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 38, 3),
             Range = 5,
             Class = "HUNTER",
@@ -1683,7 +1683,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
             _index = 68,
         },
         {
-            BuyMerchant = { { itemID = 3030, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 25, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 2, operator = "==" } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 18, operator = "==" } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", value = 30, operator = "<=", allowMissing = true } } }, { itemID = 3033, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 25, EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 3, operator = "==" }, AllOf = { { EquippedItemStat = { slot = 0, stat = "LEVEL", value = 30, operator = "<=", allowMissing = true } } } } } },
+            BuyMerchant = { { isSupply = true, itemID = 3030, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 25, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 2, operator = "==" } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 18, operator = "==" } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", value = 30, operator = "<=", allowMissing = true } } }, { isSupply = true, itemID = 3033, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 25, EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 3, operator = "==" }, AllOf = { { EquippedItemStat = { slot = 0, stat = "LEVEL", value = 30, operator = "<=", allowMissing = true } } } } } },
             Fillers = { [1107] = { 1 } },
             Note = { "BUY_ITEMS_AUCTION_HOUSE", "SKIP_STEP_NOT_ELIXIR_WATER_BREATHING_WARLOCK" },
             Coord = { x = 459.61, y = -12410.97 },
@@ -1767,7 +1767,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
             _index = 77,
         },
         {
-            BuyMerchant = { { itemID = 3030, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 25, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 2, operator = "==" } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 18, operator = "==" } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", value = 30, operator = "<=", allowMissing = true } } }, { itemID = 3033, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 25, EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 3, operator = "==" }, AllOf = { { EquippedItemStat = { slot = 0, stat = "LEVEL", value = 30, operator = "<=", allowMissing = true } } } } } },
+            BuyMerchant = { { isSupply = true, itemID = 3030, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 25, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 2, operator = "==" } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 18, operator = "==" } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", value = 30, operator = "<=", allowMissing = true } } }, { isSupply = true, itemID = 3033, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 25, EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 3, operator = "==" }, AllOf = { { EquippedItemStat = { slot = 0, stat = "LEVEL", value = 30, operator = "<=", allowMissing = true } } } } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 38, 3),
             Range = 5,
             Class = "HUNTER",
@@ -1906,7 +1906,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
             _index = 96,
         },
         {
-            BuyMerchant = { { itemID = 787, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { itemID = 4592, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { itemID = 4593, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { itemID = 4594, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { itemID = 21552, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { itemID = 8957, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } } },
+            BuyMerchant = { { isSupply = true, itemID = 787, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { isSupply = true, itemID = 4592, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { isSupply = true, itemID = 4593, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { isSupply = true, itemID = 4594, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { isSupply = true, itemID = 21552, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { isSupply = true, itemID = 8957, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 27, 77.2),
             MerchantNPC = 6807,
             RaidIcon = 6807,
@@ -1921,7 +1921,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
             _index = 97,
         },
         {
-            BuyMerchant = { { itemID = 787, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4592, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4593, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4594, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 21552, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 8957, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } } },
+            BuyMerchant = { { isSupply = true, itemID = 787, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4592, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4593, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4594, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 21552, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 8957, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 27, 77.2),
             MerchantNPC = 6807,
             RaidIcon = 6807,
@@ -1982,7 +1982,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
             _index = 105,
         },
         {
-            BuyMerchant = { { itemID = 1710, quantity = 5, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1710, quantity = 5, targetStock = true, optional = true } },
             Coord = { x = 425.15, y = -14491.68 },
             Range = 5,
             Zone = 1434,
@@ -2005,7 +2005,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
             _index = 108,
         },
         {
-            BuyMerchant = { { itemID = 15327, quantity = 400 } },
+            BuyMerchant = { { isSupply = true, itemID = 15327, quantity = 400 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 58.362, 61.678),
             Class = "WARRIOR",
             IsQuestUncompleted = 1363,
@@ -2183,7 +2183,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
             _index = 13,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 11307, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 11307, targetStock = true, optional = true } },
             Coord = { x = -1279.68, y = -4920.63 },
             MerchantNPC = 5122,
             RaidIcon = 5122,
@@ -2198,7 +2198,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
             _index = 14,
         },
         {
-            BuyMerchant = { { itemID = 3030, quantity = 400, targetStock = true, optional = true, conditions = { MinLevel = 25, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 2 } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 18 } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", operator = "<=", value = 30, allowMissing = true } } }, { itemID = 3033, quantity = 400, targetStock = true, optional = true, conditions = { MinLevel = 25, EquippedItemStat = { { slot = 18, stat = "SUBCLASS", operator = "==", value = 3 }, { slot = 0, stat = "LEVEL", operator = "<=", value = 30, allowMissing = true } } } } },
+            BuyMerchant = { { isSupply = true, itemID = 3030, quantity = 400, targetStock = true, optional = true, conditions = { MinLevel = 25, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 2 } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 18 } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", operator = "<=", value = 30, allowMissing = true } } }, { isSupply = true, itemID = 3033, quantity = 400, targetStock = true, optional = true, conditions = { MinLevel = 25, EquippedItemStat = { { slot = 18, stat = "SUBCLASS", operator = "==", value = 3 }, { slot = 0, stat = "LEVEL", operator = "<=", value = 30, allowMissing = true } } } } },
             Coord = { x = -1279.68, y = -4920.63 },
             MerchantNPC = 5122,
             RaidIcon = 5122,
@@ -2263,7 +2263,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
             _index = 21,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 11307, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 11307, targetStock = true, optional = true } },
             Coord = { x = 706.15, y = -8795.15 },
             MerchantNPC = 1298,
             RaidIcon = 1298,
@@ -2278,7 +2278,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
             _index = 22,
         },
         {
-            BuyMerchant = { { itemID = 3030, quantity = 400, targetStock = true, optional = true, conditions = { MinLevel = 25, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 2 } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 18 } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", operator = "<=", value = 30, allowMissing = true } } }, { itemID = 3033, quantity = 400, targetStock = true, optional = true, conditions = { MinLevel = 25, EquippedItemStat = { { slot = 18, stat = "SUBCLASS", operator = "==", value = 3 }, { slot = 0, stat = "LEVEL", operator = "<=", value = 30, allowMissing = true } } } } },
+            BuyMerchant = { { isSupply = true, itemID = 3030, quantity = 400, targetStock = true, optional = true, conditions = { MinLevel = 25, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 2 } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 18 } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", operator = "<=", value = 30, allowMissing = true } } }, { isSupply = true, itemID = 3033, quantity = 400, targetStock = true, optional = true, conditions = { MinLevel = 25, EquippedItemStat = { { slot = 18, stat = "SUBCLASS", operator = "==", value = 3 }, { slot = 0, stat = "LEVEL", operator = "<=", value = 30, allowMissing = true } } } } },
             Coord = { x = 706.15, y = -8795.15 },
             MerchantNPC = 1298,
             RaidIcon = 1298,
@@ -2357,7 +2357,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
             _index = 31,
         },
         {
-            BuyMerchant = { { itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } } },
+            BuyMerchant = { { isSupply = true, itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 52.4, 65.6),
             MerchantNPC = 6740,
             RaidIcon = 6740,
@@ -2491,7 +2491,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
             _index = 49,
         },
         {
-            BuyMerchant = { { itemID = 1710, quantity = 5, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1710, quantity = 5, targetStock = true, optional = true } },
             Coord = { x = 425.15, y = -14491.68 },
             Range = 5,
             Zone = 1434,
@@ -2814,7 +2814,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
             _index = 89,
         },
         {
-            BuyMerchant = { { itemID = 787, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { itemID = 4592, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { itemID = 4593, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { itemID = 4594, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { itemID = 21552, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { itemID = 8957, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } } },
+            BuyMerchant = { { isSupply = true, itemID = 787, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { isSupply = true, itemID = 4592, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { isSupply = true, itemID = 4593, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { isSupply = true, itemID = 4594, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { isSupply = true, itemID = 21552, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { isSupply = true, itemID = 8957, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 27, 77.2),
             MerchantNPC = 6807,
             RaidIcon = 6807,
@@ -2829,7 +2829,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
             _index = 90,
         },
         {
-            BuyMerchant = { { itemID = 787, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4592, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4593, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4594, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 21552, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 8957, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } } },
+            BuyMerchant = { { isSupply = true, itemID = 787, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4592, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4593, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4594, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 21552, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 8957, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 27, 77.2),
             MerchantNPC = 6807,
             RaidIcon = 6807,
@@ -2956,7 +2956,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
             _index = 107,
         },
         {
-            BuyMerchant = { { itemID = 1710, quantity = 5, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1710, quantity = 5, targetStock = true, optional = true } },
             Coord = { x = 425.15, y = -14491.68 },
             Range = 5,
             Zone = 1434,

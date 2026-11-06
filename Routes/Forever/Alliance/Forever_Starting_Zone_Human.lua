@@ -826,7 +826,7 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
             _index = 96,
         },
         {
-            BuyMerchant = { { itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } } },
+            BuyMerchant = { { isSupply = true, itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 18.4, 51.4),
             MerchantNPC = 5111,
             RaidIcon = 5111,
@@ -855,7 +855,7 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
             _index = 98,
         },
         {
-            BuyMerchant = { { itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } } },
+            BuyMerchant = { { isSupply = true, itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { isSupply = true, itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { isSupply = true, itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { isSupply = true, itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { isSupply = true, itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { isSupply = true, itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.4, 48.4),
             MerchantNPC = 6734,
             RaidIcon = 6734,
@@ -872,7 +872,7 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
             _index = 99,
         },
         {
-            BuyMerchant = { { itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } } },
+            BuyMerchant = { { isSupply = true, itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, ClassNot = "MAGE" } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, ClassNot = "MAGE" } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } }, { isSupply = true, itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, ClassNot = "MAGE" } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" } } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.4, 48.4),
             MerchantNPC = 6734,
             RaidIcon = 6734,
@@ -1190,7 +1190,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 12,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 10 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 10 } },
             Coord = { x = -112.74, y = -8901.66 },
             Class = { "MAGE", "PRIEST", "WARLOCK" },
             IsQuestUncompleted = 33,
@@ -1291,7 +1291,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 25,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 10 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 10 } },
             Note = { "SAVE_MONEY_FOR_SPELLS" },
             Coord = { x = -112.74, y = -8901.66 },
             Class = { "MAGE", "PRIEST" },
@@ -1308,7 +1308,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 27,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 10 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 10 } },
             Coord = { x = -112.74, y = -8901.66 },
             Class = "WARLOCK",
             IsQuestUncompleted = 7,
@@ -1335,7 +1335,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 30,
         },
         {
-            BuyMerchant = { { itemID = 2139, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2139, quantity = 1, targetStock = true } },
             Coord = { x = -104.21, y = -8909.39 },
             Range = 5,
             RaidIcon = 78,
@@ -1506,7 +1506,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 52,
         },
         {
-            BuyMerchant = { { itemID = 2512, quantity = 200, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2512, quantity = 200, targetStock = true } },
             Coord = { x = -112.8, y = -8901.601 },
             Range = 5,
             RaidIcon = 152,
@@ -2308,7 +2308,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 152,
         },
         {
-            BuyMerchant = { { itemID = 2488, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2488, quantity = 1, targetStock = true } },
             Coord = { x = 94.01, y = -9464.89 },
             Range = 5,
             MerchantNPC = 54,
@@ -2334,7 +2334,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 154,
         },
         {
-            BuyMerchant = { { itemID = 2490, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2490, quantity = 1, targetStock = true } },
             Coord = { x = 94.01, y = -9464.89 },
             Range = 5,
             RaidIcon = 54,
@@ -2350,7 +2350,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 155,
         },
         {
-            BuyMerchant = { { itemID = 2494, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2494, quantity = 1, targetStock = true } },
             Coord = { x = 94.01, y = -9464.89 },
             Range = 5,
             RaidIcon = 54,
@@ -2366,7 +2366,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 156,
         },
         {
-            BuyMerchant = { { itemID = 2493, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2493, quantity = 1 } },
             Coord = { x = 94.01, y = -9464.89 },
             MerchantNPC = 54,
             RaidIcon = 54,
@@ -2431,7 +2431,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 165,
         },
         {
-            BuyMerchant = { { itemID = 2946, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2946, quantity = 1 } },
             Coord = { x = 9.64, y = -9465.36 },
             MerchantNPC = 151,
             RaidIcon = 151,
@@ -2554,7 +2554,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 178,
         },
         {
-            BuyMerchant = { { itemID = 414, quantity = 20 } },
+            BuyMerchant = { { isSupply = true, itemID = 414, quantity = 20 } },
             Coord = { x = 16.2, y = -9462.65 },
             MerchantNPC = 295,
             RaidIcon = 295,
@@ -2589,7 +2589,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 182,
         },
         {
-            BuyMerchant = { { itemID = 2506, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2506, quantity = 1, targetStock = true } },
             Coord = { x = 75.4, y = -9480.3 },
             Range = 5,
             RaidIcon = 1198,
@@ -2604,7 +2604,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 183,
         },
         {
-            BuyMerchant = { { itemID = 2512, quantity = 200, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2512, quantity = 200, targetStock = true } },
             Coord = { x = 75.4, y = -9480.3 },
             Range = 5,
             RaidIcon = 1198,
@@ -2753,7 +2753,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 199,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 1 } },
             Fillers = { [86] = { 1 } },
             Coord = { x = 65.28, y = -10008.2 },
             Range = 5,
@@ -3151,7 +3151,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 247,
         },
         {
-            BuyMerchant = { { itemID = 2488, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2488, quantity = 1, targetStock = true } },
             Fillers = { [91775] = { 2 } },
             Coord = { x = 94.01, y = -9464.89 },
             Range = 5,
@@ -3168,7 +3168,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 248,
         },
         {
-            BuyMerchant = { { itemID = 2490, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2490, quantity = 1, targetStock = true } },
             Fillers = { [91775] = { 2 } },
             Coord = { x = 94.01, y = -9464.89 },
             Range = 5,
@@ -3186,7 +3186,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 249,
         },
         {
-            BuyMerchant = { { itemID = 2494, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2494, quantity = 1, targetStock = true } },
             Fillers = { [91775] = { 2 } },
             Coord = { x = 94.01, y = -9464.89 },
             Range = 5,
@@ -3204,7 +3204,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 250,
         },
         {
-            BuyMerchant = { { itemID = 2493, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2493, quantity = 1 } },
             Fillers = { [91775] = { 2 } },
             Coord = { x = 94.01, y = -9464.89 },
             MerchantNPC = 54,
@@ -3419,7 +3419,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 272,
         },
         {
-            BuyMerchant = { { itemID = 414, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 414, quantity = 1 } },
             Fillers = { [91775] = { 2 } },
             Coord = { x = 16.2, y = -9462.65 },
             Range = 5,
@@ -3439,7 +3439,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 274,
         },
         {
-            BuyMerchant = { { itemID = 414, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 414, quantity = 1 } },
             Fillers = { [91775] = { 2 } },
             Coord = { x = 16.2, y = -9462.65 },
             Range = 5,
@@ -3450,7 +3450,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 275,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 1 } },
             Fillers = { [91775] = { 2 } },
             Coord = { x = 16.2, y = -9462.65 },
             Range = 5,
@@ -3470,7 +3470,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 277,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 1 } },
             Fillers = { [91775] = { 2 } },
             Coord = { x = 16.2, y = -9462.65 },
             Range = 5,
@@ -5090,7 +5090,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 458,
         },
         {
-            BuyMerchant = { { itemID = 3107, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 3107, quantity = 1 } },
             Fillers = { [91775] = { 2 } },
             Coord = { x = 596.43, y = -8831.7 },
             Class = "ROGUE",
@@ -5102,7 +5102,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 459,
         },
         {
-            BuyMerchant = { { itemID = 2946, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2946, quantity = 1 } },
             Fillers = { [91775] = { 2 } },
             Coord = { x = 596.43, y = -8831.7 },
             AllOf = { { ItemCount = { itemID = 2946, count = 1, operator = "<" } } },
@@ -5199,7 +5199,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 468,
         },
         {
-            BuyMerchant = { { itemID = 853, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 853, quantity = 1 } },
             Fillers = { [91775] = { 2 } },
             Note = { "CHECK_AUCTION_HOUSE_GEAR_UPGRADE", "SAVE_MONEY_FOR_SPELLS" },
             Coord = { x = 607.38, y = -8790.45 },
@@ -5212,7 +5212,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 469,
         },
         {
-            BuyMerchant = { { itemID = 853, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 853, quantity = 1 } },
             Fillers = { [91775] = { 2 } },
             Note = { "CHECK_AUCTION_HOUSE_GEAR_UPGRADE", "SAVE_MONEY_FOR_SPELLS" },
             Coord = { x = 607.38, y = -8790.45 },
@@ -5241,7 +5241,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 472,
         },
         {
-            BuyMerchant = { { itemID = 2507, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2507, quantity = 1 } },
             Fillers = { [91775] = { 2 } },
             Coord = { x = 702.7, y = -8791.8 },
             Class = "HUNTER",
@@ -5262,7 +5262,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 474,
         },
         {
-            BuyMerchant = { { itemID = 2515, quantity = 1200, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2515, quantity = 1200, targetStock = true } },
             Fillers = { [91775] = { 2 } },
             Coord = { x = 702.7, y = -8791.8 },
             Range = 5,
@@ -6067,7 +6067,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 560,
         },
         {
-            BuyMerchant = { { itemID = 3107, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 3107, quantity = 1 } },
             Fillers = { [91775] = { 2 } },
             Coord = { x = -1206.74, y = -5037.12 },
             Class = "WARRIOR",
@@ -6079,7 +6079,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 561,
         },
         {
-            BuyMerchant = { { itemID = 2946, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2946, quantity = 1 } },
             Fillers = { [91775] = { 2 } },
             Coord = { x = -1206.74, y = -5037.12 },
             AllOf = { { ItemCount = { itemID = 2946, count = 1, operator = "<" } } },
@@ -6580,7 +6580,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 616,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 1 } },
             Fillers = { [91775] = { 2 } },
             Coord = { x = -1577.16, y = -5671.2 },
             Range = 5,

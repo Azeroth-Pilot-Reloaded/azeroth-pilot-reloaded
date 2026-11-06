@@ -1175,7 +1175,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
             _index = 140,
         },
         {
-            BuyMerchant = { { itemID = 2207, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2207, quantity = 1 } },
             Coord = { x = -4320.75, y = 1750.51 },
             Class = "ROGUE",
             ItemCount = { itemID = 2207, count = 1, operator = "<" },
@@ -1263,7 +1263,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
             _index = 150,
         },
         {
-            BuyMerchant = { { itemID = 2928, quantity = 40, questID = 2479 }, { itemID = 3371, quantity = 40, questID = 2479 }, { itemID = 5140, quantity = 20, questID = 2479 } },
+            BuyMerchant = { { itemID = 2928, quantity = 40, questID = 2479 }, { itemID = 3371, quantity = 40, questID = 2479 }, { isSupply = true, itemID = 5140, quantity = 20, questID = 2479 } },
             Coord = { x = -4271.1, y = 1810.94 },
             AnyOf = { { ItemCount = { itemID = 2928, count = 40, operator = "<" } }, { ItemCount = { itemID = 3371, count = 40, operator = "<" } }, { ItemCount = { itemID = 5140, count = 20, operator = "<" } } },
             Class = "ROGUE",
@@ -1272,7 +1272,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
             _index = 151,
         },
         {
-            BuyMerchant = { { itemID = 5210, quantity = 1, questID = 1507 } },
+            BuyMerchant = { { isSupply = true, itemID = 5210, quantity = 1, questID = 1507 } },
             Coord = { x = -4299.99, y = 1820.67 },
             Class = { "PRIEST", "WARLOCK" },
             EquippedItemStat = { { slot = 18, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 18, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 17.4, precision = 1, allowMissing = true } },
@@ -1746,7 +1746,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
             _index = 200,
         },
         {
-            BuyMerchant = { { itemID = 3137, quantity = 1, questID = 6544 } },
+            BuyMerchant = { { isSupply = true, itemID = 3137, quantity = 1, questID = 6544 } },
             Coord = { x = -4355.53, y = 1520.68 },
             Class = "ROGUE",
             ItemCount = { itemID = 3137, count = 1, operator = "<" },

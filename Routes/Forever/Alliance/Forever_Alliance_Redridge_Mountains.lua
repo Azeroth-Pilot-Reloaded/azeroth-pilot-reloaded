@@ -182,7 +182,7 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
             _index = 11,
         },
         {
-            BuyMerchant = { { itemID = 5210, quantity = 1, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 5210, quantity = 1, targetStock = true, optional = true } },
             Note = { "EQUIP_WAND_LEVEL_20", "PREFER_NON_SHADOW_WAND" },
             Coord = { x = 804.55, y = -8862.47 },
             Class = { "PRIEST", "WARLOCK" },
@@ -405,7 +405,7 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
             _index = 38,
         },
         {
-            BuyMerchant = { { itemID = 2209, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2209, quantity = 1 } },
             Coord = { x = 609.63, y = -8787.71 },
             Class = "ROGUE",
             EquippedItemStat = { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 10.9, precision = 1, allowMissing = true },
@@ -1460,7 +1460,7 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
             _index = 163,
         },
         {
-            BuyMerchant = { { itemID = 923, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 923, quantity = 1 } },
             Coord = { x = 609.63, y = -8787.71 },
             Class = "ROGUE",
             EquippedItemStat = { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 12.2, precision = 1, allowMissing = true },
@@ -1495,7 +1495,7 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
             _index = 167,
         },
         {
-            BuyMerchant = { { itemID = 922, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 922, quantity = 1 } },
             Coord = { x = 607.48, y = -8790.4 },
             AnyOf = { { Race = { "Dwarf", "Human" }, Class = "PALADIN", IsQuestUncompleted = 1649 }, { Class = "WARRIOR", IsQuestUncompleted = 120 } },
             Class = { "PALADIN", "WARRIOR" },

@@ -736,7 +736,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             _index = 84,
         },
         {
-            BuyMerchant = { { itemID = 11307, quantity = 1, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 11307, quantity = 1, targetStock = true, optional = true } },
             Coord = { x = 706.15, y = -8795.15 },
             Range = 5,
             Class = "HUNTER",
@@ -747,7 +747,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             _index = 85,
         },
         {
-            BuyMerchant = { { itemID = 3030, quantity = 400, targetStock = true, optional = true, conditions = { MinLevel = 25, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 2 } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 18 } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", operator = "<=", value = 30, allowMissing = true } } }, { itemID = 3033, quantity = 400, targetStock = true, optional = true, conditions = { MinLevel = 25, EquippedItemStat = { { slot = 18, stat = "SUBCLASS", operator = "==", value = 3 }, { slot = 0, stat = "LEVEL", operator = "<=", value = 30, allowMissing = true } } } } },
+            BuyMerchant = { { isSupply = true, itemID = 3030, quantity = 400, targetStock = true, optional = true, conditions = { MinLevel = 25, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 2 } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 18 } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", operator = "<=", value = 30, allowMissing = true } } }, { isSupply = true, itemID = 3033, quantity = 400, targetStock = true, optional = true, conditions = { MinLevel = 25, EquippedItemStat = { { slot = 18, stat = "SUBCLASS", operator = "==", value = 3 }, { slot = 0, stat = "LEVEL", operator = "<=", value = 30, allowMissing = true } } } } },
             Coord = { x = 706.15, y = -8795.15 },
             MerchantNPC = 1298,
             RaidIcon = 1298,
@@ -764,7 +764,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             _index = 86,
         },
         {
-            BuyMerchant = { { itemID = 5238, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 5238, quantity = 1 } },
             Note = { "EQUIP_WAND_LEVEL_40" },
             Coord = { x = 804.95, y = -8862.74 },
             Range = 5,

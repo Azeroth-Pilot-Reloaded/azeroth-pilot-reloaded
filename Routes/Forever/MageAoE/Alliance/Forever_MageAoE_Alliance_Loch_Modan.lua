@@ -194,7 +194,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
             _index = 19,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 40, targetStock = true, optional = true }, { itemID = 4541, quantity = 20, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true }, { isSupply = true, itemID = 4541, quantity = 20, targetStock = true, optional = true } },
             Coord = { x = -2972.96, y = -5377.86 },
             Range = 5,
             MerchantNPC = 6734,
@@ -204,7 +204,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
             _index = 20,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 40, targetStock = true, optional = true }, { itemID = 4541, quantity = 20, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true }, { isSupply = true, itemID = 4541, quantity = 20, targetStock = true, optional = true } },
             Coord = { x = -2972.96, y = -5377.86 },
             Range = 5,
             MerchantNPC = 6734,
@@ -1144,7 +1144,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
             _index = 139,
         },
         {
-            BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, reserveCopper = 100 } },
+            BuyMerchant = { { isSupply = true, itemID = 929, quantity = 5, targetStock = true, optional = true, reserveCopper = 100 } },
             Coord = { x = -724.55, y = -3699.69 },
             Range = 5,
             MerchantNPC = 1453,

@@ -25,7 +25,7 @@ APR.RouteQuestStepList["Forever-Alliance-Blasted-Lands"] = {
             steps = {
                 {
                     UseItem = { itemID = 247841 },
-                    BuyMerchant = { { itemID = 11285, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 40, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 2, operator = "==" } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 18, operator = "==" } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", value = 45, operator = "<=", allowMissing = true } } } },
+                    BuyMerchant = { { isSupply = true, itemID = 11285, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 40, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 2, operator = "==" } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 18, operator = "==" } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", value = 45, operator = "<=", allowMissing = true } } } },
                     _index = 2,
                 },
             },
@@ -51,7 +51,7 @@ APR.RouteQuestStepList["Forever-Alliance-Blasted-Lands"] = {
             _index = 1,
         },
         {
-            BuyMerchant = { { itemID = 11285, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 40, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 2, operator = "==" } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 18, operator = "==" } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", value = 45, operator = "<=", allowMissing = true } } } },
+            BuyMerchant = { { isSupply = true, itemID = 11285, quantity = 2600, targetStock = true, optional = true, conditions = { MinLevel = 40, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 2, operator = "==" } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", value = 18, operator = "==" } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", value = 45, operator = "<=", allowMissing = true } } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 49.99, 57.641),
             Range = 5,
             Class = "HUNTER",

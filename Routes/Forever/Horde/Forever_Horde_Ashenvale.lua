@@ -844,7 +844,7 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
             _index = 102,
         },
         {
-            BuyMerchant = { { itemID = 5347, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 5347, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 44.16, 48.45),
             Range = 5,
             RaidIcon = 5816,

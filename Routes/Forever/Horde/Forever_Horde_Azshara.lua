@@ -103,7 +103,7 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
             _index = 7,
         },
         {
-            BuyMerchant = { { itemID = 5140, quantity = 20, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 5140, quantity = 20, targetStock = true, optional = true } },
 
             Note = { "CHOOSE_POISON_REAGENTS_LEARNED_RECIPES" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 42.1, 49.49),
@@ -379,7 +379,7 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
             _index = 35,
         },
         {
-            BuyMerchant = { { itemID = 3030, quantity = 2600, targetStock = true, optional = true, conditions = { AllOf = { { AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 2 } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 18 } } } }, { SkipForLvl = 40 }, { ItemCount = { itemID = 3030, count = 2600, operator = "<" } } } } }, { itemID = 3033, quantity = 2600, targetStock = true, optional = true, conditions = { AllOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 3 } }, { SkipForLvl = 40 }, { ItemCount = { itemID = 3033, count = 2600, operator = "<" } } } } }, { itemID = 11285, quantity = 2600, targetStock = true, optional = true, conditions = { AllOf = { { AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 2 } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 18 } } } }, { MinLevel = 40 }, { ItemCount = { itemID = 11285, count = 2600, operator = "<" } } } } }, { itemID = 11284, quantity = 2600, targetStock = true, optional = true, conditions = { AllOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 3 } }, { MinLevel = 40 }, { ItemCount = { itemID = 11284, count = 2600, operator = "<" } } } } } },
+            BuyMerchant = { { isSupply = true, itemID = 3030, quantity = 2600, targetStock = true, optional = true, conditions = { AllOf = { { AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 2 } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 18 } } } }, { SkipForLvl = 40 }, { ItemCount = { itemID = 3030, count = 2600, operator = "<" } } } } }, { isSupply = true, itemID = 3033, quantity = 2600, targetStock = true, optional = true, conditions = { AllOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 3 } }, { SkipForLvl = 40 }, { ItemCount = { itemID = 3033, count = 2600, operator = "<" } } } } }, { isSupply = true, itemID = 11285, quantity = 2600, targetStock = true, optional = true, conditions = { AllOf = { { AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 2 } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 18 } } } }, { MinLevel = 40 }, { ItemCount = { itemID = 11285, count = 2600, operator = "<" } } } } }, { isSupply = true, itemID = 11284, quantity = 2600, targetStock = true, optional = true, conditions = { AllOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 3 } }, { MinLevel = 40 }, { ItemCount = { itemID = 11284, count = 2600, operator = "<" } } } } } },
             Note = { "KEEP_BETTER_AMMUNITION" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 48.13, 80.53),
             Range = 5,
