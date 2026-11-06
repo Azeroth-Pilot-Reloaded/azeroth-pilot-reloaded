@@ -42,6 +42,7 @@
     <Script file="Routes/TheBurningCrusade/TheBurningCrusade_Zangarmarsh_Horde.lua"/>
     <Script file="Routes/TheBurningCrusade/TheBurningCrusade_Terokkar_Forest_Horde.lua"/>
     <Script file="Routes/TheBurningCrusade/TheBurningCrusade_Nagrand_Horde.lua"/>
+    <Script file="Routes/TheBurningCrusade/TheBurningCrusade_Blades_Edge_Mountains_Horde.lua"/>
 
     <Script file="Routes/TheWarWithin/Arathi_Highlands_Returning_Player.lua"/>
     <Script file="Routes/TheWarWithin/TheWarWithin-Isle-of-Dorn.lua"/>
