@@ -21,6 +21,7 @@ C_Container = {
     end,
 }
 C_Item = { GetItemInfo = function(id) return "item " .. id end }
+dofile("APR-Core/utils/LootUtils.lua")
 dofile("APR-Core/features/questing/RouteActions.lua")
 local items, expected = {}, {}
 for id = 1, 20 do items[id], expected[id] = id, "30 × item " .. id end

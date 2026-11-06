@@ -51,6 +51,10 @@ APR.event:CleanupEvents()
 cancelled.callback()
 assert(cancelled.cancelled and not APR.event.bankRefreshTimer)
 APR.event:QueueBankRefresh()
+assert(not APR.routeBankOpen and not APR.event.bankRefreshTimer,
+    "Disabled bank listeners cannot retain an open interaction or restart snapshot work")
+APR.event.functions.bank("BANKFRAME_OPENED")
+APR.event:QueueBankRefresh()
 local pending = APR.event.bankRefreshTimer
 APR.settings.profile.enableAddon = false
 local before = reads

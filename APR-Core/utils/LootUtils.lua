@@ -8,25 +8,71 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
+-- Container roles changed with tabbed banks: -1 is now the keyring and 5
+-- is the carried reagent bag. Never infer bank contents from those indices.
+-- Return nil while access or any purchased container's data is unavailable.
+function APR:GetCharacterBankContainers()
+    if not self.routeBankOpen then return nil end
+    local slots = C_Container and C_Container.GetContainerNumSlots or GetContainerNumSlots
+    if not slots then return nil end
+    local bags, bankType = {}, nil
+    local indices = Enum and Enum.BagIndex
+    if indices and indices.CharacterBankTab_1 then
+        bankType = Enum.BankType and Enum.BankType.Character
+        if bankType == nil or not C_Bank or not C_Bank.CanUseBank or not C_Bank.CanUseBank(bankType)
+            or not C_Bank.FetchPurchasedBankTabData then return nil end
+        local tabs = C_Bank.FetchPurchasedBankTabData(bankType)
+        if type(tabs) ~= "table" or #tabs == 0 then return nil end
+        local allowed, seen = {}, {}
+        local index = 1
+        while indices["CharacterBankTab_" .. index] do
+            allowed[indices["CharacterBankTab_" .. index]] = true
+            index = index + 1
+        end
+        for _, tab in ipairs(tabs) do
+            if type(tab) ~= "table" or not allowed[tab.ID] then return nil end
+            if not seen[tab.ID] then
+                bags[#bags + 1], seen[tab.ID] = tab.ID, true
+            end
+        end
+    else
+        -- Legacy clients expose one fixed container plus equipped bank bags.
+        local base = BANK_CONTAINER or (indices and indices.Bank) or -1
+        if (slots(base) or 0) == 0 then return nil end
+        bags[1] = base
+        local offset = ITEM_INVENTORY_BANK_BAG_OFFSET or NUM_TOTAL_EQUIPPED_BAG_SLOTS or NUM_BAG_SLOTS or 4
+        for bag = offset + 1, offset + (NUM_BANKBAGSLOTS or 7) do bags[#bags + 1] = bag end
+    end
+    local total, sizes = 0, {}
+    for _, bag in ipairs(bags) do
+        local size = slots(bag)
+        if size == nil then return nil end
+        sizes[bag] = size
+        total = total + size
+    end
+    if total == 0 then return nil end
+    return bags, bankType, sizes
+end--[[APR_DIAG]]; APR.GetCharacterBankContainers = APRTrace("APR-Core/utils/LootUtils.lua:14:APR:GetCharacterBankContainers#1", APR.GetCharacterBankContainers)--[[/APR_DIAG]]
+
 -- Bank counts are character data, independent of the active route. Refresh them
 -- only while the bank is accessible; they remain available after closing/reloading.
 function APR:SaveBankItemCounts()
     if not self.routeBankOpen or not APRData or not APRData[self.PlayerID] then return end
     local slots = C_Container and C_Container.GetContainerNumSlots or GetContainerNumSlots
     local info = C_Container and C_Container.GetContainerItemInfo or GetContainerItemInfo
-    if not slots or not info or (slots(-1) or 0) == 0 then return end
+    if not slots or not info then return end
+    local bags, _, sizes = self:GetCharacterBankContainers()
+    if not bags then return end
     local counts = {}
-    local bags = {-1}
-    for bag = (NUM_BAG_SLOTS or 4) + 1, (NUM_BAG_SLOTS or 4) + (NUM_BANKBAGSLOTS or 7) do bags[#bags + 1] = bag end
     for _, bag in ipairs(bags) do
-        for slot = 1, slots(bag) or 0 do
+        for slot = 1, sizes[bag] do
             local item, count, _, _, _, _, _, _, _, id = info(bag, slot)
             if type(item) == "table" then id, count = item.itemID, item.stackCount end
             if id then counts[id] = (counts[id] or 0) + (count or 0) end
         end
     end
     APRData[self.PlayerID].BankItems = counts
-end--[[APR_DIAG]]; APR.SaveBankItemCounts = APRTrace("APR-Core/utils/LootUtils.lua:13:APR:SaveBankItemCounts#1", APR.SaveBankItemCounts)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.SaveBankItemCounts = APRTrace("APR-Core/utils/LootUtils.lua:59:APR:SaveBankItemCounts#2", APR.SaveBankItemCounts)--[[/APR_DIAG]]
 
 function APR:GetCollectionItemCount(itemID, includeBank)
     local fn = C_Item and C_Item.GetItemCount or GetItemCount
@@ -36,7 +82,7 @@ function APR:GetCollectionItemCount(itemID, includeBank)
     local data = APRData and APRData[self.PlayerID]
     if data and data.BankItems then return bags + (data.BankItems[itemID] or 0) end
     return fn(itemID, true) or bags
-end--[[APR_DIAG]]; APR.GetCollectionItemCount = APRTrace("APR-Core/utils/LootUtils.lua:31:APR:GetCollectionItemCount#2", APR.GetCollectionItemCount)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetCollectionItemCount = APRTrace("APR-Core/utils/LootUtils.lua:77:APR:GetCollectionItemCount#3", APR.GetCollectionItemCount)--[[/APR_DIAG]]
 
 function APR:GetCollectionRequiredQuantity(rule)
     if rule.quantityFromSkill then
@@ -45,11 +91,11 @@ function APR:GetCollectionRequiredQuantity(rule)
         return math.min(rule.quantity or target.rank, remaining)
     end
     return math.max(rule.quantity or 1, 1)
-end--[[APR_DIAG]]; APR.GetCollectionRequiredQuantity = APRTrace("APR-Core/utils/LootUtils.lua:41:APR:GetCollectionRequiredQuantity#3", APR.GetCollectionRequiredQuantity)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetCollectionRequiredQuantity = APRTrace("APR-Core/utils/LootUtils.lua:87:APR:GetCollectionRequiredQuantity#4", APR.GetCollectionRequiredQuantity)--[[/APR_DIAG]]
 
 function APR:IsRouteCollectionComplete(rule)
     return self:GetCollectionItemCount(rule.itemID, rule.includeBank) >= self:GetCollectionRequiredQuantity(rule)
-end--[[APR_DIAG]]; APR.IsRouteCollectionComplete = APRTrace("APR-Core/utils/LootUtils.lua:50:APR:IsRouteCollectionComplete#4", APR.IsRouteCollectionComplete)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.IsRouteCollectionComplete = APRTrace("APR-Core/utils/LootUtils.lua:96:APR:IsRouteCollectionComplete#5", APR.IsRouteCollectionComplete)--[[/APR_DIAG]]
 
 -- Current cash plus the theoretical vendor value of carried items. Never counts
 -- bank contents, buys back items, or sells anything. Missing item data contributes
@@ -63,7 +109,7 @@ local function ItemResaleValue(itemInfo, prices, item, count)
     end
     if type(price) == "number" and price > 0 then return price * (count or 1) end
     return 0
-end--[[APR_DIAG]]; ItemResaleValue = APRTrace("APR-Core/utils/LootUtils.lua:57:ItemResaleValue#5", ItemResaleValue)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ItemResaleValue = APRTrace("APR-Core/utils/LootUtils.lua:103:ItemResaleValue#6", ItemResaleValue)--[[/APR_DIAG]]
 
 function APR:GetLootMoneyProgress(rule)
     local cash, resale = GetMoney() or 0, 0
@@ -118,19 +164,19 @@ function APR:GetLootMoneyProgress(rule)
         end
     end
     return cash, resale, math.max(1, tonumber(rule.copper) or 1)
-end--[[APR_DIAG]]; APR.GetLootMoneyProgress = APRTrace("APR-Core/utils/LootUtils.lua:68:APR:GetLootMoneyProgress#6", APR.GetLootMoneyProgress)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetLootMoneyProgress = APRTrace("APR-Core/utils/LootUtils.lua:114:APR:GetLootMoneyProgress#7", APR.GetLootMoneyProgress)--[[/APR_DIAG]]
 
 -- Eligibility filter using the same cash/resale estimate as the loot objective.
 function APR:MeetsVendorMoney(rule)
     local cash, resale = self:GetLootMoneyProgress(rule)
     return self:CompareRouteNumber(cash + resale, rule.operator or ">=", rule.copper)
-end--[[APR_DIAG]]; APR.MeetsVendorMoney = APRTrace("APR-Core/utils/LootUtils.lua:124:APR:MeetsVendorMoney#7", APR.MeetsVendorMoney)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.MeetsVendorMoney = APRTrace("APR-Core/utils/LootUtils.lua:170:APR:MeetsVendorMoney#8", APR.MeetsVendorMoney)--[[/APR_DIAG]]
 
 function APR:FormatLootMoney(copper)
     local formatMoney = C_CurrencyInfo and C_CurrencyInfo.GetCoinTextureString or GetCoinTextureString
     return formatMoney and formatMoney(copper) or tostring(copper)
-end--[[APR_DIAG]]; APR.FormatLootMoney = APRTrace("APR-Core/utils/LootUtils.lua:129:APR:FormatLootMoney#8", APR.FormatLootMoney)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.FormatLootMoney = APRTrace("APR-Core/utils/LootUtils.lua:175:APR:FormatLootMoney#9", APR.FormatLootMoney)--[[/APR_DIAG]]
 
 function APR:GetLootMoneyStepText(rule)
     return string.format(L["LOOT_MONEY"], self:FormatLootMoney(rule.copper))
-end--[[APR_DIAG]]; APR.GetLootMoneyStepText = APRTrace("APR-Core/utils/LootUtils.lua:134:APR:GetLootMoneyStepText#9", APR.GetLootMoneyStepText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetLootMoneyStepText = APRTrace("APR-Core/utils/LootUtils.lua:180:APR:GetLootMoneyStepText#10", APR.GetLootMoneyStepText)--[[/APR_DIAG]]

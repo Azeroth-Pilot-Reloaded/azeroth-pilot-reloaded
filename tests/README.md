@@ -325,6 +325,15 @@ list is collapsed, cancellation of pending work, current-progress recovery and
 no recurring appearance probes while the guide is hidden or detached.
 `inventory_action_performance_test.lua` checks one fresh bag snapshot per action
 label render, unknown/incomplete bank data, empty actions and future previews.
+`bank_transfer_test.lua` drives real route actions and bank/inventory events on
+synthetic Retail, Forever and legacy containers. It covers reagent-bag receipts,
+partial/full transfers, purchased personal tabs, separate keyring/account storage,
+explicit deposits, late events, unavailable data, overlapping interactions and closure.
+In both current clients, verify a withdrawal into the reagent bag and an explicit
+deposit while an account-bank tab is selected; neither may reverse direction or
+use account storage. Check a partial transfer with nearly full bags and close the
+bank during a transfer. Native access, inventory timing and security require the
+actual clients and are not certified by these fixtures.
 `loot_money_performance_test.lua` checks one price lookup per exact item variant
 within an estimate, including late data and modern/legacy container APIs.
 The AFK lifecycle suite also checks dormant hides and coalesced show/hide bursts.
