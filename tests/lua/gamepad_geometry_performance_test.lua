@@ -32,7 +32,8 @@ assert(reads == 207,
 -- Shared clipping changes are visible on the very next input.
 inner.rect = { 0, 0, 10000, 500 }
 reads = 0
-assert(pad:NavigateControl(source, "RIGHT") == true, "Horizontal navigation must reject newly clipped controls")
+assert(pad:NavigateControl(source, "RIGHT") == nil,
+    "Reject clipped APR destinations while allowing native navigation to try")
 assert(reads == 202, "A clipped inner viewport is read once; no outer/reveal probes are needed")
 inner.rect = { 0, 0, 10000, 10000 }
 candidates[1].rect[1] = 5000

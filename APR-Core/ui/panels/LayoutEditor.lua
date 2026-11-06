@@ -87,6 +87,8 @@ function Editor:Hide(reopenSettings)
     local returnToSettings = self.returnToSettings
     self.returnToSettings = nil
     self.active = false
+    self.controllerEditing = nil
+    self:StopControllerMovement()
     for _, preview in pairs(self.previews) do
         preview:StopMovingOrSizing()
         preview.isMoving = false
@@ -140,7 +142,7 @@ function Editor:Save()
     if APR.QuestTracker and self.profile.currentStepAttachFrameToQuestLog then APR.currentStep:RefreshQuestTrackerAnchor() end
     self:Hide()
     return true
-end--[[APR_DIAG]]; Editor.Save = APRTrace("APR-Core/ui/panels/LayoutEditor.lua:103:Editor:Save#7", Editor.Save)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Editor.Save = APRTrace("APR-Core/ui/panels/LayoutEditor.lua:105:Editor:Save#7", Editor.Save)--[[/APR_DIAG]]
 
 function Editor:Recover()
     -- Recovery is also a draft; Cancel leaves the original positions and attachments intact.
@@ -154,7 +156,7 @@ function Editor:Recover()
         end
     end
     self:LayoutSnappedPreviews()
-end--[[APR_DIAG]]; Editor.Recover = APRTrace("APR-Core/ui/panels/LayoutEditor.lua:145:Editor:Recover#8", Editor.Recover)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Editor.Recover = APRTrace("APR-Core/ui/panels/LayoutEditor.lua:147:Editor:Recover#8", Editor.Recover)--[[/APR_DIAG]]
 
 -- Controller movement edits the same draft and linked root as dragging. Save/Cancel
 -- remain the only operations that publish/discard the placement.
@@ -166,10 +168,106 @@ function Editor:NudgeSelected(dx, dy)
     local x, y = target:GetLeft(), target:GetTop()
     if not x or not y then return end
     target:ClearAllPoints()
-    target:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", x + dx / target:GetScale(), y + dy / target:GetScale())
+    local scale = target:GetScale()
+    x = math.max(0, math.min(math.max(0, UIParent:GetWidth() / scale - target:GetWidth()), x + dx / scale))
+    local screenTop = UIParent:GetHeight() / scale
+    y = math.max(math.min(target:GetHeight(), screenTop), math.min(screenTop, y + dy / scale))
+    target:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", x, y)
     target.changed = true
     self:LayoutSnappedPreviews()
-end--[[APR_DIAG]]; Editor.NudgeSelected = APRTrace("APR-Core/ui/panels/LayoutEditor.lua:161:Editor:NudgeSelected#9", Editor.NudgeSelected)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Editor.NudgeSelected = APRTrace("APR-Core/ui/panels/LayoutEditor.lua:163:Editor:NudgeSelected#9", Editor.NudgeSelected)--[[/APR_DIAG]]
+
+function Editor:StopControllerMovement()
+    self.moveKeys, self.stickX, self.stickY, self.moveHeldTime = {}, 0, 0, 0
+    if self.moveDriver then self.moveDriver:Hide() end
+end--[[APR_DIAG]]; Editor.StopControllerMovement = APRTrace("APR-Core/ui/panels/LayoutEditor.lua:180:Editor:StopControllerMovement#10", Editor.StopControllerMovement)--[[/APR_DIAG]]
+
+function Editor:UpdateControllerMovement()
+    if not self.controllerEditing or not APR.Gamepad or not APR.Gamepad:IsInputOwner(self.frame) then
+        self:StopControllerMovement(); return
+    end
+    if next(self.moveKeys or {}) or math.abs(self.stickX or 0) + math.abs(self.stickY or 0) > 0 then
+        if not self.moveDriver then
+            self.moveDriver = CreateFrame("Frame")
+            self.moveDriver:SetScript("OnUpdate", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:192:callback#12", --[[/APR_DIAG]]function(_, elapsed)
+                if not self.active or not self.controllerEditing or not APR.Gamepad:IsInputOwner(self.frame) then
+                    self:StopControllerMovement(); return
+                end
+                elapsed = math.min(elapsed, 0.05)
+                local keys = self.moveKeys
+                local x = (keys.RIGHT and 1 or 0) - (keys.LEFT and 1 or 0)
+                local y = (keys.UP and 1 or 0) - (keys.DOWN and 1 or 0)
+                local digital = x ~= 0 or y ~= 0
+                self.moveHeldTime = (self.moveHeldTime or 0) + elapsed
+                if digital and self.moveHeldTime < 0.25 then return end
+                if not digital then x, y = self.stickX or 0, self.stickY or 0 end
+                local length = math.sqrt(x * x + y * y)
+                if length > 1 then x, y = x / length, y / length end
+                if x ~= 0 or y ~= 0 then self:NudgeSelected(x * elapsed * 220, y * elapsed * 220) end
+            end--[[APR_DIAG]])--[[/APR_DIAG]])
+        end
+        self.moveDriver:Show()
+    elseif self.moveDriver then self.moveDriver:Hide() end
+end--[[APR_DIAG]]; Editor.UpdateControllerMovement = APRTrace("APR-Core/ui/panels/LayoutEditor.lua:185:Editor:UpdateControllerMovement#11", Editor.UpdateControllerMovement)--[[/APR_DIAG]]
+
+function Editor:ControllerDirection(direction, down)
+    self.moveKeys = self.moveKeys or {}
+    self.moveKeys[direction] = down or nil
+    if down then
+        self.moveHeldTime = 0
+        local x = direction == "RIGHT" and 10 or direction == "LEFT" and -10 or 0
+        local y = direction == "UP" and 10 or direction == "DOWN" and -10 or 0
+        self:NudgeSelected(x, y)
+    end
+    self:UpdateControllerMovement()
+end--[[APR_DIAG]]; Editor.ControllerDirection = APRTrace("APR-Core/ui/panels/LayoutEditor.lua:213:Editor:ControllerDirection#13", Editor.ControllerDirection)--[[/APR_DIAG]]
+
+function Editor:ControllerStick(stick, x, y)
+    if stick ~= "Movement" then return true end
+    if not self.controllerEditing then return false end
+    local length = math.sqrt(x * x + y * y)
+    if length < 0.18 then x, y = 0, 0 end
+    self.stickX, self.stickY = x, y
+    self:UpdateControllerMovement()
+    return false
+end--[[APR_DIAG]]; Editor.ControllerStick = APRTrace("APR-Core/ui/panels/LayoutEditor.lua:225:Editor:ControllerStick#14", Editor.ControllerStick)--[[/APR_DIAG]]
+
+function Editor:SelectPreview(index, editing)
+    local preview = self.previews[index]
+    if not self.active or not preview then return end
+    self.selectedPreview = index
+    self:StopControllerMovement()
+    local pad = APR.Gamepad
+    self.controllerEditing = editing == true and pad and pad:IsEnabled() or false
+    local target = self:DragTarget(preview)
+    for _, candidate in ipairs(self.previews) do
+        local selected = self:DragTarget(candidate) == target
+        candidate.focusBorder:SetShown(selected)
+        APR:SetFontStringRole(candidate.title, selected and "accent" or "muted")
+    end
+    if self.previewSelector then self.previewSelector:SetOptions(self.previewOptions, index) end
+    if pad then
+        if self.controllerEditing then pad:RequestControlFocus(self.frame, preview) end
+        pad:QueueInputRefresh()
+    end
+end--[[APR_DIAG]]; Editor.SelectPreview = APRTrace("APR-Core/ui/panels/LayoutEditor.lua:235:Editor:SelectPreview#15", Editor.SelectPreview)--[[/APR_DIAG]]
+
+function Editor:CyclePreview(direction)
+    if not self.active or #self.previews == 0 then return end
+    self:SelectPreview(((self.selectedPreview or 1) - 1 + direction) % #self.previews + 1, true)
+end--[[APR_DIAG]]; Editor.CyclePreview = APRTrace("APR-Core/ui/panels/LayoutEditor.lua:255:Editor:CyclePreview#16", Editor.CyclePreview)--[[/APR_DIAG]]
+
+function Editor:ControllerControls(target)
+    self.controllerEditing = nil
+    self:StopControllerMovement()
+    APR.Gamepad:QueueInputRefresh()
+    APR.Gamepad:RequestControlFocus(self.frame, target or self.previewSelector)
+end--[[APR_DIAG]]; Editor.ControllerControls = APRTrace("APR-Core/ui/panels/LayoutEditor.lua:260:Editor:ControllerControls#17", Editor.ControllerControls)--[[/APR_DIAG]]
+
+function Editor:ConfirmPreview()
+    if (self.selectedPreview or 1) < #self.previews then self:CyclePreview(1)
+    else self:ControllerControls(self.saveButton) end
+end--[[APR_DIAG]]; Editor.ConfirmPreview = APRTrace("APR-Core/ui/panels/LayoutEditor.lua:267:Editor:ConfirmPreview#18", Editor.ConfirmPreview)--[[/APR_DIAG]]
 
 function Editor:Create()
     local frame = UI:Window("APRLayoutEditor", L["UI_LAYOUT_TITLE"], 780, 190)
@@ -179,15 +277,17 @@ function Editor:Create()
     if APR.Gamepad then
         frame:SetResizeBounds(600, 250)
         frame:SetHeight(250)
-        local choose = UI:Select(frame.content, 260, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:182:callback#11", --[[/APR_DIAG]]function(index) self.selectedPreview = index end--[[APR_DIAG]])--[[/APR_DIAG]])
+        local choose = UI:Select(frame.content, 260, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:280:callback#20", --[[/APR_DIAG]]function(index) self:SelectPreview(index, true) end--[[APR_DIAG]])--[[/APR_DIAG]])
+        self.previewSelector = choose
         choose:SetPoint("TOPLEFT", 0, -58)
         local options = {}
         for index, definition in ipairs(self.definitions) do options[index] = {value = index, label = L[definition.label]} end
         choose:SetOptions(options, 1)
+        self.previewOptions = options
         local controls = {choose}
         for index, definition in ipairs({{math.pi / 2, -10, 0}, {-math.pi / 2, 10, 0}, {0, 0, 10}, {math.pi, 0, -10}}) do
             local dx, dy = definition[2], definition[3]
-            local button = UI:IconButton(frame.content, "up", 30, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:190:callback#12", --[[/APR_DIAG]]function() self:NudgeSelected(dx, dy) end--[[APR_DIAG]])--[[/APR_DIAG]])
+            local button = UI:IconButton(frame.content, "up", 30, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:290:callback#21", --[[/APR_DIAG]]function() self:NudgeSelected(dx, dy) end--[[APR_DIAG]])--[[/APR_DIAG]])
             button.icon:SetRotation(definition[1])
             button:SetPoint("TOPLEFT", 272 + (index - 1) * 38, -58)
             controls[#controls + 1] = button
@@ -199,26 +299,55 @@ function Editor:Create()
     frame:SetPoint("TOP", UIParent, "TOP", 0, -20)
     frame:SetFrameStrata("FULLSCREEN_DIALOG")
     local help = UI:Label(frame.content, L["UI_LAYOUT_HELP"], 12)
+    self.help = help
     help:SetPoint("TOPLEFT")
     help:SetPoint("TOPRIGHT")
-    local save = UI:Button(frame.content, SAVE, 135, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:204:callback#13", --[[/APR_DIAG]]function() self:Save() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    local save = UI:Button(frame.content, SAVE, 135, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:305:callback#22", --[[/APR_DIAG]]function() self:Save() end--[[APR_DIAG]])--[[/APR_DIAG]])
     save:SetPoint("BOTTOMRIGHT")
-    local cancel = UI:Button(frame.content, CANCEL, 135, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:206:callback#14", --[[/APR_DIAG]]function() self:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self.saveButton = save
+    local cancel = UI:Button(frame.content, CANCEL, 135, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:308:callback#23", --[[/APR_DIAG]]function() self:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
     cancel:SetPoint("RIGHT", save, "LEFT", -8, 0)
-    local recover = UI:Button(frame.content, L["RESET_POSITION"], 230, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:208:callback#15", --[[/APR_DIAG]]function() self:Recover() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    local recover = UI:Button(frame.content, L["RESET_POSITION"], 230, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:310:callback#24", --[[/APR_DIAG]]function() self:Recover() end--[[APR_DIAG]])--[[/APR_DIAG]])
     recover:SetPoint("BOTTOMLEFT")
-    frame:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:210:callback#16", --[[/APR_DIAG]]function() if self.active then self:Hide() end end--[[APR_DIAG]])--[[/APR_DIAG]])
+    frame:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:312:callback#25", --[[/APR_DIAG]]function() if self.active then self:Hide() end end--[[APR_DIAG]])--[[/APR_DIAG]])
     APR:RegisterSupportedEvent(frame, "PLAYER_REGEN_DISABLED")
     APR:RegisterSupportedEvent(frame, "PET_BATTLE_OPENING_START")
-    frame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:213:callback#17", --[[/APR_DIAG]]function() self:Hide(false) end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; Editor.Create = APRTrace("APR-Core/ui/panels/LayoutEditor.lua:174:Editor:Create#10", Editor.Create)--[[/APR_DIAG]]
+    frame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:315:callback#26", --[[/APR_DIAG]]function() self:Hide(false) end--[[APR_DIAG]])--[[/APR_DIAG]])
+    if APR.Gamepad and APR.Gamepad.RegisterInputHandler then
+        local buttons = {
+            PADLTRIGGER = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:318:callback#27", --[[/APR_DIAG]]function(down) if down then self:CyclePreview(-1) end end--[[APR_DIAG]])--[[/APR_DIAG]],
+            PADRTRIGGER = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:319:callback#28", --[[/APR_DIAG]]function(down) if down then self:CyclePreview(1) end end--[[APR_DIAG]])--[[/APR_DIAG]],
+            PAD1 = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:320:callback#29", --[[/APR_DIAG]]function(down) if down then self:ConfirmPreview() end end--[[APR_DIAG]])--[[/APR_DIAG]],
+            PAD2 = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:321:callback#30", --[[/APR_DIAG]]function(down) if down then self:ControllerControls() end end--[[APR_DIAG]])--[[/APR_DIAG]],
+        }
+        for key, direction in pairs({PADDUP = "UP", PADDDOWN = "DOWN", PADDLEFT = "LEFT", PADDRIGHT = "RIGHT"}) do
+            buttons[key] = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:324:callback#31", --[[/APR_DIAG]]function(down) self:ControllerDirection(direction, down) end--[[APR_DIAG]])--[[/APR_DIAG]]
+        end
+        APR.Gamepad:RegisterInputHandler(frame, {buttons = buttons,
+            wantsKey = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:327:callback#32", --[[/APR_DIAG]]function(key) return key == "PADLTRIGGER" or key == "PADRTRIGGER" or self.controllerEditing == true end--[[APR_DIAG]])--[[/APR_DIAG]],
+            stick = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:328:callback#33", --[[/APR_DIAG]]function(stick, x, y) return self:ControllerStick(stick, x, y) end--[[APR_DIAG]])--[[/APR_DIAG]],
+            release = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:329:callback#34", --[[/APR_DIAG]]function() self:StopControllerMovement() end--[[APR_DIAG]])--[[/APR_DIAG]],
+        })
+    end
+end--[[APR_DIAG]]; Editor.Create = APRTrace("APR-Core/ui/panels/LayoutEditor.lua:272:Editor:Create#19", Editor.Create)--[[/APR_DIAG]]
 
 function Editor:CreatePreview(definition)
-    local preview = UI:Panel(UIParent)
+    local preview
+    preview = UI:Button(UIParent, "", 1, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:336:callback#36", --[[/APR_DIAG]]function() self:SelectPreview(preview.index, true) end--[[APR_DIAG]])--[[/APR_DIAG]])
+    APR:RegisterSkinTarget(preview, "panel", {themeSurface = true})
     preview.definition = definition
     preview:SetFrameStrata("DIALOG")
     preview:SetClampedToScreen(true)
     preview:EnableMouse(true)
+    preview.focusBorder = CreateFrame("Frame", nil, preview, "BackdropTemplate")
+    preview.focusBorder:SetAllPoints()
+    preview.focusBorder:EnableMouse(false)
+    preview.focusBorder:SetBackdrop({edgeFile = "Interface\\Buttons\\WHITE8X8", edgeSize = 2})
+    preview.focusBorder:SetBackdropBorderColor(unpack(APR:GetThemeColor("accent")))
+    preview.focusBorder:Hide()
+    preview.OnSmartNavSelect = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:348:callback#37", --[[/APR_DIAG]]function()
+        if not self.controllerEditing then self:SelectPreview(preview.index, false) end
+    end--[[APR_DIAG]])--[[/APR_DIAG]]
     preview.title = UI:Label(preview, L[definition.label], 12, "accent")
     preview.title:SetPoint("BOTTOMLEFT", preview, "TOPLEFT", 0, 2)
     preview.body = UI:Label(preview, PREVIEW, 12, "muted")
@@ -228,24 +357,24 @@ function Editor:CreatePreview(definition)
         preview.title:SetPoint("CENTER")
         preview.body:Hide()
     end
-    UI:Tooltip(preview, L[definition.label], --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:231:callback#19", --[[/APR_DIAG]]function()
+    UI:Tooltip(preview, L[definition.label], --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:360:callback#38", --[[/APR_DIAG]]function()
         return L[definition.linked and self.profile[definition.linked] and "UI_LAYOUT_LINKED" or "UI_LAYOUT_FREE"]
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-    APR:SetupFrameDrag(preview, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:234:callback#20", --[[/APR_DIAG]]function()
+    APR:SetupFrameDrag(preview, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:363:callback#39", --[[/APR_DIAG]]function()
         return self.active and not InCombatLockdown() and self.profile == APR:GetSettingsProfile()
-    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:236:callback#21", --[[/APR_DIAG]]function()
+    end--[[APR_DIAG]])--[[/APR_DIAG]], --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:365:callback#40", --[[/APR_DIAG]]function()
         self:DragTarget(preview).changed = true
         self:LayoutSnappedPreviews()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     -- Dragging any member moves the root; no saved snap preference is changed.
-    preview:SetScript("OnDragStart", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:241:callback#22", --[[/APR_DIAG]]function()
+    preview:SetScript("OnDragStart", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:370:callback#41", --[[/APR_DIAG]]function()
         if not self.active or InCombatLockdown() or self.profile ~= APR:GetSettingsProfile() then return end
         local target = self:DragTarget(preview)
         preview.dragTarget = target
         target:StartMoving()
         target.isMoving = true
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-    preview:SetScript("OnDragStop", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:248:callback#23", --[[/APR_DIAG]]function()
+    preview:SetScript("OnDragStop", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:377:callback#42", --[[/APR_DIAG]]function()
         local target = preview.dragTarget
         preview.dragTarget = nil
         if not target then return end
@@ -254,18 +383,18 @@ function Editor:CreatePreview(definition)
         self:LayoutSnappedPreviews()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     return preview
-end--[[APR_DIAG]]; Editor.CreatePreview = APRTrace("APR-Core/ui/panels/LayoutEditor.lua:216:Editor:CreatePreview#18", Editor.CreatePreview)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Editor.CreatePreview = APRTrace("APR-Core/ui/panels/LayoutEditor.lua:334:Editor:CreatePreview#35", Editor.CreatePreview)--[[/APR_DIAG]]
 
 -- AceConfig still reads the clicked widget's userdata after its callback returns.
 -- Closing settings on the next frame avoids releasing that widget during the callback.
 function Editor:ShowFromSettings()
     if self.openPending then return end
     self.openPending = true
-    C_Timer.After(0, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:264:callback#25", --[[/APR_DIAG]]function()
+    C_Timer.After(0, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/LayoutEditor.lua:393:callback#44", --[[/APR_DIAG]]function()
         self.openPending = nil
         if self:Show() then self.returnToSettings = true end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; Editor.ShowFromSettings = APRTrace("APR-Core/ui/panels/LayoutEditor.lua:261:Editor:ShowFromSettings#24", Editor.ShowFromSettings)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Editor.ShowFromSettings = APRTrace("APR-Core/ui/panels/LayoutEditor.lua:390:Editor:ShowFromSettings#43", Editor.ShowFromSettings)--[[/APR_DIAG]]
 
 function Editor:Show()
     if InCombatLockdown() then APR:PrintInfo(L["UI_LAYOUT_COMBAT"]); return false end
@@ -283,6 +412,7 @@ function Editor:Show()
         local target = definition.arrow and APR.ArrowFrameM or _G[definition.frame]
         local preview = self.previews[index] or self:CreatePreview(definition)
         self.previews[index] = preview
+        preview.index = index
         preview.target, preview.changed, preview.position = target, false, {}
         Window.RegisterConfig(preview, preview.position)
         preview:SetScale(target and target:GetScale() or 1)
@@ -325,9 +455,15 @@ function Editor:Show()
         end
     end
     self:LayoutSnappedPreviews()
+    local pad = APR.Gamepad
+    if pad and pad.windows[self.frame] then
+        pad.windows[self.frame].extraPanels = self.previews
+        self.help:SetText(pad:IsEnabled() and L["UI_LAYOUT_GAMEPAD_HELP"] or L["UI_LAYOUT_HELP"])
+    end
     if APR.RouteBrowser and APR.RouteBrowser.frame then APR.RouteBrowser.frame:Hide() end
     if APR.settings.CloseSettings then APR.settings:CloseSettings() end
     self.frame:Show()
     self.frame:Raise()
+    self:SelectPreview(1, pad and pad:IsEnabled())
     return true
-end--[[APR_DIAG]]; Editor.Show = APRTrace("APR-Core/ui/panels/LayoutEditor.lua:270:Editor:Show#26", Editor.Show)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Editor.Show = APRTrace("APR-Core/ui/panels/LayoutEditor.lua:399:Editor:Show#45", Editor.Show)--[[/APR_DIAG]]

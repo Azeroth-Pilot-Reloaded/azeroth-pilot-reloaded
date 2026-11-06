@@ -5,6 +5,12 @@ function env.methods:IsVisible() return self.shown and (not self.parent or self.
 function env.methods:GetValueStep() return self.step or 1 end
 function env.methods:GetMinMaxValues() return self.minimum, self.maximum end
 function env.methods:GetValue() return self.value end
+local setNativeScroll = env.methods.SetVerticalScroll
+function env.methods:SetVerticalScroll(value)
+    local previous = self:GetVerticalScroll()
+    setNativeScroll(self, value)
+    if previous ~= value and self.scripts.OnVerticalScroll then self.scripts.OnVerticalScroll(self, value) end
+end
 function env.methods:SetValue(value)
     local old = self.value
     self.value = value
@@ -17,6 +23,11 @@ function env.methods:Show()
     if not wasShown and self.scripts.OnShow then self.scripts.OnShow(self) end
 end
 local active, current
+local flagWrites = {}
+SmartNavigationSecureHelper = {SetSecureValue = function(_, frame, key, value)
+    flagWrites[#flagWrites + 1] = {frame = frame, key = key, value = value}
+    frame[key] = not not value
+end}
 local manager = {}
 function manager:FrameShown(frame) active = frame; return true end
 function manager:FrameHidden(frame) if active == frame then active = nil end end
@@ -25,7 +36,8 @@ function manager:FocusFrame(frame) active = frame end
 InputUtil = {IsGamepadUIEnabled = function() return true end}
 GamepadMode = {FrameControlsManager = manager}
 SmartNavigation = {GetActiveFrame = function() return active end, GetCurrentButton = function() return current end,
-    SelectButton = function(_, value) current = value end}
+    SelectButton = function() error("SelectButton is secure-only") end,
+    SetTargetButtonForFrame = function(_, owner, value) assert(owner == active); current = value end}
 SMART_NAV_INPUT_DIRECTION = {LEFT = "left", RIGHT = "right", UP = "up", DOWN = "down"}
 function SmartNavigation_AddJumpNavigationOverride(frame, direction, callback)
     frame.overrides = frame.overrides or {}; frame.overrides[direction] = callback
@@ -53,6 +65,13 @@ local sliderFrame = slider.slider
 gui:Release(slider)
 assert(sliderFrame.OnSmartNavClick == nil and sliderFrame.aprPadDirections == nil,
     "Returning a widget to AceGUI must remove its controller-specific behaviour")
+local clearedFocus = false
+for _, write in ipairs(flagWrites) do
+    if write.frame == sliderFrame and write.key == "smartNavigationCanFocus" and write.value == nil then
+        clearedFocus = true
+    end
+end
+assert(clearedFocus, "Pool release must clear navigation flags through the secure setter too")
 
 -- Real dropdown pullouts and settings scrollframes use normalized offsets, not native scrolling.
 dofile("APR-Core/libs/AceGUI-3.0/widgets/AceGUIContainer-ScrollFrame.lua")
@@ -63,15 +82,26 @@ for _, kind in ipairs({"ScrollFrame", "Dropdown-Pullout"}) do
     local bar = widget.scrollbar or widget.slider
     scroll:SetHeight(200); content:SetHeight(1000)
     local nativeSet, nativeGet = scroll.SetVerticalScroll, scroll.GetVerticalScroll
+    local nativeRange = scroll.GetVerticalScrollRange
+    local aceSet, aceFix = widget.SetScroll, widget.FixScroll
     pad:AdaptSettings(widget)
+    assert(scroll.SetVerticalScroll == nativeSet and scroll.GetVerticalScroll == nativeGet
+        and scroll.GetVerticalScrollRange == nativeRange,
+        "Active integration must preserve native C methods so Blizzard never calls addon replacements")
     scroll:SetVerticalScroll(400)
     assert(scroll:GetVerticalScroll() == 400 and scroll:GetVerticalScrollRange() == 800)
     assert(bar:GetValue() == 500, "Pixels must convert into AceGUI's 0..1000 scale")
+    bar:SetValue(750)
+    assert(scroll:GetVerticalScroll() == 600, "Mouse scrolling must also update the native pixel offset")
+    local _, _, _, _, offset = content:GetPoint()
+    assert(offset == 0, "Native scrolling must not be added to AceGUI's old anchor offset")
     scroll:SetVerticalScroll(2000); assert(scroll:GetVerticalScroll() == 800)
     scroll:SetVerticalScroll(-10); assert(scroll:GetVerticalScroll() == 0)
     gui:Release(widget)
     assert(scroll.SetVerticalScroll == nativeSet and scroll.GetVerticalScroll == nativeGet)
     assert(not widget.aprPadOwned)
+    assert(widget.SetScroll == aceSet and widget.FixScroll == aceFix and scroll.aprPadScrollState == nil,
+        "Shared-pool release restores only the AceGUI adapter and detaches its native scroll observer")
     widget.frame:Show(); assert(active ~= widget.frame, "A released pullout belongs to its next addon")
     widget.frame:Hide()
 end

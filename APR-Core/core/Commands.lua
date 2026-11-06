@@ -27,6 +27,7 @@ function APR.command:GetHelpEntries()
         {"/apr github", L["GITHUB_COMMAND"]},
         {"/apr help, h", L["HELP_COMMAND"]},
         {"/apr gamepad", L["GAMEPAD_MENU"]},
+        {"/apr gamepad debug", DEBUG or L["DEBUG"]},
         {"/apr group", L["GF_HEADER_TOOLTIP"]},
         {"/apr layout", L["UI_LAYOUT_TITLE"]},
         {"/apr qol", L["QOL_COMMAND"]},
@@ -57,7 +58,9 @@ function APR.command:SlashCmd(input)
         settingsOpened = true
         APR:PrintInfo(L["ADDON"] .. ' ' .. L["DISABLE"])
     end
-    if inputText == "gamepad" then
+    if inputText == "gamepad debug" then
+        APR.Gamepad:ShowDiagnostics()
+    elseif inputText == "gamepad" then
         APR.Gamepad:RunAction("menu")
     elseif inputText == "group" then
         if APR.PartyFinderPanel then APR.PartyFinderPanel:Show() end
@@ -96,7 +99,7 @@ function APR.command:SlashCmd(input)
         if type(data) ~= "table" then return end
         local catalog, profile = data.CustomRoute, settings.profile
         local enabled, playerID, activeRoute = profile.enableAddon, APR.PlayerID, APR.ActiveRoute
-        APR:RequestReload(--[[APR_DIAG]]APRTrace("APR-Core/core/Commands.lua:99:callback#4", --[[/APR_DIAG]]function()
+        APR:RequestReload(--[[APR_DIAG]]APRTrace("APR-Core/core/Commands.lua:102:callback#4", --[[/APR_DIAG]]function()
             if not IsResetContextCurrent(settings, profile, enabled, playerID, activeRoute)
                 or APRData ~= data or data.CustomRoute ~= catalog then return false end
             data.CustomRoute = {}
@@ -108,7 +111,7 @@ function APR.command:SlashCmd(input)
         local progress, completed, path = data[playerID], zones[playerID], paths[playerID]
         local profile = settings.profile
         local enabled = profile.enableAddon
-        APR:RequestReload(--[[APR_DIAG]]APRTrace("APR-Core/core/Commands.lua:111:callback#5", --[[/APR_DIAG]]function()
+        APR:RequestReload(--[[APR_DIAG]]APRTrace("APR-Core/core/Commands.lua:114:callback#5", --[[/APR_DIAG]]function()
             if not IsResetContextCurrent(settings, profile, enabled, playerID, activeRoute)
                 or APRData ~= data or APRZoneCompleted ~= zones or APRCustomPath ~= paths
                 or data[playerID] ~= progress or zones[playerID] ~= completed or paths[playerID] ~= path then
@@ -172,11 +175,11 @@ function APR.command:SlashCmd(input)
     elseif (inputText == "help" or inputText == "h") then
         local function printHelp(command, description)
             print(APR:WrapTextWithAppearanceColor(command, "general", "accent") .. " - " .. description)
-        end--[[APR_DIAG]]; printHelp = APRTrace("APR-Core/core/Commands.lua:173:printHelp#6", printHelp)--[[/APR_DIAG]]
+        end--[[APR_DIAG]]; printHelp = APRTrace("APR-Core/core/Commands.lua:176:printHelp#6", printHelp)--[[/APR_DIAG]]
 
         APR:PrintInfo(L["COMMAND_LIST"])
         for _, entry in ipairs(self:GetHelpEntries()) do printHelp(entry[1], entry[2]) end
     elseif not settingsOpened then
         APR.settings:OpenSettings(APR.title)
     end
-end--[[APR_DIAG]]; APR.command.SlashCmd = APRTrace("APR-Core/core/Commands.lua:50:APR.command:SlashCmd#3", APR.command.SlashCmd)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.command.SlashCmd = APRTrace("APR-Core/core/Commands.lua:51:APR.command:SlashCmd#3", APR.command.SlashCmd)--[[/APR_DIAG]]

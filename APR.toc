@@ -61,6 +61,8 @@ APR-Core/ui/foundations/Widgets.lua
 APR-Core/integrations/Gamepad.lua
 APR-Core/integrations/GamepadNavigation.lua
 APR-Core/integrations/GamepadControls.lua
+APR-Core/integrations/GamepadInput.lua
+APR-Core/integrations/GamepadMenu.lua
 APR-Core/ui/foundations/ThemeCustomization.lua
 APR-Core/ui/foundations/TimeSeriesGraph.lua
 APR-Core/ui/foundations/VirtualList.lua

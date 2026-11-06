@@ -151,10 +151,16 @@ end--[[APR_DIAG]]; Pad.CollectControls = APRTrace("APR-Core/integrations/Gamepad
 
 function Pad:BuildNavigation(root)
     local entry = self.windows[root]
-    if entry then entry.controls = self:CollectControls(root) end
+    if not entry then return end
+    entry.controls = self:CollectControls(root)
+    for _, panel in ipairs(entry.extraPanels or {}) do
+        for _, control in ipairs(self:CollectControls(panel)) do entry.controls[#entry.controls + 1] = control end
+    end
 end--[[APR_DIAG]]; Pad.BuildNavigation = APRTrace("APR-Core/integrations/GamepadNavigation.lua:152:Pad:BuildNavigation#14", Pad.BuildNavigation)--[[/APR_DIAG]]
 
 function Pad:NavigateControl(source, direction)
+    self.navigationInputCount = (self.navigationInputCount or 0) + 1
+    self.lastNavigationDirection = direction
     local root = SmartNavigation:GetActiveFrame()
     local entry = root and self.windows[root]
     -- A pooled AceGUI control can later belong to another addon.
@@ -168,7 +174,7 @@ function Pad:NavigateControl(source, direction)
         if self:CanFocus(result) then self:Reveal(result); return result end
     end
     local origin = Rect(source)
-    if not entry or not origin then return true end
+    if not origin then return end
     local horizontal = direction == "LEFT" or direction == "RIGHT"
     local positive = direction == "RIGHT" or direction == "UP"
     local best, bestScore
@@ -198,8 +204,10 @@ function Pad:NavigateControl(source, direction)
         end
     end
     if best then self:Reveal(best); return best end
-    return true
-end--[[APR_DIAG]]; Pad.NavigateControl = APRTrace("APR-Core/integrations/GamepadNavigation.lua:157:Pad:NavigateControl#15", Pad.NavigateControl)--[[/APR_DIAG]]
+    -- A missing APR destination must let Blizzard's own geometry try. Consuming
+    -- it here traps focus when a label/viewport has not finished laying out.
+    return nil
+end--[[APR_DIAG]]; Pad.NavigateControl = APRTrace("APR-Core/integrations/GamepadNavigation.lua:161:Pad:NavigateControl#15", Pad.NavigateControl)--[[/APR_DIAG]]
 
 function Pad:OwnSettingsWidget(widget)
     if widget.aprPadOwned then return end
@@ -211,42 +219,57 @@ function Pad:OwnSettingsWidget(widget)
         flags[#flags + 1] = {frame = frame, ignored = frame.smartNavigationIgnored,
             ignoredSelf = frame.smartNavigationIgnoredDontPropagate, focus = frame.smartNavigationCanFocus,
             click = frame.OnSmartNavClick}
-    end--[[APR_DIAG]]; remember = APRTrace("APR-Core/integrations/GamepadNavigation.lua:209:remember#17", remember)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; remember = APRTrace("APR-Core/integrations/GamepadNavigation.lua:217:remember#17", remember)--[[/APR_DIAG]]
     remember(widget.frame); remember(widget.slider); remember(widget.button); remember(widget.scrollbar)
-    widget.OnRelease = --[[APR_DIAG]]APRTrace("APR-Core/integrations/GamepadNavigation.lua:216:callback#18", --[[/APR_DIAG]]function(target, ...)
+    widget.OnRelease = --[[APR_DIAG]]APRTrace("APR-Core/integrations/GamepadNavigation.lua:224:callback#18", --[[/APR_DIAG]]function(target, ...)
         self.settingsRoots[target] = nil
         target.aprPadOwned, target.OnRelease = nil, release
         for _, saved in ipairs(flags) do
             local frame = saved.frame
-            frame.smartNavigationIgnored, frame.smartNavigationIgnoredDontPropagate = saved.ignored, saved.ignoredSelf
-            frame.smartNavigationCanFocus, frame.OnSmartNavClick = saved.focus, saved.click
+            self:SetNavigationFlag(frame, "smartNavigationIgnored", saved.ignored)
+            self:SetNavigationFlag(frame, "smartNavigationIgnoredDontPropagate", saved.ignoredSelf)
+            self:SetNavigationFlag(frame, "smartNavigationCanFocus", saved.focus)
+            frame.OnSmartNavClick = saved.click
             frame.aprPadDirections = nil
         end
         if target.frame then self:HideWindow(target.frame) end
         if release then return release(target, ...) end
     end--[[APR_DIAG]])--[[/APR_DIAG]]
-end--[[APR_DIAG]]; Pad.OwnSettingsWidget = APRTrace("APR-Core/integrations/GamepadNavigation.lua:204:Pad:OwnSettingsWidget#16", Pad.OwnSettingsWidget)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Pad.OwnSettingsWidget = APRTrace("APR-Core/integrations/GamepadNavigation.lua:212:Pad:OwnSettingsWidget#16", Pad.OwnSettingsWidget)--[[/APR_DIAG]]
 
 function Pad:RequestFocus(root, opener)
     if not self:IsEnabled() or InCombatLockdown() then return end
     self.focusRequest = {root = root, opener = opener}
     self:Refresh(root)
-end--[[APR_DIAG]]; Pad.RequestFocus = APRTrace("APR-Core/integrations/GamepadNavigation.lua:230:Pad:RequestFocus#19", Pad.RequestFocus)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Pad.RequestFocus = APRTrace("APR-Core/integrations/GamepadNavigation.lua:240:Pad:RequestFocus#19", Pad.RequestFocus)--[[/APR_DIAG]]
 
 function Pad:ApplyFocusRequest(window)
     local request = self.focusRequest
+    if request and request.window == window and request.button then
+        self.focusRequest = nil
+        if SmartNavigation:GetActiveFrame() == window and self:CanFocus(request.button) then
+            self:SelectButton(request.button, window)
+        end
+        return
+    end
     if not request or not Within(request.root, window) then return end
     self.focusRequest = nil
     if SmartNavigation:GetActiveFrame() ~= window or not request.root:IsVisible() then return end
     for _, control in ipairs(self:CollectControls(request.root)) do
         if self:CanFocus(control) then
             self:Reveal(control)
-            SmartNavigation:SelectButton(control)
+            self:SelectButton(control, window)
             if request.opener then self.windows[window].detailOpener = request.opener end
             return
         end
     end
-end--[[APR_DIAG]]; Pad.ApplyFocusRequest = APRTrace("APR-Core/integrations/GamepadNavigation.lua:236:Pad:ApplyFocusRequest#20", Pad.ApplyFocusRequest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Pad.ApplyFocusRequest = APRTrace("APR-Core/integrations/GamepadNavigation.lua:246:Pad:ApplyFocusRequest#20", Pad.ApplyFocusRequest)--[[/APR_DIAG]]
+
+function Pad:RequestControlFocus(window, button)
+    if not self:IsEnabled() or InCombatLockdown() then return end
+    self.focusRequest = {window = window, button = button}
+    self:Refresh(window)
+end--[[APR_DIAG]]; Pad.RequestControlFocus = APRTrace("APR-Core/integrations/GamepadNavigation.lua:268:Pad:RequestControlFocus#21", Pad.RequestControlFocus)--[[/APR_DIAG]]
 
 -- Confirm and secondary click on a navigation tab enter its new content after AceConfig
 -- has finished rebuilding it. Directional Right/Down can use the same transition.
@@ -256,49 +279,93 @@ function Pad:BindDetails(button, direction, open, content)
         open()
         self:RequestFocus(content(), button)
         return true
-    end--[[APR_DIAG]]; enter = APRTrace("APR-Core/integrations/GamepadNavigation.lua:255:enter#22", enter)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; enter = APRTrace("APR-Core/integrations/GamepadNavigation.lua:278:enter#23", enter)--[[/APR_DIAG]]
     self:SetDirection(button, direction, enter)
     if not button.aprPadDetailsHook then
         button.aprPadDetailsHook = true
-        button:HookScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/integrations/GamepadNavigation.lua:263:callback#23", --[[/APR_DIAG]]function()
+        button:HookScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/integrations/GamepadNavigation.lua:286:callback#24", --[[/APR_DIAG]]function()
             if self:IsEnabled() and SmartNavigation:GetCurrentButton() == button then
                 self:RequestFocus(content(), button)
             end
         end--[[APR_DIAG]])--[[/APR_DIAG]])
     end
-end--[[APR_DIAG]]; Pad.BindDetails = APRTrace("APR-Core/integrations/GamepadNavigation.lua:253:Pad:BindDetails#21", Pad.BindDetails)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Pad.BindDetails = APRTrace("APR-Core/integrations/GamepadNavigation.lua:276:Pad:BindDetails#22", Pad.BindDetails)--[[/APR_DIAG]]
 
--- AceGUI scrolls by moving its child anchors and stores 0..1000 in its scrollbar.
--- Adapt only these instances to the pixel API consumed by Forever. No double scrolling,
--- and restore the native methods when a widget returns to an external/shared pool.
+-- Native navigation must retain the C widget methods: addon replacements can
+-- taint its shared state. Translate AceGUI's own setters to native scrolling.
 function Pad:AdaptAceScroll(widget, scroll, child, bar)
     if not scroll or not child or not bar or widget.aprPadScroll then return end
-    local saved = {scroll.GetVerticalScroll, scroll.GetVerticalScrollRange, scroll.SetVerticalScroll}
-    widget.aprPadScroll = saved
-    scroll.GetVerticalScrollRange = --[[APR_DIAG]]APRTrace("APR-Core/integrations/GamepadNavigation.lua:278:callback#25", --[[/APR_DIAG]]function() return math.max(0, child:GetHeight() - scroll:GetHeight()) end--[[APR_DIAG]])--[[/APR_DIAG]]
-    scroll.GetVerticalScroll = --[[APR_DIAG]]APRTrace("APR-Core/integrations/GamepadNavigation.lua:279:callback#26", --[[/APR_DIAG]]function()
+    local state = {widget = widget, bar = bar, setScroll = widget.SetScroll, fixScroll = widget.FixScroll}
+    widget.aprPadScroll, scroll.aprPadScrollState = state, state
+    local function alignChild()
+        local anchors = {}
+        for index = 1, child:GetNumPoints() do anchors[index] = {child:GetPoint(index)} end
+        child:ClearAllPoints()
+        for _, anchor in ipairs(anchors) do
+            local point, relative, relativePoint, x = unpack(anchor)
+            if type(relative) ~= "table" then
+                x, relative, relativePoint = relative or 0, child:GetParent(), point
+            end
+            child:SetPoint(point, relative, relativePoint, x or 0, 0)
+        end
+    end--[[APR_DIAG]]; alignChild = APRTrace("APR-Core/integrations/GamepadNavigation.lua:300:alignChild#26", alignChild)--[[/APR_DIAG]]
+    local function synchronize()
+        if state.updating then return end
+        state.updating = true
         local status = widget.status or widget.localstatus or widget.scrollStatus
-        return status and status.offset or 0
+        local offset = status and status.offset or 0
+        alignChild()
+        if scroll.UpdateScrollChildRect then scroll:UpdateScrollChildRect() end
+        scroll:SetVerticalScroll(math.max(0, math.min(scroll:GetVerticalScrollRange(), offset)))
+        state.updating = nil
+    end--[[APR_DIAG]]; synchronize = APRTrace("APR-Core/integrations/GamepadNavigation.lua:312:synchronize#27", synchronize)--[[/APR_DIAG]]
+    widget.SetScroll = --[[APR_DIAG]]APRTrace("APR-Core/integrations/GamepadNavigation.lua:322:callback#28", --[[/APR_DIAG]]function(self, value)
+        if state.updating then return end
+        state.setScroll(self, value)
+        synchronize()
     end--[[APR_DIAG]])--[[/APR_DIAG]]
-    scroll.SetVerticalScroll = --[[APR_DIAG]]APRTrace("APR-Core/integrations/GamepadNavigation.lua:283:callback#27", --[[/APR_DIAG]]function(_, offset)
-        local range = scroll:GetVerticalScrollRange()
-        local value = range > 0 and math.max(0, math.min(1000, offset / range * 1000)) or 0
-        bar:SetValue(value)
-        widget:SetScroll(value)
-    end--[[APR_DIAG]])--[[/APR_DIAG]]
-    bar.smartNavigationIgnored = true
+    if state.fixScroll then
+        widget.FixScroll = --[[APR_DIAG]]APRTrace("APR-Core/integrations/GamepadNavigation.lua:328:callback#29", --[[/APR_DIAG]]function(self, ...)
+            if state.updating then return end
+            state.fixScroll(self, ...)
+            synchronize()
+        end--[[APR_DIAG]])--[[/APR_DIAG]]
+    end
+    if not scroll.aprPadScrollHook then
+        scroll.aprPadScrollHook = true
+        scroll:HookScript("OnVerticalScroll", --[[APR_DIAG]]APRTrace("APR-Core/integrations/GamepadNavigation.lua:336:callback#30", --[[/APR_DIAG]]function(frame, offset)
+            local adapter = frame.aprPadScrollState
+            if not adapter or adapter.updating then return end
+            adapter.updating = true
+            local range = frame:GetVerticalScrollRange()
+            local clamped = math.max(0, math.min(range, offset))
+            if clamped ~= offset then frame:SetVerticalScroll(clamped) end
+            local value = range > 0 and clamped / range * 1000 or 0
+            local owner = adapter.widget
+            local status = owner.status or owner.localstatus or owner.scrollStatus
+            if status then status.offset, status.scrollvalue = clamped, value end
+            adapter.bar:SetValue(value)
+            adapter.updating = nil
+        end--[[APR_DIAG]])--[[/APR_DIAG]])
+    end
+    self:SetNavigationFlag(bar, "smartNavigationIgnored", true)
     local release = widget.OnRelease
-    widget.OnRelease = --[[APR_DIAG]]APRTrace("APR-Core/integrations/GamepadNavigation.lua:291:callback#28", --[[/APR_DIAG]]function(self, ...)
-        scroll.GetVerticalScroll, scroll.GetVerticalScrollRange, scroll.SetVerticalScroll = unpack(saved)
+    widget.OnRelease = --[[APR_DIAG]]APRTrace("APR-Core/integrations/GamepadNavigation.lua:353:callback#31", --[[/APR_DIAG]]function(self, ...)
+        scroll.aprPadScrollState = nil
+        self.SetScroll, self.FixScroll = state.setScroll, state.fixScroll
+        scroll:SetVerticalScroll(0)
+        local status = self.status or self.localstatus or self.scrollStatus
+        state.setScroll(self, status and status.scrollvalue or 0)
         self.aprPadScroll = nil
         self.OnRelease = release
         if release then return release(self, ...) end
     end--[[APR_DIAG]])--[[/APR_DIAG]]
-end--[[APR_DIAG]]; Pad.AdaptAceScroll = APRTrace("APR-Core/integrations/GamepadNavigation.lua:274:Pad:AdaptAceScroll#24", Pad.AdaptAceScroll)--[[/APR_DIAG]]
+    synchronize()
+end--[[APR_DIAG]]; Pad.AdaptAceScroll = APRTrace("APR-Core/integrations/GamepadNavigation.lua:296:Pad:AdaptAceScroll#25", Pad.AdaptAceScroll)--[[/APR_DIAG]]
 
 -- Non-Ace scrollable reports still need an entry point even if they contain only text.
 function Pad:PrepareScroll(scroll)
-    scroll.smartNavigationCanFocus = true
-    scroll.OnSmartNavClick = --[[APR_DIAG]]APRTrace("APR-Core/integrations/GamepadNavigation.lua:302:callback#30", --[[/APR_DIAG]]function() end--[[APR_DIAG]])--[[/APR_DIAG]]
-    if scroll.ScrollBar then scroll.ScrollBar.smartNavigationIgnored = true end
-end--[[APR_DIAG]]; Pad.PrepareScroll = APRTrace("APR-Core/integrations/GamepadNavigation.lua:300:Pad:PrepareScroll#29", Pad.PrepareScroll)--[[/APR_DIAG]]
+    self:SetNavigationFlag(scroll, "smartNavigationCanFocus", true)
+    scroll.OnSmartNavClick = --[[APR_DIAG]]APRTrace("APR-Core/integrations/GamepadNavigation.lua:369:callback#33", --[[/APR_DIAG]]function() end--[[APR_DIAG]])--[[/APR_DIAG]]
+    if scroll.ScrollBar then self:SetNavigationFlag(scroll.ScrollBar, "smartNavigationIgnored", true) end
+end--[[APR_DIAG]]; Pad.PrepareScroll = APRTrace("APR-Core/integrations/GamepadNavigation.lua:367:Pad:PrepareScroll#32", Pad.PrepareScroll)--[[/APR_DIAG]]

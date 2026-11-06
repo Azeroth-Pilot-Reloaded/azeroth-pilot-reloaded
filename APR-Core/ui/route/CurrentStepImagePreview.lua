@@ -301,7 +301,7 @@ local function CreateOverlayWindow(imagePath)
         end--[[APR_DIAG]])--[[/APR_DIAG]])
 
         if APR.Gamepad then
-            resizeHandle.smartNavigationIgnored = true
+            APR.Gamepad:SetNavigationFlag(resizeHandle, "smartNavigationIgnored", true)
             local controls = {}
             for index, action in ipairs({"-", "+", "", "", "", ""}) do
                 local operation = index

@@ -11,6 +11,7 @@ APR.Workspace = { pages = {}, tabs = {} }
 local Workspace = APR.Workspace
 
 local definitions = {
+    { id = "gamepad", label = L["GAMEPAD_MENU"], controller = "Gamepad" },
     { id = "route", label = L["ROUTE"], controller = "RouteBrowser" },
     { id = "status", label = L["STATUS"], controller = "StatusPanel" },
     { id = "about", label = L["ABOUT_HELP"], controller = "AboutPanel" },
@@ -26,7 +27,7 @@ function UI:Page(parent)
     page.content:SetAllPoints()
     page:Hide()
     return page
-end--[[APR_DIAG]]; UI.Page = APRTrace("APR-Core/ui/panels/Workspace.lua:22:UI:Page#1", UI.Page)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; UI.Page = APRTrace("APR-Core/ui/panels/Workspace.lua:23:UI:Page#1", UI.Page)--[[/APR_DIAG]]
 
 function Workspace:Create()
     local frame = UI:Window("APRWorkspace", APR.title, 1240, 850, "library", "logo")
@@ -44,40 +45,57 @@ function Workspace:Create()
     line:SetHeight(1)
     APR:RegisterThemeRegion(line, "border", 0.6)
     for _, definition in ipairs(definitions) do
-        local tab = UI:Button(frame, definition.label, 130, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:47:callback#3", --[[/APR_DIAG]]function() self:Show(definition.id) end--[[APR_DIAG]])--[[/APR_DIAG]])
+        local tab = UI:Button(frame, definition.label, 130, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:48:callback#3", --[[/APR_DIAG]]function() self:Show(definition.id) end--[[APR_DIAG]])--[[/APR_DIAG]])
         tab:SetHeight(28)
         -- The shell covers the lower edge of the tab, like a folder attached behind its border.
         tab:SetFrameLevel(frame:GetFrameLevel() - 1)
         self.tabs[definition.id] = tab
-        if APR.Gamepad then
+        tab.OnSmartNavSelect = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:53:callback#4", --[[/APR_DIAG]]function()
+            self.selectedTab = definition.id
+            self:LayoutTabs()
+        end--[[APR_DIAG]])--[[/APR_DIAG]]
+        if APR.Gamepad and definition.id ~= "gamepad" then
             local id = definition.id
-            APR.Gamepad:BindDetails(tab, "DOWN", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:54:callback#4", --[[/APR_DIAG]]function() self:Show(id) end--[[APR_DIAG]])--[[/APR_DIAG]],
-                --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:55:callback#5", --[[/APR_DIAG]]function() return self.pages[id] end--[[APR_DIAG]])--[[/APR_DIAG]])
+            APR.Gamepad:BindDetails(tab, "DOWN", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:59:callback#5", --[[/APR_DIAG]]function() self:Show(id) end--[[APR_DIAG]])--[[/APR_DIAG]],
+                --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:60:callback#6", --[[/APR_DIAG]]function() return self.pages[id] end--[[APR_DIAG]])--[[/APR_DIAG]])
         end
     end
     if APR.Gamepad then
         local tabs = {}
         for _, definition in ipairs(definitions) do tabs[#tabs + 1] = self.tabs[definition.id] end
         APR.Gamepad:LinkHorizontal(tabs)
-        frame.gamepadMenu = UI:Button(frame, L["GAMEPAD_MENU"], 145, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:62:callback#6", --[[/APR_DIAG]]function() APR.Gamepad:RunAction("menu") end--[[APR_DIAG]])--[[/APR_DIAG]])
-        frame.gamepadMenu:SetPoint("TOPRIGHT", -58, -10)
+        frame.gamepadMenu = self.tabs.gamepad
+        APR.Gamepad:SetDirection(frame.gamepadMenu, "DOWN", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:68:callback#7", --[[/APR_DIAG]]function()
+            APR.Gamepad:RequestFocus(self.pages[self.active], frame.gamepadMenu)
+            return true
+        end--[[APR_DIAG]])--[[/APR_DIAG]])
+        if APR.Gamepad.RegisterInputHandler then
+            APR.Gamepad:RegisterInputHandler(frame, {buttons = {
+                PADLTRIGGER = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:74:callback#8", --[[/APR_DIAG]]function(down) if down then self:CycleTab(-1) end end--[[APR_DIAG]])--[[/APR_DIAG]],
+                PADRTRIGGER = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:75:callback#9", --[[/APR_DIAG]]function(down) if down then self:CycleTab(1) end end--[[APR_DIAG]])--[[/APR_DIAG]],
+            }})
+        end
     end
-    frame:HookScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:65:callback#7", --[[/APR_DIAG]]function() self:LayoutTabs() end--[[APR_DIAG]])--[[/APR_DIAG]])
-    frame:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:66:callback#8", --[[/APR_DIAG]]function()
+    -- The close control belongs to the shell, independent of the title's width.
+    frame.close:ClearAllPoints()
+    frame.close:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -12, -10)
+    frame:HookScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:82:callback#10", --[[/APR_DIAG]]function() self:LayoutTabs() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    frame:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:83:callback#11", --[[/APR_DIAG]]function()
         if UI.activeMenu then UI.activeMenu:Hide() end
         if UI.selectionDialog then UI.selectionDialog:Hide() end
         if APR.LayoutEditor and APR.LayoutEditor.QueueOnboarding then APR.LayoutEditor.QueueOnboarding() end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     self:LayoutTabs()
-end--[[APR_DIAG]]; Workspace.Create = APRTrace("APR-Core/ui/panels/Workspace.lua:31:Workspace:Create#2", Workspace.Create)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Workspace.Create = APRTrace("APR-Core/ui/panels/Workspace.lua:32:Workspace:Create#2", Workspace.Create)--[[/APR_DIAG]]
 
 function Workspace:RefreshGamepadMenu()
     local frame = self.frame
     if not frame or not frame.gamepadMenu then return end
     local visible = APR.Gamepad and APR.Gamepad:IsEnabled()
     frame.gamepadMenu:SetShown(visible)
-    frame.header.Text:SetPoint("RIGHT", visible and -170 or -8, 0)
-end--[[APR_DIAG]]; Workspace.RefreshGamepadMenu = APRTrace("APR-Core/ui/panels/Workspace.lua:74:Workspace:RefreshGamepadMenu#9", Workspace.RefreshGamepadMenu)--[[/APR_DIAG]]
+    frame.header:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -52, -3)
+    frame.header.Text:SetPoint("RIGHT", -8, 0)
+end--[[APR_DIAG]]; Workspace.RefreshGamepadMenu = APRTrace("APR-Core/ui/panels/Workspace.lua:91:Workspace:RefreshGamepadMenu#12", Workspace.RefreshGamepadMenu)--[[/APR_DIAG]]
 
 function Workspace:LayoutTabs()
     if not self.frame then return end
@@ -88,20 +106,48 @@ function Workspace:LayoutTabs()
         local definition = definitions[index]
         local tab = self.tabs[definition.id]
         local visible = (definition.id ~= "perf" or showPerf) and APR[definition.controller] ~= nil
+            and (definition.id ~= "gamepad" or APR.Gamepad:IsEnabled())
         tab:SetShown(visible)
         if visible then
             local width = math.min(190, math.max(110, tab:GetFontString():GetStringWidth() + 30))
             tab:ClearAllPoints()
             tab:SetPoint("BOTTOMRIGHT", self.frame, "TOPRIGHT", right, -5)
             tab:SetWidth(width)
-            UI:SetButtonActive(tab, self.active == definition.id)
+            UI:SetButtonActive(tab, (self.selectedTab or self.active) == definition.id)
             right = right - width - 4
         end
     end
-end--[[APR_DIAG]]; Workspace.LayoutTabs = APRTrace("APR-Core/ui/panels/Workspace.lua:82:Workspace:LayoutTabs#10", Workspace.LayoutTabs)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Workspace.LayoutTabs = APRTrace("APR-Core/ui/panels/Workspace.lua:100:Workspace:LayoutTabs#13", Workspace.LayoutTabs)--[[/APR_DIAG]]
+
+function Workspace:CycleTab(direction)
+    local visible, selected = {}, 1
+    for _, definition in ipairs(definitions) do
+        local tab = self.tabs[definition.id]
+        if tab and tab:IsShown() then
+            visible[#visible + 1] = definition.id
+            if (self.selectedTab or self.active) == definition.id then selected = #visible end
+        end
+    end
+    if #visible == 0 then return end
+    local id = visible[(selected - 1 + direction) % #visible + 1]
+    self.selectedTab = id
+    if id == "gamepad" then
+        self:LayoutTabs()
+        if APR.Gamepad then APR.Gamepad:RequestControlFocus(self.frame, self.tabs[id]) end
+    else
+        self:Show(id)
+        if APR.Gamepad then APR.Gamepad:RequestFocus(self.pages[id], self.tabs[id]) end
+    end
+end--[[APR_DIAG]]; Workspace.CycleTab = APRTrace("APR-Core/ui/panels/Workspace.lua:122:Workspace:CycleTab#14", Workspace.CycleTab)--[[/APR_DIAG]]
 
 function Workspace:Show(id, section)
     id = id or "route"
+    if id == "gamepad" then
+        self.selectedTab = id
+        self:LayoutTabs()
+        if APR.Gamepad then APR.Gamepad:RunAction("menu") end
+        return
+    end
     if id == "group" then
         if APR.PartyFinderPanel then APR.PartyFinderPanel:Show() end
         return
@@ -123,7 +169,7 @@ function Workspace:Show(id, section)
         self.pages[id] = controller.frame
     end
     if section and controller.Select then controller.pendingWorkspaceSection = section end
-    self.active = id
+    self.active, self.selectedTab = id, id
     for key, page in pairs(self.pages) do page:SetShown(key == id) end
     self.frame.header.Text:SetText(APR.title .. "  ·  " .. definition.label)
     self:LayoutTabs()
@@ -134,8 +180,8 @@ function Workspace:Show(id, section)
         controller.pendingWorkspaceSection = nil
     elseif controller.Refresh and controller.refreshSerial == refreshSerial then controller:Refresh() end
     if APR.Gamepad then APR.Gamepad:Refresh(self.frame) end
-end--[[APR_DIAG]]; Workspace.Show = APRTrace("APR-Core/ui/panels/Workspace.lua:103:Workspace:Show#11", Workspace.Show)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Workspace.Show = APRTrace("APR-Core/ui/panels/Workspace.lua:143:Workspace:Show#15", Workspace.Show)--[[/APR_DIAG]]
 
 function Workspace:Hide()
     if self.frame then self.frame:Hide() end
-end--[[APR_DIAG]]; Workspace.Hide = APRTrace("APR-Core/ui/panels/Workspace.lua:139:Workspace:Hide#12", Workspace.Hide)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Workspace.Hide = APRTrace("APR-Core/ui/panels/Workspace.lua:185:Workspace:Hide#16", Workspace.Hide)--[[/APR_DIAG]]

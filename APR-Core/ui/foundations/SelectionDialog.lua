@@ -212,7 +212,7 @@ local function CreateSelectionDialog()
     table.insert(UISpecialFrames, "APRSelectionPopup")
     frame:Hide()
     if APR.Gamepad then
-        frame.header.smartNavigationIgnoredDontPropagate = true
+        APR.Gamepad:SetNavigationFlag(frame.header, "smartNavigationIgnoredDontPropagate", true)
         APR.Gamepad:RegisterWindow(frame, true)
     end
     return frame
