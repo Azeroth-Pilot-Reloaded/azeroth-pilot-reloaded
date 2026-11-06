@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
-    label = L["Forever - Starting Zone Night Elf"] .. " (1-11)",
+    label = L["Forever - Starting Zone Night Elf"],
+    legacyLabels = { L["Forever - Starting Zone Night Elf"] .. " (1-11)" },
+    levelRange = { min = 1, max = 11 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

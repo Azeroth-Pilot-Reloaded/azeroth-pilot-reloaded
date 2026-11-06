@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
-    label = L["Forever - Horde - Tanaris (First Visit)"] .. " (41-43)",
+    label = L["Forever - Horde - Tanaris (First Visit)"],
+    legacyLabels = { L["Forever - Horde - Tanaris (First Visit)"] .. " (41-43)" },
+    levelRange = { min = 41, max = 43 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -961,7 +963,9 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
 }
 
 APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
-    label = L["Forever - Horde - Tanaris (Second Visit)"] .. " (46-48)",
+    label = L["Forever - Horde - Tanaris (Second Visit)"],
+    legacyLabels = { L["Forever - Horde - Tanaris (Second Visit)"] .. " (46-48)" },
+    levelRange = { min = 46, max = 48 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

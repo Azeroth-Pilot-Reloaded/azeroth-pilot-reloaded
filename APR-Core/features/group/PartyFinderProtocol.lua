@@ -135,7 +135,7 @@ end--[[APR_DIAG]]; PairHash = APRTrace("APR-Core/features/group/PartyFinderProto
 
 local routeDisplayFields = {
     label = true, author = true, authors = true, description = true, community = true, source = true,
-    legacyLabels = true,
+    legacyLabels = true, levelRange = true,
 }
 local stepDisplayFields = { Name = true, Note = true, PreviewImages = true, FillerPreviewImages = true, _index = true, _comment = true }
 local textActions = { DroppableQuest = true, TameBeast = true, LearnSkill = true }

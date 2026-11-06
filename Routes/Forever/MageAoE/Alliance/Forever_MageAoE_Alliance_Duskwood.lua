@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
-    label = L["Forever - Alliance - Mage AoE - Duskwood First Visit"] .. " (21-22)",
+    label = L["Forever - Alliance - Mage AoE - Duskwood First Visit"],
+    legacyLabels = { L["Forever - Alliance - Mage AoE - Duskwood First Visit"] .. " (21-22)" },
+    levelRange = { min = 21, max = 22 },
     prefab = { [APR.PREFAB_TYPES.Leveling] = 7 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
@@ -890,7 +892,9 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
 }
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-Second-Visit"] = {
-    label = L["Forever - Alliance - Mage AoE - Duskwood Second Visit"] .. " (26-31)",
+    label = L["Forever - Alliance - Mage AoE - Duskwood Second Visit"],
+    legacyLabels = { L["Forever - Alliance - Mage AoE - Duskwood Second Visit"] .. " (26-31)" },
+    levelRange = { min = 26, max = 31 },
     prefab = { [APR.PREFAB_TYPES.Leveling] = 9 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,

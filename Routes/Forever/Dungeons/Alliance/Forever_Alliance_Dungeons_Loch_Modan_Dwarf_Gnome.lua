@@ -2,7 +2,9 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
-    label = L["Forever - Leveling Dungeon - Loch Modan"] .. " (12-14)",
+    label = L["Forever - Leveling Dungeon - Loch Modan"] .. " - III",
+    legacyLabels = { L["Forever - Leveling Dungeon - Loch Modan"] .. " (12-14)" },
+    levelRange = { min = 12, max = 14 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Dungeons,

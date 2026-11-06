@@ -302,6 +302,7 @@ class RouteSchema:
             "author": TEXT, "authors": array(TEXT, 1), "community": BOOL,
             "source": enum(("apr", "community")), "description": TEXT,
             "legacyLabels": array(TEXT, 1), "conditions": self.route_condition,
+            "levelRange": obj({"min": ID, "max": ID}, choices=(("min", "max"),)),
             "autoStartOnMap": BOOL, "notSkippable": BOOL, "hiddenFromSelection": BOOL, "temporary": BOOL,
             "sojournerAchievementID": ID, "delve": obj({}),
             "steps": union(steps, array(scenario, 1)), "scenarios": array(scenario),
@@ -316,3 +317,6 @@ class RouteSchema:
     def validate(self, key, route):
         TEXT(key, "route key")
         self.route(route, key)
+        levels = route.get("levelRange", {})
+        if "min" in levels and "max" in levels and levels["min"] > levels["max"]:
+            fail(key + ".levelRange", "minimum exceeds maximum")

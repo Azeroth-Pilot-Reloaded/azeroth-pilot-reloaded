@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
-    label = L["Forever - Horde - Swamp of Sorrows (First Visit)"] .. " (41-400)",
+    label = L["Forever - Horde - Swamp of Sorrows (First Visit)"],
+    legacyLabels = { L["Forever - Horde - Swamp of Sorrows (First Visit)"] .. " (41-400)" },
+    levelRange = { min = 41, max = 400 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -1035,7 +1037,9 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
 }
 
 APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-Second-Visit"] = {
-    label = L["Forever - Horde - Swamp of Sorrows (Second Visit)"] .. " (45-46)",
+    label = L["Forever - Horde - Swamp of Sorrows (Second Visit)"],
+    legacyLabels = { L["Forever - Horde - Swamp of Sorrows (Second Visit)"] .. " (45-46)" },
+    levelRange = { min = 45, max = 46 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

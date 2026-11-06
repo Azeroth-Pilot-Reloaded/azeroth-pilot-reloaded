@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
-    label = L["Forever - Alliance - Burning Steppes"] .. " (56-57)",
+    label = L["Forever - Alliance - Burning Steppes"],
+    legacyLabels = { L["Forever - Alliance - Burning Steppes"] .. " (56-57)" },
+    levelRange = { min = 56, max = 57 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

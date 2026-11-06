@@ -2,7 +2,9 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
-    label = L["Forever - Leveling Dungeon - Deadmines"] .. " (19-20)",
+    label = L["Forever - Leveling Dungeon - Deadmines"],
+    legacyLabels = { L["Forever - Leveling Dungeon - Deadmines"] .. " (19-20)" },
+    levelRange = { min = 19, max = 20 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Dungeons,

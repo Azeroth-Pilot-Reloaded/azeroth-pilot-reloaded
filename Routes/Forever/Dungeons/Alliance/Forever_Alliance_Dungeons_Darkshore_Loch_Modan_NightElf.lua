@@ -2,7 +2,9 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"] = {
-    label = L["Forever - Leveling Dungeon - Darkshore / Loch Modan"] .. " (11-16)",
+    label = L["Forever - Leveling Dungeon - Darkshore / Loch Modan"],
+    legacyLabels = { L["Forever - Leveling Dungeon - Darkshore / Loch Modan"] .. " (11-16)" },
+    levelRange = { min = 11, max = 16 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Dungeons,

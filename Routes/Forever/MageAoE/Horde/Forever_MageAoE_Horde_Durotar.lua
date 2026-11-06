@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
-    label = L["Forever - Horde - Mage AoE - Starting Zone Troll / Orc"] .. " (1-12)",
+    label = L["Forever - Horde - Mage AoE - Starting Zone Troll / Orc"],
+    legacyLabels = { L["Forever - Horde - Mage AoE - Starting Zone Troll / Orc"] .. " (1-12)" },
+    levelRange = { min = 1, max = 12 },
     prefab = { [APR.PREFAB_TYPES.Leveling] = 1, [APR.PREFAB_TYPES.StartingZone] = 1 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,

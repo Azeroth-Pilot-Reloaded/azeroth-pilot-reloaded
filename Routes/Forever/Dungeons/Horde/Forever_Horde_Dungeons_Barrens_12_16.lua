@@ -2,7 +2,9 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
-    label = L["Forever - Leveling Dungeon - The Barrens"] .. " (12-16)",
+    label = L["Forever - Leveling Dungeon - The Barrens"] .. " - I",
+    legacyLabels = { L["Forever - Leveling Dungeon - The Barrens"] .. " (12-16)" },
+    levelRange = { min = 12, max = 16 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Dungeons,

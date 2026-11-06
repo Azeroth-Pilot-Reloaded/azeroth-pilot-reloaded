@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
-    label = L["Forever - Horde - Thousand Needles (First Visit)"] .. " (28-30)",
+    label = L["Forever - Horde - Thousand Needles (First Visit)"],
+    legacyLabels = { L["Forever - Horde - Thousand Needles (First Visit)"] .. " (28-30)" },
+    levelRange = { min = 28, max = 30 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -3020,7 +3022,9 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
 }
 
 APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
-    label = L["Forever - Horde - Thousand Needles (Second Visit)"] .. " (33-34)",
+    label = L["Forever - Horde - Thousand Needles (Second Visit)"],
+    legacyLabels = { L["Forever - Horde - Thousand Needles (Second Visit)"] .. " (33-34)" },
+    levelRange = { min = 33, max = 34 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

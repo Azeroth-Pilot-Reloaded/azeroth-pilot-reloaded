@@ -2,6 +2,7 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["1409-Exile's Reach - H"] = {
     label = L["01-10 Exile's Reach"],
+    levelRange = { min = 1, max = 10 },
     expansion = APR.EXPANSIONS.Vanilla,
     category = APR.CATEGORIES.Leveling,
     prefab = {

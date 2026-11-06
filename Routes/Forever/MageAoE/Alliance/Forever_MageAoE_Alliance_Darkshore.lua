@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
-    label = L["Forever - Alliance - Mage AoE - Darkshore"] .. " (12-18)",
+    label = L["Forever - Alliance - Mage AoE - Darkshore"],
+    legacyLabels = { L["Forever - Alliance - Mage AoE - Darkshore"] .. " (12-18)" },
+    levelRange = { min = 12, max = 18 },
     prefab = { [APR.PREFAB_TYPES.Leveling] = 5 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,

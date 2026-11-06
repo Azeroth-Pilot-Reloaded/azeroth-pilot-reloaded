@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
-    label = L["Forever - Alliance - Stranglethorn Vale (First Visit)"] .. " (34-35)",
+    label = L["Forever - Alliance - Stranglethorn Vale (First Visit)"],
+    legacyLabels = { L["Forever - Alliance - Stranglethorn Vale (First Visit)"] .. " (34-35)" },
+    levelRange = { min = 34, max = 35 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -1096,7 +1098,9 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
 }
 
 APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
-    label = L["Forever - Alliance - Stranglethorn Vale (Second Visit)"] .. " (36-38)",
+    label = L["Forever - Alliance - Stranglethorn Vale (Second Visit)"],
+    legacyLabels = { L["Forever - Alliance - Stranglethorn Vale (Second Visit)"] .. " (36-38)" },
+    levelRange = { min = 36, max = 38 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -2036,7 +2040,9 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
 }
 
 APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] = {
-    label = L["Forever - Alliance - Stranglethorn Vale / Swamp of Sorrows"] .. " (41-43)",
+    label = L["Forever - Alliance - Stranglethorn Vale / Swamp of Sorrows"],
+    legacyLabels = { L["Forever - Alliance - Stranglethorn Vale / Swamp of Sorrows"] .. " (41-43)" },
+    levelRange = { min = 41, max = 43 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -3490,7 +3496,9 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
 }
 
 APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
-    label = L["Forever - Alliance - Stranglethorn Vale (Third Visit)"] .. " (50-50)",
+    label = L["Forever - Alliance - Stranglethorn Vale (Third Visit)"],
+    legacyLabels = { L["Forever - Alliance - Stranglethorn Vale (Third Visit)"] .. " (50-50)" },
+    levelRange = { min = 50, max = 50 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
-    label = L["Forever - Horde - Dustwallow Marsh"] .. " (37-38)",
+    label = L["Forever - Horde - Dustwallow Marsh"],
+    legacyLabels = { L["Forever - Horde - Dustwallow Marsh"] .. " (37-38)" },
+    levelRange = { min = 37, max = 38 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Alliance-Tanaris-First-Visit"] = {
-    label = L["Forever - Alliance - Tanaris (First Visit)"] .. " (43-44)",
+    label = L["Forever - Alliance - Tanaris (First Visit)"],
+    legacyLabels = { L["Forever - Alliance - Tanaris (First Visit)"] .. " (43-44)" },
+    levelRange = { min = 43, max = 44 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -790,7 +792,9 @@ APR.RouteQuestStepList["Forever-Alliance-Tanaris-First-Visit"] = {
 }
 
 APR.RouteQuestStepList["Forever-Alliance-Tanaris-Second-Visit"] = {
-    label = L["Forever - Alliance - Tanaris (Second Visit)"] .. " (48-50)",
+    label = L["Forever - Alliance - Tanaris (Second Visit)"],
+    legacyLabels = { L["Forever - Alliance - Tanaris (Second Visit)"] .. " (48-50)" },
+    levelRange = { min = 48, max = 50 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -2368,7 +2372,9 @@ APR.RouteQuestStepList["Forever-Alliance-Tanaris-Second-Visit"] = {
 }
 
 APR.RouteQuestStepList["Forever-Alliance-Tanaris-Warlock"] = {
-    label = L["Forever - Alliance - Tanaris"] .. " (43-44)",
+    label = L["Forever - Alliance - Tanaris"],
+    legacyLabels = { L["Forever - Alliance - Tanaris"] .. " (43-44)" },
+    levelRange = { min = 43, max = 44 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

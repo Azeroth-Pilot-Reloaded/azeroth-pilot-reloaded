@@ -100,6 +100,43 @@ Explicit Forever additions lazily store `APRData[player].RouteChoices[label]` to
 preserve variants with shared labels. Existing paths need no migration: absent,
 invalid or deleted choices use the usual resolver, which prefers a recommended
 variant for legacy Forever labels. Declared label aliases migrate saved choices.
+`route_label_migration_test.lua` covers ambiguous old titles, distinct new
+variants, unqueued explicit choices, future chapters, completion, favorites and
+unchanged progress/temporary-route keys. Historical completion receipts remain
+available; `APRData[player].RouteCompletionMigrations` lazily records consumed
+aliases so a later reset is not undone on the next login. No existing saved
+tables or legacy entries are removed.
+`route_level_column_test.lua` uses invented ranges/maps for numeric ascending and
+descending sorts, unknown/open ranges, search aliases, per-build native-query
+budgets, missing data, client isolation, recycled rows and narrow table geometry.
+The common declaration schema validates optional `levelRange` bounds on every
+discovered route. Level metadata is presentation only: signature golden tests
+and the shared-definition fingerprint suite verify it cannot invalidate progress
+or group compatibility.
+
+Retail applies 10–70 to other leveling routes, 70–80 to The War Within and
+80–90 to Midnight, narrowed by authored route requirements. Native map scaling
+cannot replace those requested bands. Specialized introductions display valid
+`C_Map.GetMapLevels` observations, refined by route-level conditions.
+Observations refresh when the catalog is rebuilt, including after a
+timeline change. Exile's Reach declares its documented 1–10 range. The shared
+starting preset also includes hero/allied-race introductions and returning-player
+tutorials: these use native/explicit levels, remaining unknown if none are available.
+Explicit conditions can narrow these bounds. A city used for an introduction
+cannot truncate its expansion's band to a single level. Blizzard's native
+map-label code uses this API across the supported Retail versions, including
+[11.2.7](https://github.com/Gethe/wow-ui-source/blob/11.2.7/Interface/AddOns/Blizzard_SharedMapDataProviders/AreaLabelDataProvider.lua)
+and [12.1.5](https://github.com/Gethe/wow-ui-source/blob/12.1.5/Interface/AddOns/Blizzard_SharedMapDataProviders/AreaLabelDataProvider.lua).
+The [new-player path](https://worldofwarcraft.blizzard.com/news/24266319/new-players-starter-guide-welcome-to-world-of-warcraft)
+and [Midnight leveling announcement](https://worldofwarcraft.blizzard.com/en-us/news/24223575/watch-the-gamescom-2025-systems-download-panel-vod)
+support TWW/Midnight's expansion bands. The 10–70 display for other Retail routes
+is the requested selection policy, independent of current Chromie scaling. Forever
+uses authored recommendations and conditions without querying Retail map levels.
+In both real clients, check the level header, sorting, tooltips, favorite/path
+retention after reload, narrow viewports and French/English labels; on Retail,
+also compare the column before and after changing timelines. Mock widgets cannot
+certify native font clipping, scaling data or actual client rendering.
+
 `next_route_suggestions_test.lua` covers explicit leveling/dungeon continuations
 on both clients, including level/XP boundaries, conditional branches, completion,
 prerequisites and popup callbacks. Unlisted routes never become implicit successors.

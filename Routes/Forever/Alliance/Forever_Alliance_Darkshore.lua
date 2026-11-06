@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
-    label = L["Forever - Alliance - Darkshore"] .. " (11-19)",
+    label = L["Forever - Alliance - Darkshore"],
+    legacyLabels = { L["Forever - Alliance - Darkshore"] .. " (11-19)" },
+    levelRange = { min = 11, max = 19 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -8051,7 +8053,9 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
 }
 
 APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
-    label = L["Forever - Alliance - Darkshore / Ashenvale"] .. " (20-21)",
+    label = L["Forever - Alliance - Darkshore / Ashenvale"],
+    legacyLabels = { L["Forever - Alliance - Darkshore / Ashenvale"] .. " (20-21)" },
+    levelRange = { min = 20, max = 21 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

@@ -2,7 +2,9 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
-    label = L["Forever - Leveling Dungeon - Westfall"] .. " (13-15)",
+    label = L["Forever - Leveling Dungeon - Westfall"],
+    legacyLabels = { L["Forever - Leveling Dungeon - Westfall"] .. " (13-15)" },
+    levelRange = { min = 13, max = 15 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Dungeons,

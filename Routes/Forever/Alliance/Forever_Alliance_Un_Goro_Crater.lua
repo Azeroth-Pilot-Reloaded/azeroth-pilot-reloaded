@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Alliance-Un-Goro-Crater"] = {
-    label = L["Forever - Alliance - Un'Goro Crater"] .. " (53-54)",
+    label = L["Forever - Alliance - Un'Goro Crater"],
+    legacyLabels = { L["Forever - Alliance - Un'Goro Crater"] .. " (53-54)" },
+    levelRange = { min = 53, max = 54 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

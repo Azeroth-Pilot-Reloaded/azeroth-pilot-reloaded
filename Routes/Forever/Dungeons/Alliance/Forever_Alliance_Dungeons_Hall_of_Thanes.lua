@@ -2,7 +2,9 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
-    label = L["Forever - Leveling Dungeon - Hall of Thanes"] .. " (17-18)",
+    label = L["Forever - Leveling Dungeon - Hall of Thanes"],
+    legacyLabels = { L["Forever - Leveling Dungeon - Hall of Thanes"] .. " (17-18)" },
+    levelRange = { min = 17, max = 18 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Dungeons,

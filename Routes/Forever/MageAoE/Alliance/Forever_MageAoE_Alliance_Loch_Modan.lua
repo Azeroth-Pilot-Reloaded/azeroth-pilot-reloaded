@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
-    label = L["Forever - Alliance - Mage AoE - Loch Modan"] .. " (10-12)",
+    label = L["Forever - Alliance - Mage AoE - Loch Modan"],
+    legacyLabels = { L["Forever - Alliance - Mage AoE - Loch Modan"] .. " (10-12)" },
+    levelRange = { min = 10, max = 12 },
     prefab = { [APR.PREFAB_TYPES.Leveling] = 3 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
