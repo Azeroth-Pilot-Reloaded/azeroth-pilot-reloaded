@@ -10,7 +10,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
     mapID = 1434,
     conditions = { MinLevel = 34, Faction = "Alliance" },
     nextRoute = { { route = "Forever-Alliance-Desolace-First-Visit", conditions = { Class = { APR.Classes.Druid, APR.Classes.Mage, APR.Classes.Paladin, APR.Classes.Priest, APR.Classes.Rogue, APR.Classes.Shaman, APR.Classes.Warlock, APR.Classes.Warrior } } }, { route = "Forever-Alliance-Desolace-Hunter", conditions = { Race = { APR.RACES.Dwarf, APR.RACES.Human, APR.RACES.NightElf, APR.RACES.Skyborne }, Class = APR.Classes.Hunter } } },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 16 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 16 }, [APR.PREFAB_TYPES.Speedrun] = { index = 16 } },
     parallelSteps = {
         {
             repeatable = true,
@@ -1108,7 +1108,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
     mapID = 1434,
     conditions = { MinLevel = 36, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Swamp-of-Sorrows" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 18 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 18 }, [APR.PREFAB_TYPES.Speedrun] = { index = 18 } },
     parallelSteps = {
         {
             repeatable = true,
@@ -2051,7 +2051,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
     mapID = 1434,
     conditions = { MinLevel = 41, Faction = "Alliance" },
     nextRoute = { { route = "Forever-Alliance-Tanaris-First-Visit", conditions = { AnyOf = { { Class = { APR.Classes.Druid, APR.Classes.Hunter, APR.Classes.Mage, APR.Classes.Paladin, APR.Classes.Priest, APR.Classes.Rogue, APR.Classes.Shaman, APR.Classes.Warrior } }, { Class = APR.Classes.Warlock, Race = APR.RACES.Skyborne } } } }, { route = "Forever-Alliance-Tanaris-Warlock", conditions = { Race = { APR.RACES.Gnome, APR.RACES.Human }, Class = APR.Classes.Warlock } } },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 24 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 24 }, [APR.PREFAB_TYPES.Speedrun] = { index = 24 } },
     parallelSteps = {
         {
             repeatable = true,
@@ -3508,7 +3508,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
     mapID = 1434,
     conditions = { MinLevel = 50, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Searing-Gorge" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 28 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 28 }, [APR.PREFAB_TYPES.Speedrun] = { index = 28 } },
     parallelSteps = {
         {
             repeatable = true,

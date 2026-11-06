@@ -17,7 +17,7 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         { route = "Forever-Shared-Dungeons-Deadmines", conditions = { MinLevel = 18, Faction = "Alliance", SkipForLvl = 24 } },
     },
     -- Darkshore quest, transport and level safeguards.
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 5 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 5 }, [APR.PREFAB_TYPES.Speedrun] = { index = 5 } },
     parallelSteps = {
         {
             conditions = { EquippedItemStat = { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 7.1, precision = 1, allowMissing = true }, IsQuestCompleted = 4811, ItemCount = { itemID = 15397, count = 1 }, EquippedItem = { slot = 16, itemID = 15397, invert = true }, Class = { "DRUID", "WARRIOR" } },
@@ -8067,7 +8067,7 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
         { route = "Forever-Shared-Dungeons-Deadmines", conditions = { MinLevel = 18, Faction = "Alliance", Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock, APR.Classes.Druid }, SkipForLvl = 24 } },
     },
     -- Darkshore quest, transport and level safeguards.
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 7 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 7 }, [APR.PREFAB_TYPES.Speedrun] = { index = 7 } },
     parallelSteps = {
         {
             repeatable = true,

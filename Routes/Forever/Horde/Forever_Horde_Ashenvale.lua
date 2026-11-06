@@ -10,7 +10,7 @@ APR.RouteQuestStepList["Forever-Horde-Ashenvale"] = {
     mapID = 1440,
     conditions = { MinLevel = 26, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Thousand-Needles-First-Visit" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 8 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 8 }, [APR.PREFAB_TYPES.Speedrun] = { index = 8 } },
     parallelSteps = {
         {
             repeatable = true,

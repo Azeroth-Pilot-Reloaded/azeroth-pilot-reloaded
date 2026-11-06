@@ -8,7 +8,7 @@ APR.RouteQuestStepList["118-IntroQline - A"] = {
         [APR.PREFAB_TYPES.Leveling] = 10,
     },
     mapID = 118,
-    conditions = { Level = 10 },
+    conditions = { Level = 10, Faction = "Alliance" },
     nextRoute = { "1648-Z0-TheMaw-Story" },
     steps = {
         {
@@ -141,7 +141,7 @@ APR.RouteQuestStepList["1670-Shadowlands-StoryOnly-A"] = {
         [APR.PREFAB_TYPES.Leveling] = 180,
     },
     mapID = 1670,
-    conditions = { Level = 10 },
+    conditions = { Level = 10, Faction = "Alliance" },
     nextRoute = {},
     steps = {
         {

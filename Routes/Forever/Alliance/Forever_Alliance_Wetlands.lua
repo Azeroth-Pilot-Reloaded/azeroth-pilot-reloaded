@@ -13,7 +13,7 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands"] = {
         "Forever-Alliance-Duskwood-Redridge-Mountains",
         { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Alliance", Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock, APR.Classes.Druid }, SkipForLvl = 26 } },
     },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 9 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 9 }, [APR.PREFAB_TYPES.Speedrun] = { index = 9 } },
     parallelSteps = {
         {
             repeatable = true,
@@ -1432,7 +1432,7 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
     mapID = 1437,
     conditions = { MinLevel = 27, Faction = "Alliance" },
     nextRoute = { { route = "Forever-Alliance-Ashenvale", conditions = { Class = { APR.Classes.Druid, APR.Classes.Mage, APR.Classes.Paladin, APR.Classes.Priest, APR.Classes.Rogue, APR.Classes.Shaman, APR.Classes.Warlock, APR.Classes.Warrior } } }, { route = "Forever-Alliance-Duskwood", conditions = { Race = { APR.RACES.Dwarf, APR.RACES.Human, APR.RACES.NightElf, APR.RACES.Skyborne }, Class = APR.Classes.Hunter } } },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 11 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 11 }, [APR.PREFAB_TYPES.Speedrun] = { index = 11 } },
     parallelSteps = {
         {
             repeatable = true,
@@ -3070,7 +3070,7 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
         "Forever-Alliance-Duskwood-Redridge-Mountains",
         { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Alliance", Race = { APR.RACES.Dwarf, APR.RACES.Human, APR.RACES.NightElf, APR.RACES.Skyborne }, Class = APR.Classes.Hunter, SkipForLvl = 26 } },
     },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 7 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 7 }, [APR.PREFAB_TYPES.Speedrun] = { index = 7 } },
     parallelSteps = {
         {
             conditions = { ItemCount = { itemID = 3493, count = 1 }, EquippedItemStat = { allowMissing = true, slot = 18, value = 12.06, precision = 1, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<" }, EquippedItem = { invert = true, itemID = 3493, slot = 18 } },

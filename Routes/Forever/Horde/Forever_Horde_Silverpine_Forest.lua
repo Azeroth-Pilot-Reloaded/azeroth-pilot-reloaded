@@ -16,7 +16,7 @@ APR.RouteQuestStepList["Forever-Horde-Silverpine-Forest"] = {
         { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, Faction = "Horde", Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Skyborne, APR.RACES.Troll }, Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Mage, APR.Classes.Warlock, APR.Classes.Druid }, SkipForLvl = 19 } },
         { route = "Forever-Shared-Dungeons-Ruins-of-Lordaeron", conditions = { MinLevel = 15, Faction = "Horde", Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Skyborne, APR.RACES.Troll }, Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Mage, APR.Classes.Warlock, APR.Classes.Druid }, SkipForLvl = 21 } },
     },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 3 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 3 }, [APR.PREFAB_TYPES.Speedrun] = { index = 3 } },
     parallelSteps = {
         {
             conditions = { ItemCount = { itemID = 4786, count = 1 }, MinLevel = 15, Class = { "MAGE", "PRIEST", "WARLOCK" }, EquippedItem = { itemID = 4786, invert = true, slot = 6 }, EquippedItemStat = { { slot = 6, stat = "QUALITY", operator = "<", value = 7, allowMissing = true }, { slot = 6, stat = "ITEM_MOD_INTELLECT_SHORT", operator = "<", value = 5, allowMissing = true } } },

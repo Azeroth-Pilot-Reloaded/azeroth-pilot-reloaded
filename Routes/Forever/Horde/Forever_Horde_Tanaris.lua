@@ -10,7 +10,7 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
     mapID = 1446,
     conditions = { MinLevel = 41, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Feralas-First-Visit" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 20 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 20 }, [APR.PREFAB_TYPES.Speedrun] = { index = 20 } },
     parallelSteps = {
         {
             repeatable = true,
@@ -973,7 +973,7 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-Second-Visit"] = {
     mapID = 1446,
     conditions = { MinLevel = 46, Faction = "Horde" },
     nextRoute = { "Forever-Horde-The-Hinterlands" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 24 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 24 }, [APR.PREFAB_TYPES.Speedrun] = { index = 24 } },
     parallelSteps = {
         {
             repeatable = true,

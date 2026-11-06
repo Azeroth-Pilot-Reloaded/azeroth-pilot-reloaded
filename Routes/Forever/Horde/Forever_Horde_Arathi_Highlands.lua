@@ -10,7 +10,7 @@ APR.RouteQuestStepList["Forever-Horde-Arathi-Highlands"] = {
     mapID = 1417,
     conditions = { MinLevel = 38, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Badlands" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 15 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 15 }, [APR.PREFAB_TYPES.Speedrun] = { index = 15 } },
     parallelSteps = {
         {
             conditions = { ItemCount = { itemID = 11307, count = 1 }, EquippedItemStat = { { allowMissing = true, slot = 18, value = 7, precision = 1, stat = "QUALITY", operator = "<" }, { allowMissing = true, slot = 18, value = 21.9, precision = 1, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<" } }, Race = { "Orc", "Skyborne", "Tauren", "Troll" }, Class = "HUNTER", EquippedItem = { invert = true, itemID = 11307, slot = 18 }, MinLevel = 42 },

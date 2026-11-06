@@ -10,7 +10,7 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
     mapID = 1422,
     conditions = { MinLevel = 56, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Winterspring" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 33 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 33 }, [APR.PREFAB_TYPES.Speedrun] = { index = 33 } },
     parallelSteps = {
         {
             repeatable = true,

@@ -14,7 +14,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
         { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Alliance", Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock, APR.Classes.Druid }, SkipForLvl = 26 } },
         { route = "Forever-Shared-Dungeons-Deadmines", conditions = { MinLevel = 18, Faction = "Alliance", Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock, APR.Classes.Druid }, SkipForLvl = 24 } },
     },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 8 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 8 }, [APR.PREFAB_TYPES.Speedrun] = { index = 8 } },
     parallelSteps = {
         {
             repeatable = true,

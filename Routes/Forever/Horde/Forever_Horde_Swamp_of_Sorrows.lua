@@ -10,7 +10,7 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
     mapID = 1435,
     conditions = { MinLevel = 41, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Desolace-Second-Visit" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 18 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 18 }, [APR.PREFAB_TYPES.Speedrun] = { index = 18 } },
     parallelSteps = {
         {
             repeatable = true,
@@ -1047,7 +1047,7 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-Second-Visit"] = {
     mapID = 1435,
     conditions = { MinLevel = 45, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Tanaris-Second-Visit" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 23 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 23 }, [APR.PREFAB_TYPES.Speedrun] = { index = 23 } },
     parallelSteps = {
         {
             repeatable = true,

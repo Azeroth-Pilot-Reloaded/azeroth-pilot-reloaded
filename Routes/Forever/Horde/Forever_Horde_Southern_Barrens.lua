@@ -10,7 +10,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
     mapID = 1413,
     conditions = { MinLevel = 24, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Ashenvale" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 7 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 7 }, [APR.PREFAB_TYPES.Speedrun] = { index = 7 } },
     parallelSteps = {
         {
             repeatable = true,

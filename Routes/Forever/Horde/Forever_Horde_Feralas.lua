@@ -10,7 +10,7 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
     mapID = 1444,
     conditions = { MinLevel = 43, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Stranglethorn-Vale-Third-Visit" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 21 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 21 }, [APR.PREFAB_TYPES.Speedrun] = { index = 21 } },
     parallelSteps = {
         {
             repeatable = true,
@@ -1200,7 +1200,7 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-Second-Visit"] = {
     mapID = 1444,
     conditions = { MinLevel = 49, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Blasted-Lands" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 26 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 26 }, [APR.PREFAB_TYPES.Speedrun] = { index = 26 } },
     parallelSteps = {
         {
             repeatable = true,

@@ -10,7 +10,7 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
     mapID = 1428,
     conditions = { MinLevel = 56, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Eastern-Plaguelands" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 37 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 37 }, [APR.PREFAB_TYPES.Speedrun] = { index = 37 } },
     parallelSteps = {
         {
             repeatable = true,

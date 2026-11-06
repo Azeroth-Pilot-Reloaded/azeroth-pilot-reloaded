@@ -10,7 +10,7 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
     mapID = 1443,
     conditions = { MinLevel = 35, Class = { APR.Classes.Druid, APR.Classes.Mage, APR.Classes.Paladin, APR.Classes.Priest, APR.Classes.Rogue, APR.Classes.Shaman, APR.Classes.Warlock, APR.Classes.Warrior }, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Stranglethorn-Vale-Second-Visit" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 17 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 17 }, [APR.PREFAB_TYPES.Speedrun] = { index = 17 } },
     parallelSteps = {
         {
             repeatable = true,
@@ -1145,7 +1145,7 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
     mapID = 1443,
     conditions = { MinLevel = 35, Race = { APR.RACES.Dwarf, APR.RACES.Human, APR.RACES.NightElf, APR.RACES.Skyborne }, Class = APR.Classes.Hunter, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Stranglethorn-Vale-Second-Visit" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 17 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 17 }, [APR.PREFAB_TYPES.Speedrun] = { index = 17 } },
     parallelSteps = {
         {
             repeatable = true,
@@ -2434,7 +2434,7 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
     mapID = 1443,
     conditions = { MinLevel = 40, Class = { APR.Classes.Druid, APR.Classes.Mage, APR.Classes.Paladin, APR.Classes.Priest, APR.Classes.Rogue, APR.Classes.Shaman, APR.Classes.Warlock, APR.Classes.Warrior }, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Badlands" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 22 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 22 }, [APR.PREFAB_TYPES.Speedrun] = { index = 22 } },
     parallelSteps = {
         {
             repeatable = true,

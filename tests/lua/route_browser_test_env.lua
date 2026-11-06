@@ -36,6 +36,9 @@ function APR:AddTooltipLine(_, text) tooltipLines[#tooltipLines + 1] = text end
 function env.tooltip() return table.concat(tooltipLines, "\n") end
 APR.routeconfig = {SendCustomPathUpdate = function() APR.RouteBrowser:Refresh(true) end}
 APR.Level = 80
+function UnitLevel() return APR.Level end
+function APR:GetPlayerParentMapID() return nil end
+function APR:IsDelveRoute() return false end
 tinsert = table.insert
 dofile("APR-Core/config/Config_Route_Prefabs.lua")
 dofile("APR-Core/integrations/SkinRegistry.lua")

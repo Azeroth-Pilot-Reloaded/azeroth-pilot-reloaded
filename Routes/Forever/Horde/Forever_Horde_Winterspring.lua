@@ -9,7 +9,7 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 1452,
     conditions = { MinLevel = 58, Faction = "Horde" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 34, endLevel = 60 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 34 }, [APR.PREFAB_TYPES.Speedrun] = { index = 34, endLevel = 60 } },
     parallelSteps = {
         {
             repeatable = true,

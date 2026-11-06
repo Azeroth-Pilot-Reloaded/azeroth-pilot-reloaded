@@ -108,7 +108,10 @@ assert(APR.RouteQuestStepList.Imported.gameVersion == "forever")
 -- Prefab choices contain real compatible routes, and a single choice applies directly.
 APR.routeconfig = {}
 APR.Level = 12
+APR.PlayerID, APRData.player, APRCustomPath = "player", {}, { player = {} }
+function APR:GetPlayerParentMapID() return nil end
 tinsert = table.insert
+APR.RouteQuestStepList.forever.conditions.Level = 10
 APR.RouteQuestStepList.forever.prefab = {leveling = 1}
 APR.RouteQuestStepList.retail.expansion = APR.EXPANSIONS.TheBurningCrusade
 APR.RouteQuestStepList.retail.prefab = {leveling = 1}
