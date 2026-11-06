@@ -332,8 +332,8 @@ APR.RouteQuestStepList["102-BC-2-Horde"] = {
             Coord = { x = 5732.4, y = -1145.7 },
             Range = 5,
             AnyOf = {
-                { IsQuestOnQuest = 9894, Not = { IsQuestReadyForTurnIn = 9894 } },
-                { IsQuestOnQuest = 9788, Not = { IsQuestReadyForTurnIn = 9788 } },
+                { IsQuestOnQuest = 9894,  Not = { IsQuestReadyForTurnIn = 9894 } },
+                { IsQuestOnQuest = 9788,  Not = { IsQuestReadyForTurnIn = 9788 } },
                 { IsQuestOnQuest = 10096, Not = { IsQuestReadyForTurnIn = 10096 } },
             },
             Zone = 102,
@@ -972,7 +972,7 @@ APR.RouteQuestStepList["102-BC-2-Horde"] = {
             Fillers = { [9726] = { 1, 2 } },
             Note = {
                 "FOLLOW_HIM_CLOSELY_OR_THE_ESCORT_FAILS",
-                "FLYING_ON_A_MOUNT_IS_NOT_RECOMMENDED",
+                "FLYING_ON_MOUNT_NOT_RECOMMENDED",
             },
             Coord = { x = 8193.5, y = 498.2 },
             Range = 15,
