@@ -101,7 +101,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/utils/BuyMerchantUtils.lua"] = {instrumented = 8, diagnosticHelpers = 0},
     ["APR-Core/utils/DungeonUtils.lua"] = {instrumented = 16, diagnosticHelpers = 0},
     ["APR-Core/utils/InstanceUtils.lua"] = {instrumented = 8, diagnosticHelpers = 0},
-    ["APR-Core/utils/LootUtils.lua"] = {instrumented = 9, diagnosticHelpers = 0},
+    ["APR-Core/utils/LootUtils.lua"] = {instrumented = 10, diagnosticHelpers = 0},
     ["APR-Core/utils/NavigationUtils.lua"] = {instrumented = 4, diagnosticHelpers = 0},
     ["APR-Core/utils/NavigationZones.lua"] = {instrumented = 29, diagnosticHelpers = 0},
     ["APR-Core/utils/OutdoorKillUtils.lua"] = {instrumented = 8, diagnosticHelpers = 0},
