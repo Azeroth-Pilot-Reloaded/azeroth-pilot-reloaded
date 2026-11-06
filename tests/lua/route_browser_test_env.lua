@@ -1,5 +1,9 @@
 -- Frame fixtures and a small synthetic catalog; the UI consumes real catalog/path/row code.
 local env = dofile("tests/lua/route_ui_test_env.lua")
+function tContains(values, wanted)
+    for _, value in ipairs(values) do if value == wanted then return true end end
+    return false
+end
 dofile("tests/lua/localization_test_env.lua")
 for _, key in ipairs({"ALL", "FAVORITES", "ADD", "REMOVE", "RESET", "TYPE", "STATUS", "EXPANSION_FILTER_TEXT"}) do _G[key] = key end
 UIParent:SetSize(1920, 1080)

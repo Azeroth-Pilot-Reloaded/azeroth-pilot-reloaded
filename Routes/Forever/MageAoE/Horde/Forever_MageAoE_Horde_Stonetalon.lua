@@ -9,7 +9,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Stonetalon-Barrens"] = {
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
     mapID = 1442,
-    conditions = { MinLevel = 17, Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Troll }, Class = APR.Classes.Mage, Faction = "Horde" },
+    conditions = { MinLevel = 17, Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Skyborne, APR.RACES.Troll }, Class = APR.Classes.Mage, Faction = "Horde" },
     nextRoute = {
         "Forever-MageAoE-Horde-Silverpine-Hillsbrad",
         { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Horde", Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Troll }, Class = APR.Classes.Mage, SkipForLvl = 26 } },

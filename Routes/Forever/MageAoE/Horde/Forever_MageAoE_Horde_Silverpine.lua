@@ -9,7 +9,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
     mapID = 1424,
-    conditions = { MinLevel = 21, Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Troll }, Class = APR.Classes.Mage, Faction = "Horde" },
+    conditions = { MinLevel = 21, Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Skyborne, APR.RACES.Troll }, Class = APR.Classes.Mage, Faction = "Horde" },
     nextRoute = { "Forever-MageAoE-Horde-Arathi-Alterac" },
     parallelSteps = {
         {

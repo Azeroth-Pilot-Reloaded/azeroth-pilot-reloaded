@@ -14,6 +14,13 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         { route = "Forever-Alliance-Elwynn-Forest",     conditions = { ClassNot = APR.Classes.Hunter } },
         { route = "Forever-Alliance-Dungeons-Loch-Modan-Hunter", conditions = { MinLevel = 11, Faction = "Alliance", Race = APR.RACES.Dwarf, Class = APR.Classes.Hunter, SkipForLvl = 14 } },
         { route = "Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome", conditions = { MinLevel = 11, Faction = "Alliance", Race = { APR.RACES.Dwarf, APR.RACES.Gnome }, Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock }, SkipForLvl = 13 } },
+        -- Adopted same-faction starts continue through compatible authored chapters.
+        "Forever-Alliance-Loch-Modan-Human",
+        "Forever-Alliance-Darkshore",
+        "Forever-Alliance-Westfall",
+        { route = "Forever-Alliance-Dungeons-Loch-Modan-Human", conditions = { MinLevel = 11, Faction = "Alliance", SkipForLvl = 14 } },
+        { route = "Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf", conditions = { MinLevel = 11, Faction = "Alliance", SkipForLvl = 17 } },
+        { route = "Forever-Alliance-Dungeons-Westfall", conditions = { MinLevel = 13, Faction = "Alliance", SkipForLvl = 16 } },
     },
     prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 1 }, [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1, conditions = { SkipForLvl = 11 } }, [APR.PREFAB_TYPES.StartingZone] = 1 },
     parallelSteps = {

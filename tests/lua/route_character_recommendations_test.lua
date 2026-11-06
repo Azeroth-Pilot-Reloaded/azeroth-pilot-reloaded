@@ -92,7 +92,7 @@ APR.ClassName = nil
 assert(APR:CanStartRoute(mageKey), "The Mage gate accepts the numeric client class ID too")
 APR.ClassName = "MAGE"
 mage.prefab = { [APR.PREFAB_TYPES.StartingZone] = 1 }
-assert(APR:GetRouteVisibility(mageKey) == "hidden", "AoE starters retain their race filter")
+assert(APR:GetRouteVisibility(mageKey) == "visible", "Same-faction AoE starters waive race while retaining the Mage gate")
 mage.prefab = nil
 APR.ClassName, APR.ClassId = "WARRIOR", 1
 assert(APR:GetRouteVisibility(mageKey) == "hidden" and not APR:CanStartRoute(mageKey))

@@ -10,7 +10,10 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 1426,
     conditions = { Race = APR.RACES.Gnome, Class = APR.Classes.Mage, Faction = "Alliance" },
-    nextRoute = { "Forever-MageAoE-Alliance-Loch-Modan" },
+    nextRoute = {
+        "Forever-MageAoE-Alliance-Loch-Modan",
+        { route = "Forever-MageAoE-Alliance-Darkshore", conditions = { Race = APR.RACES.Skyborne } },
+    },
     parallelSteps = {
         {
             repeatable = true,

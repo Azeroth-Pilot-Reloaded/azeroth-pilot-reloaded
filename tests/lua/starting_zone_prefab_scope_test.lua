@@ -29,8 +29,8 @@ assert(APR:GetRouteVisibility("Forever-MageAoE-fixture-start") == "visible",
 APRCustomPath.player = {}
 APR.RouteQuestStepList["fixture-normal-start"] = nil
 APR.routeconfig:GetStartingZonePrefab()
-assert(#APRCustomPath.player == 0,
-    "The condition-based fallback must not replace a missing ordinary starter with an AoE or hidden chapter")
+assert(#APRCustomPath.player == 1 and APRCustomPath.player[1] == wrong.label,
+    "A same-faction starter on the adopted map is available without selecting an AoE or hidden chapter")
 
 APR.routeconfig:BuildLevelingPrefab(APR.EXPANSIONS.Forever, "forever_mage_aoe")
 assert(#APRCustomPath.player == 1 and APRCustomPath.player[1] == mage.label,
@@ -46,4 +46,4 @@ normal.autoStartOnMap = true
 APR.routeconfig:GetStartingZonePrefab()
 assert(#APRCustomPath.player == 1 and APRCustomPath.player[1] == normal.label,
     "An ordinary map auto-start still works outside the new-character level range")
-print("Starting prefab scope: ordinary/AoE isolation, hidden chapters, strict races, fallback and map auto-start passed")
+print("Starting prefab scope: ordinary/AoE isolation, hidden chapters, same-faction races, fallback and map auto-start passed")

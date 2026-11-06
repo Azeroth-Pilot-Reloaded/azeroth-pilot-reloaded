@@ -9,7 +9,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Arathi-Alterac"] = {
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
     mapID = 1417,
-    conditions = { MinLevel = 30, Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Troll }, Class = APR.Classes.Mage, Faction = "Horde" },
+    conditions = { MinLevel = 30, Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Skyborne, APR.RACES.Troll }, Class = APR.Classes.Mage, Faction = "Horde" },
     nextRoute = { "Forever-MageAoE-Horde-Leveling-Camps" },
     parallelSteps = {
         {
