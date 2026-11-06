@@ -672,7 +672,7 @@ APR.RouteQuestStepList["Forever-Horde-Silverpine-Forest"] = {
             _index = 64,
         },
         {
-            BuyMerchant = { { itemID = 4605, quantity = 20, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 4605, quantity = 20, targetStock = true } },
             Note = { "KEEP_MURLOC_EYES" },
             Coord = { x = 1599.9, y = 552.83 },
             RaidIcon = 5886,
@@ -684,7 +684,7 @@ APR.RouteQuestStepList["Forever-Horde-Silverpine-Forest"] = {
             _index = 65,
         },
         {
-            BuyMerchant = { { itemID = 4605, quantity = 20, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 4605, quantity = 20, targetStock = true } },
             Fillers = { [1886] = { 1 } },
             Note = { "KEEP_MURLOC_EYES" },
             Coord = { x = 1599.9, y = 552.83 },
@@ -698,7 +698,7 @@ APR.RouteQuestStepList["Forever-Horde-Silverpine-Forest"] = {
             _index = 66,
         },
         {
-            BuyMerchant = { { itemID = 4605, quantity = 20, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 4605, quantity = 20, targetStock = true } },
             Note = { "KEEP_MURLOC_EYES" },
             Coord = { x = 1599.9, y = 552.83 },
             RaidIcon = 5886,
@@ -710,7 +710,7 @@ APR.RouteQuestStepList["Forever-Horde-Silverpine-Forest"] = {
             _index = 67,
         },
         {
-            BuyMerchant = { { itemID = 858, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 3 } } },
+            BuyMerchant = { { isSupply = true, itemID = 858, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 3 } } },
 
 
             Note = { "KEEP_MURLOC_EYES" },
@@ -722,7 +722,7 @@ APR.RouteQuestStepList["Forever-Horde-Silverpine-Forest"] = {
             _index = 68,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 20, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 20, targetStock = true } },
             Note = { "KEEP_MURLOC_EYES" },
             Coord = { x = 1602.84, y = 549.75 },
             RaidIcon = 2140,
@@ -734,7 +734,7 @@ APR.RouteQuestStepList["Forever-Horde-Silverpine-Forest"] = {
             _index = 69,
         },
         {
-            BuyMerchant = { { itemID = 858, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 3 } } },
+            BuyMerchant = { { isSupply = true, itemID = 858, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 3 } } },
 
 
             Fillers = { [1886] = { 1 } },
@@ -748,7 +748,7 @@ APR.RouteQuestStepList["Forever-Horde-Silverpine-Forest"] = {
             _index = 70,
         },
         {
-            BuyMerchant = { { itemID = 858, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 3 } } },
+            BuyMerchant = { { isSupply = true, itemID = 858, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 3 } } },
 
 
             Note = { "KEEP_MURLOC_EYES" },
@@ -761,7 +761,7 @@ APR.RouteQuestStepList["Forever-Horde-Silverpine-Forest"] = {
             _index = 71,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 20, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 20, targetStock = true } },
             Note = { "KEEP_MURLOC_EYES" },
             Coord = { x = 1602.84, y = 549.75 },
             RaidIcon = 2140,
@@ -2076,7 +2076,7 @@ APR.RouteQuestStepList["Forever-Horde-Silverpine-Forest"] = {
             _index = 226,
         },
         {
-            BuyMerchant = { { quantity = 20, itemID = 4605, questID = 423, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 20, itemID = 4605, questID = 423, targetStock = true } },
             Coord = { x = 1599.9, y = 552.83 },
             RaidIcon = 5886,
             AnyOf = { { Class = { "PALADIN", "WARLOCK", "WARRIOR" }, Race = "Scourge" }, { Class = { "ROGUE", "WARLOCK", "WARRIOR" }, Race = { "Orc", "Troll" } } },
@@ -2095,7 +2095,7 @@ APR.RouteQuestStepList["Forever-Horde-Silverpine-Forest"] = {
             _index = 228,
         },
         {
-            BuyMerchant = { { quantity = 20, itemID = 4605, questID = 423, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 20, itemID = 4605, questID = 423, targetStock = true } },
             Fillers = { [1886] = { 1 } },
             Coord = { x = 1599.9, y = 552.83 },
             RaidIcon = 5886,
@@ -2114,7 +2114,7 @@ APR.RouteQuestStepList["Forever-Horde-Silverpine-Forest"] = {
             _index = 230,
         },
         {
-            BuyMerchant = { { quantity = 20, itemID = 4605, questID = 423, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 20, itemID = 4605, questID = 423, targetStock = true } },
             Coord = { x = 1599.9, y = 552.83 },
             RaidIcon = 5886,
             ItemCount = { itemID = 4605, count = 20, operator = "<" },
@@ -2124,7 +2124,7 @@ APR.RouteQuestStepList["Forever-Horde-Silverpine-Forest"] = {
             _index = 231,
         },
         {
-            BuyMerchant = { { itemID = 858, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 3 } } },
+            BuyMerchant = { { isSupply = true, itemID = 858, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 3 } } },
 
 
             Coord = { x = 1602.84, y = 549.75 },
@@ -2135,7 +2135,7 @@ APR.RouteQuestStepList["Forever-Horde-Silverpine-Forest"] = {
             _index = 232,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 20, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 20, targetStock = true } },
             Coord = { x = 1602.84, y = 549.75 },
             RaidIcon = 2140,
             Class = { "PRIEST", "WARLOCK" },
@@ -2146,7 +2146,7 @@ APR.RouteQuestStepList["Forever-Horde-Silverpine-Forest"] = {
             _index = 233,
         },
         {
-            BuyMerchant = { { itemID = 858, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 3 } } },
+            BuyMerchant = { { isSupply = true, itemID = 858, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 3 } } },
 
 
             Fillers = { [1886] = { 1 } },
@@ -2159,7 +2159,7 @@ APR.RouteQuestStepList["Forever-Horde-Silverpine-Forest"] = {
             _index = 234,
         },
         {
-            BuyMerchant = { { itemID = 858, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 3 } } },
+            BuyMerchant = { { isSupply = true, itemID = 858, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 3 } } },
 
 
             Coord = { x = 1602.84, y = 549.75 },
@@ -2171,7 +2171,7 @@ APR.RouteQuestStepList["Forever-Horde-Silverpine-Forest"] = {
             _index = 235,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 20, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 20, targetStock = true } },
             Coord = { x = 1602.84, y = 549.75 },
             RaidIcon = 2140,
             Class = "DRUID",
@@ -3460,7 +3460,7 @@ APR.RouteQuestStepList["Forever-Horde-Silverpine-Forest"] = {
             _index = 377,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2027, questID = 840 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2027, questID = 840 } },
             Note = { "CHECK_AUCTION_HOUSE_GEAR_UPGRADE" },
             Coord = { x = 286.53, y = 1616.21 },
             RaidIcon = 4557,
@@ -3474,7 +3474,7 @@ APR.RouteQuestStepList["Forever-Horde-Silverpine-Forest"] = {
             _index = 378,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2027, questID = 840 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2027, questID = 840 } },
             Fillers = { [1886] = { 1 } },
             Note = { "CHECK_AUCTION_HOUSE_GEAR_UPGRADE" },
             Coord = { x = 286.53, y = 1616.21 },
@@ -3489,7 +3489,7 @@ APR.RouteQuestStepList["Forever-Horde-Silverpine-Forest"] = {
             _index = 379,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2027, questID = 840 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2027, questID = 840 } },
             Note = { "CHECK_AUCTION_HOUSE_GEAR_UPGRADE" },
             Coord = { x = 286.53, y = 1616.21 },
             RaidIcon = 4557,
@@ -4270,7 +4270,7 @@ APR.RouteQuestStepList["Forever-Horde-Silverpine-Forest"] = {
             _index = 462,
         },
         {
-            BuyMerchant = { { itemID = 5208, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 5208, quantity = 1 } },
             Note = { "CHECK_AUCTION_HOUSE_GEAR_UPGRADE" },
             Coord = { x = 206.04, y = 1705.57 },
             RaidIcon = 5754,

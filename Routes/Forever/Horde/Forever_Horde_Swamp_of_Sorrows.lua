@@ -201,7 +201,7 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
             _index = 16,
         },
         {
-            BuyMerchant = { { itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
+            BuyMerchant = { { isSupply = true, itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 45.38, 56.86),
 
             Range = 5,
@@ -213,7 +213,7 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
             _index = 17,
         },
         {
-            BuyMerchant = { { itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
+            BuyMerchant = { { isSupply = true, itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 45.78, 52.85),
 
             Range = 5,
@@ -720,7 +720,7 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
             _index = 75,
         },
         {
-            BuyMerchant = { { itemID = 1710, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 21 } } },
+            BuyMerchant = { { isSupply = true, itemID = 1710, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 21 } } },
 
             Coord = { x = 425.15, y = -14491.68 },
 
@@ -731,7 +731,7 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
             _index = 76,
         },
         {
-            BuyMerchant = { { itemID = 5140, quantity = 20, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 5140, quantity = 20, targetStock = true, optional = true } },
 
             Note = { "CHOOSE_POISON_REAGENTS_LEARNED_RECIPES" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 28.4, 76.84),
@@ -959,7 +959,7 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
             _index = 102,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 11307, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 11307, targetStock = true, optional = true } },
             Note = { "EQUIP_LEVEL_42_LEARNING_BOWS_OBTAINING_ARROWS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 46.98, 45.69),
             Range = 5,
@@ -1156,7 +1156,7 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-Second-Visit"] = {
             _index = 11,
         },
         {
-            BuyMerchant = { { itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
+            BuyMerchant = { { isSupply = true, itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
 
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 45.78, 52.85),
             Range = 5,
@@ -1168,7 +1168,7 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-Second-Visit"] = {
             _index = 12,
         },
         {
-            BuyMerchant = { { itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
+            BuyMerchant = { { isSupply = true, itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
 
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 45.38, 56.86),
             Range = 5,
@@ -1546,7 +1546,7 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-Second-Visit"] = {
             _index = 57,
         },
         {
-            BuyMerchant = { { itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 74.8, 45),
             Range = 5,
             MerchantNPC = 7737,
@@ -1563,7 +1563,7 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-Second-Visit"] = {
             _index = 59,
         },
         {
-            BuyMerchant = { { itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 74.8, 45),
             Range = 5,
             MerchantNPC = 7737,

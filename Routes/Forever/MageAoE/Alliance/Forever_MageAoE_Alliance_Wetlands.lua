@@ -61,7 +61,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Wetlands"] = {
             _index = 3,
         },
         {
-            BuyMerchant = { { itemID = 858, quantity = 5, targetStock = true, optional = true, reserveCopper = 0 } },
+            BuyMerchant = { { isSupply = true, itemID = 858, quantity = 5, targetStock = true, optional = true, reserveCopper = 0 } },
             Note = { "UPSTAIRS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 10.49, 60.2),
             Range = 5,
@@ -191,7 +191,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Wetlands"] = {
             _index = 19,
         },
         {
-            BuyMerchant = { { itemID = 858, quantity = 5, targetStock = true, optional = true, reserveCopper = 0 } },
+            BuyMerchant = { { isSupply = true, itemID = 858, quantity = 5, targetStock = true, optional = true, reserveCopper = 0 } },
             Fillers = { [484] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 50.2, 37.73),
             MerchantNPC = 1457,
@@ -285,7 +285,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Wetlands"] = {
             _index = 32,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2594, targetStock = true }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, reserveCopper = 2000, conditions = { MinLevel = 25 } } },
+            BuyMerchant = { { quantity = 1, itemID = 2594, targetStock = true }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, reserveCopper = 2000, conditions = { MinLevel = 25 } } },
             Fillers = { [484] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 10.6, 60.8),
             MerchantNPC = 1464,
@@ -310,7 +310,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Wetlands"] = {
             _index = 35,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2594, targetStock = true }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, reserveCopper = 2000, conditions = { MinLevel = 25 } } },
+            BuyMerchant = { { quantity = 1, itemID = 2594, targetStock = true }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, reserveCopper = 2000, conditions = { MinLevel = 25 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 10.69, 60.95),
             MerchantNPC = 1464,
             RaidIcon = 1464,
@@ -339,7 +339,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Wetlands"] = {
             _index = 39,
         },
         {
-            BuyMerchant = { { itemID = 17031, quantity = 2, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 17031, quantity = 2, targetStock = true } },
             Fillers = { [484] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 8.33, 56.45),
             MerchantNPC = 1463,
@@ -350,7 +350,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Wetlands"] = {
             _index = 40,
         },
         {
-            BuyMerchant = { { itemID = 858, quantity = 5, targetStock = true, optional = true, reserveCopper = 0 } },
+            BuyMerchant = { { isSupply = true, itemID = 858, quantity = 5, targetStock = true, optional = true, reserveCopper = 0 } },
             Fillers = { [484] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 8.33, 56.45),
             Range = 5,
@@ -440,7 +440,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Wetlands"] = {
             _index = 51,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 10.6, 60.8),
             MerchantNPC = 1464,
             RaidIcon = 1464,
@@ -449,7 +449,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Wetlands"] = {
             _index = 52,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
             Fillers = { [484] = { 1 } },
             Note = { "CONJURE_FOOD_INSTEAD_BUYING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 10.69, 60.95),
@@ -799,7 +799,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Wetlands"] = {
             _index = 95,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 10.6, 60.8),
             MerchantNPC = 1464,
             RaidIcon = 1464,

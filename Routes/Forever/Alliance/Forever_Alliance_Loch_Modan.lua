@@ -178,7 +178,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             _index = 11,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 1 } },
             Coord = { x = -2973.9, y = -5377.93 },
             Range = 5,
             RaidIcon = 6734,
@@ -369,7 +369,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             _index = 34,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 4778, questID = 307, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 4778, questID = 307, targetStock = true, optional = true } },
             Fillers = { [418] = { 1 } },
             Coord = { x = -3176.16, y = -4669.34 },
             AllOf = { { ItemCount = { count = 1, itemID = 4778, operator = "<" } } },
@@ -381,7 +381,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             _index = 35,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 4777, questID = 307, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 4777, questID = 307, targetStock = true, optional = true } },
             Fillers = { [418] = { 1 } },
             Coord = { x = -3176.16, y = -4669.34 },
             AllOf = { { ItemCount = { itemID = 4778, count = 1, operator = "<" } } },
@@ -798,7 +798,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             _index = 80,
         },
         {
-            BuyMerchant = { { itemID = 5208, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 5208, quantity = 1 } },
             Fillers = { [418] = { 1 } },
             Coord = { x = 804.55, y = -8862.47 },
             Class = { "PRIEST", "WARLOCK" },
@@ -1071,7 +1071,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             _index = 111,
         },
         {
-            BuyMerchant = { { itemID = 2027, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2027, quantity = 1 } },
             Fillers = { [418] = { 1 } },
             Coord = { x = 609.63, y = -8787.71 },
             Class = "ROGUE",
@@ -1083,7 +1083,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             _index = 112,
         },
         {
-            BuyMerchant = { { itemID = 2027, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2027, quantity = 1 } },
             Fillers = { [418] = { 1 } },
             Coord = { x = 609.63, y = -8787.71 },
             AnyOf = { { EquippedItem = { slot = 16, itemID = 2027 }, ItemCount = { itemID = 2027, count = 2, operator = "<" } }, { EquippedItem = { slot = 16, itemID = 2027, invert = true }, ItemCount = { itemID = 2027, count = 1, operator = "<" } } },
@@ -1601,7 +1601,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Dwarf-Gnome"] = {
             _index = 37,
         },
         {
-            BuyMerchant = { { itemID = 4541, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 4541, quantity = 1 } },
             Coord = { x = -2973.9, y = -5377.93 },
             Range = 5,
             RaidIcon = 6734,
@@ -1621,7 +1621,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Dwarf-Gnome"] = {
             _index = 39,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 1, targetStock = true }, { itemID = 4541, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 1, targetStock = true }, { isSupply = true, itemID = 4541, quantity = 1, targetStock = true } },
             Coord = { x = -2973.9, y = -5377.93 },
             Range = 5,
             RaidIcon = 6734,
@@ -1937,7 +1937,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Dwarf-Gnome"] = {
             _index = 75,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 4778, questID = 307, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 4778, questID = 307, targetStock = true, optional = true } },
             Fillers = { [416] = { 1 }, [94466] = { 1 } },
             Note = { "NOT_WISH_RATHER_TRY_BUY_CHEAPER_BETTER" },
             Coord = { x = -3176.16, y = -4669.34 },
@@ -1950,7 +1950,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Dwarf-Gnome"] = {
             _index = 76,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 4777, questID = 307, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 4777, questID = 307, targetStock = true, optional = true } },
             Fillers = { [416] = { 1 }, [94466] = { 1 } },
             Note = { "NOT_WISH_RATHER_TRY_BUY_CHEAPER_BETTER" },
             Coord = { x = -3176.16, y = -4669.34 },
@@ -2718,7 +2718,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Dwarf-Gnome"] = {
             _index = 161,
         },
         {
-            BuyMerchant = { { itemID = 2027, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2027, quantity = 1 } },
             Coord = { x = 609.63, y = -8787.71 },
             Class = "ROGUE",
             EquippedItemStat = { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 8.7, precision = 1, allowMissing = true },
@@ -2752,7 +2752,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Dwarf-Gnome"] = {
             _index = 164,
         },
         {
-            BuyMerchant = { { itemID = 5208, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 5208, quantity = 1 } },
             Coord = { x = 804.55, y = -8862.47 },
             AllOf = { { ItemCount = { count = 1, itemID = 5208, operator = "<" } } },
             Class = { "MAGE", "PRIEST", "WARLOCK" },
@@ -2993,7 +2993,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Hunter"] = {
             _index = 24,
         },
         {
-            BuyMerchant = { { itemID = 2511, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2511, quantity = 1 } },
             Coord = { x = -2982.01, y = -5286.93 },
             EquippedItemStat = { slot = 18, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 5.0, precision = 1, allowMissing = true },
             IsQuestUncompleted = 307,

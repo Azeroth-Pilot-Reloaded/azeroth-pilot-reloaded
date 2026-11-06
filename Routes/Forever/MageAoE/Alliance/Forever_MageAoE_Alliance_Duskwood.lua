@@ -20,7 +20,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
             steps = {
                 {
                     UseItem = { itemID = 247840 },
-            BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true }, { itemID = 3385, quantity = 5, targetStock = true, optional = true }, { itemID = 4827, quantity = 1, targetStock = true, optional = true, conditions = { EquippedItemStat = { slot = 6, stat = "ITEM_MOD_INTELLECT_SHORT", value = 3, operator = "<", allowMissing = true } } } },
+            BuyMerchant = { { isSupply = true, itemID = 929, quantity = 5, targetStock = true, optional = true }, { isSupply = true, itemID = 3385, quantity = 5, targetStock = true, optional = true }, { itemID = 4827, quantity = 1, targetStock = true, optional = true, conditions = { EquippedItemStat = { slot = 6, stat = "ITEM_MOD_INTELLECT_SHORT", value = 3, operator = "<", allowMissing = true } } } },
             MerchantNPC = 3134,
             RaidIcon = 3134,
                     _index = 1,
@@ -106,7 +106,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
             _index = 8,
         },
         {
-            BuyMerchant = { { itemID = 17031, quantity = 2 } },
+            BuyMerchant = { { isSupply = true, itemID = 17031, quantity = 2 } },
             Note = { "GO_BEHIND_EVA" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 76.29, 45.28),
             IsQuestUncompleted = 163,
@@ -439,7 +439,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
             _index = 52,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1433, 26.8, 44.8),
             MerchantNPC = 6727,
             RaidIcon = 6727,
@@ -772,14 +772,14 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
             _index = 97,
         },
         {
-            BuyMerchant = { { itemID = 17031, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 17031, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 56.12, 65.26),
             IsQuestUncompleted = 347,
             Zone = 1453,
             _index = 98,
         },
         {
-            BuyMerchant = { { itemID = 17031, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 17031, quantity = 1, targetStock = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 56.12, 65.26),
             MerchantNPC = 1275,
             RaidIcon = 1275,
@@ -1134,7 +1134,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-Second-Visit"] = {
             _index = 28,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 73.8, 44.4),
             MerchantNPC = 6790,
             RaidIcon = 6790,
@@ -1520,7 +1520,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-Second-Visit"] = {
             _index = 79,
         },
         {
-            BuyMerchant = { { itemID = 17031, quantity = 3 } },
+            BuyMerchant = { { isSupply = true, itemID = 17031, quantity = 3 } },
             Fillers = { [91] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 56.12, 65.27),
             IsQuestUncompleted = 1242,
@@ -1550,7 +1550,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-Second-Visit"] = {
             _index = 83,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 73.8, 44.4),
             MerchantNPC = 6790,
             RaidIcon = 6790,

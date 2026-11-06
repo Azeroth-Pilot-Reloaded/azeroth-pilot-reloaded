@@ -242,7 +242,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 11,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 15, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 15, targetStock = true } },
             Coord = { x = 779.8482, y = 10450.1295 },
             Range = 5,
             RaidIcon = 6091,
@@ -306,7 +306,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 19,
         },
         {
-            BuyMerchant = { { itemID = 2132, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2132, quantity = 1, targetStock = true } },
             Coord = { x = 820.68, y = 10487.33 },
             Range = 5,
             RaidIcon = 3588,
@@ -474,7 +474,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 41,
         },
         {
-            BuyMerchant = { { itemID = 2512, quantity = 400, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2512, quantity = 400, targetStock = true } },
             Coord = { x = 794.92, y = 10436.72 },
             Range = 5,
             RaidIcon = 3589,
@@ -509,7 +509,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 45,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 25, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 25, targetStock = true } },
             Coord = { x = 779.8482, y = 10450.1295 },
             Range = 5,
             RaidIcon = 6091,
@@ -653,7 +653,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 63,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 25, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 25, targetStock = true } },
             Coord = { x = 779.8482, y = 10450.1295 },
             Range = 5,
             RaidIcon = 6091,
@@ -680,7 +680,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 66,
         },
         {
-            BuyMerchant = { { itemID = 2512, quantity = 800, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2512, quantity = 800, targetStock = true } },
             Coord = { x = 794.92, y = 10436.72 },
             Range = 5,
             RaidIcon = 3589,
@@ -1085,7 +1085,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 118,
         },
         {
-            BuyMerchant = { { itemID = 2946, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2946, quantity = 1, targetStock = true } },
             Coord = { x = 988.3, y = 9891.89 },
             Range = 5,
             RaidIcon = 3608,
@@ -1103,7 +1103,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 120,
         },
         {
-            BuyMerchant = { { itemID = 2506, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2506, quantity = 1, targetStock = true } },
             Coord = { x = 968.85, y = 9821.98 },
             Range = 5,
             RaidIcon = 3589,
@@ -1124,7 +1124,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 122,
         },
         {
-            BuyMerchant = { { itemID = 2512, quantity = 800, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2512, quantity = 800, targetStock = true } },
             Coord = { x = 968.85, y = 9821.98 },
             Range = 5,
             RaidIcon = 3589,
@@ -1143,7 +1143,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 124,
         },
         {
-            BuyMerchant = { { itemID = 2488, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2488, quantity = 1, targetStock = true } },
             Coord = { x = 947.57, y = 9812.38 },
             Range = 5,
             RaidIcon = 3609,
@@ -1174,7 +1174,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 127,
         },
         {
-            BuyMerchant = { { itemID = 2494, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2494, quantity = 1, targetStock = true } },
             Coord = { x = 947.57, y = 9812.38 },
             Range = 5,
             RaidIcon = 3609,
@@ -1187,7 +1187,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 128,
         },
         {
-            BuyMerchant = { { itemID = 2495, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2495, quantity = 1, targetStock = true } },
             Coord = { x = 947.57, y = 9812.38 },
             Range = 5,
             RaidIcon = 3609,
@@ -1230,7 +1230,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 133,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 10, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 10, targetStock = true, optional = true } },
             Coord = { x = 982.65, y = 9802.19 },
             MerchantNPC = 6736,
             RaidIcon = 6736,
@@ -1480,7 +1480,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 166,
         },
         {
-            BuyMerchant = { { itemID = 2506, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2506, quantity = 1, targetStock = true } },
             Coord = { x = 968.85, y = 9821.98 },
             Range = 5,
             RaidIcon = 3589,
@@ -1501,7 +1501,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 168,
         },
         {
-            BuyMerchant = { { itemID = 2512, quantity = 800, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2512, quantity = 800, targetStock = true } },
             Coord = { x = 968.85, y = 9821.98 },
             Range = 5,
             RaidIcon = 3589,
@@ -1531,7 +1531,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 171,
         },
         {
-            BuyMerchant = { { itemID = 2488, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2488, quantity = 1, targetStock = true } },
             Coord = { x = 947.57, y = 9812.38 },
             Range = 5,
             RaidIcon = 3609,
@@ -1553,7 +1553,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 173,
         },
         {
-            BuyMerchant = { { itemID = 2494, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2494, quantity = 1, targetStock = true } },
             Coord = { x = 947.57, y = 9812.38 },
             Range = 5,
             RaidIcon = 3609,
@@ -1566,7 +1566,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 174,
         },
         {
-            BuyMerchant = { { itemID = 2495, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2495, quantity = 1, targetStock = true } },
             Coord = { x = 947.57, y = 9812.38 },
             Range = 5,
             RaidIcon = 3609,
@@ -3005,7 +3005,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 341,
         },
         {
-            BuyMerchant = { { itemID = 2515, quantity = 800, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2515, quantity = 800, targetStock = true } },
             Note = { "EQUIP_SHARP_ARROWS_LEVEL_10" },
             Coord = { x = 968.85, y = 9821.98 },
             Range = 5,
@@ -4092,7 +4092,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 475,
         },
         {
-            BuyMerchant = { { itemID = 117, quantity = 15, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 117, quantity = 15, targetStock = true } },
             Note = { "PATROLS_AROUND_AREA", "NEED_FEED_OWL_ONLY_EAT_MEAT_NO" },
             Coord = { x = 2258.91, y = 9793.71 },
             Range = 5,
@@ -4126,7 +4126,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 478,
         },
         {
-            BuyMerchant = { { itemID = 2507, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2507, quantity = 1, targetStock = true } },
             Coord = { x = 2316.49, y = 9924.41 },
             Range = 5,
             RaidIcon = 4203,
@@ -4147,7 +4147,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 480,
         },
         {
-            BuyMerchant = { { itemID = 2515, quantity = 800, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2515, quantity = 800, targetStock = true } },
             Note = { "EQUIP_SHARP_ARROWS_LEVEL_10" },
             Coord = { x = 2316.49, y = 9924.41 },
             Range = 5,
@@ -4160,7 +4160,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 481,
         },
         {
-            BuyMerchant = { { itemID = 2030, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2030, quantity = 1, targetStock = true } },
             Note = { "KEEP_USABLE_WEAPON_EQUIPPED_LEVEL_15" },
             Coord = { x = 2316.49, y = 9924.41 },
             Range = 5,
@@ -4174,7 +4174,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 482,
         },
         {
-            BuyMerchant = { { itemID = 854, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 854, quantity = 1, targetStock = true } },
             Coord = { x = 2316.49, y = 9924.41 },
             Range = 5,
             RaidIcon = 4203,
@@ -4188,7 +4188,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 483,
         },
         {
-            BuyMerchant = { { itemID = 851, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 851, quantity = 1, targetStock = true } },
             Coord = { x = 2316.49, y = 9924.41 },
             Range = 5,
             RaidIcon = 4203,
@@ -4202,7 +4202,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 484,
         },
         {
-            BuyMerchant = { { itemID = 2946, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2946, quantity = 1, targetStock = true } },
             Coord = { x = 2275, y = 9775.5 },
             Range = 5,
             RaidIcon = 4235,

@@ -260,7 +260,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
             _index = 19,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 15, targetStock = true, questID = 170 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 15, targetStock = true, questID = 170 } },
             Coord = { x = 322.3, y = -6229 },
             Class = { "MAGE", "PRIEST", "WARLOCK" },
             ItemCount = { itemID = 159, count = 15, operator = "<" },
@@ -269,7 +269,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
             _index = 20,
         },
         {
-            BuyMerchant = { { targetStock = true, quantity = 10, itemID = 159, questID = 170 } },
+            BuyMerchant = { { isSupply = true, targetStock = true, quantity = 10, itemID = 159, questID = 170 } },
             Coord = { x = 322.3, y = -6229 },
             Class = "SHAMAN",
             ItemCount = { count = 10, itemID = 159, operator = "<" },
@@ -286,7 +286,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
             _index = 22,
         },
         {
-            BuyMerchant = { { itemID = 2516, quantity = 600, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 2516, quantity = 600, targetStock = true } },
             Coord = { x = 320.3, y = -6226.74 },
             Class = "HUNTER",
             ItemCount = { count = 600, itemID = 2516, operator = "<" },
@@ -1344,7 +1344,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
             _index = 150,
         },
         {
-            BuyMerchant = { { itemID = 2946, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2946, quantity = 1 } },
             Coord = { x = -521.97, y = -5597.65 },
             Class = "ROGUE",
             EquippedItemStat = { allowMissing = true, slot = 18, value = 3, precision = 1, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<" },
@@ -1355,7 +1355,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
             _index = 151,
         },
         {
-            BuyMerchant = { { itemID = 2488, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2488, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 45.288, 52.193),
             MerchantNPC = 1273,
             Class = "WARRIOR",
@@ -1367,7 +1367,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
             _index = 152,
         },
         {
-            BuyMerchant = { { itemID = 2491, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2491, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 45.288, 52.193),
             MerchantNPC = 1273,
             Class = "WARRIOR",
@@ -1379,7 +1379,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
             _index = 153,
         },
         {
-            BuyMerchant = { { itemID = 2494, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2494, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 45.288, 52.193),
             MerchantNPC = 1273,
             Class = "ROGUE",
@@ -1390,7 +1390,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
             _index = 154,
         },
         {
-            BuyMerchant = { { itemID = 2495, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2495, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 45.288, 52.193),
             MerchantNPC = 1273,
             Class = "SHAMAN",
@@ -1607,7 +1607,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
             _index = 185,
         },
         {
-            BuyMerchant = { { itemID = 2509, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2509, quantity = 1 } },
             Fillers = { [384] = { 1, 2 } },
             Coord = { x = -201.51, y = -6015.52 },
             MerchantNPC = 1243,
@@ -1642,7 +1642,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
             _index = 189,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 20, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 20, targetStock = true } },
             Coord = { x = 302.27, y = -5387.58 },
             Class = { "MAGE", "PRIEST", "WARLOCK" },
             ItemCount = { count = 20, itemID = 1179, operator = "<" },

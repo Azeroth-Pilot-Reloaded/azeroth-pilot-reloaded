@@ -99,7 +99,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Scourge"] = {
             _index = 7,
         },
         {
-            BuyMerchant = { { quantity = 10, itemID = 159, questID = 383 } },
+            BuyMerchant = { { isSupply = true, quantity = 10, itemID = 159, questID = 383 } },
             Coord = { x = 1574.23, y = 1866.12 },
             ItemCount = { count = 10, itemID = 159, operator = "<" },
             Zone = 1420,
@@ -173,7 +173,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Scourge"] = {
             _index = 17,
         },
         {
-            BuyMerchant = { { quantity = 10, itemID = 159, questID = 383 } },
+            BuyMerchant = { { isSupply = true, quantity = 10, itemID = 159, questID = 383 } },
             Coord = { x = 1574.23, y = 1866.12 },
             ItemCount = { count = 10, itemID = 159, operator = "<" },
             Money = { copper = 50, operator = ">=" },
@@ -198,7 +198,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Scourge"] = {
             _index = 20,
         },
         {
-            BuyMerchant = { { quantity = 5, itemID = 159, questID = 383 } },
+            BuyMerchant = { { isSupply = true, quantity = 5, itemID = 159, questID = 383 } },
             Coord = { x = 1574.23, y = 1866.12 },
             ItemCount = { count = 5, itemID = 159, operator = "<" },
             Money = { copper = 50, operator = "<" },
@@ -261,7 +261,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Scourge"] = {
             _index = 29,
         },
         {
-            BuyMerchant = { { quantity = 10, itemID = 159, questID = 383 } },
+            BuyMerchant = { { isSupply = true, quantity = 10, itemID = 159, questID = 383 } },
             Coord = { x = 1574.23, y = 1866.12 },
             IsQuestOnQuest = 364,
             ItemCount = { count = 10, itemID = 159, operator = "<" },
@@ -302,7 +302,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Scourge"] = {
             _index = 34,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 1 } },
             Coord = { x = 1574.23, y = 1866.12 },
             IsQuestUncompleted = 3901,
             ItemCount = { itemID = 159, count = 1, operator = "<" },
@@ -465,7 +465,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Scourge"] = {
             _index = 57,
         },
         {
-            BuyMerchant = { { quantity = 15, itemID = 159, questID = 383 } },
+            BuyMerchant = { { isSupply = true, quantity = 15, itemID = 159, questID = 383 } },
             Coord = { x = 1574.23, y = 1866.12 },
             ItemCount = { count = 15, itemID = 159, operator = "<" },
             Zone = 1420,
@@ -801,7 +801,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Scourge"] = {
             _index = 103,
         },
         {
-            BuyMerchant = { { quantity = 15, itemID = 1179, questID = 367 } },
+            BuyMerchant = { { isSupply = true, quantity = 15, itemID = 1179, questID = 367 } },
             Fillers = { [99134] = { 1 } },
             Coord = { x = 244.81, y = 2269.19 },
             Button = { ["99134-1"] = 286176 },
@@ -1306,7 +1306,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Scourge"] = {
             _index = 169,
         },
         {
-            BuyMerchant = { { quantity = 20, itemID = 1179, questID = 426 } },
+            BuyMerchant = { { isSupply = true, quantity = 20, itemID = 1179, questID = 426 } },
             Coord = { x = 244.81, y = 2269.19 },
             ItemCount = { count = 20, itemID = 1179, operator = "<" },
             Money = { copper = 500, operator = ">=" },
@@ -1588,7 +1588,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Scourge"] = {
             _index = 207,
         },
         {
-            BuyMerchant = { { quantity = 20, itemID = 1179, questID = 370 } },
+            BuyMerchant = { { isSupply = true, quantity = 20, itemID = 1179, questID = 370 } },
             Coord = { x = 244.81, y = 2269.19 },
             ItemCount = { count = 20, itemID = 1179, operator = "<" },
             Money = { copper = 500, operator = ">=" },
@@ -1945,7 +1945,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Scourge"] = {
             _index = 256,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
             Coord = { x = 244.81, y = 2269.19 },
             MerchantNPC = 5688,
             RaidIcon = 5688,

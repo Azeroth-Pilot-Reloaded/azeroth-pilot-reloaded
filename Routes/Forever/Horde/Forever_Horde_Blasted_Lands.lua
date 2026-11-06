@@ -316,7 +316,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             _index = 31,
         },
         {
-            BuyMerchant = { { itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
+            BuyMerchant = { { isSupply = true, itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 45.38, 56.86),
             Range = 5,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1435, 45.38, 56.86, 5),
@@ -953,7 +953,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             _index = 96,
         },
         {
-            BuyMerchant = { { itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
+            BuyMerchant = { { isSupply = true, itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 45.78, 52.85),
             Range = 5,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1435, 45.78, 52.85, 5),
@@ -964,7 +964,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             _index = 97,
         },
         {
-            BuyMerchant = { { itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
+            BuyMerchant = { { isSupply = true, itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 45.38, 56.86),
             Range = 5,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1435, 45.38, 56.86, 5),

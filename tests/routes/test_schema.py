@@ -163,15 +163,17 @@ class RouteSchemaTests(unittest.TestCase):
 
     def test_conditional_optional_merchant_purchases(self):
         self.schema.step({"BuyMerchant": seq({"itemID": 2678, "quantityFromItemID": 6889,
-            "targetStock": True, "optional": True, "reserveCopper": 100,
+            "targetStock": True, "optional": True, "isSupply": True, "reserveCopper": 100,
             "conditions": {"Skill": {"skill": "cooking", "rank": 50, "operator": "<"}}})}, "step")
         for entry in ({"itemID": 1}, {"itemID": 1, "quantity": 1, "optional": "yes"},
+                      {"itemID": 1, "quantity": 1, "isSupply": "yes"},
                       {"itemID": 1, "quantity": 1, "reserveCopper": -1},
                       {"itemID": 1, "quantityFromItemID": 0},
                       {"itemID": 1, "quantity": 1, "bagSlots": 0},
                       {"itemID": 1, "quantity": 1, "conditions": {"BuyMerchant": seq(1)}}):
             with self.subTest(entry=entry), self.assertRaises(InvalidRoute):
                 self.schema.step({"BuyMerchant": seq(entry)}, "step")
+        self.schema.step({"BuyMerchant": seq({"itemID": 1, "quantity": 1, "isSupply": False})}, "step")
 
     def test_classic_ammunition_slot_conditions(self):
         condition = {"EquippedItemStat": {"slot": 0, "stat": "LEVEL", "value": 30,

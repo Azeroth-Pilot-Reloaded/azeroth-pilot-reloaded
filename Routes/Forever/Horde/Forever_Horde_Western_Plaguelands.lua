@@ -1148,7 +1148,7 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
             _index = 139,
         },
         {
-            BuyMerchant = { { itemID = 4604, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4605, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4606, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4607, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4608, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8948, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4604, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4605, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4606, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4607, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4608, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8948, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 14.4, 33.5),
             Range = 5,
             MerchantNPC = 12384,
@@ -1578,7 +1578,7 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
             _index = 188,
         },
         {
-            BuyMerchant = { { itemID = 17031, quantity = 2, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 17031, quantity = 2, targetStock = true } },
             Fillers = { [5211] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 82.79, 15.82),
             RaidIcon = 4575,

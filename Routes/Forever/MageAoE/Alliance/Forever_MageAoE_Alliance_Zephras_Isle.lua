@@ -351,7 +351,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
             _index = 38,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 20 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 20 } },
             Note = { "KEEP_COOKING_MEAT_EGGS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 42.749, 24.496),
             RaidIcon = 251537,
@@ -621,7 +621,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
             _index = 70,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 20 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 20 } },
             Note = { "KEEP_COOKING_MEAT_EGGS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 42.76, 24.5),
             RaidIcon = 251537,
@@ -830,7 +830,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
             _index = 97,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.72, 45.47),
             RaidIcon = 254358,
             IsQuestUncompleted = 92596,
@@ -960,7 +960,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
             _index = 113,
         },
         {
-            BuyMerchant = { { quantity = 5, itemID = 1179, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 5, itemID = 1179, targetStock = true } },
             Note = { "KEEP_COOKING_MEAT_EGGS", "KEEP_SPARE_MEAT_COOKING_NOT_MAKE_SEPARATE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.72, 45.47),
             Range = 5,
@@ -1365,7 +1365,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
             _index = 152,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 10, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 10, targetStock = true } },
             Note = { "EQUIPPING_BAGS_MAKE_SURE_REAGENT_BAG_DEDICATED", "KEEP_COOKING_MEAT_EGGS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.71, 45.48),
             Range = 5,
@@ -1873,7 +1873,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
             _index = 207,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.71, 45.48),
             Range = 5,
             RaidIcon = 254358,
@@ -3232,7 +3232,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Skyborne"] = {
             _index = 361,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 20 } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 20 } },
             Note = { "KEEP_COOKING_MEAT_EGGS", "KEEP_SPARE_MEAT_COOKING_NOT_MAKE_SEPARATE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.18, 72.616),
             GossipOptionIDs = { 137078 },

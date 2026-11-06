@@ -197,7 +197,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
             _index = 24,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 45.4, 59),
             MerchantNPC = 7714,
             RaidIcon = 7714,
@@ -338,7 +338,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
             _index = 43,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 45.4, 59),
             MerchantNPC = 7714,
             RaidIcon = 7714,
@@ -380,7 +380,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
             _index = 49,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 45.4, 59),
             MerchantNPC = 7714,
             RaidIcon = 7714,
@@ -655,7 +655,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
             _index = 82,
         },
         {
-            BuyMerchant = { { itemID = 17031, quantity = 6 } },
+            BuyMerchant = { { isSupply = true, itemID = 17031, quantity = 6 } },
             Fillers = { [8365] = { 1 }, [2875] = { 1 }, [2876] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 82.79, 15.82),
             IsQuestUncompleted = 8365,
@@ -670,7 +670,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
             _index = 84,
         },
         {
-            BuyMerchant = { { itemID = 8766, quantity = 140, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 8766, quantity = 140, targetStock = true } },
             Fillers = { [2875] = { 1 }, [8365] = { 1 }, [2876] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.4, 27.8),
             MerchantNPC = 7733,
@@ -826,7 +826,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
             _index = 103,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.4, 27.8),
             MerchantNPC = 7733,
             RaidIcon = 7733,
@@ -1285,7 +1285,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
             _index = 160,
         },
         {
-            BuyMerchant = { { itemID = 13724, quantity = 100, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 13724, quantity = 100, targetStock = true, optional = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 26.65, 55.18),
             Range = 5,
             MerchantNPC = 10856,
@@ -1982,7 +1982,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
             _index = 253,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 81.4, 58.2),
             MerchantNPC = 16256,
             RaidIcon = 16256,
@@ -2570,7 +2570,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
             _index = 321,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 81.4, 58.2),
             MerchantNPC = 16256,
             RaidIcon = 16256,

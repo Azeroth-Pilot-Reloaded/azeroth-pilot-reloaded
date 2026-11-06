@@ -110,7 +110,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             _index = 8,
         },
         {
-            BuyMerchant = { { itemID = 12249, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 12249, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 54.06, 57.25),
             Range = 5,
             RaidIcon = 3019,
@@ -272,7 +272,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             _index = 24,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 11306, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 11306, targetStock = true, optional = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 46.98, 45.69),
             Range = 5,
             MerchantNPC = 3015,
@@ -511,7 +511,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             _index = 52,
         },
         {
-            BuyMerchant = { { itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 45.5, 59),
             Range = 5,
             MerchantNPC = 7714,
@@ -528,7 +528,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             _index = 54,
         },
         {
-            BuyMerchant = { { itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 45.5, 59),
             Range = 5,
             MerchantNPC = 7714,
@@ -559,7 +559,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             _index = 58,
         },
         {
-            BuyMerchant = { { itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 45.5, 59),
             Range = 5,
             MerchantNPC = 7714,
@@ -576,7 +576,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             _index = 60,
         },
         {
-            BuyMerchant = { { itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 45.5, 59),
             Range = 5,
             MerchantNPC = 7714,
@@ -897,7 +897,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             _index = 97,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 12251, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 12251, targetStock = true, optional = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 36.17, 31.79),
             Range = 5,
             MerchantNPC = 4884,
@@ -914,7 +914,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             _index = 98,
         },
         {
-            BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
+            BuyMerchant = { { isSupply = true, itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
 
             Note = { "CHOOSE_USEFUL_STAT_SCROLLS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 36.49, 30.36),
@@ -1096,7 +1096,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             _index = 121,
         },
         {
-            BuyMerchant = { { itemID = 5140, quantity = 20, targetStock = true, optional = true }, { itemID = 2928, quantity = 40, targetStock = true, optional = true }, { itemID = 3371, quantity = 40, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 5140, quantity = 20, targetStock = true, optional = true }, { itemID = 2928, quantity = 40, targetStock = true, optional = true }, { itemID = 3371, quantity = 40, targetStock = true, optional = true } },
 
 
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 51.39, 30.2),
@@ -1117,7 +1117,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             _index = 123,
         },
         {
-            BuyMerchant = { { quantity = 1800, itemID = 3030 } },
+            BuyMerchant = { { isSupply = true, quantity = 1800, itemID = 3030 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 48.12, 80.54),
             RaidIcon = 3313,
             Class = "HUNTER",
@@ -1224,7 +1224,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             _index = 136,
         },
         {
-            BuyMerchant = { { itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 47.5, 62),
             Range = 5,
             MerchantNPC = 7731,
@@ -1245,7 +1245,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             _index = 138,
         },
         {
-            BuyMerchant = { { itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 47.5, 62),
             Range = 5,
             MerchantNPC = 7731,
@@ -1257,7 +1257,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             _index = 139,
         },
         {
-            BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
+            BuyMerchant = { { isSupply = true, itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
 
 
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 47.61, 61.58),
@@ -1651,7 +1651,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             _index = 185,
         },
         {
-            BuyMerchant = { { itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 47.5, 62),
             Range = 5,
             MerchantNPC = 7731,
@@ -1672,7 +1672,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             _index = 187,
         },
         {
-            BuyMerchant = { { itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 47.5, 62),
             Range = 5,
             MerchantNPC = 7731,
@@ -1684,7 +1684,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             _index = 188,
         },
         {
-            BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
+            BuyMerchant = { { isSupply = true, itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
 
 
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 47.61, 61.58),
@@ -1970,7 +1970,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             _index = 223,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 11306, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 11306, targetStock = true, optional = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 78.11, 38.46),
             Range = 5,
             MerchantNPC = 3410,
@@ -1987,7 +1987,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             _index = 224,
         },
         {
-            BuyMerchant = { { quantity = 1800, itemID = 3030 } },
+            BuyMerchant = { { isSupply = true, quantity = 1800, itemID = 3030 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 78.11, 38.46),
             RaidIcon = 3410,
             Class = "HUNTER",

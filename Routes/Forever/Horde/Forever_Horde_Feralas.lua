@@ -73,7 +73,7 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
             _index = 4,
         },
         {
-            BuyMerchant = { { itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
+            BuyMerchant = { { isSupply = true, itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
 
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 76.06, 43.28),
 
@@ -114,7 +114,7 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
             _index = 10,
         },
         {
-            BuyMerchant = { { itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 74.8, 45),
             Range = 5,
             MerchantNPC = 7737,
@@ -131,7 +131,7 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
             _index = 12,
         },
         {
-            BuyMerchant = { { itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 74.8, 45),
             Range = 5,
             MerchantNPC = 7737,
@@ -340,7 +340,7 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
             _index = 38,
         },
         {
-            BuyMerchant = { { itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
+            BuyMerchant = { { isSupply = true, itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
 
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 76.06, 43.28),
 
@@ -396,7 +396,7 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
             _index = 46,
         },
         {
-            BuyMerchant = { { quantity = 2600, itemID = 11285, questID = 7731 } },
+            BuyMerchant = { { isSupply = true, quantity = 2600, itemID = 11285, questID = 7731 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 74.94, 45.69),
             RaidIcon = 9548,
             Class = "HUNTER",
@@ -415,7 +415,7 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
             _index = 48,
         },
         {
-            BuyMerchant = { { itemID = 4601, quantity = 100, targetStock = true, optional = true, conditions = { SkipForLvl = 45 } }, { itemID = 8950, quantity = 100, targetStock = true, optional = true, conditions = { MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4601, quantity = 100, targetStock = true, optional = true, conditions = { SkipForLvl = 45 } }, { isSupply = true, itemID = 8950, quantity = 100, targetStock = true, optional = true, conditions = { MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 74.81, 45.18),
             Range = 5,
             MerchantNPC = 7737,
@@ -433,7 +433,7 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
             _index = 50,
         },
         {
-            BuyMerchant = { { itemID = 4601, quantity = 100, targetStock = true, optional = true, conditions = { SkipForLvl = 45 } }, { itemID = 8950, quantity = 100, targetStock = true, optional = true, conditions = { MinLevel = 45 } }, { itemID = 1645, quantity = 100, targetStock = true, optional = true, conditions = { SkipForLvl = 45 } }, { itemID = 8766, quantity = 100, targetStock = true, optional = true, conditions = { MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4601, quantity = 100, targetStock = true, optional = true, conditions = { SkipForLvl = 45 } }, { isSupply = true, itemID = 8950, quantity = 100, targetStock = true, optional = true, conditions = { MinLevel = 45 } }, { isSupply = true, itemID = 1645, quantity = 100, targetStock = true, optional = true, conditions = { SkipForLvl = 45 } }, { isSupply = true, itemID = 8766, quantity = 100, targetStock = true, optional = true, conditions = { MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 74.81, 45.18),
             Range = 5,
             MerchantNPC = 7737,
@@ -580,7 +580,7 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
             _index = 68,
         },
         {
-            BuyMerchant = { { itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 74.8, 45),
             Range = 5,
             MerchantNPC = 7737,
@@ -598,7 +598,7 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
             _index = 70,
         },
         {
-            BuyMerchant = { { itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 4540, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 4541, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 4542, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 4544, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4601, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8950, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 74.8, 45),
             Range = 5,
             MerchantNPC = 7737,
@@ -608,7 +608,7 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
             _index = 71,
         },
         {
-            BuyMerchant = { { quantity = 2600, itemID = 11285, questID = 3002 } },
+            BuyMerchant = { { isSupply = true, quantity = 2600, itemID = 11285, questID = 3002 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 74.94, 45.69),
             RaidIcon = 9548,
             Class = "HUNTER",
@@ -659,7 +659,7 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
             _index = 78,
         },
         {
-            BuyMerchant = { { itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
+            BuyMerchant = { { isSupply = true, itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
 
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 76.06, 43.28),
 
@@ -1008,7 +1008,7 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
             _index = 113,
         },
         {
-            BuyMerchant = { { itemID = 11307, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 11307, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 78.11, 38.46),
             Range = 5,
             RaidIcon = 3410,
@@ -1055,7 +1055,7 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
             _index = 118,
         },
         {
-            BuyMerchant = { { itemID = 5140, quantity = 20, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 5140, quantity = 20, targetStock = true, optional = true } },
 
             Note = { "CHOOSE_POISON_REAGENTS_LEARNED_RECIPES" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 42.1, 49.49),
@@ -1235,7 +1235,7 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-Second-Visit"] = {
             _index = 1,
         },
         {
-            BuyMerchant = { { itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
+            BuyMerchant = { { isSupply = true, itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
 
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 76.06, 43.28),
 
@@ -1534,7 +1534,7 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-Second-Visit"] = {
             _index = 40,
         },
         {
-            BuyMerchant = { { itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.4, 27.8),
             Range = 5,
             MerchantNPC = 7733,
@@ -1551,7 +1551,7 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-Second-Visit"] = {
             _index = 42,
         },
         {
-            BuyMerchant = { { itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.4, 27.8),
             Range = 5,
             MerchantNPC = 7733,
@@ -1876,7 +1876,7 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-Second-Visit"] = {
             _index = 86,
         },
         {
-            BuyMerchant = { { itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
+            BuyMerchant = { { isSupply = true, itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
 
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 76.06, 43.28),
 

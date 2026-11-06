@@ -632,7 +632,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
             _index = 74,
         },
         {
-            BuyMerchant = { { itemID = 2207, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2207, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.575, 40.348),
             MerchantNPC = 4183,
             RaidIcon = 4183,
@@ -1881,7 +1881,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
             _index = 228,
         },
         {
-            BuyMerchant = { { itemID = 3107, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 3107, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 62.378, 88.671),
             Class = "WARRIOR",
             EquippedItemStat = { slot = 18, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 6.3, precision = 1, allowMissing = true },
@@ -2354,7 +2354,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
             _index = 290,
         },
         {
-            BuyMerchant = { { itemID = 4778, quantity = 1, questID = 307 }, { itemID = 4777, quantity = 1, questID = 307 } },
+            BuyMerchant = { { isSupply = true, itemID = 4778, quantity = 1, questID = 307 }, { isSupply = true, itemID = 4777, quantity = 1, questID = 307 } },
             Fillers = { [416] = { 1 } },
             Note = { "CANNOT_AFFORD_GRIND_MONEY_NEARBY_TUNNEL_RATS", "QUICKLY_ANOTHER_PLAYER_PURCHASE", "NOT_WISH_RATHER_TRY_BUY_CHEAPER_BETTER" },
             Coord = { x = -3176.16, y = -4669.34 },
@@ -3102,7 +3102,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
             _index = 391,
         },
         {
-            BuyMerchant = { { itemID = 20744, quantity = 1 }, { itemID = 21072, quantity = 20 } },
+            BuyMerchant = { { isSupply = true, itemID = 20744, quantity = 1 }, { isSupply = true, itemID = 21072, quantity = 20 } },
             Note = { "MINOR_WIZARD_OIL_SMOKED_SAGEFISH", "CHECK_HIGH_DPS_WAND_UPGRADES_USE_NOW", "PROVIDE_HIGH_DPS_INCREASE_EARLY_LEVELS_NOT_WANT" },
             Coord = { x = -909.665, y = -4957.82 },
             Range = 13,
@@ -3112,7 +3112,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
             _index = 392,
         },
         {
-            BuyMerchant = { { itemID = 20744, quantity = 1 }, { itemID = 21072, quantity = 20 } },
+            BuyMerchant = { { isSupply = true, itemID = 20744, quantity = 1 }, { isSupply = true, itemID = 21072, quantity = 20 } },
             Note = { "MINOR_WIZARD_OIL_SMOKED_SAGEFISH", "PROVIDE_HIGH_DPS_INCREASE_EARLY_LEVELS_NOT_WANT" },
             Coord = { x = -909.665, y = -4957.82 },
             Range = 13,

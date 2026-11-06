@@ -230,7 +230,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 9,
         },
         {
-            BuyMerchant = { { quantity = 10, itemID = 159, questID = 383, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 10, itemID = 159, questID = 383, targetStock = true } },
             Coord = { x = 1574.23, y = 1866.12 },
             RaidIcon = 2115,
             Class = { "MAGE", "PRIEST" },
@@ -416,7 +416,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 32,
         },
         {
-            BuyMerchant = { { quantity = 5, itemID = 159, questID = 383, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 5, itemID = 159, questID = 383, targetStock = true } },
             Coord = { x = 1574.23, y = 1866.12 },
             RaidIcon = 2115,
             Class = "WARLOCK",
@@ -481,7 +481,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 40,
         },
         {
-            BuyMerchant = { { quantity = 10, itemID = 159, questID = 383, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 10, itemID = 159, questID = 383, targetStock = true } },
             Coord = { x = 1574.23, y = 1866.12 },
             RaidIcon = 2115,
             Class = { "MAGE", "PRIEST", "WARLOCK" },
@@ -510,7 +510,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 43,
         },
         {
-            BuyMerchant = { { quantity = 5, itemID = 159, questID = 383, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 5, itemID = 159, questID = 383, targetStock = true } },
             Coord = { x = 1574.23, y = 1866.12 },
             RaidIcon = 2115,
             AllOf = { { Money = { operator = ">=", copper = 26 } } },
@@ -769,7 +769,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 77,
         },
         {
-            BuyMerchant = { { quantity = 10, itemID = 159, questID = 383, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 10, itemID = 159, questID = 383, targetStock = true } },
             Coord = { x = 1574.23, y = 1866.12 },
             RaidIcon = 2115,
             Class = { "MAGE", "PRIEST", "WARLOCK" },
@@ -843,7 +843,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 85,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 1, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 1, targetStock = true } },
             Coord = { x = 1574.23, y = 1866.12 },
             RaidIcon = 2115,
             AllOf = { { Money = { operator = ">=", copper = 6 } } },
@@ -1277,7 +1277,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 138,
         },
         {
-            BuyMerchant = { { quantity = 15, itemID = 159, questID = 383, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 15, itemID = 159, questID = 383, targetStock = true } },
             Coord = { x = 1574.23, y = 1866.12 },
             RaidIcon = 2115,
             Class = { "MAGE", "PRIEST", "WARLOCK" },
@@ -1584,7 +1584,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 180,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2494, questID = 404 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2494, questID = 404 } },
             Fillers = { [99134] = { 1 } },
             Coord = { x = 316.66, y = 2227.32 },
             Button = { ["99134-1"] = 286176 },
@@ -1609,7 +1609,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 182,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2488, questID = 404 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2488, questID = 404 } },
             Fillers = { [99134] = { 1 } },
             Coord = { x = 316.66, y = 2227.32 },
             Button = { ["99134-1"] = 286176 },
@@ -1672,7 +1672,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 188,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2493, questID = 404 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2493, questID = 404 } },
             Fillers = { [99134] = { 1 } },
             Coord = { x = 316.66, y = 2227.32 },
             Button = { ["99134-1"] = 286176 },
@@ -1959,7 +1959,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 217,
         },
         {
-            BuyMerchant = { { quantity = 10, itemID = 4605, questID = 367, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 10, itemID = 4605, questID = 367, targetStock = true } },
             Fillers = { [99134] = { 1 } },
             Coord = { x = 244.81, y = 2269.19 },
             Button = { ["99134-1"] = 286176 },
@@ -1971,7 +1971,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 218,
         },
         {
-            BuyMerchant = { { quantity = 15, itemID = 1179, questID = 367, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 15, itemID = 1179, questID = 367, targetStock = true } },
             Fillers = { [99134] = { 1 } },
             Coord = { x = 244.81, y = 2269.19 },
             Button = { ["99134-1"] = 286176 },
@@ -1983,7 +1983,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 219,
         },
         {
-            BuyMerchant = { { quantity = 10, itemID = 1179, questID = 367, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 10, itemID = 1179, questID = 367, targetStock = true } },
             Fillers = { [99134] = { 1 } },
             Coord = { x = 244.81, y = 2269.19 },
             Button = { ["99134-1"] = 286176 },
@@ -1995,7 +1995,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 220,
         },
         {
-            BuyMerchant = { { quantity = 5, itemID = 4605, questID = 367, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 5, itemID = 4605, questID = 367, targetStock = true } },
             Fillers = { [99134] = { 1 } },
             Coord = { x = 244.81, y = 2269.19 },
             Button = { ["99134-1"] = 286176 },
@@ -2521,7 +2521,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 283,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2494, questID = 367 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2494, questID = 367 } },
             Coord = { x = 316.66, y = 2227.32 },
             RaidIcon = 2136,
             Class = "ROGUE",
@@ -2542,7 +2542,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 285,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2488, questID = 367 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2488, questID = 367 } },
             Coord = { x = 316.66, y = 2227.32 },
             RaidIcon = 2136,
             Class = "WARRIOR",
@@ -2590,7 +2590,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 290,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2493, questID = 367 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2493, questID = 367 } },
             Coord = { x = 316.66, y = 2227.32 },
             RaidIcon = 2136,
             Class = "PALADIN",
@@ -2760,7 +2760,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 308,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2494, questID = 398 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2494, questID = 398 } },
             Coord = { x = 316.66, y = 2227.32 },
             RaidIcon = 2136,
             Class = "ROGUE",
@@ -2781,7 +2781,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 310,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2488, questID = 398 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2488, questID = 398 } },
             Coord = { x = 316.66, y = 2227.32 },
             RaidIcon = 2136,
             Class = "WARRIOR",
@@ -3155,7 +3155,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 354,
         },
         {
-            BuyMerchant = { { quantity = 20, itemID = 4605, questID = 426, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 20, itemID = 4605, questID = 426, targetStock = true } },
             Coord = { x = 244.81, y = 2269.19 },
             RaidIcon = 5688,
             Class = { "ROGUE", "WARRIOR" },
@@ -3165,7 +3165,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 355,
         },
         {
-            BuyMerchant = { { quantity = 20, itemID = 1179, questID = 426, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 20, itemID = 1179, questID = 426, targetStock = true } },
             Coord = { x = 244.81, y = 2269.19 },
             RaidIcon = 5688,
             Class = { "MAGE", "PALADIN", "PRIEST" },
@@ -3175,7 +3175,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 356,
         },
         {
-            BuyMerchant = { { quantity = 10, itemID = 1179, questID = 426, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 10, itemID = 1179, questID = 426, targetStock = true } },
             Coord = { x = 244.81, y = 2269.19 },
             RaidIcon = 5688,
             Class = "WARLOCK",
@@ -3185,7 +3185,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 357,
         },
         {
-            BuyMerchant = { { quantity = 10, itemID = 4605, questID = 426, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 10, itemID = 4605, questID = 426, targetStock = true } },
             Coord = { x = 244.81, y = 2269.19 },
             RaidIcon = 5688,
             Class = "WARLOCK",
@@ -3232,7 +3232,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 362,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2494, questID = 354 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2494, questID = 354 } },
             Coord = { x = 316.66, y = 2227.32 },
             RaidIcon = 2136,
             Class = "ROGUE",
@@ -3253,7 +3253,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 364,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2488, questID = 354 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2488, questID = 354 } },
             Coord = { x = 316.66, y = 2227.32 },
             RaidIcon = 2136,
             Class = "WARRIOR",
@@ -3301,7 +3301,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 369,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 2493, questID = 354 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 2493, questID = 354 } },
             Coord = { x = 316.66, y = 2227.32 },
             RaidIcon = 2136,
             Class = "PALADIN",
@@ -3644,7 +3644,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 414,
         },
         {
-            BuyMerchant = { { quantity = 20, itemID = 4605, questID = 370, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 20, itemID = 4605, questID = 370, targetStock = true } },
             Coord = { x = 244.81, y = 2269.19 },
             RaidIcon = 5688,
             Class = { "ROGUE", "WARRIOR" },
@@ -3654,7 +3654,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 415,
         },
         {
-            BuyMerchant = { { quantity = 20, itemID = 1179, questID = 370, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 20, itemID = 1179, questID = 370, targetStock = true } },
             Coord = { x = 244.81, y = 2269.19 },
             RaidIcon = 5688,
             Class = { "MAGE", "PRIEST" },
@@ -3664,7 +3664,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 416,
         },
         {
-            BuyMerchant = { { quantity = 15, itemID = 1179, questID = 370, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 15, itemID = 1179, questID = 370, targetStock = true } },
             Coord = { x = 244.81, y = 2269.19 },
             RaidIcon = 5688,
             Class = "WARLOCK",
@@ -3674,7 +3674,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 417,
         },
         {
-            BuyMerchant = { { quantity = 15, itemID = 4605, questID = 370, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 15, itemID = 4605, questID = 370, targetStock = true } },
             Coord = { x = 244.81, y = 2269.19 },
             RaidIcon = 5688,
             Class = "WARLOCK",
@@ -4320,7 +4320,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 491,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 1198, questID = 371 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 1198, questID = 371 } },
             Note = { "CHECK_AUCTION_HOUSE_GEAR_UPGRADE" },
             Coord = { x = 133.71, y = 1561.73 },
             RaidIcon = 4569,
@@ -4333,7 +4333,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 492,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 851, questID = 371 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 851, questID = 371 } },
             Note = { "CHECK_AUCTION_HOUSE_GEAR_UPGRADE" },
             Coord = { x = 133.71, y = 1561.73 },
             RaidIcon = 4569,
@@ -4347,7 +4347,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 493,
         },
         {
-            BuyMerchant = { { quantity = 200, itemID = 3107, questID = 371, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 200, itemID = 3107, questID = 371, targetStock = true } },
             Coord = { x = 129.68, y = 1560.26 },
             RaidIcon = 4592,
             Class = "ROGUE",
@@ -4745,7 +4745,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 544,
         },
         {
-            BuyMerchant = { { itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 61.6, 52),
             Range = 5,
             MerchantNPC = 5688,
@@ -4762,7 +4762,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 546,
         },
         {
-            BuyMerchant = { { itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
+            BuyMerchant = { { isSupply = true, itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { isSupply = true, itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 61.6, 52),
             Range = 5,
             MerchantNPC = 5688,
@@ -5836,7 +5836,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 675,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 851, questID = 372 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 851, questID = 372 } },
             Note = { "CHECK_AUCTION_HOUSE_GEAR_UPGRADE" },
             Coord = { x = 133.71, y = 1561.73 },
             RaidIcon = 4569,
@@ -5850,7 +5850,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 676,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 1198, questID = 372 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 1198, questID = 372 } },
             Note = { "CHECK_AUCTION_HOUSE_GEAR_UPGRADE" },
             Coord = { x = 133.71, y = 1561.73 },
             RaidIcon = 4569,
@@ -6778,7 +6778,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             _index = 27,
         },
         {
-            BuyMerchant = { { quantity = 20, itemID = 4605, questID = 96897, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 20, itemID = 4605, questID = 96897, targetStock = true } },
             Coord = { x = 244.81, y = 2269.19 },
             RaidIcon = 5688,
             Class = { "ROGUE", "WARRIOR" },
@@ -6796,7 +6796,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             _index = 29,
         },
         {
-            BuyMerchant = { { quantity = 15, itemID = 1179, questID = 96897, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 15, itemID = 1179, questID = 96897, targetStock = true } },
             Coord = { x = 244.81, y = 2269.19 },
             RaidIcon = 5688,
             Class = "WARLOCK",
@@ -6806,7 +6806,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             _index = 30,
         },
         {
-            BuyMerchant = { { quantity = 15, itemID = 4605, questID = 96897, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 15, itemID = 4605, questID = 96897, targetStock = true } },
             Coord = { x = 244.81, y = 2269.19 },
             RaidIcon = 5688,
             Class = "WARLOCK",
@@ -6825,7 +6825,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             _index = 32,
         },
         {
-            BuyMerchant = { { quantity = 20, itemID = 1179, questID = 96897, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 20, itemID = 1179, questID = 96897, targetStock = true } },
             Coord = { x = 244.81, y = 2269.19 },
             RaidIcon = 5688,
             Class = "PRIEST",
@@ -7340,7 +7340,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             _index = 90,
         },
         {
-            BuyMerchant = { { itemID = 851, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 851, quantity = 1 } },
             Note = { "CHECK_AUCTION_HOUSE_GEAR_UPGRADE" },
             Coord = { x = 286.53, y = 1616.21 },
             RaidIcon = 4557,
@@ -7356,7 +7356,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             _index = 91,
         },
         {
-            BuyMerchant = { { quantity = 1, itemID = 854, questID = 435 } },
+            BuyMerchant = { { isSupply = true, quantity = 1, itemID = 854, questID = 435 } },
             Coord = { x = 308.89, y = 1667.8 },
             RaidIcon = 4602,
             Class = "WARRIOR",

@@ -137,7 +137,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             _index = 9,
         },
         {
-            BuyMerchant = { { itemID = 17031, quantity = 4, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 17031, quantity = 4, targetStock = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 82.79, 15.82),
             RaidIcon = 4575,
             Class = "MAGE",
@@ -939,7 +939,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             _index = 108,
         },
         {
-            BuyMerchant = { { itemID = 17031, quantity = 4, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 17031, quantity = 4, targetStock = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 82.79, 15.82),
             RaidIcon = 4575,
             Class = "MAGE",
@@ -1220,7 +1220,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             _index = 144,
         },
         {
-            BuyMerchant = { { itemID = 8529, quantity = 60, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 8529, quantity = 60, targetStock = true } },
             Note = { "NOGGENFOGGER_ELIXIRS_USED_GET_SLOW_FALL_BUFF" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 51.8, 28.6),
             RaidIcon = 7564,

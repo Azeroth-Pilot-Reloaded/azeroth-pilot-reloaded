@@ -736,7 +736,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
             _index = 74,
         },
         {
-            BuyMerchant = { { itemID = 4778, quantity = 1, questID = 307 }, { itemID = 4777, quantity = 1, questID = 307 } },
+            BuyMerchant = { { isSupply = true, itemID = 4778, quantity = 1, questID = 307 }, { isSupply = true, itemID = 4777, quantity = 1, questID = 307 } },
             Fillers = { [416] = { 1 }, [94466] = { 1 } },
             Note = { "CANNOT_AFFORD_GRIND_MONEY_NEARBY_TUNNEL_RATS", "QUICKLY_ANOTHER_PLAYER_PURCHASE", "NOT_WISH_RATHER_TRY_BUY_CHEAPER_BETTER" },
             Coord = { x = -3176.16, y = -4669.34 },
@@ -1881,7 +1881,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
             _index = 207,
         },
         {
-            BuyMerchant = { { itemID = 2027, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 2027, quantity = 1 } },
             Coord = { x = 609.63, y = -8787.71 },
             Class = "ROGUE",
             EquippedItemStat = { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 8.7, precision = 1, allowMissing = true },
@@ -1891,7 +1891,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
             _index = 208,
         },
         {
-            BuyMerchant = { { itemID = 11288, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 11288, quantity = 1 } },
             Note = { "NOT_WANT_CANNOT_SKIP_STEP" },
             Coord = { x = 660.28, y = -8814.55 },
             Class = { "MAGE", "PRIEST", "WARLOCK" },
@@ -1912,7 +1912,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
             _index = 210,
         },
         {
-            BuyMerchant = { { itemID = 5208, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 5208, quantity = 1 } },
             Coord = { x = 804.55, y = -8862.47 },
             AllOf = { { ItemCount = { operator = "<", count = 1, itemID = 11288 } }, { ItemCount = { itemID = 5208, count = 1, operator = "<" } } },
             Class = { "MAGE", "PRIEST", "WARLOCK" },

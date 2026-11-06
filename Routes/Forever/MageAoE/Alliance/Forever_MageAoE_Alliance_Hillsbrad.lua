@@ -322,7 +322,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
             _index = 40,
         },
         {
-            BuyMerchant = { { itemID = 1710, quantity = 5, targetStock = true, optional = true, reserveCopper = 100 } },
+            BuyMerchant = { { isSupply = true, itemID = 1710, quantity = 5, targetStock = true, optional = true, reserveCopper = 100 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 46.34, 47.03),
             Range = 5,
             MerchantNPC = 2812,
@@ -542,7 +542,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
             _index = 72,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 73.8, 44.4),
             MerchantNPC = 6790,
             RaidIcon = 6790,
@@ -772,7 +772,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
             _index = 104,
         },
         {
-            BuyMerchant = { { itemID = 1645, quantity = 120, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1645, quantity = 120, targetStock = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 51, 58.8),
             MerchantNPC = 2352,
             RaidIcon = 2352,

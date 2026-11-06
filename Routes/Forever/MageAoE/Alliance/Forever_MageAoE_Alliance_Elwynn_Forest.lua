@@ -88,7 +88,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Human"] = {
             _index = 7,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 10 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 10 } },
             Coord = { x = -112.74, y = -8901.66 },
             IsQuestUncompleted = 5261,
             Zone = 1429,
@@ -145,7 +145,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Human"] = {
             _index = 16,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 10 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 10 } },
             Coord = { x = -116.7, y = -8900.14 },
             MerchantNPC = 152,
             RaidIcon = 152,
@@ -494,7 +494,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Human"] = {
             _index = 69,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
             Coord = { x = 63.78, y = -10008.82 },
             Range = 5,
             MerchantNPC = 295,
@@ -767,7 +767,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Human"] = {
             _index = 108,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 40, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 40, targetStock = true } },
             Coord = { x = 16.2, y = -9462.65 },
             Range = 5,
             MerchantNPC = 295,
@@ -1254,7 +1254,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Human"] = {
             _index = 178,
         },
         {
-            BuyMerchant = { { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
+            BuyMerchant = { { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
             Coord = { x = -1576.47, y = -5673.07 },
             Range = 5,
             MerchantNPC = 1237,
@@ -1343,7 +1343,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Human"] = {
             _index = 191,
         },
         {
-            BuyMerchant = { { itemID = 1179, quantity = 30, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 1179, quantity = 30, targetStock = true } },
             Coord = { x = -1576.47, y = -5673.07 },
             MerchantNPC = 1237,
             RaidIcon = 1237,

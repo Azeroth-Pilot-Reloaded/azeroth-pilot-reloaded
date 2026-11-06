@@ -92,11 +92,15 @@ function APR:BuyItemFromMerchant(BuyMerchant)
             APR:Debug("APR:BuyMerchFunc: itemID=" .. item.itemID .. ", quantity=" .. (item.quantity or 1))
         end
     end
+    -- Supply advice remains visible and tracks manual purchases. Only the
+    -- purchase request is opt-in; quest buys and other merchant actions keep
+    -- their existing policy, even in a mixed list.
+    local autoBuySupplies = self.settings and self.settings.profile and self.settings.profile.autoBuySupplies == true
     local found, budget = {}, GetMoney and GetMoney()
     for i = 1, GetMerchantNumItems() do
         local id = GetMerchantItemID(i)
         for _, item in ipairs(BuyMerchant) do
-            if tonumber(id) == item.itemID then
+            if tonumber(id) == item.itemID and (not item.isSupply or autoBuySupplies) then
                 found[item.itemID] = true
                 local tracked = currentPurchaseTracking[item.itemID]
                 local carried = self:GetCollectionItemCount(item.itemID, false)
@@ -139,7 +143,7 @@ function APR:BuyItemFromMerchant(BuyMerchant)
         end
     end
     for _, item in ipairs(BuyMerchant) do
-        if item.optional and not found[item.itemID] then
+        if item.optional and (not item.isSupply or autoBuySupplies) and not found[item.itemID] then
             local tracked = currentPurchaseTracking[item.itemID]
             tracked.required = tracked.purchased
         end
@@ -156,4 +160,4 @@ function APR:GetQuantityfromLootMessage(message)
         quantity = tonumber(extractedQuantity)
     end
     return quantity
-end--[[APR_DIAG]]; APR.GetQuantityfromLootMessage = APRTrace("APR-Core/utils/BuyMerchantUtils.lua:150:APR:GetQuantityfromLootMessage#8", APR.GetQuantityfromLootMessage)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetQuantityfromLootMessage = APRTrace("APR-Core/utils/BuyMerchantUtils.lua:154:APR:GetQuantityfromLootMessage#8", APR.GetQuantityfromLootMessage)--[[/APR_DIAG]]

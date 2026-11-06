@@ -124,7 +124,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             _index = 5,
         },
         {
-            BuyMerchant = { { quantity = 2600, itemID = 3033, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 2600, itemID = 3033, targetStock = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 48.13, 80.53),
             Range = 5,
             MerchantNPC = 3313,
@@ -139,7 +139,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             _index = 6,
         },
         {
-            BuyMerchant = { { quantity = 2600, itemID = 11284, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 2600, itemID = 11284, targetStock = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 48.13, 80.53),
             Range = 5,
             MerchantNPC = 3313,
@@ -169,7 +169,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             _index = 9,
         },
         {
-            BuyMerchant = { { quantity = 2600, itemID = 3030, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 2600, itemID = 3030, targetStock = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 35.51, 30.1),
             Range = 5,
             MerchantNPC = 9552,
@@ -184,7 +184,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             _index = 10,
         },
         {
-            BuyMerchant = { { quantity = 2600, itemID = 11285, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 2600, itemID = 11285, targetStock = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 35.51, 30.1),
             Range = 5,
             MerchantNPC = 9552,
@@ -785,7 +785,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             _index = 77,
         },
         {
-            BuyMerchant = { { itemID = 11307, quantity = 1, targetStock = true, optional = true } },
+            BuyMerchant = { { isSupply = true, itemID = 11307, quantity = 1, targetStock = true, optional = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 78.11, 38.46),
             Range = 5,
             RaidIcon = 3410,
@@ -801,7 +801,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             _index = 78,
         },
         {
-            BuyMerchant = { { quantity = 2600, itemID = 3030, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 2600, itemID = 3030, targetStock = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 48.13, 80.53),
             Range = 5,
             MerchantNPC = 3313,
@@ -817,7 +817,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             _index = 79,
         },
         {
-            BuyMerchant = { { quantity = 2600, itemID = 3033, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 2600, itemID = 3033, targetStock = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 48.13, 80.53),
             Range = 5,
             MerchantNPC = 3313,
@@ -833,7 +833,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             _index = 80,
         },
         {
-            BuyMerchant = { { itemID = 11285, quantity = 2600, targetStock = true } },
+            BuyMerchant = { { isSupply = true, itemID = 11285, quantity = 2600, targetStock = true } },
 
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 48.13, 80.53),
             Range = 5,
@@ -847,7 +847,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             _index = 81,
         },
         {
-            BuyMerchant = { { quantity = 2600, itemID = 11284, targetStock = true } },
+            BuyMerchant = { { isSupply = true, quantity = 2600, itemID = 11284, targetStock = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 48.13, 80.53),
             Range = 5,
             MerchantNPC = 3313,
@@ -1398,7 +1398,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             _index = 128,
         },
         {
-            BuyMerchant = { { itemID = 17031, quantity = 2 } },
+            BuyMerchant = { { isSupply = true, itemID = 17031, quantity = 2 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 82.79, 15.82),
             Range = 5,
             RaidIcon = 4575,
@@ -1411,7 +1411,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             _index = 129,
         },
         {
-            BuyMerchant = { { itemID = 17031, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 17031, quantity = 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 82.79, 15.82),
             Range = 5,
             RaidIcon = 4575,

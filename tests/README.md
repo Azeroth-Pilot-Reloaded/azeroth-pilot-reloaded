@@ -148,6 +148,15 @@ sales, locks, missing item data, equipped targets and cancelled retries. In game
 verify both paths with full bags on Retail and Forever, confirm native junk
 selling opens no popup, and close the merchant during a sale to check cancellation.
 
+`merchant_supplies_test.lua` uses invented items to check that supply opt-in only
+controls automatic requests: instructions remain visible, manual partial/full
+purchases complete correctly, carried stock and receipts prevent duplicate buys,
+and mixed quest/supply lists retain their independent policies on both merchant
+API variants. `merchant_supply_settings_test.lua` checks the disabled profile
+default, Automation visibility and immediate opt-in at an open merchant. In game,
+verify manual buying and skipping with the option off, then toggle it during a
+partial purchase on Retail and Forever; quest purchases must remain automatic.
+
 `memory_recycling_test.lua` covers changing current steps and actions, repeated
 combat transitions, image previews, route configuration lists and heirloom buttons.
 Widget allocations stop after the reusable pools are warmed up; cached callbacks

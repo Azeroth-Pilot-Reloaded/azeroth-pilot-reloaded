@@ -426,7 +426,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Human"] = {
             _index = 46,
         },
         {
-            BuyMerchant = { { itemID = 4778, quantity = 1, questID = 307 }, { itemID = 4777, quantity = 1, questID = 307 } },
+            BuyMerchant = { { isSupply = true, itemID = 4778, quantity = 1, questID = 307 }, { isSupply = true, itemID = 4777, quantity = 1, questID = 307 } },
             Note = { "CANNOT_AFFORD_GRIND_MONEY_NEARBY_TUNNEL_RATS", "QUICKLY_ANOTHER_PLAYER_PURCHASE", "NOT_WANT_SKIP_STEP" },
             Coord = { x = -3176.16, y = -4669.34 },
             AllOf = { { ItemCount = { operator = "<", count = 1, itemID = 4778 } }, { AnyOf = { { ItemCount = { itemID = 4778, count = 1, operator = "<" } }, { ItemCount = { itemID = 4777, count = 1, operator = "<" } } } } },
@@ -811,7 +811,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Human"] = {
             _index = 91,
         },
         {
-            BuyMerchant = { { itemID = 5208, quantity = 1 } },
+            BuyMerchant = { { isSupply = true, itemID = 5208, quantity = 1 } },
             Coord = { x = 804.55, y = -8862.47 },
             Class = { "PRIEST", "WARLOCK" },
             EquippedItemStat = { slot = 18, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 13.4, precision = 1, allowMissing = true },
@@ -1046,7 +1046,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Human"] = {
             _index = 121,
         },
         {
-            BuyMerchant = { { itemID = 2027, quantity = 2 } },
+            BuyMerchant = { { isSupply = true, itemID = 2027, quantity = 2 } },
             Coord = { x = 609.63, y = -8787.71 },
             Class = "ROGUE",
             EquippedItemStat = { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 8.7, precision = 1, allowMissing = true },
