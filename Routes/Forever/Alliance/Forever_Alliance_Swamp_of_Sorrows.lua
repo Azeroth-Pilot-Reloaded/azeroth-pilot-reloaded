@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
-    label = L["Forever - Alliance - Swamp of Sorrows"] .. " (38-39)",
+    label = L["Forever - Alliance - Swamp of Sorrows"],
+    legacyLabels = { L["Forever - Alliance - Swamp of Sorrows"] .. " (38-39)" },
+    levelRange = { min = 38, max = 39 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

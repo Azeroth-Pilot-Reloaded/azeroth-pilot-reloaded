@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
-    label = L["Forever - Alliance - Alterac Mountains / Arathi Highlands"] .. " (39-40)",
+    label = L["Forever - Alliance - Alterac Mountains / Arathi Highlands"],
+    legacyLabels = { L["Forever - Alliance - Alterac Mountains / Arathi Highlands"] .. " (39-40)" },
+    levelRange = { min = 39, max = 40 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

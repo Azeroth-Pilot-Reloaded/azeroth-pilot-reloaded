@@ -2,7 +2,9 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
-    label = L["Forever - Leveling Dungeon - Elwynn Forest"] .. " (11-12)",
+    label = L["Forever - Leveling Dungeon - Elwynn Forest"],
+    legacyLabels = { L["Forever - Leveling Dungeon - Elwynn Forest"] .. " (11-12)" },
+    levelRange = { min = 11, max = 12 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Dungeons,

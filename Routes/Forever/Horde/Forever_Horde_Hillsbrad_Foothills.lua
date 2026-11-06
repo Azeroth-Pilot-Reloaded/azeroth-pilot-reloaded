@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
-    label = L["Forever - Horde - Hillsbrad Foothills"] .. " (22-24)",
+    label = L["Forever - Horde - Hillsbrad Foothills"],
+    legacyLabels = { L["Forever - Horde - Hillsbrad Foothills"] .. " (22-24)" },
+    levelRange = { min = 22, max = 24 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -2677,7 +2679,9 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
 }
 
 APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
-    label = L["Forever - Horde - Hillsbrad Foothills / Arathi Highlands"] .. " (30-33)",
+    label = L["Forever - Horde - Hillsbrad Foothills / Arathi Highlands"],
+    legacyLabels = { L["Forever - Horde - Hillsbrad Foothills / Arathi Highlands"] .. " (30-33)" },
+    levelRange = { min = 30, max = 33 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

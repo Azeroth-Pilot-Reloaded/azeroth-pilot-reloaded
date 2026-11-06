@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
-    label = L["Forever - Horde - Mage AoE - Silverpine/Hillsbrad"] .. " (21-30)",
+    label = L["Forever - Horde - Mage AoE - Silverpine/Hillsbrad"],
+    legacyLabels = { L["Forever - Horde - Mage AoE - Silverpine/Hillsbrad"] .. " (21-30)" },
+    levelRange = { min = 21, max = 30 },
     prefab = { [APR.PREFAB_TYPES.Leveling] = 5 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,

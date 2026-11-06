@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Alliance-Westfall"] = {
-    label = L["Forever - Alliance - Westfall"] .. " (13-15)",
+    label = L["Forever - Alliance - Westfall"],
+    legacyLabels = { L["Forever - Alliance - Westfall"] .. " (13-15)" },
+    levelRange = { min = 13, max = 15 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

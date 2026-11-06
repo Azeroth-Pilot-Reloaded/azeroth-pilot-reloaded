@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
-    label = L["Forever - Alliance - Searing Gorge"] .. " (50-51)",
+    label = L["Forever - Alliance - Searing Gorge"],
+    legacyLabels = { L["Forever - Alliance - Searing Gorge"] .. " (50-51)" },
+    levelRange = { min = 50, max = 51 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

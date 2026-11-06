@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
-    label = L["Forever - Alliance - Winterspring / Silithus"] .. " (59-60)",
+    label = L["Forever - Alliance - Winterspring / Silithus"],
+    legacyLabels = { L["Forever - Alliance - Winterspring / Silithus"] .. " (59-60)" },
+    levelRange = { min = 59, max = 60 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

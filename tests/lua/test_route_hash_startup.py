@@ -152,6 +152,8 @@ for name, golden in pairs(expected) do
 end
 APR.RouteQuestStepList.note.steps[1]._index = 12345
 APR.RouteQuestStepList.note.label = "Renamed display label"
+APR.RouteQuestStepList.note.legacyLabels = { "Original display label (4-12)" }
+APR.RouteQuestStepList.note.levelRange = { min = 4, max = 12 }
 assert(APR:GetRouteSignature("note") == expected.note)
 assert(APR:GetRouteSignature("missing") == nil)
 local long = { steps = { { Note = string.rep("a", 1025) } } }

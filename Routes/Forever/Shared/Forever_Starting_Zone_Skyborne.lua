@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
-    label = L["Forever - Starting Zone Skyborne"] .. " (1-13)",
+    label = L["Forever - Starting Zone Skyborne"],
+    legacyLabels = { L["Forever - Starting Zone Skyborne"] .. " (1-13)" },
+    levelRange = { min = 1, max = 13 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -10824,7 +10826,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
 
 APR.RouteQuestStepList["Forever-Alliance-Horde-Zephras-Isle"] = {
     prefab = { [APR.PREFAB_TYPES.StartingZone] = 1 },
-    label = L["Forever - Alliance-Horde - Zephras Isle"] .. " (10-13)",
+    label = L["Forever - Alliance-Horde - Zephras Isle"],
+    legacyLabels = { L["Forever - Alliance-Horde - Zephras Isle"] .. " (10-13)" },
+    levelRange = { min = 10, max = 13 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

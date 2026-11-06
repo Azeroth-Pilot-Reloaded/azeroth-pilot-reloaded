@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
-    label = L["Forever - Horde - The Hinterlands"] .. " (48-49)",
+    label = L["Forever - Horde - The Hinterlands"],
+    legacyLabels = { L["Forever - Horde - The Hinterlands"] .. " (48-49)" },
+    levelRange = { min = 48, max = 49 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
-    label = L["Forever - Horde - Feralas (First Visit)"] .. " (43-44)",
+    label = L["Forever - Horde - Feralas (First Visit)"],
+    legacyLabels = { L["Forever - Horde - Feralas (First Visit)"] .. " (43-44)" },
+    levelRange = { min = 43, max = 44 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -1188,7 +1190,9 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
 }
 
 APR.RouteQuestStepList["Forever-Horde-Feralas-Second-Visit"] = {
-    label = L["Forever - Horde - Feralas (Second Visit)"] .. " (49-50)",
+    label = L["Forever - Horde - Feralas (Second Visit)"],
+    legacyLabels = { L["Forever - Horde - Feralas (Second Visit)"] .. " (49-50)" },
+    levelRange = { min = 49, max = 50 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

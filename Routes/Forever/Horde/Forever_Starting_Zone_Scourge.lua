@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
-    label = L["Forever - Starting Zone Undead"] .. " (1-12)",
+    label = L["Forever - Starting Zone Undead"],
+    legacyLabels = { L["Forever - Starting Zone Undead"] .. " (1-12)" },
+    levelRange = { min = 1, max = 12 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -6478,7 +6480,9 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
 }
 
 APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
-    label = L["Forever - Horde - Tirisfal Glades"] .. " (10-12)",
+    label = L["Forever - Horde - Tirisfal Glades"],
+    legacyLabels = { L["Forever - Horde - Tirisfal Glades"] .. " (10-12)" },
+    levelRange = { min = 10, max = 12 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

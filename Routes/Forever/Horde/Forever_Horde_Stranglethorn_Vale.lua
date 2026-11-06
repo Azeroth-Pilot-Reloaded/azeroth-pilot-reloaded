@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
-    label = L["Forever - Horde - Stranglethorn Vale (First Visit)"] .. " (35-37)",
+    label = L["Forever - Horde - Stranglethorn Vale (First Visit)"],
+    legacyLabels = { L["Forever - Horde - Stranglethorn Vale (First Visit)"] .. " (35-37)" },
+    levelRange = { min = 35, max = 37 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -1911,7 +1913,9 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
 }
 
 APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Second-Visit"] = {
-    label = L["Forever - Horde - Stranglethorn Vale (Second Visit)"] .. " (40-41)",
+    label = L["Forever - Horde - Stranglethorn Vale (Second Visit)"],
+    legacyLabels = { L["Forever - Horde - Stranglethorn Vale (Second Visit)"] .. " (40-41)" },
+    levelRange = { min = 40, max = 41 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -2697,7 +2701,9 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Second-Visit"] = {
 }
 
 APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Third-Visit"] = {
-    label = L["Forever - Horde - Stranglethorn Vale (Third Visit)"] .. " (44-45)",
+    label = L["Forever - Horde - Stranglethorn Vale (Third Visit)"],
+    legacyLabels = { L["Forever - Horde - Stranglethorn Vale (Third Visit)"] .. " (44-45)" },
+    levelRange = { min = 44, max = 45 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

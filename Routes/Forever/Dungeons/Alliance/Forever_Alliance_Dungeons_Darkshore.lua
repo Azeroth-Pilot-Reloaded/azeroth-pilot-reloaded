@@ -2,7 +2,9 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
-    label = L["Forever - Leveling Dungeon - Darkshore"] .. " (15-17)",
+    label = L["Forever - Leveling Dungeon - Darkshore"],
+    legacyLabels = { L["Forever - Leveling Dungeon - Darkshore"] .. " (15-17)" },
+    levelRange = { min = 15, max = 17 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Dungeons,

@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
-    label = L["Forever - Alliance - Dustwallow Marsh"] .. " (40-40)",
+    label = L["Forever - Alliance - Dustwallow Marsh"],
+    legacyLabels = { L["Forever - Alliance - Dustwallow Marsh"] .. " (40-40)" },
+    levelRange = { min = 40, max = 40 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -959,7 +961,9 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
 }
 
 APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh-Desolace"] = {
-    label = L["Forever - Alliance - Dustwallow Marsh / Desolace"] .. " (40-40)",
+    label = L["Forever - Alliance - Dustwallow Marsh / Desolace"],
+    legacyLabels = { L["Forever - Alliance - Dustwallow Marsh / Desolace"] .. " (40-40)" },
+    levelRange = { min = 40, max = 40 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

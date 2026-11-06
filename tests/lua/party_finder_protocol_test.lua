@@ -52,6 +52,11 @@ local reordered = { parallelSteps = { { trigger = { level = 7 }, steps = { { Don
     label = "Renamed", authors = { "Other" }, description = "Editorial", community = true, source = "Community" }
 local signature = fingerprint(first)
 assert(signature and signature == fingerprint(reordered), "Dictionary order and editorial attribution do not affect compatibility")
+reordered.levelRange = { min = 8, max = 19 }
+reordered.legacyLabels = { "Old title (8-19)" }
+assert(signature == fingerprint(reordered), "Moving a level range out of a title preserves the shared gameplay definition")
+reordered.levelRange = { min = 12, max = 25 }
+assert(signature == fingerprint(reordered), "Editorial level recommendations do not change group compatibility")
 reordered.steps[1].PickUp[1] = 103
 assert(signature ~= fingerprint(reordered), "Quest changes affect compatibility even when step counts match")
 reordered.steps[1].PickUp[1] = 101
@@ -96,7 +101,7 @@ french = localizedDefinition("Rejoignez la riviere"); french.steps[1].TrigText1 
 assert(localeSignature ~= fingerprint(french), "Completion trigger text remains mechanical")
 french = localizedDefinition("Rejoignez la riviere"); french.steps[1].SpellButton["7001-1"] = "another spell"
 assert(localeSignature ~= fingerprint(french), "Spell names consumed by an action remain mechanical")
-for _, key in ipairs({ "label", "Note", "text", "name", "source", "ExtraLineText1" }) do
+for _, key in ipairs({ "label", "levelRange", "Note", "text", "name", "source", "ExtraLineText1" }) do
     assert(fingerprint({ extension = { [key] = "first" } }) ~= fingerprint({ extension = { [key] = "second" } }),
         "Display-looking dictionary keys outside the schema remain meaningful: " .. key)
 end

@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
-    label = L["Forever - Alliance - Stonetalon Mountains / Ashenvale"] .. " (21-23)",
+    label = L["Forever - Alliance - Stonetalon Mountains / Ashenvale"],
+    legacyLabels = { L["Forever - Alliance - Stonetalon Mountains / Ashenvale"] .. " (21-23)" },
+    levelRange = { min = 21, max = 23 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

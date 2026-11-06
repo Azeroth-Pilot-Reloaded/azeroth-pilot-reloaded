@@ -174,8 +174,8 @@ function Browser:Create(parent)
     self.scroll = UI:Scroll(self.catalogPanel)
     self.list = APR.VirtualList:New(self.scroll, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:175:callback#18", --[[/APR_DIAG]]function(parent) return APR.RouteBrowserRows:Create(parent, self) end--[[APR_DIAG]])--[[/APR_DIAG]],
         --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:176:callback#19", --[[/APR_DIAG]]function(row, record, index) APR.RouteBrowserRows:Bind(row, record, index, self) end--[[APR_DIAG]])--[[/APR_DIAG]], 30)
-    self.headers, self.headerLabels = {}, {label = NAME, category = TYPE, author = string.format(L["AUTHOR"], ""), status = STATUS}
-    for _, key in ipairs({"label", "category", "author", "status"}) do
+    self.headers, self.headerLabels = {}, {label = NAME, level = LEVEL, category = TYPE, author = string.format(L["AUTHOR"], ""), status = STATUS}
+    for _, key in ipairs({"label", "level", "category", "author", "status"}) do
         local field = key
         local header = UI:ColumnHeader(self.catalogPanel, self.headerLabels[field], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:180:callback#20", --[[/APR_DIAG]]function()
             self.filters.descending = self.filters.sort == field and not self.filters.descending or false
@@ -240,6 +240,7 @@ function Browser:Layout()
     -- Standalone and embedded pages already expose the available content rectangle.
     local width, height = self.frame.content:GetWidth(), self.frame.content:GetHeight()
     local navWidth, pathWidth = width < 1060 and 156 or 180, width < 1060 and 244 or 292
+    if width < 820 then navWidth, pathWidth = 100, 180 end
     local tableLeft, pathLeft = navWidth + 12, width - pathWidth
     -- The existing shortcut translation is a list; reserve its measured height in every locale.
     self.hint:SetWidth(width - tableLeft)
@@ -270,7 +271,7 @@ function Browser:Layout()
         self.headerColumns, self.headerColumnWidth = columns, columnWidth
     end
     for key, header in pairs(self.headers) do
-        local column = columns[key == "label" and "name" or key]
+        local column = columns[key == "label" and "name" or key == "level" and "levels" or key]
         Place(header, 10 + column[1], 38, math.max(1, column[2]), 24)
         header:SetShown(column[2] > 0)
     end
@@ -300,4 +301,4 @@ function Browser:Show()
     local serial = self.refreshSerial
     self.frame:Show()
     if self.refreshSerial == serial then self:Refresh(true) end
-end--[[APR_DIAG]]; Browser.Show = APRTrace("APR-Core/ui/route/RouteBrowser.lua:295:Browser:Show#32", Browser.Show)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Browser.Show = APRTrace("APR-Core/ui/route/RouteBrowser.lua:296:Browser:Show#32", Browser.Show)--[[/APR_DIAG]]

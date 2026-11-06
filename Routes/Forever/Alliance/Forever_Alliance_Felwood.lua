@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
-    label = L["Forever - Alliance - Felwood"] .. " (52-52)",
+    label = L["Forever - Alliance - Felwood"],
+    legacyLabels = { L["Forever - Alliance - Felwood"] .. " (52-52)" },
+    levelRange = { min = 52, max = 52 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -1195,7 +1197,9 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
 }
 
 APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
-    label = L["Forever - Alliance - Felwood / Winterspring"] .. " (54-56)",
+    label = L["Forever - Alliance - Felwood / Winterspring"],
+    legacyLabels = { L["Forever - Alliance - Felwood / Winterspring"] .. " (54-56)" },
+    levelRange = { min = 54, max = 56 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

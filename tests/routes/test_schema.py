@@ -256,7 +256,8 @@ class RouteSchemaTests(unittest.TestCase):
                  "author": "APR", "authors": seq("One", "Two"), "community": True,
                  "source": "community", "description": "A route description",
                  "mapID": 1, "conditions": {"Level": 10, "AnyOf": seq({"Hardcore": False})},
-                 "legacyLabels": seq("Old name"), "autoStartOnMap": True, "notSkippable": True,
+                 "legacyLabels": seq("Old name"), "levelRange": {"min": 12, "max": 18},
+                 "autoStartOnMap": True, "notSkippable": True,
                  "hiddenFromSelection": True, "temporary": True, "sojournerAchievementID": 1, "delve": {},
                  "steps": seq({"Note": "Example"}), "scenarios": seq({"label": "Scenario", "scenarioID": 1,
                      "index": 1, "steps": seq({"Note": "Example"})}),
@@ -275,6 +276,15 @@ class RouteSchemaTests(unittest.TestCase):
                       {"nextRoute": seq({"route": "next", "conditions": {"Done": seq(1)}})}):
             with self.subTest(patch=patch), self.assertRaises(InvalidRoute):
                 self.schema.validate("test", {**route, **patch})
+
+    def test_level_range_metadata(self):
+        for levels in ({"min": 4, "max": 12}, {"min": 13}, {"max": 18}, {"min": 9, "max": 9}):
+            with self.subTest(levels=levels):
+                self.schema.validate("fixture", {"label": "Invented", "steps": {}, "levelRange": levels})
+        for levels in ({}, {"min": 0}, {"max": True}, {"min": "8"}, {"min": 1.5},
+                       {"min": 20, "max": 19}, {"min": 4, "label": "text"}, seq(4, 12)):
+            with self.subTest(levels=levels), self.assertRaises(InvalidRoute):
+                self.schema.validate("fixture", {"label": "Invented", "steps": {}, "levelRange": levels})
 
     def test_supported_alternative_forms_and_empty_placeholders(self):
         for step in ({"LearnSkill": {"allAvailable": True}}, {"LearnSkill": {"spellID": 1}},

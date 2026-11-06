@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Redridge"] = {
-    label = L["Forever - Alliance - Mage AoE - Redridge"] .. " (18-21)",
+    label = L["Forever - Alliance - Mage AoE - Redridge"],
+    legacyLabels = { L["Forever - Alliance - Mage AoE - Redridge"] .. " (18-21)" },
+    levelRange = { min = 18, max = 21 },
     prefab = { [APR.PREFAB_TYPES.Leveling] = 6 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
