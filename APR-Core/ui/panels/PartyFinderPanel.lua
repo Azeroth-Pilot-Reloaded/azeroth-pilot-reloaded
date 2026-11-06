@@ -99,9 +99,10 @@ local function CreateCandidateRow(parent)
         if finder and candidate then finder:Whisper(candidate.key) end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     row.whisper:SetPoint("RIGHT", row.invite, "LEFT", -6, 0)
+    if APR.Gamepad then APR.Gamepad:LinkHorizontal({row.whisper, row.invite}) end
     row:EnableMouse(true)
     row:SetScript("OnEnter", ShowCandidateTooltip)
-    row:SetScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:104:callback#11", --[[/APR_DIAG]]function() if GameTooltip then GameTooltip:Hide() end end--[[APR_DIAG]])--[[/APR_DIAG]])
+    row:SetScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:105:callback#11", --[[/APR_DIAG]]function() if GameTooltip then GameTooltip:Hide() end end--[[APR_DIAG]])--[[/APR_DIAG]])
     return row
 end--[[APR_DIAG]]; CreateCandidateRow = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:69:CreateCandidateRow#8", CreateCandidateRow)--[[/APR_DIAG]]
 
@@ -145,7 +146,7 @@ local function BindCandidateRow(row, candidate, index)
     row.invite:SetEnabled(allowed == true)
     row.inviteReason = reason
     UI:SetListRowState(row, false, index == #(Panel.items or {}))
-end--[[APR_DIAG]]; BindCandidateRow = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:108:BindCandidateRow#12", BindCandidateRow)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; BindCandidateRow = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:109:BindCandidateRow#12", BindCandidateRow)--[[/APR_DIAG]]
 
 local function QuickToggle(parent, label, key)
     local control = CreateFrame("CheckButton", nil, parent, "UICheckButtonTemplate")
@@ -153,13 +154,13 @@ local function QuickToggle(parent, label, key)
     control.label = UI:Label(control, label, 12)
     control.label:SetPoint("LEFT", control, "RIGHT", 2, 0)
     control.label:SetWordWrap(false)
-    control:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:156:callback#14", --[[/APR_DIAG]]function()
+    control:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:157:callback#14", --[[/APR_DIAG]]function()
         local finder = Finder()
         if finder then finder:SetOption(key, control:GetChecked() == true) end
         Panel:Refresh()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     return control
-end--[[APR_DIAG]]; QuickToggle = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:150:QuickToggle#13", QuickToggle)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; QuickToggle = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:151:QuickToggle#13", QuickToggle)--[[/APR_DIAG]]
 
 local function RangeControl(parent, label, key, minimum, maximum)
     local row = CreateFrame("Frame", nil, parent)
@@ -193,38 +194,52 @@ local function RangeControl(parent, label, key, minimum, maximum)
         value = math.max(minimum, math.min(maximum, math.floor(value + 0.5)))
         finder:SetOption(key, value)
         Panel:Refresh()
-    end--[[APR_DIAG]]; row.Commit = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:189:row:Commit#16", row.Commit)--[[/APR_DIAG]]
-    row.slider:SetScript("OnValueChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:197:callback#17", --[[/APR_DIAG]]function(_, value)
+    end--[[APR_DIAG]]; row.Commit = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:190:row:Commit#16", row.Commit)--[[/APR_DIAG]]
+    row.slider:SetScript("OnValueChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:198:callback#17", --[[/APR_DIAG]]function(_, value)
         if not row.refreshing then row.edit:SetText(tostring(math.floor(value + 0.5))) end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-    row.slider:SetScript("OnMouseUp", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:200:callback#18", --[[/APR_DIAG]]function() row:Commit(row.edit:GetText()) end--[[APR_DIAG]])--[[/APR_DIAG]])
-    row.edit:SetScript("OnEnterPressed", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:201:callback#19", --[[/APR_DIAG]]function(edit) row:Commit(edit:GetText()); edit:ClearFocus() end--[[APR_DIAG]])--[[/APR_DIAG]])
-    row.edit:SetScript("OnEditFocusLost", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:202:callback#20", --[[/APR_DIAG]]function(edit)
+    row.slider:SetScript("OnMouseUp", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:201:callback#18", --[[/APR_DIAG]]function() row:Commit(row.edit:GetText()) end--[[APR_DIAG]])--[[/APR_DIAG]])
+    row.edit:SetScript("OnEnterPressed", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:202:callback#19", --[[/APR_DIAG]]function(edit) row:Commit(edit:GetText()); edit:ClearFocus() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    row.edit:SetScript("OnEditFocusLost", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:203:callback#20", --[[/APR_DIAG]]function(edit)
         row:Commit(edit:GetText())
         edit:SetText(tostring(Settings()[key] or minimum))
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-    row.edit:SetScript("OnEscapePressed", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:206:callback#21", --[[/APR_DIAG]]function(edit)
+    row.edit:SetScript("OnEscapePressed", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:207:callback#21", --[[/APR_DIAG]]function(edit)
         edit:SetText(tostring(Settings()[key] or minimum)); edit:ClearFocus()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
+    if APR.Gamepad then
+        APR.Gamepad:SetNavigationFlag(row.slider, "smartNavigationCanFocus", true)
+        for direction, delta in pairs({LEFT = -1, RIGHT = 1}) do
+            APR.Gamepad:SetDirection(row.slider, direction, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:213:callback#22", --[[/APR_DIAG]]function()
+                if row.enabled then row:Commit(row.slider:GetValue() + delta) end
+                return true
+            end--[[APR_DIAG]])--[[/APR_DIAG]])
+        end
+    end
     function row:Refresh(value, enabled)
+        local changed = self.enabled ~= enabled
         self.enabled, self.refreshing = enabled, true
         if not self.edit:HasFocus() then self.edit:SetText(tostring(value or minimum)) end
         self.slider:SetValue(value or minimum)
         self.slider:EnableMouse(enabled)
         self.edit:EnableMouse(enabled)
         self.edit:EnableKeyboard(enabled)
+        if changed and APR.Gamepad then
+            APR.Gamepad:SetNavigationFlag(self.slider, "smartNavigationIgnored", not enabled)
+            APR.Gamepad:SetNavigationFlag(self.edit, "smartNavigationIgnored", not enabled)
+        end
         APR:SetFontStringRole(self.label, enabled and "base" or "muted")
         self.refreshing = nil
-    end--[[APR_DIAG]]; row.Refresh = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:209:row:Refresh#22", row.Refresh)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; row.Refresh = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:219:row:Refresh#23", row.Refresh)--[[/APR_DIAG]]
     return row
-end--[[APR_DIAG]]; RangeControl = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:164:RangeControl#15", RangeControl)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; RangeControl = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:165:RangeControl#15", RangeControl)--[[/APR_DIAG]]
 
 -- Options and Companions share the same persisted filters and APR selector chrome.
 function Panel:RefreshFilters(settings)
     local values, options = LanguageValues(), {{value = false, label = ALL}}
     local codes = {}
     for code in pairs(values) do codes[#codes + 1] = code end
-    table.sort(codes, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:227:callback#24", --[[/APR_DIAG]]function(a, b) return values[a] < values[b] end--[[APR_DIAG]])--[[/APR_DIAG]])
+    table.sort(codes, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:242:callback#25", --[[/APR_DIAG]]function(a, b) return values[a] < values[b] end--[[APR_DIAG]])--[[/APR_DIAG]])
     for _, code in ipairs(codes) do options[#options + 1] = {value = code, label = values[code]} end
     self.languages:SetOptions(options, settings.languages or {})
     self.languages:SetText(LANGUAGES_LABEL .. ": " .. self.languages:GetText())
@@ -238,7 +253,7 @@ function Panel:RefreshFilters(settings)
     self.maxLevel:Refresh(settings.maxLevel or 0, settings.enabled == true)
     self.warMode:SetChecked(settings.showIncompatibleWarMode == true)
     self.warMode:SetEnabled(settings.enabled == true)
-end--[[APR_DIAG]]; Panel.RefreshFilters = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:223:Panel:RefreshFilters#23", Panel.RefreshFilters)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Panel.RefreshFilters = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:238:Panel:RefreshFilters#24", Panel.RefreshFilters)--[[/APR_DIAG]]
 
 -- Only resize/content changes measure the chrome; discovery never polls its layout.
 function Panel:Layout()
@@ -314,7 +329,7 @@ function Panel:Layout()
     self.results:SetPoint("BOTTOMRIGHT", root, "BOTTOMRIGHT", 0, 42)
     self.layoutLanguage = self.languages:GetText()
     self.layoutMode = self.match:GetText()
-end--[[APR_DIAG]]; Panel.Layout = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:244:Panel:Layout#25", Panel.Layout)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Panel.Layout = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:259:Panel:Layout#26", Panel.Layout)--[[/APR_DIAG]]
 
 function Panel:Refresh()
     if not self.frame or not self.frame:IsShown() or (self.frame.IsVisible and not self.frame:IsVisible()) then return end
@@ -335,7 +350,7 @@ function Panel:Refresh()
         if not self.spinner.animation:IsPlaying() then self.spinner.animation:Play() end
     else self.spinner.animation:Stop() end
     if cooldown > 0 and not self.searchRefreshTimer then
-        self.searchRefreshTimer = C_Timer.NewTimer(1, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:338:callback#27", --[[/APR_DIAG]]function()
+        self.searchRefreshTimer = C_Timer.NewTimer(1, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:353:callback#28", --[[/APR_DIAG]]function()
             self.searchRefreshTimer = nil
             self:Refresh()
         end--[[APR_DIAG]])--[[/APR_DIAG]])
@@ -355,14 +370,14 @@ function Panel:Refresh()
         self.layoutSearch = self.refresh:GetText()
         self:Layout()
     end
-end--[[APR_DIAG]]; Panel.Refresh = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:319:Panel:Refresh#26", Panel.Refresh)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Panel.Refresh = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:334:Panel:Refresh#27", Panel.Refresh)--[[/APR_DIAG]]
 
 function Panel:Create()
     if self.frame then return end
     self.frame = UI:Window("APRCompanions", APR.title .. "  ·  " .. L["GF_TITLE"], 1040, 680, "library", "logo")
     self.frame:SetResizeBounds(math.min(860, UIParent:GetWidth() - 40), math.min(460, UIParent:GetHeight() - 60))
     local root = self.frame.content
-    self.refresh = UI:Button(root, LFG_LIST_SEARCH_AGAIN, 120, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:365:callback#29", --[[/APR_DIAG]]function()
+    self.refresh = UI:Button(root, LFG_LIST_SEARCH_AGAIN, 120, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:380:callback#30", --[[/APR_DIAG]]function()
         local finder = Finder()
         if finder then finder:Search() end
         self:Refresh()
@@ -380,12 +395,12 @@ function Panel:Create()
     self.spinner:Hide()
     self.autoScan = QuickToggle(root, L["GF_AUTO_SCAN"], "autoScan")
     self.visible = QuickToggle(root, L["GF_VISIBLE"], "visible")
-    self.configure = UI:Button(root, GAMEOPTIONS_MENU, 130, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:383:callback#30", --[[/APR_DIAG]]function()
+    self.configure = UI:Button(root, GAMEOPTIONS_MENU, 130, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:398:callback#31", --[[/APR_DIAG]]function()
         local finder = Finder()
         if finder then finder:OpenSettings() end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     self.configure:SetPoint("TOPRIGHT")
-    self.languages = UI:Select(root, 300, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:388:callback#31", --[[/APR_DIAG]]function(code, selected)
+    self.languages = UI:Select(root, 300, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:403:callback#32", --[[/APR_DIAG]]function(code, selected)
         local finder = Finder()
         if finder then
             if code == false then finder:SetOption("languages", {})
@@ -393,7 +408,7 @@ function Panel:Create()
         end
         self:Refresh()
     end--[[APR_DIAG]])--[[/APR_DIAG]], {multiselect = true, emptyText = ALL})
-    self.match = UI:Select(root, 240, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:396:callback#32", --[[/APR_DIAG]]function(mode)
+    self.match = UI:Select(root, 240, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:411:callback#33", --[[/APR_DIAG]]function(mode)
         local finder = Finder()
         if finder then finder:SetOption("matchMode", mode) end
         self:Refresh()
@@ -402,7 +417,7 @@ function Panel:Create()
     self.stepRange = RangeControl(root, L["GF_STEP_RANGE"], "stepRange", 1, 30)
     self.warMode = QuickToggle(root, L["SHOW_INCOMPATIBLE_PLAYERS"], "showIncompatibleWarMode")
     UI:Tooltip(self.warMode, L["SHOW_INCOMPATIBLE_PLAYERS"], PARTY_WARMODE_MESSAGE or L["INCOMPATIBLE_WAR_MODE_DESC"])
-    self.levelToggle = UI:Button(root, L["GF_MORE"], 110, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:405:callback#33", --[[/APR_DIAG]]function()
+    self.levelToggle = UI:Button(root, L["GF_MORE"], 110, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:420:callback#34", --[[/APR_DIAG]]function()
         self.levelsExpanded = not self.levelsExpanded
         UI:SetButtonActive(self.levelToggle, self.levelsExpanded)
         self:Layout()
@@ -431,8 +446,8 @@ function Panel:Create()
     self.empty:SetJustifyV("MIDDLE")
     self.count = UI:Label(root, "", 12, "muted")
     self.count:SetWordWrap(false)
-    root:HookScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:434:callback#34", --[[/APR_DIAG]]function() self:Layout() end--[[APR_DIAG]])--[[/APR_DIAG]])
-    self.frame:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:435:callback#35", --[[/APR_DIAG]]function()
+    root:HookScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:449:callback#35", --[[/APR_DIAG]]function() self:Layout() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self.frame:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:450:callback#36", --[[/APR_DIAG]]function()
         if UI.activeMenu then UI.activeMenu:Hide() end
         if GameTooltip then GameTooltip:Hide() end
         self.spinner.animation:Stop()
@@ -444,7 +459,7 @@ function Panel:Create()
         APR.Gamepad:LinkHorizontal({self.minLevel.edit, self.maxLevel.edit})
     end
     self:Layout()
-end--[[APR_DIAG]]; Panel.Create = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:360:Panel:Create#28", Panel.Create)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Panel.Create = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:375:Panel:Create#29", Panel.Create)--[[/APR_DIAG]]
 
 function Panel:Show()
     if UI.activeMenu then UI.activeMenu:Hide() end
@@ -454,13 +469,16 @@ function Panel:Show()
     local finder = Finder()
     if finder then finder:Search() end
     self:Refresh()
-    if APR.Gamepad then APR.Gamepad:Refresh(self.frame) end
-end--[[APR_DIAG]]; Panel.Show = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:449:Panel:Show#36", Panel.Show)--[[/APR_DIAG]]
+    if APR.Gamepad then
+        APR.Gamepad:FocusWindow(self.frame)
+        APR.Gamepad:RequestControlFocus(self.frame, self.refresh)
+    end
+end--[[APR_DIAG]]; Panel.Show = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:464:Panel:Show#37", Panel.Show)--[[/APR_DIAG]]
 
 function Panel:HideInviteContext()
     if self.inviteTimer then self.inviteTimer:Cancel(); self.inviteTimer = nil end
     if self.inviteContext then self.inviteContext:Hide() end
-end--[[APR_DIAG]]; Panel.HideInviteContext = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:460:Panel:HideInviteContext#37", Panel.HideInviteContext)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Panel.HideInviteContext = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:478:Panel:HideInviteContext#38", Panel.HideInviteContext)--[[/APR_DIAG]]
 
 function Panel:ShowInviteContext(data)
     self:HideInviteContext()
@@ -472,7 +490,7 @@ function Panel:ShowInviteContext(data)
         notice:SetClampedToScreen(true)
         notice.text = UI:Label(notice, "", 13)
         notice.text:SetPoint("TOPLEFT", 14, -12); notice.text:SetPoint("BOTTOMRIGHT", -36, 12)
-        notice.close = UI:Button(notice, "", 24, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:475:callback#39", --[[/APR_DIAG]]function() self:HideInviteContext() end--[[APR_DIAG]])--[[/APR_DIAG]])
+        notice.close = UI:Button(notice, "", 24, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:493:callback#40", --[[/APR_DIAG]]function() self:HideInviteContext() end--[[APR_DIAG]])--[[/APR_DIAG]])
         notice.close:SetPoint("TOPRIGHT", -6, -6)
         notice.close.icon = UI:Icon(notice.close, "close", 14)
         notice.close.icon:SetPoint("CENTER")
@@ -484,6 +502,6 @@ function Panel:ShowInviteContext(data)
     self.inviteContext.text:SetText(string.format(L["GF_INVITE_CONTEXT"], PlainName(data.name or data.sender), description))
     self.inviteContext:Show()
     if C_Timer and C_Timer.NewTimer then
-        self.inviteTimer = C_Timer.NewTimer(30, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:487:callback#40", --[[/APR_DIAG]]function() self.inviteTimer = nil; self:HideInviteContext() end--[[APR_DIAG]])--[[/APR_DIAG]])
+        self.inviteTimer = C_Timer.NewTimer(30, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:505:callback#41", --[[/APR_DIAG]]function() self.inviteTimer = nil; self:HideInviteContext() end--[[APR_DIAG]])--[[/APR_DIAG]])
     end
-end--[[APR_DIAG]]; Panel.ShowInviteContext = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:465:Panel:ShowInviteContext#38", Panel.ShowInviteContext)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Panel.ShowInviteContext = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:483:Panel:ShowInviteContext#39", Panel.ShowInviteContext)--[[/APR_DIAG]]

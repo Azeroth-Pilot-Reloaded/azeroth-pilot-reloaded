@@ -49,6 +49,16 @@ assert(window:IsShown() and SmartNavigation:GetCurrentButton() == tab, "Back ret
 assert(tab.overrides.down() == true)
 fixture.tick(); assert(SmartNavigation:GetCurrentButton() == detail)
 
+-- A button can have valid native geometry before its custom label is measured.
+-- Returning true would consume every direction and trap the native cursor.
+local pendingLabel = CreateFrame("Frame", nil, window)
+detail.aprGamepadRect = pendingLabel
+assert(detail:GetRect() and not pendingLabel:GetRect())
+assert(pad:NavigateControl(detail, "DOWN") == nil,
+    "Missing custom geometry must fall through to Blizzard's native navigation")
+detail.aprGamepadRect = nil
+assert(pad.navigationInputCount > 0 and pad.lastNavigationDirection == "DOWN")
+
 -- A text-only viewport is focusable, but must not replace actual settings as the entry point.
 body:Hide()
 local scroll = CreateFrame("ScrollFrame", nil, window)

@@ -924,8 +924,8 @@ function UI:Window(name, title, width, height, surface, logo)
     frame:Hide()
     if APR.Gamepad then
         -- Drag/resize handles are mouse-only; they must not trap native navigation.
-        frame.header.smartNavigationIgnoredDontPropagate = true
-        frame.resize.smartNavigationIgnored = true
+        APR.Gamepad:SetNavigationFlag(frame.header, "smartNavigationIgnoredDontPropagate", true)
+        APR.Gamepad:SetNavigationFlag(frame.resize, "smartNavigationIgnored", true)
         APR.Gamepad:RegisterWindow(frame)
     end
     return frame

@@ -16,8 +16,11 @@ function UI:Button(parent, text, width, callback)
     frame:SetScript("OnClick", callback); frame:SetText(text)
     return frame
 end
-local confirmation
-function UI:ShowConfirmationDialog(message, accept, cancel) confirmation = {message = message, accept = accept, cancel = cancel} end
+local confirmation, confirmationCount = nil, 0
+function UI:ShowConfirmationDialog(message, accept, cancel)
+    confirmationCount = confirmationCount + 1
+    confirmation = {message = message, accept = accept, cancel = cancel}
+end
 function env.methods:EnableGamePadButton(value) self.padEnabled = value end
 function env.methods:SetValue(value)
     local old = self.value; self.value = value
@@ -48,13 +51,29 @@ assert(confirmation.message:find("CTRL%-PAD4") and confirmation.message:find("JU
 assert(bindings["CTRL-PAD4"] == "JUMP" and saves == 0, "Capturing must not silently steal a binding")
 confirmation.accept()
 assert(bindings["CTRL-PAD4"] == "APR_MENU" and saves == 1)
+local confirmationsBeforeCancel = confirmationCount
 pad:CaptureMenuBinding(); press(capture, "PADBACK")
-assert(not capture:IsShown() and saves == 1, "Back cancels capture")
+assert(not capture:IsShown() and saves == 1 and confirmationCount == confirmationsBeforeCancel,
+    "Leaving capture returns to the menu; the unbound warning belongs to closing that menu")
+pad:CaptureMenuBinding()
+press(capture, "PAD2")
+assert(not capture:IsShown() and not bindings["CTRL-PAD2"] and saves == 1,
+    "B cancels rather than becoming the menu binding")
+pad:CaptureMenuBinding()
+capture:GetScript("OnKeyDown")(capture, "ESCAPE")
+assert(not capture:IsShown() and confirmationCount == confirmationsBeforeCancel)
+pad:CaptureMenuBinding()
+capture:Hide()
+assert(not capture.captureListening and confirmationCount == confirmationsBeforeCancel,
+    "Closing capture must neither save a shortcut nor open the menu's warning")
 pad:CaptureMenuBinding(); press(capture, "PAD3")
 env.setCombat(true); confirmation.accept(); env.setCombat(false)
 assert(not bindings["CTRL-PAD3"] and saves == 1, "A stale confirmation cannot bind in combat")
+local confirmationsBeforeDisconnect = confirmationCount
 pad:CaptureMenuBinding(); capture:GetScript("OnEvent")(capture, "GAME_PAD_DISCONNECTED")
 assert(not capture:IsShown() and not capture.padEnabled)
+assert(confirmationCount == confirmationsBeforeDisconnect,
+    "Disconnect must immediately release capture without an interactive warning")
 
 local target = {frame = CreateFrame("Button", nil, fixture.window), r = 0.2, g = 0.4, b = 0.6, a = 0.8, HasAlpha = true}
 function target:SetColor(r, g, b, a) self.r, self.g, self.b, self.a = r, g, b, a end

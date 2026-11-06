@@ -224,7 +224,8 @@ assert(action == list.active[51].action, "Keep action column and skip disabled a
 list:SetItems({8, 7, 6})
 row = list.active[1].overrides.down()
 assert(row.item == 7, "Rebound rows must navigate the new model")
-list:SetItems({}); assert(row.overrides.down() == true)
+list:SetItems({}); assert(row.overrides.down() == nil,
+    "A recycled row removed from an empty list must release navigation to the native resolver")
 list:SetSource({count = 1000, get = function(_, index) return index end})
 list:ScrollToIndex(998)
 row = list.active[998].overrides.down()
@@ -326,5 +327,30 @@ housing:Hide(); APR.navigation = nil
 -- honor either ActionButtonUseKeyDown preference.
 assert(table.concat(pad.itemProxy.clicks, ",") == "AnyDown,AnyUp")
 env.setCombat(false)
+-- Flags prepared before native navigation loads must cross its setter later.
+local delayed = CreateFrame("Frame", nil, UIParent)
+pad:SetNavigationFlag(delayed, "smartNavigationCanFocus", true)
+assert(delayed.smartNavigationCanFocus == true)
+local flagWrites, restored = 0, false
+SmartNavigationSecureHelper = {SetSecureValue = function(_, frame, key, value)
+    assert(not InCombatLockdown(), "Never call the native flag setter in combat")
+    flagWrites = flagWrites + 1
+    frame[key] = not not value
+    if frame == delayed and key == "smartNavigationCanFocus" then restored = value end
+end}
+pad:RestoreNavigationFlags()
+assert(restored == true and flagWrites > 0, "Late native loading must sanitize existing flags")
+local writes = flagWrites
+pad:RestoreNavigationFlags()
+assert(flagWrites == writes, "Unchanged navigation must not replay all flag writes")
+env.setCombat(true)
+pad:SetNavigationFlag(delayed, "smartNavigationCanFocus", nil)
+pad:RestoreNavigationFlags()
+assert(delayed.smartNavigationCanFocus == true and flagWrites == writes)
+env.setCombat(false)
+pad:RestoreNavigationFlags()
+assert(delayed.smartNavigationCanFocus == false and restored == nil,
+    "After combat, clearing a flag must use the native setter's boolean conversion")
+SmartNavigationSecureHelper = nil
 print("Gamepad: native lifecycle, modal ownership, deferred refresh, combat, sliders, 1000 recycled routes and secure action routing passed")
 return {env = env, pad = pad, manager = manager, window = window, tick = tick, created = created, selectAction = selectAction}
