@@ -10,7 +10,7 @@ APR.RouteQuestStepList["Forever-Alliance-Badlands"] = {
     mapID = 1418,
     conditions = { MinLevel = 41, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 23 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 23 }, [APR.PREFAB_TYPES.Speedrun] = { index = 23 } },
     parallelSteps = {
         {
             repeatable = true,

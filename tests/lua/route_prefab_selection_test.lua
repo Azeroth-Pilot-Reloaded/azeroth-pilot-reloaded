@@ -15,11 +15,14 @@ local config = APR.routeconfig
 assert(not config:HasPrefab("all_quests"))
 assert(not config:HasPrefab("speedrun") and config:HasPrefab("leveling") and config:HasPrefab("dungeons"),
     "A Leveling offer alone cannot advertise the distinct Speedrun preset")
+assert(#config:GetPrefabOptions("leveling") == 2, "A high-level AoE entry is not offered as a low-level start")
+APR.Level = 20
 config:OpenLevelingPopup()
 assert(#popup == 3 and popup[1].key == APR.EXPANSIONS.Forever)
 assert(popup[2].key == "forever_dungeons" and popup[3].key == "forever_mage_aoe")
 selectOption(popup[3])
 assert(#APRCustomPath.player == 1 and APRCustomPath.player[1] == mage.label)
+APR.Level = 1
 assert(APR:CanStartRoute("Forever-MageAoE-fixture"), "A future chapter above level 10 is advisory after selection")
 assert(#APR:GetRouteLevelWarnings("Forever-MageAoE-fixture") == 1)
 popup = nil

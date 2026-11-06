@@ -10,7 +10,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
     mapID = 1427,
     conditions = { MinLevel = 51, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Azshara" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 28 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 28 }, [APR.PREFAB_TYPES.Speedrun] = { index = 28 } },
     parallelSteps = {
         {
             repeatable = true,

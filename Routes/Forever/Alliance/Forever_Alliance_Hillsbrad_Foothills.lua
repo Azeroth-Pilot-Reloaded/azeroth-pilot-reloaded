@@ -10,7 +10,7 @@ APR.RouteQuestStepList["Forever-Alliance-Hillsbrad-Foothills"] = {
     mapID = 1424,
     conditions = { MinLevel = 32, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Thousand-Needles" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 14 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 14 }, [APR.PREFAB_TYPES.Speedrun] = { index = 14 } },
     parallelSteps = {
         {
             repeatable = true,

@@ -15,7 +15,7 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
         { route = "Forever-Shared-Dungeons-Hall-of-Thanes",           conditions = { MinLevel = 13, Race = { APR.RACES.Dwarf, APR.RACES.Gnome }, Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock }, SkipForLvl = 19 } },
         { route = "Forever-Shared-Dungeons-Ragefire-Chasm",           conditions = { MinLevel = 13, Race = { APR.RACES.Dwarf, APR.RACES.Gnome }, Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock }, SkipForLvl = 19 } },
     },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 2 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 2 }, [APR.PREFAB_TYPES.Speedrun] = { index = 2 } },
     parallelSteps = {
         {
             repeatable = true,

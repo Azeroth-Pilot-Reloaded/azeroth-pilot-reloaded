@@ -10,7 +10,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
     mapID = 1443,
     conditions = { MinLevel = 34, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Stranglethorn-Vale-First-Visit" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 12 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 12 }, [APR.PREFAB_TYPES.Speedrun] = { index = 12 } },
     parallelSteps = {
         {
             repeatable = true,
@@ -1387,7 +1387,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-Second-Visit"] = {
     mapID = 1443,
     conditions = { MinLevel = 41, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Tanaris-First-Visit" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 19 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 19 }, [APR.PREFAB_TYPES.Speedrun] = { index = 19 } },
     parallelSteps = {
         {
             repeatable = true,

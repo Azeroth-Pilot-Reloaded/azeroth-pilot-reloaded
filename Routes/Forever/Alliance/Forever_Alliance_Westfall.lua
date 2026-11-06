@@ -16,7 +16,7 @@ APR.RouteQuestStepList["Forever-Alliance-Westfall"] = {
         { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, Faction = "Alliance", Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock, APR.Classes.Druid }, SkipForLvl = 19 } },
         { route = "Forever-Shared-Dungeons-Ruins-of-Lordaeron", conditions = { MinLevel = 15, Faction = "Alliance", Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock, APR.Classes.Druid }, SkipForLvl = 21 } },
     },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 4 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 4 }, [APR.PREFAB_TYPES.Speedrun] = { index = 4 } },
     parallelSteps = {
         {
             conditions = { EquippedItemStat = { slot = 17, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 8.7, precision = 1, allowMissing = true }, ItemCount = { itemID = 2027, count = 1 }, EquippedItem = { slot = 17, itemID = 2027, invert = true }, Race = "Human", Class = "ROGUE", MinLevel = 14 },

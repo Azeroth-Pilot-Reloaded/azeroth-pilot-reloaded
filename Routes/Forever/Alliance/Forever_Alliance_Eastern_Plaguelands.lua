@@ -10,7 +10,7 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
     mapID = 1423,
     conditions = { MinLevel = 57, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Winterspring-Silithus" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 38 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 38 }, [APR.PREFAB_TYPES.Speedrun] = { index = 38 } },
     parallelSteps = {
         {
             repeatable = true,

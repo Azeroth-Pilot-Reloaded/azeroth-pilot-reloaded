@@ -104,6 +104,17 @@ preset only queues ordinary routes, while AoE starts remain available through
 their explicit leveling scope and hidden chapters are never queued automatically.
 Presets and automatic suggestions retain the authored character recommendations
 while manual selection can waive them.
+
+`leveling_prefab_test.lua` drives the real Leveling button and stale popup
+callbacks with synthetic characters and routes. It covers fractional/open
+level boundaries, native Retail scaling and its missing/irrelevant-map fallback,
+authored limits, future chapters, branch alternatives, bounded dead ends,
+prerequisites, completion, variant choices and resuming starters at their entry
+level. Availability and construction use the same read-only plan; refusal leaves
+the existing path and progress intact. Forever uses authored conditions through
+60 without querying Retail scaling. Ordinary Forever chapters explicitly declare
+their Leveling participation independently of Speedrun's completion contract.
+
 Explicit Forever additions lazily store `APRData[player].RouteChoices[label]` to
 preserve variants with shared labels. Existing paths need no migration: absent,
 invalid or deleted choices use the usual resolver, which prefers a recommended

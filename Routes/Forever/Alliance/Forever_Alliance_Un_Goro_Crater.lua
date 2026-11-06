@@ -10,7 +10,7 @@ APR.RouteQuestStepList["Forever-Alliance-Un-Goro-Crater"] = {
     mapID = 1449,
     conditions = { MinLevel = 53, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Felwood-Winterspring" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 35 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 35 }, [APR.PREFAB_TYPES.Speedrun] = { index = 35 } },
     parallelSteps = {
         {
             repeatable = true,

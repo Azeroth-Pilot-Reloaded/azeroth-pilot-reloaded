@@ -9,7 +9,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 1452,
     conditions = { MinLevel = 59, Faction = "Alliance" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 39, endLevel = 60 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 39 }, [APR.PREFAB_TYPES.Speedrun] = { index = 39, endLevel = 60 } },
     parallelSteps = {
         {
             repeatable = true,

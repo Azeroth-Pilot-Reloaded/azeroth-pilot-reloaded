@@ -10,7 +10,7 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
     mapID = 1418,
     conditions = { MinLevel = 39, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Stranglethorn-Vale-Second-Visit" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 16 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 16 }, [APR.PREFAB_TYPES.Speedrun] = { index = 16 } },
     parallelSteps = {
         {
             repeatable = true,

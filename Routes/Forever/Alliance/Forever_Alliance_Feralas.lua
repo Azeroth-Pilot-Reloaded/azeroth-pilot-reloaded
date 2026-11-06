@@ -10,7 +10,7 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-First-Visit"] = {
     mapID = 1444,
     conditions = { MinLevel = 44, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Tanaris-Second-Visit" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 26 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 26 }, [APR.PREFAB_TYPES.Speedrun] = { index = 26 } },
     parallelSteps = {
         {
             repeatable = true,
@@ -1487,7 +1487,7 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-Second-Visit"] = {
     mapID = 1444,
     conditions = { MinLevel = 52, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Azshara" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 33 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 33 }, [APR.PREFAB_TYPES.Speedrun] = { index = 33 } },
     parallelSteps = {
         {
             repeatable = true,

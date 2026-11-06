@@ -10,7 +10,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
     mapID = 1435,
     conditions = { MinLevel = 38, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Alterac-Arathi" },
-    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 19 } },
+    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 19 }, [APR.PREFAB_TYPES.Speedrun] = { index = 19 } },
     parallelSteps = {
         {
             repeatable = true,
