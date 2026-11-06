@@ -122,6 +122,12 @@ the existing path and progress intact. Forever uses authored conditions through
 60 without querying Retail scaling. Ordinary Forever chapters explicitly declare
 their Leveling participation independently of Speedrun's completion contract.
 
+`prefab_buttons_test.lua` keeps catalogue support separate from current
+availability: supported prefab buttons remain visible at the level cap, before
+entry and after class/progress changes, with live enabled states and stable
+layout. Unsupported client content stays hidden; stale callbacks retain the
+existing path and progress.
+
 Explicit Forever additions lazily store `APRData[player].RouteChoices[label]` to
 preserve variants with shared labels. Existing paths need no migration: absent,
 invalid or deleted choices use the usual resolver, which prefers a recommended

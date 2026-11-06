@@ -227,9 +227,10 @@ end--[[APR_DIAG]]; Browser.Create = APRTrace("APR-Core/ui/route/RouteBrowser.lua
 function Browser:RefreshPrefabs()
     self.prefabs = {}
     for _, button in ipairs(self.prefabButtons) do
-        local available = APR.routeconfig:HasPrefab(button.prefabKind)
-        button:SetShown(available)
-        if available then self.prefabs[#self.prefabs + 1] = button end
+        local supported = APR.routeconfig:HasPrefab(button.prefabKind, true)
+        button:SetShown(supported)
+        button:SetEnabled(supported and APR.routeconfig:HasPrefab(button.prefabKind))
+        if supported then self.prefabs[#self.prefabs + 1] = button end
     end
     self.prefabPanel:SetShown(#self.prefabs > 0)
     if APR.Gamepad then APR.Gamepad:LinkHorizontal(self.prefabs) end
@@ -292,7 +293,7 @@ function Browser:Layout()
     self.list:RefreshVisible(true)
     self.pathList:RefreshVisible(true)
     self.navigation:RefreshVisible(true)
-end--[[APR_DIAG]]; Browser.Layout = APRTrace("APR-Core/ui/route/RouteBrowser.lua:239:Browser:Layout#31", Browser.Layout)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Browser.Layout = APRTrace("APR-Core/ui/route/RouteBrowser.lua:240:Browser:Layout#31", Browser.Layout)--[[/APR_DIAG]]
 
 function Browser:Show()
     if APR.Workspace then return APR.Workspace:Show("route") end
@@ -302,4 +303,4 @@ function Browser:Show()
     local serial = self.refreshSerial
     self.frame:Show()
     if self.refreshSerial == serial then self:Refresh(true) end
-end--[[APR_DIAG]]; Browser.Show = APRTrace("APR-Core/ui/route/RouteBrowser.lua:297:Browser:Show#32", Browser.Show)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Browser.Show = APRTrace("APR-Core/ui/route/RouteBrowser.lua:298:Browser:Show#32", Browser.Show)--[[/APR_DIAG]]
