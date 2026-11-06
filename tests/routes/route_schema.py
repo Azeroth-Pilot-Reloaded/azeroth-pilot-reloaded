@@ -310,7 +310,7 @@ class RouteSchema:
             "requiredRoute": array(TEXT),
             "nextRoute": array(union(TEXT, obj({"route": TEXT, "conditions": condition}, required=("route",)))),
             "prefab": mapping(constants("PREFAB_TYPES"), union(NUMBER,
-                              obj({"index": NUMBER, "conditions": condition}, required=("index",)))),
+                              obj({"index": NUMBER, "conditions": condition, "endLevel": ID}, required=("index",)))),
         }
         self.route = obj(self.route_fields, required=("label",), choices=(("steps", "scenarios"),))
 

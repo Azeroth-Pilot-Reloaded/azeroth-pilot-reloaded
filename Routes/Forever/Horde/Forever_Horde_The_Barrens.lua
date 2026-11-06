@@ -17,7 +17,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Horde", SkipForLvl = 26 } },
         { route = "Forever-Shared-Dungeons-Deadmines", conditions = { MinLevel = 18, Faction = "Horde", SkipForLvl = 24 } },
     },
-    -- prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 2 }, [APR.PREFAB_TYPES.Speedrun] = { index = 2 } },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 4 } },
     parallelSteps = {
         {
             conditions = { ItemCount = { itemID = 2507, count = 1 }, EquippedItemStat = { { allowMissing = true, slot = 18, value = 7, precision = 1, stat = "QUALITY", operator = "<" }, { allowMissing = true, slot = 18, value = 5.77, precision = 2, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<" } }, MinLevel = 11, Class = "HUNTER", EquippedItem = { invert = true, itemID = 2507, slot = 18 }, Race = { "Orc", "Skyborne", "Troll" }, HasSpell = 264 },

@@ -10,6 +10,7 @@ APR.RouteQuestStepList["Forever-Alliance-Azshara"] = {
     mapID = 1447,
     conditions = { MinLevel = 53, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Un-Goro-Crater" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 34 } },
     parallelSteps = {
         {
             repeatable = true,

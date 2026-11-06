@@ -10,6 +10,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
     mapID = 1445,
     conditions = { MinLevel = 40, Race = { APR.RACES.Dwarf, APR.RACES.Human, APR.RACES.NightElf, APR.RACES.Skyborne }, Class = APR.Classes.Hunter, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Badlands" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 21 } },
     parallelSteps = {
         {
             repeatable = true,
@@ -970,6 +971,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh-Desolace"] = {
     mapID = 1437,
     conditions = { MinLevel = 40, Class = { APR.Classes.Druid, APR.Classes.Mage, APR.Classes.Paladin, APR.Classes.Priest, APR.Classes.Rogue, APR.Classes.Shaman, APR.Classes.Warlock, APR.Classes.Warrior }, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Desolace-Second-Visit" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 21 } },
     parallelSteps = {
         {
             repeatable = true,

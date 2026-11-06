@@ -10,6 +10,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
     mapID = 1441,
     conditions = { MinLevel = 28, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 9 } },
     parallelSteps = {
         {
             conditions = { EquippedItemStat = { { slot = 17, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 17, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 16.56, precision = 2, allowMissing = true } }, MinLevel = 29, ItemCount = { itemID = 2526, count = 1, includeBank = false }, EquippedItem = { slot = 17, itemID = 2526, invert = true }, Race = { "Orc", "Scourge", "Skyborne", "Troll" }, Class = "ROGUE" },
@@ -3031,6 +3032,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-Second-Visit"] = {
     mapID = 1441,
     conditions = { MinLevel = 33, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Desolace-First-Visit" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 11 } },
     parallelSteps = {
         {
             repeatable = true,

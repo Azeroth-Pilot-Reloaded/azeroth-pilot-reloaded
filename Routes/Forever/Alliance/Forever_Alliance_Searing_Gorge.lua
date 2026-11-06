@@ -10,6 +10,7 @@ APR.RouteQuestStepList["Forever-Alliance-Searing-Gorge"] = {
     mapID = 1427,
     conditions = { MinLevel = 50, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Blasted-Lands" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 29 } },
     parallelSteps = {
         {
             repeatable = true,

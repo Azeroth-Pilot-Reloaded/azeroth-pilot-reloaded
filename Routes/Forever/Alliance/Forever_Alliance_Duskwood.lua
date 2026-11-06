@@ -10,6 +10,7 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
     mapID = 1431,
     conditions = { MinLevel = 29, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Hillsbrad-Foothills" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 13 } },
     parallelSteps = {
         {
             repeatable = true,
@@ -1936,6 +1937,7 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
     mapID = 1431,
     conditions = { MinLevel = 24, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Wetlands-Hillsbrad-Foothills" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 10 } },
     parallelSteps = {
         {
             repeatable = true,

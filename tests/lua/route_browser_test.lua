@@ -203,10 +203,14 @@ print("Route browser: prefab priority, expansion/type/community/favorites, resum
 
 -- Forever navigation separates route families without changing expansion compatibility.
 APR.ClassName = "MAGE"
+APR.Level, APR.Faction = 1, "Horde"
+function APR:GetPlayerEffectiveLevel() return self.Level end
+function APR:GetPlayerParentMapID() return nil end
+function APR:IsDelveRoute() return false end
 function APR:GetGameVersion() return APR.GAME_VERSIONS.Forever end
 function APR:GetRouteSelectionExpansions() return {APR.EXPANSIONS.Forever, APR.EXPANSIONS.Custom} end
 APR.RouteQuestStepList = {
-    normal = {label = "Outdoor", expansion = APR.EXPANSIONS.Forever, prefab = {leveling = 1}},
+    normal = {label = "Outdoor", expansion = APR.EXPANSIONS.Forever, prefab = {leveling = 1, speedrun = {index = 1, endLevel = 60}}},
     dungeon = {label = "Instance", expansion = APR.EXPANSIONS.Forever, category = APR.CATEGORIES.Dungeons, prefab = {dungeons = 1}},
     ["Forever-MageAoE-Horde-Test"] = {label = "Mage route", expansion = APR.EXPANSIONS.Forever, prefab = {leveling = 1}},
 }

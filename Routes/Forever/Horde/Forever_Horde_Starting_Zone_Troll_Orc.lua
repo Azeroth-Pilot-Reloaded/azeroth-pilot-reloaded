@@ -16,7 +16,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         { route = "Forever-Shared-Dungeons-Hall-of-Thanes", conditions = { MinLevel = 13, Race = { APR.RACES.Orc, APR.RACES.Troll }, SkipForLvl = 19 } },
         { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, Race = { APR.RACES.Orc, APR.RACES.Troll }, SkipForLvl = 19 } },
     },
-    prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 1, conditions = { Faction = "Horde" } }, [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1 }, [APR.PREFAB_TYPES.StartingZone] = 1 },
+    prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 1, conditions = { Faction = "Horde" } }, [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1, conditions = { SkipForLvl = 12 } }, [APR.PREFAB_TYPES.StartingZone] = 1 },
     parallelSteps = {
         {
             conditions = {

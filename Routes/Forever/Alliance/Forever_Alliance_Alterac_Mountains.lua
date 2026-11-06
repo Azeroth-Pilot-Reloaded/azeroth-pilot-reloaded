@@ -10,6 +10,7 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
     mapID = 1417,
     conditions = { MinLevel = 39, Faction = "Alliance" },
     nextRoute = { { route = "Forever-Alliance-Dustwallow-Marsh-Desolace", conditions = { Class = { APR.Classes.Druid, APR.Classes.Mage, APR.Classes.Paladin, APR.Classes.Priest, APR.Classes.Rogue, APR.Classes.Shaman, APR.Classes.Warlock, APR.Classes.Warrior } } }, { route = "Forever-Alliance-Dustwallow-Marsh", conditions = { Race = { APR.RACES.Dwarf, APR.RACES.Human, APR.RACES.NightElf, APR.RACES.Skyborne }, Class = APR.Classes.Hunter } } },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 20 } },
     parallelSteps = {
         {
             repeatable = true,

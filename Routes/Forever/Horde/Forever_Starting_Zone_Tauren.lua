@@ -15,7 +15,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         { route = "Forever-Shared-Dungeons-Hall-of-Thanes", conditions = { MinLevel = 13, Faction = "Horde", Race = APR.RACES.Tauren, SkipForLvl = 19 } },
         { route = "Forever-Shared-Dungeons-Ragefire-Chasm", conditions = { MinLevel = 13, Faction = "Horde", Race = APR.RACES.Tauren, SkipForLvl = 19 } },
     },
-    prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 1, conditions = { Faction = "Horde" } }, [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1 }, [APR.PREFAB_TYPES.StartingZone] = 1 },
+    prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 1, conditions = { Faction = "Horde" } }, [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1, conditions = { SkipForLvl = 12 } }, [APR.PREFAB_TYPES.StartingZone] = 1 },
     parallelSteps = {
         {
             conditions = { ItemCount = { itemID = 2132, count = 1 }, EquippedItemStat = { { operator = "<", slot = 16, value = 7, precision = 1, stat = "QUALITY", allowMissing = true }, { operator = "<", slot = 16, value = 2.03, precision = 2, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", allowMissing = true } }, Class = "SHAMAN", EquippedItem = { itemID = 2132, invert = true, slot = 16 }, HasSpell = 227 },

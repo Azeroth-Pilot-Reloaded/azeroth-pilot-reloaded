@@ -264,7 +264,7 @@ class RouteSchemaTests(unittest.TestCase):
                  "parallelSteps": seq({"conditions": {"Class": 1}, "steps": seq({"Note": "Example"})}),
                  "requiredRoute": seq("previous"),
                  "nextRoute": seq("next", {"route": "branch", "conditions": {"Race": "Orc"}}),
-                 "prefab": {"leveling": 1, "speedrun": {"index": 2, "conditions": {"MinLevel": 10}}}}
+                 "prefab": {"leveling": 1, "speedrun": {"index": 2, "endLevel": 60, "conditions": {"MinLevel": 10}}}}
         self.assertEqual(set(route), set(self.schema.route_fields))
         self.schema.validate("test", route)
         for key in route:
@@ -272,6 +272,8 @@ class RouteSchemaTests(unittest.TestCase):
                 self.schema.validate("test", {**route, key: None})
         for patch in ({"extRoute": {}}, {"conditions": {"Not": {"HasSpell": 1}}},
                       {"prefab": {"leveling": {"index": 1, "conditons": {}}}},
+                      {"prefab": {"speedrun": {"index": 1, "endLevel": 0}}},
+                      {"prefab": {"speedrun": {"index": 1, "endLevel": "60"}}},
                       {"scenarios": seq({"scenarioID": 1, "steps": seq({"Unknown": True})})},
                       {"nextRoute": seq({"route": "next", "conditions": {"Done": seq(1)}})}):
             with self.subTest(patch=patch), self.assertRaises(InvalidRoute):

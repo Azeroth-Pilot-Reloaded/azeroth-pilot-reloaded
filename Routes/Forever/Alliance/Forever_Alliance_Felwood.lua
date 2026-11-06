@@ -10,6 +10,7 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
     mapID = 1448,
     conditions = { MinLevel = 52, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Feralas-Second-Visit" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 32 } },
     parallelSteps = {
         {
             repeatable = true,
@@ -1206,6 +1207,7 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
     mapID = 1448,
     conditions = { MinLevel = 54, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Burning-Steppes" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 36 } },
     parallelSteps = {
         {
             repeatable = true,

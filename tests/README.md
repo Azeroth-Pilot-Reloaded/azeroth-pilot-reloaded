@@ -86,6 +86,14 @@ The Forever compatibility command reuses the common route suite.
 
 `route_prefab_test_env.lua` supplies invented guides for prefab ordering,
 character eligibility, future chapters, popup scope and label/progress tests.
+`speedrun_prefab_test.lua` invokes the real browser button with invented Forever
+graphs. It checks ranked successor selection with fallback from dead ends,
+strict character/spec/quest predicates, future entry levels, prerequisite gates,
+completed/partial progress, cyclic or incomplete chains, atomic refusal and the
+unchanged Retail builder. Forever Speedrun metadata ranks successors by `index`;
+`endLevel` explicitly declares an authored terminal milestone. Recommended
+`levelRange` remains display-only and cannot certify a complete plan. These
+priorities describe the authored fast path, not measured completion times.
 `route_character_recommendations_test.lua` covers manual Forever entry with race
 and class advice, live warnings and confirmation, strict factions/starters/Mage
 AoE, nested predicates, localized label fallbacks and unchanged step filters.

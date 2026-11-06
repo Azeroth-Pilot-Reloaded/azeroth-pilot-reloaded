@@ -3,13 +3,14 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
     label = L["Forever - Horde - Swamp of Sorrows (First Visit)"],
     legacyLabels = { L["Forever - Horde - Swamp of Sorrows (First Visit)"] .. " (41-400)" },
-    levelRange = { min = 41, max = 400 },
+    levelRange = { min = 41, max = 41 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
     mapID = 1435,
     conditions = { MinLevel = 41, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Desolace-Second-Visit" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 18 } },
     parallelSteps = {
         {
             repeatable = true,
@@ -1046,6 +1047,7 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-Second-Visit"] = {
     mapID = 1435,
     conditions = { MinLevel = 45, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Tanaris-Second-Visit" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 23 } },
     parallelSteps = {
         {
             repeatable = true,

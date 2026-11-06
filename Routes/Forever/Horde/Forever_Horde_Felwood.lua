@@ -10,6 +10,7 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
     mapID = 1448,
     conditions = { MinLevel = 53, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Un-Goro-Crater" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 30 } },
     parallelSteps = {
         {
             repeatable = true,
@@ -864,6 +865,7 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
     mapID = 1448,
     conditions = { MinLevel = 55, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Western-Plaguelands" },
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 32 } },
     parallelSteps = {
         {
             repeatable = true,

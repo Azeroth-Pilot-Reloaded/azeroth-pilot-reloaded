@@ -15,7 +15,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         { route = "Forever-Alliance-Dungeons-Loch-Modan-Hunter", conditions = { MinLevel = 11, Faction = "Alliance", Race = APR.RACES.Dwarf, Class = APR.Classes.Hunter, SkipForLvl = 14 } },
         { route = "Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome", conditions = { MinLevel = 11, Faction = "Alliance", Race = { APR.RACES.Dwarf, APR.RACES.Gnome }, Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock }, SkipForLvl = 13 } },
     },
-    prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 1 }, [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1 }, [APR.PREFAB_TYPES.StartingZone] = 1 },
+    prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 1 }, [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1, conditions = { SkipForLvl = 11 } }, [APR.PREFAB_TYPES.StartingZone] = 1 },
     parallelSteps = {
         {
             conditions = { ItemCount = { itemID = 2946, count = 1 }, EquippedItemStat = { allowMissing = true, slot = 18, value = 3, precision = 1, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<" }, Class = "ROGUE", EquippedItem = { invert = true, itemID = 2946, slot = 18 }, MinLevel = 3 },

@@ -20,6 +20,7 @@ dofile("APR-Core/config/Config_Route_Prefabs.lua")
 local env = { gameVersion = APR.GAME_VERSIONS.Forever }
 function APR:GetGameVersion() return env.gameVersion end
 function APR:GetPlayerEffectiveLevel() return self.Level end
+function APR:GetPlayerParentMapID() return nil end
 function APR:IsDelveRoute() return false end
 function UnitFactionGroup() return APR.Faction end
 function APR.routeconfig:SendCustomPathUpdate() end

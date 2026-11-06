@@ -16,8 +16,8 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Alliance", SkipForLvl = 26 } },
         { route = "Forever-Shared-Dungeons-Deadmines", conditions = { MinLevel = 18, Faction = "Alliance", SkipForLvl = 24 } },
     },
-    -- prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 16 }, [APR.PREFAB_TYPES.Speedrun] = { index = 16 } },
     -- Darkshore quest, transport and level safeguards.
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 5 } },
     parallelSteps = {
         {
             conditions = { EquippedItemStat = { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 7.1, precision = 1, allowMissing = true }, IsQuestCompleted = 4811, ItemCount = { itemID = 15397, count = 1 }, EquippedItem = { slot = 16, itemID = 15397, invert = true }, Class = { "DRUID", "WARRIOR" } },
@@ -8061,13 +8061,13 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore-Ashenvale"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 1439,
     conditions = { MinLevel = 20, Class = { APR.Classes.Druid, APR.Classes.Mage, APR.Classes.Paladin, APR.Classes.Priest, APR.Classes.Rogue, APR.Classes.Shaman, APR.Classes.Warlock, APR.Classes.Warrior }, Faction = "Alliance" },
-    -- prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 20 }, [APR.PREFAB_TYPES.Speedrun] = { index = 20 } },
     nextRoute = {
         "Forever-Alliance-Stonetalon-Ashenvale",
         { route = "Forever-Shared-Dungeons-Wailing-Caverns", conditions = { MinLevel = 17, Faction = "Alliance", Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock, APR.Classes.Druid }, SkipForLvl = 26 } },
         { route = "Forever-Shared-Dungeons-Deadmines", conditions = { MinLevel = 18, Faction = "Alliance", Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Shaman, APR.Classes.Mage, APR.Classes.Warlock, APR.Classes.Druid }, SkipForLvl = 24 } },
     },
     -- Darkshore quest, transport and level safeguards.
+    prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 7 } },
     parallelSteps = {
         {
             repeatable = true,
