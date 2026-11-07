@@ -2503,7 +2503,7 @@ APR.RouteQuestStepList["51-SwampofSorrows"] = {
             Coord = { x = -4177.3, y = -10169 },
             Range = 118.27,
             Gossip = 1,
-            RaidIcon = 46245,
+            RaidIcon = { { npcID = 46245 } },
             _index = 17,
         },
         {
@@ -3776,7 +3776,7 @@ APR.RouteQuestStepList["36-BurningSteppes"] = {
             Coord = { x = -1896.6, y = -7957.9 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 48001,
+            RaidIcon = { { npcID = 48001, questID = 28202, objectiveIndex = 1 } },
             _index = 28,
         },
         {
@@ -3841,7 +3841,7 @@ APR.RouteQuestStepList["36-BurningSteppes"] = {
             Coord = { x = -1699.8, y = -8164.3 },
             Range = 0.61,
             Button = { ["28246-2"] = 63350 },
-            RaidIcon = 48099,
+            RaidIcon = { { npcID = 48099 } },
             _index = 39,
         },
         {
@@ -3979,14 +3979,14 @@ APR.RouteQuestStepList["36-BurningSteppes"] = {
             Fillers = { [28415] = { 1 } },
             Coord = { x = -2520, y = -8390.2 },
             Range = 67.71,
-            RaidIcon = 48671,
+            RaidIcon = { { npcID = 48671 } },
             _index = 64,
         },
         {
             Qpart = { [28415] = { 1 } },
             Coord = { x = -2491.4, y = -8300.7 },
             Range = 103.1,
-            RaidIcon = 48671,
+            RaidIcon = { { npcID = 48671, questID = 28415, objectiveIndex = 1 } },
             _index = 65,
         },
         {
@@ -5104,7 +5104,7 @@ APR.RouteQuestStepList["48-LochModan"] = {
             Qpart = { [27035] = { 1 } },
             Coord = { x = -3387.7, y = -4924.4 },
             Range = 0.69,
-            RaidIcon = 44724,
+            RaidIcon = { { npcID = 44724, questID = 27035, objectiveIndex = 1 } },
             _index = 137,
         },
         {
@@ -5976,7 +5976,7 @@ APR.RouteQuestStepList["14-ArathiHighlands"] = {
             Qpart = { [26116] = { 1 } },
             Coord = { x = -3070.4, y = -1402.5 },
             Range = 185.95,
-            RaidIcon = 2713,
+            RaidIcon = { { npcID = 2713, questID = 26116, objectiveIndex = 1 } },
             _index = 20,
         },
         {
@@ -6134,7 +6134,7 @@ APR.RouteQuestStepList["14-ArathiHighlands"] = {
             Qpart = { [26050] = { 1 } },
             Coord = { x = -2106, y = -2069 },
             Range = 60.85,
-            RaidIcon = 2768,
+            RaidIcon = { { npcID = 2768, questID = 26050, objectiveIndex = 1 } },
             _index = 48,
         },
         {
@@ -6217,7 +6217,7 @@ APR.RouteQuestStepList["14-ArathiHighlands"] = {
             Qpart = { [26042] = { 1 } },
             Coord = { x = -2645.7, y = -1696 },
             Range = 0.75,
-            RaidIcon = 2611,
+            RaidIcon = { { npcID = 2611, questID = 26042, objectiveIndex = 1 } },
             _index = 63,
         },
         {
@@ -6230,7 +6230,7 @@ APR.RouteQuestStepList["14-ArathiHighlands"] = {
             Qpart = { [26036] = { 1 } },
             Coord = { x = -2836.7, y = -2096.9 },
             Range = 0.61,
-            RaidIcon = 2793,
+            RaidIcon = { { npcID = 2793, questID = 26036, objectiveIndex = 1 } },
             _index = 65,
         },
         {
@@ -6299,7 +6299,7 @@ APR.RouteQuestStepList["14-ArathiHighlands"] = {
             Qpart = { [26037] = { 1 } },
             Coord = { x = -1582.8, y = -1746 },
             Range = 65.15,
-            RaidIcon = 2570,
+            RaidIcon = { { npcID = 2570, questID = 26037, objectiveIndex = 1 } },
             _index = 77,
         },
         {
@@ -11144,7 +11144,7 @@ APR.RouteQuestStepList["15-Badlands"] = {
             Coord = { x = -3874.5, y = -6608 },
             Range = 46.7,
             Button = { ["27776-1"] = 62397 },
-            RaidIcon = 46393,
+            RaidIcon = { { npcID = 46393, questID = 27776, objectiveIndex = 1 } },
             _index = 7,
         },
         {
@@ -11793,7 +11793,7 @@ APR.RouteQuestStepList["32-SearingGorge"] = {
             Fillers = { [27956] = { 1 }, [27960] = { 1 } },
             Coord = { x = -1707.9, y = -6996.4 },
             Range = 36.94,
-            RaidIcon = 47270,
+            RaidIcon = { { npcID = 47270 } },
             _index = 2,
         },
         {
@@ -12233,7 +12233,7 @@ APR.RouteQuestStepList["32-SearingGorge"] = {
             Qpart = { [28052] = { 1 } },
             Coord = { x = -1168.9, y = -6557.9 },
             Range = 0.61,
-            RaidIcon = 2941,
+            RaidIcon = { { npcID = 2941, questID = 28052, objectiveIndex = 1 } },
             _index = 77,
         },
         {
@@ -12698,7 +12698,7 @@ APR.RouteQuestStepList["224-NorthernStranglethorn"] = {
             Qpart = { [188] = { 1 } },
             Coord = { x = 165.6, y = -11911.3 },
             Range = 0.69,
-            RaidIcon = 729,
+            RaidIcon = { { npcID = 729, questID = 188, objectiveIndex = 1 } },
             _index = 51,
         },
         {
@@ -12852,7 +12852,7 @@ APR.RouteQuestStepList["224-NorthernStranglethorn"] = {
             Fillers = { [192] = { 1 } },
             Coord = { x = -804.7, y = -12586.3 },
             Range = 69.82,
-            RaidIcon = 730,
+            RaidIcon = { { npcID = 730 } },
             _index = 79,
         },
         {
@@ -12875,7 +12875,7 @@ APR.RouteQuestStepList["224-NorthernStranglethorn"] = {
             Qpart = { [193] = { 1 } },
             Coord = { x = -959.8, y = -12263 },
             Range = 38.53,
-            RaidIcon = 728,
+            RaidIcon = { { npcID = 728, questID = 193, objectiveIndex = 1 } },
             _index = 83,
         },
         {
@@ -12910,7 +12910,7 @@ APR.RouteQuestStepList["224-NorthernStranglethorn"] = {
             Qpart = { [26781] = { 1 } },
             Coord = { x = -1153.5, y = -12348 },
             Range = 0.69,
-            RaidIcon = 818,
+            RaidIcon = { { npcID = 818, questID = 26781, objectiveIndex = 1 } },
             _index = 89,
         },
         {
@@ -13019,7 +13019,7 @@ APR.RouteQuestStepList["224-NorthernStranglethorn"] = {
             Qpart = { [208] = { 1 } },
             Coord = { x = -210, y = -12604.5 },
             Range = 0.69,
-            RaidIcon = 731,
+            RaidIcon = { { npcID = 731, questID = 208, objectiveIndex = 1 } },
             _index = 108,
         },
         {
@@ -13153,7 +13153,7 @@ APR.RouteQuestStepList["224-NorthernStranglethorn"] = {
             Coord = { x = -446.8, y = -12841.2 },
             Range = 0.61,
             Gossip = 1,
-            RaidIcon = 44017,
+            RaidIcon = { { npcID = 44017, questID = 26775, objectiveIndex = 1 } },
             _index = 132,
         },
         {
@@ -13600,7 +13600,7 @@ APR.RouteQuestStepList["224-TheCapeofStranglethorn"] = {
             Qpart = { [26599] = { 1 } },
             Coord = { x = -168.5, y = -14054.5 },
             Range = 0.69,
-            RaidIcon = 1492,
+            RaidIcon = { { npcID = 1492, questID = 26599, objectiveIndex = 1 } },
             _index = 69,
         },
         {
@@ -13649,7 +13649,7 @@ APR.RouteQuestStepList["224-TheCapeofStranglethorn"] = {
             Qpart = { [26606] = { 1 } },
             Coord = { x = -382.8, y = -14699.5 },
             Range = 0.61,
-            RaidIcon = 1559,
+            RaidIcon = { { npcID = 1559, questID = 26606, objectiveIndex = 1 } },
             _index = 78,
         },
         {
@@ -13695,7 +13695,7 @@ APR.RouteQuestStepList["224-TheCapeofStranglethorn"] = {
             Qpart = { [26600] = { 1 } },
             Coord = { x = 420.1, y = -14331.3 },
             Range = 0.75,
-            RaidIcon = 2664,
+            RaidIcon = { { npcID = 2664, questID = 26600, objectiveIndex = 1 } },
             _index = 86,
         },
         {
@@ -13722,7 +13722,7 @@ APR.RouteQuestStepList["224-TheCapeofStranglethorn"] = {
             Qpart = { [26600] = { 2 } },
             Coord = { x = 491.6, y = -14462.5 },
             Range = 0.75,
-            RaidIcon = 2491,
+            RaidIcon = { { npcID = 2491, questID = 26600, objectiveIndex = 2 } },
             _index = 91,
         },
         {
@@ -13812,7 +13812,7 @@ APR.RouteQuestStepList["224-TheCapeofStranglethorn"] = {
             Coord = { x = -98.9, y = -13875.8 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 43377,
+            RaidIcon = { { npcID = 43377, questID = 26595, objectiveIndex = 3 } },
             _index = 107,
         },
         {
@@ -13957,7 +13957,7 @@ APR.RouteQuestStepList["224-TheCapeofStranglethorn"] = {
             Coord = { x = 425, y = -14335.7 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 2663,
+            RaidIcon = { { npcID = 2663, questID = 26630, objectiveIndex = 2 } },
             _index = 132,
         },
         {
@@ -14084,7 +14084,7 @@ APR.RouteQuestStepList["224-TheCapeofStranglethorn"] = {
             Coord = { x = 297, y = -14875.3 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 43605,
+            RaidIcon = { { npcID = 43605, questID = 26649, objectiveIndex = 1 } },
             _index = 155,
         },
         {
@@ -14124,7 +14124,7 @@ APR.RouteQuestStepList["224-TheCapeofStranglethorn"] = {
             Fillers = { [26664] = { 1 } },
             Coord = { x = 85.8, y = -14921 },
             Range = 0.69,
-            RaidIcon = 43659,
+            RaidIcon = { { npcID = 43659 } },
             _index = 162,
         },
         {
@@ -14287,7 +14287,7 @@ APR.RouteQuestStepList["224-TheCapeofStranglethorn"] = {
             Qpart = { [26697] = { 1, 2 } },
             Coord = { x = 514.2, y = -14448.8 },
             Range = 0.61,
-            RaidIcon = 737,
+            RaidIcon = { { npcID = 737 } },
             _index = 190,
         },
         {
@@ -14304,14 +14304,14 @@ APR.RouteQuestStepList["224-TheCapeofStranglethorn"] = {
             Waypoint = 26703,
             Coord = { x = 514.7, y = -14449 },
             Range = 52.45,
-            RaidIcon = 737,
+            RaidIcon = { { npcID = 737 } },
             _index = 193,
         },
         {
             Qpart = { [26703] = { 1 } },
             Coord = { x = 700.9, y = -14272 },
             Range = 0.69,
-            RaidIcon = 2546,
+            RaidIcon = { { npcID = 2546, questID = 26703, objectiveIndex = 1 } },
             _index = 194,
         },
         {

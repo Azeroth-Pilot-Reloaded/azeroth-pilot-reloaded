@@ -923,7 +923,7 @@ APR.RouteQuestStepList["179-Gilneas"] = {
         {
             Done = { 24677 },
             Coord = { x = 977.2, y = -2041.5 },
-            RaidIcon = 38764,
+            RaidIcon = { { npcID = 38764, questID = 24677 } },
             _index = 169,
         },
         {
@@ -1027,7 +1027,7 @@ APR.RouteQuestStepList["179-Gilneas"] = {
             Qpart = { [24902] = { 1 } },
             Coord = { x = 1562.4, y = -1561.5 },
             Range = 68.01,
-            RaidIcon = 38507,
+            RaidIcon = { { npcID = 38507, questID = 24902, objectiveIndex = 1 } },
             _index = 187,
         },
         {
@@ -1054,7 +1054,7 @@ APR.RouteQuestStepList["179-Gilneas"] = {
             Qpart = { [24920] = { 1, 2 } },
             Coord = { x = 1664.7, y = -1667 },
             Range = 348.88,
-            RaidIcon = 38615,
+            RaidIcon = { { npcID = 38615 } },
             _index = 192,
         },
         {
@@ -1136,7 +1136,7 @@ APR.RouteQuestStepList["179-Gilneas"] = {
             Qpart = { [24681] = { 1, 3, 2 } },
             Coord = { x = 2559.3, y = -1048.6 },
             Range = 281.66,
-            RaidIcon = 38150,
+            RaidIcon = { { npcID = 38150 } },
             _index = 207,
         },
         {

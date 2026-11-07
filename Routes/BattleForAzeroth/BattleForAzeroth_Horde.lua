@@ -20,7 +20,7 @@ APR.RouteQuestStepList["85-BFA-Orgrimmar"] = {
             PickUpDB = { 51443, 60361 },
             Coord = { x = -4215.9, y = 1558.2 },
             Gossip = 1,
-            RaidIcon = 167032,
+            RaidIcon = { { npcID = 167032, questID = 51443 } },
             _index = 1,
         },
         {
@@ -577,7 +577,7 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
             Qpart = { [46957] = { 1 } },
             Coord = { x = 803.7, y = -1808.7 },
             Range = 90.35,
-            RaidIcon = 132661,
+            RaidIcon = { { npcID = 132661, questID = 46957, objectiveIndex = 1 } },
             _index = 3,
         },
         {
@@ -7318,7 +7318,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             Waypoint = 48889,
             Coord = { x = 3107.4, y = 741.4 },
             Range = 6.95,
-            RaidIcon = 127989,
+            RaidIcon = { { npcID = 127989 } },
             _index = 102,
         },
         {
@@ -7386,7 +7386,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             Done = { 47874 },
             Coord = { x = 3093.1, y = 284.8 },
             ETA = 53,
-            RaidIcon = 130667,
+            RaidIcon = { { npcID = 130667, questID = 47874 } },
             _index = 114,
         },
         {
@@ -8439,7 +8439,7 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
             Coord = { x = 3769.6, y = 2792.9 },
             Range = 16.48,
             ETA = 79,
-            RaidIcon = 135172,
+            RaidIcon = { { npcID = 135172 } },
             SpecialETAHide = true,
             _index = 292,
         },
@@ -9000,7 +9000,7 @@ APR.RouteQuestStepList["1165-Zandalari-intro"] = {
         {
             Qpart = { [55138] = { 1 } },
             Coord = { x = -4214.7, y = 1556.9 },
-            RaidIcon = 167032,
+            RaidIcon = { { npcID = 167032, questID = 55138, objectiveIndex = 1 } },
             Zone = 85,
             _index = 5,
         },
@@ -9112,7 +9112,7 @@ APR.RouteQuestStepList["85-Vulpera-intro"] = {
         {
             Qpart = { [58124] = { 1 } },
             Coord = { x = -4214.2, y = 1557 },
-            RaidIcon = 167032,
+            RaidIcon = { { npcID = 167032, questID = 58124, objectiveIndex = 1 } },
             Zone = 85,
             _index = 13,
         },
@@ -9231,7 +9231,7 @@ APR.RouteQuestStepList["85-MagharOrc-intro"] = {
         {
             Qpart = { [53502] = { 1 } },
             Coord = { x = -4214, y = 1556.8 },
-            RaidIcon = 167032,
+            RaidIcon = { { npcID = 167032, questID = 53502, objectiveIndex = 1 } },
             Zone = 85,
             _index = 14,
         },

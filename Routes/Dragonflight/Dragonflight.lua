@@ -133,7 +133,7 @@ APR.RouteQuestStepList["2022-DF03N-WakingShores"] = {
             ExtraLineText = "KILL_DRAGONHUNTER_IGORDAN_BONUS_OBJECTIVE",
             Coord = { x = -467.5, y = 3621.8 },
             Range = 20,
-            RaidIcon = 191611,
+            RaidIcon = { { npcID = 191611 } },
             _index = 19,
         },
         {
@@ -157,7 +157,7 @@ APR.RouteQuestStepList["2022-DF03N-WakingShores"] = {
             Fillers = { [65994] = { 1 } },
             Coord = { x = -365.5, y = 3807.2 },
             Range = 20,
-            RaidIcon = 186777,
+            RaidIcon = { { npcID = 186777 } },
             _index = 22,
         },
         {
@@ -297,7 +297,7 @@ APR.RouteQuestStepList["2022-DF03N-WakingShores"] = {
             ExtraLineText = "KILL_FIRAVA_REKINDLER_RESPAWNS_WITHIN_A_MINUTE_WANDERS_AROUND_THE_AREA",
             Coord = { x = 154.9, y = 4075.9 },
             Range = 25,
-            RaidIcon = 195915,
+            RaidIcon = { { npcID = 195915 } },
             _index = 43,
         },
         {
@@ -345,7 +345,7 @@ APR.RouteQuestStepList["2022-DF03N-WakingShores"] = {
             Coord = { x = 166.6, y = 4199.5 },
             Range = 10,
             Gossip = 1,
-            RaidIcon = 190269,
+            RaidIcon = { { npcID = 190269, questID = 66001, objectiveIndex = 1 } },
             _index = 50,
         },
         {
@@ -403,7 +403,7 @@ APR.RouteQuestStepList["2022-DF03N-WakingShores"] = {
             Coord = { x = -319, y = 1488 },
             Range = 5,
             Gossip = 1,
-            RaidIcon = 107094,
+            RaidIcon = { { npcID = 107094, questID = 66114, objectiveIndex = 2 } },
             _index = 59,
         },
         {
@@ -1129,7 +1129,7 @@ APR.RouteQuestStepList["2022-DF03N-WakingShores"] = {
             Range = 2,
             GossipOptionIDs = { 55311 },
             Gossip = 1,
-            RaidIcon = 186331,
+            RaidIcon = { { npcID = 186331 } },
             _index = 176,
         },
         {
@@ -1139,7 +1139,7 @@ APR.RouteQuestStepList["2022-DF03N-WakingShores"] = {
             Coord = { x = 1235.7, y = 1809.5 },
             Range = 2,
             Gossip = 1,
-            RaidIcon = 186493,
+            RaidIcon = { { npcID = 186493 } },
             _index = 177,
         },
         {
@@ -1158,7 +1158,7 @@ APR.RouteQuestStepList["2022-DF03N-WakingShores"] = {
             Range = 2,
             GossipOptionIDs = { 55307 },
             Gossip = 1,
-            RaidIcon = 187466,
+            RaidIcon = { { npcID = 187466 } },
             _index = 179,
         },
         {
@@ -1177,7 +1177,7 @@ APR.RouteQuestStepList["2022-DF03N-WakingShores"] = {
             Range = 2,
             GossipOptionIDs = { 54996 },
             Gossip = 1,
-            RaidIcon = 189507,
+            RaidIcon = { { npcID = 189507 } },
             _index = 181,
         },
         {
@@ -1305,7 +1305,7 @@ APR.RouteQuestStepList["2022-DF03N-WakingShores"] = {
             Fillers = { [65939] = { 3 } },
             Coord = { x = 2506.7, y = 2329.3 },
             Range = 5,
-            RaidIcon = 186592,
+            RaidIcon = { { npcID = 186592 } },
             _index = 199,
         },
         {
@@ -2392,7 +2392,7 @@ APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
             ExtraLineText = "PATROLS_AROUND_AREA",
             Coord = { x = 4139.1, y = -1968.8 },
             Range = 75,
-            RaidIcon = 191145,
+            RaidIcon = { { npcID = 191145, questID = 69936, objectiveIndex = 1 } },
             _index = 129,
         },
         {
@@ -2411,7 +2411,7 @@ APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
             Coord = { x = 4467, y = -2061.5 },
             Range = 10,
             Button = { ["66656-1"] = 194447 },
-            RaidIcon = 192224,
+            RaidIcon = { { npcID = 192224, questID = 66656, objectiveIndex = 1 } },
             _index = 132,
         },
         {
@@ -2420,7 +2420,7 @@ APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
             Coord = { x = 4467.4, y = -2169.4 },
             Range = 28,
             Button = { ["66656-2"] = 194447 },
-            RaidIcon = 192223,
+            RaidIcon = { { npcID = 192223, questID = 66656, objectiveIndex = 2 } },
             _index = 133,
         },
         {
@@ -2429,7 +2429,7 @@ APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
             Coord = { x = 4310.4, y = -2203.1 },
             Range = 33,
             Button = { ["66656-4"] = 194447 },
-            RaidIcon = 192225,
+            RaidIcon = { { npcID = 192225, questID = 66656, objectiveIndex = 4 } },
             _index = 134,
         },
         {
@@ -2438,7 +2438,7 @@ APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
             Coord = { x = 4369.8, y = -2154 },
             Range = 40,
             Button = { ["66656-3"] = 194447 },
-            RaidIcon = 192226,
+            RaidIcon = { { npcID = 192226, questID = 66656, objectiveIndex = 3 } },
             _index = 135,
         },
         {
@@ -2808,7 +2808,7 @@ APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
             ExtraLineText = "KILL_PROZELA_GALESHOT_BONUS_OBJECTIVE",
             Coord = { x = 2292.6, y = -1955.3 },
             Range = 10,
-            RaidIcon = 193669,
+            RaidIcon = { { npcID = 193669 } },
             _index = 195,
         },
         {
@@ -2929,7 +2929,7 @@ APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
             Qpart = { [70244] = { 2 } },
             Coord = { x = 1054, y = -641.7 },
             Range = 5,
-            RaidIcon = 190932,
+            RaidIcon = { { npcID = 190932, questID = 70244, objectiveIndex = 2 } },
             _index = 214,
         },
         {
@@ -4113,7 +4113,7 @@ APR.RouteQuestStepList["2024-DF05-AzureSpan"] = {
             ExtraLineText = "BONUS_OBJECTIVE_THIEVING_GNOLLS",
             Coord = { x = 1485, y = -3283.1 },
             Range = 20,
-            RaidIcon = 192749,
+            RaidIcon = { { npcID = 192749, questID = 67173, objectiveIndex = 1 } },
             _index = 111,
         },
         {
@@ -4623,7 +4623,7 @@ APR.RouteQuestStepList["2024-DF05-AzureSpan"] = {
             ExtraLineText = "TALK_DRAKE_SCHOLAR",
             Coord = { x = 4085.9, y = -4456.5 },
             Range = 2,
-            RaidIcon = 196544,
+            RaidIcon = { { npcID = 196544, questID = 72435, objectiveIndex = 4 } },
             _index = 198,
         },
         {
@@ -4631,7 +4631,7 @@ APR.RouteQuestStepList["2024-DF05-AzureSpan"] = {
             ExtraLineText = "TALK_EQUIPMENT_SUPPLIER",
             Coord = { x = 4059.1, y = -4448.8 },
             Range = 2,
-            RaidIcon = 186449,
+            RaidIcon = { { npcID = 186449, questID = 72435, objectiveIndex = 1 } },
             _index = 199,
         },
         {
@@ -4639,7 +4639,7 @@ APR.RouteQuestStepList["2024-DF05-AzureSpan"] = {
             ExtraLineText = "TALK_MOUNT_SUPPLIER",
             Coord = { x = 4057.3, y = -4470.5 },
             Range = 2,
-            RaidIcon = 186462,
+            RaidIcon = { { npcID = 186462, questID = 72435, objectiveIndex = 3 } },
             _index = 200,
         },
         {
@@ -4669,7 +4669,7 @@ APR.RouteQuestStepList["2024-DF05-AzureSpan"] = {
             ExtraLineText = "TALK_RECIPE_SUPPLIER",
             Coord = { x = 3979.5, y = -4561.8 },
             Range = 2,
-            RaidIcon = 194059,
+            RaidIcon = { { npcID = 194059, questID = 72435, objectiveIndex = 2 } },
             _index = 204,
         },
         {
@@ -4770,7 +4770,7 @@ APR.RouteQuestStepList["2024-DF05-AzureSpan"] = {
             Coord = { x = 3985.6, y = -4518.6 },
             Range = 2,
             Gossip = 1,
-            RaidIcon = 193637,
+            RaidIcon = { { npcID = 193637, questID = 66223, objectiveIndex = 1 } },
             _index = 220,
         },
         {
@@ -5267,7 +5267,7 @@ APR.RouteQuestStepList["2024-DF05-AzureSpan"] = {
             ExtraLineText = "KILL_SNOLL_ICEBREAKER",
             Coord = { x = -804.1, y = -4200.2 },
             Range = 40,
-            RaidIcon = 190384,
+            RaidIcon = { { npcID = 190384 } },
             _index = 305,
         },
         {
@@ -5623,7 +5623,7 @@ APR.RouteQuestStepList["2118-DracthyrStart-Other"] = {
         {
             Done = { 84424, 84424 },
             Coord = { x = -4216.6, y = 1557.6 },
-            RaidIcon = 167032,
+            RaidIcon = { { npcID = 167032, questID = 84424 } },
             Faction = "Horde",
             Zone = 85,
             _index = 3,
@@ -5631,7 +5631,7 @@ APR.RouteQuestStepList["2118-DracthyrStart-Other"] = {
         {
             Done = { 84424 },
             Coord = { x = 745.8, y = -8196.4 },
-            RaidIcon = 167032,
+            RaidIcon = { { npcID = 167032, questID = 84424 } },
             Faction = "Alliance",
             Zone = 84,
             _index = 4,
@@ -5665,7 +5665,7 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
             ExtraLineText = "INTERACT_WITH_KODETHI",
             Range = 2,
             NoArrow = true,
-            RaidIcon = 187223,
+            RaidIcon = { { npcID = 187223, questID = 64864, objectiveIndex = 1 } },
             Faction = "Horde",
             _index = 2,
         },
@@ -5674,7 +5674,7 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
             ExtraLineText = "INTERACT_WITH_DERVISHIAN",
             Range = 2,
             NoArrow = true,
-            RaidIcon = 181494,
+            RaidIcon = { { npcID = 181494, questID = 64864, objectiveIndex = 1 } },
             Faction = "Alliance",
             _index = 3,
         },
@@ -5683,7 +5683,7 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
             ExtraLineText = "JUMP_DOWN_AND_INTERACT_WITH_TETHALASH",
             Coord = { x = -3038.7, y = 5779.8 },
             Range = 1,
-            RaidIcon = 181680,
+            RaidIcon = { { npcID = 181680, questID = 64864, objectiveIndex = 3 } },
             _index = 4,
         },
         {
@@ -5716,7 +5716,7 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
             ExtraLineText = "INTERACT_WITH_AZURATHEL",
             Coord = { x = -2905.9, y = 5800.2 },
             Range = 1,
-            RaidIcon = 183380,
+            RaidIcon = { { npcID = 183380, questID = 64864, objectiveIndex = 4 } },
             _index = 9,
         },
         {
@@ -6568,7 +6568,7 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
         {
             PickUp = { 65437 },
             Coord = { x = -4272.7, y = 2046.8 },
-            RaidIcon = 190239,
+            RaidIcon = { { npcID = 190239, questID = 65437 } },
             Faction = "Horde",
             Zone = 85,
             _index = 139,
@@ -6578,7 +6578,7 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
             Coord = { x = -4272.7, y = 2046.8 },
             Range = 1,
             Gossip = 1,
-            RaidIcon = 190239,
+            RaidIcon = { { npcID = 190239, questID = 65437, objectiveIndex = 1 } },
             Faction = "Horde",
             Zone = 85,
             _index = 140,

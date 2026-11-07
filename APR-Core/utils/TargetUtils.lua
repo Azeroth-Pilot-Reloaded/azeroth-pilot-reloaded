@@ -16,6 +16,13 @@ APR.GetTargetID = APRTrace("APR-Core/utils/TargetUtils.lua:11:APR:GetTargetID#1"
 
 local inaccessibleDenyNPCGUID = {}
 
+local function RaidIconTargetIndex(targets, id)
+    for index, candidate in ipairs(targets) do
+        if candidate == id then return index end
+    end
+end--[[APR_DIAG]]
+RaidIconTargetIndex = APRTrace("APR-Core/utils/TargetUtils.lua:19:RaidIconTargetIndex#1003", RaidIconTargetIndex)--[[/APR_DIAG]]
+
 local function GetDenyNPCProfile(self)
     local profile = self:GetSettingsProfile()
     if
@@ -225,6 +232,8 @@ function APR:ScanUnitForNPC(unit, source)
     local current = self.GetCurrentStep and self:GetCurrentStep()
     if current and current.KillNPC and current.KillNPC.npcID == npcID then
         if self.event and self.event.QueueStepRefresh then self.event:QueueStepRefresh() end
+    end
+    if RaidIconTargetIndex(self:NormalizeRaidIconTargets(self:GetStepRaidIconTargets(current)), npcID) then
         if self.currentStep and self.currentStep.UpdateRaidIconButtonMacro then
             self.currentStep:UpdateRaidIconButtonMacro()
         end
@@ -273,6 +282,45 @@ function APR:RememberNPCName(npcID, name)
     return changed
 end--[[APR_DIAG]]
 APR.RememberNPCName = APRTrace("APR-Core/utils/TargetUtils.lua:201:APR:RememberNPCName#15", APR.RememberNPCName)--[[/APR_DIAG]]
+
+local function IsRaidIconID(value)
+    return type(value) == "number" and value > 0 and value < math.huge and value % 1 == 0
+end--[[APR_DIAG]]
+IsRaidIconID = APRTrace("APR-Core/utils/TargetUtils.lua:285:IsRaidIconID#1018", IsRaidIconID)--[[/APR_DIAG]]
+
+-- Parse once at the route/UI boundary; never mutate the authored list.
+function APR:NormalizeRaidIconTargets(value)
+    if IsRaidIconID(value) then return { value } end
+    if type(value) ~= "table" then return {} end
+    if value.npcID then value = { value } end
+    local result, seen, count = {}, {}, 0
+    for key, id in pairs(value) do
+        if not IsRaidIconID(key) or key > #value or not IsRaidIconID(type(id) == "table" and id.npcID or id) then return {} end
+        count = count + 1
+    end
+    if count ~= #value then return {} end
+    for _, entry in ipairs(value) do
+        local id = type(entry) == "table" and entry.npcID or entry
+        if not seen[id] then
+            result[#result + 1], seen[id] = id, true
+        end
+    end
+    return result
+end--[[APR_DIAG]]
+APR.NormalizeRaidIconTargets =
+    APRTrace("APR-Core/utils/TargetUtils.lua:290:APR:NormalizeRaidIconTargets#1019", APR.NormalizeRaidIconTargets)--[[/APR_DIAG]]
+
+-- An explicit list owns targeting; action-derived targets remain legacy fallbacks.
+function APR:GetStepRaidIconTargets(step)
+    return step
+        and (
+            step.RaidIcon
+            or (step.KillNPC and step.KillNPC.npcID)
+            or (step.DroppableQuest and step.DroppableQuest.MobId)
+        )
+end--[[APR_DIAG]]
+APR.GetStepRaidIconTargets =
+    APRTrace("APR-Core/utils/TargetUtils.lua:306:APR:GetStepRaidIconTargets#1020", APR.GetStepRaidIconTargets)--[[/APR_DIAG]]
 
 --- Gets the raid icon NPC name for a given NPC ID.
 --- @param npcID number The NPC ID to look up
@@ -337,51 +385,147 @@ APR.GetRaidIconNpcName =
 --- if token then
 ---     print("Found unit: " .. token)
 --- end
-function APR:FindRaidIconUnitToken(npcID)
-    if not npcID then return nil end
+local function PublicUnitFlag(api, unit, expected)
+    if not api then return false end
+    local value = api(unit)
+    return APRSecret:CanAccessValue(value) and value == expected
+end--[[APR_DIAG]]
+PublicUnitFlag = APRTrace("APR-Core/utils/TargetUtils.lua:374:PublicUnitFlag#1022", PublicUnitFlag)--[[/APR_DIAG]]
 
-    if APR:GetTargetID("target") == npcID then
-        return "target"
-    end
+local function IsLiveRaidIconUnit(unit)
+    return PublicUnitFlag(UnitExists, unit, true)
+        and PublicUnitFlag(UnitIsDeadOrGhost, unit, false)
+        and PublicUnitFlag(UnitIsPlayer, unit, false)
+end--[[APR_DIAG]]
+IsLiveRaidIconUnit = APRTrace("APR-Core/utils/TargetUtils.lua:380:IsLiveRaidIconUnit#1023", IsLiveRaidIconUnit)--[[/APR_DIAG]]
 
-    if not C_NamePlate or not C_NamePlate.GetNamePlates then
-        return nil
-    end
-
-    for _, plate in ipairs(C_NamePlate.GetNamePlates()) do
+local function RaidIconUnits()
+    local units = { "target", "mouseover", "focus" }
+    local plates = C_NamePlate and C_NamePlate.GetNamePlates and C_NamePlate.GetNamePlates() or {}
+    for _, plate in ipairs(plates) do
         local unit = plate and plate.namePlateUnitToken
-        if unit and APR:GetTargetID(unit) == npcID then
-            return unit
+        if APRSecret:CanAccessValue(unit) and type(unit) == "string" then units[#units + 1] = unit end
+    end
+    return units
+end--[[APR_DIAG]]
+RaidIconUnits = APRTrace("APR-Core/utils/TargetUtils.lua:386:RaidIconUnits#1024", RaidIconUnits)--[[/APR_DIAG]]
+
+function APR:FindRaidIconUnitToken(npcID)
+    local targets = self:NormalizeRaidIconTargets(npcID)
+    for _, unit in ipairs(RaidIconUnits()) do
+        if IsLiveRaidIconUnit(unit) then
+            local id = self:GetTargetID(unit)
+            if RaidIconTargetIndex(targets, id) then return unit end
         end
     end
-
-    return nil
 end--[[APR_DIAG]]
 APR.FindRaidIconUnitToken =
     APRTrace("APR-Core/utils/TargetUtils.lua:260:APR:FindRaidIconUnitToken#17", APR.FindRaidIconUnitToken)--[[/APR_DIAG]]
 
---- Builds a raid icon macro for a specific NPC.
---- @param npcID number The NPC ID to create the macro for
---- @param unitToken string The unit token (e.g., "target", "focus") to apply the macro to
---- @return string The generated macro string
-function APR:BuildRaidIconMacro(npcID, unitToken)
-    local lines = {}
+local function SupportsSafeRaidIconMarkers(self)
+    if self.GetGameVersion and self:GetGameVersion() == "forever" then return true end
+    local interface = GetBuildInfo and tonumber((select(4, GetBuildInfo()))) or 0
+    -- Native /tm ~N preserves any existing marker starting with Retail 12.0.7.
+    return interface >= 120007
+end--[[APR_DIAG]]
+SupportsSafeRaidIconMarkers =
+    APRTrace("APR-Core/utils/TargetUtils.lua:408:SupportsSafeRaidIconMarkers#2026", SupportsSafeRaidIconMarkers)--[[/APR_DIAG]]
 
-    if unitToken then
-        table.insert(lines, "/target [@" .. unitToken .. ",exists]")
-        table.insert(lines, "/tm [@" .. unitToken .. ",exists] 8")
-        return table.concat(lines, "\n")
+local function RaidIconOccupiedMarkers()
+    local units, occupied = RaidIconUnits(), {}
+    units[#units + 1], units[#units + 2] = "player", "pet"
+    for i = 1, 40 do
+        units[#units + 1], units[#units + 2] = "raid" .. i, "raid" .. i .. "target"
     end
-
-    local name, localized = self:GetRaidIconNpcName(npcID)
-    if name and (localized or not GetLocale or GetLocale() == "enUS") then
-        table.insert(lines, "/cleartarget")
-        table.insert(lines, "/targetexact " .. name)
-        table.insert(lines, "/tm [@target,exists] 8")
-        return table.concat(lines, "\n")
+    for i = 1, 4 do
+        units[#units + 1], units[#units + 2] = "party" .. i, "party" .. i .. "target"
     end
+    if not GetRaidTargetIndex then return occupied, true end
+    for _, unit in ipairs(units) do
+        local exists = UnitExists and UnitExists(unit)
+        if not APRSecret:CanAccessValue(exists) then return occupied, true end
+        if exists then
+            local index = GetRaidTargetIndex(unit)
+            if not APRSecret:CanAccessValue(index) then return occupied, true end
+            if index then occupied[index] = true end
+        end
+    end
+    return occupied, false
+end--[[APR_DIAG]]
+RaidIconOccupiedMarkers =
+    APRTrace("APR-Core/utils/TargetUtils.lua:415:RaidIconOccupiedMarkers#2027", RaidIconOccupiedMarkers)--[[/APR_DIAG]]
 
-    return "/tm [@mouseover,exists][@target,exists] 8"
+local function RaidIconMarkerAvailable(marker, occupied, unknown)
+    if unknown or occupied[marker] then return false end
+    if GetNextAvailableRaidTargetMarkerIndex then
+        local available = GetNextAvailableRaidTargetMarkerIndex(marker, false, false, false)
+        return APRSecret:CanAccessValue(available) and available == marker
+    end
+    return true
+end--[[APR_DIAG]]
+RaidIconMarkerAvailable =
+    APRTrace("APR-Core/utils/TargetUtils.lua:437:RaidIconMarkerAvailable#2028", RaidIconMarkerAvailable)--[[/APR_DIAG]]
+
+local function ResolveRaidIconNames(self, targets, preferred)
+    local names, seen = {}, {}
+    local function addName(id)
+        local name, localized = self:GetRaidIconNpcName(id)
+        if not name or not (localized or not GetLocale or GetLocale() == "enUS") then return end
+        local entry = seen[name]
+        if entry then
+            if entry.id ~= id then entry.ambiguous = true end
+        else
+            entry = { id = id, name = name, index = RaidIconTargetIndex(targets, id) }
+            names[#names + 1], seen[name] = entry, entry
+        end
+    end--[[APR_DIAG]]
+    addName = APRTrace("APR-Core/utils/TargetUtils.lua:448:addName#2030", addName)--[[/APR_DIAG]]
+    if preferred then addName(preferred) end
+    for _, id in ipairs(targets) do
+        addName(id)
+    end
+    return names
+end--[[APR_DIAG]]
+ResolveRaidIconNames = APRTrace("APR-Core/utils/TargetUtils.lua:446:ResolveRaidIconNames#2029", ResolveRaidIconNames)--[[/APR_DIAG]]
+
+-- Pure serialization: each complete block stops at its first living match.
+local function BuildRaidIconNameMacro(names)
+    local text, suffix, count = "/cleartarget", "\n/cleartarget [dead]", 0
+    for _, entry in ipairs(names) do
+        local block = "\n/targetexact " .. entry.name
+        if entry.marker then block = block .. "\n/targetmarker [@target,exists,nodead] " .. entry.markerPrefix .. entry.marker end
+        block = block .. "\n/stopmacro [exists,nodead]"
+        if #text + #block + #suffix <= 255 then
+            text, count = text .. block, count + 1
+        end
+    end
+    return count > 0 and text .. suffix or ""
+end--[[APR_DIAG]]
+BuildRaidIconNameMacro =
+    APRTrace("APR-Core/utils/TargetUtils.lua:465:BuildRaidIconNameMacro#2031", BuildRaidIconNameMacro)--[[/APR_DIAG]]
+
+--- Builds a targeting macro for one NPC ID or an ordered list.
+--- The legacy unitToken argument is ignored: volatile tokens can be reused by another NPC.
+function APR:BuildRaidIconMacro(npcID, _, markerIndex)
+    local targets = self:NormalizeRaidIconTargets(npcID)
+    local visible = self:FindRaidIconUnitToken(targets)
+    local preferred = visible and self:GetTargetID(visible)
+    if preferred and UnitName then self:RememberNPCName(preferred, APRSecret:SafeUnitName(visible)) end
+    local names = ResolveRaidIconNames(self, targets, preferred)
+    if SupportsSafeRaidIconMarkers(self) then
+        local occupied, unknown = RaidIconOccupiedMarkers()
+        for _, entry in ipairs(names) do
+            local slot = markerIndex
+            if type(slot) == "table" then slot = slot[entry.id] end
+            local marker = 9 - (slot or entry.index)
+            if marker > 0 and not entry.ambiguous and RaidIconMarkerAvailable(marker, occupied, unknown) then
+                entry.marker = marker
+                -- Forever supports ! (do not toggle); Retail 12.0.7 adds ~ (preserve any marker).
+                entry.markerPrefix = self.GetGameVersion and self:GetGameVersion() == "forever" and "!" or "~"
+            end
+        end
+    end
+    return BuildRaidIconNameMacro(names)
 end--[[APR_DIAG]]
 APR.BuildRaidIconMacro =
-    APRTrace("APR-Core/utils/TargetUtils.lua:285:APR:BuildRaidIconMacro#18", APR.BuildRaidIconMacro)--[[/APR_DIAG]]
+    APRTrace("APR-Core/utils/TargetUtils.lua:478:APR:BuildRaidIconMacro#2032", APR.BuildRaidIconMacro)--[[/APR_DIAG]]

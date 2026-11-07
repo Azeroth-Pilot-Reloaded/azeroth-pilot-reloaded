@@ -185,7 +185,7 @@ class RouteSchema:
                 required=('spellID', 'operator', 'seconds'))), 1)
         for name in ("ChromiePick DropQuest ExitTutorial GetFP GroupTask LearnProfession LeaveQuest "
                      "NpcDismount SetHS UseDalaHS UseFlightPath UseGarrisonHS UseHS WarMode Waypoint "
-                     "DenyNPC MerchantNPC RaidIcon SpellTrigger Zone NodeID QuestLineSkip ExtraLine "
+                     "DenyNPC MerchantNPC SpellTrigger Zone NodeID QuestLineSkip ExtraLine "
                      "Gossip Brewery SparringRing").split():
             self.step_fields[name] = ID
         for name in ("Bloodlust Boat Tram Zeppelin DeathSkip Dontskipvid ExtraActionB InstanceQuest IsAdventureMap "
@@ -209,6 +209,7 @@ class RouteSchema:
         objective = scalar("quest ID or quest-objective key", lambda v:
                            isinstance(v, str) and re.fullmatch(r"[1-9]\d*(?:-\d+)?", v) is not None)
         self.step_fields.update({
+            "RaidIcon": union(ID, obj({"npcID": ID, "questID": ID, "objectiveIndex": ID}, required=("npcID",)), array(union(ID, obj({"npcID": ID, "questID": ID, "objectiveIndex": ID}, required=("npcID",))), 1)),
             "Dungeon": enum(DUNGEON_KEYS),
             "KillNPC": obj({"npcID": ID, "name": TEXT, "dungeonKey": enum(DUNGEON_KEYS)}, required=("npcID", "name")),
             "Name": TEXT, "Note": union(TEXT, array(TEXT, 1)), "PreviewImages": array(TEXT, 1),

@@ -129,7 +129,7 @@ APR.RouteQuestStepList["462-MulgoreTauren"] = {
             Qpart = { [14460] = { 1 } },
             Coord = { x = -35.2, y = -3127.5 },
             Range = 0.69,
-            RaidIcon = 36712,
+            RaidIcon = { { npcID = 36712, questID = 14460, objectiveIndex = 1 } },
             _index = 21
         },
         {
@@ -979,7 +979,7 @@ APR.RouteQuestStepList["1-ValleyOfTrialsOrc"] = {
             Coord = { x = -4097.9, y = -563.5 },
             Range = 0.61,
             Button = { ["37446-1"] = 16114 },
-            RaidIcon = 3281,
+            RaidIcon = { { npcID = 3281, questID = 25129, objectiveIndex = 1 } },
             _index = 13
         },
         {
@@ -1070,7 +1070,7 @@ APR.RouteQuestStepList["1-ValleyOfTrialsOrc"] = {
             Fillers = { [25132] = { 1 } },
             Coord = { x = -4205.7, y = -77.1 },
             Range = 0.69,
-            RaidIcon = 3183,
+            RaidIcon = { { npcID = 3183, questID = 25132, objectiveIndex = 2 } },
             _index = 28
         },
         {
@@ -1198,7 +1198,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollWar"] = {
             Coord = { x = -4097.9, y = -563.5 },
             Range = 0.61,
             Button = { ["37446-1"] = 16114 },
-            RaidIcon = 3281,
+            RaidIcon = { { npcID = 3281, questID = 25129, objectiveIndex = 1 } },
             _index = 13
         },
         {
@@ -1289,7 +1289,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollWar"] = {
             Fillers = { [25132] = { 1 } },
             Coord = { x = -4205.7, y = -77.1 },
             Range = 0.69,
-            RaidIcon = 3183,
+            RaidIcon = { { npcID = 3183, questID = 25132, objectiveIndex = 2 } },
             _index = 28
         },
         {
@@ -1398,14 +1398,14 @@ APR.RouteQuestStepList["463-EchoIslesTrollHunter"] = {
             Coord = { x = -5528.9, y = -1158.5 },
             Range = 0.61,
             Gossip = 1,
-            RaidIcon = 39062,
+            RaidIcon = { { npcID = 39062, questID = 24780, objectiveIndex = 1 } },
             _index = 10
         },
         {
             Qpart = { [24780] = { 2 } },
             Coord = { x = -5529.7, y = -1147.9 },
             Range = 0.61,
-            RaidIcon = 38142,
+            RaidIcon = { { npcID = 38142, questID = 24780, objectiveIndex = 2 } },
             _index = 11
         },
         {
@@ -1471,7 +1471,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollHunter"] = {
             Coord = { x = -5154.5, y = -1353.5 },
             Range = 0.69,
             Button = { ["24623-1"] = 52283 },
-            RaidIcon = 39072,
+            RaidIcon = { { npcID = 39072 } },
             _index = 23
         },
         {
@@ -1497,7 +1497,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollHunter"] = {
             Coord = { x = -5314.3, y = -1549.5 },
             Range = 77.86,
             Button = { ["24626-1"] = 50053 },
-            RaidIcon = 38002,
+            RaidIcon = { { npcID = 38002 } },
             _index = 27
         },
         {
@@ -1532,7 +1532,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollHunter"] = {
             ExtraLineText = "TALK_JORNUN",
             Coord = { x = -5558.3, y = -1331.3 },
             Range = 28.7,
-            RaidIcon = 38989,
+            RaidIcon = { { npcID = 38989 } },
             _index = 33
         },
         {
@@ -1573,14 +1573,14 @@ APR.RouteQuestStepList["463-EchoIslesTrollHunter"] = {
             Coord = { x = -5614.9, y = -741.8 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 38225,
+            RaidIcon = { { npcID = 38225, questID = 24814, objectiveIndex = 1 } },
             _index = 40
         },
         {
             Qpart = { [24814] = { 2 } },
             Coord = { x = -5582.4, y = -710.3 },
             Range = 0.61,
-            RaidIcon = 38306,
+            RaidIcon = { { npcID = 38306, questID = 24814, objectiveIndex = 2 } },
             _index = 41
         },
         {
@@ -1664,14 +1664,14 @@ APR.RouteQuestStepList["463-EchoIslesTrollRogue"] = {
             Coord = { x = -5430, y = -1142.5 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 39062,
+            RaidIcon = { { npcID = 39062, questID = 24774, objectiveIndex = 1 } },
             _index = 9
         },
         {
             Qpart = { [24774] = { 2 } },
             Coord = { x = -5416.3, y = -1145 },
             Range = 0.69,
-            RaidIcon = 38142,
+            RaidIcon = { { npcID = 38142, questID = 24774, objectiveIndex = 2 } },
             _index = 10
         },
         {
@@ -1737,7 +1737,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollRogue"] = {
             Coord = { x = -5154.5, y = -1353.5 },
             Range = 0.69,
             Button = { ["24623-1"] = 52283 },
-            RaidIcon = 39072,
+            RaidIcon = { { npcID = 39072 } },
             _index = 22
         },
         {
@@ -1763,7 +1763,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollRogue"] = {
             Coord = { x = -5314.3, y = -1549.5 },
             Range = 77.86,
             Button = { ["24626-1"] = 50053 },
-            RaidIcon = 38002,
+            RaidIcon = { { npcID = 38002 } },
             _index = 26
         },
         {
@@ -1798,7 +1798,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollRogue"] = {
             ExtraLineText = "TALK_JORNUN",
             Coord = { x = -5558.3, y = -1331.3 },
             Range = 28.7,
-            RaidIcon = 38989,
+            RaidIcon = { { npcID = 38989 } },
             _index = 32
         },
         {
@@ -1839,14 +1839,14 @@ APR.RouteQuestStepList["463-EchoIslesTrollRogue"] = {
             Coord = { x = -5614.9, y = -741.8 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 38225,
+            RaidIcon = { { npcID = 38225, questID = 24814, objectiveIndex = 1 } },
             _index = 39
         },
         {
             Qpart = { [24814] = { 2 } },
             Coord = { x = -5582.4, y = -710.3 },
             Range = 0.61,
-            RaidIcon = 38306,
+            RaidIcon = { { npcID = 38306, questID = 24814, objectiveIndex = 2 } },
             _index = 40
         },
         {
@@ -1930,14 +1930,14 @@ APR.RouteQuestStepList["463-EchoIslesTrollPriest"] = {
             Coord = { x = -5430, y = -1142.5 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 39062,
+            RaidIcon = { { npcID = 39062, questID = 24774, objectiveIndex = 1 } },
             _index = 9
         },
         {
             Qpart = { [24774] = { 2 } },
             Coord = { x = -5416.3, y = -1145 },
             Range = 0.69,
-            RaidIcon = 38142,
+            RaidIcon = { { npcID = 38142, questID = 24774, objectiveIndex = 2 } },
             _index = 10
         },
         {
@@ -2012,14 +2012,14 @@ APR.RouteQuestStepList["463-EchoIslesTrollPriest"] = {
             Coord = { x = -5529.9, y = -1158.4 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 39062,
+            RaidIcon = { { npcID = 39062, questID = 24786, objectiveIndex = 1 } },
             _index = 24
         },
         {
             Qpart = { [24786] = { 2 } },
             Coord = { x = -5527.7, y = -1149 },
             Range = 0.61,
-            RaidIcon = 38142,
+            RaidIcon = { { npcID = 38142, questID = 24786, objectiveIndex = 2 } },
             _index = 25
         },
         {
@@ -2085,7 +2085,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollPriest"] = {
             Coord = { x = -5154.5, y = -1353.5 },
             Range = 0.69,
             Button = { ["24623-1"] = 52283 },
-            RaidIcon = 39072,
+            RaidIcon = { { npcID = 39072 } },
             _index = 37
         },
         {
@@ -2111,7 +2111,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollPriest"] = {
             Coord = { x = -5314.3, y = -1549.5 },
             Range = 77.86,
             Button = { ["24626-1"] = 50053 },
-            RaidIcon = 38002,
+            RaidIcon = { { npcID = 38002 } },
             _index = 41
         },
         {
@@ -2146,7 +2146,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollPriest"] = {
             ExtraLineText = "TALK_JORNUN",
             Coord = { x = -5558.3, y = -1331.3 },
             Range = 28.7,
-            RaidIcon = 38989,
+            RaidIcon = { { npcID = 38989 } },
             _index = 47
         },
         {
@@ -2187,14 +2187,14 @@ APR.RouteQuestStepList["463-EchoIslesTrollPriest"] = {
             Coord = { x = -5614.9, y = -741.8 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 38225,
+            RaidIcon = { { npcID = 38225, questID = 24814, objectiveIndex = 1 } },
             _index = 54
         },
         {
             Qpart = { [24814] = { 2 } },
             Coord = { x = -5582.4, y = -710.3 },
             Range = 0.61,
-            RaidIcon = 38306,
+            RaidIcon = { { npcID = 38306, questID = 24814, objectiveIndex = 2 } },
             _index = 55
         },
         {
@@ -2284,14 +2284,14 @@ APR.RouteQuestStepList["463-EchoIslesTrollShaman"] = {
             Coord = { x = -5429, y = -1142.9 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 39062,
+            RaidIcon = { { npcID = 39062, questID = 24762, objectiveIndex = 1 } },
             _index = 10
         },
         {
             Qpart = { [24762] = { 2 } },
             Coord = { x = -5416.4, y = -1145 },
             Range = 0.69,
-            RaidIcon = 38142,
+            RaidIcon = { { npcID = 38142, questID = 24762, objectiveIndex = 2 } },
             _index = 11
         },
         {
@@ -2357,7 +2357,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollShaman"] = {
             Coord = { x = -5154.5, y = -1353.5 },
             Range = 0.69,
             Button = { ["24623-1"] = 52283 },
-            RaidIcon = 39072,
+            RaidIcon = { { npcID = 39072 } },
             _index = 23
         },
         {
@@ -2383,7 +2383,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollShaman"] = {
             Coord = { x = -5314.3, y = -1549.5 },
             Range = 77.86,
             Button = { ["24626-1"] = 50053 },
-            RaidIcon = 38002,
+            RaidIcon = { { npcID = 38002 } },
             _index = 27
         },
         {
@@ -2418,7 +2418,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollShaman"] = {
             ExtraLineText = "TALK_JORNUN",
             Coord = { x = -5558.3, y = -1331.3 },
             Range = 28.7,
-            RaidIcon = 38989,
+            RaidIcon = { { npcID = 38989 } },
             _index = 33
         },
         {
@@ -2459,14 +2459,14 @@ APR.RouteQuestStepList["463-EchoIslesTrollShaman"] = {
             Coord = { x = -5614.9, y = -741.8 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 38225,
+            RaidIcon = { { npcID = 38225, questID = 24814, objectiveIndex = 1 } },
             _index = 40
         },
         {
             Qpart = { [24814] = { 2 } },
             Coord = { x = -5582.4, y = -710.3 },
             Range = 0.61,
-            RaidIcon = 38306,
+            RaidIcon = { { npcID = 38306, questID = 24814, objectiveIndex = 2 } },
             _index = 41
         },
         {
@@ -2556,14 +2556,14 @@ APR.RouteQuestStepList["463-EchoIslesTrollMage"] = {
             Coord = { x = -5529.9, y = -1157.9 },
             Range = 0.69,
             GossipOptionIDs = { 37137 },
-            RaidIcon = 39062,
+            RaidIcon = { { npcID = 39062, questID = 24754, objectiveIndex = 1 } },
             _index = 10
         },
         {
             Qpart = { [24754] = { 2 } },
             Coord = { x = -5527.7, y = -1149.5 },
             Range = 0.69,
-            RaidIcon = 38142,
+            RaidIcon = { { npcID = 38142, questID = 24754, objectiveIndex = 2 } },
             _index = 11
         },
         {
@@ -2629,7 +2629,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollMage"] = {
             Coord = { x = -5154.5, y = -1353.5 },
             Range = 0.69,
             Button = { ["24623-1"] = 52283 },
-            RaidIcon = 39072,
+            RaidIcon = { { npcID = 39072 } },
             _index = 23
         },
         {
@@ -2655,7 +2655,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollMage"] = {
             Coord = { x = -5314.3, y = -1549.5 },
             Range = 77.86,
             Button = { ["24626-1"] = 50053 },
-            RaidIcon = 38002,
+            RaidIcon = { { npcID = 38002 } },
             _index = 27
         },
         {
@@ -2690,7 +2690,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollMage"] = {
             ExtraLineText = "TALK_JORNUN",
             Coord = { x = -5558.3, y = -1331.3 },
             Range = 28.7,
-            RaidIcon = 38989,
+            RaidIcon = { { npcID = 38989 } },
             _index = 33
         },
         {
@@ -2731,14 +2731,14 @@ APR.RouteQuestStepList["463-EchoIslesTrollMage"] = {
             Coord = { x = -5614.9, y = -741.8 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 38225,
+            RaidIcon = { { npcID = 38225, questID = 24814, objectiveIndex = 1 } },
             _index = 40
         },
         {
             Qpart = { [24814] = { 2 } },
             Coord = { x = -5582.4, y = -710.3 },
             Range = 0.61,
-            RaidIcon = 38306,
+            RaidIcon = { { npcID = 38306, questID = 24814, objectiveIndex = 2 } },
             _index = 41
         },
         {
@@ -2828,14 +2828,14 @@ APR.RouteQuestStepList["463-EchoIslesTrollWarlock"] = {
             Coord = { x = -5529.9, y = -1157.9 },
             Range = 0.69,
             GossipOptionIDs = { 37137 },
-            RaidIcon = 39062,
+            RaidIcon = { { npcID = 39062, questID = 24754, objectiveIndex = 1 } },
             _index = 10
         },
         {
             Qpart = { [24754] = { 2 } },
             Coord = { x = -5527.7, y = -1149.5 },
             Range = 0.69,
-            RaidIcon = 38142,
+            RaidIcon = { { npcID = 38142, questID = 24754, objectiveIndex = 2 } },
             _index = 11
         },
         {
@@ -2901,7 +2901,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollWarlock"] = {
             Coord = { x = -5154.5, y = -1353.5 },
             Range = 0.69,
             Button = { ["24623-1"] = 52283 },
-            RaidIcon = 39072,
+            RaidIcon = { { npcID = 39072 } },
             _index = 23
         },
         {
@@ -2927,7 +2927,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollWarlock"] = {
             Coord = { x = -5314.3, y = -1549.5 },
             Range = 77.86,
             Button = { ["24626-1"] = 50053 },
-            RaidIcon = 38002,
+            RaidIcon = { { npcID = 38002 } },
             _index = 27
         },
         {
@@ -2962,7 +2962,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollWarlock"] = {
             ExtraLineText = "TALK_JORNUN",
             Coord = { x = -5558.3, y = -1331.3 },
             Range = 28.7,
-            RaidIcon = 38989,
+            RaidIcon = { { npcID = 38989 } },
             _index = 33
         },
         {
@@ -3003,14 +3003,14 @@ APR.RouteQuestStepList["463-EchoIslesTrollWarlock"] = {
             Coord = { x = -5614.9, y = -741.8 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 38225,
+            RaidIcon = { { npcID = 38225, questID = 24814, objectiveIndex = 1 } },
             _index = 40
         },
         {
             Qpart = { [24814] = { 2 } },
             Coord = { x = -5582.4, y = -710.3 },
             Range = 0.61,
-            RaidIcon = 38306,
+            RaidIcon = { { npcID = 38306, questID = 24814, objectiveIndex = 2 } },
             _index = 41
         },
         {
@@ -3100,14 +3100,14 @@ APR.RouteQuestStepList["463-EchoIslesTrollMonk"] = {
             Coord = { x = -5428.9, y = -1144 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 39062,
+            RaidIcon = { { npcID = 39062, questID = 31161, objectiveIndex = 1 } },
             _index = 10
         },
         {
             Qpart = { [31161] = { 2 } },
             Coord = { x = -5415.4, y = -1144 },
             Range = 0.69,
-            RaidIcon = 38142,
+            RaidIcon = { { npcID = 38142, questID = 31161, objectiveIndex = 2 } },
             _index = 11
         },
         {
@@ -3173,7 +3173,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollMonk"] = {
             Coord = { x = -5154.5, y = -1353.5 },
             Range = 0.69,
             Button = { ["24623-1"] = 52283 },
-            RaidIcon = 39072,
+            RaidIcon = { { npcID = 39072 } },
             _index = 23
         },
         {
@@ -3199,7 +3199,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollMonk"] = {
             Coord = { x = -5314.3, y = -1549.5 },
             Range = 77.86,
             Button = { ["24626-1"] = 50053 },
-            RaidIcon = 38002,
+            RaidIcon = { { npcID = 38002 } },
             _index = 27
         },
         {
@@ -3234,7 +3234,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollMonk"] = {
             ExtraLineText = "TALK_JORNUN",
             Coord = { x = -5558.3, y = -1331.3 },
             Range = 28.7,
-            RaidIcon = 38989,
+            RaidIcon = { { npcID = 38989 } },
             _index = 33
         },
         {
@@ -3275,14 +3275,14 @@ APR.RouteQuestStepList["463-EchoIslesTrollMonk"] = {
             Coord = { x = -5614.9, y = -741.8 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 38225,
+            RaidIcon = { { npcID = 38225, questID = 24814, objectiveIndex = 1 } },
             _index = 40
         },
         {
             Qpart = { [24814] = { 2 } },
             Coord = { x = -5582.4, y = -710.3 },
             Range = 0.61,
-            RaidIcon = 38306,
+            RaidIcon = { { npcID = 38306, questID = 24814, objectiveIndex = 2 } },
             _index = 41
         },
         {
@@ -3372,14 +3372,14 @@ APR.RouteQuestStepList["463-EchoIslesTrollDruid"] = {
             Coord = { x = -5529.5, y = -1159 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 39062,
+            RaidIcon = { { npcID = 39062, questID = 24768, objectiveIndex = 1 } },
             _index = 10
         },
         {
             Qpart = { [24768] = { 2 } },
             Coord = { x = -5527.2, y = -1149.8 },
             Range = 0.61,
-            RaidIcon = 38142,
+            RaidIcon = { { npcID = 38142, questID = 24768, objectiveIndex = 2 } },
             _index = 11
         },
         {
@@ -3445,7 +3445,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollDruid"] = {
             Coord = { x = -5154.5, y = -1353.5 },
             Range = 0.69,
             Button = { ["24623-1"] = 52283 },
-            RaidIcon = 39072,
+            RaidIcon = { { npcID = 39072 } },
             _index = 23
         },
         {
@@ -3471,7 +3471,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollDruid"] = {
             Coord = { x = -5314.3, y = -1549.5 },
             Range = 77.86,
             Button = { ["24626-1"] = 50053 },
-            RaidIcon = 38002,
+            RaidIcon = { { npcID = 38002 } },
             _index = 27
         },
         {
@@ -3506,7 +3506,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollDruid"] = {
             ExtraLineText = "TALK_JORNUN",
             Coord = { x = -5558.3, y = -1331.3 },
             Range = 28.7,
-            RaidIcon = 38989,
+            RaidIcon = { { npcID = 38989 } },
             _index = 33
         },
         {
@@ -3547,14 +3547,14 @@ APR.RouteQuestStepList["463-EchoIslesTrollDruid"] = {
             Coord = { x = -5614.9, y = -741.8 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 38225,
+            RaidIcon = { { npcID = 38225, questID = 24814, objectiveIndex = 1 } },
             _index = 40
         },
         {
             Qpart = { [24814] = { 2 } },
             Coord = { x = -5582.4, y = -710.3 },
             Range = 0.61,
-            RaidIcon = 38306,
+            RaidIcon = { { npcID = 38306, questID = 24814, objectiveIndex = 2 } },
             _index = 41
         },
         {
@@ -3723,7 +3723,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             ExtraLineText = "TALK_JHASH",
             Coord = { x = -4880.4, y = -820.7 },
             Range = 39.7,
-            RaidIcon = 10676,
+            RaidIcon = { { npcID = 10676 } },
             _index = 21
         },
         {
@@ -3802,7 +3802,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             Fillers = { [25177] = { 1 }, [25178] = { 1 } },
             ExtraLineText = "CLICK_INJURED_GRUNT",
             Coord = { x = -5062.4, y = 103.8 },
-            RaidIcon = 39270,
+            RaidIcon = { { npcID = 39270 } },
             _index = 35
         },
         {
@@ -3941,7 +3941,7 @@ APR.RouteQuestStepList["1-Durotar"] = {
             Qpart = { [25195] = { 1 } },
             Coord = { x = -3839.2, y = 732.6 },
             Range = 52.21,
-            RaidIcon = 39385,
+            RaidIcon = { { npcID = 39385, questID = 25195, objectiveIndex = 1 } },
             _index = 59
         },
         {
@@ -4029,14 +4029,14 @@ APR.RouteQuestStepList["1-Durotar"] = {
             Coord = { x = -4336, y = 1286.5 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 39380,
+            RaidIcon = { { npcID = 39380, questID = 25205, objectiveIndex = 1 } },
             _index = 75
         },
         {
             Qpart = { [25205] = { 1 } },
             Coord = { x = -4727.9, y = 1238.4 },
             Range = 1.46,
-            RaidIcon = 39365,
+            RaidIcon = { { npcID = 39365, questID = 25205, objectiveIndex = 1 } },
             _index = 76
         },
         {
@@ -4061,14 +4061,14 @@ APR.RouteQuestStepList["1-Durotar"] = {
             Coord = { x = -4187.7, y = 869.5 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 3203,
+            RaidIcon = { { npcID = 3203 } },
             _index = 80
         },
         {
             Qpart = { [25236] = { 1 } },
             Coord = { x = -4118.9, y = 897 },
             Range = 105.6,
-            RaidIcon = 39464,
+            RaidIcon = { { npcID = 39464, questID = 25236, objectiveIndex = 1 } },
             _index = 81
         },
         {
@@ -4105,21 +4105,21 @@ APR.RouteQuestStepList["1-Durotar"] = {
             Qpart = { [25258] = { 1 } },
             Coord = { x = -5084.4, y = 1024.7 },
             Range = 0.69,
-            RaidIcon = 39353,
+            RaidIcon = { { npcID = 39353, questID = 25258, objectiveIndex = 1 } },
             _index = 88
         },
         {
             Qpart = { [25257] = { 1 } },
             Coord = { x = -5115.7, y = 1011.2 },
             Range = 0.61,
-            RaidIcon = 39351,
+            RaidIcon = { { npcID = 39351, questID = 25257, objectiveIndex = 1 } },
             _index = 89
         },
         {
             Qpart = { [25259] = { 1 } },
             Coord = { x = -5104.2, y = 982.2 },
             Range = 0.69,
-            RaidIcon = 39352,
+            RaidIcon = { { npcID = 39352, questID = 25259, objectiveIndex = 1 } },
             _index = 90
         },
         {
@@ -4178,7 +4178,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             PickUp = { 13878 },
             Fillers = { [844] = { 1 } },
             Coord = { x = -3645.4, y = 68 },
-            RaidIcon = 34284,
+            RaidIcon = { { npcID = 34284, questID = 844, objectiveIndex = 1 } },
             _index = 3
         },
         {
@@ -4219,7 +4219,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             Qpart = { [872] = { 1, 3, 2 }, [5041] = { 1 } },
             Coord = { x = -3490.2, y = -288.5 },
             Range = 0.69,
-            RaidIcon = 3438,
+            RaidIcon = { { npcID = 3438, questID = 872, objectiveIndex = 3 } },
             _index = 10
         },
         {
@@ -4254,7 +4254,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             Coord = { x = -3649, y = 319.6 },
             Range = 4.23,
             Gossip = 1,
-            RaidIcon = 34258,
+            RaidIcon = { { npcID = 34258, questID = 13949, objectiveIndex = 1 } },
             _index = 16
         },
         {
@@ -4311,7 +4311,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             Qpart = { [13963] = { 1 } },
             Coord = { x = -3049, y = 286.1 },
             Range = 0.69,
-            RaidIcon = 34523,
+            RaidIcon = { { npcID = 34523, questID = 13963, objectiveIndex = 1 } },
             _index = 26
         },
         {
@@ -4348,7 +4348,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             Qpart = { [13968] = { 1 }, [13970] = { 1 } },
             Coord = { x = -3375.2, y = -50.3 },
             Range = 48.88,
-            RaidIcon = 34543,
+            RaidIcon = { { npcID = 34543 } },
             _index = 33
         },
         {
@@ -4371,7 +4371,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             Coord = { x = -2935.5, y = 221.5 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 34578,
+            RaidIcon = { { npcID = 34578, questID = 13975, objectiveIndex = 1 } },
             _index = 37
         },
         {
@@ -4418,7 +4418,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             Fillers = { [848] = { 1 }, [13992] = { 1 } },
             Coord = { x = -1713, y = 19.6 },
             Range = 0.69,
-            RaidIcon = 3394,
+            RaidIcon = { { npcID = 3394, questID = 850, objectiveIndex = 1 } },
             _index = 45
         },
         {
@@ -4467,7 +4467,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             Qpart = { [876] = { 1 } },
             Coord = { x = -1351, y = 788.4 },
             Range = 0.69,
-            RaidIcon = 3452,
+            RaidIcon = { { npcID = 3452, questID = 876, objectiveIndex = 1 } },
             _index = 54
         },
         {
@@ -4505,7 +4505,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             Qpart = { [858] = { 1 } },
             Coord = { x = -3082.9, y = 1024.8 },
             Range = 0.69,
-            RaidIcon = 3445,
+            RaidIcon = { { npcID = 3445, questID = 858, objectiveIndex = 1 } },
             _index = 61
         },
         {
@@ -4522,7 +4522,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             Qpart = { [863] = { 1 } },
             Coord = { x = -3095, y = 1106.4 },
             Range = 176,
-            RaidIcon = 3439,
+            RaidIcon = { { npcID = 3439, questID = 863, objectiveIndex = 1 } },
             _index = 64
         },
         {
@@ -4605,7 +4605,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             Qpart = { [29023] = { 1 } },
             Coord = { x = -2731.4, y = 910.7 },
             Range = 0.69,
-            RaidIcon = 3471,
+            RaidIcon = { { npcID = 3471, questID = 29023, objectiveIndex = 1 } },
             _index = 79
         },
         {
@@ -4673,7 +4673,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             Done = { 14004 },
             ExtraLineText = "FLY_BACK",
             Coord = { x = -2347.2, y = 858.4 },
-            RaidIcon = 9316,
+            RaidIcon = { { npcID = 9316, questID = 14004 } },
             _index = 92
         },
         {
@@ -4719,7 +4719,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         {
             PickUp = { 29094 },
             Coord = { x = -3377.2, y = 1141.8 },
-            RaidIcon = 3442,
+            RaidIcon = { { npcID = 3442, questID = 29094 } },
             _index = 100
         },
         {
@@ -4862,7 +4862,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             Qpart = { [851] = { 1 } },
             Coord = { x = -2725.2, y = -1210.8 },
             Range = 0.69,
-            RaidIcon = 34846,
+            RaidIcon = { { npcID = 34846, questID = 851, objectiveIndex = 1 } },
             _index = 125
         },
         {
@@ -4957,7 +4957,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             Fillers = { [855] = { 1 } },
             Coord = { x = -2136.5, y = -973.5 },
             Range = 84.31,
-            RaidIcon = 3396,
+            RaidIcon = { { npcID = 3396 } },
             _index = 142
         },
         {
@@ -4981,7 +4981,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             ExtraLineText = "KILL_CENTAURS",
             Coord = { x = -1871.3, y = -273.3 },
             Range = 0.61,
-            RaidIcon = 9456,
+            RaidIcon = { { npcID = 9456, questID = 4021, objectiveIndex = 1 } },
             _index = 146
         },
         {
@@ -5034,7 +5034,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             Fillers = { [891] = { 3 } },
             Coord = { x = -3645.9, y = -1051.1 },
             Range = 0.69,
-            RaidIcon = 34754,
+            RaidIcon = { { npcID = 34754 } },
             _index = 156
         },
         {
@@ -5069,7 +5069,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             Qpart = { [865] = { 1 } },
             Coord = { x = -3512.5, y = -371.4 },
             Range = 0.75,
-            RaidIcon = 34829,
+            RaidIcon = { { npcID = 34829, questID = 865, objectiveIndex = 1 } },
             _index = 162
         },
         {
@@ -5088,7 +5088,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             Fillers = { [891] = { 3 } },
             Coord = { x = -3851.5, y = -1427.4 },
             Range = 0.69,
-            RaidIcon = 34752,
+            RaidIcon = { { npcID = 34752 } },
             _index = 165
         },
         {
@@ -5158,7 +5158,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             Fillers = { [887] = { 1 } },
             Coord = { x = -4270.9, y = -1609.4 },
             Range = 0.69,
-            RaidIcon = 34750,
+            RaidIcon = { { npcID = 34750 } },
             _index = 176
         },
         {
@@ -5177,7 +5177,7 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             Fillers = { [887] = { 1 } },
             Coord = { x = -4216.9, y = -1667.4 },
             Range = 0.61,
-            RaidIcon = 34747,
+            RaidIcon = { { npcID = 34747 } },
             _index = 179
         },
         {
@@ -5446,14 +5446,14 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
             Coord = { x = -2529.2, y = 293.8 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 52207,
+            RaidIcon = { { npcID = 52207, questID = 29111, objectiveIndex = 1 } },
             _index = 225
         },
         {
             Qpart = { [29111] = { 2 } },
             Coord = { x = -2544, y = 294.7 },
             Range = 0.69,
-            RaidIcon = 52314,
+            RaidIcon = { { npcID = 52314, questID = 29111, objectiveIndex = 2 } },
             _index = 226
         },
         {
@@ -5520,7 +5520,7 @@ APR.RouteQuestStepList["199-SouthernBarrens-H"] = {
             Fillers = { [24512] = { 1 }, [25284] = { 1 } },
             Coord = { x = -1402, y = -485.4 },
             Range = 0.69,
-            RaidIcon = 37157,
+            RaidIcon = { { npcID = 37157 } },
             _index = 8
         },
         {
@@ -5561,7 +5561,7 @@ APR.RouteQuestStepList["199-SouthernBarrens-H"] = {
             Fillers = { [24517] = { 2 } },
             Coord = { x = -1592.3, y = -551.5 },
             Range = 24.84,
-            RaidIcon = 37216,
+            RaidIcon = { { npcID = 37216 } },
             _index = 15
         },
         {

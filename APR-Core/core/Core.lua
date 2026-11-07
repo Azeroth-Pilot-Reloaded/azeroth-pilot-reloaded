@@ -158,6 +158,8 @@ function APR:OnInitialize()
     BINDING_HEADER_APR = self.title -- Header text for APR's main frame
     _G["BINDING_NAME_" .. "CLICK APR_ItemButton:LeftButton"] = L["USE_QUEST_ITEM"]
     _G["BINDING_NAME_" .. "CLICK APR_TargetButton:LeftButton"] = _G.TARGET
+    _G["BINDING_NAME_" .. "CLICK APR_TargetCycleButton:LeftButton"] =
+        _G.TARGET and _G.NEXT and (_G.TARGET .. " (" .. _G.NEXT .. ")") or _G.TARGET
 
     -- Register tot party frame
     C_ChatInfo.RegisterAddonMessagePrefix("APRPartyRequest")

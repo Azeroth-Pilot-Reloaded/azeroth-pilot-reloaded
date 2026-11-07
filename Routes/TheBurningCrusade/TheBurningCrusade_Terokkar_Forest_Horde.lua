@@ -338,7 +338,7 @@ APR.RouteQuestStepList["108-BC-3-Horde"] = {
         {
             LootItems = { { itemID = 29912, quantity = 1, questID = 10447 } },
             Coord = { x = 3094, y = -2289.9 },
-            RaidIcon = 18554,
+            RaidIcon = { { npcID = 18554 } },
             Not = { IsQuestReadyForTurnIn = 10447 },
             Zone = 108,
             _index = 50,
@@ -742,7 +742,7 @@ APR.RouteQuestStepList["108-BC-3-Horde"] = {
         {
             LootItems = { { itemID = 30618, quantity = 1, questID = 10036 } },
             Coord = { x = 4761.1, y = -2856.4 },
-            RaidIcon = 21515,
+            RaidIcon = { { npcID = 21515 } },
             Not = { IsQuestReadyForTurnIn = 10036 },
             Zone = 108,
             _index = 111,

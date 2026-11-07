@@ -30,7 +30,7 @@ assert(
     selectAction(pad.itemProxy) == "item" and pad.itemProxy:GetAttribute("unit") == nil,
     "A later untargeted action clears the proxy's previous target"
 )
-assert(step.questsList["20-1"].RaidIconButton, "Targeting shares a row with an action")
+assert(step.raidIconButton and not step.questsList["20-1"].RaidIconButton, "Targeting is independent of the action row")
 assert(selectAction(pad.targetProxy) == "macro" and pad.targetProxy:GetAttribute("macrotext") == "/target NPC")
 local registered = #pad.actionButtons
 for _ = 1, 20 do
@@ -42,7 +42,7 @@ assert(selectAction(pad.itemProxy) == "item" and pad.itemProxy:GetAttribute("ite
 step:ReleaseRow(step.questsList, "10-1")
 assert(selectAction(pad.itemProxy) == "item" and pad.itemProxy:GetAttribute("item") == "item:201")
 step:ReleaseRow(step.questsList, "20-1")
-assert(selectAction(pad.itemProxy) == nil and selectAction(pad.targetProxy) == nil)
+assert(selectAction(pad.itemProxy) == nil and selectAction(pad.targetProxy) == "macro", "Retiring item rows does not retire the standalone NPC targets")
 step:PrepareRaidIcon({})
 step:AddQuestSteps(5, "Replacement", 1)
 step:AddStepButton("5-1", 500, "item")

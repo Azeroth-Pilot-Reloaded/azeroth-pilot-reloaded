@@ -20,7 +20,7 @@ APR.RouteQuestStepList["84-BFA-Stormwind"] = {
             ChromiePick = 15,
             Coord = { x = 745.9, y = -8196.3 },
             Gossip = 1,
-            RaidIcon = 167032,
+            RaidIcon = { { npcID = 167032, questID = 46727 } },
             _index = 1,
         },
         {
@@ -1491,7 +1491,7 @@ APR.RouteQuestStepList["895-Tiragarde Sound"] = {
             Coord = { x = 272.2, y = 1108.7 },
             Range = 11.88,
             Button = { ["49233-1"] = 153350 },
-            RaidIcon = 128349,
+            RaidIcon = { { npcID = 128349 } },
             _index = 215,
         },
         {
@@ -2237,7 +2237,7 @@ APR.RouteQuestStepList["895-Tiragarde Sound"] = {
             Coord = { x = 871.1, y = 534 },
             Range = 21.08,
             Button = { ["47755-1"] = 151135 },
-            RaidIcon = 131748,
+            RaidIcon = { { npcID = 131748 } },
             _index = 340,
         },
         {
@@ -3078,7 +3078,7 @@ APR.RouteQuestStepList["895-Tiragarde Sound"] = {
             Range = 12.97,
             Gossip = 1,
             ZoneStepTrigger = { Range = 30, x = -1147.8, y = -1284.1 },
-            RaidIcon = 126490,
+            RaidIcon = { { npcID = 126490, questID = 48505, objectiveIndex = 1 } },
             _index = 473,
         },
         {
@@ -4907,7 +4907,7 @@ APR.RouteQuestStepList["942-Stormsong Valley"] = {
             Coord = { x = -162.5, y = 3789.5 },
             Range = 14.59,
             Gossip = 1,
-            RaidIcon = 136650,
+            RaidIcon = { { npcID = 136650, questID = 50784, objectiveIndex = 1 } },
             _index = 123,
         },
         {
@@ -8441,7 +8441,7 @@ APR.RouteQuestStepList["896-Dustvar"] = {
             Qpart = { [48945] = { 1 } },
             Coord = { x = 2725, y = 212.1 },
             Range = 15.36,
-            RaidIcon = 128113,
+            RaidIcon = { { npcID = 128113, questID = 48945, objectiveIndex = 1 } },
             _index = 219,
         },
         {
@@ -10227,7 +10227,7 @@ APR.RouteQuestStepList["1186-DarkIronDwarf-intro"] = {
         {
             PickUp = { 53500 },
             Coord = { x = 800.4, y = -8172.8 },
-            RaidIcon = 167032,
+            RaidIcon = { { npcID = 167032, questID = 53500 } },
             Zone = 84,
             _index = 4,
         },
@@ -10284,7 +10284,7 @@ APR.RouteQuestStepList["1573-Mechagnome-intro"] = {
         {
             PickUp = { 58147 },
             Coord = { x = 800.2, y = -8173.4 },
-            RaidIcon = 167032,
+            RaidIcon = { { npcID = 167032, questID = 58147 } },
             Zone = 84,
             _index = 4,
         },
@@ -10361,7 +10361,7 @@ APR.RouteQuestStepList["1161-KulTiran-intro"] = {
         {
             PickUp = { 55146 },
             Coord = { x = 799.6, y = -8174.5 },
-            RaidIcon = 167032,
+            RaidIcon = { { npcID = 167032, questID = 55146 } },
             Zone = 84,
             _index = 7,
         },

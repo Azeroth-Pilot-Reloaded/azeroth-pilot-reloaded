@@ -1560,7 +1560,7 @@ APR.RouteQuestStepList["85-BC-1-Horde"] = {
             Qpart = { [9472] = { 1 } },
             Coord = { x = 4166.4, y = -723.1 },
             Range = 5,
-            RaidIcon = 17226,
+            RaidIcon = { { npcID = 17226, questID = 9472, objectiveIndex = 1 } },
             Zone = 100,
             _index = 233,
         },

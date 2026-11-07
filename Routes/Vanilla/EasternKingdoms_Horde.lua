@@ -87,7 +87,7 @@ APR.RouteQuestStepList["465-TirisfalGladesUndead"] = {
             Coord = { x = 1641, y = 1754.5 },
             Range = 0.61,
             Gossip = 1,
-            RaidIcon = 49230,
+            RaidIcon = { { npcID = 49230 } },
             _index = 13,
         },
         {
@@ -95,7 +95,7 @@ APR.RouteQuestStepList["465-TirisfalGladesUndead"] = {
             Fillers = { [26799] = { 1 } },
             Coord = { x = 1666.3, y = 1757.5 },
             Range = 0.75,
-            RaidIcon = 38895,
+            RaidIcon = { { npcID = 38895 } },
             _index = 14,
         },
         {
@@ -103,7 +103,7 @@ APR.RouteQuestStepList["465-TirisfalGladesUndead"] = {
             Fillers = { [26799] = { 1 } },
             Coord = { x = 1704.3, y = 1740.8 },
             Range = 0.75,
-            RaidIcon = 49231,
+            RaidIcon = { { npcID = 49231 } },
             _index = 15,
         },
         {
@@ -203,7 +203,7 @@ APR.RouteQuestStepList["465-TirisfalGladesUndead"] = {
             Coord = { x = 1556.5, y = 1855.5 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 38910,
+            RaidIcon = { { npcID = 38910, questID = 24961, objectiveIndex = 1 } },
             _index = 33,
         },
         {
@@ -287,7 +287,7 @@ APR.RouteQuestStepList["465-TirisfalGladesUndead"] = {
             Fillers = { [24971] = { 2 } },
             Coord = { x = 1384.9, y = 1765.7 },
             Range = 0.75,
-            RaidIcon = 49424,
+            RaidIcon = { { npcID = 49424 } },
             _index = 48,
         },
         {
@@ -1030,7 +1030,7 @@ APR.RouteQuestStepList["21-Silverpine"] = {
             Fillers = { [27180] = { 1 } },
             Coord = { x = 1450.5, y = 183.6 },
             Range = 69.83,
-            RaidIcon = 45197,
+            RaidIcon = { { npcID = 45197 } },
             _index = 76,
         },
         {
@@ -1048,7 +1048,7 @@ APR.RouteQuestStepList["21-Silverpine"] = {
             Fillers = { [27180] = { 1 } },
             Coord = { x = 1525.4, y = 145.1 },
             Range = 0.69,
-            RaidIcon = 45197,
+            RaidIcon = { { npcID = 45197 } },
             _index = 79,
         },
         {
@@ -1065,7 +1065,7 @@ APR.RouteQuestStepList["21-Silverpine"] = {
             Qpart = { [27180] = { 1 } },
             Coord = { x = 1526, y = 144.6 },
             Range = 65.47,
-            RaidIcon = 45197,
+            RaidIcon = { { npcID = 45197, questID = 27180, objectiveIndex = 1 } },
             _index = 82,
         },
         {
@@ -1111,7 +1111,7 @@ APR.RouteQuestStepList["21-Silverpine"] = {
             ExtraLineText = "SKIP_AFTER_THROWN",
             Coord = { x = 1028.8, y = 415.8 },
             Range = 0.1,
-            RaidIcon = 45228,
+            RaidIcon = { { npcID = 45228, questID = 27195, objectiveIndex = 1 } },
             _index = 90,
         },
         {
@@ -1794,7 +1794,7 @@ APR.RouteQuestStepList["25-Hillsbrad"] = {
             Coord = { x = 232.1, y = -902.7 },
             Range = 0.61,
             Button = { ["28138-1"] = 63079 },
-            RaidIcon = 47681,
+            RaidIcon = { { npcID = 47681 } },
             _index = 20,
         },
         {
@@ -2827,7 +2827,7 @@ APR.RouteQuestStepList["25-Hillsbrad"] = {
             Coord = { x = 232.1, y = -902.7 },
             Range = 0.61,
             Button = { ["28138-1"] = 63079 },
-            RaidIcon = 47681,
+            RaidIcon = { { npcID = 47681 } },
             _index = 194,
         },
         {

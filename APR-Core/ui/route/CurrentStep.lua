@@ -44,9 +44,8 @@ APR.currentStep.ShowHeaderMenu =
     APRTrace("APR-Core/ui/route/CurrentStep.lua:34:APR.currentStep:ShowHeaderMenu#1", APR.currentStep.ShowHeaderMenu)--[[/APR_DIAG]]
 
 --Local constant
-APR.currentStep.layout = { width = 250, topOffset = 30, padding = 16, indent = 25, detailGap = 3 }
+APR.currentStep.layout = { width = 250, topOffset = 30, padding = 16, indent = 25, detailGap = 3, actionButtonSize = 25, actionButtonGap = 5 }
 local FRAME_WIDTH = APR.currentStep.layout.width
-local RAID_ICON_TEXTURE = "Interface\\TargetingFrame\\UI-RaidTargetingIcon_8"
 
 ---------------------------------------------------------------------------------------
 --------------------------------- Current Step Frames ---------------------------------
@@ -939,9 +938,9 @@ local function PositionStepButtons(container, button, anchorButton)
     button:ClearAllPoints()
     local anchor = anchorButton or container
     if APR.settings.profile.currentStepQuestButtonPositionRight then
-        button:SetPoint("LEFT", anchor, "RIGHT", 5, 0)
+        button:SetPoint("LEFT", anchor, "RIGHT", APR.currentStep.layout.actionButtonGap, 0)
     else
-        button:SetPoint("RIGHT", anchor, "LEFT", -5, 0)
+        button:SetPoint("RIGHT", anchor, "LEFT", -APR.currentStep.layout.actionButtonGap, 0)
     end
 end--[[APR_DIAG]]
 PositionStepButtons = APRTrace("APR-Core/ui/route/CurrentStep.lua:721:PositionStepButtons#48", PositionStepButtons)--[[/APR_DIAG]]
@@ -958,11 +957,6 @@ local function GetStepButtonIcon(attribute, itemID)
     end
 end--[[APR_DIAG]]
 GetStepButtonIcon = APRTrace("APR-Core/ui/route/CurrentStep.lua:731:GetStepButtonIcon#49", GetStepButtonIcon)--[[/APR_DIAG]]
-
-local function GetRaidIconContainer(self, key)
-    return self.questsList[key] or self.questsExtraTextList[key] or self.fillersList[key]
-end--[[APR_DIAG]]
-GetRaidIconContainer = APRTrace("APR-Core/ui/route/CurrentStep.lua:744:GetRaidIconContainer#50", GetRaidIconContainer)--[[/APR_DIAG]]
 
 function APR.currentStep:ResetSecureStepButton(container, questsListKey, force)
     if not container or not container.IconButton then
@@ -1088,12 +1082,24 @@ APR.currentStep.ProcessPendingButtonResets = APRTrace(
     APR.currentStep.ProcessPendingButtonResets
 )--[[/APR_DIAG]]
 
-function APR.currentStep:PrepareRaidIcon(step)
-    local droppableQuest = step and step.DroppableQuest
-    local npcID = step
-        and ((step.KillNPC and step.KillNPC.npcID) or step.RaidIcon or (droppableQuest and droppableQuest.MobId))
-    self.pendingRaidIconNpcId = tonumber(npcID)
+function APR.currentStep:PrepareRaidIcon(step, bindingContext)
+    bindingContext = bindingContext or step
+    if self.raidIconBindingContext ~= bindingContext then self.raidIconInferredBindings = {} end
+    self.raidIconBindingContext = bindingContext
+    local value = APR:GetStepRaidIconTargets(step)
+    self.raidIconQuestBindings = {}
+    local entries = type(value) == "table" and (value.npcID and { value } or value) or {}
+    for _, entry in ipairs(entries) do
+        if type(entry) == "table" and entry.npcID and entry.questID then
+            self.raidIconQuestBindings[entry.npcID] = entry
+        end
+    end
+    local targets = APR:NormalizeRaidIconTargets(value)
+    self.pendingRaidIconNpcId = #targets > 0 and (type(value) == "number" and targets[1] or targets) or nil
+    -- A combat-deferred request belongs to the render that produced it.
+    self.pendingRaidIconRequests = {}
     self.raidIconAdded = false
+    if not self.contentUpdateActive then APR.RaidIconButtons:SetTargets(self.pendingRaidIconNpcId) end
 end--[[APR_DIAG]]
 APR.currentStep.PrepareRaidIcon = APRTrace(
     "APR-Core/ui/route/CurrentStep.lua:856:APR.currentStep:PrepareRaidIcon#55",
@@ -1112,118 +1118,26 @@ APR.currentStep.MaybeAttachRaidIconButton = APRTrace(
     APR.currentStep.MaybeAttachRaidIconButton
 )--[[/APR_DIAG]]
 
-function APR.currentStep:CreateSecureRaidIconButton(questsListKey, npcID)
-    local container = GetRaidIconContainer(self, questsListKey)
-    if not container then
-        return
-    end
-    if container.RaidIconButton and container.RaidIconButton.npcID == npcID then
-        self.raidIconButton = container.RaidIconButton
-        self:UpdateRaidIconButtonMacro()
-        return
-    end
-    if container.RaidIconButton then
-        self:ResetSecureRaidIconButton(container, questsListKey)
-        if container.RaidIconButton then
-            return
+function APR.currentStep:CreateSecureRaidIconButton(_, npcID)
+    APR.RaidIconButtons:SetTargets(npcID)
+end--[[APR_DIAG]]; APR.currentStep.CreateSecureRaidIconButton = APRTrace("APR-Core/ui/route/CurrentStep.lua:1111:APR.currentStep:CreateSecureRaidIconButton#31056", APR.currentStep.CreateSecureRaidIconButton)--[[/APR_DIAG]]
+
+function APR.currentStep:AddRaidIconButton(_, npcID)
+    local targets = APR:NormalizeRaidIconTargets(self.pendingRaidIconNpcId)
+    for _, id in ipairs(APR:NormalizeRaidIconTargets(npcID)) do
+        local found = false
+        for _, existing in ipairs(targets) do
+            if existing == id then found = true break end
         end
+        if not found then targets[#targets + 1] = id end
     end
-
-    local RaidIconButton = container.pooledRaidIconButton
-        or CreateFrame("Button", nil, container, "SecureActionButtonTemplate, BackdropTemplate")
-    container.pooledRaidIconButton = nil
-    RaidIconButton:Show()
-    RaidIconButton:SetSize(25, 25)
-    PositionStepButtons(container, RaidIconButton, container.IconButton)
-    RaidIconButton:SetNormalTexture(RAID_ICON_TEXTURE)
-    RaidIconButton:SetHighlightTexture([[Interface\Buttons\UI-Common-MouseHilight]])
-    RaidIconButton:RegisterForClicks("AnyUp", "AnyDown")
-    RaidIconButton:SetAttribute("type1", "macro")
-    RaidIconButton:SetAttribute("macrotext", APR:BuildRaidIconMacro(npcID))
-
-    RaidIconButton:SetScript(
-        "OnEnter", --[[APR_DIAG]]
-        APRTrace("APR-Core/ui/route/CurrentStep.lua:900:callback#58", --[[/APR_DIAG]] function(self)
-            local npcName = APR:GetRaidIconNpcName(self.npcID)
-            GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
-            APR:AddTooltipLine(GameTooltip, "Raid icon (skull)", "currentStep", "accent")
-            if npcName then
-                APR:AddTooltipLine(GameTooltip, npcName, "currentStep", "base", true)
-            else
-                APR:AddTooltipLine(GameTooltip, "Mouseover target", "currentStep", "muted", true)
-            end
-            GameTooltip:Show()
-        end--[[APR_DIAG]]) --[[/APR_DIAG]]
-    )
-
-    RaidIconButton:SetScript(
-        "OnLeave", --[[APR_DIAG]]
-        APRTrace(
-            "APR-Core/ui/route/CurrentStep.lua:912:callback#59", --[[/APR_DIAG]]
-            function(self) GameTooltip:Hide() end --[[APR_DIAG]]
-        ) --[[/APR_DIAG]]
-    )
-
-    RaidIconButton.npcID = npcID
-    container.RaidIconButton = RaidIconButton
-    if APR.Gamepad then
-        APR.Gamepad:RegisterActionButton(
-            RaidIconButton,
-            questsListKey,
-            self.fillersList[questsListKey] == container,
-            "target"
-        )
-    end
-    container.hasSecureControls = true
-    if APR.RegisterSkinTarget then
-        APR:RegisterSkinTarget(RaidIconButton, "icon", { texture = RaidIconButton:GetNormalTexture() })
-    end
-    self.raidIconButton = RaidIconButton
-    self:UpdateRaidIconButtonMacro()
-end--[[APR_DIAG]]
-APR.currentStep.CreateSecureRaidIconButton = APRTrace(
-    "APR-Core/ui/route/CurrentStep.lua:871:APR.currentStep:CreateSecureRaidIconButton#57",
-    APR.currentStep.CreateSecureRaidIconButton
-)--[[/APR_DIAG]]
-
-function APR.currentStep:AddRaidIconButton(questsListKey, npcID)
-    if not APR.settings.profile.currentStepShow or not npcID then
-        return
-    end
-
-    local container = GetRaidIconContainer(self, questsListKey)
-    if container then container.raidSeen = true end
-    if InCombatLockdown() then
-        self.pendingRaidIconRequests[questsListKey] = npcID
-        return
-    end
-
-    self.pendingRaidIconRequests[questsListKey] = nil
-    self:CreateSecureRaidIconButton(questsListKey, npcID)
-end--[[APR_DIAG]]
-APR.currentStep.AddRaidIconButton = APRTrace(
-    "APR-Core/ui/route/CurrentStep.lua:927:APR.currentStep:AddRaidIconButton#60",
-    APR.currentStep.AddRaidIconButton
-)--[[/APR_DIAG]]
+    self.pendingRaidIconNpcId = #targets == 1 and targets[1] or (#targets > 0 and targets or nil)
+    if not self.contentUpdateActive then APR.RaidIconButtons:SetTargets(self.pendingRaidIconNpcId) end
+end--[[APR_DIAG]]; APR.currentStep.AddRaidIconButton = APRTrace("APR-Core/ui/route/CurrentStep.lua:1115:APR.currentStep:AddRaidIconButton#31057", APR.currentStep.AddRaidIconButton)--[[/APR_DIAG]]
 
 function APR.currentStep:UpdateRaidIconButtonMacro()
-    if InCombatLockdown() then
-        self.pendingRaidIconMacroRefresh = true
-        return
-    end
-
-    local button = self.raidIconButton
-    if not button or not button.npcID then
-        return
-    end
-
-    local unitToken = APR:FindRaidIconUnitToken(button.npcID)
-    button:SetAttribute("macrotext", APR:BuildRaidIconMacro(button.npcID, unitToken))
-end--[[APR_DIAG]]
-APR.currentStep.UpdateRaidIconButtonMacro = APRTrace(
-    "APR-Core/ui/route/CurrentStep.lua:943:APR.currentStep:UpdateRaidIconButtonMacro#61",
-    APR.currentStep.UpdateRaidIconButtonMacro
-)--[[/APR_DIAG]]
+    APR.RaidIconButtons:RefreshMacros()
+end--[[APR_DIAG]]; APR.currentStep.UpdateRaidIconButtonMacro = APRTrace("APR-Core/ui/route/CurrentStep.lua:1128:APR.currentStep:UpdateRaidIconButtonMacro#31058", APR.currentStep.UpdateRaidIconButtonMacro)--[[/APR_DIAG]]
 
 function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute, equipSlot, itemTarget)
     attribute = attribute or "item"
@@ -1279,7 +1193,7 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
         or CreateFrame("Button", nil, container, "SecureActionButtonTemplate, BackdropTemplate")
     container.pooledStepButton = nil
     IconButton:Show()
-    IconButton:SetSize(25, 25)
+    IconButton:SetSize(self.layout.actionButtonSize, self.layout.actionButtonSize)
     PositionStepButtons(container, IconButton)
     if isHousingAction then
         IconButton:SetNormalAtlas("dashboard-panel-homestone-teleport-button")
@@ -1450,6 +1364,7 @@ function APR.currentStep:ProcessPendingStepButtons()
         or next(self.pendingRaidIconRequests)
     self:ProcessPendingButtonResets()
     self:RecycleCombatRows()
+    APR.RaidIconButtons:Flush(needsLayout)
 
     for questsListKey, data in pairs(self.pendingButtonRequests) do
         self:CreateSecureStepButton(questsListKey, data.itemID, data.attribute, data.equipSlot, data.itemTarget)
@@ -1671,6 +1586,8 @@ function APR.currentStep:Reset()
         APR.fillersFrame:RemoveFillerSteps()
         return
     end
+    self.pendingRaidIconNpcId = nil
+    APR.RaidIconButtons:SetTargets(nil)
     if APR.RouteSelection then APR.RouteSelection:RefreshFrameAnchor() end
     self:ButtonShow()
     self:ButtonDisable()

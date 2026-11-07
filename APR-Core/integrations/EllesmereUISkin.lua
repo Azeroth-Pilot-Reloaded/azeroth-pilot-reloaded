@@ -345,6 +345,7 @@ EUI.RegisterSkin(
                 S.CloseButton(frame)
             elseif kind == "icon" then
                 S.SquareIcon(options.texture, frame)
+                if options.fullTexture then options.texture:SetTexCoord(0, 1, 0, 1) end
             elseif kind == "window" then
                 -- APR lays out its own title row; EUI's fixed-height strip would cut across it.
                 if S.Shell then

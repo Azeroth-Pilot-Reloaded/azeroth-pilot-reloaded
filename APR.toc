@@ -146,6 +146,7 @@ APR-Core/ui/route/CurrentStepImagePreview.lua
 APR-Core/ui/route/CurrentStep.lua
 APR-Core/ui/route/CurrentStepRows.lua
 APR-Core/ui/route/FillersFrame.lua
+APR-Core/ui/route/RaidIconButtons.lua
 APR-Core/ui/route/QuestionPopUp.lua
 APR-Core/ui/route/QuestOrderList.lua
 APR-Core/ui/route/QuestOrderListRows.lua

@@ -601,7 +601,10 @@ function APR:ApplyModernTheme(frame, kind, options, scope)
         ModernAction(frame, kind, options, scope)
     elseif kind == "icon" then
         -- Preserve the secure button; only crop the artwork's baked bevel.
-        if options.texture then options.texture:SetTexCoord(0.07, 0.93, 0.07, 0.93) end
+        if options.texture then
+            if options.fullTexture then options.texture:SetTexCoord(0, 1, 0, 1)
+            else options.texture:SetTexCoord(0.07, 0.93, 0.07, 0.93) end
+        end
     elseif kind == "scrollbar" then
         if self.UI then self.UI:StyleScrollBar(frame) end
     elseif kind == "statusbar" then

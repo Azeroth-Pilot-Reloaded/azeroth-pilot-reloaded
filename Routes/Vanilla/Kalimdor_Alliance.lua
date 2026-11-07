@@ -352,7 +352,7 @@ APR.RouteQuestStepList["57-Teldrassil"] = {
             Fillers = { [2459] = { 1 } },
             Coord = { x = 284.2, y = 10012.6 },
             Range = 0.75,
-            RaidIcon = 7234,
+            RaidIcon = { { npcID = 7234, questID = 2459, objectiveIndex = 2 } },
             _index = 25,
         },
         {
@@ -414,7 +414,7 @@ APR.RouteQuestStepList["57-Teldrassil"] = {
             Coord = { x = 1191.5, y = 10133.4 },
             Range = 0.75,
             Button = { ["13946-1"] = 46716 },
-            RaidIcon = 2038,
+            RaidIcon = { { npcID = 2038, questID = 932, objectiveIndex = 1 } },
             _index = 34,
         },
         {
@@ -1367,7 +1367,7 @@ APR.RouteQuestStepList["97-AzuremystIsle"] = {
             Coord = { x = -12546.8, y = -4694.4 },
             Range = 0.61,
             Gossip = 1,
-            RaidIcon = 17243,
+            RaidIcon = { { npcID = 17243, questID = 9537, objectiveIndex = 1 } },
             _index = 83,
         },
         {
@@ -1748,7 +1748,7 @@ APR.RouteQuestStepList["106-BloodmystIsle"] = {
             Qpart = { [9574] = { 1 } },
             Coord = { x = -12058, y = -2091.9 },
             Range = 69.45,
-            RaidIcon = 17352,
+            RaidIcon = { { npcID = 17352, questID = 9574, objectiveIndex = 1 } },
             _index = 63,
         },
         {
@@ -2077,7 +2077,7 @@ APR.RouteQuestStepList["106-BloodmystIsle"] = {
             Qpart = { [9759] = { 1 } },
             Coord = { x = -10970.5, y = -1882.5 },
             Range = 438.88,
-            RaidIcon = 17982,
+            RaidIcon = { { npcID = 17982, questID = 9759, objectiveIndex = 1 } },
             _index = 122,
         },
         {
@@ -2674,7 +2674,7 @@ APR.RouteQuestStepList["62-Darkshore"] = {
             Fillers = { [13507] = { 1, 2 }, [13509] = { 1 } },
             Coord = { x = -1066.6, y = 7869.8 },
             Range = 199.45,
-            RaidIcon = 32964,
+            RaidIcon = { { npcID = 32964 } },
             _index = 68,
         },
         {
@@ -2814,7 +2814,7 @@ APR.RouteQuestStepList["62-Darkshore"] = {
             Fillers = { [13519] = { 2 }, [13596] = { 1 } },
             Coord = { x = 195.1, y = 6870.5 },
             Range = 0.75,
-            RaidIcon = 32899,
+            RaidIcon = { { npcID = 32899 } },
             _index = 92,
         },
         {
@@ -2861,7 +2861,7 @@ APR.RouteQuestStepList["62-Darkshore"] = {
             Fillers = { [13542] = { 1 } },
             Coord = { x = 553.4, y = 6328.5 },
             Range = 0.75,
-            RaidIcon = 33037,
+            RaidIcon = { { npcID = 33037 } },
             _index = 100,
         },
         {
@@ -2890,7 +2890,7 @@ APR.RouteQuestStepList["62-Darkshore"] = {
             Fillers = { [13542] = { 1 } },
             Coord = { x = 368.2, y = 6439.5 },
             Range = 0.75,
-            RaidIcon = 33033,
+            RaidIcon = { { npcID = 33033 } },
             _index = 104,
         },
         {
@@ -2898,7 +2898,7 @@ APR.RouteQuestStepList["62-Darkshore"] = {
             Fillers = { [13542] = { 1 } },
             Coord = { x = 476.6, y = 6545.5 },
             Range = 0.75,
-            RaidIcon = 33001,
+            RaidIcon = { { npcID = 33001 } },
             _index = 105,
         },
         {
@@ -2906,7 +2906,7 @@ APR.RouteQuestStepList["62-Darkshore"] = {
             Fillers = { [13542] = { 1 } },
             Coord = { x = 486.3, y = 6572.6 },
             Range = 0.69,
-            RaidIcon = 32990,
+            RaidIcon = { { npcID = 32990 } },
             _index = 106,
         },
         {
@@ -2941,7 +2941,7 @@ APR.RouteQuestStepList["62-Darkshore"] = {
             Qpart = { [13605] = { 1 } },
             Coord = { x = 522.1, y = 6397.2 },
             Range = 196.36,
-            RaidIcon = 33232,
+            RaidIcon = { { npcID = 33232, questID = 13605, objectiveIndex = 1 } },
             _index = 112,
         },
         {
@@ -3199,7 +3199,7 @@ APR.RouteQuestStepList["62-Darkshore"] = {
             Coord = { x = 83, y = 4997.5 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 33072,
+            RaidIcon = { { npcID = 33072, questID = 13882, objectiveIndex = 1 } },
             _index = 160,
         },
         {
@@ -3232,7 +3232,7 @@ APR.RouteQuestStepList["62-Darkshore"] = {
             Qpart = { [13882] = { 3 } },
             Coord = { x = 230.5, y = 4623.2 },
             Range = 46.64,
-            RaidIcon = 34306,
+            RaidIcon = { { npcID = 34306, questID = 13882, objectiveIndex = 3 } },
             _index = 166,
         },
         {
@@ -3298,7 +3298,7 @@ APR.RouteQuestStepList["62-Darkshore"] = {
             Fillers = { [13907] = { 1 } },
             Coord = { x = 601.7, y = 4678.7 },
             Range = 174.06,
-            RaidIcon = 34343,
+            RaidIcon = { { npcID = 34343 } },
             _index = 177,
         },
         {
@@ -3370,7 +3370,7 @@ APR.RouteQuestStepList["62-Darkshore"] = {
             ExtraLine = 13544,
             Coord = { x = 81.7, y = 4827.8 },
             Range = 0.75,
-            RaidIcon = 32997,
+            RaidIcon = { { npcID = 32997, questID = 13544, objectiveIndex = 1 } },
             _index = 189,
         },
         {
@@ -3424,7 +3424,7 @@ APR.RouteQuestStepList["63-Ashenvale"] = {
             Coord = { x = -215.7, y = 3844.3 },
             Range = 0.69,
             Button = { ["13595-1"] = 44967 },
-            RaidIcon = 33183,
+            RaidIcon = { { npcID = 33183 } },
             _index = 5,
         },
         {
@@ -3539,7 +3539,7 @@ APR.RouteQuestStepList["63-Ashenvale"] = {
             Coord = { x = 145.4, y = 3103.4 },
             Range = 0.75,
             Button = { ["13626-2"] = 45044 },
-            RaidIcon = 33347,
+            RaidIcon = { { npcID = 33347, questID = 13626, objectiveIndex = 2 } },
             _index = 26,
         },
         {
@@ -3635,7 +3635,7 @@ APR.RouteQuestStepList["63-Ashenvale"] = {
             ExtraLineText = "TALK_SENTINEL_AVANA",
             Coord = { x = 155.5, y = 3290.1 },
             Range = 87.55,
-            RaidIcon = 33445,
+            RaidIcon = { { npcID = 33445 } },
             _index = 42,
         },
         {
@@ -3850,7 +3850,7 @@ APR.RouteQuestStepList["63-Ashenvale"] = {
             Qpart = { [13928] = { 1 } },
             Coord = { x = -1742.6, y = 2584.1 },
             Range = 121.11,
-            RaidIcon = 34426,
+            RaidIcon = { { npcID = 34426, questID = 13928, objectiveIndex = 1 } },
             _index = 80,
         },
         {
@@ -3869,7 +3869,7 @@ APR.RouteQuestStepList["63-Ashenvale"] = {
             Coord = { x = -1889.9, y = 2710.8 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 34377,
+            RaidIcon = { { npcID = 34377, questID = 13935, objectiveIndex = 1 } },
             _index = 83,
         },
         {
@@ -5494,7 +5494,7 @@ APR.RouteQuestStepList["77-Felwood"] = {
             Coord = { x = -916, y = 6058.5 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 47842,
+            RaidIcon = { { npcID = 47842, questID = 28264, objectiveIndex = 1 } },
             _index = 128,
         },
         {
@@ -6080,7 +6080,7 @@ APR.RouteQuestStepList["83-Winterspring"] = {
             Qpart = { [28629] = { 1 }, [28632] = { 1 } },
             Coord = { x = -5284, y = 6621.1 },
             Range = 139.88,
-            RaidIcon = 49233,
+            RaidIcon = { { npcID = 49233 } },
             _index = 69,
         },
         {
@@ -6113,7 +6113,7 @@ APR.RouteQuestStepList["83-Winterspring"] = {
             Coord = { x = -4685.5, y = 6706.3 },
             Range = 0.75,
             Button = { ["28722-1"] = 12928 },
-            RaidIcon = 10978,
+            RaidIcon = { { npcID = 10978, questID = 28722, objectiveIndex = 1 } },
             _index = 75,
         },
         {
@@ -7071,7 +7071,7 @@ APR.RouteQuestStepList["65-StonetalonMountains"] = {
             Coord = { x = -210.5, y = 554.5 },
             Range = 0.69,
             Button = { ["25808-1"] = 56014 },
-            RaidIcon = 41311,
+            RaidIcon = { { npcID = 41311, questID = 25808, objectiveIndex = 1 } },
             _index = 85,
         },
         {
@@ -7193,7 +7193,7 @@ APR.RouteQuestStepList["65-StonetalonMountains"] = {
             Qpart = { [25848] = { 1 } },
             Coord = { x = -491.5, y = -43 },
             Range = 0.75,
-            RaidIcon = 41368,
+            RaidIcon = { { npcID = 41368, questID = 25848, objectiveIndex = 1 } },
             _index = 108,
         },
         {
@@ -7474,7 +7474,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             Coord = { x = -1537.8, y = -360.4 },
             Range = 0.61,
             Gossip = 1,
-            RaidIcon = 38383,
+            RaidIcon = { { npcID = 38383, questID = 25191, objectiveIndex = 1 } },
             _index = 8,
         },
         {
@@ -7502,7 +7502,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             Coord = { x = -3776.5, y = -2221 },
             Range = 0.61,
             Gossip = 1,
-            RaidIcon = 38619,
+            RaidIcon = { { npcID = 38619, questID = 24934, objectiveIndex = 1 } },
             _index = 13,
         },
         {
@@ -7692,7 +7692,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             Coord = { x = -2571.7, y = -2271 },
             Range = 0.69,
             Button = { ["25027-1"] = 52073 },
-            RaidIcon = 38941,
+            RaidIcon = { { npcID = 38941 } },
             _index = 46,
         },
         {
@@ -7725,7 +7725,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             Qpart = { [24565] = { 1, 2 }, [24570] = { 1 }, [24571] = { 1 } },
             Coord = { x = -2303, y = -1662 },
             Range = 99.09,
-            RaidIcon = 37738,
+            RaidIcon = { { npcID = 37738 } },
             _index = 52,
         },
         {
@@ -7743,7 +7743,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             Coord = { x = -2338.5, y = -1766 },
             Range = 129.71,
             Button = { ["24566-1"] = 49882 },
-            RaidIcon = 37091,
+            RaidIcon = { { npcID = 37091 } },
             _index = 55,
         },
         {
@@ -7761,7 +7761,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             Coord = { x = -2216.4, y = -1706 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 37570,
+            RaidIcon = { { npcID = 37570, questID = 24601, objectiveIndex = 1 } },
             _index = 58,
         },
         {
@@ -7930,7 +7930,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             ExtraLineText = "KILL_SAPPER",
             Coord = { x = -2177, y = -3197.7 },
             Range = 67.29,
-            RaidIcon = 37925,
+            RaidIcon = { { npcID = 37925, questID = 25079, objectiveIndex = 1 } },
             _index = 88,
         },
         {
@@ -8087,7 +8087,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
             Coord = { x = -2139, y = -4168.9 },
             Range = 0.61,
             Gossip = 1,
-            RaidIcon = 39155,
+            RaidIcon = { { npcID = 39155, questID = 25120, objectiveIndex = 1 } },
             _index = 116,
         },
         {
@@ -8217,7 +8217,7 @@ APR.RouteQuestStepList["70-DustwallowMarsh"] = {
             Coord = { x = -4496.8, y = -3784.2 },
             Range = 125.92,
             Gossip = 1,
-            RaidIcon = 23602,
+            RaidIcon = { { npcID = 23602, questID = 27210, objectiveIndex = 1 } },
             _index = 3,
         },
         {
@@ -8250,7 +8250,7 @@ APR.RouteQuestStepList["70-DustwallowMarsh"] = {
             Qpart = { [27212] = { 1 } },
             Coord = { x = -4523.5, y = -3809.2 },
             Range = 98.64,
-            RaidIcon = 4979,
+            RaidIcon = { { npcID = 4979, questID = 27212, objectiveIndex = 1 } },
             _index = 9,
         },
         {
@@ -8377,7 +8377,7 @@ APR.RouteQuestStepList["70-DustwallowMarsh"] = {
             Fillers = { [27183] = { 1 } },
             Coord = { x = -3903.2, y = -3010 },
             Range = 72.54,
-            RaidIcon = 23554,
+            RaidIcon = { { npcID = 23554 } },
             _index = 33,
         },
         {
@@ -8925,7 +8925,7 @@ APR.RouteQuestStepList["70-DustwallowMarsh"] = {
         {
             Done = { 27287 },
             Coord = { x = -2871, y = -3931 },
-            RaidIcon = 5089,
+            RaidIcon = { { npcID = 5089, questID = 27287 } },
             _index = 132,
         },
         {
@@ -9003,7 +9003,7 @@ APR.RouteQuestStepList["70-DustwallowMarsh"] = {
             Qpart = { [1222] = { 1 } },
             Coord = { x = -3458, y = -2709.2 },
             Range = 208.91,
-            RaidIcon = 4880,
+            RaidIcon = { { npcID = 4880, questID = 1222, objectiveIndex = 1 } },
             _index = 146,
         },
         {
@@ -9151,7 +9151,7 @@ APR.RouteQuestStepList["66-Desolace"] = {
             ExtraLineText = "USE_MOUNT",
             Coord = { x = 1793.9, y = 171.9 },
             Range = 87.9,
-            RaidIcon = 36416,
+            RaidIcon = { { npcID = 36416 } },
             _index = 2,
         },
         {
@@ -9366,7 +9366,7 @@ APR.RouteQuestStepList["66-Desolace"] = {
             Coord = { x = 2488.6, y = -356.8 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 35773,
+            RaidIcon = { { npcID = 35773, questID = 14256, objectiveIndex = 1 } },
             _index = 39,
         },
         {
@@ -9542,7 +9542,7 @@ APR.RouteQuestStepList["66-Desolace"] = {
             Qpart = { [1456] = { 1 } },
             Coord = { x = 2864.6, y = 128.4 },
             Range = 61.2,
-            RaidIcon = 4719,
+            RaidIcon = { { npcID = 4719, questID = 1456, objectiveIndex = 1 } },
             _index = 71,
         },
         {
@@ -9755,7 +9755,7 @@ APR.RouteQuestStepList["66-Desolace"] = {
             Coord = { x = 1613.3, y = -1048.5 },
             Range = 124.84,
             Gossip = 1,
-            RaidIcon = 36056,
+            RaidIcon = { { npcID = 36056, questID = 14318, objectiveIndex = 1 } },
             _index = 109,
         },
         {
@@ -9932,7 +9932,7 @@ APR.RouteQuestStepList["66-Desolace"] = {
             Fillers = { [14329] = { 1 } },
             Coord = { x = 2706.1, y = -1191.3 },
             Range = 356.25,
-            RaidIcon = 12277,
+            RaidIcon = { { npcID = 12277 } },
             _index = 140,
         },
         {
@@ -9966,7 +9966,7 @@ APR.RouteQuestStepList["66-Desolace"] = {
             Fillers = { [14379] = { 1 } },
             Coord = { x = 2926.5, y = -2044.5 },
             Range = 0.69,
-            RaidIcon = 36353,
+            RaidIcon = { { npcID = 36353 } },
             _index = 146,
         },
         {
@@ -10216,7 +10216,7 @@ APR.RouteQuestStepList["69-Feralas"] = {
         {
             Done = { 25304 },
             Coord = { x = 2292.6, y = -4348.4 },
-            RaidIcon = 40036,
+            RaidIcon = { { npcID = 40036, questID = 25304 } },
             _index = 33,
         },
         {
@@ -10884,7 +10884,7 @@ APR.RouteQuestStepList["64-ThousandNeedles"] = {
             Coord = { x = -3798.7, y = -6160 },
             Range = 0.69,
             Button = { ["25517-1"] = 54746 },
-            RaidIcon = 40832,
+            RaidIcon = { { npcID = 40832, questID = 25517, objectiveIndex = 1 } },
             _index = 13,
         },
         {
@@ -10905,7 +10905,7 @@ APR.RouteQuestStepList["64-ThousandNeedles"] = {
             Coord = { x = -3935.7, y = -6168.3 },
             Range = 0.69,
             Button = { ["25524-1"] = 54821 },
-            RaidIcon = 40449,
+            RaidIcon = { { npcID = 40449 } },
             _index = 16,
         },
         {
@@ -11330,7 +11330,7 @@ APR.RouteQuestStepList["64-ThousandNeedles"] = {
             Qpart = { [25756] = { 1 } },
             Coord = { x = -4442.9, y = -5541.2 },
             Range = 0.61,
-            RaidIcon = 41199,
+            RaidIcon = { { npcID = 41199, questID = 25756, objectiveIndex = 1 } },
             _index = 88,
         },
         {
@@ -11836,7 +11836,7 @@ APR.RouteQuestStepList["64-ThousandNeedles"] = {
             Coord = { x = -1807, y = -5716.8 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 47602,
+            RaidIcon = { { npcID = 47602, questID = 28136, objectiveIndex = 1 } },
             _index = 178,
         },
         {
@@ -11938,7 +11938,7 @@ APR.RouteQuestStepList["64-ThousandNeedles"] = {
             Coord = { x = -2849.2, y = -5815.8 },
             Range = 0.61,
             Button = { ["28159-1"] = 63104 },
-            RaidIcon = 47777,
+            RaidIcon = { { npcID = 47777, questID = 28159, objectiveIndex = 1 } },
             _index = 196,
         },
         {
@@ -12418,7 +12418,7 @@ APR.RouteQuestStepList["71-Tanaris"] = {
             Coord = { x = -4046.2, y = -8667.8 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 11811,
+            RaidIcon = { { npcID = 11811, questID = 24953, objectiveIndex = 1 } },
             _index = 81,
         },
         {
@@ -12467,7 +12467,7 @@ APR.RouteQuestStepList["71-Tanaris"] = {
             Qpart = { [25063] = { 1 } },
             Coord = { x = -3571, y = -10029 },
             Range = 27.9,
-            RaidIcon = 5431,
+            RaidIcon = { { npcID = 5431, questID = 25063, objectiveIndex = 1 } },
             _index = 90,
         },
         {
@@ -12974,7 +12974,7 @@ APR.RouteQuestStepList["78-UnGoroCrater"] = {
             Coord = { x = -1392.9, y = -7205.3 },
             Range = 325.15,
             Button = { ["24735-1"] = 11804 },
-            RaidIcon = 9999,
+            RaidIcon = { { npcID = 9999, questID = 24735, objectiveIndex = 1 } },
             _index = 56,
         },
         {
@@ -13124,7 +13124,7 @@ APR.RouteQuestStepList["78-UnGoroCrater"] = {
             Coord = { x = -1711.5, y = -6800.8 },
             Range = 0.69,
             Button = { ["24699-1"] = 50746 },
-            RaidIcon = 38307,
+            RaidIcon = { { npcID = 38307, questID = 24699, objectiveIndex = 1 } },
             _index = 81,
         },
         {
@@ -13360,7 +13360,7 @@ APR.RouteQuestStepList["78-UnGoroCrater"] = {
             Qpart = { [24709] = { 1 } },
             Coord = { x = -901, y = -7973.9 },
             Range = 0.69,
-            RaidIcon = 38329,
+            RaidIcon = { { npcID = 38329, questID = 24709, objectiveIndex = 1 } },
             _index = 122,
         },
         {
@@ -13394,7 +13394,7 @@ APR.RouteQuestStepList["78-UnGoroCrater"] = {
             Waypoint = 24694,
             Coord = { x = -1459, y = -7507.4 },
             Range = 23.55,
-            RaidIcon = 38504,
+            RaidIcon = { { npcID = 38504 } },
             _index = 128,
         },
         {
@@ -13539,7 +13539,7 @@ APR.RouteQuestStepList["81-Silithus"] = {
             Qpart = { [8283] = { 1 } },
             Coord = { x = 967.9, y = -8085.4 },
             Range = 0.75,
-            RaidIcon = 15196,
+            RaidIcon = { { npcID = 15196, questID = 8283, objectiveIndex = 1 } },
             _index = 16,
         },
         {
@@ -13588,7 +13588,7 @@ APR.RouteQuestStepList["81-Silithus"] = {
             Qpart = { [8321] = { 1 } },
             Coord = { x = 13.4, y = -6320.3 },
             Range = 0.69,
-            RaidIcon = 15202,
+            RaidIcon = { { npcID = 15202, questID = 8321, objectiveIndex = 1 } },
             _index = 25,
         },
         {
@@ -13611,14 +13611,14 @@ APR.RouteQuestStepList["81-Silithus"] = {
             Coord = { x = 1100.8, y = -8011.9 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 15170,
+            RaidIcon = { { npcID = 15170, questID = 8304, objectiveIndex = 2 } },
             _index = 29,
         },
         {
             Qpart = { [8304] = { 1 } },
             Coord = { x = 1116.5, y = -8021.8 },
             Range = 0.61,
-            RaidIcon = 15171,
+            RaidIcon = { { npcID = 15171, questID = 8304, objectiveIndex = 1 } },
             _index = 30,
         },
         {
@@ -13795,14 +13795,14 @@ APR.RouteQuestStepList["81-Silithus"] = {
             Qpart = { [8279] = { 3 } },
             Coord = { x = 1123, y = -6922.8 },
             Range = 0.61,
-            RaidIcon = 11804,
+            RaidIcon = { { npcID = 11804, questID = 8279, objectiveIndex = 3 } },
             _index = 60,
         },
         {
             Qpart = { [8279] = { 1 } },
             Coord = { x = 1597.4, y = -6801.7 },
             Range = 0.69,
-            RaidIcon = 15200,
+            RaidIcon = { { npcID = 15200, questID = 8279, objectiveIndex = 1 } },
             _index = 61,
         },
         {
@@ -13815,7 +13815,7 @@ APR.RouteQuestStepList["81-Silithus"] = {
             Qpart = { [8279] = { 2 } },
             Coord = { x = 1980.2, y = -7966.4 },
             Range = 0.69,
-            RaidIcon = 11803,
+            RaidIcon = { { npcID = 11803, questID = 8279, objectiveIndex = 2 } },
             _index = 63,
         },
         {

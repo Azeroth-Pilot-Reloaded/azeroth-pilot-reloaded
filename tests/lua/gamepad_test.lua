@@ -69,10 +69,10 @@ local function handle(frame)
 end
 function SecureHandlerWrapScript(frame, script, owner, body)
     assert(script == "PreClick" and frame == owner)
-    local chunk = assert(loadstring("return function(self) " .. body .. " end"))
+    local chunk = assert(loadstring("return function(self, button, down) " .. body .. " end"))
     setfenv(chunk, { ipairs = ipairs, newtable = function(...) return { ... } end })
     local snippet = chunk()
-    frame.secureClick = function() snippet(handle(frame)) end
+    frame.secureClick = function(_, button, down) snippet(handle(frame), button, down) end
 end
 
 -- Old clients have no native navigation. Loading, bindings and normal windows still work.

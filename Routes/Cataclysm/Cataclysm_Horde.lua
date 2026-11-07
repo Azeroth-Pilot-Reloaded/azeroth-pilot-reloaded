@@ -1646,7 +1646,7 @@ APR.RouteQuestStepList["174-LostIsles"] = {
             ExtraLineText = "TALK_SASSY",
             Coord = { x = 2462.1, y = 2388.3 },
             Gossip = 1,
-            RaidIcon = 38387,
+            RaidIcon = { { npcID = 38387, questID = 25266 } },
             _index = 199,
         },
         {
