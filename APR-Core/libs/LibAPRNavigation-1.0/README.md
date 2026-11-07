@@ -19,6 +19,13 @@ Connections may specify `instructionKey` for a localized interaction that is
 more specific than their transport kind. Hidden teleports keep their approach
 passages as separate edges rather than directing players through cave walls.
 
+Each client keeps its portals in `Data/*/Portals.lua`. Forever's geography adds
+world-scoped map corrections and local access polygons/circles; map and area
+names are still supplied by the client. Explicit `space = "mapProjection"`
+observations may extend beyond map artwork: three normalized client samples
+provide their affine world projection, while ordinary `space = "map"` points
+retain their normalized coordinate limits.
+
 ## Ownership
 
 | Location                                                  | Responsibility                                                                                          |

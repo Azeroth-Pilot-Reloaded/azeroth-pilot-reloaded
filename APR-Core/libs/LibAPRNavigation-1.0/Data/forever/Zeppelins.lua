@@ -28,5 +28,23 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "zeppelins", {
             requirements = { faction = "Horde" },
             seconds = 240,
         },
+        {
+            id = "boat-forever-transport-4014",
+            kind = "zeppelin",
+            bidirectional = true,
+            from = { space = "map", uiMapID = 2521, x = 0.6581, y = 0.8341 },
+            to = { space = "map", uiMapID = 1416, x = 0.1262, y = 0.5203 },
+            requirements = { faction = "Alliance" },
+            seconds = 290,
+        },
+        {
+            id = "boat-forever-transport-4013",
+            kind = "zeppelin",
+            bidirectional = true,
+            from = { space = "map", uiMapID = 2521, x = 0.5791, y = 0.8078, areaID = 16628 },
+            to = { space = "map", uiMapID = 1412, x = 0.343, y = 0.2576 },
+            requirements = { faction = "Horde" },
+            seconds = 310,
+        },
     },
-}, 30)
+}, 31)

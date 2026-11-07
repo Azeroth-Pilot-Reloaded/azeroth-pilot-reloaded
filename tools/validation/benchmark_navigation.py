@@ -352,7 +352,7 @@ data.env.isQuestCompleted = function() counters.quest = counters.quest + 1; retu
 data.env.isQuestActive = function() counters.quest = counters.quest + 1; return false end
 local build = data.CreateEdgeBuild
 function data:CreateEdgeBuild(context)
-    assert(context.connectionID == "additional-dornogal-karesh")
+    assert(context.connectionID == data:GetConfig().ZoneRoutes[2472])
     counters.catalogue = counters.catalogue + 1
     return build(self, context)
 end

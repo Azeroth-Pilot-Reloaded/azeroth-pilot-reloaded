@@ -1,11 +1,16 @@
 -- Planning uses the consumer's environment and never shares character state.
 -- Optional waypoint output is isolated in WaypointUI.lua.
-local Lib = LibStub:NewLibrary("LibAPRNavigation-1.0", 28)
+local Lib = LibStub:NewLibrary("LibAPRNavigation-1.0", 29)
 if not Lib then return end
 
 Lib.datasets = Lib.datasets or {}
 Lib.dataRevisions = Lib.dataRevisions or {}
 Lib.modules = Lib.modules or {}
+-- Retire the old split catalogue even when an older embedded copy loads later.
+for _, profile in ipairs({ "retail", "forever" }) do
+    if Lib.datasets[profile] then Lib.datasets[profile].additional_portals = nil end
+    Lib.dataRevisions[profile .. ":additional_portals"] = 2147483647
+end
 Lib.Instance = Lib.Instance or {}
 local Instance = Lib.Instance
 Instance.__index = Instance
@@ -78,6 +83,8 @@ local function ValidatePosition(position)
                     and position.y <= 1,
                 "invalid map endpoint"
             )
+        elseif position.space == "mapProjection" then
+            assert(NonnegativeNumber(position.uiMapID), "projection map required")
         else
             assert(
                 NonnegativeNumber(position.instanceID)
@@ -410,6 +417,7 @@ function Instance:InvalidatePositionCache()
     self.positions = {}
     self.mapInfos = {}
     self.regions = {}
+    self.localRegionGeometry = nil
     self.entranceLookup = {}
     self.zoneGraph = nil
 end

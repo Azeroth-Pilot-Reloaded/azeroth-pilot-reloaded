@@ -908,13 +908,14 @@ environment.getGlobalText = APRTrace(
     environment.getGlobalText
 )--[[/APR_DIAG]]
 function environment.getCharacter()
-    local _, _, raceID = Call(UnitRace, "player")
+    local _, race, raceID = Call(UnitRace, "player")
     local _, class = Call(UnitClass, "player")
     class = class or Call(UnitClassBase, "player")
     return {
         faction = Text(Call(UnitFactionGroup, "player")),
         level = Call(UnitLevel, "player"),
         raceID = raceID,
+        race = Text(race),
         class = type(class) == "string" and class:upper() or nil,
         inGroup = Call(IsInGroup),
         mapID = environment.getCurrentMapID(),

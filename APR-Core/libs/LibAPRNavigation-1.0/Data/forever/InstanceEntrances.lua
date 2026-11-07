@@ -6,12 +6,12 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "instance_entrances", {
             kind = "dungeon",
             reviewStatus = "confirmed",
             instanceID = 33,
+            exterior = { space = "map", uiMapID = 1421, x = 0.4474, y = 0.678 },
             approach = {
                 { space = "map", uiMapID = 1421, x = 0.4716, y = 0.6951 },
                 { space = "map", uiMapID = 1421, x = 0.4557, y = 0.6828 },
                 { space = "map", uiMapID = 1421, x = 0.4474, y = 0.678 },
             },
-            exterior = { space = "map", uiMapID = 1421, x = 0.4474, y = 0.678 },
             interiorMapIDs = {},
         },
         {
@@ -35,6 +35,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "instance_entrances", {
             kind = "dungeon",
             reviewStatus = "confirmed",
             instanceID = 43,
+            exterior = { space = "map", uiMapID = 1413, x = 0.4772, y = 0.3493 },
             approach = {
                 { space = "map", uiMapID = 1413, x = 0.4597, y = 0.3625 },
                 { space = "map", uiMapID = 1413, x = 0.4623, y = 0.3489 },
@@ -42,7 +43,6 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "instance_entrances", {
                 { space = "map", uiMapID = 1413, x = 0.4744, y = 0.3314 },
                 { space = "map", uiMapID = 1413, x = 0.4772, y = 0.3493 },
             },
-            exterior = { space = "map", uiMapID = 1413, x = 0.4772, y = 0.3493 },
             interiorMapIDs = {},
         },
         {
@@ -50,11 +50,11 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "instance_entrances", {
             kind = "dungeon",
             reviewStatus = "confirmed",
             instanceID = 47,
+            exterior = { space = "map", uiMapID = 1413, x = 0.4228, y = 0.8989 },
             approach = {
                 { space = "map", uiMapID = 1413, x = 0.4371, y = 0.9011 },
                 { space = "map", uiMapID = 1413, x = 0.4228, y = 0.8989 },
             },
-            exterior = { space = "map", uiMapID = 1413, x = 0.4228, y = 0.8989 },
             interiorMapIDs = {},
         },
         {
@@ -70,6 +70,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "instance_entrances", {
             kind = "dungeon",
             reviewStatus = "confirmed",
             instanceID = 70,
+            exterior = { space = "map", uiMapID = 1418, x = 0.3523, y = 0.104 },
             approach = {
                 { space = "map", uiMapID = 1418, x = 0.4428, y = 0.1215 },
                 { space = "map", uiMapID = 1418, x = 0.4212, y = 0.1195 },
@@ -78,7 +79,6 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "instance_entrances", {
                 { space = "map", uiMapID = 1418, x = 0.3641, y = 0.1199 },
                 { space = "map", uiMapID = 1418, x = 0.3523, y = 0.104 },
             },
-            exterior = { space = "map", uiMapID = 1418, x = 0.3523, y = 0.104 },
             interiorMapIDs = {},
         },
         {
@@ -102,13 +102,13 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "instance_entrances", {
             kind = "dungeon",
             reviewStatus = "confirmed",
             instanceID = 129,
+            exterior = { space = "map", uiMapID = 1413, x = 0.5086, y = 0.9286 },
             approach = {
                 { space = "map", uiMapID = 1413, x = 0.491, y = 0.9356 },
                 { space = "map", uiMapID = 1413, x = 0.4973, y = 0.9272 },
                 { space = "map", uiMapID = 1413, x = 0.5025, y = 0.9283 },
                 { space = "map", uiMapID = 1413, x = 0.5086, y = 0.9286 },
             },
-            exterior = { space = "map", uiMapID = 1413, x = 0.5086, y = 0.9286 },
             interiorMapIDs = {},
         },
         {
@@ -172,12 +172,12 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "instance_entrances", {
             kind = "dungeon",
             reviewStatus = "candidate",
             instanceID = 289,
+            exterior = { space = "map", uiMapID = 1422, x = 0.685, y = 0.7258 },
             approach = {
                 { space = "map", uiMapID = 1422, x = 0.6972, y = 0.7336 },
                 { space = "map", uiMapID = 1422, x = 0.4212, y = 0.1195 },
                 { space = "map", uiMapID = 1422, x = 0.685, y = 0.7258 },
             },
-            exterior = { space = "map", uiMapID = 1422, x = 0.685, y = 0.7258 },
             interiorMapIDs = {},
             reason = "mandatory-approach-access-condition-not-verified",
         },
@@ -186,11 +186,11 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "instance_entrances", {
             kind = "dungeon",
             reviewStatus = "confirmed",
             instanceID = 329,
+            exterior = { space = "map", uiMapID = 1423, x = 0.3134, y = 0.1578 },
             approach = {
                 { space = "map", uiMapID = 1423, x = 0.3085, y = 0.1978 },
                 { space = "map", uiMapID = 1423, x = 0.3134, y = 0.1578 },
             },
-            exterior = { space = "map", uiMapID = 1423, x = 0.3134, y = 0.1578 },
             interiorMapIDs = {},
         },
         {
@@ -261,10 +261,10 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "instance_entrances", {
         {
             id = "entrance-9013-unresolved",
             kind = "raid",
-            reviewStatus = "candidate",
+            reviewStatus = "confirmed",
             instanceID = 509,
+            exterior = { space = "mapProjection", uiMapID = 1451, x = 0.2957, y = 1.0609 },
             interiorMapIDs = {},
-            reason = "unresolved-exterior-map",
         },
         {
             id = "entrance-9019-from-1451-at-1548-9798",
@@ -274,5 +274,41 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "instance_entrances", {
             exterior = { space = "map", uiMapID = 1451, x = 0.1548, y = 0.9798 },
             interiorMapIDs = {},
         },
+        {
+            id = "entrance-forever-hall-of-thanes",
+            kind = "dungeon",
+            reviewStatus = "confirmed",
+            instanceID = 3065,
+            exterior = { space = "map", uiMapID = 1455, x = 0.2798, y = 0.4778 },
+            interiorMapIDs = {},
+        },
+        {
+            id = "entrance-forever-ruins-of-lordaeron",
+            kind = "dungeon",
+            reviewStatus = "confirmed",
+            instanceID = 2999,
+            exterior = { space = "map", uiMapID = 1458, x = 0.7231, y = 0.114 },
+            interiorMapIDs = {},
+        },
+        {
+            id = "entrance-forever-excavation-site",
+            kind = "dungeon",
+            reviewStatus = "confirmed",
+            instanceID = 2998,
+            exterior = { space = "map", uiMapID = 1437, x = 0.4822, y = 0.5649 },
+            approach = {
+                { space = "map", uiMapID = 1437, x = 0.5327, y = 0.6581 },
+                { space = "map", uiMapID = 1437, x = 0.4822, y = 0.5649 },
+            },
+            interiorMapIDs = {},
+        },
+        {
+            id = "entrance-forever-city-of-dalaran",
+            kind = "dungeon",
+            reviewStatus = "confirmed",
+            instanceID = 2959,
+            exterior = { space = "map", uiMapID = 1421, x = 0.6928, y = 0.4555 },
+            interiorMapIDs = {},
+        },
     },
-}, 2)
+}, 3)

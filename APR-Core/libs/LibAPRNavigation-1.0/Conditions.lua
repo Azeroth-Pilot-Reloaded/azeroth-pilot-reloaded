@@ -1,5 +1,5 @@
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("conditions", 10) then return end
+if not Lib:BeginModule("conditions", 11) then return end
 local Instance = Lib.Instance
 
 local function Contains(values, wanted)
@@ -135,7 +135,7 @@ function Instance:CheckRequirements(requirements, character)
             result, reason = self:CheckRequirements(value, character)
             if reason then return false, reason end
             if result ~= nil then result = not result end
-        elseif key == "faction" or key == "raceID" or key == "class" or key == "mapID" then
+        elseif key == "faction" or key == "raceID" or key == "race" or key == "class" or key == "mapID" then
             if character[key] ~= nil then result = character[key] == value end
         elseif key == "minLevel" or key == "maxLevel" then
             if type(value) ~= "number" then return false, "invalid_requirements" end

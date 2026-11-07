@@ -22,7 +22,6 @@
   <Script file="Data/retail/Boats.lua" />
   <Script file="Data/retail/Zeppelins.lua" />
   <Script file="Data/retail/Portals.lua" />
-  <Script file="Data/retail/AdditionalPortals.lua" />
   <Script file="Data/retail/Items.lua" />
   <Script file="Data/retail/Spells.lua" />
   <Script file="Data/retail/Passages.lua" />
@@ -33,7 +32,6 @@
   <Script file="Data/forever/Boats.lua" />
   <Script file="Data/forever/Zeppelins.lua" />
   <Script file="Data/forever/Portals.lua" />
-  <Script file="Data/forever/AdditionalPortals.lua" />
   <Script file="Data/forever/Items.lua" />
   <Script file="Data/forever/Spells.lua" />
   <Script file="Data/forever/Passages.lua" />

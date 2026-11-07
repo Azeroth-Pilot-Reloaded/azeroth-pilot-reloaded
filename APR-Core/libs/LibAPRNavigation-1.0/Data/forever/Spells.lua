@@ -6,7 +6,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "spells", {
             kind = "spell",
             bidirectional = false,
             from = { dynamic = "player" },
-            to = { space = "world", instanceID = 0, x = -9041, y = 917.65997314453, z = 66.69000244141 },
+            to = { space = "map", uiMapID = 1453, x = 0.3801, y = 0.8084 },
             actions = { { id = 3561, groupReagentID = 17032, groupSpellID = 10059, reagentID = 17031, type = "spell" } },
         },
         {
@@ -14,7 +14,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "spells", {
             kind = "spell",
             bidirectional = false,
             from = { dynamic = "player" },
-            to = { space = "world", instanceID = 0, x = -4613.7099609375, y = -915.28997802734, z = 501.05999755859 },
+            to = { space = "map", uiMapID = 1455, x = 0.2552, y = 0.0841 },
             actions = { { id = 3562, groupReagentID = 17032, groupSpellID = 11416, reagentID = 17031, type = "spell" } },
         },
         {
@@ -22,7 +22,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "spells", {
             kind = "spell",
             bidirectional = false,
             from = { dynamic = "player" },
-            to = { space = "world", instanceID = 1, x = 7415.1098632812, y = 46.24000167847, z = 2.75999999046 },
+            to = { space = "map", uiMapID = 1457, x = 0.4013, y = 0.8183 },
             actions = { { id = 3565, groupReagentID = 17032, groupSpellID = 11419, reagentID = 17031, type = "spell" } },
         },
         {
@@ -30,7 +30,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "spells", {
             kind = "spell",
             bidirectional = false,
             from = { dynamic = "player" },
-            to = { space = "world", instanceID = 1, x = -3748.1101074219, y = -4440.2099609375, z = 30.56999969482 },
+            to = { instanceID = 1, space = "world", x = -3748.1101074219, y = -4440.2099609375, z = 30.56999969482 },
             actions = {
                 { id = 49359, groupReagentID = 17032, groupSpellID = 49360, reagentID = 17031, type = "spell" },
             },
@@ -40,7 +40,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "spells", {
             kind = "spell",
             bidirectional = false,
             from = { dynamic = "player" },
-            to = { space = "world", instanceID = 1, x = 1445.2099609375, y = -4499.5600585938, z = 18.30669975281 },
+            to = { space = "map", uiMapID = 1454, x = 0.3857, y = 0.8595 },
             actions = { { id = 3567, groupReagentID = 17032, groupSpellID = 11417, reagentID = 17031, type = "spell" } },
         },
         {
@@ -48,7 +48,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "spells", {
             kind = "spell",
             bidirectional = false,
             from = { dynamic = "player" },
-            to = { space = "world", instanceID = 0, x = 1947.2600097656, y = -98.15000152588, z = 41.14670181274 },
+            to = { space = "map", uiMapID = 1458, x = 0.8465, y = 0.1632 },
             actions = { { id = 3563, groupReagentID = 17032, groupSpellID = 11418, reagentID = 17031, type = "spell" } },
         },
         {
@@ -56,7 +56,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "spells", {
             kind = "spell",
             bidirectional = false,
             from = { dynamic = "player" },
-            to = { space = "world", instanceID = 1, x = -967.38000488281, y = 284.82000732422, z = 110.76999664307 },
+            to = { space = "map", uiMapID = 1456, x = 0.2235, y = 0.1652 },
             actions = { { id = 3566, groupReagentID = 17032, groupSpellID = 11420, reagentID = 17031, type = "spell" } },
         },
         {
@@ -64,7 +64,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "spells", {
             kind = "spell",
             bidirectional = false,
             from = { dynamic = "player" },
-            to = { space = "world", instanceID = 0, x = -10469, y = -3331.5400390625, z = 25.46999931335 },
+            to = { instanceID = 0, space = "world", x = -10469, y = -3331.5400390625, z = 25.46999931335 },
             actions = {
                 { id = 49358, groupReagentID = 17032, groupSpellID = 49361, reagentID = 17031, type = "spell" },
             },
@@ -74,7 +74,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "spells", {
             kind = "spell",
             bidirectional = false,
             from = { dynamic = "player" },
-            to = { space = "world", instanceID = 0, x = 303.2200012207, y = 347.20999145508, z = 125.5299987793 },
+            to = { instanceID = 0, space = "world", x = 303.2200012207, y = 347.20999145508, z = 125.5299987793 },
             actions = {
                 { id = 120145, groupReagentID = 17032, groupSpellID = 120146, reagentID = 17031, type = "spell" },
             },
@@ -84,7 +84,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "spells", {
             kind = "spell",
             bidirectional = false,
             from = { dynamic = "player" },
-            to = { space = "map", uiMapID = 1450, x = 0.44, y = 0.46, areaID = 493 },
+            to = { space = "map", uiMapID = 1450, x = 0.5626, y = 0.3246 },
             actions = { { id = 18960, type = "spell" } },
         },
         {
@@ -97,4 +97,4 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "spells", {
             cooldownGroup = "spell:556",
         },
     },
-}, 31)
+}, 32)

@@ -703,6 +703,9 @@ function APR:GetNavigationPlayerPosition()
     local sanctum = C_Map and C_Map.GetAreaInfo and C_Map.GetAreaInfo(10523)
     if sanctum and GetSubZoneText and GetSubZoneText() == sanctum then position.accessKey = "wizards-sanctum" end
     if self.NavigationData then
+        if position.uiMapID and self.NavigationData.NormalizeLocation then
+            return self.NavigationData:NormalizeLocation(position)
+        end
         if position.uiMapID then
             position.region = self.NavigationData:GetPositionRegion(position)
         elseif self.NavigationData.GetUnmappedInstanceRegion then
