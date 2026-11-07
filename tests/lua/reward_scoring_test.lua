@@ -152,8 +152,14 @@ for _, profile in ipairs({ "retail", "forever" }) do
     client, dual = profile, true
     inventory[16], inventory[17] = item("INVTYPE_WEAPON", 100), item("INVTYPE_WEAPONOFFHAND", 50)
     expect(item("INVTYPE_WEAPONMAINHAND", 90), 40, true)
+    local gain, ready, plan = scoring:GetUpgrade(item("INVTYPE_WEAPONMAINHAND", 90), external)
+    assert(ready and gain == 40 and plan.slot == 16 and plan.move.from == 16 and plan.move.to == 17)
+    assert(plan.move.link == inventory[16] and plan.replacedSlots[1] == 17)
     inventory[16], inventory[17] = item("INVTYPE_WEAPON", 50), item("INVTYPE_WEAPON", 100)
     expect(item("INVTYPE_WEAPONOFFHAND", 70), 20, true)
+    local gain, ready, plan = scoring:GetUpgrade(item("INVTYPE_WEAPONOFFHAND", 70), external)
+    assert(ready and gain == 20 and plan.slot == 17 and plan.move.from == 17 and plan.move.to == 16)
+    assert(plan.move.link == inventory[17] and plan.replacedSlots[1] == 16)
 end
 
 -- A move cannot retain a main-only/offhand-only weapon in an incompatible hand.

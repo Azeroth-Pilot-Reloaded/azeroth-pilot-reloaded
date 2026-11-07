@@ -375,6 +375,7 @@ PawnRewards.TryPrompt = APRTrace("APR-Core/integrations/Pawn.lua:223:PawnRewards
 -- The workspace owns its custom AceConfig host and defers rebuilding it until
 -- the current input callback has returned.
 function PawnRewards:NotifyOptions()
+    if APR.BagUpgrades then APR.BagUpgrades:OnScoringChanged() end
     local panel = APR.OptionsPanel
     if panel and panel.QueueRefresh then panel:QueueRefresh() end
 end--[[APR_DIAG]]
