@@ -181,7 +181,7 @@ SpeedrunEntryLevel = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:124:Spee
 -- one connected branch instead of sorting and appending every eligible variant.
 -- Keep this planner read-only: the availability check and click share it, and a
 -- refused build cannot erase the user's current path or completion receipts.
-local function PlanForeverSpeedrun()
+local function PlanForeverSpeedrun(withDungeons)
     if
         not APR.PlayerID
         or not APRData
@@ -198,7 +198,17 @@ local function PlanForeverSpeedrun()
     local progress = APRData and APRData[APR.PlayerID] or {}
     local parentMapID = APR:GetPlayerParentMapID()
     for key, data in pairs(APR.RouteQuestStepList or {}) do
-        local index, conditions = GetRoutePrefabEntry(data, APR.PREFAB_TYPES.Speedrun)
+        local prefabType = APR.PREFAB_TYPES.Speedrun
+        if withDungeons and GetRoutePrefabEntry(data, APR.PREFAB_TYPES.Dungeons) then
+            prefabType = APR.PREFAB_TYPES.Dungeons
+        end
+        local index, conditions = GetRoutePrefabEntry(data, prefabType)
+        if withDungeons and data.prefab and data.prefab[APR.PREFAB_TYPES.StartingZone] then
+            local _, startingConditions = GetRoutePrefabEntry(data, APR.PREFAB_TYPES.Speedrun)
+            if startingConditions then
+                conditions = { AllOf = { conditions or {}, startingConditions } }
+            end
+        end
         if
             index
             and data.label
@@ -206,7 +216,7 @@ local function PlanForeverSpeedrun()
             and not data.temporary
             and data.expansion == APR.EXPANSIONS.Forever
             and APR:IsRouteCompatibleWithClient(data)
-            and MatchesPrefabScope(key, data, APR.EXPANSIONS.Forever)
+            and MatchesPrefabScope(key, data, withDungeons and "forever_dungeons" or APR.EXPANSIONS.Forever)
             and not APR:IsDelveRoute(key)
         then
             local entryLevel = SpeedrunEntryLevel(data, conditions, key)
@@ -217,6 +227,7 @@ local function PlanForeverSpeedrun()
                     key = key,
                     data = data,
                     index = index,
+                    dungeon = prefabType == APR.PREFAB_TYPES.Dungeons,
                     level = entryLevel,
                     endLevel = type(data.prefab[APR.PREFAB_TYPES.Speedrun]) == "table"
                         and data.prefab[APR.PREFAB_TYPES.Speedrun].endLevel,
@@ -252,7 +263,9 @@ local function PlanForeverSpeedrun()
     end--[[APR_DIAG]]
     prerequisitesMet = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:186:prerequisitesMet#9", prerequisitesMet)--[[/APR_DIAG]]
     local function before(a, b)
-        return not b or a.index < b.index or (a.index == b.index and a.key < b.key)
+        if not b then return true end
+        if withDungeons and a.dungeon ~= b.dungeon then return a.dungeon end
+        return a.index < b.index or (a.index == b.index and a.key < b.key)
     end--[[APR_DIAG]]
     before = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:196:before#10", before)--[[/APR_DIAG]]
     -- Prune structurally impossible branches once, including dense cyclic
@@ -1146,6 +1159,9 @@ local function BuildPrefabPopupOptions(definition, catalogOnly)
         if not catalogOnly and definition == PREFAB_POPUP_DEFINITIONS.leveling then
             request.available = PlanLevelingPrefab(request.expansion, request.scope, maps, request.prefabType) ~= nil
         end
+        if not catalogOnly and definition == PREFAB_POPUP_DEFINITIONS.dungeons and request.scope == "forever_dungeons" then
+            request.available = request.available and PlanForeverSpeedrun(true) ~= nil
+        end
         if request.available then
             local expansion, scope = request.expansion, request.scope
             local requiredLevel = definition.requiredLevels and definition.requiredLevels[expansion]
@@ -1392,9 +1408,9 @@ FindConditionBasedStartingRouteKey = APRTrace(
     FindConditionBasedStartingRouteKey
 )--[[/APR_DIAG]]
 
-function APR.routeconfig:GetSpeedRunPrefab()
+function APR.routeconfig:GetSpeedRunPrefab(withDungeons)
     if APR:GetGameVersion() == APR.GAME_VERSIONS.Forever then
-        local plan = PlanForeverSpeedrun()
+        local plan = PlanForeverSpeedrun(withDungeons)
         if not plan then return false end
         local path = {}
         local playerData = APRData[APR.PlayerID]
@@ -1471,6 +1487,7 @@ function APR.routeconfig:BuildDungeonPrefab(scope)
     if APR:GetGameVersion() ~= APR.GAME_VERSIONS.Forever or (faction ~= "Horde" and faction ~= "Alliance") then
         return false
     end
+    if scope == "forever_dungeons" then return self:GetSpeedRunPrefab(true) end
     if not HasRouteForExpansionAndPrefab(APR.EXPANSIONS.Forever, APR.PREFAB_TYPES.Dungeons, scope) then return false end
     APRCustomPath[APR.PlayerID] = {}
     return BuildExpansionPrefabFromRoutes(self, APR.EXPANSIONS.Forever, APR.PREFAB_TYPES.Dungeons, false, scope)

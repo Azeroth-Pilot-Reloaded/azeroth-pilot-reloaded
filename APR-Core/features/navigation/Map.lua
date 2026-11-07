@@ -592,6 +592,38 @@ local function PlaceWorldPin(pool, pin, mapID, x, y)
 end--[[APR_DIAG]]
 PlaceWorldPin = APRTrace("APR-Core/features/navigation/Map.lua:353:PlaceWorldPin#32", PlaceWorldPin)--[[/APR_DIAG]]
 
+-- Static search locations share one quest step; they are neither waypoints
+-- to visit in order nor a live position for a roaming NPC.
+local function PlaceSearchMarkers(self, step, stepIndex, routeMapID, mapID, playerMapID, showWorldPins)
+    local profile = APR.settings.profile
+    for index, coord in ipairs(step.MapMarkers or {}) do
+        local point = {
+            Coord = coord,
+            uiMapID = coord.mapID or step.Zone or routeMapID,
+            instanceID = coord.instanceID or step.instanceID,
+        }
+        if APR.navigationPreview then
+            point.instanceID = point.instanceID or APR.navigationPreview:GetMapInstance(point.uiMapID)
+        end
+        local key = "search-" .. index
+        if showWorldPins and (profile.mapshowNextStepsCount or 0) > 0 then
+            local x, y = Project(point, mapID)
+            if x and y and x >= 0 and x <= 1 and y >= 0 and y <= 1 then
+                local pin = AcquirePin(self, self.pinlist, key, stepIndex, step, "map")
+                PlaceWorldPin(self.pinlist, pin, mapID, x, y)
+            end
+        end
+        if profile.minimapshowNextSteps and (profile.minimapshowNextStepsCount or 0) > 0 then
+            local x, y = Project(point, playerMapID)
+            if x and y then
+                local pin = AcquirePin(self, self.minimapPinlist, key, stepIndex, step, "minimap")
+                hbdPins:AddMinimapIconMap(self.minimapPinlist, pin, playerMapID, x, y, true, true)
+            end
+        end
+    end
+end--[[APR_DIAG]]
+PlaceSearchMarkers = APRTrace("APR-Core/features/navigation/Map.lua:598:PlaceSearchMarkers#37", PlaceSearchMarkers)--[[/APR_DIAG]]
+
 function APR.map:AddMapPins()
     self.pendingPinRefresh = nil
     self.pinMapID = WorldMapFrame:GetMapID()
@@ -642,6 +674,9 @@ function APR.map:AddMapPins()
         local step = route[index]
         local visible = APR:StepFilterQoL(step)
         if not visible then filtered = filtered + 1 end
+        if visible and index == current then
+            PlaceSearchMarkers(self, step, index - filtered, routeMapID, mapID, playerMapID, showWorldPins)
+        end
         local coord, zone
         if visible and index >= current then
             coord, zone = APR:GetStepCoord(step, routeMapID, zoneHint)

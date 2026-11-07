@@ -21,6 +21,10 @@ env.route(
 )
 env.route("Forever-MageAoE-fixture", "Separate scope", { Class = "MAGE" }, { [dungeon] = 1 })
 env.route("fixture-standalone", "Standalone dungeon", nil, nil, APR.CATEGORIES.Dungeons)
+first.prefab[APR.PREFAB_TYPES.StartingZone] = 1
+first.nextRoute = { "fixture-middle" }
+middle.nextRoute = { "fixture-later" }
+later.prefab[APR.PREFAB_TYPES.Speedrun] = { index = 3, endLevel = 60 }
 local function expectPath(expected)
     assert(#APRCustomPath.player == #expected, "Only eligible, unfinished prefab entries are queued")
     for index, route in ipairs(expected) do
@@ -39,6 +43,7 @@ first.nextRoute = { "fixture-other-class" }
 local finished = false
 APR:SuggestNextRoutes("fixture-first", function() finished = true end)
 assert(finished)
+first.nextRoute = { "fixture-middle" }
 APRZoneCompleted.player[first.label] = true
 assert(APR.routeconfig:BuildDungeonPrefab())
 expectPath({ middle, later })
@@ -50,8 +55,11 @@ expectPath({ middle, later })
 -- Equal indices sort deterministically by key, independent of registration order.
 routes["fixture-z"] = env.route("fixture-z", "Last tie", nil, { [dungeon] = 2 })
 routes["fixture-a"] = env.route("fixture-a", "First tie", nil, { [dungeon] = 2 })
+middle.nextRoute = { "fixture-z", "fixture-a" }
+routes["fixture-a"].nextRoute = { "fixture-later" }
+routes["fixture-z"].nextRoute = { "fixture-later" }
 assert(APR.routeconfig:BuildDungeonPrefab())
-expectPath({ routes["fixture-a"], middle, routes["fixture-z"], later })
+expectPath({ middle, routes["fixture-a"], later })
 for _, version in ipairs({ APR.GAME_VERSIONS.Retail, APR.GAME_VERSIONS.Forever }) do
     env.gameVersion, APR.Faction = version, version == APR.GAME_VERSIONS.Forever and "Neutral" or "Horde"
     APRCustomPath.player = { "Existing selection" }

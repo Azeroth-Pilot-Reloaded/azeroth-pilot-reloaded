@@ -20,6 +20,7 @@ APR.RouteQuestStepList = {
         conditions = { MinLevel = 20, Class = "WARRIOR" },
         category = APR.CATEGORIES.Dungeons,
         prefab = { [kind.Dungeons] = 1 },
+        nextRoute = { "outdoor" },
     },
     otherClient = {
         label = "Other client",
@@ -47,7 +48,7 @@ local function visible(enabled, levelingEnabled)
     assert(buttons.speedrun:IsShown() and buttons.leveling:IsShown() and buttons.dungeons:IsShown())
     assert(buttons.speedrun:IsEnabled() == enabled and buttons.leveling:IsEnabled() == levelingEnabled)
     assert(
-        buttons.dungeons:IsEnabled() and not buttons.all_quests:IsShown(),
+        buttons.dungeons:IsEnabled() == enabled and not buttons.all_quests:IsShown(),
         "Current dungeon availability and client-specific content stay independent"
     )
     assert(browser.prefabs[1].width > 0 and browser.prefabs[3].point[4] > browser.prefabs[1].point[4])

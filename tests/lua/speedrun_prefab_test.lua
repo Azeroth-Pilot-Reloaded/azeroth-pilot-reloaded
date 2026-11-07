@@ -236,6 +236,32 @@ expect("dense-root", "complete")
 assert(calls < 1000, "Evaluate dense graph conditions with bounded work")
 APR.AreConditionalFiltersMet = filters
 
+function UnitFactionGroup() return APR.Faction end
+
+-- Dungeon presets prefer the mixed quest branch, then reconnect to ordinary leveling.
+reset()
+start = route("mixed-start", 1, 1)
+start.prefab[kind.StartingZone], start.mapID = 1, 7
+start.prefab[kind.Dungeons] = 1
+start.prefab[kind.Speedrun] = { index = 1, conditions = { SkipForLvl = 10 } }
+local ordinary = route("ordinary-branch", 2, 10)
+local mixed = route("mixed-branch", 90, 10)
+mixed.category, mixed.prefab = APR.CATEGORIES.Dungeons, { [kind.Dungeons] = 90 }
+finish = route("mixed-finish", 3, 50)
+finish.prefab[kind.Speedrun] = { index = 3, endLevel = 60 }
+start.nextRoute = { "ordinary-branch", "mixed-branch" }
+ordinary.nextRoute, mixed.nextRoute = { "mixed-finish" }, { "mixed-finish" }
+assert(APR.routeconfig:HasPrefab("dungeons"))
+assert(APR.routeconfig:BuildDungeonPrefab())
+expect("mixed-start", "mixed-branch", "mixed-finish")
+assert(APR.routeconfig:GetSpeedRunPrefab())
+expect("mixed-start", "ordinary-branch", "mixed-finish")
+finish.prefab[kind.Speedrun].endLevel = nil
+local previousPath = APRCustomPath.test
+assert(not APR.routeconfig:BuildDungeonPrefab())
+assert(APRCustomPath.test == previousPath, "Incomplete dungeon plans preserve the current path")
+assert(not APR.routeconfig:HasPrefab("dungeons"))
+
 -- The same prefab type does not import Forever into the Retail builder.
 reset()
 version = APR.GAME_VERSIONS.Retail

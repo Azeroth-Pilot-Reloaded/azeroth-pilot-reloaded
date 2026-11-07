@@ -62,6 +62,7 @@ def examples():
         "Note": seq("First instruction", "Second instruction"), "PreviewImages": seq("image.jpg"),
         "FillerPreviewImages": {1: seq("optional-image.jpg")},
         "Coord": {"x": -42.5, "y": 123.5}, "Coords": seq({"Zone": 1, "x": 1, "y": 2}),
+        "MapMarkers": seq({"x": 15, "y": 30}),
         "ZoneStepTrigger": {"x": 1, "y": 2, "Range": 10, "mapID": 2},
         "Button": {"123-1": 123}, "SpellButton": {"123-1": "Spell"}, "ItemTarget": "player",
         "UseItem": {"itemID": 123, "itemSpellID": 456}, "UseSpell": {"spellID": 123},
@@ -149,6 +150,16 @@ class RouteSchemaTests(unittest.TestCase):
                 with self.subTest(name=name, invalid=invalid), self.assertRaises(InvalidRoute):
                     self.schema.step({name: invalid}, "step")
 
+    def test_instance_entrance_selection_requires_dungeon_context(self):
+        self.schema.step({"EnterInstance": {"dungeonKey": "ROL", "entranceID": "invented-door"}}, "step")
+        for rule in ({"mapID": 1, "entranceID": "invented-door"},
+                     {"dungeonKey": "ROL", "entranceID": ""},
+                     {"dungeonKey": "ROL", "entranceID": 1}):
+            with self.subTest(rule=rule), self.assertRaises(InvalidRoute):
+                self.schema.step({"EnterInstance": rule}, "step")
+        with self.assertRaises(InvalidRoute):
+            self.schema.step({"LeaveInstance": {"dungeonKey": "ROL", "entranceID": "invented-door"}}, "step")
+
     def test_recorded_world_coordinate_identity_is_optional_and_explicit(self):
         self.schema.step({"Coord": {"x": 12.5, "y": -40, "mapID": 2512, "instanceID": 0}}, "step")
         self.schema.step({"EnterScenario": {"mapID": 2269}}, "step")
@@ -156,6 +167,14 @@ class RouteSchemaTests(unittest.TestCase):
         for invalid in ({"x": 1, "y": 2, "instanceID": -1}, {"x": 1, "y": 2, "instanceID": "2601"}):
             with self.assertRaises(InvalidRoute):
                 self.schema.step({"Coord": invalid}, "step")
+
+    def test_static_search_markers(self):
+        self.schema.step({"MapMarkers": seq({"x": -10, "y": 20},
+                                            {"x": 30, "y": 40, "mapID": 1, "instanceID": 0})}, "step")
+        for invalid in ({}, seq({"x": 1}), seq({"x": 1, "y": float("nan")}),
+                        seq({"x": 1, "y": 2, "mapID": "1"}), "1,2"):
+            with self.subTest(value=invalid), self.assertRaises(InvalidRoute):
+                self.schema.step({"MapMarkers": invalid}, "step")
 
     def test_filler_preview_images(self):
         self.schema.step({"FillerPreviewImages": {12: seq("a.jpg", "b.jpg"), 34: seq("c.jpg")}}, "step")

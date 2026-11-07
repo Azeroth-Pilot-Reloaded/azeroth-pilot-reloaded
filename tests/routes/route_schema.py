@@ -215,7 +215,7 @@ class RouteSchema:
             "Name": TEXT, "Note": union(TEXT, array(TEXT, 1)), "PreviewImages": array(TEXT, 1),
             "FillerPreviewImages": mapping(ID, array(TEXT, 1)),
             "_index": ID, "_comment": TEXT, "Grind": level,
-            "Coord": union(xy, multi_coord), "Coords": multi_coord,
+            "Coord": union(xy, multi_coord), "Coords": multi_coord, "MapMarkers": array(xy, 1),
             # StepUtils.NormalizeZoneList accepts navigation-only Zone lists.
             "Zone": union(ID, IDS),
             "ZoneStepTrigger": union(
@@ -250,7 +250,10 @@ class RouteSchema:
             self.step_fields[name] = obj({"questID": ID, "mapID": ID}, required=("mapID",))
         self.step_fields["TakePortal"] = obj({"questID": ID, "mapID": ID}, choices=(("mapID", "questID"),))
         for name in ("EnterInstance", "LeaveInstance"):
-            self.step_fields[name] = obj({"questID": ID, "mapID": ID, "dungeonKey": enum(DUNGEON_KEYS)},
+            fields = {"questID": ID, "mapID": ID, "dungeonKey": enum(DUNGEON_KEYS)}
+            if name == "EnterInstance":
+                fields["entranceID"] = TEXT
+            self.step_fields[name] = obj(fields,
                                          choices=(("mapID", "dungeonKey"),))
         for name in "BuyMerchant LootItems".split():
             fields = {"itemID": ID, "quantity": ID, "questID": ID}
@@ -278,6 +281,9 @@ class RouteSchema:
         step_shape = self.step
         def flight_arrival_step(value, path):
             step_shape(value, path)
+            entry = value.get("EnterInstance")
+            if entry and entry.get("entranceID") and not entry.get("dungeonKey"):
+                fail(path + ".EnterInstance.entranceID", "A selected entrance requires dungeonKey")
             kill = value.get("KillNPC")
             if kill and value.get("Dungeon") and kill.get("dungeonKey") != value["Dungeon"]:
                 fail(path + ".KillNPC.dungeonKey", "KillNPC must match its Dungeon context")

@@ -20,6 +20,7 @@ Place = APRTrace("APR-Core/ui/route/RouteBrowser.lua:13:Place#1", Place)--[[/APR
 function Browser:SetScope(value)
     self.filters.expansion = value ~= "all" and value ~= "community" and value or nil
     self.filters.community = value == "community"
+    if APR:GetGameVersion() == APR.GAME_VERSIONS.Forever then self.filters.category = nil end
     self.filters.query, self.searchExpansion = "", nil
     self.settingSearch = true
     self.search:SetText("")
@@ -47,6 +48,9 @@ function Browser:Refresh(rebuild, resetScroll)
     if not self.initialized then
         local route = APR.ActiveRoute and APR:GetRouteData(APR.ActiveRoute)
         self.filters.expansion = route and APR:GetRouteSelectionScope(APR.ActiveRoute, route)
+        if route and APR:GetGameVersion() == APR.GAME_VERSIONS.Forever then
+            self.filters.expansion = route.category or APR.CATEGORIES.Leveling
+        end
         if not self.filters.expansion then
             for _, item in ipairs(navigation) do
                 if item.value ~= "all" and item.value ~= "community" and (item.count or 0) > 0 then

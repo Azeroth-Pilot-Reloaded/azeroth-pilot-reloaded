@@ -293,29 +293,26 @@ assert(
 )
 assert(browser.prefabs[2]:GetFontString():GetText() == DUNGEONS)
 local navigation = catalog:GetNavigation(catalog:Build())
-assert(#navigation == 5, "Empty Community and Custom categories must not appear")
-assert(navigation[3].label == "Forever" and navigation[3].count == 1)
-assert(navigation[4].value == "forever_dungeons" and navigation[4].count == 1)
-assert(navigation[5].value == "forever_mage_aoe" and navigation[5].count == 1)
-APR.ClassName = "WARRIOR"
-for _, item in ipairs(catalog:GetNavigation(catalog:Build())) do
-    assert(item.value ~= "forever_mage_aoe", "Mage AoE navigation is exclusive to mages")
-end
-APR.ClassName = "MAGE"
+assert(#navigation == 4, "Only populated route categories appear on Forever")
+assert(navigation[2].heading and navigation[2].label == TYPE)
+local counts = {}
+for _, item in ipairs(navigation) do counts[item.value or "heading"] = item.count end
+assert(counts[APR.CATEGORIES.Leveling] == 2)
+assert(counts[APR.CATEGORIES.Dungeons] == 1)
 for _, case in ipairs({
-    { APR.EXPANSIONS.Forever, "normal" },
-    { "forever_dungeons", "dungeon" },
-    { "forever_mage_aoe", "Forever-MageAoE-Horde-Test" },
+    { APR.CATEGORIES.Leveling, 2 },
+    { APR.CATEGORIES.Dungeons, 1 },
 }) do
     browser:SetScope(case[1])
-    assert(#browser.list.items == 1 and browser.list.items[1].key == case[2])
+    assert(#browser.list.items == case[2])
+    for _, record in ipairs(browser.list.items) do assert(record.category == case[1]) end
 end
 browser.search:SetText("Outdoor")
 browser.search.scripts.OnTextChanged(browser.search)
 assert(#browser.list.items == 1 and browser.list.items[1].key == "normal")
 browser.search:SetText("")
 browser.search.scripts.OnTextChanged(browser.search)
-assert(browser.filters.expansion == "forever_mage_aoe")
+assert(browser.filters.expansion == APR.CATEGORIES.Dungeons)
 -- Empty catalogs hide the prefab panel, with a finite layout and no leftover buttons.
 APR.RouteQuestStepList = {}
 browser:Refresh(true)

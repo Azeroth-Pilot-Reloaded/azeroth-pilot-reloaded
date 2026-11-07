@@ -121,7 +121,10 @@ function APR:MeetsExtendedRouteConditions(conditions, levelPolicy)
             if not self:AreConditionalFiltersMet(required, levelPolicy) then return false end
         end
     end
-    if conditions.Not and self:AreConditionalFiltersMet(conditions.Not, levelPolicy) then return false end
+    -- A negation cannot safely erase level predicates before inverting them.
+    -- Keep its authored levels strict even for manually selected leveling routes.
+    local negatedPolicy = levelPolicy ~= "route-all-levels" and levelPolicy or nil
+    if conditions.Not and self:AreConditionalFiltersMet(conditions.Not, negatedPolicy) then return false end
 
     local skill = conditions.Skill
     if skill and not self:CompareRouteNumber(self:GetRouteSkill(skill), skill.operator or ">=", skill.rank or 1) then

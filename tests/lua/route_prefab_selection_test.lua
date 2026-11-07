@@ -4,6 +4,7 @@ APR.ClassName, APR.ClassId = "MAGE", 8
 local kind = APR.PREFAB_TYPES
 local normal = env.route("fixture-leveling", "Ordinary offer", nil, { [kind.Leveling] = 1 })
 local dungeon = env.route("fixture-dungeon", "Dungeon offer", nil, { [kind.Dungeons] = 1 }, APR.CATEGORIES.Dungeons)
+dungeon.prefab[kind.Speedrun] = { index = 1, endLevel = 60 }
 -- This prefix is the public scope discriminator, not a packaged guide key.
 local mage = env.route(
     "Forever-MageAoE-fixture",

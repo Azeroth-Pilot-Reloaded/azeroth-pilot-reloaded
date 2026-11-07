@@ -116,7 +116,8 @@ function Catalog:Build()
                     key = key,
                     label = data.label,
                     expansion = data.expansion or APR.EXPANSIONS.Custom,
-                    scope = APR:GetRouteSelectionScope(key, data),
+                    scope = APR:GetGameVersion() == APR.GAME_VERSIONS.Forever
+                        and (data.category or APR.CATEGORIES.Leveling) or APR:GetRouteSelectionScope(key, data),
                     category = data.category or APR.CATEGORIES.Leveling,
                     author = author,
                     community = community,
@@ -304,6 +305,18 @@ function Catalog:GetNavigation(records)
         result[#result + 1] = { value = "community", label = CLUB_FINDER_COMMUNITY_TYPE, count = community }
     end
     local headingIndex = #result + 1
+    if APR:GetGameVersion() == APR.GAME_VERSIONS.Forever then
+        local categories = self:GetCategories(records, {})
+        for _, category in ipairs(categories) do
+            if category.value and counts[category.value] then
+                result[#result + 1] = { value = category.value, label = category.label, count = counts[category.value] }
+            end
+        end
+        if #result >= headingIndex then
+            table.insert(result, headingIndex, { heading = true, label = TYPE })
+        end
+        return result
+    end
     local expansions = APR:GetRouteSelectionExpansions()
     -- The most recent expansion is nearest to the primary actions; Custom remains last.
     for index = #expansions, 1, -1 do

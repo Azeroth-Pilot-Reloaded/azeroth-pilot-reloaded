@@ -23,8 +23,8 @@ local function starter(key, race, zone)
 end
 local foreign = starter("a-foreign", "Orc", 81)
 local original = foreign.conditions
-assert(APR:GetRouteVisibility("a-foreign") == "visible" and APR:GetRouteVisibility("a-foreign", true) == "visible")
-assert(APR:CanStartRoute("a-foreign") and APR:IsRequiredRouteApplicable("a-foreign"))
+assert(APR:GetRouteVisibility("a-foreign") == "visible" and APR:GetRouteVisibility("a-foreign", true) == "hidden")
+assert(APR:CanStartRoute("a-foreign") and not APR:IsRequiredRouteApplicable("a-foreign"))
 assert(foreign.conditions == original and original.Race == "Orc", "Entry policy cannot mutate shared declarations")
 foreign.steps[1].Race = "Orc"
 foreign.parallelSteps = { { conditions = { Race = "Orc" }, steps = { { Note = "Invented optional action" } } } }
@@ -135,27 +135,17 @@ local builders = {
     function() return APR.routeconfig:BuildLevelingPrefab(APR.EXPANSIONS.Forever, "forever_dungeons", kind.Dungeons) end,
 }
 for _, build in ipairs(builders) do
-    local native = reset()
+    reset()
     assert(build())
     expect("z-natural")
     APRCustomPath.player, APRData.player = {}, {}
     map = 81
     assert(build())
-    expect("a-foreign")
-    -- A completion receipt alone must not outweigh the newly adopted map.
-    APRCustomPath.player, APRData.player = {}, {}
-    APRZoneCompleted.player[native.label] = true
-    assert(build())
-    expect("a-foreign")
-    map, APRData.player["a-foreign"], APR.ActiveRoute = 99, 2, "a-foreign"
-    assert(build())
-    expect("a-foreign")
+    expect("z-natural")
+    assert(APR:AddRouteToCustomPathByKey("a-foreign"), "Manual foreign starter remains an explicit choice")
+    APRData.player["a-foreign"], APR.ActiveRoute, map = 2, nil, 99
+    assert(APR:ActivateRoute("a-foreign"), "A saved same-faction choice remains activatable after reload")
     assert(APRData.player["a-foreign"] == 2, "Resuming cannot reset progress")
-    APR.ActiveRoute = nil
-    assert(
-        APR:GetRouteKeyFromDisplayName(foreign.label) == "a-foreign" and APR:ActivateRoute("a-foreign"),
-        "A saved same-faction starter remains activatable after reload away from its map"
-    )
     APR.ActiveRoute, APR.Level = nil, 20
     assert(not APR:CanStartRoute("a-foreign-finish"), "Planning cannot fabricate prerequisite completion")
     APRZoneCompleted.player[foreign.label] = true
@@ -170,22 +160,19 @@ map = 81
 assert(APR:AddRouteToCustomPathByKey("a-foreign"))
 map = 99
 assert(APR.routeconfig:BuildLevelingPrefab(APR.EXPANSIONS.Forever))
-expect("a-foreign")
+expect("z-natural")
 reset()
 map = 81
 foreign.autoStartOnMap, APR.Level = true, 15
 APR.routeconfig:GetStartingZonePrefab()
-assert(
-    #APRCustomPath.player == 1 and APRCustomPath.player[1] == foreign.label,
-    "Map auto-start accepts the adopted same-faction starter"
-)
+assert(#APRCustomPath.player == 0, "Map auto-start retains authored starting races")
 APRCustomPath.player, APRData.player = {}, {}
 foreign.conditions.Class = "MAGE"
 APR.routeconfig:GetStartingZonePrefab()
 assert(#APRCustomPath.player == 0, "Map auto-start cannot waive class")
 
 reset()
-APR.ClassName, APR.ClassId, map = "MAGE", 8, 81
+APR.ClassName, APR.ClassId, APR.Race, APR.RaceID, map = "MAGE", 8, "Orc", 2, 81
 local mageKey, laterKey = "Forever-MageAoE-fixture-adopted", "Forever-MageAoE-fixture-later"
 local mage = starter(mageKey, "Orc", 81)
 mage.conditions.Class, mage.nextRoute = "MAGE", { laterKey }

@@ -38,6 +38,7 @@ def load_routes(paths=None, translations=None):
         function GetLocale() return "enUS" end
         function LibStub() return {GetLocale = function() return locale end, GetText = function(_, key) return locale[key] end} end
         DUNGEONS = "DUNGEONS"
+        CLASS = "CLASS"
         APR = {}
     ''')
     for name in ("APR-Core/data/models/Enums.lua", "APR-Core/data/models/Classes.lua",

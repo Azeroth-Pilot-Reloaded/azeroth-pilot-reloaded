@@ -641,7 +641,9 @@ function APR:AreConditionalFiltersMet(conditions, levelPolicy)
 
     -- Only route selection treats higher level ranges as recommendations.
     -- Steps, purchases, branches and automatic suggestions keep every condition.
-    if levelPolicy == "route" then
+    if levelPolicy == "route-all-levels" then
+        level, minLevel, maxLevel, exactLevel, skipForLvl = nil, nil, nil, nil, nil
+    elseif levelPolicy == "route" then
         if level and level > 10 then level = nil end
         if minLevel and minLevel > 10 then minLevel = nil end
         if maxLevel and maxLevel > 10 then maxLevel = nil end
