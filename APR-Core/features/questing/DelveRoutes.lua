@@ -316,6 +316,12 @@ APR.GetScenarioMapIDForStep = APRTrace(
 
 function APR:GetScenarioStepTarget(step, routeKey)
     local scenarioMapID = self:GetScenarioMapIDForStep(step, routeKey)
+    local entry = step and step.EnterInstance
+    if entry and entry.entranceID and entry.dungeonKey then
+        local dungeon = self:GetDungeonDefinition(entry.dungeonKey)
+        local info = dungeon and self:GetNavigationEntranceInfoForInstance(dungeon.instanceID, entry.entranceID)
+        return scenarioMapID, info or { type = "DUNGEON", unavailable = "unknown_entrance" }
+    end
     if not scenarioMapID then
         local rule = step and (step.EnterInstance or step.LeaveInstance)
         local key = step and (step.Dungeon or (rule and rule.dungeonKey))

@@ -108,19 +108,29 @@ priorities describe the authored fast path, not measured completion times.
 and class advice, live warnings and confirmation, strict factions/starters/Mage
 AoE, nested predicates, localized label fallbacks and unchanged step filters.
 `APR.PREFAB_TYPES.StartingZone` identifies all starters, including specialized
-variants and hidden internal chapters. Forever alone can waive their race entry
-filter when the declaration proves one matching faction; class/spec, quest and
-level gates remain strict. Missing, neutral or ambiguous factions retain race.
+variants and hidden internal chapters. Manual Forever selection can waive their
+race entry filter, with a live warning, when the declaration proves one matching
+faction; class/spec, quest and level gates remain strict. Missing, neutral or
+ambiguous factions retain race. Presets and automatic suggestions retain the
+authored starting races, including when the player visits another starting map.
 `starting_zone_prefab_scope_test.lua` checks that the default Forever starting
 preset only queues ordinary routes, while AoE starts remain available through
 their explicit leveling scope and hidden chapters are never queued automatically.
-Presets and automatic suggestions retain the authored character recommendations
-apart from that starter exception, while manual non-starter selection can waive them.
+Presets and automatic suggestions retain the authored character recommendations,
+while manual non-starter selection can waive them.
 `forever_starting_races_test.lua` checks the shared entry projection, nested
 faction proof and negations, unchanged action/parallel filters and Retail policy,
-manual choice, map adoption, natural fallback, old completion receipts, complete
+manual choice, natural automatic roots despite another starting map, complete
 Leveling/Speedrun/dungeon branches, explicit AoE scope, reload, prerequisites and
 atomic refusal after a class/faction change. Every guide in this fixture is invented.
+`starter_race_advice_test.lua` checks matching and mismatching single/multiple
+starting races, Skyborne, manual warnings, strict automatic race selection,
+factions and specialized starter access.
+`leveling_entry_advice_test.lua` checks manual entry below level 10 for ordinary
+Forever leveling chapters, live warnings and unchanged automatic/action filters.
+Starter, class and Mage AoE access retain their existing boundaries. Nested
+`AnyOf`/`AllOf`/`Not` conditions retain faction and quest gates; levels beneath
+`Not` remain strict so advice cannot change the meaning of a negated predicate.
 
 `leveling_prefab_test.lua` drives the real Leveling button and stale popup
 callbacks with synthetic characters and routes. It covers fractional/open

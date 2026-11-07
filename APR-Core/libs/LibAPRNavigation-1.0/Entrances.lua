@@ -1,7 +1,7 @@
 -- Instance entrances are destinations outside an instance, never fabricated
 -- teleport edges to an interior map's centre or a guessed return landing.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("entrances", 3) then return end
+if not Lib:BeginModule("entrances", 4) then return end
 local Instance = Lib.Instance
 
 function Instance:GetEntrances()
@@ -43,12 +43,14 @@ function Instance:GetEntranceDefinitionForMap(mapID)
     return fallback
 end
 
-function Instance:GetEntranceDefinitionForInstance(instanceID)
+function Instance:GetEntranceDefinitionForInstance(instanceID, entranceID)
     local entries = self.entranceInstances and self.entranceInstances[instanceID]
     local fallback
     for _, definition in ipairs(entries or {}) do
-        if definition.reviewStatus == "confirmed" then return definition end
-        fallback = fallback or definition
+        if not entranceID or definition.id == entranceID then
+            if definition.reviewStatus == "confirmed" then return definition end
+            fallback = fallback or definition
+        end
     end
     return fallback
 end
@@ -133,6 +135,10 @@ function Instance:GetEntranceForMap(mapID, character)
     return ResolveEntrances(self, self:GetEntranceDefinitionsForMap(mapID), character, true)
 end
 
-function Instance:GetEntranceForInstance(instanceID, character)
+function Instance:GetEntranceForInstance(instanceID, character, entranceID)
+    if entranceID then
+        local definition = self:GetEntranceDefinitionForInstance(instanceID, entranceID)
+        return ResolveEntrances(self, definition and { definition }, character, true)
+    end
     return ResolveEntrances(self, self.entranceInstances and self.entranceInstances[instanceID], character, true)
 end

@@ -57,6 +57,7 @@ APR.UsesRouteCharacterAdvice = APRTrace(
 )--[[/APR_DIAG]]
 
 local characterAdviceFields = { Race = true, Class = true, ClassNot = true, AlliedRace = true }
+local classRouteAdviceFields = { Race = true, AlliedRace = true }
 local characterAdviceOrder = { "Race", "Class", "ClassNot", "AlliedRace" }
 local mageClasses = { "MAGE", 8 }
 local falseConditions = { AnyOf = {} }
@@ -244,7 +245,8 @@ function APR:GetRouteSelectionConditions(routeKey, data, recommendationsOnly)
     if not data then return nil end
     local conditions = data.conditions
     if
-        self:GetGameVersion() == self.GAME_VERSIONS.Forever
+        not recommendationsOnly
+        and self:GetGameVersion() == self.GAME_VERSIONS.Forever
         and self:IsForeverStartingRoute(routeKey, data)
         and (self.Faction == "Horde" or self.Faction == "Alliance")
         and StarterFaction(conditions) == self.Faction
@@ -253,7 +255,13 @@ function APR:GetRouteSelectionConditions(routeKey, data, recommendationsOnly)
         -- The wrapper also routes nested groups through the full evaluator.
         conditions = { AnyOf = { conditions, ProjectSelectionBranch(conditions or {}, false, raceEntryFields) or {} } }
     elseif not recommendationsOnly and self:UsesRouteCharacterAdvice(routeKey, data) then
-        conditions = WithoutCharacterConditions(conditions)
+        -- Class chapters keep authored class gates while retaining race advice.
+        if data.category and data.category == self.CATEGORIES.Class then
+            conditions = { AnyOf = { conditions or {},
+                ProjectSelectionBranch(conditions or {}, false, classRouteAdviceFields) or {} } }
+        else
+            conditions = WithoutCharacterConditions(conditions)
+        end
     end
     if IsForeverRoute(data) and routeKey and routeKey:find("^Forever%-MageAoE%-") then
         local mageConditions = {}
@@ -610,7 +618,8 @@ function APR:BuildEffectiveRouteSteps(routeKey)
     end
 
     table.sort(
-        orderedEntries, --[[APR_DIAG]]
+        orderedEntries,
+        --[[APR_DIAG]]
         APRTrace("APR-Core/features/questing/RouteManager.lua:511:callback#26", --[[/APR_DIAG]] function(left, right)
             local leftOrder = left.entry.activationOrder or 0
             local rightOrder = right.entry.activationOrder or 0
@@ -803,7 +812,8 @@ function APR:EnsureRouteParallelStepsActivated(routeKey)
             self:GetParallelStepsInsertionIndex(currentStepIndex, effectiveSteps, pendingGroup.group)
     end
     table.sort(
-        pendingGroups, --[[APR_DIAG]]
+        pendingGroups,
+        --[[APR_DIAG]]
         APRTrace("APR-Core/features/questing/RouteManager.lua:672:callback#29", --[[/APR_DIAG]] function(left, right)
             if left.insertionIndex == right.insertionIndex then return left.groupIndex < right.groupIndex end
             return left.insertionIndex < right.insertionIndex
@@ -1291,111 +1301,109 @@ APR.IsAlliedRace = APRTrace("APR-Core/features/questing/RouteManager.lua:1083:AP
 ---@param conditions table
 ---@return boolean allHardMet
 EvaluateHardConditions = --[[APR_DIAG]]
-    APRTrace(
-        "APR-Core/features/questing/RouteManager.lua:1092:callback#43", --[[/APR_DIAG]]
-        function(conditions, levelAdvice)
-            if not conditions then return true end
-            if APR.HasPendingStartupQuestConditions and APR:HasPendingStartupQuestConditions(conditions) then
+APRTrace(
+    "APR-Core/features/questing/RouteManager.lua:1092:callback#43", --[[/APR_DIAG]]
+    function(conditions, levelAdvice)
+        if not conditions then return true end
+        if APR.HasPendingStartupQuestConditions and APR:HasPendingStartupQuestConditions(conditions) then
+            return false
+        end
+        local levelPolicy = levelAdvice and (type(levelAdvice) == "string" and levelAdvice or "route")
+        for _, group in ipairs({ "AnyOf", "AllOf", "Not" }) do
+            if conditions[group] and not APR:AreConditionalFiltersMet({ [group] = conditions[group] }, levelPolicy) then
                 return false
             end
-            if
-                conditions.AnyOf
-                and not APR:AreConditionalFiltersMet({ AnyOf = conditions.AnyOf }, levelAdvice and "route")
-            then
-                return false
-            end
+        end
 
-            -- InterfaceVersion is a minimum; InterfaceVersionExact requires an exact match.
-            if conditions.InterfaceVersion and not APR:IsInterfaceVersion(conditions.InterfaceVersion) then
-                return false
-            end
-            if
-                conditions.InterfaceVersionExact and not APR:IsExactInterfaceVersion(conditions.InterfaceVersionExact)
-            then
-                return false
-            end
+        -- InterfaceVersion is a minimum; InterfaceVersionExact requires an exact match.
+        if conditions.InterfaceVersion and not APR:IsInterfaceVersion(conditions.InterfaceVersion) then
+            return false
+        end
+        if conditions.InterfaceVersionExact and not APR:IsExactInterfaceVersion(conditions.InterfaceVersionExact) then
+            return false
+        end
 
-            if conditions.DontHaveSpell and APR:IsAnySpellKnown(conditions.DontHaveSpell) then
-                return false
-            end
-            if conditions.IsQuestReadyForTurnIn and not APR:IsQuestReadyForTurnIn(conditions.IsQuestReadyForTurnIn) then
-                return false
-            end
-            if conditions.HasAchievement and not APR:HasAchievement(conditions.HasAchievement) then
-                return false
-            end
-            if conditions.DontHaveAchievement and APR:HasAchievement(conditions.DontHaveAchievement) then
-                return false
-            end
+        if conditions.DontHaveSpell and APR:IsAnySpellKnown(conditions.DontHaveSpell) then
+            return false
+        end
+        if conditions.IsQuestReadyForTurnIn and not APR:IsQuestReadyForTurnIn(conditions.IsQuestReadyForTurnIn) then
+            return false
+        end
+        if conditions.HasAchievement and not APR:HasAchievement(conditions.HasAchievement) then
+            return false
+        end
+        if conditions.DontHaveAchievement and APR:HasAchievement(conditions.DontHaveAchievement) then
+            return false
+        end
 
-            -- Faction
-            if conditions.Faction then
-                if conditions.Faction ~= APR.Faction then
+        -- Faction
+        if conditions.Faction then
+            if conditions.Faction ~= APR.Faction then
+                return false
+            end
+        end
+
+        -- Character conditions share scalar/list matching with step filters.
+        if conditions.Race then
+            if not APR:MatchesConditionValue(conditions.Race, APR.Race, APR.RaceID) then
+                return false
+            end
+        end
+
+        -- Both numeric IDs and class tokens are supported.
+        if conditions.Class then
+            if not APR:MatchesConditionValue(conditions.Class, APR.ClassName, APR.ClassId) then
+                return false
+            end
+        end
+
+        -- ClassNot (numeric classId - route is excluded for this class)
+        if conditions.ClassNot then
+            if APR:MatchesConditionValue(conditions.ClassNot, APR.ClassName, APR.ClassId) then
+                return false
+            end
+        end
+
+        -- NOTE: ClassSpec is NOT checked here - it is a "soft" condition evaluated
+        -- separately (like Level), so that failing it results in "disabled" not "hidden".
+
+        -- Event (e.g. APR.EVENTS.Remix)
+        if conditions.Event then
+            if conditions.Event == APR.EVENTS.Remix then
+                if not APR:IsRemixCharacter() then
                     return false
                 end
             end
+            -- Future events can be added here
+        end
 
-            -- Character conditions share scalar/list matching with step filters.
-            if conditions.Race then
-                if not APR:MatchesConditionValue(conditions.Race, APR.Race, APR.RaceID) then
-                    return false
-                end
+        -- AlliedRace (boolean: true = must be allied, false = must NOT be allied)
+        if conditions.AlliedRace ~= nil then
+            local isAllied = APR:IsAlliedRace()
+            if conditions.AlliedRace == true and not isAllied then
+                return false
+            elseif conditions.AlliedRace == false and isAllied then
+                return false
             end
+        end
 
-            -- Both numeric IDs and class tokens are supported.
-            if conditions.Class then
-                if not APR:MatchesConditionValue(conditions.Class, APR.ClassName, APR.ClassId) then
-                    return false
-                end
+        -- IsQuestCompleted (single questID)
+        if conditions.IsQuestCompleted then
+            if not C_QuestLog.IsQuestFlaggedCompleted(conditions.IsQuestCompleted) then
+                return false
             end
+        end
 
-            -- ClassNot (numeric classId - route is excluded for this class)
-            if conditions.ClassNot then
-                if APR:MatchesConditionValue(conditions.ClassNot, APR.ClassName, APR.ClassId) then
-                    return false
-                end
+        -- IsQuestUncompleted (single questID - must NOT be completed)
+        if conditions.IsQuestUncompleted then
+            if C_QuestLog.IsQuestFlaggedCompleted(conditions.IsQuestUncompleted) then
+                return false
             end
+        end
 
-            -- NOTE: ClassSpec is NOT checked here - it is a "soft" condition evaluated
-            -- separately (like Level), so that failing it results in "disabled" not "hidden".
-
-            -- Event (e.g. APR.EVENTS.Remix)
-            if conditions.Event then
-                if conditions.Event == APR.EVENTS.Remix then
-                    if not APR:IsRemixCharacter() then
-                        return false
-                    end
-                end
-                -- Future events can be added here
-            end
-
-            -- AlliedRace (boolean: true = must be allied, false = must NOT be allied)
-            if conditions.AlliedRace ~= nil then
-                local isAllied = APR:IsAlliedRace()
-                if conditions.AlliedRace == true and not isAllied then
-                    return false
-                elseif conditions.AlliedRace == false and isAllied then
-                    return false
-                end
-            end
-
-            -- IsQuestCompleted (single questID)
-            if conditions.IsQuestCompleted then
-                if not C_QuestLog.IsQuestFlaggedCompleted(conditions.IsQuestCompleted) then
-                    return false
-                end
-            end
-
-            -- IsQuestUncompleted (single questID - must NOT be completed)
-            if conditions.IsQuestUncompleted then
-                if C_QuestLog.IsQuestFlaggedCompleted(conditions.IsQuestUncompleted) then
-                    return false
-                end
-            end
-
-            return true
-        end --[[APR_DIAG]]
-    )--[[/APR_DIAG]]
+        return true
+    end --[[APR_DIAG]]
+)--[[/APR_DIAG]]
 
 -- Display labels can change with translations while route keys stay stable.
 -- Preserve old entries as receipts, including choices outside the queued path.
@@ -1479,11 +1487,27 @@ APR.NormalizeSavedRouteLabels = APRTrace(
     APR.NormalizeSavedRouteLabels
 )--[[/APR_DIAG]]
 
+-- Ordinary Forever leveling chapters allow manual entry below their suggested
+-- level. Starter and specialized routes retain their existing access boundaries.
+local function RouteLevelPolicy(routeKey, data)
+    if
+        IsForeverRoute(data)
+        and APR.CATEGORIES
+        and data.category == APR.CATEGORIES.Leveling
+        and APR:GetRouteSelectionScope(routeKey, data) == APR.EXPANSIONS.Forever
+        and not APR:IsForeverStartingRoute(routeKey, data)
+    then
+        return "route-all-levels"
+    end
+    return "route"
+end--[[APR_DIAG]]
+RouteLevelPolicy = APRTrace("APR-Core/features/questing/RouteManager.lua:1377:RouteLevelPolicy#45", RouteLevelPolicy)--[[/APR_DIAG]]
+
 --- Evaluate the Level condition.
 ---@param conditions table
 ---@return boolean levelMet
 local function EvaluateLevelCondition(conditions, levelAdvice)
-    if not conditions then
+    if not conditions or levelAdvice == "route-all-levels" then
         return true
     end
     local playerLevel = APR:GetPlayerEffectiveLevel()
@@ -1550,8 +1574,9 @@ function APR:CanStartRoute(routeKey)
     if self:IsForeverStartingRoute(routeKey, data) and not self:AreConditionalFiltersMet(conditions) then
         return false
     end
-    return EvaluateHardConditions(conditions, true)
-        and EvaluateLevelCondition(conditions, true)
+    local levelPolicy = RouteLevelPolicy(routeKey, data)
+    return EvaluateHardConditions(conditions, levelPolicy)
+        and EvaluateLevelCondition(conditions, levelPolicy)
         and self:MeetsRoutePrerequisites(routeKey)
 end--[[APR_DIAG]]
 APR.CanStartRoute = APRTrace("APR-Core/features/questing/RouteManager.lua:1300:APR:CanStartRoute#47", APR.CanStartRoute)--[[/APR_DIAG]]
@@ -1625,20 +1650,21 @@ APR.EvaluateRouteConditions = APRTrace(
 function APR:GetRouteLevelWarnings(routeKey)
     local data = self:GetRouteData(routeKey)
     local conditions = data and data.conditions
-    if conditions and not self:AreConditionalFiltersMet(conditions, "route") then
+    local levelPolicy = data and RouteLevelPolicy(routeKey, data) or "route"
+    if conditions and not self:AreConditionalFiltersMet(conditions, levelPolicy) then
         conditions = self:GetRouteSelectionConditions(routeKey, data)
     end
     if
         not conditions
         or self:AreConditionalFiltersMet(conditions)
-        or not self:AreConditionalFiltersMet(conditions, "route")
+        or not self:AreConditionalFiltersMet(conditions, levelPolicy)
     then
         return {}
     end
     local warnings, seen = {}, {}
     local playerLevel = self:GetPlayerEffectiveLevel()
     local function collect(current)
-        if not self:AreConditionalFiltersMet(current, "route") then return end
+        if not self:AreConditionalFiltersMet(current, levelPolicy) then return end
         for _, field in ipairs(routeLevelFields) do
             local value = current[field] and self:ResolveLevelRequirement(current[field])
             local operator = field == "SkipForLvl" and "<"
@@ -1646,7 +1672,7 @@ function APR:GetRouteLevelWarnings(routeKey)
                 or field == "BeLvl" and "="
                 or ">="
             local mismatch = value
-                and value > 10
+                and (levelPolicy == "route-all-levels" or value > 10)
                 and (
                     (operator == "<" and playerLevel >= value)
                     or (operator == "<=" and playerLevel > value)
@@ -1708,20 +1734,22 @@ function APR:GetRouteSelectionWarnings(routeKey)
     local warnings = self:GetRouteLevelWarnings(routeKey)
     local data = self:GetRouteData(routeKey)
     local conditions = data and data.conditions
+    local starter = self:IsForeverStartingRoute(routeKey, data)
+    local levelPolicy = data and RouteLevelPolicy(routeKey, data) or "route"
     if
         not conditions
-        or not self:UsesRouteCharacterAdvice(routeKey, data)
-        or self:AreConditionalFiltersMet(conditions, "route")
+        or not (starter or self:UsesRouteCharacterAdvice(routeKey, data))
+        or self:AreConditionalFiltersMet(conditions, levelPolicy)
     then
         return warnings
     end
     local selected = self:GetRouteSelectionConditions(routeKey, data)
-    if not self:AreConditionalFiltersMet(selected, "route") then return warnings end
+    if not self:AreConditionalFiltersMet(selected, levelPolicy) then return warnings end
 
     local seen = {}
     local function collect(current, negated)
-        if self:AreConditionalFiltersMet(current, "route") ~= negated then return end
-        for _, field in ipairs(characterAdviceOrder) do
+        if self:AreConditionalFiltersMet(current, levelPolicy) ~= negated then return end
+        for _, field in ipairs(starter and { "Race", "AlliedRace" } or characterAdviceOrder) do
             local value = current[field]
             local matches
             if field == "Race" then
@@ -1747,7 +1775,7 @@ function APR:GetRouteSelectionWarnings(routeKey)
         end
         for _, group in ipairs(levelConditionGroups) do
             local children = current[group]
-            if children and (negated or not self:AreConditionalFiltersMet({ [group] = children }, "route")) then
+            if children and (negated or not self:AreConditionalFiltersMet({ [group] = children }, levelPolicy)) then
                 for _, child in ipairs(children) do
                     collect(child, negated)
                 end
@@ -1924,8 +1952,9 @@ function APR:GetRouteVisibility(routeKey, recommendationsOnly)
 
     local conditions = self:GetRouteSelectionConditions(routeKey, routeData, recommendationsOnly) or {}
 
-    local hardMet = EvaluateHardConditions(conditions, true)
-    local levelMet = EvaluateLevelCondition(conditions, true)
+    local levelPolicy = RouteLevelPolicy(routeKey, routeData)
+    local hardMet = EvaluateHardConditions(conditions, levelPolicy)
+    local levelMet = EvaluateLevelCondition(conditions, levelPolicy)
     local specMet = EvaluateClassSpecCondition(conditions)
     local zonesMet = EvaluateZonesCondition(conditions)
 
@@ -2053,6 +2082,7 @@ function APR:SuggestNextRoutes(completedRouteKey, onComplete)
             -- which re-enters RouteCompleted and double-calls finalizeRouteCompletion.
             if onComplete then onComplete() end
         end--[[APR_DIAG]]) --[[/APR_DIAG]],
+
         --[[APR_DIAG]]
         APRTrace("APR-Core/features/questing/RouteManager.lua:1716:callback#62", --[[/APR_DIAG]] function() -- onCancel
             if onComplete then onComplete() end

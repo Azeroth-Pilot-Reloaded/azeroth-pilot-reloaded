@@ -53,8 +53,8 @@ APRCustomPath.player = {}
 APR.RouteQuestStepList["fixture-normal-start"] = nil
 APR.routeconfig:GetStartingZonePrefab()
 assert(
-    #APRCustomPath.player == 1 and APRCustomPath.player[1] == wrong.label,
-    "A same-faction starter on the adopted map is available without selecting an AoE or hidden chapter"
+    #APRCustomPath.player == 0,
+    "A same-faction starter on the current map still requires its authored race for automatic selection"
 )
 
 APR.routeconfig:BuildLevelingPrefab(APR.EXPANSIONS.Forever, "forever_mage_aoe")

@@ -47,13 +47,16 @@ APR.GetNavigationEntranceInfo = APRTrace(
     APR.GetNavigationEntranceInfo
 )--[[/APR_DIAG]]
 
-function APR:GetNavigationEntranceInfoForInstance(instanceID)
+function APR:GetNavigationEntranceInfoForInstance(instanceID, entranceID)
     local data = self.NavigationData
     if not data or not data.GetEntranceForInstance then return nil end
-    local definition = data:GetEntranceDefinitionForInstance(instanceID)
-    if not definition then return nil end
-    local resolved, reason = data:GetEntranceForInstance(instanceID)
-    return EntranceView(data, definition, resolved, reason, "instance:" .. instanceID)
+    local definition = data:GetEntranceDefinitionForInstance(instanceID, entranceID)
+    if not definition then
+        if entranceID then return { type = "DUNGEON", unavailable = "unknown_entrance" } end
+        return nil
+    end
+    local resolved, reason = data:GetEntranceForInstance(instanceID, nil, entranceID)
+    return EntranceView(data, definition, resolved, reason, "instance:" .. instanceID .. ":" .. (entranceID or ""))
 end--[[APR_DIAG]]
 APR.GetNavigationEntranceInfoForInstance = APRTrace(
     "APR-Core/integrations/NavigationEntrances.lua:45:APR:GetNavigationEntranceInfoForInstance#3",

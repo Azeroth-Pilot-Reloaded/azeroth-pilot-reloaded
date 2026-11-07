@@ -84,6 +84,8 @@ APR.CATEGORIES = {
     Pet = L["Pet"],
     Toy = L["Toy"],
     Daily = L["Daily"],
+    Class = CLASS,
+    Mage_AoE = L["Mage AoE"],
 }
 
 APR.PREFAB_TYPES = {

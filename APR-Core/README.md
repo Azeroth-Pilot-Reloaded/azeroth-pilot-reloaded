@@ -1,5 +1,13 @@
 ﻿# APR-Core: architecture and audit
 
+Route steps may declare `MapMarkers = { { x = worldX, y = worldY, mapID = optionalMapID, instanceID = optionalInstanceID }, ... }`
+for static search locations. Authors can use `APR.worldCoordinateConverter:ConvertMapCoordinate(mapID, xPercent, yPercent)`
+for each location. The active step shows all locations together on the map and minimap, subject to the existing marker
+visibility settings. Every marker shares the step's filtered number and tooltip; markers do not consume the next-step
+display limit. `Coord` remains the arrow's entry point. These locations do not advance the step, impose a visit order,
+draw a patrol line, or track a moving NPC. They disappear when the step changes or markers are disabled, and reuse
+pooled frames on refresh. `Coords` retains its existing role of selecting a coordinate by zone.
+
 The [30 October 2026 performance audit](../tools/validation/README.md#performance-audit-30-october-2026)
 documents the latest spike-focused corrections, synthetic before/after operation
 counts, complete test outcome and remaining in-game measurements.
