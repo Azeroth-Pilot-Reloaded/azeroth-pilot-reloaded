@@ -124,6 +124,7 @@ APR-Core/core/VersionCheck.lua
 APR-Core/core/Event.lua
 APR-Core/features/questing/RewardScoring.lua
 APR-Core/integrations/Pawn.lua
+APR-Core/features/player/BagUpgrades.lua
 APR-Core/features/questing/NPCInteraction.lua
 
 APR-Core/features/questing/StepInstructions.lua

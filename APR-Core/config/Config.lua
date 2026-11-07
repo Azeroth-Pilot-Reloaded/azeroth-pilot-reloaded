@@ -58,6 +58,7 @@ local function SetProfileOption(info, value)
         APR.PawnRewards:RefreshSettings()
     end
     if info[#info] == "debug" and APR.SetDebugCapture then APR:SetDebugCapture(value) end
+    if info[#info] == "bagUpgradeSuggestions" and APR.BagUpgrades then APR.BagUpgrades:RefreshSettings() end
     if info[#info] == "checkForUpdate" and APR.versionCheck and APR.versionCheck.RefreshSettings then
         APR.versionCheck:RefreshSettings()
     end
@@ -126,6 +127,7 @@ function APR.settings:InitializeSettings()
             autoCosmeticMulti = false,
             autoTransmogMulti = false,
             rewardPriority1 = "ilvl",
+            bagUpgradeSuggestions = true,
             rewardPriority2 = "cosmetic",
             rewardPriority3 = "transmog",
             rewardPriority4 = "price",
@@ -303,6 +305,7 @@ APR.settings.ChatCommand =
 function APR.settings:RefreshProfile()
     if APR.LayoutEditor then APR.LayoutEditor:Hide(false) end
     self.profile = self.db.profile
+    if APR.BagUpgrades then APR.BagUpgrades:RefreshSettings() end
     if APR.PawnRewards and APR.PawnRewards.RefreshSettings then APR.PawnRewards:RefreshSettings() end
     if APR.partyFinder and APR.partyFinder.RefreshSettings then APR.partyFinder:RefreshSettings() end
     if APR.versionCheck and APR.versionCheck.RefreshSettings then APR.versionCheck:RefreshSettings() end
@@ -1707,6 +1710,15 @@ function APR.settings:createBlizzOptions()
                 type = "group",
                 name = L["REWARDS_OPTIONS"],
                 args = {
+                    bagUpgradeSuggestions = {
+                        order = 8.205,
+                        type = "toggle",
+                        name = L["BAG_UPGRADE_SUGGESTIONS"],
+                        desc = L["BAG_UPGRADE_SUGGESTIONS_DESC"],
+                        width = "full",
+                        get = GetProfileOption,
+                        set = SetProfileOption,
+                    },
                     autoHandInChoice = {
                         order = 8.21,
                         type = "toggle",
@@ -1741,7 +1753,9 @@ function APR.settings:createBlizzOptions()
                         --[[APR_DIAG]]
                         disabled = APRTrace(
                             "APR-Core/config/Config.lua:1262:callback#107", --[[/APR_DIAG]]
-                            function() return not self.profile.autoHandInChoice end --[[APR_DIAG]]
+                            function()
+                                return not self.profile.autoHandInChoice and not self.profile.bagUpgradeSuggestions
+                            end --[[APR_DIAG]]
                         ) --[[/APR_DIAG]],
                     },
                     rewardWeightStatus = {
@@ -3184,6 +3198,7 @@ APR.settings.CreateMiniMapButton =
     APRTrace("APR-Core/config/Config.lua:2211:APR.settings:CreateMiniMapButton#203", APR.settings.CreateMiniMapButton)--[[/APR_DIAG]]
 
 function APR.settings:ToggleAddon()
+    if APR.BagUpgrades then APR.BagUpgrades:RefreshSettings() end
     if APR.PawnRewards and APR.PawnRewards.RefreshSettings then APR.PawnRewards:RefreshSettings() end
     if not self.profile.enableAddon and APR.npcInteraction and APR.npcInteraction.CancelRewardRetry then
         APR.npcInteraction:CancelRewardRetry()

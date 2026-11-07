@@ -408,11 +408,12 @@ function Scoring:GetUpgrade(link, scale)
     equipped = APRTrace("APR-Core/features/questing/RewardScoring.lua:343:equipped#20", equipped)--[[/APR_DIAG]]
     -- These are removed objects, not destination slots. A retained weapon can
     -- change hands without contributing to the gain or disappearing from uniqueness checks.
-    local possibilities = {}
+    local possibilities, plans = {}, {}
     local destinations = slots[candidate.equipLoc]
     if destinations then
         for _, slot in ipairs(destinations) do
             possibilities[#possibilities + 1] = { slot }
+            plans[#possibilities] = { slot = slot }
         end
     else
         local main = equipped(16)
@@ -435,6 +436,7 @@ function Scoring:GetUpgrade(link, scale)
                 possibilities[1] = canPair(candidate, offhand, titan, dual) and { 16 } or { 16, 17 }
                 if not main.empty and canPair(main, candidate, titan, dual) then possibilities[2] = { 17 } end
             end
+            plans[1], plans[2] = { slot = 16 }, { slot = 17 }
         elseif
             loc == "INVTYPE_WEAPON"
             or loc == "INVTYPE_WEAPONMAINHAND"
@@ -443,6 +445,7 @@ function Scoring:GetUpgrade(link, scale)
             local offhand = equipped(17)
             if not offhand then return nil, false end
             possibilities[1] = canPair(candidate, offhand, titan, dual) and { 16 } or { 16, 17 }
+            plans[1] = { slot = 16 }
             if
                 not main.empty
                 and (
@@ -451,15 +454,19 @@ function Scoring:GetUpgrade(link, scale)
                 )
             then
                 possibilities[2] = { 17 }
+                plans[2] = canPair(main, candidate, titan, dual) and { slot = 17 }
+                    or { slot = 16, move = { from = 16, to = 17, link = main.link } }
             end
         elseif loc == "INVTYPE_SHIELD" or loc == "INVTYPE_HOLDABLE" or loc == "INVTYPE_WEAPONOFFHAND" then
             if canPair(main, candidate, titan, dual) then
                 possibilities[1] = { 17 }
+                plans[1] = { slot = 17 }
             end
             local offhand = equipped(17)
             if not offhand then return nil, false end
             if canMoveToMain(offhand) and canPair(offhand, candidate, titan, dual) then
                 possibilities[#possibilities + 1] = { 16 }
+                plans[#possibilities] = { slot = 17, move = { from = 17, to = 16, link = offhand.link } }
             end
         elseif
             forever()
@@ -471,10 +478,11 @@ function Scoring:GetUpgrade(link, scale)
             )
         then
             possibilities[1] = { 18 }
+            plans[1] = { slot = 18 }
         end
     end
-    local best
-    for _, replaced in ipairs(possibilities) do
+    local best, bestPlan
+    for index, replaced in ipairs(possibilities) do
         local baseline, replacement = 0, {}
         for _, slot in ipairs(replaced) do
             replacement[slot] = true
@@ -502,10 +510,13 @@ function Scoring:GetUpgrade(link, scale)
         if valid then
             local gain = value - baseline
             if not number(gain) then return nil, false end
-            best = math.max(best or -math.huge, gain)
+            if best == nil or gain > best then
+                best, bestPlan = gain, plans[index]
+                bestPlan.replacedSlots, bestPlan.baseline = replaced, baseline
+            end
         end
     end
-    return best, true
+    return best, true, bestPlan
 end--[[APR_DIAG]]
 Scoring.GetUpgrade =
     APRTrace("APR-Core/features/questing/RewardScoring.lua:326:Scoring:GetUpgrade#19", Scoring.GetUpgrade)--[[/APR_DIAG]]

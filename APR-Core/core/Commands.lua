@@ -33,6 +33,7 @@ function APR.command:GetHelpEntries()
         { "/apr gamepad", L["GAMEPAD_MENU"] },
         { "/apr gamepad debug", DEBUG or L["DEBUG"] },
         { "/apr group", L["GF_HEADER_TOOLTIP"] },
+        { "/apr gear", EQUIPMENT },
         { "/apr layout", L["UI_LAYOUT_TITLE"] },
         { "/apr qol", L["QOL_COMMAND"] },
         { "/apr reset, r", L["RESET_COMMAND"] },
@@ -68,6 +69,8 @@ function APR.command:SlashCmd(input)
         APR.Gamepad:ShowDiagnostics()
     elseif inputText == "gamepad" then
         APR.Gamepad:RunAction("menu")
+    elseif inputText == "gear" then
+        if APR.BagUpgrades then APR.BagUpgrades:OnScoringChanged() end
     elseif inputText == "group" then
         if APR.PartyFinderPanel then APR.PartyFinderPanel:Show() end
     elseif inputText == "layout" then

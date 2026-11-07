@@ -118,6 +118,7 @@ See [controller controls and in-game checks](docs/gamepad.md) for setup, combat 
       <ul>
         <li><strong>Quest item and spell buttons</strong>, target helpers, and a key binding for the APR item button.</li>
         <li><strong>Automatic reward selection</strong> with ordered priorities: item level, cosmetics, uncollected transmogs, and vendor price. Control multiple cosmetic or transmog choices separately.</li>
+        <li><strong>Bag upgrade suggestions</strong> compare your items with equipped gear using your selected APR or Pawn weights. Confirm each equipment change outside combat; use <code>/apr gear</code> to check again, or disable suggestions in the reward options.</li>
         <li><strong>Sell poor-quality items</strong> and repair equipment automatically when enabled; repairs use eligible guild funds before personal gold.</li>
         <li><strong>Route-directed actions</strong> for purchases, selected item sales, equipment, banking, training, and more, with progress tracking.</li>
       </ul>

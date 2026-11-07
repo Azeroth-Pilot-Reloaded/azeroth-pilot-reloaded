@@ -33,6 +33,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/features/navigation/Preview.lua"] = { instrumented = 17, diagnosticHelpers = 0 },
     ["APR-Core/features/navigation/WorldCoordinateConverter.lua"] = { instrumented = 48, diagnosticHelpers = 0 },
     ["APR-Core/features/player/AFK.lua"] = { instrumented = 14, diagnosticHelpers = 0 },
+    ["APR-Core/features/player/BagUpgrades.lua"] = { instrumented = 26, diagnosticHelpers = 0 },
     ["APR-Core/features/player/Buff.lua"] = { instrumented = 22, diagnosticHelpers = 0 },
     ["APR-Core/features/player/Cutscenes.lua"] = { instrumented = 9, diagnosticHelpers = 0 },
     ["APR-Core/features/player/Heirloom.lua"] = { instrumented = 26, diagnosticHelpers = 0 },
