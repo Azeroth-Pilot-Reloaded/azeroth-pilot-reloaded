@@ -163,6 +163,8 @@ function Model:Build(settings)
         { "group_reward_automation", CopyOption(source.group_reward_automation) },
     })
 
+    if source.announcements then category("announcements", CopyOption(source.announcements)) end
+
     local current = PanelOptions(source.group_Current_Step, "subgroup_CurrentStep", {
         "currentStepAttachFrameToQuestLog",
         "currentStepTrackerSide",

@@ -115,7 +115,7 @@ local function UpdateQuest(self, deferStepUpdate)
                         objEntry = {}
                         quest.objectives[i] = objEntry
                     end
-                    objEntry.text, objEntry.status = text, status
+                    objEntry.text, objEntry.status, objEntry.type = text, status, objectiveInfo.type
 
                     if not deferStepUpdate then
                         APR.currentStep:UpdateQuestStep(questID, text, i)
@@ -166,6 +166,7 @@ local function UpdateQuest(self, deferStepUpdate)
         removalRenderRevision = removalRenderRevision + 1
         pendingRemovalRender = removalRenderRevision
     end
+    if complete and self.announcements then self.announcements:ObserveQuests() end
     -- Combined refresh callers render once, after the quest cache is synchronized.
     -- UpdateStep also evaluates QpartPart text triggers against that cache.
     if deferStepUpdate then return end

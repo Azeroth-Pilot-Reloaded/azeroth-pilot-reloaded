@@ -18,12 +18,16 @@ function LibStub(name, ...)
 end
 dofile("APR-Core/utils/TextStyleUtils.lua")
 dofile("APR-Core/config/AboutData.lua")
+dofile("APR-Core/features/player/Announcements.lua")
 dofile("APR-Core/config/Config.lua")
 APR.title, APR.version = "APR", "test"
 APR.GAME_VERSIONS = { Forever = "Forever" }
 function APR:GetGameVersion() return "Retail" end
 function APR:IsRemixCharacter() return false end
 APR.settings.profile = {}
+APR.settings.profile.announcements = { enabled = true, group = true, solo = true,
+    level = true, quest = true, objective = true, collect = true,
+    flight = true, hearthstone = true, route = true }
 APR.routeconfig = { InitRouteConfig = function() return {} end }
 Settings = { RegisterCanvasLayoutCategory = function() return { ID = 1 } end }
 APR.settings:createBlizzOptions()
@@ -94,6 +98,7 @@ end)
 assert(count > 120, "The complete settings schema must be checked")
 local expectedOrder = {
     "automation",
+    "announcements",
     "group_Current_Step",
     "group_FillersFrame",
     "group_quest_order_list_step",

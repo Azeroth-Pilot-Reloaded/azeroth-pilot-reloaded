@@ -1550,6 +1550,7 @@ function APR.event.functions.lvlUp(
     intellectDelta
 )
     APR.Level = level
+    if APR.announcements then APR.announcements:Send("level", "ANNOUNCE_LEVEL", "ANNOUNCE_LEVEL_EMOTE", level) end
     APR.routeconfig:CheckRouteResetOnLvlUp()
     if APR._blockedRouteKey and APR:CanStartRoute(APR._blockedRouteKey) then
         APR.routeconfig:SendMessage("APR_Custom_Path_Update")
@@ -1961,6 +1962,12 @@ APR.event.functions.spec =
 
 function APR.event.functions.spell(event, unitTarget, castGUID, spellID)
     if not APRSecret:CanAccessValue(unitTarget) or not APRSecret:CanAccessValue(spellID) then return end
+    if unitTarget == "player" and APR.announcements and APR:IsHearthstoneSpell(spellID) then
+        local destination = GetBindLocation and GetBindLocation()
+        if destination and destination ~= "" then
+            APR.announcements:Send("hearthstone", "ANNOUNCE_HEARTHSTONE", nil, destination)
+        end
+    end
     if step and step.SpellETA then APR:HandleSpellETA(step, unitTarget, spellID) end
     if step and step.TameBeast then APR:HandleTameBeast(step, event, unitTarget, spellID) end
     if step and step.TameBeast and unitTarget == "player" then APR.event:QueueStepRefresh() end

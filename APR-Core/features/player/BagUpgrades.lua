@@ -202,12 +202,12 @@ function Upgrades:FinishScan(job)
         if self.generation ~= generation then return end
         if next(pending) then
             -- A failed/missing item event also has a bounded recovery path.
-            local generation = self.generation
+            local tmpGeneration = self.generation
             self.timer = C_Timer.NewTimer(
                 1, --[[APR_DIAG]]
                 APRTrace("APR-Core/features/player/BagUpgrades.lua:150:callback#17", --[[/APR_DIAG]] function()
                     self.timer = nil
-                    if self.generation == generation then self:QueueScan() end
+                    if self.generation == tmpGeneration then self:QueueScan() end
                 end--[[APR_DIAG]]) --[[/APR_DIAG]]
             )
             return
