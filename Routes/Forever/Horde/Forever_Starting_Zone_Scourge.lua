@@ -5337,15 +5337,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 616,
         },
         {
-            Grind = 12,
-            Coord = { x = 2556.1, y = 1868.8 },
-            Range = 30,
-            ClassNot = "PALADIN",
-            SkipForLvl = 12,
-            Zone = 1420,
-            _index = 617,
-        },
-        {
             Waypoint = 99152,
             Note = { "EXIT_BUILDING" },
             Coord = { x = 2449.5, y = 1857.6 },
@@ -5353,7 +5344,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             AnyOf = { { IsQuestOnQuest = 99152 }, { IsQuestOnQuest = 95314 } },
             ClassNot = "PALADIN",
             Zone = 1420,
-            _index = 618,
+            _index = 617,
         },
         {
             Qpart = { [91316] = { 1 }, [95314] = { 1 } },
@@ -5362,7 +5353,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             Class = "PALADIN",
             IsQuestOnQuest = 95314,
             Zone = 1420,
-            _index = 619,
+            _index = 618,
         },
         {
             Waypoint = 99152,
@@ -5372,14 +5363,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             AnyOf = { { IsQuestOnQuest = 99152 }, { IsQuestOnQuest = 95314 } },
             Class = "PALADIN",
             Zone = 1420,
-            _index = 620,
+            _index = 619,
         },
         {
             Qpart = { [99152] = { 1 } },
             Range = 30,
             NoArrow = true,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
-            _index = 621,
+            _index = 620,
         },
         {
             Done = { 99152 },
@@ -5387,41 +5378,48 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             IsQuestOnQuest = 99152,
             Zone = 1420,
-            _index = 622,
+            _index = 621,
         },
         {
             Done = { 99152 },
             Coord = { x = 2037.1, y = 2416.8 },
             Class = "PALADIN",
             IsQuestOnQuest = 99152,
+            Zone = 1420,
+            _index = 622,
+        },
+        {
+            Done = { 99153 },
+            Coord = { x = 2122.5, y = 2436.8 },
+            Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
+            IsQuestOnQuest = 99153,
             Zone = 1420,
             _index = 623,
         },
         {
             Done = { 99153 },
             Coord = { x = 2122.5, y = 2436.8 },
-            Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
-            IsQuestOnQuest = 99153,
-            Zone = 1420,
-            _index = 624,
-        },
-        {
-            Done = { 99153 },
-            Coord = { x = 2122.5, y = 2436.8 },
             Class = "PALADIN",
             IsQuestOnQuest = 99153,
             Zone = 1420,
-            _index = 625,
+            _index = 624,
         },
         {
             Done = { 91316 },
             Coord = { x = 2008.0, y = 2491.2 },
             Class = "PALADIN",
             Zone = 1420,
-            _index = 626,
+            _index = 625,
         },
         {
             Done = { 91317 },
+            Coord = { x = 2035.1, y = 2492.0 },
+            Class = "PALADIN",
+            Zone = 1420,
+            _index = 626,
+        },
+        {
+            PickUp = { 95803 },
             Coord = { x = 2035.1, y = 2492.0 },
             Class = "PALADIN",
             Zone = 1420,
@@ -5432,12 +5430,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             Coord = { x = 2318.1, y = 2087.25 },
             Range = 30,
             Class = "PALADIN",
+            IsQuestNotOnQuest = 94427,
+            IsQuestUncompleted = 94427,
             SkipForLvl = 12,
             Zone = 1420,
             _index = 628,
         },
         {
-            PickUp = { 95803, 94427 },
+            PickUp = { 94427 },
             Coord = { x = 2035.1, y = 2492.0 },
             Class = "PALADIN",
             Zone = 1420,
@@ -7254,24 +7254,16 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             _index = 78,
         },
         {
-            Grind = 12,
-            Coord = { x = -130.5, y = 1907.8 },
-            Range = 30,
-            SkipForLvl = 12,
-            Zone = 1420,
-            _index = 79,
-        },
-        {
             Done = { 96897, 96898 },
             Coord = { x = 54.5, y = 1996.4 },
             Zone = 1420,
-            _index = 80,
+            _index = 79,
         },
         {
             Done = { 356 },
             Coord = { x = 74.0, y = 2022.47 },
             Zone = 1420,
-            _index = 81,
+            _index = 80,
         },
         {
             Waypoint = 435,
@@ -7279,7 +7271,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Range = 20,
             SkipInZones = { 1458 },
             Zone = 1420,
-            _index = 82,
+            _index = 81,
         },
         {
             Waypoint = 435,
@@ -7287,7 +7279,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Coord = { x = 239.14, y = 1749.54 },
             Range = 35.0,
             Zone = 1458,
-            _index = 83,
+            _index = 82,
         },
         {
             Waypoint = 435,
@@ -7295,7 +7287,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Coord = { x = 255.64, y = 1724.7 },
             Range = 35.0,
             Zone = 1458,
-            _index = 84,
+            _index = 83,
         },
         {
             Waypoint = 435,
@@ -7303,7 +7295,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Coord = { x = 240.68, y = 1706.97 },
             Range = 10.0,
             Zone = 1458,
-            _index = 85,
+            _index = 84,
         },
         {
             Waypoint = 435,
@@ -7311,7 +7303,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Coord = { x = 241.06, y = 1660.12 },
             Range = 10.0,
             Zone = 1458,
-            _index = 86,
+            _index = 85,
         },
         {
             Waypoint = 435,
@@ -7319,7 +7311,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Coord = { x = 257.08, y = 1623.38 },
             Range = 10.0,
             Zone = 1458,
-            _index = 87,
+            _index = 86,
         },
         {
             Waypoint = 435,
@@ -7327,13 +7319,13 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Coord = { x = 244.51, y = 1598.73 },
             Range = 15.0,
             Zone = 1458,
-            _index = 88,
+            _index = 87,
         },
         {
             GetFP = 11,
             Coord = { x = 266.39, y = 1567.11 },
             Zone = 1458,
-            _index = 89,
+            _index = 88,
         },
         {
             LearnSkill = { spellID = 201 },
@@ -7343,7 +7335,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             MinLevel = 1,
             Money = { operator = ">=", copper = 1000 },
             Zone = 1458,
-            _index = 90,
+            _index = 89,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 851, quantity = 1 } },
@@ -7359,7 +7351,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Money = { copper = 2129, operator = ">=" },
             OnlyInZones = { 1458 },
             Zone = 1458,
-            _index = 91,
+            _index = 90,
         },
         {
             BuyMerchant = { { isSupply = true, quantity = 1, itemID = 854, questID = 435 } },
@@ -7373,7 +7365,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Money = { copper = 3181, operator = ">=" },
             Race = "Troll",
             Zone = 1458,
-            _index = 92,
+            _index = 91,
         },
         {
             Note = { "OPTIONAL_BUY_MISSING_QUEST_SUPPLIES_AUCTION_HOUSE" },
@@ -7381,7 +7373,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             ItemCount = { count = 3, itemID = 730, operator = "<" },
             OnlyInZones = { 1458 },
             Zone = 1458,
-            _index = 93,
+            _index = 92,
         },
         {
             LearnProfession = 7411,
@@ -7393,7 +7385,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             MinLevel = 5,
             Race = "Troll",
             Zone = 1458,
-            _index = 94,
+            _index = 93,
         },
         {
             LearnProfession = 3908,
@@ -7405,7 +7397,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             MinLevel = 5,
             Race = "Troll",
             Zone = 1458,
-            _index = 95,
+            _index = 94,
         },
         {
             LootItems = { { quantity = 30, itemID = 2996, questID = 435, includeBank = false } },
@@ -7416,7 +7408,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             HasSpell = 3908,
             Race = "Troll",
             Zone = 1458,
-            _index = 96,
+            _index = 95,
         },
         {
             LearnProfession = 7623,
@@ -7428,7 +7420,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             MinLevel = 5,
             Race = "Troll",
             Zone = 1458,
-            _index = 97,
+            _index = 96,
         },
         {
             BuyMerchant = { { quantity = 30, itemID = 2320, questID = 435, targetStock = true } },
@@ -7441,7 +7433,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Money = { operator = ">=", copper = 300 },
             Race = "Troll",
             Zone = 1458,
-            _index = 98,
+            _index = 97,
         },
         {
             LootItems = { { quantity = 9, itemID = 6238, questID = 398, includeBank = false } },
@@ -7450,7 +7442,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             EquippedItemStat = { { allowMissing = true, slot = 18, value = 7, precision = 1, stat = "QUALITY", operator = "<" }, { allowMissing = true, slot = 18, value = 11.3, precision = 1, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<" } },
             HasSpell = 3908,
             Race = "Troll",
-            _index = 99,
+            _index = 98,
         },
         {
             BuyMerchant = { { questID = 435, quantity = 1, targetStock = true, itemID = 6217, optional = true } },
@@ -7465,7 +7457,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Money = { copper = 124, operator = ">=" },
             Race = "Troll",
             Zone = 1458,
-            _index = 100,
+            _index = 99,
         },
         {
             BuyMerchant = { { itemID = 4470, quantity = 1, targetStock = true, optional = true }, { itemID = 10938, quantity = 2, targetStock = true, optional = true, conditions = { ItemCount = { itemID = 6218, count = 1, operator = "<" } } }, { itemID = 10938, quantity = 1, targetStock = true, optional = true, conditions = { ItemCount = { itemID = 6218, count = 1, operator = ">=" } } } },
@@ -7480,7 +7472,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Money = { operator = ">=", copper = 38 },
             Race = "Troll",
             Zone = 1458,
-            _index = 101,
+            _index = 100,
         },
         {
             LearnProfession = 14293,
@@ -7492,7 +7484,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             MinLevel = 5,
             Race = "Troll",
             Zone = 1458,
-            _index = 102,
+            _index = 101,
         },
         {
             LootItems = { { quantity = 1, itemID = 11287, questID = 435, includeBank = false } },
@@ -7501,7 +7493,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             EquippedItemStat = { { allowMissing = true, slot = 18, value = 7, precision = 1, stat = "QUALITY", operator = "<" }, { allowMissing = true, slot = 18, value = 11.3, precision = 1, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<" } },
             HasSpell = 7411,
             Race = "Troll",
-            _index = 103,
+            _index = 102,
         },
         {
             LearnSkill = { spellID = 1766 },
@@ -7511,7 +7503,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             MinLevel = 12,
             Money = { operator = ">=", copper = 800 },
             Zone = 1458,
-            _index = 104,
+            _index = 103,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -7519,7 +7511,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Class = "ROGUE",
             IsQuestUncompleted = 435,
             Zone = 1458,
-            _index = 105,
+            _index = 104,
         },
         {
             LearnSkill = { spellID = 145 },
@@ -7529,7 +7521,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             MinLevel = 12,
             Money = { operator = ">=", copper = 800 },
             Zone = 1458,
-            _index = 106,
+            _index = 105,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -7537,7 +7529,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Class = "MAGE",
             IsQuestUncompleted = 435,
             Zone = 1458,
-            _index = 107,
+            _index = 106,
         },
         {
             LearnSkill = { spellID = 755 },
@@ -7547,7 +7539,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             MinLevel = 12,
             Money = { operator = ">=", copper = 800 },
             Zone = 1458,
-            _index = 108,
+            _index = 107,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -7555,7 +7547,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Class = "WARLOCK",
             IsQuestUncompleted = 435,
             Zone = 1458,
-            _index = 109,
+            _index = 108,
         },
         {
             LearnSkill = { spellID = 588 },
@@ -7566,7 +7558,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Money = { operator = ">=", copper = 800 },
             Race = "Troll",
             Zone = 1458,
-            _index = 110,
+            _index = 109,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -7575,7 +7567,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             IsQuestUncompleted = 435,
             Race = "Troll",
             Zone = 1458,
-            _index = 111,
+            _index = 110,
         },
         {
             LearnSkill = { spellID = 7384 },
@@ -7585,7 +7577,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             MinLevel = 12,
             Money = { operator = ">=", copper = 800 },
             Zone = 1458,
-            _index = 112,
+            _index = 111,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -7593,20 +7585,20 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Class = "WARRIOR",
             IsQuestUncompleted = 435,
             Zone = 1458,
-            _index = 113,
+            _index = 112,
         },
         {
             LeaveQuests = { 806, 408 },
-            _index = 114,
+            _index = 113,
         },
         {
             LeaveQuests = { 1821 },
             Class = "WARRIOR",
-            _index = 115,
+            _index = 114,
         },
         {
             LeaveQuests = { 375 },
-            _index = 116,
+            _index = 115,
         },
         {
             Waypoint = 435,
@@ -7614,7 +7606,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Range = 50,
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 117,
+            _index = 116,
         },
         {
             Waypoint = 435,
@@ -7622,7 +7614,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Range = 10,
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 118,
+            _index = 117,
         },
         {
             Waypoint = 435,
@@ -7630,7 +7622,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Range = 10,
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 119,
+            _index = 118,
         },
         {
             Waypoint = 435,
@@ -7638,7 +7630,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Range = 10,
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 120,
+            _index = 119,
         },
         {
             Waypoint = 435,
@@ -7646,7 +7638,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Range = 10,
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 121,
+            _index = 120,
         },
         {
             Waypoint = 435,
@@ -7654,7 +7646,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Range = 15,
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 122,
+            _index = 121,
         },
         {
             Waypoint = 435,
@@ -7662,7 +7654,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Range = 35,
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 123,
+            _index = 122,
         },
         {
             Waypoint = 435,
@@ -7670,7 +7662,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Range = 35,
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 124,
+            _index = 123,
         },
         {
             Waypoint = 435,
@@ -7678,7 +7670,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Range = 50,
             SkipInZones = { 1421 },
             Zone = 1420,
-            _index = 125,
+            _index = 124,
         },
         {
             Waypoint = 435,
@@ -7686,11 +7678,11 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             Range = 5,
             SkipInZones = { 1421 },
             Zone = 1420,
-            _index = 126,
+            _index = 125,
         },
         {
             RouteCompleted = true,
-            _index = 127,
+            _index = 126,
         },
     },
 }

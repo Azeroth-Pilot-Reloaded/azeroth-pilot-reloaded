@@ -8,7 +8,7 @@ APR.RouteQuestStepList["Forever-Horde-Silverpine-Forest"] = {
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
     mapID = 1421,
-    conditions = { MinLevel = 12, Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Skyborne, APR.RACES.Troll }, Class = { APR.Classes.Druid, APR.Classes.Mage, APR.Classes.Paladin, APR.Classes.Priest, APR.Classes.Rogue, APR.Classes.Warlock, APR.Classes.Warrior }, Faction = "Horde" },
+    conditions = { MinLevel = 10, Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Skyborne, APR.RACES.Troll }, Class = { APR.Classes.Druid, APR.Classes.Mage, APR.Classes.Paladin, APR.Classes.Priest, APR.Classes.Rogue, APR.Classes.Warlock, APR.Classes.Warrior }, Faction = "Horde" },
     nextRoute = {
         "Forever-Horde-The-Barrens",
         { route = "Forever-Horde-Dungeons-Barrens-12-16", conditions = { MinLevel = 12, Faction = "Horde", Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Skyborne, APR.RACES.Troll }, Class = { APR.Classes.Warrior, APR.Classes.Paladin, APR.Classes.Rogue, APR.Classes.Priest, APR.Classes.Mage, APR.Classes.Warlock, APR.Classes.Druid }, SkipForLvl = 17 } },
