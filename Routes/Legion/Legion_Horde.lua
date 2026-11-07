@@ -81,7 +81,7 @@ APR.RouteQuestStepList["85-Intro-Legion"] = {
             ExtraLineText = "NPC_TELEPORT",
             Coord = { x = -5016.8, y = 1438.9 },
             GossipOptionIDs = { 46562 },
-            RaidIcon = 113118,
+            RaidIcon = { { npcID = 113118, questID = 40518, objectiveIndex = 1 } },
             Zone = 1,
             _index = 10,
         },
@@ -2119,7 +2119,7 @@ APR.RouteQuestStepList["680-Nightborne-intro"] = {
         {
             Qpart = { [50303] = { 1 } },
             Coord = { x = -4214.6, y = 1555.9 },
-            RaidIcon = 167032,
+            RaidIcon = { { npcID = 167032, questID = 50303, objectiveIndex = 1 } },
             Zone = 85,
             _index = 7,
         },
@@ -2176,7 +2176,7 @@ APR.RouteQuestStepList["652-HighmountainTauren-intro"] = {
         {
             Qpart = { [50319] = { 1 } },
             Coord = { x = -4213.8, y = 1556.9 },
-            RaidIcon = 167032,
+            RaidIcon = { { npcID = 167032, questID = 50319, objectiveIndex = 1 } },
             Zone = 85,
             _index = 5,
         },

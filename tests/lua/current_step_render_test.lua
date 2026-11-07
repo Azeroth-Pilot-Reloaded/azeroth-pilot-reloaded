@@ -202,9 +202,9 @@ for _, definition in ipairs({
     step:AddQuestSteps("KillNPC_" .. id, definition.KillNPC.name, "KillNPC", false, true)
     step:AddQuestSteps("KillHelp", "Skip manually", "KillNPC", false, true)
     step:EndContentUpdate(true)
-    local target = step.questsList["KillNPC_" .. id .. "-KillNPC"].RaidIconButton
+    local target = step.raidIconButtons[1]
     assert(target and target.npcID == id and target.attributes.type1 == "macro")
-    assert(not step.questsList["KillHelp-KillNPC"].RaidIconButton, "Only one targeting button per step")
+    assert(#step.raidIconButtons == 1 and target:GetParent() == step.questsList["KillHelp-KillNPC"]:GetParent(), "Automatic NPC targets use the main step host")
 end
 step:PrepareRaidIcon({ RaidIcon = 123 })
 assert(step.pendingRaidIconNpcId == 123, "Legacy RaidIcon steps keep their target")

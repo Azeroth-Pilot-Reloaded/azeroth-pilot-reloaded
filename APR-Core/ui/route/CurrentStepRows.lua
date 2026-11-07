@@ -342,6 +342,7 @@ function CurrentStep:EndContentUpdate(success)
     -- An automatic completion has already requested another pass. Keep dirty
     -- geometry for that pass instead of laying out every skipped objective.
     if not success then return end
+    APR.RaidIconButtons:SetTargets(self.pendingRaidIconNpcId, true)
     if not self.questUpdateDepth then
         self.questLayoutPending, self.questFillerLayoutPending = nil, nil
     end

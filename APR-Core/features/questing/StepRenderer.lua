@@ -163,7 +163,7 @@ function APR:RenderCurrentStep()
 
         -- Sojourner party sync mismatch check
         APR:CheckSojournerPartySync()
-        APR.currentStep:PrepareRaidIcon(step)
+        APR.currentStep:PrepareRaidIcon(step, currentStepToken)
 
         -- set the arrow coord before the step logic to avoid double completion
         APR.Arrow.currentStep = 0

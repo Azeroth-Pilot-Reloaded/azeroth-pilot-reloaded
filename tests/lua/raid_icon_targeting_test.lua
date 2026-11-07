@@ -4,8 +4,10 @@ function canaccessvalue(value) return not rawequal(value, secret) end
 dofile("APR-Core/utils/SecretUtils.lua")
 APR, APRData = {}, { NPCList = {} }
 UNKNOWN = "Unknown"
+function APR:GetGameVersion() return "forever" end
 local step = { KillNPC = { npcID = 61412, name = "Dark Shaman Koranthal" } }
 function APR:GetCurrentStep() return step end
+function GetRaidTargetIndex() return nil end
 function UnitGUID() return secret end
 function UnitCreatureID() return secret end
 dofile("APR-Core/utils/TargetUtils.lua")
@@ -19,12 +21,12 @@ C_TooltipInfo = {
 }
 local macro = APR:BuildRaidIconMacro(61412)
 assert(
-    macro == "/cleartarget\n/targetexact Sombre chaman Koranthal\n/tm [@target,exists] 8",
+    macro == "/cleartarget\n/targetexact Sombre chaman Koranthal\n/targetmarker [@target,exists,nodead] !8\n/stopmacro [exists,nodead]\n/cleartarget [dead]",
     "A first-seen boss gets a localized secure macro even with a secret GUID"
 )
 assert(APR:BuildRaidIconMacro(61412) == macro and queries == 1, "Public localized names are cached")
 assert(APR:FindRaidIconUnitToken(61412) == nil, "Secret identity is never used to guess a unit token")
-assert(APR:BuildRaidIconMacro(61412, "nameplate2") == "/target [@nameplate2,exists]\n/tm [@nameplate2,exists] 8")
+assert(APR:BuildRaidIconMacro(61412, "nameplate2") == macro, "Volatile unit tokens cannot retarget unrelated NPCs")
 APRData.NPCList = {}
 C_TooltipInfo.GetHyperlink = function() return { lines = { { leftText = secret } } } end
 assert(
@@ -33,14 +35,14 @@ assert(
 )
 function GetLocale() return "frFR" end
 assert(
-    APR:BuildRaidIconMacro(61412) == "/tm [@mouseover,exists][@target,exists] 8",
+    APR:BuildRaidIconMacro(61412) == "",
     "An untranslated fallback must not clear the user's target or search for an English NPC on a French client"
 )
 step = {}
 assert(
-    APR:BuildRaidIconMacro(61412) == "/tm [@mouseover,exists][@target,exists] 8",
-    "An unresolved target must have a usable manual mouseover/target action"
+    APR:BuildRaidIconMacro(61412) == "",
+    "An unresolved target must not mark an unrelated mouseover or target"
 )
 APRData.NPCList[61412] = "Boss\n/run unwanted()"
 assert(not APR:GetRaidIconNpcName(61412), "Names cannot inject additional macro commands")
-print("RaidIcon: localized uncached KillNPC names, secret GUIDs, token targeting and manual fallback passed")
+print("RaidIcon: localized scalar names, secret GUIDs, volatile tokens and safe missing-name handling passed")

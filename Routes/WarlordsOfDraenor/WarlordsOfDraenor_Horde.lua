@@ -16,7 +16,7 @@ APR.RouteQuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
             ChromiePick = 9,
             Coord = { x = -4215.9, y = 1558.2 },
             Gossip = 1,
-            RaidIcon = 167032,
+            RaidIcon = { { npcID = 167032, questID = 34398 } },
             _index = 1,
         },
         {
@@ -48,7 +48,7 @@ APR.RouteQuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
             Coord = { x = -4477.2, y = 1426.3 },
             Range = 0.69,
             GossipOptionIDs = { 51034 },
-            RaidIcon = 149626,
+            RaidIcon = { { npcID = 149626, questID = 34398, objectiveIndex = 1 } },
             _index = 6,
         },
         {
@@ -63,7 +63,7 @@ APR.RouteQuestStepList["85-DesMephisto-Orgrimmar-p1"] = {
             Coord = { x = -3204.5, y = -11810 },
             Range = 0.69,
             GossipOptionIDs = { 43231 },
-            RaidIcon = 78423,
+            RaidIcon = { { npcID = 78423, questID = 34398, objectiveIndex = 2 } },
             Zone = 17,
             _index = 8,
         },
@@ -1672,7 +1672,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             Coord = { x = 4739.1, y = 5631 },
             Gossip = 1,
             Name = "Throm'Var,FrostfireRidge",
-            RaidIcon = 44919,
+            RaidIcon = { { npcID = 44919 } },
             _index = 168,
         },
         {
@@ -1790,7 +1790,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             Fillers = { [34292] = { 1 } },
             Coord = { x = 6144.7, y = 7788.6 },
             Range = 0.75,
-            RaidIcon = 73492,
+            RaidIcon = { { npcID = 73492 } },
             _index = 187,
         },
         {
@@ -1852,7 +1852,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             Qpart = { [34295] = { 1 } },
             Coord = { x = 6359, y = 7753.3 },
             Range = 0.75,
-            RaidIcon = 74749,
+            RaidIcon = { { npcID = 74749, questID = 34295, objectiveIndex = 1 } },
             _index = 197,
         },
         {
@@ -1938,7 +1938,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             Qpart = { [34348] = { 1 } },
             Coord = { x = 4206.6, y = 7078.2 },
             Range = 0.75,
-            RaidIcon = 75072,
+            RaidIcon = { { npcID = 75072, questID = 34348, objectiveIndex = 1 } },
             _index = 212,
         },
         {
@@ -1998,7 +1998,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             Fillers = { [33468] = { 5 }, [33807] = { 1 } },
             Coord = { x = 6163.1, y = 5936.5 },
             Range = 0.75,
-            RaidIcon = 74702,
+            RaidIcon = { { npcID = 74702 } },
             _index = 222,
         },
         {
@@ -2006,7 +2006,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             Fillers = { [33468] = { 5 }, [33807] = { 1 } },
             Coord = { x = 6327.7, y = 5935.3 },
             Range = 0.69,
-            RaidIcon = 74700,
+            RaidIcon = { { npcID = 74700 } },
             _index = 223,
         },
         {
@@ -2014,7 +2014,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             Fillers = { [33468] = { 5 }, [33807] = { 1 } },
             Coord = { x = 6296.3, y = 5760.7 },
             Range = 0.69,
-            RaidIcon = 74708,
+            RaidIcon = { { npcID = 74708 } },
             _index = 224,
         },
         {
@@ -2049,7 +2049,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             Qpart = { [33469] = { 1 } },
             Coord = { x = 6480.8, y = 5919.2 },
             Range = 0.69,
-            RaidIcon = 74653,
+            RaidIcon = { { npcID = 74653, questID = 33469, objectiveIndex = 1 } },
             _index = 230,
         },
         {
@@ -2067,7 +2067,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             Coord = { x = 6481, y = 5918.3 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 74272,
+            RaidIcon = { { npcID = 74272, questID = 33470, objectiveIndex = 1 } },
             _index = 233,
         },
         {
@@ -2135,7 +2135,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             Qpart = { [32791] = { 1 } },
             Coord = { x = 5618.8, y = 7222.2 },
             Range = 0.75,
-            RaidIcon = 70878,
+            RaidIcon = { { npcID = 70878, questID = 32791, objectiveIndex = 1 } },
             _index = 245,
         },
         {
@@ -2165,7 +2165,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             Fillers = { [32929] = { 1 } },
             Coord = { x = 5203, y = 7094.8 },
             Range = 0.75,
-            RaidIcon = 71669,
+            RaidIcon = { { npcID = 71669 } },
             _index = 250,
         },
         {
@@ -2248,7 +2248,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             Coord = { x = 4555.2, y = 6901.6 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 70941,
+            RaidIcon = { { npcID = 70941, questID = 32795, objectiveIndex = 1 } },
             _index = 264,
         },
         {
@@ -2321,14 +2321,14 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             Qpart = { [32990] = { 3 } },
             Coord = { x = 5065.6, y = 6124 },
             Range = 0.75,
-            RaidIcon = 72381,
+            RaidIcon = { { npcID = 72381, questID = 32990, objectiveIndex = 3 } },
             _index = 277,
         },
         {
             Qpart = { [32990] = { 4 } },
             Coord = { x = 5110.8, y = 6137.1 },
             Range = 0.69,
-            RaidIcon = 72380,
+            RaidIcon = { { npcID = 72380, questID = 32990, objectiveIndex = 4 } },
             _index = 278,
         },
         {
@@ -2345,14 +2345,14 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             Qpart = { [32991] = { 1 } },
             Coord = { x = 5034.3, y = 6276.5 },
             Range = 0.69,
-            RaidIcon = 72400,
+            RaidIcon = { { npcID = 72400, questID = 32991, objectiveIndex = 1 } },
             _index = 281,
         },
         {
             Qpart = { [32991] = { 2 } },
             Coord = { x = 4993.1, y = 6451.8 },
             Range = 0.75,
-            RaidIcon = 72399,
+            RaidIcon = { { npcID = 72399, questID = 32991, objectiveIndex = 2 } },
             _index = 282,
         },
         {
@@ -2365,7 +2365,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             Qpart = { [32991] = { 3 } },
             Coord = { x = 4797.8, y = 6520.8 },
             Range = 0.61,
-            RaidIcon = 72494,
+            RaidIcon = { { npcID = 72494, questID = 32991, objectiveIndex = 3 } },
             _index = 284,
         },
         {
@@ -2445,7 +2445,7 @@ APR.RouteQuestStepList["525-DesMephisto-FrostfireRidge-p1"] = {
             Fillers = { [32994] = { 1 }, [33785] = { 1 } },
             Coord = { x = 3687.3, y = 5212.2 },
             Range = 0.75,
-            RaidIcon = 76594,
+            RaidIcon = { { npcID = 76594 } },
             _index = 298,
         },
         {
@@ -2839,7 +2839,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond"] = {
             ExtraLineText = "UPTOP",
             Coord = { x = 1709, y = 5978 },
             Range = 0.75,
-            RaidIcon = 79623,
+            RaidIcon = { { npcID = 79623 } },
             _index = 38,
         },
         {
@@ -2847,7 +2847,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond"] = {
             Fillers = { [34012] = { 1 } },
             Coord = { x = 1754.9, y = 5954.5 },
             Range = 0.75,
-            RaidIcon = 79621,
+            RaidIcon = { { npcID = 79621 } },
             _index = 39,
         },
         {
@@ -2912,7 +2912,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond"] = {
             Fillers = { [34012] = { 1 } },
             Coord = { x = 1879.4, y = 5842.5 },
             Range = 0.75,
-            RaidIcon = 79626,
+            RaidIcon = { { npcID = 79626 } },
             _index = 48,
         },
         {
@@ -2963,7 +2963,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond"] = {
             Qpart = { [34703] = { 1 } },
             Coord = { x = 2085.6, y = 5772.2 },
             Range = 0.69,
-            RaidIcon = 77020,
+            RaidIcon = { { npcID = 77020, questID = 34703, objectiveIndex = 1 } },
             _index = 56,
         },
         {
@@ -3115,7 +3115,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond"] = {
             Fillers = { [35934] = { 1 } },
             Coord = { x = 1161.7, y = 6776.7 },
             Range = 0.75,
-            RaidIcon = 83774,
+            RaidIcon = { { npcID = 83774 } },
             _index = 82,
         },
         {
@@ -3210,7 +3210,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond"] = {
             Qpart = { [35041] = { 5 } },
             Coord = { x = 1537.8, y = 7284.8 },
             Range = 0.69,
-            RaidIcon = 84503,
+            RaidIcon = { { npcID = 84503, questID = 35041, objectiveIndex = 5 } },
             _index = 98,
         },
         {
@@ -3272,7 +3272,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond"] = {
             Qpart = { [35128] = { 2 } },
             Coord = { x = 1649.7, y = 7017.1 },
             Range = 0.75,
-            RaidIcon = 81043,
+            RaidIcon = { { npcID = 81043, questID = 35128, objectiveIndex = 2 } },
             _index = 108,
         },
         {
@@ -3288,7 +3288,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond"] = {
             Coord = { x = 1595, y = 6987.5 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 81213,
+            RaidIcon = { { npcID = 81213 } },
             _index = 110,
         },
         {
@@ -3346,7 +3346,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond"] = {
             Coord = { x = 1477.7, y = 6928 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 84748,
+            RaidIcon = { { npcID = 84748, questID = 35247, objectiveIndex = 1 } },
             _index = 120,
         },
         {
@@ -3407,7 +3407,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond"] = {
             Coord = { x = 954.5, y = 6999.6 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 81723,
+            RaidIcon = { { npcID = 81723 } },
             _index = 130,
         },
         {
@@ -3473,7 +3473,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond"] = {
             Qpart = { [33695] = { 1 } },
             Coord = { x = 630.2, y = 6724.5 },
             Range = 0.75,
-            RaidIcon = 81749,
+            RaidIcon = { { npcID = 81749, questID = 33695, objectiveIndex = 1 } },
             _index = 142,
         },
         {
@@ -3604,7 +3604,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond"] = {
             Qpart = { [35040] = { 1 } },
             Coord = { x = 59.5, y = 6219.3 },
             Range = 0.75,
-            RaidIcon = 86157,
+            RaidIcon = { { npcID = 86157, questID = 35040, objectiveIndex = 1 } },
             _index = 165,
         },
         {
@@ -3682,7 +3682,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond"] = {
             Fillers = { [34724] = { 1, 2 } },
             Coord = { x = 678.7, y = 5255.2 },
             Range = 0.69,
-            RaidIcon = 76496,
+            RaidIcon = { { npcID = 76496 } },
             _index = 177,
         },
         {
@@ -4473,7 +4473,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             Qpart = { [33973] = { 1 } },
             Coord = { x = 2433.1, y = 3462.4 },
             Range = 0.75,
-            RaidIcon = 76981,
+            RaidIcon = { { npcID = 76981, questID = 33973, objectiveIndex = 1 } },
             _index = 13,
         },
         {
@@ -4620,7 +4620,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             Qpart = { [34803] = { 1 } },
             Coord = { x = 1627.5, y = 3331.1 },
             Range = 0.69,
-            RaidIcon = 80053,
+            RaidIcon = { { npcID = 80053, questID = 34803, objectiveIndex = 1 } },
             _index = 39,
         },
         {
@@ -4688,7 +4688,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             Qpart = { [34106] = { 1 } },
             Coord = { x = 2597.1, y = 3545.6 },
             Range = 0.69,
-            RaidIcon = 77684,
+            RaidIcon = { { npcID = 77684, questID = 34106, objectiveIndex = 1 } },
             _index = 51,
         },
         {
@@ -4706,7 +4706,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             Qpart = { [33720] = { 1 } },
             Coord = { x = 2070.1, y = 3854.9 },
             Range = 0.75,
-            RaidIcon = 76791,
+            RaidIcon = { { npcID = 76791, questID = 33720, objectiveIndex = 1 } },
             _index = 54,
         },
         {
@@ -4742,7 +4742,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             Fillers = { [33724] = { 1 } },
             Coord = { x = 2466.1, y = 3344.9 },
             Range = 0.69,
-            RaidIcon = 80576,
+            RaidIcon = { { npcID = 80576 } },
             _index = 60,
         },
         {
@@ -4809,7 +4809,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             Qpart = { [33730] = { 1 } },
             Coord = { x = 2193.6, y = 2889.9 },
             Range = 0.75,
-            RaidIcon = 75986,
+            RaidIcon = { { npcID = 75986, questID = 33730, objectiveIndex = 1 } },
             _index = 72,
         },
         {
@@ -4895,7 +4895,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             Fillers = { [33740] = { 1 }, [33761] = { 1, 3, 2 } },
             Coord = { x = 1156, y = 2631.4 },
             Range = 0.69,
-            RaidIcon = 75302,
+            RaidIcon = { { npcID = 75302 } },
             _index = 86,
         },
         {
@@ -5022,7 +5022,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             Qpart = { [34107] = { 1 } },
             Coord = { x = 1875.4, y = 1862.7 },
             Range = 0.75,
-            RaidIcon = 77431,
+            RaidIcon = { { npcID = 77431, questID = 34107, objectiveIndex = 1 } },
             _index = 107,
         },
         {
@@ -5077,7 +5077,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             Fillers = { [34858] = { 1 }, [34860] = { 1 } },
             Coord = { x = 1746.3, y = 1136 },
             Range = 0.69,
-            RaidIcon = 80294,
+            RaidIcon = { { npcID = 80294 } },
             _index = 116,
         },
         {
@@ -5085,7 +5085,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             Fillers = { [34858] = { 1 }, [34860] = { 1 } },
             Coord = { x = 1831, y = 1366.8 },
             Range = 0.69,
-            RaidIcon = 80292,
+            RaidIcon = { { npcID = 80292 } },
             _index = 117,
         },
         {
@@ -5093,7 +5093,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             Fillers = { [34858] = { 1 }, [34860] = { 1 } },
             Coord = { x = 1887.3, y = 1204.8 },
             Range = 0.75,
-            RaidIcon = 80295,
+            RaidIcon = { { npcID = 80295 } },
             _index = 118,
         },
         {
@@ -5125,7 +5125,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             Coord = { x = 2003.2, y = 1178.7 },
             Range = 0.75,
             Button = { ["34870-1"] = 112307, ["34870-2"] = 112307 },
-            RaidIcon = 80335,
+            RaidIcon = { { npcID = 80335 } },
             _index = 123,
         },
         {
@@ -5189,7 +5189,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             Fillers = { [33917] = { 1 }, [34418] = { 1 } },
             Coord = { x = 2463.5, y = 1932.9 },
             Range = 0.75,
-            RaidIcon = 76876,
+            RaidIcon = { { npcID = 76876 } },
             _index = 135,
         },
         {
@@ -5258,7 +5258,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             Qpart = { [33530] = { 2 } },
             Coord = { x = 2149.3, y = 1725 },
             Range = 0.69,
-            RaidIcon = 76745,
+            RaidIcon = { { npcID = 76745, questID = 33530, objectiveIndex = 2 } },
             _index = 147,
         },
         {
@@ -5361,7 +5361,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             Qpart = { [34414] = { 1 } },
             Coord = { x = 2602.6, y = 2440.4 },
             Range = 0.75,
-            RaidIcon = 78372,
+            RaidIcon = { { npcID = 78372, questID = 34414, objectiveIndex = 1 } },
             _index = 165,
         },
         {
@@ -5379,14 +5379,14 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             Coord = { x = 2754.3, y = 2421.1 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 78513,
+            RaidIcon = { { npcID = 78513, questID = 34447, objectiveIndex = 1 } },
             _index = 168,
         },
         {
             Qpart = { [34447] = { 2 } },
             Coord = { x = 2723.6, y = 2535.6 },
             Range = 0.61,
-            RaidIcon = 78501,
+            RaidIcon = { { npcID = 78501, questID = 34447, objectiveIndex = 2 } },
             _index = 169,
         },
         {
@@ -5588,7 +5588,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             Fillers = { [34122] = { 1 } },
             Coord = { x = 3479.5, y = 1106.5 },
             Range = 0.75,
-            RaidIcon = 77350,
+            RaidIcon = { { npcID = 77350 } },
             _index = 204,
         },
         {
@@ -5609,7 +5609,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             Fillers = { [34122] = { 1 } },
             Coord = { x = 3288.4, y = 1055.8 },
             Range = 0.75,
-            RaidIcon = 77349,
+            RaidIcon = { { npcID = 77349 } },
             _index = 207,
         },
         {
@@ -5667,7 +5667,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
             ExtraLineText = "DEMENTORS_DROPS_BOOKS",
             Coord = { x = 3799.6, y = 1478.9 },
             Range = 0.75,
-            RaidIcon = 77548,
+            RaidIcon = { { npcID = 77548 } },
             _index = 216,
         },
         {
@@ -5772,7 +5772,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             Coord = { x = 2036.5, y = 860.7 },
             Range = 0.61,
             Gossip = 1,
-            RaidIcon = 79519,
+            RaidIcon = { { npcID = 79519, questID = 34655, objectiveIndex = 1 } },
             _index = 3,
         },
         {
@@ -5856,7 +5856,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             Coord = { x = 1553.3, y = 116.4 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 79890,
+            RaidIcon = { { npcID = 79890, questID = 34659, objectiveIndex = 1 } },
             _index = 17,
         },
         {
@@ -5906,7 +5906,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             Fillers = { [34756] = { 1 }, [34805] = { 1 } },
             Coord = { x = 1636.5, y = -85.6 },
             Range = 0.69,
-            RaidIcon = 80047,
+            RaidIcon = { { npcID = 80047 } },
             _index = 25,
         },
         {
@@ -5943,7 +5943,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             Qpart = { [35668] = { 1 } },
             Coord = { x = 1753, y = -348 },
             Range = 0.69,
-            RaidIcon = 82623,
+            RaidIcon = { { npcID = 82623, questID = 35668, objectiveIndex = 1 } },
             _index = 31,
         },
         {
@@ -5983,7 +5983,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             Coord = { x = 1863.7, y = -458.9 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 80153,
+            RaidIcon = { { npcID = 80153, questID = 35272, objectiveIndex = 1 } },
             _index = 38,
         },
         {
@@ -6094,7 +6094,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             Coord = { x = 2398.1, y = -679.5 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 82110,
+            RaidIcon = { { npcID = 82110, questID = 35339, objectiveIndex = 2 } },
             _index = 57,
         },
         {
@@ -6112,7 +6112,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             ExtraLineText = "IN_BASEMENT",
             Coord = { x = 2410.9, y = -677.7 },
             Range = 0.69,
-            RaidIcon = 82136,
+            RaidIcon = { { npcID = 82136, questID = 35353, objectiveIndex = 1 } },
             _index = 60,
         },
         {
@@ -6249,7 +6249,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             Coord = { x = 1928.9, y = -83 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 80233,
+            RaidIcon = { { npcID = 80233, questID = 34884, objectiveIndex = 1 } },
             _index = 85,
         },
         {
@@ -6260,7 +6260,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
         {
             PickUp = { 34838 },
             Coord = { x = 1929.2, y = -98.4 },
-            RaidIcon = 80224,
+            RaidIcon = { { npcID = 80224, questID = 34838 } },
             _index = 87,
         },
         {
@@ -6279,7 +6279,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             Fillers = { [34885] = { 1 }, [34886] = { 1 } },
             Coord = { x = 2004, y = -154.5 },
             Range = 0.69,
-            RaidIcon = 80224,
+            RaidIcon = { { npcID = 80224 } },
             _index = 90,
         },
         {
@@ -6361,7 +6361,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             Fillers = { [34883] = { 1 } },
             Coord = { x = 2104.6, y = 302.5 },
             Range = 0.69,
-            RaidIcon = 80509,
+            RaidIcon = { { npcID = 80509 } },
             _index = 104,
         },
         {
@@ -6453,7 +6453,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             Coord = { x = 2736.9, y = 347.8 },
             Range = 0.75,
             Button = { ["35260-1"] = 113084 },
-            RaidIcon = 81934,
+            RaidIcon = { { npcID = 81934 } },
             _index = 118,
         },
         {
@@ -6477,7 +6477,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             Qpart = { [35261] = { 1 } },
             Coord = { x = 2654.5, y = 161 },
             Range = 0.75,
-            RaidIcon = 82145,
+            RaidIcon = { { npcID = 82145, questID = 35261, objectiveIndex = 1 } },
             _index = 122,
         },
         {
@@ -6554,7 +6554,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             Coord = { x = 1855.4, y = -504.8 },
             Range = 25,
             Gossip = 1,
-            RaidIcon = 82813,
+            RaidIcon = { { npcID = 82813 } },
             _index = 136,
         },
         {
@@ -6562,7 +6562,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             Fillers = { [35734] = { 1, 2 } },
             Coord = { x = 1899, y = -1293.0 },
             Range = 10,
-            RaidIcon = 82950,
+            RaidIcon = { { npcID = 82950 } },
             _index = 137,
         },
         {
@@ -6688,7 +6688,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             Fillers = { [35004] = { 1, 2 } },
             Coord = { x = 438.8, y = -269.9 },
             Range = 0.69,
-            RaidIcon = 80815,
+            RaidIcon = { { npcID = 80815 } },
             _index = 159,
         },
         {
@@ -6726,7 +6726,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             Coord = { x = 889.1, y = -68 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 85614,
+            RaidIcon = { { npcID = 85614, questID = 35012, objectiveIndex = 1 } },
             _index = 165,
         },
         {
@@ -6771,14 +6771,14 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             Coord = { x = 1855.4, y = -504.8 },
             Range = 200,
             Gossip = 1,
-            RaidIcon = 82813,
+            RaidIcon = { { npcID = 82813 } },
             _index = 173,
         },
         {
             Qpart = { [35895] = { 1 } },
             Coord = { x = 796.5, y = -256.8 },
             Range = 5,
-            RaidIcon = 83599,
+            RaidIcon = { { npcID = 83599, questID = 35895, objectiveIndex = 1 } },
             _index = 174,
         },
         {
@@ -6856,7 +6856,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             Qpart = { [34991] = { 1 } },
             Coord = { x = 1731, y = -695.5 },
             Range = 0.75,
-            RaidIcon = 80694,
+            RaidIcon = { { npcID = 80694, questID = 34991, objectiveIndex = 1 } },
             _index = 188,
         },
         {
@@ -6900,7 +6900,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             Fillers = { [34922] = { 1 }, [34923] = { 1 } },
             Coord = { x = 1214.9, y = -942.3 },
             Range = 0.75,
-            RaidIcon = 83896,
+            RaidIcon = { { npcID = 83896 } },
             _index = 196,
         },
         {
@@ -6925,7 +6925,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             Coord = { x = 1650.9, y = -1031 },
             Range = 0.69,
             Button = { ["34938-1"] = 112681 },
-            RaidIcon = 80502,
+            RaidIcon = { { npcID = 80502 } },
             _index = 200,
         },
         {
@@ -6990,7 +6990,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             Fillers = { [36085] = { 2 } },
             Coord = { x = 1916, y = -766.5 },
             Range = 0.69,
-            RaidIcon = 84001,
+            RaidIcon = { { npcID = 84001 } },
             _index = 211,
         },
         {
@@ -7048,7 +7048,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             Fillers = { [36660] = { 1, 2 } },
             Coord = { x = 1947.4, y = -1244 },
             Range = 0.75,
-            RaidIcon = 86076,
+            RaidIcon = { { npcID = 86076 } },
             _index = 221,
         },
         {
@@ -7056,7 +7056,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             Fillers = { [36660] = { 1, 2 } },
             Coord = { x = 1693, y = -1449 },
             Range = 0.75,
-            RaidIcon = 86135,
+            RaidIcon = { { npcID = 86135 } },
             _index = 222,
         },
         {
@@ -7064,28 +7064,28 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             Fillers = { [36660] = { 1, 2 } },
             Coord = { x = 1620.4, y = -1730.3 },
             Range = 0.69,
-            RaidIcon = 86138,
+            RaidIcon = { { npcID = 86138 } },
             _index = 223,
         },
         {
             Qpart = { [36660] = { 1, 2 } },
             Coord = { x = 1947.4, y = -1244 },
             Range = 150.75,
-            RaidIcon = 86076,
+            RaidIcon = { { npcID = 86076 } },
             _index = 224,
         },
         {
             Qpart = { [35669] = { 1 } },
             Coord = { x = 1635.7, y = -1777.4 },
             Range = 0.69,
-            RaidIcon = 82631,
+            RaidIcon = { { npcID = 82631, questID = 35669, objectiveIndex = 1 } },
             _index = 225,
         },
         {
             Qpart = { [35670] = { 1 } },
             Coord = { x = 1448.2, y = -1416.5 },
             Range = 0.69,
-            RaidIcon = 82632,
+            RaidIcon = { { npcID = 82632, questID = 35670, objectiveIndex = 1 } },
             _index = 226,
         },
         {
@@ -7190,7 +7190,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
             Coord = { x = 1160.5, y = -2153.7 },
             Range = 56.68,
             Button = { ["36384-1"] = 115475 },
-            RaidIcon = 81183,
+            RaidIcon = { { npcID = 81183, questID = 36384, objectiveIndex = 1 } },
             _index = 244,
         },
         {
@@ -7394,7 +7394,7 @@ APR.RouteQuestStepList["550-DesMephisto-Nagrand"] = {
             Fillers = { [34826] = { 1 } },
             Coord = { x = 4428.8, y = 2887.4 },
             Range = 0.69,
-            RaidIcon = 80236,
+            RaidIcon = { { npcID = 80236 } },
             _index = 17,
         },
         {
@@ -7505,7 +7505,7 @@ APR.RouteQuestStepList["550-DesMephisto-Nagrand"] = {
             Qpart = { [34662] = { 2 } },
             Coord = { x = 4886, y = 3012.5 },
             Range = 0.75,
-            RaidIcon = 76702,
+            RaidIcon = { { npcID = 76702, questID = 34662, objectiveIndex = 2 } },
             _index = 36,
         },
         {
@@ -7529,7 +7529,7 @@ APR.RouteQuestStepList["550-DesMephisto-Nagrand"] = {
             Qpart = { [34663] = { 2 } },
             Coord = { x = 4881.2, y = 3017.3 },
             Range = 0.75,
-            RaidIcon = 82670,
+            RaidIcon = { { npcID = 82670, questID = 34663, objectiveIndex = 2 } },
             _index = 40,
         },
         {
@@ -7553,7 +7553,7 @@ APR.RouteQuestStepList["550-DesMephisto-Nagrand"] = {
             Qpart = { [34664] = { 2 } },
             Coord = { x = 4880.2, y = 3015.8 },
             Range = 0.75,
-            RaidIcon = 86146,
+            RaidIcon = { { npcID = 86146, questID = 34664, objectiveIndex = 2 } },
             _index = 44,
         },
         {
@@ -7577,7 +7577,7 @@ APR.RouteQuestStepList["550-DesMephisto-Nagrand"] = {
             Qpart = { [34665] = { 2 } },
             Coord = { x = 4885.8, y = 3018.8 },
             Range = 0.75,
-            RaidIcon = 79690,
+            RaidIcon = { { npcID = 79690, questID = 34665, objectiveIndex = 2 } },
             _index = 48,
         },
         {
@@ -7601,7 +7601,7 @@ APR.RouteQuestStepList["550-DesMephisto-Nagrand"] = {
             Qpart = { [34666] = { 2 } },
             Coord = { x = 4883.7, y = 3018.1 },
             Range = 0.75,
-            RaidIcon = 79490,
+            RaidIcon = { { npcID = 79490, questID = 34666, objectiveIndex = 2 } },
             _index = 52,
         },
         {
@@ -7678,7 +7678,7 @@ APR.RouteQuestStepList["550-DesMephisto-Nagrand"] = {
             Fillers = { [35155] = { 1 } },
             Coord = { x = 4588.2, y = 2260 },
             Range = 0.75,
-            RaidIcon = 79266,
+            RaidIcon = { { npcID = 79266 } },
             _index = 65,
         },
         {
@@ -7692,7 +7692,7 @@ APR.RouteQuestStepList["550-DesMephisto-Nagrand"] = {
             Fillers = { [35155] = { 1 }, [35156] = { 1 } },
             Coord = { x = 4535.7, y = 2139.3 },
             Range = 0.75,
-            RaidIcon = 79267,
+            RaidIcon = { { npcID = 79267 } },
             _index = 67,
         },
         {
@@ -7726,7 +7726,7 @@ APR.RouteQuestStepList["550-DesMephisto-Nagrand"] = {
             Fillers = { [35155] = { 1 }, [35156] = { 1 } },
             Coord = { x = 4683.3, y = 2015.8 },
             Range = 0.69,
-            RaidIcon = 79105,
+            RaidIcon = { { npcID = 79105 } },
             _index = 72,
         },
         {
@@ -7784,7 +7784,7 @@ APR.RouteQuestStepList["550-DesMephisto-Nagrand"] = {
             Coord = { x = 5606.3, y = 2461.8 },
             Range = 0.69,
             Button = { ["34916-1"] = 112166 },
-            RaidIcon = 80462,
+            RaidIcon = { { npcID = 80462 } },
             _index = 81,
         },
         {
@@ -7806,7 +7806,7 @@ APR.RouteQuestStepList["550-DesMephisto-Nagrand"] = {
             Coord = { x = 5529.8, y = 2327 },
             Range = 0.69,
             Button = { ["34916-2"] = 112166 },
-            RaidIcon = 80464,
+            RaidIcon = { { npcID = 80464 } },
             _index = 84,
         },
         {
@@ -7822,7 +7822,7 @@ APR.RouteQuestStepList["550-DesMephisto-Nagrand"] = {
             Coord = { x = 5420.5, y = 2388.5 },
             Range = 0.75,
             Button = { ["34916-3"] = 112166 },
-            RaidIcon = 80463,
+            RaidIcon = { { npcID = 80463 } },
             _index = 86,
         },
         {
@@ -7845,7 +7845,7 @@ APR.RouteQuestStepList["550-DesMephisto-Nagrand"] = {
             Qpart = { [34918] = { 1, 2 } },
             Coord = { x = 5518.2, y = 2447.8 },
             Range = 0.75,
-            RaidIcon = 79839,
+            RaidIcon = { { npcID = 79839 } },
             _index = 90,
         },
         {

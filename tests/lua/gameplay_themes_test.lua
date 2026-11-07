@@ -366,3 +366,15 @@ assert(attached.provider == "EllesmereUI" and APR:GetSkinProviderName("currentSt
 print(
     "Gameplay themes: exact WoW art, modern layout, opacity, collapse, palette refresh, secure combat and independent trackers passed"
 )
+
+local marker = CreateFrame("Button", nil, UIParent)
+marker:SetNormalTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_8")
+APR:ApplyNativeTheme(marker, "icon", {texture = marker:GetNormalTexture(), fullTexture = true})
+local uv = marker:GetNormalTexture().coords
+assert(uv[1] == 0 and uv[2] == 1 and uv[3] == 0 and uv[4] == 1,
+    "Raid markers must not be magnified by the spell-icon bevel crop")
+local spellIcon = CreateFrame("Button", nil, UIParent)
+spellIcon:SetNormalTexture("Spell artwork")
+APR:ApplyNativeTheme(spellIcon, "icon", {texture = spellIcon:GetNormalTexture()})
+assert(spellIcon:GetNormalTexture().coords[1] == 0.07,
+    "Spell artwork keeps its existing bevel crop")

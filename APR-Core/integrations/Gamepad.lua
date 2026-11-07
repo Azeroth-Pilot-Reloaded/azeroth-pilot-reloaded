@@ -72,10 +72,16 @@ Pad.SelectButton = APRTrace("APR-Core/integrations/Gamepad.lua:43:Pad:SelectButt
 -- A restricted GetFrameRef() handle is not a native Button: putting it in
 -- clickbutton makes Blizzard's click handler call methods the handle lacks.
 -- Execute scalar action attributes on the binding's own secure button instead.
-local function CreateActionProxy(name, kind)
+local function CreateActionProxy(name, kind, cycleTargets)
     local proxy = CreateFrame("Button", name, UIParent, "SecureActionButtonTemplate,SecureHandlerBaseTemplate")
     proxy:EnableMouse(false)
-    proxy:RegisterForClicks("AnyDown", "AnyUp")
+    if cycleTargets then
+        proxy:RegisterForClicks("AnyDown")
+        proxy:SetAttribute("useOnKeyDown", true)
+        proxy:SetAttribute("cycleTargets", true)
+    else
+        proxy:RegisterForClicks("AnyDown", "AnyUp")
+    end
     proxy:SetAttribute("actionKind", kind)
     proxy:SetScript(
         "PreClick", --[[APR_DIAG]]
@@ -91,20 +97,34 @@ local function CreateActionProxy(name, kind)
         "PreClick",
         proxy,
         [[
-        local selected
+        local cycle = self:GetAttribute("cycleTargets")
+        if cycle and not down then return end
+        local selected, first, selectedIndex, firstIndex
+        local previous = cycle and (self:GetAttribute("cycleIndex") or 0) or 0
         for index = 1, self:GetAttribute("actionCount") or 0 do
             local candidate = self:GetFrameRef("action" .. index)
             if candidate and candidate:IsVisible() and candidate:IsMouseEnabled()
                 and candidate:GetAttribute("apr-action-kind") == self:GetAttribute("actionKind")
                 and candidate:GetAttribute("type1") then
-                selected = candidate
-                break
+                local order = candidate:GetAttribute("apr-target-index") or index
+                if not first then first, firstIndex = candidate, order end
+                if not cycle or order > previous then
+                    selected, selectedIndex = candidate, order
+                    break
+                end
             end
+        end
+        if cycle then
+            selected, selectedIndex = selected or first, selectedIndex or firstIndex
+            self:SetAttribute("cycleIndex", selectedIndex or 0)
         end
         self:SetAttribute("type", selected and selected:GetAttribute("type1"))
         for _, attribute in ipairs(newtable("item", "spell", "toy", "macrotext", "unit",
             "house-neighborhood-guid", "house-guid", "house-plot-id")) do
             self:SetAttribute(attribute, selected and selected:GetAttribute(attribute))
+        end
+        if not cycle and selected and self:GetAttribute("actionKind") == "target" then
+            self:SetAttribute("macrotext", selected:GetAttribute("apr-target-all-macro") or selected:GetAttribute("macrotext"))
         end
     ]]
     )
@@ -134,6 +154,7 @@ function Pad:RegisterActionButton(button, key, filler, kind)
     if not self.itemProxy then
         self.itemProxy = CreateActionProxy("APR_ItemButton", "action")
         self.targetProxy = CreateActionProxy("APR_TargetButton", "target")
+        self.targetCycleProxy = CreateActionProxy("APR_TargetCycleButton", "target", true)
         self.actionButtons = {}
         self.actionButtonSet = {}
     end
@@ -154,7 +175,7 @@ function Pad:RegisterActionButton(button, key, filler, kind)
         self.actionButtonSet[button] = true
     end
     table.sort(self.actionButtons, ActionButtonBefore)
-    for _, proxy in ipairs({ self.itemProxy, self.targetProxy }) do
+    for _, proxy in ipairs({ self.itemProxy, self.targetProxy, self.targetCycleProxy }) do
         for index, action in ipairs(self.actionButtons) do
             proxy:SetFrameRef("action" .. index, action)
         end
@@ -163,6 +184,13 @@ function Pad:RegisterActionButton(button, key, filler, kind)
 end--[[APR_DIAG]]
 Pad.RegisterActionButton =
     APRTrace("APR-Core/integrations/Gamepad.lua:105:Pad:RegisterActionButton#7", Pad.RegisterActionButton)--[[/APR_DIAG]]
+
+-- Only a changed desired target set resets the secure rotation, never a refresh.
+function Pad:SetTargetCycleTargets(signature)
+    if InCombatLockdown() or self.targetSignature == signature then return end
+    self.targetSignature = signature
+    if self.targetCycleProxy then self.targetCycleProxy:SetAttribute("cycleIndex", 0) end
+end--[[APR_DIAG]]; Pad.SetTargetCycleTargets = APRTrace("APR-Core/integrations/Gamepad.lua:189:Pad:SetTargetCycleTargets#31008", Pad.SetTargetCycleTargets)--[[/APR_DIAG]]
 
 function Pad:IsAvailable()
     return InputUtil

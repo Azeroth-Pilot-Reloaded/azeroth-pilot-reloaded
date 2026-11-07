@@ -206,6 +206,8 @@ function methods:SetStatusBarColor(...) self.color = { ... } end
 
 function methods:SetAlpha(alpha) self.alpha = alpha end
 
+function methods:GetAttribute(key) return (self.attributes or {})[key] end
+
 function methods:SetAttribute(key, value)
     check(self)
     self.attributes = self.attributes or {}
@@ -314,8 +316,15 @@ UNKNOWN = "Unknown"
 dofile("APR-Core/utils/QuestUtils.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/ui/foundations/StatusBars.lua")
+local targetingMacroStub = APR.BuildRaidIconMacro
+dofile("APR-Core/utils/SecretUtils.lua")
+dofile("APR-Core/utils/TargetUtils.lua")
+APR.BuildRaidIconMacro = targetingMacroStub
 dofile("APR-Core/ui/route/CurrentStep.lua")
 dofile("APR-Core/ui/route/CurrentStepRows.lua")
+APR.fillersFrame.Frame = CreateFrame("Frame", nil, UIParent)
+APR.fillersFrame.StepHolder = CreateFrame("Frame", nil, APR.fillersFrame.Frame)
+dofile("APR-Core/ui/route/RaidIconButtons.lua")
 -- Use the real shared snapping functions while retaining the mock frame builders.
 local standard, header, row = APR.CreateStandardFrame, APR.CreateFrameHeader, APR.CreateStepTextContainer
 local drag, headerDrag, minimize = APR.SetupFrameDrag, APR.SetupHeaderDrag, APR.SetupMinimizeButton

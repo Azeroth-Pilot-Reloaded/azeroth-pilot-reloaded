@@ -44,7 +44,7 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
             Fillers = { [59907] = { 1 } },
             Coord = { x = 7866.2, y = 4461.8 },
             Range = 0.69,
-            RaidIcon = 166714,
+            RaidIcon = { { npcID = 166714 } },
             _index = 6,
         },
         {
@@ -206,7 +206,7 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
             Coord = { x = 7542, y = 4832 },
             Range = 53.44,
             Button = { ["59757-1"] = 178495 },
-            RaidIcon = 165909,
+            RaidIcon = { { npcID = 165909, questID = 59757, objectiveIndex = 1 } },
             _index = 33,
         },
         {
@@ -224,7 +224,7 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
             Coord = { x = 7512.6, y = 4877.5 },
             Range = 0.75,
             Button = { ["59758-1"] = 178495 },
-            RaidIcon = 165976,
+            RaidIcon = { { npcID = 165976, questID = 59758, objectiveIndex = 1 } },
             _index = 36,
         },
         {
@@ -382,7 +382,7 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
             Coord = { x = 7660.1, y = 4708.6 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 165918,
+            RaidIcon = { { npcID = 165918, questID = 59776, objectiveIndex = 2 } },
             _index = 62,
         },
         {
@@ -483,7 +483,7 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
             ExtraLineText = "CLOSE_JAINA",
             Coord = { x = 7339.6, y = 4502.6 },
             Range = 451.66,
-            RaidIcon = 172115,
+            RaidIcon = { { npcID = 172115, questID = 59767, objectiveIndex = 2 } },
             _index = 79,
         },
         {
@@ -615,7 +615,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
             Coord = { x = 1358.5, y = -1835.1 },
             Range = 0.69,
             GossipOptionIDs = { 52950 },
-            RaidIcon = 167486,
+            RaidIcon = { { npcID = 167486, questID = 60149, objectiveIndex = 2 } },
             _index = 13,
         },
         {
@@ -623,7 +623,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
             Coord = { x = 1358.5, y = -1835.1 },
             Range = 0.69,
             ETA = 40,
-            RaidIcon = 167486,
+            RaidIcon = { { npcID = 167486, questID = 60149, objectiveIndex = 2 } },
             _index = 14,
         },
         {
@@ -631,7 +631,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
             Coord = { x = 1358.5, y = -1835.1 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 167486,
+            RaidIcon = { { npcID = 167486, questID = 60149, objectiveIndex = 3 } },
             _index = 15,
         },
         {
@@ -672,7 +672,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
             Coord = { x = 1382.7, y = -1908.5 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 172378,
+            RaidIcon = { { npcID = 172378, questID = 60151, objectiveIndex = 1 } },
             _index = 22,
         },
         {
@@ -698,7 +698,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
             Qpart = { [60151] = { 4 } },
             Coord = { x = 1380.8, y = -1920.9 },
             Range = 0.69,
-            RaidIcon = 167424,
+            RaidIcon = { { npcID = 167424, questID = 60151, objectiveIndex = 4 } },
             _index = 26,
         },
         {
@@ -716,7 +716,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
             Coord = { x = 1380, y = -1737.9 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 167738,
+            RaidIcon = { { npcID = 167738, questID = 60152, objectiveIndex = 3 } },
             _index = 29,
         },
         {
@@ -724,7 +724,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
             Coord = { x = 1214.3, y = -1730 },
             Range = 0.75,
             GossipOptionIDs = { 53876 },
-            RaidIcon = 174564,
+            RaidIcon = { { npcID = 174564, questID = 60152, objectiveIndex = 4 } },
             _index = 30,
         },
         {
@@ -732,7 +732,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
             Coord = { x = 1183.7, y = -1931.5 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 156768,
+            RaidIcon = { { npcID = 156768, questID = 60152, objectiveIndex = 1 } },
             _index = 31,
         },
         {
@@ -753,7 +753,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
             Coord = { x = 1064.8, y = -1827.3 },
             Range = 0.69,
             GossipOptionIDs = { 51612 },
-            RaidIcon = 164173,
+            RaidIcon = { { npcID = 164173, questID = 60152, objectiveIndex = 2 } },
             _index = 34,
         },
         {
@@ -779,7 +779,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
             Range = 0.75,
             Gossip = 1,
             ETA = 73,
-            RaidIcon = 167424,
+            RaidIcon = { { npcID = 167424, questID = 60154, objectiveIndex = 2 } },
             _index = 38,
         },
         {
@@ -787,7 +787,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
             Coord = { x = 1379.7, y = -1921.3 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 167424,
+            RaidIcon = { { npcID = 167424, questID = 60154, objectiveIndex = 3 } },
             _index = 39,
         },
         {
@@ -883,7 +883,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             Qpart = { [59774] = { 2 } },
             Coord = { x = -4227.4, y = -4343.8 },
             Range = 0.61,
-            RaidIcon = 166227,
+            RaidIcon = { { npcID = 166227, questID = 59774, objectiveIndex = 2 } },
             _index = 4,
         },
         {
@@ -1101,7 +1101,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             Qpart = { [57709] = { 1 } },
             Coord = { x = -4619.8, y = -4155.8 },
             Range = 0.61,
-            RaidIcon = 158686,
+            RaidIcon = { { npcID = 158686, questID = 57709, objectiveIndex = 1 } },
             _index = 40,
         },
         {
@@ -1164,7 +1164,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             Coord = { x = -5161, y = -4542.8 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 159277,
+            RaidIcon = { { npcID = 159277, questID = 57712, objectiveIndex = 2 } },
             _index = 51,
         },
         {
@@ -1196,7 +1196,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             Coord = { x = -4950.5, y = -4524.4 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 159278,
+            RaidIcon = { { npcID = 159278, questID = 57712, objectiveIndex = 1 } },
             _index = 56,
         },
         {
@@ -1299,7 +1299,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             Coord = { x = -4789.2, y = -4517 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 158867,
+            RaidIcon = { { npcID = 158867 } },
             _index = 74,
         },
         {
@@ -1308,7 +1308,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             Coord = { x = -4759.2, y = -4441.9 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 158870,
+            RaidIcon = { { npcID = 158870 } },
             _index = 75,
         },
         {
@@ -1317,7 +1317,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             Coord = { x = -4789.7, y = -4366.4 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 158869,
+            RaidIcon = { { npcID = 158869 } },
             _index = 76,
         },
         {
@@ -1399,7 +1399,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             Coord = { x = -5236.4, y = -4711.3 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 159583,
+            RaidIcon = { { npcID = 159583, questID = 57266, objectiveIndex = 4 } },
             _index = 90,
         },
         {
@@ -1456,7 +1456,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             Coord = { x = -4989.9, y = -4731.7 },
             Range = 0.61,
             Gossip = 1,
-            RaidIcon = 156217,
+            RaidIcon = { { npcID = 156217, questID = 60219, objectiveIndex = 1 } },
             _index = 99,
         },
         {
@@ -1513,7 +1513,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             Qpart = { [60316] = { 1 } },
             Coord = { x = -4830.8, y = -4205.7 },
             Range = 0.61,
-            RaidIcon = 168244,
+            RaidIcon = { { npcID = 168244, questID = 60316, objectiveIndex = 1 } },
             _index = 109,
         },
         {
@@ -1594,14 +1594,14 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             Coord = { x = -5417, y = -3934.7 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 159896,
+            RaidIcon = { { npcID = 159896, questID = 57716, objectiveIndex = 1 } },
             _index = 122,
         },
         {
             Qpart = { [57716] = { 2 } },
             Coord = { x = -5363.8, y = -4004.7 },
             Range = 327.17,
-            RaidIcon = 159897,
+            RaidIcon = { { npcID = 159897, questID = 57716, objectiveIndex = 2 } },
             _index = 123,
         },
         {
@@ -1619,7 +1619,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             Coord = { x = -5432.2, y = -4331.2 },
             Range = 0.61,
             GossipOptionIDs = { 49850 },
-            RaidIcon = 159906,
+            RaidIcon = { { npcID = 159906, questID = 57717, objectiveIndex = 1 } },
             _index = 126,
         },
         {
@@ -1753,7 +1753,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             Qpart = { [57269] = { 2 } },
             Coord = { x = -5722.9, y = -4027 },
             Range = 0.75,
-            RaidIcon = 168299,
+            RaidIcon = { { npcID = 168299, questID = 57269, objectiveIndex = 2 } },
             _index = 147,
         },
         {
@@ -1837,7 +1837,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             Coord = { x = -5257.8, y = -3610.4 },
             Range = 0.61,
             Gossip = 1,
-            RaidIcon = 167034,
+            RaidIcon = { { npcID = 167034, questID = 58977, objectiveIndex = 1 } },
             _index = 162,
         },
         {
@@ -1919,14 +1919,14 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             Coord = { x = -5237.7, y = -3323 },
             Range = 0.61,
             GossipOptionIDs = { 53113 },
-            RaidIcon = 167034,
+            RaidIcon = { { npcID = 167034, questID = 58979, objectiveIndex = 1 } },
             _index = 175,
         },
         {
             Qpart = { [58979] = { 2 } },
             Coord = { x = -5235.9, y = -3306.5 },
             Range = 0.75,
-            RaidIcon = 167036,
+            RaidIcon = { { npcID = 167036, questID = 58979, objectiveIndex = 2 } },
             _index = 176,
         },
         {
@@ -2011,7 +2011,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             Coord = { x = -5283.7, y = -3911.2 },
             Range = 0.61,
             GossipOptionIDs = { 53114 },
-            RaidIcon = 167498,
+            RaidIcon = { { npcID = 167498, questID = 58843, objectiveIndex = 2 } },
             _index = 190,
         },
         {
@@ -2228,7 +2228,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             Range = 100.69,
             Gossip = 1,
             ExtraActionB = true,
-            RaidIcon = 166663,
+            RaidIcon = { { npcID = 166663, questID = 59197, objectiveIndex = 1 } },
             _index = 228,
         },
         {
@@ -2237,7 +2237,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             Coord = { x = -4965.7, y = -2949.5 },
             Range = 100.69,
             GossipOptionIDs = { 53063 },
-            RaidIcon = 166663,
+            RaidIcon = { { npcID = 166663, questID = 59197, objectiveIndex = 2 } },
             _index = 229,
         },
         {
@@ -2272,7 +2272,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
             Coord = { x = -4946.5, y = -2891 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 165048,
+            RaidIcon = { { npcID = 165048, questID = 59198, objectiveIndex = 1 } },
             _index = 235,
         },
         {
@@ -2701,14 +2701,14 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Qpart = { [60021] = { 2 } },
             Coord = { x = -2633.9, y = 2864.3 },
             Range = 0.69,
-            RaidIcon = 166649,
+            RaidIcon = { { npcID = 166649, questID = 60021, objectiveIndex = 2 } },
             _index = 10,
         },
         {
             Qpart = { [60021] = { 1 } },
             Coord = { x = -2457.7, y = 2814.6 },
             Range = 0.84,
-            RaidIcon = 166658,
+            RaidIcon = { { npcID = 166658, questID = 60021, objectiveIndex = 1 } },
             _index = 11,
         },
         {
@@ -2726,7 +2726,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             ExtraLineText = "GRAB_WEAPON_ON_GROUND",
             Coord = { x = -2547.5, y = 2803.1 },
             Range = 0.69,
-            RaidIcon = 166975,
+            RaidIcon = { { npcID = 166975, questID = 57425, objectiveIndex = 1 } },
             _index = 14,
         },
         {
@@ -2767,7 +2767,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Coord = { x = -2281.9, y = 2324.8 },
             Range = 20.83,
             Button = { ["60181-1"] = 178496 },
-            RaidIcon = 166908,
+            RaidIcon = { { npcID = 166908, questID = 60181, objectiveIndex = 1 } },
             _index = 21,
         },
         {
@@ -2845,7 +2845,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Coord = { x = -1684.1, y = 2144.3 },
             Range = 21.26,
             Gossip = 1,
-            RaidIcon = 169376,
+            RaidIcon = { { npcID = 169376, questID = 58351, objectiveIndex = 1 } },
             _index = 34,
         },
         {
@@ -2854,7 +2854,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Coord = { x = -1575.6, y = 2104.1 },
             Range = 17.49,
             Gossip = 1,
-            RaidIcon = 169376,
+            RaidIcon = { { npcID = 169376, questID = 58351, objectiveIndex = 1 } },
             _index = 35,
         },
         {
@@ -2863,7 +2863,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Coord = { x = -1424.8, y = 1995 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 169376,
+            RaidIcon = { { npcID = 169376 } },
             _index = 36,
         },
         {
@@ -2872,7 +2872,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Coord = { x = -1519.4, y = 1909.2 },
             Range = 22.9,
             Gossip = 1,
-            RaidIcon = 169376,
+            RaidIcon = { { npcID = 169376, questID = 58351, objectiveIndex = 1 } },
             _index = 37,
         },
         {
@@ -2881,7 +2881,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Coord = { x = -1629, y = 1723 },
             Range = 19.6,
             Gossip = 1,
-            RaidIcon = 169376,
+            RaidIcon = { { npcID = 169376, questID = 58351, objectiveIndex = 1 } },
             _index = 38,
         },
         {
@@ -2890,7 +2890,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Coord = { x = -1688.9, y = 1629 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 169376,
+            RaidIcon = { { npcID = 169376 } },
             _index = 39,
         },
         {
@@ -2899,7 +2899,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Coord = { x = -1956.6, y = 1842.9 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 169376,
+            RaidIcon = { { npcID = 169376 } },
             _index = 40,
         },
         {
@@ -2907,7 +2907,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Coord = { x = -1772.5, y = 1879.9 },
             Range = 205.49,
             Gossip = 1,
-            RaidIcon = 169376,
+            RaidIcon = { { npcID = 169376, questID = 58351, objectiveIndex = 1 } },
             _index = 41,
         },
         {
@@ -2983,7 +2983,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Coord = { x = -1662.9, y = 1856.2 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 157676,
+            RaidIcon = { { npcID = 157676, questID = 58616, objectiveIndex = 1 } },
             _index = 54,
         },
         {
@@ -3034,7 +3034,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Fillers = { [58726] = { 1 } },
             Coord = { x = -1981.3, y = 1993.8 },
             Range = 0.69,
-            RaidIcon = 168036,
+            RaidIcon = { { npcID = 168036 } },
             _index = 62,
         },
         {
@@ -3117,7 +3117,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Coord = { x = -1711.4, y = 1945.7 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 163536,
+            RaidIcon = { { npcID = 163536, questID = 60886, objectiveIndex = 1 } },
             _index = 76,
         },
         {
@@ -3228,7 +3228,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Fillers = { [58031] = { 1, 2, 3, 4 }, [58036] = { 1 } },
             Coord = { x = -3281.4, y = 2170.4 },
             Range = 0.69,
-            RaidIcon = 161613,
+            RaidIcon = { { npcID = 161613 } },
             _index = 95,
         },
         {
@@ -3276,7 +3276,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Qpart = { [59223] = { 1 } },
             Coord = { x = -3021.2, y = 1439.8 },
             Range = 0.75,
-            RaidIcon = 164759,
+            RaidIcon = { { npcID = 164759, questID = 59223, objectiveIndex = 1 } },
             _index = 103,
         },
         {
@@ -3353,7 +3353,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Coord = { x = -3634.7, y = 2889 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 162487,
+            RaidIcon = { { npcID = 162487, questID = 58751, objectiveIndex = 1 } },
             _index = 116,
         },
         {
@@ -3372,7 +3372,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Coord = { x = -3319.4, y = 2601.1 },
             Range = 0.61,
             Button = { ["58821-1"] = 178940 },
-            RaidIcon = 164128,
+            RaidIcon = { { npcID = 164128 } },
             _index = 119,
         },
         {
@@ -3482,7 +3482,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Coord = { x = -3916.9, y = 2803.1 },
             Range = 0.61,
             Button = { ["59210-2"] = 175409 },
-            RaidIcon = 165007,
+            RaidIcon = { { npcID = 165007 } },
             _index = 136,
         },
         {
@@ -3507,7 +3507,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Coord = { x = -3958.4, y = 2586 },
             Range = 0.69,
             Button = { ["59210-2"] = 175409 },
-            RaidIcon = 165009,
+            RaidIcon = { { npcID = 165009 } },
             _index = 139,
         },
         {
@@ -3516,7 +3516,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Coord = { x = -3772.7, y = 2603.6 },
             Range = 0.69,
             Button = { ["59210-2"] = 175409 },
-            RaidIcon = 165008,
+            RaidIcon = { { npcID = 165008 } },
             _index = 140,
         },
         {
@@ -3587,7 +3587,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Qpart = { [59025] = { 2 } },
             Coord = { x = -4016.5, y = 2963.4 },
             Range = 0.69,
-            RaidIcon = 163431,
+            RaidIcon = { { npcID = 163431, questID = 59025, objectiveIndex = 2 } },
             _index = 152,
         },
         {
@@ -3644,7 +3644,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
         {
             SetHS = 57976,
             Coord = { x = -1868, y = 2498.4 },
-            RaidIcon = 168952,
+            RaidIcon = { { npcID = 168952 } },
             _index = 162,
         },
         {
@@ -3719,7 +3719,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Coord = { x = -1718.3, y = 2990.5 },
             Range = 0.69,
             ExtraActionB = true,
-            RaidIcon = 160095,
+            RaidIcon = { { npcID = 160095, questID = 57979, objectiveIndex = 1 } },
             _index = 173,
         },
         {
@@ -3742,7 +3742,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Qpart = { [59616] = { 1 } },
             Coord = { x = -1643.5, y = 3349.6 },
             Range = 0.69,
-            RaidIcon = 165362,
+            RaidIcon = { { npcID = 165362, questID = 59616, objectiveIndex = 1 } },
             _index = 177,
         },
         {
@@ -3805,7 +3805,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Qpart = { [57984] = { 2 } },
             Coord = { x = -1597.6, y = 3849 },
             Range = 0.75,
-            RaidIcon = 169312,
+            RaidIcon = { { npcID = 169312, questID = 57984, objectiveIndex = 2 } },
             _index = 188,
         },
         {
@@ -3818,14 +3818,14 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Qpart = { [57984] = { 1 } },
             Coord = { x = -1490, y = 3875.1 },
             Range = 0.69,
-            RaidIcon = 159707,
+            RaidIcon = { { npcID = 159707, questID = 57984, objectiveIndex = 1 } },
             _index = 190,
         },
         {
             Qpart = { [57984] = { 3 } },
             Coord = { x = -1379, y = 3866 },
             Range = 0.75,
-            RaidIcon = 169315,
+            RaidIcon = { { npcID = 169315, questID = 57984, objectiveIndex = 3 } },
             _index = 191,
         },
         {
@@ -3901,7 +3901,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Coord = { x = -1268.5, y = 3807.1 },
             Range = 0.61,
             Gossip = 1,
-            RaidIcon = 169949,
+            RaidIcon = { { npcID = 169949, questID = 57982, objectiveIndex = 1 } },
             _index = 203,
         },
         {
@@ -3943,7 +3943,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Qpart = { [57993] = { 3 } },
             Coord = { x = -1192.6, y = 3893.3 },
             Range = 0.75,
-            RaidIcon = 170020,
+            RaidIcon = { { npcID = 170020, questID = 57993, objectiveIndex = 3 } },
             _index = 210,
         },
         {
@@ -3974,7 +3974,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
             Fillers = { [57994] = { 2 } },
             Coord = { x = -1288.9, y = 3596.5 },
             Range = 0.69,
-            RaidIcon = 170082,
+            RaidIcon = { { npcID = 170082 } },
             _index = 215,
         },
         {
@@ -4075,7 +4075,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
         {
             Done = { 59202 },
             Coord = { x = -1779.8, y = 2014.2 },
-            RaidIcon = 164843,
+            RaidIcon = { { npcID = 164843, questID = 59202 } },
             _index = 232,
         },
         {
@@ -4278,14 +4278,14 @@ APR.RouteQuestStepList["1960-Z6-TheMaw-Story"] = {
             Coord = { x = 7166.8, y = 4196 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 171770,
+            RaidIcon = { { npcID = 171770, questID = 59966, objectiveIndex = 1 } },
             _index = 19,
         },
         {
             Qpart = { [59966] = { 2 } },
             Coord = { x = 7187.6, y = 4159 },
             Range = 286.86,
-            RaidIcon = 171784,
+            RaidIcon = { { npcID = 171784, questID = 59966, objectiveIndex = 2 } },
             _index = 20,
         },
         {
@@ -4302,7 +4302,7 @@ APR.RouteQuestStepList["1960-Z6-TheMaw-Story"] = {
             Qpart = { [59973] = { 1 } },
             Coord = { x = 7306.3, y = 3899.8 },
             Range = 0.69,
-            RaidIcon = 166776,
+            RaidIcon = { { npcID = 166776, questID = 59973, objectiveIndex = 1 } },
             _index = 23,
         },
         {
@@ -4414,7 +4414,7 @@ APR.RouteQuestStepList["1670-Z7-Oribos-Story"] = {
             Coord = { x = -1977, y = 2273 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 162801,
+            RaidIcon = { { npcID = 162801, questID = 59011, objectiveIndex = 1 } },
             _index = 7,
         },
         {
@@ -4456,7 +4456,7 @@ APR.RouteQuestStepList["1536-Z8-Maldraxxus-Story"] = {
             Coord = { x = -1977, y = 2273 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 162801,
+            RaidIcon = { { npcID = 162801, questID = 59011, objectiveIndex = 1 } },
             _index = 2,
         },
         {
@@ -4603,7 +4603,7 @@ APR.RouteQuestStepList["1670-Z9-Oribos-Story"] = {
             Coord = { x = 1275.8, y = -1930 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 175131,
+            RaidIcon = { { npcID = 175131, questID = 60338, objectiveIndex = 2 } },
             _index = 14,
         },
         {
@@ -4650,7 +4650,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = -560.7, y = -5234.7 },
             Range = 0.61,
             Gossip = 1,
-            RaidIcon = 170175,
+            RaidIcon = { { npcID = 170175, questID = 60763, objectiveIndex = 2 } },
             _index = 4,
         },
         {
@@ -4658,14 +4658,14 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = -555.5, y = -5232.2 },
             Range = 0.61,
             GossipOptionIDs = { 51498 },
-            RaidIcon = 168341,
+            RaidIcon = { { npcID = 168341, questID = 60763, objectiveIndex = 3 } },
             _index = 5,
         },
         {
             Qpart = { [60763] = { 4 } },
             Coord = { x = -469.9, y = -5279.7 },
             Range = 149.95,
-            RaidIcon = 169200,
+            RaidIcon = { { npcID = 169200, questID = 60763, objectiveIndex = 4 } },
             _index = 6,
         },
         {
@@ -4682,7 +4682,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Qpart = { [60341] = { 1 } },
             Coord = { x = -306.7, y = -5306.7 },
             Range = 0.61,
-            RaidIcon = 170889,
+            RaidIcon = { { npcID = 170889, questID = 60341, objectiveIndex = 1 } },
             _index = 9,
         },
         {
@@ -4706,7 +4706,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = -511.8, y = -5337.3 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 168422,
+            RaidIcon = { { npcID = 168422, questID = 60778, objectiveIndex = 2 } },
             _index = 13,
         },
         {
@@ -4714,7 +4714,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = -513.3, y = -5339 },
             Range = 0.69,
             GossipOptionIDs = { 52723 },
-            RaidIcon = 170324,
+            RaidIcon = { { npcID = 170324, questID = 60778, objectiveIndex = 3 } },
             _index = 14,
         },
         {
@@ -4793,7 +4793,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = -360.4, y = -5688.9 },
             Range = 0.75,
             GossipOptionIDs = { 52760 },
-            RaidIcon = 168595,
+            RaidIcon = { { npcID = 168595, questID = 60859, objectiveIndex = 5 } },
             _index = 27,
         },
         {
@@ -4817,7 +4817,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = -348, y = -5824.9 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 169328,
+            RaidIcon = { { npcID = 169328, questID = 57787, objectiveIndex = 2 } },
             _index = 31,
         },
         {
@@ -4831,14 +4831,14 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = -518.5, y = -5736.9 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 169331,
+            RaidIcon = { { npcID = 169331, questID = 57787, objectiveIndex = 3 } },
             _index = 33,
         },
         {
             Qpart = { [57787] = { 4 } },
             Coord = { x = -518, y = -5737 },
             Range = 0.69,
-            RaidIcon = 169331,
+            RaidIcon = { { npcID = 169331, questID = 57787, objectiveIndex = 4 } },
             _index = 34,
         },
         {
@@ -4846,7 +4846,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = -518.5, y = -5733.3 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 169328,
+            RaidIcon = { { npcID = 169328, questID = 57787, objectiveIndex = 5 } },
             _index = 35,
         },
         {
@@ -4871,7 +4871,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Qpart = { [57787] = { 8 } },
             Coord = { x = -219.7, y = -6083.5 },
             Range = 0.75,
-            RaidIcon = 169031,
+            RaidIcon = { { npcID = 169031, questID = 57787, objectiveIndex = 8 } },
             _index = 39,
         },
         {
@@ -4879,7 +4879,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = -220.7, y = -6084.9 },
             Range = 0.69,
             GossipOptionIDs = { 53345 },
-            RaidIcon = 169031,
+            RaidIcon = { { npcID = 169031, questID = 57787, objectiveIndex = 9 } },
             _index = 40,
         },
         {
@@ -4931,7 +4931,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Range = 0.69,
             Gossip = 1,
             Button = { ["57949-1"] = 176445 },
-            RaidIcon = 159642,
+            RaidIcon = { { npcID = 159642 } },
             _index = 48,
         },
         {
@@ -4941,7 +4941,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Range = 0.75,
             Gossip = 1,
             Button = { ["57949-1"] = 176445 },
-            RaidIcon = 159644,
+            RaidIcon = { { npcID = 159644 } },
             _index = 49,
         },
         {
@@ -4951,7 +4951,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Range = 0.61,
             Gossip = 1,
             Button = { ["57949-1"] = 176445 },
-            RaidIcon = 159643,
+            RaidIcon = { { npcID = 159643 } },
             _index = 50,
         },
         {
@@ -4977,7 +4977,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Qpart = { [57950] = { 1 } },
             Coord = { x = -598.2, y = -6046.4 },
             Range = 12.57,
-            RaidIcon = 159693,
+            RaidIcon = { { npcID = 159693, questID = 57950, objectiveIndex = 1 } },
             _index = 54,
         },
         {
@@ -5094,7 +5094,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Range = 0.75,
             Gossip = 1,
             ETA = 50,
-            RaidIcon = 169278,
+            RaidIcon = { { npcID = 169278, questID = 60594, objectiveIndex = 1 } },
             _index = 73,
         },
         {
@@ -5102,7 +5102,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = -336.7, y = -6106.7 },
             Range = 0.61,
             Button = { ["60594-2"] = 179978 },
-            RaidIcon = 169279,
+            RaidIcon = { { npcID = 169279, questID = 60594, objectiveIndex = 2 } },
             _index = 74,
         },
         {
@@ -5120,7 +5120,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = -221.2, y = -6084.7 },
             Range = 0.61,
             GossipOptionIDs = { 53344 },
-            RaidIcon = 169031,
+            RaidIcon = { { npcID = 169031, questID = 60600, objectiveIndex = 1 } },
             _index = 77,
         },
         {
@@ -5138,7 +5138,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             MountVehicle = true,
             Coord = { x = -182, y = -6054.4 },
             Range = 0.61,
-            RaidIcon = 169577,
+            RaidIcon = { { npcID = 169577, questID = 60624, objectiveIndex = 1 } },
             _index = 80,
         },
         {
@@ -5170,7 +5170,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Fillers = { [60637] = { 1 }, [60638] = { 1 } },
             Coord = { x = -625.2, y = -5632.8 },
             Range = 0.61,
-            RaidIcon = 169746,
+            RaidIcon = { { npcID = 169746 } },
             _index = 85,
         },
         {
@@ -5230,7 +5230,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Qpart = { [60671] = { 1 } },
             Coord = { x = -501.9, y = -5460.2 },
             Range = 0.61,
-            RaidIcon = 169938,
+            RaidIcon = { { npcID = 169938, questID = 60671, objectiveIndex = 1 } },
             _index = 95,
         },
         {
@@ -5248,14 +5248,14 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = -415.4, y = -5492.3 },
             Range = 0.61,
             Gossip = 1,
-            RaidIcon = 169957,
+            RaidIcon = { { npcID = 169957, questID = 60709, objectiveIndex = 1 } },
             _index = 98,
         },
         {
             Qpart = { [60709] = { 2 } },
             Coord = { x = -364.9, y = -5514.2 },
             Range = 0.61,
-            RaidIcon = 169986,
+            RaidIcon = { { npcID = 169986, questID = 60709, objectiveIndex = 2 } },
             _index = 99,
         },
         {
@@ -5289,7 +5289,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = -214.2, y = -6075.8 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 169031,
+            RaidIcon = { { npcID = 169031, questID = 60519, objectiveIndex = 1 } },
             _index = 105,
         },
         {
@@ -5362,7 +5362,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = -308.9, y = -6211.4 },
             Range = 0.69,
             Button = { ["57824-1"] = 172955 },
-            RaidIcon = 159011,
+            RaidIcon = { { npcID = 159011, questID = 57824, objectiveIndex = 1 } },
             _index = 118,
         },
         {
@@ -5430,7 +5430,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Qpart = { [58023] = { 1 } },
             Coord = { x = -193.2, y = -5822.3 },
             Range = 0.69,
-            RaidIcon = 171148,
+            RaidIcon = { { npcID = 171148, questID = 58023, objectiveIndex = 1 } },
             _index = 130,
         },
         {
@@ -5456,7 +5456,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = -136.2, y = -5674.2 },
             Range = 0.69,
             Button = { ["58022-1"] = 173534 },
-            RaidIcon = 160070,
+            RaidIcon = { { npcID = 160070 } },
             _index = 133,
         },
         {
@@ -5515,7 +5515,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = 119.2, y = -5929.3 },
             Range = 0.69,
             Button = { ["58025-1"] = 173534 },
-            RaidIcon = 160145,
+            RaidIcon = { { npcID = 160145, questID = 58025, objectiveIndex = 1 } },
             _index = 141,
         },
         {
@@ -5637,7 +5637,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Fillers = { [59801] = { 1 } },
             Coord = { x = -952.3, y = -5844.7 },
             Range = 0.69,
-            RaidIcon = 160442,
+            RaidIcon = { { npcID = 160442 } },
             _index = 162,
         },
         {
@@ -5652,7 +5652,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Fillers = { [59801] = { 1 } },
             Coord = { x = -1099.8, y = -5826.4 },
             Range = 0.61,
-            RaidIcon = 160295,
+            RaidIcon = { { npcID = 160295 } },
             _index = 164,
         },
         {
@@ -5660,7 +5660,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Fillers = { [59801] = { 1 } },
             Coord = { x = -1079.4, y = -5987.2 },
             Range = 0.61,
-            RaidIcon = 160445,
+            RaidIcon = { { npcID = 160445 } },
             _index = 165,
         },
         {
@@ -5736,7 +5736,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Fillers = { [60629] = { 1 } },
             Coord = { x = 488.6, y = -5911.9 },
             Range = 0.75,
-            RaidIcon = 169647,
+            RaidIcon = { { npcID = 169647 } },
             _index = 178,
         },
         {
@@ -5751,7 +5751,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Fillers = { [60629] = { 1 } },
             Coord = { x = 331.2, y = -5968.5 },
             Range = 0.75,
-            RaidIcon = 169639,
+            RaidIcon = { { npcID = 169639 } },
             _index = 180,
         },
         {
@@ -5759,7 +5759,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Fillers = { [60629] = { 1 } },
             Coord = { x = 364, y = -5852.9 },
             Range = 0.69,
-            RaidIcon = 169642,
+            RaidIcon = { { npcID = 169642 } },
             _index = 181,
         },
         {
@@ -5768,7 +5768,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = 406.7, y = -6096.9 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 169649,
+            RaidIcon = { { npcID = 169649 } },
             _index = 182,
         },
         {
@@ -5855,7 +5855,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = 854, y = -6123.4 },
             Range = 0.75,
             ExtraActionB = true,
-            RaidIcon = 169900,
+            RaidIcon = { { npcID = 169900, questID = 60632, objectiveIndex = 1 } },
             _index = 195,
         },
         {
@@ -5863,7 +5863,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = 823, y = -6056.9 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 170121,
+            RaidIcon = { { npcID = 170121, questID = 60632, objectiveIndex = 2 } },
             _index = 196,
         },
         {
@@ -5926,7 +5926,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Fillers = { [57652] = { 1 }, [59621] = { 1 } },
             Coord = { x = 1064.4, y = -5569.8 },
             Range = 0.69,
-            RaidIcon = 165398,
+            RaidIcon = { { npcID = 165398 } },
             _index = 207,
         },
         {
@@ -5948,7 +5948,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Fillers = { [57652] = { 1 }, [59621] = { 1 } },
             Coord = { x = 1086.5, y = -5463.3 },
             Range = 0.61,
-            RaidIcon = 165400,
+            RaidIcon = { { npcID = 165400 } },
             _index = 210,
         },
         {
@@ -5963,7 +5963,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Fillers = { [57652] = { 1 }, [59621] = { 1 } },
             Coord = { x = 1142, y = -5491.5 },
             Range = 0.69,
-            RaidIcon = 165401,
+            RaidIcon = { { npcID = 165401 } },
             _index = 212,
         },
         {
@@ -6170,7 +6170,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Qpart = { [59623] = { 1 } },
             Coord = { x = 726.4, y = -5607.9 },
             Range = 0.75,
-            RaidIcon = 165404,
+            RaidIcon = { { npcID = 165404, questID = 59623, objectiveIndex = 1 } },
             _index = 243,
         },
         {
@@ -6186,7 +6186,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Range = 0.61,
             Gossip = 1,
             Buffs = { { spellId = 311103, tooltipMessage = "FRESHLEAF_BUFF" }, { spellId = 311107, tooltipMessage = "GOSSAMER_THREAD_BUFF" }, { spellId = 311058, tooltipMessage = "SHUMMERDUST_BUFF" } },
-            RaidIcon = 159428,
+            RaidIcon = { { npcID = 159428 } },
             _index = 245,
         },
         {
@@ -6205,7 +6205,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Range = 0.69,
             GossipOptionIDs = { 49621 },
             Buffs = { { spellId = 311103, tooltipMessage = "FRESHLEAF_BUFF" }, { spellId = 311107, tooltipMessage = "GOSSAMER_THREAD_BUFF" }, { spellId = 311058, tooltipMessage = "SHUMMERDUST_BUFF" } },
-            RaidIcon = 159465,
+            RaidIcon = { { npcID = 159465 } },
             _index = 247,
         },
         {
@@ -6224,7 +6224,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = 148.1, y = -5666.7 },
             Range = 0.61,
             Buffs = { { spellId = 311103, tooltipMessage = "FRESHLEAF_BUFF" }, { spellId = 311107, tooltipMessage = "GOSSAMER_THREAD_BUFF" }, { spellId = 311058, tooltipMessage = "SHUMMERDUST_BUFF" } },
-            RaidIcon = 159477,
+            RaidIcon = { { npcID = 159477 } },
             _index = 249,
         },
         {
@@ -6295,7 +6295,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = 281.8, y = -5694.4 },
             Range = 0.69,
             Buffs = { { spellId = 311103, tooltipMessage = "FRESHLEAF_BUFF" }, { spellId = 311107, tooltipMessage = "GOSSAMER_THREAD_BUFF" }, { spellId = 311058, tooltipMessage = "SHUMMERDUST_BUFF" } },
-            RaidIcon = 159465,
+            RaidIcon = { { npcID = 159465 } },
             _index = 257,
         },
         {
@@ -6397,14 +6397,14 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = -291.4, y = -6219.3 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 170172,
+            RaidIcon = { { npcID = 170172, questID = 60764, objectiveIndex = 1 } },
             _index = 274,
         },
         {
             Qpart = { [60764] = { 2 } },
             Coord = { x = -287, y = -6242.7 },
             Range = 339.85,
-            RaidIcon = 169279,
+            RaidIcon = { { npcID = 169279, questID = 60764, objectiveIndex = 2 } },
             _index = 275,
         },
         {
@@ -6461,7 +6461,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Qpart = { [60881] = { 1 } },
             Coord = { x = -260.2, y = -6731.9 },
             Range = 0.69,
-            RaidIcon = 170609,
+            RaidIcon = { { npcID = 170609, questID = 60881, objectiveIndex = 1 } },
             _index = 285,
         },
         {
@@ -6518,7 +6518,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Range = 0.69,
             Gossip = 1,
             ExtraActionB = true,
-            RaidIcon = 170709,
+            RaidIcon = { { npcID = 170709, questID = 60905, objectiveIndex = 1 } },
             _index = 294,
         },
         {
@@ -6532,7 +6532,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = 31.2, y = -6880.3 },
             Range = 0.69,
             GossipOptionIDs = { 51488 },
-            RaidIcon = 160962,
+            RaidIcon = { { npcID = 160962, questID = 60905, objectiveIndex = 2 } },
             _index = 296,
         },
         {
@@ -6550,7 +6550,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = 28.8, y = -6872.7 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 160963,
+            RaidIcon = { { npcID = 160963, questID = 58473, objectiveIndex = 1 } },
             _index = 299,
         },
         {
@@ -6603,7 +6603,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Fillers = { [58483] = { 1 }, [58484] = { 1 } },
             Coord = { x = -745.8, y = -7076.9 },
             Range = 0.69,
-            RaidIcon = 161478,
+            RaidIcon = { { npcID = 161478 } },
             _index = 308,
         },
         {
@@ -6618,7 +6618,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Fillers = { [58483] = { 1 }, [58484] = { 1 } },
             Coord = { x = -716.7, y = -6905.4 },
             Range = 0.61,
-            RaidIcon = 161479,
+            RaidIcon = { { npcID = 161479 } },
             _index = 310,
         },
         {
@@ -6626,7 +6626,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Fillers = { [58483] = { 1 }, [58484] = { 1 } },
             Coord = { x = -603.5, y = -6878.9 },
             Range = 0.75,
-            RaidIcon = 161477,
+            RaidIcon = { { npcID = 161477 } },
             _index = 311,
         },
         {
@@ -6655,7 +6655,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Qpart = { [58486] = { 1 } },
             Coord = { x = -710.8, y = -6910.2 },
             Range = 1.19,
-            RaidIcon = 161484,
+            RaidIcon = { { npcID = 161484, questID = 58486, objectiveIndex = 1 } },
             _index = 316,
         },
         {
@@ -6672,7 +6672,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Qpart = { [58488] = { 1 } },
             Coord = { x = -786.3, y = -6958.4 },
             Range = 0.69,
-            RaidIcon = 166222,
+            RaidIcon = { { npcID = 166222, questID = 58488, objectiveIndex = 1 } },
             _index = 319,
         },
         {
@@ -6696,7 +6696,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = -786, y = -6960.3 },
             Range = 0.61,
             Gossip = 1,
-            RaidIcon = 161494,
+            RaidIcon = { { npcID = 161494, questID = 58524, objectiveIndex = 1 } },
             _index = 323,
         },
         {
@@ -6744,7 +6744,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Fillers = { [58591] = { 1 }, [58592] = { 1 } },
             Coord = { x = -50.3, y = -6713.2 },
             Range = 0.61,
-            RaidIcon = 169175,
+            RaidIcon = { { npcID = 169175 } },
             _index = 331,
         },
         {
@@ -6798,7 +6798,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Qpart = { [60578] = { 2 } },
             Coord = { x = 135.3, y = -6713.7 },
             Range = 0.69,
-            RaidIcon = 161780,
+            RaidIcon = { { npcID = 161780, questID = 60578, objectiveIndex = 2 } },
             _index = 340,
         },
         {
@@ -6822,7 +6822,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = 31.8, y = -6879.4 },
             Range = 0.69,
             GossipOptionIDs = { 51487 },
-            RaidIcon = 160962,
+            RaidIcon = { { npcID = 160962, questID = 58593, objectiveIndex = 1 } },
             _index = 344,
         },
         {
@@ -6963,14 +6963,14 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = 44.9, y = -6887.9 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 169541,
+            RaidIcon = { { npcID = 169541, questID = 58869, objectiveIndex = 2 } },
             _index = 366,
         },
         {
             Qpart = { [58869] = { 3 } },
             Coord = { x = 46.7, y = -6867.9 },
             Range = 0.75,
-            RaidIcon = 169540,
+            RaidIcon = { { npcID = 169540, questID = 58869, objectiveIndex = 3 } },
             _index = 367,
         },
         {
@@ -6988,7 +6988,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = 35.1, y = -6882.9 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 161847,
+            RaidIcon = { { npcID = 161847, questID = 60661, objectiveIndex = 1 } },
             _index = 370,
         },
         {
@@ -7078,7 +7078,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = 1085.2, y = -7358.2 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 162968,
+            RaidIcon = { { npcID = 162968, questID = 58723, objectiveIndex = 1 } },
             _index = 384,
         },
         {
@@ -7110,7 +7110,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
             Coord = { x = 1027.5, y = -6868.9 },
             Range = 0.69,
             GossipOptionIDs = { 52271 },
-            RaidIcon = 162968,
+            RaidIcon = { { npcID = 162968, questID = 58723, objectiveIndex = 3 } },
             _index = 389,
         },
         {
@@ -7179,7 +7179,7 @@ APR.RouteQuestStepList["1670-Z11-Oribos-Story"] = {
             Coord = { x = 1381.5, y = -1840.5 },
             Range = 0.61,
             Gossip = 1,
-            RaidIcon = 175134,
+            RaidIcon = { { npcID = 175134, questID = 57025, objectiveIndex = 2 } },
             _index = 4,
         },
         {
@@ -7243,7 +7243,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             Qpart = { [57026] = { 3 } },
             Coord = { x = 5611.3, y = -3468.7 },
             Range = 0.69,
-            RaidIcon = 156277,
+            RaidIcon = { { npcID = 156277, questID = 57026, objectiveIndex = 3 } },
             _index = 7,
         },
         {
@@ -7396,7 +7396,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             Qpart = { [56978] = { 2 } },
             Coord = { x = 5871.1, y = -2670.5 },
             Range = 10000.69,
-            RaidIcon = 156374,
+            RaidIcon = { { npcID = 156374, questID = 56978, objectiveIndex = 2 } },
             _index = 33,
         },
         {
@@ -7491,7 +7491,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             Qpart = { [59712] = { 1 } },
             Coord = { x = 6047.5, y = -2927.2 },
             Range = 0.69,
-            RaidIcon = 165864,
+            RaidIcon = { { npcID = 165864, questID = 59712, objectiveIndex = 1 } },
             _index = 50,
         },
         {
@@ -7520,7 +7520,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             Coord = { x = 6037.3, y = -2954.5 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 166543,
+            RaidIcon = { { npcID = 166543, questID = 59846, objectiveIndex = 2 } },
             _index = 55,
         },
         {
@@ -7528,7 +7528,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             Coord = { x = 6026.7, y = -2915 },
             Range = 0.69,
             GossipOptionIDs = { 52005 },
-            RaidIcon = 166541,
+            RaidIcon = { { npcID = 166541, questID = 59846, objectiveIndex = 1 } },
             _index = 56,
         },
         {
@@ -7536,7 +7536,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             Coord = { x = 5965.2, y = -2895.2 },
             Range = 0.69,
             GossipOptionIDs = { 54248 },
-            RaidIcon = 166542,
+            RaidIcon = { { npcID = 166542, questID = 59846, objectiveIndex = 3 } },
             _index = 57,
         },
         {
@@ -7791,28 +7791,28 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             Qpart = { [57179] = { 4 } },
             Coord = { x = 6196.7, y = -2178 },
             Range = 0.75,
-            RaidIcon = 157303,
+            RaidIcon = { { npcID = 157303, questID = 57179, objectiveIndex = 4 } },
             _index = 100,
         },
         {
             Qpart = { [57179] = { 3 } },
             Coord = { x = 6206.8, y = -2188.7 },
             Range = 0.75,
-            RaidIcon = 160644,
+            RaidIcon = { { npcID = 160644, questID = 57179, objectiveIndex = 3 } },
             _index = 101,
         },
         {
             Qpart = { [57179] = { 2 } },
             Coord = { x = 6206.7, y = -2213.4 },
             Range = 0.69,
-            RaidIcon = 157306,
+            RaidIcon = { { npcID = 157306, questID = 57179, objectiveIndex = 2 } },
             _index = 102,
         },
         {
             Qpart = { [57179] = { 1 } },
             Coord = { x = 6190.2, y = -2227.2 },
             Range = 0.69,
-            RaidIcon = 157302,
+            RaidIcon = { { npcID = 157302, questID = 57179, objectiveIndex = 1 } },
             _index = 103,
         },
         {
@@ -7890,7 +7890,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             Fillers = { [58931] = { 2 }, [60487] = { 1 } },
             Coord = { x = 5398.8, y = -2386.5 },
             Range = 0.61,
-            RaidIcon = 163555,
+            RaidIcon = { { npcID = 163555 } },
             _index = 117,
         },
         {
@@ -8101,7 +8101,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             Coord = { x = 6596.1, y = -3164 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 163117,
+            RaidIcon = { { npcID = 163117 } },
             _index = 153,
         },
         {
@@ -8189,7 +8189,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             Qpart = { [57131] = { 1 } },
             Coord = { x = 6714.3, y = -2974 },
             Range = 0.69,
-            RaidIcon = 163467,
+            RaidIcon = { { npcID = 163467, questID = 57131, objectiveIndex = 1 } },
             _index = 168,
         },
         {
@@ -8439,7 +8439,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             Coord = { x = 7151.8, y = -3126.2 },
             Range = 0.69,
             Button = { ["57189-2"] = 178873 },
-            RaidIcon = 168390,
+            RaidIcon = { { npcID = 168390 } },
             _index = 207,
         },
         {
@@ -8473,7 +8473,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             Coord = { x = 7088.6, y = -3303 },
             Range = 0.69,
             Button = { ["57189-3"] = 178873 },
-            RaidIcon = 168392,
+            RaidIcon = { { npcID = 168392 } },
             _index = 211,
         },
         {
@@ -8561,7 +8561,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             Qpart = { [57405] = { 1 } },
             Coord = { x = 7331.1, y = -2712.5 },
             Range = 114.82,
-            RaidIcon = 157588,
+            RaidIcon = { { npcID = 157588, questID = 57405, objectiveIndex = 1 } },
             _index = 226,
         },
         {
@@ -8586,7 +8586,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             Fillers = { [57427] = { 1 }, [57428] = { 1, 2 } },
             Coord = { x = 7513.8, y = -2641 },
             Range = 0.69,
-            RaidIcon = 157740,
+            RaidIcon = { { npcID = 157740 } },
             _index = 230,
         },
         {
@@ -8634,7 +8634,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             Coord = { x = 7672.3, y = -2504.4 },
             Range = 31.76,
             Gossip = 1,
-            RaidIcon = 157801,
+            RaidIcon = { { npcID = 157801, questID = 57460, objectiveIndex = 1 } },
             _index = 238,
         },
         {
@@ -8694,7 +8694,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             Qpart = { [57461] = { 2 } },
             Coord = { x = 7665.5, y = -2472.7 },
             Range = 345.43,
-            RaidIcon = 158523,
+            RaidIcon = { { npcID = 158523, questID = 57461, objectiveIndex = 2 } },
             _index = 248,
         },
         {
@@ -8734,7 +8734,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             Fillers = { [57724] = { 1 } },
             Coord = { x = 7716, y = -2740.7 },
             Range = 2.2,
-            RaidIcon = 168093,
+            RaidIcon = { { npcID = 168093 } },
             _index = 255,
         },
         {
@@ -8780,7 +8780,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             Qpart = { [57532] = { 1 } },
             Coord = { x = 7930.3, y = -2179.9 },
             Range = 50.77,
-            RaidIcon = 158228,
+            RaidIcon = { { npcID = 158228, questID = 57532, objectiveIndex = 1 } },
             _index = 263,
         },
         {
@@ -8793,7 +8793,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             Qpart = { [57532] = { 3 } },
             Coord = { x = 7974.7, y = -2149.5 },
             Range = 35.29,
-            RaidIcon = 158228,
+            RaidIcon = { { npcID = 158228, questID = 57532, objectiveIndex = 3 } },
             _index = 265,
         },
         {
@@ -8806,7 +8806,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             Qpart = { [57532] = { 5 } },
             Coord = { x = 7989.7, y = -2115.5 },
             Range = 40.06,
-            RaidIcon = 158228,
+            RaidIcon = { { npcID = 158228, questID = 57532, objectiveIndex = 5 } },
             _index = 267,
         },
         {
@@ -8877,7 +8877,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             Qpart = { [57536] = { 1 } },
             Coord = { x = 8024.1, y = -2233.7 },
             Range = 0.69,
-            RaidIcon = 164420,
+            RaidIcon = { { npcID = 164420, questID = 57536, objectiveIndex = 1 } },
             _index = 280,
         },
         {
@@ -8950,7 +8950,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             Fillers = { [57724] = { 1 } },
             Coord = { x = 7786.8, y = -1951.4 },
             Range = 0.61,
-            RaidIcon = 158701,
+            RaidIcon = { { npcID = 158701 } },
             _index = 292,
         },
         {
@@ -9039,7 +9039,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
             Qpart = { [59327] = { 2 } },
             Coord = { x = 7687.8, y = -1905.5 },
             Range = 0.69,
-            RaidIcon = 158615,
+            RaidIcon = { { npcID = 158615, questID = 59327, objectiveIndex = 2 } },
             _index = 307,
         },
         {
@@ -9117,7 +9117,7 @@ APR.RouteQuestStepList["1543-Z13-TheMaw-Story"] = {
             Qpart = { [57691] = { 1 } },
             Coord = { x = 7473.5, y = 5149.3 },
             Range = 0.75,
-            RaidIcon = 158665,
+            RaidIcon = { { npcID = 158665, questID = 57691, objectiveIndex = 1 } },
             _index = 6,
         },
         {
@@ -9185,14 +9185,14 @@ APR.RouteQuestStepList["1525-Z14-Revendreth-Story"] = {
             Qpart = { [57694] = { 1 } },
             Coord = { x = 7735.8, y = -1967.5 },
             Range = 0.69,
-            RaidIcon = 165297,
+            RaidIcon = { { npcID = 165297, questID = 57694, objectiveIndex = 1 } },
             _index = 3,
         },
         {
             Qpart = { [57694] = { 2 } },
             Coord = { x = 7668.3, y = -1945.1 },
             Range = 0.69,
-            RaidIcon = 165291,
+            RaidIcon = { { npcID = 165291, questID = 57694, objectiveIndex = 2 } },
             _index = 4,
         },
         {
@@ -9344,7 +9344,7 @@ APR.RouteQuestStepList["1670-Z15-Oribos-Story"] = {
             Coord = { x = 1390.5, y = -1940.5 },
             Range = 0.61,
             Gossip = 1,
-            RaidIcon = 159478,
+            RaidIcon = { { npcID = 159478, questID = 57877, objectiveIndex = 1 } },
             _index = 4,
         },
         {
@@ -9362,7 +9362,7 @@ APR.RouteQuestStepList["1670-Z15-Oribos-Story"] = {
             Coord = { x = 1413.5, y = -1909.8 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 171787,
+            RaidIcon = { { npcID = 171787, questID = 57878, objectiveIndex = 1 } },
             _index = 7,
         },
         {
@@ -9370,7 +9370,7 @@ APR.RouteQuestStepList["1670-Z15-Oribos-Story"] = {
             Coord = { x = 1384.2, y = -1891.5 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 171795,
+            RaidIcon = { { npcID = 171795, questID = 57878, objectiveIndex = 3 } },
             _index = 8,
         },
         {
@@ -9378,7 +9378,7 @@ APR.RouteQuestStepList["1670-Z15-Oribos-Story"] = {
             Coord = { x = 1342.9, y = -1935.1 },
             Range = 0.75,
             Gossip = 1,
-            RaidIcon = 171589,
+            RaidIcon = { { npcID = 171589, questID = 57878, objectiveIndex = 2 } },
             _index = 9,
         },
         {
@@ -9386,7 +9386,7 @@ APR.RouteQuestStepList["1670-Z15-Oribos-Story"] = {
             Coord = { x = 1358.2, y = -1963.5 },
             Range = 0.69,
             Gossip = 1,
-            RaidIcon = 171821,
+            RaidIcon = { { npcID = 171821, questID = 57878, objectiveIndex = 4 } },
             _index = 10,
         },
         {

@@ -375,7 +375,7 @@ function APR.fillersFrame:RefreshFillersFrame(forceRefresh)
     end
     local profile = APR:GetSettingsProfile()
     if not profile then return end
-    local visible = not APR:ShouldHideFrames() and not self.hiddenByCurrentStep and HasActiveFillers()
+    local visible = not APR:ShouldHideFrames() and not self.hiddenByCurrentStep and (HasActiveFillers() or (APR.RaidIconButtons.unhostedCount or 0) > 0)
     local snapped = profile.fillersFrameSnapToCurrentStep
     if not snapped and APR.SetFrameSnapAnchor then APR:SetFrameSnapAnchor(FillersFrame, nil) end
     local collapsed = FillersFrame.collapsed and not snapped
@@ -394,7 +394,8 @@ function APR.fillersFrame:RefreshFillersFrame(forceRefresh)
         SetShown(FillersFrameHeader.MinimizeButton, not snapped)
         SetShown(FillersFrame_StepHolder, not collapsed)
         FillersFrame:EnableMouse(not snapped)
-        local height = collapsed and 1 or (self.contentHeight or CONTENT_PADDING * 2)
+        local height = collapsed and 1 or math.max(self.contentHeight or CONTENT_PADDING * 2,
+            ((APR.RaidIconButtons.unhostedCount or 0) > 0 and 30 or 0) + CONTENT_PADDING)
         if FillersFrame:GetHeight() ~= height then FillersFrame:SetHeight(height) end
         FillersFrameHeader:SetPoint("BOTTOM", FillersFrame, "TOP", 0, -3)
         if snapped then
