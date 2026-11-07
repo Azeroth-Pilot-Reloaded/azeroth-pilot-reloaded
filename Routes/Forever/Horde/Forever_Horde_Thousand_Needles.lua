@@ -8,7 +8,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
     mapID = 1441,
-    conditions = { MinLevel = 28, Faction = "Horde" },
+    conditions = { MinLevel = 25, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands" },
     prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 9 }, [APR.PREFAB_TYPES.Speedrun] = { index = 9 } },
     parallelSteps = {
@@ -1433,14 +1433,6 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             _index = 151,
         },
         {
-            Grind = { level = 28, xp = 29000 },
-            Fillers = { [1131] = { 1 } },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 18.7, 22.2),
-            Range = 30,
-            Zone = 1441,
-            _index = 152,
-        },
-        {
             DropQuest = 4881,
             DroppableQuest = { Qid = 4881, MobId = 10617, Text = "Galak Messenger" },
             Fillers = { [1131] = { 1 } },
@@ -1450,7 +1442,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             SkipForLvl = 33,
             Zone = 1441,
-            _index = 153,
+            _index = 152,
         },
         {
             DropQuest = 4881,
@@ -1463,7 +1455,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             SkipForLvl = 33,
             Zone = 1441,
-            _index = 154,
+            _index = 153,
         },
         {
             DropQuest = 4881,
@@ -1476,7 +1468,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             SkipForLvl = 33,
             Zone = 1441,
-            _index = 155,
+            _index = 154,
         },
         {
             Qpart = { [1131] = { 1 } },
@@ -1485,7 +1477,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             Range = 30,
             ClassNot = { "HUNTER", "SHAMAN" },
             Zone = 1441,
-            _index = 156,
+            _index = 155,
         },
         {
             Qpart = { [1131] = { 1 } },
@@ -1494,7 +1486,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             Range = 30,
             Class = "HUNTER",
             Zone = 1441,
-            _index = 157,
+            _index = 156,
         },
         {
             Qpart = { [1131] = { 1 } },
@@ -1503,7 +1495,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             Range = 30,
             Class = "SHAMAN",
             Zone = 1441,
-            _index = 158,
+            _index = 157,
         },
         {
             Done = { 4881 },
@@ -1511,7 +1503,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 21.25, 32.05),
             IsQuestOnQuest = 4881,
             Zone = 1441,
-            _index = 159,
+            _index = 158,
         },
         {
             PickUp = { 4966 },
@@ -1519,7 +1511,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 21.25, 32.05),
             IsQuestCompleted = 4881,
             Zone = 1441,
-            _index = 160,
+            _index = 159,
         },
         {
             Qpart = { [4966] = { 1 } },
@@ -1527,7 +1519,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             Range = 30,
             IsQuestOnQuest = 4966,
             Zone = 1441,
-            _index = 161,
+            _index = 160,
         },
         {
             Done = { 4966 },
@@ -1535,14 +1527,14 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             IsQuestOnQuest = 4966,
             IsQuestReadyForTurnIn = 4966,
             Zone = 1441,
-            _index = 162,
+            _index = 161,
         },
         {
             Done = { 5151 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 21.43, 32.55),
             IsQuestReadyForTurnIn = 5151,
             Zone = 1441,
-            _index = 163,
+            _index = 162,
         },
         {
             Qpart = { [5062] = { 1 } },
@@ -1552,7 +1544,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             Class = { "DRUID", "ROGUE", "SHAMAN", "WARRIOR" },
             SkipForLvl = 34,
             Zone = 1441,
-            _index = 164,
+            _index = 163,
         },
         {
             Qpart = { [5062] = { 1 } },
@@ -1562,7 +1554,7 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             Class = { "HUNTER", "PALADIN", "PRIEST", "WARLOCK" },
             SkipForLvl = 34,
             Zone = 1441,
-            _index = 165,
+            _index = 164,
         },
         {
             Qpart = { [5062] = { 1 } },
@@ -1572,6 +1564,16 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             Class = "MAGE",
             Race = { "Orc", "Scourge", "Troll" },
             SkipForLvl = 34,
+            Zone = 1441,
+            _index = 165,
+        },
+        {
+            Grind = { level = 26, xp = 0, questLogXP = { 1131 } },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 18.7, 22.2),
+            Range = 30,
+            IsQuestNotOnQuest = 1136,
+            IsQuestUncompleted = 1136,
+            SkipForLvl = 26,
             Zone = 1441,
             _index = 166,
         },
@@ -2450,6 +2452,8 @@ APR.RouteQuestStepList["Forever-Horde-Thousand-Needles-First-Visit"] = {
             Grind = 30,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 43.12, 36.86),
             Range = 30,
+            IsQuestNotOnQuest = 1111,
+            IsQuestUncompleted = 1111,
             SkipForLvl = 30,
             Zone = 1441,
             _index = 262,
