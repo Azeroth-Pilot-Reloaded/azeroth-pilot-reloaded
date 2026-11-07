@@ -22,3 +22,4 @@ docs/*
 .vscode/settings.json
 AGENTS.md
 .scratch/*
+.metrics/*

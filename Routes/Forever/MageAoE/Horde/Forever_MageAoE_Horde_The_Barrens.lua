@@ -7,7 +7,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-The-Barrens"] = {
     prefab = { [APR.PREFAB_TYPES.Leveling] = 3 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Mage_AoE,
     mapID = 1413,
     conditions = { MinLevel = 12, Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Skyborne, APR.RACES.Troll }, Class = APR.Classes.Mage, Faction = "Horde" },
     nextRoute = {

@@ -357,7 +357,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         {
             Done = { 91740 },
             Coord = { x = -1406.2, y = -9775.5 },
-            RaidIcon = 248277,
+            RaidIcon = { { npcID = 248277, questID = 91740 } },
             IsQuestOnQuest = 91740,
             Zone = 1429,
             _index = 44,

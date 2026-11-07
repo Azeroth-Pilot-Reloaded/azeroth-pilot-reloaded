@@ -7,7 +7,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Scourge"] = {
     prefab = { [APR.PREFAB_TYPES.Leveling] = 2, [APR.PREFAB_TYPES.StartingZone] = 1 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Mage_AoE,
     mapID = 1420,
     conditions = { Faction = "Horde", Race = { APR.RACES.Scourge }, Class = APR.Classes.Mage },
     nextRoute = {
@@ -1950,7 +1950,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Scourge"] = {
             BuyMerchant = { { isSupply = true, itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 1, MaxLevel = 4 }, reserveCopper = 0 }, { isSupply = true, itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 5, MaxLevel = 14 }, reserveCopper = 0 }, { isSupply = true, itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 15, MaxLevel = 24 }, reserveCopper = 0 }, { isSupply = true, itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 25, MaxLevel = 34 }, reserveCopper = 0 }, { isSupply = true, itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 35, MaxLevel = 44 }, reserveCopper = 0 }, { isSupply = true, itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { MinLevel = 45, MaxLevel = 60 }, reserveCopper = 0 } },
             Coord = { x = 244.81, y = 2269.19 },
             MerchantNPC = 5688,
-            RaidIcon = 5688,
+            RaidIcon = { { npcID = 5688 } },
             Zone = 1420,
             _index = 257,
         },
@@ -2378,7 +2378,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Scourge"] = {
         {
             PickUp = { 840 },
             Coord = { x = -4648.55, y = 271.43 },
-            RaidIcon = 3336,
+            RaidIcon = { { npcID = 3336, questID = 840 } },
             MinLevel = 10,
             Zone = 1411,
             _index = 317,
@@ -2393,14 +2393,14 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Scourge"] = {
         {
             Done = { 840 },
             Coord = { x = -3687.11, y = 303.14 },
-            RaidIcon = 3337,
+            RaidIcon = { { npcID = 3337, questID = 840 } },
             Zone = 1413,
             _index = 319,
         },
         {
             PickUp = { 842 },
             Coord = { x = -3687.11, y = 303.14 },
-            RaidIcon = 3337,
+            RaidIcon = { { npcID = 3337, questID = 842 } },
             Zone = 1413,
             _index = 320,
         },

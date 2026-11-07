@@ -7,7 +7,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Redridge"] = {
     prefab = { [APR.PREFAB_TYPES.Leveling] = 6 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Mage_AoE,
     mapID = 1433,
     conditions = { MinLevel = 18, Race = { APR.RACES.Gnome, APR.RACES.Human, APR.RACES.Skyborne }, Class = APR.Classes.Mage, Faction = "Alliance" },
     nextRoute = {
@@ -558,7 +558,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Redridge"] = {
             Coord = { x = -2157.18, y = -9223.81 },
             Range = 5,
             MerchantNPC = 6727,
-            RaidIcon = 6727,
+            RaidIcon = { { npcID = 6727 } },
             Zone = 1433,
             _index = 75,
         },
