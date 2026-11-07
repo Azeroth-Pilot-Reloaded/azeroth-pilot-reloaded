@@ -19,6 +19,8 @@ local panelNames = {
 }
 
 function Pad:GetMenuBinding()
+    local chord = self.GetMenuChord and self:GetMenuChord()
+    if chord then return self:FormatMenuChord(chord), true end
     if not GetBindingKey then return nil, false end
     local context = C_KeyBindings
         and C_KeyBindings.GetBindingContextForAction
@@ -240,7 +242,9 @@ function Pad:RefreshMenuBindings()
     local frame = self.menu
     if not frame then return end
     local chosen = self:GetMenuBinding()
-    local bindingText = chosen and (GetBindingText and GetBindingText(chosen, "KEY_") or chosen)
+    local chord = self.GetMenuChord and self:GetMenuChord()
+    local bindingText = chord and self:FormatMenuChord(chord)
+        or (chosen and (GetBindingText and GetBindingText(chosen, "KEY_") or chosen))
     frame.bindingLabel:SetText(KEY_BINDINGS .. ": " .. (bindingText or NOT_BOUND or "—"))
     for _, hint in ipairs(frame.inputHints) do
         self:RefreshInputHint(hint)

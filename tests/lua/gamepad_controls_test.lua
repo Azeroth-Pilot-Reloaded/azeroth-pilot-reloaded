@@ -63,11 +63,17 @@ pad:CaptureMenuBinding()
 local capture = pad.bindingCapture
 assert(capture:IsShown() and capture.padEnabled)
 local press = capture:GetScript("OnGamePadButtonDown")
+local release = capture:GetScript("OnGamePadButtonUp")
 press(capture, "PADLTRIGGER")
 assert(not confirmation and capture:IsShown())
 press(capture, "PADIGNORE")
 assert(not confirmation and capture:IsShown())
 press(capture, "PAD4")
+assert(
+    not confirmation and capture:IsShown(),
+    "Button-down events should wait for a release before confirming a binding"
+)
+release(capture, "PAD4")
 assert(not capture:IsShown() and not capture.padEnabled)
 assert(confirmation.message:find("CTRL%-PAD4") and confirmation.message:find("JUMP"))
 assert(bindings["CTRL-PAD4"] == "JUMP" and saves == 0, "Capturing must not silently steal a binding")
@@ -81,22 +87,31 @@ assert(
     "Leaving capture returns to the menu; the unbound warning belongs to closing that menu"
 )
 pad:CaptureMenuBinding()
-press(capture, "PAD2")
+press(capture, "PAD3")
 assert(
-    not capture:IsShown() and not bindings["CTRL-PAD2"] and saves == 1,
-    "B cancels rather than becoming the menu binding"
+    capture:IsShown() and confirmationCount == confirmationsBeforeCancel,
+    "A fresh press should wait for the matching release before acting"
 )
+release(capture, "PAD3")
+assert(
+    not capture:IsShown() and not bindings["CTRL-PAD3"] and saves == 1,
+    "Binding capture should only resolve on release, not on the press itself"
+)
+local confirmationsBeforeEscape = confirmationCount
 pad:CaptureMenuBinding()
 capture:GetScript("OnKeyDown")(capture, "ESCAPE")
-assert(not capture:IsShown() and confirmationCount == confirmationsBeforeCancel)
+assert(not capture:IsShown() and confirmationCount == confirmationsBeforeEscape)
 pad:CaptureMenuBinding()
 capture:Hide()
 assert(
-    not capture.captureListening and confirmationCount == confirmationsBeforeCancel,
+    not capture.captureListening and confirmationCount == confirmationsBeforeEscape,
     "Closing capture must neither save a shortcut nor open the menu's warning"
 )
 pad:CaptureMenuBinding()
+local confirmationsBeforeFreshPress = confirmationCount
 press(capture, "PAD3")
+assert(capture:IsShown() and confirmationCount == confirmationsBeforeFreshPress)
+release(capture, "PAD3")
 env.setCombat(true)
 confirmation.accept()
 env.setCombat(false)
@@ -109,6 +124,108 @@ assert(
     confirmationCount == confirmationsBeforeDisconnect,
     "Disconnect must immediately release capture without an interactive warning"
 )
+
+-- Capture the chord while held, not the modifier state after release.
+local chordPrefix = ""
+function CreateKeyChordStringUsingMetaKeyState(key) return chordPrefix .. key end
+pad:CaptureMenuBinding()
+local beforeChord = confirmationCount
+release(capture, "PAD4")
+assert(confirmationCount == beforeChord, "An unmatched release cannot bind")
+press(capture, "PAD4")
+chordPrefix = "CTRL-SHIFT-"
+press(capture, "PADLTRIGGER")
+assert(confirmationCount == beforeChord, "Adding a modifier must keep listening")
+chordPrefix = ""
+release(capture, "PADLTRIGGER")
+assert(confirmationCount == beforeChord, "Releasing a modifier cannot finish capture")
+release(capture, "PAD4")
+assert(confirmation.message:find("CTRL-SHIFT-PAD4", 1, true), "Preserve modifiers released first")
+pad:CaptureMenuBinding()
+release(capture, "PAD4")
+assert(capture:IsShown(), "Reopening clears the previous pending chord")
+press(capture, "PAD3")
+release(capture, "PAD3")
+assert(confirmation.message == "Assign PAD3?", "Plain buttons remain bindable")
+
+-- Ordinary multi-button shortcuts preserve both buttons in either press order.
+for _, buttons in ipairs({ { "PADRSHOULDER", "PADDUP" }, { "PADDUP", "PADRSHOULDER" } }) do
+    pad:CaptureMenuBinding()
+    local before = confirmationCount
+    press(capture, buttons[1])
+    press(capture, buttons[2])
+    release(capture, buttons[1])
+    assert(confirmationCount == before and capture:IsShown(), "Wait for every captured button to release")
+    release(capture, buttons[2])
+    assert(confirmation.message:find("PADDUP", 1, true) and confirmation.message:find("PADRSHOULDER", 1, true))
+    local savedBefore = saves
+    confirmation.accept()
+    assert(saves == savedBefore, "Custom chords must not be passed to native SetBinding/SaveBindings")
+    assert(#pad:GetMenuChord() == 2)
+end
+-- Back remains usable alone, while B may participate in a combination.
+pad:CaptureMenuBinding()
+press(capture, "PAD2")
+press(capture, "PADDLEFT")
+release(capture, "PAD2")
+assert(capture:IsShown())
+release(capture, "PADDLEFT")
+assert(confirmation.message:find("PAD2", 1, true) and confirmation.message:find("PADDLEFT", 1, true))
+pad:CaptureMenuBinding()
+local beforeBack = confirmationCount
+press(capture, "PAD2")
+release(capture, "PAD2")
+assert(not capture:IsShown() and confirmationCount == beforeBack)
+
+-- Replace the erroneous old single-button APR binding, but preserve other actions.
+bindings.PADDUP, bindings.PADRSHOULDER = "APR_MENU", "JUMP"
+pad:CaptureMenuBinding()
+press(capture, "PADDUP")
+press(capture, "PADRSHOULDER")
+release(capture, "PADDUP")
+release(capture, "PADRSHOULDER")
+confirmation.accept()
+assert(not bindings.PADDUP and bindings.PADRSHOULDER == "JUMP")
+local held, menuOpens = {}, 0
+function IsKeyDown(key) return held[key] == true end
+local runAction = pad.RunAction
+function pad:RunAction(action)
+    assert(action == "menu")
+    menuOpens = menuOpens + 1
+end
+local function poll()
+    for i = 1, 6 do
+        fixture.tick()
+    end
+end
+held.PADRSHOULDER = true
+poll()
+held.PADDUP = true
+poll()
+assert(menuOpens == 0, "Holding a chord cannot open the menu")
+held.PADRSHOULDER = nil
+poll()
+assert(menuOpens == 0, "A partial release cannot open the menu")
+held.PADDUP = nil
+poll()
+poll()
+assert(menuOpens == 1, "A complete chord opens once after release")
+held.PADDUP = true
+poll()
+held.PADDUP = nil
+poll()
+assert(menuOpens == 1, "A constituent button alone cannot open the menu")
+held.PADDUP, held.PADRSHOULDER = true, true
+poll()
+env.setCombat(true)
+poll()
+held = {}
+env.setCombat(false)
+poll()
+assert(menuOpens == 1, "Combat cancels pending chords without replay")
+pad.RunAction = runAction
+APRData.GamepadMenuChord = nil
+pad:RefreshMenuChord()
 
 local target =
     { frame = CreateFrame("Button", nil, fixture.window), r = 0.2, g = 0.4, b = 0.6, a = 0.8, HasAlpha = true }

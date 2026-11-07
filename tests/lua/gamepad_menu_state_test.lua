@@ -150,3 +150,14 @@ env.setCombat(false)
 print(
     "Gamepad menu state: late login route/panels, live availability, B/cross/Escape warnings, cancel/accept, binding slots and action transitions passed"
 )
+
+-- Saved custom chords are recognized after login and displayed as separate labels.
+APRData = APRData or {}
+APRData.GamepadMenuChord = { "PADDUP", "PADRSHOULDER" }
+local chosen, controller = pad:GetMenuBinding()
+assert(controller and chosen == pad:FormatMenuChord(APRData.GamepadMenuChord))
+pad:RefreshMenuBindings()
+assert(pad.menu.bindingLabel:GetText() == KEY_BINDINGS .. ": " .. chosen)
+APRData.GamepadMenuChord = { "PADDUP", "PADDUP" }
+assert(not pad:GetMenuChord(), "Malformed saved chords are ignored")
+APRData.GamepadMenuChord = nil
