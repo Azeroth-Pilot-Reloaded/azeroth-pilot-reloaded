@@ -416,7 +416,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         {
             LearnSkill = { allAvailable = true },
             Coord = { x = -1086.5, y = -4642.4 },
-            RaidIcon = 258098,
+            RaidIcon = { { npcID = 258098 } },
             Class = "SHAMAN",
             MinLevel = 1,
             Race = "Dwarf",

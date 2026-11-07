@@ -1284,7 +1284,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         {
             PickUp = { 94494 },
             Coord = { x = -1086.5, y = -4642.4 },
-            RaidIcon = 258098,
+            RaidIcon = { { npcID = 258098, questID = 94494 } },
             Class = "SHAMAN",
             DontHaveSpell = 2645,
             Race = "Dwarf",
@@ -1294,7 +1294,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         {
             LearnSkill = { allAvailable = true },
             Coord = { x = -1086.5, y = -4642.4 },
-            RaidIcon = 258098,
+            RaidIcon = { { npcID = 258098 } },
             Class = "SHAMAN",
             DontHaveSpell = 2645,
             MinLevel = 1,
@@ -1305,7 +1305,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         {
             LearnSkill = { allAvailable = true },
             Coord = { x = -1086.5, y = -4642.4 },
-            RaidIcon = 258098,
+            RaidIcon = { { npcID = 258098 } },
             Class = "SHAMAN",
             DontHaveSpell = 408342,
             MinLevel = 22,

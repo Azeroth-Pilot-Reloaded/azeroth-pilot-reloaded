@@ -85,6 +85,16 @@ class RouteSchemaTests(unittest.TestCase):
         cls.catalog = load_routes([])
         cls.schema = RouteSchema(cls.catalog)
 
+    def test_raid_icon_accepts_scalar_or_nonempty_npc_list(self):
+        for value in (12345, seq(12345, 67890), seq(12345, 12345), {"npcID": 12345},
+                      seq({"npcID": 12345, "questID": 42, "objectiveIndex": 2}, 67890)):
+            with self.subTest(value=value):
+                self.schema.step({"RaidIcon": value}, "step")
+        for value in (0, -1, 1.5, True, "12345", {}, seq(0), seq(1, "2"),
+                      {2: 12345}, {"npcID": 12345, "questID": 0}, seq(seq(12345))):
+            with self.subTest(invalid=value), self.assertRaises(InvalidRoute):
+                self.schema.step({"RaidIcon": value}, "step")
+
     def test_every_declared_option_has_positive_and_negative_examples(self):
         data = examples()
         self.assertEqual(set(data), set(self.schema.step_fields) |

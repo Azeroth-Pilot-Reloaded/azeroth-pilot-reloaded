@@ -2108,7 +2108,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-18-21"] = {
             Waypoint = 98341,
             Coord = { x = -2352.7, y = 7375.6 },
             Range = 10.0,
-            RaidIcon = 272054,
+            RaidIcon = { { npcID = 272054 } },
             Class = "DRUID",
             Race = "Skyborne",
             Zone = 1450,
@@ -2117,7 +2117,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-18-21"] = {
         {
             Done = { 98341 },
             Coord = { x = -2394.3, y = 7361.2 },
-            RaidIcon = 272054,
+            RaidIcon = { { npcID = 272054, questID = 98341 } },
             Class = "DRUID",
             Race = "Skyborne",
             Zone = 1450,
@@ -2126,7 +2126,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-18-21"] = {
         {
             PickUp = { 98404 },
             Coord = { x = -2394.3, y = 7361.2 },
-            RaidIcon = 272054,
+            RaidIcon = { { npcID = 272054, questID = 98404 } },
             Class = "DRUID",
             Race = "Skyborne",
             Zone = 1450,
@@ -2223,7 +2223,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-18-21"] = {
         {
             Done = { 98404 },
             Coord = { x = -2395.4, y = 7361.4 },
-            RaidIcon = 272054,
+            RaidIcon = { { npcID = 272054, questID = 98404 } },
             Class = "DRUID",
             Race = "Skyborne",
             Zone = 1450,
@@ -2232,7 +2232,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-18-21"] = {
         {
             PickUp = { 98738 },
             Coord = { x = -2395.4, y = 7361.4 },
-            RaidIcon = 272054,
+            RaidIcon = { { npcID = 272054, questID = 98738 } },
             Class = "DRUID",
             Race = "Skyborne",
             Zone = 1450,
@@ -2255,7 +2255,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-18-21"] = {
         {
             Done = { 98739 },
             Coord = { x = -2678.2, y = 8021.5 },
-            RaidIcon = 11802,
+            RaidIcon = { { npcID = 11802, questID = 98739 } },
             Class = "DRUID",
             Race = "Tauren",
             Zone = 1450,
@@ -2264,7 +2264,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-18-21"] = {
         {
             PickUp = { 98362 },
             Coord = { x = -2678.2, y = 8021.5 },
-            RaidIcon = 11802,
+            RaidIcon = { { npcID = 11802, questID = 98362 } },
             Class = "DRUID",
             Race = "Tauren",
             Zone = 1450,
@@ -2273,7 +2273,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-18-21"] = {
         {
             Done = { 98738 },
             Coord = { x = -2678.2, y = 8021.5 },
-            RaidIcon = 11802,
+            RaidIcon = { { npcID = 11802, questID = 98738 } },
             Class = "DRUID",
             Race = "Skyborne",
             Zone = 1450,
@@ -2282,7 +2282,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-18-21"] = {
         {
             PickUp = { 98362 },
             Coord = { x = -2678.2, y = 8021.5 },
-            RaidIcon = 11802,
+            RaidIcon = { { npcID = 11802, questID = 98362 } },
             Class = "DRUID",
             Race = "Skyborne",
             Zone = 1450,

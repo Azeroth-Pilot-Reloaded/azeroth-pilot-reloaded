@@ -188,7 +188,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             PickUp = { 92742, 92744 },
             Coord = { x = 1179.8, y = -10635.601 },
-            RaidIcon = 253092,
+            RaidIcon = { { npcID = 253092 } },
             SkipForLvl = 15,
             Zone = 1436,
             _index = 22,
@@ -442,7 +442,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             PickUp = { 92909 },
             Coord = { x = 1213.4, y = -10153.8 },
-            RaidIcon = 253395,
+            RaidIcon = { { npcID = 253395, questID = 92909 } },
             AnyOf = { { SkipForLvl = 15, Race = "Human", AllOf = { { ItemCount = { operator = ">=", count = 5, itemID = 255010 } }, { ItemCount = { operator = ">=", count = 14, itemID = 255007 } } } }, { SkipForLvl = 15, Race = "Dwarf", AllOf = { { ItemCount = { operator = ">=", count = 5, itemID = 255010 } }, { ItemCount = { operator = ">=", count = 14, itemID = 255007 } } } }, { SkipForLvl = 15, Race = "Gnome", AllOf = { { ItemCount = { operator = ">=", count = 5, itemID = 255010 } }, { ItemCount = { operator = ">=", count = 14, itemID = 255007 } } } }, { SkipForLvl = 15, Race = "Skyborne", AllOf = { { ItemCount = { operator = ">=", count = 5, itemID = 255010 } }, { ItemCount = { operator = ">=", count = 14, itemID = 255007 } } } } },
             Zone = 1436,
             _index = 51,
@@ -450,7 +450,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Done = { 92909 },
             Coord = { x = 1213.4, y = -10153.8 },
-            RaidIcon = 253395,
+            RaidIcon = { { npcID = 253395, questID = 92909 } },
             AnyOf = { { SkipForLvl = 15, Race = "Human", AllOf = { { ItemCount = { operator = ">=", count = 5, itemID = 255010 } }, { ItemCount = { operator = ">=", count = 14, itemID = 255007 } } } }, { SkipForLvl = 15, Race = "Dwarf", AllOf = { { ItemCount = { operator = ">=", count = 5, itemID = 255010 } }, { ItemCount = { operator = ">=", count = 14, itemID = 255007 } } } }, { SkipForLvl = 15, Race = "Gnome", AllOf = { { ItemCount = { operator = ">=", count = 5, itemID = 255010 } }, { ItemCount = { operator = ">=", count = 14, itemID = 255007 } } } }, { SkipForLvl = 15, Race = "Skyborne", AllOf = { { ItemCount = { operator = ">=", count = 5, itemID = 255010 } }, { ItemCount = { operator = ">=", count = 14, itemID = 255007 } } } } },
             Zone = 1436,
             _index = 52,
@@ -684,7 +684,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             PickUp = { 92909 },
             Coord = { x = 1213.4, y = -10153.8 },
-            RaidIcon = 253395,
+            RaidIcon = { { npcID = 253395, questID = 92909 } },
             AnyOf = { { SkipForLvl = 15, Race = "Human", AllOf = { { ItemCount = { operator = ">=", count = 5, itemID = 255010 } }, { ItemCount = { operator = ">=", count = 14, itemID = 255007 } } } }, { SkipForLvl = 15, Race = "Dwarf", AllOf = { { ItemCount = { operator = ">=", count = 5, itemID = 255010 } }, { ItemCount = { operator = ">=", count = 14, itemID = 255007 } } } }, { SkipForLvl = 15, Race = "Gnome", AllOf = { { ItemCount = { operator = ">=", count = 5, itemID = 255010 } }, { ItemCount = { operator = ">=", count = 14, itemID = 255007 } } } }, { SkipForLvl = 15, Race = "Skyborne", AllOf = { { ItemCount = { operator = ">=", count = 5, itemID = 255010 } }, { ItemCount = { operator = ">=", count = 14, itemID = 255007 } } } } },
             Zone = 1436,
             _index = 76,
@@ -692,7 +692,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Done = { 92909 },
             Coord = { x = 1213.4, y = -10153.8 },
-            RaidIcon = 253395,
+            RaidIcon = { { npcID = 253395, questID = 92909 } },
             AnyOf = { { SkipForLvl = 15, Race = "Human", AllOf = { { ItemCount = { operator = ">=", count = 5, itemID = 255010 } }, { ItemCount = { operator = ">=", count = 14, itemID = 255007 } } } }, { SkipForLvl = 15, Race = "Dwarf", AllOf = { { ItemCount = { operator = ">=", count = 5, itemID = 255010 } }, { ItemCount = { operator = ">=", count = 14, itemID = 255007 } } } }, { SkipForLvl = 15, Race = "Gnome", AllOf = { { ItemCount = { operator = ">=", count = 5, itemID = 255010 } }, { ItemCount = { operator = ">=", count = 14, itemID = 255007 } } } }, { SkipForLvl = 15, Race = "Skyborne", AllOf = { { ItemCount = { operator = ">=", count = 5, itemID = 255010 } }, { ItemCount = { operator = ">=", count = 14, itemID = 255007 } } } } },
             Zone = 1436,
             _index = 77,
@@ -827,7 +827,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             PickUp = { 92909 },
             Coord = { x = 1213.4, y = -10153.8 },
-            RaidIcon = 253395,
+            RaidIcon = { { npcID = 253395, questID = 92909 } },
             AnyOf = { { SkipForLvl = 15, Race = "Human", AllOf = { { ItemCount = { operator = ">=", count = 5, itemID = 255010 } }, { ItemCount = { operator = ">=", count = 14, itemID = 255007 } } } }, { SkipForLvl = 15, Race = "Dwarf", AllOf = { { ItemCount = { operator = ">=", count = 5, itemID = 255010 } }, { ItemCount = { operator = ">=", count = 14, itemID = 255007 } } } }, { SkipForLvl = 15, Race = "Gnome", AllOf = { { ItemCount = { operator = ">=", count = 5, itemID = 255010 } }, { ItemCount = { operator = ">=", count = 14, itemID = 255007 } } } }, { SkipForLvl = 15, Race = "Skyborne", AllOf = { { ItemCount = { operator = ">=", count = 5, itemID = 255010 } }, { ItemCount = { operator = ">=", count = 14, itemID = 255007 } } } } },
             Zone = 1436,
             _index = 94,
@@ -835,7 +835,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Done = { 92909 },
             Coord = { x = 1213.4, y = -10153.8 },
-            RaidIcon = 253395,
+            RaidIcon = { { npcID = 253395, questID = 92909 } },
             AnyOf = { { SkipForLvl = 15, Race = "Human", AllOf = { { ItemCount = { operator = ">=", count = 5, itemID = 255010 } }, { ItemCount = { operator = ">=", count = 14, itemID = 255007 } } } }, { SkipForLvl = 15, Race = "Dwarf", AllOf = { { ItemCount = { operator = ">=", count = 5, itemID = 255010 } }, { ItemCount = { operator = ">=", count = 14, itemID = 255007 } } } }, { SkipForLvl = 15, Race = "Gnome", AllOf = { { ItemCount = { operator = ">=", count = 5, itemID = 255010 } }, { ItemCount = { operator = ">=", count = 14, itemID = 255007 } } } }, { SkipForLvl = 15, Race = "Skyborne", AllOf = { { ItemCount = { operator = ">=", count = 5, itemID = 255010 } }, { ItemCount = { operator = ">=", count = 14, itemID = 255007 } } } } },
             Zone = 1436,
             _index = 95,
@@ -930,7 +930,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Done = { 92742 },
             Coord = { x = 1179.8, y = -10635.601 },
-            RaidIcon = 253092,
+            RaidIcon = { { npcID = 253092, questID = 92742 } },
             IsQuestOnQuest = 92744,
             IsQuestReadyForTurnIn = 92744,
             IsQuestUncompleted = 92744,
@@ -941,7 +941,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Done = { 92744 },
             Coord = { x = 1179.8, y = -10635.601 },
-            RaidIcon = 253092,
+            RaidIcon = { { npcID = 253092, questID = 92744 } },
             IsQuestOnQuest = 92744,
             IsQuestReadyForTurnIn = 92744,
             IsQuestUncompleted = 92744,
@@ -952,7 +952,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Done = { 92742 },
             Coord = { x = 1179.8, y = -10635.601 },
-            RaidIcon = 253092,
+            RaidIcon = { { npcID = 253092, questID = 92742 } },
             SkipForLvl = 15,
             Zone = 1436,
             _index = 108,
@@ -976,7 +976,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
             Note = { "BUY_SCIMITAR_SOMETHING_BETTER_AUCTION_HOUSE_EQUIP" },
             Coord = { x = 609.63, y = -8787.71 },
             Range = 5,
-            RaidIcon = 1287,
+            RaidIcon = { { npcID = 1287 } },
             Class = "ROGUE",
             EquippedItemStat = { slot = 17, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 8.7, precision = 1, allowMissing = true },
             Money = { operator = ">=", copper = 3815 },
@@ -1195,21 +1195,21 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             PickUp = { 97220 },
             Coord = { x = 1193.1, y = -8328.9 },
-            RaidIcon = 268511,
+            RaidIcon = { { npcID = 268511, questID = 97220 } },
             Zone = 1453,
             _index = 134,
         },
         {
             PickUp = { 95065 },
             Coord = { x = 1269.1, y = -8540.601 },
-            RaidIcon = 267118,
+            RaidIcon = { { npcID = 267118, questID = 95065 } },
             Zone = 1453,
             _index = 135,
         },
         {
             Done = { 95065 },
             Coord = { x = 1269.1, y = -8540.601 },
-            RaidIcon = 267118,
+            RaidIcon = { { npcID = 267118, questID = 95065 } },
             Zone = 1453,
             _index = 136,
         },

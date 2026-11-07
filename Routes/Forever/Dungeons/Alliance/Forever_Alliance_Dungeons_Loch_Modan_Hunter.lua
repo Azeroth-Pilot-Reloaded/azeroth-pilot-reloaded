@@ -837,7 +837,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
             Waypoint = 86614,
             Coord = { x = -3104.9, y = -5210.1 },
             Range = 5.0,
-            RaidIcon = 1684,
+            RaidIcon = { { npcID = 1684 } },
             MinLevel = 13,
             Zone = 1432,
             _index = 106,
@@ -845,7 +845,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Done = { 86614 },
             Coord = { x = -3086.6, y = -5216.8 },
-            RaidIcon = 1684,
+            RaidIcon = { { npcID = 1684, questID = 86614 } },
             MinLevel = 13,
             Zone = 1432,
             _index = 107,
