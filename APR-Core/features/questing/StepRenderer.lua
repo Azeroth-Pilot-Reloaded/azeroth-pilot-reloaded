@@ -355,6 +355,7 @@ function APR:RenderCurrentStep()
             local completedRouteKey = APR.ActiveRoute
             -- Completion is earned on reaching this step, before choosing a
             -- successor. Its prerequisite gate must already see that result.
+            if APR.announcements then APR.announcements:RouteCompleted(completedRouteKey) end
             APRZoneCompleted[APR.PlayerID][currentRouteName] = true
 
             -- Define the route completion finalization as a callback

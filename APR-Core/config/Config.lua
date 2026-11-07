@@ -110,6 +110,11 @@ function APR.settings:InitializeSettings()
             autoRepair = false,
             autoSkipCutScene = true,
             autoFlight = true,
+            announcements = {
+                enabled = true, group = true, solo = true,
+                level = true, quest = true, objective = true, collect = true,
+                flight = true, hearthstone = true, route = true,
+            },
             autoShareQuestWithFriend = false,
             firstAutoShareQuestWithFriend = true,
             autoSkipAllWaypoints = false,
@@ -3039,6 +3044,8 @@ function APR.settings:createBlizzOptions()
         },
     }
 
+    if APR.CreateAnnouncementOptions then optionsTable.args.announcements = APR:CreateAnnouncementOptions() end
+
     -- Register setting to the option table
     if APR.CreateGroupFinderOptions then
         optionsTable.args.groupFinder = APR:CreateGroupFinderOptions()
@@ -3198,6 +3205,7 @@ APR.settings.CreateMiniMapButton =
     APRTrace("APR-Core/config/Config.lua:2211:APR.settings:CreateMiniMapButton#203", APR.settings.CreateMiniMapButton)--[[/APR_DIAG]]
 
 function APR.settings:ToggleAddon()
+    if APR.announcements then APR.announcements.quests = {} end
     if APR.BagUpgrades then APR.BagUpgrades:RefreshSettings() end
     if APR.PawnRewards and APR.PawnRewards.RefreshSettings then APR.PawnRewards:RefreshSettings() end
     if not self.profile.enableAddon and APR.npcInteraction and APR.npcInteraction.CancelRewardRetry then

@@ -107,6 +107,7 @@ APR-Core/data/models/Quest.lua
 
 APR-Core/config/AboutData.lua
 APR-Core/config/Config_GroupFinder.lua
+APR-Core/features/player/Announcements.lua
 APR-Core/config/Config.lua
 APR-Core/config/WorkspaceOptions.lua
 APR-Core/config/Config_Route.lua

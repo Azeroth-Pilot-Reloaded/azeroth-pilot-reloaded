@@ -26,6 +26,16 @@ Comments explain constraints and side effects; they do not repeat accessor names
 
 ## Loading and data flow
 
+Public announcements live in `features/player/Announcements.lua`. The Announcements
+settings category controls the master switch, group chat, solo emotes and each of
+the seven event types; all default to enabled through AceDB. Quest-cache snapshots
+announce only observed completion transitions, with whole-quest completion taking
+priority over its objectives. Flight announcements require confirmed boarding;
+route announcements require automatic progression rather than a manual skip.
+Solo emotes cover levels and route completion. Chat lockdown suppresses sending.
+Announcement strings and option labels are maintained on CurseForge for all eleven
+supported locales; `tools/localization/announcement-translations.json` records the import.
+
 [`APR.toc`](../APR.toc) defines the load order. The folders describe the
 responsibilities, not the order itself: a function may reference a module loaded
 later as long as it is not called until after initialization.

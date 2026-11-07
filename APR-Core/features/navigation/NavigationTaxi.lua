@@ -831,6 +831,7 @@ function taxi:StartMeasurement(slot)
                 data = self:GetCharacterData(snapshot),
                 destination = Position(destinationID),
                 requestedAt = Now(),
+                announcementDestination = self:GetNodeName(destinationID),
             }
             return
         end
@@ -850,6 +851,9 @@ function taxi:PollMeasurement()
         return
     end
     if UnitOnTaxi and UnitOnTaxi("player") then
+        if not measurement.started and measurement.announcementDestination and APR.announcements then
+            APR.announcements:Send("flight", "ANNOUNCE_FLIGHT", nil, measurement.announcementDestination)
+        end
         measurement.started = measurement.started or Now()
         return
     end

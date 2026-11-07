@@ -156,6 +156,7 @@ Only combat-log death events observed in the matching dungeon grant credit. Cred
 | `Boat`                          | Indicates the player should take a boat instead of flying. Requires `UseFlightPath`.                                                                                          | `Boat = true`                                                                              |
 | `Coord`                         | World coordinates used by the arrow (`x`, `y` in WoW units).                                                                                                                  | `Coord = { x = 4298.4, y = -864.1 }`                                                       |
 | `Coords`                        | Multiple coordinate variants for the same step. Typically paired with `Zones`; each entry should include its own `Zone`.                                                      | `Coords = { { Zone = 84, x = 797.7, y = -8624.9 }, { Zone = 85, x = -4436, y = 1590.3 } }` |
+| `MapMarkers`                    | Static search locations displayed together for the active step on the map and minimap. Uses APR world coordinates; does not change the arrow or step progression. See [Static search locations](#static-search-locations-mapmarkers). | `MapMarkers = { { x = 4298.4, y = -864.1 }, { x = 4320.2, y = -890.5 } }` |
 | `EmoteETA`                      | Duration in seconds of the AFK countdown, started once after the matching step emote is performed via the button, chat command or APR. Displaying the step does not start it. | `EmoteETA = 60`                                                                            |
 | `ETA`                           | Estimated AFK timer duration in seconds.                                                                                                                                      | `ETA = 75`                                                                                 |
 | `GossipETA`                     | Starts an AFK timer after gossip confirmation.                                                                                                                                | `GossipETA = 45`                                                                           |
@@ -185,6 +186,56 @@ Only combat-log death events observed in the matching dungeon grant credit. Cred
 | Recorded `Coord` | Prefer existing APR world coordinates. Never place map percentages directly in `Coord`.                                                                    |
 | Map percentages  | `Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2393, 52.54, 78.88)`; inputs range from 0 to 100.                                               |
 | Conversion       | Uses the in-game map API; returns swapped APR world axes rounded to one decimal, or `nil` if unavailable. Verify in game before saving static coordinates. |
+
+### Static search locations (`MapMarkers`)
+
+Use `MapMarkers` when a quest giver, patrol or objective may be found at several
+locations. It is a nonempty list of coordinate tables, not a sequence of waypoints:
+
+```lua
+{
+    PickUp = { 12345 }, -- Illustrative quest ID; replace with the actual quest.
+    Zone = 84,
+    Coord = { x = 4298.4, y = -864.1 }, -- Arrow entry point.
+    MapMarkers = {
+        { x = 4298.4, y = -864.1 },
+        { x = 4320.2, y = -890.5 },
+        { x = 4350.0, y = -920.0, mapID = 84 },
+    },
+}
+```
+
+The coordinates above illustrate the syntax; choose verified locations for the
+actual NPC and map. Both `x` and `y` are APR world coordinates in WoW units, just
+like `Coord`. Never put map percentages directly into `MapMarkers`. To convert a
+location recorded as map percentages, use
+`APR.worldCoordinateConverter:ConvertMapCoordinate(mapID, xPercent, yPercent)`
+with inputs from 0 to 100. Check the result for `nil` and verify it in game before
+copying its `x` and `y` into a static route definition. APR's converter already
+handles the world-axis convention; do not swap its result again.
+
+Each marker may specify `mapID` (lowercase), otherwise it uses the step's `Zone`
+or the route's `mapID`. Optional `instanceID` identifies the world-coordinate
+instance; it falls back to the step's `instanceID`, then the navigation preview's
+map-instance lookup when available. Use the correct map and instance when markers
+span different map contexts.
+
+All locations appear together while this step is active, subject to the map and
+minimap marker settings and a nonzero next-step marker count. World-map markers
+appear only when they project inside the displayed map; the cosmic and world
+overview maps do not show them. Every marker shares the step's filtered number
+and tooltip. Additional locations do not consume the next-step display limit and
+disappear when the active step changes or the corresponding markers are disabled.
+
+`Coord` remains the arrow's entry point. Visiting a marker does not complete the
+step, select another location or impose a visit order: the step's normal action
+(such as accepting `PickUp`) controls completion. For a patrolling NPC, mark known
+search locations and explain the patrol in the step instructions. These are static
+locations: APR does not track the NPC live, draw a patrol line or automatically
+point the arrow at the nearest marker. Use separate `Waypoint` steps when ordered
+travel and arrival-based progression are required. `Coords` remains the existing
+zone-dependent coordinate selection field; use `MapMarkers` for simultaneous
+search locations.
 
 ## Automation and Display
 

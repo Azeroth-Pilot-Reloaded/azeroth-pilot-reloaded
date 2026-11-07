@@ -129,15 +129,23 @@ options.canWalk = function() return true end
 assert(not taxi:FindProbe(start, goal, 5, options), "A faster confirmed route suppresses taxi detours")
 
 taxi:ObserveTaxiMap(nodes)
+local announcements = {}
+APR.announcements = { Send = function(_, kind, key, solo, destination)
+    assert(kind == "flight" and solo == nil)
+    announcements[#announcements + 1] = destination
+end }
 taxi:StartMeasurement(2)
 clock = 11
 taxi:PollMeasurement()
 assert(not taxi.measurement, "A failed boarding request expires before an unrelated later flight")
+assert(#announcements == 0, "Requesting a taxi without boarding stays silent")
 clock = 20
 taxi:StartMeasurement(2)
 clock = 21
 onTaxi = true
 taxi:PollMeasurement()
+taxi:PollMeasurement()
+assert(#announcements == 1 and announcements[1] == "Node 2", "A confirmed flight announces its localized destination once")
 taxi:CloseTaxiMap()
 clock = 51
 onTaxi = false
