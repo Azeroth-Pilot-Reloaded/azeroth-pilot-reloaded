@@ -70,7 +70,7 @@
 
 ### Controller support (WoW Forever)
 
-Enable WoW Forever's native gamepad interface, then assign **APR → Gamepad menu** in WoW's key bindings. Alternatively, open the **Gamepad menu** button at the top of the APR window (or `/apr gamepad`), choose **Key Bindings**, and press your controller button or modifier combination. APR asks before replacing an existing binding. Routes, options, skip, rollback and current-step controls also have individual bindings.
+Enable WoW Forever's native gamepad interface, then assign **APR → Gamepad menu** in WoW's key bindings. Alternatively, open the **Gamepad menu** button at the top of the APR window (or `/apr gamepad`), choose **Key Bindings**, and press your controller button or modifier combination. APR asks before replacing an existing binding. Combinations of ordinary controller buttons, such as RB + D-pad Up, are saved as APR menu shortcuts: hold the buttons together, then release them all to confirm the capture. These shortcuts also open the menu on release, outside combat; the buttons keep their normal game actions. Routes, options, skip, rollback and current-step controls also have individual bindings.
 
 APR windows use Forever's native focus, confirmation, Back and right-stick scrolling. Left/right follows adjacent route buttons. Confirm or secondary click enters a settings category or tab; Back returns to its heading. Route lists remain navigable beyond the visible rows; slider settings use left/right to adjust and up/down to leave. Colours, panel placement and image zoom/pan have controller controls. **Use quest item** activates an available step action through a secure button.
 
