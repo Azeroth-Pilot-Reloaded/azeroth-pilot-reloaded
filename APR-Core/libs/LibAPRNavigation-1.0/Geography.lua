@@ -1,7 +1,7 @@
 -- Project endpoints into world coordinates and identify their access regions.
 -- A shared position alone does not permit walking through a required entrance.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("geography", 15) then return end
+if not Lib:BeginModule("geography", 16) then return end
 local Instance = Lib.Instance
 -- These defaults are read-only, including CheckRequirements' character input.
 -- Reuse them across walking checks and retries of unavailable map ancestry.
@@ -73,6 +73,106 @@ local function WorldRegion(region, source, target)
     return region
 end
 
+-- Only explicitly declared projection points may lie beyond a map's artwork.
+-- Three valid samples retain the client's affine transform without passing
+-- out-of-range coordinates to its map API.
+function Instance:ProjectExtendedMap(mapID, x, y)
+    if not self.env.mapToWorld then return end
+    local world, ox, oy = self.env.mapToWorld(mapID, 0, 0)
+    local worldX, xx, xy = self.env.mapToWorld(mapID, 1, 0)
+    local worldY, yx, yy = self.env.mapToWorld(mapID, 0, 1)
+    if
+        world == nil
+        or world ~= worldX
+        or world ~= worldY
+        or not Finite(ox)
+        or not Finite(oy)
+        or not Finite(xx)
+        or not Finite(xy)
+        or not Finite(yx)
+        or not Finite(yy)
+    then
+        return
+    end
+    return world, ox + x * (xx - ox) + y * (yx - ox), oy + x * (xy - oy) + y * (yy - oy)
+end
+
+function Instance:GetRemappedMapID(mapID, instanceID, x, y)
+    for _, rect in ipairs((self.config.MapRemaps or EMPTY)[mapID] or EMPTY) do
+        if
+            instanceID == rect.instanceID
+            and x >= rect.minX
+            and x <= rect.maxX
+            and y >= rect.minY
+            and y <= rect.maxY
+        then
+            return rect.mapID
+        end
+    end
+    return mapID
+end
+
+local function InPolygon(x, y, vertices)
+    local inside, previous = false, vertices[#vertices]
+    for _, current in ipairs(vertices) do
+        local ax, ay, bx, by = previous.x, previous.y, current.x, current.y
+        local cross = (x - ax) * (by - ay) - (y - ay) * (bx - ax)
+        if
+            math.abs(cross) < 0.000001
+            and x >= math.min(ax, bx)
+            and x <= math.max(ax, bx)
+            and y >= math.min(ay, by)
+            and y <= math.max(ay, by)
+        then
+            return true
+        end
+        if (ay > y) ~= (by > y) and x < (bx - ax) * (y - ay) / (by - ay) + ax then inside = not inside end
+        previous = current
+    end
+    return inside
+end
+
+function Instance:GetLocationAccessKey(position)
+    if position.accessKey then return position.accessKey end
+    local regions = (self.config.LocalRegions or EMPTY)[position.uiMapID]
+    if not regions then return end
+    self.localRegionGeometry = self.localRegionGeometry or {}
+    for _, region in ipairs(regions) do
+        local geometry = self.localRegionGeometry[region]
+        if not geometry and self.env.mapToWorld and (region.center or region.polygon) then
+            geometry = { vertices = {} }
+            for _, point in ipairs(region.polygon or { region.center }) do
+                local world, x, y = self.env.mapToWorld(position.uiMapID, point[1], point[2])
+                if
+                    world == nil
+                    or not Finite(x)
+                    or not Finite(y)
+                    or (geometry.instanceID ~= nil and geometry.instanceID ~= world)
+                then
+                    geometry = nil
+                    break
+                end
+                geometry.instanceID = world
+                geometry.vertices[#geometry.vertices + 1] = { x = x, y = y }
+            end
+            if geometry then self.localRegionGeometry[region] = geometry end
+        end
+        if
+            geometry
+            and self:GetWorldInstanceID(geometry.instanceID) == self:GetWorldInstanceID(position.instanceID)
+        then
+            if region.radius then
+                local center = geometry.vertices[1]
+                if (position.x - center.x) ^ 2 + (position.y - center.y) ^ 2 <= region.radius ^ 2 then
+                    return region.key
+                end
+            elseif #geometry.vertices >= 3 and InPolygon(position.x, position.y, geometry.vertices) then
+                return region.key
+            end
+        end
+    end
+end
+
 function Instance:NormalizeLocation(location, hint)
     if type(location) ~= "table" then return nil end
     local x, y = location.x, location.y
@@ -81,6 +181,8 @@ function Instance:NormalizeLocation(location, hint)
     if location.space == "map" then
         if not self.env.mapToWorld or not mapID or x < 0 or x > 1 or y < 0 or y > 1 then return nil end
         instanceID, x, y = self.env.mapToWorld(mapID, x, y)
+    elseif location.space == "mapProjection" then
+        instanceID, x, y = self:ProjectExtendedMap(mapID, x, y)
     elseif instanceID == nil and mapID then
         -- A recorded world point may omit its instance ID. Resolve its client
         -- or declared interior space without replacing the observed X/Y.
@@ -97,6 +199,7 @@ function Instance:NormalizeLocation(location, hint)
     end
     instanceID = self:GetWorldInstanceID(instanceID)
     if not Finite(instanceID) or not Finite(x) or not Finite(y) then return nil end
+    mapID = self:GetRemappedMapID(mapID, instanceID, x, y)
     local position = {
         instanceID = instanceID,
         uiMapID = mapID,
@@ -117,6 +220,7 @@ function Instance:NormalizeLocation(location, hint)
         isInstance = location.isInstance,
         region = WorldRegion(location.region, location.instanceID, instanceID),
     }
+    position.accessKey = self:GetLocationAccessKey(position)
     position.region = self:GetPositionRegion(position)
     return position
 end
@@ -199,7 +303,7 @@ function Instance:IsSameAccessRegion(from, to)
     if not from or not to or self:GetWorldInstanceID(from.instanceID) ~= self:GetWorldInstanceID(to.instanceID) then
         return false
     end
-    if from.accessKey ~= to.accessKey or from.floor ~= to.floor then return false end
+    if self:GetLocationAccessKey(from) ~= self:GetLocationAccessKey(to) or from.floor ~= to.floor then return false end
     local source, target = self:GetPositionRegion(from), self:GetPositionRegion(to)
     return source ~= nil and source == target
 end

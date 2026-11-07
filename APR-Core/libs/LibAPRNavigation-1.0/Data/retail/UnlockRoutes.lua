@@ -4,9 +4,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
     unlockCoverage = {
         accesses = {
             {
-                id = "additional-stormwind-ruttheran-past",
+                id = "portal-stormwind-ruttheran-past",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "mapArt", negated = false, value = { artID = 67, mapID = 62 } } },
                 uncovered = {
                     {
@@ -16,9 +16,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 },
             },
             {
-                id = "additional-ruttheran-stormwind-past",
+                id = "portal-ruttheran-stormwind-past",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "mapArt", negated = false, value = { artID = 67, mapID = 62 } } },
                 uncovered = {
                     {
@@ -28,9 +28,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 },
             },
             {
-                id = "additional-ruttheran-azuremyst-past",
+                id = "portal-ruttheran-azuremyst-past",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "mapArt", negated = false, value = { artID = 67, mapID = 62 } } },
                 uncovered = {
                     {
@@ -40,9 +40,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 },
             },
             {
-                id = "additional-ruttheran-azuremyst-past-return",
+                id = "portal-ruttheran-azuremyst-past-return",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "mapArt", negated = false, value = { artID = 67, mapID = 62 } } },
                 uncovered = {
                     {
@@ -52,9 +52,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 },
             },
             {
-                id = "additional-dornogal-undermine",
+                id = "portal-dornogal-undermine",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = {
                     { key = "questActive", negated = false, value = 83137 },
                     { key = "quest", negated = false, value = 83137 },
@@ -64,9 +64,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 uncovered = {},
             },
             {
-                id = "additional-dornogal-undermine-return",
+                id = "portal-dornogal-undermine-return",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = {
                     { key = "questActive", negated = false, value = 83137 },
                     { key = "quest", negated = false, value = 83137 },
@@ -76,9 +76,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 uncovered = {},
             },
             {
-                id = "additional-dornogal-azj-kahet",
+                id = "portal-dornogal-azj-kahet",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = {
                     { key = "quest", negated = false, value = 78248 },
                     { key = "quest", negated = false, value = 79573 },
@@ -87,9 +87,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 uncovered = {},
             },
             {
-                id = "additional-dornogal-azj-kahet-return",
+                id = "portal-dornogal-azj-kahet-return",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = {
                     { key = "quest", negated = false, value = 78248 },
                     { key = "quest", negated = false, value = 79573 },
@@ -98,9 +98,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 uncovered = {},
             },
             {
-                id = "additional-dornogal-karesh",
+                id = "portal-dornogal-karesh",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = {
                     { key = "quest", negated = false, value = 84957 },
                     { key = "questActive", negated = false, value = 84957 },
@@ -108,9 +108,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 uncovered = {},
             },
             {
-                id = "additional-karesh-dornogal",
+                id = "portal-karesh-dornogal",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = {
                     { key = "quest", negated = false, value = 84957 },
                     { key = "questActive", negated = false, value = 84957 },
@@ -118,37 +118,37 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 uncovered = {},
             },
             {
-                id = "additional-undermine-gutterville-rocket",
+                id = "portal-undermine-gutterville-rocket",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "quest", negated = false, value = 83151 } },
                 uncovered = {},
             },
             {
-                id = "additional-gutterville-undermine-rocket",
+                id = "portal-gutterville-undermine-rocket",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "quest", negated = false, value = 83151 } },
                 uncovered = {},
             },
             {
-                id = "additional-undermine-kajaro-rocket",
+                id = "portal-undermine-kajaro-rocket",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "quest", negated = false, value = 83933 } },
                 uncovered = {},
             },
             {
-                id = "additional-kajaro-undermine-rocket",
+                id = "portal-kajaro-undermine-rocket",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "quest", negated = false, value = 83933 } },
                 uncovered = {},
             },
             {
-                id = "additional-pet-travel-dalaran-gnomeregan",
+                id = "portal-pet-travel-dalaran-gnomeregan",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = {
                     { key = "quest", negated = false, value = 54185 },
                     { key = "questAccount", negated = false, value = 54185 },
@@ -156,9 +156,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 uncovered = {},
             },
             {
-                id = "additional-pet-travel-dalaran-deadmines",
+                id = "portal-pet-travel-dalaran-deadmines",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = {
                     { key = "quest", negated = false, value = 46291 },
                     { key = "questAccount", negated = false, value = 46291 },
@@ -166,9 +166,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 uncovered = {},
             },
             {
-                id = "additional-pet-travel-dalaran-blackrock-depths",
+                id = "portal-pet-travel-dalaran-blackrock-depths",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = {
                     { key = "quest", negated = false, value = 58457 },
                     { key = "questAccount", negated = false, value = 58457 },
@@ -176,9 +176,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 uncovered = {},
             },
             {
-                id = "additional-pet-travel-boralus-gnomeregan",
+                id = "portal-pet-travel-boralus-gnomeregan",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = {
                     { key = "quest", negated = false, value = 54185 },
                     { key = "questAccount", negated = false, value = 54185 },
@@ -186,9 +186,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 uncovered = {},
             },
             {
-                id = "additional-pet-travel-boralus-deadmines",
+                id = "portal-pet-travel-boralus-deadmines",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = {
                     { key = "quest", negated = false, value = 46291 },
                     { key = "questAccount", negated = false, value = 46291 },
@@ -196,9 +196,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 uncovered = {},
             },
             {
-                id = "additional-pet-travel-dazaralor-gnomeregan",
+                id = "portal-pet-travel-dazaralor-gnomeregan",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = {
                     { key = "quest", negated = false, value = 54185 },
                     { key = "questAccount", negated = false, value = 54185 },
@@ -206,9 +206,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 uncovered = {},
             },
             {
-                id = "additional-pet-travel-dazaralor-deadmines",
+                id = "portal-pet-travel-dazaralor-deadmines",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = {
                     { key = "quest", negated = false, value = 46291 },
                     { key = "questAccount", negated = false, value = 46291 },
@@ -216,9 +216,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 uncovered = {},
             },
             {
-                id = "additional-pet-travel-dazaralor-blackrock-depths",
+                id = "portal-pet-travel-dazaralor-blackrock-depths",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = {
                     { key = "quest", negated = false, value = 58457 },
                     { key = "questAccount", negated = false, value = 58457 },
@@ -226,9 +226,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 uncovered = {},
             },
             {
-                id = "additional-pet-travel-boralus-blackrock-depths",
+                id = "portal-pet-travel-boralus-blackrock-depths",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = {
                     { key = "quest", negated = false, value = 58457 },
                     { key = "questAccount", negated = false, value = 58457 },
@@ -236,128 +236,128 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 uncovered = {},
             },
             {
-                id = "additional-silvermoon-lycaneum",
+                id = "portal-silvermoon-lycaneum",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "quest", negated = false, value = 96233 } },
                 uncovered = {},
             },
             {
-                id = "additional-lycaneum-silvermoon",
+                id = "portal-lycaneum-silvermoon",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "quest", negated = false, value = 96233 } },
                 uncovered = {},
             },
             {
-                id = "additional-dreamway-moonglade",
+                id = "portal-dreamway-moonglade",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "quest", negated = false, value = 40645 } },
                 uncovered = {},
             },
             {
-                id = "additional-dreamway-moonglade-return",
+                id = "portal-dreamway-moonglade-return",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "quest", negated = false, value = 40645 } },
                 uncovered = {},
             },
             {
-                id = "additional-dreamway-feralas",
+                id = "portal-dreamway-feralas",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "quest", negated = false, value = 40645 } },
                 uncovered = {},
             },
             {
-                id = "additional-dreamway-feralas-return",
+                id = "portal-dreamway-feralas-return",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "quest", negated = false, value = 40645 } },
                 uncovered = {},
             },
             {
-                id = "additional-dreamway-grizzly-hills",
+                id = "portal-dreamway-grizzly-hills",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "quest", negated = false, value = 40645 } },
                 uncovered = {},
             },
             {
-                id = "additional-dreamway-grizzly-hills-return",
+                id = "portal-dreamway-grizzly-hills-return",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "quest", negated = false, value = 40645 } },
                 uncovered = {},
             },
             {
-                id = "additional-dreamway-dreamgrove",
+                id = "portal-dreamway-dreamgrove",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "quest", negated = false, value = 40645 } },
                 uncovered = {},
             },
             {
-                id = "additional-dreamway-dreamgrove-return",
+                id = "portal-dreamway-dreamgrove-return",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "quest", negated = false, value = 40645 } },
                 uncovered = {},
             },
             {
-                id = "additional-dreamway-hyjal",
+                id = "portal-dreamway-hyjal",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "quest", negated = false, value = 40645 } },
                 uncovered = {},
             },
             {
-                id = "additional-dreamway-hyjal-return",
+                id = "portal-dreamway-hyjal-return",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "quest", negated = false, value = 40645 } },
                 uncovered = {},
             },
             {
-                id = "additional-dreamway-hinterlands",
+                id = "portal-dreamway-hinterlands",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "quest", negated = false, value = 40645 } },
                 uncovered = {},
             },
             {
-                id = "additional-dreamway-hinterlands-return",
+                id = "portal-dreamway-hinterlands-return",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "quest", negated = false, value = 40645 } },
                 uncovered = {},
             },
             {
-                id = "additional-dreamway-duskwood",
+                id = "portal-dreamway-duskwood",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "quest", negated = false, value = 40645 } },
                 uncovered = {},
             },
             {
-                id = "additional-dreamway-duskwood-return",
+                id = "portal-dreamway-duskwood-return",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "quest", negated = false, value = 40645 } },
                 uncovered = {},
             },
             {
-                id = "additional-dreamgrove-dalaran",
+                id = "portal-dreamgrove-dalaran",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "quest", negated = false, value = 40645 } },
                 uncovered = {},
             },
             {
-                id = "additional-pet-travel-dalaran-stratholme",
+                id = "portal-pet-travel-dalaran-stratholme",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = {
                     { key = "quest", negated = false, value = 56491 },
                     { key = "questAccount", negated = false, value = 56491 },
@@ -365,9 +365,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 uncovered = {},
             },
             {
-                id = "additional-pet-travel-dazaralor-stratholme",
+                id = "portal-pet-travel-dazaralor-stratholme",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = {
                     { key = "quest", negated = false, value = 56491 },
                     { key = "questAccount", negated = false, value = 56491 },
@@ -375,9 +375,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 uncovered = {},
             },
             {
-                id = "additional-pet-travel-boralus-stratholme",
+                id = "portal-pet-travel-boralus-stratholme",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = {
                     { key = "quest", negated = false, value = 56491 },
                     { key = "questAccount", negated = false, value = 56491 },
@@ -385,9 +385,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 uncovered = {},
             },
             {
-                id = "additional-pet-travel-dalaran-wailing-caverns",
+                id = "portal-pet-travel-dalaran-wailing-caverns",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = {
                     { key = "quest", negated = false, value = 45423 },
                     { key = "questAccount", negated = false, value = 45423 },
@@ -395,9 +395,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 uncovered = {},
             },
             {
-                id = "additional-pet-travel-dazaralor-wailing-caverns",
+                id = "portal-pet-travel-dazaralor-wailing-caverns",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = {
                     { key = "quest", negated = false, value = 45423 },
                     { key = "questAccount", negated = false, value = 45423 },
@@ -405,9 +405,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 uncovered = {},
             },
             {
-                id = "additional-pet-travel-boralus-wailing-caverns",
+                id = "portal-pet-travel-boralus-wailing-caverns",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = {
                     { key = "quest", negated = false, value = 45423 },
                     { key = "questAccount", negated = false, value = 45423 },
@@ -415,9 +415,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
                 uncovered = {},
             },
             {
-                id = "additional-azuremyst-darkshore-present",
+                id = "portal-azuremyst-darkshore-present",
                 disabled = false,
-                category = "additional_portals",
+                category = "portals",
                 predicates = { { key = "mapArt", negated = false, value = { artID = 1176, mapID = 62 } } },
                 uncovered = {
                     {
@@ -72416,4 +72416,4 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "unlock_routes", {
             source = "ATTWoWAddon/AllTheThings",
         },
     },
-}, 3)
+}, 5)

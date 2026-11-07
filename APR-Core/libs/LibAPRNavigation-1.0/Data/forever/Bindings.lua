@@ -245,5 +245,9 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "bindings", {
             z = 64.66999816895,
             areaID = 3197,
         },
+        [16724] = { space = "map", uiMapID = 2548, x = 0.6459, y = 0.8418, areaID = 16724 },
+        [16727] = { space = "map", uiMapID = 2548, x = 0.788, y = 0.54, areaID = 16727 },
+        [16743] = { space = "map", uiMapID = 2548, x = 0.58, y = 0.45, areaID = 16743 },
+        [16635] = { space = "map", uiMapID = 2521, x = 0.4282, y = 0.2314, areaID = 16635 },
     },
-}, 32)
+}, 33)

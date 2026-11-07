@@ -6,7 +6,8 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "items", {
             kind = "item",
             bidirectional = false,
             from = { dynamic = "player" },
-            to = { space = "map", uiMapID = 1452, x = 0.5985, y = 0.4976, areaID = 2255 },
+            to = { space = "map", uiMapID = 1452, x = 0.6115, y = 0.3756 },
+            requirements = { skill = { id = 202, min = 260 } },
             actions = { { id = 18984, type = "item" } },
         },
         {
@@ -14,7 +15,8 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "items", {
             kind = "item",
             bidirectional = false,
             from = { dynamic = "player" },
-            to = { space = "map", uiMapID = 1446, x = 0.5151, y = 0.3025, areaID = 976 },
+            to = { space = "map", uiMapID = 1446, x = 0.5227, y = 0.2683 },
+            requirements = { skill = { id = 202, min = 260 } },
             actions = { { id = 18986, type = "item" } },
         },
         {
@@ -22,7 +24,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "items", {
             kind = "item",
             bidirectional = false,
             from = { dynamic = "player" },
-            to = { space = "map", uiMapID = 1439, x = 0.4735, y = 0.7532, areaID = 2562 },
+            to = { space = "map", uiMapID = 1430, x = 0.4724, y = 0.754 },
             actions = { { id = 22631, type = "item" } },
         },
         {
@@ -30,7 +32,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "items", {
             kind = "item",
             bidirectional = false,
             from = { dynamic = "player" },
-            to = { space = "map", uiMapID = 1439, x = 0.4735, y = 0.7532, areaID = 2562 },
+            to = { space = "map", uiMapID = 1430, x = 0.4724, y = 0.754 },
             actions = { { id = 22589, type = "item" } },
         },
         {
@@ -38,7 +40,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "items", {
             kind = "item",
             bidirectional = false,
             from = { dynamic = "player" },
-            to = { space = "map", uiMapID = 1439, x = 0.4735, y = 0.7532, areaID = 2562 },
+            to = { space = "map", uiMapID = 1430, x = 0.4724, y = 0.754 },
             actions = { { id = 22630, type = "item" } },
         },
         {
@@ -46,7 +48,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "items", {
             kind = "item",
             bidirectional = false,
             from = { dynamic = "player" },
-            to = { space = "map", uiMapID = 1439, x = 0.4735, y = 0.7532, areaID = 2562 },
+            to = { space = "map", uiMapID = 1430, x = 0.4724, y = 0.754 },
             actions = { { id = 22632, type = "item" } },
         },
         {
@@ -67,14 +69,14 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "items", {
         },
         {
             id = "item-hearthstone-alternatives",
-            routeAction = "UseHS",
             kind = "item",
             bidirectional = false,
             from = { dynamic = "player" },
             to = { dynamic = "bind" },
             actions = { { id = 6948, type = "item", useSpellID = 8690 } },
             cooldownGroup = "hearthstone",
+            routeAction = "UseHS",
             selection = "random",
         },
     },
-}, 32)
+}, 33)

@@ -14,36 +14,25 @@ C_QuestLog.IsOnQuest = function(id)
     if not unknown then return active[id] == true end
 end
 C_QuestLog.IsQuestFlaggedCompletedOnAccount = function() return false end
-C_QuestLog.GetTitleForQuestID = function(id) return id == 84957 and "Return to the Veiled Market" end
+C_QuestLog.GetTitleForQuestID = function(id) return id == 41001 and "Synthetic gate quest" end
 function GetAchievementInfo(id) return id, "Test achievement", 0, achievement end
-local gateGroups = {
-    [84957] = { "additional-dornogal-karesh", "additional-karesh-dornogal" },
-    [85214] = { "passage-karesh-to-shadowlands", "passage-shadowlands-to-karesh" },
-    [84720] = {
-        "passage-isle-of-dorn-to-world-2127",
-        "passage-world-2127-to-khaz-algar-underground",
-        "passage-khaz-algar-underground-to-world-2127",
-        "zeppelin-world-2127-to-isle-of-dorn",
-    },
-    [83137] = { "additional-dornogal-undermine", "additional-dornogal-undermine-return" },
-    [83151] = { "passage-undermine-to-khaz-algar-underground", "passage-khaz-algar-underground-to-undermine" },
-    [83933] = { "passage-zandalar-to-undermine", "passage-undermine-to-zandalar" },
-}
-local definitions = {}
-for _, definition in ipairs(retail.connections) do
-    definitions[definition.id] = definition
-end
-for questID, ids in pairs(gateGroups) do
-    for _, id in ipairs(ids) do
-        local requirements = assert(definitions[id], id).requirements
-        assert(retail:CheckRequirements(requirements, { level = 90 }) == false, id .. " cannot bypass its unlock")
-        active[questID] = true
-        assert(retail:CheckRequirements(requirements, { level = 90 }) == true, id .. " supports the introduction quest")
-        active[questID], completed[questID] = nil, true
-        assert(retail:CheckRequirements(requirements, { level = 90 }) == true)
-        completed[questID] = nil
-    end
-end
+-- Access rules are contracts of the engine, independent of portal identities.
+local gateQuest = 41002
+local gate = { any = { { quest = gateQuest }, { questActive = gateQuest } } }
+local gatedLevel = { all = { { minLevel = 40 }, gate } }
+assert(retail:CheckRequirements(gate, { level = 90 }) == false)
+active[gateQuest] = true
+assert(retail:CheckRequirements(gate, { level = 90 }) == true)
+assert(retail:CheckRequirements(gatedLevel, { level = 39 }) == false)
+assert(retail:CheckRequirements(gatedLevel, { level = 40 }) == true)
+active[gateQuest], completed[gateQuest] = nil, true
+assert(retail:CheckRequirements(gate, { level = 90 }) == true)
+assert(retail:CheckRequirements(gatedLevel, { level = 40 }) == true)
+completed[gateQuest] = nil
+assert(retail:CheckRequirements(gate, { level = 90 }) == false)
+unknown = true
+assert(retail:CheckRequirements(gate, { level = 90 }) == nil)
+unknown = false
 local function point(world, map) return { space = "world", instanceID = world, uiMapID = map, x = 0, y = 0 } end
 local start, middle, goal = point(0, 84), point(1, 85), point(2, 86)
 local lib = LibStub("LibAPRNavigation-1.0")
@@ -55,7 +44,7 @@ lib:RegisterData("access-test", "transport", {
             from = start,
             to = middle,
             seconds = 5,
-            requirements = { any = { { quest = 84957 }, { questActive = 84957 } } },
+            requirements = { any = { { quest = 41001 }, { questActive = 41001 } } },
         },
         {
             id = "raid-gate",
@@ -101,14 +90,24 @@ lib:RegisterData("access-test", "transport", {
         },
     },
 })
-for _, alias in ipairs({
-    "passage-isle-of-dorn-to-karesh",
-    "portal-karesh-to-isle-of-dorn",
-    "passage-isle-of-dorn-to-undermine",
-    "passage-undermine-to-isle-of-dorn",
-}) do
-    assert(not definitions[alias], "World-coordinate aliases cannot duplicate or bypass native portal gates")
-end
+lib:RegisterData("alias-test", "transport", {
+    connections = {
+        {
+            id = "alternate-door",
+            kind = "portal",
+            from = start,
+            to = goal,
+            requirements = { all = { { questActive = 41003 }, { achievement = 123 } } },
+        },
+    },
+})
+local alias = lib:New({ profile = "alias-test", environment = APR.NavigationData.env })
+assert(#alias:BuildEdges() == 0, "An alternate entrance cannot bypass its access rules")
+active[41003] = true
+assert(#alias:BuildEdges() == 0, "Every access condition is required")
+achievement = true
+assert(#alias:BuildEdges() == 1, "A permitted alternate entrance remains usable")
+active[41003], achievement = nil, false
 local data = lib:New({ profile = "access-test", environment = APR.NavigationData.env })
 APR.NavigationData = data
 dofile("APR-Core/features/navigation/NavigationPlanner.lua")
@@ -142,8 +141,8 @@ assert(
 )
 local text = APR.NavigationAdapter:GetBlockedRouteText(job.blockers)
 assert(
-    text:find("Return to the Veiled Market", 1, true)
-        and text:find("84957", 1, true)
+    text:find("Synthetic gate quest", 1, true)
+        and text:find("41001", 1, true)
         and text:find("Test achievement", 1, true)
         and text:find("\n  or\n", 1, true)
 )
@@ -156,13 +155,13 @@ for _, edge in ipairs(edges) do
     reverse = reverse or edge.id == "access-test:departure:reverse"
 end
 assert(reverse, "A blocked first direction cannot contaminate the usable reverse direction")
-active[84957] = true
+active[41001] = true
 job = plan()
 assert(job.status == "no_path" and #job.blockers == 1 and job.blockers[1].blockedRequirements.achievement == 123)
 achievement = true
 job = plan()
 assert(job.status == "ready" and not job.blockers and #job:GetResult().queue > 0)
-active[84957], unknown, achievement = nil, true, false
+active[41001], unknown, achievement = nil, true, false
 job = plan()
 assert(job.status == "no_path" and job.waitingData and #job.blockers == 2)
 assert(
