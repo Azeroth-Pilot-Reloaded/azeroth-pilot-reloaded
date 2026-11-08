@@ -1,5 +1,6 @@
 -- Arrow text shares guide content and the existing arrow typography/skin scope.
 local env = dofile("tests/lua/route_ui_test_env.lua")
+UIParent:SetSize(1920, 1080)
 dofile("tests/lua/localization_test_env.lua")
 local originalLibStub = LibStub
 function LibStub(name, ...)

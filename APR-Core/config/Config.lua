@@ -181,8 +181,8 @@ function APR.settings:InitializeSettings()
             -- arrowTextScale is initialized from arrowScale by Arrow to preserve existing text sizes.
             arrowStyle = "classic",
             arrowFPS = 2,
-            arrowleft = _G.GetScreenWidth() / 2.05,
-            arrowtop = -(_G.GetScreenHeight() / 1.5),
+            arrowleft = UIParent:GetWidth() / 2.05,
+            arrowtop = -(UIParent:GetHeight() / 1.5),
             arrowTextAppearance = APR:CreateTextAppearanceDefaults(true, {
                 warningColor = APR.Color.yellow,
             }),
@@ -1519,8 +1519,8 @@ function APR.settings:createBlizzOptions()
                                         self.profile.arrowScale = 1
                                         self.profile.arrowTextScale = 1
                                         self.profile.arrowFPS = 2
-                                        self.profile.arrowleft = _G.GetScreenWidth() / 2.05
-                                        self.profile.arrowtop = -(_G.GetScreenHeight() / 1.5)
+                                        self.profile.arrowleft = UIParent:GetWidth() / 2.05
+                                        self.profile.arrowtop = -(UIParent:GetHeight() / 1.5)
                                         APR.Arrow:ApplySize()
                                         APR.ArrowFrameM:ClearAllPoints()
                                         APR.ArrowFrameM:SetPoint(

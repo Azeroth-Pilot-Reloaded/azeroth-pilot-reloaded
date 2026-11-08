@@ -1,5 +1,6 @@
 -- The optional arrow caption preserves existing profiles and updates without a reload.
 local env = dofile("tests/lua/route_ui_test_env.lua")
+UIParent:SetSize(1600, 900)
 local locale = dofile("tests/lua/localization_test_env.lua")
 locale.UI_ARROW_ACTION_TEXT = "Localized arrow action label"
 locale.UI_ARROW_ACTION_TEXT_DESC = "Localized arrow action description"
@@ -29,6 +30,7 @@ APR.title, APR.version = "APR", "test"
 APR.routeconfig = { InitRouteConfig = function() return {} end }
 APR.settings.CreateBlizzardLauncher = function() end
 APR.settings:InitializeSettings()
+assert(defaults.profile.arrowleft == 1600 / 2.05 and defaults.profile.arrowtop == -600)
 assert(defaults.profile.arrowActionText == false, "Action captions must default off")
 APR.settings:createBlizzOptions()
 local profile = APR.settings.profile
@@ -65,6 +67,7 @@ assert(
 profile.arrowActionText, profile.arrowScale, profile.arrowTextScale = true, 2, 1.5
 APR.ArrowFrameM = env.widget()
 options.arrowReset.func()
+assert(profile.arrowleft == 1600 / 2.05 and profile.arrowtop == -600)
 assert(not profile.arrowActionText and profile.arrowScale == 1 and profile.arrowTextScale == 1 and sizes == 1)
 assert(
     table.concat(refreshes, ",") == "step,text,step,text,step,text",

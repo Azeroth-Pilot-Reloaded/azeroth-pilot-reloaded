@@ -52,16 +52,7 @@ end--[[APR_DIAG]]
 DistanceBetween = APRTrace("APR-Core/features/navigation/Arrow.lua:48:DistanceBetween#2", DistanceBetween)--[[/APR_DIAG]]
 
 local function SaveArrowPosition()
-    APR.settings.profile.arrowleft = APR.ArrowFrameM:GetLeft()
-    APR.settings.profile.arrowtop = APR.ArrowFrameM:GetTop() - GetScreenHeight()
-    APR.ArrowFrameM:ClearAllPoints()
-    APR.ArrowFrameM:SetPoint(
-        "TOPLEFT",
-        UIParent,
-        "TOPLEFT",
-        APR.settings.profile.arrowleft,
-        APR.settings.profile.arrowtop
-    )
+    APR.Arrow:SavePosition(APR.ArrowFrameM)
 end--[[APR_DIAG]]
 SaveArrowPosition = APRTrace("APR-Core/features/navigation/Arrow.lua:53:SaveArrowPosition#3", SaveArrowPosition)--[[/APR_DIAG]]
 
@@ -217,23 +208,89 @@ APR.ArrowFrame.Button:Hide()
 --------------------------------- Arrow Function --------------------------------------
 ---------------------------------------------------------------------------------------
 
-function APR.Arrow:Init()
-    -- Restore the profile's independent sizes and its saved screen anchor.
-    APR.ArrowFrameM:ClearAllPoints()
-    APR.ArrowFrameM:SetPoint(
-        "TOPLEFT",
-        UIParent,
-        "TOPLEFT",
-        APR.settings.profile.arrowleft,
-        APR.settings.profile.arrowtop
-    )
-    self:ApplyStyle()
+local function IsFinite(value)
+    return type(value) == "number" and value == value and value > -math.huge and value < math.huge
 end--[[APR_DIAG]]
-APR.Arrow.Init = APRTrace("APR-Core/features/navigation/Arrow.lua:190:APR.Arrow:Init#12", APR.Arrow.Init)--[[/APR_DIAG]]
+IsFinite = APRTrace("APR-Core/features/navigation/Arrow.lua:202:IsFinite#12", IsFinite)--[[/APR_DIAG]]
+
+function APR.Arrow:ClampPosition(left, top, width, height)
+    local screenWidth, screenHeight = UIParent:GetWidth(), UIParent:GetHeight()
+    -- Geometry can be unavailable while the client is changing displays. Retry on the next event.
+    if not IsFinite(screenWidth) or not IsFinite(screenHeight) or screenWidth <= 0 or screenHeight <= 0 then
+        return nil
+    end
+    if not IsFinite(left) then left = screenWidth / 2.05 end
+    if not IsFinite(top) then top = -screenHeight / 1.5 end
+    width, height = width or APR.ArrowFrame:GetWidth(), height or APR.ArrowFrame:GetHeight()
+    return math.max(0, math.min(left, math.max(0, screenWidth - width))),
+        math.min(0, math.max(top, math.min(0, height - screenHeight)))
+end--[[APR_DIAG]]
+APR.Arrow.ClampPosition = APRTrace("APR-Core/features/navigation/Arrow.lua:206:APR.Arrow:ClampPosition#13", APR.Arrow.ClampPosition)--[[/APR_DIAG]]
+
+function APR.Arrow:GetFramePosition(frame)
+    local left, top = frame:GetLeft(), frame:GetTop()
+    if not IsFinite(left) or not IsFinite(top) then return nil end
+    local scale = frame:GetEffectiveScale() / UIParent:GetEffectiveScale()
+    return left * scale, top * scale - UIParent:GetHeight()
+end--[[APR_DIAG]]
+APR.Arrow.GetFramePosition = APRTrace("APR-Core/features/navigation/Arrow.lua:219:APR.Arrow:GetFramePosition#14", APR.Arrow.GetFramePosition)--[[/APR_DIAG]]
+
+function APR.Arrow:RestorePosition()
+    local profile = APR.settings.profile
+    local left, top = self:ClampPosition(profile.arrowleft, profile.arrowtop)
+    if left == nil then return end
+    profile.arrowleft, profile.arrowtop = left, top
+    APR.ArrowFrameM:ClearAllPoints()
+    APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", left, top)
+end--[[APR_DIAG]]
+APR.Arrow.RestorePosition = APRTrace("APR-Core/features/navigation/Arrow.lua:226:APR.Arrow:RestorePosition#15", APR.Arrow.RestorePosition)--[[/APR_DIAG]]
+
+function APR.Arrow:SavePosition(frame, profile)
+    profile = profile or APR.settings.profile
+    local left, top = self:GetFramePosition(frame)
+    if left == nil then return end
+    left, top = self:ClampPosition(left, top)
+    if left == nil then return end
+    profile.arrowleft, profile.arrowtop = left, top
+    self:RestorePosition()
+end--[[APR_DIAG]]
+APR.Arrow.SavePosition = APRTrace("APR-Core/features/navigation/Arrow.lua:235:APR.Arrow:SavePosition#16", APR.Arrow.SavePosition)--[[/APR_DIAG]]
+
+function APR.Arrow:PlacePreview(preview, useCurrentPosition)
+    local profile = APR.LayoutEditor.profile
+    local left, top = profile.arrowleft, profile.arrowtop
+    if useCurrentPosition then left, top = self:GetFramePosition(preview) end
+    local scale = preview:GetEffectiveScale() / UIParent:GetEffectiveScale()
+    left, top = self:ClampPosition(left, top,
+        math.max(preview:GetWidth() * scale, APR.ArrowFrame:GetWidth()),
+        math.max(preview:GetHeight() * scale, APR.ArrowFrame:GetHeight()))
+    if left == nil then return end
+    preview:ClearAllPoints()
+    preview:SetPoint("TOPLEFT", UIParent, "TOPLEFT", left / scale, top / scale)
+end--[[APR_DIAG]]
+APR.Arrow.PlacePreview = APRTrace("APR-Core/features/navigation/Arrow.lua:243:APR.Arrow:PlacePreview#17", APR.Arrow.PlacePreview)--[[/APR_DIAG]]
+
+function APR.Arrow:Init()
+    -- Size first: bounds belong to the artwork, not the one-pixel drag anchor.
+    self:ApplyStyle()
+    APR.ArrowFrameM:RegisterEvent("UI_SCALE_CHANGED")
+    APR.ArrowFrameM:RegisterEvent("DISPLAY_SIZE_CHANGED")
+    APR.ArrowFrameM:RegisterEvent("PLAYER_ENTERING_WORLD")
+    APR.ArrowFrameM:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Arrow.lua:262:callback#19", --[[/APR_DIAG]]function()
+        self:RestorePosition()
+        local editor = APR.LayoutEditor
+        if editor and editor.active then
+            for _, preview in ipairs(editor.previews) do
+                if preview.definition.arrow then self:PlacePreview(preview, true) end
+            end
+        end
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+end--[[APR_DIAG]]
+APR.Arrow.Init = APRTrace("APR-Core/features/navigation/Arrow.lua:256:APR.Arrow:Init#18", APR.Arrow.Init)--[[/APR_DIAG]]
 
 function APR.Arrow:ApplyStyle()
     -- Both atlases share the same normalized 9 x 12 cells. Only the artwork changes;
-    -- switching style cannot update navigation, advance a waypoint or change the saved anchor.
+    -- Switching style cannot update navigation or advance a waypoint; larger art may need its anchor clamped.
     APR.ArrowFrame.arrow:SetTexture(ARROW_TEXTURES[APR.settings.profile.arrowStyle] or ARROW_TEXTURES.classic)
     self:ApplySize()
 end--[[APR_DIAG]]
@@ -255,6 +312,7 @@ function APR.Arrow:ApplySize()
     APR.ArrowFrame:SetScale(1)
     APR.ArrowFrame:SetSize(CELL_WIDTH * scale, CELL_HEIGHT * scale)
     APR.ArrowFrame.textFrame:SetScale(self:GetTextScale())
+    self:RestorePosition()
 end--[[APR_DIAG]]
 APR.Arrow.ApplySize = APRTrace("APR-Core/features/navigation/Arrow.lua:213:APR.Arrow:ApplySize#15", APR.Arrow.ApplySize)--[[/APR_DIAG]]
 

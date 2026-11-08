@@ -161,12 +161,7 @@ function Editor:Save()
             preview:StopMovingOrSizing()
             local definition, target = preview.definition, preview.target
             if definition.arrow then
-                self.profile.arrowleft = preview:GetLeft() * preview:GetScale()
-                self.profile.arrowtop = preview:GetTop() * preview:GetScale() - UIParent:GetHeight()
-                if target then
-                    target:ClearAllPoints()
-                    target:SetPoint("TOPLEFT", UIParent, "TOPLEFT", self.profile.arrowleft, self.profile.arrowtop)
-                end
+                APR.Arrow:SavePosition(preview, self.profile)
             elseif definition.linked and self.profile[definition.linked] then
                 if preview == self.previews[1] and APR.QuestTracker then
                     APR.QuestTracker:SavePreviewPosition(preview)
@@ -662,7 +657,9 @@ function Editor:Show()
             height and height > 1 and height or definition.height
         )
         preview:ClearAllPoints()
-        if target and target:GetLeft() and target:GetTop() then
+        if definition.arrow and APR.Arrow then
+            APR.Arrow:PlacePreview(preview)
+        elseif target and target:GetLeft() and target:GetTop() then
             -- A stationary screen anchor keeps live quest updates from shifting the draft.
             preview:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", target:GetLeft(), target:GetTop())
         elseif self.profile[definition.key] and self.profile[definition.key].point then

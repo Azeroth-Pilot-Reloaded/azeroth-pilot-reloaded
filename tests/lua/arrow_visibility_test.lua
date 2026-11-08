@@ -29,6 +29,10 @@ function methods:GetEffectiveScale()
     local parent = rawget(self, "parent")
     return self.scale * (parent and parent:GetEffectiveScale() or 1)
 end
+function methods:GetWidth() return self.width end
+function methods:GetHeight() return self.height end
+UIParent = widget()
+UIParent:SetSize(1920, 1080)
 function methods:GetStringWidth() return 20 end
 function methods:GetStringHeight() return 12 end
 function methods:SetTexture(value) self.texture = value end
