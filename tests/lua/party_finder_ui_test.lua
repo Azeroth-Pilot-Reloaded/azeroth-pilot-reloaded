@@ -34,17 +34,6 @@ end
 function env.methods:GetBottom() return 700 end
 function env.methods:GetTop() return 730 end
 function env.methods:IsMouseOver() return self.mouseOver == true end
-function env.methods:CreateAnimationGroup()
-    local animation = { playing = false }
-    function animation:CreateAnimation()
-        return { SetDegrees = function() end, SetDuration = function() end }
-    end
-    function animation:SetLooping() end
-    function animation:Play() self.playing = true end
-    function animation:Stop() self.playing = false end
-    function animation:IsPlaying() return self.playing end
-    return animation
-end
 function GetTime() return 100 end
 local timers = {}
 C_Timer = {
@@ -446,15 +435,41 @@ CurrentStepFrameHeader.Text = headerText
 headerButton.secure, headerText.secure = true, true
 APR.currentStep:RefreshPartyFinderButton(3)
 assert(headerButton:IsShown() and headerButton.badge:GetText() == "3")
+assert(not headerButton.autoGlow:IsShown() and not headerButton.autoPulse:IsPlaying())
+settings.autoScan = true
+APR.currentStep:RefreshPartyFinderButton(3)
+assert(
+    headerButton.autoGlow:IsShown() and headerButton.autoPulse:IsPlaying(),
+    "Automatic mode pulses even between searches"
+)
+local pulseStarts = headerButton.autoPulse.starts
+APR.currentStep:RefreshPartyFinderButton(4)
+assert(headerButton.autoPulse.starts == pulseStarts, "Result updates do not interrupt the pulse")
+headerButton.scripts.OnHide(headerButton)
+assert(
+    not headerButton.autoGlow:IsShown() and not headerButton.autoPulse:IsPlaying(),
+    "Hiding the header stops its pulse"
+)
+headerButton.scripts.OnShow(headerButton)
+assert(headerButton.autoPulse:IsPlaying(), "Showing the header restores the automatic indicator")
+settings.autoScan = false
+APR.currentStep:RefreshPartyFinderButton(3)
+assert(
+    not headerButton.autoGlow:IsShown() and not headerButton.autoPulse:IsPlaying(),
+    "Disabling automatic mode removes its indicator"
+)
 headerButton.scripts.OnClick(headerButton)
 assert(shows == 1 and #calls == invitesBefore)
 settings.showBadge = false
 APR.currentStep:RefreshPartyFinderButton(3)
 assert(not headerButton.badge:IsShown())
+settings.autoScan = true
+APR.currentStep:RefreshPartyFinderButton(3)
 settings.showButton = false
 env.setCombat(true)
 APR.currentStep:RefreshPartyFinderButton(0)
 assert(headerButton:IsShown() and APR.currentStep.partyFinderButtonDirty)
+assert(not headerButton.autoPulse:IsPlaying(), "Combat defers layout, not removal of a disabled indicator")
 local combatRegistrations = headerButton.eventRegistrations
 for _ = 1, 100 do
     APR.currentStep:RefreshPartyFinderButton(0)
@@ -521,6 +536,26 @@ dofile("APR-Core/core/Commands.lua")
 APR.command:SlashCmd(" group ")
 assert(shows == 2 and #calls == invitesBefore, "The command only opens discovery")
 panel.Show = originalShow
+
+-- Reopening observes discovery; only idle manual mode may start an initial search.
+local reopenScans = scanCount
+settings.autoScan = true
+panel:Show()
+assert(scanCount == reopenScans, "Opening automatic mode cannot start a new scan")
+for _, automatic in ipairs({ true, false }) do
+    settings.autoScan = automatic
+    for _, phase in ipairs({ "sweep", "query", "searchWanted" }) do
+        local progress = phase == "searchWanted" and true or { sent = 42, total = 200 }
+        APR.partyFinder[phase] = progress
+        panel.frame:Hide()
+        panel:Show()
+        assert(scanCount == reopenScans and APR.partyFinder[phase] == progress,
+            "Reopening preserves an active scan, its progress and pending discovery")
+        APR.partyFinder[phase] = nil
+    end
+end
+panel:Show()
+assert(scanCount == reopenScans + 1, "Idle manual mode still starts discovery when first opened")
 
 -- Old workspace links open the standalone window without creating a hidden workspace shell.
 local creates, originalCreate = 0, panel.Create
@@ -598,3 +633,25 @@ assert(panel.stepRange.edit:GetText() == "7", "Changes from options also reach t
 print(
     "Finder quick compatibility: step slider/input bounds, disabled state, optional levels and shared war-mode setting passed"
 )
+
+CANCEL, SEARCH = "Cancel search", "Search"
+APR.partyFinder.sweep = { sent = 24, total = 73 }
+function APR.partyFinder:StopSearch()
+    self.sweep, self.query, self.searchWanted = nil, nil, nil
+    call("stop")
+end
+status = "searching"
+panel:Refresh()
+assert(panel.refresh:IsEnabled() and panel.refresh:GetText() == CANCEL)
+assert(panel.count:GetText():find("24 / 73", 1, true))
+panel.refresh.scripts.OnClick()
+assert(not APR.partyFinder.sweep and calls[#calls].kind == "stop")
+print("Roster UI: progressive count and enabled Stop action during a sweep passed")
+
+for _, phase in ipairs({ "query", "searchWanted" }) do
+    APR.partyFinder[phase] = phase == "query" and {} or true
+    panel:Refresh()
+    assert(panel.refresh:IsEnabled() and panel.refresh:GetText() == CANCEL)
+    panel.refresh.scripts.OnClick()
+    assert(not APR.partyFinder.query and not APR.partyFinder.searchWanted)
+end

@@ -214,7 +214,8 @@ function APR.versionCheck:ScheduleBroadcast()
     -- Coalesce roster bursts and let the channel settle after login/reload.
     if self.broadcastTimer or self.broadcastRetryTimer then return end
     self.broadcastTimer = C_Timer.NewTimer(
-        2, --[[APR_DIAG]]
+        2,
+        --[[APR_DIAG]]
         APRTrace("APR-Core/core/VersionCheck.lua:169:callback#11", --[[/APR_DIAG]] function()
             self.broadcastTimer = nil
             self:BroadcastVersion()
@@ -222,7 +223,8 @@ function APR.versionCheck:ScheduleBroadcast()
             -- One bounded retry covers peers still loading or a throttled first send.
             -- No ticker, OnUpdate or polling remains after this exchange.
             self.broadcastRetryTimer = C_Timer.NewTimer(
-                BROADCAST_RETRY_DELAY, --[[APR_DIAG]]
+                BROADCAST_RETRY_DELAY,
+                --[[APR_DIAG]]
                 APRTrace("APR-Core/core/VersionCheck.lua:175:callback#12", --[[/APR_DIAG]] function()
                     self.broadcastRetryTimer = nil
                     self:BroadcastVersion()
@@ -268,7 +270,15 @@ APR.versionCheck.StopSharedChannel = APRTrace(
 
 function APR.versionCheck:SendSharedMessage(kind)
     local transport = APR.CommunicationChannel
-    if not SharedEnabled() or not self.sharedStarted or not transport or not transport:IsReady() then return false end
+    if
+        not SharedEnabled()
+        or not self.sharedStarted
+        or not transport
+        or not transport:IsReady()
+        or transport.addonTransport == "blocked"
+    then
+        return false
+    end
     local channelID
     if transport.GetSendChannelID then
         channelID = transport:GetSendChannelID()
@@ -277,6 +287,7 @@ function APR.versionCheck:SendSharedMessage(kind)
     end
     if type(channelID) ~= "number" or channelID <= 0 then return false end
     self.sharedChannelID = channelID
+    if transport.RecordSend then transport:RecordSend(channelID, nil, nil) end
     local ok, result = --[[APR_DIAG]]
         APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](
             C_ChatInfo.SendAddonMessage,
@@ -285,6 +296,7 @@ function APR.versionCheck:SendSharedMessage(kind)
             "CHANNEL",
             channelID
         )
+    if transport.RecordSend then transport:RecordSend(channelID, ok, result) end
     local codes = Enum and Enum.SendAddonMessageResult
     if
         not ok
@@ -330,7 +342,8 @@ function APR.versionCheck:RefreshSharedChannel()
     if not self.sharedChannelID then return end
     -- This one retry also covers peers whose reply was recently rate-limited.
     self.sharedQueryTimer = C_Timer.NewTimer(
-        SHARED_QUERY_RETRY_DELAY, --[[APR_DIAG]]
+        SHARED_QUERY_RETRY_DELAY,
+        --[[APR_DIAG]]
         APRTrace("APR-Core/core/VersionCheck.lua:237:callback#18", --[[/APR_DIAG]] function()
             self.sharedQueryTimer = nil
             self:SendSharedMessage("Q")
@@ -350,7 +363,8 @@ function APR.versionCheck:StartSharedChannel()
     local token = {}
     self.sharedChannelToken = token
     transport:Acquire(
-        "versionCheck", --[[APR_DIAG]]
+        "versionCheck",
+        --[[APR_DIAG]]
         APRTrace("APR-Core/core/VersionCheck.lua:250:callback#20", --[[/APR_DIAG]] function()
             if self.sharedChannelToken == token then self:RefreshSharedChannel() end
         end--[[APR_DIAG]]) --[[/APR_DIAG]]
@@ -387,7 +401,7 @@ function APR.versionCheck:HandleSharedMessage(prefix, message, channel, sender, 
         or type(localID) ~= "number"
         or not Public(name)
         or type(name) ~= "string"
-        or #name ~= #SHARED_CHANNEL
+        or #name ~= #(APR.CommunicationChannel and APR.CommunicationChannel.name or SHARED_CHANNEL)
     then
         return
     end
@@ -408,10 +422,11 @@ function APR.versionCheck:HandleSharedMessage(prefix, message, channel, sender, 
         not Public(channelID)
         or type(channelID) ~= "number"
         or localID ~= channelID
-        or name:lower() ~= SHARED_CHANNEL:lower()
+        or name:lower() ~= (transport.name or SHARED_CHANNEL):lower()
     then
         return
     end
+    if transport.ObserveReceive then transport:ObserveReceive(localID, name) end
     -- One constant-sized budget covers every sender. Reject excess traffic
     -- before version parsing, realm normalization or any reply/cache work.
     local second = math.floor(GetTime())
@@ -448,7 +463,8 @@ function APR.versionCheck:HandleSharedMessage(prefix, message, channel, sender, 
     if kind ~= "Q" or self.sharedResponseTimer then return end
     if self.sharedLastResponse and GetTime() - self.sharedLastResponse < SHARED_RESPONSE_THROTTLE then return end
     self.sharedResponseTimer = C_Timer.NewTimer(
-        math.random(5, 15) / 10, --[[APR_DIAG]]
+        math.random(5, 15) / 10,
+        --[[APR_DIAG]]
         APRTrace("APR-Core/core/VersionCheck.lua:304:callback#22", --[[/APR_DIAG]] function()
             self.sharedResponseTimer = nil
             self.sharedLastResponse = GetTime()

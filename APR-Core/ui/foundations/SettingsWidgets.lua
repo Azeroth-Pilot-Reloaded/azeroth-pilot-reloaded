@@ -9,6 +9,42 @@ local styled = setmetatable({}, { __mode = "k" })
 local rebuilding = 0
 local styledFonts = setmetatable({}, { __mode = "k" })
 
+-- Keep this correction in APR's private pool. AceGUI's saved pixel offset can
+-- outlive the content height, and its two-pixel tolerance excludes equality.
+local function InstallSettingsScroll(widget)
+    if widget.aprSettingsScroll then return end
+    widget.aprSettingsScroll = true
+    local setScroll = widget.SetScroll
+    function widget:SetScroll(value)
+        local range = self.content:GetHeight() - self.scrollframe:GetHeight()
+        setScroll(self, range > 2 and math.max(0, math.min(1000, value or 0)) or 0)
+    end--[[APR_DIAG]]; widget.SetScroll = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:18:widget:SetScroll#70", widget.SetScroll)--[[/APR_DIAG]]
+    function widget:FixScroll()
+        if self.updateLock then return end
+        self.updateLock = true
+        local status = self.status or self.localstatus
+        local range = self.content:GetHeight() - self.scrollframe:GetHeight()
+        local scrolling = range > 2
+        local changed = scrolling ~= (self.scrollBarShown == true)
+        self.scrollBarShown = scrolling or nil
+        self.scrollbar:SetShown(scrolling)
+        if changed then
+            self.scrollframe:SetPoint("BOTTOMRIGHT", scrolling and -20 or 0, 0)
+            if self.content.original_width then
+                self.content.width = self.content.original_width - (scrolling and 20 or 0)
+            end
+            self:DoLayout()
+        end
+        -- Relayout may wrap text differently after reserving scrollbar width.
+        range = self.content:GetHeight() - self.scrollframe:GetHeight()
+        local offset = math.max(0, math.min(math.max(0, range), status.offset or 0))
+        local value = scrolling and range > 2 and offset / range * 1000 or 0
+        self.scrollbar:SetValue(value)
+        self:SetScroll(value)
+        self.updateLock = nil
+    end--[[APR_DIAG]]; widget.FixScroll = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:22:widget:FixScroll#71", widget.FixScroll)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; InstallSettingsScroll = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:14:InstallSettingsScroll#69", InstallSettingsScroll)--[[/APR_DIAG]]
+
 local function StyleFont(region, role)
     local font, size, flags, r, g, b, a
     if region.GetFont then
@@ -640,6 +676,7 @@ function APR:EnableWorkspaceWidgets()
             self:RegisterWidgetType(privateType, constructor, self:GetWidgetVersion(kind))
             local widget = create(self, privateType)
             owned[widget] = privateType
+            if kind == "ScrollFrame" then InstallSettingsScroll(widget) end
             return widget
         end--[[APR_DIAG]])--[[/APR_DIAG]]
     gui.Release = --[[APR_DIAG]]

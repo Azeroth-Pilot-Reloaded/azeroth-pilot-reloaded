@@ -3,7 +3,7 @@ local APRTrace = APRInstrumentation and APRInstrumentation.Wrap or function(_, f
 local APRYield = APRInstrumentation and APRInstrumentation.Yield or coroutine.yield
 local APRResume = APRInstrumentation and APRInstrumentation.Resume or coroutine.resume
 local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
--- Shared-channel population and bounded admission, with no roster requests.
+-- Shared-channel population, roster snapshots and bounded private fallback.
 local Finder = APR.partyFinder
 local P = APR.PartyFinderProtocol
 local MODULO = 4294967296
@@ -18,60 +18,84 @@ local function PositiveInteger(value)
 end--[[APR_DIAG]]
 PositiveInteger = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:15:PositiveInteger#2", PositiveInteger)--[[/APR_DIAG]]
 
+function Finder:GetQueryTransport(mode)
+    if mode == "world" then return APR.CommunicationChannel end
+    local zone = self.zoneChannel
+    return zone and zone:IsReady() and zone or self:GetSearchTransport()
+end--[[APR_DIAG]]
+Finder.GetQueryTransport =
+    APRTrace("APR-Core/features/group/PartyFinderWorld.lua:19:Finder:GetQueryTransport#3", Finder.GetQueryTransport)--[[/APR_DIAG]]
+
+function Finder:GetRosterTransport()
+    return self.rosterTransport or self:GetSearchTransport()
+end--[[APR_DIAG]]
+Finder.GetRosterTransport =
+    APRTrace("APR-Core/features/group/PartyFinderWorld.lua:25:Finder:GetRosterTransport#4", Finder.GetRosterTransport)--[[/APR_DIAG]]
+
 function Finder:RefreshWorldPopulation()
-    self.worldPopulation, self.worldDisplayIndex = nil, nil
-    if
-        not self.worldChannelID
-        or not self.worldChannelName
-        or type(GetNumDisplayChannels) ~= "function"
-        or type(GetChannelDisplayInfo) ~= "function"
-    then
-        return
-    end
+    self.worldPopulation, self.worldDisplayIndex, self.rosterPopulation, self.rosterDisplayIndex = nil, nil, nil, nil
+    local global, roster = APR.CommunicationChannel, self:GetRosterTransport()
+    self.rosterChannelID, self.rosterChannelName = roster and roster:GetChannelID(), roster and roster.name
+    if type(GetNumDisplayChannels) ~= "function" or type(GetChannelDisplayInfo) ~= "function" then return end
     local ok, count = --[[APR_DIAG]]
         APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetNumDisplayChannels)
     if not ok or not PositiveInteger(count) then return end
-    -- Blizzard's Retail and Forever channel lists read this cached fifth return.
-    -- The display index is not the channel number; never request/select a roster.
     for index = 1, math.min(128, count) do
-        local valid, name, header, _, number, population, active = --[[APR_DIAG]]
+        local valid, name, header, _, number, population = --[[APR_DIAG]]
             APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetChannelDisplayInfo, index)
         if
             valid
             and Public(name)
-            and Public(header)
-            and Public(number)
-            and Public(active)
             and type(name) == "string"
+            and Public(header)
             and not header
-            and active == true
-            and number == self.worldChannelID
-            and name:lower() == self.worldChannelName:lower()
+            and PositiveInteger(number)
         then
-            self.worldDisplayIndex = index
-            if PositiveInteger(population) then self.worldPopulation = population end
-            return self.worldPopulation
+            if global and global.name and number == self.worldChannelID and name:lower() == global.name:lower() then
+                self.worldDisplayIndex = index
+                if PositiveInteger(population) then self.worldPopulation = population end
+            end
+            if roster and roster.name and number == self.rosterChannelID and name:lower() == roster.name:lower() then
+                self.rosterDisplayIndex = index
+                if PositiveInteger(population) then
+                    self.rosterPopulation = population
+                elseif
+                    self.rosterEventID == number
+                    and self.rosterEventIndex == index
+                    and self.rosterEventAt
+                    and GetTime() - self.rosterEventAt < 30
+                then
+                    self.rosterPopulation = self.rosterEventPopulation
+                end
+                if roster == global and not self.worldPopulation then self.worldPopulation = self.rosterPopulation end
+            end
         end
     end
+    return self.worldPopulation
 end--[[APR_DIAG]]
 Finder.RefreshWorldPopulation = APRTrace(
-    "APR-Core/features/group/PartyFinderWorld.lua:20:Finder:RefreshWorldPopulation#3",
+    "APR-Core/features/group/PartyFinderWorld.lua:29:Finder:RefreshWorldPopulation#5",
     Finder.RefreshWorldPopulation
 )--[[/APR_DIAG]]
 
 function Finder:QueueWorldPopulationRefresh()
-    if self.worldCountTimer or not self.worldChannelID then return end
+    if self.worldCountTimer or not (self.worldChannelID or self.channelID) then return end
     self:SetTimer(
         "worldCountTimer",
-        0.25, --[[APR_DIAG]]
-        APRTrace(
-            "APR-Core/features/group/PartyFinderWorld.lua:42:callback#5", --[[/APR_DIAG]]
-            function() self:RefreshWorldPopulation() end --[[APR_DIAG]]
-        ) --[[/APR_DIAG]]
+        0.25,
+
+        --[[APR_DIAG]]
+        APRTrace("APR-Core/features/group/PartyFinderWorld.lua:66:callback#7", --[[/APR_DIAG]] function()
+            self:RefreshWorldPopulation()
+            if self.rosterLoading then
+                self:RefreshAPRRosterSelection()
+                self:ReadAPRRoster()
+            end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
     )
 end--[[APR_DIAG]]
 Finder.QueueWorldPopulationRefresh = APRTrace(
-    "APR-Core/features/group/PartyFinderWorld.lua:40:Finder:QueueWorldPopulationRefresh#4",
+    "APR-Core/features/group/PartyFinderWorld.lua:59:Finder:QueueWorldPopulationRefresh#6",
     Finder.QueueWorldPopulationRefresh
 )--[[/APR_DIAG]]
 
@@ -89,7 +113,7 @@ function Finder:GetDiscoveryResponseDelay(query)
     return math.min(9, 0.25 + 1.2 * math.log(1 + math.max(0, population - 1) * ticket / MODULO / 24) / math.log(2))
 end--[[APR_DIAG]]
 Finder.GetDiscoveryResponseDelay = APRTrace(
-    "APR-Core/features/group/PartyFinderWorld.lua:48:Finder:GetDiscoveryResponseDelay#6",
+    "APR-Core/features/group/PartyFinderWorld.lua:79:Finder:GetDiscoveryResponseDelay#8",
     Finder.GetDiscoveryResponseDelay
 )--[[/APR_DIAG]]
 
@@ -123,7 +147,7 @@ function Finder:CanQueueWorldResponse(query)
     return ticket / MODULO < math.min(1, 24 / math.max(1, self.worldPopulation - 1))
 end--[[APR_DIAG]]
 Finder.CanQueueWorldResponse = APRTrace(
-    "APR-Core/features/group/PartyFinderWorld.lua:59:Finder:CanQueueWorldResponse#7",
+    "APR-Core/features/group/PartyFinderWorld.lua:90:Finder:CanQueueWorldResponse#9",
     Finder.CanQueueWorldResponse
 )--[[/APR_DIAG]]
 
@@ -143,4 +167,571 @@ function Finder:AcceptWorldMessage(control)
     return false
 end--[[APR_DIAG]]
 Finder.AcceptWorldMessage =
-    APRTrace("APR-Core/features/group/PartyFinderWorld.lua:80:Finder:AcceptWorldMessage#8", Finder.AcceptWorldMessage)--[[/APR_DIAG]]
+    APRTrace("APR-Core/features/group/PartyFinderWorld.lua:120:Finder:AcceptWorldMessage#10", Finder.AcceptWorldMessage)--[[/APR_DIAG]]
+
+-- Native roster delivery follows the selected display channel asynchronously.
+-- Keep the request selected until completion/timeout; switching back in the same
+-- call can cancel a cold roster request before the server has answered.
+function Finder:RestoreAPRRosterSelection()
+    local lease = self.rosterSelection
+    self.rosterSelection = nil
+    if not lease or type(GetSelectedDisplayChannel) ~= "function" or type(SetSelectedDisplayChannel) ~= "function" then
+        return
+    end
+    local ok, selected = --[[APR_DIAG]]
+        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetSelectedDisplayChannel)
+    if not ok or not Public(selected) or selected ~= lease.index then return end
+    -- Native UI interaction takes precedence over this temporary selection.
+    local frame = ChannelFrame
+    if frame and type(frame.IsShown) == "function" and frame:IsShown() then
+        if not lease.frameShown then return end
+        local list = type(frame.GetList) == "function" and frame:GetList()
+        local button = list and type(list.GetSelectedChannelButton) == "function" and list:GetSelectedChannelButton()
+        if button ~= lease.button then return end
+    end
+    if lease.previous == lease.index then return end
+    -- Display indices may have moved during the asynchronous request. Restore a
+    -- named native selection only if its original identity can still be found.
+    local previous = lease.previous
+    if lease.name and type(GetNumDisplayChannels) == "function" and type(GetChannelDisplayInfo) == "function" then
+        previous = nil
+        local valid, count = --[[APR_DIAG]]
+            APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetNumDisplayChannels)
+        if valid and PositiveInteger(count) then
+            for index = 1, math.min(128, count) do
+                local read, name, header = --[[APR_DIAG]]
+                    APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetChannelDisplayInfo, index)
+                if read and Public(name) and Public(header) and name == lease.name and header == lease.header then
+                    previous = index
+                    break
+                end
+            end
+        end
+    end
+    if previous ~= nil then --[[APR_DIAG]]
+        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](SetSelectedDisplayChannel, previous)
+    end
+end--[[APR_DIAG]]
+Finder.RestoreAPRRosterSelection = APRTrace(
+    "APR-Core/features/group/PartyFinderWorld.lua:139:Finder:RestoreAPRRosterSelection#11",
+    Finder.RestoreAPRRosterSelection
+)--[[/APR_DIAG]]
+
+function Finder:CancelAPRRosterLoad()
+    self.queuedRosterTransport = nil
+    self.rosterLoading, self.rosterReadAgain = nil, nil
+    self:CancelTimer("rosterReadTimer")
+    self:CancelTimer("rosterTimeout")
+    self:RestoreAPRRosterSelection()
+end--[[APR_DIAG]]
+Finder.CancelAPRRosterLoad = APRTrace(
+    "APR-Core/features/group/PartyFinderWorld.lua:176:Finder:CancelAPRRosterLoad#12",
+    Finder.CancelAPRRosterLoad
+)--[[/APR_DIAG]]
+
+-- Roster indices are display indices, never /channel numbers.
+
+function Finder:RequestAPRRoster(transport)
+    transport = transport or self:GetSearchTransport()
+    if not transport or not transport:IsReady() or not self:IsEnabled() then return end
+    if self.rosterLoading then
+        if self.rosterTransport ~= transport then self.queuedRosterTransport = transport end
+        return
+    end
+    self.rosterTransport = transport
+    transport:Refresh()
+    self:RefreshWorldPopulation()
+    local index = self.rosterDisplayIndex
+    if not index or not C_ChatInfo or type(C_ChatInfo.GetChannelRosterInfo) ~= "function" then
+        self.rosterStatus = "unavailable"
+        return
+    end
+    self.aprMembers, self.aprMemberKeys, self.aprMembersAt = nil, nil, nil
+    self.rosterReadAgain = nil
+    self.rosterLoading, self.rosterStatus = true, "loading"
+    if type(GetSelectedDisplayChannel) == "function" and type(SetSelectedDisplayChannel) == "function" then
+        local ok, selected = --[[APR_DIAG]]
+            APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetSelectedDisplayChannel)
+        if ok and Public(selected) and type(selected) == "number" then
+            local lease = { previous = selected, index = index }
+            local valid, name, header = --[[APR_DIAG]]
+                APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetChannelDisplayInfo, selected)
+            if valid and Public(name) and type(name) == "string" and Public(header) then
+                lease.name, lease.header = name, header
+            end
+            local frame = ChannelFrame
+            lease.frameShown = frame and type(frame.IsShown) == "function" and frame:IsShown() or false
+            local list = lease.frameShown and type(frame.GetList) == "function" and frame:GetList()
+            lease.button = list
+                and type(list.GetSelectedChannelButton) == "function"
+                and list:GetSelectedChannelButton()
+            self.rosterSelection = lease
+            -- A retained native selection can survive /reload while its roster
+            -- cache does not. Selecting the same index may be a no-op: refresh
+            -- through another joined text channel and immediately return to APR.
+            local ready, first = --[[APR_DIAG]]
+                APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](
+                    C_ChatInfo.GetChannelRosterInfo,
+                    index,
+                    1
+                )
+            if
+                selected == index
+                and (
+                    not PositiveInteger(self.rosterPopulation)
+                    or not ready
+                    or not Public(first)
+                    or type(first) ~= "string"
+                    or first == ""
+                )
+            then
+                local valid, count = --[[APR_DIAG]]
+                    APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetNumDisplayChannels)
+                if valid and PositiveInteger(count) then
+                    for other = 1, math.min(128, count) do
+                        local read, _, header, _, number, _, active = --[[APR_DIAG]]
+                            APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](
+                                GetChannelDisplayInfo,
+                                other
+                            )
+                        if
+                            read
+                            and other ~= index
+                            and Public(header)
+                            and not header
+                            and PositiveInteger(number)
+                            and Public(active)
+                            and active == true
+                        then
+                            --[[APR_DIAG]]
+                            APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](
+                                SetSelectedDisplayChannel,
+                                other
+                            )
+                            break
+                        end
+                    end
+                end
+            end
+            --[[APR_DIAG]]
+            APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](SetSelectedDisplayChannel, index)
+        end
+    end
+    self:ReadAPRRoster()
+    self:SetTimer(
+        "rosterTimeout",
+        10,
+
+        --[[APR_DIAG]]
+        APRTrace("APR-Core/features/group/PartyFinderWorld.lua:271:callback#14", --[[/APR_DIAG]] function()
+            self.rosterLoading = nil
+            self:CancelTimer("rosterReadTimer")
+            self:RestoreAPRRosterSelection()
+            if self.rosterStatus == "loading" then
+                self.rosterStatus = self.aprMembers and self.aprMembersID == self.rosterChannelID and "partial"
+                    or "unavailable"
+            end
+            if self.sweep and self.sweep.loading then self:LaunchAPRSweep() end
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    )
+end--[[APR_DIAG]]
+Finder.RequestAPRRoster =
+    APRTrace("APR-Core/features/group/PartyFinderWorld.lua:186:Finder:RequestAPRRoster#13", Finder.RequestAPRRoster)--[[/APR_DIAG]]
+
+function Finder:ReadAPRRoster()
+    if not self.rosterLoading then return end
+    if self.rosterReadTimer then
+        self.rosterReadAgain = true
+        return
+    end
+    self:RefreshWorldPopulation()
+    local index, count = self.rosterDisplayIndex, self.rosterPopulation
+    if not index or not PositiveInteger(count) then return end
+    local members, keys, cursor, missing, known = {}, {}, 1, false, 0
+    local id = self.rosterChannelID
+    local function read()
+        local transport = self:GetRosterTransport()
+        if not self.rosterLoading or not self:IsEnabled() or not transport or not transport:IsReady() then return end
+        self:RefreshWorldPopulation()
+        if self.rosterDisplayIndex ~= index or self.rosterChannelID ~= id or self.rosterPopulation ~= count then
+            self:ReadAPRRoster()
+            return
+        end
+        for _ = 1, 128 do
+            if cursor > count then break end
+            local ok, name = --[[APR_DIAG]]
+                APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](
+                    C_ChatInfo.GetChannelRosterInfo,
+                    index,
+                    cursor
+                )
+            local key = ok and self:PlayerKey(name)
+            if key then
+                known = known + 1
+                if key ~= self.playerKey and not keys[key] then
+                    keys[key], members[#members + 1] = true, key
+                end
+            else
+                missing = true
+            end
+            cursor = cursor + 1
+        end
+        if cursor <= count then
+            self:SetTimer("rosterReadTimer", 0.01, read)
+            return
+        end
+        self.aprMembers, self.aprMemberKeys, self.aprMembersAt, self.aprMembersID =
+            known > 0 and members or nil, keys, GetTime(), id
+        if missing and self.rosterReadAgain then
+            self.rosterReadAgain = nil
+            self:ReadAPRRoster()
+            return
+        end
+        self.rosterReadAgain = nil
+        self.aprRosters = self.aprRosters or {}
+        self.aprRosters[self:GetRosterTransport()] = { id = id, at = GetTime(), keys = keys, members = members }
+        self.rosterStatus = missing and "loading" or "ready"
+        if not missing then
+            self.rosterLoading = nil
+            self:CancelTimer("rosterTimeout")
+            self:RestoreAPRRosterSelection()
+            if self.sweep and self.sweep.loading then self:LaunchAPRSweep() end
+        end
+        -- Only verified members can replay a non-friend request.
+        self:ReplayPendingQueries()
+        if not self.rosterLoading and self.queuedRosterTransport then
+            local nextTransport = self.queuedRosterTransport
+            self.queuedRosterTransport = nil
+            self:RequestAPRRoster(nextTransport)
+        end
+        self:Notify()
+    end--[[APR_DIAG]]
+    read = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:295:read#16", read)--[[/APR_DIAG]]
+    self:SetTimer("rosterReadTimer", 0.01, read)
+end--[[APR_DIAG]]
+Finder.ReadAPRRoster =
+    APRTrace("APR-Core/features/group/PartyFinderWorld.lua:284:Finder:ReadAPRRoster#15", Finder.ReadAPRRoster)--[[/APR_DIAG]]
+
+function Finder:IsAPRMember(key, mode)
+    local transport = mode and self:GetQueryTransport(mode) or self:GetRosterTransport()
+    local cached = self.aprRosters and self.aprRosters[transport]
+    local id, at, keys = cached and cached.id, cached and cached.at, cached and cached.keys
+    if not cached and transport == self:GetRosterTransport() then
+        id, at, keys = self.aprMembersID, self.aprMembersAt, self.aprMemberKeys
+    end
+    return transport
+            and transport:IsReady()
+            and id == transport:Lookup()
+            and at
+            and GetTime() - at < 30
+            and keys
+            and keys[key] == true
+        or false
+end--[[APR_DIAG]]
+Finder.IsAPRMember =
+    APRTrace("APR-Core/features/group/PartyFinderWorld.lua:354:Finder:IsAPRMember#17", Finder.IsAPRMember)--[[/APR_DIAG]]
+
+function Finder:StopAPRSweep(keepFriends)
+    local sweep = self.sweep
+    if not sweep then return end
+    local previous = keepFriends and sweep.previousQuery
+    if not keepFriends and self.CancelFriendSearch then self:CancelFriendSearch(self.query) end
+    self.sweep, self.searchWanted = nil, nil
+    for _, key in ipairs({ "sweepTimer", "queryTimer", "rosterTimeout", "rosterReadTimer" }) do
+        self:CancelTimer(key)
+    end
+    self:CancelAPRRosterLoad()
+    self.query = nil
+    self.sweepRetainUntil = GetTime() + 120
+    self.candidatesDirty = true
+    self:ScheduleExpiry()
+    self.status = "ready"
+    if previous and previous.expires > GetTime() and self.HasFriendPeers and self:HasFriendPeers() then
+        self.query, self.status = previous, "searching"
+        self:SetTimer(
+            "queryTimer",
+            previous.expires - GetTime(),
+
+            --[[APR_DIAG]]
+            APRTrace(
+                "APR-Core/features/group/PartyFinderWorld.lua:388:callback#19", --[[/APR_DIAG]]
+                function() self:FinishQuery() end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]]
+        )
+    end
+    self:Notify()
+end--[[APR_DIAG]]
+Finder.StopAPRSweep =
+    APRTrace("APR-Core/features/group/PartyFinderWorld.lua:365:Finder:StopAPRSweep#18", Finder.StopAPRSweep)--[[/APR_DIAG]]
+
+function Finder:StartAPRSweep(query)
+    local transport = self:GetSearchTransport()
+    if self.sweep or not transport or transport.addonTransport ~= "blocked" or not transport:IsReady() then
+        return false
+    end
+    self:CancelTimer("queryTimer")
+    local previous = self.query
+    self.sweepRetainUntil = nil
+    self.sweep = {
+        template = query,
+        transport = transport,
+        loading = true,
+        sent = 0,
+        total = 0,
+        batch = 0,
+        results = 0,
+        previousQuery = previous,
+    }
+    self.status = "searching"
+    self:RequestAPRRoster(transport)
+    if self.rosterStatus == "unavailable" then
+        self:StopAPRSweep(true)
+        self.status = self.query and "searching" or "roster_unavailable"
+        return false
+    end
+    self:Notify()
+    return true
+end--[[APR_DIAG]]
+Finder.StartAPRSweep =
+    APRTrace("APR-Core/features/group/PartyFinderWorld.lua:394:Finder:StartAPRSweep#20", Finder.StartAPRSweep)--[[/APR_DIAG]]
+
+function Finder:LaunchAPRSweep()
+    local sweep = self.sweep
+    if not sweep or not sweep.loading then return end
+    local transport = sweep.transport
+    if self:GetRosterTransport() ~= transport then
+        self:RequestAPRRoster(transport)
+        return
+    end
+    if not transport or not transport:IsReady() or self.aprMembersID ~= transport:Lookup() or not self.aprMembers then
+        self:StopAPRSweep(true)
+        self.status = self.query and "searching" or "roster_unavailable"
+        return
+    end
+    if self.CancelFriendSearch then self:CancelFriendSearch(self.query) end
+    self.query = nil
+    sweep.loading, sweep.members = nil, self.aprMembers -- immutable snapshot; later refreshes replace the table
+    sweep.total, sweep.cursor = #sweep.members, 1
+    self.rosterStatus = self.rosterStatus == "loading" and "partial" or self.rosterStatus
+    self:NextAPRBatch()
+end--[[APR_DIAG]]
+Finder.LaunchAPRSweep =
+    APRTrace("APR-Core/features/group/PartyFinderWorld.lua:415:Finder:LaunchAPRSweep#21", Finder.LaunchAPRSweep)--[[/APR_DIAG]]
+
+function Finder:NextAPRBatch()
+    local sweep = self.sweep
+    if not sweep then return end
+    if sweep.cursor > sweep.total then
+        self:StopAPRSweep()
+        return
+    end
+    sweep.batch = sweep.batch + 1
+    local query = {}
+    for key, value in pairs(sweep.template) do
+        query[key] = value
+    end
+    query.id = sweep.template.id .. "-" .. sweep.batch
+    query.count, query.expires, query.sweep, query.channelTransport = 0, math.huge, true, sweep.transport
+    query.targets = {}
+    sweep.batchEnd = math.min(sweep.cursor + 23, sweep.total)
+    self.query = query
+    self:SendNextAPRRequest()
+end--[[APR_DIAG]]
+Finder.NextAPRBatch =
+    APRTrace("APR-Core/features/group/PartyFinderWorld.lua:436:Finder:NextAPRBatch#22", Finder.NextAPRBatch)--[[/APR_DIAG]]
+
+function Finder:SendNextAPRRequest()
+    local sweep, query = self.sweep, self.query
+    if not sweep or not query then return end
+    if sweep.cursor > sweep.batchEnd then
+        local replyWait = sweep.cursor > sweep.total and 10 or 5
+        query.expires = GetTime() + replyWait
+        self:SetTimer(
+            "sweepTimer",
+            replyWait,
+
+            --[[APR_DIAG]]
+            APRTrace(
+                "APR-Core/features/group/PartyFinderWorld.lua:468:callback#24", --[[/APR_DIAG]]
+                function() self:NextAPRBatch() end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]]
+        )
+        return
+    end
+    local transport = sweep.transport
+    if not self:IsEnabled() or self.discoverySuspended or not transport or not transport:IsReady() then
+        self:StopAPRSweep()
+        return
+    end
+    local wait = (self.sweepNextRequestAt or 0) - GetTime()
+    if wait > 0 then
+        self:SetTimer(
+            "sweepTimer",
+            wait,
+
+            --[[APR_DIAG]]
+            APRTrace(
+                "APR-Core/features/group/PartyFinderWorld.lua:483:callback#25", --[[/APR_DIAG]]
+                function() self:SendNextAPRRequest() end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]]
+        )
+        return
+    end
+    local peer = sweep.members[sweep.cursor]
+    query.targets[peer] = true
+    local alternate = sweep.alternate
+    local packet = query
+    if alternate then
+        packet = {}
+        for key, value in pairs(query) do
+            packet[key] = value
+        end
+        packet.context = query.alternateContext
+    end
+    local completed = false
+    local function current()
+        return self.sweep == sweep
+            and self.query == query
+            and not self.discoverySuspended
+            and transport:IsReady()
+            and self:IsEnabled()
+    end--[[APR_DIAG]]
+    current = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:499:current#26", current)--[[/APR_DIAG]]
+    local function sent()
+        if completed then return end
+        completed = true
+        if not current() then return end
+        self.sweepNextRequestAt = GetTime() + 0.25
+        if query.alternateContext and not alternate then
+            sweep.alternate = true
+        else
+            sweep.alternate = nil
+            sweep.cursor, sweep.sent = sweep.cursor + 1, sweep.sent + 1
+        end
+        self:Notify()
+        -- At most four native attempts per second, including an alternate context.
+        self:SetTimer(
+            "sweepTimer",
+            0.25,
+
+            --[[APR_DIAG]]
+            APRTrace(
+                "APR-Core/features/group/PartyFinderWorld.lua:525:callback#28", --[[/APR_DIAG]]
+                function() self:SendNextAPRRequest() end --[[APR_DIAG]]
+            ) --[[/APR_DIAG]]
+        )
+    end--[[APR_DIAG]]
+    sent = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:506:sent#27", sent)--[[/APR_DIAG]]
+    local wire = P.Encode("Q", packet)
+    if not wire or not self:SendDirect("Q", wire, peer, current, 10, sent) then sent() end
+end--[[APR_DIAG]]
+Finder.SendNextAPRRequest =
+    APRTrace("APR-Core/features/group/PartyFinderWorld.lua:456:Finder:SendNextAPRRequest#23", Finder.SendNextAPRRequest)--[[/APR_DIAG]]
+
+function Finder:CandidateExpiry(data)
+    if data.sweep then
+        if self.sweep then return math.huge end
+        return math.max(data.seenAt + 120, self.sweepRetainUntil or 0)
+    end
+    return data.seenAt + 120
+end--[[APR_DIAG]]
+Finder.CandidateExpiry =
+    APRTrace("APR-Core/features/group/PartyFinderWorld.lua:532:Finder:CandidateExpiry#29", Finder.CandidateExpiry)--[[/APR_DIAG]]
+
+function Finder:RevalidateCandidate(key)
+    if self.query or self.sweep or not self:IsEnabled() or self.discoverySuspended then return false end
+    local candidate = self.candidates[key]
+    local transport = self:GetSearchTransport()
+    if not candidate or not candidate.sweep or not transport or not transport:IsReady() then return false end
+    local query = self:MakeQuery(self:GetLocalState())
+    query.id = tostring(math.floor(GetTime() * 1000)) .. "-refresh"
+    query.sweep, query.targets, query.count, query.expires = true, { [key] = true }, 0, GetTime() + 10
+    query.channelTransport = transport
+    self.query, self.status = query, "searching"
+    local function current() return self.query == query and not self.discoverySuspended and transport:IsReady() end--[[APR_DIAG]]
+    current = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:550:current#31", current)--[[/APR_DIAG]]
+    local ok = self:SendDirect("Q", P.Encode("Q", query), key, current, 10)
+    self:SetTimer(
+        "queryTimer",
+        10,
+
+        --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/features/group/PartyFinderWorld.lua:558:callback#32", --[[/APR_DIAG]]
+            function() self:FinishQuery() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
+    self:Notify()
+    return ok
+end--[[APR_DIAG]]
+Finder.RevalidateCandidate = APRTrace(
+    "APR-Core/features/group/PartyFinderWorld.lua:540:Finder:RevalidateCandidate#30",
+    Finder.RevalidateCandidate
+)--[[/APR_DIAG]]
+
+-- The native event may publish its count before GetChannelDisplayInfo's cache.
+-- Bind that count to both the display index and the current APR local identity.
+function Finder:OnAPRRosterUpdate(index, count)
+    if not PositiveInteger(index) or index > 128 or type(GetChannelDisplayInfo) ~= "function" then return end
+    -- Read one event row, never enumerate the list in an event burst. The
+    -- display order can already differ from the last coalesced snapshot.
+    local valid, name, header, _, number = --[[APR_DIAG]]
+        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetChannelDisplayInfo, index)
+    local transport = self:GetRosterTransport()
+    if
+        not valid
+        or not Public(name)
+        or type(name) ~= "string"
+        or name:lower() ~= "apr"
+        or not Public(header)
+        or header
+        or not PositiveInteger(number)
+        or not transport
+        or number ~= transport:Lookup()
+    then
+        return
+    end
+    self.aprMembersAt = nil
+    if PositiveInteger(count) then
+        self.rosterEventID, self.rosterEventIndex = number, index
+        self.rosterEventPopulation, self.rosterEventAt = count, GetTime()
+    end
+    if number ~= self.rosterChannelID then transport:QueueRefresh() end
+    self:QueueWorldPopulationRefresh()
+end--[[APR_DIAG]]
+Finder.OnAPRRosterUpdate =
+    APRTrace("APR-Core/features/group/PartyFinderWorld.lua:566:Finder:OnAPRRosterUpdate#33", Finder.OnAPRRosterUpdate)--[[/APR_DIAG]]
+
+function Finder:RefreshAPRRosterSelection()
+    local lease, index = self.rosterSelection, self.rosterDisplayIndex
+    if
+        not lease
+        or not index
+        or index == lease.index
+        or type(GetSelectedDisplayChannel) ~= "function"
+        or type(SetSelectedDisplayChannel) ~= "function"
+    then
+        return
+    end
+    local frame = ChannelFrame
+    -- A visible native window belongs to the player. Only repair an index
+    -- invalidated under our hidden request, or our still-selected old index.
+    local shown = frame and type(frame.IsShown) == "function" and frame:IsShown()
+    if shown then return end
+    local ok, selected = --[[APR_DIAG]]
+        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetSelectedDisplayChannel)
+    if not ok or not Public(selected) then return end
+    if selected ~= lease.index then
+        if shown then return end
+        local valid, name = --[[APR_DIAG]]
+            APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetChannelDisplayInfo, lease.index)
+        if not valid or not Public(name) or type(name) == "string" and name:lower() == "apr" then return end
+    end
+    lease.index = index
+    --[[APR_DIAG]]
+    APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](SetSelectedDisplayChannel, index)
+end--[[APR_DIAG]]
+Finder.RefreshAPRRosterSelection = APRTrace(
+    "APR-Core/features/group/PartyFinderWorld.lua:594:Finder:RefreshAPRRosterSelection#34",
+    Finder.RefreshAPRRosterSelection
+)--[[/APR_DIAG]]

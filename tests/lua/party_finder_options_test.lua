@@ -52,7 +52,7 @@ local function copy(value)
 end
 local defaults = APR.GroupFinderDefaults
 assert(defaults.visible and defaults.enabled and defaults.showButton and defaults.showBadge)
-assert(not defaults.autoScan and not defaults.notifications and defaults.recruiting)
+assert(not defaults.autoScan and defaults.notifications and defaults.recruiting)
 assert(defaults.matchMode == "nearby" and defaults.stepRange == 5)
 assert(defaults.showIncompatibleWarMode == false, "Different war-mode states remain hidden until explicitly enabled")
 assert(not next(defaults.languages) and not next(defaults.blockedLanguages) and not next(defaults.visibleLanguages))

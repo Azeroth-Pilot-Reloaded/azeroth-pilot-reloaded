@@ -175,6 +175,27 @@ end
 
 function methods:IsShown() return self.shown end
 
+function methods:CreateAnimationGroup()
+    local animation = { playing = false }
+    function animation:CreateAnimation()
+        return {
+            SetDegrees = function() end,
+            SetDuration = function() end,
+            SetFromAlpha = function() end,
+            SetToAlpha = function() end,
+            SetSmoothing = function() end,
+        }
+    end
+    function animation:SetLooping() end
+    function animation:Play()
+        self.playing = true
+        self.starts = (self.starts or 0) + 1
+    end
+    function animation:Stop() self.playing = false end
+    function animation:IsPlaying() return self.playing end
+    return animation
+end
+
 function methods:IsProtected() return self.secure end
 
 function methods:CreateFontString()

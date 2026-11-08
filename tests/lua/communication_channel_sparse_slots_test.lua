@@ -6,7 +6,7 @@ for _, client in ipairs({ "retail", "forever" }) do
     local channel = env.channel
     env.unrelatedChannels = { Alpha = 1, Beta = 2, Gamma = 3, Delta = 4, ["Synthetic community"] = 11 }
     function JoinTemporaryChannel(name)
-        assert(name == "APR")
+        assert(name == env.channelName)
         env.id = 5
         env.joined[#env.joined + 1] = { name = name, at = env.now }
     end

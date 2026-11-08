@@ -120,6 +120,12 @@ function methods:CreateFontString() return object(self) end
 
 function methods:CreateTexture() return object(self) end
 
+function methods:CreateAnimationGroup() return object(self) end
+function methods:CreateAnimation() return object(self) end
+function methods:Stop() self.playing = false end
+function methods:Play() self.playing = true end
+function methods:IsPlaying() return self.playing == true end
+
 function methods:GetNormalTexture() return object(self) end
 
 function CreateFrame(kind, name, parent, template)
