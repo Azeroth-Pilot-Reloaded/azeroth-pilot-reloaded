@@ -373,6 +373,10 @@ Pad.BindDetails = APRTrace("APR-Core/integrations/GamepadNavigation.lua:276:Pad:
 -- taint its shared state. Translate AceGUI's own setters to native scrolling.
 function Pad:AdaptAceScroll(widget, scroll, child, bar)
     if not scroll or not child or not bar or widget.aprPadScroll then return end
+    if widget.aprNativeScroll then
+        self:SetNavigationFlag(bar, "smartNavigationIgnored", true)
+        return
+    end
     local state = { widget = widget, bar = bar, setScroll = widget.SetScroll, fixScroll = widget.FixScroll }
     widget.aprPadScroll, scroll.aprPadScrollState = state, state
     local function alignChild()

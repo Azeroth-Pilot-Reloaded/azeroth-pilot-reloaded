@@ -9,41 +9,117 @@ local styled = setmetatable({}, { __mode = "k" })
 local rebuilding = 0
 local styledFonts = setmetatable({}, { __mode = "k" })
 
--- Keep this correction in APR's private pool. AceGUI's saved pixel offset can
--- outlive the content height, and its two-pixel tolerance excludes equality.
-local function InstallSettingsScroll(widget)
+-- Embed the same native scroll used by RouteBrowser. AceConfig keeps its
+-- normalized saved status, while the actual scrollbar always uses pixels.
+local function InstallSettingsScroll(widget, private)
     if widget.aprSettingsScroll then return end
-    widget.aprSettingsScroll = true
-    local setScroll = widget.SetScroll
+    local previousOffset = (widget.status or widget.localstatus).offset or 0
+    widget.aprSettingsScroll, widget.aprNativeScroll = true, true
+    local original = {
+        scroll = widget.scrollframe, bar = widget.scrollbar,
+        SetScroll = widget.SetScroll, FixScroll = widget.FixScroll,
+        MoveScroll = widget.MoveScroll, OnWidthSet = widget.OnWidthSet,
+        OnRelease = widget.OnRelease,
+    }
+    local native = widget.aprWorkspaceScroll
+    if not native then
+        native = APR.UI:Scroll(widget.frame)
+        widget.aprWorkspaceScroll = native
+    end
+    original.scroll:SetScript("OnUpdate", nil)
+    original.scroll:Hide()
+    original.scroll.aprEmptyChild = original.scroll.aprEmptyChild or CreateFrame("Frame", nil, original.scroll)
+    original.scroll.aprEmptyChild:SetSize(1, 1)
+    original.scroll:SetScrollChild(original.scroll.aprEmptyChild)
+    widget.scrollframe, widget.scrollbar = native, native.ScrollBar
+    native.obj = widget
+    native:ClearAllPoints()
+    native:SetPoint("TOPLEFT")
+    native:SetPoint("BOTTOMRIGHT", -22, 0)
+    widget.content:SetParent(native)
+    widget.content:ClearAllPoints()
+    -- Like RouteBrowser, give the native scroll child explicit dimensions;
+    -- SetScrollChild owns its origin. AceGUI's .width is only a Lua cache.
+    widget.content:SetSize(math.max(1, native:GetWidth()), math.max(1, widget.content:GetHeight()))
+    native:SetScrollChild(widget.content)
+    widget.content:Show()
+    native:Show()
     function widget:SetScroll(value)
-        local range = self.content:GetHeight() - self.scrollframe:GetHeight()
-        setScroll(self, range > 2 and math.max(0, math.min(1000, value or 0)) or 0)
-    end--[[APR_DIAG]]; widget.SetScroll = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:18:widget:SetScroll#70", widget.SetScroll)--[[/APR_DIAG]]
+        if self.aprSyncingScroll then return end
+        self.aprSyncingScroll = true
+        local range = math.max(0, self.content:GetHeight() - self.scrollframe:GetHeight())
+        value = range > 0.5 and math.max(0, math.min(1000, value or 0)) or 0
+        local offset = range * value / 1000
+        local status = self.status or self.localstatus
+        status.offset, status.scrollvalue = offset, value
+        self.scrollframe:SetVerticalScroll(offset)
+        self.scrollbar:SetValue(offset)
+        self.aprSyncingScroll = nil
+    end--[[APR_DIAG]]; widget.SetScroll = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:38:widget:SetScroll#70", widget.SetScroll)--[[/APR_DIAG]]
     function widget:FixScroll()
         if self.updateLock then return end
         self.updateLock = true
-        local status = self.status or self.localstatus
-        local range = self.content:GetHeight() - self.scrollframe:GetHeight()
-        local scrolling = range > 2
-        local changed = scrolling ~= (self.scrollBarShown == true)
-        self.scrollBarShown = scrolling or nil
-        self.scrollbar:SetShown(scrolling)
-        if changed then
-            self.scrollframe:SetPoint("BOTTOMRIGHT", scrolling and -20 or 0, 0)
-            if self.content.original_width then
-                self.content.width = self.content.original_width - (scrolling and 20 or 0)
-            end
+        local width = math.max(1, self.scrollframe:GetWidth())
+        local resized = self.content:GetWidth() ~= width
+        if resized then self.content:SetWidth(width) end
+        if resized or self.content.width ~= width then
+            self.content.width = width
             self:DoLayout()
         end
-        -- Relayout may wrap text differently after reserving scrollbar width.
-        range = self.content:GetHeight() - self.scrollframe:GetHeight()
-        local offset = math.max(0, math.min(math.max(0, range), status.offset or 0))
-        local value = scrolling and range > 2 and offset / range * 1000 or 0
-        self.scrollbar:SetValue(value)
-        self:SetScroll(value)
+        if self.scrollframe.UpdateScrollChildRect then self.scrollframe:UpdateScrollChildRect() end
+        local range = math.max(0, self.content:GetHeight() - self.scrollframe:GetHeight())
+        self.scrollBarShown = range > 0.5 or nil
+        local status = self.status or self.localstatus
+        local offset = math.max(0, math.min(range, status.offset or 0))
+        self:SetScroll(range > 0.5 and offset / range * 1000 or 0)
         self.updateLock = nil
-    end--[[APR_DIAG]]; widget.FixScroll = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:22:widget:FixScroll#71", widget.FixScroll)--[[/APR_DIAG]]
-end--[[APR_DIAG]]; InstallSettingsScroll = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:14:InstallSettingsScroll#69", InstallSettingsScroll)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; widget.FixScroll = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:50:widget:FixScroll#71", widget.FixScroll)--[[/APR_DIAG]]
+    function widget:OnWidthSet(width)
+        self.content.original_width = width
+        self:FixScroll()
+    end--[[APR_DIAG]]; widget.OnWidthSet = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:66:widget:OnWidthSet#72", widget.OnWidthSet)--[[/APR_DIAG]]
+    function widget:MoveScroll(delta)
+        local range = math.max(0, self.content:GetHeight() - self.scrollframe:GetHeight())
+        local offset = self.scrollframe:GetVerticalScroll() - delta * 40
+        self:SetScroll(range > 0.5 and offset / range * 1000 or 0)
+    end--[[APR_DIAG]]; widget.MoveScroll = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:70:widget:MoveScroll#73", widget.MoveScroll)--[[/APR_DIAG]]
+    if not native.aprSettingsHooks then
+        native.aprSettingsHooks = true
+        native:HookScript("OnVerticalScroll", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:77:callback#74", --[[/APR_DIAG]]function(_, offset)
+            if not widget.aprNativeScroll or widget.aprSyncingScroll then return end
+            local range = math.max(0, widget.content:GetHeight() - native:GetHeight())
+            widget:SetScroll(range > 0.5 and offset / range * 1000 or 0)
+        end--[[APR_DIAG]])--[[/APR_DIAG]])
+        native:HookScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:82:callback#75", --[[/APR_DIAG]]function()
+            if widget.aprNativeScroll then widget:FixScroll() end
+        end--[[APR_DIAG]])--[[/APR_DIAG]])
+    end
+    function widget:OnRelease()
+        -- Detach the persistent status before resetting the pooled viewport.
+        -- Closing/rebuilding a form must not erase its remembered position.
+        self.status = nil
+        self:SetScroll(0)
+        if private then
+            wipe(self.localstatus)
+            self.scrollBarShown = nil
+            self.content.height, self.content.width, self.content.original_width = nil, nil, nil
+            self.scrollbar:Hide()
+        else
+            native:Hide()
+            self.scrollframe, self.scrollbar = original.scroll, original.bar
+            self.content:SetParent(original.scroll)
+            original.scroll:SetScrollChild(self.content)
+            original.scroll:Show()
+            self.SetScroll, self.FixScroll, self.MoveScroll = original.SetScroll, original.FixScroll, original.MoveScroll
+            self.OnWidthSet, self.OnRelease = original.OnWidthSet, original.OnRelease
+            self.aprSettingsScroll, self.aprNativeScroll = nil, nil
+            original.SetScroll(self, 0)
+            if original.OnRelease then original.OnRelease(self) end
+        end
+    end--[[APR_DIAG]]; widget.OnRelease = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:86:widget:OnRelease#76", widget.OnRelease)--[[/APR_DIAG]]
+    local range = math.max(0, widget.content:GetHeight() - native:GetHeight())
+    widget:SetScroll(range > 0.5 and previousOffset / range * 1000 or 0)
+end--[[APR_DIAG]]; InstallSettingsScroll = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:8:InstallSettingsScroll#69", InstallSettingsScroll)--[[/APR_DIAG]]
 
 local function StyleFont(region, role)
     local font, size, flags, r, g, b, a
@@ -160,6 +236,7 @@ InstallConfirmationSkin =
 
 local function MatchContainerStrata(widget)
     if not widget or not widget.frame then return end
+    if widget.type == "ScrollFrame" then InstallSettingsScroll(widget) end
     -- AceGUI containers explicitly use FULLSCREEN_DIALOG. Embedded content must share its host's strata.
     if widget.type == "InlineGroup" or widget.type == "ScrollFrame" or widget.type == "SimpleGroup" then
         local parent = widget.frame:GetParent()
@@ -676,7 +753,7 @@ function APR:EnableWorkspaceWidgets()
             self:RegisterWidgetType(privateType, constructor, self:GetWidgetVersion(kind))
             local widget = create(self, privateType)
             owned[widget] = privateType
-            if kind == "ScrollFrame" then InstallSettingsScroll(widget) end
+            if kind == "ScrollFrame" then InstallSettingsScroll(widget, true) end
             return widget
         end--[[APR_DIAG]])--[[/APR_DIAG]]
     gui.Release = --[[APR_DIAG]]

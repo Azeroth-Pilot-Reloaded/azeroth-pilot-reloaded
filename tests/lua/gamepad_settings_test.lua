@@ -1,5 +1,6 @@
 local fixture = dofile("tests/lua/settings_widgets_test.lua")
 local env, gui = fixture.env, fixture.gui
+dofile("tests/lua/settings_scroll_test_support.lua")(env)
 function env.methods:IsObjectType(kind) return self.kind == kind end
 function env.methods:IsVisible() return self.shown and (not self.parent or self.parent:IsVisible()) end
 function env.methods:GetValueStep() return self.step or 1 end
@@ -134,6 +135,24 @@ for _, kind in ipairs({ "ScrollFrame", "Dropdown-Pullout" }) do
     assert(active ~= widget.frame, "A released pullout belongs to its next addon")
     widget.frame:Hide()
 end
+
+-- APR's private settings viewport already implements native scrolling. The
+-- controller must not add a second anchor/native conversion around it.
+fixture.dialog:FeedGroup("APR/Workspace/Options/native-scroll", { kind = "ScrollFrame" }, fixture.host)
+local nativeSettings = fixture.host.children[1].children[1]
+assert(nativeSettings.aprNativeScroll and not nativeSettings.aprPadScroll)
+nativeSettings.scrollframe:SetHeight(200)
+gui:RegisterLayout("SyntheticNativeSettings", function(content) content.obj:LayoutFinished(nil, 1000) end)
+nativeSettings:SetLayout("SyntheticNativeSettings")
+nativeSettings:DoLayout()
+nativeSettings.scrollbar:SetValue(600)
+assert(nativeSettings.scrollframe:GetVerticalScroll() == 600)
+nativeSettings.scrollframe:SetVerticalScroll(400)
+assert(nativeSettings.scrollbar:GetValue() == 400)
+local _, _, _, _, nativeAnchorOffset = nativeSettings.content:GetPoint()
+assert(nativeAnchorOffset == nil or nativeAnchorOffset == 0, "Controller and mouse must share one content displacement")
+fixture.host:ReleaseChildren()
+assert(nativeSettings.scrollframe:GetVerticalScroll() == 0)
 
 -- A colour widget keeps mouse behaviour, uses an alternate editor for pad input,
 -- and restores its callbacks when released to the shared pool.

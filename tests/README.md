@@ -572,6 +572,12 @@ changes and rotating minimap. Confirm labels use the client's language in at
 least French and English. These checks need the actual clients and are not
 certified by simulated WoW APIs.
 
+`arrow_position_test.lua` checks UIParent coordinate round-trips at non-unit UI
+scales, off-screen/invalid saved anchors, artwork bounds, display changes and
+layout preview save/cancel behavior with synthetic geometry. On Retail and
+Forever, also check dragging, reload, the layout editor and a resolution/UI-scale
+change in the actual client; simulated frames do not certify native rendering.
+
 ## Pull requests
 
 `PR Tests` runs the three test families on opening, reopening, marking ready for

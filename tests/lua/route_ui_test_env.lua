@@ -112,7 +112,14 @@ function methods:GetWidth() return self.width end
 
 function methods:GetScale() return self.scale or 1 end
 function methods:GetEffectiveScale() return self:GetScale() * (self.parent and self.parent:GetEffectiveScale() or 1) end
-function methods:GetPoint() return unpack(self.point or {}) end
+function methods:GetPoint()
+    if not self.point then return end
+    local point, relative, relativePoint, x, y = unpack(self.point)
+    if relative == nil or type(relative) == "number" then
+        return point, self.parent, point, relative or 0, relativePoint or 0
+    end
+    return point, relative, relativePoint or point, x or 0, y or 0
+end
 function methods:GetNumPoints() return self.point and 1 or 0 end
 
 function methods:SetScale(value)
@@ -126,6 +133,8 @@ function methods:SetScrollChild(child)
     self.scrollChild = child
     self.swaps = (self.swaps or 0) + 1
 end
+
+function methods:GetScrollChild() return self.scrollChild end
 
 function methods:GetVerticalScroll() return self.scroll or 0 end
 

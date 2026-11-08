@@ -880,13 +880,51 @@ function UI:StyleScrollBar(bar)
 end--[[APR_DIAG]]
 UI.StyleScrollBar = APRTrace("APR-Core/ui/foundations/Widgets.lua:579:UI:StyleScrollBar#60", UI.StyleScrollBar)--[[/APR_DIAG]]
 
-function UI:Scroll(parent)
-    local scroll = CreateFrame("ScrollFrame", nil, parent, "UIPanelScrollFrameTemplate")
+function UI:Scroll(parent, name)
+    local scroll = CreateFrame("ScrollFrame", name, parent, "UIPanelScrollFrameTemplate")
+    scroll.scrollBarHideable = true
+    local syncing
+    local rightAnchors = {}
+    local function syncScroll()
+        if syncing then return end
+        syncing = true
+        local child = scroll:GetScrollChild()
+        local range = child and math.max(0, child:GetHeight() - scroll:GetHeight()) or 0
+        if range <= 0.5 then range = 0 end
+        local offset = math.max(0, math.min(range, scroll:GetVerticalScroll()))
+        if scroll:GetVerticalScroll() ~= offset then scroll:SetVerticalScroll(offset) end
+        if scroll.ScrollBar then
+            scroll.ScrollBar:SetMinMaxValues(0, range)
+            scroll.ScrollBar:SetValue(offset)
+            scroll.ScrollBar:SetShown(range > 0)
+            -- Callers reserve 22px for the external native scrollbar. Give
+            -- that width back to the viewport while its scrollbar is hidden.
+            for index = 1, scroll:GetNumPoints() do
+                local point, relative, relativePoint, x, y = scroll:GetPoint(index)
+                if point:find("RIGHT") then
+                    local anchor = rightAnchors[point]
+                    if not anchor or anchor.applied ~= x or anchor.relative ~= relative or anchor.y ~= y then
+                        anchor = { base = x, relative = relative, y = y }
+                        rightAnchors[point] = anchor
+                    end
+                    local wanted = anchor.base + (range > 0 and 0 or 22)
+                    anchor.applied = wanted
+                    if x ~= wanted then scroll:SetPoint(point, relative, relativePoint, wanted, y) end
+                end
+            end
+        end
+        syncing = nil
+    end--[[APR_DIAG]]; syncScroll = APRTrace("APR-Core/ui/foundations/Widgets.lua:10:syncScroll#96", syncScroll)--[[/APR_DIAG]]
+    scroll:HookScript("OnScrollRangeChanged", syncScroll)
+    scroll:HookScript("OnSizeChanged", syncScroll)
+    scroll:HookScript("OnShow", syncScroll)
+    hooksecurefunc(scroll, "SetPoint", syncScroll)
+    if scroll.ScrollBar then scroll.ScrollBar:HookScript("OnShow", syncScroll) end
     if scroll.ScrollBar then APR:RegisterSkinTarget(scroll.ScrollBar, "scrollbar", { compact = true }) end
     if APR.Gamepad and APR.Gamepad.PrepareScroll then APR.Gamepad:PrepareScroll(scroll) end
+    syncScroll()
     return scroll
-end--[[APR_DIAG]]
-UI.Scroll = APRTrace("APR-Core/ui/foundations/Widgets.lua:606:UI:Scroll#61", UI.Scroll)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; UI.Scroll = APRTrace("APR-Core/ui/foundations/Widgets.lua:6:UI:Scroll#61", UI.Scroll)--[[/APR_DIAG]]
 
 -- FontStrings expose measured text height on both clients; EditBoxes do not.
 function UI:CopyBox(parent)
