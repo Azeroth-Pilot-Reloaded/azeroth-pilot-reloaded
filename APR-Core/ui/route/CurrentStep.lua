@@ -1969,7 +1969,10 @@ function APR.currentStep:CanSafelyHide(container)
     -- after the active button reference is cleared so reused rows stay safe.
     return not InCombatLockdown()
         or not (
-            container.hasSecureControls
+            -- Sibling raid buttons also protect their anchor row, even though
+            -- they are absent from the row's own secure-control references.
+            container:IsProtected()
+            or container.hasSecureControls
             or (container.IconButton and container.IconButton:IsProtected())
             or (container.RaidIconButton and container.RaidIconButton:IsProtected())
         )
