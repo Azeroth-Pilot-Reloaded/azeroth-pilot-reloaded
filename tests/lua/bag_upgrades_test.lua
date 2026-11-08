@@ -78,9 +78,10 @@ function APR.RewardScoring:GetUpgrade(link, scale)
         true,
         { slot = item.slot or 1, replacedSlots = { item.replaced or item.slot or 1 }, move = item.move }
 end
-local visible
+local visible, inPopupCallback
 function StaticPopup_Visible() return visible end
 function StaticPopup_Hide()
+    assert(not inPopupCallback, "APR must leave accepted/cancelled popup teardown to Blizzard")
     if visible then
         visible = nil
         if hooks.hide then hooks.hide() end
@@ -89,7 +90,21 @@ end
 function StaticPopup_OnHide() end
 function hooksecurefunc(_, fn) hooks.hide = fn end
 function APR.questionDialog:CreateQuestionPopup(_, text, accept, cancel)
-    visible = { text = text, accept = accept, cancel = cancel }
+    local popup = { text = text }
+    local function click(callback, ...)
+        inPopupCallback = true
+        callback(...)
+        inPopupCallback = false
+        -- Model StaticPopup_OnClick: the native owner hides after the callback.
+        -- A stale callback must never close a newer offer.
+        if visible == popup then
+            visible = nil
+            if hooks.hide then hooks.hide() end
+        end
+    end
+    popup.accept = function(...) click(accept, ...) end
+    popup.cancel = function(...) click(cancel, ...) end
+    visible = popup
     prompts[#prompts + 1] = visible
 end
 dofile("APR-Core/features/player/BagUpgrades.lua")
@@ -196,6 +211,71 @@ end
 module:QueueScan("BAG_UPDATE_DELAYED")
 flush()
 assert(visible and visible.text:find("item:507:synchronous", 1, true) and not module.timer)
+-- Native gamepad popups must not initialize/cache Blizzard's shared bindings
+-- from an addon-owned dialog definition. Use an independent APR confirmation.
+module:OnDisable()
+local padEnabled, privateDialog = true, nil
+APR.Gamepad = { IsAvailable = function() return true end, IsEnabled = function() return padEnabled end }
+APR.UI = { ShowConfirmationDialog = function(_, settings, accept, cancel)
+    local dialog = { shown = true, text = settings.description, accept = accept, cancel = cancel }
+    function dialog:IsShown() return self.shown end
+    function dialog:Hide()
+        if not self.shown then return end
+        self.shown = false
+        local callback = self.cancel
+        self.cancel = nil
+        if callback then callback() end
+    end
+    function dialog:Accept()
+        local callback = self.accept
+        self.cancel = nil
+        self:Hide()
+        callback()
+    end
+    privateDialog = dialog
+    return dialog
+end }
+StaticPopup_Visible = function() error("Gamepad offers must not query a shared native popup") end
+StaticPopup_Hide = function() error("Gamepad offers must not close a shared native popup") end
+APR.questionDialog.CreateQuestionPopup = function() error("Gamepad offers must not enter StaticPopup_Show") end
+local upgrade = "item:601:pad-upgrade"
+inventory, bags = {}, { [1] = upgrade }
+items[upgrade] = { gain = 6, slot = 11 }
+module:OnEnable()
+flush()
+assert(privateDialog:IsShown() and module.dialog == privateDialog and privateDialog.text:find(upgrade, 1, true))
+local withdrawn = privateDialog
+local equippedBefore = #equips
+module:QueueScan("BAG_UPDATE_DELAYED")
+assert(not withdrawn:IsShown() and not module.dismissed[upgrade], "Withdrawing a stale offer does not ignore the item")
+withdrawn.accept()
+assert(#equips == equippedBefore, "An obsolete private confirmation cannot equip")
+flush()
+privateDialog:Hide()
+flush()
+assert(module.dismissed[upgrade] and #equips == equippedBefore, "Back/Ignore dismisses without equipping")
+module:OnScoringChanged()
+flush()
+combat = true
+module:QueueScan("PLAYER_REGEN_DISABLED")
+flush()
+assert(not privateDialog:IsShown() and #equips == equippedBefore)
+combat = false
+module:QueueScan("PLAYER_REGEN_ENABLED")
+flush()
+assert(privateDialog:IsShown() and #equips == equippedBefore, "Combat recovery only offers equipment")
+privateDialog:Accept()
+flush()
+assert(#equips == equippedBefore + 1 and equips[#equips][1] == upgrade and equips[#equips][2] == 11)
+inventory, bags = {}, { [1] = upgrade }
+module:QueueScan("BAG_UPDATE_DELAYED")
+flush()
+padEnabled = false
+module:QueueScan("BAG_UPDATE_DELAYED")
+flush()
+assert(privateDialog:IsShown(), "Mouse mode on a native gamepad client also avoids StaticPopup adoption")
+module:OnDisable()
+assert(not privateDialog:IsShown() and not module.dialog, "Input-mode changes still withdraw the private offer")
 print(
     "Bag suggestions: bounded scans/retries, Pawn, dismissals, stale bags/timers, missing/locked/secret data, combat/cursor/profile guards and explicit equipment plans passed"
 )

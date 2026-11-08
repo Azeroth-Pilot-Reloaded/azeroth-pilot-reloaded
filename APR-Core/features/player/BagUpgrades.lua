@@ -56,8 +56,16 @@ Upgrades.IsEnabledForCharacter = APRTrace(
 )--[[/APR_DIAG]]
 
 function Upgrades:CancelPrompt()
-    self.prompt = nil
-    if StaticPopup_Hide then StaticPopup_Hide(PROMPT) end
+    local prompt, dialog = self.prompt, self.dialog
+    self.prompt, self.dialog = nil, nil
+    -- OnAccept/OnCancel clear prompt before rescanning. Let StaticPopup_OnClick
+    -- finish its native hide instead of re-entering gamepad focus teardown from
+    -- the addon callback. Only withdraw an outstanding offer here.
+    if dialog then
+        dialog:Hide()
+    elseif prompt and StaticPopup_Hide then
+        StaticPopup_Hide(PROMPT)
+    end
 end--[[APR_DIAG]]
 Upgrades.CancelPrompt =
     APRTrace("APR-Core/features/player/BagUpgrades.lua:42:Upgrades:CancelPrompt#6", Upgrades.CancelPrompt)--[[/APR_DIAG]]
@@ -278,7 +286,14 @@ Upgrades.Equip = APRTrace("APR-Core/features/player/BagUpgrades.lua:167:Upgrades
 
 function Upgrades:Offer(candidate)
     if not self:IsEnabledForCharacter() or (InCombatLockdown and InCombatLockdown()) then return end
-    if not APR.questionDialog or not StaticPopup_Visible then return end
+    -- Use the private dialog even in mouse mode on a gamepad-capable client:
+    -- switching input modes while an offer is open must not adopt a StaticPopup.
+    local private = APR.Gamepad and APR.Gamepad.IsAvailable and APR.Gamepad:IsAvailable()
+    if private then
+        if not APR.UI or not APR.UI.ShowConfirmationDialog then return end
+    elseif not APR.questionDialog or not StaticPopup_Visible then
+        return
+    end
     for index = 1, (STATICPOPUP_NUMDIALOGS or 4) do
         local frame = _G["StaticPopup" .. index]
         if frame and frame:IsShown() then
@@ -299,26 +314,38 @@ function Upgrades:Offer(candidate)
         .. (CURRENTLY_EQUIPPED or EQUIPMENT)
         .. ": "
         .. (#current > 0 and table.concat(current, "\n") or EMPTY or NONE or "")
-    APR.questionDialog:CreateQuestionPopup(
-        PROMPT,
-        text, --[[APR_DIAG]]
+    local onAccept = --[[APR_DIAG]]
         APRTrace("APR-Core/features/player/BagUpgrades.lua:204:callback#21", --[[/APR_DIAG]] function()
             if self.prompt ~= candidate then return end
-            self.prompt = nil
+            self.prompt, self.dialog = nil, nil
             self:Equip(candidate)
-        end--[[APR_DIAG]]) --[[/APR_DIAG]], --[[APR_DIAG]]
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    local onCancel = --[[APR_DIAG]]
         APRTrace("APR-Core/features/player/BagUpgrades.lua:208:callback#22", --[[/APR_DIAG]] function(_, _, reason)
             if self.prompt ~= candidate then return end
-            self.prompt = nil
-            local dismissed = reason == "clicked" or reason == "timeout" or reason == "escape"
+            self.prompt, self.dialog = nil, nil
+            local dismissed = private or reason == "clicked" or reason == "timeout" or reason == "escape"
             if dismissed then self.dismissed[candidate.link] = candidate.signature end
             self.waiting = not dismissed
             if not self.waiting then self:QueueScan() end
-        end--[[APR_DIAG]]) --[[/APR_DIAG]],
-        EQUIP_ITEM or EQUIP or ACCEPT,
-        IGNORE or CANCEL
-    )
-    if not StaticPopup_Visible(PROMPT) then
+        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    if private then
+        -- Forever initializes native StaticPopup gamepad callbacks in the
+        -- caller's taint context and lazily caches their shared bindings there.
+        -- Keep this offer on an APR-owned frame instead of entering that path.
+        self.dialog = APR.UI:ShowConfirmationDialog({
+            dialogName = "APRBagUpgradePopup",
+            title = EQUIPMENT,
+            description = text,
+            acceptText = EQUIP_ITEM or EQUIP or ACCEPT,
+            cancelText = IGNORE or CANCEL,
+        }, onAccept, onCancel)
+    else
+        APR.questionDialog:CreateQuestionPopup(
+            PROMPT, text, onAccept, onCancel, EQUIP_ITEM or EQUIP or ACCEPT, IGNORE or CANCEL
+        )
+    end
+    if (private and (not self.dialog or not self.dialog:IsShown())) or (not private and not StaticPopup_Visible(PROMPT)) then
         self.prompt, self.waiting = nil, true
     end
 end--[[APR_DIAG]]

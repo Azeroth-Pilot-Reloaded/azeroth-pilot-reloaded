@@ -213,6 +213,21 @@ assert(
 )
 suggestion.routeButtons[1].scripts.OnClick()
 assert(chosenRoute == suggested and not suggestion:IsShown())
+local shared = APR.UI.selectionDialog
+local acceptedPrivate, cancelledPrivate = 0, 0
+local private = APR.UI:ShowConfirmationDialog({
+    dialogName = "SyntheticPrivateConfirmation", title = "Private confirmation", description = "Private details",
+}, function() acceptedPrivate = acceptedPrivate + 1 end, function() cancelledPrivate = cancelledPrivate + 1 end)
+assert(private ~= shared and _G.SyntheticPrivateConfirmation == private and APR.UI.selectionDialog == shared,
+    "Named confirmations own their frame without replacing the shared selection dialog")
+assert(private:IsShown() and private.description:GetText() == "Private details")
+private.acceptButton.scripts.OnClick()
+assert(acceptedPrivate == 1 and cancelledPrivate == 0 and not private:IsShown())
+local reused = APR.UI:ShowConfirmationDialog({ dialogName = "SyntheticPrivateConfirmation", title = "Again" },
+    nil, function() cancelledPrivate = cancelledPrivate + 1 end)
+assert(reused == private, "A named dialog reuses its own frame")
+reused:Hide()
+assert(cancelledPrivate == 1)
 print(
     "Selection dialog: disabled choices, callbacks, cancellation, replacement, tooltips, bounded layout and recycled controls passed"
 )

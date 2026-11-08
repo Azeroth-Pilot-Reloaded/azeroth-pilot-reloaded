@@ -486,4 +486,22 @@ assert(
         and export.edit:GetText():find("**ZoneDetection**: nil", 1, true),
     "Exports still work when diagnostic modules are unavailable"
 )
+local taintReads = 0
+local originalName = APR.Username
+APR.Username = "TaintPrivateIdentity"
+APR.Gamepad = { GetTaintReport = function()
+    taintReads = taintReads + 1
+    return "input.currentCoreBindingActive: APR / " .. APR.Username
+end }
+APRData.GamepadTaint = { action = "SetPreferredGamepadInteractTarget()", report = "captured-taint", beforeWindow = "before-window" }
+APR:ExportStatusReport()
+text = export.edit:GetText()
+assert(taintReads == 1 and text:find("input.currentCoreBindingActive: APR", 1, true)
+    and text:find("captured-taint", 1, true) and text:find("before-window", 1, true),
+    "Exports include current taint inspection and the captured native failure")
+assert(not text:find(APR.Username, 1, true), "Gamepad diagnostics obey identity redaction")
+APR.Username = originalName
+APR.Gamepad = nil
+APR:ExportStatusReport()
+assert(not export.edit:GetText():find("Gamepad / taint", 1, true), "Missing gamepad support does not break export")
 print("Status navigation: export-only, bounded, redacted snapshots preserve active and rendered state without routing")

@@ -470,6 +470,16 @@ function APR:ExportStatusReport()
         and controller:GetActiveStep()
     AddStepData(lines, activeStep or "nil", "ActiveStep", true)
 
+    local gamepad = self.Gamepad
+    if ReadableTable(gamepad) and type(gamepad.GetTaintReport) == "function" then
+        section("Gamepad / taint")
+        AddStepData(lines, gamepad:GetTaintReport(), "Current", true)
+        local captured = ReadableTable(APRData) and APRData.GamepadTaint
+        if ReadableTable(captured) then
+            AddStepData(lines, SnapshotFields(captured, { "action", "report", "beforeWindow" }), "Saved", true)
+        end
+    end
+
     local log = self.ErrorLog
     local errors = log and log.entries or {}
     section(L["UI_LUA_ERRORS"] .. " (" .. #errors .. ")")

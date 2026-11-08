@@ -6,10 +6,12 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Shared choice/confirmation dialog for route browsing. Callers own options, restrictions and actions.
 -- Text determines row heights; a bounded viewport keeps every choice reachable on small screens.
 local UI = APR.UI
+local namedDialogs = {}
 
-local function CreateSelectionDialog()
+local function CreateSelectionDialog(name)
+    name = name or "APRSelectionPopup"
     local frame = UI:Panel(UIParent, "window", "library")
-    _G.APRSelectionPopup = frame
+    _G[name] = frame
     frame:SetFrameStrata("FULLSCREEN_DIALOG")
     frame:SetToplevel(true)
     frame:SetClampedToScreen(true)
@@ -310,7 +312,7 @@ local function CreateSelectionDialog()
         })
     end
     UISpecialFrames = UISpecialFrames or {}
-    table.insert(UISpecialFrames, "APRSelectionPopup")
+    table.insert(UISpecialFrames, name)
     frame:Hide()
     if APR.Gamepad then
         APR.Gamepad:SetNavigationFlag(frame.header, "smartNavigationIgnoredDontPropagate", true)
@@ -323,10 +325,11 @@ CreateSelectionDialog =
 
 local function ShowDialog(settings)
     if UI.activeMenu then UI.activeMenu:Hide() end
-    local frame = UI.selectionDialog
+    local name = settings.dialogName
+    local frame = name and namedDialogs[name] or (not name and UI.selectionDialog)
     if not frame then
-        frame = CreateSelectionDialog()
-        UI.selectionDialog = frame
+        frame = CreateSelectionDialog(name)
+        if name then namedDialogs[name] = frame else UI.selectionDialog = frame end
     end
     -- Replacing an open prompt resolves its previous cancellation callback first.
     frame:Hide()
@@ -365,6 +368,7 @@ UI.ShowSelectionDialog =
 function UI:ShowConfirmationDialog(text, onAccept, onCancel, owner)
     if type(text) == "table" then
         return ShowDialog({
+            dialogName = text.dialogName,
             title = text.title,
             description = text.description,
             details = text.details,

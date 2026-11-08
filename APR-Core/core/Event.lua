@@ -216,8 +216,14 @@ function APR.event.EventHandler(self, event, ...)
 
         APR.npcInteraction:Track(self.tag, event)
 
+        -- Native blocked-action stacks can lose Lua tail calls and report only
+        -- UNKNOWN(). Preserve the event while its callback (including nested
+        -- synchronous events) is running so the error log can identify it.
+        local previousEvent, previousHandler = APR.event.activeEvent, APR.event.activeHandler
+        APR.event.activeEvent, APR.event.activeHandler = event, self.tag
         local ok, errorMessage = --[[APR_DIAG]]
             APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](self.callback, event, ...)
+        APR.event.activeEvent, APR.event.activeHandler = previousEvent, previousHandler
         if not ok then geterrorhandler()(errorMessage) end
     else
         APR:DebugEvent("Unregister Event", event)

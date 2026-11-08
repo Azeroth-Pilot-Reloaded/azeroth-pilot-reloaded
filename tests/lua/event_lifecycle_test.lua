@@ -75,6 +75,16 @@ local samples = 0
 APR.FinishPerformanceSample = function() samples = samples + 1 end
 APR.event.EventHandler({ tag = "broken", callback = function() error("visible failure") end }, "TEST")
 assert(#errors == 1 and errors[1]:find("visible failure") and samples == 1)
+assert(not APR.event.activeEvent and not APR.event.activeHandler, "Failed callbacks release diagnostic context")
+local outer = { tag = "outer", callback = function()
+    assert(APR.event.activeEvent == "OUTER" and APR.event.activeHandler == "outer")
+    APR.event.EventHandler({ tag = "inner", callback = function()
+        assert(APR.event.activeEvent == "INNER" and APR.event.activeHandler == "inner")
+    end }, "INNER")
+    assert(APR.event.activeEvent == "OUTER" and APR.event.activeHandler == "outer")
+end }
+APR.event.EventHandler(outer, "OUTER")
+assert(not APR.event.activeEvent and not APR.event.activeHandler, "Nested events restore and release their context")
 
 local unitCalls, probes = 0, 0
 local opaque = {}

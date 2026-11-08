@@ -495,10 +495,11 @@ assert(checked == reads, "Repeated blocked actions retain a single bounded nativ
 issecurevariable = originalInspector
 
 -- Offer the controller menu once per mode activation, after the player is ready.
+GetBindingKey = function() end
 pad.playerReady, pad.menuOffered = true, nil
 pad:OfferMenu()
 assert(pad.menu:IsShown() and pad.menuOffered)
-pad.menu:Hide()
+pad:CloseMenu(true)
 pad:OfferMenu()
 assert(not pad.menu:IsShown(), "Closing the offer must not reopen it on later addon events")
 transitions.uninit()
@@ -508,7 +509,7 @@ assert(not pad.menu:IsShown())
 enabled = true
 transitions.init()
 assert(pad.menu:IsShown(), "Re-enabling gamepad UI must directly offer its menu")
-pad.menu:Hide()
+pad:CloseMenu(true)
 pad.menuOffered = nil
 env.setCombat(true)
 pad:OfferMenu()
@@ -516,5 +517,20 @@ assert(not pad.menu:IsShown())
 env.setCombat(false)
 pad:OfferMenu()
 assert(pad.menu:IsShown(), "An offer deferred by combat remains available afterward")
+GetBindingKey = defaultMenuBinding
+local nativePopupShow = StaticPopup_Show
+StaticPopup_Show = function() error("Private gamepad confirmations cannot initialize native StaticPopup bindings") end
+local privateAccepted = 0
+local sharedSelection = APR.UI.selectionDialog
+local privateConfirmation = APR.UI:ShowConfirmationDialog({
+    dialogName = "SyntheticGamepadConfirmation", title = "Equipment", description = "Choose an upgrade",
+}, function() privateAccepted = privateAccepted + 1 end)
+assert(active == privateConfirmation and privateConfirmation:IsShown() and APR.UI.selectionDialog == sharedSelection,
+    "A private confirmation gets native navigation without replacing the shared dialog")
+pad:SelectButton(privateConfirmation.acceptButton, privateConfirmation)
+privateConfirmation.acceptButton.scripts.OnClick()
+assert(privateAccepted == 1 and not privateConfirmation:IsShown() and active == pad.menu,
+    "Accepting a private confirmation returns native focus to its opener")
+StaticPopup_Show = nativePopupShow
 print("Gamepad interface: production route neighbours, workspace detail entry, menu actions and binding window passed")
 return { env = env, pad = pad, tick = tick }

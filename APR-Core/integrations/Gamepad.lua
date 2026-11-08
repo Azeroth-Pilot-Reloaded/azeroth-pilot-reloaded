@@ -414,6 +414,8 @@ function Pad:OfferMenu()
         self.menuOfferPending = nil
         if not self:IsEnabled() or InCombatLockdown() then return end
         self.menuOffered = true
+        local _, bound = self:GetMenuBinding()
+        if bound then return end
         if not self.menu or not self.menu:IsShown() then self:ToggleMenu() end
     end--[[APR_DIAG]]
     offer = APRTrace("APR-Core/integrations/Gamepad.lua:278:offer#24", offer)--[[/APR_DIAG]]

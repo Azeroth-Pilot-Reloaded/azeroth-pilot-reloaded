@@ -84,4 +84,11 @@ assert(#log.entries == 2, "Other addons and inaccessible attribution must be ign
 onEvent(observer, "ADDON_ACTION_FORBIDDEN", "APR", { secret = true })
 assert(log.entries[3].message == "ADDON_ACTION_FORBIDDEN: ", "Secret arguments must not be converted")
 assert(forwarded == 4, "Observing native events must not interfere with error handlers")
+APR.event = { activeEvent = "QUEST_COMPLETE", activeHandler = "done" }
+onEvent(observer, "ADDON_ACTION_BLOCKED", "APR", "UNKNOWN()")
+assert(log.entries[4].event == "QUEST_COMPLETE" and log.entries[4].handler == "done",
+    "Unknown native actions retain the event that triggered them")
+APR.event.activeEvent, APR.event.activeHandler = nil, nil
+onEvent(observer, "ADDON_ACTION_BLOCKED", "APR", "UNKNOWN()")
+assert(not log.entries[4].event and not log.entries[4].handler, "Repeated errors cannot retain stale context")
 print("Errors: handler chaining, APR attribution, restricted strings, bounded storage and BugGrabber counts passed")

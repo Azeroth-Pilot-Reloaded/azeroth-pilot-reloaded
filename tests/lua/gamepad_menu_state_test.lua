@@ -41,6 +41,7 @@ QuestOrderListPanel = CreateFrame("Frame", nil, UIParent)
 QuestOrderListPanel:Hide()
 pad:ObserveMenuState()
 pad.menuOffered, pad.playerReady = nil, true
+GetBindingKey = function() end
 pad:OfferMenu()
 flush()
 assert(pad.menu:IsShown() and not pad.menuButtons.skip:IsEnabled() and not pad.menuButtons.steps:IsEnabled())
@@ -161,3 +162,32 @@ assert(pad.menu.bindingLabel:GetText() == KEY_BINDINGS .. ": " .. chosen)
 APRData.GamepadMenuChord = { "PADDUP", "PADDUP" }
 assert(not pad:GetMenuChord(), "Malformed saved chords are ignored")
 APRData.GamepadMenuChord = nil
+
+-- Login/reload offers respect both native bindings and saved APR chords.
+local function offerWithBinding(nativeKeys, chord, expectedOpen)
+    pad:CloseMenu(true)
+    keys, APRData.GamepadMenuChord = nativeKeys, chord
+    pad.menuOffered = nil
+    pad:OfferMenu()
+    flush()
+    assert(pad.menu:IsShown() == expectedOpen, "Only an unbound controller menu needs an automatic offer")
+    assert(pad.menuOffered, "A bound menu still completes the initial offer")
+    pad:CloseMenu(true)
+    pad:OfferMenu()
+    flush()
+    assert(not pad.menu:IsShown(), "Later restoration must not reopen a completed offer")
+end
+offerWithBinding({ "PAD4" }, nil, false)
+offerWithBinding({ nil, "CTRL-PAD4" }, nil, false)
+offerWithBinding({}, { "PADDUP", "PADRSHOULDER" }, false)
+offerWithBinding({}, { "PADDUP", "PADDUP" }, true)
+offerWithBinding({}, nil, true)
+offerWithBinding({ "F10" }, nil, true)
+
+-- Bindings can finish loading while the initial offer is deferred.
+keys, pad.menuOffered = {}, nil
+pad:OfferMenu()
+keys = { "PAD4" }
+flush()
+assert(not pad.menu:IsShown(), "Recheck the binding immediately before opening the menu")
+keys = {}

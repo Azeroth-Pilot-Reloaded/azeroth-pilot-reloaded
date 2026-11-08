@@ -88,6 +88,10 @@ local function Record(self, message, stack, occurrences, timestamp, attributedAd
     occurrences = PublicNumber(occurrences)
     entry.count = occurrences and math.max(entry.count, occurrences) or entry.count + 1
     entry.last = now
+    local event = PublicString(APR.event and APR.event.activeEvent, 128)
+    local handler = PublicString(APR.event and APR.event.activeHandler, 128)
+    entry.event = event ~= "" and event or nil
+    entry.handler = handler ~= "" and handler or nil
     local route, player = APR.ActiveRoute, APR.PlayerID
     local routeName = PublicString(route, 4096)
     entry.route, entry.step = routeName ~= "" and routeName or nil, nil
