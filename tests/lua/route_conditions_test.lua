@@ -1,6 +1,7 @@
 local function noop() end
+local locale = {}
 function LibStub()
-    return { GetLocale = function() return {} end }
+    return { GetLocale = function() return locale end }
 end
 
 APR = {
@@ -469,4 +470,35 @@ do
     assert(APR:GetNextApplicableStep(steps, 1) == steps[2])
     steps[2] = { AllOf = { { Faction = "Alliance" }, { OnlyInZones = { 99999 } } }, Zone = 50 }
     assert(APR:GetNextApplicableStep(steps, 1) == steps[4])
+end
+
+-- Waypoint destination summaries obey character filters, including nested
+-- branches, but retain instructions whose arrival location is not known yet.
+do
+    local oldClass, oldRoute, oldData = APR.ClassName, APR.RouteQuestStepList.route, APRData
+    local oldKeys, oldText, oldResolve = APR.routeActionKeys, APR.GetRouteActionText, APR.ResolveStepText
+    locale.WAYPOINT, locale.RUN_WAYPOINT, locale.TURN_IN_Q = "Waypoint", "Walk", "Hand in"
+    locale.TRAVEL_TO = "Travel"
+    APR.routeActionKeys = { "LearnSkill" }
+    APR.GetRouteActionText = function(_, _, rule) return "Learn " .. rule.spellID end
+    APR.ResolveStepText = function(_, text) return text end
+    APRData = { player = { route = 1 } }
+    local steps = {
+        { Waypoint = 1, Note = { "Descend" } },
+        { Note = { "Excluded note" }, Faction = "Alliance" },
+        { LearnSkill = { spellID = 10001 }, AllOf = { { Class = "MAGE" }, { OnlyInZones = { 99999 } } } },
+        { Done = { 10002 }, Class = "PRIEST", OnlyInZones = { 99999 } },
+    }
+    APR.RouteQuestStepList.route = { steps = steps }
+    APR.ClassName = "PRIEST"
+    assert(APR:CheckWaypointText() == "[Waypoint] - Hand in", "Priest must not preview another class's training")
+    APR.ClassName = "MAGE"
+    assert(APR:CheckWaypointText() == "[Waypoint] - Learn 10001", "Eligible training remains visible across travel")
+    APR.ClassName = "WARRIOR"
+    assert(APR:CheckWaypointText() == "[Waypoint] - Descend", "Use the eligible note when no action applies")
+    steps[1].Note = nil
+    assert(APR:CheckWaypointText() == "Travel - Waypoint", "Excluded notes cannot become a fallback")
+    assert(steps[3].AllOf[2].OnlyInZones[1] == 99999 and APRData.player.route == 1, "Preview is read-only")
+    APR.ClassName, APR.RouteQuestStepList.route, APRData = oldClass, oldRoute, oldData
+    APR.routeActionKeys, APR.GetRouteActionText, APR.ResolveStepText = oldKeys, oldText, oldResolve
 end

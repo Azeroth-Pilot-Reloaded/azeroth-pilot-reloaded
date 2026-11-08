@@ -449,25 +449,23 @@ function APR:CheckWaypointText()
     IsInList = APRTrace("APR-Core/utils/StepUtils.lua:348:IsInList#12", IsInList)--[[/APR_DIAG]]
 
     local steps = APR:GetRouteSteps(APR.ActiveRoute)
-    for i = currentStepIndex, #steps do
-        local step = steps[i]
+    local step, i = self:GetNextApplicableStep(steps, currentStepIndex - 1)
+    while step do
+        local nextStep = step.UseHS and self:GetNextApplicableStep(steps, i)
+        local stepText, stepKey = APR:GetStepString(step, true, nextStep)
 
-        if step then
-            local nextStep = step.UseHS and self:GetNextApplicableStep(steps, i)
-            local stepText, stepKey = APR:GetStepString(step, true, nextStep)
-
-            if stepKey then
-                if IsInList(stepKey, APR.mainStepOptions) then
-                    return "[" .. L["WAYPOINT"] .. "] - " .. stepText
-                elseif not step["Waypoint"] and IsInList(stepKey, APR.secondaryStepOptions) then
-                    return "[" .. L["WAYPOINT"] .. "] - " .. stepText
-                end
-            end
-
-            if not noteText and step.Note then
-                noteText = APR:GetStepString({ Note = step.Note })
+        if stepKey then
+            if IsInList(stepKey, APR.mainStepOptions) then
+                return "[" .. L["WAYPOINT"] .. "] - " .. stepText
+            elseif not step["Waypoint"] and IsInList(stepKey, APR.secondaryStepOptions) then
+                return "[" .. L["WAYPOINT"] .. "] - " .. stepText
             end
         end
+
+        if not noteText and step.Note then
+            noteText = APR:GetStepString({ Note = step.Note })
+        end
+        step, i = self:GetNextApplicableStep(steps, i)
     end
 
     if noteText then
