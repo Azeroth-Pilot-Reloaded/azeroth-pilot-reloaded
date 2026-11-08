@@ -15,6 +15,7 @@ function Finder:GetSoundChoices()
         -- AceConfig only needs the selected label while building the page.
         -- The sound picker reads the shared catalogue separately when opened.
         self.soundChoices = setmetatable({ default = DEFAULT }, {
+
             --[[APR_DIAG]]
             __index = APRTrace(
                 "APR-Core/features/group/PartyFinderInvites.lua:17:callback#2", --[[/APR_DIAG]]
@@ -136,7 +137,8 @@ BattleNetInvite = APRTrace("APR-Core/features/group/PartyFinderInvites.lua:89:Ba
 
 function Finder:CanInvite(candidate)
     if
-        not candidate
+        APR.CommunicationChannel and APR.CommunicationChannel.departing
+        or not candidate
         or not self:IsEnabled()
         or not self.candidates[candidate.key]
         or GetTime() - candidate.seenAt >= 120
@@ -317,7 +319,8 @@ function Finder:ScheduleInvitations()
     if self.inviteTimer and self.inviteAt == expires then return end
     self:SetTimer(
         "inviteTimer",
-        math.max(0.1, expires - GetTime()), --[[APR_DIAG]]
+        math.max(0.1, expires - GetTime()),
+        --[[APR_DIAG]]
         APRTrace("APR-Core/features/group/PartyFinderInvites.lua:226:callback#18", --[[/APR_DIAG]] function()
             local ok, changed = APRPCall(ExpireInvitations, self)
             -- Publish and schedule once after the batch, even if a native sound
@@ -360,7 +363,9 @@ function Finder:HandleInviteMessage(data, sender)
     self.incomingContext = data
     self:SetTimer(
         "incomingInviteTimer",
-        30, --[[APR_DIAG]]
+        30,
+
+        --[[APR_DIAG]]
         APRTrace(
             "APR-Core/features/group/PartyFinderInvites.lua:258:callback#20", --[[/APR_DIAG]]
             function() self:CloseIncomingInvitation() end --[[APR_DIAG]]
@@ -390,7 +395,9 @@ function Finder:OnNativeInvitation(name)
     -- Native-first delivery must expire too, even if no APR context ever arrives.
     self:SetTimer(
         "incomingInviteTimer",
-        60, --[[APR_DIAG]]
+        60,
+
+        --[[APR_DIAG]]
         APRTrace(
             "APR-Core/features/group/PartyFinderInvites.lua:275:callback#22", --[[/APR_DIAG]]
             function() self:CloseIncomingInvitation() end --[[APR_DIAG]]
@@ -418,7 +425,9 @@ function Finder:ShowCorrelatedInvitation()
     context.expires = self.nativeInviteExpires
     self:SetTimer(
         "incomingInviteTimer",
-        math.max(0.1, context.expires - GetTime()), --[[APR_DIAG]]
+        math.max(0.1, context.expires - GetTime()),
+
+        --[[APR_DIAG]]
         APRTrace(
             "APR-Core/features/group/PartyFinderInvites.lua:285:callback#24", --[[/APR_DIAG]]
             function() self:CloseIncomingInvitation() end --[[APR_DIAG]]
@@ -491,7 +500,9 @@ local function AttachInvitationDialogs(self)
         local button = _G[name]
         if button and not button.aprFinderHooked then
             button:HookScript(
-                "OnClick", --[[APR_DIAG]]
+                "OnClick",
+
+                --[[APR_DIAG]]
                 APRTrace(
                     "APR-Core/features/group/PartyFinderInvites.lua:332:callback#30", --[[/APR_DIAG]]
                     function() self:OnInviteDialogAction(action) end --[[APR_DIAG]]
@@ -510,7 +521,9 @@ function Finder:HookInvitationDialogs()
     if StaticPopup_OnClick and not self.dialogHooks then
         self.dialogHooks = true
         hooksecurefunc(
-            "StaticPopup_OnClick", --[[APR_DIAG]]
+            "StaticPopup_OnClick",
+
+            --[[APR_DIAG]]
             APRTrace(
                 "APR-Core/features/group/PartyFinderInvites.lua:343:callback#32", --[[/APR_DIAG]]
                 function(dialog, index)

@@ -91,7 +91,7 @@ env, finder = Setup()
 candidate = Candidate(env, "Leader-Home", { groupSize = 3, leader = true, recruiting = true })
 finder:GetSettings().sounds.sent = { enabled = true, sound = "default", cooldown = 3 }
 assert(finder:RequestInvite(candidate.key) and #env.requested == 1 and #env.invited == 0)
-assert(#env.soundEvents == 0, "Requesting an invitation also remains silent for legacy profiles")
+assert(#env.soundEvents == 1, "The default discovery alert plays once; requesting an invitation adds no legacy sent sound")
 assert(#env:Messages("I") == 0, "A request to join must not pretend it is an incoming invitation")
 
 -- Neither a forged context nor an addon-only message can display a native invitation.

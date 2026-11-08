@@ -31,6 +31,10 @@ function Fixture.New(options)
         client = options.client or "retail",
         options = options,
     }
+    env.faction = options.faction or "Alliance"
+    env.channelName = env.client == "forever" and ("APR" .. env.faction) or "APR"
+    env.retired = {}
+    function UnitFactionGroup() return env.faction end
     APR = {
         version = options.version or "7.3.0",
         Username = "Local-Home",
@@ -79,7 +83,7 @@ function Fixture.New(options)
         if type(name) == "number" then
             assert(name == 1, "Native restoration may inspect only the /1 slot")
             if env.slotOneLookup then return env.slotOneLookup() end
-            if env.id == 1 then return 1, "APR" end
+            if env.id == 1 then return 1, env.channelName end
             for label, id in pairs(env.unrelatedChannels) do
                 if id == 1 then return 1, label end
             end
@@ -91,10 +95,14 @@ function Fixture.New(options)
             if env.legacyLookup then return env.legacyLookup() end
             return env.legacyID, env.legacyID and env.legacyID > 0 and "APRVersion" or nil
         end
-        assert(name == "APR", "Only APR and its exact legacy version channel may be inspected")
+        if name ~= env.channelName then
+            assert(name == "APR" or name == "APRAlliance" or name == "APRHorde", "No unrelated channel lookup")
+            return env.retired[name] or 0, name
+        end
+        assert(name == env.channelName, "Only the selected rendezvous may be used")
         env.lookups = env.lookups + 1
         if options.lookupError then error("Unavailable channel lookup") end
-        return env.id, env.id > 0 and "APR" or nil
+        return env.id, env.id > 0 and env.channelName or nil
     end
     function GetChannelList()
         env.channelListReads = (env.channelListReads or 0) + 1
@@ -107,20 +115,22 @@ function Fixture.New(options)
         return unpack(result)
     end
     function JoinTemporaryChannel(name)
-        assert(name == "APR", "Discovery and versions must share one channel")
+        assert(name == env.channelName, "Discovery and versions must share one channel")
         env.joined[#env.joined + 1] = { name = name, at = env.now }
         if options.joinError then error("Unavailable join") end
         if not options.delayedJoin then env.id = 7 end
     end
     function LeaveChannelByName(name)
-        assert(name == "APR" or name == "APRVersion", "Unrelated native and user channels must remain untouched")
+        assert(name == env.channelName or name == "APRVersion" or env.retired[name], "Unrelated channels must remain untouched")
         env.left[#env.left + 1] = name
         if name == "APRVersion" then
             if options.legacyLeaveError then error("Unavailable legacy channel leave") end
             env.legacyID = 0
             if options.legacyRenumbersAPR then env.id = options.legacyRenumbersAPR end
-        else
+        elseif name == env.channelName then
             env.id = 0
+        else
+            env.retired[name] = nil
         end
     end
     local function ProtectedChat() error("Shared membership cannot reorder or alter chat windows") end
@@ -703,7 +713,7 @@ for _, client in ipairs({ "retail", "forever" }) do
     channel:Release("versionCheck")
     assert(channel:IsReady() and channel.owners.partyFinder and #env.left == left)
     channel:Release("partyFinder")
-    assert(#env.left == left + 1 and env.left[#env.left] == "APR")
+    assert(#env.left == left + 1 and env.left[#env.left] == env.channelName)
     -- A later explicit user membership is not removed after all owners restart.
     env.id, env.legacyID = 7, 9
     channel:Acquire("partyFinder", function() end)

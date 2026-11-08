@@ -3,6 +3,12 @@
 -- navigation/step renderer are simulated; no maintained guide is loaded.
 local FinderFixture = dofile("tests/lua/party_finder_test_env.lua")
 
+local function NamedCount(names, name)
+    local count = 0
+    for _, joined in ipairs(names) do if joined == name then count = count + 1 end end
+    return count
+end
+
 local function Setup(client)
     local ui = dofile("tests/lua/route_ui_test_env.lua")
     local uiAPR, uiCreateFrame, uiLibStub = APR, CreateFrame, LibStub
@@ -202,7 +208,7 @@ local function Journey(client)
         ace == env.directAceComm and minor == 14 and finder.directReady,
         "The composed journey retains the real embedded direct transport"
     )
-    assert(finder.channelID == 7 and finder.worldChannelID == 7 and #env.joined == 1)
+    assert(finder.channelID == 7 and finder.worldChannelID == 7 and NamedCount(env.joined, env.channelName) == 1)
     assert(finder:Search())
     local query = finder.query
     local presence = env:Presence({ map = 599 })
@@ -236,7 +242,7 @@ local function Journey(client)
     env:Enter(601, "party", false, false)
     assert(finder:GetStatus() == "instance" and finder.channelID == 7 and finder.worldChannelID == 7)
     assert(
-        env.channels.APR == 7 and #env.joined == 1 and #env.left == 0,
+        env.channels[env.channelName] == 7 and NamedCount(env.joined, env.channelName) == 1 and NamedCount(env.left, env.channelName) == 0,
         "Instance entry retains the shared membership while suspending discovery"
     )
     assert(not finder.query and not next(finder.responses) and not finder.replyTimer and not finder.queryTimer)
@@ -368,7 +374,7 @@ local function Journey(client)
     env:Event("PLAYER_ENTERING_WORLD", false, false)
     env:Advance(65)
     assert(finder.channelID == 7 and finder.worldChannelID == 7 and finder:GetStatus() == "ready")
-    assert(#env.joined == 1 and #env.left == 0, "Returning outdoors reuses the same shared membership")
+    assert(NamedCount(env.joined, env.channelName) == 1 and NamedCount(env.left, env.channelName) == 0, "Returning outdoors reuses the same shared membership")
     assert(not APR:GetCurrentDelveContext() and APR.ActiveRoute == "synthetic" and APRData.fixture.synthetic == 6)
     party:SendGroupMessage(true)
     assert(party.GroupListSteps.Local.currentStep == 6 and PartyScreenPanel:IsShown())

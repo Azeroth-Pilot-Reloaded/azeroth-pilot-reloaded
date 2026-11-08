@@ -50,22 +50,24 @@ end
 for _, client in ipairs({ "retail", "forever" }) do
     local env = New({ client = client, population = 10000 })
     local finder = env.finder
-    assert(finder.channelID == 7 and #env.joined == 1 and env.joined[1] == "APR")
+    assert(finder.worldChannelID == 7 and #env.joined == (client == "forever" and 2 or 1) and env.joined[1] == env.channelName)
     for index = 1, 100 do
         env.map, env.warMode, env.instance = 600 + index, index % 2 == 0, index % 5 == 0
         env:Event("ZONE_CHANGED_NEW_AREA")
         env:Advance(0.5)
         assert(
-            finder.channelName == "APR"
-                and finder.worldChannelName == "APR"
-                and finder.channelID == 7
+            finder.channelName == (client == "forever" and not env.instance and (env.channelName .. "Z" .. env.map) or env.channelName)
+                and finder.worldChannelName == env.channelName
                 and finder.worldChannelID == 7
         )
     end
     env.instance = false
     env:Event("PLAYER_ENTERING_WORLD")
     env:Advance(0.5)
-    assert(#env.joined == 1 and #env.left == 0 and #env:Messages("Q") == 0 and #env:Messages("P") == 0)
+    local globalJoins, globalLeaves = 0, 0
+    for _, name in ipairs(env.joined) do if name == env.channelName then globalJoins = globalJoins + 1 end end
+    for _, name in ipairs(env.left) do if name == env.channelName then globalLeaves = globalLeaves + 1 end end
+    assert(globalJoins == 1 and globalLeaves == 0 and #env:Messages("Q") == 0 and #env:Messages("P") == 0)
     assert(
         not next(finder.responses) and env:ActiveTimers() == 0,
         "Stable membership and inactive discovery must settle without polling"

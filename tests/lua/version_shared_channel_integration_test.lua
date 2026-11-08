@@ -20,7 +20,7 @@ local function Receive(env, message, id, name)
         nil,
         0,
         id or env.id,
-        name or "APR"
+        name or env.channelName
     )
 end
 
@@ -39,7 +39,7 @@ for _, client in ipairs({ "retail", "forever" }) do
         env:Advance(0.01)
         assert(
             #env.joined == 1
-                and env.joined[1].name == "APR"
+                and env.joined[1].name == env.channelName
                 and finderID == 7
                 and channel:GetChannelID() == 7
                 and env.version.sharedChannelID == 7
@@ -184,3 +184,14 @@ assert(#env.joined == 0 and #env.sent == 0 and env:ActiveTimers() == 0)
 print(
     "Version/shared service integration: solo login/reload, one membership for both owners, 100 transitions, bounded retry, renumbering and restrictions passed"
 )
+
+local env = New()
+env:Advance(6)
+local channel = env.channel
+assert(env.version:SendSharedMessage("Q"))
+env:Event("CHAT_MSG_CHANNEL_NOTICE", "NOT_ALLOWED_IN_CHANNEL", "", "", "", "", "", 0, env.id, "APR")
+assert(channel.addonTransport == "blocked" and channel:IsReady())
+local before = #env.sent
+assert(not env.version:SendSharedMessage("Q"))
+env:Advance(60)
+assert(#env.sent == before, "Confirmed channel refusal silences pending and future version sends")

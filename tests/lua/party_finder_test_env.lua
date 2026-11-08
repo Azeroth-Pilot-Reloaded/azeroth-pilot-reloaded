@@ -40,6 +40,9 @@ function Fixture.New(options)
         friendReads = 0,
         bnetReads = 0,
     }
+    env.faction = options.faction or "Alliance"
+    env.channelName = options.client == "forever" and ("APR" .. env.faction) or "APR"
+    if options.prejoinedZone then env.channels[env.channelName .. "Z" .. env.map] = 8 end
     local locale = setmetatable(
         { GROUP_STEPS_AHEAD = "%d ahead", GROUP_STEPS_BEHIND = "%d behind" },
         { __index = function(_, key) return key end }
@@ -118,7 +121,10 @@ function Fixture.New(options)
     }
     function GetChannelName(name)
         if name == "APRVersion" then return 0 end
-        assert(name == "APR", "Discovery must only use the stable shared rendezvous")
+        if name ~= env.channelName then
+            assert(name == "APR" or name == "APRAlliance" or name == "APRHorde" or name:match("^" .. env.channelName .. "Z%d+$"), "No unrelated channel lookup")
+            return env.channels[name] or 0, name
+        end
         if options.prejoined or options.prejoinedWorld then
             env.channels[name] = env.channelID > 0 and env.channelID or 7
         end
@@ -147,10 +153,16 @@ function Fixture.New(options)
     end
     function JoinTemporaryChannel(name)
         env.joined[#env.joined + 1] = name
-        if options.joinError then error("Channel unavailable") end
-        assert(name == "APR", "No per-zone or APRVersion channel may be joined")
+        if options.joinError or options.zoneJoinError and name ~= env.channelName then error("Channel unavailable") end
+        assert(name == env.channelName or name:match("^" .. env.channelName .. "Z%d+$"), "Only the client/faction rendezvous and current zone may be joined")
         if not options.delayedJoin then
-            env.channels[name], env.channelID = 7, 7
+            local id = 7
+            if name ~= env.channelName then
+                env.zoneIDCounter = (env.zoneIDCounter or 7) + 1
+                id = env.zoneIDCounter
+            end
+            env.channels[name] = id
+            if name ~= env.channelName or not env.finder or not env.finder.zoneChannel then env.channelID = id end
         end
     end
     function LeaveChannelByName(name)
@@ -162,13 +174,17 @@ function Fixture.New(options)
     if not options.noPopulationAPI then
         function GetNumDisplayChannels()
             env.populationReads = env.populationReads + 1
-            return 3
+            return 3 + (env.finder and env.finder.zoneChannel and env.channels[env.finder.zoneChannel.name] and 1 or 0)
         end
         function GetChannelDisplayInfo(index)
             if index == 1 then return "Synthetic header", true, false, 0, 0, true end
             if index == 2 then return "Existing channel", false, false, 1, 1, true end
-            if index == 3 and env.channels.APR then
-                return "APR", false, false, env.channels.APR, env.population, true
+            if index == 3 and env.channels[env.channelName] then
+                return env.channelName, false, false, env.channels[env.channelName], env.population, true
+            end
+            local zone = env.finder and env.finder.zoneChannel
+            if index == 4 and zone and env.channels[zone.name] then
+                return zone.name, false, false, env.channels[zone.name], env.zonePopulation or env.population, true
             end
         end
     end
@@ -465,6 +481,7 @@ function Fixture.New(options)
     if options.invites then env:LoadInvites() end
     finder:OnInit()
     env:Advance(options.noSettle and 0 or 6)
+    env.channelID = finder.channelID or env.channelID
     return env
 end
 

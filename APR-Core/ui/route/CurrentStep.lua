@@ -186,6 +186,45 @@ finderIcon:SetPoint("CENTER")
 finderIcon:SetSize(16, 16)
 if APR.RegisterThemeRegion and APR.GetSkinProviderName then APR:RegisterThemeRegion(finderIcon, "icon", 1, true) end
 finderButton:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight", "ADD")
+-- A native alpha animation marks the saved automatic mode, including its idle intervals.
+finderButton.autoGlow = finderButton:CreateTexture(nil, "OVERLAY")
+finderButton.autoGlow:SetTexture("Interface\\Buttons\\UI-ActionButton-Border")
+finderButton.autoGlow:SetBlendMode("ADD")
+finderButton.autoGlow:SetVertexColor(1, 0.78, 0.2)
+finderButton.autoGlow:SetSize(36, 36)
+finderButton.autoGlow:SetPoint("CENTER")
+finderButton.autoGlow:Hide()
+finderButton.autoPulse = finderButton.autoGlow:CreateAnimationGroup()
+local finderPulseAlpha = finderButton.autoPulse:CreateAnimation("Alpha")
+finderPulseAlpha:SetFromAlpha(0.25)
+finderPulseAlpha:SetToAlpha(0.85)
+finderPulseAlpha:SetDuration(0.9)
+finderPulseAlpha:SetSmoothing("IN_OUT")
+finderButton.autoPulse:SetLooping("BOUNCE")
+local function UpdateFinderGlow(active)
+    if active and finderButton:IsVisible() then
+        finderButton.autoGlow:Show()
+        if not finderButton.autoPulse:IsPlaying() then finderButton.autoPulse:Play() end
+    else
+        finderButton.autoPulse:Stop()
+        finderButton.autoGlow:Hide()
+    end
+end--[[APR_DIAG]]
+UpdateFinderGlow = APRTrace("APR-Core/ui/route/CurrentStep.lua:204:UpdateFinderGlow#10", UpdateFinderGlow)--[[/APR_DIAG]]
+finderButton:SetScript(
+    "OnHide", --[[APR_DIAG]]
+    APRTrace(
+        "APR-Core/ui/route/CurrentStep.lua:213:callback#11", --[[/APR_DIAG]]
+        function() UpdateFinderGlow(false) end --[[APR_DIAG]]
+    ) --[[/APR_DIAG]]
+)
+finderButton:SetScript(
+    "OnShow", --[[APR_DIAG]]
+    APRTrace(
+        "APR-Core/ui/route/CurrentStep.lua:214:callback#12", --[[/APR_DIAG]]
+        function() APR.currentStep:RefreshPartyFinderButton() end --[[APR_DIAG]]
+    ) --[[/APR_DIAG]]
+)
 finderButton.badge = finderButton:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
 finderButton.badge:SetPoint("BOTTOMRIGHT", 3, -3)
 APR:RegisterFontString(finderButton.badge, "currentStep", { role = "accent", sizeDelta = -2 })
@@ -243,6 +282,12 @@ function APR.currentStep:RefreshPartyFinderButton(count)
         finderButton.count = count
         finderButton.badge:SetText(count > 99 and "99+" or tostring(count))
     end
+    local visible = finder ~= nil
+        and settings.enabled == true
+        and settings.showButton ~= false
+        and profile ~= nil
+        and profile.enableAddon == true
+    UpdateFinderGlow(visible and settings.autoScan == true)
     local badgeVisible = settings.showBadge ~= false and count > 0
     if finderButton.badge:IsShown() ~= badgeVisible then finderButton.badge:SetShown(badgeVisible) end
     if InCombatLockdown() then
@@ -256,12 +301,8 @@ function APR.currentStep:RefreshPartyFinderButton(count)
         self.partyFinderButtonDirty = nil
         finderButton:UnregisterEvent("PLAYER_REGEN_ENABLED")
     end
-    local visible = finder ~= nil
-        and settings.enabled == true
-        and settings.showButton ~= false
-        and profile ~= nil
-        and profile.enableAddon == true
     if finderButton:IsShown() ~= visible then finderButton:SetShown(visible) end
+    UpdateFinderGlow(visible and settings.autoScan == true)
     if CurrentStepFrameHeader.Text and self.partyFinderAnchorVisible ~= visible then
         CurrentStepFrameHeader.Text:SetPoint(
             "RIGHT",
