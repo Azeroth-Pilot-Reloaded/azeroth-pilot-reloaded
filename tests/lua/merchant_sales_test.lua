@@ -120,6 +120,7 @@ local function reset(rule)
     prices, excluded, equipment = {}, {}, {}
     APR.routeActionState, APRData.player.test = nil, 1
     APR.settings.profile.enableAddon, APR.settings.profile.autoVendor = true, true
+    APR.settings.profile.autoSellRouteItems = true
     C_MerchantFrame, C_Container = nil, containers
 end
 local function item(bag, slot, id, quality, count, noValue)
@@ -177,6 +178,54 @@ local function nativeAPI()
         end,
     }
 end
+
+-- Route sale opt-out preserves instructions and observes manual completion on both API paths.
+for _, native in ipairs({ false, true }) do
+    reset({ SellItems = { junk = true, items = { 200 }, equippedSlots = { 16 }, npcID = 42 } })
+    if native then nativeAPI() end
+    APR.settings.profile.autoSellRouteItems = false
+    fill(2)
+    item(0, 3, 200, 2)
+    equipment[16] = 300
+    open()
+    tick(2)
+    assert(requests == 0 and nativeCalls == 0 and advances == 0 and activeTimers() == 0)
+    bags[0] = { [4] = { itemID = 300, quality = 2, stackCount = 1 } }
+    equipment[16] = nil
+    APR:HandleRouteAction(step)
+    assert(requests == 0 and nativeCalls == 0 and advances == 0, "Unequipping must not sell the original target")
+    bags[0][4] = nil
+    APR:HandleRouteAction(step)
+    assert(advances == 1, "Manual sales must complete the route instruction")
+
+    reset({ SellItems = { junk = true } })
+    if native then nativeAPI() end
+    fill(4)
+    open()
+    APR.settings.profile.autoSellRouteItems = false
+    -- Acknowledging a native request produces one bag refresh, before the retry timeout.
+    C_Timer.NewTimer(native and 0.36 or 0.16, function() APR:HandleRouteAction(step) end)
+    tick(3)
+    assert(sold == (native and 4 or 1) and requests == (native and 0 or 1))
+    assert(nativeCalls == (native and 1 or 0) and activeTimers() == 0, "Disabling stops subsequent sale requests")
+    assert(advances == (native and 1 or 0), "A completed in-flight request must not leave manual mode waiting for a timer")
+
+    reset()
+    if native then nativeAPI() end
+    APR.settings.profile.autoSellRouteItems = false
+    fill(2)
+    open()
+    tick(3)
+    assert(sold == 2, "The route option must not disable ordinary auto-vendor")
+end
+
+-- Missing legacy values retain automatic route selling independently of auto-vendor.
+reset({ SellItems = { items = { 200 } } })
+APR.settings.profile.autoSellRouteItems, APR.settings.profile.autoVendor = nil, false
+item(0, 1, 200, 2)
+open()
+tick(2)
+assert(sold == 1 and advances == 1)
 
 -- More than the server's usual burst allowance, including the final equipped bag.
 reset()

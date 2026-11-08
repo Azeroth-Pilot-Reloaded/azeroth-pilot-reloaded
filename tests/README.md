@@ -236,6 +236,10 @@ junk selling and the container fallback: large inventories, delayed/rejected
 sales, locks, missing item data, equipped targets and cancelled retries. In game,
 verify both paths with full bags on Retail and Forever, confirm native junk
 selling opens no popup, and close the merchant during a sale to check cancellation.
+The route-sale opt-out also covers manual completion, equipped targets, stopping
+retries and independence from ordinary auto-vendor on both merchant API paths.
+In game, toggle route selling in Automation during a sale on Retail and Forever;
+already submitted requests can finish, but no further sale should be requested.
 
 `merchant_supplies_test.lua` uses invented items to check that supply opt-in only
 controls automatic requests: instructions remain visible, manual partial/full

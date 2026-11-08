@@ -27,13 +27,17 @@ APR.routeconfig = { InitRouteConfig = function() return {} end }
 APR.settings.CreateBlizzardLauncher = function() end
 APR.settings:InitializeSettings()
 assert(defaults.profile.autoBuySupplies == false, "Every new or existing profile defaults to manual supply buying")
+assert(defaults.profile.autoSellRouteItems == true, "Route selling preserves the existing automatic default")
 APR.settings:createBlizzOptions()
 dofile("APR-Core/config/WorkspaceOptions.lua")
-local option
+local option, saleOption
 for _, category in ipairs(APR.WorkspaceOptions:Build(APR.settings)) do
     if category.id == "automation" then
         for _, view in ipairs(APR.WorkspaceOptions:Views(category)) do
-            if view.id == "main" then option = view.options.args.comfort.args.autoBuySupplies end
+            if view.id == "main" then
+                option = view.options.args.comfort.args.autoBuySupplies
+                saleOption = view.options.args.comfort.args.autoSellRouteItems
+            end
         end
     end
 end
@@ -60,3 +64,16 @@ APR.settings.profile.enableAddon = false
 option.set({ "autoBuySupplies" }, true)
 assert(resumes == 1, "The opt-in must respect the global addon switch")
 print("Supply settings: default-off, Automation visibility, merchant resume and addon switch passed")
+
+assert(saleOption and saleOption.type == "toggle" and saleOption.get({ "autoSellRouteItems" }) == true)
+local cancelled, refreshed = 0, 0
+APR.npcInteraction.CancelMerchantSales = function() cancelled = cancelled + 1 end
+APR.event = { QueueStepRefresh = function() refreshed = refreshed + 1 end }
+saleOption.set({ "autoSellRouteItems" }, false)
+assert(not APR.settings.profile.autoSellRouteItems and cancelled == 1 and refreshed == 1)
+saleOption.set({ "autoSellRouteItems" }, true)
+assert(APR.settings.profile.autoSellRouteItems and cancelled == 2 and refreshed == 2)
+assert(APR.settings.profile.autoVendor == false, "Route selling and ordinary auto-vendor are independent")
+APR.npcInteraction.autoVendorState = {}
+saleOption.set({ "autoSellRouteItems" }, false)
+assert(cancelled == 2 and refreshed == 3, "Changing route selling must preserve an ordinary auto-vendor session")

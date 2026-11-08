@@ -188,7 +188,7 @@ JunkSnapshot = APRTrace("APR-Core/features/questing/RouteActions.lua:139:JunkSna
 
 -- Process one complete stack at a time. Merchant retries also run on a timer:
 -- locked items and rejected requests do not necessarily produce another bag event.
-function APR:ProcessRouteItems(key, rule, state)
+function APR:ProcessRouteItems(key, rule, state, automatic)
     -- A linked sale cannot decide whether the visit is obsolete before the
     -- initial quest snapshot. Do not capture inventory or mutate pending state.
     if key == "SellItems" and rule.questID and self.startupQuestStatePending then return false end
@@ -237,6 +237,7 @@ function APR:ProcessRouteItems(key, rule, state)
         state.pending = nil
     end
     local nativeJunk = key == "SellItems"
+        and automatic ~= false
         and rule.junk
         and not state.nativeJunkUnavailable
         and C_MerchantFrame
@@ -250,7 +251,7 @@ function APR:ProcessRouteItems(key, rule, state)
         if count and count < pending.count then
             pending.count, pending.time = count, GetTime()
         end
-        if count ~= 0 and GetTime() - pending.time < 1 then return false end
+        if automatic ~= false and count ~= 0 and GetTime() - pending.time < 1 then return false end
         if pending.items then
             local remaining = JunkSnapshot()
             for id, item in pairs(pending.items) do
@@ -294,9 +295,12 @@ function APR:ProcessRouteItems(key, rule, state)
                 end
                 if key == "SellItems" and rule.junk and not nativeJunk and info.quality == nil then
                     blocked = true
-                    state.saleNeedsRetry = true
+                    if automatic ~= false then state.saleNeedsRetry = true end
                 end
-                if wanted and info.isLocked then
+                if wanted and key == "SellItems" and automatic == false then
+                    -- Keep the instruction until the player sells the targets or skips it.
+                    blocked = true
+                elseif wanted and info.isLocked then
                     if key ~= "SellItems" then return false end
                     blocked = true
                     state.saleNeedsRetry = true
@@ -488,12 +492,15 @@ function APR:HandleRouteAction(step)
                 if key == "SellItems" and self.npcInteraction and self.npcInteraction.autoVendorState then
                     self.npcInteraction:CancelMerchantSales()
                 end
-                complete = self:ProcessRouteItems(key, rule, state)
+                local profile = self.GetSettingsProfile and self:GetSettingsProfile()
+                local automatic = key ~= "SellItems" or not profile or profile.autoSellRouteItems ~= false
+                complete = self:ProcessRouteItems(key, rule, state, automatic)
                 if key == "SellItems" and self.npcInteraction and self.npcInteraction.QueueMerchantSaleRetry then
                     -- Equipment removal and impossible sales wait for normal inventory events.
                     -- Only pending requests, locks and missing item data need timed retries.
                     if
                         complete
+                        or not automatic
                         or not self.routeMerchantOpen
                         or not (state.pending or state.junkPending or state.saleNeedsRetry)
                     then

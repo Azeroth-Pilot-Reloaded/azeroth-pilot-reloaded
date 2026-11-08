@@ -33,6 +33,12 @@ local function SetProfileOption(info, value)
     local profile = APR:GetSettingsProfile()
     if not profile then return end
     profile[info[#info]] = value
+    if info[#info] == "autoSellRouteItems" then
+        if APR.npcInteraction and not APR.npcInteraction.autoVendorState then
+            APR.npcInteraction:CancelMerchantSales()
+        end
+        if APR.event then APR.event:QueueStepRefresh() end
+    end
     if
         info[#info] == "autoBuySupplies"
         and value == true
@@ -106,6 +112,7 @@ function APR.settings:InitializeSettings()
             autoHandIn = true,
             autoGossip = true,
             autoVendor = false,
+            autoSellRouteItems = true,
             autoBuySupplies = false,
             autoRepair = false,
             autoSkipCutScene = true,
@@ -1586,6 +1593,15 @@ function APR.settings:createBlizzOptions()
                                 type = "toggle",
                                 name = L["AUTO_VENDOR"],
                                 desc = L["AUTO_VENDOR_DESC"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = SetProfileOption,
+                            },
+                            autoSellRouteItems = {
+                                order = 8.45,
+                                type = "toggle",
+                                name = L["AUTO_SELL_ROUTE_ITEMS"],
+                                desc = L["AUTO_SELL_ROUTE_ITEMS_DESC"],
                                 width = "full",
                                 get = GetProfileOption,
                                 set = SetProfileOption,
