@@ -88,55 +88,51 @@ local CurrentStepFrameHeader = APR:CreateFrameHeader(
     "currentStep"
 ) -- don't replace with APR.title
 
--- Setup drag with right-click menu support
+-- Both mouse and drag scripts use one lifecycle: clients can fire both pairs.
+local function StartCurrentStepDrag()
+    if InCombatLockdown() or APR.settings.profile.currentStepLock then return end
+    if APR.settings.profile.currentStepAttachFrameToQuestLog then
+        APR.QuestTracker:StartDrag()
+    elseif not CurrentStepFrame.isMoving then
+        CurrentStepFrame:StartMoving()
+        CurrentStepFrame.isMoving = true
+    end
+end--[[APR_DIAG]]
+StartCurrentStepDrag = APRTrace("APR-Core/ui/route/CurrentStep.lua:90:StartCurrentStepDrag#2", StartCurrentStepDrag)--[[/APR_DIAG]]
+
+local function StopCurrentStepDrag()
+    if APR.QuestTracker:StopDrag() then return end
+    if not CurrentStepFrame.isMoving then return end
+    CurrentStepFrame:StopMovingOrSizing()
+    CurrentStepFrame.isMoving = false
+    LibWindow.SavePosition(CurrentStepScreenPanel)
+    if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
+        APR.questOrderList:ApplySnapAnchor()
+    end
+end--[[APR_DIAG]]
+StopCurrentStepDrag = APRTrace("APR-Core/ui/route/CurrentStep.lua:100:StopCurrentStepDrag#3", StopCurrentStepDrag)--[[/APR_DIAG]]
+
+CurrentStepFrame:SetMovable(true)
 CurrentStepFrameHeader:RegisterForDrag("LeftButton")
-APR:SetupHeaderDrag(
-    CurrentStepFrameHeader,
-    CurrentStepFrame, --[[APR_DIAG]]
-    APRTrace(
-        "APR-Core/ui/route/CurrentStep.lua:86:callback#2", --[[/APR_DIAG]]
-        function()
-            return not InCombatLockdown()
-                and not APR.settings.profile.currentStepLock
-                and not APR.settings.profile.currentStepAttachFrameToQuestLog
-        end --[[APR_DIAG]]
-    ) --[[/APR_DIAG]], --[[APR_DIAG]]
-    APRTrace("APR-Core/ui/route/CurrentStep.lua:89:callback#3", --[[/APR_DIAG]] function()
-        LibWindow.SavePosition(CurrentStepScreenPanel)
-        if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
-            APR.questOrderList:ApplySnapAnchor()
-        end
-    end--[[APR_DIAG]]) --[[/APR_DIAG]], --[[APR_DIAG]]
-    APRTrace("APR-Core/ui/route/CurrentStep.lua:94:callback#4", --[[/APR_DIAG]] function()
-        -- Right-click handler
-        APR.currentStep:ShowHeaderMenu(CurrentStepFrameHeader)
-    end--[[APR_DIAG]]) --[[/APR_DIAG]]
-)
-
--- Also setup drag via RegisterForDrag for smoother behavior
 CurrentStepFrameHeader:SetScript(
-    "OnDragStart", --[[APR_DIAG]]
-    APRTrace("APR-Core/ui/route/CurrentStep.lua:100:callback#5", --[[/APR_DIAG]] function(self)
-        if
-            not InCombatLockdown()
-            and not APR.settings.profile.currentStepLock
-            and not APR.settings.profile.currentStepAttachFrameToQuestLog
-        then
-            self:GetParent():StartMoving()
+    "OnMouseDown", --[[APR_DIAG]]
+    APRTrace("APR-Core/ui/route/CurrentStep.lua:113:callback#4", --[[/APR_DIAG]] function(_, button)
+        if button == "RightButton" then
+            APR.currentStep:ShowHeaderMenu(CurrentStepFrameHeader)
+        elseif button == "LeftButton" then
+            StartCurrentStepDrag()
         end
     end--[[APR_DIAG]]) --[[/APR_DIAG]]
 )
-
 CurrentStepFrameHeader:SetScript(
-    "OnDragStop", --[[APR_DIAG]]
-    APRTrace("APR-Core/ui/route/CurrentStep.lua:106:callback#6", --[[/APR_DIAG]] function(self)
-        self:GetParent():StopMovingOrSizing()
-        LibWindow.SavePosition(CurrentStepScreenPanel)
-        if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
-            APR.questOrderList:ApplySnapAnchor()
-        end
+    "OnMouseUp", --[[APR_DIAG]]
+    APRTrace("APR-Core/ui/route/CurrentStep.lua:120:callback#5", --[[/APR_DIAG]] function(_, button)
+        if button == "LeftButton" then StopCurrentStepDrag() end
     end--[[APR_DIAG]]) --[[/APR_DIAG]]
 )
+CurrentStepFrameHeader:SetScript("OnDragStart", StartCurrentStepDrag)
+CurrentStepFrameHeader:SetScript("OnDragStop", StopCurrentStepDrag)
+CurrentStepFrameHeader:HookScript("OnHide", StopCurrentStepDrag)
 
 -- Create the settings button (left of minimize button)
 local CurrentStepFrameSettingsButton = CreateFrame("Button", "CurrentStepFrameSettingsButton", CurrentStepFrameHeader)

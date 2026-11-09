@@ -470,6 +470,10 @@ probe serves the CurrentStep fallback; it stays dormant when the main observer e
   `currentStepTrackerSide` intentionally has no AceDB default: existing attached profiles
   migrate to `below`, other profiles start with `above`. Placement group offsets live in
   APR's profile, never in the tracker addon's saved settings.
+  Above, dragging APR's unlocked current-step header moves the entire attached
+  group live and saves the group offset. A temporary unprotected mover keeps
+  tracker frames outside APR's secure anchor hierarchy; combat stops the drag.
+  Native tracker dragging keeps ownership of the user's new anchors.
   Blizzard's above adapter temporarily removes its default-position tracker from
   `RightManagedFrameContainer`, disables screen clamping, and fits its viewport below
   the complete APR stack (including headers and configured gaps). Native managed
