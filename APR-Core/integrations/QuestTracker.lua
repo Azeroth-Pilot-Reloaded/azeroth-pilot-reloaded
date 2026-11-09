@@ -413,7 +413,13 @@ function Tracker:GetAnchor()
         local mover = movers and frame.GetName and movers[frame:GetName()]
         editing = mover and mover.mover and mover.mover:IsShown()
     end
-    if editing or (_G.EditModeManagerFrame and EditModeManagerFrame:IsShown()) or frame.isMoving or frame.isSizing then
+    if frame.isMoving or frame.isSizing then
+        -- The provider has already started moving: restoring our old anchors
+        -- here would pull its frame out from under the cursor.
+        self:Release(true)
+        return
+    end
+    if editing or (_G.EditModeManagerFrame and EditModeManagerFrame:IsShown()) then
         self:Release()
         return
     end
@@ -515,6 +521,102 @@ function Tracker:GetAnchor()
     return baseX + dx, baseTop + dy - headerHeight
 end--[[APR_DIAG]]
 Tracker.GetAnchor = APRTrace("APR-Core/integrations/QuestTracker.lua:346:Tracker:GetAnchor#19", Tracker.GetAnchor)--[[/APR_DIAG]]
+
+-- Move an unprotected proxy instead of attaching secure APR children to a
+-- provider frame. Only an active drag installs per-frame work.
+function Tracker:StartDrag()
+    if self.drag then return true end
+    local profile = APR:GetSettingsProfile()
+    if
+        InCombatLockdown()
+        or not profile
+        or profile.currentStepLock
+        or not profile.currentStepAttachFrameToQuestLog
+        or self:GetSide(profile) ~= "above"
+        or (APR.LayoutEditor and APR.LayoutEditor.active)
+    then
+        return false
+    end
+    local x, y = self:GetAnchor()
+    if not x or not y then return false end
+    local frame = self:Resolve()
+    if not self.dragProxy then
+        self.dragProxy = CreateFrame("Frame", nil, UIParent)
+        self.dragProxy:SetMovable(true)
+        self.dragProxy:EnableMouse(false)
+    end
+    local proxy = self.dragProxy
+    proxy:SetSize(CurrentStepScreenPanel:GetWidth(), CurrentStepScreenPanel:GetHeight())
+    proxy:ClearAllPoints()
+    proxy:SetPoint("TOP", UIParent, "BOTTOMLEFT", x, y)
+    local offset = profile.currentStepTrackerOffset or {}
+    self.drag = {
+        profile = profile,
+        frame = frame,
+        x = x,
+        y = y,
+        dx = tonumber(offset.x) or 0,
+        dy = tonumber(offset.y) or 0,
+    }
+    proxy:Show()
+    proxy:SetScript(
+        "OnUpdate", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/integrations/QuestTracker.lua:525:callback#21", --[[/APR_DIAG]]
+            function() self:UpdateDrag() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
+    proxy:RegisterEvent("PLAYER_REGEN_DISABLED")
+    proxy:SetScript(
+        "OnEvent", --[[APR_DIAG]]
+        APRTrace(
+            "APR-Core/integrations/QuestTracker.lua:527:callback#22", --[[/APR_DIAG]]
+            function() self:StopDrag() end --[[APR_DIAG]]
+        ) --[[/APR_DIAG]]
+    )
+    proxy:StartMoving()
+    return true
+end--[[APR_DIAG]]
+Tracker.StartDrag = APRTrace("APR-Core/integrations/QuestTracker.lua:503:Tracker:StartDrag#20", Tracker.StartDrag)--[[/APR_DIAG]]
+
+function Tracker:UpdateDrag()
+    local drag = self.drag
+    if not drag then return end
+    local profile = APR:GetSettingsProfile()
+    if
+        InCombatLockdown()
+        or profile ~= drag.profile
+        or not profile.currentStepAttachFrameToQuestLog
+        or profile.currentStepLock
+        or self:GetSide(profile) ~= "above"
+        or self:Resolve() ~= drag.frame
+        or not CurrentStepScreenPanel:IsShown()
+        or (APR.LayoutEditor and APR.LayoutEditor.active)
+    then
+        self:StopDrag(true)
+        return
+    end
+    local x, y = self:Geometry(self.dragProxy, "top")
+    if not x or not y then return end
+    profile.currentStepTrackerOffset = { x = drag.dx + x - drag.x, y = drag.dy + y - drag.y }
+    APR.currentStep:RefreshQuestTrackerAnchor()
+end--[[APR_DIAG]]
+Tracker.UpdateDrag = APRTrace("APR-Core/integrations/QuestTracker.lua:532:Tracker:UpdateDrag#23", Tracker.UpdateDrag)--[[/APR_DIAG]]
+
+function Tracker:StopDrag(skipUpdate)
+    if not self.drag then return false end
+    if not skipUpdate then self:UpdateDrag() end
+    if not self.drag then return true end
+    self.drag = nil
+    local proxy = self.dragProxy
+    proxy:StopMovingOrSizing()
+    proxy:SetScript("OnUpdate", nil)
+    proxy:SetScript("OnEvent", nil)
+    proxy:UnregisterEvent("PLAYER_REGEN_DISABLED")
+    proxy:Hide()
+    return true
+end--[[APR_DIAG]]
+Tracker.StopDrag = APRTrace("APR-Core/integrations/QuestTracker.lua:548:Tracker:StopDrag#24", Tracker.StopDrag)--[[/APR_DIAG]]
 
 function Tracker:SavePreviewPosition(preview)
     local profile = APR:GetSettingsProfile()

@@ -725,7 +725,8 @@ function APR.settings:createBlizzOptions()
                                     "APR-Core/config/Config.lua:529:callback#40", --[[/APR_DIAG]]
                                     function()
                                         return not self.profile.currentStepShow
-                                            or self.profile.currentStepAttachFrameToQuestLog
+                                            or (self.profile.currentStepAttachFrameToQuestLog
+                                                and APR.QuestTracker:GetSide(self.profile) ~= "above")
                                             or not self.profile.enableAddon
                                     end --[[APR_DIAG]]
                                 ) --[[/APR_DIAG]],
