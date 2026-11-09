@@ -507,6 +507,10 @@ APR.GetPopupButtons = APRTrace("APR-Core/ui/foundations/TextStyles.lua:434:APR:G
 
 function APR:StyleStaticPopup(popup)
     if not popup then return end
+    -- StaticPopup and AceConfig lend these frames to other addons. Elevate only
+    -- APR's showing, before its sibling backdrop copies the popup's strata.
+    popup._aprOriginalPopupStrata = popup._aprOriginalPopupStrata or popup:GetFrameStrata()
+    popup:SetFrameStrata("FULLSCREEN_DIALOG")
     local buttons = self:GetPopupButtons(popup)
     if self.UI and self.UI.StylePopupChrome then self.UI:StylePopupChrome(popup, buttons) end
     local regions = {
@@ -550,6 +554,10 @@ function APR:StyleStaticPopup(popup)
     popup:HookScript(
         "OnHide", --[[APR_DIAG]]
         APRTrace("APR-Core/ui/foundations/TextStyles.lua:483:callback#29", --[[/APR_DIAG]] function(frame)
+            if frame._aprOriginalPopupStrata then
+                frame:SetFrameStrata(frame._aprOriginalPopupStrata)
+                frame._aprOriginalPopupStrata = nil
+            end
             for _, original in ipairs(frame._aprTextOriginals or {}) do
                 APR:UnregisterFontString(original.region)
                 if original.font and original.size then

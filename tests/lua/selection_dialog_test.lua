@@ -214,6 +214,14 @@ assert(
 suggestion.routeButtons[1].scripts.OnClick()
 assert(chosenRoute == suggested and not suggestion:IsShown())
 local shared = APR.UI.selectionDialog
+shared:SetFrameStrata("DIALOG")
+open()
+assert(shared:GetFrameStrata() == "FULLSCREEN_DIALOG", "A reused selection restores its foreground layer")
+shared:Hide()
+suggestion:SetFrameStrata("DIALOG")
+APR.questionDialog:CreateRouteTriggerPopup("Again", { suggested })
+assert(suggestion:GetFrameStrata() == "FULLSCREEN_DIALOG", "A reused route suggestion restores its foreground layer")
+suggestion:Hide()
 local acceptedPrivate, cancelledPrivate = 0, 0
 local private = APR.UI:ShowConfirmationDialog({
     dialogName = "SyntheticPrivateConfirmation", title = "Private confirmation", description = "Private details",

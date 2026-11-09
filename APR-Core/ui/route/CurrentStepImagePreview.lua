@@ -159,7 +159,8 @@ local function CreateOverlayWindow(imagePath)
         local offset = ((slotIndex - 1) % 8) * 18
         panel:SetSize(OVERLAY_PANEL_DEFAULT_WIDTH, OVERLAY_PANEL_DEFAULT_HEIGHT)
         panel:SetPoint("CENTER", UIParent, "CENTER", offset, -offset)
-        panel:SetFrameStrata("DIALOG")
+        -- Images cover the DIALOG workspace while confirmations remain above them.
+        panel:SetFrameStrata("FULLSCREEN")
         panel:SetFrameLevel(900 + ((slotIndex - 1) % 40))
         panel:SetBackdrop({
             bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
@@ -339,7 +340,7 @@ local function CreateOverlayWindow(imagePath)
 
         local closeButton = CreateFrame("Button", nil, panel, "UIPanelCloseButton")
         closeButton:SetPoint("TOPRIGHT", panel, "TOPRIGHT", -2, -2)
-        closeButton:SetFrameStrata("FULLSCREEN_DIALOG")
+        closeButton:SetFrameStrata(panel:GetFrameStrata())
         closeButton:SetFrameLevel((panel:GetFrameLevel() or 1) + 20)
         closeButton:SetScript(
             "OnClick", --[[APR_DIAG]]

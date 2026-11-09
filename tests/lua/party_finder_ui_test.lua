@@ -134,6 +134,7 @@ local panel = APR.PartyFinderPanel
 
 -- An incoming native invitation can acquire context before the main window exists.
 panel:ShowInviteContext({ name = "Inviter", description = "Example step" })
+assert(panel.inviteContext:GetFrameStrata() == "FULLSCREEN_DIALOG", "Invitation notices stay above the workspace")
 assert(panel.inviteContext:IsShown() and not APR.Workspace.frame)
 assert(panel.inviteContext.text:GetText() == "Inviter / Example step")
 local firstTimer = panel.inviteTimer

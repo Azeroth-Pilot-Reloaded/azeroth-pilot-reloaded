@@ -142,8 +142,8 @@ function Intro:Create()
     _G.APRAppearanceIntro = frame
     frame:SetPoint("CENTER")
     frame:SetSize(1028, 680)
-    -- The standalone release window is DIALOG and always covers this HIGH chooser.
-    frame:SetFrameStrata("HIGH")
+    -- Stay above the DIALOG workspace, below the FULLSCREEN_DIALOG release notes.
+    frame:SetFrameStrata("FULLSCREEN")
     frame:SetToplevel(false)
     frame:SetClampedToScreen(true)
     frame:EnableMouse(true)

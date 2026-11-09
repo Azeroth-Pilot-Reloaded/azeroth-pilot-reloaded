@@ -209,6 +209,16 @@ function Browser:Create(parent)
             function() APR.routeconfig:OpenDungeonPopup() end --[[APR_DIAG]]
         ) --[[/APR_DIAG]],
     })
+    if APR.QuestLogSuggestions then
+        definitions[#definitions + 1] = {
+            kind = "quest_log",
+            label = "QUEST_LOG_ROUTES",
+            tooltip = "QUEST_LOG_ROUTES_SEARCH_WARNING",
+            action = --[[APR_DIAG]]
+                APRTrace("APR-Core/ui/route/RouteBrowser.lua:219:callback#33", --[[/APR_DIAG]]
+                function() APR.QuestLogSuggestions:Open() end--[[APR_DIAG]])--[[/APR_DIAG]],
+        }
+    end
     self.prefabButtons = {}
     for _, definition in ipairs(definitions) do
         local label = definition.text or L[definition.label]
@@ -396,9 +406,10 @@ Browser.Create = APRTrace("APR-Core/ui/route/RouteBrowser.lua:110:Browser:Create
 function Browser:RefreshPrefabs()
     self.prefabs = {}
     for _, button in ipairs(self.prefabButtons) do
-        local supported = APR.routeconfig:HasPrefab(button.prefabKind, true)
+        local journal = button.prefabKind == "quest_log"
+        local supported = journal or APR.routeconfig:HasPrefab(button.prefabKind, true)
         button:SetShown(supported)
-        button:SetEnabled(supported and APR.routeconfig:HasPrefab(button.prefabKind))
+        button:SetEnabled(journal or (supported and APR.routeconfig:HasPrefab(button.prefabKind)))
         if supported then self.prefabs[#self.prefabs + 1] = button end
     end
     self.prefabPanel:SetShown(#self.prefabs > 0)

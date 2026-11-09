@@ -84,6 +84,7 @@ APR-Core/features/questing/RouteManager.lua
 APR-Core/features/questing/RouteCatalog.lua
 APR-Core/utils/SojournerUtils.lua
 APR-Core/features/questing/RouteSuggestions.lua
+APR-Core/features/questing/QuestLogSuggestions.lua
 APR-Core/utils/NavigationUtils.lua
 APR-Core/utils/UIUtils.lua
 APR-Core/integrations/QuestTracker.lua

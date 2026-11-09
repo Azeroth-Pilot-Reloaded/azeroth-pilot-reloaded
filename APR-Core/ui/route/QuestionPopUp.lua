@@ -393,6 +393,7 @@ APR.questionDialog.CreateEditBoxPopup = APRTrace(
 
 function APR.questionDialog:CreateRouteTriggerPopup(titleText, routes, onRouteSelected, onCancel, onDontAsk)
     local frame = EnsureRouteTriggerPopup()
+    frame:SetFrameStrata("FULLSCREEN_DIALOG")
     frame.onCancel = onCancel
     frame.onDontAsk = onDontAsk
     frame.onRouteSelected = onRouteSelected

@@ -346,6 +346,7 @@ local function ShowDialog(settings)
     frame:ClearAllPoints()
     local owner = settings.owner
     frame:SetPoint("CENTER", owner and owner:IsShown() and owner or UIParent, "CENTER")
+    frame:SetFrameStrata("FULLSCREEN_DIALOG")
     frame:Show()
     frame.list:RefreshVisible(true)
     return frame

@@ -177,7 +177,7 @@ window.watcher.scripts.OnEvent()
 window.watcher.scripts.OnEvent()
 flush()
 assert(
-    window.frame:IsShown() and visits == 0 and opens == 2 and window.frame:GetFrameStrata() == "DIALOG",
+    window.frame:IsShown() and visits == 0 and opens == 2 and window.frame:GetFrameStrata() == "FULLSCREEN_DIALOG",
     "A version change shows a dedicated window even on first use, without opening Options"
 )
 assert(
@@ -334,12 +334,13 @@ assert(not window.frame:IsShown() and not window.pending, "Read notes stay close
 APR.settings.db = { global = {} }
 dofile("APR-Core/ui/panels/AppearanceIntro.lua")
 assert(APR.AppearanceIntro:Show())
-assert(APR.AppearanceIntro.frame:GetFrameStrata() == "HIGH")
+assert(APR.AppearanceIntro.frame:GetFrameStrata() == "FULLSCREEN",
+    "The appearance chooser stays above the DIALOG workspace")
 APR.version = "7.3.0"
 APR.changelog:OnInit()
 flush()
 assert(
-    window.frame:IsShown() and window.frame:GetFrameStrata() == "DIALOG" and APR.AppearanceIntro.frame:IsShown(),
+    window.frame:IsShown() and window.frame:GetFrameStrata() == "FULLSCREEN_DIALOG" and APR.AppearanceIntro.frame:IsShown(),
     "Release notes open above the pending appearance chooser"
 )
 

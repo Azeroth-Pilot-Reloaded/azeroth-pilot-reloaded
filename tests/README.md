@@ -148,6 +148,20 @@ entry and after class/progress changes, with live enabled states and stable
 layout. Unsupported client content stays hidden; stale callbacks retain the
 existing path and progress.
 
+`quest_log_suggestions_test.lua` covers the explicit journal search with synthetic
+routes: access and level prefilters, bounded slices, unique quest counts, local
+priority, objective entry instead of pickup, restart, cancellation, empty results
+and stale selections. `quest_log_prefab_test.lua` drives its real browser button.
+In both supported clients, also check native dialog wrapping, cancellation during
+a long search and route activation from each entry choice; offline widgets cannot
+certify rendering or actual frame times.
+
+Popup layering is checked by the shared confirmation and selection suites, plus
+the release-note, invitation and enlarged-image flows. Native shared frames must
+return to their original strata on hide, including after repeated styling; APR
+questions, messages, mandatory actions and copy dialogs render above the DIALOG
+workspace. Check overlap in both clients with the workspace focused and raised.
+
 Explicit Forever additions lazily store `APRData[player].RouteChoices[label]` to
 preserve variants with shared labels. Existing paths need no migration: absent,
 invalid or deleted choices use the usual resolver, which prefers a recommended
@@ -202,6 +216,9 @@ mandatory-chain, passage-lifecycle and action-selection suites use this path.
 with no parent or a World/Cosmic parent on both profiles, including descendants,
 separate islands/interiors, missing ancestry recovery and stable arrow guidance
 through quest-log replanning.
+`navigation_orphan_override_test.lua` checks verified outdoor map-type overrides
+with invented cities and a parent-map portal on both profiles. It covers full
+planner publication and preserves unverified Orphan, interior and world boundaries.
 `navigation_unmapped_area_test.lua` covers verified world interiors without a
 native UI map or projection: local quests, coordinate-free instructions,
 mandatory exits, missing observations and recovery on both profiles. Authored

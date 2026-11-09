@@ -84,7 +84,7 @@ function Window:Create()
         frame:SetPoint("CENTER", UIParent, "CENTER", 0, offset)
         LibStub("LibWindow-1.1").SavePosition(frame)
     end
-    frame:SetFrameStrata("DIALOG")
+    frame:SetFrameStrata("FULLSCREEN_DIALOG")
     frame.close:Hide()
     frame.close:SetEnabled(false)
     local banner = frame.header

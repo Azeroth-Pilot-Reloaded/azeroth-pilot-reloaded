@@ -84,6 +84,7 @@ for _, client in ipairs({ "retail", "forever" }) do
     optionalButton.scripts.OnClick(optionalButton)
     local optionalWindow = APRCurrentStepImagePreviewFrame1
     assert(optionalWindow:IsShown() and optionalWindow.previewWindow.previewContainer == optional)
+    assert(optionalWindow:GetFrameStrata() == "FULLSCREEN", "Enlarged images stay above the workspace and below confirmations")
     main.previewButtons[1].scripts.OnClick(main.previewButtons[1])
     local mainWindow = APRCurrentStepImagePreviewFrame2
     local frames, fonts, hides = env.frames(), env.fonts(), optional.hideCount

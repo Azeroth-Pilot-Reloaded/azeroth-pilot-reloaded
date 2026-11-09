@@ -55,6 +55,7 @@ StaticPopupDialogs = {}
 local popup = CreateFrame("Frame", "TestSharedPopup", UIParent)
 popup:SetSize(380, 90)
 popup:SetFrameLevel(0)
+popup:SetFrameStrata("DIALOG")
 popup.text = popup:CreateFontString()
 popup.text:SetFont("original.ttf", 12, "OUTLINE")
 popup.text:SetTextColor(0.7, 0.7, 0.8, 1)
@@ -99,6 +100,10 @@ local function click(index)
     if callback then callback(popup) end
 end
 APR.questionDialog:CreateQuestionPopup("DISABLE", "Disable APR?", accept, cancel, "Disable", "Cancel")
+assert(popup:GetFrameStrata() == "FULLSCREEN_DIALOG", "Native APR questions stay above the DIALOG workspace")
+APR:StyleStaticPopup(popup)
+assert(popup.aprPopupChrome.background:GetFrameStrata() == popup:GetFrameStrata(),
+    "The sibling popup backdrop is elevated together with its text and buttons")
 assert(popup.aprPopupChrome.background:GetBackdrop().edgeSize == 8 and popup.borderArt:GetAlpha() == 0)
 assert(popup.button1:GetNormalTexture():GetAlpha() == 0 and popup.button1:GetHeight() == 30)
 assert(
@@ -133,6 +138,7 @@ assert(accepted == 0 and cancelled == 1)
 assert(popup.borderArt:GetAlpha() == 0.8 and popup.button1:GetNormalTexture():GetAlpha() == 1)
 assert(popup.button1:GetHeight() == 21 and popup:GetHeight() == 90)
 assert(popup:GetFrameLevel() == 0, "Closing the popup restores its original frame level")
+assert(popup:GetFrameStrata() == "DIALOG", "Repeated styling preserves the original shared-frame strata")
 assert(popup.button1:GetFontString():GetFont() == "button.ttf" and popup.text:GetFont() == "original.ttf")
 assert(
     not popup.aprPopupChrome.background:IsShown() and not APR.textStyleRegistry[popup.text],
@@ -142,6 +148,13 @@ popup:Show()
 popup.button1.scripts.OnEnter(popup.button1)
 assert(not popup.aprPopupChrome.background:IsShown(), "A foreign popup hover cannot reactivate APR chrome")
 popup:Hide()
+
+popup:SetFrameStrata("HIGH")
+APR.questionDialog:CreateMessagePopup("Synthetic message")
+assert(popup:GetFrameStrata() == "FULLSCREEN_DIALOG", "Informational messages also appear above the workspace")
+popup:Hide()
+assert(popup:GetFrameStrata() == "HIGH", "Shared frames restore each showing's original strata for other addons")
+popup:SetFrameStrata("DIALOG")
 
 APR.questionDialog:CreateQuestionPopup("DISABLE", "Disable APR?", accept, cancel)
 click(1)
@@ -156,6 +169,7 @@ APR.questionDialog:CreateQuestionPopup("LOCKED", "Continue?", accept, cancel, ni
 assert(not StaticPopupDialogs.LOCKED.hideOnEscape)
 popup:Hide()
 APR.questionDialog:CreateMandatoryAction("Read this instruction", accept)
+assert(popup:GetFrameStrata() == "FULLSCREEN_DIALOG")
 assert(
     not StaticPopupDialogs.MANDATORY_DIALOG.hideOnEscape
         and StaticPopupDialogs.MANDATORY_DIALOG.notClosableByLogout
@@ -165,6 +179,7 @@ assert(
 click(1)
 assert(accepted == 2)
 APR.questionDialog:CreateEditBoxPopup("Copy link", "Close", "https://example.com")
+assert(popup:GetFrameStrata() == "FULLSCREEN_DIALOG")
 assert(
     popup.editBox:GetText() == "https://example.com"
         and popup.editBox:HasFocus()
@@ -174,6 +189,7 @@ assert(
 popup:Hide()
 env.setCombat(true)
 APR.questionDialog:CreateQuestionPopup("COMBAT", "Continue?", accept, cancel)
+assert(popup:GetFrameStrata() == "FULLSCREEN_DIALOG", "Combat does not leave the question behind the workspace")
 assert(
     not popup.aprPopupChrome.background:IsShown() and StaticPopupDialogs.COMBAT.OnAccept == accept,
     "Combat defers chrome without disabling confirmation actions"
