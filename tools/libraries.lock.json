@@ -1,56 +1,56 @@
 {
-    "schema": 1,
-    "libraries": {
-        "Ace3": {
-            "source": "github",
-            "repository": "WoWUIDev/Ace3",
-            "ref": "master",
-            "commit": "ac3d1225037e0dc74e025a72342c0f7824aae147",
-            "date_created": "2026-10-28T08:30:38Z",
-            "archive_sha256": "e415834e8a71c3714ae74549f6c24a2d0f036c9b8c760f8fdb1828ec06fba206"
-        },
-        "HereBeDragons": {
-            "source": "github",
-            "repository": "Nevcairiel/HereBeDragons",
-            "ref": "master",
-            "commit": "90a7b2d8c065010dfb866e2b6bd56f5bc930029b",
-            "date_created": "2026-10-02T05:38:26Z",
-            "archive_sha256": "a8ef78c5f117b35197ad03350385d14075dc3f313ad979825ee8641426a5485e"
-        },
-        "HereBeDragons embedded dependencies": {
-            "source": "curseforge",
-            "project_id": 94348,
-            "file_id": 9049435,
-            "version": "2.18-release",
-            "file_name": "HereBeDragons-2.18-release.zip",
-            "date_created": "2026-10-03T16:55:11.51Z",
-            "archive_sha256": "095609a13af365bd2565fb2ad304482fcee4d92763940e0b24e44b8d772980b9"
-        },
-        "LibDataBroker-1.1": {
-            "source": "github",
-            "repository": "tekkub/libdatabroker-1-1",
-            "ref": "master",
-            "commit": "1a63ede0248c11aa1ee415187c1f9c9489ce3e02",
-            "date_created": "2008-08-01T04:46:02Z",
-            "archive_sha256": "b216021a49429d7a30a0f8ba10ba1cefbd439b161a4f2ad35f4900781fcb9183"
-        },
-        "LibDBIcon-1.0": {
-            "source": "curseforge",
-            "project_id": 15552,
-            "file_id": 9278071,
-            "version": "v12.1.2",
-            "file_name": "LibDBIcon-1.0-v12.1.2.zip",
-            "date_created": "2026-10-21T15:11:45.313Z",
-            "archive_sha256": "390eaec313bc6ae8c81cb4ad3aa0ae53fe4fd29867311b3d85a07498de49e01c"
-        },
-        "LibSharedMedia-3.0": {
-            "source": "curseforge",
-            "project_id": 14320,
-            "file_id": 9277931,
-            "version": "v12.1.3",
-            "file_name": "LibSharedMedia-3.0-v12.1.3.zip",
-            "date_created": "2026-10-21T15:02:10.553Z",
-            "archive_sha256": "cb9ddb72a651e2455c8804fdea74e01c44e9fc17c6aaed73ccea1f2208dee8f9"
-        }
+  "schema": 1,
+  "libraries": {
+    "Ace3": {
+      "source": "github",
+      "repository": "WoWUIDev/Ace3",
+      "ref": "master",
+      "commit": "ac3d1225037e0dc74e025a72342c0f7824aae147",
+      "date_created": "2026-10-28T08:30:38Z",
+      "archive_sha256": "e415834e8a71c3714ae74549f6c24a2d0f036c9b8c760f8fdb1828ec06fba206"
+    },
+    "HereBeDragons": {
+      "source": "github",
+      "repository": "Nevcairiel/HereBeDragons",
+      "ref": "master",
+      "commit": "90a7b2d8c065010dfb866e2b6bd56f5bc930029b",
+      "date_created": "2026-10-02T05:38:26Z",
+      "archive_sha256": "a8ef78c5f117b35197ad03350385d14075dc3f313ad979825ee8641426a5485e"
+    },
+    "HereBeDragons embedded dependencies": {
+      "source": "curseforge",
+      "project_id": 94348,
+      "file_id": 9049435,
+      "version": "2.18-release",
+      "file_name": "HereBeDragons-2.18-release.zip",
+      "date_created": "2026-10-03T16:55:11.51Z",
+      "archive_sha256": "095609a13af365bd2565fb2ad304482fcee4d92763940e0b24e44b8d772980b9"
+    },
+    "LibDataBroker-1.1": {
+      "source": "github",
+      "repository": "tekkub/libdatabroker-1-1",
+      "ref": "master",
+      "commit": "1a63ede0248c11aa1ee415187c1f9c9489ce3e02",
+      "date_created": "2008-08-01T04:46:02Z",
+      "archive_sha256": "b216021a49429d7a30a0f8ba10ba1cefbd439b161a4f2ad35f4900781fcb9183"
+    },
+    "LibDBIcon-1.0": {
+      "source": "curseforge",
+      "project_id": 15552,
+      "file_id": 9278071,
+      "version": "v12.1.2",
+      "file_name": "LibDBIcon-1.0-v12.1.2.zip",
+      "date_created": "2026-10-21T15:11:45.313Z",
+      "archive_sha256": "390eaec313bc6ae8c81cb4ad3aa0ae53fe4fd29867311b3d85a07498de49e01c"
+    },
+    "LibSharedMedia-3.0": {
+      "source": "curseforge",
+      "project_id": 14320,
+      "file_id": 9277931,
+      "version": "v12.1.3",
+      "file_name": "LibSharedMedia-3.0-v12.1.3.zip",
+      "date_created": "2026-10-21T15:02:10.553Z",
+      "archive_sha256": "cb9ddb72a651e2455c8804fdea74e01c44e9fc17c6aaed73ccea1f2208dee8f9"
     }
+  }
 }
