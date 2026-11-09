@@ -217,6 +217,10 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "geography", {
         IsolatedContinents = { [2274] = true },
         MapTypeOverrides = {
             [125] = { mapType = 3 },
+            -- Native Orphan maps, but both cities share Draenor's outdoor
+            -- space. Their portal endpoints may resolve to the parent map.
+            [622] = { mapType = 3 }, -- Stormshield
+            [624] = { mapType = 3 }, -- Warspear
             [627] = { mapType = 3 },
             [1670] = { mapType = 3 },
             [1671] = { mapType = 3 },
@@ -231,4 +235,4 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "geography", {
         skyridingThreshold = 10000,
         threshold = 2000,
     },
-}, 35)
+}, 36)
