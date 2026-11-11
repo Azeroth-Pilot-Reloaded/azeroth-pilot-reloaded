@@ -32,6 +32,10 @@ function announcements:Send(kind, key, soloKey, ...)
     else
         return
     end
+    -- Forever requires hardware input for addon EMOTEs outside instances.
+    -- Gameplay events cannot provide it, and pcall cannot suppress ADDON_ACTION_BLOCKED.
+    if channel == "EMOTE" and APR:GetGameVersion() == APR.GAME_VERSIONS.Forever
+        and not (IsInInstance and IsInInstance()) then return end
     for index = 1, select("#", ...) do
         if APRSecret and not APRSecret:CanAccessValue(select(index, ...)) then return end
     end
