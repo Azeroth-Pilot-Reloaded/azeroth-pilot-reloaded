@@ -19,6 +19,10 @@ local options = { enabled = true, group = true, solo = true, level = true, quest
     objective = true, collect = true, flight = true, hearthstone = true, route = true }
 APR = { settings = { profile = { enableAddon = true, announcements = options } },
     QUEST_STATUS = { COMPLETE = "done", PROGRESS = "progress" }, ActiveQuests = {} }
+APR.GAME_VERSIONS = { Retail = 1, Forever = 2 }
+local gameVersion = APR.GAME_VERSIONS.Retail
+function APR:GetGameVersion() return gameVersion end
+function IsInInstance() return instance end
 function APR:GetRouteDisplayName(key) return "Label " .. key end
 dofile("APR-Core/features/player/Announcements.lua")
 local a = APR.announcements
@@ -127,4 +131,51 @@ assert(sent[12][1] == "[APR] Collection Shards: 2/2.")
 group = false
 a:Send("route", "ANNOUNCE_ROUTE", "ANNOUNCE_ROUTE_EMOTE", string.rep("界", 150))
 assert(#sent[13][1] <= 255 and sent[13][1]:sub(-6) == " [APR]" and sent[13][2] == "EMOTE")
+
+-- A blocked native call may emit ADDON_ACTION_BLOCKED even when pcall returns normally.
+-- Prevent the call itself for automatic outdoor EMOTEs on Forever, on both API paths.
+local blocked = 0
+local function nativeSend(message, channel)
+    if gameVersion == APR.GAME_VERSIONS.Forever and channel == "EMOTE" and not instance then
+        blocked = blocked + 1
+        return
+    end
+    sent[#sent + 1] = { message, channel }
+end
+gameVersion = APR.GAME_VERSIONS.Forever
+SendChatMessage = nativeSend
+for _, modern in ipairs({ false, true }) do
+    C_ChatInfo = modern and { SendChatMessage = nativeSend,
+        InChatMessagingLockdown = function() return lockdown end } or nil
+    local baseline = #sent
+    group, instance = false, false
+    a:Send("level", "ANNOUNCE_LEVEL", "ANNOUNCE_LEVEL_EMOTE", 22)
+    a:Send("route", "ANNOUNCE_ROUTE", "ANNOUNCE_ROUTE_EMOTE", "Invented journey")
+    count(baseline)
+    assert(blocked == 0, "Outdoor Forever EMOTEs must never reach the protected API")
+    instance = true
+    a:Send("level", "ANNOUNCE_LEVEL", "ANNOUNCE_LEVEL_EMOTE", 23)
+    assert(sent[baseline + 1][2] == "EMOTE")
+    group, instance = true, false
+    a:Send("level", "ANNOUNCE_LEVEL", "ANNOUNCE_LEVEL_EMOTE", 24)
+    assert(sent[baseline + 2][2] == "PARTY")
+    raid = true
+    a:Send("level", "ANNOUNCE_LEVEL", "ANNOUNCE_LEVEL_EMOTE", 25)
+    assert(sent[baseline + 3][2] == "RAID")
+    instance = true
+    a:Send("level", "ANNOUNCE_LEVEL", "ANNOUNCE_LEVEL_EMOTE", 26)
+    assert(sent[baseline + 4][2] == "INSTANCE_CHAT")
+    if modern then
+        lockdown = true
+        a:Send("level", "ANNOUNCE_LEVEL", "ANNOUNCE_LEVEL_EMOTE", 27)
+        count(baseline + 4)
+        lockdown = false
+    end
+    group, raid, instance = false, false, false
+    gameVersion = APR.GAME_VERSIONS.Retail
+    a:Send("level", "ANNOUNCE_LEVEL", "ANNOUNCE_LEVEL_EMOTE", 28)
+    assert(sent[baseline + 5][2] == "EMOTE", "Retail retains automatic solo announcements")
+    gameVersion = APR.GAME_VERSIONS.Forever
+end
+assert(blocked == 0)
 print("announcements tests passed")
