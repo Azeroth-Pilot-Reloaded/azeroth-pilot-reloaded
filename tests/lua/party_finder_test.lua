@@ -15,11 +15,11 @@ for _, row in ipairs(finder:GetTrafficRows()) do
     end
 end
 assert(echoes == 2 and not next(finder.responses) and finder:GetCount() == 0)
-assert(finder.channelID == 7 and #env.joined == 1 and #env:Messages() == 0)
+assert(finder.channelID == 8 and #env.joined == 2 and #env:Messages() == 0)
 assert(env:ActiveTimers() == 0, "Visible idle players do not periodically broadcast their progression")
 assert(finder:Search())
 local queries = env:Messages("Q", "CHANNEL")
-assert(#queries == 1 and queries[1].target == 7 and finder:GetStatus() == "searching")
+assert(#queries == 1 and queries[1].target == 8 and finder:GetStatus() == "searching")
 local oldQuery = finder.query.id
 env:Receive("P", env:Presence(), "Peer-Home", "CHANNEL")
 assert(finder:GetCount() == 0, "A public presence must never enter the private discovery cache")
@@ -136,7 +136,7 @@ end
 assert(env:ActiveTimers() == 1, "Zone bursts coalesce before any route or transport refresh")
 env:Advance(0.5)
 assert(
-    finder.context ~= previousContext and #env.joined == 1 and #env.left == 0,
+    finder.context ~= previousContext and #env.joined == 3 and #env.left == 1,
     "Changing zone replaces exactly one discovery membership"
 )
 

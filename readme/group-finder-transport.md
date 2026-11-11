@@ -6,6 +6,21 @@ transport inconnu. Seul `NOT_ALLOWED_IN_CHANNEL` pour APR, avec le numéro encor
 valide et une tentative datant de cinq secondes maximum, déclenche le repli.
 Le contrôle de version partage cet état et cesse ses envois `CHANNEL` bloqués.
 
+## Canaux globaux et locaux
+
+Retail et Forever utilisent la même sélection de transport : les recherches
+locales privilégient un canal de zone, les recherches monde utilisent le canal
+global. Un canal local indisponible provoque un repli vers le canal global.
+Retail conserve `APR` comme canal global, sans séparation par faction, et utilise
+`APRZ<mapID>` pour les zones. Forever conserve `APRAlliance` / `APRHorde` et
+leurs variantes `Z<mapID>`. Le numéro de carte correspond à la grande zone :
+un changement de sous-zone conserve le canal et la recherche en cours.
+
+Un changement de grande zone remplace le canal local et relance une recherche
+locale active ; une recherche monde reste en cours. Les anciens canaux de zone
+APR conservés après un rechargement sont libérés. Les règles d’adhésion, de
+roster, de repli privé et de déconnexion ci-dessous sont communes aux deux clients.
+
 ## Adhésion vérifiée au démarrage et à la recherche
 
 Pour un Group Finder actif, le démarrage (y compris `/reload`) et les recherches

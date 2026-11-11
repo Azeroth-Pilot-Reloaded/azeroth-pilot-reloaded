@@ -39,11 +39,11 @@ local finder = env.finder
 local sent, reason = finder:Search()
 assert(not sent and reason == "joining", "The first search waits for incremental route preparation")
 env:Advance(6)
-assert(finder.query and #env.joined == 1 and #env:Messages("Q") == 1)
+assert(finder.query and #env.joined == 2 and #env:Messages("Q") == 1)
 env:Receive("P", env:Presence(), "Peer-Home", "WHISPER")
 assert(finder:GetCount() == 1)
 env:Advance(11)
-assert(not finder.query and not finder.channelID and #env.left == 1 and finder:GetCount() == 1)
+assert(not finder.query and not finder.channelID and #env.left == 2 and finder:GetCount() == 1)
 assert(finder:GetStatus() == "idle", "Cached private results do not claim an active public connection")
 local invitations = 0
 C_PartyInfo = { CanInvite = function() return true end, InviteUnit = function() invitations = invitations + 1 end }
@@ -61,7 +61,7 @@ local scanAt = finder.autoTimer.at
 env:Advance(scanAt - env.now + 6)
 assert(finder.query and finder.channelID and #env:Messages("Q") == 1)
 env:Advance(11)
-assert(not finder.channelID and not finder.query and finder.autoTimer and #env.left == 1)
+assert(not finder.channelID and not finder.query and finder.autoTimer and #env.left == 2)
 finder:SetOption("autoScan", false)
 env:Advance(1)
 assert(env:ActiveTimers() == 0)
@@ -72,14 +72,14 @@ finder = env.finder
 env.sendResult = Enum.SendAddonMessageResult.AddonMessageThrottle
 finder:Search()
 env:Advance(6)
-assert(not finder.query and not finder.searchWanted and not finder.channelID and #env.left == 1)
+assert(not finder.query and not finder.searchWanted and not finder.channelID and #env.left == 2)
 assert(finder:GetStatus() == "throttled" and env:ActiveTimers() == 0)
 env:Advance(200)
-assert(#env.joined == 1 and #env.left == 1 and env:ActiveTimers() == 0)
+assert(#env.joined == 2 and #env.left == 2 and env:ActiveTimers() == 0)
 env.sendResult = 0
 finder:Search()
 env:Advance(3)
-assert(finder.query and finder.channelID and #env.joined == 2)
+assert(finder.query and finder.channelID and #env.joined == 4)
 
 -- A route fingerprint with no remaining consumer is cancelled, then restarted on demand.
 env = Fixture.New()
@@ -130,7 +130,7 @@ env:Advance(11)
 assert(finder:GetCount() == 1 and not finder.channelID and #env:Messages("P") == 0)
 finder:SetOption("visible", true)
 env:Advance(3)
-assert(finder.channelID and #env.joined == 2 and finder:GetCount() == 1)
+assert(finder.channelID and #env.joined == 4 and finder:GetCount() == 1)
 
 -- Rejected visible bursts need one expiry timer, rather than one allocation per sender.
 env = Fixture.New({ settings = { visibleLanguages = { fr = true } } })

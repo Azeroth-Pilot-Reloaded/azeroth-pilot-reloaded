@@ -29,10 +29,10 @@ end
 local env = Fixture.New({ world = true, settings = { matchMode = "nearby" } })
 local finder = env.finder
 assert(
-    finder.channelID == 7
+    finder.channelID == 8
         and finder.worldChannelID == 7
-        and #env.joined == 1
-        and finder.channelName == "APR"
+        and #env.joined == 2
+        and finder.channelName == "APRZ501"
         and finder.worldChannelName == "APR"
 )
 assert(
@@ -66,7 +66,7 @@ assert(
     "An eligible world query gets a private reply despite a different route and nearby-only local filter"
 )
 
--- Compatibility changes update filters while retaining the one stable membership.
+-- Compatibility changes retain the global membership while maps replace the zone lease.
 local worldName, worldContext = finder.worldChannelName, finder.worldContext
 local oldZoneContext = finder.context
 env.map = 599
@@ -77,8 +77,8 @@ assert(
         and finder.worldContext == worldContext
         and finder.worldChannelName == worldName
         and env.channels[worldName] == 7
-        and #env.joined == 1
-        and #env.left == 0,
+        and #env.joined == 3
+        and #env.left == 1,
     "Changing map must not leave/rejoin the shared channel"
 )
 env.warMode = true
@@ -88,8 +88,8 @@ assert(
     finder.worldContext ~= worldContext
         and finder.worldChannelName == worldName
         and env.channels[worldName] == 7
-        and #env.joined == 1
-        and #env.left == 0,
+        and #env.joined == 3
+        and #env.left == 1,
     "Changing compatibility must update its context without changing channel membership"
 )
 
@@ -193,7 +193,7 @@ env:Advance(59)
 assert(not finder:Search() and #env:Messages("Q") == 1)
 env:Advance(1)
 assert(
-    finder:Search() and #env:Messages("Q") == 2 and env:Messages("Q")[2].target == 7,
+    finder:Search() and #env:Messages("Q") == 2 and env:Messages("Q")[2].target == finder.channelID,
     "Local searches share the 60-second public interval and stable channel"
 )
 
@@ -224,7 +224,7 @@ for _ = 1, 100 do
     env:Event("CHANNEL_UI_UPDATE")
     env:Event("CHANNEL_COUNT_UPDATE")
 end
-assert(env:ActiveTimers() <= 3, "Channel churn shares one service, state and population refresh each")
+assert(env:ActiveTimers() <= 4, "Channel churn shares two service refreshes, one state and one population refresh")
 env:Advance(0.5)
 assert(routeReads == 0, "Membership and native count changes cannot rebuild the current route state")
 
@@ -393,14 +393,14 @@ for _, setting in ipairs({ "visible", "enabled" }) do
     finder:SetOption(setting, false)
     env:Advance(1)
     assert(
-        #env.left == 1
+        #env.left == 2
             and env.channels[zoneName] == nil
             and env.channels[globalName] == nil
             and finder.channelID == nil
             and finder.worldChannelID == nil,
-        "Dormant discovery must release its one owned channel"
+        "Dormant discovery must release both owned channels"
     )
-    assert(#env:Messages("W", "CHANNEL") == 1)
+    assert(#env:Messages("W", "CHANNEL") == 2)
     if setting == "enabled" then assert(not next(finder.eventFrame.events) and env:ActiveTimers() == 0) end
 end
 env = Fixture.New({ world = true, prejoinedWorld = true })
@@ -410,7 +410,7 @@ assert(not APR.CommunicationChannel.owned and env.channels[worldName] == 7)
 finder:SetOption("enabled", false)
 env:Advance(1)
 assert(
-    #env.left == 0 and env.channels[worldName] == 7 and finder.worldChannelID == nil,
+    #env.left == 1 and env.channels[worldName] == 7 and finder.worldChannelID == nil,
     "Disabling must preserve a prejoined shared channel"
 )
 

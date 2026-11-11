@@ -42,6 +42,7 @@ function Fixture.New(options)
     }
     env.faction = options.faction or "Alliance"
     env.channelName = options.client == "forever" and ("APR" .. env.faction) or "APR"
+    if options.prejoined or options.prejoinedWorld then env.channels[env.channelName] = 7 end
     if options.prejoinedZone then env.channels[env.channelName .. "Z" .. env.map] = 8 end
     local locale = setmetatable(
         { GROUP_STEPS_AHEAD = "%d ahead", GROUP_STEPS_BEHIND = "%d behind" },
@@ -122,11 +123,14 @@ function Fixture.New(options)
     function GetChannelName(name)
         if name == "APRVersion" then return 0 end
         if name ~= env.channelName then
-            assert(name == "APR" or name == "APRAlliance" or name == "APRHorde" or name:match("^" .. env.channelName .. "Z%d+$"), "No unrelated channel lookup")
+            assert(
+                name == "APR"
+                    or name == "APRAlliance"
+                    or name == "APRHorde"
+                    or name:match("^" .. env.channelName .. "Z%d+$"),
+                "No unrelated channel lookup"
+            )
             return env.channels[name] or 0, name
-        end
-        if options.prejoined or options.prejoinedWorld then
-            env.channels[name] = env.channelID > 0 and env.channelID or 7
         end
         local id = env.channels[name]
         return id or 0, id and name or nil
@@ -154,7 +158,10 @@ function Fixture.New(options)
     function JoinTemporaryChannel(name)
         env.joined[#env.joined + 1] = name
         if options.joinError or options.zoneJoinError and name ~= env.channelName then error("Channel unavailable") end
-        assert(name == env.channelName or name:match("^" .. env.channelName .. "Z%d+$"), "Only the client/faction rendezvous and current zone may be joined")
+        assert(
+            name == env.channelName or name:match("^" .. env.channelName .. "Z%d+$"),
+            "Only the client/faction rendezvous and current zone may be joined"
+        )
         if not options.delayedJoin then
             local id = 7
             if name ~= env.channelName then
