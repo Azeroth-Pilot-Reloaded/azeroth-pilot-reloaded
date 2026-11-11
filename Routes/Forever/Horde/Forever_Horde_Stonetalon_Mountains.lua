@@ -205,6 +205,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
         },
         {
             PickUp = { 6523 },
+            Note = { "START_ESCORT" },
             Coord = { x = -342.44, y = 129.64 },
             NoAutoAccept = true,
             IsQuestCompleted = 6548,
