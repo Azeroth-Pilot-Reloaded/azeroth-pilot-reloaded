@@ -33,6 +33,9 @@ local function SetProfileOption(info, value)
     local profile = APR:GetSettingsProfile()
     if not profile then return end
     profile[info[#info]] = value
+    if info[#info] == "enableAddon" and not value and APR.CancelRouteItemDestruction then
+        APR:CancelRouteItemDestruction()
+    end
     if info[#info] == "autoSellRouteItems" then
         if APR.npcInteraction and not APR.npcInteraction.autoVendorState then
             APR.npcInteraction:CancelMerchantSales()

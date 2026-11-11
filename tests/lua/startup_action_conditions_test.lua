@@ -192,7 +192,7 @@ for index, case in ipairs(predicateCases) do
     assert(current() and advances == 1 and #abandoned == 1)
     -- Inventory mutation has no intrinsic quest dependency, so this also
     -- verifies the conditional gate itself rather than only abandonment's wait.
-    step.LeaveQuest, step.DestroyItems = nil, { items = { 4201 } }
+    step.LeaveQuest, step.SellItems = nil, { items = { 4201 } }
     reset(step)
     item()
     if case[2] then case[2]() end
@@ -213,7 +213,7 @@ for _, condition in ipairs({
     { AllOf = { { Faction = "Alliance" }, { IsQuestCompleted = 4102 } } },
     { Not = { IsQuestNotOnQuest = 4102 } },
 }) do
-    local step = { DestroyItems = { items = { 4201 } } }
+    local step = { SellItems = { items = { 4201 } } }
     for key, value in pairs(condition) do
         step[key] = value
     end
@@ -309,20 +309,20 @@ for _, case in ipairs(actionCases) do
     )
 end
 
-reset({ DestroyItems = { items = { 4201 } }, Faction = "Alliance" })
+reset({ SellItems = { items = { 4201 } }, Faction = "Alliance" })
 item()
 assert(
     current() and mutations == 1 and bags[1] == nil and advances == 0,
     "A static positive condition must not wait for unrelated quest synchronization"
 )
 assert(current() and advances == 1)
-reset({ DestroyItems = { items = { 4201 } }, Faction = "Horde" })
+reset({ SellItems = { items = { 4201 } }, Faction = "Horde" })
 item()
 assert(
     current() and mutations == 0 and bags[1] and advances == 0,
     "A static negative condition must not commit effects or completion"
 )
-reset({ DestroyItems = { items = { 4201 } }, IsQuestUncompleted = 4102 })
+reset({ SellItems = { items = { 4201 } }, IsQuestUncompleted = 4102 })
 item()
 assert(current() and mutations == 0 and APR.routeActionState == nil)
 rewarded[4102], APR.startupQuestStatePending = true, nil
@@ -427,12 +427,12 @@ APR:HandleDeathSkip(steps[1], "PLAYER_UNGHOST")
 assert(current() and advances == 1 and resurrections == 1)
 
 -- Deferral must neither retain a stale route token nor schedule an old action.
-reset({ DestroyItems = { items = { 4201 } }, IsQuestUncompleted = 4102 })
+reset({ SellItems = { items = { 4201 } }, IsQuestUncompleted = 4102 })
 local oldState = { token = "synthetic:1", complete = true }
 APR.routeActionState = oldState
 item()
 assert(current() and mutations == 0 and APR.routeActionState == oldState)
-steps[2] = { DestroyItems = { items = { 4202 } }, IsQuestUncompleted = 4103 }
+steps[2] = { SellItems = { items = { 4202 } }, IsQuestUncompleted = 4103 }
 APRData.player.synthetic = 2
 bags[2], APR.startupQuestStatePending = { itemID = 4202, stackCount = 1 }, nil
 assert(
@@ -445,10 +445,19 @@ assert(
 )
 assert(current() and advances == 1 and APRData.player.synthetic == 3 and mutations == 1)
 
+-- Destruction observes bag changes and never performs a protected action.
+reset({ DestroyItems = { items = { 4201 } } })
+item()
+APR.startupQuestStatePending = nil
+assert(current() and mutations == 0 and bags[1] and advances == 0)
+assert(current() and mutations == 0 and bags[1] and advances == 0)
+bags[1] = nil -- Player manually removed the listed item.
+assert(current() and mutations == 0 and advances == 1)
+
 -- RouteActions also loads in small modules/fixtures without RouteUtils or UI.
 local pendingHelper, filters = APR.HasPendingStartupQuestConditions, APR.AreConditionalFiltersMet
 APR.HasPendingStartupQuestConditions, APR.AreConditionalFiltersMet = nil, nil
-reset({ DestroyItems = { items = { 4201 } } })
+reset({ SellItems = { items = { 4201 } } })
 item()
 APR.currentStep = nil
 assert(current() and mutations == 1 and advances == 0)

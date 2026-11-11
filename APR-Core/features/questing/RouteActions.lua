@@ -23,13 +23,11 @@ APR.routeActionKeys = actionKeys
 local function CanRunRouteAction(self, step)
     return not (self.HasPendingStartupQuestConditions and self:HasPendingStartupQuestConditions(step))
         and (not self.AreConditionalFiltersMet or self:AreConditionalFiltersMet(step))
-end--[[APR_DIAG]]
-CanRunRouteAction = APRTrace("APR-Core/features/questing/RouteActions.lua:14:CanRunRouteAction#1", CanRunRouteAction)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; CanRunRouteAction = APRTrace("APR-Core/features/questing/RouteActions.lua:23:CanRunRouteAction#1", CanRunRouteAction)--[[/APR_DIAG]]
 
 local function CurrentNPC()
     return APRSecret:SafeUnitCreatureID("npc") or APRSecret:SafeUnitCreatureID("target")
-end--[[APR_DIAG]]
-CurrentNPC = APRTrace("APR-Core/features/questing/RouteActions.lua:19:CurrentNPC#2", CurrentNPC)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; CurrentNPC = APRTrace("APR-Core/features/questing/RouteActions.lua:28:CurrentNPC#2", CurrentNPC)--[[/APR_DIAG]]
 
 local function Bags(bank)
     if bank then return APR:GetCharacterBankContainers() end
@@ -43,8 +41,7 @@ local function Bags(bank)
         bags[#bags + 1] = reagent
     end
     return bags
-end--[[APR_DIAG]]
-Bags = APRTrace("APR-Core/features/questing/RouteActions.lua:23:Bags#3", Bags)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Bags = APRTrace("APR-Core/features/questing/RouteActions.lua:32:Bags#3", Bags)--[[/APR_DIAG]]
 
 local function ContainerInfo(bag, slot)
     if C_Container and C_Container.GetContainerItemInfo then return C_Container.GetContainerItemInfo(bag, slot) end
@@ -61,19 +58,16 @@ local function ContainerInfo(bag, slot)
             }
         end
     end
-end--[[APR_DIAG]]
-ContainerInfo = APRTrace("APR-Core/features/questing/RouteActions.lua:35:ContainerInfo#4", ContainerInfo)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ContainerInfo = APRTrace("APR-Core/features/questing/RouteActions.lua:46:ContainerInfo#4", ContainerInfo)--[[/APR_DIAG]]
 
 local function ContainerCall(name, ...)
     local fn = C_Container and C_Container[name] or _G[name]
     if fn then return fn(...) end
-end--[[APR_DIAG]]
-ContainerCall = APRTrace("APR-Core/features/questing/RouteActions.lua:46:ContainerCall#5", ContainerCall)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ContainerCall = APRTrace("APR-Core/features/questing/RouteActions.lua:63:ContainerCall#5", ContainerCall)--[[/APR_DIAG]]
 
 local function Entries(rule)
     return rule.items or rule
-end--[[APR_DIAG]]
-Entries = APRTrace("APR-Core/features/questing/RouteActions.lua:51:Entries#6", Entries)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Entries = APRTrace("APR-Core/features/questing/RouteActions.lua:68:Entries#6", Entries)--[[/APR_DIAG]]
 
 -- Remember the equipment selected on entry to the step, so removing it does
 -- not change the sale target. Previews resolve current equipment without state.
@@ -105,8 +99,7 @@ local function ItemEntries(key, rule, state)
         end
     end
     return entries
-end--[[APR_DIAG]]
-ItemEntries = APRTrace("APR-Core/features/questing/RouteActions.lua:57:ItemEntries#7", ItemEntries)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ItemEntries = APRTrace("APR-Core/features/questing/RouteActions.lua:74:ItemEntries#7", ItemEntries)--[[/APR_DIAG]]
 
 local function IsItemEquipped(itemID)
     if not GetInventoryItemID then return false end
@@ -114,8 +107,7 @@ local function IsItemEquipped(itemID)
         if GetInventoryItemID("player", slot) == itemID then return true end
     end
     return false
-end--[[APR_DIAG]]
-IsItemEquipped = APRTrace("APR-Core/features/questing/RouteActions.lua:87:IsItemEquipped#8", IsItemEquipped)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; IsItemEquipped = APRTrace("APR-Core/features/questing/RouteActions.lua:104:IsItemEquipped#8", IsItemEquipped)--[[/APR_DIAG]]
 
 -- Count the same bags that the action processes. A closed bank is unknown,
 -- not empty; future previews must not promise a quantity from today's bags.
@@ -137,18 +129,12 @@ local function GetRouteItemActionCounts(self, key)
         end
     end
     return counts
-end--[[APR_DIAG]]
-GetRouteItemActionCounts =
-    APRTrace("APR-Core/features/questing/RouteActions.lua:97:GetRouteItemActionCounts#9", GetRouteItemActionCounts)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; GetRouteItemActionCounts = APRTrace("APR-Core/features/questing/RouteActions.lua:114:GetRouteItemActionCounts#9", GetRouteItemActionCounts)--[[/APR_DIAG]]
 
 function APR:GetRouteItemActionCount(key, itemID)
     local counts = GetRouteItemActionCounts(self, key)
     return counts and (counts[itemID] or 0)
-end--[[APR_DIAG]]
-APR.GetRouteItemActionCount = APRTrace(
-    "APR-Core/features/questing/RouteActions.lua:117:APR:GetRouteItemActionCount#10",
-    APR.GetRouteItemActionCount
-)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetRouteItemActionCount = APRTrace("APR-Core/features/questing/RouteActions.lua:134:APR:GetRouteItemActionCount#10", APR.GetRouteItemActionCount)--[[/APR_DIAG]]
 
 local function TrainerMatchesSpell(index, name, rank, spellID)
     local link = GetTrainerServiceItemLink and GetTrainerServiceItemLink(index)
@@ -159,15 +145,12 @@ local function TrainerMatchesSpell(index, name, rank, spellID)
     local subtext = C_Spell and C_Spell.GetSpellSubtext or GetSpellSubtext
     local spellRank = subtext and subtext(spellID)
     return spellName == name and (rank or "") == (spellRank or "")
-end--[[APR_DIAG]]
-TrainerMatchesSpell =
-    APRTrace("APR-Core/features/questing/RouteActions.lua:122:TrainerMatchesSpell#11", TrainerMatchesSpell)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; TrainerMatchesSpell = APRTrace("APR-Core/features/questing/RouteActions.lua:139:TrainerMatchesSpell#11", TrainerMatchesSpell)--[[/APR_DIAG]]
 
 local function SellPrice(info)
     local getInfo = C_Item and C_Item.GetItemInfo or GetItemInfo
     if getInfo then return select(11, getInfo(info.hyperlink or info.itemID)) end
-end--[[APR_DIAG]]
-SellPrice = APRTrace("APR-Core/features/questing/RouteActions.lua:133:SellPrice#12", SellPrice)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; SellPrice = APRTrace("APR-Core/features/questing/RouteActions.lua:150:SellPrice#12", SellPrice)--[[/APR_DIAG]]
 
 -- Count by item ID so sorting bags during a native sale cannot inflate proceeds.
 local function JunkSnapshot()
@@ -183,12 +166,11 @@ local function JunkSnapshot()
         end
     end
     return items
-end--[[APR_DIAG]]
-JunkSnapshot = APRTrace("APR-Core/features/questing/RouteActions.lua:139:JunkSnapshot#13", JunkSnapshot)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; JunkSnapshot = APRTrace("APR-Core/features/questing/RouteActions.lua:156:JunkSnapshot#13", JunkSnapshot)--[[/APR_DIAG]]
 
 -- Process one complete stack at a time. Merchant retries also run on a timer:
 -- locked items and rejected requests do not necessarily produce another bag event.
-function APR:ProcessRouteItems(key, rule, state, automatic)
+function APR:ProcessRouteItems(key, rule, state, automatic, hardwareEvent)
     -- A linked sale cannot decide whether the visit is obsolete before the
     -- initial quest snapshot. Do not capture inventory or mutate pending state.
     if key == "SellItems" and rule.questID and self.startupQuestStatePending then return false end
@@ -202,6 +184,7 @@ function APR:ProcessRouteItems(key, rule, state, automatic)
     if key == "SellItems" and rule.equippedSlots and not state.equippedItems then return false end
     if key == "SellItems" and IsModifierKeyDown and IsModifierKeyDown() then return false end
     if (InCombatLockdown and InCombatLockdown()) or (CursorHasItem and CursorHasItem()) then return false end
+    if key == "DestroyItems" and GetCursorInfo() then return false end
     if key == "SellItems" and (not self.routeMerchantOpen or self.routeBankOpen) then return false end
     local banking = key == "BankDeposit" or key == "BankWithdraw"
     if banking and (not self.routeBankOpen or self.routeMerchantOpen) then return false end
@@ -269,8 +252,7 @@ function APR:ProcessRouteItems(key, rule, state, automatic)
                 items = state.trackSaleValue and JunkSnapshot() or nil,
             }
             -- The Blizzard button shows a popup; its confirmed callback calls this API directly.
-            if --[[APR_DIAG]]
-                APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](C_MerchantFrame.SellAllJunkItems)
+            if --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](C_MerchantFrame.SellAllJunkItems)
             then
                 return false
             end
@@ -297,8 +279,10 @@ function APR:ProcessRouteItems(key, rule, state, automatic)
                     blocked = true
                     if automatic ~= false then state.saleNeedsRetry = true end
                 end
-                if wanted and key == "SellItems" and automatic == false then
-                    -- Keep the instruction until the player sells the targets or skips it.
+                if wanted and ((key == "DestroyItems" and not hardwareEvent)
+                    or (key == "SellItems" and automatic == false)) then
+                    -- Rendering and bag events only observe inventory. Destruction runs
+                    -- synchronously from a keyboard or world-click callback, one stack at a time.
                     blocked = true
                 elseif wanted and info.isLocked then
                     if key ~= "SellItems" then return false end
@@ -320,6 +304,7 @@ function APR:ProcessRouteItems(key, rule, state, automatic)
                             DeleteCursorItem()
                         else
                             ClearCursor()
+                            state.pending = nil
                         end
                     elseif banking and bankType ~= nil then
                         ContainerCall("UseContainerItem", bag, slot, nil, bankType)
@@ -338,9 +323,7 @@ function APR:ProcessRouteItems(key, rule, state, automatic)
         end
     end
     return not blocked
-end--[[APR_DIAG]]
-APR.ProcessRouteItems =
-    APRTrace("APR-Core/features/questing/RouteActions.lua:156:APR:ProcessRouteItems#14", APR.ProcessRouteItems)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ProcessRouteItems = APRTrace("APR-Core/features/questing/RouteActions.lua:173:APR:ProcessRouteItems#14", APR.ProcessRouteItems)--[[/APR_DIAG]]
 
 function APR:GetRouteActionState()
     local token = self:GetCurrentStepToken(self.ActiveRoute, APRData[self.PlayerID][self.ActiveRoute])
@@ -348,9 +331,7 @@ function APR:GetRouteActionState()
         self.routeActionState = { token = token }
     end
     return self.routeActionState
-end--[[APR_DIAG]]
-APR.GetRouteActionState =
-    APRTrace("APR-Core/features/questing/RouteActions.lua:280:APR:GetRouteActionState#15", APR.GetRouteActionState)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetRouteActionState = APRTrace("APR-Core/features/questing/RouteActions.lua:328:APR:GetRouteActionState#15", APR.GetRouteActionState)--[[/APR_DIAG]]
 
 function APR:GetRouteActionText(key, rule, isCurrentStep, state)
     local label = L[key:upper()]
@@ -362,8 +343,7 @@ function APR:GetRouteActionText(key, rule, isCurrentStep, state)
 
     local function Fallback()
         return self:ResolveStepText(rule.text or rule.Text) or label
-    end--[[APR_DIAG]]
-    Fallback = APRTrace("APR-Core/features/questing/RouteActions.lua:296:Fallback#17", Fallback)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; Fallback = APRTrace("APR-Core/features/questing/RouteActions.lua:344:Fallback#17", Fallback)--[[/APR_DIAG]]
 
     if key == "LearnSkill" and (rule.spellID or rule.spellIDs) then
         local names = {}
@@ -425,11 +405,59 @@ function APR:GetRouteActionText(key, rule, isCurrentStep, state)
     end
 
     return Fallback()
-end--[[APR_DIAG]]
-APR.GetRouteActionText =
-    APRTrace("APR-Core/features/questing/RouteActions.lua:288:APR:GetRouteActionText#16", APR.GetRouteActionText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetRouteActionText = APRTrace("APR-Core/features/questing/RouteActions.lua:336:APR:GetRouteActionText#16", APR.GetRouteActionText)--[[/APR_DIAG]]
+
+function APR:CancelRouteItemDestruction()
+    self.routeItemDestruction = nil
+    if self.routeItemDestructionFrame then self.routeItemDestructionFrame:Hide() end
+end--[[APR_DIAG]]; APR.CancelRouteItemDestruction = APRTrace("APR-Core/features/questing/RouteActions.lua:410:APR:CancelRouteItemDestruction#18", APR.CancelRouteItemDestruction)--[[/APR_DIAG]]
+
+-- Like RestedXP's inventory handler, defer protected deletion until real input.
+-- Never cache a bag slot: inventory and route eligibility are re-read on that input.
+function APR:DestroyRouteItemOnInput()
+    local request = self.routeItemDestruction
+    if not request then return end
+    local profile = self.GetSettingsProfile and self:GetSettingsProfile()
+        or (self.settings and self.settings.profile)
+    if not profile or not profile.enableAddon
+        or self.routeValidationPending or self.routeValidationFailed
+        or self.startupQuestStatePending
+        or not self:IsStepContextCurrent(request.context)
+        or self.routeActionState ~= request.state then
+        self:CancelRouteItemDestruction()
+        return
+    end
+    local step = self:GetStep(request.context.index)
+    if not step or not step.DestroyItems or not CanRunRouteAction(self, step) then
+        self:CancelRouteItemDestruction()
+        return
+    end
+    if UnitIsDeadOrGhost and UnitIsDeadOrGhost("player") then return end
+    -- No timer or deferred callback may separate the hardware input from deletion.
+    if self:ProcessRouteItems("DestroyItems", step.DestroyItems, request.state, nil, true) then
+        self:CancelRouteItemDestruction()
+    end
+end--[[APR_DIAG]]; APR.DestroyRouteItemOnInput = APRTrace("APR-Core/features/questing/RouteActions.lua:417:APR:DestroyRouteItemOnInput#19", APR.DestroyRouteItemOnInput)--[[/APR_DIAG]]
+
+function APR:QueueRouteItemDestruction(state)
+    if not CreateFrame or not self.CaptureStepContext or not self.IsStepContextCurrent then return end
+    if InCombatLockdown and InCombatLockdown() then return end
+    if not self.routeItemDestructionFrame then
+        local frame = CreateFrame("Frame", nil, UIParent)
+        frame:Hide()
+        frame:SetPropagateKeyboardInput(true)
+        frame:SetScript("OnKeyDown", --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteActions.lua:449:callback#21", --[[/APR_DIAG]]function() self:DestroyRouteItemOnInput() end--[[APR_DIAG]])--[[/APR_DIAG]])
+        if WorldFrame then
+            WorldFrame:HookScript("OnMouseDown", --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteActions.lua:451:callback#22", --[[/APR_DIAG]]function() self:DestroyRouteItemOnInput() end--[[APR_DIAG]])--[[/APR_DIAG]])
+        end
+        self.routeItemDestructionFrame = frame
+    end
+    self.routeItemDestruction = { context = self:CaptureStepContext(), state = state }
+    self.routeItemDestructionFrame:Show()
+end--[[APR_DIAG]]; APR.QueueRouteItemDestruction = APRTrace("APR-Core/features/questing/RouteActions.lua:442:APR:QueueRouteItemDestruction#20", APR.QueueRouteItemDestruction)--[[/APR_DIAG]]
 
 function APR:HandleRouteAction(step)
+    if not step or not step.DestroyItems then self:CancelRouteItemDestruction() end
     if not step then return false end
     local canRun
     if step.LeaveQuest or step.LeaveQuests then
@@ -511,8 +539,13 @@ function APR:HandleRouteAction(step)
                 end
             end
             if complete then
+                if key == "DestroyItems" then self:CancelRouteItemDestruction() end
                 self:NextQuestStep()
                 return true
+            end
+            if key == "DestroyItems" then
+                if deferred then self:CancelRouteItemDestruction()
+                else self:QueueRouteItemDestruction(state) end
             end
             if self.currentStep and self.currentStep.AddQuestSteps then
                 self.currentStep:AddQuestSteps(key, self:GetRouteActionText(key, rule, true, state), key, false, true)
@@ -529,9 +562,7 @@ function APR:HandleRouteAction(step)
         end
     end
     return false
-end--[[APR_DIAG]]
-APR.HandleRouteAction =
-    APRTrace("APR-Core/features/questing/RouteActions.lua:362:APR:HandleRouteAction#18", APR.HandleRouteAction)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.HandleRouteAction = APRTrace("APR-Core/features/questing/RouteActions.lua:459:APR:HandleRouteAction#23", APR.HandleRouteAction)--[[/APR_DIAG]]
 
 function APR:IsRouteRepairNeeded(rule)
     if not GetInventoryItemDurability then return true end
@@ -544,9 +575,7 @@ function APR:IsRouteRepairNeeded(rule)
         end
     end
     return false
-end--[[APR_DIAG]]
-APR.IsRouteRepairNeeded =
-    APRTrace("APR-Core/features/questing/RouteActions.lua:454:APR:IsRouteRepairNeeded#19", APR.IsRouteRepairNeeded)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.IsRouteRepairNeeded = APRTrace("APR-Core/features/questing/RouteActions.lua:567:APR:IsRouteRepairNeeded#24", APR.IsRouteRepairNeeded)--[[/APR_DIAG]]
 
 function APR:HandleRouteRepair(step)
     local rule = step and step.Repair
@@ -565,9 +594,7 @@ function APR:HandleRouteRepair(step)
     state.repairPending = true
     RepairAllItems(false)
     return not self:IsRouteRepairNeeded(rule)
-end--[[APR_DIAG]]
-APR.HandleRouteRepair =
-    APRTrace("APR-Core/features/questing/RouteActions.lua:467:APR:HandleRouteRepair#20", APR.HandleRouteRepair)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.HandleRouteRepair = APRTrace("APR-Core/features/questing/RouteActions.lua:580:APR:HandleRouteRepair#25", APR.HandleRouteRepair)--[[/APR_DIAG]]
 
 function APR:HandleSkillTrainer(step)
     if not step or not step.LearnSkill or not self.routeTrainerOpen then return end
@@ -593,9 +620,7 @@ function APR:HandleSkillTrainer(step)
         end
     end
     if rule.allAvailable and not anyAvailable then self:GetRouteActionState().complete = true end
-end--[[APR_DIAG]]
-APR.HandleSkillTrainer =
-    APRTrace("APR-Core/features/questing/RouteActions.lua:484:APR:HandleSkillTrainer#21", APR.HandleSkillTrainer)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.HandleSkillTrainer = APRTrace("APR-Core/features/questing/RouteActions.lua:599:APR:HandleSkillTrainer#26", APR.HandleSkillTrainer)--[[/APR_DIAG]]
 
 function APR:HandleDeathSkip(step, event)
     if not step or not step.DeathSkip or not CanRunRouteAction(self, step) then return end
@@ -615,9 +640,7 @@ function APR:HandleDeathSkip(step, event)
         end
     end
     if event == "PLAYER_UNGHOST" and state.died and state.spiritHealer then state.complete = true end
-end--[[APR_DIAG]]
-APR.HandleDeathSkip =
-    APRTrace("APR-Core/features/questing/RouteActions.lua:509:APR:HandleDeathSkip#22", APR.HandleDeathSkip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.HandleDeathSkip = APRTrace("APR-Core/features/questing/RouteActions.lua:625:APR:HandleDeathSkip#27", APR.HandleDeathSkip)--[[/APR_DIAG]]
 
 function APR:HandleTameBeast(step, event, unit, spell)
     if not APRSecret:CanAccessValue(unit) or not APRSecret:CanAccessValue(spell) then return end
@@ -629,9 +652,7 @@ function APR:HandleTameBeast(step, event, unit, spell)
     elseif event == "UNIT_SPELLCAST_SUCCEEDED" then
         state.complete = not step.TameBeast.npcID or state.target == step.TameBeast.npcID
     end
-end--[[APR_DIAG]]
-APR.HandleTameBeast =
-    APRTrace("APR-Core/features/questing/RouteActions.lua:524:APR:HandleTameBeast#23", APR.HandleTameBeast)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.HandleTameBeast = APRTrace("APR-Core/features/questing/RouteActions.lua:645:APR:HandleTameBeast#28", APR.HandleTameBeast)--[[/APR_DIAG]]
 
 function APR:HandleSpellETA(step, unit, spell)
     if not APRSecret:CanAccessValue(unit) or not APRSecret:CanAccessValue(spell) then return end
@@ -650,6 +671,4 @@ function APR:HandleSpellETA(step, unit, spell)
         state.timerStarted = true
         self.AFK:SetAfkTimer(r.seconds)
     end
-end--[[APR_DIAG]]
-APR.HandleSpellETA =
-    APRTrace("APR-Core/features/questing/RouteActions.lua:536:APR:HandleSpellETA#24", APR.HandleSpellETA)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.HandleSpellETA = APRTrace("APR-Core/features/questing/RouteActions.lua:657:APR:HandleSpellETA#29", APR.HandleSpellETA)--[[/APR_DIAG]]
