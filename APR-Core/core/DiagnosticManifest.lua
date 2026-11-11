@@ -123,7 +123,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/utils/StepUtils.lua"] = {instrumented = 41, diagnosticHelpers = 0},
     ["APR-Core/utils/TargetUtils.lua"] = {instrumented = 31, diagnosticHelpers = 0},
     ["APR-Core/utils/TextStyleUtils.lua"] = {instrumented = 23, diagnosticHelpers = 0},
-    ["APR-Core/utils/UIUtils.lua"] = {instrumented = 44, diagnosticHelpers = 0},
+    ["APR-Core/utils/UIUtils.lua"] = {instrumented = 49, diagnosticHelpers = 0},
     ["APR-Core/utils/Utils.lua"] = {instrumented = 22, diagnosticHelpers = 10},
     ["Routes/delves.lua"] = {instrumented = 3, diagnosticHelpers = 0},
 }

@@ -365,10 +365,10 @@ Editor.ConfirmPreview =
 function Editor:Create()
     local frame = UI:Window("APRLayoutEditor", L["UI_LAYOUT_TITLE"], 780, 190)
     self.frame = frame
-    frame:SetResizeBounds(600, 180)
+    APR:SetScreenResizeBounds(frame, 600, 180)
     frame:SetHeight(190)
     if APR.Gamepad then
-        frame:SetResizeBounds(600, 250)
+        APR:SetScreenResizeBounds(frame, 600, 250)
         frame:SetHeight(250)
         local choose = UI:Select(
             frame.content,

@@ -36,7 +36,7 @@ function Workspace:Create()
     -- Include the attached tabs in screen clamping when dragging the window upward.
     frame:SetClampRectInsets(-24, 0, 26, 0)
     frame:SetFrameLevel(math.max(3, frame:GetFrameLevel()))
-    frame:SetResizeBounds(math.min(940, UIParent:GetWidth() - 40), math.min(740, UIParent:GetHeight() - 60))
+    APR:SetScreenResizeBounds(frame, math.min(940, UIParent:GetWidth() - 40), math.min(740, UIParent:GetHeight() - 60))
     frame:SetSize(
         math.max(frame:GetWidth(), math.min(940, UIParent:GetWidth() - 40)),
         math.max(frame:GetHeight(), math.min(740, UIParent:GetHeight() - 60))

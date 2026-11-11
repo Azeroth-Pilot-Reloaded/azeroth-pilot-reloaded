@@ -151,11 +151,11 @@ updateSnapSizing = --[[APR_DIAG]]
                 local maxHeight = (UIParent and UIParent.GetHeight and UIParent:GetHeight()) or 2000
                 if QuestOrderListFrame:GetWidth() ~= anchorWidth then QuestOrderListFrame:SetWidth(anchorWidth) end
                 -- Keep width in sync with the parent while still allowing the user to resize height.
-                QuestOrderListFrame:SetResizeBounds(anchorWidth, FRAME_MIN_HEIGHT, anchorWidth, maxHeight)
+                APR:SetScreenResizeBounds(QuestOrderListFrame, anchorWidth, FRAME_MIN_HEIGHT, anchorWidth, maxHeight)
             end
         else
             QuestOrderListFrame:SetClampedToScreen(true)
-            QuestOrderListFrame:SetResizeBounds(FRAME_MIN_WIDTH, FRAME_MIN_HEIGHT)
+            APR:SetScreenResizeBounds(QuestOrderListFrame, FRAME_MIN_WIDTH, FRAME_MIN_HEIGHT)
             QuestOrderListFrame:SetResizable(true)
             if resizeButton then
                 resizeButton:Show()
@@ -181,7 +181,7 @@ QuestOrderListFrame:HookScript(
 )
 
 QuestOrderListFrame:SetResizable(true)
-QuestOrderListFrame:SetResizeBounds(FRAME_MIN_WIDTH, FRAME_MIN_HEIGHT)
+APR:SetScreenResizeBounds(QuestOrderListFrame, FRAME_MIN_WIDTH, FRAME_MIN_HEIGHT)
 APR:SetupFrameDrag(
     QuestOrderListFrame, --[[APR_DIAG]]
     APRTrace(
