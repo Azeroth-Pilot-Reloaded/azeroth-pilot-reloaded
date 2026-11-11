@@ -77,9 +77,7 @@ function GetCursorInfo() return cursor and "item", cursor and cursor.itemID end
 function ClearCursor() cursor = nil end
 
 function DeleteCursorItem()
-    assert(cursor)
-    mutated = mutated + 1
-    cursor = nil
+    error("Route processing must never call protected DeleteCursorItem")
 end
 
 function UnitIsDeadOrGhost() return false end
@@ -216,7 +214,10 @@ assert(cursor.itemID == 999 and bags[0][1].itemID == 100, "Unrelated cursor must
 cursor = nil
 bags[0][2] = { itemID = 200, stackCount = 3 }
 assert(not APR:ProcessRouteItems("DestroyItems", { items = { 100 } }, {}))
-assert(bags[0][1] == nil and bags[0][2].itemID == 200, "Only listed item IDs may be destroyed")
+assert(bags[0][1].itemID == 100 and bags[0][2].itemID == 200 and cursor == nil,
+    "Automatic refresh must leave listed items and the cursor untouched")
+assert(not APR:ProcessRouteItems("DestroyItems", { items = { 100 } }, {}), "Repeated refresh still waits")
+bags[0][1] = nil -- Native bag update after the player manually destroys the target.
 assert(APR:ProcessRouteItems("DestroyItems", { items = { 100 } }, {}))
 APR.routeMerchantOpen = false
 assert(not APR:ProcessRouteItems("SellItems", { items = { 200 } }, {}))
