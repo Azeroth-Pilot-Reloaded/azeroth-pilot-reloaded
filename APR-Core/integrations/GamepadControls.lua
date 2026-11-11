@@ -101,7 +101,7 @@ function Pad:CaptureMenuBinding()
         local frame = UI:Window("APRGamepadBinding", L["GAMEPAD_MENU"], 560, 260)
         self.bindingCapture = frame
         self.windows[frame].popup = true
-        frame:SetResizeBounds(400, 230)
+        APR:SetScreenResizeBounds(frame, 400, 230)
         frame:SetFrameStrata("FULLSCREEN_DIALOG")
         frame:SetFrameLevel(1000)
         local help = UI:Label(frame.content, L["GAMEPAD_BIND_PROMPT"], 14)
@@ -297,7 +297,7 @@ function Pad:ShowColor(widget)
         local frame = UI:Window("APRGamepadColor", COLOR_PICKER or "Color", 540, 370)
         self.colorEditor = frame
         self.windows[frame].popup = true
-        frame:SetResizeBounds(440, 350)
+        APR:SetScreenResizeBounds(frame, 440, 350)
         frame:SetFrameStrata("FULLSCREEN_DIALOG")
         frame.channels = {}
         for index, name in ipairs({ "R", "G", "B", "A" }) do

@@ -1,5 +1,7 @@
 -- Exercise AFK visibility with the actual snap helper and both dependent panels.
 local env = dofile("tests/lua/route_ui_test_env.lua")
+-- Provide a real viewport around the synthetic 420px-wide snap chain.
+UIParent:SetSize(1600, 900)
 local now, timers = 100, {}
 function GetTime() return now end
 C_Timer = { After = function(_, callback) timers[#timers + 1] = callback end }

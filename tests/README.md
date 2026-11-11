@@ -603,6 +603,12 @@ On Retail and
 Forever, also check dragging, reload, the layout editor and a resolution/UI-scale
 change in the actual client; simulated frames do not certify native rendering.
 
+`screen_resize_bounds_test.lua` checks screen-sized resize limits in frame units,
+including inherited scaling, stricter caller bounds, small or unavailable displays,
+oversized restored frames, reopening and deferred updates after combat. Native
+size notifications also cover height/width changes after initialization, synchronous
+callback reentrancy, external window decorations and off-screen anchor recovery.
+
 ## Pull requests
 
 `PR Tests` runs the three test families on opening, reopening, marking ready for

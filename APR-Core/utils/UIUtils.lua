@@ -8,6 +8,78 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
+local screenResizeFrames = setmetatable({}, { __mode = "k" })
+local screenResizeWatcher
+
+local function RefreshScreenResizeBounds(frame, recoverPosition)
+    if InCombatLockdown() then
+        screenResizeWatcher:RegisterEvent("PLAYER_REGEN_ENABLED")
+        return
+    end
+    local bounds = screenResizeFrames[frame]
+    local width, height = UIParent:GetWidth(), UIParent:GetHeight()
+    local scale, parentScale = frame:GetEffectiveScale(), UIParent:GetEffectiveScale()
+    if not bounds or bounds.refreshing or not width or not height or width <= 0 or height <= 0
+        or not scale or scale <= 0 or not parentScale or parentScale <= 0 then return end
+    -- Resize bounds use the frame's units, not physical pixels or UIParent's units.
+    width, height = width * parentScale / scale, height * parentScale / scale
+    local leftInset, rightInset, topInset, bottomInset = 0, 0, 0, 0
+    if frame.GetClampRectInsets then
+        local left, right, top, bottom = frame:GetClampRectInsets()
+        leftInset, rightInset = math.max(0, -(left or 0)), math.max(0, right or 0)
+        topInset, bottomInset = math.max(0, top or 0), math.max(0, -(bottom or 0))
+    end
+    -- The logo and attached tabs also need screen space outside the frame.
+    local maxWidth = math.min(bounds.maxWidth or width, math.max(1, width - leftInset - rightInset))
+    local maxHeight = math.min(bounds.maxHeight or height, math.max(1, height - topInset - bottomInset))
+    bounds.refreshing = true
+    frame:SetResizeBounds(math.min(bounds.minWidth, maxWidth), math.min(bounds.minHeight, maxHeight), maxWidth, maxHeight)
+    if frame:GetWidth() > maxWidth or frame:GetHeight() > maxHeight then
+        frame:SetSize(math.min(frame:GetWidth(), maxWidth), math.min(frame:GetHeight(), maxHeight))
+    end
+    -- Recover saved off-screen windows without disturbing linked gameplay panels
+    -- or rewriting anchors while the mouse is actively resizing a frame.
+    if recoverPosition and frame:GetParent() == UIParent and frame.GetLeft and frame.GetTop then
+        local left, top = frame:GetLeft(), frame:GetTop()
+        if left and top then
+            local wantedLeft = math.max(leftInset, math.min(left, width - rightInset - frame:GetWidth()))
+            local wantedTop = math.min(height - topInset, math.max(top, frame:GetHeight() + bottomInset))
+            if math.abs(left - wantedLeft) > 0.01 or math.abs(top - wantedTop) > 0.01 then
+                frame:ClearAllPoints()
+                frame:SetPoint("TOPLEFT", UIParent, "TOPLEFT", wantedLeft, wantedTop - height)
+            end
+        end
+    end
+    bounds.refreshing = nil
+end--[[APR_DIAG]]; RefreshScreenResizeBounds = APRTrace("APR-Core/utils/UIUtils.lua:14:RefreshScreenResizeBounds#1", RefreshScreenResizeBounds)--[[/APR_DIAG]]
+
+-- Keep caller minima (and optional stricter maxima), with the screen as the ceiling.
+function APR:SetScreenResizeBounds(frame, minWidth, minHeight, maxWidth, maxHeight)
+    if not screenResizeWatcher then
+        screenResizeWatcher = CreateFrame("Frame")
+        screenResizeWatcher:RegisterEvent("DISPLAY_SIZE_CHANGED")
+        screenResizeWatcher:RegisterEvent("UI_SCALE_CHANGED")
+        screenResizeWatcher:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/utils/UIUtils.lua:62:callback#3", --[[/APR_DIAG]]function(_, event)
+            if event == "PLAYER_REGEN_ENABLED" then screenResizeWatcher:UnregisterEvent(event) end
+            for target in pairs(screenResizeFrames) do RefreshScreenResizeBounds(target, true) end
+        end--[[APR_DIAG]])--[[/APR_DIAG]])
+    end
+    if not screenResizeFrames[frame] then
+        local function refresh() RefreshScreenResizeBounds(frame, true) end--[[APR_DIAG]]; refresh = APRTrace("APR-Core/utils/UIUtils.lua:68:refresh#4", refresh)--[[/APR_DIAG]]
+        frame:HookScript("OnShow", refresh)
+        -- Native resize bounds alone do not cover later programmatic sizes.
+        frame:HookScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/utils/UIUtils.lua:71:callback#5", --[[/APR_DIAG]]function() RefreshScreenResizeBounds(frame) end--[[APR_DIAG]])--[[/APR_DIAG]])
+        hooksecurefunc(frame, "StopMovingOrSizing", refresh)
+        hooksecurefunc(frame, "SetScale", refresh)
+        local parent = frame:GetParent()
+        if parent and parent ~= UIParent then hooksecurefunc(parent, "SetScale", refresh) end
+    end
+    local bounds = screenResizeFrames[frame] or {}
+    bounds.minWidth, bounds.minHeight, bounds.maxWidth, bounds.maxHeight = minWidth, minHeight, maxWidth, maxHeight
+    screenResizeFrames[frame] = bounds
+    RefreshScreenResizeBounds(frame, true)
+end--[[APR_DIAG]]; APR.SetScreenResizeBounds = APRTrace("APR-Core/utils/UIUtils.lua:57:APR:SetScreenResizeBounds#2", APR.SetScreenResizeBounds)--[[/APR_DIAG]]
+
 local PREVIEW_IMAGE_ASSET_ROOT = "Interface\\AddOns\\APR\\APR-Core\\assets\\"
 local NAVIGATION_QUEST_UI_KEY_PATTERNS = {
     "^01_NAVIGATION_PATH%-",

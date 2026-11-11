@@ -539,7 +539,7 @@ Panel.Refresh = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:334:Panel:Refr
 function Panel:Create()
     if self.frame then return end
     self.frame = UI:Window("APRCompanions", APR.title .. "  ·  " .. L["GF_TITLE"], 1040, 680, "library", "logo")
-    self.frame:SetResizeBounds(math.min(860, UIParent:GetWidth() - 40), math.min(460, UIParent:GetHeight() - 60))
+    APR:SetScreenResizeBounds(self.frame, math.min(860, UIParent:GetWidth() - 40), math.min(460, UIParent:GetHeight() - 60))
     local root = self.frame.content
     self.refresh = UI:Button(
         root,

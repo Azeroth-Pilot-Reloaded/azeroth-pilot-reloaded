@@ -152,7 +152,7 @@ function Browser:Create(parent)
     local minimumWidth, minimumHeight =
         math.min(880, UIParent:GetWidth() - 40), math.min(560, UIParent:GetHeight() - 60)
     if not parent then
-        frame:SetResizeBounds(minimumWidth, minimumHeight)
+        APR:SetScreenResizeBounds(frame, minimumWidth, minimumHeight)
         frame:SetSize(math.max(minimumWidth, frame:GetWidth()), math.max(minimumHeight, frame:GetHeight()))
     end
     self.frame = frame

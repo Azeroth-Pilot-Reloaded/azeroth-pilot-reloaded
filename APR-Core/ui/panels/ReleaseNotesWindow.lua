@@ -71,7 +71,7 @@ function Window:Create()
     -- utility window's title bar and separate logo entirely.
     local frame = UI:Window("APRReleaseNotesWindow", "", width, height, "library")
     self.frame = frame
-    frame:SetResizeBounds(minWidth, minHeight)
+    APR:SetScreenResizeBounds(frame, minWidth, minHeight)
     frame:SetSize(
         math.max(minWidth, math.min(savedWidth or width, screenWidth - 40)),
         math.max(minHeight, math.min(savedHeight or height, screenHeight - 60))

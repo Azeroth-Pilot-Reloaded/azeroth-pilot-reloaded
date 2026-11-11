@@ -350,7 +350,7 @@ function Dashboard:Create(parent)
     local minimumWidth, minimumHeight =
         math.min(760, UIParent:GetWidth() - 40), math.min(700, UIParent:GetHeight() - 60)
     if not parent then
-        frame:SetResizeBounds(minimumWidth, minimumHeight)
+        APR:SetScreenResizeBounds(frame, minimumWidth, minimumHeight)
         -- Older saved dimensions can predate the resource cards and their minimum readable size.
         frame:SetSize(math.max(frame:GetWidth(), minimumWidth), math.max(frame:GetHeight(), minimumHeight))
     end
