@@ -8,6 +8,7 @@ function GetScreenHeight() return 576 end
 function env.methods:StartMoving() self.moving = true end
 function env.methods:GetLeft() return self.left end
 function env.methods:GetTop() return self.top end
+function env.methods:SetDontSavePosition(value) self.dontSavePosition = value end
 function APR:IsPetBattleActive() return false end
 function APR:IsInstanceWithUI() return true end
 dofile("APR-Core/features/navigation/Arrow.lua")
@@ -24,6 +25,17 @@ assert(profile.arrowleft == 0 and profile.arrowtop == 0)
 profile.arrowleft, profile.arrowtop = 350, -420
 arrow:Init()
 assert(profile.arrowleft == 350 and profile.arrowtop == -420)
+
+-- The native layout cache must not compete with the profile or identify the
+-- artwork and drag anchor as the same frame. Reattach legacy cached artwork
+-- when entering the world, even when the saved profile itself is unchanged.
+assert(anchor.name ~= APR.ArrowFrame.name, "Anchor and artwork need distinct native identities")
+assert(anchor.dontSavePosition and APR.ArrowFrame.dontSavePosition, "Only the profile persists arrow placement")
+APR.ArrowFrame:SetPoint("CENTER", UIParent, "CENTER", 0, -200)
+anchor.scripts.OnEvent(anchor, "PLAYER_ENTERING_WORLD")
+assert(anchor.point[4] == 350 and anchor.point[5] == -420)
+assert(APR.ArrowFrame.point[2] == anchor and APR.ArrowFrame.point[4] == 0 and APR.ArrowFrame.point[5] == 0,
+    "Loading restores artwork attachment instead of leaving it at a cached screen position")
 
 -- Drag capture uses effective-scale ratios, never the physical screen height.
 anchor.left, anchor.top = 500, 700

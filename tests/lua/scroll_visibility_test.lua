@@ -96,4 +96,24 @@ for _, profile in ipairs({ "Retail", "Forever" }) do
     local unrelated = CreateFrame("ScrollFrame", nil, UIParent, "UIPanelScrollFrameTemplate")
     assert(unrelated.ScrollBar:IsShown(), "Other addons' native templates remain untouched")
 end
+
+-- Native anchors can round-trip through scaled, single-precision coordinates.
+-- A read-back difference must not be mistaken for a caller changing the inset.
+local preciseGetPoint = methods.GetPoint
+function methods:GetPoint(index)
+    local point, relative, relativePoint, x, y = preciseGetPoint(self, index)
+    if point and self.roundAnchors then x = x + 0.000001 end
+    return point, relative, relativePoint, x, y
+end
+local rounded = APR.UI:Scroll(UIParent)
+rounded:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 12, -10)
+rounded:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -30, 10)
+rounded:SetHeight(200)
+rounded.roundAnchors = true
+for _ = 1, 100 do rounded.scripts.OnSizeChanged(rounded) end
+assert(math.abs(rounded:GetWidth() - 980) < 0.001, "Rounded anchor reads cannot repeatedly reclaim the scrollbar column")
+local roundedChild = CreateFrame("Frame", nil, rounded)
+roundedChild:SetHeight(1000)
+rounded:SetScrollChild(roundedChild)
+assert(math.abs(rounded:GetWidth() - 958) < 0.001, "Overflow restores the original inset after rounded reads")
 print("Shared scroll visibility: empty, fit, overflow, content/viewport resize, late skins and native isolation passed")

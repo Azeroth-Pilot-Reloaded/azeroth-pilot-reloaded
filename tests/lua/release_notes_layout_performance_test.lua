@@ -102,6 +102,21 @@ reader:RefreshNotes()
 assert(measurements == 1 and reader.content:GetHeight() == 50 and not reader.rows[2]:IsShown())
 flush()
 assert(measurements == 1, "A content publication cancels the earlier deferred layout")
+
+-- Layout can first run while its window is hidden and report no usable width.
+-- Showing that window must schedule a fresh measurement after native anchors
+-- settle, even if no further resize event is delivered to the reader.
+reader.notes:Hide()
+reader.scroll:SetWidth(0)
+reader:RefreshNotes()
+assert(reader.content:GetWidth() == 100)
+reader.notes:Show()
+reader.scroll.scripts.OnShow(reader.scroll)
+reader.scroll:SetWidth(720)
+assert(#timers == 1, "Opening schedules one layout after the window's anchors resolve")
+flush()
+assert(reader.content:GetWidth() == 720 and reader.rows[1]:GetWidth() == 712,
+    "The visible notes use the viewport width instead of the hidden fallback")
 print(
     "Release layout: 200 font updates need 200 measurements instead of 40,000; resize, hidden parents, stale requests and reopen passed"
 )

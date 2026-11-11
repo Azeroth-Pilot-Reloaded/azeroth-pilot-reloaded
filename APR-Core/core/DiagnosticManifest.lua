@@ -88,7 +88,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/ui/panels/PartyFinderPanel.lua"] = {instrumented = 41, diagnosticHelpers = 0},
     ["APR-Core/ui/panels/PerformanceDashboard.lua"] = {instrumented = 39, diagnosticHelpers = 0},
     ["APR-Core/ui/panels/PerformanceResources.lua"] = {instrumented = 14, diagnosticHelpers = 0},
-    ["APR-Core/ui/panels/ReleaseNotesPanel.lua"] = {instrumented = 14, diagnosticHelpers = 0},
+    ["APR-Core/ui/panels/ReleaseNotesPanel.lua"] = {instrumented = 15, diagnosticHelpers = 0},
     ["APR-Core/ui/panels/ReleaseNotesWindow.lua"] = {instrumented = 14, diagnosticHelpers = 0},
     ["APR-Core/ui/panels/StatusReport.lua"] = {instrumented = 37, diagnosticHelpers = 0},
     ["APR-Core/ui/panels/Workspace.lua"] = {instrumented = 16, diagnosticHelpers = 0},

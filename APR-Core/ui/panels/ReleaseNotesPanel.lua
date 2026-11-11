@@ -85,6 +85,14 @@ function Panel:CreateNotes(parent)
     self.scroll:SetPoint("BOTTOMRIGHT", -30, 14)
     self.content = CreateFrame("Frame", nil, self.scroll)
     self.scroll:SetScrollChild(self.content)
+    -- Hidden ancestors may not have resolved their anchored width yet. Measure
+    -- again after showing instead of retaining the temporary 100px fallback.
+    self.scroll:HookScript(
+        "OnShow", --[[APR_DIAG]]
+        APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:80:callback#15", --[[/APR_DIAG]] function()
+            self:QueueLayout()
+        end--[[APR_DIAG]])--[[/APR_DIAG]]
+    )
     self.scroll:HookScript(
         "OnSizeChanged", --[[APR_DIAG]]
         APRTrace(
