@@ -88,7 +88,10 @@ GetArrowColor = APRTrace("APR-Core/features/navigation/Arrow.lua:74:GetArrowColo
 ----------------------------------- Arrow Frames --------------------------------------
 ---------------------------------------------------------------------------------------
 
-APR.ArrowFrameM = CreateFrame("Button", "APR_Arrow", UIParent)
+-- APR's profile owns placement. Distinct names avoid the native layout cache
+-- confusing the movable anchor with its artwork, which used to share a name.
+APR.ArrowFrameM = CreateFrame("Button", "APR_ArrowAnchor", UIParent)
+APR.ArrowFrameM:SetDontSavePosition(true)
 APR.ArrowFrameM:SetHeight(1)
 APR.ArrowFrameM:SetWidth(1)
 APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 0, 0)
@@ -96,6 +99,7 @@ APR.ArrowFrameM:EnableMouse(true)
 APR.ArrowFrameM:SetMovable(true)
 
 APR.ArrowFrame = CreateFrame("Button", "APR_Arrow", UIParent)
+APR.ArrowFrame:SetDontSavePosition(true)
 APR.ArrowFrame:SetHeight(CELL_HEIGHT)
 APR.ArrowFrame:SetWidth(CELL_WIDTH)
 APR.ArrowFrame:SetPoint("TOPLEFT", APR.ArrowFrameM, "TOPLEFT", 0, 0)
@@ -242,6 +246,9 @@ function APR.Arrow:RestorePosition()
     profile.arrowleft, profile.arrowtop = left, top
     APR.ArrowFrameM:ClearAllPoints()
     APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", left, top)
+    -- An older native layout entry can have detached the artwork on login.
+    APR.ArrowFrame:ClearAllPoints()
+    APR.ArrowFrame:SetPoint("TOPLEFT", APR.ArrowFrameM, "TOPLEFT", 0, 0)
 end--[[APR_DIAG]]
 APR.Arrow.RestorePosition = APRTrace("APR-Core/features/navigation/Arrow.lua:226:APR.Arrow:RestorePosition#15", APR.Arrow.RestorePosition)--[[/APR_DIAG]]
 

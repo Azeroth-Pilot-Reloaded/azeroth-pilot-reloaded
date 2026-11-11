@@ -903,13 +903,18 @@ function UI:Scroll(parent, name)
                 local point, relative, relativePoint, x, y = scroll:GetPoint(index)
                 if point:find("RIGHT") then
                     local anchor = rightAnchors[point]
-                    if not anchor or anchor.applied ~= x or anchor.relative ~= relative or anchor.y ~= y then
-                        anchor = { base = x, relative = relative, y = y }
+                    -- Native offsets round-trip through scaled coordinates. Exact
+                    -- equality can interpret our own anchor as a new caller inset
+                    -- and add another scrollbar column on every layout callback.
+                    if not anchor or math.abs(anchor.applied - x) > 0.01
+                        or anchor.relative ~= relative or anchor.relativePoint ~= relativePoint
+                        or math.abs(anchor.y - y) > 0.01 then
+                        anchor = { base = x, relative = relative, relativePoint = relativePoint, y = y }
                         rightAnchors[point] = anchor
                     end
                     local wanted = anchor.base + (range > 0 and 0 or 22)
                     anchor.applied = wanted
-                    if x ~= wanted then scroll:SetPoint(point, relative, relativePoint, wanted, y) end
+                    if math.abs(x - wanted) > 0.01 then scroll:SetPoint(point, relative, relativePoint, wanted, y) end
                 end
             end
         end

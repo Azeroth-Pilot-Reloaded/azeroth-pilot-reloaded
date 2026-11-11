@@ -595,7 +595,11 @@ certified by simulated WoW APIs.
 
 `arrow_position_test.lua` checks UIParent coordinate round-trips at non-unit UI
 scales, off-screen/invalid saved anchors, artwork bounds, display changes and
-layout preview save/cancel behavior with synthetic geometry. On Retail and
+layout preview save/cancel behavior with synthetic geometry. It also checks
+independent native identities, profile-owned persistence and artwork reattachment
+after a legacy cached anchor. Scroll visibility checks include rounded native
+anchor reads; release-note layout checks include widths resolved only after showing.
+On Retail and
 Forever, also check dragging, reload, the layout editor and a resolution/UI-scale
 change in the actual client; simulated frames do not certify native rendering.
 
