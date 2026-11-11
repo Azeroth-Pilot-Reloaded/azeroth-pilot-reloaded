@@ -17,10 +17,10 @@ assert(finder:GetSearchCooldown() > 0 and not finder:Search())
 env = Fixture.New()
 finder = env.finder
 C_ChatInfo.GetChannelRosterInfo = function(index, row)
-    assert(index == 3)
+    assert(index == 4)
     return ({ "Local-Home", "Peer-Home" })[row]
 end
-APR.CommunicationChannel.addonTransport = "blocked"
+finder:GetSearchTransport().addonTransport = "blocked"
 assert(finder:Search())
 env:Advance(0.1)
 local firstSweep = finder.sweep

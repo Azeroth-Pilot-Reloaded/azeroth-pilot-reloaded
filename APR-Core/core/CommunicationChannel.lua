@@ -70,7 +70,9 @@ function Channel:RetireZoneChannels(keepName)
         local name = values[index]
         if Public(name) and type(name) == "string" and name:lower() ~= keepName:lower() then
             local tag = name:lower()
-            if tag:match("^apralliancez%d+$") or tag:match("^aprhordez%d+$") then retired[#retired + 1] = name end
+            if tag:match("^aprz%d+$") or tag:match("^apralliancez%d+$") or tag:match("^aprhordez%d+$") then
+                retired[#retired + 1] = name
+            end
         end
     end
     for _, name in ipairs(retired) do --[[APR_DIAG]]

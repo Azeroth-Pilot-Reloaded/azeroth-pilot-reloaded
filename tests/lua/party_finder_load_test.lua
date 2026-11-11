@@ -46,17 +46,17 @@ local function BlockOutput(env)
     end
 end
 
--- A realm-scale stream of map/rules/instance transitions retains one membership.
+-- A realm-scale stream of map/rules/instance transitions retains the global membership.
 for _, client in ipairs({ "retail", "forever" }) do
     local env = New({ client = client, population = 10000 })
     local finder = env.finder
-    assert(finder.worldChannelID == 7 and #env.joined == (client == "forever" and 2 or 1) and env.joined[1] == env.channelName)
+    assert(finder.worldChannelID == 7 and #env.joined == 2 and env.joined[1] == env.channelName)
     for index = 1, 100 do
         env.map, env.warMode, env.instance = 600 + index, index % 2 == 0, index % 5 == 0
         env:Event("ZONE_CHANGED_NEW_AREA")
         env:Advance(0.5)
         assert(
-            finder.channelName == (client == "forever" and not env.instance and (env.channelName .. "Z" .. env.map) or env.channelName)
+            finder.channelName == (not env.instance and (env.channelName .. "Z" .. env.map) or env.channelName)
                 and finder.worldChannelName == env.channelName
                 and finder.worldChannelID == 7
         )
@@ -65,8 +65,12 @@ for _, client in ipairs({ "retail", "forever" }) do
     env:Event("PLAYER_ENTERING_WORLD")
     env:Advance(0.5)
     local globalJoins, globalLeaves = 0, 0
-    for _, name in ipairs(env.joined) do if name == env.channelName then globalJoins = globalJoins + 1 end end
-    for _, name in ipairs(env.left) do if name == env.channelName then globalLeaves = globalLeaves + 1 end end
+    for _, name in ipairs(env.joined) do
+        if name == env.channelName then globalJoins = globalJoins + 1 end
+    end
+    for _, name in ipairs(env.left) do
+        if name == env.channelName then globalLeaves = globalLeaves + 1 end
+    end
     assert(globalJoins == 1 and globalLeaves == 0 and #env:Messages("Q") == 0 and #env:Messages("P") == 0)
     assert(
         not next(finder.responses) and env:ActiveTimers() == 0,
@@ -87,10 +91,10 @@ for _ = 1, 1000 do
     env:Event("CHANNEL_COUNT_UPDATE")
     env:Event("CHANNEL_UI_UPDATE")
 end
-assert(env.populationReads == reads and #env.timers == timers + 3 and env:ActiveTimers() == 3)
+assert(env.populationReads == reads and #env.timers == timers + 4 and env:ActiveTimers() == 4)
 env:Advance(0.5)
 assert(env.populationReads == reads + 1 and routeReads == 0 and env:ActiveTimers() == 0)
-assert(#env.timers <= timers + 4, "One delayed notification may follow the three coalesced refreshes")
+assert(#env.timers <= timers + 5, "One delayed notification may follow the four coalesced refreshes")
 
 -- Foreign contexts on the common channel stop before route state and allocation.
 env = New({ population = 10000, settings = { matchMode = "zone" } })
@@ -117,7 +121,7 @@ end
 assert(decoded == 16, "Wrong channels and invalid envelopes cannot consume decoding work")
 finder.GetLocalState, env.protocol.Decode = getState, decode
 assert(finder:Search(), "Foreign traffic cannot starve a deliberate first search")
-assert(#env:Messages("Q") == 1 and env:Messages("Q")[1].target == 7)
+assert(#env:Messages("Q") == 1 and env:Messages("Q")[1].target == finder.channelID)
 
 -- Unsolicited private traffic shares a finite decoder budget and no route work.
 env = New()

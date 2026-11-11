@@ -13,7 +13,10 @@ local function New(count, options)
         env.selections[#env.selections + 1] = index
     end
     C_ChatInfo.GetChannelRosterInfo = function(index, row)
-        assert(index == (env.finder:GetRosterTransport() == APR.CommunicationChannel and 3 or 4), "Roster must use display index, not local channel number")
+        assert(
+            index == (env.finder:GetRosterTransport() == APR.CommunicationChannel and 3 or 4),
+            "Roster must use display index, not local channel number"
+        )
         if env.rosterMissing then return end
         return row == 1 and GetUnitName("player") or env.roster[row - 1]
     end
@@ -21,7 +24,18 @@ local function New(count, options)
 end
 
 local function Deny(env, channel, id, name)
-    env:Event("CHAT_MSG_CHANNEL_NOTICE", "NOT_ALLOWED_IN_CHANNEL", "", "", "", "", "", 0, id or channel:GetChannelID(), name or channel.name)
+    env:Event(
+        "CHAT_MSG_CHANNEL_NOTICE",
+        "NOT_ALLOWED_IN_CHANNEL",
+        "",
+        "",
+        "",
+        "",
+        "",
+        0,
+        id or channel:GetChannelID(),
+        name or channel.name
+    )
 end
 
 local env, finder, channel = New(48)
@@ -32,7 +46,7 @@ assert(not finder.sweep and channel.addonTransport == nil)
 Deny(env, channel)
 assert(channel.addonTransport == "blocked" and channel:IsReady() and finder.sweep)
 env:Advance(0.1)
-assert(env.selected == 2 and env.selections[1] == 3 and env.selections[2] == 2)
+assert(env.selected == 2 and env.selections[1] == 4 and env.selections[2] == 2)
 assert(finder.sweep.total == 48)
 local first = finder.query.id
 env:Receive("P", env:Presence(), "Unasked-Home", "WHISPER")
@@ -70,7 +84,7 @@ Deny(env, channel)
 env:Advance(2)
 assert(finder.sweep.loading and #env:Messages("Q", "WHISPER") == 0)
 env.rosterMissing = false
-env:Event("CHANNEL_ROSTER_UPDATE", 3, 4)
+env:Event("CHANNEL_ROSTER_UPDATE", 4, 4)
 env:Advance(0.4)
 assert(finder.sweep and not finder.sweep.loading and finder.sweep.total == 3)
 finder:StopAPRSweep()
@@ -160,12 +174,12 @@ assert(finder:GetCount() == 1)
 -- Renumbering before a roster request still selects APR by display index.
 env, finder, channel = New(2)
 assert(finder:Search())
-env.channels[env.channelName], env.channelID = 9, 9
+env.channels[channel.name], env.channelID = 9, 9
 channel:Refresh()
 channel:RecordSend(9, true, 0)
 Deny(env, channel, 9)
 env:Advance(0.1)
-assert(finder.sweep and finder.sweep.total == 2 and finder.worldChannelID == 9)
+assert(finder.sweep and finder.sweep.total == 2 and finder.channelID == 9 and finder.worldChannelID == 7)
 local currentID = finder.query.id
 env:ReceiveWire("0|P|legacy", "Peer1-Home", "WHISPER")
 assert(finder.query.id == currentID and finder:GetCount() == 0)

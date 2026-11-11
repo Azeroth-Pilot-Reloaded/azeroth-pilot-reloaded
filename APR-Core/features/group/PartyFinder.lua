@@ -221,12 +221,7 @@ function Finder:RefreshZoneChannel()
     local global = APR.CommunicationChannel
     local map = not self:IsDiscoveryInstance() and self:GetZone()
     local base = global and (global.ResolveName and global:ResolveName() or global.name)
-    local name = APR:GetGameVersion() == "forever"
-            and base
-            and type(map) == "number"
-            and map > 0
-            and (base .. "Z" .. map)
-        or nil
+    local name = base and type(map) == "number" and map > 0 and (base .. "Z" .. map) or nil
     if self.zoneChannel and self.zoneChannel.name ~= name then
         local previous = self.zoneChannel
         if self.query and self.query.channelTransport == previous then

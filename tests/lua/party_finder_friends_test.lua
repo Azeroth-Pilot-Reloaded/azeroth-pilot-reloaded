@@ -251,6 +251,7 @@ for _, cancel in ipairs({ "finish", "disable", "context" }) do
     local env = OneFriend()
     local finder = env.finder
     assert(finder:Search())
+    local cancelledID = finder.query.id
     if cancel == "finish" then
         finder:FinishQuery()
     elseif cancel == "disable" then
@@ -261,7 +262,12 @@ for _, cancel in ipairs({ "finish", "disable", "context" }) do
         finder:RefreshTransport()
     end
     env:Advance(11)
-    assert(#env:Messages("Q", "BNET") == 0, "Cancelled queries must never leave the social queue")
+    if cancel ~= "context" then
+        assert(#env:Messages("Q", "BNET") == 0, "Ending discovery leaves no scheduled social probes")
+    end
+    for _, message in ipairs(env:Messages("Q", "BNET")) do
+        assert(message.packet.id ~= cancelledID, "Cancelled queries must never leave the social queue")
+    end
     if cancel == "disable" then
         assert(not finder.eventFrame.events.BN_CHAT_MSG_ADDON and not finder.eventFrame.events.FRIENDLIST_UPDATE)
         assert(env:ActiveTimers() == 0, "Disabled social discovery leaves no timers or listeners")

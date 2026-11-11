@@ -2,7 +2,7 @@
 local Fixture = dofile("tests/lua/party_finder_test_env.lua")
 
 local function New()
-    local env = Fixture.New()
+    local env = Fixture.New({ settings = { matchMode = "world" } })
     env.population, env.selection, env.requested, env.loaded = 0, 2, 0, false
     function GetSelectedDisplayChannel() return env.selection end
     function SetSelectedDisplayChannel(index)
@@ -72,7 +72,7 @@ print("Cold APR roster: delayed native delivery, selection lease, Stop, timeout,
 -- Re-selecting the same index does nothing; the server count can arrive in the
 -- event while GetChannelDisplayInfo still returns nil.
 local function retainedSelection()
-    local env = Fixture.New()
+    local env = Fixture.New({ settings = { matchMode = "world" } })
     local finder = env.finder
     env.selection, env.population, env.loaded = 3, nil, false
     local selections, original = {}, GetChannelDisplayInfo
@@ -122,7 +122,7 @@ print(
 
 -- Discovery invalidates the old display order as soon as selection is changed.
 -- APR keeps its local channel number but moves to a different display index.
-env = Fixture.New()
+env = Fixture.New({ settings = { matchMode = "world" } })
 finder = env.finder
 local shifted, loaded, selected = false, false, 3
 local calls = {}
