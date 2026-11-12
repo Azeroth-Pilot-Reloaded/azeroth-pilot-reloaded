@@ -238,6 +238,7 @@ function APR.questOrderListSupport:CreateTextFont(parent, text, width, color)
     local fontString = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
     fontString:SetWordWrap(true)
     fontString:SetJustifyH("LEFT")
+    fontString:SetHeight(0)
     fontString:SetText(text)
     fontString:SetWidth(width)
     local role = color == "green" and "success" or "muted"
@@ -368,9 +369,10 @@ APR.questOrderListSupport.BindStepModel = APRTrace(
 
 local function reuseFont(owner, container, font, text, width, fontColor)
     if not font then return owner:CreateTextFont(container, text, width, fontColor) end
+    font:ClearAllPoints()
+    font:SetHeight(0)
     font:SetText(text)
     if not font.GetWidth or font:GetWidth() ~= width then font:SetWidth(width) end
-    font:ClearAllPoints()
     APR:SetFontStringRole(font, fontColor == "green" and "success" or "muted")
     font:Show()
     return font
@@ -396,6 +398,10 @@ function APR.questOrderListSupport:AddStepFrameWithQuest(layout, stepIndex, step
     if layout.checkpoint then layout.checkpoint() end
     indexFont:SetPoint("TOPLEFT", container, "TOPLEFT", 5, 0)
     titleFont:SetPoint("TOPLEFT", container, "TOPLEFT", offset, 0)
+    -- Auto-sized region bounds include wrapped lines on every client. Keep the
+    -- string metric as a lower bound while native geometry is being resolved.
+    local titleHeight = math.ceil(math.max(titleFont:GetHeight(), titleFont:GetStringHeight()))
+    local detailsGap = questInfo and #questInfo > 0 and 5 or 0
 
     container.questFontPool = container.questFontPool or {}
     container.questFonts = {}
@@ -428,9 +434,10 @@ function APR.questOrderListSupport:AddStepFrameWithQuest(layout, stepIndex, step
             container,
             "TOPLEFT",
             offset + 10,
-            -titleFont:GetStringHeight() - 5 - questFontHeight
+            -titleHeight - detailsGap - questFontHeight
         )
-        questFontHeight = questFontHeight + questFont:GetStringHeight() + 3
+        questFontHeight = questFontHeight
+            + math.ceil(math.max(questFont:GetHeight(), questFont:GetStringHeight())) + 3
         container.questFonts[i] = questFont
         if layout.checkpoint then layout.checkpoint() end
     end
@@ -446,7 +453,7 @@ function APR.questOrderListSupport:AddStepFrameWithQuest(layout, stepIndex, step
     end
 
     container:SetWidth(layout.frameWidth)
-    container:SetHeight(titleFont:GetStringHeight() + questFontHeight + frameOffset)
+    container:SetHeight(titleHeight + detailsGap + questFontHeight + frameOffset)
     container:SetPoint("TOPLEFT", layout.scrollChild, "TOPLEFT", 0, layout.dataHeight)
     layout.dataHeight = layout.dataHeight - container:GetHeight()
 
