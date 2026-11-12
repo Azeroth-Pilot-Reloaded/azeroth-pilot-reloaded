@@ -7,7 +7,8 @@ function WorldMapFrame:GetMapID() return 1 end
 function Minimap:GetZoom() return 0 end
 function env.methods:CreateAnimationGroup() return env.widget() end
 function env.methods:CreateAnimation() return env.widget() end
-function env.methods:Play() end
+function env.methods:Play() self.playing = true end
+function env.methods:Stop() self.playing = false end
 function env.methods:CreateLine()
     local line = env.widget(self)
     self.line = line
@@ -118,12 +119,14 @@ APR.Arrow.Active, coord = false, nil
 tick()
 assert(not minimapLine:IsShown() and not mapLine:IsShown(), "Missing step coordinates clear obsolete lines")
 coord = { x = 50, y = 100 }
+APR.map:RefreshActivity()
 tick()
 assert(minimapLine:IsShown() and mapLine:IsShown())
 profile.enableAddon = false
 tick()
 assert(not minimapLine:IsShown() and not mapLine:IsShown(), "Disabling APR removes both lines")
 profile.enableAddon = true
+APR.map:RefreshActivity()
 tick()
 assert(minimapLine:IsShown() and mapLine:IsShown(), "Re-enabling APR restores unchanged geometry")
 print("Idle map lines: no redundant writes, closed-map work, stale lines or lost invalidations")

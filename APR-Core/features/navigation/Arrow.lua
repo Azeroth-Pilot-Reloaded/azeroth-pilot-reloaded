@@ -122,43 +122,40 @@ APR.ArrowFrame.actionTextFrame:Hide()
 APR.ArrowFrame.actionTexts = {}
 APR.ArrowFrame:Hide()
 APR.ArrowFrame:SetScript(
-    "OnMouseDown", --[[APR_DIAG]]
-    APRTrace(
-        "APR-Core/features/navigation/Arrow.lua:117:callback#6", --[[/APR_DIAG]]
-        function(self, button) --Mouse clicking arrowframe
+    "OnMouseDown",
+
+        --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Arrow.lua:122:callback#6", --[[/APR_DIAG]]function(self, button) --Mouse clicking arrowframe
             if button == "LeftButton" and not APR.ArrowFrameM.isMoving and not APR.settings.profile.lockArrow then
                 APR.ArrowFrameM:StartMoving()
                 APR.ArrowFrameM.isMoving = true
             end
-        end --[[APR_DIAG]]
-    ) --[[/APR_DIAG]]
+        end--[[APR_DIAG]])--[[/APR_DIAG]]
 )
 --Mouse unclicking arrowframe (releasing mouse)
 APR.ArrowFrame:SetScript(
-    "OnMouseUp", --[[APR_DIAG]]
-    APRTrace("APR-Core/features/navigation/Arrow.lua:124:callback#7", --[[/APR_DIAG]] function(self, button)
+    "OnMouseUp",
+     --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Arrow.lua:132:callback#7", --[[/APR_DIAG]]function(self, button)
         if button == "LeftButton" and APR.ArrowFrameM.isMoving then
             APR.ArrowFrameM:StopMovingOrSizing()
             APR.ArrowFrameM.isMoving = false
             SaveArrowPosition()
         end
-    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    end--[[APR_DIAG]])--[[/APR_DIAG]]
 )
 --When arrowframe hides
 APR.ArrowFrame:SetScript(
-    "OnHide", --[[APR_DIAG]]
-    APRTrace("APR-Core/features/navigation/Arrow.lua:132:callback#8", --[[/APR_DIAG]] function(self)
+    "OnHide",
+     --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Arrow.lua:143:callback#8", --[[/APR_DIAG]]function(self)
         if APR.ArrowFrameM.isMoving then
             APR.ArrowFrameM:StopMovingOrSizing() -- prevent it from moving or rescaling in the background, it cant be seen anyway
             APR.ArrowFrameM.isMoving = false
             SaveArrowPosition()
         end
-    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    end--[[APR_DIAG]])--[[/APR_DIAG]]
 )
 
-APR.ArrowFrame:SetScript(
-    "OnUpdate", --[[APR_DIAG]]
-    APRTrace("APR-Core/features/navigation/Arrow.lua:140:callback#9", --[[/APR_DIAG]] function(self, tick)
+local arrowPoll =
+     --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Arrow.lua:153:callback#9", --[[/APR_DIAG]]function(self, tick)
         if not APR.ArrowFrame:IsShown() then return end
 
         APR.Arrow.frameTicker = APR.Arrow.frameTicker + tick
@@ -166,19 +163,30 @@ APR.ArrowFrame:SetScript(
         APR.Arrow.frameTicker = 0
 
         APR.Arrow:UpdatePosition()
-    end--[[APR_DIAG]]) --[[/APR_DIAG]]
-)
+    end--[[APR_DIAG]])--[[/APR_DIAG]]
+
+APR.ArrowFrame:SetScript("OnUpdate", nil)
+function APR.Arrow:RefreshActivity()
+    local active = self.Active and APR.ArrowFrame:IsShown()
+    APR.ArrowFrame:SetScript("OnUpdate", active and arrowPoll or nil)
+    if not active then self.frameTicker = 0 end
+    if APR.NavigationAdapter and APR.NavigationAdapter.RefreshActivity then
+        APR.NavigationAdapter:RefreshActivity(APR.navigation and APR.navigation:IsNavigating())
+    end
+end--[[APR_DIAG]]; APR.Arrow.RefreshActivity = APRTrace("APR-Core/features/navigation/Arrow.lua:164:APR.Arrow:RefreshActivity#10", APR.Arrow.RefreshActivity)--[[/APR_DIAG]]
+APR.ArrowFrame:HookScript("OnShow", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Arrow.lua:172:callback#11", --[[/APR_DIAG]]function() APR.Arrow:RefreshActivity() end--[[APR_DIAG]])--[[/APR_DIAG]])
+APR.ArrowFrame:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Arrow.lua:173:callback#12", --[[/APR_DIAG]]function() APR.Arrow:RefreshActivity() end--[[APR_DIAG]])--[[/APR_DIAG]])
 
 APR.ArrowFrame.Button = CreateFrame("Button", "APR_ArrowActiveButton", APR.ArrowFrame.textFrame)
 APR.ArrowFrame.Button:SetPoint("TOP", APR.ArrowFrame.distance, "BOTTOM", 0, -6)
 APR.ArrowFrame.Button:SetScript(
-    "OnMouseDown", --[[APR_DIAG]]
-    APRTrace("APR-Core/features/navigation/Arrow.lua:153:callback#10", --[[/APR_DIAG]] function(self, button)
+    "OnMouseDown",
+     --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Arrow.lua:179:callback#13", --[[/APR_DIAG]]function(self, button)
         APR.ArrowFrame.Button:Hide()
         if APR.navigation and (APR.navigation.retainedArrow or APR.navigation:IsNavigating()) then return end
         APR:PrintInfo("APR: " .. L["SKIP_WAYPOINT"])
         APR:NextQuestStep()
-    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    end--[[APR_DIAG]])--[[/APR_DIAG]]
 )
 
 local t = APR.ArrowFrame.Button:CreateTexture(nil, "BACKGROUND")
@@ -789,8 +797,13 @@ function APR.Arrow:SetArrowActive(isActive, x, y, displayAction)
     else
         APR.ArrowFrame:Hide()
     end
+    a:RefreshActivity()
     local data = APR.NavigationData
-    if data and data.RefreshWaypoints then data:RefreshWaypoints() end
+    if APR.NavigationAdapter and APR.NavigationAdapter.RefreshWaypoints then
+        APR.NavigationAdapter:RefreshWaypoints()
+    elseif data and data.RefreshWaypoints then
+        data:RefreshWaypoints()
+    end
 end--[[APR_DIAG]]
 APR.Arrow.SetArrowActive =
     APRTrace("APR-Core/features/navigation/Arrow.lua:602:APR.Arrow:SetArrowActive#24", APR.Arrow.SetArrowActive)--[[/APR_DIAG]]

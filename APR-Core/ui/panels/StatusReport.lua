@@ -664,8 +664,8 @@ function Panel:Create(parent)
     scroll:SetPoint("TOPLEFT", 10, -65)
     scroll:SetPoint("BOTTOMRIGHT", -28, 35)
     self.errors = APR.VirtualList:New(
-        scroll, --[[APR_DIAG]]
-        APRTrace("APR-Core/ui/panels/StatusReport.lua:546:callback#22", --[[/APR_DIAG]] function(container)
+        scroll,
+         --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:644:callback#22", --[[/APR_DIAG]]function(container)
             local row = UI:ListButton(
                 container,
                 "",
@@ -706,13 +706,13 @@ function Panel:Create(parent)
                 L["UI_ERROR_OPEN"]
             )
             return row
-        end--[[APR_DIAG]]) --[[/APR_DIAG]], --[[APR_DIAG]]
-        APRTrace("APR-Core/ui/panels/StatusReport.lua:564:callback#25", --[[/APR_DIAG]] function(row, entry)
+        end--[[APR_DIAG]])--[[/APR_DIAG]],
+         --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:684:callback#25", --[[/APR_DIAG]]function(row, entry)
             row.source:SetText(entry.source)
             row.count:SetText(entry.count)
             row.last:SetText(date("%H:%M:%S", entry.last))
             row.message:SetText(APR:RedactStatusText(entry.message):gsub("[\r\n]+", " "))
-        end--[[APR_DIAG]]) --[[/APR_DIAG]],
+        end--[[APR_DIAG]])--[[/APR_DIAG]],
         28
     )
     self.empty = UI:Label(self.errorPanel, "", 12, "muted")
@@ -724,8 +724,8 @@ function Panel:Create(parent)
     self.identity = UI:Button(
         root,
         L["UI_REDACT"],
-        350, --[[APR_DIAG]]
-        APRTrace("APR-Core/ui/panels/StatusReport.lua:574:callback#26", --[[/APR_DIAG]] function()
+        350,
+         --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:702:callback#26", --[[/APR_DIAG]]function()
             hideIdentity = not hideIdentity
             self:Refresh()
             local report = UI.reportWindow
@@ -741,7 +741,7 @@ function Panel:Create(parent)
                     APR:ExportStatusReport()
                 end
             end
-        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+        end--[[APR_DIAG]])--[[/APR_DIAG]]
     )
     UI:ButtonIcon(self.identity, "check", 16)
     self.identity:SetPoint("BOTTOMLEFT")
@@ -749,64 +749,56 @@ function Panel:Create(parent)
         root,
         REFRESH,
         150,
-        --[[APR_DIAG]]
-        APRTrace(
-            "APR-Core/ui/panels/StatusReport.lua:590:callback#27", --[[/APR_DIAG]]
-            function() self:Refresh() end --[[APR_DIAG]]
-        ) --[[/APR_DIAG]]
+
+
+            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:728:callback#27", --[[/APR_DIAG]]function() self:Refresh() end--[[APR_DIAG]])--[[/APR_DIAG]]
     )
     refresh:SetPoint("LEFT", self.identity, "RIGHT", 10, 0)
     local export = UI:Button(
         root,
         L["STATUS_EXPORT"],
         190,
-        --[[APR_DIAG]]
-        APRTrace("APR-Core/ui/panels/StatusReport.lua:593:callback#28", --[[/APR_DIAG]] function()
+
+         --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:736:callback#28", --[[/APR_DIAG]]function()
             self.exportedError = nil
             APR:ExportStatusReport()
-        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+        end--[[APR_DIAG]])--[[/APR_DIAG]]
     )
     export:SetPoint("BOTTOMRIGHT")
     self.frame.IdentityButton, self.frame.CopyButton = self.identity, export
     self.frame:SetScript(
-        "OnShow", --[[APR_DIAG]]
-        APRTrace("APR-Core/ui/panels/StatusReport.lua:598:callback#29", --[[/APR_DIAG]] function()
+        "OnShow",
+         --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:745:callback#29", --[[/APR_DIAG]]function()
             self:Refresh()
-            self.elapsed = 0
-            self.frame:SetScript(
-                "OnUpdate", --[[APR_DIAG]]
-                APRTrace("APR-Core/ui/panels/StatusReport.lua:601:callback#30", --[[/APR_DIAG]] function(_, elapsed)
-                    self.elapsed = self.elapsed + elapsed
-                    if self.elapsed < 1 then return end
-                    self.elapsed = 0
-                    if APR.ErrorLog and self.revision ~= APR.ErrorLog.revision then self:RefreshErrors() end
-                end--[[APR_DIAG]]) --[[/APR_DIAG]]
-            )
-        end--[[APR_DIAG]]) --[[/APR_DIAG]]
+            if APR.ErrorLog then
+                APR.ErrorLog.onChanged = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:748:callback#30", --[[/APR_DIAG]]function()
+                    if self.frame:IsShown() then self:RefreshErrors() end
+                end--[[APR_DIAG]])--[[/APR_DIAG]]
+            end
+        end--[[APR_DIAG]])--[[/APR_DIAG]]
     )
     self.frame:HookScript(
         "OnHide",
-        --[[APR_DIAG]]
-        APRTrace(
-            "APR-Core/ui/panels/StatusReport.lua:609:callback#31", --[[/APR_DIAG]]
-            function() self.frame:SetScript("OnUpdate", nil) end --[[APR_DIAG]]
-        ) --[[/APR_DIAG]]
+
+
+            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:758:callback#31", --[[/APR_DIAG]]function()
+                if APR.ErrorLog then
+                    APR.ErrorLog.onChanged = nil
+                    if APR.ErrorLog.changeTimer then APR.ErrorLog.changeTimer:Cancel(); APR.ErrorLog.changeTimer = nil end
+                end
+            end--[[APR_DIAG]])--[[/APR_DIAG]]
     )
     root:HookScript(
         "OnSizeChanged",
-        --[[APR_DIAG]]
-        APRTrace(
-            "APR-Core/ui/panels/StatusReport.lua:611:callback#32", --[[/APR_DIAG]]
-            function() self:Layout() end --[[APR_DIAG]]
-        ) --[[/APR_DIAG]]
+
+
+            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:769:callback#32", --[[/APR_DIAG]]function() self:Layout() end--[[APR_DIAG]])--[[/APR_DIAG]]
     )
     self.infoScroll:HookScript(
         "OnSizeChanged",
-        --[[APR_DIAG]]
-        APRTrace(
-            "APR-Core/ui/panels/StatusReport.lua:613:callback#33", --[[/APR_DIAG]]
-            function() self:Layout() end --[[APR_DIAG]]
-        ) --[[/APR_DIAG]]
+
+
+            --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/StatusReport.lua:775:callback#33", --[[/APR_DIAG]]function() self:Layout() end--[[APR_DIAG]])--[[/APR_DIAG]]
     )
     self:Refresh()
 end--[[APR_DIAG]]

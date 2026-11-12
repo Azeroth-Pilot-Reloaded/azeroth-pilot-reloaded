@@ -466,6 +466,10 @@ TrafficValue = APRTrace("APR-Core/features/group/PartyFinder.lua:414:TrafficValu
 -- Always retain a bounded, session-only transport journal, independently of CPU
 -- capture. A native success means accepted for sending, never proof of delivery.
 function Finder:TraceTraffic(direction, kind, channel, peer, result, wire)
+    if APR.PerformanceDashboard and APR.PerformanceDashboard.frame
+        and APR.PerformanceDashboard.frame:IsShown() and APR.PerformanceDashboard.QueueRefresh then
+        APR.PerformanceDashboard:QueueRefresh()
+    end
     local log = self.traffic
     if not log then
         log = { rows = {}, cursor = 0, count = 0, total = 0, sent = 0, received = 0, dropped = 0 }

@@ -31,7 +31,7 @@ for _, case in ipairs({
     for attempt = 1, 2 do
         frame.OnEvent(frame, "PLAYER_ENTERING_WORLD")
         assert(
-            calendarRequests == case.calendar * attempt,
+            calendarRequests == 0,
             "Login and reload must not request a calendar unused by the navigation catalogue"
         )
         assert(
@@ -47,11 +47,8 @@ for _, case in ipairs({
             "House events must retain the same client and feature checks as login"
         )
     end
-    assert(#tickers == case.calendar, "Only a catalogue that uses holidays needs periodic refreshes")
-    for _, tick in ipairs(tickers) do
-        tick()
-    end
-    assert(calendarRequests == case.calendar * 3, "Required holidays must still refresh after login")
+    assert(#tickers == 0, "A catalogue alone must not schedule calendar polling")
+    APR.NavigationAdapter.environment.isHolidayActive("festival")
+    assert(calendarRequests == case.calendar, "Calendar requests belong to actual holiday access queries")
 end
-
-print("Navigation startup requests: unused calendar, cross-client APIs and disabled initiative service passed")
+print("Navigation startup requests: no idle calendar work, on-demand access, cross-client initiative guards passed")

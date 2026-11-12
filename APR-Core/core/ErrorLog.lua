@@ -49,6 +49,17 @@ local function Related(text)
     end
 end
 
+function Log:NotifyChanged()
+    if not self.onChanged or self.changeTimer or not C_Timer or not C_Timer.NewTimer then return end
+    local callback = self.onChanged
+    local timer
+    timer = C_Timer.NewTimer(0, function()
+        if self.changeTimer ~= timer then return end
+        self.changeTimer = nil
+        if self.onChanged == callback then pcall(callback) end
+    end)
+    self.changeTimer = timer
+end
 local function Record(self, message, stack, occurrences, timestamp, attributedAddon)
     message, stack = PublicString(message, 4096), PublicString(stack, 12000)
     local entry = entriesByMessage[message]
@@ -100,6 +111,7 @@ local function Record(self, message, stack, occurrences, timestamp, attributedAd
         if ReadableTable(data) then entry.step = PublicNumber(rawget(data, route)) end
     end
     self.revision = self.revision + 1
+    self:NotifyChanged()
 end
 
 function Log:Record(...)
@@ -257,6 +269,7 @@ function Log:Clear()
     wipe(entriesByMessage)
     wipe(messagesFromAPR)
     self.revision = self.revision + 1
+    self:NotifyChanged()
 end
 
 -- Startup runs before APR initialization so its load errors can also be observed.

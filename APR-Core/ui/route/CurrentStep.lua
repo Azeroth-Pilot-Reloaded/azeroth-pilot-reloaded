@@ -532,6 +532,7 @@ local trackerAnchorX, trackerAnchorY
 
 -- Read tracker geometry and keep APR anchored to UIParent, outside tracker layout callbacks.
 function APR.currentStep:RefreshQuestTrackerAnchor()
+    if APR.QuestTracker.RefreshObservationActivity then APR.QuestTracker:RefreshObservationActivity() end
     if InCombatLockdown() then return false end
     local x, y = APR.QuestTracker:GetAnchor()
     if not x or not y then

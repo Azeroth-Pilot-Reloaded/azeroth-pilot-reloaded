@@ -92,3 +92,29 @@ APR.event.activeEvent, APR.event.activeHandler = nil, nil
 onEvent(observer, "ADDON_ACTION_BLOCKED", "APR", "UNKNOWN()")
 assert(not log.entries[4].event and not log.entries[4].handler, "Repeated errors cannot retain stale context")
 print("Errors: handler chaining, APR attribution, restricted strings, bounded storage and BugGrabber counts passed")
+
+-- Visible observers receive one deferred notification per burst, never a poll.
+local timers, updates = {}, 0
+C_Timer = { NewTimer = function(_, callback)
+    local timer = { callback = callback, Cancel = function(self) self.cancelled = true end }
+    timers[#timers + 1] = timer
+    return timer
+end }
+log.onChanged = function() updates = updates + 1 end
+for _ = 1, 100 do onEvent(observer, "ADDON_ACTION_BLOCKED", "APR", "TEST_NOTIFY()") end
+assert(#timers == 1 and updates == 0)
+timers[1].callback()
+assert(updates == 1 and log.changeTimer == nil)
+onEvent(observer, "ADDON_ACTION_BLOCKED", "APR", "TEST_NOTIFY()")
+local old = log.changeTimer
+old:Cancel()
+log.changeTimer, log.onChanged = nil, nil
+onEvent(observer, "ADDON_ACTION_BLOCKED", "APR", "TEST_NOTIFY()")
+assert(#timers == 2, "A hidden viewer must not schedule an error notification")
+log.onChanged = function() updates = updates + 1 end
+onEvent(observer, "ADDON_ACTION_BLOCKED", "APR", "TEST_NOTIFY()")
+local current = log.changeTimer
+old.callback()
+assert(log.changeTimer == current and updates == 1, "A retired notification cannot erase its replacement")
+current.callback()
+assert(updates == 2)

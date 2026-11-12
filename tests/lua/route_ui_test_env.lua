@@ -206,6 +206,8 @@ function methods:CreateAnimationGroup()
     return animation
 end
 
+function methods:Stop() self.playing = false end
+
 function methods:IsProtected() return self.secure end
 
 function methods:CreateFontString()

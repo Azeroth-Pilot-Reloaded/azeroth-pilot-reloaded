@@ -42,9 +42,8 @@ CoordinateFrame.Text:SetJustifyH("CENTER")
 CoordinateFrame.Text:SetPoint("CENTER", 0, 0)
 APR:RegisterFontString(CoordinateFrame.Text, "general", { role = "base" })
 
-CoordinateFrame:SetScript(
-    "OnUpdate", --[[APR_DIAG]]
-    APRTrace("APR-Core/ui/panels/Coordinates.lua:45:callback#1", --[[/APR_DIAG]] function(self, elapsed)
+local updateCoordinates =
+     --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Coordinates.lua:46:callback#1", --[[/APR_DIAG]]function(self, elapsed)
         fpsCounter = fpsCounter + elapsed
         if fpsCounter >= frequency then
             -- Drop missed intervals after a stall instead of refreshing on every catch-up frame.
@@ -64,15 +63,31 @@ CoordinateFrame:SetScript(
                 self.lastText = text
             end
         end
-    end--[[APR_DIAG]]) --[[/APR_DIAG]]
-)
+    end--[[APR_DIAG]])--[[/APR_DIAG]]
+local coordinateTicker
+local coordinateGeneration = 0
+local function StopCoordinates()
+    coordinateGeneration = coordinateGeneration + 1
+    if coordinateTicker then coordinateTicker:Cancel(); coordinateTicker = nil end
+    fpsCounter = 0
+end--[[APR_DIAG]]; StopCoordinates = APRTrace("APR-Core/ui/panels/Coordinates.lua:68:StopCoordinates#2", StopCoordinates)--[[/APR_DIAG]]
+CoordinateFrame:HookScript("OnHide", StopCoordinates)
+CoordinateFrame:HookScript("OnShow", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Coordinates.lua:73:callback#3", --[[/APR_DIAG]]function()
+    StopCoordinates()
+    local generation = coordinateGeneration
+    coordinateTicker = C_Timer.NewTicker(frequency, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Coordinates.lua:75:callback#4", --[[/APR_DIAG]]function()
+        if coordinateGeneration ~= generation then return end
+        updateCoordinates(CoordinateFrame, frequency)
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+end--[[APR_DIAG]])--[[/APR_DIAG]])
+CoordinateFrame:Hide()
 CoordinateFrame:SetScript(
-    "OnMouseDown", --[[APR_DIAG]]
-    APRTrace("APR-Core/ui/panels/Coordinates.lua:63:callback#2", --[[/APR_DIAG]] function(self, button)
+    "OnMouseDown",
+     --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Coordinates.lua:81:callback#5", --[[/APR_DIAG]]function(self, button)
         if button == "RightButton" then
             APR.questionDialog:CreateEditBoxPopup("Coordinate X,Y", nil, CoordinateFrame.Text:GetText())
         end
-    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+    end--[[APR_DIAG]])--[[/APR_DIAG]]
 )
 ---------------------------------------------------------------------------------------
 ----------------------------- Function Coordinate Frames ------------------------------

@@ -14,6 +14,7 @@ C_Timer = {
 }
 APR = { NewModule = function() return {} end, PlayerID = "p", ActiveRoute = "r", RouteQuestStepList = { r = {} } }
 APRData = { p = { r = 1 } }
+APR.settings = { profile = { enableAddon = true } }
 dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/features/navigation/NavigationPlanner.lua")
 dofile("APR-Core/features/navigation/Navigation.lua")

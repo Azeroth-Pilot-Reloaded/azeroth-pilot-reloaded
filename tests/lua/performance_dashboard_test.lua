@@ -13,6 +13,9 @@ dofile("APR-Core/core/ResourceMonitor.lua")
 dofile("APR-Core/ui/panels/PerformanceResources.lua")
 dofile("APR-Core/ui/panels/PerformanceDashboard.lua")
 C_Timer = {
+    NewTimer = function(delay, callback)
+        return { delay = delay, callback = callback, Cancel = function(self) self.cancelled = true end }
+    end,
     NewTicker = function()
         return { Cancel = function() end }
     end,
@@ -205,12 +208,25 @@ dashboard.debugCapture.scripts.OnClick()
 assert(not APR.debugLogging and not APRInstrumentation.enabled)
 print("Diagnostic UI: independent debug toggle, log mode, readable data, search, export and stopping passed")
 
+-- A live debug journal receives producer notifications without polling or a feedback loop.
+if dashboard.refreshTimer then dashboard.refreshTimer.callback() end
+APR:SetDebugCapture(true)
+dashboard.mode, dashboard.page = "log", "calls"
+dashboard:Refresh()
+APRInstrumentation.Message("DEBUG", "Live journal notification")
+local notification = assert(dashboard.refreshTimer)
+for _ = 1, 100 do APRInstrumentation.Message("DEBUG", "Live journal notification") end
+assert(dashboard.refreshTimer == notification, "A journal burst schedules one refresh")
+notification.callback()
+assert(dashboard.refreshTimer == nil, "The diagnostic viewer cannot drive its own refresh loop")
+APR:SetDebugCapture(false)
+
 -- Frozen captures are stable datasets; idle redraws must not sort/rebind them.
 APR:SetPerformanceCapture(true)
 for index = 1, 1200 do
     APR:RecordPerformanceDuration("Dense" .. index, index)
 end
-dashboard.mode, dashboard.sort, dashboard.query = "summary", "totalMs", ""
+dashboard.mode, dashboard.sort, dashboard.query = "summary", "totalMs", "Dense"
 local oldPrepare = dashboard.list.PrepareItems
 dashboard.list.PrepareItems = function() error("Uniform metric rows must not build dense offset arrays") end
 dashboard:Refresh()

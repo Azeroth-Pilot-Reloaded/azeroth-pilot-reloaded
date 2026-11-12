@@ -64,11 +64,9 @@ for _, name in ipairs({
     "SetWaypointToNode",
 }) do
     local method = name
-    taxi[method] = --[[APR_DIAG]]
-        APRTrace(
-            "APR-Core/features/navigation/NavigationTaxi.lua:45:callback#9", --[[/APR_DIAG]]
-            function(self, ...) return self:Call(method, ...) end --[[APR_DIAG]]
-        )--[[/APR_DIAG]]
+    taxi[method] =
+
+            --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:61:callback#9", --[[/APR_DIAG]]function(self, ...) return self:Call(method, ...) end--[[APR_DIAG]])--[[/APR_DIAG]]
 end
 function taxi:GetNodeName(nodeID)
     local node = self.liveNodes and self.liveNodes[nodeID]
@@ -834,6 +832,7 @@ function taxi:StartMeasurement(slot)
                 requestedAt = Now(),
                 announcementDestination = self:GetNodeName(destinationID),
             }
+            self:RefreshMeasurementActivity()
             return
         end
     end
@@ -892,22 +891,25 @@ taxi.PollMeasurement =
     APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:610:taxi:PollMeasurement#50", taxi.PollMeasurement)--[[/APR_DIAG]]
 if hooksecurefunc then
     hooksecurefunc(
-        "TakeTaxiNode", --[[APR_DIAG]]
-        APRTrace(
-            "APR-Core/features/navigation/NavigationTaxi.lua:648:callback#51", --[[/APR_DIAG]]
-            function(slot) taxi:StartMeasurement(slot) end --[[APR_DIAG]]
-        ) --[[/APR_DIAG]]
+        "TakeTaxiNode",
+
+            --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:828:callback#51", --[[/APR_DIAG]]function(slot) taxi:StartMeasurement(slot) end--[[APR_DIAG]])--[[/APR_DIAG]]
     )
 end
 local frame, elapsed = CreateFrame("Frame"), 0
-frame:SetScript(
-    "OnUpdate", --[[APR_DIAG]]
-    APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:650:callback#52", --[[/APR_DIAG]] function(_, delta)
+local measurementPoll =
+     --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:833:callback#52", --[[/APR_DIAG]]function(_, delta)
         if not taxi.measurement then return end
         elapsed = elapsed + delta
         if elapsed >= 0.2 then
             elapsed = 0
             taxi:PollMeasurement()
+            taxi:RefreshMeasurementActivity()
         end
-    end--[[APR_DIAG]]) --[[/APR_DIAG]]
-)
+    end--[[APR_DIAG]])--[[/APR_DIAG]]
+
+frame:SetScript("OnUpdate", nil)
+function taxi:RefreshMeasurementActivity()
+    elapsed = 0
+    frame:SetScript("OnUpdate", self.measurement and measurementPoll or nil)
+end--[[APR_DIAG]]; taxi.RefreshMeasurementActivity = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:844:taxi:RefreshMeasurementActivity#53", taxi.RefreshMeasurementActivity)--[[/APR_DIAG]]

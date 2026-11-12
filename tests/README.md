@@ -656,3 +656,11 @@ code and consumes no artifacts.
 
 The report workflow must be merged into the repository's default branch before
 GitHub triggers it. See [GitHub's workflow_run documentation](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#workflow_run).
+
+`idle_navigation_workers_test.lua` and `idle_interface_workers_test.lua` simulate
+120 seconds at 165 FPS with no active consumers. They require zero periodic
+callbacks, position/objective reads or empty-target macro rebuilds, then exercise
+independent activation and cancellation. Gamepad controls cover a saved chord
+outside gamepad mode; waypoint automatic-output tests cover externally scheduled
+hosts and deferred cleanup without a library ticker. Calendar tests distinguish
+real server deadlines from unavailable-data retries and reject retired callbacks.

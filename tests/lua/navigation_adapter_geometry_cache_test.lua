@@ -4,6 +4,7 @@ C_Map.GetMapArtID = function() return art end
 local data = fixture:Load()
 local adapter = APR.NavigationAdapter
 local refreshes = 0
+APR.ActiveRoute = "synthetic-route"
 APR.navigation = { ForceRefresh = function() refreshes = refreshes + 1 end }
 adapter.frame.OnEvent(adapter.frame, "QUEST_LOG_UPDATE")
 local definition = { space = "map", uiMapID = 2395, x = 0.1, y = 0.2 }

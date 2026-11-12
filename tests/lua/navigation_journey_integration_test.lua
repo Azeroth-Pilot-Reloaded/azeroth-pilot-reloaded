@@ -275,7 +275,7 @@ local function Run(profile)
     emit("QUEST_LOG_UPDATE")
     emit("BAG_UPDATE_DELAYED")
     nav:Update()
-    controller:OnUpdate(90)
+    assert(controller.OnUpdate == nil, "World loading detaches the navigation observer")
     assert(
         nav.worldLoading and nav.queue == queue and builds == before,
         "Unavailable observations and consumed cooldowns cannot erase a published trip during long loading"

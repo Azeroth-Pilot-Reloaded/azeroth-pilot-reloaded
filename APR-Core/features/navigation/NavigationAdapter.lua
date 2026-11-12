@@ -340,7 +340,22 @@ CalendarMinute = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:26
 
 function environment.isHolidayActive(key)
     local icons = APR.NavigationData and (APR.NavigationData.config.Holidays or {})[key]
-    if not icons or not Adapter.calendarReady then return nil end
+    if not icons then return nil end
+    local context = APR.ActiveRoute or (APR.Services and APR.Services.active)
+    if Adapter.holidayContext ~= context then
+        Adapter.holidayBoundary, Adapter.holidayPendingKeys = nil, {}
+    end
+    if Adapter.holidayBoundary and Adapter.holidayBoundary <= (GetTime and GetTime() or 0) then
+        Adapter.holidayBoundary = nil
+    end
+    Adapter.holidayContext = context
+    Adapter.holidayPendingKeys = Adapter.holidayPendingKeys or {}
+    Adapter.holidayPendingKeys[key] = true
+    if not Adapter.calendarReady and not Adapter.calendarRequested and C_Calendar then
+        Adapter.calendarRequested = true
+        Call(C_Calendar.OpenCalendar)
+    end
+    if not Adapter.calendarReady then return nil end
     local today = C_DateAndTime and Call(C_DateAndTime.GetCurrentCalendarTime)
     local now = CalendarMinute(today)
     local month = C_Calendar and Call(C_Calendar.GetMonthInfo, 0)
@@ -349,6 +364,13 @@ function environment.isHolidayActive(key)
     local count = Call(C_Calendar.GetNumDayEvents, offset, today.monthDay)
     if not Number(count) then return nil end
     local pending = false
+    local observedAt = GetTime and GetTime() or 0
+    local serverTime = Call(GetServerTime)
+    local seconds = Number(serverTime) and serverTime % 60 or 0
+    -- Re-read the next server day instead of deriving elapsed time across months.
+    local midnight = observedAt + (24 * 60 - today.hour * 60 - today.minute) * 60 - seconds
+    Adapter.holidayBoundary = math.min(Adapter.holidayBoundary or math.huge, midnight)
+    Adapter.holidayPendingKeys[key] = nil
     for index = 1, count do
         local event = Call(C_Calendar.GetDayEvent, offset, today.monthDay, index)
         if type(event) ~= "table" or not Accessible(event.calendarType) or not Accessible(event.iconTexture) then
@@ -358,12 +380,19 @@ function environment.isHolidayActive(key)
             local first = holiday and CalendarMinute(holiday.startTime)
             local last = holiday and CalendarMinute(holiday.endTime)
             if first and last then
+                for _, boundary in ipairs({ first, last }) do
+                    if boundary > now and boundary - now <= 24 * 60 then
+                        local at = observedAt + (boundary - now) * 60 - seconds
+                        Adapter.holidayBoundary = math.min(Adapter.holidayBoundary or math.huge, at)
+                    end
+                end
                 if now >= first and now < last then return true end
             else
                 pending = true
             end
         end
     end
+    Adapter.holidayPendingKeys[key] = pending or nil
     if not pending then return false end
 end--[[APR_DIAG]]
 environment.isHolidayActive = APRTrace(
@@ -543,7 +572,12 @@ Adapter.GetWaypointText = APRTrace(
 )--[[/APR_DIAG]]
 
 function environment.getWaypointTarget()
+    Adapter.waypointTargetAvailable = nil
     local profile = APR.settings and APR.settings.profile
+    if not profile or not profile.enableAddon
+        or (not APR.ActiveRoute and not (APR.Services and APR.Services.active)) then
+        return nil, { guideMode = "blocked" }
+    end
     local step, index
     local service = APR.Services and APR.Services:GetStep()
     if service then
@@ -627,6 +661,7 @@ function environment.getWaypointTarget()
             return nil, options
         end
     end
+    Adapter.waypointTargetAvailable = true
     local title, subtext = Adapter:GetWaypointText(step, transient and point or nil, token)
     options.name, options.token = title .. (subtext and "\n" .. subtext or ""), token
     return {
@@ -1520,17 +1555,64 @@ local profile = interface >= 16000 and interface < 17000 and "forever"
 local Data = Lib:New({
     profile = profile,
     environment = environment,
-    waypoints = { guideProviderID = "apr", nativeSupportSetting = "APRSupportEnabled" },
+    waypoints = { guideProviderID = "apr", nativeSupportSetting = "APRSupportEnabled", automaticRefresh = "external" },
 })
 APR.NavigationData, APR.NavigationEngine = Data, Lib.Engine
 function Adapter:RefreshWaypoints()
     local settings = APR.settings and APR.settings.profile
-    Data:SetWaypointsEnabled(settings ~= nil and settings.enableAddon == true)
+    local enabled = settings ~= nil and settings.enableAddon == true
+    if Data.waypointUIEnabled ~= enabled then
+        Data:SetWaypointsEnabled(enabled)
+    elseif Data.RefreshWaypointUI then
+        Data:RefreshWaypointUI()
+    end
+    self:RefreshActivity()
 end--[[APR_DIAG]]
 Adapter.RefreshWaypoints = APRTrace(
     "APR-Core/features/navigation/NavigationAdapter.lua:1111:Adapter:RefreshWaypoints#97",
     Adapter.RefreshWaypoints
 )--[[/APR_DIAG]]
+function Adapter:QueueWaypointRefresh()
+    if self.shuttingDown then return end
+    if self.waypointRefreshTimer then return end
+    local timer
+    timer = C_Timer.NewTimer(0, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1282:callback#99", --[[/APR_DIAG]]function()
+        if self.waypointRefreshTimer ~= timer then return end
+        self.waypointRefreshTimer = nil
+        self:RefreshWaypoints()
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self.waypointRefreshTimer = timer
+end--[[APR_DIAG]]; Adapter.QueueWaypointRefresh = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1278:Adapter:QueueWaypointRefresh#98", Adapter.QueueWaypointRefresh)--[[/APR_DIAG]]
+function Adapter:RefreshActivity(navigationActive)
+    local profile = APR.settings and APR.settings.profile
+    local hasGuide = profile and profile.enableAddon
+        and (APR.ActiveRoute ~= nil or (APR.Services and APR.Services.active ~= nil))
+    local navigation = APR.navigation
+    local published = hasGuide and Data.GetWaypointUIStatus and Data:GetWaypointUIStatus()
+    local needsPosition = hasGuide and Data.waypointUIEnabled and not (navigation and navigation.worldLoading)
+        and self.waypointTargetAvailable and published ~= nil
+    if needsPosition and not self.waypointTicker then
+        local generation = (self.waypointGeneration or 0) + 1
+        self.waypointGeneration = generation
+        self.waypointTicker = C_Timer.NewTicker(0.2, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1299:callback#101", --[[/APR_DIAG]]function()
+            if self.waypointGeneration ~= generation then return end
+            if not (APR.ActiveRoute or (APR.Services and APR.Services.active)) then
+                self:RefreshActivity()
+                if Data.RefreshWaypointUI then Data:RefreshWaypointUI() end
+                return
+            end
+            if Data.RefreshWaypointUI then Data:RefreshWaypointUI() end
+            self:RefreshActivity()
+        end--[[APR_DIAG]])--[[/APR_DIAG]])
+    elseif not needsPosition and self.waypointTicker then
+        self.waypointTicker:Cancel()
+        self.waypointTicker = nil
+        self.waypointGeneration = (self.waypointGeneration or 0) + 1
+    end
+    local context = APR.ActiveRoute or (APR.Services and APR.Services.active)
+    self:RefreshAvailabilityActivity(hasGuide and self.holidayContext == context
+        and self.holidayContext ~= nil and not (navigation and navigation.worldLoading))
+end--[[APR_DIAG]]; Adapter.RefreshActivity = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1289:Adapter:RefreshActivity#100", Adapter.RefreshActivity)--[[/APR_DIAG]]
 -- Preserve the historical adapter method name.
 Adapter.RefreshWaypointUI = Adapter.RefreshWaypoints
 function Adapter:GetBlockedRouteText(blockers, styled)
@@ -1582,6 +1664,16 @@ Data.UpdateHousingExitLocation = APRTrace(
 
 local observedGeometryArt = {}
 local function Changed(housingContextChanged, event)
+    if not housingContextChanged and not APR.ActiveRoute
+        and not (APR.Services and (APR.Services.active or APR.Services.request))
+        and not (APR.navigation and APR.navigation.search) then
+        if event == "QUEST_TURNED_IN" or event == "PLAYER_ENTERING_WORLD"
+            or event == "ZONE_CHANGED_NEW_AREA" or event == "NEIGHBORHOOD_MAP_DATA_UPDATED" then
+            observedGeometryArt = {}
+            Data:InvalidatePositionCache()
+        end
+        return
+    end
     -- Quest, bag and dialogue events refresh character observations, not the
     -- world's static topology. Keep map projections and the shared zone index
     -- unless the client actually changed phase geometry.
@@ -1699,6 +1791,11 @@ else
     frame:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED")
 end
 frame:RegisterEvent("ADDONS_UNLOADING")
+frame:RegisterEvent("ADDON_LOADED")
+frame:RegisterEvent("PLAYER_REGEN_ENABLED")
+if APR.RegisterMessage then
+    APR:RegisterMessage("APR_MAP_UPDATE", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1464:callback#112", --[[/APR_DIAG]]function() Adapter:QueueWaypointRefresh() end--[[APR_DIAG]])--[[/APR_DIAG]])
+end
 local availabilityChanges = {
     QUEST_ACCEPTED = true,
     QUEST_REMOVED = true,
@@ -1735,8 +1832,7 @@ local meaningfulOfferChanges = {
 for event in pairs(availabilityChanges) do
     if APR.TryRegisterEvent then
         APR:TryRegisterEvent(frame, event)
-    else --[[APR_DIAG]]
-        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](frame.RegisterEvent, frame, event)
+    else --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](frame.RegisterEvent, frame, event)
     end
 end
 if C_Housing then
@@ -1746,10 +1842,9 @@ if C_Housing then
 end
 frame:SetScript(
     "OnEvent",
-    --[[APR_DIAG]]
-    APRTrace(
-        "APR-Core/features/navigation/NavigationAdapter.lua:1276:callback#108", --[[/APR_DIAG]]
-        function(_, event, payload, _, spellID)
+
+
+        --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1514:callback#113", --[[/APR_DIAG]]function(_, event, payload, _, spellID)
             -- Keep the Lua filter for clients without unit-scoped registration. Combat
             -- traffic from other units must not invalidate a published travel plan.
             if
@@ -1758,10 +1853,14 @@ frame:SetScript(
             then
                 return
             end
+            if event == "ADDON_LOADED" or event == "PLAYER_REGEN_ENABLED" then
+                Adapter:QueueWaypointRefresh()
+                return
+            end
             if event == "CALENDAR_UPDATE_EVENT_LIST" then Adapter.calendarReady = true end
             if event == "PLAYER_ENTERING_WORLD" then
                 Adapter.calendarReady = false
-                if C_Calendar and next(Data.config.Holidays or {}) then Call(C_Calendar.OpenCalendar) end
+                Adapter.calendarRequested = nil
             end
             if
                 event == "PLAYER_ENTERING_WORLD"
@@ -1830,7 +1929,10 @@ frame:SetScript(
                 end
             end
             if event == "ADDONS_UNLOADING" then
+                Adapter.shuttingDown = true
+                if Adapter.waypointRefreshTimer then Adapter.waypointRefreshTimer:Cancel(); Adapter.waypointRefreshTimer = nil end
                 Data:SetWaypointsEnabled(false)
+                Adapter:RefreshActivity()
             elseif event == "HEARTHSTONE_BOUND" then
                 Adapter:CaptureBind()
                 Changed()
@@ -1858,11 +1960,9 @@ frame:SetScript(
                     if C_Timer and C_Timer.NewTicker then
                         Adapter.bindTicker = C_Timer.NewTicker(
                             0.25,
-                            --[[APR_DIAG]]
-                            APRTrace(
-                                "APR-Core/features/navigation/NavigationAdapter.lua:1357:callback#109", --[[/APR_DIAG]]
-                                function() Adapter:CheckBindLanding() end --[[APR_DIAG]]
-                            ) --[[/APR_DIAG]]
+
+
+                                --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1632:callback#114", --[[/APR_DIAG]]function() Adapter:CheckBindLanding() end--[[APR_DIAG]])--[[/APR_DIAG]]
                         )
                     end
                 end
@@ -1879,18 +1979,36 @@ frame:SetScript(
             else
                 Changed(nil, event)
             end
-        end --[[APR_DIAG]]
-    ) --[[/APR_DIAG]]
+        end--[[APR_DIAG]])--[[/APR_DIAG]]
 )
 
--- Holiday boundaries can pass while the player remains in one zone. No saved
--- calendar result survives them; live departure checks use the server clock.
-if C_Timer and C_Timer.NewTicker and C_Calendar and next(Data.config.Holidays or {}) then
-    Adapter.availabilityTicker = C_Timer.NewTicker(
-        60, --[[APR_DIAG]]
-        APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1378:callback#110", --[[/APR_DIAG]] function()
-            Call(C_Calendar.OpenCalendar)
-            Changed(nil, "CALENDAR_UPDATE_EVENT_LIST")
-        end--[[APR_DIAG]]) --[[/APR_DIAG]]
-    )
-end
+-- Only a live route/search can depend on a timed availability boundary.
+function Adapter:RefreshAvailabilityActivity(needed)
+    if not needed then
+        if self.availabilityTicker then self.availabilityTicker:Cancel() end
+        self.availabilityTicker = nil
+        self.availabilityGeneration = (self.availabilityGeneration or 0) + 1
+        return
+    end
+    if not C_Calendar or not C_Timer or not C_Timer.NewTimer or not next(Data.config.Holidays or {}) then return end
+    local now = GetTime and GetTime() or 0
+    local fallback = next(self.holidayPendingKeys or {}) ~= nil or not self.holidayBoundary or self.holidayBoundary <= now
+    local delay = fallback and 60 or self.holidayBoundary - now
+    if self.availabilityTicker then
+        if self.availabilityFallback == fallback and self.availabilityAt <= now + delay then return end
+        self.availabilityTicker:Cancel()
+    end
+    self.availabilityAt, self.availabilityFallback = now + delay, fallback
+    local generation = (self.availabilityGeneration or 0) + 1
+    self.availabilityGeneration = generation
+    self.availabilityTicker = C_Timer.NewTimer(delay, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1666:callback#116", --[[/APR_DIAG]]function()
+        if self.availabilityGeneration ~= generation then return end
+        self.availabilityTicker = nil
+        self.holidayBoundary = nil
+        Call(C_Calendar.OpenCalendar)
+        Changed(nil, "CALENDAR_UPDATE_EVENT_LIST")
+        self:RefreshActivity(APR.navigation and APR.navigation:IsNavigating())
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+end--[[APR_DIAG]]; Adapter.RefreshAvailabilityActivity = APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1653:Adapter:RefreshAvailabilityActivity#115", Adapter.RefreshAvailabilityActivity)--[[/APR_DIAG]]
+
+Adapter:RefreshActivity()

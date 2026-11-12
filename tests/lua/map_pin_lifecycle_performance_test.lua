@@ -71,12 +71,25 @@ APR.ActiveRoute = "route"
 
 function env.methods:CreateAnimationGroup() return env.widget() end
 function env.methods:CreateAnimation() return env.widget() end
-function env.methods:Play() end
+function env.methods:Play() self.playing = true end
+function env.methods:Stop() self.playing = false end
 function Minimap:GetZoom() return 0 end
 function GetCVar() return "0" end
 function GetMinimapShape() return "ROUND" end
+local timers = {}
+C_Timer = { NewTimer = function(_, callback)
+    local timer = { callback = callback, Cancel = function(self) self.cancelled = true end }
+    timers[#timers + 1] = timer
+    return timer
+end }
 map:OnInit()
-local tick, addPins = map.stepLines.scripts.OnLoop, map.AddMapPins
+local addPins = map.AddMapPins
+local function tick()
+    local queued = timers
+    timers = {}
+    for _, timer in ipairs(queued) do if not timer.cancelled then timer.callback() end end
+    if map.linesActive then map.stepLines.scripts.OnLoop() end
+end
 local rebuilds = 0
 function map:AddMapPins(...)
     rebuilds = rebuilds + 1
@@ -101,6 +114,7 @@ assert(rebuilds == 2 and not map.pendingPinRefresh)
 tick()
 assert(rebuilds == 2, "An explicit refresh consumes its pending burst without a later duplicate")
 WorldMapFrame:SetWidth(WorldMapFrame:GetWidth() + 50)
+WorldMapFrame.scripts.OnSizeChanged(WorldMapFrame)
 tick()
 assert(rebuilds == 3, "Geometry changes still rebuild immediately on the existing map cadence")
 map.messages.APR_MAP_UPDATE()

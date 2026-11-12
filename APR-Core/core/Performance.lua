@@ -29,6 +29,10 @@ function APR:SetPerformanceCapture(enabled)
     if not enabled and self.SetPerformanceScopes then self:SetPerformanceScopes(false) end
     if not enabled and self.ResourceMonitor then self.ResourceMonitor:Stop() end
     if not enabled and APRData.PerformanceLog then APRData.PerformanceLog.stoppedAt = Now() end
+    if self.PerformanceDashboard and self.PerformanceDashboard.frame
+        and self.PerformanceDashboard.frame:IsShown() and self.PerformanceDashboard.QueueRefresh then
+        self.PerformanceDashboard:QueueRefresh()
+    end
 end
 
 function APR:StartPerformanceSample()

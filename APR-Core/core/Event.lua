@@ -1677,6 +1677,7 @@ APR.event.functions.playerChoice =
     APRTrace("APR-Core/core/Event.lua:1240:APR.event.functions.playerChoice#76", APR.event.functions.playerChoice)--[[/APR_DIAG]]
 
 function APR.event.functions.nameplate(event, unitToken)
+    if not APR.ActiveRoute and not (APR.RaidIconButtons and APR.RaidIconButtons.buttons[1]) then return end
     if unitToken then
         APR:ScanUnitForNPC(unitToken, "NAMEPLATE")
     end
@@ -1688,6 +1689,7 @@ APR.event.functions.nameplate =
     APRTrace("APR-Core/core/Event.lua:1275:APR.event.functions.nameplate#77", APR.event.functions.nameplate)--[[/APR_DIAG]]
 
 function APR.event.functions.targetChanged()
+    if not APR.ActiveRoute and not (APR.RaidIconButtons and APR.RaidIconButtons.buttons[1]) then return end
     APR:ScanUnitForNPC("target", "TARGET")
     if APR.currentStep then
         APR.currentStep:UpdateRaidIconButtonMacro()
@@ -1697,6 +1699,7 @@ APR.event.functions.targetChanged =
     APRTrace("APR-Core/core/Event.lua:1284:APR.event.functions.targetChanged#78", APR.event.functions.targetChanged)--[[/APR_DIAG]]
 
 function APR.event.functions.npcName(event, unit)
+    if not APR.ActiveRoute and not (APR.RaidIconButtons and APR.RaidIconButtons.buttons[1]) then return end
     APR:ScanUnitForNPC(event == "UPDATE_MOUSEOVER_UNIT" and "mouseover" or unit, event)
 end--[[APR_DIAG]]
 APR.event.functions.npcName =

@@ -195,11 +195,11 @@ local function fixture()
     end
     dofile("APR-Core/features/navigation/NavigationAdapter.lua")
     t.integration = {}
-    function t.integration:Refresh() APR.NavigationData:RefreshWaypoints() end
+    function t.integration:Refresh() APR.NavigationAdapter:RefreshWaypoints() end
     function t.integration:Release(suppress) APR.NavigationData:ReleaseWaypoints(suppress) end
-    function t.integration:RequestRefresh() APR.NavigationData:RefreshWaypoints() end
-    function t.integration:OnEnable() APR.NavigationData:SetWaypointsEnabled(true) end
-    function t.integration:OnDisable() APR.NavigationData:SetWaypointsEnabled(false) end
+    function t.integration:RequestRefresh() APR.NavigationAdapter:RefreshWaypoints() end
+    function t.integration:OnEnable() t.hostDisabled = false; APR.NavigationData:SetWaypointsEnabled(true); APR.NavigationAdapter:RefreshActivity() end
+    function t.integration:OnDisable() t.hostDisabled = true; APR.NavigationData:SetWaypointsEnabled(false); APR.NavigationAdapter:RefreshActivity() end
     t.step, t.source = APR:GetCurrentStep(), authored
     function t:WUI()
         local api = {}
@@ -290,6 +290,8 @@ local function fixture()
         end
     end
     function t:Tick()
+        if not self.hostDisabled then APR.NavigationAdapter:QueueWaypointRefresh() end
+        self:Drain()
         for _, ticker in ipairs(self.tickers) do
             if not ticker.cancelled then ticker.callback() end
         end
@@ -321,6 +323,9 @@ scenario("optional providers absent", function(t)
     t:Refresh()
     t:Tick()
     assert(t.nativeWrites == 0 and APRData.p.route == 1)
+    WaypointUIAPI = {} -- A namespace without a usable provider is not a consumer.
+    t:Tick()
+    assert(not APR.NavigationAdapter.waypointTicker, "Unavailable providers must not leave a position observer")
 end)
 
 for _, provider in ipairs({ "WUI", "AWP" }) do
