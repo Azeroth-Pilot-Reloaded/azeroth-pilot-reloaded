@@ -204,6 +204,7 @@ function PawnRewards:ReadScales()
                     label = label,
                     fingerprint = signature,
                     custom = not row.IsProvider,
+                    visible = ordinary(row.IsVisible) and row.IsVisible == true,
                 }
             end
         end
@@ -431,15 +432,23 @@ function PawnRewards:GetPreference()
     return type(record.name) == "string" and ("pawn:" .. record.name) or "auto"
 end--[[APR_DIAG]]; PawnRewards.GetPreference = APRTrace("APR-Core/integrations/Pawn.lua:6:PawnRewards:GetPreference#1", PawnRewards.GetPreference)--[[/APR_DIAG]]
 
+local function matchesAutomaticBuild(scale, context)
+    if not context.classID or scale.ClassID ~= context.classID then return false end
+    if not ordinary(scale.Role) then return false end
+    if context.role and scale.Role and scale.Role ~= context.role then return false end
+    if context.pawnSpec then return scale.SpecID == context.pawnSpec end
+    -- Forever's native class spec is not a talent build. A single visible
+    -- class scale is instead an unambiguous, per-character Pawn choice.
+    return context.client == "forever"
+end--[[APR_DIAG]]; matchesAutomaticBuild = APRTrace("APR-Core/integrations/Pawn.lua:435:matchesAutomaticBuild#328", matchesAutomaticBuild)--[[/APR_DIAG]]
+
 function PawnRewards:GetAutomaticScale()
     if self.active == false or not pawnReady() then return end
     local context = APR:GetRewardBuildContext()
-    if not context.pawnSpec then return end
     local candidate
-    for name in pairs(self:ReadScales() or {}) do
+    for name, record in pairs(self:ReadScales() or {}) do
         local scale = PawnCommon.Scales[name]
-        if scale.ClassID == context.classID and scale.SpecID == context.pawnSpec
-            and (not scale.Role or not context.role or scale.Role == context.role) then
+        if record.visible and matchesAutomaticBuild(scale, context) then
             if candidate then return end -- No arbitrary tie-break between different weights.
             candidate = name
         end

@@ -78,7 +78,7 @@ local function newEnvironment(saved, pawnScales)
     }
     GetSpecialization, GetSpecializationInfo = nil, nil
     function InCombatLockdown() return env.combat end
-    issecretvalue = function(value) return value == env.secret end
+    issecretvalue = function(value) return env.secret ~= nil and value == env.secret end
     function hooksecurefunc(name, callback)
         env.hooks[name] = (env.hooks[name] or 0) + 1
         local original = _G[name]

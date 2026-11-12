@@ -319,7 +319,8 @@ function Upgrades:FinishScan(job)
     if job.candidates[1] then
         self:Offer(job.candidates[1])
     else
-        self:FinishCommand((next(job.pending) or job.unavailable) and UNAVAILABLE or NONE)
+        self:FinishCommand((next(job.pending) or job.unavailable or job.scale.emptyArmorOnly or job.scale.armorDominanceOnly)
+            and UNAVAILABLE or NONE)
     end
 end--[[APR_DIAG]]
 Upgrades.FinishScan =
@@ -495,9 +496,9 @@ end--[[APR_DIAG]]; Upgrades.GetOfferRows = APRTrace("APR-Core/features/player/Ba
 
 function Upgrades:GetOfferStatus(candidate, compact)
     local scale = self:GetScale()
-    local emptyArmor = scale and scale.emptyArmorOnly
+    local emptyArmor = scale and (scale.emptyArmorOnly or scale.armorDominanceOnly)
     if compact and emptyArmor then return "" end
-    local status = emptyArmor and ((EQUIPMENT or "") .. ": " .. (EMPTY or NONE or ""))
+    local status = emptyArmor and (EQUIPMENT or "")
         or (APR.PawnRewards and APR.PawnRewards.GetStatusText and APR.PawnRewards:GetStatusText(compact))
     local text = ""
     if Public(status) and type(status) == "string" and status ~= "" then
