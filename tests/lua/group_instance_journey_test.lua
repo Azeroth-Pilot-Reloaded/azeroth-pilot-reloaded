@@ -366,6 +366,7 @@ local function Journey(client)
     env:PeerSnapshot("Peer-Home", peer, "RAID")
     assert(not next(party.GroupListSteps))
 
+    local discoveryBeforeReturn = #env:Messages("Q", "CHANNEL")
     env.delve, env.scenarioID = false, nil
     env.map, env.instance, env.instanceType = 599, false, "none"
     env.size, env.raid, env.instanceGroup = 2, false, false
@@ -373,7 +374,9 @@ local function Journey(client)
     env:GroupEvent("GROUP_ROSTER_UPDATE")
     env:Event("PLAYER_ENTERING_WORLD", false, false)
     env:Advance(65)
-    assert(finder.channelID == 7 and finder.worldChannelID == 7 and finder:GetStatus() == "ready")
+    assert(finder.channelID == 7 and finder.worldChannelID == 7 and finder:GetStatus() == "empty")
+    assert(#env:Messages("Q", "CHANNEL") == discoveryBeforeReturn + 1 and not finder.query,
+        "Fresh route readiness resumes the pending search exactly once, then reports its empty result")
     assert(NamedCount(env.joined, env.channelName) == 1 and NamedCount(env.left, env.channelName) == 0, "Returning outdoors reuses the same shared membership")
     assert(not APR:GetCurrentDelveContext() and APR.ActiveRoute == "synthetic" and APRData.fixture.synthetic == 6)
     party:SendGroupMessage(true)

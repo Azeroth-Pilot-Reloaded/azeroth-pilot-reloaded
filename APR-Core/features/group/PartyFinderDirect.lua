@@ -110,6 +110,10 @@ local function Finish(entry, sent)
     then
         entry.owner:ExpectDirectOffline(entry.target)
     end
+    if entry.cycle then
+        entry.cycle.pending = entry.cycle.pending - 1
+        if entry.sent then entry.cycle.checked[entry.target] = true else entry.cycle.complete = false end
+    end
     if entry.onComplete then
         entry.onComplete(entry.sent)
         return -- An individual sweep target cannot change the whole search status.
@@ -353,6 +357,10 @@ function Finder:SendDirect(kind, wire, target, guard, ttl, onComplete)
         expires = GetTime() + lifetime,
     }
     if not Current(entry) then return false end
+    if kind == "Q" and self.resultCycle and self.resultCycle.queries[packet.id] then
+        entry.cycle = self.resultCycle
+        entry.cycle.pending = (entry.cycle.pending or 0) + 1
+    end
     records[entry], recordCount = true, recordCount + 1
     -- SendCommMessage is synchronous until it either sends or calls Enqueue.
     -- The scoped queue guard therefore also catches a native throttle result.

@@ -182,14 +182,15 @@ local function BindCandidateRow(row, candidate, index)
     end
     if candidate.afk then details = details .. " · " .. (AFK or "AFK") end
     if candidate.dnd then details = details .. " · " .. (DND or "DND") end
-    if Settings().showIncompatibleWarMode then
+    local warModeSupported = not APR.GetGameVersion or APR:GetGameVersion() ~= "forever"
+    if warModeSupported and Settings().showIncompatibleWarMode then
         details = details
             .. " · "
             .. (PVP_LABEL_WAR_MODE or L["XP_BUFF_WAR_MODE"])
             .. ": "
             .. (candidate.warMode and (ENABLED or YES) or (DISABLED or NO))
     end
-    APR:SetFontStringRole(row.details, candidate.warModeCompatible == false and "warning" or "muted")
+    APR:SetFontStringRole(row.details, warModeSupported and candidate.warModeCompatible == false and "warning" or "muted")
     row.details:SetWidth(width)
     row.details:SetText(details)
     row.progress:SetWidth(width)
@@ -373,6 +374,7 @@ function Panel:RefreshFilters(settings)
     self.maxLevel:Refresh(settings.maxLevel or 0, settings.enabled == true)
     self.warMode:SetChecked(settings.showIncompatibleWarMode == true)
     self.warMode:SetEnabled(settings.enabled == true)
+    self.warMode:SetShown(not APR.GetGameVersion or APR:GetGameVersion() ~= "forever")
 end--[[APR_DIAG]]
 Panel.RefreshFilters =
     APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:238:Panel:RefreshFilters#24", Panel.RefreshFilters)--[[/APR_DIAG]]
@@ -386,7 +388,8 @@ function Panel:Layout()
     local optionsWidth = math.max(110, self.configure:GetFontString():GetStringWidth() + 24)
     self.refresh:SetWidth(searchWidth)
     self.configure:SetWidth(optionsWidth)
-    local toggles = { self.autoScan, self.visible, self.warMode }
+    local toggles = { self.autoScan, self.visible }
+    if self.warMode:IsShown() then toggles[#toggles + 1] = self.warMode end
     local totalWidth = searchWidth + optionsWidth + 16
     for _, control in ipairs(toggles) do
         totalWidth = totalWidth + control.label:GetStringWidth() + 42
@@ -459,6 +462,7 @@ function Panel:Layout()
     self.results:SetPoint("BOTTOMRIGHT", root, "BOTTOMRIGHT", 0, 42)
     self.layoutLanguage = self.languages:GetText()
     self.layoutMode = self.match:GetText()
+    self.layoutWarMode = self.warMode:IsShown()
 end--[[APR_DIAG]]
 Panel.Layout = APRTrace("APR-Core/ui/panels/PartyFinderPanel.lua:259:Panel:Layout#26", Panel.Layout)--[[/APR_DIAG]]
 
@@ -529,6 +533,7 @@ function Panel:Refresh()
         self.layoutLanguage ~= self.languages:GetText()
         or self.layoutMode ~= self.match:GetText()
         or self.layoutSearch ~= self.refresh:GetText()
+        or self.layoutWarMode ~= self.warMode:IsShown()
     then
         self.layoutSearch = self.refresh:GetText()
         self:Layout()
@@ -612,6 +617,7 @@ function Panel:Create()
     UI:Tooltip(self.match, L["GF_MATCH_MODE"])
     self.stepRange = RangeControl(root, L["GF_STEP_RANGE"], "stepRange", 1, 30)
     self.warMode = QuickToggle(root, L["SHOW_INCOMPATIBLE_PLAYERS"], "showIncompatibleWarMode")
+    self.warMode:SetShown(not APR.GetGameVersion or APR:GetGameVersion() ~= "forever")
     UI:Tooltip(self.warMode, L["SHOW_INCOMPATIBLE_PLAYERS"], PARTY_WARMODE_MESSAGE or L["INCOMPATIBLE_WAR_MODE_DESC"])
     self.levelToggle = UI:Button(
         root,

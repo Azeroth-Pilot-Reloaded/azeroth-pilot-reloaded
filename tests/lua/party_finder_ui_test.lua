@@ -656,3 +656,17 @@ for _, phase in ipairs({ "query", "searchWanted" }) do
     panel.refresh.scripts.OnClick()
     assert(not APR.partyFinder.query and not APR.partyFinder.searchWanted)
 end
+
+-- Forever must hide saved Retail controls and their row text without leaving layout space.
+candidates = normalCandidates
+PVP_LABEL_WAR_MODE = "WarModeMarker"
+settings.showIncompatibleWarMode = true
+function APR:GetGameVersion() return "retail" end
+panel:Refresh()
+panel.list:ScrollToIndex(1)
+assert(panel.warMode:IsShown() and panel.list.active[1].details:GetText():find("WarModeMarker", 1, true))
+function APR:GetGameVersion() return "forever" end
+panel:Refresh()
+assert(not panel.warMode:IsShown() and panel.layoutWarMode == false)
+assert(not panel.list.active[1].details:GetText():find("WarModeMarker", 1, true))
+assert(panel.list.active[1].details.role == "muted")

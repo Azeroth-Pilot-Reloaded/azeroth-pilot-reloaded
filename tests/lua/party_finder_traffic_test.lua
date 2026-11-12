@@ -16,7 +16,7 @@ for _, client in ipairs({ "retail", "forever" }) do
         assert(not finder:Search())
     end
     assert(
-        #env:Messages("Q") == 1 and finder:GetSearchCooldown() == 60,
+        #env:Messages("Q") == 1 and finder:GetSearchCooldown() == 30,
         "Repeated clicks must not issue additional queries"
     )
     env:Receive("P", env:Presence(), "Peer-Home", "WHISPER")
@@ -25,8 +25,8 @@ for _, client in ipairs({ "retail", "forever" }) do
     env:ReceiveWire("broken", "Peer-Home", "WHISPER")
     assert(finder:GetTrafficRows()[1].result == "decode")
     env:Advance(11)
-    assert(not finder.query and finder:GetSearchCooldown() == 49)
-    env:Advance(49)
+    assert(not finder.query and finder:GetSearchCooldown() == 19)
+    env:Advance(19)
     assert(finder:GetSearchCooldown() == 0 and finder:Search())
     finder:ClearTraffic()
     for index = 1, 450 do

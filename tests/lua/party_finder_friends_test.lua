@@ -327,7 +327,7 @@ do
     )
 end
 
--- Public and social discovery share the same result limit.
+-- Public and social discovery retain every eligible response during the query.
 do
     local friends = {}
     for index = 1, 35 do
@@ -341,8 +341,8 @@ do
         env:ReceiveBattleNet("P", presence, 2000 + index)
     end
     assert(
-        env.finder:GetCount() == 30 and not env.finder.query,
-        "Friend results share the existing thirty-result search bound"
+        env.finder:GetCount() == 35 and env.finder.query,
+        "Friend results are not truncated at thirty and discovery remains open until its deadline"
     )
 end
 

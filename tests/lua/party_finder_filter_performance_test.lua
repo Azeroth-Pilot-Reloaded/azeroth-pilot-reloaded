@@ -24,16 +24,15 @@ for _, bad in ipairs({ -1, 1024, 1.5, math.huge, "3", {} }) do
 end
 assert(not P.AcceptLanguageMask(0 / 0, unrestricted))
 
--- Populate the actual capped cache through its public wire protocol and fresh
--- queries. Four equal populations have independently chosen language masks.
+-- Populate the cache beyond its former cap through one public wire query. Four equal populations have independently chosen language masks.
 local masks, primaries = { 1, 2, 3, 512 }, { "en", "fr", "en", "zhTW" }
-for batch = 1, 7 do
+for batch = 1, 8 do
     -- Isolate full-cache filtering from the discovery rate limiter.
     if batch > 1 then
         env:Advance(1)
         finder.lastSearch = nil
     end
-    assert(finder:Search())
+    if batch == 1 then assert(finder:Search()) end
     for index = 1, 30 do
         local number = (batch - 1) * 30 + index
         local language = (number - 1) % 4 + 1
@@ -45,7 +44,7 @@ for batch = 1, 7 do
         )
     end
 end
-assert(finder:GetCount() == 200)
+assert(finder:GetCount() == 240)
 local settings = finder:GetSettings()
 settings.languages, settings.blockedLanguages = { fr = true }, { en = true }
 finder.candidatesDirty = true
@@ -62,13 +61,13 @@ table.sort = function(...)
     return sort(...)
 end
 local list = finder:GetCandidates()
-assert(#list == 100, "Fifty French and fifty bilingual peers match; English and Chinese peers do not")
+assert(#list == 120, "Sixty French and sixty bilingual peers match; English and Chinese peers do not")
 assert(
     normalizations == 2 and sorts == 3,
-    "200 candidates normalize two policy lists and sort once, instead of 600 normalizations/601 sorts"
+    "240 candidates normalize two policy lists and sort once, instead of 720 normalizations/721 sorts"
 )
 local previousNormalizations, previousSorts = normalizations, sorts
-assert(finder:GetCandidates() == list and finder:GetCount() == 100)
+assert(finder:GetCandidates() == list and finder:GetCount() == 120)
 assert(
     normalizations == previousNormalizations and sorts == previousSorts,
     "Unchanged badge/list reads keep their allocation-free cached path"
@@ -77,9 +76,9 @@ P.NormalizeLanguages, table.sort = normalize, sort
 
 finder:SetLanguageOption("languages", "fr", false)
 finder:SetLanguageOption("languages", "zhTW", true)
-assert(finder:GetCount() == 50, "Changing preferences immediately rebuilds the compiled policy")
+assert(finder:GetCount() == 60, "Changing preferences immediately rebuilds the compiled policy")
 env:Advance(121)
 assert(finder:GetCount() == 0, "Compiled policies do not extend the candidate expiration boundary")
 print(
-    "Companion filters: 200 peers use two normalizations/three sorts instead of 600/601; bilingual, unknown, settings and expiry passed"
+    "Companion filters: 240 peers use two normalizations/three sorts instead of 720/721; bilingual, unknown, settings and expiry passed"
 )

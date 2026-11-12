@@ -193,7 +193,7 @@ for _, client in ipairs({ "retail", "forever" }) do
     local replyTimer, autoTimer = finder.replyTimer, finder.autoTimer
     local snapshot, revision = finder.localState, finder.revision
     local joins, leaves, messages = #env.joined, #env.left, #env.sent
-    assert(response and replyTimer and autoTimer and snapshot and revision)
+    assert(response and replyTimer and not autoTimer and finder.resultCycle and snapshot and revision)
 
     local transportRefreshes, progressReads = 0, 0
     local refreshTransport, readProgress = finder.RefreshTransport, APR.GetGroupRouteProgress
@@ -233,7 +233,7 @@ for _, client in ipairs({ "retail", "forever" }) do
         finder.replyTimer == replyTimer
             and not replyTimer.cancelled
             and finder.autoTimer == autoTimer
-            and not autoTimer.cancelled,
+            and (not autoTimer or not autoTimer.cancelled),
         "Changing presentation or audio cannot postpone discovery timers"
     )
     assert(
@@ -266,7 +266,7 @@ for _, client in ipairs({ "retail", "forever" }) do
         #env:Messages("P", "WHISPER") == 1 and env:Messages("P", "WHISPER")[1].target == "Requester-Home",
         "The queued answer is still sent after settings are changed"
     )
-    assert(finder.query == activeQuery and finder.autoTimer == autoTimer and not autoTimer.cancelled)
+    assert(finder.query == activeQuery and finder.autoTimer == autoTimer and (not autoTimer or not autoTimer.cancelled))
 end
 
 -- Realm policy is not proof that this transport is locked. The native API

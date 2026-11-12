@@ -181,20 +181,20 @@ assert(
 env = Fixture.New({ world = true, settings = { matchMode = "world" } })
 finder = env.finder
 assert(finder:Search())
-env:Advance(59)
+env:Advance(29)
 local success, reason = finder:Search()
 assert(not success and reason == "throttled" and #env:Messages("Q") == 1)
 env:Advance(1)
-assert(finder:Search() and #env:Messages("Q") == 2, "A world manual retry becomes available at 60 seconds")
+assert(finder:Search() and #env:Messages("Q") == 2, "A world manual retry becomes available at 30 seconds")
 env = Fixture.New({ world = true, settings = { matchMode = "zone" } })
 finder = env.finder
 assert(finder:Search())
-env:Advance(59)
+env:Advance(29)
 assert(not finder:Search() and #env:Messages("Q") == 1)
 env:Advance(1)
 assert(
     finder:Search() and #env:Messages("Q") == 2 and env:Messages("Q")[2].target == finder.channelID,
-    "Local searches share the 60-second public interval and stable channel"
+    "Local searches share the 30-second public interval and stable channel"
 )
 
 -- Automatic searches yield to recent worldwide traffic; manual search remains deliberate.
@@ -211,7 +211,7 @@ finder = env.finder
 env:Receive("Q", WorldQuery(env, { id = "manual-despite-traffic" }), "Other-Home", "CHANNEL", { world = true })
 assert(finder:Search() and #env:Messages("Q") == 1, "Observed traffic does not forbid the first manual search")
 
--- Population changes coalesce, and sampling rejects before resolving local route state.
+-- Population changes coalesce independently of the number of eligible peers.
 env = Fixture.New({ world = true })
 finder = env.finder
 finder:GetLocalState() -- Prime the completed fingerprint's cached snapshot.
@@ -243,49 +243,40 @@ assert(
 )
 env.population = 1001
 finder:RefreshWorldPopulation()
-local sampled = WorldQuery(env, { id = "sample-reject" })
-local getState = finder.GetLocalState
-finder.GetLocalState = function() error("A peer excluded by population sampling must not read route state") end
-env:Receive("Q", sampled, "Sampled-Home", "CHANNEL", { world = true })
-assert(not next(finder.responses) and not next(finder.requestTimes))
-finder.GetLocalState = getState
+local query = WorldQuery(env, { id = "all-eligible" })
+env:Receive("Q", query, "LargePopulation-Home", "CHANNEL", { world = true })
+assert(finder.responses["LargePopulation-Home"], "Large populations do not exclude eligible players")
 env.population = 25
 finder:RefreshWorldPopulation()
-env:Receive("Q", sampled, "Sampled-Home", "CHANNEL", { world = true })
-assert(finder.responses["Sampled-Home"], "The same valid query is eligible when the known population is small")
+env:Receive("Q", query, "SmallPopulation-Home", "CHANNEL", { world = true })
+assert(finder.responses["SmallPopulation-Home"], "Small populations use the same eligibility rules")
+
 env = Fixture.New({ world = true })
 finder = env.finder
 env.population = nil
 finder:RefreshWorldPopulation()
 local unknownCountQuery = WorldQuery(env, { id = "unknown-count" })
-getState = finder.GetLocalState
-finder.GetLocalState = function() error("Unknown population must suppress fanout before route state work") end
 env:Receive("Q", unknownCountQuery, "UnknownCount-Home", "CHANNEL", { world = true })
-assert(not next(finder.responses) and not next(finder.requestTimes))
-finder.GetLocalState = getState
+assert(finder.responses["UnknownCount-Home"])
 env:Advance(11)
-assert(#env:Messages("P") == 0, "An unavailable population does not fall back to answering everyone")
+assert(#env:Messages("P") == 1, "Missing population data cannot exclude an eligible world reply")
 
--- Similar names must not cluster into a mass reply: regional names may have no
--- realm suffix. These controlled populations exposed the raw hash's upper-bit bias.
+-- Every eligible name participates, including large and regional populations.
 for _, case in ipairs({
     { size = 10000, id = "request-516", suffix = "" },
     { size = 1000, id = "request-746", suffix = "-R" },
 }) do
     env = Fixture.New({ world = true, population = case.size })
     finder = env.finder
-    local sample = WorldQuery(env, { id = case.id })
-    finder.GetLocalState = function() error("Sampling cannot prepare route state") end
+    local query = WorldQuery(env, { id = case.id })
+    finder.GetLocalState = function() error("Eligibility alone cannot prepare route state") end
     local admitted = 0
     for index = 1, case.size do
         finder.playerKey = "Peer" .. index .. case.suffix
-        if finder:CanQueueWorldResponse(sample) then admitted = admitted + 1 end
+        if finder:CanQueueWorldResponse(query) then admitted = admitted + 1 end
     end
-    assert(
-        admitted >= 5 and admitted <= 60,
-        "A structured synthetic population must yield a small nonempty sample, not hundreds of replies"
-    )
-    assert(not next(finder.responses) and not next(finder.requestTimes), "Sampling alone allocates no reply state")
+    assert(admitted == case.size, "World discovery does not randomly exclude eligible players")
+    assert(not next(finder.responses) and not next(finder.requestTimes), "Eligibility alone allocates no reply state")
 end
 
 -- Dense public traffic is limited before decode, with bounded pending replies and scoped cancellation.
@@ -371,19 +362,23 @@ for _, message in ipairs(env.sent) do
 end
 assert(#attempts == 2 and attempts[2].at - attempts[1].at >= 5 and not next(finder.repliedTo))
 
--- A full world result page ends its query and sends its cancellation on the captured world channel.
+-- World discovery remains open past thirty replies and closes at its deadline.
 env = Fixture.New({ world = true, settings = { matchMode = "world" } })
 finder = env.finder
 assert(finder:Search())
 activeID = finder.query.id
-for index = 1, 30 do
+for index = 1, 45 do
     env:Receive("P", env:Presence({ map = 599 }), "Result" .. index .. "-Home", "WHISPER")
 end
-assert(finder:GetCount() == 30 and finder.query == nil)
+assert(finder:GetCount() == 45 and finder.query)
+env:Receive("P", env:Presence({ id = activeID, map = 599 }), "Overflow-Home", "WHISPER")
+assert(finder:GetCount() == 46 and finder.candidates["Overflow-Home"])
+env:Advance(11)
+assert(not finder.query)
 local cancellations = env:Messages("D", "CHANNEL")
 assert(#cancellations == 1 and cancellations[1].target == 7 and cancellations[1].packet.id == activeID)
-env:Receive("P", env:Presence({ id = activeID, map = 599 }), "Overflow-Home", "WHISPER")
-assert(finder:GetCount() == 30 and not finder.candidates["Overflow-Home"])
+env:Receive("P", env:Presence({ id = activeID, map = 599 }), "Expired-Home", "WHISPER")
+assert(finder:GetCount() == 46 and not finder.candidates["Expired-Home"])
 
 -- Visibility and master disable release the owned membership; a prejoined channel stays joined.
 for _, setting in ipairs({ "visible", "enabled" }) do
@@ -415,5 +410,5 @@ assert(
 )
 
 print(
-    "World companions: independent visibility, route-free search, world/local filters, pacing, sampled fanout, bounded decoding/queues and channel ownership passed"
+    "World companions: independent visibility, route-free search, world/local filters, pacing, complete eligibility, bounded decoding/queues and channel ownership passed"
 )

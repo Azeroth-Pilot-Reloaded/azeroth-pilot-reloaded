@@ -262,6 +262,7 @@ function APR:CreateGroupFinderOptions()
     end
     criteria.showIncompatibleWarMode = {
         type = "toggle",
+        hidden = APR.GetGameVersion and APR:GetGameVersion() == "forever" or false,
         order = 5,
         width = "full",
         name = L["SHOW_INCOMPATIBLE_PLAYERS"],
