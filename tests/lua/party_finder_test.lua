@@ -257,7 +257,7 @@ assert(
     "A disabled feature retains no periodic discovery or UI work"
 )
 
--- Dense synthetic populations retain a fixed number of candidates across fresh queries.
+-- Dense synthetic populations are not truncated at a result/cache count.
 env = Fixture.New({ settings = { matchMode = "zone" } })
 finder = env.finder
 for batch = 1, 7 do
@@ -266,12 +266,13 @@ for batch = 1, 7 do
         env:Advance(1)
         finder.lastSearch = nil
     end
-    assert(finder:Search())
+    if batch == 1 then assert(finder:Search()) end
     for index = 1, 30 do
         env:Receive("P", env:Presence(), "Dense" .. ((batch - 1) * 30 + index) .. "-Home", "WHISPER")
     end
 end
-assert(finder:GetCount() == 200, "Discovery cache cannot grow beyond its declared budget")
+assert(finder:GetCount() == 210 and finder.query,
+    "Every eligible reply is retained beyond the former per-query/cache limits")
 env:Advance(122)
 assert(finder:GetCount() == 0)
 

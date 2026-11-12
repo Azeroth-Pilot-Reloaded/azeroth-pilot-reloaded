@@ -372,6 +372,10 @@ function Finder:ScheduleFriendSends()
                         entry.expires - GetTime()
                     )
                 end
+                local cycle = entry.search and entry.search.cycle
+                if cycle then
+                    if sent then cycle.checked[entry.key] = true else cycle.complete = false end
+                end
                 if
                     sent
                     and entry.search
@@ -381,6 +385,8 @@ function Finder:ScheduleFriendSends()
                     self.friendSearchContacts.peers[entry.key] = entry.gameAccountID and "BNET" or "WHISPER"
                 end
             end
+            if entry and entry.search and entry.search.cycle
+                and not CurrentPacket(self, entry) then entry.search.cycle.complete = false end
             self:ScheduleFriendSends()
         end--[[APR_DIAG]]) --[[/APR_DIAG]]
     )
@@ -436,6 +442,7 @@ function Finder:StartFriendSearch(query)
     local accepted = false
     local start = (self.friendSearchCursor or 0) % #order
     local count = math.min(SEARCH_LIMIT, #order)
+    if query.cycle and count < #order then query.cycle.complete = false end
     local function guard() return SameSearch(self, query) end--[[APR_DIAG]]
     guard = APRTrace("APR-Core/features/group/PartyFinderFriends.lua:288:guard#24", guard)--[[/APR_DIAG]]
     for offset = 1, count do
@@ -450,10 +457,11 @@ function Finder:StartFriendSearch(query)
                 end
                 data.context = query.alternateContext
             end
+            local queued
             if peer.gameAccountID then
-                accepted = self:Send("Q", data, "BNET", key, true, guard, query.expires - GetTime()) or accepted
+                queued = self:Send("Q", data, "BNET", key, true, guard, query.expires - GetTime())
             else
-                accepted = Queue(self, {
+                queued = Queue(self, {
                     kind = "Q",
                     data = data,
                     key = key,
@@ -461,8 +469,10 @@ function Finder:StartFriendSearch(query)
                     search = query,
                     guard = guard,
                     expires = query.expires,
-                }) or accepted
+                })
             end
+            if not queued and query.cycle then query.cycle.complete = false end
+            accepted = queued or accepted
         end
     end
     self.friendSearchCursor = (start + count) % #order
@@ -475,7 +485,11 @@ function Finder:CancelFriendSearch(query)
     if not query then return end
     local queue, remaining = self.friendSendQueue or {}, {}
     for _, entry in ipairs(queue) do
-        if entry.kind ~= "Q" or entry.id ~= query.id then remaining[#remaining + 1] = entry end
+        if entry.kind ~= "Q" or entry.id ~= query.id then
+            remaining[#remaining + 1] = entry
+        elseif query.cycle then
+            query.cycle.complete = false
+        end
     end
     self.friendSendQueue = remaining
     if #remaining == 0 then self:CancelTimer("friendSendTimer") end

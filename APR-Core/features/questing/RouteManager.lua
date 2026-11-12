@@ -554,6 +554,10 @@ CaptureEffectiveRouteActivations = APRTrace(
 )--[[/APR_DIAG]]
 
 function APR:InvalidateEffectiveRouteStepsCache(routeKey)
+    if not routeKey or routeKey == self.ActiveRoute then
+        self.groupRouteGeneration = (self.groupRouteGeneration or 0) + 1
+        if self.partyFinder and self.partyFinder.QueueStateRefresh then self.partyFinder:QueueStateRefresh() end
+    end
     if self.InvalidateDelveRouteIndex then self:InvalidateDelveRouteIndex() end
     local temporary = self._temporaryRouteStepsCache
     if temporary and (not routeKey or temporary.route == routeKey or temporary.parentRoute == routeKey) then

@@ -218,6 +218,57 @@ assert(finder:GetCount() == 2401)
 env:Advance(2)
 assert(finder:GetCount() == 0)
 
+-- A shared renewal cycle spans every batch, including delayed earlier replies.
+env, finder, channel = New(25)
+assert(finder:Search())
+for _, name in ipairs({ "Peer1-Home", "Peer2-Home", "Peer3-Home", "Peer25-Home" }) do
+    env:Receive("P", env:Presence(), name, "WHISPER")
+end
+env:Advance(31)
+assert(finder:Search())
+Deny(env, channel)
+env:Advance(0.2)
+first = finder.query.id
+local cycle = finder.resultCycle
+env:Receive("P", env:Presence(), "Peer1-Home", "WHISPER")
+env:Advance(11)
+assert(finder.query.id ~= first and finder.query.cycle == cycle and finder:GetCount() == 4)
+env:Receive("P", env:Presence({ id = first, level = 23 }), "Peer2-Home", "WHISPER")
+assert(finder.candidates["Peer2-Home"].level == 23, "A delayed first-batch answer updates the current cycle")
+env:Receive("P", env:Presence(), "Peer25-Home", "WHISPER")
+env:Advance(12)
+assert(not finder.resultCycle and finder:GetCount() == 3 and not finder.candidates["Peer3-Home"])
+
+-- Cancelling or failing before the last batch retains all unverified peers.
+for _, failure in ipairs({ "cancel", "send" }) do
+    env, finder, channel = New(25)
+    assert(finder:Search())
+    env:Receive("P", env:Presence(), "Peer25-Home", "WHISPER")
+    env:Advance(31)
+    local original = finder.SendDirect
+    function finder:SendDirect(kind, wire, peer, ...)
+        if failure == "send" and kind == "Q" and peer == "Peer25-Home" then return false end
+        return original(self, kind, wire, peer, ...)
+    end
+    assert(finder:Search())
+    Deny(env, channel)
+    env:Advance(0.2)
+    if failure == "cancel" then finder:StopSearch() end
+    env:Advance(25)
+    assert(not finder.resultCycle and finder.candidates["Peer25-Home"])
+end
+
+-- Missing members of a partial roster remain unverified.
+env, finder, channel = New(1)
+assert(finder:Search())
+env:Receive("P", env:Presence(), "OutsideSnapshot-Home", "WHISPER")
+env:Advance(31)
+assert(finder:Search())
+Deny(env, channel)
+env:Advance(12)
+assert(not finder.resultCycle and finder.candidates["OutsideSnapshot-Home"],
+    "A blocked public channel and partial roster cannot verify a missing member")
+
 -- CTL back pressure leaves one request queued; Stop cancels it at dispatch.
 env, finder, channel = New(100)
 env.directCTL.avail, env.directCTL.bQueueing = -100000, true

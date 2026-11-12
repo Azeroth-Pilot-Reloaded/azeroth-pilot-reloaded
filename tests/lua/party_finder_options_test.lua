@@ -411,3 +411,8 @@ assert(rebuilds == 1, "Closing an unchanged language menu must not rebuild the f
 print(
     "Companion options: standalone category, compact controls, client language, shared callbacks and profile lifecycle passed"
 )
+
+function APR:GetGameVersion() return "forever" end
+assert(APR:CreateGroupFinderOptions().args.general.args.criteria.args.showIncompatibleWarMode.hidden)
+function APR:GetGameVersion() return "retail" end
+assert(not APR:CreateGroupFinderOptions().args.general.args.criteria.args.showIncompatibleWarMode.hidden)

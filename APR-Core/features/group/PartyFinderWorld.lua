@@ -123,7 +123,6 @@ function Finder:CanQueueWorldResponse(query)
         or query.mode ~= "world"
         or query.context ~= self.worldContext
         or not self.worldChannelID
-        or not PositiveInteger(self.worldPopulation)
         or not Public(query.id)
         or type(query.id) ~= "string"
         or not Public(self.playerKey)
@@ -132,19 +131,7 @@ function Finder:CanQueueWorldResponse(query)
         return false
     end
     if self.lastWorldResponse and GetTime() - self.lastWorldResponse < 5 then return false end
-    -- A known population permits best-effort sampling before route/state work.
-    -- This targets 24 replies, reserving room below 30; it is not an exact cap.
-    -- An unknown count stays silent rather than triggering an unbounded fanout.
-    local ticket = tonumber(P.Hash(query.id .. self.playerKey), 16)
-    if not ticket then return false end
-    -- DJB2's upper bits cluster for similar or regional player names. Mix both
-    -- halves before sampling, without altering the route/protocol hash contract.
-    -- These integer products stay below 2^53 in the client's Lua double type.
-    for _ = 1, 3 do
-        ticket = (ticket + math.floor(ticket / 65536)) % MODULO
-        ticket = (1664525 * ticket + 1013904223) % MODULO
-    end
-    return ticket / MODULO < math.min(1, 24 / math.max(1, self.worldPopulation - 1))
+    return true
 end--[[APR_DIAG]]
 Finder.CanQueueWorldResponse = APRTrace(
     "APR-Core/features/group/PartyFinderWorld.lua:90:Finder:CanQueueWorldResponse#9",
@@ -431,7 +418,7 @@ end--[[APR_DIAG]]
 Finder.IsAPRMember =
     APRTrace("APR-Core/features/group/PartyFinderWorld.lua:354:Finder:IsAPRMember#17", Finder.IsAPRMember)--[[/APR_DIAG]]
 
-function Finder:StopAPRSweep(keepFriends)
+function Finder:StopAPRSweep(keepFriends, completed)
     local sweep = self.sweep
     if not sweep then return end
     local previous = keepFriends and sweep.previousQuery
@@ -455,10 +442,11 @@ function Finder:StopAPRSweep(keepFriends)
             --[[APR_DIAG]]
             APRTrace(
                 "APR-Core/features/group/PartyFinderWorld.lua:388:callback#19", --[[/APR_DIAG]]
-                function() self:FinishQuery() end --[[APR_DIAG]]
+                function() self:FinishQuery(true) end --[[APR_DIAG]]
             ) --[[/APR_DIAG]]
         )
     end
+    if not self.query then self:EndResultCycle(sweep.template.cycle, completed) end
     self:Notify()
 end--[[APR_DIAG]]
 Finder.StopAPRSweep =
@@ -469,6 +457,8 @@ function Finder:StartAPRSweep(query)
     if self.sweep or not transport or transport.addonTransport ~= "blocked" or not transport:IsReady() then
         return false
     end
+    self:BeginResultCycle(query)
+    query.cycle.public = false -- A proven blocked channel cannot confirm absences.
     self:CancelTimer("queryTimer")
     local previous = self.query
     self.sweepRetainUntil = nil
@@ -522,7 +512,7 @@ function Finder:NextAPRBatch()
     local sweep = self.sweep
     if not sweep then return end
     if sweep.cursor > sweep.total then
-        self:StopAPRSweep()
+        self:StopAPRSweep(false, true)
         return
     end
     sweep.batch = sweep.batch + 1
@@ -533,6 +523,7 @@ function Finder:NextAPRBatch()
     query.id = sweep.template.id .. "-" .. sweep.batch
     query.count, query.expires, query.sweep, query.channelTransport = 0, math.huge, true, sweep.transport
     query.targets = {}
+    query.cycle.queries[query.id] = query
     sweep.batchEnd = math.min(sweep.cursor + 23, sweep.total)
     self.query = query
     self:SendNextAPRRequest()
@@ -545,7 +536,9 @@ function Finder:SendNextAPRRequest()
     if not sweep or not query then return end
     if sweep.cursor > sweep.batchEnd then
         local replyWait = sweep.cursor > sweep.total and 10 or 5
-        query.expires = GetTime() + replyWait
+        -- Later batches may start after five seconds; late replies from an
+        -- earlier batch still belong to this cycle for the full reply window.
+        query.expires = GetTime() + 10
         self:SetTimer(
             "sweepTimer",
             replyWait,
@@ -597,10 +590,11 @@ function Finder:SendNextAPRRequest()
             and self:IsEnabled()
     end--[[APR_DIAG]]
     current = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:499:current#26", current)--[[/APR_DIAG]]
-    local function sent()
+    local function sent(success)
         if completed then return end
         completed = true
         if not current() then return end
+        if success then query.cycle.checked[peer] = true else query.cycle.complete = false end
         self.sweepNextRequestAt = GetTime() + 0.25
         if query.alternateContext and not alternate then
             sweep.alternate = true
@@ -623,12 +617,15 @@ function Finder:SendNextAPRRequest()
     end--[[APR_DIAG]]
     sent = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:506:sent#27", sent)--[[/APR_DIAG]]
     local wire = P.Encode("Q", packet)
-    if not wire or not self:SendDirect("Q", wire, peer, current, 10, sent) then sent() end
+    if not wire or not self:SendDirect("Q", wire, peer, current, 10, sent) then sent(false) end
 end--[[APR_DIAG]]
 Finder.SendNextAPRRequest =
     APRTrace("APR-Core/features/group/PartyFinderWorld.lua:456:Finder:SendNextAPRRequest#23", Finder.SendNextAPRRequest)--[[/APR_DIAG]]
 
 function Finder:CandidateExpiry(data)
+    local settings = self:GetSettings()
+    if self.resultCycle or settings and settings.autoScan then return math.huge end
+    if data.expiresAt then return data.expiresAt end
     if data.sweep then
         if self.sweep then return math.huge end
         return math.max(data.seenAt + 120, self.sweepRetainUntil or 0)
@@ -648,9 +645,11 @@ function Finder:RevalidateCandidate(key)
     query.sweep, query.targets, query.count, query.expires = true, { [key] = true }, 0, GetTime() + 10
     query.channelTransport = transport
     self.query, self.status = query, "searching"
+    self:BeginResultCycle(query)
     local function current() return self.query == query and not self.discoverySuspended and transport:IsReady() end--[[APR_DIAG]]
     current = APRTrace("APR-Core/features/group/PartyFinderWorld.lua:550:current#31", current)--[[/APR_DIAG]]
     local ok = self:SendDirect("Q", P.Encode("Q", query), key, current, 10)
+    -- An enqueued request alone does not prove delivery; retain unverified peers.
     self:SetTimer(
         "queryTimer",
         10,

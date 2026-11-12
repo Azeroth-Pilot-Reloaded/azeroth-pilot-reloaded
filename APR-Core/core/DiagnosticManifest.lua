@@ -15,7 +15,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/data/models/Classes.lua"] = {instrumented = 2, diagnosticHelpers = 0},
     ["APR-Core/data/models/Enums.lua"] = {instrumented = 1, diagnosticHelpers = 0},
     ["APR-Core/features/group/Party.lua"] = {instrumented = 51, diagnosticHelpers = 0},
-    ["APR-Core/features/group/PartyFinder.lua"] = {instrumented = 75, diagnosticHelpers = 0},
+    ["APR-Core/features/group/PartyFinder.lua"] = {instrumented = 77, diagnosticHelpers = 0},
     ["APR-Core/features/group/PartyFinderDirect.lua"] = {instrumented = 22, diagnosticHelpers = 0},
     ["APR-Core/features/group/PartyFinderFriends.lua"] = {instrumented = 29, diagnosticHelpers = 0},
     ["APR-Core/features/group/PartyFinderInvites.lua"] = {instrumented = 33, diagnosticHelpers = 0},
