@@ -1,6 +1,6 @@
 -- Reusable service discovery. All client observations and taxi data are injected.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("services", 3) then return end
+if not Lib:BeginModule("services", 4) then return end
 local Instance = Lib.Instance
 Lib.serviceLocations = Lib.serviceLocations or {}
 local PROFESSIONS = {
@@ -177,14 +177,46 @@ function Instance:GetServiceChoices(query)
     return choices
 end
 
+-- Reuse the library's profession/weapon definitions for initial learning.
+-- Higher profession ranks and recipes need exact capability evidence; their
+-- spell names are not stable identifiers and must never be guessed by the host.
+function Instance:GetTrainingServiceQuery(spellID, professionOnly)
+    for _, skill in ipairs(PROFESSIONS) do
+        if skill[2] == spellID then return {service = "trainer", skill = skill[1]} end
+    end
+    if not professionOnly then
+        for _, skill in ipairs(WEAPONS) do
+            if skill[2] == spellID then return {service = "weapon", skill = skill[1]} end
+        end
+    end
+    return {service = professionOnly and "trainer" or "class", spellIDs = spellID and {spellID} or nil,
+        requireSpellEvidence = professionOnly == true}
+end
+
 function Instance:ServiceMatches(record, query, character)
     local side = ({Alliance = "A", Horde = "H"})[character.faction]
     if record.faction ~= nil and record.faction ~= "B" and record.faction ~= "AH" and record.faction ~= side then return false end
     if record.service ~= query.service then return false end
+    if query.npcID and record.npcID ~= query.npcID then return false end
     if query.skill and record.skill ~= query.skill then return false end
     if query.expansion ~= nil and record.expansion ~= query.expansion then return false end
     if record.service == "class" and record.class ~= character.class then return false end
     if record.requirements and (not self.CheckRequirements or self:CheckRequirements(record.requirements, character) ~= true) then return false end
+    -- Exact spell IDs also identify profession ranks and recipes. A profession
+    -- category alone cannot certify that a trainer teaches the requested rank.
+    if query.spellIDs then
+        if type(record.spellIDs) ~= "table" then
+            if query.requireSpellEvidence then return nil end
+        else
+            for _, wanted in ipairs(query.spellIDs) do
+                local found = false
+                for _, taught in ipairs(record.spellIDs) do
+                    if wanted == taught then found = true; break end
+                end
+                if not found then return false end
+            end
+        end
+    end
     return true
 end
 
@@ -261,11 +293,15 @@ function Job:Advance(operations, milliseconds)
                     mapID = target and target.uiMapID}
                 if not target then self.waitingData = true end
             end
-        elseif nav:ServiceMatches(record, self.query, self.character) then
-            target = nav:NormalizeLocation({space = "map", uiMapID = record.mapID,
-                x = record.x / 100, y = record.y / 100, z = record.z})
-            candidate = record
-            if not target then self.waitingData = true end
+        else
+            local matches = nav:ServiceMatches(record, self.query, self.character)
+            if matches == nil then self.waitingData = true end
+            if matches then
+                target = nav:NormalizeLocation({space = "map", uiMapID = record.mapID,
+                    x = record.x / 100, y = record.y / 100, z = record.z})
+                candidate = record
+                if not target then self.waitingData = true end
+            end
         end
         if target and candidate then
             self.candidates[#self.candidates + 1] = candidate

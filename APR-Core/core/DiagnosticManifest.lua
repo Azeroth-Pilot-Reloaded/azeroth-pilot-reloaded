@@ -31,7 +31,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/features/navigation/NavigationTaxi.lua"] = {instrumented = 53, diagnosticHelpers = 0},
     ["APR-Core/features/navigation/NavigationUnlocks.lua"] = {instrumented = 11, diagnosticHelpers = 0},
     ["APR-Core/features/navigation/Preview.lua"] = {instrumented = 17, diagnosticHelpers = 0},
-    ["APR-Core/features/navigation/Services.lua"] = {instrumented = 33, diagnosticHelpers = 0},
+    ["APR-Core/features/navigation/Services.lua"] = {instrumented = 36, diagnosticHelpers = 0},
     ["APR-Core/features/navigation/WorldCoordinateConverter.lua"] = {instrumented = 48, diagnosticHelpers = 0},
     ["APR-Core/features/player/AFK.lua"] = {instrumented = 14, diagnosticHelpers = 0},
     ["APR-Core/features/player/Announcements.lua"] = {instrumented = 7, diagnosticHelpers = 0},
