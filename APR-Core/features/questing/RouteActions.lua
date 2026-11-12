@@ -182,6 +182,28 @@ function APR:ProcessRouteItems(key, rule, state, automatic, hardwareEvent)
     if key == "SellItems" then state.saleNeedsRetry = nil end
     local entries = ItemEntries(key, rule, state)
     if key == "SellItems" and rule.equippedSlots and not state.equippedItems then return false end
+    -- An empty junk sale needs no merchant visit. Observe only: unavailable
+    -- inventory data and any remaining listed/equipped target retain the step.
+    if key == "SellItems" and rule.junk and not self.routeMerchantOpen and not state.pending and not state.junkPending then
+        if (ContainerCall("GetContainerNumSlots", 0) or 0) == 0 then return false end
+        for _, entry in ipairs(entries) do
+            if IsItemEquipped(type(entry) == "table" and entry.itemID or entry) then return false end
+        end
+        for _, bag in ipairs(Bags(false)) do
+            local slots = ContainerCall("GetContainerNumSlots", bag)
+            if slots == nil then return false end
+            for slot = 1, slots do
+                local info = ContainerInfo(bag, slot)
+                if info and info.itemID then
+                    if info.quality == nil or (info.quality == 0 and not info.hasNoValue) then return false end
+                    for _, entry in ipairs(entries) do
+                        if (type(entry) == "table" and entry.itemID or entry) == info.itemID then return false end
+                    end
+                end
+            end
+        end
+        return true
+    end
     if key == "SellItems" and IsModifierKeyDown and IsModifierKeyDown() then return false end
     if (InCombatLockdown and InCombatLockdown()) or (CursorHasItem and CursorHasItem()) then return false end
     if key == "DestroyItems" and GetCursorInfo() then return false end

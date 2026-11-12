@@ -411,4 +411,65 @@ C_Container = nil
 open()
 tick(3)
 assert(sold == 8 and bags[0][9] and activeTimers() == 0)
+
+-- Junk-only visits can finish without opening a merchant on both container APIs.
+for _, legacy in ipairs({ false, true }) do
+    for _, automatic in ipairs({ false, true }) do
+        reset({ SellItems = { junk = true, npcID = 42 } })
+        if legacy then C_Container = nil end
+        APR.settings.profile.autoSellRouteItems = automatic
+        npc, combat, modifier, cursor = 999, true, true, true
+        APR:HandleRouteAction(step)
+        assert(advances == 1, "Empty junk visits must skip without NPC interaction or sale permissions")
+
+        reset({ SellItems = { junk = true } })
+        if legacy then C_Container = nil end
+        item(0, 1, 601, 2)
+        item(5, 1, 602, 0, 1, true)
+        APR:HandleRouteAction(step)
+        assert(advances == 1, "Non-junk and unsellable junk must not require a vendor visit")
+
+        reset({ SellItems = { junk = true } })
+        if legacy then C_Container = nil end
+        APR.settings.profile.autoSellRouteItems = automatic
+        local junk = item(5, 1, 603, 0)
+        junk.isLocked = true
+        APR:HandleRouteAction(step)
+        assert(advances == 0, "Sellable junk in the last bag, even locked, must retain the visit")
+        junk.quality = nil
+        APR:HandleRouteAction(step)
+        assert(advances == 0, "Unknown quality must not be treated as an empty inventory")
+        junk.quality = 2
+        APR:HandleRouteAction(step)
+        assert(advances == 1, "Inventory refresh can complete the visit once no junk remains")
+        assert(requests == 0 and nativeCalls == 0 and activeTimers() == 0, "Closed-merchant checks only observe")
+    end
+end
+
+reset({ SellItems = { junk = true, items = { { itemID = 604 } }, equippedSlots = { 16 } } })
+item(0, 1, 604, 2)
+equipment[16] = 605
+APR:HandleRouteAction(step)
+assert(advances == 0, "Listed bag and equipment targets must keep a mixed sale active")
+bags[0][1] = nil
+APR:HandleRouteAction(step)
+assert(advances == 0, "Listed equipment still requires a merchant visit without junk")
+equipment[16] = nil
+item(0, 2, 605, 2)
+APR:HandleRouteAction(step)
+assert(advances == 0, "Removing equipment must preserve its original sale target")
+bags[0][2] = nil
+APR:HandleRouteAction(step)
+assert(advances == 1, "A mixed sale skips only after all its targets are absent")
+
+for _, unavailable in ipairs({ 0, 3 }) do
+    reset({ SellItems = { junk = true } })
+    C_Container = setmetatable({ GetContainerNumSlots = function(bag)
+        if bag == unavailable then return bag == 0 and 0 or nil end
+        return 32
+    end }, { __index = containers })
+    APR:HandleRouteAction(step)
+    assert(advances == 0, "Unavailable bag contents must not cause a premature skip")
+end
+C_Container = containers
 print("Merchant sales: native/fallback, large inventories, acknowledgements, retries and cancellation passed")
