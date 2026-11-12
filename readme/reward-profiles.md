@@ -153,28 +153,50 @@ independent copies, race modifiers, hand execution and comparison identity.
 - git diff --check passed. The ten predecessor units are present; the external
   PartyFinderWorld commit was preserved, not included in this revision.
 
-## Empty armor in Forever bags
+## Conservative armor in Forever bags
 
 Bag suggestions have a separate conservative policy when a supported Forever
 leveling character has no selected build. It can propose usable armor for a
-confirmed empty armor slot, with positive armor or stamina and no negative stat.
-It cannot replace worn equipment, choose weapons/offhands, fill jewelry,
-shirts/tabards or score quest rewards. An item ID without a loaded equipped link
+confirmed empty slot or replace worn armor when the candidate loses no raw stat,
+does not reduce armor or stamina, and strictly increases armor or stamina.
+Armor aliases are normalized; unknown stats are retained rather than assigned
+guessed weights. Negative, missing and secret stats prevent a proof. A pure SP
+increase, lost primary attribute or armor/stamina tradeoff is insufficient.
+This policy cannot choose weapons/offhands, fill jewelry, shirts/tabards or score
+quest rewards. Common uniqueness and native usability checks still apply.
+An item ID without a loaded equipped link
 does not prove an empty slot. The same checks run again on the explicit equip
 click. No equip action is authorized by an equipment event or timer.
 
-This is a presence/benefit check, not an inferred build or DPS estimate. Armor
-and stamina each contribute one sorting point inside this policy only; the
-dialog identifies empty equipment and omits a weighted-profile score. Full APR
+This is a partial-order proof, not an inferred build or DPS estimate. Only after
+that proof, armor and stamina contribute sorting points inside this policy;
+they never compensate for a lost stat. The dialog omits weighted-source and
+score claims. All observed stat values enter comparison/refusal identities.
+The historical `GetEmptyArmorScale` entry point returns this bag-only policy.
+Full APR
 profiles and Pawn scores retain their existing meaning. Any resolved Pawn
 scorer, including zero armor valuation or a negative recommendation filter,
 remains authoritative. An explicit pending Pawn choice blocks this policy.
 No saved build or Pawn preference is changed, and unchanged refusals persist.
 
+Automatic Pawn selection uses visible, class-compatible sources from
+`PawnGetAllScalesEx`. A proven build/role remains a constraint. With no Forever
+build, exactly one visible class scale can identify the source; multiple visible
+builds never use a name/order tie-break. This matters because Pawn's normal
+Forever class-wide setup can enable all three class scales. Auto mode with an
+ambiguous source and explicitly selected APR both use the bag-only dominance
+policy when no full APR profile exists; no complete profile is invented.
+
 `/apr gear` reports that a search started, or the disabled, combat, dead or
-unavailable scoring state. Only this explicit command prints feedback;
-automatic event scans stay silent. Labels use existing Blizzard GlobalStrings
-and the existing Pawn status translation keys; no translation key was added.
+unavailable scoring state. A partial-policy scan with no proven improvement
+reports unavailable comparison capability instead of claiming that no upgrade
+exists. Only this explicit command prints feedback; automatic event scans stay
+silent. Labels use existing translation keys; no translation key was added.
+
+The public [Pawn source](https://github.com/VgerMods/Pawn/blob/main/Pawn.lua)
+documents per-character `IsVisible` in `PawnGetAllScalesEx`, provider activity
+filtering, and class-wide visibility in `PawnEnableAllScalesForClass`. No Pawn
+weights or implementation were copied.
 
 ### Starter regression action log (2026-11-12)
 

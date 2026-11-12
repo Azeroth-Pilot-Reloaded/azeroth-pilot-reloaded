@@ -445,6 +445,8 @@ function APR:QueueRouteItemDestruction(state)
     if not self.routeItemDestructionFrame then
         local frame = CreateFrame("Frame", nil, UIParent)
         frame:Hide()
+        frame:SetAllPoints(UIParent)
+        frame:EnableKeyboard(true)
         frame:SetPropagateKeyboardInput(true)
         frame:SetScript("OnKeyDown", --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteActions.lua:449:callback#21", --[[/APR_DIAG]]function() self:DestroyRouteItemOnInput() end--[[APR_DIAG]])--[[/APR_DIAG]])
         if WorldFrame then

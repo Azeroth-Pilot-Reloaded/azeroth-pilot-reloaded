@@ -83,7 +83,7 @@ local function defaultScore(link, scale, slot)
     if not ok or not accessible(stats) or type(stats) ~= "table" or (canaccesstable and not canaccesstable(stats)) then
         return nil, false
     end
-    if scale.emptyArmorOnly then
+    if scale.emptyArmorOnly or scale.armorDominanceOnly then
         for _, value in pairs(stats) do
             if not number(value) then return nil, false end
             if value < 0 then return 0, true end
@@ -224,8 +224,8 @@ end--[[APR_DIAG]]; Scoring.ResolveProfile = APRTrace("APR-Core/features/questing
 function Scoring:GetDefaultScale()
     local context = APR:GetRewardBuildContext()
     local race, interface
-    if UnitRace then local name; name, race = UnitRace("player") end
-    if GetBuildInfo then local version, build, date; version, build, date, interface = GetBuildInfo() end
+    if UnitRace then race = select(2, UnitRace("player")) end
+    if GetBuildInfo then interface = select(4, GetBuildInfo()) end
     local scale = self:ResolveProfile(context, UnitLevel and UnitLevel("player"), race, interface)
     if not scale then return nil end
     local identity = { tostring(scale.profileKey), scale.revision, scale.levelBand }
@@ -240,17 +240,18 @@ function Scoring:GetDefaultScale()
     return scale
 end--[[APR_DIAG]]; Scoring.GetDefaultScale = APRTrace("APR-Core/features/questing/RewardScoring.lua:218:Scoring:GetDefaultScale#9", Scoring.GetDefaultScale)--[[/APR_DIAG]]
 
--- Bag suggestions alone may fill confirmed empty armor without inventing a build.
--- This is not a quest-reward or occupied-slot scoring profile.
+-- Historical entry point for the bag-only conservative fallback. Occupied armor
+-- now also requires a component-wise dominance proof; this is never a full
+-- class/build profile or a quest-reward scoring source.
 function Scoring:GetEmptyArmorScale()
     local context = APR:GetRewardBuildContext()
     local interface
-    if GetBuildInfo then local version, build, date; version, build, date, interface = GetBuildInfo() end
+    if GetBuildInfo then interface = select(4, GetBuildInfo()) end
     local patch, level = self.profilePatches[interface], UnitLevel and UnitLevel("player")
     if context.client ~= "forever" or context.pawnSpec or not self.profiles.forever[context.classID]
         or not patch or patch.client ~= context.client or not number(level) or level < 1 or level >= patch.maximum then return end
-    local scale = { weights = { Armor = 1, Stamina = 1 }, emptyArmorOnly = true,
-        identity = context.key .. "\031empty-armor:1:" .. patch.revision }
+    local scale = { weights = { Armor = 1, Stamina = 1 }, armorDominanceOnly = true,
+        identity = context.key .. "\031armor-dominance:1:" .. patch.revision }
     scale.score = --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RewardScoring.lua:254:callback#12", --[[/APR_DIAG]]function(link) return defaultScore(link, scale) end--[[APR_DIAG]])--[[/APR_DIAG]]
     return scale
 end--[[APR_DIAG]]; Scoring.GetEmptyArmorScale = APRTrace("APR-Core/features/questing/RewardScoring.lua:245:Scoring:GetEmptyArmorScale#11", Scoring.GetEmptyArmorScale)--[[/APR_DIAG]]
@@ -450,13 +451,57 @@ local function weaponSteps(candidate, plan, direct, scale, equipped)
     plan.intermediate = { [move.from] = false, [move.to] = move.link }
 end--[[APR_DIAG]]; weaponSteps = APRTrace("APR-Core/features/questing/RewardScoring.lua:394:weaponSteps#21", weaponSteps)--[[/APR_DIAG]]
 
+local armorStatNames = { RESISTANCE0_NAME = "Armor", ITEM_MOD_ARMOR_SHORT = "Armor", ITEM_MOD_STAMINA_SHORT = "Stamina" }
+
+local function armorStats(link)
+    local getStats = itemAPI("GetItemStats")
+    if not getStats then return nil, false end
+    local ok, stats = APRPCall(getStats, link)
+    if not ok or not accessible(stats) or type(stats) ~= "table"
+        or (canaccesstable and not canaccesstable(stats)) then return nil, false end
+    local result = {}
+    for stat, value in pairs(stats) do
+        if not accessible(stat) or type(stat) ~= "string" or not number(value) then return nil, false end
+        if value < 0 then return nil, true end
+        local key = armorStatNames[stat] or stat
+        result[key] = math.max(result[key] or 0, value)
+    end
+    return result, true
+end--[[APR_DIAG]]; armorStats = APRTrace("APR-Core/features/questing/RewardScoring.lua:456:armorStats#324", armorStats)--[[/APR_DIAG]]
+
+local function armorStatsKey(stats)
+    local keys, parts = {}, {}
+    for stat in pairs(stats) do keys[#keys + 1] = stat end
+    table.sort(keys)
+    for _, stat in ipairs(keys) do parts[#parts + 1] = string.format("%q=%.17g", stat, stats[stat]) end
+    return table.concat(parts, ";")
+end--[[APR_DIAG]]; armorStatsKey = APRTrace("APR-Core/features/questing/RewardScoring.lua:472:armorStatsKey#325", armorStatsKey)--[[/APR_DIAG]]
+
+local function armorDominates(link, current)
+    local proposed, ready = armorStats(link)
+    if not proposed then return false, ready end
+    local before = {}
+    if current then
+        before, ready = armorStats(current)
+        if not before then return false, ready end
+    end
+    local armor, stamina = proposed.Armor or 0, proposed.Stamina or 0
+    local oldArmor, oldStamina = before.Armor or 0, before.Stamina or 0
+    if armor < oldArmor or stamina < oldStamina or (armor == oldArmor and stamina == oldStamina) then return false, true end
+    for stat, value in pairs(before) do
+        if (proposed[stat] or 0) < value then return false, true end
+    end
+    return true, true, armorStatsKey(proposed) .. "\031" .. armorStatsKey(before)
+end--[[APR_DIAG]]; armorDominates = APRTrace("APR-Core/features/questing/RewardScoring.lua:480:armorDominates#326", armorDominates)--[[/APR_DIAG]]
+
 function Scoring:GetUpgrade(link, scale)
     scale = scale or self:GetDefaultScale()
     if type(scale) ~= "table" or type(scale.score) ~= "function" then return nil, false end
     local candidate, ready = readItem(link, true)
     if not candidate then return nil, ready end
     local loc = candidate.equipLoc
-    if scale.emptyArmorOnly then
+    local armorComparison
+    if scale.emptyArmorOnly or scale.armorDominanceOnly then
         local destinations = slots[loc]
         local slot = destinations and destinations[1]
         if candidate.classID ~= 4 or not slot or slot == 2 or slot == 4 or slot == 19
@@ -464,7 +509,12 @@ function Scoring:GetUpgrade(link, scale)
         if not GetInventoryItemLink or not GetInventoryItemID then return nil, false end
         local current, id = GetInventoryItemLink("player", slot), GetInventoryItemID("player", slot)
         if not accessible(current) or not accessible(id) then return nil, false end
-        if current or id then return nil, true end
+        if scale.armorDominanceOnly then
+            if not current and id then return nil, false end
+            local dominates, known, comparison = armorDominates(link, current)
+            if not dominates then return nil, known end
+            armorComparison = comparison
+        elseif current or id then return nil, true end
     end
     local supported = slots[loc]
         or loc == "INVTYPE_WEAPON"
@@ -485,6 +535,7 @@ function Scoring:GetUpgrade(link, scale)
     local cache, relevant = {}, {}
     local comparison = { string.format("%.17g", value), loc, tostring(category), tostring(maximum),
         tostring(scale.profileKey), tostring(scale.revision), tostring(scale.levelBand) }
+    if armorComparison then comparison[#comparison + 1] = armorComparison end
     -- Default weights are part of the scoring context even when an edit happens
     -- to leave these particular items' totals unchanged. Never serialize closures.
     local stats = {}
@@ -593,10 +644,10 @@ function Scoring:GetUpgrade(link, scale)
     for index, replaced in ipairs(possibilities) do
         -- Filter this destination before reading its equipped baseline. Raw
         -- scores remain valid even for equipment Pawn would not recommend.
-        local recommended, known = value, true
+        local recommended, recommendationKnown = value, true
         if plans[index].slot == 17 then
-            recommended, known = scoreItem(candidate, scale, false, 17)
-            if not known then return nil, false end
+            recommended, recommendationKnown = scoreItem(candidate, scale, false, 17)
+            if not recommendationKnown then return nil, false end
         end
         local baseline, replacement = 0, {}
         for _, slot in ipairs(replaced) do

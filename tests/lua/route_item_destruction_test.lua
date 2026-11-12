@@ -24,6 +24,8 @@ function CreateFrame()
     function frame:Hide() self.shown = false end
     function frame:Show() self.shown = true end
     function frame:SetScript(event, callback) self.scripts[event] = callback end
+    function frame:EnableKeyboard(value) self.keyboardEnabled = value end
+    function frame:SetAllPoints(parent) self.anchor = parent end
     function frame:SetPropagateKeyboardInput(value) assert(value); self.propagates = value end
     frames[#frames + 1] = frame
     return frame
@@ -72,13 +74,16 @@ local function render() assert(APR:HandleRouteAction(steps[APRData.player.synthe
 local function input(world)
     hardware = true
     if world then hooks.OnMouseDown()
-    elseif APR.routeItemDestructionFrame.shown then APR.routeItemDestructionFrame.scripts.OnKeyDown() end
+    elseif APR.routeItemDestructionFrame.shown and APR.routeItemDestructionFrame.keyboardEnabled then
+        APR.routeItemDestructionFrame.scripts.OnKeyDown()
+    end
     hardware = false
 end
 
 reset()
 render(); render()
 assert(deletions == 0 and pickups == 0 and frames[1].propagates)
+assert(frames[1].anchor == UIParent, "The keyboard listener needs screen bounds")
 input()
 assert(deletions == 1 and bags[1] == nil and bags[2].stackCount == 3 and bags[3].itemID == 702)
 assert(APRData.player.synthetic == 1, "Deletion alone must not advance the route")
@@ -90,6 +95,8 @@ render()
 assert(APRData.player.synthetic == 2 and not frames[1].shown and not APR.routeItemDestruction)
 input(true)
 assert(deletions == 2 and #frames == 1)
+input()
+assert(deletions == 2, "A hidden listener must not receive keyboard input")
 
 for _, kind in ipairs({ "item", "spell" }) do
     reset(); render()

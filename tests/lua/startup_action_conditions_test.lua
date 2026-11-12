@@ -450,7 +450,6 @@ reset({ DestroyItems = { items = { 4201 } } })
 item()
 APR.startupQuestStatePending = nil
 assert(current() and mutations == 0 and bags[1] and advances == 0)
-assert(current() and mutations == 0 and bags[1] and advances == 0)
 bags[1] = nil -- Player manually removed the listed item.
 assert(current() and mutations == 0 and advances == 1)
 

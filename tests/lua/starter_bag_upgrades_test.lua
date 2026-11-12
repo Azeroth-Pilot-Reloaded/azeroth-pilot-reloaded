@@ -71,7 +71,9 @@ function APR.UI:ShowConfirmationDialog(settings, accept, cancel)
 end
 PawnCommon = { Scales = { ZeroArmor = { ClassID = 2, SpecID = 3, Values = { Strength = 1 } } } }
 function PawnIsReady() return ready end
-function PawnGetAllScalesEx() return { { Name = "ZeroArmor", IsVisible = true, IsProvider = true } } end
+-- No active Pawn source in this fixture; the hidden scale is explicitly
+-- selected later to verify that its zero values remain authoritative.
+function PawnGetAllScalesEx() return { { Name = "ZeroArmor", IsVisible = false, IsProvider = true } } end
 function PawnGetAllStatValues() return PawnCommon.Scales.ZeroArmor.Values end
 function PawnGetItemData() return { UnenchantedStats = {} } end
 function PawnGetSingleValueFromItem() return 0, 0 end
@@ -110,7 +112,7 @@ assert(bags.prompt and messages[#messages]:find(SEARCHING, 1, true), "The real g
 inventory[8] = "item:8202:occupied"
 bags:QueueScan("PLAYER_EQUIPMENT_CHANGED")
 flush()
-assert(not bags.prompt, "The starter policy never replaces occupied armor")
+assert(not bags.prompt, "Equal occupied armor is not a strict conservative improvement")
 inventory[8] = nil
 pendingEquipmentID = 8202
 bags:QueueScan("PLAYER_EQUIPMENT_CHANGED")
