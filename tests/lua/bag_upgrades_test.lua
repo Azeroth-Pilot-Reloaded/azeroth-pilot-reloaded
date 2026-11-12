@@ -9,6 +9,8 @@ LibStub = function()
     return { GetLocale = function() return { CHOOSE_USABLE_GEAR_UPGRADE = "Compare equipment" } end }
 end
 APR = { questionDialog = {}, RewardScoring = {}, PawnRewards = {} }
+APR.settings = { db = { char = { bagUpgradeSuggestions = true } } }
+dofile("APR-Core/utils/ProfileUtils.lua")
 function APR:GetSettingsProfile() return profile end
 function APR:NewModule()
     return {
@@ -169,6 +171,20 @@ flush()
 visible.accept()
 flush()
 assert(#equips == 1 and equips[1][1] == strong and equips[1][2] == 11)
+local withdrawn = visible
+APR:SetBagUpgradeSuggestions(false)
+flush()
+withdrawn.accept()
+assert(
+    #equips == 1 and next(module.events) == nil and not visible and not module:IsEnabledForCharacter(),
+    "A character opt-out cancels offers and listeners even while the shared profile is enabled"
+)
+APR:SetBagUpgradeSuggestions(true)
+flush()
+assert(module:IsEnabledForCharacter() and next(module.events) ~= nil and visible)
+profile.bagUpgradeSuggestions = false
+assert(module:IsEnabledForCharacter(), "An enabled character must ignore the legacy profile preference")
+profile.bagUpgradeSuggestions = true
 local stale = visible
 profile.enableAddon = false
 module:RefreshSettings()
