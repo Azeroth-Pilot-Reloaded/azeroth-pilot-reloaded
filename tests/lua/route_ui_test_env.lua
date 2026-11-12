@@ -38,6 +38,7 @@ local function protected(frame)
 end
 local function check(frame) assert(not combat or not protected(frame), "Protected mutation in combat") end
 function methods:SetScript(key, fn) self.scripts[key] = fn end
+function methods:UnregisterAllEvents() self.events = {} end
 
 function methods:HookScript(key, fn)
     local previous = self.scripts[key]

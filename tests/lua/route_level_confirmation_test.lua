@@ -154,10 +154,10 @@ assert(dialog:IsShown() and dialog.confirming and dialog.point[2] == main)
 assert(dialog.title:GetText():find("100% invented chapter", 1, true), "Owned text preserves literal percent signs")
 assert(
     dialog.description:GetText() == "Continue?"
-        and dialog.title.role == "base"
+        and dialog.title.role == "accent"
         and dialog.body:IsShown()
         and dialog.acceptButton:GetFontString():GetText() == ADD,
-    "The route title is neutral, recommendations have their own body and the action says Add"
+    "The route title uses the accent, recommendations have their own body and the action says Add"
 )
 assert(#APRCustomPath.test == 0, "Bringing the modal forward never accepts the route")
 dialog:Accept()
