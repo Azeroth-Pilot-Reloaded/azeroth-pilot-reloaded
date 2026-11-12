@@ -26,6 +26,7 @@ local mutations = {
     "PawnSetScaleNormalizationFactor",
     "PawnAddPluginScale",
     "PawnSetScaleVisible",
+    "PawnSetShowUpgradesForWeapons",
 }
 
 local function ordinary(value)
@@ -488,6 +489,47 @@ end--[[APR_DIAG]]
 PawnRewards.SetSelectedScale =
     APRTrace("APR-Core/integrations/Pawn.lua:324:PawnRewards:SetSelectedScale#27", PawnRewards.SetSelectedScale)--[[/APR_DIAG]]
 
+-- Suggestion preferences are independent of the weights the user confirms.
+-- Pin them in decision identities without turning a UI filter into unusability.
+local function recommendationContext(name)
+    local scale = PawnCommon and PawnCommon.Scales and PawnCommon.Scales[name]
+    if not scale then return end
+    local one, two = scale.DoNotShow1HUpgrades, scale.DoNotShow2HUpgrades
+    if (one ~= nil and not ordinary(one)) or (two ~= nil and not ordinary(two)) then return end
+    local level = UnitLevel and UnitLevel("player") or 0
+    if not finite(level) then return end
+    return tostring(not not one) .. ":" .. tostring(not not two) .. ":" .. level
+end--[[APR_DIAG]]
+recommendationContext = APRTrace("APR-Core/integrations/Pawn.lua:447:recommendationContext#29", recommendationContext)--[[/APR_DIAG]]
+
+local oneHandSuggestions = {
+    INVTYPE_WEAPON = true, INVTYPE_WEAPONMAINHAND = true, INVTYPE_WEAPONOFFHAND = true,
+    INVTYPE_SHIELD = true, INVTYPE_HOLDABLE = true,
+}
+local function canRecommend(item, name, slot)
+    local scale = PawnCommon.Scales[name]
+    local loc = item.InvType
+    if not ordinary(loc) then return nil, false end
+    if (scale.DoNotShow1HUpgrades and oneHandSuggestions[loc])
+        or (scale.DoNotShow2HUpgrades and loc == "INVTYPE_2HWEAPON") then return false, true end
+    -- Pawn restricts generic weapons in the offhand via IsOffHand; shields and
+    -- frills have separate stats. This is not the WoW dual-wield capability.
+    if slot == 17 and (loc == "INVTYPE_WEAPON" or loc == "INVTYPE_WEAPONOFFHAND") then
+        local weight = scale.Values and scale.Values.IsOffHand
+        if weight ~= nil and not finite(weight) then return nil, false end
+        if weight and weight <= -1000000 then return false, true end -- PawnIgnoreStatValue contract
+    end
+    if type(PawnIsArmorBestTypeForPlayer) == "function" then
+        local ok, allowed = APRPCall(PawnIsArmorBestTypeForPlayer, item)
+        if not ok or not ordinary(allowed) or type(allowed) ~= "boolean" then return nil, false end
+        return allowed, true
+    end
+    local stats = item.UnenchantedStats
+    if stats.IsCloth or stats.IsLeather or stats.IsMail or stats.IsPlate then return nil, false end
+    return true, true
+end--[[APR_DIAG]]
+canRecommend = APRTrace("APR-Core/integrations/Pawn.lua:461:canRecommend#30", canRecommend)--[[/APR_DIAG]]
+
 function PawnRewards:GetScorer()
     self:UpdateSnapshot()
     local choice, ready = self:GetSelectedScale()
@@ -498,8 +540,10 @@ function PawnRewards:GetScorer()
     if not ready then return nil, "pending" end
     local name = choice:sub(6)
     local signature = self.scales[name].fingerprint
-    local identity = key .. "\031" .. choice .. "\031" .. signature
-    return  --[[APR_DIAG]]APRTrace("APR-Core/integrations/Pawn.lua:358:callback#29", --[[/APR_DIAG]] function(link)
+    local recommendations = recommendationContext(name)
+    if not recommendations then return nil, "pending" end
+    local identity = key .. "\031" .. choice .. "\031" .. signature .. "\031" .. recommendations
+    return  --[[APR_DIAG]]APRTrace("APR-Core/integrations/Pawn.lua:358:callback#29", --[[/APR_DIAG]] function(link, slot)
         local currentChoice, currentReady = self:GetSelectedScale()
         if
             self.active == false
@@ -508,6 +552,7 @@ function PawnRewards:GetScorer()
             or specializationKey() ~= key
             or currentChoice ~= choice
             or fingerprint(name) ~= signature
+            or recommendationContext(name) ~= recommendations
         then
             return nil, false
         end
@@ -518,7 +563,9 @@ function PawnRewards:GetScorer()
         local scoreOK, _, score = --[[APR_DIAG]]
             APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](PawnGetSingleValueFromItem, item, name)
         if not scoreOK or not finite(score) then return nil, false end
-        return score, true
+        local allowed, known = canRecommend(item, name, slot)
+        if not known then return nil, false end
+        return score, true, allowed
     end--[[APR_DIAG]])--[[/APR_DIAG]], "pawn", identity
 end--[[APR_DIAG]]
 PawnRewards.GetScorer = APRTrace("APR-Core/integrations/Pawn.lua:350:PawnRewards:GetScorer#28", PawnRewards.GetScorer)--[[/APR_DIAG]]
@@ -570,6 +617,7 @@ function PawnRewards:OnEnable()
     self:RegisterEvent("ADDON_LOADED", "OnPawnLoaded")
     self:RegisterEvent("PLAYER_LOGIN", "QueueRefresh")
     self:RegisterEvent("PLAYER_SPECIALIZATION_CHANGED", "OnSpecializationChanged")
+    self:RegisterEvent("UNIT_LEVEL", "OnSpecializationChanged")
     self:RefreshSettings()
 end--[[APR_DIAG]]
 PawnRewards.OnEnable = APRTrace("APR-Core/integrations/Pawn.lua:398:PawnRewards:OnEnable#34", PawnRewards.OnEnable)--[[/APR_DIAG]]

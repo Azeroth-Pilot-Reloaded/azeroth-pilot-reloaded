@@ -63,14 +63,31 @@ assuming its score can be transferred between hands. Direct replacements remain
 available. APR does not reconstruct Pawn's contextual weapon scores or copy its
 weights.
 
+Recommendations respect the selected scale's `DoNotShow1HUpgrades` (including
+shields and held offhands) and `DoNotShow2HUpgrades`. These are suggestion filters,
+not equipment capabilities: they never zero the equipped baseline. `IsOffHand`
+at Pawn's ignore threshold prevents a generic weapon from being recommended in
+the offhand; it does not prohibit shields/frills. Native dual-wield checks remain
+independent. `PawnIsArmorBestTypeForPlayer` supplies the class/level/client armor
+policy, including Retail specialization and Forever's broader pre-specialization
+choices. An unavailable armor check cannot authorize an armor recommendation.
+
+Weapon suggestion toggles change decision identities and refresh bags via their
+public Pawn setter. Level changes refresh the armor context with scoped
+`UNIT_LEVEL` handling. Old scorers reject stale settings/levels. These settings
+do not change weights and therefore do not trigger a weight-confirmation offer.
+Explicitly selected hidden scales remain usable. APR does not adopt Pawn's
+tracked-inventory comparisons or its current-weapon-handedness shortcut: APR
+continues comparing complete legal replacements against equipment actually worn.
+
 Secure post-hooks observe scale edits/imports, and a coalesced snapshot detects
 actual changes. Custom scales added or modified while automatic rewards are
 active trigger an in-game offer to use that version. Combat defers the offer.
 Accepting a stale offer cannot select a deleted or subsequently edited scale.
-Declining a version is remembered. A changed or unavailable selected scale uses
-APR weights until explicitly selected or confirmed; a deleted selection falls
-back to APR. A popup that cannot be shown, is replaced, or is hidden by the
-client leaves its version pending. A native popup closure triggers a coalesced
+Declining a version is remembered. A changed or unavailable selected scale
+suspends weighted recommendations until it is explicitly selected or confirmed;
+selecting APR explicitly releases that pending choice. A popup that cannot be
+shown, is replaced, or is hidden by the client leaves its version pending. A native popup closure triggers a coalesced
 retry; only an explicit user refusal is remembered. The visible reward settings
 refresh their catalog, selected scale and status after these changes. No recurring
 polling or per-frame scan is used.
@@ -81,6 +98,10 @@ polling or per-frame scan is used.
   `PawnIsReady`, `PawnGetAllScalesEx`, `PawnGetAllStatValues`, item scoring.
   Pawn 2.14.1 declares Retail and Forever support. Its code/weight tables are not
   bundled or copied into APR.
+- [Pawn recommendation rules](https://github.com/VgerMods/Pawn/blob/main/Pawn.lua),
+  [scale templates](https://github.com/VgerMods/Pawn/blob/main/ScaleTemplates.lua)
+  and [client armor thresholds](https://github.com/VgerMods/Pawn/blob/main/Core.lua)
+  were checked for this integration (Pawn 2.1402). No Pawn weights are copied.
 - Blizzard's [Retail quest choices](https://github.com/Gethe/wow-ui-source/blob/live/Interface/AddOns/Blizzard_UIPanels_Game/Mainline/QuestInfo.lua)
   and [Forever quest choices](https://github.com/Gethe/wow-ui-source/blob/forever/Interface/AddOns/Blizzard_UIPanels_Game/Vanilla/QuestInfo.lua)
   use the fifth `GetQuestItemInfo` result for reward usability.
