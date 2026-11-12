@@ -197,8 +197,8 @@ PawnDeleteScale("Imported")
 advance(1)
 dropdown, status = visible()
 assert(
-    not dropdown.values["pawn:Imported"] and dropdown.value == "apr" and status == "APR: Synthetic class",
-    "Deletion publishes the fallback without closing the current page"
+    dropdown.values["pawn:Imported"] and dropdown.value == "pawn:Imported" and status == "Unavailable: Imported",
+    "Deletion preserves the explicit selection and publishes unavailability without closing the page"
 )
 
 -- Bursts coalesce, and getters never trigger a self-sustaining rebuild.

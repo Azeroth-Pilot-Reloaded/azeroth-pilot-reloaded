@@ -543,12 +543,32 @@ freshQuest()
 chosen(2, "Selecting the Pawn crit scale reverses the real quest choice against equipped gear")
 assert(pawnReads[#pawnReads] == equipped, "The real Pawn adapter scores the equipped exact variant as its baseline")
 
+-- A selected provider may disappear while a reward page/retry is already open.
+local providerReady = true
+function PawnIsReady() return providerReady end
+providerReady = false
+freshQuest()
+assert(#selected == 0, "An unavailable explicit Pawn choice must not claim an APR upgrade")
+tick(0.2)
+assert(#selected == 0, "A retry opened before provider recovery must not fall back to APR")
+providerReady = true
+tick(10)
+chosen(2, "A pending reward resumes with the selected Pawn provider when it returns")
+
 PawnCommon.Scales.Imported.Values = { Strength = 2, CritRating = 0.01 }
 APR.PawnRewards:RefreshSettings()
 assert(
-    popup and APR.PawnRewards:GetSelectedScale() == "apr",
-    "Changing a selected Pawn scale offers confirmation while APR temporarily uses its default"
+    popup and APR.PawnRewards:GetSelectedScale() == "pawn:Imported" and APR.PawnRewards:GetScorer() == nil,
+    "Changing a selected Pawn scale offers confirmation while its scoring stays pending"
 )
+freshQuest()
+assert(#selected == 0, "Changed Pawn weights must suspend gear decisions until confirmation")
+local obsoletePopup = popup
+PawnCommon.Scales.Imported.Values.Strength = 3
+obsoletePopup.accept()
+assert(#selected == 0 and APR.PawnRewards:GetScorer() == nil,
+    "A stale confirmation cannot authorize a subsequent weight edit")
+APR.PawnRewards:RefreshSettings()
 popup.accept()
 tick(1)
 assert(

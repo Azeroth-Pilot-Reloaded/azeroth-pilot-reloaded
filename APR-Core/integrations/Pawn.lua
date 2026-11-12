@@ -241,7 +241,6 @@ function PawnRewards:UpdateSnapshot()
             type(record) ~= "table"
             or type(record.name) ~= "string"
             or type(record.fingerprint) ~= "string"
-            or not scales[record.name]
         then
             char.rewardPawnScales[key] = nil
         end
@@ -406,6 +405,11 @@ function PawnRewards:GetScaleOptions()
     for name, scale in pairs(self.scales) do
         options["pawn:" .. name] = scale.label .. " (Pawn)"
     end
+    local char = character()
+    local selected = char and char.rewardPawnScales[specializationKey()]
+    if type(selected) == "table" and type(selected.name) == "string" then
+        options["pawn:" .. selected.name] = options["pawn:" .. selected.name] or selected.name .. " (Pawn)"
+    end
     return options
 end--[[APR_DIAG]]
 PawnRewards.GetScaleOptions =
@@ -415,18 +419,17 @@ function PawnRewards:GetSelectedScale()
     if not self.ready and pawnReady() then self:UpdateSnapshot() end
     local char = character()
     local record = char and char.rewardPawnScales[specializationKey()]
-    if
-        type(record) ~= "table"
-        or type(record.name) ~= "string"
-        or type(record.fingerprint) ~= "string"
-        or not pawnReady()
-    then
-        return "apr"
+    if type(record) ~= "table" or type(record.name) ~= "string" or type(record.fingerprint) ~= "string" then
+        return "apr", true
     end
-    -- Validate the selected scale immediately, including the debounce interval.
-    if fingerprint(record.name) ~= record.fingerprint then return "apr" end
+    -- Choice and availability are independent: an unresolved explicit choice
+    -- must never authorize the default scorer, even during the debounce interval.
+    local choice = "pawn:" .. record.name
+    if self.active == false or not pawnReady() or fingerprint(record.name) ~= record.fingerprint then
+        return choice, false
+    end
     local scale = self.scales and self.scales[record.name]
-    if not scale then return "apr" end
+    if not scale then return choice, false end
     local pawnScale = PawnCommon and PawnCommon.Scales and PawnCommon.Scales[record.name]
     if
         scale.custom
@@ -436,9 +439,9 @@ function PawnRewards:GetSelectedScale()
     then
         local ok, visible = --[[APR_DIAG]]
             APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](PawnIsScaleVisible, record.name)
-        if not ok or not ordinary(visible) or visible ~= true then return "apr" end
+        if not ok or not ordinary(visible) or visible ~= true then return choice, false end
     end
-    return "pawn:" .. record.name
+    return choice, true
 end--[[APR_DIAG]]
 PawnRewards.GetSelectedScale =
     APRTrace("APR-Core/integrations/Pawn.lua:305:PawnRewards:GetSelectedScale#26", PawnRewards.GetSelectedScale)--[[/APR_DIAG]]
@@ -472,20 +475,24 @@ PawnRewards.SetSelectedScale =
     APRTrace("APR-Core/integrations/Pawn.lua:324:PawnRewards:SetSelectedScale#27", PawnRewards.SetSelectedScale)--[[/APR_DIAG]]
 
 function PawnRewards:GetScorer()
-    if self.active == false then return end
     self:UpdateSnapshot()
-    local choice = self:GetSelectedScale()
-    if choice == "apr" or type(PawnGetItemData) ~= "function" or type(PawnGetSingleValueFromItem) ~= "function" then
-        return
-    end
+    local choice, ready = self:GetSelectedScale()
+    local key = specializationKey()
+    -- Contract for every scoring consumer: source state distinguishes an APR
+    -- choice from pending Pawn; identity pins a decision to its confirmed weights.
+    if choice == "apr" then return nil, "apr", "apr:" .. key end
+    if not ready then return nil, "pending" end
     local name = choice:sub(6)
-    local signature, key = self.scales[name].fingerprint, specializationKey()
+    local signature = self.scales[name].fingerprint
+    local identity = key .. "\031" .. choice .. "\031" .. signature
     return  --[[APR_DIAG]]APRTrace("APR-Core/integrations/Pawn.lua:358:callback#29", --[[/APR_DIAG]] function(link)
+        local currentChoice, currentReady = self:GetSelectedScale()
         if
             self.active == false
+            or not currentReady
             or not pawnReady()
             or specializationKey() ~= key
-            or self:GetSelectedScale() ~= choice
+            or currentChoice ~= choice
             or fingerprint(name) ~= signature
         then
             return nil, false
@@ -498,7 +505,7 @@ function PawnRewards:GetScorer()
             APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](PawnGetSingleValueFromItem, item, name)
         if not scoreOK or not finite(score) then return nil, false end
         return score, true
-    end--[[APR_DIAG]])--[[/APR_DIAG]]
+    end--[[APR_DIAG]])--[[/APR_DIAG]], "pawn", identity
 end--[[APR_DIAG]]
 PawnRewards.GetScorer = APRTrace("APR-Core/integrations/Pawn.lua:350:PawnRewards:GetScorer#28", PawnRewards.GetScorer)--[[/APR_DIAG]]
 
@@ -508,7 +515,8 @@ function PawnRewards:GetStatusText()
     if type(record) == "table" and type(record.name) == "string" then
         local scale = self.scales and self.scales[record.name]
         local label = scale and scale.label or record.name
-        if self:GetSelectedScale() == "apr" then return string.format(L["REWARD_PAWN_UNAVAILABLE"], label) end
+        local _, ready = self:GetSelectedScale()
+        if not ready then return string.format(L["REWARD_PAWN_UNAVAILABLE"], label) end
         return "Pawn: " .. label .. "\n" .. L["REWARD_WEIGHT_SCALE_DESC"]
     end
     if APR.RewardScoring and APR.RewardScoring.GetProfileDescription then
