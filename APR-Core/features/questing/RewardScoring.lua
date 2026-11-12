@@ -240,9 +240,9 @@ function Scoring:GetDefaultScale()
     return scale
 end--[[APR_DIAG]]; Scoring.GetDefaultScale = APRTrace("APR-Core/features/questing/RewardScoring.lua:218:Scoring:GetDefaultScale#9", Scoring.GetDefaultScale)--[[/APR_DIAG]]
 
--- Historical entry point for the bag-only conservative fallback. Occupied armor
--- now also requires a component-wise dominance proof; this is never a full
--- class/build profile or a quest-reward scoring source.
+-- Historical entry point for conservative armor comparisons in bags and quests.
+-- Occupied armor requires a component-wise dominance proof. Positive gains prove
+-- upgrades individually; only component-wise gains can compare reward choices.
 function Scoring:GetEmptyArmorScale()
     local context = APR:GetRewardBuildContext()
     local interface
@@ -491,7 +491,9 @@ local function armorDominates(link, current)
     for stat, value in pairs(before) do
         if (proposed[stat] or 0) < value then return false, true end
     end
-    return true, true, armorStatsKey(proposed) .. "\031" .. armorStatsKey(before)
+    local delta = {}
+    for stat, value in pairs(proposed) do delta[stat] = value - (before[stat] or 0) end
+    return true, true, armorStatsKey(proposed) .. "\031" .. armorStatsKey(before), delta
 end--[[APR_DIAG]]; armorDominates = APRTrace("APR-Core/features/questing/RewardScoring.lua:480:armorDominates#326", armorDominates)--[[/APR_DIAG]]
 
 function Scoring:GetUpgrade(link, scale)
@@ -500,7 +502,7 @@ function Scoring:GetUpgrade(link, scale)
     local candidate, ready = readItem(link, true)
     if not candidate then return nil, ready end
     local loc = candidate.equipLoc
-    local armorComparison
+    local armorComparison, armorDelta
     if scale.emptyArmorOnly or scale.armorDominanceOnly then
         local destinations = slots[loc]
         local slot = destinations and destinations[1]
@@ -511,9 +513,10 @@ function Scoring:GetUpgrade(link, scale)
         if not accessible(current) or not accessible(id) then return nil, false end
         if scale.armorDominanceOnly then
             if not current and id then return nil, false end
-            local dominates, known, comparison = armorDominates(link, current)
+            local dominates, known, comparison, delta = armorDominates(link, current)
             if not dominates then return nil, known end
             armorComparison = comparison
+            armorDelta = delta
         elseif current or id then return nil, true end
     end
     local supported = slots[loc]
@@ -691,7 +694,10 @@ function Scoring:GetUpgrade(link, scale)
             end
         end
     end
-    if bestPlan then weaponSteps(candidate, bestPlan, direct, scale, equipped) end
+    if bestPlan then
+        bestPlan.armorDelta = armorDelta
+        weaponSteps(candidate, bestPlan, direct, scale, equipped)
+    end
     -- Include every evaluated alternative, not just the winning destination.
     -- Uniqueness probes of unrelated categories must not make a tabard relevant.
     for slot = 1, 19 do
