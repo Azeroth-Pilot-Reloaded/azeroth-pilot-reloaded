@@ -84,3 +84,11 @@ assert(APR:GetPrimaryProfessionCount() == 1, "Legacy skill lines only count prim
 GetNumSkillLines, GetSkillLineInfo = nil, nil
 assert(APR:GetPrimaryProfessionCount() == 0)
 print("Skills: modern tables, collapsed headers, API priority and legacy fallbacks passed")
+
+-- Structured results may arrive before the numeric rank is populated.
+C_SkillInfo = { GetSkillLineInfoByID = function() return { name = "Invented", maxRank = 300 } end }
+assert(APR:GetRouteSkill({ skillID = 8888 }) == 0)
+local rank, name = APR:GetRouteSkill({ skillID = 8888 })
+assert(rank == 0 and name == "Invented", "Missing rank remains safe while the native localized name survives")
+C_SkillInfo.GetSkillLineInfoByID = function() return { isHeader = true, name = "Header", rank = 300 } end
+assert(APR:GetRouteSkill({ skillID = 8888 }) == 0, "Headers never satisfy a rank goal")

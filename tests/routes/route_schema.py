@@ -236,6 +236,7 @@ class RouteSchema:
             "Buffs": array(obj({"spellId": ID, "tooltipMessage": TEXT}, required=("spellId",)), 1),
             "LootMoney": obj({"copper": ID, "includeEquipped": BOOL, "junkOnly": BOOL, "equippedSlots": array(SLOT, 1)},
                              required=("copper",)),
+            "SkillGoal": obj({"skillID": ID, "rank": ID}, required=("skillID", "rank")),
             "Reputation": reputation,
             "SpellETA": obj({"spellID": ID, "itemID": ID, "seconds": number(0)},
                             required=("seconds",), choices=(("spellID", "itemID"),)),

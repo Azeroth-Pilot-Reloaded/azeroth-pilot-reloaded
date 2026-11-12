@@ -55,6 +55,7 @@ def examples():
                              "operator": "<", "precision": 1, "allowMissing": False},
         "EquippedItem": {"slot": 16, "itemID": 123, "invert": True},
         "Collection": {"itemID": 123, "quantity": 2},
+        "SkillGoal": {"skillID": 8888, "rank": 42},
         "Skill": {"skill": "cooking", "rank": 50, "operator": ">=", "maximum": True},
         "AnyOf": seq({"Class": "MAGE"}, {"Not": {"HasSpell": 123}}),
         "AllOf": seq({"IsQuestCompleted": 1}, {"AnyOf": seq({"MinLevel": 5}, {"Hardcore": True})}),
@@ -85,6 +86,16 @@ class RouteSchemaTests(unittest.TestCase):
     def setUpClass(cls):
         cls.catalog = load_routes([])
         cls.schema = RouteSchema(cls.catalog)
+
+    def test_skill_goal_requires_positive_integer_rank_and_skill_id(self):
+        self.schema.step({"SkillGoal": {"skillID": 8888, "rank": 42}}, "step")
+        for goal in ({}, {"skillID": 8888}, {"rank": 42}, {"skillID": 0, "rank": 42},
+                     {"skillID": 8888, "rank": 0}, {"skillID": 8888, "rank": 4.2},
+                     {"skillID": 8888, "rank": True}, {"skillID": "8888", "rank": 42},
+                     {"skillID": 8888, "rank": 42, "quantity": 5},
+                     {"skillID": 8888, "rank": 42, "maximum": True}):
+            with self.subTest(goal=goal), self.assertRaises(InvalidRoute):
+                self.schema.step({"SkillGoal": goal}, "step")
 
     def test_raid_icon_accepts_scalar_or_nonempty_npc_list(self):
         for value in (12345, seq(12345, 67890), seq(12345, 12345), {"npcID": 12345},

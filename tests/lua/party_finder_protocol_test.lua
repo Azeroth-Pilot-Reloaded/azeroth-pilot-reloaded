@@ -51,6 +51,14 @@ local function fingerprint(definition, budget)
     end
     return hash, job, calls
 end
+local skillDefinition = { steps = { { SkillGoal = { skillID = 8888, rank = 10 } } } }
+local skillSignature = fingerprint(skillDefinition)
+skillDefinition.steps[1].SkillGoal.rank = 11
+assert(fingerprint(skillDefinition) ~= skillSignature, "Different target ranks cannot share group compatibility")
+skillDefinition.steps[1].SkillGoal.rank = 10
+skillDefinition.steps[1].SkillGoal.skillID = 9999
+assert(fingerprint(skillDefinition) ~= skillSignature, "Different skills cannot share group compatibility")
+
 local first = {
     label = "Old title",
     author = "Someone",

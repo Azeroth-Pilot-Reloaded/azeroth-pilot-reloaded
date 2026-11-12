@@ -208,6 +208,40 @@ assert(
     "A rowless dropped quest never displays a raw format placeholder"
 )
 
+-- Skill goals stay visible with the guide hidden, and use the real client rank.
+dofile("APR-Core/utils/RouteConditions.lua")
+local rank, advances = 8, 0
+local goal = { SkillGoal = { skillID = 8888, rank = 10 } }
+local originalAdvance = APR.NextQuestStep
+APR.NextQuestStep = function() advances = advances + 1 end
+C_SkillInfo = { GetSkillLineInfoByID = function(id)
+    assert(id == 8888)
+    return { name = "Métier inventé", rank = rank, maxRank = 300 }
+end }
+assert(APR:HasAnyMainStepOption(goal), "Skill goals must count as primary actions")
+assert(renderCurrent(goal) == "Métier inventé (8/10)" and advances == 0)
+assert(APR:GetStepString(goal) == "Métier inventé (8/10)")
+rank = 9
+assert(renderCurrent(goal) == "Métier inventé (9/10)" and advances == 0)
+rank = nil
+assert(renderCurrent(goal) == "Métier inventé (0/10)" and advances == 0, "Missing rank must wait safely")
+rank = 10
+renderCurrent(goal)
+assert(advances == 1, "Only an actually reached rank advances the step")
+rank = 15
+renderCurrent(goal)
+assert(advances == 2, "Already exceeded targets complete too")
+APR.NextQuestStep = originalAdvance
+C_SkillInfo = nil
+GetProfessions = function() return nil, 2 end
+GetProfessionInfo = function(index)
+    assert(index == 2)
+    return "Invented profession", nil, 7, 100, nil, nil, 8888
+end
+assert(renderCurrent(goal) == "Invented profession (7/10)", "Retail profession slots share the same progress")
+GetProfessions, GetProfessionInfo = nil, nil
+assert(renderCurrent(goal) == "Unknown (8888) (0/10)", "Unavailable skill data never completes the target")
+
 APR.settings.profile.arrowActionText = false
 local lookups, originalTitle = 0, APR.GetQuestTitle
 APR.GetQuestTitle = function(...)
