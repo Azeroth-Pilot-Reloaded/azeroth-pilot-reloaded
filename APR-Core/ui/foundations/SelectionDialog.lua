@@ -8,6 +8,108 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 local UI = APR.UI
 local namedDialogs = {}
 
+local function Public(value)
+    return not issecretvalue or not issecretvalue(value)
+end--[[APR_DIAG]]; Public = APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:11:Public#101", Public)--[[/APR_DIAG]]
+
+local function HideItemTooltip(button)
+    if GameTooltip:GetOwner() == button then GameTooltip:Hide() end
+end--[[APR_DIAG]]; HideItemTooltip = APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:15:HideItemTooltip#102", HideItemTooltip)--[[/APR_DIAG]]
+
+local function ShowItemTooltip(button)
+    HideItemTooltip(button)
+    local item = button.item
+    if not item or not button:IsShown() then return end
+    local link
+    if item.inventorySlot then
+        link = GetInventoryItemLink("player", item.inventorySlot)
+    elseif item.bag ~= nil and item.bagSlot then
+        local getLink = C_Container and C_Container.GetContainerItemLink or GetContainerItemLink
+        if getLink then link = getLink(item.bag, item.bagSlot) end
+    end
+    -- Never show a different variant after a bag/equipment update.
+    if not Public(link) or link ~= item.link then return end
+    GameTooltip:SetOwner(button, "ANCHOR_RIGHT")
+    if item.inventorySlot then
+        GameTooltip:SetInventoryItem("player", item.inventorySlot)
+    else
+        GameTooltip:SetBagItem(item.bag, item.bagSlot)
+    end
+    GameTooltip:Show()
+end--[[APR_DIAG]]; ShowItemTooltip = APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:19:ShowItemTooltip#103", ShowItemTooltip)--[[/APR_DIAG]]
+
+local function CreateItemCell(parent, heading)
+    local cell = CreateFrame("Frame", nil, parent)
+    cell.heading = UI:Label(cell, heading, 11, "muted")
+    cell.heading:SetPoint("TOPLEFT")
+    cell.heading:SetWordWrap(true)
+    cell.button = UI:Panel(cell, "borderedPanel", "stone")
+    cell.button:EnableMouse(true)
+    cell.button:SetSize(40, 40)
+    cell.button.icon = cell.button:CreateTexture(nil, "ARTWORK")
+    cell.button.icon:SetPoint("TOPLEFT", 2, -2)
+    cell.button.icon:SetPoint("BOTTOMRIGHT", -2, 2)
+    cell.button:SetScript("OnEnter", ShowItemTooltip)
+    cell.button:SetScript("OnLeave", HideItemTooltip)
+    cell.button:SetScript("OnHide", HideItemTooltip)
+    cell.name = UI:Label(cell, "", 12)
+    cell.name:SetWordWrap(true)
+    cell.name:SetJustifyH("LEFT")
+    cell.name:SetPoint("TOPLEFT", cell.button, "TOPRIGHT", 8, 0)
+    return cell
+end--[[APR_DIAG]]; CreateItemCell = APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:40:CreateItemCell#104", CreateItemCell)--[[/APR_DIAG]]
+
+local function BindItemCell(cell, item, width)
+    HideItemTooltip(cell.button)
+    cell.button.item = item
+    if APR.Gamepad and APR.Gamepad.SetNavigationFlag then
+        APR.Gamepad:SetNavigationFlag(cell.button, "smartNavigationCanFocus", item ~= nil)
+    end
+    local getInfo = C_Item and C_Item.GetItemInfo or GetItemInfo
+    local icon
+    if item and getInfo then icon = select(10, getInfo(item.link)) end
+    if not Public(icon) then icon = nil end
+    cell.button.icon:SetTexture(icon)
+    cell.name:SetText(item and item.link or EMPTY or NONE or "")
+    cell.name:SetWidth(math.max(1, width - 48))
+    cell.heading:SetWidth(width)
+    cell.button:ClearAllPoints()
+    cell.button:SetPoint("TOPLEFT", 0, -cell.heading:GetStringHeight() - 6)
+    cell:SetSize(width, cell.heading:GetStringHeight() + 6 + math.max(40, cell.name:GetStringHeight()))
+end--[[APR_DIAG]]; BindItemCell = APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:61:BindItemCell#105", BindItemCell)--[[/APR_DIAG]]
+
+local function BindComparisonRow(row, comparison)
+    if not row.proposed then
+        row.slot = UI:Label(row, "", 12, "muted")
+        row.slot:SetPoint("TOPLEFT", 10, -8)
+        row.slot:SetWordWrap(true)
+        row.proposed = CreateItemCell(row, EQUIP_ITEM or EQUIP or ACCEPT)
+        row.current = CreateItemCell(row, CURRENTLY_EQUIPPED or EQUIPMENT)
+        row.arrow = row:CreateTexture(nil, "OVERLAY")
+        row.arrow:SetTexture("Interface\\AddOns\\APR\\APR-Core\\assets\\ui\\arrow.tga")
+        row.arrow:SetSize(28, 28)
+        row.arrow:SetRotation(-math.pi / 4)
+        row.arrow:SetVertexColor(0.2, 0.9, 0.35)
+    end
+    local width = row:GetWidth()
+    local columnWidth = math.max(1, (width - 68) / 2)
+    row.slot:SetText(comparison.label)
+    row.slot:SetWidth(math.max(1, width - 20))
+    local top = row.slot:GetStringHeight() + 16
+    row.current:SetPoint("TOPLEFT", 10, -top)
+    row.proposed:SetPoint("TOPLEFT", 58 + columnWidth, -top)
+    row.arrow:SetPoint("TOP", row, "TOP", 0, -top - 24)
+    BindItemCell(row.proposed, comparison.proposed, columnWidth)
+    BindItemCell(row.current, comparison.current, columnWidth)
+    local headingHeight = math.max(row.proposed.heading:GetStringHeight(), row.current.heading:GetStringHeight())
+    for _, cell in ipairs({ row.proposed, row.current }) do
+        cell.button:ClearAllPoints()
+        cell.button:SetPoint("TOPLEFT", 0, -headingHeight - 6)
+        cell:SetHeight(headingHeight + 6 + math.max(40, cell.name:GetStringHeight()))
+    end
+    row.slot:Show(); row.proposed:Show(); row.current:Show(); row.arrow:Show()
+end--[[APR_DIAG]]; BindComparisonRow = APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:80:BindComparisonRow#106", BindComparisonRow)--[[/APR_DIAG]]
+
 local function CreateSelectionDialog(name)
     name = name or "APRSelectionPopup"
     local frame = UI:Panel(UIParent, "window", "library")
@@ -138,15 +240,29 @@ local function CreateSelectionDialog(name)
             )
             function row:onRecycle()
                 if GameTooltip:GetOwner() == self.button then GameTooltip:Hide() end
+                if self.proposed then
+                    for _, cell in ipairs({ self.proposed, self.current }) do
+                        HideItemTooltip(cell.button)
+                        cell.button.item = nil
+                        cell.button.icon:SetTexture(nil)
+                        cell.name:SetText("")
+                        cell:Hide()
+                    end
+                    self.slot:Hide(); self.arrow:Hide()
+                end
             end--[[APR_DIAG]]
             row.onRecycle = APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:84:row:onRecycle#12", row.onRecycle)--[[/APR_DIAG]]
             return row
         end--[[APR_DIAG]]) --[[/APR_DIAG]], --[[APR_DIAG]]
         APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:88:callback#13", --[[/APR_DIAG]] function(row, item)
             row:onRecycle()
-            row.button:SetShown(not item.detail)
+            row.button:SetShown(not item.detail and not item.comparison)
             row.detail:SetShown(item.detail == true)
             row.marker:SetShown(item.detail == true)
+            if item.comparison then
+                BindComparisonRow(row, item.comparison)
+                return
+            end
             if item.detail then
                 row.detail:SetWidth(math.max(1, row:GetWidth() - 40))
                 row.detail:SetText(item.text)
@@ -191,7 +307,7 @@ local function CreateSelectionDialog(name)
         self.layingOut = true
         local padding = self.confirmationDetails and 20 or 16
         local width =
-            math.min(self.confirmationDetails and 480 or self.confirming and 440 or 560, UIParent:GetWidth() - 40)
+            math.min(self.comparison and 620 or self.confirmationDetails and 480 or self.confirming and 440 or 560, UIParent:GetWidth() - 40)
         local innerWidth = width - padding * 2
         self:SetWidth(width)
         self.header:SetPoint("TOPLEFT", padding, -padding)
@@ -226,10 +342,29 @@ local function CreateSelectionDialog(name)
             local items, totalHeight = {}, 0
             self.detailMeasure:SetWidth(innerWidth - 74)
             for _, text in ipairs(self.options) do
-                self.detailMeasure:SetText(text)
-                local height = math.max(32, self.detailMeasure:GetStringHeight() + 20) + 4
-                items[#items + 1] = { text = text, detail = true, height = height }
-                totalHeight = totalHeight + height
+                if self.comparison then
+                    local columnWidth = math.max(1, (innerWidth - 34 - 68) / 2)
+                    self.detailMeasure:SetWidth(math.max(1, columnWidth - 48))
+                    self.detailMeasure:SetText(text.proposed and text.proposed.link or EMPTY or "")
+                    local nameHeight = self.detailMeasure:GetStringHeight()
+                    self.detailMeasure:SetText(text.current and text.current.link or EMPTY or "")
+                    nameHeight = math.max(nameHeight, self.detailMeasure:GetStringHeight(), 40)
+                    self.detailMeasure:SetWidth(columnWidth)
+                    self.detailMeasure:SetText(CURRENTLY_EQUIPPED or EQUIPMENT)
+                    local headingHeight = self.detailMeasure:GetStringHeight()
+                    self.detailMeasure:SetText(EQUIP_ITEM or EQUIP or ACCEPT)
+                    headingHeight = math.max(headingHeight, self.detailMeasure:GetStringHeight())
+                    self.detailMeasure:SetWidth(innerWidth - 54)
+                    self.detailMeasure:SetText(text.label)
+                    local height = self.detailMeasure:GetStringHeight() + headingHeight + nameHeight + 34
+                    items[#items + 1] = { comparison = text, height = height }
+                    totalHeight = totalHeight + height
+                else
+                    self.detailMeasure:SetText(text)
+                    local height = math.max(32, self.detailMeasure:GetStringHeight() + 20) + 4
+                    items[#items + 1] = { text = text, detail = true, height = height }
+                    totalHeight = totalHeight + height
+                end
             end
             local bodyHeight = 0
             if #items > 0 then
@@ -278,7 +413,7 @@ local function CreateSelectionDialog(name)
             self:StopMovingOrSizing()
             GameTooltip:Hide()
             local callback = self.onCancel
-            self.onSelect, self.onAccept, self.onCancel, self.options = nil, nil, nil, nil
+            self.onSelect, self.onAccept, self.onCancel, self.options, self.comparison = nil, nil, nil, nil, nil
             self.list:SetItems({})
             if callback then callback() end
         end--[[APR_DIAG]]) --[[/APR_DIAG]]
@@ -338,7 +473,8 @@ local function ShowDialog(settings)
     frame.description:SetText(settings.description or "")
     frame.confirming = settings.confirmation == true
     frame.confirmationDetails = settings.details ~= nil
-    frame.options, frame.onSelect = settings.details or settings.options or {}, settings.onSelect
+    frame.comparison = settings.comparison ~= nil
+    frame.options, frame.onSelect = settings.comparison or settings.details or settings.options or {}, settings.onSelect
     frame.acceptButton:SetText(settings.acceptText or ACCEPT)
     frame.cancelButton:SetText(settings.cancelText or CANCEL)
     frame.onAccept, frame.onCancel = settings.onAccept, settings.onCancel
@@ -373,6 +509,7 @@ function UI:ShowConfirmationDialog(text, onAccept, onCancel, owner)
             title = text.title,
             description = text.description,
             details = text.details,
+            comparison = text.comparison,
             acceptText = text.acceptText,
             cancelText = text.cancelText,
             onAccept = onAccept,

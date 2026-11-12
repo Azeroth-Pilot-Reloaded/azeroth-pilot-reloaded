@@ -7,7 +7,6 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 APR.BagUpgrades = APR:NewModule("BagUpgrades", "AceEvent-3.0")
 local Upgrades = APR.BagUpgrades
-local PROMPT = "APR_BAG_UPGRADE"
 local EVENTS = {
     "BAG_UPDATE_DELAYED",
     "PLAYER_EQUIPMENT_CHANGED",
@@ -56,16 +55,10 @@ Upgrades.IsEnabledForCharacter = APRTrace(
 )--[[/APR_DIAG]]
 
 function Upgrades:CancelPrompt()
-    local prompt, dialog = self.prompt, self.dialog
+    local dialog = self.dialog
     self.prompt, self.dialog = nil, nil
-    -- OnAccept/OnCancel clear prompt before rescanning. Let StaticPopup_OnClick
-    -- finish its native hide instead of re-entering gamepad focus teardown from
-    -- the addon callback. Only withdraw an outstanding offer here.
-    if dialog then
-        dialog:Hide()
-    elseif prompt and StaticPopup_Hide then
-        StaticPopup_Hide(PROMPT)
-    end
+    -- Withdraw before hiding: a programmatic close is never a user refusal.
+    if dialog then dialog:Hide() end
 end--[[APR_DIAG]]
 Upgrades.CancelPrompt =
     APRTrace("APR-Core/features/player/BagUpgrades.lua:42:Upgrades:CancelPrompt#6", Upgrades.CancelPrompt)--[[/APR_DIAG]]
@@ -403,7 +396,7 @@ local SLOT_LABELS = {
     "BACKSLOT", "MAINHANDSLOT", "SECONDARYHANDSLOT", "RANGEDSLOT", "TABARDSLOT",
 }
 
-function Upgrades:GetOfferText(candidate)
+function Upgrades:GetOfferRows(candidate)
     local plan = candidate.plan
     local affected = { [plan.slot] = true }
     for _, slot in ipairs(plan.replacedSlots) do affected[slot] = true end
@@ -413,6 +406,10 @@ function Upgrades:GetOfferText(candidate)
     for slot in pairs(affected) do
         local link = GetInventoryItemLink("player", slot)
         if not Public(link) or (link ~= nil and type(link) ~= "string") then return end
+        if not link and GetInventoryItemID then
+            local id = GetInventoryItemID("player", slot)
+            if not Public(id) or id then return end
+        end
         before[slot], after[slot] = link or false, link or false
     end
     for _, slot in ipairs(plan.replacedSlots) do after[slot] = false end
@@ -420,24 +417,35 @@ function Upgrades:GetOfferText(candidate)
         after[plan.move.from], after[plan.move.to] = false, plan.move.link
     end
     after[plan.slot] = candidate.link
-    local current, proposed = {}, {}
+    local rows = {}
     for slot = 1, 19 do
         if affected[slot] then
             local label = _G[SLOT_LABELS[slot]] or EQUIPMENT
             if slot >= 11 and slot <= 14 then label = label .. " " .. ((slot - 11) % 2 + 1) end
-            current[#current + 1] = label .. ": " .. (before[slot] or EMPTY or NONE or "")
-            proposed[#proposed + 1] = label .. ": " .. (after[slot] or EMPTY or NONE or "")
+            local function Cell(link, origin, proposed)
+                if not link then return end
+                if proposed and link == candidate.link then
+                    return { link = link, bag = candidate.bag, bagSlot = candidate.slot }
+                end
+                return { link = link, inventorySlot = origin }
+            end--[[APR_DIAG]]; Cell = APRTrace("APR-Core/features/player/BagUpgrades.lua:421:Cell#130", Cell)--[[/APR_DIAG]]
+            local origin = plan.move and plan.move.to == slot and plan.move.from or slot
+            rows[#rows + 1] = { slot = slot, label = label,
+                current = Cell(before[slot], slot), proposed = Cell(after[slot], origin, true) }
         end
     end
-    local text = L["CHOOSE_USABLE_GEAR_UPGRADE"]
-        .. "\n\n" .. (CURRENTLY_EQUIPPED or EQUIPMENT) .. ":\n" .. table.concat(current, "\n")
-        .. "\n\n" .. (EQUIP_ITEM or EQUIP or ACCEPT or EQUIPMENT) .. ":\n" .. table.concat(proposed, "\n")
+    return rows
+end--[[APR_DIAG]]; Upgrades.GetOfferRows = APRTrace("APR-Core/features/player/BagUpgrades.lua:399:Upgrades:GetOfferRows#129", Upgrades.GetOfferRows)--[[/APR_DIAG]]
+
+function Upgrades:GetOfferStatus(candidate, compact)
     local scale = self:GetScale()
     local emptyArmor = scale and scale.emptyArmorOnly
+    if compact and emptyArmor then return "" end
     local status = emptyArmor and ((EQUIPMENT or "") .. ": " .. (EMPTY or NONE or ""))
-        or (APR.PawnRewards and APR.PawnRewards.GetStatusText and APR.PawnRewards:GetStatusText())
-    if type(status) == "string" and status ~= "" then
-        text = text .. "\n\n" .. status
+        or (APR.PawnRewards and APR.PawnRewards.GetStatusText and APR.PawnRewards:GetStatusText(compact))
+    local text = ""
+    if Public(status) and type(status) == "string" and status ~= "" then
+        text = status
         -- This is a score delta in the named profile, never a power percentage.
         -- baseline covers removed objects and is not the full pre-swap loadout.
         if not emptyArmor and SCORE and Number(candidate.gain) and candidate.gain > 0 then
@@ -445,19 +453,27 @@ function Upgrades:GetOfferText(candidate)
         end
     end
     return text
+end--[[APR_DIAG]]; Upgrades.GetOfferStatus = APRTrace("APR-Core/features/player/BagUpgrades.lua:436:Upgrades:GetOfferStatus#131", Upgrades.GetOfferStatus)--[[/APR_DIAG]]
+
+function Upgrades:GetOfferText(candidate)
+    local rows = self:GetOfferRows(candidate)
+    if not rows then return end
+    local current, proposed = {}, {}
+    for _, row in ipairs(rows) do
+        current[#current + 1] = row.label .. ": " .. (row.current and row.current.link or EMPTY or NONE or "")
+        proposed[#proposed + 1] = row.label .. ": " .. (row.proposed and row.proposed.link or EMPTY or NONE or "")
+    end
+    local status = self:GetOfferStatus(candidate)
+    return L["CHOOSE_USABLE_GEAR_UPGRADE"]
+        .. "\n\n" .. (CURRENTLY_EQUIPPED or EQUIPMENT) .. ":\n" .. table.concat(current, "\n")
+        .. "\n\n" .. (EQUIP_ITEM or EQUIP or ACCEPT or EQUIPMENT) .. ":\n" .. table.concat(proposed, "\n")
+        .. (status ~= "" and "\n\n" .. status or "")
 end--[[APR_DIAG]]
 Upgrades.GetOfferText = APRTrace("APR-Core/features/player/BagUpgrades.lua:344:Upgrades:GetOfferText#29", Upgrades.GetOfferText)--[[/APR_DIAG]]
 
 function Upgrades:Offer(candidate)
     if not self:IsEnabledForCharacter() or (InCombatLockdown and InCombatLockdown()) then return end
-    -- Use the private dialog even in mouse mode on a gamepad-capable client:
-    -- switching input modes while an offer is open must not adopt a StaticPopup.
-    local private = APR.Gamepad and APR.Gamepad.IsAvailable and APR.Gamepad:IsAvailable()
-    if private then
-        if not APR.UI or not APR.UI.ShowConfirmationDialog then return end
-    elseif not APR.questionDialog or not StaticPopup_Visible then
-        return
-    end
+    if not APR.UI or not APR.UI.ShowConfirmationDialog then return end
     for index = 1, (STATICPOPUP_NUMDIALOGS or 4) do
         local frame = _G["StaticPopup" .. index]
         if frame and frame:IsShown() then
@@ -465,9 +481,10 @@ function Upgrades:Offer(candidate)
             return
         end
     end
-    local text = self:GetOfferText(candidate)
+    local rows = self:GetOfferRows(candidate)
+    local text = self:GetOfferStatus(candidate, true)
     local scale, identity = self:GetScale()
-    if not text or not scale or identity ~= candidate.scoringIdentity or EquipmentSignature() ~= candidate.signature then
+    if not rows or not scale or identity ~= candidate.scoringIdentity or EquipmentSignature() ~= candidate.signature then
         self:QueueScan()
         return
     end
@@ -479,40 +496,29 @@ function Upgrades:Offer(candidate)
             self:Equip(candidate)
         end--[[APR_DIAG]]) --[[/APR_DIAG]]
     local onCancel = --[[APR_DIAG]]
-        APRTrace("APR-Core/features/player/BagUpgrades.lua:208:callback#22", --[[/APR_DIAG]] function(_, _, reason)
+        APRTrace("APR-Core/features/player/BagUpgrades.lua:208:callback#22", --[[/APR_DIAG]] function()
             if self.prompt ~= candidate then return end
             self.prompt, self.dialog = nil, nil
-            local dismissed = private or reason == "clicked" or reason == "timeout" or reason == "escape"
-            if dismissed then
-                local scale, identity = self:GetScale()
-                local comparison
-                if scale then
-                    local _, ready, _, current = APR.RewardScoring:GetUpgrade(candidate.link, scale)
-                    if ready then comparison = current end
-                end
-                local refusal = self:RefusalIdentity(identity, comparison)
-                if refusal and refusal == candidate.refusalIdentity then self.dismissed[candidate.link] = refusal end
+            local scale, identity = self:GetScale()
+            local comparison
+            if scale then
+                local _, ready, _, current = APR.RewardScoring:GetUpgrade(candidate.link, scale)
+                if ready then comparison = current end
             end
-            self.waiting = not dismissed
-            if not self.waiting then self:QueueScan() end
+            local refusal = self:RefusalIdentity(identity, comparison)
+            if refusal and refusal == candidate.refusalIdentity then self.dismissed[candidate.link] = refusal end
+            self.waiting = false
+            self:QueueScan()
         end--[[APR_DIAG]]) --[[/APR_DIAG]]
-    if private then
-        -- Forever initializes native StaticPopup gamepad callbacks in the
-        -- caller's taint context and lazily caches their shared bindings there.
-        -- Keep this offer on an APR-owned frame instead of entering that path.
-        self.dialog = APR.UI:ShowConfirmationDialog({
-            dialogName = "APRBagUpgradePopup",
-            title = EQUIPMENT,
-            description = text,
-            acceptText = EQUIP_ITEM or EQUIP or ACCEPT,
-            cancelText = IGNORE or CANCEL,
-        }, onAccept, onCancel)
-    else
-        APR.questionDialog:CreateQuestionPopup(
-            PROMPT, text, onAccept, onCancel, EQUIP_ITEM or EQUIP or ACCEPT, IGNORE or CANCEL
-        )
-    end
-    if (private and (not self.dialog or not self.dialog:IsShown())) or (not private and not StaticPopup_Visible(PROMPT)) then
+    self.dialog = APR.UI:ShowConfirmationDialog({
+        dialogName = "APRBagUpgradePopup",
+        title = L["GEAR_UPGRADE_TITLE"],
+        description = L["GEAR_UPGRADE_PROMPT"] .. (text ~= "" and "\n" .. text or ""),
+        comparison = rows,
+        acceptText = EQUIP_ITEM or EQUIP or ACCEPT,
+        cancelText = IGNORE or CANCEL,
+    }, onAccept, onCancel)
+    if not self.dialog or not self.dialog:IsShown() then
         self.prompt, self.waiting = nil, true
     end
 end--[[APR_DIAG]]

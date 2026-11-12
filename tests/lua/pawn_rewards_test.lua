@@ -255,7 +255,10 @@ assert(
 )
 assert(module:GetSelectedScale() == "apr" and module:GetScorer() == nil)
 assert(module:GetStatusText() == "Default weights for Synthetic caster")
+assert(module:GetStatusText(true) == "APR: Synthetic caster", "Gear prompts show the source without settings help")
 assert(not module:SetSelectedScale("missing") and module:SetSelectedScale("Hidden"))
+assert(module:GetStatusText(true) == "Pawn: Hidden label")
+assert(module:GetStatusText():find("Select a scale", 1, true), "Settings retain their complete explanation")
 local scorer = module:GetScorer()
 local score, ready = scorer("item:700001:0:0:0:0:0:42")
 assert(

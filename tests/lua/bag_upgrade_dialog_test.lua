@@ -6,7 +6,7 @@ MAINHANDSLOT, SECONDARYHANDSLOT, HEADSLOT = "Main hand", "Off hand", "Head"
 FINGER0SLOT, FINGER1SLOT = "Finger", "Finger"
 ACCEPT, CANCEL, IGNORE = "Accept", "Cancel", "Ignore"
 LibStub = function()
-    return { GetLocale = function() return { CHOOSE_USABLE_GEAR_UPGRADE = "Compare equipment" } end }
+    return { GetLocale = function() return { GEAR_UPGRADE_TITLE = "Gear", GEAR_UPGRADE_PROMPT = "Better gear?", CHOOSE_USABLE_GEAR_UPGRADE = "Compare equipment" } end }
 end
 APR = { Gamepad = { IsAvailable = function() return private end }, UI = {}, questionDialog = {},
     PawnRewards = {}, RewardScoring = {} }
@@ -23,7 +23,8 @@ function APR.questionDialog:CreateQuestionPopup(_, text, accept, cancel)
     shown = { text = text, accept = accept, cancel = cancel }
 end
 function APR.UI:ShowConfirmationDialog(settings, accept, cancel)
-    shown = { text = settings.description, accept = accept, cancel = cancel, IsShown = function() return true end }
+    assert(settings.comparison and #settings.comparison > 0, "The live offer must publish visual comparison rows")
+    shown = { settings = settings, text = settings.description, accept = accept, cancel = cancel, IsShown = function() return true end }
     return shown
 end
 dofile("APR-Core/features/player/BagUpgrades.lua")
@@ -38,7 +39,11 @@ local function offer(plan, gain)
         scoringIdentity = identity, signature = table.concat(links, "\031") }
     shown = nil
     module:Offer(candidate)
-    return shown and shown.text, candidate
+    if shown then
+        assert(shown.settings, "All input modes use the private APR frame")
+        assert(not shown.text:find(candidate.link, 1, true), "The footer must not repeat the item diff")
+    end
+    return shown and module:GetOfferText(candidate), candidate
 end
 local function contains(text, value)
     assert(text and text:find(value, 1, true), "Missing dialog content: " .. value)
@@ -49,10 +54,16 @@ for _, usePrivate in ipairs({ false, true }) do
     local plan = { slot = 16, replacedSlots = { 17 },
         move = { from = 16, to = 17, link = inventory[16] } }
     local text = offer(plan)
+    local rows = shown.settings.comparison
+    assert(#rows == 2 and rows[1].slot == 16 and rows[2].slot == 17)
+    assert(rows[1].proposed.link == "item:901:new" and rows[1].current.link == inventory[16])
+    assert(rows[2].proposed.link == inventory[16] and rows[2].current.link == inventory[17])
     contains(text, "Equipped:\nMain hand: item:902:retained\nOff hand: item:903:removed")
     contains(text, "Equip:\nMain hand: item:901:new\nOff hand: item:902:retained")
     contains(text, "APR: Invented tank")
     contains(text, "Score: +7")
+    contains(shown.text, "APR: Invented tank")
+    contains(shown.text, "Score: +7")
     assert(not text:find("%%"), "A loadout delta must not use the replaced-items baseline as a percentage")
 
     plan = { slot = 17, replacedSlots = { 16 }, move = { from = 17, to = 16, link = inventory[17] } }
@@ -76,10 +87,12 @@ for _, usePrivate in ipairs({ false, true }) do
     scale.score = function() return 1, true end
     text = offer({ slot = 1, replacedSlots = { 1 } })
     contains(text, "Pawn: Invented healer")
+    contains(shown.text, "Pawn: Invented healer")
     assert(not text:find("APR:", 1, true))
     for _, gain in ipairs({ 0, -1, math.huge, 0/0 }) do
         text = offer({ slot = 1, replacedSlots = { 1 } }, gain)
         assert(not text:find("Score:", 1, true), "Unavailable/nonpositive scores have no displayed gain")
+        assert(not shown.text:find("Score:", 1, true), "The visual path also excludes unavailable/nonpositive scores")
     end
 
     -- A missing scoring label cannot lend meaning to an arbitrary numeric delta.
@@ -101,4 +114,8 @@ for _, usePrivate in ipairs({ false, true }) do
         "A changed scoring context withdraws the offer before publishing its gain")
     APR.PawnRewards.GetStatusText = ordinaryStatus
 end
-print("Bag dialog: both confirmation paths show complete hand configurations, empty slots, active profiles and scoped score gains")
+inventory = {}
+function GetInventoryItemID(_, slot) return slot == 1 and 999 or nil end
+assert(offer({ slot = 1, replacedSlots = { 1 } }) == nil,
+    "An inventory ID without its link is pending equipment, not an empty square")
+print("Bag dialog: all input modes show complete hand configurations, empty slots, active profiles and scoped score gains")

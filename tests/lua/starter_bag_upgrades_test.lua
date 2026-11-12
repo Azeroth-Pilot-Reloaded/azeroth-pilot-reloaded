@@ -62,6 +62,13 @@ function StaticPopup_Hide() popup = nil end
 function APR.questionDialog:CreateQuestionPopup(_, text, accept, cancel)
     popup = { text = text, accept = accept, cancel = cancel }
 end
+APR.UI = {}
+function APR.UI:ShowConfirmationDialog(settings, accept, cancel)
+    popup = { text = settings.description, accept = accept, cancel = cancel, shown = true }
+    function popup:IsShown() return self.shown end
+    function popup:Hide() self.shown = false; cancel() end
+    return popup
+end
 PawnCommon = { Scales = { ZeroArmor = { ClassID = 2, SpecID = 3, Values = { Strength = 1 } } } }
 function PawnIsReady() return ready end
 function PawnGetAllScalesEx() return { { Name = "ZeroArmor", IsVisible = true, IsProvider = true } } end
@@ -81,8 +88,9 @@ flush()
 assert(bags.prompt and bags.prompt.plan.slot == 8 and equips == 0,
     "A level-three Forever character without a chosen build must see armor-only boots for empty feet")
 assert(not popup.text:find(UNAVAILABLE, 1, true), "A conservative offer must not claim to use an unavailable build")
-assert(popup.text:find(EQUIPMENT .. ": " .. EMPTY, 1, true) and not popup.text:find(SCORE, 1, true),
-    "The dialog names empty equipment scope without presenting it as a complete weighted profile")
+assert(not popup.text:find(SCORE, 1, true) and not popup.text:find("APR:", 1, true)
+    and not popup.text:find("Pawn:", 1, true) and not popup.text:find(EQUIPMENT .. ": " .. EMPTY, 1, true),
+    "Empty armor has no weighted source, score or repeated description of its empty square")
 popup.accept()
 flush()
 assert(inventory[8] == boots and equips == 1 and not bags.prompt, "Only the explicit click equips starter boots")
