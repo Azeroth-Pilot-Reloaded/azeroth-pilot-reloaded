@@ -339,3 +339,80 @@ module:OnScoringChanged()
 flush()
 assert(privateDialog:IsShown(), "An explicit APR choice still permits default suggestions")
 module:OnDisable()
+
+-- A rejected explicit click waits for usable bag data, never for permission to equip.
+inventory, bags = {}, { [1] = upgrade }
+module:OnEnable()
+flush()
+local beforeRecovery = #equips
+locked = true
+privateDialog:Accept()
+assert(not privateDialog:IsShown() and module.events.ITEM_LOCK_CHANGED,
+    "A locked click must install a temporary recovery listener")
+local function lockEvent(bag, slot)
+    local method = module.events.ITEM_LOCK_CHANGED
+    if method then module[method](module, "ITEM_LOCK_CHANGED", bag, slot) end
+end
+lockEvent(0, 1)
+assert(not privateDialog:IsShown(), "A still-locked event cannot reopen the offer")
+locked = false
+lockEvent(0, nil)
+lockEvent(1, 1)
+assert(module.events.ITEM_LOCK_CHANGED, "Inventory and unrelated bag events do not consume recovery")
+lockEvent(0, 1)
+flush()
+assert(privateDialog:IsShown() and #equips == beforeRecovery and not module.events.ITEM_LOCK_CHANGED,
+    "Unlock only publishes a freshly scored offer and removes its listener")
+privateDialog:Accept()
+flush()
+assert(#equips == beforeRecovery + 1, "Only the second explicit click equips")
+
+local function rejectedClick(missing)
+    module:OnDisable()
+    inventory, bags = {}, { [1] = upgrade }
+    locked, missingInfo = false, false
+    module:OnEnable()
+    flush()
+    locked, missingInfo = not missing, missing
+    privateDialog:Accept()
+    assert(not privateDialog:IsShown())
+end
+rejectedClick(true)
+missingInfo = false
+flush()
+assert(privateDialog:IsShown() and #equips == beforeRecovery + 1,
+    "Transient missing container data recovers without another game event or automatic equipment")
+rejectedClick(true)
+flush()
+assert(not privateDialog:IsShown() and not module.events.ITEM_LOCK_CHANGED and not module.timer,
+    "Permanently unavailable data expires without popup or timer loops")
+rejectedClick(false)
+flush()
+assert(not privateDialog:IsShown() and not module.events.ITEM_LOCK_CHANGED,
+    "A permanent lock has bounded listener lifetime")
+for _, event in ipairs({ "PLAYER_REGEN_DISABLED", "BAG_UPDATE_DELAYED", "disable" }) do
+    rejectedClick(false)
+    local pending = timers[#timers]
+    if event == "disable" then module:OnDisable()
+    else
+        combat = event == "PLAYER_REGEN_DISABLED"
+        if event == "BAG_UPDATE_DELAYED" then bags = {} end
+        module:QueueScan(event)
+    end
+    locked = false
+    pending.fn() -- Exercise a cancelled callback already dispatched by the client.
+    lockEvent(0, 1)
+    flush()
+    assert(not privateDialog:IsShown() and not module.events.ITEM_LOCK_CHANGED,
+        "Movement/combat/disable cancel recovery, including stale callbacks")
+    combat = false
+end
+rejectedClick(false)
+custom, scoringState = nil, "pending"
+locked = false
+lockEvent(0, 1)
+flush()
+assert(not privateDialog:IsShown() and #equips == beforeRecovery + 1,
+    "Recovery never falls back from unavailable Pawn to APR")
+missingInfo = false
+module:OnDisable()

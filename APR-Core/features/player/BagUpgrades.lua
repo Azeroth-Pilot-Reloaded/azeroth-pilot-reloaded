@@ -73,7 +73,8 @@ Upgrades.CancelPrompt =
 function Upgrades:CancelScan()
     self.generation = (self.generation or 0) + 1
     if self.timer then self.timer:Cancel() end
-    self.timer, self.job, self.pendingIDs = nil, nil, nil
+    self.timer, self.job, self.pendingIDs, self.recovery = nil, nil, nil, nil
+    self:UnregisterEvent("ITEM_LOCK_CHANGED")
     self:UnregisterEvent("ITEM_DATA_LOAD_RESULT")
 end--[[APR_DIAG]]
 Upgrades.CancelScan = APRTrace("APR-Core/features/player/BagUpgrades.lua:47:Upgrades:CancelScan#7", Upgrades.CancelScan)--[[/APR_DIAG]]
@@ -258,6 +259,59 @@ end--[[APR_DIAG]]
 Upgrades.FinishScan =
     APRTrace("APR-Core/features/player/BagUpgrades.lua:127:Upgrades:FinishScan#16", Upgrades.FinishScan)--[[/APR_DIAG]]
 
+-- Both Retail and Forever expose the container table's explicit isLocked flag.
+function Upgrades:BagItemReady(candidate)
+    local infoAPI = C_Container and C_Container.GetContainerItemInfo
+    if not infoAPI then return false end
+    local info = infoAPI(candidate.bag, candidate.slot)
+    return Public(info) and type(info) == "table"
+        and (not canaccesstable or canaccesstable(info))
+        and Public(info.isLocked) and info.isLocked == false
+end--[[APR_DIAG]]; Upgrades.BagItemReady = APRTrace("APR-Core/features/player/BagUpgrades.lua:7:Upgrades:BagItemReady#30", Upgrades.BagItemReady)--[[/APR_DIAG]]
+
+function Upgrades:CheckBagItem()
+    local candidate = self.recovery
+    if not candidate then return end
+    local link = Container("GetContainerItemLink", candidate.bag, candidate.slot)
+    local scale, identity = self:GetScale()
+    if not self:IsEnabledForCharacter() or (InCombatLockdown and InCombatLockdown())
+        or not Public(link) or link ~= candidate.link
+        or EquipmentSignature() ~= candidate.signature
+        or not scale or identity ~= candidate.scoringIdentity then
+        self:CancelScan()
+    elseif self:BagItemReady(candidate) then
+        -- No saved click authorization: only score and publish another comparison.
+        self:QueueScan()
+    end
+end--[[APR_DIAG]]; Upgrades.CheckBagItem = APRTrace("APR-Core/features/player/BagUpgrades.lua:16:Upgrades:CheckBagItem#31", Upgrades.CheckBagItem)--[[/APR_DIAG]]
+
+function Upgrades:OnItemLockChanged(_, bag, slot)
+    -- A nil slot describes equipped inventory, not a container slot.
+    local candidate = self.recovery
+    if candidate and Number(bag) and Number(slot)
+        and bag == candidate.bag and slot == candidate.slot then self:CheckBagItem() end
+end--[[APR_DIAG]]; Upgrades.OnItemLockChanged = APRTrace("APR-Core/features/player/BagUpgrades.lua:32:Upgrades:OnItemLockChanged#32", Upgrades.OnItemLockChanged)--[[/APR_DIAG]]
+
+function Upgrades:PollBagItem(candidate, remaining)
+    self.timer = C_Timer.NewTimer(1, --[[APR_DIAG]]APRTrace("APR-Core/features/player/BagUpgrades.lua:40:callback#34", --[[/APR_DIAG]]function()
+        if self.recovery ~= candidate then return end
+        self.timer = nil
+        self:CheckBagItem()
+        if self.recovery ~= candidate then return end
+        if remaining > 1 then self:PollBagItem(candidate, remaining - 1)
+        else self:CancelScan() end
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+end--[[APR_DIAG]]; Upgrades.PollBagItem = APRTrace("APR-Core/features/player/BagUpgrades.lua:39:Upgrades:PollBagItem#33", Upgrades.PollBagItem)--[[/APR_DIAG]]
+
+function Upgrades:WaitForBagItem(candidate)
+    self:CancelScan()
+    self.recovery = candidate
+    self:RegisterEvent("ITEM_LOCK_CHANGED", "OnItemLockChanged")
+    -- Poll missing container data too; neither lock events nor failed reads reset
+    -- this budget. CancelScan withdraws the listener on bag/combat/settings changes.
+    self:PollBagItem(candidate, 4)
+end--[[APR_DIAG]]; Upgrades.WaitForBagItem = APRTrace("APR-Core/features/player/BagUpgrades.lua:50:Upgrades:WaitForBagItem#35", Upgrades.WaitForBagItem)--[[/APR_DIAG]]
+
 function Upgrades:Equip(candidate)
     if not self:IsEnabledForCharacter() or (InCombatLockdown and InCombatLockdown()) then return end
     if CursorHasItem and CursorHasItem() then return end
@@ -270,18 +324,9 @@ function Upgrades:Equip(candidate)
         self:QueueScan()
         return
     end
-    local infoAPI = C_Container and C_Container.GetContainerItemInfo
-    if infoAPI then
-        local info = infoAPI(candidate.bag, candidate.slot)
-        if
-            not Public(info)
-            or type(info) ~= "table"
-            or (canaccesstable and not canaccesstable(info))
-            or not Public(info.isLocked)
-            or info.isLocked ~= false
-        then
-            return
-        end
+    if not self:BagItemReady(candidate) then
+        self:WaitForBagItem(candidate)
+        return
     end
     local scale, identity = self:GetScale()
     if not scale or identity ~= candidate.scoringIdentity then
