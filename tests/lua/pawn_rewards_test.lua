@@ -878,3 +878,104 @@ local combatOffer = env.prompts[2]
 module:OnDisable()
 combatOffer.accept()
 assert(module:GetSelectedScale() == "apr" and not next(module.events), "Disabling the integration retires bag-only callbacks")
+
+-- Automatic selection uses metadata, never the order or display name of scales.
+do
+    local e = newEnvironment(nil, {
+        A_wrong = { Values = { Intellect = 9 }, ClassID = 8, SpecID = 2 },
+        Z_right = { Values = { Intellect = 5 }, ClassID = 8, SpecID = 1 },
+    })
+    local m = e.module
+    assert(m:GetPreference() == "auto", "New characters use automatic scoring")
+    assert(m:GetSelectedScale() == "pawn:Z_right", "Match Pawn's spec INDEX, not native spec ID or first name")
+    assert(m:GetScorer()("item:700001") == 50)
+    assert(m:GetStatusText():find("Z_right", 1, true), "Effective source appears in status")
+    m:SetSelectedScale("apr")
+    assert(m:GetPreference() == "apr" and select(2, m:GetScorer()) == "apr")
+    m:SetSelectedScale("auto")
+    PawnCommon.Scales.Duplicate = { Values = { Intellect = 7 }, ClassID = 8, SpecID = 1 }
+    assert(select(2, m:GetScorer()) == "apr", "Ambiguous matching scales safely fall back")
+    m:SetSelectedScale("Z_right")
+    e.ready = false
+    assert(select(2, m:GetScorer()) == "pending", "Explicit unavailable Pawn never falls back")
+end
+
+do
+    local e = newEnvironment(nil, {
+        Balance = { Values = { Intellect = 5 }, ClassID = 11, SpecID = 1 },
+        Feral = { Values = { Intellect = 3 }, ClassID = 11, SpecID = 2 },
+    })
+    APR.GAME_VERSIONS = { Forever = 2 }
+    function APR:GetGameVersion() return 2 end
+    e.class, e.classID = "DRUID", 11
+    assert(select(2, e.module:GetScorer()) == "apr", "Forever class spec cannot imply a build")
+    assert(APR:SetRewardBuild("2"))
+    assert(e.module:GetSelectedScale() == "pawn:Feral")
+    local context = APR:GetRewardBuildContext()
+    assert(context.client == "forever" and context.classID == 11 and context.pawnSpec == 2)
+    assert(APR:GetCharacterSettings().rewardBuilds["forever:11"] == "2")
+    assert(not APR:SetRewardBuild("localized name"))
+    assert(APR:SetRewardBuild("1"))
+    assert(e.module:GetSelectedScale() == "pawn:Balance")
+end
+
+-- Persist modes per character and preserve the legacy explicit choice only once.
+do
+    local saved = {}
+    local e = newEnvironment(saved, { Scale = { Values = { Intellect = 6 }, ClassID = 8, SpecID = 1 } })
+    assert(e.module:SetSelectedScale("apr"))
+    e = newEnvironment(saved, { Scale = { Values = { Intellect = 6 }, ClassID = 8, SpecID = 1 } })
+    assert(e.module:GetPreference() == "apr" and select(2, e.module:GetScorer()) == "apr")
+    e.module:SetSelectedScale("auto")
+    local scorer = e.module:GetScorer()
+    assert(scorer("item:700001") == 60)
+    PawnCommon.Scales.Scale.SpecID = 2
+    assert(select(2, scorer("item:700001")) == false, "A stale automatic scorer cannot cross builds")
+    assert(select(2, e.module:GetScorer()) == "apr")
+    PawnCommon.Scales.Scale.SpecID = 1
+    PawnCommon.Scales.Scale.Role = "HEALER"
+    C_SpecializationInfo.GetSpecializationInfo = function() return 101, "Caster", nil, nil, "DAMAGER", 4 end
+    assert(select(2, e.module:GetScorer()) == "apr", "Contradictory role metadata is rejected")
+    PawnCommon.Scales.Scale.Role = nil
+    e.module:SetSelectedScale("Scale")
+    APR.GAME_VERSIONS = { Forever = 2 }
+    function APR:GetGameVersion() return 2 end
+    e.module:RefreshSettings()
+    assert(e.module:GetPreference() == "pawn:Scale", "A legacy explicit selection survives the new key")
+    APR:SetRewardBuild("2")
+    assert(e.module:GetPreference() == "auto", "Legacy choices are not copied into every future build")
+    assert(select(2, e.module:GetScorer()) == "apr")
+    APR:SetRewardBuild("auto")
+    assert(e.module:GetPreference() == "pawn:Scale")
+    local other = newEnvironment()
+    assert(other.module:GetPreference() == "auto", "Character preferences do not leak")
+    other.ready = false
+    assert(select(2, other.module:GetScorer()) == "apr", "Absent Pawn with no explicit choice permits APR")
+end
+
+-- Native Forever labels work without Pawn's UI helpers and never become saved keys.
+do
+    local e = newEnvironment()
+    APR.GAME_VERSIONS = { Forever = 2 }
+    function APR:GetGameVersion() return 2 end
+    C_SpecializationInfo.GetActiveSpecGroup = function() return 1 end
+    C_SpecializationInfo.GetCombatConfigIDForSpecGroup = function(group) assert(group == 1); return 901 end
+    C_Traits = {
+        GetConfigInfo = function(id) assert(id == 901); return { treeIDs = { 902 } } end,
+        GetGroupDisplayInfoByTreeID = function(id)
+            assert(id == 902)
+            return { {displayName = "First invented tree"}, {displayName = "Second invented tree"}, {displayName = "Third invented tree"} }
+        end,
+    }
+    local options = APR:GetRewardBuildOptions()
+    assert(options["1"] == "First invented tree" and options["2"] == "Second invented tree")
+    assert(APR:SetRewardBuild("2"))
+    assert(APR:GetCharacterSettings().rewardBuilds["forever:8"] == "2")
+    e.class, e.classID = "DRUID", 11
+    options = APR:GetRewardBuildOptions()
+    assert(options["2"]:find("Second invented tree", 1, true) and options["3"]:find("Second invented tree", 1, true))
+    assert(options["2"] ~= options["3"] and options["4"] == "Third invented tree", "Feral damage/tank share a native tree, restoration is the third tree")
+    C_Traits.GetConfigInfo = function() return nil end
+    assert(type(APR:GetRewardBuildOptions()["1"]) == "string", "Missing native config safely uses the fallback label")
+    C_Traits = nil
+end

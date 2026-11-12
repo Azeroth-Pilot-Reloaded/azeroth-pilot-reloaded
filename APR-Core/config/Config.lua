@@ -1778,7 +1778,7 @@ function APR.settings:createBlizzOptions()
                         --[[APR_DIAG]]
                         get = APRTrace(
                             "APR-Core/config/Config.lua:1260:callback#105", --[[/APR_DIAG]]
-                            function() return APR.PawnRewards:GetSelectedScale() end --[[APR_DIAG]]
+                            function() return APR.PawnRewards:GetPreference() end --[[APR_DIAG]]
                         ) --[[/APR_DIAG]],
                         --[[APR_DIAG]]
                         set = APRTrace(
@@ -1792,6 +1792,17 @@ function APR.settings:createBlizzOptions()
                                 return not self.profile.autoHandInChoice and not APR:GetBagUpgradeSuggestions()
                             end --[[APR_DIAG]]
                         ) --[[/APR_DIAG]],
+                    },
+                    rewardBuild = {
+                        order = 8.2115,
+                        type = "select",
+                        dialogControl = "APRSettingsSelect",
+                        name = SPECIALIZATION or TALENTS,
+                        width = "full",
+                        values = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:12:callback#1", --[[/APR_DIAG]]function() return APR:GetRewardBuildOptions() end--[[APR_DIAG]])--[[/APR_DIAG]],
+                        get = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:13:callback#2", --[[/APR_DIAG]]function() return APR:GetRewardBuild() end--[[APR_DIAG]])--[[/APR_DIAG]],
+                        set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:14:callback#3", --[[/APR_DIAG]]function(_, value) APR:SetRewardBuild(value) end--[[APR_DIAG]])--[[/APR_DIAG]],
+                        hidden = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:15:callback#4", --[[/APR_DIAG]]function() return APR:GetRewardBuildContext().client ~= "forever" end--[[APR_DIAG]])--[[/APR_DIAG]],
                     },
                     rewardWeightStatus = {
                         order = 8.212,

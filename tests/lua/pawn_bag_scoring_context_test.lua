@@ -161,7 +161,7 @@ for _, client in ipairs({ "retail", "forever" }) do
     pawn:RefreshSettings()
     flush()
     assert(not bags.prompt and bags.dismissed[upgrade], "Restored identical scoring retains the persisted refusal")
-    spec = 102
+    if client == "forever" then assert(APR:SetRewardBuild("1")) else spec = 102 end
     pawn:OnSpecializationChanged(nil, "player")
     flush()
     assert(bags.prompt and bags.prompt.gain == 8, "A new spec with no Pawn choice uses its APR context")

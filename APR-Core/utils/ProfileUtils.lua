@@ -117,3 +117,123 @@ function APR:ResetAllProfilesToDefault()
 end--[[APR_DIAG]]
 APR.ResetAllProfilesToDefault =
     APRTrace("APR-Core/utils/ProfileUtils.lua:62:APR:ResetAllProfilesToDefault#6", APR.ResetAllProfilesToDefault)--[[/APR_DIAG]]
+
+
+-- One client/class/build identity shared by optional Pawn and APR's own scorer.
+-- Pawn's SpecID is a class-relative index, including its Classic template builds.
+-- Primary attributes describe a build; they are not a stat-weight recommendation.
+local rewardBuilds = {
+    [1] = { {"Strength", "DAMAGER"}, {"Strength", "DAMAGER"}, {"Strength", "TANK"} },
+    [2] = { {"Intellect", "HEALER"}, {"Strength", "TANK"}, {"Strength", "DAMAGER"} },
+    [3] = { {"Agility", "DAMAGER"}, {"Agility", "DAMAGER"}, {"Agility", "DAMAGER"} },
+    [4] = { {"Agility", "DAMAGER"}, {"Agility", "DAMAGER"}, {"Agility", "DAMAGER"} },
+    [5] = { {"Intellect", "HEALER"}, {"Intellect", "HEALER"}, {"Intellect", "DAMAGER"} },
+    [7] = { {"Intellect", "DAMAGER"}, {"Agility", "DAMAGER"}, {"Intellect", "HEALER"} },
+    [8] = { {"Intellect", "DAMAGER"}, {"Intellect", "DAMAGER"}, {"Intellect", "DAMAGER"} },
+    [9] = { {"Intellect", "DAMAGER"}, {"Intellect", "DAMAGER"}, {"Intellect", "DAMAGER"} },
+    [11] = { {"Intellect", "DAMAGER"}, {"Agility", "DAMAGER"}, {"Agility", "TANK"}, {"Intellect", "HEALER"} },
+}
+
+local function rewardValue(value)
+    return not issecretvalue or not issecretvalue(value)
+end--[[APR_DIAG]]; rewardValue = APRTrace("APR-Core/utils/ProfileUtils.lua:20:rewardValue#1", rewardValue)--[[/APR_DIAG]]
+
+local function rewardNumber(value)
+    return rewardValue(value) and type(value) == "number" and value == value and value > 0 and value < math.huge
+end--[[APR_DIAG]]; rewardNumber = APRTrace("APR-Core/utils/ProfileUtils.lua:24:rewardNumber#2", rewardNumber)--[[/APR_DIAG]]
+
+function APR:GetRewardBuildContext()
+    local name, token, classID = UnitClass("player")
+    local classic = self.GetGameVersion and self.GAME_VERSIONS and self:GetGameVersion() == self.GAME_VERSIONS.Forever
+    if not rewardValue(name) or type(name) ~= "string" then name = nil end
+    if not rewardNumber(classID) then classID = nil end
+    if not rewardValue(token) or type(token) ~= "string" then token = "player" end
+    local context = { client = classic and "forever" or "retail", classID = classID, className = name }
+    local indexAPI = C_SpecializationInfo and C_SpecializationInfo.GetSpecialization or GetSpecialization
+    local infoAPI = C_SpecializationInfo and C_SpecializationInfo.GetSpecializationInfo or GetSpecializationInfo
+    if type(indexAPI) == "function" and type(infoAPI) == "function" then
+        local ok, index = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](indexAPI)
+        if ok and rewardNumber(index) then
+            local valid, id, label, _, _, role, primary = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](infoAPI, index)
+            if valid and rewardNumber(id) then
+                context.specID, context.pawnSpec = id, index
+                context.label = rewardValue(label) and type(label) == "string" and label or nil
+                context.role = rewardValue(role) and (role == "DAMAGER" or role == "TANK" or role == "HEALER") and role or nil
+                context.primary = ({[1] = "Strength", [2] = "Agility", [4] = "Intellect"})[rewardNumber(primary) and primary or 0]
+            end
+        end
+    end
+    context.legacyKey = context.specID and "spec:" .. context.specID or "class:" .. (token or "player")
+    context.key = context.legacyKey
+    if classic then
+        local char = self:GetCharacterSettings()
+        local selected = char and type(char.rewardBuilds) == "table" and char.rewardBuilds["forever:" .. tostring(classID)]
+        local builds = rewardBuilds[classID]
+        local build = builds and type(selected) == "string" and builds[tonumber(selected)]
+        context.pawnSpec = build and tonumber(selected) or nil
+        context.primary, context.role = build and build[1], build and build[2]
+        context.key = "forever:" .. tostring(classID) .. ":" .. (build and selected or "auto")
+    end
+    return context
+end--[[APR_DIAG]]; APR.GetRewardBuildContext = APRTrace("APR-Core/utils/ProfileUtils.lua:28:APR:GetRewardBuildContext#3", APR.GetRewardBuildContext)--[[/APR_DIAG]]
+
+-- Follow the native Forever talent frame's active-config and display-header path.
+local function rewardCall(api, ...)
+    if type(api) ~= "function" then return end
+    local ok, value = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](api, ...)
+    if ok and rewardValue(value) then return value end
+end--[[APR_DIAG]]; rewardCall = APRTrace("APR-Core/utils/ProfileUtils.lua:7:rewardCall#1", rewardCall)--[[/APR_DIAG]]
+
+local function nativeBuildLabels()
+    if not C_Traits or not C_SpecializationInfo then return end
+    local group = rewardCall(C_SpecializationInfo.GetActiveSpecGroup)
+    if not rewardNumber(group) then return end
+    local id = rewardCall(C_SpecializationInfo.GetCombatConfigIDForSpecGroup, group)
+    if not rewardNumber(id) then return end
+    local config = rewardCall(C_Traits.GetConfigInfo, id)
+    local trees = type(config) == "table" and config.treeIDs
+    local tree = rewardValue(trees) and type(trees) == "table" and trees[1]
+    if not rewardNumber(tree) then return end
+    local headers = rewardCall(C_Traits.GetGroupDisplayInfoByTreeID, tree)
+    if type(headers) ~= "table" then return end
+    local names = {}
+    for index, header in ipairs(headers) do
+        local name = rewardValue(header) and type(header) == "table" and header.displayName
+        if rewardValue(name) and type(name) == "string" and name ~= "" then names[index] = name end
+    end
+    return names
+end--[[APR_DIAG]]; nativeBuildLabels = APRTrace("APR-Core/utils/ProfileUtils.lua:13:nativeBuildLabels#2", nativeBuildLabels)--[[/APR_DIAG]]
+
+function APR:GetRewardBuildOptions()
+    local context = self:GetRewardBuildContext()
+    local options = { auto = AUTOMATIC or DEFAULT or "Default" }
+    local native = context.client == "forever" and nativeBuildLabels()
+    for index, build in ipairs(rewardBuilds[context.classID] or {}) do
+        local nativeIndex = context.classID == 11 and (index == 4 and 3 or index == 3 and 2 or index) or index
+        local label = native and native[nativeIndex]
+        if label and context.classID == 11 and (index == 2 or index == 3) then
+            label = label .. " (" .. (_G[build[2]] or build[2]) .. ")"
+        end
+        if not label and type(PawnGetSpecializationInfoForClassID) == "function" then
+            local ok, _, name = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](PawnGetSpecializationInfoForClassID, context.classID, index)
+            if ok and rewardValue(name) and type(name) == "string" then label = name end
+        end
+        options[tostring(index)] = label or ((_G["ITEM_MOD_" .. build[1]:upper() .. "_SHORT"] or build[1]) .. " / " .. (_G[build[2]] or build[2]) .. " " .. index)
+    end
+    return options
+end--[[APR_DIAG]]; APR.GetRewardBuildOptions = APRTrace("APR-Core/utils/ProfileUtils.lua:62:APR:GetRewardBuildOptions#4", APR.GetRewardBuildOptions)--[[/APR_DIAG]]
+
+function APR:GetRewardBuild()
+    local context = self:GetRewardBuildContext()
+    return context.client == "forever" and context.pawnSpec and tostring(context.pawnSpec) or "auto"
+end--[[APR_DIAG]]; APR.GetRewardBuild = APRTrace("APR-Core/utils/ProfileUtils.lua:76:APR:GetRewardBuild#5", APR.GetRewardBuild)--[[/APR_DIAG]]
+
+function APR:SetRewardBuild(value)
+    local context = self:GetRewardBuildContext()
+    local char = self:GetCharacterSettings()
+    if not char or context.client ~= "forever" or not self:GetRewardBuildOptions()[value] then return false end
+    if type(char.rewardBuilds) ~= "table" then char.rewardBuilds = {} end
+    char.rewardBuilds["forever:" .. tostring(context.classID)] = value
+    if self.PawnRewards then self.PawnRewards:RefreshSettings() end
+    return true
+end--[[APR_DIAG]]; APR.SetRewardBuild = APRTrace("APR-Core/utils/ProfileUtils.lua:81:APR:SetRewardBuild#6", APR.SetRewardBuild)--[[/APR_DIAG]]
