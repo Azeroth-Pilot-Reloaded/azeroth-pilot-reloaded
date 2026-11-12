@@ -37,6 +37,7 @@ function APR:GetNavigationPlayerPosition() return player end
 function APR:GetCurrentStep() return authored, 1, {authored} end
 function APR:GetCurrentRouteMapIDsAndName() return {1}, 1 end
 function APR:GetStepCoord(step) return step.Coord, step.Zone end
+function APR:GetStepZoneForPlayer(step, fallback) return step.Zone or fallback end
 function APR:CheckNavigationZoneReady() return false end
 function APR:PrintInfo(message) messages[#messages + 1] = message end
 dofile("APR-Core/features/questing/StepTransitions.lua")
@@ -332,3 +333,114 @@ local testQueue = {
 }
 assert(not APR.NavigationData:GetServiceStepCursor(testQueue, 1, 1, player),
     "Manual navigation rechecks departure restrictions")
+
+-- Coordinate-free learning remains part of its guide on both supported clients.
+services:Cancel(); drain()
+edges = {}
+function APR.NavigationData:NormalizeLocation(p)
+    if p.space == "map" then return point(p.x * 1000, p.uiMapID) end
+    return p
+end
+local function trainer(id, x, spells, category, klass)
+    return {service = category or "trainer", npcID = id, mapID = 1, x = x, y = 0,
+        faction = "A", spellIDs = spells, class = klass}
+end
+local function learning(step)
+    nav:Cancel("step_changed")
+    authored = step
+    APR.ActiveRoute, APRData.p.guide = "guide", 1
+    APR.RouteQuestStepList.guide = {steps = {step}}
+    APR.stepRevision = APR.stepRevision + 1
+    player.x, player.y, player.z, player.uiMapID = 0, 0, 0, 1
+end
+function APR:AreConditionalFiltersMet() return true end
+for _, profile in ipairs({"forever", "retail"}) do
+    APR.NavigationData.profile = profile
+    -- These spell IDs test the public skill/spell contract, not shipped routes.
+    learning({LearnProfession = 2259})
+    local initial = trainer(71, 4)
+    initial.skill = 171
+    APR.NavigationData.serviceLocations = {trainer(70, 1), initial}
+    nav:GetDestination(authored); drain()
+    assert(services.training.record.npcID == 71,
+        "Initial profession learning reuses the existing skill catalog without spell metadata")
+    learning({LearnSkill = {spellID = 900099}})
+    APR.NavigationData.serviceLocations = {trainer(72, 4, nil, "class", "MAGE")}
+    nav:GetDestination(authored); drain()
+    assert(services.training.record.npcID == 72, "Ordinary class training works without capability metadata")
+    learning({LearnProfession = 900101}) -- No Zone is necessary.
+    APR.NavigationData.serviceLocations = {
+        trainer(1, 1, {900100}), -- Earlier rank is insufficient.
+        trainer(2, 5, {900101}),
+        trainer(3, 2, {900101}, "class", "MAGE"), -- Wrong profession category.
+    }
+    local _, _, reason = nav:GetDestination(authored)
+    assert(reason == "pending_data")
+    drain()
+    local target = nav:GetDestination(authored)
+    assert(target.x == 50 and services.training.record.npcID == 2)
+    assert(not services.active, "Learning must not replace the guide with a manual detour")
+    nav:ForceRefresh(); nav:Update(); drain()
+    assert(nav:IsNavigating() and nav.queue[#nav.queue].arrivalRange == 5)
+    player.x = 44
+    nav:PollArrival()
+    assert(nav:IsNavigating(), "Six yards cannot finish the trainer approach")
+    player.x = 50
+    nav:PollArrival(); drain()
+    assert(nav.state == "ready" and APRData.p.guide == 1 and authored.LearnProfession == 900101,
+        "Arrival leaves learning completion to native spell evidence")
+
+    learning({LearnSkill = {spellIDs = {900201, 900202}, npcID = 12}})
+    APR.NavigationData.serviceLocations = {
+        trainer(11, 1, {900201, 900202}, "class", "MAGE"),
+        trainer(12, 2, {900201}, "class", "MAGE"),
+        trainer(12, 4, {900201, 900202}, "class", "PRIEST"),
+        trainer(12, 6, {900201, 900202}, "class", "MAGE"),
+    }
+    nav:GetDestination(authored); drain()
+    assert(services.training.target.x == 60, "NPC, own class and every exact spell must match")
+
+    learning({LearnSkill = {allAvailable = true}})
+    APR.NavigationData.serviceLocations = {trainer(21, 1, nil, "class", "PRIEST"),
+        trainer(22, 3, nil, "class", "MAGE")}
+    nav:GetDestination(authored); drain()
+    assert(services.training.record.npcID == 22, "All-available training uses the character's class")
+
+    learning({LearnProfession = 900301})
+    APR.NavigationData.serviceLocations = {trainer(31, 1)}
+    nav:GetDestination(authored); drain()
+    assert(services.training.status == "waiting_data" and not services.training.target,
+        "Unknown trainer capabilities cannot prove a requested profession or rank")
+    APR.NavigationData.serviceLocations[1].spellIDs = {900301}
+    nav:GetDestination(authored); drain()
+    assert(services.training.target, "Late capability data can recover")
+
+    learning({LearnProfession = 900401})
+    APR.NavigationData.serviceLocations = {trainer(41, 1, {900402})}
+    nav:GetDestination(authored); drain()
+    assert(services.training.status == "no_path")
+    local _, _, absent = nav:GetDestination(authored)
+    assert(absent == "service_not_found" and not services.request)
+
+    learning({LearnProfession = 900501})
+    APR.NavigationData.serviceLocations = {trainer(51, 1, {900501})}
+    nav:GetDestination(authored)
+    local retired = services.request.timer.callback
+    nav:Cancel("step_changed")
+    retired()
+    assert(not services.training and not services.request, "Step changes cancel suspended searches")
+    nav:GetDestination(authored)
+    retired = services.request.timer.callback
+    APR.ActiveRoute = "other"
+    retired()
+    assert(not services.training and not services.request, "Route changes reject stale callbacks")
+
+    learning({LearnProfession = 900601, Coord = {x = 0, y = 70, mapID = 1, instanceID = 0}})
+    local explicit = nav:GetDestination(authored)
+    assert(explicit.x == 70 and not services.training and not services.request,
+        "Authored coordinates have priority over service discovery")
+    learning({LearnSkill = {allAvailable = true}, Coords = {}})
+    nav:GetDestination(authored)
+    assert(not services.training, "Even unresolved explicit Coords must not select another trainer")
+end
+print("Trainer objectives: Retail/Forever, exact spells/ranks/NPC/class, missing data, arrival and cancellation passed")

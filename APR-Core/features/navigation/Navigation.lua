@@ -250,6 +250,10 @@ function nav:ClearNavigationUiLines()
     self._renderedState, self._renderedStep = nil, nil
 end--[[APR_DIAG]]; nav.ClearNavigationUiLines = APRTrace("APR-Core/features/navigation/Navigation.lua:207:nav:ClearNavigationUiLines#25", nav.ClearNavigationUiLines)--[[/APR_DIAG]]
 function nav:Cancel(reason, keepArrow)
+    if APR.Services and APR.Services.CancelTraining and (reason == "step_changed" or reason == "disabled"
+        or reason == "inactive" or reason == "no_step" or reason == "cleared" or reason == "dead") then
+        APR.Services:CancelTraining()
+    end
     local active = self:GetActiveStep()
     self.lastCancellation = {
         reason = reason,
@@ -397,6 +401,11 @@ function nav:BeginTransitionProbe(step)
     end
 end--[[APR_DIAG]]; nav.BeginTransitionProbe = APRTrace("APR-Core/features/navigation/Navigation.lua:389:nav:BeginTransitionProbe#34", nav.BeginTransitionProbe)--[[/APR_DIAG]]
 function nav:InvalidatePathCache(reason)
+    if APR.Services and APR.Services.CancelTraining and (reason == "SKILL_LINES_CHANGED"
+        or reason == "SPELLS_CHANGED" or reason == "PLAYER_LEVEL_UP" or reason == "UPDATE_FACTION"
+        or reason == "QUEST_LOG_UPDATE" or reason == "QUEST_TURNED_IN" or reason == "QUEST_REMOVED") then
+        APR.Services:CancelTraining()
+    end
     self.dirty, self._mountCapability = true, nil
     self.lastInvalidation = reason or "refresh"
     -- Quest/bag/cooldown events interleave with loading. They cannot erase an
@@ -550,6 +559,11 @@ function nav:GetMovementSpeed(threshold)
 end--[[APR_DIAG]]; nav.GetMovementSpeed = APRTrace("APR-Core/features/navigation/Navigation.lua:522:nav:GetMovementSpeed#46", nav.GetMovementSpeed)--[[/APR_DIAG]]
 function nav:GetDestination(step)
     if step._service then return step.target, step.target.uiMapID end
+    if (step.Coord or step.Coords) and APR.Services and APR.Services.training then APR.Services:CancelTraining() end
+    if not step.Coord and not step.Coords and (step.LearnProfession or step.LearnSkill)
+        and APR.Services and APR.Services.GetTrainingDestination then
+        return APR.Services:GetTrainingDestination(step)
+    end
     local _, fallback = APR:GetCurrentRouteMapIDsAndName()
     local coord, map = APR:GetStepCoord(step, fallback)
     if coord then
@@ -1339,6 +1353,11 @@ function nav:Publish(result, context, generation)
         queue[#queue].arrivalRange, queue[#queue].arrivalZTolerance = 5, service.target.z and 5 or nil
         queue[#queue].label = APR.Services:GetLabel()
     end
+    local training = APR.Services and APR.Services.training
+    if training and training.target and APR.Services:IsTrainingCurrent(training) then
+        local final = queue[#queue]
+        if final then final.arrivalRange, final.arrivalZTolerance = 5, training.target.z and 5 or nil end
+    end
     if #queue <= 1 and (not queue[1] or queue[1].kind == "walk") and self.zoneReady then
         self:MarkRouteReady()
         return
@@ -1473,7 +1492,10 @@ function nav:Update(context)
     end
     if self:GuideHousingExit(context, step, start, goal) then return end
     local threshold = self:GetThreshold()
-    self.zoneReady = not step._service and APR:CheckNavigationZoneReady(goal, { step = step, playerPosition = start, threshold = threshold })
+    local training = not step.Coord and not step.Coords and (step.LearnProfession or step.LearnSkill)
+        and APR.Services and APR.Services.training
+    self.zoneReady = training and APR.NavigationData:IsServiceArrival(start, goal)
+        or (not training and not step._service and APR:CheckNavigationZoneReady(goal, { step = step, playerPosition = start, threshold = threshold }))
     -- A nearby objective is still a candidate for portals, toys and spells.
     -- The search compares complete travel times; zone readiness only controls
     -- whether the authored objective can remain visible while that work runs.
@@ -1560,8 +1582,8 @@ function nav:Update(context)
         -- Ordinary travel compares elapsed time across every available action.
         -- Access-only routing intentionally prefers a physical entrance and
         -- must be reserved for the steps that explain or unlock that entrance.
-        allowTaxiProbes = step._service ~= true,
-        serviceTravel = step._service == true,
+        allowTaxiProbes = step._service ~= true and not training,
+        serviceTravel = step._service == true or training ~= nil and training ~= false,
         preferZoneAccess = step._navigationUnlock == true,
         localObjective = step._navigationUnlock == true,
         adapter = APR.NavigationAdapter,

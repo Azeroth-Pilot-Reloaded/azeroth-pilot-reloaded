@@ -16,6 +16,16 @@ for profile, records in pairs(LibStub("LibAPRNavigation-1.0").serviceLocations) 
         if record.npcID then assert(type(record.npcID) == "number" and record.npcID > 0) end
         if record.objectID then assert(type(record.objectID) == "number" and record.objectID > 0) end
         if record.z then assert(type(record.z) == "number") end
+        if record.spellIDs then
+            assert(type(record.spellIDs) == "table")
+            local spells = {}
+            for index, spellID in pairs(record.spellIDs) do
+                assert(type(index) == "number" and index >= 1 and index <= #record.spellIDs and index % 1 == 0)
+                assert(type(spellID) == "number" and spellID > 0 and spellID % 1 == 0)
+                assert(not spells[spellID], "Duplicate trainer capability")
+                spells[spellID] = true
+            end
+        end
         if record.skill then assert(type(record.skillName) == "string" and record.skillName ~= "") end
         if record.service == "class" then assert(type(record.class) == "string") end
         if record.service == "trainer" and profile == "retail" then

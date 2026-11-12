@@ -116,6 +116,7 @@ function Services:CancelSearch()
 end--[[APR_DIAG]]; Services.CancelSearch = APRTrace("APR-Core/features/navigation/Services.lua:110:Services:CancelSearch#22", Services.CancelSearch)--[[/APR_DIAG]]
 
 function Services:Validate()
+    if self.training and not self:IsTrainingCurrent(self.training) then self:CancelTraining() end
     if self.active and (not self:GetStep() or (UnitIsDeadOrGhost and UnitIsDeadOrGhost("player"))) then self:Cancel() end
     if self.active and APR.navigation.state == "ready" then APR.navigation:RequestUpdate() end
 end--[[APR_DIAG]]; Services.Validate = APRTrace("APR-Core/features/navigation/Services.lua:118:Services:Validate#23", Services.Validate)--[[/APR_DIAG]]
@@ -128,7 +129,7 @@ function Services:GetProgress()
         return index, count, label or self:GetLabel()
     end
     return 0, 0, self:GetLabel()
-end--[[APR_DIAG]]; Services.GetProgress = APRTrace("APR-Core/features/navigation/Services.lua:123:Services:GetProgress#24", Services.GetProgress)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Services.GetProgress = APRTrace("APR-Core/features/navigation/Services.lua:124:Services:GetProgress#24", Services.GetProgress)--[[/APR_DIAG]]
 
 function Services:GetStepCursor(direction)
     local nav, data = APR.navigation, APR.NavigationData
@@ -140,7 +141,7 @@ function Services:GetStepCursor(direction)
     if data and data.GetServiceStepCursor then
         return data:GetServiceStepCursor(nav.queue, nav.cursor, direction, Position())
     end
-end--[[APR_DIAG]]; Services.GetStepCursor = APRTrace("APR-Core/features/navigation/Services.lua:133:Services:GetStepCursor#25", Services.GetStepCursor)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Services.GetStepCursor = APRTrace("APR-Core/features/navigation/Services.lua:134:Services:GetStepCursor#25", Services.GetStepCursor)--[[/APR_DIAG]]
 
 function Services:MoveStep(direction)
     local cursor = self:GetStepCursor(direction)
@@ -155,7 +156,7 @@ function Services:MoveStep(direction)
     nav.recomputeKeepingPath, nav.recomputeKeepingDirect = nil, nil
     nav:Notify()
     return true
-end--[[APR_DIAG]]; Services.MoveStep = APRTrace("APR-Core/features/navigation/Services.lua:145:Services:MoveStep#26", Services.MoveStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Services.MoveStep = APRTrace("APR-Core/features/navigation/Services.lua:146:Services:MoveStep#26", Services.MoveStep)--[[/APR_DIAG]]
 
 function Services:Cancel()
     self:CancelSearch()
@@ -169,7 +170,7 @@ function Services:Cancel()
     nav:Notify()
     if APR.ActiveRoute and APR.UpdateStep then APR:UpdateStep() end
     nav:RequestUpdate()
-end--[[APR_DIAG]]; Services.Cancel = APRTrace("APR-Core/features/navigation/Services.lua:160:Services:Cancel#27", Services.Cancel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Services.Cancel = APRTrace("APR-Core/features/navigation/Services.lua:161:Services:Cancel#27", Services.Cancel)--[[/APR_DIAG]]
 
 function Services:Start(record, target)
     local nav = APR.navigation
@@ -186,7 +187,7 @@ function Services:Start(record, target)
     nav:ForceRefresh("service_started")
     if APR.UpdateStep then APR:UpdateStep() end
     nav:Update(context)
-end--[[APR_DIAG]]; Services.Start = APRTrace("APR-Core/features/navigation/Services.lua:174:Services:Start#28", Services.Start)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Services.Start = APRTrace("APR-Core/features/navigation/Services.lua:175:Services:Start#28", Services.Start)--[[/APR_DIAG]]
 
 function Services:GetLabel()
     local record = self.active and self.active.record
@@ -194,60 +195,121 @@ function Services:GetLabel()
     local map = C_Map and C_Map.GetMapInfo and record.mapID and C_Map.GetMapInfo(record.mapID)
     return Text("FIND_NEAREST") .. ": " .. (record.name and record.name ~= "" and record.name or _G.MINIMAP_TRACKING_MAILBOX or Text("FIND_NEAREST"))
         .. (map and (" — " .. map.name) or "")
-end--[[APR_DIAG]]; Services.GetLabel = APRTrace("APR-Core/features/navigation/Services.lua:191:Services:GetLabel#29", Services.GetLabel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Services.GetLabel = APRTrace("APR-Core/features/navigation/Services.lua:192:Services:GetLabel#29", Services.GetLabel)--[[/APR_DIAG]]
 
-function Services:Find(query)
+-- Training is an objective of the current guide, not a service detour. Keep its
+-- result separate so arriving never dismisses the learning instruction.
+function Services:IsTrainingCurrent(owner)
+    return APR.settings and APR.settings.profile and APR.settings.profile.enableAddon
+        and APR:IsStepContextCurrent(owner.context) and APR:GetCurrentStep() == owner.step
+        and not owner.step.Coord and not owner.step.Coords
+        and (not APR.AreConditionalFiltersMet or APR:AreConditionalFiltersMet(owner.step))
+end--[[APR_DIAG]]; Services.IsTrainingCurrent = APRTrace("APR-Core/features/navigation/Services.lua:202:Services:IsTrainingCurrent#30", Services.IsTrainingCurrent)--[[/APR_DIAG]]
+
+function Services:CancelTraining()
+    if self.request and self.request.training then self:CancelSearch() end
+    self.training = nil
+end--[[APR_DIAG]]; Services.CancelTraining = APRTrace("APR-Core/features/navigation/Services.lua:209:Services:CancelTraining#31", Services.CancelTraining)--[[/APR_DIAG]]
+
+function Services:GetTrainingDestination(step)
+    if step.Coord or step.Coords or not (step.LearnProfession or step.LearnSkill) then
+        self:CancelTraining()
+        return
+    end
+    local rule = type(step.LearnSkill) == "table" and step.LearnSkill or {}
+    local spells = step.LearnProfession and {step.LearnProfession}
+        or (rule.spellID and {rule.spellID}) or rule.spellIDs
+    local data = APR.NavigationData
+    if not data or not data.GetTrainingServiceQuery then return nil, nil, "pending_data" end
+    local query = data:GetTrainingServiceQuery(spells and #spells == 1 and spells[1] or nil, step.LearnProfession ~= nil)
+    query.npcID = rule.npcID
+    if spells and #spells > 1 then query.spellIDs = spells end
+    local signature = tostring(query.service) .. ":" .. tostring(query.skill) .. ":" .. tostring(query.npcID)
+    for _, id in ipairs(spells or {}) do signature = signature .. ":" .. tostring(id) end
+    local owner = self.training
+    if owner and (not self:IsTrainingCurrent(owner) or owner.signature ~= signature
+        or owner.geometry ~= APR.navigationGeometryRevision or owner.profile ~= Profile()
+        or (owner.record and data:ServiceMatches(owner.record, query, Character()) ~= true)) then
+        self:CancelTraining(); owner = nil
+    end
+    if not owner then
+        owner = {step = step, context = APR:CaptureStepContext(), signature = signature, query = query,
+            geometry = APR.navigationGeometryRevision, profile = Profile(), status = "waiting_data"}
+        self.training = owner
+    end
+    if not self:IsTrainingCurrent(owner) then return nil, nil, "pending_data" end
+    if owner.target then return owner.target, owner.target.uiMapID end
+    if not self.request and owner.status ~= "no_path" then self:Find(query, owner) end
+    return nil, nil, owner.status == "no_path" and "service_not_found" or "pending_data"
+end--[[APR_DIAG]]; Services.GetTrainingDestination = APRTrace("APR-Core/features/navigation/Services.lua:214:Services:GetTrainingDestination#32", Services.GetTrainingDestination)--[[/APR_DIAG]]
+
+function Services:Find(query, training)
     self:CancelSearch()
     if not APR.settings or not APR.settings.profile.enableAddon then return false end
     local data, start, profile = APR.NavigationData, Position(), Profile()
     if not data or not start or (profile ~= "forever" and profile ~= "retail") then
-        Message("SERVICE_WAITING_DATA"); return false
+        if not training then Message("SERVICE_WAITING_DATA") end
+        return false
     end
     local character, nav = Character(), APR.navigation
     local request = {query = query, start = start, route = APR.ActiveRoute, player = APR.PlayerID,
-        generation = self.generation, character = character, money = GetMoney and GetMoney() or 0,
+        generation = self.generation, character = character, training = training, money = GetMoney and GetMoney() or 0,
         geometry = APR.navigationGeometryRevision, profile = profile,
         taxiSnapshot = APR.taxiData and APR.taxiData.GetSnapshotKey and APR.taxiData:GetSnapshotKey()}
     local speed = nav:GetMovementSpeed(nav:GetThreshold())
     local ground = math.min(nav:GetMovementSpeed(2000), 14)
     local function speedAt(point)
         return data.GetWalkingSpeed and data:GetWalkingSpeed(point, speed, ground) or speed
-    end--[[APR_DIAG]]; speedAt = APRTrace("APR-Core/features/navigation/Services.lua:213:speedAt#31", speedAt)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; speedAt = APRTrace("APR-Core/features/navigation/Services.lua:261:speedAt#34", speedAt)--[[/APR_DIAG]]
     request.job = data:CreateServiceSearch({query = query, character = character, start = start,
         adapter = APR.NavigationAdapter, flightProvider = APR.taxiData, taxiData = APR.taxiData,
         clock = debugprofilestop, budget = request.money, walkSpeed = speed, walkSpeedAt = speedAt,
-        walkSpeedFor = --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Services.lua:219:callback#32", --[[/APR_DIAG]]function(a, b) return math.min(speedAt(a), speedAt(b)) end--[[APR_DIAG]])--[[/APR_DIAG]]})
+        walkSpeedFor = --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Services.lua:267:callback#35", --[[/APR_DIAG]]function(a, b) return math.min(speedAt(a), speedAt(b)) end--[[APR_DIAG]])--[[/APR_DIAG]]})
     if request.job.status == "unavailable" then Message("SERVICE_TAXI_UNAVAILABLE"); return false end
     self.request = request
     local function advance()
         if self.request ~= request or request.generation ~= self.generation then return end
+        if training and (self.training ~= training or not self:IsTrainingCurrent(training)) then
+            self:CancelTraining(); return
+        end
         if request.route ~= APR.ActiveRoute or request.player ~= APR.PlayerID or not APR.settings.profile.enableAddon
             or (UnitIsDeadOrGhost and UnitIsDeadOrGhost("player")) then
             self:CancelSearch(); return
         end
         local current, observed = Position(), Character()
-        if not current then self:CancelSearch(); Message("SERVICE_WAITING_DATA"); return end
+        if not current then
+            self:CancelSearch()
+            if not training then Message("SERVICE_WAITING_DATA") end
+            return
+        end
         if current.instanceID ~= start.instanceID or current.uiMapID ~= start.uiMapID
             or (current.x - start.x)^2 + (current.y - start.y)^2 > 10000
             or observed.faction ~= character.faction or observed.class ~= character.class or observed.level ~= character.level
             or request.money ~= (GetMoney and GetMoney() or 0) or request.geometry ~= APR.navigationGeometryRevision
             or request.profile ~= Profile()
             or request.taxiSnapshot ~= (APR.taxiData and APR.taxiData.GetSnapshotKey and APR.taxiData:GetSnapshotKey()) then
-            self:Find(query); return
+            self:Find(query, training); return
         end
-        if request.invalidated then self:Find(query); return end
+        if request.invalidated then self:Find(query, training); return end
         local status, result = request.job:Step(debugprofilestop and 4096 or 64, 1)
         if self.request ~= request then return end
-        if request.invalidated then self:Find(query); return end
+        if request.invalidated then self:Find(query, training); return end
         if status == "planning" then request.timer = C_Timer.NewTimer(0.01, advance)
-        elseif status == "cancelled" then self:Find(query)
+        elseif status == "cancelled" then self:Find(query, training)
         else
             self.request = nil
-            if status == "ready" then self:Start(result.record, result.target)
+            if training then
+                training.status = status
+                if status == "ready" then
+                    training.target, training.record = result.target, result.record
+                    nav:ForceRefresh("training_destination")
+                    nav:RequestUpdate()
+                end
+            elseif status == "ready" then self:Start(result.record, result.target)
             else Message(status == "waiting_data" and "SERVICE_WAITING_DATA" or "SERVICE_NOT_FOUND") end
         end
-    end--[[APR_DIAG]]; advance = APRTrace("APR-Core/features/navigation/Services.lua:222:advance#33", advance)--[[/APR_DIAG]]
-    Message("SERVICE_SEARCHING")
+    end--[[APR_DIAG]]; advance = APRTrace("APR-Core/features/navigation/Services.lua:270:advance#36", advance)--[[/APR_DIAG]]
+    if not training then Message("SERVICE_SEARCHING") end
     request.timer = C_Timer.NewTimer(0, advance)
     return true
-end--[[APR_DIAG]]; Services.Find = APRTrace("APR-Core/features/navigation/Services.lua:199:Services:Find#30", Services.Find)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Services.Find = APRTrace("APR-Core/features/navigation/Services.lua:246:Services:Find#33", Services.Find)--[[/APR_DIAG]]

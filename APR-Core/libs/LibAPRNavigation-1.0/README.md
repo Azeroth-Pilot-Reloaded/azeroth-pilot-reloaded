@@ -87,6 +87,19 @@ job:Cancel()
 
 Services are `flight`, `class`, `trainer`, `weapon`, `vendor`, `repair`, `inn`,
 `bank`, `mailbox`, `auction`, and `stable`. Client-specific choices come from
+`GetServiceChoices(query)`; class trainers use the supplied character's class.
+
+`GetTrainingServiceQuery(spellID, professionOnly)` maps initial profession and
+weapon spells through the same definitions used by service choices. Ordinary
+class training selects the character's class. Unknown profession spells (higher
+ranks or recipes) require exact capability evidence rather than another profession
+trainer. Search queries support `npcID`, `spellIDs` (all requested spells), and
+`requireSpellEvidence`; optional location `spellIDs` lists declare taught spells.
+Absent evidence yields `waiting_data` when required; an explicitly incompatible
+list is rejected. Initial profession queries use `trainer` plus `skill` and need
+no extra capability fields. Hosts retain learning instructions until native skill
+or spell evidence confirms completion, independently of physical arrival.
+
 `GetServiceProgress(queue, cursor)` returns the current index, itinerary length
 and current instruction label (zero/zero for an unpublished itinerary).
 `GetServiceStepCursor(queue, cursor, direction, position)` validates a manual
@@ -97,7 +110,6 @@ the host, never arrival or guide completion. The host owns the transient cursor,
 invalidates pending searches on manual movement, and suspends controls during
 combat, loading, flight or a committed travel action.
 
-`GetServiceChoices(query)`; class trainers use the supplied character's class.
 Locations are shared immutable facts, separated by client, with readable NPC,
 map, skill and expansion names beside their technical IDs. They carry no
 provenance metadata. Consumer instances and searches never share character state.
