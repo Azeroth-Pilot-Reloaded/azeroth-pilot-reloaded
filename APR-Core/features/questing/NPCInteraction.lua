@@ -247,9 +247,12 @@ function APR.npcInteraction:SelectQuestReward(profile)
         local priority = profile["rewardPriority" .. priorityIndex]
         if priority == "ilvl" then
             if scoringState == "pending" then return nil, false end
+            -- No APR build is a known absence, not item data that a retry can load.
+            -- Resolve it here so later configured priorities remain available.
+            scale = scale or APR.RewardScoring:GetDefaultScale()
             local best, gain = nil, 0
             for _, reward in ipairs(rewards) do
-                if reward.equipLoc and reward.equipLoc ~= "" and reward.usable ~= false then
+                if scale and reward.equipLoc and reward.equipLoc ~= "" and reward.usable ~= false then
                     local value, ready = APR.RewardScoring:GetUpgrade(reward.link, scale)
                     if not ready or (value ~= nil and reward.usable == nil) then return nil, false end
                     if value and value > gain then
