@@ -71,6 +71,11 @@ bounded item-data retries. `settings_select_test.lua` exercises the real APR
 select through its AceGUI adapter, including value keys, ordering and pooled release.
 None loads or freezes a shipped guide or Pawn's weights.
 
+`pawn_bag_scoring_context_test.lua` connects real Pawn, bag suggestions and equipment
+scoring on synthetic Retail/Forever characters. Refused items survive unchanged
+refreshes, options notifications and unused-scale edits; selected weights, confirmed
+edits, active profiles, scoring availability and specializations refresh suggestions.
+
 - `scripts/test_*.py`: TOC updates, localization notifications, package validation
   and PR report behavior against a mocked GitHub API. The latter uses Node.js.
 - `lua/*_test.lua`: automatically discovered addon regression suites, each in its
