@@ -2135,43 +2135,13 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 231,
         },
         {
-            LeaveQuest = 881,
-            Fillers = { [869] = { 1 } },
-            Coord = { x = -2669.72, y = -481.94 },
-            AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
-            IsQuestOnQuest = 881,
-            ItemCount = { operator = "<", count = 1, itemID = 5100 },
-            Zone = 1413,
-            _index = 232,
-        },
-        {
-            PickUp = { 881 },
-            Fillers = { [869] = { 1 } },
-            Coord = { x = -2670.74, y = -482.61 },
-            AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
-            ItemCount = { operator = "<", count = 1, itemID = 5100 },
-            Zone = 1413,
-            _index = 233,
-        },
-        {
-            Qpart = { [881] = { 1 } },
-            Fillers = { [869] = { 1 } },
-            Note = { "USE_HORN_ECHEYAKEE_SUMMON_ECHEYAKEE" },
-            Coord = { x = -3031.48, y = 461.91 },
-            Range = 10,
-            Button = { ["881-1"] = 10327 },
-            AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
-            Zone = 1413,
-            _index = 234,
-        },
-        {
             Done = { 894 },
             Fillers = { [869] = { 1 } },
             Note = { "CLICK_CONTROL_CONSOLE" },
             Coord = { x = -2686.95, y = 825.4 },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
-            _index = 235,
+            _index = 232,
         },
         {
             PickUp = { 900 },
@@ -2180,7 +2150,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             Coord = { x = -2686.95, y = 825.4 },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
-            _index = 236,
+            _index = 233,
         },
         {
             Qpart = { [900] = { 1 } },
@@ -2189,7 +2159,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             Coord = { x = -2686.95, y = 842.29 },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
-            _index = 237,
+            _index = 234,
         },
         {
             Qpart = { [900] = { 3 } },
@@ -2198,7 +2168,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             Coord = { x = -2675.8, y = 842.29 },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
-            _index = 238,
+            _index = 235,
         },
         {
             Qpart = { [900] = { 2 } },
@@ -2207,7 +2177,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             Coord = { x = -2679.86, y = 830.8 },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
-            _index = 239,
+            _index = 236,
         },
         {
             Done = { 900 },
@@ -2216,7 +2186,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             Coord = { x = -2686.95, y = 825.4 },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
-            _index = 240,
+            _index = 237,
         },
         {
             PickUp = { 901 },
@@ -2225,7 +2195,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             Coord = { x = -2686.95, y = 825.4 },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
-            _index = 241,
+            _index = 238,
         },
         {
             Qpart = { [901] = { 1 } },
@@ -2234,7 +2204,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             Range = 10,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
-            _index = 242,
+            _index = 239,
         },
         {
             Done = { 901 },
@@ -2243,7 +2213,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             Coord = { x = -2686.95, y = 825.4 },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
-            _index = 243,
+            _index = 240,
         },
         {
             PickUp = { 902 },
@@ -2252,7 +2222,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             Coord = { x = -2686.95, y = 825.4 },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
-            _index = 244,
+            _index = 241,
         },
         {
             Qpart = { [869] = { 1 } },
@@ -2260,7 +2230,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             Range = 30,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
-            _index = 245,
+            _index = 242,
         },
         {
             Grind = 16,
@@ -2268,7 +2238,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             Coord = { x = -3102.42, y = 1105.78 },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
-            _index = 246,
+            _index = 243,
         },
         {
             PickUp = { 858 },
@@ -2276,12 +2246,12 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             Coord = { x = -3104.44, y = 1109.16 },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
-            _index = 247,
+            _index = 244,
         },
         {
             Note = { "CAREFUL_FOREMAN_GRILLS_SLUDGE_BEAST_UP_STRONG" },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
-            _index = 248,
+            _index = 245,
         },
         {
             Qpart = { [858] = { 1 } },
@@ -2291,7 +2261,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             IsQuestOnQuest = 858,
             Zone = 1413,
-            _index = 249,
+            _index = 246,
         },
         {
             Done = { 858 },
@@ -2302,7 +2272,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             IsQuestReadyForTurnIn = 858,
             IsQuestUncompleted = 858,
             Zone = 1413,
-            _index = 250,
+            _index = 247,
         },
         {
             PickUp = { 863 },
@@ -2314,7 +2284,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             IsQuestReadyForTurnIn = 858,
             IsQuestUncompleted = 858,
             Zone = 1413,
-            _index = 251,
+            _index = 248,
         },
         {
             PickUp = { 863 },
@@ -2324,7 +2294,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             IsQuestCompleted = 858,
             Zone = 1413,
-            _index = 252,
+            _index = 249,
         },
         {
             Qpart = { [863] = { 1 } },
@@ -2334,7 +2304,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             IsQuestOnQuest = 863,
             Zone = 1413,
-            _index = 253,
+            _index = 250,
         },
         {
             Qpart = { [896] = { 1 } },
@@ -2343,11 +2313,11 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             Range = 30,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
-            _index = 254,
+            _index = 251,
         },
         {
             RouteCompleted = true,
-            _index = 255,
+            _index = 252,
         },
     },
 }
