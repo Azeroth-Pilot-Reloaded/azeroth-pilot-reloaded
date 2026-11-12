@@ -5,6 +5,8 @@ for _, client in ipairs({ "retail", "forever" }) do
     local character = {}
     NUM_BAG_SLOTS = 0
     APR = { GAME_VERSIONS = { Retail = "retail", Forever = "forever" } }
+    function APR:GetRewardBuildContext() return {client=client, classID=1, pawnSpec=1} end
+    function GetBuildInfo() return nil, nil, nil, client == "forever" and 16001 or 120105 end
     function APR:GetGameVersion() return client end
     function APR:GetSettingsProfile() return { enableAddon = true } end
     function APR:GetBagUpgradeSuggestions() return true end

@@ -83,7 +83,10 @@ function Upgrades:GetScale()
     local scorer, state, identity
     if APR.PawnRewards then scorer, state, identity = APR.PawnRewards:GetScorer() end
     if state == "pending" then return end
-    return scorer and { score = scorer } or APR.RewardScoring:GetDefaultScale(), identity or "apr"
+    if scorer then return { score = scorer }, identity end
+    local scale = APR.RewardScoring:GetDefaultScale()
+    if scale and scale.identity then identity = (identity or "apr") .. "\031" .. scale.identity end
+    return scale, identity or "apr"
 end--[[APR_DIAG]]
 Upgrades.GetScale = APRTrace("APR-Core/features/player/BagUpgrades.lua:54:Upgrades:GetScale#8", Upgrades.GetScale)--[[/APR_DIAG]]
 
