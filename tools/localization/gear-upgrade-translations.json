@@ -1,0 +1,46 @@
+{
+  "enUS": {
+    "GEAR_UPGRADE_TITLE": "APR - Gear upgrade",
+    "GEAR_UPGRADE_PROMPT": "Better gear detected. Equip it?"
+  },
+  "frFR": {
+    "GEAR_UPGRADE_TITLE": "APR - Amélioration d’équipement",
+    "GEAR_UPGRADE_PROMPT": "Meilleur équipement détecté. Équiper ?"
+  },
+  "deDE": {
+    "GEAR_UPGRADE_TITLE": "APR - Bessere Ausrüstung",
+    "GEAR_UPGRADE_PROMPT": "Bessere Ausrüstung gefunden. Anlegen?"
+  },
+  "esES": {
+    "GEAR_UPGRADE_TITLE": "APR - Mejora de equipo",
+    "GEAR_UPGRADE_PROMPT": "Se ha encontrado mejor equipo. ¿Equiparlo?"
+  },
+  "esMX": {
+    "GEAR_UPGRADE_TITLE": "APR - Mejora de equipo",
+    "GEAR_UPGRADE_PROMPT": "Se encontró mejor equipo. ¿Equiparlo?"
+  },
+  "itIT": {
+    "GEAR_UPGRADE_TITLE": "APR - Equipaggiamento migliore",
+    "GEAR_UPGRADE_PROMPT": "Trovato equipaggiamento migliore. Equipaggiarlo?"
+  },
+  "ptBR": {
+    "GEAR_UPGRADE_TITLE": "APR - Melhoria de equipamento",
+    "GEAR_UPGRADE_PROMPT": "Equipamento melhor encontrado. Equipar?"
+  },
+  "ruRU": {
+    "GEAR_UPGRADE_TITLE": "APR - Улучшение экипировки",
+    "GEAR_UPGRADE_PROMPT": "Найдено улучшение экипировки. Надеть?"
+  },
+  "koKR": {
+    "GEAR_UPGRADE_TITLE": "APR - 장비 업그레이드",
+    "GEAR_UPGRADE_PROMPT": "더 좋은 장비를 발견했습니다. 착용할까요?"
+  },
+  "zhCN": {
+    "GEAR_UPGRADE_TITLE": "APR - 装备升级",
+    "GEAR_UPGRADE_PROMPT": "发现更好的装备。是否装备？"
+  },
+  "zhTW": {
+    "GEAR_UPGRADE_TITLE": "APR - 裝備升級",
+    "GEAR_UPGRADE_PROMPT": "發現更好的裝備。是否裝備？"
+  }
+}

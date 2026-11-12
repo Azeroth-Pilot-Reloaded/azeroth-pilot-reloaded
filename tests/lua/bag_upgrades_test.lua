@@ -6,7 +6,7 @@ EQUIP, ACCEPT, IGNORE, CANCEL, CURRENTLY_EQUIPPED, EQUIPMENT, EMPTY =
     "Equip", "Accept", "Ignore", "Cancel", "Equipped", "Equipment", "Empty"
 NUM_BAG_SLOTS = 1
 LibStub = function()
-    return { GetLocale = function() return { CHOOSE_USABLE_GEAR_UPGRADE = "Compare equipment" } end }
+    return { GetLocale = function() return { GEAR_UPGRADE_TITLE = "Gear", GEAR_UPGRADE_PROMPT = "Better gear?", CHOOSE_USABLE_GEAR_UPGRADE = "Compare equipment" } end }
 end
 APR = { questionDialog = {}, RewardScoring = {}, PawnRewards = {} }
 APR.settings = { db = { char = { bagUpgradeSuggestions = true } } }
@@ -95,24 +95,29 @@ function StaticPopup_Hide()
 end
 function StaticPopup_OnHide() end
 function hooksecurefunc(_, fn) hooks.hide = fn end
-function APR.questionDialog:CreateQuestionPopup(_, text, accept, cancel)
-    local popup = { text = text }
+APR.UI = {}
+function APR.UI:ShowConfirmationDialog(settings, accept, cancel)
+    local popup = { shown = true, comparison = settings.comparison, accept = accept, cancel = cancel }
+    -- The fixture exposes the actual visual model for the existing item assertions.
+    popup.text = settings.comparison[1].proposed.link
+    function popup:IsShown() return self.shown end
+    function popup:Hide()
+        if not self.shown then return end
+        self.shown = false
+        if visible == self then visible = nil end
+        cancel()
+    end
     local function click(callback, ...)
-        inPopupCallback = true
+        if visible == popup then visible = nil; popup.shown = false end
         callback(...)
-        inPopupCallback = false
-        -- Model StaticPopup_OnClick: the native owner hides after the callback.
-        -- A stale callback must never close a newer offer.
-        if visible == popup then
-            visible = nil
-            if hooks.hide then hooks.hide() end
-        end
     end
     popup.accept = function(...) click(accept, ...) end
     popup.cancel = function(...) click(cancel, ...) end
     visible = popup
-    prompts[#prompts + 1] = visible
+    prompts[#prompts + 1] = popup
+    return popup
 end
+
 dofile("APR-Core/features/player/BagUpgrades.lua")
 local module = APR.BagUpgrades
 module:OnEnable()
@@ -238,7 +243,7 @@ module:OnDisable()
 local padEnabled, privateDialog = true, nil
 APR.Gamepad = { IsAvailable = function() return true end, IsEnabled = function() return padEnabled end }
 APR.UI = { ShowConfirmationDialog = function(_, settings, accept, cancel)
-    local dialog = { shown = true, text = settings.description, accept = accept, cancel = cancel }
+    local dialog = { shown = true, text = settings.comparison[1].proposed.link, accept = accept, cancel = cancel }
     function dialog:IsShown() return self.shown end
     function dialog:Hide()
         if not self.shown then return end

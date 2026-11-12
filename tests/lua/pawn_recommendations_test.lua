@@ -29,7 +29,7 @@ for _, client in ipairs({ "retail", "forever" }) do
     end
     LibStub = function()
         return { GetLocale = function() return {
-            CHOOSE_USABLE_GEAR_UPGRADE = "Compare", REWARD_PAWN_CHANGED = "Use %s?",
+            GEAR_UPGRADE_TITLE = "Gear", GEAR_UPGRADE_PROMPT = "Better gear?", CHOOSE_USABLE_GEAR_UPGRADE = "Compare", REWARD_PAWN_CHANGED = "Use %s?",
             REWARD_WEIGHT_SCALE_DESC = "Scoring profile", REWARD_WEIGHT_DEFAULT_DESC = "APR: %s",
             REWARD_PAWN_UNAVAILABLE = "Pending: %s",
         } end }

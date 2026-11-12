@@ -590,7 +590,7 @@ function PawnRewards:GetScorer()
 end--[[APR_DIAG]]
 PawnRewards.GetScorer = APRTrace("APR-Core/integrations/Pawn.lua:350:PawnRewards:GetScorer#28", PawnRewards.GetScorer)--[[/APR_DIAG]]
 
-function PawnRewards:GetStatusText()
+function PawnRewards:GetStatusText(compact)
     local char = character()
     local choice, available = self:GetSelectedScale()
     local record = choice:sub(1, 5) == "pawn:" and { name = choice:sub(6) }
@@ -598,9 +598,11 @@ function PawnRewards:GetStatusText()
         local scale = self.scales and self.scales[record.name]
         local label = scale and scale.label or record.name
         if not available then return string.format(L["REWARD_PAWN_UNAVAILABLE"], label) end
+        if compact then return "Pawn: " .. label end
         return "Pawn: " .. label .. "\n" .. L["REWARD_WEIGHT_SCALE_DESC"]
     end
     if APR.RewardScoring and APR.RewardScoring.GetProfileDescription then
+        if compact then return "APR: " .. APR.RewardScoring:GetProfileDescription() end
         return string.format(L["REWARD_WEIGHT_DEFAULT_DESC"], APR.RewardScoring:GetProfileDescription())
     end
     return L["REWARD_WEIGHT_SCALE_DESC"]

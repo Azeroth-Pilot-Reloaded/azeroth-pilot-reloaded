@@ -15,7 +15,7 @@ for _, client in ipairs({ "retail", "forever" }) do
     function APR:NewModule()
         return { RegisterEvent = function() end, UnregisterEvent = function() end, UnregisterAllEvents = function() end }
     end
-    LibStub = function() return { GetLocale = function() return { CHOOSE_USABLE_GEAR_UPGRADE = "Compare" } end } end
+    LibStub = function() return { GetLocale = function() return { GEAR_UPGRADE_TITLE = "Gear", GEAR_UPGRADE_PROMPT = "Better gear?", CHOOSE_USABLE_GEAR_UPGRADE = "Compare" } end } end
     NUM_BAG_SLOTS = 0
     EQUIPMENT, CURRENTLY_EQUIPPED, EMPTY = "Equipment", "Equipped", "Empty"
     function InCombatLockdown() return false end
