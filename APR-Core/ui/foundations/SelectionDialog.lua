@@ -88,7 +88,7 @@ local function BindComparisonRow(row, comparison)
         row.arrow = row:CreateTexture(nil, "OVERLAY")
         row.arrow:SetTexture("Interface\\AddOns\\APR\\APR-Core\\assets\\ui\\arrow.tga")
         row.arrow:SetSize(28, 28)
-        row.arrow:SetRotation(-math.pi / 4)
+        row.arrow:SetRotation(3 * math.pi / 4)
         row.arrow:SetVertexColor(0.2, 0.9, 0.35)
     end
     local width = row:GetWidth()
