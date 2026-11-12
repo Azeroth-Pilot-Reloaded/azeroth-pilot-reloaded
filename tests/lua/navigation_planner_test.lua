@@ -160,6 +160,11 @@ assert(
     job.status == "no_path" and baseline == math.huge and probes == 1,
     "The same lower bound preserves exploration when the known graph has no path"
 )
+request.allowTaxiProbes = false
+job = APR.NavigationPlanner:Create(request)
+while job:Step(64, 1) == "planning" do end
+assert(job.status == "no_path" and probes == 1, "Service guidance cannot substitute unknown-flight exploration for a usable path")
+request.allowTaxiProbes = nil
 print(
     "Navigation planner: shared 1 ms allowance, incremental providers/publication, zero graph copies and cancellation passed"
 )

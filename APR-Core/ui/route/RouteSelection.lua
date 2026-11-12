@@ -10,6 +10,7 @@ APR.RouteSelection = APR:NewModule("RouteSelection")
 local Selection = APR.RouteSelection
 
 function Selection:IsEmptyRouteState()
+    if APR.Services and APR.Services:GetStep() then return false end
     if APR.ActiveRoute and APR.ActiveRoute ~= "" then return false end
     -- Activation can lag behind saved-path loading or pause while a route is locked.
     local path = APRCustomPath and APR.PlayerID and APRCustomPath[APR.PlayerID]
@@ -95,6 +96,7 @@ function Selection:RefreshFrameAnchor()
     local profile = APR:GetSettingsProfile()
     if not profile then return end
     local step = APR.currentStep
+    local service = APR.Services and APR.Services:GetStep()
     local empty = self:IsEmptyRouteState()
     local visible = empty and not APR:ShouldHideFrames() and not CurrentStepScreenPanel.collapsed
     step.emptyRoutePromptActive = empty
@@ -109,6 +111,7 @@ function Selection:RefreshFrameAnchor()
     elseif step.ButtonShow then
         step:ButtonShow()
     end
+    if service and step.RefreshServiceProgress then step:RefreshServiceProgress() end
     step:ReOrderQuestSteps()
 end--[[APR_DIAG]]
 Selection.RefreshFrameAnchor =

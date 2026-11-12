@@ -141,6 +141,7 @@ APR-Core/features/navigation/Preview.lua
 APR-Core/features/navigation/NavigationPlanner.lua
 APR-Core/features/navigation/NavigationUnlocks.lua
 APR-Core/features/navigation/Navigation.lua
+APR-Core/features/navigation/Services.lua
 APR-Core/features/navigation/FlightPath.lua
 
 APR-Core/features/navigation/Arrow.lua

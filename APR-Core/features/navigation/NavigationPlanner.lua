@@ -57,7 +57,7 @@ Job.BeginCatalogue =
 function Job:BeginSearch()
     local request = self.request
     self.phase = "search"
-    self.active = request.engine:CreateSearch({
+    local searchOptions = {
         start = request.start,
         goal = request.goal,
         clock = request.clock,
@@ -70,7 +70,13 @@ function Job:BeginSearch()
         canWalk = request.canWalk,
         walkingRegionFor = request.walkingRegionFor,
         walkingIsTransitive = request.walkingIsTransitive,
-    })
+        waitingData = self.waitingData,
+    }
+    if request.serviceTravel then
+        self.active = request.data:CreateServiceRouteSearch(searchOptions)
+    else
+        self.active = request.engine:CreateSearch(searchOptions)
+    end
 end--[[APR_DIAG]]
 Job.BeginSearch = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:46:Job:BeginSearch#6", Job.BeginSearch)--[[/APR_DIAG]]
 
@@ -235,7 +241,7 @@ function Job:AdvancePhase(maxOperations, remainingMilliseconds)
         -- The provider knows its minimum boarding time. If that alone loses
         -- to the current route, no flight-master exploration can improve it.
         local probeCanHelp = not taxiData.CanProbeBeat or taxiData:CanProbeBeat(self.result.totalSeconds)
-        if taxiData.CreateProbeSearch and probeCanHelp then
+        if request.allowTaxiProbes ~= false and taxiData.CreateProbeSearch and probeCanHelp then
             -- An incomplete taxi offer can be the only route between regions.
             -- Try its bounded exploration before publishing a final failure.
             self.phase = "probe"

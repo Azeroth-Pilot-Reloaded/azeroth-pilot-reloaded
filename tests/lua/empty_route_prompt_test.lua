@@ -112,6 +112,75 @@ for _ = 1, 100 do
 end
 assert(env.frames() == frames and env.fonts() == fonts, "Idle refreshes reuse the card")
 
+-- A selected service is a visible transient journey even with no saved guide.
+local previousNavigation, previousData, previousUpdate = APR.navigation, APR.NavigationData, APR.UpdateStep
+local previousHandlers, previousRender = APR.stepHandlers, APR.RenderCurrentStep
+APR.stepHandlers = {}
+dofile("APR-Core/features/questing/StepRenderer.lua")
+local library = dofile("tests/lua/navigation_engine_fixture.lua")
+local localeStub = LibStub
+LibStub = function(name) if name == "LibAPRNavigation-1.0" then return library end; return localeStub(name) end
+dofile("APR-Core/libs/LibAPRNavigation-1.0/Services.lua")
+LibStub = localeStub
+APR.NavigationData = setmetatable({GetText = function(_, key) return key end}, {__index = library.Instance})
+local renders = 0
+APR.navigation = {
+    Cancel = function()
+        for key in pairs(step.questsList) do
+            if APR:IsNavigationQuestUiKey(key) then step:ReleaseRow(step.questsList, key) end
+        end
+    end,
+    ForceRefresh = function() end,
+    RequestUpdate = function() end,
+    Notify = function() end,
+    Render = function()
+        renders = renders + 1
+        step:AddQuestSteps("01_NAVIGATION_PATH", "Use the synthetic mandatory gate", 0, nil, true, false)
+    end,
+    Update = function(self)
+        self.state, self.cursor = "guiding", 1
+        self.queue = {
+            {kind = "walk", label = "Approach the gate"},
+            {kind = "portal", label = "Use the gate"},
+            {kind = "walk", label = "Meet the innkeeper"},
+        }
+        self:Render()
+        step:RefreshServiceProgress()
+    end,
+}
+function APR:UpdateStep() self:RenderCurrentStep() end
+dofile("APR-Core/features/navigation/Services.lua")
+local serviceTarget = {x = 120, y = 80, instanceID = 0, uiMapID = 501}
+APR.Services:Start({name = "Synthetic Innkeeper", npcID = 12345, mapID = 501}, serviceTarget)
+assert(not APR.ActiveRoute and not next(APRCustomPath.player), "Temporary journeys do not require or save an authored guide")
+assert(not card:IsShown() and not step.emptyRoutePromptActive, "The service journey replaces the route-selection prompt")
+local destination, guidance
+for _, row in pairs(step.questsList) do
+    local text = row.font and row.font:GetText()
+    if text == APR.Services:GetLabel() then destination = row end
+    if text == "Use the synthetic mandatory gate" then guidance = row end
+end
+assert(destination and destination:IsShown() and guidance and guidance:IsShown() and renders > 0,
+    "The actual current-step renderer displays the destination and navigation instruction without a guide")
+assert(destination.layoutOffset and guidance.layoutOffset, "Service rows receive normal layout instead of the empty-card layout")
+assert(step.progressBar:IsShown() and CurrentStepFrame_StepHolder.skipButton:IsShown()
+    and CurrentStepFrame_StepHolder.rollbackButton:IsShown(), "Temporary journeys display their navigation controls")
+assert(step.progressBar.Text:GetText() == "1 / 3 - Approach the gate")
+APR.navigation.cursor = 2
+step:RefreshServiceProgress()
+assert(step.progressBar.Text:GetText() == "2 / 3 - Use the gate", "The bar follows the current itinerary step")
+step:ButtonShow()
+step:ProgressBar()
+assert(step.progressBar:IsShown() and CurrentStepFrame_StepHolder.skipButton:IsShown())
+assert(step.progressBar.currentStep == 2 and step.progressBar.key == APR.Services:GetStep(),
+    "Guide refresh arguments cannot overwrite transient progress")
+APR.Services:Cancel()
+assert(card:IsShown() and step.emptyRoutePromptActive and not next(step.questsList),
+    "Cancellation restores the route-selection prompt and removes service rows")
+APR.Services = nil
+APR.navigation, APR.NavigationData, APR.UpdateStep = previousNavigation, previousData, previousUpdate
+APR.stepHandlers, APR.RenderCurrentStep = previousHandlers, previousRender
+
 -- A saved path can exist before the active route is resolved, or while its first route is locked.
 APRCustomPath.player = { "saved route", "later route" }
 for _, active in ipairs({ false, "" }) do

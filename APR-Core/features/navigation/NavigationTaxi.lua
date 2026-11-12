@@ -48,6 +48,7 @@ end--[[APR_DIAG]]
 taxi.Call = APRTrace("APR-Core/features/navigation/NavigationTaxi.lua:36:taxi:Call#8", taxi.Call)--[[/APR_DIAG]]
 for _, name in ipairs({
     "GetNode",
+    "GetAllNodes",
     "GetNodeDetails",
     "GetNodeWorldPosition",
     "GetNodeAPRWorldPosition",

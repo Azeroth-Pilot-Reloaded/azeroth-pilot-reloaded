@@ -190,6 +190,7 @@ local function MenuPages()
                 { "status", L["STATUS"], "check" },
                 { "about", L["ABOUT_HELP"], "changelog" },
                 { "perf", L["UI_PERFORMANCE"], "debug" },
+                { "nearest", APR.NavigationData and APR.NavigationData:GetText("FIND_NEAREST") or L["ROUTE"], "map" },
             },
         },
     }
@@ -351,7 +352,11 @@ function Pad:UpdateMenuAvailability()
         self.menuButtons[action]:SetEnabled(enabled and panel and panel:IsVisible() or false)
     end
     for _, action in ipairs({ "skip", "rollback" }) do
-        self.menuButtons[action]:SetEnabled(enabled and APR.ActiveRoute ~= nil)
+        local available = APR.ActiveRoute ~= nil
+        if APR.Services and APR.Services:GetStep() then
+            available = APR.Services:GetStepCursor(action == "skip" and 1 or -1) ~= nil
+        end
+        self.menuButtons[action]:SetEnabled(enabled and available)
     end
     for action, owner in pairs({
         layout = "LayoutEditor",

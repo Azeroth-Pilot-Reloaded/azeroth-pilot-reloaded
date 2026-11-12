@@ -90,6 +90,12 @@ function APR:RenderCurrentStep()
     if not APR.settings.profile.enableAddon then
         return
     end
+    if APR.Services and APR.Services:GetStep() then
+        self.currentStep:RemoveStepContentPreservingNavigationUi()
+        self.currentStep:AddQuestSteps("00_SERVICE_DESTINATION", APR.Services:GetLabel(), 0, nil, true, false)
+        self.navigation:Render()
+        return
+    end
     if self.RefreshNavigationUnlockRoute and self:RefreshNavigationUnlockRoute() then return end
 
     if APR.ActiveRoute and not APRData[APR.PlayerID][APR.ActiveRoute] then

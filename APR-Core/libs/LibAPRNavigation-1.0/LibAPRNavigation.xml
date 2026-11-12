@@ -1,6 +1,8 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
   <Script file="Core.lua" />
   <Script file="Locales.lua" />
+  <Script file="Services.lua" />
+  <Script file="ServiceLocales.lua" />
   <Script file="Geography.lua" />
   <Script file="Conditions.lua" />
   <Script file="Diagnostics.lua" />
@@ -15,6 +17,7 @@
   <Script file="Search.lua" />
   <Script file="WaypointUI.lua" />
   <Script file="AzerothWaypoint.lua" />
+  <Script file="Data/retail/Services.lua" />
   <Script file="Data/retail/Geography.lua" />
   <Script file="Data/retail/Availability.lua" />
   <Script file="Data/retail/InstanceEntrances.lua" />
@@ -26,6 +29,7 @@
   <Script file="Data/retail/Spells.lua" />
   <Script file="Data/retail/Passages.lua" />
   <Script file="Data/retail/UnlockRoutes.lua" />
+  <Script file="Data/forever/Services.lua" />
   <Script file="Data/forever/Geography.lua" />
   <Script file="Data/forever/InstanceEntrances.lua" />
   <Script file="Data/forever/Bindings.lua" />

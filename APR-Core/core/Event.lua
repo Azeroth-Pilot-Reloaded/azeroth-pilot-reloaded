@@ -1153,12 +1153,12 @@ APR.event.functions.adventureMapClose = APRTrace(
 -- Queue one refresh for an inventory/equipment burst. Only the owning event
 -- category calls this; there is no polling and no second resource event listener.
 function APR.event:QueueStepRefresh()
-    if not APR.ActiveRoute or self.stepRefreshTimer then return end
+    if self.stepRefreshTimer or (not APR.ActiveRoute and not (APR.Services and APR.Services:GetStep())) then return end
     self.stepRefreshTimer = C_Timer.NewTimer(
         0.1, --[[APR_DIAG]]
         APRTrace("APR-Core/core/Event.lua:893:callback#43", --[[/APR_DIAG]] function()
             self.stepRefreshTimer = nil
-            if APR.ActiveRoute then APR:UpdateStep() end
+            if APR.ActiveRoute or (APR.Services and APR.Services:GetStep()) then APR:UpdateStep() end
         end--[[APR_DIAG]]) --[[/APR_DIAG]]
     )
 end--[[APR_DIAG]]

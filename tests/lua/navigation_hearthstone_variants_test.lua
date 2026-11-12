@@ -81,6 +81,7 @@ for _, edge in ipairs(edges) do
     if edge.id == "retail:item-hearthstone-alternatives:forward" then
         hearthEdges = hearthEdges + 1
         assert(edge.action.data == 3 and edge.resources["cooldown:hearthstone"] == 1)
+        assert(edge.hearthstone == true, "Inn-return variants carry the service travel policy marker")
     end
 end
 assert(hearthEdges == 1 and metadata.resources["cooldown:hearthstone"] == 1)
