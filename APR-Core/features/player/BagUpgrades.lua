@@ -104,7 +104,6 @@ end--[[APR_DIAG]]
 Upgrades.QueueScan = APRTrace("APR-Core/features/player/BagUpgrades.lua:59:Upgrades:QueueScan#9", Upgrades.QueueScan)--[[/APR_DIAG]]
 
 function Upgrades:OnScoringChanged()
-    self.dismissed = {}
     self.requests = {}
     self:QueueScan()
 end--[[APR_DIAG]]
@@ -126,7 +125,10 @@ function Upgrades:StartScan()
     local signature = EquipmentSignature()
     local scale, scoringIdentity = self:GetScale()
     if not signature or not scale then return end
-    self.dismissed = self.dismissed or {}
+    local character = APR:GetCharacterSettings()
+    if not character then return end
+    if type(character.bagUpgradeDismissals) ~= "table" then character.bagUpgradeDismissals = {} end
+    self.dismissed = character.bagUpgradeDismissals
     self.job = {
         bag = 0, slot = 0, signature = signature, scale = scale,
         scoringIdentity = scoringIdentity, candidates = {}, pending = {},
@@ -159,12 +161,13 @@ function Upgrades:ScanBatch()
             end
         end
         local link = Container("GetContainerItemLink", job.bag, job.slot)
-        if Public(link) and type(link) == "string" and self.dismissed[link] ~= job.signature then
-            local gain, ready, plan = APR.RewardScoring:GetUpgrade(link, job.scale)
+        if Public(link) and type(link) == "string" then
+            local gain, ready, plan, comparison = APR.RewardScoring:GetUpgrade(link, job.scale)
+            local refusal = self:RefusalIdentity(job.scoringIdentity, comparison)
             if not ready then
                 local id = tonumber(link:match("item:(%d+)"))
                 if id then job.pending[id] = true end
-            elseif Number(gain) and gain > 0 and plan then
+            elseif Number(gain) and gain > 0 and plan and (not refusal or self.dismissed[link] ~= refusal) then
                 job.candidates[#job.candidates + 1] = {
                     link = link,
                     gain = gain,
@@ -173,6 +176,7 @@ function Upgrades:ScanBatch()
                     slot = job.slot,
                     signature = job.signature,
                     scoringIdentity = job.scoringIdentity,
+                    refusalIdentity = refusal,
                 }
             end
         end
@@ -186,6 +190,15 @@ function Upgrades:ScanBatch()
     )
 end--[[APR_DIAG]]
 Upgrades.ScanBatch = APRTrace("APR-Core/features/player/BagUpgrades.lua:95:Upgrades:ScanBatch#14", Upgrades.ScanBatch)--[[/APR_DIAG]]
+
+-- Profile names and scorer identities survive reload; table/closure addresses do not.
+function Upgrades:RefusalIdentity(scoringIdentity, comparison)
+    if type(comparison) ~= "string" then return end
+    local database = APR.settings and APR.settings.db
+    local profile = database and database.GetCurrentProfile and database:GetCurrentProfile() or ""
+    return string.format("%q:%q:%q", profile, scoringIdentity, comparison)
+end--[[APR_DIAG]]
+Upgrades.RefusalIdentity = APRTrace("APR-Core/features/player/BagUpgrades.lua:193:Upgrades:RefusalIdentity#27", Upgrades.RefusalIdentity)--[[/APR_DIAG]]
 
 function Upgrades:FinishScan(job)
     local generation = self.generation
@@ -338,7 +351,16 @@ function Upgrades:Offer(candidate)
             if self.prompt ~= candidate then return end
             self.prompt, self.dialog = nil, nil
             local dismissed = private or reason == "clicked" or reason == "timeout" or reason == "escape"
-            if dismissed then self.dismissed[candidate.link] = candidate.signature end
+            if dismissed then
+                local scale, identity = self:GetScale()
+                local comparison
+                if scale then
+                    local _, ready, _, current = APR.RewardScoring:GetUpgrade(candidate.link, scale)
+                    if ready then comparison = current end
+                end
+                local refusal = self:RefusalIdentity(identity, comparison)
+                if refusal and refusal == candidate.refusalIdentity then self.dismissed[candidate.link] = refusal end
+            end
             self.waiting = not dismissed
             if not self.waiting then self:QueueScan() end
         end--[[APR_DIAG]]) --[[/APR_DIAG]]
