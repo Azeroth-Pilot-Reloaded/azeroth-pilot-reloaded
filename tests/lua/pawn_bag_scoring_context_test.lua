@@ -32,6 +32,7 @@ for _, client in ipairs({ "retail", "forever" }) do
     issecretvalue = nil
     function UnitClass() return "Mage", "MAGE", 8 end
     function UnitLevel() return 20 end
+    function GetBuildInfo() return nil, nil, nil, client == "forever" and 16001 or 120105 end
     function InCombatLockdown() return false end
     function UnitIsDeadOrGhost() return false end
     function GetInventoryItemLink(_, slot) return slot == 1 and equipped or nil end

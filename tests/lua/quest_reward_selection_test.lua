@@ -464,6 +464,7 @@ APR.settings = { db = { char = {} } }
 local inventory, popup, pawnReads = {}, nil, {}
 function UnitClass() return "Warrior", "WARRIOR", 1 end
 function UnitLevel() return 40 end
+function GetBuildInfo() return nil, nil, nil, 120105 end
 C_SpecializationInfo = {
     GetSpecialization = function() return 1 end,
     GetSpecializationInfo = function() return 9001, "Synthetic specialization", nil, nil, "DAMAGER", 1 end,

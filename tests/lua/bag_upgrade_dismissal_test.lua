@@ -4,7 +4,7 @@ for _, client in ipairs({ "retail", "forever" }) do
     local identity, offers, dual, titan = "build-a", 0, true, false
     local useDefault, role = false, "DAMAGER"
     local profileName = "Default"
-    local character = { bagUpgradeSuggestions = true }
+    local character = { bagUpgradeSuggestions = true, rewardBuilds = {["forever:1"]="1"} }
     APR = {
         GAME_VERSIONS = { Retail = "retail", Forever = "forever" },
         settings = { db = { char = character, GetCurrentProfile = function() return profileName end } },
@@ -20,9 +20,10 @@ for _, client in ipairs({ "retail", "forever" }) do
     EQUIPMENT, CURRENTLY_EQUIPPED, EMPTY = "Equipment", "Equipped", "Empty"
     function InCombatLockdown() return false end
     function UnitLevel() return 20 end
+    function GetBuildInfo() return nil, nil, nil, client == "forever" and 16001 or 120105 end
     function UnitClass() return "Warrior", "WARRIOR", 1 end
     C_SpecializationInfo = {
-        GetSpecialization = function() return 1 end,
+        GetSpecialization = function() return role == "TANK" and 3 or 1 end,
         GetSpecializationInfo = function() return 900, "Fixture", nil, nil, role, 1 end,
     }
     function GetInventoryItemLink(_, slot) return inventory[slot] end
@@ -96,7 +97,7 @@ for _, client in ipairs({ "retail", "forever" }) do
     unchanged("A tabard must not revive an ignored helmet", function() inventory[19] = item("INVTYPE_TABARD", 1) end)
     unchanged("Reload preserves the character refusal", function()
         module:OnDisable()
-        local restored = { bagUpgradeSuggestions = true, bagUpgradeDismissals = {} }
+        local restored = { bagUpgradeSuggestions = true, bagUpgradeDismissals = {}, rewardBuilds = {["forever:1"]="1"} }
         for link, refusal in pairs(character.bagUpgradeDismissals or {}) do
             assert(type(link) == "string" and type(refusal) == "string", "Refusals contain only SavedVariables data")
             restored.bagUpgradeDismissals[link] = refusal
@@ -177,7 +178,10 @@ for _, client in ipairs({ "retail", "forever" }) do
     assert(offers == count + 1 and module.prompt, "An obsolete comparison cannot dismiss a newly scored offer")
     inventory, bag, useDefault = {}, item("INVTYPE_HEAD", 30), true
     scan(); ignore()
-    renewed("Default APR weight changes renew offers even when these items' scores stay equal", function() role = "TANK" end)
+    renewed("Default APR weight changes renew offers even when these items' scores stay equal", function()
+        role = "TANK"
+        character.rewardBuilds["forever:1"] = "3"
+    end)
     ignore()
     unchanged("Recreated default APR scale closures have a stable refusal identity", function() end)
     module:OnDisable()

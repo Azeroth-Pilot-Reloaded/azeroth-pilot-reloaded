@@ -11,40 +11,20 @@ local Scoring = APR.RewardScoring
 local function accessible(value)
     if APR.CanAccessValue then return APR:CanAccessValue(value) end
     return not issecretvalue or not issecretvalue(value)
-end--[[APR_DIAG]]
-accessible = APRTrace("APR-Core/features/questing/RewardScoring.lua:11:accessible#1", accessible)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; accessible = APRTrace("APR-Core/features/questing/RewardScoring.lua:11:accessible#1", accessible)--[[/APR_DIAG]]
 
 local function number(value)
     return accessible(value) and type(value) == "number" and value == value and value > -math.huge and value < math.huge
-end--[[APR_DIAG]]
-number = APRTrace("APR-Core/features/questing/RewardScoring.lua:16:number#2", number)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; number = APRTrace("APR-Core/features/questing/RewardScoring.lua:16:number#2", number)--[[/APR_DIAG]]
 
 local function itemAPI(name)
     return C_Item and C_Item[name] or _G[name]
-end--[[APR_DIAG]]
-itemAPI = APRTrace("APR-Core/features/questing/RewardScoring.lua:21:itemAPI#3", itemAPI)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; itemAPI = APRTrace("APR-Core/features/questing/RewardScoring.lua:20:itemAPI#3", itemAPI)--[[/APR_DIAG]]
 
 local function forever()
     return APR.GetGameVersion and APR.GAME_VERSIONS and APR:GetGameVersion() == APR.GAME_VERSIONS.Forever
-end--[[APR_DIAG]]
-forever = APRTrace("APR-Core/features/questing/RewardScoring.lua:25:forever#4", forever)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; forever = APRTrace("APR-Core/features/questing/RewardScoring.lua:24:forever#4", forever)--[[/APR_DIAG]]
 
-local classPrimary = {
-    [1] = "Strength",
-    [2] = "Strength",
-    [3] = "Agility",
-    [4] = "Agility",
-    [5] = "Intellect",
-    [6] = "Strength",
-    [7] = "Intellect",
-    [8] = "Intellect",
-    [9] = "Intellect",
-    [10] = "Agility",
-    [11] = "Agility",
-    [12] = "Agility",
-    [13] = "Intellect",
-}
-local nativePrimary = { [1] = "Strength", [2] = "Agility", [4] = "Intellect" }
 local attributeAliases = {
     Strength = { "ITEM_MOD_STRENGTH_SHORT" },
     Agility = { "ITEM_MOD_AGILITY_SHORT" },
@@ -76,37 +56,12 @@ local hybrids = {
     { "ITEM_MOD_AGILITY_STRENGTH_INTELLECT_SHORT", "Agility", "Strength", "Intellect" },
 }
 
-local function profileIdentity()
-    local className, classID
-    if UnitClass then
-        className, _, classID = UnitClass("player")
-    end
-    if not number(classID) or not classPrimary[classID] then return end
-    local getSpec = C_SpecializationInfo and C_SpecializationInfo.GetSpecialization or GetSpecialization
-    local getInfo = C_SpecializationInfo and C_SpecializationInfo.GetSpecializationInfo or GetSpecializationInfo
-    local index = getSpec and getSpec()
-    local specName, role, primary
-    if number(index) and index > 0 and getInfo then
-        local id, name, _, _, specRole, stat = getInfo(index)
-        if number(id) and id > 0 then
-            if accessible(name) and type(name) == "string" then specName = name end
-            if accessible(specRole) and type(specRole) == "string" then role = specRole end
-            if number(stat) then primary = nativePrimary[stat] end
-        end
-    end
-    return classID, primary or classPrimary[classID], role or "DAMAGER", className, specName
-end--[[APR_DIAG]]
-profileIdentity = APRTrace("APR-Core/features/questing/RewardScoring.lua:77:profileIdentity#5", profileIdentity)--[[/APR_DIAG]]
-
 function Scoring:GetProfileDescription()
-    local _, _, _, className, specName = profileIdentity()
-    if not accessible(className) or type(className) ~= "string" then return "APR" end
-    return specName and specName ~= className and (className .. " - " .. specName) or className
-end--[[APR_DIAG]]
-Scoring.GetProfileDescription = APRTrace(
-    "APR-Core/features/questing/RewardScoring.lua:98:Scoring:GetProfileDescription#6",
-    Scoring.GetProfileDescription
-)--[[/APR_DIAG]]
+    local context = APR:GetRewardBuildContext()
+    local label = context.label or context.className or "APR"
+    if not self:GetDefaultScale() then return label .. ": " .. (UNAVAILABLE or UNKNOWN or "?") end
+    return label
+end--[[APR_DIAG]]; Scoring.GetProfileDescription = APRTrace("APR-Core/features/questing/RewardScoring.lua:59:Scoring:GetProfileDescription#5", Scoring.GetProfileDescription)--[[/APR_DIAG]]
 
 local function aliasValue(stats, keys)
     local value = 0
@@ -119,14 +74,12 @@ local function aliasValue(stats, keys)
         end
     end
     return value
-end--[[APR_DIAG]]
-aliasValue = APRTrace("APR-Core/features/questing/RewardScoring.lua:104:aliasValue#7", aliasValue)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; aliasValue = APRTrace("APR-Core/features/questing/RewardScoring.lua:66:aliasValue#6", aliasValue)--[[/APR_DIAG]]
 
 local function defaultScore(link, scale, slot)
     local getStats = itemAPI("GetItemStats")
     if not getStats then return nil, false end
-    local ok, stats = --[[APR_DIAG]]
-        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](getStats, link)
+    local ok, stats = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](getStats, link)
     if not ok or not accessible(stats) or type(stats) ~= "table" or (canaccesstable and not canaccesstable(stats)) then
         return nil, false
     end
@@ -165,59 +118,121 @@ local function defaultScore(link, scale, slot)
         total = total + value * (scale.weights[stat] or 0) * contribution
     end
     return total, number(total)
-end--[[APR_DIAG]]
-defaultScore = APRTrace("APR-Core/features/questing/RewardScoring.lua:117:defaultScore#8", defaultScore)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; defaultScore = APRTrace("APR-Core/features/questing/RewardScoring.lua:79:defaultScore#7", defaultScore)--[[/APR_DIAG]]
+
+-- APR estimates, not imported scales or simulated optima. See readme/reward-profiles.md.
+-- Each declaration is client/class/build specific; templates share only the model.
+local models = {
+    strength = { Strength=1, Agility=0.35, AttackPower=0.4, WeaponDPS=3 },
+    agility = { Agility=1, Strength=0.2, AttackPower=0.4, WeaponDPS=3 },
+    caster = { Intellect=1, SpellPower=0.8, Spirit=0.2, ManaRegen=0.8 },
+    healer = { Intellect=1, SpellPower=0.8, Healing=1.2, Spirit=0.4, ManaRegen=1 },
+    feral = { Agility=1, Strength=0.8, AttackPower=0.4, WeaponDPS=3 },
+    bear = { Agility=1, Strength=0.6, AttackPower=0.3, WeaponDPS=2 },
+    enhancement = { Strength=1, Agility=0.2, Intellect=0.4, AttackPower=0.4, SpellPower=0.25, WeaponDPS=3 },
+    retribution = { Strength=1, Agility=0.2, Intellect=0.25, AttackPower=0.4, SpellPower=0.35, WeaponDPS=3 },
+    protection = { Strength=1, Intellect=0.3, AttackPower=0.3, SpellPower=0.6, WeaponDPS=2 },
+    hunter = { Agility=1, Intellect=0.25, AttackPower=0.4, WeaponDPS=3 },
+}
+-- model, role. Indices are the shared context's Pawn build indices, never talent guesses.
+Scoring.profiles = {
+    forever = {
+        [1] = { {"strength","DAMAGER"}, {"strength","DAMAGER"}, {"strength","TANK"} },
+        [2] = { {"healer","HEALER"}, {"protection","TANK"}, {"retribution","DAMAGER"} },
+        [3] = { {"hunter","DAMAGER"}, {"hunter","DAMAGER"}, {"hunter","DAMAGER"} },
+        [4] = { {"agility","DAMAGER"}, {"agility","DAMAGER"}, {"agility","DAMAGER"} },
+        [5] = { {"healer","HEALER"}, {"healer","HEALER"}, {"caster","DAMAGER"} },
+        [7] = { {"caster","DAMAGER"}, {"enhancement","DAMAGER"}, {"healer","HEALER"} },
+        [8] = { {"caster","DAMAGER"}, {"caster","DAMAGER"}, {"caster","DAMAGER"} },
+        [9] = { {"caster","DAMAGER"}, {"caster","DAMAGER"}, {"caster","DAMAGER"} },
+        [11] = { {"caster","DAMAGER"}, {"feral","DAMAGER"}, {"bear","TANK"}, {"healer","HEALER"} },
+    },
+    retail = {
+        [1] = { {"strength","DAMAGER"}, {"strength","DAMAGER"}, {"strength","TANK"} },
+        [2] = { {"healer","HEALER"}, {"strength","TANK"}, {"strength","DAMAGER"} },
+        [3] = { {"agility","DAMAGER"}, {"agility","DAMAGER"}, {"agility","DAMAGER"} },
+        [4] = { {"agility","DAMAGER"}, {"agility","DAMAGER"}, {"agility","DAMAGER"} },
+        [5] = { {"healer","HEALER"}, {"healer","HEALER"}, {"caster","DAMAGER"} },
+        [6] = { {"strength","TANK"}, {"strength","DAMAGER"}, {"strength","DAMAGER"} },
+        [7] = { {"caster","DAMAGER"}, {"agility","DAMAGER"}, {"healer","HEALER"} },
+        [8] = { {"caster","DAMAGER"}, {"caster","DAMAGER"}, {"caster","DAMAGER"} },
+        [9] = { {"caster","DAMAGER"}, {"caster","DAMAGER"}, {"caster","DAMAGER"} },
+        [10] = { {"agility","TANK"}, {"healer","HEALER"}, {"agility","DAMAGER"} },
+        [11] = { {"caster","DAMAGER"}, {"agility","DAMAGER", {Mastery=0.35, Haste=0.3, Crit=0.25, Versatility=0.2}}, {"agility","TANK"}, {"healer","HEALER"} },
+        [12] = { {"agility","DAMAGER"}, {"agility","TANK"}, {"caster","DAMAGER", {Mastery=0.35, Haste=0.3, Crit=0.25, Versatility=0.2}} },
+        [13] = { {"caster","DAMAGER"}, {"healer","HEALER"}, {"caster","DAMAGER"} },
+    },
+}
+Scoring.profilePatches = {
+    [16001] = {client="forever", maximum=60, revision="2026-11-10"},
+    [110207] = {client="retail", maximum=80, revision="11.2.7"},
+    [120000] = {client="retail", maximum=90, revision="12.0"},
+    [120001] = {client="retail", maximum=90, revision="12.0.1"},
+    [120005] = {client="retail", maximum=90, revision="12.0.5"},
+    [120007] = {client="retail", maximum=90, revision="12.0.7"},
+    [120100] = {client="retail", maximum=90, revision="12.1"},
+    [120105] = {client="retail", maximum=90, revision="12.1.5"},
+}
+
+function Scoring:ResolveProfile(context, level, race, interface)
+    local patch = self.profilePatches[interface]
+    if not patch or patch.client ~= context.client then return nil end
+    -- Level-cap optimization and unsupported/ambiguous builds require Pawn or manual choice.
+    if not number(level) or level < 1 or level >= patch.maximum then return nil end
+    local classes = self.profiles[context.client]
+    local builds = classes and classes[context.classID]
+    local profile = builds and builds[context.pawnSpec]
+    if not profile then return nil end
+    -- Devourer did not exist on 11.x. Never guess a future build from its class.
+    if context.classID == 12 and context.pawnSpec == 3 and interface < 120000 then return nil end
+    local tank = profile[2] == "TANK"
+    local weights = { Stamina=tank and 0.7 or 0.15, Armor=tank and 0.04 or 0.005,
+        Crit=0.25, Haste=0.25, WeaponDPS=0, SpellPower=0, Healing=0 }
+    local primary
+    for stat, weight in pairs(models[profile[1]]) do
+        weights[stat] = weight
+        if stat == "Strength" or stat == "Agility" or stat == "Intellect" then
+            if weight == 1 then primary = stat end
+        end
+    end
+    if context.client == "retail" then
+        -- Modern primary attributes provide power directly; no Classic off-stat conversions.
+        for _, stat in ipairs({"Strength", "Agility", "Intellect", "Spirit", "ManaRegen", "AttackPower", "SpellPower", "Healing"}) do
+            if stat ~= primary then weights[stat] = 0 end
+        end
+        weights.Mastery, weights.Versatility = 0.25, 0.25
+    else
+        weights.Hit = profile[2] == "HEALER" and 0 or 0.3
+        if tank then weights.Dodge, weights.Defense = 0.3, 0.3 end
+        -- Leveling recovery has greater relative value before the full toolkit arrives.
+        if level < 30 then weights.Stamina = weights.Stamina * 1.5 end
+        -- Verified multiplicative racials only. Flat hit/crit/haste/pet bonuses aren't item stats.
+        if race == "Human" and weights.Spirit then weights.Spirit = weights.Spirit * 1.1 end
+        if race == "Tauren" then weights.Stamina = weights.Stamina * 1.05 end
+    end
+    for stat, weight in pairs(profile[3] or {}) do weights[stat] = weight end
+    return { weights=weights, classID=context.classID, primaryStat=primary, role=profile[2],
+        profileKey=context.key, revision=patch.revision, levelBand=level < 30 and "early" or "leveling", slotAware=true }
+end--[[APR_DIAG]]; Scoring.ResolveProfile = APRTrace("APR-Core/features/questing/RewardScoring.lua:177:Scoring:ResolveProfile#8", Scoring.ResolveProfile)--[[/APR_DIAG]]
 
 function Scoring:GetDefaultScale()
-    local classID, primary, role = profileIdentity()
-    if not classID then return nil end
-    local tank, caster = role == "TANK", primary == "Intellect"
-    local weights = {
-        [primary] = 1,
-        Stamina = tank and 0.7 or 0.15,
-        Armor = tank and 0.04 or 0.01,
-        Crit = 0.3,
-        Haste = 0.3,
-        Hit = 0.3,
-        Mastery = 0.3,
-        Versatility = 0.3,
-        WeaponDPS = caster and 0 or 3,
-        AttackPower = caster and 0 or 0.4,
-        SpellPower = caster and 0.8 or 0,
-        Healing = role == "HEALER" and 0.8 or 0,
-        Dodge = tank and 0.3 or 0,
-        Parry = tank and 0.3 or 0,
-        Defense = tank and 0.3 or 0,
-        Block = tank and 0.3 or 0,
-    }
-    if forever() then
-        -- Forever's class-wide specialization leaves hybrid leveling builds open.
-        if classID == 2 then weights.Intellect = math.max(weights.Intellect or 0, 0.5) end
-        if classID == 7 or classID == 11 then
-            weights.Strength = math.max(weights.Strength or 0, 0.6)
-            weights.Agility = math.max(weights.Agility or 0, 0.6)
-            weights.Intellect = math.max(weights.Intellect or 0, 0.6)
-            weights.SpellPower, weights.AttackPower, weights.WeaponDPS = 0.6, 0.3, 2
-        elseif classID == 4 or classID == 1 then
-            local other = primary == "Strength" and "Agility" or "Strength"
-            weights[other] = 0.5
-        end
-        if caster or classID == 2 or classID == 3 or classID == 7 or classID == 11 then
-            weights.Spirit = role == "HEALER" and 0.5 or 0.25
-            weights.ManaRegen = 1
-        end
-        if classID == 3 then weights.Intellect = math.max(weights.Intellect or 0, 0.4) end
+    local context = APR:GetRewardBuildContext()
+    local race, interface
+    if UnitRace then local name; name, race = UnitRace("player") end
+    if GetBuildInfo then local version, build, date; version, build, date, interface = GetBuildInfo() end
+    local scale = self:ResolveProfile(context, UnitLevel and UnitLevel("player"), race, interface)
+    if not scale then return nil end
+    local identity = { tostring(scale.profileKey), scale.revision, scale.levelBand }
+    local stats = {}
+    for stat in pairs(scale.weights) do stats[#stats + 1] = stat end
+    table.sort(stats)
+    for _, stat in ipairs(stats) do
+        identity[#identity + 1] = stat .. "=" .. string.format("%.17g", scale.weights[stat])
     end
-    local scale = { weights = weights, classID = classID, primaryStat = primary, role = role, slotAware = true }
-    scale.score = --[[APR_DIAG]]
-        APRTrace(
-            "APR-Core/features/questing/RewardScoring.lua:197:callback#10", --[[/APR_DIAG]]
-            function(link, slot) return defaultScore(link, scale, slot) end --[[APR_DIAG]]
-        )--[[/APR_DIAG]]
+    scale.identity = table.concat(identity, "\031")
+    scale.score = --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RewardScoring.lua:225:callback#10", --[[/APR_DIAG]]function(link, slot) return defaultScore(link, scale, slot) end--[[APR_DIAG]])--[[/APR_DIAG]]
     return scale
-end--[[APR_DIAG]]
-Scoring.GetDefaultScale =
-    APRTrace("APR-Core/features/questing/RewardScoring.lua:155:Scoring:GetDefaultScale#9", Scoring.GetDefaultScale)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Scoring.GetDefaultScale = APRTrace("APR-Core/features/questing/RewardScoring.lua:218:Scoring:GetDefaultScale#9", Scoring.GetDefaultScale)--[[/APR_DIAG]]
 
 local slots = {
     INVTYPE_HEAD = { 1 },
@@ -240,8 +255,7 @@ local slots = {
 local function readItem(link, checkUsable)
     local getInfo = itemAPI("GetItemInfo")
     if not accessible(link) or type(link) ~= "string" or link == "" or not getInfo then return nil, false end
-    local ok, name, _, _, _, requiredLevel, _, _, _, equipLoc, _, _, classID, subclassID = --[[APR_DIAG]]
-        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](getInfo, link)
+    local ok, name, _, _, _, requiredLevel, _, _, _, equipLoc, _, _, classID, subclassID = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](getInfo, link)
     if
         not ok
         or not accessible(name)
@@ -258,8 +272,7 @@ local function readItem(link, checkUsable)
         local isEquippable = itemAPI("IsEquippableItem")
         local usableOK, equippable, usable
         if not isEquippable then return nil, false end
-        usableOK, equippable = --[[APR_DIAG]]
-            APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](isEquippable, link)
+        usableOK, equippable = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](isEquippable, link)
         if not usableOK or not accessible(equippable) or equippable == nil then return nil, false end
         if not equippable then return nil, true end
         if not number(requiredLevel) or not UnitLevel then return nil, false end
@@ -269,28 +282,24 @@ local function readItem(link, checkUsable)
         local canUse = C_PlayerInfo and C_PlayerInfo.CanUseItem
         if canUse then
             if not id then return nil, false end
-            usableOK, usable = --[[APR_DIAG]]
-                APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](canUse, id)
+            usableOK, usable = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](canUse, id)
             if not usableOK or not accessible(usable) or usable == nil then return nil, false end
             if not usable then return nil, true end
         else
             local usableAPI = itemAPI("IsUsableItem")
             if not usableAPI then return nil, false end
-            usableOK, usable = --[[APR_DIAG]]
-                APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](usableAPI, link)
+            usableOK, usable = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](usableAPI, link)
             if not usableOK or not accessible(usable) or usable == nil then return nil, false end
             if not usable then return nil, true end
         end
     end
     return { link = link, id = id, equipLoc = equipLoc, classID = classID, subclassID = subclassID }, true
-end--[[APR_DIAG]]
-readItem = APRTrace("APR-Core/features/questing/RewardScoring.lua:219:readItem#11", readItem)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; readItem = APRTrace("APR-Core/features/questing/RewardScoring.lua:247:readItem#11", readItem)--[[/APR_DIAG]]
 
 -- Scorers may return a third boolean for recommendation eligibility. It never
 -- removes the raw contribution of an equipped item from the baseline.
 local function scoreItem(item, scale, equipped, slot)
-    local ok, value, ready, recommended = --[[APR_DIAG]]
-        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](scale.score, item.link, slot)
+    local ok, value, ready, recommended = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](scale.score, item.link, slot)
     if not ok or not accessible(ready) or ready ~= true then return nil, false end
     if not equipped then
         if not accessible(recommended) then return nil, false end
@@ -300,14 +309,12 @@ local function scoreItem(item, scale, equipped, slot)
     if value == nil and equipped then return 0, true end
     if value == nil then return nil, true end
     return number(value) and value or nil, number(value)
-end--[[APR_DIAG]]
-scoreItem = APRTrace("APR-Core/features/questing/RewardScoring.lua:259:scoreItem#12", scoreItem)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; scoreItem = APRTrace("APR-Core/features/questing/RewardScoring.lua:293:scoreItem#12", scoreItem)--[[/APR_DIAG]]
 
 local function uniqueness(item)
     local getUnique = itemAPI("GetItemUniqueness")
     if not getUnique then return nil, nil, false end
-    local ok, category, maximum = --[[APR_DIAG]]
-        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](getUnique, item.link)
+    local ok, category, maximum = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](getUnique, item.link)
     if not ok or not accessible(category) then return nil, nil, false end
     if category == nil then return nil, nil, true end
     if not number(category) then return nil, nil, false end
@@ -319,31 +326,26 @@ local function uniqueness(item)
     end
     if not number(maximum) or maximum < 1 then return nil, nil, false end
     return category, maximum, true
-end--[[APR_DIAG]]
-uniqueness = APRTrace("APR-Core/features/questing/RewardScoring.lua:269:uniqueness#13", uniqueness)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; uniqueness = APRTrace("APR-Core/features/questing/RewardScoring.lua:306:uniqueness#13", uniqueness)--[[/APR_DIAG]]
 
 local function titanGrip()
     local known = C_SpellBook and C_SpellBook.IsSpellKnown or IsPlayerSpell or IsSpellKnown
     if not known then return false end
-    local ok, result = --[[APR_DIAG]]
-        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](known, 46917) -- Titan's Grip; learned capability, not merely Fury spec.
+    local ok, result = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](known, 46917) -- Titan's Grip; learned capability, not merely Fury spec.
     return ok and accessible(result) and result == true
-end--[[APR_DIAG]]
-titanGrip = APRTrace("APR-Core/features/questing/RewardScoring.lua:287:titanGrip#14", titanGrip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; titanGrip = APRTrace("APR-Core/features/questing/RewardScoring.lua:323:titanGrip#14", titanGrip)--[[/APR_DIAG]]
 
 local titanSubclasses = { [1] = true, [5] = true, [6] = true, [8] = true }
 local function titanWeapon(item, titan)
     return titan and item and item.equipLoc == "INVTYPE_2HWEAPON" and titanSubclasses[item.subclassID]
-end--[[APR_DIAG]]
-titanWeapon = APRTrace("APR-Core/features/questing/RewardScoring.lua:295:titanWeapon#15", titanWeapon)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; titanWeapon = APRTrace("APR-Core/features/questing/RewardScoring.lua:331:titanWeapon#15", titanWeapon)--[[/APR_DIAG]]
 
 local function blocksOffhand(item, titan)
     if not item or item.empty then return false end
     if item.equipLoc == "INVTYPE_2HWEAPON" then return not titanWeapon(item, titan) end
     return not forever()
         and (item.equipLoc == "INVTYPE_RANGED" or (item.equipLoc == "INVTYPE_RANGEDRIGHT" and item.subclassID ~= 19))
-end--[[APR_DIAG]]
-blocksOffhand = APRTrace("APR-Core/features/questing/RewardScoring.lua:299:blocksOffhand#16", blocksOffhand)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; blocksOffhand = APRTrace("APR-Core/features/questing/RewardScoring.lua:335:blocksOffhand#16", blocksOffhand)--[[/APR_DIAG]]
 
 local function canPair(main, offhand, titan, dual)
     if not offhand or offhand.empty then return true end
@@ -356,8 +358,7 @@ local function canPair(main, offhand, titan, dual)
     if loc == "INVTYPE_2HWEAPON" then return dual and titanWeapon(offhand, titan) end
     if loc == "INVTYPE_WEAPON" or loc == "INVTYPE_WEAPONOFFHAND" then return dual end
     return loc == "INVTYPE_SHIELD" or loc == "INVTYPE_HOLDABLE"
-end--[[APR_DIAG]]
-canPair = APRTrace("APR-Core/features/questing/RewardScoring.lua:306:canPair#17", canPair)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; canPair = APRTrace("APR-Core/features/questing/RewardScoring.lua:342:canPair#17", canPair)--[[/APR_DIAG]]
 
 local function canMoveToMain(item)
     if not item or item.empty then return false end
@@ -366,8 +367,7 @@ local function canMoveToMain(item)
         or loc == "INVTYPE_WEAPONMAINHAND"
         or loc == "INVTYPE_2HWEAPON"
         or (not forever() and (loc == "INVTYPE_RANGED" or loc == "INVTYPE_RANGEDRIGHT"))
-end--[[APR_DIAG]]
-canMoveToMain = APRTrace("APR-Core/features/questing/RewardScoring.lua:319:canMoveToMain#18", canMoveToMain)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; canMoveToMain = APRTrace("APR-Core/features/questing/RewardScoring.lua:355:canMoveToMain#18", canMoveToMain)--[[/APR_DIAG]]
 
 local function handScore(main, offhand, scale)
     local total = 0
@@ -381,8 +381,7 @@ local function handScore(main, offhand, scale)
         end
     end
     return number(total) and total or nil
-end--[[APR_DIAG]]
-handScore = APRTrace("APR-Core/features/questing/RewardScoring.lua:370:handScore#21", handScore)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handScore = APRTrace("APR-Core/features/questing/RewardScoring.lua:364:handScore#19", handScore)--[[/APR_DIAG]]
 
 local function weaponGain(candidate, plan, replaced, scale, equipped)
     local main, offhand = equipped(16, true), equipped(17, true)
@@ -398,8 +397,7 @@ local function weaponGain(candidate, plan, replaced, scale, equipped)
     local total = handScore(after[16], after[17], scale)
     if not total then return nil, false end
     return total - before, true
-end--[[APR_DIAG]]
-weaponGain = APRTrace("APR-Core/features/questing/RewardScoring.lua:385:weaponGain#22", weaponGain)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; weaponGain = APRTrace("APR-Core/features/questing/RewardScoring.lua:378:weaponGain#20", weaponGain)--[[/APR_DIAG]]
 
 local function weaponSteps(candidate, plan, direct, scale, equipped)
     if not plan.move then return end
@@ -429,8 +427,7 @@ local function weaponSteps(candidate, plan, direct, scale, equipped)
     end
     plan.steps = { second, first }
     plan.intermediate = { [move.from] = false, [move.to] = move.link }
-end--[[APR_DIAG]]
-weaponSteps = APRTrace("APR-Core/features/questing/RewardScoring.lua:409:weaponSteps#23", weaponSteps)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; weaponSteps = APRTrace("APR-Core/features/questing/RewardScoring.lua:394:weaponSteps#21", weaponSteps)--[[/APR_DIAG]]
 
 function Scoring:GetUpgrade(link, scale)
     scale = scale or self:GetDefaultScale()
@@ -455,7 +452,8 @@ function Scoring:GetUpgrade(link, scale)
     local category, maximum, uniqueReady = uniqueness(candidate)
     if not uniqueReady then return nil, false end
     local cache, relevant = {}, {}
-    local comparison = { string.format("%.17g", value), loc, tostring(category), tostring(maximum) }
+    local comparison = { string.format("%.17g", value), loc, tostring(category), tostring(maximum),
+        tostring(scale.profileKey), tostring(scale.revision), tostring(scale.levelBand) }
     -- Default weights are part of the scoring context even when an edit happens
     -- to leave these particular items' totals unchanged. Never serialize closures.
     local stats = {}
@@ -486,8 +484,7 @@ function Scoring:GetUpgrade(link, scale)
             item.value = score
         end
         return item
-    end--[[APR_DIAG]]
-    equipped = APRTrace("APR-Core/features/questing/RewardScoring.lua:343:equipped#20", equipped)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; equipped = APRTrace("APR-Core/features/questing/RewardScoring.lua:457:equipped#23", equipped)--[[/APR_DIAG]]
     -- Removed objects are distinct from destination slots: retained weapons stay
     -- in uniqueness checks and their destination contribution is rescored below.
     local possibilities, plans = {}, {}
@@ -623,6 +620,4 @@ function Scoring:GetUpgrade(link, scale)
         end
     end
     return best, true, bestPlan, table.concat(comparison, "\031")
-end--[[APR_DIAG]]
-Scoring.GetUpgrade =
-    APRTrace("APR-Core/features/questing/RewardScoring.lua:326:Scoring:GetUpgrade#19", Scoring.GetUpgrade)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Scoring.GetUpgrade = APRTrace("APR-Core/features/questing/RewardScoring.lua:424:Scoring:GetUpgrade#22", Scoring.GetUpgrade)--[[/APR_DIAG]]

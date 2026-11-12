@@ -3,6 +3,13 @@ local items, byID, inventory = {}, {}, {}
 local classID, primaryStat, role, client, dual, titan = 1, nil, nil, "retail", false, false
 local level, seenStats = 20, {}
 APR = { GAME_VERSIONS = { Retail = "retail", Forever = "forever" } }
+function APR:GetRewardBuildContext()
+    local build = 1
+    if classID == 12 and primaryStat == 4 then build = role == "TANK" and 2 or 3 end
+    if client == "forever" and classID == 7 then build = 2 end
+    return {client=client, classID=classID, pawnSpec=build, className="Fixture class", label=primaryStat and "Fixture class - Fixture spec"}
+end
+function GetBuildInfo() return nil, nil, nil, client == "forever" and 16001 or 120105 end
 function APR:GetGameVersion() return client end
 UnitClass = function() return "Fixture class", "FIXTURE", classID end
 UnitLevel = function() return level end
@@ -244,6 +251,16 @@ local gain, ready = scoring:GetUpgrade(newVariant, scale)
 assert(gain == nil and ready == false)
 items[newVariant].missingStats = false
 
+-- Equal item totals still belong to a specific model revision/build/level band.
+local _, _, _, baseComparison = scoring:GetUpgrade(newVariant, scale)
+for _, field in ipairs({"profileKey", "revision", "levelBand"}) do
+    local before = scale[field]
+    scale[field] = "synthetic changed context"
+    local _, _, _, changedComparison = scoring:GetUpgrade(newVariant, scale)
+    assert(changedComparison ~= baseComparison, "Changed scoring context invalidates an ignored comparison")
+    scale[field] = before
+end
+
 -- Native primary/role data adapts the default without freezing editorial weight constants.
 for id = 1, 13 do
     classID = id
@@ -266,7 +283,7 @@ local tankScale = scoring:GetDefaultScale()
 assert(tankScale.weights.Stamina > scale.weights.Stamina and tankScale.weights.Armor > scale.weights.Armor)
 classID, primaryStat, role, client = 7, nil, nil, "forever"
 scale = scoring:GetDefaultScale()
-assert(scale.weights.Strength > 0 and scale.weights.Intellect > 0 and scale.weights.Spirit > 0)
+assert(scale.weights.Strength > 0 and scale.weights.Intellect > 0 and scale.weights.SpellPower > 0)
 classID = 99
 assert(scoring:GetDefaultScale() == nil)
 
