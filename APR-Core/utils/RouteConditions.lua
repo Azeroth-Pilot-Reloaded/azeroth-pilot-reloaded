@@ -42,15 +42,15 @@ local function Matches(name, id, wanted, wantedName, requirement)
     return (wanted and id == wanted)
         or (wantedName and name == wantedName)
         or (name and requirement.skill and name:lower():gsub("%s", "") == requirement.skill)
-end--[[APR_DIAG]]
-Matches = APRTrace("APR-Core/utils/RouteConditions.lua:41:Matches#1", Matches)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Matches = APRTrace("APR-Core/utils/RouteConditions.lua:41:Matches#1", Matches)--[[/APR_DIAG]]
 
 function APR:GetRouteSkill(requirement)
     local wanted = tonumber(requirement.skillID) or tonumber(requirement.skill) or skills[requirement.skill]
     -- Numeric lookups do not need a localized spell name or a skill-list scan.
     if wanted and C_SkillInfo and C_SkillInfo.GetSkillLineInfoByID then
         local info = C_SkillInfo.GetSkillLineInfoByID(wanted)
-        return info and not info.isHeader and (requirement.maximum and info.maxRank or info.rank) or 0
+        return info and not info.isHeader and (tonumber(requirement.maximum and info.maxRank or info.rank) or 0) or 0,
+            info and not info.isHeader and info.name or nil
     end
     local wantedName = requirement.name
     local spellID = skillSpells[requirement.skill]
@@ -71,7 +71,7 @@ function APR:GetRouteSkill(requirement)
             for i = 1, C_SkillInfo.GetNumSkillLines() do
                 local info = C_SkillInfo.GetSkillLineInfo(i)
                 if info and not info.isHeader and Matches(info.name, info.skillID, wanted, wantedName, requirement) then
-                    return requirement.maximum and info.maxRank or info.rank
+                    return tonumber(requirement.maximum and info.maxRank or info.rank) or 0, info.name
                 end
             end
             return 0
@@ -80,7 +80,7 @@ function APR:GetRouteSkill(requirement)
     for i = 1, (GetNumSkillLines and GetSkillLineInfo and GetNumSkillLines() or 0) do
         local name, header, _, rank, _, _, maximum, _, _, _, _, _, id = GetSkillLineInfo(i)
         if not header and Matches(name, id, wanted, wantedName, requirement) then
-            return requirement.maximum and maximum or rank
+            return tonumber(requirement.maximum and maximum or rank) or 0, name
         end
     end
     if GetProfessions and GetProfessionInfo then
@@ -88,13 +88,12 @@ function APR:GetRouteSkill(requirement)
         for _, index in pairs(indices) do
             local name, _, rank, maximum, _, _, id = GetProfessionInfo(index)
             if (wanted and id == wanted) or (wantedName and name == wantedName) then
-                return requirement.maximum and maximum or rank
+                return tonumber(requirement.maximum and maximum or rank) or 0, name
             end
         end
     end
     return 0
-end--[[APR_DIAG]]
-APR.GetRouteSkill = APRTrace("APR-Core/utils/RouteConditions.lua:46:APR:GetRouteSkill#2", APR.GetRouteSkill)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetRouteSkill = APRTrace("APR-Core/utils/RouteConditions.lua:47:APR:GetRouteSkill#2", APR.GetRouteSkill)--[[/APR_DIAG]]
 
 --- Count learned primary professions, excluding every secondary skill.
 function APR:GetPrimaryProfessionCount()
@@ -109,9 +108,7 @@ function APR:GetPrimaryProfessionCount()
         if self:GetRouteSkill({ skillID = skillID }) > 0 then count = count + 1 end
     end
     return count
-end--[[APR_DIAG]]
-APR.GetPrimaryProfessionCount =
-    APRTrace("APR-Core/utils/RouteConditions.lua:96:APR:GetPrimaryProfessionCount#3", APR.GetPrimaryProfessionCount)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetPrimaryProfessionCount = APRTrace("APR-Core/utils/RouteConditions.lua:99:APR:GetPrimaryProfessionCount#3", APR.GetPrimaryProfessionCount)--[[/APR_DIAG]]
 
 -- Nested conditions use the full predicate set, exactly like top-level step filters.
 function APR:MeetsExtendedRouteConditions(conditions, levelPolicy)
@@ -135,8 +132,4 @@ function APR:MeetsExtendedRouteConditions(conditions, levelPolicy)
     if conditions.EquippedItem and not self:MeetsEquippedItem(conditions.EquippedItem) then return false end
     if conditions.Collection and not self:IsRouteCollectionComplete(conditions.Collection) then return false end
     return true
-end--[[APR_DIAG]]
-APR.MeetsExtendedRouteConditions = APRTrace(
-    "APR-Core/utils/RouteConditions.lua:111:APR:MeetsExtendedRouteConditions#4",
-    APR.MeetsExtendedRouteConditions
-)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.MeetsExtendedRouteConditions = APRTrace("APR-Core/utils/RouteConditions.lua:114:APR:MeetsExtendedRouteConditions#4", APR.MeetsExtendedRouteConditions)--[[/APR_DIAG]]

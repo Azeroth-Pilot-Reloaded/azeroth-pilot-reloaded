@@ -346,6 +346,17 @@ for _, event in ipairs({ "money", "equipment", "inventory" }) do
     APR.event.functions[event]()
     assert(#timers == before + 1, event .. " refreshes nested VendorMoney conditions")
 end
+APR.event:CleanupEvents()
+currentStep = { SkillGoal = { skillID = 8888, rank = 10 } }
+local beforeSkillTimers, beforeSkillUpdates = #timers, updates
+for _ = 1, 20 do APR.event.functions.skill() end
+assert(#timers == beforeSkillTimers + 1, "Skill bursts share one existing dispatcher refresh")
+timers[#timers].callback()
+assert(updates == beforeSkillUpdates + 1)
+currentStep = { PickUp = { 1 } }
+APR.event.functions.skill()
+assert(#timers == beforeSkillTimers + 1, "Unrelated steps stay dormant on skill changes")
+APR.event:CleanupEvents()
 print("Route resources: money, inventory, equipment, Hardcore, branching and coalesced events passed")
 
 -- Primary-profession limits control both visibility and automatic progression.
@@ -427,6 +438,11 @@ do
     }
     assert(APR:GetRouteSkill({ skill = "mining" }) == 12)
     assert(APR:GetRouteSkill({ skillID = 186, maximum = true }) == 75)
+    local goal = { SkillGoal = { skillID = 186, rank = 15 }, Class = "WARRIOR" }
+    assert(APR:StepFilterQoL(goal) and not APR:StepFilterQuestHandler(goal), "A pending goal is visible and actionable")
+    goal.Class = "MAGE"
+    assert(not APR:StepFilterQoL(goal) and APR:StepFilterQuestHandler(goal), "Goal visibility uses the same class filters")
+
     local meetsItem, extended = APR.MeetsItemCount, APR.MeetsExtendedRouteConditions
     APR.MeetsItemCount = function() return false end
     APR.MeetsExtendedRouteConditions = function() error("Missing item must short circuit skill checks") end

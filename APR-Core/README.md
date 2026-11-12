@@ -8,6 +8,16 @@ display limit. `Coord` remains the arrow's entry point. These locations do not a
 draw a patrol line, or track a moving NPC. They disappear when the step changes or markers are disabled, and reuse
 pooled frames on refresh. `Coords` retains its existing role of selecting a coordinate by zone.
 
+A route step may declare `SkillGoal = { skillID = 8888, rank = 25 }` as its primary action.
+Both fields are positive integers. It waits for the native skill rank to reach or exceed
+`rank`; unknown or unlearned skills report zero and cannot complete it. The current
+step, arrow and quest-order preview show the native localized skill name and
+`current/target` progress. Skill changes refresh through the existing event dispatcher.
+Crafting stays manual; bag counts, recipe casts and projected craft quantities never
+complete a skill goal. Ordinary step conditions and parallel-step conditions still apply.
+`GetRouteSkill` retains the rank as its first result and additionally returns the native
+localized name when available. Existing group snapshots carry the rendered progress text.
+
 The [30 October 2026 performance audit](../tools/validation/README.md#performance-audit-30-october-2026)
 documents the latest spike-focused corrections, synthetic before/after operation
 counts, complete test outcome and remaining in-game measurements.

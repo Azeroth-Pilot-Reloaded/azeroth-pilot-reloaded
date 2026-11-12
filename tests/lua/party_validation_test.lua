@@ -19,6 +19,10 @@ local clean = assert(protocol.NormalizeSnapshot(snapshot(), "Player-Home"))
 assert(clean.username == "Player" and clean.stepFrameDetails.questSteps[1].text == "Quest")
 assert(protocol.NormalizeSnapshot(snapshot(), "Player-Other").username == "Player-Other")
 assert(not protocol.NormalizeSnapshot(snapshot(), "Impostor-Home"))
+local goalSnapshot = snapshot()
+goalSnapshot.stepFrameDetails.questSteps = { { text = "Métier inventé (9/10)" } }
+assert(protocol.NormalizeSnapshot(goalSnapshot, "Player-Home").stepFrameDetails.questSteps[1].text == "Métier inventé (9/10)",
+    "Skill progress uses the existing peer text contract without executing a local skill query")
 local data = snapshot()
 data.username = "Player-Other"
 assert(not protocol.NormalizeSnapshot(data, "Player-Home"))

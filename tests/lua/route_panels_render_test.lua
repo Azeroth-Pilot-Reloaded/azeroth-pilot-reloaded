@@ -402,6 +402,26 @@ assertLootDetails(0)
 print(
     "Quest order loot: absent cache, optional quest, unavailable count, bags, saved/live bank, completion and passed steps passed"
 )
+-- Future skill goals render actual rank with completion colors, without executing crafts.
+local skillReader = APR.GetRouteSkill
+local skillRank = 7
+APR.GetRouteSkill = function(_, goal)
+    assert(goal.skillID == 8888)
+    return skillRank, "Métier inventé"
+end
+APR.RouteQuestStepList.loot = { { Note = "Before crafting" }, { SkillGoal = { skillID = 8888, rank = 10 } } }
+APRData.player.loot = 1
+for _, rank in ipairs({ 7, 10, 12 }) do
+    skillRank = rank
+    list:AddStepFromRoute(true)
+    drainRender()
+    local row = list.rawStepContainers[2]
+    assert(row.stepText == "Métier inventé (" .. rank .. "/10)")
+    assert(row.color == (rank >= 10 and "green" or "gray"), tostring(rank) .. ": " .. tostring(row.color))
+end
+assert(#failures == errorsBeforeLoot and APRData.player.loot == 1, "Preview never changes live progress")
+APR.GetRouteSkill = skillReader
+
 -- Merchant purchases may have no linked quest, including in future route steps.
 local completedMerchantQuests = { [123] = true }
 C_QuestLog.IsQuestFlaggedCompleted = function(id)
