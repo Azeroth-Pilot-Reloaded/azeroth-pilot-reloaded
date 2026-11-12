@@ -285,11 +285,11 @@ function Finder:RequestAPRRoster(transport)
                     or first == ""
                 )
             then
-                local valid, count = --[[APR_DIAG]]
+                local countValid, count = --[[APR_DIAG]]
                     APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](GetNumDisplayChannels)
-                if valid and PositiveInteger(count) then
+                if countValid and PositiveInteger(count) then
                     for other = 1, math.min(128, count) do
-                        local read, _, header, _, number, _, active = --[[APR_DIAG]]
+                        local read, _, otherHeader, _, number, _, active = --[[APR_DIAG]]
                             APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](
                                 GetChannelDisplayInfo,
                                 other
@@ -297,8 +297,8 @@ function Finder:RequestAPRRoster(transport)
                         if
                             read
                             and other ~= index
-                            and Public(header)
-                            and not header
+                            and Public(otherHeader)
+                            and not otherHeader
                             and PositiveInteger(number)
                             and Public(active)
                             and active == true
