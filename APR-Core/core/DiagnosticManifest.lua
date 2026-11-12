@@ -69,7 +69,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/integrations/Pawn.lua"] = {instrumented = 41, diagnosticHelpers = 0},
     ["APR-Core/integrations/QuestTracker.lua"] = {instrumented = 48, diagnosticHelpers = 0},
     ["APR-Core/integrations/SkinRegistry.lua"] = {instrumented = 18, diagnosticHelpers = 0},
-    ["APR-Core/ui/foundations/ReloadConfirmation.lua"] = {instrumented = 7, diagnosticHelpers = 0},
+    ["APR-Core/ui/foundations/ReloadConfirmation.lua"] = {instrumented = 12, diagnosticHelpers = 0},
     ["APR-Core/ui/foundations/SelectionDialog.lua"] = {instrumented = 30, diagnosticHelpers = 0},
     ["APR-Core/ui/foundations/SettingsRows.lua"] = {instrumented = 18, diagnosticHelpers = 0},
     ["APR-Core/ui/foundations/SettingsWidgets.lua"] = {instrumented = 76, diagnosticHelpers = 0},

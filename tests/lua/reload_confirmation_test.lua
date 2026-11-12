@@ -6,6 +6,11 @@ function env.methods:Hide()
     hide(self)
     if shown and self.scripts.OnHide then self.scripts.OnHide(self) end
 end
+function env.methods:RegisterEvent(event)
+    self.events = self.events or {}
+    self.events[event] = true
+end
+function env.methods:UnregisterAllEvents() self.events = {} end
 local reloads, mutations = 0, 0
 C_UI = { Reload = function() reloads = reloads + 1 end }
 local popup = APR:RequestReload(function() mutations = mutations + 1 end)
@@ -177,7 +182,7 @@ APR:RequestReload()
 popup.acceptButton.scripts.OnClick(popup.acceptButton)
 assert(reloads == before + 1, "The legacy reload fallback still works")
 
--- Forever must never call either protected entry point, even when both exist.
+-- Forever tries the native reload too; only observed failure requires manual instructions.
 function APR:GetGameVersion() return self.GAME_VERSIONS.Forever end
 local notices = {}
 function APR:PrintInfo(message) notices[#notices + 1] = message end
@@ -185,7 +190,7 @@ local function blockedReload() error("Forever blocked the addon reload") end
 C_UI, ReloadUI = { Reload = blockedReload }, blockedReload
 before = mutations
 APR:RequestReload(function() mutations = mutations + 1 end, "Custom confirmation")
-assert(popup.title:GetText() == "Custom confirmation\n\nUI_RELOAD_MANUAL_INSTRUCTION")
+assert(popup.title:GetText() == "Custom confirmation" and popup.description:GetText() == "")
 staleAccept = popup.onAccept
 popup:Hide()
 staleAccept()
@@ -211,6 +216,56 @@ assert(
     not pcall(popup.Accept, popup) and not APR.reloadConfirmationAccepted and #notices == 1,
     "Rejected or failed actions must not claim changes need reloading"
 )
+
+-- A successful Forever reload has no manual warning and leaves no idle listener.
+local attempts = 0
+ReloadUI = function()
+    assert(popup:IsShown() and popup.acceptButton:IsShown(), "The accepting control must stay visible until the reload call")
+    assert(debug.getinfo(2, "S").what == "Lua", "Call the native API from a Lua click callback, not as pcall's C target")
+    attempts = attempts + 1
+    local watcher = APR.reloadAttemptFrame
+    watcher.scripts.OnEvent(watcher, "PLAYER_LOGOUT")
+end
+C_UI.Reload = function() error("Forever should use its ReloadUI wrapper") end
+APR:RequestReload()
+popup.acceptButton.scripts.OnClick(popup.acceptButton)
+assert(attempts == 1 and #notices == 1 and not popup:IsShown())
+local watcher = APR.reloadAttemptFrame
+assert(not next(watcher.events) and not watcher.scripts.OnUpdate and not watcher.scripts.OnEvent)
+
+-- A silent refusal is detected after a bounded grace period, with no reapplication.
+ReloadUI = function() attempts = attempts + 1 end
+APR:RequestReload(function() mutations = mutations + 1 end)
+popup:Accept()
+local applied, count = mutations, #notices
+watcher.scripts.OnUpdate(watcher, 2.9)
+assert(#notices == count and not popup:IsShown())
+local timeout = watcher.scripts.OnUpdate
+timeout(watcher, 0.1)
+timeout(watcher, 1)
+assert(#notices == count + 1 and popup:IsShown() and mutations == applied)
+assert(not next(watcher.events) and not watcher.scripts.OnUpdate and not watcher.scripts.OnEvent)
+popup:Accept()
+assert(mutations == applied, "Acknowledging manual instructions cannot apply changes twice")
+
+-- Native blocked events can be delivered after the API returns without an error.
+for _, event in ipairs({ "ADDON_ACTION_BLOCKED", "ADDON_ACTION_FORBIDDEN" }) do
+    for _, functionName in ipairs({ "Reload()", "ReloadUI()", "C_UI.Reload()" }) do
+        APR:RequestReload()
+        popup:Accept()
+        local handler = watcher.scripts.OnEvent
+        local count = #notices
+        handler(watcher, event, "OtherAddon", "C_UI.Reload()")
+        handler(watcher, event, "APR", "OtherProtectedAction()")
+        assert(#notices == count and not popup:IsShown())
+        handler(watcher, event, "APR", functionName)
+        handler(watcher, event, "APR", functionName)
+        assert(#notices == count + 1 and popup:IsShown())
+        assert(popup.title.role == "accent" and popup.description:GetText() == "UI_RELOAD_MANUAL_INSTRUCTION")
+        assert(not next(watcher.events) and not watcher.scripts.OnUpdate and not watcher.scripts.OnEvent)
+        popup:Hide()
+    end
+end
 
 print(
     "Reload confirmation: cancellation, one-shot acceptance, reset commands, isolated profile handlers, conditional snaps and manual Forever reloads passed"

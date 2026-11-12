@@ -4,6 +4,13 @@ function LibStub()
     return { GetLocale = function() return locale end }
 end
 APR = {}
+function CreateFrame()
+    return {
+        RegisterEvent = function() end,
+        UnregisterAllEvents = function() end,
+        SetScript = function() end,
+    }
+end
 dofile("APR-Core/ui/foundations/ReloadConfirmation.lua")
 dofile("APR-Core/utils/Utils.lua")
 dofile("APR-Core/utils/ProfileUtils.lua")

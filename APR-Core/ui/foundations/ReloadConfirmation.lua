@@ -3,6 +3,60 @@ local APRTrace = APRInstrumentation and APRInstrumentation.Wrap or function(_, f
 local APRYield = APRInstrumentation and APRInstrumentation.Yield or coroutine.yield
 local APRResume = APRInstrumentation and APRInstrumentation.Resume or coroutine.resume
 local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
+-- Watch only the reload attempt; unrelated protected actions must not show reload advice.
+local function AttemptReload(self, prompt, owner)
+    local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+    local frame = self.reloadAttemptFrame or CreateFrame("Frame")
+    self.reloadAttemptFrame = frame
+    frame:UnregisterAllEvents()
+    local finished, elapsed = false, 0
+    local function Finish(blocked)
+        if finished then return end
+        finished = true
+        frame:UnregisterAllEvents()
+        frame:SetScript("OnEvent", nil)
+        frame:SetScript("OnUpdate", nil)
+        if blocked then
+            self:PrintInfo(L["UI_RELOAD_MANUAL_INSTRUCTION"])
+            self.UI:ShowConfirmationDialog(prompt .. "\n\n" .. L["UI_RELOAD_MANUAL_INSTRUCTION"], nil, nil, owner)
+        end
+    end--[[APR_DIAG]]; Finish = APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:13:Finish#2", Finish)--[[/APR_DIAG]]
+    frame:RegisterEvent("ADDON_ACTION_BLOCKED")
+    frame:RegisterEvent("ADDON_ACTION_FORBIDDEN")
+    frame:RegisterEvent("PLAYER_LOGOUT")
+    frame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:27:callback#3", --[[/APR_DIAG]]function(_, event, addonName, functionName)
+        if event == "PLAYER_LOGOUT" then
+            Finish(false)
+            return
+        end
+        if addonName ~= "APR" or type(functionName) ~= "string" then return end
+        local name = functionName:match("^%s*([%w_%.]+)")
+        if name == "Reload" or name == "ReloadUI" or name == "C_UI.Reload" then Finish(true) end
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    frame:SetScript("OnUpdate", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:36:callback#4", --[[/APR_DIAG]]function(_, delta)
+        elapsed = elapsed + delta
+        -- A successful reload starts logout before returning to ordinary UI updates.
+        -- Some clients reject the call without an error or a blocked-action event.
+        if elapsed >= 3 then Finish(true) end
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    -- Keep the call inside the accepting hardware event on every client.
+    -- Questie's Forever fix uses ReloadUI from the still-visible dialog button.
+    -- Keep a Lua callback between pcall and the native API (hardware-event context).
+    local ok, result = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](--[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:45:callback#5", --[[/APR_DIAG]]function()
+        if self.GetGameVersion and self.GAME_VERSIONS
+            and self:GetGameVersion() == self.GAME_VERSIONS.Forever and type(ReloadUI) == "function" then
+            ReloadUI()
+        elseif C_UI and type(C_UI.Reload) == "function" then
+            C_UI.Reload()
+        elseif type(ReloadUI) == "function" then
+            ReloadUI()
+        else
+            return false
+        end
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    if not ok or result == false then Finish(true) end
+end--[[APR_DIAG]]; AttemptReload = APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:7:AttemptReload#1", AttemptReload)--[[/APR_DIAG]]
+
 -- Every APR-triggered reload is accepted through the same themed confirmation.
 -- Callers defer their settings/data changes until acceptance, so Cancel is a true no-op.
 function APR:RequestReload(action, text, owner)
@@ -11,45 +65,29 @@ function APR:RequestReload(action, text, owner)
         return true
     end
     local L = LibStub("AceLocale-3.0"):GetLocale("APR")
-    -- Forever can block addon-triggered reloads even from the confirmation click.
-    -- ReloadUI wraps C_UI.Reload there too, so leave the command to the player.
-    local manualReload = self:GetGameVersion() == self.GAME_VERSIONS.Forever
     local prompt = text or L["UI_RELOAD_CONFIRM"]
-    if manualReload then prompt = prompt .. "\n\n" .. L["UI_RELOAD_MANUAL_INSTRUCTION"] end
     local finished = false
     return self.UI:ShowConfirmationDialog(
-        prompt, --[[APR_DIAG]]
-        APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:20:callback#2", --[[/APR_DIAG]] function()
+        prompt,
+         --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:72:callback#7", --[[/APR_DIAG]]function()
             if finished then return end
             finished = true
             self.reloadConfirmationAccepted = true
-            local ok, result = --[[APR_DIAG]]
-                APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](--[[APR_DIAG]]
-                    APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:24:callback#3", --[[/APR_DIAG]] function()
+            local ok, result = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](
+                     --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:77:callback#8", --[[/APR_DIAG]]function()
                         if action then return action() end
-                    end--[[APR_DIAG]]) --[[/APR_DIAG]]
+                    end--[[APR_DIAG]])--[[/APR_DIAG]]
                 )
             self.reloadConfirmationAccepted = nil
             if not ok then error(result, 0) end
             if result == false then return end
-            if manualReload then
-                self:PrintInfo(L["UI_RELOAD_MANUAL_INSTRUCTION"])
-                return
-            end
-            if C_UI and C_UI.Reload then
-                C_UI.Reload()
-            else
-                ReloadUI()
-            end
-        end--[[APR_DIAG]]) --[[/APR_DIAG]], --[[APR_DIAG]]
-        APRTrace(
-            "APR-Core/ui/foundations/ReloadConfirmation.lua:33:callback#4", --[[/APR_DIAG]]
-            function() finished = true end --[[APR_DIAG]]
-        ) --[[/APR_DIAG]],
+            AttemptReload(self, prompt, owner)
+        end--[[APR_DIAG]])--[[/APR_DIAG]],
+
+            --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:87:callback#9", --[[/APR_DIAG]]function() finished = true end--[[APR_DIAG]])--[[/APR_DIAG]] ,
         owner
     )
-end--[[APR_DIAG]]
-APR.RequestReload = APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:8:APR:RequestReload#1", APR.RequestReload)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RequestReload = APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:62:APR:RequestReload#6", APR.RequestReload)--[[/APR_DIAG]]
 
 -- AceDB's callbacks run inside the accepted action and must not ask a second time.
 function APR:ConfirmProfileOptions(source)
@@ -70,30 +108,26 @@ function APR:ConfirmProfileOptions(source)
         if option then
             local method = option.type == "execute" and "func" or "set"
             local original = option[method]
-            option[method] = --[[APR_DIAG]]
-                APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:51:callback#6", --[[/APR_DIAG]] function(...)
+            option[method] =
+                 --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:112:callback#11", --[[/APR_DIAG]]function(...)
                     local args = { ... }
                     local count = select("#", ...)
                     if (key == "new" or key == "choose") and args[2] == self.settings.db:GetCurrentProfile() then
                         return
                     end
-                    self:RequestReload(--[[APR_DIAG]]
-                        APRTrace(
-                            "APR-Core/ui/foundations/ReloadConfirmation.lua:55:callback#7", --[[/APR_DIAG]]
-                            function()
+                    self:RequestReload(
+
+                            --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:120:callback#12", --[[/APR_DIAG]]function()
                                 if type(original) == "string" then
                                     source.handler[original](source.handler, unpack(args, 1, count))
                                 else
                                     original(unpack(args, 1, count))
                                 end
-                            end --[[APR_DIAG]]
-                        ) --[[/APR_DIAG]]
+                            end--[[APR_DIAG]])--[[/APR_DIAG]]
                     )
                 end--[[APR_DIAG]])--[[/APR_DIAG]]
             option.confirm = false
         end
     end
     return options
-end--[[APR_DIAG]]
-APR.ConfirmProfileOptions =
-    APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:37:APR:ConfirmProfileOptions#5", APR.ConfirmProfileOptions)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ConfirmProfileOptions = APRTrace("APR-Core/ui/foundations/ReloadConfirmation.lua:93:APR:ConfirmProfileOptions#10", APR.ConfirmProfileOptions)--[[/APR_DIAG]]

@@ -103,6 +103,11 @@ for _, name in ipairs(UISpecialFrames) do
     if name == "APRSelectionPopup" then registrations = registrations + 1 end
 end
 assert(registrations == 1)
+-- Plain multi-paragraph confirmations separate the heading from their body.
+frame = APR.UI:ShowConfirmationDialog("Synthetic title\n\nSynthetic body\n\nMore details")
+assert(frame.title:GetText() == "Synthetic title" and frame.title.role == "accent")
+assert(frame.description:GetText() == "Synthetic body\n\nMore details" and frame.description:IsShown())
+frame:Hide()
 -- Confirmation reuses the shell, but only an explicit Accept invokes its action.
 local accepted, declined = 0, 0
 local function confirm()
@@ -150,7 +155,7 @@ UIParent:SetSize(380, 320)
 frame = warn()
 assert(
     frame.title:GetText() == "Invented route"
-        and frame.title.role == "base"
+        and frame.title.role == "accent"
         and frame.description:GetText() == "Continue?"
         and frame.acceptButton:GetFontString():GetText() == "Add route"
 )
@@ -239,3 +244,15 @@ assert(cancelledPrivate == 1)
 print(
     "Selection dialog: disabled choices, callbacks, cancellation, replacement, tooltips, bounded layout and recycled controls passed"
 )
+
+-- Acceptance keeps the clicked control active and preserves replacement prompts.
+local inside = false
+frame = APR.UI:ShowConfirmationDialog("First decision", function()
+    inside = frame:IsShown() and frame.acceptButton:IsShown()
+    APR.UI:ShowConfirmationDialog("Replacement decision")
+end)
+frame.acceptButton.scripts.OnClick(frame.acceptButton)
+assert(inside and frame:IsShown() and frame.title:GetText() == "Replacement decision")
+frame:Hide()
+frame = APR.UI:ShowConfirmationDialog("Failing decision", function() error("Synthetic acceptance failure") end)
+assert(not pcall(frame.Accept, frame) and not frame:IsShown() and not frame.onAccept)

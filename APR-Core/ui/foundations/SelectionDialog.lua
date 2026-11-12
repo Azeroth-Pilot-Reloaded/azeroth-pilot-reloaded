@@ -146,6 +146,8 @@ local function CreateSelectionDialog(name)
     UI:Tooltip(frame.close, CLOSE)
 
     frame.description = UI:Label(frame, "", 12)
+    frame.description:SetTextColor(1, 1, 1, 1)
+    APR:RegisterFontString(frame.description, "general", { preserveColor = true })
     frame.description:SetWordWrap(true)
     frame.body = UI:Panel(frame, "borderedPanel", "stone")
     frame.scroll = UI:Scroll(frame.body)
@@ -184,9 +186,14 @@ local function CreateSelectionDialog(name)
 
     function frame:Accept()
         local callback = self.onAccept
+        local generation = self.dialogGeneration
         self.onAccept, self.onCancel = nil, nil
-        self:Hide()
-        if callback then callback() end
+        -- Restricted hardware actions need the clicked control to remain active.
+        -- A callback may replace this pooled dialog, so only hide this generation.
+        local ok, result = true, nil
+        if callback then ok, result = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](callback) end
+        if self.dialogGeneration == generation then self:Hide() end
+        if not ok then error(result, 0) end
     end--[[APR_DIAG]]
     frame.Accept = APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:50:frame:Accept#6", frame.Accept)--[[/APR_DIAG]]
 
@@ -220,6 +227,8 @@ local function CreateSelectionDialog(name)
             row.button:GetFontString():SetJustifyH("LEFT")
             row.button:GetFontString():SetWordWrap(true)
             row.detail = UI:Label(row, "", 13, "base")
+            row.detail:SetTextColor(1, 1, 1, 1)
+            APR:RegisterFontString(row.detail, "general", { preserveColor = true, sizeDelta = 1 })
             row.detail:SetPoint("TOPLEFT", 28, -10)
             row.detail:SetWordWrap(true)
             row.detail:SetJustifyV("TOP")
@@ -468,8 +477,9 @@ local function ShowDialog(settings)
     end
     -- Replacing an open prompt resolves its previous cancellation callback first.
     frame:Hide()
+    frame.dialogGeneration = (frame.dialogGeneration or 0) + 1
     frame.title:SetText(settings.title or "APR")
-    APR:SetFontStringRole(frame.title, settings.details and "base" or "accent")
+    APR:SetFontStringRole(frame.title, "accent")
     frame.description:SetText(settings.description or "")
     frame.confirming = settings.confirmation == true
     frame.confirmationDetails = settings.details ~= nil
@@ -518,7 +528,15 @@ function UI:ShowConfirmationDialog(text, onAccept, onCancel, owner)
             confirmation = true,
         })
     end
-    return ShowDialog({ title = text, onAccept = onAccept, onCancel = onCancel, owner = owner, confirmation = true })
+    local title, description = (text or ""):match("^(.-)\n\n(.+)$")
+    return ShowDialog({
+        title = title or text,
+        description = description,
+        onAccept = onAccept,
+        onCancel = onCancel,
+        owner = owner,
+        confirmation = true,
+    })
 end--[[APR_DIAG]]
 UI.ShowConfirmationDialog =
     APRTrace("APR-Core/ui/foundations/SelectionDialog.lua:250:UI:ShowConfirmationDialog#24", UI.ShowConfirmationDialog)--[[/APR_DIAG]]
