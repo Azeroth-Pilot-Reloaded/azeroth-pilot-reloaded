@@ -91,6 +91,13 @@ scoring on synthetic Retail/Forever characters. Refused items survive unchanged
 refreshes, options notifications and unused-scale edits; selected weights, confirmed
 edits, active profiles, scoring availability and specializations refresh suggestions.
 
+`starter_bag_upgrades_test.lua` joins real Forever character context, Pawn,
+scoring, bag offers and `/apr gear` for a level-three character without a chosen
+build. Invented armor fills empty slots only after an explicit click; occupied
+or pending equipment, negative stats, speculative SP, weapons and non-armor
+destinations are excluded. It also checks equipment-event recovery, refusals,
+explicit zero-valued/pending Pawn choices and command-only feedback.
+
 - `scripts/test_*.py`: TOC updates, localization notifications, package validation
   and PR report behavior against a mocked GitHub API. The latter uses Node.js.
 - `lua/*_test.lua`: automatically discovered addon regression suites, each in its

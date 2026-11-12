@@ -85,6 +85,7 @@ function Upgrades:GetScale()
     if state == "pending" then return end
     if scorer then return { score = scorer }, identity end
     local scale = APR.RewardScoring:GetDefaultScale()
+    if not scale and APR.RewardScoring.GetEmptyArmorScale then scale = APR.RewardScoring:GetEmptyArmorScale() end
     if scale and scale.identity then identity = (identity or "apr") .. "\031" .. scale.identity end
     return scale, identity or "apr"
 end--[[APR_DIAG]]
@@ -113,6 +114,19 @@ function Upgrades:OnScoringChanged()
 end--[[APR_DIAG]]
 Upgrades.OnScoringChanged =
     APRTrace("APR-Core/features/player/BagUpgrades.lua:72:Upgrades:OnScoringChanged#11", Upgrades.OnScoringChanged)--[[/APR_DIAG]]
+
+-- Only an explicit slash command reports why scanning cannot start.
+function Upgrades:ScanFromCommand()
+    local status, unavailable = nil, UNAVAILABLE or UNKNOWN or "?"
+    if not self:IsEnabledForCharacter() then status = DISABLED or L["DISABLE"]
+    elseif InCombatLockdown and InCombatLockdown() then status = ERR_NOT_IN_COMBAT or unavailable
+    elseif UnitIsDeadOrGhost and UnitIsDeadOrGhost("player") then status = DEAD or unavailable
+    elseif not self:GetScale() then
+        status = APR.PawnRewards and APR.PawnRewards.GetStatusText and APR.PawnRewards:GetStatusText() or unavailable
+    end
+    APR:PrintInfo((EQUIPMENT or "") .. ": " .. (status or SEARCHING or unavailable))
+    if not status then self:OnScoringChanged() end
+end--[[APR_DIAG]]; Upgrades.ScanFromCommand = APRTrace("APR-Core/features/player/BagUpgrades.lua:104:Upgrades:ScanFromCommand#12", Upgrades.ScanFromCommand)--[[/APR_DIAG]]
 
 function Upgrades:OnItemData(_, itemID, success)
     if Public(itemID) and self.pendingIDs and self.pendingIDs[itemID] then
@@ -418,12 +432,15 @@ function Upgrades:GetOfferText(candidate)
     local text = L["CHOOSE_USABLE_GEAR_UPGRADE"]
         .. "\n\n" .. (CURRENTLY_EQUIPPED or EQUIPMENT) .. ":\n" .. table.concat(current, "\n")
         .. "\n\n" .. (EQUIP_ITEM or EQUIP or ACCEPT or EQUIPMENT) .. ":\n" .. table.concat(proposed, "\n")
-    local status = APR.PawnRewards and APR.PawnRewards.GetStatusText and APR.PawnRewards:GetStatusText()
+    local scale = self:GetScale()
+    local emptyArmor = scale and scale.emptyArmorOnly
+    local status = emptyArmor and ((EQUIPMENT or "") .. ": " .. (EMPTY or NONE or ""))
+        or (APR.PawnRewards and APR.PawnRewards.GetStatusText and APR.PawnRewards:GetStatusText())
     if type(status) == "string" and status ~= "" then
         text = text .. "\n\n" .. status
         -- This is a score delta in the named profile, never a power percentage.
         -- baseline covers removed objects and is not the full pre-swap loadout.
-        if SCORE and Number(candidate.gain) and candidate.gain > 0 then
+        if not emptyArmor and SCORE and Number(candidate.gain) and candidate.gain > 0 then
             text = text .. "\n" .. SCORE .. ": " .. string.format("+%.3g", candidate.gain)
         end
     end

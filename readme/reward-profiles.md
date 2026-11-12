@@ -22,7 +22,7 @@ future versions require a review, not silently reused Classic/Retail weights.
 
 Forever supports levels 1-59 on interface 16001; Retail supports 1-79 on 110207
 and 1-89 on the declared 120000/120001/120005/120007/120100/120105 interfaces.
-A selected build is still required below level 10. APR deliberately abstains at
+A selected build is still required for these full profiles below level 10. APR deliberately abstains at
 the level cap (60/80/90 respectively): these estimates do not support endgame
 optimization. Settings status appends Blizzard's localized UNAVAILABLE string
 when no APR scale can be resolved. Compatible Pawn scales remain usable there.
@@ -152,6 +152,70 @@ independent copies, race modifiers, hand execution and comparison identity.
   The intermittent hook failure's underlying cause remains unestablished.
 - git diff --check passed. The ten predecessor units are present; the external
   PartyFinderWorld commit was preserved, not included in this revision.
+
+## Empty armor in Forever bags
+
+Bag suggestions have a separate conservative policy when a supported Forever
+leveling character has no selected build. It can propose usable armor for a
+confirmed empty armor slot, with positive armor or stamina and no negative stat.
+It cannot replace worn equipment, choose weapons/offhands, fill jewelry,
+shirts/tabards or score quest rewards. An item ID without a loaded equipped link
+does not prove an empty slot. The same checks run again on the explicit equip
+click. No equip action is authorized by an equipment event or timer.
+
+This is a presence/benefit check, not an inferred build or DPS estimate. Armor
+and stamina each contribute one sorting point inside this policy only; the
+dialog identifies empty equipment and omits a weighted-profile score. Full APR
+profiles and Pawn scores retain their existing meaning. Any resolved Pawn
+scorer, including zero armor valuation or a negative recommendation filter,
+remains authoritative. An explicit pending Pawn choice blocks this policy.
+No saved build or Pawn preference is changed, and unchanged refusals persist.
+
+`/apr gear` reports that a search started, or the disabled, combat, dead or
+unavailable scoring state. Only this explicit command prints feedback;
+automatic event scans stay silent. Labels use existing Blizzard GlobalStrings
+and the existing Pawn status translation keys; no translation key was added.
+
+### Starter regression action log (2026-11-12)
+
+- Read AGENTS.md, RTK.md, tests/README.md, UB Mode and its Windows-tool reference;
+  verified clean base d5b98180 and kept the authorized checkout/branch.
+- Traced the real Forever context through Pawn, APR defaults, bag scanning and
+  the real slash command. No chosen build made GetDefaultScale return nil and
+  StartScan exit without offering empty-slot armor.
+- Added a synthetic level-three Paladin journey with armor-only boots, real
+  modules and commands. Observed its intended red failure at the missing offer.
+- Added the separate bag-only empty-armor scale and retained all native usability,
+  uniqueness, bag readiness, combat and explicit-click execution guards.
+- Added a negative-stamina case; observed its intended red failure, then rejected
+  every negative or unreadable stat before applying conservative benefit scores.
+- Covered explicit equip, removal/equipment events, persisted refusal, refreshed
+  comparison, occupied/pending slots, stamina-only benefit, speculative SP,
+  non-armor destinations, explicit zero-valued Pawn, pending Pawn, command
+  feedback and silent automatic scans. The six focused suites passed.
+- Checked API contracts with Context7 (GetItemStats, GetInventoryItemLink/ID)
+  and public Blizzard UI source Mainline/Classic ItemDocumentation. Reused the
+  existing C_Item/global adapter and native APIs; no protected-action mechanism
+  or external addon source/table was imported.
+- Ran crapper --no-coverage, dryer --threshold 0.8 and mutator --scan via the
+  bundled Windows launcher for the three production files. All reported no
+  supported source files: Lua remains unsupported. No CRAP or mutation score
+  is claimed.
+- Regenerated instrumentation only for the changed scorer/bag files and their
+  manifest after the checker identified exactly those files. Preserved existing
+  wrappers/IDs and formatting after generation to keep the diff scoped to new
+  functions. The structural checker passes (3,475 functions in 126 files).
+  UTF-8 writes used Python; libraries were not changed.
+- Full required command `.venv/Scripts/python.exe tests/run.py`: **639 tests
+  passed in 144.826 seconds**, outside the Windows sandbox with the already
+  created `.venv/tmp-starter-gear` directory assigned to TEMP/TMP. Full output
+  is in local `.venv/starter-gear-full.log`.
+- A separate instrumentation run initially hit a sandbox temporary-directory
+  permission error (12 other tests passed). The exact failing read-only fixture
+  passed with workspace TEMP/TMP; the complete suite above also passed it.
+- Final `git diff --check` passed. One dedicated local commit is authorized;
+  no push. Native clicks/rendering, combat security and real client item-data
+  timing remain manual checks; offline fixtures do not certify them.
 
 Native Retail/Forever client verification remains required; simulated Lua APIs
 do not certify live rendering, security restrictions or numerical optimality.

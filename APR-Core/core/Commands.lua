@@ -70,7 +70,8 @@ function APR.command:SlashCmd(input)
     elseif inputText == "gamepad" then
         APR.Gamepad:RunAction("menu")
     elseif inputText == "gear" then
-        if APR.BagUpgrades then APR.BagUpgrades:OnScoringChanged() end
+        if APR.BagUpgrades then APR.BagUpgrades:ScanFromCommand()
+        else APR:PrintInfo((EQUIPMENT or "") .. ": " .. (UNAVAILABLE or UNKNOWN or "?")) end
     elseif inputText == "group" then
         if APR.PartyFinderPanel then APR.PartyFinderPanel:Show() end
     elseif inputText == "layout" then

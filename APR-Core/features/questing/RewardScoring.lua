@@ -83,6 +83,12 @@ local function defaultScore(link, scale, slot)
     if not ok or not accessible(stats) or type(stats) ~= "table" or (canaccesstable and not canaccesstable(stats)) then
         return nil, false
     end
+    if scale.emptyArmorOnly then
+        for _, value in pairs(stats) do
+            if not number(value) then return nil, false end
+            if value < 0 then return 0, true end
+        end
+    end
     local attributes = {}
     for stat, keys in pairs(attributeAliases) do
         attributes[stat] = aliasValue(stats, keys)
@@ -233,6 +239,21 @@ function Scoring:GetDefaultScale()
     scale.score = --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RewardScoring.lua:225:callback#10", --[[/APR_DIAG]]function(link, slot) return defaultScore(link, scale, slot) end--[[APR_DIAG]])--[[/APR_DIAG]]
     return scale
 end--[[APR_DIAG]]; Scoring.GetDefaultScale = APRTrace("APR-Core/features/questing/RewardScoring.lua:218:Scoring:GetDefaultScale#9", Scoring.GetDefaultScale)--[[/APR_DIAG]]
+
+-- Bag suggestions alone may fill confirmed empty armor without inventing a build.
+-- This is not a quest-reward or occupied-slot scoring profile.
+function Scoring:GetEmptyArmorScale()
+    local context = APR:GetRewardBuildContext()
+    local interface
+    if GetBuildInfo then local version, build, date; version, build, date, interface = GetBuildInfo() end
+    local patch, level = self.profilePatches[interface], UnitLevel and UnitLevel("player")
+    if context.client ~= "forever" or context.pawnSpec or not self.profiles.forever[context.classID]
+        or not patch or patch.client ~= context.client or not number(level) or level < 1 or level >= patch.maximum then return end
+    local scale = { weights = { Armor = 1, Stamina = 1 }, emptyArmorOnly = true,
+        identity = context.key .. "\031empty-armor:1:" .. patch.revision }
+    scale.score = --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RewardScoring.lua:254:callback#12", --[[/APR_DIAG]]function(link) return defaultScore(link, scale) end--[[APR_DIAG]])--[[/APR_DIAG]]
+    return scale
+end--[[APR_DIAG]]; Scoring.GetEmptyArmorScale = APRTrace("APR-Core/features/questing/RewardScoring.lua:245:Scoring:GetEmptyArmorScale#11", Scoring.GetEmptyArmorScale)--[[/APR_DIAG]]
 
 local slots = {
     INVTYPE_HEAD = { 1 },
@@ -435,6 +456,16 @@ function Scoring:GetUpgrade(link, scale)
     local candidate, ready = readItem(link, true)
     if not candidate then return nil, ready end
     local loc = candidate.equipLoc
+    if scale.emptyArmorOnly then
+        local destinations = slots[loc]
+        local slot = destinations and destinations[1]
+        if candidate.classID ~= 4 or not slot or slot == 2 or slot == 4 or slot == 19
+            or #destinations ~= 1 then return nil, true end
+        if not GetInventoryItemLink or not GetInventoryItemID then return nil, false end
+        local current, id = GetInventoryItemLink("player", slot), GetInventoryItemID("player", slot)
+        if not accessible(current) or not accessible(id) then return nil, false end
+        if current or id then return nil, true end
+    end
     local supported = slots[loc]
         or loc == "INVTYPE_WEAPON"
         or loc == "INVTYPE_WEAPONMAINHAND"
