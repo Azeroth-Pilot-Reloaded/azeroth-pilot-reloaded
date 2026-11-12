@@ -14,6 +14,22 @@ end--[[APR_DIAG]]
 APR.GetCharacterSettings =
     APRTrace("APR-Core/utils/ProfileUtils.lua:10:APR:GetCharacterSettings#1", APR.GetCharacterSettings)--[[/APR_DIAG]]
 
+function APR:GetBagUpgradeSuggestions()
+    local character = self:GetCharacterSettings()
+    return character and character.bagUpgradeSuggestions == true or false
+end--[[APR_DIAG]]
+APR.GetBagUpgradeSuggestions =
+    APRTrace("APR-Core/utils/ProfileUtils.lua:17:APR:GetBagUpgradeSuggestions#8", APR.GetBagUpgradeSuggestions)--[[/APR_DIAG]]
+
+function APR:SetBagUpgradeSuggestions(value)
+    local character = self:GetCharacterSettings()
+    if not character then return end
+    character.bagUpgradeSuggestions = value and true or false
+    if self.BagUpgrades then self.BagUpgrades:RefreshSettings() end
+end--[[APR_DIAG]]
+APR.SetBagUpgradeSuggestions =
+    APRTrace("APR-Core/utils/ProfileUtils.lua:24:APR:SetBagUpgradeSuggestions#9", APR.SetBagUpgradeSuggestions)--[[/APR_DIAG]]
+
 --- Get the effective heirloom warning value for the current character.
 -- Checks character-specific override first, then falls back to profile setting.
 -- @return boolean - true to hide the heirloom warning, false to show it

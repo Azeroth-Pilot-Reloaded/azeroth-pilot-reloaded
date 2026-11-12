@@ -67,7 +67,6 @@ local function SetProfileOption(info, value)
         APR.PawnRewards:RefreshSettings()
     end
     if info[#info] == "debug" and APR.SetDebugCapture then APR:SetDebugCapture(value) end
-    if info[#info] == "bagUpgradeSuggestions" and APR.BagUpgrades then APR.BagUpgrades:RefreshSettings() end
     if info[#info] == "checkForUpdate" and APR.versionCheck and APR.versionCheck.RefreshSettings then
         APR.versionCheck:RefreshSettings()
     end
@@ -142,7 +141,7 @@ function APR.settings:InitializeSettings()
             autoCosmeticMulti = false,
             autoTransmogMulti = false,
             rewardPriority1 = "ilvl",
-            bagUpgradeSuggestions = true,
+            bagUpgradeSuggestions = true, -- Legacy migration source for characters not yet loaded.
             rewardPriority2 = "cosmetic",
             rewardPriority3 = "transmog",
             rewardPriority4 = "price",
@@ -276,6 +275,7 @@ function APR.settings:InitializeSettings()
         },
         -- Character-specific settings (not affected by profile)
         char = {
+            -- bagUpgradeSuggestions has no default: nil identifies an unmigrated character.
             firstLogin = true,
             showHeirloomWarning = nil,
             routeSuggestionDontAsk = false,
@@ -292,6 +292,10 @@ function APR.settings:InitializeSettings()
     self.db.RegisterCallback(self, "OnProfileCopied", "RefreshProfile")
     self.db.RegisterCallback(self, "OnProfileReset", "RefreshProfile")
     self.profile = self.db.profile
+    -- Copy once per character. Keep the profile source for alts that migrate later.
+    if self.db.char.bagUpgradeSuggestions == nil then
+        self.db.char.bagUpgradeSuggestions = self.profile.bagUpgradeSuggestions ~= false
+    end
     if APR.NavigationAdapter and APR.NavigationAdapter.RefreshWaypoints then
         APR.NavigationAdapter:RefreshWaypoints()
     end
@@ -1741,8 +1745,14 @@ function APR.settings:createBlizzOptions()
                         name = L["BAG_UPGRADE_SUGGESTIONS"],
                         desc = L["BAG_UPGRADE_SUGGESTIONS_DESC"],
                         width = "full",
-                        get = GetProfileOption,
-                        set = SetProfileOption,
+                        --[[APR_DIAG]]
+                        get = APRTrace("APR-Core/config/Config.lua:1751:callback#204", --[[/APR_DIAG]]
+                            function() return APR:GetBagUpgradeSuggestions() end --[[APR_DIAG]]
+                        ) --[[/APR_DIAG]],
+                        --[[APR_DIAG]]
+                        set = APRTrace("APR-Core/config/Config.lua:1755:callback#205", --[[/APR_DIAG]]
+                            function(_, value) APR:SetBagUpgradeSuggestions(value) end --[[APR_DIAG]]
+                        ) --[[/APR_DIAG]],
                     },
                     autoHandInChoice = {
                         order = 8.21,
@@ -1779,7 +1789,7 @@ function APR.settings:createBlizzOptions()
                         disabled = APRTrace(
                             "APR-Core/config/Config.lua:1262:callback#107", --[[/APR_DIAG]]
                             function()
-                                return not self.profile.autoHandInChoice and not self.profile.bagUpgradeSuggestions
+                                return not self.profile.autoHandInChoice and not APR:GetBagUpgradeSuggestions()
                             end --[[APR_DIAG]]
                         ) --[[/APR_DIAG]],
                     },

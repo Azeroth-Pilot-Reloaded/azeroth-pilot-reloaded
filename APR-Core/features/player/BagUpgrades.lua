@@ -48,7 +48,7 @@ EquipmentSignature = APRTrace("APR-Core/features/player/BagUpgrades.lua:27:Equip
 
 function Upgrades:IsEnabledForCharacter()
     local profile = APR:GetSettingsProfile()
-    return self.active and profile and profile.enableAddon and profile.bagUpgradeSuggestions
+    return self.active and profile and profile.enableAddon and APR:GetBagUpgradeSuggestions()
 end--[[APR_DIAG]]
 Upgrades.IsEnabledForCharacter = APRTrace(
     "APR-Core/features/player/BagUpgrades.lua:37:Upgrades:IsEnabledForCharacter#5",
