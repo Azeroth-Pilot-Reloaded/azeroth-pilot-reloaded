@@ -986,6 +986,7 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
             Fillers = { [484] = { 1 } },
             AllOf = { { ItemCount = { operator = "<", count = 1, itemID = 5234 } } },
             ItemCount = { operator = "<", count = 1, itemID = 5233 },
+            Not = { IsQuestReadyForTurnIn = 943 },
             _index = 41,
         },
         {
