@@ -755,6 +755,10 @@ function Pad:RunAction(action)
         self:ToggleMenu()
         return
     end
+    if action == "nearest" then
+        if APR.Services then APR.Services:ShowPicker() end
+        return
+    end
     if action == "partyfinder" then
         if APR.PartyFinderPanel then APR.PartyFinderPanel:Show() end
         return
@@ -780,7 +784,7 @@ function Pad:RunAction(action)
     end
     if not APR.settings.profile.enableAddon then return end
     if action == "skip" or action == "rollback" then
-        if not APR.ActiveRoute then return end
+        if not APR.ActiveRoute and not (APR.Services and APR.Services:GetStep()) then return end
         APR.command:SlashCmd(action)
     else
         local panels = {

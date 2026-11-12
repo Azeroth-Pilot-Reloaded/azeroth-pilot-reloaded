@@ -149,11 +149,13 @@ function APR.command:SlashCmd(input)
             L["UI_RELOAD_RESET_ROUTES_CONFIRM"]
         )
     elseif inputText == "skip" or inputText == "s" or inputText == "skippiedoodaa" then
+        if APR.Services and APR.Services:GetStep() then APR.Services:MoveStep(1); return end
         -- Command for skipping the current quest step
         APR:PrintInfo(L["SKIP"])
         APR:SkipQuestStep()
         APR:UpdateMapId()
     elseif inputText == "rollback" or inputText == "rb" then
+        if APR.Services and APR.Services:GetStep() then APR.Services:MoveStep(-1); return end
         -- Command for rollback the current quest step
         APR:PrintInfo(L["ROLLBACK"])
         APR:PreviousQuestStep()

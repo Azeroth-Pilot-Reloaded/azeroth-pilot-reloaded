@@ -2,7 +2,7 @@
 -- arrival can still be useful if it leaves enough resources to finish.
 -- Graph loading, candidate checks and result assembly all run through Step.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("search", 11) then return end
+if not Lib:BeginModule("search", 13) then return end
 Lib.Engine = {}
 local Engine = Lib.Engine
 local Search = {}
@@ -209,6 +209,7 @@ function Search:IngestEdge(edge)
         or (edge.copper ~= nil and (not IsFinite(edge.copper) or edge.copper < 0))
         or (edge.resources ~= nil and type(edge.resources) ~= "table")
         or edge.condition == false
+        or (self.excludeHearthstones and edge.hearthstone == true)
     then
         return
     end
@@ -255,14 +256,15 @@ function Search:IngestEdge(edge)
     self.ingestedEdges = self.ingestedEdges + 1
 end
 
-function Search:PrepareDirectWalk()
+function Search:PrepareDirectWalk(goalNode)
+    goalNode = goalNode or self.goalNode
     self:PrepareNodeSpeed(self.startNode)
-    self:PrepareNodeSpeed(self.goalNode)
-    if self.startNode == self.goalNode then
+    self:PrepareNodeSpeed(goalNode)
+    if self.startNode == goalNode then
         self.directSeconds = 0
         return
     end
-    local from, to = self.nodes[self.startNode], self.nodes[self.goalNode]
+    local from, to = self.nodes[self.startNode], self.nodes[goalNode]
     if
         from.instanceID ~= to.instanceID
         or from.noAutoconnect
@@ -277,13 +279,27 @@ function Search:PrepareDirectWalk()
     self.walkChecks = self.walkChecks + 1
     local seconds = false
     if self.canWalk(from, to) then
-        seconds = self:GetWalkSeconds(from, to, self.startNode, self.goalNode)
-        self.directSeconds = seconds
+        seconds = self:GetWalkSeconds(from, to, self.startNode, goalNode)
+        self.directSeconds = math.min(self.directSeconds or math.huge, seconds)
     end
-    self:GetWalkingCache(self.startNode)[self.goalNode] = seconds
+    self:GetWalkingCache(self.startNode)[goalNode] = seconds
 end
 
 function Search:LoadOne()
+    if self.phase == "goals" then
+        local point = self.sourceGoals[self.goalIndex]
+        if point then
+            if IsPosition(point) then
+                local node = self:AddNode(point)
+                self.goalNodes[node] = self.goalNodes[node] or self.goalIndex
+                self:PrepareDirectWalk(node)
+            end
+            self.goalIndex = self.goalIndex + 1
+        else
+            self.sourceGoals, self.phase = nil, "edges"
+        end
+        return
+    end
     if self.phase == "resources" then
         local key, count = next(self.sourceResources, self.resourceCursor)
         self.resourceCursor = key
@@ -291,8 +307,8 @@ function Search:LoadOne()
             if IsFinite(count) and count >= 0 then self.resources[key] = count end
             return
         end
-        self.sourceResources, self.phase = nil, "edges"
-        self:PrepareDirectWalk()
+        self.sourceResources, self.phase = nil, self.sourceGoals and "goals" or "edges"
+        if not self.sourceGoals then self:PrepareDirectWalk() end
         return
     end
 
@@ -425,7 +441,7 @@ function Search:AcceptCandidate(candidate)
     -- Only a fully validated arrival proves a complete feasible itinerary.
     -- Nonnegative costs cannot improve it from a strictly slower prefix; ties
     -- remain eligible so Pareto/resource checks keep their existing order.
-    if candidate.node == self.goalNode and (not self.bestGoalSeconds or label.seconds < self.bestGoalSeconds) then
+    if (candidate.node == self.goalNode or (self.goalNodes and self.goalNodes[candidate.node])) and (not self.bestGoalSeconds or label.seconds < self.bestGoalSeconds) then
         self.bestGoalSeconds = label.seconds
     end
     self.candidate = nil
@@ -636,6 +652,7 @@ function Search:AssembleOne()
         totalSeconds = self.winner.seconds,
         totalCopper = self.winner.copper,
         resourcesUsed = self.winner.used,
+        goalIndex = self.goalNodes and self.goalNodes[self.winner.node],
     }
     self.assembly, self.status = nil, "ready"
 end
@@ -664,7 +681,7 @@ function Search:AdvanceOne()
     end
     if label.stale then return end
     self.expansions = self.expansions + 1
-    if label.node == self.goalNode then
+    if label.node == self.goalNode or (self.goalNodes and self.goalNodes[label.node]) then
         self.winner = label
         self.assembly = { label = label, segments = {}, index = 1 }
     else
@@ -695,7 +712,7 @@ function Search:Cancel()
     if self.status == "planning" then self.status = "cancelled" end
     self.heap, self.labels, self.pending, self.candidate, self.assembly = {}, {}, nil, nil, nil
     self.winner = nil
-    self.sourceEdges, self.sourceGroups, self.sourceResources = nil, nil, nil
+    self.sourceEdges, self.sourceGroups, self.sourceResources, self.sourceGoals = nil, nil, nil, nil
     self.omittedEdges = nil
     self.nodes, self.nodeKeys, self.outgoing, self.actions, self.startActions = {}, {}, {}, {}, {}
     self.resourceEdges, self.futureResources = nil, nil
@@ -722,6 +739,7 @@ function Engine:CreateSearch(request)
         resources = {},
         emptyUsage = {},
         clock = request.clock,
+        excludeHearthstones = request.excludeHearthstones == true,
         sourceResources = type(request.resources) == "table" and request.resources or EMPTY,
         sourceEdges = type(request.edges) == "table" and request.edges or EMPTY,
         sourceGroups = type(request.edgeGroups) == "table" and request.edgeGroups or EMPTY,
@@ -746,12 +764,17 @@ function Engine:CreateSearch(request)
         canWalk = request.canWalk or DefaultCanWalk,
         walkingRegionFor = request.walkingRegionFor,
     }, Search)
-    if not IsPosition(request.start) or not IsPosition(request.goal) then
+    if not IsPosition(request.start) or (not IsPosition(request.goal) and type(request.goals) ~= "table") then
         search.status, search.reason = "no_path", "invalid_position"
         return search
     end
     -- Keep creation independent of catalogue size. The caller owns these input
     -- tables and must leave them unchanged until the search finishes or cancels.
-    search.startNode, search.goalNode = search:AddNode(request.start), search:AddNode(request.goal)
+    search.startNode = search:AddNode(request.start)
+    if type(request.goals) == "table" then
+        search.sourceGoals, search.goalNodes, search.goalIndex = request.goals, {}, 1
+    else
+        search.goalNode = search:AddNode(request.goal)
+    end
     return search
 end

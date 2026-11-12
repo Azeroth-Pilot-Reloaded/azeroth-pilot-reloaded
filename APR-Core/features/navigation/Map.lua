@@ -111,6 +111,7 @@ local function UpdateMinimapData()
 end--[[APR_DIAG]]
 UpdateMinimapData = APRTrace("APR-Core/features/navigation/Map.lua:73:UpdateMinimapData#7", UpdateMinimapData)--[[/APR_DIAG]]
 function APR.map:OnInit()
+    if APR.Services then APR.Services:RegisterMapMenu() end
     self.minimapSegments, self.worldSegments = {}, {}
     self.minimapSegments[1] = NewMinimapSegment()
     MapLineFrame = CreateFrame("Frame", nil, WorldMapButton)

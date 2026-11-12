@@ -58,6 +58,83 @@ replacing it with a downloaded dependency.
 
 ## API
 
+### Nearby services
+
+The library owns service categories, profession/weapon specializations, Retail
+expansion choices, locations, filters, shortest-time selection and arrival checks.
+It has no APR or client-global dependency. The consumer owns menus, presentation,
+guide suspension/resumption, character observations and timers.
+
+```lua
+local choices = navigator:GetServiceChoices() -- query=nil: service categories
+-- Each choice has label, optional globalKey (prefer the client's GlobalString),
+-- and query. IsServiceBranch(query) identifies another level of choices.
+local job = navigator:CreateServiceSearch({
+    query = { service = "trainer", skill = 171, expansion = 11 },
+    start = playerPosition,
+    character = character,
+    clock = millisecondsClock,
+    budget = moneyInCopper,
+    walkSpeed = 7,
+    taxiData = knownTaxiEdgeProvider,
+    flightProvider = flightNodeProvider,
+})
+local status, result, reason = job:Step(64, 1)
+-- Continue until ready, no_path, waiting_data, unavailable or cancelled.
+-- ready: result.record, result.target, result.totalSeconds, result.itinerary.
+job:Cancel()
+```
+
+Services are `flight`, `class`, `trainer`, `weapon`, `vendor`, `repair`, `inn`,
+`bank`, `mailbox`, `auction`, and `stable`. Client-specific choices come from
+`GetServiceProgress(queue, cursor)` returns the current index, itinerary length
+and current instruction label (zero/zero for an unpublished itinerary).
+`GetServiceStepCursor(queue, cursor, direction, position)` validates a manual
+previous/next selection (`-1`/`1`). It only permits destinations reachable from
+the observed position, with live departure restrictions; it cannot skip a
+required crossing. A cursor one past the end means explicit cancellation by
+the host, never arrival or guide completion. The host owns the transient cursor,
+invalidates pending searches on manual movement, and suspends controls during
+combat, loading, flight or a committed travel action.
+
+`GetServiceChoices(query)`; class trainers use the supplied character's class.
+Locations are shared immutable facts, separated by client, with readable NPC,
+map, skill and expansion names beside their technical IDs. They carry no
+provenance metadata. Consumer instances and searches never share character state.
+
+Flight nodes come exclusively from the injected LibTaxiData adapter:
+`GetAllNodes`, `IsNodeAvailable`, optional `IsNodeVisible`,
+`GetNodeWorldPosition` (native world axes), and optional `GetNodeName`.
+Availability must be explicitly true. Discovery is independent: an undiscovered
+master can be a destination, while only confirmed edges from `taxiData` can be
+used to travel there. Missing node data yields `unavailable, nil, "taxi_unavailable"`.
+No imported flight catalog or unknown-flight probing is used by this search.
+
+Nearby-service selection ranks destinations without hearthstones (including toys,
+learned inn recalls, Dalaran and garrison hearthstones). For a journey taking more
+than ten minutes without recall, it may then shorten the trip to that same
+destination with a hearthstone. A confirmed lack of an ordinary path also permits
+this fallback; pending access data does not. `CreateServiceRouteSearch(options)`
+applies the identical policy to single-destination guidance and replans, so
+approaching the destination removes obsolete recall instructions. Ordinary guide
+navigation keeps its unrestricted shortest-time comparison. Results expose
+`withoutHearthstoneSeconds` and `hearthstoneAllowed` for itinerary validation.
+
+All eligible candidates enter one budgeted multi-destination search, with one
+transport/taxi graph. `CreateSearch` also accepts `goals = {position, ...}` instead
+of `goal`; its winning itinerary includes `goalIndex` in that array. The normal
+single-destination contract is unchanged. Keep search inputs immutable until
+completion or cancellation. `IsServiceArrival(position, target, radius)` requires
+compatible access and world space, proximity (five yards by default), and height
+when provided; it never advances a consumer's guide.
+
+The explicit offline compiler is `tools/import_services.py` in this library.
+Run it with `--help` for input directories; it only writes under its output
+directory. `tools/corrections.json` holds readable reviewed facts. Unsupported
+conditions, invalid coordinates and non-service placeholders are excluded and
+reported to stdout. The compiler emits no provenance file. Catalog validation
+and importer tests never repair live data.
+
 ```lua
 local library = LibStub("LibAPRNavigation-1.0")
 local navigator = library:New({ profile = "forever", environment = environment })

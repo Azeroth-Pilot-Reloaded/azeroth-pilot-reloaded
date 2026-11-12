@@ -545,7 +545,10 @@ Adapter.GetWaypointText = APRTrace(
 function environment.getWaypointTarget()
     local profile = APR.settings and APR.settings.profile
     local step, index
-    if APR.GetCurrentStep then
+    local service = APR.Services and APR.Services:GetStep()
+    if service then
+        step, index = service, 1
+    elseif APR.GetCurrentStep then
         step, index = APR:GetCurrentStep()
     elseif APR.PeekCurrentStep then
         step = APR:PeekCurrentStep()
@@ -554,7 +557,7 @@ function environment.getWaypointTarget()
     if
         not profile
         or not profile.enableAddon
-        or not APR.ActiveRoute
+        or (not APR.ActiveRoute and not service)
         or Call(UnitIsDeadOrGhost, "player") == true
         or APR.stepUpdateRunning
         or APR.stepUpdatePending
@@ -567,7 +570,8 @@ function environment.getWaypointTarget()
     if navigation and navigation.retainedArrow then
         point, transient = navigation:GetRetainedArrow(), true
     elseif navigation and navigation:IsNavigating() then
-        if navigation.context and APR.IsStepContextCurrent and not APR:IsStepContextCurrent(navigation.context) then
+        if navigation.context and ((service and not APR.Services:IsContextCurrent(navigation.context))
+            or (not service and APR.IsStepContextCurrent and not APR:IsStepContextCurrent(navigation.context))) then
             return nil, options
         end
         point, transient = navigation:GetActiveStep(), true

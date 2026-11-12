@@ -616,7 +616,7 @@ local function UpdatePosition(self, playerX, playerY, facing, instanceID)
         return
     end
     local questStep, currentStepIndex, routeSteps = APR:GetCurrentStep()
-    if not routeSteps then
+    if not routeSteps and not (navigation and navigation:IsNavigating()) then
         APR.ArrowFrame:Hide()
         return
     end
@@ -705,7 +705,7 @@ function APR.Arrow:UpdatePosition()
     instanceID = WorldInstanceID(instanceID)
     if
         not playerY
-        or not APR.ActiveRoute
+        or (not APR.ActiveRoute and not (APR.Services and APR.Services:GetStep()))
         or not APR.RouteQuestStepList
         or not APR.settings.profile.showArrow
         or not self.Active
