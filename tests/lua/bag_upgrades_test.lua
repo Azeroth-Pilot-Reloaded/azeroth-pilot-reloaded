@@ -78,7 +78,10 @@ function APR.RewardScoring:GetUpgrade(link, scale)
     if inventory[item.slot or 1] == link then return 0, true end
     return item.gain,
         true,
-        { slot = item.slot or 1, replacedSlots = { item.replaced or item.slot or 1 }, move = item.move },
+        { slot = item.slot or 1, replacedSlots = { item.replaced or item.slot or 1 }, move = item.move,
+            steps = item.move and { { link = item.move.link, slot = item.move.to }, { link = link, slot = item.slot } },
+            intermediate = item.move and { [item.move.from] = false, [item.move.to] = item.move.link },
+        },
         tostring(item.gain) .. ":" .. (inventory[item.slot or 1] or "")
 end
 local visible, inPopupCallback

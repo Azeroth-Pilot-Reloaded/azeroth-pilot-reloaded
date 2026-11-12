@@ -57,6 +57,12 @@ formatters moving diagnostic marker comments across authored table fields/operat
 
 `reward_scoring_test.lua` uses invented item variants and equipped configurations
 for weighted gains, usability, unique-equipped categories and weapon replacement.
+It also compares complete weapon configurations with destination-specific DPS,
+generic/Titan's Grip permutations and opaque-provider refusals.
+`weapon_upgrade_execution_test.lua` joins the real scorer and bag equip action
+on both clients: safe intermediate configurations, failed/delayed requests,
+concurrent inventory changes and combat interruptions. No protected action is
+continued by a later timer or event; unsafe intermediate permutations stay manual.
 `pawn_rewards_test.lua` models the public Pawn API, scale mutations, explicit
 choices, deferred offers and stale callbacks. Its scorer contract returns a scorer,
 source state (`apr`, `pawn`, or `pending`) and a stable decision identity. Missing

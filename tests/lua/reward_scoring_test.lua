@@ -67,6 +67,7 @@ local function item(loc, value, options)
     return link
 end
 local external = {
+    slotAware = true, -- This synthetic provider deliberately assigns slot-independent values.
     score = function(link)
         local data = items[link]
         if not data or data.missingScore then return nil, false end
@@ -310,4 +311,49 @@ items[head].stats = { ITEM_MOD_STRENGTH_SHORT = secret }
 local gain, ready = scoring:GetUpgrade(head, scoring:GetDefaultScale())
 assert(gain == nil and ready == false)
 issecretvalue = nil
+
+-- Weapon DPS belongs to the destination hand; retained weapons must be rescored.
+local function weapon(loc, dps, strength, options)
+    options = options or {}
+    options.stats = { ITEM_MOD_DAMAGE_PER_SECOND_SHORT = dps, ITEM_MOD_STRENGTH_SHORT = strength or 0 }
+    return item(loc, 0, options)
+end
+for _, profile in ipairs({ "retail", "forever" }) do
+    reset()
+    client, dual = profile, true
+    local native = scoring:GetDefaultScale()
+    native.weights.WeaponDPS = 1 -- Independent fixture weight, not an editorial default.
+    expect(weapon("INVTYPE_WEAPONOFFHAND", 10), 5, true, native)
+    inventory[16], inventory[17] = weapon("INVTYPE_WEAPON", 100), weapon("INVTYPE_WEAPONOFFHAND", 10)
+    expect(weapon("INVTYPE_WEAPONMAINHAND", 50), -5, true, native) -- 105 -> 100, not +40.
+    expect(weapon("INVTYPE_WEAPONMAINHAND", 60), 5, true, native)
+    expect(weapon("INVTYPE_WEAPONOFFHAND", 30), 10, true, native)
+    -- All strength remains active in either hand; only DPS is reduced.
+    expect(weapon("INVTYPE_WEAPONOFFHAND", 10, 7), 7, true, native)
+    expect(weapon("INVTYPE_2HWEAPON", 110), 5, true, native)
+    expect(weapon("INVTYPE_SHIELD", 0, 12), 7, true, native)
+    inventory[16], inventory[17] = weapon("INVTYPE_WEAPON", 10), weapon("INVTYPE_WEAPON", 100)
+    expect(weapon("INVTYPE_WEAPON", 30), 55, true, native) -- 60 -> 100 + 0.5*30.
+    titan = true
+    inventory[16], inventory[17] = weapon("INVTYPE_2HWEAPON", 100, 0, { subclassID = 1 }),
+        weapon("INVTYPE_2HWEAPON", 10, 0, { subclassID = 1 })
+    expect(weapon("INVTYPE_2HWEAPON", 30, 0, { subclassID = 1 }), 10, true, native)
+    expect(weapon("INVTYPE_2HWEAPON", 110, 0, { subclassID = 10 }), 5, true, native)
+    inventory[16], inventory[17] = weapon("INVTYPE_2HWEAPON", 10, 0, { subclassID = 1 }),
+        weapon("INVTYPE_2HWEAPON", 100, 0, { subclassID = 1 })
+    expect(weapon("INVTYPE_2HWEAPON", 30, 0, { subclassID = 1 }), 55, true, native)
+    inventory[18] = weapon("INVTYPE_RANGED", 20)
+    if profile == "forever" then expect(weapon("INVTYPE_RANGED", 30), 10, true, native) end
+    dual, titan = false, false
+    inventory[16], inventory[17] = weapon("INVTYPE_WEAPON", 100), weapon("INVTYPE_SHIELD", 0, 10)
+    expect(weapon("INVTYPE_WEAPONMAINHAND", 50), -50, true, native)
+end
+
+-- Pawn's public scalar has no destination-hand parameter. It cannot certify a move.
+reset()
+dual = true
+inventory[16], inventory[17] = item("INVTYPE_WEAPON", 100), item("INVTYPE_WEAPONOFFHAND", 10)
+expect(item("INVTYPE_WEAPONMAINHAND", 50), -50, true, { score = external.score })
+inventory[16], inventory[17] = item("INVTYPE_WEAPON", 10), item("INVTYPE_WEAPON", 100)
+expect(item("INVTYPE_WEAPONOFFHAND", 50), -50, true, { score = external.score })
 print("Reward scoring: valid slots, exact variants, class defaults, native eligibility and incomplete data passed")

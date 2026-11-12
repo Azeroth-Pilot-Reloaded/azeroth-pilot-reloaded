@@ -167,7 +167,8 @@ function Upgrades:ScanBatch()
             if not ready then
                 local id = tonumber(link:match("item:(%d+)"))
                 if id then job.pending[id] = true end
-            elseif Number(gain) and gain > 0 and plan and (not refusal or self.dismissed[link] ~= refusal) then
+            elseif Number(gain) and gain > 0 and plan and plan.executable ~= false
+                and (not refusal or self.dismissed[link] ~= refusal) then
                 job.candidates[#job.candidates + 1] = {
                     link = link,
                     gain = gain,
@@ -289,26 +290,50 @@ function Upgrades:Equip(candidate)
     end
     local gain, ready, plan = APR.RewardScoring:GetUpgrade(link, scale)
     local equip = C_Item and C_Item.EquipItemByName or EquipItemByName
-    if not ready or not Number(gain) or gain <= 0 or not plan or not equip then
+    if not ready or not Number(gain) or gain <= 0 or not plan or plan.executable == false or not equip then
         self:QueueScan()
         return
     end
     if plan.move then
-        if GetInventoryItemLink("player", plan.move.from) ~= plan.move.link then
+        if not plan.steps or GetInventoryItemLink("player", plan.move.from) ~= plan.move.link then
             self:QueueScan()
             return
         end
-        equip(plan.move.link, plan.move.to)
-        -- Never schedule a protected inventory action for a later timer/event.
-        if GetInventoryItemLink("player", plan.move.to) ~= plan.move.link then
-            self:QueueScan()
-            return
+        local first, second = plan.steps[1], plan.steps[2]
+        equip(first.link, first.slot)
+        -- No protected action is deferred to an event/timer. Continue only when
+        -- the whole first configuration is already observed, not just its target.
+        if self:IsEnabledForCharacter() and not (InCombatLockdown and InCombatLockdown())
+            and not (CursorHasItem and CursorHasItem())
+            and (self:MatchesIntermediate(candidate.signature, plan.intermediate)
+                or self:MatchesIntermediate(candidate.signature, plan.intermediateSwap)) then
+            equip(second.link, second.slot)
         end
+    else
+        equip(link, plan.slot)
     end
-    equip(link, plan.slot)
     self:QueueScan()
 end--[[APR_DIAG]]
 Upgrades.Equip = APRTrace("APR-Core/features/player/BagUpgrades.lua:167:Upgrades:Equip#19", Upgrades.Equip)--[[/APR_DIAG]]
+
+function Upgrades:MatchesIntermediate(signature, hands)
+    if not hands then return false end
+    local links = {}
+    for link in (signature .. "\031"):gmatch("(.-)\031") do links[#links + 1] = link end
+    for slot = 1, 19 do
+        local expected = links[slot]
+        if hands[slot] ~= nil then expected = hands[slot] or "" end
+        local current = GetInventoryItemLink("player", slot)
+        if not Public(current) or (current or "") ~= expected then return false end
+        -- A missing link with a native ID is pending data, not confirmed empty.
+        if not current and GetInventoryItemID then
+            local id = GetInventoryItemID("player", slot)
+            if not Public(id) or id then return false end
+        end
+    end
+    return true
+end--[[APR_DIAG]]
+Upgrades.MatchesIntermediate = APRTrace("APR-Core/features/player/BagUpgrades.lua:367:Upgrades:MatchesIntermediate#28", Upgrades.MatchesIntermediate)--[[/APR_DIAG]]
 
 function Upgrades:Offer(candidate)
     if not self:IsEnabledForCharacter() or (InCombatLockdown and InCombatLockdown()) then return end
