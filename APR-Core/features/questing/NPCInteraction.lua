@@ -237,30 +237,67 @@ buildQuestRewardData =
 
 -- Returns a choice and readiness without committing. Missing information never
 -- falls through to a price/first-item decision while a better upgrade may exist.
+-- Additional reason/source results describe the decision in diagnostic captures.
 function APR.npcInteraction:SelectQuestReward(profile)
     local rewards = buildQuestRewardData()
-    if not rewards then return nil, false end
+    if not rewards then return nil, false, "item-data", "unknown" end
     local scorer, scoringState
     if APR.PawnRewards then scorer, scoringState = APR.PawnRewards:GetScorer() end
     local scale = scorer and { score = scorer } or nil
+    local source = scoringState or (scorer and "pawn" or "apr")
+    local gearRequested = false
     for priorityIndex = 1, 4 do
         local priority = profile["rewardPriority" .. priorityIndex]
         if priority == "ilvl" then
-            if scoringState == "pending" then return nil, false end
-            -- No APR build is a known absence, not item data that a retry can load.
-            -- Resolve it here so later configured priorities remain available.
+            gearRequested = true
+            if scoringState == "pending" then return nil, false, "pending-pawn", "pawn" end
+            -- Without a build, the shared armor proof can establish an upgrade,
+            -- without assuming exchange rates between different statistics.
             scale = scale or APR.RewardScoring:GetDefaultScale()
+            if not scale and APR.RewardScoring.GetEmptyArmorScale then scale = APR.RewardScoring:GetEmptyArmorScale() end
+            if not scale then source = "unavailable" elseif scale.armorDominanceOnly then source = "armor-dominance" end
             local best, gain = nil, 0
+            local conservative = scale and scale.armorDominanceOnly and {}
             for _, reward in ipairs(rewards) do
                 if scale and reward.equipLoc and reward.equipLoc ~= "" and reward.usable ~= false then
-                    local value, ready = APR.RewardScoring:GetUpgrade(reward.link, scale)
-                    if not ready or (value ~= nil and reward.usable == nil) then return nil, false end
+                    local value, ready, plan = APR.RewardScoring:GetUpgrade(reward.link, scale)
+                    if not ready or (value ~= nil and reward.usable == nil) then return nil, false, "gear-data", source end
+                    if conservative and value and value > 0 then
+                        reward.delta = plan and plan.armorDelta
+                        conservative[#conservative + 1] = reward
+                    end
                     if value and value > gain then
                         best, gain = reward.index, value
                     end
                 end
             end
-            if best then return best, true end
+            if conservative and #conservative > 0 then
+                -- Compare whole-equipment stat gains, including different slots.
+                -- A winner must strictly dominate every alternative; ties and
+                -- tradeoffs require the player's decision, never Armor+Stamina.
+                for _, candidate in ipairs(conservative) do
+                    local dominates = candidate.delta ~= nil
+                    for _, other in ipairs(conservative) do
+                        if candidate ~= other then
+                            local strict = false
+                            if not other.delta or not candidate.delta then
+                                dominates = false
+                            else
+                                for stat, value in pairs(other.delta) do
+                                    if (candidate.delta[stat] or 0) < value then dominates = false end
+                                end
+                                for stat, value in pairs(candidate.delta) do
+                                    if value > (other.delta[stat] or 0) then strict = true end
+                                end
+                            end
+                            if not strict then dominates = false end
+                        end
+                    end
+                    if dominates then return candidate.index, true, "gear-upgrade", source end
+                end
+                return nil, true, "incomparable-gear", source
+            end
+            if best then return best, true, "gear-upgrade", source end
         elseif priority == "cosmetic" or priority == "transmog" then
             local field = priority == "cosmetic" and "isUnknownCosmetic" or "isUnknownTransmog"
             local enabled = (priority == "cosmetic" and profile.autoCosmeticMulti == true)
@@ -268,8 +305,8 @@ function APR.npcInteraction:SelectQuestReward(profile)
             -- Do not skip an unrelated price fallback when there is no appearance.
             for _, reward in ipairs(rewards) do
                 if reward[field] then
-                    if enabled then return reward.index, true end
-                    return nil, true
+                    if enabled then return reward.index, true, priority, source end
+                    return nil, true, "manual-" .. priority, source
                 end
             end
         elseif priority == "price" then
@@ -279,10 +316,11 @@ function APR.npcInteraction:SelectQuestReward(profile)
                     best, price = reward.index, reward.vendorPrice
                 end
             end
-            return best, true
+            return best, true, "price", source
         end
     end
-    return 1, true
+    if gearRequested and (not scale or scale.armorDominanceOnly) then return nil, true, "no-proven-upgrade", source end
+    return 1, true, "default-first", source
 end--[[APR_DIAG]]
 APR.npcInteraction.SelectQuestReward = APRTrace(
     "APR-Core/features/questing/NPCInteraction.lua:170:APR.npcInteraction:SelectQuestReward#11",
@@ -372,6 +410,7 @@ function APR.npcInteraction:HandleQuestDone(event, step, ...)
             interaction.rewardClaimed = nil
         end
         if APR:RequiresManualQuestReward() then
+            if APR.Debug then APR:Debug("Quest reward selection", "reason=manual-gate; choices=" .. GetNumQuestChoices()) end
             -- Profession reward choices remain manual. Only incomplete links retry.
             if profile and profile.autoHandIn then
                 for index = 1, GetNumQuestChoices() do
@@ -386,10 +425,14 @@ function APR.npcInteraction:HandleQuestDone(event, step, ...)
         APR.event:TalkToDenyNpcLogic(step)
         if profile and profile.autoHandIn then
             local count = GetNumQuestChoices()
-            local index, ready = 1, true
+            local index, ready, reason, source = 1, true, "single-or-no-choice", "none"
             if count > 1 then
                 if not profile.autoHandInChoice then return end
-                index, ready = self:SelectQuestReward(profile)
+                index, ready, reason, source = self:SelectQuestReward(profile)
+            end
+            if APR.Debug then
+                APR:Debug("Quest reward selection", "choice=" .. tostring(index) .. "; ready=" .. tostring(ready)
+                    .. "; source=" .. tostring(source) .. "; reason=" .. tostring(reason) .. "; choices=" .. count)
             end
             if not ready then
                 self:QueueRewardRetry(profile)
@@ -401,6 +444,7 @@ function APR.npcInteraction:HandleQuestDone(event, step, ...)
                     self.interaction.rewardClaimed = true
                     self.interaction.rewardClaimedUntil = GetTime() + 1
                 end
+                if APR.Debug then APR:Debug("Quest reward claim", "choice=" .. index .. "; choices=" .. count) end
                 GetQuestReward(index)
             end
         end

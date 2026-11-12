@@ -7,7 +7,7 @@ end
 
 local clock, timers, choices, items, selected, profile = 0, {}, {}, {}, {}, {}
 local questID, revision, modifier, deferred, visible, manual = 7301, 1, false, false, true, false
-local scoringCalls, scorerCalls = {}, 0
+local scoringCalls, scorerCalls, rewardDebug = {}, 0, {}
 local pawnScorer = function()
     scorerCalls = scorerCalls + 1
     return 17
@@ -21,6 +21,7 @@ APR = {
     PawnRewards = { GetScorer = function() return pawnScorer end },
 }
 function APR:GetSettingsProfile() return profile end
+function APR:Debug(message, data) rewardDebug[#rewardDebug + 1] = { message = message, data = data } end
 function APR:GetGameVersion() return self.GAME_VERSIONS.Retail end
 function APR:CaptureStepContext() return revision end
 function APR:IsStepContextCurrent(context) return revision == context end
@@ -148,6 +149,7 @@ end
 local function reset()
     APR.npcInteraction:Clear()
     clock, timers, choices, items, selected, scoringCalls, scorerCalls = 0, {}, {}, {}, {}, {}, 0
+    rewardDebug = {}
     questID, revision, modifier, deferred, visible, manual = 7301, revision + 1, false, false, true, false
     APR.routeValidationPending, APR.routeValidationFailed = nil, nil
     APR.PawnRewards = { GetScorer = function() return pawnScorer end }
@@ -652,6 +654,131 @@ assert(#selected == 0 and activeTimers() == 0, "Explicit pending Pawn cannot use
 providerReady = true
 freshQuest()
 chosen(1, "An explicit available Pawn scale still scores a character without an APR build")
+
+-- Armor dominance can prove a single reward upgrade without selecting a build.
+PawnCommon.Scales.Third = { ClassID = 1, SpecID = 3, Values = { Strength = 1 } }
+function PawnGetAllScalesEx()
+    local result = {}
+    for name in pairs(PawnCommon.Scales) do
+        result[#result + 1] = { Name = name, IsProvider = true, IsVisible = true }
+    end
+    return result
+end
+APR.PawnRewards:RefreshSettings()
+inventory, choices = {}, {}
+inventory[9] = reward(701, { equipLoc = "INVTYPE_WRIST", stats = { RESISTANCE0_NAME = 6 } })
+inventory[6] = reward(702, { equipLoc = "INVTYPE_WAIST", stats = { RESISTANCE0_NAME = 4 } })
+choices = {}
+local bracers = reward(703, { equipLoc = "INVTYPE_WRIST", stats = { RESISTANCE0_NAME = 5 }, price = 500 })
+local belt = reward(704, { equipLoc = "INVTYPE_WAIST", stats = { RESISTANCE0_NAME = 7 }, price = 1 })
+profile.rewardPriority1, profile.rewardPriority2, profile.rewardPriority3 = "ilvl", "transmog", "price"
+profile.autoTransmogMulti = false
+for _, mode in ipairs({ "apr", "auto" }) do
+    assert(APR.PawnRewards:SetSelectedScale(mode))
+    local _, source = APR.PawnRewards:GetScorer()
+    assert(source == "apr" and not APR.RewardScoring:GetDefaultScale())
+    local index, ready, reason, source = APR.npcInteraction:SelectQuestReward(profile)
+    assert(index == 2 and ready == true,
+        "A proven belt upgrade must precede manual transmog; actual choice=" .. tostring(index) .. ", ready=" .. tostring(ready))
+    assert(reason == "gear-upgrade" and source == "armor-dominance", "The result must diagnose its conservative source")
+    freshQuest()
+    chosen(2, "A sole proven armor upgrade wins over a more expensive non-upgrade in " .. mode)
+    assert(rewardDebug[#rewardDebug - 1].message == "Quest reward selection"
+        and rewardDebug[#rewardDebug - 1].data:find("reason=gear-upgrade", 1, true)
+        and rewardDebug[#rewardDebug].message == "Quest reward claim"
+        and rewardDebug[#rewardDebug].data:find("choice=2", 1, true),
+        "The event records both a resolved decision and its native claim attempt")
+    open()
+    assert(#selected == 1 and activeTimers() == 0, "Conservative selection claims once without a retry")
+end
+
+profile.rewardPriority1, profile.rewardPriority2 = "transmog", "ilvl"
+freshQuest()
+assert(#selected == 0 and activeTimers() == 0, "Manual transmog ahead of gear keeps its priority")
+assert(rewardDebug[#rewardDebug].data:find("reason=manual-transmog", 1, true), "Manual appearance exits must be diagnosed")
+profile.rewardPriority1, profile.rewardPriority2 = "ilvl", "transmog"
+manual = true
+freshQuest()
+assert(#selected == 0 and activeTimers() == 0, "Profession/manual gates remain ahead of conservative gear")
+manual = false
+
+for _, rejected in ipairs({
+    { RESISTANCE0_NAME = 7, ITEM_MOD_STAMINA_SHORT = -1 },
+    { RESISTANCE0_NAME = 4 }, -- No strict gain.
+    { ITEM_MOD_SPELL_POWER_SHORT = 100 }, -- No armor/stamina evidence.
+}) do
+    items[belt].stats = rejected
+    freshQuest()
+    assert(#selected == 0 and activeTimers() == 0, "No proven upgrade leaves the following appearance decision manual")
+end
+items[inventory[6]].stats.ITEM_MOD_STRENGTH_SHORT = 2
+items[belt].stats = { RESISTANCE0_NAME = 7, ITEM_MOD_STRENGTH_SHORT = 1 }
+freshQuest()
+assert(#selected == 0 and activeTimers() == 0, "Armor gain cannot hide a loss in an unweighted stat")
+items[inventory[6]].stats.ITEM_MOD_STRENGTH_SHORT = nil
+items[belt].stats = { RESISTANCE0_NAME = 7 }
+items[belt].equipLoc, items[belt].classID = "INVTYPE_WEAPON", 2
+freshQuest()
+assert(#selected == 0 and activeTimers() == 0, "Conservative armor proof cannot authorize a weapon")
+items[belt].equipLoc, items[belt].classID = "INVTYPE_WAIST", 4
+
+items[belt].stats = { RESISTANCE0_NAME = 4 }
+profile.rewardPriority2, profile.rewardPriority3, profile.rewardPriority4 = nil, nil, nil
+freshQuest()
+assert(#selected == 0 and activeTimers() == 0, "Gear without a proof or an explicit fallback must not claim the first item")
+profile.rewardPriority2 = "price"
+freshQuest()
+chosen(1, "An explicit price fallback remains available when neither armor reward improves equipment")
+profile.rewardPriority2, profile.rewardPriority3, profile.rewardPriority4 = "transmog", "price", "transmog"
+items[belt].stats = { RESISTANCE0_NAME = 7 }
+
+items[bracers].stats = { RESISTANCE0_NAME = 20 }
+freshQuest()
+chosen(1, "A larger armor gain with no other stat difference dominates another proven upgrade")
+items[belt].stats.ITEM_MOD_STAMINA_SHORT = 2
+freshQuest()
+assert(#selected == 0 and activeTimers() == 0, "Armor versus stamina gains remain incomparable without weights")
+assert(rewardDebug[#rewardDebug].data:find("reason=incomparable-gear", 1, true), "Incomparable upgrades must be diagnosed")
+reward(705, { equipLoc = "INVTYPE_FEET", stats = { RESISTANCE0_NAME = 30, ITEM_MOD_STAMINA_SHORT = 3 }, price = 1 })
+freshQuest()
+chosen(3, "A later reward can strictly dominate two earlier mutually incomparable upgrades")
+choices[3] = nil
+items[belt].stats.ITEM_MOD_STAMINA_SHORT = nil
+items[bracers].stats = { RESISTANCE0_NAME = 9 }
+freshQuest()
+assert(#selected == 0 and activeTimers() == 0, "Equal whole-equipment gains cannot pick an arbitrary reward slot")
+items[bracers].stats = { RESISTANCE0_NAME = 5 }
+
+local wornBracers = inventory[9]
+inventory[9] = nil
+items[belt].stats = { RESISTANCE0_NAME = 12 }
+freshQuest()
+chosen(2, "A belt whose armor gain dominates filling empty wrists can be chosen without a build")
+inventory[9] = wornBracers
+items[belt].stats = { RESISTANCE0_NAME = 7 }
+
+items[belt].stats = nil
+freshQuest()
+assert(#selected == 0 and activeTimers() == 1, "Missing dominance data waits instead of falling through")
+items[belt].stats = { RESISTANCE0_NAME = 7 }
+tick(10)
+chosen(2, "Late stat data recovers the sole proven armor upgrade")
+assert(activeTimers() == 0)
+items[belt].usable = nil
+freshQuest()
+assert(#selected == 0 and activeTimers() == 1, "Unknown native eligibility waits even with proven dominance")
+items[belt].usable = true
+questID = questID + 1
+APR.npcInteraction.rewardTimer.callback()
+tick(10)
+assert(#selected == 0 and activeTimers() == 0, "A stale quest callback cannot claim the conservative reward")
+
+assert(APR.PawnRewards:SetSelectedScale("pawn:Imported"))
+providerReady = false
+freshQuest()
+tick(60)
+assert(#selected == 0 and activeTimers() == 0, "Explicit pending Pawn never borrows the conservative armor proof")
+providerReady = true
 APR.PawnRewards:OnDisable()
 
 print(

@@ -153,17 +153,17 @@ independent copies, race modifiers, hand execution and comparison identity.
 - git diff --check passed. The ten predecessor units are present; the external
   PartyFinderWorld commit was preserved, not included in this revision.
 
-## Conservative armor in Forever bags
+## Conservative armor in Forever bags and quest rewards
 
-Bag suggestions have a separate conservative policy when a supported Forever
+Bag suggestions and quest gear selection share a conservative policy when a supported Forever
 leveling character has no selected build. It can propose usable armor for a
 confirmed empty slot or replace worn armor when the candidate loses no raw stat,
 does not reduce armor or stamina, and strictly increases armor or stamina.
 Armor aliases are normalized; unknown stats are retained rather than assigned
 guessed weights. Negative, missing and secret stats prevent a proof. A pure SP
 increase, lost primary attribute or armor/stamina tradeoff is insufficient.
-This policy cannot choose weapons/offhands, fill jewelry, shirts/tabards or score
-quest rewards. Common uniqueness and native usability checks still apply.
+This policy cannot choose weapons/offhands or fill jewelry, shirts/tabards.
+Common uniqueness and native usability checks still apply.
 An item ID without a loaded equipped link
 does not prove an empty slot. The same checks run again on the explicit equip
 click. No equip action is authorized by an equipment event or timer.
@@ -172,7 +172,7 @@ This is a partial-order proof, not an inferred build or DPS estimate. Only after
 that proof, armor and stamina contribute sorting points inside this policy;
 they never compensate for a lost stat. The dialog omits weighted-source and
 score claims. All observed stat values enter comparison/refusal identities.
-The historical `GetEmptyArmorScale` entry point returns this bag-only policy.
+The historical `GetEmptyArmorScale` entry point returns this shared policy.
 Full APR
 profiles and Pawn scores retain their existing meaning. Any resolved Pawn
 scorer, including zero armor valuation or a negative recommendation filter,
@@ -184,8 +184,18 @@ Automatic Pawn selection uses visible, class-compatible sources from
 build, exactly one visible class scale can identify the source; multiple visible
 builds never use a name/order tie-break. This matters because Pawn's normal
 Forever class-wide setup can enable all three class scales. Auto mode with an
-ambiguous source and explicitly selected APR both use the bag-only dominance
+ambiguous source and explicitly selected APR both use the dominance
 policy when no full APR profile exists; no complete profile is invented.
+
+Quest gear selection uses the same proof before later appearance/vendor priorities.
+`GetUpgrade` additionally exposes normalized raw stat gains as `plan.armorDelta`
+for dominance comparisons. A reward must strictly dominate every other proven
+upgrade in those gains to win; a sole proven upgrade wins without a competing
+alternative. Equal gains and incomparable tradeoffs remain manual. Armor+Stamina
+sorting points never rank quest choices. With no proof, later configured priorities
+still apply; absent an explicit fallback, partial/unavailable scoring cannot claim
+an arbitrary first reward. Earlier manual appearance priorities, profession gates,
+pending explicit Pawn and bounded item-data retries retain their existing behavior.
 
 `/apr gear` reports that a search started, or the disabled, combat, dead or
 unavailable scoring state. A partial-policy scan with no proven improvement
