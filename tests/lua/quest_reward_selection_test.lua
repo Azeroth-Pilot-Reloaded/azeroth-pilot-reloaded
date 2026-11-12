@@ -33,7 +33,9 @@ function APR:RequiresManualQuestReward()
     end
     return false
 end
+local defaultScale = {}
 APR.RewardScoring = {
+    GetDefaultScale = function() return defaultScale end,
     GetUpgrade = function(_, link, scale)
         scoringCalls[#scoringCalls + 1] = { link = link, scale = scale }
         local item = assert(items[link], "Scoring must keep the exact item link")
@@ -234,7 +236,7 @@ reward(131, { gain = 4 })
 reward(132, { gain = 12 })
 open()
 chosen(2, "APR's built-in scoring path remains available with Pawn absent")
-assert(scoringCalls[1].scale == nil and scorerCalls == 0, "No Pawn scorer is passed when that integration is absent")
+assert(scoringCalls[1].scale == defaultScale and scorerCalls == 0, "The resolved APR scale is passed when Pawn is absent")
 
 reset()
 reward(103, { gain = 15 })
@@ -590,6 +592,66 @@ assert(
 items[primaryReward].pawnMissing = false
 tick(10)
 chosen(1, "The composed Pawn-to-equipment-to-NPC path recovers from delayed exact item data")
+
+-- Forever before choosing a build: several class scales are ambiguous in auto.
+function APR:GetGameVersion() return self.GAME_VERSIONS.Forever end
+function GetBuildInfo() return nil, nil, nil, 16001 end
+function UnitLevel() return 3 end
+PawnCommon.Scales.Alternative = { ClassID = 1, SpecID = 2, Values = { Strength = 1 } }
+APR.PawnRewards:RefreshSettings()
+assert(APR:GetRewardBuildContext().pawnSpec == nil and not APR.RewardScoring:GetDefaultScale())
+items[primaryReward].price, items[critReward].price = 200, 10
+for _, mode in ipairs({ "apr", "auto" }) do
+    assert(APR.PawnRewards:SetSelectedScale(mode))
+    local _, state = APR.PawnRewards:GetScorer()
+    assert(state == "apr", "Ambiguous auto and Default APR cannot invent a build")
+    freshQuest()
+    chosen(1, "An unavailable build must allow the configured price fallback in " .. mode)
+    assert(activeTimers() == 0, "An unavailable profile is not pending item data")
+    open()
+    assert(#selected == 1, "No-build fallback must claim only once")
+end
+local pawnIntegration = APR.PawnRewards
+APR.PawnRewards = nil
+freshQuest()
+chosen(1, "An absent Pawn addon also permits the no-build price fallback")
+APR.PawnRewards = pawnIntegration
+profile.rewardPriority2, profile.rewardPriority3 = "cosmetic", "price"
+items[critReward].classID, items[critReward].subClassID = 4, 5
+freshQuest()
+chosen(2, "No-build gear priority yields to the next configured appearance priority")
+profile.autoCosmeticMulti = false
+freshQuest()
+assert(#selected == 0 and activeTimers() == 0, "No-build fallback preserves manual appearance choices")
+profile.rewardPriority2, profile.rewardPriority3 = "price", "cosmetic"
+items[critReward].subClassID = 1
+
+items[primaryReward].cached = false
+freshQuest()
+assert(#selected == 0 and activeTimers() == 1, "No-build price fallback still waits for item metadata")
+items[primaryReward].cached = true
+tick(10)
+chosen(1, "Late item data resumes no-build fallback with one claim")
+assert(activeTimers() == 0)
+
+items[primaryReward].cached = false
+freshQuest()
+local obsoleteRetry = APR.npcInteraction.rewardTimer
+questID = questID + 1
+items[primaryReward].cached = true
+obsoleteRetry.callback()
+tick(10)
+assert(#selected == 0 and activeTimers() == 0, "A changed quest cancels no-build fallback retries")
+
+assert(APR.PawnRewards:SetSelectedScale("pawn:Imported"))
+items[critReward].price = 300
+providerReady = false
+freshQuest()
+tick(60)
+assert(#selected == 0 and activeTimers() == 0, "Explicit pending Pawn cannot use price even without an APR build")
+providerReady = true
+freshQuest()
+chosen(1, "An explicit available Pawn scale still scores a character without an APR build")
 APR.PawnRewards:OnDisable()
 
 print(
