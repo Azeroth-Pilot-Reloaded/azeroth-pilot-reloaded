@@ -366,3 +366,30 @@ assert(shared.current == nil, "Disabling again must retry a failed owned cleanup
 print(
     "Navigation automatic Waypoint UI: optional observers, transitions, retries, manual overrides and ticker ownership passed"
 )
+
+-- External scheduling keeps the exact same ownership/cancellation contract,
+-- but never asks the library or host for a background observer.
+local externalAPI, externalState = Provider()
+local externalTarget = MapPoint(0.25, 0.35)
+local targetReads, schedules = 0, 0
+local external = library:New({ profile = "retail", waypoints = { automaticRefresh = "external" }, environment = {
+    newWaypointTicker = function() schedules = schedules + 1; error("external mode cannot schedule") end,
+    getWaypointTarget = function() targetReads = targetReads + 1; return externalTarget, { context = "external" } end,
+    getWaypointUIAPI = function() return externalAPI end,
+} })
+assert(schedules == 0 and targetReads == 1 and externalState.creates == 1)
+local first = externalState.current
+external:RefreshWaypointUI()
+assert(targetReads == 2 and externalState.current == first and externalState.creates == 1)
+externalState.clearError = true
+external:SetWaypointUIEnabled(false)
+assert(external.waypointPendingRelease and schedules == 0)
+externalState.clearError = false
+external:RefreshWaypointUI()
+assert(not external.waypointPendingRelease and externalState.current == nil,
+    "An external post-combat notification completes deferred cleanup without a ticker")
+external:SetWaypointUIEnabled(true)
+assert(externalState.creates == 2 and schedules == 0)
+externalTarget = nil
+external:RefreshWaypointUI()
+assert(externalState.current == nil)

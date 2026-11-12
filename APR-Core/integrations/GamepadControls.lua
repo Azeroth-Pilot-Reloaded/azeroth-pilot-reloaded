@@ -33,22 +33,35 @@ Pad.FormatMenuChord =
 -- Observe only the configured buttons. Never replace native navigation bindings.
 local chordWatcher = CreateFrame("Frame")
 local chordElapsed, chordArmed, observedChord = 0, false, nil
+local chordUpdate
 function Pad:RefreshMenuChord()
-    chordArmed, observedChord = false, nil
-    chordWatcher:SetShown(self:GetMenuChord() ~= nil)
+    local active = not self.chordDisconnected and self:IsEnabled() and self:GetMenuChord() ~= nil and not InCombatLockdown()
+        and not (self.bindingCapture and self.bindingCapture.captureListening)
+    chordElapsed, chordArmed, observedChord = 0, false, nil
+    chordWatcher:SetScript("OnUpdate", active and chordUpdate or nil)
+    chordWatcher:SetShown(active == true)
 end--[[APR_DIAG]]
 Pad.RefreshMenuChord =
     APRTrace("APR-Core/integrations/GamepadControls.lua:33:Pad:RefreshMenuChord#3", Pad.RefreshMenuChord)--[[/APR_DIAG]]
 chordWatcher:Hide()
 chordWatcher:RegisterEvent("PLAYER_LOGIN")
 chordWatcher:RegisterEvent("PLAYER_REGEN_DISABLED")
+chordWatcher:RegisterEvent("PLAYER_REGEN_ENABLED")
+if APR.RegisterSupportedEvent then
+    APR:RegisterSupportedEvent(chordWatcher, "GAME_PAD_DISCONNECTED")
+    APR:RegisterSupportedEvent(chordWatcher, "GAME_PAD_CONNECTED")
+end
 chordWatcher:SetScript(
     "OnEvent",
 
     --[[APR_DIAG]]
     APRTrace(
         "APR-Core/integrations/GamepadControls.lua:43:callback#4", --[[/APR_DIAG]]
-        function() Pad:RefreshMenuChord() end --[[APR_DIAG]]
+        function(_, event)
+            if event == "GAME_PAD_DISCONNECTED" then Pad.chordDisconnected = true end
+            if event == "GAME_PAD_CONNECTED" then Pad.chordDisconnected = nil end
+            Pad:RefreshMenuChord()
+        end --[[APR_DIAG]]
     ) --[[/APR_DIAG]]
 )
 chordWatcher:SetScript(
@@ -85,6 +98,9 @@ chordWatcher:SetScript(
         end
     end--[[APR_DIAG]]) --[[/APR_DIAG]]
 )
+
+chordUpdate = chordWatcher:GetScript("OnUpdate")
+chordWatcher:SetScript("OnUpdate", nil)
 
 function Pad:CancelMenuBinding()
     local frame = self.bindingCapture
@@ -255,7 +271,10 @@ APRTrace(
             --[[APR_DIAG]]
             APRTrace(
                 "APR-Core/integrations/GamepadControls.lua:218:callback#15", --[[/APR_DIAG]]
-                function() frame:EnableGamePadButton(true) end --[[APR_DIAG]]
+                function()
+                    frame:EnableGamePadButton(true)
+                    self:RefreshMenuChord()
+                end --[[APR_DIAG]]
             ) --[[/APR_DIAG]]
         )
         frame:HookScript(
@@ -266,6 +285,7 @@ APRTrace(
                 if not InCombatLockdown() then frame:EnableGamePadButton(false) end
                 frame.captureListening = false
                 frame.captureButton, frame.captureBaseKey, frame.captureKey = nil, nil, nil
+                self:RefreshMenuChord()
             end--[[APR_DIAG]]) --[[/APR_DIAG]]
         )
         frame:RegisterEvent("PLAYER_REGEN_DISABLED")

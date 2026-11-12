@@ -118,6 +118,10 @@ function Monitor:Sample(force)
     end
     sample.memoryKB, sample.memoryAt, sample.memoryScanMs = self.memoryKB, self.memoryAt, self.scanMs
     sample.routeCache, sample.mapCache, sample.stepModels = self.counts.routes, self.counts.maps, self.counts.steps
+    if APR.PerformanceDashboard and APR.PerformanceDashboard.frame
+        and APR.PerformanceDashboard.frame:IsShown() and APR.PerformanceDashboard.QueueRefresh then
+        APR.PerformanceDashboard:QueueRefresh()
+    end
     resources.cursor = resources.cursor % SAMPLE_LIMIT + 1
     resources.samples[resources.cursor] = sample
     resources.count = math.min(resources.count + 1, SAMPLE_LIMIT)

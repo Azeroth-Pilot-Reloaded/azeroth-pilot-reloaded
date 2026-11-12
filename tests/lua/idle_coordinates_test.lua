@@ -5,9 +5,22 @@ function UnitPosition()
     reads = reads + 1
     return y, x
 end
+local now, timer = 0
+C_Timer = { NewTicker = function(delay, callback)
+    timer = { delay = delay, callback = callback, at = now + delay }
+    function timer:Cancel() self.cancelled = true end
+    return timer
+end }
 dofile("APR-Core/ui/panels/Coordinates.lua")
 local frame = CoordinateScreenPanel
-local tick = frame.scripts.OnUpdate
+frame.scripts.OnShow(frame)
+local function tick(_, elapsed)
+    now = now + elapsed
+    if not timer.cancelled and timer.at <= now + 0.000001 then
+        timer.at = now + timer.delay
+        timer.callback()
+    end
+end
 local formats, writes = 0, 0
 local round, setText = APR.coordinate.RoundCoords, frame.Text.SetText
 function APR.coordinate:RoundCoords(...)
@@ -43,3 +56,8 @@ for _ = 1, 6 do
 end
 assert(reads <= afterStall + 1, "A stalled frame cannot create a backlog of coordinate API calls")
 print("Idle coordinates: 5 Hz sampling, unchanged-text reuse, unavailable-position recovery and no catch-up bursts")
+
+frame.scripts.OnHide(frame)
+local hiddenReads = reads
+timer.callback()
+assert(timer.cancelled and reads == hiddenReads, "A retired coordinate callback cannot read position")

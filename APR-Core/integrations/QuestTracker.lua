@@ -1246,13 +1246,28 @@ Tracker.RefreshObservedLayout = APRTrace(
     Tracker.RefreshObservedLayout
 )--[[/APR_DIAG]]
 
+function Tracker:RefreshObservationActivity()
+    if not self.observer then return end
+    local profile = APR:GetSettingsProfile()
+    local active = profile and profile.enableAddon and profile.currentStepAttachFrameToQuestLog
+        and CurrentStepScreenPanel:IsShown() and not InCombatLockdown()
+        and not (APR.LayoutEditor and APR.LayoutEditor.active)
+    self.observationActive = active == true
+    self.observer:SetScript("OnUpdate", active and self.observationCallback or nil)
+    if not active then
+        local restoreAppearance = self.appearanceObserved
+        self.appearanceObserved, self.layoutObservation, self.layoutSafetyElapsed = nil, nil, 0
+        if restoreAppearance then self:RefreshAppearance() end
+        if self.displacement and not InCombatLockdown() then self:Release() end
+    end
+end--[[APR_DIAG]]; Tracker.RefreshObservationActivity = APRTrace("APR-Core/integrations/QuestTracker.lua:1184:Tracker:RefreshObservationActivity#46", Tracker.RefreshObservationActivity)--[[/APR_DIAG]]
 function Tracker:Initialize()
     if self.observer then return end
     self.observer = CreateFrame("Frame")
     local elapsed, appearanceElapsed = 0, 0
-    self.observer:SetScript(
-        "OnUpdate", --[[APR_DIAG]]
-        APRTrace("APR-Core/integrations/QuestTracker.lua:1001:callback#42", --[[/APR_DIAG]] function(_, delta)
+    self.observationCallback =
+         --[[APR_DIAG]]APRTrace("APR-Core/integrations/QuestTracker.lua:1202:callback#48", --[[/APR_DIAG]]function(_, delta)
+            if not self.observationActive then return end
             elapsed = elapsed + delta
             appearanceElapsed = appearanceElapsed + delta
             if elapsed < 0.2 then return end
@@ -1289,15 +1304,25 @@ function Tracker:Initialize()
                 if APR.FinishPerformanceSample then APR:FinishPerformanceSample("TrackerAppearanceUpdate", started) end
             end
             self:RefreshObservedLayout(interval)
-        end--[[APR_DIAG]]) --[[/APR_DIAG]]
-    )
-    self.observer:RegisterEvent("PLAYER_LOGOUT")
+        end--[[APR_DIAG]])--[[/APR_DIAG]]
+    self.observer:SetScript("OnUpdate", nil)
+    for _, event in ipairs({ "PLAYER_LOGOUT", "PLAYER_REGEN_DISABLED", "PLAYER_REGEN_ENABLED" }) do
+        self.observer:RegisterEvent(event)
+    end
+    CurrentStepScreenPanel:HookScript("OnShow", --[[APR_DIAG]]APRTrace("APR-Core/integrations/QuestTracker.lua:1244:callback#49", --[[/APR_DIAG]]function() self:RefreshObservationActivity() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    CurrentStepScreenPanel:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/integrations/QuestTracker.lua:1245:callback#50", --[[/APR_DIAG]]function() self:RefreshObservationActivity() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self:RefreshObservationActivity()
     self.observer:SetScript(
-        "OnEvent", --[[APR_DIAG]]
-        APRTrace(
-            "APR-Core/integrations/QuestTracker.lua:1040:callback#43", --[[/APR_DIAG]]
-            function() self:Release() end --[[APR_DIAG]]
-        ) --[[/APR_DIAG]]
+        "OnEvent",
+
+            --[[APR_DIAG]]APRTrace("APR-Core/integrations/QuestTracker.lua:1250:callback#51", --[[/APR_DIAG]]function(_, event)
+                if event == "PLAYER_LOGOUT" then
+                    self.observer:SetScript("OnUpdate", nil)
+                    self:Release()
+                else
+                    self:RefreshObservationActivity()
+                end
+            end--[[APR_DIAG]])--[[/APR_DIAG]]
     )
 end--[[APR_DIAG]]
 Tracker.Initialize = APRTrace("APR-Core/integrations/QuestTracker.lua:997:Tracker:Initialize#41", Tracker.Initialize)--[[/APR_DIAG]]

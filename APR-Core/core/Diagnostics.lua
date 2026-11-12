@@ -93,6 +93,15 @@ function D.Record(kind, source, message, data, duration, ownMs, failed)
     local progress = APR and APR.PlayerID and APRData[APR.PlayerID]
     local step = progress and route and progress[route]
     log.total = log.total + 1
+    local viewer = D.logViewer
+    local observerSource = type(source) == "string" and (source:find("APR-Core/ui/panels/PerformanceDashboard.lua:", 1, true) == 1
+        or source:find("APR-Core/ui/panels/PerformanceResources.lua:", 1, true) == 1)
+    -- Viewers stay observable, but their own drawing cannot schedule more drawing.
+    if viewer and not D.notifyingViewer and not D.suspended and not observerSource then
+        D.notifyingViewer = true
+        pcall(viewer.QueueRefresh, viewer)
+        D.notifyingViewer = nil
+    end
     -- Keep every function observable, but aggregate interleaved fast calls for
     -- one second. Millions of short-lived CALL tables otherwise trigger GC and
     -- erase the useful event/debug messages almost immediately.

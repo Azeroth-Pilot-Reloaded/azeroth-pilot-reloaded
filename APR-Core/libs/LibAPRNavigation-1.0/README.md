@@ -483,7 +483,13 @@ UI. For APR the identity is `apr`; other consumers supply their own existing ID.
 `waypoints = { enabled = false, guideProviderID = ... }` configures manual output.
 Planning and diagnostic searches never select an active target implicitly.
 
-Automatic output samples `environment.getWaypointTarget()` every 0.2 seconds.
+Automatic output samples `environment.getWaypointTarget()` every 0.2 seconds by default.
+With `waypoints = { automaticRefresh = "external" }`, the host instead calls
+`RefreshWaypointUI()` after relevant changes and while an actual target needs
+position updates. This mode never creates a library ticker. Enabling still
+refreshes immediately; ownership, user overrides and cancellation remain intact.
+The host must also refresh after combat to finish any deferred release, including
+when output is disabled.
 The optional second return value contains display options and stable `token` and
 `context` identities. `guideMode = "override"` publishes this target;
 `"fallback"` delegates ordinary objectives to AzerothWaypoint's original extractor;

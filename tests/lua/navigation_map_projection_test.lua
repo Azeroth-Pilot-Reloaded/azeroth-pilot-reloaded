@@ -206,6 +206,7 @@ APR.map:OnInit()
 local tick = APR.map.stepLines.scripts.OnLoop
 for _, mapID in ipairs({ 2215, 2274, 947, 946 }) do
     shownMap = mapID
+    APR.map:QueueMapPins() -- Native SetMapID publishes this change.
     tick()
     local segment = APR.map.worldSegments[1]
     if mapID == 947 or mapID == 946 then
@@ -230,6 +231,7 @@ for _, mapID in ipairs({ 2215, 2274, 947, 946 }) do
     near(mini.y, expected[2215][2])
 end
 shownMap = 2274
+APR.map:QueueMapPins() -- Native SetMapID publishes this change.
 tick()
 local beforeProjects, beforeRects, beforeReads, frames = projections, rectReads, mapReads, env.frames()
 local anchors = APR.map.worldSegments[1].finish.anchors
@@ -274,6 +276,7 @@ Minimap:SetSize(300, 300)
 tick()
 near(APR.map.minimapSegments[1].bx, miniX * 1.5, "Minimap resize redraws stationary geometry")
 shownMap = 2215
+APR.map:QueueMapPins() -- Native SetMapID publishes this change.
 tick()
 assert(#worldPins[APR.map.pinlist] == 2, "Returning to the native map re-registers both normal HBD pins")
 playerInstance = 42
@@ -287,6 +290,7 @@ assert(APR.map.minimapSegments[1].line:IsShown(), "A valid native world restores
 rects[2215] = { 0.3, 0.55, 0.4, 0.7 }
 APR.map.eventFrame.scripts.OnEvent(nil, "NEW_WMO_CHUNK")
 shownMap = 2274
+APR.map:QueueMapPins() -- Native SetMapID publishes this change.
 tick()
 near(APR.map.worldSegments[1].bx, 230.925, "A discrete geometry change invalidates parent rectangles")
 profile.enableAddon = false

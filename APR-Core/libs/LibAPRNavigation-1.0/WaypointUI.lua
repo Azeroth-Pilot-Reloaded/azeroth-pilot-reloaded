@@ -1,7 +1,7 @@
 -- Optional waypoint output. A consumer may publish explicitly or enable an
 -- observer of its current target; route progression always belongs to the host.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("waypoint-ui", 5) then return end
+if not Lib:BeginModule("waypoint-ui", 6) then return end
 local Instance = Lib.Instance
 local visualKeys = { "name", "iconTexture", "iconType", "r", "g", "b", "requestRecolor", "stripCoordinates" }
 
@@ -751,6 +751,9 @@ function Instance:SetWaypointUIEnabled(enabled)
     automatic.hasTarget, automatic.manualOverride, automatic.schedulerReason = nil, nil, nil
     self.waypointCancelledContext, self.waypointDismissedToken = nil, nil
     local generation = automatic.generation
+    if self.waypointOptions and self.waypointOptions.automaticRefresh == "external" then
+        return self:RefreshWaypointUI()
+    end
     local createTicker = self.env.newWaypointTicker
     if createTicker == nil then
         local timers = rawget(_G, "C_Timer")

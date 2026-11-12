@@ -223,6 +223,40 @@ held = {}
 env.setCombat(false)
 poll()
 assert(menuOpens == 1, "Combat cancels pending chords without replay")
+-- A saved chord does not own an observer while keyboard/mouse mode is active.
+local nativeMode, nativeKey = InputUtil.IsGamepadUIEnabled, IsKeyDown
+InputUtil.IsGamepadUIEnabled = function() return false end
+local keyReads, callbacks = 0, 0
+function IsKeyDown() keyReads = keyReads + 1; return false end
+pad:RefreshMenuChord()
+for _ = 1, 120 * 165 do
+    for _, frame in ipairs(fixture.created) do
+        if frame:IsShown() and frame.scripts.OnUpdate then
+            callbacks = callbacks + 1
+            frame.scripts.OnUpdate(frame, 1 / 165)
+        end
+    end
+end
+assert(keyReads == 0 and callbacks == 0, "Saved chords must cause zero idle callbacks outside gamepad mode")
+InputUtil.IsGamepadUIEnabled, IsKeyDown = nativeMode, nativeKey
+pad:RefreshMenuChord()
+local resumed
+for _, frame in ipairs(fixture.created) do
+    if frame.scripts.OnUpdate then resumed = frame end
+end
+assert(resumed, "Reentering gamepad mode restores the configured chord observer")
+env.setCombat(true)
+resumed.scripts.OnEvent(resumed, "PLAYER_REGEN_DISABLED")
+assert(resumed.scripts.OnUpdate == nil, "Combat detaches chord polling")
+env.setCombat(false)
+resumed.scripts.OnEvent(resumed, "PLAYER_REGEN_ENABLED")
+assert(resumed.scripts.OnUpdate, "Combat end restores only eligible observers")
+resumed.scripts.OnEvent(resumed, "GAME_PAD_DISCONNECTED")
+assert(resumed.scripts.OnUpdate == nil, "Disconnect detaches polling before the native mode transition")
+pad:RefreshMenuChord()
+assert(resumed.scripts.OnUpdate == nil, "An unrelated refresh cannot revive a disconnected controller")
+resumed.scripts.OnEvent(resumed, "GAME_PAD_CONNECTED")
+assert(resumed.scripts.OnUpdate, "Reconnecting an active controller restores its observer")
 pad.RunAction = runAction
 APRData.GamepadMenuChord = nil
 pad:RefreshMenuChord()

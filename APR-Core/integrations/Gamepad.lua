@@ -447,6 +447,7 @@ function Pad:InstallTransitions()
                 entry.active = nil
             end
             self.menuOffered = nil
+            if self.RefreshMenuChord then self:RefreshMenuChord() end
             if self.QueueInputRefresh then self:QueueInputRefresh() end
             if APR.Workspace and APR.Workspace.RefreshGamepadMenu then APR.Workspace:RefreshGamepadMenu() end
         end--[[APR_DIAG]]) --[[/APR_DIAG]]
@@ -455,7 +456,11 @@ function Pad:InstallTransitions()
         self, --[[APR_DIAG]]
         APRTrace(
             "APR-Core/integrations/Gamepad.lua:299:callback#27", --[[/APR_DIAG]]
-            function() self:RestoreWindows() end --[[APR_DIAG]]
+            function()
+                self.chordDisconnected = nil
+                if self.RefreshMenuChord then self:RefreshMenuChord() end
+                self:RestoreWindows()
+            end --[[APR_DIAG]]
         ) --[[/APR_DIAG]]
     )
 end--[[APR_DIAG]]

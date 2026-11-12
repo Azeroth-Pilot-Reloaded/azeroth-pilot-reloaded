@@ -75,6 +75,7 @@ assert(env.getHousingInitiative(101) == nil)
 info.isLoaded, info.duration = true, 0
 assert(env.getHousingInitiative(101) == nil, "Expired initiative data must not authorize a stale portal")
 local refreshes = 0
+APR.ActiveRoute = "synthetic-route"
 APR.navigation = { ForceRefresh = function() refreshes = refreshes + 1 end }
 for _, name in ipairs({ "ZONE_CHANGED_NEW_AREA", "CALENDAR_UPDATE_EVENT_LIST", "NEIGHBORHOOD_INITIATIVE_UPDATED" }) do
     assert(adapter.frame.events[name])
@@ -84,3 +85,33 @@ assert(refreshes == 3)
 print(
     "Conditional adapter: server calendar bounds, viewed-month offset, unavailable data and neighborhood-scoped initiatives passed"
 )
+
+-- A known boundary gets one deadline; missing data gets a scoped fallback.
+local pendingTimers = {}
+C_Timer = { NewTimer = function(delay, callback)
+    local value = { delay = delay, callback = callback, Cancel = function(self) self.cancelled = true end }
+    pendingTimers[#pendingTimers + 1] = value
+    return value
+end }
+APR.settings = { profile = { enableAddon = true } }
+today.hour, today.minute = 10, 0
+C_Calendar.GetDayEvent = function() return event end
+adapter.calendarReady = true
+adapter.holidayBoundary = nil
+assert(env.isHolidayActive("festival") == true)
+adapter:RefreshActivity()
+local boundary = pendingTimers[#pendingTimers]
+assert(boundary and boundary.delay == 3600, "Known opening/closing boundaries do not need minute polling")
+for _ = 1, 100 do adapter:RefreshActivity() end
+assert(#pendingTimers == 1)
+holiday = nil
+env.isHolidayActive("festival")
+adapter:RefreshActivity()
+local fallback = pendingTimers[#pendingTimers]
+assert(boundary.cancelled and fallback.delay == 60, "Unavailable data uses one demand-scoped fallback")
+APR.ActiveRoute = nil
+adapter:RefreshActivity()
+assert(fallback.cancelled)
+local refreshBefore = refreshes
+fallback.callback()
+assert(refreshes == refreshBefore, "Cancelled calendar callbacks cannot refresh an abandoned route")

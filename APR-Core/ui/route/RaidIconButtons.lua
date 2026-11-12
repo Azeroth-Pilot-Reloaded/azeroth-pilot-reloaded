@@ -24,6 +24,7 @@ local function SetAttribute(button, key, value)
 end--[[APR_DIAG]]; SetAttribute = APRTrace("APR-Core/ui/route/RaidIconButtons.lua:22:SetAttribute#3", SetAttribute)--[[/APR_DIAG]]
 
 function Rail:RefreshMacros()
+    if not self.buttons[1] then self.pendingMacros = nil; return end
     if InCombatLockdown() then self.pendingMacros = true return end
     self.pendingMacros = nil
     local all = APR:BuildRaidIconMacro(self.targets, nil, self.markerIndices)

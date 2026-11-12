@@ -452,8 +452,14 @@ function Preview:Build(guidance, step, index, steps, cursor)
 end--[[APR_DIAG]]
 Preview.Build = APRTrace("APR-Core/features/navigation/Preview.lua:270:Preview:Build#12", Preview.Build)--[[/APR_DIAG]]
 
+local emptyPublishedPoints = {}
 function Preview:GetPoints()
     local navigation = APR.navigation
+    if not APR.ActiveRoute and not (APR.Services and APR.Services.active)
+        and not (navigation and navigation.queue and #navigation.queue > 0)
+        and not (navigation and navigation.GetPreview and not navigation.queue) then
+        return emptyPublishedPoints
+    end
     -- External providers without a published queue cannot advertise when their
     -- geometry changes. Keep their existing pull contract.
     if navigation and navigation.GetPreview and not navigation.queue then

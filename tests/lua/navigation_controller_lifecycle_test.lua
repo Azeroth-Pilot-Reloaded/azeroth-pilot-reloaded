@@ -397,7 +397,7 @@ for _, reversed in ipairs({ false, true }) do
     t.nav:Update()
     t.nav:Render()
     t.nav:PollArrival()
-    frame.scripts.OnUpdate(frame, 1)
+    assert(frame.scripts.OnUpdate == nil, "World loading detaches the navigation worker")
     assert(
         t.nav.queue == cached and t.builds == builds and t.nav.lastCancellation == previousCancellation,
         "Unavailable world observations cannot cancel or rebuild a suspended trip"

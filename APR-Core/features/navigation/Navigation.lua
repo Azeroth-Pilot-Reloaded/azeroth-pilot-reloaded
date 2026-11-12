@@ -297,6 +297,7 @@ function nav:Cancel(reason, keepArrow)
         APR.Arrow:SetArrowActive(false, 0, 0)
     end
     self:ClearNavigationUiLines()
+    if self.RefreshActivity then self:RefreshActivity() end
 end--[[APR_DIAG]]; nav.Cancel = APRTrace("APR-Core/features/navigation/Navigation.lua:252:nav:Cancel#27", nav.Cancel)--[[/APR_DIAG]]
 function nav:CaptureRetainedArrow(position)
     local arrow = APR.Arrow
@@ -359,6 +360,7 @@ function nav:BeginWorldLoading(event)
         self._loadingScreen = true
     end
     self.worldLoading, self.lastWorldEvent = true, event
+    if self.RefreshActivity then self:RefreshActivity() end
     if not alreadyLoading then
         -- Keep the published route in memory, including its live predicates.
         -- Only the candidate measured before departure becomes obsolete.
@@ -385,6 +387,7 @@ function nav:EndWorldLoading(event)
     if wasLoading then self._transitionProbe = nil end
     self:ForceRefresh("world_transition")
     self:RequestUpdate()
+    if self.RefreshActivity then self:RefreshActivity() end
 end--[[APR_DIAG]]; nav.EndWorldLoading = APRTrace("APR-Core/features/navigation/Navigation.lua:373:nav:EndWorldLoading#33", nav.EndWorldLoading)--[[/APR_DIAG]]
 function nav:BeginTransitionProbe(step)
     if not step or step.kind == "walk" or step.kind == "unlock" or step.kind == "verify_taxi" then return end
@@ -405,6 +408,10 @@ function nav:InvalidatePathCache(reason)
 end--[[APR_DIAG]]; nav.InvalidatePathCache = APRTrace("APR-Core/features/navigation/Navigation.lua:396:nav:InvalidatePathCache#35", nav.InvalidatePathCache)--[[/APR_DIAG]]
 function nav:ForceRefresh(reason) self:InvalidatePathCache(reason) end--[[APR_DIAG]]; nav.ForceRefresh = APRTrace("APR-Core/features/navigation/Navigation.lua:406:nav:ForceRefresh#36", nav.ForceRefresh)--[[/APR_DIAG]]
 function nav:RequestUpdate()
+    if not Enabled() then
+        self:RefreshActivity()
+        return
+    end
     if APR.routeValidationPending or APR.routeValidationFailed then return end
     if self.worldLoading then return end
     if self._stepCheckTimer then return end
@@ -413,10 +420,11 @@ function nav:RequestUpdate()
     local timer
     timer = C_Timer.NewTimer(
         0.05,
-         --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:416:callback#38", --[[/APR_DIAG]]function()
+         --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:423:callback#38", --[[/APR_DIAG]]function()
             if self._stepCheckTimer ~= timer then return end
             self._stepCheckTimer = nil
             if ContextCurrent(context) then self:Update(context) end
+            self:RefreshActivity()
         end--[[APR_DIAG]])--[[/APR_DIAG]]
     )
     self._stepCheckTimer = timer
@@ -704,6 +712,7 @@ function nav:MarkRouteReady(forceRefresh)
     self:Notify()
 end--[[APR_DIAG]]; nav.MarkRouteReady = APRTrace("APR-Core/features/navigation/Navigation.lua:649:nav:MarkRouteReady#53", nav.MarkRouteReady)--[[/APR_DIAG]]
 function nav:Render()
+    if self.RefreshActivity then self:RefreshActivity() end
     if self.worldLoading then return end
     local ui = APR.currentStep
     if not ui then return end
@@ -1777,10 +1786,9 @@ function nav:PollArrival()
     end
 end--[[APR_DIAG]]; nav.PollArrival = APRTrace("APR-Core/features/navigation/Navigation.lua:1659:nav:PollArrival#79", nav.PollArrival)--[[/APR_DIAG]]
 local frame, elapsed = CreateFrame("Frame"), 0
-frame:SetScript(
-    "OnUpdate",
-     --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1767:callback#80", --[[/APR_DIAG]]function(_, delta)
-        if nav.worldLoading then return end
+local navigationPoll =
+     --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1790:callback#80", --[[/APR_DIAG]]function(_, delta)
+        if nav.worldLoading or not nav.polling then return end
         elapsed = elapsed + delta
         if elapsed < 0.5 then return end
         elapsed = 0
@@ -1829,7 +1837,29 @@ frame:SetScript(
             nav:RequestUpdate()
         end
     end--[[APR_DIAG]])--[[/APR_DIAG]]
-)
+
+frame:SetScript("OnUpdate", nil)
+function nav:RefreshActivity()
+    local active = Enabled() and not self.worldLoading
+        and (self:IsNavigating() or self._routeInputs ~= nil
+            or self.state == "instance"
+            or (self.state == "waiting_data" and self.reason ~= "unsupported")
+            or (APR.Services and APR.Services.active ~= nil))
+    if active then
+        if not self.polling then
+            self.polling = true
+            elapsed = 0
+            frame:SetScript("OnUpdate", navigationPoll)
+        end
+    else
+        self.polling = nil
+        frame:SetScript("OnUpdate", nil)
+        elapsed = 0
+    end
+    if APR.NavigationAdapter and APR.NavigationAdapter.RefreshActivity then
+        APR.NavigationAdapter:RefreshActivity(active)
+    end
+end--[[APR_DIAG]]; nav.RefreshActivity = APRTrace("APR-Core/features/navigation/Navigation.lua:1842:nav:RefreshActivity#81", nav.RefreshActivity)--[[/APR_DIAG]]
 for _, event in ipairs({
     "PLAYER_LEAVING_WORLD",
     "PLAYER_ENTERING_WORLD",
@@ -1884,13 +1914,19 @@ end
 frame:SetScript(
     "OnEvent",
 
-        --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1872:callback#81", --[[/APR_DIAG]]function(_, event, unit, _, spellID)
+        --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Navigation.lua:1917:callback#82", --[[/APR_DIAG]]function(_, event, unit, _, spellID)
             if event == "PLAYER_LEAVING_WORLD" or event == "LOADING_SCREEN_ENABLED" then
                 nav:BeginWorldLoading(event)
                 return
             end
             if event == "PLAYER_ENTERING_WORLD" or event == "LOADING_SCREEN_DISABLED" then
                 nav:EndWorldLoading(event)
+                return
+            end
+            if APR.Services and APR.Services.active then APR.Services:Validate() end
+            if not Enabled() then
+                if nav.state ~= "ready" then nav:Cancel("inactive") end
+                nav:RefreshActivity()
                 return
             end
             if event == "SPELL_UPDATE_COOLDOWN" or event == "BAG_UPDATE_COOLDOWN" then
