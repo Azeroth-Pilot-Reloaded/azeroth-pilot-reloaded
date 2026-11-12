@@ -805,6 +805,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             Note = { "TRY_AVOID_MANGY_DUSKBATS_MUCH_TOUGHER_KILL" },
             Coord = { x = 1597.955, y = 1977.73 },
             Range = 30,
+            SpellButton = { ["90902-1"] = 635 },
             RaidIcon = { { npcID = 1508, questID = 376, objectiveIndex = 1 }, { npcID = 1512, questID = 376, objectiveIndex = 2 } },
             Class = "PALADIN",
             Zone = 1420,
@@ -824,6 +825,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             Fillers = { [90902] = { 1 } },
             Coord = { x = 1557.51, y = 1995.96 },
             Range = 30,
+            SpellButton = { ["90902-1"] = 635 },
             RaidIcon = { { npcID = 1890, questID = 3901, objectiveIndex = 1 } },
             Class = "PALADIN",
             Zone = 1420,
@@ -832,6 +834,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         {
             Qpart = { [90902] = { 1 } },
             Coord = { x = 1593.5, y = 1876.4 },
+            SpellButton = { ["90902-1"] = 635 },
             Class = "PALADIN",
             Zone = 1420,
             _index = 83,
