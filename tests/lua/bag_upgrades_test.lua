@@ -78,7 +78,8 @@ function APR.RewardScoring:GetUpgrade(link, scale)
     if inventory[item.slot or 1] == link then return 0, true end
     return item.gain,
         true,
-        { slot = item.slot or 1, replacedSlots = { item.replaced or item.slot or 1 }, move = item.move }
+        { slot = item.slot or 1, replacedSlots = { item.replaced or item.slot or 1 }, move = item.move },
+        tostring(item.gain) .. ":" .. (inventory[item.slot or 1] or "")
 end
 local visible, inPopupCallback
 function StaticPopup_Visible() return visible end
@@ -148,6 +149,7 @@ module:QueueScan("BAG_UPDATE_DELAYED")
 flush()
 assert(#prompts == count, "Dismissed links survive unrelated bag events")
 custom = function() return 1, true end
+scoringIdentity = "custom-1"
 module:OnScoringChanged()
 flush()
 assert(visible.text:find(strong, 1, true))
@@ -270,6 +272,7 @@ flush()
 privateDialog:Hide()
 flush()
 assert(module.dismissed[upgrade] and #equips == equippedBefore, "Back/Ignore dismisses without equipping")
+scoringIdentity = "custom-2"
 module:OnScoringChanged()
 flush()
 combat = true

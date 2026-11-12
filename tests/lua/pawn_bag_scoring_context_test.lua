@@ -4,7 +4,7 @@ for _, client in ipairs({ "retail", "forever" }) do
     local spec, ready, notifications, offers = 101, true, 0, 0
     local equipped, upgrade = "item:7101:equipped", "item:7102:upgrade"
     local intellect = { [equipped] = 2, [upgrade] = 10 }
-    local profile = { enableAddon = true, autoHandIn = false, autoHandInChoice = false }
+    local profile = { name = "Default", enableAddon = true, autoHandIn = false, autoHandInChoice = false }
     APR = {
         settings = { db = { char = { bagUpgradeSuggestions = true } } },
         GAME_VERSIONS = { Retail = "retail", Forever = "forever" },
@@ -13,6 +13,7 @@ for _, client in ipairs({ "retail", "forever" }) do
         OptionsPanel = { QueueRefresh = function() notifications = notifications + 1 end },
     }
     function APR:GetGameVersion() return client end
+    function APR.settings.db:GetCurrentProfile() return profile.name end
     function APR:GetSettingsProfile() return profile end
     function APR:NewModule()
         return {
@@ -143,7 +144,7 @@ for _, client in ipairs({ "retail", "forever" }) do
     flush()
     assert(bags.prompt and bags.prompt.gain == 40, "Confirming changed active weights recomputes suggestions")
     dismiss()
-    profile = { enableAddon = true, autoHandIn = false, autoHandInChoice = false }
+    profile = { name = "Other", enableAddon = true, autoHandIn = false, autoHandInChoice = false }
     bags:RefreshSettings()
     pawn:RefreshSettings()
     flush()
@@ -156,8 +157,7 @@ for _, client in ipairs({ "retail", "forever" }) do
     ready = true
     pawn:RefreshSettings()
     flush()
-    assert(bags.prompt and bags.prompt.gain == 40, "Restored scoring availability resumes suggestions")
-    dismiss()
+    assert(not bags.prompt and bags.dismissed[upgrade], "Restored identical scoring retains the persisted refusal")
     spec = 102
     pawn:OnSpecializationChanged(nil, "player")
     flush()

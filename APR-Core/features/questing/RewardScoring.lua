@@ -382,8 +382,18 @@ function Scoring:GetUpgrade(link, scale)
     if not GetInventoryItemLink then return nil, false end
     local category, maximum, uniqueReady = uniqueness(candidate)
     if not uniqueReady then return nil, false end
-    local cache = {}
-    local function equipped(slot, needScore)
+    local cache, relevant = {}, {}
+    local comparison = { string.format("%.17g", value), loc, tostring(category), tostring(maximum) }
+    -- Default weights are part of the scoring context even when an edit happens
+    -- to leave these particular items' totals unchanged. Never serialize closures.
+    local stats = {}
+    for stat in pairs(scale.weights or {}) do stats[#stats + 1] = stat end
+    table.sort(stats)
+    for _, stat in ipairs(stats) do
+        comparison[#comparison + 1] = stat .. "=" .. string.format("%.17g", scale.weights[stat])
+    end
+    local function equipped(slot, needScore, probeOnly)
+        if not probeOnly then relevant[slot] = true end
         local item = cache[slot]
         if not item then
             local current = GetInventoryItemLink("player", slot)
@@ -416,11 +426,15 @@ function Scoring:GetUpgrade(link, scale)
             plans[#possibilities] = { slot = slot }
         end
     else
-        local main = equipped(16)
+        local independentRanged = forever() and (
+            loc == "INVTYPE_RANGED" or loc == "INVTYPE_RANGEDRIGHT" or loc == "INVTYPE_THROWN" or loc == "INVTYPE_RELIC"
+        )
+        local main = equipped(16, false, independentRanged)
         if not main then return nil, false end
         local dual = CanDualWield and CanDualWield()
         dual = accessible(dual) and dual == true
         local titan = dual and titanGrip()
+        if not independentRanged then comparison[#comparison + 1] = tostring(dual) .. ":" .. tostring(titan) end
         if
             loc == "INVTYPE_2HWEAPON"
             or (
@@ -468,15 +482,7 @@ function Scoring:GetUpgrade(link, scale)
                 possibilities[#possibilities + 1] = { 16 }
                 plans[#possibilities] = { slot = 17, move = { from = 17, to = 16, link = offhand.link } }
             end
-        elseif
-            forever()
-            and (
-                loc == "INVTYPE_RANGED"
-                or loc == "INVTYPE_RANGEDRIGHT"
-                or loc == "INVTYPE_THROWN"
-                or loc == "INVTYPE_RELIC"
-            )
-        then
+        elseif independentRanged then
             possibilities[1] = { 18 }
             plans[1] = { slot = 18 }
         end
@@ -496,12 +502,15 @@ function Scoring:GetUpgrade(link, scale)
             local count = 1
             for slot = 1, 19 do
                 if not replacement[slot] then
-                    local item = equipped(slot)
+                    local item = equipped(slot, false, true)
                     if not item then return nil, false end
                     if not item.empty then
                         local otherCategory, _, known = uniqueness(item)
                         if not known then return nil, false end
-                        if otherCategory == category then count = count + 1 end
+                        if otherCategory == category then
+                            count = count + 1
+                            relevant[slot] = true
+                        end
                     end
                 end
             end
@@ -516,7 +525,16 @@ function Scoring:GetUpgrade(link, scale)
             end
         end
     end
-    return best, true, bestPlan
+    -- Include every evaluated alternative, not just the winning destination.
+    -- Uniqueness probes of unrelated categories must not make a tabard relevant.
+    for slot = 1, 19 do
+        if relevant[slot] then
+            local item = cache[slot]
+            local score = item.value and string.format("%.17g", item.value) or ""
+            comparison[#comparison + 1] = slot .. ":" .. (item.link or "") .. ":" .. score
+        end
+    end
+    return best, true, bestPlan, table.concat(comparison, "\031")
 end--[[APR_DIAG]]
 Scoring.GetUpgrade =
     APRTrace("APR-Core/features/questing/RewardScoring.lua:326:Scoring:GetUpgrade#19", Scoring.GetUpgrade)--[[/APR_DIAG]]

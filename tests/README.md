@@ -71,6 +71,12 @@ bounded item-data retries. `settings_select_test.lua` exercises the real APR
 select through its AceGUI adapter, including value keys, ordering and pooled release.
 None loads or freezes a shipped guide or Pawn's weights.
 
+`bag_upgrade_dismissal_test.lua` exercises real scoring and offer lifecycles on
+Retail/Forever with invented equipment. Character SavedVariables survive a
+module reload; exact variants, scoring/profile contexts, paired slots, weapon
+capabilities and unique categories renew relevant offers. Unrelated equipment,
+programmatic withdrawal and stale callbacks cannot turn into new user refusals.
+
 `pawn_bag_scoring_context_test.lua` connects real Pawn, bag suggestions and equipment
 scoring on synthetic Retail/Forever characters. Refused items survive unchanged
 refreshes, options notifications and unused-scale edits; selected weights, confirmed
