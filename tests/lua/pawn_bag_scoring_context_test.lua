@@ -23,6 +23,8 @@ for _, client in ipairs({ "retail", "forever" }) do
     LibStub = function()
         return { GetLocale = function() return {
             CHOOSE_USABLE_GEAR_UPGRADE = "Compare", REWARD_PAWN_CHANGED = "Use %s?",
+            REWARD_WEIGHT_SCALE_DESC = "Scoring profile", REWARD_WEIGHT_DEFAULT_DESC = "APR: %s",
+            REWARD_PAWN_UNAVAILABLE = "Pending: %s",
         } end }
     end
     DEFAULT, EQUIPMENT, CURRENTLY_EQUIPPED = "Default", "Equipment", "Equipped"
@@ -73,9 +75,9 @@ for _, client in ipairs({ "retail", "forever" }) do
     function APR.questionDialog:CreateQuestionPopup(_, _, accept, cancel)
         scalePrompt = { accept = accept, cancel = cancel }
     end
-    function APR.UI:ShowConfirmationDialog(_, _, cancel)
+    function APR.UI:ShowConfirmationDialog(settings, _, cancel)
         offers = offers + 1
-        dialog = { shown = true }
+        dialog = { shown = true, text = settings.description }
         function dialog:IsShown() return self.shown end
         function dialog:Hide()
             self.shown = false
@@ -111,6 +113,7 @@ for _, client in ipairs({ "retail", "forever" }) do
     bags:OnEnable()
     flush()
     assert(bags.prompt and bags.prompt.gain == 16, "The real Pawn score drives the real equipment comparison")
+    assert(dialog.text:find("Pawn: Active", 1, true), "The equipment dialog names the effective Pawn profile")
     local function dismiss()
         assert(dialog:IsShown() and bags.prompt)
         dialog:Hide()

@@ -335,6 +335,54 @@ function Upgrades:MatchesIntermediate(signature, hands)
 end--[[APR_DIAG]]
 Upgrades.MatchesIntermediate = APRTrace("APR-Core/features/player/BagUpgrades.lua:367:Upgrades:MatchesIntermediate#28", Upgrades.MatchesIntermediate)--[[/APR_DIAG]]
 
+local SLOT_LABELS = {
+    "HEADSLOT", "NECKSLOT", "SHOULDERSLOT", "SHIRTSLOT", "CHESTSLOT", "WAISTSLOT", "LEGSSLOT",
+    "FEETSLOT", "WRISTSLOT", "HANDSSLOT", "FINGER0SLOT", "FINGER1SLOT", "TRINKET0SLOT", "TRINKET1SLOT",
+    "BACKSLOT", "MAINHANDSLOT", "SECONDARYHANDSLOT", "RANGEDSLOT", "TABARDSLOT",
+}
+
+function Upgrades:GetOfferText(candidate)
+    local plan = candidate.plan
+    local affected = { [plan.slot] = true }
+    for _, slot in ipairs(plan.replacedSlots) do affected[slot] = true end
+    -- A weapon comparison describes the whole pair, including an unchanged hand.
+    if affected[16] or affected[17] then affected[16], affected[17] = true, true end
+    local before, after = {}, {}
+    for slot in pairs(affected) do
+        local link = GetInventoryItemLink("player", slot)
+        if not Public(link) or (link ~= nil and type(link) ~= "string") then return end
+        before[slot], after[slot] = link or false, link or false
+    end
+    for _, slot in ipairs(plan.replacedSlots) do after[slot] = false end
+    if plan.move then
+        after[plan.move.from], after[plan.move.to] = false, plan.move.link
+    end
+    after[plan.slot] = candidate.link
+    local current, proposed = {}, {}
+    for slot = 1, 19 do
+        if affected[slot] then
+            local label = _G[SLOT_LABELS[slot]] or EQUIPMENT
+            if slot >= 11 and slot <= 14 then label = label .. " " .. ((slot - 11) % 2 + 1) end
+            current[#current + 1] = label .. ": " .. (before[slot] or EMPTY or NONE or "")
+            proposed[#proposed + 1] = label .. ": " .. (after[slot] or EMPTY or NONE or "")
+        end
+    end
+    local text = L["CHOOSE_USABLE_GEAR_UPGRADE"]
+        .. "\n\n" .. (CURRENTLY_EQUIPPED or EQUIPMENT) .. ":\n" .. table.concat(current, "\n")
+        .. "\n\n" .. (EQUIP_ITEM or EQUIP or ACCEPT or EQUIPMENT) .. ":\n" .. table.concat(proposed, "\n")
+    local status = APR.PawnRewards and APR.PawnRewards.GetStatusText and APR.PawnRewards:GetStatusText()
+    if type(status) == "string" and status ~= "" then
+        text = text .. "\n\n" .. status
+        -- This is a score delta in the named profile, never a power percentage.
+        -- baseline covers removed objects and is not the full pre-swap loadout.
+        if SCORE and Number(candidate.gain) and candidate.gain > 0 then
+            text = text .. "\n" .. SCORE .. ": " .. string.format("+%.3g", candidate.gain)
+        end
+    end
+    return text
+end--[[APR_DIAG]]
+Upgrades.GetOfferText = APRTrace("APR-Core/features/player/BagUpgrades.lua:344:Upgrades:GetOfferText#29", Upgrades.GetOfferText)--[[/APR_DIAG]]
+
 function Upgrades:Offer(candidate)
     if not self:IsEnabledForCharacter() or (InCombatLockdown and InCombatLockdown()) then return end
     -- Use the private dialog even in mouse mode on a gamepad-capable client:
@@ -352,19 +400,13 @@ function Upgrades:Offer(candidate)
             return
         end
     end
-    self.prompt, self.waiting = candidate, nil
-    local current = {}
-    for _, slot in ipairs(candidate.plan.replacedSlots) do
-        local link = GetInventoryItemLink("player", slot)
-        if link then current[#current + 1] = link end
+    local text = self:GetOfferText(candidate)
+    local scale, identity = self:GetScale()
+    if not text or not scale or identity ~= candidate.scoringIdentity or EquipmentSignature() ~= candidate.signature then
+        self:QueueScan()
+        return
     end
-    local text = L["CHOOSE_USABLE_GEAR_UPGRADE"]
-        .. "\n\n"
-        .. candidate.link
-        .. "\n"
-        .. (CURRENTLY_EQUIPPED or EQUIPMENT)
-        .. ": "
-        .. (#current > 0 and table.concat(current, "\n") or EMPTY or NONE or "")
+    self.prompt, self.waiting = candidate, nil
     local onAccept = --[[APR_DIAG]]
         APRTrace("APR-Core/features/player/BagUpgrades.lua:204:callback#21", --[[/APR_DIAG]] function()
             if self.prompt ~= candidate then return end
