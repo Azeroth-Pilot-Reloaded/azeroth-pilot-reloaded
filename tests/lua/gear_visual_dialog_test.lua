@@ -83,9 +83,9 @@ assert(currentParent == proposedParent and currentX + first.current:GetWidth() <
 -- The inspected APR asset points northeast before rotation. Check its resulting
 -- direction rather than freezing a particular rotation constant.
 local angle = first.arrow.rotation
-assert(angle and math.cos(angle) - math.sin(angle) > 0
+assert(angle and math.cos(angle) - math.sin(angle) < 0
     and math.abs(math.sin(angle) + math.cos(angle)) < 0.000001,
-    "The comparison arrow must point horizontally toward the proposed item on the right")
+    "The comparison arrow must point horizontally left while preserving the item columns")
 assert(first.proposed.button.item.link == bagLink and first.current.button.item.link == inventory[16])
 assert(second.proposed.button.item.link == inventory[16] and second.current.button.item.link == inventory[17])
 assert(first.proposed.button.icon.texture == "icon:" .. bagLink)
