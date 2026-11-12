@@ -122,7 +122,7 @@ local function aliasValue(stats, keys)
 end--[[APR_DIAG]]
 aliasValue = APRTrace("APR-Core/features/questing/RewardScoring.lua:104:aliasValue#7", aliasValue)--[[/APR_DIAG]]
 
-local function defaultScore(link, scale)
+local function defaultScore(link, scale, slot)
     local getStats = itemAPI("GetItemStats")
     if not getStats then return nil, false end
     local ok, stats = --[[APR_DIAG]]
@@ -159,7 +159,10 @@ local function defaultScore(link, scale)
     for stat, keys in pairs(aliases) do
         local value = aliasValue(stats, keys)
         if value == nil then return nil, false end
-        total = total + value * (scale.weights[stat] or 0)
+        -- The baseline models white weapon damage, not special attacks/talents.
+        -- Attributes remain fully active in either hand; only offhand DPS is halved.
+        local contribution = stat == "WeaponDPS" and slot == 17 and 0.5 or 1
+        total = total + value * (scale.weights[stat] or 0) * contribution
     end
     return total, number(total)
 end--[[APR_DIAG]]
@@ -205,11 +208,11 @@ function Scoring:GetDefaultScale()
         end
         if classID == 3 then weights.Intellect = math.max(weights.Intellect or 0, 0.4) end
     end
-    local scale = { weights = weights, classID = classID, primaryStat = primary, role = role }
+    local scale = { weights = weights, classID = classID, primaryStat = primary, role = role, slotAware = true }
     scale.score = --[[APR_DIAG]]
         APRTrace(
             "APR-Core/features/questing/RewardScoring.lua:197:callback#10", --[[/APR_DIAG]]
-            function(link) return defaultScore(link, scale) end --[[APR_DIAG]]
+            function(link, slot) return defaultScore(link, scale, slot) end --[[APR_DIAG]]
         )--[[/APR_DIAG]]
     return scale
 end--[[APR_DIAG]]
@@ -283,9 +286,9 @@ local function readItem(link, checkUsable)
 end--[[APR_DIAG]]
 readItem = APRTrace("APR-Core/features/questing/RewardScoring.lua:219:readItem#11", readItem)--[[/APR_DIAG]]
 
-local function scoreItem(item, scale, equipped)
+local function scoreItem(item, scale, equipped, slot)
     local ok, value, ready = --[[APR_DIAG]]
-        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](scale.score, item.link)
+        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](scale.score, item.link, slot)
     if not ok or not accessible(ready) or ready ~= true then return nil, false end
     if not accessible(value) then return nil, false end
     if value == nil and equipped then return 0, true end
@@ -360,6 +363,69 @@ local function canMoveToMain(item)
 end--[[APR_DIAG]]
 canMoveToMain = APRTrace("APR-Core/features/questing/RewardScoring.lua:319:canMoveToMain#18", canMoveToMain)--[[/APR_DIAG]]
 
+local function handScore(main, offhand, scale)
+    local total = 0
+    local hands = { [16] = main, [17] = offhand }
+    for slot = 16, 17 do
+        local item = hands[slot]
+        if item and not item.empty then
+            local value, ready = scoreItem(item, scale, true, slot)
+            if not ready then return nil end
+            total = total + value
+        end
+    end
+    return number(total) and total or nil
+end--[[APR_DIAG]]
+handScore = APRTrace("APR-Core/features/questing/RewardScoring.lua:370:handScore#21", handScore)--[[/APR_DIAG]]
+
+local function weaponGain(candidate, plan, replaced, scale, equipped)
+    local main, offhand = equipped(16, true), equipped(17, true)
+    if not main or not offhand then return nil, false end
+    local before = main.value + offhand.value
+    local after = { [16] = main, [17] = offhand }
+    for _, slot in ipairs(replaced) do after[slot] = nil end
+    if plan.move then
+        after[plan.move.to] = plan.move.from == 16 and main or offhand
+        after[plan.move.from] = nil
+    end
+    after[plan.slot] = candidate
+    local total = handScore(after[16], after[17], scale)
+    if not total then return nil, false end
+    return total - before, true
+end--[[APR_DIAG]]
+weaponGain = APRTrace("APR-Core/features/questing/RewardScoring.lua:385:weaponGain#22", weaponGain)--[[/APR_DIAG]]
+
+local function weaponSteps(candidate, plan, direct, scale, equipped)
+    if not plan.move then return end
+    local main, offhand = equipped(16, true), equipped(17, true)
+    local before, move = main.value + offhand.value, plan.move
+    local first, second = { link = candidate.link, slot = plan.slot }, { link = move.link, slot = move.to }
+    local safeDirect = direct[plan.slot]
+    if safeDirect and safeDirect.gain >= 0 then
+        plan.steps = { first, second }
+        plan.intermediate = { [16] = main.link or false, [17] = offhand.link or false }
+        for _, slot in ipairs(safeDirect.replaced) do plan.intermediate[slot] = false end
+        plan.intermediate[plan.slot] = candidate.link
+        return
+    end
+    -- Moving an equipped item can displace the destination to bags or swap it.
+    -- Both legal outcomes must be non-worse before submitting the first action.
+    local moved = move.from == 16 and main or offhand
+    local displaced = move.to == 16 and main or offhand
+    local intermediate = { [move.to] = moved }
+    local score = handScore(intermediate[16], intermediate[17], scale)
+    if not score or score < before then plan.executable = false; return end
+    if move.swapLegal then
+        intermediate[move.from] = displaced
+        local swapped = handScore(intermediate[16], intermediate[17], scale)
+        if not swapped or swapped < before then plan.executable = false; return end
+        plan.intermediateSwap = { [move.from] = displaced.link or false, [move.to] = move.link }
+    end
+    plan.steps = { second, first }
+    plan.intermediate = { [move.from] = false, [move.to] = move.link }
+end--[[APR_DIAG]]
+weaponSteps = APRTrace("APR-Core/features/questing/RewardScoring.lua:409:weaponSteps#23", weaponSteps)--[[/APR_DIAG]]
+
 function Scoring:GetUpgrade(link, scale)
     scale = scale or self:GetDefaultScale()
     if type(scale) ~= "table" or type(scale.score) ~= "function" then return nil, false end
@@ -409,15 +475,15 @@ function Scoring:GetUpgrade(link, scale)
             cache[slot] = item
         end
         if needScore and item.value == nil then
-            local score, scoreReady = scoreItem(item, scale, true)
+            local score, scoreReady = scoreItem(item, scale, true, slot)
             if not scoreReady then return nil end
             item.value = score
         end
         return item
     end--[[APR_DIAG]]
     equipped = APRTrace("APR-Core/features/questing/RewardScoring.lua:343:equipped#20", equipped)--[[/APR_DIAG]]
-    -- These are removed objects, not destination slots. A retained weapon can
-    -- change hands without contributing to the gain or disappearing from uniqueness checks.
+    -- Removed objects are distinct from destination slots: retained weapons stay
+    -- in uniqueness checks and their destination contribution is rescored below.
     local possibilities, plans = {}, {}
     local destinations = slots[candidate.equipLoc]
     if destinations then
@@ -460,34 +526,36 @@ function Scoring:GetUpgrade(link, scale)
             if not offhand then return nil, false end
             possibilities[1] = canPair(candidate, offhand, titan, dual) and { 16 } or { 16, 17 }
             plans[1] = { slot = 16 }
-            if
-                not main.empty
-                and (
-                    (loc == "INVTYPE_WEAPON" and dual and canPair(main, candidate, titan, dual))
-                    or canPair(candidate, main, titan, dual)
-                )
-            then
+            if not main.empty and loc == "INVTYPE_WEAPON" and canPair(main, candidate, titan, dual) then
                 possibilities[2] = { 17 }
-                plans[2] = canPair(main, candidate, titan, dual) and { slot = 17 }
-                    or { slot = 16, move = { from = 16, to = 17, link = main.link } }
+                plans[2] = { slot = 17 }
             end
         elseif loc == "INVTYPE_SHIELD" or loc == "INVTYPE_HOLDABLE" or loc == "INVTYPE_WEAPONOFFHAND" then
             if canPair(main, candidate, titan, dual) then
                 possibilities[1] = { 17 }
                 plans[1] = { slot = 17 }
             end
-            local offhand = equipped(17)
-            if not offhand then return nil, false end
-            if canMoveToMain(offhand) and canPair(offhand, candidate, titan, dual) then
-                possibilities[#possibilities + 1] = { 16 }
-                plans[#possibilities] = { slot = 17, move = { from = 17, to = 16, link = offhand.link } }
-            end
         elseif independentRanged then
             possibilities[1] = { 18 }
             plans[1] = { slot = 18 }
         end
+        -- PawnGetSingleValueFromItem has no destination-slot argument. An opaque
+        -- scalar cannot certify the retained weapon's contribution in its other hand.
+        if not independentRanged and scale.slotAware then
+            local offhand = equipped(17)
+            if not offhand then return nil, false end
+            local swapLegal = canMoveToMain(offhand) and canPair(offhand, main, titan, dual)
+            if canMoveToMain(candidate) and not main.empty and canPair(candidate, main, titan, dual) then
+                possibilities[#possibilities + 1] = { 17 }
+                plans[#possibilities] = { slot = 16, move = { from = 16, to = 17, link = main.link, swapLegal = swapLegal } }
+            end
+            if canMoveToMain(offhand) and canPair(offhand, candidate, titan, dual) then
+                possibilities[#possibilities + 1] = { 16 }
+                plans[#possibilities] = { slot = 17, move = { from = 17, to = 16, link = offhand.link, swapLegal = swapLegal } }
+            end
+        end
     end
-    local best, bestPlan
+    local best, bestPlan, direct = nil, nil, {}
     for index, replaced in ipairs(possibilities) do
         local baseline, replacement = 0, {}
         for _, slot in ipairs(replaced) do
@@ -517,14 +585,21 @@ function Scoring:GetUpgrade(link, scale)
             valid = count <= maximum
         end
         if valid then
-            local gain = value - baseline
-            if not number(gain) then return nil, false end
-            if best == nil or gain > best then
+            local plan = plans[index]
+            local gain, known = value - baseline, true
+            if plan.slot == 16 or plan.slot == 17 then
+                gain, known = weaponGain(candidate, plan, replaced, scale, equipped)
+            end
+            if not known then return nil, false end
+            if gain ~= nil and not number(gain) then return nil, false end
+            if gain ~= nil and not plan.move then direct[plan.slot] = { gain = gain, replaced = replaced } end
+            if gain ~= nil and (best == nil or gain > best) then
                 best, bestPlan = gain, plans[index]
                 bestPlan.replacedSlots, bestPlan.baseline = replaced, baseline
             end
         end
     end
+    if bestPlan then weaponSteps(candidate, bestPlan, direct, scale, equipped) end
     -- Include every evaluated alternative, not just the winning destination.
     -- Uniqueness probes of unrelated categories must not make a tabard relevant.
     for slot = 1, 19 do

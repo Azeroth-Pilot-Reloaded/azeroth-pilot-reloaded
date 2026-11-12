@@ -34,6 +34,21 @@ interaction; closing the interaction, changing quest/profile/step, disabling
 automation or holding a modifier prevents a delayed hand-in. Persistent missing
 data leaves the quest available for manual selection.
 
+Weapon gains compare the complete before/after hand configurations, including
+the new contribution of any retained weapon that changes hands. APR's simple
+baseline gives offhand weapon DPS half its main-hand contribution; attributes,
+armor, shields and frills retain their full stat contribution. This models base
+weapon attacks, not talent modifiers or individual techniques. The existing
+client/capability checks still govern dual wield, Titan's Grip, two-handed pairs
+and Forever's independent ranged slot. No class weights are imported or revised.
+
+Bag suggestions execute a permutation only when its first configuration cannot
+lower the original score. They verify all equipped slots after that action before
+issuing the second action in the same user click. A failed or unconfirmed action
+stops the plan; timers and events never continue equipping. A permutation needing
+a temporary downgrade remains a manual operation, even if its final configuration
+would improve a quest reward's score.
+
 ## Pawn integration
 
 Pawn is optional. APR reads its scale list and delegates scoring to
@@ -41,6 +56,12 @@ Pawn is optional. APR reads its scale list and delegates scoring to
 the base score is used consistently for rewards and equipped items. APR does not
 change Pawn scales or its visible-scale preferences. Its own slot comparisons
 remain independent of Pawn's tracked best items.
+
+Pawn's public scalar API has no destination-hand parameter. APR therefore rejects
+permutations that move a retained weapon when using that provider, rather than
+assuming its score can be transferred between hands. Direct replacements remain
+available. APR does not reconstruct Pawn's contextual weapon scores or copy its
+weights.
 
 Secure post-hooks observe scale edits/imports, and a coalesced snapshot detects
 actual changes. Custom scales added or modified while automatic rewards are
