@@ -240,11 +240,13 @@ buildQuestRewardData =
 function APR.npcInteraction:SelectQuestReward(profile)
     local rewards = buildQuestRewardData()
     if not rewards then return nil, false end
-    local scorer = APR.PawnRewards and APR.PawnRewards:GetScorer()
+    local scorer, scoringState
+    if APR.PawnRewards then scorer, scoringState = APR.PawnRewards:GetScorer() end
     local scale = scorer and { score = scorer } or nil
     for priorityIndex = 1, 4 do
         local priority = profile["rewardPriority" .. priorityIndex]
         if priority == "ilvl" then
+            if scoringState == "pending" then return nil, false end
             local best, gain = nil, 0
             for _, reward in ipairs(rewards) do
                 if reward.equipLoc and reward.equipLoc ~= "" and reward.usable ~= false then

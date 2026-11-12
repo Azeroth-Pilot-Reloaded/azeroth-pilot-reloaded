@@ -40,7 +40,7 @@ function GetInventoryItemLink(_, slot) return inventory[slot] end
 function InCombatLockdown() return combat end
 function CursorHasItem() return cursor end
 function issecretvalue(v) return v == secret end
-local requests, custom = {}, nil
+local requests, custom, scoringState, scoringIdentity = {}, nil, nil, "initial"
 C_Container = {
     GetContainerNumSlots = function(bag) return bag == 0 and 20 or 0 end,
     GetContainerItemLink = function(bag, slot) return bag == 0 and bags[slot] end,
@@ -69,7 +69,7 @@ C_Item = {
     end,
 }
 function APR.RewardScoring:GetDefaultScale() return { name = "default" } end
-function APR.PawnRewards:GetScorer() return custom end
+function APR.PawnRewards:GetScorer() return custom, scoringState, scoringIdentity end
 function APR.RewardScoring:GetUpgrade(link, scale)
     assert(scale and (scale.name == "default" or scale.score == custom))
     local item = items[link]
@@ -295,3 +295,41 @@ assert(not privateDialog:IsShown() and not module.dialog, "Input-mode changes st
 print(
     "Bag suggestions: bounded scans/retries, Pawn, dismissals, stale bags/timers, missing/locked/secret data, combat/cursor/profile guards and explicit equipment plans passed"
 )
+
+-- Open confirmations and sliced scans retain the scoring decision they displayed.
+inventory, bags = {}, { [1] = upgrade }
+module:OnEnable()
+flush()
+local oldOffer, before = privateDialog, #equips
+custom, scoringState = nil, "pending"
+oldOffer:Accept()
+flush()
+assert(#equips == before and not privateDialog:IsShown(),
+    "A Pawn offer cannot equip via APR when the selected provider becomes unavailable")
+assert(not module.job and not module.timer, "Pending providers cannot start fallback scans or retry forever")
+custom, scoringState, scoringIdentity = function() return 1, true end, "pawn", "confirmed-v1"
+module:OnScoringChanged()
+flush()
+assert(privateDialog:IsShown(), "The returned provider can offer an upgrade again")
+oldOffer = privateDialog
+scoringIdentity = "confirmed-v2"
+oldOffer:Accept()
+flush()
+assert(#equips == before, "A confirmation for old weights cannot equip with newly confirmed weights")
+privateDialog:Accept()
+flush()
+assert(#equips == before + 1, "A fresh confirmation uses the current weights")
+inventory, bags = {}, { [1] = upgrade }
+module:QueueScan()
+-- Start a multi-slice scan, then suspend its provider before publication.
+local start = table.remove(timers, 1)
+start.fn()
+custom, scoringState = nil, "pending"
+flush()
+assert(not privateDialog:IsShown() and not module.job,
+    "A partial scan cannot publish an offer after its provider disappears")
+scoringState, scoringIdentity = "apr", "apr"
+module:OnScoringChanged()
+flush()
+assert(privateDialog:IsShown(), "An explicit APR choice still permits default suggestions")
+module:OnDisable()

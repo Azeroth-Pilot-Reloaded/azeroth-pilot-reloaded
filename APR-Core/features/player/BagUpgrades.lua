@@ -79,8 +79,10 @@ end--[[APR_DIAG]]
 Upgrades.CancelScan = APRTrace("APR-Core/features/player/BagUpgrades.lua:47:Upgrades:CancelScan#7", Upgrades.CancelScan)--[[/APR_DIAG]]
 
 function Upgrades:GetScale()
-    local scorer = APR.PawnRewards and APR.PawnRewards:GetScorer()
-    return scorer and { score = scorer } or APR.RewardScoring:GetDefaultScale()
+    local scorer, state, identity
+    if APR.PawnRewards then scorer, state, identity = APR.PawnRewards:GetScorer() end
+    if state == "pending" then return end
+    return scorer and { score = scorer } or APR.RewardScoring:GetDefaultScale(), identity or "apr"
 end--[[APR_DIAG]]
 Upgrades.GetScale = APRTrace("APR-Core/features/player/BagUpgrades.lua:54:Upgrades:GetScale#8", Upgrades.GetScale)--[[/APR_DIAG]]
 
@@ -121,10 +123,14 @@ Upgrades.OnItemData =
 function Upgrades:StartScan()
     if not self:IsEnabledForCharacter() or (InCombatLockdown and InCombatLockdown()) then return end
     if UnitIsDeadOrGhost and UnitIsDeadOrGhost("player") then return end
-    local signature, scale = EquipmentSignature(), self:GetScale()
+    local signature = EquipmentSignature()
+    local scale, scoringIdentity = self:GetScale()
     if not signature or not scale then return end
     self.dismissed = self.dismissed or {}
-    self.job = { bag = 0, slot = 0, signature = signature, scale = scale, candidates = {}, pending = {} }
+    self.job = {
+        bag = 0, slot = 0, signature = signature, scale = scale,
+        scoringIdentity = scoringIdentity, candidates = {}, pending = {},
+    }
     self:ScanBatch()
 end--[[APR_DIAG]]
 Upgrades.StartScan = APRTrace("APR-Core/features/player/BagUpgrades.lua:85:Upgrades:StartScan#13", Upgrades.StartScan)--[[/APR_DIAG]]
@@ -166,6 +172,7 @@ function Upgrades:ScanBatch()
                     bag = job.bag,
                     slot = job.slot,
                     signature = job.signature,
+                    scoringIdentity = job.scoringIdentity,
                 }
             end
         end
@@ -183,7 +190,8 @@ Upgrades.ScanBatch = APRTrace("APR-Core/features/player/BagUpgrades.lua:95:Upgra
 function Upgrades:FinishScan(job)
     local generation = self.generation
     self.job = nil
-    if EquipmentSignature() ~= job.signature then
+    local scale, identity = self:GetScale()
+    if not scale or identity ~= job.scoringIdentity or EquipmentSignature() ~= job.signature then
         self:QueueScan()
         return
     end
@@ -261,7 +269,12 @@ function Upgrades:Equip(candidate)
             return
         end
     end
-    local gain, ready, plan = APR.RewardScoring:GetUpgrade(link, self:GetScale())
+    local scale, identity = self:GetScale()
+    if not scale or identity ~= candidate.scoringIdentity then
+        self:QueueScan()
+        return
+    end
+    local gain, ready, plan = APR.RewardScoring:GetUpgrade(link, scale)
     local equip = C_Item and C_Item.EquipItemByName or EquipItemByName
     if not ready or not Number(gain) or gain <= 0 or not plan or not equip then
         self:QueueScan()

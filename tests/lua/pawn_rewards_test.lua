@@ -17,7 +17,7 @@ local function newEnvironment(saved, pawnScales)
     DEFAULT = "Default"
     local strings = {
         REWARD_PAWN_CHANGED = "Use changed scale %s?",
-        REWARD_PAWN_UNAVAILABLE = "Unavailable %s; APR is active",
+        REWARD_PAWN_UNAVAILABLE = "Unavailable %s",
         REWARD_WEIGHT_SCALE_DESC = "Select a scale",
         REWARD_WEIGHT_DEFAULT_DESC = "Default weights for %s",
     }
@@ -238,6 +238,12 @@ local function newEnvironment(saved, pawnScales)
     return env
 end
 
+local function pending(module, choice)
+    local selected, ready = module:GetSelectedScale()
+    local scorer, state = module:GetScorer()
+    return selected == choice and ready == false and scorer == nil and state == "pending"
+end
+
 local env = newEnvironment()
 local module = env.module
 assert(#env.prompts == 0, "An existing custom-scale catalog is an initial baseline, not a batch of new imports")
@@ -295,7 +301,7 @@ for value = 1, 100 do
     PawnSetStatValue("Custom", "Intellect", value)
 end
 assert(#env.timers == beforeTimers + 1 and #env.prompts == 0)
-assert(module:GetSelectedScale() == "apr" and module:GetScorer() == nil)
+assert(pending(module, "pawn:Custom"))
 score, ready = scorer("item:700003")
 assert(score == nil and not ready, "An already obtained scorer cannot use newly edited weights without confirmation")
 env:Advance(0.25)
@@ -314,7 +320,7 @@ assert(
 PawnSetScaleNormalizationFactor("Custom", 2)
 env:Advance(0.25)
 assert(
-    #env.prompts == 2 and module:GetSelectedScale() == "apr",
+    #env.prompts == 2 and pending(module, "pawn:Custom"),
     "Normalization changes are detected even without a weight-table edit"
 )
 env.prompts[2].cancel()
@@ -345,7 +351,7 @@ env:Advance(0.25)
 local obsolete = env.prompts[#env.prompts]
 PawnSetStatValue("Hidden", "Intellect", 9)
 obsolete.accept()
-assert(module:GetSelectedScale() == "apr", "A stale confirmation cannot accept a later edit")
+assert(pending(module, "pawn:Hidden"), "A stale confirmation cannot accept a later edit")
 env:Advance(0.25)
 local current = env.prompts[#env.prompts]
 assert(current ~= obsolete)
@@ -369,8 +375,8 @@ env.spec = 101
 PawnDeleteScale("Hidden")
 env:Advance(0.25)
 assert(
-    module:GetSelectedScale() == "apr" and not APR.settings.db.char.rewardPawnScales["spec:101"],
-    "Deleting a selected scale retires its saved selection"
+    pending(module, "pawn:Hidden") and APR.settings.db.char.rewardPawnScales["spec:101"].name == "Hidden",
+    "Deleting a selected scale suspends and retains its explicit choice"
 )
 
 -- Disabled preferences and combat defer proposals without losing the changes.
@@ -429,7 +435,7 @@ env:Advance(0.25)
 assert(module.ready and not module.events.ADDON_LOADED and not module.events.PLAYER_LOGIN)
 assert(module:SetSelectedScale("Custom"))
 env.ready = false
-assert(module:GetSelectedScale() == "apr" and module:GetScorer() == nil)
+assert(pending(module, "pawn:Custom"))
 assert(module:GetStatusText():find("Unavailable", 1, true))
 env.ready = true
 assert(
@@ -439,7 +445,7 @@ assert(
 local scoringAPI = PawnGetSingleValueFromItem
 PawnGetSingleValueFromItem = nil
 assert(
-    module:GetSelectedScale() == "apr" and module:GetScorer() == nil,
+    pending(module, "pawn:Custom"),
     "An incompatible partial Pawn API cannot masquerade as the active scorer"
 )
 PawnGetSingleValueFromItem = scoringAPI
@@ -581,10 +587,10 @@ assert(
 PawnDeleteScale("VisibleNow")
 env:Advance(0.25)
 assert(
-    not env.visibleOptions.values["pawn:VisibleNow"]
-        and env.visibleOptions.choice == "apr"
-        and env.visibleOptions.status == "Default weights for Synthetic caster",
-    "Deleting a selected scale removes its row and publishes the fallback"
+    env.visibleOptions.values["pawn:VisibleNow"]
+        and env.visibleOptions.choice == "pawn:VisibleNow"
+        and env.visibleOptions.status == "Unavailable VisibleNow" and pending(module, "pawn:VisibleNow"),
+    "Deleting a selected scale preserves its selected row and publishes its unavailability"
 )
 module:SetSelectedScale("Custom")
 env:Advance(0)
@@ -645,8 +651,8 @@ assert(module:SetSelectedScale("CurrentHidden"))
 APR.settings.db.char.rewardPawnScales["spec:101"] = { name = "OtherCustom", fingerprint = "legacy stored version" }
 module:RefreshSettings()
 assert(
-    module:GetSelectedScale() == "apr" and APR.settings.db.char.rewardPawnScales["spec:101"] == nil,
-    "A previously saved foreign-class scale is retired instead of silently used"
+    pending(module, "pawn:OtherCustom") and APR.settings.db.char.rewardPawnScales["spec:101"].name == "OtherCustom",
+    "A previously saved foreign-class scale remains suspended instead of silently using APR"
 )
 local promptCount = #env.prompts
 PawnImportScale("ForeignNew", 12, 1)
@@ -663,11 +669,11 @@ env:Advance(1)
 assert(module:GetSelectedScale() == "pawn:CurrentNew")
 scorer = module:GetScorer()
 PawnCommon.Scales.CurrentNew.ClassID = 1
-assert(module:GetSelectedScale() == "apr", "Reclassifying a chosen scale immediately suspends it")
+assert(pending(module, "pawn:CurrentNew"), "Reclassifying a chosen scale immediately suspends it")
 score, ready = scorer("item:700005")
 assert(score == nil and not ready, "A captured scorer cannot reuse a scale reassigned to another class")
 module:RefreshSettings()
-assert(APR.settings.db.char.rewardPawnScales["spec:101"] == nil)
+assert(APR.settings.db.char.rewardPawnScales["spec:101"].name == "CurrentNew")
 
 -- Numeric identity, not the class token or localized label, controls the filter.
 env.classID = 1
@@ -708,18 +714,75 @@ PawnIsScaleVisible = nil
 assert(module:GetSelectedScale() == "pawn:Untagged", "Older Pawn APIs retain the filtered snapshot fallback")
 PawnIsScaleVisible = visibleAPI
 PawnSetScaleVisible("Untagged", false)
-assert(module:GetSelectedScale() == "apr", "A hidden untagged scale stops before the visibility debounce")
+assert(pending(module, "pawn:Untagged"), "A hidden untagged scale stops before the visibility debounce")
 score, ready = scorer("item:700006")
 assert(score == nil and not ready, "Captured scoring stops immediately when the untagged scale is hidden")
 env:Advance(0.25)
 assert(
-    not env.visibleOptions.values["pawn:Untagged"]
-        and env.visibleOptions.choice == "apr"
-        and APR.settings.db.char.rewardPawnScales["spec:101"] == nil,
-    "Hiding an untagged import retires its selection and refreshes the visible fallback"
+    env.visibleOptions.values["pawn:Untagged"]
+        and env.visibleOptions.choice == "pawn:Untagged"
+        and APR.settings.db.char.rewardPawnScales["spec:101"].name == "Untagged" and pending(module, "pawn:Untagged"),
+    "Hiding an untagged import preserves its selection and refreshes the visible pending state"
 )
 score, ready = scorer("item:700006")
 assert(score == nil and not ready, "A retired untagged scale cannot be used by a captured scorer")
 PawnSetScaleVisible("Tagged", false)
 env:Advance(0.25)
 assert(env.visibleOptions.values["pawn:Tagged"], "A class-tagged scale remains available even when hidden in Pawn")
+
+-- Source readiness is a reusable contract, independent of optional Pawn presence.
+env = newEnvironment()
+module = env.module
+env.ready = false
+local sourceScorer, sourceState, identity = module:GetScorer()
+assert(sourceScorer == nil and sourceState == "apr" and type(identity) == "string",
+    "No saved Pawn choice remains an actual APR decision, even without Pawn")
+env.ready = true
+assert(module:SetSelectedScale("Custom"))
+sourceScorer, sourceState, identity = module:GetScorer()
+assert(type(sourceScorer) == "function" and sourceState == "pawn" and type(identity) == "string")
+local sameScorer, sameState, sameIdentity = module:GetScorer()
+assert(type(sameScorer) == "function" and sameState == "pawn" and sameIdentity == identity,
+    "Repeated reads of an unchanged scoring decision retain its identity")
+local acceptedScale = PawnCommon.Scales.Custom
+PawnDeleteScale("Custom")
+env:Advance(0.25)
+assert(pending(module, "pawn:Custom"))
+score, ready = sourceScorer("item:700007")
+assert(score == nil and not ready, "A scorer captured before deletion cannot act on the missing provider")
+local persisted = APR.settings.db.char
+env = newEnvironment(persisted, PawnCommon.Scales)
+module = env.module
+assert(pending(module, "pawn:Custom"), "Reloading while a scale is missing cannot silently reset its source to APR")
+PawnCommon.Scales.Custom = acceptedScale
+module:RefreshSettings()
+sourceScorer, sourceState, sameIdentity = module:GetScorer()
+assert(sourceState == "pawn" and sameIdentity == identity and #env.prompts == 0,
+    "The exact confirmed scale can return without a new confirmation")
+score, ready = sourceScorer("item:700007")
+assert(score == 20 and ready, "The returning provider actually scores again")
+PawnSetStatValue("Custom", "Intellect", 17)
+env:Advance(0.25)
+local beforeDeletion = env.prompts[#env.prompts]
+PawnDeleteScale("Custom")
+beforeDeletion.accept()
+assert(pending(module, "pawn:Custom"), "A popup opened before deletion cannot authorize a fallback")
+PawnCommon.Scales.Custom = acceptedScale
+module:RefreshSettings()
+assert(pending(module, "pawn:Custom"), "A returning scale with changed weights still needs confirmation")
+local returned = env.prompts[#env.prompts]
+assert(returned ~= beforeDeletion)
+beforeDeletion.accept()
+assert(pending(module, "pawn:Custom"), "The deleted provider's old popup cannot confirm its return")
+returned.accept()
+sourceScorer, sourceState, sameIdentity = module:GetScorer()
+assert(sourceState == "pawn" and sameIdentity ~= identity,
+    "Only confirmation publishes the changed decision identity")
+score, ready = sourceScorer("item:700007")
+assert(score == 170 and ready)
+module:OnDisable()
+assert(pending(module, "pawn:Custom"), "Disabling a selected integration cannot authorize APR fallback")
+module:OnEnable()
+assert(module:SetSelectedScale("apr"))
+sourceScorer, sourceState = module:GetScorer()
+assert(sourceScorer == nil and sourceState == "apr", "An explicit APR selection releases the pending provider")

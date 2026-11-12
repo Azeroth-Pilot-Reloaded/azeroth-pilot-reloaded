@@ -58,8 +58,11 @@ formatters moving diagnostic marker comments across authored table fields/operat
 `reward_scoring_test.lua` uses invented item variants and equipped configurations
 for weighted gains, usability, unique-equipped categories and weapon replacement.
 `pawn_rewards_test.lua` models the public Pawn API, scale mutations, explicit
-choices, deferred offers and stale callbacks. `pawn_options_refresh_test.lua`
-uses the embedded AceConfig renderer with a custom host to check live settings
+choices, deferred offers and stale callbacks. Its scorer contract returns a scorer,
+source state (`apr`, `pawn`, or `pending`) and a stable decision identity. Missing
+selected providers retain their choice across reloads, and changed weights wait
+for confirmation; bag offers pin that identity through scanning and acceptance.
+`pawn_options_refresh_test.lua` uses the embedded AceConfig renderer with a custom host to check live settings
 updates and cancellation. `quest_reward_selection_test.lua`
 checks the real NPC selection lifecycle with controlled scores, priorities and
 bounded item-data retries. `settings_select_test.lua` exercises the real APR
