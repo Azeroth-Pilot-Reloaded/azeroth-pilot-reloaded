@@ -25,6 +25,7 @@ function APR:SetBagUpgradeSuggestions(value)
     local character = self:GetCharacterSettings()
     if not character then return end
     character.bagUpgradeSuggestions = value and true or false
+    if self.PawnRewards and self.PawnRewards.RefreshSettings then self.PawnRewards:RefreshSettings() end
     if self.BagUpgrades then self.BagUpgrades:RefreshSettings() end
 end--[[APR_DIAG]]
 APR.SetBagUpgradeSuggestions =

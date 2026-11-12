@@ -114,7 +114,8 @@ fingerprint = APRTrace("APR-Core/integrations/Pawn.lua:61:fingerprint#6", finger
 
 function PawnRewards:IsAutomatic()
     local profile = APR:GetSettingsProfile()
-    return profile and profile.enableAddon and profile.autoHandIn and profile.autoHandInChoice
+    return profile and profile.enableAddon
+        and ((profile.autoHandIn and profile.autoHandInChoice) or APR:GetBagUpgradeSuggestions())
 end--[[APR_DIAG]]
 PawnRewards.IsAutomatic =
     APRTrace("APR-Core/integrations/Pawn.lua:89:PawnRewards:IsAutomatic#7", PawnRewards.IsAutomatic)--[[/APR_DIAG]]

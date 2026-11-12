@@ -232,6 +232,7 @@ local function newEnvironment(saved, pawnScales)
         end
     end
     PawnResetProviderScales, PawnResetScalesCore, PawnAddPluginScale = nil, nil, nil
+    dofile("APR-Core/utils/ProfileUtils.lua")
     dofile("APR-Core/integrations/Pawn.lua")
     env.module = APR.PawnRewards
     env.module:OnEnable()
@@ -786,3 +787,94 @@ module:OnEnable()
 assert(module:SetSelectedScale("apr"))
 sourceScorer, sourceState = module:GetScorer()
 assert(sourceScorer == nil and sourceState == "apr", "An explicit APR selection releases the pending provider")
+
+-- Quest rewards and character bag suggestions independently consume the weights.
+-- Columns: hand-in, reward choice, bags, offer; offer after disabling each consumer.
+local consumers = {
+    { false, false, false, false, false, false, false },
+    { false, false, true,  true,  true,  true,  false },
+    { false, true,  false, false, false, false, false },
+    { false, true,  true,  true,  true,  true,  false },
+    { true,  false, false, false, false, false, false },
+    { true,  false, true,  true,  true,  true,  false },
+    { true,  true,  false, true,  false, false, true  },
+    { true,  true,  true,  true,  true,  true,  true  },
+}
+for index, case in ipairs(consumers) do
+    for _, addonEnabled in ipairs({ false, true }) do
+        env = newEnvironment({ bagUpgradeSuggestions = case[3] })
+        module = env.module
+        APR.settings.profile.enableAddon = addonEnabled
+        APR.settings.profile.autoHandIn = case[1]
+        APR.settings.profile.autoHandInChoice = case[2]
+        APR.settings.profile.bagUpgradeSuggestions = not case[3]
+        module:RefreshSettings()
+        PawnSetStatValue("Custom", "Intellect", 13)
+        env:Advance(0.25)
+        local expected = addonEnabled and case[4] and 1 or 0
+        assert(#env.prompts == expected, "Weight confirmation availability: consumer combination " .. index)
+        if expected == 1 then
+            env.prompts[1].accept()
+            local confirmed = module:GetScorer()
+            score, ready = confirmed("item:700008")
+            assert(score == 130 and ready, "An available consumer can confirm and use changed weights")
+        else
+            assert(module.pending.Custom, "Disabled consumers retain unconfirmed changes")
+        end
+    end
+    if case[4] then
+        for removed, field in ipairs({ "autoHandIn", "autoHandInChoice", "bags", "enableAddon" }) do
+            for _, refresh in ipairs({ false, true }) do
+                env = newEnvironment({ bagUpgradeSuggestions = case[3] })
+                module = env.module
+                APR.settings.profile.autoHandIn = case[1]
+                APR.settings.profile.autoHandInChoice = case[2]
+                PawnSetStatValue("Custom", "Intellect", 14)
+                env:Advance(0.25)
+                local offer = env.prompts[1]
+                assert(offer, "An active consumer receives the change")
+                if field == "bags" then
+                    APR.settings.db.char.bagUpgradeSuggestions = false
+                else
+                    APR.settings.profile[field] = false
+                end
+                if refresh then module:RefreshSettings() end
+                local remains = removed < 4 and case[4 + removed] or false
+                assert(not refresh or (module.prompt ~= nil) == remains,
+                    "Refreshing settings retires only offers with no remaining consumer")
+                offer.accept()
+                assert((module:GetSelectedScale() == "pawn:Custom") == remains,
+                    "Delayed callbacks recheck the remaining consumers: " .. index .. "/" .. field)
+            end
+        end
+    end
+end
+
+-- The actual character setting setter must publish changes without another event.
+env = newEnvironment({ bagUpgradeSuggestions = false })
+module = env.module
+APR.settings.profile.autoHandIn = false
+APR.settings.profile.autoHandInChoice = false
+PawnSetStatValue("Custom", "Intellect", 15)
+env:Advance(0.25)
+assert(#env.prompts == 0)
+APR:SetBagUpgradeSuggestions(true)
+assert(#env.prompts == 1, "Enabling bags alone immediately offers pending weights")
+local bagOffer = env.prompts[1]
+APR:SetBagUpgradeSuggestions(false)
+assert(not module.prompt and not env.visible, "Disabling the final consumer immediately closes its offer")
+bagOffer.accept()
+assert(module:GetSelectedScale() == "apr", "The retired bag-only offer cannot confirm weights")
+env.combat = true
+APR:SetBagUpgradeSuggestions(true)
+assert(#env.prompts == 1 and module.events.PLAYER_REGEN_ENABLED, "Bag-only offers still wait for combat to end")
+APR:SetBagUpgradeSuggestions(false)
+assert(not module.events.PLAYER_REGEN_ENABLED, "Disabling bags retires the combat listener")
+APR:SetBagUpgradeSuggestions(true)
+env.combat = false
+env:Event("PLAYER_REGEN_ENABLED")
+assert(#env.prompts == 2 and not module.events.PLAYER_REGEN_ENABLED)
+local combatOffer = env.prompts[2]
+module:OnDisable()
+combatOffer.accept()
+assert(module:GetSelectedScale() == "apr" and not next(module.events), "Disabling the integration retires bag-only callbacks")
