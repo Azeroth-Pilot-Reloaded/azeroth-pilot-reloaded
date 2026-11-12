@@ -269,6 +269,14 @@ Catalog.Filter = APRTrace("APR-Core/features/questing/RouteCatalog.lua:165:Catal
 
 function Catalog:GetCategories(records, filters)
     local options, seen = { { value = false, label = ALL } }, {}
+    local forever = APR:GetGameVersion() == APR.GAME_VERSIONS.Forever
+    local sortNames = {}
+    if forever then
+        for key, name in pairs(APR.CATEGORY_SORT_NAMES) do
+            local label = APR.CATEGORIES[key]
+            if label then sortNames[label] = name end
+        end
+    end
     local scope = { expansion = filters.expansion, community = filters.community }
     local words = {}
     for _, record in ipairs(records) do
@@ -282,6 +290,13 @@ function Catalog:GetCategories(records, filters)
         APRTrace("APR-Core/features/questing/RouteCatalog.lua:222:callback#11", --[[/APR_DIAG]] function(a, b)
             if a.value == false then return b.value ~= false end
             if b.value == false then return false end
+            if forever then
+                local rankA = a.value == APR.CATEGORIES.Leveling and 1 or a.value == APR.CATEGORIES.Dungeons and 2 or 3
+                local rankB = b.value == APR.CATEGORIES.Leveling and 1 or b.value == APR.CATEGORIES.Dungeons and 2 or 3
+                if rankA ~= rankB then return rankA < rankB end
+                local nameA, nameB = sortNames[a.value] or a.label, sortNames[b.value] or b.label
+                if nameA ~= nameB then return nameA < nameB end
+            end
             return a.label < b.label
         end--[[APR_DIAG]]) --[[/APR_DIAG]]
     )

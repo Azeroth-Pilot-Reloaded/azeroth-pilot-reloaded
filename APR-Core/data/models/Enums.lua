@@ -72,6 +72,9 @@ APR.EXPANSION_ORDER_KEYS = {
 
 APR.CATEGORIES = {
     Dungeons = DUNGEONS,
+    Reputation = REPUTATION,
+    Raids = RAIDS,
+    Legacy = LEGACY or L["LEGACY"],
     Leveling = L["LEVELING_CAT"],
     Sojourner = L["Sojourner"],
     Campaign = L["Campaign"],
@@ -86,6 +89,28 @@ APR.CATEGORIES = {
     Daily = L["Daily"],
     Class = CLASS,
     Mage_AoE = L["Mage AoE"],
+}
+
+-- Stable English names for Forever's category order; display values stay localized.
+APR.CATEGORY_SORT_NAMES = {
+    Achievement = "Achievement",
+    AlliedRace = "Allied Race",
+    Campaign = "Campaign",
+    Class = "Class",
+    Daily = "Daily",
+    Dungeons = "Dungeons",
+    Events = "Events",
+    Legacy = "Legacy",
+    Leveling = "Leveling",
+    Mage_AoE = "Mage AoE",
+    Miscellaneous = "Miscellaneous",
+    Mount = "Mount",
+    Pet = "Pet",
+    Professions = "Professions",
+    Raids = "Raids",
+    Reputation = "Reputation",
+    Sojourner = "Sojourner",
+    Toy = "Toy",
 }
 
 APR.PREFAB_TYPES = {
