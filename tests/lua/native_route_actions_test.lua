@@ -431,6 +431,8 @@ C_QuestLog.IsQuestFlaggedCompleted = function(id) return id == 4641 and rewarded
 APR.routeMerchantOpen = false
 rewarded, finished, onQuest = false, false, false
 local linkedSale = { SellItems = { junk = true, questID = 4641 } }
+-- Keep a sellable target: empty junk visits now complete independently of quests.
+bags[0] = { { itemID = 606, stackCount = 1, quality = 0 } }
 APRData.player.test = 1
 assert(
     APR:HandleRouteAction(linkedSale) and APRData.player.test == 1,
@@ -472,7 +474,7 @@ assert(
 )
 assert(
     not APR:ProcessRouteItems("SellItems", { junk = true }, {}),
-    "Unlinked sales retain their normal merchant requirement"
+    "Unlinked sales with remaining junk still require a merchant"
 )
 C_QuestLog.IsQuestFlaggedCompleted = questCompleted
 print(
