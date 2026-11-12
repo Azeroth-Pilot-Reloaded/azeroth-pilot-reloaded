@@ -61,25 +61,20 @@ local function character()
     if type(char.rewardPawnScales) ~= "table" then char.rewardPawnScales = {} end
     if type(char.rewardPawnSeen) ~= "table" then char.rewardPawnSeen = {} end
     if type(char.rewardPawnSeen.fingerprints) ~= "table" then char.rewardPawnSeen.fingerprints = {} end
+    local context = APR:GetRewardBuildContext()
+    if type(char.rewardPawnMigrated) ~= "table" then char.rewardPawnMigrated = {} end
+    if context.key ~= context.legacyKey and not char.rewardPawnMigrated[context.legacyKey] then
+        if not char.rewardPawnScales[context.key] and context.key ~= context.legacyKey then
+            char.rewardPawnScales[context.key] = char.rewardPawnScales[context.legacyKey]
+        end
+        char.rewardPawnMigrated[context.legacyKey] = true
+    end
     return char
 end--[[APR_DIAG]]
 character = APRTrace("APR-Core/integrations/Pawn.lua:37:character#4", character)--[[/APR_DIAG]]
 
 local function specializationKey()
-    local indexAPI = C_SpecializationInfo and C_SpecializationInfo.GetSpecialization or GetSpecialization
-    local infoAPI = C_SpecializationInfo and C_SpecializationInfo.GetSpecializationInfo or GetSpecializationInfo
-    if type(indexAPI) == "function" and type(infoAPI) == "function" then
-        local ok, index = --[[APR_DIAG]]
-            APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](indexAPI)
-        if ok and finite(index) and index > 0 then
-            local infoOK, id = --[[APR_DIAG]]
-                APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](infoAPI, index)
-            if infoOK and finite(id) and id > 0 then return "spec:" .. id end
-        end
-    end
-    -- Retain a class choice when the client or character has no current spec.
-    local _, token = UnitClass("player")
-    return "class:" .. (ordinary(token) and type(token) == "string" and token or "player")
+    return APR:GetRewardBuildContext().key
 end--[[APR_DIAG]]
 specializationKey = APRTrace("APR-Core/integrations/Pawn.lua:46:specializationKey#5", specializationKey)--[[/APR_DIAG]]
 
@@ -241,8 +236,7 @@ function PawnRewards:UpdateSnapshot()
     for key, record in pairs(char.rewardPawnScales) do
         if
             type(record) ~= "table"
-            or type(record.name) ~= "string"
-            or type(record.fingerprint) ~= "string"
+            or (record.mode ~= "apr" and (type(record.name) ~= "string" or type(record.fingerprint) ~= "string"))
         then
             char.rewardPawnScales[key] = nil
         end
@@ -415,7 +409,7 @@ PawnRewards.RefreshSettings =
 
 function PawnRewards:GetScaleOptions()
     self:UpdateSnapshot()
-    local options = { apr = (DEFAULT or "Default") .. " (APR)" }
+    local options = { auto = (AUTOMATIC or DEFAULT or "Default") .. " (Pawn / APR)", apr = (DEFAULT or "Default") .. " (APR)" }
     for name, scale in pairs(self.scales) do
         options["pawn:" .. name] = scale.label .. " (Pawn)"
     end
@@ -429,12 +423,38 @@ end--[[APR_DIAG]]
 PawnRewards.GetScaleOptions =
     APRTrace("APR-Core/integrations/Pawn.lua:298:PawnRewards:GetScaleOptions#25", PawnRewards.GetScaleOptions)--[[/APR_DIAG]]
 
+function PawnRewards:GetPreference()
+    local char = character()
+    local record = char and char.rewardPawnScales[specializationKey()]
+    if type(record) ~= "table" then return "auto" end
+    if record.mode == "apr" then return "apr" end
+    return type(record.name) == "string" and ("pawn:" .. record.name) or "auto"
+end--[[APR_DIAG]]; PawnRewards.GetPreference = APRTrace("APR-Core/integrations/Pawn.lua:6:PawnRewards:GetPreference#1", PawnRewards.GetPreference)--[[/APR_DIAG]]
+
+function PawnRewards:GetAutomaticScale()
+    if self.active == false or not pawnReady() then return end
+    local context = APR:GetRewardBuildContext()
+    if not context.pawnSpec then return end
+    local candidate
+    for name in pairs(self:ReadScales() or {}) do
+        local scale = PawnCommon.Scales[name]
+        if scale.ClassID == context.classID and scale.SpecID == context.pawnSpec
+            and (not scale.Role or not context.role or scale.Role == context.role) then
+            if candidate then return end -- No arbitrary tie-break between different weights.
+            candidate = name
+        end
+    end
+    return candidate
+end--[[APR_DIAG]]; PawnRewards.GetAutomaticScale = APRTrace("APR-Core/integrations/Pawn.lua:13:PawnRewards:GetAutomaticScale#2", PawnRewards.GetAutomaticScale)--[[/APR_DIAG]]
+
 function PawnRewards:GetSelectedScale()
     if not self.ready and pawnReady() then self:UpdateSnapshot() end
     local char = character()
     local record = char and char.rewardPawnScales[specializationKey()]
     if type(record) ~= "table" or type(record.name) ~= "string" or type(record.fingerprint) ~= "string" then
-        return "apr", true
+        if type(record) == "table" and record.mode == "apr" then return "apr", true end
+        local automatic = self:GetAutomaticScale()
+        return automatic and ("pawn:" .. automatic) or "apr", true
     end
     -- Choice and availability are independent: an unresolved explicit choice
     -- must never authorize the default scorer, even during the debounce interval.
@@ -465,8 +485,8 @@ function PawnRewards:SetSelectedScale(name)
     local char = character()
     if not char then return false end
     local key = specializationKey()
-    if name == "apr" then
-        char.rewardPawnScales[key] = nil
+    if name == "apr" or name == "auto" then
+        char.rewardPawnScales[key] = name == "apr" and { mode = "apr" } or nil
     else
         if type(name) == "string" and name:sub(1, 5) == "pawn:" and self.scales[name:sub(6)] then
             name = name:sub(6)
@@ -572,12 +592,12 @@ PawnRewards.GetScorer = APRTrace("APR-Core/integrations/Pawn.lua:350:PawnRewards
 
 function PawnRewards:GetStatusText()
     local char = character()
-    local record = char and char.rewardPawnScales[specializationKey()]
-    if type(record) == "table" and type(record.name) == "string" then
+    local choice, available = self:GetSelectedScale()
+    local record = choice:sub(1, 5) == "pawn:" and { name = choice:sub(6) }
+    if record then
         local scale = self.scales and self.scales[record.name]
         local label = scale and scale.label or record.name
-        local _, ready = self:GetSelectedScale()
-        if not ready then return string.format(L["REWARD_PAWN_UNAVAILABLE"], label) end
+        if not available then return string.format(L["REWARD_PAWN_UNAVAILABLE"], label) end
         return "Pawn: " .. label .. "\n" .. L["REWARD_WEIGHT_SCALE_DESC"]
     end
     if APR.RewardScoring and APR.RewardScoring.GetProfileDescription then
