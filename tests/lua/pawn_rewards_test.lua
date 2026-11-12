@@ -188,7 +188,7 @@ local function newEnvironment(saved, pawnScales)
     function PawnGetItemData(link)
         env.itemCalls[#env.itemCalls + 1] = link
         if env.missing then return end
-        return { UnenchantedStats = { Intellect = 10 }, link = link }
+        return { InvType = "INVTYPE_HEAD", UnenchantedStats = { Intellect = 10 }, link = link }
     end
     function PawnGetSingleValueFromItem(item, name)
         if env.badScore then return 25, env.badScore end

@@ -503,6 +503,7 @@ function PawnGetItemData(link)
             CritRating = item.stats.ITEM_MOD_CRIT_RATING_SHORT or 0,
         },
         Link = link,
+        InvType = item.equipLoc,
     }
 end
 function PawnGetSingleValueFromItem(item, name)

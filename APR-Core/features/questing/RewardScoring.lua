@@ -286,10 +286,16 @@ local function readItem(link, checkUsable)
 end--[[APR_DIAG]]
 readItem = APRTrace("APR-Core/features/questing/RewardScoring.lua:219:readItem#11", readItem)--[[/APR_DIAG]]
 
+-- Scorers may return a third boolean for recommendation eligibility. It never
+-- removes the raw contribution of an equipped item from the baseline.
 local function scoreItem(item, scale, equipped, slot)
-    local ok, value, ready = --[[APR_DIAG]]
+    local ok, value, ready, recommended = --[[APR_DIAG]]
         APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](scale.score, item.link, slot)
     if not ok or not accessible(ready) or ready ~= true then return nil, false end
+    if not equipped then
+        if not accessible(recommended) then return nil, false end
+        if recommended == false then return nil, true end
+    end
     if not accessible(value) then return nil, false end
     if value == nil and equipped then return 0, true end
     if value == nil then return nil, true end
@@ -557,6 +563,13 @@ function Scoring:GetUpgrade(link, scale)
     end
     local best, bestPlan, direct = nil, nil, {}
     for index, replaced in ipairs(possibilities) do
+        -- Filter this destination before reading its equipped baseline. Raw
+        -- scores remain valid even for equipment Pawn would not recommend.
+        local recommended, known = value, true
+        if plans[index].slot == 17 then
+            recommended, known = scoreItem(candidate, scale, false, 17)
+            if not known then return nil, false end
+        end
         local baseline, replacement = 0, {}
         for _, slot in ipairs(replaced) do
             replacement[slot] = true
@@ -565,7 +578,7 @@ function Scoring:GetUpgrade(link, scale)
             baseline = baseline + item.value
             if not number(baseline) then return nil, false end
         end
-        local valid = true
+        local valid = recommended ~= nil
         if category ~= nil then
             local count = 1
             for slot = 1, 19 do
@@ -582,7 +595,7 @@ function Scoring:GetUpgrade(link, scale)
                     end
                 end
             end
-            valid = count <= maximum
+            valid = valid and count <= maximum
         end
         if valid then
             local plan = plans[index]

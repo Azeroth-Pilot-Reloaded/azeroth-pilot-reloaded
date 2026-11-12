@@ -70,6 +70,9 @@ selected providers retain their choice across reloads, and changed weights wait
 for confirmation; bag offers pin that identity through scanning and acceptance.
 All combinations of automatic quest rewards and character bag suggestions cover
 weight confirmations, consumer opt-outs, combat deferral and stale callbacks.
+`pawn_recommendations_test.lua` checks synthetic Retail/Forever recommendation
+filters, equipped baselines, offhand destinations, live settings/level changes
+and stale scorers without loading external weights.
 `pawn_options_refresh_test.lua` uses the embedded AceConfig renderer with a custom host to check live settings
 updates and cancellation. `quest_reward_selection_test.lua`
 checks the real NPC selection lifecycle with controlled scores, priorities and
