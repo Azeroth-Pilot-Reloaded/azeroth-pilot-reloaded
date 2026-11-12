@@ -54,6 +54,7 @@ FillersFrame_StepHolder:SetAllPoints()
 
 -- Create the fillers header
 local FillersFrameHeader = APR:CreateFrameHeader("FillersFrameHeader", FillersFrame, L["STEP_FILLERS"], nil, "fillers")
+APR.fillersFrame.resizeButton = APR:CreateGameplayResizeHandle(FillersFrame, "fillers")
 
 -- Setup drag and drop for the header
 APR:SetupHeaderDrag(
@@ -96,6 +97,8 @@ APR:SetupMinimizeButton(
 function APR.fillersFrame:OnInit()
     LibWindow.RegisterConfig(FillersFrame, APR.settings.profile.fillersFrame)
     FillersFrame.RegisteredForLibWindow = true
+    local width = APR.settings.profile.fillersFrame.width
+    if type(width) == "number" and width == width and width < math.huge then self:SetContentWidth(math.max(250, width)) end
 
     -- Set default display
     self:SetDefaultDisplay()
@@ -168,6 +171,7 @@ function APR.fillersFrame:SetContentWidth(width)
     if InCombatLockdown() or FRAME_WIDTH == width then return end
     FRAME_WIDTH = width
     FillersFrame:SetWidth(width)
+    FillersFrameHeader:SetWidth(width)
     for _, row in pairs(APR.currentStep.fillersList) do
         row:SetWidth(width)
         if row.font then row.font:SetWidth(width - TEXT_PADDING * 2) end
@@ -400,7 +404,8 @@ function APR.fillersFrame:RefreshFillersFrame(forceRefresh)
         FillersFrameHeader:SetPoint("BOTTOM", FillersFrame, "TOP", 0, -3)
         if snapped then
             local anchor, anchorHeight = APR:GetSnapAnchorFrame(true)
-            if anchor then
+            if anchor and not FillersFrame.isSizing then
+                self:SetContentWidth(anchor:GetWidth())
                 local gap = profile.fillersFrameSnapGap or 0
                 APR:SnapFrameToAnchor(FillersFrame, anchor, anchorHeight, gap, showHeader and HEADER_HEIGHT or nil)
                 self.anchor, self.anchorHeight, self.anchorGap, self.anchorHeader =
@@ -426,6 +431,7 @@ function APR.fillersFrame:RefreshFillersFrame(forceRefresh)
     end
     if APR.AFK and APR.AFK.RefreshFrameAnchor then APR.AFK:RefreshFrameAnchor() end
     if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then APR.questOrderList:ApplySnapAnchor() end
+    APR:RefreshGameplayResizeHandles()
 end--[[APR_DIAG]]
 APR.fillersFrame.RefreshFillersFrame = APRTrace(
     "APR-Core/ui/route/FillersFrame.lua:280:APR.fillersFrame:RefreshFillersFrame#24",

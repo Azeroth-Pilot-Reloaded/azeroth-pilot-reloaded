@@ -78,6 +78,7 @@ APR = {
     textStyleRegistry = {},
     fillersFrame = { RefreshFillersFrame = function() refreshes = refreshes + 1 end },
     questOrderList = { ApplySnapAnchor = noop },
+    CreateGameplayResizeHandle = noop,
 }
 function APR:NewModule() return {} end
 function APR:GetSettingsProfile() return self.settings and self.settings.profile end

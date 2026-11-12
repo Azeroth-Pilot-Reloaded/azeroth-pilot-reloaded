@@ -55,6 +55,7 @@ for _, font in ipairs({ bar.Text, bar.Duration }) do
     font:SetShadowColor(0, 0, 0, 0.85)
 end
 bar:Hide()
+APR:CreateGameplayResizeHandle(AfkFrame, "afk")
 
 local function UpdateCountdown(frame)
     local remaining = math.max(0, APR.AFK.timerEnd - GetTime())
@@ -269,7 +270,7 @@ function APR.AFK:RefreshFrameAnchor(initial)
         local anchorHeight = (contentHeight > 0 and contentHeight) or (currentStepPanel:GetHeight() or FRAME_HEIGHT)
 
         -- Use centralized snap positioning helper (no header adjustment for AFK)
-        APR:SnapFrameToAnchor(AfkFrameScreen, currentStepPanel, anchorHeight, 0, nil)
+        if not AfkFrameScreen.isSizing then APR:SnapFrameToAnchor(AfkFrameScreen, currentStepPanel, anchorHeight, 0, nil) end
         AfkFrameScreen:EnableMouse(false)
         self:UpdateSize(width, afkHeight)
     else
