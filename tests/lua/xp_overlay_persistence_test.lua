@@ -91,6 +91,9 @@ function methods:SetShown(value)
 end
 
 function methods:SetText(value) self.text = value end
+function methods:SetWidth(width) self.width = width end
+function methods:GetWidth() return rawget(self, "width") or 0 end
+function methods:SetSize(width, height) self.width, self.height = width, height end
 
 function methods:IsShown() return self.shown and (not rawget(self, "parent") or self.parent:IsShown()) end
 
@@ -119,6 +122,7 @@ function CreateFrame(_, name, parent, template)
     frame.template = template
     if template == "ObjectiveTrackerContainerHeaderTemplate" then
         frame.Text = object(frame)
+        frame.Background = object(frame)
         frame.MinimizeButton = object(frame)
     end
     frames[#frames + 1] = frame
