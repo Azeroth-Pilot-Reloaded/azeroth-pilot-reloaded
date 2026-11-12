@@ -375,12 +375,23 @@ PawnRewards.TryPrompt = APRTrace("APR-Core/integrations/Pawn.lua:223:PawnRewards
 -- The workspace owns its custom AceConfig host and defers rebuilding it until
 -- the current input callback has returned.
 function PawnRewards:NotifyOptions()
-    if APR.BagUpgrades then APR.BagUpgrades:OnScoringChanged() end
     local panel = APR.OptionsPanel
     if panel and panel.QueueRefresh then panel:QueueRefresh() end
 end--[[APR_DIAG]]
 PawnRewards.NotifyOptions =
     APRTrace("APR-Core/integrations/Pawn.lua:277:PawnRewards:NotifyOptions#23", PawnRewards.NotifyOptions)--[[/APR_DIAG]]
+
+function PawnRewards:RefreshScoringContext()
+    local _, state, identity = self:GetScorer()
+    local profile = APR:GetSettingsProfile()
+    -- Scorer closures and options rows are rebuilt on every read. Only their
+    -- effective source/weights and the active profile invalidate equipment refusals.
+    if self.scoringState == state and self.scoringIdentity == identity and self.scoringProfile == profile then return end
+    self.scoringState, self.scoringIdentity, self.scoringProfile = state, identity, profile
+    if APR.BagUpgrades then APR.BagUpgrades:OnScoringChanged() end
+end--[[APR_DIAG]]
+PawnRewards.RefreshScoringContext =
+    APRTrace("APR-Core/integrations/Pawn.lua:385:PawnRewards:RefreshScoringContext#36", PawnRewards.RefreshScoringContext)--[[/APR_DIAG]]
 
 function PawnRewards:RefreshSettings()
     self:CancelRefresh()
@@ -395,6 +406,7 @@ function PawnRewards:RefreshSettings()
         self:UnregisterEvent("PLAYER_LOGIN")
     end
     self:TryPrompt()
+    self:RefreshScoringContext()
     self:NotifyOptions()
 end--[[APR_DIAG]]
 PawnRewards.RefreshSettings =
@@ -469,6 +481,7 @@ function PawnRewards:SetSelectedScale(name)
         char.rewardPawnSeen.fingerprints[pendingName] = scale.fingerprint
     end
     self.pending = {}
+    self:RefreshScoringContext()
     self:NotifyOptions()
     return true
 end--[[APR_DIAG]]

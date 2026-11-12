@@ -65,7 +65,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/integrations/GamepadMenu.lua"] = {instrumented = 41, diagnosticHelpers = 0},
     ["APR-Core/integrations/GamepadNavigation.lua"] = {instrumented = 33, diagnosticHelpers = 0},
     ["APR-Core/integrations/NavigationEntrances.lua"] = {instrumented = 4, diagnosticHelpers = 0},
-    ["APR-Core/integrations/Pawn.lua"] = {instrumented = 35, diagnosticHelpers = 0},
+    ["APR-Core/integrations/Pawn.lua"] = {instrumented = 36, diagnosticHelpers = 0},
     ["APR-Core/integrations/QuestTracker.lua"] = {instrumented = 48, diagnosticHelpers = 0},
     ["APR-Core/integrations/SkinRegistry.lua"] = {instrumented = 18, diagnosticHelpers = 0},
     ["APR-Core/ui/foundations/ReloadConfirmation.lua"] = {instrumented = 7, diagnosticHelpers = 0},
