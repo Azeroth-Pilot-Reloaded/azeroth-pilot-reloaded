@@ -86,22 +86,31 @@ Upgrades.GetScale = APRTrace("APR-Core/features/player/BagUpgrades.lua:54:Upgrad
 
 function Upgrades:QueueScan(event, unit)
     if unit and type(unit) == "string" and unit ~= "player" then return end
-    if event then self.requests = {} end
+    if event then
+        -- Inventory refreshes are part of the requested scan until its first
+        -- result. StartScan still rechecks the character and scoring identity.
+        if event ~= "BAG_UPDATE_DELAYED" and event ~= "PLAYER_EQUIPMENT_CHANGED" then
+            self:FinishCommand(UNAVAILABLE)
+        end
+        self.requests = {}
+    end
     self:CancelScan()
     self:CancelPrompt()
-    if not self:IsEnabledForCharacter() or (InCombatLockdown and InCombatLockdown()) then return end
+    if not self:IsEnabledForCharacter() then self:FinishCommand(DISABLED); return end
+    if InCombatLockdown and InCombatLockdown() then self:FinishCommand(ERR_NOT_IN_COMBAT); return end
     local generation = self.generation
     self.timer = C_Timer.NewTimer(
         0.2, --[[APR_DIAG]]
         APRTrace("APR-Core/features/player/BagUpgrades.lua:66:callback#10", --[[/APR_DIAG]] function()
             self.timer = nil
-            if self.generation == generation and self:IsEnabledForCharacter() then self:StartScan() end
+            if self.generation == generation then self:StartScan() end
         end--[[APR_DIAG]]) --[[/APR_DIAG]]
     )
 end--[[APR_DIAG]]
 Upgrades.QueueScan = APRTrace("APR-Core/features/player/BagUpgrades.lua:59:Upgrades:QueueScan#9", Upgrades.QueueScan)--[[/APR_DIAG]]
 
 function Upgrades:OnScoringChanged()
+    self:FinishCommand(UNAVAILABLE)
     self.requests = {}
     self:QueueScan()
 end--[[APR_DIAG]]
@@ -109,16 +118,34 @@ Upgrades.OnScoringChanged =
     APRTrace("APR-Core/features/player/BagUpgrades.lua:72:Upgrades:OnScoringChanged#11", Upgrades.OnScoringChanged)--[[/APR_DIAG]]
 
 -- Only an explicit slash command reports why scanning cannot start.
+function Upgrades:ReportCommand(status)
+    APR:PrintInfo(L["GEAR_UPGRADE_TITLE"] .. ": " .. (status or UNAVAILABLE or UNKNOWN or "?"))
+end--[[APR_DIAG]]; Upgrades.ReportCommand = APRTrace("APR-Core/features/player/BagUpgrades.lua:117:Upgrades:ReportCommand#212", Upgrades.ReportCommand)--[[/APR_DIAG]]
+
+function Upgrades:FinishCommand(status)
+    if not self.commandRequest then return end
+    self.commandRequest = nil
+    if status then self:ReportCommand(status) end
+end--[[APR_DIAG]]; Upgrades.FinishCommand = APRTrace("APR-Core/features/player/BagUpgrades.lua:121:Upgrades:FinishCommand#213", Upgrades.FinishCommand)--[[/APR_DIAG]]
+
 function Upgrades:ScanFromCommand()
+    self:FinishCommand(UNAVAILABLE)
     local status, unavailable = nil, UNAVAILABLE or UNKNOWN or "?"
     if not self:IsEnabledForCharacter() then status = DISABLED or L["DISABLE"]
     elseif InCombatLockdown and InCombatLockdown() then status = ERR_NOT_IN_COMBAT or unavailable
     elseif UnitIsDeadOrGhost and UnitIsDeadOrGhost("player") then status = DEAD or unavailable
     elseif not self:GetScale() then
-        status = APR.PawnRewards and APR.PawnRewards.GetStatusText and APR.PawnRewards:GetStatusText() or unavailable
+        status = APR.PawnRewards and APR.PawnRewards.GetStatusText and APR.PawnRewards:GetStatusText(true) or unavailable
     end
-    APR:PrintInfo((EQUIPMENT or "") .. ": " .. (status or SEARCHING or unavailable))
-    if not status then self:OnScoringChanged() end
+    local character = APR:GetCharacterSettings()
+    if not character then status = unavailable end
+    self:ReportCommand(status or SEARCHING or unavailable)
+    if not status then
+        local _, identity = self:GetScale()
+        self.commandRequest = { character = character, scoringIdentity = identity }
+        self.requests = {}
+        self:QueueScan()
+    end
 end--[[APR_DIAG]]; Upgrades.ScanFromCommand = APRTrace("APR-Core/features/player/BagUpgrades.lua:104:Upgrades:ScanFromCommand#12", Upgrades.ScanFromCommand)--[[/APR_DIAG]]
 
 function Upgrades:OnItemData(_, itemID, success)
@@ -131,18 +158,23 @@ Upgrades.OnItemData =
     APRTrace("APR-Core/features/player/BagUpgrades.lua:78:Upgrades:OnItemData#12", Upgrades.OnItemData)--[[/APR_DIAG]]
 
 function Upgrades:StartScan()
-    if not self:IsEnabledForCharacter() or (InCombatLockdown and InCombatLockdown()) then return end
-    if UnitIsDeadOrGhost and UnitIsDeadOrGhost("player") then return end
+    if not self:IsEnabledForCharacter() then self:FinishCommand(DISABLED); return end
+    if InCombatLockdown and InCombatLockdown() then self:FinishCommand(ERR_NOT_IN_COMBAT); return end
+    if UnitIsDeadOrGhost and UnitIsDeadOrGhost("player") then self:FinishCommand(DEAD); return end
     local signature = EquipmentSignature()
     local scale, scoringIdentity = self:GetScale()
-    if not signature or not scale then return end
+    if not signature or not scale then self:FinishCommand(UNAVAILABLE); return end
     local character = APR:GetCharacterSettings()
-    if not character then return end
+    local request = self.commandRequest
+    if not character or (request and (request.character ~= character or request.scoringIdentity ~= scoringIdentity)) then
+        self:FinishCommand(UNAVAILABLE)
+        return
+    end
     if type(character.bagUpgradeDismissals) ~= "table" then character.bagUpgradeDismissals = {} end
     self.dismissed = character.bagUpgradeDismissals
     self.job = {
         bag = 0, slot = 0, signature = signature, scale = scale,
-        scoringIdentity = scoringIdentity, candidates = {}, pending = {},
+        scoringIdentity = scoringIdentity, candidates = {}, pending = {}, commandRequest = request,
     }
     self:ScanBatch()
 end--[[APR_DIAG]]
@@ -150,12 +182,14 @@ Upgrades.StartScan = APRTrace("APR-Core/features/player/BagUpgrades.lua:85:Upgra
 
 function Upgrades:ScanBatch()
     local job, generation = self.job, self.generation
-    if not job or not self:IsEnabledForCharacter() then return end
+    if not job then return end
+    if not self:IsEnabledForCharacter() then self:FinishCommand(DISABLED); return end
     -- Eight slots per slice bounds scoring work and lets bag/equipment events cancel stale scans.
     for _ = 1, 8 do
         local count = Container("GetContainerNumSlots", job.bag)
         if not Number(count) or count < 0 then
             self.job = nil
+            self:FinishCommand(UNAVAILABLE)
             return
         end
         job.slot = job.slot + 1
@@ -168,6 +202,7 @@ function Upgrades:ScanBatch()
             count = Container("GetContainerNumSlots", job.bag)
             if not Number(count) or count < 0 then
                 self.job = nil
+                self:FinishCommand(UNAVAILABLE)
                 return
             end
         end
@@ -179,7 +214,7 @@ function Upgrades:ScanBatch()
                 local id = tonumber(link:match("item:(%d+)"))
                 if id then job.pending[id] = true end
             elseif Number(gain) and gain > 0 and plan and plan.executable ~= false
-                and (not refusal or self.dismissed[link] ~= refusal) then
+                and (job.commandRequest or not refusal or self.dismissed[link] ~= refusal) then
                 job.candidates[#job.candidates + 1] = {
                     link = link,
                     gain = gain,
@@ -190,6 +225,22 @@ function Upgrades:ScanBatch()
                     scoringIdentity = job.scoringIdentity,
                     refusalIdentity = refusal,
                 }
+            end
+        elseif not Public(link) or link ~= nil then
+            job.unavailable = true
+        elseif job.commandRequest then
+            -- An occupied slot can expose its ID before its hyperlink loads.
+            local info = Container("GetContainerItemInfo", job.bag, job.slot)
+            if not Public(info) then
+                job.unavailable = true
+            elseif type(info) == "table" then
+                if canaccesstable and not canaccesstable(info) then
+                    job.unavailable = true
+                elseif Number(info.itemID) and info.itemID > 0 then
+                    job.pending[info.itemID] = true
+                else
+                    job.unavailable = true
+                end
             end
         end
     end
@@ -217,6 +268,7 @@ function Upgrades:FinishScan(job)
     self.job = nil
     local scale, identity = self:GetScale()
     if not scale or identity ~= job.scoringIdentity or EquipmentSignature() ~= job.signature then
+        self:FinishCommand(UNAVAILABLE)
         self:QueueScan()
         return
     end
@@ -264,7 +316,11 @@ function Upgrades:FinishScan(job)
             return a.slot < b.slot
         end--[[APR_DIAG]]) --[[/APR_DIAG]]
     )
-    if job.candidates[1] then self:Offer(job.candidates[1]) end
+    if job.candidates[1] then
+        self:Offer(job.candidates[1])
+    else
+        self:FinishCommand((next(job.pending) or job.unavailable) and UNAVAILABLE or NONE)
+    end
 end--[[APR_DIAG]]
 Upgrades.FinishScan =
     APRTrace("APR-Core/features/player/BagUpgrades.lua:127:Upgrades:FinishScan#16", Upgrades.FinishScan)--[[/APR_DIAG]]
@@ -471,13 +527,31 @@ function Upgrades:GetOfferText(candidate)
 end--[[APR_DIAG]]
 Upgrades.GetOfferText = APRTrace("APR-Core/features/player/BagUpgrades.lua:344:Upgrades:GetOfferText#29", Upgrades.GetOfferText)--[[/APR_DIAG]]
 
+function Upgrades:WaitForCommandPopup()
+    local request = self.commandRequest
+    if not request then return end
+    request.popupWaits = (request.popupWaits or 0) + 1
+    if request.popupWaits > 5 then
+        self.waiting = nil
+        self:FinishCommand(UNAVAILABLE)
+        return
+    end
+    local generation = self.generation
+    self.timer = C_Timer.NewTimer(1, --[[APR_DIAG]]APRTrace("APR-Core/features/player/BagUpgrades.lua:522:callback#299", --[[/APR_DIAG]]function()
+        self.timer = nil
+        if self.generation == generation and self.commandRequest == request then self:QueueScan() end
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+end--[[APR_DIAG]]; Upgrades.WaitForCommandPopup = APRTrace("APR-Core/features/player/BagUpgrades.lua:512:Upgrades:WaitForCommandPopup#235", Upgrades.WaitForCommandPopup)--[[/APR_DIAG]]
+
 function Upgrades:Offer(candidate)
-    if not self:IsEnabledForCharacter() or (InCombatLockdown and InCombatLockdown()) then return end
-    if not APR.UI or not APR.UI.ShowConfirmationDialog then return end
+    if not self:IsEnabledForCharacter() then self:FinishCommand(DISABLED); return end
+    if InCombatLockdown and InCombatLockdown() then self:FinishCommand(ERR_NOT_IN_COMBAT); return end
+    if not APR.UI or not APR.UI.ShowConfirmationDialog then self:FinishCommand(UNAVAILABLE); return end
     for index = 1, (STATICPOPUP_NUMDIALOGS or 4) do
         local frame = _G["StaticPopup" .. index]
         if frame and frame:IsShown() then
             self.waiting = true
+            self:WaitForCommandPopup()
             return
         end
     end
@@ -485,6 +559,7 @@ function Upgrades:Offer(candidate)
     local text = self:GetOfferStatus(candidate, true)
     local scale, identity = self:GetScale()
     if not rows or not scale or identity ~= candidate.scoringIdentity or EquipmentSignature() ~= candidate.signature then
+        self:FinishCommand(UNAVAILABLE)
         self:QueueScan()
         return
     end
@@ -520,11 +595,15 @@ function Upgrades:Offer(candidate)
     }, onAccept, onCancel)
     if not self.dialog or not self.dialog:IsShown() then
         self.prompt, self.waiting = nil, true
+        self:FinishCommand(UNAVAILABLE)
+    else
+        self:FinishCommand()
     end
 end--[[APR_DIAG]]
 Upgrades.Offer = APRTrace("APR-Core/features/player/BagUpgrades.lua:189:Upgrades:Offer#20", Upgrades.Offer)--[[/APR_DIAG]]
 
 function Upgrades:RefreshSettings()
+    self:FinishCommand(self:IsEnabledForCharacter() and UNAVAILABLE or DISABLED)
     self:CancelScan()
     self:CancelPrompt()
     self:UnregisterAllEvents()
