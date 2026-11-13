@@ -38,6 +38,12 @@ APR = {
     interfaceVersion = 16001,
 }
 dofile("APR-Core/utils/PlayerUtils.lua")
+dofile("APR-Core/utils/RouteConditions.lua")
+local skillInfo = { name = "Invented skill", rank = 24 }
+C_SkillInfo = { GetSkillLineInfoByID = function(id)
+    assert(id == 8888, "Skill previews must query their authored skill ID")
+    return skillInfo
+end }
 APRData = { player = { test = 1 }, NPCList = { [54] = "Vendor" } }
 local known, equipped, onQuest = {}, {}, { [10] = true }
 function GetInventoryItemID(_, slot) return equipped[slot] end
@@ -146,6 +152,7 @@ local fixtures = {
     UseFlightPath = 10,
     TakePortal = { mapID = 2 },
     LearnProfession = 20,
+    SkillGoal = { skillID = 8888, rank = 25 },
     LootItems = { { itemID = 20 } },
     WarMode = 10,
     Grind = 20,
@@ -195,6 +202,28 @@ for index in ipairs(steps) do
 end
 assert(APR.routeActionState == nil, "Preview must not create action state")
 assert(APRData.player.DungeonRuns == nil, "A dungeon preview must not start a run")
+-- Previewing rank goals reads native progress and never advances route state.
+local oldNext, oldUpdate = APR.NextQuestStep, APR.UpdateNextStep
+APR.NextQuestStep, APR.UpdateNextStep = forbidden, forbidden
+local goal = { SkillGoal = fixtures.SkillGoal }
+for _, state in ipairs({
+    { rank = 24, text = "Invented skill (24/25)", color = "gray" },
+    { rank = 25, text = "Invented skill (25/25)", color = "green" },
+    { rank = 26, text = "Invented skill (26/25)", color = "green" },
+    { text = "Invented skill (0/25)", color = "gray" },
+}) do
+    skillInfo = { name = "Invented skill", rank = state.rank }
+    local row = render({ goal }).stepList[1]
+    assert(row.title == state.text and row.color == state.color, "Rank preview must match actual completion")
+    assert(#row.quests == 0 and APRData.player.test == 1 and APR.routeActionState == nil,
+        "Skill preview stays read-only even when the goal is complete")
+end
+skillInfo = nil
+local missingSkillRow = render({ goal }).stepList[1]
+assert(missingSkillRow.title == "Unknown (8888) (0/25)" and missingSkillRow.color == "gray",
+    "Unavailable skill data must produce a pending readable row")
+APR.NextQuestStep, APR.UpdateNextStep = oldNext, oldUpdate
+
 local dungeon = render({
     { EnterInstance = { dungeonKey = "ROL" } },
     { KillNPC = fixtures.KillNPC },
@@ -409,7 +438,7 @@ for line in actionTable:gmatch("[^\n]+") do
     local key = line:match("^|%s*`(%w+)`%s*|")
     if key then documented[#documented + 1] = key end
 end
-assert(#documented == 56, "Review coverage when the action table changes")
+assert(#documented == 57, "Review coverage when the action table changes")
 local hiddenOptions = { DroppableQuest = true, Fillers = true, NpcDismount = true }
 
 -- Optional and automatic fields never become the primary action or a preview row.
