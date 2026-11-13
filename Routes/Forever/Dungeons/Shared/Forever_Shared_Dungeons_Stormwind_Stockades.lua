@@ -16,7 +16,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
     mapID = 1453,
     steps = { {
         PickUp = { 303 },
-        _comment = "Quest contract: 303 The Dark Iron War",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 49.67, 18.23),
         RaidIcon = { {
             npcID = 1074,
@@ -28,7 +27,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 1,
     }, {
         PickUp = { 373 },
-        _comment = "Quest contract: 373 The Unsent Letter",
         Button = {
             ["373"] = 2874,
         },
@@ -42,7 +40,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 2,
     }, {
         PickUp = { 377 },
-        _comment = "Quest contract: 377 Crime and Punishment",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 71.92, 47.79),
         RaidIcon = { {
             npcID = 270,
@@ -54,7 +51,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 3,
     }, {
         PickUp = { 386 },
-        _comment = "Quest contract: 386 What Comes Around...",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1433, 21.17, 46.58),
         RaidIcon = { {
             npcID = 859,
@@ -66,7 +62,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 4,
     }, {
         PickUp = { 387 },
-        _comment = "Quest contract: 387 Quell The Uprising",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 51.49, 69.38),
         RaidIcon = { {
             npcID = 1719,
@@ -78,7 +73,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 5,
     }, {
         PickUp = { 388 },
-        _comment = "Quest contract: 388 The Color of Blood",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 76.42, 63.67),
         RaidIcon = { {
             npcID = 1721,
@@ -92,7 +86,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         Qpart = {
             [303] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 303 The Dark Iron War",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 59.93, 23.02),
         IsQuestOnQuest = 303,
         Zone = 1437,
@@ -101,13 +94,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         Qpart = {
             [373] = { 1 },
         },
-        _comment = "Quest contract: 373 The Unsent Letter",
         NoArrow = true,
         IsQuestOnQuest = 373,
         _index = 8,
     }, {
         Done = { 303 },
-        _comment = "Quest contract: 303 The Dark Iron War",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 49.67, 18.23),
         RaidIcon = { {
             npcID = 1074,
@@ -119,7 +110,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 9,
     }, {
         Done = { 373 },
-        _comment = "Quest contract: 373 The Unsent Letter",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 57.74, 47.86),
         RaidIcon = { {
             npcID = 1646,
@@ -131,7 +121,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 10,
     }, {
         PickUp = { 389 },
-        _comment = "Quest contract: 389 Bazil Thredd",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 57.74, 47.86),
         RaidIcon = { {
             npcID = 1646,
@@ -146,7 +135,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 11,
     }, {
         PickUp = { 378 },
-        _comment = "Quest contract: 378 The Fury Runs Deep",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 49.67, 18.23),
         RaidIcon = { {
             npcID = 1074,
@@ -161,7 +149,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 12,
     }, {
         Done = { 389 },
-        _comment = "Quest contract: 389 Bazil Thredd",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 51.49, 69.38),
         RaidIcon = { {
             npcID = 1719,
@@ -173,7 +160,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 13,
     }, {
         PickUp = { 391 },
-        _comment = "Quest contract: 391 The Stockade Riots",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 51.49, 69.38),
         RaidIcon = { {
             npcID = 1719,
@@ -249,7 +235,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         Qpart = {
             [391] = { 1 },
         },
-        _comment = "Quest contract: 391 The Stockade Riots",
         NoArrow = true,
         Dungeon = "INSTANCE_34",
         InstanceQuest = true,
@@ -259,7 +244,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         Qpart = {
             [377] = { 1 },
         },
-        _comment = "Quest contract: 377 Crime and Punishment",
         NoArrow = true,
         Dungeon = "INSTANCE_34",
         InstanceQuest = true,
@@ -269,7 +253,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         Qpart = {
             [378] = { 1 },
         },
-        _comment = "Quest contract: 378 The Fury Runs Deep",
         NoArrow = true,
         Dungeon = "INSTANCE_34",
         InstanceQuest = true,
@@ -279,7 +262,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         Qpart = {
             [386] = { 1 },
         },
-        _comment = "Quest contract: 386 What Comes Around...",
         NoArrow = true,
         Dungeon = "INSTANCE_34",
         InstanceQuest = true,
@@ -289,7 +271,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         Qpart = {
             [387] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 387 Quell The Uprising",
         NoArrow = true,
         Dungeon = "INSTANCE_34",
         InstanceQuest = true,
@@ -299,7 +280,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         Qpart = {
             [388] = { 1 },
         },
-        _comment = "Quest contract: 388 The Color of Blood",
         NoArrow = true,
         Dungeon = "INSTANCE_34",
         InstanceQuest = true,
@@ -314,7 +294,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 27,
     }, {
         Done = { 391 },
-        _comment = "Quest contract: 391 The Stockade Riots",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 51.49, 69.38),
         RaidIcon = { {
             npcID = 1719,
@@ -326,7 +305,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 28,
     }, {
         Done = { 377 },
-        _comment = "Quest contract: 377 Crime and Punishment",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 71.92, 47.79),
         RaidIcon = { {
             npcID = 270,
@@ -338,7 +316,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 29,
     }, {
         Done = { 378 },
-        _comment = "Quest contract: 378 The Fury Runs Deep",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 49.67, 18.23),
         RaidIcon = { {
             npcID = 1074,
@@ -350,7 +327,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 30,
     }, {
         Done = { 386 },
-        _comment = "Quest contract: 386 What Comes Around...",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1433, 21.17, 46.58),
         RaidIcon = { {
             npcID = 859,
@@ -362,7 +338,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 31,
     }, {
         Done = { 387 },
-        _comment = "Quest contract: 387 Quell The Uprising",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 51.49, 69.38),
         RaidIcon = { {
             npcID = 1719,
@@ -374,7 +349,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 32,
     }, {
         Done = { 388 },
-        _comment = "Quest contract: 388 The Color of Blood",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 76.42, 63.67),
         RaidIcon = { {
             npcID = 1721,
@@ -386,7 +360,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 33,
     }, {
         PickUp = { 392 },
-        _comment = "Quest contract: 392 The Curious Visitor",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 51.49, 69.38),
         RaidIcon = { {
             npcID = 1719,
@@ -403,13 +376,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         Qpart = {
             [392] = { 1 },
         },
-        _comment = "Quest contract: 392 The Curious Visitor",
         NoArrow = true,
         IsQuestOnQuest = 392,
         _index = 35,
     }, {
         Done = { 392 },
-        _comment = "Quest contract: 392 The Curious Visitor",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 57.74, 47.86),
         RaidIcon = { {
             npcID = 1646,
@@ -421,7 +392,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 36,
     }, {
         PickUp = { 393 },
-        _comment = "Quest contract: 393 Shadow of the Past",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 57.74, 47.86),
         RaidIcon = { {
             npcID = 1646,
@@ -438,13 +408,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         Qpart = {
             [393] = { 1 },
         },
-        _comment = "Quest contract: 393 Shadow of the Past",
         NoArrow = true,
         IsQuestOnQuest = 393,
         _index = 38,
     }, {
         Done = { 393 },
-        _comment = "Quest contract: 393 Shadow of the Past",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 78.31, 70.74),
         RaidIcon = { {
             npcID = 332,
@@ -456,7 +424,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 39,
     }, {
         PickUp = { 350 },
-        _comment = "Quest contract: 350 Look to an Old Friend",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 78.31, 70.74),
         RaidIcon = { {
             npcID = 332,
@@ -471,7 +438,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 40,
     }, {
         Done = { 350 },
-        _comment = "Quest contract: 350 Look to an Old Friend",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 66.03, 74.1),
         RaidIcon = { {
             npcID = 482,
@@ -483,7 +449,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 41,
     }, {
         PickUp = { 2745 },
-        _comment = "Quest contract: 2745 Infiltrating the Castle",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 66.03, 74.1),
         RaidIcon = { {
             npcID = 482,
@@ -498,7 +463,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 42,
     }, {
         Done = { 2745 },
-        _comment = "Quest contract: 2745 Infiltrating the Castle",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 73.23, 35.58),
         RaidIcon = { {
             npcID = 7766,
@@ -510,7 +474,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 43,
     }, {
         PickUp = { 2746 },
-        _comment = "Quest contract: 2746 Items of Some Consequence",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 73.23, 35.58),
         RaidIcon = { {
             npcID = 7766,
@@ -527,13 +490,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         Qpart = {
             [2746] = { 1, 2 },
         },
-        _comment = "Quest contract: 2746 Items of Some Consequence",
         NoArrow = true,
         IsQuestOnQuest = 2746,
         _index = 45,
     }, {
         Done = { 2746 },
-        _comment = "Quest contract: 2746 Items of Some Consequence",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 73.23, 35.58),
         RaidIcon = { {
             npcID = 7766,
@@ -545,7 +506,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 46,
     }, {
         PickUp = { 434 },
-        _comment = "Quest contract: 434 The Attack!",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 73.23, 35.58),
         RaidIcon = { {
             npcID = 7766,
@@ -562,14 +522,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         Qpart = {
             [434] = { 1, 2 },
         },
-        _comment = "Quest contract: 434 The Attack!",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 72.36, 35.12),
         IsQuestOnQuest = 434,
         Zone = 1453,
         _index = 48,
     }, {
         Done = { 434 },
-        _comment = "Quest contract: 434 The Attack!",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 66.03, 74.1),
         RaidIcon = { {
             npcID = 482,
@@ -581,7 +539,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 49,
     }, {
         PickUp = { 394 },
-        _comment = "Quest contract: 394 The Head of the Beast",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 66.03, 74.1),
         RaidIcon = { {
             npcID = 482,
@@ -596,7 +553,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 50,
     }, {
         Done = { 394 },
-        _comment = "Quest contract: 394 The Head of the Beast",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 78.31, 70.74),
         RaidIcon = { {
             npcID = 332,
@@ -608,7 +564,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 51,
     }, {
         PickUp = { 395 },
-        _comment = "Quest contract: 395 Brotherhood's End",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 78.31, 70.74),
         RaidIcon = { {
             npcID = 332,
@@ -623,7 +578,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 52,
     }, {
         Done = { 395 },
-        _comment = "Quest contract: 395 Brotherhood's End",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 57.74, 47.86),
         RaidIcon = { {
             npcID = 1646,
@@ -635,7 +589,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         _index = 53,
     }, {
         PickUp = { 396 },
-        _comment = "Quest contract: 396 An Audience with the King",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 57.74, 47.86),
         RaidIcon = { {
             npcID = 1646,
@@ -652,13 +605,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stormwind-Stockades"] = {
         Qpart = {
             [396] = { 1 },
         },
-        _comment = "Quest contract: 396 An Audience with the King",
         NoArrow = true,
         IsQuestOnQuest = 396,
         _index = 55,
     }, {
         Done = { 396 },
-        _comment = "Quest contract: 396 An Audience with the King",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 80.1, 38.17),
         RaidIcon = { {
             npcID = 1749,

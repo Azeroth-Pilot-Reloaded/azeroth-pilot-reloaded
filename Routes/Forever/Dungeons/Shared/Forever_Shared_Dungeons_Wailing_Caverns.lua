@@ -32,7 +32,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
     steps = {
         {
             PickUp = { 865 },
-            _comment = "Quest contract: 865 Raptor Horns",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 62.37, 37.62),
             RaidIcon = { {
                 npcID = 3446,
@@ -46,7 +45,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Qpart = {
                 [865] = { 1 },
             },
-            _comment = "Quest contract: 865 Raptor Horns",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 57.04, 53.01),
             IsQuestOnQuest = 865,
             Zone = 1413,
@@ -54,7 +52,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Done = { 865 },
-            _comment = "Quest contract: 865 Raptor Horns",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 62.37, 37.62),
             RaidIcon = { {
                 npcID = 3446,
@@ -66,7 +63,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             PickUp = { 870 },
-            _comment = "Quest contract: 870 The Forgotten Pools",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 52.26, 31.93),
             RaidIcon = { {
                 npcID = 3448,
@@ -81,14 +77,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Qpart = {
                 [870] = { 1 },
             },
-            _comment = "Quest contract: 870 The Forgotten Pools",
             NoArrow = true,
             IsQuestOnQuest = 870,
             _index = 5,
         },
         {
             Done = { 870 },
-            _comment = "Quest contract: 870 The Forgotten Pools",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 52.26, 31.93),
             RaidIcon = { {
                 npcID = 3448,
@@ -101,7 +95,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             PickUp = { 877 },
-            _comment = "Quest contract: 877 The Stagnant Oasis",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 52.26, 31.93),
             RaidIcon = { {
                 npcID = 3448,
@@ -119,7 +112,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Qpart = {
                 [877] = { 1 },
             },
-            _comment = "Quest contract: 877 The Stagnant Oasis",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 55.61, 42.75),
             IsQuestOnQuest = 877,
             Zone = 1413,
@@ -127,7 +119,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Done = { 877 },
-            _comment = "Quest contract: 877 The Stagnant Oasis",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 52.26, 31.93),
             RaidIcon = { {
                 npcID = 3448,
@@ -140,7 +131,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             PickUp = { 880 },
-            _comment = "Quest contract: 880 Altered Beings",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 52.26, 31.93),
             RaidIcon = { {
                 npcID = 3448,
@@ -158,7 +148,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Qpart = {
                 [880] = { 1 },
             },
-            _comment = "Quest contract: 880 Altered Beings",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 46.1, 38.85),
             IsQuestOnQuest = 880,
             Zone = 1413,
@@ -166,7 +155,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Done = { 880 },
-            _comment = "Quest contract: 880 Altered Beings",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 52.26, 31.93),
             RaidIcon = { {
                 npcID = 3448,
@@ -179,7 +167,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             PickUp = { 1489 },
-            _comment = "Quest contract: 1489 Hamuul Runetotem",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 52.26, 31.93),
             RaidIcon = { {
                 npcID = 3448,
@@ -195,7 +182,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Done = { 1489 },
-            _comment = "Quest contract: 1489 Hamuul Runetotem",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 78.62, 28.56),
             RaidIcon = { {
                 npcID = 5769,
@@ -208,7 +194,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             PickUp = { 1490 },
-            _comment = "Quest contract: 1490 Nara Wildmane",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 78.62, 28.56),
             RaidIcon = { {
                 npcID = 5769,
@@ -224,7 +209,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         },
         {
             Done = { 1490 },
-            _comment = "Quest contract: 1490 Nara Wildmane",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 75.65, 31.61),
             RaidIcon = { {
                 npcID = 5770,

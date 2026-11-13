@@ -16,7 +16,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
     mapID = 1428,
     steps = { {
         PickUp = { 3520 },
-        _comment = "Quest contract: 3520 Screecher Spirits",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.99, 22.36),
         RaidIcon = { {
             npcID = 8579,
@@ -27,7 +26,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 1,
     }, {
         PickUp = { 4701 },
-        _comment = "Quest contract: 4701 Put Her Down",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 85.82, 68.95),
         RaidIcon = { {
             npcID = 9562,
@@ -39,7 +37,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 2,
     }, {
         PickUp = { 4724 },
-        _comment = "Quest contract: 4724 The Pack Mistress",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 5.96, 47.73),
         RaidIcon = { {
             npcID = 9081,
@@ -51,7 +48,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 3,
     }, {
         PickUp = { 4726 },
-        _comment = "Quest contract: 4726 Broodling Essence",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.24, 24),
         RaidIcon = { {
             npcID = 10267,
@@ -62,7 +58,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 4,
     }, {
         PickUp = { 4729 },
-        _comment = "Quest contract: 4729 Kibler's Exotic Pets",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.89, 21.92),
         RaidIcon = { {
             npcID = 10260,
@@ -73,7 +68,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 5,
     }, {
         PickUp = { 4764 },
-        _comment = "Quest contract: 4764 Doomrigger's Clasp",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 84.84, 69.12),
         RaidIcon = { {
             npcID = 9565,
@@ -85,7 +79,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 6,
     }, {
         PickUp = { 4766 },
-        _comment = "Quest contract: 4766 Mayara Brightwing",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 76.94, 47.83),
         RaidIcon = { {
             npcID = 2285,
@@ -97,7 +90,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 7,
     }, {
         PickUp = { 4768 },
-        _comment = "Quest contract: 4768 The Darkstone Tablet",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 2.9, 47.76),
         RaidIcon = { {
             npcID = 9078,
@@ -109,7 +101,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 8,
     }, {
         PickUp = { 4769 },
-        _comment = "Quest contract: 4769 Vivian Lagrave and the Darkstone Tablet",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 50.14, 67.97),
         RaidIcon = { {
             npcID = 5204,
@@ -121,7 +112,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 9,
     }, {
         PickUp = { 4862 },
-        _comment = "Quest contract: 4862 En-Ay-Es-Tee-Why",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.89, 21.92),
         RaidIcon = { {
             npcID = 10260,
@@ -132,7 +122,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 10,
     }, {
         PickUp = { 4866 },
-        _comment = "Quest contract: 4866 Mother's Milk",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.01, 23.76),
         RaidIcon = { {
             npcID = 9563,
@@ -143,7 +132,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 11,
     }, {
         PickUp = { 4981 },
-        _comment = "Quest contract: 4981 Operative Bijou",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 5.88, 47.63),
         RaidIcon = { {
             npcID = 9080,
@@ -155,7 +143,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 12,
     }, {
         PickUp = { 5126 },
-        _comment = "Quest contract: 5126 Lorax's Tale",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 63.79, 73.76),
         RaidIcon = { {
             npcID = 10918,
@@ -167,7 +154,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 13,
     }, {
         PickUp = { 8905 },
-        _comment = "Quest contract: 8905 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -180,7 +166,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 14,
     }, {
         PickUp = { 8906 },
-        _comment = "Quest contract: 8906 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -193,7 +178,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 15,
     }, {
         PickUp = { 8907 },
-        _comment = "Quest contract: 8907 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -206,7 +190,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 16,
     }, {
         PickUp = { 8908 },
-        _comment = "Quest contract: 8908 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -219,7 +202,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 17,
     }, {
         PickUp = { 8909 },
-        _comment = "Quest contract: 8909 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -232,7 +214,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 18,
     }, {
         PickUp = { 8910 },
-        _comment = "Quest contract: 8910 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -245,7 +226,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 19,
     }, {
         PickUp = { 8911 },
-        _comment = "Quest contract: 8911 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -258,7 +238,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 20,
     }, {
         PickUp = { 8912 },
-        _comment = "Quest contract: 8912 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -271,7 +250,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 21,
     }, {
         PickUp = { 8913 },
-        _comment = "Quest contract: 8913 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -284,7 +262,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 22,
     }, {
         PickUp = { 8914 },
-        _comment = "Quest contract: 8914 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -297,7 +274,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 23,
     }, {
         PickUp = { 8915 },
-        _comment = "Quest contract: 8915 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -310,7 +286,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 24,
     }, {
         PickUp = { 8916 },
-        _comment = "Quest contract: 8916 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -323,7 +298,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 25,
     }, {
         PickUp = { 8917 },
-        _comment = "Quest contract: 8917 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -336,7 +310,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 26,
     }, {
         PickUp = { 8918 },
-        _comment = "Quest contract: 8918 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -349,7 +322,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 27,
     }, {
         PickUp = { 8919 },
-        _comment = "Quest contract: 8919 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -362,7 +334,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 28,
     }, {
         PickUp = { 8920 },
-        _comment = "Quest contract: 8920 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -377,7 +348,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [3520] = { 1, 2 },
         },
-        _comment = "Quest contract: 3520 Screecher Spirits",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 43.07, 36.94),
         IsQuestOnQuest = 3520,
         Zone = 1444,
@@ -386,13 +356,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [4726] = { 1, 2 },
         },
-        _comment = "Quest contract: 4726 Broodling Essence",
         NoArrow = true,
         IsQuestOnQuest = 4726,
         _index = 31,
     }, {
         Done = { 4766 },
-        _comment = "Quest contract: 4766 Mayara Brightwing",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 84.84, 69.12),
         RaidIcon = { {
             npcID = 9565,
@@ -404,7 +372,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 32,
     }, {
         Done = { 4769 },
-        _comment = "Quest contract: 4769 Vivian Lagrave and the Darkstone Tablet",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 2.9, 47.76),
         RaidIcon = { {
             npcID = 9078,
@@ -418,7 +385,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [5126] = { 1 },
         },
-        _comment = "Quest contract: 5126 Lorax's Tale",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 63.79, 73.76),
         IsQuestOnQuest = 5126,
         Zone = 1452,
@@ -427,7 +393,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8905] = { 1, 2 },
         },
-        _comment = "Quest contract: 8905 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8905,
         Zone = 1452,
@@ -436,7 +401,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8906] = { 1, 2 },
         },
-        _comment = "Quest contract: 8906 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8906,
         Zone = 1452,
@@ -445,7 +409,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8907] = { 1, 2 },
         },
-        _comment = "Quest contract: 8907 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8907,
         Zone = 1452,
@@ -454,7 +417,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8908] = { 1, 2 },
         },
-        _comment = "Quest contract: 8908 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8908,
         Zone = 1452,
@@ -463,7 +425,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8909] = { 1, 2 },
         },
-        _comment = "Quest contract: 8909 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8909,
         Zone = 1452,
@@ -472,7 +433,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8910] = { 1, 2 },
         },
-        _comment = "Quest contract: 8910 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8910,
         Zone = 1452,
@@ -481,7 +441,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8911] = { 1, 2 },
         },
-        _comment = "Quest contract: 8911 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8911,
         Zone = 1452,
@@ -490,7 +449,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8912] = { 1, 2 },
         },
-        _comment = "Quest contract: 8912 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8912,
         Zone = 1452,
@@ -499,7 +457,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8913] = { 1, 2 },
         },
-        _comment = "Quest contract: 8913 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8913,
         Zone = 1451,
@@ -508,7 +465,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8914] = { 1, 2 },
         },
-        _comment = "Quest contract: 8914 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8914,
         Zone = 1451,
@@ -517,7 +473,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8915] = { 1, 2 },
         },
-        _comment = "Quest contract: 8915 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8915,
         Zone = 1451,
@@ -526,7 +481,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8916] = { 1, 2 },
         },
-        _comment = "Quest contract: 8916 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8916,
         Zone = 1451,
@@ -535,7 +489,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8917] = { 1, 2 },
         },
-        _comment = "Quest contract: 8917 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8917,
         Zone = 1451,
@@ -544,7 +497,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8918] = { 1, 2 },
         },
-        _comment = "Quest contract: 8918 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8918,
         Zone = 1451,
@@ -553,7 +505,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8919] = { 1, 2 },
         },
-        _comment = "Quest contract: 8919 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8919,
         Zone = 1451,
@@ -562,14 +513,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8920] = { 1, 2 },
         },
-        _comment = "Quest contract: 8920 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8920,
         Zone = 1451,
         _index = 50,
     }, {
         Done = { 3520 },
-        _comment = "Quest contract: 3520 Screecher Spirits",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.99, 22.36),
         RaidIcon = { {
             npcID = 8579,
@@ -580,7 +529,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 51,
     }, {
         Done = { 4726 },
-        _comment = "Quest contract: 4726 Broodling Essence",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.24, 24),
         RaidIcon = { {
             npcID = 10267,
@@ -591,7 +539,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 52,
     }, {
         Done = { 5126 },
-        _comment = "Quest contract: 5126 Lorax's Tale",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 63.79, 73.76),
         RaidIcon = { {
             npcID = 10918,
@@ -603,7 +550,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 53,
     }, {
         Done = { 8905 },
-        _comment = "Quest contract: 8905 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -616,7 +562,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 54,
     }, {
         Done = { 8906 },
-        _comment = "Quest contract: 8906 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -629,7 +574,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 55,
     }, {
         Done = { 8907 },
-        _comment = "Quest contract: 8907 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -642,7 +586,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 56,
     }, {
         Done = { 8908 },
-        _comment = "Quest contract: 8908 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -655,7 +598,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 57,
     }, {
         Done = { 8909 },
-        _comment = "Quest contract: 8909 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -668,7 +610,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 58,
     }, {
         Done = { 8910 },
-        _comment = "Quest contract: 8910 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -681,7 +622,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 59,
     }, {
         Done = { 8911 },
-        _comment = "Quest contract: 8911 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -694,7 +634,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 60,
     }, {
         Done = { 8912 },
-        _comment = "Quest contract: 8912 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -707,7 +646,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 61,
     }, {
         Done = { 8913 },
-        _comment = "Quest contract: 8913 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -720,7 +658,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 62,
     }, {
         Done = { 8914 },
-        _comment = "Quest contract: 8914 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -733,7 +670,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 63,
     }, {
         Done = { 8915 },
-        _comment = "Quest contract: 8915 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -746,7 +682,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 64,
     }, {
         Done = { 8916 },
-        _comment = "Quest contract: 8916 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -759,7 +694,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 65,
     }, {
         Done = { 8917 },
-        _comment = "Quest contract: 8917 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -772,7 +706,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 66,
     }, {
         Done = { 8918 },
-        _comment = "Quest contract: 8918 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -785,7 +718,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 67,
     }, {
         Done = { 8919 },
-        _comment = "Quest contract: 8919 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -798,7 +730,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 68,
     }, {
         Done = { 8920 },
-        _comment = "Quest contract: 8920 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -811,7 +742,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 69,
     }, {
         PickUp = { 3527 },
-        _comment = "Quest contract: 3527 The Prophecy of Mosh'aru",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.99, 22.36),
         RaidIcon = { {
             npcID = 8579,
@@ -825,7 +755,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 70,
     }, {
         PickUp = { 4808 },
-        _comment = "Quest contract: 4808 Felnok Steelspring",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.24, 24),
         RaidIcon = { {
             npcID = 10267,
@@ -839,7 +768,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 71,
     }, {
         PickUp = { 5127 },
-        _comment = "Quest contract: 5127 The Demon Forge",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 63.79, 73.76),
         RaidIcon = { {
             npcID = 10918,
@@ -853,7 +781,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 72,
     }, {
         PickUp = { 8922 },
-        _comment = "Quest contract: 8922 A Supernatural Device",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -882,7 +809,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 73,
     }, {
         PickUp = { 8923 },
-        _comment = "Quest contract: 8923 A Supernatural Device",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -913,7 +839,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [3527] = { 1, 2 },
         },
-        _comment = "Quest contract: 3527 The Prophecy of Mosh'aru",
         NoArrow = true,
         IsQuestOnQuest = 3527,
         _index = 75,
@@ -921,7 +846,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [4808] = { 1 },
         },
-        _comment = "Quest contract: 4808 Felnok Steelspring",
         NoArrow = true,
         IsQuestOnQuest = 4808,
         _index = 76,
@@ -929,7 +853,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8922] = { 1 },
         },
-        _comment = "Quest contract: 8922 A Supernatural Device",
         NoArrow = true,
         IsQuestOnQuest = 8922,
         _index = 77,
@@ -937,13 +860,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8923] = { 1 },
         },
-        _comment = "Quest contract: 8923 A Supernatural Device",
         NoArrow = true,
         IsQuestOnQuest = 8923,
         _index = 78,
     }, {
         Done = { 3527 },
-        _comment = "Quest contract: 3527 The Prophecy of Mosh'aru",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.99, 22.36),
         RaidIcon = { {
             npcID = 8579,
@@ -954,7 +875,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 79,
     }, {
         Done = { 4808 },
-        _comment = "Quest contract: 4808 Felnok Steelspring",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 61.63, 38.61),
         RaidIcon = { {
             npcID = 10468,
@@ -965,7 +885,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 80,
     }, {
         Done = { 8922 },
-        _comment = "Quest contract: 8922 A Supernatural Device",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -977,7 +896,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 81,
     }, {
         Done = { 8923 },
-        _comment = "Quest contract: 8923 A Supernatural Device",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -989,7 +907,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 82,
     }, {
         PickUp = { 4787 },
-        _comment = "Quest contract: 4787 The Ancient Egg",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.99, 22.36),
         RaidIcon = { {
             npcID = 8579,
@@ -1003,7 +920,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 83,
     }, {
         PickUp = { 4809 },
-        _comment = "Quest contract: 4809 Chillwind Horns",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 61.63, 38.61),
         RaidIcon = { {
             npcID = 10468,
@@ -1017,7 +933,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 84,
     }, {
         PickUp = { 8921 },
-        _comment = "Quest contract: 8921 The Ectoplasmic Distiller",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1035,7 +950,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [4787] = { 1 },
         },
-        _comment = "Quest contract: 4787 The Ancient Egg",
         NoArrow = true,
         IsQuestOnQuest = 4787,
         _index = 86,
@@ -1043,7 +957,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [4809] = { 1 },
         },
-        _comment = "Quest contract: 4809 Chillwind Horns",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 29.56, 48.5),
         IsQuestOnQuest = 4809,
         Zone = 1452,
@@ -1052,13 +965,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8921] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 8921 The Ectoplasmic Distiller",
         NoArrow = true,
         IsQuestOnQuest = 8921,
         _index = 88,
     }, {
         Done = { 4787 },
-        _comment = "Quest contract: 4787 The Ancient Egg",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.99, 22.36),
         RaidIcon = { {
             npcID = 8579,
@@ -1069,7 +980,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 89,
     }, {
         Done = { 4809 },
-        _comment = "Quest contract: 4809 Chillwind Horns",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 61.63, 38.61),
         RaidIcon = { {
             npcID = 10468,
@@ -1080,7 +990,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 90,
     }, {
         Done = { 8921 },
-        _comment = "Quest contract: 8921 The Ectoplasmic Distiller",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1091,7 +1000,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 91,
     }, {
         PickUp = { 3528 },
-        _comment = "Quest contract: 3528 The God Hakkar",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.99, 22.36),
         RaidIcon = { {
             npcID = 8579,
@@ -1105,7 +1013,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 92,
     }, {
         PickUp = { 4810 },
-        _comment = "Quest contract: 4810 Return to Tinkee",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 61.63, 38.61),
         RaidIcon = { {
             npcID = 10468,
@@ -1119,7 +1026,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 93,
     }, {
         PickUp = { 8924 },
-        _comment = "Quest contract: 8924 Hunting for Ectoplasm",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1135,7 +1041,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [3528] = { 1 },
         },
-        _comment = "Quest contract: 3528 The God Hakkar",
         NoArrow = true,
         IsQuestOnQuest = 3528,
         _index = 95,
@@ -1143,7 +1048,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [4810] = { 1 },
         },
-        _comment = "Quest contract: 4810 Return to Tinkee",
         NoArrow = true,
         IsQuestOnQuest = 4810,
         _index = 96,
@@ -1151,14 +1055,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8924] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 8924 Hunting for Ectoplasm",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 60.94, 58.39),
         IsQuestOnQuest = 8924,
         Zone = 1451,
         _index = 97,
     }, {
         Done = { 3528 },
-        _comment = "Quest contract: 3528 The God Hakkar",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.99, 22.36),
         RaidIcon = { {
             npcID = 8579,
@@ -1169,7 +1071,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 98,
     }, {
         Done = { 4810 },
-        _comment = "Quest contract: 4810 Return to Tinkee",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.24, 24),
         RaidIcon = { {
             npcID = 10267,
@@ -1180,7 +1081,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 99,
     }, {
         Done = { 8924 },
-        _comment = "Quest contract: 8924 Hunting for Ectoplasm",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1191,7 +1091,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 100,
     }, {
         PickUp = { 4734 },
-        _comment = "Quest contract: 4734 Egg Freezing",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.24, 24),
         RaidIcon = { {
             npcID = 10267,
@@ -1205,7 +1104,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 101,
     }, {
         PickUp = { 5065 },
-        _comment = "Quest contract: 5065 The Lost Tablets of Mosh'aru",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.89, 24.03),
         RaidIcon = { {
             npcID = 10460,
@@ -1219,7 +1117,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 102,
     }, {
         PickUp = { 4907 },
-        _comment = "Quest contract: 4907 Tinkee Steamboil",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 61.63, 38.61),
         RaidIcon = { {
             npcID = 10468,
@@ -1233,7 +1130,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 103,
     }, {
         PickUp = { 8925 },
-        _comment = "Quest contract: 8925 A Portable Power Source",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1249,13 +1145,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [5065] = { 1, 2 },
         },
-        _comment = "Quest contract: 5065 The Lost Tablets of Mosh'aru",
         NoArrow = true,
         IsQuestOnQuest = 5065,
         _index = 105,
     }, {
         Done = { 4907 },
-        _comment = "Quest contract: 4907 Tinkee Steamboil",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.24, 24),
         RaidIcon = { {
             npcID = 10267,
@@ -1268,14 +1162,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8925] = { 1 },
         },
-        _comment = "Quest contract: 8925 A Portable Power Source",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 35.39, 57.76),
         IsQuestOnQuest = 8925,
         Zone = 1428,
         _index = 107,
     }, {
         Done = { 5065 },
-        _comment = "Quest contract: 5065 The Lost Tablets of Mosh'aru",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.89, 24.03),
         RaidIcon = { {
             npcID = 10460,
@@ -1286,7 +1178,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 108,
     }, {
         Done = { 8925 },
-        _comment = "Quest contract: 8925 A Portable Power Source",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1297,7 +1188,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 109,
     }, {
         PickUp = { 4788 },
-        _comment = "Quest contract: 4788 The Final Tablets",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.89, 24.03),
         RaidIcon = { {
             npcID = 10460,
@@ -1311,7 +1201,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 110,
     }, {
         PickUp = { 8928 },
-        _comment = "Quest contract: 8928 A Shifty Merchant",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1327,13 +1216,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8928] = { 1 },
         },
-        _comment = "Quest contract: 8928 A Shifty Merchant",
         NoArrow = true,
         IsQuestOnQuest = 8928,
         _index = 112,
     }, {
         Done = { 8928 },
-        _comment = "Quest contract: 8928 A Shifty Merchant",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1344,7 +1231,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 113,
     }, {
         PickUp = { 8977 },
-        _comment = "Quest contract: 8977 Return to Deliana",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1359,7 +1245,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 114,
     }, {
         PickUp = { 8978 },
-        _comment = "Quest contract: 8978 Return to Mokvar",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1376,7 +1261,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8977] = { 1 },
         },
-        _comment = "Quest contract: 8977 Return to Deliana",
         NoArrow = true,
         IsQuestOnQuest = 8977,
         _index = 116,
@@ -1384,13 +1268,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8978] = { 1 },
         },
-        _comment = "Quest contract: 8978 Return to Mokvar",
         NoArrow = true,
         IsQuestOnQuest = 8978,
         _index = 117,
     }, {
         Done = { 8977 },
-        _comment = "Quest contract: 8977 Return to Deliana",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1402,7 +1284,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 118,
     }, {
         Done = { 8978 },
-        _comment = "Quest contract: 8978 Return to Mokvar",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1414,7 +1295,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 119,
     }, {
         PickUp = { 8926 },
-        _comment = "Quest contract: 8926 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1430,7 +1310,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 120,
     }, {
         PickUp = { 8927 },
-        _comment = "Quest contract: 8927 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1446,7 +1325,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 121,
     }, {
         PickUp = { 8931 },
-        _comment = "Quest contract: 8931 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1462,7 +1340,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 122,
     }, {
         PickUp = { 8932 },
-        _comment = "Quest contract: 8932 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1478,7 +1355,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 123,
     }, {
         PickUp = { 8933 },
-        _comment = "Quest contract: 8933 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1494,7 +1370,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 124,
     }, {
         PickUp = { 8934 },
-        _comment = "Quest contract: 8934 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1510,7 +1385,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 125,
     }, {
         PickUp = { 8935 },
-        _comment = "Quest contract: 8935 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1526,7 +1400,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 126,
     }, {
         PickUp = { 8936 },
-        _comment = "Quest contract: 8936 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1542,7 +1415,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 127,
     }, {
         PickUp = { 8937 },
-        _comment = "Quest contract: 8937 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1558,7 +1430,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 128,
     }, {
         PickUp = { 8938 },
-        _comment = "Quest contract: 8938 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1574,7 +1445,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 129,
     }, {
         PickUp = { 8939 },
-        _comment = "Quest contract: 8939 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1590,7 +1460,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 130,
     }, {
         PickUp = { 8940 },
-        _comment = "Quest contract: 8940 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1606,7 +1475,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 131,
     }, {
         PickUp = { 8941 },
-        _comment = "Quest contract: 8941 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1622,7 +1490,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 132,
     }, {
         PickUp = { 8942 },
-        _comment = "Quest contract: 8942 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1638,7 +1505,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 133,
     }, {
         PickUp = { 8943 },
-        _comment = "Quest contract: 8943 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1654,7 +1520,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 134,
     }, {
         PickUp = { 8944 },
-        _comment = "Quest contract: 8944 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1672,7 +1537,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8926] = { 1, 2 },
         },
-        _comment = "Quest contract: 8926 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8926,
         _index = 136,
@@ -1680,7 +1544,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8927] = { 1, 2 },
         },
-        _comment = "Quest contract: 8927 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8927,
         _index = 137,
@@ -1688,7 +1551,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8931] = { 1, 2 },
         },
-        _comment = "Quest contract: 8931 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8931,
         _index = 138,
@@ -1696,7 +1558,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8932] = { 1, 2 },
         },
-        _comment = "Quest contract: 8932 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8932,
         _index = 139,
@@ -1704,7 +1565,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8933] = { 1, 2 },
         },
-        _comment = "Quest contract: 8933 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 51.93, 23.82),
         IsQuestOnQuest = 8933,
         Zone = 1422,
@@ -1713,7 +1573,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8934] = { 1, 2 },
         },
-        _comment = "Quest contract: 8934 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8934,
         _index = 141,
@@ -1721,7 +1580,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8935] = { 1, 2 },
         },
-        _comment = "Quest contract: 8935 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8935,
         _index = 142,
@@ -1729,7 +1587,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8936] = { 1, 2 },
         },
-        _comment = "Quest contract: 8936 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8936,
         _index = 143,
@@ -1737,7 +1594,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8937] = { 1, 2 },
         },
-        _comment = "Quest contract: 8937 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8937,
         _index = 144,
@@ -1745,7 +1601,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8938] = { 1, 2 },
         },
-        _comment = "Quest contract: 8938 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8938,
         _index = 145,
@@ -1753,7 +1608,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8939] = { 1, 2 },
         },
-        _comment = "Quest contract: 8939 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8939,
         _index = 146,
@@ -1761,7 +1615,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8940] = { 1, 2 },
         },
-        _comment = "Quest contract: 8940 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8940,
         _index = 147,
@@ -1769,7 +1622,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8941] = { 1, 2 },
         },
-        _comment = "Quest contract: 8941 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8941,
         _index = 148,
@@ -1777,7 +1629,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8942] = { 1, 2 },
         },
-        _comment = "Quest contract: 8942 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8942,
         _index = 149,
@@ -1785,7 +1636,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8943] = { 1, 2 },
         },
-        _comment = "Quest contract: 8943 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8943,
         _index = 150,
@@ -1793,13 +1643,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8944] = { 1, 2 },
         },
-        _comment = "Quest contract: 8944 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8944,
         _index = 151,
     }, {
         Done = { 8926 },
-        _comment = "Quest contract: 8926 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1812,7 +1660,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 152,
     }, {
         Done = { 8927 },
-        _comment = "Quest contract: 8927 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1825,7 +1672,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 153,
     }, {
         Done = { 8931 },
-        _comment = "Quest contract: 8931 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1838,7 +1684,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 154,
     }, {
         Done = { 8932 },
-        _comment = "Quest contract: 8932 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1851,7 +1696,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 155,
     }, {
         Done = { 8933 },
-        _comment = "Quest contract: 8933 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1864,7 +1708,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 156,
     }, {
         Done = { 8934 },
-        _comment = "Quest contract: 8934 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1877,7 +1720,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 157,
     }, {
         Done = { 8935 },
-        _comment = "Quest contract: 8935 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1890,7 +1732,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 158,
     }, {
         Done = { 8936 },
-        _comment = "Quest contract: 8936 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1903,7 +1744,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 159,
     }, {
         Done = { 8937 },
-        _comment = "Quest contract: 8937 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1916,7 +1756,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 160,
     }, {
         Done = { 8938 },
-        _comment = "Quest contract: 8938 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1929,7 +1768,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 161,
     }, {
         Done = { 8939 },
-        _comment = "Quest contract: 8939 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1942,7 +1780,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 162,
     }, {
         Done = { 8940 },
-        _comment = "Quest contract: 8940 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1955,7 +1792,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 163,
     }, {
         Done = { 8941 },
-        _comment = "Quest contract: 8941 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1968,7 +1804,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 164,
     }, {
         Done = { 8942 },
-        _comment = "Quest contract: 8942 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1981,7 +1816,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 165,
     }, {
         Done = { 8943 },
-        _comment = "Quest contract: 8943 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1994,7 +1828,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 166,
     }, {
         Done = { 8944 },
-        _comment = "Quest contract: 8944 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2007,7 +1840,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 167,
     }, {
         PickUp = { 8929 },
-        _comment = "Quest contract: 8929 In Search of Anthion",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2036,7 +1868,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 168,
     }, {
         PickUp = { 8930 },
-        _comment = "Quest contract: 8930 In Search of Anthion",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2065,7 +1896,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 169,
     }, {
         Done = { 8929 },
-        _comment = "Quest contract: 8929 In Search of Anthion",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2077,7 +1907,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 170,
     }, {
         Done = { 8930 },
-        _comment = "Quest contract: 8930 In Search of Anthion",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2089,7 +1918,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 171,
     }, {
         PickUp = { 8945 },
-        _comment = "Quest contract: 8945 Dead Man's Plea",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2107,13 +1935,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8945] = { 1 },
         },
-        _comment = "Quest contract: 8945 Dead Man's Plea",
         NoArrow = true,
         IsQuestOnQuest = 8945,
         _index = 173,
     }, {
         Done = { 8945 },
-        _comment = "Quest contract: 8945 Dead Man's Plea",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16031,
@@ -2123,7 +1949,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 174,
     }, {
         PickUp = { 8946 },
-        _comment = "Quest contract: 8946 Proof of Life",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16031,
@@ -2138,13 +1963,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8946] = { 1 },
         },
-        _comment = "Quest contract: 8946 Proof of Life",
         NoArrow = true,
         IsQuestOnQuest = 8946,
         _index = 176,
     }, {
         Done = { 8946 },
-        _comment = "Quest contract: 8946 Proof of Life",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2155,7 +1978,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 177,
     }, {
         PickUp = { 8947 },
-        _comment = "Quest contract: 8947 Anthion's Strange Request",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2171,13 +1993,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8947] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 8947 Anthion's Strange Request",
         NoArrow = true,
         IsQuestOnQuest = 8947,
         _index = 179,
     }, {
         Done = { 8947 },
-        _comment = "Quest contract: 8947 Anthion's Strange Request",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2188,7 +2008,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 180,
     }, {
         PickUp = { 8948 },
-        _comment = "Quest contract: 8948 Anthion's Old Friend",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2204,13 +2023,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8948] = { 1 },
         },
-        _comment = "Quest contract: 8948 Anthion's Old Friend",
         NoArrow = true,
         IsQuestOnQuest = 8948,
         _index = 182,
     }, {
         Done = { 8948 },
-        _comment = "Quest contract: 8948 Anthion's Old Friend",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16032,
@@ -2220,7 +2037,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 183,
     }, {
         PickUp = { 8949 },
-        _comment = "Quest contract: 8949 Falrin's Vendetta",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16032,
@@ -2235,14 +2051,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8949] = { 1 },
         },
-        _comment = "Quest contract: 8949 Falrin's Vendetta",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 59.95, 46.58),
         IsQuestOnQuest = 8949,
         Zone = 1444,
         _index = 185,
     }, {
         Done = { 8949 },
-        _comment = "Quest contract: 8949 Falrin's Vendetta",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16032,
@@ -2252,7 +2066,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 186,
     }, {
         PickUp = { 8950 },
-        _comment = "Quest contract: 8950 The Instigator's Enchantment",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16032,
@@ -2267,13 +2080,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8950] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8950 The Instigator's Enchantment",
         NoArrow = true,
         IsQuestOnQuest = 8950,
         _index = 188,
     }, {
         Done = { 8950 },
-        _comment = "Quest contract: 8950 The Instigator's Enchantment",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16032,
@@ -2283,7 +2094,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 189,
     }, {
         PickUp = { 9015 },
-        _comment = "Quest contract: 9015 The Challenge",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16032,
@@ -2298,13 +2108,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [9015] = { 1, 2 },
         },
-        _comment = "Quest contract: 9015 The Challenge",
         NoArrow = true,
         IsQuestOnQuest = 9015,
         _index = 191,
     }, {
         Done = { 9015 },
-        _comment = "Quest contract: 9015 The Challenge",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2315,7 +2123,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 192,
     }, {
         PickUp = { 8951 },
-        _comment = "Quest contract: 8951 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2331,7 +2138,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 193,
     }, {
         PickUp = { 8952 },
-        _comment = "Quest contract: 8952 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2347,7 +2153,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 194,
     }, {
         PickUp = { 8953 },
-        _comment = "Quest contract: 8953 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2363,7 +2168,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 195,
     }, {
         PickUp = { 8954 },
-        _comment = "Quest contract: 8954 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2379,7 +2183,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 196,
     }, {
         PickUp = { 8955 },
-        _comment = "Quest contract: 8955 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2395,7 +2198,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 197,
     }, {
         PickUp = { 8956 },
-        _comment = "Quest contract: 8956 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2411,7 +2213,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 198,
     }, {
         PickUp = { 8957 },
-        _comment = "Quest contract: 8957 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2427,7 +2228,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 199,
     }, {
         PickUp = { 8958 },
-        _comment = "Quest contract: 8958 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2443,7 +2243,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 200,
     }, {
         PickUp = { 8959 },
-        _comment = "Quest contract: 8959 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2459,7 +2258,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 201,
     }, {
         PickUp = { 9016 },
-        _comment = "Quest contract: 9016 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2475,7 +2273,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 202,
     }, {
         PickUp = { 9017 },
-        _comment = "Quest contract: 9017 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2491,7 +2288,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 203,
     }, {
         PickUp = { 9018 },
-        _comment = "Quest contract: 9018 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2507,7 +2303,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 204,
     }, {
         PickUp = { 9019 },
-        _comment = "Quest contract: 9019 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2523,7 +2318,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 205,
     }, {
         PickUp = { 9020 },
-        _comment = "Quest contract: 9020 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2539,7 +2333,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 206,
     }, {
         PickUp = { 9021 },
-        _comment = "Quest contract: 9021 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2555,7 +2348,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 207,
     }, {
         PickUp = { 9022 },
-        _comment = "Quest contract: 9022 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2573,7 +2365,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8951] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8951 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8951,
         _index = 209,
@@ -2581,7 +2372,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8952] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8952 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8952,
         _index = 210,
@@ -2589,7 +2379,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8953] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8953 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8953,
         _index = 211,
@@ -2597,7 +2386,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8954] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8954 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8954,
         _index = 212,
@@ -2605,7 +2393,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8955] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8955 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8955,
         _index = 213,
@@ -2613,7 +2400,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8956] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8956 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8956,
         _index = 214,
@@ -2621,7 +2407,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8957] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8957 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8957,
         _index = 215,
@@ -2629,7 +2414,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8958] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8958 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8958,
         _index = 216,
@@ -2637,7 +2421,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8959] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8959 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8959,
         _index = 217,
@@ -2645,7 +2428,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [9016] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 9016 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 9016,
         _index = 218,
@@ -2653,7 +2435,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [9017] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 9017 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 9017,
         _index = 219,
@@ -2661,7 +2442,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [9018] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 9018 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 9018,
         _index = 220,
@@ -2669,7 +2449,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [9019] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 9019 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 9019,
         _index = 221,
@@ -2677,7 +2456,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [9020] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 9020 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 9020,
         _index = 222,
@@ -2685,7 +2463,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [9021] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 9021 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 9021,
         _index = 223,
@@ -2693,13 +2470,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [9022] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 9022 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 9022,
         _index = 224,
     }, {
         Done = { 8951 },
-        _comment = "Quest contract: 8951 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2712,7 +2487,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 225,
     }, {
         Done = { 8952 },
-        _comment = "Quest contract: 8952 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2725,7 +2499,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 226,
     }, {
         Done = { 8953 },
-        _comment = "Quest contract: 8953 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2738,7 +2511,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 227,
     }, {
         Done = { 8954 },
-        _comment = "Quest contract: 8954 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2751,7 +2523,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 228,
     }, {
         Done = { 8955 },
-        _comment = "Quest contract: 8955 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2764,7 +2535,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 229,
     }, {
         Done = { 8956 },
-        _comment = "Quest contract: 8956 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2777,7 +2547,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 230,
     }, {
         Done = { 8957 },
-        _comment = "Quest contract: 8957 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2790,7 +2559,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 231,
     }, {
         Done = { 8958 },
-        _comment = "Quest contract: 8958 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2803,7 +2571,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 232,
     }, {
         Done = { 8959 },
-        _comment = "Quest contract: 8959 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2816,7 +2583,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 233,
     }, {
         Done = { 9016 },
-        _comment = "Quest contract: 9016 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2829,7 +2595,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 234,
     }, {
         Done = { 9017 },
-        _comment = "Quest contract: 9017 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2842,7 +2607,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 235,
     }, {
         Done = { 9018 },
-        _comment = "Quest contract: 9018 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2855,7 +2619,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 236,
     }, {
         Done = { 9019 },
-        _comment = "Quest contract: 9019 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2868,7 +2631,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 237,
     }, {
         Done = { 9020 },
-        _comment = "Quest contract: 9020 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2881,7 +2643,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 238,
     }, {
         Done = { 9021 },
-        _comment = "Quest contract: 9021 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2894,7 +2655,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 239,
     }, {
         Done = { 9022 },
-        _comment = "Quest contract: 9022 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2907,7 +2667,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 240,
     }, {
         PickUp = { 8960 },
-        _comment = "Quest contract: 8960 Bodley's Unfortunate Fate",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2936,7 +2695,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 241,
     }, {
         PickUp = { 9032 },
-        _comment = "Quest contract: 9032 Bodley's Unfortunate Fate",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2965,7 +2723,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 242,
     }, {
         Done = { 8960 },
-        _comment = "Quest contract: 8960 Bodley's Unfortunate Fate",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -2976,7 +2733,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 243,
     }, {
         Done = { 9032 },
-        _comment = "Quest contract: 9032 Bodley's Unfortunate Fate",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -2987,7 +2743,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 244,
     }, {
         PickUp = { 8961 },
-        _comment = "Quest contract: 8961 Three Kings of Flame",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3004,14 +2759,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8961] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 8961 Three Kings of Flame",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 37.63, 44.8),
         IsQuestOnQuest = 8961,
         Zone = 1451,
         _index = 246,
     }, {
         Done = { 8961 },
-        _comment = "Quest contract: 8961 Three Kings of Flame",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3021,7 +2774,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 247,
     }, {
         PickUp = { 8962 },
-        _comment = "Quest contract: 8962 Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3034,7 +2786,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 248,
     }, {
         PickUp = { 8963 },
-        _comment = "Quest contract: 8963 Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3047,7 +2798,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 249,
     }, {
         PickUp = { 8964 },
-        _comment = "Quest contract: 8964 Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3060,7 +2810,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 250,
     }, {
         PickUp = { 8965 },
-        _comment = "Quest contract: 8965 Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3075,7 +2824,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8962] = { 1 },
         },
-        _comment = "Quest contract: 8962 Components of Importance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 49.31, 80.12),
         IsQuestOnQuest = 8962,
         Zone = 1451,
@@ -3084,7 +2832,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8963] = { 1 },
         },
-        _comment = "Quest contract: 8963 Components of Importance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 65.66, 69.28),
         IsQuestOnQuest = 8963,
         Zone = 1452,
@@ -3093,7 +2840,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8964] = { 1 },
         },
-        _comment = "Quest contract: 8964 Components of Importance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 78.03, 72.34),
         IsQuestOnQuest = 8964,
         Zone = 1423,
@@ -3102,14 +2848,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8965] = { 1 },
         },
-        _comment = "Quest contract: 8965 Components of Importance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 18.33, 77.93),
         IsQuestOnQuest = 8965,
         Zone = 1424,
         _index = 255,
     }, {
         Done = { 8962 },
-        _comment = "Quest contract: 8962 Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3119,7 +2863,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 256,
     }, {
         Done = { 8963 },
-        _comment = "Quest contract: 8963 Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3129,7 +2872,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 257,
     }, {
         Done = { 8964 },
-        _comment = "Quest contract: 8964 Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3139,7 +2881,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 258,
     }, {
         Done = { 8965 },
-        _comment = "Quest contract: 8965 Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3149,7 +2890,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 259,
     }, {
         PickUp = { 8967 },
-        _comment = "Quest contract: 8967 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3168,7 +2908,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 260,
     }, {
         PickUp = { 8968 },
-        _comment = "Quest contract: 8968 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3187,7 +2926,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 261,
     }, {
         PickUp = { 8969 },
-        _comment = "Quest contract: 8969 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3208,7 +2946,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8967] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8967 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         IsQuestOnQuest = 8967,
         _index = 263,
@@ -3216,7 +2953,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8968] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 8968 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         IsQuestOnQuest = 8968,
         _index = 264,
@@ -3224,13 +2960,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8969] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8969 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         IsQuestOnQuest = 8969,
         _index = 265,
     }, {
         Done = { 8967 },
-        _comment = "Quest contract: 8967 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3240,7 +2974,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 266,
     }, {
         Done = { 8968 },
-        _comment = "Quest contract: 8968 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3250,7 +2983,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 267,
     }, {
         Done = { 8969 },
-        _comment = "Quest contract: 8969 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3269,7 +3001,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 269,
     }, {
         PickUp = { 4742 },
-        _comment = "Quest contract: 4742 Seal of Ascension",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3281,7 +3012,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 270,
     }, {
         PickUp = { 4867 },
-        _comment = "Quest contract: 4867 Urok Doomhowl",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3293,7 +3023,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 271,
     }, {
         PickUp = { 4903 },
-        _comment = "Quest contract: 4903 Warlord's Command",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3306,7 +3035,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 272,
     }, {
         PickUp = { 5001 },
-        _comment = "Quest contract: 5001 Bijou's Belongings",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3319,7 +3047,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 273,
     }, {
         PickUp = { 5047 },
-        _comment = "Quest contract: 5047 Pip Quickwit, At Your Service!",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3331,7 +3058,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 274,
     }, {
         PickUp = { 5160 },
-        _comment = "Quest contract: 5160 The Matron Protectorate",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3343,7 +3069,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 275,
     }, {
         PickUp = { 8966 },
-        _comment = "Quest contract: 8966 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3496,7 +3221,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [4701] = { 1 },
         },
-        _comment = "Quest contract: 4701 Put Her Down",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3506,7 +3230,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [4724] = { 1 },
         },
-        _comment = "Quest contract: 4724 The Pack Mistress",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3516,7 +3239,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [4729] = { 1 },
         },
-        _comment = "Quest contract: 4729 Kibler's Exotic Pets",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3526,7 +3248,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [4734] = { 1 },
         },
-        _comment = "Quest contract: 4734 Egg Freezing",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3536,7 +3257,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [4742] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 4742 Seal of Ascension",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3546,7 +3266,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [4764] = { 1 },
         },
-        _comment = "Quest contract: 4764 Doomrigger's Clasp",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3556,7 +3275,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [4768] = { 1 },
         },
-        _comment = "Quest contract: 4768 The Darkstone Tablet",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3566,7 +3284,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [4788] = { 1, 2 },
         },
-        _comment = "Quest contract: 4788 The Final Tablets",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3576,7 +3293,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [4862] = { 1 },
         },
-        _comment = "Quest contract: 4862 En-Ay-Es-Tee-Why",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3586,7 +3302,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [4866] = { 1 },
         },
-        _comment = "Quest contract: 4866 Mother's Milk",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3596,7 +3311,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [4867] = { 1 },
         },
-        _comment = "Quest contract: 4867 Urok Doomhowl",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3606,7 +3320,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [4903] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 4903 Warlord's Command",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3614,7 +3327,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 301,
     }, {
         Done = { 4981 },
-        _comment = "Quest contract: 4981 Operative Bijou",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3629,7 +3341,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [5001] = { 1 },
         },
-        _comment = "Quest contract: 5001 Bijou's Belongings",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3639,7 +3350,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [5047] = { 1 },
         },
-        _comment = "Quest contract: 5047 Pip Quickwit, At Your Service!",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3647,7 +3357,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 304,
     }, {
         PickUp = { 5089 },
-        _comment = "Quest contract: 5089 General Drakkisath's Command",
         Button = {
             ["5089"] = 12780,
         },
@@ -3665,7 +3374,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [5127] = { 1, 2 },
         },
-        _comment = "Quest contract: 5127 The Demon Forge",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3675,7 +3383,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [5160] = { 1 },
         },
-        _comment = "Quest contract: 5160 The Matron Protectorate",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3683,7 +3390,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 307,
     }, {
         PickUp = { 7761 },
-        _comment = "Quest contract: 7761 Blackhand's Command",
         Button = {
             ["7761"] = 18987,
         },
@@ -3700,7 +3406,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8966] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8966 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3708,7 +3413,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 309,
     }, {
         Done = { 4742 },
-        _comment = "Quest contract: 4742 Seal of Ascension",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3720,7 +3424,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 310,
     }, {
         Done = { 4867 },
-        _comment = "Quest contract: 4867 Urok Doomhowl",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3732,7 +3435,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 311,
     }, {
         PickUp = { 4982 },
-        _comment = "Quest contract: 4982 Bijou's Belongings",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3748,7 +3450,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 312,
     }, {
         Done = { 5001 },
-        _comment = "Quest contract: 5001 Bijou's Belongings",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3763,7 +3464,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [5089] = { 1 },
         },
-        _comment = "Quest contract: 5089 General Drakkisath's Command",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3771,7 +3471,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 314,
     }, {
         Done = { 7761 },
-        _comment = "Quest contract: 7761 Blackhand's Command",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3779,7 +3478,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 315,
     }, {
         Done = { 8966 },
-        _comment = "Quest contract: 8966 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3791,7 +3489,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 316,
     }, {
         PickUp = { 4743 },
-        _comment = "Quest contract: 4743 Seal of Ascension",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3808,7 +3505,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [4982] = { 1 },
         },
-        _comment = "Quest contract: 4982 Bijou's Belongings",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3816,7 +3512,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 318,
     }, {
         PickUp = { 5002 },
-        _comment = "Quest contract: 5002 Message to Maxwell",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3834,7 +3529,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [4743] = { 1 },
         },
-        _comment = "Quest contract: 4743 Seal of Ascension",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3842,7 +3536,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 320,
     }, {
         Done = { 4982 },
-        _comment = "Quest contract: 4982 Bijou's Belongings",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3857,7 +3550,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [5002] = { 1 },
         },
-        _comment = "Quest contract: 5002 Message to Maxwell",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3865,7 +3557,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 322,
     }, {
         Done = { 4743 },
-        _comment = "Quest contract: 4743 Seal of Ascension",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3877,7 +3568,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 323,
     }, {
         PickUp = { 4983 },
-        _comment = "Quest contract: 4983 Bijou's Reconnaissance Report",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3895,7 +3585,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [4983] = { 1 },
         },
-        _comment = "Quest contract: 4983 Bijou's Reconnaissance Report",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -3910,7 +3599,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 326,
     }, {
         Done = { 4701 },
-        _comment = "Quest contract: 4701 Put Her Down",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 85.82, 68.95),
         RaidIcon = { {
             npcID = 9562,
@@ -3922,7 +3610,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 327,
     }, {
         Done = { 4724 },
-        _comment = "Quest contract: 4724 The Pack Mistress",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 5.96, 47.73),
         RaidIcon = { {
             npcID = 9081,
@@ -3934,7 +3621,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 328,
     }, {
         Done = { 4729 },
-        _comment = "Quest contract: 4729 Kibler's Exotic Pets",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.89, 21.92),
         RaidIcon = { {
             npcID = 10260,
@@ -3945,7 +3631,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 329,
     }, {
         Done = { 4734 },
-        _comment = "Quest contract: 4734 Egg Freezing",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.24, 24),
         RaidIcon = { {
             npcID = 10267,
@@ -3956,7 +3641,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 330,
     }, {
         Done = { 4764 },
-        _comment = "Quest contract: 4764 Doomrigger's Clasp",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 84.84, 69.12),
         RaidIcon = { {
             npcID = 9565,
@@ -3968,7 +3652,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 331,
     }, {
         Done = { 4768 },
-        _comment = "Quest contract: 4768 The Darkstone Tablet",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 2.9, 47.76),
         RaidIcon = { {
             npcID = 9078,
@@ -3980,7 +3663,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 332,
     }, {
         Done = { 4788 },
-        _comment = "Quest contract: 4788 The Final Tablets",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.89, 24.03),
         RaidIcon = { {
             npcID = 10460,
@@ -3991,7 +3673,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 333,
     }, {
         Done = { 4862 },
-        _comment = "Quest contract: 4862 En-Ay-Es-Tee-Why",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.89, 21.92),
         RaidIcon = { {
             npcID = 10260,
@@ -4002,7 +3683,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 334,
     }, {
         Done = { 4866 },
-        _comment = "Quest contract: 4866 Mother's Milk",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.01, 23.76),
         RaidIcon = { {
             npcID = 9563,
@@ -4013,7 +3693,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 335,
     }, {
         Done = { 4903 },
-        _comment = "Quest contract: 4903 Warlord's Command",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 5.81, 47.52),
         RaidIcon = { {
             npcID = 9077,
@@ -4025,7 +3704,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 336,
     }, {
         Done = { 4983 },
-        _comment = "Quest contract: 4983 Bijou's Reconnaissance Report",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 5.88, 47.63),
         RaidIcon = { {
             npcID = 9080,
@@ -4037,7 +3715,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 337,
     }, {
         Done = { 5002 },
-        _comment = "Quest contract: 5002 Message to Maxwell",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 84.74, 69.02),
         RaidIcon = { {
             npcID = 9560,
@@ -4049,7 +3726,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 338,
     }, {
         Done = { 5047 },
-        _comment = "Quest contract: 5047 Pip Quickwit, At Your Service!",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 60.99, 38.78),
         RaidIcon = { {
             npcID = 10637,
@@ -4060,7 +3736,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 339,
     }, {
         Done = { 5089 },
-        _comment = "Quest contract: 5089 General Drakkisath's Command",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 84.74, 69.02),
         RaidIcon = { {
             npcID = 9560,
@@ -4072,7 +3747,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 340,
     }, {
         Done = { 5127 },
-        _comment = "Quest contract: 5127 The Demon Forge",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 63.79, 73.76),
         RaidIcon = { {
             npcID = 10918,
@@ -4083,7 +3757,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 341,
     }, {
         Done = { 5160 },
-        _comment = "Quest contract: 5160 The Matron Protectorate",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 54.55, 51.2),
         RaidIcon = { {
             npcID = 10929,
@@ -4094,7 +3767,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 342,
     }, {
         PickUp = { 8970 },
-        _comment = "Quest contract: 8970 I See Alcaz Island In Your Future...",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4113,7 +3785,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 343,
     }, {
         PickUp = { 4735 },
-        _comment = "Quest contract: 4735 Egg Collection",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.24, 24),
         RaidIcon = { {
             npcID = 10267,
@@ -4127,7 +3798,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 344,
     }, {
         PickUp = { 4765 },
-        _comment = "Quest contract: 4765 Delivery to Ridgewell",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 84.84, 69.12),
         RaidIcon = { {
             npcID = 9565,
@@ -4142,7 +3812,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 345,
     }, {
         PickUp = { 4941 },
-        _comment = "Quest contract: 4941 Eitrigg's Wisdom",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 5.81, 47.52),
         RaidIcon = { {
             npcID = 9077,
@@ -4157,7 +3826,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 346,
     }, {
         PickUp = { 5081 },
-        _comment = "Quest contract: 5081 Maxwell's Mission",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 84.74, 69.02),
         RaidIcon = { {
             npcID = 9560,
@@ -4172,7 +3840,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 347,
     }, {
         PickUp = { 5102 },
-        _comment = "Quest contract: 5102 General Drakkisath's Demise",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 84.74, 69.02),
         RaidIcon = { {
             npcID = 9560,
@@ -4187,7 +3854,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 348,
     }, {
         PickUp = { 5161 },
-        _comment = "Quest contract: 5161 Wrath of the Blue Flight",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 54.55, 51.2),
         RaidIcon = { {
             npcID = 10929,
@@ -4201,7 +3867,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 349,
     }, {
         PickUp = { 8181 },
-        _comment = "Quest contract: 8181 Confront Yeh'kinya",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.89, 24.03),
         RaidIcon = { {
             npcID = 10460,
@@ -4217,7 +3882,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8970] = { 1 },
         },
-        _comment = "Quest contract: 8970 I See Alcaz Island In Your Future...",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 74.79, 15.12),
         IsQuestOnQuest = 8970,
         Zone = 1445,
@@ -4226,13 +3890,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [4941] = { 1 },
         },
-        _comment = "Quest contract: 4941 Eitrigg's Wisdom",
         NoArrow = true,
         IsQuestOnQuest = 4941,
         _index = 352,
     }, {
         Done = { 5161 },
-        _comment = "Quest contract: 5161 Wrath of the Blue Flight",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 54.55, 51.2),
         RaidIcon = { {
             npcID = 10929,
@@ -4243,7 +3905,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 353,
     }, {
         Done = { 8181 },
-        _comment = "Quest contract: 8181 Confront Yeh'kinya",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.99, 22.36),
         RaidIcon = { {
             npcID = 8579,
@@ -4254,7 +3915,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 354,
     }, {
         Done = { 8970 },
-        _comment = "Quest contract: 8970 I See Alcaz Island In Your Future...",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4264,7 +3924,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 355,
     }, {
         Done = { 4941 },
-        _comment = "Quest contract: 4941 Eitrigg's Wisdom",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.73, 37.82),
         RaidIcon = { {
             npcID = 4949,
@@ -4276,7 +3935,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 356,
     }, {
         PickUp = { 5162 },
-        _comment = "Quest contract: 5162 Wrath of the Blue Flight",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 54.55, 51.2),
         RaidIcon = { {
             npcID = 10929,
@@ -4290,7 +3948,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 357,
     }, {
         PickUp = { 8182 },
-        _comment = "Quest contract: 8182 The Hand of Rastakhan",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.89, 24.03),
         RaidIcon = { {
             npcID = 10460,
@@ -4304,7 +3961,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 358,
     }, {
         PickUp = { 8985 },
-        _comment = "Quest contract: 8985 More Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4317,7 +3973,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 359,
     }, {
         PickUp = { 8986 },
-        _comment = "Quest contract: 8986 More Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4330,7 +3985,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 360,
     }, {
         PickUp = { 8987 },
-        _comment = "Quest contract: 8987 More Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4343,7 +3997,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 361,
     }, {
         PickUp = { 8988 },
-        _comment = "Quest contract: 8988 More Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4356,7 +4009,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 362,
     }, {
         PickUp = { 4974 },
-        _comment = "Quest contract: 4974 For The Horde!",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.73, 37.82),
         RaidIcon = { {
             npcID = 4949,
@@ -4371,7 +4023,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 363,
     }, {
         Done = { 5162 },
-        _comment = "Quest contract: 5162 Wrath of the Blue Flight",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 39.37, 66.78),
         RaidIcon = { {
             npcID = 10976,
@@ -4382,7 +4033,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 364,
     }, {
         Done = { 8182 },
-        _comment = "Quest contract: 8182 The Hand of Rastakhan",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 15.04, 15.13),
         RaidIcon = { {
             npcID = 14875,
@@ -4395,7 +4045,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8985] = { 1 },
         },
-        _comment = "Quest contract: 8985 More Components of Importance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 65.66, 69.28),
         IsQuestOnQuest = 8985,
         Zone = 1452,
@@ -4404,7 +4053,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8986] = { 1 },
         },
-        _comment = "Quest contract: 8986 More Components of Importance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 49.31, 80.12),
         IsQuestOnQuest = 8986,
         Zone = 1451,
@@ -4413,7 +4061,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8987] = { 1 },
         },
-        _comment = "Quest contract: 8987 More Components of Importance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 78.03, 72.34),
         IsQuestOnQuest = 8987,
         Zone = 1423,
@@ -4422,14 +4069,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8988] = { 1 },
         },
-        _comment = "Quest contract: 8988 More Components of Importance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 18.33, 77.93),
         IsQuestOnQuest = 8988,
         Zone = 1424,
         _index = 369,
     }, {
         PickUp = { 5164 },
-        _comment = "Quest contract: 5164 Catalogue of the Wayward",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 39.37, 66.78),
         RaidIcon = { {
             npcID = 10976,
@@ -4443,7 +4088,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 370,
     }, {
         Done = { 8985 },
-        _comment = "Quest contract: 8985 More Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4453,7 +4097,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 371,
     }, {
         Done = { 8986 },
-        _comment = "Quest contract: 8986 More Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4463,7 +4106,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 372,
     }, {
         Done = { 8987 },
-        _comment = "Quest contract: 8987 More Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4473,7 +4115,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 373,
     }, {
         Done = { 8988 },
-        _comment = "Quest contract: 8988 More Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4483,14 +4124,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 374,
     }, {
         Done = { 5164 },
-        _comment = "Quest contract: 5164 Catalogue of the Wayward",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 39.35, 66.6),
         IsQuestOnQuest = 5164,
         Zone = 1422,
         _index = 375,
     }, {
         PickUp = { 8990 },
-        _comment = "Quest contract: 8990 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4509,7 +4148,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 376,
     }, {
         PickUp = { 8991 },
-        _comment = "Quest contract: 8991 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4528,7 +4166,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 377,
     }, {
         PickUp = { 8992 },
-        _comment = "Quest contract: 8992 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4549,7 +4186,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8990] = { 1, 2 },
         },
-        _comment = "Quest contract: 8990 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         IsQuestOnQuest = 8990,
         _index = 379,
@@ -4557,7 +4193,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8991] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8991 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         IsQuestOnQuest = 8991,
         _index = 380,
@@ -4565,13 +4200,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8992] = { 1, 2 },
         },
-        _comment = "Quest contract: 8992 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         IsQuestOnQuest = 8992,
         _index = 381,
     }, {
         Done = { 8990 },
-        _comment = "Quest contract: 8990 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4581,7 +4214,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 382,
     }, {
         Done = { 8991 },
-        _comment = "Quest contract: 8991 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4591,7 +4223,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 383,
     }, {
         Done = { 8992 },
-        _comment = "Quest contract: 8992 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4612,7 +4243,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [4735] = { 1, 2 },
         },
-        _comment = "Quest contract: 4735 Egg Collection",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -4622,7 +4252,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [4765] = { 1 },
         },
-        _comment = "Quest contract: 4765 Delivery to Ridgewell",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -4632,7 +4261,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [4974] = { 1 },
         },
-        _comment = "Quest contract: 4974 For The Horde!",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -4642,7 +4270,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [5081] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 5081 Maxwell's Mission",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -4652,7 +4279,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [5102] = { 1 },
         },
-        _comment = "Quest contract: 5102 General Drakkisath's Demise",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -4660,7 +4286,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 390,
     }, {
         PickUp = { 8989 },
-        _comment = "Quest contract: 8989 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -4683,7 +4308,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8989] = { 1, 2 },
         },
-        _comment = "Quest contract: 8989 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -4691,7 +4315,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 392,
     }, {
         Done = { 8989 },
-        _comment = "Quest contract: 8989 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -4710,7 +4333,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 394,
     }, {
         Done = { 4735 },
-        _comment = "Quest contract: 4735 Egg Collection",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.24, 24),
         RaidIcon = { {
             npcID = 10267,
@@ -4721,7 +4343,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 395,
     }, {
         Done = { 4765 },
-        _comment = "Quest contract: 4765 Delivery to Ridgewell",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 76.94, 47.83),
         RaidIcon = { {
             npcID = 2285,
@@ -4733,7 +4354,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 396,
     }, {
         Done = { 4974 },
-        _comment = "Quest contract: 4974 For The Horde!",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.73, 37.82),
         RaidIcon = { {
             npcID = 4949,
@@ -4745,7 +4365,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 397,
     }, {
         Done = { 5081 },
-        _comment = "Quest contract: 5081 Maxwell's Mission",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 84.74, 69.02),
         RaidIcon = { {
             npcID = 9560,
@@ -4757,7 +4376,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 398,
     }, {
         Done = { 5102 },
-        _comment = "Quest contract: 5102 General Drakkisath's Demise",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 84.74, 69.02),
         RaidIcon = { {
             npcID = 9560,
@@ -4769,7 +4387,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 399,
     }, {
         PickUp = { 8994 },
-        _comment = "Quest contract: 8994 Final Preparations",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4788,7 +4405,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 400,
     }, {
         PickUp = { 5522 },
-        _comment = "Quest contract: 5522 Leonid Barthalomew",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.24, 24),
         RaidIcon = { {
             npcID = 10267,
@@ -4802,7 +4418,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 401,
     }, {
         PickUp = { 6566 },
-        _comment = "Quest contract: 6566 What the Wind Carries",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.73, 37.82),
         RaidIcon = { {
             npcID = 4949,
@@ -4819,7 +4434,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8994] = { 1, 2 },
         },
-        _comment = "Quest contract: 8994 Final Preparations",
         NoArrow = true,
         IsQuestOnQuest = 8994,
         _index = 403,
@@ -4827,7 +4441,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [5522] = { 1 },
         },
-        _comment = "Quest contract: 5522 Leonid Barthalomew",
         NoArrow = true,
         IsQuestOnQuest = 5522,
         _index = 404,
@@ -4835,13 +4448,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [6566] = { 1 },
         },
-        _comment = "Quest contract: 6566 What the Wind Carries",
         NoArrow = true,
         IsQuestOnQuest = 6566,
         _index = 405,
     }, {
         Done = { 8994 },
-        _comment = "Quest contract: 8994 Final Preparations",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4851,7 +4462,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 406,
     }, {
         Done = { 5522 },
-        _comment = "Quest contract: 5522 Leonid Barthalomew",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.89, 48.29),
         RaidIcon = { {
             npcID = 11036,
@@ -4862,7 +4472,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 407,
     }, {
         Done = { 6566 },
-        _comment = "Quest contract: 6566 What the Wind Carries",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.73, 37.82),
         RaidIcon = { {
             npcID = 4949,
@@ -4874,7 +4483,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 408,
     }, {
         PickUp = { 6567 },
-        _comment = "Quest contract: 6567 The Champion of the Horde",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.73, 37.82),
         RaidIcon = { {
             npcID = 4949,
@@ -4889,7 +4497,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 409,
     }, {
         Done = { 6567 },
-        _comment = "Quest contract: 6567 The Champion of the Horde",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 54, 2),
         RaidIcon = { {
             npcID = 10182,
@@ -4901,7 +4508,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 410,
     }, {
         PickUp = { 6568 },
-        _comment = "Quest contract: 6568 The Testament of Rexxar",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 54, 2),
         RaidIcon = { {
             npcID = 10182,
@@ -4918,13 +4524,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [6568] = { 1 },
         },
-        _comment = "Quest contract: 6568 The Testament of Rexxar",
         NoArrow = true,
         IsQuestOnQuest = 6568,
         _index = 412,
     }, {
         Done = { 6568 },
-        _comment = "Quest contract: 6568 The Testament of Rexxar",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 50.79, 77.85),
         RaidIcon = { {
             npcID = 11872,
@@ -4936,7 +4540,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 413,
     }, {
         PickUp = { 6569 },
-        _comment = "Quest contract: 6569 Oculus Illusions",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 50.79, 77.85),
         RaidIcon = { {
             npcID = 11872,
@@ -4962,7 +4565,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [6569] = { 1 },
         },
-        _comment = "Quest contract: 6569 Oculus Illusions",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -4970,7 +4572,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 416,
     }, {
         PickUp = { 8995 },
-        _comment = "Quest contract: 8995 Mea Culpa, Lord Valthalak",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -4987,7 +4588,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8995] = { 1, 2 },
         },
-        _comment = "Quest contract: 8995 Mea Culpa, Lord Valthalak",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -4995,7 +4595,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 418,
     }, {
         Done = { 8995 },
-        _comment = "Quest contract: 8995 Mea Culpa, Lord Valthalak",
         NoArrow = true,
         Dungeon = "INSTANCE_229",
         InstanceQuest = true,
@@ -5014,7 +4613,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 420,
     }, {
         Done = { 6569 },
-        _comment = "Quest contract: 6569 Oculus Illusions",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 50.79, 77.85),
         RaidIcon = { {
             npcID = 11872,
@@ -5026,7 +4624,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 421,
     }, {
         PickUp = { 8996 },
-        _comment = "Quest contract: 8996 Return to Bodley",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16073,
@@ -5039,7 +4636,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 422,
     }, {
         PickUp = { 6570 },
-        _comment = "Quest contract: 6570 Emberstrife",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 50.79, 77.85),
         RaidIcon = { {
             npcID = 11872,
@@ -5056,13 +4652,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         Qpart = {
             [8996] = { 1 },
         },
-        _comment = "Quest contract: 8996 Return to Bodley",
         NoArrow = true,
         IsQuestOnQuest = 8996,
         _index = 424,
     }, {
         Done = { 6570 },
-        _comment = "Quest contract: 6570 Emberstrife",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 56.66, 87.72),
         RaidIcon = { {
             npcID = 10321,
@@ -5074,7 +4668,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Spire"] = {
         _index = 425,
     }, {
         Done = { 8996 },
-        _comment = "Quest contract: 8996 Return to Bodley",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,

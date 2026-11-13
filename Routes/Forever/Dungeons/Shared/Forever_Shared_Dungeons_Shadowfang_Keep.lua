@@ -16,7 +16,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shadowfang-Keep"] = {
     mapID = 1421,
     steps = { {
         PickUp = { 1013 },
-        _comment = "Quest contract: 1013 The Book of Ur",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 53.74, 54.46),
         RaidIcon = { {
             npcID = 2934,
@@ -28,7 +27,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shadowfang-Keep"] = {
         _index = 1,
     }, {
         PickUp = { 1014 },
-        _comment = "Quest contract: 1014 Arugal Must Die",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 44.2, 39.81),
         RaidIcon = { {
             npcID = 1938,
@@ -40,7 +38,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shadowfang-Keep"] = {
         _index = 2,
     }, {
         PickUp = { 1098 },
-        _comment = "Quest contract: 1098 Deathstalkers in Shadowfang",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 43.42, 40.86),
         RaidIcon = { {
             npcID = 1952,
@@ -52,7 +49,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shadowfang-Keep"] = {
         _index = 3,
     }, {
         PickUp = { 1740 },
-        _comment = "Quest contract: 1740 The Orb of Soran'ruk",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 49.31, 57.21),
         RaidIcon = { {
             npcID = 6247,
@@ -155,7 +151,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shadowfang-Keep"] = {
         Qpart = {
             [1013] = { 1 },
         },
-        _comment = "Quest contract: 1013 The Book of Ur",
         NoArrow = true,
         Dungeon = "INSTANCE_33",
         InstanceQuest = true,
@@ -165,7 +160,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shadowfang-Keep"] = {
         Qpart = {
             [1014] = { 1 },
         },
-        _comment = "Quest contract: 1014 Arugal Must Die",
         NoArrow = true,
         Dungeon = "INSTANCE_33",
         InstanceQuest = true,
@@ -173,7 +167,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shadowfang-Keep"] = {
         _index = 15,
     }, {
         Done = { 1098 },
-        _comment = "Quest contract: 1098 Deathstalkers in Shadowfang",
         NoArrow = true,
         Dungeon = "INSTANCE_33",
         InstanceQuest = true,
@@ -188,7 +181,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shadowfang-Keep"] = {
         Qpart = {
             [1740] = { 1, 2 },
         },
-        _comment = "Quest contract: 1740 The Orb of Soran'ruk",
         NoArrow = true,
         Dungeon = "INSTANCE_33",
         InstanceQuest = true,
@@ -203,7 +195,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shadowfang-Keep"] = {
         _index = 18,
     }, {
         Done = { 1013 },
-        _comment = "Quest contract: 1013 The Book of Ur",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 53.74, 54.46),
         RaidIcon = { {
             npcID = 2934,
@@ -215,7 +206,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shadowfang-Keep"] = {
         _index = 19,
     }, {
         Done = { 1014 },
-        _comment = "Quest contract: 1014 Arugal Must Die",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 44.2, 39.81),
         RaidIcon = { {
             npcID = 1938,
@@ -227,7 +217,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Shadowfang-Keep"] = {
         _index = 20,
     }, {
         Done = { 1740 },
-        _comment = "Quest contract: 1740 The Orb of Soran'ruk",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 49.31, 57.21),
         RaidIcon = { {
             npcID = 6247,

@@ -16,7 +16,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
     mapID = 1418,
     steps = { {
         PickUp = { 2500 },
-        _comment = "Quest contract: 2500 Badlands Reagent Run",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 37.07, 49.38),
         RaidIcon = { {
             npcID = 1470,
@@ -28,7 +27,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 1,
     }, {
         PickUp = { 707 },
-        _comment = "Quest contract: 707 Ironband Wants You!",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 74.64, 11.74),
         RaidIcon = { {
             npcID = 1356,
@@ -40,7 +38,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 2,
     }, {
         PickUp = { 709 },
-        _comment = "Quest contract: 709 Solution to Doom",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 51.39, 76.87),
         RaidIcon = { {
             npcID = 2785,
@@ -51,7 +48,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 3,
     }, {
         PickUp = { 720 },
-        _comment = "Quest contract: 720 A Sign of Hope",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 53.03, 33.94),
         Faction = "Alliance",
         MinLevel = 35,
@@ -59,7 +55,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 4,
     }, {
         PickUp = { 1360 },
-        _comment = "Quest contract: 1360 Reclaimed Treasures",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 74.19, 9.39),
         RaidIcon = { {
             npcID = 6294,
@@ -71,7 +66,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 5,
     }, {
         PickUp = { 1953 },
-        _comment = "Quest contract: 1953 Return to the Marsh",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 25.7, 14.19),
         RaidIcon = { {
             npcID = 3048,
@@ -84,7 +78,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 6,
     }, {
         PickUp = { 2258 },
-        _comment = "Quest contract: 2258 Badlands Reagent Run",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 2.42, 46.06),
         RaidIcon = { {
             npcID = 6868,
@@ -96,7 +89,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 7,
     }, {
         PickUp = { 2398 },
-        _comment = "Quest contract: 2398 The Lost Dwarves",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 74.64, 11.74),
         RaidIcon = { {
             npcID = 1356,
@@ -108,7 +100,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 8,
     }, {
         PickUp = { 2283 },
-        _comment = "Quest contract: 2283 Necklace Recovery",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 59.49, 36.57),
         RaidIcon = { {
             npcID = 6986,
@@ -120,7 +111,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 9,
     }, {
         PickUp = { 2342 },
-        _comment = "Quest contract: 2342 Reclaimed Treasures",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 62.32, 48.61),
         RaidIcon = { {
             npcID = 5651,
@@ -132,7 +122,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 10,
     }, {
         PickUp = { 2418 },
-        _comment = "Quest contract: 2418 Power Stones",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 42.39, 52.93),
         RaidIcon = { {
             npcID = 2817,
@@ -145,14 +134,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [2500] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 2500 Badlands Reagent Run",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 60.21, 30.1),
         IsQuestOnQuest = 2500,
         Zone = 1418,
         _index = 12,
     }, {
         Done = { 707 },
-        _comment = "Quest contract: 707 Ironband Wants You!",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 65.93, 65.62),
         RaidIcon = { {
             npcID = 1344,
@@ -164,7 +151,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 13,
     }, {
         Done = { 720 },
-        _comment = "Quest contract: 720 A Sign of Hope",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 53.42, 43.39),
         RaidIcon = { {
             npcID = 2910,
@@ -176,7 +162,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 14,
     }, {
         Done = { 1953 },
-        _comment = "Quest contract: 1953 Return to the Marsh",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 46.06, 57.09),
         RaidIcon = { {
             npcID = 6546,
@@ -190,14 +175,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [2258] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 2258 Badlands Reagent Run",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 60.21, 30.1),
         IsQuestOnQuest = 2258,
         Zone = 1418,
         _index = 16,
     }, {
         Done = { 2500 },
-        _comment = "Quest contract: 2500 Badlands Reagent Run",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 37.07, 49.38),
         RaidIcon = { {
             npcID = 1470,
@@ -209,7 +192,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 17,
     }, {
         PickUp = { 738 },
-        _comment = "Quest contract: 738 Find Agmond",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 65.93, 65.62),
         RaidIcon = { {
             npcID = 1344,
@@ -224,7 +206,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 18,
     }, {
         PickUp = { 721 },
-        _comment = "Quest contract: 721 A Sign of Hope",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 53.42, 43.39),
         RaidIcon = { {
             npcID = 2910,
@@ -239,7 +220,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 19,
     }, {
         PickUp = { 1954 },
-        _comment = "Quest contract: 1954 The Infernal Orb",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 46.06, 57.09),
         RaidIcon = { {
             npcID = 6546,
@@ -254,7 +234,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 20,
     }, {
         Done = { 2258 },
-        _comment = "Quest contract: 2258 Badlands Reagent Run",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 2.42, 46.06),
         RaidIcon = { {
             npcID = 6868,
@@ -266,7 +245,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 21,
     }, {
         PickUp = { 17 },
-        _comment = "Quest contract: 17 Uldaman Reagent Run",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 37.07, 49.38),
         RaidIcon = { {
             npcID = 1470,
@@ -281,7 +259,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 22,
     }, {
         Done = { 738 },
-        _comment = "Quest contract: 738 Find Agmond",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 50.89, 62.4),
         Faction = "Alliance",
         IsQuestOnQuest = 738,
@@ -289,7 +266,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 23,
     }, {
         Done = { 721 },
-        _comment = "Quest contract: 721 A Sign of Hope",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 37.9, 10.59),
         RaidIcon = { {
             npcID = 2909,
@@ -303,14 +279,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [1954] = { 1 },
         },
-        _comment = "Quest contract: 1954 The Infernal Orb",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 80.3, 76.98),
         IsQuestOnQuest = 1954,
         Zone = 1443,
         _index = 25,
     }, {
         PickUp = { 2202 },
-        _comment = "Quest contract: 2202 Uldaman Reagent Run",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 2.42, 46.06),
         RaidIcon = { {
             npcID = 6868,
@@ -325,7 +299,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 26,
     }, {
         PickUp = { 739 },
-        _comment = "Quest contract: 739 Murdaloc",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 50.89, 62.4),
         AnyOf = { {
             IsQuestCompleted = 738,
@@ -336,7 +309,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 27,
     }, {
         PickUp = { 722 },
-        _comment = "Quest contract: 722 Amulet of Secrets",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 37.9, 10.59),
         RaidIcon = { {
             npcID = 2909,
@@ -351,7 +323,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 28,
     }, {
         Done = { 1954 },
-        _comment = "Quest contract: 1954 The Infernal Orb",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 46.06, 57.09),
         RaidIcon = { {
             npcID = 6546,
@@ -365,14 +336,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [739] = { 1, 2 },
         },
-        _comment = "Quest contract: 739 Murdaloc",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 49.63, 66.31),
         IsQuestOnQuest = 739,
         Zone = 1418,
         _index = 30,
     }, {
         PickUp = { 1955 },
-        _comment = "Quest contract: 1955 The Exorcism",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 46.06, 57.09),
         RaidIcon = { {
             npcID = 6546,
@@ -387,7 +356,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 31,
     }, {
         Done = { 739 },
-        _comment = "Quest contract: 739 Murdaloc",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 65.93, 65.62),
         RaidIcon = { {
             npcID = 1344,
@@ -401,14 +369,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [1955] = { 1, 2 },
         },
-        _comment = "Quest contract: 1955 The Exorcism",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 45.79, 56.97),
         IsQuestOnQuest = 1955,
         Zone = 1445,
         _index = 33,
     }, {
         PickUp = { 704 },
-        _comment = "Quest contract: 704 Agmond's Fate",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 65.93, 65.62),
         RaidIcon = { {
             npcID = 1344,
@@ -423,7 +389,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 34,
     }, {
         Done = { 1955 },
-        _comment = "Quest contract: 1955 The Exorcism",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 46.06, 57.09),
         RaidIcon = { {
             npcID = 6546,
@@ -435,7 +400,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 35,
     }, {
         PickUp = { 1956 },
-        _comment = "Quest contract: 1956 Power in Uldaman",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 46.06, 57.09),
         RaidIcon = { {
             npcID = 6546,
@@ -459,7 +423,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 37,
     }, {
         PickUp = { 2278 },
-        _comment = "Quest contract: 2278 The Platinum Discs",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -549,7 +512,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [17] = { 1 },
         },
-        _comment = "Quest contract: 17 Uldaman Reagent Run",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -559,7 +521,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [704] = { 1 },
         },
-        _comment = "Quest contract: 704 Agmond's Fate",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -569,7 +530,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [709] = { 1 },
         },
-        _comment = "Quest contract: 709 Solution to Doom",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -579,7 +539,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [722] = { 1 },
         },
-        _comment = "Quest contract: 722 Amulet of Secrets",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -589,7 +548,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [1360] = { 1 },
         },
-        _comment = "Quest contract: 1360 Reclaimed Treasures",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -599,7 +557,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [1956] = { 1 },
         },
-        _comment = "Quest contract: 1956 Power in Uldaman",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -607,7 +564,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 52,
     }, {
         PickUp = { 2198 },
-        _comment = "Quest contract: 2198 The Shattered Necklace",
         Button = {
             ["2198"] = 7666,
         },
@@ -625,7 +581,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [2202] = { 1 },
         },
-        _comment = "Quest contract: 2202 Uldaman Reagent Run",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -633,7 +588,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 54,
     }, {
         Done = { 2398 },
-        _comment = "Quest contract: 2398 The Lost Dwarves",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -648,7 +602,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [2278] = { 1 },
         },
-        _comment = "Quest contract: 2278 The Platinum Discs",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -658,7 +611,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [2283] = { 1 },
         },
-        _comment = "Quest contract: 2283 Necklace Recovery",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -668,7 +620,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [2342] = { 1 },
         },
-        _comment = "Quest contract: 2342 Reclaimed Treasures",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -678,7 +629,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [2418] = { 1, 2 },
         },
-        _comment = "Quest contract: 2418 Power Stones",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -688,7 +638,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [2198] = { 1 },
         },
-        _comment = "Quest contract: 2198 The Shattered Necklace",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -696,7 +645,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 60,
     }, {
         PickUp = { 2240 },
-        _comment = "Quest contract: 2240 The Hidden Chamber",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -712,7 +660,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 61,
     }, {
         Done = { 2278 },
-        _comment = "Quest contract: 2278 The Platinum Discs",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -722,7 +669,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [2240] = { 1 },
         },
-        _comment = "Quest contract: 2240 The Hidden Chamber",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -730,7 +676,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 63,
     }, {
         PickUp = { 2279 },
-        _comment = "Quest contract: 2279 The Platinum Discs",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -742,7 +687,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 64,
     }, {
         PickUp = { 2280 },
-        _comment = "Quest contract: 2280 The Platinum Discs",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -756,7 +700,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [2279] = { 1 },
         },
-        _comment = "Quest contract: 2279 The Platinum Discs",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -766,7 +709,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [2280] = { 1 },
         },
-        _comment = "Quest contract: 2280 The Platinum Discs",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -781,7 +723,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 68,
     }, {
         Done = { 17 },
-        _comment = "Quest contract: 17 Uldaman Reagent Run",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 37.07, 49.38),
         RaidIcon = { {
             npcID = 1470,
@@ -793,7 +734,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 69,
     }, {
         Done = { 704 },
-        _comment = "Quest contract: 704 Agmond's Fate",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 65.93, 65.62),
         RaidIcon = { {
             npcID = 1344,
@@ -805,7 +745,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 70,
     }, {
         Done = { 709 },
-        _comment = "Quest contract: 709 Solution to Doom",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 51.39, 76.87),
         RaidIcon = { {
             npcID = 2785,
@@ -816,7 +755,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 71,
     }, {
         Done = { 722 },
-        _comment = "Quest contract: 722 Amulet of Secrets",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 37.9, 10.59),
         RaidIcon = { {
             npcID = 2909,
@@ -828,7 +766,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 72,
     }, {
         Done = { 1360 },
-        _comment = "Quest contract: 1360 Reclaimed Treasures",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 74.19, 9.39),
         RaidIcon = { {
             npcID = 6294,
@@ -840,7 +777,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 73,
     }, {
         Done = { 1956 },
-        _comment = "Quest contract: 1956 Power in Uldaman",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 46.06, 57.09),
         RaidIcon = { {
             npcID = 6546,
@@ -852,7 +788,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 74,
     }, {
         Done = { 2198 },
-        _comment = "Quest contract: 2198 The Shattered Necklace",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 36.38, 3.61),
         RaidIcon = { {
             npcID = 6826,
@@ -864,7 +799,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 75,
     }, {
         Done = { 2202 },
-        _comment = "Quest contract: 2202 Uldaman Reagent Run",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 2.42, 46.06),
         RaidIcon = { {
             npcID = 6868,
@@ -876,7 +810,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 76,
     }, {
         Done = { 2240 },
-        _comment = "Quest contract: 2240 The Hidden Chamber",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 74.64, 11.74),
         RaidIcon = { {
             npcID = 1356,
@@ -888,7 +821,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 77,
     }, {
         Done = { 2279 },
-        _comment = "Quest contract: 2279 The Platinum Discs",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 69.93, 18.55),
         RaidIcon = { {
             npcID = 5387,
@@ -900,7 +832,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 78,
     }, {
         Done = { 2280 },
-        _comment = "Quest contract: 2280 The Platinum Discs",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 34.4, 46.87),
         RaidIcon = { {
             npcID = 3978,
@@ -912,7 +843,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 79,
     }, {
         Done = { 2283 },
-        _comment = "Quest contract: 2283 Necklace Recovery",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 59.49, 36.57),
         RaidIcon = { {
             npcID = 6986,
@@ -924,7 +854,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 80,
     }, {
         Done = { 2342 },
-        _comment = "Quest contract: 2342 Reclaimed Treasures",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 62.32, 48.61),
         RaidIcon = { {
             npcID = 5651,
@@ -936,7 +865,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 81,
     }, {
         Done = { 2418 },
-        _comment = "Quest contract: 2418 Power Stones",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 42.39, 52.93),
         RaidIcon = { {
             npcID = 2817,
@@ -947,7 +875,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 82,
     }, {
         PickUp = { 723 },
-        _comment = "Quest contract: 723 Prospect of Faith",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 37.9, 10.59),
         RaidIcon = { {
             npcID = 2909,
@@ -962,7 +889,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 83,
     }, {
         PickUp = { 1957 },
-        _comment = "Quest contract: 1957 Mana Surges",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 46.06, 57.09),
         RaidIcon = { {
             npcID = 6546,
@@ -977,7 +903,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 84,
     }, {
         PickUp = { 2199 },
-        _comment = "Quest contract: 2199 Lore for a Price",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 36.38, 3.61),
         RaidIcon = { {
             npcID = 6826,
@@ -992,7 +917,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 85,
     }, {
         PickUp = { 2203 },
-        _comment = "Quest contract: 2203 Badlands Reagent Run II",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 2.42, 46.06),
         RaidIcon = { {
             npcID = 6868,
@@ -1007,7 +931,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 86,
     }, {
         PickUp = { 2284 },
-        _comment = "Quest contract: 2284 Necklace Recovery, Take 2",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 59.49, 36.57),
         RaidIcon = { {
             npcID = 6986,
@@ -1022,7 +945,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 87,
     }, {
         PickUp = { 2439 },
-        _comment = "Quest contract: 2439 The Platinum Discs",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 69.93, 18.55),
         RaidIcon = { {
             npcID = 5387,
@@ -1037,7 +959,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 88,
     }, {
         PickUp = { 2440 },
-        _comment = "Quest contract: 2440 The Platinum Discs",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 34.4, 46.87),
         RaidIcon = { {
             npcID = 3978,
@@ -1054,7 +975,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [723] = { 1 },
         },
-        _comment = "Quest contract: 723 Prospect of Faith",
         NoArrow = true,
         IsQuestOnQuest = 723,
         _index = 90,
@@ -1062,7 +982,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [1957] = { 1 },
         },
-        _comment = "Quest contract: 1957 Mana Surges",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 45.83, 56.94),
         IsQuestOnQuest = 1957,
         Zone = 1445,
@@ -1071,7 +990,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [2203] = { 1 },
         },
-        _comment = "Quest contract: 2203 Badlands Reagent Run II",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 84.68, 55.85),
         IsQuestOnQuest = 2203,
         Zone = 1418,
@@ -1080,7 +998,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [2439] = { 1 },
         },
-        _comment = "Quest contract: 2439 The Platinum Discs",
         NoArrow = true,
         IsQuestOnQuest = 2439,
         _index = 93,
@@ -1088,13 +1005,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [2440] = { 1 },
         },
-        _comment = "Quest contract: 2440 The Platinum Discs",
         NoArrow = true,
         IsQuestOnQuest = 2440,
         _index = 94,
     }, {
         Done = { 723 },
-        _comment = "Quest contract: 723 Prospect of Faith",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 53.42, 43.39),
         RaidIcon = { {
             npcID = 2910,
@@ -1106,7 +1021,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 95,
     }, {
         Done = { 1957 },
-        _comment = "Quest contract: 1957 Mana Surges",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 46.06, 57.09),
         RaidIcon = { {
             npcID = 6546,
@@ -1118,7 +1032,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 96,
     }, {
         Done = { 2203 },
-        _comment = "Quest contract: 2203 Badlands Reagent Run II",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 2.42, 46.06),
         RaidIcon = { {
             npcID = 6868,
@@ -1130,7 +1043,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 97,
     }, {
         Done = { 2439 },
-        _comment = "Quest contract: 2439 The Platinum Discs",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 33.88, 59.15),
         RaidIcon = { {
             npcID = 7292,
@@ -1142,7 +1054,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 98,
     }, {
         Done = { 2440 },
-        _comment = "Quest contract: 2440 The Platinum Discs",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 46.62, 33.17),
         RaidIcon = { {
             npcID = 3009,
@@ -1154,7 +1065,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 99,
     }, {
         PickUp = { 724 },
-        _comment = "Quest contract: 724 Prospect of Faith",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 53.42, 43.39),
         RaidIcon = { {
             npcID = 2910,
@@ -1169,7 +1079,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 100,
     }, {
         PickUp = { 1958 },
-        _comment = "Quest contract: 1958 Celestial Power",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 46.06, 57.09),
         RaidIcon = { {
             npcID = 6546,
@@ -1184,7 +1093,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 101,
     }, {
         PickUp = { 2963 },
-        _comment = "Quest contract: 2963 Portents of Uldum",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 69.93, 18.55),
         RaidIcon = { {
             npcID = 5387,
@@ -1199,7 +1107,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 102,
     }, {
         PickUp = { 2965 },
-        _comment = "Quest contract: 2965 Portents of Uldum",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 34.4, 46.87),
         RaidIcon = { {
             npcID = 3978,
@@ -1216,13 +1123,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [724] = { 1 },
         },
-        _comment = "Quest contract: 724 Prospect of Faith",
         NoArrow = true,
         IsQuestOnQuest = 724,
         _index = 104,
     }, {
         Done = { 1958 },
-        _comment = "Quest contract: 1958 Celestial Power",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 46.06, 57.09),
         RaidIcon = { {
             npcID = 6546,
@@ -1234,7 +1139,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 105,
     }, {
         Done = { 2963 },
-        _comment = "Quest contract: 2963 Portents of Uldum",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 77.54, 11.82),
         RaidIcon = { {
             npcID = 2916,
@@ -1246,7 +1150,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 106,
     }, {
         Done = { 2965 },
-        _comment = "Quest contract: 2965 Portents of Uldum",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 75.65, 31.61),
         RaidIcon = { {
             npcID = 5770,
@@ -1258,7 +1161,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 107,
     }, {
         Done = { 724 },
-        _comment = "Quest contract: 724 Prospect of Faith",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 77.54, 11.82),
         RaidIcon = { {
             npcID = 2916,
@@ -1270,7 +1172,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 108,
     }, {
         PickUp = { 2946 },
-        _comment = "Quest contract: 2946 Seeing What Happens",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 77.54, 11.82),
         RaidIcon = { {
             npcID = 2916,
@@ -1285,7 +1186,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 109,
     }, {
         PickUp = { 2966 },
-        _comment = "Quest contract: 2966 Seeing What Happens",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 75.65, 31.61),
         RaidIcon = { {
             npcID = 5770,
@@ -1300,7 +1200,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 110,
     }, {
         PickUp = { 725 },
-        _comment = "Quest contract: 725 Passing Word of a Threat",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 77.54, 11.82),
         RaidIcon = { {
             npcID = 2916,
@@ -1317,7 +1216,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [2946] = { 1 },
         },
-        _comment = "Quest contract: 2946 Seeing What Happens",
         NoArrow = true,
         IsQuestOnQuest = 2946,
         _index = 112,
@@ -1325,7 +1223,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [2966] = { 1 },
         },
-        _comment = "Quest contract: 2966 Seeing What Happens",
         NoArrow = true,
         IsQuestOnQuest = 2966,
         _index = 113,
@@ -1333,13 +1230,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [725] = { 1 },
         },
-        _comment = "Quest contract: 725 Passing Word of a Threat",
         NoArrow = true,
         IsQuestOnQuest = 725,
         _index = 114,
     }, {
         Done = { 2946 },
-        _comment = "Quest contract: 2946 Seeing What Happens",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 37.63, 81.4),
         Faction = "Alliance",
         IsQuestOnQuest = 2946,
@@ -1347,7 +1242,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 115,
     }, {
         Done = { 2966 },
-        _comment = "Quest contract: 2966 Seeing What Happens",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 37.63, 81.4),
         Faction = "Horde",
         IsQuestOnQuest = 2966,
@@ -1355,7 +1249,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 116,
     }, {
         Done = { 725 },
-        _comment = "Quest contract: 725 Passing Word of a Threat",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 77.34, 9.71),
         RaidIcon = { {
             npcID = 2918,
@@ -1367,7 +1260,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 117,
     }, {
         PickUp = { 2954 },
-        _comment = "Quest contract: 2954 The Stone Watcher",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 37.6, 81.4),
         RaidIcon = { {
             npcID = 7918,
@@ -1383,7 +1275,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 118,
     }, {
         PickUp = { 726 },
-        _comment = "Quest contract: 726 Passing Word of a Threat",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 77.34, 9.71),
         RaidIcon = { {
             npcID = 2918,
@@ -1400,14 +1291,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [2954] = { 1 },
         },
-        _comment = "Quest contract: 2954 The Stone Watcher",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 37.6, 81.4),
         IsQuestOnQuest = 2954,
         Zone = 1446,
         _index = 120,
     }, {
         Done = { 726 },
-        _comment = "Quest contract: 726 Passing Word of a Threat",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 77.54, 11.82),
         RaidIcon = { {
             npcID = 2916,
@@ -1419,14 +1308,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 121,
     }, {
         Done = { 2954 },
-        _comment = "Quest contract: 2954 The Stone Watcher",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 37.63, 81.4),
         IsQuestOnQuest = 2954,
         Zone = 1446,
         _index = 122,
     }, {
         PickUp = { 762 },
-        _comment = "Quest contract: 762 An Ambassador of Evil",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 77.54, 11.82),
         RaidIcon = { {
             npcID = 2916,
@@ -1443,14 +1330,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [762] = { 1 },
         },
-        _comment = "Quest contract: 762 An Ambassador of Evil",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 42.1, 28.88),
         IsQuestOnQuest = 762,
         Zone = 1418,
         _index = 124,
     }, {
         Done = { 762 },
-        _comment = "Quest contract: 762 An Ambassador of Evil",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 77.34, 9.71),
         RaidIcon = { {
             npcID = 2918,
@@ -1462,7 +1347,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 125,
     }, {
         PickUp = { 1139 },
-        _comment = "Quest contract: 1139 The Lost Tablets of Will",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 77.34, 9.71),
         RaidIcon = { {
             npcID = 2918,
@@ -1488,7 +1372,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [1139] = { 1 },
         },
-        _comment = "Quest contract: 1139 The Lost Tablets of Will",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -1498,7 +1381,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [2199] = { 1 },
         },
-        _comment = "Quest contract: 2199 Lore for a Price",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -1506,7 +1388,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 129,
     }, {
         Done = { 2284 },
-        _comment = "Quest contract: 2284 Necklace Recovery, Take 2",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -1519,7 +1400,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 130,
     }, {
         PickUp = { 2318 },
-        _comment = "Quest contract: 2318 Translating the Journal",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -1542,7 +1422,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 132,
     }, {
         Done = { 1139 },
-        _comment = "Quest contract: 1139 The Lost Tablets of Will",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 77.34, 9.71),
         RaidIcon = { {
             npcID = 2918,
@@ -1554,7 +1433,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 133,
     }, {
         Done = { 2199 },
-        _comment = "Quest contract: 2199 Lore for a Price",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 36.38, 3.61),
         RaidIcon = { {
             npcID = 6826,
@@ -1566,7 +1444,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 134,
     }, {
         Done = { 2318 },
-        _comment = "Quest contract: 2318 Translating the Journal",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 2.42, 46.06),
         RaidIcon = { {
             npcID = 6868,
@@ -1578,7 +1455,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 135,
     }, {
         PickUp = { 2200 },
-        _comment = "Quest contract: 2200 Back to Uldaman",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 36.38, 3.61),
         RaidIcon = { {
             npcID = 6826,
@@ -1593,7 +1469,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 136,
     }, {
         PickUp = { 2338 },
-        _comment = "Quest contract: 2338 Translating the Journal",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 2.42, 46.06),
         RaidIcon = { {
             npcID = 6868,
@@ -1617,7 +1492,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 138,
     }, {
         Done = { 2200 },
-        _comment = "Quest contract: 2200 Back to Uldaman",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -1632,7 +1506,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [2338] = { 1 },
         },
-        _comment = "Quest contract: 2338 Translating the Journal",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -1640,7 +1513,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 140,
     }, {
         PickUp = { 2201 },
-        _comment = "Quest contract: 2201 Find the Gems",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -1658,7 +1530,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [2201] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 2201 Find the Gems",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -1666,7 +1537,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 142,
     }, {
         Done = { 2201 },
-        _comment = "Quest contract: 2201 Find the Gems",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -1675,7 +1545,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 143,
     }, {
         PickUp = { 2204 },
-        _comment = "Quest contract: 2204 Restoring the Necklace",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -1689,7 +1558,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [2204] = { 1 },
         },
-        _comment = "Quest contract: 2204 Restoring the Necklace",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -1704,7 +1572,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 146,
     }, {
         Done = { 2204 },
-        _comment = "Quest contract: 2204 Restoring the Necklace",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 36.38, 3.61),
         RaidIcon = { {
             npcID = 6826,
@@ -1716,7 +1583,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 147,
     }, {
         Done = { 2338 },
-        _comment = "Quest contract: 2338 Translating the Journal",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 2.42, 46.06),
         RaidIcon = { {
             npcID = 6868,
@@ -1728,7 +1594,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 148,
     }, {
         PickUp = { 3375 },
-        _comment = "Quest contract: 3375 Replacement Phial",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 36.38, 3.61),
         RaidIcon = { {
             npcID = 6826,
@@ -1743,7 +1608,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 149,
     }, {
         PickUp = { 2339 },
-        _comment = "Quest contract: 2339 Find the Gems and Power Source",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 2.42, 46.06),
         RaidIcon = { {
             npcID = 6868,
@@ -1758,7 +1622,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 150,
     }, {
         PickUp = { 2361 },
-        _comment = "Quest contract: 2361 Restoring the Necklace",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 36.38, 3.61),
         RaidIcon = { {
             npcID = 6826,
@@ -1773,7 +1636,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 151,
     }, {
         Done = { 2361 },
-        _comment = "Quest contract: 2361 Restoring the Necklace",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 36.38, 3.61),
         RaidIcon = { {
             npcID = 6826,
@@ -1796,7 +1658,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [2339] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 2339 Find the Gems and Power Source",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -1806,7 +1667,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [3375] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 3375 Replacement Phial",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -1821,7 +1681,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 156,
     }, {
         Done = { 2339 },
-        _comment = "Quest contract: 2339 Find the Gems and Power Source",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 2.42, 46.06),
         RaidIcon = { {
             npcID = 6868,
@@ -1833,7 +1692,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 157,
     }, {
         Done = { 3375 },
-        _comment = "Quest contract: 3375 Replacement Phial",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 36.38, 3.61),
         RaidIcon = { {
             npcID = 6826,
@@ -1845,7 +1703,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 158,
     }, {
         PickUp = { 2340 },
-        _comment = "Quest contract: 2340 Deliver the Gems",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 2.42, 46.06),
         RaidIcon = { {
             npcID = 6868,
@@ -1871,7 +1728,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         Qpart = {
             [2340] = { 1 },
         },
-        _comment = "Quest contract: 2340 Deliver the Gems",
         NoArrow = true,
         Dungeon = "INSTANCE_70",
         InstanceQuest = true,
@@ -1886,7 +1742,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 162,
     }, {
         Done = { 2340 },
-        _comment = "Quest contract: 2340 Deliver the Gems",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 59.49, 36.57),
         RaidIcon = { {
             npcID = 6986,
@@ -1898,7 +1753,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 163,
     }, {
         PickUp = { 2341 },
-        _comment = "Quest contract: 2341 Necklace Recovery, Take 3",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 59.49, 36.57),
         RaidIcon = { {
             npcID = 6986,
@@ -1913,7 +1767,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Uldaman"] = {
         _index = 164,
     }, {
         Done = { 2341 },
-        _comment = "Quest contract: 2341 Necklace Recovery, Take 3",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 2.42, 46.06),
         RaidIcon = { {
             npcID = 6868,

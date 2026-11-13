@@ -16,7 +16,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
     mapID = 1413,
     steps = { {
         PickUp = { 1100 },
-        _comment = "Quest contract: 1100 Lonebrow's Journal",
         Button = {
             ["1100"] = 5791,
         },
@@ -30,7 +29,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         _index = 1,
     }, {
         PickUp = { 1102 },
-        _comment = "Quest contract: 1102 A Vengeful Fate",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 35.97, 59.92),
         RaidIcon = { {
             npcID = 4451,
@@ -42,7 +40,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         _index = 2,
     }, {
         PickUp = { 1109 },
-        _comment = "Quest contract: 1109 Going, Going, Guano!",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 48.82, 69.28),
         RaidIcon = { {
             npcID = 2055,
@@ -54,7 +51,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         _index = 3,
     }, {
         PickUp = { 1221 },
-        _comment = "Quest contract: 1221 Blueleaf Tubers",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 62.37, 37.62),
         RaidIcon = { {
             npcID = 3446,
@@ -65,7 +61,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         _index = 4,
     }, {
         PickUp = { 96264 },
-        _comment = "Quest contract: 96264 Elemental Aid",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 59.84, 27.57),
         RaidIcon = { {
             npcID = 259023,
@@ -80,13 +75,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Qpart = {
             [1100] = { 1 },
         },
-        _comment = "Quest contract: 1100 Lonebrow's Journal",
         NoArrow = true,
         IsQuestOnQuest = 1100,
         _index = 6,
     }, {
         Done = { 1100 },
-        _comment = "Quest contract: 1100 Lonebrow's Journal",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 89.64, 46.57),
         RaidIcon = { {
             npcID = 4048,
@@ -98,7 +91,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         _index = 7,
     }, {
         PickUp = { 1101 },
-        _comment = "Quest contract: 1101 The Crone of the Kraul",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 89.64, 46.57),
         RaidIcon = { {
             npcID = 4048,
@@ -122,7 +114,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         _index = 9,
     }, {
         PickUp = { 1142 },
-        _comment = "Quest contract: 1142 Mortality Wanes",
         NoArrow = true,
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
@@ -135,7 +126,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         _index = 10,
     }, {
         PickUp = { 1144 },
-        _comment = "Quest contract: 1144 Willix the Importer",
         NoArrow = true,
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
@@ -219,7 +209,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Qpart = {
             [1101] = { 1 },
         },
-        _comment = "Quest contract: 1101 The Crone of the Kraul",
         NoArrow = true,
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
@@ -229,7 +218,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Qpart = {
             [1102] = { 1 },
         },
-        _comment = "Quest contract: 1102 A Vengeful Fate",
         NoArrow = true,
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
@@ -239,7 +227,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Qpart = {
             [1109] = { 1 },
         },
-        _comment = "Quest contract: 1109 Going, Going, Guano!",
         NoArrow = true,
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
@@ -249,7 +236,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Qpart = {
             [1142] = { 1 },
         },
-        _comment = "Quest contract: 1142 Mortality Wanes",
         NoArrow = true,
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
@@ -259,7 +245,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Qpart = {
             [1144] = { 1 },
         },
-        _comment = "Quest contract: 1144 Willix the Importer",
         NoArrow = true,
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
@@ -269,7 +254,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Qpart = {
             [1221] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 1221 Blueleaf Tubers",
         NoArrow = true,
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
@@ -279,7 +263,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Qpart = {
             [96264] = { 1 },
         },
-        _comment = "Quest contract: 96264 Elemental Aid",
         NoArrow = true,
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
@@ -287,7 +270,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         _index = 25,
     }, {
         Done = { 1144 },
-        _comment = "Quest contract: 1144 Willix the Importer",
         NoArrow = true,
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
@@ -306,7 +288,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         _index = 27,
     }, {
         Done = { 1101 },
-        _comment = "Quest contract: 1101 The Crone of the Kraul",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 89.64, 46.57),
         RaidIcon = { {
             npcID = 4048,
@@ -318,7 +299,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         _index = 28,
     }, {
         Done = { 1102 },
-        _comment = "Quest contract: 1102 A Vengeful Fate",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 35.97, 59.92),
         RaidIcon = { {
             npcID = 4451,
@@ -330,7 +310,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         _index = 29,
     }, {
         Done = { 1109 },
-        _comment = "Quest contract: 1109 Going, Going, Guano!",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 48.82, 69.28),
         RaidIcon = { {
             npcID = 2055,
@@ -342,7 +321,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         _index = 30,
     }, {
         Done = { 1142 },
-        _comment = "Quest contract: 1142 Mortality Wanes",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1457, 69.54, 67.75),
         RaidIcon = { {
             npcID = 4521,
@@ -354,7 +332,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         _index = 31,
     }, {
         Done = { 1221 },
-        _comment = "Quest contract: 1221 Blueleaf Tubers",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 62.37, 37.62),
         RaidIcon = { {
             npcID = 3446,
@@ -365,7 +342,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         _index = 32,
     }, {
         Done = { 96264 },
-        _comment = "Quest contract: 96264 Elemental Aid",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 59.84, 27.57),
         RaidIcon = { {
             npcID = 259023,

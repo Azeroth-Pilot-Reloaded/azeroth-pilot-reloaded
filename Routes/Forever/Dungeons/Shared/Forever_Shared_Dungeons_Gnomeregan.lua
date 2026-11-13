@@ -16,7 +16,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
     mapID = 1426,
     steps = { {
         PickUp = { 2841 },
-        _comment = "Quest contract: 2841 Rig Wars",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 75.99, 25.41),
         RaidIcon = { {
             npcID = 3412,
@@ -28,7 +27,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 1,
     }, {
         PickUp = { 2842 },
-        _comment = "Quest contract: 2842 Chief Engineer Scooty",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 75.49, 25.36),
         RaidIcon = { {
             npcID = 3413,
@@ -40,7 +38,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 2,
     }, {
         PickUp = { 2922 },
-        _comment = "Quest contract: 2922 Save Techbot's Brain!",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 69.55, 50.33),
         RaidIcon = { {
             npcID = 7944,
@@ -52,7 +49,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 3,
     }, {
         PickUp = { 2923 },
-        _comment = "Quest contract: 2923 Tinkmaster Overspark",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 51.05, 48.39),
         RaidIcon = { {
             npcID = 7917,
@@ -64,7 +60,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 4,
     }, {
         PickUp = { 2924 },
-        _comment = "Quest contract: 2924 Essential Artificials",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 67.92, 46.1),
         RaidIcon = { {
             npcID = 6169,
@@ -76,7 +71,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 5,
     }, {
         PickUp = { 2925 },
-        _comment = "Quest contract: 2925 Klockmort's Essentials",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1457, 59.51, 45.38),
         RaidIcon = { {
             npcID = 6142,
@@ -88,7 +82,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 6,
     }, {
         PickUp = { 2927 },
-        _comment = "Quest contract: 2927 The Day After",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 69.18, 50.55),
         RaidIcon = { {
             npcID = 6569,
@@ -100,7 +93,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 7,
     }, {
         PickUp = { 2928 },
-        _comment = "Quest contract: 2928 Gyrodrillmatic Excavationators",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 62.63, 34.11),
         RaidIcon = { {
             npcID = 6579,
@@ -112,7 +104,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 8,
     }, {
         PickUp = { 2929 },
-        _comment = "Quest contract: 2929 The Grand Betrayal",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 68.75, 48.97),
         RaidIcon = { {
             npcID = 7937,
@@ -124,7 +115,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 9,
     }, {
         PickUp = { 2930 },
-        _comment = "Quest contract: 2930 Data Rescue",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 69.83, 48.1),
         RaidIcon = { {
             npcID = 7950,
@@ -136,7 +126,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 10,
     }, {
         PickUp = { 2931 },
-        _comment = "Quest contract: 2931 Castpipe's Task",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 59.52, 67.15),
         RaidIcon = { {
             npcID = 4077,
@@ -148,7 +137,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 11,
     }, {
         Done = { 2842 },
-        _comment = "Quest contract: 2842 Chief Engineer Scooty",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 27.6, 77.48),
         RaidIcon = { {
             npcID = 7853,
@@ -160,7 +148,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 12,
     }, {
         Done = { 2923 },
-        _comment = "Quest contract: 2923 Tinkmaster Overspark",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 69.55, 50.33),
         RaidIcon = { {
             npcID = 7944,
@@ -172,7 +159,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 13,
     }, {
         Done = { 2925 },
-        _comment = "Quest contract: 2925 Klockmort's Essentials",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 67.92, 46.1),
         RaidIcon = { {
             npcID = 6169,
@@ -184,7 +170,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 14,
     }, {
         Done = { 2927 },
-        _comment = "Quest contract: 2927 The Day After",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 45.89, 49.39),
         RaidIcon = { {
             npcID = 1268,
@@ -196,7 +181,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 15,
     }, {
         Done = { 2931 },
-        _comment = "Quest contract: 2931 Castpipe's Task",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 69.83, 48.1),
         RaidIcon = { {
             npcID = 7950,
@@ -208,7 +192,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 16,
     }, {
         PickUp = { 2843 },
-        _comment = "Quest contract: 2843 Gnomer-gooooone!",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 27.6, 77.48),
         RaidIcon = { {
             npcID = 7853,
@@ -223,7 +206,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 17,
     }, {
         PickUp = { 2926 },
-        _comment = "Quest contract: 2926 Gnogaine",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 45.89, 49.39),
         RaidIcon = { {
             npcID = 1268,
@@ -247,7 +229,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 19,
     }, {
         PickUp = { 2904 },
-        _comment = "Quest contract: 2904 A Fine Mess",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -259,7 +240,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 20,
     }, {
         PickUp = { 2951 },
-        _comment = "Quest contract: 2951 The Sparklematic 5200!",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -267,7 +247,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 21,
     }, {
         PickUp = { 4601 },
-        _comment = "Quest contract: 4601 The Sparklematic 5200!",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -275,7 +254,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 22,
     }, {
         PickUp = { 4602 },
-        _comment = "Quest contract: 4602 The Sparklematic 5200!",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -335,7 +313,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         Qpart = {
             [2841] = { 1, 2 },
         },
-        _comment = "Quest contract: 2841 Rig Wars",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -345,7 +322,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         Qpart = {
             [2843] = { 1 },
         },
-        _comment = "Quest contract: 2843 Gnomer-gooooone!",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -355,7 +331,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         Qpart = {
             [2904] = { 1 },
         },
-        _comment = "Quest contract: 2904 A Fine Mess",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -365,7 +340,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         Qpart = {
             [2922] = { 1 },
         },
-        _comment = "Quest contract: 2922 Save Techbot's Brain!",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -375,7 +349,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         Qpart = {
             [2924] = { 1 },
         },
-        _comment = "Quest contract: 2924 Essential Artificials",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -385,7 +358,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         Qpart = {
             [2926] = { 1 },
         },
-        _comment = "Quest contract: 2926 Gnogaine",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -395,7 +367,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         Qpart = {
             [2928] = { 1 },
         },
-        _comment = "Quest contract: 2928 Gyrodrillmatic Excavationators",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -405,7 +376,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         Qpart = {
             [2929] = { 1 },
         },
-        _comment = "Quest contract: 2929 The Grand Betrayal",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -415,7 +385,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         Qpart = {
             [2930] = { 1 },
         },
-        _comment = "Quest contract: 2930 Data Rescue",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -423,7 +392,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 37,
     }, {
         PickUp = { 2945 },
-        _comment = "Quest contract: 2945 Grime-Encrusted Ring",
         Button = {
             ["2945"] = 9326,
         },
@@ -440,7 +408,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         Qpart = {
             [2951] = { 1, 2 },
         },
-        _comment = "Quest contract: 2951 The Sparklematic 5200!",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -450,7 +417,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         Qpart = {
             [4601] = { 1, 2 },
         },
-        _comment = "Quest contract: 4601 The Sparklematic 5200!",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -460,7 +426,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         Qpart = {
             [4602] = { 1, 2 },
         },
-        _comment = "Quest contract: 4602 The Sparklematic 5200!",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -470,7 +435,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         Qpart = {
             [2945] = { 1 },
         },
-        _comment = "Quest contract: 2945 Grime-Encrusted Ring",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -478,7 +442,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 42,
     }, {
         Done = { 2951 },
-        _comment = "Quest contract: 2951 The Sparklematic 5200!",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -486,7 +449,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 43,
     }, {
         Done = { 4601 },
-        _comment = "Quest contract: 4601 The Sparklematic 5200!",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -494,7 +456,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 44,
     }, {
         Done = { 4602 },
-        _comment = "Quest contract: 4602 The Sparklematic 5200!",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -502,7 +463,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 45,
     }, {
         Done = { 2945 },
-        _comment = "Quest contract: 2945 Grime-Encrusted Ring",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -510,7 +470,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 46,
     }, {
         PickUp = { 2952 },
-        _comment = "Quest contract: 2952 The Sparklematic 5200!",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -525,7 +484,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 47,
     }, {
         PickUp = { 4605 },
-        _comment = "Quest contract: 4605 The Sparklematic 5200!",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -540,7 +498,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 48,
     }, {
         PickUp = { 4606 },
-        _comment = "Quest contract: 4606 The Sparklematic 5200!",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -555,7 +512,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 49,
     }, {
         PickUp = { 2947 },
-        _comment = "Quest contract: 2947 Return of the Ring",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -567,7 +523,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 50,
     }, {
         PickUp = { 2949 },
-        _comment = "Quest contract: 2949 Return of the Ring",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -579,7 +534,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 51,
     }, {
         Done = { 2952 },
-        _comment = "Quest contract: 2952 The Sparklematic 5200!",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -587,7 +541,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 52,
     }, {
         Done = { 4605 },
-        _comment = "Quest contract: 4605 The Sparklematic 5200!",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -595,7 +548,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 53,
     }, {
         Done = { 4606 },
-        _comment = "Quest contract: 4606 The Sparklematic 5200!",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -605,7 +557,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         Qpart = {
             [2947] = { 1 },
         },
-        _comment = "Quest contract: 2947 Return of the Ring",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -615,7 +566,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         Qpart = {
             [2949] = { 1 },
         },
-        _comment = "Quest contract: 2949 Return of the Ring",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -623,7 +573,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 56,
     }, {
         PickUp = { 2953 },
-        _comment = "Quest contract: 2953 More Sparklematic Action",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -638,7 +587,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 57,
     }, {
         PickUp = { 4603 },
-        _comment = "Quest contract: 4603 More Sparklematic Action",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -653,7 +601,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 58,
     }, {
         PickUp = { 4604 },
-        _comment = "Quest contract: 4604 More Sparklematic Action",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -670,7 +617,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         Qpart = {
             [2953] = { 1 },
         },
-        _comment = "Quest contract: 2953 More Sparklematic Action",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -680,7 +626,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         Qpart = {
             [4603] = { 1 },
         },
-        _comment = "Quest contract: 4603 More Sparklematic Action",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -690,7 +635,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         Qpart = {
             [4604] = { 1 },
         },
-        _comment = "Quest contract: 4604 More Sparklematic Action",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -698,7 +642,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 62,
     }, {
         Done = { 2953 },
-        _comment = "Quest contract: 2953 More Sparklematic Action",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -706,7 +649,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 63,
     }, {
         Done = { 4603 },
-        _comment = "Quest contract: 4603 More Sparklematic Action",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -714,7 +656,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 64,
     }, {
         Done = { 4604 },
-        _comment = "Quest contract: 4604 More Sparklematic Action",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -729,7 +670,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 66,
     }, {
         Done = { 2841 },
-        _comment = "Quest contract: 2841 Rig Wars",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 75.99, 25.41),
         RaidIcon = { {
             npcID = 3412,
@@ -741,7 +681,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 67,
     }, {
         Done = { 2843 },
-        _comment = "Quest contract: 2843 Gnomer-gooooone!",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 27.6, 77.48),
         RaidIcon = { {
             npcID = 7853,
@@ -753,7 +692,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 68,
     }, {
         Done = { 2904 },
-        _comment = "Quest contract: 2904 A Fine Mess",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 27.6, 77.48),
         RaidIcon = { {
             npcID = 7853,
@@ -764,7 +702,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 69,
     }, {
         Done = { 2922 },
-        _comment = "Quest contract: 2922 Save Techbot's Brain!",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 69.55, 50.33),
         RaidIcon = { {
             npcID = 7944,
@@ -776,7 +713,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 70,
     }, {
         Done = { 2924 },
-        _comment = "Quest contract: 2924 Essential Artificials",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 67.92, 46.1),
         RaidIcon = { {
             npcID = 6169,
@@ -788,7 +724,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 71,
     }, {
         Done = { 2926 },
-        _comment = "Quest contract: 2926 Gnogaine",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 45.89, 49.39),
         RaidIcon = { {
             npcID = 1268,
@@ -800,7 +735,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 72,
     }, {
         Done = { 2928 },
-        _comment = "Quest contract: 2928 Gyrodrillmatic Excavationators",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 62.63, 34.11),
         RaidIcon = { {
             npcID = 6579,
@@ -812,7 +746,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 73,
     }, {
         Done = { 2929 },
-        _comment = "Quest contract: 2929 The Grand Betrayal",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 68.75, 48.97),
         RaidIcon = { {
             npcID = 7937,
@@ -824,7 +757,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 74,
     }, {
         Done = { 2930 },
-        _comment = "Quest contract: 2930 Data Rescue",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 69.83, 48.1),
         RaidIcon = { {
             npcID = 7950,
@@ -836,7 +768,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 75,
     }, {
         Done = { 2947 },
-        _comment = "Quest contract: 2947 Return of the Ring",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 36.38, 3.61),
         RaidIcon = { {
             npcID = 6826,
@@ -848,7 +779,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 76,
     }, {
         Done = { 2949 },
-        _comment = "Quest contract: 2949 Return of the Ring",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 75.99, 25.41),
         RaidIcon = { {
             npcID = 3412,
@@ -860,7 +790,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 77,
     }, {
         PickUp = { 2948 },
-        _comment = "Quest contract: 2948 Gnome Improvement",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 36.38, 3.61),
         RaidIcon = { {
             npcID = 6826,
@@ -875,7 +804,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 78,
     }, {
         PickUp = { 2950 },
-        _comment = "Quest contract: 2950 Nogg's Ring Redo",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 75.99, 25.41),
         RaidIcon = { {
             npcID = 3412,
@@ -890,7 +818,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 79,
     }, {
         PickUp = { 2962 },
-        _comment = "Quest contract: 2962 The Only Cure is More Green Glow",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 45.89, 49.39),
         RaidIcon = { {
             npcID = 1268,
@@ -907,7 +834,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         Qpart = {
             [2948] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 2948 Gnome Improvement",
         NoArrow = true,
         IsQuestOnQuest = 2948,
         _index = 81,
@@ -915,13 +841,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         Qpart = {
             [2950] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 2950 Nogg's Ring Redo",
         NoArrow = true,
         IsQuestOnQuest = 2950,
         _index = 82,
     }, {
         Done = { 2948 },
-        _comment = "Quest contract: 2948 Gnome Improvement",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 36.38, 3.61),
         RaidIcon = { {
             npcID = 6826,
@@ -933,7 +857,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 83,
     }, {
         Done = { 2950 },
-        _comment = "Quest contract: 2950 Nogg's Ring Redo",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 75.99, 25.41),
         RaidIcon = { {
             npcID = 3412,
@@ -956,7 +879,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         Qpart = {
             [2962] = { 1 },
         },
-        _comment = "Quest contract: 2962 The Only Cure is More Green Glow",
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -971,7 +893,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         _index = 87,
     }, {
         Done = { 2962 },
-        _comment = "Quest contract: 2962 The Only Cure is More Green Glow",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 45.89, 49.39),
         RaidIcon = { {
             npcID = 1268,

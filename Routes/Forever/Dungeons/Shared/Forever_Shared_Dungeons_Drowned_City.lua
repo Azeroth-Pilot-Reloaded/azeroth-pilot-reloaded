@@ -16,7 +16,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Drowned-City"] = {
     mapID = 1434,
     steps = { {
         PickUp = { 96774 },
-        _comment = "Quest contract: 96774 Ancient Gurubashi Idol",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1412, 32.5, 20.66),
         RaidIcon = { {
             npcID = 264074,
@@ -89,7 +88,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Drowned-City"] = {
         Qpart = {
             [96774] = { 1 },
         },
-        _comment = "Quest contract: 96774 Ancient Gurubashi Idol",
         NoArrow = true,
         Dungeon = "DROWNED_CITY",
         InstanceQuest = true,
@@ -104,7 +102,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Drowned-City"] = {
         _index = 9,
     }, {
         Done = { 96774 },
-        _comment = "Quest contract: 96774 Ancient Gurubashi Idol",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1412, 32.5, 20.66),
         RaidIcon = { {
             npcID = 264074,

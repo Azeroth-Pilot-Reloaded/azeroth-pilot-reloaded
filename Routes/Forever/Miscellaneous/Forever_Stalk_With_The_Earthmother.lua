@@ -12,7 +12,7 @@ APR.RouteQuestStepList["Forever-Stalk-With-The-Earthmother"] = {
     steps = {
         {
             PickUp = { 76156 },
-            ExtraLineText = { "FOREVER_MISC_BOARTON_STEALTH" },
+            Note = { "FOREVER_MISC_BOARTON_STEALTH" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 39.44, 65.82),
             Range = 5,
             RaidIcon = { { npcID = 205729, questID = 76156 } },
@@ -22,7 +22,7 @@ APR.RouteQuestStepList["Forever-Stalk-With-The-Earthmother"] = {
         },
         {
             LootItems = { { itemID = 206157, quantity = 5, includeBank = false, questID = 76156 } },
-            ExtraLineText = { "FOREVER_MISC_DISGUISE_CARTS", "STAY_UPPER_LEVEL_CAVE_POSSIBLE" },
+            Note = { "FOREVER_MISC_DISGUISE_CARTS", "STAY_UPPER_LEVEL_CAVE_POSSIBLE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1412, 58.77, 47.41),
             Button = { ["76156-1"] = 206159 },
             IsQuestOnQuest = 76156,
@@ -50,7 +50,7 @@ APR.RouteQuestStepList["Forever-Stalk-With-The-Earthmother"] = {
         },
         {
             LootItems = { { itemID = 206170, quantity = 8, includeBank = false } },
-            ExtraLineText = { "FOREVER_MISC_CONES" },
+            Note = { "FOREVER_MISC_CONES" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1412, 31.9, 32),
             IsQuestOnQuest = 76160,
             Not = { IsQuestReadyForTurnIn = 76160 },
@@ -85,7 +85,7 @@ APR.RouteQuestStepList["Forever-Stalk-With-The-Earthmother"] = {
         },
         {
             LootItems = { { itemID = 6291, quantity = 1, includeBank = false } },
-            ExtraLineText = { "FOREVER_MISC_SMALLFISH", "BUY_ITEMS_AUCTION_HOUSE" },
+            Note = { "FOREVER_MISC_SMALLFISH", "BUY_ITEMS_AUCTION_HOUSE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 40.4, 51.8),
             IsQuestOnQuest = 76240,
             Not = { IsQuestReadyForTurnIn = 76240 },

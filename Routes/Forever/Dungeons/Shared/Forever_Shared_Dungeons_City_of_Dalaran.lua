@@ -16,7 +16,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
     mapID = 1421,
     steps = { {
         PickUp = { 92432 },
-        _comment = "Quest contract: 92432 An Alarming Request",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 48.32, 60),
         RaidIcon = { {
             npcID = 247264,
@@ -28,7 +27,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         _index = 1,
     }, {
         PickUp = { 92456 },
-        _comment = "Quest contract: 92456 A Green Sample",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 31.5, 62.61),
         RaidIcon = { {
             npcID = 5502,
@@ -40,7 +38,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         _index = 2,
     }, {
         PickUp = { 92457 },
-        _comment = "Quest contract: 92457 Starving Arcane",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 68.62, 45.13),
         RaidIcon = { {
             npcID = 269127,
@@ -52,7 +49,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         _index = 3,
     }, {
         PickUp = { 92489 },
-        _comment = "Quest contract: 92489 Power Overwhelming",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 48.71, 87.62),
         RaidIcon = { {
             npcID = 5694,
@@ -64,7 +60,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         _index = 4,
     }, {
         PickUp = { 96984 },
-        _comment = "Quest contract: 96984 Heart of Disruption",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 68.62, 45.13),
         RaidIcon = { {
             npcID = 269127,
@@ -76,7 +71,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         _index = 5,
     }, {
         PickUp = { 96986 },
-        _comment = "Quest contract: 96986 The Grave Knight",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 62.63, 20.65),
         RaidIcon = { {
             npcID = 2278,
@@ -88,7 +82,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         _index = 6,
     }, {
         PickUp = { 96988 },
-        _comment = "Quest contract: 96988 Source of Power",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 46.61, 74.09),
         RaidIcon = { {
             npcID = 11044,
@@ -100,7 +93,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         _index = 7,
     }, {
         Done = { 92432 },
-        _comment = "Quest contract: 92432 An Alarming Request",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 68.62, 45.13),
         RaidIcon = { {
             npcID = 269127,
@@ -112,7 +104,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         _index = 8,
     }, {
         PickUp = { 92458 },
-        _comment = "Quest contract: 92458 Heart of Disruption",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 68.62, 45.13),
         RaidIcon = { {
             npcID = 269127,
@@ -136,7 +127,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         _index = 10,
     }, {
         PickUp = { 96987 },
-        _comment = "Quest contract: 96987 Opportunistic Education",
         NoArrow = true,
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
@@ -221,7 +211,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Qpart = {
             [92456] = { 1 },
         },
-        _comment = "Quest contract: 92456 A Green Sample",
         NoArrow = true,
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
@@ -231,7 +220,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Qpart = {
             [92457] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 92457 Starving Arcane",
         NoArrow = true,
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
@@ -241,7 +229,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Qpart = {
             [92458] = { 1 },
         },
-        _comment = "Quest contract: 92458 Heart of Disruption",
         NoArrow = true,
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
@@ -251,7 +238,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Qpart = {
             [92489] = { 1 },
         },
-        _comment = "Quest contract: 92489 Power Overwhelming",
         NoArrow = true,
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
@@ -261,7 +247,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Qpart = {
             [96984] = { 1 },
         },
-        _comment = "Quest contract: 96984 Heart of Disruption",
         NoArrow = true,
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
@@ -271,7 +256,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Qpart = {
             [96986] = { 1 },
         },
-        _comment = "Quest contract: 96986 The Grave Knight",
         NoArrow = true,
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
@@ -281,7 +265,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Qpart = {
             [96987] = { 1 },
         },
-        _comment = "Quest contract: 96987 Opportunistic Education",
         NoArrow = true,
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
@@ -291,7 +274,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Qpart = {
             [96988] = { 1 },
         },
-        _comment = "Quest contract: 96988 Source of Power",
         NoArrow = true,
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
@@ -299,7 +281,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         _index = 26,
     }, {
         Done = { 96987 },
-        _comment = "Quest contract: 96987 Opportunistic Education",
         NoArrow = true,
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
@@ -319,7 +300,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         _index = 28,
     }, {
         Done = { 92456 },
-        _comment = "Quest contract: 92456 A Green Sample",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 31.5, 62.61),
         RaidIcon = { {
             npcID = 5502,
@@ -331,7 +311,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         _index = 29,
     }, {
         Done = { 92457 },
-        _comment = "Quest contract: 92457 Starving Arcane",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 68.62, 45.13),
         RaidIcon = { {
             npcID = 269127,
@@ -343,7 +322,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         _index = 30,
     }, {
         Done = { 92458 },
-        _comment = "Quest contract: 92458 Heart of Disruption",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 68.62, 45.13),
         RaidIcon = { {
             npcID = 269127,
@@ -355,7 +333,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         _index = 31,
     }, {
         Done = { 92489 },
-        _comment = "Quest contract: 92489 Power Overwhelming",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 48.71, 87.62),
         RaidIcon = { {
             npcID = 5694,
@@ -367,7 +344,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         _index = 32,
     }, {
         Done = { 96984 },
-        _comment = "Quest contract: 96984 Heart of Disruption",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 61.6, 20.85),
         RaidIcon = { {
             npcID = 2410,
@@ -379,7 +355,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         _index = 33,
     }, {
         Done = { 96986 },
-        _comment = "Quest contract: 96986 The Grave Knight",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 62.63, 20.65),
         RaidIcon = { {
             npcID = 2278,
@@ -391,7 +366,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         _index = 34,
     }, {
         Done = { 96988 },
-        _comment = "Quest contract: 96988 Source of Power",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 46.61, 74.09),
         RaidIcon = { {
             npcID = 11044,

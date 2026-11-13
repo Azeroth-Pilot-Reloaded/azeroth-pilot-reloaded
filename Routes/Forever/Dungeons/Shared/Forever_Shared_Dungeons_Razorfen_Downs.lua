@@ -16,7 +16,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Downs"] = {
     mapID = 1413,
     steps = { {
         PickUp = { 3341 },
-        _comment = "Quest contract: 3341 Bring the End",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 74.05, 33.31),
         RaidIcon = { {
             npcID = 2308,
@@ -28,7 +27,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Downs"] = {
         _index = 1,
     }, {
         PickUp = { 3636 },
-        _comment = "Quest contract: 3636 Bring the Light",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 50.31, 45.47),
         RaidIcon = { {
             npcID = 1284,
@@ -40,7 +38,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Downs"] = {
         _index = 2,
     }, {
         PickUp = { 6626 },
-        _comment = "Quest contract: 6626 A Host of Evil",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 49.01, 94.94),
         RaidIcon = { {
             npcID = 12866,
@@ -60,7 +57,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Downs"] = {
         _index = 4,
     }, {
         PickUp = { 3523 },
-        _comment = "Quest contract: 3523 Scourge of the Downs",
         NoArrow = true,
         Dungeon = "INSTANCE_129",
         InstanceQuest = true,
@@ -124,7 +120,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Downs"] = {
         Qpart = {
             [3341] = { 1 },
         },
-        _comment = "Quest contract: 3341 Bring the End",
         NoArrow = true,
         Dungeon = "INSTANCE_129",
         InstanceQuest = true,
@@ -134,7 +129,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Downs"] = {
         Qpart = {
             [3523] = { 1 },
         },
-        _comment = "Quest contract: 3523 Scourge of the Downs",
         NoArrow = true,
         Dungeon = "INSTANCE_129",
         InstanceQuest = true,
@@ -144,7 +138,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Downs"] = {
         Qpart = {
             [3636] = { 1 },
         },
-        _comment = "Quest contract: 3636 Bring the Light",
         NoArrow = true,
         Dungeon = "INSTANCE_129",
         InstanceQuest = true,
@@ -152,7 +145,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Downs"] = {
         _index = 13,
     }, {
         PickUp = { 6522 },
-        _comment = "Quest contract: 6522 An Unholy Alliance",
         Button = {
             ["6522"] = 17008,
         },
@@ -170,7 +162,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Downs"] = {
         Qpart = {
             [6626] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 6626 A Host of Evil",
         NoArrow = true,
         Dungeon = "INSTANCE_129",
         InstanceQuest = true,
@@ -178,7 +169,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Downs"] = {
         _index = 15,
     }, {
         Done = { 3523 },
-        _comment = "Quest contract: 3523 Scourge of the Downs",
         NoArrow = true,
         Dungeon = "INSTANCE_129",
         InstanceQuest = true,
@@ -192,7 +182,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Downs"] = {
         Qpart = {
             [6522] = { 1 },
         },
-        _comment = "Quest contract: 6522 An Unholy Alliance",
         NoArrow = true,
         Dungeon = "INSTANCE_129",
         InstanceQuest = true,
@@ -200,7 +189,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Downs"] = {
         _index = 17,
     }, {
         PickUp = { 3525 },
-        _comment = "Quest contract: 3525 Extinguishing the Idol",
         NoArrow = true,
         Dungeon = "INSTANCE_129",
         InstanceQuest = true,
@@ -217,7 +205,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Downs"] = {
         Qpart = {
             [3525] = { 1 },
         },
-        _comment = "Quest contract: 3525 Extinguishing the Idol",
         NoArrow = true,
         Dungeon = "INSTANCE_129",
         InstanceQuest = true,
@@ -225,7 +212,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Downs"] = {
         _index = 19,
     }, {
         Done = { 3525 },
-        _comment = "Quest contract: 3525 Extinguishing the Idol",
         NoArrow = true,
         Dungeon = "INSTANCE_129",
         InstanceQuest = true,
@@ -240,7 +226,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Downs"] = {
         _index = 21,
     }, {
         Done = { 3341 },
-        _comment = "Quest contract: 3341 Bring the End",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 74.05, 33.31),
         RaidIcon = { {
             npcID = 2308,
@@ -252,7 +237,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Downs"] = {
         _index = 22,
     }, {
         Done = { 3636 },
-        _comment = "Quest contract: 3636 Bring the Light",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 50.31, 45.47),
         RaidIcon = { {
             npcID = 1284,
@@ -264,7 +248,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Downs"] = {
         _index = 23,
     }, {
         Done = { 6522 },
-        _comment = "Quest contract: 6522 An Unholy Alliance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 56.25, 92.2),
         RaidIcon = { {
             npcID = 2425,
@@ -276,7 +259,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Downs"] = {
         _index = 24,
     }, {
         Done = { 6626 },
-        _comment = "Quest contract: 6626 A Host of Evil",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 49.01, 94.94),
         RaidIcon = { {
             npcID = 12866,
@@ -287,7 +269,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Downs"] = {
         _index = 25,
     }, {
         PickUp = { 6521 },
-        _comment = "Quest contract: 6521 An Unholy Alliance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 56.25, 92.2),
         RaidIcon = { {
             npcID = 2425,
@@ -313,7 +294,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Downs"] = {
         Qpart = {
             [6521] = { 1 },
         },
-        _comment = "Quest contract: 6521 An Unholy Alliance",
         NoArrow = true,
         Dungeon = "INSTANCE_129",
         InstanceQuest = true,
@@ -328,7 +308,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Downs"] = {
         _index = 29,
     }, {
         Done = { 6521 },
-        _comment = "Quest contract: 6521 An Unholy Alliance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 56.25, 92.2),
         RaidIcon = { {
             npcID = 2425,

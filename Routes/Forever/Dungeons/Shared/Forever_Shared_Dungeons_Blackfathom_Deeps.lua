@@ -16,7 +16,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
     mapID = 1440,
     steps = { {
         PickUp = { 971 },
-        _comment = "Quest contract: 971 Knowledge in the Deeps",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 50.83, 5.62),
         RaidIcon = { {
             npcID = 2786,
@@ -28,7 +27,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 1,
     }, {
         PickUp = { 1198 },
-        _comment = "Quest contract: 1198 In Search of Thaelrid",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1457, 55.36, 25.03),
         RaidIcon = { {
             npcID = 4786,
@@ -40,7 +38,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 2,
     }, {
         PickUp = { 1199 },
-        _comment = "Quest contract: 1199 Twilight Falls",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1457, 55.24, 23.99),
         RaidIcon = { {
             npcID = 4784,
@@ -52,7 +49,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 3,
     }, {
         PickUp = { 1275 },
-        _comment = "Quest contract: 1275 Researching the Corruption",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 38.33, 43.04),
         RaidIcon = { {
             npcID = 8997,
@@ -64,7 +60,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 4,
     }, {
         PickUp = { 1649 },
-        _comment = "Quest contract: 1649 The Tome of Valor",
         Button = {
             ["1649"] = 6776,
         },
@@ -80,7 +75,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 5,
     }, {
         PickUp = { 6562 },
-        _comment = "Quest contract: 6562 Trouble in the Deeps",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 47.36, 64.25),
         RaidIcon = { {
             npcID = 11862,
@@ -92,7 +86,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 6,
     }, {
         PickUp = { 6921 },
-        _comment = "Quest contract: 6921 Amongst the Ruins",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 11.56, 34.29),
         RaidIcon = { {
             npcID = 12736,
@@ -104,7 +97,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 7,
     }, {
         Done = { 1649 },
-        _comment = "Quest contract: 1649 The Tome of Valor",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 50.48, 47.49),
         RaidIcon = { {
             npcID = 6171,
@@ -118,7 +110,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 8,
     }, {
         Done = { 6562 },
-        _comment = "Quest contract: 6562 Trouble in the Deeps",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 11.56, 34.29),
         RaidIcon = { {
             npcID = 12736,
@@ -130,7 +121,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 9,
     }, {
         PickUp = { 1650 },
-        _comment = "Quest contract: 1650 The Tome of Valor",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 50.48, 47.49),
         RaidIcon = { {
             npcID = 6171,
@@ -147,7 +137,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 10,
     }, {
         PickUp = { 6563 },
-        _comment = "Quest contract: 6563 The Essence of Aku'Mai",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 11.56, 34.29),
         RaidIcon = { {
             npcID = 12736,
@@ -162,7 +151,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 11,
     }, {
         Done = { 1650 },
-        _comment = "Quest contract: 1650 The Tome of Valor",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 41.69, 89.24),
         RaidIcon = { {
             npcID = 6182,
@@ -176,7 +164,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 12,
     }, {
         PickUp = { 1651 },
-        _comment = "Quest contract: 1651 The Tome of Valor",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 41.69, 89.24),
         RaidIcon = { {
             npcID = 6182,
@@ -195,13 +182,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Qpart = {
             [1651] = { 1 },
         },
-        _comment = "Quest contract: 1651 The Tome of Valor",
         NoArrow = true,
         IsQuestOnQuest = 1651,
         _index = 14,
     }, {
         Done = { 1651 },
-        _comment = "Quest contract: 1651 The Tome of Valor",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 41.69, 89.24),
         RaidIcon = { {
             npcID = 6182,
@@ -215,7 +200,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 15,
     }, {
         PickUp = { 1652 },
-        _comment = "Quest contract: 1652 The Tome of Valor",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 41.69, 89.24),
         RaidIcon = { {
             npcID = 6182,
@@ -232,7 +216,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 16,
     }, {
         Done = { 1652 },
-        _comment = "Quest contract: 1652 The Tome of Valor",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 50.48, 47.49),
         RaidIcon = { {
             npcID = 6171,
@@ -246,7 +229,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 17,
     }, {
         PickUp = { 1653 },
-        _comment = "Quest contract: 1653 The Test of Righteousness",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 50.48, 47.49),
         RaidIcon = { {
             npcID = 6171,
@@ -263,7 +245,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 18,
     }, {
         Done = { 1653 },
-        _comment = "Quest contract: 1653 The Test of Righteousness",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 52.49, 36.92),
         RaidIcon = { {
             npcID = 6181,
@@ -277,7 +258,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 19,
     }, {
         PickUp = { 1442 },
-        _comment = "Quest contract: 1442 Seeking the Kor Gem",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.4, 40.13),
         RaidIcon = { {
             npcID = 3649,
@@ -303,7 +283,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 21,
     }, {
         PickUp = { 6561 },
-        _comment = "Quest contract: 6561 Blackfathom Villainy",
         NoArrow = true,
         Dungeon = "INSTANCE_48",
         InstanceQuest = true,
@@ -398,7 +377,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Qpart = {
             [971] = { 1 },
         },
-        _comment = "Quest contract: 971 Knowledge in the Deeps",
         NoArrow = true,
         Dungeon = "INSTANCE_48",
         InstanceQuest = true,
@@ -406,7 +384,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 31,
     }, {
         Done = { 1198 },
-        _comment = "Quest contract: 1198 In Search of Thaelrid",
         NoArrow = true,
         Dungeon = "INSTANCE_48",
         InstanceQuest = true,
@@ -421,7 +398,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Qpart = {
             [1199] = { 1 },
         },
-        _comment = "Quest contract: 1199 Twilight Falls",
         NoArrow = true,
         Dungeon = "INSTANCE_48",
         InstanceQuest = true,
@@ -431,7 +407,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Qpart = {
             [1275] = { 1 },
         },
-        _comment = "Quest contract: 1275 Researching the Corruption",
         NoArrow = true,
         Dungeon = "INSTANCE_48",
         InstanceQuest = true,
@@ -441,7 +416,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Qpart = {
             [1442] = { 1 },
         },
-        _comment = "Quest contract: 1442 Seeking the Kor Gem",
         NoArrow = true,
         Dungeon = "INSTANCE_48",
         InstanceQuest = true,
@@ -451,7 +425,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Qpart = {
             [6561] = { 1 },
         },
-        _comment = "Quest contract: 6561 Blackfathom Villainy",
         NoArrow = true,
         Dungeon = "INSTANCE_48",
         InstanceQuest = true,
@@ -461,7 +434,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Qpart = {
             [6563] = { 1 },
         },
-        _comment = "Quest contract: 6563 The Essence of Aku'Mai",
         NoArrow = true,
         Dungeon = "INSTANCE_48",
         InstanceQuest = true,
@@ -469,7 +441,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 37,
     }, {
         PickUp = { 6564 },
-        _comment = "Quest contract: 6564 Allegiance to the Old Gods",
         Button = {
             ["6564"] = 16790,
         },
@@ -490,7 +461,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Qpart = {
             [6921] = { 1 },
         },
-        _comment = "Quest contract: 6921 Amongst the Ruins",
         NoArrow = true,
         Dungeon = "INSTANCE_48",
         InstanceQuest = true,
@@ -498,7 +468,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 39,
     }, {
         PickUp = { 6922 },
-        _comment = "Quest contract: 6922 Baron Aquanis",
         Button = {
             ["6922"] = 16782,
         },
@@ -514,7 +483,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 40,
     }, {
         PickUp = { 1200 },
-        _comment = "Quest contract: 1200 Blackfathom Villainy",
         NoArrow = true,
         Dungeon = "INSTANCE_48",
         InstanceQuest = true,
@@ -532,7 +500,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Qpart = {
             [6564] = { 1 },
         },
-        _comment = "Quest contract: 6564 Allegiance to the Old Gods",
         NoArrow = true,
         Dungeon = "INSTANCE_48",
         InstanceQuest = true,
@@ -542,7 +509,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Qpart = {
             [6922] = { 1 },
         },
-        _comment = "Quest contract: 6922 Baron Aquanis",
         NoArrow = true,
         Dungeon = "INSTANCE_48",
         InstanceQuest = true,
@@ -552,7 +518,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Qpart = {
             [1200] = { 1 },
         },
-        _comment = "Quest contract: 1200 Blackfathom Villainy",
         NoArrow = true,
         Dungeon = "INSTANCE_48",
         InstanceQuest = true,
@@ -567,7 +532,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 45,
     }, {
         Done = { 971 },
-        _comment = "Quest contract: 971 Knowledge in the Deeps",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 50.83, 5.62),
         RaidIcon = { {
             npcID = 2786,
@@ -579,7 +543,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 46,
     }, {
         Done = { 1199 },
-        _comment = "Quest contract: 1199 Twilight Falls",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1457, 55.24, 23.99),
         RaidIcon = { {
             npcID = 4784,
@@ -591,7 +554,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 47,
     }, {
         Done = { 1200 },
-        _comment = "Quest contract: 1200 Blackfathom Villainy",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1457, 56.16, 24.39),
         RaidIcon = { {
             npcID = 4783,
@@ -603,7 +565,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 48,
     }, {
         Done = { 1275 },
-        _comment = "Quest contract: 1275 Researching the Corruption",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 38.33, 43.04),
         RaidIcon = { {
             npcID = 8997,
@@ -615,7 +576,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 49,
     }, {
         Done = { 1442 },
-        _comment = "Quest contract: 1442 Seeking the Kor Gem",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.4, 40.13),
         RaidIcon = { {
             npcID = 3649,
@@ -629,7 +589,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 50,
     }, {
         Done = { 6561 },
-        _comment = "Quest contract: 6561 Blackfathom Villainy",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 71.06, 34.19),
         RaidIcon = { {
             npcID = 9087,
@@ -641,7 +600,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 51,
     }, {
         Done = { 6563 },
-        _comment = "Quest contract: 6563 The Essence of Aku'Mai",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 11.56, 34.29),
         RaidIcon = { {
             npcID = 12736,
@@ -653,7 +611,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 52,
     }, {
         Done = { 6564 },
-        _comment = "Quest contract: 6564 Allegiance to the Old Gods",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 11.56, 34.29),
         RaidIcon = { {
             npcID = 12736,
@@ -665,7 +622,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 53,
     }, {
         Done = { 6921 },
-        _comment = "Quest contract: 6921 Amongst the Ruins",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 11.56, 34.29),
         RaidIcon = { {
             npcID = 12736,
@@ -677,7 +633,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 54,
     }, {
         Done = { 6922 },
-        _comment = "Quest contract: 6922 Baron Aquanis",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 11.56, 34.29),
         RaidIcon = { {
             npcID = 12736,
@@ -689,7 +644,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 55,
     }, {
         PickUp = { 6565 },
-        _comment = "Quest contract: 6565 Allegiance to the Old Gods",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 11.56, 34.29),
         RaidIcon = { {
             npcID = 12736,
@@ -715,7 +669,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         Qpart = {
             [6565] = { 1 },
         },
-        _comment = "Quest contract: 6565 Allegiance to the Old Gods",
         NoArrow = true,
         Dungeon = "INSTANCE_48",
         InstanceQuest = true,
@@ -730,7 +683,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackfathom-Deeps"] = {
         _index = 59,
     }, {
         Done = { 6565 },
-        _comment = "Quest contract: 6565 Allegiance to the Old Gods",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 11.56, 34.29),
         RaidIcon = { {
             npcID = 12736,

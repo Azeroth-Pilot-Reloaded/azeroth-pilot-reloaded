@@ -16,7 +16,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
     mapID = 1427,
     steps = { {
         PickUp = { 3441 },
-        _comment = "Quest contract: 3441 Divine Retribution",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 39.06, 38.99),
         RaidIcon = { {
             npcID = 8479,
@@ -27,7 +26,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 1,
     }, {
         PickUp = { 3702 },
-        _comment = "Quest contract: 3702 The Smoldering Ruins of Thaurissan",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 38.37, 55.31),
         RaidIcon = { {
             npcID = 8879,
@@ -39,7 +37,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 2,
     }, {
         PickUp = { 3801 },
-        _comment = "Quest contract: 3801 Dark Iron Legacy",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 28.96, 28.93),
         RaidIcon = { {
             npcID = 8888,
@@ -50,7 +47,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 3,
     }, {
         PickUp = { 3906 },
-        _comment = "Quest contract: 3906 Disharmony of Flame",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 3.33, 48.26),
         RaidIcon = { {
             npcID = 9084,
@@ -62,7 +58,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 4,
     }, {
         PickUp = { 4023 },
-        _comment = "Quest contract: 4023 A Taste of Flame",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 95.09, 31.56),
         RaidIcon = { {
             npcID = 9459,
@@ -73,7 +68,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 5,
     }, {
         PickUp = { 4061 },
-        _comment = "Quest contract: 4061 The Rise of the Machines",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 3.02, 47.81),
         RaidIcon = { {
             npcID = 9079,
@@ -85,7 +79,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 6,
     }, {
         PickUp = { 4081 },
-        _comment = "Quest contract: 4081 KILL ON SIGHT: Dark Iron Dwarves",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 3.74, 47.43),
         Faction = "Horde",
         MinLevel = 48,
@@ -93,7 +86,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 7,
     }, {
         PickUp = { 4123 },
-        _comment = "Quest contract: 4123 The Heart of the Mountain",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.15, 23.91),
         RaidIcon = { {
             npcID = 9536,
@@ -104,7 +96,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 8,
     }, {
         PickUp = { 4126 },
-        _comment = "Quest contract: 4126 Hurley Blackbreath",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 46.83, 52.36),
         RaidIcon = { {
             npcID = 1267,
@@ -116,7 +107,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 9,
     }, {
         PickUp = { 4128 },
-        _comment = "Quest contract: 4128 Ragnar Thunderbrew",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1419, 63.63, 20.63),
         RaidIcon = { {
             npcID = 9540,
@@ -128,7 +118,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 10,
     }, {
         PickUp = { 4133 },
-        _comment = "Quest contract: 4133 Vivian Lagrave",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 50.14, 67.97),
         RaidIcon = { {
             npcID = 5204,
@@ -140,7 +129,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 11,
     }, {
         PickUp = { 4134 },
-        _comment = "Quest contract: 4134 Lost Thunderbrew Recipe",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 2.9, 47.76),
         RaidIcon = { {
             npcID = 9078,
@@ -152,7 +140,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 12,
     }, {
         PickUp = { 4136 },
-        _comment = "Quest contract: 4136 Ribbly Screwspigot",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 66.06, 21.95),
         RaidIcon = { {
             npcID = 9544,
@@ -163,7 +150,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 13,
     }, {
         PickUp = { 4182 },
-        _comment = "Quest contract: 4182 Dragonkin Menace",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 85.82, 68.95),
         RaidIcon = { {
             npcID = 9562,
@@ -175,7 +161,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 14,
     }, {
         PickUp = { 4262 },
-        _comment = "Quest contract: 4262 Overmaster Pyron",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 85.41, 70.06),
         RaidIcon = { {
             npcID = 9561,
@@ -187,7 +172,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 15,
     }, {
         PickUp = { 4286 },
-        _comment = "Quest contract: 4286 The Good Stuff",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 84.56, 68.68),
         RaidIcon = { {
             npcID = 9177,
@@ -199,7 +183,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 16,
     }, {
         PickUp = { 4324 },
-        _comment = "Quest contract: 4324 Yuka Screwspigot",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 67.04, 24.01),
         RaidIcon = { {
             npcID = 9706,
@@ -210,7 +193,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 17,
     }, {
         PickUp = { 8905 },
-        _comment = "Quest contract: 8905 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -223,7 +205,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 18,
     }, {
         PickUp = { 8906 },
-        _comment = "Quest contract: 8906 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -236,7 +217,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 19,
     }, {
         PickUp = { 8907 },
-        _comment = "Quest contract: 8907 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -249,7 +229,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 20,
     }, {
         PickUp = { 8908 },
-        _comment = "Quest contract: 8908 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -262,7 +241,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 21,
     }, {
         PickUp = { 8909 },
-        _comment = "Quest contract: 8909 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -275,7 +253,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 22,
     }, {
         PickUp = { 8910 },
-        _comment = "Quest contract: 8910 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -288,7 +265,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 23,
     }, {
         PickUp = { 8911 },
-        _comment = "Quest contract: 8911 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -301,7 +277,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 24,
     }, {
         PickUp = { 8912 },
-        _comment = "Quest contract: 8912 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -314,7 +289,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 25,
     }, {
         PickUp = { 8913 },
-        _comment = "Quest contract: 8913 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -327,7 +301,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 26,
     }, {
         PickUp = { 8914 },
-        _comment = "Quest contract: 8914 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -340,7 +313,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 27,
     }, {
         PickUp = { 8915 },
-        _comment = "Quest contract: 8915 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -353,7 +325,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 28,
     }, {
         PickUp = { 8916 },
-        _comment = "Quest contract: 8916 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -366,7 +337,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 29,
     }, {
         PickUp = { 8917 },
-        _comment = "Quest contract: 8917 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -379,7 +349,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 30,
     }, {
         PickUp = { 8918 },
-        _comment = "Quest contract: 8918 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -392,7 +361,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 31,
     }, {
         PickUp = { 8919 },
-        _comment = "Quest contract: 8919 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -405,7 +373,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 32,
     }, {
         PickUp = { 8920 },
-        _comment = "Quest contract: 8920 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -420,7 +387,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [3441] = { 1 },
         },
-        _comment = "Quest contract: 3441 Divine Retribution",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 39.06, 38.99),
         IsQuestOnQuest = 3441,
         Zone = 1427,
@@ -429,14 +395,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [3702] = { 1 },
         },
-        _comment = "Quest contract: 3702 The Smoldering Ruins of Thaurissan",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 38.37, 55.31),
         IsQuestOnQuest = 3702,
         Zone = 1455,
         _index = 35,
     }, {
         Done = { 3801 },
-        _comment = "Quest contract: 3801 Dark Iron Legacy",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 28.96, 28.93),
         RaidIcon = { {
             npcID = 8888,
@@ -449,7 +413,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [3906] = { 1 },
         },
-        _comment = "Quest contract: 3906 Disharmony of Flame",
         NoArrow = true,
         IsQuestOnQuest = 3906,
         _index = 37,
@@ -457,7 +420,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4023] = { 1 },
         },
-        _comment = "Quest contract: 4023 A Taste of Flame",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 94.4, 31.8),
         IsQuestOnQuest = 4023,
         Zone = 1428,
@@ -466,14 +428,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4061] = { 1 },
         },
-        _comment = "Quest contract: 4061 The Rise of the Machines",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 29.06, 62.33),
         IsQuestOnQuest = 4061,
         Zone = 1428,
         _index = 39,
     }, {
         Done = { 4128 },
-        _comment = "Quest contract: 4128 Ragnar Thunderbrew",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 46.83, 52.36),
         RaidIcon = { {
             npcID = 1267,
@@ -485,7 +445,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 40,
     }, {
         Done = { 4133 },
-        _comment = "Quest contract: 4133 Vivian Lagrave",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 2.9, 47.76),
         RaidIcon = { {
             npcID = 9078,
@@ -499,7 +458,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4182] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 4182 Dragonkin Menace",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 86.92, 30.55),
         IsQuestOnQuest = 4182,
         Zone = 1428,
@@ -508,13 +466,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4262] = { 1 },
         },
-        _comment = "Quest contract: 4262 Overmaster Pyron",
         NoArrow = true,
         IsQuestOnQuest = 4262,
         _index = 43,
     }, {
         Done = { 4324 },
-        _comment = "Quest contract: 4324 Yuka Screwspigot",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 66.06, 21.95),
         RaidIcon = { {
             npcID = 9544,
@@ -527,7 +483,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8905] = { 1, 2 },
         },
-        _comment = "Quest contract: 8905 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8905,
         Zone = 1452,
@@ -536,7 +491,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8906] = { 1, 2 },
         },
-        _comment = "Quest contract: 8906 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8906,
         Zone = 1452,
@@ -545,7 +499,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8907] = { 1, 2 },
         },
-        _comment = "Quest contract: 8907 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8907,
         Zone = 1452,
@@ -554,7 +507,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8908] = { 1, 2 },
         },
-        _comment = "Quest contract: 8908 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8908,
         Zone = 1452,
@@ -563,7 +515,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8909] = { 1, 2 },
         },
-        _comment = "Quest contract: 8909 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8909,
         Zone = 1452,
@@ -572,7 +523,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8910] = { 1, 2 },
         },
-        _comment = "Quest contract: 8910 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8910,
         Zone = 1452,
@@ -581,7 +531,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8911] = { 1, 2 },
         },
-        _comment = "Quest contract: 8911 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8911,
         Zone = 1452,
@@ -590,7 +539,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8912] = { 1, 2 },
         },
-        _comment = "Quest contract: 8912 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8912,
         Zone = 1452,
@@ -599,7 +547,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8913] = { 1, 2 },
         },
-        _comment = "Quest contract: 8913 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8913,
         Zone = 1451,
@@ -608,7 +555,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8914] = { 1, 2 },
         },
-        _comment = "Quest contract: 8914 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8914,
         Zone = 1451,
@@ -617,7 +563,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8915] = { 1, 2 },
         },
-        _comment = "Quest contract: 8915 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8915,
         Zone = 1451,
@@ -626,7 +571,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8916] = { 1, 2 },
         },
-        _comment = "Quest contract: 8916 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8916,
         Zone = 1451,
@@ -635,7 +579,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8917] = { 1, 2 },
         },
-        _comment = "Quest contract: 8917 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8917,
         Zone = 1451,
@@ -644,7 +587,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8918] = { 1, 2 },
         },
-        _comment = "Quest contract: 8918 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8918,
         Zone = 1451,
@@ -653,7 +595,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8919] = { 1, 2 },
         },
-        _comment = "Quest contract: 8919 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8919,
         Zone = 1451,
@@ -662,14 +603,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8920] = { 1, 2 },
         },
-        _comment = "Quest contract: 8920 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8920,
         Zone = 1451,
         _index = 60,
     }, {
         Done = { 3441 },
-        _comment = "Quest contract: 3441 Divine Retribution",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 39.06, 38.99),
         RaidIcon = { {
             npcID = 8479,
@@ -680,7 +619,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 61,
     }, {
         Done = { 3702 },
-        _comment = "Quest contract: 3702 The Smoldering Ruins of Thaurissan",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 38.37, 55.31),
         RaidIcon = { {
             npcID = 8879,
@@ -692,7 +630,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 62,
     }, {
         PickUp = { 3802 },
-        _comment = "Quest contract: 3802 Dark Iron Legacy",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 28.96, 28.93),
         RaidIcon = { {
             npcID = 8888,
@@ -706,7 +643,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 63,
     }, {
         Done = { 3906 },
-        _comment = "Quest contract: 3906 Disharmony of Flame",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 3.33, 48.26),
         RaidIcon = { {
             npcID = 9084,
@@ -718,7 +654,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 64,
     }, {
         Done = { 4023 },
-        _comment = "Quest contract: 4023 A Taste of Flame",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 95.09, 31.56),
         RaidIcon = { {
             npcID = 9459,
@@ -729,7 +664,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 65,
     }, {
         Done = { 4061 },
-        _comment = "Quest contract: 4061 The Rise of the Machines",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 3.02, 47.81),
         RaidIcon = { {
             npcID = 9079,
@@ -741,7 +675,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 66,
     }, {
         Done = { 4182 },
-        _comment = "Quest contract: 4182 Dragonkin Menace",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 85.82, 68.95),
         RaidIcon = { {
             npcID = 9562,
@@ -753,7 +686,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 67,
     }, {
         Done = { 4262 },
-        _comment = "Quest contract: 4262 Overmaster Pyron",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 85.41, 70.06),
         RaidIcon = { {
             npcID = 9561,
@@ -765,7 +697,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 68,
     }, {
         Done = { 8905 },
-        _comment = "Quest contract: 8905 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -778,7 +709,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 69,
     }, {
         Done = { 8906 },
-        _comment = "Quest contract: 8906 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -791,7 +721,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 70,
     }, {
         Done = { 8907 },
-        _comment = "Quest contract: 8907 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -804,7 +733,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 71,
     }, {
         Done = { 8908 },
-        _comment = "Quest contract: 8908 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -817,7 +745,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 72,
     }, {
         Done = { 8909 },
-        _comment = "Quest contract: 8909 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -830,7 +757,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 73,
     }, {
         Done = { 8910 },
-        _comment = "Quest contract: 8910 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -843,7 +769,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 74,
     }, {
         Done = { 8911 },
-        _comment = "Quest contract: 8911 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -856,7 +781,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 75,
     }, {
         Done = { 8912 },
-        _comment = "Quest contract: 8912 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -869,7 +793,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 76,
     }, {
         Done = { 8913 },
-        _comment = "Quest contract: 8913 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -882,7 +805,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 77,
     }, {
         Done = { 8914 },
-        _comment = "Quest contract: 8914 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -895,7 +817,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 78,
     }, {
         Done = { 8915 },
-        _comment = "Quest contract: 8915 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -908,7 +829,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 79,
     }, {
         Done = { 8916 },
-        _comment = "Quest contract: 8916 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -921,7 +841,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 80,
     }, {
         Done = { 8917 },
-        _comment = "Quest contract: 8917 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -934,7 +853,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 81,
     }, {
         Done = { 8918 },
-        _comment = "Quest contract: 8918 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -947,7 +865,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 82,
     }, {
         Done = { 8919 },
-        _comment = "Quest contract: 8919 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -960,7 +877,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 83,
     }, {
         Done = { 8920 },
-        _comment = "Quest contract: 8920 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -973,7 +889,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 84,
     }, {
         PickUp = { 3442 },
-        _comment = "Quest contract: 3442 The Flawless Flame",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 39.06, 38.99),
         RaidIcon = { {
             npcID = 8479,
@@ -987,7 +902,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 85,
     }, {
         PickUp = { 3701 },
-        _comment = "Quest contract: 3701 The Smoldering Ruins of Thaurissan",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 38.37, 55.31),
         RaidIcon = { {
             npcID = 8879,
@@ -1002,7 +916,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 86,
     }, {
         PickUp = { 3907 },
-        _comment = "Quest contract: 3907 Disharmony of Fire",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 3.33, 48.26),
         RaidIcon = { {
             npcID = 9084,
@@ -1017,7 +930,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 87,
     }, {
         PickUp = { 3981 },
-        _comment = "Quest contract: 3981 Commander Gor'shak",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 5.96, 47.73),
         RaidIcon = { {
             npcID = 9081,
@@ -1032,7 +944,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 88,
     }, {
         PickUp = { 4062 },
-        _comment = "Quest contract: 4062 The Rise of the Machines",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 3.02, 47.81),
         RaidIcon = { {
             npcID = 9079,
@@ -1047,7 +958,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 89,
     }, {
         PickUp = { 4183 },
-        _comment = "Quest contract: 4183 The True Masters",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 85.82, 68.95),
         RaidIcon = { {
             npcID = 9562,
@@ -1062,7 +972,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 90,
     }, {
         PickUp = { 4263 },
-        _comment = "Quest contract: 4263 Incendius!",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 85.41, 70.06),
         RaidIcon = { {
             npcID = 9561,
@@ -1077,7 +986,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 91,
     }, {
         PickUp = { 7201 },
-        _comment = "Quest contract: 7201 The Last Element",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 2.9, 47.76),
         RaidIcon = { {
             npcID = 9078,
@@ -1092,7 +1000,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 92,
     }, {
         PickUp = { 8922 },
-        _comment = "Quest contract: 8922 A Supernatural Device",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1121,7 +1028,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 93,
     }, {
         PickUp = { 8923 },
-        _comment = "Quest contract: 8923 A Supernatural Device",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1152,7 +1058,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [3442] = { 1, 2 },
         },
-        _comment = "Quest contract: 3442 The Flawless Flame",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 58.3, 76.98),
         IsQuestOnQuest = 3442,
         Zone = 1427,
@@ -1161,7 +1066,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [3701] = { 1 },
         },
-        _comment = "Quest contract: 3701 The Smoldering Ruins of Thaurissan",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 60.31, 35.13),
         IsQuestOnQuest = 3701,
         Zone = 1428,
@@ -1170,7 +1074,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4062] = { 1 },
         },
-        _comment = "Quest contract: 4062 The Rise of the Machines",
         NoArrow = true,
         IsQuestOnQuest = 4062,
         _index = 97,
@@ -1178,7 +1081,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4183] = { 1 },
         },
-        _comment = "Quest contract: 4183 The True Masters",
         NoArrow = true,
         IsQuestOnQuest = 4183,
         _index = 98,
@@ -1186,7 +1088,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8922] = { 1 },
         },
-        _comment = "Quest contract: 8922 A Supernatural Device",
         NoArrow = true,
         IsQuestOnQuest = 8922,
         _index = 99,
@@ -1194,13 +1095,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8923] = { 1 },
         },
-        _comment = "Quest contract: 8923 A Supernatural Device",
         NoArrow = true,
         IsQuestOnQuest = 8923,
         _index = 100,
     }, {
         Done = { 3442 },
-        _comment = "Quest contract: 3442 The Flawless Flame",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 39.06, 38.99),
         RaidIcon = { {
             npcID = 8479,
@@ -1211,7 +1110,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 101,
     }, {
         Done = { 3701 },
-        _comment = "Quest contract: 3701 The Smoldering Ruins of Thaurissan",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 38.37, 55.31),
         RaidIcon = { {
             npcID = 8879,
@@ -1223,7 +1121,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 102,
     }, {
         Done = { 4062 },
-        _comment = "Quest contract: 4062 The Rise of the Machines",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 25.95, 44.87),
         RaidIcon = { {
             npcID = 2921,
@@ -1235,7 +1132,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 103,
     }, {
         Done = { 4183 },
-        _comment = "Quest contract: 4183 The True Masters",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1433, 24.9, 44.45),
         RaidIcon = { {
             npcID = 344,
@@ -1247,7 +1143,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 104,
     }, {
         Done = { 8922 },
-        _comment = "Quest contract: 8922 A Supernatural Device",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1259,7 +1154,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 105,
     }, {
         Done = { 8923 },
-        _comment = "Quest contract: 8923 A Supernatural Device",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1271,7 +1165,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 106,
     }, {
         PickUp = { 3443 },
-        _comment = "Quest contract: 3443 Forging the Shaft",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 39.06, 38.99),
         RaidIcon = { {
             npcID = 8479,
@@ -1285,7 +1178,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 107,
     }, {
         PickUp = { 4063 },
-        _comment = "Quest contract: 4063 The Rise of the Machines",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 25.95, 44.87),
         RaidIcon = { {
             npcID = 2921,
@@ -1300,7 +1192,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 108,
     }, {
         PickUp = { 4184 },
-        _comment = "Quest contract: 4184 The True Masters",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1433, 24.9, 44.45),
         RaidIcon = { {
             npcID = 344,
@@ -1315,7 +1206,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 109,
     }, {
         PickUp = { 4341 },
-        _comment = "Quest contract: 4341 Kharan Mighthammer",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 39.09, 56.2),
         RaidIcon = { {
             npcID = 2784,
@@ -1330,7 +1220,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 110,
     }, {
         PickUp = { 8921 },
-        _comment = "Quest contract: 8921 The Ectoplasmic Distiller",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1348,7 +1237,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [3443] = { 1 },
         },
-        _comment = "Quest contract: 3443 Forging the Shaft",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 69.35, 32.7),
         IsQuestOnQuest = 3443,
         Zone = 1427,
@@ -1357,7 +1245,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4184] = { 1 },
         },
-        _comment = "Quest contract: 4184 The True Masters",
         NoArrow = true,
         IsQuestOnQuest = 4184,
         _index = 113,
@@ -1365,13 +1252,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8921] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 8921 The Ectoplasmic Distiller",
         NoArrow = true,
         IsQuestOnQuest = 8921,
         _index = 114,
     }, {
         Done = { 3443 },
-        _comment = "Quest contract: 3443 Forging the Shaft",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 39.06, 38.99),
         RaidIcon = { {
             npcID = 8479,
@@ -1382,7 +1267,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 115,
     }, {
         Done = { 4184 },
-        _comment = "Quest contract: 4184 The True Masters",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 80.21, 38.35),
         RaidIcon = { {
             npcID = 1748,
@@ -1394,7 +1278,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 116,
     }, {
         Done = { 8921 },
-        _comment = "Quest contract: 8921 The Ectoplasmic Distiller",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1405,7 +1288,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 117,
     }, {
         PickUp = { 3452 },
-        _comment = "Quest contract: 3452 The Flame's Casing",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 39.06, 38.99),
         RaidIcon = { {
             npcID = 8479,
@@ -1419,7 +1301,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 118,
     }, {
         PickUp = { 4185 },
-        _comment = "Quest contract: 4185 The True Masters",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 80.21, 38.35),
         RaidIcon = { {
             npcID = 1748,
@@ -1434,7 +1315,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 119,
     }, {
         PickUp = { 8924 },
-        _comment = "Quest contract: 8924 Hunting for Ectoplasm",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1450,7 +1330,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [3452] = { 1 },
         },
-        _comment = "Quest contract: 3452 The Flame's Casing",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 24.06, 34.16),
         IsQuestOnQuest = 3452,
         Zone = 1427,
@@ -1459,7 +1338,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4185] = { 1 },
         },
-        _comment = "Quest contract: 4185 The True Masters",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 80.1, 38.17),
         IsQuestOnQuest = 4185,
         Zone = 1453,
@@ -1468,14 +1346,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8924] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 8924 Hunting for Ectoplasm",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 60.94, 58.39),
         IsQuestOnQuest = 8924,
         Zone = 1451,
         _index = 123,
     }, {
         Done = { 3452 },
-        _comment = "Quest contract: 3452 The Flame's Casing",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 39.06, 38.99),
         RaidIcon = { {
             npcID = 8479,
@@ -1486,7 +1362,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 124,
     }, {
         Done = { 4185 },
-        _comment = "Quest contract: 4185 The True Masters",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 80.21, 38.35),
         RaidIcon = { {
             npcID = 1748,
@@ -1498,7 +1373,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 125,
     }, {
         Done = { 8924 },
-        _comment = "Quest contract: 8924 Hunting for Ectoplasm",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1509,7 +1383,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 126,
     }, {
         PickUp = { 3453 },
-        _comment = "Quest contract: 3453 The Torch of Retribution",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 39.06, 38.99),
         RaidIcon = { {
             npcID = 8479,
@@ -1523,7 +1396,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 127,
     }, {
         PickUp = { 4186 },
-        _comment = "Quest contract: 4186 The True Masters",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 80.21, 38.35),
         RaidIcon = { {
             npcID = 1748,
@@ -1538,7 +1410,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 128,
     }, {
         PickUp = { 8925 },
-        _comment = "Quest contract: 8925 A Portable Power Source",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1554,7 +1425,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [3453] = { 1 },
         },
-        _comment = "Quest contract: 3453 The Torch of Retribution",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 39.06, 38.99),
         IsQuestOnQuest = 3453,
         Zone = 1427,
@@ -1563,7 +1433,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4186] = { 1 },
         },
-        _comment = "Quest contract: 4186 The True Masters",
         NoArrow = true,
         IsQuestOnQuest = 4186,
         _index = 131,
@@ -1571,14 +1440,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8925] = { 1 },
         },
-        _comment = "Quest contract: 8925 A Portable Power Source",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 35.39, 57.76),
         IsQuestOnQuest = 8925,
         Zone = 1428,
         _index = 132,
     }, {
         Done = { 3453 },
-        _comment = "Quest contract: 3453 The Torch of Retribution",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 39.06, 38.99),
         RaidIcon = { {
             npcID = 8479,
@@ -1589,7 +1456,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 133,
     }, {
         Done = { 4186 },
-        _comment = "Quest contract: 4186 The True Masters",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1433, 24.9, 44.45),
         RaidIcon = { {
             npcID = 344,
@@ -1601,7 +1467,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 134,
     }, {
         Done = { 8925 },
-        _comment = "Quest contract: 8925 A Portable Power Source",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1612,7 +1477,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 135,
     }, {
         PickUp = { 3454 },
-        _comment = "Quest contract: 3454 The Torch of Retribution",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 39.06, 38.99),
         RaidIcon = { {
             npcID = 8479,
@@ -1626,7 +1490,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 136,
     }, {
         PickUp = { 4223 },
-        _comment = "Quest contract: 4223 The True Masters",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1433, 24.9, 44.45),
         RaidIcon = { {
             npcID = 344,
@@ -1641,7 +1504,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 137,
     }, {
         PickUp = { 8928 },
-        _comment = "Quest contract: 8928 A Shifty Merchant",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1655,14 +1517,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 138,
     }, {
         Done = { 3454 },
-        _comment = "Quest contract: 3454 The Torch of Retribution",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 39.06, 39.07),
         IsQuestOnQuest = 3454,
         Zone = 1427,
         _index = 139,
     }, {
         Done = { 4223 },
-        _comment = "Quest contract: 4223 The True Masters",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 84.74, 69.02),
         RaidIcon = { {
             npcID = 9560,
@@ -1676,13 +1536,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8928] = { 1 },
         },
-        _comment = "Quest contract: 8928 A Shifty Merchant",
         NoArrow = true,
         IsQuestOnQuest = 8928,
         _index = 141,
     }, {
         PickUp = { 3462 },
-        _comment = "Quest contract: 3462 Squire Maltrake",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 39.06, 38.99),
         RaidIcon = { {
             npcID = 8479,
@@ -1696,7 +1554,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 142,
     }, {
         PickUp = { 4224 },
-        _comment = "Quest contract: 4224 The True Masters",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 84.74, 69.02),
         RaidIcon = { {
             npcID = 9560,
@@ -1711,7 +1568,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 143,
     }, {
         Done = { 8928 },
-        _comment = "Quest contract: 8928 A Shifty Merchant",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1722,7 +1578,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 144,
     }, {
         Done = { 3462 },
-        _comment = "Quest contract: 3462 Squire Maltrake",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 39.17, 39),
         RaidIcon = { {
             npcID = 8509,
@@ -1735,14 +1590,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4224] = { 1 },
         },
-        _comment = "Quest contract: 4224 The True Masters",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.01, 23.76),
         IsQuestOnQuest = 4224,
         Zone = 1428,
         _index = 146,
     }, {
         PickUp = { 8977 },
-        _comment = "Quest contract: 8977 Return to Deliana",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1757,7 +1610,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 147,
     }, {
         PickUp = { 8978 },
-        _comment = "Quest contract: 8978 Return to Mokvar",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1772,7 +1624,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 148,
     }, {
         PickUp = { 3463 },
-        _comment = "Quest contract: 3463 Set Them Ablaze!",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 39.17, 39),
         RaidIcon = { {
             npcID = 8509,
@@ -1786,7 +1637,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 149,
     }, {
         Done = { 4224 },
-        _comment = "Quest contract: 4224 The True Masters",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 84.74, 69.02),
         RaidIcon = { {
             npcID = 9560,
@@ -1800,7 +1650,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8977] = { 1 },
         },
-        _comment = "Quest contract: 8977 Return to Deliana",
         NoArrow = true,
         IsQuestOnQuest = 8977,
         _index = 151,
@@ -1808,7 +1657,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8978] = { 1 },
         },
-        _comment = "Quest contract: 8978 Return to Mokvar",
         NoArrow = true,
         IsQuestOnQuest = 8978,
         _index = 152,
@@ -1816,14 +1664,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [3463] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 3463 Set Them Ablaze!",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 35.67, 60.68),
         IsQuestOnQuest = 3463,
         Zone = 1427,
         _index = 153,
     }, {
         PickUp = { 4241 },
-        _comment = "Quest contract: 4241 Marshal Windsor",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 84.74, 69.02),
         RaidIcon = { {
             npcID = 9560,
@@ -1838,7 +1684,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 154,
     }, {
         Done = { 8977 },
-        _comment = "Quest contract: 8977 Return to Deliana",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1850,7 +1695,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 155,
     }, {
         Done = { 8978 },
-        _comment = "Quest contract: 8978 Return to Mokvar",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1862,7 +1706,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 156,
     }, {
         Done = { 3463 },
-        _comment = "Quest contract: 3463 Set Them Ablaze!",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 39.17, 39),
         RaidIcon = { {
             npcID = 8509,
@@ -1873,7 +1716,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 157,
     }, {
         PickUp = { 8926 },
-        _comment = "Quest contract: 8926 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1889,7 +1731,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 158,
     }, {
         PickUp = { 8927 },
-        _comment = "Quest contract: 8927 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1905,7 +1746,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 159,
     }, {
         PickUp = { 8931 },
-        _comment = "Quest contract: 8931 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1921,7 +1761,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 160,
     }, {
         PickUp = { 8932 },
-        _comment = "Quest contract: 8932 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1937,7 +1776,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 161,
     }, {
         PickUp = { 8933 },
-        _comment = "Quest contract: 8933 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1953,7 +1791,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 162,
     }, {
         PickUp = { 8934 },
-        _comment = "Quest contract: 8934 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1969,7 +1806,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 163,
     }, {
         PickUp = { 8935 },
-        _comment = "Quest contract: 8935 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1985,7 +1821,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 164,
     }, {
         PickUp = { 8936 },
-        _comment = "Quest contract: 8936 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2001,7 +1836,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 165,
     }, {
         PickUp = { 8937 },
-        _comment = "Quest contract: 8937 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2017,7 +1851,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 166,
     }, {
         PickUp = { 8938 },
-        _comment = "Quest contract: 8938 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2033,7 +1866,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 167,
     }, {
         PickUp = { 8939 },
-        _comment = "Quest contract: 8939 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2049,7 +1881,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 168,
     }, {
         PickUp = { 8940 },
-        _comment = "Quest contract: 8940 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2065,7 +1896,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 169,
     }, {
         PickUp = { 8941 },
-        _comment = "Quest contract: 8941 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2081,7 +1911,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 170,
     }, {
         PickUp = { 8942 },
-        _comment = "Quest contract: 8942 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2097,7 +1926,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 171,
     }, {
         PickUp = { 8943 },
-        _comment = "Quest contract: 8943 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2113,7 +1941,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 172,
     }, {
         PickUp = { 8944 },
-        _comment = "Quest contract: 8944 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2129,7 +1956,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 173,
     }, {
         PickUp = { 3481 },
-        _comment = "Quest contract: 3481 Trinkets...",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 38.85, 38.99),
         AnyOf = { {
             IsQuestCompleted = 3463,
@@ -2141,7 +1967,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8926] = { 1, 2 },
         },
-        _comment = "Quest contract: 8926 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8926,
         _index = 175,
@@ -2149,7 +1974,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8927] = { 1, 2 },
         },
-        _comment = "Quest contract: 8927 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8927,
         _index = 176,
@@ -2157,7 +1981,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8931] = { 1, 2 },
         },
-        _comment = "Quest contract: 8931 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8931,
         _index = 177,
@@ -2165,7 +1988,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8932] = { 1, 2 },
         },
-        _comment = "Quest contract: 8932 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8932,
         _index = 178,
@@ -2173,7 +1995,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8933] = { 1, 2 },
         },
-        _comment = "Quest contract: 8933 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 51.93, 23.82),
         IsQuestOnQuest = 8933,
         Zone = 1422,
@@ -2182,7 +2003,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8934] = { 1, 2 },
         },
-        _comment = "Quest contract: 8934 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8934,
         _index = 180,
@@ -2190,7 +2010,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8935] = { 1, 2 },
         },
-        _comment = "Quest contract: 8935 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8935,
         _index = 181,
@@ -2198,7 +2017,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8936] = { 1, 2 },
         },
-        _comment = "Quest contract: 8936 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8936,
         _index = 182,
@@ -2206,7 +2024,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8937] = { 1, 2 },
         },
-        _comment = "Quest contract: 8937 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8937,
         _index = 183,
@@ -2214,7 +2031,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8938] = { 1, 2 },
         },
-        _comment = "Quest contract: 8938 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8938,
         _index = 184,
@@ -2222,7 +2038,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8939] = { 1, 2 },
         },
-        _comment = "Quest contract: 8939 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8939,
         _index = 185,
@@ -2230,7 +2045,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8940] = { 1, 2 },
         },
-        _comment = "Quest contract: 8940 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8940,
         _index = 186,
@@ -2238,7 +2052,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8941] = { 1, 2 },
         },
-        _comment = "Quest contract: 8941 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8941,
         _index = 187,
@@ -2246,7 +2059,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8942] = { 1, 2 },
         },
-        _comment = "Quest contract: 8942 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8942,
         _index = 188,
@@ -2254,7 +2066,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8943] = { 1, 2 },
         },
-        _comment = "Quest contract: 8943 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8943,
         _index = 189,
@@ -2262,20 +2073,17 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8944] = { 1, 2 },
         },
-        _comment = "Quest contract: 8944 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8944,
         _index = 190,
     }, {
         Done = { 3481 },
-        _comment = "Quest contract: 3481 Trinkets...",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1427, 38.85, 38.99),
         IsQuestOnQuest = 3481,
         Zone = 1427,
         _index = 191,
     }, {
         Done = { 8926 },
-        _comment = "Quest contract: 8926 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2288,7 +2096,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 192,
     }, {
         Done = { 8927 },
-        _comment = "Quest contract: 8927 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2301,7 +2108,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 193,
     }, {
         Done = { 8931 },
-        _comment = "Quest contract: 8931 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2314,7 +2120,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 194,
     }, {
         Done = { 8932 },
-        _comment = "Quest contract: 8932 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2327,7 +2132,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 195,
     }, {
         Done = { 8933 },
-        _comment = "Quest contract: 8933 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2340,7 +2144,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 196,
     }, {
         Done = { 8934 },
-        _comment = "Quest contract: 8934 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2353,7 +2156,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 197,
     }, {
         Done = { 8935 },
-        _comment = "Quest contract: 8935 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2366,7 +2168,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 198,
     }, {
         Done = { 8936 },
-        _comment = "Quest contract: 8936 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2379,7 +2180,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 199,
     }, {
         Done = { 8937 },
-        _comment = "Quest contract: 8937 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2392,7 +2192,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 200,
     }, {
         Done = { 8938 },
-        _comment = "Quest contract: 8938 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2405,7 +2204,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 201,
     }, {
         Done = { 8939 },
-        _comment = "Quest contract: 8939 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2418,7 +2216,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 202,
     }, {
         Done = { 8940 },
-        _comment = "Quest contract: 8940 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2431,7 +2228,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 203,
     }, {
         Done = { 8941 },
-        _comment = "Quest contract: 8941 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2444,7 +2240,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 204,
     }, {
         Done = { 8942 },
-        _comment = "Quest contract: 8942 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2457,7 +2252,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 205,
     }, {
         Done = { 8943 },
-        _comment = "Quest contract: 8943 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2470,7 +2264,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 206,
     }, {
         Done = { 8944 },
-        _comment = "Quest contract: 8944 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2483,7 +2276,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 207,
     }, {
         PickUp = { 4022 },
-        _comment = "Quest contract: 4022 A Taste of Flame",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 95.09, 31.56),
         RaidIcon = { {
             npcID = 9459,
@@ -2497,7 +2289,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 208,
     }, {
         PickUp = { 8929 },
-        _comment = "Quest contract: 8929 In Search of Anthion",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2526,7 +2317,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 209,
     }, {
         PickUp = { 8930 },
-        _comment = "Quest contract: 8930 In Search of Anthion",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2557,14 +2347,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4022] = { 1, 2 },
         },
-        _comment = "Quest contract: 4022 A Taste of Flame",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 94.4, 31.8),
         IsQuestOnQuest = 4022,
         Zone = 1428,
         _index = 211,
     }, {
         Done = { 8929 },
-        _comment = "Quest contract: 8929 In Search of Anthion",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2576,7 +2364,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 212,
     }, {
         Done = { 8930 },
-        _comment = "Quest contract: 8930 In Search of Anthion",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2588,7 +2375,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 213,
     }, {
         Done = { 4022 },
-        _comment = "Quest contract: 4022 A Taste of Flame",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 95.09, 31.56),
         RaidIcon = { {
             npcID = 9459,
@@ -2599,7 +2385,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 214,
     }, {
         PickUp = { 8945 },
-        _comment = "Quest contract: 8945 Dead Man's Plea",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2615,7 +2400,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 215,
     }, {
         PickUp = { 4024 },
-        _comment = "Quest contract: 4024 A Taste of Flame",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 95.09, 31.56),
         RaidIcon = { {
             npcID = 9459,
@@ -2633,13 +2417,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8945] = { 1 },
         },
-        _comment = "Quest contract: 8945 Dead Man's Plea",
         NoArrow = true,
         IsQuestOnQuest = 8945,
         _index = 217,
     }, {
         Done = { 8945 },
-        _comment = "Quest contract: 8945 Dead Man's Plea",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16031,
@@ -2649,7 +2431,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 218,
     }, {
         PickUp = { 8946 },
-        _comment = "Quest contract: 8946 Proof of Life",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16031,
@@ -2664,13 +2445,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8946] = { 1 },
         },
-        _comment = "Quest contract: 8946 Proof of Life",
         NoArrow = true,
         IsQuestOnQuest = 8946,
         _index = 220,
     }, {
         Done = { 8946 },
-        _comment = "Quest contract: 8946 Proof of Life",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2681,7 +2460,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 221,
     }, {
         PickUp = { 8947 },
-        _comment = "Quest contract: 8947 Anthion's Strange Request",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2697,13 +2475,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8947] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 8947 Anthion's Strange Request",
         NoArrow = true,
         IsQuestOnQuest = 8947,
         _index = 223,
     }, {
         Done = { 8947 },
-        _comment = "Quest contract: 8947 Anthion's Strange Request",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2714,7 +2490,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 224,
     }, {
         PickUp = { 8948 },
-        _comment = "Quest contract: 8948 Anthion's Old Friend",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2730,13 +2505,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8948] = { 1 },
         },
-        _comment = "Quest contract: 8948 Anthion's Old Friend",
         NoArrow = true,
         IsQuestOnQuest = 8948,
         _index = 226,
     }, {
         Done = { 8948 },
-        _comment = "Quest contract: 8948 Anthion's Old Friend",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16032,
@@ -2746,7 +2519,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 227,
     }, {
         PickUp = { 8949 },
-        _comment = "Quest contract: 8949 Falrin's Vendetta",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16032,
@@ -2761,14 +2533,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8949] = { 1 },
         },
-        _comment = "Quest contract: 8949 Falrin's Vendetta",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 59.95, 46.58),
         IsQuestOnQuest = 8949,
         Zone = 1444,
         _index = 229,
     }, {
         Done = { 8949 },
-        _comment = "Quest contract: 8949 Falrin's Vendetta",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16032,
@@ -2778,7 +2548,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 230,
     }, {
         PickUp = { 8950 },
-        _comment = "Quest contract: 8950 The Instigator's Enchantment",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16032,
@@ -2793,13 +2562,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [8950] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8950 The Instigator's Enchantment",
         NoArrow = true,
         IsQuestOnQuest = 8950,
         _index = 232,
     }, {
         Done = { 8950 },
-        _comment = "Quest contract: 8950 The Instigator's Enchantment",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16032,
@@ -2818,7 +2585,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 234,
     }, {
         PickUp = { 4083 },
-        _comment = "Quest contract: 4083 The Spectral Chalice",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -2826,7 +2592,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 235,
     }, {
         PickUp = { 4201 },
-        _comment = "Quest contract: 4201 The Love Potion",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -2838,7 +2603,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 236,
     }, {
         PickUp = { 4295 },
-        _comment = "Quest contract: 4295 Rocknot's Ale",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -2850,7 +2614,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 237,
     }, {
         PickUp = { 9015 },
-        _comment = "Quest contract: 9015 The Challenge",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3037,7 +2800,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [3802] = { 1 },
         },
-        _comment = "Quest contract: 3802 Dark Iron Legacy",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3047,7 +2809,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [3907] = { 1, 2 },
         },
-        _comment = "Quest contract: 3907 Disharmony of Fire",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3055,7 +2816,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 257,
     }, {
         Done = { 3981 },
-        _comment = "Quest contract: 3981 Commander Gor'shak",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3070,7 +2830,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4024] = { 1 },
         },
-        _comment = "Quest contract: 4024 A Taste of Flame",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3080,7 +2839,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4063] = { 1, 2 },
         },
-        _comment = "Quest contract: 4063 The Rise of the Machines",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3090,7 +2848,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4081] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 4081 KILL ON SIGHT: Dark Iron Dwarves",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3100,7 +2857,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4083] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 4083 The Spectral Chalice",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3110,7 +2866,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4123] = { 1 },
         },
-        _comment = "Quest contract: 4123 The Heart of the Mountain",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3120,7 +2875,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4126] = { 1 },
         },
-        _comment = "Quest contract: 4126 Hurley Blackbreath",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3130,7 +2884,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4134] = { 1 },
         },
-        _comment = "Quest contract: 4134 Lost Thunderbrew Recipe",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3140,7 +2893,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4136] = { 1 },
         },
-        _comment = "Quest contract: 4136 Ribbly Screwspigot",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3150,7 +2902,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4201] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 4201 The Love Potion",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3158,7 +2909,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 267,
     }, {
         Done = { 4241 },
-        _comment = "Quest contract: 4241 Marshal Windsor",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3173,7 +2923,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4263] = { 1 },
         },
-        _comment = "Quest contract: 4263 Incendius!",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3183,7 +2932,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4286] = { 1 },
         },
-        _comment = "Quest contract: 4286 The Good Stuff",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3193,7 +2941,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4295] = { 1 },
         },
-        _comment = "Quest contract: 4295 Rocknot's Ale",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3201,7 +2948,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 271,
     }, {
         Done = { 4341 },
-        _comment = "Quest contract: 4341 Kharan Mighthammer",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3216,7 +2962,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [7201] = { 1 },
         },
-        _comment = "Quest contract: 7201 The Last Element",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3224,7 +2969,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 273,
     }, {
         PickUp = { 7604 },
-        _comment = "Quest contract: 7604 A Binding Contract",
         Button = {
             ["7604"] = 18628,
         },
@@ -3241,7 +2985,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [9015] = { 1, 2 },
         },
-        _comment = "Quest contract: 9015 The Challenge",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3249,7 +2992,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 275,
     }, {
         Done = { 3802 },
-        _comment = "Quest contract: 3802 Dark Iron Legacy",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3257,7 +2999,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 276,
     }, {
         PickUp = { 3982 },
-        _comment = "Quest contract: 3982 What Is Going On?",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3273,7 +3014,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 277,
     }, {
         Done = { 4083 },
-        _comment = "Quest contract: 4083 The Spectral Chalice",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3281,7 +3021,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 278,
     }, {
         Done = { 4201 },
-        _comment = "Quest contract: 4201 The Love Potion",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3293,7 +3032,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 279,
     }, {
         PickUp = { 4242 },
-        _comment = "Quest contract: 4242 Abandoned Hope",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3309,7 +3047,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 280,
     }, {
         Done = { 4295 },
-        _comment = "Quest contract: 4295 Rocknot's Ale",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3321,7 +3058,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 281,
     }, {
         PickUp = { 4342 },
-        _comment = "Quest contract: 4342 Kharan's Tale",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3339,7 +3075,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [7604] = { 1, 2 },
         },
-        _comment = "Quest contract: 7604 A Binding Contract",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3349,7 +3084,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [3982] = { 1 },
         },
-        _comment = "Quest contract: 3982 What Is Going On?",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3359,7 +3093,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4342] = { 1 },
         },
-        _comment = "Quest contract: 4342 Kharan's Tale",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3367,7 +3100,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 285,
     }, {
         Done = { 7604 },
-        _comment = "Quest contract: 7604 A Binding Contract",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3379,7 +3111,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 286,
     }, {
         Done = { 3982 },
-        _comment = "Quest contract: 3982 What Is Going On?",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3392,7 +3123,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 287,
     }, {
         Done = { 4342 },
-        _comment = "Quest contract: 4342 Kharan's Tale",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3405,7 +3135,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 288,
     }, {
         PickUp = { 4001 },
-        _comment = "Quest contract: 4001 What Is Going On?",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3421,7 +3150,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 289,
     }, {
         PickUp = { 4361 },
-        _comment = "Quest contract: 4361 The Bearer of Bad News",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3439,7 +3167,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4001] = { 1 },
         },
-        _comment = "Quest contract: 4001 What Is Going On?",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3454,7 +3181,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 292,
     }, {
         Done = { 3907 },
-        _comment = "Quest contract: 3907 Disharmony of Fire",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 3.33, 48.26),
         RaidIcon = { {
             npcID = 9084,
@@ -3466,7 +3192,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 293,
     }, {
         Done = { 4001 },
-        _comment = "Quest contract: 4001 What Is Going On?",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.73, 37.82),
         RaidIcon = { {
             npcID = 4949,
@@ -3478,7 +3203,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 294,
     }, {
         Done = { 4024 },
-        _comment = "Quest contract: 4024 A Taste of Flame",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 95.09, 31.56),
         RaidIcon = { {
             npcID = 9459,
@@ -3489,7 +3213,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 295,
     }, {
         Done = { 4063 },
-        _comment = "Quest contract: 4063 The Rise of the Machines",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 25.95, 44.87),
         RaidIcon = { {
             npcID = 2921,
@@ -3501,7 +3224,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 296,
     }, {
         Done = { 4081 },
-        _comment = "Quest contract: 4081 KILL ON SIGHT: Dark Iron Dwarves",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 5.81, 47.52),
         RaidIcon = { {
             npcID = 9077,
@@ -3513,7 +3235,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 297,
     }, {
         Done = { 4123 },
-        _comment = "Quest contract: 4123 The Heart of the Mountain",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.15, 23.91),
         RaidIcon = { {
             npcID = 9536,
@@ -3524,7 +3245,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 298,
     }, {
         Done = { 4126 },
-        _comment = "Quest contract: 4126 Hurley Blackbreath",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 46.83, 52.36),
         RaidIcon = { {
             npcID = 1267,
@@ -3536,7 +3256,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 299,
     }, {
         Done = { 4134 },
-        _comment = "Quest contract: 4134 Lost Thunderbrew Recipe",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 2.9, 47.76),
         RaidIcon = { {
             npcID = 9078,
@@ -3548,7 +3267,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 300,
     }, {
         Done = { 4136 },
-        _comment = "Quest contract: 4136 Ribbly Screwspigot",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 66.06, 21.95),
         RaidIcon = { {
             npcID = 9544,
@@ -3559,7 +3277,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 301,
     }, {
         Done = { 4242 },
-        _comment = "Quest contract: 4242 Abandoned Hope",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 84.74, 69.02),
         RaidIcon = { {
             npcID = 9560,
@@ -3571,7 +3288,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 302,
     }, {
         Done = { 4263 },
-        _comment = "Quest contract: 4263 Incendius!",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 85.41, 70.06),
         RaidIcon = { {
             npcID = 9561,
@@ -3583,7 +3299,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 303,
     }, {
         Done = { 4286 },
-        _comment = "Quest contract: 4286 The Good Stuff",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 84.56, 68.68),
         RaidIcon = { {
             npcID = 9177,
@@ -3595,7 +3310,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 304,
     }, {
         Done = { 4361 },
-        _comment = "Quest contract: 4361 The Bearer of Bad News",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 39.09, 56.2),
         RaidIcon = { {
             npcID = 2784,
@@ -3607,7 +3321,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 305,
     }, {
         Done = { 7201 },
-        _comment = "Quest contract: 7201 The Last Element",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 2.9, 47.76),
         RaidIcon = { {
             npcID = 9078,
@@ -3619,7 +3332,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 306,
     }, {
         Done = { 9015 },
-        _comment = "Quest contract: 9015 The Challenge",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -3630,7 +3342,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 307,
     }, {
         PickUp = { 4002 },
-        _comment = "Quest contract: 4002 The Eastern Kingdom",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.73, 37.82),
         RaidIcon = { {
             npcID = 4949,
@@ -3645,7 +3356,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 308,
     }, {
         PickUp = { 4082 },
-        _comment = "Quest contract: 4082 KILL ON SIGHT: High Ranking Dark Iron Officials",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 3.94, 46.73),
         AnyOf = { {
             IsQuestCompleted = 4081,
@@ -3656,7 +3366,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 309,
     }, {
         PickUp = { 4362 },
-        _comment = "Quest contract: 4362 The Fate of the Kingdom",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 39.09, 56.2),
         RaidIcon = { {
             npcID = 2784,
@@ -3671,7 +3380,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 310,
     }, {
         Done = { 4002 },
-        _comment = "Quest contract: 4002 The Eastern Kingdom",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.73, 37.82),
         RaidIcon = { {
             npcID = 4949,
@@ -3683,7 +3391,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 311,
     }, {
         PickUp = { 4003 },
-        _comment = "Quest contract: 4003 The Royal Rescue",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.73, 37.82),
         RaidIcon = { {
             npcID = 4949,
@@ -3709,7 +3416,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4003] = { 1 },
         },
-        _comment = "Quest contract: 4003 The Royal Rescue",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3719,7 +3425,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4082] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 4082 KILL ON SIGHT: High Ranking Dark Iron Officials",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3727,7 +3432,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 315,
     }, {
         PickUp = { 4264 },
-        _comment = "Quest contract: 4264 A Crumpled Up Note",
         Button = {
             ["4264"] = 11446,
         },
@@ -3748,7 +3452,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4362] = { 1 },
         },
-        _comment = "Quest contract: 4362 The Fate of the Kingdom",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3756,7 +3459,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 317,
     }, {
         Done = { 4003 },
-        _comment = "Quest contract: 4003 The Royal Rescue",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3771,7 +3473,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4264] = { 1 },
         },
-        _comment = "Quest contract: 4264 A Crumpled Up Note",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3779,7 +3480,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 319,
     }, {
         Done = { 4362 },
-        _comment = "Quest contract: 4362 The Fate of the Kingdom",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3792,7 +3492,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 320,
     }, {
         PickUp = { 4004 },
-        _comment = "Quest contract: 4004 The Princess Saved?",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3808,7 +3507,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 321,
     }, {
         Done = { 4264 },
-        _comment = "Quest contract: 4264 A Crumpled Up Note",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3821,7 +3519,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 322,
     }, {
         PickUp = { 4363 },
-        _comment = "Quest contract: 4363 The Princess's Surprise",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3837,7 +3534,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 323,
     }, {
         PickUp = { 4282 },
-        _comment = "Quest contract: 4282 A Shred of Hope",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3855,7 +3551,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4282] = { 1, 2 },
         },
-        _comment = "Quest contract: 4282 A Shred of Hope",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3863,7 +3558,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 325,
     }, {
         Done = { 4282 },
-        _comment = "Quest contract: 4282 A Shred of Hope",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3876,7 +3570,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 326,
     }, {
         PickUp = { 4322 },
-        _comment = "Quest contract: 4322 Jail Break!",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3894,7 +3587,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4322] = { 1 },
         },
-        _comment = "Quest contract: 4322 Jail Break!",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -3909,7 +3601,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 329,
     }, {
         Done = { 4004 },
-        _comment = "Quest contract: 4004 The Princess Saved?",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.73, 37.82),
         RaidIcon = { {
             npcID = 4949,
@@ -3921,7 +3612,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 330,
     }, {
         Done = { 4082 },
-        _comment = "Quest contract: 4082 KILL ON SIGHT: High Ranking Dark Iron Officials",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 5.81, 47.52),
         RaidIcon = { {
             npcID = 9077,
@@ -3933,7 +3623,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 331,
     }, {
         Done = { 4322 },
-        _comment = "Quest contract: 4322 Jail Break!",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 84.74, 69.02),
         RaidIcon = { {
             npcID = 9560,
@@ -3945,7 +3634,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 332,
     }, {
         Done = { 4363 },
-        _comment = "Quest contract: 4363 The Princess's Surprise",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 39.09, 56.2),
         RaidIcon = { {
             npcID = 2784,
@@ -3957,7 +3645,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 333,
     }, {
         PickUp = { 4122 },
-        _comment = "Quest contract: 4122 Grark Lorkrub",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 5.88, 47.63),
         RaidIcon = { {
             npcID = 9080,
@@ -3972,7 +3659,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 334,
     }, {
         PickUp = { 6402 },
-        _comment = "Quest contract: 6402 Stormwind Rendezvous",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 84.74, 69.02),
         RaidIcon = { {
             npcID = 9560,
@@ -3987,7 +3673,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 335,
     }, {
         Done = { 4122 },
-        _comment = "Quest contract: 4122 Grark Lorkrub",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 40.2, 34.24),
         RaidIcon = { {
             npcID = 9520,
@@ -3999,7 +3684,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 336,
     }, {
         Done = { 6402 },
-        _comment = "Quest contract: 6402 Stormwind Rendezvous",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 73.61, 91.05),
         RaidIcon = { {
             npcID = 12580,
@@ -4011,7 +3695,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 337,
     }, {
         PickUp = { 4121 },
-        _comment = "Quest contract: 4121 Precarious Predicament",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 40.2, 34.24),
         RaidIcon = { {
             npcID = 9520,
@@ -4026,7 +3709,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 338,
     }, {
         PickUp = { 6403 },
-        _comment = "Quest contract: 6403 The Great Masquerade",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 73.61, 91.05),
         RaidIcon = { {
             npcID = 12580,
@@ -4043,13 +3725,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [6403] = { 1 },
         },
-        _comment = "Quest contract: 6403 The Great Masquerade",
         NoArrow = true,
         IsQuestOnQuest = 6403,
         _index = 340,
     }, {
         Done = { 6403 },
-        _comment = "Quest contract: 6403 The Great Masquerade",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 80.21, 38.35),
         RaidIcon = { {
             npcID = 1748,
@@ -4061,7 +3741,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 341,
     }, {
         PickUp = { 6501 },
-        _comment = "Quest contract: 6501 The Dragon's Eye",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 80.21, 38.35),
         RaidIcon = { {
             npcID = 1748,
@@ -4078,13 +3757,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [6501] = { 1 },
         },
-        _comment = "Quest contract: 6501 The Dragon's Eye",
         NoArrow = true,
         IsQuestOnQuest = 6501,
         _index = 343,
     }, {
         Done = { 6501 },
-        _comment = "Quest contract: 6501 The Dragon's Eye",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 54.55, 51.2),
         RaidIcon = { {
             npcID = 10929,
@@ -4107,7 +3784,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4121] = { 1, 2 },
         },
-        _comment = "Quest contract: 4121 Precarious Predicament",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -4122,7 +3798,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 347,
     }, {
         Done = { 4121 },
-        _comment = "Quest contract: 4121 Precarious Predicament",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 5.88, 47.63),
         RaidIcon = { {
             npcID = 9080,
@@ -4134,7 +3809,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 348,
     }, {
         PickUp = { 4132 },
-        _comment = "Quest contract: 4132 Operation: Death to Angerforge",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 5.81, 47.52),
         RaidIcon = { {
             npcID = 9077,
@@ -4160,7 +3834,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         Qpart = {
             [4132] = { 1 },
         },
-        _comment = "Quest contract: 4132 Operation: Death to Angerforge",
         NoArrow = true,
         Dungeon = "INSTANCE_230",
         InstanceQuest = true,
@@ -4175,7 +3848,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Blackrock-Depths"] = {
         _index = 352,
     }, {
         Done = { 4132 },
-        _comment = "Quest contract: 4132 Operation: Death to Angerforge",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 5.81, 47.52),
         RaidIcon = { {
             npcID = 9077,

@@ -32,7 +32,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
     steps = {
         {
             PickUp = { 65 },
-            _comment = "Quest contract: 65 The Defias Brotherhood",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 56.33, 47.52),
             RaidIcon = { {
                 npcID = 234,
@@ -45,7 +44,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             Done = { 65 },
-            _comment = "Quest contract: 65 The Defias Brotherhood",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1433, 21.39, 45.35),
             RaidIcon = { {
                 npcID = 266,
@@ -58,7 +56,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 132 },
-            _comment = "Quest contract: 132 The Defias Brotherhood",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1433, 21.39, 45.35),
             RaidIcon = { {
                 npcID = 266,
@@ -76,14 +73,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
             Qpart = {
                 [132] = { 1 },
             },
-            _comment = "Quest contract: 132 The Defias Brotherhood",
             NoArrow = true,
             IsQuestOnQuest = 132,
             _index = 4,
         },
         {
             Done = { 132 },
-            _comment = "Quest contract: 132 The Defias Brotherhood",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 56.33, 47.52),
             RaidIcon = { {
                 npcID = 234,
@@ -96,7 +91,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 135 },
-            _comment = "Quest contract: 135 The Defias Brotherhood",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 56.33, 47.52),
             RaidIcon = { {
                 npcID = 234,
@@ -114,14 +108,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
             Qpart = {
                 [135] = { 1 },
             },
-            _comment = "Quest contract: 135 The Defias Brotherhood",
             NoArrow = true,
             IsQuestOnQuest = 135,
             _index = 7,
         },
         {
             Done = { 135 },
-            _comment = "Quest contract: 135 The Defias Brotherhood",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 78.31, 70.74),
             RaidIcon = { {
                 npcID = 332,
@@ -134,7 +126,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 141 },
-            _comment = "Quest contract: 141 The Defias Brotherhood",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 78.31, 70.74),
             RaidIcon = { {
                 npcID = 332,
@@ -152,14 +143,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
             Qpart = {
                 [141] = { 1 },
             },
-            _comment = "Quest contract: 141 The Defias Brotherhood",
             NoArrow = true,
             IsQuestOnQuest = 141,
             _index = 10,
         },
         {
             Done = { 141 },
-            _comment = "Quest contract: 141 The Defias Brotherhood",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 56.33, 47.52),
             RaidIcon = { {
                 npcID = 234,
@@ -172,7 +161,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 142 },
-            _comment = "Quest contract: 142 The Defias Brotherhood",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 56.33, 47.52),
             RaidIcon = { {
                 npcID = 234,
@@ -190,7 +178,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
             Qpart = {
                 [142] = { 1 },
             },
-            _comment = "Quest contract: 142 The Defias Brotherhood",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 45.1, 69.33),
             IsQuestOnQuest = 142,
             Zone = 1436,
@@ -198,7 +185,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             Done = { 142 },
-            _comment = "Quest contract: 142 The Defias Brotherhood",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 56.33, 47.52),
             RaidIcon = { {
                 npcID = 234,
@@ -211,7 +197,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 155 },
-            _comment = "Quest contract: 155 The Defias Brotherhood",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 55.68, 47.5),
             RaidIcon = { {
                 npcID = 467,
@@ -229,14 +214,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
             Qpart = {
                 [155] = { 1 },
             },
-            _comment = "Quest contract: 155 The Defias Brotherhood",
             NoArrow = true,
             IsQuestOnQuest = 155,
             _index = 16,
         },
         {
             Done = { 155 },
-            _comment = "Quest contract: 155 The Defias Brotherhood",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 56.33, 47.52),
             RaidIcon = { {
                 npcID = 234,
@@ -249,7 +232,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 1649 },
-            _comment = "Quest contract: 1649 The Tome of Valor",
             Button = {
                 ["1649"] = 6776,
             },
@@ -266,7 +248,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             Done = { 1649 },
-            _comment = "Quest contract: 1649 The Tome of Valor",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 50.48, 47.49),
             RaidIcon = { {
                 npcID = 6171,
@@ -281,7 +262,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 1650 },
-            _comment = "Quest contract: 1650 The Tome of Valor",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 50.48, 47.49),
             RaidIcon = { {
                 npcID = 6171,
@@ -299,7 +279,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             Done = { 1650 },
-            _comment = "Quest contract: 1650 The Tome of Valor",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 41.69, 89.24),
             RaidIcon = { {
                 npcID = 6182,
@@ -314,7 +293,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 1651 },
-            _comment = "Quest contract: 1651 The Tome of Valor",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 41.69, 89.24),
             RaidIcon = { {
                 npcID = 6182,
@@ -334,14 +312,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
             Qpart = {
                 [1651] = { 1 },
             },
-            _comment = "Quest contract: 1651 The Tome of Valor",
             NoArrow = true,
             IsQuestOnQuest = 1651,
             _index = 23,
         },
         {
             Done = { 1651 },
-            _comment = "Quest contract: 1651 The Tome of Valor",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 41.69, 89.24),
             RaidIcon = { {
                 npcID = 6182,
@@ -356,7 +332,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 1652 },
-            _comment = "Quest contract: 1652 The Tome of Valor",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 41.69, 89.24),
             RaidIcon = { {
                 npcID = 6182,
@@ -374,7 +349,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             Done = { 1652 },
-            _comment = "Quest contract: 1652 The Tome of Valor",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 50.48, 47.49),
             RaidIcon = { {
                 npcID = 6171,
@@ -389,7 +363,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 1653 },
-            _comment = "Quest contract: 1653 The Test of Righteousness",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 50.48, 47.49),
             RaidIcon = { {
                 npcID = 6171,
@@ -407,7 +380,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             Done = { 1653 },
-            _comment = "Quest contract: 1653 The Test of Righteousness",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 52.49, 36.92),
             RaidIcon = { {
                 npcID = 6181,
@@ -422,7 +394,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 92742 },
-            _comment = "Quest contract: 92742 Testing the Wells",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 52.48, 52.97),
             RaidIcon = { {
                 npcID = 253092,
@@ -437,14 +408,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
             Qpart = {
                 [92742] = { 1, 2, 3 },
             },
-            _comment = "Quest contract: 92742 Testing the Wells",
             NoArrow = true,
             IsQuestOnQuest = 92742,
             _index = 30,
         },
         {
             Done = { 92742 },
-            _comment = "Quest contract: 92742 Testing the Wells",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 52.48, 52.97),
             RaidIcon = { {
                 npcID = 253092,
@@ -457,7 +426,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 92744 },
-            _comment = "Quest contract: 92744 Murloc Gills",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 52.48, 52.97),
             RaidIcon = { {
                 npcID = 253092,
@@ -475,7 +443,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
             Qpart = {
                 [92744] = { 1 },
             },
-            _comment = "Quest contract: 92744 Murloc Gills",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 43.92, 7.93),
             IsQuestOnQuest = 92744,
             Zone = 1436,
@@ -483,7 +450,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             Done = { 92744 },
-            _comment = "Quest contract: 92744 Murloc Gills",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 52.48, 52.97),
             RaidIcon = { {
                 npcID = 253092,
@@ -496,7 +462,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 92745 },
-            _comment = "Quest contract: 92745 The State of the Mines",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 52.48, 52.97),
             RaidIcon = { {
                 npcID = 253092,
@@ -516,7 +481,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
             Qpart = {
                 [92745] = { 1, 2 },
             },
-            _comment = "Quest contract: 92745 The State of the Mines",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 44.8, 23.12),
             IsQuestOnQuest = 92745,
             Zone = 1436,
@@ -524,7 +488,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             Done = { 92745 },
-            _comment = "Quest contract: 92745 The State of the Mines",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 52.48, 52.97),
             RaidIcon = { {
                 npcID = 253092,
@@ -537,7 +500,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 92747 },
-            _comment = "Quest contract: 92747 Moonbrook Espionage",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 52.48, 52.97),
             RaidIcon = { {
                 npcID = 253092,
@@ -555,14 +517,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
             Qpart = {
                 [92747] = { 1 },
             },
-            _comment = "Quest contract: 92747 Moonbrook Espionage",
             NoArrow = true,
             IsQuestOnQuest = 92747,
             _index = 39,
         },
         {
             Done = { 92747 },
-            _comment = "Quest contract: 92747 Moonbrook Espionage",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 52.48, 52.97),
             RaidIcon = { {
                 npcID = 253092,
@@ -575,7 +535,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 92748 },
-            _comment = "Quest contract: 92748 Explosive Consultation",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 52.48, 52.97),
             RaidIcon = { {
                 npcID = 253092,
@@ -591,7 +550,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             Done = { 92748 },
-            _comment = "Quest contract: 92748 Explosive Consultation",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 61.88, 30.56),
             RaidIcon = { {
                 npcID = 11026,
@@ -604,7 +562,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 92749 },
-            _comment = "Quest contract: 92749 A Dynamite Plan",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 61.88, 30.56),
             RaidIcon = { {
                 npcID = 11026,
@@ -622,14 +579,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
             Qpart = {
                 [92749] = { 1 },
             },
-            _comment = "Quest contract: 92749 A Dynamite Plan",
             NoArrow = true,
             IsQuestOnQuest = 92749,
             _index = 44,
         },
         {
             Done = { 92749 },
-            _comment = "Quest contract: 92749 A Dynamite Plan",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 61.88, 30.56),
             RaidIcon = { {
                 npcID = 11026,
@@ -642,7 +597,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 92750 },
-            _comment = "Quest contract: 92750 Detonation at a Distance",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 61.88, 30.56),
             RaidIcon = { {
                 npcID = 11026,
@@ -658,7 +612,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             Done = { 92750 },
-            _comment = "Quest contract: 92750 Detonation at a Distance",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 80.28, 70.07),
             RaidIcon = { {
                 npcID = 1325,
@@ -671,7 +624,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 92751 },
-            _comment = "Quest contract: 92751 Detonation at a Distance",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 80.28, 70.07),
             RaidIcon = { {
                 npcID = 1325,
@@ -689,14 +641,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
             Qpart = {
                 [92751] = { 1 },
             },
-            _comment = "Quest contract: 92751 Detonation at a Distance",
             NoArrow = true,
             IsQuestOnQuest = 92751,
             _index = 49,
         },
         {
             Done = { 92751 },
-            _comment = "Quest contract: 92751 Detonation at a Distance",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 61.88, 30.56),
             RaidIcon = { {
                 npcID = 11026,
@@ -709,7 +659,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 92752 },
-            _comment = "Quest contract: 92752 Explosive Consultation",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 61.88, 30.56),
             RaidIcon = { {
                 npcID = 11026,
@@ -729,14 +678,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
             Qpart = {
                 [92752] = { 1 },
             },
-            _comment = "Quest contract: 92752 Explosive Consultation",
             NoArrow = true,
             IsQuestOnQuest = 92752,
             _index = 52,
         },
         {
             Done = { 92752 },
-            _comment = "Quest contract: 92752 Explosive Consultation",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 52.48, 52.97),
             RaidIcon = { {
                 npcID = 253092,
@@ -959,7 +906,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
             Qpart = {
                 [1654] = { 1, 2, 3, 4 },
             },
-            _comment = "Quest contract: 1654 The Test of Righteousness",
             NoArrow = true,
             Dungeon = "DM",
             InstanceQuest = true,
@@ -1031,7 +977,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 389 },
-            _comment = "Quest contract: 389 Bazil Thredd",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 57.74, 47.86),
             RaidIcon = { {
                 npcID = 1646,
@@ -1047,7 +992,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             Done = { 389 },
-            _comment = "Quest contract: 389 Bazil Thredd",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 51.49, 69.38),
             RaidIcon = { {
                 npcID = 1719,
@@ -1060,7 +1004,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 1654 },
-            _comment = "Quest contract: 1654 The Test of Righteousness",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 52.49, 36.92),
             RaidIcon = { {
                 npcID = 6181,
@@ -1078,7 +1021,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             Done = { 1654 },
-            _comment = "Quest contract: 1654 The Test of Righteousness",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 52.49, 36.92),
             RaidIcon = { {
                 npcID = 6181,
@@ -1093,7 +1035,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 1806 },
-            _comment = "Quest contract: 1806 The Test of Righteousness",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 52.49, 36.92),
             RaidIcon = { {
                 npcID = 6181,
@@ -1111,7 +1052,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
         },
         {
             Done = { 1806 },
-            _comment = "Quest contract: 1806 The Test of Righteousness",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 52.49, 36.92),
             RaidIcon = { {
                 npcID = 6181,
