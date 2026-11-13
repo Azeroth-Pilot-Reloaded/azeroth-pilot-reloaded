@@ -145,4 +145,6 @@
     <Script file="Routes/Forever/Shared/Forever_Class_Hunter_Rhokdelar_Leaf_Raid_Collection.lua"/>
     <Script file="Routes/Forever/Shared/Forever_Class_Hunter_Rhokdelar_Sinew_Raid_Collection.lua"/>
     <Script file="Routes/Forever/Special/Forever_Alliance_Cozy_Sleeping_Bag.lua"/>
+    <Script file="Routes/Forever/Miscellaneous/Forever_Library_Books.lua"/>
+    <Script file="Routes/Forever/Miscellaneous/Forever_Stalk_With_The_Earthmother.lua"/>
 </Ui>
