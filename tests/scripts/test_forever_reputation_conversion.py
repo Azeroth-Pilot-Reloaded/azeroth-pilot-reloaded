@@ -38,13 +38,18 @@ class ReputationConversionTests(unittest.TestCase):
         self.assertEqual(len(catalog.routes), 1)
         route = catalog.routes['Forever-Reputation-98765']
         RouteSchema(catalog).validate('invented', route)
-        self.assertEqual(route['label'], 'Forever - Inventée')
+        self.assertEqual(route['label'], 'Réputation - Inventée')
+        self.assertIn('Forever - Invented', route['legacyLabels'].values())
+        self.assertIn('Forever - Inventée', route['legacyLabels'].values())
+        self.assertEqual(exported['enUS']['Forever - Reputation - Invented'], 'Reputation - Invented')
+        self.assertNotIn('FOREVER_REPUTATION_TITLE_98765', exported['enUS'])
         self.assertEqual(route['conditions'], {'MinLevel': 17, 'Faction': 'Alliance'})
         self.assertFalse(route['autoStartOnMap'])
         self.assertEqual(route['steps'][1]['Reputation'],
                          {'factionID': 98765, 'level': 5, 'type': 'standard'})
         self.assertEqual(route['steps'][2]['Reputation']['level'], 8)
         self.assertTrue(route['steps'][3]['RouteCompleted'])
+        self.assertEqual(route['steps'][2]['Note'], {1: 'FOREVER_REPUTATION_ACTIVITY_EXCHANGE'})
         self.assertEqual(exported['frFR']['FOREVER_REPUTATION_ACTIVITY_EXCHANGE'],
                          'Échangez les jetons.')
 
@@ -119,6 +124,29 @@ class ReputationConversionTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'Undocumented native quests'):
                 converter.build(self.source, self.output, self.translations)
         self.assertFalse(self.output.exists())
+
+    def test_key_migration_is_an_explicit_separate_output(self):
+        migration = self.root / 'cache' / 'keys.json'
+        converter.build(self.source, self.output, self.translations, migration)
+        self.assertEqual(json.loads(migration.read_text(encoding='utf-8')),
+                         {'FOREVER_REPUTATION_TITLE_98765': 'Forever - Reputation - Invented'})
+
+    def test_note_merge_preserves_existing_notes_and_removes_nested_comments(self):
+        step = {'Note': ['FIRST', 'SECOND'], 'ExtraLineText': ['THIRD'], '_comment': 'old',
+                'Not': {'_comment': 'nested', 'IsQuestOnQuest': 12345}}
+        self.assertEqual(converter.normalize_step(step),
+                         {'Note': ['FIRST', 'SECOND', 'THIRD'], 'Not': {'IsQuestOnQuest': 12345}})
+        self.assertEqual(converter.normalize_step({'Note': 'FIRST', 'ExtraLineText': 'SECOND'}),
+                         {'Note': ['FIRST', 'SECOND']})
+        self.assertEqual(step['Note'], ['FIRST', 'SECOND'])
+
+    def test_native_instruction_normalization_is_applied_to_generated_routes(self):
+        native = {'Note': 'ORIGINAL', 'ExtraLineText': ['ADDITIONAL'], '_comment': 'discard'}
+        with patch.object(converter, 'native_plan', return_value={0: [native]}):
+            source = converter.render_route(self.entry)
+        self.assertNotIn('ExtraLineText', source)
+        self.assertNotIn('_comment', source)
+        self.assertIn('Note = { "ORIGINAL", "ADDITIONAL" }', source)
 
 
 if __name__ == '__main__':
