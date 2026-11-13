@@ -80,12 +80,13 @@ An action waits for completion; a failed step condition skips the step. Use one 
 | `Group`           | Marks an optional group quest and shows a popup (`questID`, `Number`).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | `Group = { questID = 51384, Number = 3 }`                                                                   |
 | `GroupTask`       | Associates the step with `WantedQuestList` to store the player's decision for a group quest.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | `GroupTask = 51384`                                                                                         |
 | `KillNPC`         | Wait for an observed boss death in the specified Forever dungeon. Requires `npcID`, `name` and `dungeonKey`; see dungeon checkpoints below.                                                                                                                                                                                                                                                                                                                                                                                                                                                             | `KillNPC = { npcID = 11520, name = "Taragaman the Hungerer", dungeonKey = "RFC" }`                          |
-| `LearnProfession` | Checks if a specific profession spell is learned.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | `LearnProfession = 2259`                                                                                    |
-| `LearnSkill`      | Train spells at a trainer. Waits if unavailable or unaffordable; add the required `MinLevel` and class filters.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | `LearnSkill = { spellID = 6673 }, MinLevel = 1`                                                             |
+| `LearnProfession` | Wait for the requested profession spell to be learned. Without `Coord` or `Coords`, resolve a matching reachable trainer through the service catalogue; arrival does not complete learning. | `LearnProfession = 2259`                                                                                    |
+| `LearnSkill`      | Train the selected spells at a trainer. Without `Coord` or `Coords`, resolve a matching reachable training service. Wait if unavailable or unaffordable; apply the required `MinLevel` and class filters. | `LearnSkill = { spellID = 6673 }, MinLevel = 1`                                                             |
 | `LeaveInstance`   | Prompts to leave the instance once objectives are done. A Forever `dungeonKey` checkpoint completes once the player is outside all instances.                                                                                                                                                                                                                                                                                                                                                                                                                                                           | `LeaveInstance = { questID = 12345, mapID = 2505 }` or `{ dungeonKey = "RFC" }`                             |
 | `LeaveQuest`      | Abandons a single quest from the quest log.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | `LeaveQuest = 38254`                                                                                        |
 | `LeaveQuests`     | Abandons multiple quests from the quest log.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | `LeaveQuests = { 38254, 38257 }`                                                                            |
 | `LeaveScenario`   | Prompts to leave the scenario once objectives are done.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `LeaveScenario = { questID = 86912, mapID = 2505 }`                                                         |
+| `SkillGoal` | Wait until the actual learned skill rank reaches the target. Display localized current/target progress; crafting stays manual. See [Skill rank goals](#skill-rank-goals). | `SkillGoal = { skillID = 8888, rank = 25 }` |
 | `LootItems`       | Wait for each quantity (default 1) in bags plus the saved character bank. A completed `questID` also satisfies its entry; no virtual loot or remembered counts.                                                                                                                                                                                                                                                                                                                                                                                                                                         | `LootItems = { { questID = 86644, itemID = 244143, quantity = 1 } }`                                        |
 | `LootMoney`       | Wait for cash plus carried items' estimated vendor value to reach `copper`; shows a progress bar. Excludes banks and uncached prices. See resource fields below.                                                                                                                                                                                                                                                                                                                                                                                                                                        | `LootMoney = { copper = 10, includeEquipped = true }`                                                       |
 | `MountVehicle`    | Automatically validates when a mount / boarding event is detected.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | `MountVehicle = true`                                                                                       |
@@ -131,6 +132,84 @@ An action waits for completion; a failed step condition skips the step. Use one 
 | `LootItems`, `Collection`                                  | Character-bank counts are saved while the bank is accessible and reused after closing/reloading. Moving items between bags and bank does not increase the combined count.                                                                                                                                                                          |
 | `Achievement` legacy criterion                             | `Achievement = { achievementID = 61576, criteriaIndex = 1 }` tracks by position; prefer a stable `criteriaID`.                                                                                                                                                                                                                                     |
 | `LootMoney`                                                | Use it as the main objective. `Money` checks spendable cash; it is not a replacement for this collection objective.                                                                                                                                                                                                                                |
+
+### Skill rank goals
+
+`SkillGoal = { skillID = 8888, rank = 25 }` is a primary step action on Retail
+and Forever. Both fields are required positive integers: `skillID` identifies
+the skill line, and `rank` is the target learned rank. No other fields are accepted.
+Use one primary action per step; keep training, collecting reagents and reaching
+a skill rank in separate steps.
+
+The current step, arrow action text and quest-order list show the native localized
+skill name and `current/target` progress. If the name is unavailable, the client’s
+localized unknown label and numeric skill ID identify the objective. The step
+completes only when the observed rank is greater than or equal to `rank`. Missing,
+unlearned or partially populated skill data yields zero; headers never count as
+skills. A skill cap, temporary bonus, reagent count, recipe cast or projected number
+of crafts does not establish that the target rank has been learned. Crafting stays
+manual. Native skill changes refresh the objective through the existing event
+dispatcher, without periodic polling.
+
+Ordinary step conditions still control visibility and skipping. `SkillGoal` waits;
+`Skill` filters another action. Do not add a `Skill` filter requiring the same target
+rank to a pending goal: that filter would skip it before the target is reached.
+A goal can appear in a parallel group; the group's existing activation rules remain
+unchanged. Put any guard that must remain live on the goal step itself. The preview
+reads progress without advancing the route; group snapshots carry the rendered
+progress through the existing text protocol.
+
+Synthetic example (`8888` is an invented skill ID; replace it with the intended
+client skill-line ID):
+
+```lua
+{
+    SkillGoal = { skillID = 8888, rank = 25 },
+    MinLevel = 10,
+},
+```
+
+At an eligible level, learned rank 24 keeps this step pending; rank 25 or 26
+completes it. With missing skill data it remains pending at `0/25`. Below level 10,
+the level filter skips the step rather than waiting for either level or skill.
+
+### Trainer destinations without coordinates
+
+`LearnProfession` and `LearnSkill` do not require `Coord`, `Coords` or `Zone`.
+When both coordinate fields are absent, APR searches the service catalogue for
+eligible reachable trainers and chooses by estimated travel time. Navigation stays
+inside the active guide: reaching the trainer does not advance the authored step
+or replace the guide with a service detour. Explicit `Coord` or `Coords` takes
+precedence and keeps the authored destination.
+
+Known initial profession-learning spells select that profession's trainer category;
+known weapon-learning spells in `LearnSkill` select the corresponding weapon
+trainer. Ordinary `LearnSkill` class training uses the character's class. Optional
+`LearnSkill.npcID` restricts the destination and the trainer interaction to that NPC.
+For `spellIDs`, all requested spells participate in capability matching; an explicit
+trainer capability list missing any requested spell is rejected. A higher-rank or
+recipe spell supplied through `LearnProfession` requires exact catalogue evidence
+that the trainer teaches it. Missing evidence keeps destination resolution pending
+instead of assuming that any trainer for a profession teaches every rank or recipe.
+Unknown character/location data or the absence of a reachable matching trainer
+keeps the learning instruction pending; it does not mark the spell as learned.
+
+`LearnProfession` completes from native learned-spell evidence and does not buy
+training itself. `LearnSkill` retains its existing trainer interaction: the player
+opens the trainer; APR can buy selected available, affordable services when its
+action guards allow it. Combat, conditions, trainer restrictions and modifier
+overrides still apply. This routing behavior does not craft anything and does not
+complete a subsequent `SkillGoal` merely because training or travel occurred.
+
+```lua
+{ LearnProfession = 2259 }, -- Initial Alchemy learning; no fixed trainer coordinate.
+{ LearnSkill = { spellID = 6673 }, Class = "WARRIOR" }, -- Class training.
+```
+
+For all-services training, use `LearnSkill = { allAvailable = true, npcID = 911 }`;
+the trainer ID is required. Keep the appropriate class and level filters on the
+step. Missing service-catalogue data is not a reason to remove an explicit authored
+coordinate or broaden an NPC restriction.
 
 ### Forever dungeon checkpoints
 
@@ -346,7 +425,7 @@ Conditions on the same table combine with AND. Use `AnyOf` for alternatives, `Al
 | `QuestLineSkip`                     | Prevents the optional group popup if a questline is intentionally skipped.                                                                                                        | `QuestLineSkip = 51226`                                                                                    |
 | `Race`                              | Require one or more races; accepts names or race IDs.                                                                                                                             | `Race = { "Orc", "Troll" }`                                                                                |
 | `ReputationLevel`                   | Shows the step only after the requested standing, renown level, or friendship rank has been reached.                                                                              | `ReputationLevel = { factionID = 2590, type = APR.REPUTATION_TYPE.Renown, level = 10 }`                    |
-| `Skill`                             | Compare learned skill rank, or its cap with `maximum = true`. Accepts a key, skill ID or localized `name`; default rank is 1 and operator is `>=`.                                | `Skill = { skill = "cooking", rank = 50, operator = ">=" }`                                                |
+| `Skill`                             | Filter only: compare learned skill rank, or its cap with `maximum = true`. Accepts a key, skill ID or localized `name`; default rank is 1 and operator is `>=`. An unmet filter skips the step; use `SkillGoal` to wait for a rank. | `Skill = { skill = "cooking", rank = 50, operator = ">=" }`                                                |
 | `SkipForLvl`                        | Skips the step once the player's effective level is greater than or equal to the given value.                                                                                     | `SkipForLvl = 89.18`                                                                                       |
 | `SkipForPrimaryProfessions`         | Skip once at least X primary professions are learned (positive integer). `2` keeps the step with zero or one profession. Cooking, fishing, first aid and archaeology never count. | `SkipForPrimaryProfessions = 2`                                                                            |
 | `SkipForReputation`                 | Hides and skips the step once the requested standing, renown level, or friendship rank has been reached.                                                                          | `SkipForReputation = { factionID = 2773, type = APR.REPUTATION_TYPE.Friendship, level = 5 }`               |

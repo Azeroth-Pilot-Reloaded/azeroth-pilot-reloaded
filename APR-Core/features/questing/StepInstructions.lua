@@ -11,7 +11,8 @@ local handlers = APR.stepHandlers
 
 local function ActionTextScope(scope, action)
     if APR.currentStep.SetActionTextScope then APR.currentStep:SetActionTextScope(scope, action) end
-end--[[APR_DIAG]]; ActionTextScope = APRTrace("APR-Core/features/questing/StepInstructions.lua:12:ActionTextScope#1", ActionTextScope)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+ActionTextScope = APRTrace("APR-Core/features/questing/StepInstructions.lua:12:ActionTextScope#1", ActionTextScope)--[[/APR_DIAG]]
 
 function handlers.GroupQuestPopup()
     local step = APR:GetCurrentStep()
@@ -27,23 +28,25 @@ function handlers.GroupQuestPopup()
         APR.questionDialog:CreateQuestionPopup(
             dialogText,
             dialogText,
-            
-             --[[APR_DIAG]]APRTrace("APR-Core/features/questing/StepInstructions.lua:31:callback#3", --[[/APR_DIAG]]function()
+            --[[APR_DIAG]]
+            APRTrace("APR-Core/features/questing/StepInstructions.lua:29:callback#3", --[[/APR_DIAG]] function()
                 if not APR:IsStepContextCurrent(context) then return end
                 APRData[APR.PlayerID].WantedQuestList[questId] = 1
                 APR:UpdateNextStep()
-            end--[[APR_DIAG]])--[[/APR_DIAG]],
-            
-             --[[APR_DIAG]]APRTrace("APR-Core/features/questing/StepInstructions.lua:37:callback#4", --[[/APR_DIAG]]function()
+            end--[[APR_DIAG]]) --[[/APR_DIAG]],
+            --[[APR_DIAG]]
+            APRTrace("APR-Core/features/questing/StepInstructions.lua:34:callback#4", --[[/APR_DIAG]] function()
                 if not APR:IsStepContextCurrent(context) then return end
                 APRData[APR.PlayerID].WantedQuestList[questId] = 0
                 APR:UpdateNextStep()
-            end--[[APR_DIAG]])--[[/APR_DIAG]]
+            end--[[APR_DIAG]]) --[[/APR_DIAG]]
         )
     else
         APR:UpdateNextStep()
     end
-end--[[APR_DIAG]]; handlers.GroupQuestPopup = APRTrace("APR-Core/features/questing/StepInstructions.lua:16:handlers.GroupQuestPopup#2", handlers.GroupQuestPopup)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+handlers.GroupQuestPopup =
+    APRTrace("APR-Core/features/questing/StepInstructions.lua:16:handlers.GroupQuestPopup#2", handlers.GroupQuestPopup)--[[/APR_DIAG]]
 
 local extraLineQuests = {
     [13544] = { itemID = 44886, description = "KILL_FLEETFOOT", count = 1 },
@@ -68,7 +71,11 @@ local function HandleSingleItemRequirement(questID, requirement)
     end
     APR:NextQuestStep()
     return true
-end--[[APR_DIAG]]; HandleSingleItemRequirement = APRTrace("APR-Core/features/questing/StepInstructions.lua:59:HandleSingleItemRequirement#5", HandleSingleItemRequirement)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+HandleSingleItemRequirement = APRTrace(
+    "APR-Core/features/questing/StepInstructions.lua:56:HandleSingleItemRequirement#5",
+    HandleSingleItemRequirement
+)--[[/APR_DIAG]]
 
 -- This helper centralises the handling of ExtraLine quest hints so future special cases stay readable.
 -- Returning true means the helper triggered a step transition and the caller should exit early.
@@ -110,7 +117,9 @@ function handlers.HandleExtraLine(extraline)
 
     -- No special ExtraLine handling triggered.
     return false
-end--[[APR_DIAG]]; handlers.HandleExtraLine = APRTrace("APR-Core/features/questing/StepInstructions.lua:75:handlers.HandleExtraLine#6", handlers.HandleExtraLine)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+handlers.HandleExtraLine =
+    APRTrace("APR-Core/features/questing/StepInstructions.lua:70:handlers.HandleExtraLine#6", handlers.HandleExtraLine)--[[/APR_DIAG]]
 
 function APR:SetButton()
     if not (APR.IsInRouteZone or APR.navigation ~= nil) then
@@ -159,7 +168,8 @@ function APR:SetButton()
 
     -- After doing some count to the current step, it updates the current step. So we need to sync the current cooldown
     APR.currentStep:UpdateStepButtonCooldowns()
-end--[[APR_DIAG]]; APR.SetButton = APRTrace("APR-Core/features/questing/StepInstructions.lua:115:APR:SetButton#7", APR.SetButton)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.SetButton = APRTrace("APR-Core/features/questing/StepInstructions.lua:110:APR:SetButton#7", APR.SetButton)--[[/APR_DIAG]]
 
 -- Shared secondary fields are evaluated before the primary route action.
 function handlers.RenderRequirements(step, showStepDetails, currentStepIndex)
@@ -309,4 +319,8 @@ function handlers.RenderRequirements(step, showStepDetails, currentStepIndex)
             end
         end
     end
-end--[[APR_DIAG]]; handlers.RenderRequirements = APRTrace("APR-Core/features/questing/StepInstructions.lua:165:handlers.RenderRequirements#8", handlers.RenderRequirements)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+handlers.RenderRequirements = APRTrace(
+    "APR-Core/features/questing/StepInstructions.lua:160:handlers.RenderRequirements#8",
+    handlers.RenderRequirements
+)--[[/APR_DIAG]]
