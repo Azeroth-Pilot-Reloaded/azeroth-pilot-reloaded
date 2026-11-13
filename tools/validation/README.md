@@ -3,6 +3,28 @@
 All regression tests now live in `tests/`. Run `python tests/run.py` for all
 Python, Lua and route syntax checks; see `tests/README.md` for dependencies and CI.
 
+## Forever route audit
+
+Run `python tools/validation/audit_forever_routes.py --json .cache/forever-route-audit/report.json`
+from the repository root. It discovers all Forever Lua sources, loads each file
+independently, checks source structure and manifests, then audits character guards
+and progression conditions using the shared route schema and engine semantics.
+The command never changes or repairs route files.
+
+The JSON contains every finding with its rule, severity, source file, route key,
+declaration path and supporting evidence. Console output is limited to 30 findings
+by default (`--limit` changes this limit without truncating JSON). Errors produce
+exit code 1; review warnings separately, or use `--fail-on-warning` to make them fail
+the command too. An empty directory or failed load is an error, never a clean audit.
+
+Filters that reject a character normally skip the instruction; they do not prove
+a deadlock. Route and group restrictions, alternative branches and quest possession
+can legitimately protect an instruction without repeating `Faction` on every step.
+The audit distinguishes contradictory conditions and missing coverage from external
+prerequisites that cannot be proved offline. Warnings require source review; absence
+of findings does not certify quest/NPC availability, loot or progression in the client.
+Tests for these mechanisms use invented declarations rather than fixed guide content.
+
 ## Formatting in VS Code
 
 Run `npm ci` at the repository root to install the pinned development tools:
