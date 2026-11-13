@@ -11,20 +11,24 @@ local QuestOrderListUtils = APR.questOrderListSupport
 
 local function colorByCompletion(isCompleted, currentStep, stepIndex)
     return (isCompleted or (currentStep and currentStep > stepIndex)) and "green" or "gray"
-end--[[APR_DIAG]]; colorByCompletion = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:12:colorByCompletion#1", colorByCompletion)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+colorByCompletion = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:12:colorByCompletion#1", colorByCompletion)--[[/APR_DIAG]]
 
 local function getQuestName(questID)
     return APR:GetQuestTitle(questID) or UNKNOWN
-end--[[APR_DIAG]]; getQuestName = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:16:getQuestName#2", getQuestName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+getQuestName = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:16:getQuestName#2", getQuestName)--[[/APR_DIAG]]
 
 local function questLabel(id)
     return tostring(id) .. " - " .. getQuestName(id)
-end--[[APR_DIAG]]; questLabel = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:20:questLabel#3", questLabel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+questLabel = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:20:questLabel#3", questLabel)--[[/APR_DIAG]]
 
 local BUTTON_KINDS = { "item", "spell" }
 local function compareButtonKeys(left, right)
     return tostring(left) < tostring(right)
-end--[[APR_DIAG]]; compareButtonKeys = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:25:compareButtonKeys#4", compareButtonKeys)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+compareButtonKeys = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:25:compareButtonKeys#4", compareButtonKeys)--[[/APR_DIAG]]
 
 -- These options can accompany a primary action. Keep their instructions on the
 -- same row, and also render them when they are the only action on a step.
@@ -110,13 +114,16 @@ local function getAdditionalInstructions(step, actionKey, primaryKey, checkpoint
         end
     end
     return lines, complete
-end--[[APR_DIAG]]; getAdditionalInstructions = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:31:getAdditionalInstructions#5", getAdditionalInstructions)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+getAdditionalInstructions =
+    APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:31:getAdditionalInstructions#5", getAdditionalInstructions)--[[/APR_DIAG]]
 
 local function getRouteAction(step)
     for _, key in ipairs(APR.routeActionKeys or {}) do
         if step[key] then return key, step[key] end
     end
-end--[[APR_DIAG]]; getRouteAction = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:115:getRouteAction#6", getRouteAction)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+getRouteAction = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:95:getRouteAction#6", getRouteAction)--[[/APR_DIAG]]
 
 -- Previewing a route must never run its actions or create/reset action state.
 local function isRouteActionComplete(key, rule, isCurrentStep, checkpoint)
@@ -142,7 +149,9 @@ local function isRouteActionComplete(key, rule, isCurrentStep, checkpoint)
         return state.complete == true
     end
     return false
-end--[[APR_DIAG]]; isRouteActionComplete = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:122:isRouteActionComplete#7", isRouteActionComplete)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+isRouteActionComplete =
+    APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:102:isRouteActionComplete#7", isRouteActionComplete)--[[/APR_DIAG]]
 
 local function isObjectiveCompleted(questID, objectiveIndex, playerData, isMaxLevel)
     -- 1- quest completed
@@ -164,7 +173,9 @@ local function isObjectiveCompleted(questID, objectiveIndex, playerData, isMaxLe
         return quest.objectives[objectiveIndex].status == APR.QUEST_STATUS.COMPLETE
     end
     return false
-end--[[APR_DIAG]]; isObjectiveCompleted = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:147:isObjectiveCompleted#8", isObjectiveCompleted)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+isObjectiveCompleted =
+    APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:124:isObjectiveCompleted#8", isObjectiveCompleted)--[[/APR_DIAG]]
 
 -- Translate route entries into rows in the hidden render buffer. The window owns
 -- scheduling, cancellation and publishing; route-specific presentation stays here.
@@ -173,13 +184,15 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
     local sojournerSkipActive = APR:IsSojournerSkipActive()
     local function isStepVisible(step)
         return APR:StepFilterQoL(step) and not (sojournerSkipActive and APR:IsStepCampaignQuest(step))
-    end--[[APR_DIAG]]; isStepVisible = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:174:isStepVisible#10", isStepVisible)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    isStepVisible = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:149:isStepVisible#10", isStepVisible)--[[/APR_DIAG]]
     local playerID = APR.PlayerID
     local playerData = playerID and APRData and APRData[playerID] or nil
 
     local function safeTContains(list, value)
         return list ~= nil and tContains(list, value) or false
-    end--[[APR_DIAG]]; safeTContains = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:180:safeTContains#11", safeTContains)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    safeTContains = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:155:safeTContains#11", safeTContains)--[[/APR_DIAG]]
 
     local displayStepIndex = 1
     target.currentDisplayIndex = nil
@@ -193,10 +206,12 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
         -- Some preview titles leave their values in detail rows or have no value yet.
         -- Keep formatted instructions intact and hide any unresolved string placeholders.
         return title and (title:gsub("%%s", " "))
-    end--[[APR_DIAG]]; withInstructions = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:188:withInstructions#12", withInstructions)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    withInstructions = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:163:withInstructions#12", withInstructions)--[[/APR_DIAG]]
     local function addStepFrame(rowLayout, index, title, color, current)
         return QuestOrderListUtils:AddStepFrame(rowLayout, index, withInstructions(title), color, current)
-    end--[[APR_DIAG]]; addStepFrame = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:197:addStepFrame#13", addStepFrame)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    addStepFrame = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:172:addStepFrame#13", addStepFrame)--[[/APR_DIAG]]
     local function addStepFrameWithQuest(rowLayout, index, title, quests, color, current)
         return QuestOrderListUtils:AddStepFrameWithQuest(
             rowLayout,
@@ -206,7 +221,9 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
             color,
             current
         )
-    end--[[APR_DIAG]]; addStepFrameWithQuest = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:200:addStepFrameWithQuest#14", addStepFrameWithQuest)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    addStepFrameWithQuest =
+        APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:175:addStepFrameWithQuest#14", addStepFrameWithQuest)--[[/APR_DIAG]]
     local function renderRows()
         for rawIndex, step in ipairs(activeRouteSteps) do
             -- Hide step for Faction, Race, Class, Achievement
@@ -926,8 +943,14 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
                     displayStepIndex = displayStepIndex + 1
                 end
             end
-            --[[APR_DIAG]]APRYield--[=[--[[/APR_DIAG]]coroutine.yield--[[APR_DIAG]]]=]--[[/APR_DIAG]]()
+            --[[APR_DIAG]]
+            APRYield--[=[--[[/APR_DIAG]]coroutine.yield--[[APR_DIAG]]]=]--[[/APR_DIAG]]()
         end
-    end--[[APR_DIAG]]; renderRows = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:210:renderRows#15", renderRows)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]
+    renderRows = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:179:renderRows#15", renderRows)--[[/APR_DIAG]]
     return renderRows
-end--[[APR_DIAG]]; APR.questOrderList.CreateRouteRenderer = APRTrace("APR-Core/ui/route/QuestOrderListRows.lua:171:APR.questOrderList:CreateRouteRenderer#9", APR.questOrderList.CreateRouteRenderer)--[[/APR_DIAG]]
+end--[[APR_DIAG]]
+APR.questOrderList.CreateRouteRenderer = APRTrace(
+    "APR-Core/ui/route/QuestOrderListRows.lua:146:APR.questOrderList:CreateRouteRenderer#9",
+    APR.questOrderList.CreateRouteRenderer
+)--[[/APR_DIAG]]
