@@ -170,4 +170,19 @@
     <Script file="Routes/Forever/Dungeons/Shared/Forever_Shared_Dungeons_Sunken_Temple.lua"/>
     <Script file="Routes/Forever/Dungeons/Shared/Forever_Shared_Dungeons_Uldaman.lua"/>
     <Script file="Routes/Forever/Dungeons/Shared/Forever_Shared_Dungeons_Zul_Farrak.lua"/>
+    <Script file="Routes/Forever/Raids/Forever_Raids_ahnqiraj_temple.lua"/>
+    <Script file="Routes/Forever/Raids/Forever_Raids_barrow_deeps.lua"/>
+    <Script file="Routes/Forever/Raids/Forever_Raids_blackwing_lair.lua"/>
+    <Script file="Routes/Forever/Raids/Forever_Raids_blackwing_lair_blackhand.lua"/>
+    <Script file="Routes/Forever/Raids/Forever_Raids_hyjal_summit.lua"/>
+    <Script file="Routes/Forever/Raids/Forever_Raids_molten_core.lua"/>
+    <Script file="Routes/Forever/Raids/Forever_Raids_molten_core_aqual.lua"/>
+    <Script file="Routes/Forever/Raids/Forever_Raids_molten_core_core.lua"/>
+    <Script file="Routes/Forever/Raids/Forever_Raids_naxxramas.lua"/>
+    <Script file="Routes/Forever/Raids/Forever_Raids_naxxramas_dread_citadel.lua"/>
+    <Script file="Routes/Forever/Raids/Forever_Raids_onyxias_lair.lua"/>
+    <Script file="Routes/Forever/Raids/Forever_Raids_onyxias_lair_drakefire_a.lua"/>
+    <Script file="Routes/Forever/Raids/Forever_Raids_onyxias_lair_drakefire_h.lua"/>
+    <Script file="Routes/Forever/Raids/Forever_Raids_ruins_of_ahnqiraj.lua"/>
+    <Script file="Routes/Forever/Raids/Forever_Raids_zulgurub.lua"/>
 </Ui>
