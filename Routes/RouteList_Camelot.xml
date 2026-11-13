@@ -186,4 +186,16 @@
     <Script file="Routes/Forever/Raids/Forever_Raids_ruins_of_ahnqiraj.lua"/>
     <Script file="Routes/Forever/Raids/Forever_Raids_zulgurub.lua"/>
     <Script file="Routes/Forever/Reputation/Forever_Reputations.lua"/>
+    <Script file="Routes/Forever/Professions/Forever_Profession_alchemy.lua"/>
+    <Script file="Routes/Forever/Professions/Forever_Profession_blacksmithing.lua"/>
+    <Script file="Routes/Forever/Professions/Forever_Profession_cooking.lua"/>
+    <Script file="Routes/Forever/Professions/Forever_Profession_enchanting.lua"/>
+    <Script file="Routes/Forever/Professions/Forever_Profession_engineering.lua"/>
+    <Script file="Routes/Forever/Professions/Forever_Profession_first_aid.lua"/>
+    <Script file="Routes/Forever/Professions/Forever_Profession_fishing.lua"/>
+    <Script file="Routes/Forever/Professions/Forever_Profession_herbalism.lua"/>
+    <Script file="Routes/Forever/Professions/Forever_Profession_leatherworking.lua"/>
+    <Script file="Routes/Forever/Professions/Forever_Profession_mining.lua"/>
+    <Script file="Routes/Forever/Professions/Forever_Profession_skinning.lua"/>
+    <Script file="Routes/Forever/Professions/Forever_Profession_tailoring.lua"/>
 </Ui>
