@@ -17,7 +17,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
     steps = {
         {
             PickUp = { 5726 },
-            _comment = "Quest contract: 5726 Hidden Enemies",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.73, 37.82),
             RaidIcon = { {
                 npcID = 4949,
@@ -32,7 +31,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             Qpart = {
                 [5726] = { 1 },
             },
-            _comment = "Quest contract: 5726 Hidden Enemies",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1411, 51.61, 10.15),
             IsQuestOnQuest = 5726,
             Zone = 1411,
@@ -40,7 +38,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
         },
         {
             Done = { 5726 },
-            _comment = "Quest contract: 5726 Hidden Enemies",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.73, 37.82),
             RaidIcon = { {
                 npcID = 4949,
@@ -53,7 +50,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
         },
         {
             PickUp = { 5727 },
-            _comment = "Quest contract: 5727 Hidden Enemies",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.73, 37.82),
             RaidIcon = { {
                 npcID = 4949,
@@ -71,7 +67,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             Qpart = {
                 [5727] = { 1 },
             },
-            _comment = "Quest contract: 5727 Hidden Enemies",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 49.47, 50.59),
             IsQuestOnQuest = 5727,
             Zone = 1454,
@@ -79,7 +74,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
         },
         {
             Done = { 5727 },
-            _comment = "Quest contract: 5727 Hidden Enemies",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.73, 37.82),
             RaidIcon = { {
                 npcID = 4949,

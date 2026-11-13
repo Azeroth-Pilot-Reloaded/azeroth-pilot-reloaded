@@ -16,7 +16,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
     mapID = 1437,
     steps = { {
         PickUp = { 463 },
-        _comment = "Quest contract: 463 The Greenwarden",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 10.9, 59.64),
         RaidIcon = { {
             npcID = 1239,
@@ -28,7 +27,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 1,
     }, {
         PickUp = { 469 },
-        _comment = "Quest contract: 469 Daily Delivery",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 49.92, 39.37),
         RaidIcon = { {
             npcID = 2093,
@@ -40,7 +38,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 2,
     }, {
         PickUp = { 95737 },
-        _comment = "Quest contract: 95737 Seeking Caitlin",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 34.98, 48.46),
         RaidIcon = { {
             npcID = 3970,
@@ -52,7 +49,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 3,
     }, {
         PickUp = { 95663 },
-        _comment = "Quest contract: 95663 Dragonmaw Rumors",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 74.54, 35.64),
         RaidIcon = { {
             npcID = 2787,
@@ -64,7 +60,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 4,
     }, {
         PickUp = { 95697 },
-        _comment = "Quest contract: 95697 Changing Tastes",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 57.2, 53.32),
         RaidIcon = { {
             npcID = 3368,
@@ -76,7 +71,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 5,
     }, {
         PickUp = { 95772 },
-        _comment = "Quest contract: 95772 Songblade Search",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1433, 25.79, 46.44),
         RaidIcon = { {
             npcID = 956,
@@ -88,7 +82,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 6,
     }, {
         Done = { 463 },
-        _comment = "Quest contract: 463 The Greenwarden",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
         RaidIcon = { {
             npcID = 1244,
@@ -102,13 +95,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Qpart = {
             [469] = { 1 },
         },
-        _comment = "Quest contract: 469 Daily Delivery",
         NoArrow = true,
         IsQuestOnQuest = 469,
         _index = 8,
     }, {
         Done = { 95737 },
-        _comment = "Quest contract: 95737 Seeking Caitlin",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 11.88, 58.82),
         RaidIcon = { {
             npcID = 1480,
@@ -120,7 +111,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 9,
     }, {
         Done = { 95772 },
-        _comment = "Quest contract: 95772 Songblade Search",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1433, 25.79, 46.44),
         RaidIcon = { {
             npcID = 956,
@@ -132,7 +122,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 10,
     }, {
         PickUp = { 276 },
-        _comment = "Quest contract: 276 Tramping Paws",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
         RaidIcon = { {
             npcID = 1244,
@@ -147,7 +136,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 11,
     }, {
         Done = { 469 },
-        _comment = "Quest contract: 469 Daily Delivery",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 8.55, 55.74),
         RaidIcon = { {
             npcID = 2094,
@@ -159,7 +147,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 12,
     }, {
         PickUp = { 95647 },
-        _comment = "Quest contract: 95647 Lost in the Thicket Things",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 11.88, 58.82),
         RaidIcon = { {
             npcID = 1480,
@@ -176,14 +163,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Qpart = {
             [276] = { 1, 2 },
         },
-        _comment = "Quest contract: 276 Tramping Paws",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 60.33, 73.77),
         IsQuestOnQuest = 276,
         Zone = 1437,
         _index = 14,
     }, {
         PickUp = { 98815 },
-        _comment = "Quest contract: 98815 Highland Hides",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 8.55, 55.74),
         RaidIcon = { {
             npcID = 2094,
@@ -198,7 +183,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 15,
     }, {
         Done = { 276 },
-        _comment = "Quest contract: 276 Tramping Paws",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
         RaidIcon = { {
             npcID = 1244,
@@ -210,7 +194,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 16,
     }, {
         PickUp = { 277 },
-        _comment = "Quest contract: 277 Fire Taboo",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
         RaidIcon = { {
             npcID = 1244,
@@ -227,14 +210,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Qpart = {
             [277] = { 1 },
         },
-        _comment = "Quest contract: 277 Fire Taboo",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 61.27, 58.42),
         IsQuestOnQuest = 277,
         Zone = 1437,
         _index = 18,
     }, {
         Done = { 277 },
-        _comment = "Quest contract: 277 Fire Taboo",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
         RaidIcon = { {
             npcID = 1244,
@@ -246,7 +227,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 19,
     }, {
         PickUp = { 275 },
-        _comment = "Quest contract: 275 Blisters on The Land",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
         RaidIcon = { {
             npcID = 1244,
@@ -263,14 +243,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Qpart = {
             [275] = { 1 },
         },
-        _comment = "Quest contract: 275 Blisters on The Land",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 27.38, 37.12),
         IsQuestOnQuest = 275,
         Zone = 1437,
         _index = 21,
     }, {
         Done = { 275 },
-        _comment = "Quest contract: 275 Blisters on The Land",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
         RaidIcon = { {
             npcID = 1244,
@@ -282,7 +260,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 22,
     }, {
         PickUp = { 95646 },
-        _comment = "Quest contract: 95646 Horrors in the Highland",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
         RaidIcon = { {
             npcID = 1244,
@@ -306,7 +283,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 24,
     }, {
         PickUp = { 95795 },
-        _comment = "Quest contract: 95795 Fallen in the Fen",
         NoArrow = true,
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
@@ -364,7 +340,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Qpart = {
             [95646] = { 1 },
         },
-        _comment = "Quest contract: 95646 Horrors in the Highland",
         NoArrow = true,
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
@@ -374,7 +349,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Qpart = {
             [95647] = { 1 },
         },
-        _comment = "Quest contract: 95647 Lost in the Thicket Things",
         NoArrow = true,
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
@@ -382,7 +356,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 31,
     }, {
         Done = { 95663 },
-        _comment = "Quest contract: 95663 Dragonmaw Rumors",
         NoArrow = true,
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
@@ -395,7 +368,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 32,
     }, {
         PickUp = { 95664 },
-        _comment = "Quest contract: 95664 Elder Knowledge",
         Button = {
             ["95664"] = 270866,
         },
@@ -413,7 +385,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Qpart = {
             [95697] = { 1 },
         },
-        _comment = "Quest contract: 95697 Changing Tastes",
         NoArrow = true,
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
@@ -421,7 +392,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 34,
     }, {
         PickUp = { 95810 },
-        _comment = "Quest contract: 95810 Lost Relic Carry",
         Button = {
             ["95810"] = 270865,
         },
@@ -439,7 +409,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Qpart = {
             [98815] = { 1 },
         },
-        _comment = "Quest contract: 98815 Highland Hides",
         NoArrow = true,
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
@@ -449,7 +418,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Qpart = {
             [95664] = { 1 },
         },
-        _comment = "Quest contract: 95664 Elder Knowledge",
         NoArrow = true,
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
@@ -457,7 +425,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 37,
     }, {
         PickUp = { 95682 },
-        _comment = "Quest contract: 95682 Open the Maw",
         NoArrow = true,
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
@@ -475,7 +442,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Qpart = {
             [95810] = { 1 },
         },
-        _comment = "Quest contract: 95810 Lost Relic Carry",
         NoArrow = true,
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
@@ -485,7 +451,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Qpart = {
             [95682] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 95682 Open the Maw",
         NoArrow = true,
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
@@ -493,7 +458,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 40,
     }, {
         Done = { 95682 },
-        _comment = "Quest contract: 95682 Open the Maw",
         NoArrow = true,
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
@@ -513,7 +477,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 42,
     }, {
         Done = { 95646 },
-        _comment = "Quest contract: 95646 Horrors in the Highland",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 56.37, 40.4),
         RaidIcon = { {
             npcID = 1244,
@@ -525,7 +488,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 43,
     }, {
         Done = { 95647 },
-        _comment = "Quest contract: 95647 Lost in the Thicket Things",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 11.88, 58.82),
         RaidIcon = { {
             npcID = 1480,
@@ -537,7 +499,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 44,
     }, {
         Done = { 95664 },
-        _comment = "Quest contract: 95664 Elder Knowledge",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 71.06, 34.19),
         RaidIcon = { {
             npcID = 9087,
@@ -549,7 +510,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 45,
     }, {
         Done = { 95697 },
-        _comment = "Quest contract: 95697 Changing Tastes",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 57.2, 53.32),
         RaidIcon = { {
             npcID = 3368,
@@ -561,7 +521,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 46,
     }, {
         Done = { 95795 },
-        _comment = "Quest contract: 95795 Fallen in the Fen",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1433, 25.79, 46.44),
         RaidIcon = { {
             npcID = 956,
@@ -573,7 +532,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 47,
     }, {
         Done = { 95810 },
-        _comment = "Quest contract: 95810 Lost Relic Carry",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 38.81, 52.39),
         RaidIcon = { {
             npcID = 1077,
@@ -585,7 +543,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 48,
     }, {
         Done = { 98815 },
-        _comment = "Quest contract: 98815 Highland Hides",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 8.55, 55.74),
         RaidIcon = { {
             npcID = 2094,
@@ -597,7 +554,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 49,
     }, {
         PickUp = { 98823 },
-        _comment = "Quest contract: 98823 Earthen Echo",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 71.06, 34.19),
         RaidIcon = { {
             npcID = 9087,
@@ -612,7 +568,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 50,
     }, {
         PickUp = { 98824 },
-        _comment = "Quest contract: 98824 Prehistoric Prism",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 38.81, 52.39),
         RaidIcon = { {
             npcID = 1077,
@@ -636,7 +591,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 52,
     }, {
         PickUp = { 95809 },
-        _comment = "Quest contract: 95809 Heartwoven",
         NoArrow = true,
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
@@ -654,7 +608,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Qpart = {
             [98823] = { 1 },
         },
-        _comment = "Quest contract: 98823 Earthen Echo",
         NoArrow = true,
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
@@ -664,7 +617,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Qpart = {
             [98824] = { 1 },
         },
-        _comment = "Quest contract: 98824 Prehistoric Prism",
         NoArrow = true,
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
@@ -674,7 +626,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         Qpart = {
             [95809] = { 1 },
         },
-        _comment = "Quest contract: 95809 Heartwoven",
         NoArrow = true,
         Dungeon = "INSTANCE_2998",
         InstanceQuest = true,
@@ -689,7 +640,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 57,
     }, {
         Done = { 95809 },
-        _comment = "Quest contract: 95809 Heartwoven",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1437, 11.88, 58.82),
         RaidIcon = { {
             npcID = 1480,
@@ -701,7 +651,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 58,
     }, {
         Done = { 98823 },
-        _comment = "Quest contract: 98823 Earthen Echo",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1412, 33.41, 22.59),
         RaidIcon = { {
             npcID = 259118,
@@ -713,7 +662,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Excavation-Site-Wetlands"] = {
         _index = 59,
     }, {
         Done = { 98824 },
-        _comment = "Quest contract: 98824 Prehistoric Prism",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 69.93, 18.55),
         RaidIcon = { {
             npcID = 5387,

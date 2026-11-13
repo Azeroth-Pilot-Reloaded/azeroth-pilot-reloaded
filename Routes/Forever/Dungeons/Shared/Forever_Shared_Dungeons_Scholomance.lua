@@ -16,7 +16,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
     mapID = 1422,
     steps = { {
         PickUp = { 4726 },
-        _comment = "Quest contract: 4726 Broodling Essence",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.24, 24),
         RaidIcon = { {
             npcID = 10267,
@@ -27,7 +26,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 1,
     }, {
         PickUp = { 5341 },
-        _comment = "Quest contract: 5341 Barov Family Fortune",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 83.06, 71.6),
         RaidIcon = { {
             npcID = 11022,
@@ -39,7 +37,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 2,
     }, {
         PickUp = { 5343 },
-        _comment = "Quest contract: 5343 Barov Family Fortune",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 43.45, 83.73),
         RaidIcon = { {
             npcID = 11023,
@@ -51,7 +48,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 3,
     }, {
         PickUp = { 5382 },
-        _comment = "Quest contract: 5382 Doctor Theolen Krastinov, the Butcher",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 70.22, 73.71),
         RaidIcon = { {
             npcID = 11216,
@@ -62,7 +58,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 4,
     }, {
         PickUp = { 5529 },
-        _comment = "Quest contract: 5529 Plagued Hatchlings",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.66, 49.94),
         RaidIcon = { {
             npcID = 11035,
@@ -73,7 +68,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 5,
     }, {
         PickUp = { 8905 },
-        _comment = "Quest contract: 8905 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -86,7 +80,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 6,
     }, {
         PickUp = { 8906 },
-        _comment = "Quest contract: 8906 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -99,7 +92,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 7,
     }, {
         PickUp = { 8907 },
-        _comment = "Quest contract: 8907 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -112,7 +104,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 8,
     }, {
         PickUp = { 8908 },
-        _comment = "Quest contract: 8908 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -125,7 +116,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 9,
     }, {
         PickUp = { 8909 },
-        _comment = "Quest contract: 8909 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -138,7 +128,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 10,
     }, {
         PickUp = { 8910 },
-        _comment = "Quest contract: 8910 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -151,7 +140,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 11,
     }, {
         PickUp = { 8911 },
-        _comment = "Quest contract: 8911 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -164,7 +152,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 12,
     }, {
         PickUp = { 8912 },
-        _comment = "Quest contract: 8912 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -177,7 +164,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 13,
     }, {
         PickUp = { 8913 },
-        _comment = "Quest contract: 8913 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -190,7 +176,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 14,
     }, {
         PickUp = { 8914 },
-        _comment = "Quest contract: 8914 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -203,7 +188,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 15,
     }, {
         PickUp = { 8915 },
-        _comment = "Quest contract: 8915 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -216,7 +200,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 16,
     }, {
         PickUp = { 8916 },
-        _comment = "Quest contract: 8916 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -229,7 +212,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 17,
     }, {
         PickUp = { 8917 },
-        _comment = "Quest contract: 8917 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -242,7 +224,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 18,
     }, {
         PickUp = { 8918 },
-        _comment = "Quest contract: 8918 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -255,7 +236,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 19,
     }, {
         PickUp = { 8919 },
-        _comment = "Quest contract: 8919 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -268,7 +248,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 20,
     }, {
         PickUp = { 8920 },
-        _comment = "Quest contract: 8920 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -283,7 +262,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [4726] = { 1, 2 },
         },
-        _comment = "Quest contract: 4726 Broodling Essence",
         NoArrow = true,
         IsQuestOnQuest = 4726,
         _index = 22,
@@ -291,7 +269,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8905] = { 1, 2 },
         },
-        _comment = "Quest contract: 8905 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8905,
         Zone = 1452,
@@ -300,7 +277,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8906] = { 1, 2 },
         },
-        _comment = "Quest contract: 8906 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8906,
         Zone = 1452,
@@ -309,7 +285,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8907] = { 1, 2 },
         },
-        _comment = "Quest contract: 8907 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8907,
         Zone = 1452,
@@ -318,7 +293,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8908] = { 1, 2 },
         },
-        _comment = "Quest contract: 8908 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8908,
         Zone = 1452,
@@ -327,7 +301,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8909] = { 1, 2 },
         },
-        _comment = "Quest contract: 8909 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8909,
         Zone = 1452,
@@ -336,7 +309,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8910] = { 1, 2 },
         },
-        _comment = "Quest contract: 8910 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8910,
         Zone = 1452,
@@ -345,7 +317,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8911] = { 1, 2 },
         },
-        _comment = "Quest contract: 8911 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8911,
         Zone = 1452,
@@ -354,7 +325,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8912] = { 1, 2 },
         },
-        _comment = "Quest contract: 8912 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8912,
         Zone = 1452,
@@ -363,7 +333,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8913] = { 1, 2 },
         },
-        _comment = "Quest contract: 8913 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8913,
         Zone = 1451,
@@ -372,7 +341,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8914] = { 1, 2 },
         },
-        _comment = "Quest contract: 8914 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8914,
         Zone = 1451,
@@ -381,7 +349,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8915] = { 1, 2 },
         },
-        _comment = "Quest contract: 8915 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8915,
         Zone = 1451,
@@ -390,7 +357,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8916] = { 1, 2 },
         },
-        _comment = "Quest contract: 8916 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8916,
         Zone = 1451,
@@ -399,7 +365,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8917] = { 1, 2 },
         },
-        _comment = "Quest contract: 8917 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8917,
         Zone = 1451,
@@ -408,7 +373,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8918] = { 1, 2 },
         },
-        _comment = "Quest contract: 8918 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8918,
         Zone = 1451,
@@ -417,7 +381,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8919] = { 1, 2 },
         },
-        _comment = "Quest contract: 8919 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8919,
         Zone = 1451,
@@ -426,14 +389,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8920] = { 1, 2 },
         },
-        _comment = "Quest contract: 8920 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8920,
         Zone = 1451,
         _index = 38,
     }, {
         Done = { 4726 },
-        _comment = "Quest contract: 4726 Broodling Essence",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.24, 24),
         RaidIcon = { {
             npcID = 10267,
@@ -444,7 +405,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 39,
     }, {
         Done = { 8905 },
-        _comment = "Quest contract: 8905 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -457,7 +417,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 40,
     }, {
         Done = { 8906 },
-        _comment = "Quest contract: 8906 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -470,7 +429,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 41,
     }, {
         Done = { 8907 },
-        _comment = "Quest contract: 8907 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -483,7 +441,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 42,
     }, {
         Done = { 8908 },
-        _comment = "Quest contract: 8908 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -496,7 +453,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 43,
     }, {
         Done = { 8909 },
-        _comment = "Quest contract: 8909 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -509,7 +465,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 44,
     }, {
         Done = { 8910 },
-        _comment = "Quest contract: 8910 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -522,7 +477,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 45,
     }, {
         Done = { 8911 },
-        _comment = "Quest contract: 8911 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -535,7 +489,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 46,
     }, {
         Done = { 8912 },
-        _comment = "Quest contract: 8912 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -548,7 +501,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 47,
     }, {
         Done = { 8913 },
-        _comment = "Quest contract: 8913 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -561,7 +513,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 48,
     }, {
         Done = { 8914 },
-        _comment = "Quest contract: 8914 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -574,7 +525,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 49,
     }, {
         Done = { 8915 },
-        _comment = "Quest contract: 8915 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -587,7 +537,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 50,
     }, {
         Done = { 8916 },
-        _comment = "Quest contract: 8916 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -600,7 +549,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 51,
     }, {
         Done = { 8917 },
-        _comment = "Quest contract: 8917 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -613,7 +561,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 52,
     }, {
         Done = { 8918 },
-        _comment = "Quest contract: 8918 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -626,7 +573,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 53,
     }, {
         Done = { 8919 },
-        _comment = "Quest contract: 8919 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -639,7 +585,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 54,
     }, {
         Done = { 8920 },
-        _comment = "Quest contract: 8920 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -652,7 +597,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 55,
     }, {
         PickUp = { 4808 },
-        _comment = "Quest contract: 4808 Felnok Steelspring",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.24, 24),
         RaidIcon = { {
             npcID = 10267,
@@ -666,7 +610,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 56,
     }, {
         PickUp = { 8922 },
-        _comment = "Quest contract: 8922 A Supernatural Device",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -695,7 +638,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 57,
     }, {
         PickUp = { 8923 },
-        _comment = "Quest contract: 8923 A Supernatural Device",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -726,7 +668,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [4808] = { 1 },
         },
-        _comment = "Quest contract: 4808 Felnok Steelspring",
         NoArrow = true,
         IsQuestOnQuest = 4808,
         _index = 59,
@@ -734,7 +675,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8922] = { 1 },
         },
-        _comment = "Quest contract: 8922 A Supernatural Device",
         NoArrow = true,
         IsQuestOnQuest = 8922,
         _index = 60,
@@ -742,13 +682,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8923] = { 1 },
         },
-        _comment = "Quest contract: 8923 A Supernatural Device",
         NoArrow = true,
         IsQuestOnQuest = 8923,
         _index = 61,
     }, {
         Done = { 4808 },
-        _comment = "Quest contract: 4808 Felnok Steelspring",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 61.63, 38.61),
         RaidIcon = { {
             npcID = 10468,
@@ -759,7 +697,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 62,
     }, {
         Done = { 8922 },
-        _comment = "Quest contract: 8922 A Supernatural Device",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -771,7 +708,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 63,
     }, {
         Done = { 8923 },
-        _comment = "Quest contract: 8923 A Supernatural Device",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -783,7 +719,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 64,
     }, {
         PickUp = { 4809 },
-        _comment = "Quest contract: 4809 Chillwind Horns",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 61.63, 38.61),
         RaidIcon = { {
             npcID = 10468,
@@ -797,7 +732,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 65,
     }, {
         PickUp = { 8921 },
-        _comment = "Quest contract: 8921 The Ectoplasmic Distiller",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -815,7 +749,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [4809] = { 1 },
         },
-        _comment = "Quest contract: 4809 Chillwind Horns",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 29.56, 48.5),
         IsQuestOnQuest = 4809,
         Zone = 1452,
@@ -824,13 +757,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8921] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 8921 The Ectoplasmic Distiller",
         NoArrow = true,
         IsQuestOnQuest = 8921,
         _index = 68,
     }, {
         Done = { 4809 },
-        _comment = "Quest contract: 4809 Chillwind Horns",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 61.63, 38.61),
         RaidIcon = { {
             npcID = 10468,
@@ -841,7 +772,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 69,
     }, {
         Done = { 8921 },
-        _comment = "Quest contract: 8921 The Ectoplasmic Distiller",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -852,7 +782,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 70,
     }, {
         PickUp = { 4810 },
-        _comment = "Quest contract: 4810 Return to Tinkee",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 61.63, 38.61),
         RaidIcon = { {
             npcID = 10468,
@@ -866,7 +795,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 71,
     }, {
         PickUp = { 8924 },
-        _comment = "Quest contract: 8924 Hunting for Ectoplasm",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -882,7 +810,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [4810] = { 1 },
         },
-        _comment = "Quest contract: 4810 Return to Tinkee",
         NoArrow = true,
         IsQuestOnQuest = 4810,
         _index = 73,
@@ -890,14 +817,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8924] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 8924 Hunting for Ectoplasm",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 60.94, 58.39),
         IsQuestOnQuest = 8924,
         Zone = 1451,
         _index = 74,
     }, {
         Done = { 4810 },
-        _comment = "Quest contract: 4810 Return to Tinkee",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.24, 24),
         RaidIcon = { {
             npcID = 10267,
@@ -908,7 +833,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 75,
     }, {
         Done = { 8924 },
-        _comment = "Quest contract: 8924 Hunting for Ectoplasm",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -919,7 +843,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 76,
     }, {
         PickUp = { 4734 },
-        _comment = "Quest contract: 4734 Egg Freezing",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.24, 24),
         RaidIcon = { {
             npcID = 10267,
@@ -933,7 +856,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 77,
     }, {
         PickUp = { 8925 },
-        _comment = "Quest contract: 8925 A Portable Power Source",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -949,7 +871,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [4734] = { 1 },
         },
-        _comment = "Quest contract: 4734 Egg Freezing",
         NoArrow = true,
         IsQuestOnQuest = 4734,
         _index = 79,
@@ -957,14 +878,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8925] = { 1 },
         },
-        _comment = "Quest contract: 8925 A Portable Power Source",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 35.39, 57.76),
         IsQuestOnQuest = 8925,
         Zone = 1428,
         _index = 80,
     }, {
         Done = { 4734 },
-        _comment = "Quest contract: 4734 Egg Freezing",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.24, 24),
         RaidIcon = { {
             npcID = 10267,
@@ -975,7 +894,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 81,
     }, {
         Done = { 8925 },
-        _comment = "Quest contract: 8925 A Portable Power Source",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -986,7 +904,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 82,
     }, {
         PickUp = { 4735 },
-        _comment = "Quest contract: 4735 Egg Collection",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.24, 24),
         RaidIcon = { {
             npcID = 10267,
@@ -1000,7 +917,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 83,
     }, {
         PickUp = { 8928 },
-        _comment = "Quest contract: 8928 A Shifty Merchant",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1016,7 +932,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [4735] = { 1, 2 },
         },
-        _comment = "Quest contract: 4735 Egg Collection",
         NoArrow = true,
         IsQuestOnQuest = 4735,
         _index = 85,
@@ -1024,13 +939,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8928] = { 1 },
         },
-        _comment = "Quest contract: 8928 A Shifty Merchant",
         NoArrow = true,
         IsQuestOnQuest = 8928,
         _index = 86,
     }, {
         Done = { 4735 },
-        _comment = "Quest contract: 4735 Egg Collection",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.24, 24),
         RaidIcon = { {
             npcID = 10267,
@@ -1041,7 +954,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 87,
     }, {
         Done = { 8928 },
-        _comment = "Quest contract: 8928 A Shifty Merchant",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1052,7 +964,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 88,
     }, {
         PickUp = { 5522 },
-        _comment = "Quest contract: 5522 Leonid Barthalomew",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 65.24, 24),
         RaidIcon = { {
             npcID = 10267,
@@ -1066,7 +977,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 89,
     }, {
         PickUp = { 8977 },
-        _comment = "Quest contract: 8977 Return to Deliana",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1081,7 +991,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 90,
     }, {
         PickUp = { 8978 },
-        _comment = "Quest contract: 8978 Return to Mokvar",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1098,7 +1007,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [5522] = { 1 },
         },
-        _comment = "Quest contract: 5522 Leonid Barthalomew",
         NoArrow = true,
         IsQuestOnQuest = 5522,
         _index = 92,
@@ -1106,7 +1014,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8977] = { 1 },
         },
-        _comment = "Quest contract: 8977 Return to Deliana",
         NoArrow = true,
         IsQuestOnQuest = 8977,
         _index = 93,
@@ -1114,13 +1021,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8978] = { 1 },
         },
-        _comment = "Quest contract: 8978 Return to Mokvar",
         NoArrow = true,
         IsQuestOnQuest = 8978,
         _index = 94,
     }, {
         Done = { 5522 },
-        _comment = "Quest contract: 5522 Leonid Barthalomew",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.89, 48.29),
         RaidIcon = { {
             npcID = 11036,
@@ -1131,7 +1036,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 95,
     }, {
         Done = { 8977 },
-        _comment = "Quest contract: 8977 Return to Deliana",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1143,7 +1047,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 96,
     }, {
         Done = { 8978 },
-        _comment = "Quest contract: 8978 Return to Mokvar",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1155,7 +1058,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 97,
     }, {
         PickUp = { 5531 },
-        _comment = "Quest contract: 5531 Betina Bigglezink",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.89, 48.29),
         RaidIcon = { {
             npcID = 11036,
@@ -1169,7 +1071,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 98,
     }, {
         PickUp = { 8926 },
-        _comment = "Quest contract: 8926 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1185,7 +1086,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 99,
     }, {
         PickUp = { 8927 },
-        _comment = "Quest contract: 8927 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1201,7 +1101,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 100,
     }, {
         PickUp = { 8931 },
-        _comment = "Quest contract: 8931 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1217,7 +1116,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 101,
     }, {
         PickUp = { 8932 },
-        _comment = "Quest contract: 8932 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1233,7 +1131,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 102,
     }, {
         PickUp = { 8933 },
-        _comment = "Quest contract: 8933 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1249,7 +1146,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 103,
     }, {
         PickUp = { 8934 },
-        _comment = "Quest contract: 8934 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1265,7 +1161,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 104,
     }, {
         PickUp = { 8935 },
-        _comment = "Quest contract: 8935 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1281,7 +1176,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 105,
     }, {
         PickUp = { 8936 },
-        _comment = "Quest contract: 8936 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1297,7 +1191,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 106,
     }, {
         PickUp = { 8937 },
-        _comment = "Quest contract: 8937 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1313,7 +1206,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 107,
     }, {
         PickUp = { 8938 },
-        _comment = "Quest contract: 8938 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1329,7 +1221,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 108,
     }, {
         PickUp = { 8939 },
-        _comment = "Quest contract: 8939 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1345,7 +1236,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 109,
     }, {
         PickUp = { 8940 },
-        _comment = "Quest contract: 8940 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1361,7 +1251,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 110,
     }, {
         PickUp = { 8941 },
-        _comment = "Quest contract: 8941 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1377,7 +1266,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 111,
     }, {
         PickUp = { 8942 },
-        _comment = "Quest contract: 8942 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1393,7 +1281,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 112,
     }, {
         PickUp = { 8943 },
-        _comment = "Quest contract: 8943 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1409,7 +1296,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 113,
     }, {
         PickUp = { 8944 },
-        _comment = "Quest contract: 8944 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1427,7 +1313,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8926] = { 1, 2 },
         },
-        _comment = "Quest contract: 8926 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8926,
         _index = 115,
@@ -1435,7 +1320,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8927] = { 1, 2 },
         },
-        _comment = "Quest contract: 8927 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8927,
         _index = 116,
@@ -1443,7 +1327,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8931] = { 1, 2 },
         },
-        _comment = "Quest contract: 8931 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8931,
         _index = 117,
@@ -1451,7 +1334,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8932] = { 1, 2 },
         },
-        _comment = "Quest contract: 8932 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8932,
         _index = 118,
@@ -1459,7 +1341,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8933] = { 1, 2 },
         },
-        _comment = "Quest contract: 8933 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 51.93, 23.82),
         IsQuestOnQuest = 8933,
         Zone = 1422,
@@ -1468,7 +1349,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8934] = { 1, 2 },
         },
-        _comment = "Quest contract: 8934 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8934,
         _index = 120,
@@ -1476,7 +1356,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8935] = { 1, 2 },
         },
-        _comment = "Quest contract: 8935 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8935,
         _index = 121,
@@ -1484,7 +1363,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8936] = { 1, 2 },
         },
-        _comment = "Quest contract: 8936 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8936,
         _index = 122,
@@ -1492,7 +1370,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8937] = { 1, 2 },
         },
-        _comment = "Quest contract: 8937 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8937,
         _index = 123,
@@ -1500,7 +1377,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8938] = { 1, 2 },
         },
-        _comment = "Quest contract: 8938 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8938,
         _index = 124,
@@ -1508,7 +1384,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8939] = { 1, 2 },
         },
-        _comment = "Quest contract: 8939 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8939,
         _index = 125,
@@ -1516,7 +1391,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8940] = { 1, 2 },
         },
-        _comment = "Quest contract: 8940 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8940,
         _index = 126,
@@ -1524,7 +1398,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8941] = { 1, 2 },
         },
-        _comment = "Quest contract: 8941 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8941,
         _index = 127,
@@ -1532,7 +1405,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8942] = { 1, 2 },
         },
-        _comment = "Quest contract: 8942 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8942,
         _index = 128,
@@ -1540,7 +1412,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8943] = { 1, 2 },
         },
-        _comment = "Quest contract: 8943 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8943,
         _index = 129,
@@ -1548,13 +1419,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8944] = { 1, 2 },
         },
-        _comment = "Quest contract: 8944 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8944,
         _index = 130,
     }, {
         Done = { 8926 },
-        _comment = "Quest contract: 8926 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1567,7 +1436,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 131,
     }, {
         Done = { 8927 },
-        _comment = "Quest contract: 8927 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1580,7 +1448,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 132,
     }, {
         Done = { 8931 },
-        _comment = "Quest contract: 8931 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1593,7 +1460,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 133,
     }, {
         Done = { 8932 },
-        _comment = "Quest contract: 8932 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1606,7 +1472,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 134,
     }, {
         Done = { 8933 },
-        _comment = "Quest contract: 8933 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1619,7 +1484,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 135,
     }, {
         Done = { 8934 },
-        _comment = "Quest contract: 8934 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1632,7 +1496,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 136,
     }, {
         Done = { 8935 },
-        _comment = "Quest contract: 8935 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1645,7 +1508,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 137,
     }, {
         Done = { 8936 },
-        _comment = "Quest contract: 8936 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1658,7 +1520,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 138,
     }, {
         Done = { 8937 },
-        _comment = "Quest contract: 8937 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1671,7 +1532,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 139,
     }, {
         Done = { 8938 },
-        _comment = "Quest contract: 8938 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1684,7 +1544,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 140,
     }, {
         Done = { 8939 },
-        _comment = "Quest contract: 8939 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1697,7 +1556,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 141,
     }, {
         Done = { 8940 },
-        _comment = "Quest contract: 8940 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1710,7 +1568,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 142,
     }, {
         Done = { 8941 },
-        _comment = "Quest contract: 8941 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1723,7 +1580,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 143,
     }, {
         Done = { 8942 },
-        _comment = "Quest contract: 8942 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1736,7 +1592,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 144,
     }, {
         Done = { 8943 },
-        _comment = "Quest contract: 8943 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1749,7 +1604,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 145,
     }, {
         Done = { 8944 },
-        _comment = "Quest contract: 8944 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1762,7 +1616,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 146,
     }, {
         PickUp = { 8929 },
-        _comment = "Quest contract: 8929 In Search of Anthion",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1791,7 +1644,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 147,
     }, {
         PickUp = { 8930 },
-        _comment = "Quest contract: 8930 In Search of Anthion",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1820,7 +1672,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 148,
     }, {
         Done = { 8929 },
-        _comment = "Quest contract: 8929 In Search of Anthion",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -1832,7 +1683,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 149,
     }, {
         Done = { 8930 },
-        _comment = "Quest contract: 8930 In Search of Anthion",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -1844,7 +1694,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 150,
     }, {
         PickUp = { 8945 },
-        _comment = "Quest contract: 8945 Dead Man's Plea",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -1862,13 +1711,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8945] = { 1 },
         },
-        _comment = "Quest contract: 8945 Dead Man's Plea",
         NoArrow = true,
         IsQuestOnQuest = 8945,
         _index = 152,
     }, {
         Done = { 8945 },
-        _comment = "Quest contract: 8945 Dead Man's Plea",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16031,
@@ -1878,7 +1725,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 153,
     }, {
         PickUp = { 8946 },
-        _comment = "Quest contract: 8946 Proof of Life",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16031,
@@ -1893,13 +1739,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8946] = { 1 },
         },
-        _comment = "Quest contract: 8946 Proof of Life",
         NoArrow = true,
         IsQuestOnQuest = 8946,
         _index = 155,
     }, {
         Done = { 8946 },
-        _comment = "Quest contract: 8946 Proof of Life",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -1910,7 +1754,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 156,
     }, {
         PickUp = { 8947 },
-        _comment = "Quest contract: 8947 Anthion's Strange Request",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -1926,13 +1769,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8947] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 8947 Anthion's Strange Request",
         NoArrow = true,
         IsQuestOnQuest = 8947,
         _index = 158,
     }, {
         Done = { 8947 },
-        _comment = "Quest contract: 8947 Anthion's Strange Request",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -1943,7 +1784,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 159,
     }, {
         PickUp = { 8948 },
-        _comment = "Quest contract: 8948 Anthion's Old Friend",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -1959,13 +1799,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8948] = { 1 },
         },
-        _comment = "Quest contract: 8948 Anthion's Old Friend",
         NoArrow = true,
         IsQuestOnQuest = 8948,
         _index = 161,
     }, {
         Done = { 8948 },
-        _comment = "Quest contract: 8948 Anthion's Old Friend",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16032,
@@ -1975,7 +1813,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 162,
     }, {
         PickUp = { 8949 },
-        _comment = "Quest contract: 8949 Falrin's Vendetta",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16032,
@@ -1990,14 +1827,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8949] = { 1 },
         },
-        _comment = "Quest contract: 8949 Falrin's Vendetta",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 59.95, 46.58),
         IsQuestOnQuest = 8949,
         Zone = 1444,
         _index = 164,
     }, {
         Done = { 8949 },
-        _comment = "Quest contract: 8949 Falrin's Vendetta",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16032,
@@ -2007,7 +1842,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 165,
     }, {
         PickUp = { 8950 },
-        _comment = "Quest contract: 8950 The Instigator's Enchantment",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16032,
@@ -2022,13 +1856,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8950] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8950 The Instigator's Enchantment",
         NoArrow = true,
         IsQuestOnQuest = 8950,
         _index = 167,
     }, {
         Done = { 8950 },
-        _comment = "Quest contract: 8950 The Instigator's Enchantment",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16032,
@@ -2038,7 +1870,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 168,
     }, {
         PickUp = { 9015 },
-        _comment = "Quest contract: 9015 The Challenge",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16032,
@@ -2053,13 +1884,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [9015] = { 1, 2 },
         },
-        _comment = "Quest contract: 9015 The Challenge",
         NoArrow = true,
         IsQuestOnQuest = 9015,
         _index = 170,
     }, {
         Done = { 9015 },
-        _comment = "Quest contract: 9015 The Challenge",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2070,7 +1899,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 171,
     }, {
         PickUp = { 8951 },
-        _comment = "Quest contract: 8951 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2086,7 +1914,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 172,
     }, {
         PickUp = { 8952 },
-        _comment = "Quest contract: 8952 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2102,7 +1929,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 173,
     }, {
         PickUp = { 8953 },
-        _comment = "Quest contract: 8953 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2118,7 +1944,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 174,
     }, {
         PickUp = { 8954 },
-        _comment = "Quest contract: 8954 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2134,7 +1959,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 175,
     }, {
         PickUp = { 8955 },
-        _comment = "Quest contract: 8955 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2150,7 +1974,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 176,
     }, {
         PickUp = { 8956 },
-        _comment = "Quest contract: 8956 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2166,7 +1989,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 177,
     }, {
         PickUp = { 8957 },
-        _comment = "Quest contract: 8957 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2182,7 +2004,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 178,
     }, {
         PickUp = { 8958 },
-        _comment = "Quest contract: 8958 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2198,7 +2019,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 179,
     }, {
         PickUp = { 8959 },
-        _comment = "Quest contract: 8959 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2214,7 +2034,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 180,
     }, {
         PickUp = { 9016 },
-        _comment = "Quest contract: 9016 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2230,7 +2049,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 181,
     }, {
         PickUp = { 9017 },
-        _comment = "Quest contract: 9017 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2246,7 +2064,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 182,
     }, {
         PickUp = { 9018 },
-        _comment = "Quest contract: 9018 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2262,7 +2079,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 183,
     }, {
         PickUp = { 9019 },
-        _comment = "Quest contract: 9019 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2278,7 +2094,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 184,
     }, {
         PickUp = { 9020 },
-        _comment = "Quest contract: 9020 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2294,7 +2109,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 185,
     }, {
         PickUp = { 9021 },
-        _comment = "Quest contract: 9021 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2310,7 +2124,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 186,
     }, {
         PickUp = { 9022 },
-        _comment = "Quest contract: 9022 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2328,7 +2141,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8951] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8951 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8951,
         _index = 188,
@@ -2336,7 +2148,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8952] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8952 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8952,
         _index = 189,
@@ -2344,7 +2155,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8953] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8953 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8953,
         _index = 190,
@@ -2352,7 +2162,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8954] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8954 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8954,
         _index = 191,
@@ -2360,7 +2169,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8955] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8955 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8955,
         _index = 192,
@@ -2368,7 +2176,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8956] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8956 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8956,
         _index = 193,
@@ -2376,7 +2183,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8957] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8957 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8957,
         _index = 194,
@@ -2384,7 +2190,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8958] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8958 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8958,
         _index = 195,
@@ -2392,7 +2197,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8959] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8959 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8959,
         _index = 196,
@@ -2400,7 +2204,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [9016] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 9016 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 9016,
         _index = 197,
@@ -2408,7 +2211,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [9017] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 9017 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 9017,
         _index = 198,
@@ -2416,7 +2218,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [9018] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 9018 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 9018,
         _index = 199,
@@ -2424,7 +2225,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [9019] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 9019 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 9019,
         _index = 200,
@@ -2432,7 +2232,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [9020] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 9020 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 9020,
         _index = 201,
@@ -2440,7 +2239,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [9021] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 9021 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 9021,
         _index = 202,
@@ -2448,13 +2246,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [9022] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 9022 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 9022,
         _index = 203,
     }, {
         Done = { 8951 },
-        _comment = "Quest contract: 8951 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2467,7 +2263,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 204,
     }, {
         Done = { 8952 },
-        _comment = "Quest contract: 8952 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2480,7 +2275,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 205,
     }, {
         Done = { 8953 },
-        _comment = "Quest contract: 8953 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2493,7 +2287,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 206,
     }, {
         Done = { 8954 },
-        _comment = "Quest contract: 8954 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2506,7 +2299,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 207,
     }, {
         Done = { 8955 },
-        _comment = "Quest contract: 8955 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2519,7 +2311,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 208,
     }, {
         Done = { 8956 },
-        _comment = "Quest contract: 8956 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2532,7 +2323,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 209,
     }, {
         Done = { 8957 },
-        _comment = "Quest contract: 8957 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2545,7 +2335,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 210,
     }, {
         Done = { 8958 },
-        _comment = "Quest contract: 8958 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2558,7 +2347,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 211,
     }, {
         Done = { 8959 },
-        _comment = "Quest contract: 8959 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2571,7 +2359,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 212,
     }, {
         Done = { 9016 },
-        _comment = "Quest contract: 9016 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2584,7 +2371,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 213,
     }, {
         Done = { 9017 },
-        _comment = "Quest contract: 9017 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2597,7 +2383,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 214,
     }, {
         Done = { 9018 },
-        _comment = "Quest contract: 9018 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2610,7 +2395,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 215,
     }, {
         Done = { 9019 },
-        _comment = "Quest contract: 9019 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2623,7 +2407,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 216,
     }, {
         Done = { 9020 },
-        _comment = "Quest contract: 9020 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2636,7 +2419,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 217,
     }, {
         Done = { 9021 },
-        _comment = "Quest contract: 9021 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2649,7 +2431,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 218,
     }, {
         Done = { 9022 },
-        _comment = "Quest contract: 9022 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2662,7 +2443,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 219,
     }, {
         PickUp = { 8960 },
-        _comment = "Quest contract: 8960 Bodley's Unfortunate Fate",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2691,7 +2471,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 220,
     }, {
         PickUp = { 9032 },
-        _comment = "Quest contract: 9032 Bodley's Unfortunate Fate",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2720,7 +2499,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 221,
     }, {
         Done = { 8960 },
-        _comment = "Quest contract: 8960 Bodley's Unfortunate Fate",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -2731,7 +2509,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 222,
     }, {
         Done = { 9032 },
-        _comment = "Quest contract: 9032 Bodley's Unfortunate Fate",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -2742,7 +2519,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 223,
     }, {
         PickUp = { 8961 },
-        _comment = "Quest contract: 8961 Three Kings of Flame",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -2759,14 +2535,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8961] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 8961 Three Kings of Flame",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 37.63, 44.8),
         IsQuestOnQuest = 8961,
         Zone = 1451,
         _index = 225,
     }, {
         Done = { 8961 },
-        _comment = "Quest contract: 8961 Three Kings of Flame",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -2776,7 +2550,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 226,
     }, {
         PickUp = { 8962 },
-        _comment = "Quest contract: 8962 Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -2789,7 +2562,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 227,
     }, {
         PickUp = { 8963 },
-        _comment = "Quest contract: 8963 Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -2802,7 +2574,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 228,
     }, {
         PickUp = { 8964 },
-        _comment = "Quest contract: 8964 Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -2815,7 +2586,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 229,
     }, {
         PickUp = { 8965 },
-        _comment = "Quest contract: 8965 Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -2830,7 +2600,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8962] = { 1 },
         },
-        _comment = "Quest contract: 8962 Components of Importance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 49.31, 80.12),
         IsQuestOnQuest = 8962,
         Zone = 1451,
@@ -2839,7 +2608,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8963] = { 1 },
         },
-        _comment = "Quest contract: 8963 Components of Importance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 65.66, 69.28),
         IsQuestOnQuest = 8963,
         Zone = 1452,
@@ -2848,7 +2616,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8964] = { 1 },
         },
-        _comment = "Quest contract: 8964 Components of Importance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 78.03, 72.34),
         IsQuestOnQuest = 8964,
         Zone = 1423,
@@ -2857,14 +2624,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8965] = { 1 },
         },
-        _comment = "Quest contract: 8965 Components of Importance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 18.33, 77.93),
         IsQuestOnQuest = 8965,
         Zone = 1424,
         _index = 234,
     }, {
         Done = { 8962 },
-        _comment = "Quest contract: 8962 Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -2874,7 +2639,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 235,
     }, {
         Done = { 8963 },
-        _comment = "Quest contract: 8963 Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -2884,7 +2648,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 236,
     }, {
         Done = { 8964 },
-        _comment = "Quest contract: 8964 Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -2894,7 +2657,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 237,
     }, {
         Done = { 8965 },
-        _comment = "Quest contract: 8965 Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -2904,7 +2666,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 238,
     }, {
         PickUp = { 8966 },
-        _comment = "Quest contract: 8966 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -2923,7 +2684,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 239,
     }, {
         PickUp = { 8967 },
-        _comment = "Quest contract: 8967 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -2942,7 +2702,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 240,
     }, {
         PickUp = { 8968 },
-        _comment = "Quest contract: 8968 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -2963,7 +2722,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8966] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8966 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         IsQuestOnQuest = 8966,
         _index = 242,
@@ -2971,7 +2729,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8967] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8967 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         IsQuestOnQuest = 8967,
         _index = 243,
@@ -2979,13 +2736,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8968] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 8968 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         IsQuestOnQuest = 8968,
         _index = 244,
     }, {
         Done = { 8966 },
-        _comment = "Quest contract: 8966 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -2995,7 +2750,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 245,
     }, {
         Done = { 8967 },
-        _comment = "Quest contract: 8967 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3005,7 +2759,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 246,
     }, {
         Done = { 8968 },
-        _comment = "Quest contract: 8968 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3024,7 +2777,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 248,
     }, {
         PickUp = { 8969 },
-        _comment = "Quest contract: 8969 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         Dungeon = "INSTANCE_289",
         InstanceQuest = true,
@@ -3177,7 +2929,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [5531] = { 1 },
         },
-        _comment = "Quest contract: 5531 Betina Bigglezink",
         NoArrow = true,
         Dungeon = "INSTANCE_289",
         InstanceQuest = true,
@@ -3187,7 +2938,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [5341] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 5341 Barov Family Fortune",
         NoArrow = true,
         Dungeon = "INSTANCE_289",
         InstanceQuest = true,
@@ -3197,7 +2947,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [5343] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 5343 Barov Family Fortune",
         NoArrow = true,
         Dungeon = "INSTANCE_289",
         InstanceQuest = true,
@@ -3207,7 +2956,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [5382] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 5382 Doctor Theolen Krastinov, the Butcher",
         NoArrow = true,
         Dungeon = "INSTANCE_289",
         InstanceQuest = true,
@@ -3217,7 +2965,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [5529] = { 1 },
         },
-        _comment = "Quest contract: 5529 Plagued Hatchlings",
         NoArrow = true,
         Dungeon = "INSTANCE_289",
         InstanceQuest = true,
@@ -3227,7 +2974,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8969] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8969 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         Dungeon = "INSTANCE_289",
         InstanceQuest = true,
@@ -3235,7 +2981,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 268,
     }, {
         Done = { 8969 },
-        _comment = "Quest contract: 8969 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         Dungeon = "INSTANCE_289",
         InstanceQuest = true,
@@ -3254,7 +2999,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 270,
     }, {
         Done = { 5531 },
-        _comment = "Quest contract: 5531 Betina Bigglezink",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.66, 49.94),
         RaidIcon = { {
             npcID = 11035,
@@ -3265,7 +3009,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 271,
     }, {
         Done = { 5341 },
-        _comment = "Quest contract: 5341 Barov Family Fortune",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 83.06, 71.6),
         RaidIcon = { {
             npcID = 11022,
@@ -3277,7 +3020,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 272,
     }, {
         Done = { 5343 },
-        _comment = "Quest contract: 5343 Barov Family Fortune",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 43.45, 83.73),
         RaidIcon = { {
             npcID = 11023,
@@ -3289,7 +3031,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 273,
     }, {
         Done = { 5382 },
-        _comment = "Quest contract: 5382 Doctor Theolen Krastinov, the Butcher",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 70.22, 73.71),
         RaidIcon = { {
             npcID = 11216,
@@ -3300,7 +3041,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 274,
     }, {
         Done = { 5529 },
-        _comment = "Quest contract: 5529 Plagued Hatchlings",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.66, 49.94),
         RaidIcon = { {
             npcID = 11035,
@@ -3311,7 +3051,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 275,
     }, {
         PickUp = { 8970 },
-        _comment = "Quest contract: 8970 I See Alcaz Island In Your Future...",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3330,7 +3069,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 276,
     }, {
         PickUp = { 4771 },
-        _comment = "Quest contract: 4771 Dawn's Gambit",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.66, 49.94),
         RaidIcon = { {
             npcID = 11035,
@@ -3344,7 +3082,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 277,
     }, {
         PickUp = { 5342 },
-        _comment = "Quest contract: 5342 The Last Barov",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 83.06, 71.6),
         RaidIcon = { {
             npcID = 11022,
@@ -3359,7 +3096,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 278,
     }, {
         PickUp = { 5344 },
-        _comment = "Quest contract: 5344 The Last Barov",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 43.45, 83.73),
         RaidIcon = { {
             npcID = 11023,
@@ -3374,7 +3110,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 279,
     }, {
         PickUp = { 5515 },
-        _comment = "Quest contract: 5515 Krastinov's Bag of Horrors",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 70.22, 73.71),
         RaidIcon = { {
             npcID = 11216,
@@ -3390,7 +3125,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8970] = { 1 },
         },
-        _comment = "Quest contract: 8970 I See Alcaz Island In Your Future...",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 74.79, 15.12),
         IsQuestOnQuest = 8970,
         Zone = 1445,
@@ -3399,7 +3133,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [5342] = { 1 },
         },
-        _comment = "Quest contract: 5342 The Last Barov",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 43.45, 83.73),
         IsQuestOnQuest = 5342,
         Zone = 1422,
@@ -3408,14 +3141,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [5344] = { 1 },
         },
-        _comment = "Quest contract: 5344 The Last Barov",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 83.06, 71.6),
         IsQuestOnQuest = 5344,
         Zone = 1420,
         _index = 283,
     }, {
         Done = { 8970 },
-        _comment = "Quest contract: 8970 I See Alcaz Island In Your Future...",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3425,7 +3156,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 284,
     }, {
         Done = { 5342 },
-        _comment = "Quest contract: 5342 The Last Barov",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 83.06, 71.6),
         RaidIcon = { {
             npcID = 11022,
@@ -3437,7 +3167,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 285,
     }, {
         Done = { 5344 },
-        _comment = "Quest contract: 5344 The Last Barov",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 43.45, 83.73),
         RaidIcon = { {
             npcID = 11023,
@@ -3449,7 +3178,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 286,
     }, {
         PickUp = { 8985 },
-        _comment = "Quest contract: 8985 More Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3462,7 +3190,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 287,
     }, {
         PickUp = { 8986 },
-        _comment = "Quest contract: 8986 More Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3475,7 +3202,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 288,
     }, {
         PickUp = { 8987 },
-        _comment = "Quest contract: 8987 More Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3488,7 +3214,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 289,
     }, {
         PickUp = { 8988 },
-        _comment = "Quest contract: 8988 More Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3503,7 +3228,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8985] = { 1 },
         },
-        _comment = "Quest contract: 8985 More Components of Importance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 65.66, 69.28),
         IsQuestOnQuest = 8985,
         Zone = 1452,
@@ -3512,7 +3236,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8986] = { 1 },
         },
-        _comment = "Quest contract: 8986 More Components of Importance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 49.31, 80.12),
         IsQuestOnQuest = 8986,
         Zone = 1451,
@@ -3521,7 +3244,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8987] = { 1 },
         },
-        _comment = "Quest contract: 8987 More Components of Importance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 78.03, 72.34),
         IsQuestOnQuest = 8987,
         Zone = 1423,
@@ -3530,14 +3252,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8988] = { 1 },
         },
-        _comment = "Quest contract: 8988 More Components of Importance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 18.33, 77.93),
         IsQuestOnQuest = 8988,
         Zone = 1424,
         _index = 294,
     }, {
         Done = { 8985 },
-        _comment = "Quest contract: 8985 More Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3547,7 +3267,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 295,
     }, {
         Done = { 8986 },
-        _comment = "Quest contract: 8986 More Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3557,7 +3276,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 296,
     }, {
         Done = { 8987 },
-        _comment = "Quest contract: 8987 More Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3567,7 +3285,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 297,
     }, {
         Done = { 8988 },
-        _comment = "Quest contract: 8988 More Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3577,7 +3294,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 298,
     }, {
         PickUp = { 8989 },
-        _comment = "Quest contract: 8989 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3596,7 +3312,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 299,
     }, {
         PickUp = { 8990 },
-        _comment = "Quest contract: 8990 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3615,7 +3330,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 300,
     }, {
         PickUp = { 8991 },
-        _comment = "Quest contract: 8991 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3636,7 +3350,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8989] = { 1, 2 },
         },
-        _comment = "Quest contract: 8989 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         IsQuestOnQuest = 8989,
         _index = 302,
@@ -3644,7 +3357,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8990] = { 1, 2 },
         },
-        _comment = "Quest contract: 8990 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         IsQuestOnQuest = 8990,
         _index = 303,
@@ -3652,13 +3364,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8991] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8991 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         IsQuestOnQuest = 8991,
         _index = 304,
     }, {
         Done = { 8989 },
-        _comment = "Quest contract: 8989 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3668,7 +3378,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 305,
     }, {
         Done = { 8990 },
-        _comment = "Quest contract: 8990 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3678,7 +3387,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 306,
     }, {
         Done = { 8991 },
-        _comment = "Quest contract: 8991 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3699,7 +3407,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [4771] = { 1, 2 },
         },
-        _comment = "Quest contract: 4771 Dawn's Gambit",
         NoArrow = true,
         Dungeon = "INSTANCE_289",
         InstanceQuest = true,
@@ -3709,7 +3416,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [5515] = { 1 },
         },
-        _comment = "Quest contract: 5515 Krastinov's Bag of Horrors",
         NoArrow = true,
         Dungeon = "INSTANCE_289",
         InstanceQuest = true,
@@ -3717,7 +3423,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 310,
     }, {
         PickUp = { 5582 },
-        _comment = "Quest contract: 5582 Healthy Dragon Scale",
         Button = {
             ["5582"] = 13920,
         },
@@ -3735,7 +3440,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 311,
     }, {
         PickUp = { 8992 },
-        _comment = "Quest contract: 8992 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         Dungeon = "INSTANCE_289",
         InstanceQuest = true,
@@ -3758,7 +3462,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [5582] = { 1 },
         },
-        _comment = "Quest contract: 5582 Healthy Dragon Scale",
         NoArrow = true,
         Dungeon = "INSTANCE_289",
         InstanceQuest = true,
@@ -3768,7 +3471,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8992] = { 1, 2 },
         },
-        _comment = "Quest contract: 8992 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         Dungeon = "INSTANCE_289",
         InstanceQuest = true,
@@ -3776,7 +3478,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 314,
     }, {
         Done = { 8992 },
-        _comment = "Quest contract: 8992 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         Dungeon = "INSTANCE_289",
         InstanceQuest = true,
@@ -3795,7 +3496,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 316,
     }, {
         Done = { 4771 },
-        _comment = "Quest contract: 4771 Dawn's Gambit",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.66, 49.94),
         RaidIcon = { {
             npcID = 11035,
@@ -3806,7 +3506,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 317,
     }, {
         Done = { 5515 },
-        _comment = "Quest contract: 5515 Krastinov's Bag of Horrors",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 70.22, 73.71),
         RaidIcon = { {
             npcID = 11216,
@@ -3817,7 +3516,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 318,
     }, {
         Done = { 5582 },
-        _comment = "Quest contract: 5582 Healthy Dragon Scale",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.66, 49.94),
         RaidIcon = { {
             npcID = 11035,
@@ -3828,7 +3526,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 319,
     }, {
         PickUp = { 8994 },
-        _comment = "Quest contract: 8994 Final Preparations",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3847,7 +3544,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 320,
     }, {
         PickUp = { 5384 },
-        _comment = "Quest contract: 5384 Kirtonos the Herald",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 70.22, 73.71),
         RaidIcon = { {
             npcID = 11216,
@@ -3863,13 +3559,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [8994] = { 1, 2 },
         },
-        _comment = "Quest contract: 8994 Final Preparations",
         NoArrow = true,
         IsQuestOnQuest = 8994,
         _index = 322,
     }, {
         Done = { 8994 },
-        _comment = "Quest contract: 8994 Final Preparations",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3890,7 +3584,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [5384] = { 1 },
         },
-        _comment = "Quest contract: 5384 Kirtonos the Herald",
         NoArrow = true,
         Dungeon = "INSTANCE_289",
         InstanceQuest = true,
@@ -3905,7 +3598,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 326,
     }, {
         Done = { 5384 },
-        _comment = "Quest contract: 5384 Kirtonos the Herald",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 70.22, 73.71),
         RaidIcon = { {
             npcID = 11216,
@@ -3916,7 +3608,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 327,
     }, {
         PickUp = { 5461 },
-        _comment = "Quest contract: 5461 The Human, Ras Frostwhisper",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 70.57, 74.11),
         RaidIcon = { {
             npcID = 11286,
@@ -3932,13 +3623,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [5461] = { 1 },
         },
-        _comment = "Quest contract: 5461 The Human, Ras Frostwhisper",
         NoArrow = true,
         IsQuestOnQuest = 5461,
         _index = 329,
     }, {
         Done = { 5461 },
-        _comment = "Quest contract: 5461 The Human, Ras Frostwhisper",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 70.57, 74.11),
         RaidIcon = { {
             npcID = 11286,
@@ -3949,7 +3638,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 330,
     }, {
         PickUp = { 5462 },
-        _comment = "Quest contract: 5462 The Dying, Ras Frostwhisper",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 70.57, 74.11),
         RaidIcon = { {
             npcID = 11286,
@@ -3965,13 +3653,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [5462] = { 1 },
         },
-        _comment = "Quest contract: 5462 The Dying, Ras Frostwhisper",
         NoArrow = true,
         IsQuestOnQuest = 5462,
         _index = 332,
     }, {
         Done = { 5462 },
-        _comment = "Quest contract: 5462 The Dying, Ras Frostwhisper",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.89, 48.29),
         RaidIcon = { {
             npcID = 11036,
@@ -3982,7 +3668,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 333,
     }, {
         PickUp = { 5463 },
-        _comment = "Quest contract: 5463 Menethil's Gift",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.89, 48.29),
         RaidIcon = { {
             npcID = 11036,
@@ -3998,19 +3683,16 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [5463] = { 1 },
         },
-        _comment = "Quest contract: 5463 Menethil's Gift",
         NoArrow = true,
         IsQuestOnQuest = 5463,
         _index = 335,
     }, {
         Done = { 5463 },
-        _comment = "Quest contract: 5463 Menethil's Gift",
         NoArrow = true,
         IsQuestOnQuest = 5463,
         _index = 336,
     }, {
         PickUp = { 5464 },
-        _comment = "Quest contract: 5464 Menethil's Gift",
         NoArrow = true,
         AnyOf = { {
             IsQuestCompleted = 5463,
@@ -4021,13 +3703,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [5464] = { 1 },
         },
-        _comment = "Quest contract: 5464 Menethil's Gift",
         NoArrow = true,
         IsQuestOnQuest = 5464,
         _index = 338,
     }, {
         Done = { 5464 },
-        _comment = "Quest contract: 5464 Menethil's Gift",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.89, 48.29),
         RaidIcon = { {
             npcID = 11036,
@@ -4038,7 +3718,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 339,
     }, {
         PickUp = { 5465 },
-        _comment = "Quest contract: 5465 Soulbound Keepsake",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.89, 48.29),
         RaidIcon = { {
             npcID = 11036,
@@ -4054,13 +3733,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [5465] = { 1 },
         },
-        _comment = "Quest contract: 5465 Soulbound Keepsake",
         NoArrow = true,
         IsQuestOnQuest = 5465,
         _index = 341,
     }, {
         Done = { 5465 },
-        _comment = "Quest contract: 5465 Soulbound Keepsake",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 70.57, 74.11),
         RaidIcon = { {
             npcID = 11286,
@@ -4071,7 +3748,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 342,
     }, {
         PickUp = { 5466 },
-        _comment = "Quest contract: 5466 The Lich, Ras Frostwhisper",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 70.57, 74.11),
         RaidIcon = { {
             npcID = 11286,
@@ -4096,7 +3772,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [5466] = { 1 },
         },
-        _comment = "Quest contract: 5466 The Lich, Ras Frostwhisper",
         NoArrow = true,
         Dungeon = "INSTANCE_289",
         InstanceQuest = true,
@@ -4111,7 +3786,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         _index = 346,
     }, {
         Done = { 5466 },
-        _comment = "Quest contract: 5466 The Lich, Ras Frostwhisper",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 70.57, 74.11),
         RaidIcon = { {
             npcID = 11286,

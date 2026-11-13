@@ -97,7 +97,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
     steps = {
         {
             PickUp = { 356 },
-            _comment = "Quest contract: 356 Rear Guard Patrol",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 65.49, 60.25),
             RaidIcon = { {
                 npcID = 1495,
@@ -112,7 +111,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             Qpart = {
                 [356] = { 1, 2 },
             },
-            _comment = "Quest contract: 356 Rear Guard Patrol",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 77.83, 59.47),
             IsQuestOnQuest = 356,
             Zone = 1420,
@@ -120,7 +118,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Done = { 356 },
-            _comment = "Quest contract: 356 Rear Guard Patrol",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 65.49, 60.25),
             RaidIcon = { {
                 npcID = 1495,
@@ -133,7 +130,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             PickUp = { 447 },
-            _comment = "Quest contract: 447 A Recipe For Death",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 42.8, 40.86),
             RaidIcon = { {
                 npcID = 1937,
@@ -148,7 +144,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             Qpart = {
                 [447] = { 1, 2 },
             },
-            _comment = "Quest contract: 447 A Recipe For Death",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 46.33, 49.63),
             IsQuestOnQuest = 447,
             Zone = 1421,
@@ -156,7 +151,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Done = { 447 },
-            _comment = "Quest contract: 447 A Recipe For Death",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 48.82, 69.28),
             RaidIcon = { {
                 npcID = 2055,
@@ -169,7 +163,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             PickUp = { 450 },
-            _comment = "Quest contract: 450 A Recipe For Death",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 48.82, 69.28),
             RaidIcon = { {
                 npcID = 2055,
@@ -187,14 +180,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             Qpart = {
                 [450] = { 1 },
             },
-            _comment = "Quest contract: 450 A Recipe For Death",
             NoArrow = true,
             IsQuestOnQuest = 450,
             _index = 8,
         },
         {
             Done = { 450 },
-            _comment = "Quest contract: 450 A Recipe For Death",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 42.8, 40.86),
             RaidIcon = { {
                 npcID = 1937,
@@ -207,7 +198,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             PickUp = { 451 },
-            _comment = "Quest contract: 451 A Recipe For Death",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 42.8, 40.86),
             RaidIcon = { {
                 npcID = 1937,
@@ -225,7 +215,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             Qpart = {
                 [451] = { 1, 2, 3 },
             },
-            _comment = "Quest contract: 451 A Recipe For Death",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 70, 33.56),
             IsQuestOnQuest = 451,
             Zone = 1421,
@@ -233,7 +222,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Done = { 451 },
-            _comment = "Quest contract: 451 A Recipe For Death",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 48.82, 69.28),
             RaidIcon = { {
                 npcID = 2055,
@@ -246,7 +234,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             PickUp = { 99156 },
-            _comment = "Quest contract: 99156 Rear Guard Patrol",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 65.49, 60.25),
             RaidIcon = { {
                 npcID = 1495,
@@ -264,7 +251,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             Qpart = {
                 [99156] = { 1 },
             },
-            _comment = "Quest contract: 99156 Rear Guard Patrol",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 80.31, 45.52),
             IsQuestOnQuest = 99156,
             Zone = 1420,
@@ -272,7 +258,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Done = { 99156 },
-            _comment = "Quest contract: 99156 Rear Guard Patrol",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 65.49, 60.25),
             RaidIcon = { {
                 npcID = 1495,
@@ -593,7 +578,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             PickUp = { 95161 },
-            _comment = "Quest contract: 95161 Remember That I Love You",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 56.31, 53.99),
             RaidIcon = { {
                 npcID = 14450,
@@ -611,14 +595,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             Qpart = {
                 [95161] = { 1 },
             },
-            _comment = "Quest contract: 95161 Remember That I Love You",
             NoArrow = true,
             IsQuestOnQuest = 95161,
             _index = 52,
         },
         {
             Done = { 95161 },
-            _comment = "Quest contract: 95161 Remember That I Love You",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 73.03, 44.42),
             RaidIcon = { {
                 npcID = 228,

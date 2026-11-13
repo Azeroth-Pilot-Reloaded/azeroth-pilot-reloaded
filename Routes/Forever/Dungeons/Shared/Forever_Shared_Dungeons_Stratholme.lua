@@ -16,7 +16,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
     mapID = 1423,
     steps = { {
         PickUp = { 5212 },
-        _comment = "Quest contract: 5212 The Flesh Does Not Lie",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.66, 49.94),
         RaidIcon = { {
             npcID = 11035,
@@ -27,7 +26,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 1,
     }, {
         PickUp = { 5214 },
-        _comment = "Quest contract: 5214 The Great Ezra Grimm",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 70.88, 48.43),
         RaidIcon = { {
             npcID = 11033,
@@ -38,7 +36,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 2,
     }, {
         PickUp = { 5243 },
-        _comment = "Quest contract: 5243 Houses of the Holy",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.89, 48.29),
         RaidIcon = { {
             npcID = 11036,
@@ -49,7 +46,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 3,
     }, {
         PickUp = { 5251 },
-        _comment = "Quest contract: 5251 The Archivist",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.63, 50.09),
         RaidIcon = { {
             npcID = 11039,
@@ -60,7 +56,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 4,
     }, {
         PickUp = { 5281 },
-        _comment = "Quest contract: 5281 The Restless Souls",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 69.93, 53.72),
         RaidIcon = { {
             npcID = 11038,
@@ -71,7 +66,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 5,
     }, {
         PickUp = { 5382 },
-        _comment = "Quest contract: 5382 Doctor Theolen Krastinov, the Butcher",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 70.22, 73.71),
         RaidIcon = { {
             npcID = 11216,
@@ -82,7 +76,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 6,
     }, {
         PickUp = { 5542 },
-        _comment = "Quest contract: 5542 Demon Dogs",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 5.16, 35.57),
         RaidIcon = { {
             npcID = 1855,
@@ -93,7 +86,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 7,
     }, {
         PickUp = { 5543 },
-        _comment = "Quest contract: 5543 Blood Tinged Skies",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 5.16, 35.57),
         RaidIcon = { {
             npcID = 1855,
@@ -104,7 +96,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 8,
     }, {
         PickUp = { 5544 },
-        _comment = "Quest contract: 5544 Carrion Grubbage",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 5.16, 35.57),
         RaidIcon = { {
             npcID = 1855,
@@ -115,7 +106,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 9,
     }, {
         PickUp = { 6022 },
-        _comment = "Quest contract: 6022 To Kill With Purpose",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 22.23, 63.51),
         RaidIcon = { {
             npcID = 11878,
@@ -127,7 +117,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 10,
     }, {
         PickUp = { 6042 },
-        _comment = "Quest contract: 6042 Un-Life's Little Annoyances",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 22.23, 63.51),
         RaidIcon = { {
             npcID = 11878,
@@ -139,7 +128,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 11,
     }, {
         PickUp = { 6133 },
-        _comment = "Quest contract: 6133 The Ranger Lord's Behest",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 22.23, 63.51),
         RaidIcon = { {
             npcID = 11878,
@@ -151,7 +139,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 12,
     }, {
         PickUp = { 8905 },
-        _comment = "Quest contract: 8905 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -164,7 +151,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 13,
     }, {
         PickUp = { 8906 },
-        _comment = "Quest contract: 8906 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -177,7 +163,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 14,
     }, {
         PickUp = { 8907 },
-        _comment = "Quest contract: 8907 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -190,7 +175,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 15,
     }, {
         PickUp = { 8908 },
-        _comment = "Quest contract: 8908 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -203,7 +187,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 16,
     }, {
         PickUp = { 8909 },
-        _comment = "Quest contract: 8909 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -216,7 +199,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 17,
     }, {
         PickUp = { 8910 },
-        _comment = "Quest contract: 8910 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -229,7 +211,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 18,
     }, {
         PickUp = { 8911 },
-        _comment = "Quest contract: 8911 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -242,7 +223,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 19,
     }, {
         PickUp = { 8912 },
-        _comment = "Quest contract: 8912 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -255,7 +235,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 20,
     }, {
         PickUp = { 8913 },
-        _comment = "Quest contract: 8913 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -268,7 +247,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 21,
     }, {
         PickUp = { 8914 },
-        _comment = "Quest contract: 8914 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -281,7 +259,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 22,
     }, {
         PickUp = { 8915 },
-        _comment = "Quest contract: 8915 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -294,7 +271,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 23,
     }, {
         PickUp = { 8916 },
-        _comment = "Quest contract: 8916 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -307,7 +283,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 24,
     }, {
         PickUp = { 8917 },
-        _comment = "Quest contract: 8917 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -320,7 +295,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 25,
     }, {
         PickUp = { 8918 },
-        _comment = "Quest contract: 8918 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -333,7 +307,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 26,
     }, {
         PickUp = { 8919 },
-        _comment = "Quest contract: 8919 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -346,7 +319,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 27,
     }, {
         PickUp = { 8920 },
-        _comment = "Quest contract: 8920 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -359,7 +331,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 28,
     }, {
         Done = { 5281 },
-        _comment = "Quest contract: 5281 The Restless Souls",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 11.36, 26.6),
         RaidIcon = { {
             npcID = 11140,
@@ -372,7 +343,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5382] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 5382 Doctor Theolen Krastinov, the Butcher",
         NoArrow = true,
         IsQuestOnQuest = 5382,
         _index = 30,
@@ -380,7 +350,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5542] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 5542 Demon Dogs",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 38.91, 74.23),
         IsQuestOnQuest = 5542,
         Zone = 1423,
@@ -389,7 +358,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5543] = { 1 },
         },
-        _comment = "Quest contract: 5543 Blood Tinged Skies",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 11.85, 64.18),
         IsQuestOnQuest = 5543,
         Zone = 1423,
@@ -398,7 +366,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5544] = { 1 },
         },
-        _comment = "Quest contract: 5544 Carrion Grubbage",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 58.43, 51.47),
         IsQuestOnQuest = 5544,
         Zone = 1423,
@@ -407,7 +374,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [6022] = { 1 },
         },
-        _comment = "Quest contract: 6022 To Kill With Purpose",
         NoArrow = true,
         IsQuestOnQuest = 6022,
         _index = 34,
@@ -415,7 +381,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [6042] = { 1, 2 },
         },
-        _comment = "Quest contract: 6042 Un-Life's Little Annoyances",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 68.71, 61.21),
         IsQuestOnQuest = 6042,
         Zone = 1423,
@@ -424,7 +389,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [6133] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 6133 The Ranger Lord's Behest",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 46.69, 13.18),
         IsQuestOnQuest = 6133,
         Zone = 1423,
@@ -433,7 +397,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8905] = { 1, 2 },
         },
-        _comment = "Quest contract: 8905 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8905,
         Zone = 1452,
@@ -442,7 +405,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8906] = { 1, 2 },
         },
-        _comment = "Quest contract: 8906 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8906,
         Zone = 1452,
@@ -451,7 +413,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8907] = { 1, 2 },
         },
-        _comment = "Quest contract: 8907 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8907,
         Zone = 1452,
@@ -460,7 +421,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8908] = { 1, 2 },
         },
-        _comment = "Quest contract: 8908 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8908,
         Zone = 1452,
@@ -469,7 +429,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8909] = { 1, 2 },
         },
-        _comment = "Quest contract: 8909 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8909,
         Zone = 1452,
@@ -478,7 +437,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8910] = { 1, 2 },
         },
-        _comment = "Quest contract: 8910 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8910,
         Zone = 1452,
@@ -487,7 +445,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8911] = { 1, 2 },
         },
-        _comment = "Quest contract: 8911 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8911,
         Zone = 1452,
@@ -496,7 +453,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8912] = { 1, 2 },
         },
-        _comment = "Quest contract: 8912 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 48.89, 18.84),
         IsQuestOnQuest = 8912,
         Zone = 1452,
@@ -505,7 +461,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8913] = { 1, 2 },
         },
-        _comment = "Quest contract: 8913 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8913,
         Zone = 1451,
@@ -514,7 +469,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8914] = { 1, 2 },
         },
-        _comment = "Quest contract: 8914 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8914,
         Zone = 1451,
@@ -523,7 +477,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8915] = { 1, 2 },
         },
-        _comment = "Quest contract: 8915 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8915,
         Zone = 1451,
@@ -532,7 +485,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8916] = { 1, 2 },
         },
-        _comment = "Quest contract: 8916 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8916,
         Zone = 1451,
@@ -541,7 +493,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8917] = { 1, 2 },
         },
-        _comment = "Quest contract: 8917 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8917,
         Zone = 1451,
@@ -550,7 +501,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8918] = { 1, 2 },
         },
-        _comment = "Quest contract: 8918 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8918,
         Zone = 1451,
@@ -559,7 +509,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8919] = { 1, 2 },
         },
-        _comment = "Quest contract: 8919 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8919,
         Zone = 1451,
@@ -568,14 +517,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8920] = { 1, 2 },
         },
-        _comment = "Quest contract: 8920 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 72.57, 36.82),
         IsQuestOnQuest = 8920,
         Zone = 1451,
         _index = 52,
     }, {
         PickUp = { 5282 },
-        _comment = "Quest contract: 5282 The Restless Souls",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 11.36, 26.6),
         RaidIcon = { {
             npcID = 11140,
@@ -589,7 +536,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 53,
     }, {
         Done = { 5382 },
-        _comment = "Quest contract: 5382 Doctor Theolen Krastinov, the Butcher",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 70.22, 73.71),
         RaidIcon = { {
             npcID = 11216,
@@ -600,7 +546,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 54,
     }, {
         Done = { 5542 },
-        _comment = "Quest contract: 5542 Demon Dogs",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 5.16, 35.57),
         RaidIcon = { {
             npcID = 1855,
@@ -611,7 +556,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 55,
     }, {
         Done = { 5543 },
-        _comment = "Quest contract: 5543 Blood Tinged Skies",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 5.16, 35.57),
         RaidIcon = { {
             npcID = 1855,
@@ -622,7 +566,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 56,
     }, {
         Done = { 5544 },
-        _comment = "Quest contract: 5544 Carrion Grubbage",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 5.16, 35.57),
         RaidIcon = { {
             npcID = 1855,
@@ -633,7 +576,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 57,
     }, {
         Done = { 6022 },
-        _comment = "Quest contract: 6022 To Kill With Purpose",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 22.23, 63.51),
         RaidIcon = { {
             npcID = 11878,
@@ -645,7 +587,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 58,
     }, {
         Done = { 6042 },
-        _comment = "Quest contract: 6042 Un-Life's Little Annoyances",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 22.23, 63.51),
         RaidIcon = { {
             npcID = 11878,
@@ -657,7 +598,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 59,
     }, {
         Done = { 6133 },
-        _comment = "Quest contract: 6133 The Ranger Lord's Behest",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 22.23, 63.51),
         RaidIcon = { {
             npcID = 11878,
@@ -669,7 +609,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 60,
     }, {
         Done = { 8905 },
-        _comment = "Quest contract: 8905 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -682,7 +621,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 61,
     }, {
         Done = { 8906 },
-        _comment = "Quest contract: 8906 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -695,7 +633,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 62,
     }, {
         Done = { 8907 },
-        _comment = "Quest contract: 8907 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -708,7 +645,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 63,
     }, {
         Done = { 8908 },
-        _comment = "Quest contract: 8908 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -721,7 +657,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 64,
     }, {
         Done = { 8909 },
-        _comment = "Quest contract: 8909 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -734,7 +669,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 65,
     }, {
         Done = { 8910 },
-        _comment = "Quest contract: 8910 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -747,7 +681,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 66,
     }, {
         Done = { 8911 },
-        _comment = "Quest contract: 8911 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -760,7 +693,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 67,
     }, {
         Done = { 8912 },
-        _comment = "Quest contract: 8912 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -773,7 +705,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 68,
     }, {
         Done = { 8913 },
-        _comment = "Quest contract: 8913 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -786,7 +717,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 69,
     }, {
         Done = { 8914 },
-        _comment = "Quest contract: 8914 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -799,7 +729,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 70,
     }, {
         Done = { 8915 },
-        _comment = "Quest contract: 8915 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -812,7 +741,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 71,
     }, {
         Done = { 8916 },
-        _comment = "Quest contract: 8916 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -825,7 +753,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 72,
     }, {
         Done = { 8917 },
-        _comment = "Quest contract: 8917 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -838,7 +765,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 73,
     }, {
         Done = { 8918 },
-        _comment = "Quest contract: 8918 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -851,7 +777,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 74,
     }, {
         Done = { 8919 },
-        _comment = "Quest contract: 8919 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -864,7 +789,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 75,
     }, {
         Done = { 8920 },
-        _comment = "Quest contract: 8920 An Earnest Proposition",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -877,7 +801,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 76,
     }, {
         PickUp = { 5515 },
-        _comment = "Quest contract: 5515 Krastinov's Bag of Horrors",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 70.22, 73.71),
         RaidIcon = { {
             npcID = 11216,
@@ -891,7 +814,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 77,
     }, {
         PickUp = { 5742 },
-        _comment = "Quest contract: 5742 Redemption",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 5.16, 35.57),
         RaidIcon = { {
             npcID = 1855,
@@ -909,7 +831,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 78,
     }, {
         PickUp = { 6135 },
-        _comment = "Quest contract: 6135 Duskwing, Oh How I Hate Thee...",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 22.23, 63.51),
         RaidIcon = { {
             npcID = 11878,
@@ -928,7 +849,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 79,
     }, {
         PickUp = { 6136 },
-        _comment = "Quest contract: 6136 The Corpulent One",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 22.23, 63.51),
         RaidIcon = { {
             npcID = 11878,
@@ -947,7 +867,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 80,
     }, {
         PickUp = { 8922 },
-        _comment = "Quest contract: 8922 A Supernatural Device",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -976,7 +895,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 81,
     }, {
         PickUp = { 8923 },
-        _comment = "Quest contract: 8923 A Supernatural Device",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1007,7 +925,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5515] = { 1 },
         },
-        _comment = "Quest contract: 5515 Krastinov's Bag of Horrors",
         NoArrow = true,
         IsQuestOnQuest = 5515,
         _index = 83,
@@ -1015,7 +932,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5742] = { 1 },
         },
-        _comment = "Quest contract: 5742 Redemption",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 5.16, 35.57),
         IsQuestOnQuest = 5742,
         Zone = 1423,
@@ -1024,7 +940,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [6135] = { 1 },
         },
-        _comment = "Quest contract: 6135 Duskwing, Oh How I Hate Thee...",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.08, 59.03),
         IsQuestOnQuest = 6135,
         Zone = 1423,
@@ -1033,7 +948,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [6136] = { 1 },
         },
-        _comment = "Quest contract: 6136 The Corpulent One",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 47.69, 24.87),
         IsQuestOnQuest = 6136,
         Zone = 1423,
@@ -1042,7 +956,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8922] = { 1 },
         },
-        _comment = "Quest contract: 8922 A Supernatural Device",
         NoArrow = true,
         IsQuestOnQuest = 8922,
         _index = 87,
@@ -1050,13 +963,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8923] = { 1 },
         },
-        _comment = "Quest contract: 8923 A Supernatural Device",
         NoArrow = true,
         IsQuestOnQuest = 8923,
         _index = 88,
     }, {
         Done = { 5515 },
-        _comment = "Quest contract: 5515 Krastinov's Bag of Horrors",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 70.22, 73.71),
         RaidIcon = { {
             npcID = 11216,
@@ -1067,7 +978,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 89,
     }, {
         Done = { 5742 },
-        _comment = "Quest contract: 5742 Redemption",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 5.16, 35.57),
         RaidIcon = { {
             npcID = 1855,
@@ -1078,7 +988,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 90,
     }, {
         Done = { 6135 },
-        _comment = "Quest contract: 6135 Duskwing, Oh How I Hate Thee...",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 22.23, 63.51),
         RaidIcon = { {
             npcID = 11878,
@@ -1090,7 +999,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 91,
     }, {
         Done = { 6136 },
-        _comment = "Quest contract: 6136 The Corpulent One",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 22.23, 63.51),
         RaidIcon = { {
             npcID = 11878,
@@ -1102,7 +1010,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 92,
     }, {
         Done = { 8922 },
-        _comment = "Quest contract: 8922 A Supernatural Device",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1114,7 +1021,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 93,
     }, {
         Done = { 8923 },
-        _comment = "Quest contract: 8923 A Supernatural Device",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1126,7 +1032,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 94,
     }, {
         PickUp = { 5384 },
-        _comment = "Quest contract: 5384 Kirtonos the Herald",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 70.22, 73.71),
         RaidIcon = { {
             npcID = 11216,
@@ -1140,7 +1045,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 95,
     }, {
         PickUp = { 5781 },
-        _comment = "Quest contract: 5781 Of Forgotten Memories",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 5.16, 35.57),
         RaidIcon = { {
             npcID = 1855,
@@ -1154,7 +1058,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 96,
     }, {
         PickUp = { 6163 },
-        _comment = "Quest contract: 6163 Ramstein",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 22.23, 63.51),
         RaidIcon = { {
             npcID = 11878,
@@ -1171,7 +1074,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 97,
     }, {
         PickUp = { 8921 },
-        _comment = "Quest contract: 8921 The Ectoplasmic Distiller",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1189,7 +1091,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5384] = { 1 },
         },
-        _comment = "Quest contract: 5384 Kirtonos the Herald",
         NoArrow = true,
         IsQuestOnQuest = 5384,
         _index = 99,
@@ -1197,7 +1098,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5781] = { 1 },
         },
-        _comment = "Quest contract: 5781 Of Forgotten Memories",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 23.85, 74.22),
         IsQuestOnQuest = 5781,
         Zone = 1423,
@@ -1206,13 +1106,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8921] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 8921 The Ectoplasmic Distiller",
         NoArrow = true,
         IsQuestOnQuest = 8921,
         _index = 101,
     }, {
         Done = { 5384 },
-        _comment = "Quest contract: 5384 Kirtonos the Herald",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 70.22, 73.71),
         RaidIcon = { {
             npcID = 11216,
@@ -1223,7 +1121,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 102,
     }, {
         Done = { 5781 },
-        _comment = "Quest contract: 5781 Of Forgotten Memories",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 5.16, 35.57),
         RaidIcon = { {
             npcID = 1855,
@@ -1234,7 +1131,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 103,
     }, {
         Done = { 8921 },
-        _comment = "Quest contract: 8921 The Ectoplasmic Distiller",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1245,7 +1141,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 104,
     }, {
         PickUp = { 5461 },
-        _comment = "Quest contract: 5461 The Human, Ras Frostwhisper",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 70.57, 74.11),
         RaidIcon = { {
             npcID = 11286,
@@ -1259,7 +1154,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 105,
     }, {
         PickUp = { 5845 },
-        _comment = "Quest contract: 5845 Of Lost Honor",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 5.16, 35.57),
         RaidIcon = { {
             npcID = 1855,
@@ -1273,7 +1167,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 106,
     }, {
         PickUp = { 8924 },
-        _comment = "Quest contract: 8924 Hunting for Ectoplasm",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1289,7 +1182,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5461] = { 1 },
         },
-        _comment = "Quest contract: 5461 The Human, Ras Frostwhisper",
         NoArrow = true,
         IsQuestOnQuest = 5461,
         _index = 108,
@@ -1297,7 +1189,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5845] = { 1 },
         },
-        _comment = "Quest contract: 5845 Of Lost Honor",
         NoArrow = true,
         IsQuestOnQuest = 5845,
         _index = 109,
@@ -1305,14 +1196,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8924] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 8924 Hunting for Ectoplasm",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 60.94, 58.39),
         IsQuestOnQuest = 8924,
         Zone = 1451,
         _index = 110,
     }, {
         Done = { 5461 },
-        _comment = "Quest contract: 5461 The Human, Ras Frostwhisper",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 70.57, 74.11),
         RaidIcon = { {
             npcID = 11286,
@@ -1323,7 +1212,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 111,
     }, {
         Done = { 5845 },
-        _comment = "Quest contract: 5845 Of Lost Honor",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 5.16, 35.57),
         RaidIcon = { {
             npcID = 1855,
@@ -1334,7 +1222,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 112,
     }, {
         Done = { 8924 },
-        _comment = "Quest contract: 8924 Hunting for Ectoplasm",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1345,7 +1232,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 113,
     }, {
         PickUp = { 5462 },
-        _comment = "Quest contract: 5462 The Dying, Ras Frostwhisper",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 70.57, 74.11),
         RaidIcon = { {
             npcID = 11286,
@@ -1359,7 +1245,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 114,
     }, {
         PickUp = { 5846 },
-        _comment = "Quest contract: 5846 Of Love and Family",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 5.16, 35.57),
         RaidIcon = { {
             npcID = 1855,
@@ -1373,7 +1258,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 115,
     }, {
         PickUp = { 8925 },
-        _comment = "Quest contract: 8925 A Portable Power Source",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1389,13 +1273,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5462] = { 1 },
         },
-        _comment = "Quest contract: 5462 The Dying, Ras Frostwhisper",
         NoArrow = true,
         IsQuestOnQuest = 5462,
         _index = 117,
     }, {
         Done = { 5846 },
-        _comment = "Quest contract: 5846 Of Love and Family",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 65.77, 75.37),
         RaidIcon = { {
             npcID = 11936,
@@ -1408,14 +1290,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8925] = { 1 },
         },
-        _comment = "Quest contract: 8925 A Portable Power Source",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 35.39, 57.76),
         IsQuestOnQuest = 8925,
         Zone = 1428,
         _index = 119,
     }, {
         Done = { 5462 },
-        _comment = "Quest contract: 5462 The Dying, Ras Frostwhisper",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.89, 48.29),
         RaidIcon = { {
             npcID = 11036,
@@ -1426,7 +1306,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 120,
     }, {
         PickUp = { 5848 },
-        _comment = "Quest contract: 5848 Of Love and Family",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 65.77, 75.37),
         RaidIcon = { {
             npcID = 11936,
@@ -1440,7 +1319,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 121,
     }, {
         Done = { 8925 },
-        _comment = "Quest contract: 8925 A Portable Power Source",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1451,7 +1329,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 122,
     }, {
         PickUp = { 5463 },
-        _comment = "Quest contract: 5463 Menethil's Gift",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.89, 48.29),
         RaidIcon = { {
             npcID = 11036,
@@ -1465,7 +1342,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 123,
     }, {
         PickUp = { 8928 },
-        _comment = "Quest contract: 8928 A Shifty Merchant",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1481,13 +1357,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8928] = { 1 },
         },
-        _comment = "Quest contract: 8928 A Shifty Merchant",
         NoArrow = true,
         IsQuestOnQuest = 8928,
         _index = 125,
     }, {
         Done = { 8928 },
-        _comment = "Quest contract: 8928 A Shifty Merchant",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1498,7 +1372,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 126,
     }, {
         PickUp = { 8977 },
-        _comment = "Quest contract: 8977 Return to Deliana",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1513,7 +1386,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 127,
     }, {
         PickUp = { 8978 },
-        _comment = "Quest contract: 8978 Return to Mokvar",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.47, 27.23),
         RaidIcon = { {
             npcID = 16014,
@@ -1530,7 +1402,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8977] = { 1 },
         },
-        _comment = "Quest contract: 8977 Return to Deliana",
         NoArrow = true,
         IsQuestOnQuest = 8977,
         _index = 129,
@@ -1538,13 +1409,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8978] = { 1 },
         },
-        _comment = "Quest contract: 8978 Return to Mokvar",
         NoArrow = true,
         IsQuestOnQuest = 8978,
         _index = 130,
     }, {
         Done = { 8977 },
-        _comment = "Quest contract: 8977 Return to Deliana",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1556,7 +1425,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 131,
     }, {
         Done = { 8978 },
-        _comment = "Quest contract: 8978 Return to Mokvar",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1568,7 +1436,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 132,
     }, {
         PickUp = { 8926 },
-        _comment = "Quest contract: 8926 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1584,7 +1451,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 133,
     }, {
         PickUp = { 8927 },
-        _comment = "Quest contract: 8927 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1600,7 +1466,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 134,
     }, {
         PickUp = { 8931 },
-        _comment = "Quest contract: 8931 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1616,7 +1481,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 135,
     }, {
         PickUp = { 8932 },
-        _comment = "Quest contract: 8932 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1632,7 +1496,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 136,
     }, {
         PickUp = { 8933 },
-        _comment = "Quest contract: 8933 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1648,7 +1511,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 137,
     }, {
         PickUp = { 8934 },
-        _comment = "Quest contract: 8934 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1664,7 +1526,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 138,
     }, {
         PickUp = { 8935 },
-        _comment = "Quest contract: 8935 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1680,7 +1541,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 139,
     }, {
         PickUp = { 8936 },
-        _comment = "Quest contract: 8936 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1696,7 +1556,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 140,
     }, {
         PickUp = { 8937 },
-        _comment = "Quest contract: 8937 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1712,7 +1571,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 141,
     }, {
         PickUp = { 8938 },
-        _comment = "Quest contract: 8938 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1728,7 +1586,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 142,
     }, {
         PickUp = { 8939 },
-        _comment = "Quest contract: 8939 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1744,7 +1601,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 143,
     }, {
         PickUp = { 8940 },
-        _comment = "Quest contract: 8940 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1760,7 +1616,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 144,
     }, {
         PickUp = { 8941 },
-        _comment = "Quest contract: 8941 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1776,7 +1631,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 145,
     }, {
         PickUp = { 8942 },
-        _comment = "Quest contract: 8942 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1792,7 +1646,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 146,
     }, {
         PickUp = { 8943 },
-        _comment = "Quest contract: 8943 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1808,7 +1661,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 147,
     }, {
         PickUp = { 8944 },
-        _comment = "Quest contract: 8944 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1826,7 +1678,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8926] = { 1, 2 },
         },
-        _comment = "Quest contract: 8926 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8926,
         _index = 149,
@@ -1834,7 +1685,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8927] = { 1, 2 },
         },
-        _comment = "Quest contract: 8927 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8927,
         _index = 150,
@@ -1842,7 +1692,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8931] = { 1, 2 },
         },
-        _comment = "Quest contract: 8931 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8931,
         _index = 151,
@@ -1850,7 +1699,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8932] = { 1, 2 },
         },
-        _comment = "Quest contract: 8932 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8932,
         _index = 152,
@@ -1858,7 +1706,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8933] = { 1, 2 },
         },
-        _comment = "Quest contract: 8933 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 51.93, 23.82),
         IsQuestOnQuest = 8933,
         Zone = 1422,
@@ -1867,7 +1714,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8934] = { 1, 2 },
         },
-        _comment = "Quest contract: 8934 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8934,
         _index = 154,
@@ -1875,7 +1721,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8935] = { 1, 2 },
         },
-        _comment = "Quest contract: 8935 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8935,
         _index = 155,
@@ -1883,7 +1728,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8936] = { 1, 2 },
         },
-        _comment = "Quest contract: 8936 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8936,
         _index = 156,
@@ -1891,7 +1735,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8937] = { 1, 2 },
         },
-        _comment = "Quest contract: 8937 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8937,
         _index = 157,
@@ -1899,7 +1742,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8938] = { 1, 2 },
         },
-        _comment = "Quest contract: 8938 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8938,
         _index = 158,
@@ -1907,7 +1749,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8939] = { 1, 2 },
         },
-        _comment = "Quest contract: 8939 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8939,
         _index = 159,
@@ -1915,7 +1756,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8940] = { 1, 2 },
         },
-        _comment = "Quest contract: 8940 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8940,
         _index = 160,
@@ -1923,7 +1763,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8941] = { 1, 2 },
         },
-        _comment = "Quest contract: 8941 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8941,
         _index = 161,
@@ -1931,7 +1770,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8942] = { 1, 2 },
         },
-        _comment = "Quest contract: 8942 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8942,
         _index = 162,
@@ -1939,7 +1777,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8943] = { 1, 2 },
         },
-        _comment = "Quest contract: 8943 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8943,
         _index = 163,
@@ -1947,13 +1784,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8944] = { 1, 2 },
         },
-        _comment = "Quest contract: 8944 Just Compensation",
         NoArrow = true,
         IsQuestOnQuest = 8944,
         _index = 164,
     }, {
         Done = { 8926 },
-        _comment = "Quest contract: 8926 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1966,7 +1801,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 165,
     }, {
         Done = { 8927 },
-        _comment = "Quest contract: 8927 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -1979,7 +1813,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 166,
     }, {
         Done = { 8931 },
-        _comment = "Quest contract: 8931 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -1992,7 +1825,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 167,
     }, {
         Done = { 8932 },
-        _comment = "Quest contract: 8932 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2005,7 +1837,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 168,
     }, {
         Done = { 8933 },
-        _comment = "Quest contract: 8933 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2018,7 +1849,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 169,
     }, {
         Done = { 8934 },
-        _comment = "Quest contract: 8934 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2031,7 +1861,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 170,
     }, {
         Done = { 8935 },
-        _comment = "Quest contract: 8935 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2044,7 +1873,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 171,
     }, {
         Done = { 8936 },
-        _comment = "Quest contract: 8936 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2057,7 +1885,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 172,
     }, {
         Done = { 8937 },
-        _comment = "Quest contract: 8937 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2070,7 +1897,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 173,
     }, {
         Done = { 8938 },
-        _comment = "Quest contract: 8938 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2083,7 +1909,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 174,
     }, {
         Done = { 8939 },
-        _comment = "Quest contract: 8939 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2096,7 +1921,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 175,
     }, {
         Done = { 8940 },
-        _comment = "Quest contract: 8940 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2109,7 +1933,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 176,
     }, {
         Done = { 8941 },
-        _comment = "Quest contract: 8941 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2122,7 +1945,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 177,
     }, {
         Done = { 8942 },
-        _comment = "Quest contract: 8942 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2135,7 +1957,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 178,
     }, {
         Done = { 8943 },
-        _comment = "Quest contract: 8943 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2148,7 +1969,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 179,
     }, {
         Done = { 8944 },
-        _comment = "Quest contract: 8944 Just Compensation",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2161,7 +1981,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 180,
     }, {
         PickUp = { 8929 },
-        _comment = "Quest contract: 8929 In Search of Anthion",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -2190,7 +2009,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 181,
     }, {
         PickUp = { 8930 },
-        _comment = "Quest contract: 8930 In Search of Anthion",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -2219,7 +2037,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 182,
     }, {
         Done = { 8929 },
-        _comment = "Quest contract: 8929 In Search of Anthion",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2231,7 +2048,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 183,
     }, {
         Done = { 8930 },
-        _comment = "Quest contract: 8930 In Search of Anthion",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2243,7 +2059,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 184,
     }, {
         PickUp = { 8945 },
-        _comment = "Quest contract: 8945 Dead Man's Plea",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2268,7 +2083,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 186,
     }, {
         PickUp = { 5122 },
-        _comment = "Quest contract: 5122 The Medallion of Faith",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -2442,7 +2256,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5122] = { 1 },
         },
-        _comment = "Quest contract: 5122 The Medallion of Faith",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -2452,7 +2265,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5212] = { 1 },
         },
-        _comment = "Quest contract: 5212 The Flesh Does Not Lie",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -2462,7 +2274,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5214] = { 1 },
         },
-        _comment = "Quest contract: 5214 The Great Ezra Grimm",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -2472,7 +2283,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5243] = { 1 },
         },
-        _comment = "Quest contract: 5243 Houses of the Holy",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -2482,7 +2292,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5251] = { 1, 2 },
         },
-        _comment = "Quest contract: 5251 The Archivist",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -2492,7 +2301,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5282] = { 1 },
         },
-        _comment = "Quest contract: 5282 The Restless Souls",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -2502,7 +2310,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5463] = { 1 },
         },
-        _comment = "Quest contract: 5463 Menethil's Gift",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -2512,7 +2319,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5848] = { 1 },
         },
-        _comment = "Quest contract: 5848 Of Love and Family",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -2522,7 +2328,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [6163] = { 1 },
         },
-        _comment = "Quest contract: 6163 Ramstein",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -2532,7 +2337,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8945] = { 1 },
         },
-        _comment = "Quest contract: 8945 Dead Man's Plea",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -2540,7 +2344,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 213,
     }, {
         Done = { 5122 },
-        _comment = "Quest contract: 5122 The Medallion of Faith",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -2552,7 +2355,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 214,
     }, {
         Done = { 5463 },
-        _comment = "Quest contract: 5463 Menethil's Gift",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -2560,7 +2362,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 215,
     }, {
         Done = { 8945 },
-        _comment = "Quest contract: 8945 Dead Man's Plea",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -2572,7 +2373,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 216,
     }, {
         PickUp = { 5125 },
-        _comment = "Quest contract: 5125 Aurius' Reckoning",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -2587,7 +2387,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 217,
     }, {
         Done = { 5125 },
-        _comment = "Quest contract: 5125 Aurius' Reckoning",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -2606,7 +2405,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 219,
     }, {
         Done = { 5212 },
-        _comment = "Quest contract: 5212 The Flesh Does Not Lie",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.66, 49.94),
         RaidIcon = { {
             npcID = 11035,
@@ -2617,7 +2415,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 220,
     }, {
         Done = { 5214 },
-        _comment = "Quest contract: 5214 The Great Ezra Grimm",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 70.88, 48.43),
         RaidIcon = { {
             npcID = 11033,
@@ -2628,7 +2425,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 221,
     }, {
         Done = { 5243 },
-        _comment = "Quest contract: 5243 Houses of the Holy",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.89, 48.29),
         RaidIcon = { {
             npcID = 11036,
@@ -2639,7 +2435,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 222,
     }, {
         Done = { 5251 },
-        _comment = "Quest contract: 5251 The Archivist",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.63, 50.09),
         RaidIcon = { {
             npcID = 11039,
@@ -2650,7 +2445,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 223,
     }, {
         Done = { 5282 },
-        _comment = "Quest contract: 5282 The Restless Souls",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 11.36, 26.6),
         RaidIcon = { {
             npcID = 11140,
@@ -2661,7 +2455,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 224,
     }, {
         PickUp = { 5464 },
-        _comment = "Quest contract: 5464 Menethil's Gift",
         NoArrow = true,
         AnyOf = { {
             IsQuestCompleted = 5463,
@@ -2670,7 +2463,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 225,
     }, {
         Done = { 5848 },
-        _comment = "Quest contract: 5848 Of Love and Family",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 5.16, 35.57),
         RaidIcon = { {
             npcID = 1855,
@@ -2681,7 +2473,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 226,
     }, {
         Done = { 6163 },
-        _comment = "Quest contract: 6163 Ramstein",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 22.23, 63.51),
         RaidIcon = { {
             npcID = 11878,
@@ -2693,7 +2484,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 227,
     }, {
         PickUp = { 8946 },
-        _comment = "Quest contract: 8946 Proof of Life",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16031,
@@ -2706,7 +2496,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 228,
     }, {
         PickUp = { 5213 },
-        _comment = "Quest contract: 5213 The Active Agent",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.66, 49.94),
         RaidIcon = { {
             npcID = 11035,
@@ -2722,13 +2511,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5464] = { 1 },
         },
-        _comment = "Quest contract: 5464 Menethil's Gift",
         NoArrow = true,
         IsQuestOnQuest = 5464,
         _index = 230,
     }, {
         PickUp = { 5861 },
-        _comment = "Quest contract: 5861 Find Myranda",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 5.16, 35.57),
         RaidIcon = { {
             npcID = 1855,
@@ -2744,13 +2531,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8946] = { 1 },
         },
-        _comment = "Quest contract: 8946 Proof of Life",
         NoArrow = true,
         IsQuestOnQuest = 8946,
         _index = 232,
     }, {
         Done = { 5464 },
-        _comment = "Quest contract: 5464 Menethil's Gift",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.89, 48.29),
         RaidIcon = { {
             npcID = 11036,
@@ -2763,13 +2548,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5861] = { 1 },
         },
-        _comment = "Quest contract: 5861 Find Myranda",
         NoArrow = true,
         IsQuestOnQuest = 5861,
         _index = 234,
     }, {
         Done = { 8946 },
-        _comment = "Quest contract: 8946 Proof of Life",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2780,7 +2563,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 235,
     }, {
         PickUp = { 5465 },
-        _comment = "Quest contract: 5465 Soulbound Keepsake",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.89, 48.29),
         RaidIcon = { {
             npcID = 11036,
@@ -2794,7 +2576,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 236,
     }, {
         Done = { 5861 },
-        _comment = "Quest contract: 5861 Find Myranda",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 50.79, 77.85),
         RaidIcon = { {
             npcID = 11872,
@@ -2805,7 +2586,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 237,
     }, {
         PickUp = { 8947 },
-        _comment = "Quest contract: 8947 Anthion's Strange Request",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2821,13 +2601,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5465] = { 1 },
         },
-        _comment = "Quest contract: 5465 Soulbound Keepsake",
         NoArrow = true,
         IsQuestOnQuest = 5465,
         _index = 239,
     }, {
         PickUp = { 5862 },
-        _comment = "Quest contract: 5862 Scarlet Subterfuge",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 50.79, 77.85),
         RaidIcon = { {
             npcID = 11872,
@@ -2843,13 +2621,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8947] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 8947 Anthion's Strange Request",
         NoArrow = true,
         IsQuestOnQuest = 8947,
         _index = 241,
     }, {
         Done = { 5465 },
-        _comment = "Quest contract: 5465 Soulbound Keepsake",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 70.57, 74.11),
         RaidIcon = { {
             npcID = 11286,
@@ -2862,13 +2638,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5862] = { 1 },
         },
-        _comment = "Quest contract: 5862 Scarlet Subterfuge",
         NoArrow = true,
         IsQuestOnQuest = 5862,
         _index = 243,
     }, {
         Done = { 8947 },
-        _comment = "Quest contract: 8947 Anthion's Strange Request",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2879,7 +2653,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 244,
     }, {
         Done = { 5862 },
-        _comment = "Quest contract: 5862 Scarlet Subterfuge",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 42.02, 14.79),
         RaidIcon = { {
             npcID = 1842,
@@ -2890,7 +2663,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 245,
     }, {
         PickUp = { 8948 },
-        _comment = "Quest contract: 8948 Anthion's Old Friend",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -2904,7 +2676,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 246,
     }, {
         PickUp = { 5944 },
-        _comment = "Quest contract: 5944 In Dreams",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 42.02, 14.79),
         RaidIcon = { {
             npcID = 1842,
@@ -2920,7 +2691,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8948] = { 1 },
         },
-        _comment = "Quest contract: 8948 Anthion's Old Friend",
         NoArrow = true,
         IsQuestOnQuest = 8948,
         _index = 248,
@@ -2928,13 +2698,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5944] = { 1 },
         },
-        _comment = "Quest contract: 5944 In Dreams",
         NoArrow = true,
         IsQuestOnQuest = 5944,
         _index = 249,
     }, {
         Done = { 8948 },
-        _comment = "Quest contract: 8948 Anthion's Old Friend",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16032,
@@ -2944,7 +2712,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 250,
     }, {
         Done = { 5944 },
-        _comment = "Quest contract: 5944 In Dreams",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 5.16, 35.57),
         RaidIcon = { {
             npcID = 1855,
@@ -2955,7 +2722,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 251,
     }, {
         PickUp = { 8949 },
-        _comment = "Quest contract: 8949 Falrin's Vendetta",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16032,
@@ -2970,14 +2736,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8949] = { 1 },
         },
-        _comment = "Quest contract: 8949 Falrin's Vendetta",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 59.95, 46.58),
         IsQuestOnQuest = 8949,
         Zone = 1444,
         _index = 253,
     }, {
         Done = { 8949 },
-        _comment = "Quest contract: 8949 Falrin's Vendetta",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16032,
@@ -2987,7 +2751,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 254,
     }, {
         PickUp = { 8950 },
-        _comment = "Quest contract: 8950 The Instigator's Enchantment",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16032,
@@ -3002,13 +2765,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8950] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8950 The Instigator's Enchantment",
         NoArrow = true,
         IsQuestOnQuest = 8950,
         _index = 256,
     }, {
         Done = { 8950 },
-        _comment = "Quest contract: 8950 The Instigator's Enchantment",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16032,
@@ -3018,7 +2779,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 257,
     }, {
         PickUp = { 9015 },
-        _comment = "Quest contract: 9015 The Challenge",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16032,
@@ -3033,13 +2793,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [9015] = { 1, 2 },
         },
-        _comment = "Quest contract: 9015 The Challenge",
         NoArrow = true,
         IsQuestOnQuest = 9015,
         _index = 259,
     }, {
         Done = { 9015 },
-        _comment = "Quest contract: 9015 The Challenge",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -3050,7 +2808,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 260,
     }, {
         PickUp = { 8951 },
-        _comment = "Quest contract: 8951 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -3066,7 +2823,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 261,
     }, {
         PickUp = { 8952 },
-        _comment = "Quest contract: 8952 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -3082,7 +2838,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 262,
     }, {
         PickUp = { 8953 },
-        _comment = "Quest contract: 8953 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -3098,7 +2853,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 263,
     }, {
         PickUp = { 8954 },
-        _comment = "Quest contract: 8954 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -3114,7 +2868,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 264,
     }, {
         PickUp = { 8955 },
-        _comment = "Quest contract: 8955 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -3130,7 +2883,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 265,
     }, {
         PickUp = { 8956 },
-        _comment = "Quest contract: 8956 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -3146,7 +2898,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 266,
     }, {
         PickUp = { 8957 },
-        _comment = "Quest contract: 8957 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -3162,7 +2913,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 267,
     }, {
         PickUp = { 8958 },
-        _comment = "Quest contract: 8958 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -3178,7 +2928,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 268,
     }, {
         PickUp = { 8959 },
-        _comment = "Quest contract: 8959 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -3194,7 +2943,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 269,
     }, {
         PickUp = { 9016 },
-        _comment = "Quest contract: 9016 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -3210,7 +2958,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 270,
     }, {
         PickUp = { 9017 },
-        _comment = "Quest contract: 9017 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -3226,7 +2973,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 271,
     }, {
         PickUp = { 9018 },
-        _comment = "Quest contract: 9018 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -3242,7 +2988,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 272,
     }, {
         PickUp = { 9019 },
-        _comment = "Quest contract: 9019 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -3258,7 +3003,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 273,
     }, {
         PickUp = { 9020 },
-        _comment = "Quest contract: 9020 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -3274,7 +3018,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 274,
     }, {
         PickUp = { 9021 },
-        _comment = "Quest contract: 9021 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -3290,7 +3033,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 275,
     }, {
         PickUp = { 9022 },
-        _comment = "Quest contract: 9022 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 26.11, 11.3),
         RaidIcon = { {
             npcID = 16016,
@@ -3308,7 +3050,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8951] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8951 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8951,
         _index = 277,
@@ -3316,7 +3057,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8952] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8952 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8952,
         _index = 278,
@@ -3324,7 +3064,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8953] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8953 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8953,
         _index = 279,
@@ -3332,7 +3071,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8954] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8954 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8954,
         _index = 280,
@@ -3340,7 +3078,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8955] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8955 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8955,
         _index = 281,
@@ -3348,7 +3085,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8956] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8956 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8956,
         _index = 282,
@@ -3356,7 +3092,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8957] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8957 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8957,
         _index = 283,
@@ -3364,7 +3099,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8958] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8958 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8958,
         _index = 284,
@@ -3372,7 +3106,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8959] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8959 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 8959,
         _index = 285,
@@ -3380,7 +3113,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [9016] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 9016 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 9016,
         _index = 286,
@@ -3388,7 +3120,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [9017] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 9017 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 9017,
         _index = 287,
@@ -3396,7 +3127,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [9018] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 9018 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 9018,
         _index = 288,
@@ -3404,7 +3134,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [9019] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 9019 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 9019,
         _index = 289,
@@ -3412,7 +3141,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [9020] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 9020 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 9020,
         _index = 290,
@@ -3420,7 +3148,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [9021] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 9021 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 9021,
         _index = 291,
@@ -3428,13 +3155,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [9022] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 9022 Anthion's Parting Words",
         NoArrow = true,
         IsQuestOnQuest = 9022,
         _index = 292,
     }, {
         Done = { 8951 },
-        _comment = "Quest contract: 8951 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -3447,7 +3172,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 293,
     }, {
         Done = { 8952 },
-        _comment = "Quest contract: 8952 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -3460,7 +3184,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 294,
     }, {
         Done = { 8953 },
-        _comment = "Quest contract: 8953 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -3473,7 +3196,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 295,
     }, {
         Done = { 8954 },
-        _comment = "Quest contract: 8954 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -3486,7 +3208,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 296,
     }, {
         Done = { 8955 },
-        _comment = "Quest contract: 8955 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -3499,7 +3220,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 297,
     }, {
         Done = { 8956 },
-        _comment = "Quest contract: 8956 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -3512,7 +3232,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 298,
     }, {
         Done = { 8957 },
-        _comment = "Quest contract: 8957 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -3525,7 +3244,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 299,
     }, {
         Done = { 8958 },
-        _comment = "Quest contract: 8958 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -3538,7 +3256,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 300,
     }, {
         Done = { 8959 },
-        _comment = "Quest contract: 8959 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -3551,7 +3268,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 301,
     }, {
         Done = { 9016 },
-        _comment = "Quest contract: 9016 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -3564,7 +3280,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 302,
     }, {
         Done = { 9017 },
-        _comment = "Quest contract: 9017 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -3577,7 +3292,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 303,
     }, {
         Done = { 9018 },
-        _comment = "Quest contract: 9018 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -3590,7 +3304,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 304,
     }, {
         Done = { 9019 },
-        _comment = "Quest contract: 9019 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -3603,7 +3316,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 305,
     }, {
         Done = { 9020 },
-        _comment = "Quest contract: 9020 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -3616,7 +3328,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 306,
     }, {
         Done = { 9021 },
-        _comment = "Quest contract: 9021 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -3629,7 +3340,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 307,
     }, {
         Done = { 9022 },
-        _comment = "Quest contract: 9022 Anthion's Parting Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -3642,7 +3352,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 308,
     }, {
         PickUp = { 8960 },
-        _comment = "Quest contract: 8960 Bodley's Unfortunate Fate",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 43.53, 52.64),
         RaidIcon = { {
             npcID = 16013,
@@ -3671,7 +3380,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 309,
     }, {
         PickUp = { 9032 },
-        _comment = "Quest contract: 9032 Bodley's Unfortunate Fate",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 34.95, 38.29),
         RaidIcon = { {
             npcID = 16012,
@@ -3700,7 +3408,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 310,
     }, {
         Done = { 8960 },
-        _comment = "Quest contract: 8960 Bodley's Unfortunate Fate",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3711,7 +3418,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 311,
     }, {
         Done = { 9032 },
-        _comment = "Quest contract: 9032 Bodley's Unfortunate Fate",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3722,7 +3428,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 312,
     }, {
         PickUp = { 8961 },
-        _comment = "Quest contract: 8961 Three Kings of Flame",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3739,14 +3444,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8961] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 8961 Three Kings of Flame",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 37.63, 44.8),
         IsQuestOnQuest = 8961,
         Zone = 1451,
         _index = 314,
     }, {
         Done = { 8961 },
-        _comment = "Quest contract: 8961 Three Kings of Flame",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3756,7 +3459,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 315,
     }, {
         PickUp = { 8962 },
-        _comment = "Quest contract: 8962 Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3769,7 +3471,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 316,
     }, {
         PickUp = { 8963 },
-        _comment = "Quest contract: 8963 Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3782,7 +3483,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 317,
     }, {
         PickUp = { 8964 },
-        _comment = "Quest contract: 8964 Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3795,7 +3495,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 318,
     }, {
         PickUp = { 8965 },
-        _comment = "Quest contract: 8965 Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3810,7 +3509,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8962] = { 1 },
         },
-        _comment = "Quest contract: 8962 Components of Importance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 49.31, 80.12),
         IsQuestOnQuest = 8962,
         Zone = 1451,
@@ -3819,7 +3517,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8963] = { 1 },
         },
-        _comment = "Quest contract: 8963 Components of Importance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 65.66, 69.28),
         IsQuestOnQuest = 8963,
         Zone = 1452,
@@ -3828,7 +3525,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8964] = { 1 },
         },
-        _comment = "Quest contract: 8964 Components of Importance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 78.03, 72.34),
         IsQuestOnQuest = 8964,
         Zone = 1423,
@@ -3837,14 +3533,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8965] = { 1 },
         },
-        _comment = "Quest contract: 8965 Components of Importance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 18.33, 77.93),
         IsQuestOnQuest = 8965,
         Zone = 1424,
         _index = 323,
     }, {
         Done = { 8962 },
-        _comment = "Quest contract: 8962 Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3854,7 +3548,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 324,
     }, {
         Done = { 8963 },
-        _comment = "Quest contract: 8963 Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3864,7 +3557,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 325,
     }, {
         Done = { 8964 },
-        _comment = "Quest contract: 8964 Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3874,7 +3566,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 326,
     }, {
         Done = { 8965 },
-        _comment = "Quest contract: 8965 Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3884,7 +3575,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 327,
     }, {
         PickUp = { 8966 },
-        _comment = "Quest contract: 8966 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3903,7 +3593,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 328,
     }, {
         PickUp = { 8967 },
-        _comment = "Quest contract: 8967 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3922,7 +3611,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 329,
     }, {
         PickUp = { 8969 },
-        _comment = "Quest contract: 8969 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3943,7 +3631,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8966] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8966 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         IsQuestOnQuest = 8966,
         _index = 331,
@@ -3951,7 +3638,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8967] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8967 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         IsQuestOnQuest = 8967,
         _index = 332,
@@ -3959,13 +3645,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8969] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8969 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         IsQuestOnQuest = 8969,
         _index = 333,
     }, {
         Done = { 8966 },
-        _comment = "Quest contract: 8966 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3975,7 +3659,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 334,
     }, {
         Done = { 8967 },
-        _comment = "Quest contract: 8967 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -3985,7 +3668,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 335,
     }, {
         Done = { 8969 },
-        _comment = "Quest contract: 8969 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4006,7 +3688,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5213] = { 1 },
         },
-        _comment = "Quest contract: 5213 The Active Agent",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -4014,7 +3695,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 338,
     }, {
         PickUp = { 5262 },
-        _comment = "Quest contract: 5262 The Truth Comes Crashing Down",
         Button = {
             ["5262"] = 13250,
         },
@@ -4032,7 +3712,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 339,
     }, {
         PickUp = { 8968 },
-        _comment = "Quest contract: 8968 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -4055,7 +3734,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5262] = { 1 },
         },
-        _comment = "Quest contract: 5262 The Truth Comes Crashing Down",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -4065,7 +3743,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8968] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 8968 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -4073,7 +3750,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 342,
     }, {
         Done = { 8968 },
-        _comment = "Quest contract: 8968 The Left Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -4092,7 +3768,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 344,
     }, {
         Done = { 5213 },
-        _comment = "Quest contract: 5213 The Active Agent",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.66, 49.94),
         RaidIcon = { {
             npcID = 11035,
@@ -4103,7 +3778,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 345,
     }, {
         Done = { 5262 },
-        _comment = "Quest contract: 5262 The Truth Comes Crashing Down",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.63, 50.09),
         RaidIcon = { {
             npcID = 11039,
@@ -4114,7 +3788,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 346,
     }, {
         PickUp = { 8970 },
-        _comment = "Quest contract: 8970 I See Alcaz Island In Your Future...",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4133,7 +3806,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 347,
     }, {
         PickUp = { 5263 },
-        _comment = "Quest contract: 5263 Above and Beyond",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.63, 50.09),
         RaidIcon = { {
             npcID = 11039,
@@ -4149,14 +3821,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8970] = { 1 },
         },
-        _comment = "Quest contract: 8970 I See Alcaz Island In Your Future...",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 74.79, 15.12),
         IsQuestOnQuest = 8970,
         Zone = 1445,
         _index = 349,
     }, {
         Done = { 8970 },
-        _comment = "Quest contract: 8970 I See Alcaz Island In Your Future...",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4166,7 +3836,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 350,
     }, {
         PickUp = { 8985 },
-        _comment = "Quest contract: 8985 More Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4179,7 +3848,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 351,
     }, {
         PickUp = { 8986 },
-        _comment = "Quest contract: 8986 More Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4192,7 +3860,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 352,
     }, {
         PickUp = { 8987 },
-        _comment = "Quest contract: 8987 More Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4205,7 +3872,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 353,
     }, {
         PickUp = { 8988 },
-        _comment = "Quest contract: 8988 More Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4220,7 +3886,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8985] = { 1 },
         },
-        _comment = "Quest contract: 8985 More Components of Importance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 65.66, 69.28),
         IsQuestOnQuest = 8985,
         Zone = 1452,
@@ -4229,7 +3894,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8986] = { 1 },
         },
-        _comment = "Quest contract: 8986 More Components of Importance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 49.31, 80.12),
         IsQuestOnQuest = 8986,
         Zone = 1451,
@@ -4238,7 +3902,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8987] = { 1 },
         },
-        _comment = "Quest contract: 8987 More Components of Importance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 78.03, 72.34),
         IsQuestOnQuest = 8987,
         Zone = 1423,
@@ -4247,14 +3910,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8988] = { 1 },
         },
-        _comment = "Quest contract: 8988 More Components of Importance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 18.33, 77.93),
         IsQuestOnQuest = 8988,
         Zone = 1424,
         _index = 358,
     }, {
         Done = { 8985 },
-        _comment = "Quest contract: 8985 More Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4264,7 +3925,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 359,
     }, {
         Done = { 8986 },
-        _comment = "Quest contract: 8986 More Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4274,7 +3934,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 360,
     }, {
         Done = { 8987 },
-        _comment = "Quest contract: 8987 More Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4284,7 +3943,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 361,
     }, {
         Done = { 8988 },
-        _comment = "Quest contract: 8988 More Components of Importance",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4294,7 +3952,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 362,
     }, {
         PickUp = { 8989 },
-        _comment = "Quest contract: 8989 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4313,7 +3970,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 363,
     }, {
         PickUp = { 8990 },
-        _comment = "Quest contract: 8990 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4332,7 +3988,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 364,
     }, {
         PickUp = { 8992 },
-        _comment = "Quest contract: 8992 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4353,7 +4008,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8989] = { 1, 2 },
         },
-        _comment = "Quest contract: 8989 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         IsQuestOnQuest = 8989,
         _index = 366,
@@ -4361,7 +4015,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8990] = { 1, 2 },
         },
-        _comment = "Quest contract: 8990 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         IsQuestOnQuest = 8990,
         _index = 367,
@@ -4369,13 +4022,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8992] = { 1, 2 },
         },
-        _comment = "Quest contract: 8992 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         IsQuestOnQuest = 8992,
         _index = 368,
     }, {
         Done = { 8989 },
-        _comment = "Quest contract: 8989 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4385,7 +4036,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 369,
     }, {
         Done = { 8990 },
-        _comment = "Quest contract: 8990 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4395,7 +4045,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 370,
     }, {
         Done = { 8992 },
-        _comment = "Quest contract: 8992 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4416,7 +4065,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [5263] = { 1 },
         },
-        _comment = "Quest contract: 5263 Above and Beyond",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -4424,7 +4072,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 373,
     }, {
         PickUp = { 8991 },
-        _comment = "Quest contract: 8991 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -4447,7 +4094,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8991] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 8991 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -4455,7 +4101,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 375,
     }, {
         Done = { 8991 },
-        _comment = "Quest contract: 8991 The Right Piece of Lord Valthalak's Amulet",
         NoArrow = true,
         Dungeon = "INSTANCE_329",
         InstanceQuest = true,
@@ -4474,7 +4119,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 377,
     }, {
         Done = { 5263 },
-        _comment = "Quest contract: 5263 Above and Beyond",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.63, 50.09),
         RaidIcon = { {
             npcID = 11039,
@@ -4485,7 +4129,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 378,
     }, {
         PickUp = { 8994 },
-        _comment = "Quest contract: 8994 Final Preparations",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4504,7 +4147,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 379,
     }, {
         PickUp = { 5264 },
-        _comment = "Quest contract: 5264 Lord Maxwell Tyrosus",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.63, 50.09),
         RaidIcon = { {
             npcID = 11039,
@@ -4520,13 +4162,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         Qpart = {
             [8994] = { 1, 2 },
         },
-        _comment = "Quest contract: 8994 Final Preparations",
         NoArrow = true,
         IsQuestOnQuest = 8994,
         _index = 381,
     }, {
         Done = { 5264 },
-        _comment = "Quest contract: 5264 Lord Maxwell Tyrosus",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.9, 48.41),
         RaidIcon = { {
             npcID = 11034,
@@ -4537,7 +4177,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 382,
     }, {
         Done = { 8994 },
-        _comment = "Quest contract: 8994 Final Preparations",
         NoArrow = true,
         RaidIcon = { {
             npcID = 16033,
@@ -4547,7 +4186,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 383,
     }, {
         PickUp = { 5265 },
-        _comment = "Quest contract: 5265 The Argent Hold",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.9, 48.41),
         RaidIcon = { {
             npcID = 11034,
@@ -4561,7 +4199,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Stratholme"] = {
         _index = 384,
     }, {
         Done = { 5265 },
-        _comment = "Quest contract: 5265 The Argent Hold",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1423, 71.96, 48.41),
         IsQuestOnQuest = 5265,
         Zone = 1423,

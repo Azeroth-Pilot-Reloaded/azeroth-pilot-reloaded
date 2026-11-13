@@ -16,7 +16,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
     mapID = 1443,
     steps = { {
         PickUp = { 7028 },
-        _comment = "Quest contract: 7028 Twisted Evils",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 62.2, 39.63),
         RaidIcon = { {
             npcID = 13656,
@@ -27,7 +26,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         _index = 1,
     }, {
         PickUp = { 7029 },
-        _comment = "Quest contract: 7029 Vyletongue Corruption",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 23.22, 70.33),
         RaidIcon = { {
             npcID = 11823,
@@ -39,7 +37,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         _index = 2,
     }, {
         PickUp = { 7041 },
-        _comment = "Quest contract: 7041 Vyletongue Corruption",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 68.5, 8.88),
         RaidIcon = { {
             npcID = 11715,
@@ -51,7 +48,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         _index = 3,
     }, {
         PickUp = { 7044 },
-        _comment = "Quest contract: 7044 Legends of Maraudon",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 31.9, 63.8),
         RaidIcon = { {
             npcID = 13697,
@@ -62,7 +58,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         _index = 4,
     }, {
         PickUp = { 7064 },
-        _comment = "Quest contract: 7064 Corruption of Earth and Seed",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 26.87, 77.67),
         RaidIcon = { {
             npcID = 13699,
@@ -74,7 +69,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         _index = 5,
     }, {
         PickUp = { 7065 },
-        _comment = "Quest contract: 7065 Corruption of Earth and Seed",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 63.83, 10.67),
         RaidIcon = { {
             npcID = 13698,
@@ -86,7 +80,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         _index = 6,
     }, {
         PickUp = { 7067 },
-        _comment = "Quest contract: 7067 The Pariah's Instructions",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 50.42, 86.65),
         RaidIcon = { {
             npcID = 13717,
@@ -97,7 +90,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         _index = 7,
     }, {
         PickUp = { 7068 },
-        _comment = "Quest contract: 7068 Shadowshard Fragments",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 39.16, 86.27),
         RaidIcon = { {
             npcID = 7311,
@@ -109,7 +101,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         _index = 8,
     }, {
         PickUp = { 7070 },
-        _comment = "Quest contract: 7070 Shadowshard Fragments",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 66.42, 49.26),
         RaidIcon = { {
             npcID = 4967,
@@ -130,7 +121,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         _index = 10,
     }, {
         PickUp = { 7066 },
-        _comment = "Quest contract: 7066 Seed of Life",
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
@@ -224,7 +214,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         Qpart = {
             [7028] = { 1 },
         },
-        _comment = "Quest contract: 7028 Twisted Evils",
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
@@ -234,7 +223,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         Qpart = {
             [7029] = { 1, 2 },
         },
-        _comment = "Quest contract: 7029 Vyletongue Corruption",
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
@@ -244,7 +232,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         Qpart = {
             [7041] = { 1, 2 },
         },
-        _comment = "Quest contract: 7041 Vyletongue Corruption",
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
@@ -254,7 +241,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         Qpart = {
             [7044] = { 1, 2 },
         },
-        _comment = "Quest contract: 7044 Legends of Maraudon",
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
@@ -264,7 +250,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         Qpart = {
             [7064] = { 1 },
         },
-        _comment = "Quest contract: 7064 Corruption of Earth and Seed",
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
@@ -274,7 +259,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         Qpart = {
             [7065] = { 1 },
         },
-        _comment = "Quest contract: 7065 Corruption of Earth and Seed",
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
@@ -284,7 +268,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         Qpart = {
             [7066] = { 1 },
         },
-        _comment = "Quest contract: 7066 Seed of Life",
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
@@ -294,7 +277,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         Qpart = {
             [7067] = { 1 },
         },
-        _comment = "Quest contract: 7067 The Pariah's Instructions",
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
@@ -304,7 +286,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         Qpart = {
             [7068] = { 1 },
         },
-        _comment = "Quest contract: 7068 Shadowshard Fragments",
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
@@ -314,7 +295,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         Qpart = {
             [7070] = { 1 },
         },
-        _comment = "Quest contract: 7070 Shadowshard Fragments",
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
@@ -322,7 +302,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         _index = 29,
     }, {
         Done = { 7044 },
-        _comment = "Quest contract: 7044 Legends of Maraudon",
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
@@ -334,7 +313,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         _index = 30,
     }, {
         PickUp = { 7046 },
-        _comment = "Quest contract: 7046 The Scepter of Celebras",
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
@@ -351,7 +329,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         Qpart = {
             [7046] = { 1 },
         },
-        _comment = "Quest contract: 7046 The Scepter of Celebras",
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
@@ -359,7 +336,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         _index = 32,
     }, {
         Done = { 7046 },
-        _comment = "Quest contract: 7046 The Scepter of Celebras",
         NoArrow = true,
         Dungeon = "INSTANCE_349",
         InstanceQuest = true,
@@ -378,7 +354,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         _index = 34,
     }, {
         Done = { 7028 },
-        _comment = "Quest contract: 7028 Twisted Evils",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 62.2, 39.63),
         RaidIcon = { {
             npcID = 13656,
@@ -389,7 +364,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         _index = 35,
     }, {
         Done = { 7029 },
-        _comment = "Quest contract: 7029 Vyletongue Corruption",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 23.22, 70.33),
         RaidIcon = { {
             npcID = 11823,
@@ -401,7 +375,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         _index = 36,
     }, {
         Done = { 7041 },
-        _comment = "Quest contract: 7041 Vyletongue Corruption",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 68.5, 8.88),
         RaidIcon = { {
             npcID = 11715,
@@ -413,7 +386,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         _index = 37,
     }, {
         Done = { 7064 },
-        _comment = "Quest contract: 7064 Corruption of Earth and Seed",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 26.87, 77.67),
         RaidIcon = { {
             npcID = 13699,
@@ -425,7 +397,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         _index = 38,
     }, {
         Done = { 7065 },
-        _comment = "Quest contract: 7065 Corruption of Earth and Seed",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 63.83, 10.67),
         RaidIcon = { {
             npcID = 13698,
@@ -437,7 +408,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         _index = 39,
     }, {
         Done = { 7066 },
-        _comment = "Quest contract: 7066 Seed of Life",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1450, 36.18, 41.79),
         RaidIcon = { {
             npcID = 11832,
@@ -448,7 +418,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         _index = 40,
     }, {
         Done = { 7067 },
-        _comment = "Quest contract: 7067 The Pariah's Instructions",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 50.42, 86.65),
         RaidIcon = { {
             npcID = 13717,
@@ -459,7 +428,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         _index = 41,
     }, {
         Done = { 7068 },
-        _comment = "Quest contract: 7068 Shadowshard Fragments",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 39.16, 86.27),
         RaidIcon = { {
             npcID = 7311,
@@ -471,7 +439,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Maraudon"] = {
         _index = 42,
     }, {
         Done = { 7070 },
-        _comment = "Quest contract: 7070 Shadowshard Fragments",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 66.42, 49.26),
         RaidIcon = { {
             npcID = 4967,

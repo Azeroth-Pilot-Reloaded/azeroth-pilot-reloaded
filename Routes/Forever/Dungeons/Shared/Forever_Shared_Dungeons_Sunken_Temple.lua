@@ -16,7 +16,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
     mapID = 1435,
     steps = { {
         PickUp = { 1424 },
-        _comment = "Quest contract: 1424 Pool of Tears",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 47.93, 54.78),
         RaidIcon = { {
             npcID = 1443,
@@ -28,7 +27,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 1,
     }, {
         PickUp = { 1446 },
-        _comment = "Quest contract: 1446 Jammal'an the Prophet",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 33.75, 75.21),
         RaidIcon = { {
             npcID = 5598,
@@ -39,7 +37,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 2,
     }, {
         PickUp = { 1448 },
-        _comment = "Quest contract: 1448 In Search of The Temple",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 69.45, 40.4),
         RaidIcon = { {
             npcID = 5384,
@@ -51,7 +48,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 3,
     }, {
         PickUp = { 3380 },
-        _comment = "Quest contract: 3380 The Sunken Temple",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 74.42, 43.36),
         RaidIcon = { {
             npcID = 8115,
@@ -63,7 +59,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 4,
     }, {
         PickUp = { 3445 },
-        _comment = "Quest contract: 3445 The Sunken Temple",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 31.83, 45.61),
         RaidIcon = { {
             npcID = 7900,
@@ -75,7 +70,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 5,
     }, {
         PickUp = { 3520 },
-        _comment = "Quest contract: 3520 Screecher Spirits",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.99, 22.36),
         RaidIcon = { {
             npcID = 8579,
@@ -86,7 +80,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 6,
     }, {
         PickUp = { 4145 },
-        _comment = "Quest contract: 4145 Larion and Muigin",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 45.54, 8.72),
         RaidIcon = { {
             npcID = 9118,
@@ -98,7 +91,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 7,
     }, {
         PickUp = { 8151 },
-        _comment = "Quest contract: 8151 The Hunter's Charm",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 57.3, 89.79),
         RaidIcon = { {
             npcID = 3039,
@@ -111,7 +103,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 8,
     }, {
         PickUp = { 8233 },
-        _comment = "Quest contract: 8233 A Simple Request",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 77.43, 65.31),
         RaidIcon = { {
             npcID = 918,
@@ -124,7 +115,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 9,
     }, {
         PickUp = { 8250 },
-        _comment = "Quest contract: 8250 Magecraft",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 49.25, 87.77),
         RaidIcon = { {
             npcID = 331,
@@ -137,7 +127,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 10,
     }, {
         PickUp = { 8254 },
-        _comment = "Quest contract: 8254 Cenarion Aid",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 24.56, 22.57),
         RaidIcon = { {
             npcID = 3045,
@@ -150,7 +139,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 11,
     }, {
         PickUp = { 8286 },
-        _comment = "Quest contract: 8286 What Tomorrow Brings",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 49.45, 36.45),
         RaidIcon = { {
             npcID = 15180,
@@ -163,7 +151,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [1424] = { 1 },
         },
-        _comment = "Quest contract: 1424 Pool of Tears",
         NoArrow = true,
         IsQuestOnQuest = 1424,
         _index = 13,
@@ -171,13 +158,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [1448] = { 1 },
         },
-        _comment = "Quest contract: 1448 In Search of The Temple",
         NoArrow = true,
         IsQuestOnQuest = 1448,
         _index = 14,
     }, {
         Done = { 3380 },
-        _comment = "Quest contract: 3380 The Sunken Temple",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.71, 45.92),
         RaidIcon = { {
             npcID = 7771,
@@ -189,7 +174,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 15,
     }, {
         Done = { 3445 },
-        _comment = "Quest contract: 3445 The Sunken Temple",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.71, 45.92),
         RaidIcon = { {
             npcID = 7771,
@@ -203,7 +187,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [3520] = { 1, 2 },
         },
-        _comment = "Quest contract: 3520 Screecher Spirits",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 43.07, 36.94),
         IsQuestOnQuest = 3520,
         Zone = 1444,
@@ -212,14 +195,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [4145] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 4145 Larion and Muigin",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 75.04, 44.69),
         IsQuestOnQuest = 4145,
         Zone = 1449,
         _index = 18,
     }, {
         Done = { 8151 },
-        _comment = "Quest contract: 8151 The Hunter's Charm",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 42.4, 42.62),
         RaidIcon = { {
             npcID = 8405,
@@ -231,7 +212,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 19,
     }, {
         Done = { 8233 },
-        _comment = "Quest contract: 8233 A Simple Request",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1416, 86.02, 78.88),
         RaidIcon = { {
             npcID = 6768,
@@ -243,7 +223,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 20,
     }, {
         Done = { 8250 },
-        _comment = "Quest contract: 8250 Magecraft",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 28.11, 50.09),
         RaidIcon = { {
             npcID = 8395,
@@ -255,7 +234,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 21,
     }, {
         Done = { 8254 },
-        _comment = "Quest contract: 8254 Cenarion Aid",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 42.4, 42.62),
         RaidIcon = { {
             npcID = 8405,
@@ -269,14 +247,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [8286] = { 1, 2 },
         },
-        _comment = "Quest contract: 8286 What Tomorrow Brings",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 65.27, 50.03),
         IsQuestOnQuest = 8286,
         Zone = 1446,
         _index = 23,
     }, {
         Done = { 1424 },
-        _comment = "Quest contract: 1424 Pool of Tears",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 47.93, 54.78),
         RaidIcon = { {
             npcID = 1443,
@@ -288,7 +264,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 24,
     }, {
         Done = { 1448 },
-        _comment = "Quest contract: 1448 In Search of The Temple",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 69.45, 40.4),
         RaidIcon = { {
             npcID = 5384,
@@ -300,7 +275,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 25,
     }, {
         PickUp = { 3444 },
-        _comment = "Quest contract: 3444 The Stone Circle",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.71, 45.92),
         RaidIcon = { {
             npcID = 7771,
@@ -316,7 +290,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 26,
     }, {
         Done = { 3520 },
-        _comment = "Quest contract: 3520 Screecher Spirits",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.99, 22.36),
         RaidIcon = { {
             npcID = 8579,
@@ -327,7 +300,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 27,
     }, {
         Done = { 4145 },
-        _comment = "Quest contract: 4145 Larion and Muigin",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 45.54, 8.72),
         RaidIcon = { {
             npcID = 9118,
@@ -339,7 +311,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 28,
     }, {
         PickUp = { 8153 },
-        _comment = "Quest contract: 8153 Courser Antlers",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 42.4, 42.62),
         RaidIcon = { {
             npcID = 8405,
@@ -354,7 +325,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 29,
     }, {
         PickUp = { 8234 },
-        _comment = "Quest contract: 8234 Sealed Azure Bag",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1416, 86.02, 78.88),
         RaidIcon = { {
             npcID = 6768,
@@ -369,7 +339,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 30,
     }, {
         PickUp = { 8251 },
-        _comment = "Quest contract: 8251 Magic Dust",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 29.25, 40.21),
         RaidIcon = { {
             npcID = 8379,
@@ -384,7 +353,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 31,
     }, {
         PickUp = { 8255 },
-        _comment = "Quest contract: 8255 Of Coursers We Know",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 42.4, 42.62),
         RaidIcon = { {
             npcID = 8405,
@@ -399,7 +367,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 32,
     }, {
         Done = { 8286 },
-        _comment = "Quest contract: 8286 What Tomorrow Brings",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 49.45, 36.45),
         RaidIcon = { {
             npcID = 15180,
@@ -410,7 +377,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 33,
     }, {
         PickUp = { 1429 },
-        _comment = "Quest contract: 1429 The Atal'ai Exile",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 47.93, 54.78),
         RaidIcon = { {
             npcID = 1443,
@@ -425,7 +391,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 34,
     }, {
         PickUp = { 1449 },
-        _comment = "Quest contract: 1449 To The Hinterlands",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 69.45, 40.4),
         RaidIcon = { {
             npcID = 5384,
@@ -442,13 +407,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [3444] = { 1 },
         },
-        _comment = "Quest contract: 3444 The Stone Circle",
         NoArrow = true,
         IsQuestOnQuest = 3444,
         _index = 36,
     }, {
         PickUp = { 3527 },
-        _comment = "Quest contract: 3527 The Prophecy of Mosh'aru",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.99, 22.36),
         RaidIcon = { {
             npcID = 8579,
@@ -462,7 +425,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 37,
     }, {
         PickUp = { 4147 },
-        _comment = "Quest contract: 4147 Marvon's Workshop",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 45.54, 8.72),
         RaidIcon = { {
             npcID = 9118,
@@ -479,7 +441,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [8153] = { 1 },
         },
-        _comment = "Quest contract: 8153 Courser Antlers",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 63.32, 16.28),
         IsQuestOnQuest = 8153,
         Zone = 1447,
@@ -488,7 +449,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [8234] = { 1 },
         },
-        _comment = "Quest contract: 8234 Sealed Azure Bag",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 42.81, 18.45),
         IsQuestOnQuest = 8234,
         Zone = 1447,
@@ -497,7 +457,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [8251] = { 1 },
         },
-        _comment = "Quest contract: 8251 Magic Dust",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 58.76, 28.49),
         IsQuestOnQuest = 8251,
         Zone = 1447,
@@ -506,14 +465,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [8255] = { 1 },
         },
-        _comment = "Quest contract: 8255 Of Coursers We Know",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 63.32, 16.28),
         IsQuestOnQuest = 8255,
         Zone = 1447,
         _index = 42,
     }, {
         PickUp = { 8288 },
-        _comment = "Quest contract: 8288 Only One May Rise",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 49.45, 36.45),
         RaidIcon = { {
             npcID = 15180,
@@ -529,13 +486,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [1429] = { 1 },
         },
-        _comment = "Quest contract: 1429 The Atal'ai Exile",
         NoArrow = true,
         IsQuestOnQuest = 1429,
         _index = 44,
     }, {
         Done = { 1449 },
-        _comment = "Quest contract: 1449 To The Hinterlands",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 11.81, 46.76),
         RaidIcon = { {
             npcID = 5635,
@@ -547,7 +502,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 45,
     }, {
         Done = { 3444 },
-        _comment = "Quest contract: 3444 The Stone Circle",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.71, 45.92),
         RaidIcon = { {
             npcID = 7771,
@@ -560,13 +514,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [3527] = { 1, 2 },
         },
-        _comment = "Quest contract: 3527 The Prophecy of Mosh'aru",
         NoArrow = true,
         IsQuestOnQuest = 3527,
         _index = 47,
     }, {
         Done = { 4147 },
-        _comment = "Quest contract: 4147 Marvon's Workshop",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 62.45, 38.73),
         RaidIcon = { {
             npcID = 8496,
@@ -578,7 +530,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 48,
     }, {
         Done = { 8153 },
-        _comment = "Quest contract: 8153 Courser Antlers",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 42.4, 42.62),
         RaidIcon = { {
             npcID = 8405,
@@ -590,7 +541,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 49,
     }, {
         Done = { 8234 },
-        _comment = "Quest contract: 8234 Sealed Azure Bag",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 29.25, 40.21),
         RaidIcon = { {
             npcID = 8379,
@@ -602,7 +552,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 50,
     }, {
         Done = { 8251 },
-        _comment = "Quest contract: 8251 Magic Dust",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 29.25, 40.21),
         RaidIcon = { {
             npcID = 8379,
@@ -614,7 +563,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 51,
     }, {
         Done = { 8255 },
-        _comment = "Quest contract: 8255 Of Coursers We Know",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 42.4, 42.62),
         RaidIcon = { {
             npcID = 8405,
@@ -628,13 +576,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [8288] = { 1 },
         },
-        _comment = "Quest contract: 8288 Only One May Rise",
         NoArrow = true,
         IsQuestOnQuest = 8288,
         _index = 53,
     }, {
         Done = { 1429 },
-        _comment = "Quest contract: 1429 The Atal'ai Exile",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 33.75, 75.21),
         RaidIcon = { {
             npcID = 5598,
@@ -646,7 +592,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 54,
     }, {
         PickUp = { 1450 },
-        _comment = "Quest contract: 1450 Gryphon Master Talonaxe",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 11.81, 46.76),
         RaidIcon = { {
             npcID = 5635,
@@ -661,7 +606,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 55,
     }, {
         PickUp = { 3446 },
-        _comment = "Quest contract: 3446 Into the Depths",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.71, 45.92),
         RaidIcon = { {
             npcID = 7771,
@@ -675,7 +619,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 56,
     }, {
         PickUp = { 3447 },
-        _comment = "Quest contract: 3447 Secret of the Circle",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.71, 45.92),
         RaidIcon = { {
             npcID = 7771,
@@ -689,7 +632,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 57,
     }, {
         Done = { 3527 },
-        _comment = "Quest contract: 3527 The Prophecy of Mosh'aru",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.99, 22.36),
         RaidIcon = { {
             npcID = 8579,
@@ -700,7 +642,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 58,
     }, {
         PickUp = { 4146 },
-        _comment = "Quest contract: 4146 Zapper Fuel",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 62.45, 38.73),
         RaidIcon = { {
             npcID = 8496,
@@ -715,7 +656,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 59,
     }, {
         PickUp = { 8231 },
-        _comment = "Quest contract: 8231 Wavethrashing",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 42.4, 42.62),
         RaidIcon = { {
             npcID = 8405,
@@ -730,7 +670,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 60,
     }, {
         PickUp = { 8235 },
-        _comment = "Quest contract: 8235 Encoded Fragments",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 29.25, 40.21),
         RaidIcon = { {
             npcID = 8379,
@@ -745,7 +684,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 61,
     }, {
         PickUp = { 8252 },
-        _comment = "Quest contract: 8252 The Siren's Coral",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 29.25, 40.21),
         RaidIcon = { {
             npcID = 8379,
@@ -760,7 +698,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 62,
     }, {
         PickUp = { 8256 },
-        _comment = "Quest contract: 8256 The Ichor of Undeath",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 42.4, 42.62),
         RaidIcon = { {
             npcID = 8405,
@@ -775,7 +712,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 63,
     }, {
         Done = { 8288 },
-        _comment = "Quest contract: 8288 Only One May Rise",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 49.45, 36.45),
         RaidIcon = { {
             npcID = 15180,
@@ -786,7 +722,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 64,
     }, {
         PickUp = { 1444 },
-        _comment = "Quest contract: 1444 Return to Fel'Zerul",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 33.75, 75.21),
         RaidIcon = { {
             npcID = 5598,
@@ -801,7 +736,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 65,
     }, {
         Done = { 1450 },
-        _comment = "Quest contract: 1450 Gryphon Master Talonaxe",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 9.75, 44.47),
         RaidIcon = { {
             npcID = 5636,
@@ -813,7 +747,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 66,
     }, {
         PickUp = { 4787 },
-        _comment = "Quest contract: 4787 The Ancient Egg",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.99, 22.36),
         RaidIcon = { {
             npcID = 8579,
@@ -829,7 +762,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [8231] = { 1 },
         },
-        _comment = "Quest contract: 8231 Wavethrashing",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 84.17, 11.83),
         IsQuestOnQuest = 8231,
         Zone = 1447,
@@ -838,7 +770,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [8235] = { 1 },
         },
-        _comment = "Quest contract: 8235 Encoded Fragments",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 66.42, 25.55),
         IsQuestOnQuest = 8235,
         Zone = 1447,
@@ -847,7 +778,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [8252] = { 1 },
         },
-        _comment = "Quest contract: 8252 The Siren's Coral",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 36.07, 50.11),
         IsQuestOnQuest = 8252,
         Zone = 1447,
@@ -856,14 +786,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [8256] = { 1 },
         },
-        _comment = "Quest contract: 8256 The Ichor of Undeath",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 41.32, 57.01),
         IsQuestOnQuest = 8256,
         Zone = 1434,
         _index = 71,
     }, {
         PickUp = { 8301 },
-        _comment = "Quest contract: 8301 The Path of the Righteous",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 49.45, 36.45),
         RaidIcon = { {
             npcID = 15180,
@@ -877,7 +805,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 72,
     }, {
         Done = { 1444 },
-        _comment = "Quest contract: 1444 Return to Fel'Zerul",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 47.93, 54.78),
         RaidIcon = { {
             npcID = 1443,
@@ -889,7 +816,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 73,
     }, {
         PickUp = { 1451 },
-        _comment = "Quest contract: 1451 Rhapsody Shindigger",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 9.75, 44.47),
         RaidIcon = { {
             npcID = 5636,
@@ -906,13 +832,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [4787] = { 1 },
         },
-        _comment = "Quest contract: 4787 The Ancient Egg",
         NoArrow = true,
         IsQuestOnQuest = 4787,
         _index = 75,
     }, {
         Done = { 8231 },
-        _comment = "Quest contract: 8231 Wavethrashing",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 42.4, 42.62),
         RaidIcon = { {
             npcID = 8405,
@@ -924,7 +848,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 76,
     }, {
         Done = { 8235 },
-        _comment = "Quest contract: 8235 Encoded Fragments",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 29.25, 40.21),
         RaidIcon = { {
             npcID = 8379,
@@ -936,7 +859,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 77,
     }, {
         Done = { 8252 },
-        _comment = "Quest contract: 8252 The Siren's Coral",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 29.25, 40.21),
         RaidIcon = { {
             npcID = 8379,
@@ -948,7 +870,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 78,
     }, {
         Done = { 8256 },
-        _comment = "Quest contract: 8256 The Ichor of Undeath",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 42.4, 42.62),
         RaidIcon = { {
             npcID = 8405,
@@ -962,14 +883,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [8301] = { 1 },
         },
-        _comment = "Quest contract: 8301 The Path of the Righteous",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 42.14, 30.36),
         IsQuestOnQuest = 8301,
         Zone = 1451,
         _index = 80,
     }, {
         PickUp = { 1445 },
-        _comment = "Quest contract: 1445 The Temple of Atal'Hakkar",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 47.93, 54.78),
         RaidIcon = { {
             npcID = 1443,
@@ -984,7 +903,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 81,
     }, {
         Done = { 1451 },
-        _comment = "Quest contract: 1451 Rhapsody Shindigger",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 26.94, 48.59),
         RaidIcon = { {
             npcID = 5634,
@@ -996,7 +914,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 82,
     }, {
         Done = { 4787 },
-        _comment = "Quest contract: 4787 The Ancient Egg",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.99, 22.36),
         RaidIcon = { {
             npcID = 8579,
@@ -1007,7 +924,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 83,
     }, {
         PickUp = { 8232 },
-        _comment = "Quest contract: 8232 The Green Drake",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 42.4, 42.62),
         RaidIcon = { {
             npcID = 8405,
@@ -1022,7 +938,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 84,
     }, {
         PickUp = { 8236 },
-        _comment = "Quest contract: 8236 The Azure Key",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 29.25, 40.21),
         RaidIcon = { {
             npcID = 8379,
@@ -1037,7 +952,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 85,
     }, {
         PickUp = { 8253 },
-        _comment = "Quest contract: 8253 Destroy Morphaz",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 29.25, 40.21),
         RaidIcon = { {
             npcID = 8379,
@@ -1052,7 +966,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 86,
     }, {
         PickUp = { 8257 },
-        _comment = "Quest contract: 8257 Blood of Morphaz",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 42.4, 42.62),
         RaidIcon = { {
             npcID = 8405,
@@ -1067,7 +980,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 87,
     }, {
         Done = { 8301 },
-        _comment = "Quest contract: 8301 The Path of the Righteous",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 49.45, 36.45),
         RaidIcon = { {
             npcID = 15180,
@@ -1078,7 +990,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 88,
     }, {
         PickUp = { 1452 },
-        _comment = "Quest contract: 1452 Rhapsody's Kalimdor Kocktail",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 26.94, 48.59),
         RaidIcon = { {
             npcID = 5634,
@@ -1093,7 +1004,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 89,
     }, {
         PickUp = { 3528 },
-        _comment = "Quest contract: 3528 The God Hakkar",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.99, 22.36),
         RaidIcon = { {
             npcID = 8579,
@@ -1107,7 +1017,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 90,
     }, {
         PickUp = { 8303 },
-        _comment = "Quest contract: 8303 Anachronos",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 49.45, 36.45),
         RaidIcon = { {
             npcID = 15180,
@@ -1123,14 +1032,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [1452] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 1452 Rhapsody's Kalimdor Kocktail",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 40.91, 24.9),
         IsQuestOnQuest = 1452,
         Zone = 1446,
         _index = 92,
     }, {
         Done = { 8303 },
-        _comment = "Quest contract: 8303 Anachronos",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 65.27, 50.03),
         RaidIcon = { {
             npcID = 15192,
@@ -1141,7 +1048,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 93,
     }, {
         Done = { 1452 },
-        _comment = "Quest contract: 1452 Rhapsody's Kalimdor Kocktail",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 26.94, 48.59),
         RaidIcon = { {
             npcID = 5634,
@@ -1153,7 +1059,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 94,
     }, {
         PickUp = { 8305 },
-        _comment = "Quest contract: 8305 Long Forgotten Memories",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 65.27, 50.03),
         RaidIcon = { {
             npcID = 15192,
@@ -1167,7 +1072,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 95,
     }, {
         PickUp = { 1469 },
-        _comment = "Quest contract: 1469 Rhapsody's Tale",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 26.94, 48.59),
         RaidIcon = { {
             npcID = 5634,
@@ -1182,7 +1086,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 96,
     }, {
         Done = { 8305 },
-        _comment = "Quest contract: 8305 Long Forgotten Memories",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 28.68, 89.14),
         IsQuestOnQuest = 8305,
         Zone = 1451,
@@ -1191,13 +1094,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [1469] = { 1 },
         },
-        _comment = "Quest contract: 1469 Rhapsody's Tale",
         NoArrow = true,
         IsQuestOnQuest = 1469,
         _index = 98,
     }, {
         PickUp = { 8519 },
-        _comment = "Quest contract: 8519 A Pawn on the Eternal Board",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1451, 28.68, 89.14),
         AnyOf = { {
             IsQuestCompleted = 8305,
@@ -1207,7 +1108,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 99,
     }, {
         Done = { 1469 },
-        _comment = "Quest contract: 1469 Rhapsody's Tale",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 69.45, 40.4),
         RaidIcon = { {
             npcID = 5384,
@@ -1221,13 +1121,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [8519] = { 1 },
         },
-        _comment = "Quest contract: 8519 A Pawn on the Eternal Board",
         NoArrow = true,
         IsQuestOnQuest = 8519,
         _index = 101,
     }, {
         PickUp = { 1475 },
-        _comment = "Quest contract: 1475 Into The Temple of Atal'Hakkar",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 69.45, 40.4),
         RaidIcon = { {
             npcID = 5384,
@@ -1242,7 +1140,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 102,
     }, {
         Done = { 8519 },
-        _comment = "Quest contract: 8519 A Pawn on the Eternal Board",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 65.27, 50.03),
         RaidIcon = { {
             npcID = 15192,
@@ -1253,7 +1150,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 103,
     }, {
         PickUp = { 8555 },
-        _comment = "Quest contract: 8555 The Charge of the Dragonflights",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 65.27, 50.03),
         RaidIcon = { {
             npcID = 15192,
@@ -1267,7 +1163,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 104,
     }, {
         Done = { 8555 },
-        _comment = "Quest contract: 8555 The Charge of the Dragonflights",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 65.27, 50.03),
         RaidIcon = { {
             npcID = 15192,
@@ -1287,7 +1182,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 106,
     }, {
         PickUp = { 8733 },
-        _comment = "Quest contract: 8733 Eranikus, Tyrant of the Dream",
         NoArrow = true,
         Dungeon = "INSTANCE_109",
         InstanceQuest = true,
@@ -1384,7 +1278,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [1445] = { 1 },
         },
-        _comment = "Quest contract: 1445 The Temple of Atal'Hakkar",
         NoArrow = true,
         Dungeon = "INSTANCE_109",
         InstanceQuest = true,
@@ -1394,7 +1287,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [1446] = { 1 },
         },
-        _comment = "Quest contract: 1446 Jammal'an the Prophet",
         NoArrow = true,
         Dungeon = "INSTANCE_109",
         InstanceQuest = true,
@@ -1404,7 +1296,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [1475] = { 1 },
         },
-        _comment = "Quest contract: 1475 Into The Temple of Atal'Hakkar",
         NoArrow = true,
         Dungeon = "INSTANCE_109",
         InstanceQuest = true,
@@ -1412,7 +1303,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 118,
     }, {
         PickUp = { 3373 },
-        _comment = "Quest contract: 3373 The Essence of Eranikus",
         Button = {
             ["3373"] = 10454,
         },
@@ -1429,7 +1319,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [3446] = { 1 },
         },
-        _comment = "Quest contract: 3446 Into the Depths",
         NoArrow = true,
         Dungeon = "INSTANCE_109",
         InstanceQuest = true,
@@ -1437,7 +1326,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 120,
     }, {
         Done = { 3447 },
-        _comment = "Quest contract: 3447 Secret of the Circle",
         NoArrow = true,
         Dungeon = "INSTANCE_109",
         InstanceQuest = true,
@@ -1447,7 +1335,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [3528] = { 1 },
         },
-        _comment = "Quest contract: 3528 The God Hakkar",
         NoArrow = true,
         Dungeon = "INSTANCE_109",
         InstanceQuest = true,
@@ -1457,7 +1344,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [4146] = { 1, 2 },
         },
-        _comment = "Quest contract: 4146 Zapper Fuel",
         NoArrow = true,
         Dungeon = "INSTANCE_109",
         InstanceQuest = true,
@@ -1467,7 +1353,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [8232] = { 1 },
         },
-        _comment = "Quest contract: 8232 The Green Drake",
         NoArrow = true,
         Dungeon = "INSTANCE_109",
         InstanceQuest = true,
@@ -1477,7 +1362,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [8236] = { 1 },
         },
-        _comment = "Quest contract: 8236 The Azure Key",
         NoArrow = true,
         Dungeon = "INSTANCE_109",
         InstanceQuest = true,
@@ -1487,7 +1371,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [8253] = { 1 },
         },
-        _comment = "Quest contract: 8253 Destroy Morphaz",
         NoArrow = true,
         Dungeon = "INSTANCE_109",
         InstanceQuest = true,
@@ -1497,7 +1380,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [8257] = { 1 },
         },
-        _comment = "Quest contract: 8257 Blood of Morphaz",
         NoArrow = true,
         Dungeon = "INSTANCE_109",
         InstanceQuest = true,
@@ -1507,7 +1389,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [3373] = { 1 },
         },
-        _comment = "Quest contract: 3373 The Essence of Eranikus",
         NoArrow = true,
         Dungeon = "INSTANCE_109",
         InstanceQuest = true,
@@ -1515,7 +1396,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 128,
     }, {
         Done = { 3446 },
-        _comment = "Quest contract: 3446 Into the Depths",
         NoArrow = true,
         Dungeon = "INSTANCE_109",
         InstanceQuest = true,
@@ -1523,7 +1403,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 129,
     }, {
         Done = { 3373 },
-        _comment = "Quest contract: 3373 The Essence of Eranikus",
         NoArrow = true,
         Dungeon = "INSTANCE_109",
         InstanceQuest = true,
@@ -1538,7 +1417,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 131,
     }, {
         Done = { 1445 },
-        _comment = "Quest contract: 1445 The Temple of Atal'Hakkar",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 47.93, 54.78),
         RaidIcon = { {
             npcID = 1443,
@@ -1550,7 +1428,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 132,
     }, {
         Done = { 1446 },
-        _comment = "Quest contract: 1446 Jammal'an the Prophet",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 33.75, 75.21),
         RaidIcon = { {
             npcID = 5598,
@@ -1561,7 +1438,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 133,
     }, {
         Done = { 1475 },
-        _comment = "Quest contract: 1475 Into The Temple of Atal'Hakkar",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 69.45, 40.4),
         RaidIcon = { {
             npcID = 5384,
@@ -1573,7 +1449,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 134,
     }, {
         PickUp = { 3374 },
-        _comment = "Quest contract: 3374 The Essence of Eranikus",
         Button = {
             ["3374"] = 10589,
         },
@@ -1589,7 +1464,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 135,
     }, {
         Done = { 3528 },
-        _comment = "Quest contract: 3528 The God Hakkar",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.99, 22.36),
         RaidIcon = { {
             npcID = 8579,
@@ -1600,7 +1474,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 136,
     }, {
         Done = { 4146 },
-        _comment = "Quest contract: 4146 Zapper Fuel",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 45.54, 8.72),
         RaidIcon = { {
             npcID = 9118,
@@ -1612,7 +1485,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 137,
     }, {
         Done = { 8232 },
-        _comment = "Quest contract: 8232 The Green Drake",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 42.4, 42.62),
         RaidIcon = { {
             npcID = 8405,
@@ -1624,7 +1496,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 138,
     }, {
         Done = { 8236 },
-        _comment = "Quest contract: 8236 The Azure Key",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1416, 86.02, 78.88),
         RaidIcon = { {
             npcID = 6768,
@@ -1636,7 +1507,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 139,
     }, {
         Done = { 8253 },
-        _comment = "Quest contract: 8253 Destroy Morphaz",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 29.25, 40.21),
         RaidIcon = { {
             npcID = 8379,
@@ -1648,7 +1518,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 140,
     }, {
         Done = { 8257 },
-        _comment = "Quest contract: 8257 Blood of Morphaz",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 51.21, 82.11),
         RaidIcon = { {
             npcID = 10922,
@@ -1660,7 +1529,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 141,
     }, {
         Done = { 8733 },
-        _comment = "Quest contract: 8733 Eranikus, Tyrant of the Dream",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1438, 37.55, 47.92),
         RaidIcon = { {
             npcID = 15624,
@@ -1673,13 +1541,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [3374] = { 1 },
         },
-        _comment = "Quest contract: 3374 The Essence of Eranikus",
         NoArrow = true,
         IsQuestOnQuest = 3374,
         _index = 143,
     }, {
         PickUp = { 4148 },
-        _comment = "Quest contract: 4148 Bloodpetal Zapper",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 45.54, 8.72),
         RaidIcon = { {
             npcID = 9118,
@@ -1694,7 +1560,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 144,
     }, {
         PickUp = { 5065 },
-        _comment = "Quest contract: 5065 The Lost Tablets of Mosh'aru",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.89, 24.03),
         RaidIcon = { {
             npcID = 10460,
@@ -1708,7 +1573,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 145,
     }, {
         PickUp = { 8734 },
-        _comment = "Quest contract: 8734 Tyrande and Remulos",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1438, 37.55, 47.92),
         RaidIcon = { {
             npcID = 15624,
@@ -1722,7 +1586,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 146,
     }, {
         Done = { 3374 },
-        _comment = "Quest contract: 3374 The Essence of Eranikus",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 13.67, 71.72),
         RaidIcon = { {
             npcID = 5353,
@@ -1735,7 +1598,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [4148] = { 1 },
         },
-        _comment = "Quest contract: 4148 Bloodpetal Zapper",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 34.6, 22.37),
         IsQuestOnQuest = 4148,
         Zone = 1449,
@@ -1744,13 +1606,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [5065] = { 1, 2 },
         },
-        _comment = "Quest contract: 5065 The Lost Tablets of Mosh'aru",
         NoArrow = true,
         IsQuestOnQuest = 5065,
         _index = 149,
     }, {
         Done = { 8734 },
-        _comment = "Quest contract: 8734 Tyrande and Remulos",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1450, 36.18, 41.79),
         RaidIcon = { {
             npcID = 11832,
@@ -1761,7 +1621,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 150,
     }, {
         PickUp = { 3512 },
-        _comment = "Quest contract: 3512 In Eranikus' Own Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 13.67, 71.72),
         RaidIcon = { {
             npcID = 5353,
@@ -1775,7 +1634,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 151,
     }, {
         Done = { 4148 },
-        _comment = "Quest contract: 4148 Bloodpetal Zapper",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1449, 45.54, 8.72),
         RaidIcon = { {
             npcID = 9118,
@@ -1787,7 +1645,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 152,
     }, {
         Done = { 5065 },
-        _comment = "Quest contract: 5065 The Lost Tablets of Mosh'aru",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.89, 24.03),
         RaidIcon = { {
             npcID = 10460,
@@ -1798,7 +1655,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 153,
     }, {
         PickUp = { 8735 },
-        _comment = "Quest contract: 8735 The Nightmare's Corruption",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1450, 36.18, 41.79),
         RaidIcon = { {
             npcID = 11832,
@@ -1812,7 +1668,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 154,
     }, {
         Done = { 3512 },
-        _comment = "Quest contract: 3512 In Eranikus' Own Words",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 67.81, 27.43),
         RaidIcon = { {
             npcID = 8588,
@@ -1825,14 +1680,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [8735] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 8735 The Nightmare's Corruption",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 91.59, 38.95),
         IsQuestOnQuest = 8735,
         Zone = 1440,
         _index = 156,
     }, {
         Done = { 8735 },
-        _comment = "Quest contract: 8735 The Nightmare's Corruption",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1450, 36.18, 41.79),
         RaidIcon = { {
             npcID = 11832,
@@ -1843,7 +1696,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 157,
     }, {
         PickUp = { 8736 },
-        _comment = "Quest contract: 8736 The Nightmare Manifests",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1450, 36.18, 41.79),
         RaidIcon = { {
             npcID = 11832,
@@ -1859,13 +1711,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [8736] = { 1 },
         },
-        _comment = "Quest contract: 8736 The Nightmare Manifests",
         NoArrow = true,
         IsQuestOnQuest = 8736,
         _index = 159,
     }, {
         Done = { 8736 },
-        _comment = "Quest contract: 8736 The Nightmare Manifests",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1450, 36.18, 41.79),
         RaidIcon = { {
             npcID = 11832,
@@ -1876,7 +1726,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         _index = 160,
     }, {
         PickUp = { 8741 },
-        _comment = "Quest contract: 8741 The Champion Returns",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1450, 36.18, 41.79),
         RaidIcon = { {
             npcID = 11832,
@@ -1892,13 +1741,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Sunken-Temple"] = {
         Qpart = {
             [8741] = { 1 },
         },
-        _comment = "Quest contract: 8741 The Champion Returns",
         NoArrow = true,
         IsQuestOnQuest = 8741,
         _index = 162,
     }, {
         Done = { 8741 },
-        _comment = "Quest contract: 8741 The Champion Returns",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 65.27, 50.03),
         RaidIcon = { {
             npcID = 15192,

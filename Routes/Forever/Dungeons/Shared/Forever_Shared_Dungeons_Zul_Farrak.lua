@@ -16,7 +16,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
     mapID = 1446,
     steps = { {
         PickUp = { 2768 },
-        _comment = "Quest contract: 2768 Divino-matic Rod",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.46, 28.51),
         RaidIcon = { {
             npcID = 7407,
@@ -27,7 +26,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 1,
     }, {
         PickUp = { 2770 },
-        _comment = "Quest contract: 2770 Gahz'rilla",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 78.14, 77.12),
         RaidIcon = { {
             npcID = 4453,
@@ -38,7 +36,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 2,
     }, {
         PickUp = { 2846 },
-        _comment = "Quest contract: 2846 Tiara of the Deep",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 46.06, 57.09),
         RaidIcon = { {
             npcID = 6546,
@@ -49,7 +46,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 3,
     }, {
         PickUp = { 2861 },
-        _comment = "Quest contract: 2861 Tabetha's Task",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 85.14, 10.03),
         RaidIcon = { {
             npcID = 4568,
@@ -61,7 +57,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 4,
     }, {
         PickUp = { 2864 },
-        _comment = "Quest contract: 2864 Tran'rek",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 26.95, 77.21),
         RaidIcon = { {
             npcID = 773,
@@ -72,7 +67,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 5,
     }, {
         PickUp = { 2865 },
-        _comment = "Quest contract: 2865 Scarab Shells",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 51.57, 26.76),
         RaidIcon = { {
             npcID = 7876,
@@ -83,7 +77,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 6,
     }, {
         PickUp = { 2933 },
-        _comment = "Quest contract: 2933 Venom Bottles",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 23.54, 58.8),
         Faction = "Horde",
         MinLevel = 40,
@@ -91,7 +84,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 7,
     }, {
         PickUp = { 2988 },
-        _comment = "Quest contract: 2988 Witherbark Cages",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 9.75, 44.47),
         RaidIcon = { {
             npcID = 5636,
@@ -103,7 +95,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 8,
     }, {
         PickUp = { 3042 },
-        _comment = "Quest contract: 3042 Troll Temper",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 51.41, 28.75),
         RaidIcon = { {
             npcID = 7804,
@@ -114,7 +105,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 9,
     }, {
         PickUp = { 3520 },
-        _comment = "Quest contract: 3520 Screecher Spirits",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.99, 22.36),
         RaidIcon = { {
             npcID = 8579,
@@ -125,7 +115,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 10,
     }, {
         Done = { 2861 },
-        _comment = "Quest contract: 2861 Tabetha's Task",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 46.06, 57.09),
         RaidIcon = { {
             npcID = 6546,
@@ -136,7 +125,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 11,
     }, {
         Done = { 2864 },
-        _comment = "Quest contract: 2864 Tran'rek",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 51.57, 26.76),
         RaidIcon = { {
             npcID = 7876,
@@ -149,7 +137,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         Qpart = {
             [2933] = { 1 },
         },
-        _comment = "Quest contract: 2933 Venom Bottles",
         NoArrow = true,
         IsQuestOnQuest = 2933,
         _index = 13,
@@ -157,7 +144,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         Qpart = {
             [2988] = { 1, 2, 3 },
         },
-        _comment = "Quest contract: 2988 Witherbark Cages",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 23.28, 58.81),
         IsQuestOnQuest = 2988,
         Zone = 1425,
@@ -166,14 +152,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         Qpart = {
             [3520] = { 1, 2 },
         },
-        _comment = "Quest contract: 3520 Screecher Spirits",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 43.07, 36.94),
         IsQuestOnQuest = 3520,
         Zone = 1444,
         _index = 15,
     }, {
         Done = { 2933 },
-        _comment = "Quest contract: 2933 Venom Bottles",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 61.44, 19.06),
         RaidIcon = { {
             npcID = 2216,
@@ -185,7 +169,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 16,
     }, {
         Done = { 2988 },
-        _comment = "Quest contract: 2988 Witherbark Cages",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 9.75, 44.47),
         RaidIcon = { {
             npcID = 5636,
@@ -197,7 +180,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 17,
     }, {
         Done = { 3520 },
-        _comment = "Quest contract: 3520 Screecher Spirits",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.99, 22.36),
         RaidIcon = { {
             npcID = 8579,
@@ -208,7 +190,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 18,
     }, {
         PickUp = { 2934 },
-        _comment = "Quest contract: 2934 Undamaged Venom Sac",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 61.44, 19.06),
         RaidIcon = { {
             npcID = 2216,
@@ -223,7 +204,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 19,
     }, {
         PickUp = { 2989 },
-        _comment = "Quest contract: 2989 The Altar of Zul",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 9.75, 44.47),
         RaidIcon = { {
             npcID = 5636,
@@ -238,7 +218,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 20,
     }, {
         PickUp = { 3527 },
-        _comment = "Quest contract: 3527 The Prophecy of Mosh'aru",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.99, 22.36),
         RaidIcon = { {
             npcID = 8579,
@@ -254,7 +233,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         Qpart = {
             [2934] = { 1 },
         },
-        _comment = "Quest contract: 2934 Undamaged Venom Sac",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 30.66, 69.72),
         IsQuestOnQuest = 2934,
         Zone = 1425,
@@ -263,13 +241,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         Qpart = {
             [2989] = { 1 },
         },
-        _comment = "Quest contract: 2989 The Altar of Zul",
         NoArrow = true,
         IsQuestOnQuest = 2989,
         _index = 23,
     }, {
         Done = { 2934 },
-        _comment = "Quest contract: 2934 Undamaged Venom Sac",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 61.44, 19.06),
         RaidIcon = { {
             npcID = 2216,
@@ -281,7 +257,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 24,
     }, {
         Done = { 2989 },
-        _comment = "Quest contract: 2989 The Altar of Zul",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 9.75, 44.47),
         RaidIcon = { {
             npcID = 5636,
@@ -293,7 +268,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 25,
     }, {
         PickUp = { 2935 },
-        _comment = "Quest contract: 2935 Consult Master Gadrin",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 61.44, 19.06),
         RaidIcon = { {
             npcID = 2216,
@@ -308,7 +282,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 26,
     }, {
         PickUp = { 2990 },
-        _comment = "Quest contract: 2990 Thadius Grimshade",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 9.75, 44.47),
         RaidIcon = { {
             npcID = 5636,
@@ -323,7 +296,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 27,
     }, {
         Done = { 2935 },
-        _comment = "Quest contract: 2935 Consult Master Gadrin",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1411, 55.95, 74.72),
         RaidIcon = { {
             npcID = 3188,
@@ -337,13 +309,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         Qpart = {
             [2990] = { 1 },
         },
-        _comment = "Quest contract: 2990 Thadius Grimshade",
         NoArrow = true,
         IsQuestOnQuest = 2990,
         _index = 29,
     }, {
         PickUp = { 2936 },
-        _comment = "Quest contract: 2936 The Spider God",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1411, 55.95, 74.72),
         RaidIcon = { {
             npcID = 3188,
@@ -358,7 +328,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 30,
     }, {
         Done = { 2990 },
-        _comment = "Quest contract: 2990 Thadius Grimshade",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1419, 66.9, 19.47),
         RaidIcon = { {
             npcID = 8022,
@@ -370,7 +339,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 31,
     }, {
         PickUp = { 2991 },
-        _comment = "Quest contract: 2991 Nekrum's Medallion",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1419, 66.9, 19.47),
         RaidIcon = { {
             npcID = 8022,
@@ -476,7 +444,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         Qpart = {
             [2768] = { 1 },
         },
-        _comment = "Quest contract: 2768 Divino-matic Rod",
         NoArrow = true,
         Dungeon = "INSTANCE_209",
         InstanceQuest = true,
@@ -486,7 +453,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         Qpart = {
             [2770] = { 1 },
         },
-        _comment = "Quest contract: 2770 Gahz'rilla",
         NoArrow = true,
         Dungeon = "INSTANCE_209",
         InstanceQuest = true,
@@ -496,7 +462,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         Qpart = {
             [2846] = { 1 },
         },
-        _comment = "Quest contract: 2846 Tiara of the Deep",
         NoArrow = true,
         Dungeon = "INSTANCE_209",
         InstanceQuest = true,
@@ -506,7 +471,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         Qpart = {
             [2865] = { 1 },
         },
-        _comment = "Quest contract: 2865 Scarab Shells",
         NoArrow = true,
         Dungeon = "INSTANCE_209",
         InstanceQuest = true,
@@ -516,7 +480,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         Qpart = {
             [2936] = { 1 },
         },
-        _comment = "Quest contract: 2936 The Spider God",
         NoArrow = true,
         Dungeon = "INSTANCE_209",
         InstanceQuest = true,
@@ -526,7 +489,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         Qpart = {
             [2991] = { 1 },
         },
-        _comment = "Quest contract: 2991 Nekrum's Medallion",
         NoArrow = true,
         Dungeon = "INSTANCE_209",
         InstanceQuest = true,
@@ -536,7 +498,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         Qpart = {
             [3042] = { 1 },
         },
-        _comment = "Quest contract: 3042 Troll Temper",
         NoArrow = true,
         Dungeon = "INSTANCE_209",
         InstanceQuest = true,
@@ -546,7 +507,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         Qpart = {
             [3527] = { 1, 2 },
         },
-        _comment = "Quest contract: 3527 The Prophecy of Mosh'aru",
         NoArrow = true,
         Dungeon = "INSTANCE_209",
         InstanceQuest = true,
@@ -561,7 +521,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 50,
     }, {
         Done = { 2768 },
-        _comment = "Quest contract: 2768 Divino-matic Rod",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.46, 28.51),
         RaidIcon = { {
             npcID = 7407,
@@ -572,7 +531,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 51,
     }, {
         Done = { 2770 },
-        _comment = "Quest contract: 2770 Gahz'rilla",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 78.14, 77.12),
         RaidIcon = { {
             npcID = 4453,
@@ -583,7 +541,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 52,
     }, {
         Done = { 2846 },
-        _comment = "Quest contract: 2846 Tiara of the Deep",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 46.06, 57.09),
         RaidIcon = { {
             npcID = 6546,
@@ -594,7 +551,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 53,
     }, {
         Done = { 2865 },
-        _comment = "Quest contract: 2865 Scarab Shells",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 51.57, 26.76),
         RaidIcon = { {
             npcID = 7876,
@@ -605,7 +561,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 54,
     }, {
         Done = { 2936 },
-        _comment = "Quest contract: 2936 The Spider God",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1411, 55.95, 74.72),
         RaidIcon = { {
             npcID = 3188,
@@ -617,7 +572,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 55,
     }, {
         Done = { 2991 },
-        _comment = "Quest contract: 2991 Nekrum's Medallion",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1419, 66.9, 19.47),
         RaidIcon = { {
             npcID = 8022,
@@ -629,7 +583,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 56,
     }, {
         Done = { 3042 },
-        _comment = "Quest contract: 3042 Troll Temper",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 51.41, 28.75),
         RaidIcon = { {
             npcID = 7804,
@@ -640,7 +593,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 57,
     }, {
         Done = { 3527 },
-        _comment = "Quest contract: 3527 The Prophecy of Mosh'aru",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.99, 22.36),
         RaidIcon = { {
             npcID = 8579,
@@ -651,7 +603,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 58,
     }, {
         PickUp = { 2937 },
-        _comment = "Quest contract: 2937 Summoning Shadra",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1411, 55.95, 74.72),
         RaidIcon = { {
             npcID = 3188,
@@ -666,7 +617,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 59,
     }, {
         PickUp = { 2992 },
-        _comment = "Quest contract: 2992 The Divination",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1419, 66.9, 19.47),
         RaidIcon = { {
             npcID = 8022,
@@ -681,7 +631,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 60,
     }, {
         PickUp = { 4787 },
-        _comment = "Quest contract: 4787 The Ancient Egg",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.99, 22.36),
         RaidIcon = { {
             npcID = 8579,
@@ -697,7 +646,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         Qpart = {
             [2937] = { 1 },
         },
-        _comment = "Quest contract: 2937 Summoning Shadra",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 33.82, 72.97),
         IsQuestOnQuest = 2937,
         Zone = 1425,
@@ -706,7 +654,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         Qpart = {
             [2992] = { 1 },
         },
-        _comment = "Quest contract: 2992 The Divination",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1419, 66.9, 19.47),
         IsQuestOnQuest = 2992,
         Zone = 1419,
@@ -715,13 +662,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         Qpart = {
             [4787] = { 1 },
         },
-        _comment = "Quest contract: 4787 The Ancient Egg",
         NoArrow = true,
         IsQuestOnQuest = 4787,
         _index = 64,
     }, {
         Done = { 2937 },
-        _comment = "Quest contract: 2937 Summoning Shadra",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 61.44, 19.06),
         RaidIcon = { {
             npcID = 2216,
@@ -733,7 +678,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 65,
     }, {
         Done = { 2992 },
-        _comment = "Quest contract: 2992 The Divination",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1419, 66.9, 19.47),
         RaidIcon = { {
             npcID = 8022,
@@ -745,7 +689,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 66,
     }, {
         Done = { 4787 },
-        _comment = "Quest contract: 4787 The Ancient Egg",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 66.99, 22.36),
         RaidIcon = { {
             npcID = 8579,
@@ -756,7 +699,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 67,
     }, {
         PickUp = { 2938 },
-        _comment = "Quest contract: 2938 Venom to the Undercity",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 61.44, 19.06),
         RaidIcon = { {
             npcID = 2216,
@@ -771,7 +713,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 68,
     }, {
         PickUp = { 2993 },
-        _comment = "Quest contract: 2993 Return to the Hinterlands",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1419, 66.9, 19.47),
         RaidIcon = { {
             npcID = 8022,
@@ -788,13 +729,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         Qpart = {
             [2938] = { 1 },
         },
-        _comment = "Quest contract: 2938 Venom to the Undercity",
         NoArrow = true,
         IsQuestOnQuest = 2938,
         _index = 70,
     }, {
         Done = { 2993 },
-        _comment = "Quest contract: 2993 Return to the Hinterlands",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 9.75, 44.47),
         RaidIcon = { {
             npcID = 5636,
@@ -806,7 +745,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 71,
     }, {
         Done = { 2938 },
-        _comment = "Quest contract: 2938 Venom to the Undercity",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 48.82, 69.28),
         RaidIcon = { {
             npcID = 2055,
@@ -818,7 +756,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         _index = 72,
     }, {
         PickUp = { 2994 },
-        _comment = "Quest contract: 2994 Saving Sharpbeak",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 9.75, 44.47),
         RaidIcon = { {
             npcID = 5636,
@@ -835,14 +772,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
         Qpart = {
             [2994] = { 1 },
         },
-        _comment = "Quest contract: 2994 Saving Sharpbeak",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 53.38, 67.11),
         IsQuestOnQuest = 2994,
         Zone = 1425,
         _index = 74,
     }, {
         Done = { 2994 },
-        _comment = "Quest contract: 2994 Saving Sharpbeak",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1425, 9.75, 44.47),
         RaidIcon = { {
             npcID = 5636,

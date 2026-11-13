@@ -16,7 +16,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
     mapID = 1420,
     steps = { {
         PickUp = { 261 },
-        _comment = "Quest contract: 261 Down the Scarlet Path",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 66.52, 7.91),
         RaidIcon = { {
             npcID = 1182,
@@ -28,7 +27,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 1,
     }, {
         PickUp = { 1048 },
-        _comment = "Quest contract: 1048 Into The Scarlet Monastery",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 56.25, 92.2),
         RaidIcon = { {
             npcID = 2425,
@@ -40,7 +38,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 2,
     }, {
         PickUp = { 1049 },
-        _comment = "Quest contract: 1049 Compendium of the Fallen",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 34.4, 46.87),
         RaidIcon = { {
             npcID = 3978,
@@ -53,7 +50,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 3,
     }, {
         PickUp = { 1050 },
-        _comment = "Quest contract: 1050 Mythology of the Titans",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 74.97, 12.48),
         RaidIcon = { {
             npcID = 3979,
@@ -65,7 +61,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 4,
     }, {
         PickUp = { 1109 },
-        _comment = "Quest contract: 1109 Going, Going, Guano!",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 48.82, 69.28),
         RaidIcon = { {
             npcID = 2055,
@@ -77,7 +72,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 5,
     }, {
         PickUp = { 1149 },
-        _comment = "Quest contract: 1149 Test of Faith",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 53.95, 41.49),
         RaidIcon = { {
             npcID = 2986,
@@ -89,7 +83,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 6,
     }, {
         PickUp = { 96800 },
-        _comment = "Quest contract: 96800 Past Due",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1416, 10.72, 64.07),
         RaidIcon = { {
             npcID = 264265,
@@ -103,7 +96,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         Qpart = {
             [261] = { 1 },
         },
-        _comment = "Quest contract: 261 Down the Scarlet Path",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 59.59, 88.15),
         IsQuestOnQuest = 261,
         Zone = 1443,
@@ -112,7 +104,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         Qpart = {
             [1109] = { 1 },
         },
-        _comment = "Quest contract: 1109 Going, Going, Guano!",
         NoArrow = true,
         IsQuestOnQuest = 1109,
         _index = 9,
@@ -120,13 +111,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         Qpart = {
             [1149] = { 1 },
         },
-        _comment = "Quest contract: 1149 Test of Faith",
         NoArrow = true,
         IsQuestOnQuest = 1149,
         _index = 10,
     }, {
         Done = { 261 },
-        _comment = "Quest contract: 261 Down the Scarlet Path",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 66.52, 7.91),
         RaidIcon = { {
             npcID = 1182,
@@ -138,7 +127,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 11,
     }, {
         Done = { 1109 },
-        _comment = "Quest contract: 1109 Going, Going, Guano!",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 48.82, 69.28),
         RaidIcon = { {
             npcID = 2055,
@@ -150,7 +138,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 12,
     }, {
         Done = { 1149 },
-        _comment = "Quest contract: 1149 Test of Faith",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 53.95, 41.49),
         RaidIcon = { {
             npcID = 2986,
@@ -162,7 +149,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 13,
     }, {
         PickUp = { 1052 },
-        _comment = "Quest contract: 1052 Down the Scarlet Path",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 66.52, 7.91),
         RaidIcon = { {
             npcID = 1182,
@@ -177,7 +163,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 14,
     }, {
         PickUp = { 1113 },
-        _comment = "Quest contract: 1113 Hearts of Zeal",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 48.82, 69.28),
         RaidIcon = { {
             npcID = 2055,
@@ -192,7 +177,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 15,
     }, {
         PickUp = { 1150 },
-        _comment = "Quest contract: 1150 Test of Endurance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 53.95, 41.49),
         RaidIcon = { {
             npcID = 2986,
@@ -209,7 +193,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         Qpart = {
             [1052] = { 1 },
         },
-        _comment = "Quest contract: 1052 Down the Scarlet Path",
         NoArrow = true,
         IsQuestOnQuest = 1052,
         _index = 17,
@@ -217,14 +200,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         Qpart = {
             [1150] = { 1 },
         },
-        _comment = "Quest contract: 1150 Test of Endurance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 26, 55.4),
         IsQuestOnQuest = 1150,
         Zone = 1441,
         _index = 18,
     }, {
         Done = { 1052 },
-        _comment = "Quest contract: 1052 Down the Scarlet Path",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 51.47, 58.35),
         RaidIcon = { {
             npcID = 3980,
@@ -236,7 +217,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 19,
     }, {
         Done = { 1150 },
-        _comment = "Quest contract: 1150 Test of Endurance",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 53.95, 41.49),
         RaidIcon = { {
             npcID = 2986,
@@ -248,7 +228,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 20,
     }, {
         PickUp = { 1053 },
-        _comment = "Quest contract: 1053 In the Name of the Light",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 51.47, 58.35),
         RaidIcon = { {
             npcID = 3980,
@@ -263,7 +242,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 21,
     }, {
         PickUp = { 1151 },
-        _comment = "Quest contract: 1151 Test of Strength",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 53.95, 41.49),
         RaidIcon = { {
             npcID = 2986,
@@ -280,14 +258,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         Qpart = {
             [1151] = { 1 },
         },
-        _comment = "Quest contract: 1151 Test of Strength",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 17.1, 38.1),
         IsQuestOnQuest = 1151,
         Zone = 1441,
         _index = 23,
     }, {
         Done = { 1151 },
-        _comment = "Quest contract: 1151 Test of Strength",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 53.95, 41.49),
         RaidIcon = { {
             npcID = 2986,
@@ -299,7 +275,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 24,
     }, {
         PickUp = { 1152 },
-        _comment = "Quest contract: 1152 Test of Lore",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 53.95, 41.49),
         RaidIcon = { {
             npcID = 2986,
@@ -314,7 +289,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 25,
     }, {
         Done = { 1152 },
-        _comment = "Quest contract: 1152 Test of Lore",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 78.8, 45.69),
         RaidIcon = { {
             npcID = 4489,
@@ -326,7 +300,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 26,
     }, {
         PickUp = { 1154 },
-        _comment = "Quest contract: 1154 Test of Lore",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 78.8, 45.69),
         RaidIcon = { {
             npcID = 4489,
@@ -343,13 +316,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         Qpart = {
             [1154] = { 1 },
         },
-        _comment = "Quest contract: 1154 Test of Lore",
         NoArrow = true,
         IsQuestOnQuest = 1154,
         _index = 28,
     }, {
         Done = { 1154 },
-        _comment = "Quest contract: 1154 Test of Lore",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 78.8, 45.69),
         RaidIcon = { {
             npcID = 4489,
@@ -361,7 +332,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 29,
     }, {
         PickUp = { 6627 },
-        _comment = "Quest contract: 6627 Test of Lore",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 78.8, 45.69),
         RaidIcon = { {
             npcID = 4489,
@@ -378,13 +348,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         Qpart = {
             [6627] = { 1 },
         },
-        _comment = "Quest contract: 6627 Test of Lore",
         NoArrow = true,
         IsQuestOnQuest = 6627,
         _index = 31,
     }, {
         Done = { 6627 },
-        _comment = "Quest contract: 6627 Test of Lore",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 78.8, 45.69),
         RaidIcon = { {
             npcID = 4489,
@@ -396,7 +364,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 32,
     }, {
         PickUp = { 1159 },
-        _comment = "Quest contract: 1159 Test of Lore",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 78.8, 45.69),
         RaidIcon = { {
             npcID = 4489,
@@ -411,7 +378,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 33,
     }, {
         Done = { 1159 },
-        _comment = "Quest contract: 1159 Test of Lore",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 57.8, 65.42),
         RaidIcon = { {
             npcID = 4488,
@@ -423,7 +389,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 34,
     }, {
         PickUp = { 1160 },
-        _comment = "Quest contract: 1160 Test of Lore",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 57.8, 65.42),
         RaidIcon = { {
             npcID = 4488,
@@ -447,7 +412,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 36,
     }, {
         PickUp = { 1051 },
-        _comment = "Quest contract: 1051 Vorrel's Revenge",
         NoArrow = true,
         Dungeon = "INSTANCE_189",
         InstanceQuest = true,
@@ -542,7 +506,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         Qpart = {
             [1048] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 1048 Into The Scarlet Monastery",
         NoArrow = true,
         Dungeon = "INSTANCE_189",
         InstanceQuest = true,
@@ -552,7 +515,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         Qpart = {
             [1049] = { 1 },
         },
-        _comment = "Quest contract: 1049 Compendium of the Fallen",
         NoArrow = true,
         Dungeon = "INSTANCE_189",
         InstanceQuest = true,
@@ -562,7 +524,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         Qpart = {
             [1050] = { 1 },
         },
-        _comment = "Quest contract: 1050 Mythology of the Titans",
         NoArrow = true,
         Dungeon = "INSTANCE_189",
         InstanceQuest = true,
@@ -572,7 +533,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         Qpart = {
             [1051] = { 1 },
         },
-        _comment = "Quest contract: 1051 Vorrel's Revenge",
         NoArrow = true,
         Dungeon = "INSTANCE_189",
         InstanceQuest = true,
@@ -582,7 +542,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         Qpart = {
             [1053] = { 1, 2, 3, 4 },
         },
-        _comment = "Quest contract: 1053 In the Name of the Light",
         NoArrow = true,
         Dungeon = "INSTANCE_189",
         InstanceQuest = true,
@@ -592,7 +551,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         Qpart = {
             [1113] = { 1 },
         },
-        _comment = "Quest contract: 1113 Hearts of Zeal",
         NoArrow = true,
         Dungeon = "INSTANCE_189",
         InstanceQuest = true,
@@ -602,7 +560,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         Qpart = {
             [1160] = { 1 },
         },
-        _comment = "Quest contract: 1160 Test of Lore",
         NoArrow = true,
         Dungeon = "INSTANCE_189",
         InstanceQuest = true,
@@ -612,7 +569,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         Qpart = {
             [96800] = { 1 },
         },
-        _comment = "Quest contract: 96800 Past Due",
         NoArrow = true,
         Dungeon = "INSTANCE_189",
         InstanceQuest = true,
@@ -627,7 +583,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 54,
     }, {
         Done = { 1048 },
-        _comment = "Quest contract: 1048 Into The Scarlet Monastery",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 56.25, 92.2),
         RaidIcon = { {
             npcID = 2425,
@@ -639,7 +594,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 55,
     }, {
         Done = { 1049 },
-        _comment = "Quest contract: 1049 Compendium of the Fallen",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 34.4, 46.87),
         RaidIcon = { {
             npcID = 3978,
@@ -652,7 +606,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 56,
     }, {
         Done = { 1050 },
-        _comment = "Quest contract: 1050 Mythology of the Titans",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 74.97, 12.48),
         RaidIcon = { {
             npcID = 3979,
@@ -664,7 +617,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 57,
     }, {
         Done = { 1051 },
-        _comment = "Quest contract: 1051 Vorrel's Revenge",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 62.67, 18.88),
         RaidIcon = { {
             npcID = 3982,
@@ -676,7 +628,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 58,
     }, {
         Done = { 1053 },
-        _comment = "Quest contract: 1053 In the Name of the Light",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 51.47, 58.35),
         RaidIcon = { {
             npcID = 3980,
@@ -688,7 +639,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 59,
     }, {
         Done = { 1113 },
-        _comment = "Quest contract: 1113 Hearts of Zeal",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 48.82, 69.28),
         RaidIcon = { {
             npcID = 2055,
@@ -700,7 +650,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 60,
     }, {
         Done = { 1160 },
-        _comment = "Quest contract: 1160 Test of Lore",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 57.8, 65.42),
         RaidIcon = { {
             npcID = 4488,
@@ -712,7 +661,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 61,
     }, {
         Done = { 96800 },
-        _comment = "Quest contract: 96800 Past Due",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1416, 10.72, 64.07),
         RaidIcon = { {
             npcID = 264265,
@@ -724,7 +672,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 62,
     }, {
         PickUp = { 6628 },
-        _comment = "Quest contract: 6628 Test of Lore",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 57.8, 65.42),
         RaidIcon = { {
             npcID = 4488,
@@ -741,13 +688,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         Qpart = {
             [6628] = { 1 },
         },
-        _comment = "Quest contract: 6628 Test of Lore",
         NoArrow = true,
         IsQuestOnQuest = 6628,
         _index = 64,
     }, {
         Done = { 6628 },
-        _comment = "Quest contract: 6628 Test of Lore",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 57.8, 65.42),
         RaidIcon = { {
             npcID = 4488,
@@ -759,7 +704,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 65,
     }, {
         PickUp = { 1394 },
-        _comment = "Quest contract: 1394 Final Passage",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 57.8, 65.42),
         RaidIcon = { {
             npcID = 4488,
@@ -774,7 +718,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scarlet-Monastery"] = {
         _index = 66,
     }, {
         Done = { 1394 },
-        _comment = "Quest contract: 1394 Final Passage",
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1441, 53.95, 41.49),
         RaidIcon = { {
             npcID = 2986,

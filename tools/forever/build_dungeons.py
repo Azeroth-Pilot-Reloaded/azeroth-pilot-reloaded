@@ -628,9 +628,6 @@ def main():
             objective_indices = sorted(psobjectives.get(q) or {int(i) for i in objectives if str(i).isdigit()})
             part = ({"Qpart": {q: objective_indices}, "IsQuestOnQuest": q, "NoArrow": True}
                     if objective_indices and (quest.get("objectives") or quest.get("triggerEnd") or q in psobjectives) else None)
-            for step in (pickup, part, done):
-                if step:
-                    step["_comment"] = f"Quest contract: {q} {quest['name']}"
             if q in selected:
                 if inside_start:
                     pickup.update(Dungeon=key, InstanceQuest=True, NoArrow=True)
