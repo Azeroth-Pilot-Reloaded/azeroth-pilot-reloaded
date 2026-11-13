@@ -185,4 +185,5 @@
     <Script file="Routes/Forever/Raids/Forever_Raids_onyxias_lair_drakefire_h.lua"/>
     <Script file="Routes/Forever/Raids/Forever_Raids_ruins_of_ahnqiraj.lua"/>
     <Script file="Routes/Forever/Raids/Forever_Raids_zulgurub.lua"/>
+    <Script file="Routes/Forever/Reputation/Forever_Reputations.lua"/>
 </Ui>
