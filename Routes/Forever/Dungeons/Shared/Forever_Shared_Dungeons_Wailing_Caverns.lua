@@ -31,6 +31,211 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
     },
     steps = {
         {
+            PickUp = { 865 },
+            _comment = "Quest contract: 865 Raptor Horns",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 62.37, 37.62),
+            RaidIcon = { {
+                npcID = 3446,
+                questID = 865,
+            } },
+            MinLevel = 13,
+            Zone = 1413,
+            _index = 1,
+        },
+        {
+            Qpart = {
+                [865] = { 1 },
+            },
+            _comment = "Quest contract: 865 Raptor Horns",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 57.04, 53.01),
+            IsQuestOnQuest = 865,
+            Zone = 1413,
+            _index = 2,
+        },
+        {
+            Done = { 865 },
+            _comment = "Quest contract: 865 Raptor Horns",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 62.37, 37.62),
+            RaidIcon = { {
+                npcID = 3446,
+                questID = 865,
+            } },
+            IsQuestOnQuest = 865,
+            Zone = 1413,
+            _index = 3,
+        },
+        {
+            PickUp = { 870 },
+            _comment = "Quest contract: 870 The Forgotten Pools",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 52.26, 31.93),
+            RaidIcon = { {
+                npcID = 3448,
+                questID = 870,
+            } },
+            Faction = "Horde",
+            MinLevel = 10,
+            Zone = 1413,
+            _index = 4,
+        },
+        {
+            Qpart = {
+                [870] = { 1 },
+            },
+            _comment = "Quest contract: 870 The Forgotten Pools",
+            NoArrow = true,
+            IsQuestOnQuest = 870,
+            _index = 5,
+        },
+        {
+            Done = { 870 },
+            _comment = "Quest contract: 870 The Forgotten Pools",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 52.26, 31.93),
+            RaidIcon = { {
+                npcID = 3448,
+                questID = 870,
+            } },
+            Faction = "Horde",
+            IsQuestOnQuest = 870,
+            Zone = 1413,
+            _index = 6,
+        },
+        {
+            PickUp = { 877 },
+            _comment = "Quest contract: 877 The Stagnant Oasis",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 52.26, 31.93),
+            RaidIcon = { {
+                npcID = 3448,
+                questID = 877,
+            } },
+            AnyOf = { {
+                IsQuestCompleted = 870,
+            } },
+            Faction = "Horde",
+            MinLevel = 10,
+            Zone = 1413,
+            _index = 7,
+        },
+        {
+            Qpart = {
+                [877] = { 1 },
+            },
+            _comment = "Quest contract: 877 The Stagnant Oasis",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 55.61, 42.75),
+            IsQuestOnQuest = 877,
+            Zone = 1413,
+            _index = 8,
+        },
+        {
+            Done = { 877 },
+            _comment = "Quest contract: 877 The Stagnant Oasis",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 52.26, 31.93),
+            RaidIcon = { {
+                npcID = 3448,
+                questID = 877,
+            } },
+            Faction = "Horde",
+            IsQuestOnQuest = 877,
+            Zone = 1413,
+            _index = 9,
+        },
+        {
+            PickUp = { 880 },
+            _comment = "Quest contract: 880 Altered Beings",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 52.26, 31.93),
+            RaidIcon = { {
+                npcID = 3448,
+                questID = 880,
+            } },
+            AnyOf = { {
+                IsQuestCompleted = 877,
+            } },
+            Faction = "Horde",
+            MinLevel = 10,
+            Zone = 1413,
+            _index = 10,
+        },
+        {
+            Qpart = {
+                [880] = { 1 },
+            },
+            _comment = "Quest contract: 880 Altered Beings",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 46.1, 38.85),
+            IsQuestOnQuest = 880,
+            Zone = 1413,
+            _index = 11,
+        },
+        {
+            Done = { 880 },
+            _comment = "Quest contract: 880 Altered Beings",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 52.26, 31.93),
+            RaidIcon = { {
+                npcID = 3448,
+                questID = 880,
+            } },
+            Faction = "Horde",
+            IsQuestOnQuest = 880,
+            Zone = 1413,
+            _index = 12,
+        },
+        {
+            PickUp = { 1489 },
+            _comment = "Quest contract: 1489 Hamuul Runetotem",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 52.26, 31.93),
+            RaidIcon = { {
+                npcID = 3448,
+                questID = 1489,
+            } },
+            AnyOf = { {
+                IsQuestCompleted = 880,
+            } },
+            Faction = "Horde",
+            MinLevel = 12,
+            Zone = 1413,
+            _index = 13,
+        },
+        {
+            Done = { 1489 },
+            _comment = "Quest contract: 1489 Hamuul Runetotem",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 78.62, 28.56),
+            RaidIcon = { {
+                npcID = 5769,
+                questID = 1489,
+            } },
+            Faction = "Horde",
+            IsQuestOnQuest = 1489,
+            Zone = 1456,
+            _index = 14,
+        },
+        {
+            PickUp = { 1490 },
+            _comment = "Quest contract: 1490 Nara Wildmane",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 78.62, 28.56),
+            RaidIcon = { {
+                npcID = 5769,
+                questID = 1490,
+            } },
+            AnyOf = { {
+                IsQuestCompleted = 1489,
+            } },
+            Faction = "Horde",
+            MinLevel = 12,
+            Zone = 1456,
+            _index = 15,
+        },
+        {
+            Done = { 1490 },
+            _comment = "Quest contract: 1490 Nara Wildmane",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 75.65, 31.61),
+            RaidIcon = { {
+                npcID = 5770,
+                questID = 1490,
+            } },
+            Faction = "Horde",
+            IsQuestOnQuest = 1490,
+            Zone = 1456,
+            _index = 16,
+        },
+        {
             Waypoint = 962,
             Coord = { x = 131.6, y = -1210.1 },
             Range = 6,
@@ -41,7 +246,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             MinLevel = 14,
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 1,
+            _index = 17,
         },
         {
             Waypoint = 962,
@@ -54,7 +259,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             MinLevel = 14,
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 2,
+            _index = 18,
         },
         {
             Waypoint = 962,
@@ -67,7 +272,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             MinLevel = 14,
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 3,
+            _index = 19,
         },
         {
             Waypoint = 962,
@@ -80,7 +285,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             MinLevel = 14,
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 4,
+            _index = 20,
         },
         {
             Waypoint = 962,
@@ -93,7 +298,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             MinLevel = 14,
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 5,
+            _index = 21,
         },
         {
             PickUp = { 962 },
@@ -101,7 +306,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Faction = "Horde",
             MinLevel = 14,
             Zone = 1456,
-            _index = 6,
+            _index = 22,
         },
         {
             Waypoint = 914,
@@ -115,7 +320,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             MinLevel = 11,
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 7,
+            _index = 23,
         },
         {
             Waypoint = 914,
@@ -129,7 +334,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             MinLevel = 11,
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 8,
+            _index = 24,
         },
         {
             Waypoint = 914,
@@ -143,7 +348,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             MinLevel = 11,
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 9,
+            _index = 25,
         },
         {
             PickUp = { 914 },
@@ -152,14 +357,14 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             IsQuestCompleted = 1490,
             MinLevel = 11,
             Zone = 1456,
-            _index = 10,
+            _index = 26,
         },
         {
             PickUp = { 959 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 63.09, 37.61),
             MinLevel = 14,
             Zone = 1413,
-            _index = 11,
+            _index = 27,
         },
         {
             PickUp = { 1491 },
@@ -167,7 +372,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             IsQuestCompleted = 865,
             MinLevel = 13,
             Zone = 1413,
-            _index = 12,
+            _index = 28,
         },
         {
             Waypoint = 1491,
@@ -176,7 +381,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Range = 30,
             AnyOf = { { MinLevel = 13, IsQuestNotOnQuest = 1486, IsQuestUncompleted = 1486 }, { MinLevel = 15, IsQuestNotOnQuest = 1487, IsQuestUncompleted = 1487 } },
             Zone = 1413,
-            _index = 13,
+            _index = 29,
         },
         {
             Waypoint = 1491,
@@ -185,7 +390,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Range = 20,
             AnyOf = { { MinLevel = 13, IsQuestNotOnQuest = 1486, IsQuestUncompleted = 1486 }, { MinLevel = 15, IsQuestNotOnQuest = 1487, IsQuestUncompleted = 1487 } },
             Zone = 1413,
-            _index = 14,
+            _index = 30,
         },
         {
             Waypoint = 1491,
@@ -194,7 +399,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Range = 20,
             AnyOf = { { MinLevel = 13, IsQuestNotOnQuest = 1486, IsQuestUncompleted = 1486 }, { MinLevel = 15, IsQuestNotOnQuest = 1487, IsQuestUncompleted = 1487 } },
             Zone = 1414,
-            _index = 15,
+            _index = 31,
         },
         {
             Waypoint = 1491,
@@ -203,7 +408,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Range = 10,
             AnyOf = { { MinLevel = 13, IsQuestNotOnQuest = 1486, IsQuestUncompleted = 1486 }, { MinLevel = 15, IsQuestNotOnQuest = 1487, IsQuestUncompleted = 1487 } },
             Zone = 1414,
-            _index = 16,
+            _index = 32,
         },
         {
             Waypoint = 1491,
@@ -212,7 +417,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Range = 10,
             AnyOf = { { MinLevel = 13, IsQuestNotOnQuest = 1486, IsQuestUncompleted = 1486 }, { MinLevel = 15, IsQuestNotOnQuest = 1487, IsQuestUncompleted = 1487 } },
             Zone = 1414,
-            _index = 17,
+            _index = 33,
         },
         {
             Waypoint = 1486,
@@ -221,21 +426,21 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Range = 5,
             AnyOf = { { MinLevel = 13, IsQuestNotOnQuest = 1486, IsQuestUncompleted = 1486 }, { MinLevel = 15, IsQuestNotOnQuest = 1487, IsQuestUncompleted = 1487 } },
             Zone = 1414,
-            _index = 18,
+            _index = 34,
         },
         {
             PickUp = { 1486 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 45.99, 35.66),
             MinLevel = 13,
             Zone = 1413,
-            _index = 19,
+            _index = 35,
         },
         {
             PickUp = { 1487 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 46.01, 35.74),
             MinLevel = 15,
             Zone = 1413,
-            _index = 20,
+            _index = 36,
         },
         {
             Qpart = { [959] = { 1 } },
@@ -245,7 +450,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Range = 30,
             IsQuestOnQuest = 959,
             Zone = 1414,
-            _index = 21,
+            _index = 37,
         },
         {
             Waypoint = 1491,
@@ -254,7 +459,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Coord = { x = -2028.82, y = -636.93 },
             Range = 20,
             Zone = 1414,
-            _index = 22,
+            _index = 38,
         },
         {
             Waypoint = 1491,
@@ -263,7 +468,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Coord = { x = -2050.9, y = -585.41 },
             Range = 20,
             Zone = 1414,
-            _index = 23,
+            _index = 39,
         },
         {
             Waypoint = 1491,
@@ -272,7 +477,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Coord = { x = -2168.66, y = -607.49 },
             Range = 30,
             Zone = 1414,
-            _index = 24,
+            _index = 40,
         },
         {
             EnterInstance = { dungeonKey = "WC" },
@@ -283,7 +488,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Dungeon = "WC",
             InstanceQuest = true,
             Zone = 1414,
-            _index = 25,
+            _index = 41,
         },
         {
             KillNPC = { dungeonKey = "WC", name = "Lady Anacondra", npcID = 3671 },
@@ -291,7 +496,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,
-            _index = 26,
+            _index = 42,
         },
         {
             KillNPC = { dungeonKey = "WC", name = "Lord Cobrahn", npcID = 3669 },
@@ -299,7 +504,18 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,
-            _index = 27,
+            _index = 43,
+        },
+        {
+            KillNPC = {
+                dungeonKey = "WC",
+                npcID = 3653,
+                name = "Kresh",
+            },
+            NoArrow = true,
+            Dungeon = "WC",
+            InstanceQuest = true,
+            _index = 44,
         },
         {
             KillNPC = { dungeonKey = "WC", name = "Lord Pythas", npcID = 3670 },
@@ -307,7 +523,18 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,
-            _index = 28,
+            _index = 45,
+        },
+        {
+            KillNPC = {
+                dungeonKey = "WC",
+                npcID = 3674,
+                name = "Skum",
+            },
+            NoArrow = true,
+            Dungeon = "WC",
+            InstanceQuest = true,
+            _index = 46,
         },
         {
             KillNPC = { dungeonKey = "WC", name = "Lord Serpentis", npcID = 3673 },
@@ -315,7 +542,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,
-            _index = 29,
+            _index = 47,
         },
         {
             Qpart = { [914] = { 1 } },
@@ -325,7 +552,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             InstanceQuest = true,
             Faction = "Horde",
             IsQuestOnQuest = 914,
-            _index = 30,
+            _index = 48,
         },
         {
             Qpart = { [914] = { 2 } },
@@ -335,7 +562,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             InstanceQuest = true,
             Faction = "Horde",
             IsQuestOnQuest = 914,
-            _index = 31,
+            _index = 49,
         },
         {
             Qpart = { [914] = { 3 } },
@@ -345,7 +572,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             InstanceQuest = true,
             Faction = "Horde",
             IsQuestOnQuest = 914,
-            _index = 32,
+            _index = 50,
         },
         {
             Qpart = { [914] = { 4 } },
@@ -355,7 +582,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             InstanceQuest = true,
             Faction = "Horde",
             IsQuestOnQuest = 914,
-            _index = 33,
+            _index = 51,
         },
         {
             KillNPC = { dungeonKey = "WC", name = "Verdan the Everliving", npcID = 5775 },
@@ -363,7 +590,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,
-            _index = 34,
+            _index = 52,
         },
         {
             KillNPC = { dungeonKey = "WC", name = "Mutanus the Devourer", npcID = 3654 },
@@ -372,7 +599,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,
-            _index = 35,
+            _index = 53,
         },
         {
             Qpart = { [1487] = { 1 } },
@@ -381,7 +608,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Dungeon = "WC",
             InstanceQuest = true,
             IsQuestOnQuest = 1487,
-            _index = 36,
+            _index = 54,
         },
         {
             Qpart = { [1487] = { 2 } },
@@ -390,7 +617,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Dungeon = "WC",
             InstanceQuest = true,
             IsQuestOnQuest = 1487,
-            _index = 37,
+            _index = 55,
         },
         {
             Qpart = { [1487] = { 3 } },
@@ -399,7 +626,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Dungeon = "WC",
             InstanceQuest = true,
             IsQuestOnQuest = 1487,
-            _index = 38,
+            _index = 56,
         },
         {
             Qpart = { [1487] = { 4 } },
@@ -408,7 +635,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Dungeon = "WC",
             InstanceQuest = true,
             IsQuestOnQuest = 1487,
-            _index = 39,
+            _index = 57,
         },
         {
             Qpart = { [1486] = { 1 } },
@@ -417,7 +644,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Dungeon = "WC",
             InstanceQuest = true,
             IsQuestOnQuest = 1486,
-            _index = 40,
+            _index = 58,
         },
         {
             Qpart = { [1491] = { 1 } },
@@ -425,7 +652,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Dungeon = "WC",
             InstanceQuest = true,
             IsQuestOnQuest = 1491,
-            _index = 41,
+            _index = 59,
         },
         {
             Qpart = { [962] = { 1 } },
@@ -436,7 +663,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Faction = "Horde",
             HasSpell = 2366,
             IsQuestOnQuest = 962,
-            _index = 42,
+            _index = 60,
         },
         {
             Qpart = { [962] = { 1 } },
@@ -447,7 +674,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             DontHaveSpell = { 2366 },
             Faction = "Horde",
             IsQuestOnQuest = 962,
-            _index = 43,
+            _index = 61,
         },
         {
             LeaveInstance = { dungeonKey = "WC" },
@@ -455,42 +682,42 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,
-            _index = 44,
+            _index = 62,
         },
         {
             Done = { 1486 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 45.99, 35.66),
             IsQuestOnQuest = 1486,
             Zone = 1413,
-            _index = 45,
+            _index = 63,
         },
         {
             Done = { 1487 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 46.01, 35.74),
             IsQuestOnQuest = 1487,
             Zone = 1413,
-            _index = 46,
+            _index = 64,
         },
         {
             Done = { 1491 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 62.37, 37.62),
             IsQuestOnQuest = 1491,
             Zone = 1413,
-            _index = 47,
+            _index = 65,
         },
         {
             Done = { 959 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 63.09, 37.61),
             IsQuestOnQuest = 959,
             Zone = 1413,
-            _index = 48,
+            _index = 66,
         },
         {
             Qpart = { [6981] = { 1 } },
             Coord = { x = -3760.07, y = -902.18 },
             IsQuestOnQuest = 6981,
             Zone = 1413,
-            _index = 49,
+            _index = 67,
         },
         {
             Waypoint = 6981,
@@ -500,7 +727,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             AnyOf = { { IsQuestOnQuest = 6981 }, { Faction = "Horde", MinLevel = 15, IsQuestCompleted = 6981, IsQuestNotOnQuest = 3369, IsQuestUncompleted = 3369 }, { Faction = "Alliance", MinLevel = 15, IsQuestCompleted = 6981, IsQuestNotOnQuest = 3370, IsQuestUncompleted = 3370 } },
             OnlyInZones = { 1413 },
             Zone = 1413,
-            _index = 50,
+            _index = 68,
         },
         {
             Waypoint = 6981,
@@ -510,14 +737,14 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             AnyOf = { { IsQuestOnQuest = 6981 }, { Faction = "Horde", MinLevel = 15, IsQuestCompleted = 6981, IsQuestNotOnQuest = 3369, IsQuestUncompleted = 3369 }, { Faction = "Alliance", MinLevel = 15, IsQuestCompleted = 6981, IsQuestNotOnQuest = 3370, IsQuestUncompleted = 3370 } },
             OnlyInZones = { 1413 },
             Zone = 1413,
-            _index = 51,
+            _index = 69,
         },
         {
             Done = { 6981 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 48.18, 32.78),
             IsQuestOnQuest = 6981,
             Zone = 1413,
-            _index = 52,
+            _index = 70,
         },
         {
             PickUp = { 3369 },
@@ -526,7 +753,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             IsQuestCompleted = 6981,
             MinLevel = 15,
             Zone = 1413,
-            _index = 53,
+            _index = 71,
         },
         {
             PickUp = { 3370 },
@@ -535,7 +762,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             IsQuestCompleted = 6981,
             MinLevel = 15,
             Zone = 1413,
-            _index = 54,
+            _index = 72,
         },
         {
             Waypoint = 962,
@@ -546,7 +773,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             IsQuestOnQuest = 962,
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 55,
+            _index = 73,
         },
         {
             Waypoint = 962,
@@ -557,7 +784,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             IsQuestOnQuest = 962,
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 56,
+            _index = 74,
         },
         {
             Waypoint = 962,
@@ -568,7 +795,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             IsQuestOnQuest = 962,
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 57,
+            _index = 75,
         },
         {
             Waypoint = 962,
@@ -579,7 +806,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             IsQuestOnQuest = 962,
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 58,
+            _index = 76,
         },
         {
             Waypoint = 962,
@@ -590,7 +817,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             IsQuestOnQuest = 962,
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 59,
+            _index = 77,
         },
         {
             Done = { 962 },
@@ -598,7 +825,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Faction = "Horde",
             IsQuestOnQuest = 962,
             Zone = 1456,
-            _index = 60,
+            _index = 78,
         },
         {
             Waypoint = 914,
@@ -609,7 +836,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Faction = "Horde",
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 61,
+            _index = 79,
         },
         {
             Waypoint = 914,
@@ -620,7 +847,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Faction = "Horde",
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 62,
+            _index = 80,
         },
         {
             Waypoint = 914,
@@ -631,7 +858,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Faction = "Horde",
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 63,
+            _index = 81,
         },
         {
             Done = { 914 },
@@ -639,7 +866,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Faction = "Horde",
             IsQuestOnQuest = 914,
             Zone = 1456,
-            _index = 64,
+            _index = 82,
         },
         {
             Done = { 3369 },
@@ -647,7 +874,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Faction = "Horde",
             IsQuestOnQuest = 3369,
             Zone = 1456,
-            _index = 65,
+            _index = 83,
         },
         {
             Done = { 3370 },
@@ -655,11 +882,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 3370,
             Zone = 1457,
-            _index = 66,
+            _index = 84,
         },
         {
             RouteCompleted = true,
-            _index = 67,
+            _index = 85,
         },
     },
 }
