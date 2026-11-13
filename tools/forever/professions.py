@@ -6,9 +6,9 @@ and the authored locale tables plus localized name chunks for readable APR text.
 """
 from pathlib import Path
 import argparse
-import hashlib
 import json
 import re
+import unicodedata
 from urllib.parse import unquote
 
 from lupa.lua51 import LuaRuntime
@@ -45,6 +45,81 @@ RANKS = {
     393: (8613, 8617, 8618, 10768), 197: (3908, 3909, 3910, 12180),
 }
 LOCALES = ("enUS", "deDE", "esES", "esMX", "frFR", "itIT", "koKR", "ptBR", "ruRU", "zhCN", "zhTW")
+PROFESSION_TITLES = {
+    "alchemy": "Alchimie", "blacksmithing": "Forge", "cooking": "Cuisine",
+    "enchanting": "Enchantement", "engineering": "Ingénierie", "first-aid": "Secourisme",
+    "fishing": "Pêche", "herbalism": "Herboristerie", "leatherworking": "Travail du cuir",
+    "mining": "Minage", "skinning": "Dépeçage", "tailoring": "Couture",
+}
+
+
+def semantic_key(profession, subject):
+    def words(value):
+        ascii_value = unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode()
+        return re.sub(r"[^A-Z0-9]+", "_", ascii_value.upper()).strip("_")
+    profession_words = words(profession)
+    subject_words = re.sub(r"(?:^|_)" + re.escape(profession_words) + r"(?=_|$)", "_", words(subject)).strip("_")
+    subject_words = re.sub(r"_+", "_", subject_words)
+    if not subject_words:
+        raise ValueError("A translation key needs a descriptive subject")
+    return "FOREVER_PROF_" + profession_words + "_" + subject_words
+
+
+def english_names(guides, source=None):
+    result = {}
+    for guide in guides.values():
+        result.update(guide.get("names", {}))
+        for step in guide["steps"]:
+            for goal in step.get("goals", []):
+                for kind, field in (("spell", "spellName"), ("item", "itemName"), ("npc", "npcName"), ("quest", "title")):
+                    if goal.get(kind) and goal.get(field):
+                        result[f"{kind}:{goal[kind]}"] = goal[field]
+                for reagent in goal.get("reagents", []):
+                    result[f"item:{reagent['item']}"] = reagent["itemName"]
+                for candidate in goal.get("candidates", []):
+                    if candidate.get("npcName"):
+                        result[f"npc:{candidate['npc']}"] = candidate["npcName"]
+    if source:
+        for kind in ("item", "quest", "npc", "object"):
+            catalog = source / "forever-db/data" / (kind + ".jsonl")
+            if catalog.exists():
+                for line in catalog.read_text(encoding="utf-8").splitlines():
+                    row = json.loads(line)
+                    name = row.get("name") or row.get("title")
+                    if name:
+                        result.setdefault(f"{kind}:{row['id']}", name)
+    return result
+
+
+def descriptive_note_keys(guides, names):
+    """Use authored subjects; distinguish repeated subjects by tier and action."""
+    subjects = []
+    for slug, guide in guides.items():
+        for step in guide["steps"]:
+            subject = re.sub(r"\{([a-z]+:\d+)\}", lambda m: names[m[1]], step["title"])
+            for values in step.get("only", {}).values():
+                for condition in values:
+                    if condition.lower() not in subject.lower():
+                        subject += " " + condition
+            value = step.get("note") or step["title"]
+            tier = (guide.get("sections") or [{}])[step.get("section", 1) - 1]
+            context = f" SKILL {tier['from']} {tier['to']}" if "from" in tier else ""
+            actions = " ".join(dict.fromkeys(goal["t"] for goal in step.get("goals", [])))
+            subjects.append((slug, value, subject, context, actions))
+    keys = {}
+    for stage in range(3):
+        grouped = {}
+        for slug, value, subject, tier, actions in subjects:
+            candidate = semantic_key(slug, subject + (tier if stage else "") + (" " + actions if stage == 2 else ""))
+            grouped.setdefault(candidate, set()).add(value)
+        for slug, value, subject, tier, actions in subjects:
+            candidate = semantic_key(slug, subject + (tier if stage else "") + (" " + actions if stage == 2 else ""))
+            if value not in keys and len(grouped[candidate]) == 1:
+                keys[value] = candidate
+    missing = [value for _, value, *_ in subjects if value not in keys]
+    if missing:
+        raise ValueError("Ambiguous translation subject: " + missing[0])
+    return keys
 SPECIALIZATIONS = {
     "blacksmithing": "200 / 40\n{npc:5164} / {npc:11177}: {item:7937} ×4 + {item:7936} ×2 + {item:7935} ×1\n{npc:11146} / {npc:11178}: {item:3853} ×4 + {item:3855} ×4 + {item:7941} ×2 + {item:7945} ×2",
     "engineering": "200 / 30\n{npc:7944} / {npc:7406}: {item:10559} ×6 + {item:4407} ×1 + {item:4392} ×2\n{npc:8126}: {item:4394} ×20 + {item:10507} ×20 + {item:4384} ×5",
@@ -104,6 +179,18 @@ class Texts:
         self.note_values = set()
         export = ROOT / "tools/localization/forever-professions-translations.json"
         self.reviewed = json.loads(export.read_text(encoding="utf-8")) if export.exists() else {}
+        self.english_names = english_names(guides, source)
+        self.key_names = descriptive_note_keys(guides, self.english_names)
+        self.claimed_keys = {}
+        self.label_replacements = []
+        for guide in guides.values():
+            for step in guide["steps"]:
+                for goal in step.get("goals", []):
+                    if goal.get("spellName") and goal.get("spellName") == goal.get("itemName"):
+                        for locale in LOCALES:
+                            name = self.names[locale].get(f"item:{goal['item']}")
+                            if name:
+                                self.names[locale][f"spell:{goal['spell']}"] = name
         runtime = LuaRuntime(register_eval=False, register_builtins=False)
         for slug in guides:
             for step in guides[slug]["steps"]:
@@ -122,21 +209,49 @@ class Texts:
             ident = match[1]
             if ident in self.names[locale]:
                 return self.names[locale][ident]
-            if locale == "enUS" and ident in names:
-                return names[ident]
-            kind, number = ident.split(":")
-            if kind in ("item", "spell", "quest"):
-                return f"|H{kind}:{number}|h[#{number}]|h"
-            return "#" + number
+            result = names.get(ident) or self.english_names.get(ident)
+            if not result:
+                raise ValueError(f"Missing verified entity name: {locale} {ident}")
+            return result
         return re.sub(r"\{([a-z]+:\d+)\}", token, value)
 
-    def key(self, slug, value, names):
+    def plain_labels(self, text, locale, key):
+        def replace(match):
+            kind, ident, label = match.groups()
+            if label != "#" + ident:
+                return label
+            entity = kind + ":" + ident
+            name = self.names[locale].get(entity) or self.english_names.get(entity)
+            if not name:
+                raise ValueError(f"Unresolved numeric label: {locale} {key} {entity}")
+            self.label_replacements.append({"locale": locale, "key": key, "entity": entity, "name": name,
+                                            "localized": entity in self.names[locale]})
+            return name
+        return re.sub(r"\|H([a-z]+):(\d+)[^|]*\|h\[([^]]+)\]\|h", replace, text)
+
+    def translation_key(self, slug, value, subject=None, title=False, disambiguator=None):
+        if title:
+            return "Forever - " + PROFESSION_TITLES[slug]
+        if value not in self.key_names:
+            key = semantic_key(slug, subject or value)
+            if key in self.key_names.values():
+                if not disambiguator:
+                    raise ValueError(f"A descriptive translation context is required: {key}")
+                key = semantic_key(slug, (subject or value) + " " + disambiguator)
+            self.key_names[value] = key
+        return self.key_names[value]
+
+    def key(self, slug, value, names, subject=None, title=False, disambiguator=None):
         english = self.render(value, names, "enUS")
-        key = "FOREVER_PROF_" + hashlib.sha256(value.encode()).hexdigest()[:16].upper()
+        key = self.translation_key(slug, value, subject, title, disambiguator)
         # Once this feature's reviewed key is imported into the local preview,
         # it must remain in its export on the next explicit conversion.
-        if english in self.existing and key not in self.reviewed.get("enUS", {}):
+        if (not title and english in self.existing and key not in self.reviewed.get("enUS", {})
+                and not re.fullmatch(r"FOREVER_PROF_[A-F0-9]{16}", self.existing[english])):
             return self.existing[english]
+        previous_value = self.claimed_keys.setdefault(key, value)
+        if previous_value != value:
+            raise ValueError(f"Translation key collision: {key}")
         for loc in LOCALES:
             # The export is the reviewed translation source. Never replace a
             # complete instruction with an objective name or a numeric summary.
@@ -156,6 +271,7 @@ class Texts:
                 rendered = self.render(value, names, loc)
             if not isinstance(rendered, str) or not rendered.strip():
                 raise ValueError(f"Empty translation: {loc} {key}")
+            rendered = self.plain_labels(rendered, loc, key)
             previous = self.output[loc].get(key)
             assert previous is None or previous == rendered, (key, previous, rendered)
             self.output[loc][key] = rendered
@@ -213,10 +329,9 @@ def convert_guide(slug, guide, texts):
     steps = []
     names = dict(guide.get("names", {}))
     skill = next(g["skillLine"] for st in guide["steps"] for g in st.get("goals", []) if g["t"] == "train")
-    def key(value):
-        return texts.key(slug, value, names)
-    for source_index, authored in enumerate(guide["steps"], 1):
-        base = restrictions(authored.get("only"))
+    def key(value, subject=None, title=False, disambiguator=None):
+        return texts.key(slug, value, names, subject=subject, title=title, disambiguator=disambiguator)
+    for authored in guide["steps"]:
         note = key(authored.get("note") or authored["title"])
         for goal in authored.get("goals", []):
             kind = goal["t"]
@@ -226,7 +341,7 @@ def convert_guide(slug, guide, texts):
             if kind == "goto" and any(g["t"] == "skill" for g in authored["goals"]):
                 continue  # Put the gathering location on the rank objective itself.
             for candidate, conditions in choices(goal, inherited):
-                s = {**conditions, **location(candidate or goal), "ExtraLineText": [note], "_comment": f"Source step {source_index}: {kind}"}
+                s = {**conditions, **location(candidate or goal), "Note": [note]}
                 if candidate:
                     s["RaidIcon"] = candidate["npc"]
                 elif goal.get("npc"):
@@ -237,13 +352,13 @@ def convert_guide(slug, guide, texts):
                         book = re.search(r'\{item:(\d+)\}', goal.get("text", ""))
                         if book:
                             rank_spell = s["LearnProfession"]
-                            steps.append({**conditions, **location(candidate or goal), "BuyMerchant": [{"itemID": int(book[1]), "quantity": 1}], "DontHaveSpell": rank_spell, "ExtraLineText": [note]})
-                            steps.append({**conditions, "UseItem": {"itemID": int(book[1])}, "DontHaveSpell": rank_spell, "ExtraLineText": [note]})
+                            steps.append({**conditions, **location(candidate or goal), "BuyMerchant": [{"itemID": int(book[1]), "quantity": 1}], "DontHaveSpell": rank_spell, "Note": [note]})
+                            steps.append({**conditions, "UseItem": {"itemID": int(book[1])}, "DontHaveSpell": rank_spell, "Note": [note]})
                     else:
                         # Source NPC-only rank instruction (dungeon master).
                         s["LearnProfession"] = RANKS[skill][3]
                         if goal["npc"] == 11073:
-                            steps.append({**conditions, "Zone": 1418, "Coord": (1418, 65.05, 43.45), "Waypoint": 900000001, "Range": 10, "ExtraLineText": [note]})
+                            steps.append({**conditions, "Zone": 1418, "Coord": (1418, 65.05, 43.45), "Waypoint": 900000001, "Range": 10, "Note": [note]})
                         else:
                             raise ValueError(f"Unresolved rank trainer: {goal}")
                 elif kind == "learn":
@@ -251,7 +366,7 @@ def convert_guide(slug, guide, texts):
                     if candidate or goal.get("npc"):
                         s["LearnSkill"]["npcID"] = (candidate or goal)["npc"]
                     if goal.get("item"):
-                        steps.append({**conditions, "UseItem": {"itemID": goal["item"]}, "DontHaveSpell": goal["spell"], "ExtraLineText": [note]})
+                        steps.append({**conditions, "UseItem": {"itemID": goal["item"]}, "DontHaveSpell": goal["spell"], "Note": [note]})
                 elif kind in ("buy", "collect"):
                     field = "BuyMerchant" if kind == "buy" else "LootItems"
                     item = {"itemID": goal["item"], "quantity": goal.get("count", 1)}
@@ -271,13 +386,12 @@ def convert_guide(slug, guide, texts):
                         summary += " ← " + ", ".join("{item:" + str(r["item"]) + "} ×" + str(r["count"]) for r in goal["reagents"])
                         for reagent in goal["reagents"]:
                             names["item:" + str(reagent["item"])] = reagent["itemName"]
-                    s["ExtraLineText"].insert(0, key(summary))
+                    context = "CRAFT TO " + str(goal["untilSkill"]) if goal.get("untilSkill") else "CRAFT COMPONENTS " + str(goal["count"])
+                    s["Note"].insert(0, key(summary, subject=goal["spellName"], disambiguator=context))
                     if goal.get("untilSkill"):
                         s["SkillGoal"] = {"skillID": goal["skillLine"], "rank": goal["untilSkill"]}
-                    else:
-                        s["Note"] = [key(summary)]
                     if "Specialisation (optional)" in authored.get("note", ""):
-                        s["ExtraLineText"].extend(["FOREVER_PROF_SPECIALIZATION_DETAILS", key(SPECIALIZATIONS[slug])])
+                        s["Note"].extend(["FOREVER_PROF_SPECIALIZATION_DETAILS", key(SPECIALIZATIONS[slug], subject="SPECIALIZATION REQUIREMENTS")])
                 elif kind == "skill":
                     s["SkillGoal"] = {"skillID": goal["skillLine"], "rank": goal["level"]}
                     waypoint = next((g for g in authored["goals"] if g["t"] == "goto"), None)
@@ -306,7 +420,7 @@ def convert_guide(slug, guide, texts):
                     s["Not"] = {"IsQuestCompleted": goal["closedBy"][0]}
                 steps.append(s)
     steps.append({"RouteCompleted": True})
-    label = key(guide["title"])
+    label = key(guide["title"], title=True)
     lines = ['local L = LibStub("AceLocale-3.0"):GetLocale("APR")', '',
              f'-- Profession progression: {slug}.',
              '-- Generated explicitly with tools/forever/professions.py. Manual crafting only.',
@@ -315,6 +429,8 @@ def convert_guide(slug, guide, texts):
              '    gameVersion = APR.GAME_VERSIONS.Forever,', '    category = APR.CATEGORIES.Professions,',
              '    mapID = 947,', '    autoStartOnMap = false,', '    steps = {']
     for index, step in enumerate(steps, 1):
+        if "Note" in step:
+            step["Note"] = list(dict.fromkeys(step["Note"]))
         lines.append('        {')
         for field, value in step.items():
             encoded = lua(value)
@@ -341,6 +457,10 @@ def main():
     for loc in LOCALES:
         texts.output[loc]["FOREVER_PROF_SPECIALIZATION_DETAILS"] = SPECIALIZATION_TEXT[loc]
     export.write_text(json.dumps(texts.output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    report = ROOT / ".cache/profession-numeric-label-review.json"
+    report.parent.mkdir(parents=True, exist_ok=True)
+    if texts.label_replacements or not report.exists():
+        report.write_text(json.dumps(texts.label_replacements, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Translations: {len(texts.output['enUS'])} keys; reviewed export entries preserved")
 
 
