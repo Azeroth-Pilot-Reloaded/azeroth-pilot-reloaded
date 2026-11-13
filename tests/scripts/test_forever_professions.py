@@ -2,16 +2,16 @@
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from tests.routes.route_loader import load_routes
 from tests.routes.route_schema import RouteSchema
-from tools.forever.professions import LOCALES, Texts, choices, convert_guide, restrictions
-import hashlib
+from tools.forever.professions import LOCALES, PROFESSION_TITLES, Texts, choices, convert_guide, descriptive_note_keys, restrictions, semantic_key
 
 
 class SyntheticTexts:
-    def key(self, slug, value, names):
-        return "synthetic_text"
+    def key(self, slug, value, names, **kwargs):
+        return value
 
 
 class ProfessionConversionTests(unittest.TestCase):
@@ -48,6 +48,10 @@ class ProfessionConversionTests(unittest.TestCase):
         self.assertIn("Note", steps[0])
         self.assertNotIn("LootItems", steps[0])
         self.assertNotIn("SkillGoal", steps[0])
+        self.assertEqual(steps[0]["Note"][len(steps[0]["Note"])], "Invented objective")
+        self.assertEqual(len(steps[0]["Note"]), 2)
+        self.assertNotIn("ExtraLineText", steps[0])
+        self.assertNotIn("_comment", steps[0])
 
     def test_rank_craft_waits_for_skill_and_deduplicates_source_goal(self):
         steps = self.convert([
@@ -56,7 +60,7 @@ class ProfessionConversionTests(unittest.TestCase):
         ])
         self.assertEqual(len(steps), 1)
         self.assertEqual(steps[0]["SkillGoal"], {"skillID": 171, "rank": 93})
-        self.assertNotIn("Note", steps[0])
+        self.assertEqual(steps[0]["Note"][len(steps[0]["Note"])], "Invented objective")
 
     def test_gathering_location_stays_on_rank_objective(self):
         steps = self.convert([
@@ -104,12 +108,16 @@ class ProfessionConversionTests(unittest.TestCase):
         texts.names = {locale: {} for locale in LOCALES}
         texts.output = {locale: {} for locale in LOCALES}
         texts.note_values = {("invented", "Detailed instruction with a warning.")}
+        texts.english_names = {}
+        texts.key_names = {"Detailed instruction with a warning.": "FOREVER_PROF_INVENTED_POTION_SAFETY"}
+        texts.claimed_keys = {}
+        texts.label_replacements = []
         return texts
 
     def test_reviewed_instructions_survive_regeneration(self):
         texts = self.text_fixture()
         value = "Detailed instruction with a warning."
-        key = "FOREVER_PROF_" + hashlib.sha256(value.encode()).hexdigest()[:16].upper()
+        key = "FOREVER_PROF_INVENTED_POTION_SAFETY"
         texts.reviewed = {locale: {key: "Complete localized instruction and warning " + locale} for locale in LOCALES}
         texts.existing = {value: key}
         texts.key("invented", value, {})
@@ -124,10 +132,41 @@ class ProfessionConversionTests(unittest.TestCase):
     def test_empty_reviewed_instruction_is_rejected(self):
         texts = self.text_fixture()
         value = "Detailed instruction with a warning."
-        key = "FOREVER_PROF_" + hashlib.sha256(value.encode()).hexdigest()[:16].upper()
+        key = "FOREVER_PROF_INVENTED_POTION_SAFETY"
         texts.reviewed = {"enUS": {key: ""}}
         with self.assertRaisesRegex(ValueError, "Invalid reviewed translation"):
             texts.key("invented", value, {})
+
+    def test_title_key_uses_stable_french_profession_without_rank(self):
+        texts = self.text_fixture()
+        with patch.dict(PROFESSION_TITLES, {"invented": "Métier inventé"}):
+            first = texts.key("invented", "Invented craft 1-400", {}, title=True)
+        self.assertEqual(first, "Forever - Métier inventé")
+
+    def test_note_keys_describe_subject_and_tier_without_opaque_suffix(self):
+        guides = {"invented": {"sections": [{"from": 1, "to": 90}, {"from": 90, "to": 180}], "steps": [
+            {"title": "Collect ore", "note": "Ore for early crafts", "section": 1, "goals": [{"t": "collect"}]},
+            {"title": "Collect ore", "note": "Ore for later crafts", "section": 2, "goals": [{"t": "collect"}]},
+        ]}}
+        result = descriptive_note_keys(guides, {})
+        self.assertEqual(result["Ore for early crafts"], "FOREVER_PROF_INVENTED_COLLECT_ORE_SKILL_1_90")
+        self.assertEqual(result["Ore for later crafts"], "FOREVER_PROF_INVENTED_COLLECT_ORE_SKILL_90_180")
+        self.assertEqual(semantic_key("invented", "Boiled clams"), "FOREVER_PROF_INVENTED_BOILED_CLAMS")
+        self.assertEqual(semantic_key("invented", "Invented 1-90 vendor goods"), "FOREVER_PROF_INVENTED_1_90_VENDOR_GOODS")
+
+    def test_recipe_subject_is_unqualified_until_context_is_needed(self):
+        texts = self.text_fixture()
+        self.assertEqual(texts.translation_key("invented", "First recipe", subject="Boiled clams"), "FOREVER_PROF_INVENTED_BOILED_CLAMS")
+        self.assertEqual(texts.translation_key("invented", "Shopping instructions", subject="Boiled clams", disambiguator="SHOPPING"), "FOREVER_PROF_INVENTED_BOILED_CLAMS_SHOPPING")
+
+    def test_numeric_fallback_uses_verified_names_without_fake_hyperlinks(self):
+        texts = self.text_fixture()
+        texts.names["frFR"]["spell:810004"] = "Recette inventée"
+        texts.english_names["spell:810005"] = "Verified invented recipe"
+        value = "|Hspell:810004|h[#810004]|h / |Hspell:810005|h[#810005]|h"
+        self.assertEqual(texts.plain_labels(value, "frFR", "INVENTED_KEY"), "Recette inventée / Verified invented recipe")
+        with self.assertRaisesRegex(ValueError, "Unresolved numeric label"):
+            texts.plain_labels("|Hspell:899999|h[#899999]|h", "frFR", "INVENTED_KEY")
 
 
 if __name__ == "__main__":
