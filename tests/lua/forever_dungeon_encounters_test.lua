@@ -18,7 +18,6 @@ function APR:GetGameVersion() return "forever" end
 function APR:GetCurrentStep() return step end
 function APR:UpdateStep() refreshes = refreshes + 1 end
 function APR:UpdateNextStep() advanced = advanced + 1 end
-dofile("tests/lua/dungeon_data_test_env.lua")
 dofile("APR-Core/utils/DungeonUtils.lua")
 
 local function forbiddenRead() error("Secret encounter contents must not be read") end
@@ -26,32 +25,17 @@ local secret = setmetatable({}, { __index = forbiddenRead, __eq = forbiddenRead 
 function canaccessvalue(value) return not rawequal(value, secret) end
 function issecretvalue(value) return rawequal(value, secret) end
 
--- Expected encounter/NPC associations independently checked against Forever's
--- DungeonEncounter 1.60.1.70450 and the NPC IDs used by the playable routes.
+-- Invented encounters exercise engine behavior independently of shipped guides.
+APR.DungeonData = { forever = {
+    PRIMARY = { instanceID = 83000, instanceType = "party", bosses = { [92001] = true, [92002] = true, [92003] = true },
+        encounters = { [91001] = 92001, [91002] = { 92002, 92003 } } },
+    SECONDARY = { instanceID = 83001, instanceType = "party", bosses = { [92004] = true },
+        encounters = { [91003] = 92004 } },
+} }
 local cases = {
-    { "RFC", 389, 2732, { 11517 } },
-    { "RFC", 389, 2733, { 11520 } },
-    { "RFC", 389, 2734, { 11518 } },
-    { "RFC", 389, 2735, { 11519 } },
-    { "ROL", 2999, 3353, { 250483 } },
-    { "ROL", 2999, 3354, { 250657 } },
-    { "HOT", 3065, 3493, { 261306 } },
-    { "HOT", 3065, 3495, { 261316 } },
-    { "HOT", 3065, 3494, { 261311 } },
-    { "HOT", 3065, 3496, { 261319 } },
-    { "WC", 43, 585, { 3671 } },
-    { "WC", 43, 586, { 3669 } },
-    { "WC", 43, 588, { 3670 } },
-    { "WC", 43, 590, { 3673 } },
-    { "WC", 43, 591, { 5775 } },
-    { "WC", 43, 592, { 3654 } },
-    { "DM", 36, 2741, { 644 } },
-    { "DM", 36, 2742, { 642, 643 } },
-    { "DM", 36, 2743, { 1763 } },
-    { "DM", 36, 2744, { 647 } },
-    { "DM", 36, 2745, { 646 } },
-    { "DM", 36, 2746, { 645 } },
-    { "DM", 36, 2747, { 639 } },
+    { "PRIMARY", 83000, 91001, { 92001 } },
+    { "PRIMARY", 83000, 91002, { 92002, 92003 } },
+    { "SECONDARY", 83001, 91003, { 92004 } },
 }
 for _, case in ipairs(cases) do
     local key, correctInstance, encounter, npcs = unpack(case)
@@ -85,20 +69,20 @@ for _, case in ipairs(cases) do
 end
 
 -- Credit collected before a boss step is rendered remains usable afterward.
-APR.ActiveRoute, instance = "early-rfc", 389
-step = { Dungeon = "RFC", Note = "Before the boss" }
+APR.ActiveRoute, instance = "early-credit", 83000
+step = { Dungeon = "PRIMARY", Note = "Before the boss" }
 local before = refreshes
-handler(nil, "ENCOUNTER_END", 2733, "Taragaman", 1, 5, 1, {})
+handler(nil, "ENCOUNTER_END", 91001, "Invented boss", 1, 5, 1, {})
 assert(refreshes == before, "Earlier notes must not rebuild on boss credit")
-step = { Dungeon = "RFC", KillNPC = { dungeonKey = "RFC", npcID = 11520 } }
+step = { Dungeon = "PRIMARY", KillNPC = { dungeonKey = "PRIMARY", npcID = 92001 } }
 before = advanced
 APR:RenderDungeonKill(step, false)
 assert(advanced == before + 1)
 
--- Retail encounter IDs cannot be repurposed for Classic bosses in Forever.
+-- Unknown encounters cannot grant kills even with an otherwise valid payload.
 APR:ResetDungeonRun(APR.ActiveRoute)
-for _, encounter in ipairs({ 1443, 1444, 1445, 1446 }) do
-    handler(nil, "ENCOUNTER_END", encounter, "Retail boss", 1, 5, 1, {})
+for _, encounter in ipairs({ 91990, 91991, 91992 }) do
+    handler(nil, "ENCOUNTER_END", encounter, "Unknown boss", 1, 5, 1, {})
 end
-assert(not APR:GetDungeonRun(APR.ActiveRoute, "RFC"))
-print("Forever: 23 encounters across five dungeons, secret payloads, Sneed phases and client isolation passed")
+assert(not APR:GetDungeonRun(APR.ActiveRoute, "PRIMARY"))
+print("Forever: synthetic single/multiple NPC credit, secret payloads, wrong instances and unknown encounters passed")

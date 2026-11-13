@@ -96,12 +96,200 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
     },
     steps = {
         {
+            PickUp = { 356 },
+            _comment = "Quest contract: 356 Rear Guard Patrol",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 65.49, 60.25),
+            RaidIcon = { {
+                npcID = 1495,
+                questID = 356,
+            } },
+            Faction = "Horde",
+            MinLevel = 6,
+            Zone = 1420,
+            _index = 1,
+        },
+        {
+            Qpart = {
+                [356] = { 1, 2 },
+            },
+            _comment = "Quest contract: 356 Rear Guard Patrol",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 77.83, 59.47),
+            IsQuestOnQuest = 356,
+            Zone = 1420,
+            _index = 2,
+        },
+        {
+            Done = { 356 },
+            _comment = "Quest contract: 356 Rear Guard Patrol",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 65.49, 60.25),
+            RaidIcon = { {
+                npcID = 1495,
+                questID = 356,
+            } },
+            Faction = "Horde",
+            IsQuestOnQuest = 356,
+            Zone = 1420,
+            _index = 3,
+        },
+        {
+            PickUp = { 447 },
+            _comment = "Quest contract: 447 A Recipe For Death",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 42.8, 40.86),
+            RaidIcon = { {
+                npcID = 1937,
+                questID = 447,
+            } },
+            Faction = "Horde",
+            MinLevel = 9,
+            Zone = 1421,
+            _index = 4,
+        },
+        {
+            Qpart = {
+                [447] = { 1, 2 },
+            },
+            _comment = "Quest contract: 447 A Recipe For Death",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 46.33, 49.63),
+            IsQuestOnQuest = 447,
+            Zone = 1421,
+            _index = 5,
+        },
+        {
+            Done = { 447 },
+            _comment = "Quest contract: 447 A Recipe For Death",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 48.82, 69.28),
+            RaidIcon = { {
+                npcID = 2055,
+                questID = 447,
+            } },
+            Faction = "Horde",
+            IsQuestOnQuest = 447,
+            Zone = 1458,
+            _index = 6,
+        },
+        {
+            PickUp = { 450 },
+            _comment = "Quest contract: 450 A Recipe For Death",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 48.82, 69.28),
+            RaidIcon = { {
+                npcID = 2055,
+                questID = 450,
+            } },
+            AnyOf = { {
+                IsQuestCompleted = 447,
+            } },
+            Faction = "Horde",
+            MinLevel = 9,
+            Zone = 1458,
+            _index = 7,
+        },
+        {
+            Qpart = {
+                [450] = { 1 },
+            },
+            _comment = "Quest contract: 450 A Recipe For Death",
+            NoArrow = true,
+            IsQuestOnQuest = 450,
+            _index = 8,
+        },
+        {
+            Done = { 450 },
+            _comment = "Quest contract: 450 A Recipe For Death",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 42.8, 40.86),
+            RaidIcon = { {
+                npcID = 1937,
+                questID = 450,
+            } },
+            Faction = "Horde",
+            IsQuestOnQuest = 450,
+            Zone = 1421,
+            _index = 9,
+        },
+        {
+            PickUp = { 451 },
+            _comment = "Quest contract: 451 A Recipe For Death",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 42.8, 40.86),
+            RaidIcon = { {
+                npcID = 1937,
+                questID = 451,
+            } },
+            AnyOf = { {
+                IsQuestCompleted = 450,
+            } },
+            Faction = "Horde",
+            MinLevel = 9,
+            Zone = 1421,
+            _index = 10,
+        },
+        {
+            Qpart = {
+                [451] = { 1, 2, 3 },
+            },
+            _comment = "Quest contract: 451 A Recipe For Death",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 70, 33.56),
+            IsQuestOnQuest = 451,
+            Zone = 1421,
+            _index = 11,
+        },
+        {
+            Done = { 451 },
+            _comment = "Quest contract: 451 A Recipe For Death",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 48.82, 69.28),
+            RaidIcon = { {
+                npcID = 2055,
+                questID = 451,
+            } },
+            Faction = "Horde",
+            IsQuestOnQuest = 451,
+            Zone = 1458,
+            _index = 12,
+        },
+        {
+            PickUp = { 99156 },
+            _comment = "Quest contract: 99156 Rear Guard Patrol",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 65.49, 60.25),
+            RaidIcon = { {
+                npcID = 1495,
+                questID = 99156,
+            } },
+            AnyOf = { {
+                IsQuestCompleted = 356,
+            } },
+            Faction = "Horde",
+            MinLevel = 6,
+            Zone = 1420,
+            _index = 13,
+        },
+        {
+            Qpart = {
+                [99156] = { 1 },
+            },
+            _comment = "Quest contract: 99156 Rear Guard Patrol",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 80.31, 45.52),
+            IsQuestOnQuest = 99156,
+            Zone = 1420,
+            _index = 14,
+        },
+        {
+            Done = { 99156 },
+            _comment = "Quest contract: 99156 Rear Guard Patrol",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 65.49, 60.25),
+            RaidIcon = { {
+                npcID = 1495,
+                questID = 99156,
+            } },
+            Faction = "Horde",
+            IsQuestOnQuest = 99156,
+            Zone = 1420,
+            _index = 15,
+        },
+        {
             PickUp = { 92401 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 44.52, 43.02),
             Faction = "Horde",
             MinLevel = 15,
             Zone = 1421,
-            _index = 1,
+            _index = 16,
         },
         {
             PickUp = { 92422 },
@@ -109,7 +297,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             Faction = "Horde",
             MinLevel = 15,
             Zone = 1420,
-            _index = 2,
+            _index = 17,
         },
         {
             PickUp = { 95216 },
@@ -117,7 +305,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             Faction = "Horde",
             MinLevel = 16,
             Zone = 1458,
-            _index = 3,
+            _index = 18,
         },
         {
             PickUp = { 92421 },
@@ -125,7 +313,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             Faction = "Horde",
             MinLevel = 15,
             Zone = 1458,
-            _index = 4,
+            _index = 19,
         },
         {
             Waypoint = 95250,
@@ -134,7 +322,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             Range = 20,
             Faction = "Alliance",
             Zone = 1458,
-            _index = 5,
+            _index = 20,
         },
         {
             EnterInstance = { dungeonKey = "ROL" },
@@ -142,7 +330,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             Dungeon = "ROL",
             InstanceQuest = true,
             Zone = 1458,
-            _index = 6,
+            _index = 21,
         },
         {
             PickUp = { 95250 },
@@ -151,7 +339,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             InstanceQuest = true,
             Faction = "Alliance",
             MinLevel = 16,
-            _index = 7,
+            _index = 22,
         },
         {
             KillNPC = { dungeonKey = "ROL", name = "Witherfang", npcID = 250483 },
@@ -159,7 +347,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             NoArrow = true,
             Dungeon = "ROL",
             InstanceQuest = true,
-            _index = 8,
+            _index = 23,
         },
         {
             Qpart = { [95216] = { 1 } },
@@ -170,7 +358,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             RaidIcon = { { npcID = 250483, questID = 95216, objectiveIndex = 1 } },
             Faction = "Horde",
             IsQuestOnQuest = 95216,
-            _index = 9,
+            _index = 24,
         },
         {
             KillNPC = { dungeonKey = "ROL", name = "The Baron", npcID = 250660 },
@@ -179,7 +367,40 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             NoArrow = true,
             Dungeon = "ROL",
             InstanceQuest = true,
-            _index = 10,
+            _index = 25,
+        },
+        {
+            KillNPC = {
+                dungeonKey = "ROL",
+                npcID = 256035,
+                name = "Viktor the Vile",
+            },
+            NoArrow = true,
+            Dungeon = "ROL",
+            InstanceQuest = true,
+            _index = 26,
+        },
+        {
+            KillNPC = {
+                dungeonKey = "ROL",
+                npcID = 250631,
+                name = "The Abandoned",
+            },
+            NoArrow = true,
+            Dungeon = "ROL",
+            InstanceQuest = true,
+            _index = 27,
+        },
+        {
+            KillNPC = {
+                dungeonKey = "ROL",
+                npcID = 256097,
+                name = "Bjork",
+            },
+            NoArrow = true,
+            Dungeon = "ROL",
+            InstanceQuest = true,
+            _index = 28,
         },
         {
             KillNPC = { dungeonKey = "ROL", name = "Rath'mael", npcID = 250657 },
@@ -187,7 +408,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             NoArrow = true,
             Dungeon = "ROL",
             InstanceQuest = true,
-            _index = 11,
+            _index = 29,
         },
         {
             Qpart = { [92422] = { 1 } },
@@ -198,7 +419,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             RaidIcon = { { npcID = 250842 } },
             Faction = "Horde",
             IsQuestOnQuest = 92422,
-            _index = 12,
+            _index = 30,
         },
         {
             Qpart = { [92401] = { 1 } },
@@ -209,7 +430,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             RaidIcon = { { npcID = 250842, questID = 92401, objectiveIndex = 1 } },
             Faction = "Horde",
             IsQuestOnQuest = 92401,
-            _index = 13,
+            _index = 31,
         },
         {
             Qpart = { [92421] = { 1 } },
@@ -219,7 +440,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             RaidIcon = { { npcID = 255964, questID = 92421, objectiveIndex = 1 } },
             Faction = "Horde",
             IsQuestOnQuest = 92421,
-            _index = 14,
+            _index = 32,
         },
         {
             Qpart = { [95250] = { 1 } },
@@ -228,7 +449,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             InstanceQuest = true,
             Faction = "Alliance",
             IsQuestOnQuest = 95250,
-            _index = 15,
+            _index = 33,
         },
         {
             Qpart = { [95195] = { 1 } },
@@ -239,7 +460,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             InstanceQuest = true,
             Faction = "Alliance",
             IsQuestOnQuest = 95195,
-            _index = 16,
+            _index = 34,
         },
         {
             Done = { 95250 },
@@ -249,14 +470,14 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             InstanceQuest = true,
             Faction = "Alliance",
             IsQuestOnQuest = 95250,
-            _index = 17,
+            _index = 35,
         },
         {
             LeaveInstance = { dungeonKey = "ROL" },
             NoArrow = true,
             Dungeon = "ROL",
             InstanceQuest = true,
-            _index = 18,
+            _index = 36,
         },
         {
             Done = { 92422 },
@@ -264,7 +485,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             Faction = "Horde",
             IsQuestOnQuest = 92422,
             Zone = 1420,
-            _index = 19,
+            _index = 37,
         },
         {
             Done = { 95204 },
@@ -272,7 +493,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             Faction = "Horde",
             IsQuestOnQuest = 95204,
             Zone = 1458,
-            _index = 20,
+            _index = 38,
         },
         {
             Done = { 95216 },
@@ -280,7 +501,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             Faction = "Horde",
             IsQuestOnQuest = 95216,
             Zone = 1458,
-            _index = 21,
+            _index = 39,
         },
         {
             Done = { 97288 },
@@ -288,7 +509,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             Faction = "Horde",
             IsQuestOnQuest = 97288,
             Zone = 1458,
-            _index = 22,
+            _index = 40,
         },
         {
             Done = { 92421 },
@@ -296,7 +517,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             Faction = "Horde",
             IsQuestOnQuest = 92421,
             Zone = 1458,
-            _index = 23,
+            _index = 41,
         },
         {
             Done = { 92401 },
@@ -304,7 +525,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             Faction = "Horde",
             IsQuestOnQuest = 92401,
             Zone = 1421,
-            _index = 24,
+            _index = 42,
         },
         {
             Done = { 92415 },
@@ -312,13 +533,13 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 92415,
             Zone = 1453,
-            _index = 25,
+            _index = 43,
         },
         {
             Qpart = { [95189] = { 1 } },
             Faction = "Alliance",
             IsQuestOnQuest = 95189,
-            _index = 26,
+            _index = 44,
         },
         {
             Waypoint = 95189,
@@ -327,7 +548,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 95189,
             Zone = 1453,
-            _index = 27,
+            _index = 45,
         },
         {
             Waypoint = 95189,
@@ -336,7 +557,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 95189,
             Zone = 1453,
-            _index = 28,
+            _index = 46,
         },
         {
             Waypoint = 95189,
@@ -345,7 +566,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 95189,
             Zone = 1453,
-            _index = 29,
+            _index = 47,
         },
         {
             Done = { 95189 },
@@ -354,13 +575,13 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 95189,
             Zone = 1453,
-            _index = 30,
+            _index = 48,
         },
         {
             Qpart = { [95195] = { 1 } },
             Faction = "Alliance",
             IsQuestOnQuest = 95195,
-            _index = 31,
+            _index = 49,
         },
         {
             Done = { 95195 },
@@ -368,11 +589,49 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             Faction = "Alliance",
             IsQuestOnQuest = 95195,
             Zone = 1453,
-            _index = 32,
+            _index = 50,
+        },
+        {
+            PickUp = { 95161 },
+            _comment = "Quest contract: 95161 Remember That I Love You",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 56.31, 53.99),
+            RaidIcon = { {
+                npcID = 14450,
+                questID = 95161,
+            } },
+            AnyOf = { {
+                IsQuestCompleted = 92415,
+            } },
+            Faction = "Alliance",
+            MinLevel = 15,
+            Zone = 1453,
+            _index = 51,
+        },
+        {
+            Qpart = {
+                [95161] = { 1 },
+            },
+            _comment = "Quest contract: 95161 Remember That I Love You",
+            NoArrow = true,
+            IsQuestOnQuest = 95161,
+            _index = 52,
+        },
+        {
+            Done = { 95161 },
+            _comment = "Quest contract: 95161 Remember That I Love You",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1431, 73.03, 44.42),
+            RaidIcon = { {
+                npcID = 228,
+                questID = 95161,
+            } },
+            Faction = "Alliance",
+            IsQuestOnQuest = 95161,
+            Zone = 1431,
+            _index = 53,
         },
         {
             RouteCompleted = true,
-            _index = 33,
+            _index = 54,
         },
     },
 }

@@ -16,12 +16,87 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
     },
     steps = {
         {
+            PickUp = { 5726 },
+            _comment = "Quest contract: 5726 Hidden Enemies",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.73, 37.82),
+            RaidIcon = { {
+                npcID = 4949,
+                questID = 5726,
+            } },
+            Faction = "Horde",
+            MinLevel = 9,
+            Zone = 1454,
+            _index = 1,
+        },
+        {
+            Qpart = {
+                [5726] = { 1 },
+            },
+            _comment = "Quest contract: 5726 Hidden Enemies",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1411, 51.61, 10.15),
+            IsQuestOnQuest = 5726,
+            Zone = 1411,
+            _index = 2,
+        },
+        {
+            Done = { 5726 },
+            _comment = "Quest contract: 5726 Hidden Enemies",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.73, 37.82),
+            RaidIcon = { {
+                npcID = 4949,
+                questID = 5726,
+            } },
+            Faction = "Horde",
+            IsQuestOnQuest = 5726,
+            Zone = 1454,
+            _index = 3,
+        },
+        {
+            PickUp = { 5727 },
+            _comment = "Quest contract: 5727 Hidden Enemies",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.73, 37.82),
+            RaidIcon = { {
+                npcID = 4949,
+                questID = 5727,
+            } },
+            AnyOf = { {
+                IsQuestCompleted = 5726,
+            } },
+            Faction = "Horde",
+            MinLevel = 9,
+            Zone = 1454,
+            _index = 4,
+        },
+        {
+            Qpart = {
+                [5727] = { 1 },
+            },
+            _comment = "Quest contract: 5727 Hidden Enemies",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 49.47, 50.59),
+            IsQuestOnQuest = 5727,
+            Zone = 1454,
+            _index = 5,
+        },
+        {
+            Done = { 5727 },
+            _comment = "Quest contract: 5727 Hidden Enemies",
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 31.73, 37.82),
+            RaidIcon = { {
+                npcID = 4949,
+                questID = 5727,
+            } },
+            Faction = "Horde",
+            IsQuestOnQuest = 5727,
+            Zone = 1454,
+            _index = 6,
+        },
+        {
             PickUp = { 5722 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 70.14, 29.52),
             Faction = "Horde",
             MinLevel = 9,
             Zone = 1456,
-            _index = 1,
+            _index = 7,
         },
         {
             PickUp = { 5723 },
@@ -29,7 +104,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             Faction = "Horde",
             MinLevel = 9,
             Zone = 1456,
-            _index = 2,
+            _index = 8,
         },
         {
             PickUp = { 5725 },
@@ -37,7 +112,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             Faction = "Horde",
             MinLevel = 9,
             Zone = 1458,
-            _index = 3,
+            _index = 9,
         },
         {
             PickUp = { 5761 },
@@ -45,7 +120,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             Faction = "Horde",
             MinLevel = 9,
             Zone = 1454,
-            _index = 4,
+            _index = 10,
         },
         {
             PickUp = { 5728 },
@@ -54,7 +129,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             IsQuestCompleted = 5727,
             MinLevel = 9,
             Zone = 1454,
-            _index = 5,
+            _index = 11,
         },
         {
             EnterInstance = { dungeonKey = "RFC" },
@@ -62,7 +137,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             Dungeon = "RFC",
             InstanceQuest = true,
             Zone = 1454,
-            _index = 6,
+            _index = 12,
         },
         {
             Done = { 5722 },
@@ -72,7 +147,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             InstanceQuest = true,
             Faction = "Horde",
             IsQuestOnQuest = 5722,
-            _index = 7,
+            _index = 13,
         },
         {
             PickUp = { 5724 },
@@ -82,7 +157,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             Faction = "Horde",
             IsQuestCompleted = 5722,
             MinLevel = 9,
-            _index = 8,
+            _index = 14,
         },
         {
             Qpart = { [5723] = { 1 } },
@@ -91,7 +166,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             InstanceQuest = true,
             Faction = "Horde",
             IsQuestOnQuest = 5723,
-            _index = 9,
+            _index = 15,
         },
         {
             Qpart = { [5723] = { 2 } },
@@ -100,7 +175,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             InstanceQuest = true,
             Faction = "Horde",
             IsQuestOnQuest = 5723,
-            _index = 10,
+            _index = 16,
         },
         {
             KillNPC = { dungeonKey = "RFC", name = "Oggleflint", npcID = 11517 },
@@ -108,7 +183,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             NoArrow = true,
             Dungeon = "RFC",
             InstanceQuest = true,
-            _index = 11,
+            _index = 17,
         },
         {
             KillNPC = { dungeonKey = "RFC", name = "Taragaman the Hungerer", npcID = 11520 },
@@ -116,7 +191,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             NoArrow = true,
             Dungeon = "RFC",
             InstanceQuest = true,
-            _index = 12,
+            _index = 18,
         },
         {
             Qpart = { [5761] = { 1 } },
@@ -126,7 +201,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             InstanceQuest = true,
             Faction = "Horde",
             IsQuestOnQuest = 5761,
-            _index = 13,
+            _index = 19,
         },
         {
             KillNPC = { dungeonKey = "RFC", name = "Jergosh the Invoker", npcID = 11518 },
@@ -134,7 +209,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             NoArrow = true,
             Dungeon = "RFC",
             InstanceQuest = true,
-            _index = 14,
+            _index = 20,
         },
         {
             KillNPC = { dungeonKey = "RFC", name = "Bazzalan", npcID = 11519 },
@@ -142,7 +217,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             NoArrow = true,
             Dungeon = "RFC",
             InstanceQuest = true,
-            _index = 15,
+            _index = 21,
         },
         {
             Qpart = { [5728] = { 1 } },
@@ -152,7 +227,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             InstanceQuest = true,
             Faction = "Horde",
             IsQuestOnQuest = 5728,
-            _index = 16,
+            _index = 22,
         },
         {
             Qpart = { [5728] = { 2 } },
@@ -162,7 +237,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             InstanceQuest = true,
             Faction = "Horde",
             IsQuestOnQuest = 5728,
-            _index = 17,
+            _index = 23,
         },
         {
             Qpart = { [5725] = { 1 } },
@@ -171,7 +246,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             InstanceQuest = true,
             Faction = "Horde",
             IsQuestOnQuest = 5725,
-            _index = 18,
+            _index = 24,
         },
         {
             Qpart = { [5725] = { 2 } },
@@ -180,14 +255,14 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             InstanceQuest = true,
             Faction = "Horde",
             IsQuestOnQuest = 5725,
-            _index = 19,
+            _index = 25,
         },
         {
             LeaveInstance = { dungeonKey = "RFC" },
             NoArrow = true,
             Dungeon = "RFC",
             InstanceQuest = true,
-            _index = 20,
+            _index = 26,
         },
         {
             Done = { 5761 },
@@ -195,7 +270,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             Faction = "Horde",
             IsQuestOnQuest = 5761,
             Zone = 1454,
-            _index = 21,
+            _index = 27,
         },
         {
             Done = { 5728 },
@@ -203,7 +278,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             Faction = "Horde",
             IsQuestOnQuest = 5728,
             Zone = 1454,
-            _index = 22,
+            _index = 28,
         },
         {
             PickUp = { 5729 },
@@ -212,7 +287,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             IsQuestCompleted = 5728,
             MinLevel = 9,
             Zone = 1454,
-            _index = 23,
+            _index = 29,
         },
         {
             Done = { 5729 },
@@ -220,7 +295,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             Faction = "Horde",
             IsQuestOnQuest = 5729,
             Zone = 1454,
-            _index = 24,
+            _index = 30,
         },
         {
             PickUp = { 5730 },
@@ -229,7 +304,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             IsQuestCompleted = 5729,
             MinLevel = 9,
             Zone = 1454,
-            _index = 25,
+            _index = 31,
         },
         {
             Done = { 5730 },
@@ -237,7 +312,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             Faction = "Horde",
             IsQuestOnQuest = 5730,
             Zone = 1454,
-            _index = 26,
+            _index = 32,
         },
         {
             Done = { 5725 },
@@ -245,7 +320,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             Faction = "Horde",
             IsQuestOnQuest = 5725,
             Zone = 1458,
-            _index = 27,
+            _index = 33,
         },
         {
             Done = { 5723 },
@@ -253,7 +328,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             Faction = "Horde",
             IsQuestOnQuest = 5723,
             Zone = 1456,
-            _index = 28,
+            _index = 34,
         },
         {
             Done = { 5724 },
@@ -261,11 +336,11 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             Faction = "Horde",
             IsQuestOnQuest = 5724,
             Zone = 1456,
-            _index = 29,
+            _index = 35,
         },
         {
             RouteCompleted = true,
-            _index = 30,
+            _index = 36,
         },
     },
 }
