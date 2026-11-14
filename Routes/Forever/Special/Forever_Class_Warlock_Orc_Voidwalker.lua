@@ -299,8 +299,6 @@ APR.RouteQuestStepList["Forever-Class-Warlock-Orc-Voidwalker"] = {
         },
         {
             RouteCompleted = true,
-            AllOf = { { Faction = "Horde", Class = APR.Classes.Warlock, Race = APR.RACES.Orc, MinLevel = 10 } },
-            IsQuestCompleted = 1504,
         },
     },
 }

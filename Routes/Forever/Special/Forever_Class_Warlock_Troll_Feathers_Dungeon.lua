@@ -27,6 +27,6 @@ APR.RouteQuestStepList["Forever-Class-Warlock-Troll-Feathers-Dungeon"] = {
         { Qpart = { [8422] = { 3 } }, GroupTask = 8422, NoArrow = true, Dungeon = "INSTANCE_109", InstanceQuest = true, RaidIcon = { { npcID = 5712, questID = 8422, objectiveIndex = 3 }, { npcID = 5714, questID = 8422, objectiveIndex = 3 } }, AllOf = { audience, { IsQuestUncompleted = 8422 }, { IsQuestOnQuest = 8422, IsQuestUncompleted = 8422 } }, MinLevel = 50, _index = 14 },
         { LeaveInstance = { dungeonKey = "INSTANCE_109", questID = 8422 }, NoArrow = true, Dungeon = "INSTANCE_109", InstanceQuest = true, AllOf = { audience, { IsQuestUncompleted = 8422 }, { IsQuestOnQuest = 8422, IsQuestUncompleted = 8422, IsQuestReadyForTurnIn = 8422 } }, MinLevel = 50, _index = 15 },
         { Done = { 8422 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 41.36, 45.02), Range = 5, RaidIcon = { { npcID = 14470, questID = 8422 } }, AllOf = { audience, { IsQuestUncompleted = 8422 }, { IsQuestOnQuest = 8422, IsQuestUncompleted = 8422 } }, MinLevel = 50, Zone = 1448, _index = 16 },
-        { RouteCompleted = true, AllOf = { audience, { IsQuestCompleted = 8422 } }, MinLevel = 50, _index = 17 },
+        { RouteCompleted = true, _index = 17 },
     },
 }

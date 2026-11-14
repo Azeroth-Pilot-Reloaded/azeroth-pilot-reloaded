@@ -59,9 +59,8 @@ APR.RouteQuestStepList["Forever-Alliance-Class-Rogue-Onin-Report"] = {
             Zone = 1455, _index = 6,
         },
         {
-            RouteCompleted = true, Class = "ROGUE",
-            Faction = "Alliance",
-            IsQuestCompleted = 2239, MinLevel = 10, Race = { "Dwarf", "Gnome", "Human", "NightElf", "Skyborne" }, _index = 7,
+            RouteCompleted = true, 
+   _index = 7,
         },
     },
 }

@@ -19,6 +19,6 @@ APR.RouteQuestStepList["Forever-Class-Warlock-Infernal-Essences"] = {
         { Qpart = { [7602] = { 1 } }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 52.03, 18.65), RaidIcon = { { npcID = 6200, questID = 7602, objectiveIndex = 1 }, { npcID = 6201, questID = 7602, objectiveIndex = 1 }, { npcID = 6202, questID = 7602, objectiveIndex = 1 } }, AllOf = { audience, { IsQuestUncompleted = 7602 }, { IsQuestOnQuest = 7602, IsQuestUncompleted = 7602 } }, MinLevel = 50, Zone = 1447, _index = 6 },
         { Qpart = { [7602] = { 3 } }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1419, 61.32, 54.18), RaidIcon = { { npcID = 6011, questID = 7602, objectiveIndex = 3 } }, AllOf = { audience, { IsQuestUncompleted = 7602 }, { IsQuestOnQuest = 7602, IsQuestUncompleted = 7602 } }, MinLevel = 50, Zone = 1419, _index = 7 },
         { Done = { 7602 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 41.36, 45.02), Range = 5, RaidIcon = { { npcID = 14470, questID = 7602 } }, AllOf = { audience, { IsQuestUncompleted = 7602 }, { IsQuestOnQuest = 7602, IsQuestUncompleted = 7602 } }, MinLevel = 50, Zone = 1448, _index = 8 },
-        { RouteCompleted = true, AllOf = { audience, { IsQuestCompleted = 7602 } }, MinLevel = 50, _index = 9 },
+        { RouteCompleted = true, _index = 9 },
     },
 }

@@ -22,6 +22,6 @@ APR.RouteQuestStepList["Forever-Class-Warlock-Dreadsteed-Ritual"] = {
         { UseItem = { itemID = 18670 }, Note = { "DREADSTEED_RITUAL_DEFENSE" }, NoArrow = true, Dungeon = "INSTANCE_429", AllOf = { audience, { IsQuestOnQuest = 7631, IsQuestUncompleted = 7631, Not = { IsQuestReadyForTurnIn = 7631 }, ItemCount = { itemID = 18670, count = 1, operator = ">=" } } }, _index = 9 },
         { Qpart = { [7631] = { 1 } }, Note = { "DREADSTEED_RITUAL_COMPLETION" }, NoArrow = true, Dungeon = "INSTANCE_429", RaidIcon = { { npcID = 14502, questID = 7631, objectiveIndex = 1 }, { npcID = 14506, questID = 7631, objectiveIndex = 1 } }, AllOf = { audience, { IsQuestOnQuest = 7631, IsQuestUncompleted = 7631, Not = { IsQuestReadyForTurnIn = 7631 } } }, _index = 10 },
         { Done = { 7631 }, Range = 3, NoArrow = true, Dungeon = "INSTANCE_429", RaidIcon = { { npcID = 14504, questID = 7631 } }, AllOf = { audience, { IsQuestOnQuest = 7631, IsQuestUncompleted = 7631 } }, _index = 11 },
-        { RouteCompleted = true, AllOf = { audience, { IsQuestCompleted = 7631 } }, _index = 12 },
+        { RouteCompleted = true, _index = 12 },
     },
 }

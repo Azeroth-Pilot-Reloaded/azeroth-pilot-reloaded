@@ -133,6 +133,16 @@ An action waits for completion; a failed step condition skips the step. Use one 
 | `Achievement` legacy criterion                             | `Achievement = { achievementID = 61576, criteriaIndex = 1 }` tracks by position; prefer a stable `criteriaID`.                                                                                                                                                                                                                                     |
 | `LootMoney`                                                | Use it as the main objective. `Money` checks spendable cash; it is not a replacement for this collection objective.                                                                                                                                                                                                                                |
 
+### Ordinary route completion
+
+End an ordinary route with an unconditional `RouteCompleted = true` marker.
+Keep character, quest, inventory and level filters on the instructions they
+select, rather than repeating them on this final marker. If every final marker
+is skipped, reaching the end of the array alone does not record completion or
+remove the route from the queued path. Conditional early completion shortcuts
+are valid when an unconditional final marker still covers the remaining path.
+Scenario blocks and temporary routes retain their own parent/return lifecycle.
+
 ### Skill rank goals
 
 `SkillGoal = { skillID = 8888, rank = 25 }` is a primary step action on Retail

@@ -20,6 +20,6 @@ APR.RouteQuestStepList["Forever-Horde-Mage-Nether-Lace-Garment"] = {
         { Done = { 1945 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 52.2, 31.7), Range = 5, RaidIcon = { { npcID = 3484, questID = 1945 } }, AllOf = { { Faction = "Horde", Class = "MAGE", Race = { "Scourge", "Troll" }, MinLevel = 26, IsQuestUncompleted = 1946 } }, IsQuestOnQuest = 1945, Zone = 1413 },
         { PickUp = { 1946 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 52.2, 31.7), Range = 5, RaidIcon = { { npcID = 3484, questID = 1946 } }, AllOf = { { Faction = "Horde", Class = "MAGE", Race = { "Scourge", "Troll" }, MinLevel = 26, IsQuestUncompleted = 1946 } }, IsQuestCompleted = 1945, IsQuestNotOnQuest = 1946, Zone = 1413 },
         { Done = { 1946 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 52.2, 31.7), Range = 5, RaidIcon = { { npcID = 3484, questID = 1946 } }, AllOf = { { Faction = "Horde", Class = "MAGE", Race = { "Scourge", "Troll" }, MinLevel = 26, IsQuestUncompleted = 1946 } }, IsQuestOnQuest = 1946, Zone = 1413 },
-        { RouteCompleted = true, AllOf = { { Faction = "Horde", Class = "MAGE", Race = { "Scourge", "Troll" }, MinLevel = 26, IsQuestCompleted = 1946 } } },
+        { RouteCompleted = true,  },
     },
 }

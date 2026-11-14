@@ -282,6 +282,6 @@ APR.RouteQuestStepList["Forever-Horde-City-of-Dalaran-Key"] = {
             Zone = 1421,
             _index = 27,
         },
-        { RouteCompleted = true, ItemCount = { itemID = 277507, count = 1, includeBank = false }, _index = 28 },
+        { RouteCompleted = true, _index = 28 },
     },
 }

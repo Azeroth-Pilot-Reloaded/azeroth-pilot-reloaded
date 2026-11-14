@@ -23,6 +23,6 @@ APR.RouteQuestStepList["Forever-Horde-Class-Shaman-Elemental-Preparation"] = {
         { Qpart = { [8412] = { 1 } }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 46.41, 59.88), RaidIcon = { { npcID = 1821, questID = 8412, objectiveIndex = 1 } }, AllOf = { audience, { IsQuestUncompleted = 8412 }, { IsQuestOnQuest = 8412, IsQuestUncompleted = 8412, Not = { IsQuestReadyForTurnIn = 8412 } } }, MinLevel = 50, Zone = 1422, _index = 10 },
         { Qpart = { [8412] = { 2 } }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 34.22, 62.1), RaidIcon = { { npcID = 1815, questID = 8412, objectiveIndex = 2 } }, AllOf = { audience, { IsQuestUncompleted = 8412 }, { IsQuestOnQuest = 8412, IsQuestUncompleted = 8412, Not = { IsQuestReadyForTurnIn = 8412 } } }, MinLevel = 50, Zone = 1422, _index = 11 },
         { Done = { 8412 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1416, 80.5, 66.92), Range = 5, RaidIcon = { { npcID = 6176, questID = 8412 } }, AllOf = { audience, { IsQuestUncompleted = 8412 }, { IsQuestOnQuest = 8412, IsQuestUncompleted = 8412 } }, MinLevel = 50, Zone = 1416, _index = 12 },
-        { RouteCompleted = true, AllOf = { audience, { IsQuestCompleted = 8412 } }, MinLevel = 50, _index = 13 },
+        { RouteCompleted = true, _index = 13 },
     },
 }

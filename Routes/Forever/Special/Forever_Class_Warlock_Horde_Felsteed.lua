@@ -67,15 +67,6 @@ APR.RouteQuestStepList["Forever-Class-Warlock-Horde-Felsteed"] = {
         },
         {
             RouteCompleted = true,
-            AllOf = {
-                {
-                    Faction = "Horde",
-                    Class = APR.Classes.Warlock,
-                    Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Troll },
-                    MinLevel = 40,
-                },
-            },
-            IsQuestCompleted = 4490,
         },
     },
 }

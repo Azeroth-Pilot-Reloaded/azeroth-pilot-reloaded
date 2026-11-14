@@ -54,6 +54,6 @@ APR.RouteQuestStepList["Forever-Alliance-City-of-Dalaran-Key"] = {
             Zone = 1421,
             _index = 5,
         },
-        { RouteCompleted = true, ItemCount = { itemID = 277507, count = 1, includeBank = false }, _index = 6 },
+        { RouteCompleted = true, _index = 6 },
     },
 }

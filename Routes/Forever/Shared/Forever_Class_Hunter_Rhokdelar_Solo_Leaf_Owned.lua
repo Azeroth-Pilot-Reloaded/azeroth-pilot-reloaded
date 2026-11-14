@@ -385,22 +385,6 @@ APR.RouteQuestStepList["Forever-Class-Hunter-Rhokdelar-Solo-Leaf-Owned"] = {
         },
         {
             RouteCompleted = true,
-            AllOf = {
-                [1] = {
-                    AnyOf = {
-                        { ItemCount = { itemID = 18703, count = 1, includeBank = false } },
-                        { IsQuestOnQuest = 7632 },
-                        { IsQuestCompleted = 7632 }
-                    }
-                }
-            },
-            AnyOf = {
-                [1] = { Faction = "Alliance", Race = { [1] = "Dwarf", [2] = "Human", [4] = "Skyborne", [3] = "NightElf" } },
-                [2] = { Faction = "Horde", Race = { [1] = "Orc", [2] = "Skyborne", [4] = "Troll", [3] = "Tauren" } }
-            },
-            Class = "HUNTER",
-            IsQuestCompleted = 7636,
-            MinLevel = 60,
             _index = 10
         }
     }

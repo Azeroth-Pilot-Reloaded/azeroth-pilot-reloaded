@@ -53,9 +53,8 @@ APR.RouteQuestStepList["Forever-Alliance-Class-Rogue-Zanzil-Diagnosis"] = {
             Zone = 1453, _index = 5,
         },
         {
-            RouteCompleted = true, Class = "ROGUE",
-            Faction = "Alliance",
-            IsQuestCompleted = 2608, MinLevel = 20, Race = { "Dwarf", "Gnome", "Human", "NightElf", "Skyborne" }, _index = 6,
+            RouteCompleted = true, 
+   _index = 6,
         },
     },
 }

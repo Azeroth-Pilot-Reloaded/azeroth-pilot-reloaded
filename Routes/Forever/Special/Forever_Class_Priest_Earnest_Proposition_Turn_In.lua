@@ -50,7 +50,6 @@ APR.RouteQuestStepList["Forever-Class-Priest-Earnest-Proposition-Turn-In"] = {
         },
         {
             RouteCompleted = true,
-            AllOf = { { Faction = "Horde", Class = "PRIEST", Race = { "Scourge", "Troll" }, MinLevel = 58 } },
         },
     },
 }

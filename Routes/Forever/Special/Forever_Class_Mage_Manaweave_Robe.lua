@@ -27,6 +27,6 @@ APR.RouteQuestStepList["Forever-Alliance-Class-Mage-Manaweave-Robe"] = {
         { Done = { 1921 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 51.84, 83.51), Range = 5, RaidIcon = { { npcID = 1309, questID = 1921 } }, AllOf = { { Faction = "Alliance", Class = "MAGE", Race = { "Human", "Gnome" }, MinLevel = 15 }, { IsQuestUncompleted = 1941 } }, IsQuestOnQuest = 1921, IsQuestUncompleted = 1921, Zone = 1453, },
         { PickUp = { 1941 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 51.84, 83.51), Range = 5, RaidIcon = { { npcID = 1309, questID = 1941 } }, AllOf = { { Faction = "Alliance", Class = "MAGE", Race = { "Human", "Gnome" }, MinLevel = 15 }, { IsQuestUncompleted = 1941 } }, IsQuestCompleted = 1921, IsQuestNotOnQuest = 1941, IsQuestUncompleted = 1941, Zone = 1453, },
         { Done = { 1941 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 51.84, 83.51), Range = 5, RaidIcon = { { npcID = 1309, questID = 1941 } }, AllOf = { { Faction = "Alliance", Class = "MAGE", Race = { "Human", "Gnome" }, MinLevel = 15 }, { IsQuestUncompleted = 1941 } }, IsQuestOnQuest = 1941, IsQuestUncompleted = 1941, Zone = 1453, },
-        { RouteCompleted = true, AllOf = { { Faction = "Alliance", Class = "MAGE", Race = { "Human", "Gnome" }, MinLevel = 15 } }, IsQuestCompleted = 1941, },
+        { RouteCompleted = true,   },
     },
 }

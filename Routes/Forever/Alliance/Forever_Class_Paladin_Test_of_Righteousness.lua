@@ -41,6 +41,6 @@ APR.RouteQuestStepList["Forever-Class-Paladin-Test-of-Righteousness"] = {
         { Done = { 1654 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 52.48, 36.92), Range = 5, RaidIcon = { { npcID = 6181, questID = 1654 } }, AllOf = { audience, { IsQuestOnQuest = 1654 } }, MinLevel = 20, Zone = 1426, _index = 28, },
         { PickUp = { 1806 }, ExtraLineText = { "WAIT_FOR_NPC_END_RP" }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 52.48, 36.92), Range = 5, RaidIcon = { { npcID = 6181, questID = 1806 } }, AllOf = { audience, { IsQuestNotOnQuest = 1806, IsQuestUncompleted = 1806, IsQuestCompleted = 1654 } }, MinLevel = 20, Zone = 1426, _index = 29, },
         { Done = { 1806 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 52.48, 36.92), Range = 5, RaidIcon = { { npcID = 6181, questID = 1806 } }, AllOf = { audience, { IsQuestOnQuest = 1806 } }, MinLevel = 20, Zone = 1426, _index = 30, },
-        { RouteCompleted = true, AllOf = { audience, { IsQuestCompleted = 1806 } }, MinLevel = 20, _index = 31, },
+        { RouteCompleted = true, _index = 31, },
     },
 }

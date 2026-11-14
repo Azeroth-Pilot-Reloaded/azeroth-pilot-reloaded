@@ -27,6 +27,6 @@ APR.RouteQuestStepList["Forever-Class-Paladin-Mightstone"] = {
         { Qpart = { [8418] = { 3 } }, GroupTask = 8418, NoArrow = true, Dungeon = "INSTANCE_109", InstanceQuest = true, RaidIcon = { { npcID = 5712, questID = 8418, objectiveIndex = 3 }, { npcID = 5714, questID = 8418, objectiveIndex = 3 } }, AllOf = { audience, { IsQuestOnQuest = 8418 } }, MinLevel = 50, _index = 14, },
         { LeaveInstance = { dungeonKey = "INSTANCE_109", questID = 8418 }, NoArrow = true, Dungeon = "INSTANCE_109", InstanceQuest = true, AllOf = { audience, { IsQuestOnQuest = 8418 }, { IsQuestReadyForTurnIn = 8418 } }, MinLevel = 50, _index = 15, },
         { Done = { 8418 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 42.7, 84.03), Range = 5, RaidIcon = { { npcID = 10838, questID = 8418 } }, AllOf = { audience, { IsQuestOnQuest = 8418 } }, MinLevel = 50, Zone = 1422, _index = 16, },
-        { RouteCompleted = true, AllOf = { audience, { IsQuestCompleted = 8418 } }, MinLevel = 50, _index = 17, },
+        { RouteCompleted = true, _index = 17, },
     },
 }

@@ -25,6 +25,13 @@ prerequisites that cannot be proved offline. Warnings require source review; abs
 of findings does not certify quest/NPC availability, loot or progression in the client.
 Tests for these mechanisms use invented declarations rather than fixed guide content.
 
+After reviewing a completion gap, the explicit repair tool can normalize final
+ordinary markers with `python tools/validation/route_completion.py Routes/Forever --unconditional`.
+Add `--check` to preview without writing. It keeps route entry
+restrictions, earlier completion shortcuts, action filters, scenario blocks and
+temporary-route lifecycles; only filters on the last ordinary `RouteCompleted`
+marker are removed. This is an authoring operation, never an automatic test repair.
+
 ## Formatting in VS Code
 
 Run `npm ci` at the repository root to install the pinned development tools:

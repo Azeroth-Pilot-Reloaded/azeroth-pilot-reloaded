@@ -58,6 +58,6 @@ APR.RouteQuestStepList["Forever-Alliance-Class-Paladin-Charger"] = {
         { EnterInstance = { dungeonKey = "INSTANCE_289", questID = 7647 }, Note = { "CHARGER_SCHOLOMANCE_ACCESS" }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1422, 68.5, 72.58), InstanceQuest = true, AllOf = { { Class = "PALADIN", MinLevel = 60, Faction = "Alliance", Race = { "Human", "Dwarf" } }, { IsQuestOnQuest = 7647, IsQuestUncompleted = 7647 } }, Zone = 1422, _index = 44 },
         { Qpart = { [7647] = { 1 } }, Note = { "CHARGER_SCRYER_RITUAL" }, Button = { ["7647-1"] = { 18746, 18749 } }, NoArrow = true, Dungeon = "INSTANCE_289", InstanceQuest = true, RaidIcon = { { npcID = 14516, questID = 7647, objectiveIndex = 1 } }, AllOf = { { Class = "PALADIN", MinLevel = 60, Faction = "Alliance", Race = { "Human", "Dwarf" } }, { IsQuestOnQuest = 7647, IsQuestUncompleted = 7647, ItemCount = { itemID = 18799, count = 1, operator = "<" } } }, _index = 45 },
         { Done = { 7647 }, Note = { "CHARGER_REDEEM_LOST_SOUL" }, Range = 5, NoArrow = true, Dungeon = "INSTANCE_289", InstanceQuest = true, RaidIcon = { { npcID = 14568, questID = 7647 } }, AllOf = { { Class = "PALADIN", MinLevel = 60, Faction = "Alliance", Race = { "Human", "Dwarf" } }, { IsQuestOnQuest = 7647, IsQuestUncompleted = 7647 } }, _index = 46 },
-        { RouteCompleted = true, AllOf = { { Class = "PALADIN", MinLevel = 60, Faction = "Alliance", Race = { "Human", "Dwarf" } }, { IsQuestCompleted = 7647 } }, _index = 47 },
+        { RouteCompleted = true, _index = 47 },
     },
 }
