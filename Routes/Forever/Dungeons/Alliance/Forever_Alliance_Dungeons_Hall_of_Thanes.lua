@@ -225,6 +225,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             NoArrow = true,
             Dungeon = "HOT",
             InstanceQuest = true,
+            AnyOf = { { Race = { "Dwarf", "Gnome", "Human", "Skyborne" } }, { IsQuestOnQuest = 96393 }, { IsQuestCompleted = 96393 } },
             _index = 24,
         },
         {
@@ -357,14 +358,21 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             _index = 40,
         },
         {
-            Done = { 96393, 98423 },
+            Done = { 98423 },
             Coord = { x = -1022.6, y = -4865.7 },
             Zone = 1455,
             _index = 41,
         },
         {
-            RouteCompleted = true,
+            Done = { 96393 },
+            Coord = { x = -1022.6, y = -4865.7 },
+            AnyOf = { { Race = { "Dwarf", "Gnome", "Human", "Skyborne" } }, { IsQuestOnQuest = 96393 }, { IsQuestCompleted = 96393 } },
+            Zone = 1455,
             _index = 42,
+        },
+        {
+            RouteCompleted = true,
+            _index = 43,
         },
     },
 }
