@@ -176,7 +176,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
             RaidIcon = { { npcID = 250686, questID = 92401 } },
             MinLevel = 15,
             Race = "Skyborne",
-            SkipForLvl = 14,
             Zone = 1421,
             _index = 16,
         },
