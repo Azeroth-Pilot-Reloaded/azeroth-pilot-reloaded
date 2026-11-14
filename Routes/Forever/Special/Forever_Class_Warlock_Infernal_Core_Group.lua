@@ -17,6 +17,6 @@ APR.RouteQuestStepList["Forever-Class-Warlock-Infernal-Core-Group"] = {
         { Waypoint = 7603, NonSkippableWaypoint = true, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 41.25, 36.95), Range = 7, AllOf = { audience, { IsQuestUncompleted = 7603 }, { IsQuestOnQuest = 7603, IsQuestUncompleted = 7603, Not = { IsQuestReadyForTurnIn = 7603 } } }, MinLevel = 50, Zone = 1448, _index = 4 },
         { Qpart = { [7603] = { 1 } }, GroupTask = 7603, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 45.73, 34.81), Button = { ["7603-1"] = 18626 }, RaidIcon = { { npcID = 14467, questID = 7603, objectiveIndex = 1 } }, AllOf = { audience, { IsQuestUncompleted = 7603 }, { IsQuestOnQuest = 7603, IsQuestUncompleted = 7603 } }, MinLevel = 50, Zone = 1448, _index = 5 },
         { Done = { 7603 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1448, 41.38, 44.86), Range = 5, RaidIcon = { { npcID = 14469, questID = 7603 } }, AllOf = { audience, { IsQuestUncompleted = 7603 }, { IsQuestOnQuest = 7603, IsQuestUncompleted = 7603 } }, MinLevel = 50, Zone = 1448, _index = 6 },
-        { RouteCompleted = true, AllOf = { audience, { IsQuestCompleted = 7603 } }, MinLevel = 50, _index = 7 },
+        { RouteCompleted = true, _index = 7 },
     },
 }

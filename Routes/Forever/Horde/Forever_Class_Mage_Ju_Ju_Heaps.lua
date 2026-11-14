@@ -40,9 +40,8 @@ APR.RouteQuestStepList["Forever-Horde-Class-Mage-Ju-Ju-Heaps"] = {
             Zone = 1411, _index = 4,
         },
         {
-            RouteCompleted = true, Class = "MAGE",
-            Faction = "Horde",
-            IsQuestCompleted = 1884, MinLevel = 10, Race = { "Orc", "Scourge", "Troll" }, _index = 5,
+            RouteCompleted = true, 
+   _index = 5,
         },
     },
 }

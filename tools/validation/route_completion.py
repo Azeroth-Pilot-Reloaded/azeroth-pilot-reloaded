@@ -7,6 +7,86 @@ import sys
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from tests.routes.route_loader import load_routes
+from tests.routes.route_schema import RouteSchema
+
+
+def ensure_unconditional_route_endings(directory=ROOT / 'Routes', *, check=False, route_keys=None):
+    """Explicit authoring repair; never called by tests on maintained sources.
+
+    Only the last marker of an ordinary, non-temporary route is changed. Earlier
+    shortcuts, scenario blocks, route eligibility and all action steps retain
+    their predicates. The optional key selection comes from a reviewed audit.
+    """
+    sys.path.insert(0, str(ROOT / '.github/scripts'))
+    from reorder_route_fields import LuaSource
+    from lupa.lua51 import LuaRuntime
+
+    paths = sorted(Path(directory).rglob('*.lua'))
+    catalog = load_routes(paths)
+    conditions = set(RouteSchema(catalog).condition_fields)
+    selected = set()
+    for key, route in catalog.routes.items():
+        steps = route.get('steps')
+        if (route.get('temporary') or route.get('scenarios') or not steps
+                or 'steps' in steps.get(1, {}) or (route_keys is not None and key not in route_keys)):
+            continue
+        last = steps[len(steps)]
+        if last.get('RouteCompleted') is True and last.keys() & conditions:
+            selected.add(key)
+    runtime = LuaRuntime(register_eval=False, register_builtins=False)
+    changed, updates = [], []
+    for path in paths:
+        raw = path.read_bytes()
+        text = raw.decode('utf-8-sig')
+        parsed = LuaSource(text)
+        tokens, edits = parsed.tokens, []
+        for index in range(len(tokens) - 7):
+            if [t[0] for t in tokens[index:index + 4]] != ['APR', '.', 'RouteQuestStepList', '[']:
+                continue
+            closing = parsed.pairs[index + 3]
+            # A literal key is safe to evaluate in an otherwise empty Lua VM.
+            if closing != index + 5 or tokens[index + 4].lastgroup != 'string':
+                continue
+            if [t[0] for t in tokens[closing + 1:closing + 3]] != ['=', '{']:
+                continue
+            key = runtime.eval(tokens[index + 4][0])
+            if key not in selected:
+                continue
+            route_fields = parsed.fields(closing + 2)
+            main = next(value for name, _, value, _ in route_fields if name == 'steps')
+            step_fields = parsed.fields(main)
+            marker = step_fields[-1][2]
+            removed = False
+            for name, first, _, last in parsed.fields(marker):
+                if name not in conditions:
+                    continue
+                start, end = tokens[first].start(), tokens[last].end()
+                line = text.rfind('\n', 0, start) + 1
+                if not text[line:start].strip():
+                    start = line
+                    newline = text.find('\n', end)
+                    if newline != -1 and not text[end:newline].strip():
+                        end = newline + 1
+                else:
+                    while start > 0 and text[start - 1] in ' \t':
+                        start -= 1
+                edits.append((start, end))
+                removed = True
+            if removed:
+                changed.append(key)
+        if edits:
+            for start, end in sorted(edits, reverse=True):
+                text = text[:start] + text[end:]
+            encoded = text.encode('utf-8')
+            if raw.startswith(b'\xef\xbb\xbf'):
+                encoded = b'\xef\xbb\xbf' + encoded
+            updates.append((path, encoded))
+    if set(changed) != selected:
+        raise ValueError('Could not locate every selected literal route ending; no files written')
+    if not check:
+        for path, encoded in updates:
+            path.write_bytes(encoded)
+    return changed
 
 
 def ensure_route_completions(directory=ROOT / 'Routes', *, check=False):
@@ -63,8 +143,13 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('directory', nargs='?', type=Path, default=ROOT / 'Routes')
     parser.add_argument('--check', action='store_true', help='Report missing endings without adding them')
+    parser.add_argument('--unconditional', action='store_true', help='Also remove filters from final ordinary completion markers')
     args = parser.parse_args()
     changed = ensure_route_completions(args.directory, check=args.check)
-    print(f'{len(changed)} route endings ' + ('missing' if args.check else 'added'))
+    if args.unconditional:
+        changed = list(dict.fromkeys(changed + ensure_unconditional_route_endings(args.directory, check=args.check)))
+    action = (('requiring repair' if args.check else 'repaired') if args.unconditional
+              else ('missing' if args.check else 'added'))
+    print(f'{len(changed)} route endings {action}')
     for key in changed: print(key)
     raise SystemExit(1 if args.check and changed else 0)

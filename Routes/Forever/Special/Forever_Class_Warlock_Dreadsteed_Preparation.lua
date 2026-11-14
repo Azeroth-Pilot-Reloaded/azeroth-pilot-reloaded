@@ -788,7 +788,6 @@ APR.RouteQuestStepList["Forever-Class-Warlock-Dreadsteed-Preparation"] = {
         },
         {
             RouteCompleted = true,
-            AllOf = { audience, { AllOf = { { IsQuestCompleted = 7625 }, { IsQuestCompleted = 7630 } } } },
             _index = 64
         }
     }

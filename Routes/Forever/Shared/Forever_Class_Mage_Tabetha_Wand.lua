@@ -219,16 +219,6 @@ APR.RouteQuestStepList["Forever-Class-Mage-Tabetha-Wand-Preparation"] = {
         },
         {
             RouteCompleted = true,
-            AllOf = {
-                { IsQuestCompleted = 1948 },
-                { AnyOf = { { IsQuestOnQuest = 1951 }, { IsQuestCompleted = 1951 }, { IsQuestCompleted = 1952 } } }
-            },
-            AnyOf = {
-                { Faction = "Alliance", Race = { "Gnome", "Human", "Skyborne" } },
-                { Faction = "Horde",    Race = { "Orc", "Scourge", "Troll" } }
-            },
-            Class = "MAGE",
-            MinLevel = 30
         }
     }
 }
@@ -339,13 +329,6 @@ APR.RouteQuestStepList["Forever-Class-Mage-Tabetha-Wand-Library"] = {
         },
         {
             RouteCompleted = true,
-            AllOf = { { IsQuestCompleted = 1952 }, { IsQuestCompleted = 1948 } },
-            AnyOf = {
-                { Faction = "Alliance", Race = { "Gnome", "Human", "Skyborne" } },
-                { Faction = "Horde",    Race = { "Orc", "Scourge", "Troll" } }
-            },
-            Class = "MAGE",
-            MinLevel = 30
         }
     }
 }

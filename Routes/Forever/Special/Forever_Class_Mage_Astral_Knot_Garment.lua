@@ -20,6 +20,6 @@ APR.RouteQuestStepList["Forever-Alliance-Class-Mage-Astral-Knot-Garment"] = {
         { Done = { 1940 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 51.84, 83.51), Range = 5, RaidIcon = { { npcID = 1309, questID = 1940 } }, AllOf = { { Faction = "Alliance", Class = "MAGE", Race = { "Human", "Gnome" }, MinLevel = 26 }, { IsQuestUncompleted = 1942 } }, IsQuestOnQuest = 1940, IsQuestUncompleted = 1940, Zone = 1453, },
         { PickUp = { 1942 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 51.84, 83.51), Range = 5, RaidIcon = { { npcID = 1309, questID = 1942 } }, AllOf = { { Faction = "Alliance", Class = "MAGE", Race = { "Human", "Gnome" }, MinLevel = 26 }, { IsQuestUncompleted = 1942 } }, IsQuestCompleted = 1940, IsQuestNotOnQuest = 1942, IsQuestUncompleted = 1942, Zone = 1453, },
         { Done = { 1942 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 51.84, 83.51), Range = 5, RaidIcon = { { npcID = 1309, questID = 1942 } }, AllOf = { { Faction = "Alliance", Class = "MAGE", Race = { "Human", "Gnome" }, MinLevel = 26 }, { IsQuestUncompleted = 1942 } }, IsQuestOnQuest = 1942, IsQuestUncompleted = 1942, Zone = 1453, },
-        { RouteCompleted = true, AllOf = { { Faction = "Alliance", Class = "MAGE", Race = { "Human", "Gnome" }, MinLevel = 26 } }, IsQuestCompleted = 1942, },
+        { RouteCompleted = true,   },
     },
 }

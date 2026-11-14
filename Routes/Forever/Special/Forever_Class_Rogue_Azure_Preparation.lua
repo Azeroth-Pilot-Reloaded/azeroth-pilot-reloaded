@@ -24,6 +24,6 @@ APR.RouteQuestStepList["Forever-Class-Rogue-Azure-Preparation"] = {
         { Qpart = { [8235] = { 1 } }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 73.4, 25.2), RaidIcon = { { npcID = 8766, questID = 8235, objectiveIndex = 1 } }, AllOf = { audience, { IsQuestUncompleted = 8235 }, { IsQuestOnQuest = 8235, IsQuestUncompleted = 8235, Not = { IsQuestReadyForTurnIn = 8235 } } }, MinLevel = 50, Zone = 1447, _index = 11 },
         { TakePortal = { mapID = 1447 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 28.11, 50.09), Range = 5, ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1447, 26.466, 46.271, 20), RaidIcon = { { npcID = 8395 } }, AllOf = { audience, { IsQuestUncompleted = 8235 }, { IsQuestOnQuest = 8235, IsQuestUncompleted = 8235, IsQuestReadyForTurnIn = 8235 } }, MinLevel = 50, Zone = 1447, _index = 12 },
         { Done = { 8235 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1447, 29.71, 40.52), Range = 5, RaidIcon = { { npcID = 8379, questID = 8235 } }, AllOf = { audience, { IsQuestUncompleted = 8235 }, { IsQuestOnQuest = 8235, IsQuestUncompleted = 8235 } }, MinLevel = 50, Zone = 1447, _index = 13 },
-        { RouteCompleted = true, AllOf = { audience, { IsQuestCompleted = 8235 } }, MinLevel = 50, _index = 14 },
+        { RouteCompleted = true, _index = 14 },
     },
 }

@@ -569,17 +569,6 @@ APR.RouteQuestStepList["Forever-Class-Mage-Arcane-Refreshment"] = {
         },
         {
             RouteCompleted = true,
-            AllOf = {
-                {
-                    Class = APR.Classes.Mage,
-                    MinLevel = 60,
-                    AnyOf = {
-                        { Faction = "Alliance", Race = { APR.RACES.Gnome, APR.RACES.Human, APR.RACES.Skyborne } },
-                        { Faction = "Horde",    Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Troll } }
-                    }
-                }
-            },
-            IsQuestCompleted = 7463,
             _index = 27
         }
     }

@@ -140,17 +140,6 @@ APR.RouteQuestStepList["Forever-Class-Mage-Tiara-of-the-Deep"] = {
         },
         {
             RouteCompleted = true,
-            AllOf = {
-                {
-                    Class = APR.Classes.Mage,
-                    MinLevel = 40,
-                    AnyOf = {
-                        { Faction = "Alliance", Race = { APR.RACES.Gnome, APR.RACES.Human, APR.RACES.Skyborne } },
-                        { Faction = "Horde",    Race = { APR.RACES.Orc, APR.RACES.Scourge, APR.RACES.Troll } }
-                    }
-                }
-            },
-            IsQuestCompleted = 2846,
             _index = 7
         }
     }

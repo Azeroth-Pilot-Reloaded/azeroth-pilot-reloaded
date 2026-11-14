@@ -18,7 +18,7 @@ APR.RouteQuestStepList["Forever-Alliance-Priest-A-Lack-of-Fear"] = {
         { Done = { 5641 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 24.72, 8.14),
             RaidIcon = { { npcID = 11406, questID = 5641 } }, AllOf = { { Faction = "Alliance", Class = "PRIEST", Race = "Dwarf", MinLevel = 20,
         AnyOf = { { Not = { AnyOf = { { IsQuestCompleted = 5641 }, { IsQuestCompleted = 5645 }, { IsQuestCompleted = 5647 }, { IsQuestOnQuest = 5645 }, { IsQuestOnQuest = 5647 } } } } } } }, IsQuestOnQuest = 5641, MinLevel = 20, Zone = 1455, _index = 2 },
-        { RouteCompleted = true, AllOf = { { Faction = "Alliance", Class = "PRIEST", Race = "Dwarf", MinLevel = 20 } }, MinLevel = 20, _index = 3 },
+        { RouteCompleted = true, _index = 3 },
     },
 }
 
@@ -42,7 +42,7 @@ APR.RouteQuestStepList["Forever-Alliance-Priest-Arcane-Feedback"] = {
         { Done = { 5676 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 49.53, 44.57),
             RaidIcon = { { npcID = 376, questID = 5676 } }, AllOf = { { Faction = "Alliance", Class = "PRIEST", Race = "Human", MinLevel = 20,
         AnyOf = { { Not = { AnyOf = { { IsQuestCompleted = 5676 }, { IsQuestCompleted = 5677 }, { IsQuestCompleted = 5678 }, { IsQuestOnQuest = 5677 }, { IsQuestOnQuest = 5678 } } } } } } }, IsQuestOnQuest = 5676, MinLevel = 20, Zone = 1453, _index = 3 },
-        { RouteCompleted = true, AllOf = { { Faction = "Alliance", Class = "PRIEST", Race = "Human", MinLevel = 20 } }, MinLevel = 20, _index = 4 },
+        { RouteCompleted = true, _index = 4 },
     },
 }
 
@@ -63,6 +63,6 @@ APR.RouteQuestStepList["Forever-Alliance-Priest-Elunes-Grace"] = {
         { Done = { 5672 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1457, 39.53, 81.18),
             RaidIcon = { { npcID = 11401, questID = 5672 } }, AllOf = { { Faction = "Alliance", Class = "PRIEST", Race = "NightElf", MinLevel = 20,
         AnyOf = { { Not = { AnyOf = { { IsQuestCompleted = 5672 }, { IsQuestCompleted = 5673 }, { IsQuestCompleted = 5674 }, { IsQuestCompleted = 5675 }, { IsQuestOnQuest = 5673 }, { IsQuestOnQuest = 5674 }, { IsQuestOnQuest = 5675 } } } } } } }, IsQuestOnQuest = 5672, MinLevel = 20, Zone = 1457, _index = 2 },
-        { RouteCompleted = true, AllOf = { { Faction = "Alliance", Class = "PRIEST", Race = "NightElf", MinLevel = 20 } }, MinLevel = 20, _index = 3 },
+        { RouteCompleted = true, _index = 3 },
     },
 }

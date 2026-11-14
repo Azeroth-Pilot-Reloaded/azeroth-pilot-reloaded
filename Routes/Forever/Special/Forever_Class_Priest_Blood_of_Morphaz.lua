@@ -57,6 +57,6 @@ APR.RouteQuestStepList["Forever-Horde-Priest-Blood-of-Morphaz-Dungeon"] = {
             Range = 5, RaidIcon = { { npcID = 10922, questID = 8257 } }, AllOf = { { Faction = "Horde", Class = "PRIEST", Race = { "Scourge", "Troll" }, MinLevel = 50,
         IsQuestCompleted = 8256, IsQuestUncompleted = 8257 } },
             IsQuestOnQuest = 8257, MinLevel = 50, Zone = 1448, _index = 14 },
-        { RouteCompleted = true, AllOf = { { Faction = "Horde", Class = "PRIEST", Race = { "Scourge", "Troll" }, MinLevel = 50 } }, MinLevel = 50, _index = 15 },
+        { RouteCompleted = true, _index = 15 },
     },
 }

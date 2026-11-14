@@ -122,13 +122,6 @@ APR.RouteQuestStepList["Forever-Class-Hunter-Wavethrashing"] = {
         },
         {
             RouteCompleted = true,
-            AnyOf = {
-                [1] = { Race = { [1] = "Dwarf", [2] = "Human", [3] = "NightElf", [4] = "Skyborne" }, Faction = "Alliance" },
-                [2] = { Race = { [1] = "Orc", [2] = "Skyborne", [3] = "Tauren", [4] = "Troll" }, Faction = "Horde" }
-            },
-            Class = "HUNTER",
-            IsQuestCompleted = 8231,
-            MinLevel = 50,
             _index = 7
         }
     }

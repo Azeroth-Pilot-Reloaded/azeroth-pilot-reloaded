@@ -27,6 +27,6 @@ APR.RouteQuestStepList["Forever-Horde-Class-Shaman-Da-Voodoo-Dungeon"] = {
         { Qpart = { [8413] = { 3 } }, NoArrow = true, Dungeon = "INSTANCE_109", InstanceQuest = true, RaidIcon = { { npcID = 5712, questID = 8413, objectiveIndex = 3 }, { npcID = 5714, questID = 8413, objectiveIndex = 3 } }, AllOf = { audience, { IsQuestUncompleted = 8413 }, { IsQuestOnQuest = 8413, IsQuestUncompleted = 8413, Not = { IsQuestReadyForTurnIn = 8413 } } }, MinLevel = 50, _index = 14 },
         { LeaveInstance = { dungeonKey = "INSTANCE_109" }, NoArrow = true, Dungeon = "INSTANCE_109", InstanceQuest = true, AllOf = { audience, { IsQuestUncompleted = 8413 }, { IsQuestOnQuest = 8413, IsQuestUncompleted = 8413, IsQuestReadyForTurnIn = 8413 } }, MinLevel = 50, _index = 15 },
         { Done = { 8413 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1416, 80.5, 66.92), Range = 5, RaidIcon = { { npcID = 6176, questID = 8413 } }, AllOf = { audience, { IsQuestUncompleted = 8413 }, { IsQuestOnQuest = 8413, IsQuestUncompleted = 8413 } }, MinLevel = 50, Zone = 1416, _index = 16 },
-        { RouteCompleted = true, AllOf = { audience, { IsQuestCompleted = 8413 } }, MinLevel = 50, _index = 17 },
+        { RouteCompleted = true, _index = 17 },
     },
 }

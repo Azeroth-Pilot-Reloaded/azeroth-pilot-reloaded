@@ -21,6 +21,6 @@ APR.RouteQuestStepList["Forever-Alliance-Class-Paladin-Human-Redemption"] = {
         { Done = { 1787 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 49.51, 44.9), Range = 3, RaidIcon = { { npcID = 6173, questID = 1787 } }, AllOf = { audience, { IsQuestOnQuest = 1787, IsQuestUncompleted = 1787 } }, Zone = 1453, _index = 8 },
         { PickUp = { 1788 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 49.51, 44.9), Range = 3, RaidIcon = { { npcID = 6173, questID = 1788 } }, AllOf = { audience, { IsQuestNotOnQuest = 1788, IsQuestUncompleted = 1788, IsQuestCompleted = 1787 } }, Zone = 1453, _index = 9 },
         { Done = { 1788 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 50.48, 47.49), Range = 3, RaidIcon = { { npcID = 6171, questID = 1788 } }, AllOf = { audience, { IsQuestOnQuest = 1788, IsQuestUncompleted = 1788 } }, Zone = 1453, _index = 10 },
-        { RouteCompleted = true, AllOf = { audience, { IsQuestCompleted = 1788 } }, _index = 11 },
+        { RouteCompleted = true, _index = 11 },
     },
 }

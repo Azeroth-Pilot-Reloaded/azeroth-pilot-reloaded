@@ -16,6 +16,6 @@ APR.RouteQuestStepList["Forever-Class-Warlock-Dreadsteed-Scholomance"] = {
         { Qpart = { [7629] = { 1 } }, Note = { "SCHOLOMANCE_IMP_PARCHMENT" }, Button = { ["7629-1"] = 18688 }, NoArrow = true, Dungeon = "INSTANCE_289", AllOf = { audience, { IsQuestOnQuest = 7629, IsQuestUncompleted = 7629, Not = { IsQuestReadyForTurnIn = 7629 } } }, _index = 3 },
         { LeaveInstance = { dungeonKey = "INSTANCE_289", questID = 7629 }, NoArrow = true, Dungeon = "INSTANCE_289", AllOf = { audience, { IsQuestOnQuest = 7629, IsQuestUncompleted = 7629, IsQuestReadyForTurnIn = 7629 } }, _index = 4 },
         { Done = { 7629 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1428, 12.43, 31.63), Range = 3, RaidIcon = { { npcID = 14437, questID = 7629 } }, AllOf = { audience, { IsQuestOnQuest = 7629, IsQuestUncompleted = 7629 } }, Zone = 1428, _index = 5 },
-        { RouteCompleted = true, AllOf = { audience, { IsQuestCompleted = 7629 } }, _index = 6 },
+        { RouteCompleted = true, _index = 6 },
     },
 }

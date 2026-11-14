@@ -31,6 +31,6 @@ APR.RouteQuestStepList["Forever-Class-Rogue-Azure-Key-Dungeon"] = {
         { Waypoint = 8236, NonSkippableWaypoint = true, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1416, 81.71, 77.48), Range = 7, AllOf = { audience, { IsQuestUncompleted = 8236 }, { IsQuestOnQuest = 8236, IsQuestUncompleted = 8236, IsQuestReadyForTurnIn = 8236 } }, MinLevel = 50, Zone = 1416, _index = 18 },
         { Waypoint = 8236, NonSkippableWaypoint = true, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1416, 85.46, 79.39), Range = 7, AllOf = { audience, { IsQuestUncompleted = 8236 }, { IsQuestOnQuest = 8236, IsQuestUncompleted = 8236, IsQuestReadyForTurnIn = 8236 } }, MinLevel = 50, Zone = 1416, _index = 19 },
         { Done = { 8236 }, Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1416, 86.03, 78.88), Range = 5, RaidIcon = { { npcID = 6768, questID = 8236 } }, AllOf = { audience, { IsQuestUncompleted = 8236 }, { IsQuestOnQuest = 8236, IsQuestUncompleted = 8236 } }, MinLevel = 50, Zone = 1416, _index = 20 },
-        { RouteCompleted = true, AllOf = { audience, { IsQuestCompleted = 8236 } }, MinLevel = 50, _index = 21 },
+        { RouteCompleted = true, _index = 21 },
     },
 }

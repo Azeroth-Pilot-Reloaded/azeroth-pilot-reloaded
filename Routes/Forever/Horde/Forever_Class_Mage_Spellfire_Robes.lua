@@ -93,9 +93,8 @@ APR.RouteQuestStepList["Forever-Horde-Class-Mage-Spellfire-Robes"] = {
             Zone = 1458, _index = 11,
         },
         {
-            RouteCompleted = true, Class = "MAGE",
-            Faction = "Horde",
-            IsQuestCompleted = 1962, MinLevel = 15, Race = { "Scourge", "Troll" }, _index = 12,
+            RouteCompleted = true, 
+   _index = 12,
         },
     },
 }

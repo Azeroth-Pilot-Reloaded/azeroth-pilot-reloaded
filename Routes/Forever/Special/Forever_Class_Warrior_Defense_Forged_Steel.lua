@@ -151,7 +151,6 @@ APR.RouteQuestStepList["Forever-Class-Warrior-Defense-Forged-Steel"] = {
         },
         {
             RouteCompleted = true,
-            AllOf = { { Faction = "Horde", Class = "WARRIOR", Race = { "Orc", "Troll" }, MinLevel = 10 } },
         },
     },
 }
