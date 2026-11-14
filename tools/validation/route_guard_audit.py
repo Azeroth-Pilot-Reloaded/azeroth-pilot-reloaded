@@ -182,7 +182,11 @@ def quest_links(step):
     links = set()
     for field in ("PickUp", "PickUpDB", "Done", "DoneDB", "QpartDB", "WaypointDB"):
         links.update(values(step.get(field, {})))
-    for field in ("Qpart", "QpartPart", "Fillers"):
+    # Fillers are optional journal projections: RenderRequirements requires an
+    # active quest/objective before displaying them and never advances/blocks
+    # their parent action. Primary Qpart/Done references remain audited even
+    # when the same step also contains a protected filler.
+    for field in ("Qpart", "QpartPart"):
         links.update(step.get(field, {}))
     for field in ("Button", "SpellButton"):
         for key in step.get(field, {}):
@@ -234,6 +238,39 @@ def missing_quest_contract(step, quest):
     return {"missing_uncompleted_quest": "not-established-for-this-action"}
 
 
+def acquisition_gate(node, quest, item):
+    """Positive item/accepted-quest gates certify a pre-pickup collection phase."""
+    if node.get("IsQuestOnQuest") == quest:
+        return True
+    requirement = node.get("ItemCount", {})
+    if requirement.get("itemID") == item:
+        operator, count = requirement.get("operator", ">="), requirement.get("count", 0)
+        if (operator in (">=", "==") and count >= 1) or (operator == ">" and count >= 0):
+            return True
+    if any(acquisition_gate(child, quest, item) for child in values(node.get("AllOf", {}))):
+        return True
+    alternatives = values(node.get("AnyOf", {}))
+    return bool(alternatives) and all(acquisition_gate(child, quest, item) for child in alternatives)
+
+
+def is_pre_pickup_collection(path, step, producers, guards_by_path, quest):
+    """Recognize collecting the prerequisite item, not consuming the quest.
+
+    Restrict this proof to ordered main steps and a matching scalar item gate
+    on every pickup alternative. Arbitrary earlier item actions stay audited.
+    """
+    match = re.fullmatch(r"steps\[([0-9]+)\]\.LootItems\[[0-9]+\]", path)
+    if not match or "itemID" not in step:
+        return False
+    for producer in producers:
+        pickup = re.fullmatch(r"steps\[([0-9]+)\]", producer[0])
+        if not pickup or int(match[1]) >= int(pickup[1]):
+            return False
+        if not any(acquisition_gate(guard, quest, step["itemID"]) for guard in guards_by_path[producer[0]]):
+            return False
+    return True
+
+
 def source_character_combinations(catalog):
     """Positive authored conjunctions are provenance, never server API facts.
 
@@ -282,9 +319,10 @@ def audit_routes(catalog):
         elif not domain.evaluate(route_conditions)[1]:
             emit("warning", "guard.route-recommendation-contradiction", "conditions",
                  "Authored route filters are contradictory; manual entry advice/level projection may waive them.", conditions=route_conditions)
-        records = []
+        records, guards_by_path = [], {}
         for path, step, inherited in entries:
             guards = (*inherited, step, step.get("conditions", {}))
+            guards_by_path[path] = guards
             possible = domain.full
             coverage_low, coverage_high = context, context
             for guard in guards:
@@ -324,6 +362,8 @@ def audit_routes(catalog):
                 allowed |= producer[3]
             exposed = []
             for path, step, low, _ in members:
+                if link[0] == "questID" and is_pre_pickup_collection(path, step, producers, guards_by_path, link[1]):
+                    continue
                 uncovered = low & ~allowed
                 if uncovered:
                     witness, witness_evidence = domain.access_witness(uncovered, attestations)

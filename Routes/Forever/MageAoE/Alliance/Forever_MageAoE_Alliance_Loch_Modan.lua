@@ -120,7 +120,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         {
             PickUp = { 307 },
             Coord = { x = -2676.82, y = -4825.93 },
-            Race = "Human",
+            Race = { "Human", "Skyborne" },
             Zone = 1432,
             _index = 10,
         },
@@ -159,7 +159,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
         {
             PickUp = { 418 },
             Coord = { x = -2954.42, y = -5394.1 },
-            Race = "Human",
+            Race = { "Human", "Skyborne" },
             Zone = 1432,
             _index = 15,
         },

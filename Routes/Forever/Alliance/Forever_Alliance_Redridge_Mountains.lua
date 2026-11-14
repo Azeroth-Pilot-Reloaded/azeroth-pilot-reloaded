@@ -126,7 +126,7 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
             PickUp = { 97220 },
             Coord = { x = 1193.1, y = -8328.9 },
             RaidIcon = { { npcID = 268511, questID = 97220 } },
-            Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
+            ClassNot = "SHAMAN",
             Zone = 1453,
             _index = 5,
         },

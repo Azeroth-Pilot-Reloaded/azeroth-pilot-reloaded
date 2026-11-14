@@ -1300,6 +1300,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         {
             Done = { 794 },
             Coord = { x = -4227.9, y = -629.1 },
+            AnyOf = { { Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" } }, { IsQuestOnQuest = 794 }, { IsQuestCompleted = 794 } },
             Zone = 1411,
             _index = 134,
         },
@@ -4971,6 +4972,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         {
             Done = { 827 },
             Coord = { x = -4945.18, y = 1101.92 },
+            AnyOf = { { Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" } }, { IsQuestOnQuest = 827 }, { IsQuestCompleted = 827 } },
             Zone = 1411,
             _index = 577,
         },

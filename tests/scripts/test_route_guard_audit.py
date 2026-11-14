@@ -2,7 +2,10 @@
 
 import unittest
 
-from tests.routes.route_loader import RouteCatalog, load_routes
+from lupa.lua51 import LuaRuntime
+
+from tests.routes.route_loader import ROOT, RouteCatalog, load_routes
+from tools.validation.instrument_lua import clean
 from tools.validation.route_guard_audit import audit_routes, quest_links
 
 
@@ -154,6 +157,111 @@ class GuardAuditTests(unittest.TestCase):
         results = self.audit([{ "LearnProfession": 9101, "Class": 8},
                               {"UseSpell": {"spellID": 9101}}])
         self.assertEqual([{"spellID": 9101}], [r["evidence"]["link"] for r in results])
+
+    def test_optional_fillers_do_not_restrict_unrelated_primary_actions(self):
+        self.assertEqual({4202}, quest_links({"Fillers": {4201: seq(1)}, "Qpart": {4202: seq(1)}}))
+        self.assertEqual([], self.audit([
+            {"PickUp": seq(4201), "Faction": "Alliance"},
+            {"Waypoint": 1, "Fillers": {4201: seq(1)}}]))
+        results = self.audit([
+            {"PickUp": seq(4201), "Faction": "Alliance"},
+            {"Done": seq(4201), "Fillers": {4201: seq(1)}}])
+        self.assertEqual(["guard.link-coverage"], [r["rule"] for r in results])
+
+    def test_real_filler_handler_hides_absent_quest_but_primary_reports_it(self):
+        lua = LuaRuntime(unpack_returned_tuples=True)
+        lua.execute('''
+            function LibStub() return {GetLocale = function() return {} end} end
+            local function noop() end
+            local count = {fillers = 0, missing = 0, advanced = 0}
+            APR = {stepHandlers = {}, currentStep = {}, PlayerID = "synthetic", ActiveRoute = "invented",
+                ActiveQuests = {}, QUEST_STATUS = {COMPLETE = "complete"}, MaxLevel = 60,
+                Buff = {RemoveAllBuffIcon = noop}, Debug = noop,
+                fillersFrame = {AddFillerStep = function() count.fillers = count.fillers + 1 end},
+                NextQuestStep = function() count.advanced = count.advanced + 1 end,
+                UpdateNextStep = function() count.advanced = count.advanced + 1 end,
+                HandleMissingQuest = function() count.missing = count.missing + 1 end,
+                Contains = function() return false end,
+                TrackQuest = noop}
+            APR.currentStep.AddQuestStepsWithDetails = noop
+            APRData = {synthetic = {BonusSkips = {}}}
+            C_QuestLog = {IsQuestFlaggedCompleted = function() return false end}
+            function UnitLevel() return 12 end
+            function APR:GetQuestTextForProgressBar() return "Synthetic objective" end
+            getn = table.getn
+            function counts() return count.fillers, count.missing, count.advanced end
+        ''')
+        for name in ("StepInstructions.lua", "StepQuestHandlers.lua"):
+            lua.execute(clean((ROOT / "APR-Core/features/questing" / name).read_text(encoding="utf-8")))
+        lua.execute('APR.stepHandlers.RenderRequirements({Waypoint = 1, Fillers = {[4201] = {1}}}, true, 1)')
+        self.assertEqual((0, 0, 0), lua.globals().counts())
+        lua.execute('APR.stepHandlers.Qpart({Qpart = {[4201] = {1}}, Fillers = {[4201] = {1}}}, true, 1)')
+        self.assertEqual((0, 1, 0), lua.globals().counts())
+        lua.execute('APR.stepHandlers.Done({Done = {4201}, Fillers = {[4201] = {1}}}, true, 1)')
+        self.assertEqual((0, 2, 0), lua.globals().counts())
+        lua.execute('APR.ActiveQuests[4201] = {objectives = {{status = "active"}}}; APR.stepHandlers.RenderRequirements({Fillers = {[4201] = {1}}}, true, 1)')
+        self.assertEqual((1, 2, 0), lua.globals().counts())
+        # Pre-acceptance collection has an inventory completion contract. The
+        # quest label only supplies a completed-quest shortcut, not ownership.
+        lua.execute('''
+            APR.ActiveQuests = {}
+            collected = 0
+            function APR:GetCollectionRequiredQuantity(rule) return rule.quantity end
+            function APR:GetCollectionItemCount() return collected end
+            C_Item = {GetItemInfo = function() return "Synthetic book" end}
+            format = function(_, name) return name end
+            APR.currentStep.AddQuestSteps = function() end
+            APR.stepHandlers.RenderRequirements({LootItems = {{itemID = 8101, quantity = 1, questID = 4201}}}, true, 1)
+        ''')
+        self.assertEqual((1, 2, 0), lua.globals().counts())
+        lua.execute('collected = 1; APR.stepHandlers.RenderRequirements({LootItems = {{itemID = 8101, quantity = 1, questID = 4201}}}, true, 1)')
+        self.assertEqual((1, 2, 1), lua.globals().counts())
+
+    def test_real_class_branch_keeps_planned_actions_and_external_quests(self):
+        lua = LuaRuntime(unpack_returned_tuples=True)
+        lua.execute('''
+            APR = {Faction = "Alliance", ClassName = "MAGE", ClassId = 8}
+            function LibStub() return {GetLocale = function() return {} end} end
+            local owned, completed = false, false
+            function context(classID, onQuest, rewarded)
+                APR.ClassId = classID
+                owned, completed = onQuest, rewarded
+            end
+            C_QuestLog = {IsOnQuest = function() return owned end,
+                         IsQuestFlaggedCompleted = function() return completed end}
+            function tContains(t, value)
+                for _, item in pairs(t) do if item == value then return true end end
+                return false
+            end
+            branch = {AnyOf = {{Class = {8}}, {IsQuestOnQuest = 4201}, {IsQuestCompleted = 4201}}}
+        ''')
+        lua.execute(clean((ROOT / "APR-Core/utils/RouteUtils.lua").read_text(encoding="utf-8")))
+        accepted = lambda: lua.eval('APR:AreConditionalFiltersMet(branch)')
+        self.assertTrue(accepted())  # Planned class keeps missing-quest diagnostics.
+        lua.execute('context(7, false, false)')
+        self.assertFalse(accepted())
+        lua.execute('context(7, true, false)')
+        self.assertTrue(accepted())  # Another class can finish an external pickup.
+        lua.execute('context(7, false, true)')
+        self.assertTrue(accepted())  # Completed quests retain their normal advance.
+
+    def test_collecting_the_pickup_item_precedes_its_possession_guard(self):
+        self.assertEqual([], self.audit([
+            {"LootItems": seq({"itemID": 8101, "quantity": 1, "questID": 4201})},
+            {"PickUp": seq(4201), "Faction": "Alliance", "AnyOf": seq(
+                {"ItemCount": {"itemID": 8101, "count": 1}}, {"IsQuestOnQuest": 4201})}]))
+        # An unrelated item, a negated gate, or a later collection cannot use
+        # the pre-acquisition proof to suppress a useful linked-action warning.
+        for guard in ({"ItemCount": {"itemID": 8102, "count": 1}},
+                      {"Not": {"ItemCount": {"itemID": 8101, "count": 1}}}):
+            results = self.audit([
+                {"LootItems": seq({"itemID": 8101, "quantity": 1, "questID": 4201})},
+                {"PickUp": seq(4201), "Faction": "Alliance", **guard}])
+            self.assertEqual(["guard.link-coverage"], [r["rule"] for r in results])
+        results = self.audit([
+            {"PickUp": seq(4201), "Faction": "Alliance", "ItemCount": {"itemID": 8101, "count": 1}},
+            {"LootItems": seq({"itemID": 8101, "quantity": 1, "questID": 4201})}])
+        self.assertEqual(["guard.link-coverage"], [r["rule"] for r in results])
 
 
 if __name__ == "__main__":
