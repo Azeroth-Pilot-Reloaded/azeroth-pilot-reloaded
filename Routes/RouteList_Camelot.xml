@@ -190,6 +190,8 @@
     <Script file="Routes/Forever/Raids/Forever_Raids_ruins_of_ahnqiraj.lua"/>
     <Script file="Routes/Forever/Raids/Forever_Raids_zulgurub.lua"/>
     <Script file="Routes/Forever/Reputation/Forever_Reputations.lua"/>
+    <Script file="Routes/Forever/Shared/Forever_Shared_Moonglade.lua"/>
+    <Script file="Routes/Forever/Shared/Forever_Shared_Shendralas.lua"/>
     <Script file="Routes/Forever/Professions/Forever_Profession_alchemy.lua"/>
     <Script file="Routes/Forever/Professions/Forever_Profession_blacksmithing.lua"/>
     <Script file="Routes/Forever/Professions/Forever_Profession_cooking.lua"/>
