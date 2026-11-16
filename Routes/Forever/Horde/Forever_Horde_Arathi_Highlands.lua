@@ -949,6 +949,24 @@ APR.RouteQuestStepList["Forever-Horde-Arathi-Highlands"] = {
             _index = 99,
         },
         {
+            PickUp = { 79624 },
+            Button = { ["79624"] = 213422 },
+            ItemCount = { itemID = 213422, count = 1, operator = ">=" },
+        },
+        {
+            Done = { 79624 },
+            Coord = { x = -2942.7, y = -1925.1 },
+            RaidIcon = { { npcID = 217300, questID = 79624 } },
+            IsQuestOnQuest = 79624,
+            Zone = 1417,
+        },
+        {
+            Qpart = { [92519] = { 1 } },
+            Coord = { x = -3028.7, y = -1553.8 },
+            IsQuestOnQuest = 92519,
+            Zone = 1417,
+        },
+        {
             Done = { 652 },
             Note = { "TURN_PARTY_LEVEL_42_ELITE_SPAWNS_SOLO" },
             Coord = { x = -2165.19, y = -1527.49 },
@@ -1062,6 +1080,13 @@ APR.RouteQuestStepList["Forever-Horde-Arathi-Highlands"] = {
             RaidIcon = { { npcID = 2706, questID = 847 } },
             Zone = 1417,
             _index = 114,
+        },
+        {
+            Done = { 92519 },
+            Coord = { x = -3509.4, y = -1019 },
+            IsQuestOnQuest = 92519,
+            IsQuestReadyForTurnIn = 92519,
+            Zone = 1417,
         },
         {
             PickUp = { 6622 },

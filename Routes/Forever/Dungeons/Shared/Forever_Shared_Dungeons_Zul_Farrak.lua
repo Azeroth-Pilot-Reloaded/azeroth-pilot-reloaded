@@ -153,6 +153,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Zul-Farrak"] = {
             [3520] = { 1, 2 },
         },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 43.07, 36.94),
+        Button = { ["3520-1"] = 10699 },
         IsQuestOnQuest = 3520,
         Zone = 1444,
         _index = 15,

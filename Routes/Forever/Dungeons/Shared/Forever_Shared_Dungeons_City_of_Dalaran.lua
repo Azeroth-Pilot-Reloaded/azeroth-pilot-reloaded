@@ -37,17 +37,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Zone = 1453,
         _index = 2,
     }, {
-        PickUp = { 92457 },
-        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 68.62, 45.13),
-        RaidIcon = { {
-            npcID = 269127,
-            questID = 92457,
-        } },
-        Faction = "Alliance",
-        MinLevel = 24,
-        Zone = 1421,
-        _index = 3,
-    }, {
         PickUp = { 92489 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 48.71, 87.62),
         RaidIcon = { {
@@ -57,7 +46,24 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Faction = "Alliance",
         MinLevel = 24,
         Zone = 1453,
+        _index = 3,
+    }, {
+        PickUp = { 92434 },
+        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 61.6, 20.85),
+        RaidIcon = { { npcID = 2410, questID = 92434 } },
+        AllOf = { { IsQuestCompleted = 93680 } },
+        Faction = "Horde",
+        IsQuestCompleted = 545,
+        Zone = 1424,
         _index = 4,
+    }, {
+        Done = { 92434 },
+        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 68.62, 45.13),
+        RaidIcon = { { npcID = 269127, questID = 92434 } },
+        Faction = "Horde",
+        IsQuestOnQuest = 92434,
+        Zone = 1421,
+        _index = 5,
     }, {
         PickUp = { 96984 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 68.62, 45.13),
@@ -66,9 +72,10 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
             questID = 96984,
         } },
         Faction = "Horde",
+        IsQuestCompleted = 92434,
         MinLevel = 24,
         Zone = 1421,
-        _index = 5,
+        _index = 6,
     }, {
         PickUp = { 96986 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 62.63, 20.65),
@@ -79,7 +86,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Faction = "Horde",
         MinLevel = 24,
         Zone = 1424,
-        _index = 6,
+        _index = 7,
     }, {
         PickUp = { 96988 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 46.61, 74.09),
@@ -90,7 +97,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Faction = "Horde",
         MinLevel = 24,
         Zone = 1458,
-        _index = 7,
+        _index = 8,
     }, {
         Done = { 92432 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 68.62, 45.13),
@@ -101,7 +108,18 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Faction = "Alliance",
         IsQuestOnQuest = 92432,
         Zone = 1421,
-        _index = 8,
+        _index = 9,
+    }, {
+        PickUp = { 92457 },
+        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 68.62, 45.13),
+        RaidIcon = { {
+            npcID = 269127,
+            questID = 92457,
+        } },
+        Faction = "Alliance",
+        MinLevel = 24,
+        Zone = 1421,
+        _index = 10,
     }, {
         PickUp = { 92458 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 68.62, 45.13),
@@ -115,7 +133,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Faction = "Alliance",
         MinLevel = 24,
         Zone = 1421,
-        _index = 9,
+        _index = 11,
     }, {
         EnterInstance = {
             dungeonKey = "INSTANCE_2959",
@@ -124,7 +142,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
         Zone = 1421,
-        _index = 10,
+        _index = 12,
     }, {
         PickUp = { 96987 },
         NoArrow = true,
@@ -136,7 +154,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         } },
         Faction = "Horde",
         MinLevel = 24,
-        _index = 11,
+        _index = 13,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_2959",
@@ -146,7 +164,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
-        _index = 12,
+        _index = 14,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_2959",
@@ -156,7 +174,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
-        _index = 13,
+        _index = 15,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_2959",
@@ -166,7 +184,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
-        _index = 14,
+        _index = 16,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_2959",
@@ -176,7 +194,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
-        _index = 15,
+        _index = 17,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_2959",
@@ -186,7 +204,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
-        _index = 16,
+        _index = 18,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_2959",
@@ -196,7 +214,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
-        _index = 17,
+        _index = 19,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_2959",
@@ -206,7 +224,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
-        _index = 18,
+        _index = 20,
     }, {
         Qpart = {
             [92456] = { 1 },
@@ -215,7 +233,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
         IsQuestOnQuest = 92456,
-        _index = 19,
+        _index = 21,
     }, {
         Qpart = {
             [92457] = { 1, 2, 3 },
@@ -224,7 +242,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
         IsQuestOnQuest = 92457,
-        _index = 20,
+        _index = 22,
     }, {
         Qpart = {
             [92458] = { 1 },
@@ -233,7 +251,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
         IsQuestOnQuest = 92458,
-        _index = 21,
+        _index = 23,
     }, {
         Qpart = {
             [92489] = { 1 },
@@ -242,7 +260,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
         IsQuestOnQuest = 92489,
-        _index = 22,
+        _index = 24,
     }, {
         Qpart = {
             [96984] = { 1 },
@@ -251,7 +269,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
         IsQuestOnQuest = 96984,
-        _index = 23,
+        _index = 25,
     }, {
         Qpart = {
             [96986] = { 1 },
@@ -260,7 +278,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
         IsQuestOnQuest = 96986,
-        _index = 24,
+        _index = 26,
     }, {
         Qpart = {
             [96987] = { 1 },
@@ -269,7 +287,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
         IsQuestOnQuest = 96987,
-        _index = 25,
+        _index = 27,
     }, {
         Qpart = {
             [96988] = { 1 },
@@ -278,7 +296,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Dungeon = "INSTANCE_2959",
         InstanceQuest = true,
         IsQuestOnQuest = 96988,
-        _index = 26,
+        _index = 28,
     }, {
         Done = { 96987 },
         NoArrow = true,
@@ -290,14 +308,14 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         } },
         Faction = "Horde",
         IsQuestOnQuest = 96987,
-        _index = 27,
+        _index = 29,
     }, {
         LeaveInstance = {
             dungeonKey = "INSTANCE_2959",
         },
         NoArrow = true,
         Dungeon = "INSTANCE_2959",
-        _index = 28,
+        _index = 30,
     }, {
         Done = { 92456 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 31.5, 62.61),
@@ -308,7 +326,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Faction = "Alliance",
         IsQuestOnQuest = 92456,
         Zone = 1453,
-        _index = 29,
+        _index = 31,
     }, {
         Done = { 92457 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 68.62, 45.13),
@@ -319,7 +337,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Faction = "Alliance",
         IsQuestOnQuest = 92457,
         Zone = 1421,
-        _index = 30,
+        _index = 32,
     }, {
         Done = { 92458 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 68.62, 45.13),
@@ -330,7 +348,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Faction = "Alliance",
         IsQuestOnQuest = 92458,
         Zone = 1421,
-        _index = 31,
+        _index = 33,
     }, {
         Done = { 92489 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 48.71, 87.62),
@@ -341,7 +359,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Faction = "Alliance",
         IsQuestOnQuest = 92489,
         Zone = 1453,
-        _index = 32,
+        _index = 34,
     }, {
         Done = { 96984 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 61.6, 20.85),
@@ -352,7 +370,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Faction = "Horde",
         IsQuestOnQuest = 96984,
         Zone = 1424,
-        _index = 33,
+        _index = 35,
     }, {
         Done = { 96986 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 62.63, 20.65),
@@ -363,7 +381,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Faction = "Horde",
         IsQuestOnQuest = 96986,
         Zone = 1424,
-        _index = 34,
+        _index = 36,
     }, {
         Done = { 96988 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 46.61, 74.09),
@@ -374,9 +392,9 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-City-of-Dalaran"] = {
         Faction = "Horde",
         IsQuestOnQuest = 96988,
         Zone = 1458,
-        _index = 35,
+        _index = 37,
     }, {
         RouteCompleted = true,
-        _index = 36,
+        _index = 38,
     } },
 }

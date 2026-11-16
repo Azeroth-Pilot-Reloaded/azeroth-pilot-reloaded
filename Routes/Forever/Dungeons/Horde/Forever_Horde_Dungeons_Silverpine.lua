@@ -189,7 +189,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Done = { 447 },
-            Coord = { x = 391.97, y = 1442.87 },
+            Coord = { x = 404.63, y = 1434.67 },
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
             Zone = 1458,
             _index = 18,
@@ -207,7 +207,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Done = { 447 },
             
-            Coord = { x = 391.97, y = 1442.87 },
+            Coord = { x = 404.63, y = 1434.67 },
             Class = "ROGUE",
             Race = "Scourge",
             Zone = 1458,
@@ -245,7 +245,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Done = { 447 },
-            Coord = { x = 391.97, y = 1442.87 },
+            Coord = { x = 404.63, y = 1434.67 },
             Race = "Skyborne",
             SkipForLvl = 14,
             Zone = 1458,

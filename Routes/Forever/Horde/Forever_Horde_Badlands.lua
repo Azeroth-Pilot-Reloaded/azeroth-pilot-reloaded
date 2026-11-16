@@ -9,7 +9,7 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 1418,
     conditions = { MinLevel = 36, Faction = "Horde" },
-    nextRoute = { "Forever-Horde-Stranglethorn-Vale-Second-Visit" },
+    nextRoute = { "Forever-Horde-Riverglades", "Forever-Horde-Dungeons-Riverglades" },
     prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 16 }, [APR.PREFAB_TYPES.Speedrun] = { index = 16 } },
     parallelSteps = {
         {
@@ -244,6 +244,12 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
             _index = 26,
         },
         {
+            PickUp = { 97663 },
+            Coord = { x = -2181.1, y = -6657.6 },
+            RaidIcon = { { npcID = 269647, questID = 97663 } },
+            Zone = 1418,
+        },
+        {
             PickUp = { 2258 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 2.42, 46.05),
             RaidIcon = { { npcID = 6868, questID = 2258 } },
@@ -357,6 +363,25 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 42.47, 52.5),
             Zone = 1418,
             _index = 40,
+        },
+        {
+            Qpart = { [97663] = { 1 } },
+            Coord = { x = -2819.4, y = -6891.3 },
+            Range = 30,
+            IsQuestOnQuest = 97663,
+            Zone = 1418,
+        },
+        {
+            Qpart = { [97663] = { 3 } },
+            Coord = { x = -2794.2, y = -6898 },
+            IsQuestOnQuest = 97663,
+            Zone = 1418,
+        },
+        {
+            Qpart = { [97663] = { 2 } },
+            Coord = { x = -2866.1, y = -6897.9 },
+            IsQuestOnQuest = 97663,
+            Zone = 1418,
         },
         {
             PickUp = { 705 },
@@ -504,7 +529,7 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
             PickUp = { 716 },
             Fillers = { [782] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1418, 25.82, 44.25),
-            IsQuestCompleted = 712,
+            IsQuestsCompleted = { 712, 714 },
             ItemCount = { count = 1, itemID = 2868, operator = ">=" },
             Zone = 1418,
             _index = 57,
@@ -601,6 +626,14 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
             OnlyInZones = { 1418 },
             Zone = 1418,
             _index = 68,
+        },
+        {
+            Done = { 97663 },
+            Coord = { x = -2181.5, y = -6656.4 },
+            RaidIcon = { { npcID = 269647, questID = 97663 } },
+            IsQuestOnQuest = 97663,
+            IsQuestReadyForTurnIn = 97663,
+            Zone = 1418,
         },
         {
             Done = { 2258 },

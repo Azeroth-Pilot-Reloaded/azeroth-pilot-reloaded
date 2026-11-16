@@ -20,39 +20,98 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
     prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 6 } },
     steps = {
         {
-            PickUp = { 92422 },
-            Coord = { x = 84.9, y = 2023.5 },
-            RaidIcon = { { npcID = 251001, questID = 92422 } },
+            PickUp = { 356 },
+            Coord = { x = 74.2, y = 2022.7 },
+            IsQuestNotOnQuest = 99156,
+            IsQuestUncompleted = 99156,
+            Not = { AnyOf = { { IsQuestOnQuest = 92422 }, { IsQuestCompleted = 92422 } } },
             Zone = 1420,
             _index = 1,
         },
         {
+            Qpart = { [356] = { 1, 2 } },
+            Coord = { x = -324.55, y = 2000.48 },
+            Range = 30,
+            IsQuestOnQuest = 356,
+            Zone = 1420,
+            _index = 2,
+        },
+        {
+            Done = { 356 },
+            Coord = { x = 73.8, y = 2022.3 },
+            IsQuestOnQuest = 356,
+            Zone = 1420,
+            _index = 3,
+        },
+        {
+            PickUp = { 99156 },
+            Coord = { x = 73.8, y = 2022.3 },
+            IsQuestCompleted = 356,
+            Not = { AnyOf = { { IsQuestOnQuest = 92422 }, { IsQuestCompleted = 92422 } } },
+            Zone = 1420,
+            _index = 4,
+        },
+        {
+            Qpart = { [99156] = { 1 } },
+            Coord = { x = -765.2, y = 2518.7 },
+            IsQuestOnQuest = 99156,
+            Zone = 1420,
+            _index = 5,
+        },
+        {
+            Done = { 99156 },
+            Coord = { x = 74.2, y = 2022.4 },
+            IsQuestOnQuest = 99156,
+            Zone = 1420,
+            _index = 6,
+        },
+        {
+            PickUp = { 92422 },
+            Coord = { x = 84.9, y = 2023.5 },
+            RaidIcon = { { npcID = 251001, questID = 92422 } },
+            IsQuestCompleted = 99156,
+            Zone = 1420,
+            _index = 7,
+        },
+        {
             PickUp = { 92401 },
             Note = { "POSSIBLE_SOMEBODY_GROUP_SHARE_FOLLOWING_QUEST" },
-            _index = 2,
+            _index = 8,
+        },
+        {
+            PickUp = { 450 },
+            Coord = { x = 404.63, y = 1434.67 },
+            IsQuestCompleted = 447,
+            IsQuestNotOnQuest = 451,
+            IsQuestUncompleted = 451,
+            Zone = 1458,
+            _index = 9,
         },
         {
             Waypoint = 95216,
             Coord = { x = 344.0, y = 1423.8 },
             Range = 50.0,
             RaidIcon = { { npcID = 11835 } },
+            IsQuestCompleted = 451,
             Zone = 1458,
-            _index = 3,
+            _index = 10,
         },
         {
             Waypoint = 95216,
             Coord = { x = 373.2, y = 1362.1 },
             Range = 50.0,
             RaidIcon = { { npcID = 11835 } },
+            IsQuestCompleted = 451,
             Zone = 1458,
-            _index = 4,
+            _index = 11,
         },
         {
             PickUp = { 95216 },
             Coord = { x = 428.4, y = 1417.7 },
             RaidIcon = { { npcID = 11835, questID = 95216 } },
+            IsQuestCompleted = 451,
             Zone = 1458,
-            _index = 5,
+            _index = 12,
         },
         {
             Waypoint = 92421,
@@ -60,7 +119,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             Range = 50.0,
             RaidIcon = { { npcID = 266484 } },
             Zone = 1458,
-            _index = 6,
+            _index = 13,
         },
         {
             Waypoint = 92421,
@@ -68,7 +127,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             Range = 50.0,
             RaidIcon = { { npcID = 266484 } },
             Zone = 1458,
-            _index = 7,
+            _index = 14,
         },
         {
             Waypoint = 92421,
@@ -76,7 +135,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             Range = 50.0,
             RaidIcon = { { npcID = 266484 } },
             Zone = 1458,
-            _index = 8,
+            _index = 15,
         },
         {
             Waypoint = 92421,
@@ -84,7 +143,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             Range = 50.0,
             RaidIcon = { { npcID = 266484 } },
             Zone = 1458,
-            _index = 9,
+            _index = 16,
         },
         {
             Waypoint = 92421,
@@ -92,7 +151,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             Range = 50.0,
             RaidIcon = { { npcID = 266484 } },
             Zone = 1458,
-            _index = 10,
+            _index = 17,
         },
         {
             Waypoint = 92421,
@@ -100,7 +159,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             Range = 50.0,
             RaidIcon = { { npcID = 266484 } },
             Zone = 1458,
-            _index = 11,
+            _index = 18,
         },
         {
             Waypoint = 92421,
@@ -108,14 +167,14 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             Range = 50.0,
             RaidIcon = { { npcID = 266484 } },
             Zone = 1458,
-            _index = 12,
+            _index = 19,
         },
         {
             PickUp = { 92421 },
             Coord = { x = 316.0, y = 1304.8 },
             RaidIcon = { { npcID = 266484, questID = 92421 } },
             Zone = 1458,
-            _index = 13,
+            _index = 20,
         },
         {
             Waypoint = 92422,
@@ -128,7 +187,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             OnlyInZones = { 1458 },
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 14,
+            _index = 21,
         },
         {
             Waypoint = 92422,
@@ -141,7 +200,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             OnlyInZones = { 1458 },
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 15,
+            _index = 22,
         },
         {
             Waypoint = 92422,
@@ -154,7 +213,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             OnlyInZones = { 1458 },
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 16,
+            _index = 23,
         },
         {
             Waypoint = 92422,
@@ -167,7 +226,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             OnlyInZones = { 1458 },
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 17,
+            _index = 24,
         },
         {
             Waypoint = 92422,
@@ -180,7 +239,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             OnlyInZones = { 1458 },
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 18,
+            _index = 25,
         },
         {
             Waypoint = 92422,
@@ -193,7 +252,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             OnlyInZones = { 1458 },
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 19,
+            _index = 26,
         },
         {
             Waypoint = 92422,
@@ -206,7 +265,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             OnlyInZones = { 1458 },
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 20,
+            _index = 27,
         },
         {
             Waypoint = 92422,
@@ -219,7 +278,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             OnlyInZones = { 1458 },
             SkipInZones = { 1421 },
             Zone = 1458,
-            _index = 21,
+            _index = 28,
         },
         {
             Waypoint = 92422,
@@ -232,7 +291,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             OnlyInZones = { 1458 },
             SkipInZones = { 1421 },
             Zone = 1420,
-            _index = 22,
+            _index = 29,
         },
         {
             Waypoint = 92422,
@@ -243,7 +302,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             IsQuestUncompleted = 92401,
             SkipInZones = { 1421 },
             Zone = 1420,
-            _index = 23,
+            _index = 30,
         },
         {
             Waypoint = 92422,
@@ -254,7 +313,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             IsQuestUncompleted = 92401,
             SkipInZones = { 1421 },
             Zone = 1421,
-            _index = 24,
+            _index = 31,
         },
         {
             Waypoint = 92422,
@@ -264,7 +323,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             IsQuestNotOnQuest = 92401,
             IsQuestUncompleted = 92401,
             Zone = 1421,
-            _index = 25,
+            _index = 32,
         },
         {
             Waypoint = 92422,
@@ -274,7 +333,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             IsQuestNotOnQuest = 92401,
             IsQuestUncompleted = 92401,
             Zone = 1421,
-            _index = 26,
+            _index = 33,
         },
         {
             Waypoint = 92422,
@@ -284,7 +343,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             IsQuestNotOnQuest = 92401,
             IsQuestUncompleted = 92401,
             Zone = 1421,
-            _index = 27,
+            _index = 34,
         },
         {
             Waypoint = 92422,
@@ -294,7 +353,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             IsQuestNotOnQuest = 92401,
             IsQuestUncompleted = 92401,
             Zone = 1421,
-            _index = 28,
+            _index = 35,
         },
         {
             Waypoint = 92422,
@@ -304,7 +363,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             IsQuestNotOnQuest = 92401,
             IsQuestUncompleted = 92401,
             Zone = 1421,
-            _index = 29,
+            _index = 36,
         },
         {
             UseFlightPath = 92422,
@@ -315,14 +374,61 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             IsQuestNotOnQuest = 92401,
             IsQuestUncompleted = 92401,
             Zone = 1458,
-            _index = 30,
+            _index = 37,
         },
         {
             PickUp = { 92401 },
             Coord = { x = 1579.6, y = 461.7 },
             RaidIcon = { { npcID = 250686, questID = 92401 } },
             Zone = 1421,
-            _index = 31,
+            _index = 38,
+        },
+        {
+            Qpart = { [450] = { 1 } },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 42.98, 73.22),
+            IsQuestOnQuest = 450,
+            Zone = 1421,
+            _index = 39,
+        },
+        {
+            Done = { 450 },
+            Coord = { x = 1649.4, y = 522.5 },
+            IsQuestOnQuest = 450,
+            Zone = 1421,
+            _index = 40,
+        },
+        {
+            PickUp = { 451 },
+            Coord = { x = 1649.4, y = 522.5 },
+            IsQuestCompleted = 450,
+            Zone = 1421,
+            _index = 41,
+        },
+        {
+            Qpart = { [451] = { 2 } },
+            Fillers = { [451] = { 3 } },
+            Coord = { x = 214.0, y = 871.7 },
+            Range = 30,
+            IsQuestOnQuest = 451,
+            Zone = 1421,
+            _index = 42,
+        },
+        {
+            Qpart = { [451] = { 1 } },
+            Fillers = { [451] = { 3 } },
+            Coord = { x = 499.3, y = 645.0 },
+            Range = 30,
+            IsQuestOnQuest = 451,
+            Zone = 1421,
+            _index = 43,
+        },
+        {
+            Qpart = { [451] = { 3 } },
+            Coord = { x = 694.6, y = 1323.8 },
+            Range = 30,
+            IsQuestOnQuest = 451,
+            Zone = 1421,
+            _index = 44,
         },
         {
             UseFlightPath = 92422,
@@ -332,7 +438,22 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             OnlyInZones = { 1421 },
             SkipInZones = { 1458 },
             Zone = 1421,
-            _index = 32,
+            _index = 45,
+        },
+        {
+            Done = { 451 },
+            Coord = { x = 404.5, y = 1434.7 },
+            IsQuestOnQuest = 451,
+            IsQuestReadyForTurnIn = 451,
+            Zone = 1458,
+            _index = 46,
+        },
+        {
+            PickUp = { 95216 },
+            Coord = { x = 428.4, y = 1417.7 },
+            IsQuestCompleted = 451,
+            Zone = 1458,
+            _index = 47,
         },
         {
             EnterInstance = { dungeonKey = "ROL" },
@@ -340,7 +461,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             Dungeon = "ROL",
             InstanceQuest = true,
             Zone = 1458,
-            _index = 33,
+            _index = 48,
         },
         {
             PickUp = { 95204 },
@@ -354,7 +475,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             InstanceQuest = true,
             IsQuestNotOnQuest = 95204,
             IsQuestUncompleted = 95204,
-            _index = 34,
+            _index = 49,
         },
         {
             KillNPC = { dungeonKey = "ROL", npcID = 250483, name = "Witherfang" },
@@ -364,7 +485,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             NoArrow = true,
             Dungeon = "ROL",
             InstanceQuest = true,
-            _index = 35,
+            _index = 50,
         },
         {
             Qpart = {
@@ -378,7 +499,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             InstanceQuest = true,
             RaidIcon = { { npcID = 250483, questID = 95216, objectiveIndex = 1 } },
             IsQuestOnQuest = 95216,
-            _index = 36,
+            _index = 51,
         },
         {
             KillNPC = { dungeonKey = "ROL", npcID = 250660, name = "The Baron" },
@@ -388,7 +509,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             NoArrow = true,
             Dungeon = "ROL",
             InstanceQuest = true,
-            _index = 37,
+            _index = 52,
         },
         {
             LootItems = { { itemID = 280438, quantity = 1, questID = 97288 } },
@@ -403,7 +524,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             RaidIcon = { { npcID = 250660, questID = 92421, objectiveIndex = 1 } },
             IsQuestNotOnQuest = 97288,
             IsQuestUncompleted = 97288,
-            _index = 38,
+            _index = 53,
         },
         {
             PickUp = { 97288 },
@@ -418,7 +539,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             RaidIcon = { { npcID = 250660, questID = 92421, objectiveIndex = 1 } },
             IsQuestNotOnQuest = 97288,
             IsQuestUncompleted = 97288,
-            _index = 39,
+            _index = 54,
         },
         {
             KillNPC = { dungeonKey = "ROL", npcID = 250657, name = "Rath'mael" },
@@ -428,7 +549,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             NoArrow = true,
             Dungeon = "ROL",
             InstanceQuest = true,
-            _index = 40,
+            _index = 55,
         },
         {
             Qpart = {
@@ -442,7 +563,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             InstanceQuest = true,
             RaidIcon = { { npcID = 250842 } },
             IsQuestOnQuest = 92422,
-            _index = 41,
+            _index = 56,
         },
         {
             Qpart = {
@@ -454,7 +575,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             InstanceQuest = true,
             RaidIcon = { { npcID = 250842, questID = 92401, objectiveIndex = 1 } },
             IsQuestOnQuest = 92401,
-            _index = 42,
+            _index = 57,
         },
         {
             Qpart = {
@@ -466,7 +587,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             InstanceQuest = true,
             RaidIcon = { { npcID = 255964, questID = 92421, objectiveIndex = 1 } },
             IsQuestOnQuest = 92421,
-            _index = 43,
+            _index = 58,
         },
         {
             LootItems = { { itemID = 275521, quantity = 1, questID = 95204 } },
@@ -477,7 +598,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             InstanceQuest = true,
             IsQuestNotOnQuest = 95204,
             IsQuestUncompleted = 95204,
-            _index = 44,
+            _index = 59,
         },
         {
             PickUp = { 95204 },
@@ -488,14 +609,14 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             InstanceQuest = true,
             IsQuestNotOnQuest = 95204,
             IsQuestUncompleted = 95204,
-            _index = 45,
+            _index = 60,
         },
         {
             LeaveInstance = { dungeonKey = "ROL" },
             NoArrow = true,
             Dungeon = "ROL",
             InstanceQuest = true,
-            _index = 46,
+            _index = 61,
         },
         {
             Done = { 92422 },
@@ -505,7 +626,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             IsQuestReadyForTurnIn = 92422,
             IsQuestUncompleted = 92422,
             Zone = 1420,
-            _index = 47,
+            _index = 62,
         },
         {
             Waypoint = 95204,
@@ -513,7 +634,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             Coord = { x = 240.75, y = 1877.57 },
             Range = 5,
             Zone = 1420,
-            _index = 48,
+            _index = 63,
         },
         {
             Waypoint = 95204,
@@ -521,7 +642,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             Coord = { x = 239.14, y = 1749.54 },
             Range = 35.0,
             Zone = 1458,
-            _index = 49,
+            _index = 64,
         },
         {
             Waypoint = 95204,
@@ -529,7 +650,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             Coord = { x = 255.64, y = 1724.7 },
             Range = 35.0,
             Zone = 1458,
-            _index = 50,
+            _index = 65,
         },
         {
             Waypoint = 95204,
@@ -537,7 +658,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             Coord = { x = 240.68, y = 1706.97 },
             Range = 10.0,
             Zone = 1458,
-            _index = 51,
+            _index = 66,
         },
         {
             Waypoint = 95204,
@@ -545,7 +666,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             Coord = { x = 241.06, y = 1660.12 },
             Range = 10.0,
             Zone = 1458,
-            _index = 52,
+            _index = 67,
         },
         {
             Waypoint = 95204,
@@ -553,7 +674,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             Coord = { x = 257.08, y = 1623.38 },
             Range = 10.0,
             Zone = 1458,
-            _index = 53,
+            _index = 68,
         },
         {
             Waypoint = 95204,
@@ -561,7 +682,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             Coord = { x = 244.51, y = 1598.73 },
             Range = 15.0,
             Zone = 1458,
-            _index = 54,
+            _index = 69,
         },
         {
             Waypoint = 95204,
@@ -569,7 +690,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             Coord = { x = 266.3, y = 1567.2 },
             Range = 20.0,
             Zone = 1458,
-            _index = 55,
+            _index = 70,
         },
         {
             LootItems = { { itemID = 275521, quantity = 1, questID = 95204 } },
@@ -578,7 +699,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             Dungeon = "ROL",
             InstanceQuest = true,
             IsQuestOnQuest = 95204,
-            _index = 56,
+            _index = 71,
         },
         {
             Done = { 95204 },
@@ -586,7 +707,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             RaidIcon = { { npcID = 7825, questID = 95204 } },
             IsQuestOnQuest = 95204,
             Zone = 1458,
-            _index = 57,
+            _index = 72,
         },
         {
             Waypoint = 95216,
@@ -597,7 +718,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             IsQuestReadyForTurnIn = 95216,
             IsQuestUncompleted = 95216,
             Zone = 1458,
-            _index = 58,
+            _index = 73,
         },
         {
             Waypoint = 95216,
@@ -608,7 +729,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             IsQuestReadyForTurnIn = 95216,
             IsQuestUncompleted = 95216,
             Zone = 1458,
-            _index = 59,
+            _index = 74,
         },
         {
             Done = { 95216 },
@@ -618,7 +739,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             IsQuestReadyForTurnIn = 95216,
             IsQuestUncompleted = 95216,
             Zone = 1458,
-            _index = 60,
+            _index = 75,
         },
         {
             Done = { 97288 },
@@ -626,7 +747,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             RaidIcon = { { npcID = 2055, questID = 97288 } },
             IsQuestOnQuest = 97288,
             Zone = 1458,
-            _index = 61,
+            _index = 76,
         },
         {
             Waypoint = 92421,
@@ -637,7 +758,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             IsQuestReadyForTurnIn = 92421,
             IsQuestUncompleted = 92421,
             Zone = 1458,
-            _index = 62,
+            _index = 77,
         },
         {
             Waypoint = 92421,
@@ -648,7 +769,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             IsQuestReadyForTurnIn = 92421,
             IsQuestUncompleted = 92421,
             Zone = 1458,
-            _index = 63,
+            _index = 78,
         },
         {
             Waypoint = 92421,
@@ -659,7 +780,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             IsQuestReadyForTurnIn = 92421,
             IsQuestUncompleted = 92421,
             Zone = 1458,
-            _index = 64,
+            _index = 79,
         },
         {
             Waypoint = 92421,
@@ -670,7 +791,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             IsQuestReadyForTurnIn = 92421,
             IsQuestUncompleted = 92421,
             Zone = 1458,
-            _index = 65,
+            _index = 80,
         },
         {
             Done = { 92421 },
@@ -680,7 +801,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             IsQuestReadyForTurnIn = 92421,
             IsQuestUncompleted = 92421,
             Zone = 1458,
-            _index = 66,
+            _index = 81,
         },
         {
             UseFlightPath = 92401,
@@ -694,7 +815,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             OnlyInZones = { 1458 },
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1458,
-            _index = 67,
+            _index = 82,
         },
         {
             Done = { 92401 },
@@ -707,11 +828,11 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
             IsQuestUncompleted = 92401,
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             Zone = 1421,
-            _index = 68,
+            _index = 83,
         },
         {
             RouteCompleted = true,
-            _index = 69,
+            _index = 84,
         },
     },
 }

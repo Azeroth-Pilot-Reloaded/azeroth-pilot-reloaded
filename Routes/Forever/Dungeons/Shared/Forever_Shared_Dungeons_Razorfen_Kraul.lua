@@ -60,6 +60,12 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Zone = 1413,
         _index = 4,
     }, {
+        LootItems = { { itemID = 6684, quantity = 1 }, { itemID = 5897, quantity = 1 }, { itemID = 5880, quantity = 1 } },
+        Coord = { x = -3694.20, y = -928.32 },
+        IsQuestOnQuest = 1221,
+        Zone = 1413,
+        _index = 5,
+    }, {
         PickUp = { 96264 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 59.84, 27.57),
         RaidIcon = { {
@@ -70,14 +76,14 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Faction = "Alliance",
         MinLevel = 30,
         Zone = 1417,
-        _index = 5,
+        _index = 6,
     }, {
         Qpart = {
             [1100] = { 1 },
         },
         NoArrow = true,
         IsQuestOnQuest = 1100,
-        _index = 6,
+        _index = 7,
     }, {
         Done = { 1100 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 89.64, 46.57),
@@ -88,7 +94,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Faction = "Alliance",
         IsQuestOnQuest = 1100,
         Zone = 1444,
-        _index = 7,
+        _index = 8,
     }, {
         PickUp = { 1101 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 89.64, 46.57),
@@ -102,7 +108,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Faction = "Alliance",
         MinLevel = 29,
         Zone = 1444,
-        _index = 8,
+        _index = 9,
     }, {
         EnterInstance = {
             dungeonKey = "INSTANCE_47",
@@ -111,7 +117,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
         Zone = 1413,
-        _index = 9,
+        _index = 10,
     }, {
         PickUp = { 1142 },
         NoArrow = true,
@@ -123,7 +129,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         } },
         Faction = "Alliance",
         MinLevel = 25,
-        _index = 10,
+        _index = 11,
     }, {
         PickUp = { 1144 },
         NoArrow = true,
@@ -134,7 +140,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
             questID = 1144,
         } },
         MinLevel = 23,
-        _index = 11,
+        _index = 12,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_47",
@@ -144,7 +150,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
-        _index = 12,
+        _index = 13,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_47",
@@ -154,7 +160,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
-        _index = 13,
+        _index = 14,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_47",
@@ -164,7 +170,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
-        _index = 14,
+        _index = 15,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_47",
@@ -174,7 +180,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
-        _index = 15,
+        _index = 16,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_47",
@@ -184,7 +190,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
-        _index = 16,
+        _index = 17,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_47",
@@ -194,7 +200,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
-        _index = 17,
+        _index = 18,
     }, {
         KillNPC = {
             dungeonKey = "INSTANCE_47",
@@ -204,7 +210,22 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         NoArrow = true,
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
-        _index = 18,
+        _index = 19,
+    }, {
+        PickUp = { 6522 },
+        Button = {
+            ["6522"] = 17008,
+        },
+        NoArrow = true,
+        Dungeon = "INSTANCE_47",
+        InstanceQuest = true,
+        Faction = "Horde",
+        ItemCount = {
+            count = 1,
+            itemID = 17008,
+        },
+        MinLevel = 28,
+        _index = 20,
     }, {
         Qpart = {
             [1101] = { 1 },
@@ -213,7 +234,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
         IsQuestOnQuest = 1101,
-        _index = 19,
+        _index = 21,
     }, {
         Qpart = {
             [1102] = { 1 },
@@ -222,7 +243,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
         IsQuestOnQuest = 1102,
-        _index = 20,
+        _index = 22,
     }, {
         Qpart = {
             [1109] = { 1 },
@@ -231,7 +252,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
         IsQuestOnQuest = 1109,
-        _index = 21,
+        _index = 23,
     }, {
         Qpart = {
             [1142] = { 1 },
@@ -240,7 +261,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
         IsQuestOnQuest = 1142,
-        _index = 22,
+        _index = 24,
     }, {
         Qpart = {
             [1144] = { 1 },
@@ -249,7 +270,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
         IsQuestOnQuest = 1144,
-        _index = 23,
+        _index = 25,
     }, {
         Qpart = {
             [1221] = { 1, 2, 3, 4 },
@@ -258,7 +279,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
         IsQuestOnQuest = 1221,
-        _index = 24,
+        _index = 26,
     }, {
         Qpart = {
             [96264] = { 1 },
@@ -267,7 +288,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Dungeon = "INSTANCE_47",
         InstanceQuest = true,
         IsQuestOnQuest = 96264,
-        _index = 25,
+        _index = 27,
     }, {
         Done = { 1144 },
         NoArrow = true,
@@ -278,14 +299,14 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
             questID = 1144,
         } },
         IsQuestOnQuest = 1144,
-        _index = 26,
+        _index = 28,
     }, {
         LeaveInstance = {
             dungeonKey = "INSTANCE_47",
         },
         NoArrow = true,
         Dungeon = "INSTANCE_47",
-        _index = 27,
+        _index = 29,
     }, {
         Done = { 1101 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1444, 89.64, 46.57),
@@ -296,7 +317,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Faction = "Alliance",
         IsQuestOnQuest = 1101,
         Zone = 1444,
-        _index = 28,
+        _index = 30,
     }, {
         Done = { 1102 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 35.97, 59.92),
@@ -307,7 +328,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Faction = "Horde",
         IsQuestOnQuest = 1102,
         Zone = 1456,
-        _index = 29,
+        _index = 31,
     }, {
         Done = { 1109 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 48.82, 69.28),
@@ -318,7 +339,18 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Faction = "Horde",
         IsQuestOnQuest = 1109,
         Zone = 1458,
-        _index = 30,
+        _index = 32,
+    }, {
+        Done = { 6522 },
+        Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 56.25, 92.2),
+        RaidIcon = { {
+            npcID = 2425,
+            questID = 6522,
+        } },
+        Faction = "Horde",
+        IsQuestOnQuest = 6522,
+        Zone = 1458,
+        _index = 33,
     }, {
         Done = { 1142 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1457, 69.54, 67.75),
@@ -329,7 +361,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Faction = "Alliance",
         IsQuestOnQuest = 1142,
         Zone = 1457,
-        _index = 31,
+        _index = 34,
     }, {
         Done = { 1221 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 62.37, 37.62),
@@ -339,7 +371,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         } },
         IsQuestOnQuest = 1221,
         Zone = 1413,
-        _index = 32,
+        _index = 35,
     }, {
         Done = { 96264 },
         Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 59.84, 27.57),
@@ -351,9 +383,9 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Razorfen-Kraul"] = {
         Faction = "Alliance",
         IsQuestOnQuest = 96264,
         Zone = 1417,
-        _index = 33,
+        _index = 36,
     }, {
         RouteCompleted = true,
-        _index = 34,
+        _index = 37,
     } },
 }

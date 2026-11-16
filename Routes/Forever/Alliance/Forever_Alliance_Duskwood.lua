@@ -1083,7 +1083,7 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         {
             Qpart = { [253] = { 1 } },
             Fillers = { [335] = { 1 } },
-            Note = { "CLICK_ELIZA_GRAVE_DIRT_SUMMON_ELIZA", "ELIZA_CAST_FROSTBOLT_FROST_NOVA_SUMMONING_MULTIPLE", "USE_WAGON_JUMP_HUT_AVOID_GUARDS_MAIN" },
+            Note = { "CLICK_ELIZA_GRAVE_DIRT_SUMMON_ELIZA", "ELIZA_CAST_FROSTBOLT_FROST_NOVA_SUMMONING_MULTIPLE", "QUEST_DIFFICULT_FIND_GROUP_SKIP_STEP_UNABLE_FIND" },
             Coord = { x = 54.01, y = -10270.44 },
             Range = 10,
             Class = { "DRUID", "PALADIN", "ROGUE", "WARRIOR" },
@@ -1093,7 +1093,7 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         {
             Qpart = { [253] = { 1 } },
             Fillers = { [335] = { 1 } },
-            Note = { "CLICK_ELIZA_GRAVE_DIRT_SUMMON_ELIZA", "ELIZA_CAST_FROSTBOLT_FROST_NOVA_SUMMONING_MULTIPLE", "USE_WAGON_JUMP_HUT_AVOID_GUARDS_MAIN" },
+            Note = { "CLICK_ELIZA_GRAVE_DIRT_SUMMON_ELIZA", "ELIZA_CAST_FROSTBOLT_FROST_NOVA_SUMMONING_MULTIPLE", "QUEST_DIFFICULT_FIND_GROUP_SKIP_STEP_UNABLE_FIND" },
             Coord = { x = 54.01, y = -10270.44 },
             Range = 10,
             Class = { "HUNTER", "MAGE", "PRIEST", "WARLOCK" },
@@ -1103,7 +1103,7 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
         {
             Qpart = { [253] = { 1 } },
             Fillers = { [335] = { 1 } },
-            Note = { "CLICK_ELIZA_GRAVE_DIRT_SUMMON_ELIZA", "ELIZA_CAST_FROSTBOLT_FROST_NOVA_SUMMONING_MULTIPLE" },
+            Note = { "CLICK_ELIZA_GRAVE_DIRT_SUMMON_ELIZA", "ELIZA_CAST_FROSTBOLT_FROST_NOVA_SUMMONING_MULTIPLE", "QUEST_DIFFICULT_FIND_GROUP_SKIP_STEP_UNABLE_FIND" },
             Coord = { x = 54.01, y = -10270.44 },
             Range = 10,
             Class = "SHAMAN",

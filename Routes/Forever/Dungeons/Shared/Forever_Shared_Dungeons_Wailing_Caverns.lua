@@ -77,8 +77,9 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             Qpart = {
                 [870] = { 1 },
             },
-            NoArrow = true,
+            Coord = { x = -1943.16, y = 89.64 },
             IsQuestOnQuest = 870,
+            Zone = 1413,
             _index = 5,
         },
         {

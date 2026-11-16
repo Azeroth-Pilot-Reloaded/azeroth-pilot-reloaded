@@ -3772,6 +3772,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Scholomance"] = {
         Qpart = {
             [5466] = { 1 },
         },
+        Button = { ["5466-1"] = 13752 },
         NoArrow = true,
         Dungeon = "INSTANCE_289",
         InstanceQuest = true,

@@ -76,10 +76,11 @@ APR.RouteQuestStepList["Forever-Alliance-Westfall"] = {
             _index = 1,
         },
         {
-            Note = { "OPTIONAL_BUY_MISSING_QUEST_SUPPLIES_AUCTION_HOUSE", "WESTFALL_STEW_3_STRINGY_VULTURE_MEAT_3", "ONLY_CHEAP_14_GOLEM_ISOSPRINGS_5_HARVESTER" },
+            LootItems = { { itemID = 729, quantity = 3, questID = 38 }, { itemID = 730, quantity = 3, questID = 38 }, { itemID = 731, quantity = 3, questID = 38 }, { itemID = 732, quantity = 3, questID = 38 }, { itemID = 723, quantity = 8, questID = 22 }, { itemID = 255007, quantity = 14, questID = 92909 } },
+            Note = { "OPTIONAL_BUY_MISSING_QUEST_SUPPLIES_AUCTION_HOUSE", "WESTFALL_STEW_3_STRINGY_VULTURE_MEAT_3" },
             Coord = { x = 660.28, y = -8814.55 },
             Range = 5,
-            AnyOf = { { ItemCount = { itemID = 723, count = 8, operator = "<" }, IsQuestUncompleted = 22 }, { ItemCount = { itemID = 729, count = 3, operator = "<" }, IsQuestUncompleted = 38 }, { ItemCount = { itemID = 730, count = 3, operator = "<" }, IsQuestUncompleted = 38 }, { ItemCount = { itemID = 731, count = 3, operator = "<" }, IsQuestUncompleted = 38 }, { ItemCount = { itemID = 732, count = 3, operator = "<" }, IsQuestUncompleted = 38 }, { ItemCount = { itemID = 255007, count = 14, operator = "<" }, IsQuestUncompleted = 92909 }, { ItemCount = { itemID = 255010, count = 5, operator = "<" }, IsQuestUncompleted = 92909 } },
+            AnyOf = { { ItemCount = { itemID = 723, count = 8, operator = "<" }, IsQuestUncompleted = 22 }, { ItemCount = { itemID = 729, count = 3, operator = "<" }, IsQuestUncompleted = 38 }, { ItemCount = { itemID = 730, count = 3, operator = "<" }, IsQuestUncompleted = 38 }, { ItemCount = { itemID = 731, count = 3, operator = "<" }, IsQuestUncompleted = 38 }, { ItemCount = { itemID = 732, count = 3, operator = "<" }, IsQuestUncompleted = 38 }, { ItemCount = { itemID = 255007, count = 14, operator = "<" }, IsQuestUncompleted = 92909 } },
             OnlyInZones = { 1453 },
             Zone = 1453,
             _index = 2,

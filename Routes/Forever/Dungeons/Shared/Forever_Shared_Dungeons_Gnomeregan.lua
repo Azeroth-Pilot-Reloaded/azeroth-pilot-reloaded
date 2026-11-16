@@ -358,6 +358,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         Qpart = {
             [2926] = { 1 },
         },
+        Button = { ["2926-1"] = 9283 },
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,
@@ -879,6 +880,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Gnomeregan"] = {
         Qpart = {
             [2962] = { 1 },
         },
+        Button = { ["2962-1"] = 9364 },
         NoArrow = true,
         Dungeon = "INSTANCE_90",
         InstanceQuest = true,

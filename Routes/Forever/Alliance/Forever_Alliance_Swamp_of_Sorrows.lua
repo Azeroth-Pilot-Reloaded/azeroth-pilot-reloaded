@@ -9,7 +9,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 1435,
     conditions = { MinLevel = 38, Faction = "Alliance" },
-    nextRoute = { "Forever-Alliance-Alterac-Arathi" },
+    nextRoute = { "Forever-Alliance-Riverglades", "Forever-Alliance-Dungeons-Riverglades" },
     prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 19 }, [APR.PREFAB_TYPES.Speedrun] = { index = 19 } },
     parallelSteps = {
         {
@@ -398,13 +398,52 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             _index = 43,
         },
         {
+            PickUp = { 93585 },
+            Note = { "ESCORTS_NPC" },
+            Coord = { x = -2735.5, y = -10392.101 },
+            NoAutoAccept = true,
+            Zone = 1435,
+            _index = 44,
+        },
+        {
+            Qpart = { [93585] = { 1 } },
+            Coord = { x = -2818.9, y = -10101.17 },
+            Range = 30,
+            IsQuestOnQuest = 93585,
+            Zone = 1435,
+            _index = 45,
+        },
+        {
+            Done = { 93585 },
+            Coord = { x = -2820.6, y = -10101.601 },
+            RaidIcon = { { npcID = 1776, questID = 93585 } },
+            IsQuestOnQuest = 93585,
+            Zone = 1435,
+            _index = 46,
+        },
+        {
             PickUp = { 1389 },
             Fillers = { [1396] = { 1, 2, 3 } },
             Coord = { x = -2818.9, y = -10101.17 },
             RaidIcon = { { npcID = 1776, questID = 1389 } },
             Zone = 1435,
-            _index = 44,
+            _index = 47,
         },
+        {
+            PickUp = { 93429 },
+            Coord = { x = -2822.1, y = -10106.8 },
+            RaidIcon = { { npcID = 254775, questID = 93429 } },
+            Zone = 1435,
+            _index = 48,
+        },
+        {
+            PickUp = { 93430 },
+            Coord = { x = -2830.9, y = -10085.4 },
+            RaidIcon = { { npcID = 254770, questID = 93430 } },
+            Zone = 1435,
+            _index = 49,
+        },
+
         {
             Qpart = { [1116] = { 1 } },
             Fillers = { [1396] = { 1, 2, 3 } },
@@ -414,7 +453,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             IsQuestCompleted = 1115,
             IsQuestOnQuest = 1116,
             Zone = 1435,
-            _index = 45,
+            _index = 50,
         },
         {
             Qpart = { [1396] = { 1, 2, 3 } },
@@ -423,28 +462,28 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             Range = 30,
             RaidIcon = { { npcID = 1084, questID = 1396, objectiveIndex = 1 }, { npcID = 858, questID = 1396, objectiveIndex = 2 }, { npcID = 767, questID = 1396, objectiveIndex = 3 } },
             Zone = 1435,
-            _index = 46,
+            _index = 51,
         },
         {
             Done = { 1396 },
             Coord = { x = -2836.27, y = -10535.58 },
             RaidIcon = { { npcID = 5476, questID = 1396 } },
             Zone = 1435,
-            _index = 47,
+            _index = 52,
         },
         {
             PickUp = { 1421 },
             Coord = { x = -2836.27, y = -10535.58 },
             RaidIcon = { { npcID = 5476, questID = 1421 } },
             Zone = 1435,
-            _index = 48,
+            _index = 53,
         },
         {
             Waypoint = 1393,
             Coord = { x = -3537.01, y = -10090.75 },
             Range = 20,
             Zone = 1435,
-            _index = 49,
+            _index = 54,
         },
         {
             Qpart = { [1421] = { 1 } },
@@ -452,7 +491,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             Note = { "LOOT_CHEST", "AVOID_GOING_MIDDLE_FALLOW_SANCTUARY" },
             Coord = { x = -3701.65, y = -9900.87 },
             Zone = 1435,
-            _index = 50,
+            _index = 55,
         },
         {
             PickUp = { 1393 },
@@ -462,14 +501,14 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             NoAutoAccept = true,
             RaidIcon = { { npcID = 5391, questID = 1393 } },
             Zone = 1435,
-            _index = 51,
+            _index = 56,
         },
         {
             Qpart = { [1393] = { 1 } },
             Fillers = { [1373] = { 1 }, [1389] = { 1 } },
             Coord = { x = -3439.64, y = -10074.14 },
             Zone = 1435,
-            _index = 52,
+            _index = 57,
         },
         {
             Qpart = { [1373] = { 1 } },
@@ -480,7 +519,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             RaidIcon = { { npcID = 5622, questID = 1373, objectiveIndex = 1 } },
             IsQuestOnQuest = 1373,
             Zone = 1435,
-            _index = 53,
+            _index = 58,
         },
         {
             Qpart = { [1389] = { 1 } },
@@ -489,20 +528,37 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             IsQuestOnQuest = 1389,
             SkipForLvl = 39,
             Zone = 1435,
-            _index = 54,
+            _index = 59,
         },
+        {
+            Qpart = { [93429] = { 1 } },
+            Coord = { x = -3540.22, y = -10019.64 },
+            Range = 30,
+            IsQuestOnQuest = 93429,
+            Zone = 1435,
+            _index = 60,
+        },
+        {
+            Qpart = { [93430] = { 1 } },
+            Coord = { x = -3540.22, y = -10019.64 },
+            Range = 30,
+            IsQuestOnQuest = 93430,
+            Zone = 1435,
+            _index = 61,
+        },
+
         {
             Qpart = { [1448] = { 1 } },
             Note = { "CAREFUL_NOT_RUN_TOO_CLOSE_STONARD_WAY" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 67, 47),
             Zone = 1435,
-            _index = 55,
+            _index = 62,
         },
         {
             Done = { 1393 },
             Coord = { x = -3319.47, y = -10228.83 },
             Zone = 1435,
-            _index = 56,
+            _index = 63,
         },
         {
             Done = { 1389 },
@@ -510,25 +566,42 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             RaidIcon = { { npcID = 1776, questID = 1389 } },
             IsQuestReadyForTurnIn = 1389,
             Zone = 1435,
-            _index = 57,
+            _index = 64,
         },
+        {
+            Done = { 93430 },
+            Coord = { x = -2830.9, y = -10085.4 },
+            RaidIcon = { { npcID = 254770, questID = 93430 } },
+            IsQuestOnQuest = 93430,
+            Zone = 1435,
+            _index = 65,
+        },
+        {
+            Done = { 93429 },
+            Coord = { x = -2789.7, y = -10119.4 },
+            RaidIcon = { { npcID = 254775, questID = 93429 } },
+            IsQuestOnQuest = 93429,
+            Zone = 1435,
+            _index = 66,
+        },
+
         {
             LeaveQuests = { 1389 },
             MinLevel = 39,
-            _index = 58,
+            _index = 67,
         },
         {
             Done = { 1421 },
             Coord = { x = -2836.27, y = -10535.58 },
             RaidIcon = { { npcID = 5476, questID = 1421 } },
             Zone = 1435,
-            _index = 59,
+            _index = 68,
         },
         {
             UseHS = 1448,
             UseHSIfAvailable = true,
             SkipInZones = { 1434, 1453 },
-            _index = 60,
+            _index = 69,
         },
         {
             Waypoint = 1448,
@@ -539,7 +612,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             OnlyInZones = { 1435 },
             SkipInZones = { 1434, 1453 },
             Zone = 1435,
-            _index = 61,
+            _index = 70,
         },
         {
             Waypoint = 1116,
@@ -551,7 +624,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             OnlyInZones = { 1435 },
             SkipInZones = { 1434, 1453 },
             Zone = 1435,
-            _index = 62,
+            _index = 71,
         },
         {
             Waypoint = 1448,
@@ -559,7 +632,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             Range = 20,
             SkipInZones = { 1434, 1453 },
             Zone = 1435,
-            _index = 63,
+            _index = 72,
         },
         {
             Waypoint = 1448,
@@ -570,7 +643,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             OnlyInZones = { 1435, 1430 },
             SkipInZones = { 1434, 1453 },
             Zone = 1430,
-            _index = 64,
+            _index = 73,
         },
         {
             Waypoint = 1448,
@@ -581,7 +654,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             OnlyInZones = { 1435, 1430 },
             SkipInZones = { 1434, 1453 },
             Zone = 1430,
-            _index = 65,
+            _index = 74,
         },
         {
             Waypoint = 1448,
@@ -592,7 +665,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             OnlyInZones = { 1435, 1430 },
             SkipInZones = { 1434, 1453 },
             Zone = 1430,
-            _index = 66,
+            _index = 75,
         },
         {
             Waypoint = 1116,
@@ -604,7 +677,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             OnlyInZones = { 1430, 1431 },
             SkipInZones = { 1434, 1453 },
             Zone = 1431,
-            _index = 67,
+            _index = 76,
         },
         {
             Waypoint = 1448,
@@ -612,7 +685,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             Range = 20,
             SkipInZones = { 1434, 1453 },
             Zone = 1431,
-            _index = 68,
+            _index = 77,
         },
         {
             Waypoint = 1448,
@@ -623,7 +696,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             OnlyInZones = { 1431 },
             SkipInZones = { 1434, 1453 },
             Zone = 1431,
-            _index = 69,
+            _index = 78,
         },
         {
             Waypoint = 1448,
@@ -634,7 +707,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             OnlyInZones = { 1431 },
             SkipInZones = { 1434, 1453 },
             Zone = 1431,
-            _index = 70,
+            _index = 79,
         },
         {
             UseFlightPath = 1116,
@@ -643,7 +716,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             IsQuestOnQuest = 1116,
             OnlyInZones = { 1431 },
             Zone = 1431,
-            _index = 71,
+            _index = 80,
         },
         {
             UseFlightPath = 1448,
@@ -652,7 +725,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             IsQuestNotOnQuest = 1116,
             OnlyInZones = { 1431 },
             Zone = 1431,
-            _index = 72,
+            _index = 81,
         },
         {
             UseFlightPath = 1116,
@@ -661,7 +734,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             IsQuestOnQuest = 1116,
             OnlyInZones = { 1453 },
             Zone = 1453,
-            _index = 73,
+            _index = 82,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -670,7 +743,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             Class = "ROGUE",
             OnlyInZones = { 1434 },
             Zone = 1434,
-            _index = 74,
+            _index = 83,
         },
         {
             Done = { 1116 },
@@ -680,7 +753,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             IsQuestReadyForTurnIn = 1116,
             SkipInZones = { 1453 },
             Zone = 1434,
-            _index = 75,
+            _index = 84,
         },
         {
             PickUp = { 1117 },
@@ -691,7 +764,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             IsQuestCompleted = 1116,
             SkipInZones = { 1453 },
             Zone = 1434,
-            _index = 76,
+            _index = 85,
         },
         {
             UseFlightPath = 1448,
@@ -700,7 +773,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             AnyOf = { { ClassNot = "MAGE" }, { Not = { AllOf = { { HasSpell = 3561 }, { ItemCount = { itemID = 17031, count = 1 } } } } } },
             SkipInZones = { 1453 },
             Zone = 1434,
-            _index = 77,
+            _index = 86,
         },
         {
             UseSpell = { spellID = 3561 },
@@ -709,7 +782,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             ItemCount = { itemID = 17031, count = 1 },
             Race = { "Gnome", "Human", "Skyborne" },
             SkipInZones = { 1453 },
-            _index = 78,
+            _index = 87,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -717,14 +790,14 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             Class = "MAGE",
             Race = { "Gnome", "Human", "Skyborne" },
             Zone = 1453,
-            _index = 79,
+            _index = 88,
         },
         {
             BankWithdraw = { items = { 6253, 3518, 5539, 6245, 3960, 5796, 5847, 5996 } },
             Coord = { x = 613.93, y = -8933.64 },
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" },
             Zone = 1453,
-            _index = 80,
+            _index = 89,
         },
         {
             BankWithdraw = { items = { 6253, 3518, 5539, 6245, 3960, 5796, 5847 } },
@@ -732,14 +805,14 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             Class = "WARLOCK",
             Race = { "Gnome", "Human" },
             Zone = 1453,
-            _index = 81,
+            _index = 90,
         },
         {
             BankDeposit = { items = { 6065, 4306 } },
             Coord = { x = 613.93, y = -8933.64 },
             Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
             Zone = 1453,
-            _index = 82,
+            _index = 91,
         },
         {
             BankDeposit = { items = { 6065, 4611, 4306 } },
@@ -747,7 +820,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             Class = "HUNTER",
             Race = { "Dwarf", "Human", "NightElf", "Skyborne" },
             Zone = 1453,
-            _index = 83,
+            _index = 92,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 11307, quantity = 1, targetStock = true, optional = true } },
@@ -758,7 +831,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             ItemCount = { operator = "<", count = 1, itemID = 11307 },
             Race = { "Dwarf", "Human", "NightElf", "Skyborne" },
             Zone = 1453,
-            _index = 84,
+            _index = 93,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 3030, quantity = 400, targetStock = true, optional = true, conditions = { MinLevel = 25, AnyOf = { { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 2 } }, { EquippedItemStat = { slot = 18, stat = "SUBCLASS", operator = "==", value = 18 } } }, EquippedItemStat = { slot = 0, stat = "LEVEL", operator = "<=", value = 30, allowMissing = true } } }, { isSupply = true, itemID = 3033, quantity = 400, targetStock = true, optional = true, conditions = { MinLevel = 25, EquippedItemStat = { { slot = 18, stat = "SUBCLASS", operator = "==", value = 3 }, { slot = 0, stat = "LEVEL", operator = "<=", value = 30, allowMissing = true } } } } },
@@ -775,7 +848,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             Range = 20,
             Class = "PRIEST",
             Zone = 1453,
-            _index = 85,
+            _index = 94,
         },
         {
             BuyMerchant = { { isSupply = true, itemID = 5238, quantity = 1 } },
@@ -787,7 +860,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             ItemCount = { itemID = 5238, count = 1, operator = "<" },
             Race = { "Dwarf", "Gnome", "Human", "NightElf" },
             Zone = 1453,
-            _index = 86,
+            _index = 95,
         },
         {
             Waypoint = 1448,
@@ -795,7 +868,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             Range = 20.0,
             Class = { "PALADIN", "PRIEST" },
             Zone = 1453,
-            _index = 87,
+            _index = 96,
         },
         {
             Waypoint = 1448,
@@ -803,7 +876,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             Range = 10.0,
             Class = "PALADIN",
             Zone = 1453,
-            _index = 88,
+            _index = 97,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -811,7 +884,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             Class = "PALADIN",
             Race = { "Dwarf", "Human" },
             Zone = 1453,
-            _index = 89,
+            _index = 98,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -819,7 +892,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             Class = "PRIEST",
             Race = { "Dwarf", "Gnome", "Human", "NightElf" },
             Zone = 1453,
-            _index = 90,
+            _index = 99,
         },
         {
             Waypoint = 1448,
@@ -827,7 +900,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             Range = 15.0,
             Class = "WARRIOR",
             Zone = 1453,
-            _index = 91,
+            _index = 100,
         },
         {
             Waypoint = 1448,
@@ -835,34 +908,34 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             Range = 15.0,
             Class = "WARRIOR",
             Zone = 1453,
-            _index = 92,
+            _index = 101,
         },
         {
             LearnSkill = { allAvailable = true },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 78.68, 45.79),
             Class = "WARRIOR",
             Zone = 1453,
-            _index = 93,
+            _index = 102,
         },
         {
             PickUp = { 543 },
-            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 74.01, 30.231),
+            Coord = { x = 386.1, y = -8549.9 },
             Zone = 1453,
-            _index = 94,
+            _index = 103,
         },
         {
             Done = { 1448 },
             Coord = { x = 516.23, y = -8463.74 },
             RaidIcon = { { npcID = 5384, questID = 1448 } },
             Zone = 1453,
-            _index = 95,
+            _index = 104,
         },
         {
             PickUp = { 1449 },
             Coord = { x = 516.23, y = -8463.74 },
             RaidIcon = { { npcID = 5384, questID = 1449 } },
             Zone = 1453,
-            _index = 96,
+            _index = 105,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -870,7 +943,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             Class = "HUNTER",
             Race = { "Dwarf", "Human", "NightElf", "Skyborne" },
             Zone = 1453,
-            _index = 97,
+            _index = 106,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -878,7 +951,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             Class = "HUNTER",
             Race = { "Dwarf", "Human", "NightElf", "Skyborne" },
             Zone = 1453,
-            _index = 98,
+            _index = 107,
         },
         {
             Tram = true,
@@ -888,7 +961,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             ZoneStepTrigger = { mapID = 1455, x = -1330.28, y = -4840.43, Range = 15 },
             AnyOf = { { ClassNot = "MAGE" }, { Not = { AllOf = { { HasSpell = 3562 }, { ItemCount = { itemID = 17031, count = 1 } } } } } },
             Zone = 1453,
-            _index = 99,
+            _index = 108,
         },
         {
             UseSpell = { spellID = 3562 },
@@ -896,7 +969,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             HasSpell = 3562,
             ItemCount = { itemID = 17031, count = 1 },
             Race = { "Gnome", "Human", "Skyborne" },
-            _index = 100,
+            _index = 109,
         },
         {
             Waypoint = 1457,
@@ -904,7 +977,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             Range = 20,
             IsQuestOnQuest = 1457,
             Zone = 1455,
-            _index = 101,
+            _index = 110,
         },
         {
             Done = { 1457 },
@@ -912,7 +985,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             RaidIcon = { { npcID = 5637, questID = 1457 } },
             IsQuestOnQuest = 1457,
             Zone = 1455,
-            _index = 102,
+            _index = 111,
         },
         {
             PickUp = { 525 },
@@ -920,7 +993,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             RaidIcon = { { npcID = 1356, questID = 525 } },
             IsQuestCompleted = 514,
             Zone = 1455,
-            _index = 103,
+            _index = 112,
         },
         {
             Waypoint = 690,
@@ -929,7 +1002,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             Range = 15.0,
             Class = "WARLOCK",
             Zone = 1455,
-            _index = 104,
+            _index = 113,
         },
         {
             Waypoint = 690,
@@ -938,7 +1011,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             Range = 5,
             Class = "WARLOCK",
             Zone = 1455,
-            _index = 105,
+            _index = 114,
         },
         {
             LootItems = { { quantity = 1, itemID = 3853, questID = 1203 } },
@@ -948,7 +1021,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             ItemCount = { itemID = 3853, count = 1, operator = "<" },
             OnlyInZones = { 1455 },
             Zone = 1455,
-            _index = 106,
+            _index = 115,
         },
         {
             LootItems = { { quantity = 1, itemID = 5996, questID = 664 } },
@@ -958,7 +1031,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" },
             ItemCount = { itemID = 5996, count = 1, operator = "<" },
             Zone = 1455,
-            _index = 107,
+            _index = 116,
         },
         {
             Note = { "LEVEL_UP_FIRST_AID_225_POSSIBLE_HEAD", "BUY_MAGEWEAVE_CLOTH_AUCTION_HOUSE_REQUIRED" },
@@ -966,7 +1039,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             Range = 5,
             Skill = { skill = "firstaid", rank = 225, operator = "<" },
             Zone = 1455,
-            _index = 108,
+            _index = 117,
         },
         {
             LootItems = { { quantity = 8, itemID = 4479, questID = 1712 }, { quantity = 8, itemID = 4480, questID = 1712 }, { quantity = 8, itemID = 4481, questID = 1712 } },
@@ -979,7 +1052,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             IsQuestOnQuest = 1712,
             ItemCount = { itemID = 6851, count = 1, operator = "<" },
             Zone = 1455,
-            _index = 109,
+            _index = 118,
         },
         {
             UseFlightPath = 690,
@@ -987,11 +1060,11 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             Coord = { x = -1152.4, y = -4821.13 },
             OnlyInZones = { 1455 },
             Zone = 1455,
-            _index = 110,
+            _index = 119,
         },
         {
             RouteCompleted = true,
-            _index = 111,
+            _index = 120,
         },
     },
 }

@@ -353,7 +353,7 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
         {
             LootItems = { { itemID = 5791, quantity = 1 } },
             Note = { "LOOT_HENRIG_LONEBROW_JOURNAL_GROUND_NEXT_DWARF" },
-            Coord = { x = -1785.23, y = -4680.82 },
+            Coord = { x = -1810.4, y = -4791.1 },
             IsQuestNotOnQuest = 1100,
             IsQuestUncompleted = 1100,
             Zone = 1441,

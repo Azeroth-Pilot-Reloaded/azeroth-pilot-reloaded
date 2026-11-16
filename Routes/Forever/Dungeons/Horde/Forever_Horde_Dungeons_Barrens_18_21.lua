@@ -37,13 +37,13 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-18-21"] = {
         },
         {
             Done = { 877 },
-            Coord = { x = -2639.32, y = -436.0 },
+            Coord = { x = -2672.76, y = -544.77 },
             Zone = 1413,
             _index = 3,
         },
         {
             PickUp = { 880 },
-            Coord = { x = -2639.32, y = -436.0 },
+            Coord = { x = -2672.76, y = -544.77 },
             Zone = 1413,
             _index = 4,
         },

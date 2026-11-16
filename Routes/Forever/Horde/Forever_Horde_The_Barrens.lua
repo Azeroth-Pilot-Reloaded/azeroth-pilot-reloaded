@@ -251,7 +251,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         },
         {
             PickUp = { 842 },
-            Coord = { x = -2670.74, y = -482.61 },
+            Coord = { x = -3687.11, y = 303.14 },
             Class = "SHAMAN",
             MinLevel = 10,
             Race = "Tauren",
@@ -3444,7 +3444,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         {
             PickUp = { 863 },
             Note = { "SKIP_ABSENT_NPC_LONG_RESPAWN", "RECOVER_BUFF_START" },
-            Coord = { x = -3759.06, y = -902.18 },
+            Coord = { x = -3104.44, y = 1109.16 },
             NoAutoAccept = true,
             AnyOf = { { Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" } }, { Race = { "Orc", "Scourge", "Tauren", "Troll" } } },
             IsQuestCompleted = 858,
@@ -3465,7 +3465,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
         {
             PickUp = { 863 },
             Note = { "SKIP_ABSENT_NPC_LONG_RESPAWN", "RECOVER_BUFF_START" },
-            Coord = { x = -3759.06, y = -902.18 },
+            Coord = { x = -3104.44, y = 1109.16 },
             NoAutoAccept = true,
             Class = "SHAMAN",
             IsQuestCompleted = 858,

@@ -3972,6 +3972,13 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
             _index = 132,
         },
         {
+            PickUp = { 97539 },
+            Coord = { x = -3509.4, y = -1019 },
+            Range = 3,
+            RaidIcon = { { npcID = 12920, questID = 97539 } },
+            Zone = 1417,
+        },
+        {
             Done = { 655 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 74.6, 36.3),
             IsQuestOnQuest = 655,
@@ -4049,6 +4056,7 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
         },
         {
             Qpart = { [672] = { 1 } },
+            Fillers = { [97539] = { 1 } },
             Note = { "ENEMIES_USE_THRASH" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 59.4, 42.61),
             RaidIcon = { { npcID = 2559, questID = 672, objectiveIndex = 1 }, { npcID = 2560, questID = 672, objectiveIndex = 1 } },
@@ -4077,6 +4085,13 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
             _index = 144,
         },
         {
+            Qpart = { [97539] = { 1 } },
+            Coord = { x = -3377.5, y = -1335.9 },
+            Range = 60,
+            IsQuestOnQuest = 97539,
+            Zone = 1417,
+        },
+        {
             Done = { 671, 672 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 74.72, 36.29),
             Zone = 1417,
@@ -4088,6 +4103,22 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
             IsQuestCompleted = 672,
             Zone = 1417,
             _index = 146,
+        },
+        {
+            Done = { 97539 },
+            Coord = { x = -3509.4, y = -1019 },
+            RaidIcon = { { npcID = 12920, questID = 97539 } },
+            IsQuestOnQuest = 97539,
+            IsQuestReadyForTurnIn = 97539,
+            Zone = 1417,
+        },
+        {
+            PickUp = { 92519 },
+            Coord = { x = -3509.4, y = -1019 },
+            Range = 3,
+            RaidIcon = { { npcID = 12920, questID = 92519 } },
+            IsQuestCompleted = 97539,
+            Zone = 1417,
         },
         {
             Done = { 674 },
