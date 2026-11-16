@@ -438,22 +438,12 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             _index = 52,
         },
         {
-            Qpart = { [94858] = { 2 } },
-            Fillers = { [94961] = { 1 } },
-            Note = { "IN_HUT" },
-            Coord = { x = -4482.5, y = -7918.25 },
-            Range = 18,
-            RaidIcon = 259258,
-            Zone = 2548,
-            _index = 53,
-        },
-        {
             Done = { 94829 },
             Fillers = { [94961] = { 1 } },
             Coord = { x = -4451.4, y = -7835.8 },
             RaidIcon = 258697,
             Zone = 2548,
-            _index = 54,
+            _index = 53,
         },
         {
             PickUp = { 94858 },
@@ -461,7 +451,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4451.4, y = -7835.8 },
             RaidIcon = 258697,
             Zone = 2548,
-            _index = 55,
+            _index = 54,
         },
         {
             Qpart = { [94858] = { 1 } },
@@ -469,7 +459,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Note = { "FOREVER_RIVERGLADES_DOLL_EXAMINE" },
             Coord = { x = -4497.5, y = -7915.6 },
             Zone = 2548,
-            _index = 56,
+            _index = 55,
         },
         {
             Qpart = { [94858] = { 2 } },
@@ -478,7 +468,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 18,
             RaidIcon = 259258,
             Zone = 2548,
-            _index = 57,
+            _index = 56,
         },
         {
             Done = { 94858 },
@@ -486,7 +476,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4451.4, y = -7836.2 },
             RaidIcon = 258697,
             Zone = 2548,
-            _index = 58,
+            _index = 57,
         },
         {
             Waypoint = 95643,
@@ -499,7 +489,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             AnyOf = { { IsQuestUncompleted = 95643 }, { IsQuestUncompleted = 95642 } },
             IsQuestNotOnQuest = 95643,
             Zone = 2548,
-            _index = 59,
+            _index = 58,
         },
         {
             Waypoint = 95643,
@@ -509,7 +499,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 15.0,
             RaidIcon = 256831,
             Zone = 2548,
-            _index = 60,
+            _index = 59,
         },
         {
             Waypoint = 95643,
@@ -519,7 +509,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 20.0,
             RaidIcon = 256831,
             Zone = 2548,
-            _index = 61,
+            _index = 60,
         },
         {
             Waypoint = 95643,
@@ -529,7 +519,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 20.0,
             RaidIcon = 256831,
             Zone = 2548,
-            _index = 62,
+            _index = 61,
         },
         {
             PickUp = { 95643, 95642 },
@@ -537,7 +527,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4205.2, y = -7998.4 },
             RaidIcon = 256831,
             Zone = 2548,
-            _index = 63,
+            _index = 62,
         },
         {
             Qpart = { [95643] = { 2, 1 }, [95642] = { 1 } },
@@ -547,7 +537,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Button = { ["95643-2"] = 269990, ["95643-1"] = 269990, ["95642-1"] = 269990 },
             RaidIcon = 261711,
             Zone = 2548,
-            _index = 64,
+            _index = 63,
         },
         {
             Waypoint = 95643,
@@ -557,7 +547,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 20.0,
             RaidIcon = 256831,
             Zone = 2548,
-            _index = 65,
+            _index = 64,
         },
         {
             Done = { 95643, 95642 },
@@ -565,7 +555,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4204.9, y = -7998.1 },
             RaidIcon = 256831,
             Zone = 2548,
-            _index = 66,
+            _index = 65,
         },
         {
             PickUp = { 95562 },
@@ -573,7 +563,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4204.9, y = -7998.1 },
             RaidIcon = 256831,
             Zone = 2548,
-            _index = 67,
+            _index = 66,
         },
         {
             Qpart = { [95562] = { 1, 2 } },
@@ -582,7 +572,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 30,
             RaidIcon = 256899,
             Zone = 2548,
-            _index = 68,
+            _index = 67,
         },
         {
             Waypoint = 95562,
@@ -592,7 +582,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 30.0,
             RaidIcon = 256831,
             Zone = 2548,
-            _index = 69,
+            _index = 68,
         },
         {
             Waypoint = 95562,
@@ -602,7 +592,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 30.0,
             RaidIcon = 256831,
             Zone = 2548,
-            _index = 70,
+            _index = 69,
         },
         {
             Waypoint = 95562,
@@ -612,7 +602,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 30.0,
             RaidIcon = 256831,
             Zone = 2548,
-            _index = 71,
+            _index = 70,
         },
         {
             Waypoint = 95562,
@@ -622,7 +612,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 30.0,
             RaidIcon = 256831,
             Zone = 2548,
-            _index = 72,
+            _index = 71,
         },
         {
             Done = { 95562 },
@@ -630,7 +620,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4202.2, y = -7995.7 },
             RaidIcon = 256831,
             Zone = 2548,
-            _index = 73,
+            _index = 72,
         },
         {
             PickUp = { 94884 },
@@ -638,7 +628,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4202.2, y = -7995.7 },
             RaidIcon = 256831,
             Zone = 2548,
-            _index = 74,
+            _index = 73,
         },
         {
             Waypoint = 94961,
@@ -649,7 +639,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             IsQuestNotOnQuest = 94963,
             IsQuestUncompleted = 94963,
             Zone = 2548,
-            _index = 75,
+            _index = 74,
         },
         {
             Waypoint = 94961,
@@ -660,7 +650,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             IsQuestNotOnQuest = 94963,
             IsQuestUncompleted = 94963,
             Zone = 2548,
-            _index = 76,
+            _index = 75,
         },
         {
             Waypoint = 94961,
@@ -671,7 +661,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             IsQuestNotOnQuest = 94963,
             IsQuestUncompleted = 94963,
             Zone = 2548,
-            _index = 77,
+            _index = 76,
         },
         {
             Waypoint = 94961,
@@ -682,7 +672,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             IsQuestNotOnQuest = 94963,
             IsQuestUncompleted = 94963,
             Zone = 2548,
-            _index = 78,
+            _index = 77,
         },
         {
             Waypoint = 94961,
@@ -693,7 +683,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             IsQuestNotOnQuest = 94963,
             IsQuestUncompleted = 94963,
             Zone = 2548,
-            _index = 79,
+            _index = 78,
         },
         {
             Waypoint = 94961,
@@ -704,7 +694,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             IsQuestNotOnQuest = 94963,
             IsQuestUncompleted = 94963,
             Zone = 2548,
-            _index = 80,
+            _index = 79,
         },
         {
             Waypoint = 94961,
@@ -715,7 +705,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             IsQuestNotOnQuest = 94963,
             IsQuestUncompleted = 94963,
             Zone = 2548,
-            _index = 81,
+            _index = 80,
         },
         {
             Waypoint = 94961,
@@ -726,7 +716,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             IsQuestNotOnQuest = 94963,
             IsQuestUncompleted = 94963,
             Zone = 2548,
-            _index = 82,
+            _index = 81,
         },
         {
             Qpart = { [94961] = { 1 } },
@@ -734,7 +724,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4271.7, y = -7985.4 },
             Range = 30,
             Zone = 2548,
-            _index = 83,
+            _index = 82,
         },
         {
             PickUp = { 94961 },
@@ -744,7 +734,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             RaidIcon = 259158,
             IsQuestNotOnQuest = 94961,
             Zone = 2548,
-            _index = 84,
+            _index = 83,
         },
         {
             Qpart = { [94961] = { 1 } },
@@ -753,7 +743,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 30,
             IsQuestOnQuest = 94961,
             Zone = 2548,
-            _index = 85,
+            _index = 84,
         },
         {
             Waypoint = 94961,
@@ -766,7 +756,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             IsQuestReadyForTurnIn = 94961,
             IsQuestUncompleted = 94961,
             Zone = 2548,
-            _index = 86,
+            _index = 85,
         },
         {
             Waypoint = 94961,
@@ -779,7 +769,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             IsQuestReadyForTurnIn = 94961,
             IsQuestUncompleted = 94961,
             Zone = 2548,
-            _index = 87,
+            _index = 86,
         },
         {
             Done = { 94961 },
@@ -789,7 +779,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             IsQuestOnQuest = 94961,
             IsQuestReadyForTurnIn = 94961,
             Zone = 2548,
-            _index = 88,
+            _index = 87,
         },
         {
             PickUp = { 94963 },
@@ -798,7 +788,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             RaidIcon = 259158,
             IsQuestCompleted = 94961,
             Zone = 2548,
-            _index = 89,
+            _index = 88,
         },
         {
             Note = { "COMPLETE_OBJECTIVES_AREA" },
@@ -807,7 +797,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             IsQuestNotOnQuest = 94961,
             IsQuestUncompleted = 94961,
             Zone = 2548,
-            _index = 90,
+            _index = 89,
         },
         {
             Qpart = { [94879] = { 1 } },
@@ -815,7 +805,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             NoArrow = true,
             IsQuestNotOnQuest = 94961,
             IsQuestUncompleted = 94961,
-            _index = 91,
+            _index = 90,
         },
         {
             Qpart = { [94877] = { 3, 2, 1 }, [94881] = { 1 } },
@@ -826,22 +816,23 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             RaidIcon = 256952,
             IsQuestNotOnQuest = 94961,
             IsQuestUncompleted = 94961,
-            _index = 92,
+            _index = 91,
         },
         {
             LootItems = { { itemID = 266427, quantity = 1 } },
             Note = { "FOREVER_RIVERGLADES_TWILIGHT_NEOPHYTES_KILL", "FOREVER_RIVERGLADES_TWILIGHT_CHARM_AND_LOG_LOOT" },
             RaidIcon = 256952,
+            AllOf = { { IsQuestNotOnQuest = 94885 }, { IsQuestUncompleted = 94885 } },
             IsQuestNotOnQuest = 94961,
             IsQuestUncompleted = 94961,
-            _index = 93,
+            _index = 92,
         },
         {
             PickUp = { 94885 },
             Note = { "FOREVER_RIVERGLADES_FIELD_MARSHAL_LOG_COLLECT" },
             Button = { ["94885"] = 266427 },
             ItemCount = { operator = ">=", count = 1, itemID = 266427 },
-            _index = 94,
+            _index = 93,
         },
         {
             PickUp = { 94961 },
@@ -851,7 +842,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             IsQuestNotOnQuest = 94961,
             IsQuestUncompleted = 94961,
             Zone = 2548,
-            _index = 95,
+            _index = 94,
         },
         {
             Qpart = { [94961] = { 1 } },
@@ -860,7 +851,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             RaidIcon = 256952,
             IsQuestOnQuest = 94961,
             Zone = 2548,
-            _index = 96,
+            _index = 95,
         },
         {
             Waypoint = 94961,
@@ -873,7 +864,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             IsQuestReadyForTurnIn = 94961,
             IsQuestUncompleted = 94961,
             Zone = 2548,
-            _index = 97,
+            _index = 96,
         },
         {
             Waypoint = 94961,
@@ -886,7 +877,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             IsQuestReadyForTurnIn = 94961,
             IsQuestUncompleted = 94961,
             Zone = 2548,
-            _index = 98,
+            _index = 97,
         },
         {
             Done = { 94961 },
@@ -896,7 +887,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             IsQuestOnQuest = 94961,
             IsQuestReadyForTurnIn = 94961,
             Zone = 2548,
-            _index = 99,
+            _index = 98,
         },
         {
             PickUp = { 94963 },
@@ -905,7 +896,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             RaidIcon = 259158,
             IsQuestCompleted = 94961,
             Zone = 2548,
-            _index = 100,
+            _index = 99,
         },
         {
             PickUp = { 94885 },
@@ -913,7 +904,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Note = { "FOREVER_RIVERGLADES_FIELD_MARSHAL_LOG_COLLECT" },
             Button = { ["94885"] = 266427 },
             ItemCount = { operator = ">=", count = 1, itemID = 266427 },
-            _index = 101,
+            _index = 100,
         },
         {
             Qpart = { [94963] = { 1 } },
@@ -923,7 +914,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             NoArrow = true,
             RaidIcon = 259179,
             IsQuestOnQuest = 94963,
-            _index = 102,
+            _index = 101,
         },
         {
             Done = { 94963 },
@@ -933,7 +924,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             IsQuestOnQuest = 94963,
             IsQuestReadyForTurnIn = 94963,
             Zone = 2548,
-            _index = 103,
+            _index = 102,
         },
         {
             Qpart = { [94879] = { 1 } },
@@ -942,7 +933,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4163.55, y = -8060.05 },
             Range = 30,
             Zone = 2548,
-            _index = 104,
+            _index = 103,
         },
         {
             Qpart = { [94877] = { 3, 2, 1 }, [94881] = { 1 }, [94961] = { 1 } },
@@ -952,7 +943,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Button = { ["94885"] = 266427 },
             RaidIcon = 256952,
             Zone = 2548,
-            _index = 105,
+            _index = 104,
         },
         {
             LootItems = { { itemID = 266427, quantity = 1 } },
@@ -960,15 +951,17 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4163.55, y = -8060.05 },
             Range = 30,
             RaidIcon = 256952,
+            IsQuestNotOnQuest = 94885,
+            IsQuestUncompleted = 94885,
             Zone = 2548,
-            _index = 106,
+            _index = 105,
         },
         {
             PickUp = { 94885 },
             Note = { "FOREVER_RIVERGLADES_FIELD_MARSHAL_LOG_COLLECT" },
             Button = { ["94885"] = 266427 },
             ItemCount = { operator = ">=", count = 1, itemID = 266427 },
-            _index = 107,
+            _index = 106,
         },
         {
             Done = { 95330 },
@@ -976,7 +969,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -3886.6, y = -8500.8 },
             RaidIcon = 256438,
             Zone = 2548,
-            _index = 108,
+            _index = 107,
         },
         {
             PickUp = { 94842, 94931 },
@@ -984,7 +977,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -3886.6, y = -8500.8 },
             RaidIcon = 256438,
             Zone = 2548,
-            _index = 109,
+            _index = 108,
         },
         {
             PickUp = { 94857 },
@@ -992,13 +985,13 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4126.7, y = -8762.9 },
             RaidIcon = 258935,
             Zone = 2548,
-            _index = 110,
+            _index = 109,
         },
         {
             UseHS = 94881,
             Note = { "FOREVER_RIVERGLADES_FARHOLDE_HEARTH" },
             SkipIfCooldown = { { itemID = 6948, operator = ">", seconds = 2, once = true } },
-            _index = 111,
+            _index = 110,
         },
         {
             Waypoint = 94881,
@@ -1008,7 +1001,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 5,
             RaidIcon = 271006,
             Zone = 2548,
-            _index = 112,
+            _index = 111,
         },
         {
             Waypoint = 94881,
@@ -1017,7 +1010,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -5023.3, y = -9166.601 },
             Range = 8.0,
             Zone = 2548,
-            _index = 113,
+            _index = 112,
         },
         {
             Waypoint = 94881,
@@ -1026,7 +1019,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -5120.7, y = -9152.3 },
             Range = 30.0,
             Zone = 2548,
-            _index = 114,
+            _index = 113,
         },
         {
             Waypoint = 94881,
@@ -1035,7 +1028,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -5113.4, y = -9180.8 },
             Range = 20.0,
             Zone = 2548,
-            _index = 115,
+            _index = 114,
         },
         {
             Waypoint = 94881,
@@ -1044,7 +1037,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -5136.0, y = -9137.3 },
             Range = 20.0,
             Zone = 2548,
-            _index = 116,
+            _index = 115,
         },
         {
             Waypoint = 94881,
@@ -1053,42 +1046,42 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -5136.0, y = -9110.3 },
             Range = 10.0,
             Zone = 2548,
-            _index = 117,
+            _index = 116,
         },
         {
             Done = { 94881 },
             Coord = { x = -5129.4, y = -9089.0 },
             RaidIcon = 257591,
             Zone = 2548,
-            _index = 118,
+            _index = 117,
         },
         {
             PickUp = { 94907 },
             Coord = { x = -5129.4, y = -9089.0 },
             RaidIcon = 257591,
             Zone = 2548,
-            _index = 119,
+            _index = 118,
         },
         {
             Done = { 94879, 94884 },
             Coord = { x = -5129.4, y = -9089.0 },
             RaidIcon = 257591,
             Zone = 2548,
-            _index = 120,
+            _index = 119,
         },
         {
             Done = { 94877 },
             Coord = { x = -5129.4, y = -9089.0 },
             RaidIcon = 257558,
             Zone = 2548,
-            _index = 121,
+            _index = 120,
         },
         {
             PickUp = { 95329 },
             Coord = { x = -5129.4, y = -9089.0 },
             RaidIcon = 257558,
             Zone = 2548,
-            _index = 122,
+            _index = 121,
         },
         {
             Done = { 94885 },
@@ -1096,14 +1089,14 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             RaidIcon = 257558,
             IsQuestOnQuest = 94885,
             Zone = 2548,
-            _index = 123,
+            _index = 122,
         },
         {
             PickUp = { 94887, 94886 },
             Coord = { x = -5129.4, y = -9089.0 },
             RaidIcon = 257558,
             Zone = 2548,
-            _index = 124,
+            _index = 123,
         },
         {
             Waypoint = 95156,
@@ -1112,7 +1105,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -5101.1, y = -9071.3 },
             Range = 10.0,
             Zone = 2548,
-            _index = 125,
+            _index = 124,
         },
         {
             Waypoint = 95156,
@@ -1121,7 +1114,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -5136.7, y = -9070.5 },
             Range = 10.0,
             Zone = 2548,
-            _index = 126,
+            _index = 125,
         },
         {
             Waypoint = 95156,
@@ -1130,31 +1123,31 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -5134.1, y = -9051.0 },
             Range = 10.0,
             Zone = 2548,
-            _index = 127,
+            _index = 126,
         },
         {
             DestroyItems = { items = { 266427 }, text = "FOREVER_RIVERGLADES_FIELD_MARSHAL_LOG_DELETE" },
-            _index = 128,
+            _index = 127,
         },
         {
             Done = { 95156 },
             Coord = { x = -5098.1, y = -9041.7 },
             RaidIcon = 260080,
             Zone = 2548,
-            _index = 129,
+            _index = 128,
         },
         {
             PickUp = { 95184 },
             Coord = { x = -5098.1, y = -9041.7 },
             RaidIcon = 260080,
             Zone = 2548,
-            _index = 130,
+            _index = 129,
         },
         {
             Qpart = { [95184] = { 1 } },
             NoArrow = true,
             ItemCount = { operator = ">=", count = 8, itemID = 7964 },
-            _index = 131,
+            _index = 130,
         },
         {
             Done = { 95184 },
@@ -1162,7 +1155,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             RaidIcon = 260080,
             ItemCount = { operator = ">=", count = 8, itemID = 7964 },
             Zone = 2548,
-            _index = 132,
+            _index = 131,
         },
         {
             PickUp = { 96081 },
@@ -1170,7 +1163,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -5070.3, y = -9020.4 },
             RaidIcon = 263613,
             Zone = 2548,
-            _index = 133,
+            _index = 132,
         },
         {
             Done = { 96081 },
@@ -1178,14 +1171,14 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             RaidIcon = 263613,
             ItemCount = { operator = ">=", count = 20, itemID = 4338 },
             Zone = 2548,
-            _index = 134,
+            _index = 133,
         },
         {
             PickUp = { 96082 },
             Coord = { x = -5070.3, y = -9020.4 },
             RaidIcon = 263613,
             Zone = 2548,
-            _index = 135,
+            _index = 134,
         },
         {
             Qpart = { [96082] = { 1 } },
@@ -1194,14 +1187,14 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Button = { ["96082-1"] = 272126 },
             RaidIcon = 263614,
             Zone = 2548,
-            _index = 136,
+            _index = 135,
         },
         {
             Done = { 96082 },
             Coord = { x = -5070.6, y = -9020.0 },
             RaidIcon = 263613,
             Zone = 2548,
-            _index = 137,
+            _index = 136,
         },
         {
             PickUp = { 96083 },
@@ -1209,7 +1202,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             RaidIcon = 263613,
             IsQuestCompleted = 96082,
             Zone = 2548,
-            _index = 138,
+            _index = 137,
         },
         {
             Waypoint = 95561,
@@ -1218,7 +1211,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 5.0,
             RaidIcon = 263089,
             Zone = 2548,
-            _index = 139,
+            _index = 138,
         },
         {
             Waypoint = 95561,
@@ -1227,27 +1220,30 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 25.0,
             RaidIcon = 263089,
             Zone = 2548,
-            _index = 140,
+            _index = 139,
         },
         {
             PickUp = { 95561 },
             Coord = { x = -4988.2, y = -9125.5 },
             RaidIcon = 263089,
             Zone = 2548,
-            _index = 141,
+            _index = 140,
         },
         {
             Qpart = { [95991] = { 1 } },
+            Note = { "FOREVER_RIVERGLADES_ELITE_GROUP_ADVICE" },
             NoArrow = true,
-            _index = 142,
+            _index = 141,
         },
         {
             Done = { 95991 },
             Fillers = { [95561] = { 1 } },
             Coord = { x = -4975.3, y = -9215.0 },
             RaidIcon = 259859,
+            IsQuestOnQuest = 95991,
+            IsQuestReadyForTurnIn = 95991,
             Zone = 2548,
-            _index = 143,
+            _index = 142,
         },
         {
             Waypoint = 96083,
@@ -1257,7 +1253,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 30.0,
             RaidIcon = 262031,
             Zone = 2548,
-            _index = 144,
+            _index = 143,
         },
         {
             Done = { 96083 },
@@ -1266,7 +1262,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 20.0,
             RaidIcon = 262031,
             Zone = 2548,
-            _index = 145,
+            _index = 144,
         },
         {
             PickUp = { 96084 },
@@ -1275,7 +1271,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 5,
             RaidIcon = 262031,
             Zone = 2548,
-            _index = 146,
+            _index = 145,
         },
         {
             Waypoint = 96083,
@@ -1284,21 +1280,21 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4890.0, y = -9152.9 },
             Range = 15.0,
             Zone = 2548,
-            _index = 147,
+            _index = 146,
         },
         {
             Done = { 96083 },
             Coord = { x = -4891.0, y = -9157.7 },
             RaidIcon = 262031,
             Zone = 2548,
-            _index = 148,
+            _index = 147,
         },
         {
             PickUp = { 96084 },
             Coord = { x = -4891.0, y = -9157.7 },
             RaidIcon = 262031,
             Zone = 2548,
-            _index = 149,
+            _index = 148,
         },
         {
             Qpart = { [95561] = { 1 } },
@@ -1306,21 +1302,21 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4907.5, y = -9135.5 },
             Range = 30,
             Zone = 2548,
-            _index = 150,
+            _index = 149,
         },
         {
             Done = { 95561 },
             Coord = { x = -4988.2, y = -9125.7 },
             RaidIcon = 263089,
             Zone = 2548,
-            _index = 151,
+            _index = 150,
         },
         {
             PickUp = { 95913 },
             Coord = { x = -4988.2, y = -9125.7 },
             RaidIcon = 263089,
             Zone = 2548,
-            _index = 152,
+            _index = 151,
         },
         {
             Waypoint = 95943,
@@ -1329,7 +1325,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 10.0,
             RaidIcon = 260070,
             Zone = 2548,
-            _index = 153,
+            _index = 152,
         },
         {
             Done = { 95943 },
@@ -1337,7 +1333,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 10.0,
             RaidIcon = 260070,
             Zone = 2548,
-            _index = 154,
+            _index = 153,
         },
         {
             PickUp = { 96009 },
@@ -1345,7 +1341,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 5,
             RaidIcon = 260070,
             Zone = 2548,
-            _index = 155,
+            _index = 154,
         },
         {
             Waypoint = 95943,
@@ -1355,14 +1351,14 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 30.0,
             IsQuestOnQuest = 95943,
             Zone = 2548,
-            _index = 156,
+            _index = 155,
         },
         {
             PickUp = { 96009 },
             Coord = { x = -4966.2, y = -9073.4 },
             RaidIcon = 260070,
             Zone = 2548,
-            _index = 157,
+            _index = 156,
         },
         {
             Waypoint = 94923,
@@ -1372,7 +1368,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 25.0,
             RaidIcon = 257087,
             Zone = 2548,
-            _index = 158,
+            _index = 157,
         },
         {
             Waypoint = 94923,
@@ -1382,7 +1378,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 25.0,
             RaidIcon = 257087,
             Zone = 2548,
-            _index = 159,
+            _index = 158,
         },
         {
             Waypoint = 94923,
@@ -1392,14 +1388,14 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 5,
             RaidIcon = 257087,
             Zone = 2548,
-            _index = 160,
+            _index = 159,
         },
         {
             GetFP = 3276,
             Coord = { x = -4833.9, y = -9101.601 },
             RaidIcon = 257087,
             Zone = 2548,
-            _index = 161,
+            _index = 160,
         },
         {
             Qpart = { [94617] = { 1 } },
@@ -1409,7 +1405,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 30,
             RaidIcon = 258522,
             Zone = 2548,
-            _index = 162,
+            _index = 161,
         },
         {
             Qpart = { [95913] = { 1 } },
@@ -1418,7 +1414,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 30,
             RaidIcon = 259267,
             Zone = 2548,
-            _index = 163,
+            _index = 162,
         },
         {
             PickUp = { 94999 },
@@ -1426,7 +1422,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -3996.0, y = -9131.3 },
             RaidIcon = 259050,
             Zone = 2548,
-            _index = 164,
+            _index = 163,
         },
         {
             PickUp = { 94923 },
@@ -1434,7 +1430,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -3993.8, y = -9138.8 },
             RaidIcon = 259049,
             Zone = 2548,
-            _index = 165,
+            _index = 164,
         },
         {
             Qpart = { [94923] = { 1 } },
@@ -1442,7 +1438,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Note = { "FOREVER_RIVERGLADES_CLAM_OPEN" },
             Coord = { x = -4282.7, y = -9010.0 },
             Zone = 2548,
-            _index = 166,
+            _index = 165,
         },
         {
             Qpart = { [94614] = { 2, 1 }, [94842] = { 3 } },
@@ -1451,7 +1447,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 30,
             RaidIcon = 258574,
             Zone = 2548,
-            _index = 167,
+            _index = 166,
         },
         {
             Done = { 94923 },
@@ -1459,7 +1455,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -3994.7, y = -9138.8 },
             RaidIcon = 259049,
             Zone = 2548,
-            _index = 168,
+            _index = 167,
         },
         {
             Qpart = { [94842] = { 2 } },
@@ -1468,7 +1464,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4123.3, y = -9070.2 },
             Range = 30,
             Zone = 2548,
-            _index = 169,
+            _index = 168,
         },
         {
             Done = { 94618 },
@@ -1476,7 +1472,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4499.9, y = -8615.101 },
             RaidIcon = 259254,
             Zone = 2548,
-            _index = 170,
+            _index = 169,
         },
         {
             PickUp = { 94992 },
@@ -1484,7 +1480,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4499.9, y = -8615.101 },
             RaidIcon = 259254,
             Zone = 2548,
-            _index = 171,
+            _index = 170,
         },
         {
             Qpart = { [94992] = { 1 } },
@@ -1493,7 +1489,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 30,
             NoArrow = true,
             RaidIcon = 259263,
-            _index = 172,
+            _index = 171,
         },
         {
             Done = { 94617, 94614, 94992 },
@@ -1501,7 +1497,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4555.6, y = -8828.0 },
             RaidIcon = 258317,
             Zone = 2548,
-            _index = 173,
+            _index = 172,
         },
         {
             Done = { 95329 },
@@ -1509,7 +1505,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4778.2, y = -8533.2 },
             RaidIcon = 259352,
             Zone = 2548,
-            _index = 174,
+            _index = 173,
         },
         {
             PickUp = { 94925, 94924 },
@@ -1517,7 +1513,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4778.2, y = -8533.2 },
             RaidIcon = 259352,
             Zone = 2548,
-            _index = 175,
+            _index = 174,
         },
         {
             PickUp = { 95983 },
@@ -1526,7 +1522,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4880.3, y = -8370.2 },
             RaidIcon = 263343,
             Zone = 2548,
-            _index = 176,
+            _index = 175,
         },
         {
             Qpart = { [96084] = { 1 } },
@@ -1535,7 +1531,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4900.7, y = -8292.3 },
             Button = { ["96084-1"] = 281229 },
             Zone = 2548,
-            _index = 177,
+            _index = 176,
         },
         {
             Done = { 95983 },
@@ -1543,7 +1539,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4778.8, y = -8535.3 },
             RaidIcon = 259352,
             Zone = 2548,
-            _index = 178,
+            _index = 177,
         },
         {
             PickUp = { 95984 },
@@ -1551,7 +1547,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4778.8, y = -8535.3 },
             RaidIcon = 259352,
             Zone = 2548,
-            _index = 179,
+            _index = 178,
         },
         {
             Qpart = { [95984] = { 1 } },
@@ -1560,7 +1556,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 30,
             RaidIcon = 263348,
             Zone = 2548,
-            _index = 180,
+            _index = 179,
         },
         {
             Done = { 95984 },
@@ -1568,7 +1564,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4778.6, y = -8535.0 },
             RaidIcon = 259352,
             Zone = 2548,
-            _index = 181,
+            _index = 180,
         },
         {
             PickUp = { 95986 },
@@ -1576,7 +1572,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4778.6, y = -8535.0 },
             RaidIcon = 259352,
             Zone = 2548,
-            _index = 182,
+            _index = 181,
         },
         {
             Qpart = { [95986] = { 1 } },
@@ -1587,7 +1583,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Button = { ["95986-1"] = 271779 },
             RaidIcon = 263315,
             Zone = 2548,
-            _index = 183,
+            _index = 182,
         },
         {
             Qpart = { [94925] = { 1 } },
@@ -1596,7 +1592,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 30,
             RaidIcon = 259054,
             Zone = 2548,
-            _index = 184,
+            _index = 183,
         },
         {
             Qpart = { [94924] = { 1 } },
@@ -1605,7 +1601,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 30,
             RaidIcon = 259052,
             Zone = 2548,
-            _index = 185,
+            _index = 184,
         },
         {
             Done = { 94924 },
@@ -1613,7 +1609,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4777.4, y = -8533.4 },
             RaidIcon = 259352,
             Zone = 2548,
-            _index = 186,
+            _index = 185,
         },
         {
             PickUp = { 95064, 95426 },
@@ -1621,7 +1617,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4777.4, y = -8533.4 },
             RaidIcon = 259352,
             Zone = 2548,
-            _index = 187,
+            _index = 186,
         },
         {
             Done = { 94925 },
@@ -1629,7 +1625,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4777.4, y = -8533.4 },
             RaidIcon = 259352,
             Zone = 2548,
-            _index = 188,
+            _index = 187,
         },
         {
             PickUp = { 94928 },
@@ -1637,7 +1633,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4777.4, y = -8533.4 },
             RaidIcon = 259352,
             Zone = 2548,
-            _index = 189,
+            _index = 188,
         },
         {
             Done = { 95986 },
@@ -1645,7 +1641,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4777.4, y = -8533.4 },
             RaidIcon = 259352,
             Zone = 2548,
-            _index = 190,
+            _index = 189,
         },
         {
             PickUp = { 96125 },
@@ -1653,7 +1649,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -4777.4, y = -8533.4 },
             RaidIcon = 259352,
             Zone = 2548,
-            _index = 191,
+            _index = 190,
         },
         {
             Done = { 94857 },
@@ -1661,15 +1657,16 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -3896.8, y = -8552.3 },
             RaidIcon = 258963,
             Zone = 2548,
-            _index = 192,
+            _index = 191,
         },
         {
             PickUp = { 94861 },
             Fillers = { [95991] = { 1 }, [96009] = { 1 } },
             Coord = { x = -3896.8, y = -8552.3 },
+            NoAutoAccept = true,
             RaidIcon = 258963,
             Zone = 2548,
-            _index = 193,
+            _index = 192,
         },
         {
             Qpart = { [94861] = { 1 } },
@@ -1678,7 +1675,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 30,
             NoArrow = true,
             Not = { IsQuestReadyForTurnIn = 94842 },
-            _index = 194,
+            _index = 193,
         },
         {
             Qpart = { [94861] = { 1 } },
@@ -1686,16 +1683,16 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Note = { "FOREVER_RIVERGLADES_HURLEY_RESCUE_CURLY" },
             NoArrow = true,
             RaidIcon = 258963,
-            _index = 195,
+            _index = 194,
         },
         {
             Qpart = { [94842] = { 1 } },
             Fillers = { [95991] = { 1 }, [96009] = { 1 } },
             Coord = { x = -4073.45, y = -8640.45 },
             Range = 30,
-            RaidIcon = 25858,
+            RaidIcon = 258588,
             Zone = 2548,
-            _index = 196,
+            _index = 195,
         },
         {
             Done = { 94861, 94842 },
@@ -1703,7 +1700,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -3888.4, y = -8501.3 },
             RaidIcon = 256438,
             Zone = 2548,
-            _index = 197,
+            _index = 196,
         },
         {
             PickUp = { 94843 },
@@ -1711,7 +1708,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -3888.4, y = -8501.3 },
             RaidIcon = 256438,
             Zone = 2548,
-            _index = 198,
+            _index = 197,
         },
         {
             Qpart = { [94843] = { 1 } },
@@ -1720,14 +1717,14 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -3807.1, y = -8468.7 },
             Range = 30,
             Zone = 2548,
-            _index = 199,
+            _index = 198,
         },
         {
             PickUp = { 94678, 94679 },
             Coord = { x = -3811.5, y = -8880.101 },
             RaidIcon = 259353,
             Zone = 2548,
-            _index = 200,
+            _index = 199,
         },
         {
             SellItems = { npcID = 272435, junk = true, questID = 94999 },
@@ -1735,14 +1732,14 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -3721.7, y = -8924.8 },
             RaidIcon = 272435,
             Zone = 2548,
-            _index = 201,
+            _index = 200,
         },
         {
             Done = { 94999 },
             Coord = { x = -3655.7, y = -8916.3 },
             RaidIcon = 259051,
             Zone = 2548,
-            _index = 202,
+            _index = 201,
         },
         {
             Waypoint = 95792,
@@ -1752,7 +1749,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 25.0,
             RaidIcon = 262399,
             Zone = 2548,
-            _index = 203,
+            _index = 202,
         },
         {
             PickUp = { 95792, 95934 },
@@ -1760,7 +1757,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -3357.1, y = -8699.7 },
             RaidIcon = 262399,
             Zone = 2548,
-            _index = 204,
+            _index = 203,
         },
         {
             Qpart = { [95934] = { 1 } },
@@ -1769,7 +1766,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -3347.35, y = -8823.95 },
             Range = 30,
             Zone = 2548,
-            _index = 205,
+            _index = 204,
         },
         {
             Waypoint = 95792,
@@ -1780,7 +1777,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 30.0,
             RaidIcon = 263141,
             Zone = 2548,
-            _index = 206,
+            _index = 205,
         },
         {
             LootItems = { { itemID = 271612, quantity = 1, questID = 95935 } },
@@ -1788,8 +1785,10 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Note = { "FOREVER_RIVERGLADES_SCALDARON_HEAD_START_QUEST", "FOREVER_RIVERGLADES_SCALDARON_GROUP_WARNING", "FOREVER_RIVERGLADES_ABSENT_TARGET_SKIP" },
             Coord = { x = -3419.8, y = -8833.5 },
             RaidIcon = 263141,
+            IsQuestNotOnQuest = 95935,
+            IsQuestUncompleted = 95935,
             Zone = 2548,
-            _index = 207,
+            _index = 206,
         },
         {
             DropQuest = 95935,
@@ -1797,7 +1796,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Note = { "FOREVER_RIVERGLADES_QUEST_ITEM_ACCEPT" },
             Button = { ["95935"] = 271612 },
             ItemCount = { operator = ">=", count = 1, itemID = 271612 },
-            _index = 208,
+            _index = 207,
         },
         {
             Qpart = { [95792] = { 2, 1 } },
@@ -1805,14 +1804,14 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 30,
             RaidIcon = 262473,
             Zone = 2548,
-            _index = 209,
+            _index = 208,
         },
         {
             Done = { 95792, 95934 },
             Coord = { x = -3356.9, y = -8700.101 },
             RaidIcon = 262399,
             Zone = 2548,
-            _index = 210,
+            _index = 209,
         },
         {
             PickUp = { 95147 },
@@ -1820,7 +1819,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -3041.8, y = -8660.2 },
             RaidIcon = 260026,
             Zone = 2548,
-            _index = 211,
+            _index = 210,
         },
         {
             Qpart = { [94679] = { 1 } },
@@ -1830,7 +1829,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 10,
             RaidIcon = 255906,
             Zone = 2548,
-            _index = 212,
+            _index = 211,
         },
         {
             Qpart = { [94931] = { 1 } },
@@ -1838,7 +1837,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Note = { "FOREVER_RIVERGLADES_CRATES_OPEN" },
             Coord = { x = -2795.0, y = -8722.7 },
             Zone = 2548,
-            _index = 213,
+            _index = 212,
         },
         {
             Qpart = { [94678] = { 1, 2, 3 } },
@@ -1846,7 +1845,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 30,
             RaidIcon = 255769,
             Zone = 2548,
-            _index = 214,
+            _index = 213,
         },
         {
             Waypoint = 94678,
@@ -1855,14 +1854,14 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Range = 40.0,
             RaidIcon = 259353,
             Zone = 2548,
-            _index = 215,
+            _index = 214,
         },
         {
             Done = { 94678, 94679, 95147 },
             Coord = { x = -3811.0, y = -8880.4 },
             RaidIcon = 259353,
             Zone = 2548,
-            _index = 216,
+            _index = 215,
         },
         {
             Done = { 95935 },
@@ -1870,14 +1869,14 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             RaidIcon = 259353,
             IsQuestOnQuest = 95935,
             Zone = 2548,
-            _index = 217,
+            _index = 216,
         },
         {
             PickUp = { 95148 },
             Coord = { x = -3811.0, y = -8880.4 },
             RaidIcon = 259353,
             Zone = 2548,
-            _index = 218,
+            _index = 217,
         },
         {
             SellItems = { npcID = 272435, junk = true, questID = 94931 },
@@ -1885,14 +1884,14 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Coord = { x = -3721.7, y = -8924.8 },
             RaidIcon = 272435,
             Zone = 2548,
-            _index = 219,
+            _index = 218,
         },
         {
             Done = { 94931, 94843 },
             Coord = { x = -3888.4, y = -8501.3 },
             RaidIcon = 256438,
             Zone = 2548,
-            _index = 220,
+            _index = 219,
         },
         {
             UseHS = 95913,
@@ -1900,7 +1899,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             SkipIfCooldown = { { itemID = 6948, operator = ">", seconds = 2, once = true } },
             IsQuestNotOnQuest = 79974,
             MinLevel = 43,
-            _index = 221,
+            _index = 220,
         },
         {
             DeathSkip = true,
@@ -1908,48 +1907,48 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Hardcore = false,
             IsQuestOnQuest = 79974,
             SkipForLvl = 43,
-            _index = 222,
+            _index = 221,
         },
         {
             Done = { 96084 },
             Coord = { x = -4890.0, y = -9153.0 },
             RaidIcon = 262031,
             Zone = 2548,
-            _index = 223,
+            _index = 222,
         },
         {
             PickUp = { 96085 },
             Coord = { x = -4890.0, y = -9153.0 },
             RaidIcon = 262031,
             Zone = 2548,
-            _index = 224,
+            _index = 223,
         },
         {
             Done = { 95913 },
             Coord = { x = -4988.1, y = -9125.4 },
             RaidIcon = 263089,
             Zone = 2548,
-            _index = 225,
+            _index = 224,
         },
         {
             PickUp = { 95961 },
             Coord = { x = -4988.1, y = -9125.4 },
             RaidIcon = 263089,
             Zone = 2548,
-            _index = 226,
+            _index = 225,
         },
         {
             Qpart = { [96009] = { 1 } },
             Note = { "FOREVER_RIVERGLADES_WOOD_BUNDLE_COLLECT" },
             NoArrow = true,
-            _index = 227,
+            _index = 226,
         },
         {
             Done = { 96009 },
             Coord = { x = -4966.2, y = -9073.2 },
             RaidIcon = 260070,
             Zone = 2548,
-            _index = 228,
+            _index = 227,
         },
         {
             UseFlightPath = 1448,
@@ -1960,17 +1959,17 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades"] = {
             Class = { "DRUID", "HUNTER", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
             SkipInZones = { 1453 },
             Zone = 2548,
-            _index = 229,
+            _index = 228,
         },
         {
             UseSpell = { spellID = 3561 },
             Class = "MAGE",
             SkipInZones = { 1453 },
-            _index = 230,
+            _index = 229,
         },
         {
             RouteCompleted = true,
-            _index = 231,
+            _index = 230,
         },
     },
 }
@@ -2795,7 +2794,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
         {
             Qpart = { [94888] = { 1 } },
             Fillers = { [95261] = { 1 }, [95991] = { 1 }, [94889] = { 1, 2, 3 } },
-            Note = { "FOREVER_RIVERGLADES_FARHOLDE_SCOUTS_FREE" },
+            Note = { "FOREVER_RIVERGLADES_FARHOLDE_SCOUTS_FREE", "FOREVER_RIVERGLADES_TWILIGHT_KEY_LOOT" },
             Coord = { x = -3234.6, y = -7823.55 },
             Range = 30,
             RaidIcon = 256799,
@@ -2867,19 +2866,12 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             _index = 102,
         },
         {
-            LootItems = { { itemID = 265821, quantity = 5, questID = 94888 } },
-            Fillers = { [95991] = { 1 } },
-            Note = { "FOREVER_RIVERGLADES_TWILIGHT_FANATICS_KILL", "FOREVER_RIVERGLADES_TWILIGHT_KEY_LOOT", "FOREVER_RIVERGLADES_TWILIGHT_CORRUPTER_WARNING" },
-            RaidIcon = 256799,
-            _index = 103,
-        },
-        {
             Done = { 94888, 94889, 96015 },
             Fillers = { [95991] = { 1 } },
             Coord = { x = -3381.4, y = -8053.2 },
             RaidIcon = 258023,
             Zone = 2548,
-            _index = 104,
+            _index = 103,
         },
         {
             PickUp = { 94890 },
@@ -2887,7 +2879,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -3381.4, y = -8053.2 },
             RaidIcon = 258023,
             Zone = 2548,
-            _index = 105,
+            _index = 104,
         },
         {
             Qpart = { [94890] = { 1 } },
@@ -2897,7 +2889,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Range = 30,
             RaidIcon = 256881,
             Zone = 2548,
-            _index = 106,
+            _index = 105,
         },
         {
             Done = { 94890 },
@@ -2905,7 +2897,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -3381.3, y = -8053.1 },
             RaidIcon = 258023,
             Zone = 2548,
-            _index = 107,
+            _index = 106,
         },
         {
             PickUp = { 94891, 94983 },
@@ -2913,14 +2905,14 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -3381.3, y = -8053.1 },
             RaidIcon = 258023,
             Zone = 2548,
-            _index = 108,
+            _index = 107,
         },
         {
             UseHS = 95124,
             Fillers = { [95991] = { 1 } },
             Note = { "FOREVER_RIVERGLADES_POWDERFUSE_HEARTH" },
             SkipIfCooldown = { { itemID = 6948, operator = ">", seconds = 2, once = true } },
-            _index = 109,
+            _index = 108,
         },
         {
             Done = { 95124, 95165 },
@@ -2928,7 +2920,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -5744.9, y = -8170.6 },
             RaidIcon = 259961,
             Zone = 2548,
-            _index = 110,
+            _index = 109,
         },
         {
             Done = { 95261 },
@@ -2936,7 +2928,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -5769.2, y = -8163.7 },
             RaidIcon = 260231,
             Zone = 2548,
-            _index = 111,
+            _index = 110,
         },
         {
             PickUp = { 95267 },
@@ -2944,7 +2936,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -5769.2, y = -8163.7 },
             RaidIcon = 260231,
             Zone = 2548,
-            _index = 112,
+            _index = 111,
         },
         {
             Done = { 95294 },
@@ -2952,7 +2944,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -5631.2, y = -8177.3 },
             RaidIcon = 255897,
             Zone = 2548,
-            _index = 113,
+            _index = 112,
         },
         {
             PickUp = { 95296, 95295 },
@@ -2960,7 +2952,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -5631.2, y = -8177.3 },
             RaidIcon = 255897,
             Zone = 2548,
-            _index = 114,
+            _index = 113,
         },
         {
             Qpart = { [95120] = { 1 } },
@@ -2970,7 +2962,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Range = 30,
             RaidIcon = 257001,
             Zone = 2548,
-            _index = 115,
+            _index = 114,
         },
         {
             Qpart = { [95267] = { 1 } },
@@ -2981,7 +2973,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Button = { ["95267-1"] = 268647 },
             RaidIcon = 260244,
             Zone = 2548,
-            _index = 116,
+            _index = 115,
         },
         {
             Qpart = { [95121] = { 1 }, [95118] = { 1, 2 } },
@@ -2990,7 +2982,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Range = 30,
             RaidIcon = 255898,
             Zone = 2548,
-            _index = 117,
+            _index = 116,
         },
         {
             Done = { 95121, 95254 },
@@ -2998,7 +2990,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -5723.9, y = -8219.0 },
             RaidIcon = 259962,
             Zone = 2548,
-            _index = 118,
+            _index = 117,
         },
         {
             Done = { 95118, 95120 },
@@ -3006,7 +2998,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -5744.8, y = -8170.6 },
             RaidIcon = 259961,
             Zone = 2548,
-            _index = 119,
+            _index = 118,
         },
         {
             Done = { 95267 },
@@ -3014,7 +3006,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -5768.9, y = -8163.7 },
             RaidIcon = 260231,
             Zone = 2548,
-            _index = 120,
+            _index = 119,
         },
         {
             Done = { 95975 },
@@ -3022,7 +3014,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -4988.1, y = -9125.3 },
             RaidIcon = 263089,
             Zone = 2548,
-            _index = 121,
+            _index = 120,
         },
         {
             Waypoint = 94891,
@@ -3032,7 +3024,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -5023.3, y = -9166.601 },
             Range = 8.0,
             Zone = 2548,
-            _index = 122,
+            _index = 121,
         },
         {
             Waypoint = 94891,
@@ -3042,7 +3034,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -5120.7, y = -9152.3 },
             Range = 30.0,
             Zone = 2548,
-            _index = 123,
+            _index = 122,
         },
         {
             Waypoint = 94891,
@@ -3052,7 +3044,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -5113.4, y = -9180.8 },
             Range = 20.0,
             Zone = 2548,
-            _index = 124,
+            _index = 123,
         },
         {
             Waypoint = 94891,
@@ -3062,7 +3054,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -5136.0, y = -9137.3 },
             Range = 20.0,
             Zone = 2548,
-            _index = 125,
+            _index = 124,
         },
         {
             Waypoint = 94891,
@@ -3072,7 +3064,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -5136.0, y = -9110.3 },
             Range = 10.0,
             Zone = 2548,
-            _index = 126,
+            _index = 125,
         },
         {
             Done = { 94891, 94907 },
@@ -3080,7 +3072,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -5129.3, y = -9089.5 },
             RaidIcon = 257591,
             Zone = 2548,
-            _index = 127,
+            _index = 126,
         },
         {
             PickUp = { 94984 },
@@ -3088,7 +3080,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -5129.3, y = -9089.5 },
             RaidIcon = 257591,
             Zone = 2548,
-            _index = 128,
+            _index = 127,
         },
         {
             Done = { 94926 },
@@ -3097,7 +3089,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             RaidIcon = 257558,
             IsQuestOnQuest = 94926,
             Zone = 2548,
-            _index = 129,
+            _index = 128,
         },
         {
             Done = { 95148, 95059, 95066, 94892 },
@@ -3105,7 +3097,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -5125.2, y = -9086.2 },
             RaidIcon = 257558,
             Zone = 2548,
-            _index = 130,
+            _index = 129,
         },
         {
             PickUp = { 94893, 94982, 94894 },
@@ -3113,7 +3105,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -5125.2, y = -9086.2 },
             RaidIcon = 257558,
             Zone = 2548,
-            _index = 131,
+            _index = 130,
         },
         {
             Waypoint = 95912,
@@ -3123,7 +3115,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -5101.1, y = -9071.3 },
             Range = 10.0,
             Zone = 2548,
-            _index = 132,
+            _index = 131,
         },
         {
             Waypoint = 95912,
@@ -3133,7 +3125,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -5136.7, y = -9070.5 },
             Range = 10.0,
             Zone = 2548,
-            _index = 133,
+            _index = 132,
         },
         {
             Waypoint = 95912,
@@ -3143,12 +3135,12 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -5134.1, y = -9051.0 },
             Range = 10.0,
             Zone = 2548,
-            _index = 134,
+            _index = 133,
         },
         {
             DestroyItems = { items = { 274981 } },
             Fillers = { [95991] = { 1 } },
-            _index = 135,
+            _index = 134,
         },
         {
             Qpart = { [95912] = { 1 } },
@@ -3158,7 +3150,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             NoArrow = true,
             RaidIcon = 263071,
             IsQuestOnQuest = 95912,
-            _index = 136,
+            _index = 135,
         },
         {
             Done = { 95912 },
@@ -3166,7 +3158,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -5100.0, y = -9040.4 },
             RaidIcon = 260080,
             Zone = 2548,
-            _index = 137,
+            _index = 136,
         },
         {
             Done = { 95184 },
@@ -3175,7 +3167,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             RaidIcon = 260080,
             ItemCount = { operator = ">=", count = 8, itemID = 7964 },
             Zone = 2548,
-            _index = 138,
+            _index = 137,
         },
         {
             Done = { 95991 },
@@ -3184,7 +3176,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             IsQuestOnQuest = 95991,
             IsQuestReadyForTurnIn = 95991,
             Zone = 2548,
-            _index = 139,
+            _index = 138,
         },
         {
             Done = { 96085 },
@@ -3192,7 +3184,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Coord = { x = -4885.8, y = -9157.2 },
             RaidIcon = 262031,
             Zone = 2548,
-            _index = 140,
+            _index = 139,
         },
         {
             UseFlightPath = 623,
@@ -3203,7 +3195,7 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             RaidIcon = 257087,
             SkipInZones = { 1445, 1437 },
             Zone = 2548,
-            _index = 141,
+            _index = 140,
         },
         {
             Note = { "LEVEL_FIRST_AID_WAITING_BOAT" },
@@ -3213,11 +3205,11 @@ APR.RouteQuestStepList["Forever-Alliance-Riverglades-II"] = {
             Range = 5,
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1445, 71.54, 56.34, 20),
             Zone = 1437,
-            _index = 142,
+            _index = 141,
         },
         {
             RouteCompleted = true,
-            _index = 143,
+            _index = 142,
         },
     },
 }
