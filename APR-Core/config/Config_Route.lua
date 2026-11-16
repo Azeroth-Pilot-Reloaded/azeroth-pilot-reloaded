@@ -109,9 +109,19 @@ end --[[APR_DIAG]]
 APR.routeconfig.InitRouteConfig =
     APRTrace("APR-Core/config/Config_Route.lua:37:APR.routeconfig:InitRouteConfig#3", APR.routeconfig.InitRouteConfig) --[[/APR_DIAG]]
 
-function APR.routeconfig:SendCustomPathUpdate(suppressUpdate)
+function APR.routeconfig:SendCustomPathUpdate(suppressUpdate, preserveActiveRoute)
     if suppressUpdate or self._isBuildingSpeedrunPrefab then
         return
+    end
+    -- Editing the queue only affects the engine when its selected route changes.
+    -- Explicit resets and preset replacements keep the full refresh by default.
+    if preserveActiveRoute and not self.levelResetBuild and APR.ActiveRoute then
+        local _, _, routeKey = APR:GetCurrentRouteMapIDsAndName()
+        if routeKey == APR.ActiveRoute then
+            self.levelResetRequest = nil
+            self:SchedulePathUiRefresh()
+            return
+        end
     end
     self:SendMessage("APR_Custom_Path_Update")
 end --[[APR_DIAG]]
