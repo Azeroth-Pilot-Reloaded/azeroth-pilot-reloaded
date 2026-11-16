@@ -307,6 +307,34 @@ Settings retain their existing AceConfig categories. The route selector opens
 separately from `/apr route` and the existing route entry points. Performance
 remains available through its slash command.
 
+## Sharing paths and Recorder routes
+
+The group header shares the current path with compatible APR party members;
+right-clicking an APR member row targets that member. The route catalogue's
+Share button sends the selected Recorder route to a member or the party.
+Receiving data and importing it are separate confirmations. Importing a path
+replaces its ordered list and either preserves local progress or projects the
+sender's definition-based step onto the receiving character. A standalone route
+is saved without changing the path. Conflicting custom definitions receive unique
+names; missing official routes and their dependants require explicit partial-import
+confirmation. This is a snapshot, not continuous following, and excludes raids.
+
+`PathSharingProtocol`, `PathSharing`, `PathSharingImport` and `PathSharingUI` own
+data validation, transfers, staged imports and entry points respectively. The
+versioned `APRPathV1` protocol uses the current party/instance channel, exact
+roster identities and BULK throttling with only one queued data fragment per
+recipient. Transfers are limited to 512 KiB, 120 seconds of inactivity and 15
+minutes overall. No received Lua is executed. `RegisterCustomRoute` accepts an
+optional third argument to defer notifications while a batch is staged.
+
+Sharing translations live in `tools/localization/group-sharing-translations.json`.
+Use `python tools/localization/import_announcements.py --file
+tools/localization/group-sharing-translations.json` to preview, then add `--apply
+--export-dir .cache/group-sharing-localization` to publish and verify all eleven
+remote catalogues. `--renames` accepts an old-to-new key mapping and preserves
+existing translated values. Commit references and translation data, excluding
+generated `APR-Core/locales/*.lua` exports.
+
 ## Saves and caches
 
 | State                                                | Owner and lifetime                                                                         |

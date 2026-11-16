@@ -238,7 +238,11 @@ end--[[APR_DIAG]]
 NormalizeCustomRoute = APRTrace("APR-Core/utils/RouteUtils.lua:203:NormalizeCustomRoute#10", NormalizeCustomRoute)--[[/APR_DIAG]]
 
 --- Register a saved custom definition and refresh consumers once per frame.
-function APR:RegisterCustomRoute(name, data)
+function APR:NormalizeCustomRouteDefinition(name, data)
+    return NormalizeCustomRoute(name, data)
+end--[[APR_DIAG]]; APR.NormalizeCustomRouteDefinition = APRTrace("APR-Core/utils/RouteUtils.lua:240:APR:NormalizeCustomRouteDefinition#100", APR.NormalizeCustomRouteDefinition)--[[/APR_DIAG]]
+
+function APR:RegisterCustomRoute(name, data, deferUpdate)
     if type(name) ~= "string" or name == "" or not APRData then return false end
     local route = NormalizeCustomRoute(name, data)
     if not route then return false end
@@ -251,6 +255,8 @@ function APR:RegisterCustomRoute(name, data)
     self.RouteQuestStepList[name] = route
     self._routeLookupRevision = (self._routeLookupRevision or 0) + 1
     if self.InvalidateEffectiveRouteStepsCache then self:InvalidateEffectiveRouteStepsCache(name) end
+    -- Sharing stages a batch and publishes exactly one completed catalogue/path update.
+    if deferUpdate then return true end
     self._customRouteActiveChanged = self._customRouteActiveChanged or self.ActiveRoute == name
     if not self._customRouteUpdatePending then
         self._customRouteUpdatePending = true

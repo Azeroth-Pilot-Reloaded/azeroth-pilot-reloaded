@@ -375,6 +375,12 @@ local function AcquireTeamContainer()
         APR:RegisterFontString(container.fontStatus, "party", { role = "muted", sizeDelta = -1 })
 
         container:SetScript("OnEnter", TeamContainerOnEnter)
+        container:EnableMouse(true)
+        container:SetScript("OnMouseUp", --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:400:callback#100", --[[/APR_DIAG]]function(self, button)
+            if button == "RightButton" and self.playerData and APR.PathSharing then
+                APR.PathSharing:ShowMemberMenu(self.playerData.username, self)
+            end
+        end--[[APR_DIAG]])--[[/APR_DIAG]])
         container:SetScript(
             "OnLeave", --[[APR_DIAG]]
             APRTrace(

@@ -10,6 +10,12 @@ local UI = APR.UI
 APR.RouteBrowser = { filters = { sort = "label" } }
 local Browser = APR.RouteBrowser
 
+function Browser:RefreshShareButton()
+    if not self.shareRoute then return end
+    local custom = APRData and APRData.CustomRoute
+    self.shareRoute:SetEnabled(custom and self.selectedKey and custom[self.selectedKey] ~= nil or false)
+end--[[APR_DIAG]]; Browser.RefreshShareButton = APRTrace("APR-Core/ui/route/RouteBrowser.lua:15:Browser:RefreshShareButton#100", Browser.RefreshShareButton)--[[/APR_DIAG]]
+
 local function Place(region, x, y, width, height)
     region:ClearAllPoints()
     region:SetPoint("TOPLEFT", region:GetParent(), "TOPLEFT", x, -y)
@@ -89,6 +95,7 @@ function Browser:Refresh(rebuild, resetScroll)
     self.count:SetText(scope .. " (" .. #records .. (#records ~= scopeCount and " / " .. scopeCount or "") .. ")")
     self.pathTitle:SetText(L["CUSTOM_PATH"] .. " (" .. #APR.RouteCatalog:GetPath() .. ")")
     self.clearPath:SetEnabled(#APR.RouteCatalog:GetPath() > 0)
+    self:RefreshShareButton()
     self.empty:SetShown(#records == 0)
     self.pathEmpty:SetShown(#APR.RouteCatalog:GetPath() == 0)
     for key, header in pairs(self.headers) do
@@ -277,6 +284,13 @@ function Browser:Create(parent)
     self:CreateNavigation(self.navigationPanel)
     self.catalogPanel = UI:Section(root, "", "inset")
     self.count = self.catalogPanel.title
+    self.shareRoute = UI:Button(self.catalogPanel, L["GROUP_ROUTE_SHARE_ACTION"], 120, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:287:callback#101", --[[/APR_DIAG]]function()
+        if APR.PathSharing and self.selectedKey then APR.PathSharing:ChooseRecipient(self.selectedKey) end
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self.shareRoute:SetPoint("TOPRIGHT", -12, -6)
+    self.shareRoute:SetHeight(26)
+    self.shareRoute:SetEnabled(false)
+    self.count:SetPoint("RIGHT", self.shareRoute, "LEFT", -8, 0)
     self.headerBand = self.catalogPanel:CreateTexture(nil, "BACKGROUND")
     APR:RegisterThemeRegion(self.headerBand, "border", 0.18)
     self.scroll = UI:Scroll(self.catalogPanel)

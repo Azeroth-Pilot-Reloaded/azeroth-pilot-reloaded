@@ -91,6 +91,7 @@ function Rows:Create(parent, browser, path)
                 APR.RouteCatalog:ChangePath(row.item, path and "remove" or "add", not path and IsShiftKeyDown())
             else
                 browser.selectedKey = row.item.key
+                if browser.RefreshShareButton then browser:RefreshShareButton() end
                 browser.list:RefreshVisible(true)
                 browser.pathList:RefreshVisible(true)
             end
