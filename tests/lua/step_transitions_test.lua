@@ -83,6 +83,64 @@ assert(
 assert(APR:PreviousQuestStep() and APRData.player.route == 1)
 assert(not APR:PreviousQuestStep() and APRData.player.route == 1)
 
+-- Rollback searches backwards without letting completed handlers bounce forward.
+local originalRoute = route
+local rewarded = { [10] = true }
+C_QuestLog.IsQuestFlaggedCompleted = function(id) return rewarded[id] == true end
+APR.ActiveQuests = { [20] = { objectives = { { status = "complete" }, { status = "pending" } } } }
+APR.QUEST_STATUS = { COMPLETE = "complete" }
+function APR:StepFilterQuestHandler(step) return step.hidden == true end
+route = {
+    { PickUp = { 30 } },
+    { Qpart = { [20] = { 1 } } },
+    { Done = { 10 } },
+    { PickUp = { 20 } },
+    { Note = "filtered", hidden = true },
+    { Waypoint = 1 },
+    { Note = "current" },
+}
+APR.RouteQuestStepList.route = route
+APR:SetRouteProgress("route", 7)
+local beforeRollback = APR.stepRevision
+assert(APR:PreviousQuestStep() and APRData.player.route == 1,
+    "Rollback passes completed objectives, turn-ins, accepted pickups and hidden/waypoint steps")
+assert(APR.stepRevision == beforeRollback + 1, "Searching only commits the chosen destination")
+APR.ActiveQuests[30] = {}
+APR:SetRouteProgress("route", 7)
+assert(not APR:PreviousQuestStep() and APRData.player.route == 7,
+    "No unfinished destination leaves the cursor unchanged, including a completed first step")
+APR.ActiveQuests[30] = nil
+APR:SetRouteProgress("route", 3)
+assert(APR:CommitManualSkip(7))
+assert(APR:PreviousQuestStep() and APRData.player.route == 1,
+    "A skipped step completed since the skip cannot override the unfinished destination")
+APR:SetRouteProgress("route", 2)
+route[2].Qpart[20] = { 1, 2 }
+assert(APR:CommitManualSkip(7))
+assert(APR:PreviousQuestStep() and APRData.player.route == 2,
+    "A partially completed skipped step is still restored")
+assert(not APR:IsRollbackStepComplete({ Done = { 20 } }), "A ready/active quest still needs turning in")
+assert(not APR:IsRollbackStepComplete({ PickUp = { 10, 30 } }), "Every pickup is required")
+assert(APR:IsRollbackStepComplete({ PickUp = { 30 }, PickUpDB = { 30, 20 } }), "Pickup alternatives accept any known variant")
+assert(APR:IsRollbackStepComplete({ Done = { 30 }, DoneDB = { 30, 10 } }), "Turn-in alternatives follow handler semantics")
+assert(APR:IsRollbackStepComplete({ Qpart = { [1] = { 1 } }, QpartDB = { 30, 20 } }))
+assert(not APR:IsRollbackStepComplete({ Qpart = { [1] = { 1 } }, QpartDB = { 30 } }))
+assert(APR:IsRollbackStepComplete({ QpartPart = { [20] = { 1, 2 } } }), "Partial stages finish on any completed objective")
+assert(not APR:IsRollbackStepComplete({ Qpart = { [30] = { 1 } } }), "Missing quest data remains unfinished")
+assert(APR:IsRollbackStepComplete({ DropQuest = 20 }))
+for _, key in ipairs({ "Treasure", "UseItem", "UseSpell", "Group" }) do
+    assert(APR:IsRollbackStepComplete({ [key] = { questID = 10 } }))
+    assert(not APR:IsRollbackStepComplete({ [key] = {} }), "Missing optional quest IDs stay safe")
+end
+APR.startupQuestStatePending = true
+assert(not APR:IsRollbackStepComplete({ Done = { 10 } }), "Unknown startup quest state must not discard a destination")
+APR.startupQuestStatePending = nil
+APR.ActiveQuests = nil
+assert(not APR:IsRollbackStepComplete({ PickUp = { 30 } }), "Missing quest cache is safe")
+route = originalRoute
+APR.RouteQuestStepList.route = route
+APR:SetRouteProgress("route", 1)
+
 -- External waypoint ownership follows active route identity, independently of
 -- whether the caller refreshes the presentation immediately.
 local waypointReleases = 0

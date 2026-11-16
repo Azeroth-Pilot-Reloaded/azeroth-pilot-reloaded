@@ -298,7 +298,7 @@ group messages, and route imports. `RegisterCustomRoute`, legacy flat lists, and
 | `/apr`                                   | Options in the shared APR workspace; Blizzard settings contain only a launcher. |
 | `/apr route`                             | Predefined paths, expansion/community browsing, filters and favorites.          |
 | `/apr status` or `?` button on the guide | Compact status and copyable Lua report including current-step data.             |
-| `/apr rollback` / `/apr rb`              | Undo the last valid manual skip, otherwise return to the previous visible step. |
+| `/apr rollback` / `/apr rb`              | Return to the last unfinished visible step; undo a manual skip only while its step remains unfinished. |
 | `/apr perf`                              | Open the dashboard; start/stop, sort, search, and export.                       |
 | `/apr perf on` / `/apr perf off`         | Control capture without opening the dashboard.                                  |
 | `/apr layout` or placement in settings   | Move previews, cancel, save or bring them back on screen.                       |

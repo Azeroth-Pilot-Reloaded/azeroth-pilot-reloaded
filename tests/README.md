@@ -414,7 +414,8 @@ disabled routes. `route_metadata_tooltip_test.lua` checks data-only attribution,
 APR fallback, descriptions and recycled catalogue/custom-path tooltips.
 `status_report_test.lua` checks the historical status, identity masking,
 formatted Lua and selection preservation. `step_transitions_test.lua` checks
-rollback undo and its normal previous-step fallback. `performance_dashboard_test.lua`
+rollback to unfinished steps, completed-skip recovery and unchanged progress when
+no destination remains. `performance_dashboard_test.lua`
 checks scaled graph hover, peak context, frozen timelines and bounded captures.
 `tools/validation/check_package.py` still needs an unpacked release to validate a
 real package; its automated tests use a minimal package fixture.
