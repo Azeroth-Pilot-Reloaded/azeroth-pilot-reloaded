@@ -36,7 +36,7 @@ class ReputationConversionTests(unittest.TestCase):
         paths = list(self.output.glob('*.lua'))
         catalog = load_routes(paths, translations=exported['frFR'])
         self.assertEqual(len(catalog.routes), 1)
-        route = catalog.routes['Forever-Reputation-98765']
+        route = catalog.routes['Forever-Reputation-Invented']
         RouteSchema(catalog).validate('invented', route)
         self.assertEqual(route['label'], 'Réputation - Inventée')
         self.assertIn('Forever - Invented', route['legacyLabels'].values())
@@ -106,7 +106,7 @@ class ReputationConversionTests(unittest.TestCase):
         with patch.object(converter, 'native_plan', return_value={0: steps}):
             converter.build(self.source, self.output, self.translations)
         catalog = load_routes(list(self.output.glob('*.lua')))
-        route = catalog.routes['Forever-Reputation-98765']
+        route = catalog.routes['Forever-Reputation-Invented']
         RouteSchema(catalog).validate('invented', route)
         self.assertEqual([route['steps'][i]['_index'] for i in range(1, 7)], list(range(1, 7)))
         self.assertEqual(route['steps'][1]['PickUp'], {1: 54321})
