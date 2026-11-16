@@ -600,8 +600,7 @@ APR.HasAnyMainStepOption =
 ---@return boolean|nil criteriaCompleted
 ---@return number|nil criteriaID
 local function QueryAchievementCriteriaInfo(criteriaAPI, ...)
-    local results = { --[[APR_DIAG]]
-        APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](criteriaAPI, ...),
+    local results = { --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](criteriaAPI, ...),
     }
     if not results[1] then
         return false
@@ -767,20 +766,101 @@ function APR:SkipQuestStep()
 end--[[APR_DIAG]]
 APR.SkipQuestStep = APRTrace("APR-Core/utils/StepUtils.lua:586:APR:SkipQuestStep#22", APR.SkipQuestStep)--[[/APR_DIAG]]
 
--- Rollback first reverses a valid manual skip, including its immediate automatic advances.
--- Otherwise it walks back to the preceding visible non-waypoint step.
+-- Read quest progress without rendering handlers, changing the cursor or starting actions.
+-- Unknown action state remains a stopping point for manual rollback.
+function APR:IsRollbackStepComplete(step)
+    if self.startupQuestStatePending then return false end
+    local quests = self.ActiveQuests or {}
+    local data = APRData and APRData[self.PlayerID] or {}
+    local function rewarded(id)
+        return id and C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted
+            and C_QuestLog.IsQuestFlaggedCompleted(tonumber(id)) or false
+    end--[[APR_DIAG]]; rewarded = APRTrace("APR-Core/utils/StepUtils.lua:740:rewarded#25", rewarded)--[[/APR_DIAG]]
+    local function accepted(id)
+        return rewarded(id) or quests[tonumber(id)] ~= nil
+    end--[[APR_DIAG]]; accepted = APRTrace("APR-Core/utils/StepUtils.lua:744:accepted#26", accepted)--[[/APR_DIAG]]
+    local function objectiveComplete(id, index)
+        id, index = tonumber(id), tonumber(index)
+        local quest = quests[id]
+        local objective = quest and quest.objectives and quest.objectives[index]
+        return rewarded(id)
+            or (step.Qpart and data.BonusSkips and data.BonusSkips[id])
+            or (step.Qpart and self.MaxLevel and UnitLevel("player") == self.MaxLevel
+                and self:Contains(self.BonusObj or {}, id))
+            or (objective and self.QUEST_STATUS and objective.status == self.QUEST_STATUS.COMPLETE)
+            or (step.QpartPart and objective and self.QpartPart_TrigTextMatch
+                and self:QpartPart_TrigTextMatch(step, id, objective.text))
+            or false
+    end--[[APR_DIAG]]; objectiveComplete = APRTrace("APR-Core/utils/StepUtils.lua:747:objectiveComplete#27", objectiveComplete)--[[/APR_DIAG]]
+    if step.Qpart or step.QpartPart then
+        local objectives = step.Qpart or step.QpartPart
+        if step.QpartDB then
+            local selected
+            for _, id in ipairs(step.QpartDB) do
+                if accepted(id) then selected = id; break end
+            end
+            if not selected then return false end
+            objectives = { [selected] = objectives[1] }
+        end
+        local any = step.QpartPart ~= nil
+        for id, indices in pairs(objectives) do
+            for _, index in pairs(indices) do
+                local complete = objectiveComplete(id, index)
+                if any and complete then return true end
+                if not any and not complete then return false end
+            end
+        end
+        return not any
+    elseif step.PickUp or step.Done then
+        local alternatives = step.PickUpDB or step.DoneDB
+        if alternatives then
+            for _, id in ipairs(alternatives) do
+                if accepted(id) then return true end
+            end
+            return false
+        end
+        for _, id in ipairs(step.PickUp or step.Done) do
+            if step.PickUp then
+                if not accepted(id) then return false end
+            elseif not rewarded(id) then
+                return false
+            end
+        end
+        return true
+    elseif step.DropQuest then
+        return accepted(step.DropQuest)
+    elseif step.Treasure or step.UseItem or step.UseSpell or step.Group then
+        return rewarded((step.Treasure or step.UseItem or step.UseSpell or step.Group).questID)
+    elseif step.Achievement then
+        return self:IsAchievementStepComplete(step)
+    elseif step.Grind then
+        return self:GetPlayerEffectiveLevel() >= self:ResolveLevelRequirement(step.Grind)
+    end
+    return false
+end--[[APR_DIAG]]; APR.IsRollbackStepComplete = APRTrace("APR-Core/utils/StepUtils.lua:736:APR:IsRollbackStepComplete#24", APR.IsRollbackStepComplete)--[[/APR_DIAG]]
+
+-- Prefer the skipped authored step only while it still applies and needs doing.
+-- Otherwise seek the nearest earlier visible, unfinished non-waypoint step.
 function APR:PreviousQuestStep()
-    if self:CanUndoManualSkip() then return self:UndoManualSkip() end
     local context = self:CaptureStepContext()
     if not context.route or not context.index then return false end
     local steps = self:GetRouteSteps(context.route)
-    local target = math.max(1, context.index - 1)
-    while target > 1 do
-        local step = steps[target]
-        if step and not (self:StepFilterQuestHandler(step) or step.Waypoint) then break end
-        target = target - 1
+    local skipCampaign = self.IsSojournerSkipActive and self:IsSojournerSkipActive()
+    local function eligible(step)
+        return step and not self:StepFilterQuestHandler(step)
+            and not (skipCampaign and self:IsStepCampaignQuest(step))
+            and not self:IsRollbackStepComplete(step)
+    end--[[APR_DIAG]]; eligible = APRTrace("APR-Core/utils/StepUtils.lua:814:eligible#29", eligible)--[[/APR_DIAG]]
+    if self:CanUndoManualSkip() and eligible(steps[self.manualSkipUndo.before.index]) then
+        return self:UndoManualSkip()
     end
-    return self:TransitionStep(target, "manual_previous", "quests", context)
+    for target = math.min(context.index - 1, #steps), 1, -1 do
+        local step = steps[target]
+        if eligible(step) and not step.Waypoint then
+            return self:TransitionStep(target, "manual_previous", "quests", context)
+        end
+    end
+    return false
 end--[[APR_DIAG]]
 APR.PreviousQuestStep = APRTrace("APR-Core/utils/StepUtils.lua:628:APR:PreviousQuestStep#23", APR.PreviousQuestStep)--[[/APR_DIAG]]
 
