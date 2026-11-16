@@ -17,10 +17,15 @@ local TextStyleUtils = APR.TextStyleUtils
 function TextStyleUtils:FormatItemLinks(text)
     local pending, items = {}, {}
     local getInfo = C_Item and C_Item.GetItemInfo or GetItemInfo
-    local formatted = text:gsub("(|+)H([^|]+)|h(.-)|h", --[[APR_DIAG]]APRTrace("APR-Core/utils/TextStyleUtils.lua:20:callback#2", --[[/APR_DIAG]]function(pipes, payload, label)
-        local original = pipes .. "H" .. payload .. "|h" .. label .. "|h"
+    local formatted = text:gsub("(|+)H([^|]+)(|+)h(.-)(|+)h", --[[APR_DIAG]]APRTrace("APR-Core/utils/TextStyleUtils.lua:20:callback#2", --[[/APR_DIAG]]function(pipes, payload, opening, label, closing)
+        local original = pipes .. "H" .. payload .. opening .. "h" .. label .. closing .. "h"
         local id = tonumber(payload:match("^item:(%d+)$") or payload:match("^item:(%d+):"))
-        if #pipes % 2 == 0 or not id or id <= 0 then return original end
+        -- Pasted native input may escape every delimiter. Accept that complete
+        -- item token only; unrelated literal pipes and partial markup stay intact.
+        local escaped = pipes == "||" and opening == "||" and closing == "||"
+        if not id or id <= 0 or (not escaped and (#pipes % 2 == 0 or opening ~= "|" or closing ~= "|")) then
+            return original
+        end
         local item = items[payload]
         if not item then
             local name, link, quality, _, _, _, _, _, _, icon
@@ -28,13 +33,17 @@ function TextStyleUtils:FormatItemLinks(text)
             local color = link and link:match("|c(%x%x%x%x%x%x%x%x)")
             local qualityColor = ITEM_QUALITY_COLORS and ITEM_QUALITY_COLORS[quality]
             color = color or (qualityColor and qualityColor.hex) or "ffffffff"
+            -- Native quality colors already include the |c markup prefix.
+            color = type(color) == "string" and color:gsub("^|c", "") or ""
+            if #color ~= 8 or color:find("[^%x]") then color = "ffffffff" end
             item = { name = name, color = color, icon = icon }
             items[payload] = item
         end
         if not item.name then pending[id] = true end
         local name = item.name or label:gsub("^%[(.*)%]$", "%1")
         local icon = item.icon and ("|T" .. tostring(item.icon) .. ":0|t ") or ""
-        return pipes:sub(1, -2) .. icon .. "|c" .. item.color .. "|H" .. payload .. "|h[" .. name .. "]|h|r"
+        local prefix = escaped and "" or pipes:sub(1, -2)
+        return prefix .. icon .. "|c" .. item.color .. "|H" .. payload .. "|h" .. name .. "|h|r"
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     return formatted, pending
 end--[[APR_DIAG]]; TextStyleUtils.FormatItemLinks = APRTrace("APR-Core/utils/TextStyleUtils.lua:17:TextStyleUtils:FormatItemLinks#1", TextStyleUtils.FormatItemLinks)--[[/APR_DIAG]]

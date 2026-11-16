@@ -60,7 +60,7 @@ for _, client in ipairs({ "retail", "forever" }) do
     local raw = APR:ResolveStepText("NOTE_HINT")
     assert(raw == original, "Resolution preserves translation hyperlink markup")
     local row = add("NOTE_1", raw)
-    assert(row.font:GetText() == "Keep |cffffffff|Hitem:94001|h[Old label]|h|r for later.")
+    assert(row.font:GetText() == "Keep |cffffffff|Hitem:94001|hOld label|h|r for later.")
     assert(requests[94001] == 1 and row.hyperlinks)
     add("NOTE_1", raw)
     assert(requests[94001] == 1, "An unchanged render cannot issue duplicate requests")
@@ -72,9 +72,16 @@ for _, client in ipairs({ "retail", "forever" }) do
     assert(#timers == 1, "Item event bursts share one refresh")
     flush()
     assert(layouts == 1)
-    assert(row.font:GetText() == "Keep |T777:0|t |cff0070dd|Hitem:94001|h[Clef inventée]|h|r for later.")
+    assert(row.font:GetText() == "Keep |T777:0|t |cff0070dd|Hitem:94001|hClef inventée|h|r for later.")
     assert(not step.itemTextFrame.events.ITEM_DATA_LOAD_RESULT, "No idle item listener remains")
     assert(locale.NOTE_HINT == original, "Rendering never rewrites translations")
+    -- Native text fields can retain escaped markup when a note is pasted.
+    -- Existing custom notes must render without rewriting their saved value.
+    local customNote = "Use ||Hitem:94001||hOld label||h; keep || literal."
+    local custom = add("CUSTOM_NOTE", APR:ResolveStepText(customNote))
+    assert(custom.font:GetText() == "Use |T777:0|t |cff0070dd|Hitem:94001|hClef inventée|h|r; keep || literal.",
+        "Complete escaped item links in custom notes must reach native rendering as links")
+    assert(custom._rawExtraLineText == customNote, "Custom note data remains intact")
     local before = reads
     local writes = 0
     local setText = env.methods.SetText
@@ -95,10 +102,31 @@ for _, client in ipairs({ "retail", "forever" }) do
 
     local variant = "item:94001:0:0:0:0:0:0:42:90"
     data[variant] = { name = "Variant", quality = 2 }
-    ITEM_QUALITY_COLORS = { [2] = { hex = "ff1eff00" } }
+    ITEM_QUALITY_COLORS = { [2] = { hex = "|cff1eff00" } }
     local formatted = APR.TextStyleUtils:FormatItemLinks("|cffaabbcc|H" .. variant .. "|h[Before]|h|r |Hspell:12|hOther|h")
-    assert(formatted == "|cffaabbcc|cff1eff00|H" .. variant .. "|h[Variant]|h|r|r |Hspell:12|hOther|h")
+    assert(formatted == "|cffaabbcc|cff1eff00|H" .. variant .. "|hVariant|h|r|r |Hspell:12|hOther|h")
+    data[variant].icon = 781
+    local expectedVariant = "|T781:0|t |cff1eff00|H" .. variant .. "|hVariant|h|r"
+    assert(APR.TextStyleUtils:FormatItemLinks("|H" .. variant .. "|hBefore|h") == expectedVariant,
+        "Native quality markup must appear once, with icon-space-name and no brackets")
+    ITEM_QUALITY_COLORS[2].hex = "ff1eff00"
+    assert(APR.TextStyleUtils:FormatItemLinks("|H" .. variant .. "|hBefore|h") == expectedVariant,
+        "Bare quality hex values remain compatible")
+    for _, invalidColor in ipairs({ "", "|c", "bad value", 42, "ff00" }) do
+        ITEM_QUALITY_COLORS[2].hex = invalidColor
+        assert(APR.TextStyleUtils:FormatItemLinks("|H" .. variant .. "|hBefore|h") ==
+            "|T781:0|t |cffffffff|H" .. variant .. "|hVariant|h|r",
+            "Missing or invalid colors cannot leak control markup into the note")
+    end
+    ITEM_QUALITY_COLORS[2].hex = "|cff1eff00"
+    data[variant].icon = nil
     assert(APR.TextStyleUtils:FormatItemLinks("||Hitem:94001|hLiteral|h") == "||Hitem:94001|hLiteral|h")
+    local mixed = "||Hspell:12||hLiteral spell||h |Hitem:94001||hMixed||h ||Hitem:94001||hIncomplete|h"
+    assert(APR.TextStyleUtils:FormatItemLinks(mixed) == mixed,
+        "Other escaped links and mixed or incomplete item delimiters stay literal")
+    local escapedVariant = "||H" .. variant .. "||hBefore||h"
+    assert(APR.TextStyleUtils:FormatItemLinks(escapedVariant) == "|cff1eff00|H" .. variant .. "|hVariant|h|r",
+        "Escaped custom links retain the exact variant payload")
     assert(APR.TextStyleUtils:FormatItemLinks("|Hitem:0|hInvalid|h |Hitem:abc|hBad|h |Hitem:44|hunfinished") ==
         "|Hitem:0|hInvalid|h |Hitem:abc|hBad|h |Hitem:44|hunfinished")
 
@@ -121,10 +149,21 @@ for _, client in ipairs({ "retail", "forever" }) do
 
     local failed = add("NOTE_5", "|Hitem:94004|hMissing object|h")
     event(94004, false); flush()
-    assert(failed.font:GetText() == "|cffffffff|Hitem:94004|h[Missing object]|h|r")
+    assert(failed.font:GetText() == "|cffffffff|Hitem:94004|hMissing object|h|r")
     assert(not step.itemTextFrame.events.ITEM_DATA_LOAD_RESULT)
     add("NOTE_5", "|Hitem:94004|hMissing object|h")
     assert(requests[94004] == 1, "Failed data keeps a readable fallback without a retry loop")
+
+    local pasted = add("CUSTOM_PENDING", "Collect ||Hitem:94012||hUnknown name||h.")
+    assert(pasted.font:GetText() == "Collect |cffffffff|Hitem:94012|hUnknown name|h|r.")
+    assert(requests[94012] == 1)
+    data["item:94012"] = { name = "Loaded pasted object", icon = 780 }
+    event(94012, true); flush()
+    assert(pasted.font:GetText() == "Collect |T780:0|t |cffffffff|Hitem:94012|hLoaded pasted object|h|r.",
+        "Pasted links participate in the same deferred data lifecycle")
+    pasted.scripts.OnHyperlinkEnter(pasted, "item:94012")
+    assert(GameTooltip.hyperlink == "item:94012" and GameTooltip:IsShown())
+    pasted.scripts.OnHyperlinkLeave(pasted)
 
     local changed = add("NOTE_CHANGE", "|Hitem:94008|hOld demand|h")
     add("NOTE_CHANGE", "|Hitem:94009|hNew demand|h")
@@ -172,6 +211,6 @@ for _, client in ipairs({ "retail", "forever" }) do
     C_Item = nil; GetItemInfo = getInfo
     assert(APR.TextStyleUtils:FormatItemLinks("|Hitem:94003|hOld|h"):find("Available after hide", 1, true))
     GetItemInfo = nil
-    assert(APR.TextStyleUtils:FormatItemLinks("|Hitem:94007|hUnavailable|h") == "|cffffffff|Hitem:94007|h[Unavailable]|h|r")
+    assert(APR.TextStyleUtils:FormatItemLinks("|Hitem:94007|hUnavailable|h") == "|cffffffff|Hitem:94007|hUnavailable|h|r")
 end
 print("Note item links: localized display, payloads, tooltips, async lifecycle and combat passed")
