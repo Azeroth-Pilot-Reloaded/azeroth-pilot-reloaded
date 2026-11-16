@@ -126,11 +126,19 @@ for _, profile in ipairs({ "retail", "forever" }) do
     update()
     ready()
 
-    -- A single Zone and the route fallback follow the same map-only rule.
+    -- A single authored Zone still requires its map. Without any geographic
+    -- fields, an instruction applies globally, regardless of the guide's map.
     step.Zones, step.Zone = nil, 82002
     update()
     ready()
     step.Zone, f.currentMap = nil, 82001
+    update()
+    ready()
+    step.PickUp, step.Note = nil, { "Synthetic reminder" }
+    f.currentMap, f.player = 82005, {}
+    update()
+    ready()
+    f.currentMap = nil
     update()
     ready()
     assert(data.profile == profile)

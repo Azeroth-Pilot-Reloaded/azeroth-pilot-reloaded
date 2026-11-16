@@ -643,6 +643,19 @@ local function Exempt(step)
     -- coordinates record where the author cast, not a destination to route to.
     local personalTravel = not step._navigationUnlock and (step.UseHS or step.UseDalaHS or step.UseGarrisonHS)
     return personalTravel
+        -- Instructions without an authored destination apply wherever the
+        -- player is. The guide's map is not a destination for these steps.
+        or (
+            not step.Coord
+            and not step.Coords
+            and not step.Zone
+            and not step.Zones
+            and not step.ZoneStepTrigger
+            and not step.LearnProfession
+            and not step.LearnSkill
+            and not step._navigationUnlock
+            and not (APR.GetScenarioMapIDForStep and APR:GetScenarioMapIDForStep(step))
+        )
         or unregisteredDungeon
         or ((step.LeaveInstance or step.LeaveScenario) and step.NoArrow)
         or (APR.IsInDelveRouteContext and APR:IsInDelveRouteContext(APR.ActiveRoute))

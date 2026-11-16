@@ -165,3 +165,26 @@ nav:ForceRefresh()
 nav:Update()
 FinishPlanning()
 assert(nav:IsNavigating() and APRData.p.r == 1, "The next physical objective resumes normal planning")
+
+-- A global instruction must not inherit the guide's distant map. It also
+-- cancels the previous journey without advancing or hiding the instruction.
+local getDestination = nav.GetDestination
+function nav:GetDestination() error("A positionless instruction must not resolve a destination") end
+step = { Note = { "Synthetic reminder" }, IsQuestOnQuest = 901 }
+nav:ForceRefresh()
+nav:Update()
+assert(nav:GetState() == "ready" and APR.IsInRouteZone, "A global note is ready outside the guide's map")
+assert(not nav.search and not nav:IsNavigating() and #nav.queue == 0, "A global note clears the old itinerary")
+assert(APRData.p.r == 1, "Showing a global note cannot advance guide progress")
+local navigationData = APR.NavigationData
+APR.NavigationData = nil
+nav:ForceRefresh()
+nav:Update()
+assert(nav:GetState() == "ready", "A global note does not wait for navigation data")
+APR.NavigationData = navigationData
+nav.GetDestination = getDestination
+step = { Waypoint = 904, Coord = { x = 0, y = 20000, mapID = 3 }, Zone = 3 }
+nav:ForceRefresh()
+nav:Update()
+FinishPlanning()
+assert(nav:IsNavigating() and APRData.p.r == 1, "A physical objective after a global note resumes navigation")
