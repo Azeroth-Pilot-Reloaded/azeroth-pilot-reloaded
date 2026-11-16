@@ -157,6 +157,10 @@ APR-Core/features/questing/Gossip.lua
 APR-Core/features/group/PartyProtocol.lua
 APR-Core/features/group/PartyFinderProtocol.lua
 APR-Core/features/group/Party.lua
+APR-Core/features/group/PathSharingProtocol.lua
+APR-Core/features/group/PathSharing.lua
+APR-Core/features/group/PathSharingImport.lua
+APR-Core/features/group/PathSharingUI.lua
 APR-Core/features/group/PartyFinder.lua
 APR-Core/features/group/PartyFinderDirect.lua
 APR-Core/features/group/PartyFinderWorld.lua

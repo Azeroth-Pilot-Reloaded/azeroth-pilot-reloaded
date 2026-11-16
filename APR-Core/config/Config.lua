@@ -324,6 +324,7 @@ APR.settings.ChatCommand =
 function APR.settings:RefreshProfile()
     if APR.LayoutEditor then APR.LayoutEditor:Hide(false) end
     self.profile = self.db.profile
+    if APR.PathSharing then APR.PathSharing:RefreshRoster() end
     if APR.BagUpgrades then APR.BagUpgrades:RefreshSettings() end
     if APR.PawnRewards and APR.PawnRewards.RefreshSettings then APR.PawnRewards:RefreshSettings() end
     if APR.partyFinder and APR.partyFinder.RefreshSettings then APR.partyFinder:RefreshSettings() end
@@ -3246,6 +3247,7 @@ APR.settings.CreateMiniMapButton =
     APRTrace("APR-Core/config/Config.lua:2211:APR.settings:CreateMiniMapButton#203", APR.settings.CreateMiniMapButton)--[[/APR_DIAG]]
 
 function APR.settings:ToggleAddon()
+    if APR.PathSharing then APR.PathSharing:RefreshRoster() end
     if APR.announcements then APR.announcements.quests = {} end
     if APR.BagUpgrades then APR.BagUpgrades:RefreshSettings() end
     if APR.PawnRewards and APR.PawnRewards.RefreshSettings then APR.PawnRewards:RefreshSettings() end
