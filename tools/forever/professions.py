@@ -427,6 +427,7 @@ def convert_guide(slug, guide, texts):
              f'APR.RouteQuestStepList["Forever-Profession-{slug}"] = {{',
              f'    label = L[{lua(label)}],', '    expansion = APR.EXPANSIONS.Forever,',
              '    gameVersion = APR.GAME_VERSIONS.Forever,', '    category = APR.CATEGORIES.Professions,',
+             '    levelRange = { min = 1, max = 60 },',
              '    mapID = 947,', '    autoStartOnMap = false,', '    steps = {']
     for index, step in enumerate(steps, 1):
         if "Note" in step:

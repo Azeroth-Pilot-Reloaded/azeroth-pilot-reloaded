@@ -7,6 +7,7 @@ APR.RouteQuestStepList["Forever-Profession-cooking"] = {
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Professions,
+    levelRange = { min = 1, max = 60 },
     mapID = 947,
     autoStartOnMap = false,
     steps = {
