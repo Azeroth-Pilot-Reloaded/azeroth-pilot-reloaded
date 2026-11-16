@@ -1491,14 +1491,18 @@ APR.NormalizeSavedRouteLabels = APRTrace(
     APR.NormalizeSavedRouteLabels
 )--[[/APR_DIAG]]
 
--- Ordinary Forever leveling chapters allow manual entry below their suggested
--- level. Starter and specialized routes retain their existing access boundaries.
+-- Forever leveling chapters and reputation guides allow manual entry below
+-- their suggested level. Starter and specialized routes keep their boundaries.
 local function RouteLevelPolicy(routeKey, data)
     if
         IsForeverRoute(data)
         and APR.CATEGORIES
-        and data.category == APR.CATEGORIES.Leveling
-        and APR:GetRouteSelectionScope(routeKey, data) == APR.EXPANSIONS.Forever
+        and data.category ~= nil
+        and (
+            data.category == APR.CATEGORIES.Reputation
+            or (data.category == APR.CATEGORIES.Leveling
+                and APR:GetRouteSelectionScope(routeKey, data) == APR.EXPANSIONS.Forever)
+        )
         and not APR:IsForeverStartingRoute(routeKey, data)
     then
         return "route-all-levels"

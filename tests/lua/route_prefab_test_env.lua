@@ -4,6 +4,7 @@ function LibStub()
     return { GetLocale = function() return L end }
 end
 DUNGEONS = "Dungeons"
+REPUTATION = "Reputation"
 tinsert, tremove = table.insert, table.remove
 function tContains(values, wanted)
     for _, value in ipairs(values) do
