@@ -1109,7 +1109,7 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad"] = {
             _index = 112,
         },
         {
-            Note = { "STABLE_USUAL_PET_TAMING_TEMPORARY_PET" },
+            Note = { "STABLE_USUAL_PET_TAMING_TEMPORARY_PET", "FIGHT_PET_LEARN_ABILITIES", "ABANDON_TEMPORARY_PET_RETRIEVE_REGULAR_PET", "TEACH_PET_LEARNED_ABILITIES", "SKIP_PET_LESSON_ABILITY_KNOWN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1424, 62.31, 19.7),
             Range = 5,
             Class = "HUNTER",
@@ -3986,7 +3986,7 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
             _index = 134,
         },
         {
-            Note = { "STABLE_USUAL_PET_TAMING_TEMPORARY_PET" },
+            Note = { "STABLE_USUAL_PET_TAMING_TEMPORARY_PET", "FIGHT_PET_LEARN_ABILITIES", "ABANDON_TEMPORARY_PET_RETRIEVE_REGULAR_PET", "TEACH_PET_LEARNED_ABILITIES", "SKIP_PET_LESSON_ABILITY_KNOWN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1417, 73.92, 33.12),
             Range = 5,
             Class = "HUNTER",

@@ -727,7 +727,7 @@ APR.RouteQuestStepList["Forever-Alliance-Hillsbrad-Foothills"] = {
             Zone = 1424,
         },
         {
-            Note = { "STABLE_USUAL_PET_TAMING_TEMPORARY_PET" },
+            Note = { "STABLE_USUAL_PET_TAMING_TEMPORARY_PET", "FIGHT_PET_LEARN_ABILITIES", "ABANDON_TEMPORARY_PET_RETRIEVE_REGULAR_PET", "TEACH_PET_LEARNED_ABILITIES", "SKIP_PET_LESSON_ABILITY_KNOWN" },
             Fillers = { [658] = { 1 } },
             Coord = { x = -546.61, y = -854.46 },
             Range = 5,
