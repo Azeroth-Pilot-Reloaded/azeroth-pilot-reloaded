@@ -13,7 +13,8 @@ local Browser = APR.RouteBrowser
 function Browser:RefreshShareButton()
     if not self.shareRoute then return end
     local custom = APRData and APRData.CustomRoute
-    self.shareRoute:SetEnabled(custom and self.selectedKey and custom[self.selectedKey] ~= nil or false)
+    self.shareRoute:SetEnabled(APR.PathSharing and APR.PathSharing:IsAvailable()
+        and custom and self.selectedKey and custom[self.selectedKey] ~= nil or false)
 end--[[APR_DIAG]]; Browser.RefreshShareButton = APRTrace("APR-Core/ui/route/RouteBrowser.lua:15:Browser:RefreshShareButton#100", Browser.RefreshShareButton)--[[/APR_DIAG]]
 
 local function Place(region, x, y, width, height)

@@ -6,6 +6,13 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 local Sharing = APR.PathSharing
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
+function Sharing:RefreshShareControls()
+    if PartyFrameHeader and PartyFrameHeader.SharePathButton then
+        PartyFrameHeader.SharePathButton:SetEnabled(self:IsAvailable() == true)
+    end
+    if APR.RouteBrowser and APR.RouteBrowser.RefreshShareButton then APR.RouteBrowser:RefreshShareButton() end
+end--[[APR_DIAG]]; Sharing.RefreshShareControls = APRTrace("APR-Core/features/group/PathSharingUI.lua:9:Sharing:RefreshShareControls#100", Sharing.RefreshShareControls)--[[/APR_DIAG]]
+
 function Sharing:ChooseRecipient(routeKey)
     if InCombatLockdown() then return end
     local options = { { value = false, label = GROUP } }
@@ -47,3 +54,5 @@ if PartyFrameHeader and APR.UI then
         PartyFrameHeader.Text:SetPoint("RIGHT", button, "LEFT", -6, 0)
     end
 end
+
+Sharing:RefreshShareControls()

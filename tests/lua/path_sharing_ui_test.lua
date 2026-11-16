@@ -2,7 +2,9 @@
 local env = dofile("tests/lua/route_browser_test_env.lua")
 GROUP = "Synthetic group"
 local shared, route, recipient
+local grouped = false
 APR.PathSharing = { peers = { Peer = true } }
+function APR.PathSharing:IsAvailable() return grouped end
 function APR.PathSharing:Roster() return { Peer = "Peer", Old = "Older peer" } end
 function APR.PathSharing:SharePath(target) shared, recipient = true, target end
 function APR.PathSharing:ShareRoute(key, target) route, recipient = key, target end
@@ -17,6 +19,10 @@ PartyFrameHeader:SetScript("OnMouseDown", function() drags = drags + 1 end)
 dofile("APR-Core/features/group/PathSharingUI.lua")
 local headerButton = assert(PartyFrameHeader.SharePathButton)
 assert(PartyFrameHeader:GetWidth() == 250 and headerButton:GetWidth() == 22)
+assert(not headerButton:IsEnabled(), "The header share button starts disabled when solo")
+grouped = true
+APR.PathSharing:RefreshShareControls()
+assert(headerButton:IsEnabled())
 headerButton.scripts.OnClick()
 assert(shared and recipient == nil)
 PartyFrameHeader.scripts.OnMouseDown()
@@ -32,6 +38,12 @@ APRData.CustomRoute = { recorded = { label = "Recorded", steps = { { Note = "rec
 browser.selectedKey = "recorded"
 browser:RefreshShareButton()
 assert(browser.shareRoute:IsEnabled())
+grouped = false
+APR.PathSharing:RefreshShareControls()
+assert(not browser.shareRoute:IsEnabled() and not headerButton:IsEnabled(), "Leaving a group disables both controls")
+grouped = true
+APR.PathSharing:RefreshShareControls()
+assert(browser.shareRoute:IsEnabled() and headerButton:IsEnabled(), "Joining a group restores the selected custom route action")
 browser.shareRoute.scripts.OnClick()
 local dialog = assert(APR.UI.selectionDialog)
 local peer, old
