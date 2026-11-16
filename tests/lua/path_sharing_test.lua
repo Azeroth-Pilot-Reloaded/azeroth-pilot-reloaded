@@ -18,7 +18,8 @@ end
 APR.Username = "Local"
 function APR:GetSettingsProfile() return profile end
 function APR:IsTemporaryRouteActive() return false end
-function APR:Print(value) printed[#printed + 1] = value end
+DEFAULT_CHAT_FRAME = { AddMessage = function(_, value) printed[#printed + 1] = value end }
+function APR:WrapTextWithAppearanceColor(value) return value end
 function APR:Debug() end
 function APR:NewModule()
     return { RegisterEvent = function() end, UnregisterAllEvents = function() end }
@@ -109,7 +110,14 @@ APRCustomPath.player = { "First", "Second" }
 APRData.player.alpha, APRData.player.beta = 1, 2
 APR.ActiveRoute = "alpha"
 
-assert(not S:SharePath("Peer-Home"), "Old/unadvertised peers are not recipients")
+for _, diagnostics in ipairs({ false, true }) do
+    APRInstrumentation.enabled = diagnostics
+    local previous = #printed
+    assert(not S:SharePath("Peer-Home"), "Old/unadvertised peers are not recipients")
+    assert(#printed == previous + 1 and printed[#printed] == "APR: " .. S.status,
+        "Sharing reports through the real APR chat helper with diagnostics on or off")
+end
+APRInstrumentation.enabled = false
 receive("H|1", "Stranger-Home")
 assert(not next(S.peers), "Nonmembers cannot advertise or open a dialog")
 receive("H|1")
